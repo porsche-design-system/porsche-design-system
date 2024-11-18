@@ -1,9 +1,8 @@
-import type { TagName } from '@porsche-design-system/shared';
-import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
-import { DataStructureBuilder, ExtendedProp } from './DataStructureBuilder';
-import { InputParser } from './InputParser';
-import * as path from 'path';
 import * as fs from 'fs';
+import * as path from 'path';
+import { INTERNAL_TAG_NAMES, type TagName } from '@porsche-design-system/shared';
+import { DataStructureBuilder, type ExtendedProp } from './DataStructureBuilder';
+import { InputParser } from './InputParser';
 
 const BASE_DIR = path.normalize('..');
 
@@ -14,18 +13,17 @@ export type AdditionalFile = {
 };
 
 export abstract class AbstractWrapperGenerator {
-  protected abstract packageDir: string;
   protected projectDir: string = 'components-wrapper';
   protected barrelFileName: string = 'index.ts';
   protected ignoreComponents: TagName[] = INTERNAL_TAG_NAMES;
-  private libDir: string = '';
-  private componentsDir: string = '';
-
   protected inputParser = InputParser.Instance;
-  private dataStructureBuilder = DataStructureBuilder.Instance;
   protected intrinsicElements = this.inputParser.getIntrinsicElements();
   protected relevantComponentTagNames: TagName[] = [];
   protected unexposedComponentTagNames: TagName[] = INTERNAL_TAG_NAMES;
+  private libDir: string = '';
+  private componentsDir: string = '';
+  private dataStructureBuilder = DataStructureBuilder.Instance;
+  protected abstract packageDir: string;
 
   public generate(): void {
     console.log(`Generating wrappers for package '${this.packageDir}' in project '${this.projectDir}'`);
@@ -35,7 +33,36 @@ export abstract class AbstractWrapperGenerator {
     this.generateComponentWrappers();
     this.generateBarrelFile();
     this.generateAdditionalFiles();
+
     console.log(`Generated wrappers for package '${this.packageDir}' in project '${this.projectDir}'`);
+  }
+
+  public stripFileExtension(component: TagName): string {
+    return path.parse(this.getComponentFileName(component)).name;
+  }
+
+  // helper to possibly inject additional contents into barrel file
+  public getAdditionalBarrelFileContent(): string {
+    return '';
+  }
+
+  // helper that can be used to inject other files to be generated
+  public getAdditionalFiles(): AdditionalFile[] {
+    return [];
+  }
+
+  // helper that can be used to have wrapper generated into separate folder
+  public shouldGenerateFolderPerComponent(_: TagName): boolean {
+    return false;
+  }
+
+  public getBarrelFileContent(componentFileNameWithoutExtension: string, componentSubDir?: string): string {
+    return `export * from './${componentSubDir ? componentSubDir + '/' : ''}${componentFileNameWithoutExtension}';`;
+  }
+
+  // Can be used to transform content e.g. indentation
+  public transformContent(content: string): string {
+    return content;
   }
 
   private setRelevantComponentTagNames(): void {
@@ -64,6 +91,7 @@ export abstract class AbstractWrapperGenerator {
     const targetFile = path.resolve(this.libDir, targetFileName);
 
     fs.writeFileSync(targetFile, content);
+
     console.log(`Generated shared types: ${targetFile}`);
   }
 
@@ -87,6 +115,7 @@ export abstract class AbstractWrapperGenerator {
     const content = [this.getAdditionalBarrelFileContent(), componentExports].filter((x) => x).join('\n\n');
 
     fs.writeFileSync(targetFile, content);
+
     console.log(`Generated barrel: ${this.barrelFileName}`);
   }
 
@@ -134,41 +163,18 @@ export abstract class AbstractWrapperGenerator {
 
         fs.mkdirSync(targetDir, { recursive: true });
         fs.writeFileSync(targetFile, content);
+
         console.log(`Generated file: ${relativePath}/${name}`);
       });
     }
   }
 
-  public stripFileExtension(component: TagName): string {
-    return path.parse(this.getComponentFileName(component)).name;
-  }
-
-  // helper to possibly inject additional contents into barrel file
-  public getAdditionalBarrelFileContent(): string {
-    return '';
-  }
-
-  // helper that can be used to inject other files to be generated
-  public getAdditionalFiles(): AdditionalFile[] {
-    return [];
-  }
-
-  // helper that can be used to have wrapper generated into separate folder
-  public shouldGenerateFolderPerComponent(_: TagName): boolean {
-    return false;
-  }
-
-  public getBarrelFileContent(componentFileNameWithoutExtension: string, componentSubDir?: string): string {
-    return `export * from './${componentSubDir ? componentSubDir + '/' : ''}${componentFileNameWithoutExtension}';`;
-  }
-
-  // Can be used to transform content e.g. indentation
-  public transformContent(content: string): string {
-    return content;
-  }
-
   // prettier-ignore
-  public abstract generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string;
+  public abstract generateImports(
+    component: TagName,
+    extendedProps: ExtendedProp[],
+    nonPrimitiveTypes: string[]
+  ): string;
   public abstract generateProps(component: TagName, rawComponentInterface: string): string;
   public abstract generateComponent(component: TagName, extendedProps: ExtendedProp[]): string;
   public abstract getComponentFileName(component: TagName): string;

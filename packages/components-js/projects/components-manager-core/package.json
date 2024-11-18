@@ -8,6 +8,7 @@
   "types": "dist/types/index.d.ts",
   "scripts": {
     "build": "yarn clean:build && tsc --build tsconfig.json && tsc --project tsconfig.json --module CommonJS --outDir ./dist",
+    "lint": "biome lint",
     "test": "yarn test:unit",
     "test:unit": "jest",
     "clean:build": "rm -rf ./dist"

@@ -16,11 +16,13 @@ import * as formUtils from '../../utils/form/form-utils';
 import * as jssUtils from './../../utils/jss';
 
 class MockHTMLElement {
+  shadowRoot: DocumentOrShadowRoot;
+
   constructor() {
     this.shadowRoot = { adoptedStyleSheets: [] } as DocumentOrShadowRoot;
   }
-  shadowRoot: DocumentOrShadowRoot;
-  getBoundingClientRect() {
+
+  getBoundingClientRect(): { height: number } {
     return { height: 100 };
   }
 }
@@ -242,7 +244,7 @@ describe('dispatchInputEvent()', () => {
 
 describe('addCounterCharacterLengthCssVarStyleSheet()', () => {
   let host;
-  let stylesheetMock = {
+  const stylesheetMock = {
     replaceSync: jest.fn(),
     insertRule: jest.fn(),
     deleteRule: jest.fn(),
@@ -287,7 +289,7 @@ describe('addCounterCharacterLengthCssVarStyleSheet()', () => {
 
 describe('updateCounterCharacterLengthCssVarStyleSheet()', () => {
   let host;
-  let stylesheetMock = {
+  const stylesheetMock = {
     replaceSync: jest.fn(),
     insertRule: jest.fn(),
     deleteRule: jest.fn(),

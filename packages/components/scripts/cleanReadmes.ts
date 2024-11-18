@@ -1,8 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import type { TagName } from '@porsche-design-system/shared';
 import { globbySync } from 'globby';
 import { capitalCase } from 'latest-change-case';
-import type { TagName } from '@porsche-design-system/shared';
 
 const removeBuiltWith = (str: string): string =>
   str.replace(/\s+----------------------------------------------\s+\*Built with.*/, '');
@@ -86,7 +86,7 @@ const replaceEventsTable =
 
 // TODO: Add slots API
 const replaceSlotsTable =
-  (componentName: string): ((str: string) => string) =>
+  (): ((str: string) => string) =>
   (str: string): string =>
     str.replace(/(###? Slots\n+)(?:\|.+\n)+\n?/, '');
 
@@ -106,7 +106,7 @@ const cleanReadmes = (): void => {
       adjustHeadlines,
       replacePropsTable(componentName), // vue component visualizing componentMeta
       replaceEventsTable(componentName), // vue component visualizing componentMeta
-      replaceSlotsTable(componentName),
+      replaceSlotsTable(),
     ].reduce((previousResult, fn) => fn(previousResult), sourceFileContent);
 
     // use this for easy debugging

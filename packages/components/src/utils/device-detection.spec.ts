@@ -9,7 +9,7 @@ describe('isTouchDevice()', () => {
           navigator: {
             maxTouchPoints: 1,
           },
-        } as any)
+        }) as any
     );
 
     expect(isTouchDevice()).toBe(true);
@@ -20,7 +20,7 @@ describe('isTouchDevice()', () => {
       () =>
         ({
           maxTouchPoints: 0,
-        } as any)
+        }) as any
     );
 
     expect(isTouchDevice()).toBe(false);

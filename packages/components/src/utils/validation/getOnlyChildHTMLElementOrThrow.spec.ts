@@ -3,8 +3,8 @@ import * as getDirectChildHTMLElementUtils from '../dom/getDirectChildHTMLElemen
 
 it('should call getDirectChildHTMLElement() with correct parameters', () => {
   const spy = jest
-  .spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement')
-  .mockReturnValue(document.createElement('button'));
+    .spyOn(getDirectChildHTMLElementUtils, 'getDirectChildHTMLElement')
+    .mockReturnValue(document.createElement('button'));
   const parent = document.createElement('div');
   const selector = 'a,button';
 

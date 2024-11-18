@@ -1,5 +1,5 @@
 import * as getPrefixedTagNamesUtils from '../tag-name';
-import { PrefixedTagNames } from '../tag-name';
+import type { PrefixedTagNames } from '../tag-name';
 import { throwIfElementIsNotOfKind } from './throwIfElementIsNotOfKind';
 import * as paramCaseToCamelCaseUtils from '../paramCaseToCamelCase';
 

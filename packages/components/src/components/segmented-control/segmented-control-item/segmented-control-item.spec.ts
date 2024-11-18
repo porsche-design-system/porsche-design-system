@@ -10,7 +10,8 @@ describe('render', () => {
 
     try {
       component.render();
-    } catch {
+    } catch (e) {
+      console.error(e);
     }
 
     expect(spy).toHaveBeenCalledWith(component.host, 'value', component.value);

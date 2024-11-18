@@ -12,7 +12,7 @@ export const convertToRemixVRTPage = (
 ): { fileName: string; fileContent: string } => {
   const { fileName, fileContent } = convertToReactVRTPage(...params);
 
-  let newFileContent = fileContent
+  const newFileContent = fileContent
     .replace(/import { pollComponentsReady } from '\.\.\/pollComponentsReady';/, pollComponentsReadyFileContent)
     .replace(/export\s(const\s)([a-zA-Z]+)(\s=\s\(\):\sJSX\.Element\s=>\s{[\s\S]+};)/, '$1$2$3\n\nexport default $2;')
     .replace(/@porsche-design-system\/components-react/g, '$&/ssr') // tweak path to ssr subpackage

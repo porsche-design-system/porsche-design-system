@@ -19,7 +19,7 @@ const initTabs = (page: Page, opts?: { amount?: number; activeTabIndex?: number 
   const { amount = 3, activeTabIndex } = opts || {};
 
   const content = `<p-tabs ${activeTabIndex ? `active-tab-index="${activeTabIndex}"` : ''}>
-  ${Array.from(Array(amount))
+  ${Array.from(new Array(amount))
     .map((_, i) => `<p-tabs-item label="Tab ${i + 1}">Content ${i + 1}</p-tabs-item>`)
     .join('')}
 </p-tabs>`;
@@ -236,7 +236,7 @@ test.describe('events', () => {
     await page.evaluate((COUNTER_KEY: string) => {
       const el = document.createElement('p-tabs');
 
-      Array.from(Array(2)).forEach((_, i) => {
+      Array.from(new Array(2)).forEach((_, i) => {
         const child = document.createElement('p-tabs-item');
         (child as any).label = `Tab ${i + 1}`;
         child.innerText = `Content ${i + 1}`;

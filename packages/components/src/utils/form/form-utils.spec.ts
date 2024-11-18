@@ -50,7 +50,7 @@ describe('setCounterInnerHtml()', () => {
 });
 
 describe('setAriaElementInnerHtml()', () => {
-  const getAccessibilityMessage = (remainingCharacter: number, maxCharacter: number) =>
+  const getAccessibilityMessage = (remainingCharacter: number, maxCharacter: number): string =>
     `You have ${remainingCharacter} out of ${maxCharacter} characters left`;
 
   it('should set correct character count text for screen reader as innerText on element', async () => {

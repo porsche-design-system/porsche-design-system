@@ -61,7 +61,7 @@ export const getSlottedTextFieldTextareaSelectStyles = (
       }),
       ...additionalDefaultJssStyle,
     },
-    ['::slotted(:not(input[type="password"]))']: {
+    '::slotted(:not(input[type="password"]))': {
       textOverflow: 'ellipsis',
     },
     ...(!isLoading &&

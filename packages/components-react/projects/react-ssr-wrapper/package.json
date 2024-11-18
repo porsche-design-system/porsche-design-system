@@ -10,6 +10,7 @@
     "build": "yarn build:copy && yarn build:bundle",
     "build:copy": "cp ../react-wrapper/src/public-api.ts ./src && cp ../react-wrapper/src/BaseProps.ts ./src && cp ../react-wrapper/src/provider.tsx ./src && cp ../react-wrapper/src/hooks.ts ./src && cp ../react-wrapper/src/utils.ts ./src",
     "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs",
+    "lint": "biome lint",
     "test": "yarn test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ../../dist/react-wrapper/ssr"
@@ -18,8 +19,8 @@
     "@porsche-design-system/shared": "0.0.0"
   },
   "peerDependencies": {
-    "ag-grid-enterprise": ">= 32.0.0 <33.0.0",
-    "ag-grid-react": ">= 32.0.0 <33.0.0"
+    "ag-grid-enterprise": "*",
+    "ag-grid-react": "*"
   },
   "volta": {
     "extends": "../../../../package.json"

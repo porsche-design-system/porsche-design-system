@@ -237,7 +237,6 @@
 
     async onSubmit(): Promise<void> {
       const isValid = await validateForm(this.bag);
-      console.log('isValid', isValid);
     }
 
     onReset(): void {

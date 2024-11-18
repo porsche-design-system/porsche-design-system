@@ -59,7 +59,7 @@ export const getComponentCss = (
           Array.from(Array(length)).map((_, i) => {
             return [`&:nth-of-type(${i + 1})`, { gridArea: `1/${i + 1}` }];
           })
-        ),*/
+        ), */
         '&:nth-of-type(1)': { gridArea: '1/1' },
         '&:nth-of-type(2)': { gridArea: '1/2' },
         '&:nth-of-type(3)': { gridArea: '1/3' },

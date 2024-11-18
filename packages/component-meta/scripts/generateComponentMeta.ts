@@ -1,12 +1,13 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { globbySync } from 'globby';
-import { kebabCase } from 'change-case';
-import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_CHUNK, type TagName } from '@porsche-design-system/shared';
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
+import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_CHUNK, type TagName } from '@porsche-design-system/shared';
+import { kebabCase } from 'change-case';
+import { globbySync } from 'globby';
 import type { ComponentMeta, ComponentsMeta, PropMeta, SlotMeta } from '../src/types/component-meta';
 import { isDeprecatedComponent } from '../src/utils';
 
+// biome-ignore lint/style/noNamespace: to be refactored
 declare namespace NodeJS {
   interface Global {
     ROLLUP_REPLACE_IS_STAGING: string;
@@ -123,6 +124,7 @@ const generateComponentMeta = (): void => {
       } else {
         // it's a variable or some dynamic value
         const [, valueRaw] = new RegExp(`const ${requiredChild} = ((?:.|\\s)*?;)`).exec(source) || [];
+        // biome-ignore lint/security/noGlobalEval: safe to use here
         const value = eval(valueRaw || requiredChild);
         requiredChild = value.split(',')[0];
         requiredChild = cleanSelector(requiredChild);
@@ -142,7 +144,9 @@ const generateComponentMeta = (): void => {
     const propsMeta: ComponentMeta['propsMeta'] = {};
 
     Array.from(
-      source.matchAll(/(  \/\*\*[\s\S]+?)?@Prop\(.*\) public ([a-zA-Z]+)\??(?:(?:: (.+?))| )(?:=[^>]\s*([\s\S]+?))?;/g)
+      source.matchAll(
+        /( {2}\/\*\*[\s\S]+?)?@Prop\(.*\) public ([a-zA-Z]+)\??(?:(?:: (.+?))| )(?:=[^>]\s*([\s\S]+?))?;/g
+      )
     ).forEach(([, jsdoc, propName, propType, propValue]) => {
       let cleanedValue: boolean | number | string | object =
         propValue === 'true'
@@ -161,6 +165,7 @@ const generateComponentMeta = (): void => {
           cleanedValue = parseInt(cleanedValue);
         } else if (cleanedValue.match(/^{.+}$/)) {
           // parse objects
+          // biome-ignore lint/security/noGlobalEval: safe to use here
           cleanedValue = eval(`(${cleanedValue})`);
         } else if (cleanedValue.match(/\[.*]/g)) {
           // parse arrays
@@ -223,6 +228,7 @@ const generateComponentMeta = (): void => {
       // the next steps are to ensure the extracted object matches the required type
       const evaluableSharedProps = getEvaluablePropTypeString(sharedProps);
       const requiredKeys = Object.keys(require(sharedPropsExportFilePath)[sharedPropsName]);
+      // biome-ignore lint/security/noGlobalEval: safe to use here
       const readFileKeys = Object.keys(eval(`(${evaluableSharedProps})`) as Record<string, string>);
       if (requiredKeys.length !== readFileKeys.length || !requiredKeys.every((key) => readFileKeys.includes(key))) {
         throw new Error('Currently the scenario for shared props imported from multiple files is not supported.');
@@ -235,6 +241,7 @@ const generateComponentMeta = (): void => {
 
     rawPropTypes = getEvaluablePropTypeString(rawPropTypes);
 
+    // biome-ignore lint/security/noGlobalEval: safe to use here
     const propTypes = eval(`(${rawPropTypes})`) as Record<string, string>;
 
     // breakpointCustomizableProps
@@ -257,7 +264,7 @@ const generateComponentMeta = (): void => {
                   breakpointCustomizableProps.push(propName);
                 }
 
-                let [, values] = propType.match(/\(['"]?((?:.|\n)+?)['"]?\)$/);
+                const [, values] = propType.match(/\(['"]?((?:.|\n)+?)['"]?\)$/);
                 if (values.match(/^\[[\s\S]+?]$/) || values.match(/[A-Z_]{5,}/)) {
                   result[propName] = [];
                   if (values.match(/undefined/)) {
@@ -292,6 +299,7 @@ const generateComponentMeta = (): void => {
                         ? deprecationMapVariableOrName // inline object
                         : source.match(new RegExp(`const ${deprecationMapVariableOrName}.+=([\\s\\S]+?);`))?.[1]; // extract variable assignment
 
+                      // biome-ignore lint/security/noGlobalEval: safe to use here
                       const deprecationMap = eval(`(${deprecationMapVariableOrName})`) as Record<string, string>;
 
                       deprecatedPropValues[propName] = [
@@ -336,7 +344,7 @@ const generateComponentMeta = (): void => {
                       result[propName] = ['// TODO'];
                     }
                   } else if (!variable) {
-                    // must be array of inline values
+                    // biome-ignore lint/security/noGlobalEval: safe to use here
                     result[propName] = eval(`(${values})`);
                   } else {
                     throw new Error(
@@ -366,6 +374,7 @@ const generateComponentMeta = (): void => {
                 }
               } else if (propType.match(/^shape/)) {
                 const [, shapeValues] = propType.match(/({[\s\S]+?})/) || [];
+                // biome-ignore lint/security/noGlobalEval: safe to use here
                 const shapeValuesObject = eval(`(${shapeValues})`) as Record<string, string>;
                 result[propName] = Object.fromEntries(
                   Object.entries(shapeValuesObject).map(([key, val]) => {
@@ -373,9 +382,9 @@ const generateComponentMeta = (): void => {
 
                     if (val.match(/^oneOf/)) {
                       // extract oneOf parameter
-                      let [, values] = val.match(/\(['"]?((?:.|\n)+?)['"]?\)/);
+                      const [, values] = val.match(/\(['"]?((?:.|\n)+?)['"]?\)/);
                       if (values.match(/^\[.+]$/)) {
-                        // only inline values are supported
+                        // biome-ignore lint/security/noGlobalEval: safe to use here
                         val = eval(`(${values})`);
                       }
                     }
@@ -467,7 +476,7 @@ const generateComponentMeta = (): void => {
     // events
     const eventsMeta: ComponentMeta['eventsMeta'] = {};
 
-    Array.from(source.matchAll(/(  \/\*\*(?:.*\n){0,3})?.+?([A-Za-z]+)\??: EventEmitter<(.+)>/g)).forEach(
+    Array.from(source.matchAll(/( {2}\/\*\*(?:.*\n){0,3})?.+?([A-Za-z]+)\??: EventEmitter<(.+)>/g)).forEach(
       ([, jsdoc, eventName, eventType]) => {
         let typeDetail: string;
         if (eventType !== 'void') {
@@ -481,7 +490,7 @@ const generateComponentMeta = (): void => {
           // type can be an alias of another type
           const [, eventTypeAlias] =
             eventTypeFileContent.match(new RegExp(`type ${eventType} = ([A-Z][a-z][A-Za-z]+);`)) || [];
-          let [, eventTypeDetail] =
+          const [, eventTypeDetail] =
             eventTypeFileContent.match(new RegExp(`type ${eventTypeAlias || eventType} = ({[\\s\\S]+?});\\n`)) || [];
 
           // Standard lib types don't need to be resolved
@@ -492,7 +501,7 @@ const generateComponentMeta = (): void => {
           } else {
             // check if the type is defined locally
             let eventAliasTypeDetail: string;
-            let [, eventAliasTypeAlias] =
+            const [, eventAliasTypeAlias] =
               eventTypeFileContent.match(new RegExp(`type ${eventTypeAlias} = ([A-Z][a-z][A-Za-z]+);`)) || [];
 
             if (
@@ -551,6 +560,7 @@ const generateComponentMeta = (): void => {
     let observedAttributes: ComponentMeta['observedAttributes'] = [];
     const [, rawObservedAttributes] = /observeAttributes\(\s*[a-zA-Z.]+\s*,\s*(\[[\s\S]*?])/.exec(source) || [];
     if (rawObservedAttributes) {
+      // biome-ignore lint/security/noGlobalEval: safe to use here
       observedAttributes = eval(rawObservedAttributes);
     }
 

@@ -59,7 +59,9 @@ describe('componentDidLoad', () => {
 
     try {
       component.componentDidLoad();
-    } catch {}
+    } catch (e) {
+      console.error(e);
+    }
 
     expect(spy).toHaveBeenCalledTimes(1);
   });

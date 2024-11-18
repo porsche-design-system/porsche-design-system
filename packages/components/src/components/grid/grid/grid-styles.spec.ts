@@ -1,5 +1,4 @@
-import type { GridDirection, GridWrap } from './grid-utils';
-import { GRID_DIRECTIONS, GRID_WRAPS } from './grid-utils';
+import { type GridDirection, type GridWrap, GRID_DIRECTIONS, GRID_WRAPS } from './grid-utils';
 import { getComponentCss } from './grid-styles';
 import type { BreakpointCustomizable } from '../../../types';
 import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';

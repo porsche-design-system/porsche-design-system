@@ -18,7 +18,7 @@
   "homepage": "https://designsystem.porsche.com",
   "dependencies": {
     "@porsche-design-system/components-js": "3.21.0",
-    "tslib": "^2.6.3"
+    "tslib": "^2.8.1"
   },
   "peerDependencies": {
     "@angular/common": ">=17.0.0 <19.0.0",
@@ -28,6 +28,9 @@
     "rxjs": "^6.5.3 || ^7.4.0"
   },
   "peerDependenciesMeta": {
+    "ag-grid-community": {
+      "optional": true
+    },
     "ag-grid-enterprise": {
       "optional": true
     },

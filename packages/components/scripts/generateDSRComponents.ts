@@ -1,11 +1,10 @@
-import * as path from 'path';
 import * as fs from 'fs';
+import * as path from 'path';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
+import { INTERNAL_TAG_NAMES, type TagName } from '@porsche-design-system/shared';
+import { breakpoint } from '@porsche-design-system/styles';
 import { globbySync } from 'globby';
 import { kebabCase, pascalCase } from 'latest-change-case';
-import { breakpoint } from '@porsche-design-system/styles';
-import type { TagName } from '@porsche-design-system/shared';
-import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
-import { getComponentMeta } from '@porsche-design-system/component-meta';
 
 const EXCLUDED_COMPONENTS: TagName[] = ['p-toast-item'];
 
@@ -34,23 +33,23 @@ const generateDSRComponents = (): void => {
         .replace(/@Component\({[\s\S]+?\)\n/g, '')
         .replace(/ implements [A-Za-z]+/g, '')
         .replace(/@Element\(\) /g, '')
-        .replace(/(?:\n  \/\*\*[\s\S]*?)?@Prop\(.*?\) [\s\S]*?;.*\n/g, '')
-        .replace(/\n  @Listen\(.*\)[\s\S]+?\n  }\n/g, '')
-        .replace(/@Watch\(.*\)[\s\S]+?\n  }\n/g, '')
-        .replace(/@Method\(.*\)[\s\S]+?\n  }\n/g, '')
+        .replace(/(?:\n {2}\/\*\*[\s\S]*?)?@Prop\(.*?\) [\s\S]*?;.*\n/g, '')
+        .replace(/\n {2}@Listen\(.*\)[\s\S]+?\n {2}}\n/g, '')
+        .replace(/@Watch\(.*\)[\s\S]+?\n {2}}\n/g, '')
+        .replace(/@Method\(.*\)[\s\S]+?\n {2}}\n/g, '')
         .replace(/@State\(\) /g, '')
-        .replace(/(?:\n  \/\*\*(?:.*\n){0,3})?  @Event\(.*\).*\n/g, '')
-        .replace(/\n  public connectedCallback\(\): void {[\s\S]+?\n  }\n/g, '')
-        .replace(/\n  public componentWillLoad\(\): void {[\s\S]+?\n  }\n/g, '')
-        .replace(/\n  public componentDidLoad\(\): void {[\s\S]+?\n  }\n/g, '')
-        .replace(/\n  public componentWillUpdate\(\): void {[\s\S]+?\n  }\n/g, '')
-        .replace(/\n  public componentWillRender\(\): void {[\s\S]+?\n  }\n/g, '')
-        .replace(/\n  public componentDidUpdate\(\): void {[\s\S]+?\n  }\n/g, '')
-        .replace(/\n  public componentDidRender\(\): void {[\s\S]+?\n  }\n/g, '')
-        .replace(/\n  public disconnectedCallback\(\): void {[\s\S]+?\n  }\n/g, '')
-        .replace(/\n  public componentShouldUpdate\([\s\S]+?\n  }\n/g, '')
+        .replace(/(?:\n {2}\/\*\*(?:.*\n){0,3})? {2}@Event\(.*\).*\n/g, '')
+        .replace(/\n {2}public connectedCallback\(\): void {[\s\S]+?\n {2}}\n/g, '')
+        .replace(/\n {2}public componentWillLoad\(\): void {[\s\S]+?\n {2}}\n/g, '')
+        .replace(/\n {2}public componentDidLoad\(\): void {[\s\S]+?\n {2}}\n/g, '')
+        .replace(/\n {2}public componentWillUpdate\(\): void {[\s\S]+?\n {2}}\n/g, '')
+        .replace(/\n {2}public componentWillRender\(\): void {[\s\S]+?\n {2}}\n/g, '')
+        .replace(/\n {2}public componentDidUpdate\(\): void {[\s\S]+?\n {2}}\n/g, '')
+        .replace(/\n {2}public componentDidRender\(\): void {[\s\S]+?\n {2}}\n/g, '')
+        .replace(/\n {2}public disconnectedCallback\(\): void {[\s\S]+?\n {2}}\n/g, '')
+        .replace(/\n {2}public componentShouldUpdate\([\s\S]+?\n {2}}\n/g, '')
         .replace(/private(.*?)window.matchMedia(.*?);/g, '')
-        .replace(/\n  private (?!get).+(\n.+)*?\{[\s\S]+?\n  };?\n/g, '') // private methods without getters
+        .replace(/\n {2}private (?!get).+(\n.+)*?\{[\s\S]+?\n {2}};?\n/g, '') // private methods without getters
         .replace(/\nconst propTypes[\s\S]*?};\n/g, '') // temporary
         .replace(/\s+validateProps\(this, propTypes\);/, '')
         .replace(/\s+attachComponentCss\([\s\S]+?\);/, '')
@@ -122,9 +121,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         {this.children}`
           : '';
 
-        newFileContent = newFileContent.replace(/public render\(\)[\s\S]*?\n  }/, (match) => {
+        newFileContent = newFileContent.replace(/public render\(\)[\s\S]*?\n {2}}/, (match) => {
           const delegatesFocusProp = isDelegatingFocus ? ' shadowrootdelegatesfocus="true"' : '';
-          return match.replace(/\n    return \(?([\s\S]*?(?:\n    )|.*)\)?;/, (_, g1) => {
+          return match.replace(/\n {4}return \(?([\s\S]*?(?:\n {4})|.*)\)?;/, (_, g1) => {
             return `
     const style = minifyCss(stripFocusAndHoverStyles(get${componentName}Css(${getComponentCssParams})));
 
@@ -273,7 +272,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/toastManager\.getToast\(\)/, 'false') // toast
         .replace(/ {\.\.\.toast}/, '') // toast
         .replace(/return this\.selectRef\.selectedIndex;/, 'return 0;') // select-wrapper-dropdown
-        .replace(/determineDropdownDirection\(this\.props\,.+\)/, "'down'") // select-wrapper-dropdown
+        .replace(/determineDropdownDirection\(this\.props,.+\)/, "'down'") // select-wrapper-dropdown
         .replace(/(getDropdownDirection|getSelectDropdownDirection)\(this\.props.+\)/, "'down'") // select and multi-select
         .replace(/(this\.)props\.(isDisabledOrLoading)/g, '$1$2') // button, button-pure
         .replace(/(const (?:iconProps|btnProps|linkProps|buttonProps)) =/, '$1: any =') // workaround typing issue
@@ -320,7 +319,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             /const hasFooter = .+\n/,
             '$&    const hasDismissButton = this.props.disableCloseButton ? false : this.props.dismissButton;'
           )
-          .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/g, '')
           .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2") // transform true to empty string ''
           .replace(/onScroll=\{hasFooter && this\.props\.onScroll}/, '')
           .replace(/if\s\(.*[^}]*}/, '') // Remove deprecation warning check
@@ -329,7 +327,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasFooter|hasSubFooter)/g, '$1')
           .replace(/(?:hasHeader|hasFooter|hasSubFooter) =/g, 'const $&')
-          .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/g, '')
           .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2") // transform true to empty string ''
           .replace(/onTransitionEnd={[^}]*}\s*/, '');
       } else if (tagName === 'p-radio-button-wrapper') {
@@ -362,7 +359,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         // only keep :host , button, .icon & .label styles
         newFileContent = newFileContent.replace(
           /getPopoverCss\(.+?\)/,
-          `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.icon {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '\$1\\n\$2\\n$3\\n$4')`
+          `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.icon {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '$1\\n$2\\n$3\\n$4')`
         );
       } else if (tagName === 'p-tabs-bar') {
         newFileContent = newFileContent
@@ -399,10 +396,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/{this\.props\.children}/, '{manipulatedChildren}');
       } else if (tagName === 'p-toast') {
         // only keep :host styles
-        newFileContent = newFileContent.replace(
-          /getToastCss\(\)/,
-          `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+/, '\$1')`
-        );
+        newFileContent = newFileContent.replace(/getToastCss\(\)/, `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+/, '$1')`);
         // TODO: recover @media query for :host style if needed
       } else if (tagName === 'p-grid') {
         // pass down gutter prop to p-grid-item children
@@ -563,7 +557,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             // use local constants instead of previously replaced private members that became something like
             // this.props.isSearch, this.props.hasUnit, etc.
             new RegExp(
-              `this\.props\.(${Array.from(constants.matchAll(/const ([A-Za-z]+)/g))
+              `this.props.(${Array.from(constants.matchAll(/const ([A-Za-z]+)/g))
                 .map(([, group]) => group)
                 .join('|')})`,
               'g'
@@ -669,6 +663,7 @@ $&`
     const filePath = path.resolve(destinationDirectory, fileName);
 
     fs.writeFileSync(filePath, fileContent);
+
     console.log(`Generated DSR Component into '${relativeDestinationDirectory}/${fileName}'`);
   });
 };

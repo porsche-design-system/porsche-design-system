@@ -1,4 +1,4 @@
-import { type Page, test, expect } from '@playwright/test';
+import { type Page, expect, test } from '@playwright/test';
 import { getAttribute, setContentWithDesignSystem } from '../../helpers';
 
 type InitOptions = {
@@ -13,7 +13,7 @@ const initStepperHorizontal = (page: Page, opts?: InitOptions) => {
   const getState = (index: number) =>
     index === currentStep ? 'current' : index < currentStep ? 'complete' : undefined;
 
-  const steps = Array.from(Array(amount))
+  const steps = Array.from(new Array(amount))
     .map(
       (_, i) =>
         `<p-stepper-horizontal-item${getState(i) ? ` state="${getState(i)}"` : ''}>Step ${

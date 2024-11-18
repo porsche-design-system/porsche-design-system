@@ -8,7 +8,7 @@ export const getComponentCssSpy = (): jest.SpyInstance => {
   // mock to get the result from getComponentCss() directly
   return jest
     .spyOn(jssUtils, 'attachComponentCss')
-    .mockImplementation((_, getComponentCss, ...args) => getComponentCss(...args)); // eslint-disable-line @typescript-eslint/no-unsafe-argument
+    .mockImplementation((_, getComponentCss, ...args) => getComponentCss(...args));
 };
 
 export const getComponentCssObject = (spy: jest.SpyInstance): object => {

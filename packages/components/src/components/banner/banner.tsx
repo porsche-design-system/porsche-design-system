@@ -51,7 +51,7 @@ export class Banner {
   @Element() public host!: HTMLElement;
 
   /** If true, the banner is open. */
-  @Prop() public open: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
+  @Prop() public open: boolean = false;
 
   /** Heading of the banner. */
   @Prop() public heading?: string = '';

@@ -1,5 +1,4 @@
 {
-  // used by ng-packagr
   "extends": "./tsconfig.lib.json",
   "compilerOptions": {
     "declarationMap": false

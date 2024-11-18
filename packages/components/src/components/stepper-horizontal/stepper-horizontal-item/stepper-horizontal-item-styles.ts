@@ -78,7 +78,7 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
     '@global': {
       ':host': {
         ...(isStateCurrentOrUndefined &&
-          Array.from(Array(9)).reduce(
+          Array.from(new Array(9)).reduce(
             (result, _, i) => ({
               ...result,
               [`&(:nth-of-type(${i + 1})) $button::before`]: {

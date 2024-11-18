@@ -78,7 +78,8 @@ test.describe('with initialized design system', () => {
   test('should work in parallel', async ({ page }) => {
     await setContentWithDesignSystem(page, ``);
 
-    let val1, val2;
+    let val1;
+    let val2;
     await addComponent(page, 'p-text');
 
     getReadyAmount(page).then((x) => (val1 = x));

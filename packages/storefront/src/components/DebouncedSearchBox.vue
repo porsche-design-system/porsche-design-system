@@ -35,57 +35,55 @@
 </template>
 
 <script lang="ts">
-  import Component, { mixins } from 'vue-class-component';
-  import { connectSearchBox } from 'instantsearch.js/es/connectors';
+import { connectSearchBox } from 'instantsearch.js/es/connectors';
+import Component, { mixins } from 'vue-class-component';
 
-  // Ignore missing types
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  import { createWidgetMixin } from 'vue-instantsearch';
-  import { Prop } from 'vue-property-decorator';
+// Ignore missing types
+// @ts-ignore
+import { createWidgetMixin } from 'vue-instantsearch';
+import { Prop } from 'vue-property-decorator';
 
-  @Component
-  export default class DebouncedSearchBox extends mixins(createWidgetMixin({ connector: connectSearchBox })) {
-    @Prop({ default: () => ({}) }) public onFocus!: (query: string) => void;
+@Component
+export default class DebouncedSearchBox extends mixins(createWidgetMixin({ connector: connectSearchBox })) {
+  @Prop({ default: () => ({}) }) public onFocus!: (query: string) => void;
 
-    @Prop({ default: 300 }) public delay!: number;
+  @Prop({ default: 300 }) public delay!: number;
 
-    public localQuery = '';
-    public timerId!: ReturnType<typeof setTimeout>;
+  public localQuery = '';
+  public timerId!: ReturnType<typeof setTimeout>;
 
-    private isSearchOpen = false;
+  private isSearchOpen = false;
 
-    data() {
-      return {
-        timerId: null,
-        localQuery: '',
-      };
-    }
+  data() {
+    return {
+      timerId: null,
+      localQuery: '',
+    };
+  }
 
-    destroyed() {
-      if (this.timerId) {
-        clearTimeout(this.timerId);
-      }
-    }
-
-    get query() {
-      return this.localQuery;
-    }
-
-    set query(val: string) {
-      this.$emit('query-change', val);
-      this.localQuery = val;
-      if (this.timerId) {
-        clearTimeout(this.timerId);
-      }
-      this.timerId = setTimeout(() => {
-        // Ignore missing types from instantsearch.js
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        this.state.refine(this.localQuery);
-      }, this.delay);
+  destroyed() {
+    if (this.timerId) {
+      clearTimeout(this.timerId);
     }
   }
+
+  get query() {
+    return this.localQuery;
+  }
+
+  set query(val: string) {
+    this.$emit('query-change', val);
+    this.localQuery = val;
+    if (this.timerId) {
+      clearTimeout(this.timerId);
+    }
+    this.timerId = setTimeout(() => {
+      // Ignore missing types from instantsearch.js
+      // @ts-ignore
+      this.state.refine(this.localQuery);
+    }, this.delay);
+  }
+}
 </script>
 
 <style scoped lang="scss">

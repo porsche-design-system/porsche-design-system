@@ -29,7 +29,7 @@ export const CarouselExampleJumpToSlidePage = (): JSX.Element => {
         <div style={slideStyle}>Slide 3</div>
       </PCarousel>
 
-      {Array.from(Array(3)).map((_, i) => (
+      {Array.from(new Array(3)).map((_, i) => (
         <button key={i} type="button" onClick={onButtonClick} disabled={activeSlideIndex === i}>
           {i + 1}
         </button>

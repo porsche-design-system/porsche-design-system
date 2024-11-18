@@ -104,7 +104,6 @@ export const buildResponsiveStyles = <T>(
   rawValue: BreakpointCustomizable<T>,
   getJssStyle: GetJssStyleFunction
 ): Styles => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const value = parseJSON(rawValue as any);
 
   return typeof value === 'object'
@@ -115,7 +114,7 @@ export const buildResponsiveStyles = <T>(
         .reduce(
           (result, breakpointValue: Breakpoint) => ({
             ...result,
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+
             [getMediaQueryMin(breakpointValue as any)]: getJssStyle(value[breakpointValue]) as Styles,
           }),
           getJssStyle(value.base) as Styles

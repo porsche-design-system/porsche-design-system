@@ -7,7 +7,7 @@ import * as fs from 'fs';
 // convert and extract storefront.config.ts to usable object that includes import paths that are otherwise unreachable
 const configFilePath = path.resolve(__dirname, '../../storefront.config.ts');
 const configFileContent = fs.readFileSync(configFilePath, 'utf8');
-const [, rawComponentConfig] = configFileContent.match(/  Components: ([\s\S]+?\n  }),/) || [];
+const [, rawComponentConfig] = configFileContent.match(/ {2}Components: ([\s\S]+?\n {2}}),/) || [];
 const cleanedComponentConfig = rawComponentConfig
   .replace(/\s+\/\/ prettier-ignore/g, '') // remove prettier-ignore directives
   .replace(/[\s"]?([\w-]+)[\s"]?:/g, '"$1":') // wrap keys in double quotes

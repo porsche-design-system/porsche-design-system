@@ -33,47 +33,43 @@ const Heading = styled.h3({
 });
 
 // Tile
-const TileBase = styled.div({
-  width: '200px',
-  height: '100px',
-  lineHeight: '100px',
-  textAlign: 'center',
-  color: themeLightPrimary,
-  background: themeLightBackgroundSurface,
-  borderRadius: borderRadiusLarge,
-  cursor: 'pointer',
-});
+const TileBase = styled.div`
+  width: 200px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  color: ${themeLightPrimary};
+  background: ${themeLightBackgroundSurface};
+  border-radius: ${borderRadiusLarge};
+  cursor: pointer;
+`;
 
-const MotionMoving = styled(TileBase)((props: { active: boolean }) => ({
-  transform: props.active ? 'translateX(200px)' : 'translateX(-200px)',
-  transition: `transform ${motionDurationShort} ${motionEasingBase}`,
-}));
+const MotionMoving = styled(TileBase)<{ active: boolean }>`
+  transform: ${(props) => (props.active ? 'translateX(200px)' : 'translateX(-200px)')};
+  transition: transform ${motionDurationShort} ${motionEasingBase};
+`;
 
-const MotionEnterExit = styled(TileBase)((props: { active: boolean }) => ({
-  transform: props.active ? 'translateY(40%)' : 'translateY(0px)',
-  transition: props.active
-    ? `opacity ${motionDurationShort} ${motionEasingOut}, transform ${motionDurationShort} ${motionEasingOut}`
-    : `opacity ${motionDurationModerate} ${motionEasingIn}, transform ${motionDurationModerate} ${motionEasingIn}`,
-  ...(props.active && {
-    opacity: '0',
-  }),
-}));
+const MotionEnterExit = styled(TileBase)<{ active: boolean }>`
+  transform: ${(props) => (props.active ? 'translateY(40%)' : 'translateY(0px)')};
+  transition: ${(props) =>
+    props.active
+      ? `opacity ${motionDurationShort} ${motionEasingOut}, transform ${motionDurationShort} ${motionEasingOut}`
+      : `opacity ${motionDurationModerate} ${motionEasingIn}, transform ${motionDurationModerate} ${motionEasingIn}`};
+  opacity: ${(props) => (props.active ? '0' : '1')};
+`;
 
-const MotionShowHide = styled(TileBase)((props: { active: boolean }) => ({
-  transition: `opacity ${motionDurationLong} ${motionEasingBase}`,
-  ...(props.active && {
-    opacity: '0',
-  }),
-}));
+const MotionShowHide = styled(TileBase)<{ active: boolean }>`
+  transition: opacity ${motionDurationLong} ${motionEasingBase};
+  opacity: ${(props) => (props.active ? '0' : '1')};
+`;
 
-const MotionExpand = styled(TileBase)((props: { active: boolean }) => ({
-  transition: props.active
-    ? `height ${motionDurationModerate} ${motionEasingBase}`
-    : `height ${motionDurationShort} ${motionEasingIn}`,
-  ...(props.active && {
-    height: '200px',
-  }),
-}));
+const MotionExpand = styled(TileBase)<{ active: boolean }>`
+  transition: ${(props) =>
+    props.active
+      ? `height ${motionDurationModerate} ${motionEasingBase}`
+      : `height ${motionDurationShort} ${motionEasingIn}`};
+  height: ${(props) => (props.active ? '200px' : 'auto')};
+`;
 
 export const StylesMotionExample = (): JSX.Element => {
   const [isMovingActive, setIsMovingActive] = useState(false);

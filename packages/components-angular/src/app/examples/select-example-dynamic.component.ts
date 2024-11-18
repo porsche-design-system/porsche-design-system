@@ -28,7 +28,7 @@ export class SelectExampleDynamicComponent {
   optionCount: number = 3;
 
   get optionIndices(): number[] {
-    return [...Array(this.optionCount).keys()];
+    return [...new Array(this.optionCount).keys()];
   }
 
   onChangeInput(e: Event) {

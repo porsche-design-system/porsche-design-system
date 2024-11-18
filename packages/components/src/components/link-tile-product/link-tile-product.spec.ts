@@ -10,7 +10,9 @@ describe('componentWillLoad', () => {
     component.host.attachShadow({ mode: 'open' });
     try {
       component.componentWillLoad();
-    } catch {}
+    } catch (e) {
+      console.error(e);
+    }
 
     expect(spy).toHaveBeenCalledWith(component.host, component.href);
   });

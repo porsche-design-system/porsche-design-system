@@ -19,7 +19,8 @@ jest.mock('react', () => ({
 describe('skipCheckForPorscheDesignSystemProviderDuringTests()', () => {
   it('should prevent usePrefix() to throw exception', () => {
     const spy = jest.spyOn(global.console, 'error').mockImplementation();
-    let error1, error2;
+    let error1;
+    let error2;
 
     try {
       render(<PButton />);

@@ -176,7 +176,7 @@ describe('this.observeBreakpointChange()', () => {
 
 describe('this.setTabElements()', () => {
   const getElements = (tag: 'a' | 'button'): HTMLElement[] =>
-    Array.from(Array(3)).map((_, i) => {
+    Array.from(new Array(3)).map((_, i) => {
       const el = document.createElement(tag);
       el.id = `${tag}-${i + 1}`;
       return el;

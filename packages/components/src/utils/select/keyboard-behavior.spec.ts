@@ -1,12 +1,12 @@
 import * as keyboardBehaviorUtils from './keyboard-behavior';
 import {
+  type Option,
   filterSelectOptions,
   getHighlightedSelectOption,
   getHighlightedSelectOptionIndex,
   getMatchingSelectOptionIndex,
   getUpdatedIndex,
   getUsableSelectOptions,
-  Option,
   setHighlightedSelectOption,
   setMatchingSelectOptionHighlighted,
   setNextSelectOptionHighlighted,
@@ -38,7 +38,7 @@ export const generateOptions = (
   }
 ): Option[] => {
   return Array.from(
-    Array(amount),
+    new Array(amount),
     (_, idx) =>
       ({
         value: values?.[idx] ? values[idx] : `Value ${idx}`,

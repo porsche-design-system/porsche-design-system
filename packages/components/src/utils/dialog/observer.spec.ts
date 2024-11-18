@@ -8,7 +8,7 @@ import * as observerUtils from './observer';
 import { expect } from '@jest/globals';
 
 describe('getIntersectionObserverStickyArea()', () => {
-  let mockObserverInstance = {
+  const mockObserverInstance = {
     observe: () => null,
     unobserve: () => null,
     disconnect: () => null,
@@ -32,7 +32,7 @@ describe('getIntersectionObserverStickyArea()', () => {
 describe('observeStickyArea()', () => {
   let scrollArea: HTMLElement;
   let stickyNode: HTMLElement;
-  let mockObserverInstance = {
+  const mockObserverInstance = {
     observe: () => null,
     unobserve: () => null,
     disconnect: () => null,

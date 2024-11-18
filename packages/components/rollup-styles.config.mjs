@@ -1,15 +1,15 @@
-import typescript from '@rollup/plugin-typescript';
+import * as fs from 'fs';
+import * as path from 'path';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
-import generatePackageJson from 'rollup-plugin-generate-package-json';
+import typescript from '@rollup/plugin-typescript';
 import { globbySync } from 'globby';
-import * as path from 'path';
-import * as fs from 'fs';
 import { pascalCase } from 'latest-change-case';
-import pkgJson from './package.json' assert { type: 'json' };
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import generatePackageJson from 'rollup-plugin-generate-package-json';
+import pkgJson from './package.json' with { type: 'json' };
 
 const outputDir = 'dist/styles';
 const input = 'src/styles-entry.ts';

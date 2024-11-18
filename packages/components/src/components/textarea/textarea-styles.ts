@@ -112,7 +112,7 @@ export const getComponentCss = (
       },
       ...(hoverMediaQuery({
         // with the media query the selector has higher priority and overrides disabled styles
-        ['textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly])']:
+        'textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly])':
           {
             borderColor: formStateHoverColor || primaryColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {

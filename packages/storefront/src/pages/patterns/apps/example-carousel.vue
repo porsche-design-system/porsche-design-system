@@ -20,7 +20,7 @@
 
   @Component
   export default class ExampleCarousel extends Vue {
-    slides = Array.from(Array(6))
+    slides = Array.from(new Array(6))
       .map((_, i) => `<div>Slide ${i + 1}</div>`)
       .join('');
     content = `

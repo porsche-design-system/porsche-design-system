@@ -1,4 +1,4 @@
-import { getThemedBackgroundHoverColor, TagColor, TagColorDeprecated } from './tag-utils';
+import { type TagColor, type TagColorDeprecated, getThemedBackgroundHoverColor } from './tag-utils';
 import type { Theme } from '../../types';
 import { getThemedColors } from '../../styles';
 

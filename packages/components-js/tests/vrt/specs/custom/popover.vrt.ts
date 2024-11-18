@@ -8,7 +8,7 @@ const component = 'popover';
 const scenario = async (page: Page, theme: Theme, withinTable: boolean = false): Promise<void> => {
   const getPopover = (direction: string, length: number = 1): string => {
     return `<p-popover direction=${direction}>
-    ${Array.from(Array(length))
+    ${Array.from(new Array(length))
       .map(() => `<div>Direction ${direction}</div>`)
       .join('\n')}
 </p-popover>`;
