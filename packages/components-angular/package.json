@@ -64,7 +64,7 @@
     "karma-coverage-istanbul-reporter": "~3.0.3",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
-    "local-web-server": "^5.3.3",
+    "local-web-server": "^5.4.0",
     "ng-packagr": "^18.1.0"
   },
   "peerDependencies": {
