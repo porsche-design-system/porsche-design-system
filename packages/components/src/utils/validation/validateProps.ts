@@ -85,13 +85,15 @@ const breakpointCustomizableTemplate =
 export const getBreakpointCustomizableStructure = <T>(
   allowedValues: Exclude<AllowedTypeKey, 'string'> | T[] | readonly T[]
 ): string => {
-  if (allowedValues !== 'boolean' && allowedValues !== 'number') {
-    allowedValues = formatArrayOutput(allowedValues)
-      .replace(/\[/g, '(') // starting inline type literal array
-      .replace(/]/g, ')[]') // ending inline type literal array
-      .replace(/,/g, ' |') as any; // replace commas with a pipe
-  }
-  return breakpointCustomizableTemplate.replace(/value/g, allowedValues as string);
+  return breakpointCustomizableTemplate.replace(
+    /value/g,
+    allowedValues !== 'boolean' && allowedValues !== 'number'
+      ? (formatArrayOutput(allowedValues)
+          .replace(/\[/g, '(') // starting inline type literal array
+          .replace(/]/g, ')[]') // ending inline type literal array
+          .replace(/,/g, ' |') as any) // replace commas with a pipe
+      : (allowedValues as string)
+  );
 };
 
 export const getAriaStructure = <T>(allowedAriaAttributes: readonly T[]): string => {

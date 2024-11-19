@@ -1,7 +1,7 @@
-import type { Popover } from './popover';
-import { attachComponentCss, isClickOutside } from '../../utils';
-import { getComponentCss } from './popover-styles';
 import type { Theme } from '../../types';
+import { attachComponentCss, isClickOutside } from '../../utils';
+import type { Popover } from './popover';
+import { getComponentCss } from './popover-styles';
 
 export const POPOVER_DIRECTIONS = ['top', 'right', 'bottom', 'left'] as const;
 export type PopoverDirection = (typeof POPOVER_DIRECTIONS)[number];
@@ -21,12 +21,13 @@ export const updatePopoverStyles = (
 ): void => {
   // Reset margin so that it can be recalculated correctly
   popover.style.margin = '0';
+  let dir = direction;
   if (!isElementWithinViewport(spacer, popover, direction)) {
-    direction = getAutoDirection(spacer, popover);
-    attachComponentCss(host, getComponentCss, direction, isNative, theme);
+    dir = getAutoDirection(spacer, popover);
+    attachComponentCss(host, getComponentCss, dir, isNative, theme);
   }
   // Set margin via inline style to make attachComponentCss cacheable
-  popover.style.margin = getPopoverMargin(spacer, popover, direction);
+  popover.style.margin = getPopoverMargin(spacer, popover, dir);
 };
 
 export const updateNativePopoverStyles = (nativePopover: HTMLElement, nativeButton: HTMLButtonElement): void => {

@@ -1,5 +1,5 @@
-import type { Options, Splide } from '@splidejs/splide';
 import { type Breakpoint, breakpoint } from '@porsche-design-system/styles';
+import type { Options, Splide } from '@splidejs/splide';
 import type { BreakpointCustomizable, HeadingSize } from '../../types';
 import {
   bulletActiveClass,
@@ -139,10 +139,10 @@ export const renderPagination = (
 ): void => {
   if (paginationEl) {
     // sanitize in case of removal of slide since activeIndex is from before splide.refresh()
-    activeIndex = activeIndex > amountOfPages - 1 ? amountOfPages - 1 : activeIndex;
+    const sanitizedActiveIndex = activeIndex > amountOfPages - 1 ? amountOfPages - 1 : activeIndex;
     paginationEl.innerHTML = Array.from(
       new Array(amountOfPages),
-      (_, i) => `<span class="bullet${i === activeIndex ? ' ' + bulletActiveClass : ''}"></span>`
+      (_, i) => `<span class="bullet${i === sanitizedActiveIndex ? ' ' + bulletActiveClass : ''}"></span>`
     ).join('');
 
     paginationEl.addEventListener('click', (e) => {
@@ -153,7 +153,7 @@ export const renderPagination = (
     });
 
     if (isInfinitePagination(amountOfPages)) {
-      updateBulletState(paginationEl, amountOfPages, activeIndex);
+      updateBulletState(paginationEl, amountOfPages, sanitizedActiveIndex);
     }
   }
 };

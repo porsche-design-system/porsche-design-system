@@ -1,5 +1,5 @@
-import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import { getHTMLElements, getTagName, hasAttribute } from '../../../utils';
+import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 
 /**
  * Handles scrolling within the list to ensure that the highlighted item is always visible.
@@ -99,9 +99,7 @@ export const getValidOptions = (options: OptionMap[]): OptionMap[] =>
 
 export const getAmountOfVisibleOptionsAndOptgroups = (options: OptionMap[]): number => {
   return options.reduce((count, { hidden, initiallyHidden, title }) => {
-    count += !hidden && !initiallyHidden ? 1 : 0;
-    count += title ? 1 : 0;
-    return count;
+    return count + (!hidden && !initiallyHidden ? 1 : 0) + (title ? 1 : 0);
   }, 0);
 };
 

@@ -142,27 +142,9 @@ export const createPaginationItems = (options: PaginationOptions): PaginationIte
 };
 
 export const getCurrentActivePage = (activePage: number, totalPages: number): number => {
-  // Obviously we can't be on a negative or 0 page.
-  if (activePage < 1) {
-    activePage = 1;
-  }
-
-  // If the user has done something like /page/99999 we want to clamp that back down.
-  if (activePage > totalPages) {
-    activePage = totalPages;
-  }
-
-  return activePage;
+  return activePage < 1 ? 1 : activePage > totalPages ? totalPages : activePage;
 };
 
 export const getTotalPages = (totalItemsCount: number, itemsPerPage: number): number => {
-  if (totalItemsCount < 1) {
-    totalItemsCount = 1;
-  }
-
-  if (itemsPerPage < 1) {
-    itemsPerPage = 1;
-  }
-
-  return Math.ceil(totalItemsCount / itemsPerPage);
+  return Math.ceil((totalItemsCount < 1 ? 1 : totalItemsCount) / (itemsPerPage < 1 ? 1 : itemsPerPage));
 };
