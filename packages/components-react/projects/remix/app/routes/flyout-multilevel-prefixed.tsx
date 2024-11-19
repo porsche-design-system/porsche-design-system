@@ -1,9 +1,5 @@
 /* Auto Generated File */
-import {
-  PFlyoutMultilevel,
-  PFlyoutMultilevelItem,
-  PorscheDesignSystemProvider,
-} from '@porsche-design-system/components-react/ssr';
+import { PFlyoutMultilevel, PFlyoutMultilevelItem, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 
 const FlyoutMultilevelPrefixedPage = (): JSX.Element => {
   return (
@@ -35,9 +31,7 @@ const FlyoutMultilevelPrefixedPage = (): JSX.Element => {
             </PFlyoutMultilevelItem>
             <PFlyoutMultilevelItem identifier="item-6" label="Some Label">
               <a href="#some-anchor">Some anchor</a>
-              <a href="#some-anchor" className="scroll-into-view">
-                Some anchor
-              </a>
+              <a href="#some-anchor" className="scroll-into-view">Some anchor</a>
             </PFlyoutMultilevelItem>
           </PFlyoutMultilevel>
         </div>

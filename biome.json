@@ -16,11 +16,15 @@
       "**/www/*",
       "**/coverage/*",
       "**/playwright-report/*",
+      "./packages/assets/cdn/*",
       "./packages/components-js/public/*",
+      "./packages/components-js/projects/jsdom-polyfill/src/lib/*",
       "./packages/components-vue/projects/vue-wrapper/src/lib/*",
       "./packages/components/src/components.d.ts",
       "./packages/components/src/types/aria-types.d.ts",
-      "./packages/components/src/styles/colors.ts"
+      "./packages/components/src/styles/colors.ts",
+      "./packages/components-react/projects/remix/app/routes/flyout-multilevel-basic.tsx",
+      "./packages/components-react/projects/remix/app/routes/flyout-multilevel-prefixed.tsx"
     ]
   },
   "formatter": {

@@ -29,9 +29,7 @@ const FlyoutMultilevelBasicPage = (): JSX.Element => {
         </PFlyoutMultilevelItem>
         <PFlyoutMultilevelItem identifier="item-6" label="Some Label">
           <a href="#some-anchor">Some anchor</a>
-          <a href="#some-anchor" className="scroll-into-view">
-            Some anchor
-          </a>
+          <a href="#some-anchor" className="scroll-into-view">Some anchor</a>
         </PFlyoutMultilevelItem>
       </PFlyoutMultilevel>
     </>
