@@ -4,12 +4,12 @@ import nodeResolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 import { globbySync } from 'globby';
-import * as path from 'path';
-import * as fs from 'fs';
+import * as path from 'node:path';
+import * as fs from 'node:fs';
 import { pascalCase } from 'latest-change-case';
 import pkgJson from './package.json' assert { type: 'json' };
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
 
 const outputDir = 'dist/styles';
 const input = 'src/styles-entry.ts';

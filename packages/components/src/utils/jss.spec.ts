@@ -11,8 +11,8 @@ import {
 } from './jss';
 import type { JssStyle, Styles } from 'jss';
 import * as globby from 'globby-legacy';
-import * as path from 'path';
-import * as fs from 'fs';
+import * as path from 'node:path';
+import * as fs from 'node:fs';
 
 describe('getCss()', () => {
   const data: { input: Styles; result: string }[] = [
