@@ -127,7 +127,7 @@
 
 <style scoped lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
-  @import '../styles/shared.styles';
+  @use '../styles/shared.styles' as *;
 
   :deep(.deprecated) {
     color: var(--theme-notification-error);

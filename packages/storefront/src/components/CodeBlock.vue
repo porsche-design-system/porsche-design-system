@@ -64,7 +64,7 @@
 
 <style scoped lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
-  @import '../styles/internal.variables';
+  @use '../styles/internal.variables' as *;
 
   .code-block {
     display: flex;

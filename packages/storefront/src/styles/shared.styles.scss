@@ -1,5 +1,5 @@
 @use '@porsche-design-system/components-js/styles' as *;
-@import './internal.variables';
+@use './internal.variables' as *;
 
 @mixin tableStyles {
   margin-top: $pds-spacing-fluid-medium;
