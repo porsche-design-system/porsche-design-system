@@ -39,14 +39,6 @@
     "tsx": "*",
     "typescript": "*"
   },
-  "eslintConfig": {
-    "extends": [
-      "next/core-web-vitals"
-    ],
-    "rules": {
-      "react/no-children-prop": "off"
-    }
-  },
   "volta": {
     "extends": "../../../../package.json"
   }

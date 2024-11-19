@@ -17,7 +17,6 @@
     "build:prepareChangelog": "tsx --tsconfig tsconfig.node.json scripts/prepareChangelog.ts",
     "build:preparePartialResults": "tsx --tsconfig tsconfig.node.json scripts/preparePartialResults.ts",
     "updateAlgolia": "tsx --tsconfig tsconfig.node.json scripts/updateAlgoliaIndex.ts",
-    "lint": "eslint -c .eslintrc.js --ext .js,.ts,.vue ./src",
     "test": "yarn test:unit && yarn test:e2e && test:a11y && yarn test:vrt",
     "pretest:unit": "yarn prebuild",
     "test:unit": "NODE_OPTIONS=--openssl-legacy-provider vue-cli-service test:unit",
