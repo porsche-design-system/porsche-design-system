@@ -1,29 +1,29 @@
-import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, Host, type JSX, Prop, Watch, h } from '@stencil/core';
+import { getSlottedAnchorStyles } from '../../styles';
 import type { PropTypes, Theme } from '../../types';
 import {
-  type BannerHeadingTag,
-  type BannerState,
-  type BannerStateDeprecated,
-  type BannerWidth,
-  BANNER_STATES,
-} from './banner-utils';
-import {
   AllowedTypes,
+  HEADING_TAGS,
+  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   consoleWarn,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasNamedSlot,
-  HEADING_TAGS,
-  THEMES,
   validateProps,
   warnIfDeprecatedPropIsUsed,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
-import { getComponentCss } from './banner-styles';
 import { getDeprecatedPropOrSlotWarningMessage } from '../../utils/log/helper';
-import { getSlottedAnchorStyles } from '../../styles';
+import { getComponentCss } from './banner-styles';
+import {
+  BANNER_STATES,
+  type BannerHeadingTag,
+  type BannerState,
+  type BannerStateDeprecated,
+  type BannerWidth,
+} from './banner-utils';
 
 const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
   open: AllowedTypes.boolean,
@@ -51,7 +51,7 @@ export class Banner {
   @Element() public host!: HTMLElement;
 
   /** If true, the banner is open. */
-  @Prop() public open: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
+  @Prop() public open: boolean = false;
 
   /** Heading of the banner. */
   @Prop() public heading?: string = '';

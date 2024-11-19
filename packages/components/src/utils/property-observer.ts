@@ -12,7 +12,6 @@ export const observeProperties = <T extends HTMLElement>(node: T, props: (keyof 
     ) {
       return result;
     } else {
-      // eslint-disable-next-line @typescript-eslint/unbound-method
       const { get, set } = descriptor;
       return {
         ...result,

@@ -1,4 +1,18 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, type JSX, Prop, State, Watch, h } from '@stencil/core';
+import type { PropTypes, SelectedAriaAttributes, Theme } from '../../../types';
+import {
+  AllowedTypes,
+  THEMES,
+  attachComponentCss,
+  getDirectChildHTMLElementOfKind,
+  getPrefixedTagNames,
+  getShadowRootHTMLElement,
+  hasPropValueChanged,
+  parseAndGetAriaAttributes,
+  setScrollLock,
+  validateProps,
+} from '../../../utils';
+import { getComponentCss } from './flyout-multilevel-styles';
 import {
   FLYOUT_MULTILEVEL_ARIA_ATTRIBUTES,
   type FlyoutMultilevelAriaAttribute,
@@ -7,20 +21,6 @@ import {
   syncFlyoutMultilevelItemsProps,
   validateActiveIdentifier,
 } from './flyout-multilevel-utils';
-import { getComponentCss } from './flyout-multilevel-styles';
-import {
-  AllowedTypes,
-  attachComponentCss,
-  getDirectChildHTMLElementOfKind,
-  getPrefixedTagNames,
-  getShadowRootHTMLElement,
-  hasPropValueChanged,
-  parseAndGetAriaAttributes,
-  setScrollLock,
-  THEMES,
-  validateProps,
-} from '../../../utils';
-import type { PropTypes, SelectedAriaAttributes, Theme } from '../../../types';
 
 const propTypes: PropTypes<typeof FlyoutMultilevel> = {
   activeIdentifier: AllowedTypes.string,
@@ -117,7 +117,6 @@ export class FlyoutMultilevel {
     return (
       <dialog
         // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
-        // eslint-disable-next-line
         /* @ts-ignore */
         inert={this.open ? null : true} // prevents focusable elements during fade-out transition
         tabIndex={-1} // dialog always has a dismiss button to be focused

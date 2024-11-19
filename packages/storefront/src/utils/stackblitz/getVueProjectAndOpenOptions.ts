@@ -1,5 +1,14 @@
-import { devDependencies, dependencies } from '../../../../components-vue/package.json';
+import { initialStyles } from '@/lib/partialResults';
 import { devDependencies as devDependenciesRoot } from '../../../../../package.json';
+import { dependencies, devDependencies } from '../../../../components-vue/package.json';
+import type { PlaygroundDir, StackBlitzProjectDependencies } from '../../models';
+import type {
+  DependencyMap,
+  ExternalDependency,
+  GetStackBlitzProjectAndOpenOptions,
+  SharedImportKey,
+} from '../../utils';
+import { convertMarkup } from '../../utils/formatting';
 import {
   convertImportPaths,
   getExternalDependencies,
@@ -7,15 +16,6 @@ import {
   isStableStorefrontReleaseOrForcedPdsVersion,
   removeSharedImport,
 } from './helper';
-import { convertMarkup } from '../../utils/formatting';
-import type {
-  DependencyMap,
-  GetStackBlitzProjectAndOpenOptions,
-  SharedImportKey,
-  ExternalDependency,
-} from '../../utils';
-import type { PlaygroundDir, StackBlitzProjectDependencies } from '../../models';
-import { initialStyles } from '@/lib/partialResults';
 
 // TODO: this entire puzzle should be refactored into an object-oriented way so that there is a clear and clean structure
 // as well as code flow, similar to our WrapperGenerator
@@ -67,7 +67,7 @@ export const getAppVue = (
   markup: string,
   isExampleMarkup: boolean,
   sharedImportKeys: SharedImportKey[],
-  pdsVersion: string // eslint-disable-line @typescript-eslint/no-unused-vars
+  pdsVersion: string
 ): string => {
   const finalMarkup = isExampleMarkup
     ? extendExampleWithConstantsAndProvider(markup, sharedImportKeys)

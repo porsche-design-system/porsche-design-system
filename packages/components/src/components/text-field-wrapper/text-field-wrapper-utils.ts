@@ -1,6 +1,6 @@
+import { borderWidthBase } from '@porsche-design-system/styles';
 import type { IconName } from '../../types';
 import { getHasConstructableStylesheetSupport, hasCounter, hasDocument, throwException } from '../../utils';
-import { borderWidthBase } from '@porsche-design-system/styles';
 import type { FormState } from '../../utils/form/form-state';
 
 export const UNIT_POSITIONS = ['prefix', 'suffix'] as const;
@@ -50,7 +50,6 @@ export const dispatchInputEvent = (el: HTMLInputElement): void => {
   el.dispatchEvent(new Event('input', { bubbles: true }));
 };
 
-// eslint-disable-next-line no-underscore-dangle
 export const _hasShowPickerSupport = (): boolean => {
   return (
     hasDocument &&
