@@ -23,7 +23,7 @@ const generateStylesEntryFile = () => {
     .map((utilPath) => {
       const isCommonComponent = utilPath.includes('/components/common/');
       const styleExport = isCommonComponent
-        ? `*`
+        ? '*'
         : `{ getComponentCss as get${pascalCase(/([-a-z]+)-styles\.ts/.exec(utilPath)[1])}Css }`;
       const fromPath = `./components${utilPath.replace(componentsDir, '').replace(/\.ts$/, '')}`;
 

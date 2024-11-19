@@ -207,7 +207,7 @@ describe('getCss()', () => {
     },
   ];
   it.each(data.map(({ input, result }) => [input, result]))(
-    `should correctly transform %j`,
+    'should correctly transform %j',
     (input: Styles, result: string) => {
       expect(getCss(input)).toBe(result);
     }

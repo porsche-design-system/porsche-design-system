@@ -97,7 +97,7 @@ describe('if global styles are there (link)', () => {
 
 describe('if global styles are there (inline style)', () => {
   beforeEach(() => {
-    document.head.innerHTML = `<style data-pds-font-face-styles></style>`;
+    document.head.innerHTML = '<style data-pds-font-face-styles></style>';
   });
 
   describe('for ROLLUP_REPLACE_IS_STAGING="production"', () => {
