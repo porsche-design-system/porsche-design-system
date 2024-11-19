@@ -64,7 +64,7 @@ export const getItemMaxWidth = (host: HTMLElement): number => {
       tempDiv.prepend(tempLabel);
     }
 
-    return parseFloat(getComputedStyle(tempDiv).width);
+    return Number.parseFloat(getComputedStyle(tempDiv).width);
   });
 
   tempDiv.remove();

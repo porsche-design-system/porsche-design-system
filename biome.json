@@ -26,7 +26,7 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": false,
+      "recommended": true,
       "complexity": {
         "noExtraBooleanCast": "error",
         "noMultipleSpacesInRegularExpressionLiterals": "error",
@@ -70,7 +70,8 @@
         "useAsConstAssertion": "error",
         "useBlockStatements": "off",
         "useConsistentBuiltinInstantiation": "error",
-        "useSingleVarDeclarator": "error"
+        "useSingleVarDeclarator": "error",
+        "noInferrableTypes": "off"
       },
       "suspicious": {
         "noAsyncPromiseExecutor": "error",

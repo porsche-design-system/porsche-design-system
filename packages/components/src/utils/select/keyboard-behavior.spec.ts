@@ -6,7 +6,7 @@ import {
   getMatchingSelectOptionIndex,
   getUpdatedIndex,
   getUsableSelectOptions,
-  Option,
+  type Option,
   setHighlightedSelectOption,
   setMatchingSelectOptionHighlighted,
   setNextSelectOptionHighlighted,

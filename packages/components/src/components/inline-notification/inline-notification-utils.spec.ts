@@ -1,6 +1,6 @@
 import {
   INLINE_NOTIFICATION_STATES,
-  InlineNotificationState,
+  type InlineNotificationState,
   getInlineNotificationIconName,
   getContentAriaAttributes,
 } from './inline-notification-utils';

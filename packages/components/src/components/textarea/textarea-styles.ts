@@ -1,5 +1,5 @@
 import type { Styles } from 'jss';
-import { type BreakpointCustomizable, type Theme } from '../../types';
+import type { BreakpointCustomizable, Theme } from '../../types';
 import { getCss } from '../../utils';
 import {
   addImportantToEachRule,
@@ -14,7 +14,7 @@ import {
 } from '../../styles';
 import { formElementPaddingHorizontal, getUnitCounterJssStyle } from '../../styles/form-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import { type FormState } from '../../utils/form/form-state';
+import type { FormState } from '../../utils/form/form-state';
 import {
   borderRadiusSmall,
   borderWidthBase,

@@ -12,6 +12,5 @@ export function getDirectChildHTMLElements(element: HTMLElement, selector: strin
   // therefore we got a workaround, so it works nicely when consumed from jsdom-polyfill package
   return transformSelectorToDirectChildSelector(selector)
     .split(',')
-    .map((sel) => getHTMLElements(element, sel))
-    .flat(); // might contain duplicates
+    .flatMap((sel) => getHTMLElements(element, sel)); // might contain duplicates
 }

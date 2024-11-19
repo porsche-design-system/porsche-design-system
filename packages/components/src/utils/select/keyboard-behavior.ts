@@ -33,7 +33,7 @@ const PAGE_UP_DOWN_STEP_AMOUNT: number = 10;
  */
 export const handleSelectDropdownScroll = (scrollElement: HTMLElement, element: HTMLElement): void => {
   const { maxHeight } = getComputedStyle(scrollElement);
-  const hostElementHeight = parseInt(maxHeight, 10);
+  const hostElementHeight = Number.parseInt(maxHeight, 10);
   // TODO: If dropdown was closed this might get called too early before the list is opened which causes the scrollHeight to be 0
   if (scrollElement.scrollHeight > hostElementHeight) {
     element.scrollIntoView({

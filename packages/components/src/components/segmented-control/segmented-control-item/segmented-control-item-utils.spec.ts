@@ -1,5 +1,5 @@
 import { getSegmentedControlItemAriaAttributes, getIconColor } from './segmented-control-item-utils';
-import { IconColor } from '../../icon/icon-utils';
+import type { IconColor } from '../../icon/icon-utils';
 
 describe('getButtonAttributes()', () => {
   it.each<Parameters<typeof getSegmentedControlItemAriaAttributes>>([

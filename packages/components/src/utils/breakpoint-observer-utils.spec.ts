@@ -62,14 +62,13 @@ describe('getCurrentMatchingBreakpointValue()', () => {
 
   // merge it together so that we got a test case for each value on every breakpoint
   const data: [BreakpointCustomizable<Breakpoint>, Breakpoint, Breakpoint][] = breakpointCustomizableValues
-    .map((values, i) =>
+    .flatMap((values, i) =>
       breakpoints.map<[BreakpointCustomizable<Breakpoint>, Breakpoint, Breakpoint]>((bp, j) => [
         values,
         bp,
         results[i][j],
       ])
-    )
-    .flat();
+    );
 
   it.each<[BreakpointCustomizable<Breakpoint>, Breakpoint, Breakpoint]>(data)(
     'should for breakpointCustomizable: %s and breakpoint: %s return: %s',
