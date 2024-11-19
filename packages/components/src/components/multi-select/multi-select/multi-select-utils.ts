@@ -169,7 +169,7 @@ export const updateHighlightedOption = (
  */
 export const handleDropdownScroll = (scrollElement: HTMLElement, element: HTMLElement): void => {
   const { maxHeight } = getComputedStyle(scrollElement);
-  const hostElementHeight = parseInt(maxHeight, 10);
+  const hostElementHeight = Number.parseInt(maxHeight, 10);
   if (scrollElement.scrollHeight > hostElementHeight) {
     element.scrollIntoView();
   }

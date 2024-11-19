@@ -1,8 +1,8 @@
 import { type Breakpoint, breakpoints } from '@porsche-design-system/styles';
+import { consoleError, getTagNameWithoutPrefix } from '..';
 import type { AriaAttributes, Class, FunctionPropertyNames } from '../../types';
 import { type BreakpointValues, parseJSON } from '../breakpoint-customizable';
 import { parseJSONAttribute } from '../json';
-import { consoleError, getTagNameWithoutPrefix } from '..';
 
 export type ValidatorFunction = (propName: string, propValue: any) => ValidationError;
 type ValidatorFunctionArrayCreator = (allowedType: ValidatorFunction) => ValidatorFunction;
@@ -10,9 +10,11 @@ type ValidatorFunctionOneOfCreator = <T>(allowedValues: T[] | readonly T[]) => V
 type ValidatorFunctionBreakpointCustomizableCreator = <T>(
   allowedValues: Exclude<AllowedTypeKey, 'string'> | T[] | readonly T[]
 ) => ValidatorFunction;
-type ValidatorFunctionShapeCreator = <T>(allowedValues: {
-  [key in keyof T]: ValidatorFunctionOrCreator;
-}) => ValidatorFunction;
+type ValidatorFunctionShapeCreator = <T>(
+  allowedValues: {
+    [key in keyof T]: ValidatorFunctionOrCreator;
+  }
+) => ValidatorFunction;
 type ValidatorFunctionOrCreator =
   | ValidatorFunction
   | ValidatorFunctionOneOfCreator
@@ -59,6 +61,7 @@ export const printErrorMessage = ({
 };
 
 export const isValueNotOfType = (propValue: any, propType: string): boolean => {
+  // biome-ignore lint/suspicious/useValidTypeof: the comparison works because propValue has primitive values only
   return propValue !== undefined && typeof propValue !== propType;
 };
 

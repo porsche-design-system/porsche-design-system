@@ -4,7 +4,7 @@ import {
   spacingStaticXSmall,
   textXSmallStyle,
 } from '@porsche-design-system/styles';
-import { type Theme } from '../../types';
+import type { Theme } from '../../types';
 import { getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,

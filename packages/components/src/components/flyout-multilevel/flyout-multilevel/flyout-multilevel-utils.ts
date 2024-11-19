@@ -1,7 +1,7 @@
 import { consoleError, getTagNameWithoutPrefix } from '../../../utils';
-import { type FlyoutMultilevelItemInternalHTMLProps } from '../flyout-multilevel-item/flyout-multilevel-item-utils';
+import type { FlyoutMultilevelItemInternalHTMLProps } from '../flyout-multilevel-item/flyout-multilevel-item-utils';
 import { forceUpdate } from '@stencil/core';
-import { type Class, type Theme } from '../../../types';
+import type { Class, Theme } from '../../../types';
 
 export const FLYOUT_MULTILEVEL_ARIA_ATTRIBUTES = ['aria-label'] as const;
 export type FlyoutMultilevelAriaAttribute = (typeof FLYOUT_MULTILEVEL_ARIA_ATTRIBUTES)[number];

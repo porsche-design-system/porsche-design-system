@@ -5,7 +5,7 @@ describe('determineDropdownDirection()', () => {
     const host = document.createElement('p-select-wrapper-dropdown');
     host.attachShadow({ mode: 'open' });
 
-    const options = Array.from(Array(20), (_, idx) => {
+    const options = Array.from(new Array(20), (_, idx) => {
       const option = document.createElement('div');
       option.textContent = `Value ${idx + 1}`;
       option.classList.add('option');

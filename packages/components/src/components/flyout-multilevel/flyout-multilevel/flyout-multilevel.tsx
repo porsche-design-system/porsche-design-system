@@ -20,7 +20,7 @@ import {
   THEMES,
   validateProps,
 } from '../../../utils';
-import { type PropTypes, type SelectedAriaAttributes, type Theme } from '../../../types';
+import type { PropTypes, SelectedAriaAttributes, Theme } from '../../../types';
 
 const propTypes: PropTypes<typeof FlyoutMultilevel> = {
   activeIdentifier: AllowedTypes.string,

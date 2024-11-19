@@ -1,32 +1,11 @@
+import { gridGap, motionEasingBase } from '@porsche-design-system/styles';
+import { Splide } from '@splidejs/splide';
+import { Component, Element, Event, type EventEmitter, Host, Prop, State, Watch, h } from '@stencil/core';
+import { getSlottedAnchorStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme, ValidatorFunction } from '../../types';
 import {
-  type CarouselAlignHeader,
-  type CarouselAlignHeaderDeprecated,
-  type CarouselAriaAttribute,
-  type CarouselHeadingSize,
-  type CarouselInternationalization,
-  type CarouselUpdateEventDetail,
-  type CarouselWidth,
-  type CarouselGradientColor,
-  CAROUSEL_ALIGN_HEADERS,
-  CAROUSEL_ARIA_ATTRIBUTES,
-  CAROUSEL_WIDTHS,
-  CAROUSEL_GRADIENT_COLORS,
-  getAmountOfPages,
-  getSlidesAndAddAttributes,
-  getSplideBreakpoints,
-  getLangDirection,
-  isInfinitePagination,
-  renderPagination,
-  slideNext,
-  slidePrev,
-  updatePagination,
-  updatePrevNextButtons,
-} from './carousel-utils';
-import { Component, Element, Event, type EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
-import { Splide } from '@splidejs/splide';
-import {
   AllowedTypes,
+  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getCurrentMatchingBreakpointValue,
@@ -40,7 +19,6 @@ import {
   parseAndGetAriaAttributes,
   parseJSON,
   parseJSONAttribute,
-  THEMES,
   unobserveBreakpointChange,
   unobserveChildren,
   validateProps,
@@ -48,8 +26,30 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
-import { gridGap, motionEasingBase } from '@porsche-design-system/styles';
-import { getSlottedAnchorStyles } from '../../styles';
+import {
+  CAROUSEL_ALIGN_HEADERS,
+  CAROUSEL_ARIA_ATTRIBUTES,
+  CAROUSEL_GRADIENT_COLORS,
+  CAROUSEL_WIDTHS,
+  type CarouselAlignHeader,
+  type CarouselAlignHeaderDeprecated,
+  type CarouselAriaAttribute,
+  type CarouselGradientColor,
+  type CarouselHeadingSize,
+  type CarouselInternationalization,
+  type CarouselUpdateEventDetail,
+  type CarouselWidth,
+  getAmountOfPages,
+  getLangDirection,
+  getSlidesAndAddAttributes,
+  getSplideBreakpoints,
+  isInfinitePagination,
+  renderPagination,
+  slideNext,
+  slidePrev,
+  updatePagination,
+  updatePrevNextButtons,
+} from './carousel-utils';
 
 type AlignHeaderDeprecationMapType = Record<
   CarouselAlignHeaderDeprecated,
@@ -233,7 +233,7 @@ export class Carousel {
       drag: this.hasNavigation,
       perMove: 1,
       mediaQuery: 'min',
-      speed: parseFloat(carouselTransitionDuration) * 1000,
+      speed: Number.parseFloat(carouselTransitionDuration) * 1000,
       gap: gridGap,
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
       breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number> | 'auto', string>), // eslint-disable-line @typescript-eslint/no-redundant-type-constituents

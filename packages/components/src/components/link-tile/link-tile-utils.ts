@@ -12,9 +12,9 @@ import {
   TILE_SIZES,
   TILE_WEIGHTS,
 } from '../../utils';
-import { type PropTypes } from '../../utils/validation/validateProps';
-import { type ButtonTile } from '../button-tile/button-tile';
-import { type LinkTile } from './link-tile';
+import type { PropTypes } from '../../utils/validation/validateProps';
+import type { ButtonTile } from '../button-tile/button-tile';
+import type { LinkTile } from './link-tile';
 
 export type LinkTileTarget = LinkTarget;
 export type LinkTileAriaAttribute = LinkAriaAttribute;
