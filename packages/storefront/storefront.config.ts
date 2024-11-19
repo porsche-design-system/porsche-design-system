@@ -149,7 +149,7 @@ export const config: StorefrontConfig = {
       Usage: [() => import('@/../../components/src/components/flyout-multilevel/flyout-multilevel.usage.md')],
       Props: [
         // biome-ignore format: should not be formatted, otherwise storefront unit test might not work
-        () =>  import('@/../../components/src/components/flyout-multilevel/flyout-multilevel/flyout-multilevel.props.md'),
+        () => import('@/../../components/src/components/flyout-multilevel/flyout-multilevel/flyout-multilevel.props.md'),
         // biome-ignore format: should not be formatted, otherwise storefront unit test might not work
         () => import('@/../../components/src/components/flyout-multilevel/flyout-multilevel-item/flyout-multilevel-item.props.md'),
       ],
@@ -200,11 +200,10 @@ export const config: StorefrontConfig = {
       Usage: [() => import('@/../../components/src/components/link-tile/link-tile.usage.md')],
       Props: [() => import('@/../../components/src/components/link-tile/link-tile.props.md')],
     },
-    // prettier-ignore
     'Link Tile Model Signature': {
       Examples: [
-        () =>
-          import('@/../../components/src/components/link-tile-model-signature/link-tile-model-signature.examples.md'),
+        // biome-ignore format: should not be formatted, otherwise storefront unit test might not work
+        () => import('@/../../components/src/components/link-tile-model-signature/link-tile-model-signature.examples.md'),
       ],
       Usage: [
         () => import('@/../../components/src/components/link-tile-model-signature/link-tile-model-signature.usage.md'),
@@ -257,7 +256,6 @@ export const config: StorefrontConfig = {
       Props: [() => import('@/../../components/src/components/popover/popover.props.md')],
     },
     'Radio Button Wrapper': {
-      // prettier-ignore
       Examples: [
         () => import('@/../../components/src/components/radio-button-wrapper/radio-button-wrapper.examples.md'),
       ],
@@ -272,14 +270,11 @@ export const config: StorefrontConfig = {
     'Segmented Control': {
       Examples: [() => import('@/../../components/src/components/segmented-control/segmented-control.examples.md')],
       Usage: [() => import('@/../../components/src/components/segmented-control/segmented-control.usage.md')],
-      // prettier-ignore
       Props: [
-        () =>
-          import('@/../../components/src/components/segmented-control/segmented-control/segmented-control.props.md'),
-        () =>
-          import(
-            '@/../../components/src/components/segmented-control/segmented-control-item/segmented-control-item.props.md'
-          ),
+        // biome-ignore format: should not be formatted, otherwise storefront unit test might not work
+        () => import('@/../../components/src/components/segmented-control/segmented-control/segmented-control.props.md'),
+        // biome-ignore format: should not be formatted, otherwise storefront unit test might not work
+        () => import('@/../../components/src/components/segmented-control/segmented-control-item/segmented-control-item.props.md'),
       ],
     },
     Select: {
@@ -291,7 +286,6 @@ export const config: StorefrontConfig = {
       ],
     },
     'Select Wrapper': {
-      // prettier-ignore
       Examples: [
         () => import('@/../../components/src/components/select-wrapper/select-wrapper/select-wrapper.examples.md'),
       ],
@@ -303,25 +297,20 @@ export const config: StorefrontConfig = {
       Usage: [() => import('@/../../components/src/components/spinner/spinner.usage.md')],
       Props: [() => import('@/../../components/src/components/spinner/spinner.props.md')],
     },
-    // prettier-ignore
     'Stepper Horizontal': {
       Examples: [
-        () =>
-          import(
-            '@/../../components/src/components/stepper-horizontal/stepper-horizontal/stepper-horizontal.examples.md'
-          ),
+        // biome-ignore format: should not be formatted, otherwise storefront unit test might not work
+        () => import('@/../../components/src/components/stepper-horizontal/stepper-horizontal/stepper-horizontal.examples.md'),
       ],
       Usage: [
-        () =>
-          import('@/../../components/src/components/stepper-horizontal/stepper-horizontal/stepper-horizontal.usage.md'),
+        // biome-ignore format: should not be formatted, otherwise storefront unit test might not work
+        () => import('@/../../components/src/components/stepper-horizontal/stepper-horizontal/stepper-horizontal.usage.md'),
       ],
       Props: [
-        () =>
-          import('@/../../components/src/components/stepper-horizontal/stepper-horizontal/stepper-horizontal.props.md'),
-        () =>
-          import(
-            '@/../../components/src/components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item.props.md'
-          ),
+        // biome-ignore format: should not be formatted, otherwise storefront unit test might not work
+        () => import('@/../../components/src/components/stepper-horizontal/stepper-horizontal/stepper-horizontal.props.md'),
+        // biome-ignore format: should not be formatted, otherwise storefront unit test might not work
+        () => import('@/../../components/src/components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item.props.md'),
       ],
     },
     Switch: {
