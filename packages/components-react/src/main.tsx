@@ -5,8 +5,7 @@ import { componentsReady } from '@porsche-design-system/components-react';
 import '@porsche-design-system/shared/css/styles.css';
 import { App } from './App';
 
-const root = createRoot(document.getElementById('root')!);
-root.render(
+createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Router>
       <App />

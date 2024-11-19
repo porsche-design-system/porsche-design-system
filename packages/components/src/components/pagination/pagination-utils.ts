@@ -80,7 +80,7 @@ const createPageFunctionFactory = ({ activePage }: PaginationOptions): ((pageNum
 };
 
 export const createRange = (start: number, end: number): number[] =>
-  Array.from(Array(end - start + 1), (_, i) => i + start);
+  Array.from(new Array(end - start + 1), (_, i) => i + start);
 
 export const createPaginationItems = (options: PaginationOptions): PaginationItem[] => {
   const { pageTotal, activePage, showLastPage } = options;

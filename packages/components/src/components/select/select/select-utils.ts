@@ -1,4 +1,4 @@
-import { type FormState } from '../../../utils/form/form-state';
+import type { FormState } from '../../../utils/form/form-state';
 import {
   consoleWarn,
   determineDropdownDirection,
