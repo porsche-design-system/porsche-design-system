@@ -1,6 +1,8 @@
 import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import {
   type DropdownInteractionType,
+  type OptgroupOptionMap,
+  type OptionMap,
   getAmountOfVisibleOptionsAndOptgroups,
   getDropdownVisibility,
   getHighlightedOptionMapIndex,
@@ -12,8 +14,6 @@ import {
   getSelectedOptionMapIndex,
   getValidOptions,
   hasFilterResults,
-  type OptgroupOptionMap,
-  type OptionMap,
   resetFilteredOptionMaps,
   resetHighlightedToSelectedOptionMaps,
   setFilteredOptionMaps,
@@ -44,7 +44,7 @@ type GenerateOptionMapsOptions = {
   optgroupOptions?: OptgroupOptionMap;
 };
 
-export const generateOptionMaps = (props?: GenerateOptionMapsOptions): OptionMap[] => {
+const generateOptionMaps = (props?: GenerateOptionMapsOptions): OptionMap[] => {
   const {
     amount = 4,
     selectedIndex,
@@ -71,7 +71,7 @@ export const generateOptionMaps = (props?: GenerateOptionMapsOptions): OptionMap
   }));
 };
 
-export const mapValuesToBeBetterFilterable = (options: OptionMap[]): OptionMap[] =>
+const mapValuesToBeBetterFilterable = (options: OptionMap[]): OptionMap[] =>
   options.map((item, idx) => ({
     ...item,
     value: idx < 4 ? `${['First', 'Second', 'Third', 'Fourth'][idx]} Value` : item.value,

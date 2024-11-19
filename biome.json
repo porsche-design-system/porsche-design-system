@@ -173,7 +173,6 @@
         "useValidTypeof": "error",
         "noAssignInExpressions": "off",
         "noArrayIndexKey": "off",
-        "noExportsInTest": "off",
         "noImplicitAnyLet": "off",
         "noConfusingVoidType": "off"
       }
