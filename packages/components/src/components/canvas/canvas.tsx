@@ -93,14 +93,14 @@ export class Canvas {
         <div class="root">
           <header class="header">
             <div class="blur">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
+              <div />
+              <div />
+              <div />
+              <div />
+              <div />
+              <div />
+              <div />
+              <div />
             </div>
             <div class="header__area header__area--start">
               {!this.sidebarStartOpen && (

@@ -137,7 +137,6 @@
         "useConsistentBuiltinInstantiation": "error",
         "useSingleVarDeclarator": "error",
         "noInferrableTypes": "off",
-        "useSelfClosingElements": "off",
         "noParameterAssign": "off",
         "useNodejsImportProtocol": "off",
         "noUselessElse": "off",
