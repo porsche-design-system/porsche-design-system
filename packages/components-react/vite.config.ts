@@ -2,7 +2,6 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import * as partials from '@porsche-design-system/components-react/partials';
-import path from "path";
 
 // https://vite.dev/config/
 export default defineConfig({
