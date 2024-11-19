@@ -7,12 +7,12 @@ import {
   throwIfParentIsNotOfKind,
   validateProps,
 } from '../../../utils';
-import { type PropTypes, type Theme } from '../../../types';
+import type { PropTypes, Theme } from '../../../types';
 import {
   type FlyoutMultilevelUpdateEventDetail,
   INTERNAL_UPDATE_EVENT_NAME,
 } from '../flyout-multilevel/flyout-multilevel-utils';
-import { type FlyoutMultilevelItemInternalHTMLProps } from './flyout-multilevel-item-utils';
+import type { FlyoutMultilevelItemInternalHTMLProps } from './flyout-multilevel-item-utils';
 
 const propTypes: PropTypes<typeof FlyoutMultilevelItem> = {
   identifier: AllowedTypes.string,

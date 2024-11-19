@@ -1,5 +1,5 @@
 import { Component, Element, forceUpdate, h, type JSX, Prop, Watch } from '@stencil/core';
-import { type BreakpointCustomizable, type PropTypes, type Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
   applyConstructableStylesheetStyles,
@@ -18,7 +18,7 @@ import {
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
-import { type TextareaWrapperState } from './textarea-wrapper-utils';
+import type { TextareaWrapperState } from './textarea-wrapper-utils';
 import { getComponentCss } from './textarea-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
 import { Label } from '../common/label/label';

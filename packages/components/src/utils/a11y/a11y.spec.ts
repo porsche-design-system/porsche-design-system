@@ -1,5 +1,5 @@
 import * as a11yUtils from './a11y';
-import { parseAndGetAriaAttributes, setAriaAttributes, SetAriaAttributesOptions } from './a11y';
+import { parseAndGetAriaAttributes, setAriaAttributes, type SetAriaAttributesOptions } from './a11y';
 import * as jsonUtils from '../json';
 import * as setAttributeUtils from '../dom/setAttribute';
 import * as removeAttributeUtils from '../dom/removeAttribute';
