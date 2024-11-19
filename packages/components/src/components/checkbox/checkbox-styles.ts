@@ -1,5 +1,5 @@
-import { type BreakpointCustomizable, type Theme } from '../../types';
-import { type FormState } from '../../utils/form/form-state';
+import type { BreakpointCustomizable, Theme } from '../../types';
+import type { FormState } from '../../utils/form/form-state';
 import { getCss, isDisabledOrLoading, isHighContrastMode, supportsChromiumMediaQuery } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
 import { escapeHashCharacter } from '../../utils/svg/escapeHashCharacter';

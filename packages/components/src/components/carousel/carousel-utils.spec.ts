@@ -13,7 +13,7 @@ import {
   updatePrevNextButtons,
 } from './carousel-utils';
 import type { Splide } from '@splidejs/splide';
-import { ButtonPure } from '../button-pure/button-pure';
+import type { ButtonPure } from '../button-pure/button-pure';
 
 describe('getSplideBreakpoints()', () => {
   it('should return correct result for flat BreakpointCustomizable parameter', () => {

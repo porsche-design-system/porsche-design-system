@@ -444,7 +444,7 @@ export class MultiSelect {
         e.preventDefault();
         this.cycleDropdown('down');
         break;
-      case 'Enter':
+      case 'Enter': {
         const highlightedOption = getHighlightedOption(this.multiSelectOptions);
         if (highlightedOption) {
           highlightedOption.selected = !highlightedOption.selected;
@@ -463,6 +463,7 @@ export class MultiSelect {
           }
         }
         break;
+      }
       case 'Escape':
         this.isOpen = false;
         resetHighlightedOptions(this.multiSelectOptions);

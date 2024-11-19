@@ -1,6 +1,6 @@
 import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import {
-  DropdownInteractionType,
+  type DropdownInteractionType,
   getAmountOfVisibleOptionsAndOptgroups,
   getDropdownVisibility,
   getHighlightedOptionMapIndex,
@@ -12,8 +12,8 @@ import {
   getSelectedOptionMapIndex,
   getValidOptions,
   hasFilterResults,
-  OptgroupOptionMap,
-  OptionMap,
+  type OptgroupOptionMap,
+  type OptionMap,
   resetFilteredOptionMaps,
   resetHighlightedToSelectedOptionMaps,
   setFilteredOptionMaps,
@@ -57,7 +57,7 @@ export const generateOptionMaps = (props?: GenerateOptionMapsOptions): OptionMap
     optgroupOptions,
   } = props || {};
 
-  return Array.from(Array(amount)).map<OptionMap>((_, idx) => ({
+  return Array.from(new Array(amount)).map<OptionMap>((_, idx) => ({
     ...baseOptionMap,
     value: `Value ${idx + 1}`,
     ...(selectedIndex === idx && { selected: true, highlighted: true }),

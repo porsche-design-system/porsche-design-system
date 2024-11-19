@@ -9,7 +9,7 @@ import { getHTMLElements, getTagName, hasAttribute } from '../../../utils';
  */
 export const handleScroll = (ul: HTMLElement, highlightedIndex: number): void => {
   const { maxHeight } = getComputedStyle(ul);
-  const hostElementHeight = parseInt(maxHeight, 10);
+  const hostElementHeight = Number.parseInt(maxHeight, 10);
   if (ul.scrollHeight > hostElementHeight) {
     const highlightedNode = getHTMLElements(ul, 'li')[highlightedIndex];
 

@@ -2,6 +2,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { createRequire } from 'node:module';
 import { globbySync } from 'globby';
+import { test, expect, describe } from 'vitest';
 
 const nodeRequire = createRequire(import.meta.url);
 
@@ -10,7 +11,7 @@ describe('package content', () => {
   const componentsReactPackageDir = path.resolve(componentsReactFilePath, '../../ssr');
   const componentsReactFilePaths = globbySync(`${componentsReactPackageDir}/**/*.{js,mjs,cjs}`);
 
-  it.each(
+  test.each(
     componentsReactFilePaths.map((filePath) => [
       filePath.replace(componentsReactPackageDir, 'dist/react-wrapper/ssr'),
       filePath,
