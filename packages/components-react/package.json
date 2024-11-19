@@ -23,7 +23,7 @@
     "test:unit:uxpin-wrapper": "yarn --cwd ./projects/uxpin-wrapper test:unit",
     "test:e2e": "yarn build-app && playwright test --config=tests/e2e/config/playwright.config.ts",
     "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
-    "test:smoke": "NODE_OPTIONS=--experimental-vm-modules jest --colors -c tests/smoke/config/jest.config.js",
+    "test:smoke": "vitest --config tests/smoke/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist && yarn --cwd projects/nextjs clean:build && yarn --cwd projects/remix clean:build && yarn --cwd projects/uxpin-wrapper clean:build"
   },
   "dependencies": {
