@@ -52,7 +52,6 @@ const isDesignSystemReady = (): Promise<void> => {
     const promise: Promise<void> = new Promise((resolve) => (promiseResolve = resolve));
 
     const proxyHandler = {
-      // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
       set(_: any, prop: string, value: { isReady: () => Promise<void> }) {
         if (prop === ROLLUP_REPLACE_VERSION) {
           value.isReady().then(promiseResolve);
@@ -73,7 +72,7 @@ const allComponentsLoaded = (el: HTMLElement, resolve: PromiseResolve): void => 
   const readyPromises = collectAllComponentOnReadyPromises(el);
   Promise.all(readyPromises)
     .then((proms) => resolve(proms.length))
-    .catch((err) => console.error('[Porsche Design System]', err)); // eslint-disable-line no-console
+    .catch((err) => console.error('[Porsche Design System]', err));
 };
 
 const collectAllComponentOnReadyPromises = (el: HTMLElement): Promise<HostElement>[] => {

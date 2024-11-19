@@ -14,7 +14,7 @@ export type HeadlineVariantType = (typeof HEADLINE_VARIANTS)[number];
 
 type HeadlineVariantCustom = Exclude<BreakpointCustomizable<TextSize>, TextSize>;
 
-export type HeadlineVariant = HeadlineVariantType | HeadlineVariantCustom | Extract<TextSize, 'inherit'>; // eslint-disable-line @typescript-eslint/no-redundant-type-constituents
+export type HeadlineVariant = HeadlineVariantType | HeadlineVariantCustom | Extract<TextSize, 'inherit'>;
 
 export const HEADLINE_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 export type HeadlineTag = (typeof HEADLINE_TAGS)[number];

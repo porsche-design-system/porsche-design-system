@@ -15,7 +15,6 @@
     "build:typings": "DEST=./dist/react-wrapper && SRC=$DEST/esm && mv $SRC/jsdom-polyfill/index.d.ts $DEST/jsdom-polyfill/index.d.ts && rm -rf $SRC/jsdom-polyfill && mv $SRC/partials/index.d.ts $DEST/partials/index.d.ts && rm -rf $SRC/partials && mv $SRC/styles/index.d.ts $DEST/styles/esm/index.d.ts && rm -rf $SRC/styles && mv $SRC/testing/index.d.ts $DEST/testing/index.d.ts && rm -rf $SRC/testing",
     "build:ag-grid": "TARGET=./dist/react-wrapper/ag-grid && rm -rf $TARGET && cp -r ../utilities/projects/ag-grid/dist $TARGET",
     "build:uxpin-wrapper": "yarn --cwd ./projects/uxpin-wrapper build",
-    "lint": "eslint 'src/**/*.{ts,tsx}'",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
     "test:unit": "yarn test:unit:react-wrapper && yarn test:unit:react-ssr-wrapper && yarn test:unit:uxpin-wrapper",
     "test:unit:react-wrapper": "jest --colors -c projects/react-wrapper/tests/unit/config/jest.config.js",
@@ -57,26 +56,9 @@
     "globby": "*",
     "typescript": "*"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ],
-    "rules": {
-      "jsx-a11y/anchor-is-valid": "off"
-    }
-  },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "production": [">0.2%", "not dead", "not op_mini all"],
+    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
   },
   "volta": {
     "extends": "../../package.json"

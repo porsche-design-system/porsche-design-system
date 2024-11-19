@@ -1,5 +1,5 @@
-import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
-import { getComponentCss } from './flyout-multilevel-item-styles';
+import { Component, Element, Host, type JSX, Prop, h } from '@stencil/core';
+import type { PropTypes, Theme } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -7,11 +7,11 @@ import {
   throwIfParentIsNotOfKind,
   validateProps,
 } from '../../../utils';
-import type { PropTypes, Theme } from '../../../types';
 import {
   type FlyoutMultilevelUpdateEventDetail,
   INTERNAL_UPDATE_EVENT_NAME,
 } from '../flyout-multilevel/flyout-multilevel-utils';
+import { getComponentCss } from './flyout-multilevel-item-styles';
 import type { FlyoutMultilevelItemInternalHTMLProps } from './flyout-multilevel-item-utils';
 
 const propTypes: PropTypes<typeof FlyoutMultilevelItem> = {
@@ -74,7 +74,6 @@ export class FlyoutMultilevelItem {
         <div
           class="scroller"
           // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
-          // eslint-disable-next-line
           /* @ts-ignore */
           inert={this.open ? null : true} // prevents focusable elements during fade-out transition
         >

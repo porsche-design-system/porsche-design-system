@@ -1,26 +1,26 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, type JSX, Prop, h } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
+  THEMES,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
   parseJSONAttribute,
-  THEMES,
   unobserveBreakpointChange,
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import { getComponentCss } from './pagination-styles';
 import {
+  ItemType,
   type PaginationInternationalization,
   type PaginationMaxNumberOfPageLinks,
   type PaginationUpdateEventDetail,
   createPaginationItems,
   getCurrentActivePage,
   getTotalPages,
-  ItemType,
 } from './pagination-utils';
-import { getComponentCss } from './pagination-styles';
 
 const propTypes: Omit<PropTypes<typeof Pagination>, 'maxNumberOfPageLinks'> = {
   totalItemsCount: AllowedTypes.number,
@@ -51,10 +51,10 @@ export class Pagination {
   @Element() public host!: HTMLElement;
 
   /** The total count of items. */
-  @Prop() public totalItemsCount: number = 1; // eslint-disable-line @typescript-eslint/no-inferrable-types
+  @Prop() public totalItemsCount: number = 1;
 
   /** The total count of items which should be shown per page.  */
-  @Prop() public itemsPerPage: number = 1; // eslint-disable-line @typescript-eslint/no-inferrable-types
+  @Prop() public itemsPerPage: number = 1;
 
   /** Index of the currently active page. */
   @Prop({ mutable: true }) public activePage?: number = 1;

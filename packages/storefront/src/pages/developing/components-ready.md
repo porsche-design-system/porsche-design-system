@@ -136,7 +136,7 @@ const whenDefined = async (el: HTMLElement = document.body): Promise<number> => 
     // return the number of elements that were undefined but are now defined.
     return promises.length;
   } catch (err) {
-    console.error('[CustomElementRegistry: whenDefined()]', err); // eslint-disable-line no-console
+    console.error('[CustomElementRegistry: whenDefined()]', err);
 
     // return 0 if an error occurs.
     return 0;

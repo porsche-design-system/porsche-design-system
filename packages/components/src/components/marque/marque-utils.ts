@@ -1,6 +1,6 @@
 import { MARQUES_MANIFEST } from '@porsche-design-system/assets';
+import { type LinkAriaAttribute, getCDNBaseURL } from '../../utils';
 import type { LinkTarget } from '../../utils/link-button/link-target';
-import { getCDNBaseURL, type LinkAriaAttribute } from '../../utils';
 
 export const MARQUE_VARIANTS = ['75-years', 'default'] as const;
 export type MarqueVariant = (typeof MARQUE_VARIANTS)[number];
@@ -19,7 +19,6 @@ export const getInnerManifest = (variant?: MarqueVariant, trademark?: boolean): 
   ];
 
 export const buildSrcSet = (innerManifest: InnerManifest, size: MarqueSize, format: MarqueFormat): string =>
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   Object.entries(innerManifest[size as keyof InnerManifest])
     .map(([resolution, fileName]) => `${getCDNBaseURL()}/marque/${fileName[format]} ${resolution}`)
     .join();
