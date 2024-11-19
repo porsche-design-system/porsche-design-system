@@ -7,7 +7,21 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": []
+    "ignore": [
+      "**/dist/*",
+      "**/bin/*",
+      "**/node_modules/*",
+      "**/*.snap",
+      "**/.stencil/*",
+      "**/www/*",
+      "**/coverage/*",
+      "**/playwright-report/*",
+      "./packages/components-js/public/*",
+      "./packages/components-vue/projects/vue-wrapper/src/lib/*",
+      "./packages/components/src/components.d.ts",
+      "./packages/components/src/types/aria-types.d.ts",
+      "./packages/components/src/styles/colors.ts"
+    ]
   },
   "formatter": {
     "enabled": true,
@@ -18,7 +32,12 @@
     "lineEnding": "lf",
     "lineWidth": 120,
     "attributePosition": "auto",
-    "bracketSpacing": true
+    "bracketSpacing": true,
+    "ignore": [
+      "yarn.lock",
+      "packages/components-react/projects/nextjs/routes.ts",
+      "packages/components-js/tests/unit/results/stats-raw.json"
+    ]
   },
   "organizeImports": {
     "enabled": true
@@ -154,20 +173,7 @@
       "**/shared/*",
       "**/storefront/*",
       "**/utilities/*",
-      "**/aws/*",
-      "**/bin/*",
-      "**/dist/*",
-      "**/node_modules/*",
-      "**/*.snap",
-      "**/.stencil/*",
-      "**/www/*",
-      "**/coverage/*",
-      "**/playwright-report/*",
-      "./packages/components/src/components.d.ts",
-      "./packages/components/src/types/aria-types.d.ts",
-      "./packages/components/src/styles/colors.ts",
-      "./packages/components-vue/projects/vue-wrapper/src/lib/*",
-      "./packages/components-js/public/*"
+      "**/aws/*"
     ]
   },
   "javascript": {

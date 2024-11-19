@@ -1,5 +1,4 @@
 {
-  // used by ng-packagr
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/angular-wrapper",

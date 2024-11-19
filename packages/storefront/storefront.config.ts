@@ -148,14 +148,10 @@ export const config: StorefrontConfig = {
       Examples: [() => import('@/../../components/src/components/flyout-multilevel/flyout-multilevel.examples.md')],
       Usage: [() => import('@/../../components/src/components/flyout-multilevel/flyout-multilevel.usage.md')],
       Props: [
-        // prettier-ignore
-        () =>
-          import('@/../../components/src/components/flyout-multilevel/flyout-multilevel/flyout-multilevel.props.md'),
-        // prettier-ignore
-        () =>
-          import(
-            '@/../../components/src/components/flyout-multilevel/flyout-multilevel-item/flyout-multilevel-item.props.md'
-          ),
+        // biome-ignore format: should not be formatted, otherwise storefront unit test might not work
+        () =>  import('@/../../components/src/components/flyout-multilevel/flyout-multilevel/flyout-multilevel.props.md'),
+        // biome-ignore format: should not be formatted, otherwise storefront unit test might not work
+        () => import('@/../../components/src/components/flyout-multilevel/flyout-multilevel-item/flyout-multilevel-item.props.md'),
       ],
     },
     Grid: {
