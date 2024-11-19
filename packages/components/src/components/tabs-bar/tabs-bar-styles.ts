@@ -153,8 +153,8 @@ export const getComponentCss = (
     // conditionally applied and removed based on if activeTabIndex exists
     [scrollerAnimatedCssClass]: {
       [`& ${transformSelector(
-          '::slotted([role][aria-selected="true"])::after, ::slotted([role][aria-current="true"])::after'
-        )}`]: {
+        '::slotted([role][aria-selected="true"])::after, ::slotted([role][aria-current="true"])::after'
+      )}`]: {
         transition: addImportantToRule(
           `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationModerate})`
         ), // bar appears after transition

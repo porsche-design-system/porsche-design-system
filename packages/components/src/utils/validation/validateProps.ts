@@ -76,10 +76,9 @@ export const validateValueOfType = (
   return undefined;
 };
 
-const breakpointCustomizableTemplate =
-  `value, ${formatObjectOutput(
-    breakpoints.reduce((prev, key) => ({ ...prev, [key + (key !== 'base' ? '?' : '')]: 'value' }), {})
-  ).replace(/"/g, '')}`;
+const breakpointCustomizableTemplate = `value, ${formatObjectOutput(
+  breakpoints.reduce((prev, key) => ({ ...prev, [key + (key !== 'base' ? '?' : '')]: 'value' }), {})
+).replace(/"/g, '')}`;
 
 export const getBreakpointCustomizableStructure = <T>(
   allowedValues: Exclude<AllowedTypeKey, 'string'> | T[] | readonly T[]
