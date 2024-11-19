@@ -142,7 +142,7 @@ export const renderPagination = (
     const sanitizedActiveIndex = activeIndex > amountOfPages - 1 ? amountOfPages - 1 : activeIndex;
     paginationEl.innerHTML = Array.from(
       new Array(amountOfPages),
-      (_, i) => `<span class="bullet${i === sanitizedActiveIndex ? ' ' + bulletActiveClass : ''}"></span>`
+      (_, i) => `<span class="bullet${i === sanitizedActiveIndex ? ` ${bulletActiveClass}` : ''}"></span>`
     ).join('');
 
     paginationEl.addEventListener('click', (e) => {
@@ -200,7 +200,7 @@ export const updateBulletState = (paginationEl: HTMLElement, amountOfPages: numb
 
 export const updatePagination = (paginationEl: HTMLElement, amountOfPages: number, newIndex: number): void => {
   if (paginationEl) {
-    paginationEl.querySelector('.' + bulletActiveClass).classList.remove(bulletActiveClass);
+    paginationEl.querySelector(`.${bulletActiveClass}`).classList.remove(bulletActiveClass);
     paginationEl.children[newIndex].classList.add(bulletActiveClass);
     if (isInfinitePagination(amountOfPages)) {
       updateBulletState(paginationEl, amountOfPages, newIndex);

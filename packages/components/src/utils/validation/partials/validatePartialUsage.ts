@@ -75,9 +75,7 @@ export const logPartialValidationWarning = (partialName: PartialName, prefix?: s
 
 export const throwPartialValidationError = (partialName: PartialName, prefix?: string): void => {
   throwException(
-    getValidatePartialErrorPrimaryText(partialName, prefix) +
-      ' ' +
-      getValidatePartialErrorSecondaryText(partialName, true)
+    `${getValidatePartialErrorPrimaryText(partialName, prefix)} ${getValidatePartialErrorSecondaryText(partialName, true)}`
   );
 };
 

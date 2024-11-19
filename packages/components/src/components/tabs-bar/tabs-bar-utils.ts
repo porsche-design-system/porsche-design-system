@@ -59,7 +59,7 @@ export const setBarStyle = (tabElements: HTMLElement[], activeTabIndex: number, 
     if (currentActiveTabElement) {
       // for initial activeTabIndex > 0 and resized window with fluid font-size for size="medium"
       // we need to adjust the starting point of the transition
-      setAttribute(barElement, 'style', 'transition: none;' + getTransformation(currentActiveTabElement));
+      setAttribute(barElement, 'style', `transition: none;${getTransformation(currentActiveTabElement)}`);
     }
 
     const newActiveTabElement = tabElements[activeTabIndex];
