@@ -513,7 +513,7 @@ describe('updateAmountOfPages()', () => {
     const mathRoundSpy = jest.spyOn(Math, 'round').mockReturnValue(12);
     const component = new Carousel();
     component.slidesPerPage = 1;
-    component['slides'] = Array(2);
+    component['slides'] = new Array(2);
     expect(component['amountOfPages']).toBeUndefined();
 
     component['updateAmountOfPages']();
@@ -532,7 +532,7 @@ describe('updateAmountOfPages()', () => {
     const mathRoundSpy = jest.spyOn(Math, 'round').mockReturnValue(12);
     const component = new Carousel();
     component.slidesPerPage = 'auto';
-    component['slides'] = Array(2);
+    component['slides'] = new Array(2);
     expect(component['amountOfPages']).toBeUndefined();
 
     component['updateAmountOfPages']();
@@ -546,7 +546,7 @@ describe('updateAmountOfPages()', () => {
     jest.spyOn(carouselUtils, 'getAmountOfPages').mockReturnValue(5);
     const spy = jest.spyOn(carouselUtils, 'renderPagination');
     const component = new Carousel();
-    component['slides'] = Array(2);
+    component['slides'] = new Array(2);
     component['splide'] = { index: 1 } as Splide;
 
     component['updateAmountOfPages']();

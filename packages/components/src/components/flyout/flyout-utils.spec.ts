@@ -32,7 +32,7 @@ class MockHTMLElement {
 
 describe('addStickyTopCssVarStyleSheet()', () => {
   let host;
-  let stylesheetMock = {
+  const stylesheetMock = {
     replaceSync: jest.fn(),
     insertRule: jest.fn(),
     deleteRule: jest.fn(),
@@ -75,9 +75,9 @@ describe('addStickyTopCssVarStyleSheet()', () => {
 describe('handleUpdateStickyTopCssVar()', () => {
   let host;
   const callbackMock = jest.fn();
-  let mockResizeObserver = new MockResizeObserver(callbackMock);
+  const mockResizeObserver = new MockResizeObserver(callbackMock);
   let header;
-  let stylesheetMock = {
+  const stylesheetMock = {
     replaceSync: jest.fn(),
     insertRule: jest.fn(),
     deleteRule: jest.fn(),
@@ -146,7 +146,7 @@ describe('handleUpdateStickyTopCssVar()', () => {
 
 describe('updateStickyTopCssVarStyleSheet()', () => {
   let host;
-  let stylesheetMock = {
+  const stylesheetMock = {
     replaceSync: jest.fn(),
     insertRule: jest.fn(),
     deleteRule: jest.fn(),
@@ -173,7 +173,7 @@ describe('updateStickyTopCssVarStyleSheet()', () => {
 describe('getStickyTopResizeObserver()', () => {
   let host;
   const callbackMock = jest.fn();
-  let mockResizeObserver = new MockResizeObserver(callbackMock);
+  const mockResizeObserver = new MockResizeObserver(callbackMock);
 
   beforeEach(() => {
     host = new MockHTMLElement();
