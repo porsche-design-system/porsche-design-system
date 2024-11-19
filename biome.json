@@ -137,7 +137,6 @@
         "useConsistentBuiltinInstantiation": "error",
         "useSingleVarDeclarator": "error",
         "noInferrableTypes": "off",
-        "noUselessElse": "off",
         "useTemplate": "off",
         "noUnusedTemplateLiteral": "off",
         "noCommaOperator": "off",

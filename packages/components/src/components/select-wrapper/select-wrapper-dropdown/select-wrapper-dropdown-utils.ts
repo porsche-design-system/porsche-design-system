@@ -182,9 +182,9 @@ export const getDropdownVisibility = (
       resetFilter();
     }
     return false;
-  } else if (!isOpen && (type === 'show' || type === 'toggle')) {
-    return true;
-  } else {
-    return isOpen;
   }
+  if (!isOpen && (type === 'show' || type === 'toggle')) {
+    return true;
+  }
+  return isOpen;
 };

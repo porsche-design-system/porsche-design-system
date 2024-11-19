@@ -38,9 +38,8 @@ describe.each<TagName>(
                   .replace(/slot/i, '')
                   .toLowerCase() // <slot name={slotHeading} /> let's hope its name matches the value
               : slotName; // <slot name="heading" />
-          } else {
-            return ''; // Default slot
           }
+          return ''; // Default slot
         }
       );
 

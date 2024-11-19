@@ -111,7 +111,7 @@ export const getPopoverMargin = (
       return `0 0 0 ${Math.min(safeZonePx - popoverRect.left, spacerRect.left - popoverRect.left)}px`;
     }
     // check if popover exceeds right side of viewport
-    else if (popoverRect.right > clientWidth) {
+    if (popoverRect.right > clientWidth) {
       return `0 0 0 ${Math.max(clientWidth - popoverRect.right, spacerRect.right - popoverRect.right)}px`;
     }
   }
@@ -122,7 +122,7 @@ export const getPopoverMargin = (
       return `${Math.min(safeZonePx - popoverRect.top, spacerRect.top - popoverRect.top)}px 0 0 0`;
     }
     // check if popover exceeds bottom side of viewport
-    else if (popoverRect.bottom > clientHeight) {
+    if (popoverRect.bottom > clientHeight) {
       return `${Math.max(clientHeight - popoverRect.bottom, spacerRect.bottom - popoverRect.bottom)}px 0 0 0`;
     }
   } else {

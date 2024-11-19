@@ -177,11 +177,11 @@ export const updateBulletState = (paginationEl: HTMLElement, amountOfPages: numb
   const getTranslateX = (): string => {
     if (isStartCase) {
       return '0';
-    } else if (isEndCase) {
-      return `calc(-${amountOfPages - INFINITE_BULLET_AMOUNT} * ${paginationGap})`;
-    } else {
-      return `calc(-${newIndex - INFINITE_BULLET_OFFSET} * ${paginationGap})`;
     }
+    if (isEndCase) {
+      return `calc(-${amountOfPages - INFINITE_BULLET_AMOUNT} * ${paginationGap})`;
+    }
+    return `calc(-${newIndex - INFINITE_BULLET_OFFSET} * ${paginationGap})`;
   };
 
   paginationEl.style.transform = `translateX(${getTranslateX()})`;
