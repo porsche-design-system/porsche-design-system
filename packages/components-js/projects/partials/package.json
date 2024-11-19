@@ -10,10 +10,7 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "UNLICENSED",
   "description": "Porsche Design System Partials",
-  "keywords": [
-    "porsche",
-    "partials"
-  ],
+  "keywords": ["porsche", "partials"],
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "build": "yarn clean:build && yarn build:bundleDSRPonyfill && yarn build:partials && yarn build:package && yarn build:copyToComponentsJs",

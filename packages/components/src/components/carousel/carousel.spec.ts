@@ -45,13 +45,13 @@ beforeAll(() => {
   // global window matchMedia mock does not work here
   // @ts-ignore
   window.matchMedia = (query) => ({
-      matches: false,
-      media: query,
-      onchange: null,
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-      dispatchEvent: jest.fn(),
-    });
+    matches: false,
+    media: query,
+    onchange: null,
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    dispatchEvent: jest.fn(),
+  });
 });
 
 afterAll(() => {

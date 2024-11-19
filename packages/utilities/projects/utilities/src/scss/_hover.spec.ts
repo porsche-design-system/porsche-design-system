@@ -6,7 +6,8 @@ const borderVariables = fs.readFileSync(path.resolve('./src/scss/lib/_border.scs
 const frostedGlassVariables = fs.readFileSync(path.resolve('./src/scss/lib/_frosted-glass.scss'), 'utf8');
 const motionVariables = fs.readFileSync(path.resolve('./src/scss/lib/_motion.scss'), 'utf8');
 const themeVariables = fs.readFileSync(path.resolve('./src/scss/lib/_theme.scss'), 'utf8');
-const hoverMixin = fs.readFileSync(path.resolve('./src/scss/_hover.scss'), 'utf8')
+const hoverMixin = fs
+  .readFileSync(path.resolve('./src/scss/_hover.scss'), 'utf8')
   .replace(/@use.*;/g, '')
   .replace(/border\./g, '')
   .replace(/theme\./g, '')

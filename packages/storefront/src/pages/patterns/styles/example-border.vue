@@ -15,11 +15,11 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
-  @Component
-  export default class ExampleStylesBorder extends Vue {}
+@Component
+export default class ExampleStylesBorder extends Vue {}
 </script>
 
 <style lang="scss" scoped>

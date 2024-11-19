@@ -308,7 +308,9 @@ describe('mergeDeep()', () => {
   ];
   it.each(
     data.map(({ input, result }) => [
-      input.map((x) => JSON.stringify(x)).join(', '), // for test description
+      input
+        .map((x) => JSON.stringify(x))
+        .join(', '), // for test description
       JSON.stringify(result), // for test description
       input,
       result,

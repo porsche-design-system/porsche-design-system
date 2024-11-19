@@ -19,9 +19,7 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "files": [
-    "./dist/"
-  ],
+  "files": ["./dist/"],
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {

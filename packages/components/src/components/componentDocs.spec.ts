@@ -34,7 +34,9 @@ describe.each<TagName>(
         ([, slotName]) => {
           if (slotName) {
             return slotName.match(/^[a-z]+[A-Z][a-z]+/)
-              ? slotName.replace(/slot/i, '').toLowerCase() // <slot name={slotHeading} /> let's hope its name matches the value
+              ? slotName
+                  .replace(/slot/i, '')
+                  .toLowerCase() // <slot name={slotHeading} /> let's hope its name matches the value
               : slotName; // <slot name="heading" />
           } else {
             return ''; // Default slot

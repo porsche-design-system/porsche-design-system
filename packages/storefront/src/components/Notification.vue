@@ -10,13 +10,13 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { Prop } from 'vue-property-decorator';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { Prop } from 'vue-property-decorator';
 
-  @Component({})
-  export default class Notification extends Vue {
-    @Prop({ default: '' }) public heading!: string;
-    @Prop({ default: 'info' }) public state!: 'warning' | 'error' | 'success' | 'info';
-  }
+@Component({})
+export default class Notification extends Vue {
+  @Prop({ default: '' }) public heading!: string;
+  @Prop({ default: 'info' }) public state!: 'warning' | 'error' | 'success' | 'info';
+}
 </script>
