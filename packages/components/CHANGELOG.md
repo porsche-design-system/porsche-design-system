@@ -29,6 +29,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - Remove native input and use ElementInternals API
   - **Breaking Change**: `Pin-Code` component no longer support native validation due to the removal of the underlying
     native `<input>` element. ([#3588](https://github.com/porsche-design-system/porsche-design-system/pull/3588))
+- `Styles`: `SCSS` variant uses `@forward/@use` internally to replace deprecated `@import`
+  ([#3623](https://github.com/porsche-design-system/porsche-design-system/pull/3623))
 
 ### [3.21.0] - 2024-11-12
 

@@ -4,7 +4,9 @@ import * as sass from 'sass';
 
 const breakpointVariables = fs.readFileSync(path.resolve('./src/scss/lib/_breakpoint.scss'), 'utf8');
 const mediaQueryMixin = fs.readFileSync(path.resolve('./src/scss/_media-query.scss'), 'utf8');
-const mixin = mediaQueryMixin.replace("@import 'lib/_breakpoint.scss';", breakpointVariables);
+const mixin = mediaQueryMixin
+  .replace("@use 'lib/breakpoint';", breakpointVariables)
+  .replace(/breakpoint\./g, '');
 
 const getCss = (scenario: string): string => {
   return sass.compileString(`${mixin} ${scenario}`).css;

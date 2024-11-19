@@ -1,13 +1,13 @@
-@import 'lib/_breakpoint.scss';
+@use 'lib/breakpoint';
 
 $pds-breakpoints: (
-  'base': $pds-breakpoint-base,
-  'xs': $pds-breakpoint-xs,
-  's': $pds-breakpoint-s,
-  'm': $pds-breakpoint-m,
-  'l': $pds-breakpoint-l,
-  'xl': $pds-breakpoint-xl,
-  'xxl': $pds-breakpoint-xxl,
+  'base': breakpoint.$pds-breakpoint-base,
+  'xs': breakpoint.$pds-breakpoint-xs,
+  's': breakpoint.$pds-breakpoint-s,
+  'm': breakpoint.$pds-breakpoint-m,
+  'l': breakpoint.$pds-breakpoint-l,
+  'xl': breakpoint.$pds-breakpoint-xl,
+  'xxl': breakpoint.$pds-breakpoint-xxl,
 );
 
 @mixin pds-media-query-min($min: null) {
