@@ -230,8 +230,6 @@
     "**/@vue/cli-plugin-unit-jest/jest": ">=29 <30",
     "**/@vue/cli-plugin-unit-jest/ts-jest": ">=29 <30",
     "**/@vue/cli-shared-utils/@achrinza/node-ipc": "^10.1.10",
-    "**/eslint-config-next/eslint-plugin-react-hooks": "^4.6.0",
-    "**/eslint-config-react-app/eslint-plugin-jest": "^27.6.0",
     "**/ng-packagr/rollup": "^4.13.0",
     "**/vite/rollup": "^4.13.0",
     "**/workbox-build/rollup": "^4.13.0"
