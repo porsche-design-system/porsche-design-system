@@ -1,14 +1,11 @@
 import * as pinCodeUtils from './pin-code-utils';
-import * as setAttributesUtils from '../../utils/dom/setAttributes';
 import * as getTagNameWithoutPrefixUtils from '../../utils/tag-name';
 import * as consoleWarnUtils from '../../utils/log/logger';
 import {
   removeSlottedSelector,
-  initHiddenInput,
   hasInputOnlyDigitsOrWhitespaces,
   isInputOnlyDigits,
   getConcatenatedInputValues,
-  syncHiddenInput,
   warnAboutTransformedValue,
   getSanitisedValue,
   removeStyles,
@@ -231,90 +228,6 @@ describe('removeWhiteSpaces()', () => {
     const sanitisedValue = removeWhiteSpaces(pinCode);
 
     expect(sanitisedValue).toBe('124');
-  });
-});
-
-describe('initHiddenInput()', () => {
-  it('should call syncHiddenInput() with correct parameters', () => {
-    const spy = jest.spyOn(pinCodeUtils, 'syncHiddenInput');
-    const component = new PinCode();
-    component.host = document.createElement('p-pin-code');
-
-    const hiddenInput = initHiddenInput(component.host, 'name', '1234', false, false);
-
-    expect(spy).toHaveBeenCalledWith(hiddenInput, 'name', '1234', false, false);
-  });
-
-  it('should call setAttributes() with correct parameters', () => {
-    const spy = jest.spyOn(setAttributesUtils, 'setAttributes');
-    const component = new PinCode();
-    component.host = document.createElement('p-pin-code');
-
-    const hiddenInput = initHiddenInput(component.host, 'name', '1234', false, false);
-
-    expect(spy).toHaveBeenCalledTimes(2); // it is also called in syncHiddenInput()
-    expect(spy).toHaveBeenCalledWith(hiddenInput, { 'aria-hidden': 'true', slot: 'internal-input', tabindex: '-1' });
-    expect(spy).toHaveBeenCalledWith(hiddenInput, { name: 'name', value: '1234' });
-  });
-
-  it('should return hidden input element with added attributes and prepend hidden input element to host', () => {
-    const component = new PinCode();
-    component.host = document.createElement('p-pin-code');
-
-    const hiddenInput = initHiddenInput(component.host, 'name', '1234', false, false);
-
-    expect(component.host.firstChild).toBe(hiddenInput);
-  });
-});
-
-describe('syncHiddenInput()', () => {
-  it('should call removeWhiteSpaces() with correct parameters', () => {
-    const spy = jest.spyOn(pinCodeUtils, 'removeWhiteSpaces');
-    const hiddenInput = document.createElement('input');
-
-    syncHiddenInput(hiddenInput, 'updatedName', '432 1', false, false);
-
-    expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith('432 1');
-  });
-
-  it('should call setAttributes() with correct parameters', () => {
-    const spy = jest.spyOn(setAttributesUtils, 'setAttributes');
-    const hiddenInput = document.createElement('input');
-
-    syncHiddenInput(hiddenInput, 'updatedName', '4321', false, false);
-
-    expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith(hiddenInput, { name: 'updatedName', value: '4321' });
-  });
-
-  it('should call setAttributes() with correct parameters when name=undefined', () => {
-    const spy = jest.spyOn(setAttributesUtils, 'setAttributes');
-    const hiddenInput = document.createElement('input');
-
-    syncHiddenInput(hiddenInput, undefined, '4321', false, false);
-
-    expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith(hiddenInput, { value: '4321' });
-  });
-
-  it('should call toggleAttribute() with correct parameters and update "required" and "disabled" attributes', () => {
-    const hiddenInput = document.createElement('input');
-    const spy = jest.spyOn(hiddenInput, 'toggleAttribute');
-
-    syncHiddenInput(hiddenInput, 'updatedName', '4321', true, true);
-
-    expect(spy).toHaveBeenCalledTimes(2);
-    expect(spy).toHaveBeenCalledWith('disabled', true);
-    expect(spy).toHaveBeenCalledWith('required', true);
-
-    expect(hiddenInput.disabled).toBe(true);
-    expect(hiddenInput.required).toBe(true);
-
-    syncHiddenInput(hiddenInput, 'updatedName', '4321', false, false);
-
-    expect(hiddenInput.disabled).toBe(false);
-    expect(hiddenInput.required).toBe(false);
   });
 });
 

@@ -578,7 +578,15 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 $&`
           );
       } else if (tagName === 'p-pin-code') {
-        newFileContent = newFileContent.replace(/value={/, 'defaultValue={'); // fix warning about read-only field
+        newFileContent = newFileContent
+          .replace(/value={/, 'defaultValue={') // fix warning about read-only field
+          // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
+          .replace(/@AttachInternals\(\)/, '')
+          .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
+          .replace(/this\.props\.disabled = disabled;/, '')
+          .replace(/this\.props\.value = state;/, '')
+          .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
+          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
       } else if (tagName === 'p-flyout-multilevel') {
         newFileContent = newFileContent
           .replace(/validateActiveIdentifier\(.*\);/g, '')

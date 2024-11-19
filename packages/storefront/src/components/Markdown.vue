@@ -46,8 +46,8 @@
 
 <style scoped lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
-  @import '../styles/internal.variables';
-  @import '../styles/shared.styles';
+  @use '../styles/internal.variables' as *;
+  @use '../styles/shared.styles' as *;
 
   /* More information about :deep selector can be found here: https://vue-loader.vuejs.org/guide/scoped-css.html#deep-selectors
 * Child div selector is necessary because dynamic component loader vmark is using another <div> as component root element.

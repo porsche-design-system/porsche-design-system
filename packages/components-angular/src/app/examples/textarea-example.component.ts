@@ -6,6 +6,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <form (submit)="onSubmit($event)">
       <p-textarea name="some-name" label="Some Label"></p-textarea>
       <button type="submit">Submit</button>
+      <button type="reset">Reset</button>
     </form>
 
     <p-text>Last submitted data: {{ lastSubmittedData }}</p-text>
