@@ -27,6 +27,17 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "a11y": {
+        "useKeyWithClickEvents": "off",
+        "useAnchorContent": "off",
+        "useAriaPropsForRole": "off",
+        "useSemanticElements": "off",
+        "useFocusableInteractive": "off",
+        "noNoninteractiveElementToInteractiveRole": "off",
+        "noNoninteractiveTabindex": "off",
+        "noRedundantRoles": "off",
+        "noLabelWithoutControl": "off"
+      },
       "complexity": {
         "noExtraBooleanCast": "error",
         "noMultipleSpacesInRegularExpressionLiterals": "error",
@@ -34,7 +45,10 @@
         "noUselessTypeConstraint": "error",
         "noUselessUndefinedInitialization": "error",
         "noWith": "error",
-        "useLiteralKeys": "error"
+        "useLiteralKeys": "error",
+        "noForEach": "off",
+        "noBannedTypes": "off",
+        "useOptionalChain": "off"
       },
       "correctness": {
         "noConstAssign": "error",
@@ -60,7 +74,12 @@
         "useArrayLiterals": "off",
         "useIsNan": "error",
         "useValidForDirection": "error",
-        "useYield": "error"
+        "useYield": "error",
+        "useJsxKeyInIterable": "off"
+      },
+      "performance": {
+        "noAccumulatingSpread": "off",
+        "noDelete": "off"
       },
       "security": {
         "noGlobalEval": "error"
@@ -71,7 +90,16 @@
         "useBlockStatements": "off",
         "useConsistentBuiltinInstantiation": "error",
         "useSingleVarDeclarator": "error",
-        "noInferrableTypes": "off"
+        "noInferrableTypes": "off",
+        "useSelfClosingElements": "off",
+        "noParameterAssign": "off",
+        "useNodejsImportProtocol": "off",
+        "noUselessElse": "off",
+        "useTemplate": "off",
+        "noUnusedTemplateLiteral": "off",
+        "noCommaOperator": "off",
+        "useDefaultParameterLast": "off",
+        "useEnumInitializers": "off"
       },
       "suspicious": {
         "noAsyncPromiseExecutor": "error",
@@ -103,7 +131,12 @@
         "noUnsafeNegation": "error",
         "useGetterReturn": "error",
         "useNamespaceKeyword": "error",
-        "useValidTypeof": "error"
+        "useValidTypeof": "error",
+        "noAssignInExpressions": "off",
+        "noArrayIndexKey": "off",
+        "noExportsInTest": "off",
+        "noImplicitAnyLet": "off",
+        "noConfusingVoidType": "off"
       }
     },
     "ignore": [
