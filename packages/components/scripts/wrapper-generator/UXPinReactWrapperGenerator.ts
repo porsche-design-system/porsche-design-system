@@ -41,6 +41,8 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     this.hiddenComponents = [
         'p-text-field-wrapper',
         'p-radio-button-wrapper',
+        'p-stepper-horizontal',
+        'p-stepper-horizontal-item',
     ]
   }
 
@@ -142,7 +144,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     // add uxpinignoreprop annotations
     if (component === 'p-modal') {
       props = addUxPinIgnorePropAnnotation(props, 'open');
-    } else if (component === 'p-link' || component === 'p-link-pure' || component === 'p-link-social'  || component === 'p-crest') {
+    } else if (component === 'p-link' || component === 'p-link-pure' || component === 'p-link-social'  || component === 'p-link-tile-product'  || component === 'p-crest') {
       props = addUxPinIgnorePropAnnotation(props, 'href');
       props = addUxPinIgnorePropAnnotation(props, 'target');
     } else if (component === 'p-banner') {
@@ -288,7 +290,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     }
 
     // make crest and link-pure anchor if onClick is defined
-    if (component === 'p-crest' || component === 'p-link-pure') {
+    if (component === 'p-crest' || component === 'p-link-pure' || component === 'p-link-tile-product') {
       cleanedComponent = cleanedComponent.replace(
           'const props = {',
           [
@@ -339,6 +341,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       case 'p-fieldset':
       case 'p-link-tile':
       case 'p-link-tile-model-signature':
+      case 'p-link-tile-product':
       case 'p-multi-select':
       case 'p-modal':
       case 'p-radio-button-wrapper':
@@ -413,6 +416,10 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           '<Link slot="primary" variant="primary" theme="dark" href="#" uxpId="link-primary">Some link</Link>', // we need to set variant and theme props for uxpin editor to display the right config
           '<Link slot="secondary" variant="secondary" theme="dark" href="#" uxpId="link-secondary">Some link</Link>', // we need to set variant and theme props for uxpin editor to display the right config
         ].join(glue),
+      },
+      'p-link-tile-product': {
+        props: { label: 'Some label', description: 'Some description', heading: 'Weekender', price:'1.911,00 €' },
+        children: '<DummyImg uxpId="dummy-img" src="https://designsystem.porsche.com/v3/assets/weekender.webp" />',
       },
       'p-multi-select': {
         props: { name:'options', label:'Some Label' },
@@ -662,6 +669,8 @@ export default <${formComponentName} ${stringifiedProps} />;
     const uxpinComponents = [
       `'src/form/RadioButton/RadioButton.tsx'`,
       `'src/form/TextField/TextField.tsx'`,
+      `'src/wrappers/StepperHorizontal/StepperHorizontal.tsx'`,
+      `'src/wrappers/StepperHorizontalItem.tsx'`,
     ];
     const componentPaths = [...this.relevantComponentTagNames
       .filter((component) => !this.hiddenComponents.includes(component))

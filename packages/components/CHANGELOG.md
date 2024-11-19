@@ -14,6 +14,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Added
+
+- `Pin-Code`: Add `form` prop to explicitly associate the component with a form, even when it's not directly nested
+  within it. ([#3588](https://github.com/porsche-design-system/porsche-design-system/pull/3588))
+
+#### Changed
+
+- `Pin-Code`:
+  - Remove native input and use ElementInternals API
+  - **Breaking Change**: `Pin-Code` component no longer support native validation due to the removal of the underlying
+    native `<input>` element. ([#3588](https://github.com/porsche-design-system/porsche-design-system/pull/3588))
+- `Styles`: `SCSS` variant uses `@forward/@use` internally to replace deprecated `@import`
+  ([#3623](https://github.com/porsche-design-system/porsche-design-system/pull/3623))
+
+### [3.21.0] - 2024-11-12
+
 ### [3.21.0-rc.0] - 2024-11-11
 
 #### Added
@@ -26,8 +42,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#3589](https://github.com/porsche-design-system/porsche-design-system/pull/3589))
 - `Button`, `Link`: `compact` prop is breakpoint customizable
   ([#3580](https://github.com/porsche-design-system/porsche-design-system/pull/3580))
-- `Select`, `Multi-Select`: Added `form` prop to explicitly associate these components with a specific form when they
-  are not directly nested within it. ([#3542](https://github.com/porsche-design-system/porsche-design-system/pull/3542))
+- `Select`, `Multi-Select`: Add `form` prop to explicitly associate these components with a specific form when they are
+  not directly nested within it. ([#3542](https://github.com/porsche-design-system/porsche-design-system/pull/3542))
 
 #### Changed
 

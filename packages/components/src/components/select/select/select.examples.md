@@ -81,7 +81,6 @@ when it's submitted.
 <code>p-select</code> does not use a native select internally. As a result, it lacks access to native <code>ValidityState</code>
 properties and <code>validationMessage</code>, and it cannot display the native validation popover. This means validation behavior
 and error display will need to be implemented separately if required.
-
 </Notification>
 
 <Playground :frameworkMarkup="formExample" :config="{ ...config, withoutDemo: true }">

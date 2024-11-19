@@ -1,5 +1,5 @@
-@import 'lib/border';
-@import 'lib/theme';
+@use 'lib/border';
+@use 'lib/theme';
 
 $pds-focus-offset-map: (
   'small': 2px,
@@ -7,8 +7,8 @@ $pds-focus-offset-map: (
 );
 
 $pds-focus-border-radius-map: (
-  'small': $pds-border-radius-small,
-  'medium': $pds-border-radius-medium,
+  'small': border.$pds-border-radius-small,
+  'medium': border.$pds-border-radius-medium,
 );
 
 @mixin pds-focus($offset: 'small', $border-radius: 'small') {
@@ -23,7 +23,7 @@ $pds-focus-border-radius-map: (
     }
   }
   &:focus {
-    outline: $pds-border-width-base solid $pds-theme-light-state-focus;
+    outline: border.$pds-border-width-base solid theme.$pds-theme-light-state-focus;
     @if map-has-key($pds-focus-offset-map, $offset) {
       outline-offset: map-get($pds-focus-offset-map, $offset);
     } @else {

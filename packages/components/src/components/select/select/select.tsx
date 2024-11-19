@@ -100,7 +100,9 @@ export class Select {
   @Prop() public description?: string = '';
 
   /** The name of the control. */
-  @Prop() public name: string;
+  @Prop({ reflect: true }) public name: string;
+  // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
+  // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
   /** The selected value. */
   @Prop({ mutable: true }) public value?: string;

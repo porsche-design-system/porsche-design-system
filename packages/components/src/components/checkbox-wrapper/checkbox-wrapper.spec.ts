@@ -1,27 +1,14 @@
-import { ButtonPure } from './button-pure';
-import * as buttonLinkPureUtils from '../../utils/button-link-pure-utils';
+import { CheckboxWrapper } from './checkbox-wrapper';
 
-jest.mock('../../utils/button-handling');
-
-const initComponent = (): ButtonPure => {
-  const component = new ButtonPure();
-  component.host = document.createElement('p-button-pure');
+const initComponent = (): CheckboxWrapper => {
+  const component = new CheckboxWrapper();
+  component.host = document.createElement('p-checkbox-wrapper');
   component.host.attachShadow({ mode: 'open' });
+  const inputElement = document.createElement('input');
+  inputElement.type = 'checkbox';
+  component.host.append(inputElement);
   return component;
 };
-
-describe('render', () => {
-  it('should call warnIfParentIsPTextAndIconIsNone() with correct parameters', () => {
-    const spy = jest.spyOn(buttonLinkPureUtils, 'warnIfParentIsPTextAndIconIsNone');
-
-    const component = new ButtonPure();
-    component.host = document.createElement('p-button-pure');
-    component.host.attachShadow({ mode: 'open' });
-    component.render();
-
-    expect(spy).toHaveBeenCalledWith(component.host, component.icon, component.iconSource);
-  });
-});
 
 describe('connectedCallback()', () => {
   it('should assign this.initialLoading to value of this.loading', () => {
