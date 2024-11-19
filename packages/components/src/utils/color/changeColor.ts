@@ -8,6 +8,6 @@ export const darken = (hsl: string): string => {
 
 const changeColor = (hsl: string, lightness: number): string => {
   return hsl.replace(/\s(\d+)(%?)\//, (_: string, p1: string, p2: string) => {
-    return ` ${Math.min(Math.max(parseInt(p1, 10) + lightness, 0), 100)}${p2}/`;
+    return ` ${Math.min(Math.max(Number.parseInt(p1, 10) + lightness, 0), 100)}${p2}/`;
   });
 };

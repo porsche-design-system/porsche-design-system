@@ -242,7 +242,7 @@ describe('dispatchInputEvent()', () => {
 
 describe('addCounterCharacterLengthCssVarStyleSheet()', () => {
   let host;
-  let stylesheetMock = {
+  const stylesheetMock = {
     replaceSync: jest.fn(),
     insertRule: jest.fn(),
     deleteRule: jest.fn(),
@@ -287,7 +287,7 @@ describe('addCounterCharacterLengthCssVarStyleSheet()', () => {
 
 describe('updateCounterCharacterLengthCssVarStyleSheet()', () => {
   let host;
-  let stylesheetMock = {
+  const stylesheetMock = {
     replaceSync: jest.fn(),
     insertRule: jest.fn(),
     deleteRule: jest.fn(),

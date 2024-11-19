@@ -1,4 +1,4 @@
-import { type Theme } from '../../../utils';
+import type { Theme } from '../../../utils';
 
 export type FlyoutMultilevelItemInternalHTMLProps = {
   open: boolean;

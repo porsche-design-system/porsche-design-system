@@ -4,7 +4,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby-legacy';
 import { expect } from '@jest/globals';
-import { ComponentMeta } from '@porsche-design-system/component-meta';
+import type { ComponentMeta } from '@porsche-design-system/component-meta';
 
 const componentsDir = path.resolve(__dirname);
 const sourceFilePaths = globby.sync(`${componentsDir}/**/*.tsx`).sort();

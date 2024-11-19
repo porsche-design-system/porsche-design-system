@@ -1,5 +1,5 @@
-import { type BreakpointCustomizable, type Theme } from '../../types';
-import { type FormState } from '../../utils/form/form-state';
+import type { BreakpointCustomizable, Theme } from '../../types';
+import type { FormState } from '../../utils/form/form-state';
 import { getSlottedCheckboxRadioButtonStyles } from '../../styles/checkbox-radio-styles';
 import { getCss, isDisabledOrLoading, isHighContrastMode, mergeDeep } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';

@@ -1,4 +1,4 @@
-import { type FormState } from '../../../utils/form/form-state';
+import type { FormState } from '../../../utils/form/form-state';
 import { type FunctionalComponent, h } from '@stencil/core';
 import { getRole, getPrefixedTagNames, type Theme, hasMessage } from '../../../utils';
 

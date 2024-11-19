@@ -1,4 +1,4 @@
-import { type TagName } from '@porsche-design-system/shared';
+import type { TagName } from '@porsche-design-system/shared';
 import { type PrefixedTagNames, getPrefixedTagNames, getTagName } from '../tag-name';
 import { paramCaseToCamelCase } from '../paramCaseToCamelCase';
 

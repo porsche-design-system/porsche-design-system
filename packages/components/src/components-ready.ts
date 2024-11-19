@@ -58,7 +58,8 @@ const isDesignSystemReady = (): Promise<void> => {
           value.isReady().then(promiseResolve);
         }
         // @ts-expect-error ...
-        return Reflect.set(...arguments); // eslint-disable-line prefer-rest-params
+        // biome-ignore lint/style/noArguments: ok
+        return Reflect.set(...arguments);
       },
     };
 

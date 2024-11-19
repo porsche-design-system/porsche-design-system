@@ -12,8 +12,8 @@ import {
   printErrorMessage,
   validateProps,
   validateValueOfType,
-  ValidationError,
-  ValidatorFunction,
+  type ValidationError,
+  type ValidatorFunction,
 } from './validateProps';
 import * as loggerUtils from '../log/logger';
 import * as breakpointCustomizableUtils from '../breakpoint-customizable';
