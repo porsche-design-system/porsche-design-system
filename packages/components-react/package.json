@@ -47,7 +47,7 @@
     "ag-grid-community": "32.3.3",
     "ag-grid-enterprise": "32.3.3",
     "ag-grid-react": "32.3.3",
-    "local-web-server": "^5.3.3",
+    "local-web-server": "^5.4.0",
     "react-scripts": "^5.0.1"
   },
   "peerDependencies": {
