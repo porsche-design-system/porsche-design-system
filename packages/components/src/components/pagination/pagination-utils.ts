@@ -36,10 +36,10 @@ export type PaginationItem = {
 };
 
 export enum ItemType {
-  PAGE,
-  ELLIPSIS,
-  PREVIOUS,
-  NEXT,
+  PAGE = 0,
+  ELLIPSIS = 1,
+  PREVIOUS = 2,
+  NEXT = 3,
 }
 
 const ellipsisItem: PaginationItem = {
