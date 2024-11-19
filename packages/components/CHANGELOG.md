@@ -28,6 +28,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Styles`: `SCSS` variant uses `@forward/@use` internally to replace deprecated `@import`
   ([#3623](https://github.com/porsche-design-system/porsche-design-system/pull/3623))
 
+#### Fixed
+
+- Partials: removed bundled `react/jsx-runtime` due to React 18/19 incompatibilities. When using `jsx` in the `format`
+  option, it is necessary to have `react/jsx-runtime` as a dependency in the project included.
+  ([#3613](https://github.com/porsche-design-system/porsche-design-system/pull/3613))
+
 ### [3.21.0] - 2024-11-12
 
 ### [3.21.0-rc.0] - 2024-11-11
