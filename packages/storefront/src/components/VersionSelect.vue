@@ -8,20 +8,20 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
-  @Component({
-    components: {},
-  })
-  export default class VersionSelect extends Vue {
-    public version = 'v3';
-    public versionOptions: string[] = ['v3', 'v2', 'v1'];
+@Component({
+  components: {},
+})
+export default class VersionSelect extends Vue {
+  public version = 'v3';
+  public versionOptions: string[] = ['v3', 'v2', 'v1'];
 
-    public onVersionChange = (event: Event): void => {
-      window.location.href = `https://designsystem.porsche.com/${(event.target as HTMLInputElement).value}`;
-    };
-  }
+  public onVersionChange = (event: Event): void => {
+    window.location.href = `https://designsystem.porsche.com/${(event.target as HTMLInputElement).value}`;
+  };
+}
 </script>
 
 <style scoped lang="scss">

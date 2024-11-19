@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ToastComponent } from '../components';
+import { ToastComponent } from '../components';
 </script>
 
 <template>

@@ -75,170 +75,167 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { Prop } from 'vue-property-decorator';
-  import CodeBlock from '@/components/CodeBlock.vue';
-  import CodeEditor from '@/components/CodeEditor.vue';
-  import { cleanMarkup, patchThemeIntoMarkup } from '../utils';
-  import { componentMeta } from '@porsche-design-system/component-meta';
-  import type { BackgroundColor, Framework, FrameworkMarkup, PlaygroundDir, PlaygroundTheme } from '../models';
-  import type { ExternalDependency, SharedImportKey } from '../utils';
-  import { getExternalDependenciesOrThrow } from '@/utils/stackblitz/helper';
-  import ThemeSelect from '@/components/ThemeSelect.vue';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { Prop } from 'vue-property-decorator';
+import CodeBlock from '@/components/CodeBlock.vue';
+import CodeEditor from '@/components/CodeEditor.vue';
+import { cleanMarkup, patchThemeIntoMarkup } from '../utils';
+import { componentMeta } from '@porsche-design-system/component-meta';
+import type { BackgroundColor, Framework, FrameworkMarkup, PlaygroundDir, PlaygroundTheme } from '../models';
+import type { ExternalDependency, SharedImportKey } from '../utils';
+import { getExternalDependenciesOrThrow } from '@/utils/stackblitz/helper';
+import ThemeSelect from '@/components/ThemeSelect.vue';
 
-  export type PlaygroundConfig = {
-    themeable: boolean;
-    backgroundColor: BackgroundColor;
-    height: 'auto' | 'fixed';
-    spacing: 'none' | 'inline' | 'block' | 'block-small';
-    overflowX: 'auto' | 'visible';
-    withoutDemo: boolean;
-    supportsFullWindow: boolean;
-    embedStackblitz: boolean;
-  };
+export type PlaygroundConfig = {
+  themeable: boolean;
+  backgroundColor: BackgroundColor;
+  height: 'auto' | 'fixed';
+  spacing: 'none' | 'inline' | 'block' | 'block-small';
+  overflowX: 'auto' | 'visible';
+  withoutDemo: boolean;
+  supportsFullWindow: boolean;
+  embedStackblitz: boolean;
+};
 
-  export const initialConfig: PlaygroundConfig = {
-    themeable: false,
-    backgroundColor: 'background-base',
-    height: 'auto',
-    spacing: 'none',
-    overflowX: 'auto',
-    withoutDemo: false,
-    supportsFullWindow: false,
-    embedStackblitz: false,
-  };
+export const initialConfig: PlaygroundConfig = {
+  themeable: false,
+  backgroundColor: 'background-base',
+  height: 'auto',
+  spacing: 'none',
+  overflowX: 'auto',
+  withoutDemo: false,
+  supportsFullWindow: false,
+  embedStackblitz: false,
+};
 
-  const themeableComponentsSelector = Object.entries(componentMeta)
-    .filter(([, meta]) => meta.isThemeable)
-    .map(([tagName]) => tagName)
-    .join();
+const themeableComponentsSelector = Object.entries(componentMeta)
+  .filter(([, meta]) => meta.isThemeable)
+  .map(([tagName]) => tagName)
+  .join();
 
-  @Component({
-    components: {
-      ThemeSelect,
-      CodeBlock,
-      CodeEditor,
-    },
-  })
-  export default class Playground extends Vue {
-    @Prop({ default: () => ({}) }) public config!: Partial<PlaygroundConfig>;
-    @Prop({ default: () => ({}) }) public frameworkMarkup!: FrameworkMarkup;
-    @Prop({ default: () => [] }) public externalStackBlitzDependencies!: ExternalDependency[];
-    @Prop({ default: true }) public showCodeEditor!: boolean;
-    @Prop({ default: '' }) public markup!: string;
+@Component({
+  components: {
+    ThemeSelect,
+    CodeBlock,
+    CodeEditor,
+  },
+})
+export default class Playground extends Vue {
+  @Prop({ default: () => ({}) }) public config!: Partial<PlaygroundConfig>;
+  @Prop({ default: () => ({}) }) public frameworkMarkup!: FrameworkMarkup;
+  @Prop({ default: () => [] }) public externalStackBlitzDependencies!: ExternalDependency[];
+  @Prop({ default: true }) public showCodeEditor!: boolean;
+  @Prop({ default: '' }) public markup!: string;
 
-    getExternalDependenciesOrThrow = getExternalDependenciesOrThrow;
+  getExternalDependenciesOrThrow = getExternalDependenciesOrThrow;
 
-    isFullWindow = false;
-    selectDir: PlaygroundDir = 'ltr';
-    selectTheme: PlaygroundTheme = 'light';
+  isFullWindow = false;
+  selectDir: PlaygroundDir = 'ltr';
+  selectTheme: PlaygroundTheme = 'light';
 
-    public mounted(): void {
-      this.selectDir = this.dir;
-      if (this.config.themeable) {
-        this.selectTheme = this.theme;
-        this.syncThemeIntoDemoComponents();
-      }
-    }
-
-    public updated(): void {
-      this.selectDir = this.dir;
-      if (this.config.themeable) {
-        this.selectTheme = this.theme;
-        this.syncThemeIntoDemoComponents();
-      }
-    }
-
-    public switchTheme(e: Event): void {
-      this.$store.commit('setPlaygroundTheme', (e.target as HTMLInputElement).value);
-    }
-
-    public switchDir = (e: Event): void => {
-      this.$store.commit('setPlaygroundDir', (e.target as HTMLInputElement).value);
-    };
-
-    public toggleFullscreen(): void {
-      this.isFullWindow = !this.isFullWindow;
-      document.body.style.overflow = this.isFullWindow ? 'hidden' : '';
-      document.body[this.isFullWindow ? 'addEventListener' : 'removeEventListener'](
-        'keydown',
-        this.onFullScreenKeyDown
-      );
-    }
-
-    private onFullScreenKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        this.toggleFullscreen();
-      }
-    };
-
-    public get cleanedEditorMarkup(): string {
-      return this.hasFrameworkMarkup ? this.codeBlockMarkup : cleanMarkup(this.codeBlockMarkup);
-    }
-
-    public get mergedConfig(): PlaygroundConfig {
-      return { ...initialConfig, ...this.config };
-    }
-
-    public get codeBlockMarkup(): string {
-      return patchThemeIntoMarkup(this.activeFrameworkMarkup ?? this.markup, this.theme);
-    }
-
-    public get cleanedDemoMarkup(): string {
-      return this.config.withoutDemo ? '' : this.markup.replace(/\n/g, '');
-    }
-
-    public get frameworks(): Framework[] {
-      return this.hasFrameworkMarkup
-        ? (Object.keys(this.frameworkMarkup) as Framework[])
-        : (undefined as unknown as Framework[]);
-    }
-
-    public get activeFramework(): Framework {
-      return this.$store.getters.selectedFramework;
-    }
-
-    public get activeFrameworkMarkup(): string {
-      // in case there aren't all frameworks available we use the first one as fallback
-      return this.frameworkMarkup[this.activeFramework] || Object.values(this.frameworkMarkup)[0];
-    }
-
-    public get isSlotSet(): boolean {
-      return !!this.$scopedSlots.default;
-    }
-
-    public get hasFrameworkMarkup(): boolean {
-      return Object.keys(this.frameworkMarkup).length !== 0;
-    }
-
-    public get theme(): PlaygroundTheme {
-      return this.config.themeable ? this.$store.getters.playgroundTheme : 'light';
-    }
-
-    public get dir(): PlaygroundDir {
-      return this.$store.getters.playgroundDir || 'ltr';
-    }
-
-    public get sharedImportKeys(): SharedImportKey[] {
-      if (this.hasFrameworkMarkup && this.frameworks.includes('shared')) {
-        return (
-          (this.frameworkMarkup
-            .react!.match(/import { (.+) } from '@porsche-design-system\/shared';/)?.[1] // extract all imports
-            .match(/(?!type)\b[a-z][a-zA-Z]+/g) as SharedImportKey[]) || [] // extract constants, ignore types
-        );
-      } else {
-        return [];
-      }
-    }
-
-    private syncThemeIntoDemoComponents(): void {
-      (this.$refs.demo as HTMLElement)
-        ?.querySelectorAll(themeableComponentsSelector)
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        .forEach((el) => ((el as any).theme = this.theme));
+  public mounted(): void {
+    this.selectDir = this.dir;
+    if (this.config.themeable) {
+      this.selectTheme = this.theme;
+      this.syncThemeIntoDemoComponents();
     }
   }
+
+  public updated(): void {
+    this.selectDir = this.dir;
+    if (this.config.themeable) {
+      this.selectTheme = this.theme;
+      this.syncThemeIntoDemoComponents();
+    }
+  }
+
+  public switchTheme(e: Event): void {
+    this.$store.commit('setPlaygroundTheme', (e.target as HTMLInputElement).value);
+  }
+
+  public switchDir = (e: Event): void => {
+    this.$store.commit('setPlaygroundDir', (e.target as HTMLInputElement).value);
+  };
+
+  public toggleFullscreen(): void {
+    this.isFullWindow = !this.isFullWindow;
+    document.body.style.overflow = this.isFullWindow ? 'hidden' : '';
+    document.body[this.isFullWindow ? 'addEventListener' : 'removeEventListener']('keydown', this.onFullScreenKeyDown);
+  }
+
+  private onFullScreenKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      this.toggleFullscreen();
+    }
+  };
+
+  public get cleanedEditorMarkup(): string {
+    return this.hasFrameworkMarkup ? this.codeBlockMarkup : cleanMarkup(this.codeBlockMarkup);
+  }
+
+  public get mergedConfig(): PlaygroundConfig {
+    return { ...initialConfig, ...this.config };
+  }
+
+  public get codeBlockMarkup(): string {
+    return patchThemeIntoMarkup(this.activeFrameworkMarkup ?? this.markup, this.theme);
+  }
+
+  public get cleanedDemoMarkup(): string {
+    return this.config.withoutDemo ? '' : this.markup.replace(/\n/g, '');
+  }
+
+  public get frameworks(): Framework[] {
+    return this.hasFrameworkMarkup
+      ? (Object.keys(this.frameworkMarkup) as Framework[])
+      : (undefined as unknown as Framework[]);
+  }
+
+  public get activeFramework(): Framework {
+    return this.$store.getters.selectedFramework;
+  }
+
+  public get activeFrameworkMarkup(): string {
+    // in case there aren't all frameworks available we use the first one as fallback
+    return this.frameworkMarkup[this.activeFramework] || Object.values(this.frameworkMarkup)[0];
+  }
+
+  public get isSlotSet(): boolean {
+    return !!this.$scopedSlots.default;
+  }
+
+  public get hasFrameworkMarkup(): boolean {
+    return Object.keys(this.frameworkMarkup).length !== 0;
+  }
+
+  public get theme(): PlaygroundTheme {
+    return this.config.themeable ? this.$store.getters.playgroundTheme : 'light';
+  }
+
+  public get dir(): PlaygroundDir {
+    return this.$store.getters.playgroundDir || 'ltr';
+  }
+
+  public get sharedImportKeys(): SharedImportKey[] {
+    if (this.hasFrameworkMarkup && this.frameworks.includes('shared')) {
+      return (
+        (this.frameworkMarkup
+          .react!.match(/import { (.+) } from '@porsche-design-system\/shared';/)?.[1] // extract all imports
+          .match(/(?!type)\b[a-z][a-zA-Z]+/g) as SharedImportKey[]) || [] // extract constants, ignore types
+      );
+    } else {
+      return [];
+    }
+  }
+
+  private syncThemeIntoDemoComponents(): void {
+    (this.$refs.demo as HTMLElement)
+      ?.querySelectorAll(themeableComponentsSelector)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .forEach((el) => ((el as any).theme = this.theme));
+  }
+}
 </script>
 
 <style scoped lang="scss">

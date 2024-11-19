@@ -1,15 +1,15 @@
 <script setup lang="ts">
-  import { type CarouselUpdateEventDetail, PCarousel } from '@porsche-design-system/components-vue';
-  import { ref } from 'vue';
+import { type CarouselUpdateEventDetail, PCarousel } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
 
-  const activeSlideIndex = ref(1);
+const activeSlideIndex = ref(1);
 
-  const onUpdate = (e: CarouselUpdateEventDetail): void => {
-    activeSlideIndex.value = e.activeIndex;
-  };
-  const onButtonClick = (e: MouseEvent): void => {
-    activeSlideIndex.value = parseInt((e.target as HTMLButtonElement).innerText) - 1;
-  };
+const onUpdate = (e: CarouselUpdateEventDetail): void => {
+  activeSlideIndex.value = e.activeIndex;
+};
+const onButtonClick = (e: MouseEvent): void => {
+  activeSlideIndex.value = parseInt((e.target as HTMLButtonElement).innerText) - 1;
+};
 </script>
 
 <template>

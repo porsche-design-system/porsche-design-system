@@ -7,16 +7,16 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import Teaser from '@/components/Teaser.vue';
-  import Intro from '@/components/Intro.vue';
-  import Masonry from '@/components/Masonry.vue';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import Teaser from '@/components/Teaser.vue';
+import Intro from '@/components/Intro.vue';
+import Masonry from '@/components/Masonry.vue';
 
-  @Component({
-    components: { Teaser, Intro, Masonry },
-  })
-  export default class HomeView extends Vue {}
+@Component({
+  components: { Teaser, Intro, Masonry },
+})
+export default class HomeView extends Vue {}
 </script>
 
 <style scoped lang="scss">

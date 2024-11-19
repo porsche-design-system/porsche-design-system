@@ -67,7 +67,8 @@ export class ToastManagerClass {
       // respect --p-temporary-toast-timeout css variable to override timeout during e2e and vrt tests
       ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
         ? MOTION_DURATION
-        : Number.parseInt(getComputedStyle(this.toastEl).getPropertyValue(cssVariableAnimationDuration), 10) || MOTION_DURATION
+        : Number.parseInt(getComputedStyle(this.toastEl).getPropertyValue(cssVariableAnimationDuration), 10) ||
+            MOTION_DURATION
     );
   };
 

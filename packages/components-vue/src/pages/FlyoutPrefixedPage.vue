@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { PFlyout, PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
+import { PFlyout, PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
 </script>
 
 <template>

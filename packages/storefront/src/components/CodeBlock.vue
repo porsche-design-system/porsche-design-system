@@ -9,57 +9,57 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { Prop } from 'vue-property-decorator';
-  import type { BackgroundColor, Framework, FrameworkMarkup, PlaygroundTheme } from '@/models';
-  import { convertMarkup, getHighlightedCode } from '@/utils';
-  import { frameworkNameMap } from '@/utils/frameworkNameMap';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { Prop } from 'vue-property-decorator';
+import type { BackgroundColor, Framework, FrameworkMarkup, PlaygroundTheme } from '@/models';
+import { convertMarkup, getHighlightedCode } from '@/utils';
+import { frameworkNameMap } from '@/utils/frameworkNameMap';
 
-  @Component
-  export default class CodeBlock extends Vue {
-    @Prop({ default: '' }) public markup!: string;
-    @Prop({ default: 'light' }) public theme!: PlaygroundTheme;
-    @Prop({ default: 'background-base' }) public backgroundColor!: BackgroundColor;
-    @Prop({ default: false }) public convertMarkup!: boolean;
-    @Prop({ default: () => ['vanilla-js', 'angular', 'react', 'vue'] }) public frameworks!: Framework[];
+@Component
+export default class CodeBlock extends Vue {
+  @Prop({ default: '' }) public markup!: string;
+  @Prop({ default: 'light' }) public theme!: PlaygroundTheme;
+  @Prop({ default: 'background-base' }) public backgroundColor!: BackgroundColor;
+  @Prop({ default: false }) public convertMarkup!: boolean;
+  @Prop({ default: () => ['vanilla-js', 'angular', 'react', 'vue'] }) public frameworks!: Framework[];
 
-    frameworkBeforeShared = this.framework;
+  frameworkBeforeShared = this.framework;
 
-    private destroyed(): void {
-      // reset framework to what is was before selecting "shared" since that one is usually not available
-      if (this.framework === 'shared') {
-        this.$store.commit('setSelectedFramework', this.frameworkBeforeShared);
-      }
-    }
-
-    public get usedFrameworks(): FrameworkMarkup {
-      return this.frameworks.reduce((prev, key) => {
-        prev[key as Framework] = frameworkNameMap[key as Framework];
-        return prev;
-      }, {} as FrameworkMarkup);
-    }
-
-    public get activeTabIndex(): number {
-      return Object.keys(this.usedFrameworks).indexOf(this.framework);
-    }
-
-    public get framework(): Framework {
-      return this.$store.getters.selectedFramework;
-    }
-
-    public setFramework(framework: Framework): void {
-      if (framework === 'shared') {
-        this.frameworkBeforeShared = this.framework;
-      }
-      this.$store.commit('setSelectedFramework', framework);
-    }
-
-    get highlightedMarkup(): string {
-      const markup = this.convertMarkup ? convertMarkup(this.markup, this.framework) : this.markup;
-      return getHighlightedCode(markup, this.framework);
+  private destroyed(): void {
+    // reset framework to what is was before selecting "shared" since that one is usually not available
+    if (this.framework === 'shared') {
+      this.$store.commit('setSelectedFramework', this.frameworkBeforeShared);
     }
   }
+
+  public get usedFrameworks(): FrameworkMarkup {
+    return this.frameworks.reduce((prev, key) => {
+      prev[key as Framework] = frameworkNameMap[key as Framework];
+      return prev;
+    }, {} as FrameworkMarkup);
+  }
+
+  public get activeTabIndex(): number {
+    return Object.keys(this.usedFrameworks).indexOf(this.framework);
+  }
+
+  public get framework(): Framework {
+    return this.$store.getters.selectedFramework;
+  }
+
+  public setFramework(framework: Framework): void {
+    if (framework === 'shared') {
+      this.frameworkBeforeShared = this.framework;
+    }
+    this.$store.commit('setSelectedFramework', framework);
+  }
+
+  get highlightedMarkup(): string {
+    const markup = this.convertMarkup ? convertMarkup(this.markup, this.framework) : this.markup;
+    return getHighlightedCode(markup, this.framework);
+  }
+}
 </script>
 
 <style scoped lang="scss">

@@ -16,8 +16,8 @@ export const getHoverStyle = (opts?: Options) => {
     borderRadius === 'small'
       ? borderRadiusSmall
       : borderRadius === 'medium'
-      ? borderRadiusMedium
-      : borderRadius || borderRadiusSmall;
+        ? borderRadiusMedium
+        : borderRadius || borderRadiusSmall;
 
   return {
     borderRadius: borderRadiusValue, // it's visually being reflected on both (when placed here), element and hover

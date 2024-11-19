@@ -103,7 +103,7 @@ describe('escapeHtml()', () => {
   it('should replace special characters', () => {
     const markup = '<a href="https://porsche.com?param1=x&param2=y" target="_blank">Link</a>';
     expect(escapeHtml(markup)).toBe(
-      '&lt;a href=&quot;https://porsche.com?param1=x&amp;param2=y&quot; target=&quot;_blank&quot;&gt;Link&lt;/a&gt;',
+      '&lt;a href=&quot;https://porsche.com?param1=x&amp;param2=y&quot; target=&quot;_blank&quot;&gt;Link&lt;/a&gt;'
     );
   });
 });
@@ -292,7 +292,7 @@ describe('formatPropDefaultValue()', () => {
     },
     {
       description:
-        'Defines the direction of the main and cross axis of the links. The default is \'{base: ‘column’, xs: ‘row’}\' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint \'xs\'.   // prettier-ignore',
+        "Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.   // prettier-ignore",
       type: 'LinkTileModelSignatureLinkDirection',
       defaultValue: { base: 'column', xs: 'row' },
       isBreakpointCustomizable: true,
@@ -340,13 +340,13 @@ describe('formatEventType()', () => {
   it.each<EventMeta>([
     {
       description:
-        '@deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when carousel\'s content slides.',
+        "@deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when carousel's content slides.",
       type: 'CarouselUpdateEventDetail',
       typeDetail: '{ activeIndex: number; previousIndex: number }',
       isDeprecated: true,
     },
     {
-      description: 'Emitted when carousel\'s content slides.',
+      description: "Emitted when carousel's content slides.",
       type: 'CarouselUpdateEventDetail',
       typeDetail: '{ activeIndex: number; previousIndex: number }',
     },

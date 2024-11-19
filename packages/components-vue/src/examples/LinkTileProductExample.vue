@@ -1,12 +1,12 @@
 <script setup lang="ts">
-  import { type LinkTileProductLikeEventDetail, PLinkTileProduct, PTag } from '@porsche-design-system/components-vue';
-  import { ref } from 'vue';
+import { type LinkTileProductLikeEventDetail, PLinkTileProduct, PTag } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
 
-  const liked = ref(false);
+const liked = ref(false);
 
-  const handleLike = (e: LinkTileProductLikeEventDetail): void => {
-    liked.value = !e.liked;
-  };
+const handleLike = (e: LinkTileProductLikeEventDetail): void => {
+  liked.value = !e.liked;
+};
 </script>
 
 <template>

@@ -45,7 +45,7 @@ describe('setAriaAttributes()', () => {
 
 describe('parseAndGetAriaAttributes()', () => {
   // prettier-ignore
-  const rawAttributes = '{ aria-label: \'Some label\' }';
+  const rawAttributes = "{ aria-label: 'Some label' }";
 
   it('should call parseJSONAttribute()', () => {
     const spy = jest.spyOn(jsonUtils, 'parseJSONAttribute');
@@ -64,9 +64,9 @@ describe('parseAndGetAriaAttributes()', () => {
       'aria-pressed': 'true',
     },
     // prettier-ignore
-    '{\'aria-label\': \'Some label\', \'aria-pressed\': true}',
+    "{'aria-label': 'Some label', 'aria-pressed': true}",
     // prettier-ignore
-    '{\'aria-label\': \'Some label\', \'aria-pressed\': \'true\'}',
+    "{'aria-label': 'Some label', 'aria-pressed': 'true'}",
   ])('should return correct aria attributes with boolean for %o', (rawAttributes) => {
     expect(parseAndGetAriaAttributes(rawAttributes)).toEqual({
       'aria-label': 'Some label',

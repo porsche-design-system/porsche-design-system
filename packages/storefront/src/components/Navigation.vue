@@ -32,76 +32,76 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { Watch } from 'vue-property-decorator';
-  import { StorefrontConfig, StorefrontTheme } from '@/models';
-  import { capitalCase, paramCase } from 'change-case';
-  import { Route } from 'vue-router';
-  import { config as storefrontConfig } from '@/../storefront.config';
-  import type { TagName } from '@porsche-design-system/shared';
-  import { ComponentMeta, getComponentMeta } from '@porsche-design-system/component-meta';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { Watch } from 'vue-property-decorator';
+import { StorefrontConfig, StorefrontTheme } from '@/models';
+import { capitalCase, paramCase } from 'change-case';
+import { Route } from 'vue-router';
+import { config as storefrontConfig } from '@/../storefront.config';
+import type { TagName } from '@porsche-design-system/shared';
+import { ComponentMeta, getComponentMeta } from '@porsche-design-system/component-meta';
 
-  @Component({
-    components: {},
-  })
-  export default class Navigation extends Vue {
-    public config: StorefrontConfig = storefrontConfig;
-    public accordion: { [id: string]: boolean } = {};
+@Component({
+  components: {},
+})
+export default class Navigation extends Vue {
+  public config: StorefrontConfig = storefrontConfig;
+  public accordion: { [id: string]: boolean } = {};
 
-    public get storefrontTheme(): StorefrontTheme {
-      return this.$store.getters.storefrontTheme;
-    }
-
-    public get isSearchVisible(): boolean {
-      return this.$store.getters.isSearchActive;
-    }
-
-    public getRoute(category: string, page: string, tab?: string): string {
-      const params = [category, page, tab].filter((param) => param !== undefined);
-      return `/${params.map((x) => paramCase(x)).join('/')}`;
-    }
-
-    public isExtendedActive(category: string, page: string) {
-      return this.$route.params.category + this.$route.params.page === paramCase(category) + paramCase(page);
-    }
-
-    private created(): void {
-      this.accordion = Object.keys(this.config).reduce(
-        (result, category) => {
-          result[category] = false;
-          return result;
-        },
-        {} as { [id: string]: boolean }
-      );
-
-      this.config.Components = Object.keys(this.config.Components).reduce(
-        (result, category) => {
-          result[category] = this.config.Components[category];
-          return result;
-        },
-        {} as StorefrontConfig['Components']
-      );
-    }
-
-    @Watch('$route')
-    private onRouteChange(to: Route): void {
-      this.accordion = { ...this.accordion, [Navigation.category(to)]: true };
-    }
-
-    toggleActive(category: string): void {
-      this.accordion = { ...this.accordion, [category]: !this.accordion[category] };
-    }
-
-    isComponentWithProp(category: string, page: string, prop: keyof ComponentMeta): string {
-      return category === 'Components' && getComponentMeta(('p-' + paramCase(page)) as TagName)?.[prop];
-    }
-
-    private static category(route: Route): string {
-      const { category } = route.params;
-      return category ? capitalCase(category) : '';
-    }
+  public get storefrontTheme(): StorefrontTheme {
+    return this.$store.getters.storefrontTheme;
   }
+
+  public get isSearchVisible(): boolean {
+    return this.$store.getters.isSearchActive;
+  }
+
+  public getRoute(category: string, page: string, tab?: string): string {
+    const params = [category, page, tab].filter((param) => param !== undefined);
+    return `/${params.map((x) => paramCase(x)).join('/')}`;
+  }
+
+  public isExtendedActive(category: string, page: string) {
+    return this.$route.params.category + this.$route.params.page === paramCase(category) + paramCase(page);
+  }
+
+  private created(): void {
+    this.accordion = Object.keys(this.config).reduce(
+      (result, category) => {
+        result[category] = false;
+        return result;
+      },
+      {} as { [id: string]: boolean }
+    );
+
+    this.config.Components = Object.keys(this.config.Components).reduce(
+      (result, category) => {
+        result[category] = this.config.Components[category];
+        return result;
+      },
+      {} as StorefrontConfig['Components']
+    );
+  }
+
+  @Watch('$route')
+  private onRouteChange(to: Route): void {
+    this.accordion = { ...this.accordion, [Navigation.category(to)]: true };
+  }
+
+  toggleActive(category: string): void {
+    this.accordion = { ...this.accordion, [category]: !this.accordion[category] };
+  }
+
+  isComponentWithProp(category: string, page: string, prop: keyof ComponentMeta): string {
+    return category === 'Components' && getComponentMeta(('p-' + paramCase(page)) as TagName)?.[prop];
+  }
+
+  private static category(route: Route): string {
+    const { category } = route.params;
+    return category ? capitalCase(category) : '';
+  }
+}
 </script>
 
 <style scoped lang="scss">

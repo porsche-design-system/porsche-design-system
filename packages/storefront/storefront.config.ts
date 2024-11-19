@@ -149,9 +149,13 @@ export const config: StorefrontConfig = {
       Usage: [() => import('@/../../components/src/components/flyout-multilevel/flyout-multilevel.usage.md')],
       Props: [
         // prettier-ignore
-        () => import('@/../../components/src/components/flyout-multilevel/flyout-multilevel/flyout-multilevel.props.md'),
+        () =>
+          import('@/../../components/src/components/flyout-multilevel/flyout-multilevel/flyout-multilevel.props.md'),
         // prettier-ignore
-        () => import('@/../../components/src/components/flyout-multilevel/flyout-multilevel-item/flyout-multilevel-item.props.md'),
+        () =>
+          import(
+            '@/../../components/src/components/flyout-multilevel/flyout-multilevel-item/flyout-multilevel-item.props.md'
+          ),
       ],
     },
     Grid: {
@@ -202,9 +206,16 @@ export const config: StorefrontConfig = {
     },
     // prettier-ignore
     'Link Tile Model Signature': {
-      Examples: [() => import('@/../../components/src/components/link-tile-model-signature/link-tile-model-signature.examples.md')],
-      Usage: [() => import('@/../../components/src/components/link-tile-model-signature/link-tile-model-signature.usage.md')],
-      Props: [() => import('@/../../components/src/components/link-tile-model-signature/link-tile-model-signature.props.md')],
+      Examples: [
+        () =>
+          import('@/../../components/src/components/link-tile-model-signature/link-tile-model-signature.examples.md'),
+      ],
+      Usage: [
+        () => import('@/../../components/src/components/link-tile-model-signature/link-tile-model-signature.usage.md'),
+      ],
+      Props: [
+        () => import('@/../../components/src/components/link-tile-model-signature/link-tile-model-signature.props.md'),
+      ],
     },
     'Link Tile Product': {
       Examples: [() => import('@/../../components/src/components/link-tile-product/link-tile-product.examples.md')],
@@ -251,7 +262,9 @@ export const config: StorefrontConfig = {
     },
     'Radio Button Wrapper': {
       // prettier-ignore
-      Examples: [() => import('@/../../components/src/components/radio-button-wrapper/radio-button-wrapper.examples.md')],
+      Examples: [
+        () => import('@/../../components/src/components/radio-button-wrapper/radio-button-wrapper.examples.md'),
+      ],
       Usage: [() => import('@/../../components/src/components/radio-button-wrapper/radio-button-wrapper.usage.md')],
       Props: [() => import('@/../../components/src/components/radio-button-wrapper/radio-button-wrapper.props.md')],
     },
@@ -265,8 +278,12 @@ export const config: StorefrontConfig = {
       Usage: [() => import('@/../../components/src/components/segmented-control/segmented-control.usage.md')],
       // prettier-ignore
       Props: [
-        () => import('@/../../components/src/components/segmented-control/segmented-control/segmented-control.props.md'),
-        () => import('@/../../components/src/components/segmented-control/segmented-control-item/segmented-control-item.props.md'),
+        () =>
+          import('@/../../components/src/components/segmented-control/segmented-control/segmented-control.props.md'),
+        () =>
+          import(
+            '@/../../components/src/components/segmented-control/segmented-control-item/segmented-control-item.props.md'
+          ),
       ],
     },
     Select: {
@@ -279,7 +296,9 @@ export const config: StorefrontConfig = {
     },
     'Select Wrapper': {
       // prettier-ignore
-      Examples: [() => import('@/../../components/src/components/select-wrapper/select-wrapper/select-wrapper.examples.md')],
+      Examples: [
+        () => import('@/../../components/src/components/select-wrapper/select-wrapper/select-wrapper.examples.md'),
+      ],
       Usage: [() => import('@/../../components/src/components/select-wrapper/select-wrapper/select-wrapper.usage.md')],
       Props: [() => import('@/../../components/src/components/select-wrapper/select-wrapper/select-wrapper.props.md')],
     },
@@ -290,11 +309,23 @@ export const config: StorefrontConfig = {
     },
     // prettier-ignore
     'Stepper Horizontal': {
-      Examples: [() => import('@/../../components/src/components/stepper-horizontal/stepper-horizontal/stepper-horizontal.examples.md')],
-      Usage: [() => import('@/../../components/src/components/stepper-horizontal/stepper-horizontal/stepper-horizontal.usage.md')],
+      Examples: [
+        () =>
+          import(
+            '@/../../components/src/components/stepper-horizontal/stepper-horizontal/stepper-horizontal.examples.md'
+          ),
+      ],
+      Usage: [
+        () =>
+          import('@/../../components/src/components/stepper-horizontal/stepper-horizontal/stepper-horizontal.usage.md'),
+      ],
       Props: [
-        () => import('@/../../components/src/components/stepper-horizontal/stepper-horizontal/stepper-horizontal.props.md'),
-        () => import('@/../../components/src/components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item.props.md'),
+        () =>
+          import('@/../../components/src/components/stepper-horizontal/stepper-horizontal/stepper-horizontal.props.md'),
+        () =>
+          import(
+            '@/../../components/src/components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item.props.md'
+          ),
       ],
     },
     Switch: {

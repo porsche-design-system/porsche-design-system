@@ -39,4 +39,3 @@ it('should return false if getDirectChildHTMLElement returns an element not matc
 
   expect(hasSpecificDirectChildTag(host, tag)).toBe(false);
 });
-

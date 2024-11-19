@@ -1,38 +1,38 @@
 <script setup lang="ts">
-  import {
-    type MultiSelectUpdateEventDetail,
-    PMultiSelect,
-    PMultiSelectOption,
-  } from '@porsche-design-system/components-vue';
-  import { ref } from 'vue';
+import {
+  type MultiSelectUpdateEventDetail,
+  PMultiSelect,
+  PMultiSelectOption,
+} from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
 
-  const selectedValues = ref<string[]>([]);
-  const inputValue = ref('');
-  const optionCount = ref(3);
+const selectedValues = ref<string[]>([]);
+const inputValue = ref('');
+const optionCount = ref(3);
 
-  const onSetValue = () => {
-    selectedValues.value = inputValue.value.split(',');
-  };
+const onSetValue = () => {
+  selectedValues.value = inputValue.value.split(',');
+};
 
-  const onResetValue = () => {
-    selectedValues.value = [];
-    inputValue.value = '';
-  };
+const onResetValue = () => {
+  selectedValues.value = [];
+  inputValue.value = '';
+};
 
-  const onUpdate = (e: MultiSelectUpdateEventDetail) => {
-    selectedValues.value = e.value;
-    inputValue.value = e.value.join(',');
-  };
+const onUpdate = (e: MultiSelectUpdateEventDetail) => {
+  selectedValues.value = e.value;
+  inputValue.value = e.value.join(',');
+};
 
-  const onAddOption = () => {
-    optionCount.value++;
-  };
+const onAddOption = () => {
+  optionCount.value++;
+};
 
-  const onRemoveOption = () => {
-    if (optionCount.value > 0) {
-      optionCount.value--;
-    }
-  };
+const onRemoveOption = () => {
+  if (optionCount.value > 0) {
+    optionCount.value--;
+  }
+};
 </script>
 
 <template>
