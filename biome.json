@@ -103,7 +103,6 @@
         "noReExportAll": "off",
         "noBarrelFile": "off"
       },
-      "security": {},
       "style": {
         "useBlockStatements": "off",
         "noInferrableTypes": "off",
