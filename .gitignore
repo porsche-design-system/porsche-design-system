@@ -15,6 +15,7 @@ dist-tmp/
 www/
 coverage/
 .stencil/
+playwright-report/
 
 # Cache
 .aws-sam

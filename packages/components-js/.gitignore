@@ -12,8 +12,6 @@
 /tests/vrt/results
 /tests/smoke/unit/results
 /tests/smoke/e2e/results
-/playwright-report/
-/playwright/.cache/
 
 *~
 *.sw[mnpcod]
