@@ -91,8 +91,7 @@
         "noUselessTypeConstraint": "error",
         "noUselessUndefinedInitialization": "error",
         "noWith": "error",
-        "useLiteralKeys": "error",
-        "noForEach": "off"
+        "useLiteralKeys": "error"
       },
       "correctness": {
         "noConstAssign": "error",
@@ -276,7 +275,8 @@
       "linter": {
         "rules": {
           "complexity": {
-            "useLiteralKeys": "off"
+            "useLiteralKeys": "off",
+            "noForEach": "off"
           },
           "suspicious": {
             "noConsole": "off",

@@ -1,17 +1,16 @@
-import type { FormState } from '../../../utils/form/form-state';
+import { forceUpdate } from '@stencil/core';
 import {
+  type SelectComponentsDropdownDirection,
+  type SelectDropdownDirectionInternal,
+  type Theme,
   consoleWarn,
   determineDropdownDirection,
   getHighlightedSelectOptionIndex,
   getUsableSelectOptions,
-  type SelectDropdownDirectionInternal,
-  type SelectComponentsDropdownDirection,
-  type Theme,
 } from '../../../utils';
-import type { SelectOptionInternalHTMLProps } from '../select-option/select-option-utils';
-import { forceUpdate } from '@stencil/core';
+import type { FormState } from '../../../utils/form/form-state';
 import type { OptgroupInternalHTMLProps } from '../../optgroup/optgroup-utils';
-
+import type { SelectOptionInternalHTMLProps } from '../select-option/select-option-utils';
 export type SelectState = FormState;
 export type SelectOption = HTMLPSelectOptionElement & SelectOptionInternalHTMLProps;
 export type SelectDropdownDirection = SelectComponentsDropdownDirection;
@@ -24,12 +23,10 @@ export type SelectUpdateEventDetail = {
 
 // TODO: share between select & multi-select
 export const syncSelectChildrenProps = (children: (SelectOption | SelectOptgroup)[], theme: Theme): void => {
-  children
-    .filter((child) => child.theme !== theme)
-    .forEach((child) => {
-      child.theme = theme;
-      forceUpdate(child);
-    });
+  for (const child of children.filter((child) => child.theme !== theme)) {
+    child.theme = theme;
+    forceUpdate(child);
+  }
 };
 
 export const getSelectedOptionString = (options: SelectOption[]): string =>
