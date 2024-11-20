@@ -1,6 +1,6 @@
-import type { TileAspectRatio, TileWeight } from '../../utils';
 import type { GroupDirection } from '../../styles/group-direction-styles';
 import type { LinkVariant } from '../../types';
+import type { TileAspectRatio, TileWeight } from '../../utils';
 
 // array is redefined instead of using the one from in model-signature
 // because it is created via Object.keys(MODEL_SIGNATURES_MANIFEST) would bundle the entire manifest into both chunks
@@ -26,10 +26,10 @@ export type LinkTileModelSignatureAspectRatio = TileAspectRatio;
 export type LinkTileModelSignatureLinkDirection = GroupDirection;
 
 export const setRequiredPropsOfSlottedLinks = (linkElements: [HTMLPLinkElement, HTMLPLinkElement]): void => {
-  linkElements.forEach((link) => {
+  for (const link of linkElements) {
     link.theme = 'dark';
     link.variant = link.slot as LinkVariant;
-  });
+  }
 };
 
 export const getLinkOrSlottedAnchorElement = (linkElement: HTMLPLinkElement): HTMLPLinkElement | HTMLAnchorElement => {

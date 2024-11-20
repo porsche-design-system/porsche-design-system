@@ -1,5 +1,5 @@
-import type { TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
+import type { TagName } from '@porsche-design-system/shared';
 
 export const addParentAndSetRequiredProps = (tagName: TagName, component: any): void => {
   const { requiredParent, requiredChild, propsMeta = {}, hasEvent, eventsMeta, slotsMeta } = getComponentMeta(tagName);
@@ -25,7 +25,7 @@ export const addParentAndSetRequiredProps = (tagName: TagName, component: any): 
   const requiredNamedSlots = slotsMeta && Object.entries(slotsMeta).filter(([, value]) => value.isRequired);
 
   if (requiredNamedSlots && requiredNamedSlots.length > 0) {
-    requiredNamedSlots.forEach(([slotName, value]) => {
+    for (const [slotName, value] of requiredNamedSlots) {
       const child = document.createElement(value.allowedTagNames[0]);
       child.slot = slotName;
 
@@ -34,7 +34,7 @@ export const addParentAndSetRequiredProps = (tagName: TagName, component: any): 
       }
 
       component.host.appendChild(child);
-    });
+    }
   }
 
   const requiredProps =
@@ -44,14 +44,14 @@ export const addParentAndSetRequiredProps = (tagName: TagName, component: any): 
       .map(([key]) => key);
 
   if (requiredProps) {
-    requiredProps.forEach((prop) => {
+    for (const prop of requiredProps) {
       component[prop] = propsMeta[prop].defaultValue ?? 'some value';
-    });
+    }
   }
 
   if (hasEvent) {
-    Object.keys(eventsMeta).forEach((event) => {
+    for (const event of Object.keys(eventsMeta)) {
       component[event] = jest.fn();
-    });
+    }
   }
 };

@@ -1,8 +1,8 @@
-import { getTagNameWithoutPrefix, throwException } from '../../../utils';
-import type { Theme } from '../../../types';
-import type { StepperHorizontalItemInternalHTMLProps } from '../stepper-horizontal-item/stepper-horizontal-item-utils';
-import type { StepperHorizontalItem } from '../stepper-horizontal-item/stepper-horizontal-item';
 import { forceUpdate } from '@stencil/core';
+import type { Theme } from '../../../types';
+import { getTagNameWithoutPrefix, throwException } from '../../../utils';
+import type { StepperHorizontalItem } from '../stepper-horizontal-item/stepper-horizontal-item';
+import type { StepperHorizontalItemInternalHTMLProps } from '../stepper-horizontal-item/stepper-horizontal-item-utils';
 
 export const STEPPER_HORIZONTAL_SIZES = ['small', 'medium'] as const;
 export type StepperHorizontalSize = (typeof STEPPER_HORIZONTAL_SIZES)[number];
@@ -28,10 +28,8 @@ export const throwIfMultipleCurrentStates = (
 };
 
 export const syncStepperHorizontalItemsProps = (host: HTMLElement, theme: Theme): void => {
-  Array.from(host.children).forEach(
-    (item: HTMLElement & StepperHorizontalItem & StepperHorizontalItemInternalHTMLProps) => {
-      item.theme = theme;
-      forceUpdate(item);
-    }
-  );
+  for (const item of Array.from(host.children)) {
+    (item as HTMLElement & StepperHorizontalItem & StepperHorizontalItemInternalHTMLProps).theme = theme;
+    forceUpdate(item);
+  }
 };

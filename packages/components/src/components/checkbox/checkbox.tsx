@@ -127,7 +127,7 @@ export class Checkbox {
 
   @Watch('value')
   public onValueChange(newValue: string): void {
-    this.internals.setFormValue(this.checkboxInputElement && this.checkboxInputElement.checked ? newValue : undefined);
+    this.internals.setFormValue(this.checkboxInputElement?.checked ? newValue : undefined);
   }
 
   @Watch('indeterminate')

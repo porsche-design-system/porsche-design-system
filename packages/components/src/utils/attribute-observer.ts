@@ -5,12 +5,13 @@ export const attributeMutationMap: Map<Node, () => void> = new Map();
 const attributeObserver =
   hasWindow &&
   new MutationObserver((mutations) => {
-    mutations
+    for (const mutation of mutations
       // reduce array to only entries that have really a changed value
       .filter((mutation) => mutation.oldValue !== (mutation.target as HTMLElement).getAttribute(mutation.attributeName))
       // remove duplicates so we execute callback only once per node
-      .filter((mutation, idx, arr) => arr.findIndex((m) => m.target === mutation.target) === idx)
-      .forEach((mutation) => attributeMutationMap.get(mutation.target)?.());
+      .filter((mutation, idx, arr) => arr.findIndex((m) => m.target === mutation.target) === idx)) {
+      attributeMutationMap.get(mutation.target)?.();
+    }
   });
 
 export const observeAttributes = <T extends HTMLElement, K = keyof T>(

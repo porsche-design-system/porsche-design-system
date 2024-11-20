@@ -1,3 +1,6 @@
+import type { TagName } from '@porsche-design-system/shared';
+import * as detectDuplicatesUtils from '../../is-already-in-array';
+import * as tagNameUtils from '../../tag-name';
 import {
   getPdsComponentsSelector,
   getPorscheDesignSystemPrefixesForVersions,
@@ -7,13 +10,10 @@ import {
   getUsedTagNamesForVersions,
   getUsedTagNamesWithoutPreloadForVersions,
 } from './helper';
-import type { TagName } from '@porsche-design-system/shared';
 import * as helperUtils from './helper';
-import * as tagNameUtils from '../../tag-name';
-import * as detectDuplicatesUtils from '../../is-already-in-array';
 
 describe('getPreloadedTagNamesForCoreChunk()', () => {
-  let coreChunkLinkElement;
+  let coreChunkLinkElement: HTMLLinkElement;
   beforeEach(() => {
     document.head.innerHTML = ''; // Clear head before each test
     coreChunkLinkElement = document.createElement('link');
@@ -270,7 +270,7 @@ describe('getPorscheDesignSystemPrefixesForVersions()', () => {
       readyResolve: () => {},
       isReady: Promise.resolve,
     };
-    document.porscheDesignSystem = {
+    (document as Document & { porscheDesignSystem: any }).porscheDesignSystem = {
       cdn: { url: 'local', prefixes: [] },
       '1.2.3': { ...sharedProps, prefixes: [''] },
       '1.2.4': { ...sharedProps, prefixes: ['prefix', 'another-prefix'] },
