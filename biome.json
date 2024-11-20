@@ -81,7 +81,6 @@
         "useSemanticElements": "off",
         "useFocusableInteractive": "off",
         "noNoninteractiveTabindex": "off",
-        "noRedundantRoles": "off",
         "noLabelWithoutControl": "off"
       },
       "complexity": {
