@@ -54,3 +54,4 @@ ort/
 
 # Assets
 packages/assets/cdn/*
+packages/assets/projects/*/index.ts
