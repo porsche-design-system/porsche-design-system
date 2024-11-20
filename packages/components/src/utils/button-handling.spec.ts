@@ -30,7 +30,7 @@ describe('handleButtonEvent()', () => {
   const getName = jest.fn().mockReturnValue('name');
   const getValue = jest.fn().mockReturnValue('value');
 
-  it('should create a submit button and click it', (done) => {
+  it('should create a submit button and click it', async () => {
     const getDisabled = jest.fn().mockReturnValue(false);
     const form = document.createElement('form');
     document.body.appendChild(form);
@@ -45,17 +45,22 @@ describe('handleButtonEvent()', () => {
 
     handleButtonEvent(new MouseEvent('click'), element, getType, getDisabled, getName, getValue);
 
+    const asyncTimeout = (ms: number): Promise<void> => {
+      return new Promise((resolve) => {
+        setTimeout(resolve, ms);
+      });
+    };
+
     // Timeout necessary since function uses 1 tick timeout
-    setTimeout(() => {
-      expect(fakeButton.getAttribute('type')).toBe(getType());
-      expect(fakeButton.getAttribute('name')).toBe(getName());
-      expect(fakeButton.getAttribute('value')).toBe(getValue());
-      expect(fakeButton.style.display).toBe('none');
-      expect(formAppendChildSpy).toHaveBeenCalledWith(fakeButton);
-      expect(fakeButtonClickSpy).toHaveBeenCalled();
-      expect(fakeButtonRemoveSpy).toHaveBeenCalled();
-      done();
-    }, 10);
+    await asyncTimeout(10);
+
+    expect(fakeButton.getAttribute('type')).toBe(getType());
+    expect(fakeButton.getAttribute('name')).toBe(getName());
+    expect(fakeButton.getAttribute('value')).toBe(getValue());
+    expect(fakeButton.style.display).toBe('none');
+    expect(formAppendChildSpy).toHaveBeenCalledWith(fakeButton);
+    expect(fakeButtonClickSpy).toHaveBeenCalled();
+    expect(fakeButtonRemoveSpy).toHaveBeenCalled();
   });
 
   it('should not create a submit button if disabled', () => {

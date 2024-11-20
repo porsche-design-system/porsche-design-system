@@ -85,11 +85,9 @@ export class Popover {
       updateNativePopoverStyles(this.spacer, this.button);
       // Update popover styles with new position
       updatePopoverStyles(this.host, this.spacer, this.popover, this.direction, this.theme, this.isNativePopoverCase);
-    } else {
-      if (this.open) {
-        // calculate / update position only possible after render
-        updatePopoverStyles(this.host, this.spacer, this.popover, this.direction, this.theme, false);
-      }
+    } else if (this.open) {
+      // calculate / update position only possible after render
+      updatePopoverStyles(this.host, this.spacer, this.popover, this.direction, this.theme, false);
     }
   }
 
