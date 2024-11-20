@@ -18,8 +18,8 @@ all running workflows even outside the changed branch, so this must be aligned w
 
 1. Open `./docker/Dockerfile` and adjust the Playwright docker image with the updated npm `@playwright/test` version,
    e.g. from `FROM mcr.microsoft.com/playwright:v7.1.8-focal` to `FROM mcr.microsoft.com/playwright:v9.1.1-focal`.
-2. Open `./docker/build-and-push-docker-image.sh` and adjust the `TAG` with the updated Playwright docker image version,
-   e.g. from `TAG=v7.1.8-focal` to `TAG=v9.1.1-focal`.
+2. Open `./docker/scripts/build-and-push-docker-image.sh` and adjust the `TAG` with the updated Playwright docker image
+   version, e.g. from `TAG=v7.1.8-focal` to `TAG=v9.1.1-focal`.
 3. Adjust all files within repository using the docker image by search & replace all, e.g.
    `ghcr.io/porsche-design-system/porsche-design-system/playwright:v7.1.8-focal` with
    `ghcr.io/porsche-design-system/porsche-design-system/playwright:v9.1.1-focal`
