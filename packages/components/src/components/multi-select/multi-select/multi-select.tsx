@@ -356,7 +356,7 @@ export class MultiSelect {
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
         <span class="sr-only" role="status" aria-live="assertive" aria-relevant="additions text">
-          {!this.hasFilterResults ? 'No results found' : this.srHighlightedOptionText}
+          {this.hasFilterResults ? this.srHighlightedOptionText : 'No results found'}
         </span>
       </div>
     );
