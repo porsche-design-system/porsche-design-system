@@ -7,7 +7,6 @@ log.txt
 *.sublime-project
 *.sublime-workspace
 
-.stencil/
 .idea/
 .vscode/
 .sass-cache/

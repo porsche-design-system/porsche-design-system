@@ -7,13 +7,7 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": [
-      "**/bin/*",
-      "**/*.snap",
-      "**/.stencil/*",
-      "**/playwright-report/*",
-      "./packages/components/src/components.d.ts"
-    ]
+    "ignore": ["**/bin/*", "**/*.snap", "**/playwright-report/*", "./packages/components/src/components.d.ts"]
   },
   "formatter": {
     "enabled": true,
