@@ -2450,9 +2450,8 @@ img {
             id="list"
           >
             <div
-              aria-live="polite"
               class="no-results"
-              role="status"
+              role="option"
             >
               <span
                 aria-hidden="true"
@@ -2474,7 +2473,9 @@ img {
         aria-relevant="additions text"
         class="sr-only"
         role="status"
-      />
+      >
+        No results found
+      </span>
     </div>
   </template>
   <p-multi-select-option
@@ -12836,9 +12837,8 @@ img {
             id="list"
           >
             <div
-              aria-live="polite"
               class="no-results"
-              role="status"
+              role="option"
             >
               <span
                 aria-hidden="true"
@@ -12860,7 +12860,9 @@ img {
         aria-relevant="additions text"
         class="sr-only"
         role="status"
-      />
+      >
+        No results found
+      </span>
     </div>
   </template>
   Some child
