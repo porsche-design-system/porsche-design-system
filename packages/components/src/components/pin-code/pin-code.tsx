@@ -142,7 +142,7 @@ export class PinCode {
 
         // This is equivalent to maxLength={1} but since some keyboard suggestions fire a single input event we cant use the maxLength attribute
         // This causes the keyboard suggestion to only work if input is empty
-        const preventMultipleInput = inputType === 'insertText' && target.value.length >= 1;
+        const preventMultipleInput = inputType === 'insertText' && target.value.length > 0;
         const preventNonDigitInput = data && !isInputOnlyDigits(data);
 
         if (preventMultipleInput || preventNonDigitInput || this.loading) {

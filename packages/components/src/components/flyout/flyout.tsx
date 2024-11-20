@@ -193,7 +193,7 @@ export class Flyout {
               variant="ghost"
               class="dismiss"
               type="button"
-              hideLabel
+              hideLabel={true}
               icon="close"
               theme={this.theme}
               onClick={this.dismissDialog}
