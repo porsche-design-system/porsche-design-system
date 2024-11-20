@@ -78,6 +78,7 @@ import { breakpointS } from '@porsche-design-system/components-angular/styles';
     </p-canvas>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class CanvasExampleComponent {
   // initially, sidebar should be closed on mobile and opened on desktop

@@ -113,5 +113,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class StylesTypographyExampleComponent {}

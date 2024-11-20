@@ -55,6 +55,7 @@ import { type FlyoutMultilevelUpdateEventDetail } from '@porsche-design-system/c
     </p-flyout-multilevel>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class FlyoutMultilevelExampleActiveIdentifierComponent {
   isFlyoutMultilevelOpen = false;

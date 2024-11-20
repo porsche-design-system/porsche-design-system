@@ -4,5 +4,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'page-tabs-bar-navigation-page-1',
   template: `<p-heading>Page 1</p-heading>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TabsBarNavigationPage1Component {}

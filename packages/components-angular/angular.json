@@ -15,7 +15,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-builders/custom-webpack:browser",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/demo-app",
             "index": "src/index.html",
@@ -26,8 +26,7 @@
             "assets": ["src/favicon.ico"],
             "styles": ["@porsche-design-system/shared/css/styles.css"],
             "inlineStyleLanguage": "scss",
-            "scripts": [],
-            "indexTransform": "./scripts/injectPartials.js"
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -60,15 +59,15 @@
           }
         },
         "serve": {
-          "builder": "@angular-builders/custom-webpack:dev-server",
+          "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "host": "0.0.0.0",
             "publicHost": "localhost:4200",
-            "browserTarget": "demo-app:build"
+            "buildTarget": "demo-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "demo-app:build:production"
+              "buildTarget": "demo-app:build:production"
             }
           }
         },
