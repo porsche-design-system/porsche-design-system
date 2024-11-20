@@ -3,18 +3,22 @@ import {
   Element,
   Event,
   type EventEmitter,
-  forceUpdate,
-  h,
   type JSX,
   Prop,
   State,
   Watch,
+  forceUpdate,
+  h,
 } from '@stencil/core';
+import { getSlottedAnchorStyles } from '../../styles';
+import { getSlottedInputIndicatorStyles } from '../../styles/global/slotted-input-indicator-styles';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
+  FORM_STATES,
+  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
-  FORM_STATES,
   getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   handleButtonEvent,
@@ -24,19 +28,20 @@ import {
   observeAttributes,
   observeProperties,
   setAriaAttributes,
-  THEMES,
   unobserveAttributes,
   updateCounter,
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import { getComponentCss } from './text-field-wrapper-styles';
+import { Label } from '../common/label/label';
 import { StateMessage } from '../common/state-message/state-message';
+import { getComponentCss } from './text-field-wrapper-styles';
 import {
   type TextFieldWrapperActionIcon,
   type TextFieldWrapperState,
   type TextFieldWrapperUnitPosition,
+  UNIT_POSITIONS,
+  addCounterCharacterLengthCssVarStyleSheet,
   addInputEventListenerForSearch,
   dispatchInputEvent,
   hasCounterAndIsTypeText,
@@ -45,13 +50,8 @@ import {
   isType,
   showCustomCalendarOrTimeIndicator,
   throwIfUnitLengthExceeded,
-  UNIT_POSITIONS,
-  addCounterCharacterLengthCssVarStyleSheet,
   updateCounterCharacterLengthCssVarStyleSheet,
 } from './text-field-wrapper-utils';
-import { Label } from '../common/label/label';
-import { getSlottedAnchorStyles } from '../../styles';
-import { getSlottedInputIndicatorStyles } from '../../styles/global/slotted-input-indicator-styles';
 
 const propTypes: PropTypes<typeof TextFieldWrapper> = {
   label: AllowedTypes.string,
@@ -240,6 +240,7 @@ export class TextFieldWrapper {
       this.isWithinForm,
       this.submitButton,
       this.theme,
+      // biome-ignore lint/style/useExplicitLengthCheck: to be refactored
       !!this.hasUnit && this.unit.length
     );
 
@@ -335,7 +336,7 @@ export class TextFieldWrapper {
                   icon="locate"
                   hidden={this.isClearable}
                   disabled={disabledOrReadOnly}
-                  onClick={!this.actionLoading ? this.action.emit : null}
+                  onClick={this.actionLoading ? null : this.action.emit}
                   loading={this.actionLoading}
                 >
                   Locate me

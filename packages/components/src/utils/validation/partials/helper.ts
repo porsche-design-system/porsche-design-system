@@ -71,7 +71,7 @@ export const getUsedTagNamesWithoutPreloadForVersions = (
       (tagName) => !preloadedTagNamesForVersions[version].includes(tagName)
     );
 
-    return tagNamesWithoutPreload.length
+    return tagNamesWithoutPreload.length > 0
       ? {
           ...result,
           [version]: tagNamesWithoutPreload,

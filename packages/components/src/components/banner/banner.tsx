@@ -160,7 +160,7 @@ export class Banner {
           dismissButton={this.hasDismissButton}
           theme={this.theme}
           onDismiss={this.onDismiss}
-          aria-hidden={!this.open ? 'true' : 'false'}
+          aria-hidden={this.open ? 'false' : 'true'}
         >
           {hasNamedSlot(this.host, 'heading') ? (
             <slot name="heading" slot="heading" />
