@@ -7,7 +7,16 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": ["**/bin/*", "**/*.snap", "**/playwright-report/*", "./packages/components/src/components.d.ts"]
+    "ignore": [
+      "./yarn.lock",
+      "*.snap",
+      "./packages/components/src/components.d.ts",
+      "./packages/components/src/styles/colors.ts",
+      "./packages/components/src/types/aria-types.d.ts",
+      "./packages/components-js/tests/unit/results/stats-raw.json",
+      "./packages/components-react/projects/nextjs/routes.ts",
+      "./packages/components-react/projects/remix/app/routes/*"
+    ]
   },
   "formatter": {
     "enabled": true,
@@ -20,11 +29,6 @@
     "attributePosition": "auto",
     "bracketSpacing": true,
     "ignore": [
-      "./yarn.lock",
-      "./packages/components/src/styles/colors.ts",
-      "./packages/components/src/types/aria-types.d.ts",
-      "./packages/components-react/projects/nextjs/routes.ts",
-      "./packages/components-js/tests/unit/results/stats-raw.json",
       "./packages/shared/src/lib/*",
       "./packages/components-js/public/*",
       "./packages/components-js/projects/jsdom-polyfill/src/lib/*",
@@ -36,9 +40,6 @@
       "./packages/components-react/src/pages/generated/*",
       "./packages/components-vue/projects/vue-wrapper/src/lib/*",
       "./packages/components-angular/projects/angular-wrapper/src/lib/*",
-      "./packages/components-react/projects/remix/app/routes/flyout-multilevel-basic.tsx",
-      "./packages/components-react/projects/remix/app/routes/flyout-multilevel-prefixed.tsx",
-      "./packages/components-react/projects/remix/app/routes/*",
       "./packages/storefront/src/lib/*",
       "./packages/component-meta/src/lib/*",
       "./packages/components-js/projects/partials/src/lib/*",
