@@ -128,11 +128,11 @@ it.each<TagName>(tagNamesPublicWithProps)(
 
     // manual exceptions for props that have no validation
     if (tagName === 'p-headline') {
-      delete propTypesStructure.variant; // TODO: with all the different values this can't easily be validated
+      propTypesStructure.variant = undefined; // TODO: with all the different values this can't easily be validated
     } else if (tagName === 'p-banner') {
-      delete propTypesStructure.width;
+      propTypesStructure.width = undefined;
     } else if (tagName === 'p-pagination') {
-      delete propTypesStructure.maxNumberOfPageLinks;
+      propTypesStructure.maxNumberOfPageLinks = undefined;
     }
 
     expect(spy).toHaveBeenCalledWith(component, expect.objectContaining(propTypesStructure));

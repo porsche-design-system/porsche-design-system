@@ -121,8 +121,7 @@
         "useJsxKeyInIterable": "off"
       },
       "performance": {
-        "noAccumulatingSpread": "off",
-        "noDelete": "off"
+        "noAccumulatingSpread": "off"
       },
       "security": {
         "noGlobalEval": "error"
