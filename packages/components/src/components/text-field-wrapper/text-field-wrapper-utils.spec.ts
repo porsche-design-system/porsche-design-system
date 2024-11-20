@@ -1,3 +1,5 @@
+import * as formUtils from '../../utils/form/form-utils';
+import * as jssUtils from './../../utils/jss';
 import * as textFieldWrapperUtils from './text-field-wrapper-utils';
 import {
   addCounterCharacterLengthCssVarStyleSheet,
@@ -12,8 +14,6 @@ import {
   throwIfUnitLengthExceeded,
   updateCounterCharacterLengthCssVarStyleSheet,
 } from './text-field-wrapper-utils';
-import * as formUtils from '../../utils/form/form-utils';
-import * as jssUtils from './../../utils/jss';
 
 class MockHTMLElement {
   constructor() {
@@ -241,7 +241,7 @@ describe('dispatchInputEvent()', () => {
 });
 
 describe('addCounterCharacterLengthCssVarStyleSheet()', () => {
-  let host;
+  let host: any;
   const stylesheetMock = {
     replaceSync: jest.fn(),
     insertRule: jest.fn(),
@@ -286,7 +286,7 @@ describe('addCounterCharacterLengthCssVarStyleSheet()', () => {
 });
 
 describe('updateCounterCharacterLengthCssVarStyleSheet()', () => {
-  let host;
+  let host: any;
   const stylesheetMock = {
     replaceSync: jest.fn(),
     insertRule: jest.fn(),

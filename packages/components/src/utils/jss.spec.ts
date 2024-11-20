@@ -222,7 +222,7 @@ describe('supportsConstructableStylesheets()', () => {
 
   it('should return false if CSSStyleSheet constructor does not exist', () => {
     const globalCSSStyleSheet = global.CSSStyleSheet;
-    delete global.CSSStyleSheet;
+    global.CSSStyleSheet = undefined;
     expect(supportsConstructableStylesheets()).toBe(false);
     global.CSSStyleSheet = globalCSSStyleSheet;
   });

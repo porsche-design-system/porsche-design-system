@@ -1,35 +1,35 @@
-import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, type EventEmitter, type JSX, Prop, h } from '@stencil/core';
+import { getSlottedAnchorStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
+  AllowedTypes,
+  FORM_STATES,
+  THEMES,
+  applyConstructableStylesheetStyles,
+  attachComponentCss,
+  getPrefixedTagNames,
+  hasPropValueChanged,
+  validateProps,
+} from '../../utils';
+import { Label, descriptionId, labelId } from '../common/label/label';
+import { LoadingMessage } from '../common/loading-message/loading-message';
+import { StateMessage, messageId } from '../common/state-message/state-message';
+import { getComponentCss } from './pin-code-styles';
+import {
+  type HTMLInputElementEventTarget,
+  PIN_CODE_LENGTHS,
+  PIN_CODE_TYPES,
   type PinCodeLength,
   type PinCodeState,
   type PinCodeType,
   type PinCodeUpdateEventDetail,
-  type HTMLInputElementEventTarget,
   getConcatenatedInputValues,
   getSanitisedValue,
   isCurrentInput,
-  isInputOnlyDigits,
-  PIN_CODE_LENGTHS,
-  PIN_CODE_TYPES,
-  removeWhiteSpaces,
   isFormSubmittable,
+  isInputOnlyDigits,
+  removeWhiteSpaces,
 } from './pin-code-utils';
-import {
-  AllowedTypes,
-  applyConstructableStylesheetStyles,
-  attachComponentCss,
-  FORM_STATES,
-  getPrefixedTagNames,
-  hasPropValueChanged,
-  THEMES,
-  validateProps,
-} from '../../utils';
-import { getComponentCss } from './pin-code-styles';
-import { messageId, StateMessage } from '../common/state-message/state-message';
-import { descriptionId, Label, labelId } from '../common/label/label';
-import { LoadingMessage } from '../common/loading-message/loading-message';
-import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof PinCode> = {
   label: AllowedTypes.string,
@@ -136,7 +136,7 @@ export class PinCode {
   public componentDidLoad(): void {
     this.internals.setFormValue(this.value);
     // The beforeinput event is the only event which fires and can be prevented reliably on all keyboard types
-    this.inputElements.forEach((input) =>
+    for (const input of this.inputElements) {
       input.addEventListener('beforeinput', (event: InputEvent & HTMLInputElementEventTarget) => {
         const { data, inputType, target } = event;
 
@@ -148,8 +148,8 @@ export class PinCode {
         if (preventMultipleInput || preventNonDigitInput || this.loading) {
           event.preventDefault();
         }
-      })
-    );
+      });
+    }
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
