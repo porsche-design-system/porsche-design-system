@@ -14,26 +14,26 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import VersionSelect from '@/components/VersionSelect.vue';
-  import Search from '@/components/Search.vue';
-  import OpenMenuButton from '@/components/OpenMenuButton.vue';
-  import Wordmark from '@/components/Wordmark.vue';
-  import GitHubAnchor from '@/components/GitHubAnchor.vue';
-  import CycleStorefrontTheme from '@/components/CycleStorefrontTheme.vue';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import VersionSelect from '@/components/VersionSelect.vue';
+import Search from '@/components/Search.vue';
+import OpenMenuButton from '@/components/OpenMenuButton.vue';
+import Wordmark from '@/components/Wordmark.vue';
+import GitHubAnchor from '@/components/GitHubAnchor.vue';
+import CycleStorefrontTheme from '@/components/CycleStorefrontTheme.vue';
 
-  @Component({
-    components: {
-      VersionSelect,
-      Search,
-      OpenMenuButton,
-      Wordmark,
-      GitHubAnchor,
-      CycleStorefrontTheme,
-    },
-  })
-  export default class Header extends Vue {}
+@Component({
+  components: {
+    VersionSelect,
+    Search,
+    OpenMenuButton,
+    Wordmark,
+    GitHubAnchor,
+    CycleStorefrontTheme,
+  },
+})
+export default class Header extends Vue {}
 </script>
 
 <style scoped lang="scss">

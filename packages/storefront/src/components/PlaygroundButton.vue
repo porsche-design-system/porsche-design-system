@@ -3,15 +3,15 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { Prop } from 'vue-property-decorator';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { Prop } from 'vue-property-decorator';
 
-  @Component
-  export default class PlaygroundButton extends Vue {
-    @Prop({ default: 'prop' }) public name!: string;
-    @Prop({ default: 'button' }) public type!: 'submit' | 'button';
-  }
+@Component
+export default class PlaygroundButton extends Vue {
+  @Prop({ default: 'prop' }) public name!: string;
+  @Prop({ default: 'button' }) public type!: 'submit' | 'button';
+}
 </script>
 
 <style scoped lang="scss">

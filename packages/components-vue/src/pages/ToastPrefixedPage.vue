@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
-  import { ToastComponent } from '../components';
+import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
+import { ToastComponent } from '../components';
 </script>
 
 <template>

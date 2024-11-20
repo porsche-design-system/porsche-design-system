@@ -168,7 +168,11 @@ export abstract class AbstractWrapperGenerator {
   }
 
   // prettier-ignore
-  public abstract generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string;
+  public abstract generateImports(
+    component: TagName,
+    extendedProps: ExtendedProp[],
+    nonPrimitiveTypes: string[]
+  ): string;
   public abstract generateProps(component: TagName, rawComponentInterface: string): string;
   public abstract generateComponent(component: TagName, extendedProps: ExtendedProp[]): string;
   public abstract getComponentFileName(component: TagName): string;
