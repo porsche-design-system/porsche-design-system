@@ -11,6 +11,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <p-text>Last submitted data: {{ lastSubmittedValue }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class PinCodeExampleComponent {
   lastSubmittedValue = 'none';

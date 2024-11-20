@@ -16,6 +16,7 @@ import type { SelectUpdateEventDetail } from '@porsche-design-system/components-
     <p-text>{{ debugText }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SelectExampleControlledComponent {
   selectedValue: string = 'a';

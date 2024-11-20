@@ -183,7 +183,7 @@ export const getComponentCss = (
         ...(hasHeading && {
           [selectorHeading]: {
             maxWidth: '56.25rem',
-            margin: `0 0 ${!hasDescription ? spacingFluidMedium : 0}`,
+            margin: `0 0 ${hasDescription ? 0 : spacingFluidMedium}`,
             ...(headingSize === 'xx-large' ? headingXXLargeStyle : headingXLargeStyle),
           },
           '::slotted([slot=heading])': {

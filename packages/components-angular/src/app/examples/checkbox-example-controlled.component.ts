@@ -14,6 +14,7 @@ import { type CheckboxUpdateEventDetail } from '@porsche-design-system/component
     <p-text>some-name: {{ state['some-name'] }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class CheckboxExampleControlledComponent {
   state: { [key: string]: boolean } = {

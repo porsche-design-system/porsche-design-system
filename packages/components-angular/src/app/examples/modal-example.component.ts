@@ -14,6 +14,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </p-modal>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ModalExampleComponent {
   isModalOpen = false;

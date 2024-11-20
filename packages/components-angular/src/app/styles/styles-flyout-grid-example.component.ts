@@ -36,6 +36,7 @@ import { Component } from '@angular/core';
       <div slot="sub-footer">Some Sub Footer Content</div>
     </p-flyout>
   `,
+  standalone: false,
 })
 export class StylesFlyoutGridExampleComponent {
   visualizer = false;

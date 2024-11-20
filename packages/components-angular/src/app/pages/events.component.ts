@@ -3,8 +3,8 @@ import type {
   AccordionUpdateEvent, // using deprecated to verify it is still available
   CarouselUpdateEvent, // using deprecated to verify it is still available
   PaginationUpdateEvent, // using deprecated to verify it is still available
-  TableUpdateEvent, // using deprecated to verify it is still available
   SwitchUpdateEvent, // using deprecated to verify it is still available
+  TableUpdateEvent, // using deprecated to verify it is still available
   TabsBarUpdateEvent, // using deprecated to verify it is still available
   TabsUpdateEvent, // using deprecated to verify it is still available
 } from '@porsche-design-system/components-angular';
@@ -93,6 +93,7 @@ import type {
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class EventsComponent {
   public accordionUpdateEventCounter = 0;

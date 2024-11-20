@@ -40,6 +40,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class CarouselExampleFocusOnCenterSlideComponent {
   slides: string[] = Array.from({ length: 6 }, (_, i) => `Slide ${i}`);
