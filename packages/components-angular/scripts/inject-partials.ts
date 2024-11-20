@@ -15,8 +15,7 @@ fs.readFile(indexHtmlPath, 'utf-8', (err, indexHtml) => {
   fs.writeFile(indexHtmlPath, updatedIndexHtml, 'utf-8', (err) => {
     if (err) {
       throw new Error('Error injecting partials into index.html:', err);
-    } else {
-      console.log('Partials injected into index.html successfully.');
     }
+    console.log('Partials injected into index.html successfully.');
   });
 });
