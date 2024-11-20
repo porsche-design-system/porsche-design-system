@@ -453,8 +453,7 @@ export class MultiSelect {
           this.emitUpdateEvent();
           this.updateSrHighlightedOptionText();
           forceUpdate(highlightedOption);
-        } else {
-          if (this.internals.form) {
+        } else if (this.internals.form) {
             handleButtonEvent(
               e,
               this.host,
@@ -462,7 +461,6 @@ export class MultiSelect {
               () => this.disabled
             );
           }
-        }
         break;
       }
       case 'Escape':

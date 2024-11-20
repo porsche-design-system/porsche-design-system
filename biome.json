@@ -114,7 +114,6 @@
         "useSingleCaseStatement": "off",
         "useFilenamingConvention": "off",
         "useExplicitLengthCheck": "off",
-        "useCollapsedElseIf": "off",
         "noNegationElse": "off"
       },
       "suspicious": {
