@@ -1,9 +1,0 @@
-/.uxpin-merge
-
-/src/form/*/presets
-/src/BaseProps.ts
-/src/provider.tsx
-/src/hooks.ts
-/src/utils.ts
-
-uxpin.config.js
