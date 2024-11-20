@@ -10,12 +10,12 @@ lerna-debug.log*
 node_modules/
 dist/
 dist-tmp/
+lib/
+.stencil/
 www/
 coverage/
-.stencil/
 playwright-report/
 ort/
-lib/
 
 # Cache
 .aws-sam
