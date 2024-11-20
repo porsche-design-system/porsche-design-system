@@ -21,9 +21,11 @@ const DEFAULT_ICON_NAME: IconName = 'arrow-right';
 export const buildIconUrl = (iconNameOrSource: IconName | string = DEFAULT_ICON_NAME): string => {
   if (iconNameOrSource === null) {
     return buildIconUrl(DEFAULT_ICON_NAME);
-  } else if (isUrl(iconNameOrSource)) {
+  }
+  if (isUrl(iconNameOrSource)) {
     return iconNameOrSource;
-  } else if (ICONS_MANIFEST[iconNameOrSource as keyof Record<IconName, string>]) {
+  }
+  if (ICONS_MANIFEST[iconNameOrSource as keyof Record<IconName, string>]) {
     return `${getCDNBaseURL()}/icons/${ICONS_MANIFEST[iconNameOrSource as keyof Record<IconName, string>]}`;
   }
 

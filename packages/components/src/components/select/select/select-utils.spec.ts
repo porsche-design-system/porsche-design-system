@@ -1,18 +1,18 @@
+import * as stencilUtils from '@stencil/core';
+import * as loggerUtils from '../../../utils/log/logger';
+import * as keyboardBehaviorUtils from '../../../utils/select/keyboard-behavior';
+import * as dropdownDirectionUtils from '../../../utils/select/select-dropdown';
 import * as selectUtils from './select-utils';
 import {
+  type SelectOption,
   getSelectDropdownDirection,
   getSelectedOptionString,
   getSrHighlightedOptionText,
   resetSelectedOption,
-  type SelectOption,
   setSelectedOption,
   syncSelectChildrenProps,
   updateSelectOptions,
 } from './select-utils';
-import * as stencilUtils from '@stencil/core';
-import * as loggerUtils from '../../../utils/log/logger';
-import * as dropdownDirectionUtils from '../../../utils/select/select-dropdown';
-import * as keyboardBehaviorUtils from '../../../utils/select/keyboard-behavior';
 
 type GenerateOptionsParams = {
   amount?: number;
@@ -24,7 +24,7 @@ type GenerateOptionsParams = {
   hiddenIndex?: number;
 };
 
-export const generateOptions = (
+const generateOptions = (
   {
     amount = 3,
     values,

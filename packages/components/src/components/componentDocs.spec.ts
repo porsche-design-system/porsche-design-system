@@ -1,7 +1,7 @@
 import type { TagName } from '@porsche-design-system/shared';
 import { TAG_NAMES } from '@porsche-design-system/shared';
-import * as fs from 'fs';
-import * as path from 'path';
+import * as fs from 'node:fs';
+import * as path from 'node:path';
 import * as globby from 'globby-legacy';
 import { expect } from '@jest/globals';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
@@ -38,9 +38,8 @@ describe.each<TagName>(
                   .replace(/slot/i, '')
                   .toLowerCase() // <slot name={slotHeading} /> let's hope its name matches the value
               : slotName; // <slot name="heading" />
-          } else {
-            return ''; // Default slot
           }
+          return ''; // Default slot
         }
       );
 

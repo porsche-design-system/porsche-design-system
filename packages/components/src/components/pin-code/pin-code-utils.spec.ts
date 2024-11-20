@@ -111,7 +111,7 @@ describe('removeStyles()', () => {
 describe('warnAboutTransformedValue()', () => {
   it('should call getTagNameWithoutPrefix() and consoleWarn() with correct parameters', () => {
     const host = document.createElement('p-pin-code');
-    const warningPrefix = `Property value of component p-pin-code:`;
+    const warningPrefix = 'Property value of component p-pin-code:';
     const spyGetTagNameWithoutPrefix = jest.spyOn(getTagNameWithoutPrefixUtils, 'getTagNameWithoutPrefix');
     const spyConsoleWarn = jest.spyOn(consoleWarnUtils, 'consoleWarn').mockImplementation();
 

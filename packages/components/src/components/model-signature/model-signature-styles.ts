@@ -54,7 +54,7 @@ export const getComponentCss = (
         maxWidth: '100%',
         maxHeight: '100%',
         // width + height style can't be !important atm to be backwards compatible with e.g. `<p-model-signature size="inherit" style="height: 50px"/>`
-        width: `var(${cssVariableWidth},${isSizeInherit ? 'auto' : width + 'px'})`,
+        width: `var(${cssVariableWidth},${isSizeInherit ? 'auto' : `${width}px`})`,
         height: `var(${cssVariableHeight},auto)`,
         ...addImportantToEachRule({
           mask: `url(${getSvgUrl(model)}) no-repeat left top / contain`,

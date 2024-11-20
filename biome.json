@@ -137,15 +137,8 @@
         "useConsistentBuiltinInstantiation": "error",
         "useSingleVarDeclarator": "error",
         "noInferrableTypes": "off",
-        "useSelfClosingElements": "off",
-        "noParameterAssign": "off",
-        "useNodejsImportProtocol": "off",
-        "noUselessElse": "off",
-        "useTemplate": "off",
-        "noUnusedTemplateLiteral": "off",
         "noCommaOperator": "off",
-        "useDefaultParameterLast": "off",
-        "useEnumInitializers": "off"
+        "useDefaultParameterLast": "off"
       },
       "suspicious": {
         "noAsyncPromiseExecutor": "error",
@@ -180,7 +173,6 @@
         "useValidTypeof": "error",
         "noAssignInExpressions": "off",
         "noArrayIndexKey": "off",
-        "noExportsInTest": "off",
         "noImplicitAnyLet": "off",
         "noConfusingVoidType": "off"
       }

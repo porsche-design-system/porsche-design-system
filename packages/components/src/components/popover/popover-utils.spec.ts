@@ -566,7 +566,7 @@ describe('onDocumentKeydown()', () => {
   });
 
   describe.each(['Enter', 'SpaceBar', ' '])("for key '%s'", (key) => {
-    it(`should change open to false when composedPath does not include host`, () => {
+    it('should change open to false when composedPath does not include host', () => {
       popover.open = true;
       document.body.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
 
@@ -574,7 +574,7 @@ describe('onDocumentKeydown()', () => {
       expect(popover.open).toBe(false);
     });
 
-    it(`should do nothing when composedPath contains host`, () => {
+    it('should do nothing when composedPath contains host', () => {
       popover.open = true;
       popover.host.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
 
@@ -582,7 +582,7 @@ describe('onDocumentKeydown()', () => {
       expect(popover.open).toBe(true);
     });
 
-    it(`should check composedPath only when open`, () => {
+    it('should check composedPath only when open', () => {
       const keyboardEvent = new KeyboardEvent('keydown', { key });
       const spy1 = jest.spyOn(keyboardEvent, 'composedPath');
       onDocumentKeydown(keyboardEvent);
