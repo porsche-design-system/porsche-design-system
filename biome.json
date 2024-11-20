@@ -92,8 +92,7 @@
         "noUselessUndefinedInitialization": "error",
         "noWith": "error",
         "useLiteralKeys": "error",
-        "noForEach": "off",
-        "useOptionalChain": "off"
+        "noForEach": "off"
       },
       "correctness": {
         "noConstAssign": "error",
