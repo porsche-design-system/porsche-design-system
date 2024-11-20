@@ -13,6 +13,10 @@ dist-tmp/
 lib/
 .stencil/
 www/
+build/
+.next/
+out/
+generated/
 coverage/
 playwright-report/
 ort/
@@ -46,6 +50,9 @@ Thumbs.db
 !.vscode/launch.json
 !.vscode/extensions.json
 
+# Vercel
+.vercel
+
 # temporary files
 cdn.config.js
 
@@ -77,11 +84,24 @@ packages/components-react/projects/uxpin-wrapper/src/BaseProps.ts
 packages/components-react/projects/uxpin-wrapper/src/provider.tsx
 packages/components-react/projects/uxpin-wrapper/src/hooks.ts
 packages/components-react/projects/uxpin-wrapper/src/utils.ts
+
 packages/components-react/projects/react-ssr-wrapper/src/BaseProps.ts
 packages/components-react/projects/react-ssr-wrapper/src/hooks.ts
 packages/components-react/projects/react-ssr-wrapper/src/provider.tsx
 packages/components-react/projects/react-ssr-wrapper/src/public-api.ts
 packages/components-react/projects/react-ssr-wrapper/src/utils.ts
+
+packages/components-react/projects/remix/app/routes/banner-basic.tsx
+packages/components-react/projects/remix/app/routes/banner-prefixed.tsx
+packages/components-react/projects/remix/app/routes/flyout-basic.tsx
+packages/components-react/projects/remix/app/routes/flyout-prefixed.tsx
+packages/components-react/projects/remix/app/routes/flyout-multilevel-basic.tsx
+packages/components-react/projects/remix/app/routes/flyout-multilevel-prefixed.tsx
+packages/components-react/projects/remix/app/routes/modal-basic.tsx
+packages/components-react/projects/remix/app/routes/modal-prefixed.tsx
+packages/components-react/projects/remix/app/routes/overview.tsx
+packages/components-react/projects/remix/app/routes/toast-basic.tsx
+packages/components-react/projects/remix/app/routes/toast-prefixed.tsx
 
 # Shared
 packages/shared/bin/
