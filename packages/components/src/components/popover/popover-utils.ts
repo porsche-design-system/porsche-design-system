@@ -16,8 +16,8 @@ export const updatePopoverStyles = (
   spacer: HTMLDivElement,
   popover: HTMLDivElement,
   direction: PopoverDirection,
-  isNative = false,
-  theme: Theme
+  theme: Theme,
+  isNative = false
 ): void => {
   // Reset margin so that it can be recalculated correctly
   popover.style.margin = '0';

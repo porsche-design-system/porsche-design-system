@@ -256,12 +256,11 @@ export type PropTypes<T extends Class<any>> = Required<{
 }>;
 
 export const validateProps = <T extends Class<any>>(instance: InstanceType<T>, propTypes: PropTypes<T>): void => {
-  Object.entries(propTypes)
+  for (const error of Object.entries(propTypes)
     .map(([propKey, validatorFunc]: [string, ValidatorFunction]) => validatorFunc(propKey, instance[propKey]))
-    .filter((x) => x)
-    .forEach((error) =>
-      printErrorMessage({ ...error, componentName: getTagNameWithoutPrefix(instance.host as HTMLElement) })
-    );
+    .filter((x) => x)) {
+    printErrorMessage({ ...error, componentName: getTagNameWithoutPrefix(instance.host as HTMLElement) });
+  }
 };
 
 /**

@@ -463,10 +463,11 @@ export class Carousel {
     // splide sets attributes everytime it slides or slides are added, which we need to adjust after wards
     observeChildren(
       this.container,
-      () =>
-        this.splide.Components.Elements.slides.forEach((el) => {
+      () => {
+        for (const el of this.splide.Components.Elements.slides) {
           el.removeAttribute('aria-hidden');
-        }),
+        }
+      },
       ['aria-hidden']
     );
   }

@@ -1,13 +1,13 @@
+import { FONT_FACE_CDN_FILE_CN, FONT_FACE_CDN_FILE_COM } from '@porsche-design-system/assets';
+import type { PartialName } from '@porsche-design-system/shared';
+import { getCDNBaseURL } from '../../getCDNBaseURL';
+import { consoleWarn, throwException } from '../../log';
 import {
   getPorscheDesignSystemPrefixesForVersions,
   getPreloadedTagNamesForVersions,
   getUsedTagNamesForVersions,
   getUsedTagNamesWithoutPreloadForVersions,
 } from './helper';
-import type { PartialName } from '@porsche-design-system/shared';
-import { FONT_FACE_CDN_FILE_CN, FONT_FACE_CDN_FILE_COM } from '@porsche-design-system/assets';
-import { consoleWarn, throwException } from '../../log';
-import { getCDNBaseURL } from '../../getCDNBaseURL';
 
 export const validatePartialUsage = (): void => {
   // TODO: before reactivating we need to be able to distinguish between Light DOM and/or Shadow DOM usage.
@@ -46,12 +46,12 @@ export const validateGetComponentChunkLinksUsage = (): void => {
     preloadTagNamesForVersions
   );
 
-  Object.entries(usedTagNamesWithoutPreloadForVersions).forEach(([version, tagNames]) => {
+  for (const [version, tagNames] of Object.entries(usedTagNamesWithoutPreloadForVersions)) {
     consoleWarn(
       `Usage of Porsche Design System v${version} component '${tagNames.join(', ')}' detected without preloading.`,
       getValidatePartialErrorSecondaryText('getComponentChunkLinks')
     );
-  });
+  }
 };
 
 export const validateGetLoaderScriptUsage = (): void => {
