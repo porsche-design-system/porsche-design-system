@@ -18,6 +18,9 @@ injected before the closing `</body>` of your `index.html`.
 | -------- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| --------------------------- | -------- |
 | `format` | Defines the output format of the partial. By default, it returns a html string.<br> For `jsx` it returns a jsx element.<br> For `sha256` it returns a SHA-256 hash of the innerHTML to use in a [Content Security Policy (CSP)](must-know/security/content-security-policy). | `'html' | 'jsx' | 'sha256'` | `'html'` |
 
+When using `jsx` in the `format` option, it is necessary to have `react/jsx-runtime` as a dependency in the project
+included.
+
 ## Examples
 
 Project integration differs based on the project setup.  
