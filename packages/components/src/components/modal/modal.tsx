@@ -219,7 +219,7 @@ export class Modal {
                 variant="ghost"
                 class="dismiss"
                 type="button"
-                hideLabel
+                hideLabel={true}
                 icon="close"
                 onClick={this.dismissDialog}
                 theme={this.theme}

@@ -115,8 +115,7 @@
         "useFilenamingConvention": "off",
         "useExplicitLengthCheck": "off",
         "useCollapsedElseIf": "off",
-        "noNegationElse": "off",
-        "noImplicitBoolean": "off"
+        "noNegationElse": "off"
       },
       "suspicious": {
         "noConsole": { "level": "error", "options": { "allow": ["warn", "error"] } },
