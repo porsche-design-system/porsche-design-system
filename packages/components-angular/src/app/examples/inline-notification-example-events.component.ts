@@ -13,6 +13,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     ></p-inline-notification>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class InlineNotificationExampleEventsComponent {
   isActive = false;

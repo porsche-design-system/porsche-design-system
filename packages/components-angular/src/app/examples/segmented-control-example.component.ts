@@ -15,6 +15,7 @@ import type { SegmentedControlUpdateEventDetail } from '@porsche-design-system/c
     <p-text>Current value: {{ currentValue }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SegmentedControlExampleComponent {
   currentValue = 1;

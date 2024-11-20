@@ -7,5 +7,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <p-heading>Bug Page 3</p-heading>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TabsBarNavigationBugPage3Component {}

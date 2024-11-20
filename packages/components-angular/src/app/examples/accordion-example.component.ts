@@ -12,6 +12,7 @@ import type { AccordionUpdateEventDetail } from '@porsche-design-system/componen
     </p-accordion>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class AccordionExampleComponent {
   isOpen1 = false;

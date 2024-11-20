@@ -9,6 +9,7 @@ import type { PinCodeUpdateEventDetail } from '@porsche-design-system/components
     <p-text>Completely filled: {{ isComplete }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class PinCodeExampleControlledComponent {
   value = '';

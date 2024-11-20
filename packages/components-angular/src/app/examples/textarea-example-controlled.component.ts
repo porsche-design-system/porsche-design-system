@@ -8,6 +8,7 @@ import { type TextareaInputEventDetail } from '@porsche-design-system/components
     <p-text>{{ debugText }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TextareaExampleControlledComponent {
   value: string = '';
