@@ -6,22 +6,29 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-# Dependency directories
-node_modules
+# Directories
+node_modules/
+dist/
+dist-tmp/
+.stencil/
+.angular/
+tmp/
+www/
+build/
+.next/
+out/
+reports/
+generated/
+coverage/
+playwright-report/
+ort/
+**/tests/**/results/
 
 # Cache
-.aws-sam
 .npm
-.eslintcache
 
-# Jest coverage report
-coverage
-
-# Yarn Integrity file
+# Yarn
 .yarn-integrity
-
-# temporary files
-cdn.config.js
 
 # dotenv environment variables file
 .env
@@ -45,5 +52,80 @@ Thumbs.db
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# OSS Review Toolkit
-ort/
+# Vercel
+.vercel
+
+# temporary files
+cdn.config.js
+
+# Assets
+packages/assets/cdn/
+packages/assets/bin/
+packages/assets/projects/*/index.ts
+
+# Components
+packages/components/src/components/**/*.props.md
+packages/components/src/components/**/readme.md
+packages/components/src/utils-entry.ts
+packages/components/src/styles-entry.ts
+packages/components/src/test-utils/tag-names-constructor-map.ts
+
+# Components JS
+packages/components-js/public/assets/icons.js
+packages/components-js/public/assets/imask.min.js
+packages/components-js/public/assets/styles.css
+packages/components-js/public/assets/table-data*
+packages/components-js/public/index.js
+packages/components-js/projects/components-wrapper/environment.js
+
+# Components React
+packages/components-react/projects/uxpin-wrapper/.uxpin-merge
+packages/components-react/projects/uxpin-wrapper/uxpin.config.js
+packages/components-react/projects/uxpin-wrapper/src/form/*/presets
+packages/components-react/projects/uxpin-wrapper/src/BaseProps.ts
+packages/components-react/projects/uxpin-wrapper/src/provider.tsx
+packages/components-react/projects/uxpin-wrapper/src/hooks.ts
+packages/components-react/projects/uxpin-wrapper/src/utils.ts
+
+packages/components-react/projects/react-ssr-wrapper/src/BaseProps.ts
+packages/components-react/projects/react-ssr-wrapper/src/hooks.ts
+packages/components-react/projects/react-ssr-wrapper/src/provider.tsx
+packages/components-react/projects/react-ssr-wrapper/src/public-api.ts
+packages/components-react/projects/react-ssr-wrapper/src/utils.ts
+
+packages/components-react/projects/remix/app/routes/banner-basic.tsx
+packages/components-react/projects/remix/app/routes/banner-prefixed.tsx
+packages/components-react/projects/remix/app/routes/flyout-basic.tsx
+packages/components-react/projects/remix/app/routes/flyout-prefixed.tsx
+packages/components-react/projects/remix/app/routes/flyout-multilevel-basic.tsx
+packages/components-react/projects/remix/app/routes/flyout-multilevel-prefixed.tsx
+packages/components-react/projects/remix/app/routes/modal-basic.tsx
+packages/components-react/projects/remix/app/routes/modal-prefixed.tsx
+packages/components-react/projects/remix/app/routes/overview.tsx
+packages/components-react/projects/remix/app/routes/toast-basic.tsx
+packages/components-react/projects/remix/app/routes/toast-prefixed.tsx
+
+packages/components-react/projects/nextjs/app/*/
+packages/components-react/projects/nextjs/styles/getSharedStyles.tsx
+
+# Shared
+packages/shared/bin/
+
+# Storefront
+packages/storefront/scripts/algoliaRecords.json
+packages/storefront/src/pages/changelog.md
+packages/storefront/public/porsche-design-system
+
+# Lib
+packages/shared/src/lib/*
+packages/components-js/projects/jsdom-polyfill/src/lib/*
+packages/components-js/projects/components-wrapper/lib/*
+packages/components-react/projects/react-wrapper/src/lib/*
+packages/components-react/projects/react-ssr-wrapper/src/lib/*
+packages/components-react/projects/uxpin-wrapper/src/lib/*
+packages/components-vue/projects/vue-wrapper/src/lib/*
+packages/components-angular/projects/angular-wrapper/src/lib/*
+packages/storefront/src/lib/*
+packages/component-meta/src/lib/*
+packages/components-js/projects/partials/src/lib/*
+packages/utilities/projects/utilities/src/scss/lib/*
