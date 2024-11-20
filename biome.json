@@ -132,8 +132,7 @@
         "useBlockStatements": "off",
         "useConsistentBuiltinInstantiation": "error",
         "useSingleVarDeclarator": "error",
-        "noInferrableTypes": "off",
-        "useDefaultParameterLast": "off"
+        "noInferrableTypes": "off"
       },
       "suspicious": {
         "noAsyncPromiseExecutor": "error",
