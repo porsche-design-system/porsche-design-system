@@ -168,8 +168,7 @@
         "useNamespaceKeyword": "error",
         "useValidTypeof": "error",
         "noAssignInExpressions": "off",
-        "noArrayIndexKey": "off",
-        "noConfusingVoidType": "off"
+        "noArrayIndexKey": "off"
       }
     },
     "ignore": [
