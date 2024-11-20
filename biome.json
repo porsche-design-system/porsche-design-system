@@ -27,20 +27,7 @@
     "lineEnding": "lf",
     "lineWidth": 120,
     "attributePosition": "auto",
-    "bracketSpacing": true,
-    "ignore": [
-      "./packages/components-js/public/*",
-      "./packages/components-react/projects/nextjs/app/*/*",
-      "./packages/components-react/src/pages/generated/*",
-      "./packages/components-angular/src/app/pages/generated/*",
-      "./packages/components-react/projects/uxpin-wrapper/src/form/*/presets/*",
-      "./packages/components-react/projects/uxpin-wrapper/src/BaseProps.ts",
-      "./packages/components-react/projects/uxpin-wrapper/src/hooks.ts",
-      "./packages/components-react/projects/uxpin-wrapper/src/provider.tsx",
-      "./packages/components-react/projects/uxpin-wrapper/src/utils.ts",
-      "./packages/components-react/projects/uxpin-wrapper/uxpin.config.js",
-      "./packages/storefront/public/porsche-design-system/*"
-    ]
+    "bracketSpacing": true
   },
   "organizeImports": {
     "enabled": true
