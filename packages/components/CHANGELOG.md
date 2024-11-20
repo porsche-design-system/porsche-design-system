@@ -14,6 +14,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Fixed
+
+- `Popover`: Rendering bug of drop-shadow in Safari 18.x
+  ([3622](https://github.com/porsche-design-system/porsche-design-system/pull/3622))
+
+### [3.22.0-rc.0] - 2024-11-19
+
 #### Added
 
 - `Pin-Code`: Add `form` prop to explicitly associate the component with a form, even when it's not directly nested
@@ -31,8 +38,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Fixed
 
-- `Popover`: Rendering bug of drop-shadow in Safari 18.x
-  ([3622](https://github.com/porsche-design-system/porsche-design-system/pull/3622))
+- Partials: removed bundled `react/jsx-runtime` due to React 18/19 incompatibilities. When using `jsx` in the `format`
+  option, it is necessary to have `react/jsx-runtime` as a dependency in the project included.
+  ([#3613](https://github.com/porsche-design-system/porsche-design-system/pull/3613))
 
 ### [3.21.0] - 2024-11-12
 
