@@ -456,13 +456,13 @@ export class MultiSelect {
           this.updateSrHighlightedOptionText();
           forceUpdate(highlightedOption);
         } else if (this.internals.form) {
-            handleButtonEvent(
-              e,
-              this.host,
-              () => 'submit',
-              () => this.disabled
-            );
-          }
+          handleButtonEvent(
+            e,
+            this.host,
+            () => 'submit',
+            () => this.disabled
+          );
+        }
         break;
       }
       case 'Escape': {

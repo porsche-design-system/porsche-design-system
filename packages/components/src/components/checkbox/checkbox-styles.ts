@@ -178,7 +178,8 @@ export const getComponentCss = (
                 backgroundColor: checkedColorDark,
               }),
             },
-          } : {
+          }
+        : {
             'input:checked': {
               borderColor: checkedColor,
               backgroundColor: checkedColor,
