@@ -167,8 +167,18 @@ export const getComponentCss = (
           backgroundSize: 'cover',
         }),
       },
-      ...(!isLoading
+      ...(isLoading
         ? {
+            'input:checked': {
+              // background-image is merged in later
+              borderColor: checkedColor,
+              backgroundColor: checkedColor,
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                borderColor: checkedColorDark,
+                backgroundColor: checkedColorDark,
+              }),
+            },
+          } : {
             'input:checked': {
               borderColor: checkedColor,
               backgroundColor: checkedColor,
@@ -210,17 +220,6 @@ export const getComponentCss = (
                     backgroundImage: getIndeterminateSVGBackgroundImage('white'),
                   }
                 )),
-            },
-          }
-        : {
-            'input:checked': {
-              // background-image is merged in later
-              borderColor: checkedColor,
-              backgroundColor: checkedColor,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                borderColor: checkedColorDark,
-                backgroundColor: checkedColorDark,
-              }),
             },
           }),
       ...(!disabledOrLoading &&

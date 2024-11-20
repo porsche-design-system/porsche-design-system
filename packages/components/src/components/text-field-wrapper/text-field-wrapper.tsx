@@ -336,7 +336,7 @@ export class TextFieldWrapper {
                   icon="locate"
                   hidden={this.isClearable}
                   disabled={disabledOrReadOnly}
-                  onClick={!this.actionLoading ? this.action.emit : null}
+                  onClick={this.actionLoading ? null : this.action.emit}
                   loading={this.actionLoading}
                 >
                   Locate me

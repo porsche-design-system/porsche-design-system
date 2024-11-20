@@ -253,7 +253,7 @@ export class Select {
           isDisabled={this.disabled}
         />
         <span class="sr-only" id={initialStatusId}>
-          {`${!getSelectedOptionString(this.selectOptions) ? 'No option selected. ' : ''} ${this.selectOptions.length} options in total.`}
+          {`${getSelectedOptionString(this.selectOptions) ? '' : 'No option selected. '} ${this.selectOptions.length} options in total.`}
         </span>
         <div class={{ wrapper: true, disabled: this.disabled }} ref={(el) => (this.comboboxContainer = el)}>
           <button

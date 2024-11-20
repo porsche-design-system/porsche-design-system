@@ -111,8 +111,7 @@
         "noDefaultExport": "off",
         "noNamespaceImport": "off",
         "useDefaultSwitchClause": "off",
-        "useFilenamingConvention": "off",
-        "noNegationElse": "off"
+        "useFilenamingConvention": "off"
       },
       "suspicious": {
         "noConsole": { "level": "error", "options": { "allow": ["warn", "error"] } },
