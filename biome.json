@@ -111,7 +111,6 @@
         "noDefaultExport": "off",
         "noNamespaceImport": "off",
         "useDefaultSwitchClause": "off",
-        "useSingleCaseStatement": "off",
         "useFilenamingConvention": "off",
         "noNegationElse": "off"
       },

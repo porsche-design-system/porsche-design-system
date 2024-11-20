@@ -384,7 +384,7 @@ export class Select {
       case 'Next':
       case 'Previous':
       case 'PageUp':
-      case 'PageDown':
+      case 'PageDown': {
         event.preventDefault();
         setNextSelectOptionHighlighted(
           this.listElement,
@@ -397,22 +397,26 @@ export class Select {
         );
         this.updateSrHighlightedOptionText();
         break;
-      case 'CloseSelect':
+      }
+      case 'CloseSelect': {
         // biome-ignore lint/suspicious/noFallthroughSwitchClause: intentional fallthrough
         event.preventDefault();
         this.updateSelectedOption(getHighlightedSelectOption(this.selectOptions));
+      }
       // intentional fallthrough
-      case 'Close':
+      case 'Close': {
         event.preventDefault();
         this.updateMenuState(false);
         break;
+      }
       case 'Type':
         this.onComboType(key);
         break;
-      case 'Open':
+      case 'Open': {
         event.preventDefault();
         this.updateMenuState(true);
         break;
+      }
     }
   };
 

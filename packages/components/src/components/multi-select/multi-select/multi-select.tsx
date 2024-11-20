@@ -436,15 +436,17 @@ export class MultiSelect {
   private onInputKeyDown = (e: KeyboardEvent): void => {
     switch (e.key) {
       case 'ArrowUp':
-      case 'Up':
+      case 'Up': {
         e.preventDefault();
         this.cycleDropdown('up');
         break;
+      }
       case 'ArrowDown':
-      case 'Down':
+      case 'Down': {
         e.preventDefault();
         this.cycleDropdown('down');
         break;
+      }
       case 'Enter': {
         const highlightedOption = getHighlightedOption(this.multiSelectOptions);
         if (highlightedOption) {
@@ -463,17 +465,19 @@ export class MultiSelect {
           }
         break;
       }
-      case 'Escape':
+      case 'Escape': {
         this.isOpen = false;
         resetHighlightedOptions(this.multiSelectOptions);
         break;
-      case 'Tab':
+      }
+      case 'Tab': {
         // If there is a value the reset button will be focused and the dropdown stays open
         if (this.currentValue.length === 0) {
           this.isOpen = false;
         }
         resetHighlightedOptions(this.multiSelectOptions);
         break;
+      }
       case 'PageUp':
         if (this.isOpen) {
           e.preventDefault();
