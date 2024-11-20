@@ -56,6 +56,7 @@
       "./packages/components-js/projects/partials/src/lib/*",
       "./packages/assets/projects/*/index.ts",
       "./packages/components-angular/src/app/pages/generated/*",
+      "./packages/components-angular/.angular/*",
       "./packages/components/src/test-utils/tag-names-constructor-map.ts",
       "./packages/components-react/projects/uxpin-wrapper/src/form/*/presets/*",
       "./packages/components-react/projects/uxpin-wrapper/src/BaseProps.ts",
