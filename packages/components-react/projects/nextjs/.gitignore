@@ -5,7 +5,6 @@
 .pnp.js
 
 # testing
-/coverage
 /tests/e2e/results
 /tests/vrt/results
 

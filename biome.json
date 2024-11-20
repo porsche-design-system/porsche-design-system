@@ -11,7 +11,6 @@
       "**/bin/*",
       "**/*.snap",
       "**/.stencil/*",
-      "**/coverage/*",
       "**/playwright-report/*",
       "./packages/components/src/components.d.ts"
     ]

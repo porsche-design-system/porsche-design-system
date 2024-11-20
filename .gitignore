@@ -13,14 +13,12 @@ node_modules/
 dist/
 dist-tmp/
 www/
+coverage/
 
 # Cache
 .aws-sam
 .npm
 .eslintcache
-
-# Jest coverage report
-coverage/
 
 # Yarn Integrity file
 .yarn-integrity
