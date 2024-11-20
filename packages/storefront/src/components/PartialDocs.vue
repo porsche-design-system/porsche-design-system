@@ -12,50 +12,50 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { Prop } from 'vue-property-decorator';
-  import { camelCase, constantCase } from 'change-case';
-  import type { Framework, FrameworkMarkup } from '@/models';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { Prop } from 'vue-property-decorator';
+import { camelCase, constantCase } from 'change-case';
+import type { Framework, FrameworkMarkup } from '@/models';
 
-  type Param = {
-    value: string;
-    comment?: string;
-  };
+type Param = {
+  value: string;
+  comment?: string;
+};
 
-  type PartialPackageName = 'components-js' | 'browser-notification';
+type PartialPackageName = 'components-js' | 'browser-notification';
 
-  @Component
-  export default class PartialDocs extends Vue {
-    @Prop({ default: '' }) public name!: string;
-    @Prop({ default: () => [{ value: '' }] }) public params!: Param[];
-    @Prop({ default: 'body' }) public location!: string;
-    @Prop({ default: 'components-js' }) public partialPackageName!: PartialPackageName;
+@Component
+export default class PartialDocs extends Vue {
+  @Prop({ default: '' }) public name!: string;
+  @Prop({ default: () => [{ value: '' }] }) public params!: Param[];
+  @Prop({ default: 'body' }) public location!: string;
+  @Prop({ default: 'components-js' }) public partialPackageName!: PartialPackageName;
 
-    public get activeFramework(): Framework {
-      return this.$store.getters.selectedFramework;
+  public get activeFramework(): Framework {
+    return this.$store.getters.selectedFramework;
+  }
+
+  public get frameworkMarkup(): FrameworkMarkup {
+    let partialPackage = `@porsche-design-system/${this.partialPackageName}`;
+    if (this.partialPackageName === 'components-js') {
+      partialPackage = `${partialPackage}/partials`.replace('js', this.activeFramework);
     }
 
-    public get frameworkMarkup(): FrameworkMarkup {
-      let partialPackage = `@porsche-design-system/${this.partialPackageName}`;
-      if (this.partialPackageName === 'components-js') {
-        partialPackage = `${partialPackage}/partials`.replace('js', this.activeFramework);
-      }
+    const glue = '\n  ';
 
-      const glue = '\n  ';
+    const angularPartials = this.params
+      .map(({ value, comment }, i) =>
+        [
+          comment && `// ${i > 0 ? 'Alternative: ' : ''}${comment}`,
+          `${i === 0 ? 'let ' : ''}partialContent = ${this.name}(${value});`,
+        ]
+          .filter(Boolean)
+          .join(glue)
+      )
+      .join('\n\n  ');
 
-      const angularPartials = this.params
-        .map(({ value, comment }, i) =>
-          [
-            comment && `// ${i > 0 ? 'Alternative: ' : ''}${comment}`,
-            `${i === 0 ? 'let ' : ''}partialContent = ${this.name}(${value});`,
-          ]
-            .filter(Boolean)
-            .join(glue)
-        )
-        .join('\n\n  ');
-
-      const exampleAngular = `<!-- prerequisite -->
+    const exampleAngular = `<!-- prerequisite -->
 <!-- docs: https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack#index-transform -->
 yarn add --dev @angular-builders/custom-webpack
 
@@ -84,34 +84,34 @@ export default (targetOptions: TargetOptions, indexHtml: string): string => {
   return indexHtml.replace(/<\\/${this.location}>/, \`\${partialContent}$&\`);
 };`;
 
-      const partialRequirePath = `require('${partialPackage}').${this.name}`;
-      const partialRequirePathJs = partialRequirePath.replace('vanilla-js', 'js');
+    const partialRequirePath = `require('${partialPackage}').${this.name}`;
+    const partialRequirePathJs = partialRequirePath.replace('vanilla-js', 'js');
 
-      const exampleReact =
-        `<${this.location}>\n  ` +
-        this.params
-          .map(({ value, comment }, i) =>
-            [comment && `<!-- ${i > 0 ? 'Alternative: ' : ''}${comment} -->`, `<%= ${partialRequirePath}(${value}) %>`]
-              .filter(Boolean)
-              .join(glue)
-          )
-          .join('\n\n  ') +
-        `\n</${this.location}>`;
-
-      const placeholder = `PLACEHOLDER_${constantCase(this.name.replace('get', ''))}`;
-      const jsPartials = this.params
-        .map(({ value, comment }, i) => {
-          const partialCall = `${partialRequirePathJs}(${value})`.replace(/'/g, '\\"'); // transform quotes
-          return [
-            comment && `<!-- ${i > 0 ? 'Alternative: ' : ''}${comment} -->`,
-            `"replace": "placeholder='<!--${placeholder}-->' && partial=$placeholder$(node -e 'console.log(${partialCall})') && regex=$placeholder'.*' && sed -i '' -E -e \\"s^$regex^$partial^\\" index.html"`,
-          ]
+    const exampleReact =
+      `<${this.location}>\n  ` +
+      this.params
+        .map(({ value, comment }, i) =>
+          [comment && `<!-- ${i > 0 ? 'Alternative: ' : ''}${comment} -->`, `<%= ${partialRequirePath}(${value}) %>`]
             .filter(Boolean)
-            .join(glue);
-        })
-        .join(glue);
+            .join(glue)
+        )
+        .join('\n\n  ') +
+      `\n</${this.location}>`;
 
-      const exampleJs = `<!-- index.html -->
+    const placeholder = `PLACEHOLDER_${constantCase(this.name.replace('get', ''))}`;
+    const jsPartials = this.params
+      .map(({ value, comment }, i) => {
+        const partialCall = `${partialRequirePathJs}(${value})`.replace(/'/g, '\\"'); // transform quotes
+        return [
+          comment && `<!-- ${i > 0 ? 'Alternative: ' : ''}${comment} -->`,
+          `"replace": "placeholder='<!--${placeholder}-->' && partial=$placeholder$(node -e 'console.log(${partialCall})') && regex=$placeholder'.*' && sed -i '' -E -e \\"s^$regex^$partial^\\" index.html"`,
+        ]
+          .filter(Boolean)
+          .join(glue);
+      })
+      .join(glue);
+
+    const exampleJs = `<!-- index.html -->
 <${this.location}>
   <!--${placeholder}-->
 </${this.location}>
@@ -123,8 +123,8 @@ export default (targetOptions: TargetOptions, indexHtml: string): string => {
   ${jsPartials}
 }`;
 
-      const exampleVue =
-        `<!-- prerequisite -->
+    const exampleVue =
+      `<!-- prerequisite -->
 <!-- docs: https://github.com/vbenjs/vite-plugin-html -->
 yarn add --dev vite-plugin-html
 
@@ -144,24 +144,24 @@ export default defineConfig({
     createHtmlPlugin({
       inject: {
         data: {\n  ` +
-        this.params
-          .map(({ value, comment }, i) =>
-            [
-              comment && `        // ${i > 0 ? 'Alternative: ' : ''}${comment}`,
-              `        ${camelCase(this.name.replace('get', ''))}: ${partialRequirePath}(${value}),`,
-            ]
-              .filter(Boolean)
-              .join(glue)
-          )
-          .join('\n\n  ') +
-        `\n        },
+      this.params
+        .map(({ value, comment }, i) =>
+          [
+            comment && `        // ${i > 0 ? 'Alternative: ' : ''}${comment}`,
+            `        ${camelCase(this.name.replace('get', ''))}: ${partialRequirePath}(${value}),`,
+          ]
+            .filter(Boolean)
+            .join(glue)
+        )
+        .join('\n\n  ') +
+      `\n        },
       },
     }),
   ],
 })`;
 
-      const nextExamples: { [key: string]: string } = {
-        getMetaTagsAndIconLinks: `/* ./app/layout.tsx */
+    const nextExamples: { [key: string]: string } = {
+      getMetaTagsAndIconLinks: `/* ./app/layout.tsx */
 import type { Metadata, Viewport } from "next";
 import { getMetaTagsAndIconLinks } from '@porsche-design-system/components-react/partials';
 
@@ -181,7 +181,7 @@ export const metadata: Metadata = {
   /* Next.js currently automatically sets crossorigin="use-credentials" on the manifest link which causes cors problems */
   /* manifest */
 };`,
-        getComponentChunkLinks: `/* ./app/layout.tsx */
+      getComponentChunkLinks: `/* ./app/layout.tsx */
 import React from 'react';
 import { preload } from 'react-dom';
 import { getComponentChunkLinks } from '@porsche-design-system/components-react/partials';
@@ -203,7 +203,7 @@ getComponentChunkLinks({ format: 'js', components: ['button', 'marque'], cdn: 'c
 
 /* root layout... */
 `,
-        getFontLinks: `/* ./app/layout.tsx */
+      getFontLinks: `/* ./app/layout.tsx */
 import React from 'react';
 import { preload } from 'react-dom';
 import { getFontLinks } from '@porsche-design-system/components-react/partials';
@@ -224,7 +224,7 @@ getFontLinks({ format: 'js', cdn: 'cn' }).forEach(
 );
 
 /* root layout... */`,
-        getIconLinks: `/* ./app/layout.tsx */
+      getIconLinks: `/* ./app/layout.tsx */
 import React from 'react';
 import { prefetchDNS } from 'react-dom';
 import { getIconLinks } from '@porsche-design-system/components-react/partials';
@@ -241,7 +241,7 @@ getIconLinks({ format: 'js', icons: ['arrow-head-right', 'plus'] }).forEach(({ h
 getIconLinks({ format: 'js', icons: ['arrow-head-right', 'plus'], cdn: 'cn' }).forEach(({ href }) => prefetchDNS(href));
 
 /* root layout... */`,
-        getInitialStyles: `/* ./components/partials.tsx */
+      getInitialStyles: `/* ./components/partials.tsx */
 "use client";
 import { useServerInsertedHTML } from "next/navigation";
 import { useRef } from 'react';
@@ -267,7 +267,7 @@ export const Partials = () => {
 }
 
 /* render </Partials> component in root layout */`,
-        getFontFaceStylesheet: `/* ./components/partials.tsx */
+      getFontFaceStylesheet: `/* ./components/partials.tsx */
 "use client";
 import { useServerInsertedHTML } from "next/navigation";
 import { useRef } from 'react';
@@ -293,7 +293,7 @@ export const Partials = () => {
 }
 
 /* render </Partials> component in root layout */`,
-        getFontFaceStyles: `/* ./components/partials.tsx */
+      getFontFaceStyles: `/* ./components/partials.tsx */
 "use client";
 import { useServerInsertedHTML } from "next/navigation";
 import { useRef } from 'react';
@@ -319,17 +319,17 @@ export const Partials = () => {
 }
 
 /* render </Partials> component in root layout */`,
-      };
+    };
 
-      return {
-        'vanilla-js': exampleJs,
-        angular: exampleAngular,
-        react: exampleReact,
-        vue: exampleVue,
-        next: nextExamples[this.name],
-      };
-    }
+    return {
+      'vanilla-js': exampleJs,
+      angular: exampleAngular,
+      react: exampleReact,
+      vue: exampleVue,
+      next: nextExamples[this.name],
+    };
   }
+}
 </script>
 
 <style scoped lang="scss">

@@ -15,17 +15,17 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import Search from '@/components/Search.vue';
-  import Footer from '@/components/Footer.vue';
-  import Navigation from '@/components/Navigation.vue';
-  import VersionSelect from '@/components/VersionSelect.vue';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import Search from '@/components/Search.vue';
+import Footer from '@/components/Footer.vue';
+import Navigation from '@/components/Navigation.vue';
+import VersionSelect from '@/components/VersionSelect.vue';
 
-  @Component({
-    components: { VersionSelect, Navigation, Footer, Search },
-  })
-  export default class MenuMobile extends Vue {}
+@Component({
+  components: { VersionSelect, Navigation, Footer, Search },
+})
+export default class MenuMobile extends Vue {}
 </script>
 
 <style scoped lang="scss">

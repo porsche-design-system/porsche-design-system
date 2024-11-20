@@ -17,9 +17,9 @@ export const transformAttributesWithDigitValue = (markup: string): string =>
     $key === 'maxlength'
       ? ` [maxLength]="${$value}"`
       : // surround numeric "name", "model" and pin-code "value" prop values with single quotes
-      $key === 'name' || $key === 'model' || ($key === 'value' && $value === '1234') // TODO replace temporary 911|718 work around with more generic approach
-      ? ` [${$key}]="'${$value}'"`
-      : ` [${camelCase($key)}]="${$value}"`
+        $key === 'name' || $key === 'model' || ($key === 'value' && $value === '1234') // TODO replace temporary 911|718 work around with more generic approach
+        ? ` [${$key}]="'${$value}'"`
+        : ` [${camelCase($key)}]="${$value}"`
   );
 
 export const cleanBooleanAndUndefinedValues = (markup: string): string =>

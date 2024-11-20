@@ -58,21 +58,21 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { type StorefrontTheme } from '@/models';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { type StorefrontTheme } from '@/models';
 
-  @Component({})
-  export default class Masonry extends Vue {
-    public get storefrontTheme(): StorefrontTheme {
-      return this.$store.getters.storefrontTheme;
-    }
-
-    public onTileClick(e: Event): void {
-      e.preventDefault();
-      this.$router.push('/' + e.target?.href);
-    }
+@Component({})
+export default class Masonry extends Vue {
+  public get storefrontTheme(): StorefrontTheme {
+    return this.$store.getters.storefrontTheme;
   }
+
+  public onTileClick(e: Event): void {
+    e.preventDefault();
+    this.$router.push('/' + e.target?.href);
+  }
+}
 </script>
 
 <style scoped lang="scss">

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { PBanner } from '@porsche-design-system/components-vue';
+import { PBanner } from '@porsche-design-system/components-vue';
 </script>
 
 <template>

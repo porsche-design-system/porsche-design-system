@@ -21,16 +21,16 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { type StorefrontTheme } from '@/models';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { type StorefrontTheme } from '@/models';
 
-  @Component({})
-  export default class Intro extends Vue {
-    public get storefrontTheme(): StorefrontTheme {
-      return this.$store.getters.storefrontTheme;
-    }
+@Component({})
+export default class Intro extends Vue {
+  public get storefrontTheme(): StorefrontTheme {
+    return this.$store.getters.storefrontTheme;
   }
+}
 </script>
 
 <style scoped lang="scss">

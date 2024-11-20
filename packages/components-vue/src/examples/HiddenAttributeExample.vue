@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { PButton, PSelect, PSelectOption } from '../../dist/vue-wrapper';
+import { PButton, PSelect, PSelectOption } from '../../dist/vue-wrapper';
 </script>
 <template>
   <div>

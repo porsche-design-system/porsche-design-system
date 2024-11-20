@@ -1,12 +1,12 @@
 <script setup lang="ts">
-  import { PTextarea, PText } from '@porsche-design-system/components-vue';
-  import { ref } from 'vue';
+import { PTextarea, PText } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
 
-  const lastSubmittedData = ref('');
-  const onSubmit = (e: Event) => {
-    const formData = new FormData(e.target as HTMLFormElement);
-    lastSubmittedData.value = formData.get('some-name') as string;
-  };
+const lastSubmittedData = ref('');
+const onSubmit = (e: Event) => {
+  const formData = new FormData(e.target as HTMLFormElement);
+  lastSubmittedData.value = formData.get('some-name') as string;
+};
 </script>
 
 <template>

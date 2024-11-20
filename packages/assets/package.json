@@ -2,12 +2,7 @@
   "name": "@porsche-design-system/assets",
   "version": "5.0.2",
   "description": "This package provides manifests and CDN URLs of Porsche assets like fonts, icons, marques, etc.",
-  "keywords": [
-    "porsche",
-    "design",
-    "system",
-    "assets"
-  ],
+  "keywords": ["porsche", "design", "system", "assets"],
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "SEE LICENSE IN LICENSE",

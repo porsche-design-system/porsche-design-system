@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { PFlyoutMultilevel, PFlyoutMultilevelItem } from '@porsche-design-system/components-vue';
+import { PFlyoutMultilevel, PFlyoutMultilevelItem } from '@porsche-design-system/components-vue';
 </script>
 
 <template>
