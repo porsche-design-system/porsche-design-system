@@ -20,17 +20,17 @@
   },
   "dependencies": {
     "@porsche-design-system/components-react": "3.21.0",
-    "@remix-run/node": "^2.10.2",
-    "@remix-run/react": "^2.10.2",
-    "@remix-run/serve": "^2.10.2",
-    "@remix-run/server-runtime": "^2.10.2",
-    "isbot": "^5.1.13",
+    "@remix-run/node": "^2.14.0",
+    "@remix-run/react": "^2.14.0",
+    "@remix-run/serve": "^2.14.0",
+    "@remix-run/server-runtime": "^2.14.0",
+    "isbot": "^5.1.17",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@remix-run/dev": "^2.10.2",
+    "@remix-run/dev": "^2.14.0",
     "@types/react": "18.3.12",
     "@types/react-dom": "^18.3.1",
     "binode": "^1.0.5",

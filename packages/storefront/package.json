@@ -56,7 +56,7 @@
     "yup": "^1.4.0"
   },
   "devDependencies": {
-    "@types/prismjs": "^1.26.4",
+    "@types/prismjs": "^1.26.5",
     "@vue/cli-plugin-babel": "^4.5.19",
     "@vue/cli-plugin-router": "^4.5.19",
     "@vue/cli-plugin-typescript": "^4.5.19",
