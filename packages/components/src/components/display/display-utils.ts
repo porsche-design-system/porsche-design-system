@@ -28,9 +28,9 @@ export const getDisplayTagType = (
 ): string => {
   if (hasSpecificDirectChildTag(host, DISPLAY_TAGS.join())) {
     return 'div';
-  } else if (tag) {
-    return tag;
-  } else {
-    return displaySizeToTagMap[size as DisplaySize] || 'h1';
   }
+  if (tag) {
+    return tag;
+  }
+  return displaySizeToTagMap[size as DisplaySize] || 'h1';
 };

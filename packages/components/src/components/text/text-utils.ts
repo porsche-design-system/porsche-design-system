@@ -14,9 +14,8 @@ export type TextTag = (typeof TEXT_TAGS)[number];
 export const getTextTagType = (host: HTMLElement, tag: TextTag): string => {
   if (hasSpecificDirectChildTag(host, TEXT_TAGS.join())) {
     return 'div';
-  } else {
-    return tag;
   }
+  return tag;
 };
 
 /** @deprecated */

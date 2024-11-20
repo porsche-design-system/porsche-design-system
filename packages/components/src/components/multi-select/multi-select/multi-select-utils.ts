@@ -182,10 +182,10 @@ export const getDropdownDirection = (
 ): SelectDropdownDirectionInternal => {
   if (direction !== 'auto') {
     return direction;
-  } else if (host) {
+  }
+  if (host) {
     const visibleOptionsLength = options.filter((option) => !option.hidden).length;
     return determineDropdownDirection(host, visibleOptionsLength);
-  } else {
-    return 'down';
   }
+  return 'down';
 };

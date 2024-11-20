@@ -58,12 +58,12 @@ export const getSanitisedValue = (host: HTMLElement, value: string, length: numb
   if (value && !hasInputOnlyDigitsOrWhitespaces(value)) {
     warnAboutTransformedValue(host);
     return '';
-  } else if (removeWhiteSpaces(value)?.length > length) {
+  }
+  if (removeWhiteSpaces(value)?.length > length) {
     warnAboutTransformedValue(host, length);
     return value.slice(0, length);
-  } else {
-    return value;
   }
+  return value;
 };
 
 export const removeWhiteSpaces = (value: string): string => value.replace(/\s/g, '');
