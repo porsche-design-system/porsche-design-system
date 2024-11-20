@@ -1,14 +1,14 @@
 <script setup lang="ts">
-  import { PFlyout, PButton, PHeading, PText, PButtonGroup } from '@porsche-design-system/components-vue';
-  import { ref } from 'vue';
+import { PFlyout, PButton, PHeading, PText, PButtonGroup } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
 
-  const isFlyoutOpen = ref(false);
-  const onOpen = (): void => {
-    isFlyoutOpen.value = true;
-  };
-  const onDismiss = (): void => {
-    isFlyoutOpen.value = false;
-  };
+const isFlyoutOpen = ref(false);
+const onOpen = (): void => {
+  isFlyoutOpen.value = true;
+};
+const onDismiss = (): void => {
+  isFlyoutOpen.value = false;
+};
 </script>
 
 <template>

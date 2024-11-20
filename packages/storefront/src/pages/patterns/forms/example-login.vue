@@ -83,57 +83,57 @@
 </template>
 
 <script lang="ts">
-  import type { ValidationBag } from '@/utils';
-  import type { StorefrontTheme } from '@/models';
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { boolean, object, string } from 'yup';
-  import { validateName, getState, validateField, validateForm, getInitialErrors, getFirstErrorKey } from '@/utils';
+import type { ValidationBag } from '@/utils';
+import type { StorefrontTheme } from '@/models';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { boolean, object, string } from 'yup';
+import { validateName, getState, validateField, validateForm, getInitialErrors, getFirstErrorKey } from '@/utils';
 
-  const initialData = {
-    email: '',
-    password: '',
-    isChecked: false,
+const initialData = {
+  email: '',
+  password: '',
+  isChecked: false,
+};
+
+type FormModel = typeof initialData;
+
+@Component
+export default class LoginForm extends Vue {
+  private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
+  private getState = (field: keyof FormModel) => getState(field, this.bag);
+  public showGlobalError = false;
+
+  public get storefrontTheme(): StorefrontTheme {
+    return this.$store.getters.storefrontTheme;
+  }
+
+  private bag: ValidationBag<FormModel> = {
+    data: { ...initialData },
+    errors: getInitialErrors(initialData),
+    schema: object({
+      email: string().email('Please check your entry').required('Please enter your email address or Porsche ID'),
+      password: string().required('Please enter your password'),
+      isChecked: boolean().defined(),
+    }),
   };
 
-  type FormModel = typeof initialData;
+  onFieldBlur({ target }: FocusEvent & { target: HTMLInputElement }): void {
+    validateField(target.name as keyof FormModel, this.bag);
+  }
 
-  @Component
-  export default class LoginForm extends Vue {
-    private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
-    private getState = (field: keyof FormModel) => getState(field, this.bag);
-    public showGlobalError = false;
+  async onSubmit(): Promise<void> {
+    this.showGlobalError = false;
+    const isValid = await validateForm(this.bag);
+    console.log('isValid', isValid);
 
-    public get storefrontTheme(): StorefrontTheme {
-      return this.$store.getters.storefrontTheme;
-    }
-
-    private bag: ValidationBag<FormModel> = {
-      data: { ...initialData },
-      errors: getInitialErrors(initialData),
-      schema: object({
-        email: string().email('Please check your entry').required('Please enter your email address or Porsche ID'),
-        password: string().required('Please enter your password'),
-        isChecked: boolean().defined(),
-      }),
-    };
-
-    onFieldBlur({ target }: FocusEvent & { target: HTMLInputElement }): void {
-      validateField(target.name as keyof FormModel, this.bag);
-    }
-
-    async onSubmit(): Promise<void> {
-      this.showGlobalError = false;
-      const isValid = await validateForm(this.bag);
-      console.log('isValid', isValid);
-
-      if (!isValid) {
-        const input = this.$refs[getFirstErrorKey(this.bag)!] as HTMLElement;
-        input.focus();
-        input.parentElement!.scrollIntoView(true); // scroll to wrapper element, so that we can see the label
-      } else {
-        this.showGlobalError = true;
-      }
+    if (!isValid) {
+      const input = this.$refs[getFirstErrorKey(this.bag)!] as HTMLElement;
+      input.focus();
+      input.parentElement!.scrollIntoView(true); // scroll to wrapper element, so that we can see the label
+    } else {
+      this.showGlobalError = true;
     }
   }
+}
 </script>

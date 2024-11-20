@@ -1,14 +1,14 @@
 <script setup lang="ts">
-  import {
-    PTable,
-    PTableBody,
-    PTableCell,
-    PTableHead,
-    PTableHeadCell,
-    PTableHeadRow,
-    PTableRow,
-  } from '@porsche-design-system/components-vue';
-  import { dataBasic, headBasic } from '@porsche-design-system/shared';
+import {
+  PTable,
+  PTableBody,
+  PTableCell,
+  PTableHead,
+  PTableHeadCell,
+  PTableHeadRow,
+  PTableRow,
+} from '@porsche-design-system/components-vue';
+import { dataBasic, headBasic } from '@porsche-design-system/shared';
 </script>
 
 <template>

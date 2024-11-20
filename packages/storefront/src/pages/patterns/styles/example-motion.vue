@@ -33,16 +33,16 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
-  @Component
-  export default class ExampleStylesMotion extends Vue {
-    isMovingActive = false;
-    isEnterExitActive = false;
-    isShowHideActive = false;
-    isExpandActive = false;
-  }
+@Component
+export default class ExampleStylesMotion extends Vue {
+  isMovingActive = false;
+  isEnterExitActive = false;
+  isShowHideActive = false;
+  isExpandActive = false;
+}
 </script>
 
 <style lang="scss" scoped>

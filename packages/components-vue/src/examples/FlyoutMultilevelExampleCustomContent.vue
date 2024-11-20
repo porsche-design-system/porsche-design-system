@@ -1,25 +1,25 @@
 <script setup lang="ts">
-  import {
-    PFlyoutMultilevel,
-    PFlyoutMultilevelItem,
-    PLinkTile,
-    PLinkPure,
-    PButton,
-    type FlyoutMultilevelUpdateEventDetail,
-  } from '@porsche-design-system/components-vue';
-  import { ref } from 'vue';
+import {
+  PFlyoutMultilevel,
+  PFlyoutMultilevelItem,
+  PLinkTile,
+  PLinkPure,
+  PButton,
+  type FlyoutMultilevelUpdateEventDetail,
+} from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
 
-  const isFlyoutMultilevelOpen = ref(false);
-  const flyoutMultilevelActiveIdentifier = ref('item-1');
-  const onOpen = (): void => {
-    isFlyoutMultilevelOpen.value = true;
-  };
-  const onDismiss = (): void => {
-    isFlyoutMultilevelOpen.value = false;
-  };
-  const onUpdate = (e: FlyoutMultilevelUpdateEventDetail): void => {
-    flyoutMultilevelActiveIdentifier.value = e.activeIdentifier;
-  };
+const isFlyoutMultilevelOpen = ref(false);
+const flyoutMultilevelActiveIdentifier = ref('item-1');
+const onOpen = (): void => {
+  isFlyoutMultilevelOpen.value = true;
+};
+const onDismiss = (): void => {
+  isFlyoutMultilevelOpen.value = false;
+};
+const onUpdate = (e: FlyoutMultilevelUpdateEventDetail): void => {
+  flyoutMultilevelActiveIdentifier.value = e.activeIdentifier;
+};
 </script>
 
 <template>

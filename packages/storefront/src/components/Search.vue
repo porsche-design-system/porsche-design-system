@@ -32,88 +32,88 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import algoliasearch from 'algoliasearch/lite';
-  import { createInMemoryCache } from '@algolia/cache-in-memory';
-  import { ALGOLIA_APP_ID, ALGOLIA_SEARCH_ONLY_KEY } from '@/../storefront.config';
-  import DebouncedSearchBox from '@/components/DebouncedSearchBox.vue';
-  import { Prop } from 'vue-property-decorator';
-  import type { AlgoliaRecord, AlgoliaRequest, AlgoliaResult } from '@/models';
-  import { SearchClient } from 'algoliasearch/lite';
-  import { type StorefrontTheme } from '@/models';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import algoliasearch from 'algoliasearch/lite';
+import { createInMemoryCache } from '@algolia/cache-in-memory';
+import { ALGOLIA_APP_ID, ALGOLIA_SEARCH_ONLY_KEY } from '@/../storefront.config';
+import DebouncedSearchBox from '@/components/DebouncedSearchBox.vue';
+import { Prop } from 'vue-property-decorator';
+import type { AlgoliaRecord, AlgoliaRequest, AlgoliaResult } from '@/models';
+import { SearchClient } from 'algoliasearch/lite';
+import { type StorefrontTheme } from '@/models';
 
-  @Component({
-    components: {
-      DebouncedSearchBox,
-    },
-  })
-  export default class Search extends Vue {
-    @Prop({ default: false }) public hideNavigation!: boolean;
+@Component({
+  components: {
+    DebouncedSearchBox,
+  },
+})
+export default class Search extends Vue {
+  @Prop({ default: false }) public hideNavigation!: boolean;
 
-    public get storefrontTheme(): StorefrontTheme {
-      return this.$store.getters.storefrontTheme;
-    }
-
-    public algoliaClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_SEARCH_ONLY_KEY, {
-      responsesCache: createInMemoryCache(),
-      requestsCache: createInMemoryCache({ serializable: false }),
-    });
-
-    public displayHits = false;
-
-    public searchClient = {
-      ...this.algoliaClient,
-      search: (requests: AlgoliaRequest[]): ReturnType<SearchClient['search']> => {
-        // remove initial search
-        // https://algolia.com/doc/guides/building-search-ui/going-further/conditional-requests/vue/#detecting-empty-search-requests
-        if (requests.every(({ params }: AlgoliaRequest) => !params?.query.trim())) {
-          return Promise.resolve({
-            results: requests.map(() => ({
-              hits: [],
-              nbHits: 0,
-              nbPages: 0,
-              page: 0,
-              processingTimeMS: 0,
-            })),
-          }) as unknown as ReturnType<SearchClient['search']>;
-        } else {
-          return this.algoliaClient.search(requests);
-        }
-      },
-    };
-
-    onHitsChange(hits: AlgoliaResult[]): void {
-      this.$store.commit('setIsSearchActive', this.displayHits && hits.length > 0);
-    }
-
-    shouldDisplayHits(query: string): void {
-      this.displayHits = !!query;
-    }
-
-    getAlgoliaIndexName(): string {
-      const baseHref = document.querySelector('base')!.getAttribute('href')!;
-      // on localhost baseHref is '/'
-      return baseHref.includes('/issue/')
-        ? 'latest'
-        : baseHref.length > 1
-          ? baseHref.slice(1, -1).replace('/', '_')
-          : 'latest';
-    }
-
-    transformItems(items: AlgoliaRecord[]): AlgoliaResult[] {
-      return items.reduce((results, current) => {
-        const categoryIndex = results.findIndex((result) => result.category === current.category);
-        if (categoryIndex >= 0) {
-          // reduce amount of displayed hits per category to 5 when using distinct on 'page' instead of 'category''
-          results[categoryIndex].hits.length < 5 && results[categoryIndex].hits.push(current);
-        } else {
-          results.push({ category: current.category, hits: [current] });
-        }
-        return results;
-      }, [] as AlgoliaResult[]);
-    }
+  public get storefrontTheme(): StorefrontTheme {
+    return this.$store.getters.storefrontTheme;
   }
+
+  public algoliaClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_SEARCH_ONLY_KEY, {
+    responsesCache: createInMemoryCache(),
+    requestsCache: createInMemoryCache({ serializable: false }),
+  });
+
+  public displayHits = false;
+
+  public searchClient = {
+    ...this.algoliaClient,
+    search: (requests: AlgoliaRequest[]): ReturnType<SearchClient['search']> => {
+      // remove initial search
+      // https://algolia.com/doc/guides/building-search-ui/going-further/conditional-requests/vue/#detecting-empty-search-requests
+      if (requests.every(({ params }: AlgoliaRequest) => !params?.query.trim())) {
+        return Promise.resolve({
+          results: requests.map(() => ({
+            hits: [],
+            nbHits: 0,
+            nbPages: 0,
+            page: 0,
+            processingTimeMS: 0,
+          })),
+        }) as unknown as ReturnType<SearchClient['search']>;
+      } else {
+        return this.algoliaClient.search(requests);
+      }
+    },
+  };
+
+  onHitsChange(hits: AlgoliaResult[]): void {
+    this.$store.commit('setIsSearchActive', this.displayHits && hits.length > 0);
+  }
+
+  shouldDisplayHits(query: string): void {
+    this.displayHits = !!query;
+  }
+
+  getAlgoliaIndexName(): string {
+    const baseHref = document.querySelector('base')!.getAttribute('href')!;
+    // on localhost baseHref is '/'
+    return baseHref.includes('/issue/')
+      ? 'latest'
+      : baseHref.length > 1
+        ? baseHref.slice(1, -1).replace('/', '_')
+        : 'latest';
+  }
+
+  transformItems(items: AlgoliaRecord[]): AlgoliaResult[] {
+    return items.reduce((results, current) => {
+      const categoryIndex = results.findIndex((result) => result.category === current.category);
+      if (categoryIndex >= 0) {
+        // reduce amount of displayed hits per category to 5 when using distinct on 'page' instead of 'category''
+        results[categoryIndex].hits.length < 5 && results[categoryIndex].hits.push(current);
+      } else {
+        results.push({ category: current.category, hits: [current] });
+      }
+      return results;
+    }, [] as AlgoliaResult[]);
+  }
+}
 </script>
 
 <style scoped lang="scss">

@@ -42,8 +42,8 @@ const shadowFactory =
 type RemoveFirst<T extends any[]> = T['length'] extends 0
   ? undefined
   : ((...b: T) => void) extends (a: any, ...b: infer I) => void
-  ? I
-  : [];
+    ? I
+    : [];
 
 export function getByRoleShadowed<T extends HTMLElement>(...args: Parameters<GetByRole<T>>): T;
 export function getByRoleShadowed<T extends HTMLElement>(...args: RemoveFirst<Parameters<GetByRole<T>>>): T;

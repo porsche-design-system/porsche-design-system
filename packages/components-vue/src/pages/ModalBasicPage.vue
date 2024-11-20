@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { PModal } from '@porsche-design-system/components-vue';
+import { PModal } from '@porsche-design-system/components-vue';
 </script>
 
 <template>

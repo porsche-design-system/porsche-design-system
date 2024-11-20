@@ -1,4 +1,4 @@
-const webpack = require ('webpack');
+const webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const { cdnDistPath, deployUrl, snakeCaseVersion, version } = require('./environment');
 const CustomNamedChunkIdsPlugin = require('./CustomNamedChunkIdsPlugin');
@@ -53,4 +53,3 @@ module.exports = {
     }),
   ],
 };
-

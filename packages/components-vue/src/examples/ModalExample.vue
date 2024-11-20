@@ -1,14 +1,14 @@
 <script setup lang="ts">
-  import { PButton, PButtonGroup, PModal, PText, PHeading } from '@porsche-design-system/components-vue';
-  import { ref } from 'vue';
+import { PButton, PButtonGroup, PModal, PText, PHeading } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
 
-  const isModalOpen = ref(false);
-  const onOpen = (): void => {
-    isModalOpen.value = true;
-  };
-  const onDismiss = (): void => {
-    isModalOpen.value = false;
-  };
+const isModalOpen = ref(false);
+const onOpen = (): void => {
+  isModalOpen.value = true;
+};
+const onDismiss = (): void => {
+  isModalOpen.value = false;
+};
 </script>
 
 <template>
