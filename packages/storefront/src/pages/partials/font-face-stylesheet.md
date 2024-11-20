@@ -29,6 +29,9 @@ An in-depth optimization guide can be found at
 | `cdn`    | Decides from which CDN the resources are loaded.                                                                         | `'auto' | 'cn'`   | `'auto'` |
 | `format` | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements. | `'html' | 'jsx'`  | `'html'` |
 
+When using `jsx` in the `format` option, it is necessary to have `react/jsx-runtime` as a dependency in the project
+included.
+
 ## Examples
 
 Project integration differs based on the project setup.  

@@ -21,6 +21,9 @@ sharing a link on social media. If you want to define your own information you c
 | `format`   | Defines the output format of the partial. By default, it returns a html string, with `jsx` it returns valid jsx elements. When using the <code class="no-before">js</code> option a javascript object is returned. | `'html'   | 'jsx'       | 'js'`    | `'html'` |
 | `ogImage`  | Boolean attribute to decide whether the Open Graph and Twitter meta tags should be included.                                                                                                                       | `boolean` | `true`      |
 
+When using `jsx` in the `format` option, it is necessary to have `react/jsx-runtime` as a dependency in the project
+included.
+
 ## Examples
 
 Project integration differs based on the project setup.  
