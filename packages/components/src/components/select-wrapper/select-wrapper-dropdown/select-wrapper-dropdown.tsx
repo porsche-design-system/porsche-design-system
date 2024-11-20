@@ -73,7 +73,7 @@ export class SelectWrapperDropdown {
   @State() private searchString = '';
 
   private inputElement: HTMLInputElement;
-  private listElement: HTMLUListElement;
+  private listElement: HTMLElement;
   private isNativePopoverCase: boolean = false;
   private parentTableElement: HTMLElement;
   private popoverElement: HTMLElement;
@@ -222,7 +222,7 @@ export class SelectWrapperDropdown {
             ref={(el) => (this.popoverElement = el)}
           >
             {this.isOpen && (
-              <ul
+              <div
                 id={dropdownId}
                 role="listbox"
                 tabIndex={-1}
@@ -230,10 +230,10 @@ export class SelectWrapperDropdown {
                 ref={(el) => (this.listElement = el)}
               >
                 {this.filter && !hasFilterResults(this.optionMaps) ? (
-                  <li class="option" aria-live="polite" role="status">
+                  <div class="option" aria-live="polite" role="option">
                     <span aria-hidden="true">---</span>
                     <span class="option__sr">No results found</span>
-                  </li>
+                  </div>
                 ) : (
                   this.optionMaps.map((option, index) => {
                     const {
@@ -261,7 +261,7 @@ export class SelectWrapperDropdown {
                           {title}
                         </span>
                       ),
-                      <li
+                      <div
                         id={`option-${index}`}
                         role="option"
                         class={{
@@ -284,11 +284,11 @@ export class SelectWrapperDropdown {
                             theme={this.theme}
                           />
                         )}
-                      </li>,
+                      </div>,
                     ];
                   })
                 )}
-              </ul>
+              </div>
             )}
           </div>,
         ]}

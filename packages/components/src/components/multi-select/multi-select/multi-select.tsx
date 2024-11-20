@@ -345,7 +345,7 @@ export class MultiSelect {
               ref={(el) => (this.listElement = el)}
             >
               {!this.hasFilterResults && (
-                <div class="no-results" aria-live="polite" role="status">
+                <div class="no-results" role="option">
                   <span aria-hidden="true">---</span>
                   <span class="sr-only">No results found</span>
                 </div>
@@ -356,7 +356,7 @@ export class MultiSelect {
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
         <span class="sr-only" role="status" aria-live="assertive" aria-relevant="additions text">
-          {this.srHighlightedOptionText}
+          {!this.hasFilterResults ? 'No results found' : this.srHighlightedOptionText}
         </span>
       </div>
     );
