@@ -52,12 +52,12 @@ export const updateSelectOptions = (options: SelectOption[], value: string): voi
   } else {
     // TODO: Do we want to cover multiple options with the same value?
     const optionToSelect = options.find((option) => option.value === value);
-    if (!optionToSelect) {
-      // TODO: Add select node
-      consoleWarn('The provided value is not included in the options of the p-select:', value);
-    } else {
+    if (optionToSelect) {
       optionToSelect.selected = true;
       forceUpdate(optionToSelect);
+    } else {
+      // TODO: Add select node
+      consoleWarn('The provided value is not included in the options of the p-select:', value);
     }
   }
 };

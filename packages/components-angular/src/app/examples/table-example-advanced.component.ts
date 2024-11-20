@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import type { TableUpdateEventDetail } from '@porsche-design-system/components-angular';
-import { dataAdvanced, type DataAdvanced, headAdvanced } from '@porsche-design-system/shared';
+import { type DataAdvanced, dataAdvanced, headAdvanced } from '@porsche-design-system/shared';
 
 @Component({
   selector: 'page-table-example-advanced',
@@ -42,6 +42,7 @@ import { dataAdvanced, type DataAdvanced, headAdvanced } from '@porsche-design-s
     </p-table>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TableExampleAdvancedComponent {
   public head = headAdvanced;

@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
 import 'ag-grid-enterprise';
-import { type ColDef, type ICellRendererParams } from 'ag-grid-community';
-import { type ICellRendererAngularComp } from 'ag-grid-angular';
-import { PorscheDesignSystemModule, Theme } from '@porsche-design-system/components-angular';
 import { AsyncPipe } from '@angular/common';
+import { PorscheDesignSystemModule, Theme } from '@porsche-design-system/components-angular';
+import { type ICellRendererAngularComp } from 'ag-grid-angular';
+import { type ColDef, type ICellRendererParams } from 'ag-grid-community';
 
 type ColumnDefs = DataAdvanced & {
   active: boolean;
@@ -73,7 +73,7 @@ class ImageUrlRendererer implements ICellRendererAngularComp {
       }
     `,
   ],
-  imports: [PorscheDesignSystemModule, AsyncPipe],
+  imports: [PorscheDesignSystemModule],
 })
 class ButtonRenderer implements ICellRendererAngularComp {
   // Init Cell Value
@@ -104,6 +104,7 @@ class ButtonRenderer implements ICellRendererAngularComp {
     [enableRangeSelection]="true"
   />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class AgGridExampleComponent {
   public theme: Theme = 'light';

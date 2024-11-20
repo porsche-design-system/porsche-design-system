@@ -25,6 +25,7 @@ import type { CarouselUpdateEventDetail } from '@porsche-design-system/component
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class CarouselExampleEventsComponent {
   lastEventDetail = 'none';

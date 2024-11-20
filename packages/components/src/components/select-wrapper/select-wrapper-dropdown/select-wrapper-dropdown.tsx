@@ -337,15 +337,17 @@ export class SelectWrapperDropdown {
   private onComboboxKeyDown = (e: KeyboardEvent): void => {
     switch (e.key) {
       case 'ArrowUp':
-      case 'Up':
+      case 'Up': {
         e.preventDefault();
         this.cycleDropdown('up');
         break;
+      }
       case 'ArrowDown':
-      case 'Down':
+      case 'Down': {
         e.preventDefault();
         this.cycleDropdown('down');
         break;
+      }
       case ' ':
       case 'Spacebar':
       case 'Enter':
@@ -369,10 +371,11 @@ export class SelectWrapperDropdown {
         }
         break;
       case 'Escape':
-      case 'Tab':
+      case 'Tab': {
         this.setDropdownVisibility('hide');
         this.resetHighlightedToSelectedOptionMaps();
         break;
+      }
       case 'PageUp':
         if (this.isOpen) {
           e.preventDefault();

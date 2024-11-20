@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, inject, Pipe, PipeTransform } from '@angular/core';
-import { Router } from '@angular/router';
-import { type Theme, THEME_TOKEN } from '@porsche-design-system/components-angular';
-import { routes } from './app-routing.module';
+import { ChangeDetectionStrategy, Component, Pipe, PipeTransform, inject } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+import { THEME_TOKEN, type Theme } from '@porsche-design-system/components-angular';
+import { routes } from './app-routing.module';
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
@@ -33,6 +33,7 @@ export class SafePipe implements PipeTransform {
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class AppComponent {
   public router = inject(Router);
