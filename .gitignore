@@ -7,11 +7,12 @@ yarn-error.log*
 lerna-debug.log*
 
 # Dependencies
-node_modules
+node_modules/
 
 # Directories
-dist
-dist-tmp
+dist/
+dist-tmp/
+www/
 
 # Cache
 .aws-sam
@@ -19,7 +20,7 @@ dist-tmp
 .eslintcache
 
 # Jest coverage report
-coverage
+coverage/
 
 # Yarn Integrity file
 .yarn-integrity
@@ -53,5 +54,5 @@ Thumbs.db
 ort/
 
 # Assets
-packages/assets/cdn/*
+packages/assets/cdn/
 packages/assets/projects/*/index.ts

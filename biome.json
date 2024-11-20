@@ -8,13 +8,9 @@
   "files": {
     "ignoreUnknown": false,
     "ignore": [
-      "**/node_modules/*",
-      "**/dist/*",
-      "**/dist-tmp/*",
       "**/bin/*",
       "**/*.snap",
       "**/.stencil/*",
-      "**/www/*",
       "**/coverage/*",
       "**/playwright-report/*",
       "./packages/components/src/components.d.ts"
@@ -36,7 +32,6 @@
       "./packages/components/src/types/aria-types.d.ts",
       "./packages/components-react/projects/nextjs/routes.ts",
       "./packages/components-js/tests/unit/results/stats-raw.json",
-      "./packages/assets/cdn/*",
       "./packages/shared/src/lib/*",
       "./packages/components-js/public/*",
       "./packages/components-js/projects/jsdom-polyfill/src/lib/*",
@@ -54,7 +49,6 @@
       "./packages/storefront/src/lib/*",
       "./packages/component-meta/src/lib/*",
       "./packages/components-js/projects/partials/src/lib/*",
-      "./packages/assets/projects/*/index.ts",
       "./packages/components-angular/src/app/pages/generated/*",
       "./packages/components/src/test-utils/tag-names-constructor-map.ts",
       "./packages/components-react/projects/uxpin-wrapper/src/form/*/presets/*",
