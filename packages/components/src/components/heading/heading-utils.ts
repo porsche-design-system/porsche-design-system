@@ -30,9 +30,9 @@ export const getHeadingTagType = (
 ): string => {
   if (hasSpecificDirectChildTag(host, HEADING_TAGS.join())) {
     return 'div';
-  } else if (tag) {
-    return tag;
-  } else {
-    return headingSizeToTagMap[size as HeadingSize] || 'h2';
   }
+  if (tag) {
+    return tag;
+  }
+  return headingSizeToTagMap[size as HeadingSize] || 'h2';
 };

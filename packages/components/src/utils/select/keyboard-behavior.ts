@@ -75,17 +75,23 @@ export const getActionFromKeyboardEvent = (event: KeyboardEvent, menuOpen: boole
   if (menuOpen) {
     if (key === 'ArrowUp' && altKey) {
       return 'CloseSelect';
-    } else if (key === 'ArrowDown' && !altKey) {
+    }
+    if (key === 'ArrowDown' && !altKey) {
       return 'Next';
-    } else if (key === 'ArrowUp') {
+    }
+    if (key === 'ArrowUp') {
       return 'Previous';
-    } else if (key === 'PageUp') {
+    }
+    if (key === 'PageUp') {
       return 'PageUp';
-    } else if (key === 'PageDown') {
+    }
+    if (key === 'PageDown') {
       return 'PageDown';
-    } else if (key === 'Escape') {
+    }
+    if (key === 'Escape') {
       return 'Close';
-    } else if (key === 'Enter' || key === ' ' || key === 'Tab') {
+    }
+    if (key === 'Enter' || key === ' ' || key === 'Tab') {
       return 'CloseSelect';
     }
   }
@@ -187,14 +193,13 @@ export const getMatchingSelectOptionIndex = <T extends Option>(options: T[], fil
     return usableOptions.indexOf(firstMatch);
   }
   // if the same letter is being repeated, cycle through first-letter matches
-  else if (allSameLetter(filter)) {
+  if (allSameLetter(filter)) {
     const matches = filterSelectOptions(orderedOptions, filter[0]);
     return usableOptions.indexOf(matches[0]);
   }
   // No matching option found
-  else {
-    return -1;
-  }
+
+  return -1;
 };
 
 /**
