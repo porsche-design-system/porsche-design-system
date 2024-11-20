@@ -10,7 +10,6 @@ lerna-debug.log*
 node_modules/
 dist/
 dist-tmp/
-lib/
 .stencil/
 www/
 build/
@@ -114,3 +113,17 @@ packages/shared/bin/
 packages/storefront/scripts/algoliaRecords.json
 packages/storefront/src/pages/changelog.md
 packages/storefront/public/porsche-design-system
+
+# Lib
+packages/shared/src/lib/*
+packages/components-js/projects/jsdom-polyfill/src/lib/*
+packages/components-js/projects/components-wrapper/lib/*
+packages/components-react/projects/react-wrapper/src/lib/*
+packages/components-react/projects/react-ssr-wrapper/src/lib/*
+packages/components-react/projects/uxpin-wrapper/src/lib/*
+packages/components-vue/projects/vue-wrapper/src/lib/*
+packages/components-angular/projects/angular-wrapper/src/lib/*
+packages/storefront/src/lib/*
+packages/component-meta/src/lib/*
+packages/components-js/projects/partials/src/lib/*
+packages/utilities/projects/utilities/src/scss/lib/*
