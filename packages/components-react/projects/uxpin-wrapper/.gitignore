@@ -1,6 +1,5 @@
 /.uxpin-merge
 
-/src/lib
 /src/form/*/presets
 /src/BaseProps.ts
 /src/provider.tsx

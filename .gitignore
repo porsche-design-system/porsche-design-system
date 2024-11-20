@@ -15,6 +15,7 @@ coverage/
 .stencil/
 playwright-report/
 ort/
+lib/
 
 # Cache
 .aws-sam
