@@ -11,6 +11,8 @@ node_modules/
 dist/
 dist-tmp/
 .stencil/
+.angular/
+tmp/
 www/
 build/
 .next/
