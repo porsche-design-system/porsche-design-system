@@ -15,6 +15,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <button type="button" (click)="onAction()">Reset \`actionLoading\`</button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class InlineNotificationExampleActionButtonComponent {
   isLoading = false;

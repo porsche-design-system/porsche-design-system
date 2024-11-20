@@ -11,6 +11,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <router-outlet />
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TabsBarNavigationComponent {
   activeTabIndex = 0;

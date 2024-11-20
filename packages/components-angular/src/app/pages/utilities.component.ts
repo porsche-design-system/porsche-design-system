@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { themeLight, textSmallStyle } from '@porsche-design-system/components-angular/styles';
+import { textSmallStyle, themeLight } from '@porsche-design-system/components-angular/styles';
 import { kebabCase } from 'change-case';
 
 @Component({
@@ -7,6 +7,7 @@ import { kebabCase } from 'change-case';
   styles: [``],
   template: `<div [style]="getStyle()">{{ themeLight.primary }}</div>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class UtilitiesComponent {
   themeLight = themeLight;
