@@ -93,7 +93,6 @@
         "noWith": "error",
         "useLiteralKeys": "error",
         "noForEach": "off",
-        "noBannedTypes": "off",
         "useOptionalChain": "off"
       },
       "correctness": {
