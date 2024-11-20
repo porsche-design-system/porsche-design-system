@@ -1,8 +1,0 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-
-
-# auto generated
-styles/getSharedStyles.tsx
-# sub directories only, because we have layout.tsx, page.tsx and providers.tsx in app folder
-app/*/
