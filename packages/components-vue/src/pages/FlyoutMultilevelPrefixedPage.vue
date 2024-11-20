@@ -1,9 +1,9 @@
 <script setup lang="ts">
-  import {
-    PFlyoutMultilevel,
-    PFlyoutMultilevelItem,
-    PorscheDesignSystemProvider,
-  } from '@porsche-design-system/components-vue';
+import {
+  PFlyoutMultilevel,
+  PFlyoutMultilevelItem,
+  PorscheDesignSystemProvider,
+} from '@porsche-design-system/components-vue';
 </script>
 
 <template>

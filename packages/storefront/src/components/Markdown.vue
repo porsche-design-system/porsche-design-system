@@ -5,43 +5,43 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import Prism from 'prismjs';
-  import 'prismjs/components/prism-diff';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import Prism from 'prismjs';
+import 'prismjs/components/prism-diff';
 
-  @Component
-  export default class Markdown extends Vue {
-    mounted(): void {
-      this.highlightDiffs();
+@Component
+export default class Markdown extends Vue {
+  mounted(): void {
+    this.highlightDiffs();
+  }
+
+  updated(): void {
+    this.highlightDiffs();
+  }
+
+  // besides of syntax highlighting it also adds `tabindex="0"` to `<pre>`
+  highlightDiffs(): void {
+    this.$el
+      .querySelectorAll('pre[class*="diff"], code[class*="diff"], pre[class*="language"], code[class*="language"]')
+      .forEach((diff) => Prism.highlightElement(diff));
+  }
+
+  // handling for raw anchor links to prevent full reload and respect base tag
+  onContentClick(event: MouseEvent): void {
+    const { altKey, ctrlKey, metaKey, shiftKey, target } = event;
+    if (metaKey || altKey || ctrlKey || shiftKey) {
+      return;
     }
+    const href = (target as HTMLElement).getAttribute('href');
+    const isDownload = (target as HTMLElement).hasAttribute('download');
 
-    updated(): void {
-      this.highlightDiffs();
-    }
-
-    // besides of syntax highlighting it also adds `tabindex="0"` to `<pre>`
-    highlightDiffs(): void {
-      this.$el
-        .querySelectorAll('pre[class*="diff"], code[class*="diff"], pre[class*="language"], code[class*="language"]')
-        .forEach((diff) => Prism.highlightElement(diff));
-    }
-
-    // handling for raw anchor links to prevent full reload and respect base tag
-    onContentClick(event: MouseEvent): void {
-      const { altKey, ctrlKey, metaKey, shiftKey, target } = event;
-      if (metaKey || altKey || ctrlKey || shiftKey) {
-        return;
-      }
-      const href = (target as HTMLElement).getAttribute('href');
-      const isDownload = (target as HTMLElement).hasAttribute('download');
-
-      if (href && !href.startsWith('http') && !isDownload) {
-        event.preventDefault();
-        this.$router.push('/' + href);
-      }
+    if (href && !href.startsWith('http') && !isDownload) {
+      event.preventDefault();
+      this.$router.push('/' + href);
     }
   }
+}
 </script>
 
 <style scoped lang="scss">

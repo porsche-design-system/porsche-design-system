@@ -1,4 +1,4 @@
-import { type PropTypes, type Theme } from '../../types';
+import type { PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -10,7 +10,7 @@ import {
 import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop, State } from '@stencil/core';
 import { getComponentCss } from './canvas-styles';
 import { breakpointS, breakpointM } from '@porsche-design-system/styles';
-import { type CanvasSidebarStartUpdateEventDetail } from './canvas-utils';
+import type { CanvasSidebarStartUpdateEventDetail } from './canvas-utils';
 
 const propTypes: PropTypes<typeof Canvas> = {
   sidebarStartOpen: AllowedTypes.boolean,
@@ -93,14 +93,14 @@ export class Canvas {
         <div class="root">
           <header class="header">
             <div class="blur">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
+              <div />
+              <div />
+              <div />
+              <div />
+              <div />
+              <div />
+              <div />
+              <div />
             </div>
             <div class="header__area header__area--start">
               {!this.sidebarStartOpen && (

@@ -27,6 +27,7 @@ import type { MultiSelectUpdateEventDetail } from '@porsche-design-system/compon
     <button type="button" (click)="onRemoveOption()">Remove last option</button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class MultiSelectExampleDynamicComponent {
   selectedValues: string[] = [];

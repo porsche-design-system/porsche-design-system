@@ -1,5 +1,5 @@
 import * as a11yUtils from './a11y';
-import { parseAndGetAriaAttributes, setAriaAttributes, SetAriaAttributesOptions } from './a11y';
+import { parseAndGetAriaAttributes, setAriaAttributes, type SetAriaAttributesOptions } from './a11y';
 import * as jsonUtils from '../json';
 import * as setAttributeUtils from '../dom/setAttribute';
 import * as removeAttributeUtils from '../dom/removeAttribute';
@@ -32,7 +32,7 @@ describe('setAriaAttributes()', () => {
     } else if (!options.label && options.message) {
       expect(setAttributeSpy).not.toHaveBeenCalled();
     } else if (options.label && options.message) {
-      expect(setAttributeSpy).toHaveBeenCalledWith(node, 'aria-label', options.label + '. ' + options.message);
+      expect(setAttributeSpy).toHaveBeenCalledWith(node, 'aria-label', `${options.label}. ${options.message}`);
     }
 
     if (options.state === 'error') {
@@ -45,7 +45,7 @@ describe('setAriaAttributes()', () => {
 
 describe('parseAndGetAriaAttributes()', () => {
   // prettier-ignore
-  const rawAttributes = '{ aria-label: \'Some label\' }';
+  const rawAttributes = "{ aria-label: 'Some label' }";
 
   it('should call parseJSONAttribute()', () => {
     const spy = jest.spyOn(jsonUtils, 'parseJSONAttribute');
@@ -64,9 +64,9 @@ describe('parseAndGetAriaAttributes()', () => {
       'aria-pressed': 'true',
     },
     // prettier-ignore
-    '{\'aria-label\': \'Some label\', \'aria-pressed\': true}',
+    "{'aria-label': 'Some label', 'aria-pressed': true}",
     // prettier-ignore
-    '{\'aria-label\': \'Some label\', \'aria-pressed\': \'true\'}',
+    "{'aria-label': 'Some label', 'aria-pressed': 'true'}",
   ])('should return correct aria attributes with boolean for %o', (rawAttributes) => {
     expect(parseAndGetAriaAttributes(rawAttributes)).toEqual({
       'aria-label': 'Some label',

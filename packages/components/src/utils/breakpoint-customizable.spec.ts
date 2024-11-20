@@ -1,7 +1,7 @@
 import type { BreakpointValue, BreakpointValues } from './breakpoint-customizable';
 import { parseJSON } from './breakpoint-customizable';
-import * as path from 'path';
-import * as fs from 'fs';
+import * as path from 'node:path';
+import * as fs from 'node:fs';
 import * as globby from 'globby-legacy';
 
 describe('parseJSON()', () => {

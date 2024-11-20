@@ -17,6 +17,7 @@ import type { LinkTileProductLikeEventDetail } from '@porsche-design-system/comp
     </p-link-tile-product>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class LinkTileProductExampleComponent {
   liked = false;

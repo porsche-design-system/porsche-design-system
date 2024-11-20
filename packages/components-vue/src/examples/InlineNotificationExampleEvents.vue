@@ -1,14 +1,14 @@
 <script setup lang="ts">
-  import { PInlineNotification } from '@porsche-design-system/components-vue';
-  import { ref } from 'vue';
+import { PInlineNotification } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
 
-  const isActive = ref(false);
-  const onShow = (): void => {
-    isActive.value = true;
-  };
-  const onDismiss = (): void => {
-    isActive.value = false;
-  };
+const isActive = ref(false);
+const onShow = (): void => {
+  isActive.value = true;
+};
+const onDismiss = (): void => {
+  isActive.value = false;
+};
 </script>
 
 <template>

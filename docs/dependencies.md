@@ -133,14 +133,6 @@ generating typings.
 
 ---
 
-## eslint
-
-In order to migrate to v9 all configs have to be adjusted to the new
-[flat config](https://eslint.org/docs/latest/use/migrate-to-9.0.0#-new-default-config-format-eslintconfigjs). Some
-plugins are not yet migrated, see related [issue](https://github.com/eslint/eslint/issues/18391).
-
----
-
 ## webpack
 
 Currently fixed to 5.91.0 because of Error when publishing UXPin lib:

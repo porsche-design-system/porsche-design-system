@@ -1,0 +1,216 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "ignoreUnknown": false,
+    "ignore": [
+      "**/node_modules/*",
+      "**/dist/*",
+      "**/dist-tmp/*",
+      "**/bin/*",
+      "**/*.snap",
+      "**/.stencil/*",
+      "**/www/*",
+      "**/coverage/*",
+      "**/playwright-report/*",
+      "./packages/components/src/components.d.ts"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "useEditorconfig": true,
+    "formatWithErrors": false,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 120,
+    "attributePosition": "auto",
+    "bracketSpacing": true,
+    "ignore": [
+      "./yarn.lock",
+      "./packages/components/src/styles/colors.ts",
+      "./packages/components/src/types/aria-types.d.ts",
+      "./packages/components-react/projects/nextjs/routes.ts",
+      "./packages/components-js/tests/unit/results/stats-raw.json",
+      "./packages/assets/cdn/*",
+      "./packages/shared/src/lib/*",
+      "./packages/components-js/public/*",
+      "./packages/components-js/projects/jsdom-polyfill/src/lib/*",
+      "./packages/components-js/projects/components-wrapper/lib/*",
+      "./packages/components-react/projects/react-wrapper/src/lib/*",
+      "./packages/components-react/projects/react-ssr-wrapper/src/lib/*",
+      "./packages/components-react/projects/uxpin-wrapper/src/lib/*",
+      "./packages/components-react/projects/nextjs/app/*/*",
+      "./packages/components-react/src/pages/generated/*",
+      "./packages/components-vue/projects/vue-wrapper/src/lib/*",
+      "./packages/components-angular/projects/angular-wrapper/src/lib/*",
+      "./packages/components-react/projects/remix/app/routes/flyout-multilevel-basic.tsx",
+      "./packages/components-react/projects/remix/app/routes/flyout-multilevel-prefixed.tsx",
+      "./packages/components-react/projects/remix/app/routes/*",
+      "./packages/storefront/src/lib/*",
+      "./packages/component-meta/src/lib/*",
+      "./packages/components-js/projects/partials/src/lib/*",
+      "./packages/assets/projects/*/index.ts",
+      "./packages/components-angular/src/app/pages/generated/*",
+      "./packages/components-angular/.angular/*",
+      "./packages/components/src/test-utils/tag-names-constructor-map.ts",
+      "./packages/components-react/projects/uxpin-wrapper/src/form/*/presets/*",
+      "./packages/components-react/projects/uxpin-wrapper/src/BaseProps.ts",
+      "./packages/components-react/projects/uxpin-wrapper/src/hooks.ts",
+      "./packages/components-react/projects/uxpin-wrapper/src/provider.tsx",
+      "./packages/components-react/projects/uxpin-wrapper/src/utils.ts",
+      "./packages/components-react/projects/uxpin-wrapper/uxpin.config.js",
+      "./packages/storefront/public/porsche-design-system/*"
+    ]
+  },
+  "organizeImports": {
+    "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "all": true,
+      "a11y": {
+        "useKeyWithClickEvents": "off",
+        "useAnchorContent": "off",
+        "useAriaPropsForRole": "off",
+        "useSemanticElements": "off",
+        "useFocusableInteractive": "off",
+        "noNoninteractiveElementToInteractiveRole": "off",
+        "noNoninteractiveTabindex": "off",
+        "noRedundantRoles": "off",
+        "noLabelWithoutControl": "off"
+      },
+      "complexity": {
+        "noExcessiveCognitiveComplexity": "off",
+        "useSimplifiedLogicExpression": "off"
+      },
+      "correctness": {
+        "useArrayLiterals": "off",
+        "useJsxKeyInIterable": "off",
+        "useImportExtensions": "off",
+        "noUndeclaredDependencies": "off",
+        "noUnusedImports": "off",
+        "noNodejsModules": "off",
+        "noUndeclaredVariables": "off"
+      },
+      "performance": {
+        "noAccumulatingSpread": "off",
+        "useTopLevelRegex": "off",
+        "noReExportAll": "off",
+        "noBarrelFile": "off"
+      },
+      "style": {
+        "useBlockStatements": "off",
+        "noInferrableTypes": "off",
+        "useNamingConvention": "off",
+        "noDefaultExport": "off",
+        "noNamespaceImport": "off",
+        "useDefaultSwitchClause": "off",
+        "useFilenamingConvention": "off"
+      },
+      "suspicious": {
+        "noConsole": { "level": "error", "options": { "allow": ["warn", "error"] } },
+        "noAssignInExpressions": "off",
+        "noArrayIndexKey": "off",
+        "noMisplacedAssertion": "off",
+        "noReactSpecificProps": "off",
+        "noEvolvingTypes": "off",
+        "noSkippedTests": "off",
+        "noConsoleLog": "off",
+        "noExplicitAny": "off"
+      }
+    },
+    "ignore": [
+      "**/assets/*",
+      "**/component-meta/*",
+      "**/components/scripts/*",
+      "**/components-angular/*",
+      "**/components-js/*",
+      "**/components-react/*",
+      "**/components-vue/*",
+      "**/crawler/*",
+      "**/shared/*",
+      "**/storefront/*",
+      "**/utilities/*",
+      "**/aws/*"
+    ]
+  },
+  "javascript": {
+    "formatter": {
+      "jsxQuoteStyle": "double",
+      "quoteProperties": "asNeeded",
+      "trailingCommas": "es5",
+      "semicolons": "always",
+      "arrowParentheses": "always",
+      "bracketSameLine": false,
+      "quoteStyle": "single",
+      "attributePosition": "auto",
+      "bracketSpacing": true
+    },
+    "parser": {
+      "unsafeParameterDecoratorsEnabled": true
+    }
+  },
+  "overrides": [
+    {
+      "include": ["*.css", "*.scss"],
+      "javascript": {
+        "formatter": {
+          "quoteStyle": "double"
+        }
+      }
+    },
+    {
+      "include": [
+        "**/scripts/*",
+        "**/bin/*",
+        "./packages/crawler/*",
+        "./packages/components-js/projects/components-manager-cli/*",
+        "**/rollup*",
+        "**/webpack*",
+        "**/build*"
+      ],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noConsole": "off"
+          }
+        }
+      }
+    },
+    {
+      "include": ["**/tests/*", "*.spec.*", "*.e2e.*", "*.a11y.*", "*.vrt.*", "*.smoke.*"],
+      "linter": {
+        "rules": {
+          "complexity": {
+            "useLiteralKeys": "off",
+            "noForEach": "off"
+          },
+          "suspicious": {
+            "noConsole": "off",
+            "noEmptyBlockStatements": "off"
+          },
+          "correctness": {
+            "noUnusedVariables": "off"
+          }
+        }
+      }
+    },
+    {
+      "include": ["*.svelte", "*.astro", "*.vue"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useConst": "off",
+            "useImportType": "off"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,6 +1,6 @@
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 import { TAG_NAMES } from '@porsche-design-system/shared';
-import { getComponentMeta } from '@porsche-design-system/component-meta';
 import {
   addParentAndSetRequiredProps,
   componentFactory,
@@ -57,10 +57,10 @@ it.each<TagName>(tagNamesWithJss)('should have only high contrast styles for %s'
 
   Object.values(highContrastColors).forEach((value) => {
     const res = findAllMatchingChildValues(cssObject, value);
-    if (Object.keys(res).length !== 0) {
+    if (Object.keys(res).length > 0) {
       filteredCSS.push(res);
     }
     return null;
   });
-  filteredCSS.length && expect(filteredCSS).toMatchSnapshot();
+  filteredCSS.length > 0 && expect(filteredCSS).toMatchSnapshot();
 });

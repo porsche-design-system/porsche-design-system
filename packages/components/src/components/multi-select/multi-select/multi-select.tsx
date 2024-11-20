@@ -1,15 +1,57 @@
 import {
+  AttachInternals,
+  Component,
+  Element,
+  Event,
+  type EventEmitter,
+  type JSX,
+  Listen,
+  Prop,
+  State,
+  Watch,
+  forceUpdate,
+  h,
+} from '@stencil/core';
+import { getSlottedAnchorStyles } from '../../../styles';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
+import {
+  AllowedTypes,
+  FORM_STATES,
+  SELECT_DROPDOWN_DIRECTIONS,
+  type SelectDropdownDirectionInternal,
+  THEMES,
+  addNativePopoverScrollAndResizeListeners,
+  applyConstructableStylesheetStyles,
+  attachComponentCss,
+  detectNativePopoverCase,
+  findClosestComponent,
+  getFilterInputAriaAttributes,
+  getListAriaAttributes,
+  getNativePopoverDropdownPosition,
+  getPrefixedTagNames,
+  getShadowRootHTMLElement,
+  handleButtonEvent,
+  hasPropValueChanged,
+  isClickOutside,
+  isElementOfKind,
+  throwIfElementIsNotOfKind,
+  validateProps,
+} from '../../../utils';
+import { Label, descriptionId, labelId } from '../../common/label/label';
+import { StateMessage, messageId } from '../../common/state-message/state-message';
+import { getComponentCss } from './multi-select-styles';
+import {
   type MultiSelectDropdownDirection,
   type MultiSelectOptgroup,
-  type MultiSelectState,
   type MultiSelectOption,
+  type MultiSelectState,
   type MultiSelectUpdateEventDetail,
   getDropdownDirection,
   getHighlightedOption,
   getHighlightedOptionIndex,
+  getSelectedOptionValues,
   getSelectedOptions,
   getSelectedOptionsString,
-  getSelectedOptionValues,
   hasFilterOptionResults,
   resetFilteredOptions,
   resetHighlightedOptions,
@@ -21,48 +63,6 @@ import {
   updateHighlightedOption,
   updateOptionsFilterState,
 } from './multi-select-utils';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
-import {
-  addNativePopoverScrollAndResizeListeners,
-  AllowedTypes,
-  applyConstructableStylesheetStyles,
-  attachComponentCss,
-  detectNativePopoverCase,
-  findClosestComponent,
-  FORM_STATES,
-  getFilterInputAriaAttributes,
-  getListAriaAttributes,
-  getNativePopoverDropdownPosition,
-  getPrefixedTagNames,
-  getShadowRootHTMLElement,
-  handleButtonEvent,
-  hasPropValueChanged,
-  isClickOutside,
-  isElementOfKind,
-  SELECT_DROPDOWN_DIRECTIONS,
-  type SelectDropdownDirectionInternal,
-  THEMES,
-  throwIfElementIsNotOfKind,
-  validateProps,
-} from '../../../utils';
-import {
-  AttachInternals,
-  Component,
-  Element,
-  Event,
-  type EventEmitter,
-  forceUpdate,
-  h,
-  type JSX,
-  Listen,
-  Prop,
-  State,
-  Watch,
-} from '@stencil/core';
-import { getComponentCss } from './multi-select-styles';
-import { messageId, StateMessage } from '../../common/state-message/state-message';
-import { descriptionId, Label, labelId } from '../../common/label/label';
-import { getSlottedAnchorStyles } from '../../../styles';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,
@@ -181,7 +181,9 @@ export class MultiSelect {
 
   public setFormValue(value: string[]): void {
     const formData = new FormData();
-    value.forEach((val) => formData.append(this.name, val));
+    for (const val of value) {
+      formData.append(this.name, val);
+    }
     this.internals.setFormValue(formData);
   }
 
@@ -371,23 +373,22 @@ export class MultiSelect {
     this.multiSelectOptions = [];
     this.multiSelectOptgroups = [];
 
-    Array.from(this.host.children)
-      .filter(
-        (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
-      )
-      .forEach((child: HTMLElement) => {
-        throwIfElementIsNotOfKind(this.host, child, ['p-multi-select-option', 'p-optgroup']);
+    for (const child of Array.from(this.host.children).filter(
+      (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
+    )) {
+      throwIfElementIsNotOfKind(this.host, child as HTMLElement, ['p-multi-select-option', 'p-optgroup']);
 
-        if (isElementOfKind(child, 'p-multi-select-option')) {
-          this.multiSelectOptions.push(child as MultiSelectOption);
-        } else if (isElementOfKind(child, 'p-optgroup')) {
-          this.multiSelectOptgroups.push(child as MultiSelectOptgroup);
-          Array.from(child.children).forEach((optGroupChild: HTMLElement) => {
-            throwIfElementIsNotOfKind(child, optGroupChild, 'p-multi-select-option');
-            this.multiSelectOptions.push(optGroupChild as MultiSelectOption);
-          });
+      if (isElementOfKind(child as HTMLElement, 'p-multi-select-option')) {
+        this.multiSelectOptions.push(child as MultiSelectOption);
+      } else if (isElementOfKind(child as HTMLElement, 'p-optgroup')) {
+        this.multiSelectOptgroups.push(child as MultiSelectOptgroup);
+
+        for (const optGroupChild of Array.from(child.children)) {
+          throwIfElementIsNotOfKind(child as HTMLElement, optGroupChild as HTMLElement, 'p-multi-select-option');
+          this.multiSelectOptions.push(optGroupChild as MultiSelectOption);
         }
-      });
+      }
+    }
   };
 
   private onInputChange = (e: InputEvent & { target: HTMLInputElement }): void => {
@@ -435,16 +436,18 @@ export class MultiSelect {
   private onInputKeyDown = (e: KeyboardEvent): void => {
     switch (e.key) {
       case 'ArrowUp':
-      case 'Up':
+      case 'Up': {
         e.preventDefault();
         this.cycleDropdown('up');
         break;
+      }
       case 'ArrowDown':
-      case 'Down':
+      case 'Down': {
         e.preventDefault();
         this.cycleDropdown('down');
         break;
-      case 'Enter':
+      }
+      case 'Enter': {
         const highlightedOption = getHighlightedOption(this.multiSelectOptions);
         if (highlightedOption) {
           highlightedOption.selected = !highlightedOption.selected;
@@ -452,28 +455,29 @@ export class MultiSelect {
           this.emitUpdateEvent();
           this.updateSrHighlightedOptionText();
           forceUpdate(highlightedOption);
-        } else {
-          if (this.internals.form) {
-            handleButtonEvent(
-              e,
-              this.host,
-              () => 'submit',
-              () => this.disabled
-            );
-          }
+        } else if (this.internals.form) {
+          handleButtonEvent(
+            e,
+            this.host,
+            () => 'submit',
+            () => this.disabled
+          );
         }
         break;
-      case 'Escape':
+      }
+      case 'Escape': {
         this.isOpen = false;
         resetHighlightedOptions(this.multiSelectOptions);
         break;
-      case 'Tab':
+      }
+      case 'Tab': {
         // If there is a value the reset button will be focused and the dropdown stays open
-        if (!this.currentValue.length) {
+        if (this.currentValue.length === 0) {
           this.isOpen = false;
         }
         resetHighlightedOptions(this.multiSelectOptions);
         break;
+      }
       case 'PageUp':
         if (this.isOpen) {
           e.preventDefault();

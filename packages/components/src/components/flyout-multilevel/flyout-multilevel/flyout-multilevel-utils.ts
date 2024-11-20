@@ -1,7 +1,7 @@
-import { consoleError, getTagNameWithoutPrefix } from '../../../utils';
-import { type FlyoutMultilevelItemInternalHTMLProps } from '../flyout-multilevel-item/flyout-multilevel-item-utils';
 import { forceUpdate } from '@stencil/core';
-import { type Class, type Theme } from '../../../types';
+import type { Class, Theme } from '../../../types';
+import { consoleError, getTagNameWithoutPrefix } from '../../../utils';
+import type { FlyoutMultilevelItemInternalHTMLProps } from '../flyout-multilevel-item/flyout-multilevel-item-utils';
 
 export const FLYOUT_MULTILEVEL_ARIA_ATTRIBUTES = ['aria-label'] as const;
 export type FlyoutMultilevelAriaAttribute = (typeof FLYOUT_MULTILEVEL_ARIA_ATTRIBUTES)[number];
@@ -15,16 +15,17 @@ export type FlyoutMultilevelUpdate = {
 export type FlyoutMultilevelUpdateEvent = FlyoutMultilevelUpdate;
 export type FlyoutMultilevelUpdateEventDetail = FlyoutMultilevelUpdateEvent; // to have consistent event types
 
+type Item = HTMLPFlyoutMultilevelItemElement & FlyoutMultilevelItemInternalHTMLProps;
 export const syncFlyoutMultilevelItemsProps = (
   items: HTMLPFlyoutMultilevelItemElement[],
   activeIdentifier: string,
   theme: Theme
 ): void => {
-  items.forEach((item: HTMLPFlyoutMultilevelItemElement & FlyoutMultilevelItemInternalHTMLProps) => {
-    item.theme = theme;
-    item.open = item.identifier === activeIdentifier;
+  for (const item of items) {
+    (item as Item).theme = theme;
+    (item as Item).open = item.identifier === activeIdentifier;
     forceUpdate(item);
-  });
+  }
 };
 
 export const validateActiveIdentifier = <T extends Class<any>>(

@@ -15,15 +15,15 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
-  @Component
-  export default class ExampleCarousel extends Vue {
-    slides = Array.from(Array(6))
-      .map((_, i) => `<div>Slide ${i + 1}</div>`)
-      .join('');
-    content = `
+@Component
+export default class ExampleCarousel extends Vue {
+  slides = Array.from(Array(6))
+    .map((_, i) => `<div>Slide ${i + 1}</div>`)
+    .join('');
+  content = `
 <p-carousel class="demo" heading="Einstieg bei Porsche" slides-per-page="{base: 1, s: 2, l: 3}">
   <!--<div slot="post-heading">
     <p-tabs-bar active-tab-index="0">
@@ -111,7 +111,7 @@
 <p-carousel heading="Some Heading" description="Multiline description could be quite long especially on smaller screens but it wraps luckily. Let us see if the alignment with prev/next buttons is correct." slides-per-page="3">
   ${this.slides}
 </p-carousel>`;
-  }
+}
 </script>
 
 <style lang="scss" scoped>

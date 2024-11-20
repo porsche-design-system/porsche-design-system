@@ -23,9 +23,8 @@ export const sanitizeActiveTabIndex = (index: number, tabElementsCount: number):
   const maxIndex = tabElementsCount - 1; // can be -1 without children
   if (index === undefined || index === null || maxIndex < 0 || index < 0 || index > maxIndex) {
     return undefined;
-  } else {
-    return index;
   }
+  return index;
 };
 
 export const getTransformation = (el: HTMLElement = {} as HTMLElement): string => {
@@ -60,7 +59,7 @@ export const setBarStyle = (tabElements: HTMLElement[], activeTabIndex: number, 
     if (currentActiveTabElement) {
       // for initial activeTabIndex > 0 and resized window with fluid font-size for size="medium"
       // we need to adjust the starting point of the transition
-      setAttribute(barElement, 'style', 'transition: none;' + getTransformation(currentActiveTabElement));
+      setAttribute(barElement, 'style', `transition: none;${getTransformation(currentActiveTabElement)}`);
     }
 
     const newActiveTabElement = tabElements[activeTabIndex];

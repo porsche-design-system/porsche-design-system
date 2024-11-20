@@ -50,7 +50,7 @@ describe('this.defineTabsItemElements()', () => {
     expect(spy).toHaveBeenCalledWith(component.host, 'p-tabs-item');
   });
 
-  it('should set this.tabsItemElements with host\'s children', () => {
+  it("should set this.tabsItemElements with host's children", () => {
     const component = new Tabs();
     component.host = document.createElement('p-tabs');
     const child1 = document.createElement('p-tabs-item');

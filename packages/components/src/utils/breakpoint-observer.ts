@@ -16,10 +16,10 @@ export const observeBreakpointChange = (node: HTMLElement, callback: () => void)
   // node might not be defined in connectedCallback
   if (node) {
     if (breakpointChangeCallbackMap.size === 0) {
-      mediaQueryLists.forEach((mediaQueryList) => {
+      for (const mediaQueryList of mediaQueryLists) {
         // matchmedia-polyfill only implements addListener in jsdom-polyfill
         mediaQueryList.addEventListener?.('change', handleBreakpointChange);
-      });
+      }
     }
     breakpointChangeCallbackMap.set(node, callback);
   }
@@ -28,14 +28,15 @@ export const observeBreakpointChange = (node: HTMLElement, callback: () => void)
 export const unobserveBreakpointChange = (node: HTMLElement): void => {
   breakpointChangeCallbackMap.delete(node);
   if (breakpointChangeCallbackMap.size === 0) {
-    mediaQueryLists.forEach((mediaQueryList) => {
+    for (const mediaQueryList of mediaQueryLists) {
       // matchmedia-polyfill only implements removeListener in jsdom-polyfill
       mediaQueryList.removeEventListener?.('change', handleBreakpointChange);
-    });
+    }
   }
 };
 
 export const handleBreakpointChange = (): void => {
+  // biome-ignore lint/complexity/noForEach: to be refactored
   breakpointChangeCallbackMap.forEach((breakpointChangeCallback) => {
     breakpointChangeCallback();
   });

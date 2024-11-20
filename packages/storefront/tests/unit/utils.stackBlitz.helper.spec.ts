@@ -184,7 +184,7 @@ describe('transformSrcAndSrcsetOfImgAndSourceTags()', () => {
       expect(transformSrcAndSrcsetOfImgAndSourceTags(input)).toBe(output);
       expect(querySelectorSpy).toHaveBeenCalledWith('base');
       expect(getAttributeSpy).toHaveBeenCalledWith('href');
-    },
+    }
   );
 
   it.each<string>([
@@ -217,6 +217,6 @@ describe('isStableStorefrontReleaseOrForcedPdsVersion()', () => {
       jest.spyOn(helper, 'isStableStorefrontRelease').mockReturnValue(isStableStorefrontRelease);
 
       expect(isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion)).toBe(expected);
-    },
+    }
   );
 });

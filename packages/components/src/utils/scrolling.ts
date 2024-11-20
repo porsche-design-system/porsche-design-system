@@ -47,18 +47,16 @@ export const getScrollActivePosition = (
       // go to next element
       scrollPosition = correctedActiveElementOffsetLeft - prevGradientElement.offsetWidth + FOCUS_PADDING_WIDTH * 2;
     }
+  } else if (activeElementIndex === 0) {
+    // go to first element
+    scrollPosition = 0;
   } else {
-    if (activeElementIndex === 0) {
-      // go to first element
-      scrollPosition = 0;
-    } else {
-      // go to prev element
-      scrollPosition =
-        correctedActiveElementOffsetLeft +
-        activeElementOffsetWidth +
-        prevGradientElement.offsetWidth -
-        scrollAreaElement.offsetWidth;
-    }
+    // go to prev element
+    scrollPosition =
+      correctedActiveElementOffsetLeft +
+      activeElementOffsetWidth +
+      prevGradientElement.offsetWidth -
+      scrollAreaElement.offsetWidth;
   }
   return scrollPosition;
 };

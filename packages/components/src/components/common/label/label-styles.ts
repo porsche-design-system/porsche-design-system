@@ -1,5 +1,5 @@
-import { type JssStyle, type Styles } from 'jss';
-import { type BreakpointCustomizable } from '../../../utils/breakpoint-customizable';
+import type { JssStyle, Styles } from 'jss';
+import type { BreakpointCustomizable } from '../../../utils/breakpoint-customizable';
 import { buildResponsiveStyles, type Theme } from '../../../utils';
 import {
   getHiddenTextJssStyle,

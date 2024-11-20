@@ -19,21 +19,21 @@ export const getCurrentBreakpointKey = (): Breakpoint => {
 export const getCurrentMatchingBreakpointValue = <T>(data: BreakpointCustomizable<T>): T => {
   if (typeof data === 'object') {
     const currentBreakpoint = getCurrentBreakpointKey();
-
     const result = data[currentBreakpoint as keyof BreakpointCustomizable<T>];
+
     if (result) {
       return result;
-    } else {
-      const valuesArray = breakpoints.map((bp) => data[bp as keyof BreakpointCustomizable<T>]);
-      // fill gaps with value from preceding breakpoint
-      valuesArray.forEach((val, i, arr) => {
-        if (val === undefined) {
-          arr[i] = arr[i - 1];
-        }
-      });
-      return valuesArray[breakpoints.indexOf(currentBreakpoint)];
     }
-  } else {
-    return data as T;
+
+    const valuesArray = breakpoints.map((bp) => data[bp as keyof BreakpointCustomizable<T>]);
+    // fill gaps with value from preceding breakpoint
+    valuesArray.forEach((val, i, arr) => {
+      if (val === undefined) {
+        arr[i] = arr[i - 1];
+      }
+    });
+    return valuesArray[breakpoints.indexOf(currentBreakpoint)];
   }
+
+  return data as T;
 };

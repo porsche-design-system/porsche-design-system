@@ -19,6 +19,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <p-text>Last submitted data: {{ lastSubmittedData }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class MultiSelectExampleComponent {
   lastSubmittedData: string = 'none';

@@ -1,8 +1,8 @@
 import { type Breakpoint, breakpoints } from '@porsche-design-system/styles';
+import { consoleError, getTagNameWithoutPrefix } from '..';
 import type { AriaAttributes, Class, FunctionPropertyNames } from '../../types';
 import { type BreakpointValues, parseJSON } from '../breakpoint-customizable';
 import { parseJSONAttribute } from '../json';
-import { consoleError, getTagNameWithoutPrefix } from '..';
 
 export type ValidatorFunction = (propName: string, propValue: any) => ValidationError;
 type ValidatorFunctionArrayCreator = (allowedType: ValidatorFunction) => ValidatorFunction;
@@ -10,9 +10,11 @@ type ValidatorFunctionOneOfCreator = <T>(allowedValues: T[] | readonly T[]) => V
 type ValidatorFunctionBreakpointCustomizableCreator = <T>(
   allowedValues: Exclude<AllowedTypeKey, 'string'> | T[] | readonly T[]
 ) => ValidatorFunction;
-type ValidatorFunctionShapeCreator = <T>(allowedValues: {
-  [key in keyof T]: ValidatorFunctionOrCreator;
-}) => ValidatorFunction;
+type ValidatorFunctionShapeCreator = <T>(
+  allowedValues: {
+    [key in keyof T]: ValidatorFunctionOrCreator;
+  }
+) => ValidatorFunction;
 type ValidatorFunctionOrCreator =
   | ValidatorFunction
   | ValidatorFunctionOneOfCreator
@@ -59,6 +61,7 @@ export const printErrorMessage = ({
 };
 
 export const isValueNotOfType = (propValue: any, propType: string): boolean => {
+  // biome-ignore lint/suspicious/useValidTypeof: the comparison works because propValue has primitive values only
   return propValue !== undefined && typeof propValue !== propType;
 };
 
@@ -73,22 +76,22 @@ export const validateValueOfType = (
   return undefined;
 };
 
-const breakpointCustomizableTemplate =
-  'value, ' +
-  formatObjectOutput(
-    breakpoints.reduce((prev, key) => ({ ...prev, [key + (key !== 'base' ? '?' : '')]: 'value' }), {})
-  ).replace(/"/g, '');
+const breakpointCustomizableTemplate = `value, ${formatObjectOutput(
+  breakpoints.reduce((prev, key) => ({ ...prev, [key + (key !== 'base' ? '?' : '')]: 'value' }), {})
+).replace(/"/g, '')}`;
 
 export const getBreakpointCustomizableStructure = <T>(
   allowedValues: Exclude<AllowedTypeKey, 'string'> | T[] | readonly T[]
 ): string => {
-  if (allowedValues !== 'boolean' && allowedValues !== 'number') {
-    allowedValues = formatArrayOutput(allowedValues)
-      .replace(/\[/g, '(') // starting inline type literal array
-      .replace(/]/g, ')[]') // ending inline type literal array
-      .replace(/,/g, ' |') as any; // replace commas with a pipe
-  }
-  return breakpointCustomizableTemplate.replace(/value/g, allowedValues as string);
+  return breakpointCustomizableTemplate.replace(
+    /value/g,
+    allowedValues !== 'boolean' && allowedValues !== 'number'
+      ? (formatArrayOutput(allowedValues)
+          .replace(/\[/g, '(') // starting inline type literal array
+          .replace(/]/g, ')[]') // ending inline type literal array
+          .replace(/,/g, ' |') as any) // replace commas with a pipe
+      : (allowedValues as string)
+  );
 };
 
 export const getAriaStructure = <T>(allowedAriaAttributes: readonly T[]): string => {
@@ -253,12 +256,11 @@ export type PropTypes<T extends Class<any>> = Required<{
 }>;
 
 export const validateProps = <T extends Class<any>>(instance: InstanceType<T>, propTypes: PropTypes<T>): void => {
-  Object.entries(propTypes)
+  for (const error of Object.entries(propTypes)
     .map(([propKey, validatorFunc]: [string, ValidatorFunction]) => validatorFunc(propKey, instance[propKey]))
-    .filter((x) => x)
-    .forEach((error) =>
-      printErrorMessage({ ...error, componentName: getTagNameWithoutPrefix(instance.host as HTMLElement) })
-    );
+    .filter((x) => x)) {
+    printErrorMessage({ ...error, componentName: getTagNameWithoutPrefix(instance.host as HTMLElement) });
+  }
 };
 
 /**

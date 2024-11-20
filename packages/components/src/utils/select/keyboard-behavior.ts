@@ -33,7 +33,7 @@ const PAGE_UP_DOWN_STEP_AMOUNT: number = 10;
  */
 export const handleSelectDropdownScroll = (scrollElement: HTMLElement, element: HTMLElement): void => {
   const { maxHeight } = getComputedStyle(scrollElement);
-  const hostElementHeight = parseInt(maxHeight, 10);
+  const hostElementHeight = Number.parseInt(maxHeight, 10);
   // TODO: If dropdown was closed this might get called too early before the list is opened which causes the scrollHeight to be 0
   if (scrollElement.scrollHeight > hostElementHeight) {
     element.scrollIntoView({
@@ -75,17 +75,23 @@ export const getActionFromKeyboardEvent = (event: KeyboardEvent, menuOpen: boole
   if (menuOpen) {
     if (key === 'ArrowUp' && altKey) {
       return 'CloseSelect';
-    } else if (key === 'ArrowDown' && !altKey) {
+    }
+    if (key === 'ArrowDown' && !altKey) {
       return 'Next';
-    } else if (key === 'ArrowUp') {
+    }
+    if (key === 'ArrowUp') {
       return 'Previous';
-    } else if (key === 'PageUp') {
+    }
+    if (key === 'PageUp') {
       return 'PageUp';
-    } else if (key === 'PageDown') {
+    }
+    if (key === 'PageDown') {
       return 'PageDown';
-    } else if (key === 'Escape') {
+    }
+    if (key === 'Escape') {
       return 'Close';
-    } else if (key === 'Enter' || key === ' ' || key === 'Tab') {
+    }
+    if (key === 'Enter' || key === ' ' || key === 'Tab') {
       return 'CloseSelect';
     }
   }
@@ -187,14 +193,13 @@ export const getMatchingSelectOptionIndex = <T extends Option>(options: T[], fil
     return usableOptions.indexOf(firstMatch);
   }
   // if the same letter is being repeated, cycle through first-letter matches
-  else if (allSameLetter(filter)) {
+  if (allSameLetter(filter)) {
     const matches = filterSelectOptions(orderedOptions, filter[0]);
     return usableOptions.indexOf(matches[0]);
   }
   // No matching option found
-  else {
-    return -1;
-  }
+
+  return -1;
 };
 
 /**

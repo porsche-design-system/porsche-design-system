@@ -1,6 +1,8 @@
 import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import {
-  DropdownInteractionType,
+  type DropdownInteractionType,
+  type OptgroupOptionMap,
+  type OptionMap,
   getAmountOfVisibleOptionsAndOptgroups,
   getDropdownVisibility,
   getHighlightedOptionMapIndex,
@@ -12,8 +14,6 @@ import {
   getSelectedOptionMapIndex,
   getValidOptions,
   hasFilterResults,
-  OptgroupOptionMap,
-  OptionMap,
   resetFilteredOptionMaps,
   resetHighlightedToSelectedOptionMaps,
   setFilteredOptionMaps,
@@ -44,7 +44,7 @@ type GenerateOptionMapsOptions = {
   optgroupOptions?: OptgroupOptionMap;
 };
 
-export const generateOptionMaps = (props?: GenerateOptionMapsOptions): OptionMap[] => {
+const generateOptionMaps = (props?: GenerateOptionMapsOptions): OptionMap[] => {
   const {
     amount = 4,
     selectedIndex,
@@ -57,7 +57,7 @@ export const generateOptionMaps = (props?: GenerateOptionMapsOptions): OptionMap
     optgroupOptions,
   } = props || {};
 
-  return Array.from(Array(amount)).map<OptionMap>((_, idx) => ({
+  return Array.from(new Array(amount)).map<OptionMap>((_, idx) => ({
     ...baseOptionMap,
     value: `Value ${idx + 1}`,
     ...(selectedIndex === idx && { selected: true, highlighted: true }),
@@ -71,7 +71,7 @@ export const generateOptionMaps = (props?: GenerateOptionMapsOptions): OptionMap
   }));
 };
 
-export const mapValuesToBeBetterFilterable = (options: OptionMap[]): OptionMap[] =>
+const mapValuesToBeBetterFilterable = (options: OptionMap[]): OptionMap[] =>
   options.map((item, idx) => ({
     ...item,
     value: idx < 4 ? `${['First', 'Second', 'Third', 'Fourth'][idx]} Value` : item.value,

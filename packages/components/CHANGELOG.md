@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Changed
 
+- Angular: updated peer dependency to `>=19.0.0 <20.0.0`
 - `Pin-Code`:
   - Remove native input and use ElementInternals API
   - **Breaking Change**: `Pin-Code` component no longer support native validation due to the removal of the underlying
