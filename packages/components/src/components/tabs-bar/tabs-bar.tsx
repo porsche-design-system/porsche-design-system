@@ -250,7 +250,7 @@ export class TabsBar {
       // the slotted buttons have a different tabbing sequence in chrome and safari and it appears that on hitting
       // tab the first slotted one with tabindex=0 becomes focused instead of the one after,
       // therefor the 'Tab' case needs to be handled
-      case 'Tab':
+      case 'Tab': {
         if (target.matches('button')) {
           const { tabIndex } = target;
           target.tabIndex = null;
@@ -259,6 +259,7 @@ export class TabsBar {
           });
         }
         return;
+      }
 
       default:
         return;

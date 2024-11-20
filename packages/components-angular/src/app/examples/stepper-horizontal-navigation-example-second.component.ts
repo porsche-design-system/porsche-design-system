@@ -17,6 +17,7 @@ const secondSteps: LabelState[] = [
       }}</p-stepper-horizontal-item>
     </p-stepper-horizontal>
   `,
+  standalone: false,
 })
 export class StepperHorizontalNavigationExampleSecondComponent {
   steps = secondSteps;

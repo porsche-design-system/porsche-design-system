@@ -40,6 +40,7 @@ import type { TabsBarUpdateEventDetail } from '@porsche-design-system/components
     </ng-container>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TabsBarExampleAccessibilityComponent {
   tabIndex: number = 0;

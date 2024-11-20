@@ -21,6 +21,7 @@ import type { SelectUpdateEventDetail } from '@porsche-design-system/components-
     <button type="button" (click)="onRemoveOption()">Remove last option</button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class SelectExampleDynamicComponent {
   selectedValue: string = '1';
