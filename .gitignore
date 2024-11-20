@@ -6,8 +6,12 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-# Dependency directories
+# Dependencies
 node_modules
+
+# Directories
+dist
+dist-tmp
 
 # Cache
 .aws-sam
@@ -47,3 +51,6 @@ Thumbs.db
 
 # OSS Review Toolkit
 ort/
+
+# Assets
+packages/assets/cdn/*

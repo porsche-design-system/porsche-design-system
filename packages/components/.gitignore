@@ -1,4 +1,3 @@
-/dist
 /www
 
 /coverage
@@ -17,7 +16,6 @@ log.txt
 .vscode/
 .sass-cache/
 .versions/
-node_modules/
 $RECYCLE.BIN/
 
 .DS_Store

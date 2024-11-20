@@ -1,6 +1,4 @@
 .DS_Store
-node_modules
-/dist
 /scripts/algoliaRecords.json
 /src/lib
 /src/pages/changelog.md
