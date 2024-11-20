@@ -94,7 +94,8 @@
         "useImportExtensions": "off",
         "noUndeclaredDependencies": "off",
         "noUnusedImports": "off",
-        "noNodejsModules": "off"
+        "noNodejsModules": "off",
+        "noUndeclaredVariables": "off"
       },
       "performance": {
         "noAccumulatingSpread": "off",
@@ -125,7 +126,8 @@
         "noReactSpecificProps": "off",
         "noEvolvingTypes": "off",
         "noSkippedTests": "off",
-        "noConsoleLog": "off"
+        "noConsoleLog": "off",
+        "noExplicitAny": "off"
       }
     },
     "ignore": [
@@ -161,41 +163,10 @@
   },
   "overrides": [
     {
-      "include": ["**/*.css", "**/*.scss"],
+      "include": ["*.css", "*.scss"],
       "javascript": {
         "formatter": {
           "quoteStyle": "double"
-        }
-      }
-    },
-    {
-      "include": ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
-      "linter": {
-        "rules": {
-          "correctness": {
-            "noConstAssign": "off",
-            "noGlobalObjectCalls": "off",
-            "noInvalidBuiltinInstantiation": "off",
-            "noInvalidConstructorSuper": "off",
-            "noNewSymbol": "off",
-            "noSetterReturn": "off",
-            "noUndeclaredVariables": "off",
-            "noUnreachable": "off",
-            "noUnreachableSuper": "off"
-          },
-          "style": {},
-          "suspicious": {
-            "noClassAssign": "off",
-            "noDuplicateClassMembers": "off",
-            "noDuplicateObjectKeys": "off",
-            "noDuplicateParameters": "off",
-            "noFunctionAssign": "off",
-            "noImportAssign": "off",
-            "noRedeclare": "off",
-            "noUnsafeNegation": "off",
-            "useGetterReturn": "off",
-            "noExplicitAny": "off"
-          }
         }
       }
     },
@@ -218,7 +189,7 @@
       }
     },
     {
-      "include": ["**/tests/*", "**/*.spec.*", "**/*.a11y.*", "**/*.e2e.*", "**/*.vrt.*"],
+      "include": ["**/tests/*", "*.spec.*", "*.e2e.*", "*.a11y.*", "*.vrt.*", "*.smoke.*"],
       "linter": {
         "rules": {
           "complexity": {
@@ -229,9 +200,6 @@
             "noConsole": "off",
             "noEmptyBlockStatements": "off"
           },
-          "security": {
-            "noGlobalEval": "off"
-          },
           "correctness": {
             "noUnusedVariables": "off"
           }
@@ -239,34 +207,12 @@
       }
     },
     {
-      "include": ["**/*.vue"],
+      "include": ["*.svelte", "*.astro", "*.vue"],
       "linter": {
         "rules": {
-          "correctness": {
-            "noConstAssign": "off",
-            "noGlobalObjectCalls": "off",
-            "noInvalidBuiltinInstantiation": "off",
-            "noInvalidConstructorSuper": "off",
-            "noNewSymbol": "off",
-            "noSetterReturn": "off",
-            "noUndeclaredVariables": "off",
-            "noUnreachable": "off",
-            "noUnusedVariables": "off",
-            "noUnreachableSuper": "off"
-          },
           "style": {
             "useConst": "off",
             "useImportType": "off"
-          },
-          "suspicious": {
-            "noDuplicateClassMembers": "off",
-            "noDuplicateObjectKeys": "off",
-            "noDuplicateParameters": "off",
-            "noFunctionAssign": "off",
-            "noImportAssign": "off",
-            "noRedeclare": "off",
-            "noUnsafeNegation": "off",
-            "useGetterReturn": "off"
           }
         }
       }
