@@ -3,11 +3,11 @@ import { componentsReady } from '@porsche-design-system/components-angular';
 import { getByRoleShadowed } from '@porsche-design-system/components-angular/testing';
 import { fireEvent, render } from '@testing-library/angular';
 import '@porsche-design-system/components-angular/jsdom-polyfill';
-import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'empty',
   template: `<div></div>`,
+  standalone: false,
 })
 class EmptyComponent {}
 
@@ -17,7 +17,7 @@ class EmptyComponent {}
     <p-button (click)="onClick()">Button 1</p-button>
     <p-button *ngIf="active">Button 2</p-button>
   `,
-  imports: [NgIf],
+  standalone: false,
 })
 class SampleComponent {
   active = false;
