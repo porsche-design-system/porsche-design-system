@@ -8,6 +8,7 @@ lerna-debug.log*
 
 # Dependencies
 node_modules/
+.yarn-integrity
 
 # Directories
 dist/
@@ -21,9 +22,6 @@ playwright-report/
 .aws-sam
 .npm
 .eslintcache
-
-# Yarn Integrity file
-.yarn-integrity
 
 # temporary files
 cdn.config.js
@@ -56,3 +54,10 @@ ort/
 # Assets
 packages/assets/cdn/
 packages/assets/projects/*/index.ts
+
+# Components
+packages/components/src/components/**/*.props.md
+packages/components/src/components/**/readme.md
+packages/components/src/utils-entry.ts
+packages/components/src/styles-entry.ts
+packages/components/src/test-utils/tag-names-constructor-map.ts

@@ -43,7 +43,6 @@
       "./packages/component-meta/src/lib/*",
       "./packages/components-js/projects/partials/src/lib/*",
       "./packages/components-angular/src/app/pages/generated/*",
-      "./packages/components/src/test-utils/tag-names-constructor-map.ts",
       "./packages/components-react/projects/uxpin-wrapper/src/form/*/presets/*",
       "./packages/components-react/projects/uxpin-wrapper/src/BaseProps.ts",
       "./packages/components-react/projects/uxpin-wrapper/src/hooks.ts",
