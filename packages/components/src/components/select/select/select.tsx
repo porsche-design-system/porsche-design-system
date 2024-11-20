@@ -316,23 +316,21 @@ export class Select {
     this.selectOptions = [];
     this.selectOptgroups = [];
 
-    Array.from(this.host.children)
-      .filter(
-        (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
-      )
-      .forEach((child: HTMLElement) => {
-        throwIfElementIsNotOfKind(this.host, child, ['p-select-option', 'p-optgroup']);
+    for (const child of Array.from(this.host.children).filter(
+      (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
+    )) {
+      throwIfElementIsNotOfKind(this.host, child as HTMLElement, ['p-select-option', 'p-optgroup']);
 
-        if (isElementOfKind(child, 'p-select-option')) {
-          this.selectOptions.push(child as SelectOption);
-        } else if (isElementOfKind(child, 'p-optgroup')) {
-          this.selectOptgroups.push(child as SelectOptgroup);
-          Array.from(child.children).forEach((optGroupChild: HTMLElement) => {
-            throwIfElementIsNotOfKind(child, optGroupChild, 'p-select-option');
-            this.selectOptions.push(optGroupChild as SelectOption);
-          });
+      if (isElementOfKind(child as HTMLElement, 'p-select-option')) {
+        this.selectOptions.push(child as SelectOption);
+      } else if (isElementOfKind(child as HTMLElement, 'p-optgroup')) {
+        this.selectOptgroups.push(child as SelectOptgroup);
+        for (const optGroupChild of Array.from(child.children)) {
+          throwIfElementIsNotOfKind(child as HTMLElement, optGroupChild as HTMLElement, 'p-select-option');
+          this.selectOptions.push(optGroupChild as SelectOption);
         }
-      });
+      }
+    }
   };
 
   private updateSelectedOption = (selectedOption: SelectOption): void => {

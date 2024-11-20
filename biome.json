@@ -91,10 +91,7 @@
         "noUselessTypeConstraint": "error",
         "noUselessUndefinedInitialization": "error",
         "noWith": "error",
-        "useLiteralKeys": "error",
-        "noForEach": "off",
-        "noBannedTypes": "off",
-        "useOptionalChain": "off"
+        "useLiteralKeys": "error"
       },
       "correctness": {
         "noConstAssign": "error",
@@ -124,8 +121,7 @@
         "useJsxKeyInIterable": "off"
       },
       "performance": {
-        "noAccumulatingSpread": "off",
-        "noDelete": "off"
+        "noAccumulatingSpread": "off"
       },
       "security": {
         "noGlobalEval": "error"
@@ -136,9 +132,7 @@
         "useBlockStatements": "off",
         "useConsistentBuiltinInstantiation": "error",
         "useSingleVarDeclarator": "error",
-        "noInferrableTypes": "off",
-        "noCommaOperator": "off",
-        "useDefaultParameterLast": "off"
+        "noInferrableTypes": "off"
       },
       "suspicious": {
         "noAsyncPromiseExecutor": "error",
@@ -172,9 +166,7 @@
         "useNamespaceKeyword": "error",
         "useValidTypeof": "error",
         "noAssignInExpressions": "off",
-        "noArrayIndexKey": "off",
-        "noImplicitAnyLet": "off",
-        "noConfusingVoidType": "off"
+        "noArrayIndexKey": "off"
       }
     },
     "ignore": [
@@ -278,7 +270,8 @@
       "linter": {
         "rules": {
           "complexity": {
-            "useLiteralKeys": "off"
+            "useLiteralKeys": "off",
+            "noForEach": "off"
           },
           "suspicious": {
             "noConsole": "off",
