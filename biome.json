@@ -133,7 +133,6 @@
         "useConsistentBuiltinInstantiation": "error",
         "useSingleVarDeclarator": "error",
         "noInferrableTypes": "off",
-        "noCommaOperator": "off",
         "useDefaultParameterLast": "off"
       },
       "suspicious": {
