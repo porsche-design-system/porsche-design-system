@@ -53,7 +53,7 @@ describe('setAriaElementInnerHtml()', () => {
   const getAccessibilityMessage = (remainingCharacter: number, maxCharacter: number) =>
     `You have ${remainingCharacter} out of ${maxCharacter} characters left`;
 
-  it('should set correct character count text for screen reader as innerText on element', async () => {
+  it('should set correct character count text for screen reader as innerText on element', () => {
     const ariaElement = getAriaElement();
     const inputElement = getInputElement();
 

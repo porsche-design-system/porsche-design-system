@@ -30,6 +30,7 @@ describe('handleButtonEvent()', () => {
   const getName = jest.fn().mockReturnValue('name');
   const getValue = jest.fn().mockReturnValue('value');
 
+  // biome-ignore lint/style/noDoneCallback: to be refactored
   it('should create a submit button and click it', (done) => {
     const getDisabled = jest.fn().mockReturnValue(false);
     const form = document.createElement('form');
