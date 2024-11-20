@@ -13,7 +13,7 @@ const childrenObserver =
   hasWindow &&
   new MutationObserver((mutations) => {
     // there may be race conditions in jsdom-polyfill tests  where the map is already empty when a mutation happens
-    if (observedNodesMap.size) {
+    if (observedNodesMap.size > 0) {
       const observedNodes = Array.from(observedNodesMap.keys());
 
       // remove duplicates so we execute callback only once per node

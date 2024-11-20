@@ -113,7 +113,6 @@
         "useDefaultSwitchClause": "off",
         "useSingleCaseStatement": "off",
         "useFilenamingConvention": "off",
-        "useExplicitLengthCheck": "off",
         "noNegationElse": "off"
       },
       "suspicious": {

@@ -469,7 +469,7 @@ export class MultiSelect {
         break;
       case 'Tab':
         // If there is a value the reset button will be focused and the dropdown stays open
-        if (!this.currentValue.length) {
+        if (this.currentValue.length === 0) {
           this.isOpen = false;
         }
         resetHighlightedOptions(this.multiSelectOptions);
