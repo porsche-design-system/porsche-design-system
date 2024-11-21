@@ -142,3 +142,10 @@ ERROR: ERROR in designsystemlibrary.js
 designsystemlibrary.js from Terser plugin
 "i" is redeclared [designsystemlibrary.js:5109,8]
 ```
+
+---
+
+## @arethetypeswrong/core
+
+Currently fixed to `0.15.1` since it's causing the `packages/components-js/tests/smoke/unit/specs/package.smoke.ts` test
+to hang in the pipeline.
