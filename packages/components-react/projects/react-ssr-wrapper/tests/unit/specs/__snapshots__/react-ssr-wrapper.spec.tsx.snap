@@ -8404,7 +8404,6 @@ dialog::backdrop {
 }
         </style>
         <dialog
-          aria-hidden="true"
           aria-modal="true"
           inert=""
           tabindex="-1"
@@ -9498,7 +9497,6 @@ dialog::backdrop {
 }
     </style>
     <dialog
-      aria-hidden="true"
       aria-modal="true"
       inert=""
       tabindex="-1"
@@ -12381,7 +12379,6 @@ dialog::backdrop {
 }
     </style>
     <dialog
-      aria-hidden="true"
       aria-modal="true"
       inert=""
       tabindex="-1"

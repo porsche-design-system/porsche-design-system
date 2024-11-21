@@ -24,7 +24,7 @@ const getHost = (page: Page) => page.locator('p-modal');
 const getScrollContainer = (page: Page) => page.locator('p-modal .scroller');
 const getHeading = (page: Page) => page.locator('p-modal slot[name="heading"]');
 const getHeader = (page: Page) => page.locator('p-modal slot[name="header"]');
-const getModal = (page: Page) => page.locator('p-modal .root');
+const getModal = (page: Page) => page.locator('p-modal dialog');
 const getDismissButton = (page: Page) => page.locator('p-modal .dismiss');
 const getFooter = (page: Page) => page.locator('p-modal slot[name="footer"]');
 const getFooterBoxShadow = async (page: Page): Promise<string> => getElementStyle(getFooter(page), 'boxShadow');
@@ -72,8 +72,8 @@ const initBasicModal = (
   return setContentWithDesignSystem(
     page,
     `${markupBefore ? markupBefore : ''}<p-modal ${attributes}>
-  ${hasSlottedHeading ? '<div slot="heading">Some Heading<a href="https://porsche.com">Some link</a></div>' : ''}
-  ${hasSlottedHeader ? '<div slot="header"><h2>Some Heading</h2><p>Some header content</p></div>' : ''}
+  ${hasSlottedHeading ? '<div slot="heading">Some Heading <a href="https://porsche.com">Some link</a></div>' : ''}
+  ${hasSlottedHeader ? '<div slot="header"><h2>Some Heading</h2> <p>Some header content</p></div>' : ''}
   ${content}
   ${hasSlottedFooter ? '<div slot="footer">Some Footer</div>' : ''}
 </p-modal>${markupAfter ? markupAfter : ''}`,
@@ -140,6 +140,7 @@ const waitForSlotChange = () => new Promise((resolve) => setTimeout(resolve));
 
 test('should render and be visible when open', async ({ page }) => {
   await initBasicModal(page);
+  console.log(getModal(page));
   expect(getModal(page)).not.toBeNull();
   expect(await getModalVisibility(page)).toBe('visible');
 });
@@ -755,6 +756,7 @@ test.describe('slotted heading', () => {
     await initBasicModal(page, { hasSlottedHeading: true });
     const heading = getHeading(page);
     expect(heading).toBeDefined();
+    await expect(getModal(page)).toHaveAttribute('aria-label', 'Some Heading Some link');
   });
 
   test('should overwrite slotted heading when setting heading prop', async ({ page }) => {
@@ -767,6 +769,7 @@ test.describe('slotted heading', () => {
     expect(page.locator('p-modal h2')).toBeDefined();
     await expect(getHeading(page)).toHaveCount(0);
     expect(page.getByText('Some Heading')).toBeDefined();
+    await expect(getModal(page)).toHaveAttribute('aria-label', 'Some Heading');
   });
 });
 
@@ -775,6 +778,7 @@ test.describe('slotted header', () => {
     await initBasicModal(page, { hasSlottedHeader: true });
     const header = getHeader(page);
     expect(header).toBeDefined();
+    await expect(getModal(page)).toHaveAttribute('aria-label', 'Some Heading Some header content');
   });
 
   test('should overwrite slotted header when setting heading prop', async ({ page }) => {
@@ -787,6 +791,13 @@ test.describe('slotted header', () => {
     expect(page.locator('p-modal h2')).toBeDefined();
     await expect(getHeader(page)).toHaveCount(0);
     expect(page.getByText('Some Heading')).toBeDefined();
+    await expect(getModal(page)).toHaveAttribute('aria-label', 'Some Heading');
+  });
+
+  test('should use aria text from aria prop instead of slotted header', async ({ page }) => {
+    await initBasicModal(page, { hasSlottedHeader: true, aria: "{'aria-label': 'A slightly more detailed label'}" });
+
+    await expect(getModal(page)).toHaveAttribute('aria-label', 'A slightly more detailed label');
   });
 });
 
@@ -812,6 +823,7 @@ test.describe('after dynamic slot change', () => {
     await waitForStencilLifecycle(page);
 
     await expect(page.getByText(headerText)).toBeVisible();
+    await expect(getModal(page)).toHaveAttribute('aria-label', headerText);
   });
 
   test('should show footer with shadow when footer slot is added dynamically', async ({ page }) => {
