@@ -4,32 +4,12 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "start-app": "react-scripts start",
     "build": "yarn build:utilities && yarn build:ag-grid",
     "build:utilities": "yarn --cwd ./projects/utilities build",
     "build:ag-grid": "yarn --cwd ./projects/ag-grid build",
-    "build-app": "react-scripts build",
     "test": "yarn test:unit",
     "test:unit": "yarn --cwd ./projects/utilities test:unit",
     "clean:build": "yarn --cwd ./projects/utilities clean:build"
-  },
-  "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "styled-components": "^6.1.13"
-  },
-  "devDependencies": {
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.0.1",
-    "@testing-library/user-event": "^14.5.2",
-    "@types/react": "18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "@types/styled-components": "^5.1.34",
-    "react-scripts": "^5.0.1"
-  },
-  "peerDependencies": {
-    "@types/jest": "*",
-    "typescript": "*"
   },
   "volta": {
     "extends": "../../package.json"
