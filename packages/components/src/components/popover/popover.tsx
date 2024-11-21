@@ -136,7 +136,7 @@ export class Popover {
     }
   };
 
-  private onToggle = (e: { newState: string }): void => {
+  private onToggle = (e: ToggleEvent): void => {
     if (e.newState === 'open') {
       forceUpdate(this.host); // Necessary to update popover styles since opening of native popover doesn't trigger rerender
     }

@@ -1,7 +1,4 @@
 {
-  // TODO: can't use an array of extends with ts-node or we could apply "@porsche-design-system/shared/tsconfig.json", too
-  // https://github.com/TypeStrong/ts-node/issues/2000
-  // Maybe it's possible with tsx now? Since we've migrated from ts-node to tsx, we should give it a try.
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "include": ["env.d.ts", "projects/vue-wrapper/src"],
   "exclude": [
@@ -18,7 +15,8 @@
     "paths": {
       "@/*": ["./projects/vue-wrapper/src/public-api.ts"]
     },
-    "types": ["node"]
+    "types": ["node"],
+    "noEmit": false
   },
   "references": [
     {
