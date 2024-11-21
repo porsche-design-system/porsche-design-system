@@ -135,7 +135,7 @@ generating typings.
 
 ## webpack
 
-Currently fixed to 5.91.0 because of Error when publishing UXPin lib:
+UXPin publishing deactivated since newer webpack version causes this error (5.91.0 still worked):
 
 ```
 ERROR: ERROR in designsystemlibrary.js
