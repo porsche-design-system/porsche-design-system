@@ -10759,10 +10759,10 @@ detective-vue2@^2.0.3:
     detective-stylus "^5.0.0"
     detective-typescript "^13.0.0"
 
-devtools-protocol@^0.0.1383960:
-  version "0.0.1383960"
-  resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1383960.tgz#1bcd53c24df68604d5a33c5220897fbc79024e50"
-  integrity sha512-sA4i8b6+DIfQNyRa7gwaEC7y/1itPIDJvurydi3In+qu9dZ37V4BpiNxl5ooIGzemxBsJDHTY0U7PXzOJhj5Ww==
+devtools-protocol@^0.0.1304228:
+  version "0.0.1304228"
+  resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1304228.tgz#015ff14406f78a6fa78dde4e2451e386937ba91c"
+  integrity sha512-UNoOVrFPxds8OEKvLU0rU35YsaAPDM5u6ZZId0Nwveon9FSzO7h+uubdu0evfrZd2p3tSFHvmWbVk1crn1/x1w==
 
 di@^0.0.1:
   version "0.0.1"
