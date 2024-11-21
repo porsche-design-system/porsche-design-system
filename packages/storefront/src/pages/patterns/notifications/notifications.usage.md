@@ -61,9 +61,6 @@ not work anymore. As we are progressing with the refactoring this might already 
 
 ## References
 
-- Duncan P. Brumby, Christian P. Janssen, and Gloria Mark,
-  [How Do Interruptions Affect Productivity?](https://link.springer.com/chapter/10.1007/978-1-4842-4221-6_9) (Rethinking
-  Productivity in Software Engineering, 2019)
 - Kim Flaherty,
   [Indicators, Validations, and Notifications](https://nngroup.com/articles/indicators-validations-notifications)s
   (Nielsen Norman Group, 2015)
