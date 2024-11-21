@@ -13017,7 +13017,6 @@ span:not(.ellipsis)::-moz-focus-inner {
     </style>
     <nav
       aria-label="Pagination"
-      role="navigation"
     >
       <ul>
         <li
