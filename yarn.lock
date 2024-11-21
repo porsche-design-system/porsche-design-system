@@ -433,17 +433,16 @@
     jsonpointer "^5.0.0"
     leven "^3.1.0"
 
-"@arethetypeswrong/core@^0.17.0":
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/@arethetypeswrong/core/-/core-0.17.0.tgz#abb3b5f425056d37193644c2a2de4aecf866b76b"
-  integrity sha512-FHyhFizXNetigTVsIhqXKGYLpazPS5YNojEPpZEUcBPt9wVvoEbNIvG+hybuBR+pjlRcbyuqhukHZm1fr+bDgA==
+"@arethetypeswrong/core@^0.15.1":
+  version "0.15.1"
+  resolved "https://registry.yarnpkg.com/@arethetypeswrong/core/-/core-0.15.1.tgz#b01b2d73ffa9d341fcc1c1ccc23bb30d2e64cf0e"
+  integrity sha512-FYp6GBAgsNz81BkfItRz8RLZO03w5+BaeiPma1uCfmxTnxbtuMrI/dbzGiOk8VghO108uFI0oJo0OkewdSHw7g==
   dependencies:
     "@andrewbranch/untar.js" "^1.0.3"
-    cjs-module-lexer "^1.2.3"
     fflate "^0.8.2"
-    lru-cache "^10.4.3"
     semver "^7.5.4"
-    typescript "5.6.1-rc"
+    ts-expose-internals-conditionally "1.0.0-empty.0"
+    typescript "5.3.3"
     validate-npm-package-name "^5.0.0"
 
 "@axe-core/playwright@^4.10.1":
@@ -10013,11 +10012,6 @@ cjs-module-lexer@^1.0.0:
   resolved "https://registry.yarnpkg.com/cjs-module-lexer/-/cjs-module-lexer-1.2.3.tgz#6c370ab19f8a3394e318fe682686ec0ac684d107"
   integrity sha512-0TNiGstbQmCFwt4akjjBg5pLRTSyj/PkWQ1ZoO2zntmg9yLqSRxwEa4iCfQLGjqhiqBfOJa7W/E8wfGrTDmlZQ==
 
-cjs-module-lexer@^1.2.3:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/cjs-module-lexer/-/cjs-module-lexer-1.4.1.tgz#707413784dbb3a72aa11c2f2b042a0bef4004170"
-  integrity sha512-cuSVIHi9/9E/+821Qjdvngor+xpnlwnuwIyZOaLmHBVdXL+gP+I6QQB9VkO7RI77YIcTV+S1W9AreJ5eN63JBA==
-
 class-utils@^0.3.5:
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/class-utils/-/class-utils-0.3.6.tgz#f93369ae8b9a7ce02fd41faad0ca83033190c463"
@@ -17834,11 +17828,6 @@ lru-cache@^10.0.1, lru-cache@^10.2.0:
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-10.2.0.tgz#0bd445ca57363465900f4d1f9bd8db343a4d95c3"
   integrity sha512-2bIM8x+VAf6JT4bKAljS1qUWgMsqZRPGJS6FSahIMPVvctcNhyVp7AJu7quxOW9jwkryBReKZY5tY5JYv2n/7Q==
 
-lru-cache@^10.4.3:
-  version "10.4.3"
-  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-10.4.3.tgz#410fc8a17b70e598013df257c2446b7f3383f119"
-  integrity sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==
-
 lru-cache@^4.0.1, lru-cache@^4.1.2:
   version "4.1.5"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.1.5.tgz#8bbe50ea85bed59bc9e33dcab8235ee9bcf443cd"
@@ -25280,6 +25269,11 @@ ts-api-utils@^1.3.0:
   resolved "https://registry.yarnpkg.com/ts-api-utils/-/ts-api-utils-1.3.0.tgz#4b490e27129f1e8e686b45cc4ab63714dc60eea1"
   integrity sha512-UQMIo7pb8WRomKR1/+MFVLTroIvDVtMX3K6OUir8ynLyzB8Jeriont2bTAtmNPa1ekAgN7YPDyf6V+ygrdU+eQ==
 
+ts-expose-internals-conditionally@1.0.0-empty.0:
+  version "1.0.0-empty.0"
+  resolved "https://registry.yarnpkg.com/ts-expose-internals-conditionally/-/ts-expose-internals-conditionally-1.0.0-empty.0.tgz#fd9e5acb481466b0f5936f6e246eb37d0c3ceb28"
+  integrity sha512-F8m9NOF6ZhdOClDVdlM8gj3fDCav4ZIFSs/EI3ksQbAAXVSCN/Jh5OCJDDZWBuBy9psFc6jULGDlPwjMYMhJDw==
+
 ts-graphviz@^2.1.2:
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/ts-graphviz/-/ts-graphviz-2.1.4.tgz#16db94dc83a7a7b5af6f5b113cd26c0c56c7f9f8"
@@ -25625,10 +25619,10 @@ typescript@4.4.2:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.4.2.tgz#6d618640d430e3569a1dfb44f7d7e600ced3ee86"
   integrity sha512-gzP+t5W4hdy4c+68bfcv0t400HVJMMd2+H9B7gae1nQlBzCqvrXX+6GL/b3GAgyTH966pzrZ70/fRjwAtZksSQ==
 
-typescript@5.6.1-rc:
-  version "5.6.1-rc"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.6.1-rc.tgz#d5e4d7d8170174fed607b74cc32aba3d77018e02"
-  integrity sha512-E3b2+1zEFu84jB0YQi9BORDjz9+jGbwwy1Zi3G0LUNw7a7cePUrHMRNy8aPh53nXpkFGVHSxIZo5vKTfYaFiBQ==
+typescript@5.3.3:
+  version "5.3.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.3.tgz#b3ce6ba258e72e6305ba66f5c9b452aaee3ffe37"
+  integrity sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==
 
 typescript@>=5.0.2:
   version "5.4.4"
