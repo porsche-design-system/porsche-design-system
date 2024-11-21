@@ -1,7 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { TAG_NAMES } from '@porsche-design-system/shared';
-import * as gzipSize from 'gzip-size';
 import { gzipSizeSync } from 'gzip-size';
 import { COMPONENT_CHUNKS_MANIFEST, type ComponentChunkName } from '../../../projects/components-wrapper';
 
