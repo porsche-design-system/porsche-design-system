@@ -13,10 +13,7 @@
     "test:unit": "yarn --cwd ./projects/utilities test:unit",
     "clean:build": "yarn --cwd ./projects/utilities clean:build"
   },
-  "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",

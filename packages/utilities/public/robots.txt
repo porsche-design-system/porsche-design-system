@@ -1,3 +1,0 @@
-# https://robotstxt.org/robotstxt.html
-User-agent: *
-Allow: /
