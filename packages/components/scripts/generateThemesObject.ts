@@ -1,10 +1,10 @@
-import type { Theme } from '@porsche-design-system/styles';
-import type { ThemedColors } from '../src/styles';
-import * as path from 'path';
 import * as fs from 'fs';
-import { themeLight, themeDark } from '@porsche-design-system/styles';
+import * as path from 'path';
+import type { Theme } from '@porsche-design-system/styles';
+import { themeDark, themeLight } from '@porsche-design-system/styles';
+import { pascalCase } from 'change-case';
 import tinycolor2 from 'tinycolor2';
-import { pascalCase } from 'latest-change-case';
+import type { ThemedColors } from '../src/styles';
 
 const darkenColor = (color: string) => tinycolor2(color).darken(12).toHexString().toUpperCase();
 const darkenColorSlightly = (color: string) => tinycolor2(color).darken(6).desaturate(37).toHexString().toUpperCase();

@@ -1,10 +1,10 @@
-import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
-import { getComponentMeta } from '@porsche-design-system/component-meta';
-import type { TagName } from '@porsche-design-system/shared';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
+import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
+import type { TagName } from '@porsche-design-system/shared';
+import { pascalCase } from 'change-case-legacy';
 import * as globby from 'globby-legacy';
-import { pascalCase } from 'change-case';
 
 const componentsDir = path.resolve(__dirname);
 const sourceFilePaths = globby.sync(`${componentsDir}/**/*.tsx`).sort();
