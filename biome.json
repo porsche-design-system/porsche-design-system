@@ -96,8 +96,7 @@
       "**/crawler/*",
       "**/shared/*",
       "**/storefront/*",
-      "**/utilities/*",
-      "**/aws/*"
+      "**/utilities/*"
     ]
   },
   "javascript": {

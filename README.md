@@ -277,20 +277,6 @@ rules:
 
 ---
 
-## AWS
-
-In order to deploy something to AWS from your local machine, you need to follow these steps.
-
-1. Install `awscli` as described here
-   <https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html#cliv2-linux-install>
-2. Retrieve the credentials from our keepass, they are stored in the entry `AWS + QuickSight` under the fields
-   `Zugriffsschlüssel-ID` and `Geheimer Zugriffsschlüssel`
-3. Run `aws configure` and enter the credentials, default region `eu-central-1` and default output format `json`
-4. If you prefer to run commands via `docker.sh` you need to extend your `.env` file by `AWS_ACCESS_KEY_ID` and
-   `AWS_SECRET_ACCESS_KEY` with the credentials from the previous step
-
----
-
 ## Open Source Check via OSS Review Toolkit (ORT) by Porsche's Open Source Office (OSO)
 
 The OSS Review Toolkit (ORT) aims to assist with the tasks that commonly needs to be performed in the context of license
