@@ -31,8 +31,8 @@
   },
   {
     "chunkShortName": "canvas",
-    "size": 15679,
-    "gzipSize": 5003
+    "size": 16271,
+    "gzipSize": 5171
   },
   {
     "chunkShortName": "carousel",
@@ -151,8 +151,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 81286,
-    "gzipSize": 26971
+    "size": 81395,
+    "gzipSize": 26987
   },
   {
     "chunkShortName": "marque",
@@ -171,8 +171,8 @@
   },
   {
     "chunkShortName": "multi-select",
-    "size": 26542,
-    "gzipSize": 9265
+    "size": 26562,
+    "gzipSize": 9263
   },
   {
     "chunkShortName": "optgroup",
@@ -181,8 +181,8 @@
   },
   {
     "chunkShortName": "pagination",
-    "size": 7745,
-    "gzipSize": 3196
+    "size": 7737,
+    "gzipSize": 3179
   },
   {
     "chunkShortName": "pin-code",
@@ -216,8 +216,8 @@
   },
   {
     "chunkShortName": "select-wrapper",
-    "size": 27875,
-    "gzipSize": 9354
+    "size": 27894,
+    "gzipSize": 9350
   },
   {
     "chunkShortName": "spinner",
