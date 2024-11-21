@@ -1,9 +1,9 @@
+import { ComponentMeta, PropMeta, getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
-import { ComponentMeta, getComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
-import { ReactWrapperGenerator } from './ReactWrapperGenerator';
-import type { ExtendedProp } from './DataStructureBuilder';
+import { kebabCase, pascalCase } from 'change-case';
 import type { AdditionalFile } from './AbstractWrapperGenerator';
-import { kebabCase, pascalCase } from 'latest-change-case';
+import type { ExtendedProp } from './DataStructureBuilder';
+import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 
 type PresetsProps = { [key: string]: number | string | boolean | string[] | object | null };
 
@@ -720,8 +720,8 @@ export default <${formComponentName} ${stringifiedProps} />;
     webpackConfig: 'webpack.config.js',
   },
   name: 'Porsche Design System',
-  settings: { 
-    useUXPinProps: true, 
+  settings: {
+    useUXPinProps: true,
     useFitToContentAsDefault: true,
     propertyConfigurations: {
       Flyout: {
