@@ -31,8 +31,8 @@
   },
   {
     "chunkShortName": "canvas",
-    "size": 15679,
-    "gzipSize": 5003
+    "size": 16271,
+    "gzipSize": 5171
   },
   {
     "chunkShortName": "carousel",
@@ -151,8 +151,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 81301,
-    "gzipSize": 26978
+    "size": 81410,
+    "gzipSize": 26998
   },
   {
     "chunkShortName": "marque",
