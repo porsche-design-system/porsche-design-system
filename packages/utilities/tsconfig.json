@@ -1,0 +1,10 @@
+{
+  "extends": "@porsche-design-system/shared/tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src"]
+}
