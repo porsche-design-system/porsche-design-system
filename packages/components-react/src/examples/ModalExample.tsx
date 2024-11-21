@@ -15,7 +15,7 @@ export const ModalExampleAccessibilityPage = (): JSX.Element => {
       <PButton type="button" aria={{ 'aria-haspopup': 'dialog' }} onClick={onOpen}>
         Open Modal
       </PButton>
-      <PModal open={isModalOpen} onDismiss={onDismiss} aria={{ 'aria-label': 'Some Heading' }}>
+      <PModal open={isModalOpen} onDismiss={onDismiss} aria={{ 'aria-label': 'A slightly more detailed label' }}>
         <PHeading slot="header" size="large" tag="h2">
           Some Heading
         </PHeading>
