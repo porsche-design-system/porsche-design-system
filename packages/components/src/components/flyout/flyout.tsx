@@ -17,6 +17,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  getSlotTextContent,
   hasNamedSlot,
   hasPropValueChanged,
   observeChildren,
@@ -183,7 +184,7 @@ export class Flyout {
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd, this.dialog)}
         {...parseAndGetAriaAttributes({
           'aria-modal': true,
-          'aria-hidden': !this.open,
+          ...(this.hasHeader && { 'aria-label': getSlotTextContent(this.host, 'header') }),
           ...parseAndGetAriaAttributes(this.aria),
         })}
       >

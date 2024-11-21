@@ -314,6 +314,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       } else if (tagName === 'p-modal') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasFooter|hasDismissButton)/g, '$1')
+          .replace(/(this\.props\.ariaLabel)\(\)/g, '$1')
           .replace(/hasHeader =/, 'const $&')
           .replace(/hasFooter =/, 'const $&')
           .replace(

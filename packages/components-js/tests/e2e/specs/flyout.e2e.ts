@@ -699,7 +699,7 @@ test.describe('lifecycle', () => {
 test.describe('after dynamic slot change', () => {
   skipInBrowsers(['webkit', 'firefox']);
 
-  test('should show header', async ({ page }) => {
+  test('should show header and set correct aria-label', async ({ page }) => {
     await initBasicFlyout(
       page,
       { open: true },
@@ -723,8 +723,10 @@ test.describe('after dynamic slot change', () => {
     await waitForStencilLifecycle(page);
 
     const header = getHeader(page);
+    const dialog = getFlyout(page);
     await expect(page.getByText(headerText)).toBeVisible();
     expect(await getElementStyle(header, 'boxShadow'), 'initial').toBe('none');
+    await expect(dialog).toHaveAttribute('aria-label', headerText);
 
     await scrollFlyoutTo(page, '.scroll-here');
     await expectHeaderShadowToAppear(page);
@@ -855,5 +857,29 @@ test.describe('events', () => {
 
     expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(0);
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(1);
+  });
+});
+
+test.describe('aria-label on dialog', () => {
+  test('should have correct value if aria prop is set', async ({ page }) => {
+    await initBasicFlyout(page, { open: true, aria: { 'aria-label': 'Some Heading' } });
+    const dialog = getFlyout(page);
+    await expect(dialog).toHaveAttribute('aria-label', 'Some Heading');
+  });
+
+  test('should have correct value if header slot is set', async ({ page }) => {
+    await initBasicFlyout(page, { open: true }, { header: '<div slot="header">Some Heading</div>' });
+    const dialog = getFlyout(page);
+    await expect(dialog).toHaveAttribute('aria-label', 'Some Heading');
+  });
+
+  test('should have correct value if aria prop and header slot are set', async ({ page }) => {
+    await initBasicFlyout(
+      page,
+      { open: true, aria: { 'aria-label': 'Some Prop Heading' } },
+      { header: '<div slot="header">Some Slot Heading</div>' }
+    );
+    const dialog = getFlyout(page);
+    await expect(dialog).toHaveAttribute('aria-label', 'Some Prop Heading');
   });
 });
