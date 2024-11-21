@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Fixed
+
+- `Popover`: Rendering bug of drop-shadow in Safari 18.x
+  ([3622](https://github.com/porsche-design-system/porsche-design-system/pull/3622))
+
 ### [3.22.0-rc.0] - 2024-11-19
 
 #### Added

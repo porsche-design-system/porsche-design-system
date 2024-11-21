@@ -73,7 +73,6 @@ button:focus-visible {
   position: absolute;
   z-index: 9999;
   filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
-  backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
   animation: 0.25s keyframes-fadeIn cubic-bezier(0.25,0.1,0.25,1) forwards;
 }
@@ -189,7 +188,6 @@ button:focus-visible {
   position: absolute;
   z-index: 9999;
   filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
-  backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
   animation: 0.25s keyframes-fadeIn cubic-bezier(0.25,0.1,0.25,1) forwards;
 }
@@ -305,7 +303,6 @@ button:focus-visible {
   position: absolute;
   z-index: 9999;
   filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
-  backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
   animation: 0.25s keyframes-fadeIn cubic-bezier(0.25,0.1,0.25,1) forwards;
 }
@@ -421,7 +418,6 @@ button:focus-visible {
   position: absolute;
   z-index: 9999;
   filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
-  backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
   animation: 0.25s keyframes-fadeIn cubic-bezier(0.25,0.1,0.25,1) forwards;
 }
@@ -537,7 +533,6 @@ button:focus-visible {
   position: absolute;
   z-index: 9999;
   filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
-  backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
   animation: 0.25s keyframes-fadeIn cubic-bezier(0.25,0.1,0.25,1) forwards;
 }
@@ -653,7 +648,6 @@ button:focus-visible {
   position: absolute;
   z-index: 9999;
   filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
-  backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
   animation: 0.25s keyframes-fadeIn cubic-bezier(0.25,0.1,0.25,1) forwards;
 }
@@ -769,7 +763,6 @@ button:focus-visible {
   position: absolute;
   z-index: 9999;
   filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
-  backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
   animation: 0.25s keyframes-fadeIn cubic-bezier(0.25,0.1,0.25,1) forwards;
 }
@@ -885,7 +878,6 @@ button:focus-visible {
   position: absolute;
   z-index: 9999;
   filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
-  backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
   animation: 0.25s keyframes-fadeIn cubic-bezier(0.25,0.1,0.25,1) forwards;
 }
@@ -1006,7 +998,6 @@ button:focus-visible {
   overflow: initial;
   z-index: 9999;
   filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
-  backdrop-filter: drop-shadow(0px 0px 0px transparent);
   animation: 0.25s keyframes-fadeIn cubic-bezier(0.25,0.1,0.25,1) forwards;
 }
 .spacer:-internal-popover-in-top-layer::backdrop {
