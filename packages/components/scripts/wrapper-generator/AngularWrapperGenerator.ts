@@ -1,6 +1,6 @@
 import * as path from 'path';
 import type { TagName } from '@porsche-design-system/shared';
-import { camelCase, pascalCase } from 'latest-change-case';
+import { camelCase, pascalCase } from 'change-case';
 import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
 
