@@ -42,9 +42,7 @@
         "useAriaPropsForRole": "off",
         "useSemanticElements": "off",
         "useFocusableInteractive": "off",
-        "noNoninteractiveElementToInteractiveRole": "off",
         "noNoninteractiveTabindex": "off",
-        "noRedundantRoles": "off",
         "noLabelWithoutControl": "off"
       },
       "complexity": {

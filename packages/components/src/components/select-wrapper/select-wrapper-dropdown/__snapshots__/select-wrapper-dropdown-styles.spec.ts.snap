@@ -259,7 +259,7 @@ button:disabled {
   cursor: not-allowed;
   border-color: #949598;
 }
-ul {
+[role="listbox"] {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -398,7 +398,7 @@ button:disabled {
   cursor: not-allowed;
   border-color: #949598;
 }
-ul {
+[role="listbox"] {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -580,7 +580,7 @@ input+span {
 input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   border-color: #010205;
 }
-ul {
+[role="listbox"] {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -722,7 +722,7 @@ button:disabled {
   cursor: not-allowed;
   border-color: #949598;
 }
-ul {
+[role="listbox"] {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -892,7 +892,7 @@ input+span {
 input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   border-color: #010205;
 }
-ul {
+[role="listbox"] {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -1262,7 +1262,7 @@ button:disabled {
   cursor: not-allowed;
   border-color: #949598;
 }
-ul {
+[role="listbox"] {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -1401,7 +1401,7 @@ button:disabled {
   cursor: not-allowed;
   border-color: #949598;
 }
-ul {
+[role="listbox"] {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -1583,7 +1583,7 @@ input+span {
 input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   border-color: #010205;
 }
-ul {
+[role="listbox"] {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -1725,7 +1725,7 @@ button:disabled {
   cursor: not-allowed;
   border-color: #949598;
 }
-ul {
+[role="listbox"] {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -1895,7 +1895,7 @@ input+span {
 input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   border-color: #010205;
 }
-ul {
+[role="listbox"] {
   display: flex;
   flex-direction: column;
   gap: 8px;
