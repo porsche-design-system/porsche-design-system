@@ -6902,7 +6902,7 @@
   dependencies:
     tinyspy "^3.0.2"
 
-"@vitest/ui@^2.1.5":
+"@vitest/ui@^2.0.3":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@vitest/ui/-/ui-2.1.5.tgz#71e9cc198b481380698c24207359bc2f1ba5cb72"
   integrity sha512-ERgKkDMTfngrZip6VG5h8L9B5D0AH/4+bga4yR1UzGH7c2cxv3LWogw2Dvuwr9cP3/iKDHYys7kIFLDKpxORTg==
