@@ -30,5 +30,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </p-button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class HiddenAttributeExampleComponent {}

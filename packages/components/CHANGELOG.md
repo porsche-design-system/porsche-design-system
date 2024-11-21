@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.22.0-rc.0] - 2024-11-19
+
 #### Added
 
 - `Pin-Code`: Add `form` prop to explicitly associate the component with a form, even when it's not directly nested
@@ -21,12 +23,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Changed
 
+- Angular: updated peer dependency to `>=19.0.0 <20.0.0`
 - `Pin-Code`:
   - Remove native input and use ElementInternals API
   - **Breaking Change**: `Pin-Code` component no longer support native validation due to the removal of the underlying
     native `<input>` element. ([#3588](https://github.com/porsche-design-system/porsche-design-system/pull/3588))
 - `Styles`: `SCSS` variant uses `@forward/@use` internally to replace deprecated `@import`
   ([#3623](https://github.com/porsche-design-system/porsche-design-system/pull/3623))
+
+#### Fixed
+
+- Partials: removed bundled `react/jsx-runtime` due to React 18/19 incompatibilities. When using `jsx` in the `format`
+  option, it is necessary to have `react/jsx-runtime` as a dependency in the project included.
+  ([#3613](https://github.com/porsche-design-system/porsche-design-system/pull/3613))
 
 ### [3.21.0] - 2024-11-12
 

@@ -1,5 +1,7 @@
+import { borderWidthBase, fontFamily } from '@porsche-design-system/styles';
+import { forceUpdate } from '@stencil/core';
 import type { Theme } from '../../../types';
-import type { SegmentedControlItemInternalHTMLProps } from '../segmented-control-item/segmented-control-item-utils';
+import { hasDocument } from '../../../utils';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import {
   BUTTON_FONT,
@@ -8,9 +10,7 @@ import {
   ITEM_PADDING,
   LABEL_FONT,
 } from '../segmented-control-item/segmented-control-item-styles';
-import { borderWidthBase, fontFamily } from '@porsche-design-system/styles';
-import { forceUpdate } from '@stencil/core';
-import { hasDocument } from '../../../utils';
+import type { SegmentedControlItemInternalHTMLProps } from '../segmented-control-item/segmented-control-item-utils';
 
 export const SEGMENTED_CONTROL_BACKGROUND_COLORS = ['background-surface', 'background-default'] as const; // 'background-color' prop is deprecated
 export type SegmentedControlBackgroundColor = (typeof SEGMENTED_CONTROL_BACKGROUND_COLORS)[number]; // 'background-color' prop is deprecated
@@ -19,7 +19,7 @@ export type SegmentedControlBackgroundColor = (typeof SEGMENTED_CONTROL_BACKGROU
 export type SegmentedControlUpdateEvent = { value: string | number };
 export type SegmentedControlUpdateEventDetail = SegmentedControlUpdateEvent;
 
-export const SEGMENTED_CONTROL_COLUMNS = ['auto', ...Array.from(Array(25), (_, i) => i + 1)];
+export const SEGMENTED_CONTROL_COLUMNS = ['auto', ...Array.from(new Array(25), (_, i) => i + 1)];
 export type SegmentedControlColumns = (typeof SEGMENTED_CONTROL_COLUMNS)[number];
 
 // Expect Porsche Next to be available and use sans-serif (wide font for safety buffer) as fallback
@@ -64,7 +64,7 @@ export const getItemMaxWidth = (host: HTMLElement): number => {
       tempDiv.prepend(tempLabel);
     }
 
-    return parseFloat(getComputedStyle(tempDiv).width);
+    return Number.parseFloat(getComputedStyle(tempDiv).width);
   });
 
   tempDiv.remove();
@@ -72,12 +72,12 @@ export const getItemMaxWidth = (host: HTMLElement): number => {
   return Math.max(...widths);
 };
 
+type Item = HTMLElement & SegmentedControlItem & SegmentedControlItemInternalHTMLProps;
+
 export const syncSegmentedControlItemsProps = (host: HTMLElement, value: string | number, theme: Theme): void => {
-  Array.from(host.children).forEach(
-    (item: HTMLElement & SegmentedControlItem & SegmentedControlItemInternalHTMLProps) => {
-      item.selected = item.value === value;
-      item.theme = theme;
-      forceUpdate(item);
-    }
-  );
+  for (const item of Array.from(host.children)) {
+    (item as Item).selected = (item as Item).value === value;
+    (item as Item).theme = theme;
+    forceUpdate(item);
+  }
 };

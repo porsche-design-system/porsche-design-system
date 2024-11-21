@@ -11,8 +11,8 @@ import {
 } from './jss';
 import type { JssStyle, Styles } from 'jss';
 import * as globby from 'globby-legacy';
-import * as path from 'path';
-import * as fs from 'fs';
+import * as path from 'node:path';
+import * as fs from 'node:fs';
 
 describe('getCss()', () => {
   const data: { input: Styles; result: string }[] = [
@@ -207,7 +207,7 @@ describe('getCss()', () => {
     },
   ];
   it.each(data.map(({ input, result }) => [input, result]))(
-    `should correctly transform %j`,
+    'should correctly transform %j',
     (input: Styles, result: string) => {
       expect(getCss(input)).toBe(result);
     }
@@ -222,7 +222,7 @@ describe('supportsConstructableStylesheets()', () => {
 
   it('should return false if CSSStyleSheet constructor does not exist', () => {
     const globalCSSStyleSheet = global.CSSStyleSheet;
-    delete global.CSSStyleSheet;
+    global.CSSStyleSheet = undefined;
     expect(supportsConstructableStylesheets()).toBe(false);
     global.CSSStyleSheet = globalCSSStyleSheet;
   });
@@ -308,7 +308,9 @@ describe('mergeDeep()', () => {
   ];
   it.each(
     data.map(({ input, result }) => [
-      input.map((x) => JSON.stringify(x)).join(', '), // for test description
+      input
+        .map((x) => JSON.stringify(x))
+        .join(', '), // for test description
       JSON.stringify(result), // for test description
       input,
       result,

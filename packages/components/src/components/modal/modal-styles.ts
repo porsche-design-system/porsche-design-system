@@ -6,7 +6,7 @@ import {
   spacingFluidMedium,
   spacingFluidSmall,
 } from '@porsche-design-system/styles';
-import { type BreakpointCustomizable, type Theme } from '../../types';
+import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import {
   addImportantToEachRule,
@@ -15,7 +15,7 @@ import {
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { type ModalBackdrop } from './modal-utils';
+import type { ModalBackdrop } from './modal-utils';
 import {
   dialogGridJssStyle,
   dialogHostJssStyle,

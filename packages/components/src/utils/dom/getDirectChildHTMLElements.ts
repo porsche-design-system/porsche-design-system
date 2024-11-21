@@ -3,7 +3,10 @@ import { getHTMLElements } from './getHTMLElements';
 import { transformSelectorToDirectChildSelector } from './transformSelectorToDirectChildSelector';
 
 // prettier-ignore
-export function getDirectChildHTMLElements<K extends keyof HTMLElementTagNameMap>(element: HTMLElement, selector: K): HTMLElementTagNameMap[K][];
+export function getDirectChildHTMLElements<K extends keyof HTMLElementTagNameMap>(
+  element: HTMLElement,
+  selector: K
+): HTMLElementTagNameMap[K][];
 // prettier-ignore
 export function getDirectChildHTMLElements<E extends Element = Element>(element: HTMLElement, selector: string): E[];
 export function getDirectChildHTMLElements(element: HTMLElement, selector: string): any {
@@ -12,6 +15,5 @@ export function getDirectChildHTMLElements(element: HTMLElement, selector: strin
   // therefore we got a workaround, so it works nicely when consumed from jsdom-polyfill package
   return transformSelectorToDirectChildSelector(selector)
     .split(',')
-    .map((sel) => getHTMLElements(element, sel))
-    .flat(); // might contain duplicates
+    .flatMap((sel) => getHTMLElements(element, sel)); // might contain duplicates
 }

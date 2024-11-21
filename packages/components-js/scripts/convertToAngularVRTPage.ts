@@ -1,5 +1,5 @@
-import { pascalCase } from 'change-case';
 import { convertToAngular } from '@porsche-design-system/storefront/src/utils/convertToAngular';
+import { pascalCase } from 'change-case';
 import { byAlphabet, comment, iconsRegEx, templateRegEx } from './generateVRTPages';
 
 export type AngularCharacteristics = {
@@ -129,6 +129,7 @@ ${imports}
     ${templateContent}
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ${pascalCase(fileName)}Component ${classImplements}{${classImplementation}}
 `;

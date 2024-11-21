@@ -1,17 +1,16 @@
-import { type FormState } from '../../../utils/form/form-state';
+import { forceUpdate } from '@stencil/core';
 import {
+  type SelectComponentsDropdownDirection,
+  type SelectDropdownDirectionInternal,
+  type Theme,
   consoleWarn,
   determineDropdownDirection,
   getHighlightedSelectOptionIndex,
   getUsableSelectOptions,
-  type SelectDropdownDirectionInternal,
-  type SelectComponentsDropdownDirection,
-  type Theme,
 } from '../../../utils';
-import type { SelectOptionInternalHTMLProps } from '../select-option/select-option-utils';
-import { forceUpdate } from '@stencil/core';
+import type { FormState } from '../../../utils/form/form-state';
 import type { OptgroupInternalHTMLProps } from '../../optgroup/optgroup-utils';
-
+import type { SelectOptionInternalHTMLProps } from '../select-option/select-option-utils';
 export type SelectState = FormState;
 export type SelectOption = HTMLPSelectOptionElement & SelectOptionInternalHTMLProps;
 export type SelectDropdownDirection = SelectComponentsDropdownDirection;
@@ -24,12 +23,10 @@ export type SelectUpdateEventDetail = {
 
 // TODO: share between select & multi-select
 export const syncSelectChildrenProps = (children: (SelectOption | SelectOptgroup)[], theme: Theme): void => {
-  children
-    .filter((child) => child.theme !== theme)
-    .forEach((child) => {
-      child.theme = theme;
-      forceUpdate(child);
-    });
+  for (const child of children.filter((child) => child.theme !== theme)) {
+    child.theme = theme;
+    forceUpdate(child);
+  }
 };
 
 export const getSelectedOptionString = (options: SelectOption[]): string =>
@@ -55,12 +52,12 @@ export const updateSelectOptions = (options: SelectOption[], value: string): voi
   } else {
     // TODO: Do we want to cover multiple options with the same value?
     const optionToSelect = options.find((option) => option.value === value);
-    if (!optionToSelect) {
-      // TODO: Add select node
-      consoleWarn('The provided value is not included in the options of the p-select:', value);
-    } else {
+    if (optionToSelect) {
       optionToSelect.selected = true;
       forceUpdate(optionToSelect);
+    } else {
+      // TODO: Add select node
+      consoleWarn('The provided value is not included in the options of the p-select:', value);
     }
   }
 };
@@ -79,12 +76,12 @@ export const getSelectDropdownDirection = (
 ): SelectDropdownDirectionInternal => {
   if (direction !== 'auto') {
     return direction;
-  } else if (host) {
+  }
+  if (host) {
     const visibleOptionsLength = options.filter((option) => !option.hidden).length;
     return determineDropdownDirection(host, visibleOptionsLength);
-  } else {
-    return 'down';
   }
+  return 'down';
 };
 
 export const getSrHighlightedOptionText = (options: SelectOption[]): string => {

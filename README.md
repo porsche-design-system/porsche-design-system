@@ -57,18 +57,28 @@ volta install yarn
 
 _Note: `./docker.sh run-install` and `yarn` should be executed after every pull._
 
-### Setup prettier
+### Setup Prettier (Formatter)
 
 1. Go to Webstorm `Preferences`
-2. Click on the Plugins tab and search for `prettier`
-3. Install prettier
-4. In `Preferences` go to `Languages and Frameworks` -> `Javascript` -> `Prettier`
-5. Set `Prettier Package` to `{PATH_TO_YOUR_DIRECTORY}/node_modules/prettier`
-6. Change `Run for files` to `{**/*,*}.{js,ts,jsx,tsx,vue,scss,json,css,html,md}`
-7. Click checkbox `on save` and apply
-8. You should be good to go.
-9. If you have to exclude code fom being prettified, see
+2. In `Preferences` go to `Languages and Frameworks` -> `Javascript` -> `Prettier`
+3. Activate `Automatic Prettier configuration`
+4. Change `Run for files` to `{**/*,*}.{md}`
+5. Click checkbox `Run on save` and apply
+6. You should be good to go.
+7. If you have to exclude code fom being prettified, see
    [Prettier configuration](https://prettier.io/docs/en/ignore.html#javascript)
+
+### Setup Biome (Formatter + Linter)
+
+1. Go to Webstorm `Preferences`
+2. Click on the Plugins tab and search for `biome`
+3. Install Biome
+4. In `Preferences` go to `Languages and Frameworks` -> `Biome`
+5. Activate `Automatic Biome configuration`
+6. Change `Run for files` to `**/*.{js,mjs,cjs,ts,jsx,tsx,cts,json,jsonc,vue,svelte,astro,css}`
+7. Click checkbox `Run format on save` + `Run safe fixes on save` and apply
+8. You should be good to go.
+9. If you have to exclude code fom being prettified, see [Biome configuration](https://biomejs.dev/linter/#ignore-code)
 
 ### Build
 

@@ -147,7 +147,7 @@ export const getComponentCss = (
       },
       ...preventFoucOfNestedElementsStyles,
       ...(hasControlsSlot && {
-        ['slot[name="controls"]']: {
+        'slot[name="controls"]': {
           display: 'block',
           gridColumnStart: 1,
           gridRowStart: 3,
@@ -183,10 +183,10 @@ export const getComponentCss = (
         ...(hasHeading && {
           [selectorHeading]: {
             maxWidth: '56.25rem',
-            margin: `0 0 ${!hasDescription ? spacingFluidMedium : 0}`,
+            margin: `0 0 ${hasDescription ? 0 : spacingFluidMedium}`,
             ...(headingSize === 'xx-large' ? headingXXLargeStyle : headingXLargeStyle),
           },
-          ['::slotted([slot=heading])']: {
+          '::slotted([slot=heading])': {
             margin: 0, // reset ua-style
             ...(headingSize === 'xx-large' ? headingXXLargeStyle : headingXLargeStyle),
           },

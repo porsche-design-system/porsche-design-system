@@ -1,5 +1,5 @@
-import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 import { getHTMLElements, getTagName, hasAttribute } from '../../../utils';
+import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 
 /**
  * Handles scrolling within the list to ensure that the highlighted item is always visible.
@@ -9,7 +9,7 @@ import { getHTMLElements, getTagName, hasAttribute } from '../../../utils';
  */
 export const handleScroll = (ul: HTMLElement, highlightedIndex: number): void => {
   const { maxHeight } = getComputedStyle(ul);
-  const hostElementHeight = parseInt(maxHeight, 10);
+  const hostElementHeight = Number.parseInt(maxHeight, 10);
   if (ul.scrollHeight > hostElementHeight) {
     const highlightedNode = getHTMLElements(ul, 'li')[highlightedIndex];
 
@@ -99,9 +99,7 @@ export const getValidOptions = (options: OptionMap[]): OptionMap[] =>
 
 export const getAmountOfVisibleOptionsAndOptgroups = (options: OptionMap[]): number => {
   return options.reduce((count, { hidden, initiallyHidden, title }) => {
-    count += !hidden && !initiallyHidden ? 1 : 0;
-    count += title ? 1 : 0;
-    return count;
+    return count + (!hidden && !initiallyHidden ? 1 : 0) + (title ? 1 : 0);
   }, 0);
 };
 
@@ -184,9 +182,9 @@ export const getDropdownVisibility = (
       resetFilter();
     }
     return false;
-  } else if (!isOpen && (type === 'show' || type === 'toggle')) {
-    return true;
-  } else {
-    return isOpen;
   }
+  if (!isOpen && (type === 'show' || type === 'toggle')) {
+    return true;
+  }
+  return isOpen;
 };

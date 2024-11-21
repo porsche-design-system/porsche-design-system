@@ -1,16 +1,18 @@
+import * as dropdownDirectionUtils from '../../../utils/select/select-dropdown';
+import type { DropdownDirectionInternal } from '../../select-wrapper/select-wrapper/select-wrapper-utils';
 import * as multiSelectUtils from './multi-select-utils';
 import {
+  type MultiSelectOptgroup,
+  type MultiSelectOption,
   getDropdownDirection,
   getHighlightedOption,
   getHighlightedOptionIndex,
   getNewOptionIndex,
+  getSelectedOptionValues,
   getSelectedOptions,
   getSelectedOptionsString,
-  getSelectedOptionValues,
   getUsableOptions,
   hasFilterOptionResults,
-  type MultiSelectOptgroup,
-  type MultiSelectOption,
   resetFilteredOptions,
   resetHighlightedOptions,
   resetSelectedOptions,
@@ -23,8 +25,6 @@ import {
   updateHighlightedOption,
   updateOptionsFilterState,
 } from './multi-select-utils';
-import * as dropdownDirectionUtils from '../../../utils/select/select-dropdown';
-import type { DropdownDirectionInternal } from '../../select-wrapper/select-wrapper/select-wrapper-utils';
 
 type GenerateMultiSelectOptionsParams = {
   amount: number;
@@ -42,14 +42,14 @@ type GenerateMultiSelectOptgroupParams = {
 
 type Writeable<T> = { -readonly [P in keyof T]: T[P] };
 
-export const generateMultiSelectOptions = (
+const generateMultiSelectOptions = (
   { amount, selectedIndices = [], highlightedIndex, disabledIndex, hiddenIndex }: GenerateMultiSelectOptionsParams = {
     amount: 3,
     selectedIndices: [],
   }
 ): MultiSelectOption[] => {
   return Array.from(
-    Array(amount),
+    new Array(amount),
     (_, idx) =>
       ({
         value: `Value ${idx}`,
@@ -62,13 +62,13 @@ export const generateMultiSelectOptions = (
   );
 };
 
-export const generateMultiSelectOptgroups = (
+const generateMultiSelectOptgroups = (
   { amount, disabledIndex, hiddenIndex }: GenerateMultiSelectOptgroupParams = {
     amount: 3,
   }
 ): MultiSelectOptgroup[] => {
   return Array.from(
-    Array(amount),
+    new Array(amount),
     (_, idx) =>
       ({
         label: `Label ${idx}`,

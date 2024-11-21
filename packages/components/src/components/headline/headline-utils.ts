@@ -42,9 +42,9 @@ const variantToTagMap: Record<HeadlineVariantType, string> = {
 export const getHeadlineTagType = (host: HTMLElement, variant: HeadlineVariant, tag: HeadlineTag): string => {
   if (hasSpecificDirectChildTag(host, HEADLINE_TAGS.join())) {
     return 'div';
-  } else if (tag) {
-    return tag;
-  } else {
-    return variantToTagMap[variant as HeadlineVariantType] || 'h1';
   }
+  if (tag) {
+    return tag;
+  }
+  return variantToTagMap[variant as HeadlineVariantType] || 'h1';
 };

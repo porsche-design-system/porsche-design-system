@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import type { Fallbacks } from './utils';
-import { FALLBACKS, minifyHTML, minifyCSS, updateContent } from './utils';
+import { FALLBACKS, minifyCSS, minifyHTML, updateContent } from './utils';
 
 const generateOverlayCssAndHtml = (fallback: Fallbacks): void => {
   const isBrowser = fallback === 'browser-support';
@@ -16,15 +16,14 @@ const generateOverlayCssAndHtml = (fallback: Fallbacks): void => {
   const defaultOverlayMarkup = '<p>${content}</p>';
 
   const newContent = `
-// prettier-ignore
 const lang = document.getElementsByTagName('html')[0].getAttribute('lang')?.slice(0, 2) as Lang;
 const locale = lang in locales ? lang : 'en';
 
 const { title, content } = locales[locale];
-// prettier-ignore
+// biome-ignore format: auto generated
 const htmlMarkup = \`<h2>\${title}</h2>${isBrowser ? browserOverlayMarkup : defaultOverlayMarkup}\`;
 
-// prettier-ignore
+// biome-ignore format: auto generated
 const css = \`${minifyCSS(`
   #ID {
     position: fixed;
@@ -154,7 +153,7 @@ ${
    }
   }
   `).replace('BG_IMG', bgImg)}\`.replace(/#ID/g, \`#$\{ID}\`);
-// prettier-ignore
+// biome-ignore format: auto generated
 const html = \`${minifyHTML(`<div>
   STYLE
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="100%" height="100%" focusable="false" aria-hidden="true">

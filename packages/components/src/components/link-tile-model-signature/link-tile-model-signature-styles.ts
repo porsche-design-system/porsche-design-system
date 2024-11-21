@@ -19,11 +19,11 @@ import {
   textLargeStyle,
   textSmallStyle,
 } from '@porsche-design-system/styles';
-import { type BreakpointCustomizable } from '../../utils/breakpoint-customizable';
+import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import { getFontWeight } from '../../styles/font-weight-styles';
-import {
-  type LinkTileModelSignatureLinkDirection,
-  type LinkTileModelSignatureWeight,
+import type {
+  LinkTileModelSignatureLinkDirection,
+  LinkTileModelSignatureWeight,
 } from './link-tile-model-signature-utils';
 import { getGroupDirectionJssStyles } from '../../styles/group-direction-styles';
 

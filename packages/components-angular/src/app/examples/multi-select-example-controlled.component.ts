@@ -16,6 +16,7 @@ import type { MultiSelectUpdateEventDetail } from '@porsche-design-system/compon
     <p-text>{{ debugText }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class MultiSelectExampleControlledComponent {
   selectedValues: string[] = [];

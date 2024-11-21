@@ -1,6 +1,5 @@
-
 enum ObjectFit {
-  fill='fill',
+  fill = 'fill',
   contain = 'contain',
   cover = 'cover',
   'scale-down' = 'scale-down',
@@ -31,13 +30,12 @@ export const DummyImg = ({
   objectFit = ObjectFit.fill,
   ...rest
 }: DummyImgProps): JSX.Element => {
-
   const style = {
     width: rest.isRootComponent ? '100%' : undefined,
     height: rest.isRootComponent ? '100%' : undefined,
     objectFit,
-    ...(rest.style)
-  }
+    ...rest.style,
+  };
 
   return <img src={src} alt={alt} {...rest} style={style} />;
 };

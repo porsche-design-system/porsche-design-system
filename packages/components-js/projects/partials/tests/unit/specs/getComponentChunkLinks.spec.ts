@@ -14,8 +14,9 @@ vi.mock('../../../src/shared');
 
 describe('validation', () => {
   it('should throw error on invalid components parameter', () => {
-    expect(() => getComponentChunkLinks({ components: ['some-invalid-component'] as any[] }))
-      .toThrowErrorMatchingInlineSnapshot(`
+    expect(() =>
+      getComponentChunkLinks({ components: ['some-invalid-component'] as any[] })
+    ).toThrowErrorMatchingInlineSnapshot(`
         [Error: [Porsche Design System] The following supplied component chunk names are invalid:
           some-invalid-component
 

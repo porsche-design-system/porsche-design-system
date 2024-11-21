@@ -1,23 +1,23 @@
 <script setup lang="ts">
-  import { PSelect, PSelectOption, PText } from '@porsche-design-system/components-vue';
-  import { ref } from 'vue';
+import { PSelect, PSelectOption, PText } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
 
-  const lastSubmittedData = ref<string>('none');
-  const isRequired = ref<boolean>(true);
-  const hasDeselection = ref<boolean>(false);
+const lastSubmittedData = ref<string>('none');
+const isRequired = ref<boolean>(true);
+const hasDeselection = ref<boolean>(false);
 
-  const onChangeRequired = () => {
-    isRequired.value = !isRequired.value;
-  };
+const onChangeRequired = () => {
+  isRequired.value = !isRequired.value;
+};
 
-  const onChangeDeselection = () => {
-    hasDeselection.value = !hasDeselection.value;
-  };
+const onChangeDeselection = () => {
+  hasDeselection.value = !hasDeselection.value;
+};
 
-  const onSubmit = (e: Event) => {
-    const formData = new FormData(e.target as HTMLFormElement);
-    lastSubmittedData.value = formData.get('options')?.toString() || 'none';
-  };
+const onSubmit = (e: Event) => {
+  const formData = new FormData(e.target as HTMLFormElement);
+  lastSubmittedData.value = formData.get('options')?.toString() || 'none';
+};
 </script>
 
 <template>

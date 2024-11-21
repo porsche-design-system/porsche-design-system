@@ -13,17 +13,17 @@ const childrenObserver =
   hasWindow &&
   new MutationObserver((mutations) => {
     // there may be race conditions in jsdom-polyfill tests  where the map is already empty when a mutation happens
-    if (observedNodesMap.size) {
+    if (observedNodesMap.size > 0) {
       const observedNodes = Array.from(observedNodesMap.keys());
-      mutations
-        // remove duplicates so we execute callback only once per node
-        .filter((mutation, idx, arr) => arr.findIndex((m) => m.target === mutation.target) === idx)
-        // find all observing parent nodes of mutated node and invoke their callbacks
-        .forEach((mutation) => {
-          observedNodes
-            .filter((node) => node.contains(mutation.target))
-            .forEach((node) => observedNodesMap.get(node)?.());
-        });
+
+      // remove duplicates so we execute callback only once per node
+      for (const mutation of mutations.filter(
+        (mutation, idx, arr) => arr.findIndex((m) => m.target === mutation.target) === idx
+      )) {
+        for (const node of observedNodes.filter((node) => node.contains(mutation.target))) {
+          observedNodesMap.get(node)?.();
+        }
+      }
     }
   });
 

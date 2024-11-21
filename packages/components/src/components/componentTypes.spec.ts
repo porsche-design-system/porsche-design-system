@@ -1,8 +1,8 @@
 import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
-import * as fs from 'fs';
-import * as path from 'path';
+import * as fs from 'node:fs';
+import * as path from 'node:path';
 import * as globby from 'globby-legacy';
 import { pascalCase } from 'change-case';
 
@@ -18,7 +18,7 @@ describe.each<TagName>(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))
   const relevantProps = Object.keys(propsMeta);
   const eventNames = Object.keys(eventsMeta);
 
-  if (relevantProps.length) {
+  if (relevantProps.length > 0) {
     describe('props', () => {
       it.each(relevantProps)('should have correct type for prop %s', (prop) => {
         const [, type] =
@@ -51,7 +51,7 @@ describe.each<TagName>(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))
     });
   }
 
-  if (eventNames.length) {
+  if (eventNames.length > 0) {
     describe('events', () => {
       it.each(eventNames)('should have correct type for event %s', (eventName) => {
         const [, type] =

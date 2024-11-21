@@ -13,7 +13,7 @@ describe('getScrollPositionAfterPrevNextClick()', () => {
     'should for offsetWidth: %s, scrollLeft: %s and direction: %s return %s',
     (offsetWidth, scrollLeft, direction, expected) => {
       expect(getScrollPositionAfterPrevNextClick({ offsetWidth, scrollLeft } as HTMLElement, direction)).toBe(expected);
-    },
+    }
   );
 });
 
