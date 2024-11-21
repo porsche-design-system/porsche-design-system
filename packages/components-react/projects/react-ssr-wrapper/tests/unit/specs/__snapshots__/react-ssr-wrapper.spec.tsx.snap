@@ -2450,9 +2450,8 @@ img {
             id="list"
           >
             <div
-              aria-live="polite"
               class="no-results"
-              role="status"
+              role="option"
             >
               <span
                 aria-hidden="true"
@@ -2474,7 +2473,9 @@ img {
         aria-relevant="additions text"
         class="sr-only"
         role="status"
-      />
+      >
+        No results found
+      </span>
     </div>
   </template>
   <p-multi-select-option
@@ -8404,7 +8405,6 @@ dialog::backdrop {
 }
         </style>
         <dialog
-          aria-hidden="true"
           aria-modal="true"
           inert=""
           tabindex="-1"
@@ -9498,7 +9498,6 @@ dialog::backdrop {
 }
     </style>
     <dialog
-      aria-hidden="true"
       aria-modal="true"
       inert=""
       tabindex="-1"
@@ -12381,7 +12380,6 @@ dialog::backdrop {
 }
     </style>
     <dialog
-      aria-hidden="true"
       aria-modal="true"
       inert=""
       tabindex="-1"
@@ -12837,9 +12835,8 @@ img {
             id="list"
           >
             <div
-              aria-live="polite"
               class="no-results"
-              role="status"
+              role="option"
             >
               <span
                 aria-hidden="true"
@@ -12861,7 +12858,9 @@ img {
         aria-relevant="additions text"
         class="sr-only"
         role="status"
-      />
+      >
+        No results found
+      </span>
     </div>
   </template>
   Some child
@@ -13016,7 +13015,6 @@ span:not(.ellipsis)::-moz-focus-inner {
     </style>
     <nav
       aria-label="Pagination"
-      role="navigation"
     >
       <ul>
         <li

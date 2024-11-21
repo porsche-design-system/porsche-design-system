@@ -5,6 +5,7 @@ import {
   attachComponentCss,
   consoleWarn,
   getPrefixedTagNames,
+  getSlotTextContent,
   hasHeading,
   hasNamedSlot,
   hasPropValueChanged,
@@ -207,8 +208,7 @@ export class Modal {
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd, this.dialog)}
         {...parseAndGetAriaAttributes({
           'aria-modal': true,
-          'aria-label': this.heading,
-          'aria-hidden': !this.open,
+          ...(this.hasHeader && { 'aria-label': this.ariaLabel() }),
           ...parseAndGetAriaAttributes(this.aria),
         })}
       >
@@ -246,5 +246,13 @@ export class Modal {
   private dismissDialog = (): void => {
     this.dismiss.emit();
     this.close.emit();
+  };
+
+  private ariaLabel = (): string => {
+    return (
+      this.heading ||
+      (hasNamedSlot(this.host, 'heading') && getSlotTextContent(this.host, 'heading')) ||
+      (hasNamedSlot(this.host, 'header') && getSlotTextContent(this.host, 'header'))
+    );
   };
 }

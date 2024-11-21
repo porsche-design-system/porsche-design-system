@@ -1,4 +1,4 @@
-<dialog inert="" tabindex="-1" aria-modal="true" aria-hidden="true">
+<dialog inert="" tabindex="-1" aria-modal="true">
   <div class="scroller">
     <div class="modal">
       <p-button class="dismiss hydrated"> Dismiss modal</p-button>
