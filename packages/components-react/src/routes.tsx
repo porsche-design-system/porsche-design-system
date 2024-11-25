@@ -1,6 +1,6 @@
 import type { RouteProps } from 'react-router-dom';
-import * as fromPages from './pages';
 import * as fromExamples from './examples';
+import * as fromPages from './pages';
 import * as fromStyles from './styles';
 
 export type RouteType = RouteProps & {
@@ -215,6 +215,11 @@ export const routes: RouteType[] = [
     name: 'Segmented Control Example',
     path: '/segmented-control-example',
     element: <fromExamples.SegmentedControlExamplePage />,
+  },
+  {
+    name: 'Segmented Control Example Controlled',
+    path: '/segmented-control-example-controlled',
+    element: <fromExamples.SegmentedControlExampleControlledPage />,
   },
   {
     name: 'Select Example',
