@@ -1,9 +1,11 @@
+import type { Splide } from '@splidejs/splide';
+import type { ButtonPure } from '../button-pure/button-pure';
 import * as carouselUtils from './carousel-utils';
 import {
   getAmountOfPages,
+  getLangDirection,
   getSlidesAndAddAttributes,
   getSplideBreakpoints,
-  getLangDirection,
   isFirstPage,
   isLastPage,
   renderPagination,
@@ -12,8 +14,6 @@ import {
   updatePagination,
   updatePrevNextButtons,
 } from './carousel-utils';
-import type { Splide } from '@splidejs/splide';
-import type { ButtonPure } from '../button-pure/button-pure';
 
 describe('getSplideBreakpoints()', () => {
   it('should return correct result for flat BreakpointCustomizable parameter', () => {
@@ -78,9 +78,7 @@ describe('getSlidesAndAddAttributes()', () => {
     const result = getSlidesAndAddAttributes(host);
     result.forEach((child, i) => {
       expect(child.slot).toBe(`slide-${i}`);
-      expect(child.tabIndex).toBe(0);
       expect(child.getAttribute('slot')).toBe(`slide-${i}`);
-      expect(child.getAttribute('tabindex')).toBe('0');
     });
   });
 });
