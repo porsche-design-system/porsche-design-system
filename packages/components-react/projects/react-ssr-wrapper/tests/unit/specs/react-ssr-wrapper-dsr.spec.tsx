@@ -63,7 +63,7 @@ it('should have working SSR PButton component', async () => {
   expect(consoleErrorSpy).not.toHaveBeenCalled();
 });
 
-it.only('should have working SSR PSegmentedControl component', async () => {
+it('should have working SSR PSegmentedControl component', async () => {
   const consoleErrorSpy = vi.spyOn(global.console, 'error').mockImplementation(() => {});
 
   render(
