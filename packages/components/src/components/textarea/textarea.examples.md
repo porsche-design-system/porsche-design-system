@@ -127,7 +127,7 @@ export default class Code extends Vue {
     return `<p-textarea name="some-name" label="Some label" value="Some value" state="${this.state}" ${attr}></p-textarea>`;
     }
     
-  slots = `<p-textarea name="some-name" aria-labelledby="some-label-id" aria-describedby="some-description-id some-message-id" state="error">
+  slots = `<p-textarea name="some-name" state="error">
   <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
   <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
   <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
