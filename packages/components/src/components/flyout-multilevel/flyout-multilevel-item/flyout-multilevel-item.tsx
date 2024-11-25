@@ -1,5 +1,5 @@
-import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
-import { getComponentCss } from './flyout-multilevel-item-styles';
+import { Component, Element, Host, type JSX, Prop, h } from '@stencil/core';
+import type { PropTypes, Theme } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -7,16 +7,19 @@ import {
   throwIfParentIsNotOfKind,
   validateProps,
 } from '../../../utils';
-import type { PropTypes, Theme } from '../../../types';
 import {
   type FlyoutMultilevelUpdateEventDetail,
   INTERNAL_UPDATE_EVENT_NAME,
 } from '../flyout-multilevel/flyout-multilevel-utils';
+import { getComponentCss } from './flyout-multilevel-item-styles';
 import type { FlyoutMultilevelItemInternalHTMLProps } from './flyout-multilevel-item-utils';
 
 const propTypes: PropTypes<typeof FlyoutMultilevelItem> = {
   identifier: AllowedTypes.string,
   label: AllowedTypes.string,
+  cascade: AllowedTypes.boolean,
+  secondary: AllowedTypes.boolean,
+  primary: AllowedTypes.boolean,
 };
 
 /**
@@ -35,23 +38,37 @@ export class FlyoutMultilevelItem {
   @Prop() public label?: string;
 
   /** Unique identifier which controls if this item should be shown when the active-identifier on the flyout-multilevel is set to this value. */
-  @Prop() public identifier: string;
+  @Prop({ reflect: true }) public identifier: string;
+
+  @Prop({ reflect: true }) public cascade: boolean = false;
+
+  @Prop({ reflect: true }) public primary: boolean = false;
+
+  @Prop({ reflect: true }) public secondary: boolean = false;
 
   private get theme(): Theme {
     return this.host.theme || 'light'; // default as fallback (internal private prop is controlled by flyout-multilevel)
   }
 
-  private get open(): boolean {
-    return this.host.open || false; // default as fallback (internal private prop is controlled by flyout-multilevel)
-  }
+  /* private get secondary(): boolean {
+    return this.host.secondary || false; // default as fallback (internal private prop is controlled by flyout-multilevel)
+  }*/
 
   public connectedCallback(): void {
-    throwIfParentIsNotOfKind(this.host, 'p-flyout-multilevel');
+    throwIfParentIsNotOfKind(this.host, ['p-flyout-multilevel', 'p-flyout-multilevel-item']);
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.open, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.primary,
+      this.secondary,
+      this.cascade,
+      this.identifier,
+      this.theme
+    );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -64,10 +81,10 @@ export class FlyoutMultilevelItem {
           alignLabel="start"
           stretch={true}
           icon="arrow-head-right"
-          active={this.open}
-          aria={{ 'aria-expanded': this.open }}
+          active={this.secondary}
+          aria={{ 'aria-expanded': this.secondary }}
           theme={this.theme}
-          onClick={() => this.onClickButton(this.open ? undefined : this.identifier)}
+          onClick={() => this.onClickButton(this.secondary ? undefined : this.identifier)}
         >
           {this.label}
         </PrefixedTagNames.pButtonPure>
@@ -76,7 +93,7 @@ export class FlyoutMultilevelItem {
           // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
           // eslint-disable-next-line
           /* @ts-ignore */
-          inert={this.open ? null : true} // prevents focusable elements during fade-out transition
+          // inert={this.secondary ? null : true} // prevents focusable elements during fade-out transition
         >
           <div class="header">
             <PrefixedTagNames.pButtonPure
@@ -92,9 +109,7 @@ export class FlyoutMultilevelItem {
             </PrefixedTagNames.pButtonPure>
             <h2 class="heading">{this.label}</h2>
           </div>
-          <div class="content">
-            <slot />
-          </div>
+          <slot />
         </div>
       </Host>
     );

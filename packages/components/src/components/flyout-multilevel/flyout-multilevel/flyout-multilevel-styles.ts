@@ -1,5 +1,14 @@
+import {
+  getMediaQueryMin,
+  motionDurationLong,
+  spacingFluidLarge,
+  spacingFluidMedium,
+  spacingFluidSmall,
+  spacingFluidXSmall,
+  spacingStaticSmall,
+} from '@porsche-design-system/styles';
 import type { JssStyle } from 'jss';
-import { getCss, isThemeDark, type Theme } from '../../../utils';
+import { FLYOUT_Z_INDEX } from '../../../constants';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -11,17 +20,8 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import {
-  getMediaQueryMin,
-  motionDurationLong,
-  spacingFluidLarge,
-  spacingFluidMedium,
-  spacingFluidSmall,
-  spacingFluidXSmall,
-  spacingStaticSmall,
-} from '@porsche-design-system/styles';
-import { FLYOUT_Z_INDEX } from '../../../constants';
 import { getFlyoutDialogResetJssStyle } from '../../../styles/flyout-dialog-reset-styles';
+import { type Theme, getCss, isThemeDark } from '../../../utils';
 
 export const cssVariableVisibility = '--p-internal-flyout-multilevel-visibility';
 export const cssVariableVisibilityTransitionDuration = '--p-internal-flyout-multilevel-visibility-transition-duration';
@@ -34,8 +34,10 @@ export const scrollerWidthEnhancedView = 'clamp(338px, 10.52vw + 258px, 460px)';
 export const mediaQueryEnhancedView = getMediaQueryMin('s');
 
 export const getComponentCss = (
-  isPrimaryScrollerVisible: boolean,
+  isDialogOpen: boolean,
+  isPrimary: boolean,
   isSecondaryScrollerVisible: boolean,
+  activeIdentifier: string,
   theme: Theme
 ): string => {
   const { backgroundColor } = getThemedColors(theme);
@@ -50,14 +52,55 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          ...(!isPrimaryScrollerVisible && {
+          ...(!isDialogOpen && {
             [cssVariableVisibility]: 'hidden',
-            [cssVariableVisibilityTransitionDuration]: motionDurationLong,
+            // [cssVariableVisibilityTransitionDuration]: motionDurationLong,
           }),
-          ...getBackdropJssStyle(isPrimaryScrollerVisible, FLYOUT_Z_INDEX, theme),
+          ...getBackdropJssStyle(isDialogOpen, FLYOUT_Z_INDEX, theme),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
+      },
+
+      slot: {
+        ...(isPrimary && {
+          '--_p-flyout-multilevel-button': 'block',
+        }),
+        overflow: 'auto',
+        // cssVariableVisibility ensures secondary scroller is not tabbable when whole flyout-multilevel is closed
+        // on mobile we need to decide if secondary scroller needs to be visible or not, on desktop it's not necessary but also doesn't harm
+        visibility: `var(${cssVariableVisibility},${isSecondaryScrollerVisible ? 'hidden' : 'inherit'})`,
+        // transition: `${getTransition(
+        //   'left',
+        //   'long',
+        //   isSecondaryScrollerVisible ? 'in' : 'out'
+        // )}, visibility 0s linear var(${cssVariableTransitionDuration}, ${
+        //   !isDialogOpen || isSecondaryScrollerVisible ? motionDurationLong : '0s'
+        // })`,
+        // it's important to define background-color for each scroller to have correct scrollbar coloring
+        backgroundColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          backgroundColor: backgroundColorDark,
+        }),
+        padding: `${spacingFluidSmall} ${spacingFluidLarge} ${spacingFluidLarge}`,
+
+        ...(isPrimary
+          ? {
+              display: 'grid',
+              gap: spacingFluidXSmall,
+              gridArea: '1/1',
+            }
+          : {
+              display: 'grid',
+              gridTemplateColumns: 'subgrid',
+              gridArea: '1/1/1/3',
+            }),
+
+        [mediaQueryEnhancedView]: {
+          visibility: 'inherit',
+          // transition: 'initial',
+          padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
+        },
       },
       ...preventFoucOfNestedElementsStyles,
       dialog: {
@@ -68,22 +111,22 @@ export const getComponentCss = (
         width: 'auto',
         maxWidth: '100vw',
         background: 'none',
-        ...(isPrimaryScrollerVisible
-          ? {
-              transform: 'translate3d(0, 0, 0)',
-              transition: `${getTransition('transform', 'long', 'in')}`,
-            }
-          : {
-              transform: 'translate3d(-100%, 0, 0)',
-              transition: `${getTransition('transform', 'long', 'out')}`,
-            }),
+        // ...(isDialogOpen
+        //   ? {
+        //       transform: 'translate3d(0, 0, 0)',
+        //       transition: `${getTransition('transform', 'long', 'in')}`,
+        //     }
+        //   : {
+        //       transform: 'translate3d(-100%, 0, 0)',
+        //       transition: `${getTransition('transform', 'long', 'out')}`,
+        //     }),
         [mediaQueryEnhancedView]: {
           gridTemplateColumns: `repeat(${isSecondaryScrollerVisible ? 2 : 1}, ${scrollerWidthEnhancedView}) auto`,
           gridTemplateRows: '100vh',
           insetInlineEnd: 'auto', // to have correct dialog dimensions for ideal transitions
         },
         '&:dir(rtl)': {
-          ...(!isPrimaryScrollerVisible && {
+          ...(!isDialogOpen && {
             transform: 'translate3d(100%, 0, 0)', // use correct transitions in rtl mode
           }),
         },
@@ -95,27 +138,6 @@ export const getComponentCss = (
       },
     },
     scroller: {
-      gridArea: '1/1',
-      overflow: 'auto',
-      // cssVariableVisibility ensures secondary scroller is not tabbable when whole flyout-multilevel is closed
-      // on mobile we need to decide if secondary scroller needs to be visible or not, on desktop it's not necessary but also doesn't harm
-      visibility: `var(${cssVariableVisibility},${isSecondaryScrollerVisible ? 'hidden' : 'inherit'})`,
-      transition: `${getTransition(
-        'left',
-        'long',
-        isSecondaryScrollerVisible ? 'in' : 'out'
-      )}, visibility 0s linear var(${cssVariableTransitionDuration}, ${
-        !isPrimaryScrollerVisible || isSecondaryScrollerVisible ? motionDurationLong : '0s'
-      })`,
-      // it's important to define background-color for each scroller to have correct scrollbar coloring
-      backgroundColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        backgroundColor: backgroundColorDark,
-      }),
-      [mediaQueryEnhancedView]: {
-        visibility: 'inherit',
-        transition: 'initial',
-      },
       // simulates frosted glass header, to be visually in sync with header of secondary scroller
       '&::before': {
         content: '""',
@@ -133,15 +155,6 @@ export const getComponentCss = (
         [mediaQueryEnhancedView]: {
           display: 'none',
         },
-      },
-    },
-    content: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: spacingFluidXSmall,
-      padding: `${spacingFluidSmall} ${spacingFluidLarge} ${spacingFluidLarge}`,
-      [mediaQueryEnhancedView]: {
-        padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
       },
     },
     // header is needed to keep position of dismiss button in sync with header of secondary scroller

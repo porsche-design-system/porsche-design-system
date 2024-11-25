@@ -19,13 +19,35 @@ type Item = HTMLPFlyoutMultilevelItemElement & FlyoutMultilevelItemInternalHTMLP
 export const syncFlyoutMultilevelItemsProps = (
   items: HTMLPFlyoutMultilevelItemElement[],
   activeIdentifier: string,
-  theme: Theme
+  theme: Theme,
+  host: HTMLElement
 ): void => {
+  (host as HTMLElement & { primary: boolean }).primary = false;
+  for (const item of items) {
+    item.primary = false;
+    item.secondary = false;
+  }
+
+  (host.querySelector(`[identifier="${activeIdentifier}"]`) as HTMLElement & { secondary: boolean }).secondary = true;
+  (
+    host.querySelector(`[identifier="${activeIdentifier}"]`).parentElement as HTMLElement & { primary: boolean }
+  ).primary = true;
+
+  (
+    host.querySelector(`[identifier="${activeIdentifier}"]`).parentElement.parentElement as HTMLElement & {
+      cascade: boolean;
+    }
+  ).cascade = true;
+
   for (const item of items) {
     (item as Item).theme = theme;
-    (item as Item).open = item.identifier === activeIdentifier;
+    // (item as Item).secondary = item.identifier === activeIdentifier;
     forceUpdate(item);
   }
+  forceUpdate(host);
+
+  // const foo = items.filter((el) => el.secondary);
+  // console.log(foo);
 };
 
 export const validateActiveIdentifier = <T extends Class<any>>(

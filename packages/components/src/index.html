@@ -105,16 +105,77 @@
       </select>
     </header>
 
-    <main></main>
+    <main>
+      <p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout Multilevel</p-button>
+
+
+      <p-flyout-multilevel open="true" active-identifier="item-1">
+        <p-flyout-multilevel-item identifier="item-1" label="Some Label 1">
+          <a href="#some-anchor">Some anchor (1)</a>
+          <p-flyout-multilevel-item identifier="item-1-1" label="Some Label 1 > 1">
+            <a href="#some-anchor">Some anchor (1 > 1)</a>
+            <a href="#some-anchor">Some anchor (1 > 1)</a>
+            <a href="#some-anchor">Some anchor (1 > 1)</a>
+            <a href="#some-anchor">Some anchor (1 > 1)</a>
+            <a href="#some-anchor">Some anchor (1 > 1)</a>
+          </p-flyout-multilevel-item>
+          <p-flyout-multilevel-item identifier="item-1-2" label="Some Label 1 > 2">
+            <a href="#some-anchor">Some anchor (1 > 2)</a>
+            <p-flyout-multilevel-item identifier="item-1-2-1" label="Some Label 1 > 2 > 1">
+              <a href="#some-anchor">Some anchor (1 > 2 > 1)</a>
+            </p-flyout-multilevel-item>
+          </p-flyout-multilevel-item>
+          <a href="#some-anchor">Some anchor (1)</a>
+          <a href="#some-anchor">Some anchor (1)</a>
+        </p-flyout-multilevel-item>
+        <p-flyout-multilevel-item identifier="item-2" label="Some Label 2">
+          <a href="#some-anchor">Some anchor (2)</a>
+          <a href="#some-anchor">Some anchor (2)</a>
+          <a href="#some-anchor">Some anchor (2)</a>
+        </p-flyout-multilevel-item>
+        <p-flyout-multilevel-item identifier="item-3" label="Some Label 3">
+          <a href="#some-anchor">Some anchor (3)</a>
+          <a href="#some-anchor">Some anchor (3)</a>
+        </p-flyout-multilevel-item>
+        <p-flyout-multilevel-item identifier="item-4" label="Some Label 4">
+          <a href="#some-anchor">Some anchor (4)</a>
+        </p-flyout-multilevel-item>
+        <p-flyout-multilevel-item identifier="item-5" label="Some Label 5">
+          <a href="#some-anchor">Some anchor (5)</a>
+        </p-flyout-multilevel-item>
+        <p-flyout-multilevel-item identifier="item-6" label="Some Label 6">
+          <a href="#some-anchor">Some anchor (6)</a>
+          <a href="#some-anchor">Some anchor (6)</a>
+        </p-flyout-multilevel-item>
+      </p-flyout-multilevel>
+
+
+      <script>
+        const flyoutMultilevel = document.querySelector('p-flyout-multilevel');
+        document.querySelector('p-button').addEventListener('click', () => {
+          flyoutMultilevel.open = true;
+        });
+        flyoutMultilevel.addEventListener('dismiss', () => {
+          flyoutMultilevel.open = false;
+        });
+        flyoutMultilevel.addEventListener('update', (e) => {
+
+          console.log(e.detail.activeIdentifier);
+          flyoutMultilevel.activeIdentifier = e.detail.activeIdentifier;
+        });
+      </script>
+
+    </main>
 
     <script>
       <!-- START: keep this snippet to log component lifecycle events -->
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {
           const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
-          console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
+          // console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
         })
       );
+
 
       const getTheme = () => new URL(document.location).searchParams.get('theme') || 'light';
       const getDir = () => new URL(document.location).searchParams.get('dir') || 'ltr';

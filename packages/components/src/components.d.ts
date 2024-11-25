@@ -814,6 +814,7 @@ export namespace Components {
           * If true, the flyout-multilevel is visualized as opened.
          */
         "open"?: boolean;
+        "primary": boolean;
         /**
           * Adapts the flyout-multilevel color depending on the theme.
          */
@@ -823,6 +824,7 @@ export namespace Components {
      * @experimental 
      */
     interface PFlyoutMultilevelItem {
+        "cascade": boolean;
         /**
           * Unique identifier which controls if this item should be shown when the active-identifier on the flyout-multilevel is set to this value.
          */
@@ -831,6 +833,8 @@ export namespace Components {
           * Label of the item.
          */
         "label"?: string;
+        "primary": boolean;
+        "secondary": boolean;
     }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
@@ -3993,6 +3997,7 @@ declare namespace LocalJSX {
           * If true, the flyout-multilevel is visualized as opened.
          */
         "open"?: boolean;
+        "primary"?: boolean;
         /**
           * Adapts the flyout-multilevel color depending on the theme.
          */
@@ -4002,6 +4007,7 @@ declare namespace LocalJSX {
      * @experimental 
      */
     interface PFlyoutMultilevelItem {
+        "cascade"?: boolean;
         /**
           * Unique identifier which controls if this item should be shown when the active-identifier on the flyout-multilevel is set to this value.
          */
@@ -4010,6 +4016,8 @@ declare namespace LocalJSX {
           * Label of the item.
          */
         "label"?: string;
+        "primary"?: boolean;
+        "secondary"?: boolean;
     }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.

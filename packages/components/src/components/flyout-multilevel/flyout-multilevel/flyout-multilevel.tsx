@@ -1,4 +1,18 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, type JSX, Prop, State, Watch, h } from '@stencil/core';
+import type { PropTypes, SelectedAriaAttributes, Theme } from '../../../types';
+import {
+  AllowedTypes,
+  THEMES,
+  attachComponentCss,
+  getHTMLElementOfKind,
+  getPrefixedTagNames,
+  getShadowRootHTMLElement,
+  hasPropValueChanged,
+  parseAndGetAriaAttributes,
+  setScrollLock,
+  validateProps,
+} from '../../../utils';
+import { getComponentCss } from './flyout-multilevel-styles';
 import {
   FLYOUT_MULTILEVEL_ARIA_ATTRIBUTES,
   type FlyoutMultilevelAriaAttribute,
@@ -7,23 +21,10 @@ import {
   syncFlyoutMultilevelItemsProps,
   validateActiveIdentifier,
 } from './flyout-multilevel-utils';
-import { getComponentCss } from './flyout-multilevel-styles';
-import {
-  AllowedTypes,
-  attachComponentCss,
-  getDirectChildHTMLElementOfKind,
-  getPrefixedTagNames,
-  getShadowRootHTMLElement,
-  hasPropValueChanged,
-  parseAndGetAriaAttributes,
-  setScrollLock,
-  THEMES,
-  validateProps,
-} from '../../../utils';
-import type { PropTypes, SelectedAriaAttributes, Theme } from '../../../types';
 
 const propTypes: PropTypes<typeof FlyoutMultilevel> = {
   activeIdentifier: AllowedTypes.string,
+  primary: AllowedTypes.boolean,
   open: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<FlyoutMultilevelAriaAttribute>(FLYOUT_MULTILEVEL_ARIA_ATTRIBUTES),
@@ -50,6 +51,8 @@ export class FlyoutMultilevel {
 
   /** Defines which flyout-multilevel-item to be visualized as opened. */
   @Prop() public activeIdentifier?: string | undefined;
+
+  @Prop({ reflect: true }) public primary: boolean = true;
 
   /** Adapts the flyout-multilevel color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -109,8 +112,16 @@ export class FlyoutMultilevel {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     validateActiveIdentifier(this, this.flyoutMultilevelItemElements, this.activeIdentifier);
-    attachComponentCss(this.host, getComponentCss, this.open, !!this.activeIdentifier, this.theme);
-    syncFlyoutMultilevelItemsProps(this.flyoutMultilevelItemElements, this.activeIdentifier, this.theme);
+    syncFlyoutMultilevelItemsProps(this.flyoutMultilevelItemElements, this.activeIdentifier, this.theme, this.host);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.open,
+      this.primary,
+      !!this.activeIdentifier,
+      this.activeIdentifier,
+      this.theme
+    );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -119,7 +130,7 @@ export class FlyoutMultilevel {
         // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
         // eslint-disable-next-line
         /* @ts-ignore */
-        inert={this.open ? null : true} // prevents focusable elements during fade-out transition
+        // inert={this.open ? null : true} // prevents focusable elements during fade-out transition
         tabIndex={-1} // dialog always has a dismiss button to be focused
         ref={(ref) => (this.dialog = ref)}
         onCancel={this.onCancelDialog}
@@ -138,17 +149,13 @@ export class FlyoutMultilevel {
             Dismiss flyout
           </PrefixedTagNames.pButtonPure>
         </div>
-        <div class="scroller">
-          <nav class="content" {...parseAndGetAriaAttributes(this.aria)}>
-            <slot />
-          </nav>
-        </div>
+        <slot {...parseAndGetAriaAttributes(this.aria)} />
       </dialog>
     );
   }
 
   private defineFlyoutMultilevelItemElements = (): void => {
-    this.flyoutMultilevelItemElements = getDirectChildHTMLElementOfKind(
+    this.flyoutMultilevelItemElements = getHTMLElementOfKind(
       this.host,
       'p-flyout-multilevel-item'
     ) as HTMLPFlyoutMultilevelItemElement[];

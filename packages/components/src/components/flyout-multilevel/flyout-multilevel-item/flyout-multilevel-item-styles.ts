@@ -1,18 +1,5 @@
-import { getCss, isThemeDark, mergeDeep } from '../../../utils';
 import {
-  addImportantToEachRule,
-  addImportantToRule,
-  colorSchemeStyles,
-  cssVariableTransitionDuration,
-  getFocusJssStyle,
-  getThemedColors,
-  getTransition,
-  hostHiddenStyles,
-  hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
-  preventFoucOfNestedElementsStyles,
-} from '../../../styles';
-import {
+  type Theme,
   borderRadiusSmall,
   dropShadowHighStyle,
   headingMediumStyle,
@@ -26,8 +13,21 @@ import {
   spacingFluidXSmall,
   spacingStaticXSmall,
   textSmallStyle,
-  type Theme,
 } from '@porsche-design-system/styles';
+import {
+  addImportantToEachRule,
+  addImportantToRule,
+  colorSchemeStyles,
+  cssVariableTransitionDuration,
+  getFocusJssStyle,
+  getThemedColors,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
+} from '../../../styles';
+import { getCss, isThemeDark, mergeDeep } from '../../../utils';
 import {
   cssVariableVisibility,
   cssVariableVisibilityTransitionDuration,
@@ -40,7 +40,13 @@ import {
 const frostedGlassBackgroundColorLight = 'rgba(238, 239, 242, 0.79)';
 const frostedGlassBackgroundColorDark = 'rgba(33, 34, 37, 0.79)';
 
-export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Theme): string => {
+export const getComponentCss = (
+  isPrimary: boolean,
+  isSecondary: boolean,
+  isCascade: boolean,
+  identifier: string,
+  theme: Theme
+): string => {
   const { primaryColor, backgroundSurfaceColor, hoverColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
@@ -52,28 +58,50 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
     ? frostedGlassBackgroundColorDark
     : frostedGlassBackgroundColorLight;
 
-  const fadeInOutTransition = isSecondaryScrollerVisible
-    ? {
-        opacity: 1,
-        transition: `${getTransition('opacity', 'veryLong', 'in', 'short')}`,
-        [mediaQueryEnhancedView]: {
-          transition: `${getTransition('opacity', 'veryLong', 'in')}`,
-        },
-      }
-    : {
-        opacity: 0,
-        transition: `${getTransition('opacity', 'short', 'out')}`,
-      };
+  // const fadeInOutTransition = isSecondaryScrollerVisible
+  //   ? {
+  //       opacity: 1,
+  //       transition: `${getTransition('opacity', 'veryLong', 'in', 'short')}`,
+  //       [mediaQueryEnhancedView]: {
+  //         transition: `${getTransition('opacity', 'veryLong', 'in')}`,
+  //       },
+  //     }
+  //   : {
+  //       opacity: 0,
+  //       transition: `${getTransition('opacity', 'short', 'out')}`,
+  //     };
 
   return getCss({
     '@global': {
       ':host': {
-        display: 'block',
+        ...((isPrimary || isCascade) && {
+          display: 'grid',
+          gridTemplateColumns: 'subgrid',
+          gridArea: '1/1/1/-1',
+        }),
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
+      slot: {
+        ...(isPrimary && {
+          '--_p-flyout-multilevel-button': 'block',
+        }),
+        ...getContentJssStyle(),
+      },
+      '::slotted(*:not([primary]))': {
+        ...(isCascade && {
+          display: 'none',
+        }),
+      },
+      ...(!isPrimary &&
+        !isCascade &&
+        !isSecondary && {
+          '::slotted(*)': {
+            display: 'none',
+          },
+        }),
       ...preventFoucOfNestedElementsStyles,
       '::slotted(:is(h1, h2, h3, h4, h5, h6))': addImportantToEachRule({
         ...headingSmallStyle,
@@ -95,74 +123,96 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
             color: primaryColorDark,
           }),
         },
-        '&(a)': {
-          ...{
-            ...textSmallStyle,
-            alignSelf: 'flex-start',
-            display: 'block',
-            textDecoration: 'none',
-            cursor: 'pointer',
-            color: primaryColor,
-            borderRadius: borderRadiusSmall,
-            marginLeft: `-${spacingStaticXSmall}`,
-            marginRight: `-${spacingStaticXSmall}`,
-            padding: `2px ${spacingStaticXSmall}`,
-            transition: `background var(${cssVariableTransitionDuration}, ${motionDurationShort}) ${motionEasingBase}`,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              color: primaryColorDark,
-            }),
-          },
-        },
-        '&(a[aria-current])': {
-          background: hoverColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            background: hoverColorDark,
-          }),
-        },
-        ...hoverMediaQuery({
-          // TODO: how can we easily re-use getHoverStyle() with ::slotted(a) selector?
-          '&(a:hover)': {
-            background: hoverColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              background: hoverColorDark,
-            }),
-          },
-        }),
-        ...getFocusJssStyle(theme, { slotted: 'a', offset: '-2px' }),
+        // '&(a)': {
+        //   ...{
+        //     ...textSmallStyle,
+        //     alignSelf: 'flex-start',
+        //     display: 'block',
+        //     textDecoration: 'none',
+        //     cursor: 'pointer',
+        //     color: primaryColor,
+        //     borderRadius: borderRadiusSmall,
+        //     marginLeft: `-${spacingStaticXSmall}`,
+        //     marginRight: `-${spacingStaticXSmall}`,
+        //     padding: `2px ${spacingStaticXSmall}`,
+        //     transition: `background var(${cssVariableTransitionDuration}, ${motionDurationShort}) ${motionEasingBase}`,
+        //     ...prefersColorSchemeDarkMediaQuery(theme, {
+        //       color: primaryColorDark,
+        //     }),
+        //   },
+        // },
+        // '&(a[aria-current])': {
+        //   background: hoverColor,
+        //   ...prefersColorSchemeDarkMediaQuery(theme, {
+        //     background: hoverColorDark,
+        //   }),
+        // },
+        // ...hoverMediaQuery({
+        //   // TODO: how can we easily re-use getHoverStyle() with ::slotted(a) selector?
+        //   '&(a:hover)': {
+        //     background: hoverColor,
+        //     ...prefersColorSchemeDarkMediaQuery(theme, {
+        //       background: hoverColorDark,
+        //     }),
+        //   },
+        // }),
+        // ...getFocusJssStyle(theme, { slotted: 'a', offset: '-2px' }),
       }),
     },
     button: {
+      ...(isPrimary || isCascade
+        ? {
+            display: 'none',
+          }
+        : {
+            display: 'var(--_p-flyout-multilevel-button, none)',
+          }),
       width: 'auto',
       padding: spacingFluidSmall,
       margin: `0 calc(${spacingFluidSmall} * -1)`,
     },
     scroller: {
-      position: 'fixed',
-      inset: 0,
-      // "cssVariableTransitionDuration" ensures closing animation of secondary scroller is given when whole flyout-multilevel gets closed
-      // "cssVariableVisibility" ensures secondary scroller is not tabbable when whole flyout-multilevel is closed
-      ...(isSecondaryScrollerVisible
+      ...(isPrimary || isCascade
         ? {
-            zIndex: 2,
-            transform: 'translate3d(0, 0, 0)',
-            // TODO: Should be visibility: inherit to allow overwriting but currently not possible since it would inherit from the scroller of the p-flyout-multilevel itself, which is hidden on mobile
-            visibility: `var(${cssVariableVisibility},visible)`,
-            transition: `${getTransition(
-              'transform',
-              'long',
-              'in'
-            )}, visibility 0s linear var(${cssVariableTransitionDuration},var(${cssVariableVisibilityTransitionDuration},0s))`,
+            position: 'relative',
+            gridArea: '1/1',
+            insetInlineStart: '0 !important',
           }
         : {
-            zIndex: 1,
-            transform: 'translate3d(100%, 0, 0)',
-            visibility: `var(${cssVariableVisibility},hidden)`,
-            transition: `${getTransition(
-              'transform',
-              'long',
-              'out'
-            )}, visibility 0s linear var(${cssVariableTransitionDuration},var(${cssVariableVisibilityTransitionDuration},${motionDurationLong}))`,
+            position: 'fixed',
+            inset: 0,
+            // display: 'var(--_p-flyout-multilevel-button, none)',
           }),
+
+      // "cssVariableTransitionDuration" ensures closing animation of secondary scroller is given when whole flyout-multilevel gets closed
+      // "cssVariableVisibility" ensures secondary scroller is not tabbable when whole flyout-multilevel is closed
+      ...(!isPrimary && {
+        ...(isSecondary
+          ? {
+              zIndex: 2,
+              transform: 'translate3d(0, 0, 0)',
+              // TODO: Should be visibility: inherit to allow overwriting but currently not possible since it would inherit from the scroller of the p-flyout-multilevel itself, which is hidden on mobile
+              visibility: `var(${cssVariableVisibility},visible)`,
+              transition: `${getTransition(
+                'transform',
+                'long',
+                'in'
+              )}, visibility 0s linear var(${cssVariableTransitionDuration},var(${cssVariableVisibilityTransitionDuration},0s))`,
+            }
+          : {
+              zIndex: 1,
+              transform: 'translate3d(100%, 0, 0)',
+              visibility: `var(${cssVariableVisibility},hidden)`,
+              transition: `${getTransition(
+                'transform',
+                'long',
+                'out'
+              )}, visibility 0s linear var(${cssVariableTransitionDuration},var(${cssVariableVisibilityTransitionDuration},${motionDurationLong}))`,
+            }),
+      }),
+      ...(isCascade && {
+        visibility: 'visible',
+      }),
       width: '100vw',
       boxSizing: 'border-box',
       overflow: 'auto',
@@ -180,7 +230,7 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
         transition: `visibility 0s linear var(${cssVariableTransitionDuration},var(${cssVariableVisibilityTransitionDuration},0s))`,
       },
       '&:dir(rtl)': {
-        ...(!isSecondaryScrollerVisible && {
+        ...(!isSecondary && {
           transform: 'translate3d(-100%, 0, 0)', // use correct transitions in rtl mode for mobile view
         }),
       },
@@ -199,7 +249,7 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
       WebkitBackdropFilter: 'blur(8px)',
       backdropFilter: 'blur(8px)', // with current frostedGlassStyle of blur(32px) scrolling becomes visually distracting
       backgroundColor: frostedGlassBackgroundColor,
-      ...fadeInOutTransition,
+      // ...fadeInOutTransition,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         backgroundColor: frostedGlassBackgroundColorDark,
       }),
@@ -225,6 +275,5 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
         color: primaryColorDark,
       }),
     },
-    content: mergeDeep(getContentJssStyle(), fadeInOutTransition),
   });
 };
