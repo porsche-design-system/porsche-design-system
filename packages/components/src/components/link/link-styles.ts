@@ -18,7 +18,7 @@ export const getComponentCss = (
   variant: LinkVariant,
   hideLabel: BreakpointCustomizable<boolean>,
   hasSlottedAnchor: boolean,
-  compact: boolean,
+  compact: BreakpointCustomizable<boolean>,
   theme: Theme
 ): string => {
   const { linkColor } = getHighContrastColors();

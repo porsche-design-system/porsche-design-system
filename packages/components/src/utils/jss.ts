@@ -1,14 +1,14 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { type BreakpointCustomizable, parseJSON } from './breakpoint-customizable';
+import { type Breakpoint, getMediaQueryMin } from '@porsche-design-system/styles';
 import { type JssStyle, type Styles, create } from 'jss';
 import jssPluginCamelCase from 'jss-plugin-camel-case';
 import jssPluginGlobal from 'jss-plugin-global';
 import jssPluginNested from 'jss-plugin-nested';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
-import { type Breakpoint, getMediaQueryMin } from '@porsche-design-system/styles';
-import { getShadowRootHTMLElement } from './dom';
 import { getTagNameWithoutPrefix, hasPropValueChanged } from '.';
 import { addImportantToEachRule } from '../styles';
+import { type BreakpointCustomizable, parseJSON } from './breakpoint-customizable';
+import { getShadowRootHTMLElement } from './dom';
 
 // NOTE: handpicked selection of plugins from jss-preset-default
 const jss = create({
@@ -129,6 +129,7 @@ export const isObject = <T extends Record<string, any>>(obj: T): boolean =>
 // NOTE: taken from https://stackoverflow.com/a/48218209
 export const mergeDeep = <T extends Record<string, any>>(...objects: T[]): T => {
   return objects.reduce((prev, obj) => {
+    // biome-ignore lint/complexity/noForEach: to be refactored
     Object.keys(obj).forEach((key: keyof T) => {
       const pVal = prev[key];
       const oVal = obj[key];

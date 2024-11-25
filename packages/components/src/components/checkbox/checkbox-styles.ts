@@ -1,5 +1,5 @@
-import { type BreakpointCustomizable, type Theme } from '../../types';
-import { type FormState } from '../../utils/form/form-state';
+import type { BreakpointCustomizable, Theme } from '../../types';
+import type { FormState } from '../../utils/form/form-state';
 import { getCss, isDisabledOrLoading, isHighContrastMode, supportsChromiumMediaQuery } from '../../utils';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
 import { escapeHashCharacter } from '../../utils/svg/escapeHashCharacter';
@@ -167,8 +167,19 @@ export const getComponentCss = (
           backgroundSize: 'cover',
         }),
       },
-      ...(!isLoading
+      ...(isLoading
         ? {
+            'input:checked': {
+              // background-image is merged in later
+              borderColor: checkedColor,
+              backgroundColor: checkedColor,
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                borderColor: checkedColorDark,
+                backgroundColor: checkedColorDark,
+              }),
+            },
+          }
+        : {
             'input:checked': {
               borderColor: checkedColor,
               backgroundColor: checkedColor,
@@ -210,17 +221,6 @@ export const getComponentCss = (
                     backgroundImage: getIndeterminateSVGBackgroundImage('white'),
                   }
                 )),
-            },
-          }
-        : {
-            'input:checked': {
-              // background-image is merged in later
-              borderColor: checkedColor,
-              backgroundColor: checkedColor,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                borderColor: checkedColorDark,
-                backgroundColor: checkedColorDark,
-              }),
             },
           }),
       ...(!disabledOrLoading &&

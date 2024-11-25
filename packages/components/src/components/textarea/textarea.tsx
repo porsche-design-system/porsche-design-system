@@ -1,5 +1,5 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
-import { type BreakpointCustomizable, type PropTypes, type Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
   applyConstructableStylesheetStyles,
@@ -106,7 +106,7 @@ export class Textarea {
   @Prop() public minLength?: number;
 
   /** The id of a form element the textarea should be associated with. */
-  @Prop() public form?: string;
+  @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
   /** The amount of rows of the textarea. */
   @Prop() public rows?: number = 7;
@@ -140,6 +140,7 @@ export class Textarea {
 
   @AttachInternals() private internals: ElementInternals;
 
+  private defaultValue: string;
   private textAreaElement: HTMLTextAreaElement;
   private counterElement: HTMLSpanElement;
   private hasCounter: boolean;
@@ -165,14 +166,21 @@ export class Textarea {
   }
 
   public componentWillLoad(): void {
+    this.defaultValue = this.value;
     this.updateCounterVisibility();
   }
 
   public formResetCallback(): void {
-    this.internals.setValidity({});
-    this.internals.setFormValue('');
-    this.textAreaElement.value = '';
-    this.value = '';
+    this.internals.setFormValue(this.defaultValue);
+    this.value = this.defaultValue;
+  }
+
+  public formDisabledCallback(disabled: boolean): void {
+    this.disabled = disabled;
+  }
+
+  public formStateRestoreCallback(state: string): void {
+    this.value = state;
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -186,6 +194,11 @@ export class Textarea {
     if (this.hasCounter) {
       this.setCounterAriaTextDebounced();
     }
+    this.internals.setValidity(
+      this.textAreaElement.validity,
+      this.textAreaElement.validationMessage,
+      this.textAreaElement
+    );
   }
 
   public render(): JSX.Element {

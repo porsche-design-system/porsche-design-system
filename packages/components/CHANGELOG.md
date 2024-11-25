@@ -14,6 +14,119 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Fixed
+
+- `Popover`: Rendering bug of drop-shadow in Safari 18.x
+  ([3622](https://github.com/porsche-design-system/porsche-design-system/pull/3622))
+
+### [3.22.0-rc.0] - 2024-11-19
+
+#### Added
+
+- `Modal`, `Flyout`:
+  - `aria-label` is generated from slotted header contents if `aria` prop is not provided
+  - ARIA `role` to `aria` prop of `Modal` component to support setting `alertdialog` role
+    ([3618](https://github.com/porsche-design-system/porsche-design-system/pull/3618))
+- `Pin-Code`: Add `form` prop to explicitly associate the component with a form, even when it's not directly nested
+  within it. ([#3588](https://github.com/porsche-design-system/porsche-design-system/pull/3588))
+
+#### Changed
+
+- Angular: updated peer dependency to `>=19.0.0 <20.0.0`
+- `Pin-Code`:
+  - Remove native input and use ElementInternals API
+  - **Breaking Change**: `Pin-Code` component no longer support native validation due to the removal of the underlying
+    native `<input>` element. ([#3588](https://github.com/porsche-design-system/porsche-design-system/pull/3588))
+- `Styles`: `SCSS` variant uses `@forward/@use` internally to replace deprecated `@import`
+  ([#3623](https://github.com/porsche-design-system/porsche-design-system/pull/3623))
+
+#### Fixed
+
+- Partials: removed bundled `react/jsx-runtime` due to React 18/19 incompatibilities. When using `jsx` in the `format`
+  option, it is necessary to have `react/jsx-runtime` as a dependency in the project included.
+  ([#3613](https://github.com/porsche-design-system/porsche-design-system/pull/3613))
+
+### [3.21.0] - 2024-11-12
+
+### [3.21.0-rc.0] - 2024-11-11
+
+#### Added
+
+- `Flyout`: Prop `footerBehavior` to always make footer fixed
+  ([3590](https://github.com/porsche-design-system/porsche-design-system/pull/3590))
+- `Checkbox`, `Textarea`: `formDisabledCallback` and `formStateRestoreCallback` from ElementInternals API and sync
+  validity with form element. ([#3528](https://github.com/porsche-design-system/porsche-design-system/pull/3528))
+- `Link`, `Link Pure`, `Link Tile`: `aria-haspopup` is now supported for `aria` prop
+  ([#3589](https://github.com/porsche-design-system/porsche-design-system/pull/3589))
+- `Button`, `Link`: `compact` prop is breakpoint customizable
+  ([#3580](https://github.com/porsche-design-system/porsche-design-system/pull/3580))
+- `Select`, `Multi-Select`: Add `form` prop to explicitly associate these components with a specific form when they are
+  not directly nested within it. ([#3542](https://github.com/porsche-design-system/porsche-design-system/pull/3542))
+
+#### Changed
+
+- `Select`, `Multi-Select`:
+  - Remove native select and use ElementInternals API
+    ([#3542](https://github.com/porsche-design-system/porsche-design-system/pull/3542))
+  - **Breaking Change**: `Select` and `Multi-Select` components no longer support native validation due to the removal
+    of the underlying native `<select>` element.
+
+#### Fixed
+
+- `Flyout`: overlapping of scrollbar in iOS/iPadOS Safari when sticky header/footer is used
+  ([#3607](https://github.com/porsche-design-system/porsche-design-system/pull/3607))
+- `Carousel`: dynamic change in `slidesPerPages` when using `focusOnCenterSlide` prop breaks pagination
+  ([#3592](https://github.com/porsche-design-system/porsche-design-system/pull/3592))
+- `Flyout`, `Modal`:
+  - transition not working correctly when using conditionally rendered content
+    ([#3590](https://github.com/porsche-design-system/porsche-design-system/pull/3590))
+  - dismiss button not sticky in case header slot is not present
+    ([#3574](https://github.com/porsche-design-system/porsche-design-system/pull/3574))
+  - dismiss button overlaps content area
+    ([#3574](https://github.com/porsche-design-system/porsche-design-system/pull/3574))
+- `jsdom-polyfill`: errors from included polyfill packages
+  ([3543](https://github.com/porsche-design-system/porsche-design-system/pull/3543))
+- React: global `hidden` attribute with value `false` not working
+  ([#3555](https://github.com/porsche-design-system/porsche-design-system/pull/3555))
+
+### [3.20.0] - 2024-10-24
+
+### [3.20.0-rc.1] - 2024-10-24
+
+#### Added
+
+- React: better tree-shaking for `@porsche-design-system/components-react`
+  ([#3554](https://github.com/porsche-design-system/porsche-design-system/pull/3554))
+- `Icon`: `sidebar` ([#3556](https://github.com/porsche-design-system/porsche-design-system/pull/3556))
+
+#### Changed
+
+- `Canvas`: Improve UI and UX behaviour in Safari
+  ([#3556](https://github.com/porsche-design-system/porsche-design-system/pull/3556))
+
+#### Fixed
+
+- `Flyout`: transition animation in Chrome Browser if `Flyout` has scrollable content
+  ([#3550](https://github.com/porsche-design-system/porsche-design-system/pull/3550))
+
+### [3.20.0-rc.0] - 2024-10-18
+
+#### Added
+
+- `Icon`: `attachment`, `dislike`, `dislike-filled`, `like`, `like-filled`, `new-chat`
+  ([#3515](https://github.com/porsche-design-system/porsche-design-system/pull/3515))
+
+#### Changed
+
+- `Canvas`: Improve UI and UX behaviour
+  ([#3515](https://github.com/porsche-design-system/porsche-design-system/pull/3515))
+- `Flyout`, `Modal`: Removed default styling for slotted anchors
+  ([#3515](https://github.com/porsche-design-system/porsche-design-system/pull/3515))
+
+### [3.19.0] - 2024-10-14
+
+### [3.19.0-rc.4] - 2024-10-14
+
 #### Added
 
 - `AG Grid`: custom theme ([#3517](https://github.com/porsche-design-system/porsche-design-system/pull/3517))
@@ -24,9 +137,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Fixed
 
+- `Pin Code`, `Select Wrapper`: programmatic focus
+  ([#3527](https://github.com/porsche-design-system/porsche-design-system/pull/3527))
 - `Select Wrapper`: native option dropdown has wrong colors in theme dark
   ([#3523](https://github.com/porsche-design-system/porsche-design-system/pull/3523))
-- `Switch`: width/height calculation of the toggle element supports browser based text only zoom 
+- `Switch`: width/height calculation of the toggle element supports browser based text only zoom
   ([#3542](https://github.com/porsche-design-system/porsche-design-system/pull/3542))
 - Angular, React, Vue: missing `@deprecated` annotations for deprecated components
   ([#3525](https://github.com/porsche-design-system/porsche-design-system/pull/3525))

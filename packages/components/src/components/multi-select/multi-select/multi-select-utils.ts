@@ -1,16 +1,14 @@
-import type { FormState } from '../../../utils/form/form-state';
+import { forceUpdate } from '@stencil/core';
 import {
   type SelectComponentsDropdownDirection,
   type SelectDropdownDirectionInternal,
   type Theme,
   consoleWarn,
   determineDropdownDirection,
-  setAttribute,
-  setAttributes,
 } from '../../../utils';
-import type { MultiSelectOptionInternalHTMLProps } from '../multi-select-option/multi-select-option-utils';
-import { forceUpdate } from '@stencil/core';
+import type { FormState } from '../../../utils/form/form-state';
 import type { OptgroupInternalHTMLProps } from '../../optgroup/optgroup-utils';
+import type { MultiSelectOptionInternalHTMLProps } from '../multi-select-option/multi-select-option-utils';
 
 export type MultiSelectState = FormState;
 export type MultiSelectDropdownDirection = SelectComponentsDropdownDirection;
@@ -24,54 +22,15 @@ export type MultiSelectUpdateEvent = {
 };
 export type MultiSelectUpdateEventDetail = MultiSelectUpdateEvent;
 
-export const INTERNAL_MULTI_SELECT_SLOT = 'internal-select';
-
 // TODO: share between select & multi-select
 export const syncMultiSelectChildrenProps = (
   children: (MultiSelectOption | MultiSelectOptgroup)[],
   theme: Theme
 ): void => {
-  children
-    .filter((child) => child.theme !== theme)
-    .forEach((child) => {
-      child.theme = theme;
-      forceUpdate(child);
-    });
-};
-
-export const initNativeMultiSelect = (
-  host: HTMLElement,
-  name: string,
-  disabled: boolean,
-  required: boolean
-): HTMLSelectElement => {
-  const nativeSelect = document.createElement('select');
-  setAttributes(nativeSelect, {
-    multiple: 'true',
-    'aria-hidden': 'true',
-    tabindex: '-1',
-    slot: INTERNAL_MULTI_SELECT_SLOT,
-  });
-  syncNativeMultiSelect(nativeSelect, name, disabled, required);
-  host.prepend(nativeSelect);
-  return nativeSelect;
-};
-
-export const syncNativeMultiSelect = (
-  nativeSelect: HTMLSelectElement,
-  name: string,
-  disabled: boolean,
-  required: boolean
-): void => {
-  setAttribute(nativeSelect, 'name', name);
-  nativeSelect.toggleAttribute('disabled', disabled);
-  nativeSelect.toggleAttribute('required', required);
-};
-
-export const updateNativeOptions = (nativeSelect: HTMLSelectElement, multiSelectOptions: MultiSelectOption[]): void => {
-  nativeSelect.innerHTML = getSelectedOptions(multiSelectOptions)
-    .map((option) => `<option value="${option.value}" selected="${option.selected}">${option.textContent}</option>`)
-    .join('');
+  for (const child of children.filter((child) => child.theme !== theme)) {
+    child.theme = theme;
+    forceUpdate(child);
+  }
 };
 
 export const updateOptionsFilterState = (
@@ -79,19 +38,26 @@ export const updateOptionsFilterState = (
   options: MultiSelectOption[],
   optGroups: MultiSelectOptgroup[]
 ): void => {
-  options.forEach((option) => (option.hidden = !option.textContent.toLowerCase().includes(searchString.toLowerCase())));
+  for (const option of options) {
+    option.hidden = !option.textContent.toLowerCase().includes(searchString.toLowerCase());
+  }
 
-  optGroups.forEach((optgroup) => {
+  for (const optgroup of optGroups) {
     optgroup.hidden = !Array.from(optgroup.children).some((child) => !(child as HTMLPMultiSelectOptionElement).hidden);
-  });
+  }
 };
 
 export const hasFilterOptionResults = (options: MultiSelectOption[]): boolean =>
   options.some((option) => !option.hidden);
 
 export const resetFilteredOptions = (options: MultiSelectOption[], optGroups: MultiSelectOptgroup[]): void => {
-  options.forEach((option) => (option.hidden = false));
-  optGroups.forEach((optgroup) => (optgroup.hidden = false));
+  for (const option of options) {
+    option.hidden = false;
+  }
+
+  for (const optgroup of optGroups) {
+    optgroup.hidden = false;
+  }
 };
 
 export const getSelectedOptions = (options: MultiSelectOption[]): MultiSelectOption[] =>
@@ -114,13 +80,13 @@ export const getHighlightedOption = (options: MultiSelectOption[]): MultiSelectO
 export const setSelectedOptions = (options: MultiSelectOption[], value: string[]): void => {
   const selectedValues = new Set(value);
 
-  options.forEach((option) => {
+  for (const option of options) {
     const shouldBeSelected = selectedValues.has(option.value);
     if ((option.selected ?? false) !== shouldBeSelected) {
       option.selected = shouldBeSelected;
       forceUpdate(option);
     }
-  });
+  }
 
   const valuesNotIncluded = value.filter((val) => !options.some((option) => option.value === val));
 
@@ -159,17 +125,20 @@ export const setLastOptionHighlighted = (host: HTMLElement, options: MultiSelect
   setNextOptionHighlighted(host, options, options.indexOf(validOptions.at(-1)));
 };
 
-export const resetHighlightedOptions = (options: MultiSelectOption[]): void =>
-  options.forEach((option) => setHighlightedOption(option, false));
+export const resetHighlightedOptions = (options: MultiSelectOption[]): void => {
+  for (const option of options) {
+    setHighlightedOption(option, false);
+  }
+};
 
-export const resetSelectedOptions = (options: MultiSelectOption[]): void =>
-  options.forEach((option) => {
+export const resetSelectedOptions = (options: MultiSelectOption[]): void => {
+  for (const option of options) {
     if (option.selected) {
       option.selected = false;
       forceUpdate(option);
     }
-  });
-
+  }
+};
 export const getNewOptionIndex = (
   options: MultiSelectOption[],
   direction: SelectDropdownDirectionInternal
@@ -208,7 +177,7 @@ export const updateHighlightedOption = (
  */
 export const handleDropdownScroll = (scrollElement: HTMLElement, element: HTMLElement): void => {
   const { maxHeight } = getComputedStyle(scrollElement);
-  const hostElementHeight = parseInt(maxHeight, 10);
+  const hostElementHeight = Number.parseInt(maxHeight, 10);
   if (scrollElement.scrollHeight > hostElementHeight) {
     element.scrollIntoView();
   }
@@ -221,10 +190,10 @@ export const getDropdownDirection = (
 ): SelectDropdownDirectionInternal => {
   if (direction !== 'auto') {
     return direction;
-  } else if (host) {
+  }
+  if (host) {
     const visibleOptionsLength = options.filter((option) => !option.hidden).length;
     return determineDropdownDirection(host, visibleOptionsLength);
-  } else {
-    return 'down';
   }
+  return 'down';
 };

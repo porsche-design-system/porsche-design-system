@@ -1,23 +1,23 @@
+import * as utils from '../../utils/jss';
+import { Popover } from './popover';
+import { getComponentCss } from './popover-styles';
 import {
+  POPOVER_DIRECTIONS,
+  addDocumentEventListener,
   calcSpaceForDirections,
   getAutoDirection,
   getPopoverMargin,
   isElementWithinViewport,
-  addDocumentEventListener,
-  onDocumentMousedown,
   onDocumentKeydown,
-  POPOVER_DIRECTIONS,
+  onDocumentMousedown,
   registeredPopovers,
   removeDocumentEventListener,
-  updatePopoverStyles,
-  updateNativePopoverStyles,
   safeZonePx,
+  updateNativePopoverStyles,
+  updatePopoverStyles,
 } from './popover-utils';
 import type { PopoverDirection, PopoverInternal } from './popover-utils';
 import * as popoverUtils from './popover-utils';
-import * as utils from '../../utils/jss';
-import { Popover } from './popover';
-import { getComponentCss } from './popover-styles';
 
 type Rect = Pick<DOMRect, 'width' | 'height' | 'top' | 'left' | 'bottom' | 'right'>;
 
@@ -105,7 +105,7 @@ describe('updatePopoverStyles()', () => {
 
   it('should call isElementWithinViewport() with correct parameters', () => {
     const spy = jest.spyOn(popoverUtils, 'isElementWithinViewport');
-    updatePopoverStyles(host, spacer, popover, 'top', false, 'light');
+    updatePopoverStyles(host, spacer, popover, 'top', 'light', false);
     expect(spy).toHaveBeenCalledWith(spacer, popover, 'top');
   });
 
@@ -114,12 +114,12 @@ describe('updatePopoverStyles()', () => {
     const attachComponentCssSpy = jest.spyOn(utils, 'attachComponentCss');
 
     jest.spyOn(popoverUtils, 'isElementWithinViewport').mockImplementationOnce(() => true);
-    updatePopoverStyles(host, spacer, popover, 'top', false, 'light');
+    updatePopoverStyles(host, spacer, popover, 'top', 'light', false);
     expect(getAutoDirectionSpy).not.toHaveBeenCalled();
     expect(attachComponentCssSpy).not.toHaveBeenCalled();
 
     jest.spyOn(popoverUtils, 'isElementWithinViewport').mockImplementationOnce(() => false);
-    updatePopoverStyles(host, spacer, popover, 'top', false, 'light');
+    updatePopoverStyles(host, spacer, popover, 'top', 'light', false);
 
     expect(getAutoDirectionSpy).toHaveBeenCalledWith(spacer, popover);
     expect(attachComponentCssSpy).toHaveBeenCalledWith(host, getComponentCss, 'bottom', false, 'light');
@@ -127,7 +127,7 @@ describe('updatePopoverStyles()', () => {
 
   it('should call getPopoverMargin()', () => {
     const spy = jest.spyOn(popoverUtils, 'getPopoverMargin');
-    updatePopoverStyles(host, spacer, popover, 'top', false, 'light');
+    updatePopoverStyles(host, spacer, popover, 'top', 'light', false);
     expect(spy).toHaveBeenCalledWith(spacer, popover, 'top');
   });
 
@@ -135,7 +135,7 @@ describe('updatePopoverStyles()', () => {
     jest.spyOn(popoverUtils, 'getPopoverMargin').mockImplementationOnce(() => '1px');
     expect(popover.style.margin).toBe('0px');
 
-    updatePopoverStyles(host, spacer, popover, 'top', false, 'light');
+    updatePopoverStyles(host, spacer, popover, 'top', 'light', false);
     expect(popover.style.margin).toBe('1px');
   });
 });
@@ -566,7 +566,7 @@ describe('onDocumentKeydown()', () => {
   });
 
   describe.each(['Enter', 'SpaceBar', ' '])("for key '%s'", (key) => {
-    it(`should change open to false when composedPath does not include host`, () => {
+    it('should change open to false when composedPath does not include host', () => {
       popover.open = true;
       document.body.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
 
@@ -574,7 +574,7 @@ describe('onDocumentKeydown()', () => {
       expect(popover.open).toBe(false);
     });
 
-    it(`should do nothing when composedPath contains host`, () => {
+    it('should do nothing when composedPath contains host', () => {
       popover.open = true;
       popover.host.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
 
@@ -582,7 +582,7 @@ describe('onDocumentKeydown()', () => {
       expect(popover.open).toBe(true);
     });
 
-    it(`should check composedPath only when open`, () => {
+    it('should check composedPath only when open', () => {
       const keyboardEvent = new KeyboardEvent('keydown', { key });
       const spy1 = jest.spyOn(keyboardEvent, 'composedPath');
       onDocumentKeydown(keyboardEvent);

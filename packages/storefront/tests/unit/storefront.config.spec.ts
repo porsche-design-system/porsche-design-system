@@ -1,15 +1,15 @@
-import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
-import { getComponentMeta } from '@porsche-design-system/component-meta';
-import { capitalCase } from 'change-case';
-import * as path from 'path';
 import * as fs from 'fs';
+import * as path from 'path';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
+import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
+import { capitalCase } from 'change-case';
 
 // convert and extract storefront.config.ts to usable object that includes import paths that are otherwise unreachable
 const configFilePath = path.resolve(__dirname, '../../storefront.config.ts');
 const configFileContent = fs.readFileSync(configFilePath, 'utf8');
 const [, rawComponentConfig] = configFileContent.match(/  Components: ([\s\S]+?\n  }),/) || [];
 const cleanedComponentConfig = rawComponentConfig
-  .replace(/\s+\/\/ prettier-ignore/g, '') // remove prettier-ignore directives
+  .replace(/\s+\/\/ biome-ignore.*/g, '') // remove prettier-ignore directives
   .replace(/[\s"]?([\w-]+)[\s"]?:/g, '"$1":') // wrap keys in double quotes
   .replace(/\(\) => import\((.+?)\)/g, '$1') // extract import paths
   .replace(/@\/\.\.\/\.\.\/components\/src\/components\//g, '') // get rid of relative paths

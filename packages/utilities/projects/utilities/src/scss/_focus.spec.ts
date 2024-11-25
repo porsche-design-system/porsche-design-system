@@ -4,7 +4,11 @@ import * as sass from 'sass';
 
 const borderVariables = fs.readFileSync(path.resolve('./src/scss/lib/_border.scss'), 'utf8');
 const themeVariables = fs.readFileSync(path.resolve('./src/scss/lib/_theme.scss'), 'utf8');
-const focusMixin = fs.readFileSync(path.resolve('./src/scss/_focus.scss'), 'utf8').replace(/@import.*;/g, '');
+const focusMixin = fs
+  .readFileSync(path.resolve('./src/scss/_focus.scss'), 'utf8')
+  .replace(/@use.*;/g, '')
+  .replace(/border\./g, '')
+  .replace(/theme\./g, '');
 
 describe('pds-focus()', () => {
   it.each([

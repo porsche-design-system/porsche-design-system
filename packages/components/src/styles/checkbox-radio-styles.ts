@@ -1,5 +1,5 @@
-import { type Theme } from '../types';
-import { type Styles } from 'jss';
+import type { Theme } from '../types';
+import type { Styles } from 'jss';
 import { isDisabledOrLoading, isHighContrastMode, supportsChromiumMediaQuery } from '../utils';
 import {
   getFocusJssStyle,
@@ -10,7 +10,7 @@ import {
   prefersColorSchemeDarkMediaQuery,
 } from '.';
 import { borderWidthBase, fontFamily, fontLineHeight, fontSizeTextSmall } from '@porsche-design-system/styles';
-import { type FormState } from '../utils/form/form-state';
+import type { FormState } from '../utils/form/form-state';
 import { getThemedFormStateColors } from './form-state-color-styles';
 
 // TODO: move to form-styles.ts

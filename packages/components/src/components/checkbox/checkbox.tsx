@@ -21,13 +21,12 @@ import {
   THEMES,
   validateProps,
 } from '../../utils';
-import { type BreakpointCustomizable, type PropTypes, type Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import { getComponentCss } from './checkbox-styles';
 import type { CheckboxState, CheckboxUpdateEventDetail, CheckboxBlurEventDetail } from './checkbox-utils';
 import { messageId, StateMessage } from '../common/state-message/state-message';
 import { descriptionId, Label } from '../common/label/label';
 import { LoadingMessage } from '../common/loading-message/loading-message';
-import { ControllerHost, InitialLoadingController } from '../../controllers';
 import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Checkbox> = {
@@ -77,7 +76,7 @@ export class Checkbox {
   @Prop({ mutable: true }) public checked?: boolean = false;
 
   /** The id of a form element the checkbox should be associated with. */
-  @Prop() public form?: string;
+  @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
   /**
    * The checkbox value.
@@ -114,8 +113,8 @@ export class Checkbox {
 
   @AttachInternals() private internals: ElementInternals;
 
-  private controllerHost = new ControllerHost(this);
-  private loadingCtrl = new InitialLoadingController(this.controllerHost);
+  private initialLoading: boolean = false;
+  private defaultChecked: boolean;
   private checkboxInputElement: HTMLInputElement;
 
   @Listen('keydown')
@@ -128,7 +127,7 @@ export class Checkbox {
 
   @Watch('value')
   public onValueChange(newValue: string): void {
-    this.internals.setFormValue(this.checkboxInputElement && this.checkboxInputElement.checked ? newValue : undefined);
+    this.internals.setFormValue(this.checkboxInputElement?.checked ? newValue : undefined);
   }
 
   @Watch('indeterminate')
@@ -144,11 +143,17 @@ export class Checkbox {
   }
 
   public connectedCallback(): void {
+    this.initialLoading = this.loading;
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
+  }
+
+  public componentWillLoad(): void {
+    this.initialLoading = this.loading;
+    this.defaultChecked = this.checked;
   }
 
   public componentDidLoad(): void {
@@ -158,10 +163,35 @@ export class Checkbox {
     }
   }
 
+  public componentWillUpdate(): void {
+    if (this.loading) {
+      this.initialLoading = true;
+    }
+  }
+
   public formResetCallback(): void {
-    this.internals.setValidity({});
-    this.internals.setFormValue(undefined);
-    this.checked = false;
+    this.internals.setFormValue(this.defaultChecked ? this.value : undefined);
+    this.checked = this.defaultChecked;
+  }
+
+  public formDisabledCallback(disabled: boolean): void {
+    this.disabled = disabled;
+  }
+
+  public formStateRestoreCallback(state: string): void {
+    this.checked = !!state;
+  }
+
+  public componentDidRender(): void {
+    // Skip validation if the checkbox is disabled; it's ignored in form validation
+    // and always has an empty validationMessage, even if some ValidityState flags are true.
+    if (!this.disabled) {
+      this.internals.setValidity(
+        this.checkboxInputElement.validity,
+        this.checkboxInputElement.validationMessage,
+        this.checkboxInputElement
+      );
+    }
   }
 
   public render(): JSX.Element {
@@ -213,7 +243,7 @@ export class Checkbox {
           )}
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
-        <LoadingMessage loading={this.loading} initialLoading={this.loadingCtrl.initialLoading} />
+        <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
       </div>
     );
   }

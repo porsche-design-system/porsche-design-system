@@ -47,23 +47,19 @@ export function generateWebPackConfig(targetDirectory: string, config: EntryConf
           globalObject: "typeof self !== 'undefined' ? self : this",
         }
       : isEsmBuild // esm build for vue
-      ? {
-          path: `${distDireactory}/esm`,
-          filename: 'index.mjs',
-          libraryTarget: 'module',
-        }
-      : // umd build for "old" npm package
-        {
-          path: `${distDireactory}/cjs`,
-          filename: 'index.cjs', // is copied and renamed to index.js for vanilla-js integration
-          libraryTarget: 'umd',
-          library: 'porscheDesignSystem', // needs to be same as CM_KEY
-          globalObject: "typeof self !== 'undefined' ? self : this",
-        },
-    // great for debugging:
-    // https://browsersl.ist/#q=%3E+0.5%25+and+last+2+versions%2C+not+dead%2C+not+op_mini+all%2C+not+opera+%3E+0%2C+not+Samsung+%3E+0%2C+not+and_uc+%3E+0
-    target:
-      'browserslist:> 0.5% and last 2 versions, not dead, not op_mini all, not opera > 0, not Samsung > 0, not and_uc > 0',
+        ? {
+            path: `${distDireactory}/esm`,
+            filename: 'index.mjs',
+            libraryTarget: 'module',
+          }
+        : // umd build for "old" npm package
+          {
+            path: `${distDireactory}/cjs`,
+            filename: 'index.cjs', // is copied and renamed to index.js for vanilla-js integration
+            libraryTarget: 'umd',
+            library: 'porscheDesignSystem', // needs to be same as CM_KEY
+            globalObject: "typeof self !== 'undefined' ? self : this",
+          },
     plugins: [
       new webpack.DefinePlugin({
         CM_CONFIG: JSON.stringify(strippedConfig),

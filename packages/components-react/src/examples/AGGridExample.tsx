@@ -1,9 +1,9 @@
 import { AgGridReact } from 'ag-grid-react';
 import { dataAdvanced, type DataAdvanced } from '@porsche-design-system/shared';
 import 'ag-grid-enterprise';
-import { ColDef } from 'ag-grid-enterprise';
+import { type ColDef } from 'ag-grid-community';
 import '@porsche-design-system/components-react/ag-grid/theme.css';
-import { PLinkPure, Theme } from '@porsche-design-system/components-react';
+import { PLinkPure, type Theme } from '@porsche-design-system/components-react';
 
 type ColumnDefs = DataAdvanced & {
   active: boolean;

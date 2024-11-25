@@ -86,6 +86,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -186,6 +187,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -222,7 +224,7 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
@@ -312,6 +314,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -348,7 +351,7 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
@@ -422,6 +425,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -538,6 +542,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -638,6 +643,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -674,7 +680,7 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }
 @media (prefers-color-scheme: dark) {
   .scroller {
@@ -758,6 +764,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -794,7 +801,7 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
@@ -884,6 +891,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -920,7 +928,7 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
@@ -994,6 +1002,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -1030,7 +1039,7 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
@@ -1104,6 +1113,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -1140,7 +1150,7 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }
 @media (prefers-color-scheme: dark) {
   .scroller {
@@ -1224,6 +1234,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -1260,7 +1271,7 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
@@ -1391,6 +1402,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -1424,7 +1436,7 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }
 @media(min-width:480px) {
   .modal {
@@ -1569,6 +1581,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -1684,6 +1697,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -1813,6 +1827,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -1912,6 +1927,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -1945,7 +1961,7 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
@@ -2037,6 +2053,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -2070,7 +2087,7 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
@@ -2146,6 +2163,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -2261,6 +2279,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -2360,6 +2379,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -2393,7 +2413,7 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
@@ -2485,6 +2505,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -2518,6 +2539,6 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;

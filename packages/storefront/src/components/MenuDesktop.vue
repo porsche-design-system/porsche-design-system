@@ -6,18 +6,18 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import Footer from '@/components/Footer.vue';
-  import Navigation from '@/components/Navigation.vue';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import Footer from '@/components/Footer.vue';
+import Navigation from '@/components/Navigation.vue';
 
-  @Component({
-    components: {
-      Navigation,
-      Footer,
-    },
-  })
-  export default class MenuDesktop extends Vue {}
+@Component({
+  components: {
+    Navigation,
+    Footer,
+  },
+})
+export default class MenuDesktop extends Vue {}
 </script>
 
 <style scoped lang="scss">

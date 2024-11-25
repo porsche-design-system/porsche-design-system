@@ -6,11 +6,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <form (submit)="onSubmit($event)">
       <p-checkbox name="some-name" label="Some Label" value="some-value" />
       <button type="submit">Submit</button>
+      <button type="reset">Reset</button>
     </form>
 
     <p-text>Last submitted data: {{ lastSubmittedData }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class CheckboxExampleComponent {
   lastSubmittedData: string = '';

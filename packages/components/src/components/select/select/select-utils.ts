@@ -1,19 +1,16 @@
-import { type FormState } from '../../../utils/form/form-state';
+import { forceUpdate } from '@stencil/core';
 import {
+  type SelectComponentsDropdownDirection,
+  type SelectDropdownDirectionInternal,
+  type Theme,
   consoleWarn,
   determineDropdownDirection,
   getHighlightedSelectOptionIndex,
   getUsableSelectOptions,
-  type SelectDropdownDirectionInternal,
-  type SelectComponentsDropdownDirection,
-  setAttribute,
-  setAttributes,
-  type Theme,
 } from '../../../utils';
-import type { SelectOptionInternalHTMLProps } from '../select-option/select-option-utils';
-import { forceUpdate } from '@stencil/core';
+import type { FormState } from '../../../utils/form/form-state';
 import type { OptgroupInternalHTMLProps } from '../../optgroup/optgroup-utils';
-
+import type { SelectOptionInternalHTMLProps } from '../select-option/select-option-utils';
 export type SelectState = FormState;
 export type SelectOption = HTMLPSelectOptionElement & SelectOptionInternalHTMLProps;
 export type SelectDropdownDirection = SelectComponentsDropdownDirection;
@@ -24,16 +21,12 @@ export type SelectUpdateEventDetail = {
   value: string;
 };
 
-export const INTERNAL_SELECT_SLOT = 'internal-select';
-
 // TODO: share between select & multi-select
 export const syncSelectChildrenProps = (children: (SelectOption | SelectOptgroup)[], theme: Theme): void => {
-  children
-    .filter((child) => child.theme !== theme)
-    .forEach((child) => {
-      child.theme = theme;
-      forceUpdate(child);
-    });
+  for (const child of children.filter((child) => child.theme !== theme)) {
+    child.theme = theme;
+    forceUpdate(child);
+  }
 };
 
 export const getSelectedOptionString = (options: SelectOption[]): string =>
@@ -59,12 +52,12 @@ export const updateSelectOptions = (options: SelectOption[], value: string): voi
   } else {
     // TODO: Do we want to cover multiple options with the same value?
     const optionToSelect = options.find((option) => option.value === value);
-    if (!optionToSelect) {
-      // TODO: Add select node
-      consoleWarn('The provided value is not included in the options of the p-select:', value);
-    } else {
+    if (optionToSelect) {
       optionToSelect.selected = true;
       forceUpdate(optionToSelect);
+    } else {
+      // TODO: Add select node
+      consoleWarn('The provided value is not included in the options of the p-select:', value);
     }
   }
 };
@@ -75,43 +68,6 @@ export const setSelectedOption = (options: SelectOption[], selectedOption: Selec
   forceUpdate(selectedOption);
 };
 
-// TODO: Mostly same as multi-select
-// TODO: Extract slot name into const
-export const initNativeSelect = (
-  host: HTMLElement,
-  name: string,
-  disabled: boolean,
-  required: boolean
-): HTMLSelectElement => {
-  const nativeSelect = document.createElement('select');
-  setAttributes(nativeSelect, {
-    'aria-hidden': 'true',
-    tabindex: '-1',
-    slot: INTERNAL_SELECT_SLOT,
-  });
-  syncNativeSelect(nativeSelect, name, disabled, required);
-  host.prepend(nativeSelect);
-  return nativeSelect;
-};
-
-// TODO: Same as multi-select
-export const syncNativeSelect = (
-  nativeSelect: HTMLSelectElement,
-  name: string,
-  disabled: boolean,
-  required: boolean
-): void => {
-  setAttribute(nativeSelect, 'name', name);
-  nativeSelect.toggleAttribute('disabled', disabled);
-  nativeSelect.toggleAttribute('required', required);
-};
-
-export const updateNativeSelectOption = (nativeSelect: HTMLSelectElement, selectOptions: SelectOption[]): void => {
-  const selectedOption = selectOptions.find((option) => option.selected);
-  // Check for value since empty option can also be selected
-  nativeSelect.innerHTML = selectedOption?.value ? `<option value="${selectedOption.value}" selected></option>` : '';
-};
-
 // TODO: This is copied from multi-select, extract and reuse in both components
 export const getSelectDropdownDirection = (
   direction: SelectComponentsDropdownDirection,
@@ -120,12 +76,12 @@ export const getSelectDropdownDirection = (
 ): SelectDropdownDirectionInternal => {
   if (direction !== 'auto') {
     return direction;
-  } else if (host) {
+  }
+  if (host) {
     const visibleOptionsLength = options.filter((option) => !option.hidden).length;
     return determineDropdownDirection(host, visibleOptionsLength);
-  } else {
-    return 'down';
   }
+  return 'down';
 };
 
 export const getSrHighlightedOptionText = (options: SelectOption[]): string => {

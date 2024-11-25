@@ -1,8 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { globbySync } from 'globby';
-import { capitalCase } from 'latest-change-case';
 import type { TagName } from '@porsche-design-system/shared';
+import { capitalCase } from 'change-case';
+import { globbySync } from 'globby';
 
 const removeBuiltWith = (str: string): string =>
   str.replace(/\s+----------------------------------------------\s+\*Built with.*/, '');

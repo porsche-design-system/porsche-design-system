@@ -1,12 +1,12 @@
 <script setup lang="ts">
-  import { PButton, PText } from '@porsche-design-system/components-vue';
-  import { ref } from 'vue';
+import { PButton, PText } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
 
-  const lastSubmittedData = ref('none');
-  const handleSubmit = (e: Event) => {
-    const formData = Array.from(new FormData(e.target as HTMLFormElement, (e as SubmitEvent).submitter).entries())[0];
-    lastSubmittedData.value = formData.join('=') || 'none';
-  };
+const lastSubmittedData = ref('none');
+const handleSubmit = (e: Event) => {
+  const formData = Array.from(new FormData(e.target as HTMLFormElement, (e as SubmitEvent).submitter).entries())[0];
+  lastSubmittedData.value = formData.join('=') || 'none';
+};
 </script>
 
 <template>

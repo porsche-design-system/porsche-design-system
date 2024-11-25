@@ -11,14 +11,14 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import Markdown from '@/components/Markdown.vue';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import Markdown from '@/components/Markdown.vue';
 
-  @Component({
-    components: {
-      Markdown,
-    },
-  })
-  export default class NotFoundView extends Vue {}
+@Component({
+  components: {
+    Markdown,
+  },
+})
+export default class NotFoundView extends Vue {}
 </script>

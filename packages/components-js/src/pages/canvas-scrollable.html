@@ -1,0 +1,38 @@
+<style>
+  body {
+    overflow-x: hidden;
+  }
+
+  p-canvas > div:not([slot]) {
+    grid-column: 1 / -1;
+  }
+
+  span {
+    display: block;
+    height: 100dvh;
+    background: deeppink;
+  }
+</style>
+
+<p-canvas sidebar-start-open="true" sidebar-end-open="true">
+  <a slot="title" href="#">Title</a>
+  <div slot="header-start">Header Start</div>
+  <div slot="header-end">Header End</div>
+  <div>
+    Content
+    <span></span>
+    Content
+  </div>
+  <div slot="footer">Footer</div>
+  <div slot="sidebar-start">
+    Sidebar Start
+    <span></span>
+    Sidebar Start
+  </div>
+  <div slot="sidebar-end">
+    Sidebar End
+    <span></span>
+    Sidebar End
+  </div>
+  <img slot="background" src="http://localhost:3002/gradient.png" width="2792" height="1450" alt="" />
+</p-canvas>

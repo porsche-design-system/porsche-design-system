@@ -1,32 +1,11 @@
+import { gridGap, motionEasingBase } from '@porsche-design-system/styles';
+import { Splide } from '@splidejs/splide';
+import { Component, Element, Event, type EventEmitter, Host, Prop, State, Watch, h } from '@stencil/core';
+import { getSlottedAnchorStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme, ValidatorFunction } from '../../types';
 import {
-  type CarouselAlignHeader,
-  type CarouselAlignHeaderDeprecated,
-  type CarouselAriaAttribute,
-  type CarouselHeadingSize,
-  type CarouselInternationalization,
-  type CarouselUpdateEventDetail,
-  type CarouselWidth,
-  type CarouselGradientColor,
-  CAROUSEL_ALIGN_HEADERS,
-  CAROUSEL_ARIA_ATTRIBUTES,
-  CAROUSEL_WIDTHS,
-  CAROUSEL_GRADIENT_COLORS,
-  getAmountOfPages,
-  getSlidesAndAddAttributes,
-  getSplideBreakpoints,
-  getLangDirection,
-  isInfinitePagination,
-  renderPagination,
-  slideNext,
-  slidePrev,
-  updatePagination,
-  updatePrevNextButtons,
-} from './carousel-utils';
-import { Component, Element, Event, type EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
-import { Splide } from '@splidejs/splide';
-import {
   AllowedTypes,
+  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getCurrentMatchingBreakpointValue,
@@ -40,7 +19,6 @@ import {
   parseAndGetAriaAttributes,
   parseJSON,
   parseJSONAttribute,
-  THEMES,
   unobserveBreakpointChange,
   unobserveChildren,
   validateProps,
@@ -48,8 +26,30 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
-import { gridGap, motionEasingBase } from '@porsche-design-system/styles';
-import { getSlottedAnchorStyles } from '../../styles';
+import {
+  CAROUSEL_ALIGN_HEADERS,
+  CAROUSEL_ARIA_ATTRIBUTES,
+  CAROUSEL_GRADIENT_COLORS,
+  CAROUSEL_WIDTHS,
+  type CarouselAlignHeader,
+  type CarouselAlignHeaderDeprecated,
+  type CarouselAriaAttribute,
+  type CarouselGradientColor,
+  type CarouselHeadingSize,
+  type CarouselInternationalization,
+  type CarouselUpdateEventDetail,
+  type CarouselWidth,
+  getAmountOfPages,
+  getLangDirection,
+  getSlidesAndAddAttributes,
+  getSplideBreakpoints,
+  isInfinitePagination,
+  renderPagination,
+  slideNext,
+  slidePrev,
+  updatePagination,
+  updatePrevNextButtons,
+} from './carousel-utils';
 
 type AlignHeaderDeprecationMapType = Record<
   CarouselAlignHeaderDeprecated,
@@ -233,7 +233,7 @@ export class Carousel {
       drag: this.hasNavigation,
       perMove: 1,
       mediaQuery: 'min',
-      speed: parseFloat(carouselTransitionDuration) * 1000,
+      speed: Number.parseFloat(carouselTransitionDuration) * 1000,
       gap: gridGap,
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
       breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number> | 'auto', string>), // eslint-disable-line @typescript-eslint/no-redundant-type-constituents
@@ -249,7 +249,7 @@ export class Carousel {
     this.splide.options = { drag: this.hasNavigation };
     this.splide.refresh(); // needs to happen after render to detect new and removed slides
     if (this.hasNavigation) {
-      renderPagination(this.paginationEl, this.amountOfPages, this.splide?.index || 0, this.splide); // update pagination in case the carousel was not draggable before
+      renderPagination(this.paginationEl, this.getPageCount(), this.splide?.index || 0, this.splide); // update pagination in case the carousel was not draggable before
       updatePrevNextButtons(this.btnPrev, this.btnNext, this.splide); // go to last/first slide aria might be wrong
     }
   }
@@ -388,7 +388,7 @@ export class Carousel {
 
         {(this.disablePagination ? this.disablePagination !== true : this.pagination) && this.hasNavigation && (
           <div class="pagination-container" aria-hidden="true">
-            <div class="pagination" ref={(ref) => (this.paginationEl = ref)}></div>
+            <div class="pagination" ref={(ref) => (this.paginationEl = ref)} />
           </div>
         )}
       </Host>
@@ -430,7 +430,7 @@ export class Carousel {
       // round to sanitize floating numbers
       this.slidesPerPage === 'auto' ? 1 : Math.round(getCurrentMatchingBreakpointValue(this.slidesPerPage))
     );
-    renderPagination(this.paginationEl, this.amountOfPages, this.splide?.index || 0, this.splide);
+    renderPagination(this.paginationEl, this.getPageCount(), this.splide?.index || 0, this.splide);
   };
 
   private onNextKeyDown = (e: KeyboardEvent): void => {
@@ -463,10 +463,11 @@ export class Carousel {
     // splide sets attributes everytime it slides or slides are added, which we need to adjust after wards
     observeChildren(
       this.container,
-      () =>
-        this.splide.Components.Elements.slides.forEach((el) => {
+      () => {
+        for (const el of this.splide.Components.Elements.slides) {
           el.removeAttribute('aria-hidden');
-        }),
+        }
+      },
       ['aria-hidden']
     );
   }

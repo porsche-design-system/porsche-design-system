@@ -169,80 +169,80 @@
 </template>
 
 <script lang="ts">
-  import type { ValidationBag } from '@/utils';
-  import type { StorefrontTheme } from '@/models';
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { boolean, number, object, string } from 'yup';
-  import { validateName, getState, validateField, validateForm, getInitialErrors } from '@/utils';
+import type { ValidationBag } from '@/utils';
+import type { StorefrontTheme } from '@/models';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { boolean, number, object, string } from 'yup';
+import { validateName, getState, validateField, validateForm, getInitialErrors } from '@/utils';
 
-  const initialData = {
-    check: {
-      check1: false,
-      check2: false,
-      check3: false,
-    },
-    radio: '',
-    day: '' as unknown as number,
-    month: '' as unknown as number,
-    year: 1998,
+const initialData = {
+  check: {
+    check1: false,
+    check2: false,
+    check3: false,
+  },
+  radio: '',
+  day: '' as unknown as number,
+  month: '' as unknown as number,
+  year: 1998,
+};
+
+type FormModel = typeof initialData;
+
+@Component
+export default class VariousForm extends Vue {
+  public get storefrontTheme(): StorefrontTheme {
+    return this.$store.getters.storefrontTheme;
+  }
+
+  private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
+  private getState = (field: keyof FormModel) => getState(field, this.bag);
+
+  private bag: ValidationBag<FormModel> = {
+    data: { ...initialData },
+    errors: getInitialErrors(initialData),
+    schema: object({
+      check: object({
+        check1: boolean().defined(),
+        check2: boolean().defined(),
+        check3: boolean().defined(),
+      })
+        .required()
+        .test('customTest', 'Please select at least one option', (obj) =>
+          obj ? Object.values(obj).some((val) => val) : false
+        ),
+      radio: string().required('Please select one option'),
+      day: number()
+        .required()
+        .min(1, 'Please enter valid day 01-31')
+        .max(31, 'Please enter valid day 01-31')
+        .typeError('Please enter a day'),
+      month: number()
+        .required()
+        .min(1, 'Please enter valid month 01-12')
+        .max(12, 'Please enter valid month 01-12')
+        .typeError('Please enter a month'),
+      year: number().defined(),
+    }),
   };
 
-  type FormModel = typeof initialData;
-
-  @Component
-  export default class VariousForm extends Vue {
-    public get storefrontTheme(): StorefrontTheme {
-      return this.$store.getters.storefrontTheme;
-    }
-
-    private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
-    private getState = (field: keyof FormModel) => getState(field, this.bag);
-
-    private bag: ValidationBag<FormModel> = {
-      data: { ...initialData },
-      errors: getInitialErrors(initialData),
-      schema: object({
-        check: object({
-          check1: boolean().defined(),
-          check2: boolean().defined(),
-          check3: boolean().defined(),
-        })
-          .required()
-          .test('customTest', 'Please select at least one option', (obj) =>
-            obj ? Object.values(obj).some((val) => val) : false
-          ),
-        radio: string().required('Please select one option'),
-        day: number()
-          .required()
-          .min(1, 'Please enter valid day 01-31')
-          .max(31, 'Please enter valid day 01-31')
-          .typeError('Please enter a day'),
-        month: number()
-          .required()
-          .min(1, 'Please enter valid month 01-12')
-          .max(12, 'Please enter valid month 01-12')
-          .typeError('Please enter a month'),
-        year: number().defined(),
-      }),
-    };
-
-    created(): void {
-      this.onSubmit();
-    }
-
-    onFieldBlur({ target }: FocusEvent & { target: HTMLInputElement }): void {
-      validateField(target.name as keyof FormModel, this.bag);
-    }
-
-    async onSubmit(): Promise<void> {
-      const isValid = await validateForm(this.bag);
-      console.log('isValid', isValid);
-    }
-
-    onReset(): void {
-      this.bag.data = { ...initialData };
-      this.bag.errors = getInitialErrors(initialData);
-    }
+  created(): void {
+    this.onSubmit();
   }
+
+  onFieldBlur({ target }: FocusEvent & { target: HTMLInputElement }): void {
+    validateField(target.name as keyof FormModel, this.bag);
+  }
+
+  async onSubmit(): Promise<void> {
+    const isValid = await validateForm(this.bag);
+    console.log('isValid', isValid);
+  }
+
+  onReset(): void {
+    this.bag.data = { ...initialData };
+    this.bag.errors = getInitialErrors(initialData);
+  }
+}
 </script>

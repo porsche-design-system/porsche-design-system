@@ -1,27 +1,27 @@
 <script setup lang="ts">
-  import {
-    PTable,
-    PTableBody,
-    PTableCell,
-    PTableHead,
-    PTableHeadCell,
-    PTableHeadRow,
-    PTableRow,
-    type TableUpdateEventDetail,
-  } from '@porsche-design-system/components-vue';
-  import { type DataSorting, dataSorting, headSorting } from '@porsche-design-system/shared';
-  import { ref } from 'vue';
+import {
+  PTable,
+  PTableBody,
+  PTableCell,
+  PTableHead,
+  PTableHeadCell,
+  PTableHeadRow,
+  PTableRow,
+  type TableUpdateEventDetail,
+} from '@porsche-design-system/components-vue';
+import { type DataSorting, dataSorting, headSorting } from '@porsche-design-system/shared';
+import { ref } from 'vue';
 
-  const head = ref(headSorting);
-  const data = ref(dataSorting);
+const head = ref(headSorting);
+const data = ref(dataSorting);
 
-  const onUpdate = (e: TableUpdateEventDetail): void => {
-    const { id, direction } = e as TableUpdateEventDetail & { id: keyof DataSorting };
-    head.value = head.value.map((item) => ({ ...item, active: false, ...(item.id === id && e) }));
-    data.value = [...data.value].sort((a, b) =>
-      direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])
-    );
-  };
+const onUpdate = (e: TableUpdateEventDetail): void => {
+  const { id, direction } = e as TableUpdateEventDetail & { id: keyof DataSorting };
+  head.value = head.value.map((item) => ({ ...item, active: false, ...(item.id === id && e) }));
+  data.value = [...data.value].sort((a, b) =>
+    direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])
+  );
+};
 </script>
 
 <template>

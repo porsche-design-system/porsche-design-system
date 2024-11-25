@@ -60,6 +60,58 @@ const generatedRoutes = {
     "path": "/button-tile",
     "name": "ButtonTile"
   },
+  "canvas": {
+    "path": "/canvas",
+    "name": "Canvas"
+  },
+  "canvasBackground": {
+    "path": "/canvas-background",
+    "name": "CanvasBackground"
+  },
+  "canvasBasic": {
+    "path": "/canvas-basic",
+    "name": "CanvasBasic"
+  },
+  "canvasCssVariables": {
+    "path": "/canvas-css-variables",
+    "name": "CanvasCssVariables"
+  },
+  "canvasFooter": {
+    "path": "/canvas-footer",
+    "name": "CanvasFooter"
+  },
+  "canvasGrid": {
+    "path": "/canvas-grid",
+    "name": "CanvasGrid"
+  },
+  "canvasHeaderEnd": {
+    "path": "/canvas-header-end",
+    "name": "CanvasHeaderEnd"
+  },
+  "canvasHeaderStart": {
+    "path": "/canvas-header-start",
+    "name": "CanvasHeaderStart"
+  },
+  "canvasNamedSlots": {
+    "path": "/canvas-named-slots",
+    "name": "CanvasNamedSlots"
+  },
+  "canvasScrollable": {
+    "path": "/canvas-scrollable",
+    "name": "CanvasScrollable"
+  },
+  "canvasSidebarEnd": {
+    "path": "/canvas-sidebar-end",
+    "name": "CanvasSidebarEnd"
+  },
+  "canvasSidebarStart": {
+    "path": "/canvas-sidebar-start",
+    "name": "CanvasSidebarStart"
+  },
+  "canvasTitle": {
+    "path": "/canvas-title",
+    "name": "CanvasTitle"
+  },
   "carousel": {
     "path": "/carousel",
     "name": "Carousel"
@@ -104,9 +156,13 @@ const generatedRoutes = {
     "path": "/flex",
     "name": "Flex"
   },
-  "flyout": {
-    "path": "/flyout",
-    "name": "Flyout"
+  "flyout_1": {
+    "path": "/flyout-1",
+    "name": "Flyout_1"
+  },
+  "flyout_2": {
+    "path": "/flyout-2",
+    "name": "Flyout_2"
   },
   "flyoutBasic": {
     "path": "/flyout-basic",
@@ -116,6 +172,46 @@ const generatedRoutes = {
     "path": "/flyout-css-variables",
     "name": "FlyoutCssVariables"
   },
+  "flyoutFixedFooter": {
+    "path": "/flyout-fixed-footer",
+    "name": "FlyoutFixedFooter"
+  },
+  "flyoutFixedFooterHeader": {
+    "path": "/flyout-fixed-footer-header",
+    "name": "FlyoutFixedFooterHeader"
+  },
+  "flyoutFixedFooterHeaderScrollableContent": {
+    "path": "/flyout-fixed-footer-header-scrollable-content",
+    "name": "FlyoutFixedFooterHeaderScrollableContent"
+  },
+  "flyoutFixedFooterHeaderSubfooter": {
+    "path": "/flyout-fixed-footer-header-subfooter",
+    "name": "FlyoutFixedFooterHeaderSubfooter"
+  },
+  "flyoutFixedFooterHeaderSubfooterScrollableContent": {
+    "path": "/flyout-fixed-footer-header-subfooter-scrollable-content",
+    "name": "FlyoutFixedFooterHeaderSubfooterScrollableContent"
+  },
+  "flyoutFixedFooterScrollableContent": {
+    "path": "/flyout-fixed-footer-scrollable-content",
+    "name": "FlyoutFixedFooterScrollableContent"
+  },
+  "flyoutFixedFooterScrollableContentScrolled": {
+    "path": "/flyout-fixed-footer-scrollable-content-scrolled",
+    "name": "FlyoutFixedFooterScrollableContentScrolled"
+  },
+  "flyoutFixedFooterSubfooter": {
+    "path": "/flyout-fixed-footer-subfooter",
+    "name": "FlyoutFixedFooterSubfooter"
+  },
+  "flyoutFixedFooterSubfooterScrollableContent": {
+    "path": "/flyout-fixed-footer-subfooter-scrollable-content",
+    "name": "FlyoutFixedFooterSubfooterScrollableContent"
+  },
+  "flyoutFixedFooterSubfooterScrollableContentScrolled": {
+    "path": "/flyout-fixed-footer-subfooter-scrollable-content-scrolled",
+    "name": "FlyoutFixedFooterSubfooterScrollableContentScrolled"
+  },
   "flyoutFooter": {
     "path": "/flyout-footer",
     "name": "FlyoutFooter"
@@ -123,6 +219,10 @@ const generatedRoutes = {
   "flyoutFooterScrollableContent": {
     "path": "/flyout-footer-scrollable-content",
     "name": "FlyoutFooterScrollableContent"
+  },
+  "flyoutFooterScrolled": {
+    "path": "/flyout-footer-scrolled",
+    "name": "FlyoutFooterScrolled"
   },
   "flyoutGrid": {
     "path": "/flyout-grid",
@@ -171,10 +271,6 @@ const generatedRoutes = {
   "flyoutHeaderFooterSubfooterScrolledOverlap": {
     "path": "/flyout-header-footer-subfooter-scrolled-overlap",
     "name": "FlyoutHeaderFooterSubfooterScrolledOverlap"
-  },
-  "flyoutHeaderFooterSubfooterSlottedAnchor": {
-    "path": "/flyout-header-footer-subfooter-slotted-anchor",
-    "name": "FlyoutHeaderFooterSubfooterSlottedAnchor"
   },
   "flyoutHeaderScrollableContent": {
     "path": "/flyout-header-scrollable-content",
@@ -283,6 +379,10 @@ const generatedRoutes = {
   "modalDisableCloseButton": {
     "path": "/modal-disable-close-button",
     "name": "ModalDisableCloseButton"
+  },
+  "modalFooterScrolled": {
+    "path": "/modal-footer-scrolled",
+    "name": "ModalFooterScrolled"
   },
   "modalFullscreen": {
     "path": "/modal-fullscreen",

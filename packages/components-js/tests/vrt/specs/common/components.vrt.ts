@@ -3,30 +3,44 @@ import { setupScenario } from '../../helpers';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { schemes, themes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt';
+import path from 'path';
+import * as globby from 'globby-legacy';
 
-const components = (TAG_NAMES as unknown as TagName[])
-  .filter((tagName) => !['p-canvas', 'p-optgroup'].includes(tagName)) // TODO: remove filter as soon as component becomes stable
-  // Filter out non-chunked components
+const sourceDirectory = path.resolve('src/pages');
+const fileNames = globby.sync(`${sourceDirectory}/*.html`).map((filePath) => path.basename(filePath, '.html'));
+
+const tagNames = (TAG_NAMES as unknown as TagName[])
+  // Filter out components which don't work on their own
   .filter((tagName) => {
-    const { isChunked } = getComponentMeta(tagName);
-    return isChunked;
+    const { isChunked, requiredParent } = getComponentMeta(tagName);
+    return isChunked && !requiredParent;
   })
   .map((tagName) => {
     return tagName.substring(2);
   });
 
-const isComponentThemeable = (component: string): boolean => getComponentMeta(`p-${component}` as TagName).isThemeable;
+const components = fileNames.filter(
+  (name) => tagNames.filter((component) => name.match(new RegExp(`^${component}(-\\d+)?$`))).length > 0
+);
+// .filter((name) => {
+//   // TODO: how does this work? why slice it on every iteration?
+//   const argv = process.argv.slice(5);
+//   return !argv.length || argv.includes(name);
+// });
+
+const isComponentThemeable = (component: string): boolean =>
+  getComponentMeta(`p-${component.replace(/-\d+/, '')}` as TagName).isThemeable;
 
 // VRT pages making use of iFrames can't reliably ensure which iframe is loaded last
 // and therefore can't be sure which autofocus gets triggered
 const revertAutoFocus = async (page: Page, component: string): Promise<void> => {
-  if (['flyout-multilevel', 'flyout', 'modal'].includes(component)) {
+  if (['flyout-multilevel', 'flyout', 'modal', 'canvas'].includes(component.replace(/-\d+/, ''))) {
     await page.mouse.click(0, 0); // click top left corner of the page to remove focus
   }
 };
 
 test(`should have certain amount of components`, () => {
-  expect(components.length).toBe(56);
+  expect(components.length).toBe(58);
 });
 
 components.forEach((component) => {

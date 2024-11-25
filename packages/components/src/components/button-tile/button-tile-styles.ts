@@ -29,7 +29,7 @@ import {
   spacingStaticMedium,
   textMediumStyle,
 } from '@porsche-design-system/styles';
-import { type BreakpointCustomizable } from '../../utils/breakpoint-customizable';
+import type { BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { getFontSizeText } from '../../styles/font-size-text-styles';
 

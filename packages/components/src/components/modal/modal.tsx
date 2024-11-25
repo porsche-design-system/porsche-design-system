@@ -2,10 +2,10 @@ import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX,
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import {
   AllowedTypes,
-  applyConstructableStylesheetStyles,
   attachComponentCss,
   consoleWarn,
   getPrefixedTagNames,
+  getSlotTextContent,
   hasHeading,
   hasNamedSlot,
   hasPropValueChanged,
@@ -22,15 +22,14 @@ import {
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import {
+  MODAL_ARIA_ATTRIBUTES,
   type ModalAriaAttribute,
   type ModalBackdrop,
-  type ModalMotionVisibleEndEventDetail,
   type ModalMotionHiddenEndEventDetail,
-  MODAL_ARIA_ATTRIBUTES,
+  type ModalMotionVisibleEndEventDetail,
 } from './modal-utils';
 import { getComponentCss } from './modal-styles';
 import { BACKDROPS } from '../../styles/dialog-styles';
-import { getSlottedAnchorStyles } from '../../styles';
 import { observeStickyArea } from '../../utils/dialog/observer';
 import { getDeprecatedPropOrSlotWarningMessage } from '../../utils/log/helper';
 import { onTransitionEnd } from '../../utils/dialog/dialog';
@@ -112,6 +111,7 @@ export class Modal {
   private footer: HTMLSlotElement;
   private hasHeader: boolean;
   private hasFooter: boolean;
+
   private get hasDismissButton(): boolean {
     return this.disableCloseButton ? false : this.dismissButton;
   }
@@ -121,7 +121,6 @@ export class Modal {
   }
 
   public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     // Observe dynamic slot changes
     observeChildren(
       this.host,
@@ -206,11 +205,10 @@ export class Modal {
         onCancel={(e) => onCancelDialog(e, this.dismissDialog, !this.hasDismissButton)}
         // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on modal and mouseup on backdrop) but changed back to native behavior
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
-        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
+        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd, this.dialog)}
         {...parseAndGetAriaAttributes({
           'aria-modal': true,
-          'aria-label': this.heading,
-          'aria-hidden': !this.open,
+          ...(this.hasHeader && { 'aria-label': this.ariaLabel() }),
           ...parseAndGetAriaAttributes(this.aria),
         })}
       >
@@ -221,7 +219,7 @@ export class Modal {
                 variant="ghost"
                 class="dismiss"
                 type="button"
-                hideLabel
+                hideLabel={true}
                 icon="close"
                 onClick={this.dismissDialog}
                 theme={this.theme}
@@ -248,5 +246,13 @@ export class Modal {
   private dismissDialog = (): void => {
     this.dismiss.emit();
     this.close.emit();
+  };
+
+  private ariaLabel = (): string => {
+    return (
+      this.heading ||
+      (hasNamedSlot(this.host, 'heading') && getSlotTextContent(this.host, 'heading')) ||
+      (hasNamedSlot(this.host, 'header') && getSlotTextContent(this.host, 'header'))
+    );
   };
 }

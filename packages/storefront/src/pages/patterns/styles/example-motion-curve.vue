@@ -35,65 +35,65 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import {
-    motionDurationVeryLong,
-    motionEasingBase,
-    motionEasingIn,
-    motionEasingOut,
-    themeDarkBackgroundBase,
-    themeLightBackgroundBase,
-  } from '@porsche-design-system/components-js/styles';
-  import type { StorefrontTheme } from '@/models';
-  import { isPreferredColorSchemeDark } from '@/utils';
-  import { Prop } from 'vue-property-decorator';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import {
+  motionDurationVeryLong,
+  motionEasingBase,
+  motionEasingIn,
+  motionEasingOut,
+  themeDarkBackgroundBase,
+  themeLightBackgroundBase,
+} from '@porsche-design-system/components-js/styles';
+import type { StorefrontTheme } from '@/models';
+import { isPreferredColorSchemeDark } from '@/utils';
+import { Prop } from 'vue-property-decorator';
 
-  @Component
-  export default class ExampleStylesMotionCurve extends Vue {
-    @Prop({ default: 'easing-base' }) public path: 'easing-base' | 'easing-in' | 'easing-out';
-    motionDurationVeryLong = motionDurationVeryLong;
-    themeDarkBackgroundBase = themeDarkBackgroundBase;
-    themeLightBackgroundBase = themeLightBackgroundBase;
+@Component
+export default class ExampleStylesMotionCurve extends Vue {
+  @Prop({ default: 'easing-base' }) public path: 'easing-base' | 'easing-in' | 'easing-out';
+  motionDurationVeryLong = motionDurationVeryLong;
+  themeDarkBackgroundBase = themeDarkBackgroundBase;
+  themeLightBackgroundBase = themeLightBackgroundBase;
 
-    get easingPath(): string {
-      switch (this.path) {
-        case 'easing-base':
-          return 'M25,225 C65,115 185,115 225,25';
-        case 'easing-in':
-          return 'M25,225 C25,225 65,25 225,25';
-        case 'easing-out':
-          return 'M25,225 C65,225 185,25 225,25';
-        default:
-          return 'M25,225 C65,115 185,115 225,25';
-      }
+  get easingPath(): string {
+    switch (this.path) {
+      case 'easing-base':
+        return 'M25,225 C65,115 185,115 225,25';
+      case 'easing-in':
+        return 'M25,225 C25,225 65,25 225,25';
+      case 'easing-out':
+        return 'M25,225 C65,225 185,25 225,25';
+      default:
+        return 'M25,225 C65,115 185,115 225,25';
     }
-
-    get keySplines(): string {
-      switch (this.path) {
-        case 'easing-base':
-          return this.extractEasingValues(motionEasingBase);
-        case 'easing-in':
-          return this.extractEasingValues(motionEasingIn);
-        case 'easing-out':
-          return this.extractEasingValues(motionEasingOut);
-        default:
-          return this.extractEasingValues(motionEasingBase);
-      }
-    }
-
-    get storefrontTheme(): StorefrontTheme {
-      return this.$store.getters.storefrontTheme;
-    }
-
-    get isThemeDark(): boolean {
-      return (this.storefrontTheme === 'auto' && isPreferredColorSchemeDark()) || this.storefrontTheme === 'dark';
-    }
-
-    extractEasingValues = (easingFunction: string): string => {
-      return easingFunction.replace(/.+\((.+)\)/g, '$1');
-    };
   }
+
+  get keySplines(): string {
+    switch (this.path) {
+      case 'easing-base':
+        return this.extractEasingValues(motionEasingBase);
+      case 'easing-in':
+        return this.extractEasingValues(motionEasingIn);
+      case 'easing-out':
+        return this.extractEasingValues(motionEasingOut);
+      default:
+        return this.extractEasingValues(motionEasingBase);
+    }
+  }
+
+  get storefrontTheme(): StorefrontTheme {
+    return this.$store.getters.storefrontTheme;
+  }
+
+  get isThemeDark(): boolean {
+    return (this.storefrontTheme === 'auto' && isPreferredColorSchemeDark()) || this.storefrontTheme === 'dark';
+  }
+
+  extractEasingValues = (easingFunction: string): string => {
+    return easingFunction.replace(/.+\((.+)\)/g, '$1');
+  };
+}
 </script>
 
 <style lang="scss" scoped>

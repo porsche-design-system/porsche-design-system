@@ -1,4 +1,4 @@
-import { type BreakpointCustomizable, type Theme } from '../../../types';
+import type { BreakpointCustomizable, Theme } from '../../../types';
 import { getCss } from '../../../utils';
 import {
   addImportantToEachRule,
@@ -16,7 +16,7 @@ import {
   getSlottedTextFieldTextareaSelectStyles,
 } from '../../../styles/form-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
-import { type FormState } from '../../../utils/form/form-state';
+import type { FormState } from '../../../utils/form/form-state';
 import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/styles';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
 

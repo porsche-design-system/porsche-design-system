@@ -300,90 +300,88 @@
 </template>
 
 <script lang="ts">
-  import type { ValidationBag } from '@/utils';
-  import type { StorefrontTheme } from '@/models';
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { boolean, date, number, object, string } from 'yup';
-  import { validateName, getState, validateField, validateForm, getInitialErrors, getFirstErrorKey } from '@/utils';
+import type { ValidationBag } from '@/utils';
+import type { StorefrontTheme } from '@/models';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { boolean, date, number, object, string } from 'yup';
+import { validateName, getState, validateField, validateForm, getInitialErrors, getFirstErrorKey } from '@/utils';
 
-  const initialData = {
-    category: '',
-    subject: '',
-    message: '',
-    salutation: '',
-    title: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    vin: '',
-    gear: '',
-    date: '' as unknown as Date,
-    mileage: '' as unknown as number,
-    dealer: '',
-    privacy: false,
+const initialData = {
+  category: '',
+  subject: '',
+  message: '',
+  salutation: '',
+  title: '',
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  vin: '',
+  gear: '',
+  date: '' as unknown as Date,
+  mileage: '' as unknown as number,
+  dealer: '',
+  privacy: false,
+};
+
+type FormModel = typeof initialData;
+
+@Component
+export default class ExampleContactForm extends Vue {
+  public get storefrontTheme(): StorefrontTheme {
+    return this.$store.getters.storefrontTheme;
+  }
+
+  private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
+  private getState = (field: keyof FormModel) => getState(field, this.bag);
+
+  private bag: ValidationBag<FormModel> = {
+    data: { ...initialData },
+    errors: getInitialErrors(initialData),
+    schema: object({
+      category: string().required('What kind of request do you have?'),
+      subject: string().required('Let us know what your inquiry is about'),
+      message: string().required(
+        'Describe your request in a few sentences. This will help us to find a suitable contact person for you'
+      ),
+      salutation: string().required('Please select a form of salutation'),
+      title: string().defined(),
+      firstName: string().required('Please enter your name'),
+      lastName: string().required('Please enter your last name'),
+      email: string().email('Email address seems invalid').required('Please enter your email address'),
+      phone: string().defined(),
+      vin: string().required('We can’t find the vehicle. Please check your entry'),
+      gear: string().required('Please tell us the type of your vehicles transmission'),
+      date: date()
+        .required('Please enter the date of first registration')
+        .typeError('Please enter the date of first registration'),
+      mileage: number().required('What is the mileage of your Porsche?').typeError('Please enter the current mileage'),
+      dealer: string().required('Please choose a Porsche Dealer of your choice'),
+      privacy: boolean()
+        .required('Please accept our privacy policy so that we can process your request')
+        .oneOf([true], 'Please accept our privacy policy so that we can process your request'),
+    }),
   };
 
-  type FormModel = typeof initialData;
-
-  @Component
-  export default class ExampleContactForm extends Vue {
-    public get storefrontTheme(): StorefrontTheme {
-      return this.$store.getters.storefrontTheme;
-    }
-
-    private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
-    private getState = (field: keyof FormModel) => getState(field, this.bag);
-
-    private bag: ValidationBag<FormModel> = {
-      data: { ...initialData },
-      errors: getInitialErrors(initialData),
-      schema: object({
-        category: string().required('What kind of request do you have?'),
-        subject: string().required('Let us know what your inquiry is about'),
-        message: string().required(
-          'Describe your request in a few sentences. This will help us to find a suitable contact person for you'
-        ),
-        salutation: string().required('Please select a form of salutation'),
-        title: string().defined(),
-        firstName: string().required('Please enter your name'),
-        lastName: string().required('Please enter your last name'),
-        email: string().email('Email address seems invalid').required('Please enter your email address'),
-        phone: string().defined(),
-        vin: string().required('We can’t find the vehicle. Please check your entry'),
-        gear: string().required('Please tell us the type of your vehicles transmission'),
-        date: date()
-          .required('Please enter the date of first registration')
-          .typeError('Please enter the date of first registration'),
-        mileage: number()
-          .required('What is the mileage of your Porsche?')
-          .typeError('Please enter the current mileage'),
-        dealer: string().required('Please choose a Porsche Dealer of your choice'),
-        privacy: boolean()
-          .required('Please accept our privacy policy so that we can process your request')
-          .oneOf([true], 'Please accept our privacy policy so that we can process your request'),
-      }),
-    };
-
-    onFieldBlur({ target }: FocusEvent & { target: HTMLInputElement }): void {
-      validateField(target.name as keyof FormModel, this.bag);
-    }
-
-    async onSubmit(): Promise<void> {
-      const isValid = await validateForm(this.bag);
-      console.log('isValid', isValid);
-
-      if (!isValid) {
-        const input = this.$refs[getFirstErrorKey(this.bag)!] as HTMLElement;
-        input.focus();
-        input.parentElement!.scrollIntoView(true); // scroll to wrapper element, so that we can see the label
-      }
-    }
-
-    onReset = (): void => {
-      this.bag.data = { ...initialData };
-      this.bag.errors = getInitialErrors(initialData);
-    };
+  onFieldBlur({ target }: FocusEvent & { target: HTMLInputElement }): void {
+    validateField(target.name as keyof FormModel, this.bag);
   }
+
+  async onSubmit(): Promise<void> {
+    const isValid = await validateForm(this.bag);
+    console.log('isValid', isValid);
+
+    if (!isValid) {
+      const input = this.$refs[getFirstErrorKey(this.bag)!] as HTMLElement;
+      input.focus();
+      input.parentElement!.scrollIntoView(true); // scroll to wrapper element, so that we can see the label
+    }
+  }
+
+  onReset = (): void => {
+    this.bag.data = { ...initialData };
+    this.bag.errors = getInitialErrors(initialData);
+  };
+}
 </script>

@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { dataAdvanced, type DataAdvanced } from '@porsche-design-system/shared';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
 import 'ag-grid-community';
-import { ColDef } from 'ag-grid-community';
 import { type Theme } from '@porsche-design-system/components-angular';
+import { ColDef } from 'ag-grid-community';
 
 type ColumnDefs = DataAdvanced & {
   active: boolean;
@@ -19,6 +19,13 @@ type ColumnDefs = DataAdvanced & {
     [pagination]="true"
   />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  styles: [
+    `
+      @import '@porsche-design-system/components-angular/ag-grid/theme.css';
+    `,
+  ],
+  standalone: false,
 })
 export class AgGridExampleStorefrontComponent {
   public theme: Theme = 'light';

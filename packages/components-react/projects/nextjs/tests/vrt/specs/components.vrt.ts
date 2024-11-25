@@ -1,24 +1,32 @@
 import { expect, test } from '@playwright/test';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt';
+import path from 'path';
+import * as globby from 'globby-legacy';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 
-const components = (TAG_NAMES as unknown as TagName[])
+const sourceDirectory = path.resolve('../../../components-js/src/pages');
+const fileNames = globby.sync(`${sourceDirectory}/*.html`).map((filePath) => path.basename(filePath, '.html'));
+
+const tagNames = (TAG_NAMES as unknown as TagName[])
+  // Filter out components which don't work on their own
   .filter((tagName) => {
-    // TODO: should not needed to be maintained like this, e.g. find a logic here with matching names or use/extend getComponentMeta() accordingly
-    return !/item$|-table-|-select-wrapper-|multi-select-option|select-option|-canvas|-optgroup$/.test(tagName);
+    const { isChunked, requiredParent } = getComponentMeta(tagName);
+    return isChunked && !requiredParent;
   })
   .map((tagName) => {
     return tagName.substring(2);
   });
-// Use for local testing
-// .filter((tagName) => {
-//   // TODO: how does this work? why slice it on every iteration?
-//   const argv = process.argv.slice(5);
-//   return !argv.length || argv.includes(tagName);
-// });
+
+const components = fileNames
+  .filter((name) => tagNames.filter((component) => name.match(new RegExp(`^${component}(-\\d+)?$`))).length > 0)
+  .filter((name) => {
+    const argv = process.argv.slice(5);
+    return !argv.length || argv.includes(name);
+  });
 
 test(`should have certain amount of components`, () => {
-  expect(components.length).toBe(56);
+  expect(components.length).toBe(58);
 });
 
 components.forEach((component) => {

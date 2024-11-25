@@ -6,15 +6,16 @@ import {
   spacingFluidMedium,
   spacingFluidSmall,
 } from '@porsche-design-system/styles';
-import { type BreakpointCustomizable, type Theme } from '../../types';
+import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  dismissButtonJssStyle,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { type ModalBackdrop } from './modal-utils';
+import type { ModalBackdrop } from './modal-utils';
 import {
   dialogGridJssStyle,
   dialogHostJssStyle,
@@ -22,7 +23,6 @@ import {
   getDialogJssStyle,
   getDialogStickyAreaJssStyle,
   getDialogTransitionJssStyle,
-  getDialogDismissButtonJssStyle,
   getScrollerJssStyle,
   headingTags,
 } from '../../styles/dialog-styles';
@@ -157,14 +157,14 @@ export const getComponentCss = (
     },
     ...(hasDismissButton && {
       dismiss: {
-        ...getDialogDismissButtonJssStyle(isOpen),
+        ...dismissButtonJssStyle,
         gridArea: '1/3',
         zIndex: 2, // ensures dismiss button is above sticky footer, header and content
         position: 'sticky',
         insetBlockStart: spacingFluidSmall,
         marginBlockStart: `calc(${spacingFluidMedium} * -1)`,
         marginInlineEnd: spacingFluidSmall,
-        justifySelf: 'flex-end',
+        placeSelf: 'flex-start flex-end',
       },
     }),
   });

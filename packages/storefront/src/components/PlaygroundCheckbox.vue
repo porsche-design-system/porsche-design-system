@@ -6,20 +6,20 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { Prop } from 'vue-property-decorator';
-  import type { PlaygroundTheme } from '../models';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { Prop } from 'vue-property-decorator';
+import type { PlaygroundTheme } from '../models';
 
-  @Component
-  export default class PlaygroundCheckbox extends Vue {
-    @Prop({ default: 'prop' }) public name!: string;
-    @Prop({ default: false }) public checked!: boolean;
+@Component
+export default class PlaygroundCheckbox extends Vue {
+  @Prop({ default: 'prop' }) public name!: string;
+  @Prop({ default: false }) public checked!: boolean;
 
-    get theme(): PlaygroundTheme {
-      return this.$store.getters.playgroundTheme;
-    }
+  get theme(): PlaygroundTheme {
+    return this.$store.getters.playgroundTheme;
   }
+}
 </script>
 
 <style scoped lang="scss">

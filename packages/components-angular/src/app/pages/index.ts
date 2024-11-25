@@ -46,6 +46,19 @@ import { ButtonComponent } from './generated/button.component';
 import { ButtonGroupComponent } from './generated/button-group.component';
 import { ButtonPureComponent } from './generated/button-pure.component';
 import { ButtonTileComponent } from './generated/button-tile.component';
+import { CanvasComponent } from './generated/canvas.component';
+import { CanvasBackgroundComponent } from './generated/canvas-background.component';
+import { CanvasBasicComponent } from './generated/canvas-basic.component';
+import { CanvasCssVariablesComponent } from './generated/canvas-css-variables.component';
+import { CanvasFooterComponent } from './generated/canvas-footer.component';
+import { CanvasGridComponent } from './generated/canvas-grid.component';
+import { CanvasHeaderEndComponent } from './generated/canvas-header-end.component';
+import { CanvasHeaderStartComponent } from './generated/canvas-header-start.component';
+import { CanvasNamedSlotsComponent } from './generated/canvas-named-slots.component';
+import { CanvasScrollableComponent } from './generated/canvas-scrollable.component';
+import { CanvasSidebarEndComponent } from './generated/canvas-sidebar-end.component';
+import { CanvasSidebarStartComponent } from './generated/canvas-sidebar-start.component';
+import { CanvasTitleComponent } from './generated/canvas-title.component';
 import { CarouselComponent } from './generated/carousel.component';
 import { CheckboxComponent } from './generated/checkbox.component';
 import { CheckboxWrapperComponent } from './generated/checkbox-wrapper.component';
@@ -57,11 +70,23 @@ import { DividerComponent } from './generated/divider.component';
 import { FieldsetComponent } from './generated/fieldset.component';
 import { FieldsetWrapperComponent } from './generated/fieldset-wrapper.component';
 import { FlexComponent } from './generated/flex.component';
-import { FlyoutComponent } from './generated/flyout.component';
+import { Flyout_1Component } from './generated/flyout-1.component';
+import { Flyout_2Component } from './generated/flyout-2.component';
 import { FlyoutBasicComponent } from './generated/flyout-basic.component';
 import { FlyoutCssVariablesComponent } from './generated/flyout-css-variables.component';
+import { FlyoutFixedFooterComponent } from './generated/flyout-fixed-footer.component';
+import { FlyoutFixedFooterHeaderComponent } from './generated/flyout-fixed-footer-header.component';
+import { FlyoutFixedFooterHeaderScrollableContentComponent } from './generated/flyout-fixed-footer-header-scrollable-content.component';
+import { FlyoutFixedFooterHeaderSubfooterComponent } from './generated/flyout-fixed-footer-header-subfooter.component';
+import { FlyoutFixedFooterHeaderSubfooterScrollableContentComponent } from './generated/flyout-fixed-footer-header-subfooter-scrollable-content.component';
+import { FlyoutFixedFooterScrollableContentComponent } from './generated/flyout-fixed-footer-scrollable-content.component';
+import { FlyoutFixedFooterScrollableContentScrolledComponent } from './generated/flyout-fixed-footer-scrollable-content-scrolled.component';
+import { FlyoutFixedFooterSubfooterComponent } from './generated/flyout-fixed-footer-subfooter.component';
+import { FlyoutFixedFooterSubfooterScrollableContentComponent } from './generated/flyout-fixed-footer-subfooter-scrollable-content.component';
+import { FlyoutFixedFooterSubfooterScrollableContentScrolledComponent } from './generated/flyout-fixed-footer-subfooter-scrollable-content-scrolled.component';
 import { FlyoutFooterComponent } from './generated/flyout-footer.component';
 import { FlyoutFooterScrollableContentComponent } from './generated/flyout-footer-scrollable-content.component';
+import { FlyoutFooterScrolledComponent } from './generated/flyout-footer-scrolled.component';
 import { FlyoutGridComponent } from './generated/flyout-grid.component';
 import { FlyoutHeaderComponent } from './generated/flyout-header.component';
 import { FlyoutHeaderFooterComponent } from './generated/flyout-header-footer.component';
@@ -74,7 +99,6 @@ import { FlyoutHeaderFooterSubfooterPositionStartComponent } from './generated/f
 import { FlyoutHeaderFooterSubfooterScrollableContentComponent } from './generated/flyout-header-footer-subfooter-scrollable-content.component';
 import { FlyoutHeaderFooterSubfooterScrolledComponent } from './generated/flyout-header-footer-subfooter-scrolled.component';
 import { FlyoutHeaderFooterSubfooterScrolledOverlapComponent } from './generated/flyout-header-footer-subfooter-scrolled-overlap.component';
-import { FlyoutHeaderFooterSubfooterSlottedAnchorComponent } from './generated/flyout-header-footer-subfooter-slotted-anchor.component';
 import { FlyoutHeaderScrollableContentComponent } from './generated/flyout-header-scrollable-content.component';
 import { FlyoutMultilevelComponent } from './generated/flyout-multilevel.component';
 import { FlyoutMultilevelActiveIdentifierComponent } from './generated/flyout-multilevel-active-identifier.component';
@@ -102,6 +126,7 @@ import { ModalBackdropShadingComponent } from './generated/modal-backdrop-shadin
 import { ModalBasicComponent } from './generated/modal-basic.component';
 import { ModalCssVariablesComponent } from './generated/modal-css-variables.component';
 import { ModalDisableCloseButtonComponent } from './generated/modal-disable-close-button.component';
+import { ModalFooterScrolledComponent } from './generated/modal-footer-scrolled.component';
 import { ModalFullscreenComponent } from './generated/modal-fullscreen.component';
 import { ModalFullscreenResponsiveComponent } from './generated/modal-fullscreen-responsive.component';
 import { ModalGridComponent } from './generated/modal-grid.component';
@@ -167,6 +192,19 @@ export const generatedPages = [
   ButtonGroupComponent,
   ButtonPureComponent,
   ButtonTileComponent,
+  CanvasComponent,
+  CanvasBackgroundComponent,
+  CanvasBasicComponent,
+  CanvasCssVariablesComponent,
+  CanvasFooterComponent,
+  CanvasGridComponent,
+  CanvasHeaderEndComponent,
+  CanvasHeaderStartComponent,
+  CanvasNamedSlotsComponent,
+  CanvasScrollableComponent,
+  CanvasSidebarEndComponent,
+  CanvasSidebarStartComponent,
+  CanvasTitleComponent,
   CarouselComponent,
   CheckboxComponent,
   CheckboxWrapperComponent,
@@ -178,11 +216,23 @@ export const generatedPages = [
   FieldsetComponent,
   FieldsetWrapperComponent,
   FlexComponent,
-  FlyoutComponent,
+  Flyout_1Component,
+  Flyout_2Component,
   FlyoutBasicComponent,
   FlyoutCssVariablesComponent,
+  FlyoutFixedFooterComponent,
+  FlyoutFixedFooterHeaderComponent,
+  FlyoutFixedFooterHeaderScrollableContentComponent,
+  FlyoutFixedFooterHeaderSubfooterComponent,
+  FlyoutFixedFooterHeaderSubfooterScrollableContentComponent,
+  FlyoutFixedFooterScrollableContentComponent,
+  FlyoutFixedFooterScrollableContentScrolledComponent,
+  FlyoutFixedFooterSubfooterComponent,
+  FlyoutFixedFooterSubfooterScrollableContentComponent,
+  FlyoutFixedFooterSubfooterScrollableContentScrolledComponent,
   FlyoutFooterComponent,
   FlyoutFooterScrollableContentComponent,
+  FlyoutFooterScrolledComponent,
   FlyoutGridComponent,
   FlyoutHeaderComponent,
   FlyoutHeaderFooterComponent,
@@ -195,7 +245,6 @@ export const generatedPages = [
   FlyoutHeaderFooterSubfooterScrollableContentComponent,
   FlyoutHeaderFooterSubfooterScrolledComponent,
   FlyoutHeaderFooterSubfooterScrolledOverlapComponent,
-  FlyoutHeaderFooterSubfooterSlottedAnchorComponent,
   FlyoutHeaderScrollableContentComponent,
   FlyoutMultilevelComponent,
   FlyoutMultilevelActiveIdentifierComponent,
@@ -223,6 +272,7 @@ export const generatedPages = [
   ModalBasicComponent,
   ModalCssVariablesComponent,
   ModalDisableCloseButtonComponent,
+  ModalFooterScrolledComponent,
   ModalFullscreenComponent,
   ModalFullscreenResponsiveComponent,
   ModalGridComponent,
@@ -350,6 +400,71 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: ButtonTileComponent,
   },
   {
+    name: 'Canvas',
+    path: 'canvas',
+    component: CanvasComponent,
+  },
+  {
+    name: 'Canvas Background',
+    path: 'canvas-background',
+    component: CanvasBackgroundComponent,
+  },
+  {
+    name: 'Canvas Basic',
+    path: 'canvas-basic',
+    component: CanvasBasicComponent,
+  },
+  {
+    name: 'Canvas Css Variables',
+    path: 'canvas-css-variables',
+    component: CanvasCssVariablesComponent,
+  },
+  {
+    name: 'Canvas Footer',
+    path: 'canvas-footer',
+    component: CanvasFooterComponent,
+  },
+  {
+    name: 'Canvas Grid',
+    path: 'canvas-grid',
+    component: CanvasGridComponent,
+  },
+  {
+    name: 'Canvas Header End',
+    path: 'canvas-header-end',
+    component: CanvasHeaderEndComponent,
+  },
+  {
+    name: 'Canvas Header Start',
+    path: 'canvas-header-start',
+    component: CanvasHeaderStartComponent,
+  },
+  {
+    name: 'Canvas Named Slots',
+    path: 'canvas-named-slots',
+    component: CanvasNamedSlotsComponent,
+  },
+  {
+    name: 'Canvas Scrollable',
+    path: 'canvas-scrollable',
+    component: CanvasScrollableComponent,
+  },
+  {
+    name: 'Canvas Sidebar End',
+    path: 'canvas-sidebar-end',
+    component: CanvasSidebarEndComponent,
+  },
+  {
+    name: 'Canvas Sidebar Start',
+    path: 'canvas-sidebar-start',
+    component: CanvasSidebarStartComponent,
+  },
+  {
+    name: 'Canvas Title',
+    path: 'canvas-title',
+    component: CanvasTitleComponent,
+  },
+  {
     name: 'Carousel',
     path: 'carousel',
     component: CarouselComponent,
@@ -400,9 +515,14 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: FlexComponent,
   },
   {
-    name: 'Flyout',
-    path: 'flyout',
-    component: FlyoutComponent,
+    name: 'Flyout 1',
+    path: 'flyout-1',
+    component: Flyout_1Component,
+  },
+  {
+    name: 'Flyout 2',
+    path: 'flyout-2',
+    component: Flyout_2Component,
   },
   {
     name: 'Flyout Basic',
@@ -415,6 +535,56 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: FlyoutCssVariablesComponent,
   },
   {
+    name: 'Flyout Fixed Footer',
+    path: 'flyout-fixed-footer',
+    component: FlyoutFixedFooterComponent,
+  },
+  {
+    name: 'Flyout Fixed Footer Header',
+    path: 'flyout-fixed-footer-header',
+    component: FlyoutFixedFooterHeaderComponent,
+  },
+  {
+    name: 'Flyout Fixed Footer Header Scrollable Content',
+    path: 'flyout-fixed-footer-header-scrollable-content',
+    component: FlyoutFixedFooterHeaderScrollableContentComponent,
+  },
+  {
+    name: 'Flyout Fixed Footer Header Subfooter',
+    path: 'flyout-fixed-footer-header-subfooter',
+    component: FlyoutFixedFooterHeaderSubfooterComponent,
+  },
+  {
+    name: 'Flyout Fixed Footer Header Subfooter Scrollable Content',
+    path: 'flyout-fixed-footer-header-subfooter-scrollable-content',
+    component: FlyoutFixedFooterHeaderSubfooterScrollableContentComponent,
+  },
+  {
+    name: 'Flyout Fixed Footer Scrollable Content',
+    path: 'flyout-fixed-footer-scrollable-content',
+    component: FlyoutFixedFooterScrollableContentComponent,
+  },
+  {
+    name: 'Flyout Fixed Footer Scrollable Content Scrolled',
+    path: 'flyout-fixed-footer-scrollable-content-scrolled',
+    component: FlyoutFixedFooterScrollableContentScrolledComponent,
+  },
+  {
+    name: 'Flyout Fixed Footer Subfooter',
+    path: 'flyout-fixed-footer-subfooter',
+    component: FlyoutFixedFooterSubfooterComponent,
+  },
+  {
+    name: 'Flyout Fixed Footer Subfooter Scrollable Content',
+    path: 'flyout-fixed-footer-subfooter-scrollable-content',
+    component: FlyoutFixedFooterSubfooterScrollableContentComponent,
+  },
+  {
+    name: 'Flyout Fixed Footer Subfooter Scrollable Content Scrolled',
+    path: 'flyout-fixed-footer-subfooter-scrollable-content-scrolled',
+    component: FlyoutFixedFooterSubfooterScrollableContentScrolledComponent,
+  },
+  {
     name: 'Flyout Footer',
     path: 'flyout-footer',
     component: FlyoutFooterComponent,
@@ -423,6 +593,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Flyout Footer Scrollable Content',
     path: 'flyout-footer-scrollable-content',
     component: FlyoutFooterScrollableContentComponent,
+  },
+  {
+    name: 'Flyout Footer Scrolled',
+    path: 'flyout-footer-scrolled',
+    component: FlyoutFooterScrolledComponent,
   },
   {
     name: 'Flyout Grid',
@@ -483,11 +658,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Flyout Header Footer Subfooter Scrolled Overlap',
     path: 'flyout-header-footer-subfooter-scrolled-overlap',
     component: FlyoutHeaderFooterSubfooterScrolledOverlapComponent,
-  },
-  {
-    name: 'Flyout Header Footer Subfooter Slotted Anchor',
-    path: 'flyout-header-footer-subfooter-slotted-anchor',
-    component: FlyoutHeaderFooterSubfooterSlottedAnchorComponent,
   },
   {
     name: 'Flyout Header Scrollable Content',
@@ -623,6 +793,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Modal Disable Close Button',
     path: 'modal-disable-close-button',
     component: ModalDisableCloseButtonComponent,
+  },
+  {
+    name: 'Modal Footer Scrolled',
+    path: 'modal-footer-scrolled',
+    component: ModalFooterScrolledComponent,
   },
   {
     name: 'Modal Fullscreen',

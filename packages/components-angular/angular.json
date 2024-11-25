@@ -15,7 +15,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-builders/custom-webpack:browser",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/demo-app",
             "index": "src/index.html",
@@ -24,13 +24,9 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": ["src/favicon.ico"],
-            "styles": [
-              "@porsche-design-system/shared/css/styles.css",
-              "@porsche-design-system/components-angular/ag-grid/theme.css"
-            ],
+            "styles": ["@porsche-design-system/shared/css/styles.css"],
             "inlineStyleLanguage": "scss",
-            "scripts": [],
-            "indexTransform": "./scripts/injectPartials.js"
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -56,22 +52,22 @@
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "6kb",
-                  "maximumError": "25kb"
+                  "maximumError": "300kb"
                 }
               ]
             }
           }
         },
         "serve": {
-          "builder": "@angular-builders/custom-webpack:dev-server",
+          "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "host": "0.0.0.0",
             "publicHost": "localhost:4200",
-            "browserTarget": "demo-app:build"
+            "buildTarget": "demo-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "demo-app:build:production"
+              "buildTarget": "demo-app:build:production"
             }
           }
         },

@@ -1,4 +1,4 @@
-import { type JssStyle } from 'jss';
+import type { JssStyle } from 'jss';
 import {
   frostedGlassStyle,
   gridGap,
@@ -9,7 +9,6 @@ import {
 } from '@porsche-design-system/styles';
 import {
   cssVariableTransitionDuration,
-  dismissButtonJssStyle,
   getThemedColors,
   getTransition,
   motionDurationMap,
@@ -110,6 +109,7 @@ export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end', th
 
   return {
     position: 'absolute',
+    isolation: 'isolate', // creates new stacking context to show scrollbars on top of header/footer areas (on iOS/iPadOS)
     display: 'grid',
     ...(position === 'fullscreen'
       ? {
@@ -129,10 +129,12 @@ export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end', th
   };
 };
 
+export const dialogPaddingBlock = `calc(${spacingFluidSmall} + ${spacingFluidMedium})`;
+
 export const dialogGridJssStyle: JssStyle = {
   display: 'grid',
   gridTemplate: `auto/${spacingFluidSmall} auto ${spacingFluidSmall}`,
-  paddingBlock: `calc(${spacingFluidSmall} + ${spacingFluidMedium})`,
+  paddingBlock: dialogPaddingBlock,
   rowGap: spacingFluidMedium,
   columnGap: `calc(${spacingFluidLarge} - ${spacingFluidSmall})`,
   alignContent: 'flex-start',
@@ -172,20 +174,6 @@ export const getDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '
           },
         }),
     transition: `${getTransition('opacity', duration, easing)}, ${getTransition('transform', duration, easing)}`,
-  };
-};
-
-export const getDialogDismissButtonJssStyle = (isOpen: boolean, applyAutoFocusHack: boolean = false): JssStyle => {
-  return {
-    ...dismissButtonJssStyle,
-    // we need to ensure that the dismiss button, which gets auto focused by `.showModal()`, to always be in the
-    // viewport (or off the view on the start-hand side) before the dialog transition starts otherwise the transition
-    // won't work in all cases, e.g. `dir="rtl"` and `<p-flyout position="end" />`. Because auto focus would force the
-    // dismiss button to be rendered in the viewport immediately and ignore the transition.
-    ...(applyAutoFocusHack && {
-      marginInlineEnd: isOpen ? 0 : '200vw',
-      transition: `margin-inline-end 0s linear var(${cssVariableTransitionDuration}, ${isOpen ? '1ms' : '0s'})`,
-    }),
   };
 };
 

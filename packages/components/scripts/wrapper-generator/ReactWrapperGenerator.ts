@@ -1,5 +1,5 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { camelCase, pascalCase } from 'latest-change-case';
+import { camelCase, pascalCase } from 'change-case';
 import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
 
@@ -115,6 +115,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
 
     const componentPropsArr: string[] = [
       '...rest',
+      'hidden: rest.hidden ? "" : undefined',
       `class: useMergedClass(elementRef, className)`,
       'ref: syncRef(elementRef, ref)',
     ];
@@ -125,7 +126,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
 
     const genericType = hasGeneric ? '<T extends object>' : '';
 
-    return `${this.inputParser.getDeprecationMessage(component)}export const ${pascalCase(component)} = forwardRef(
+    return `${this.inputParser.getDeprecationMessage(component)}export const ${pascalCase(component)} = /*#__PURE__*/ forwardRef(
   ${genericType}(
     ${wrapperProps}: ${wrapperPropsType},
     ref: ForwardedRef<HTMLElement>

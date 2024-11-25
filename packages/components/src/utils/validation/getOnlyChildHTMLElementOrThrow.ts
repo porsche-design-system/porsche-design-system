@@ -3,9 +3,15 @@ import { getTagNameWithoutPrefix, throwException } from '..';
 import { getDirectChildHTMLElement } from '../dom/getDirectChildHTMLElement';
 
 // prettier-ignore
-export function getOnlyChildHTMLElementOrThrow<K extends keyof HTMLElementTagNameMap>(element: HTMLElement, selector: K): HTMLElementTagNameMap[K] | null;
+export function getOnlyChildHTMLElementOrThrow<K extends keyof HTMLElementTagNameMap>(
+  element: HTMLElement,
+  selector: K
+): HTMLElementTagNameMap[K] | null;
 // prettier-ignore
-export function getOnlyChildHTMLElementOrThrow<E extends Element = Element>(element: HTMLElement, selector: string): E | null;
+export function getOnlyChildHTMLElementOrThrow<E extends Element = Element>(
+  element: HTMLElement,
+  selector: string
+): E | null;
 export function getOnlyChildHTMLElementOrThrow(element: HTMLElement, selector: string): any {
   const directChild = getDirectChildHTMLElement(element, selector);
 

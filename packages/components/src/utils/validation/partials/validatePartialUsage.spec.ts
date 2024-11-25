@@ -32,7 +32,7 @@ beforeAll(() => {
 });
 
 afterAll(() => {
-  delete document.porscheDesignSystem; // reset pds document
+  document.porscheDesignSystem = undefined; // reset pds document
 });
 
 beforeEach(() => {

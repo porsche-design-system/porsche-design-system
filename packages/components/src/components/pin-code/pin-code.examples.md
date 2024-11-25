@@ -12,6 +12,13 @@ A few things to note:
   transfers to the next/previous input, and clears the value of the next/previous input (if any). This avoids the need
   to explicitly `Shift+Tab & Delete`/ `Tab & Backspace`.
 
+<Notification heading="Attention" heading-tag="h2" state="warning">
+When the <code>p-pin-code</code> component is used within a form, it utilizes the
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals">ElementInternals</a> API, which has limited
+browser support. For broader browser compatibility, consider using a
+<a href="components/textarea/examples#controlled">controlled</a> approach instead.
+</Notification>
+
 <TableOfContents></TableOfContents>
 
 ## Basic
@@ -90,11 +97,18 @@ allowed.
 
 ## Framework Implementation (within form)
 
-When used within a form element, the `p-pin-code` component creates a native hidden input in light DOM to process the
-`p-pin-code`'s value. This is required due to the constraints of shadow DOM boundaries. To ensure proper submission of
-the form, it's required to provide an individual `name` prop to the `p-pin-code` component. The prop will be shared with
-the hidden input in light DOM', enabling the `p-pin-code`'s value to be included in the form's data when it is
-submitted.
+The `p-pin-code` component is a form-associated custom element that integrates seamlessly with forms. Leveraging the
+[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API, it functions like a native
+input, ensuring compatibility with form behaviors. However, note that browser support for this API is limited.
+
+To ensure proper submission of the form, it's required to provide an individual `name` prop to the `p-pin-code`
+component, enabling the `p-pin-code`'s value to be included in the form's data when it is submitted.
+
+<Notification heading="Attention" heading-tag="h2" state="warning">
+<code>p-pin-code</code> does not use a native input internally. As a result, it lacks access to native <code>ValidityState</code>
+properties and <code>validationMessage</code>, and it cannot display the native validation popover. This means validation behavior
+and error display will need to be implemented separately if required.
+</Notification>
 
 <Playground :frameworkMarkup="formExample" :config="config">
   <form @submit.prevent="onSubmit" >

@@ -13,8 +13,7 @@ describe('connectedCallback', () => {
 
     try {
       component.connectedCallback();
-    } catch {
-    }
+    } catch {}
 
     expect(spy).toHaveBeenCalledWith(component.host, 'sort');
   });

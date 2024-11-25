@@ -29,7 +29,7 @@ exports[`should call validateProps() with correct parameters via render for p-ba
 exports[`should call validateProps() with correct parameters via render for p-button: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
-  "compact": "boolean",
+  "compact": "breakpoint",
   "disabled": "boolean",
   "hideLabel": "breakpoint",
   "icon": "string",
@@ -92,9 +92,7 @@ exports[`should call validateProps() with correct parameters via render for p-bu
 
 exports[`should call validateProps() with correct parameters via render for p-canvas: propTypes with ValidatorFunctions 1`] = `
 {
-  "sidebarEndIcon": "string",
   "sidebarEndOpen": "boolean",
-  "sidebarStartIcon": "string",
   "sidebarStartOpen": "boolean",
   "theme": "oneOf",
 }
@@ -237,6 +235,7 @@ exports[`should call validateProps() with correct parameters via render for p-fl
 {
   "aria": "aria",
   "disableBackdropClick": "boolean",
+  "footerBehavior": "oneOf",
   "open": "boolean",
   "position": "oneOf",
   "theme": "oneOf",
@@ -325,7 +324,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
 exports[`should call validateProps() with correct parameters via render for p-link: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
-  "compact": "boolean",
+  "compact": "breakpoint",
   "download": "string",
   "hideLabel": "breakpoint",
   "href": "string",
@@ -460,6 +459,7 @@ exports[`should call validateProps() with correct parameters via render for p-mu
   "description": "string",
   "disabled": "boolean",
   "dropdownDirection": "oneOf",
+  "form": "string",
   "hideLabel": "breakpoint",
   "label": "string",
   "message": "string",
@@ -504,6 +504,7 @@ exports[`should call validateProps() with correct parameters via render for p-pi
 {
   "description": "string",
   "disabled": "boolean",
+  "form": "string",
   "hideLabel": "breakpoint",
   "label": "string",
   "length": "oneOf",
@@ -576,6 +577,7 @@ exports[`should call validateProps() with correct parameters via render for p-se
   "description": "string",
   "disabled": "boolean",
   "dropdownDirection": "oneOf",
+  "form": "string",
   "hideLabel": "breakpoint",
   "label": "string",
   "message": "string",

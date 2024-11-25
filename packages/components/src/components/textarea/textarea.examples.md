@@ -31,9 +31,7 @@ synchronized with user input.
 
 The `p-textarea` component is a form-associated custom element that integrates seamlessly with forms. Leveraging the
 [ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API, it functions like a native
-textarea, ensuring compatibility with form behaviors. However, note that browser support for this API is limited. At
-present, the component only supports including the textarea value in the `FormData` object during form submission and
-resetting the form. Native form validation features are not yet supported.
+textarea, ensuring compatibility with form behaviors. However, note that browser support for this API is limited.
 
 <Playground :frameworkMarkup="formExample" :config="{ ...config, withoutDemo: true }">
   <form @submit.prevent="onSubmit">
@@ -129,7 +127,7 @@ export default class Code extends Vue {
     return `<p-textarea name="some-name" label="Some label" value="Some value" state="${this.state}" ${attr}></p-textarea>`;
     }
     
-  slots = `<p-textarea name="some-name" aria-labelledby="some-label-id" aria-describedby="some-description-id some-message-id" state="error">
+  slots = `<p-textarea name="some-name" state="error">
   <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
   <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
   <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>

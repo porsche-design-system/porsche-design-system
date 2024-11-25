@@ -1,17 +1,17 @@
-@import 'lib/border';
-@import 'lib/theme';
-@import 'lib/motion';
+@use 'lib/border';
+@use 'lib/theme';
+@use 'lib/motion';
 
 @mixin pds-skeleton($theme: 'light') {
   @if ($theme == 'dark') {
-    background: $pds-theme-dark-background-surface
+    background: theme.$pds-theme-dark-background-surface
       linear-gradient(to right, transparent 0%, #1a1b1e 20%, transparent 50%)
       0
       0 /
       200%
       100%;
   } @else {
-    background: $pds-theme-light-background-surface
+    background: theme.$pds-theme-light-background-surface
       linear-gradient(to right, transparent 0%, #f7f7f7 20%, transparent 50%)
       0
       0 /
@@ -20,9 +20,9 @@
   }
 
   display: block;
-  border-radius: $pds-border-radius-small;
+  border-radius: border.$pds-border-radius-small;
 
-  animation: skeletonAnimation $pds-motion-duration-long $pds-motion-easing-base infinite;
+  animation: skeletonAnimation motion.$pds-motion-duration-long motion.$pds-motion-easing-base infinite;
 
   @keyframes skeletonAnimation {
     from {

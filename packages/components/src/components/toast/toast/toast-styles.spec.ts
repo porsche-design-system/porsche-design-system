@@ -1,4 +1,4 @@
-import { getComponentCss, getKeyframesMobile, KeyframesDirection } from './toast-styles';
+import { getComponentCss, getKeyframesMobile, type KeyframesDirection } from './toast-styles';
 import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
 
 describe('getKeyframesMobile()', () => {

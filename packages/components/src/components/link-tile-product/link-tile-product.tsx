@@ -130,7 +130,7 @@ export class LinkTileProduct {
             aria-describedby={`${headerId} ${descriptionId}`}
           />
         ) : (
-          <slot name={anchorSlot}></slot>
+          <slot name={anchorSlot} />
         )}
         <div id={headerId} class="header">
           <slot name={headerSlot} />

@@ -1,11 +1,11 @@
-import * as path from 'path';
 import * as fs from 'fs';
-import { globbySync } from 'globby';
-import { kebabCase, pascalCase } from 'latest-change-case';
-import { breakpoint } from '@porsche-design-system/styles';
+import * as path from 'path';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
-import { getComponentMeta } from '@porsche-design-system/component-meta';
+import { breakpoint } from '@porsche-design-system/styles';
+import { kebabCase, pascalCase } from 'change-case';
+import { globbySync } from 'globby';
 
 const EXCLUDED_COMPONENTS: TagName[] = ['p-toast-item'];
 
@@ -189,7 +189,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             `namedSlotChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
           )
           .replace(
-            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|header|controls|footer|sub-footer|sidebar-start|sidebar-end)'\)/g,
+            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|background)'\)/g,
             `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
           );
       } else if (newFileContent.includes('FunctionalComponent')) {
@@ -314,6 +314,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       } else if (tagName === 'p-modal') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasFooter|hasDismissButton)/g, '$1')
+          .replace(/(this\.props\.ariaLabel)\(\)/g, '$1')
           .replace(/hasHeader =/, 'const $&')
           .replace(/hasFooter =/, 'const $&')
           .replace(
@@ -488,7 +489,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           // replace toggle icon className
           .replace(/className=\{\{ icon: true, 'icon--rotate': this\.props\.isOpen }}/, 'className="icon"')
           .replace(/this\.props\.currentValue\.length > 0/g, 'this.props.currentValue')
-          .replace(/getSelectedOptions\(this\.props\.multiSelectOptions\)\.length > 0/, 'false');
+          .replace(/getSelectedOptions\(this\.props\.multiSelectOptions\)\.length > 0/, 'false')
+          // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
+          .replace(/@AttachInternals\(\)/, '')
+          .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
+          .replace(/this\.props\.disabled = disabled;/, '')
+          .replace(/this\.props\.value = state.getAll\(this.props.name\) as string\[];/, '')
+          .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
+          .replace(/formStateRestoreCallback\(state: FormData\)/, 'formStateRestoreCallback()');
       } else if (tagName === 'p-multi-select-option') {
         newFileContent = newFileContent
           // remove any jsx since options are not visible in closed multi-select
@@ -514,7 +522,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           )
           .replace(/<span className="sr-only"[^<]*<\/span>/, '')
           // .replace(/(SelectDropdownDirectionInternal)/, 'type $1')
-          .replace(/private searchTimeout: any\.Timeout \| number = null;/, '');
+          .replace(/private searchTimeout: any\.Timeout \| number = null;/, '')
+          // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
+          .replace(/@AttachInternals\(\)/, '')
+          .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
+          .replace(/this\.props\.disabled = disabled;/, '')
+          .replace(/this\.props\.value = state;/, '')
+          .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
+          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
       } else if (tagName === 'p-select-option') {
         newFileContent = newFileContent.replace(/this\.theme/, 'this.props.theme');
       } else if (tagName === 'p-text-field-wrapper') {
@@ -564,7 +579,15 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 $&`
           );
       } else if (tagName === 'p-pin-code') {
-        newFileContent = newFileContent.replace(/value={/, 'defaultValue={'); // fix warning about read-only field
+        newFileContent = newFileContent
+          .replace(/value={/, 'defaultValue={') // fix warning about read-only field
+          // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
+          .replace(/@AttachInternals\(\)/, '')
+          .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
+          .replace(/this\.props\.disabled = disabled;/, '')
+          .replace(/this\.props\.value = state;/, '')
+          .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
+          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
       } else if (tagName === 'p-flyout-multilevel') {
         newFileContent = newFileContent
           .replace(/validateActiveIdentifier\(.*\);/g, '')
@@ -616,15 +639,30 @@ $&`
           .replace(/autofocus/, 'autoFocus')
           .replace(/spellcheck/, 'spellCheck')
           .replace(/autocomplete/, 'autoComplete')
-          .replace(/this\.props\.value = '';/, '');
+          // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
+          .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
+          .replace(/this\.props\.disabled = disabled;/, '')
+          .replace(/this\.props\.value = state;/, '')
+          .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
+          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
       } else if (tagName === 'p-canvas') {
         newFileContent = newFileContent
-          .replace(/this\.props\.(hasSidebarStart|hasSidebarEnd)/g, '$1')
-          .replace(/(?:hasSidebarStart|hasSidebarEnd) =/g, 'const $&');
+          .replace(
+            /this\.props\.(hasTitle|hasSidebarStart|hasSidebarEnd|hasHeaderStart|hasHeaderEnd|hasFooter|hasBackground)/g,
+            '$1'
+          )
+          .replace(
+            /(?:hasTitle|hasSidebarStart|hasSidebarEnd|hasHeaderStart|hasHeaderEnd|hasFooter|hasBackground) =/g,
+            'const $&'
+          );
       } else if (tagName === 'p-checkbox') {
         newFileContent = newFileContent
           .replace(/@AttachInternals\(\)/, '')
-          .replace(/this\.props\.checked = false;/, '');
+          .replace(/this\.props\.checked = this\.props\.defaultChecked;/, '')
+          .replace(/this\.props\.disabled = disabled;/, '')
+          .replace(/this\.props\.checked = !!state;/, '')
+          .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
+          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
       }
 
       return newFileContent;

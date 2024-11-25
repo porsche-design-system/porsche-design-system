@@ -1,4 +1,5 @@
-import { Component, Element, h, Host, type JSX, Prop, State } from '@stencil/core';
+import { Component, Element, Host, type JSX, Prop, State, h } from '@stencil/core';
+import type { Theme } from '../../../types';
 import {
   addNativePopoverScrollAndResizeListeners,
   attachComponentCss,
@@ -23,6 +24,7 @@ import type {
   SelectWrapperDropdownDirection,
   SelectWrapperState,
 } from '../select-wrapper/select-wrapper-utils';
+import { getComponentCss } from './select-wrapper-dropdown-styles';
 import {
   type DropdownInteractionType,
   type OptionMap,
@@ -45,12 +47,10 @@ import {
   setLastHighlightedOptionMaps,
   setSelectedOptionMaps,
 } from './select-wrapper-dropdown-utils';
-import type { Theme } from '../../../types';
-import { getComponentCss } from './select-wrapper-dropdown-styles';
 
 @Component({
   tag: 'p-select-wrapper-dropdown',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class SelectWrapperDropdown {
   @Element() public host!: HTMLElement;
@@ -73,7 +73,7 @@ export class SelectWrapperDropdown {
   @State() private searchString = '';
 
   private inputElement: HTMLInputElement;
-  private listElement: HTMLUListElement;
+  private listElement: HTMLElement;
   private isNativePopoverCase: boolean = false;
   private parentTableElement: HTMLElement;
   private popoverElement: HTMLElement;
@@ -222,7 +222,7 @@ export class SelectWrapperDropdown {
             ref={(el) => (this.popoverElement = el)}
           >
             {this.isOpen && (
-              <ul
+              <div
                 id={dropdownId}
                 role="listbox"
                 tabIndex={-1}
@@ -230,10 +230,10 @@ export class SelectWrapperDropdown {
                 ref={(el) => (this.listElement = el)}
               >
                 {this.filter && !hasFilterResults(this.optionMaps) ? (
-                  <li class="option" aria-live="polite" role="status">
+                  <div class="option" aria-live="polite" role="option">
                     <span aria-hidden="true">---</span>
                     <span class="option__sr">No results found</span>
-                  </li>
+                  </div>
                 ) : (
                   this.optionMaps.map((option, index) => {
                     const {
@@ -261,7 +261,7 @@ export class SelectWrapperDropdown {
                           {title}
                         </span>
                       ),
-                      <li
+                      <div
                         id={`option-${index}`}
                         role="option"
                         class={{
@@ -284,11 +284,11 @@ export class SelectWrapperDropdown {
                             theme={this.theme}
                           />
                         )}
-                      </li>,
+                      </div>,
                     ];
                   })
                 )}
-              </ul>
+              </div>
             )}
           </div>,
         ]}
@@ -304,9 +304,9 @@ export class SelectWrapperDropdown {
   }
 
   private observeOptions(): void {
-    getOptionsElements(this.selectRef).forEach((el) =>
-      observeProperties(el, ['selected', 'disabled'], this.setOptionMaps)
-    );
+    for (const el of getOptionsElements(this.selectRef)) {
+      observeProperties(el, ['selected', 'disabled'], this.setOptionMaps);
+    }
   }
 
   private onClickOutside = (e: MouseEvent): void => {
@@ -337,15 +337,17 @@ export class SelectWrapperDropdown {
   private onComboboxKeyDown = (e: KeyboardEvent): void => {
     switch (e.key) {
       case 'ArrowUp':
-      case 'Up':
+      case 'Up': {
         e.preventDefault();
         this.cycleDropdown('up');
         break;
+      }
       case 'ArrowDown':
-      case 'Down':
+      case 'Down': {
         e.preventDefault();
         this.cycleDropdown('down');
         break;
+      }
       case ' ':
       case 'Spacebar':
       case 'Enter':
@@ -369,10 +371,11 @@ export class SelectWrapperDropdown {
         }
         break;
       case 'Escape':
-      case 'Tab':
+      case 'Tab': {
         this.setDropdownVisibility('hide');
         this.resetHighlightedToSelectedOptionMaps();
         break;
+      }
       case 'PageUp':
         if (this.isOpen) {
           e.preventDefault();

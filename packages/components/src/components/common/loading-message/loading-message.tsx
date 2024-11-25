@@ -10,7 +10,7 @@ export const loadingId = 'loading';
 export const LoadingMessage: FunctionalComponent<LoadingMessageProps> = ({ loading, initialLoading }) => {
   return (
     <span id={loadingId} class="loading" role="status">
-      {loading ? 'Loading' : !initialLoading ? '' : 'Loading finished'}
+      {loading ? 'Loading' : initialLoading ? 'Loading finished' : ''}
     </span>
   );
 };
