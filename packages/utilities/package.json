@@ -13,6 +13,9 @@
     "test:unit": "yarn --cwd ./projects/utilities test:unit",
     "clean:build": "yarn --cwd ./projects/utilities clean:build"
   },
+  "devDependencies": {
+    "react-scripts": "^5.0.1"
+  },
   "volta": {
     "extends": "../../package.json"
   }
