@@ -66,7 +66,7 @@ export const getComponentCss = (
         ...(isPrimary && {
           '--_p-flyout-multilevel-button': 'block',
         }),
-        overflow: 'auto',
+        overflow: 'hidden auto',
         // cssVariableVisibility ensures secondary scroller is not tabbable when whole flyout-multilevel is closed
         // on mobile we need to decide if secondary scroller needs to be visible or not, on desktop it's not necessary but also doesn't harm
         visibility: `var(${cssVariableVisibility},${isSecondaryScrollerVisible ? 'hidden' : 'inherit'})`,
@@ -82,7 +82,7 @@ export const getComponentCss = (
         ...prefersColorSchemeDarkMediaQuery(theme, {
           backgroundColor: backgroundColorDark,
         }),
-        padding: `${spacingFluidSmall} ${spacingFluidLarge} ${spacingFluidLarge}`,
+        // padding: `${spacingFluidSmall} ${spacingFluidLarge} ${spacingFluidLarge}`,
 
         ...(isPrimary
           ? {
@@ -99,7 +99,7 @@ export const getComponentCss = (
         [mediaQueryEnhancedView]: {
           visibility: 'inherit',
           // transition: 'initial',
-          padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
+          // padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
         },
       },
       ...preventFoucOfNestedElementsStyles,
@@ -190,9 +190,9 @@ export const getContentJssStyle = (): JssStyle => {
     display: 'flex',
     flexDirection: 'column',
     gap: spacingFluidXSmall,
-    padding: `${spacingFluidSmall} ${spacingFluidLarge} ${spacingFluidLarge}`,
-    [mediaQueryEnhancedView]: {
-      padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
-    },
+    // padding: `${spacingFluidSmall} ${spacingFluidLarge} ${spacingFluidLarge}`,
+    // [mediaQueryEnhancedView]: {
+    //   padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
+    // },
   };
 };

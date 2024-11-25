@@ -215,7 +215,7 @@ export const getComponentCss = (
       }),
       width: '100vw',
       boxSizing: 'border-box',
-      overflow: 'auto',
+      overflow: 'hidden auto',
       ...dropShadowHighStyle,
       // it's important to define background-color for each scroller to have correct scrollbar coloring
       backgroundColor: backgroundSurfaceColor,
