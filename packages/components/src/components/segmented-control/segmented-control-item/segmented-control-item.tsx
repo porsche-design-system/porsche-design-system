@@ -1,4 +1,5 @@
-import { Component, Element, h, type JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, Host, type JSX, Prop, Watch, h } from '@stencil/core';
+import type { PropTypes, SelectedAriaAttributes, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -11,14 +12,13 @@ import {
 } from '../../../utils';
 import { getComponentCss } from './segmented-control-item-styles';
 import {
+  SEGMENTED_CONTROL_ITEM_ARIA_ATTRIBUTES,
   type SegmentedControlItemAriaAttribute,
   type SegmentedControlItemIcon,
   type SegmentedControlItemInternalHTMLProps,
-  getSegmentedControlItemAriaAttributes,
   getIconColor,
-  SEGMENTED_CONTROL_ITEM_ARIA_ATTRIBUTES,
+  getSegmentedControlItemAriaAttributes,
 } from './segmented-control-item-utils';
-import type { PropTypes, ValidatorFunction, SelectedAriaAttributes } from '../../../types';
 
 const propTypes: PropTypes<typeof SegmentedControlItem> = {
   value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
@@ -94,25 +94,23 @@ export class SegmentedControlItem {
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
-      <button
-        type="button"
-        onClick={!isDisabled && this.onClick}
-        {...getSegmentedControlItemAriaAttributes(this.host.selected, this.disabled, this.aria)}
-      >
-        {this.label && <span>{this.label}</span>}
-        {hasIcon && (
-          <PrefixedTagNames.pIcon
-            class="icon"
-            size="inherit"
-            name={this.icon}
-            source={this.iconSource}
-            color={getIconColor(this.disabled)}
-            theme={this.host.theme || 'light'}
-            aria-hidden="true"
-          />
-        )}
-        <slot />
-      </button>
+      <Host onClick={!isDisabled && this.onClick}>
+        <button type="button" {...getSegmentedControlItemAriaAttributes(this.host.selected, this.disabled, this.aria)}>
+          {this.label && <span>{this.label}</span>}
+          {hasIcon && (
+            <PrefixedTagNames.pIcon
+              class="icon"
+              size="inherit"
+              name={this.icon}
+              source={this.iconSource}
+              color={getIconColor(this.disabled)}
+              theme={this.host.theme || 'light'}
+              aria-hidden="true"
+            />
+          )}
+          <slot />
+        </button>
+      </Host>
     );
   }
 

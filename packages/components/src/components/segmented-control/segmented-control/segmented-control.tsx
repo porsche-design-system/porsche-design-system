@@ -4,36 +4,37 @@ import {
   Element,
   Event,
   type EventEmitter,
-  forceUpdate,
-  h,
   Host,
   type JSX,
   Listen,
   Prop,
+  Watch,
+  forceUpdate,
+  h,
 } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes, Theme, ValidatorFunction } from '../../../types';
 import {
   AllowedTypes,
+  THEMES,
   attachComponentCss,
   hasPropValueChanged,
   observeChildren,
-  THEMES,
   throwIfChildrenAreNotOfKind,
   unobserveChildren,
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../../utils';
-import type { PropTypes, Theme, ValidatorFunction, BreakpointCustomizable } from '../../../types';
+import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import { getComponentCss } from './segmented-control-styles';
 import {
+  SEGMENTED_CONTROL_BACKGROUND_COLORS,
+  SEGMENTED_CONTROL_COLUMNS,
   type SegmentedControlBackgroundColor,
   type SegmentedControlColumns,
   type SegmentedControlUpdateEventDetail,
   getItemMaxWidth,
-  SEGMENTED_CONTROL_BACKGROUND_COLORS,
-  SEGMENTED_CONTROL_COLUMNS,
   syncSegmentedControlItemsProps,
 } from './segmented-control-utils';
-import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 
 const propTypes: PropTypes<typeof SegmentedControl> = {
   backgroundColor: AllowedTypes.oneOf<SegmentedControlBackgroundColor>([
@@ -100,9 +101,13 @@ export class SegmentedControl {
   public updateSegmentedControlItemHandler(e: Event & { target: HTMLElement & SegmentedControlItem }): void {
     e.stopPropagation();
     if (!this.disabled) {
-      this.internals.setFormValue(e.target.value.toString());
       this.updateValue(e.target);
     }
+  }
+
+  @Watch('value')
+  public onValueChange(): void {
+    this.internals.setFormValue(this.value.toString());
   }
 
   public connectedCallback(): void {
