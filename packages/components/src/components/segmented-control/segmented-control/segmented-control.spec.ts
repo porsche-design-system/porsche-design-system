@@ -1,9 +1,9 @@
-import { SegmentedControl } from './segmented-control';
-import * as segmentedControlUtils from './segmented-control-utils';
+import { expect } from '@jest/globals';
+import * as warnIfDeprecatedPropIsUsed from '../../../utils/log/warnIfDeprecatedPropIsUsed';
 import * as throwIfChildrenAreNotOfKindUtils from '../../../utils/validation/throwIfChildrenAreNotOfKind';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
-import * as warnIfDeprecatedPropIsUsed from '../../../utils/log/warnIfDeprecatedPropIsUsed';
-import { expect } from '@jest/globals';
+import { SegmentedControl } from './segmented-control';
+import * as segmentedControlUtils from './segmented-control-utils';
 
 class MockElementInternals {
   setValidity = jest.fn();
@@ -101,7 +101,7 @@ describe('updateSegmentedControlItemHandler', () => {
     expect(mockEvent.stopPropagation).toHaveBeenCalled();
   });
 
-  it('should set form value and call updateValue when not disabled', () => {
+  it('should call updateValue when not disabled', () => {
     const component = initComponent();
 
     component.update = { emit: jest.fn() };
@@ -109,25 +109,32 @@ describe('updateSegmentedControlItemHandler', () => {
     component.disabled = false;
     // @ts-ignore
     const updateValueSpy = jest.spyOn(component, 'updateValue');
-    const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
 
     component.updateSegmentedControlItemHandler(mockEvent);
 
-    expect(setFormValueSpy).toHaveBeenCalledWith('1');
     expect(updateValueSpy).toHaveBeenCalledWith(mockEvent.target);
   });
 
-  it('should not set form value or call updateValue when disabled', () => {
+  it('should not call updateValue when disabled', () => {
     const component = initComponent();
     component.disabled = true;
     // @ts-ignore
     const updateValueSpy = jest.spyOn(component, 'updateValue');
-    const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
 
     component.updateSegmentedControlItemHandler(mockEvent);
 
-    expect(setFormValueSpy).not.toHaveBeenCalled();
     expect(updateValueSpy).not.toHaveBeenCalled();
+  });
+});
+
+describe('onValueChange', () => {
+  it('should call setFormValue', () => {
+    const component = initComponent();
+    const value = 1;
+    component.value = value;
+    const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+    component.onValueChange();
+    expect(setFormValueSpy).toHaveBeenCalledWith(value.toString());
   });
 });
 
