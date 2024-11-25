@@ -201,6 +201,7 @@ export class Carousel {
       // on reconnect we can reuse the splide instance
       this.updateSlidesAndPagination();
       this.registerSplideHandlers(this.splide);
+      this.splideSlides = this.splide.Components.Elements.slides;
     }
   }
 
@@ -254,7 +255,6 @@ export class Carousel {
       renderPagination(this.paginationEl, this.getPageCount(), this.splide?.index || 0, this.splide); // update pagination in case the carousel was not draggable before
       updatePrevNextButtons(this.btnPrev, this.btnNext, this.splide); // go to last/first slide aria might be wrong
     }
-    this.splideSlides = this.splide.Components.Elements.slides;
   }
 
   public disconnectedCallback(): void {
