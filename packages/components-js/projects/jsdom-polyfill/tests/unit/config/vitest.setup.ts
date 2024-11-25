@@ -16,7 +16,7 @@ beforeAll(() => {
       ({
         setFormValue: vi.fn(),
         setValidity: vi.fn(),
-      }) as ElementInternals
+      }) as unknown as ElementInternals
   );
 });
 
