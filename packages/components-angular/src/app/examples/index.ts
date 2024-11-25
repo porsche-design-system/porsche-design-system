@@ -73,6 +73,7 @@ export const examples = [
   PinCodeExampleComponent,
   PinCodeExampleControlledComponent,
   ScrollerExampleComponent,
+  SegmentedControlExampleControlledComponent,
   SegmentedControlExampleComponent,
   SelectExampleComponent,
   SelectExampleControlledComponent,
