@@ -3,6 +3,7 @@ import type {
   CarouselAriaAttribute,
   SelectedAriaAttributes,
 } from '@porsche-design-system/components/dist/types/bundle';
+import { waitFor } from '@testing-library/dom';
 import {
   addEventListener,
   getActiveElementId,
@@ -19,6 +20,7 @@ import {
   setProperty,
   skipInBrowsers,
   waitForComponentsReady,
+  waitForImproveButtonHandlingForCustomElement,
   waitForStencilLifecycle,
 } from '../helpers';
 
