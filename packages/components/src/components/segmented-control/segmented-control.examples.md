@@ -174,7 +174,7 @@ let z = 0;
     return this.$store.getters.playgroundTheme;
   }
 
-  eventHandlingMarkup = getSegmentedControlCodeSamples();
+  eventHandlingMarkup = getSegmentedControlCodeSamples('example-controlled');
   eventHandlingValue = 1;
 }
 </script>
