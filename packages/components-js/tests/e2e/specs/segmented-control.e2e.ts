@@ -1,5 +1,6 @@
-import type { Page } from 'playwright';
 import { expect, test } from '@playwright/test';
+import { Components } from '@porsche-design-system/components';
+import type { Page } from 'playwright';
 import {
   addEventListener,
   getEventSummary,
@@ -15,7 +16,6 @@ import {
   skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
-import { Components } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.locator('p-segmented-control');
 const getFirstItemHost = (page: Page) => page.locator('p-segmented-control-item').first();
@@ -218,7 +218,7 @@ test.describe('keyboard', () => {
       `<a href="#">Some Link</a>
 <p-segmented-control>
    <p-segmented-control-item value="1">Option 1</p-segmented-control-item>
-   <p-segmented-control-item value="2" disabled="true">Option 1</p-segmented-control-item>
+   <p-segmented-control-item value="2" disabled="true">Option 2</p-segmented-control-item>
 </p-segmented-control>
 <a href="#">Some Link</a>`
     );
@@ -274,7 +274,7 @@ test.describe('lifecycle', () => {
 test.describe('form', () => {
   test('should include name & value in FormData submit', async ({ page }) => {
     const name = 'name';
-    const value = 'Hallo';
+    const value = '2';
     await initSegmentedControl(page, {
       props: { name, value },
       isWithinForm: true,
@@ -289,6 +289,31 @@ test.describe('form', () => {
 
     expect((await getEventSummary(form, 'submit')).counter).toBe(1);
     expect(await getFormDataValue(form, name)).toBe(value);
+  });
+
+  test('should have correct form value when changing value dynamically', async ({ page }) => {
+    const name = 'name';
+    const value = '2';
+    const newValue = '1';
+    await initSegmentedControl(page, {
+      props: { name, value },
+      isWithinForm: true,
+      markupAfter: '<button type="submit">Submit</button>',
+    });
+    const form = getForm(page);
+    const host = getHost(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await setProperty(host, 'value', newValue);
+    await waitForStencilLifecycle(page);
+
+    await page.locator('button[type="submit"]').click();
+
+    await expect(host).toHaveJSProperty('value', newValue);
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValue(form, name)).toBe(newValue);
   });
 
   test('should include name & value in FormData submit if outside of form', async ({ page }) => {
@@ -310,7 +335,7 @@ test.describe('form', () => {
     expect(await getFormDataValue(form, name)).toBe(value);
   });
 
-  test('should reset textarea value to its initial value on form reset', async ({ page }) => {
+  test('should reset segmented-control value to its initial value on form reset', async ({ page }) => {
     const name = 'name';
     const value = '2';
     const newValue = '1';
@@ -345,7 +370,7 @@ test.describe('form', () => {
     expect(await getFormDataValue(form, name)).toBe(value);
   });
 
-  test('should disable textarea if within disabled fieldset', async ({ page }) => {
+  test('should disable segmented-control if within disabled fieldset', async ({ page }) => {
     const name = 'name';
     const value = 'Hallo';
     const host = getHost(page);
