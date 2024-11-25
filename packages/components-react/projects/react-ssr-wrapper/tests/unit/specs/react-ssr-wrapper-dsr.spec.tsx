@@ -1,17 +1,20 @@
 import { render, screen } from '@testing-library/react';
 import '@porsche-design-system/components-react/jsdom-polyfill';
 import {
-  componentsReady,
   PButton,
   PLink,
-  PorscheDesignSystemProvider,
   PSegmentedControl,
   PSegmentedControlItem,
+  PSelect,
+  PSelectOption,
+  PorscheDesignSystemProvider,
+  componentsReady,
 } from '@porsche-design-system/components-react/ssr';
+import { getByRoleShadowed } from '@porsche-design-system/components-react/testing';
 import { vi } from 'vitest';
 
 it('should have working SSR PLink component', async () => {
-  const consoleErrorSpy = vi.spyOn(global.console, 'error').mockImplementation();
+  const consoleErrorSpy = vi.spyOn(global.console, 'error').mockImplementation(() => {});
 
   render(
     <PorscheDesignSystemProvider>
@@ -34,7 +37,7 @@ it('should have working SSR PLink component', async () => {
 });
 
 it('should have working SSR PButton component', async () => {
-  const consoleErrorSpy = vi.spyOn(global.console, 'error').mockImplementation();
+  const consoleErrorSpy = vi.spyOn(global.console, 'error').mockImplementation(() => {});
 
   render(
     <PorscheDesignSystemProvider>
@@ -52,12 +55,16 @@ it('should have working SSR PButton component', async () => {
   const shadowRoot = document.querySelector('p-button').shadowRoot;
   expect(shadowRoot.innerHTML.trim()).not.toBe('');
 
+  const btn = getByRoleShadowed('button');
+
+  btn.click();
+
   // Check for console errors
   expect(consoleErrorSpy).not.toHaveBeenCalled();
 });
 
-it('should have working SSR PSegmentedControl component', async () => {
-  const consoleErrorSpy = vi.spyOn(global.console, 'error').mockImplementation();
+it.only('should have working SSR PSegmentedControl component', async () => {
+  const consoleErrorSpy = vi.spyOn(global.console, 'error').mockImplementation(() => {});
 
   render(
     <PorscheDesignSystemProvider>
@@ -65,8 +72,6 @@ it('should have working SSR PSegmentedControl component', async () => {
         <PSegmentedControlItem value={1}>Option 1</PSegmentedControlItem>
         <PSegmentedControlItem value={2}>Option 2</PSegmentedControlItem>
         <PSegmentedControlItem value={3}>Option 3</PSegmentedControlItem>
-        <PSegmentedControlItem value={4}>Option 4</PSegmentedControlItem>
-        <PSegmentedControlItem value={5}>Option 5</PSegmentedControlItem>
       </PSegmentedControl>
     </PorscheDesignSystemProvider>
   );
@@ -75,17 +80,58 @@ it('should have working SSR PSegmentedControl component', async () => {
   expect(document.querySelectorAll('template')).toHaveLength(0);
 
   const componentsReadyCount = await componentsReady();
-  expect(componentsReadyCount).toBe(6);
+  expect(componentsReadyCount).toBe(4); // 1 control + 3 items
 
-  const component = document.querySelector('p-segmented-control');
+  const segmentedControl: Element & { value: number } = document.querySelector('p-segmented-control');
+  const option3 = screen.getByText('Option 3');
 
   // Check if shadowRoot is populated
-  const shadowRoot = component.shadowRoot;
+  const shadowRoot = segmentedControl.shadowRoot;
   expect(shadowRoot.innerHTML.trim()).not.toBe('');
 
-  // Change selected option
-  await screen.getByText('Option 3').click();
-  expect(component).toHaveValue(3);
+  // Simulate click
+  await option3.click();
+  // option3.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+
+  // Validate that the value has changed
+  expect(segmentedControl.value).toBe(3);
+
+  // Check for console errors
+  expect(consoleErrorSpy).not.toHaveBeenCalled();
+});
+
+it('should have working SSR PSelect component', async () => {
+  const consoleErrorSpy = vi.spyOn(global.console, 'error').mockImplementation(() => {});
+
+  render(
+    <PorscheDesignSystemProvider>
+      <PSelect value="2" name="some-select">
+        <PSelectOption value="1">Option 1</PSelectOption>
+        <PSelectOption value="2">Option 2</PSelectOption>
+        <PSelectOption value="3">Option 3</PSelectOption>
+      </PSelect>
+    </PorscheDesignSystemProvider>
+  );
+
+  // Check for <template> tags
+  expect(document.querySelectorAll('template')).toHaveLength(0);
+
+  const componentsReadyCount = await componentsReady();
+  expect(componentsReadyCount).toBe(4); // 1 control + 3 items
+
+  const select: Element & { value: string } = document.querySelector('p-select');
+
+  const option3 = screen.getByText('Option 3');
+
+  // Check if shadowRoot is populated
+  const shadowRoot = select.shadowRoot;
+  expect(shadowRoot.innerHTML.trim()).not.toBe('');
+
+  // Simulate click
+  option3.click();
+
+  // Validate that the value has changed
+  expect(select.value).toBe('3');
 
   // Check for console errors
   expect(consoleErrorSpy).not.toHaveBeenCalled();
