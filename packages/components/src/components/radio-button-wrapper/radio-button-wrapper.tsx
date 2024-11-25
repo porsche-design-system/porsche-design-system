@@ -14,9 +14,9 @@ import {
   validateProps,
 } from '../../utils';
 import { getCheckboxRadioButtonSafariRenderingFix } from '../../utils/form/applyCheckboxRadioButtonSafariRenderingFix';
-import { type BreakpointCustomizable, type PropTypes, type Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import { getComponentCss } from './radio-button-wrapper-styles';
-import { type RadioButtonWrapperState } from './radio-button-wrapper-utils';
+import type { RadioButtonWrapperState } from './radio-button-wrapper-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Label } from '../common/label/label';
 import { LoadingMessage } from '../common/loading-message/loading-message';

@@ -1,4 +1,4 @@
-import { type JssStyle } from 'jss';
+import type { JssStyle } from 'jss';
 import {
   frostedGlassStyle,
   gridGap,

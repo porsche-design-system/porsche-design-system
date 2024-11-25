@@ -20,13 +20,13 @@ describe('transformEventsToAngularSyntax()', () => {
       `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" (click)="alert('click'); return false;" (change)="alert('change'); return false;" digit-attribute="6" negative-digit-attribute="-6" boolean-attribute="true" aria-label="something label" aria-something="Something foo" name="1">
   <span>some text</span>
   <span slot="some-slot">some slot text</span>
-</p-some-tag>`,
+</p-some-tag>`
     );
   });
 
   it('should not transform attribute values containing " on"', () => {
     expect(transformEventsToAngularSyntax('<p-somme-tag label="Icon only" icon="user"></p-somme-tag>')).toBe(
-      `<p-somme-tag label="Icon only" icon="user"></p-somme-tag>`,
+      `<p-somme-tag label="Icon only" icon="user"></p-somme-tag>`
     );
   });
 });
@@ -37,7 +37,7 @@ describe('transformAttributesWithObjectValues()', () => {
       `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" [anotherAttribute]="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" negative-digit-attribute="-6" boolean-attribute="true" aria-label="something label" aria-something="Something foo" name="1">
   <span>some text</span>
   <span slot="some-slot">some slot text</span>
-</p-some-tag>`,
+</p-some-tag>`
     );
   });
 });
@@ -48,7 +48,7 @@ describe('transformAttributesWithNotDigitValue()', () => {
       `<p-some-tag [someAttribute]="'some value'" [attribute]="'some value'" [class]="'some-class'" [anotherAttribute]="'{ bar: 'foo' }'" [onclick]="'alert('click'); return false;'" [onchange]="'alert('change'); return false;'" digit-attribute="6" negative-digit-attribute="-6" [booleanAttribute]="'true'" aria-label="something label" aria-something="Something foo" name="1">
   <span>some text</span>
   <span [slot]="'some-slot'">some slot text</span>
-</p-some-tag>`,
+</p-some-tag>`
     );
   });
 });
@@ -59,22 +59,22 @@ describe('transformAttributesWithDigitValue()', () => {
       `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" [digitAttribute]="6" [negativeDigitAttribute]="-6" boolean-attribute="true" aria-label="something label" aria-something="Something foo" [name]="'1'">
   <span>some text</span>
   <span slot="some-slot">some slot text</span>
-</p-some-tag>`,
+</p-some-tag>`
     );
   });
   it('should transform maxlength with maxLength', () => {
     expect(transformAttributesWithDigitValue('<textarea maxlength="200">Some value</textarea>')).toBe(
-      '<textarea [maxLength]="200">Some value</textarea>',
+      '<textarea [maxLength]="200">Some value</textarea>'
     );
   });
   it('should not transform prop model with digit values', () => {
     expect(transformAttributesWithDigitValue('<p-model-signature model="911"></p-model-signature>')).toBe(
-      `<p-model-signature [model]="'911'"></p-model-signature>`,
+      `<p-model-signature [model]="'911'"></p-model-signature>`
     );
   });
   it('should not transform pin codes prop value with digit values', () => {
     expect(transformAttributesWithDigitValue('<p-pin-code value="1234"></p-pin-code>')).toBe(
-      `<p-pin-code [value]="'1234'"></p-pin-code>`,
+      `<p-pin-code [value]="'1234'"></p-pin-code>`
     );
   });
 });
@@ -87,13 +87,13 @@ describe('cleanBooleanAndUndefinedValues()', () => {
       `<p-some-tag [someAttribute]="'some value'" [attribute]="'some value'" [class]="'some-class'" [anotherAttribute]="'{ bar: 'foo' }'" [onclick]="'alert('click'); return false;'" [onchange]="'alert('change'); return false;'" digit-attribute="6" negative-digit-attribute="-6" [booleanAttribute]="true" aria-label="something label" aria-something="Something foo" name="1">
   <span>some text</span>
   <span [slot]="'some-slot'">some slot text</span>
-</p-some-tag>`,
+</p-some-tag>`
     );
   });
 
   it('should remove single quotes from undefined values after initial transform', () => {
     expect(cleanBooleanAndUndefinedValues(`<p-some-tag attribute="undefined"></p-some-tag>`)).toBe(
-      `<p-some-tag attribute="undefined"></p-some-tag>`,
+      `<p-some-tag attribute="undefined"></p-some-tag>`
     );
   });
 });
@@ -106,7 +106,7 @@ describe('unbindNativeAttributes()', () => {
       `<p-some-tag [someAttribute]="'some value'" [attribute]="'some value'" class="some-class" [anotherAttribute]="'{ bar: 'foo' }'" [onclick]="'alert('click'); return false;'" [onchange]="'alert('change'); return false;'" digit-attribute="6" negative-digit-attribute="-6" [booleanAttribute]="'true'" aria-label="something label" aria-something="Something foo" name="1">
   <span>some text</span>
   <span slot="some-slot">some slot text</span>
-</p-some-tag>`,
+</p-some-tag>`
     );
   });
 
@@ -120,7 +120,7 @@ describe('unbindNativeAttributes()', () => {
 
   it('should remove brackets from "style" attribute', () => {
     expect(unbindNativeAttributes(`<div [style]="'background: yellow'"></div>`)).toBe(
-      '<div style="background: yellow"></div>',
+      '<div style="background: yellow"></div>'
     );
   });
 });
@@ -159,7 +159,7 @@ describe('convertToAngular()', () => {
       `<p-some-tag [someAttribute]="'some value'" [attribute]="'some value'" class="some-class" [anotherAttribute]="{ bar: 'foo' }" (click)="alert('click'); return false;" (change)="alert('change'); return false;" [digitAttribute]="6" [negativeDigitAttribute]="-6" [booleanAttribute]="true" aria-label="something label" aria-something="Something foo" [name]="'1'">
   <span>some text</span>
   <span slot="some-slot">some slot text</span>
-</p-some-tag>`,
+</p-some-tag>`
     );
   });
 });

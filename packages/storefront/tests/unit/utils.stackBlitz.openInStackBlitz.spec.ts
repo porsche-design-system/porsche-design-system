@@ -106,20 +106,20 @@ describe('openInStackBlitz()', () => {
       // @ts-ignore
       const spy = jest.spyOn(sdk, 'openProject');
       jest
-      .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getVanillaJsProjectAndOpenOptions')
-      .mockReturnValue(mockedProjectAndOpenOptions);
+        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getVanillaJsProjectAndOpenOptions')
+        .mockReturnValue(mockedProjectAndOpenOptions);
       jest
-      .spyOn(getAngularProjectAndOpenOptionsUtils, 'getAngularProjectAndOpenOptions')
-      .mockReturnValue(mockedProjectAndOpenOptions);
+        .spyOn(getAngularProjectAndOpenOptionsUtils, 'getAngularProjectAndOpenOptions')
+        .mockReturnValue(mockedProjectAndOpenOptions);
       jest
-      .spyOn(getReactProjectAndOpenOptionsUtils, 'getReactProjectAndOpenOptions')
-      .mockReturnValue(mockedProjectAndOpenOptions);
+        .spyOn(getReactProjectAndOpenOptionsUtils, 'getReactProjectAndOpenOptions')
+        .mockReturnValue(mockedProjectAndOpenOptions);
 
       openInStackBlitz(sharedOpenInStackBlitzOptions);
 
       const { openFile, ...project } = mockedProjectAndOpenOptions;
 
       expect(spy).toHaveBeenCalledWith(project, { openFile });
-    },
+    }
   );
 });

@@ -1,34 +1,34 @@
 <script setup lang="ts">
-  import { type SelectUpdateEventDetail, PSelect, PSelectOption } from '@porsche-design-system/components-vue';
-  import { ref } from 'vue';
+import { type SelectUpdateEventDetail, PSelect, PSelectOption } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
 
-  const selectedValue = ref<string>('1');
-  const inputValue = ref<string>('');
-  const optionCount = ref<number>(3);
+const selectedValue = ref<string>('1');
+const inputValue = ref<string>('');
+const optionCount = ref<number>(3);
 
-  const onSetValue = () => {
-    selectedValue.value = inputValue.value;
-  };
+const onSetValue = () => {
+  selectedValue.value = inputValue.value;
+};
 
-  const onResetValue = () => {
-    selectedValue.value = '1';
-    inputValue.value = '';
-  };
+const onResetValue = () => {
+  selectedValue.value = '1';
+  inputValue.value = '';
+};
 
-  const onUpdate = (e: SelectUpdateEventDetail) => {
-    selectedValue.value = e.value;
-    inputValue.value = e.value;
-  };
+const onUpdate = (e: SelectUpdateEventDetail) => {
+  selectedValue.value = e.value;
+  inputValue.value = e.value;
+};
 
-  const onAddOption = () => {
-    optionCount.value++;
-  };
+const onAddOption = () => {
+  optionCount.value++;
+};
 
-  const onRemoveOption = () => {
-    if (optionCount.value > 0) {
-      optionCount.value--;
-    }
-  };
+const onRemoveOption = () => {
+  if (optionCount.value > 0) {
+    optionCount.value--;
+  }
+};
 </script>
 
 <template>

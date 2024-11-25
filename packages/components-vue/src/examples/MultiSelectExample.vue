@@ -1,12 +1,12 @@
 <script setup lang="ts">
-  import { PMultiSelect, PMultiSelectOption, PText } from '@porsche-design-system/components-vue';
-  import { ref } from 'vue';
+import { PMultiSelect, PMultiSelectOption, PText } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
 
-  const lastSubmittedData = ref('none');
-  const onSubmit = (e: Event) => {
-    const formData = new FormData(e.target as HTMLFormElement);
-    lastSubmittedData.value = Array.from(formData.values()).join(', ') || 'none';
-  };
+const lastSubmittedData = ref('none');
+const onSubmit = (e: Event) => {
+  const formData = new FormData(e.target as HTMLFormElement);
+  lastSubmittedData.value = Array.from(formData.values()).join(', ') || 'none';
+};
 </script>
 
 <template>

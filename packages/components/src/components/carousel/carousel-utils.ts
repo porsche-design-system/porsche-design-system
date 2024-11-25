@@ -1,5 +1,5 @@
-import type { Options, Splide } from '@splidejs/splide';
 import { type Breakpoint, breakpoint } from '@porsche-design-system/styles';
+import type { Options, Splide } from '@splidejs/splide';
 import type { BreakpointCustomizable, HeadingSize } from '../../types';
 import {
   bulletActiveClass,
@@ -139,10 +139,10 @@ export const renderPagination = (
 ): void => {
   if (paginationEl) {
     // sanitize in case of removal of slide since activeIndex is from before splide.refresh()
-    activeIndex = activeIndex > amountOfPages - 1 ? amountOfPages - 1 : activeIndex;
+    const sanitizedActiveIndex = activeIndex > amountOfPages - 1 ? amountOfPages - 1 : activeIndex;
     paginationEl.innerHTML = Array.from(
-      Array(amountOfPages),
-      (_, i) => `<span class="bullet${i === activeIndex ? ' ' + bulletActiveClass : ''}"></span>`
+      new Array(amountOfPages),
+      (_, i) => `<span class="bullet${i === sanitizedActiveIndex ? ` ${bulletActiveClass}` : ''}"></span>`
     ).join('');
 
     paginationEl.addEventListener('click', (e) => {
@@ -153,7 +153,7 @@ export const renderPagination = (
     });
 
     if (isInfinitePagination(amountOfPages)) {
-      updateBulletState(paginationEl, amountOfPages, activeIndex);
+      updateBulletState(paginationEl, amountOfPages, sanitizedActiveIndex);
     }
   }
 };
@@ -177,11 +177,11 @@ export const updateBulletState = (paginationEl: HTMLElement, amountOfPages: numb
   const getTranslateX = (): string => {
     if (isStartCase) {
       return '0';
-    } else if (isEndCase) {
-      return `calc(-${amountOfPages - INFINITE_BULLET_AMOUNT} * ${paginationGap})`;
-    } else {
-      return `calc(-${newIndex - INFINITE_BULLET_OFFSET} * ${paginationGap})`;
     }
+    if (isEndCase) {
+      return `calc(-${amountOfPages - INFINITE_BULLET_AMOUNT} * ${paginationGap})`;
+    }
+    return `calc(-${newIndex - INFINITE_BULLET_OFFSET} * ${paginationGap})`;
   };
 
   paginationEl.style.transform = `translateX(${getTranslateX()})`;
@@ -200,7 +200,7 @@ export const updateBulletState = (paginationEl: HTMLElement, amountOfPages: numb
 
 export const updatePagination = (paginationEl: HTMLElement, amountOfPages: number, newIndex: number): void => {
   if (paginationEl) {
-    paginationEl.querySelector('.' + bulletActiveClass).classList.remove(bulletActiveClass);
+    paginationEl.querySelector(`.${bulletActiveClass}`).classList.remove(bulletActiveClass);
     paginationEl.children[newIndex].classList.add(bulletActiveClass);
     if (isInfinitePagination(amountOfPages)) {
       updateBulletState(paginationEl, amountOfPages, newIndex);

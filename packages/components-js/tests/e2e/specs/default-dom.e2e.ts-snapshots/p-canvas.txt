@@ -1,5 +1,5 @@
 <div class="root">
-  <header class="header">
+  <header class="header" tabindex="-1">
     <div class="blur">
       <div></div>
       <div></div>
@@ -22,13 +22,11 @@
       <slot name="header-end"> </slot>
     </div>
   </header>
-  <main class="main">
-    <slot> </slot>
-  </main>
   <aside
     class="sidebar sidebar--start"
     inert=""
     aria-label="Navigation sidebar closed"
+    tabindex="-1"
   >
     <div class="sidebar__scroller">
       <div class="sidebar__header sidebar__header--start">
@@ -41,4 +39,7 @@
       </div>
     </div>
   </aside>
+  <main class="main">
+    <slot> </slot>
+  </main>
 </div>

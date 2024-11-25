@@ -24,6 +24,7 @@ export const startSteps: LabelState[] = [
       <a routerLink="/stepper-horizontal-navigation-example-second-component">to second page</a>
     </p-link-pure>
   `,
+  standalone: false,
 })
 export class StepperHorizontalNavigationExampleStartComponent {
   steps = startSteps;

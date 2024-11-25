@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { TestBed, waitForAsync } from '@angular/core/testing';
-import { componentsReady, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 import { By } from '@angular/platform-browser';
+import { PorscheDesignSystemModule, componentsReady } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'empty',
   template: `<div></div>`,
+  standalone: false,
 })
 class EmptyComponent {}
 
@@ -15,6 +16,7 @@ class EmptyComponent {}
     <p-button (click)="onClick()">Button 1</p-button>
     <p-button *ngIf="active">Button 2</p-button>
   `,
+  standalone: false,
 })
 class SampleComponent {
   active = false;

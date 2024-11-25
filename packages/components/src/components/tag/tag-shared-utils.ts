@@ -1,4 +1,4 @@
-import { type ThemedColors } from '../../styles';
+import type { ThemedColors } from '../../styles';
 import type { TagColor, TagColorDeprecated } from './tag-utils';
 
 export const getThemedBackgroundColor = (

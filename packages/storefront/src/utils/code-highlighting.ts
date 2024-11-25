@@ -6,7 +6,7 @@ import type { Framework } from '@/models';
 
 export const getHighlightedCode = (markup: string, framework: Framework): string => {
   switch (framework) {
-    case "next":
+    case 'next':
     case 'react':
     case 'shared':
       return highlight(markup, languages.jsx, 'language-jsx');

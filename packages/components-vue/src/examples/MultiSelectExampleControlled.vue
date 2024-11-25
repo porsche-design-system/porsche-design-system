@@ -1,21 +1,21 @@
 <script setup lang="ts">
-  import {
-    type MultiSelectUpdateEventDetail,
-    PMultiSelect,
-    PMultiSelectOption,
-    PText,
-  } from '@porsche-design-system/components-vue';
-  import { computed, ref } from 'vue';
+import {
+  type MultiSelectUpdateEventDetail,
+  PMultiSelect,
+  PMultiSelectOption,
+  PText,
+} from '@porsche-design-system/components-vue';
+import { computed, ref } from 'vue';
 
-  const selectedValues = ref<string[]>([]);
+const selectedValues = ref<string[]>([]);
 
-  const onUpdate = (e: MultiSelectUpdateEventDetail) => {
-    selectedValues.value = e.value;
-  };
+const onUpdate = (e: MultiSelectUpdateEventDetail) => {
+  selectedValues.value = e.value;
+};
 
-  const debugText = computed(() => {
-    return `Selected values: ${selectedValues.value.join(', ') || 'none'}`;
-  });
+const debugText = computed(() => {
+  return `Selected values: ${selectedValues.value.join(', ') || 'none'}`;
+});
 </script>
 
 <template>

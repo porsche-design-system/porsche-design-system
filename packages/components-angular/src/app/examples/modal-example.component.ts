@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'page-modal-example',
   template: `
     <p-button type="button" [aria]="{ 'aria-haspopup': 'dialog' }" (click)="onOpen()">Open Modal</p-button>
-    <p-modal [open]="isModalOpen" (dismiss)="onDismiss()" [aria]="{ 'aria-label': 'Some Heading' }">
+    <p-modal [open]="isModalOpen" (dismiss)="onDismiss()" [aria]="{ 'aria-label': 'A slightly more detailed label' }">
       <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
       <p-text>Some Content</p-text>
       <p-button-group slot="footer">
@@ -14,6 +14,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </p-modal>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ModalExampleComponent {
   isModalOpen = false;

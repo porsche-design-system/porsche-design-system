@@ -133,20 +133,19 @@ generating typings.
 
 ---
 
-## eslint
-
-In order to migrate to v9 all configs have to be adjusted to the new
-[flat config](https://eslint.org/docs/latest/use/migrate-to-9.0.0#-new-default-config-format-eslintconfigjs). Some
-plugins are not yet migrated, see related [issue](https://github.com/eslint/eslint/issues/18391).
-
----
-
 ## webpack
 
-Currently fixed to 5.91.0 because of Error when publishing UXPin lib:
+UXPin publishing deactivated since newer webpack version causes this error (5.91.0 still worked):
 
 ```
 ERROR: ERROR in designsystemlibrary.js
 designsystemlibrary.js from Terser plugin
 "i" is redeclared [designsystemlibrary.js:5109,8]
 ```
+
+---
+
+## @arethetypeswrong/core
+
+Currently fixed to `0.15.1` since it's causing the `packages/components-js/tests/smoke/unit/specs/package.smoke.ts` test
+to hang in the pipeline.

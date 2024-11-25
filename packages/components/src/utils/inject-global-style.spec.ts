@@ -38,7 +38,7 @@ describe('if global styles are missing', () => {
 
       const linkEl: HTMLLinkElement = document.head.querySelector(selector);
       expect(linkEl).not.toBeNull();
-      expect(linkEl.href).toBe('https://cdn.ui.porsche.com/porsche-design-system/styles/' + FONT_FACE_CDN_FILE_COM);
+      expect(linkEl.href).toBe(`https://cdn.ui.porsche.com/porsche-design-system/styles/${FONT_FACE_CDN_FILE_COM}`);
       expect(linkEl.type).toBe('text/css');
       expect(linkEl.rel).toBe('stylesheet');
     });
@@ -97,7 +97,7 @@ describe('if global styles are there (link)', () => {
 
 describe('if global styles are there (inline style)', () => {
   beforeEach(() => {
-    document.head.innerHTML = `<style data-pds-font-face-styles></style>`;
+    document.head.innerHTML = '<style data-pds-font-face-styles></style>';
   });
 
   describe('for ROLLUP_REPLACE_IS_STAGING="production"', () => {

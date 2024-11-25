@@ -17,12 +17,12 @@ describe('warnIfAriaAndHeadingPropsAreUndefined()', () => {
     expect(spy).toHaveBeenCalledTimes(2);
     expect(spy).toHaveBeenCalledWith(
       '[Porsche Design System]',
-      'heading or aria has to be set via property for component p-modal in order to ensure accessibility.',
+      'heading prop (deprecated), aria prop or header slot has to be set for component p-modal in order to ensure accessibility.',
       host
     );
     expect(spy).toHaveBeenCalledWith(
       '[Porsche Design System]',
-      'heading or aria has to be set via property for component p-modal in order to ensure accessibility.',
+      'heading prop (deprecated), aria prop or header slot has to be set for component p-modal in order to ensure accessibility.',
       host
     );
   });

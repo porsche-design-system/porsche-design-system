@@ -25,5 +25,5 @@ export const getSegmentedControlItemAriaAttributes = (
 });
 
 export const getIconColor = (isDisabled: boolean): IconColor => {
-  return !isDisabled ? 'primary' : 'contrast-medium';
+  return isDisabled ? 'contrast-medium' : 'primary';
 };

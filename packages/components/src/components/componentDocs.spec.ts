@@ -1,10 +1,10 @@
 import type { TagName } from '@porsche-design-system/shared';
 import { TAG_NAMES } from '@porsche-design-system/shared';
-import * as fs from 'fs';
-import * as path from 'path';
+import * as fs from 'node:fs';
+import * as path from 'node:path';
 import * as globby from 'globby-legacy';
 import { expect } from '@jest/globals';
-import { ComponentMeta } from '@porsche-design-system/component-meta';
+import type { ComponentMeta } from '@porsche-design-system/component-meta';
 
 const componentsDir = path.resolve(__dirname);
 const sourceFilePaths = globby.sync(`${componentsDir}/**/*.tsx`).sort();
@@ -34,11 +34,12 @@ describe.each<TagName>(
         ([, slotName]) => {
           if (slotName) {
             return slotName.match(/^[a-z]+[A-Z][a-z]+/)
-              ? slotName.replace(/slot/i, '').toLowerCase() // <slot name={slotHeading} /> let's hope its name matches the value
+              ? slotName
+                  .replace(/slot/i, '')
+                  .toLowerCase() // <slot name={slotHeading} /> let's hope its name matches the value
               : slotName; // <slot name="heading" />
-          } else {
-            return ''; // Default slot
           }
+          return ''; // Default slot
         }
       );
 

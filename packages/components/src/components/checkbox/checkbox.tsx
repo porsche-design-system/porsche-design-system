@@ -21,7 +21,7 @@ import {
   THEMES,
   validateProps,
 } from '../../utils';
-import { type BreakpointCustomizable, type PropTypes, type Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import { getComponentCss } from './checkbox-styles';
 import type { CheckboxState, CheckboxUpdateEventDetail, CheckboxBlurEventDetail } from './checkbox-utils';
 import { messageId, StateMessage } from '../common/state-message/state-message';
@@ -127,7 +127,7 @@ export class Checkbox {
 
   @Watch('value')
   public onValueChange(newValue: string): void {
-    this.internals.setFormValue(this.checkboxInputElement && this.checkboxInputElement.checked ? newValue : undefined);
+    this.internals.setFormValue(this.checkboxInputElement?.checked ? newValue : undefined);
   }
 
   @Watch('indeterminate')

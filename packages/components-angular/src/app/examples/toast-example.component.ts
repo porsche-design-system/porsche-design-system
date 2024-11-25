@@ -8,6 +8,7 @@ import { ToastManager } from '@porsche-design-system/components-angular';
     <p-toast></p-toast>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class ToastExampleComponent {
   private counter = 1;

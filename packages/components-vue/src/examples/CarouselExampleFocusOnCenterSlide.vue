@@ -1,21 +1,21 @@
 <script setup lang="ts">
-  import { PCarousel } from '@porsche-design-system/components-vue';
-  import { ref } from 'vue';
-  import type { CarouselUpdateEventDetail } from '@porsche-design-system/components-vue';
+import { PCarousel } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
+import type { CarouselUpdateEventDetail } from '@porsche-design-system/components-vue';
 
-  const activeSlideIndex = ref(0);
+const activeSlideIndex = ref(0);
 
-  const getSlideClass = (index: number) => {
-    return {
-      'is-active': index === activeSlideIndex.value,
-      'is-prev': index === activeSlideIndex.value - 1,
-      'is-next': index === activeSlideIndex.value + 1,
-    };
+const getSlideClass = (index: number) => {
+  return {
+    'is-active': index === activeSlideIndex.value,
+    'is-prev': index === activeSlideIndex.value - 1,
+    'is-next': index === activeSlideIndex.value + 1,
   };
+};
 
-  const onCarouselUpdate = (event: CarouselUpdateEventDetail) => {
-    activeSlideIndex.value = event.activeIndex;
-  };
+const onCarouselUpdate = (event: CarouselUpdateEventDetail) => {
+  activeSlideIndex.value = event.activeIndex;
+};
 </script>
 
 <template>

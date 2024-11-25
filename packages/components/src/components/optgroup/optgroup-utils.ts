@@ -8,6 +8,7 @@ export type OptgroupInternalHTMLProps = {
   theme?: Theme;
 };
 
+// type Child = HTMLPMultiSelectOptionElement | HTMLPSelectOptionElement;
 export const updateOptionsDisabled = (host: HTMLElement, disabled: boolean): void => {
   Array.from(host.children).forEach((child: SelectOption | MultiSelectOption) => {
     child.disabledParent = disabled;

@@ -163,76 +163,74 @@
 </template>
 
 <script lang="ts">
-  import type { ValidationBag } from '@/utils';
-  import type { StorefrontTheme } from '@/models';
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { boolean, object, string } from 'yup';
-  import { validateName, getState, validateField, validateForm, getInitialErrors, getFirstErrorKey } from '@/utils';
+import type { ValidationBag } from '@/utils';
+import type { StorefrontTheme } from '@/models';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { boolean, object, string } from 'yup';
+import { validateName, getState, validateField, validateForm, getInitialErrors, getFirstErrorKey } from '@/utils';
 
-  const initialData = {
-    salutation: '',
-    title: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    terms: false,
-    privacy: false,
+const initialData = {
+  salutation: '',
+  title: '',
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
+  terms: false,
+  privacy: false,
+};
+
+type FormModel = typeof initialData;
+
+@Component
+export default class CreateAccountForm extends Vue {
+  public get storefrontTheme(): StorefrontTheme {
+    return this.$store.getters.storefrontTheme;
+  }
+
+  private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
+  private getState = (field: keyof FormModel) => getState(field, this.bag);
+
+  private bag: ValidationBag<FormModel> = {
+    data: { ...initialData },
+    errors: getInitialErrors(initialData),
+    schema: object({
+      salutation: string().required('How can we address you?'),
+      title: string().defined(),
+      firstName: string().required('Please enter your name'),
+      lastName: string().required('Please enter your last name'),
+      email: string()
+        .email('Email address seems invalid. Please check your entry')
+        .required('Please enter your email address'),
+      password: string().required('Please enter a password').min(6, 'Your password must contain at least 6 characters'),
+      terms: boolean().required().oneOf([true], 'Please agree to our terms and conditions'),
+      privacy: boolean().required().oneOf([true], 'Please agree to our data privacy policy'),
+    }),
   };
 
-  type FormModel = typeof initialData;
+  onFieldBlur({ target }: FocusEvent & { target: HTMLInputElement }): void {
+    validateField(target.name as keyof FormModel, this.bag);
+  }
+  onCustomSelectUpdate({ target }: CustomEvent & { target: HTMLSelectElement }): void {
+    this.bag.data.salutation = target.value;
+    validateField(target.name as keyof FormModel, this.bag);
+  }
 
-  @Component
-  export default class CreateAccountForm extends Vue {
-    public get storefrontTheme(): StorefrontTheme {
-      return this.$store.getters.storefrontTheme;
-    }
+  async onSubmit(): Promise<void> {
+    const isValid = await validateForm(this.bag);
+    console.log('isValid', isValid);
 
-    private validateFieldName: (field: keyof FormModel) => keyof FormModel = validateName;
-    private getState = (field: keyof FormModel) => getState(field, this.bag);
-
-    private bag: ValidationBag<FormModel> = {
-      data: { ...initialData },
-      errors: getInitialErrors(initialData),
-      schema: object({
-        salutation: string().required('How can we address you?'),
-        title: string().defined(),
-        firstName: string().required('Please enter your name'),
-        lastName: string().required('Please enter your last name'),
-        email: string()
-          .email('Email address seems invalid. Please check your entry')
-          .required('Please enter your email address'),
-        password: string()
-          .required('Please enter a password')
-          .min(6, 'Your password must contain at least 6 characters'),
-        terms: boolean().required().oneOf([true], 'Please agree to our terms and conditions'),
-        privacy: boolean().required().oneOf([true], 'Please agree to our data privacy policy'),
-      }),
-    };
-
-    onFieldBlur({ target }: FocusEvent & { target: HTMLInputElement }): void {
-      validateField(target.name as keyof FormModel, this.bag);
-    }
-    onCustomSelectUpdate({ target }: CustomEvent & { target: HTMLSelectElement }): void {
-      this.bag.data.salutation = target.value;
-      validateField(target.name as keyof FormModel, this.bag);
-    }
-
-    async onSubmit(): Promise<void> {
-      const isValid = await validateForm(this.bag);
-      console.log('isValid', isValid);
-
-      if (!isValid) {
-        const input = this.$refs[getFirstErrorKey(this.bag)!] as HTMLElement;
-        input.focus();
-        input.parentElement!.scrollIntoView(true); // scroll to wrapper element, so that we can see the label
-      }
-    }
-
-    onReset(): void {
-      this.bag.data = { ...initialData };
-      this.bag.errors = getInitialErrors(initialData);
+    if (!isValid) {
+      const input = this.$refs[getFirstErrorKey(this.bag)!] as HTMLElement;
+      input.focus();
+      input.parentElement!.scrollIntoView(true); // scroll to wrapper element, so that we can see the label
     }
   }
+
+  onReset(): void {
+    this.bag.data = { ...initialData };
+    this.bag.errors = getInitialErrors(initialData);
+  }
+}
 </script>

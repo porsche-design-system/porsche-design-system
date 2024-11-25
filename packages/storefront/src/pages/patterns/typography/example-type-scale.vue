@@ -157,41 +157,41 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { componentsReady } from '@porsche-design-system/components-js';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { componentsReady } from '@porsche-design-system/components-js';
 
-  @Component
-  export default class ExampleTypeScale extends Vue {
-    public dummyHeading = 'The quick brown fox jumps over the lazy dog';
-    public dummyText = 'The quick brown fox jumps over the lazy dog';
-    public fontSize = 100;
+@Component
+export default class ExampleTypeScale extends Vue {
+  public dummyHeading = 'The quick brown fox jumps over the lazy dog';
+  public dummyText = 'The quick brown fox jumps over the lazy dog';
+  public fontSize = 100;
 
-    async mounted(): Promise<void> {
-      await componentsReady();
-      this.setTypeScaleInfoOnRefs();
-      window.addEventListener('resize', this.setTypeScaleInfoOnRefs);
-    }
+  async mounted(): Promise<void> {
+    await componentsReady();
+    this.setTypeScaleInfoOnRefs();
+    window.addEventListener('resize', this.setTypeScaleInfoOnRefs);
+  }
 
-    beforeUpdate(): void {
-      (document.querySelector('html') as HTMLElement).style.fontSize = this.fontSize + '%';
-    }
+  beforeUpdate(): void {
+    (document.querySelector('html') as HTMLElement).style.fontSize = this.fontSize + '%';
+  }
 
-    unmounted() {
-      window.removeEventListener('resize', this.setTypeScaleInfoOnRefs);
-    }
+  unmounted() {
+    window.removeEventListener('resize', this.setTypeScaleInfoOnRefs);
+  }
 
-    private setTypeScaleInfoOnRefs(): void {
-      for (const host of Object.values(this.$refs)) {
-        const el = (host as HTMLElement).shadowRoot?.lastElementChild as HTMLElement;
-        const { fontSize, lineHeight } = window.getComputedStyle(el);
+  private setTypeScaleInfoOnRefs(): void {
+    for (const host of Object.values(this.$refs)) {
+      const el = (host as HTMLElement).shadowRoot?.lastElementChild as HTMLElement;
+      const { fontSize, lineHeight } = window.getComputedStyle(el);
 
-        (host as HTMLElement)?.setAttribute('data-font-size', fontSize);
-        (host as HTMLElement)?.setAttribute('data-line-height', lineHeight);
-        (host as HTMLElement)?.setAttribute('data-viewport-width', window.innerWidth + 'px');
-      }
+      (host as HTMLElement)?.setAttribute('data-font-size', fontSize);
+      (host as HTMLElement)?.setAttribute('data-line-height', lineHeight);
+      (host as HTMLElement)?.setAttribute('data-viewport-width', window.innerWidth + 'px');
     }
   }
+}
 </script>
 
 <style scoped lang="scss">

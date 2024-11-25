@@ -9,7 +9,7 @@ export const parseJSONAttribute = <T>(attribute: T | string): T => {
       // Convert single quotes to double quotes except the ones which are escaped by backslash
       .replace(/\\'/g, '__escaped_single_quote__')
       .replace(/'/g, '"')
-      .replace(/__escaped_single_quote__/g, '\\\'')
+      .replace(/__escaped_single_quote__/g, "\\'")
       // Remove string escapes except the ones followed by unicode u0027
       .replace(/([^\\])\\(?!u0027)/g, '$1')
       // Wrap keys in double quotes

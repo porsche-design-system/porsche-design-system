@@ -11,6 +11,7 @@ import type { TabsBarUpdateEventDetail } from '@porsche-design-system/components
     </p-tabs-bar>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TabsBarExampleBasicComponent {
   tabIndex: number = 0;

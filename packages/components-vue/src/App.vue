@@ -1,20 +1,20 @@
 <script setup lang="ts">
-  import { onMounted, ref } from 'vue';
-  import { useRouter } from 'vue-router';
-  import '@porsche-design-system/shared/css/styles.css';
-  import { PorscheDesignSystemProvider, type Theme } from '@porsche-design-system/components-vue';
-  import { routes } from './router';
+import { onMounted, ref } from 'vue';
+import { useRouter } from 'vue-router';
+import '@porsche-design-system/shared/css/styles.css';
+import { PorscheDesignSystemProvider, type Theme } from '@porsche-design-system/components-vue';
+import { routes } from './router';
 
-  const router = useRouter();
-  const route = ref<string>('');
-  const theme = ref<Theme>('light');
-  const themes: Theme[] = ['light', 'dark', 'auto'];
-  const isWithinIFrame: boolean = window.location !== window.parent.location;
+const router = useRouter();
+const route = ref<string>('');
+const theme = ref<Theme>('light');
+const themes: Theme[] = ['light', 'dark', 'auto'];
+const isWithinIFrame: boolean = window.location !== window.parent.location;
 
-  onMounted(async () => {
-    await router.isReady();
-    route.value = router.currentRoute.value.path;
-  });
+onMounted(async () => {
+  await router.isReady();
+  route.value = router.currentRoute.value.path;
+});
 </script>
 
 <template>

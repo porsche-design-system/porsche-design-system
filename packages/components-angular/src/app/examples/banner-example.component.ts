@@ -14,6 +14,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </p-banner>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class BannerExampleComponent {
   isBannerOpen = false;

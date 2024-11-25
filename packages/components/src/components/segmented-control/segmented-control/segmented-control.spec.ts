@@ -1,7 +1,7 @@
 import { SegmentedControl } from './segmented-control';
 import * as segmentedControlUtils from './segmented-control-utils';
 import * as throwIfChildrenAreNotOfKindUtils from '../../../utils/validation/throwIfChildrenAreNotOfKind';
-import { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
+import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import * as warnIfDeprecatedPropIsUsed from '../../../utils/log/warnIfDeprecatedPropIsUsed';
 import { expect } from '@jest/globals';
 

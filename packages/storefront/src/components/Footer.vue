@@ -22,18 +22,18 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { type StorefrontTheme } from '@/models';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { type StorefrontTheme } from '@/models';
 
-  @Component
-  export default class Footer extends Vue {
-    year = new Date().getFullYear();
+@Component
+export default class Footer extends Vue {
+  year = new Date().getFullYear();
 
-    public get storefrontTheme(): StorefrontTheme {
-      return this.$store.getters.storefrontTheme;
-    }
+  public get storefrontTheme(): StorefrontTheme {
+    return this.$store.getters.storefrontTheme;
   }
+}
 </script>
 
 <style scoped lang="scss">
