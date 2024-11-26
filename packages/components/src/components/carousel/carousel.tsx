@@ -201,7 +201,7 @@ export class Carousel {
       // on reconnect we can reuse the splide instance
       this.updateSlidesAndPagination();
       this.registerSplideHandlers(this.splide);
-      this.splideSlides = this.splide.Components.Elements.slides;
+      this.getSplideSlides();
     }
   }
 
@@ -245,7 +245,7 @@ export class Carousel {
     });
 
     this.registerSplideHandlers(this.splide);
-    this.splideSlides = this.splide.Components.Elements.slides;
+    this.getSplideSlides();
   }
 
   public componentDidUpdate(): void {
@@ -476,5 +476,9 @@ export class Carousel {
       },
       ['aria-hidden']
     );
+  }
+
+  private getSplideSlides(): void {
+    this.splideSlides = this.splide.Components.Elements.slides;
   }
 }
