@@ -88,27 +88,7 @@ export class FlyoutMultilevelItem {
         >
           {this.label}
         </PrefixedTagNames.pButtonPure>
-        <div
-          class="scroller"
-          // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
-          // eslint-disable-next-line
-          /* @ts-ignore */
-          // inert={this.secondary ? null : true} // prevents focusable elements during fade-out transition
-        >
-          <div class="header">
-            <PrefixedTagNames.pButtonPure
-              class="back"
-              type="button"
-              size="medium"
-              icon="arrow-head-left"
-              hideLabel={true}
-              theme={this.theme}
-              onClick={() => this.onClickButton(undefined)}
-            >
-              Back
-            </PrefixedTagNames.pButtonPure>
-            <h2 class="heading">{this.label}</h2>
-          </div>
+        <div class="scroller">
           <slot />
         </div>
       </Host>

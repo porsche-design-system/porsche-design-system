@@ -123,32 +123,13 @@ export class FlyoutMultilevel {
       this.theme
     );
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
-
     return (
       <dialog
-        // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
-        // eslint-disable-next-line
-        /* @ts-ignore */
-        // inert={this.open ? null : true} // prevents focusable elements during fade-out transition
         tabIndex={-1} // dialog always has a dismiss button to be focused
         ref={(ref) => (this.dialog = ref)}
         onCancel={this.onCancelDialog}
         onClick={this.onClickDialog}
       >
-        <div class="header">
-          <PrefixedTagNames.pButtonPure
-            class="dismiss"
-            type="button"
-            size="medium"
-            icon="close"
-            hideLabel={true}
-            theme={this.theme}
-            onClick={this.dismissDialog}
-          >
-            Dismiss flyout
-          </PrefixedTagNames.pButtonPure>
-        </div>
         <slot {...parseAndGetAriaAttributes(this.aria)} />
       </dialog>
     );
