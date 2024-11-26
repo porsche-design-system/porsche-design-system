@@ -36,7 +36,7 @@ The size of `p-flyout` adjusts itself to the content with a predefined **min/max
   for less critical content, such as legal information or FAQs, which provides further details to the user. It appears
   when scrolling to the end of the flyout or when there is available space to accommodate the content.
 
-<Playground :frameworkMarkup="codeSamples" :markup="codeSamples['vanilla-js']" :config="config"></Playground>
+<Playground :frameworkMarkup="defaultExample" :markup="defaultExample['vanilla-js']" :config="config"></Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
@@ -100,6 +100,12 @@ following example shows the visualization of the Porsche Grid when used inside t
   </div>
 </template>
 
+## Example: Flyout Form
+
+The following example demonstrates how a form can be used within a flyout component:
+
+<Playground :frameworkMarkup="formExample" :markup="formExample['vanilla-js']" :config="config"></Playground>
+
 ## Custom styling
 
 The flyout component has some values which can be overwritten by CSS Custom Properties (aka CSS Variables).
@@ -128,7 +134,8 @@ import ExampleStylesGrid from '@/pages/patterns/styles/example-grid.vue';
 export default class Code extends Vue {
   config = { themeable: true };
   flyouts = [];
-  codeSamples = getFlyoutCodeSamples();
+  defaultExample = getFlyoutCodeSamples('default');
+  formExample = getFlyoutCodeSamples('example-form');
 
   mounted() {
     this.registerEvents();
