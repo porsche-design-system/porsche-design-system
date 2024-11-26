@@ -17,7 +17,7 @@ export const transformAttributesWithDigitValue = (markup: string): string =>
     $key === 'maxlength'
       ? ` :maxLength="${$value}"`
       : // surround numeric "name" and "model" prop values with single quotes
-        $key === 'name' || $key === 'model' // TODO replace temporary 911|718 work around with more generic approach
+        $key === 'name' || $key === 'model' // TODO replace hardcoded values with more generic approach (Configurable Storefront Examples #3315)
         ? ` :${$key}="'${$value}'"`
         : ` :${camelCase($key)}="${$value}"`
   );
