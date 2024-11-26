@@ -4,6 +4,10 @@ const initComponent = (): Button => {
   const component = new Button();
   component.host = document.createElement('p-button');
   component.host.attachShadow({ mode: 'open' });
+  component['internals'] = {
+    form: { requestSubmit: jest.fn(), reset: jest.fn() } as unknown as HTMLFormElement,
+  } as ElementInternals;
+  component.form = 'some-form';
   return component;
 };
 
@@ -45,5 +49,76 @@ describe('componentWillLoad', () => {
     component.loading = false;
     component.componentWillLoad();
     expect(component['initialLoading']).toBe(false);
+  });
+});
+
+describe('onClick()', () => {
+  let mockEvent: MouseEvent;
+  let component: Button;
+
+  beforeEach(() => {
+    mockEvent = new MouseEvent('click');
+    jest.spyOn(mockEvent, 'stopPropagation');
+    jest.spyOn(mockEvent, 'preventDefault');
+
+    component = initComponent();
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('should stop propagation if the component is disabled or loading', () => {
+    component.loading = true;
+
+    component.onClick(mockEvent);
+
+    expect(mockEvent.stopPropagation).toHaveBeenCalled();
+    expect(mockEvent.preventDefault).not.toHaveBeenCalled();
+    expect(component['internals'].form.requestSubmit).not.toHaveBeenCalled();
+    expect(component['internals'].form.reset).not.toHaveBeenCalled();
+  });
+
+  it('should call requestSubmit for type "submit"', () => {
+    component.loading = false;
+    component.type = 'submit';
+
+    component.onClick(mockEvent);
+
+    expect(mockEvent.preventDefault).toHaveBeenCalled();
+    expect(component['internals'].form.requestSubmit).toHaveBeenCalled();
+    expect(component['internals'].form.reset).not.toHaveBeenCalled();
+  });
+
+  it('should call reset for type "reset"', () => {
+    component.loading = false;
+    component.type = 'reset';
+
+    component.onClick(mockEvent);
+
+    expect(mockEvent.preventDefault).toHaveBeenCalled();
+    expect(component['internals'].form.requestSubmit).not.toHaveBeenCalled();
+    expect(component['internals'].form.reset).toHaveBeenCalled();
+  });
+
+  it('should not call any form actions for unhandled types', () => {
+    component.loading = false;
+    component.type = 'button';
+
+    component.onClick(mockEvent);
+
+    expect(component['internals'].form.requestSubmit).not.toHaveBeenCalled();
+    expect(component['internals'].form.reset).not.toHaveBeenCalled();
+  });
+
+  it('should not call any form actions for missing form id', () => {
+    component.form = null;
+    component.loading = false;
+    component.type = 'submit';
+
+    component.onClick(mockEvent);
+
+    expect(component['internals'].form.requestSubmit).not.toHaveBeenCalled();
+    expect(component['internals'].form.reset).not.toHaveBeenCalled();
   });
 });
