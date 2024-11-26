@@ -1,3 +1,4 @@
+import { AttachInternals, Component, Element, Host, type JSX, Listen, Prop, h } from '@stencil/core';
 import type {
   BreakpointCustomizable,
   ButtonAriaAttribute,
@@ -9,22 +10,21 @@ import type {
 } from '../../types';
 import {
   AllowedTypes,
-  attachComponentCss,
   BUTTON_ARIA_ATTRIBUTES,
   BUTTON_TYPES,
-  getPrefixedTagNames,
-  hasVisibleIcon,
-  improveButtonHandlingForCustomElement,
-  hasPropValueChanged,
-  isDisabledOrLoading,
   LINK_BUTTON_VARIANTS,
   THEMES,
+  attachComponentCss,
+  getPrefixedTagNames,
+  hasPropValueChanged,
+  hasVisibleIcon,
+  improveButtonHandlingForCustomElement,
+  isDisabledOrLoading,
   validateProps,
 } from '../../utils';
-import { Component, Element, h, Host, type JSX, Listen, Prop } from '@stencil/core';
-import { getButtonAriaAttributes, type ButtonIcon } from './button-utils';
+import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
 import { getComponentCss } from './button-styles';
-import { loadingId, LoadingMessage } from '../common/loading-message/loading-message';
+import { type ButtonIcon, getButtonAriaAttributes } from './button-utils';
 
 const propTypes: PropTypes<typeof Button> = {
   type: AllowedTypes.oneOf<ButtonType>(BUTTON_TYPES),
@@ -39,6 +39,7 @@ const propTypes: PropTypes<typeof Button> = {
   compact: AllowedTypes.breakpoint('boolean'),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<ButtonAriaAttribute>(BUTTON_ARIA_ATTRIBUTES),
+  form: AllowedTypes.string,
 };
 
 /**
@@ -47,6 +48,7 @@ const propTypes: PropTypes<typeof Button> = {
 @Component({
   tag: 'p-button',
   shadow: { delegatesFocus: true },
+  formAssociated: true,
 })
 export class Button {
   @Element() public host!: HTMLElement;
@@ -87,12 +89,30 @@ export class Button {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttribute>;
 
+  /** The id of a form element the button should be associated with. */
+  @Prop({ reflect: true }) public form?: string;
+
+  @AttachInternals() private internals: ElementInternals;
+
   private initialLoading: boolean = false;
 
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
     if (isDisabledOrLoading(this.disabled, this.loading)) {
       e.stopPropagation();
+      return;
+    }
+
+    if (this.form && this.internals.form) {
+      e.preventDefault();
+      switch (this.type) {
+        case 'submit':
+          this.internals.form.requestSubmit();
+          break;
+        case 'reset':
+          this.internals.form.reset();
+          break;
+      }
     }
   }
 

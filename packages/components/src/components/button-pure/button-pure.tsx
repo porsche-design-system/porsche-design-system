@@ -1,23 +1,25 @@
+import { AttachInternals, Component, Element, Host, type JSX, Listen, Prop, h } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import {
   ALIGN_LABELS,
   AllowedTypes,
-  attachComponentCss,
   BUTTON_ARIA_ATTRIBUTES,
   BUTTON_TYPES,
+  TEXT_SIZES,
+  THEMES,
+  TYPOGRAPHY_TEXT_WEIGHTS,
+  attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
   hasVisibleIcon,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
-  TEXT_SIZES,
-  TYPOGRAPHY_TEXT_WEIGHTS,
-  THEMES,
   validateProps,
   warnIfDeprecatedPropValueIsUsed,
   warnIfParentIsPTextAndIconIsNone,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
-import { Component, Element, h, Host, type JSX, Listen, Prop } from '@stencil/core';
+import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
+import { getComponentCss } from './button-pure-styles';
 import {
   type ButtonPureAlignLabel,
   type ButtonPureAlignLabelDeprecated,
@@ -29,8 +31,6 @@ import {
   getButtonPureAriaAttributes,
   warnIfIsLoadingAndIconIsNone,
 } from './button-pure-utils';
-import { getComponentCss } from './button-pure-styles';
-import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
 
 const propTypes: PropTypes<typeof ButtonPure> = {
   type: AllowedTypes.oneOf<ButtonPureType>(BUTTON_TYPES),
@@ -49,6 +49,7 @@ const propTypes: PropTypes<typeof ButtonPure> = {
   stretch: AllowedTypes.breakpoint('boolean'),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<ButtonPureAriaAttribute>(BUTTON_ARIA_ATTRIBUTES),
+  form: AllowedTypes.string,
 };
 
 /**
@@ -57,6 +58,7 @@ const propTypes: PropTypes<typeof ButtonPure> = {
 @Component({
   tag: 'p-button-pure',
   shadow: { delegatesFocus: true },
+  formAssociated: true,
 })
 export class ButtonPure {
   @Element() public host!: HTMLElement;
@@ -112,6 +114,11 @@ export class ButtonPure {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonPureAriaAttribute>;
 
+  /** The id of a form element the button should be associated with. */
+  @Prop({ reflect: true }) public form?: string;
+
+  @AttachInternals() private internals: ElementInternals;
+
   private initialLoading: boolean = false;
 
   private get isDisabledOrLoading(): boolean {
@@ -123,6 +130,19 @@ export class ButtonPure {
   public onClick(e: MouseEvent): void {
     if (this.isDisabledOrLoading) {
       e.stopPropagation();
+      return;
+    }
+
+    if (this.form && this.internals.form) {
+      e.preventDefault();
+      switch (this.type) {
+        case 'submit':
+          this.internals.form.requestSubmit();
+          break;
+        case 'reset':
+          this.internals.form.reset();
+          break;
+      }
     }
   }
 
