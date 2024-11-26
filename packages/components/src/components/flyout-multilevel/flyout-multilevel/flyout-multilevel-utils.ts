@@ -1,6 +1,6 @@
 import { forceUpdate } from '@stencil/core';
 import type { Class, Theme } from '../../../types';
-import { consoleError, getTagNameWithoutPrefix } from '../../../utils';
+import { consoleError, getTagNameWithoutPrefix, isElementOfKind } from '../../../utils';
 import type { FlyoutMultilevelItemInternalHTMLProps } from '../flyout-multilevel-item/flyout-multilevel-item-utils';
 
 export const FLYOUT_MULTILEVEL_ARIA_ATTRIBUTES = ['aria-label'] as const;
@@ -15,39 +15,47 @@ export type FlyoutMultilevelUpdate = {
 export type FlyoutMultilevelUpdateEvent = FlyoutMultilevelUpdate;
 export type FlyoutMultilevelUpdateEventDetail = FlyoutMultilevelUpdateEvent; // to have consistent event types
 
-type Item = HTMLPFlyoutMultilevelItemElement & FlyoutMultilevelItemInternalHTMLProps;
+export type Item = HTMLPFlyoutMultilevelItemElement & FlyoutMultilevelItemInternalHTMLProps;
+
 export const syncFlyoutMultilevelItemsProps = (
-  items: HTMLPFlyoutMultilevelItemElement[],
+  items: Item[],
   activeIdentifier: string,
   theme: Theme,
   host: HTMLElement
 ): void => {
-  (host as HTMLElement & { primary: boolean }).primary = false;
-  for (const item of items) {
+  // TODO: Instead of resetting all items every time, call this function initially and create separate update function
+  (host as HTMLPFlyoutMultilevelElement & { children: HTMLPFlyoutMultilevelItemElement }).primary = false;
+  // biome-ignore lint/complexity/noForEach: <explanation>
+  items.forEach((item) => {
     item.primary = false;
     item.secondary = false;
-  }
-
-  (host.querySelector(`[identifier="${activeIdentifier}"]`) as HTMLElement & { secondary: boolean }).secondary = true;
-  (
-    host.querySelector(`[identifier="${activeIdentifier}"]`).parentElement as HTMLElement & { primary: boolean }
-  ).primary = true;
-
-  (
-    host.querySelector(`[identifier="${activeIdentifier}"]`).parentElement.parentElement as HTMLElement & {
-      cascade: boolean;
-    }
-  ).cascade = true;
-
-  for (const item of items) {
-    (item as Item).theme = theme;
-    // (item as Item).secondary = item.identifier === activeIdentifier;
+    item.cascade = false;
+    item.theme = theme;
     forceUpdate(item);
-  }
-  forceUpdate(host);
+  });
 
-  // const foo = items.filter((el) => el.secondary);
-  // console.log(foo);
+  const activeItem = items.find((it) => it.identifier === activeIdentifier);
+  const activeItemParent = activeItem.parentElement as HTMLPFlyoutMultilevelItemElement;
+  activeItem.secondary = true;
+  activeItemParent.primary = true;
+  forceUpdate(activeItem);
+  forceUpdate(activeItemParent);
+
+  if (isElementOfKind(activeItemParent, 'p-flyout-multilevel')) {
+    return;
+  }
+
+  const applyCascadeUntilRoot = (item: HTMLPFlyoutMultilevelItemElement): void => {
+    const parent = item.parentElement as HTMLPFlyoutMultilevelItemElement;
+    if (isElementOfKind(parent, 'p-flyout-multilevel')) {
+      return;
+    }
+    parent.cascade = true;
+    forceUpdate(parent);
+    applyCascadeUntilRoot(parent);
+  };
+
+  applyCascadeUntilRoot(activeItemParent);
 };
 
 export const validateActiveIdentifier = <T extends Class<any>>(

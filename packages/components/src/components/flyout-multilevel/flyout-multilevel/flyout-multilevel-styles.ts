@@ -6,7 +6,7 @@ import {
 } from '@porsche-design-system/styles';
 import { css, unsafeCSS } from 'lit';
 import { getThemedColors } from '../../../styles';
-import type { Theme } from '../../../utils';
+import { type Theme, isThemeAuto } from '../../../utils';
 
 export const cssVariableVisibility = '--p-internal-flyout-multilevel-visibility';
 export const cssVariableVisibilityTransitionDuration = '--p-internal-flyout-multilevel-visibility-transition-duration';
@@ -55,9 +55,11 @@ export const getComponentCss = (
       )};
       visibility: var(${unsafeCSS(cssVariableVisibility)},${unsafeCSS(isSecondaryScrollerVisible ? 'hidden' : 'inherit')});
 
-      @media (prefers-color-scheme: dark) {
-        background: ${unsafeCSS(backgroundColorDark)};
-      }
+      ${unsafeCSS(
+        isThemeAuto(theme)
+          ? css`@media (prefers-color-scheme: dark) { background: ${unsafeCSS(backgroundColorDark)}; }`
+          : ''
+      )}
 
       @media(min-width:760px) {
         visibility: inherit;
@@ -92,9 +94,11 @@ export const getComponentCss = (
         transition: display 1.5s, overlay 1.5s, opacity 1.5s, backdrop-filter 1.5s, -webkit-backdrop-filter 1.5s;
         transition-behavior: allow-discrete;
 
-        @media (prefers-color-scheme: dark) {
-          background: ${unsafeCSS(backgroundShadingColorDark)};
-        }
+        ${unsafeCSS(
+          isThemeAuto(theme)
+            ? css`@media (prefers-color-scheme: dark) { background: ${unsafeCSS(backgroundShadingColorDark)}; }`
+            : ''
+        )}
       }
 
       &[open] {

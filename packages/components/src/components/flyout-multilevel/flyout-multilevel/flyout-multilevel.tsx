@@ -17,6 +17,7 @@ import {
   type FlyoutMultilevelAriaAttribute,
   type FlyoutMultilevelUpdateEventDetail,
   INTERNAL_UPDATE_EVENT_NAME,
+  type Item,
   syncFlyoutMultilevelItemsProps,
   validateActiveIdentifier,
 } from './flyout-multilevel-utils';
@@ -65,7 +66,7 @@ export class FlyoutMultilevel {
   /** Emitted when activeIdentifier is changed. */
   @Event({ bubbles: false }) public update?: EventEmitter<FlyoutMultilevelUpdateEventDetail>;
 
-  @State() private flyoutMultilevelItemElements: HTMLPFlyoutMultilevelItemElement[] = [];
+  @State() private flyoutMultilevelItemElements: Item[] = [];
 
   private dialog: HTMLDialogElement;
 
@@ -127,10 +128,7 @@ export class FlyoutMultilevel {
   }
 
   private defineFlyoutMultilevelItemElements = (): void => {
-    this.flyoutMultilevelItemElements = getHTMLElementOfKind(
-      this.host,
-      'p-flyout-multilevel-item'
-    ) as HTMLPFlyoutMultilevelItemElement[];
+    this.flyoutMultilevelItemElements = getHTMLElementOfKind(this.host, 'p-flyout-multilevel-item') as Item[];
   };
 
   private onClickDialog = (e: MouseEvent & { target: HTMLElement }): void => {
