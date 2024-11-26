@@ -29,6 +29,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     ([3618](https://github.com/porsche-design-system/porsche-design-system/pull/3618))
 - `Pin-Code`: Add `form` prop to explicitly associate the component with a form, even when it's not directly nested
   within it. ([#3588](https://github.com/porsche-design-system/porsche-design-system/pull/3588))
+- `Button`, `Button-Pure`: Add `form` prop to explicitly associate the component with a form, even when it's not
+  directly nested within it. ([#3648](https://github.com/porsche-design-system/porsche-design-system/pull/3648))
 
 #### Changed
 
