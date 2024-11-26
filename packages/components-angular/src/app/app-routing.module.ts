@@ -146,6 +146,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.FlyoutExampleComponent,
   },
   {
+    name: 'Flyout Form Example',
+    path: 'flyout-form-example',
+    component: fromExamples.FlyoutExampleFormComponent,
+  },
+  {
     name: 'Flyout Multilevel Example',
     path: 'flyout-multilevel-example',
     component: fromExamples.FlyoutMultilevelExampleComponent,
