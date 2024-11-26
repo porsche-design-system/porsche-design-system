@@ -60,15 +60,7 @@ export class FlyoutMultilevelItem {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.primary,
-      this.secondary,
-      this.cascade,
-      this.identifier,
-      this.theme
-    );
+    attachComponentCss(this.host, getComponentCss, this.primary, this.secondary, this.cascade, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 

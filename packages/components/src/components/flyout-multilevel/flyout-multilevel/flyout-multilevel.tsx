@@ -5,7 +5,6 @@ import {
   THEMES,
   attachComponentCss,
   getHTMLElementOfKind,
-  getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasPropValueChanged,
   parseAndGetAriaAttributes,
@@ -113,15 +112,7 @@ export class FlyoutMultilevel {
     validateProps(this, propTypes);
     validateActiveIdentifier(this, this.flyoutMultilevelItemElements, this.activeIdentifier);
     syncFlyoutMultilevelItemsProps(this.flyoutMultilevelItemElements, this.activeIdentifier, this.theme, this.host);
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.open,
-      this.primary,
-      !!this.activeIdentifier,
-      this.activeIdentifier,
-      this.theme
-    );
+    attachComponentCss(this.host, getComponentCss, this.open, this.primary, !!this.activeIdentifier, this.theme);
 
     return (
       <dialog

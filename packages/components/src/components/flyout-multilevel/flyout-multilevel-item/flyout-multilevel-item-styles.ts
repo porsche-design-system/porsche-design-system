@@ -1,48 +1,23 @@
-import {
-  type Theme,
-  borderRadiusSmall,
-  dropShadowHighStyle,
-  headingMediumStyle,
-  headingSmallStyle,
-  motionDurationLong,
-  motionDurationShort,
-  motionEasingBase,
-  spacingFluidLarge,
-  spacingFluidMedium,
-  spacingFluidSmall,
-  spacingFluidXSmall,
-  spacingStaticXSmall,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
+import { type Theme, dropShadowHighStyle, spacingFluidSmall, spacingFluidXSmall } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   addImportantToRule,
   colorSchemeStyles,
   cssVariableTransitionDuration,
-  getFocusJssStyle,
   getThemedColors,
-  getTransition,
   hostHiddenStyles,
-  hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { getCss, isThemeDark, mergeDeep } from '../../../utils';
+import { getCss } from '../../../utils';
 import {
   cssVariableVisibility,
   cssVariableVisibilityTransitionDuration,
-  frostedGlassHeaderHeight,
   mediaQueryEnhancedView,
   scrollerWidthEnhancedView,
 } from '../flyout-multilevel/flyout-multilevel-styles';
 
-export const getComponentCss = (
-  isPrimary: boolean,
-  isSecondary: boolean,
-  isCascade: boolean,
-  identifier: string,
-  theme: Theme
-): string => {
+export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCascade: boolean, theme: Theme): string => {
   const { backgroundSurfaceColor } = getThemedColors(theme);
   const { backgroundSurfaceColor: backgroundSurfaceColorDark } = getThemedColors('dark');
 
