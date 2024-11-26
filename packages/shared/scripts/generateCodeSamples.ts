@@ -157,6 +157,12 @@ const generateCodeSamples = (): void => {
           componentsReactPath + '/FlyoutExample.tsx',
           componentsVuePath + '/FlyoutExample.vue',
         ],
+        [
+          componentsJsPath + '/flyout-example-form.html',
+          componentsAngularPath + '/flyout-example-form.component.ts',
+          componentsReactPath + '/FlyoutExampleForm.tsx',
+          componentsVuePath + '/FlyoutExampleForm.vue',
+        ],
       ],
     },
     {
