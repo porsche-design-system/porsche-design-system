@@ -11,6 +11,7 @@ export * from './CarouselExampleJumpToSlide';
 export * from './CheckboxExample';
 export * from './CheckboxExampleControlled';
 export * from './FlyoutExample';
+export * from './FlyoutExampleForm';
 export * from './FlyoutExampleConditional';
 export * from './FlyoutMultilevelExample';
 export * from './FlyoutMultilevelExampleActiveIdentifier';

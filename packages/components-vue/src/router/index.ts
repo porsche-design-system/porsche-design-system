@@ -1,8 +1,8 @@
+import { kebabCase } from 'change-case';
 import type { RouteComponent, RouteRecordRaw } from 'vue-router';
 import { createRouter, createWebHistory } from 'vue-router';
-import * as fromPages from '../pages';
-import { kebabCase } from 'change-case';
 import * as fromExamples from '../examples';
+import * as fromPages from '../pages';
 
 export type RouteType = RouteRecordRaw & {
   isDisabled?: boolean;
@@ -104,6 +104,11 @@ export const routes: RouteType[] = [
     path: '/flyout-example',
     name: 'Flyout Example',
     component: fromExamples.FlyoutExample,
+  },
+  {
+    path: '/flyout-example-form',
+    name: 'Flyout Example Form',
+    component: fromExamples.FlyoutExampleForm,
   },
   {
     path: '/flyout-multilevel-example',

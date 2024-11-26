@@ -10,6 +10,7 @@ export { default as CarouselExampleJumpToSlide } from './CarouselExampleJumpToSl
 export { default as CheckboxExample } from './CheckboxExample.vue';
 export { default as CheckboxExampleControlled } from './CheckboxExampleControlled.vue';
 export { default as FlyoutExample } from './FlyoutExample.vue';
+export { default as FlyoutExampleForm } from './FlyoutExampleForm.vue';
 export { default as FlyoutMultilevelExample } from './FlyoutMultilevelExample.vue';
 export { default as FlyoutMultilevelExampleActiveIdentifier } from './FlyoutMultilevelExampleActiveIdentifier.vue';
 export { default as FlyoutMultilevelExampleCustomContent } from './FlyoutMultilevelExampleCustomContent.vue';
