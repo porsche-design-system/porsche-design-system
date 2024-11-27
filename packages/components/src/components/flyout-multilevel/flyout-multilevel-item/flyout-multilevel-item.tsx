@@ -68,6 +68,7 @@ export class FlyoutMultilevelItem {
     return (
       <Host>
         <PrefixedTagNames.pButtonPure
+          inert={this.primary || this.cascade}
           class="button"
           type="button"
           size="medium"
