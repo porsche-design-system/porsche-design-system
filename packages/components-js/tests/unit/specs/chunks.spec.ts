@@ -1,8 +1,8 @@
-import * as gzipSize from 'gzip-size';
-import * as path from 'path';
 import * as fs from 'fs';
-import { COMPONENT_CHUNKS_MANIFEST, type ComponentChunkName } from '../../../projects/components-wrapper';
+import * as path from 'path';
 import { TAG_NAMES } from '@porsche-design-system/shared';
+import { gzipSizeSync } from 'gzip-size';
+import { COMPONENT_CHUNKS_MANIFEST, type ComponentChunkName } from '../../../projects/components-wrapper';
 
 const indexJsFileCjs = require.resolve('@porsche-design-system/components-js');
 const indexJsFileEsm = path.resolve(indexJsFileCjs, '../../esm/index.mjs');
@@ -83,7 +83,7 @@ describe('chunk size', () => {
 
       const { size: oldSize = 0, gzipSize: oldGzipSize = 0 } =
         fixtureStats.find((x) => x.chunkShortName === chunkShortName) || {};
-      const newGzipSize = gzipSize.sync(getChunkContent(chunkName));
+      const newGzipSize = gzipSizeSync(getChunkContent(chunkName));
 
       const stat: StatsResult = {
         chunkName,
