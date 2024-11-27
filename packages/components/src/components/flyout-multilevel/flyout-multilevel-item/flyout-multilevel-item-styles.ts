@@ -12,8 +12,9 @@ import { getCss } from '../../../utils';
 import { mediaQueryEnhancedView, scrollerWidthEnhancedView } from '../flyout-multilevel/flyout-multilevel-styles';
 
 export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCascade: boolean, theme: Theme): string => {
-  const { backgroundSurfaceColor } = getThemedColors(theme);
-  const { backgroundSurfaceColor: backgroundSurfaceColorDark } = getThemedColors('dark');
+  const { backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
+  const { backgroundColor: backgroundColorDark, backgroundSurfaceColor: backgroundSurfaceColorDark } =
+    getThemedColors('dark');
 
   return getCss({
     '@global': {
@@ -29,12 +30,20 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
         }),
       },
       slot: {
+        ...(isPrimary || isCascade
+          ? {
+              display: 'grid',
+              gridTemplateColumns: 'subgrid',
+              gridArea: '1/1/1/-1',
+            }
+          : {
+              display: 'flex',
+              flexDirection: 'column',
+              gap: spacingFluidXSmall,
+            }),
         ...(isPrimary && {
           '--_p-flyout-multilevel-button': 'block',
         }),
-        display: 'flex',
-        flexDirection: 'column',
-        gap: spacingFluidXSmall,
       },
       '::slotted(*:not([primary],[cascade]))': {
         ...(isCascade && {
@@ -73,26 +82,31 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
             position: 'fixed',
             inset: 0,
           }),
+      ...(isCascade && {
+        display: 'grid',
+        gridTemplateColumns: 'subgrid',
+        gridArea: '1/1/1/-1',
+      }),
       ...(!isPrimary && {
         ...(isSecondary
           ? {
-              display: 'block',
+              display: 'grid',
             }
           : {
               display: 'none',
             }),
       }),
       ...(isCascade && {
-        display: 'block',
+        display: 'grid',
       }),
       width: '100vw',
       boxSizing: 'border-box',
       overflow: 'hidden auto',
       ...dropShadowHighStyle,
       // it's important to define background-color for each scroller to have correct scrollbar coloring
-      backgroundColor: backgroundSurfaceColor,
+      backgroundColor: isPrimary || isCascade ? backgroundColor : backgroundSurfaceColor,
       ...prefersColorSchemeDarkMediaQuery(theme, {
-        backgroundColor: backgroundSurfaceColorDark,
+        backgroundColor: isPrimary || isCascade ? backgroundColorDark : backgroundSurfaceColorDark,
       }),
       [mediaQueryEnhancedView]: {
         boxShadow: 'none',
