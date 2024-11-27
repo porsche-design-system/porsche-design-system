@@ -4,6 +4,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  isElementOfKind,
   throwIfParentIsNotOfKind,
   validateProps,
 } from '../../../utils';
@@ -76,7 +77,7 @@ export class FlyoutMultilevelItem {
           active={this.secondary}
           aria={{ 'aria-expanded': this.secondary }}
           theme={this.theme}
-          onClick={() => this.onClickButton(this.secondary ? undefined : this.identifier)}
+          onClick={() => this.onClickButton()}
         >
           {this.label}
         </PrefixedTagNames.pButtonPure>
@@ -89,7 +90,7 @@ export class FlyoutMultilevelItem {
               stretch={true}
               icon="arrow-head-left"
               theme={this.theme}
-              onClick={() => this.onClickButton(this.identifier)}
+              onClick={() => this.emitInternalUpdateEvent(this.identifier)}
             >
               {this.label}
             </PrefixedTagNames.pButtonPure>
@@ -100,12 +101,20 @@ export class FlyoutMultilevelItem {
     );
   }
 
-  private onClickButton = (activeIdentifier: string | undefined): void => {
+  private onClickButton = (): void => {
+    if (isElementOfKind(this.host.parentElement, 'p-flyout-multilevel')) {
+      this.secondary ? this.emitInternalUpdateEvent(undefined) : this.emitInternalUpdateEvent(this.identifier);
+    } else if (!this.secondary) {
+      this.emitInternalUpdateEvent(this.identifier);
+    }
+  };
+
+  private emitInternalUpdateEvent(activeIdentifier: string | undefined): void {
     this.host.dispatchEvent(
       new CustomEvent<FlyoutMultilevelUpdateEventDetail>(INTERNAL_UPDATE_EVENT_NAME, {
         bubbles: true,
         detail: { activeIdentifier },
       } as CustomEventInit<FlyoutMultilevelUpdateEventDetail>)
     );
-  };
+  }
 }

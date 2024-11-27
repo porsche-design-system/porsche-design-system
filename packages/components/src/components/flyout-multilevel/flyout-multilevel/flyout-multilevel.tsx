@@ -1,4 +1,4 @@
-import { Component, Element, Event, type EventEmitter, type JSX, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, type JSX, Listen, Prop, State, Watch, h } from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../../types';
 import {
   AllowedTypes,
@@ -75,17 +75,15 @@ export class FlyoutMultilevel {
     setScrollLock(isOpen);
   }
 
+  @Listen(INTERNAL_UPDATE_EVENT_NAME)
+  public onInternalUpdate(e: CustomEvent<FlyoutMultilevelUpdateEventDetail>): void {
+    e.stopPropagation(); // prevents internal event from bubbling further
+    const activeIdentifier = e.detail.activeIdentifier;
+    this.update.emit({ activeIdentifier });
+  }
+
   public componentWillLoad(): void {
     this.defineFlyoutMultilevelItemElements();
-
-    this.host.shadowRoot.addEventListener(
-      INTERNAL_UPDATE_EVENT_NAME,
-      (e: CustomEvent<FlyoutMultilevelUpdateEventDetail>) => {
-        e.stopPropagation(); // prevents internal event from bubbling further
-        const activeIdentifier = e.detail.activeIdentifier;
-        this.update.emit({ activeIdentifier });
-      }
-    );
   }
 
   public componentDidLoad(): void {
