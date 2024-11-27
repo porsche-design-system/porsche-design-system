@@ -1,5 +1,10 @@
 import { Page, expect, test } from '@playwright/test';
-import { getEventSummary, getFormDataValue, setProperty } from '../../../../components-js/tests/e2e/helpers';
+import {
+  addEventListener,
+  getEventSummary,
+  getFormDataValue,
+  setProperty,
+} from '../../../../components-js/tests/e2e/helpers';
 import { goto, waitForComponentsReady } from '../helpers';
 
 const getHost = (page: Page) => page.locator('p-flyout');
@@ -33,13 +38,16 @@ test.describe('form', () => {
     await expect(nativeTextarea).toHaveValue(newValue);
     await expect(checkbox).toHaveJSProperty('checked', true);
 
+    await addEventListener(form, 'reset');
+    expect((await getEventSummary(form, 'reset')).counter).toBe(0);
+
     await page.locator('button[type="reset"]').click();
 
     await expect(textarea).toHaveJSProperty('value', '');
     await expect(nativeTextarea).toHaveValue('');
     await expect(checkbox).toHaveJSProperty('checked', false);
 
-    // expect((await getEventSummary(form, 'reset')).counter).toBe(1);
+    expect((await getEventSummary(form, 'reset')).counter).toBe(1);
     expect(await getFormDataValue(form, 'some-textarea')).toBe('');
     expect(await getFormDataValue(form, 'some-checkbox')).toBe(null);
   });
@@ -61,13 +69,16 @@ test.describe('form', () => {
     await nativeTextarea.fill(newValue);
     await setProperty(checkbox, 'checked', true);
 
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
     await expect(textarea).toHaveJSProperty('value', newValue);
     await expect(nativeTextarea).toHaveValue(newValue);
     await expect(checkbox).toHaveJSProperty('checked', true);
 
     await page.locator('button[type="submit"]').click();
 
-    // expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
     expect(await getFormDataValue(form, 'some-checkbox')).toBe('on');
   });
 });
