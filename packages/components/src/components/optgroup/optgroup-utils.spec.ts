@@ -1,12 +1,15 @@
 import { updateOptionsDisabled } from './optgroup-utils';
 import { expect } from '@jest/globals';
+import type { SelectOption } from '../select/select/select-utils';
+import type { MultiSelectOption } from '../multi-select/multi-select/multi-select-utils';
 
 describe('updateOptionsDisabled()', () => {
-  it('should update disabled attribute of each option to initial option value', () => {
+  it('should update disabledParent attribute of each option to disabled attribute of parent', () => {
     const host = document.createElement('p-optgroup');
+    const disabledParent = true;
 
     const children = [true, false].map((disabled) => {
-      const child: HTMLPSelectOptionElement = document.createElement('p-select-option');
+      const child: SelectOption = document.createElement('p-select-option');
       child.disabled = disabled;
       return child;
     });
@@ -15,34 +18,12 @@ describe('updateOptionsDisabled()', () => {
       host.append(child);
     });
 
-    updateOptionsDisabled(host, true);
+    updateOptionsDisabled(host, disabledParent);
 
     expect(
       Array.from(host.children)
-        .map((child: HTMLPMultiSelectOptionElement) => child.disabled)
+        .map((child: MultiSelectOption) => child.disabledParent)
         .every(Boolean)
-    ).toBe(true);
-  });
-
-  it('should update disabled attribute of each option to initial option value', () => {
-    const host = document.createElement('p-optgroup');
-
-    const initialState = [true, false];
-
-    const children = initialState.map((disabled) => {
-      const child: HTMLPSelectOptionElement = document.createElement('p-select-option');
-      child.disabled = disabled;
-      return child;
-    });
-
-    children.forEach((child) => {
-      host.append(child);
-    });
-
-    updateOptionsDisabled(host, false);
-
-    expect(Array.from(host.children).map((child: HTMLPMultiSelectOptionElement) => child.disabled)).toEqual(
-      initialState
-    );
+    ).toBe(disabledParent);
   });
 });

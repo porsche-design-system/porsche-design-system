@@ -26,6 +26,7 @@ import { MultiSelectExampleComponent } from './multi-select-example.component';
 import { PinCodeExampleControlledComponent } from './pin-code-example-controlled.component';
 import { PinCodeExampleComponent } from './pin-code-example.component';
 import { ScrollerExampleComponent } from './scroller-example.component';
+import { SegmentedControlExampleControlledComponent } from './segmented-control-example-controlled.component';
 import { SegmentedControlExampleComponent } from './segmented-control-example.component';
 import { SelectExampleControlledComponent } from './select-example-controlled.component';
 import { SelectExampleDynamicComponent } from './select-example-dynamic.component';
@@ -74,6 +75,7 @@ export const examples = [
   PinCodeExampleComponent,
   PinCodeExampleControlledComponent,
   ScrollerExampleComponent,
+  SegmentedControlExampleControlledComponent,
   SegmentedControlExampleComponent,
   SelectExampleComponent,
   SelectExampleControlledComponent,
@@ -122,6 +124,7 @@ export * from './multi-select-example-dynamic.component';
 export * from './pin-code-example.component';
 export * from './pin-code-example-controlled.component';
 export * from './scroller-example.component';
+export * from './segmented-control-example-controlled.component';
 export * from './segmented-control-example.component';
 export * from './select-example.component';
 export * from './select-example-controlled.component';

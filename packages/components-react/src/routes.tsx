@@ -222,6 +222,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.SegmentedControlExamplePage />,
   },
   {
+    name: 'Segmented Control Example Controlled',
+    path: '/segmented-control-example-controlled',
+    element: <fromExamples.SegmentedControlExampleControlledPage />,
+  },
+  {
     name: 'Select Example',
     path: '/select-example',
     element: <fromExamples.SelectExamplePage />,

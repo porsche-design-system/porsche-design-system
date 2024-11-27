@@ -19,6 +19,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import type { MultiSelectOption } from '@porsche-design-system/components/dist/types/components/multi-select/multi-select/multi-select-utils';
+import { Theme } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.locator('p-multi-select');
 const getFieldset = (page: Page) => page.locator('fieldset');
@@ -95,9 +96,9 @@ const addOption = async (page: Page, value: string, textContent?: string) => {
   );
 };
 
-const removeLastOption = async (page: Page) => {
-  const host = getHost(page);
-  await host.evaluate((el) => (el as HTMLPMultiSelectElement).lastElementChild.remove());
+type Option = {
+  value: string;
+  disabled?: boolean;
 };
 
 type InitOptions = {
@@ -108,8 +109,7 @@ type InitOptions = {
     message?: string;
   };
   options?: {
-    amount?: 3 | 5;
-    disabledIndex?: number;
+    values?: (Option | Option[])[];
     isWithinForm?: boolean;
     markupBefore?: string;
     markupAfter?: string;
@@ -120,8 +120,7 @@ type InitOptions = {
 const initMultiSelect = (page: Page, opt?: InitOptions): Promise<void> => {
   const { props = { name: 'name' }, slots, options } = opt || {};
   const {
-    amount = 3,
-    disabledIndex,
+    values = [{ value: 'a' }, { value: 'b' }, { value: 'c' }],
     isWithinForm = true,
     markupBefore = '',
     markupAfter = '',
@@ -129,11 +128,19 @@ const initMultiSelect = (page: Page, opt?: InitOptions): Promise<void> => {
   } = options || {};
   const { label = '', description = '', message = '' } = slots || {};
 
-  const selectOptions = [...'abc', ...(amount === 5 ? 'de' : '')]
+  const getOption = (opt: Option) => {
+    const attrs = [opt.disabled ? 'disabled' : ''].join(' ');
+    return `<p-multi-select-option value="${opt.value}" ${attrs}>Option ${opt.value.toUpperCase()}</p-multi-select-option>`;
+  };
+
+  const getOptions = (options: Option | Option[]) =>
+    !Array.isArray(options) ? getOption(options) : options.map((option) => getOption(option));
+
+  const selectOptions = values
     .map((x, idx) => {
-      const attrs = [disabledIndex === idx ? 'disabled' : ''].join(' ');
-      const option = `<p-multi-select-option value="${x}" ${attrs}>Option ${x.toUpperCase()}</p-multi-select-option>`;
-      return includeOptgroups ? `<p-optgroup label="${x}">${option}</p-optgroup>` : option;
+      const options = getOptions(x);
+      const optionsHtml = Array.isArray(options) ? options.map((node) => node).join('') : options;
+      return includeOptgroups ? `<p-optgroup label="${idx}">${optionsHtml}</p-optgroup>` : optionsHtml;
     })
     .join('\n');
 
@@ -503,7 +510,7 @@ test.describe('filter', () => {
     await waitForStencilLifecycle(page);
 
     const dropdownOption1 = getShadowDropdownOption(page, 1);
-    const dropdownOption1Value = await getProperty(dropdownOption1, 'textContent');
+    const dropdownOption1Value = await getProperty<string>(dropdownOption1, 'textContent');
 
     expect((await getAmountOfVisibleMultiSelectOptions(page)).length).toBe(0);
     expect(dropdownOption1Value).toBe('---No results found');
@@ -670,9 +677,11 @@ test.describe('keyboard and click events', () => {
   });
 
   test('should skip disabled option on arrow down', async ({ page }) => {
-    await initMultiSelect(page, { options: { disabledIndex: 0 } });
+    await initMultiSelect(page, {
+      options: { values: [{ value: 'a', disabled: true }, { value: 'b' }, { value: 'c' }] },
+    });
 
-    expect(await getProperty(getMultiSelectOption(page, 1), 'disabled'), 'disabled option').toBe(true);
+    expect(await getProperty<boolean>(getMultiSelectOption(page, 1), 'disabled'), 'disabled option').toBe(true);
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('ArrowDown');
@@ -682,9 +691,11 @@ test.describe('keyboard and click events', () => {
   });
 
   test('should skip disabled option on arrow up', async ({ page }) => {
-    await initMultiSelect(page, { options: { disabledIndex: 1 } });
+    await initMultiSelect(page, {
+      options: { values: [{ value: 'a' }, { value: 'b', disabled: true }, { value: 'c' }] },
+    });
 
-    expect(await getProperty(getMultiSelectOption(page, 2), 'disabled'), 'disabled option').toBe(true);
+    expect(await getProperty<boolean>(getMultiSelectOption(page, 2), 'disabled'), 'disabled option').toBe(true);
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('ArrowDown');
@@ -1119,46 +1130,62 @@ test.describe('theme', () => {
     const options = await page.locator('p-multi-select-option').all();
 
     for (const child of [...optgroups, ...options]) {
-      expect(await getProperty(child, 'theme')).toBe('light');
+      expect(await getProperty<Theme>(child, 'theme')).toBe('light');
     }
     await setProperty(multiSelect, 'theme', 'dark');
     await waitForStencilLifecycle(page);
 
     for (const child of [...optgroups, ...options]) {
-      expect(await getProperty(child, 'theme')).toBe('dark');
+      expect(await getProperty<Theme>(child, 'theme')).toBe('dark');
     }
   });
 });
 
 test.describe('optgroups', () => {
   test('should persist disabled state for options inside optgroup', async ({ page }) => {
-    await initMultiSelect(page, { options: { includeOptgroups: true, disabledIndex: 1 } });
+    const group = [{ value: 'b', disabled: true }, { value: 'c' }, { value: 'd', disabled: true }];
+
+    await initMultiSelect(page, {
+      options: { includeOptgroups: true, values: [{ value: 'a' }, group, { value: 'e' }] },
+    });
 
     const inputElement = getInput(page);
     await inputElement.click();
     await waitForStencilLifecycle(page);
 
-    const optgroup = page.locator('p-optgroup[label="b"]');
-    await expect(await getProperty(optgroup, 'disabled')).toBeFalsy();
+    const optgroup = page.locator('p-optgroup[label="1"]');
+    expect(await getProperty<boolean>(optgroup, 'disabled')).toBeFalsy();
     const children = await optgroup.locator('p-multi-select-option').all();
 
     for (const child of children) {
-      await expect(await getProperty(child, 'disabled')).toBeTruthy();
+      const value = await getProperty<string>(child, 'value');
+      const disabled = await getProperty<boolean>(child, 'disabled');
+      const item = group.find((item) => item.value === value);
+      expect(disabled).toEqual(!!item.disabled);
+      expect(await getProperty<boolean>(child, 'disabledParent')).toBeFalsy();
     }
-    await optgroup.evaluate((element) => (element.disabled = true));
+    await optgroup.evaluate((element) => ((element as HTMLPOptgroupElement).disabled = true));
     await waitForStencilLifecycle(page);
 
-    await expect(await getProperty(optgroup, 'disabled')).toBeTruthy();
+    expect(await getProperty<boolean>(optgroup, 'disabled')).toBeTruthy();
 
     for (const child of children) {
-      await expect(await getProperty(child, 'disabled')).toBeTruthy();
+      const value = await getProperty<string>(child, 'value');
+      const disabled = await getProperty<boolean>(child, 'disabled');
+      const item = group.find((item) => item.value === value);
+      expect(disabled).toEqual(!!item.disabled);
+      expect(await getProperty<boolean>(child, 'disabledParent')).toBeTruthy();
     }
 
-    await optgroup.evaluate((element) => (element.disabled = false));
+    await optgroup.evaluate((element) => ((element as HTMLPOptgroupElement).disabled = false));
     await waitForStencilLifecycle(page);
 
     for (const child of children) {
-      await expect(await getProperty(child, 'disabled')).toBeTruthy();
+      const value = await getProperty<string>(child, 'value');
+      const disabled = await getProperty<boolean>(child, 'disabled');
+      const item = group.find((item) => item.value === value);
+      expect(disabled).toEqual(!!item.disabled);
+      expect(await getProperty<boolean>(child, 'disabledParent')).toBeFalsy();
     }
   });
 
@@ -1176,7 +1203,7 @@ test.describe('optgroups', () => {
     expect((await getAmountOfVisibleMultiSelectOptgroups(page)).length, 'amount of shown optgroups').toBe(1);
     expect((await getAmountOfVisibleMultiSelectOptions(page)).length, 'amount of shown options').toBe(1);
 
-    const visibleOptgroup = page.locator('p-optgroup[label="b"]');
+    const visibleOptgroup = page.locator('p-optgroup[label="1"]');
     await expect(visibleOptgroup.locator('p-multi-select-option').getByText('b')).toBeVisible();
     await expect(page.locator('p-optgroup[label="a"]')).not.toBeVisible();
     await expect(visibleOptgroup).toBeVisible();
@@ -1190,20 +1217,21 @@ test.describe('optgroups', () => {
     await inputElement.click();
     await waitForStencilLifecycle(page);
 
-    const optgroup = page.locator('p-optgroup[label="b"]');
-    await expect(await getProperty(optgroup, 'disabled')).toBeFalsy();
+    const optgroup = page.locator('p-optgroup[label="1"]');
+    expect(await getProperty<boolean>(optgroup, 'disabled')).toBeFalsy();
     const children = await optgroup.locator('p-multi-select-option').all();
 
     for (const child of children) {
-      await expect(await getProperty(child, 'disabled')).toBeFalsy();
+      expect(await getProperty<boolean>(child, 'disabled')).toBeFalsy();
     }
-    await optgroup.evaluate((element) => (element.disabled = true));
+    expect(await setProperty(optgroup, 'disabled', true));
     await waitForStencilLifecycle(page);
 
-    await expect(await getProperty(optgroup, 'disabled')).toBeTruthy();
+    expect(await getProperty<boolean>(optgroup, 'disabled')).toBeTruthy();
 
     for (const child of children) {
-      await expect(await getProperty(child, 'disabled')).toBeTruthy();
+      expect(await getProperty<boolean>(child, 'disabled')).toBeFalsy();
+      expect(await getProperty<boolean>(child, 'disabledParent')).toBeTruthy();
     }
   });
 
@@ -1214,14 +1242,14 @@ test.describe('optgroups', () => {
     await inputElement.click();
     await waitForStencilLifecycle(page);
 
-    const optgroup = page.locator('p-optgroup[label="b"]');
+    const optgroup = page.locator('p-optgroup[label="1"]');
     await expect(optgroup).toBeVisible();
     const children = await optgroup.locator('p-multi-select-option').all();
 
     for (const child of children) {
       await expect(child).toBeVisible();
     }
-    await optgroup.evaluate((element) => (element.hidden = true));
+    await optgroup.evaluate((element) => ((element as HTMLPOptgroupElement).hidden = true));
     await waitForStencilLifecycle(page);
 
     await expect(optgroup).not.toBeVisible();

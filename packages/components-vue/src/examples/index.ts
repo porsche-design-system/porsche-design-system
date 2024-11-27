@@ -25,6 +25,7 @@ export { default as MultiSelectExampleDynamic } from './MultiSelectExampleDynami
 export { default as PinCodeExample } from './PinCodeExample.vue';
 export { default as PinCodeExampleControlled } from './PinCodeExampleControlled.vue';
 export { default as ScrollerExample } from './ScrollerExample.vue';
+export { default as SegmentedControlExampleControlled } from './SegmentedControlExampleControlled.vue';
 export { default as SegmentedControlExample } from './SegmentedControlExample.vue';
 export { default as SelectExample } from './SelectExample.vue';
 export { default as SelectExampleControlled } from './SelectExampleControlled.vue';

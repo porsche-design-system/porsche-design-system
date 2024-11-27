@@ -28,6 +28,7 @@ export * from './MultiSelectExampleDynamic';
 export * from './PinCodeExample';
 export * from './PinCodeExampleControlled';
 export * from './ScrollerExample';
+export * from './SegmentedControlExampleControlled';
 export * from './SegmentedControlExample';
 export * from './SelectExample';
 export * from './SelectExampleControlled';
