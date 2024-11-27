@@ -151,6 +151,7 @@ export class Select {
   private isNativePopoverCase: boolean = false;
   private parentTableElement: HTMLElement;
   private popoverElement: HTMLElement;
+  private hasSlottedImage: boolean = false;
 
   @Listen('internalOptionUpdate')
   public updateOptionHandler(e: Event & { target: SelectOption }): void {
@@ -184,6 +185,7 @@ export class Select {
     this.internals.setFormValue(this.value);
     this.updateOptions();
     updateSelectOptions(this.selectOptions, this.value);
+    this.hasSlottedImage = this.getSelectedOptionImagePath(this.selectOptions) !== '';
   }
 
   public componentDidLoad(): void {
@@ -230,7 +232,8 @@ export class Select {
       this.hideLabel,
       this.state,
       this.isNativePopoverCase,
-      this.theme
+      this.theme,
+      this.hasSlottedImage
     );
     syncSelectChildrenProps([...this.selectOptions, ...this.selectOptgroups], this.theme);
 
@@ -267,7 +270,14 @@ export class Select {
             onKeyDown={this.onComboKeyDown}
             ref={(el) => (this.combobox = el)}
           >
-            {getSelectedOptionString(this.selectOptions)}
+            {this.hasSlottedImage ? (
+              <span>
+                <img src={this.getSelectedOptionImagePath(this.selectOptions)} alt="" />
+                {getSelectedOptionString(this.selectOptions)}
+              </span>
+            ) : (
+              getSelectedOptionString(this.selectOptions)
+            )}
           </button>
           <PrefixedTagNames.pIcon
             class={{ icon: true, 'icon--rotate': this.isOpen }}
@@ -344,6 +354,7 @@ export class Select {
     }
     this.updateMenuState(false);
     this.combobox.focus();
+    this.hasSlottedImage = this.getSelectedOptionImagePath(this.selectOptions) !== '';
   };
 
   private onComboClick = (): void => {
@@ -465,4 +476,10 @@ export class Select {
       name: this.name,
     });
   };
+
+  private getSelectedOptionImagePath = (options: SelectOption[]): string =>
+    options
+      .find((option) => option.selected)
+      ?.querySelector('img')
+      ?.getAttribute('src') ?? '';
 }
