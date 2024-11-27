@@ -25,14 +25,13 @@ export const syncFlyoutMultilevelItemsProps = (
 ): void => {
   // TODO: Instead of resetting all items every time, call this function initially and create separate update function
   (host as HTMLPFlyoutMultilevelElement & { children: HTMLPFlyoutMultilevelItemElement }).primary = false;
-  // biome-ignore lint/complexity/noForEach: <explanation>
-  items.forEach((item) => {
+  for (const item of items) {
     item.primary = false;
     item.secondary = false;
     item.cascade = false;
     item.theme = theme;
     forceUpdate(item);
-  });
+  }
 
   const activeItem = items.find((it) => it.identifier === activeIdentifier);
   const activeItemParent = activeItem.parentElement as HTMLPFlyoutMultilevelItemElement;
@@ -41,12 +40,14 @@ export const syncFlyoutMultilevelItemsProps = (
   forceUpdate(activeItem);
   forceUpdate(activeItemParent);
 
+  // TODO: Add prefix
   if (isElementOfKind(activeItemParent, 'p-flyout-multilevel')) {
     return;
   }
 
   const applyCascadeUntilRoot = (item: HTMLPFlyoutMultilevelItemElement): void => {
     const parent = item.parentElement as HTMLPFlyoutMultilevelItemElement;
+    // TODO: Add prefix
     if (isElementOfKind(parent, 'p-flyout-multilevel')) {
       return;
     }
