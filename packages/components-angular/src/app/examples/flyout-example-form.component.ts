@@ -7,7 +7,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <p-flyout [open]="isFlyoutOpen" (dismiss)="onDismiss()" [aria]="{ 'aria-label': 'Some Heading' }">
       <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
       <form id="some-form" (submit)="onSubmit($event)">
-        <p-checkbox name="some-checkbox" label="Some Label" value="some-label"></p-checkbox>
+        <p-checkbox name="some-checkbox" label="Some Label"></p-checkbox>
         <p-textarea name="some-textarea" label="Some Label"></p-textarea>
       </form>
       <p-button-group slot="footer">
