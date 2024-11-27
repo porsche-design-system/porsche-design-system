@@ -3,19 +3,13 @@ import {
   addImportantToEachRule,
   addImportantToRule,
   colorSchemeStyles,
-  cssVariableTransitionDuration,
   getThemedColors,
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import { getCss } from '../../../utils';
-import {
-  cssVariableVisibility,
-  cssVariableVisibilityTransitionDuration,
-  mediaQueryEnhancedView,
-  scrollerWidthEnhancedView,
-} from '../flyout-multilevel/flyout-multilevel-styles';
+import { mediaQueryEnhancedView, scrollerWidthEnhancedView } from '../flyout-multilevel/flyout-multilevel-styles';
 
 export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCascade: boolean, theme: Theme): string => {
   const { backgroundSurfaceColor } = getThemedColors(theme);
@@ -82,15 +76,14 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       ...(!isPrimary && {
         ...(isSecondary
           ? {
-              // TODO: Should be visibility: inherit to allow overwriting but currently not possible since it would inherit from the scroller of the p-flyout-multilevel itself, which is hidden on mobile
-              visibility: `var(${cssVariableVisibility},visible)`,
+              display: 'block',
             }
           : {
-              visibility: `var(${cssVariableVisibility},hidden)`,
+              display: 'none',
             }),
       }),
       ...(isCascade && {
-        visibility: 'visible',
+        display: 'block',
       }),
       width: '100vw',
       boxSizing: 'border-box',
@@ -106,7 +99,6 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
         insetInlineStart: `calc(${scrollerWidthEnhancedView} - 1px)`, // -1px prevents possible visible background under certain circumstances between primary and secondary scroller
         width: scrollerWidthEnhancedView,
         transform: addImportantToRule('initial'), // to overrule :dir(rtl) selector
-        transition: `visibility 0s linear var(${cssVariableTransitionDuration},var(${cssVariableVisibilityTransitionDuration},0s))`,
       },
       '&:dir(rtl)': {
         ...(!isSecondary && {

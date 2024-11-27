@@ -66,6 +66,14 @@ export const getComponentCss = (
       }
     }
 
+    ${unsafeCSS(
+      isPrimary
+        ? ''
+        : css`::slotted(*:not([primary],[cascade])) {
+        display: none;
+    }`
+    )}
+
     dialog {
       position: fixed;
       height: 100dvh;

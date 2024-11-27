@@ -81,6 +81,19 @@ export class FlyoutMultilevelItem {
           {this.label}
         </PrefixedTagNames.pButtonPure>
         <div class="scroller">
+          {this.primary && (
+            <PrefixedTagNames.pButtonPure
+              type="button"
+              size="small"
+              alignLabel="end"
+              stretch={true}
+              icon="arrow-head-left"
+              theme={this.theme}
+              onClick={() => this.onClickButton(this.identifier)}
+            >
+              {this.label}
+            </PrefixedTagNames.pButtonPure>
+          )}
           <slot />
         </div>
       </Host>
