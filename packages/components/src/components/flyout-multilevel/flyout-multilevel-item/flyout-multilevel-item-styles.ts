@@ -42,7 +42,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
         flexDirection: 'column',
         gap: spacingFluidXSmall,
       },
-      '::slotted(*:not([primary]))': {
+      '::slotted(*:not([primary],[cascade]))': {
         ...(isCascade && {
           display: 'none',
         }),
