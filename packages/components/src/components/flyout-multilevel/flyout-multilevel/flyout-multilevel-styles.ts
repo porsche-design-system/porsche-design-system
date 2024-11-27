@@ -1,133 +1,119 @@
 import {
+  frostedGlassStyle,
   getMediaQueryMin,
   spacingFluidSmall,
   spacingFluidXSmall,
   spacingStaticSmall,
 } from '@porsche-design-system/styles';
-import { css, unsafeCSS } from 'lit';
-import { getThemedColors } from '../../../styles';
-import { type Theme, isThemeAuto } from '../../../utils';
-
-export const cssVariableVisibility = '--p-internal-flyout-multilevel-visibility';
-export const cssVariableVisibilityTransitionDuration = '--p-internal-flyout-multilevel-visibility-transition-duration';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  getThemedColors,
+  hostHiddenStyles,
+  prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
+} from '../../../styles';
+import { type Theme, getCss } from '../../../utils';
 
 export const scrollerWidthEnhancedView = 'clamp(338px, 10.52vw + 258px, 460px)';
 export const mediaQueryEnhancedView = getMediaQueryMin('s');
 
-export const getComponentCss = (
-  isDialogOpen: boolean,
-  isPrimary: boolean,
-  isSecondaryScrollerVisible: boolean,
-  theme: Theme
-): string => {
+export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: boolean, theme: Theme): string => {
   const { backgroundColor, backgroundShadingColor } = getThemedColors(theme);
   const { backgroundColor: backgroundColorDark, backgroundShadingColor: backgroundShadingColorDark } =
     getThemedColors('dark');
 
-  const style = css`
-    :host {
-      ${unsafeCSS(isDialogOpen ? '' : css`--p-internal-flyout-multilevel-visibility: hidden;`)}
-      display: block;
-      color-scheme: light dark;
+  const style = getCss({
+    '@global': {
+      ':host': {
+        display: 'block',
+        ...addImportantToEachRule({
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
+      },
+      ...preventFoucOfNestedElementsStyles,
+      '::slotted(*:not([primary],[cascade]))': {
+        ...(!isPrimary && {
+          display: 'none',
+        }),
+      },
+      slot: {
+        ...(isPrimary
+          ? {
+              '--_p-flyout-multilevel-button': 'block',
+              gridAutoRows: 'min-content',
+              gap: spacingFluidXSmall,
+              gridArea: '1/1',
+            }
+          : {
+              gridTemplateColumns: 'subgrid',
+              gridArea: '1/1/1/3',
+            }),
+        display: 'grid',
+        overflow: 'hidden auto',
+        background: backgroundColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          background: backgroundColorDark,
+        }),
+      },
+      dialog: {
+        position: 'fixed',
+        height: '100dvh',
+        maxHeight: '100dvh',
+        margin: 0,
+        padding: 0,
+        border: 0,
+        visibility: 'inherit',
+        outline: 0,
+        transform: 'translate3d(-100%, 0, 0)',
+        opacity: 0,
+        inset: 0,
+        display: 'grid',
+        overflow: 'visible',
+        width: 'auto',
+        maxWidth: '100vw',
+        background: 'none',
+        transition: 'opacity 1.5s, transform 1.5s, overlay 1.5s, display 1.5s',
+        transitionBehavior: 'allow-discrete',
+        [mediaQueryEnhancedView]: {
+          gridTemplateColumns: `repeat(${isSecondaryScrollerVisible ? 2 : 1}, ${scrollerWidthEnhancedView}) auto`,
+          gridTemplateRows: '100dvh',
+          insetInlineEnd: 'auto',
+        },
+        '&::backdrop': {
+          background: backgroundShadingColor,
+          opacity: 0,
+          WebkitBackdropFilter: 'blur(0px)',
+          backdropFilter: 'blur(0px)',
+          transition: 'display 1.5s, overlay 1.5s, opacity 1.5s, backdrop-filter 1.5s, -webkit-backdrop-filter 1.5s',
+          transitionBehavior: 'allow-discrete',
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            background: backgroundShadingColorDark,
+          }),
+        },
+        '&[open]': {
+          transform: 'translate3d(0, 0, 0)',
+          opacity: 1,
+          '&::backdrop': {
+            opacity: 1,
+            ...frostedGlassStyle,
+          },
+        },
+      },
+    },
+    dismiss: {
+      padding: spacingFluidSmall,
+      [mediaQueryEnhancedView]: {
+        '--p-internal-icon-filter': 'invert(1)',
+        margin: spacingFluidSmall,
+        padding: spacingStaticSmall,
+      },
+    },
+  });
 
-      &([hidden]) {
-        display: none;
-      }
-
-      &:not(:defined,[data-ssr]) {
-        visibility: hidden;
-      }
-    }
-
-    slot {
-      ${unsafeCSS(isPrimary ? css`--_p-flyout-multilevel-button: block` : '')};
-      ${unsafeCSS(isPrimary ? css`grid-auto-rows: min-content` : '')};
-      display: grid;
-      overflow: hidden auto;
-      background: ${unsafeCSS(backgroundColor)};
-      ${unsafeCSS(
-        isPrimary
-          ? css`
-            gap: ${unsafeCSS(spacingFluidXSmall)};
-            grid-area: 1/1`
-          : css`
-            grid-template-columns: subgrid;
-            grid-area: 1/1/1/3`
-      )};
-      visibility: var(${unsafeCSS(cssVariableVisibility)},${unsafeCSS(isSecondaryScrollerVisible ? 'hidden' : 'inherit')});
-
-      ${unsafeCSS(
-        isThemeAuto(theme)
-          ? css`@media (prefers-color-scheme: dark) { background: ${unsafeCSS(backgroundColorDark)}; }`
-          : ''
-      )}
-
-      @media(min-width:760px) {
-        visibility: inherit;
-      }
-    }
-
-    ${unsafeCSS(
-      isPrimary
-        ? ''
-        : css`::slotted(*:not([primary],[cascade])) {
-        display: none;
-    }`
-    )}
-
-    dialog {
-      position: fixed;
-      height: 100dvh;
-      max-height: 100dvh;
-      margin: 0;
-      padding: 0;
-      border: 0;
-      visibility: inherit;
-      outline: 0;
-      transform: translate3d(-100%, 0, 0);
-      opacity: 0;
-      inset: 0;
-      display: grid;
-      overflow: visible;
-      width: auto;
-      max-width: 100vw;
-      background: none;
-      transition: opacity 1.5s, transform 1.5s, overlay 1.5s, display 1.5s;
-      transition-behavior: allow-discrete;
-
-      &::backdrop {
-        background: ${unsafeCSS(backgroundShadingColor)};
-        opacity: 0;
-        -webkit-backdrop-filter: blur(0px);
-        backdrop-filter: blur(0px);
-        transition: display 1.5s, overlay 1.5s, opacity 1.5s, backdrop-filter 1.5s, -webkit-backdrop-filter 1.5s;
-        transition-behavior: allow-discrete;
-
-        ${unsafeCSS(
-          isThemeAuto(theme)
-            ? css`@media (prefers-color-scheme: dark) { background: ${unsafeCSS(backgroundShadingColorDark)}; }`
-            : ''
-        )}
-      }
-
-      &[open] {
-        transform: translate3d(0, 0, 0);
-        opacity: 1;
-
-        &::backdrop {
-          opacity: 1;
-          -webkit-backdrop-filter: blur(32px);
-          backdrop-filter: blur(32px);
-        }
-      }
-
-      @media(min-width:760px) {
-        grid-template-columns: repeat(${isSecondaryScrollerVisible ? 2 : 1}, ${unsafeCSS(scrollerWidthEnhancedView)}) auto;
-        grid-template-rows: 100vh;
-        inset-inline-end: auto;
-      }
-    }
-
+  // @starting-style CSS rule is unknown for JSS, therefore we need to extend the CSS string manually
+  const startingStyle = `
     @starting-style {
       dialog[open] {
         transform: translate3d(-100%, 0, 0);
@@ -140,16 +126,7 @@ export const getComponentCss = (
         }
       }
     }
-
-    .dismiss {
-      padding: ${unsafeCSS(spacingFluidSmall)};
-      @media(min-width:760px) {
-        --p-internal-icon-filter: invert(1);
-        margin: ${unsafeCSS(spacingFluidSmall)};
-        padding: ${unsafeCSS(spacingStaticSmall)};
-      }
-    }
   `;
 
-  return style.cssText;
+  return style + startingStyle;
 };
