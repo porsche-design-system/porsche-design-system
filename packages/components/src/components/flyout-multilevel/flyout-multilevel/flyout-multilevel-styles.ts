@@ -41,6 +41,7 @@ export const getComponentCss = (
 
     slot {
       ${unsafeCSS(isPrimary ? css`--_p-flyout-multilevel-button: block` : '')};
+      ${unsafeCSS(isPrimary ? css`grid-auto-rows: min-content` : '')};
       display: grid;
       overflow: hidden auto;
       background: ${unsafeCSS(backgroundColor)};
