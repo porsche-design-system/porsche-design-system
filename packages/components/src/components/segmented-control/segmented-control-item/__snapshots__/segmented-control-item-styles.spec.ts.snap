@@ -559,7 +559,7 @@ button {
   width: 100%;
   padding: 13px 17px;
   margin: 0;
-  border: 2px solid #010205;
+  border: 2px solid #949598;
   border-radius: 4px;
   background: transparent;
   color: #949598;
@@ -609,7 +609,7 @@ button {
   width: 100%;
   padding: 13px 17px 13px 13px;
   margin: 0;
-  border: 2px solid #010205;
+  border: 2px solid #949598;
   border-radius: 4px;
   background: transparent;
   color: #949598;

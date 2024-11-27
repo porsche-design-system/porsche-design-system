@@ -4,6 +4,7 @@ import type { IconColor } from '../../icon/icon-utils';
 
 export type SegmentedControlItemInternalHTMLProps = {
   selected: boolean;
+  disabledParent: boolean;
   theme: Theme;
 };
 

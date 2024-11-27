@@ -1,4 +1,4 @@
-import { getCss, isHighContrastMode } from '../../../utils';
+import { borderRadiusSmall, borderWidthBase, textSmallStyle, textXSmallStyle } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   getFocusJssStyle,
@@ -10,8 +10,8 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { borderRadiusSmall, borderWidthBase, textSmallStyle, textXSmallStyle } from '@porsche-design-system/styles';
 import type { Theme } from '../../../types';
+import { getCss, isHighContrastMode } from '../../../utils';
 
 export const ITEM_PADDING = '17px';
 export const { font: BUTTON_FONT } = textSmallStyle;
@@ -35,7 +35,13 @@ export const getColors = (
   return {
     buttonColor: isDisabled ? disabledColor : primaryColor,
     labelColor: isDisabled ? disabledColor : contrastMediumColor,
-    borderColor: isSelected ? (isHighContrastMode ? highlightColor : primaryColor) : contrastLowColor,
+    borderColor: isSelected
+      ? isDisabled
+        ? disabledColor
+        : isHighContrastMode
+          ? highlightColor
+          : primaryColor
+      : contrastLowColor,
     hoverBorderColor: primaryColor,
   };
 };
