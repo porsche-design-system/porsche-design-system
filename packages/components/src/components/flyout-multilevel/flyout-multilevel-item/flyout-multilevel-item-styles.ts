@@ -60,13 +60,9 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       ...preventFoucOfNestedElementsStyles,
     },
     button: {
-      ...(isPrimary || isCascade
-        ? {
-            display: 'none',
-          }
-        : {
-            display: 'var(--_p-flyout-multilevel-button, none)',
-          }),
+      ...((isPrimary || isCascade) && {
+        display: 'none',
+      }),
       width: 'auto',
       padding: spacingFluidSmall,
       margin: `0 calc(${spacingFluidSmall} * -1)`,

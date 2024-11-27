@@ -18,10 +18,6 @@ import { type Theme, getCss } from '../../../utils';
 export const scrollerWidthEnhancedView = 'clamp(338px, 10.52vw + 258px, 460px)';
 export const mediaQueryEnhancedView = getMediaQueryMin('s');
 
-// private css variables
-const cssVarColorBackgroundBase = '--_a';
-const cssVarColorBackgroundShading = '--_b';
-
 export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: boolean, theme: Theme): string => {
   const { backgroundColor, backgroundShadingColor } = getThemedColors(theme);
   const { backgroundColor: backgroundColorDark, backgroundShadingColor: backgroundShadingColorDark } =
@@ -32,37 +28,27 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          [cssVarColorBackgroundBase]: backgroundColor,
-          [cssVarColorBackgroundShading]: backgroundShadingColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            [cssVarColorBackgroundBase]: backgroundColorDark,
-            [cssVarColorBackgroundShading]: backgroundShadingColorDark,
-          }),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
       ...preventFoucOfNestedElementsStyles,
-      '::slotted(*:not([primary],[cascade]))': {
-        ...(!isPrimary && {
+      ...(!isPrimary && {
+        '::slotted(*:not([primary],[cascade]))': {
           display: 'none',
-        }),
-      },
+        },
+      }),
       slot: {
-        ...(isPrimary
-          ? {
-              '--_p-flyout-multilevel-button': 'block',
-              gridAutoRows: 'min-content',
-              gap: spacingFluidXSmall,
-              gridArea: '1/1',
-            }
-          : {
-              gridTemplateColumns: 'subgrid',
-              gridArea: '1/1/1/3',
-            }),
-        display: 'grid',
-        overflow: 'hidden auto',
-        background: `var(${cssVarColorBackgroundBase})`,
+        ...(isPrimary && {
+          display: 'flex',
+          flexDirection: 'column',
+          gap: spacingFluidXSmall,
+          overflow: 'hidden auto',
+          background: backgroundColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            background: backgroundColorDark,
+          }),
+        }),
       },
       dialog: {
         position: 'fixed',
@@ -89,12 +75,15 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
           insetInlineEnd: 'auto',
         },
         '&::backdrop': {
-          background: `var(${cssVarColorBackgroundShading})`,
+          background: backgroundShadingColor,
           opacity: 0,
           WebkitBackdropFilter: 'blur(0px)',
           backdropFilter: 'blur(0px)',
           transition: 'display 1.5s, overlay 1.5s, opacity 1.5s, backdrop-filter 1.5s, -webkit-backdrop-filter 1.5s',
           transitionBehavior: 'allow-discrete',
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            background: backgroundShadingColorDark,
+          }),
         },
         '&[open]': {
           transform: 'translate3d(0, 0, 0)',
