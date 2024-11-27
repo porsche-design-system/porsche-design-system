@@ -16,47 +16,36 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
   const { backgroundColor: backgroundColorDark, backgroundSurfaceColor: backgroundSurfaceColorDark } =
     getThemedColors('dark');
 
+  const inheritGridStyles = {
+    display: 'grid',
+    gridTemplateColumns: 'subgrid',
+    gridArea: '1/1/1/-1',
+  };
+
   return getCss({
     '@global': {
       ':host': {
-        ...((isPrimary || isCascade) && {
-          display: 'grid',
-          gridTemplateColumns: 'subgrid',
-          gridArea: '1/1/1/-1',
-        }),
+        ...((isPrimary || isCascade) && inheritGridStyles),
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
+      // TODO: Only either of is possible
       slot: {
-        ...(isPrimary || isCascade
-          ? {
-              display: 'grid',
-              gridTemplateColumns: 'subgrid',
-              gridArea: '1/1/1/-1',
-            }
-          : {
-              display: 'flex',
-              flexDirection: 'column',
-              gap: spacingFluidXSmall,
-            }),
-        ...(isPrimary && {
-          '--_p-flyout-multilevel-button': 'block',
+        ...((isPrimary || isSecondary) && {
+          display: 'flex',
+          flexDirection: 'column',
+          gap: spacingFluidXSmall,
         }),
+        ...(isCascade && inheritGridStyles),
       },
-      '::slotted(*:not([primary],[cascade]))': {
-        ...(isCascade && {
+      // If cascade we need to hide all children which are not primary or another cascade (e.g. all siblings of the primary or cascade item)
+      ...(isCascade && {
+        '::slotted(*:not([primary],[cascade]))': {
           display: 'none',
-        }),
-      },
-      ...(!isPrimary &&
-        !isCascade &&
-        !isSecondary && {
-          '::slotted(*)': {
-            display: 'none',
-          },
-        }),
+        },
+      }),
       ...preventFoucOfNestedElementsStyles,
     },
     button: {
@@ -68,33 +57,20 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       margin: `0 calc(${spacingFluidSmall} * -1)`,
     },
     scroller: {
-      ...(isPrimary || isCascade
-        ? {
-            position: 'relative',
-            gridArea: '1/1',
-            insetInlineStart: '0 !important',
-          }
-        : {
-            position: 'fixed',
-            inset: 0,
-          }),
-      ...(isCascade && {
-        display: 'grid',
-        gridTemplateColumns: 'subgrid',
-        gridArea: '1/1/1/-1',
+      display: 'none',
+      ...(isPrimary && {
+        display: 'block',
+        position: 'relative', // Set relative for secondary fixed position
+        gridArea: '1/1',
+        insetInlineStart: '0 !important',
       }),
-      ...(!isPrimary && {
-        ...(isSecondary
-          ? {
-              display: 'grid',
-            }
-          : {
-              display: 'none',
-            }),
+      ...(isSecondary && {
+        display: 'block',
+        position: 'fixed', // Fixed to break out of scroll area
+        inset: 0,
       }),
-      ...(isCascade && {
-        display: 'grid',
-      }),
+      // Inherit grid to next item
+      ...(isCascade && inheritGridStyles),
       width: '100vw',
       boxSizing: 'border-box',
       overflow: 'hidden auto',

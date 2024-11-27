@@ -33,6 +33,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
         }),
       },
       ...preventFoucOfNestedElementsStyles,
+      // If not primary e.g. root level not visible, hide all siblings of primary or cascade items
       ...(!isPrimary && {
         '::slotted(*:not([primary],[cascade]))': {
           display: 'none',
