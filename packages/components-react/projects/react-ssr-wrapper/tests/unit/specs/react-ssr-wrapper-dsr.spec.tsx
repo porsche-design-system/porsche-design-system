@@ -90,8 +90,7 @@ it('should have working SSR PSegmentedControl component', async () => {
   expect(shadowRoot.innerHTML.trim()).not.toBe('');
 
   // Simulate click
-  await option3.click();
-  // option3.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+  option3.click();
 
   // Validate that the value has changed
   expect(segmentedControl.value).toBe(3);
