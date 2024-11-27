@@ -104,7 +104,21 @@ following example shows the visualization of the Porsche Grid when used inside t
 
 The following example demonstrates how a form can be used within a flyout component:
 
-<Playground :frameworkMarkup="formExample" :markup="formExample['vanilla-js']" :config="config"></Playground>
+<Playground :frameworkMarkup="formExample" :config="config">
+  <p-button type="button" aria="{ 'aria-haspopup': 'dialog' }" :theme="this.$store.getters.storefrontTheme">Open Flyout</p-button>
+  <p-flyout open="false" aria="{ 'aria-label': 'Some Heading' }" :theme="this.$store.getters.storefrontTheme">
+    <p-heading slot="header" size="large" tag="h2" :theme="this.$store.getters.storefrontTheme">Some Heading</p-heading>
+    <form id="some-form" @submit.prevent="onSubmit">
+      <p-checkbox name="some-checkbox" label="Some Label" :theme="this.$store.getters.storefrontTheme"></p-checkbox>
+      <p-textarea name="some-textarea" label="Some Label" :theme="this.$store.getters.storefrontTheme"></p-textarea>
+    </form>
+    <p-button-group slot="footer" :theme="this.$store.getters.storefrontTheme">
+      <p-button type="submit" form="some-form" :theme="this.$store.getters.storefrontTheme">Submit</p-button>
+      <p-button type="reset" variant="secondary" form="some-form" :theme="this.$store.getters.storefrontTheme">Reset</p-button>
+    </p-button-group>
+    <p-text slot="sub-footer" :theme="this.$store.getters.storefrontTheme" v-html="'Last submitted data:<br/><br/> ' + lastSubmittedData"></p-text>
+</p-flyout>
+</Playground>
 
 ## Custom styling
 
@@ -211,6 +225,14 @@ export default class Code extends Vue {
     </div>  
   </div>
 </p-flyout>`;
+
+  lastSubmittedData = 'checkbox: none<br/>textarea: none';
+  onSubmit(e) {
+    const formData = new FormData(e.target);
+    this.lastSubmittedData = `checkbox: ${formData.get('some-checkbox') || 'none'} <br/>textarea: ${formData.get('some-textarea') || 'none'}`;
+  }
+
+
 
   footerBehaviors = ['sticky', 'fixed'];
   footerBehavior = 'fixed';
