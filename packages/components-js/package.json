@@ -108,7 +108,8 @@
     "tsx": "*",
     "typescript": "*",
     "webpack": "*",
-    "vite": "*"
+    "vite": "*",
+    "gzip-size": "*"
   },
   "volta": {
     "extends": "../../package.json"

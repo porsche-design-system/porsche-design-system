@@ -6112,6 +6112,24 @@ exports[`should match snapshot 1`] = `
         "isBreakpointCustomizable": true,
         "type": "SegmentedControlColumns",
       },
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Disables the segmented-control.",
+        "type": "boolean",
+      },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The id of a form element the segmented-control should be associated with.",
+        "type": "string",
+      },
+      "name": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The name of the segmented-control.",
+        "type": "string",
+      },
       "theme": {
         "allowedValues": [
           "light",
@@ -6459,7 +6477,7 @@ exports[`should match snapshot 1`] = `
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Disables the select",
+        "description": "Disables the select.",
         "type": "boolean",
       },
       "dropdownDirection": {

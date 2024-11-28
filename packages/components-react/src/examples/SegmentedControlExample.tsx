@@ -1,28 +1,30 @@
-import { useCallback, useState } from 'react';
-import {
-  type SegmentedControlUpdateEventDetail,
-  PSegmentedControl,
-  PSegmentedControlItem,
-  PText,
-} from '@porsche-design-system/components-react';
+import { PSegmentedControl, PSegmentedControlItem, PText } from '@porsche-design-system/components-react';
+import { type FormEvent, useState } from 'react';
 
 export const SegmentedControlExamplePage = (): JSX.Element => {
-  const [currentValue, setCurrentValue] = useState(1);
+  const [lastSubmittedData, setLastSubmittedData] = useState('none');
 
-  const onUpdate = useCallback((e: CustomEvent<SegmentedControlUpdateEventDetail>) => {
-    setCurrentValue(e.detail.value as number);
-  }, []);
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    setLastSubmittedData(formData.get('options')?.toString() || 'none');
+  };
 
   return (
     <>
-      <PSegmentedControl value={currentValue} onUpdate={onUpdate}>
-        <PSegmentedControlItem value={1}>Option 1</PSegmentedControlItem>
-        <PSegmentedControlItem value={2}>Option 2</PSegmentedControlItem>
-        <PSegmentedControlItem value={3}>Option 3</PSegmentedControlItem>
-        <PSegmentedControlItem value={4}>Option 4</PSegmentedControlItem>
-        <PSegmentedControlItem value={5}>Option 5</PSegmentedControlItem>
-      </PSegmentedControl>
-      <PText>Current value: {currentValue}</PText>
+      <form onSubmit={onSubmit}>
+        <PSegmentedControl name="options" value={1}>
+          <PSegmentedControlItem value={1}>Option 1</PSegmentedControlItem>
+          <PSegmentedControlItem value={2}>Option 2</PSegmentedControlItem>
+          <PSegmentedControlItem value={3}>Option 3</PSegmentedControlItem>
+          <PSegmentedControlItem value={4}>Option 4</PSegmentedControlItem>
+          <PSegmentedControlItem value={5}>Option 5</PSegmentedControlItem>
+        </PSegmentedControl>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      </form>
+
+      <PText>Last submitted data: {lastSubmittedData}</PText>
     </>
   );
 };

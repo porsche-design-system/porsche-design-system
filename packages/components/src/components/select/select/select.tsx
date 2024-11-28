@@ -116,8 +116,8 @@ export class Select {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Disables the select */
-  @Prop() public disabled?: boolean = false;
+  /** Disables the select. */
+  @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /** A Boolean attribute indicating that an option with a non-empty string value must be selected. */
   @Prop() public required?: boolean = false;

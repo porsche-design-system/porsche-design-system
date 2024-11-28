@@ -30,8 +30,7 @@
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
   },
   "devDependencies": {
-    "@porsche-design-system/shared": "0.0.0",
-    "gzip-size": "^7.0.0"
+    "@porsche-design-system/shared": "0.0.0"
   },
   "peerDependencies": {
     "change-case": "*",
@@ -41,7 +40,8 @@
     "tsup": "*",
     "tsx": "*",
     "typescript": "*",
-    "vitest": "*"
+    "vitest": "*",
+    "gzip-size": "*"
   },
   "volta": {
     "extends": "../../../../package.json"

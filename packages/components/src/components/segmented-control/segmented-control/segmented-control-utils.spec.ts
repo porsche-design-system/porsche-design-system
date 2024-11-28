@@ -128,6 +128,7 @@ describe('syncSegmentedControlItemsProps()', () => {
   host.append(child1, child2);
 
   const value = 'a';
+  const disabled = true;
   const theme: Theme = 'light';
 
   it('should set selected and theme property on every item', () => {
@@ -140,7 +141,7 @@ describe('syncSegmentedControlItemsProps()', () => {
     expect(child2.selected).toBeUndefined();
     expect(child2.theme).toBeUndefined();
 
-    syncSegmentedControlItemsProps(host, value, theme);
+    syncSegmentedControlItemsProps(host, value, disabled, theme);
 
     expect(child1.selected).toBe(true);
     expect(child1.theme).toBe(theme);
@@ -152,7 +153,7 @@ describe('syncSegmentedControlItemsProps()', () => {
   it('should call forceUpdate() on every item', () => {
     const spy = jest.spyOn(stencilCore, 'forceUpdate');
 
-    syncSegmentedControlItemsProps(host, value, theme);
+    syncSegmentedControlItemsProps(host, value, disabled, theme);
 
     expect(spy).toHaveBeenCalledTimes(2);
     expect(spy.mock.calls[0][0]).toEqual(child1); // toHaveBeenNthCalledWith doesn't work
