@@ -86,7 +86,7 @@ following example shows the visualization of the Porsche Grid when used inside t
 <template>
   <div class="playground">
     <div class="demo">
-      <p-button type="button" aria="{ 'aria-haspopup': 'dialog' }" :theme="this.$store.getters.storefrontTheme">Open Flyout</p-button>
+      <p-button type="button" aria="{ 'aria-haspopup': 'dialog' }" :theme="theme">Open Flyout</p-button>
       <p-flyout open="false" aria="{ 'aria-label': 'Some Heading' }">
         <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
         <ExampleStylesGrid :visualizeGrid="true"/>
@@ -105,18 +105,18 @@ following example shows the visualization of the Porsche Grid when used inside t
 The following example demonstrates how a form can be used within a flyout component:
 
 <Playground :frameworkMarkup="formExample" :config="config">
-  <p-button type="button" aria="{ 'aria-haspopup': 'dialog' }" :theme="this.$store.getters.storefrontTheme">Open Flyout</p-button>
-  <p-flyout open="false" aria="{ 'aria-label': 'Some Heading' }" :theme="this.$store.getters.storefrontTheme">
-    <p-heading slot="header" size="large" tag="h2" :theme="this.$store.getters.storefrontTheme">Some Heading</p-heading>
+  <p-button type="button" aria="{ 'aria-haspopup': 'dialog' }" :theme="theme">Open Flyout</p-button>
+  <p-flyout open="false" aria="{ 'aria-label': 'Some Heading' }" :theme="theme">
+    <p-heading slot="header" size="large" tag="h2" :theme="theme">Some Heading</p-heading>
     <form id="some-form" @submit.prevent="onSubmit">
-      <p-checkbox name="some-checkbox" label="Some Label" :theme="this.$store.getters.storefrontTheme"></p-checkbox>
-      <p-textarea name="some-textarea" label="Some Label" :theme="this.$store.getters.storefrontTheme"></p-textarea>
+      <p-checkbox name="some-checkbox" label="Some Label" :theme="theme"></p-checkbox>
+      <p-textarea name="some-textarea" label="Some Label" :theme="theme"></p-textarea>
     </form>
-    <p-button-group slot="footer" :theme="this.$store.getters.storefrontTheme">
-      <p-button type="submit" form="some-form" :theme="this.$store.getters.storefrontTheme">Submit</p-button>
-      <p-button type="reset" variant="secondary" form="some-form" :theme="this.$store.getters.storefrontTheme">Reset</p-button>
+    <p-button-group slot="footer" :theme="theme">
+      <p-button type="submit" form="some-form" :theme="theme">Submit</p-button>
+      <p-button type="reset" variant="secondary" form="some-form" :theme="theme">Reset</p-button>
     </p-button-group>
-    <p-text slot="sub-footer" :theme="this.$store.getters.storefrontTheme" v-html="'Last submitted data:<br/><br/> ' + lastSubmittedData"></p-text>
+    <p-text slot="sub-footer" :theme="theme" v-html="'Last submitted data:<br/><br/> ' + lastSubmittedData"></p-text>
 </p-flyout>
 </Playground>
 
@@ -139,6 +139,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component'; 
 import { getFlyoutCodeSamples } from "@porsche-design-system/shared";  
 import ExampleStylesGrid from '@/pages/patterns/styles/example-grid.vue';
+import type { Theme } from '@/models';
 
 @Component({
   components: {
@@ -172,6 +173,10 @@ export default class Code extends Vue {
 
   closeFlyout(index: number): void {
     this.flyouts[index].open = false;
+  }
+
+  get theme(): Theme {
+    return this.$store.getters.playgroundTheme;
   }
 
   disableBackdropClickMarkup =
