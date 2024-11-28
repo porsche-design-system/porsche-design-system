@@ -116,12 +116,15 @@ test.describe('form', () => {
   test('Should include name and associated value in FormData on click, if the submit button is outside the form', async ({
     page,
   }) => {
+    const value = 'Some value';
+    const formId = 'myForm';
+    const name = 'some-name';
     await setContentWithDesignSystem(
       page,
-      `<form onsubmit="return false;" id="myForm">
-        <p-textarea name="some-name" label="Some Label" value="Some value"></p-textarea>
+      `<form onsubmit="return false;" id="${formId}">
+        <p-textarea name="${name}" label="Some Label" value="${value}"></p-textarea>
       </form>
-      <p-button-pure type="submit" form="myForm">Submit</p-button-pure>
+      <p-button-pure type="submit" form="${formId}">Submit</p-button-pure>
     `
     );
 
@@ -133,16 +136,19 @@ test.describe('form', () => {
     await page.locator('button[type="submit"]').click();
 
     expect((await getEventSummary(form, 'submit')).counter).toBe(1);
-    expect(await getFormDataValue(form, 'some-name')).toBe('Some value');
+    expect(await getFormDataValue(form, name)).toBe(value);
   });
 
   test('Should reset value on click, if the reset button is outside the form', async ({ page }) => {
+    const value = 'Some value';
+    const formId = 'myForm';
+    const name = 'some-name';
     await setContentWithDesignSystem(
       page,
-      `<form onsubmit="return false;" id="myForm">
-        <p-textarea name="some-name" label="Some Label" value="Some value"></p-textarea>
+      `<form onsubmit="return false;" id="${formId}">
+        <p-textarea name="${name}" label="Some Label" value="${value}"></p-textarea>
       </form>
-      <p-button-pure type="reset" form="myForm">Reset</p-button-pure>
+      <p-button-pure type="reset" form="${formId}">Reset</p-button-pure>
     `
     );
 
@@ -161,7 +167,7 @@ test.describe('form', () => {
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(form, 'reset')).counter).toBe(1);
-    await expect(textarea).toHaveValue('Some value');
+    await expect(textarea).toHaveValue(value);
   });
 
   test('should not submit the form if default is prevented', async ({ page }) => {
