@@ -1,6 +1,8 @@
 import {
   frostedGlassStyle,
   getMediaQueryMin,
+  spacingFluidLarge,
+  spacingFluidMedium,
   spacingFluidSmall,
   spacingFluidXSmall,
   spacingStaticSmall,
@@ -114,7 +116,9 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
         flexDirection: 'column',
         gap: spacingFluidXSmall,
         overflow: 'hidden auto',
-        // padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
+        ...(isPrimary && {
+          padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
+        }),
       },
       // If not primary e.g. root level not visible, hide all siblings of primary or cascade items
       ...(!isPrimary && {
