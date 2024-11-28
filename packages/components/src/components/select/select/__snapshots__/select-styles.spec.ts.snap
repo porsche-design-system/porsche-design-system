@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: false, hideLabel: false, state: none, isNativePopoverCase: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: false, hideLabel: false, state: none, isNativePopoverCase: false, theme: light and hasSlottedImage: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -16,7 +16,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -166,7 +165,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: false, hideLabel: true, state: success, isNativePopoverCase: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: false, hideLabel: true, state: success, isNativePopoverCase: false, theme: light and hasSlottedImage: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -182,7 +181,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -333,7 +331,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isNativePopoverCase: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isNativePopoverCase: false, theme: light and hasSlottedImage: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -349,7 +347,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -508,7 +505,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isNativePopoverCase: false and theme: light 2`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isNativePopoverCase: false, theme: light and hasSlottedImage: false 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -524,7 +521,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -683,7 +679,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isNativePopoverCase: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isNativePopoverCase: true, theme: light and hasSlottedImage: true 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -699,7 +695,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -724,6 +719,16 @@ button {
 }
 button:disabled {
   cursor: not-allowed;
+}
+button span {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+button img {
+  height: calc(6px + 2.125ex);
+  border-radius: 4px;
+  width: auto;
 }
 button::placeholder {
   color: #949598;
@@ -870,7 +875,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: success, isNativePopoverCase: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: success, isNativePopoverCase: false, theme: light and hasSlottedImage: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -886,7 +891,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1046,7 +1050,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: true, state: none, isNativePopoverCase: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: true, state: none, isNativePopoverCase: false, theme: light and hasSlottedImage: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1062,7 +1066,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1221,7 +1224,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: true, state: none, isNativePopoverCase: false and theme: light 2`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: true, state: none, isNativePopoverCase: false, theme: light and hasSlottedImage: false 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1237,7 +1240,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1396,7 +1398,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: false, state: none, isNativePopoverCase: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: false, state: none, isNativePopoverCase: false, theme: light and hasSlottedImage: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1412,7 +1414,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1566,7 +1567,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: false, state: none, isNativePopoverCase: false and theme: light 2`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: false, state: none, isNativePopoverCase: false, theme: light and hasSlottedImage: false 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1582,7 +1583,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1736,7 +1736,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: true, state: none, isNativePopoverCase: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: true, state: none, isNativePopoverCase: false, theme: light and hasSlottedImage: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1752,7 +1752,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1906,7 +1905,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: true, state: success, isNativePopoverCase: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: true, state: success, isNativePopoverCase: false, theme: light and hasSlottedImage: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1922,7 +1921,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2077,7 +2075,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: true, hideLabel: false, state: none, isNativePopoverCase: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: true, hideLabel: false, state: none, isNativePopoverCase: false, theme: light and hasSlottedImage: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -2093,7 +2091,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2256,7 +2253,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: true, hideLabel: true, state: none, isNativePopoverCase: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: true, hideLabel: true, state: none, isNativePopoverCase: false, theme: light and hasSlottedImage: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -2272,7 +2269,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2435,7 +2431,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: false, hideLabel: false, state: success, isNativePopoverCase: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: false, hideLabel: false, state: success, isNativePopoverCase: false, theme: dark and hasSlottedImage: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -2451,7 +2447,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2602,7 +2597,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: false, hideLabel: true, state: error, isNativePopoverCase: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: false, hideLabel: true, state: error, isNativePopoverCase: false, theme: dark and hasSlottedImage: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -2618,7 +2613,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2769,7 +2763,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: false, state: error, isNativePopoverCase: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: false, state: error, isNativePopoverCase: false, theme: dark and hasSlottedImage: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -2785,7 +2779,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2945,7 +2938,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: false, state: error, isNativePopoverCase: false and theme: dark 2`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: false, state: error, isNativePopoverCase: false, theme: dark and hasSlottedImage: false 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -2961,7 +2954,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -3121,7 +3113,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: true, state: error, isNativePopoverCase: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: true, state: error, isNativePopoverCase: false, theme: dark and hasSlottedImage: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -3137,7 +3129,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -3297,7 +3288,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: true, state: success, isNativePopoverCase: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: true, state: success, isNativePopoverCase: false, theme: dark and hasSlottedImage: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -3313,7 +3304,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -3473,7 +3463,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: false, state: error, isNativePopoverCase: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: false, state: error, isNativePopoverCase: false, theme: dark and hasSlottedImage: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -3489,7 +3479,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -3644,7 +3633,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: false, state: error, isNativePopoverCase: false and theme: dark 2`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: false, state: error, isNativePopoverCase: false, theme: dark and hasSlottedImage: false 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -3660,7 +3649,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -3815,7 +3803,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: true, state: error, isNativePopoverCase: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: true, state: error, isNativePopoverCase: false, theme: dark and hasSlottedImage: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -3831,7 +3819,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -3986,7 +3973,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: true, state: success, isNativePopoverCase: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: true, state: success, isNativePopoverCase: false, theme: dark and hasSlottedImage: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -4002,7 +3989,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -4157,7 +4143,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: error, isNativePopoverCase: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: error, isNativePopoverCase: false, theme: dark and hasSlottedImage: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -4173,7 +4159,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -4337,7 +4322,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: success, isNativePopoverCase: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: success, isNativePopoverCase: false, theme: dark and hasSlottedImage: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -4353,7 +4338,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -4517,7 +4501,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: success, isNativePopoverCase: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: success, isNativePopoverCase: true, theme: dark and hasSlottedImage: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -4533,7 +4517,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -4709,7 +4692,7 @@ button:not(:focus-visible):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: true, state: error, isNativePopoverCase: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: true, state: error, isNativePopoverCase: false, theme: dark and hasSlottedImage: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -4725,7 +4708,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
