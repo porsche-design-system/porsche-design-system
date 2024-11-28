@@ -1,4 +1,4 @@
-import { AttachInternals, Component, Element, Host, type JSX, Listen, Prop, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Host, type JSX, Listen, Prop, Watch, h } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import {
   ALIGN_LABELS,
@@ -67,7 +67,7 @@ export class ButtonPure {
   @Prop() public type?: ButtonPureType = 'submit';
 
   /** The name of the button, submitted as a pair with the button's value as part of the form data, when that button is used to submit the form. */
-  @Prop() public name?: string;
+  @Prop({ reflect: true }) public name?: string;
 
   /** Defines the value associated with the button's name when it's submitted with the form data. This value is passed to the server in params when the form is submitted using this button. */
   @Prop() public value?: string;
@@ -144,11 +144,17 @@ export class ButtonPure {
     }
   }
 
+  @Watch('value')
+  public onValueChange(newValue: string): void {
+    this.internals.setFormValue(newValue);
+  }
+
   public connectedCallback(): void {
     this.initialLoading = this.loading;
   }
 
   public componentWillLoad(): void {
+    this.internals.setFormValue(this.value);
     this.initialLoading = this.loading;
   }
 
