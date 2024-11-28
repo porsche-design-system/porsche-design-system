@@ -24,19 +24,17 @@ const inheritGridStyles = {
 const animationFadeIn = {
   from: {
     marginBlockStart: spacingFluidMedium,
-    opacity: 0,
   },
   to: {
     marginBlockStart: '0px',
-    opacity: 1,
   },
 };
 
 export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCascade: boolean): string => {
   return getCss({
     '@global': {
-      '@keyframes fade-in-primary': animationFadeIn,
-      '@keyframes fade-in-secondary': animationFadeIn,
+      '@keyframes slide-up-primary': animationFadeIn,
+      '@keyframes slide-up-secondary': animationFadeIn,
       ':host': {
         ...((isPrimary || isCascade) && inheritGridStyles),
         ...addImportantToEachRule({
@@ -53,10 +51,10 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
         }),
         ...(isCascade && inheritGridStyles),
         ...(isPrimary && {
-          animation: `fade-in-primary ${motionDurationModerate} ${motionEasingBase}`,
+          animation: `slide-up-primary ${motionDurationModerate} ${motionEasingBase}`,
         }),
         ...(isSecondary && {
-          animation: `fade-in-secondary ${motionDurationModerate} ${motionEasingBase}`,
+          animation: `slide-up-secondary ${motionDurationModerate} ${motionEasingBase}`,
         }),
       },
       // If cascade we need to hide all children which are not primary or another cascade (e.g. all siblings of the primary or cascade item)
