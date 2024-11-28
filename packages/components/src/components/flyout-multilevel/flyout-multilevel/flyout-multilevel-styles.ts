@@ -45,7 +45,6 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
       slot: {
         ...(isPrimary && {
           gridArea: '1/1',
-          zIndex: 1,
           display: 'flex',
           flexDirection: 'column',
           gap: spacingFluidXSmall,
