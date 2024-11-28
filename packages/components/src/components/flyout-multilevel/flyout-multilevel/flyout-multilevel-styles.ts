@@ -19,9 +19,12 @@ export const scrollerWidthEnhancedView = 'clamp(338px, 10.52vw + 258px, 460px)';
 export const mediaQueryEnhancedView = getMediaQueryMin('s');
 
 export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: boolean, theme: Theme): string => {
-  const { backgroundColor, backgroundShadingColor } = getThemedColors(theme);
-  const { backgroundColor: backgroundColorDark, backgroundShadingColor: backgroundShadingColorDark } =
-    getThemedColors('dark');
+  const { backgroundColor, backgroundSurfaceColor, backgroundShadingColor } = getThemedColors(theme);
+  const {
+    backgroundColor: backgroundColorDark,
+    backgroundSurfaceColor: backgroundSurfaceColorDark,
+    backgroundShadingColor: backgroundShadingColorDark,
+  } = getThemedColors('dark');
 
   const style = getCss({
     '@global': {
@@ -41,14 +44,11 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
       }),
       slot: {
         ...(isPrimary && {
+          gridArea: '1/1',
           display: 'flex',
           flexDirection: 'column',
           gap: spacingFluidXSmall,
           overflow: 'hidden auto',
-          background: backgroundColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            background: backgroundColorDark,
-          }),
         }),
       },
       dialog: {
@@ -74,6 +74,22 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
           gridTemplateColumns: `repeat(${isSecondaryScrollerVisible ? 2 : 1}, ${scrollerWidthEnhancedView}) auto`,
           gridTemplateRows: '100dvh',
           insetInlineEnd: 'auto',
+        },
+        '&::before': {
+          content: '""',
+          gridArea: '1/1',
+          background: backgroundColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            background: backgroundColorDark,
+          }),
+        },
+        '&::after': {
+          content: '""',
+          gridArea: '1/2',
+          backgroundColor: backgroundSurfaceColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            backgroundColor: backgroundSurfaceColorDark,
+          }),
         },
         '&::backdrop': {
           background: backgroundShadingColor,

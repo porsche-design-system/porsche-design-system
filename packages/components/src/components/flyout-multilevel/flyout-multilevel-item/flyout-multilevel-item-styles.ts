@@ -1,29 +1,42 @@
-import { type Theme, dropShadowHighStyle, spacingFluidSmall, spacingFluidXSmall } from '@porsche-design-system/styles';
+import {
+  dropShadowHighStyle,
+  motionDurationModerate,
+  motionEasingBase,
+  spacingFluidMedium,
+  spacingFluidSmall,
+  spacingFluidXSmall,
+} from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
-  addImportantToRule,
   colorSchemeStyles,
-  getThemedColors,
   hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import { getCss } from '../../../utils';
 import { mediaQueryEnhancedView, scrollerWidthEnhancedView } from '../flyout-multilevel/flyout-multilevel-styles';
 
-export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCascade: boolean, theme: Theme): string => {
-  const { backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
-  const { backgroundColor: backgroundColorDark, backgroundSurfaceColor: backgroundSurfaceColorDark } =
-    getThemedColors('dark');
+const inheritGridStyles = {
+  display: 'grid',
+  gridTemplateColumns: 'subgrid',
+  gridArea: '1/1/1/-1',
+};
 
-  const inheritGridStyles = {
-    display: 'grid',
-    gridTemplateColumns: 'subgrid',
-    gridArea: '1/1/1/-1',
-  };
+const animationFadeIn = {
+  from: {
+    marginBlockStart: spacingFluidMedium,
+    opacity: 0,
+  },
+  to: {
+    marginBlockStart: '0px',
+    opacity: 1,
+  },
+};
 
+export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCascade: boolean): string => {
   return getCss({
     '@global': {
+      '@keyframes fade-in-primary': animationFadeIn,
+      '@keyframes fade-in-secondary': animationFadeIn,
       ':host': {
         ...((isPrimary || isCascade) && inheritGridStyles),
         ...addImportantToEachRule({
@@ -39,6 +52,12 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           gap: spacingFluidXSmall,
         }),
         ...(isCascade && inheritGridStyles),
+        ...(isPrimary && {
+          animation: `fade-in-primary ${motionDurationModerate} ${motionEasingBase}`,
+        }),
+        ...(isSecondary && {
+          animation: `fade-in-secondary ${motionDurationModerate} ${motionEasingBase}`,
+        }),
       },
       // If cascade we need to hide all children which are not primary or another cascade (e.g. all siblings of the primary or cascade item)
       ...(isCascade && {
@@ -75,21 +94,10 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       boxSizing: 'border-box',
       overflow: 'hidden auto',
       ...dropShadowHighStyle,
-      // it's important to define background-color for each scroller to have correct scrollbar coloring
-      backgroundColor: isPrimary || isCascade ? backgroundColor : backgroundSurfaceColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        backgroundColor: isPrimary || isCascade ? backgroundColorDark : backgroundSurfaceColorDark,
-      }),
       [mediaQueryEnhancedView]: {
         boxShadow: 'none',
         insetInlineStart: `calc(${scrollerWidthEnhancedView} - 1px)`, // -1px prevents possible visible background under certain circumstances between primary and secondary scroller
         width: scrollerWidthEnhancedView,
-        transform: addImportantToRule('initial'), // to overrule :dir(rtl) selector
-      },
-      '&:dir(rtl)': {
-        ...(!isSecondary && {
-          transform: 'translate3d(-100%, 0, 0)', // use correct transitions in rtl mode for mobile view
-        }),
       },
     },
     back: {
