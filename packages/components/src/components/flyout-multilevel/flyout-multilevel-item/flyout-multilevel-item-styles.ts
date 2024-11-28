@@ -2,6 +2,7 @@ import {
   dropShadowHighStyle,
   motionDurationModerate,
   motionEasingBase,
+  spacingFluidLarge,
   spacingFluidMedium,
   spacingFluidSmall,
   spacingFluidXSmall,
@@ -48,6 +49,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           display: 'flex',
           flexDirection: 'column',
           gap: spacingFluidXSmall,
+          padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
         }),
         ...(isCascade && inheritGridStyles),
         ...(isPrimary && {

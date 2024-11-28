@@ -1,6 +1,8 @@
 import {
   frostedGlassStyle,
   getMediaQueryMin,
+  spacingFluidLarge,
+  spacingFluidMedium,
   spacingFluidSmall,
   spacingFluidXSmall,
   spacingStaticSmall,
@@ -49,6 +51,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
           flexDirection: 'column',
           gap: spacingFluidXSmall,
           overflow: 'hidden auto',
+          padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
         }),
       },
       dialog: {
