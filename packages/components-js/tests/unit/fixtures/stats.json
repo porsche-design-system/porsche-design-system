@@ -11,8 +11,8 @@
   },
   {
     "chunkShortName": "button",
-    "size": 9343,
-    "gzipSize": 3753
+    "size": 9485,
+    "gzipSize": 3802
   },
   {
     "chunkShortName": "button-group",
@@ -21,8 +21,8 @@
   },
   {
     "chunkShortName": "button-pure",
-    "size": 9326,
-    "gzipSize": 3876
+    "size": 9468,
+    "gzipSize": 3920
   },
   {
     "chunkShortName": "button-tile",
@@ -151,8 +151,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 81557,
-    "gzipSize": 27020
+    "size": 81617,
+    "gzipSize": 27023
   },
   {
     "chunkShortName": "marque",
