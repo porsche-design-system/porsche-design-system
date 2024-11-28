@@ -44,9 +44,28 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
           animation: `slide-up-${isPrimary ? 'primary' : 'secondary'} ${motionDurationModerate} ${motionEasingBase}`,
         }),
+        ...(isPrimary && {
+          position: 'relative', // relative anchor for slotted fixed secondary layer
+        }),
+        ...(isSecondary && {
+          position: 'fixed', // Fixed to break out of scroll area
+          inset: 0,
+          overflow: 'hidden auto',
+          width: '100vw',
+          boxSizing: 'border-box',
+          [mediaQueryEnhancedView]: {
+            insetInlineStart: scrollerWidthEnhancedView,
+            width: scrollerWidthEnhancedView,
+          },
+        }),
         ...(isCascade && {
           display: 'contents',
         }),
+        ...(!isPrimary &&
+          !isSecondary &&
+          !isCascade && {
+            display: 'none',
+          }),
       },
       // If cascade we need to hide all children which are not primary or another cascade (e.g. all siblings of the primary or cascade item)
       ...(isCascade && {
@@ -57,35 +76,11 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       ...preventFoucOfNestedElementsStyles,
     },
     button: {
-      display: isPrimary || isCascade ? 'none' : 'block',
+      ...((isPrimary || isCascade) && {
+        display: 'none',
+      }),
       padding: spacingFluidSmall,
       margin: `0 calc(${spacingFluidSmall} * -1)`,
-    },
-    scroller: {
-      ...(isPrimary
-        ? {
-            display: 'block',
-            position: 'relative', // Set relative for secondary fixed position
-          }
-        : isSecondary
-          ? {
-              display: 'block',
-              position: 'fixed', // Fixed to break out of scroll area
-              inset: 0,
-              overflow: 'hidden auto',
-              width: '100vw',
-              [mediaQueryEnhancedView]: {
-                insetInlineStart: scrollerWidthEnhancedView,
-                width: scrollerWidthEnhancedView,
-              },
-            }
-          : isCascade
-            ? {
-                display: 'contents',
-              }
-            : {
-                display: 'none',
-              }),
     },
     back: {
       justifySelf: 'flex-start',
