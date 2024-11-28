@@ -1,5 +1,4 @@
 import {
-  dropShadowHighStyle,
   motionDurationModerate,
   motionEasingBase,
   spacingFluidLarge,
@@ -16,12 +15,6 @@ import {
 import { getCss } from '../../../utils';
 import { mediaQueryEnhancedView, scrollerWidthEnhancedView } from '../flyout-multilevel/flyout-multilevel-styles';
 
-const inheritGridStyles = {
-  display: 'grid',
-  gridTemplateColumns: 'subgrid',
-  gridArea: '1/1/1/-1',
-};
-
 const animationFadeIn = {
   from: {
     marginBlockStart: spacingFluidMedium,
@@ -37,26 +30,22 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       '@keyframes slide-up-primary': animationFadeIn,
       '@keyframes slide-up-secondary': animationFadeIn,
       ':host': {
-        ...((isPrimary || isCascade) && inheritGridStyles),
+        display: isPrimary || isSecondary ? 'grid' : 'contents',
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
-      // TODO: Only either of is possible
       slot: {
         ...((isPrimary || isSecondary) && {
           display: 'flex',
           flexDirection: 'column',
           gap: spacingFluidXSmall,
           padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
+          animation: `slide-up-${isPrimary ? 'primary' : 'secondary'} ${motionDurationModerate} ${motionEasingBase}`,
         }),
-        ...(isCascade && inheritGridStyles),
-        ...(isPrimary && {
-          animation: `slide-up-primary ${motionDurationModerate} ${motionEasingBase}`,
-        }),
-        ...(isSecondary && {
-          animation: `slide-up-secondary ${motionDurationModerate} ${motionEasingBase}`,
+        ...(isCascade && {
+          display: 'contents',
         }),
       },
       // If cascade we need to hide all children which are not primary or another cascade (e.g. all siblings of the primary or cascade item)
@@ -68,42 +57,44 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       ...preventFoucOfNestedElementsStyles,
     },
     button: {
-      ...((isPrimary || isCascade) && {
-        display: 'none',
-      }),
-      width: 'auto',
+      display: isPrimary || isCascade ? 'none' : 'block',
       padding: spacingFluidSmall,
       margin: `0 calc(${spacingFluidSmall} * -1)`,
     },
     scroller: {
-      display: 'none',
-      ...(isPrimary && {
-        display: 'block',
-        position: 'relative', // Set relative for secondary fixed position
-        gridArea: '1/1',
-        insetInlineStart: '0 !important',
-      }),
-      ...(isSecondary && {
-        display: 'block',
-        position: 'fixed', // Fixed to break out of scroll area
-        inset: 0,
-      }),
-      // Inherit grid to next item
-      ...(isCascade && inheritGridStyles),
-      width: '100vw',
-      boxSizing: 'border-box',
-      overflow: 'hidden auto',
-      ...dropShadowHighStyle,
-      [mediaQueryEnhancedView]: {
-        boxShadow: 'none',
-        insetInlineStart: `calc(${scrollerWidthEnhancedView} - 1px)`, // -1px prevents possible visible background under certain circumstances between primary and secondary scroller
-        width: scrollerWidthEnhancedView,
-      },
+      ...(isPrimary
+        ? {
+            display: 'block',
+            position: 'relative', // Set relative for secondary fixed position
+          }
+        : isSecondary
+          ? {
+              display: 'block',
+              position: 'fixed', // Fixed to break out of scroll area
+              inset: 0,
+              overflow: 'hidden auto',
+              width: '100vw',
+              [mediaQueryEnhancedView]: {
+                insetInlineStart: scrollerWidthEnhancedView,
+                width: scrollerWidthEnhancedView,
+              },
+            }
+          : isCascade
+            ? {
+                display: 'contents',
+              }
+            : {
+                display: 'none',
+              }),
     },
     back: {
       justifySelf: 'flex-start',
       padding: spacingFluidSmall,
       marginInlineStart: `calc(${spacingFluidSmall} * -1)`,
+      position: 'sticky',
+      top: 0,
+      zIndex: 1,
+      background: 'deeppink',
     },
   });
 };

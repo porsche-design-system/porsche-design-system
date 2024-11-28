@@ -85,6 +85,7 @@ export class FlyoutMultilevelItem {
         <div class="scroller">
           {this.primary && (
             <PrefixedTagNames.pButtonPure
+              class="back"
               type="button"
               size="small"
               alignLabel="end"

@@ -45,14 +45,12 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
         },
       }),
       slot: {
-        ...(isPrimary && {
-          gridArea: '1/1',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: spacingFluidXSmall,
-          overflow: 'hidden auto',
-          padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
-        }),
+        gridArea: '1/1',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: spacingFluidXSmall,
+        overflow: 'hidden auto',
+        // padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
       },
       dialog: {
         position: 'fixed',
