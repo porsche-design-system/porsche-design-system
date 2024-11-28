@@ -1,15 +1,54 @@
-import { SegmentedControl } from './segmented-control';
-import * as segmentedControlUtils from './segmented-control-utils';
-import * as getClickedItemUtils from '../../../utils/dom/getClickedItem';
+import { expect } from '@jest/globals';
+import * as warnIfDeprecatedPropIsUsed from '../../../utils/log/warnIfDeprecatedPropIsUsed';
 import * as throwIfChildrenAreNotOfKindUtils from '../../../utils/validation/throwIfChildrenAreNotOfKind';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
-import * as warnIfDeprecatedPropIsUsed from '../../../utils/log/warnIfDeprecatedPropIsUsed';
+import { SegmentedControl } from './segmented-control';
+import * as segmentedControlUtils from './segmented-control-utils';
+
+class MockElementInternals {
+  setValidity = jest.fn();
+  setFormValue = jest.fn();
+}
+
+const initComponent = (): SegmentedControl => {
+  const component = new SegmentedControl();
+  component.host = document.createElement('p-segmented-control');
+  component.host.attachShadow({ mode: 'open' });
+  component['internals'] = new MockElementInternals() as unknown as ElementInternals;
+  return component;
+};
+
+describe('formResetCallback', () => {
+  const component = initComponent();
+  const defaultValue = 'default-value';
+  component['defaultValue'] = defaultValue;
+  component.value = 'test';
+  const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+  component.formResetCallback();
+  expect(setFormValueSpy).toHaveBeenCalledWith(defaultValue);
+  expect(component.value).toBe(defaultValue);
+});
+
+describe('formDisabledCallback', () => {
+  const component = initComponent();
+  component.disabled = false;
+  component.formDisabledCallback(true);
+  expect(component.disabled).toBe(true);
+});
+
+describe('formStateRestoreCallback', () => {
+  const component = initComponent();
+  component.value = 'test';
+  const restoredValue = 'restored-value';
+  component.formStateRestoreCallback(restoredValue);
+  expect(component.value).toBe(restoredValue);
+});
 
 describe('connectedCallback', () => {
   it('should call throwIfChildrenAreNotOfKind() with correct parameters', () => {
     const spy = jest.spyOn(throwIfChildrenAreNotOfKindUtils, 'throwIfChildrenAreNotOfKind');
 
-    const component = new SegmentedControl();
+    const component = initComponent();
     component.host = document.createElement('p-segmented-control');
 
     component.connectedCallback();
@@ -21,18 +60,18 @@ describe('render', () => {
   it('should call syncItemsProps() with correct parameters', () => {
     const spy = jest.spyOn(segmentedControlUtils, 'syncSegmentedControlItemsProps');
 
-    const component = new SegmentedControl();
+    const component = initComponent();
     component.host = document.createElement('p-segmented-control');
     component.host.attachShadow({ mode: 'open' });
 
     component.render();
 
-    expect(spy).toHaveBeenCalledWith(component.host, component.value, component.theme);
+    expect(spy).toHaveBeenCalledWith(component.host, component.value, component.disabled, component.theme);
   });
 
   it('should call warnIfDeprecatedPropIsUsed() with correct parameters', () => {
     const spy = jest.spyOn(warnIfDeprecatedPropIsUsed, 'warnIfDeprecatedPropIsUsed');
-    const component = new SegmentedControl();
+    const component = initComponent();
     component.host = document.createElement('p-segmented-control');
     component.backgroundColor = 'background-surface';
     component.host.attachShadow({ mode: 'open' });
@@ -43,39 +82,75 @@ describe('render', () => {
   });
 });
 
-describe('componentDidLoad', () => {
-  it('should add click event listener', () => {
-    const component = new SegmentedControl();
-    component.host = document.createElement('p-segmented-control');
-    const spy = jest.spyOn(component.host, 'addEventListener');
+describe('updateSegmentedControlItemHandler', () => {
+  const mockEvent = {
+    stopPropagation: jest.fn(),
+    target: {
+      value: '1',
+      focus: jest.fn(),
+    } as unknown as HTMLElement & SegmentedControlItem,
+  } as unknown as Event & { target: HTMLElement & SegmentedControlItem };
 
-    component.componentDidLoad();
-    expect(spy).toHaveBeenCalledWith('click', expect.any(Function));
-  });
+  it('should stop event propagation', () => {
+    const component = initComponent();
 
-  it('should call updateValue via event handlers', () => {
-    const component = new SegmentedControl();
-    component.host = document.createElement('p-segmented-control');
-    // @ts-ignore
-    const spy = jest.spyOn(component, 'updateValue');
-    component.componentDidLoad();
     component.update = { emit: jest.fn() };
     component.segmentedControlChange = { emit: jest.fn() };
 
-    // click event handler
-    const item1 = document.createElement('p-segmented-control-item') as unknown as HTMLElement & SegmentedControlItem;
-    item1.id = 'item1';
-    jest.spyOn(getClickedItemUtils, 'getClickedItem').mockReturnValueOnce(item1);
+    component.updateSegmentedControlItemHandler(mockEvent);
+    expect(mockEvent.stopPropagation).toHaveBeenCalled();
+  });
 
-    component.host.click();
+  it('should call updateValue when not disabled', () => {
+    const component = initComponent();
 
-    expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith(item1);
+    component.update = { emit: jest.fn() };
+    component.segmentedControlChange = { emit: jest.fn() };
+    component.disabled = false;
+    // @ts-ignore
+    const updateValueSpy = jest.spyOn(component, 'updateValue');
+
+    component.updateSegmentedControlItemHandler(mockEvent);
+
+    expect(updateValueSpy).toHaveBeenCalledWith(mockEvent.target);
+  });
+
+  it('should not call updateValue when disabled', () => {
+    const component = initComponent();
+    component.disabled = true;
+    // @ts-ignore
+    const updateValueSpy = jest.spyOn(component, 'updateValue');
+
+    component.updateSegmentedControlItemHandler(mockEvent);
+
+    expect(updateValueSpy).not.toHaveBeenCalled();
+  });
+});
+
+describe('onValueChange', () => {
+  it('should call setFormValue', () => {
+    const component = initComponent();
+    const value = 1;
+    component.value = value;
+    const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+    component.onValueChange();
+    expect(setFormValueSpy).toHaveBeenCalledWith(value.toString());
+  });
+});
+
+describe('componentDidLoad', () => {
+  it('should call setFormValue', () => {
+    const component = initComponent();
+    const value = '1';
+    component.value = value;
+    const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+    component.componentDidLoad();
+    expect(setFormValueSpy).toHaveBeenCalledWith(value);
   });
 });
 
 describe('updateValue()', () => {
-  const component = new SegmentedControl();
+  const component = initComponent();
   const emitSpy = jest.fn();
   component.update = { emit: emitSpy };
   component.segmentedControlChange = { emit: emitSpy };
@@ -108,15 +183,5 @@ describe('updateValue()', () => {
     component.updateValue(item);
 
     expect(spy).toHaveBeenCalledWith();
-  });
-
-  it('should do nothing for undefined parameter', () => {
-    const spy = jest.spyOn(item, 'focus');
-    // @ts-ignore
-    component.updateValue(undefined);
-
-    expect(component.value).toBeUndefined();
-    expect(emitSpy).not.toHaveBeenCalled();
-    expect(spy).not.toHaveBeenCalled();
   });
 });
