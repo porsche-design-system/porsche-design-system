@@ -8,8 +8,9 @@ const initComponent = (): ButtonPure => {
   component.host = document.createElement('p-button-pure');
   component.host.attachShadow({ mode: 'open' });
   component['internals'] = {
+    setFormValue: jest.fn(),
     form: { requestSubmit: jest.fn(), reset: jest.fn() } as unknown as HTMLFormElement,
-  } as ElementInternals;
+  } as unknown as ElementInternals;
   component.form = 'some-form';
   return component;
 };
