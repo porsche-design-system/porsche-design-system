@@ -106,13 +106,10 @@ export class Button {
 
     if (this.form && this.internals.form) {
       e.preventDefault();
-      switch (this.type) {
-        case 'submit':
-          this.internals.form.requestSubmit();
-          break;
-        case 'reset':
-          this.internals.form.reset();
-          break;
+      if (this.type === 'submit') {
+        this.internals.form.requestSubmit();
+      } else if (this.type === 'reset') {
+        this.internals.form.reset();
       }
     }
   }
