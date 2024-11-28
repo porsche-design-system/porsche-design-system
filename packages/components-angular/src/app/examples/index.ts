@@ -2,7 +2,10 @@ import { AccordionExampleComponent } from './accordion-example.component';
 import { AgGridExampleStorefrontComponent } from './ag-grid-example-storefront.component';
 import { AgGridExampleComponent } from './ag-grid-example.component';
 import { BannerExampleComponent } from './banner-example.component';
+import { ButtonExampleFormAttributeComponent } from './button-example-form-attribute.component';
 import { ButtonExampleFormComponent } from './button-example-form.component';
+import { ButtonPureExampleFormAttributeComponent } from './button-pure-example-form-attribute.component';
+import { ButtonPureExampleFormComponent } from './button-pure-example-form.component';
 import { CanvasExampleComponent } from './canvas-example.component';
 import { CarouselExampleDynamicSlidesComponent } from './carousel-example-dynamic-slides.component';
 import { CarouselExampleEventsComponent } from './carousel-example-events.component';
@@ -52,6 +55,9 @@ export const examples = [
   AgGridExampleStorefrontComponent,
   BannerExampleComponent,
   ButtonExampleFormComponent,
+  ButtonExampleFormAttributeComponent,
+  ButtonPureExampleFormComponent,
+  ButtonPureExampleFormAttributeComponent,
   CanvasExampleComponent,
   CarouselExampleDynamicSlidesComponent,
   CarouselExampleFocusOnCenterSlideComponent,
@@ -101,6 +107,9 @@ export * from './ag-grid-example.component';
 export * from './ag-grid-example-storefront.component';
 export * from './banner-example.component';
 export * from './button-example-form.component';
+export * from './button-example-form-attribute.component';
+export * from './button-pure-example-form.component';
+export * from './button-pure-example-form-attribute.component';
 export * from './canvas-example.component';
 export * from './carousel-example-dynamic-slides.component';
 export * from './carousel-example-focus-on-center-slide.component';

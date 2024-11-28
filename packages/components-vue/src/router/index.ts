@@ -56,6 +56,21 @@ export const routes: RouteType[] = [
     component: fromExamples.ButtonExampleForm,
   },
   {
+    path: '/button-example-form-attribute',
+    name: 'Button Example Form Attribute',
+    component: fromExamples.ButtonExampleFormAttribute,
+  },
+  {
+    path: '/button-pure-example-form',
+    name: 'Button Pure Example Form',
+    component: fromExamples.ButtonPureExampleForm,
+  },
+  {
+    path: '/button-pure-example-form-attribute',
+    name: 'Button Pure Example Form Attribute',
+    component: fromExamples.ButtonPureExampleFormAttribute,
+  },
+  {
     path: '/canvas-example',
     name: 'Canvas Example',
     component: fromExamples.CanvasExample,
