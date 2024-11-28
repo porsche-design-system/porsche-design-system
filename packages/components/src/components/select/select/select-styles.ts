@@ -171,10 +171,14 @@ const getButtonStyles = (
       ),
     },
     ...(hasSlottedImage && {
-      '& span': {
+      '& > span': {
         display: 'flex',
         gap: '12px',
         alignItems: 'center',
+      },
+      '& > span > span': {
+        textOverflow: 'ellipsis',
+        overflow: 'hidden',
       },
       '& img': {
         height: fontLineHeight,

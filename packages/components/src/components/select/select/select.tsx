@@ -273,7 +273,7 @@ export class Select {
             {this.hasSlottedImage ? (
               <span>
                 <img src={this.getSelectedOptionImagePath(this.selectOptions)} alt="" />
-                {getSelectedOptionString(this.selectOptions)}
+                <span>{getSelectedOptionString(this.selectOptions)}</span>
               </span>
             ) : (
               getSelectedOptionString(this.selectOptions)
