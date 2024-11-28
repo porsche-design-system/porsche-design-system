@@ -720,10 +720,14 @@ button {
 button:disabled {
   cursor: not-allowed;
 }
-button span {
+button > span {
   display: flex;
   gap: 12px;
   align-items: center;
+}
+button > span > span {
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 button img {
   height: calc(6px + 2.125ex);
