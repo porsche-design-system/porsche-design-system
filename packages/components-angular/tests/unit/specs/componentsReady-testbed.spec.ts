@@ -66,7 +66,7 @@ it('should return 1 after component is rendered initially', async () => {
   );
 });
 
-it.skip('should return 2 after button is clicked', async () => {
+it('should return 2 after button is clicked', async () => {
   const fixture = TestBed.createComponent(SampleComponent);
   await componentsReady();
 
