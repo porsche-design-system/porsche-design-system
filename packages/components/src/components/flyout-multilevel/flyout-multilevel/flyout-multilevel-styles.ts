@@ -1,8 +1,6 @@
 import {
   frostedGlassStyle,
   getMediaQueryMin,
-  spacingFluidLarge,
-  spacingFluidMedium,
   spacingFluidSmall,
   spacingFluidXSmall,
   spacingStaticSmall,
@@ -38,20 +36,6 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
         }),
       },
       ...preventFoucOfNestedElementsStyles,
-      // If not primary e.g. root level not visible, hide all siblings of primary or cascade items
-      ...(!isPrimary && {
-        '::slotted(*:not([primary],[cascade]))': {
-          display: 'none',
-        },
-      }),
-      slot: {
-        gridArea: '1/1',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: spacingFluidXSmall,
-        overflow: 'hidden auto',
-        // padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
-      },
       dialog: {
         position: 'fixed',
         height: '100dvh',
@@ -124,6 +108,20 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
           },
         },
       },
+      slot: {
+        gridArea: '1/1',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: spacingFluidXSmall,
+        overflow: 'hidden auto',
+        // padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
+      },
+      // If not primary e.g. root level not visible, hide all siblings of primary or cascade items
+      ...(!isPrimary && {
+        '::slotted(*:not([primary],[cascade]))': {
+          display: 'none',
+        },
+      }),
     },
     dismiss: {
       padding: spacingFluidSmall,
