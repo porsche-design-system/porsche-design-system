@@ -45,6 +45,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
       slot: {
         ...(isPrimary && {
           gridArea: '1/1',
+          zIndex: 1,
           display: 'flex',
           flexDirection: 'column',
           gap: spacingFluidXSmall,
@@ -67,16 +68,29 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
         overflow: 'visible',
         width: 'auto',
         maxWidth: '100vw',
-        background: 'none',
         transition: 'opacity 1.5s, transform 1.5s, overlay 1.5s, display 1.5s',
         transitionBehavior: 'allow-discrete',
+        background: isSecondaryScrollerVisible
+          ? `linear-gradient(90deg, ${backgroundColor} 0%, ${backgroundColor} 50%, ${backgroundSurfaceColor} 50%, ${backgroundSurfaceColor} 100%)`
+          : backgroundColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          background: isSecondaryScrollerVisible
+            ? `linear-gradient(90deg, ${backgroundColorDark} 0%, ${backgroundColorDark} 50%, ${backgroundSurfaceColorDark} 50%, ${backgroundSurfaceColorDark} 100%)`
+            : backgroundColorDark,
+        }),
         [mediaQueryEnhancedView]: {
           gridTemplateColumns: `repeat(${isSecondaryScrollerVisible ? 2 : 1}, ${scrollerWidthEnhancedView}) auto`,
           gridTemplateRows: '100dvh',
           insetInlineEnd: 'auto',
         },
-        '&::before': {
+        '&::before, &::after': {
           content: '""',
+          position: 'relative',
+          zIndex: 2,
+          pointerEvents: 'none',
+          opacity: 0,
+        },
+        '&::before': {
           gridArea: '1/1',
           background: backgroundColor,
           ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -84,7 +98,6 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
           }),
         },
         '&::after': {
-          content: '""',
           gridArea: '1/2',
           backgroundColor: backgroundSurfaceColor,
           ...prefersColorSchemeDarkMediaQuery(theme, {
