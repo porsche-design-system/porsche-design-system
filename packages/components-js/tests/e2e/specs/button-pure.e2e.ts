@@ -233,6 +233,56 @@ test.describe('form', () => {
     // Since the data in only available via the event submitter it is easier to test it by checking the request params
     expect(page.url()).toContain(urlPart);
   });
+
+  test("should submit the form when a 'submit' type button outside the form is clicked, passing the button's name and value as parameters", async ({
+    page,
+  }) => {
+    const name = 'name';
+    const value = 'Value';
+    await setContentWithDesignSystem(
+      page,
+      `<form action="/packages/components-js/public" id="myForm"></form>
+    <p-button-pure type="submit" name="${name}" value="${value}" form="myForm">Some label</p-button-pure>`
+    );
+
+    const host = getHost(page);
+    await host.click();
+
+    const urlPart = `?${name}=${value}`;
+
+    await page.waitForURL(`**/*${urlPart}`);
+    // Since the data in only available via the event submitter it is easier to test it by checking the request params
+    expect(page.url()).toContain(urlPart);
+  });
+
+  test("Should submit the correct FormData when the button's value is updated programmatically before submission", async ({
+    page,
+  }) => {
+    const name = 'name';
+    const value = 'Value';
+    const newValue = 'NewValue';
+    await setContentWithDesignSystem(
+      page,
+      `<form action="/packages/components-js/public">
+      <p-button-pure type="submit" name="${name}" value="${value}">Some label</p-button-pure>
+      </form>`
+    );
+
+    const host = getHost(page);
+    await expect(host).toHaveJSProperty('value', value);
+
+    await setProperty(host, 'value', newValue);
+    await waitForStencilLifecycle(page);
+    await expect(host).toHaveJSProperty('value', newValue);
+
+    await host.click();
+
+    const urlPart = `?${name}=${newValue}`;
+
+    await page.waitForURL(`**/*${urlPart}`);
+    // Since the data in only available via the event submitter it is easier to test it by checking the request params
+    expect(page.url()).toContain(urlPart);
+  });
 });
 
 skipInBrowsers(['firefox', 'webkit'], () => {
