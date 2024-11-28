@@ -91,6 +91,7 @@ export class Button {
 
   /** The id of a form element the button should be associated with. */
   @Prop({ reflect: true }) public form?: string;
+  // In the React wrapper, all props are synced as properties on the element ref, so reflecting "form" as an attribute ensures it is properly handled in the form submission process.
 
   @AttachInternals() private internals: ElementInternals;
 
