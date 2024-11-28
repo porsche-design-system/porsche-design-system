@@ -14,8 +14,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-button type="submit" form="some-form">Submit</p-button>
         <p-button type="reset" [variant]="'secondary'" form="some-form">Reset</p-button>
       </p-button-group>
-
-      <p-text slot="sub-footer" innerHTML="Last submitted data:<br/><br/> {{ lastSubmittedData }}"></p-text>
+      <p-text slot="sub-footer">
+        Last submitted data:
+        <br/><br/>
+        checkbox: {{checkboxValue}}
+        <br/>
+        textarea: {{textareaValue}}
+      </p-text>
     </p-flyout>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -23,7 +28,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class FlyoutExampleFormComponent {
   isFlyoutOpen = false;
-  lastSubmittedData: string = 'checkbox: none<br/>textarea: none';
+  checkboxValue: string = 'none';
+  textareaValue: string = 'none';
 
   onOpen() {
     this.isFlyoutOpen = true;
@@ -35,6 +41,7 @@ export class FlyoutExampleFormComponent {
   onSubmit(e: Event): void {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
-    this.lastSubmittedData = `checkbox: ${formData.get('some-checkbox') || 'none'} <br/>textarea: ${formData.get('some-textarea') || 'none'}`;
+    this.checkboxValue = formData.get('some-checkbox')?.toString() || 'none';
+    this.textareaValue = formData.get('some-textarea')?.toString() || 'none';
   }
 }

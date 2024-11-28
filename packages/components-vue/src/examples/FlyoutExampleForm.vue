@@ -17,10 +17,12 @@ const onOpen = (): void => {
 const onDismiss = (): void => {
   isFlyoutOpen.value = false;
 };
-const lastSubmittedData = ref<string>('checkbox: none<br/>textarea: none');
+const checkboxValue = ref<string>('none');
+const textareaValue = ref<string>('none');
 const onSubmit = (e: Event) => {
   const formData = new FormData(e.target as HTMLFormElement);
-  lastSubmittedData.value = `checkbox: ${formData.get('some-checkbox') || 'none'} <br/>textarea: ${formData.get('some-textarea') || 'none'}`;
+  checkboxValue.value = formData.get('some-checkbox')?.toString() || 'none';
+  textareaValue.value = formData.get('some-textarea')?.toString() || 'none';
 };
 </script>
 
@@ -36,7 +38,13 @@ const onSubmit = (e: Event) => {
       <PButton type="submit" form="some-form">Submit</PButton>
       <PButton type="reset" variant="secondary" form="some-form">Reset</PButton>
     </PButtonGroup>
-    
-    <PText slot="sub-footer" v-html="'Last submitted data:<br/><br/> ' + lastSubmittedData"></PText>
+    <PText slot="sub-footer">
+      Last submitted data:
+      <br />
+      <br />
+      checkbox: {{checkboxValue}}
+      <br />
+      textarea: {{textareaValue}}
+    </PText>
   </PFlyout>
 </template>

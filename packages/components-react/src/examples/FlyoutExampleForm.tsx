@@ -11,7 +11,8 @@ import { type FormEvent, useCallback, useState } from 'react';
 
 export const FlyoutExampleFormPage = (): JSX.Element => {
   const [isFlyoutOpen, setIsFlyoutOpen] = useState<boolean>(false);
-  const [lastSubmittedData, setLastSubmittedData] = useState('checkbox: none<br/>textarea: none');
+  const [checkboxValue, setCheckboxValue] = useState('none');
+  const [textareaValue, setTextareaValue] = useState('none');
 
   const onOpen = useCallback(() => {
     setIsFlyoutOpen(true);
@@ -23,9 +24,8 @@ export const FlyoutExampleFormPage = (): JSX.Element => {
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    setLastSubmittedData(
-      `checkbox: ${formData.get('some-checkbox') || 'none'} <br/>textarea: ${formData.get('some-textarea') || 'none'}`
-    );
+    setCheckboxValue(formData.get('some-checkbox')?.toString() || 'none');
+    setTextareaValue(formData.get('some-textarea')?.toString() || 'none');
   };
 
   return (
@@ -49,10 +49,14 @@ export const FlyoutExampleFormPage = (): JSX.Element => {
             Reset
           </PButton>
         </PButtonGroup>
-        <PText
-          slot="sub-footer"
-          dangerouslySetInnerHTML={{ __html: `Last submitted data:<br/><br/> ${lastSubmittedData}` }}
-        ></PText>
+        <PText slot="sub-footer">
+          Last submitted data:
+          <br />
+          <br />
+          checkbox: {checkboxValue}
+          <br />
+          textarea: {textareaValue}
+        </PText>
       </PFlyout>
     </>
   );
