@@ -1,9 +1,10 @@
-import { expect, type Locator, test, type Page } from '@playwright/test';
+import { type Locator, type Page, expect, test } from '@playwright/test';
 import {
-  addEventListener,
   ClickableTests,
+  addEventListener,
   getActiveElementId,
   getEventSummary,
+  getFormDataValue,
   getLifecycleStatus,
   hasFocus,
   setContentWithDesignSystem,
@@ -15,6 +16,7 @@ import {
 
 const getHost = (page: Page) => page.locator('p-button-pure');
 const getButton = (page: Page) => page.locator('p-button-pure button');
+const getForm = (page: Page) => page.locator('form');
 
 const initButtonPure = (
   page: Page,
@@ -91,7 +93,7 @@ test('should dispatch correct click events', async ({ page }) => {
   }
 });
 
-test.describe('within form', () => {
+test.describe('form', () => {
   test("submits parent form on click if it's type submit", async ({ page }) => {
     await setContentWithDesignSystem(
       page,
@@ -109,6 +111,57 @@ test.describe('within form', () => {
 
     await waitForImproveButtonHandlingForCustomElement(page);
     expect((await getEventSummary(form, 'submit')).counter).toBe(2);
+  });
+
+  test('Should include name and associated value in FormData on click, if the submit button is outside the form', async ({
+    page,
+  }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<form onsubmit="return false;" id="myForm">
+        <p-textarea name="some-name" label="Some Label" value="Some value"></p-textarea>
+      </form>
+      <p-button-pure type="submit" form="myForm">Submit</p-button-pure>
+    `
+    );
+
+    const form = getForm(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValue(form, 'some-name')).toBe('Some value');
+  });
+
+  test('Should reset value on click, if the reset button is outside the form', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `<form onsubmit="return false;" id="myForm">
+        <p-textarea name="some-name" label="Some Label" value="Some value"></p-textarea>
+      </form>
+      <p-button-pure type="reset" form="myForm">Reset</p-button-pure>
+    `
+    );
+
+    const form = getForm(page);
+    const textarea = page.locator('textarea');
+    const newValue = 'New value';
+    await textarea.fill(newValue);
+
+    await waitForStencilLifecycle(page);
+    await expect(textarea).toHaveValue(newValue);
+
+    await addEventListener(form, 'reset');
+    expect((await getEventSummary(form, 'reset')).counter).toBe(0);
+
+    await page.locator('button[type="reset"]').click();
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(form, 'reset')).counter).toBe(1);
+    await expect(textarea).toHaveValue('Some value');
   });
 
   test('should not submit the form if default is prevented', async ({ page }) => {
