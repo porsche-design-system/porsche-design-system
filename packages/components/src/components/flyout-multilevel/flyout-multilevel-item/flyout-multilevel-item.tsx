@@ -82,20 +82,18 @@ export class FlyoutMultilevelItem {
         >
           {this.label}
         </PrefixedTagNames.pButtonPure>
-        {this.primary && (
-          <PrefixedTagNames.pButtonPure
-            class="back"
-            type="button"
-            size="small"
-            alignLabel="end"
-            stretch={true}
-            icon="arrow-head-left"
-            theme={this.theme}
-            onClick={() => this.emitInternalUpdateEvent(this.identifier)}
-          >
-            {this.label}
-          </PrefixedTagNames.pButtonPure>
-        )}
+        <PrefixedTagNames.pButtonPure
+          class="back"
+          type="button"
+          size="small"
+          alignLabel="end"
+          stretch={true}
+          icon="arrow-left"
+          theme={this.theme}
+          onClick={() => this.emitInternalUpdateEvent(this.identifier)}
+        >
+          {this.label}
+        </PrefixedTagNames.pButtonPure>
         <slot />
       </Host>
     );

@@ -31,6 +31,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       '@keyframes slide-up-secondary': animationFadeIn,
       ':host': {
         display: isPrimary || isSecondary ? 'grid' : 'contents',
+        gap: spacingFluidMedium,
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
@@ -41,7 +42,6 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           display: 'flex',
           flexDirection: 'column',
           gap: spacingFluidXSmall,
-          padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
           animation: `slide-up-${isPrimary ? 'primary' : 'secondary'} ${motionDurationModerate} ${motionEasingBase}`,
         }),
         ...(isPrimary && {
@@ -53,6 +53,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           overflow: 'hidden auto',
           width: '100vw',
           boxSizing: 'border-box',
+          padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
           [mediaQueryEnhancedView]: {
             insetInlineStart: scrollerWidthEnhancedView,
             width: scrollerWidthEnhancedView,
@@ -83,13 +84,11 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       margin: `0 calc(${spacingFluidSmall} * -1)`,
     },
     back: {
-      justifySelf: 'flex-start',
-      padding: spacingFluidSmall,
-      marginInlineStart: `calc(${spacingFluidSmall} * -1)`,
-      position: 'sticky',
-      top: 0,
-      zIndex: 1,
-      background: 'deeppink',
+      width: 'fit-content',
+      marginInlineStart: '-4px', // improve visual alignment and compensate white space of arrow-left icon
+      ...(!isPrimary && {
+        display: 'none',
+      }),
     },
   });
 };

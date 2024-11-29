@@ -116,9 +116,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
         flexDirection: 'column',
         gap: spacingFluidXSmall,
         overflow: 'hidden auto',
-        ...(isPrimary && {
-          padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
-        }),
+        padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
       },
       // If not primary e.g. root level not visible, hide all siblings of primary or cascade items
       ...(!isPrimary && {
