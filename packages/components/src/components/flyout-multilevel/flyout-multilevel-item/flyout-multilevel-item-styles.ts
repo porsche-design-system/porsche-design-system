@@ -15,12 +15,21 @@ import {
 import { getCss } from '../../../utils';
 import { mediaQueryEnhancedView, scrollerWidthEnhancedView } from '../flyout-multilevel/flyout-multilevel-styles';
 
-const animationSlideUp = {
+const animationSlideUpPrimary = {
   from: {
-    marginBlockStart: spacingFluidMedium,
+    paddingBlockStart: spacingFluidMedium,
   },
   to: {
-    marginBlockStart: '0px',
+    paddingBlockStart: '0px',
+  },
+};
+
+const animationSlideUpSecondary = {
+  from: {
+    paddingBlockStart: `calc(${spacingFluidMedium} * 2)`,
+  },
+  to: {
+    paddingBlockStart: spacingFluidMedium,
   },
 };
 
@@ -36,8 +45,8 @@ const animationFadeIn = {
 export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCascade: boolean): string => {
   return getCss({
     '@global': {
-      '@keyframes slide-up-primary': animationSlideUp,
-      '@keyframes slide-up-secondary': animationSlideUp,
+      '@keyframes slide-up-primary': animationSlideUpPrimary,
+      '@keyframes slide-up-secondary': animationSlideUpSecondary,
       '@keyframes fade-in': animationFadeIn,
       ':host': {
         display: isPrimary || isSecondary ? 'grid' : 'contents',
@@ -53,9 +62,6 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           flexDirection: 'column',
           gap: spacingFluidXSmall,
           animation: `slide-up-${isPrimary ? 'primary' : 'secondary'} ${motionDurationModerate} ${motionEasingBase}`,
-        }),
-        ...(isPrimary && {
-          position: 'relative', // relative anchor for slotted fixed secondary layer
         }),
         ...(isSecondary && {
           position: 'fixed', // Fixed to break out of scroll area

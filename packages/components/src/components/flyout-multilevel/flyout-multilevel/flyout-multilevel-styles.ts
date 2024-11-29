@@ -1,6 +1,8 @@
 import {
   frostedGlassStyle,
   getMediaQueryMin,
+  motionDurationModerate,
+  motionEasingBase,
   spacingFluidLarge,
   spacingFluidMedium,
   spacingFluidSmall,
@@ -20,6 +22,15 @@ import { type Theme, getCss } from '../../../utils';
 export const scrollerWidthEnhancedView = 'clamp(338px, 210px + 18vw, 640px)';
 export const mediaQueryEnhancedView = getMediaQueryMin('s');
 
+const animationSlideUpPrimary = {
+  from: {
+    paddingBlockStart: `calc(${spacingFluidMedium} * 2)`,
+  },
+  to: {
+    paddingBlockStart: spacingFluidMedium,
+  },
+};
+
 export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: boolean, theme: Theme): string => {
   const { backgroundColor, backgroundSurfaceColor, backgroundShadingColor } = getThemedColors(theme);
   const {
@@ -30,6 +41,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
 
   const style = getCss({
     '@global': {
+      '@keyframes slide-up-primary': animationSlideUpPrimary,
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
@@ -117,6 +129,9 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
         gap: spacingFluidXSmall,
         overflow: 'hidden auto',
         padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
+        ...(isPrimary && {
+          animation: `slide-up-primary ${motionDurationModerate} ${motionEasingBase}`,
+        }),
       },
       // If not primary e.g. root level not visible, hide all siblings of primary or cascade items
       ...(!isPrimary && {
