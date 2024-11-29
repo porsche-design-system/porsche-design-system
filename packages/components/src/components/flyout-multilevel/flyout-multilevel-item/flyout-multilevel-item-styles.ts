@@ -15,7 +15,7 @@ import {
 import { getCss } from '../../../utils';
 import { mediaQueryEnhancedView, scrollerWidthEnhancedView } from '../flyout-multilevel/flyout-multilevel-styles';
 
-const animationFadeIn = {
+const animationSlideUp = {
   from: {
     marginBlockStart: spacingFluidMedium,
   },
@@ -24,11 +24,21 @@ const animationFadeIn = {
   },
 };
 
+const animationFadeIn = {
+  from: {
+    opacity: 0,
+  },
+  to: {
+    opacity: 1,
+  },
+};
+
 export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCascade: boolean): string => {
   return getCss({
     '@global': {
-      '@keyframes slide-up-primary': animationFadeIn,
-      '@keyframes slide-up-secondary': animationFadeIn,
+      '@keyframes slide-up-primary': animationSlideUp,
+      '@keyframes slide-up-secondary': animationSlideUp,
+      '@keyframes fade-in': animationFadeIn,
       ':host': {
         display: isPrimary || isSecondary ? 'grid' : 'contents',
         gap: spacingFluidMedium,
@@ -80,14 +90,20 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       ...((isPrimary || isCascade) && {
         display: 'none',
       }),
-      padding: spacingFluidSmall,
-      margin: `0 calc(${spacingFluidSmall} * -1)`,
+      ...(!isPrimary &&
+        !isCascade && {
+          padding: spacingFluidSmall,
+          margin: `0 calc(${spacingFluidSmall} * -1)`,
+        }),
     },
     back: {
-      width: 'fit-content',
-      marginInlineStart: '-4px', // improve visual alignment and compensate white space of arrow-left icon
       ...(!isPrimary && {
         display: 'none',
+      }),
+      ...(isPrimary && {
+        width: 'fit-content',
+        marginInlineStart: '-4px', // improve visual alignment and compensate white space of arrow-left icon
+        animation: `fade-in ${motionDurationModerate} ${motionEasingBase}`,
       }),
     },
   });
