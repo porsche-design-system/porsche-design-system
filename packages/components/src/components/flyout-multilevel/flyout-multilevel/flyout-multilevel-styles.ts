@@ -17,7 +17,7 @@ import {
 } from '../../../styles';
 import { type Theme, getCss } from '../../../utils';
 
-export const scrollerWidthEnhancedView = 'clamp(338px, 210px + 16.77777777777778vw, 640px)';
+export const scrollerWidthEnhancedView = 'clamp(338px, 210px + 18vw, 640px)';
 export const mediaQueryEnhancedView = getMediaQueryMin('s');
 
 export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: boolean, theme: Theme): string => {
