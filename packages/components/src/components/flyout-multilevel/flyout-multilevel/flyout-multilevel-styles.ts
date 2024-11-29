@@ -13,6 +13,7 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   getThemedColors,
+  getTransition,
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
@@ -30,6 +31,13 @@ const animationSlideUpPrimary = {
     paddingBlockStart: spacingFluidMedium,
   },
 };
+
+const dialogDurationOpen = 'moderate';
+const backdropDurationOpen = 'long';
+const easingOpen = 'in';
+const dialogDurationClose = 'short';
+const backdropDurationClose = 'moderate';
+const easingClose = 'out';
 
 export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: boolean, theme: Theme): string => {
   const { backgroundColor, backgroundSurfaceColor, backgroundShadingColor } = getThemedColors(theme);
@@ -52,6 +60,8 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
       ...preventFoucOfNestedElementsStyles,
       dialog: {
         position: 'fixed',
+        inset: 0,
+        zIndex: 9999999, // fallback when dialog isn't rendered on #top-layer, e.g. relevant in ssr context
         height: '100dvh',
         maxHeight: '100dvh',
         margin: 0,
@@ -61,13 +71,12 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
         outline: 0,
         transform: 'translate3d(-100%, 0, 0)',
         opacity: 0,
-        inset: 0,
         display: 'grid',
         overflow: 'visible',
         width: 'auto',
         maxWidth: '100vw',
-        transition: 'opacity 1.5s, transform 1.5s, overlay 1.5s, display 1.5s',
-        transitionBehavior: 'allow-discrete',
+        // overlay + display transition duration needs to be in sync with ::backdrop transition duration when dialog gets closed
+        transition: `${getTransition('display', backdropDurationClose, easingClose)} allow-discrete, ${getTransition('overlay', backdropDurationClose, easingClose)} allow-discrete, ${getTransition('opacity', dialogDurationClose, easingClose)}, ${getTransition('transform', dialogDurationClose, easingClose)}`,
         background: isSecondaryScrollerVisible
           ? `linear-gradient(90deg, ${backgroundColor} 0%, ${backgroundColor} 50%, ${backgroundSurfaceColor} 50%, ${backgroundSurfaceColor} 100%)`
           : backgroundColor,
@@ -107,18 +116,19 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
           opacity: 0,
           WebkitBackdropFilter: 'blur(0px)',
           backdropFilter: 'blur(0px)',
-          transition: 'display 1.5s, overlay 1.5s, opacity 1.5s, backdrop-filter 1.5s, -webkit-backdrop-filter 1.5s',
-          transitionBehavior: 'allow-discrete',
+          transition: `${getTransition('display', backdropDurationClose, easingClose)} allow-discrete, ${getTransition('overlay', backdropDurationClose, easingClose)} allow-discrete, ${getTransition('opacity', backdropDurationClose, easingClose)}, ${getTransition('backdrop-filter', backdropDurationClose, easingClose)}, ${getTransition('-webkit-backdrop-filter', backdropDurationClose, easingClose)}`,
           ...prefersColorSchemeDarkMediaQuery(theme, {
             background: backgroundShadingColorDark,
           }),
         },
         '&[open]': {
           transform: 'translate3d(0, 0, 0)',
+          transition: `${getTransition('opacity', dialogDurationOpen, easingOpen)}, ${getTransition('transform', dialogDurationOpen, easingOpen)}`,
           opacity: 1,
           '&::backdrop': {
             opacity: 1,
             ...frostedGlassStyle,
+            transition: `${getTransition('opacity', backdropDurationOpen, easingOpen)}, ${getTransition('backdrop-filter', backdropDurationOpen, easingOpen)}, ${getTransition('-webkit-backdrop-filter', backdropDurationOpen, easingOpen)}`,
           },
         },
       },
