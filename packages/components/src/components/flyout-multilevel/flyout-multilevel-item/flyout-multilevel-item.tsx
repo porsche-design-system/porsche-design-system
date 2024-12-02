@@ -47,6 +47,8 @@ export class FlyoutMultilevelItem {
 
   @Prop({ reflect: true }) public secondary: boolean = false;
 
+  private slot: HTMLSlotElement;
+
   private get theme(): Theme {
     return this.host.theme || 'light'; // default as fallback (internal private prop is controlled by flyout-multilevel)
   }
@@ -57,6 +59,10 @@ export class FlyoutMultilevelItem {
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-flyout-multilevel', 'p-flyout-multilevel-item']);
+  }
+
+  public componentDidRender() {
+    this.slot.scrollTo(0, 0); // Reset scroll position when navigated
   }
 
   public render(): JSX.Element {
@@ -94,7 +100,7 @@ export class FlyoutMultilevelItem {
         >
           {this.label}
         </PrefixedTagNames.pButtonPure>
-        <slot />
+        <slot ref={(ref: HTMLSlotElement) => (this.slot = ref)} />
       </Host>
     );
   }
