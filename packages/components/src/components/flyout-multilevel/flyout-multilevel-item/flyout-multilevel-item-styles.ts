@@ -60,6 +60,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           display: 'flex',
           flexDirection: 'column',
           gap: spacingFluidXSmall,
+          willChange: 'padding-block-start',
           animation: `slide-up-${isPrimary ? 'primary' : 'secondary'} ${motionDurationModerate} ${motionEasingBase}`,
         }),
         ...(isSecondary && {

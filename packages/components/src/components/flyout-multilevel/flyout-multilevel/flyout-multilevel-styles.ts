@@ -12,9 +12,11 @@ import {
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  cssVariableTransitionDuration,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
+  motionDurationMap,
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
@@ -81,7 +83,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
         margin: 0,
         padding: 0,
         border: 0,
-        visibility: 'inherit',
+        visibility: 'hidden',
         outline: 0,
         transform: 'translate3d(-100%, 0, 0)',
         opacity: 0,
@@ -90,7 +92,8 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
         width: 'auto',
         maxWidth: '100vw',
         // overlay + display transition duration needs to be in sync with ::backdrop transition duration when dialog gets closed
-        transition: `${getTransition('display', backdropDurationClose, easingClose)} allow-discrete, ${getTransition('overlay', backdropDurationClose, easingClose)} allow-discrete, ${getTransition('opacity', dialogDurationClose, easingClose)}, ${getTransition('transform', dialogDurationClose, easingClose)}`,
+        // visibility delay ensures no element within dialog is tabbable when dialog is closed
+        transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationMap[backdropDurationClose]}), ${getTransition('display', backdropDurationClose, easingClose)} allow-discrete, ${getTransition('overlay', backdropDurationClose, easingClose)} allow-discrete, ${getTransition('opacity', dialogDurationClose, easingClose)}, ${getTransition('transform', dialogDurationClose, easingClose)}`,
         color: primaryColor,
         background: backgroundColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -165,8 +168,9 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
         },
         '&[open]': {
           transform: 'translate3d(0, 0, 0)',
-          transition: `${getTransition('opacity', dialogDurationOpen, easingOpen)}, ${getTransition('transform', dialogDurationOpen, easingOpen)}`,
           opacity: 1,
+          visibility: 'inherit',
+          transition: `${getTransition('opacity', dialogDurationOpen, easingOpen)}, ${getTransition('transform', dialogDurationOpen, easingOpen)}`,
           '&::backdrop': {
             opacity: 1,
             ...frostedGlassStyle,
@@ -216,6 +220,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
       dialog[open] {
         transform: translate3d(-100%, 0, 0);
         opacity: 0;
+        visibility: hidden;
 
         &::backdrop {
           opacity: 0;

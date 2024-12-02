@@ -140,7 +140,6 @@ export class FlyoutMultilevel {
         onCancel={this.onCancelDialog}
         onClick={this.onClickDialog}
       >
-        <slot {...parseAndGetAriaAttributes(this.aria)} />
         <PrefixedTagNames.pButtonPure
           class="dismiss"
           type="button"
@@ -152,6 +151,7 @@ export class FlyoutMultilevel {
         >
           Dismiss flyout
         </PrefixedTagNames.pButtonPure>
+        <slot {...parseAndGetAriaAttributes(this.aria)} />
       </dialog>
     );
   }
