@@ -50,8 +50,8 @@ const animationFadeIn = {
 };
 
 export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCascade: boolean, theme: Theme): string => {
-  const { primaryColor, contrastMediumColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
+  const { primaryColor } = getThemedColors(theme);
+  const { primaryColor: primaryColorDark } = getThemedColors('dark');
 
   return getCss({
     '@global': {
@@ -111,7 +111,9 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
             padding: spacingFluidSmall,
             marginInline: `calc(${spacingFluidSmall} * -1)`,
             color: primaryColor,
-            transition: `${getTransition('color')}, ${getTransition('background')}`,
+            textDecoration: 'underline',
+            textDecorationColor: 'transparent',
+            transition: `${getTransition('text-decoration-color')}`,
             ...prefersColorSchemeDarkMediaQuery(theme, {
               color: primaryColorDark,
             }),
@@ -122,10 +124,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
         },
         ...hoverMediaQuery({
           '&(a:hover)': {
-            color: contrastMediumColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              color: contrastMediumColorDark,
-            }),
+            textDecorationColor: 'inherit',
           },
         }),
         ...getFocusJssStyle(theme, { slotted: 'a', offset: '-2px' }),
