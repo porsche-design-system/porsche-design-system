@@ -151,7 +151,9 @@ export class FlyoutMultilevel {
         >
           Dismiss flyout
         </PrefixedTagNames.pButtonPure>
-        <slot {...parseAndGetAriaAttributes(this.aria)} />
+        <nav {...parseAndGetAriaAttributes(this.aria)}>
+          <slot />
+        </nav>
       </dialog>
     );
   }
