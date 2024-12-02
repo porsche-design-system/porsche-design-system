@@ -103,7 +103,7 @@ export const getComponentCss = (
               WebkitBackgroundClip: 'padding-box', // reset webkit autofill styles
             },
           '&(input[type="email"]),&(input[type="tel"])': {
-            direction: 'ltr', // fixes email input in RTL mode, should always be LTR. See https://rtlstyling.com/posts/rtl-styling#form-inputs
+            direction: 'ltr', // fixes specific input types in RTL mode. Should always be LTR. See https://rtlstyling.com/posts/rtl-styling#form-inputs
           },
         },
       }),
