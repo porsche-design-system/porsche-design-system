@@ -1,18 +1,25 @@
 import {
+  borderRadiusSmall,
   motionDurationModerate,
   motionEasingBase,
   spacingFluidLarge,
   spacingFluidMedium,
   spacingFluidSmall,
   spacingFluidXSmall,
+  textMediumStyle,
 } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  getFocusJssStyle,
+  getThemedColors,
+  getTransition,
   hostHiddenStyles,
+  hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { getCss } from '../../../utils';
+import { type Theme, getCss } from '../../../utils';
 import { mediaQueryEnhancedView, scrollerWidthEnhancedView } from '../flyout-multilevel/flyout-multilevel-styles';
 
 const animationSlideUpPrimary = {
@@ -42,7 +49,10 @@ const animationFadeIn = {
   },
 };
 
-export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCascade: boolean): string => {
+export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCascade: boolean, theme: Theme): string => {
+  const { primaryColor, contrastMediumColor } = getThemedColors(theme);
+  const { primaryColor: primaryColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
+
   return getCss({
     '@global': {
       '@keyframes slide-up-primary': animationSlideUpPrimary,
@@ -90,6 +100,36 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           display: 'none',
         },
       }),
+      '::slotted': {
+        '&(a)': {
+          ...{
+            all: 'unset',
+            alignSelf: 'flex-start',
+            font: textMediumStyle.font,
+            cursor: 'pointer',
+            borderRadius: borderRadiusSmall,
+            padding: spacingFluidSmall,
+            marginInline: `calc(${spacingFluidSmall} * -1)`,
+            color: primaryColor,
+            transition: `${getTransition('color')}, ${getTransition('background')}`,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              color: primaryColorDark,
+            }),
+          },
+        },
+        '&(a[aria-current])': {
+          textDecoration: 'underline',
+        },
+        ...hoverMediaQuery({
+          '&(a:hover)': {
+            color: contrastMediumColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              color: contrastMediumColorDark,
+            }),
+          },
+        }),
+        ...getFocusJssStyle(theme, { slotted: 'a', offset: '-2px' }),
+      },
       ...preventFoucOfNestedElementsStyles,
     },
     button: {

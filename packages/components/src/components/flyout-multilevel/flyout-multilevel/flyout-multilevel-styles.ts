@@ -40,8 +40,9 @@ const backdropDurationClose = 'moderate';
 const easingClose = 'out';
 
 export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: boolean, theme: Theme): string => {
-  const { backgroundColor, backgroundSurfaceColor, backgroundShadingColor } = getThemedColors(theme);
+  const { primaryColor, backgroundColor, backgroundSurfaceColor, backgroundShadingColor } = getThemedColors(theme);
   const {
+    primaryColor: primaryColorDark,
     backgroundColor: backgroundColorDark,
     backgroundSurfaceColor: backgroundSurfaceColorDark,
     backgroundShadingColor: backgroundShadingColorDark,
@@ -77,10 +78,12 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
         maxWidth: '100vw',
         // overlay + display transition duration needs to be in sync with ::backdrop transition duration when dialog gets closed
         transition: `${getTransition('display', backdropDurationClose, easingClose)} allow-discrete, ${getTransition('overlay', backdropDurationClose, easingClose)} allow-discrete, ${getTransition('opacity', dialogDurationClose, easingClose)}, ${getTransition('transform', dialogDurationClose, easingClose)}`,
+        color: primaryColor,
         background: isSecondaryScrollerVisible
           ? `linear-gradient(90deg, ${backgroundColor} 0%, ${backgroundColor} 50%, ${backgroundSurfaceColor} 50%, ${backgroundSurfaceColor} 100%)`
           : backgroundColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: primaryColorDark,
           background: isSecondaryScrollerVisible
             ? `linear-gradient(90deg, ${backgroundColorDark} 0%, ${backgroundColorDark} 50%, ${backgroundSurfaceColorDark} 50%, ${backgroundSurfaceColorDark} 100%)`
             : backgroundColorDark,
