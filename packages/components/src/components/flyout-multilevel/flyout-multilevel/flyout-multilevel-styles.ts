@@ -92,19 +92,45 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
         // overlay + display transition duration needs to be in sync with ::backdrop transition duration when dialog gets closed
         transition: `${getTransition('display', backdropDurationClose, easingClose)} allow-discrete, ${getTransition('overlay', backdropDurationClose, easingClose)} allow-discrete, ${getTransition('opacity', dialogDurationClose, easingClose)}, ${getTransition('transform', dialogDurationClose, easingClose)}`,
         color: primaryColor,
-        background: isSecondaryScrollerVisible
-          ? `linear-gradient(90deg, ${backgroundColor} 0%, ${backgroundColor} 50%, ${backgroundSurfaceColor} 50%, ${backgroundSurfaceColor} 100%)`
-          : backgroundColor,
+        background: backgroundColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
           color: primaryColorDark,
-          background: isSecondaryScrollerVisible
-            ? `linear-gradient(90deg, ${backgroundColorDark} 0%, ${backgroundColorDark} 50%, ${backgroundSurfaceColorDark} 50%, ${backgroundSurfaceColorDark} 100%)`
-            : backgroundColorDark,
+          background: backgroundColorDark,
         }),
         [mediaQueryEnhancedView]: {
+          background: isSecondaryScrollerVisible
+            ? `linear-gradient(90deg, ${backgroundColor} 0%, ${backgroundColor} 50%, ${backgroundSurfaceColor} 50%, ${backgroundSurfaceColor} 100%)`
+            : backgroundColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            color: primaryColorDark,
+            background: isSecondaryScrollerVisible
+              ? `linear-gradient(90deg, ${backgroundColorDark} 0%, ${backgroundColorDark} 50%, ${backgroundSurfaceColorDark} 50%, ${backgroundSurfaceColorDark} 100%)`
+              : backgroundColorDark,
+          }),
           gridTemplateColumns: `repeat(${isSecondaryScrollerVisible ? 2 : 1}, ${scrollerWidthEnhancedView}) auto`,
           gridTemplateRows: '100dvh',
           insetInlineEnd: 'auto',
+          '&::before, &::after': {
+            content: '""',
+            position: 'relative',
+            zIndex: 2,
+            pointerEvents: 'none',
+            opacity: 0,
+          },
+          '&::before': {
+            gridArea: '1/1',
+            background: backgroundColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              background: backgroundColorDark,
+            }),
+          },
+          '&::after': {
+            gridArea: '1/2',
+            backgroundColor: backgroundSurfaceColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              backgroundColor: backgroundSurfaceColorDark,
+            }),
+          },
         },
         '&::before, &::after': {
           content: '""',
