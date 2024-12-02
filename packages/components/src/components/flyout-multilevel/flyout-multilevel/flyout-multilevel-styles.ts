@@ -23,12 +23,24 @@ import { type Theme, getCss } from '../../../utils';
 export const scrollerWidthEnhancedView = 'clamp(338px, 210px + 18vw, 640px)';
 export const mediaQueryEnhancedView = getMediaQueryMin('s');
 
+export const animatePrimaryClass = 'animate-primary';
+export const animateSecondaryClass = 'animate-secondary';
+
 const animationSlideUpPrimary = {
   from: {
     paddingBlockStart: `calc(${spacingFluidMedium} * 2)`,
   },
   to: {
     paddingBlockStart: spacingFluidMedium,
+  },
+};
+
+const animationFadeIn = {
+  from: {
+    opacity: 1,
+  },
+  to: {
+    opacity: 0,
   },
 };
 
@@ -51,6 +63,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
   const style = getCss({
     '@global': {
       '@keyframes slide-up-primary': animationSlideUpPrimary,
+      '@keyframes fade-in': animationFadeIn,
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
@@ -133,6 +146,12 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
             ...frostedGlassStyle,
             transition: `${getTransition('opacity', backdropDurationOpen, easingOpen)}, ${getTransition('backdrop-filter', backdropDurationOpen, easingOpen)}, ${getTransition('-webkit-backdrop-filter', backdropDurationOpen, easingOpen)}`,
           },
+        },
+        [`&.${animatePrimaryClass}::before`]: {
+          animation: `fade-in ${motionDurationModerate} ${motionEasingBase}`,
+        },
+        [`&.${animateSecondaryClass}::after`]: {
+          animation: `fade-in ${motionDurationModerate} ${motionEasingBase}`,
         },
       },
       slot: {

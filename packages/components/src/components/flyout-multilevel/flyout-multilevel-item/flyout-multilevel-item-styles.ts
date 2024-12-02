@@ -40,24 +40,13 @@ const animationSlideUpSecondary = {
   },
 };
 
-const animationFadeIn = {
-  from: {
-    opacity: 0,
-  },
-  to: {
-    opacity: 1,
-  },
-};
-
 export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCascade: boolean, theme: Theme): string => {
   const { primaryColor } = getThemedColors(theme);
   const { primaryColor: primaryColorDark } = getThemedColors('dark');
-
   return getCss({
     '@global': {
       '@keyframes slide-up-primary': animationSlideUpPrimary,
       '@keyframes slide-up-secondary': animationSlideUpSecondary,
-      '@keyframes fade-in': animationFadeIn,
       ':host': {
         display: isPrimary || isSecondary ? 'grid' : 'contents',
         gap: spacingFluidMedium,
@@ -148,7 +137,6 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       ...(isPrimary && {
         width: 'fit-content',
         marginInlineStart: '-4px', // improve visual alignment and compensate white space of arrow-left icon
-        animation: `fade-in ${motionDurationModerate} ${motionEasingBase}`,
       }),
     },
   });

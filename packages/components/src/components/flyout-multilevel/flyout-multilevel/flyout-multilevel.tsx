@@ -12,7 +12,7 @@ import {
   setScrollLock,
   validateProps,
 } from '../../../utils';
-import { getComponentCss } from './flyout-multilevel-styles';
+import { animatePrimaryClass, animateSecondaryClass, getComponentCss } from './flyout-multilevel-styles';
 import {
   FLYOUT_MULTILEVEL_ARIA_ATTRIBUTES,
   type FlyoutMultilevelAriaAttribute,
@@ -95,8 +95,26 @@ export class FlyoutMultilevel {
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.defineFlyoutMultilevelItemElements);
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown, name: string): boolean {
+    const shouldUpdate = hasPropValueChanged(newVal, oldVal);
+    if (shouldUpdate && name === 'activeIdentifier' && newVal && oldVal) {
+      const oldItemParent = this.host.querySelector(`[identifier="${oldVal}"]`).parentElement as HTMLElement;
+      const newItemParent = this.host.querySelector(`[identifier="${newVal}"]`).parentElement as HTMLElement;
+      // Whenever the parent changes the primary layer changed
+      if (oldItemParent !== newItemParent) {
+        this.dialog?.classList.remove(animatePrimaryClass);
+        this.dialog?.offsetHeight; /* trigger reflow to restart animation */
+        this.dialog?.classList.add(animatePrimaryClass);
+      }
+    }
+    return shouldUpdate;
+  }
+
+  public componentWillRender(): void {
+    syncFlyoutMultilevelItemsProps(this.flyoutMultilevelItemElements, this.activeIdentifier, this.theme, this.host);
+    this.dialog?.classList.remove(animateSecondaryClass);
+    this.dialog?.offsetHeight; /* trigger reflow to restart animation */
+    this.dialog?.classList.add(animateSecondaryClass);
   }
 
   public componentDidRender(): void {
@@ -111,7 +129,6 @@ export class FlyoutMultilevel {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     validateActiveIdentifier(this, this.flyoutMultilevelItemElements, this.activeIdentifier);
-    syncFlyoutMultilevelItemsProps(this.flyoutMultilevelItemElements, this.activeIdentifier, this.theme, this.host);
     attachComponentCss(this.host, getComponentCss, this.primary, !!this.activeIdentifier, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
