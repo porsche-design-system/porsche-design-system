@@ -5,6 +5,7 @@ import {
   THEMES,
   attachComponentCss,
   getHTMLElementOfKind,
+  getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasPropValueChanged,
   parseAndGetAriaAttributes,
@@ -113,6 +114,8 @@ export class FlyoutMultilevel {
     syncFlyoutMultilevelItemsProps(this.flyoutMultilevelItemElements, this.activeIdentifier, this.theme, this.host);
     attachComponentCss(this.host, getComponentCss, this.primary, !!this.activeIdentifier, this.theme);
 
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
       <dialog
         tabIndex={-1} // dialog always has a dismiss button to be focused
@@ -121,6 +124,17 @@ export class FlyoutMultilevel {
         onClick={this.onClickDialog}
       >
         <slot {...parseAndGetAriaAttributes(this.aria)} />
+        <PrefixedTagNames.pButtonPure
+          class="dismiss"
+          type="button"
+          size="medium"
+          icon="close"
+          hideLabel={true}
+          theme={this.theme}
+          onClick={this.dismissDialog}
+        >
+          Dismiss flyout
+        </PrefixedTagNames.pButtonPure>
       </dialog>
     );
   }

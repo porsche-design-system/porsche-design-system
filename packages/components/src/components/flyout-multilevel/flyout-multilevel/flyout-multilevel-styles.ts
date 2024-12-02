@@ -157,7 +157,9 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
       padding: spacingFluidSmall,
       [mediaQueryEnhancedView]: {
         '--p-internal-icon-filter': 'invert(1)',
-        margin: spacingFluidSmall,
+        position: 'absolute',
+        left: `calc(100% + ${spacingFluidSmall})`,
+        top: spacingFluidSmall,
         padding: spacingStaticSmall,
       },
     },
