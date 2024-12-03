@@ -51,6 +51,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
@@ -233,6 +236,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
@@ -359,6 +365,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
@@ -476,6 +485,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
+}
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
@@ -608,6 +620,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #FB0404 !important;
@@ -738,6 +753,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
+}
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
@@ -870,6 +888,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
@@ -994,6 +1015,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
+}
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
@@ -1126,6 +1150,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
@@ -1257,6 +1284,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
@@ -1382,6 +1412,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
@@ -1498,6 +1531,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
+}
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
@@ -1635,6 +1671,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
+}
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
@@ -1774,6 +1813,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
@@ -1904,6 +1946,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
@@ -2033,6 +2078,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
+}
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
@@ -2171,6 +2219,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
@@ -2308,6 +2359,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #FBFCFF !important;
@@ -2437,6 +2491,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
+}
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
@@ -2568,6 +2625,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
@@ -2694,6 +2754,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
@@ -2811,6 +2874,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
+}
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
@@ -2943,6 +3009,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #069561 !important;
@@ -3073,6 +3142,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
+}
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
@@ -3205,6 +3277,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
@@ -3330,6 +3405,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
@@ -3446,6 +3524,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
+}
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
@@ -3577,6 +3658,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
@@ -3701,6 +3785,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
@@ -3816,6 +3903,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
+}
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
@@ -3946,6 +4036,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
@@ -4071,6 +4164,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
@@ -4187,6 +4283,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
+}
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
@@ -4318,6 +4417,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
@@ -4434,6 +4536,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 ::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
   -webkit-background-clip: padding-box !important;
+}
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
 }
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
