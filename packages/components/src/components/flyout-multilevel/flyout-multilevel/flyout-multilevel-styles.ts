@@ -240,10 +240,10 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
             gridArea: '4/2/auto/-2',
             height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
             paddingBlockEnd: spacingFluidLarge,
+            ...(isPrimary && {
+              animation: `slide-up-mobile ${motionDurationModerate} ${motionEasingBase}`,
+            }),
           }),
-          // ...(isPrimary && !isSecondaryScrollerVisible && {
-          //   animation: `slide-up-mobile ${motionDurationModerate} ${motionEasingBase}`,
-          // }),
         },
         [mediaQueryDesktop]: {
           display: 'flex',
