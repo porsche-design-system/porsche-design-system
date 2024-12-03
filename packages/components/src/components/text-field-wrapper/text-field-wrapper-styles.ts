@@ -1,11 +1,4 @@
-import type { BreakpointCustomizable, Theme } from '../../types';
-import {
-  type TextFieldWrapperUnitPosition,
-  isType,
-  showCustomCalendarOrTimeIndicator,
-} from './text-field-wrapper-utils';
-import type { FormState } from '../../utils/form/form-state';
-import { getCss, isThemeDark } from '../../utils';
+import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -24,9 +17,16 @@ import {
   getSlottedTextFieldTextareaSelectStyles,
   getUnitCounterJssStyle,
 } from '../../styles/form-styles';
-import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/styles';
+import type { BreakpointCustomizable, Theme } from '../../types';
+import { getCss, isThemeDark } from '../../utils';
+import type { FormState } from '../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
+import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
+import {
+  type TextFieldWrapperUnitPosition,
+  isType,
+  showCustomCalendarOrTimeIndicator,
+} from './text-field-wrapper-utils';
 
 export const cssVariableInputPaddingStart = '--p-internal-text-field-input-padding-start';
 export const cssVariableInputPaddingEnd = '--p-internal-text-field-input-padding-end';
@@ -102,6 +102,9 @@ export const getComponentCss = (
             {
               WebkitBackgroundClip: 'padding-box', // reset webkit autofill styles
             },
+          '&(input[type="email"]),&(input[type="tel"])': {
+            direction: 'ltr', // fixes specific input types in RTL mode. Should always be LTR. See https://rtlstyling.com/posts/rtl-styling#form-inputs
+          },
         },
       }),
     },
