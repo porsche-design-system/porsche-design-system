@@ -21,6 +21,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Fixed
 
+- `Textfield Wrapper`: text alignment of type `email` and `tel` values in RTL mode
+  ([3655](https://github.com/porsche-design-system/porsche-design-system/pull/3655))
 - `Popover`: Rendering bug of drop-shadow in Safari 18.x
   ([3622](https://github.com/porsche-design-system/porsche-design-system/pull/3622))
 
