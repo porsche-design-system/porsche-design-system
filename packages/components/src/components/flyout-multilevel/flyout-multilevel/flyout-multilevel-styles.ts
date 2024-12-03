@@ -31,12 +31,21 @@ export const mediaQueryDesktop = getMediaQueryMin('s');
 export const animatePrimaryClass = 'animate-primary';
 export const animateSecondaryClass = 'animate-secondary';
 
-const animationSlideUpPrimary = {
+const animationSlideUpMobile = {
   from: {
-    paddingBlockStart: `calc(${spacingFluidMedium} * 2)`,
+    transform: `translate3d(0,${spacingFluidMedium},0)`,
   },
   to: {
-    paddingBlockStart: spacingFluidMedium,
+    transform: 'translate3d(0,0,0)',
+  },
+};
+
+const animationSlideUpDesktop = {
+  from: {
+    marginBlockStart: spacingFluidMedium,
+  },
+  to: {
+    marginBlockStart: '0px',
   },
 };
 
@@ -67,7 +76,8 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
 
   const style = getCss({
     '@global': {
-      '@keyframes slide-up-primary': animationSlideUpPrimary,
+      '@keyframes slide-up-mobile': animationSlideUpMobile,
+      '@keyframes slide-up-desktop': animationSlideUpDesktop,
       '@keyframes fade-in': animationFadeIn,
       ':host': {
         display: 'block',
@@ -231,6 +241,9 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
             height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
             paddingBlockEnd: spacingFluidLarge,
           }),
+          // ...(isPrimary && !isSecondaryScrollerVisible && {
+          //   animation: `slide-up-mobile ${motionDurationModerate} ${motionEasingBase}`,
+          // }),
         },
         [mediaQueryDesktop]: {
           display: 'flex',
@@ -239,6 +252,9 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
           gridArea: '2/2/auto/-2',
           height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
           paddingBlockEnd: spacingFluidLarge,
+          ...(isPrimary && {
+            animation: `slide-up-desktop ${motionDurationModerate} ${motionEasingBase}`,
+          }),
         },
       },
       ...(isSecondaryScrollerVisible && {
