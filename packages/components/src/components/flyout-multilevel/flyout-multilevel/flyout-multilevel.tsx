@@ -19,7 +19,7 @@ import {
   type FlyoutMultilevelUpdateEventDetail,
   INTERNAL_UPDATE_EVENT_NAME,
   type Item,
-  syncFlyoutMultilevelItemsProps,
+  updateFlyoutMultiLevelState,
   validateActiveIdentifier,
 } from './flyout-multilevel-utils';
 
@@ -76,6 +76,18 @@ export class FlyoutMultilevel {
     setScrollLock(isOpen);
   }
 
+  @Watch('activeIdentifier')
+  public activeIdentifierChangeHandler(newVal: string | undefined, oldVal: string | undefined): void {
+    this.updateFlyoutMultiLevelState(oldVal, newVal);
+  }
+
+  @Watch('theme')
+  public themeChangeHandler(theme: Theme): void {
+    for (const item of this.flyoutMultilevelItemElements) {
+      item.theme = theme;
+    }
+  }
+
   @Listen(INTERNAL_UPDATE_EVENT_NAME)
   public onInternalUpdate(e: CustomEvent<FlyoutMultilevelUpdateEventDetail>): void {
     e.stopPropagation(); // prevents internal event from bubbling further
@@ -85,6 +97,7 @@ export class FlyoutMultilevel {
 
   public componentWillLoad(): void {
     this.defineFlyoutMultilevelItemElements();
+    this.updateFlyoutMultiLevelState(undefined, this.activeIdentifier);
   }
 
   public componentDidLoad(): void {
@@ -95,23 +108,11 @@ export class FlyoutMultilevel {
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.defineFlyoutMultilevelItemElements);
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown, name: string): boolean {
-    const shouldUpdate = hasPropValueChanged(newVal, oldVal);
-    if (shouldUpdate && name === 'activeIdentifier' && newVal && oldVal) {
-      const oldItemParent = this.host.querySelector(`[identifier="${oldVal}"]`).parentElement as HTMLElement;
-      const newItemParent = this.host.querySelector(`[identifier="${newVal}"]`).parentElement as HTMLElement;
-      // Whenever the parent changes the primary layer changed
-      if (oldItemParent !== newItemParent) {
-        this.dialog?.classList.remove(animatePrimaryClass);
-        this.dialog?.offsetHeight; /* trigger reflow to restart animation */
-        this.dialog?.classList.add(animatePrimaryClass);
-      }
-    }
-    return shouldUpdate;
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public componentWillRender(): void {
-    syncFlyoutMultilevelItemsProps(this.flyoutMultilevelItemElements, this.activeIdentifier, this.theme, this.host);
     this.dialog?.classList.remove(animateSecondaryClass);
     this.dialog?.offsetHeight; /* trigger reflow to restart animation */
     this.dialog?.classList.add(animateSecondaryClass);
@@ -185,6 +186,20 @@ export class FlyoutMultilevel {
       this.dialog.showModal();
     } else if (isOpen === false && this.dialog.open) {
       this.dialog.close();
+    }
+  }
+
+  private updateFlyoutMultiLevelState(oldVal: string | undefined, newVal: string | undefined): void {
+    const oldItem = oldVal && this.flyoutMultilevelItemElements.find((item) => item.identifier === oldVal);
+    const newItem = newVal && this.flyoutMultilevelItemElements.find((item) => item.identifier === newVal);
+    updateFlyoutMultiLevelState(this.host, oldItem, false); // Reset old state
+    updateFlyoutMultiLevelState(this.host, newItem, true); // Set new state
+    // TODO: Check mobile view
+    // Whenever the hierarchy changes we need to animate the primary side
+    if (newVal && oldVal && oldItem.parentElement !== newItem.parentElement) {
+      this.dialog?.classList.remove(animatePrimaryClass);
+      this.dialog?.offsetHeight; /* trigger reflow to restart animation */
+      this.dialog?.classList.add(animatePrimaryClass);
     }
   }
 }

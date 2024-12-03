@@ -1,5 +1,4 @@
-import { forceUpdate } from '@stencil/core';
-import type { Class, Theme } from '../../../types';
+import type { Class } from '../../../types';
 import { consoleError, getTagNameWithoutPrefix, isElementOfKind } from '../../../utils';
 import type { FlyoutMultilevelItemInternalHTMLProps } from '../flyout-multilevel-item/flyout-multilevel-item-utils';
 
@@ -17,56 +16,42 @@ export type FlyoutMultilevelUpdateEventDetail = FlyoutMultilevelUpdateEvent; // 
 
 export type Item = HTMLPFlyoutMultilevelItemElement & FlyoutMultilevelItemInternalHTMLProps;
 
-export const syncFlyoutMultilevelItemsProps = (
-  items: Item[],
-  activeIdentifier: string | undefined,
-  theme: Theme,
-  host: HTMLElement
+/**
+ * Updates the state of the flyout multilevel and its children based on the provided activeItem and value.
+ *
+ * @param {HTMLElement} host - The root host element of the flyout component.
+ * @param {string | undefined} activeItem - The flyout-multilevel-item element which is currently active (which has the activeIdentifier as identifier). If undefined, updates the root element.
+ * @param {boolean} value - The new state value to apply.
+ * @returns {void}
+ */
+export const updateFlyoutMultiLevelState = (
+  host: HTMLElement,
+  activeItem: HTMLPFlyoutMultilevelItemElement | undefined,
+  value: boolean
 ): void => {
-  if (activeIdentifier) {
-    // TODO: Instead of resetting all items every time, call this function initially and create separate update function
-    (host as HTMLPFlyoutMultilevelElement & { children: HTMLPFlyoutMultilevelItemElement }).primary = false;
-    for (const item of items) {
-      item.primary = false;
-      item.secondary = false;
-      item.cascade = false;
-      item.theme = theme;
-      forceUpdate(item);
-    }
-
-    const activeItem = items.find((it) => it.identifier === activeIdentifier);
-    const activeItemParent = activeItem.parentElement as HTMLPFlyoutMultilevelItemElement;
-    activeItem.secondary = true;
-    activeItemParent.primary = true;
-    forceUpdate(activeItem);
-    forceUpdate(activeItemParent);
-
-    // TODO: Add prefix
-    if (isElementOfKind(activeItemParent, 'p-flyout-multilevel')) {
-      return;
-    }
-
-    const applyCascadeUntilRoot = (item: HTMLPFlyoutMultilevelItemElement): void => {
-      const parent = item.parentElement as HTMLPFlyoutMultilevelItemElement;
-      // TODO: Add prefix
-      if (isElementOfKind(parent, 'p-flyout-multilevel')) {
-        return;
-      }
-      parent.cascade = true;
-      forceUpdate(parent);
-      applyCascadeUntilRoot(parent);
-    };
-
-    applyCascadeUntilRoot(activeItemParent);
+  if (activeItem) {
+    activeItem.secondary = value;
+    traverseTreeAndUpdateState(activeItem.parentElement as HTMLPFlyoutMultilevelItemElement, 'primary', value);
   } else {
-    (host as HTMLPFlyoutMultilevelElement & { children: HTMLPFlyoutMultilevelItemElement }).primary = true;
-    for (const item of items) {
-      item.primary = false;
-      item.secondary = false;
-      item.cascade = false;
-      item.theme = theme;
-      forceUpdate(item);
-    }
+    (host as HTMLPFlyoutMultilevelElement).primary = value;
+  }
+};
+
+/**
+ * Recursively updates the state of a flyout item's parent elements by traversing up the DOM tree.
+ *
+ * @param {HTMLPFlyoutMultilevelItemElement} activeItem - The current flyout item being updated.
+ * @param {'primary' | 'secondary' | 'cascade'} prop - The property of the flyout item to update.
+ * @param {boolean} value - The new state value to apply.
+ */
+export const traverseTreeAndUpdateState = (
+  activeItem: HTMLPFlyoutMultilevelItemElement,
+  prop: 'primary' | 'secondary' | 'cascade',
+  value: boolean
+) => {
+  activeItem[prop] = value;
+  if (isElementOfKind(activeItem.parentElement, 'p-flyout-multilevel-item')) {
+    traverseTreeAndUpdateState(activeItem.parentElement as HTMLPFlyoutMultilevelItemElement, 'cascade', value);
   }
 };
 
