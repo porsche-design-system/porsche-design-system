@@ -182,11 +182,10 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
               content: '""',
               position: 'sticky',
               top: 0,
-              opacity: 0.9,
               gridArea: '1/1/4/-1',
-              background: backgroundColor,
+              background: `linear-gradient(180deg,${backgroundColor} 0%,${backgroundColor} 65%,transparent 100%)`,
               ...prefersColorSchemeDarkMediaQuery(theme, {
-                background: backgroundColorDark,
+                background: `linear-gradient(180deg,${backgroundColorDark} 0%,${backgroundColorDark} 65%,transparent 100%)`,
               }),
             },
           }),

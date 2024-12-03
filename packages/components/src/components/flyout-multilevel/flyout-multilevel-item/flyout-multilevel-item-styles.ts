@@ -1,5 +1,6 @@
 import {
   borderRadiusSmall,
+  headingSmallStyle,
   motionDurationModerate,
   motionEasingBase,
   spacingFluidLarge,
@@ -7,7 +8,6 @@ import {
   spacingFluidSmall,
   spacingFluidXSmall,
   textMediumStyle,
-  textSmallStyle,
 } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
@@ -92,12 +92,12 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           }),
         },
       },
-      h5: {
+      h2: {
         display: 'none',
         [mediaQueryMobile]: {
           ...(isSecondary && {
             display: 'block',
-            ...textSmallStyle,
+            ...headingSmallStyle,
             margin: 0,
             placeSelf: 'center',
             zIndex: 2,
@@ -185,11 +185,10 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
             content: '""',
             position: 'sticky',
             top: 0,
-            opacity: 0.9,
             gridArea: '1/1/4/-1',
-            background: backgroundColor,
+            background: `linear-gradient(180deg,${backgroundColor} 0%,${backgroundColor} 65%,transparent 100%)`,
             ...prefersColorSchemeDarkMediaQuery(theme, {
-              background: backgroundColorDark,
+              background: `linear-gradient(180deg,${backgroundColorDark} 0%,${backgroundColorDark} 65%,transparent 100%)`,
             }),
           },
         }),
