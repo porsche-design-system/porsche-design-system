@@ -5614,6 +5614,9 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   border-color: #D8D8DB !important;
   background: #D8D8DB !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 
 .root {
   --p-internal-text-field-input-padding-start: 16px;
@@ -5751,6 +5754,9 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   border-color: #D8D8DB !important;
   background: #D8D8DB !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 
 .root {
   --p-internal-text-field-input-padding-start: 16px;
@@ -5887,6 +5893,9 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
   background: #D8D8DB !important;
+}
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
 }
 
 .root {
@@ -6186,6 +6195,9 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
   background: #D8D8DB !important;
+}
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
 }
 
 .root {
@@ -17593,6 +17605,9 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
   background: #D8D8DB !important;
+}
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
 }
 
 .root {
