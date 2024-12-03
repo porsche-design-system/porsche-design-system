@@ -142,6 +142,19 @@ export class FlyoutMultilevel {
         onClick={this.onClickDialog}
       >
         <PrefixedTagNames.pButtonPure
+          class="back"
+          type="button"
+          size="small"
+          alignLabel="end"
+          stretch={true}
+          icon="arrow-left"
+          theme={this.theme}
+          hideLabel={true}
+          onClick={() => this.update.emit({ activeIdentifier: undefined })}
+        >
+          Back
+        </PrefixedTagNames.pButtonPure>
+        <PrefixedTagNames.pButtonPure
           class="dismiss"
           type="button"
           size="medium"

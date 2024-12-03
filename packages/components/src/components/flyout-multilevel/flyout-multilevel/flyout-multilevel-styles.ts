@@ -287,6 +287,17 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
         padding: spacingStaticSmall,
       },
     },
+    back: {
+      display: 'none',
+      ...(isSecondaryScrollerVisible && {
+        [mediaQueryMobile]: {
+          display: 'block',
+          gridArea: '2/2',
+          placeSelf: 'center flex-start',
+          zIndex: 2,
+        },
+      }),
+    },
   });
 
   // @starting-style CSS rule is unknown for JSS, therefore we need to extend the CSS string manually

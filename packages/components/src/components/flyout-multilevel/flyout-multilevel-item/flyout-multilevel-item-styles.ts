@@ -227,10 +227,10 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
     },
     back: {
       [mediaQueryMobile]: {
-        ...(!isSecondary && {
+        ...(!isPrimary && {
           display: 'none',
         }),
-        ...(isSecondary && {
+        ...(isPrimary && {
           gridArea: '2/2',
           placeSelf: 'center flex-start',
           zIndex: 2,
