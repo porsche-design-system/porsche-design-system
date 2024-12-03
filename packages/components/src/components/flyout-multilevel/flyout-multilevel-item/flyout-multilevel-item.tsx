@@ -102,8 +102,10 @@ export class FlyoutMultilevelItem {
           {this.label}
         </PrefixedTagNames.pButtonPure>
         <h5>{this.label}</h5>
-        <div class="scroller">
-          <slot ref={(ref: HTMLSlotElement) => (this.slot = ref)} />
+        <div class="drawer">
+          <div class="scroller">
+            <slot ref={(ref: HTMLSlotElement) => (this.slot = ref)} />
+          </div>
         </div>
       </Host>
     );

@@ -22,28 +22,10 @@ import {
 } from '../../../styles';
 import { type Theme, getCss } from '../../../utils';
 import {
-  mediaQueryEnhancedViewMax,
-  mediaQueryEnhancedViewMin,
-  scrollerWidthEnhancedView,
+  mediaQueryDesktop,
+  mediaQueryMobile,
+  scrollerWidthDesktop,
 } from '../flyout-multilevel/flyout-multilevel-styles';
-
-const animationSlideUpPrimary = {
-  from: {
-    paddingBlockStart: spacingFluidMedium,
-  },
-  to: {
-    paddingBlockStart: '0px',
-  },
-};
-
-const animationSlideUpSecondary = {
-  from: {
-    paddingBlockStart: `calc(${spacingFluidMedium} * 2)`,
-  },
-  to: {
-    paddingBlockStart: spacingFluidMedium,
-  },
-};
 
 const animationSlideUpMobile = {
   from: {
@@ -54,42 +36,48 @@ const animationSlideUpMobile = {
   },
 };
 
+const animationSlideUpDesktop = {
+  from: {
+    marginBlockStart: spacingFluidMedium,
+  },
+  to: {
+    marginBlockStart: '0px',
+  },
+};
+
 export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCascade: boolean, theme: Theme): string => {
   const { primaryColor, backgroundColor } = getThemedColors(theme);
   const { primaryColor: primaryColorDark, backgroundColor: backgroundColorDark } = getThemedColors('dark');
   return getCss({
     '@global': {
-      '@keyframes slide-up-primary': animationSlideUpPrimary,
-      '@keyframes slide-up-secondary': animationSlideUpSecondary,
+      '@keyframes slide-up-desktop-primary': animationSlideUpDesktop,
+      '@keyframes slide-up-desktop-secondary': animationSlideUpDesktop,
       '@keyframes slide-up-mobile': animationSlideUpMobile,
       ':host': {
         display: 'contents',
-        // display: isPrimary || isSecondary ? 'grid' : 'contents',
-        // [mediaQueryEnhancedViewMax]: {
-        //   ...((isPrimary || isSecondary) && {
-        //     display: 'contents',
-        //   }),
-        // },
-        // [mediaQueryEnhancedViewMin]: {
-        //   gap: spacingFluidMedium,
-        // },
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
       slot: {
-        ...((isPrimary || isSecondary) && {
-          [mediaQueryEnhancedViewMin]: {
+        display: 'none',
+        [mediaQueryDesktop]: {
+          ...((isPrimary || isSecondary) && {
             display: 'flex',
             flexDirection: 'column',
             gap: spacingFluidXSmall,
-            willChange: 'padding-block-start',
-            animation: `slide-up-${isPrimary ? 'primary' : 'secondary'} ${motionDurationModerate} ${motionEasingBase}`,
-          },
-        }),
-        ...(isSecondary && {
-          [mediaQueryEnhancedViewMax]: {
+            gridArea: '2/2/auto/-2',
+            height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
+            paddingBlockEnd: spacingFluidLarge,
+            animation: `slide-up-desktop-${isPrimary ? 'primary' : 'secondary'} ${motionDurationModerate} ${motionEasingBase}`,
+          }),
+          ...(isCascade && {
+            display: 'contents',
+          }),
+        },
+        [mediaQueryMobile]: {
+          ...(isSecondary && {
             zIndex: 0,
             display: 'flex',
             flexDirection: 'column',
@@ -98,29 +86,15 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
             height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
             paddingBlockEnd: spacingFluidLarge,
             animation: `slide-up-mobile ${motionDurationModerate} ${motionEasingBase}`,
-          },
-          [mediaQueryEnhancedViewMin]: {
-            position: 'fixed', // Fixed to break out of scroll area
-            inset: 0,
-            overflow: 'hidden auto',
-            boxSizing: 'border-box',
-            padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
-            insetInlineStart: scrollerWidthEnhancedView,
-            width: scrollerWidthEnhancedView,
-          },
-        }),
-        ...(isCascade && {
-          display: 'contents',
-        }),
-        ...(!isPrimary &&
-          !isSecondary &&
-          !isCascade && {
-            display: 'none',
           }),
+          ...((isPrimary || isCascade) && {
+            display: 'contents',
+          }),
+        },
       },
       h5: {
         display: 'none',
-        [mediaQueryEnhancedViewMax]: {
+        [mediaQueryMobile]: {
           ...(isSecondary && {
             display: 'block',
             ...textSmallStyle,
@@ -137,7 +111,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           display: 'none',
         },
       }),
-      [mediaQueryEnhancedViewMax]: {
+      [mediaQueryMobile]: {
         ...(isPrimary && {
           '::slotted(*:not([secondary]))': {
             display: 'none',
@@ -175,9 +149,31 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       },
       ...preventFoucOfNestedElementsStyles,
     },
+    // drawer subgrid in combination with scroller grid ensures no content squeezing during slide up animation, potentially caused by scrollbar
+    drawer: {
+      [mediaQueryMobile]: {
+        display: 'none',
+        ...((isPrimary || isSecondary || isCascade) && {
+          display: 'contents',
+        }),
+      },
+      [mediaQueryDesktop]: {
+        display: 'none',
+        ...(isSecondary && {
+          position: 'absolute', // enables to break out of scroll area
+          inset: 0,
+          insetInlineStart: scrollerWidthDesktop,
+          display: 'grid',
+          gridTemplate: `${spacingFluidMedium} minmax(0, 1fr) / ${spacingFluidLarge} minmax(0, 1fr) ${spacingFluidLarge}`,
+        }),
+        ...((isPrimary || isCascade) && {
+          display: 'contents',
+        }),
+      },
+    },
     scroller: {
-      [mediaQueryEnhancedViewMax]: {
-        display: 'contents',
+      [mediaQueryMobile]: {
+        display: 'none',
         ...(isSecondary && {
           display: 'grid',
           gridTemplateRows: 'subgrid',
@@ -197,10 +193,26 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
             }),
           },
         }),
+        ...((isPrimary || isCascade) && {
+          display: 'contents',
+        }),
+      },
+      [mediaQueryDesktop]: {
+        display: 'none',
+        ...(isSecondary && {
+          gridArea: '1/1/-1/-1',
+          display: 'grid',
+          gridTemplateRows: 'subgrid',
+          gridTemplateColumns: 'subgrid',
+          overflow: 'hidden auto',
+        }),
+        ...((isPrimary || isCascade) && {
+          display: 'contents',
+        }),
       },
     },
     button: {
-      [mediaQueryEnhancedViewMax]: {
+      [mediaQueryMobile]: {
         ...(isSecondary && {
           display: 'none',
         }),
@@ -215,7 +227,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
         }),
     },
     back: {
-      [mediaQueryEnhancedViewMax]: {
+      [mediaQueryMobile]: {
         ...(!isSecondary && {
           display: 'none',
         }),
@@ -225,7 +237,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           zIndex: 2,
         }),
       },
-      [mediaQueryEnhancedViewMin]: {
+      [mediaQueryDesktop]: {
         ...(!isPrimary && {
           display: 'none',
         }),

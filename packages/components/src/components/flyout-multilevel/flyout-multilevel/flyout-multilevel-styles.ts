@@ -23,9 +23,10 @@ import {
 } from '../../../styles';
 import { type Theme, getCss } from '../../../utils';
 
-export const scrollerWidthEnhancedView = 'clamp(338px, 210px + 18vw, 640px)';
-export const mediaQueryEnhancedViewMin = getMediaQueryMin('s');
-export const mediaQueryEnhancedViewMax = getMediaQueryMax('s');
+export const scrollerWidthMobile = '100dvw';
+export const scrollerWidthDesktop = 'clamp(338px, 210px + 18vw, 640px)';
+export const mediaQueryMobile = getMediaQueryMax('s');
+export const mediaQueryDesktop = getMediaQueryMin('s');
 
 export const animatePrimaryClass = 'animate-primary';
 export const animateSecondaryClass = 'animate-secondary';
@@ -91,19 +92,23 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
         opacity: 0,
         display: 'grid',
         overflow: 'visible',
-        width: 'auto',
-        maxWidth: '100vw',
+        maxWidth: '100dvw',
         // overlay + display transition duration needs to be in sync with ::backdrop transition duration when dialog gets closed
         // visibility delay ensures no element within dialog is tabbable when dialog is closed
         transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationMap[backdropDurationClose]}), ${getTransition('display', backdropDurationClose, easingClose)} allow-discrete, ${getTransition('overlay', backdropDurationClose, easingClose)} allow-discrete, ${getTransition('opacity', dialogDurationClose, easingClose)}, ${getTransition('transform', dialogDurationClose, easingClose)}`,
         color: primaryColor,
-        background: backgroundColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: primaryColorDark,
-          background: backgroundColorDark,
-        }),
-        gridTemplate: `${spacingFluidSmall} auto ${spacingFluidSmall} minmax(0, 1fr) / ${spacingFluidLarge} auto minmax(0, 1fr) auto ${spacingFluidLarge}`,
-        [mediaQueryEnhancedViewMin]: {
+        [mediaQueryMobile]: {
+          width: scrollerWidthMobile,
+          gridTemplate: `${spacingFluidSmall} auto ${spacingFluidSmall} minmax(0, 1fr) / ${spacingFluidLarge} auto minmax(0, 1fr) auto ${spacingFluidLarge}`,
+          background: backgroundColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            color: primaryColorDark,
+            background: backgroundColorDark,
+          }),
+        },
+        [mediaQueryDesktop]: {
+          width: isSecondaryScrollerVisible ? `calc(${scrollerWidthDesktop} * 2)` : scrollerWidthDesktop,
+          gridTemplate: `${spacingFluidMedium} minmax(0, 1fr) / repeat(${isSecondaryScrollerVisible ? 2 : 1}, ${spacingFluidLarge} minmax(0, 1fr) ${spacingFluidLarge})`,
           background: isSecondaryScrollerVisible
             ? `linear-gradient(90deg, ${backgroundColor} 0%, ${backgroundColor} 50%, ${backgroundSurfaceColor} 50%, ${backgroundSurfaceColor} 100%)`
             : backgroundColor,
@@ -113,9 +118,6 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
               ? `linear-gradient(90deg, ${backgroundColorDark} 0%, ${backgroundColorDark} 50%, ${backgroundSurfaceColorDark} 50%, ${backgroundSurfaceColorDark} 100%)`
               : backgroundColorDark,
           }),
-          gridTemplateColumns: `repeat(${isSecondaryScrollerVisible ? 2 : 1}, ${scrollerWidthEnhancedView}) auto`,
-          gridTemplateRows: '100dvh',
-          insetInlineEnd: 'auto',
           '&::before, &::after': {
             content: '""',
             position: 'relative',
@@ -124,14 +126,14 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
             opacity: 0,
           },
           '&::before': {
-            gridArea: '1/1',
+            gridArea: '1/1/-1/4',
             background: backgroundColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
               background: backgroundColorDark,
             }),
           },
           '&::after': {
-            gridArea: '1/2',
+            gridArea: '1/4/-1/-1',
             backgroundColor: backgroundSurfaceColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
               backgroundColor: backgroundSurfaceColorDark,
@@ -167,18 +169,14 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
         },
       },
       nav: {
-        display: 'grid',
-        gridTemplateRows: 'subgrid',
-        gridTemplateColumns: 'subgrid',
-        gridArea: '1/1/-1/-1',
-        overflow: 'hidden auto',
-        // padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
-        ...(isPrimary &&
-          {
-            // animation: `slide-up-primary ${motionDurationModerate} ${motionEasingBase}`,
-          }),
-        [mediaQueryEnhancedViewMax]: {
+        [mediaQueryMobile]: {
+          display: 'contents',
           ...(!isSecondaryScrollerVisible && {
+            gridArea: '1/1/-1/-1',
+            display: 'grid',
+            gridTemplateRows: 'subgrid',
+            gridTemplateColumns: 'subgrid',
+            overflow: 'hidden auto',
             '&::before': {
               zIndex: 1,
               content: '""',
@@ -192,16 +190,18 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
               }),
             },
           }),
-          ...(isSecondaryScrollerVisible && {
-            display: 'contents',
-          }),
         },
-        [mediaQueryEnhancedViewMin]: {
-          gridArea: '1/1',
+        [mediaQueryDesktop]: {
+          gridArea: '1/1/-1/4',
+          display: 'grid',
+          gridTemplateRows: 'subgrid',
+          gridTemplateColumns: 'subgrid',
+          overflow: 'hidden auto',
         },
       },
-      [mediaQueryEnhancedViewMax]: {
-        slot: {
+      slot: {
+        [mediaQueryMobile]: {
+          display: 'contents',
           ...(!isSecondaryScrollerVisible && {
             zIndex: 0,
             display: 'flex',
@@ -211,36 +211,39 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
             height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
             paddingBlockEnd: spacingFluidLarge,
           }),
-          ...(isSecondaryScrollerVisible && {
-            display: 'contents',
-          }),
         },
-        ...(isSecondaryScrollerVisible && {
+        [mediaQueryDesktop]: {
+          display: 'flex',
+          flexDirection: 'column',
+          gap: isPrimary ? spacingFluidXSmall : spacingFluidMedium,
+          gridArea: '2/2/auto/-2',
+          height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
+          paddingBlockEnd: spacingFluidLarge,
+        },
+      },
+      ...(isSecondaryScrollerVisible && {
+        [mediaQueryMobile]: {
           '::slotted(*:not([primary],[secondary],[cascade]))': {
             display: 'none',
           },
-        }),
-      },
-      [mediaQueryEnhancedViewMin]: {
-        slot: {
-          display: 'flex',
-          flexDirection: 'column',
-          gap: spacingFluidXSmall,
         },
-        // If not primary e.g. root level not visible, hide all siblings of primary or cascade items
-        ...(!isPrimary && {
-          '::slotted(*:not([primary],[cascade]))': {
-            display: 'none',
-          },
-        }),
-      },
+        [mediaQueryDesktop]: {
+          ...(!isPrimary && {
+            '::slotted(*:not([primary],[cascade]))': {
+              display: 'none',
+            },
+          }),
+        },
+      }),
     },
     dismiss: {
-      gridArea: '2/4',
-      zIndex: 2,
-      marginInlineEnd: '-8px', // improve visual alignment and compensate white space of close icon
-      padding: spacingFluidSmall,
-      [mediaQueryEnhancedViewMin]: {
+      [mediaQueryMobile]: {
+        gridArea: '2/4',
+        zIndex: 2,
+        marginInlineEnd: '-8px', // improve visual alignment and compensate white space of close icon
+        padding: spacingFluidSmall,
+      },
+      [mediaQueryDesktop]: {
         '--p-internal-icon-filter': 'invert(1)',
         position: 'absolute',
         left: `calc(100% + ${spacingFluidSmall})`,
