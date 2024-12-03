@@ -2,8 +2,8 @@ import {
   frostedGlassStyle,
   getMediaQueryMax,
   getMediaQueryMin,
+  motionDurationLong,
   motionDurationModerate,
-  motionDurationVeryLong,
   motionEasingBase,
   motionEasingIn,
   spacingFluidLarge,
@@ -221,10 +221,10 @@ export const getComponentCss = (
         },
       },
       [`.${animatePrimaryClass} &::before`]: {
-        animation: `fade-in ${motionDurationVeryLong} ${motionEasingIn}`,
+        animation: `fade-in ${motionDurationLong} ${motionEasingIn}`,
       },
       [`.${animateSecondaryClass} &::after`]: {
-        animation: `fade-in ${motionDurationVeryLong} ${motionEasingIn}`,
+        animation: `fade-in ${motionDurationLong} ${motionEasingIn}`,
       },
     },
     scroller: {
