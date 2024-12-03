@@ -1,4 +1,4 @@
-import { Component, Element, Event, type EventEmitter, h, Host, Prop } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, Host, Prop, State } from '@stencil/core';
 import {
   AllowedTypes,
   applyConstructableStylesheetStyles,
@@ -81,10 +81,18 @@ export class Accordion {
   /** Emitted when accordion state is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<AccordionUpdateEventDetail>;
 
+  @State() private internalOpen: boolean = false;
+
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
   }
 
+  public componentWillLoad(): void {
+    if (this.open !== undefined) {
+      this.internalOpen = this.open;
+    }
+  }
+  
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
@@ -92,7 +100,10 @@ export class Accordion {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     warnIfDeprecatedPropIsUsed<typeof Accordion>(this, 'tag', 'Please use heading-tag prop instead.');
-    attachComponentCss(this.host, getComponentCss, this.size, this.compact, this.open, this.theme, this.sticky);
+
+    const isOpen = this.open ?? this.internalOpen;
+
+    attachComponentCss(this.host, getComponentCss, this.size, this.compact, isOpen, this.theme, this.sticky);
 
     const buttonId = 'accordion-control';
     const contentId = 'accordion-panel';
@@ -106,7 +117,7 @@ export class Accordion {
           <button
             id={buttonId}
             type="button"
-            aria-expanded={this.open ? 'true' : 'false'}
+            aria-expanded={isOpen ? 'true' : 'false'}
             aria-controls={contentId}
             onClick={this.onButtonClick}
           >
@@ -114,7 +125,7 @@ export class Accordion {
             <span class="icon-container">
               <PrefixedTagNames.pIcon
                 class="icon"
-                name={this.open ? 'minus' : 'plus'}
+                name={isOpen ? 'minus' : 'plus'}
                 theme={this.theme}
                 size="xx-small"
                 aria-hidden="true"
@@ -132,7 +143,14 @@ export class Accordion {
   }
 
   private onButtonClick = (): void => {
-    this.update.emit({ open: !this.open });
-    this.accordionChange.emit({ open: !this.open });
+    const isOpen = this.open ?? this.internalOpen;
+    const newOpenState = !isOpen;
+
+    if (this.open === undefined) {
+      this.internalOpen = newOpenState;
+    } else {
+      this.update.emit({ open: newOpenState });
+      this.accordionChange.emit({ open: newOpenState });
+    }
   };
 }
