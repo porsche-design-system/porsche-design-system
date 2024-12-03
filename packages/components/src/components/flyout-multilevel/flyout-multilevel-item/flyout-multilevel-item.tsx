@@ -96,11 +96,15 @@ export class FlyoutMultilevelItem {
           stretch={true}
           icon="arrow-left"
           theme={this.theme}
+          hideLabel={{ base: true, s: false }}
           onClick={() => this.emitInternalUpdateEvent(this.identifier)}
         >
           {this.label}
         </PrefixedTagNames.pButtonPure>
-        <slot ref={(ref: HTMLSlotElement) => (this.slot = ref)} />
+        <h5>{this.label}</h5>
+        <div class="scroller">
+          <slot ref={(ref: HTMLSlotElement) => (this.slot = ref)} />
+        </div>
       </Host>
     );
   }

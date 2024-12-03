@@ -1,5 +1,6 @@
 import {
   frostedGlassStyle,
+  getMediaQueryMax,
   getMediaQueryMin,
   motionDurationModerate,
   motionEasingBase,
@@ -23,7 +24,8 @@ import {
 import { type Theme, getCss } from '../../../utils';
 
 export const scrollerWidthEnhancedView = 'clamp(338px, 210px + 18vw, 640px)';
-export const mediaQueryEnhancedView = getMediaQueryMin('s');
+export const mediaQueryEnhancedViewMin = getMediaQueryMin('s');
+export const mediaQueryEnhancedViewMax = getMediaQueryMax('s');
 
 export const animatePrimaryClass = 'animate-primary';
 export const animateSecondaryClass = 'animate-secondary';
@@ -101,7 +103,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
           background: backgroundColorDark,
         }),
         gridTemplate: `${spacingFluidSmall} auto ${spacingFluidSmall} minmax(0, 1fr) / ${spacingFluidLarge} auto minmax(0, 1fr) auto ${spacingFluidLarge}`,
-        [mediaQueryEnhancedView]: {
+        [mediaQueryEnhancedViewMin]: {
           background: isSecondaryScrollerVisible
             ? `linear-gradient(90deg, ${backgroundColor} 0%, ${backgroundColor} 50%, ${backgroundSurfaceColor} 50%, ${backgroundSurfaceColor} 100%)`
             : backgroundColor,
@@ -171,47 +173,74 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
         gridArea: '1/1/-1/-1',
         overflow: 'hidden auto',
         // padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
-        ...(isPrimary && {
-          animation: `slide-up-primary ${motionDurationModerate} ${motionEasingBase}`,
-        }),
-        '&::before': {
-          zIndex: 1,
-          content: '""',
-          position: 'sticky',
-          top: 0,
-          opacity: 0.9,
-          gridArea: '1/1/4/-1',
-          background: backgroundColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            background: backgroundColorDark,
+        ...(isPrimary &&
+          {
+            // animation: `slide-up-primary ${motionDurationModerate} ${motionEasingBase}`,
+          }),
+        [mediaQueryEnhancedViewMax]: {
+          ...(!isSecondaryScrollerVisible && {
+            '&::before': {
+              zIndex: 1,
+              content: '""',
+              position: 'sticky',
+              top: 0,
+              opacity: 0.9,
+              gridArea: '1/1/4/-1',
+              background: backgroundColor,
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                background: backgroundColorDark,
+              }),
+            },
+          }),
+          ...(isSecondaryScrollerVisible && {
+            display: 'contents',
           }),
         },
-        [mediaQueryEnhancedView]: {
+        [mediaQueryEnhancedViewMin]: {
           gridArea: '1/1',
         },
       },
-      slot: {
-        zIndex: 0,
-        display: 'flex',
-        flexDirection: 'column',
-        gap: spacingFluidXSmall,
-        gridArea: '4/2/auto/-2',
-        height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
-        paddingBlockEnd: spacingFluidLarge,
-      },
-      // If not primary e.g. root level not visible, hide all siblings of primary or cascade items
-      ...(!isPrimary && {
-        '::slotted(*:not([primary],[cascade]))': {
-          display: 'none',
+      [mediaQueryEnhancedViewMax]: {
+        slot: {
+          ...(!isSecondaryScrollerVisible && {
+            zIndex: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: spacingFluidXSmall,
+            gridArea: '4/2/auto/-2',
+            height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
+            paddingBlockEnd: spacingFluidLarge,
+          }),
+          ...(isSecondaryScrollerVisible && {
+            display: 'contents',
+          }),
         },
-      }),
+        ...(isSecondaryScrollerVisible && {
+          '::slotted(*:not([primary],[secondary],[cascade]))': {
+            display: 'none',
+          },
+        }),
+      },
+      [mediaQueryEnhancedViewMin]: {
+        slot: {
+          display: 'flex',
+          flexDirection: 'column',
+          gap: spacingFluidXSmall,
+        },
+        // If not primary e.g. root level not visible, hide all siblings of primary or cascade items
+        ...(!isPrimary && {
+          '::slotted(*:not([primary],[cascade]))': {
+            display: 'none',
+          },
+        }),
+      },
     },
     dismiss: {
       gridArea: '2/4',
       zIndex: 2,
       marginInlineEnd: '-8px', // improve visual alignment and compensate white space of close icon
       padding: spacingFluidSmall,
-      [mediaQueryEnhancedView]: {
+      [mediaQueryEnhancedViewMin]: {
         '--p-internal-icon-filter': 'invert(1)',
         position: 'absolute',
         left: `calc(100% + ${spacingFluidSmall})`,
