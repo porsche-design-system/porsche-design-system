@@ -1,15 +1,19 @@
-import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, type EventEmitter, type JSX, Prop, Watch, h } from '@stencil/core';
+import { getSlottedAnchorStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
+  FORM_STATES,
+  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
-  FORM_STATES,
-  hasPropValueChanged,
-  THEMES,
-  validateProps,
   debounce,
+  hasPropValueChanged,
+  validateProps,
 } from '../../utils';
+import { Label, descriptionId } from '../common/label/label';
+import { StateMessage, messageId } from '../common/state-message/state-message';
+import { getComponentCss } from './textarea-styles';
 import {
   AUTO_COMPLETE,
   TEXTAREA_RESIZE,
@@ -22,10 +26,6 @@ import {
   type TextareaState,
   type TextareaWrap,
 } from './textarea-utils';
-import { messageId, StateMessage } from '../common/state-message/state-message';
-import { descriptionId, Label } from '../common/label/label';
-import { getSlottedAnchorStyles } from '../../styles';
-import { getComponentCss } from './textarea-styles';
 
 const propTypes: PropTypes<typeof Textarea> = {
   label: AllowedTypes.string,
@@ -148,7 +148,7 @@ export class Textarea {
 
   @Watch('value')
   public onValueChange(newValue: string): void {
-    this.internals.setFormValue(newValue);
+    this.internals?.setFormValue(newValue);
   }
 
   @Watch('maxLength')
@@ -171,7 +171,7 @@ export class Textarea {
   }
 
   public formResetCallback(): void {
-    this.internals.setFormValue(this.defaultValue);
+    this.internals?.setFormValue(this.defaultValue);
     this.value = this.defaultValue;
   }
 
@@ -187,14 +187,14 @@ export class Textarea {
     return hasPropValueChanged(newVal, oldVal);
   }
   public componentDidLoad(): void {
-    this.internals.setFormValue(this.value);
+    this.internals?.setFormValue(this.value);
   }
 
   public componentDidRender(): void {
     if (this.hasCounter) {
       this.setCounterAriaTextDebounced();
     }
-    this.internals.setValidity(
+    this.internals?.setValidity(
       this.textAreaElement.validity,
       this.textAreaElement.validationMessage,
       this.textAreaElement

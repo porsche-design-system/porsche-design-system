@@ -160,7 +160,7 @@ export class Select {
 
   @Watch('value')
   public onValueChange(): void {
-    this.internals.setFormValue(this.value);
+    this.internals?.setFormValue(this.value);
     // When setting initial value the watcher gets called before the options are defined
     if (this.selectOptions.length > 0) {
       if (!this.preventOptionUpdate) {
@@ -181,7 +181,7 @@ export class Select {
 
   public componentWillLoad(): void {
     this.defaultValue = this.value;
-    this.internals.setFormValue(this.value);
+    this.internals?.setFormValue(this.value);
     this.updateOptions();
     updateSelectOptions(this.selectOptions, this.value);
   }
@@ -215,7 +215,7 @@ export class Select {
   }
 
   public formResetCallback(): void {
-    this.internals.setFormValue(this.defaultValue);
+    this.internals?.setFormValue(this.defaultValue);
     this.value = this.defaultValue;
   }
 

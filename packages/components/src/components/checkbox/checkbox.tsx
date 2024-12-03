@@ -4,30 +4,30 @@ import {
   Element,
   Event,
   type EventEmitter,
-  h,
   type JSX,
   Listen,
   Prop,
   Watch,
+  h,
 } from '@stencil/core';
+import { getSlottedAnchorStyles } from '../../styles';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
+  FORM_STATES,
+  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
-  FORM_STATES,
   getPrefixedTagNames,
   hasPropValueChanged,
   isDisabledOrLoading,
-  THEMES,
   validateProps,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import { getComponentCss } from './checkbox-styles';
-import type { CheckboxState, CheckboxUpdateEventDetail, CheckboxBlurEventDetail } from './checkbox-utils';
-import { messageId, StateMessage } from '../common/state-message/state-message';
-import { descriptionId, Label } from '../common/label/label';
+import { Label, descriptionId } from '../common/label/label';
 import { LoadingMessage } from '../common/loading-message/loading-message';
-import { getSlottedAnchorStyles } from '../../styles';
+import { StateMessage, messageId } from '../common/state-message/state-message';
+import { getComponentCss } from './checkbox-styles';
+import type { CheckboxBlurEventDetail, CheckboxState, CheckboxUpdateEventDetail } from './checkbox-utils';
 
 const propTypes: PropTypes<typeof Checkbox> = {
   label: AllowedTypes.string,
@@ -127,7 +127,7 @@ export class Checkbox {
 
   @Watch('value')
   public onValueChange(newValue: string): void {
-    this.internals.setFormValue(this.checkboxInputElement?.checked ? newValue : undefined);
+    this.internals?.setFormValue(this.checkboxInputElement?.checked ? newValue : undefined);
   }
 
   @Watch('indeterminate')
@@ -139,7 +139,7 @@ export class Checkbox {
 
   @Watch('checked')
   public onCheckedChange(newValue: boolean): void {
-    this.internals.setFormValue(newValue ? this.value : undefined);
+    this.internals?.setFormValue(newValue ? this.value : undefined);
   }
 
   public connectedCallback(): void {
@@ -159,7 +159,7 @@ export class Checkbox {
   public componentDidLoad(): void {
     this.checkboxInputElement.indeterminate = this.indeterminate;
     if (this.checkboxInputElement.checked) {
-      this.internals.setFormValue(this.value);
+      this.internals?.setFormValue(this.value);
     }
   }
 
@@ -170,7 +170,7 @@ export class Checkbox {
   }
 
   public formResetCallback(): void {
-    this.internals.setFormValue(this.defaultChecked ? this.value : undefined);
+    this.internals?.setFormValue(this.defaultChecked ? this.value : undefined);
     this.checked = this.defaultChecked;
   }
 
@@ -186,7 +186,7 @@ export class Checkbox {
     // Skip validation if the checkbox is disabled; it's ignored in form validation
     // and always has an empty validationMessage, even if some ValidityState flags are true.
     if (!this.disabled) {
-      this.internals.setValidity(
+      this.internals?.setValidity(
         this.checkboxInputElement.validity,
         this.checkboxInputElement.validationMessage,
         this.checkboxInputElement
@@ -257,7 +257,7 @@ export class Checkbox {
   private onChange = (e: Event): void => {
     const checked = (e.target as HTMLInputElement).checked;
     this.checked = checked;
-    this.internals.setFormValue(checked ? this.value : undefined);
+    this.internals?.setFormValue(checked ? this.value : undefined);
     this.update.emit({
       value: this.value,
       name: this.name,

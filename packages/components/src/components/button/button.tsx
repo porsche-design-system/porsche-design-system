@@ -104,7 +104,7 @@ export class Button {
       return;
     }
 
-    if (this.form && this.internals.form) {
+    if (this.form && this.internals?.form) {
       e.preventDefault();
       if (this.type === 'submit') {
         this.internals.form.requestSubmit();
@@ -116,7 +116,7 @@ export class Button {
 
   @Watch('value')
   public onValueChange(newValue: string): void {
-    this.internals.setFormValue(newValue);
+    this.internals?.setFormValue(newValue);
   }
 
   public connectedCallback(): void {
@@ -124,7 +124,7 @@ export class Button {
   }
 
   public componentWillLoad(): void {
-    this.internals.setFormValue(this.value);
+    this.internals?.setFormValue(this.value);
     this.initialLoading = this.loading;
   }
 
