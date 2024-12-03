@@ -7,6 +7,7 @@ import {
   spacingFluidMedium,
   spacingFluidSmall,
   spacingFluidXSmall,
+  spacingStaticMedium,
   textMediumStyle,
 } from '@porsche-design-system/styles';
 import {
@@ -27,32 +28,23 @@ import {
   scrollerWidthDesktop,
 } from '../flyout-multilevel/flyout-multilevel-styles';
 
-const animationSlideUpMobile = {
-  from: {
-    transform: `translate3d(0,${spacingFluidMedium},0)`,
-  },
-  to: {
-    transform: 'translate3d(0,0,0)',
-  },
-};
-
-const animationSlideUpDesktop = {
-  from: {
-    marginBlockStart: spacingFluidMedium,
-  },
-  to: {
-    marginBlockStart: '0px',
-  },
-};
-
 export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCascade: boolean, theme: Theme): string => {
   const { primaryColor, backgroundColor } = getThemedColors(theme);
   const { primaryColor: primaryColorDark, backgroundColor: backgroundColorDark } = getThemedColors('dark');
   return getCss({
     '@global': {
-      '@keyframes slide-up-desktop-primary': animationSlideUpDesktop,
-      '@keyframes slide-up-desktop-secondary': animationSlideUpDesktop,
-      '@keyframes slide-up-mobile': animationSlideUpMobile,
+      '@keyframes slide-up-mobile': {
+        from: { transform: `translate3d(0,${spacingFluidMedium},0)` },
+        to: { transform: 'translate3d(0,0,0)' },
+      },
+      '@keyframes slide-up-desktop-primary': {
+        from: { marginBlockStart: spacingFluidMedium },
+        to: { marginBlockStart: '0px' },
+      },
+      '@keyframes slide-up-desktop-secondary': {
+        from: { marginBlockStart: spacingFluidMedium },
+        to: { marginBlockStart: '0px' },
+      },
       ':host': {
         display: 'contents',
         ...addImportantToEachRule({
@@ -98,12 +90,18 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
         display: 'none',
         [mediaQueryMobile]: {
           ...(isSecondary && {
-            display: 'block',
             ...headingSmallStyle,
-            margin: 0,
+            display: 'block',
+            gridArea: '2/3',
             placeSelf: 'center',
             zIndex: 2,
-            gridArea: '2/3',
+            margin: 0,
+            paddingInline: spacingStaticMedium,
+            maxWidth: '100%',
+            boxSizing: 'border-box',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
           }),
         },
       },
@@ -113,13 +111,13 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           display: 'none',
         },
       }),
-      [mediaQueryMobile]: {
-        ...(isPrimary && {
-          '::slotted(*:not([secondary]))': {
+      ...(isPrimary && {
+        '::slotted(*:not([secondary]))': {
+          [mediaQueryMobile]: {
             display: 'none',
           },
-        }),
-      },
+        },
+      }),
       '::slotted': {
         '&(a)': {
           ...{
@@ -166,7 +164,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           inset: 0,
           insetInlineStart: scrollerWidthDesktop,
           display: 'grid',
-          gridTemplate: `${spacingFluidMedium} minmax(0, 1fr) / ${spacingFluidLarge} minmax(0, 1fr) ${spacingFluidLarge}`,
+          gridTemplate: `${spacingFluidMedium} minmax(0, 1fr)/${spacingFluidLarge} minmax(0, 1fr) ${spacingFluidLarge}`,
         }),
         ...((isPrimary || isCascade) && {
           display: 'contents',
@@ -182,6 +180,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           gridTemplateColumns: 'subgrid',
           gridArea: '1/1/-1/-1',
           overflow: 'hidden auto',
+          overscrollBehaviorY: 'none',
           '&::before': {
             zIndex: 1,
             content: '""',
@@ -206,6 +205,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           gridTemplateRows: 'subgrid',
           gridTemplateColumns: 'subgrid',
           overflow: 'hidden auto',
+          overscrollBehaviorY: 'none',
         }),
         ...((isPrimary || isCascade) && {
           display: 'contents',
@@ -213,14 +213,14 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       },
     },
     button: {
+      ...((isPrimary || isCascade) && {
+        display: 'none',
+      }),
       [mediaQueryMobile]: {
         ...(isSecondary && {
           display: 'none',
         }),
       },
-      ...((isPrimary || isCascade) && {
-        display: 'none',
-      }),
       ...(!isPrimary &&
         !isCascade && {
           padding: spacingFluidSmall,
@@ -228,25 +228,20 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
         }),
     },
     back: {
-      [mediaQueryMobile]: {
-        ...(!isPrimary && {
-          display: 'none',
-        }),
-        ...(isPrimary && {
+      ...(!isPrimary && {
+        display: 'none',
+      }),
+      ...(isPrimary && {
+        [mediaQueryMobile]: {
           gridArea: '2/2',
           placeSelf: 'center flex-start',
           zIndex: 2,
-        }),
-      },
-      [mediaQueryDesktop]: {
-        ...(!isPrimary && {
-          display: 'none',
-        }),
-        ...(isPrimary && {
+        },
+        [mediaQueryDesktop]: {
           width: 'fit-content',
           marginInlineStart: '-4px', // improve visual alignment and compensate white space of arrow-left icon
-        }),
-      },
+        },
+      }),
     },
   });
 };

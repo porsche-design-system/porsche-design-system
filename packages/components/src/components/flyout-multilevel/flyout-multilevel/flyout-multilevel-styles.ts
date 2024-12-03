@@ -2,8 +2,10 @@ import {
   frostedGlassStyle,
   getMediaQueryMax,
   getMediaQueryMin,
+  motionDurationLong,
   motionDurationModerate,
   motionEasingBase,
+  motionEasingIn,
   spacingFluidLarge,
   spacingFluidMedium,
   spacingFluidSmall,
@@ -24,40 +26,12 @@ import {
 } from '../../../styles';
 import { type Theme, getCss } from '../../../utils';
 
-export const scrollerWidthMobile = '100dvw';
 export const scrollerWidthDesktop = 'clamp(338px, 210px + 18vw, 640px)';
 export const mediaQueryMobile = getMediaQueryMax('s');
 export const mediaQueryDesktop = getMediaQueryMin('s');
 
 export const animatePrimaryClass = 'animate-primary';
 export const animateSecondaryClass = 'animate-secondary';
-
-const animationSlideUpMobile = {
-  from: {
-    transform: `translate3d(0,${spacingFluidMedium},0)`,
-  },
-  to: {
-    transform: 'translate3d(0,0,0)',
-  },
-};
-
-const animationSlideUpDesktop = {
-  from: {
-    marginBlockStart: spacingFluidMedium,
-  },
-  to: {
-    marginBlockStart: '0px',
-  },
-};
-
-const animationFadeIn = {
-  from: {
-    opacity: 1,
-  },
-  to: {
-    opacity: 0,
-  },
-};
 
 const dialogDurationOpen = 'moderate';
 const backdropDurationOpen = 'long';
@@ -66,7 +40,12 @@ const dialogDurationClose = 'short';
 const backdropDurationClose = 'moderate';
 const easingClose = 'out';
 
-export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: boolean, theme: Theme): string => {
+export const getComponentCss = (
+  isOpen: boolean,
+  isPrimary: boolean,
+  isSecondaryScrollerVisible: boolean,
+  theme: Theme
+): string => {
   const { primaryColor, backgroundColor, backgroundSurfaceColor, backgroundShadingColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
@@ -75,11 +54,23 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
     backgroundShadingColor: backgroundShadingColorDark,
   } = getThemedColors('dark');
 
-  const style = getCss({
+  return getCss({
     '@global': {
-      '@keyframes slide-up-mobile': animationSlideUpMobile,
-      '@keyframes slide-up-desktop': animationSlideUpDesktop,
-      '@keyframes fade-in': animationFadeIn,
+      '@keyframes slide-up-mobile': {
+        from: { transform: `translate3d(0,${spacingFluidMedium},0)` },
+        to: { transform: 'translate3d(0,0,0)' },
+      },
+      // unfortunately, it's not possible to use transform animation like in mobile view
+      // because then a new stacking context within scroll container would be initialized
+      // causing the slotted scroll container to become invisible
+      '@keyframes slide-up-desktop': {
+        from: { marginBlockStart: spacingFluidMedium },
+        to: { marginBlockStart: '0px' },
+      },
+      '@keyframes fade-in': {
+        from: { opacity: 1 },
+        to: { opacity: 0 },
+      },
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
@@ -89,115 +80,31 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
       },
       ...preventFoucOfNestedElementsStyles,
       dialog: {
+        all: 'unset',
         position: 'fixed',
         inset: 0,
-        zIndex: 9999999, // fallback when dialog isn't rendered on #top-layer, e.g. relevant in ssr context
-        height: '100dvh',
-        maxHeight: '100dvh',
-        margin: 0,
-        padding: 0,
-        border: 0,
-        visibility: 'hidden',
-        outline: 0,
-        transform: 'translate3d(-100%, 0, 0)',
-        opacity: 0,
-        display: 'grid',
-        overflow: 'visible',
-        maxWidth: '100dvw',
-        // overlay + display transition duration needs to be in sync with ::backdrop transition duration when dialog gets closed
-        // visibility delay ensures no element within dialog is tabbable when dialog is closed
-        transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationMap[backdropDurationClose]}), ${getTransition('display', backdropDurationClose, easingClose)} allow-discrete, ${getTransition('overlay', backdropDurationClose, easingClose)} allow-discrete, ${getTransition('opacity', dialogDurationClose, easingClose)}, ${getTransition('transform', dialogDurationClose, easingClose)}`,
-        color: primaryColor,
-        [mediaQueryMobile]: {
-          width: scrollerWidthMobile,
-          gridTemplate: `${spacingFluidSmall} auto ${spacingFluidMedium} minmax(0, 1fr) / ${spacingFluidLarge} auto minmax(0, 1fr) auto ${spacingFluidLarge}`,
-          background: backgroundColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: primaryColorDark,
-            background: backgroundColorDark,
-          }),
-          '&::before, &::after': {
-            content: '""',
-            position: 'relative',
-            zIndex: 2,
-            pointerEvents: 'none',
-            opacity: 0,
-          },
-          '&::before': {
-            gridArea: '1/1/-1/-1',
-            background: backgroundColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              background: backgroundColorDark,
+        zIndex: 999999999, // fallback when dialog isn't rendered on #top-layer, e.g. relevant in ssr context or fade-out transition in Safari or Firefox
+        outline: 0, // prevents outline in case dialog becomes focusable
+        color: primaryColor, // enables color inheritance for slotted content
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: primaryColorDark,
+        }),
+        ...(isOpen
+          ? {
+              visibility: 'inherit',
+              ...frostedGlassStyle,
+              background: backgroundShadingColor,
+              transition: `${getTransition('background', backdropDurationOpen, easingOpen)}, ${getTransition('backdrop-filter', backdropDurationOpen, easingOpen)}, ${getTransition('-webkit-backdrop-filter', backdropDurationOpen, easingOpen)}`,
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                background: backgroundShadingColorDark,
+              }),
+            }
+          : {
+              visibility: 'hidden',
+              transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationMap[backdropDurationClose]}), ${getTransition('overlay', backdropDurationClose, easingClose)} allow-discrete, ${getTransition('background', backdropDurationClose, easingClose)}, ${getTransition('backdrop-filter', backdropDurationClose, easingClose)}, ${getTransition('-webkit-backdrop-filter', backdropDurationClose, easingClose)}`,
             }),
-          },
-          '&::after': {
-            gridArea: '1/1/-1/-1',
-            backgroundColor: backgroundColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              backgroundColor: backgroundColorDark,
-            }),
-          },
-        },
-        [mediaQueryDesktop]: {
-          width: isSecondaryScrollerVisible ? `calc(${scrollerWidthDesktop} * 2)` : scrollerWidthDesktop,
-          gridTemplate: `${spacingFluidMedium} minmax(0, 1fr) / repeat(${isSecondaryScrollerVisible ? 2 : 1}, ${spacingFluidLarge} minmax(0, 1fr) ${spacingFluidLarge})`,
-          background: isSecondaryScrollerVisible
-            ? `linear-gradient(90deg, ${backgroundColor} 0%, ${backgroundColor} 50%, ${backgroundSurfaceColor} 50%, ${backgroundSurfaceColor} 100%)`
-            : backgroundColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: primaryColorDark,
-            background: isSecondaryScrollerVisible
-              ? `linear-gradient(90deg, ${backgroundColorDark} 0%, ${backgroundColorDark} 50%, ${backgroundSurfaceColorDark} 50%, ${backgroundSurfaceColorDark} 100%)`
-              : backgroundColorDark,
-          }),
-          '&::before, &::after': {
-            content: '""',
-            position: 'relative',
-            zIndex: 2,
-            pointerEvents: 'none',
-            opacity: 0,
-          },
-          '&::before': {
-            gridArea: '1/1/-1/4',
-            background: backgroundColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              background: backgroundColorDark,
-            }),
-          },
-          '&::after': {
-            gridArea: '1/4/-1/-1',
-            backgroundColor: backgroundSurfaceColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              backgroundColor: backgroundSurfaceColorDark,
-            }),
-          },
-        },
         '&::backdrop': {
-          background: backgroundShadingColor,
-          opacity: 0,
-          WebkitBackdropFilter: 'blur(0px)',
-          backdropFilter: 'blur(0px)',
-          transition: `${getTransition('display', backdropDurationClose, easingClose)} allow-discrete, ${getTransition('overlay', backdropDurationClose, easingClose)} allow-discrete, ${getTransition('opacity', backdropDurationClose, easingClose)}, ${getTransition('backdrop-filter', backdropDurationClose, easingClose)}, ${getTransition('-webkit-backdrop-filter', backdropDurationClose, easingClose)}`,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            background: backgroundShadingColorDark,
-          }),
-        },
-        '&[open]': {
-          transform: 'translate3d(0, 0, 0)',
-          opacity: 1,
-          visibility: 'inherit',
-          transition: `${getTransition('opacity', dialogDurationOpen, easingOpen)}, ${getTransition('transform', dialogDurationOpen, easingOpen)}`,
-          '&::backdrop': {
-            opacity: 1,
-            ...frostedGlassStyle,
-            transition: `${getTransition('opacity', backdropDurationOpen, easingOpen)}, ${getTransition('backdrop-filter', backdropDurationOpen, easingOpen)}, ${getTransition('-webkit-backdrop-filter', backdropDurationOpen, easingOpen)}`,
-          },
-        },
-        [`&.${animatePrimaryClass}::before`]: {
-          animation: `fade-in ${motionDurationModerate} ${motionEasingBase}`,
-        },
-        [`&.${animateSecondaryClass}::after`]: {
-          animation: `fade-in ${motionDurationModerate} ${motionEasingBase}`,
+          display: 'none',
         },
       },
       slot: {
@@ -229,19 +136,86 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
         },
       },
       ...(isSecondaryScrollerVisible && {
-        [mediaQueryMobile]: {
-          '::slotted(*:not([primary],[secondary],[cascade]))': {
+        '::slotted(*:not([primary],[secondary],[cascade]))': {
+          [mediaQueryMobile]: {
             display: 'none',
           },
         },
-        [mediaQueryDesktop]: {
-          ...(!isPrimary && {
-            '::slotted(*:not([primary],[cascade]))': {
+        '::slotted(*:not([primary],[cascade]))': {
+          [mediaQueryDesktop]: {
+            ...(!isPrimary && {
               display: 'none',
-            },
-          }),
+            }),
+          },
         },
       }),
+    },
+    drawer: {
+      position: 'absolute',
+      inset: 0,
+      display: 'grid',
+      background: backgroundColor,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        background: backgroundColorDark,
+      }),
+      ...(isOpen
+        ? {
+            opacity: 1,
+            transform: 'translate3d(0,0,0)',
+            transition: `${getTransition('opacity', dialogDurationOpen, easingOpen)}, ${getTransition('transform', dialogDurationOpen, easingOpen)}`,
+          }
+        : {
+            opacity: 0,
+            transform: 'translate3d(-100%,0,0)',
+            transition: `${getTransition('opacity', dialogDurationClose, easingClose)}, ${getTransition('transform', dialogDurationClose, easingClose)}`,
+          }),
+      [mediaQueryMobile]: {
+        gridTemplate: `${spacingFluidMedium} auto ${spacingFluidLarge} minmax(0, 1fr)/${spacingFluidLarge} auto minmax(0, 1fr) auto ${spacingFluidLarge}`,
+      },
+      [mediaQueryDesktop]: {
+        width: isSecondaryScrollerVisible ? `calc(${scrollerWidthDesktop} * 2)` : scrollerWidthDesktop,
+        gridTemplate: `${spacingFluidMedium} minmax(0, 1fr)/repeat(${isSecondaryScrollerVisible ? 2 : 1}, ${spacingFluidLarge} minmax(0, 1fr) ${spacingFluidLarge})`,
+        ...(isSecondaryScrollerVisible && {
+          background: `linear-gradient(90deg,${backgroundColor} 0%,${backgroundColor} 50%,${backgroundSurfaceColor} 50%,${backgroundSurfaceColor} 100%)`,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            background: `linear-gradient(90deg,${backgroundColorDark} 0%,${backgroundColorDark} 50%,${backgroundSurfaceColorDark} 50%,${backgroundSurfaceColorDark} 100%)`,
+          }),
+        }),
+      },
+      '&::before, &::after': {
+        content: '""',
+        position: 'relative',
+        zIndex: 2,
+        pointerEvents: 'none',
+        opacity: 0,
+        background: backgroundColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          background: backgroundColorDark,
+        }),
+        [mediaQueryMobile]: {
+          gridArea: '1/1/-1/-1',
+        },
+      },
+      '&::before': {
+        [mediaQueryDesktop]: {
+          gridArea: '1/1/-1/4',
+        },
+      },
+      '&::after': {
+        [mediaQueryDesktop]: {
+          gridArea: '1/4/-1/-1',
+          background: backgroundSurfaceColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            background: backgroundSurfaceColorDark,
+          }),
+        },
+      },
+      [`.${animatePrimaryClass} &::before`]: {
+        animation: `fade-in ${motionDurationLong} ${motionEasingIn}`,
+      },
+      [`.${animateSecondaryClass} &::after`]: {
+        animation: `fade-in ${motionDurationLong} ${motionEasingIn}`,
+      },
     },
     scroller: {
       [mediaQueryMobile]: {
@@ -252,12 +226,13 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
           gridTemplateRows: 'subgrid',
           gridTemplateColumns: 'subgrid',
           overflow: 'hidden auto',
+          overscrollBehaviorY: 'none',
           '&::before': {
-            zIndex: 1,
             content: '""',
             position: 'sticky',
             top: 0,
             gridArea: '1/1/4/-1',
+            zIndex: 1,
             background: `linear-gradient(180deg,${backgroundColor} 0%,${backgroundColor} 65%,transparent 100%)`,
             ...prefersColorSchemeDarkMediaQuery(theme, {
               background: `linear-gradient(180deg,${backgroundColorDark} 0%,${backgroundColorDark} 65%,transparent 100%)`,
@@ -271,6 +246,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
         gridTemplateRows: 'subgrid',
         gridTemplateColumns: 'subgrid',
         overflow: 'hidden auto',
+        overscrollBehaviorY: 'none',
       },
     },
     'dismiss-mobile': {
@@ -308,23 +284,4 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
       }),
     },
   });
-
-  // @starting-style CSS rule is unknown for JSS, therefore we need to extend the CSS string manually
-  const startingStyle = `
-    @starting-style {
-      dialog[open] {
-        transform: translate3d(-100%, 0, 0);
-        opacity: 0;
-        visibility: hidden;
-
-        &::backdrop {
-          opacity: 0;
-          -webkit-backdrop-filter: blur(0px);
-          backdrop-filter: blur(0px);
-        }
-      }
-    }
-  `;
-
-  return style + startingStyle;
 };
