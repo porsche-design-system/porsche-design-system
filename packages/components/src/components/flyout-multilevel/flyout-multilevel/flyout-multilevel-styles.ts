@@ -105,6 +105,27 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
             color: primaryColorDark,
             background: backgroundColorDark,
           }),
+          '&::before, &::after': {
+            content: '""',
+            position: 'relative',
+            zIndex: 2,
+            pointerEvents: 'none',
+            opacity: 0,
+          },
+          '&::before': {
+            gridArea: '1/1/-1/-1',
+            background: backgroundColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              background: backgroundColorDark,
+            }),
+          },
+          '&::after': {
+            gridArea: '1/1/-1/-1',
+            backgroundColor: backgroundColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              backgroundColor: backgroundColorDark,
+            }),
+          },
         },
         [mediaQueryDesktop]: {
           width: isSecondaryScrollerVisible ? `calc(${scrollerWidthDesktop} * 2)` : scrollerWidthDesktop,
