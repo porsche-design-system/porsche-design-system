@@ -154,8 +154,19 @@ export class FlyoutMultilevel {
         >
           Back
         </PrefixedTagNames.pButtonPure>
+        <PrefixedTagNames.pButton
+          class="dismiss-mobile"
+          type="button"
+          variant="ghost"
+          hideLabel={true}
+          icon="close"
+          theme={this.theme}
+          onClick={this.dismissDialog}
+        >
+          Dismiss flyout
+        </PrefixedTagNames.pButton>
         <PrefixedTagNames.pButtonPure
-          class="dismiss"
+          class="dismiss-desktop"
           type="button"
           size="medium"
           icon="close"

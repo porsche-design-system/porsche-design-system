@@ -14,6 +14,7 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   cssVariableTransitionDuration,
+  dismissButtonJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -109,7 +110,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
         color: primaryColor,
         [mediaQueryMobile]: {
           width: scrollerWidthMobile,
-          gridTemplate: `${spacingFluidSmall} auto ${spacingFluidSmall} minmax(0, 1fr) / ${spacingFluidLarge} auto minmax(0, 1fr) auto ${spacingFluidLarge}`,
+          gridTemplate: `${spacingFluidSmall} auto ${spacingFluidMedium} minmax(0, 1fr) / ${spacingFluidLarge} auto minmax(0, 1fr) auto ${spacingFluidLarge}`,
           background: backgroundColor,
           ...prefersColorSchemeDarkMediaQuery(theme, {
             color: primaryColorDark,
@@ -272,12 +273,20 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
         overflow: 'hidden auto',
       },
     },
-    dismiss: {
+    'dismiss-mobile': {
       [mediaQueryMobile]: {
+        ...dismissButtonJssStyle,
         gridArea: '2/4',
-        zIndex: 2,
-        marginInlineEnd: '-8px', // improve visual alignment and compensate white space of close icon
-        padding: spacingFluidSmall,
+        zIndex: 3, // ensures dismiss button is on top of opacity animation handled by ::before/::after
+        marginInlineEnd: '-1px', // improve visual alignment and compensate white space of close icon
+      },
+      [mediaQueryDesktop]: {
+        display: 'none',
+      },
+    },
+    'dismiss-desktop': {
+      [mediaQueryMobile]: {
+        display: 'none',
       },
       [mediaQueryDesktop]: {
         '--p-internal-icon-filter': 'invert(1)',
