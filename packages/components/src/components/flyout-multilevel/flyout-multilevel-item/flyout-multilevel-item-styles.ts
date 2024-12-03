@@ -62,20 +62,6 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       },
       slot: {
         display: 'none',
-        [mediaQueryDesktop]: {
-          ...((isPrimary || isSecondary) && {
-            display: 'flex',
-            flexDirection: 'column',
-            gap: spacingFluidXSmall,
-            gridArea: '2/2/auto/-2',
-            height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
-            paddingBlockEnd: spacingFluidLarge,
-            animation: `slide-up-desktop-${isPrimary ? 'primary' : 'secondary'} ${motionDurationModerate} ${motionEasingBase}`,
-          }),
-          ...(isCascade && {
-            display: 'contents',
-          }),
-        },
         [mediaQueryMobile]: {
           ...(isSecondary && {
             zIndex: 0,
@@ -88,6 +74,22 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
             animation: `slide-up-mobile ${motionDurationModerate} ${motionEasingBase}`,
           }),
           ...((isPrimary || isCascade) && {
+            display: 'contents',
+          }),
+        },
+        [mediaQueryDesktop]: {
+          ...((isPrimary || isSecondary) && {
+            display: 'flex',
+            flexDirection: 'column',
+            gap: spacingFluidXSmall,
+            height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
+            animation: `slide-up-desktop-${isPrimary ? 'primary' : 'secondary'} ${motionDurationModerate} ${motionEasingBase}`,
+          }),
+          ...(isSecondary && {
+            gridArea: '2/2/auto/-2',
+            paddingBlockEnd: spacingFluidLarge,
+          }),
+          ...(isCascade && {
             display: 'contents',
           }),
         },
