@@ -199,36 +199,6 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
           animation: `fade-in ${motionDurationModerate} ${motionEasingBase}`,
         },
       },
-      nav: {
-        [mediaQueryMobile]: {
-          display: 'contents',
-          ...(!isSecondaryScrollerVisible && {
-            gridArea: '1/1/-1/-1',
-            display: 'grid',
-            gridTemplateRows: 'subgrid',
-            gridTemplateColumns: 'subgrid',
-            overflow: 'hidden auto',
-            '&::before': {
-              zIndex: 1,
-              content: '""',
-              position: 'sticky',
-              top: 0,
-              gridArea: '1/1/4/-1',
-              background: `linear-gradient(180deg,${backgroundColor} 0%,${backgroundColor} 65%,transparent 100%)`,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                background: `linear-gradient(180deg,${backgroundColorDark} 0%,${backgroundColorDark} 65%,transparent 100%)`,
-              }),
-            },
-          }),
-        },
-        [mediaQueryDesktop]: {
-          gridArea: '1/1/-1/4',
-          display: 'grid',
-          gridTemplateRows: 'subgrid',
-          gridTemplateColumns: 'subgrid',
-          overflow: 'hidden auto',
-        },
-      },
       slot: {
         [mediaQueryMobile]: {
           display: 'contents',
@@ -271,6 +241,36 @@ export const getComponentCss = (isPrimary: boolean, isSecondaryScrollerVisible: 
           }),
         },
       }),
+    },
+    scroller: {
+      [mediaQueryMobile]: {
+        display: 'contents',
+        ...(!isSecondaryScrollerVisible && {
+          gridArea: '1/1/-1/-1',
+          display: 'grid',
+          gridTemplateRows: 'subgrid',
+          gridTemplateColumns: 'subgrid',
+          overflow: 'hidden auto',
+          '&::before': {
+            zIndex: 1,
+            content: '""',
+            position: 'sticky',
+            top: 0,
+            gridArea: '1/1/4/-1',
+            background: `linear-gradient(180deg,${backgroundColor} 0%,${backgroundColor} 65%,transparent 100%)`,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              background: `linear-gradient(180deg,${backgroundColorDark} 0%,${backgroundColorDark} 65%,transparent 100%)`,
+            }),
+          },
+        }),
+      },
+      [mediaQueryDesktop]: {
+        gridArea: '1/1/-1/4',
+        display: 'grid',
+        gridTemplateRows: 'subgrid',
+        gridTemplateColumns: 'subgrid',
+        overflow: 'hidden auto',
+      },
     },
     dismiss: {
       [mediaQueryMobile]: {

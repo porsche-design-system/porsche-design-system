@@ -136,8 +136,8 @@ export class FlyoutMultilevel {
 
     return (
       <dialog
-        tabIndex={-1} // dialog always has a dismiss button to be focused
         ref={(ref) => (this.dialog = ref)}
+        {...parseAndGetAriaAttributes(this.aria)}
         onCancel={this.onCancelDialog}
         onClick={this.onClickDialog}
       >
@@ -165,9 +165,9 @@ export class FlyoutMultilevel {
         >
           Dismiss flyout
         </PrefixedTagNames.pButtonPure>
-        <nav {...parseAndGetAriaAttributes(this.aria)}>
+        <div class="scroller">
           <slot />
-        </nav>
+        </div>
       </dialog>
     );
   }
