@@ -137,9 +137,9 @@ export class ButtonPure {
     if (this.form && this.internals?.form) {
       e.preventDefault();
       if (this.type === 'submit') {
-        this.internals.form.requestSubmit();
+        this.internals?.form.requestSubmit();
       } else if (this.type === 'reset') {
-        this.internals.form.reset();
+        this.internals?.form.reset();
       }
     }
   }

@@ -267,7 +267,7 @@ export class PinCode {
       target.value = '';
       this.updateValue(getConcatenatedInputValues(this.inputElements));
     } else if (key === 'Enter') {
-      if (this.internals?.form && isFormSubmittable(this.host, this.internals.form)) {
+      if (this.internals?.form && isFormSubmittable(this.host, this.internals?.form)) {
         this.internals?.form.requestSubmit();
       }
     }
