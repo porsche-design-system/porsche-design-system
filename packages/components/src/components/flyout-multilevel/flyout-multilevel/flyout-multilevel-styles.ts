@@ -2,8 +2,8 @@ import {
   frostedGlassStyle,
   getMediaQueryMax,
   getMediaQueryMin,
-  motionDurationLong,
   motionDurationModerate,
+  motionDurationVeryLong,
   motionEasingBase,
   motionEasingIn,
   spacingFluidLarge,
@@ -46,9 +46,8 @@ export const getComponentCss = (
   isSecondaryScrollerVisible: boolean,
   theme: Theme
 ): string => {
-  const { primaryColor, backgroundColor, backgroundSurfaceColor, backgroundShadingColor } = getThemedColors(theme);
+  const { backgroundColor, backgroundSurfaceColor, backgroundShadingColor } = getThemedColors(theme);
   const {
-    primaryColor: primaryColorDark,
     backgroundColor: backgroundColorDark,
     backgroundSurfaceColor: backgroundSurfaceColorDark,
     backgroundShadingColor: backgroundShadingColorDark,
@@ -85,10 +84,6 @@ export const getComponentCss = (
         inset: 0,
         zIndex: 999999999, // fallback when dialog isn't rendered on #top-layer, e.g. relevant in ssr context or fade-out transition in Safari or Firefox
         outline: 0, // prevents outline in case dialog becomes focusable
-        color: primaryColor, // enables color inheritance for slotted content
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: primaryColorDark,
-        }),
         ...(isOpen
           ? {
               visibility: 'inherit',
@@ -154,10 +149,6 @@ export const getComponentCss = (
       position: 'absolute',
       inset: 0,
       display: 'grid',
-      background: backgroundColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        background: backgroundColorDark,
-      }),
       ...(isOpen
         ? {
             opacity: 1,
@@ -171,10 +162,18 @@ export const getComponentCss = (
           }),
       [mediaQueryMobile]: {
         gridTemplate: `${spacingFluidMedium} auto ${spacingFluidLarge} minmax(0, 1fr)/${spacingFluidLarge} auto minmax(0, 1fr) auto ${spacingFluidLarge}`,
+        background: backgroundColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          background: backgroundColorDark,
+        }),
       },
       [mediaQueryDesktop]: {
         width: isSecondaryScrollerVisible ? `calc(${scrollerWidthDesktop} * 2)` : scrollerWidthDesktop,
         gridTemplate: `${spacingFluidMedium} minmax(0, 1fr)/repeat(${isSecondaryScrollerVisible ? 2 : 1}, ${spacingFluidLarge} minmax(0, 1fr) ${spacingFluidLarge})`,
+        background: backgroundColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          background: backgroundColorDark,
+        }),
         ...(isSecondaryScrollerVisible && {
           background: `linear-gradient(90deg,${backgroundColor} 0%,${backgroundColor} 50%,${backgroundSurfaceColor} 50%,${backgroundSurfaceColor} 100%)`,
           ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -188,20 +187,31 @@ export const getComponentCss = (
         zIndex: 2,
         pointerEvents: 'none',
         opacity: 0,
-        background: backgroundColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          background: backgroundColorDark,
-        }),
-        [mediaQueryMobile]: {
-          gridArea: '1/1/-1/-1',
-        },
       },
       '&::before': {
+        [mediaQueryMobile]: {
+          gridArea: '1/1/-1/-1',
+          background: backgroundColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            background: backgroundColorDark,
+          }),
+        },
         [mediaQueryDesktop]: {
           gridArea: '1/1/-1/4',
+          background: backgroundColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            background: backgroundColorDark,
+          }),
         },
       },
       '&::after': {
+        [mediaQueryMobile]: {
+          gridArea: '1/1/-1/-1',
+          background: backgroundColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            background: backgroundColorDark,
+          }),
+        },
         [mediaQueryDesktop]: {
           gridArea: '1/4/-1/-1',
           background: backgroundSurfaceColor,
@@ -211,10 +221,10 @@ export const getComponentCss = (
         },
       },
       [`.${animatePrimaryClass} &::before`]: {
-        animation: `fade-in ${motionDurationLong} ${motionEasingIn}`,
+        animation: `fade-in ${motionDurationVeryLong} ${motionEasingIn}`,
       },
       [`.${animateSecondaryClass} &::after`]: {
-        animation: `fade-in ${motionDurationLong} ${motionEasingIn}`,
+        animation: `fade-in ${motionDurationVeryLong} ${motionEasingIn}`,
       },
     },
     scroller: {

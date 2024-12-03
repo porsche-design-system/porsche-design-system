@@ -102,6 +102,10 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
             whiteSpace: 'nowrap',
             overflow: 'hidden',
             textOverflow: 'ellipsis',
+            color: primaryColor, // enables color inheritance for slotted content
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              color: primaryColorDark,
+            }),
           }),
         },
       },
