@@ -2579,7 +2579,7 @@ exports[`should match snapshot 1`] = `
       "update": {
         "description": "Emitted when activeIdentifier is changed.",
         "type": "FlyoutMultilevelUpdateEventDetail",
-        "typeDetail": "{ activeIdentifier: string }",
+        "typeDetail": "{ activeIdentifier: string | undefined }",
       },
     },
     "hasAriaProp": true,
@@ -2660,7 +2660,6 @@ exports[`should match snapshot 1`] = `
       "cascade": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "isRequired": true,
         "type": "boolean",
       },
       "identifier": {
@@ -2679,13 +2678,11 @@ exports[`should match snapshot 1`] = `
       "primary": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "isRequired": true,
         "type": "boolean",
       },
       "secondary": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "isRequired": true,
         "type": "boolean",
       },
     },
