@@ -221,6 +221,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.SegmentedControlExampleComponent,
   },
   {
+    name: 'Segmented Control Example Controlled',
+    path: 'segmented-control-example-controlled',
+    component: fromExamples.SegmentedControlExampleControlledComponent,
+  },
+  {
     name: 'Select Example',
     path: 'select-example',
     component: fromExamples.SelectExampleComponent,

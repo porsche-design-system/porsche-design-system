@@ -197,6 +197,9 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
           display: 'none',
         },
       },
+      '&:focus': {
+        outline: 'none',
+      },
     },
     blur: {
       zIndex: -1,
@@ -369,6 +372,9 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         zIndex: 0, // ensures slotted dom nodes can't be on top of sidebar header
         display: 'block',
         padding: spacingBase,
+      },
+      '&:focus': {
+        outline: 'none',
       },
     },
     'flyout-start': {

@@ -2450,9 +2450,8 @@ img {
             id="list"
           >
             <div
-              aria-live="polite"
               class="no-results"
-              role="status"
+              role="option"
             >
               <span
                 aria-hidden="true"
@@ -2474,7 +2473,9 @@ img {
         aria-relevant="additions text"
         class="sr-only"
         role="status"
-      />
+      >
+        No results found
+      </span>
     </div>
   </template>
   <p-multi-select-option
@@ -5613,6 +5614,9 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   border-color: #D8D8DB !important;
   background: #D8D8DB !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 
 .root {
   --p-internal-text-field-input-padding-start: 16px;
@@ -5750,6 +5754,9 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   border-color: #D8D8DB !important;
   background: #D8D8DB !important;
 }
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
+}
 
 .root {
   --p-internal-text-field-input-padding-start: 16px;
@@ -5886,6 +5893,9 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
   background: #D8D8DB !important;
+}
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
 }
 
 .root {
@@ -6185,6 +6195,9 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
   background: #D8D8DB !important;
+}
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
 }
 
 .root {
@@ -7987,6 +8000,7 @@ h2 {
     >
       <header
         class="header"
+        tabindex="-1"
       >
         <div
           class="blur"
@@ -8403,7 +8417,6 @@ dialog::backdrop {
 }
         </style>
         <dialog
-          aria-hidden="true"
           aria-modal="true"
           inert=""
           tabindex="-1"
@@ -9497,7 +9510,6 @@ dialog::backdrop {
 }
     </style>
     <dialog
-      aria-hidden="true"
       aria-modal="true"
       inert=""
       tabindex="-1"
@@ -12707,7 +12719,6 @@ dialog::backdrop {
 }
     </style>
     <dialog
-      aria-hidden="true"
       aria-modal="true"
       inert=""
       tabindex="-1"
@@ -13163,9 +13174,8 @@ img {
             id="list"
           >
             <div
-              aria-live="polite"
               class="no-results"
-              role="status"
+              role="option"
             >
               <span
                 aria-hidden="true"
@@ -13187,7 +13197,9 @@ img {
         aria-relevant="additions text"
         class="sr-only"
         role="status"
-      />
+      >
+        No results found
+      </span>
     </div>
   </template>
   Some child
@@ -13342,7 +13354,6 @@ span:not(.ellipsis)::-moz-focus-inner {
     </style>
     <nav
       aria-label="Pagination"
-      role="navigation"
     >
       <ul>
         <li
@@ -13733,7 +13744,6 @@ button::-moz-focus-inner {
   position: absolute;
   z-index: 9999;
   filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
-  backdrop-filter: drop-shadow(0px 0px 0px transparent);
   pointer-events: none;
   animation: var(--p-animation-duration, 0.25s) keyframes-fadeIn cubic-bezier(0.25,0.1,0.25,1) forwards;
 }
@@ -17920,6 +17930,9 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
 ::slotted(input[readonly]) {
   border-color: #D8D8DB !important;
   background: #D8D8DB !important;
+}
+::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
+  direction: ltr !important;
 }
 
 .root {

@@ -1,6 +1,7 @@
 import { componentsReady } from '@porsche-design-system/components-js';
 import userEvent from '@testing-library/user-event';
 import { getMarkup } from '../helper';
+import { getByRoleShadowed } from '@porsche-design-system/components-js/testing';
 
 it('should have initialized shadow dom', async () => {
   document.body.innerHTML = getMarkup('p-segmented-control');
@@ -20,7 +21,7 @@ it('should have working events', async () => {
     `<div id="debug">Current Value: <span>1</span>; Event Counter: <span>0</span>;</div>`;
   await componentsReady();
 
-  const el = document.body.firstElementChild;
+  const el = document.querySelector('p-segmented-control');
   el.addEventListener('update', (e: CustomEvent) => {
     debugEl.querySelector('span').innerHTML = e.detail.value;
     debugEl.querySelector('span:last-child').innerHTML = '1';
@@ -29,7 +30,7 @@ it('should have working events', async () => {
   const debugEl = document.querySelector('#debug');
   expect(debugEl.innerHTML).toBe('Current Value: <span>1</span>; Event Counter: <span>0</span>;');
 
-  const button = document.querySelector('p-segmented-control-item:last-child');
+  const button = getByRoleShadowed('button', { name: /Item 2/i });
   await userEvent.click(button);
   expect(debugEl.innerHTML).toBe('Current Value: <span>2</span>; Event Counter: <span>1</span>;');
 });

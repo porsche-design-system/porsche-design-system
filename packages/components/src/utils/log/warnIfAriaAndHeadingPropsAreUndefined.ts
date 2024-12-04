@@ -9,7 +9,7 @@ export const warnIfAriaAndHeadingPropsAreUndefined = (
 ): void => {
   if (!hasHeading && !aria) {
     consoleWarn(
-      `heading or aria has to be set via property for component ${getTagNameWithoutPrefix(
+      `heading prop (deprecated), aria prop or header slot has to be set for component ${getTagNameWithoutPrefix(
         host
       )} in order to ensure accessibility.`,
       host

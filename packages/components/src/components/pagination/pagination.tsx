@@ -1,26 +1,26 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, type JSX, Prop, h } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
+  THEMES,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
   parseJSONAttribute,
-  THEMES,
   unobserveBreakpointChange,
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import { getComponentCss } from './pagination-styles';
 import {
+  ItemType,
   type PaginationInternationalization,
   type PaginationMaxNumberOfPageLinks,
   type PaginationUpdateEventDetail,
   createPaginationItems,
   getCurrentActivePage,
   getTotalPages,
-  ItemType,
 } from './pagination-utils';
-import { getComponentCss } from './pagination-styles';
 
 const propTypes: Omit<PropTypes<typeof Pagination>, 'maxNumberOfPageLinks'> = {
   totalItemsCount: AllowedTypes.number,
@@ -147,7 +147,7 @@ export class Pagination {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <nav role="navigation" aria-label={this.allyLabel || parsedIntl.root}>
+      <nav aria-label={this.allyLabel || parsedIntl.root}>
         <ul>
           {paginationItems.map((pageModel, index) => {
             const {

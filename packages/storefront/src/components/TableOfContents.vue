@@ -44,39 +44,42 @@ export default class TableOfContents extends Vue {
     // cut off trailing `#` character
     const currentUrl = getAnchorLink('').slice(0, -1);
 
-    this.links = Array.from<HTMLElement>(this.$el.parentElement!.parentElement!.querySelectorAll(this.tag)).map(
-      (heading) => {
-        const { innerText } = heading;
-        // extract version '3.8.0' from '[3.8.0] - 2023-11-02'
-        const title = this.isChangelog ? innerText.replace(/\[(\d+\.\d+\.\d+(-.+)?)].+/, '$1') : innerText;
-        const id = (this.isChangelog ? 'v' : '') + paramCase(title); // hash needs to start with a letter
-        const href = currentUrl + '#' + id;
+    const getHeadings = function (elem: Element, tag: string): HTMLElement[] {
+      const descendants = elem.parentNode!.children;
+      return Array.from(descendants).filter((sibling) => sibling.tagName.toLowerCase() === tag) as HTMLElement[];
+    };
 
-        // add anchor link to headline
-        const link = document.createElement('p-link-pure');
-        /* eslint-disable @typescript-eslint/no-explicit-any */
-        (link as any).theme = this.storefrontTheme;
-        (link as any).size = 'inherit';
-        (link as any).innerText = '#';
-        (link as any).title = 'Link to this heading';
-        (link as any).icon = 'none';
-        (link as any).href = encodeURI(href);
-        /* eslint-enable */
-        link.addEventListener('click', (e) => {
-          this.onLinkClick({ title: '', href }, e);
-        });
+    this.links = getHeadings(this.$el, this.tag).map((heading) => {
+      const { innerText } = heading;
+      // extract version '3.8.0' from '[3.8.0] - 2023-11-02'
+      const title = this.isChangelog ? innerText.replace(/\[(\d+\.\d+\.\d+(-.+)?)].+/, '$1') : innerText;
+      const id = (this.isChangelog ? 'v' : '') + paramCase(title); // hash needs to start with a letter
+      const href = currentUrl + '#' + id;
 
-        heading.append(link);
-        heading.id = id;
-        // enable programmatic focusing, so that keyboard users don't break flow when using TOC
-        heading.tabIndex = -1;
+      // add anchor link to headline
+      const link = document.createElement('p-link-pure');
+      /* eslint-disable @typescript-eslint/no-explicit-any */
+      (link as any).theme = this.storefrontTheme;
+      (link as any).size = 'inherit';
+      (link as any).innerText = '#';
+      (link as any).title = 'Link to this heading';
+      (link as any).icon = 'none';
+      (link as any).href = encodeURI(href);
+      /* eslint-enable */
+      link.addEventListener('click', (e) => {
+        this.onLinkClick({ title: '', href }, e);
+      });
 
-        return {
-          href,
-          title,
-        };
-      }
-    );
+      heading.append(link);
+      heading.id = id;
+      // enable programmatic focusing, so that keyboard users don't break flow when using TOC
+      heading.tabIndex = -1;
+
+      return {
+        href,
+        title,
+      };
+    });
 
     if (this.isChangelog) {
       this.links = this.links
