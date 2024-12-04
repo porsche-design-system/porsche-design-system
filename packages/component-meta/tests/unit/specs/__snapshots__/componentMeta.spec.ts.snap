@@ -2621,6 +2621,7 @@ exports[`should match snapshot 1`] = `
       "primary": {
         "allowedValues": "boolean",
         "defaultValue": true,
+        "description": "Private property set by the component itself.",
         "type": "boolean",
       },
       "theme": {
@@ -2659,6 +2660,7 @@ exports[`should match snapshot 1`] = `
       "cascade": {
         "allowedValues": "boolean",
         "defaultValue": false,
+        "description": "Private property set by the component itself.",
         "type": "boolean",
       },
       "identifier": {
@@ -2677,11 +2679,13 @@ exports[`should match snapshot 1`] = `
       "primary": {
         "allowedValues": "boolean",
         "defaultValue": false,
+        "description": "Private property set by the component itself.",
         "type": "boolean",
       },
       "secondary": {
         "allowedValues": "boolean",
         "defaultValue": false,
+        "description": "Private property set by the component itself.",
         "type": "boolean",
       },
     },
