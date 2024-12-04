@@ -36,19 +36,19 @@ const scenario = async (
   });
 
   if (pseudoState === 'hover') {
-    await forceHoverState(page, '.id-1 >>> p-button-pure.back >>> button'); // Back button
-    await forceHoverState(page, '.id-1-1 >>> p-button-pure.button >>> button'); // Selected button
-    await forceHoverState(page, '.id-1-2 >>> p-button-pure.button >>> button'); // Sibling of selected button
+    await forceHoverState(page, '.id-1 >>> p-button-pure >>> button'); // Back button
+    await forceHoverState(page, '.id-1-1 >>> p-button-pure >>> button'); // Selected button
+    await forceHoverState(page, '.id-1-2 >>> p-button-pure >>> button'); // Sibling of selected button
     await forceHoverState(page, 'p-flyout-multilevel-item a');
   } else if (pseudoState === 'focus') {
-    await forceFocusVisibleState(page, '.id-1 >>> p-button-pure.back >>> button'); // Back button
-    await forceFocusVisibleState(page, '.id-1-1 >>> p-button-pure.button >>> button'); // Selected button
-    await forceFocusVisibleState(page, '.id-1-2 >>> p-button-pure.button >>> button'); // Sibling of selected button
+    await forceFocusVisibleState(page, '.id-1 >>> p-button-pure >>> button'); // Back button
+    await forceFocusVisibleState(page, '.id-1-1 >>> p-button-pure >>> button'); // Selected button
+    await forceFocusVisibleState(page, '.id-1-2 >>> p-button-pure >>> button'); // Sibling of selected button
     await forceFocusVisibleState(page, 'p-flyout-multilevel-item a');
   } else if (pseudoState === 'focus-hover') {
-    await forceFocusHoverState(page, '.id-1 >>> p-button-pure.back >>> button'); // Back button
-    await forceFocusHoverState(page, '.id-1-1 >>> p-button-pure.button >>> button'); // Selected button
-    await forceFocusHoverState(page, '.id-1-2 >>> p-button-pure.button >>> button'); // Sibling of selected button
+    await forceFocusHoverState(page, '.id-1 >>> p-button-pure >>> button'); // Back button
+    await forceFocusHoverState(page, '.id-1-1 >>> p-button-pure >>> button'); // Selected button
+    await forceFocusHoverState(page, '.id-1-2 >>> p-button-pure >>> button'); // Sibling of selected button
     await forceFocusHoverState(page, 'p-flyout-multilevel-item a');
   }
 };
