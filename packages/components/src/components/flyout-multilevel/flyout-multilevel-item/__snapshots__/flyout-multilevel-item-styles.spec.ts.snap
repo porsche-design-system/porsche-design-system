@@ -363,7 +363,6 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
       overflow: hidden auto;
-      overscroll-behavior-y: none;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
     }
@@ -379,7 +378,6 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
       grid-template-columns: subgrid;
       grid-area: 1/1/-1/-1;
       overflow: hidden auto;
-      overscroll-behavior-y: none;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
     }
@@ -534,7 +532,6 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
       overflow: hidden auto;
-      overscroll-behavior-y: none;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
     }
@@ -550,7 +547,6 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
       grid-template-columns: subgrid;
       grid-area: 1/1/-1/-1;
       overflow: hidden auto;
-      overscroll-behavior-y: none;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
     }
@@ -959,7 +955,6 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
       overflow: hidden auto;
-      overscroll-behavior-y: none;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
     }
@@ -980,7 +975,6 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
       grid-template-columns: subgrid;
       grid-area: 1/1/-1/-1;
       overflow: hidden auto;
-      overscroll-behavior-y: none;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
     }
@@ -1142,7 +1136,6 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
       overflow: hidden auto;
-      overscroll-behavior-y: none;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
     }
@@ -1163,7 +1156,6 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
       grid-template-columns: subgrid;
       grid-area: 1/1/-1/-1;
       overflow: hidden auto;
-      overscroll-behavior-y: none;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
     }

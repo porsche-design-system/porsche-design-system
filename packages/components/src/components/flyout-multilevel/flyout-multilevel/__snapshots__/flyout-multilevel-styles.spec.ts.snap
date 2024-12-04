@@ -112,7 +112,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isPrimar
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
       overflow: hidden auto;
-      overscroll-behavior-y: none;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
     }
@@ -285,7 +284,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
       overflow: hidden auto;
-      overscroll-behavior-y: none;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
     }
@@ -320,7 +318,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
       overflow: hidden auto;
-      overscroll-behavior-y: none;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
     }
@@ -465,7 +462,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
       overflow: hidden auto;
-      overscroll-behavior-y: none;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
     }
@@ -640,7 +636,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
       overflow: hidden auto;
-      overscroll-behavior-y: none;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
     }
@@ -675,7 +670,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
       overflow: hidden auto;
-      overscroll-behavior-y: none;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
     }
@@ -842,7 +836,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
       overflow: hidden auto;
-      overscroll-behavior-y: none;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
     }
@@ -1031,7 +1024,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
       overflow: hidden auto;
-      overscroll-behavior-y: none;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
     }
@@ -1202,7 +1194,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
       overflow: hidden auto;
-      overscroll-behavior-y: none;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
     }

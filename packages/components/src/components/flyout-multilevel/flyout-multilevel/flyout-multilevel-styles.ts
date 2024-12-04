@@ -233,7 +233,7 @@ export const getComponentCss = (
           gridTemplateRows: 'subgrid',
           gridTemplateColumns: 'subgrid',
           overflow: 'hidden auto',
-          overscrollBehaviorY: 'none',
+          // overscrollBehaviorY: 'none', // when defined, rubber band effect on iOS 18 scroll is getting lost
           scrollBehavior: 'smooth',
           WebkitOverflowScrolling: 'touch',
           '&::before': {
@@ -255,7 +255,7 @@ export const getComponentCss = (
         gridTemplateRows: 'subgrid',
         gridTemplateColumns: 'subgrid',
         overflow: 'hidden auto',
-        overscrollBehaviorY: 'none',
+        // overscrollBehaviorY: 'none', // when defined, rubber band effect on iOS 18 scroll is getting lost
         scrollBehavior: 'smooth',
         WebkitOverflowScrolling: 'touch',
       },
