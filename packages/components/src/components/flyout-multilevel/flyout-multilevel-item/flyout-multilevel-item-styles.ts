@@ -184,6 +184,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           overflow: 'hidden auto',
           overscrollBehaviorY: 'none',
           scrollBehavior: 'smooth',
+          WebkitOverflowScrolling: 'touch',
           '&::before': {
             zIndex: 1,
             content: '""',
@@ -210,6 +211,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           overflow: 'hidden auto',
           overscrollBehaviorY: 'none',
           scrollBehavior: 'smooth',
+          WebkitOverflowScrolling: 'touch',
         }),
         ...((isPrimary || isCascade) && {
           display: 'contents',

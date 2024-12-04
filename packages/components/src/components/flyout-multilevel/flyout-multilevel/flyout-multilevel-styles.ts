@@ -235,6 +235,7 @@ export const getComponentCss = (
           overflow: 'hidden auto',
           overscrollBehaviorY: 'none',
           scrollBehavior: 'smooth',
+          WebkitOverflowScrolling: 'touch',
           '&::before': {
             content: '""',
             position: 'sticky',
@@ -256,6 +257,7 @@ export const getComponentCss = (
         overflow: 'hidden auto',
         overscrollBehaviorY: 'none',
         scrollBehavior: 'smooth',
+        WebkitOverflowScrolling: 'touch',
       },
     },
     'dismiss-mobile': {
