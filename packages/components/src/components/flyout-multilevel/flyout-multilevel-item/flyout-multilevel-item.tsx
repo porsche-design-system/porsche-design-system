@@ -41,11 +41,14 @@ export class FlyoutMultilevelItem {
   /** Unique identifier which controls if this item should be shown when the active-identifier on the flyout-multilevel is set to this value. */
   @Prop({ reflect: true }) public identifier: string;
 
-  @Prop({ reflect: true }) public cascade?: boolean = false;
+  /** Private property set by the component itself. */
+  @Prop({ reflect: true, mutable: true }) public primary?: boolean = false;
 
-  @Prop({ reflect: true }) public primary?: boolean = false;
+  /** Private property set by the component itself. */
+  @Prop({ reflect: true, mutable: true }) public secondary?: boolean = false;
 
-  @Prop({ reflect: true }) public secondary?: boolean = false;
+  /** Private property set by the component itself. */
+  @Prop({ reflect: true, mutable: true }) public cascade?: boolean = false;
 
   private scroller: HTMLDivElement;
 

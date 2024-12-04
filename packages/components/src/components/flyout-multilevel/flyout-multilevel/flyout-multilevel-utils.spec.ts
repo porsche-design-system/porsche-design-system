@@ -18,8 +18,6 @@ const createChild = (
 
 const identifier = 'some-id';
 
-// TODO: Add missing tests
-
 const errorMessage = `Invalid value '${identifier}' supplied to p-flyout-multilevel for property 'activeIdentifier' because reference is not present.`;
 const errorMessageMultiple = `Found multiple matching items for value '${identifier}' supplied to p-flyout-multilevel:`;
 

@@ -47,20 +47,20 @@ const propTypes: PropTypes<typeof FlyoutMultilevel> = {
 export class FlyoutMultilevel {
   @Element() public host!: HTMLElement;
 
-  // TODO: shouldn't open prop be changed internally too?
   /** If true, the flyout-multilevel is visualized as opened. */
   @Prop() public open?: boolean = false;
 
   /** Defines which flyout-multilevel-item to be visualized as opened. */
   @Prop() public activeIdentifier?: string | undefined;
 
-  @Prop({ reflect: true }) public primary?: boolean = true;
+  /** Add ARIA attributes. */
+  @Prop() public aria?: SelectedAriaAttributes<FlyoutMultilevelAriaAttribute>;
+
+  /** Private property set by the component itself. */
+  @Prop({ reflect: true, mutable: true }) public primary?: boolean = true;
 
   /** Adapts the flyout-multilevel color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
-
-  /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<FlyoutMultilevelAriaAttribute>;
 
   /** Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
@@ -223,7 +223,6 @@ export class FlyoutMultilevel {
     const newItem = newVal && this.flyoutMultilevelItemElements.find((item) => item.identifier === newVal);
     updateFlyoutMultiLevelState(this.host, oldItem, false); // Reset old state
     updateFlyoutMultiLevelState(this.host, newItem, true); // Set new state
-    // TODO: Check mobile view
     // Whenever the hierarchy changes we need to animate the primary side
     if (newVal && oldVal && oldItem.parentElement !== newItem.parentElement) {
       this.dialog?.classList.remove(animatePrimaryClass);
