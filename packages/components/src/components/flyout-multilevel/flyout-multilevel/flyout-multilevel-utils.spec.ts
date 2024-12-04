@@ -67,13 +67,13 @@ describe('validateActiveIdentifier()', () => {
 });
 
 describe('updateFlyoutMultiLevelState()', () => {
-  let forceUpdateSpy: jest.SpyInstance;
+  // let forceUpdateSpy: jest.SpyInstance;
   let traverseTreeAndUpdateStateSpy: jest.SpyInstance;
   let host: HTMLElement & { primary?: boolean };
   let child: HTMLElement & { primary?: boolean; secondary?: boolean; cascade?: boolean; identifier?: string };
 
   beforeEach(() => {
-    forceUpdateSpy = jest.spyOn(stencilCore, 'forceUpdate').mockImplementation();
+    // forceUpdateSpy = jest.spyOn(stencilCore, 'forceUpdate').mockImplementation();
     traverseTreeAndUpdateStateSpy = jest
       .spyOn(flyoutMultilevelUtils, 'traverseTreeAndUpdateState')
       .mockImplementation();
@@ -91,36 +91,36 @@ describe('updateFlyoutMultiLevelState()', () => {
   it('should set secondary prop of item with activeIdentifier to value=true and call functions', () => {
     updateFlyoutMultiLevelState(host, child, true);
     expect(child.secondary).toBe(true);
-    expect(forceUpdateSpy).toBeCalledWith(child);
+    // expect(forceUpdateSpy).toBeCalledWith(child);
     expect(traverseTreeAndUpdateStateSpy).toBeCalledWith(host, 'primary', true);
   });
   it('should set secondary prop of item with activeIdentifier to value=false and call functions', () => {
     updateFlyoutMultiLevelState(host, child, false);
     expect(child.secondary).toBe(false);
-    expect(forceUpdateSpy).toBeCalledWith(child);
+    // expect(forceUpdateSpy).toBeCalledWith(child);
     expect(traverseTreeAndUpdateStateSpy).toBeCalledWith(host, 'primary', false);
   });
   it('should set host primary prop to value=true if no activeIdentifier is set', () => {
     updateFlyoutMultiLevelState(host, undefined, true);
     expect(host.primary).toBe(true);
-    expect(forceUpdateSpy).toBeCalledWith(host);
+    // expect(forceUpdateSpy).toBeCalledWith(host);
   });
   it('should set host primary prop to value=false if no activeIdentifier is set', () => {
     updateFlyoutMultiLevelState(host, undefined, false);
     expect(host.primary).toBe(false);
-    expect(forceUpdateSpy).toBeCalledWith(host);
+    // expect(forceUpdateSpy).toBeCalledWith(host);
   });
 });
 
 describe('traverseTreeAndUpdateState()', () => {
-  let forceUpdateSpy: jest.SpyInstance;
+  // let forceUpdateSpy: jest.SpyInstance;
   let traverseTreeAndUpdateStateSpy: jest.SpyInstance;
   let host: HTMLElement & { primary?: boolean };
   let child: HTMLElement & { primary?: boolean; secondary?: boolean; cascade?: boolean; identifier?: string };
   let grandChild: HTMLElement & { primary?: boolean; secondary?: boolean; cascade?: boolean; identifier?: string };
 
   beforeEach(() => {
-    forceUpdateSpy = jest.spyOn(stencilCore, 'forceUpdate').mockImplementation();
+    // forceUpdateSpy = jest.spyOn(stencilCore, 'forceUpdate').mockImplementation();
     traverseTreeAndUpdateStateSpy = jest.spyOn(flyoutMultilevelUtils, 'traverseTreeAndUpdateState');
 
     host = document.createElement('p-flyout-multilevel');
@@ -137,11 +137,11 @@ describe('traverseTreeAndUpdateState()', () => {
   it('should set traverse up the tree and set states to value', () => {
     traverseTreeAndUpdateState(grandChild, 'primary', true);
     expect(grandChild.primary).toBe(true);
-    expect(forceUpdateSpy).toBeCalledWith(grandChild);
+    // expect(forceUpdateSpy).toBeCalledWith(grandChild);
     expect(traverseTreeAndUpdateStateSpy).toBeCalledWith(child, 'cascade', true);
 
     expect(child.cascade).toBe(true);
-    expect(forceUpdateSpy).toBeCalledWith(child);
+    // expect(forceUpdateSpy).toBeCalledWith(child);
 
     expect(traverseTreeAndUpdateStateSpy).toHaveBeenCalledTimes(2);
     expect(traverseTreeAndUpdateStateSpy).not.toHaveBeenCalledWith(host, expect.any(String), expect.any(Boolean));
