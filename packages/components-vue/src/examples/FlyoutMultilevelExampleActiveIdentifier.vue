@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import {
+  type FlyoutMultilevelUpdateEventDetail,
+  PButton,
   PFlyoutMultilevel,
   PFlyoutMultilevelItem,
-  PButton,
-  type FlyoutMultilevelUpdateEventDetail,
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
 const isFlyoutMultilevelOpen = ref(false);
-const flyoutMultilevelActiveIdentifier = ref('item-2');
+const flyoutMultilevelActiveIdentifier = ref<FlyoutMultilevelUpdateEventDetail['activeIdentifier']>('item-2');
 const onOpen = (): void => {
   isFlyoutMultilevelOpen.value = true;
 };
