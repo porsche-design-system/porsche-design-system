@@ -1,4 +1,16 @@
-import { Component, Element, Event, type EventEmitter, type JSX, Listen, Prop, State, Watch, h } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Event,
+  type EventEmitter,
+  type JSX,
+  Listen,
+  Prop,
+  State,
+  Watch,
+  forceUpdate,
+  h,
+} from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../../types';
 import {
   AllowedTypes,
@@ -85,6 +97,7 @@ export class FlyoutMultilevel {
   public themeChangeHandler(theme: Theme): void {
     for (const item of this.flyoutMultilevelItemElements) {
       item.theme = theme;
+      forceUpdate(item);
     }
   }
 
