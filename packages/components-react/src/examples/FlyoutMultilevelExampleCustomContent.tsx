@@ -1,4 +1,3 @@
-import { useCallback, useState } from 'react';
 import {
   type FlyoutMultilevelUpdateEventDetail,
   PButton,
@@ -8,10 +7,12 @@ import {
   PLinkTile,
 } from '@porsche-design-system/components-react';
 import { spacingFluidSmall } from '@porsche-design-system/components-react/styles';
+import { useCallback, useState } from 'react';
 
 export const FlyoutMultilevelExampleCustomContentPage = (): JSX.Element => {
   const [isFlyoutMultilevelOpen, setIsFlyoutMultilevelOpen] = useState<boolean>(false);
-  const [flyoutMultilevelActiveIdentifier, setFlyoutMultilevelActiveIdentifier] = useState<string>('item-1');
+  const [flyoutMultilevelActiveIdentifier, setFlyoutMultilevelActiveIdentifier] =
+    useState<FlyoutMultilevelUpdateEventDetail['activeIdentifier']>('item-1');
   const onOpen = useCallback(() => {
     setIsFlyoutMultilevelOpen(true);
   }, []);
