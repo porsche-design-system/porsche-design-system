@@ -167,7 +167,7 @@ export class FlyoutMultilevel {
             icon="arrow-left"
             theme={this.theme}
             hideLabel={true}
-            onClick={() => this.update.emit({ activeIdentifier: undefined })}
+            onClick={this.emitCloseSecondaryUpdate}
           >
             Back
           </PrefixedTagNames.pButtonPure>
@@ -243,5 +243,9 @@ export class FlyoutMultilevel {
       this.dialog?.offsetHeight; /* trigger reflow to restart animation */
       this.dialog?.classList.add(animatePrimaryClass);
     }
+  }
+
+  private emitCloseSecondaryUpdate(): void {
+    this.update.emit({ activeIdentifier: undefined });
   }
 }
