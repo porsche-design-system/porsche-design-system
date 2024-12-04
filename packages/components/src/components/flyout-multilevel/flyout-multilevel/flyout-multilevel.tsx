@@ -1,16 +1,4 @@
-import {
-  Component,
-  Element,
-  Event,
-  type EventEmitter,
-  type JSX,
-  Listen,
-  Prop,
-  State,
-  Watch,
-  forceUpdate,
-  h,
-} from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, type JSX, Listen, Prop, State, Watch, h } from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../../types';
 import {
   AllowedTypes,
@@ -31,6 +19,7 @@ import {
   type FlyoutMultilevelUpdateEventDetail,
   INTERNAL_UPDATE_EVENT_NAME,
   type Item,
+  syncThemeToItems,
   updateFlyoutMultiLevelState,
   validateActiveIdentifier,
 } from './flyout-multilevel-utils';
@@ -95,10 +84,7 @@ export class FlyoutMultilevel {
 
   @Watch('theme')
   public themeChangeHandler(theme: Theme): void {
-    for (const item of this.flyoutMultilevelItemElements) {
-      item.theme = theme;
-      forceUpdate(item);
-    }
+    syncThemeToItems(theme, this.flyoutMultilevelItemElements);
   }
 
   @Listen(INTERNAL_UPDATE_EVENT_NAME)
@@ -111,6 +97,7 @@ export class FlyoutMultilevel {
   public componentWillLoad(): void {
     this.defineFlyoutMultilevelItemElements();
     this.updateFlyoutMultiLevelState(undefined, this.activeIdentifier);
+    syncThemeToItems(this.theme, this.flyoutMultilevelItemElements);
   }
 
   public componentDidLoad(): void {

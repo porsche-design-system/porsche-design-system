@@ -1,4 +1,5 @@
-import type { Class } from '../../../types';
+import { forceUpdate } from '@stencil/core';
+import type { Class, Theme } from '../../../types';
 import { consoleError, getTagNameWithoutPrefix, isElementOfKind } from '../../../utils';
 import type { FlyoutMultilevelItemInternalHTMLProps } from '../flyout-multilevel-item/flyout-multilevel-item-utils';
 
@@ -52,6 +53,20 @@ export const traverseTreeAndUpdateState = (
   activeItem[prop] = value;
   if (isElementOfKind(activeItem.parentElement, 'p-flyout-multilevel-item')) {
     traverseTreeAndUpdateState(activeItem.parentElement as HTMLPFlyoutMultilevelItemElement, 'cascade', value);
+  }
+};
+
+/**
+ * Synchronizes the provided theme to all items in the given array by updating each item's theme property.
+ * Ensures that updates are reflected by forcing a component update.
+ *
+ * @param {Theme} theme - The theme to apply to all items.
+ * @param {Item[]} items - The array of items whose theme will be updated.
+ */
+export const syncThemeToItems = (theme: Theme, items: Item[]) => {
+  for (const item of items) {
+    item.theme = theme;
+    forceUpdate(item);
   }
 };
 
