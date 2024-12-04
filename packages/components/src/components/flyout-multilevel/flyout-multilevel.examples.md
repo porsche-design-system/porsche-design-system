@@ -37,14 +37,14 @@ a value of the `identifier` property of the `p-flyout-multilevel-item` component
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
-Always take care that you expose the current navigation state to the user. This can be done by using
-`<a aria-current="page">…</a>`, applying automatic styling of this anchor.
+When the `p-flyout-multilevel` is used as navigation element then it's necessary to wrap the element and the button
+which opens it within the landmark `<nav />`. In addition, take care that you expose the current navigation state to the
+user. This can be done by using `<a aria-current="page">…</a>`.
 
 ## Example with custom content
 
 To give further flexibility, e.g. if you only want to provide a direct link to a page on the **1st level**, you can just
-use the `p-link-pure` component. Be aware that you have to adapt the styling of those custom **1st level** items to
-match the design of the other 1st level items.
+use the `p-link-pure` component.
 
 Regarding further individualization, you can use components like e.g. `p-link-tile` and others or create your own custom
 contents and use it as a child.
@@ -80,7 +80,7 @@ export default class Code extends Vue {
   registerEvents() {
     this.flyoutMultilevels = document.querySelectorAll('.playground .demo p-flyout-multilevel');
     
-    const buttonsOpen = document.querySelectorAll('.playground .demo > p-button');
+    const buttonsOpen = document.querySelectorAll('.playground .demo > nav > p-button');
     buttonsOpen.forEach((btn, index) => btn.addEventListener('click', () => this.openFlyout(index)));
     
     this.flyoutMultilevels.forEach((flyout, index) => {

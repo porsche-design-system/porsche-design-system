@@ -1,5 +1,5 @@
 <template>
-  <p-table caption="Browser support">
+  <p-table :theme="$store.getters.storefrontTheme" caption="Browser support">
     <p-table-head>
       <p-table-head-row>
         <p-table-head-cell>Chrome</p-table-head-cell>
@@ -13,22 +13,22 @@
     <p-table-body>
       <p-table-row>
         <p-table-cell>
-          >= {{ chrome }} <p-icon name="success" color="notification-success"></p-icon>
+          >= {{ chrome }} <p-icon :theme="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
         </p-table-cell>
         <p-table-cell>
-          >= {{ edge }} <p-icon name="success" color="notification-success"></p-icon>
+          >= {{ edge }} <p-icon :theme="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
         </p-table-cell>
         <p-table-cell>
-          >= {{ safari }} <p-icon name="success" color="notification-success"></p-icon>
+          >= {{ safari }} <p-icon :theme="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
         </p-table-cell>
         <p-table-cell>
-          >= {{ firefox }} <p-icon name="success" color="notification-success"></p-icon>
+          >= {{ firefox }} <p-icon :theme="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
         </p-table-cell>
         <p-table-cell>
-          >= {{ chromeForAndroid }} <p-icon name="success" color="notification-success"></p-icon>
+          >= {{ chromeForAndroid }} <p-icon :theme="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
         </p-table-cell>
         <p-table-cell>
-          >= {{ safariForiOS }} <p-icon name="success" color="notification-success"></p-icon>
+          >= {{ safariForiOS }} <p-icon :theme="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
         </p-table-cell>
       </p-table-row>
     </p-table-body>
