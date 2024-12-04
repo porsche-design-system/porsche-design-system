@@ -9833,6 +9833,9 @@ exports[`should render dsr component for PFlyoutMultilevel 1`] = `
     }
     .dismiss-mobile {
       --p-internal-button-scaling: 0;
+      width: fit-content;
+      height: fit-content;
+      place-self: center flex-end;
       grid-area: 2/4;
       z-index: 3;
       margin-inline-end: -1px;
@@ -10370,8 +10373,8 @@ exports[`should render dsr component for PFlyoutMultilevelItem 1`] = `
     font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: pointer;
     border-radius: 4px;
-    padding: clamp(8px, 0.5vw + 6px, 16px);
-    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
+    padding: clamp(8px, 0.5vw + 6px, 16px) !important;
+    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1) !important;
     color: #010205;
     text-decoration: underline;
     text-decoration-color: transparent;
