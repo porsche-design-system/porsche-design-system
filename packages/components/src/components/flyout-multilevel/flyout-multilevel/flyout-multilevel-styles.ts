@@ -259,6 +259,9 @@ export const getComponentCss = (
     'dismiss-mobile': {
       [mediaQueryMobile]: {
         ...dismissButtonJssStyle,
+        width: 'fit-content',
+        height: 'fit-content',
+        placeSelf: 'center flex-end',
         gridArea: '2/4',
         zIndex: 3, // ensures dismiss button is on top of opacity animation handled by ::before/::after
         marginInlineEnd: '-1px', // improve visual alignment and compensate white space of close icon
@@ -285,6 +288,8 @@ export const getComponentCss = (
         [mediaQueryMobile]: {
           display: 'block',
           gridArea: '2/2',
+          width: 'fit-content',
+          height: 'fit-content',
           placeSelf: 'center flex-start',
           zIndex: 2,
         },

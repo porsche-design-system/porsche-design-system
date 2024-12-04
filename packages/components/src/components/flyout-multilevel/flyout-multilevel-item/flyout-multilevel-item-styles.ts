@@ -10,6 +10,7 @@ import {
 } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
+  addImportantToRule,
   colorSchemeStyles,
   getAnimation,
   getFocusJssStyle,
@@ -123,22 +124,20 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       }),
       '::slotted': {
         '&(a)': {
-          ...{
-            all: 'unset',
-            alignSelf: 'flex-start',
-            font: textMediumStyle.font,
-            cursor: 'pointer',
-            borderRadius: borderRadiusSmall,
-            padding: spacingFluidSmall,
-            marginInline: `calc(${spacingFluidSmall} * -1)`,
-            color: primaryColor,
-            textDecoration: 'underline',
-            textDecorationColor: 'transparent',
-            transition: `${getTransition('text-decoration-color')}`,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              color: primaryColorDark,
-            }),
-          },
+          all: 'unset',
+          alignSelf: 'flex-start',
+          font: textMediumStyle.font,
+          cursor: 'pointer',
+          borderRadius: borderRadiusSmall,
+          padding: addImportantToRule(spacingFluidSmall),
+          marginInline: addImportantToRule(`calc(${spacingFluidSmall} * -1)`),
+          color: primaryColor,
+          textDecoration: 'underline',
+          textDecorationColor: 'transparent',
+          transition: `${getTransition('text-decoration-color')}`,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            color: primaryColorDark,
+          }),
         },
         '&(a[aria-current])': {
           textDecoration: 'underline',
@@ -237,11 +236,14 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       ...(isPrimary && {
         [mediaQueryMobile]: {
           gridArea: '2/2',
+          width: 'fit-content',
+          height: 'fit-content',
           placeSelf: 'center flex-start',
           zIndex: 2,
         },
         [mediaQueryDesktop]: {
           width: 'fit-content',
+          height: 'fit-content',
           marginInlineStart: '-4px', // improve visual alignment and compensate white space of arrow-left icon
         },
       }),
