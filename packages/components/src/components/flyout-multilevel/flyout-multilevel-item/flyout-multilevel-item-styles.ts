@@ -183,6 +183,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           gridArea: '1/1/-1/-1',
           overflow: 'hidden auto',
           overscrollBehaviorY: 'none',
+          scrollBehavior: 'smooth',
           '&::before': {
             zIndex: 1,
             content: '""',
@@ -208,6 +209,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           gridTemplateColumns: 'subgrid',
           overflow: 'hidden auto',
           overscrollBehaviorY: 'none',
+          scrollBehavior: 'smooth',
         }),
         ...((isPrimary || isCascade) && {
           display: 'contents',

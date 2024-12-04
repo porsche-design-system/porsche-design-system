@@ -234,6 +234,7 @@ export const getComponentCss = (
           gridTemplateColumns: 'subgrid',
           overflow: 'hidden auto',
           overscrollBehaviorY: 'none',
+          scrollBehavior: 'smooth',
           '&::before': {
             content: '""',
             position: 'sticky',
@@ -254,6 +255,7 @@ export const getComponentCss = (
         gridTemplateColumns: 'subgrid',
         overflow: 'hidden auto',
         overscrollBehaviorY: 'none',
+        scrollBehavior: 'smooth',
       },
     },
     'dismiss-mobile': {
