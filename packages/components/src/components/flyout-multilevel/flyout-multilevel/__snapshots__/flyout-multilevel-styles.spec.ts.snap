@@ -144,6 +144,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, isPrimar
     }
     .dismiss-mobile {
       --p-internal-button-scaling: 0;
+      width: fit-content;
+      height: fit-content;
+      place-self: center flex-end;
       grid-area: 2/4;
       z-index: 3;
       margin-inline-end: -1px;
@@ -154,6 +157,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, isPrimar
     .back {
       display: block;
       grid-area: 2/2;
+      width: fit-content;
+      height: fit-content;
       place-self: center flex-start;
       z-index: 2;
     }
@@ -323,6 +328,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     }
     .dismiss-mobile {
       --p-internal-button-scaling: 0;
+      width: fit-content;
+      height: fit-content;
+      place-self: center flex-end;
       grid-area: 2/4;
       z-index: 3;
       margin-inline-end: -1px;
@@ -483,6 +491,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     }
     .dismiss-mobile {
       --p-internal-button-scaling: 0;
+      width: fit-content;
+      height: fit-content;
+      place-self: center flex-end;
       grid-area: 2/4;
       z-index: 3;
       margin-inline-end: -1px;
@@ -493,6 +504,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     .back {
       display: block;
       grid-area: 2/2;
+      width: fit-content;
+      height: fit-content;
       place-self: center flex-start;
       z-index: 2;
     }
@@ -664,6 +677,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     }
     .dismiss-mobile {
       --p-internal-button-scaling: 0;
+      width: fit-content;
+      height: fit-content;
+      place-self: center flex-end;
       grid-area: 2/4;
       z-index: 3;
       margin-inline-end: -1px;
@@ -864,6 +880,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     }
     .dismiss-mobile {
       --p-internal-button-scaling: 0;
+      width: fit-content;
+      height: fit-content;
+      place-self: center flex-end;
       grid-area: 2/4;
       z-index: 3;
       margin-inline-end: -1px;
@@ -874,6 +893,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     .back {
       display: block;
       grid-area: 2/2;
+      width: fit-content;
+      height: fit-content;
       place-self: center flex-start;
       z-index: 2;
     }
@@ -1028,6 +1049,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     }
     .dismiss-mobile {
       --p-internal-button-scaling: 0;
+      width: fit-content;
+      height: fit-content;
+      place-self: center flex-end;
       grid-area: 2/4;
       z-index: 3;
       margin-inline-end: -1px;
@@ -1038,6 +1062,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     .back {
       display: block;
       grid-area: 2/2;
+      width: fit-content;
+      height: fit-content;
       place-self: center flex-start;
       z-index: 2;
     }
@@ -1192,6 +1218,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     }
     .dismiss-mobile {
       --p-internal-button-scaling: 0;
+      width: fit-content;
+      height: fit-content;
+      place-self: center flex-end;
       grid-area: 2/4;
       z-index: 3;
       margin-inline-end: -1px;
@@ -1202,6 +1231,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     .back {
       display: block;
       grid-area: 2/2;
+      width: fit-content;
+      height: fit-content;
       place-self: center flex-start;
       z-index: 2;
     }
