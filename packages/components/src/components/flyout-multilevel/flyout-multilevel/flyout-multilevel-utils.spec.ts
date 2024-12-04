@@ -1,5 +1,4 @@
 import { expect } from '@jest/globals';
-import * as stencilCore from '@stencil/core';
 import * as loggerUtils from '../../../utils/log/logger';
 import type { FlyoutMultilevelItemInternalHTMLProps } from '../flyout-multilevel-item/flyout-multilevel-item-utils';
 import * as flyoutMultilevelUtils from './flyout-multilevel-utils';
