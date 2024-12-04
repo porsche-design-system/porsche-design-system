@@ -814,6 +814,9 @@ export namespace Components {
           * If true, the flyout-multilevel is visualized as opened.
          */
         "open"?: boolean;
+        /**
+          * Private property set by the component itself.
+         */
         "primary"?: boolean;
         /**
           * Adapts the flyout-multilevel color depending on the theme.
@@ -824,6 +827,9 @@ export namespace Components {
      * @experimental 
      */
     interface PFlyoutMultilevelItem {
+        /**
+          * Private property set by the component itself.
+         */
         "cascade"?: boolean;
         /**
           * Unique identifier which controls if this item should be shown when the active-identifier on the flyout-multilevel is set to this value.
@@ -833,7 +839,13 @@ export namespace Components {
           * Label of the item.
          */
         "label"?: string;
+        /**
+          * Private property set by the component itself.
+         */
         "primary"?: boolean;
+        /**
+          * Private property set by the component itself.
+         */
         "secondary"?: boolean;
     }
     /**
@@ -3997,6 +4009,9 @@ declare namespace LocalJSX {
           * If true, the flyout-multilevel is visualized as opened.
          */
         "open"?: boolean;
+        /**
+          * Private property set by the component itself.
+         */
         "primary"?: boolean;
         /**
           * Adapts the flyout-multilevel color depending on the theme.
@@ -4007,6 +4022,9 @@ declare namespace LocalJSX {
      * @experimental 
      */
     interface PFlyoutMultilevelItem {
+        /**
+          * Private property set by the component itself.
+         */
         "cascade"?: boolean;
         /**
           * Unique identifier which controls if this item should be shown when the active-identifier on the flyout-multilevel is set to this value.
@@ -4016,7 +4034,13 @@ declare namespace LocalJSX {
           * Label of the item.
          */
         "label"?: string;
+        /**
+          * Private property set by the component itself.
+         */
         "primary"?: boolean;
+        /**
+          * Private property set by the component itself.
+         */
         "secondary"?: boolean;
     }
     /**

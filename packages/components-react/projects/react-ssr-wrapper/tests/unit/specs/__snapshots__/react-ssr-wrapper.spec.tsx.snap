@@ -9789,6 +9789,8 @@ exports[`should render dsr component for PFlyoutMultilevel 1`] = `
       grid-template-columns: subgrid;
       overflow: hidden auto;
       overscroll-behavior-y: none;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
     }
     .dismiss-mobile {
       display: none;
@@ -9822,6 +9824,8 @@ exports[`should render dsr component for PFlyoutMultilevel 1`] = `
       grid-template-columns: subgrid;
       overflow: hidden auto;
       overscroll-behavior-y: none;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
     }
     .scroller::before {
       content: "";
