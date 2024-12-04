@@ -8,7 +8,7 @@ export type FlyoutMultilevelAriaAttribute = (typeof FLYOUT_MULTILEVEL_ARIA_ATTRI
 export const INTERNAL_UPDATE_EVENT_NAME = 'internalUpdate';
 
 export type FlyoutMultilevelUpdate = {
-  activeIdentifier: string;
+  activeIdentifier: string | undefined;
 };
 /** @deprecated */
 export type FlyoutMultilevelUpdateEvent = FlyoutMultilevelUpdate;
