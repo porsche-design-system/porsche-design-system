@@ -35,11 +35,14 @@ export function getLoaderScript(opts?: GetLoaderScriptOptions): string | JSX.Ele
 
   // there is no other solution than using dangerouslySetInnerHTML since JSX elements are rendered by the createElement() function
   // https://stackoverflow.com/a/64815699
-  return format === 'sha256'
-    ? getSha256Hash(scriptContent)
-    : format === 'html'
-      ? \`<script \$\{scriptAttributes\}>\${scriptContent}</script>\`
-      : <script {...scriptProps} dangerouslySetInnerHTML={{ __html: scriptContent }} />;
+  if (format === 'sha256') {
+    return getSha256Hash(scriptContent);
+  } else if (format === 'html') {
+    return \`<script \$\{scriptAttributes\}>\${scriptContent}</script>\`;
+  } else {
+    const jsxRuntime = require('react/jsx-runtime');
+    return jsxRuntime.jsx("script", { ...scriptProps, dangerouslySetInnerHTML: { __html: scriptContent } });
+  }
 }`;
 
   return [types, func].join('\n\n');

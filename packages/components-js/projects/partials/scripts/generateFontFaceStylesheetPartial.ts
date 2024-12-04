@@ -1,6 +1,6 @@
 import * as fs from 'fs';
-import { minifyHTML } from './utils';
 import { CDN_BASE_PATH_STYLES } from '../../../../../cdn.config';
+import { minifyHTML } from './utils';
 
 export const generateFontFaceStylesheetPartial = (): string => {
   const generatedUtilitiesPackage = fs.readFileSync(require.resolve('@porsche-design-system/font-face'), 'utf8');
@@ -19,9 +19,9 @@ export const generateFontFaceStylesheetPartial = (): string => {
     .replace('$URL', '${url}')
     .replace(/\$CDN_URL/g, '${cdnBaseUrl}');
   const linksJsx =
-    `<link rel="preconnect" href="$CDN_URL" crossOrigin="" /><link rel="dns-prefetch" href="$CDN_URL" crossOrigin="" /><link rel="stylesheet" href="$URL" type="text/css" crossOrigin="" />`
-      .replace('"$URL"', '{url}')
-      .replace(/"\$CDN_URL"/g, '{cdnBaseUrl}');
+    `jsxRuntime.jsx("link", { rel: "preconnect", href: $CDN_URL, crossOrigin: "" }), jsxRuntime.jsx("link", { rel: "dns-prefetch", href: $CDN_URL, crossOrigin: "" }), jsxRuntime.jsx("link", { rel: "stylesheet", href: $URL, type: "text/css", crossOrigin: "" })`
+      .replace('$URL', '{url}')
+      .replace(/\$CDN_URL/g, '{cdnBaseUrl}');
 
   const func = `export function getFontFaceStylesheet(opts: GetFontFaceStylesheetOptions & { format: 'jsx' }): JSX.Element;
 export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetOptions): string;
@@ -40,9 +40,12 @@ export function getFontFaceStylesheet(opts?: GetFontFaceStylesheetOptions): stri
     : '${cssFileCom}'
   }\`;
 
-  return format === 'html'
-    ? \`${linksHtml}\`
-    : <>${linksJsx}</>;
+  if (format === 'html') {
+    return \`${linksHtml}\`;
+  } else {
+    const jsxRuntime = require('react/jsx-runtime');
+    return jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [${linksJsx}] });
+  }
 }`;
 
   return [types, func].join('\n\n');

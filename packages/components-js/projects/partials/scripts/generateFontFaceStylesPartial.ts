@@ -25,11 +25,14 @@ export function getFontFaceStyles(opts?: GetFontFaceStylesOptions): string | JSX
 
   throwIfRunInBrowser('getFontFaceStyles');
 
-    return format === 'sha256'
-    ? getSha256Hash(styles)
-    : format === 'html'
-      ? \`<style \$\{styleAttributes\}>\${styles}</style>\`
-      : <style {...styleProps} dangerouslySetInnerHTML={{ __html: styles }} />;
+  if (format === 'sha256') {
+    return getSha256Hash(styles);
+  } else if (format === 'html') {
+    return \`<style \$\{styleAttributes\}>\${styles}</style>\`;
+  } else {
+    const jsxRuntime = require('react/jsx-runtime');
+    return jsxRuntime.jsx("style", { ...styleProps, dangerouslySetInnerHTML: { __html: styles } });
+  }
 }`;
 
   return [types, func].join('\n\n');

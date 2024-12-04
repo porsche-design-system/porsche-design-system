@@ -21,11 +21,14 @@ export function getDSRPonyfill(opts?: GetDSRPonyfillOptions): string | JSX.Eleme
 
   const scriptContent = \`${fileContent.trim()}\`;
 
-  return format === 'sha256'
-    ? getSha256Hash(scriptContent)
-    : format === 'html'
-      ? \`<script>\${scriptContent}</script>\`
-      : <script dangerouslySetInnerHTML={{ __html: scriptContent }} />;
+  if (format === 'sha256') {
+    return getSha256Hash(scriptContent);
+  } else if (format === 'html') {
+    return \`<script>\${scriptContent}</script>\`;
+  } else {
+    const jsxRuntime = require('react/jsx-runtime');
+    return jsxRuntime.jsx("script", { dangerouslySetInnerHTML: { __html: scriptContent } });
+  }
 }`;
 
   return [types, func].join('\n\n');

@@ -1,6 +1,6 @@
-import { minifyHTML } from './utils';
 import { META_ICONS_MANIFEST } from '@porsche-design-system/meta-icons';
 import { CDN_BASE_PATH_META_ICONS, CDN_BASE_URL_CN, CDN_BASE_URL_COM } from '../../../../../cdn.config';
+import { minifyHTML } from './utils';
 
 const convertToJSX = (templates: string[]): JSX.Element[] => {
   return templates.map(
@@ -63,6 +63,20 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
     `<link rel="manifest" href="$manifestUrl" />`,
   ];
 
+  const metaIconLinksJSX: string = [
+    `jsxRuntime.jsx("meta", { name: "theme-color", content: "#FFF", media: "(prefers-color-scheme:light)" })`,
+    `jsxRuntime.jsx("meta", { name: "theme-color", content: "#0E1418", media: "(prefers-color-scheme:dark)" })`,
+    `jsxRuntime.jsx("meta", { name: "mobile-web-app-capable", content: "yes" })`,
+    `jsxRuntime.jsx("meta", { name: "apple-mobile-web-app-status-bar-style", content: "default" })`,
+    `jsxRuntime.jsx("meta", { name: "apple-mobile-web-app-title", content: appTitle })`,
+    `jsxRuntime.jsx("meta", { name: "msapplication-TileImage", content: "${metaIconCDNPath}/${META_ICONS_MANIFEST.mstile.mstile_270x270}" })`,
+    `jsxRuntime.jsx("meta", { name: "msapplication-TileColor", content: "#FFF" })`,
+    `jsxRuntime.jsx("link", { rel: "icon", sizes: "any", href: "${metaIconCDNPath}/${META_ICONS_MANIFEST.favicon.favicon}" })`,
+    `jsxRuntime.jsx("link", { rel: "icon", type: "image/png", sizes: "32x32", href: "${metaIconCDNPath}/${META_ICONS_MANIFEST.favicon.favicon_32x32}" })`,
+    `jsxRuntime.jsx("link", { rel: "apple-touch-icon", href: "${metaIconCDNPath}/${META_ICONS_MANIFEST.touchIcon.appleTouchIcon_180x180}" })`,
+    `jsxRuntime.jsx("link", { rel: "manifest", href: manifestUrl })`,
+  ].join(',');
+
   const ogImageMeta = [
     `<meta property="og:title" content="$appTitle" />`,
     `<meta property="og:image" content='${metaIconCDNPath}/${META_ICONS_MANIFEST.openGraph.ogImage}' />`,
@@ -70,11 +84,17 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:image" content='${metaIconCDNPath}/${META_ICONS_MANIFEST.openGraph.ogImage}' />`,
   ];
+
+  const ogImageMetaJSX = [
+    `jsxRuntime.jsx("meta", { property: "og:title", content: appTitle })`,
+    `jsxRuntime.jsx("meta", { property: "og:image", content: "${metaIconCDNPath}/${META_ICONS_MANIFEST.openGraph.ogImage}" })`,
+    `jsxRuntime.jsx("meta", { name: "twitter:title", content: appTitle })`,
+    `jsxRuntime.jsx("meta", { name: "twitter:card", content: "summary_large_image" })`,
+    `jsxRuntime.jsx("meta", { name: "twitter:image", content: "${metaIconCDNPath}/${META_ICONS_MANIFEST.openGraph.ogImage}" })`,
+  ].join(',');
+
   const minifiedOgImageMeta = JSON.stringify(ogImageMeta.map((template) => minifyHTML(template)));
   const minifiedMetaIconsHTML = JSON.stringify(metaIconLinks.map((template) => minifyHTML(template)));
-
-  const metaIconTemplatesJSX = convertToJSX(metaIconLinks);
-  const ogImageMetaJSX = convertToJSX(ogImageMeta);
 
   const types = `type Metadata = {
   themeColor: { media: string, color: string }[];
@@ -125,18 +145,21 @@ export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): 
   const manifestUrl = cdn === 'auto' ? manifestUrlCom : manifestUrlCn;
 
   let metaIconTags = ${minifiedMetaIconsHTML};
-  let metaIconTagsJSX = [${metaIconTemplatesJSX}];
 
   if (ogImage) {
     metaIconTags = ${minifiedOgImageMeta}.concat(metaIconTags);
-    metaIconTagsJSX = [${ogImageMetaJSX}].concat(metaIconTagsJSX);
   }
   const meta = metaIconTags.map(metaIconTemplate => metaIconTemplate.replace('$appTitle', \`"\${appTitle}"\`).replace('$cdnBaseUrl', cdnBaseUrl).replace('$manifestUrl', manifestUrl));
 
   if (format === 'html') {
     return meta.join('');
   } else if (format === 'jsx') {
-    return <>{...metaIconTagsJSX}</>;
+    const jsxRuntime = require('react/jsx-runtime');
+    let metaIconTagsJSX = [${metaIconLinksJSX}];
+    if (ogImage) {
+      metaIconTagsJSX = [${ogImageMetaJSX}].concat(metaIconTagsJSX);
+    }
+    return jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [...metaIconTagsJSX] });
   } else {
     return ${metadata};
   }

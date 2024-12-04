@@ -1,7 +1,7 @@
-import type { Styles } from 'jss';
-import { getMinifiedCss, INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
-import { joinArrayElementsToString } from './utils';
+import { INTERNAL_TAG_NAMES, TAG_NAMES, getMinifiedCss } from '@porsche-design-system/shared';
 import { fontFamily, fontHyphenationStyle, fontLineHeight, fontWeight } from '@porsche-design-system/styles';
+import type { Styles } from 'jss';
+import { joinArrayElementsToString } from './utils';
 
 const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)));
 
@@ -63,11 +63,14 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
 
   const styles = globalStyles ? normalizeStyles.concat(hydrationStyles) : hydrationStyles;
 
-  return format === 'sha256'
-    ? getSha256Hash(styles)
-    : format === 'html'
-      ? \`<style \$\{styleAttributes\}>\${styles}</style>\`
-      : <style {...styleProps} dangerouslySetInnerHTML={{ __html: styles }} />;
+  if (format === 'sha256') {
+    return getSha256Hash(styles);
+  } else if (format === 'html') {
+    return \`<style \$\{styleAttributes\}>\${styles}</style>\`;
+  } else {
+    const jsxRuntime = require('react/jsx-runtime');
+    return jsxRuntime.jsx("style", { ...styleProps, dangerouslySetInnerHTML: { __html: styles } });
+  }
 }`;
 
   const helperFunction = `const getPrefixedTagNames = (tagNames: string[], prefix?: string | string[]): string[] => {
