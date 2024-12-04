@@ -21,11 +21,11 @@ const scenario = async (
   const markup = `
 <div class="playground light ${pseudoState}" title="should render :${pseudoState}" style="height: 10rem;">
   <p-flyout-multilevel open="true" active-identifier="id-1-1">
-    <p-flyout-multilevel-item class="id-1" identifier="id-1" label="Some Label">
-      <p-flyout-multilevel-item class="id-1-1" identifier="id-1-1" label="Some Label">
+    <p-flyout-multilevel-item identifier="id-1" label="Some Label">
+      <p-flyout-multilevel-item identifier="id-1-1" label="Some Label">
         <a href="#some-anchor">Some anchor</a>
       </p-flyout-multilevel-item>
-      <p-flyout-multilevel-item class="id-1-2" identifier="id-1-2" label="Some Label"></p-flyout-multilevel-item>
+      <p-flyout-multilevel-item identifier="id-1-2" label="Some Label"></p-flyout-multilevel-item>
     </p-flyout-multilevel-item>
   </p-flyout-multilevel>
 </div>`;
@@ -36,19 +36,16 @@ const scenario = async (
   });
 
   if (pseudoState === 'hover') {
-    await forceHoverState(page, '.id-1 >>> p-button-pure >>> button'); // Back button
-    await forceHoverState(page, '.id-1-1 >>> p-button-pure >>> button'); // Selected button
-    await forceHoverState(page, '.id-1-2 >>> p-button-pure >>> button'); // Sibling of selected button
+    await forceHoverState(page, 'p-flyout-multilevel >>> p-button-pure >>> button'); // Dismiss button
+    await forceHoverState(page, 'p-flyout-multilevel-item >>> p-button-pure >>> button'); // Back, Selected, Sibling button
     await forceHoverState(page, 'p-flyout-multilevel-item a');
   } else if (pseudoState === 'focus') {
-    await forceFocusVisibleState(page, '.id-1 >>> p-button-pure >>> button'); // Back button
-    await forceFocusVisibleState(page, '.id-1-1 >>> p-button-pure >>> button'); // Selected button
-    await forceFocusVisibleState(page, '.id-1-2 >>> p-button-pure >>> button'); // Sibling of selected button
+    await forceFocusVisibleState(page, 'p-flyout-multilevel >>> p-button-pure >>> button'); // Dismiss button
+    await forceFocusVisibleState(page, 'p-flyout-multilevel-item >>> p-button-pure >>> button'); // Back, Selected, Sibling button
     await forceFocusVisibleState(page, 'p-flyout-multilevel-item a');
   } else if (pseudoState === 'focus-hover') {
-    await forceFocusHoverState(page, '.id-1 >>> p-button-pure >>> button'); // Back button
-    await forceFocusHoverState(page, '.id-1-1 >>> p-button-pure >>> button'); // Selected button
-    await forceFocusHoverState(page, '.id-1-2 >>> p-button-pure >>> button'); // Sibling of selected button
+    await forceFocusHoverState(page, 'p-flyout-multilevel >>> p-button-pure >>> button'); // Dismiss button
+    await forceFocusHoverState(page, 'p-flyout-multilevel-item >>> p-button-pure >>> button'); // Back, Selected, Sibling button
     await forceFocusHoverState(page, 'p-flyout-multilevel-item a');
   }
 };
