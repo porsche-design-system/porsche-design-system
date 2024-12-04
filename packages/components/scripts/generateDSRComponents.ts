@@ -58,16 +58,16 @@ const generateDSRComponents = (): void => {
         .replace(/\n.+classList\.remove[\s\S]+?;/g, '')
         .replace(/\n.+parseJSON[\s\S]+?.*/g, '')
         .replace(/ as HTML[A-Za-z]+/g, '')
-        .replace(/\s+ref={.*?}$/g, '') // ref props
-        .replace(/\s+onMouseDown={.*?}$/g, '') // onMouseDown props
-        .replace(/\s+onClick={.*?}$/g, '') // onClick props
-        .replace(/\s+onCancel={.*?}$/g, '') // onCancel props
-        .replace(/\s+onDismiss={.*?}$/g, '') // onDismiss props
-        .replace(/\s+onKeyDown={.*?}$/g, '') // onKeyDown props
-        .replace(/\s+onPaste={.*?}$/g, '') // onPaste props
-        .replace(/\s+onInput={.*?}$/g, '') // onInput props
-        .replace(/\s+on(?:Tab)?Change={.*?}$/g, '') // onChange and onTabChange props
-        .replace(/\s+onUpdate={.*?}$/g, '') // onUpdate props
+        .replace(/\s+ref={.*?}/g, '') // ref props
+        .replace(/\s+onMouseDown={.*?}/g, '') // onMouseDown props
+        .replace(/\s+onClick={.*?}/g, '') // onClick props
+        .replace(/\s+onCancel={.*?}/g, '') // onCancel props
+        .replace(/\s+onDismiss={.*?}/g, '') // onDismiss props
+        .replace(/\s+onKeyDown={.*?}/g, '') // onKeyDown props
+        .replace(/\s+onPaste={.*?}/g, '') // onPaste props
+        .replace(/\s+onInput={.*?}/g, '') // onInput props
+        .replace(/\s+on(?:Tab)?Change={.*?}/g, '') // onChange and onTabChange props
+        .replace(/\s+onUpdate={.*?}/g, '') // onUpdate props
         .replace(/ +ref: [\s\S]*?,\n/g, '') // ref props
         .replace(/ +onClick: [\s\S]*?,\n/g, '') // onClick props
         .replace(/ +onKeyDown: [\s\S]*?,\n/g, '') // onKeyDown props
