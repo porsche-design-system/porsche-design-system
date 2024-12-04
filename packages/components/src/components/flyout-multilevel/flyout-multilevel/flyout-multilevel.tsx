@@ -65,7 +65,7 @@ export class FlyoutMultilevel {
   /** Defines which flyout-multilevel-item to be visualized as opened. */
   @Prop() public activeIdentifier?: string | undefined;
 
-  @Prop({ reflect: true }) public primary: boolean = true;
+  @Prop({ reflect: true }) public primary?: boolean = true;
 
   /** Adapts the flyout-multilevel color depending on the theme. */
   @Prop() public theme?: Theme = 'light';

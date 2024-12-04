@@ -814,7 +814,7 @@ export namespace Components {
           * If true, the flyout-multilevel is visualized as opened.
          */
         "open"?: boolean;
-        "primary": boolean;
+        "primary"?: boolean;
         /**
           * Adapts the flyout-multilevel color depending on the theme.
          */
