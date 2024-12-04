@@ -4,12 +4,6 @@ The `p-flyout-multilevel` component is meant for displaying an infinite multilev
 the page content from the start side of the screen. It is a controlled component that gives you flexible control over
 its behavior.
 
-<Notification heading="Scroll-lock" heading-tag="h2" state="warning">
-  This component sets <code>overflow: hidden</code> on the body when opened in order to prevent background scrolling.<br> 
-  This doesn't work completely reliable under iOS but is the most stable solution.<br>
-  Feel free to address this issue in an Open Source PR, if you can provide a better solution. <b><a href="https://github.com/porsche-design-system/porsche-design-system/blob/main/packages/components/src/utils/setScrollLock.ts">Current implementation</a></b><br>
-</Notification>
-
 <TableOfContents></TableOfContents>
 
 ## Basic
@@ -19,8 +13,9 @@ structure. The levels are generated out of `p-flyout-multilevel-item` which gene
 navigate to a deeper level. These items can be filled with slotted `<a/>` as children which are styled automatically by
 the component, another `p-flyout-multilevel-item` or other components like e.g. `p-link-tile`.
 
-The most important property of `p-flyout-multilevel` is its `open` property. When it is set to `true` the flyout will be
-visible.
+The visibility of `p-flyout-multilevel` can be controlled by its `open` property.
+
+It's **obligatory** that each `p-flyout-multilevel-item` has a unique `identifier` defined.
 
 Since it's a controlled component it's necessary to register an event listener for the `dismiss` and `update` event in
 order to get notified when `p-flyout-multilevel` needs to be closed or navigated to another hierarchy level.
