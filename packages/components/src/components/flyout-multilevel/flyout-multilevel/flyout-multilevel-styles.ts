@@ -2,10 +2,6 @@ import {
   frostedGlassStyle,
   getMediaQueryMax,
   getMediaQueryMin,
-  motionDurationLong,
-  motionDurationModerate,
-  motionEasingBase,
-  motionEasingIn,
   spacingFluidLarge,
   spacingFluidMedium,
   spacingFluidSmall,
@@ -17,6 +13,7 @@ import {
   colorSchemeStyles,
   cssVariableTransitionDuration,
   dismissButtonJssStyle,
+  getAnimation,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -114,7 +111,7 @@ export const getComponentCss = (
             height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
             paddingBlockEnd: spacingFluidLarge,
             ...(isPrimary && {
-              animation: `slide-up-mobile ${motionDurationModerate} ${motionEasingBase}`,
+              animation: getAnimation('slide-up-mobile', 'moderate', 'base'),
             }),
           }),
         },
@@ -126,7 +123,7 @@ export const getComponentCss = (
           height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
           paddingBlockEnd: spacingFluidLarge,
           ...(isPrimary && {
-            animation: `slide-up-desktop ${motionDurationModerate} ${motionEasingBase}`,
+            animation: getAnimation('slide-up-desktop', 'moderate', 'base'),
           }),
         },
       },
@@ -221,10 +218,10 @@ export const getComponentCss = (
         },
       },
       [`.${animatePrimaryClass} &::before`]: {
-        animation: `fade-in ${motionDurationLong} ${motionEasingIn}`,
+        animation: getAnimation('fade-in', 'long', 'in'),
       },
       [`.${animateSecondaryClass} &::after`]: {
-        animation: `fade-in ${motionDurationLong} ${motionEasingIn}`,
+        animation: getAnimation('fade-in', 'long', 'in'),
       },
     },
     scroller: {

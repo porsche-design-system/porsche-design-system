@@ -154,7 +154,7 @@ export class FlyoutMultilevel {
             icon="arrow-left"
             theme={this.theme}
             hideLabel={true}
-            onClick={this.emitCloseSecondaryUpdate}
+            onClick={() => this.emitCloseSecondaryUpdate()}
           >
             Back
           </PrefixedTagNames.pButtonPure>

@@ -1,8 +1,6 @@
 import {
   borderRadiusSmall,
   headingSmallStyle,
-  motionDurationModerate,
-  motionEasingBase,
   spacingFluidLarge,
   spacingFluidMedium,
   spacingFluidSmall,
@@ -13,6 +11,7 @@ import {
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  getAnimation,
   getFocusJssStyle,
   getThemedColors,
   getTransition,
@@ -63,7 +62,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
             gridArea: '4/2/auto/-2',
             height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
             paddingBlockEnd: spacingFluidLarge,
-            animation: `slide-up-mobile ${motionDurationModerate} ${motionEasingBase}`,
+            animation: getAnimation('slide-up-mobile', 'moderate', 'base'),
           }),
           ...((isPrimary || isCascade) && {
             display: 'contents',
@@ -75,7 +74,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
             flexDirection: 'column',
             gap: spacingFluidXSmall,
             height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
-            animation: `slide-up-desktop-${isPrimary ? 'primary' : 'secondary'} ${motionDurationModerate} ${motionEasingBase}`,
+            animation: getAnimation(`slide-up-desktop-${isPrimary ? 'primary' : 'secondary'}`, 'moderate', 'base'),
           }),
           ...(isSecondary && {
             gridArea: '2/2/auto/-2',

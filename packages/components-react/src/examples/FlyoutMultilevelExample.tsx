@@ -1,14 +1,15 @@
-import { useCallback, useState } from 'react';
 import {
   type FlyoutMultilevelUpdateEventDetail,
   PButton,
   PFlyoutMultilevel,
   PFlyoutMultilevelItem,
 } from '@porsche-design-system/components-react';
+import { useCallback, useState } from 'react';
 
 export const FlyoutMultilevelExamplePage = (): JSX.Element => {
   const [isFlyoutMultilevelOpen, setIsFlyoutMultilevelOpen] = useState<boolean>(false);
-  const [flyoutMultilevelActiveIdentifier, setFlyoutMultilevelActiveIdentifier] = useState<string>();
+  const [flyoutMultilevelActiveIdentifier, setFlyoutMultilevelActiveIdentifier] =
+    useState<FlyoutMultilevelUpdateEventDetail['activeIdentifier']>(undefined);
   const onOpen = useCallback(() => {
     setIsFlyoutMultilevelOpen(true);
   }, []);
