@@ -824,7 +824,7 @@ export namespace Components {
      * @experimental 
      */
     interface PFlyoutMultilevelItem {
-        "cascade": boolean;
+        "cascade"?: boolean;
         /**
           * Unique identifier which controls if this item should be shown when the active-identifier on the flyout-multilevel is set to this value.
          */
@@ -833,8 +833,8 @@ export namespace Components {
           * Label of the item.
          */
         "label"?: string;
-        "primary": boolean;
-        "secondary": boolean;
+        "primary"?: boolean;
+        "secondary"?: boolean;
     }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
