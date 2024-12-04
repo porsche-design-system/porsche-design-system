@@ -364,6 +364,8 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
       grid-template-columns: subgrid;
       overflow: hidden auto;
       overscroll-behavior-y: none;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
     }
 }
 
@@ -378,6 +380,8 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
       grid-area: 1/1/-1/-1;
       overflow: hidden auto;
       overscroll-behavior-y: none;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
     }
     .scroller::before {
       z-index: 1;
@@ -531,6 +535,8 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
       grid-template-columns: subgrid;
       overflow: hidden auto;
       overscroll-behavior-y: none;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
     }
 }
 
@@ -545,6 +551,8 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
       grid-area: 1/1/-1/-1;
       overflow: hidden auto;
       overscroll-behavior-y: none;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
     }
     .scroller::before {
       z-index: 1;
@@ -952,6 +960,8 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
       grid-template-columns: subgrid;
       overflow: hidden auto;
       overscroll-behavior-y: none;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
     }
     .back {
       width: fit-content;
@@ -971,6 +981,8 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
       grid-area: 1/1/-1/-1;
       overflow: hidden auto;
       overscroll-behavior-y: none;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
     }
     .scroller::before {
       z-index: 1;
@@ -1131,6 +1143,8 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
       grid-template-columns: subgrid;
       overflow: hidden auto;
       overscroll-behavior-y: none;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
     }
     .back {
       width: fit-content;
@@ -1150,6 +1164,8 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
       grid-area: 1/1/-1/-1;
       overflow: hidden auto;
       overscroll-behavior-y: none;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
     }
     .scroller::before {
       z-index: 1;
