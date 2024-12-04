@@ -2594,6 +2594,7 @@ exports[`should match snapshot 1`] = `
     "isThemeable": true,
     "nestedComponents": [
       "p-button-pure",
+      "p-button",
     ],
     "propsMeta": {
       "activeIdentifier": {
@@ -2615,6 +2616,12 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "If true, the flyout-multilevel is visualized as opened.",
+        "type": "boolean",
+      },
+      "primary": {
+        "allowedValues": "boolean",
+        "defaultValue": true,
+        "isRequired": true,
         "type": "boolean",
       },
       "theme": {
@@ -2650,6 +2657,12 @@ exports[`should match snapshot 1`] = `
       "p-button-pure",
     ],
     "propsMeta": {
+      "cascade": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "isRequired": true,
+        "type": "boolean",
+      },
       "identifier": {
         "allowedValues": "string",
         "defaultValue": null,
@@ -2663,8 +2676,23 @@ exports[`should match snapshot 1`] = `
         "description": "Label of the item.",
         "type": "string",
       },
+      "primary": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "isRequired": true,
+        "type": "boolean",
+      },
+      "secondary": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "isRequired": true,
+        "type": "boolean",
+      },
     },
-    "requiredParent": "p-flyout-multilevel",
+    "requiredParent": [
+      "p-flyout-multilevel",
+      "p-flyout-multilevel-item",
+    ],
     "slotsMeta": {
       "": {
         "description": "Default slot for the main content.",
