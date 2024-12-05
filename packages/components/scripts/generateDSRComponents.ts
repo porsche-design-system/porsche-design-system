@@ -599,8 +599,8 @@ $&`
         newFileContent = newFileContent
           .replace(/validateActiveIdentifier\(.*\);/g, '')
           .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2") // transform true to empty string '';
-          .replace(/this\.props\.primary =/, 'this.primary =')
-          .replace(/this\.props\.isSecondaryDrawerVisible =/, 'this.isSecondaryDrawerVisible =');
+          .replace(/this\.props\.primary = !activeItem \|\| activeItem\.parentElement === this\.props;/, '')
+          .replace(/this\.props\.isSecondaryDrawerVisible = !!this\.props\.activeIdentifier;/, '');
       } else if (tagName === 'p-flyout-multilevel-item') {
         newFileContent = newFileContent
           .replace(/: Theme/g, ': any')
