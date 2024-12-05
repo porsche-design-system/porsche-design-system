@@ -39,7 +39,13 @@ export const config: Config = {
   snapshotPathTemplate: '{testDir}/__screenshots__/{arg}-{projectName}{ext}',
   use: {
     ...(process.env.CI
-      ? {}
+      ? {
+          toHaveScreenshot: {
+            options: {
+              animations: 'disabled',
+            },
+          },
+        }
       : {
           toMatchSnapshot: {
             maxDiffPixelRatio: 0,
@@ -50,6 +56,9 @@ export const config: Config = {
             maxDiffPixelRatio: 0,
             maxDiffPixels: 0,
             threshold: 0, // default Playwright threshold
+            options: {
+              animations: 'disabled',
+            },
           },
         }),
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
