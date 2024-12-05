@@ -1,8 +1,8 @@
-import { Locator, type Page } from '@playwright/test';
-import { test, expect } from '../helpers';
 import * as fs from 'fs';
 import * as path from 'path';
+import { Locator, type Page } from '@playwright/test';
 import { schemes } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { expect, test } from '../helpers';
 
 const console = require('console'); // workaround for nicer logs
 
@@ -53,8 +53,10 @@ test('should have successfully extracted :root styles', () => {
 });
 
 test.describe('storefront pages', () => {
-  // filter out files from public/assets directory
-  const internalUrls = ['/ag-grid/theme'];
+  // filter out files from public/assets directory and ag-grid
+  const internalUrls = getInternalUrls().filter(
+    (url) => !url.match(/^\/assets\/.*\.\w{3,4}$/) && !url.includes('/ag-grid/theme')
+  );
 
   schemes.forEach((scheme) => {
     for (const [url, index] of internalUrls.map<[string, number]>((url, i) => [url, i])) {

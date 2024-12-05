@@ -180,6 +180,7 @@ export class Carousel {
   private btnNext: HTMLPButtonPureElement;
   private paginationEl: HTMLElement;
   private slides: HTMLElement[] = [];
+  private splideSlides: HTMLElement[] = [];
 
   private get hasNavigation(): boolean {
     return this.slidesPerPage === 'auto' || this.amountOfPages > 1;
@@ -200,6 +201,7 @@ export class Carousel {
       // on reconnect we can reuse the splide instance
       this.updateSlidesAndPagination();
       this.registerSplideHandlers(this.splide);
+      this.getSplideSlides();
     }
   }
 
@@ -219,7 +221,7 @@ export class Carousel {
   }
 
   public componentDidLoad(): void {
-    this.observeSlides(); // initial, adjust tabindex and aria attributes on slides
+    this.observeSlides(); // initial, adjust aria attributes on slides
     this.splide = new Splide(this.container, {
       start: this.activeSlideIndex,
       autoWidth: this.slidesPerPage === 'auto', // https://splidejs.com/guides/auto-width/#auto-width
@@ -243,6 +245,7 @@ export class Carousel {
     });
 
     this.registerSplideHandlers(this.splide);
+    this.getSplideSlides();
   }
 
   public componentDidUpdate(): void {
@@ -256,7 +259,7 @@ export class Carousel {
 
   public disconnectedCallback(): void {
     unobserveChildren(this.host);
-    unobserveChildren(this.container); // adjust tabindex and aria attributes on slides
+    unobserveChildren(this.container); // adjust aria attributes on slides
     unobserveBreakpointChange(this.host);
     this.splide.destroy();
   }
@@ -378,7 +381,7 @@ export class Carousel {
           <div class="splide__track">
             <div class="splide__list">
               {this.slides.map((_, i) => (
-                <div key={i} class="splide__slide">
+                <div key={i} class="splide__slide" tabIndex={0}>
                   <slot name={`slide-${i}`} />
                 </div>
               ))}
@@ -435,7 +438,7 @@ export class Carousel {
 
   private onNextKeyDown = (e: KeyboardEvent): void => {
     if (e.key === 'Tab' && !e.shiftKey) {
-      const activeSlide = this.slides.at(this.splide.index);
+      const activeSlide = this.splideSlides.at(this.splide.index);
       activeSlide.focus();
       e.preventDefault();
     }
@@ -446,9 +449,11 @@ export class Carousel {
   private onSplideFocusIn = (e: FocusEvent & { target: HTMLElement }): void => {
     const { target } = e;
     const { index: splideIndex } = this.splide;
-    const slideIndexOfFocusedElement = this.slides.findIndex((slide) => slide.contains(target)); // focussed element is slot or within slide, e.g. link or button
-    const slideIsVisible =
-      this.splide.Components.Elements.slides[slideIndexOfFocusedElement].classList.contains('is-visible');
+    const slideIndexOfFocusedElement = this.splideSlides.findIndex(
+      (slide) => slide.querySelector('slot').assignedElements()[0].contains(target) || slide.contains(target)
+    ); // focussed element is slot or within slide, e.g. link or button
+
+    const slideIsVisible = this.splideSlides[slideIndexOfFocusedElement].classList.contains('is-visible');
 
     if (splideIndex !== slideIndexOfFocusedElement) {
       if (slideIndexOfFocusedElement > splideIndex && (!slideIsVisible || this.focusOnCenterSlide)) {
@@ -464,11 +469,16 @@ export class Carousel {
     observeChildren(
       this.container,
       () => {
-        for (const el of this.splide.Components.Elements.slides) {
+        for (const el of this.splideSlides) {
           el.removeAttribute('aria-hidden');
+          el.setAttribute('tabindex', '0');
         }
       },
       ['aria-hidden']
     );
+  }
+
+  private getSplideSlides(): void {
+    this.splideSlides = this.splide.Components.Elements.slides;
   }
 }
