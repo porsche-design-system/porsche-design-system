@@ -79,8 +79,8 @@ export class FlyoutMultilevel {
   }
 
   @Watch('activeIdentifier')
-  public activeIdentifierChangeHandler(newVal: string | undefined, oldVal: string | undefined): void {
-    this.updateFlyoutMultiLevelState(oldVal, newVal);
+  public async activeIdentifierChangeHandler(newVal: string | undefined, oldVal: string | undefined): Promise<void> {
+    await this.updateFlyoutMultiLevelState(oldVal, newVal);
   }
 
   @Watch('theme')
@@ -95,10 +95,10 @@ export class FlyoutMultilevel {
     this.update.emit({ activeIdentifier });
   }
 
-  public componentWillLoad(): void {
-    this.defineFlyoutMultilevelItemElements();
-    this.updateFlyoutMultiLevelState(undefined, this.activeIdentifier);
+  public async componentWillLoad(): Promise<void> {
     syncThemeToItems(this.theme, this.flyoutMultilevelItemElements);
+    this.defineFlyoutMultilevelItemElements();
+    await this.updateFlyoutMultiLevelState(undefined, this.activeIdentifier);
   }
 
   public componentDidLoad(): void {
@@ -111,10 +111,6 @@ export class FlyoutMultilevel {
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
-  }
-
-  public componentWillRender(): void {
-    this.animateFadeIn('::after');
   }
 
   public componentDidRender(): void {
@@ -217,14 +213,35 @@ export class FlyoutMultilevel {
     }
   }
 
-  private updateFlyoutMultiLevelState(oldVal: string | undefined, newVal: string | undefined): void {
+  // TODO: Unnecessary to call animation in willLoad
+  private async updateFlyoutMultiLevelState(oldVal: string | undefined, newVal: string | undefined): Promise<void> {
     const oldItem = oldVal && this.flyoutMultilevelItemElements.find((item) => item.identifier === oldVal);
     const newItem = newVal && this.flyoutMultilevelItemElements.find((item) => item.identifier === newVal);
-    updateFlyoutMultiLevelState(this.host, oldItem, false); // Reset old state
-    updateFlyoutMultiLevelState(this.host, newItem, true); // Set new state
-    // Whenever the hierarchy changes we need to animate the primary side
-    if (newVal && oldVal && oldItem.parentElement !== newItem.parentElement) {
-      this.animateFadeIn('::before');
+
+    // Secondary Drawer is closed => only update state
+    if (!newItem) {
+      this.updateStates(oldItem, newItem);
+    }
+
+    // Secondary Drawer is opened => update state + fade in
+    if (!oldItem) {
+      this.updateStates(oldItem, newItem);
+      this.animateDrawerFade('::after', 'in');
+    }
+
+    // Active item is changed => fade out + update state + fade in
+    if (newItem && oldItem) {
+      const isHierarchyChanged = oldItem.parentElement !== newItem.parentElement;
+      const animations = [
+        this.animateDrawerFade('::after', 'out'),
+        isHierarchyChanged && this.animateDrawerFade('::before', 'out'),
+      ].filter(Boolean);
+
+      await Promise.all(animations.map((a) => a.finished));
+      updateFlyoutMultiLevelState(this.host, oldItem, false);
+      updateFlyoutMultiLevelState(this.host, newItem, true);
+      isHierarchyChanged && this.animateDrawerFade('::before', 'in');
+      this.animateDrawerFade('::after', 'in');
     }
   }
 
@@ -232,7 +249,14 @@ export class FlyoutMultilevel {
     this.update.emit({ activeIdentifier: undefined });
   }
 
-  private animateFadeIn(pseudoElement: '::before' | '::after'): void {
-    this.drawer?.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 400, pseudoElement });
+  private updateStates(oldItem: Item | undefined, newItem: Item | undefined): void {
+    updateFlyoutMultiLevelState(this.host, oldItem, false); // Reset old state
+    updateFlyoutMultiLevelState(this.host, newItem, true); // Set new state
+  }
+
+  private animateDrawerFade(pseudoElement: '::before' | '::after', direction: 'in' | 'out'): Animation {
+    const keyframes = direction === 'in' ? [{ opacity: 1 }, { opacity: 0 }] : [{ opacity: 0 }, { opacity: 1 }];
+    const duration = direction === 'in' ? 400 : 150;
+    return this.drawer?.animate(keyframes, { duration, pseudoElement });
   }
 }
