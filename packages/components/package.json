@@ -61,7 +61,6 @@
     "@rollup/plugin-replace": "*",
     "concurrently": "*",
     "globby": "*",
-    "lit": "*",
     "jss": "*",
     "jss-plugin-sort-css-media-queries": "*",
     "jss-preset-default": "*",

@@ -182,8 +182,7 @@
     "change-case": "^5.4.4",
     "jss": "^10.10.0",
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
-    "jss-preset-default": "^10.10.0",
-    "lit": "^3.2.1"
+    "jss-preset-default": "^10.10.0"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.1",
