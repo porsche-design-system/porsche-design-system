@@ -32,8 +32,6 @@ const getFlyoutMultilevelItem = (page: Page, identifier: string) =>
   page.locator(`p-flyout-multilevel-item[identifier="${identifier}"] .button`);
 const getFlyoutMultilevelItemScroller = (page: Page, identifier: string) =>
   page.locator(`p-flyout-multilevel-item[identifier="${identifier}"] .scroller`);
-const getFlyoutMultilevelItemDrawerDisplay = async (page: Page, identifier: string) =>
-  await getElementStyle(getFlyoutMultilevelItemScroller(page, identifier), 'display');
 const getBodyStyle = async (page: Page) => getAttribute(page.locator('body'), 'style');
 
 const waitForFlyoutTransition = async () => sleep(CSS_TRANSITION_DURATION);
@@ -475,33 +473,33 @@ test.describe('second level', () => {
   test('should have hidden second level when no activeIdentifier is set', async ({ page }) => {
     await initBasicFlyoutMultilevel(page, { open: false });
     await openFlyoutMultilevel(page);
-    expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-1')).toBe('none');
-    expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-2')).toBe('none');
-    expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-3')).toBe('none');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-3')).toHaveCSS('display', 'none');
   });
 
   test('should have correct second level open when activeIdentifier is set', async ({ page }) => {
     await initBasicFlyoutMultilevel(page, { open: false, activeIdentifier: 'item-2' });
     await openFlyoutMultilevel(page);
-    expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-1')).toBe('none');
-    expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-2')).toBe('grid');
-    expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-3')).toBe('none');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-2')).toHaveCSS('display', 'grid');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-3')).toHaveCSS('display', 'none');
   });
 
   test('should open correct second level when setting activeIdentifier', async ({ page }) => {
     await initBasicFlyoutMultilevel(page, { open: false });
     await openFlyoutMultilevel(page);
     const host = getHost(page);
-    expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-1')).toBe('none');
-    expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-2')).toBe('none');
-    expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-3')).toBe('none');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-3')).toHaveCSS('display', 'none');
 
     await setProperty(host, 'activeIdentifier', 'item-3');
     await waitForStencilLifecycle(page);
 
-    expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-1')).toBe('none');
-    expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-2')).toBe('none');
-    expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-3')).toBe('grid');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-3')).toHaveCSS('display', 'grid');
   });
 
   skipInBrowsers(['webkit'], () => {
@@ -509,16 +507,16 @@ test.describe('second level', () => {
       await initBasicFlyoutMultilevel(page, { open: false, activeIdentifier: 'item-2' });
       await openFlyoutMultilevel(page);
       const host = getHost(page);
-      expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-1')).toBe('none');
-      expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-2')).toBe('grid');
-      expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-3')).toBe('none');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-2')).toHaveCSS('display', 'grid');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-3')).toHaveCSS('display', 'none');
 
       await setProperty(host, 'activeIdentifier', 'item-3');
       await waitForStencilLifecycle(page);
 
-      expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-1')).toBe('none');
-      expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-2')).toBe('none');
-      expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-3')).toBe('grid');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-3')).toHaveCSS('display', 'grid');
     });
   });
 
@@ -529,9 +527,9 @@ test.describe('second level', () => {
       await initBasicFlyoutMultilevel(page, { open: true });
       const host = getHost(page);
 
-      expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-1')).toBe('none');
-      expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-2')).toBe('none');
-      expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-3')).toBe('none');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-3')).toHaveCSS('display', 'none');
       await expect(getFlyoutMultilevelItem(page, 'item-4')).toHaveCount(0);
 
       await host.evaluate((el) => {
@@ -543,17 +541,17 @@ test.describe('second level', () => {
 
       const item4 = getFlyoutMultilevelItem(page, 'item-4');
       expect(item4).toBeDefined();
-      expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-1')).toBe('none');
-      expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-2')).toBe('none');
-      expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-3')).toBe('none');
-      expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-4')).toBe('none');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-3')).toHaveCSS('display', 'none');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-4')).toHaveCSS('display', 'none');
 
       await setProperty(host, 'activeIdentifier', 'item-4');
       await waitForStencilLifecycle(page);
-      expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-1')).toBe('none');
-      expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-2')).toBe('none');
-      expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-3')).toBe('none');
-      expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-4')).toBe('grid');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-3')).toHaveCSS('display', 'none');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-4')).toHaveCSS('display', 'grid');
     });
   });
 
@@ -561,17 +559,17 @@ test.describe('second level', () => {
     await initBasicFlyoutMultilevel(page, { open: true, activeIdentifier: 'item-3' });
     const host = getHost(page);
 
-    expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-1')).toBe('none');
-    expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-2')).toBe('none');
-    expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-3')).toBe('grid');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-3')).toHaveCSS('display', 'grid');
 
     await host.evaluate((el) => {
       el.removeChild(el.lastElementChild);
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-1')).toBe('none');
-    expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-2')).toBe('none');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
     await expect(getFlyoutMultilevelItem(page, 'item-3')).toHaveCount(0);
   });
 
@@ -590,10 +588,10 @@ test.describe('second level', () => {
         });
 
         await waitForStencilLifecycle(page);
-        expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-1')).toBe('none');
-        expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-2')).toBe('none');
-        expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-3')).toBe('none');
-        expect(await getFlyoutMultilevelItemDrawerDisplay(page, 'item-4')).toBe('grid');
+        await expect(getFlyoutMultilevelItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+        await expect(getFlyoutMultilevelItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
+        await expect(getFlyoutMultilevelItemScroller(page, 'item-3')).toHaveCSS('display', 'none');
+        await expect(getFlyoutMultilevelItemScroller(page, 'item-4')).toHaveCSS('display', 'grid');
       }
     );
   });
