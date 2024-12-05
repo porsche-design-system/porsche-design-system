@@ -21,10 +21,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Fixed
 
+- Partials: error when using in projects without `react/jsx-runtime` as dependency
+  ([#3660](https://github.com/porsche-design-system/porsche-design-system/pull/3660))
 - `Textfield Wrapper`: text alignment of type `email` and `tel` values in RTL mode
   ([3655](https://github.com/porsche-design-system/porsche-design-system/pull/3655))
-- `Popover`: Rendering bug of drop-shadow in Safari 18.x
-  ([3622](https://github.com/porsche-design-system/porsche-design-system/pull/3622))
+- `Popover`:
+  - Rendering bug of drop-shadow in Safari 18.x
+    ([3622](https://github.com/porsche-design-system/porsche-design-system/pull/3622))
+  - Positioning in RTL mode if rendered inside a table (in #top-layer)
+    ([3658](https://github.com/porsche-design-system/porsche-design-system/pull/3658))
 
 ### [3.22.0-rc.0] - 2024-11-19
 
