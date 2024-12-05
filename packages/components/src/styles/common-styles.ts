@@ -62,12 +62,7 @@ export const getAnimation = (
   duration: MotionDurationKey = 'short',
   easing: keyof typeof motionEasingMap = 'base'
 ): string => {
-  const animationDuration =
-    ROLLUP_REPLACE_IS_STAGING !== 'production'
-      ? `var(${cssVariableAnimationDuration}, ${motionDurationMap[duration]})`
-      : motionDurationMap[duration];
-
-  return `${name} ${animationDuration} ${motionEasingMap[easing]}`;
+  return `${name} var(${cssVariableAnimationDuration}, ${motionDurationMap[duration]}) ${motionEasingMap[easing]}`;
 };
 
 export const getTransition = (
