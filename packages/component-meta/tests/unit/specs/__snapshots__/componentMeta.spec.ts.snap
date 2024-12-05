@@ -2618,12 +2618,6 @@ exports[`should match snapshot 1`] = `
         "description": "If true, the flyout-multilevel is visualized as opened.",
         "type": "boolean",
       },
-      "primary": {
-        "allowedValues": "boolean",
-        "defaultValue": true,
-        "description": "Private property set by the component itself.",
-        "type": "boolean",
-      },
       "theme": {
         "allowedValues": [
           "light",
