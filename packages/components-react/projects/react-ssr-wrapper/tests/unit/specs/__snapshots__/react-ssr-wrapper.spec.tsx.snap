@@ -9756,6 +9756,9 @@ exports[`should render dsr component for PFlyoutMultilevel 1`] = `
     transform: translate3d(-100%,0,0);
     transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   }
+  .drawer:dir(rtl) {
+    transform: translate3d(100%,0,0);
+  }
   .drawer::before, .drawer::after {
     content: "";
     position: relative;
@@ -9795,8 +9798,8 @@ exports[`should render dsr component for PFlyoutMultilevel 1`] = `
     .dismiss-desktop {
       --p-internal-icon-filter: invert(1);
       position: absolute;
-      left: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
-      top: clamp(8px, 0.5vw + 6px, 16px);
+      inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
+      inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
       padding: 8px;
     }
 }
