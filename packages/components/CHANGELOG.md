@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Fixed
 
+- Partials: error when using in projects without `react/jsx-runtime` as dependency
+  ([#3660](https://github.com/porsche-design-system/porsche-design-system/pull/3660))
 - `Textfield Wrapper`: text alignment of type `email` and `tel` values in RTL mode
   ([3655](https://github.com/porsche-design-system/porsche-design-system/pull/3655))
 - `Popover`:
