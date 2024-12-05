@@ -17,14 +17,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isPrimar
     margin-block-start: 0px;
   }
 }
-@keyframes fade-in {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
   :host {
     display: block;
     color-scheme: light dark !important;
@@ -55,7 +47,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isPrimar
       grid-area: 2/2/auto/-2;
       height: fit-content;
       padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-desktop 0.4s cubic-bezier(0.25,0.1,0.25,1);
+      animation: slide-up-desktop var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
     }
 }
 
@@ -82,12 +74,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isPrimar
     z-index: 2;
     pointer-events: none;
     opacity: 0;
-  }
-  .animate-primary .drawer::before {
-    animation: fade-in 0.6s cubic-bezier(0,0,0.2,1);
-  }
-  .animate-secondary .drawer::after {
-    animation: fade-in 0.6s cubic-bezier(0,0,0.2,1);
   }
   .back {
     display: none;
@@ -184,14 +170,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     margin-block-start: 0px;
   }
 }
-@keyframes fade-in {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
   :host {
     display: block;
     color-scheme: light dark !important;
@@ -254,12 +232,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     z-index: 2;
     pointer-events: none;
     opacity: 0;
-  }
-  .animate-primary .drawer::before {
-    animation: fade-in 0.6s cubic-bezier(0,0,0.2,1);
-  }
-  .animate-secondary .drawer::after {
-    animation: fade-in 0.6s cubic-bezier(0,0,0.2,1);
   }
   .back {
     display: none;
@@ -362,14 +334,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     margin-block-start: 0px;
   }
 }
-@keyframes fade-in {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
   :host {
     display: block;
     color-scheme: light dark !important;
@@ -432,12 +396,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     z-index: 2;
     pointer-events: none;
     opacity: 0;
-  }
-  .animate-primary .drawer::before {
-    animation: fade-in 0.6s cubic-bezier(0,0,0.2,1);
-  }
-  .animate-secondary .drawer::after {
-    animation: fade-in 0.6s cubic-bezier(0,0,0.2,1);
   }
   .back {
     display: none;
@@ -534,14 +492,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     margin-block-start: 0px;
   }
 }
-@keyframes fade-in {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
   :host {
     display: block;
     color-scheme: light dark !important;
@@ -575,7 +525,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       grid-area: 2/2/auto/-2;
       height: fit-content;
       padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-desktop 0.4s cubic-bezier(0.25,0.1,0.25,1);
+      animation: slide-up-desktop var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
     }
 }
 
@@ -588,7 +538,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       grid-area: 4/2/auto/-2;
       height: fit-content;
       padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-mobile 0.4s cubic-bezier(0.25,0.1,0.25,1);
+      animation: slide-up-mobile var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
     }
 }
 
@@ -606,12 +556,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     z-index: 2;
     pointer-events: none;
     opacity: 0;
-  }
-  .animate-primary .drawer::before {
-    animation: fade-in 0.6s cubic-bezier(0,0,0.2,1);
-  }
-  .animate-secondary .drawer::after {
-    animation: fade-in 0.6s cubic-bezier(0,0,0.2,1);
   }
   .back {
     display: none;
@@ -714,14 +658,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     margin-block-start: 0px;
   }
 }
-@keyframes fade-in {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
   :host {
     display: block;
     color-scheme: light dark !important;
@@ -755,7 +691,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       grid-area: 2/2/auto/-2;
       height: fit-content;
       padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-desktop 0.4s cubic-bezier(0.25,0.1,0.25,1);
+      animation: slide-up-desktop var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
     }
 }
 
@@ -788,12 +724,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     z-index: 2;
     pointer-events: none;
     opacity: 0;
-  }
-  .animate-primary .drawer::before {
-    animation: fade-in 0.6s cubic-bezier(0,0,0.2,1);
-  }
-  .animate-secondary .drawer::after {
-    animation: fade-in 0.6s cubic-bezier(0,0,0.2,1);
   }
   .back {
     display: none;
@@ -926,14 +856,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     margin-block-start: 0px;
   }
 }
-@keyframes fade-in {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
   :host {
     display: block;
     color-scheme: light dark !important;
@@ -967,7 +889,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       grid-area: 2/2/auto/-2;
       height: fit-content;
       padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-desktop 0.4s cubic-bezier(0.25,0.1,0.25,1);
+      animation: slide-up-desktop var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
     }
 }
 
@@ -994,12 +916,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     z-index: 2;
     pointer-events: none;
     opacity: 0;
-  }
-  .animate-primary .drawer::before {
-    animation: fade-in 0.6s cubic-bezier(0,0,0.2,1);
-  }
-  .animate-secondary .drawer::after {
-    animation: fade-in 0.6s cubic-bezier(0,0,0.2,1);
   }
   .back {
     display: none;
@@ -1096,14 +1012,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     margin-block-start: 0px;
   }
 }
-@keyframes fade-in {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
   :host {
     display: block;
     color-scheme: light dark !important;
@@ -1137,7 +1045,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       grid-area: 2/2/auto/-2;
       height: fit-content;
       padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-desktop 0.4s cubic-bezier(0.25,0.1,0.25,1);
+      animation: slide-up-desktop var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
     }
 }
 
@@ -1164,12 +1072,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     z-index: 2;
     pointer-events: none;
     opacity: 0;
-  }
-  .animate-primary .drawer::before {
-    animation: fade-in 0.6s cubic-bezier(0,0,0.2,1);
-  }
-  .animate-secondary .drawer::after {
-    animation: fade-in 0.6s cubic-bezier(0,0,0.2,1);
   }
   .back {
     display: none;
