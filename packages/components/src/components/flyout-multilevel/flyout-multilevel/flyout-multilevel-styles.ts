@@ -149,6 +149,9 @@ export const getComponentCss = (
             opacity: 0,
             transform: 'translate3d(-100%,0,0)',
             transition: `${getTransition('opacity', dialogDurationClose, easingClose)}, ${getTransition('transform', dialogDurationClose, easingClose)}`,
+            '&:dir(rtl)': {
+              transform: 'translate3d(100%,0,0)',
+            },
           }),
       [mediaQueryMobile]: {
         gridTemplate: `${spacingFluidMedium} auto ${spacingFluidLarge} minmax(0, 1fr)/${spacingFluidLarge} auto minmax(0, 1fr) auto ${spacingFluidLarge}`,
@@ -169,6 +172,12 @@ export const getComponentCss = (
           ...prefersColorSchemeDarkMediaQuery(theme, {
             background: `linear-gradient(90deg,${backgroundColorDark} 0%,${backgroundColorDark} 50%,${backgroundSurfaceColorDark} 50%,${backgroundSurfaceColorDark} 100%)`,
           }),
+          '&:dir(rtl)': {
+            background: `linear-gradient(90deg,${backgroundSurfaceColor} 0%,${backgroundSurfaceColor} 50%,${backgroundColor} 50%,${backgroundColor} 100%)`,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              background: `linear-gradient(90deg,${backgroundSurfaceColorDark} 0%,${backgroundSurfaceColorDark} 50%,${backgroundColorDark} 50%,${backgroundColorDark} 100%)`,
+            }),
+          },
         }),
       },
       '&::before, &::after': {
@@ -268,8 +277,8 @@ export const getComponentCss = (
       [mediaQueryDesktop]: {
         '--p-internal-icon-filter': 'invert(1)',
         position: 'absolute',
-        left: `calc(100% + ${spacingFluidSmall})`,
-        top: spacingFluidSmall,
+        insetInlineStart: `calc(100% + ${spacingFluidSmall})`,
+        insetBlockStart: spacingFluidSmall,
         padding: spacingStaticSmall,
       },
     },
