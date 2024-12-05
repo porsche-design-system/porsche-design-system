@@ -247,7 +247,6 @@ exports[`should call validateProps() with correct parameters via render for p-fl
   "activeIdentifier": "string",
   "aria": "aria",
   "open": "boolean",
-  "primary": "boolean",
   "theme": "oneOf",
 }
 `;
