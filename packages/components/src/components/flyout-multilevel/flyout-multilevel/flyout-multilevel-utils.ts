@@ -20,22 +20,13 @@ export type Item = HTMLPFlyoutMultilevelItemElement & FlyoutMultilevelItemIntern
 /**
  * Updates the state of the flyout multilevel and its children based on the provided activeItem and value.
  *
- * @param {HTMLElement} host - The root host element of the flyout component.
  * @param {string | undefined} activeItem - The flyout-multilevel-item element which is currently active (which has the activeIdentifier as identifier). If undefined, updates the root element.
  * @param {boolean} value - The new state value to apply.
  * @returns {void}
  */
-export const updateFlyoutMultiLevelState = (
-  host: HTMLElement,
-  activeItem: HTMLPFlyoutMultilevelItemElement | undefined,
-  value: boolean
-): void => {
-  if (activeItem) {
-    activeItem.secondary = value;
-    traverseTreeAndUpdateState(activeItem.parentElement as HTMLPFlyoutMultilevelItemElement, 'primary', value);
-  } else {
-    (host as HTMLPFlyoutMultilevelElement).primary = value;
-  }
+export const updateFlyoutMultiLevelItemState = (activeItem: HTMLPFlyoutMultilevelItemElement, value: boolean): void => {
+  activeItem.secondary = value;
+  traverseTreeAndUpdateState(activeItem.parentElement as HTMLPFlyoutMultilevelItemElement, 'primary', value);
 };
 
 /**
@@ -50,8 +41,8 @@ export const traverseTreeAndUpdateState = (
   prop: 'primary' | 'secondary' | 'cascade',
   value: boolean
 ) => {
-  activeItem[prop] = value;
-  if (isElementOfKind(activeItem.parentElement, 'p-flyout-multilevel-item')) {
+  if (isElementOfKind(activeItem, 'p-flyout-multilevel-item')) {
+    activeItem[prop] = value;
     traverseTreeAndUpdateState(activeItem.parentElement as HTMLPFlyoutMultilevelItemElement, 'cascade', value);
   }
 };

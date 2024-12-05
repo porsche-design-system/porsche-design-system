@@ -1,3 +1,4 @@
+import { breakpointS } from '@porsche-design-system/styles';
 import { Component, Element, Event, type EventEmitter, type JSX, Listen, Prop, State, Watch, h } from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../../types';
 import {
@@ -20,13 +21,12 @@ import {
   INTERNAL_UPDATE_EVENT_NAME,
   type Item,
   syncThemeToItems,
-  updateFlyoutMultiLevelState,
+  updateFlyoutMultiLevelItemState,
   validateActiveIdentifier,
 } from './flyout-multilevel-utils';
 
 const propTypes: PropTypes<typeof FlyoutMultilevel> = {
   activeIdentifier: AllowedTypes.string,
-  primary: AllowedTypes.boolean,
   open: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<FlyoutMultilevelAriaAttribute>(FLYOUT_MULTILEVEL_ARIA_ATTRIBUTES),
@@ -56,9 +56,6 @@ export class FlyoutMultilevel {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<FlyoutMultilevelAriaAttribute>;
 
-  /** Private property set by the component itself. */
-  @Prop({ reflect: true, mutable: true }) public primary?: boolean = true;
-
   /** Adapts the flyout-multilevel color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
@@ -69,9 +66,13 @@ export class FlyoutMultilevel {
   @Event({ bubbles: false }) public update?: EventEmitter<FlyoutMultilevelUpdateEventDetail>;
 
   @State() private flyoutMultilevelItemElements: Item[] = [];
+  @State() private primary: boolean = true;
+  @State() private isSecondaryDrawerVisible: boolean = false;
 
   private dialog: HTMLDialogElement;
   private drawer: HTMLDivElement;
+  private isDesktop = false;
+  private matchMediaQueryS = window.matchMedia(`(min-width: ${breakpointS}px)`);
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
@@ -95,10 +96,18 @@ export class FlyoutMultilevel {
     this.update.emit({ activeIdentifier });
   }
 
+  public connectedCallback(): void {
+    this.handleMediaQueryS(this.matchMediaQueryS);
+    this.matchMediaQueryS.addEventListener('change', this.handleMediaQueryS);
+  }
+
   public async componentWillLoad(): Promise<void> {
     syncThemeToItems(this.theme, this.flyoutMultilevelItemElements);
     this.defineFlyoutMultilevelItemElements();
-    await this.updateFlyoutMultiLevelState(undefined, this.activeIdentifier);
+    const activeItem = this.flyoutMultilevelItemElements.find((item) => item.identifier === this.activeIdentifier);
+    activeItem && updateFlyoutMultiLevelItemState(activeItem, true); // Set item state
+    this.primary = !activeItem || activeItem.parentElement === this.host;
+    this.isSecondaryDrawerVisible = !!this.activeIdentifier;
   }
 
   public componentDidLoad(): void {
@@ -120,12 +129,13 @@ export class FlyoutMultilevel {
 
   public disconnectedCallback(): void {
     setScrollLock(false);
+    this.matchMediaQueryS.removeEventListener('change', this.handleMediaQueryS);
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
     validateActiveIdentifier(this, this.flyoutMultilevelItemElements, this.activeIdentifier);
-    attachComponentCss(this.host, getComponentCss, this.open, this.primary, !!this.activeIdentifier, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.open, this.primary, this.isSecondaryDrawerVisible, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -220,13 +230,27 @@ export class FlyoutMultilevel {
 
     // Secondary Drawer is closed => only update state
     if (!newItem) {
-      this.updateStates(oldItem, newItem);
+      if (this.isDesktop) {
+        this.updateStates(oldItem, newItem);
+      } else {
+        const animation = this.animateDrawerFade('::after', 'out');
+        await animation.finished;
+        this.updateStates(oldItem, newItem);
+        this.animateDrawerFade('::after', 'in');
+      }
     }
 
     // Secondary Drawer is opened => update state + fade in
     if (!oldItem) {
-      this.updateStates(oldItem, newItem);
-      this.animateDrawerFade('::after', 'in');
+      if (this.isDesktop) {
+        this.updateStates(oldItem, newItem);
+        this.animateDrawerFade('::after', 'in');
+      } else {
+        const animation = this.animateDrawerFade('::after', 'out');
+        await animation.finished;
+        this.updateStates(oldItem, newItem);
+        this.animateDrawerFade('::after', 'in');
+      }
     }
 
     // Active item is changed => fade out + update state + fade in
@@ -238,8 +262,7 @@ export class FlyoutMultilevel {
       ].filter(Boolean);
 
       await Promise.all(animations.map((a) => a.finished));
-      updateFlyoutMultiLevelState(this.host, oldItem, false);
-      updateFlyoutMultiLevelState(this.host, newItem, true);
+      this.updateStates(oldItem, newItem);
       isHierarchyChanged && this.animateDrawerFade('::before', 'in');
       this.animateDrawerFade('::after', 'in');
     }
@@ -250,8 +273,10 @@ export class FlyoutMultilevel {
   }
 
   private updateStates(oldItem: Item | undefined, newItem: Item | undefined): void {
-    updateFlyoutMultiLevelState(this.host, oldItem, false); // Reset old state
-    updateFlyoutMultiLevelState(this.host, newItem, true); // Set new state
+    this.primary = !oldItem || !newItem || newItem.parentElement === this.host;
+    this.isSecondaryDrawerVisible = !!this.activeIdentifier;
+    oldItem && updateFlyoutMultiLevelItemState(oldItem, false); // Reset old item state
+    newItem && updateFlyoutMultiLevelItemState(newItem, true); // Set new item state
   }
 
   private animateDrawerFade(pseudoElement: '::before' | '::after', direction: 'in' | 'out'): Animation {
@@ -259,4 +284,8 @@ export class FlyoutMultilevel {
     const duration = direction === 'in' ? 400 : 150;
     return this.drawer?.animate(keyframes, { duration, pseudoElement });
   }
+
+  private handleMediaQueryS = (e: MediaQueryList | MediaQueryListEvent): void => {
+    this.isDesktop = !!e.matches;
+  };
 }

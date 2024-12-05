@@ -4,7 +4,7 @@ import type { FlyoutMultilevelItemInternalHTMLProps } from '../flyout-multilevel
 import * as flyoutMultilevelUtils from './flyout-multilevel-utils';
 import {
   traverseTreeAndUpdateState,
-  updateFlyoutMultiLevelState,
+  updateFlyoutMultiLevelItemState,
   validateActiveIdentifier,
 } from './flyout-multilevel-utils';
 
@@ -86,24 +86,24 @@ describe('updateFlyoutMultiLevelState()', () => {
   });
 
   it('should set secondary prop of item with activeIdentifier to value=true and call functions', () => {
-    updateFlyoutMultiLevelState(host, child, true);
+    updateFlyoutMultiLevelItemState(host, child, true);
     expect(child.secondary).toBe(true);
     // expect(forceUpdateSpy).toBeCalledWith(child);
     expect(traverseTreeAndUpdateStateSpy).toBeCalledWith(host, 'primary', true);
   });
   it('should set secondary prop of item with activeIdentifier to value=false and call functions', () => {
-    updateFlyoutMultiLevelState(host, child, false);
+    updateFlyoutMultiLevelItemState(host, child, false);
     expect(child.secondary).toBe(false);
     // expect(forceUpdateSpy).toBeCalledWith(child);
     expect(traverseTreeAndUpdateStateSpy).toBeCalledWith(host, 'primary', false);
   });
   it('should set host primary prop to value=true if no activeIdentifier is set', () => {
-    updateFlyoutMultiLevelState(host, undefined, true);
+    updateFlyoutMultiLevelItemState(host, undefined, true);
     expect(host.primary).toBe(true);
     // expect(forceUpdateSpy).toBeCalledWith(host);
   });
   it('should set host primary prop to value=false if no activeIdentifier is set', () => {
-    updateFlyoutMultiLevelState(host, undefined, false);
+    updateFlyoutMultiLevelItemState(host, undefined, false);
     expect(host.primary).toBe(false);
     // expect(forceUpdateSpy).toBeCalledWith(host);
   });

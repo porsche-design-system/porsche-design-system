@@ -815,10 +815,6 @@ export namespace Components {
          */
         "open"?: boolean;
         /**
-          * Private property set by the component itself.
-         */
-        "primary"?: boolean;
-        /**
           * Adapts the flyout-multilevel color depending on the theme.
          */
         "theme"?: Theme;
@@ -4021,10 +4017,6 @@ declare namespace LocalJSX {
           * If true, the flyout-multilevel is visualized as opened.
          */
         "open"?: boolean;
-        /**
-          * Private property set by the component itself.
-         */
-        "primary"?: boolean;
         /**
           * Adapts the flyout-multilevel color depending on the theme.
          */
