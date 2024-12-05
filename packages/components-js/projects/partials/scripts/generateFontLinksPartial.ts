@@ -1,6 +1,6 @@
-import { minifyHTML } from './utils';
 import { FONTS_MANIFEST } from '@porsche-design-system/fonts';
 import { CDN_BASE_PATH_FONTS } from '../../../../../cdn.config';
+import { minifyHTML } from './utils';
 
 export const generateFontLinksPartial = (): string => {
   const fontSubsets = ['latin', 'greek', 'cyril', 'arabic', 'pashto', 'urdu'];
@@ -86,11 +86,11 @@ Please use only valid font weights:
 
   const urls = weights.map((weight) => fonts[subset][weight] && \`\${cdnBaseUrl}/${CDN_BASE_PATH_FONTS}/\${fonts[subset][weight]}\`).filter(Boolean);
   const linksHtml = urls.map((url) => \`${linkTemplate}\`).join('');
-  const linksJsx = urls.map((url, index) => <link key={index} rel="preload" href={url} as="font" type="font/woff2" crossOrigin="" />);
 
   if (format === 'html') {
     return linksHtml;
   } else if (format === 'jsx') {
+    const linksJsx = urls.map((url, index) => <link key={index} rel="preload" href={url} as="font" type="font/woff2" crossOrigin="" />);
     return <>{linksJsx}</>;
   } else {
     return urls.map((url) => ({ href: url, options: { as: 'font', type: "font/woff2", crossOrigin: "" } } as PartialLink))
