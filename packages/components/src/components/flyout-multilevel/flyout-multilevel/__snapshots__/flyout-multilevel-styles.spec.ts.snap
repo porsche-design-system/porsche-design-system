@@ -68,6 +68,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, isPrimar
     transform: translate3d(-100%,0,0);
     transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   }
+  .drawer:dir(rtl) {
+    transform: translate3d(100%,0,0);
+  }
   .drawer::before, .drawer::after {
     content: "";
     position: relative;
@@ -83,6 +86,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, isPrimar
       width: calc(clamp(338px, 210px + 18vw, 640px) * 2);
       grid-template: clamp(16px, 1.25vw + 12px, 36px) minmax(0, 1fr)/repeat(2, clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px));
       background: linear-gradient(90deg,#FFF 0%,#FFF 50%,#EEEFF2 50%,#EEEFF2 100%);
+    }
+    .drawer:dir(rtl) {
+      background: linear-gradient(90deg,#EEEFF2 0%,#EEEFF2 50%,#FFF 50%,#FFF 100%);
     }
     .drawer::after {
       grid-area: 1/4/-1/-1;
@@ -107,8 +113,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, isPrimar
     .dismiss-desktop {
       --p-internal-icon-filter: invert(1);
       position: absolute;
-      left: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
-      top: clamp(8px, 0.5vw + 6px, 16px);
+      inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
+      inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
       padding: 8px;
     }
 }
@@ -265,8 +271,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     .dismiss-desktop {
       --p-internal-icon-filter: invert(1);
       position: absolute;
-      left: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
-      top: clamp(8px, 0.5vw + 6px, 16px);
+      inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
+      inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
       padding: 8px;
     }
 }
@@ -406,6 +412,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       grid-template: clamp(16px, 1.25vw + 12px, 36px) minmax(0, 1fr)/repeat(2, clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px));
       background: linear-gradient(90deg,#FFF 0%,#FFF 50%,#EEEFF2 50%,#EEEFF2 100%);
     }
+    .drawer:dir(rtl) {
+      background: linear-gradient(90deg,#EEEFF2 0%,#EEEFF2 50%,#FFF 50%,#FFF 100%);
+    }
     .drawer::after {
       grid-area: 1/4/-1/-1;
       background: #EEEFF2;
@@ -429,8 +438,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     .dismiss-desktop {
       --p-internal-icon-filter: invert(1);
       position: absolute;
-      left: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
-      top: clamp(8px, 0.5vw + 6px, 16px);
+      inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
+      inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
       padding: 8px;
     }
 }
@@ -589,8 +598,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     .dismiss-desktop {
       --p-internal-icon-filter: invert(1);
       position: absolute;
-      left: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
-      top: clamp(8px, 0.5vw + 6px, 16px);
+      inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
+      inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
       padding: 8px;
     }
 }
@@ -734,9 +743,15 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       grid-template: clamp(16px, 1.25vw + 12px, 36px) minmax(0, 1fr)/repeat(2, clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px));
       background: linear-gradient(90deg,#FFF 0%,#FFF 50%,#EEEFF2 50%,#EEEFF2 100%);
     }
+    .drawer:dir(rtl) {
+      background: linear-gradient(90deg,#EEEFF2 0%,#EEEFF2 50%,#FFF 50%,#FFF 100%);
+    }
 @media (prefers-color-scheme: dark) {
       .drawer {
         background: linear-gradient(90deg,#0E0E12 0%,#0E0E12 50%,#212225 50%,#212225 100%);
+      }
+      .drawer:dir(rtl) {
+        background: linear-gradient(90deg,#212225 0%,#212225 50%,#0E0E12 50%,#0E0E12 100%);
       }
 }
 
@@ -775,8 +790,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     .dismiss-desktop {
       --p-internal-icon-filter: invert(1);
       position: absolute;
-      left: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
-      top: clamp(8px, 0.5vw + 6px, 16px);
+      inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
+      inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
       padding: 8px;
     }
 }
@@ -926,6 +941,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       grid-template: clamp(16px, 1.25vw + 12px, 36px) minmax(0, 1fr)/repeat(2, clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px));
       background: linear-gradient(90deg,#0E0E12 0%,#0E0E12 50%,#212225 50%,#212225 100%);
     }
+    .drawer:dir(rtl) {
+      background: linear-gradient(90deg,#212225 0%,#212225 50%,#0E0E12 50%,#0E0E12 100%);
+    }
     .drawer::after {
       grid-area: 1/4/-1/-1;
       background: #212225;
@@ -949,8 +967,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     .dismiss-desktop {
       --p-internal-icon-filter: invert(1);
       position: absolute;
-      left: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
-      top: clamp(8px, 0.5vw + 6px, 16px);
+      inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
+      inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
       padding: 8px;
     }
 }
@@ -1082,6 +1100,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       grid-template: clamp(16px, 1.25vw + 12px, 36px) minmax(0, 1fr)/repeat(2, clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px));
       background: linear-gradient(90deg,#FFF 0%,#FFF 50%,#EEEFF2 50%,#EEEFF2 100%);
     }
+    .drawer:dir(rtl) {
+      background: linear-gradient(90deg,#EEEFF2 0%,#EEEFF2 50%,#FFF 50%,#FFF 100%);
+    }
     .drawer::after {
       grid-area: 1/4/-1/-1;
       background: #EEEFF2;
@@ -1105,8 +1126,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     .dismiss-desktop {
       --p-internal-icon-filter: invert(1);
       position: absolute;
-      left: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
-      top: clamp(8px, 0.5vw + 6px, 16px);
+      inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
+      inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
       padding: 8px;
     }
 }
