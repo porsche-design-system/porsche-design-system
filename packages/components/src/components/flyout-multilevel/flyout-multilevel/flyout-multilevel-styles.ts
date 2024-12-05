@@ -27,9 +27,6 @@ export const scrollerWidthDesktop = 'clamp(338px, 210px + 18vw, 640px)';
 export const mediaQueryMobile = getMediaQueryMax('s');
 export const mediaQueryDesktop = getMediaQueryMin('s');
 
-export const animatePrimaryClass = 'animate-primary';
-export const animateSecondaryClass = 'animate-secondary';
-
 const dialogDurationOpen = 'moderate';
 const backdropDurationOpen = 'long';
 const easingOpen = 'in';
@@ -62,10 +59,6 @@ export const getComponentCss = (
       '@keyframes slide-up-desktop': {
         from: { marginBlockStart: spacingFluidMedium },
         to: { marginBlockStart: '0px' },
-      },
-      '@keyframes fade-in': {
-        from: { opacity: 1 },
-        to: { opacity: 0 },
       },
       ':host': {
         display: 'block',
@@ -216,12 +209,6 @@ export const getComponentCss = (
             background: backgroundSurfaceColorDark,
           }),
         },
-      },
-      [`.${animatePrimaryClass} &::before`]: {
-        animation: getAnimation('fade-in', 'long', 'in'),
-      },
-      [`.${animateSecondaryClass} &::after`]: {
-        animation: getAnimation('fade-in', 'long', 'in'),
       },
     },
     scroller: {

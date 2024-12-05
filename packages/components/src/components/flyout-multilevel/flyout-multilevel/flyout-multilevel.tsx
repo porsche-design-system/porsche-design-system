@@ -12,7 +12,7 @@ import {
   setScrollLock,
   validateProps,
 } from '../../../utils';
-import { animatePrimaryClass, animateSecondaryClass, getComponentCss } from './flyout-multilevel-styles';
+import { getComponentCss } from './flyout-multilevel-styles';
 import {
   FLYOUT_MULTILEVEL_ARIA_ATTRIBUTES,
   type FlyoutMultilevelAriaAttribute,
@@ -71,6 +71,7 @@ export class FlyoutMultilevel {
   @State() private flyoutMultilevelItemElements: Item[] = [];
 
   private dialog: HTMLDialogElement;
+  private drawer: HTMLDivElement;
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
@@ -113,9 +114,7 @@ export class FlyoutMultilevel {
   }
 
   public componentWillRender(): void {
-    this.dialog?.classList.remove(animateSecondaryClass);
-    this.dialog?.offsetHeight; /* trigger reflow to restart animation */
-    this.dialog?.classList.add(animateSecondaryClass);
+    this.animateFadeIn('::after');
   }
 
   public componentDidRender(): void {
@@ -144,7 +143,7 @@ export class FlyoutMultilevel {
         onCancel={this.onCancelDialog}
         onClick={this.onClickDialog}
       >
-        <div class="drawer">
+        <div class="drawer" ref={(ref) => (this.drawer = ref)}>
           <PrefixedTagNames.pButtonPure
             class="back"
             type="button"
@@ -225,13 +224,15 @@ export class FlyoutMultilevel {
     updateFlyoutMultiLevelState(this.host, newItem, true); // Set new state
     // Whenever the hierarchy changes we need to animate the primary side
     if (newVal && oldVal && oldItem.parentElement !== newItem.parentElement) {
-      this.dialog?.classList.remove(animatePrimaryClass);
-      this.dialog?.offsetHeight; /* trigger reflow to restart animation */
-      this.dialog?.classList.add(animatePrimaryClass);
+      this.animateFadeIn('::before');
     }
   }
 
   private emitCloseSecondaryUpdate(): void {
     this.update.emit({ activeIdentifier: undefined });
+  }
+
+  private animateFadeIn(pseudoElement: '::before' | '::after'): void {
+    this.drawer?.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 400, pseudoElement });
   }
 }
