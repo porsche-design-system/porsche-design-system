@@ -3,6 +3,7 @@ import type { TagName } from '@porsche-design-system/shared';
 export const WHITELISTED_TAG_NAMES = [
   'p-canvas',
   'p-flex-item',
+  'p-flyout-multilevel',
   'p-flyout-multilevel-item',
   'p-grid-item',
   'p-multi-select-option',
