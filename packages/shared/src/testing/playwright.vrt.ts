@@ -41,9 +41,7 @@ export const config: Config = {
     ...(process.env.CI
       ? {
           toHaveScreenshot: {
-            options: {
-              animations: 'disabled',
-            },
+            animations: 'disabled',
           },
         }
       : {
@@ -56,9 +54,7 @@ export const config: Config = {
             maxDiffPixelRatio: 0,
             maxDiffPixels: 0,
             threshold: 0, // default Playwright threshold
-            options: {
-              animations: 'disabled',
-            },
+            animations: 'disabled',
           },
         }),
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
