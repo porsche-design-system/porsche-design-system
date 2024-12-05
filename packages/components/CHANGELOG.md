@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Changed
+
+- `Select`: Slotted image of selected option now visible in combobox
+  ([#3651](https://github.com/porsche-design-system/porsche-design-system/pull/3651))
+
 #### Fixed
 
 - Partials: error when using in projects without `react/jsx-runtime` as dependency
