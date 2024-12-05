@@ -43,7 +43,7 @@ export const FlyoutMultilevelExampleCustomContentPage = (): JSX.Element => {
             description="Some Description"
             weight="semi-bold"
             compact={true}
-            aspectRatio={{ base: '4:3', xs: '16:9', s: '1:1' }}
+            aspectRatio={{ base: '4/3', xs: '16/9', s: '1/1' }}
           >
             <img
               srcSet="http://localhost:3002/porsche-963@2x.webp 2x"
