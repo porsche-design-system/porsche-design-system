@@ -102,8 +102,8 @@ export class FlyoutMultilevel {
   }
 
   public async componentWillLoad(): Promise<void> {
-    syncThemeToItems(this.theme, this.flyoutMultilevelItemElements);
     this.defineFlyoutMultilevelItemElements();
+    syncThemeToItems(this.theme, this.flyoutMultilevelItemElements);
     const activeItem = this.flyoutMultilevelItemElements.find((item) => item.identifier === this.activeIdentifier);
     activeItem && updateFlyoutMultiLevelItemState(activeItem, true); // Set item state
     this.primary = !activeItem || activeItem.parentElement === this.host;
