@@ -56,10 +56,6 @@ export class FlyoutMultilevelItem {
     return this.host.theme || 'light'; // default as fallback (internal private prop is controlled by flyout-multilevel)
   }
 
-  /* private get secondary(): boolean {
-    return this.host.secondary || false; // default as fallback (internal private prop is controlled by flyout-multilevel)
-  }*/
-
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-flyout-multilevel', 'p-flyout-multilevel-item']);
   }
