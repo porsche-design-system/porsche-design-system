@@ -107,7 +107,7 @@ export class SegmentedControl {
 
   @Watch('value')
   public onValueChange(): void {
-    this.internals.setFormValue(this.value.toString());
+    this.internals?.setFormValue(this.value.toString());
   }
 
   public connectedCallback(): void {
@@ -126,7 +126,7 @@ export class SegmentedControl {
   }
 
   public componentDidLoad(): void {
-    this.internals.setFormValue(this.value?.toString());
+    this.internals?.setFormValue(this.value?.toString());
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -138,7 +138,7 @@ export class SegmentedControl {
   }
 
   public formResetCallback(): void {
-    this.internals.setFormValue(this.defaultValue?.toString());
+    this.internals?.setFormValue(this.defaultValue?.toString());
     this.value = this.defaultValue;
   }
 

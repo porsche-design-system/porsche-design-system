@@ -116,6 +116,21 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.ButtonExampleFormComponent,
   },
   {
+    name: 'Button Example Form Attribute',
+    path: 'button-example-form-attribute',
+    component: fromExamples.ButtonExampleFormAttributeComponent,
+  },
+  {
+    name: 'Button Pure Example Form',
+    path: 'button-pure-example-form',
+    component: fromExamples.ButtonPureExampleFormComponent,
+  },
+  {
+    name: 'Button Pure Example Form Attribute',
+    path: 'button-pure-example-form-attribute',
+    component: fromExamples.ButtonPureExampleFormAttributeComponent,
+  },
+  {
     name: 'Canvas Example',
     path: 'canvas-example',
     component: fromExamples.CanvasExampleComponent,
@@ -144,6 +159,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Flyout Example',
     path: 'flyout-example',
     component: fromExamples.FlyoutExampleComponent,
+  },
+  {
+    name: 'Flyout Form Example',
+    path: 'flyout-form-example',
+    component: fromExamples.FlyoutExampleFormComponent,
   },
   {
     name: 'Flyout Multilevel Example',

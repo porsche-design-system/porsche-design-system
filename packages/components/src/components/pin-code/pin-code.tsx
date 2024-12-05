@@ -134,7 +134,7 @@ export class PinCode {
   }
 
   public componentDidLoad(): void {
-    this.internals.setFormValue(this.value);
+    this.internals?.setFormValue(this.value);
     // The beforeinput event is the only event which fires and can be prevented reliably on all keyboard types
     for (const input of this.inputElements) {
       input.addEventListener('beforeinput', (event: InputEvent & HTMLInputElementEventTarget) => {
@@ -157,7 +157,7 @@ export class PinCode {
   }
 
   public formResetCallback(): void {
-    this.internals.setFormValue(this.defaultValue);
+    this.internals?.setFormValue(this.defaultValue);
     this.value = this.defaultValue;
   }
 
@@ -267,8 +267,8 @@ export class PinCode {
       target.value = '';
       this.updateValue(getConcatenatedInputValues(this.inputElements));
     } else if (key === 'Enter') {
-      if (this.internals.form && isFormSubmittable(this.host, this.internals.form)) {
-        this.internals.form.requestSubmit();
+      if (this.internals?.form && isFormSubmittable(this.host, this.internals?.form)) {
+        this.internals?.form.requestSubmit();
       }
     }
     // workaround since 'Dead' key e.g. ^¨ can not be prevented with e.preventDefault()
@@ -292,7 +292,7 @@ export class PinCode {
 
   private updateValue = (newValue: string): void => {
     this.value = newValue;
-    this.internals.setFormValue(this.value);
+    this.internals?.setFormValue(this.value);
     this.update.emit({ value: newValue, isComplete: removeWhiteSpaces(newValue).length === this.length });
   };
 

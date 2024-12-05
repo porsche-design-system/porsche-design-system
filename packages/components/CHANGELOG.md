@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Added
+
+- `Button`, `Button-Pure`: Add `form` prop to explicitly associate the component with a form, even when it's not
+  directly nested within it. ([#3648](https://github.com/porsche-design-system/porsche-design-system/pull/3648))
+
 #### Fixed
 
 - Partials: error when using in projects without `react/jsx-runtime` as dependency

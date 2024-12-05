@@ -227,6 +227,10 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
+          * The id of a form element the button should be associated with.
+         */
+        "form"?: string;
+        /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
@@ -286,6 +290,10 @@ export namespace Components {
           * Disables the button. No events will be triggered while disabled state is active.
          */
         "disabled"?: boolean;
+        /**
+          * The id of a form element the button should be associated with.
+         */
+        "form"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
@@ -3374,6 +3382,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * The id of a form element the button should be associated with.
+         */
+        "form"?: string;
+        /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
@@ -3433,6 +3445,10 @@ declare namespace LocalJSX {
           * Disables the button. No events will be triggered while disabled state is active.
          */
         "disabled"?: boolean;
+        /**
+          * The id of a form element the button should be associated with.
+         */
+        "form"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */

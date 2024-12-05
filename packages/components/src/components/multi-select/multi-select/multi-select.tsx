@@ -184,7 +184,7 @@ export class MultiSelect {
     for (const val of value) {
       formData.append(this.name, val);
     }
-    this.internals.setFormValue(formData);
+    this.internals?.setFormValue(formData);
   }
 
   public connectedCallback(): void {
@@ -455,7 +455,7 @@ export class MultiSelect {
           this.emitUpdateEvent();
           this.updateSrHighlightedOptionText();
           forceUpdate(highlightedOption);
-        } else if (this.internals.form) {
+        } else if (this.internals?.form) {
           handleButtonEvent(
             e,
             this.host,
