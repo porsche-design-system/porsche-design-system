@@ -104,7 +104,9 @@ export class FlyoutMultilevel {
   public async componentWillLoad(): Promise<void> {
     this.defineFlyoutMultilevelItemElements();
     syncThemeToItems(this.theme, this.flyoutMultilevelItemElements);
-    const activeItem = this.flyoutMultilevelItemElements.find((item) => item.identifier === this.activeIdentifier);
+    const activeItem = this.flyoutMultilevelItemElements.find(
+      (item: Item) => item.identifier === this.activeIdentifier
+    );
     activeItem && updateFlyoutMultiLevelItemState(activeItem, true); // Set item state
     this.primary = !activeItem || activeItem.parentElement === this.host;
     this.isSecondaryDrawerVisible = !!this.activeIdentifier;
@@ -223,7 +225,6 @@ export class FlyoutMultilevel {
     }
   }
 
-  // TODO: Unnecessary to call animation in willLoad
   private async updateFlyoutMultiLevelState(oldVal: string | undefined, newVal: string | undefined): Promise<void> {
     const oldItem = oldVal && this.flyoutMultilevelItemElements.find((item) => item.identifier === oldVal);
     const newItem = newVal && this.flyoutMultilevelItemElements.find((item) => item.identifier === newVal);
