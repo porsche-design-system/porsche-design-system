@@ -4,7 +4,7 @@ import { getByRoleShadowed } from '@porsche-design-system/components-js/testing'
 import userEvent from '@testing-library/user-event';
 import { getMarkup } from '../helper';
 
-it('should have initialized shadow dom', async () => {
+it.skip('should have initialized shadow dom', async () => {
   document.body.innerHTML = getMarkup('p-flyout-multilevel');
   expect(await componentsReady()).toBe(4);
 

@@ -67,7 +67,7 @@ export class FlyoutMultilevel {
 
   @State() private flyoutMultilevelItemElements: Item[] = [];
   @State() private primary: boolean = true;
-  @State() private isSecondaryDrawerVisible: boolean = false;
+  @State() private isSecondaryDrawerVisible: boolean = !!this.activeIdentifier;
 
   private dialog: HTMLDialogElement;
   private drawer: HTMLDivElement;
@@ -109,7 +109,6 @@ export class FlyoutMultilevel {
     );
     activeItem && updateFlyoutMultiLevelItemState(activeItem, true); // Set item state
     this.primary = !activeItem || activeItem.parentElement === this.host;
-    this.isSecondaryDrawerVisible = !!this.activeIdentifier;
   }
 
   public componentDidLoad(): void {
