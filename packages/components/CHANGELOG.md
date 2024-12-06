@@ -14,6 +14,60 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.22.0] - 2024-12-06
+
+### [3.22.0-rc.1] - 2024-12-06
+
+#### Added
+
+- `Flyout Multilevel`: Supports infinite layers
+  ([3647](https://github.com/porsche-design-system/porsche-design-system/pull/3647))
+
+#### Fixed
+
+- Partials: error when using in projects without `react/jsx-runtime` as dependency
+  ([#3660](https://github.com/porsche-design-system/porsche-design-system/pull/3660))
+- `Textfield Wrapper`: text alignment of type `email` and `tel` values in RTL mode
+  ([3655](https://github.com/porsche-design-system/porsche-design-system/pull/3655))
+- `Popover`:
+  - Rendering bug of drop-shadow in Safari 18.x
+    ([3622](https://github.com/porsche-design-system/porsche-design-system/pull/3622))
+  - Positioning in RTL mode if rendered inside a table (in #top-layer)
+    ([3658](https://github.com/porsche-design-system/porsche-design-system/pull/3658))
+
+### [3.22.0-rc.0] - 2024-11-19
+
+#### Added
+
+- `Modal`, `Flyout`:
+  - `aria-label` is generated from slotted header contents if `aria` prop is not provided
+  - ARIA `role` to `aria` prop of `Modal` component to support setting `alertdialog` role
+    ([3618](https://github.com/porsche-design-system/porsche-design-system/pull/3618))
+- `Pin-Code`: Add `form` prop to explicitly associate the component with a form, even when it's not directly nested
+  within it. ([#3588](https://github.com/porsche-design-system/porsche-design-system/pull/3588))
+- `Segmented-Control`: Use ElementInternals API and add `form` prop to explicitly associate the component with a form,
+  even when it's not directly nested within it.
+  ([#3614](https://github.com/porsche-design-system/porsche-design-system/pull/3614))
+
+#### Changed
+
+- Angular: updated peer dependency to `>=19.0.0 <20.0.0`
+- `Pin-Code`:
+  - Remove native input and use ElementInternals API
+  - **Breaking Change**: `Pin-Code` component no longer support native validation due to the removal of the underlying
+    native `<input>` element. ([#3588](https://github.com/porsche-design-system/porsche-design-system/pull/3588))
+- `Styles`: `SCSS` variant uses `@forward/@use` internally to replace deprecated `@import`
+  ([#3623](https://github.com/porsche-design-system/porsche-design-system/pull/3623))
+
+#### Fixed
+
+- Partials: removed bundled `react/jsx-runtime` due to React 18/19 incompatibilities. When using `jsx` in the `format`
+  option, it is necessary to have `react/jsx-runtime` as a dependency in the project included.
+  ([#3613](https://github.com/porsche-design-system/porsche-design-system/pull/3613))
+- `Select`, `Multi-Select`: Ensure that dynamically changing the `disabled` property via `optgroups` persists the
+  `disabled` state for individual options within the group.
+  ([#3614](https://github.com/porsche-design-system/porsche-design-system/pull/3614))
+
 ### [3.21.0] - 2024-11-12
 
 ### [3.21.0-rc.0] - 2024-11-11
@@ -28,8 +82,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#3589](https://github.com/porsche-design-system/porsche-design-system/pull/3589))
 - `Button`, `Link`: `compact` prop is breakpoint customizable
   ([#3580](https://github.com/porsche-design-system/porsche-design-system/pull/3580))
-- `Select`, `Multi-Select`: Added `form` prop to explicitly associate these components with a specific form when they
-  are not directly nested within it. ([#3542](https://github.com/porsche-design-system/porsche-design-system/pull/3542))
+- `Select`, `Multi-Select`: Add `form` prop to explicitly associate these components with a specific form when they are
+  not directly nested within it. ([#3542](https://github.com/porsche-design-system/porsche-design-system/pull/3542))
 
 #### Changed
 

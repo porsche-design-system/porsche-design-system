@@ -11,30 +11,30 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { Prop } from 'vue-property-decorator';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { Prop } from 'vue-property-decorator';
 
-  type PrimitiveValue = string | number | boolean;
-  type SelectOption = {
-    label: string;
-    value: PrimitiveValue;
-  };
+type PrimitiveValue = string | number | boolean;
+type SelectOption = {
+  label: string;
+  value: PrimitiveValue;
+};
 
-  @Component
-  export default class PlaygroundSelect extends Vue {
-    @Prop({ default: 'prop' }) public name!: string;
-    @Prop({ default: '' }) public value!: string;
-    @Prop({ default: () => [] }) public values!: PrimitiveValue[] | SelectOption[];
+@Component
+export default class PlaygroundSelect extends Vue {
+  @Prop({ default: 'prop' }) public name!: string;
+  @Prop({ default: '' }) public value!: string;
+  @Prop({ default: () => [] }) public values!: PrimitiveValue[] | SelectOption[];
 
-    get processedValues(): SelectOption[] {
-      // If the values array contains primitive types, convert them to objects with `label` and `value`
-      if (typeof this.values[0] !== 'object') {
-        return (this.values as PrimitiveValue[]).map((value) => ({ label: String(value), value }));
-      }
-      return this.values as SelectOption[];
+  get processedValues(): SelectOption[] {
+    // If the values array contains primitive types, convert them to objects with `label` and `value`
+    if (typeof this.values[0] !== 'object') {
+      return (this.values as PrimitiveValue[]).map((value) => ({ label: String(value), value }));
     }
+    return this.values as SelectOption[];
   }
+}
 </script>
 
 <style scoped lang="scss">

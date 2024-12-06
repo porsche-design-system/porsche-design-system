@@ -26,7 +26,7 @@ import {
   LINK_TILE_MODEL_SIGNATURE_MODELS,
   setRequiredPropsOfSlottedLinks,
 } from './link-tile-model-signature-utils';
-import { type JSXBase } from '@stencil/core/internal';
+import type { JSXBase } from '@stencil/core/internal';
 import { getSlottedPictureImageStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof LinkTileModelSignature> = {
@@ -69,7 +69,10 @@ export class LinkTileModelSignature {
 
   /** Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'. */
   // prettier-ignore
-  @Prop() public linkDirection?: BreakpointCustomizable<LinkTileModelSignatureLinkDirection> = { base: 'column', xs: 'row' };
+  @Prop() public linkDirection?: BreakpointCustomizable<LinkTileModelSignatureLinkDirection> = {
+    base: 'column',
+    xs: 'row',
+  };
 
   /** Sets a heading tag, so it fits correctly within the outline of the page. */
   @Prop() public headingTag?: LinkTileModelSignatureHeadingTag = 'h2';

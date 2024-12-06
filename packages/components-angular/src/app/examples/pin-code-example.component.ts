@@ -6,10 +6,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <form (submit)="onSubmit($event)">
       <p-pin-code [label]="'Some Label'" [name]="'pin-code'"></p-pin-code>
       <p-button type="submit">Submit</p-button>
+      <button type="reset">Reset</button>
     </form>
     <p-text>Last submitted data: {{ lastSubmittedValue }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class PinCodeExampleComponent {
   lastSubmittedValue = 'none';

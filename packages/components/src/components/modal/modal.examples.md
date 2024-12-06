@@ -8,12 +8,6 @@ thoughtfully and sparingly.
 It is a controlled component. This grants flexible control over the modal's behavior especially whether it should stay
 open after user interaction like submission of a form.
 
-<Notification heading="Scroll-lock" heading-tag="h2" state="warning">
-  This component sets <code>overflow: hidden</code> on the body when opened in order to prevent background scrolling.<br> 
-  This doesn't work completely reliable under iOS but is the most stable solution.<br>
-  Feel free to address this issue in an Open Source PR, if you can provide a better solution. <b><a href="https://github.com/porsche-design-system/porsche-design-system/blob/main/packages/components/src/utils/setScrollLock.ts">Current implementation</a></b> 
-</Notification>
-
 <TableOfContents></TableOfContents>
 
 ## Basic
@@ -40,7 +34,9 @@ The size of `p-modal` adjusts itself to the content with a predefined **min/max 
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
-To provide a unique accessible name for the dialog, it's mandatory to set a meaningful label with the `aria` property.
+To provide a unique **accessible name** for the dialog, it's mandatory to ensure that a meaningful `aria-label` is set
+on the `dialog` element **inside** the shadowDOM. This is either done automatically by the component itself if
+`slot="header"` is used **or** by using the `aria` property on the `p-modal` component.
 
 ## Dismiss Button
 
@@ -91,7 +87,7 @@ following example shows the visualization of the Porsche Grid when used inside t
   <div class="playground">
     <div class="demo">
       <p-button type="button" aria="{ 'aria-haspopup': 'dialog' }" :theme="this.$store.getters.storefrontTheme">Open Modal</p-button>
-      <p-modal open="false" aria="{ 'aria-label': 'Some Heading' }">
+      <p-modal open="false">
         <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
         <ExampleStylesGrid :visualizeGrid="true"/>
         <p-button-group slot="footer">
@@ -102,6 +98,13 @@ following example shows the visualization of the Porsche Grid when used inside t
     </div>
   </div>
 </template>
+
+## Example: Modal as alert dialog
+
+The `p-modal` component can be used as an alert dialog. This is a modal dialog that interrupts the user's workflow to
+draw attention to an important message and requires a response.
+
+<Playground :markup="exampleAlertDialog" :config="config"></Playground>
 
 ## Custom styling
 
@@ -169,13 +172,13 @@ export default class Code extends Vue {
 
   dismissButtonMarkup =
     `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
-<p-modal dismiss-button="false" open="false" aria="{ 'aria-label': 'Some Heading' }">
+<p-modal dismiss-button="false" open="false" aria="{ 'aria-label': 'Some Label' }">
   <p-text>Some Content</p-text>
 </p-modal>`;
 
   disableBackdropClickMarkup =
       `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
-  <p-modal disable-backdrop-click="true" open="false" aria="{ 'aria-label': 'Some Heading' }">
+  <p-modal disable-backdrop-click="true" open="false" aria="{ 'aria-label': 'Some Label' }">
     <p-text>Some Content</p-text>
   </p-modal>`;
 
@@ -183,26 +186,37 @@ export default class Code extends Vue {
   backdrop = 'shading';
   get backdropMarkup() { 
     return `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
-<p-modal backdrop="${this.backdrop}" aria="{ 'aria-label': 'Some Heading' }" open="false">
+<p-modal backdrop="${this.backdrop}" aria="{ 'aria-label': 'Some Label' }" open="false">
   <p-text>Some Content</p-text>
 </p-modal>`;
   }
 
   fullscreenMarkup =
     `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
-<p-modal fullscreen="{ base: true, s: false }" open="false" aria="{ 'aria-label': 'Some Heading' }">
+<p-modal fullscreen="{ base: true, s: false }" open="false" aria="{ 'aria-label': 'Some Label' }">
   <p-text>Some Content</p-text>
 </p-modal>`;
 
   exampleScrollableMarkup =
     `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
-<p-modal open="false" aria="{ 'aria-label': 'Some Heading' }">
+<p-modal open="false">
   <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
   <p-text>Some Content Begin</p-text>
   <div style="width: 10px; height: 120vh; background: deeppink;"></div>
   <p-text>Some Content End</p-text>
   <p-button-group slot="footer">
     <p-button>Accept</p-button>
+    <p-button type="button" variant="secondary">Deny</p-button>
+  </p-button-group>
+</p-modal>`;
+
+exampleAlertDialog =
+    `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
+<p-modal open="false" aria="{ 'role': 'alertdialog' }" disable-backdrop-click="true">
+  <p-heading slot="header" size="large" tag="h2">Some important Heading</p-heading>
+  <p-text>Some important Content</p-text>
+  <p-button-group slot="footer">
+    <p-button type="button">Accept</p-button>
     <p-button type="button" variant="secondary">Deny</p-button>
   </p-button-group>
 </p-modal>`;
@@ -217,7 +231,7 @@ export default class Code extends Vue {
 
   get customStylingMarkup() {
     return `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
-<p-modal open="false" backdrop="shading" aria="{ 'aria-label': 'Some Heading' }" style="--p-modal-width: ${this.cssVariableWidth}; --p-modal-spacing-top: ${this.cssVariableSpacingTop}px; --p-modal-spacing-bottom: ${this.cssVariableSpacingBottom}px;">
+<p-modal open="false" backdrop="shading" aria="{ 'aria-label': 'Some Label' }" style="--p-modal-width: ${this.cssVariableWidth}; --p-modal-spacing-top: ${this.cssVariableSpacingTop}px; --p-modal-spacing-bottom: ${this.cssVariableSpacingBottom}px;">
   <img src="${require('@/assets/porsche-992-carrera-s.jpg')}" class="${cssClassNameStretchToFullModalWidth}">  
 </p-modal>`;
   }

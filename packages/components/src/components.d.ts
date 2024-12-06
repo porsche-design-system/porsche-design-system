@@ -824,6 +824,10 @@ export namespace Components {
      */
     interface PFlyoutMultilevelItem {
         /**
+          * Private property set by the component itself.
+         */
+        "cascade"?: boolean;
+        /**
           * Unique identifier which controls if this item should be shown when the active-identifier on the flyout-multilevel is set to this value.
          */
         "identifier": string;
@@ -831,6 +835,14 @@ export namespace Components {
           * Label of the item.
          */
         "label"?: string;
+        /**
+          * Private property set by the component itself.
+         */
+        "primary"?: boolean;
+        /**
+          * Private property set by the component itself.
+         */
+        "secondary"?: boolean;
     }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
@@ -1512,6 +1524,10 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
+          * The id of a form element the pin-code should be associated with.
+         */
+        "form"?: string;
+        /**
           * Show or hide label and description text. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
@@ -1647,6 +1663,18 @@ export namespace Components {
          */
         "columns"?: BreakpointCustomizable<SegmentedControlColumns>;
         /**
+          * Disables the segmented-control.
+         */
+        "disabled"?: boolean;
+        /**
+          * The id of a form element the segmented-control should be associated with.
+         */
+        "form"?: string;
+        /**
+          * The name of the segmented-control.
+         */
+        "name"?: string;
+        /**
           * Adapts the segmented-control color depending on the theme.
          */
         "theme"?: Theme;
@@ -1690,7 +1718,7 @@ export namespace Components {
          */
         "description"?: string;
         /**
-          * Disables the select
+          * Disables the select.
          */
         "disabled"?: boolean;
         /**
@@ -3999,6 +4027,10 @@ declare namespace LocalJSX {
      */
     interface PFlyoutMultilevelItem {
         /**
+          * Private property set by the component itself.
+         */
+        "cascade"?: boolean;
+        /**
           * Unique identifier which controls if this item should be shown when the active-identifier on the flyout-multilevel is set to this value.
          */
         "identifier"?: string;
@@ -4006,6 +4038,14 @@ declare namespace LocalJSX {
           * Label of the item.
          */
         "label"?: string;
+        /**
+          * Private property set by the component itself.
+         */
+        "primary"?: boolean;
+        /**
+          * Private property set by the component itself.
+         */
+        "secondary"?: boolean;
     }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
@@ -4727,6 +4767,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * The id of a form element the pin-code should be associated with.
+         */
+        "form"?: string;
+        /**
           * Show or hide label and description text. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
@@ -4866,6 +4910,18 @@ declare namespace LocalJSX {
          */
         "columns"?: BreakpointCustomizable<SegmentedControlColumns>;
         /**
+          * Disables the segmented-control.
+         */
+        "disabled"?: boolean;
+        /**
+          * The id of a form element the segmented-control should be associated with.
+         */
+        "form"?: string;
+        /**
+          * The name of the segmented-control.
+         */
+        "name"?: string;
+        /**
           * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when selected element changes.
          */
         "onSegmentedControlChange"?: (event: PSegmentedControlCustomEvent<SegmentedControlUpdateEventDetail>) => void;
@@ -4917,7 +4973,7 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
-          * Disables the select
+          * Disables the select.
          */
         "disabled"?: boolean;
         /**

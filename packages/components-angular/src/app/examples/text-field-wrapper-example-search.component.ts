@@ -15,6 +15,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/
     <p-text>Value: {{ value }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TextFieldWrapperExampleSearchComponent {
   public value = '';

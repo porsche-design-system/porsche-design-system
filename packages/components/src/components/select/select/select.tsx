@@ -14,27 +14,31 @@ import {
 } from './select-utils';
 
 import {
-  type EventEmitter,
-  type JSX,
+  AttachInternals,
   Component,
   Element,
   Event,
-  forceUpdate,
-  h,
+  type EventEmitter,
+  type JSX,
   Listen,
   Prop,
   State,
   Watch,
-  AttachInternals,
+  forceUpdate,
+  h,
 } from '@stencil/core';
+import { getSlottedAnchorStyles } from '../../../styles';
 import {
-  addNativePopoverScrollAndResizeListeners,
   AllowedTypes,
+  FORM_STATES,
+  SELECT_DROPDOWN_DIRECTIONS,
+  SELECT_SEARCH_TIMEOUT,
+  THEMES,
+  addNativePopoverScrollAndResizeListeners,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   detectNativePopoverCase,
   findClosestComponent,
-  FORM_STATES,
   getActionFromKeyboardEvent,
   getComboboxAriaAttributes,
   getHighlightedSelectOption,
@@ -50,17 +54,13 @@ import {
   hasPropValueChanged,
   isClickOutside,
   isElementOfKind,
-  SELECT_DROPDOWN_DIRECTIONS,
-  SELECT_SEARCH_TIMEOUT,
   setNextSelectOptionHighlighted,
-  THEMES,
   throwIfElementIsNotOfKind,
   validateProps,
 } from '../../../utils';
-import { getComponentCss } from './select-styles';
 import { Label, labelId } from '../../common/label/label';
-import { messageId, StateMessage } from '../../common/state-message/state-message';
-import { getSlottedAnchorStyles } from '../../../styles';
+import { StateMessage, messageId } from '../../common/state-message/state-message';
+import { getComponentCss } from './select-styles';
 
 const propTypes: PropTypes<typeof Select> = {
   label: AllowedTypes.string,
@@ -100,7 +100,9 @@ export class Select {
   @Prop() public description?: string = '';
 
   /** The name of the control. */
-  @Prop() public name: string;
+  @Prop({ reflect: true }) public name: string;
+  // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
+  // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
   /** The selected value. */
   @Prop({ mutable: true }) public value?: string;
@@ -114,8 +116,8 @@ export class Select {
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Disables the select */
-  @Prop() public disabled?: boolean = false;
+  /** Disables the select. */
+  @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /** A Boolean attribute indicating that an option with a non-empty string value must be selected. */
   @Prop() public required?: boolean = false;
@@ -251,7 +253,7 @@ export class Select {
           isDisabled={this.disabled}
         />
         <span class="sr-only" id={initialStatusId}>
-          {`${!getSelectedOptionString(this.selectOptions) ? 'No option selected. ' : ''} ${this.selectOptions.length} options in total.`}
+          {`${getSelectedOptionString(this.selectOptions) ? '' : 'No option selected. '} ${this.selectOptions.length} options in total.`}
         </span>
         <div class={{ wrapper: true, disabled: this.disabled }} ref={(el) => (this.comboboxContainer = el)}>
           <button
@@ -314,23 +316,21 @@ export class Select {
     this.selectOptions = [];
     this.selectOptgroups = [];
 
-    Array.from(this.host.children)
-      .filter(
-        (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
-      )
-      .forEach((child: HTMLElement) => {
-        throwIfElementIsNotOfKind(this.host, child, ['p-select-option', 'p-optgroup']);
+    for (const child of Array.from(this.host.children).filter(
+      (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
+    )) {
+      throwIfElementIsNotOfKind(this.host, child as HTMLElement, ['p-select-option', 'p-optgroup']);
 
-        if (isElementOfKind(child, 'p-select-option')) {
-          this.selectOptions.push(child as SelectOption);
-        } else if (isElementOfKind(child, 'p-optgroup')) {
-          this.selectOptgroups.push(child as SelectOptgroup);
-          Array.from(child.children).forEach((optGroupChild: HTMLElement) => {
-            throwIfElementIsNotOfKind(child, optGroupChild, 'p-select-option');
-            this.selectOptions.push(optGroupChild as SelectOption);
-          });
+      if (isElementOfKind(child as HTMLElement, 'p-select-option')) {
+        this.selectOptions.push(child as SelectOption);
+      } else if (isElementOfKind(child as HTMLElement, 'p-optgroup')) {
+        this.selectOptgroups.push(child as SelectOptgroup);
+        for (const optGroupChild of Array.from(child.children)) {
+          throwIfElementIsNotOfKind(child as HTMLElement, optGroupChild as HTMLElement, 'p-select-option');
+          this.selectOptions.push(optGroupChild as SelectOption);
         }
-      });
+      }
+    }
   };
 
   private updateSelectedOption = (selectedOption: SelectOption): void => {
@@ -378,12 +378,13 @@ export class Select {
     switch (action) {
       case 'Last':
       case 'First':
+        // biome-ignore lint/suspicious/noFallthroughSwitchClause: intentional fallthrough
         this.updateMenuState(true);
       // intentional fallthrough
       case 'Next':
       case 'Previous':
       case 'PageUp':
-      case 'PageDown':
+      case 'PageDown': {
         event.preventDefault();
         setNextSelectOptionHighlighted(
           this.listElement,
@@ -396,21 +397,26 @@ export class Select {
         );
         this.updateSrHighlightedOptionText();
         break;
-      case 'CloseSelect':
+      }
+      case 'CloseSelect': {
+        // biome-ignore lint/suspicious/noFallthroughSwitchClause: intentional fallthrough
         event.preventDefault();
         this.updateSelectedOption(getHighlightedSelectOption(this.selectOptions));
+      }
       // intentional fallthrough
-      case 'Close':
+      case 'Close': {
         event.preventDefault();
         this.updateMenuState(false);
         break;
+      }
       case 'Type':
         this.onComboType(key);
         break;
-      case 'Open':
+      case 'Open': {
         event.preventDefault();
         this.updateMenuState(true);
         break;
+      }
     }
   };
 

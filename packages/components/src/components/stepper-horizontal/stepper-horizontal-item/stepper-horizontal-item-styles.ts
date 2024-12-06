@@ -1,4 +1,12 @@
 import {
+  borderRadiusSmall,
+  fontLineHeight,
+  frostedGlassStyle,
+  spacingFluidXSmall,
+  textSmallStyle,
+} from '@porsche-design-system/styles';
+import type { JssStyle } from 'jss';
+import {
   addImportantToEachRule,
   getFocusJssStyle,
   getHiddenTextJssStyle,
@@ -10,19 +18,11 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import {
-  borderRadiusSmall,
-  fontLineHeight,
-  frostedGlassStyle,
-  spacingFluidXSmall,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
-import { getCss } from '../../../utils';
 import type { Theme } from '../../../types';
-import type { StepperHorizontalItemState } from './stepper-horizontal-item-utils';
-import type { JssStyle } from 'jss';
-import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
+import { getCss } from '../../../utils';
 import { escapeHashCharacter } from '../../../utils/svg/escapeHashCharacter';
+import { getInlineSVGBackgroundImage } from '../../../utils/svg/getInlineSVGBackgroundImage';
+import type { StepperHorizontalItemState } from './stepper-horizontal-item-utils';
 
 type NumberedCircleColors = {
   primaryColor: string;
@@ -31,13 +31,13 @@ type NumberedCircleColors = {
 };
 
 const getSVGPath = (stepCount: number, numberedCircleColors: NumberedCircleColors, isStateCurrent: boolean): string => {
-  // # of the hexcolor starts a fragment identifier in URLs, so we have to replace it with the escaped value of # = %23
-  numberedCircleColors = Object.entries(numberedCircleColors).reduce(
+  // # of the hex color starts a fragment identifier in URLs, so we have to replace it with the escaped value of # = %23
+  const escapedNumberedCircleColors = Object.entries(numberedCircleColors).reduce(
     (result, [key, value]) => ({ ...result, [key]: escapeHashCharacter(value) }),
     {} as NumberedCircleColors
   );
 
-  const { disabledColor, invertedBaseColor, primaryColor } = numberedCircleColors;
+  const { disabledColor, invertedBaseColor, primaryColor } = escapedNumberedCircleColors;
   const fillColor = isStateCurrent ? invertedBaseColor : disabledColor;
 
   const svgCirclePath = `<circle fill="${isStateCurrent ? primaryColor : 'none'}"${
@@ -78,7 +78,7 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
     '@global': {
       ':host': {
         ...(isStateCurrentOrUndefined &&
-          Array.from(Array(9)).reduce(
+          Array.from(new Array(9)).reduce(
             (result, _, i) => ({
               ...result,
               [`&(:nth-of-type(${i + 1})) $button::before`]: {

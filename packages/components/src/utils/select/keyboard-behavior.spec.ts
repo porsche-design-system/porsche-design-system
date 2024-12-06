@@ -1,17 +1,17 @@
+import * as stencilUtils from '@stencil/core';
 import * as keyboardBehaviorUtils from './keyboard-behavior';
 import {
+  type Option,
   filterSelectOptions,
   getHighlightedSelectOption,
   getHighlightedSelectOptionIndex,
   getMatchingSelectOptionIndex,
   getUpdatedIndex,
   getUsableSelectOptions,
-  Option,
   setHighlightedSelectOption,
   setMatchingSelectOptionHighlighted,
   setNextSelectOptionHighlighted,
 } from './keyboard-behavior';
-import * as stencilUtils from '@stencil/core';
 
 type GenerateOptionsParams = {
   amount?: number;
@@ -23,7 +23,7 @@ type GenerateOptionsParams = {
   hiddenIndex?: number;
 };
 
-export const generateOptions = (
+const generateOptions = (
   {
     amount = 3,
     values,
@@ -38,7 +38,7 @@ export const generateOptions = (
   }
 ): Option[] => {
   return Array.from(
-    Array(amount),
+    new Array(amount),
     (_, idx) =>
       ({
         value: values?.[idx] ? values[idx] : `Value ${idx}`,

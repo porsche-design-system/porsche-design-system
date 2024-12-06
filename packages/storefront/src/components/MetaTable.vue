@@ -57,33 +57,33 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { Prop } from 'vue-property-decorator';
-  import { paramCase } from 'change-case';
-  import {
-    getComponentMeta,
-    type ComponentMeta,
-    type EventMeta,
-    type PropMeta,
-  } from '@porsche-design-system/component-meta';
-  import type { TagName } from '@porsche-design-system/shared';
-  import { formatEventType, formatPropDefaultValue, formatPropDescription, formatPropType } from '@/utils';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { Prop } from 'vue-property-decorator';
+import { paramCase } from 'change-case';
+import {
+  getComponentMeta,
+  type ComponentMeta,
+  type EventMeta,
+  type PropMeta,
+} from '@porsche-design-system/component-meta';
+import type { TagName } from '@porsche-design-system/shared';
+import { formatEventType, formatPropDefaultValue, formatPropDescription, formatPropType } from '@/utils';
 
-  const sortObjectByKey = <T extends object>(input?: T): T =>
-    input
-      ? (Object.keys(input) as (keyof T)[]).sort().reduce((result, key) => ({ ...result, [key]: input[key] }), {} as T)
-      : ({} as T);
+const sortObjectByKey = <T extends object>(input?: T): T =>
+  input
+    ? (Object.keys(input) as (keyof T)[]).sort().reduce((result, key) => ({ ...result, [key]: input[key] }), {} as T)
+    : ({} as T);
 
-  type MetaType = 'props' | 'events';
+type MetaType = 'props' | 'events';
 
-  @Component
-  export default class MetaTable extends Vue {
-    @Prop() public component!: TagName;
-    @Prop({ default: 'props' }) public type!: MetaType;
+@Component
+export default class MetaTable extends Vue {
+  @Prop() public component!: TagName;
+  @Prop({ default: 'props' }) public type!: MetaType;
 
-    paramCase = paramCase;
-    breakpointCustomizableGeneric = `type BreakpointCustomizable<T> = {
+  paramCase = paramCase;
+  breakpointCustomizableGeneric = `type BreakpointCustomizable<T> = {
   base: T;
   xs?: T;
   s?: T;
@@ -93,41 +93,39 @@
   xxl?: T;
 };`;
 
-    public get propsMeta(): ComponentMeta['propsMeta'] {
-      return sortObjectByKey(getComponentMeta(this.component)?.propsMeta);
-    }
-
-    public get eventsMeta(): ComponentMeta['eventsMeta'] {
-      return sortObjectByKey(getComponentMeta(this.component)?.eventsMeta);
-    }
-
-    public get hasBreakpointCustomizableProp(): boolean {
-      return this.propsMeta
-        ? Object.values(this.propsMeta).some((propMeta) => propMeta.isBreakpointCustomizable)
-        : false;
-    }
-
-    public formatDescription(meta: PropMeta | EventMeta): string {
-      return formatPropDescription(meta);
-    }
-
-    public formatPropType(meta: PropMeta): string {
-      return formatPropType(meta);
-    }
-
-    public formatPropDefaultValue(meta: PropMeta): string {
-      return formatPropDefaultValue(meta);
-    }
-
-    public formatEventType(meta: EventMeta): string {
-      return formatEventType(meta);
-    }
+  public get propsMeta(): ComponentMeta['propsMeta'] {
+    return sortObjectByKey(getComponentMeta(this.component)?.propsMeta);
   }
+
+  public get eventsMeta(): ComponentMeta['eventsMeta'] {
+    return sortObjectByKey(getComponentMeta(this.component)?.eventsMeta);
+  }
+
+  public get hasBreakpointCustomizableProp(): boolean {
+    return this.propsMeta ? Object.values(this.propsMeta).some((propMeta) => propMeta.isBreakpointCustomizable) : false;
+  }
+
+  public formatDescription(meta: PropMeta | EventMeta): string {
+    return formatPropDescription(meta);
+  }
+
+  public formatPropType(meta: PropMeta): string {
+    return formatPropType(meta);
+  }
+
+  public formatPropDefaultValue(meta: PropMeta): string {
+    return formatPropDefaultValue(meta);
+  }
+
+  public formatEventType(meta: EventMeta): string {
+    return formatEventType(meta);
+  }
+}
 </script>
 
 <style scoped lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
-  @import '../styles/shared.styles';
+  @use '../styles/shared.styles' as *;
 
   :deep(.deprecated) {
     color: var(--theme-notification-error);

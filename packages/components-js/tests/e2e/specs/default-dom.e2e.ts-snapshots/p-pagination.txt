@@ -1,4 +1,4 @@
-<nav role="navigation" aria-label="Pagination">
+<nav aria-label="Pagination">
   <ul>
     <li class="prev">
       <span role="button" aria-label="Previous page" aria-disabled="true">

@@ -1,3 +1,5 @@
+import { expect } from '@jest/globals';
+import * as jssUtils from './../../utils/jss';
 import * as flyoutUtilsUtils from './flyout-utils';
 import {
   addStickyTopCssVarStyleSheet,
@@ -7,8 +9,6 @@ import {
   stickyTopCssVarStyleSheetMap,
   updateStickyTopCssVarStyleSheet,
 } from './flyout-utils';
-import * as jssUtils from './../../utils/jss';
-import { expect } from '@jest/globals';
 
 class MockResizeObserver {
   constructor(callback) {
@@ -31,8 +31,8 @@ class MockHTMLElement {
 }
 
 describe('addStickyTopCssVarStyleSheet()', () => {
-  let host;
-  let stylesheetMock = {
+  let host: any;
+  const stylesheetMock = {
     replaceSync: jest.fn(),
     insertRule: jest.fn(),
     deleteRule: jest.fn(),
@@ -73,11 +73,11 @@ describe('addStickyTopCssVarStyleSheet()', () => {
 });
 
 describe('handleUpdateStickyTopCssVar()', () => {
-  let host;
+  let host: any;
   const callbackMock = jest.fn();
-  let mockResizeObserver = new MockResizeObserver(callbackMock);
-  let header;
-  let stylesheetMock = {
+  const mockResizeObserver = new MockResizeObserver(callbackMock);
+  let header: any;
+  const stylesheetMock = {
     replaceSync: jest.fn(),
     insertRule: jest.fn(),
     deleteRule: jest.fn(),
@@ -145,8 +145,8 @@ describe('handleUpdateStickyTopCssVar()', () => {
 });
 
 describe('updateStickyTopCssVarStyleSheet()', () => {
-  let host;
-  let stylesheetMock = {
+  let host: any;
+  const stylesheetMock = {
     replaceSync: jest.fn(),
     insertRule: jest.fn(),
     deleteRule: jest.fn(),
@@ -171,9 +171,9 @@ describe('updateStickyTopCssVarStyleSheet()', () => {
 });
 
 describe('getStickyTopResizeObserver()', () => {
-  let host;
+  let host: any;
   const callbackMock = jest.fn();
-  let mockResizeObserver = new MockResizeObserver(callbackMock);
+  const mockResizeObserver = new MockResizeObserver(callbackMock);
 
   beforeEach(() => {
     host = new MockHTMLElement();

@@ -11,23 +11,22 @@ export const observeProperties = <T extends HTMLElement>(node: T, props: (keyof 
       typeof descriptor.set !== 'function'
     ) {
       return result;
-    } else {
-      // eslint-disable-next-line @typescript-eslint/unbound-method
-      const { get, set } = descriptor;
-      return {
-        ...result,
-        [prop]: {
-          configurable: true,
-          get() {
-            return get.call(this);
-          },
-          set(val: any) {
-            set.call(this, val);
-            callback();
-          },
-        },
-      };
     }
+    // eslint-disable-next-line @typescript-eslint/unbound-method
+    const { get, set } = descriptor;
+    return {
+      ...result,
+      [prop]: {
+        configurable: true,
+        get() {
+          return get.call(this);
+        },
+        set(val: any) {
+          set.call(this, val);
+          callback();
+        },
+      },
+    };
   }, {} as PropertyDescriptorMap);
   Object.defineProperties(node, properties);
 };

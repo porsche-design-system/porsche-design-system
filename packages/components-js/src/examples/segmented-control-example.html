@@ -1,20 +1,23 @@
-<p-segmented-control value="1">
-  <p-segmented-control-item value="1">Option 1</p-segmented-control-item>
-  <p-segmented-control-item value="2">Option 2</p-segmented-control-item>
-  <p-segmented-control-item value="3">Option 3</p-segmented-control-item>
-  <p-segmented-control-item value="4">Option 4</p-segmented-control-item>
-  <p-segmented-control-item value="5">Option 5</p-segmented-control-item>
-</p-segmented-control>
+<form>
+  <p-segmented-control name="options" value="1">
+    <p-segmented-control-item value="1">Option 1</p-segmented-control-item>
+    <p-segmented-control-item value="2">Option 2</p-segmented-control-item>
+    <p-segmented-control-item value="3">Option 3</p-segmented-control-item>
+    <p-segmented-control-item value="4">Option 4</p-segmented-control-item>
+    <p-segmented-control-item value="5">Option 5</p-segmented-control-item>
+  </p-segmented-control>
+  <button type="submit">Submit</button>
+  <button type="reset">Reset</button>
+</form>
 
-<p-text>Current value: 1</p-text>
+<p-text>Last submitted data: none</p-text>
 
 <script>
-  const segmentedControl = document.querySelector('p-segmented-control');
   const debugElement = document.querySelector('p-text');
-
-  segmentedControl.addEventListener('update', (e) => {
-    const { value } = e.detail;
-    segmentedControl.value = value;
-    debugElement.innerText = `Current value: ${value}`;
+  const form = document.querySelector('form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    debugElement.innerText = `Last submitted data: ${formData.get('options') || 'none'}`;
   });
 </script>

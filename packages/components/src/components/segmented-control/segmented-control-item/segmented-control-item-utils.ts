@@ -4,6 +4,7 @@ import type { IconColor } from '../../icon/icon-utils';
 
 export type SegmentedControlItemInternalHTMLProps = {
   selected: boolean;
+  disabledParent: boolean;
   theme: Theme;
 };
 
@@ -24,5 +25,5 @@ export const getSegmentedControlItemAriaAttributes = (
 });
 
 export const getIconColor = (isDisabled: boolean): IconColor => {
-  return !isDisabled ? 'primary' : 'contrast-medium';
+  return isDisabled ? 'contrast-medium' : 'primary';
 };

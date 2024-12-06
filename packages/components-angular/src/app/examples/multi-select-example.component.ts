@@ -19,6 +19,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <p-text>Last submitted data: {{ lastSubmittedData }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class MultiSelectExampleComponent {
   lastSubmittedData: string = 'none';
@@ -26,6 +27,6 @@ export class MultiSelectExampleComponent {
   onSubmit(e: Event): void {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
-    this.lastSubmittedData = Array.from(formData.values()).join(', ') || 'none';
+    this.lastSubmittedData = Array.from(formData.getAll('options')).join(', ') || 'none';
   }
 }

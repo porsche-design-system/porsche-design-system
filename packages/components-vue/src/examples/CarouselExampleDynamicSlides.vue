@@ -1,15 +1,15 @@
 <script setup lang="ts">
-  import { PCarousel } from '@porsche-design-system/components-vue';
-  import { ref } from 'vue';
+import { PCarousel } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
 
-  const amountOfSlides = ref(3);
+const amountOfSlides = ref(3);
 
-  const onAddClick = (): void => {
-    amountOfSlides.value = amountOfSlides.value + 1;
-  };
-  const onRemoveClick = (): void => {
-    amountOfSlides.value = amountOfSlides.value === 0 ? 0 : amountOfSlides.value - 1;
-  };
+const onAddClick = (): void => {
+  amountOfSlides.value = amountOfSlides.value + 1;
+};
+const onRemoveClick = (): void => {
+  amountOfSlides.value = amountOfSlides.value === 0 ? 0 : amountOfSlides.value - 1;
+};
 </script>
 
 <template>

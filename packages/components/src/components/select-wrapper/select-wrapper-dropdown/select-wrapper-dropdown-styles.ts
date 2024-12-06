@@ -1,7 +1,13 @@
-import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
-import type { Theme } from '../../../types';
+import {
+  borderRadiusSmall,
+  borderWidthBase,
+  fontLineHeight,
+  fontSizeTextXSmall,
+  fontWeightSemiBold,
+  spacingStaticSmall,
+  textSmallStyle,
+} from '@porsche-design-system/styles';
 import type { JssStyle, Styles } from 'jss';
-import { getCss, isHighContrastMode, mergeDeep } from '../../../utils';
 import {
   addImportantToRule,
   getHighContrastColors,
@@ -11,25 +17,19 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import {
-  borderRadiusSmall,
-  borderWidthBase,
-  fontLineHeight,
-  fontWeightSemiBold,
-  spacingStaticSmall,
-  textSmallStyle,
-  fontSizeTextXSmall,
-} from '@porsche-design-system/styles';
+import type { Theme } from '../../../types';
+import { getCss, isHighContrastMode, mergeDeep } from '../../../utils';
+import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
 
-import { getNoResultsOptionJssStyle, OPTION_HEIGHT } from '../../../styles/option-styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
-import { getPopoverResetJssStyle } from '../../../styles/popover-reset-styles';
-import type { FormState } from '../../../utils/form/form-state';
 import {
   formElementPaddingHorizontal,
   formElementPaddingVertical,
   getCalculatedFormElementPaddingHorizontal,
 } from '../../../styles/form-styles';
+import { OPTION_HEIGHT, getNoResultsOptionJssStyle } from '../../../styles/option-styles';
+import { getPopoverResetJssStyle } from '../../../styles/popover-reset-styles';
+import type { FormState } from '../../../utils/form/form-state';
 
 const dropdownPositionVar = '--p-internal-dropdown-position';
 
@@ -250,7 +250,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
 
   return {
     '@global': {
-      ul: {
+      '[role="listbox"]': {
         display: 'flex',
         flexDirection: 'column',
         gap: spacingStaticSmall,

@@ -15,17 +15,17 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import { Prop } from 'vue-property-decorator';
-  import { PlaygroundTheme } from '@/models';
-  import Component from 'vue-class-component';
+import Vue from 'vue';
+import { Prop } from 'vue-property-decorator';
+import { PlaygroundTheme } from '@/models';
+import Component from 'vue-class-component';
 
-  @Component
-  export default class ThemeSelect extends Vue {
-    @Prop({ default: 'light' }) public theme!: PlaygroundTheme;
-    @Prop({ default: 'Theme' }) public label!: string;
-    @Prop({ default: false }) public hideLabel!: boolean;
-  }
+@Component
+export default class ThemeSelect extends Vue {
+  @Prop({ default: 'light' }) public theme!: PlaygroundTheme;
+  @Prop({ default: 'Theme' }) public label!: string;
+  @Prop({ default: false }) public hideLabel!: boolean;
+}
 </script>
 
 <style scoped lang="scss">

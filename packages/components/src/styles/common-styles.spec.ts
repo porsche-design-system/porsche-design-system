@@ -7,7 +7,7 @@ import {
   getHiddenTextJssStyle,
   getTransition,
   type MotionDurationKey,
-  motionEasingMap,
+  type motionEasingMap,
 } from './common-styles';
 import type { PropertiesHyphen } from 'csstype';
 

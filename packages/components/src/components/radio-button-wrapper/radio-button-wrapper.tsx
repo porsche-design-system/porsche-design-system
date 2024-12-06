@@ -14,13 +14,12 @@ import {
   validateProps,
 } from '../../utils';
 import { getCheckboxRadioButtonSafariRenderingFix } from '../../utils/form/applyCheckboxRadioButtonSafariRenderingFix';
-import { type BreakpointCustomizable, type PropTypes, type Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import { getComponentCss } from './radio-button-wrapper-styles';
-import { type RadioButtonWrapperState } from './radio-button-wrapper-utils';
+import type { RadioButtonWrapperState } from './radio-button-wrapper-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Label } from '../common/label/label';
 import { LoadingMessage } from '../common/loading-message/loading-message';
-import { ControllerHost, InitialLoadingController } from '../../controllers';
 import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof RadioButtonWrapper> = {
@@ -62,18 +61,25 @@ export class RadioButtonWrapper {
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  private controllerHost = new ControllerHost(this);
-  private loadingCtrl = new InitialLoadingController(this.controllerHost);
+  private initialLoading: boolean = false;
   private input: HTMLInputElement;
 
   public connectedCallback(): void {
+    this.initialLoading = this.loading;
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles, getCheckboxRadioButtonSafariRenderingFix);
     this.observeAttributes(); // on every reconnect
   }
 
   public componentWillLoad(): void {
+    this.initialLoading = this.loading;
     this.input = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type=radio]');
     this.observeAttributes(); // once initially
+  }
+
+  public componentWillUpdate(): void {
+    if (this.loading) {
+      this.initialLoading = true;
+    }
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -123,7 +129,7 @@ export class RadioButtonWrapper {
           )}
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
-        <LoadingMessage loading={isLoading} initialLoading={this.loadingCtrl.initialLoading} />
+        <LoadingMessage loading={isLoading} initialLoading={this.initialLoading} />
       </div>
     );
   }

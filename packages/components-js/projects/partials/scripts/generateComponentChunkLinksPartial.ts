@@ -1,5 +1,5 @@
-import { COMPONENT_CHUNK_NAMES, COMPONENT_CHUNKS_MANIFEST } from '../../components-wrapper';
 import { CDN_BASE_PATH_COMPONENTS } from '../../../../../cdn.config';
+import { COMPONENT_CHUNKS_MANIFEST, COMPONENT_CHUNK_NAMES } from '../../components-wrapper';
 
 export const generateComponentChunkLinksPartial = (): string => {
   const chunkNamesTypeLiteral = COMPONENT_CHUNK_NAMES.map((x) => `'${x}'`).join(' | ');
@@ -45,11 +45,10 @@ Please use only valid component chunk names:
     .map((url, idx) => \`<link rel=preload href=\${url} as=script\${idx === 0 ? ' crossorigin' : ''}>\`)
     .join('');
 
-  const linksJsx = urls.map((url, index) => <link key={index} rel="preload" href={url} as="script" {...(index === 0 && { crossOrigin: '' })} />);
-
   if (format === 'html') {
     return linksHtml;
   } else if (format === 'jsx') {
+    const linksJsx = urls.map((url, index) => <link key={index} rel="preload" href={url} as="script" {...(index === 0 && { crossOrigin: '' })} />);
     return <>{linksJsx}</>;
   } else {
     return urls.map((url, index) => ({ href: url, options: { as: 'script', ...(index === 0 && { crossOrigin: '' }) } } as PartialLink))

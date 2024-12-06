@@ -1,11 +1,11 @@
 <script setup lang="ts">
-  import { PInlineNotification } from '@porsche-design-system/components-vue';
-  import { ref } from 'vue';
+import { PInlineNotification } from '@porsche-design-system/components-vue';
+import { ref } from 'vue';
 
-  const isLoading = ref(false);
-  const onAction = (): void => {
-    isLoading.value = !isLoading.value;
-  };
+const isLoading = ref(false);
+const onAction = (): void => {
+  isLoading.value = !isLoading.value;
+};
 </script>
 
 <template>

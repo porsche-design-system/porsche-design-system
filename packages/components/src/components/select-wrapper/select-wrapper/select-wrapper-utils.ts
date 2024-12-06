@@ -11,9 +11,9 @@ export type SelectWrapperState = FormState;
 export const isCustomDropdown = (filter: boolean, native: boolean): boolean => {
   if (filter) {
     return true;
-  } else if (native) {
-    return false;
-  } else {
-    return !isTouchDevice();
   }
+  if (native) {
+    return false;
+  }
+  return !isTouchDevice();
 };

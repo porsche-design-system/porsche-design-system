@@ -77,20 +77,20 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "@porsche-design-system/components": "3.21.0",
-    "@porsche-design-system/components-js": "3.21.0",
+    "@porsche-design-system/components": "3.22.0",
+    "@porsche-design-system/components-js": "3.22.0",
     "@porsche-design-system/components-manager-cli": "0.0.0",
     "@porsche-design-system/partials": "0.0.0",
     "imask": "^7.6.1"
   },
   "devDependencies": {
-    "@arethetypeswrong/core": "^0.15.1",
+    "@arethetypeswrong/core": "0.15.1",
     "@porsche-design-system/shared": "0.0.0",
-    "ag-grid-community": "32.2.1",
-    "ag-grid-enterprise": "32.2.1",
+    "ag-grid-community": "32.3.3",
+    "ag-grid-enterprise": "32.3.3",
     "devtools-protocol": "^0.0.1304228",
     "jsdom": "^24.1.0",
-    "local-web-server": "^5.3.3",
+    "local-web-server": "^5.4.0",
     "mime": "^4.0.4",
     "terser-webpack-plugin": "^5.3.10",
     "webpack-bundle-analyzer": "^4.10.2",
@@ -108,7 +108,8 @@
     "tsx": "*",
     "typescript": "*",
     "webpack": "*",
-    "vite": "*"
+    "vite": "*",
+    "gzip-size": "*"
   },
   "volta": {
     "extends": "../../package.json"

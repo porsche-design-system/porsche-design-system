@@ -1,5 +1,5 @@
+import { forceUpdate } from '@stencil/core';
 import type { Theme } from '../../../types';
-import type { TabsItemInternalHTMLProps } from '../tabs-item/tabs-item-utils';
 import type {
   TabsBarGradientColor,
   TabsBarGradientColorScheme,
@@ -7,7 +7,7 @@ import type {
   TabsBarUpdateEvent,
   TabsBarWeight,
 } from '../../tabs-bar/tabs-bar-utils';
-import { forceUpdate } from '@stencil/core';
+import type { TabsItemInternalHTMLProps } from '../tabs-item/tabs-item-utils';
 
 export type TabsSize = TabsBarSize;
 export type TabsWeight = TabsBarWeight;
@@ -19,8 +19,8 @@ export type TabsUpdateEvent = TabsBarUpdateEvent;
 export type TabsUpdateEventDetail = TabsUpdateEvent;
 
 export const syncTabsItemsProps = (items: HTMLPTabsItemElement[], theme: Theme): void => {
-  items.forEach((item: HTMLPTabsItemElement & TabsItemInternalHTMLProps) => {
-    item.theme = theme;
+  for (const item of items) {
+    (item as HTMLPTabsItemElement & TabsItemInternalHTMLProps).theme = theme;
     forceUpdate(item);
-  });
+  }
 };

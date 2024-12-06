@@ -1,11 +1,11 @@
-import * as path from 'path';
 import * as fs from 'fs';
-import { globbySync } from 'globby';
-import { kebabCase, pascalCase } from 'latest-change-case';
-import { breakpoint } from '@porsche-design-system/styles';
+import * as path from 'path';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
-import { getComponentMeta } from '@porsche-design-system/component-meta';
+import { breakpoint } from '@porsche-design-system/styles';
+import { kebabCase, pascalCase } from 'change-case';
+import { globbySync } from 'globby';
 
 const EXCLUDED_COMPONENTS: TagName[] = ['p-toast-item'];
 
@@ -314,6 +314,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       } else if (tagName === 'p-modal') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasFooter|hasDismissButton)/g, '$1')
+          .replace(/(this\.props\.ariaLabel)\(\)/g, '$1')
           .replace(/hasHeader =/, 'const $&')
           .replace(/hasFooter =/, 'const $&')
           .replace(
@@ -429,7 +430,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         : child
     );`
           )
-          .replace(/{this\.props\.children}/, '{manipulatedChildren}');
+          .replace(/{this\.props\.children}/, '{manipulatedChildren}')
+          // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
+          .replace(/@AttachInternals\(\)/, '')
+          .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
+          .replace(/this\.props\.disabled = disabled;/, '')
+          .replace(/this\.props\.value = state;/, '')
+          .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
+          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
       } else if (tagName === 'p-segmented-control-item') {
         newFileContent = newFileContent.replace(/!!this\.props\.innerHTML/, '!!children.length');
       } else if (tagName === 'p-stepper-horizontal') {
@@ -578,11 +586,22 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 $&`
           );
       } else if (tagName === 'p-pin-code') {
-        newFileContent = newFileContent.replace(/value={/, 'defaultValue={'); // fix warning about read-only field
+        newFileContent = newFileContent
+          .replace(/value={/, 'defaultValue={') // fix warning about read-only field
+          // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
+          .replace(/@AttachInternals\(\)/, '')
+          .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
+          .replace(/this\.props\.disabled = disabled;/, '')
+          .replace(/this\.props\.value = state;/, '')
+          .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
+          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
       } else if (tagName === 'p-flyout-multilevel') {
         newFileContent = newFileContent
           .replace(/validateActiveIdentifier\(.*\);/g, '')
-          .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2"); // transform true to empty string '';
+          .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2") // transform true to empty string '';
+          .replace(/this\.props\.primary = !activeItem \|\| activeItem\.parentElement === this\.props;/, '')
+          .replace(/this\.props\.primary/, 'this.primary')
+          .replace(/this\.props\.isSecondaryDrawerVisible/, 'this.isSecondaryDrawerVisible');
       } else if (tagName === 'p-flyout-multilevel-item') {
         newFileContent = newFileContent
           .replace(/: Theme/g, ': any')

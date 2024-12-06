@@ -22,6 +22,7 @@ import { dataBasic, headBasic } from '@porsche-design-system/shared';
     </p-table>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TableExampleBasicComponent {
   public head = headBasic;

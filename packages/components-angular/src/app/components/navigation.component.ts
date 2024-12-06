@@ -10,6 +10,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
     </p-tabs-bar>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class NavigationComponent {
   @Input() activeTabIndex = 0;

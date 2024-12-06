@@ -1,11 +1,11 @@
 import { forceUpdate } from '@stencil/core';
-import type { ToastState } from './toast-utils';
-import { ANIMATION_DURATION } from './toast-styles';
-import { throwException } from '../../../utils';
 import { cssVariableAnimationDuration } from '../../../styles';
+import { throwException } from '../../../utils';
+import { ANIMATION_DURATION } from './toast-styles';
+import type { ToastState } from './toast-utils';
 
 const TOAST_DEFAULT_TIMEOUT = 6000;
-const MOTION_DURATION = parseFloat(ANIMATION_DURATION) * 1000;
+const MOTION_DURATION = Number.parseFloat(ANIMATION_DURATION) * 1000;
 
 // css variable names for overriding behaviour in tests
 const TEMPORARY_TOAST_SKIP_TIMEOUT = '--p-temporary-toast-skip-timeout';
@@ -67,7 +67,8 @@ export class ToastManagerClass {
       // respect --p-temporary-toast-timeout css variable to override timeout during e2e and vrt tests
       ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
         ? MOTION_DURATION
-        : parseInt(getComputedStyle(this.toastEl).getPropertyValue(cssVariableAnimationDuration), 10) || MOTION_DURATION
+        : Number.parseInt(getComputedStyle(this.toastEl).getPropertyValue(cssVariableAnimationDuration), 10) ||
+            MOTION_DURATION
     );
   };
 
@@ -80,16 +81,14 @@ export class ToastManagerClass {
     if (this.message) {
       if (ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test') {
         this.timeout = setTimeout(this.dismissToastItem, TOAST_DEFAULT_TIMEOUT);
-      } else {
+      } else if (getComputedStyle(this.toastEl).getPropertyValue(TEMPORARY_TOAST_SKIP_TIMEOUT)?.trim() !== 'true') {
         // skip setting timeout if --p-temporary-toast-skip-timeout css variable is set in dev build
-        if (getComputedStyle(this.toastEl).getPropertyValue(TEMPORARY_TOAST_SKIP_TIMEOUT)?.trim() !== 'true') {
-          this.timeout = setTimeout(
-            this.dismissToastItem,
-            // override timeout if --p-temporary-toast-timeout css variable is set
-            parseInt(getComputedStyle(this.toastEl).getPropertyValue(TEMPORARY_TOAST_TIMEOUT), 10) ||
-              TOAST_DEFAULT_TIMEOUT
-          );
-        }
+        this.timeout = setTimeout(
+          this.dismissToastItem,
+          // override timeout if --p-temporary-toast-timeout css variable is set
+          Number.parseInt(getComputedStyle(this.toastEl).getPropertyValue(TEMPORARY_TOAST_TIMEOUT), 10) ||
+            TOAST_DEFAULT_TIMEOUT
+        );
       }
     }
   }

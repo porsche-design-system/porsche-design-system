@@ -14,36 +14,36 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import Header from '@/components/Header.vue';
-  import Main from '@/components/Main.vue';
-  import MenuMobile from '@/components/MenuMobile.vue';
-  import MenuDesktop from '@/components/MenuDesktop.vue';
-  import { Watch } from 'vue-property-decorator';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import Header from '@/components/Header.vue';
+import Main from '@/components/Main.vue';
+import MenuMobile from '@/components/MenuMobile.vue';
+import MenuDesktop from '@/components/MenuDesktop.vue';
+import { Watch } from 'vue-property-decorator';
 
-  @Component({
-    components: {
-      Header,
-      Main,
-      MenuMobile,
-      MenuDesktop,
-    },
-  })
-  export default class App extends Vue {
-    public get isStandalone(): boolean {
-      return this.$route.meta?.standalone;
-    }
-
-    public get isLoading(): boolean {
-      return this.$store.getters.isLoading;
-    }
-
-    @Watch('$route')
-    private onRouteChange(): void {
-      this.$store.commit('setIsMenuActive', false);
-    }
+@Component({
+  components: {
+    Header,
+    Main,
+    MenuMobile,
+    MenuDesktop,
+  },
+})
+export default class App extends Vue {
+  public get isStandalone(): boolean {
+    return this.$route.meta?.standalone;
   }
+
+  public get isLoading(): boolean {
+    return this.$store.getters.isLoading;
+  }
+
+  @Watch('$route')
+  private onRouteChange(): void {
+    this.$store.commit('setIsMenuActive', false);
+  }
+}
 </script>
 
 <style lang="scss">

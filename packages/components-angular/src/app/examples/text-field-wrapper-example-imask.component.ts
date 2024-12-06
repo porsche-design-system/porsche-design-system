@@ -9,6 +9,7 @@ import { MaskedRange } from 'imask';
     </p-text-field-wrapper>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class TextFieldWrapperExampleImaskComponent {
   public isDeLocale = Intl.NumberFormat().resolvedOptions().locale.startsWith('de');

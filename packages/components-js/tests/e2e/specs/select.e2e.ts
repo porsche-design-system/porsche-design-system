@@ -19,6 +19,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import type { SelectOption } from '@porsche-design-system/components/src/components/select/select/select-utils';
+import { Theme } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.locator('p-select');
 const getFieldset = (page: Page) => page.locator('fieldset');
@@ -91,11 +92,6 @@ const addOption = async (page: Page, value: string, textContent?: string) => {
       textContent: textContent ? textContent : value,
     }
   );
-};
-
-const removeLastOption = async (page: Page) => {
-  const host = getHost(page);
-  await host.evaluate((el) => (el as HTMLPSelectElement).lastElementChild.remove());
 };
 
 const testValues = [
@@ -222,6 +218,11 @@ const testValues = [
   'Kyrgyzstan',
 ];
 
+type Option = {
+  value: string;
+  disabled?: boolean;
+};
+
 type InitOptions = {
   props?: Components.PSelect;
   slots?: {
@@ -230,8 +231,7 @@ type InitOptions = {
     message?: string;
   };
   options?: {
-    values?: string[];
-    disabledIndices?: number[];
+    values?: (Option | Option[])[];
     isWithinForm?: boolean;
     markupBefore?: string;
     markupAfter?: string;
@@ -242,8 +242,7 @@ type InitOptions = {
 const initSelect = (page: Page, opt?: InitOptions): Promise<void> => {
   const { props = { name: 'options' }, slots, options } = opt || {};
   const {
-    values = ['a', 'b', 'c'],
-    disabledIndices = [],
+    values = [{ value: 'a' }, { value: 'b' }, { value: 'c' }],
     isWithinForm = true,
     markupBefore = '',
     markupAfter = '',
@@ -251,11 +250,19 @@ const initSelect = (page: Page, opt?: InitOptions): Promise<void> => {
   } = options || {};
   const { label = '', description = '', message = '' } = slots || {};
 
+  const getOption = (opt: Option) => {
+    const attrs = [opt.disabled ? 'disabled' : ''].join(' ');
+    return `<p-select-option ${opt.value ? `value="${opt.value}"` : ''} ${attrs}>${opt.value}</p-select-option>`;
+  };
+
+  const getOptions = (options: Option | Option[]) =>
+    !Array.isArray(options) ? getOption(options) : options.map((option) => getOption(option));
+
   const selectOptions = values
     .map((x, idx) => {
-      const attrs = [disabledIndices.includes(idx) ? 'disabled' : ''].join(' ');
-      const option = `<p-select-option ${x ? `value="${x}"` : ''} ${attrs}>${x}</p-select-option>`;
-      return includeOptgroups ? `<p-optgroup label="${x}">${option}</p-optgroup>` : option;
+      const options = getOptions(x);
+      const optionsHtml = Array.isArray(options) ? options.map((node) => node).join('') : options;
+      return includeOptgroups ? `<p-optgroup label="${idx}">${optionsHtml}</p-optgroup>` : optionsHtml;
     })
     .join('\n');
 
@@ -558,7 +565,9 @@ test.describe('keyboard behavior', () => {
     let buttonElement;
     let buttonAfter;
     test.beforeEach(async ({ page }) => {
-      await initSelect(page, { options: { values: testValues, markupAfter: '<p-button>Button</p-button>' } });
+      await initSelect(page, {
+        options: { values: testValues.map((x) => ({ value: x })), markupAfter: '<p-button>Button</p-button>' },
+      });
       buttonAfter = page.locator('p-button');
       await addEventListener(buttonAfter, 'focus');
       buttonElement = getButton(page);
@@ -819,10 +828,21 @@ test.describe('keyboard behavior', () => {
     });
   });
   test('should skip disabled option when pressing ArrowUp/ArrowDown', async ({ page }) => {
-    await initSelect(page, { options: { disabledIndices: [0, 1, 3, 5], values: ['a', 'b', 'c', 'd', 'e', 'f'] } });
+    await initSelect(page, {
+      options: {
+        values: [
+          { value: 'a', disabled: true },
+          { value: 'b', disabled: true },
+          { value: 'c' },
+          { value: 'd', disabled: true },
+          { value: 'e' },
+          { value: 'f', disabled: true },
+        ],
+      },
+    });
     const buttonElement = getButton(page);
 
-    expect(await getProperty(getSelectOption(page, 2), 'disabled'), 'disabled option').toBe(true);
+    expect(await getProperty<boolean>(getSelectOption(page, 2), 'disabled'), 'disabled option').toBe(true);
 
     await buttonElement.press('ArrowDown');
     await waitForStencilLifecycle(page);
@@ -960,7 +980,7 @@ test.describe('selection', () => {
   });
 
   test('should reset selection on enter empty selection', async ({ page }) => {
-    await initSelect(page, { options: { values: ['', 'a', 'b', 'c'] } });
+    await initSelect(page, { options: { values: [{ value: '' }, { value: 'a' }, { value: 'b' }, { value: 'c' }] } });
 
     const buttonElement = getButton(page);
 
@@ -1023,7 +1043,9 @@ test.describe('selection', () => {
   });
 
   test('should not select disabled option on Click', async ({ page }) => {
-    await initSelect(page, { options: { disabledIndices: [0] } });
+    await initSelect(page, {
+      options: { values: [{ value: 'a', disabled: true }, { value: 'b' }, { value: 'c' }] },
+    });
     const buttonElement = getButton(page);
 
     await buttonElement.click(); // Open dropdown
@@ -1039,7 +1061,10 @@ test.describe('selection', () => {
   });
 
   test('should select empty option when setting value to undefined', async ({ page }) => {
-    await initSelect(page, { props: { name: 'options', value: 'a' }, options: { values: ['', 'a', 'b', 'c'] } });
+    await initSelect(page, {
+      props: { name: 'options', value: 'a' },
+      options: { values: [{ value: '' }, { value: 'a' }, { value: 'b' }, { value: 'c' }] },
+    });
 
     expect(await getSelectedOptionIndex(page)).toBe(1);
     expect(await getSelectValue(page), 'initial').toBe('a');
@@ -1266,46 +1291,65 @@ test.describe('theme', () => {
     const options = await page.locator('p-select-option').all();
 
     for (const child of [...optgroups, ...options]) {
-      expect(await getProperty(child, 'theme')).toBe('light');
+      expect(await getProperty<Theme>(child, 'theme')).toBe('light');
     }
     await setProperty(select, 'theme', 'dark');
     await waitForStencilLifecycle(page);
 
     for (const child of [...optgroups, ...options]) {
-      expect(await getProperty(child, 'theme')).toBe('dark');
+      expect(await getProperty<Theme>(child, 'theme')).toBe('dark');
     }
   });
 });
 
 test.describe('optgroups', () => {
   test('should persist disabled state for options inside optgroup', async ({ page }) => {
-    await initSelect(page, { options: { includeOptgroups: true, disabledIndices: [1] } });
+    const group = [{ value: 'b', disabled: true }, { value: 'c' }, { value: 'd', disabled: true }];
+    await initSelect(page, {
+      options: {
+        includeOptgroups: true,
+        values: [{ value: 'a' }, group, { value: 'e' }],
+      },
+    });
 
     const buttonElement = getButton(page);
     await buttonElement.click();
     await waitForStencilLifecycle(page);
 
-    const optgroup = page.locator('p-optgroup[label="b"]');
-    await expect(await getProperty(optgroup, 'disabled')).toBeFalsy();
+    const optgroup = page.locator('p-optgroup[label="1"]');
+    expect(await getProperty<boolean>(optgroup, 'disabled')).toBeFalsy();
     const children = await optgroup.locator('p-select-option').all();
 
     for (const child of children) {
-      await expect(await getProperty(child, 'disabled')).toBeTruthy();
+      const value = await getProperty<string>(child, 'value');
+      const disabled = await getProperty<boolean>(child, 'disabled');
+      const item = group.find((item) => item.value === value);
+      expect(disabled).toEqual(!!item.disabled);
+
+      expect(await getProperty<boolean>(child, 'disabledParent')).toBeFalsy();
     }
-    await optgroup.evaluate((element) => (element.disabled = true));
+    expect(await setProperty(optgroup, 'disabled', true));
     await waitForStencilLifecycle(page);
 
-    await expect(await getProperty(optgroup, 'disabled')).toBeTruthy();
+    expect(await getProperty<boolean>(optgroup, 'disabled')).toBeTruthy();
 
     for (const child of children) {
-      await expect(await getProperty(child, 'disabled')).toBeTruthy();
+      const value = await getProperty<string>(child, 'value');
+      const disabled = await getProperty<boolean>(child, 'disabled');
+      const item = group.find((item) => item.value === value);
+      expect(disabled).toEqual(!!item.disabled);
+      expect(await getProperty<boolean>(child, 'disabledParent')).toBeTruthy();
     }
 
-    await optgroup.evaluate((element) => (element.disabled = false));
+    expect(await setProperty(optgroup, 'disabled', false));
     await waitForStencilLifecycle(page);
 
     for (const child of children) {
-      await expect(await getProperty(child, 'disabled')).toBeTruthy();
+      const value = await getProperty<string>(child, 'value');
+      const disabled = await getProperty<boolean>(child, 'disabled');
+      const item = group.find((item) => item.value === value);
+      expect(disabled).toEqual(!!item.disabled);
+      expect(await getProperty<boolean>(child, 'disabledParent')).toBeFalsy();
     }
   });
 
@@ -1316,20 +1360,21 @@ test.describe('optgroups', () => {
     await buttonElement.click();
     await waitForStencilLifecycle(page);
 
-    const optgroup = page.locator('p-optgroup[label="b"]');
-    await expect(await getProperty(optgroup, 'disabled')).toBeFalsy();
+    const optgroup = page.locator('p-optgroup[label="1"]');
+    expect(await getProperty<boolean>(optgroup, 'disabled')).toBeFalsy();
     const children = await optgroup.locator('p-select-option').all();
 
     for (const child of children) {
-      await expect(await getProperty(child, 'disabled')).toBeFalsy();
+      expect(await getProperty<boolean>(child, 'disabled')).toBeFalsy();
     }
-    await optgroup.evaluate((element) => (element.disabled = true));
+    expect(await setProperty(optgroup, 'disabled', true));
     await waitForStencilLifecycle(page);
 
-    await expect(await getProperty(optgroup, 'disabled')).toBeTruthy();
+    expect(await getProperty<boolean>(optgroup, 'disabled')).toBeTruthy();
 
     for (const child of children) {
-      await expect(await getProperty(child, 'disabled')).toBeTruthy();
+      expect(await getProperty<boolean>(child, 'disabled')).toBeFalsy();
+      expect(await getProperty<boolean>(child, 'disabledParent')).toBeTruthy();
     }
   });
 
@@ -1340,14 +1385,14 @@ test.describe('optgroups', () => {
     await buttonElement.click();
     await waitForStencilLifecycle(page);
 
-    const optgroup = page.locator('p-optgroup[label="b"]');
+    const optgroup = page.locator('p-optgroup[label="1"]');
     await expect(optgroup).toBeVisible();
     const children = await optgroup.locator('p-select-option').all();
 
     for (const child of children) {
       await expect(child).toBeVisible();
     }
-    await optgroup.evaluate((element) => (element.hidden = true));
+    expect(await setProperty(optgroup, 'hidden', true));
     await waitForStencilLifecycle(page);
 
     await expect(optgroup).not.toBeVisible();

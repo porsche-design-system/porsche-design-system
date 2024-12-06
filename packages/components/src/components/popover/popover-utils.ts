@@ -1,7 +1,7 @@
-import type { Popover } from './popover';
-import { attachComponentCss, isClickOutside } from '../../utils';
-import { getComponentCss } from './popover-styles';
 import type { Theme } from '../../types';
+import { attachComponentCss, isClickOutside } from '../../utils';
+import type { Popover } from './popover';
+import { getComponentCss } from './popover-styles';
 
 export const POPOVER_DIRECTIONS = ['top', 'right', 'bottom', 'left'] as const;
 export type PopoverDirection = (typeof POPOVER_DIRECTIONS)[number];
@@ -16,21 +16,23 @@ export const updatePopoverStyles = (
   spacer: HTMLDivElement,
   popover: HTMLDivElement,
   direction: PopoverDirection,
-  isNative = false,
-  theme: Theme
+  theme: Theme,
+  isNative = false
 ): void => {
   // Reset margin so that it can be recalculated correctly
   popover.style.margin = '0';
+  let dir = direction;
   if (!isElementWithinViewport(spacer, popover, direction)) {
-    direction = getAutoDirection(spacer, popover);
-    attachComponentCss(host, getComponentCss, direction, isNative, theme);
+    dir = getAutoDirection(spacer, popover);
+    attachComponentCss(host, getComponentCss, dir, isNative, theme);
   }
   // Set margin via inline style to make attachComponentCss cacheable
-  popover.style.margin = getPopoverMargin(spacer, popover, direction);
+  popover.style.margin = getPopoverMargin(spacer, popover, dir);
 };
 
 export const updateNativePopoverStyles = (nativePopover: HTMLElement, nativeButton: HTMLButtonElement): void => {
   const { left, top, width, height } = nativeButton.getBoundingClientRect();
+  nativePopover.style.right = 'auto';
   nativePopover.style.left = `${left + window.scrollX - safeZonePx}px`;
   nativePopover.style.top = `${top + window.scrollY - safeZonePx}px`;
   nativePopover.style.width = `${width + safeZonePx * 2}px`;
@@ -110,7 +112,7 @@ export const getPopoverMargin = (
       return `0 0 0 ${Math.min(safeZonePx - popoverRect.left, spacerRect.left - popoverRect.left)}px`;
     }
     // check if popover exceeds right side of viewport
-    else if (popoverRect.right > clientWidth) {
+    if (popoverRect.right > clientWidth) {
       return `0 0 0 ${Math.max(clientWidth - popoverRect.right, spacerRect.right - popoverRect.right)}px`;
     }
   }
@@ -121,7 +123,7 @@ export const getPopoverMargin = (
       return `${Math.min(safeZonePx - popoverRect.top, spacerRect.top - popoverRect.top)}px 0 0 0`;
     }
     // check if popover exceeds bottom side of viewport
-    else if (popoverRect.bottom > clientHeight) {
+    if (popoverRect.bottom > clientHeight) {
       return `${Math.max(clientHeight - popoverRect.bottom, spacerRect.bottom - popoverRect.bottom)}px 0 0 0`;
     }
   } else {

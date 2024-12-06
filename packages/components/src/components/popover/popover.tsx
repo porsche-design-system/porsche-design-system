@@ -1,17 +1,10 @@
-import { Component, Element, forceUpdate, h, Host, type JSX, Prop, State } from '@stencil/core';
+import { Component, Element, Host, type JSX, Prop, State, forceUpdate, h } from '@stencil/core';
+import { getSlottedAnchorStyles } from '../../styles';
+import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import {
-  type PopoverAriaAttribute,
-  type PopoverDirection,
-  addDocumentEventListener,
-  POPOVER_ARIA_ATTRIBUTES,
-  POPOVER_DIRECTIONS,
-  removeDocumentEventListener,
-  updateNativePopoverStyles,
-  updatePopoverStyles,
-} from './popover-utils';
-import {
-  addNativePopoverScrollAndResizeListeners,
   AllowedTypes,
+  THEMES,
+  addNativePopoverScrollAndResizeListeners,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   detectNativePopoverCase,
@@ -19,12 +12,19 @@ import {
   getPrefixedTagNames,
   hasPropValueChanged,
   parseAndGetAriaAttributes,
-  THEMES,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './popover-styles';
-import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
-import { getSlottedAnchorStyles } from '../../styles';
+import {
+  POPOVER_ARIA_ATTRIBUTES,
+  POPOVER_DIRECTIONS,
+  type PopoverAriaAttribute,
+  type PopoverDirection,
+  addDocumentEventListener,
+  removeDocumentEventListener,
+  updateNativePopoverStyles,
+  updatePopoverStyles,
+} from './popover-utils';
 
 const propTypes: PropTypes<typeof Popover> = {
   direction: AllowedTypes.oneOf<PopoverDirection>(POPOVER_DIRECTIONS),
@@ -84,12 +84,10 @@ export class Popover {
       // Set new popover position depending on button position
       updateNativePopoverStyles(this.spacer, this.button);
       // Update popover styles with new position
-      updatePopoverStyles(this.host, this.spacer, this.popover, this.direction, this.isNativePopoverCase, this.theme);
-    } else {
-      if (this.open) {
-        // calculate / update position only possible after render
-        updatePopoverStyles(this.host, this.spacer, this.popover, this.direction, false, this.theme);
-      }
+      updatePopoverStyles(this.host, this.spacer, this.popover, this.direction, this.theme, this.isNativePopoverCase);
+    } else if (this.open) {
+      // calculate / update position only possible after render
+      updatePopoverStyles(this.host, this.spacer, this.popover, this.direction, this.theme, false);
     }
   }
 
@@ -138,7 +136,7 @@ export class Popover {
     }
   };
 
-  private onToggle = (e: { newState: string }): void => {
+  private onToggle = (e: ToggleEvent): void => {
     if (e.newState === 'open') {
       forceUpdate(this.host); // Necessary to update popover styles since opening of native popover doesn't trigger rerender
     }

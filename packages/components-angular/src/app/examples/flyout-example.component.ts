@@ -15,6 +15,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </p-flyout>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class FlyoutExampleComponent {
   isFlyoutOpen = false;

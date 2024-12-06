@@ -1,7 +1,3 @@
-import type { Theme } from '../types';
-import type { JssStyle } from 'jss';
-import type { PropertiesHyphen } from 'csstype';
-import { getThemedColors, prefersColorSchemeDarkMediaQuery, type ThemedColors } from './';
 import {
   borderWidthBase,
   frostedGlassStyle,
@@ -15,8 +11,12 @@ import {
   themeDarkBackgroundShading,
   themeLightBackgroundShading,
 } from '@porsche-design-system/styles';
-import { isThemeDark } from '../utils';
 import type * as fromMotionType from '@porsche-design-system/styles/dist/esm/motion';
+import type { PropertiesHyphen } from 'csstype';
+import type { JssStyle } from 'jss';
+import type { Theme } from '../types';
+import { isThemeDark } from '../utils';
+import { type ThemedColors, getThemedColors, prefersColorSchemeDarkMediaQuery } from './';
 
 type WithoutMotionDurationPrefix<T> = T extends `motionDuration${infer P}` ? Uncapitalize<P> : never;
 export type MotionDurationKey = WithoutMotionDurationPrefix<keyof typeof fromMotionType>;
@@ -57,6 +57,14 @@ export const dismissButtonJssStyle: JssStyle = {
 export const cssVariableTransitionDuration = '--p-transition-duration';
 export const cssVariableAnimationDuration = '--p-animation-duration';
 
+export const getAnimation = (
+  name: string,
+  duration: MotionDurationKey = 'short',
+  easing: keyof typeof motionEasingMap = 'base'
+): string => {
+  return `${name} var(${cssVariableAnimationDuration}, ${motionDurationMap[duration]}) ${motionEasingMap[easing]}`;
+};
+
 export const getTransition = (
   cssProperty: keyof PropertiesHyphen,
   duration: MotionDurationKey = 'short',
@@ -77,6 +85,7 @@ export const addImportantToEachRule = (input: JssStyle): JssStyle => {
         ? result
         : // @ts-expect-error: Type string can't be used to index type JssStyle
           ((result[key] =
+            // biome-ignore lint/style/noCommaOperator: to be refactored
             typeof value === 'object' ? addImportantToEachRule(value as JssStyle) : addImportantToRule(value)),
           result),
     {} as JssStyle

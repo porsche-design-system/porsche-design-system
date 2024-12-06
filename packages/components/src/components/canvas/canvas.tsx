@@ -1,4 +1,4 @@
-import { type PropTypes, type Theme } from '../../types';
+import type { PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -7,10 +7,10 @@ import {
   THEMES,
   validateProps,
 } from '../../utils';
-import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop, State } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop, State, Watch } from '@stencil/core';
 import { getComponentCss } from './canvas-styles';
 import { breakpointS, breakpointM } from '@porsche-design-system/styles';
-import { type CanvasSidebarStartUpdateEventDetail } from './canvas-utils';
+import type { CanvasSidebarStartUpdateEventDetail } from './canvas-utils';
 
 const propTypes: PropTypes<typeof Canvas> = {
   sidebarStartOpen: AllowedTypes.boolean,
@@ -63,6 +63,29 @@ export class Canvas {
   private hasFooter: boolean;
   private hasBackground: boolean;
 
+  private sidebarStart: HTMLElement;
+  private sidebarEnd: HTMLElement;
+  private root: HTMLElement;
+  private header: HTMLHeadElement;
+
+  @Watch('sidebarStartOpen')
+  public openChangeHandlerSidebarStart(isOpen: boolean): void {
+    if (this.isMediaQueryS) {
+      this.root.ontransitionend = (): void => {
+        this[isOpen ? 'sidebarStart' : 'header'].focus({ preventScroll: true });
+      };
+    }
+  }
+
+  @Watch('sidebarEndOpen')
+  public openChangeHandlerSidebarEnd(isOpen: boolean): void {
+    if (this.isMediaQueryM) {
+      this.root.ontransitionend = (): void => {
+        this[isOpen ? 'sidebarEnd' : 'header'].focus({ preventScroll: true });
+      };
+    }
+  }
+
   public connectedCallback(): void {
     this.handleMediaQueryS(this.matchMediaQueryS);
     this.handleMediaQueryM(this.matchMediaQueryM);
@@ -90,17 +113,17 @@ export class Canvas {
 
     return (
       <Host>
-        <div class="root">
-          <header class="header">
+        <div class="root" ref={(el: HTMLElement) => (this.root = el)}>
+          <header class="header" tabIndex={-1} ref={(el: HTMLHeadElement) => (this.header = el)}>
             <div class="blur">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
+              <div />
+              <div />
+              <div />
+              <div />
+              <div />
+              <div />
+              <div />
+              <div />
             </div>
             <div class="header__area header__area--start">
               {!this.sidebarStartOpen && (
@@ -124,14 +147,6 @@ export class Canvas {
               <slot name="header-end" />
             </div>
           </header>
-          <main class="main">
-            <slot />
-          </main>
-          {this.hasFooter && (
-            <footer class="footer">
-              <slot name="footer" />
-            </footer>
-          )}
           {this.isMediaQueryS && (
             <aside
               class="sidebar sidebar--start"
@@ -140,6 +155,8 @@ export class Canvas {
               /* @ts-ignore */
               inert={this.sidebarStartOpen ? null : true}
               aria-label={`Navigation sidebar ${this.sidebarStartOpen ? 'open' : 'closed'}`}
+              tabIndex={-1}
+              ref={(el: HTMLElement) => (this.sidebarStart = el)}
             >
               <div class="sidebar__scroller">
                 <div class="sidebar__header sidebar__header--start">
@@ -166,6 +183,9 @@ export class Canvas {
               </div>
             </aside>
           )}
+          <main class="main">
+            <slot />
+          </main>
           {this.hasSidebarEnd && this.isMediaQueryM && (
             <aside
               class="sidebar sidebar--end"
@@ -174,6 +194,8 @@ export class Canvas {
               /* @ts-ignore */
               inert={this.sidebarEndOpen ? null : true}
               aria-label={`Settings sidebar ${this.sidebarEndOpen ? 'open' : 'closed'}`}
+              tabIndex={-1}
+              ref={(el: HTMLElement) => (this.sidebarEnd = el)}
             >
               <div class="sidebar__scroller">
                 <div class="sidebar__header sidebar__header--end">
@@ -186,7 +208,7 @@ export class Canvas {
                     aria={{ 'aria-expanded': this.sidebarEndOpen }}
                     onClick={this.onDismissSidebarEnd}
                   >
-                    {this.sidebarStartOpen ? 'Close' : 'Open'} navigation sidebar
+                    {this.sidebarEndOpen ? 'Close' : 'Open'} settings sidebar
                   </PrefixedTagNames.pButton>
                 </div>
                 <div class="sidebar__content">
@@ -194,6 +216,11 @@ export class Canvas {
                 </div>
               </div>
             </aside>
+          )}
+          {this.hasFooter && (
+            <footer class="footer">
+              <slot name="footer" />
+            </footer>
           )}
           {this.hasBackground && <slot name="background" />}
         </div>

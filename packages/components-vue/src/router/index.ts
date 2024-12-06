@@ -1,8 +1,8 @@
+import { kebabCase } from 'change-case';
 import type { RouteComponent, RouteRecordRaw } from 'vue-router';
 import { createRouter, createWebHistory } from 'vue-router';
-import * as fromPages from '../pages';
-import { kebabCase } from 'change-case';
 import * as fromExamples from '../examples';
+import * as fromPages from '../pages';
 
 export type RouteType = RouteRecordRaw & {
   isDisabled?: boolean;
@@ -199,6 +199,11 @@ export const routes: RouteType[] = [
     path: '/segmented-control-example',
     name: 'Segmented Control Example',
     component: fromExamples.SegmentedControlExample,
+  },
+  {
+    path: '/segmented-control-example-controlled',
+    name: 'Segmented Control Example COntrolled',
+    component: fromExamples.SegmentedControlExampleControlled,
   },
   {
     path: '/select-example',

@@ -119,8 +119,7 @@ describe('useToastManager()', () => {
       const addMessageMock = jest.fn();
       toastElement.addMessage = addMessageMock;
       document.body.appendChild(toastElement);
-      customElements.define('p-toast', class PToast extends HTMLElement {
-      });
+      customElements.define('p-toast', class PToast extends HTMLElement {});
 
       const { addMessage } = useToastManager();
       const message: ToastMessage = { text: 'Test', state: 'success' };
