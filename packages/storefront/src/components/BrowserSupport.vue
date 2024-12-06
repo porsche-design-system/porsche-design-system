@@ -24,7 +24,7 @@
 
         <p-table-cell v-if="typeof edge === 'string'">
           >= {{ edge }}
-          <p-icon edge="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
+          <p-icon :theme="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
         </p-table-cell>
         <p-table-cell v-else>
           >= {{ edge.version }}
@@ -34,7 +34,7 @@
 
         <p-table-cell v-if="typeof safari === 'string'">
           >= {{ safari }}
-          <p-icon edge="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
+          <p-icon :theme="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
         </p-table-cell>
         <p-table-cell v-else>
           >= {{ safari.version }}
@@ -44,7 +44,7 @@
 
         <p-table-cell v-if="typeof firefox === 'string'">
           >= {{ firefox }}
-          <p-icon edge="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
+          <p-icon :theme="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
         </p-table-cell>
         <p-table-cell v-else>
           >= {{ firefox.version }}
@@ -54,7 +54,7 @@
 
         <p-table-cell v-if="typeof chromeForAndroid === 'string'">
           >= {{ chromeForAndroid }}
-          <p-icon edge="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
+          <p-icon :theme="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
         </p-table-cell>
         <p-table-cell v-else>
           >= {{ chromeForAndroid.version }}
@@ -64,7 +64,7 @@
 
         <p-table-cell v-if="typeof safariForiOS === 'string'">
           >= {{ safariForiOS }}
-          <p-icon edge="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
+          <p-icon :theme="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
         </p-table-cell>
         <p-table-cell v-else>
           >= {{ safariForiOS.version }}
