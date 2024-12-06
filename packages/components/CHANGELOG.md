@@ -14,6 +14,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.22.0-rc.1] - 2024-12-06
+
+#### Added
+
+- `Flyout Multilevel`: Supports infinite layers
+  ([3647](https://github.com/porsche-design-system/porsche-design-system/pull/3647))
+
 #### Fixed
 
 - Partials: error when using in projects without `react/jsx-runtime` as dependency

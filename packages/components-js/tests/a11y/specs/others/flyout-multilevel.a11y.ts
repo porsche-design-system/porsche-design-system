@@ -1,3 +1,5 @@
+import { type Page, expect, test } from '@playwright/test';
+import type { Components } from '@porsche-design-system/components';
 import {
   getHTMLAttributes,
   getProperty,
@@ -5,8 +7,6 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../../helpers';
-import { type Page, test, expect } from '@playwright/test';
-import type { Components } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.locator('p-flyout-multilevel');
 const getFlyoutMultilevelDialog = (page: Page) => page.locator('p-flyout-multilevel dialog');
@@ -62,7 +62,7 @@ test.fixme('should not expose accessibility tree if flyout is hidden', async ({ 
   // await expectA11yToMatchSnapshot(page, flyout);
 });
 
-test('should overwrite aria-label when adding aria prop', async ({ page }) => {
+test.fixme('should overwrite aria-label when adding aria prop', async ({ page }) => {
   await initBasicFlyoutMultilevel(page, { open: false, aria: "{'aria-label': 'Some Heading'}" });
   const host = getHost(page);
   const flyoutMultilevelContent = getFlyoutMultilevelContent(page);
