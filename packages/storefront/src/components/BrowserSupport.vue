@@ -12,23 +12,64 @@
     </p-table-head>
     <p-table-body>
       <p-table-row>
-        <p-table-cell>
-          >= {{ chrome }} <p-icon :theme="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
+        <p-table-cell v-if="typeof chrome === 'string'">
+          >= {{ chrome }}
+          <p-icon :theme="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
         </p-table-cell>
-        <p-table-cell>
-          >= {{ edge }} <p-icon :theme="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
+        <p-table-cell v-else>
+          >= {{ chrome.version }}
+          <p-icon :theme="$store.getters.storefrontTheme" name="warning" color="notification-warning"></p-icon>
+          <p-popover :theme="$store.getters.storefrontTheme" :description="chrome.message"></p-popover>
         </p-table-cell>
-        <p-table-cell>
-          >= {{ safari }} <p-icon :theme="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
+
+        <p-table-cell v-if="typeof edge === 'string'">
+          >= {{ edge }}
+          <p-icon edge="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
         </p-table-cell>
-        <p-table-cell>
-          >= {{ firefox }} <p-icon :theme="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
+        <p-table-cell v-else>
+          >= {{ edge.version }}
+          <p-icon :theme="$store.getters.storefrontTheme" name="warning" color="notification-warning"></p-icon>
+          <p-popover :theme="$store.getters.storefrontTheme" :description="edge.message"></p-popover>
         </p-table-cell>
-        <p-table-cell>
-          >= {{ chromeForAndroid }} <p-icon :theme="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
+
+        <p-table-cell v-if="typeof safari === 'string'">
+          >= {{ safari }}
+          <p-icon edge="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
         </p-table-cell>
-        <p-table-cell>
-          >= {{ safariForiOS }} <p-icon :theme="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
+        <p-table-cell v-else>
+          >= {{ safari.version }}
+          <p-icon :theme="$store.getters.storefrontTheme" name="warning" color="notification-warning"></p-icon>
+          <p-popover :theme="$store.getters.storefrontTheme" :description="safari.message"></p-popover>
+        </p-table-cell>
+
+        <p-table-cell v-if="typeof firefox === 'string'">
+          >= {{ firefox }}
+          <p-icon edge="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
+        </p-table-cell>
+        <p-table-cell v-else>
+          >= {{ firefox.version }}
+          <p-icon :theme="$store.getters.storefrontTheme" name="warning" color="notification-warning"></p-icon>
+          <p-popover :theme="$store.getters.storefrontTheme" :description="firefox.message"></p-popover>
+        </p-table-cell>
+
+        <p-table-cell v-if="typeof chromeForAndroid === 'string'">
+          >= {{ chromeForAndroid }}
+          <p-icon edge="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
+        </p-table-cell>
+        <p-table-cell v-else>
+          >= {{ chromeForAndroid.version }}
+          <p-icon :theme="$store.getters.storefrontTheme" name="warning" color="notification-warning"></p-icon>
+          <p-popover :theme="$store.getters.storefrontTheme" :description="chromeForAndroid.message"></p-popover>
+        </p-table-cell>
+
+        <p-table-cell v-if="typeof safariForiOS === 'string'">
+          >= {{ safariForiOS }}
+          <p-icon edge="$store.getters.storefrontTheme" name="success" color="notification-success"></p-icon>
+        </p-table-cell>
+        <p-table-cell v-else>
+          >= {{ safariForiOS.version }}
+          <p-icon :theme="$store.getters.storefrontTheme" name="warning" color="notification-warning"></p-icon>
+          <p-popover :theme="$store.getters.storefrontTheme" :description="safariForiOS.message"></p-popover>
         </p-table-cell>
       </p-table-row>
     </p-table-body>
@@ -40,14 +81,16 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
 
+type Status = { version: string; support: 'full' | 'partial'; message: 'string' };
+
 @Component
 export default class BrowserSupport extends Vue {
-  @Prop({ default: '' }) public chrome!: string;
-  @Prop({ default: '' }) public edge!: string;
-  @Prop({ default: '' }) public safari!: string;
-  @Prop({ default: '' }) public firefox!: string;
-  @Prop({ default: '' }) public chromeForAndroid!: string;
-  @Prop({ default: '' }) public safariForiOS!: string;
+  @Prop({ default: '' }) public chrome!: string | Status;
+  @Prop({ default: '' }) public edge!: string | Status;
+  @Prop({ default: '' }) public safari!: string | Status;
+  @Prop({ default: '' }) public firefox!: string | Status;
+  @Prop({ default: '' }) public chromeForAndroid!: string | Status;
+  @Prop({ default: '' }) public safariForiOS!: string | Status;
 }
 </script>
 
