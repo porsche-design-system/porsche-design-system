@@ -78,6 +78,11 @@ exports[`getComponentCss() should return correct css for isOpen: false, isPrimar
     pointer-events: none;
     opacity: 0;
   }
+  .scroller {
+    display: contents;
+    overflow: hidden auto;
+    background: rgba(255,255,255,.01);
+  }
   .back {
     display: none;
   }
@@ -103,9 +108,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isPrimar
       display: grid;
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
-      overflow: hidden auto;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .dismiss-mobile {
       display: none;
@@ -131,9 +133,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isPrimar
     .drawer::before {
       grid-area: 1/1/-1/-1;
       background: #FFF;
-    }
-    .scroller {
-      display: contents;
     }
     .dismiss-mobile {
       --p-internal-button-scaling: 0;
@@ -239,6 +238,11 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     pointer-events: none;
     opacity: 0;
   }
+  .scroller {
+    display: contents;
+    overflow: hidden auto;
+    background: rgba(255,255,255,.01);
+  }
   .back {
     display: none;
   }
@@ -261,9 +265,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       display: grid;
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
-      overflow: hidden auto;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .dismiss-mobile {
       display: none;
@@ -291,13 +292,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       background: #FFF;
     }
     .scroller {
-      display: grid;
       grid-area: 1/1/-1/-1;
+      display: grid;
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
-      overflow: hidden auto;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .scroller::before {
       content: "";
@@ -403,6 +401,11 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     pointer-events: none;
     opacity: 0;
   }
+  .scroller {
+    display: contents;
+    overflow: hidden auto;
+    background: rgba(255,255,255,.01);
+  }
   .back {
     display: none;
   }
@@ -428,9 +431,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       display: grid;
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
-      overflow: hidden auto;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .dismiss-mobile {
       display: none;
@@ -456,9 +456,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     .drawer::before {
       grid-area: 1/1/-1/-1;
       background: #FFF;
-    }
-    .scroller {
-      display: contents;
     }
     .dismiss-mobile {
       --p-internal-button-scaling: 0;
@@ -566,6 +563,11 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     pointer-events: none;
     opacity: 0;
   }
+  .scroller {
+    display: contents;
+    overflow: hidden auto;
+    background: rgba(255,255,255,.01);
+  }
   .back {
     display: none;
   }
@@ -588,9 +590,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       display: grid;
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
-      overflow: hidden auto;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .dismiss-mobile {
       display: none;
@@ -618,13 +617,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       background: #FFF;
     }
     .scroller {
-      display: grid;
       grid-area: 1/1/-1/-1;
+      display: grid;
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
-      overflow: hidden auto;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .scroller::before {
       content: "";
@@ -734,6 +730,11 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     pointer-events: none;
     opacity: 0;
   }
+  .scroller {
+    display: contents;
+    overflow: hidden auto;
+    background: rgba(255,255,255,.01);
+  }
   .back {
     display: none;
   }
@@ -780,9 +781,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       display: grid;
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
-      overflow: hidden auto;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .dismiss-mobile {
       display: none;
@@ -827,9 +825,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       }
 }
 
-    .scroller {
-      display: contents;
-    }
     .dismiss-mobile {
       --p-internal-button-scaling: 0;
       width: fit-content;
@@ -849,6 +844,12 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       height: fit-content;
       place-self: center flex-start;
       z-index: 2;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .scroller {
+      background: rgba(0,0,0,.01);
     }
 }
 "
@@ -932,6 +933,11 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     pointer-events: none;
     opacity: 0;
   }
+  .scroller {
+    display: contents;
+    overflow: hidden auto;
+    background: rgba(0,0,0,.01);
+  }
   .back {
     display: none;
   }
@@ -957,9 +963,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       display: grid;
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
-      overflow: hidden auto;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .dismiss-mobile {
       display: none;
@@ -985,9 +988,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     .drawer::before {
       grid-area: 1/1/-1/-1;
       background: #0E0E12;
-    }
-    .scroller {
-      display: contents;
     }
     .dismiss-mobile {
       --p-internal-button-scaling: 0;
@@ -1091,6 +1091,11 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     pointer-events: none;
     opacity: 0;
   }
+  .scroller {
+    display: contents;
+    overflow: hidden auto;
+    background: rgba(255,255,255,.01);
+  }
   .back {
     display: none;
   }
@@ -1116,9 +1121,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       display: grid;
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
-      overflow: hidden auto;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .dismiss-mobile {
       display: none;
@@ -1144,9 +1146,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
     .drawer::before {
       grid-area: 1/1/-1/-1;
       background: #FFF;
-    }
-    .scroller {
-      display: contents;
     }
     .dismiss-mobile {
       --p-internal-button-scaling: 0;

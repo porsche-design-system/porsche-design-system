@@ -79,6 +79,11 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
     }
 }
 
+  .scroller {
+    display: none;
+    overflow: hidden auto;
+    background: rgba(0,0,0,.01);
+  }
   .button {
     padding: clamp(8px, 0.5vw + 6px, 16px);
     margin: 0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
@@ -90,16 +95,10 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
     .drawer {
       display: none;
     }
-    .scroller {
-      display: none;
-    }
 }
 
 @media(max-width:759px) {
     .drawer {
-      display: none;
-    }
-    .scroller {
       display: none;
     }
 }
@@ -203,6 +202,11 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
     }
 }
 
+  .scroller {
+    display: none;
+    overflow: hidden auto;
+    background: rgba(255,255,255,.01);
+  }
   .button {
     display: none;
   }
@@ -224,6 +228,12 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
     }
     .scroller {
       display: contents;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .scroller {
+      background: rgba(0,0,0,.01);
     }
 }
 "
@@ -342,6 +352,11 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
     }
 }
 
+  .scroller {
+    display: none;
+    overflow: hidden auto;
+    background: rgba(255,255,255,.01);
+  }
   .button {
     padding: clamp(8px, 0.5vw + 6px, 16px);
     margin: 0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
@@ -358,13 +373,10 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
       grid-template: clamp(16px, 1.25vw + 12px, 36px) minmax(0, 1fr)/clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px);
     }
     .scroller {
-      display: grid;
       grid-area: 1/1/-1/-1;
+      display: grid;
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
-      overflow: hidden auto;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
 }
 
@@ -377,9 +389,6 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
       grid-area: 1/1/-1/-1;
-      overflow: hidden auto;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .scroller::before {
       z-index: 1;
@@ -512,6 +521,11 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
     }
 }
 
+  .scroller {
+    display: none;
+    overflow: hidden auto;
+    background: rgba(255,255,255,.01);
+  }
   .button {
     display: none;
   }
@@ -527,13 +541,10 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
       grid-template: clamp(16px, 1.25vw + 12px, 36px) minmax(0, 1fr)/clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px);
     }
     .scroller {
-      display: contents;
       grid-area: 1/1/-1/-1;
+      display: contents;
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
-      overflow: hidden auto;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
 }
 
@@ -546,9 +557,6 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
       grid-area: 1/1/-1/-1;
-      overflow: hidden auto;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .scroller::before {
       z-index: 1;
@@ -657,6 +665,11 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
     }
 }
 
+  .scroller {
+    display: none;
+    overflow: hidden auto;
+    background: rgba(255,255,255,.01);
+  }
   .button {
     display: none;
   }
@@ -787,6 +800,11 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
     }
 }
 
+  .scroller {
+    display: none;
+    overflow: hidden auto;
+    background: rgba(255,255,255,.01);
+  }
   .button {
     display: none;
   }
@@ -938,6 +956,11 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
     }
 }
 
+  .scroller {
+    display: none;
+    overflow: hidden auto;
+    background: rgba(255,255,255,.01);
+  }
   .button {
     display: none;
   }
@@ -950,13 +973,10 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
       grid-template: clamp(16px, 1.25vw + 12px, 36px) minmax(0, 1fr)/clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px);
     }
     .scroller {
-      display: contents;
       grid-area: 1/1/-1/-1;
+      display: contents;
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
-      overflow: hidden auto;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .back {
       width: fit-content;
@@ -974,9 +994,6 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
       grid-area: 1/1/-1/-1;
-      overflow: hidden auto;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .scroller::before {
       z-index: 1;
@@ -1119,6 +1136,11 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
     }
 }
 
+  .scroller {
+    display: none;
+    overflow: hidden auto;
+    background: rgba(255,255,255,.01);
+  }
   .button {
     display: none;
   }
@@ -1131,13 +1153,10 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
       grid-template: clamp(16px, 1.25vw + 12px, 36px) minmax(0, 1fr)/clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px);
     }
     .scroller {
-      display: contents;
       grid-area: 1/1/-1/-1;
+      display: contents;
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
-      overflow: hidden auto;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .back {
       width: fit-content;
@@ -1155,9 +1174,6 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
       grid-area: 1/1/-1/-1;
-      overflow: hidden auto;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .scroller::before {
       z-index: 1;
