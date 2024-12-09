@@ -25,6 +25,7 @@ import { type Theme, getCss } from '../../../utils';
 import {
   mediaQueryDesktop,
   mediaQueryMobile,
+  scrollerBackground,
   scrollerWidthDesktop,
 } from '../flyout-multilevel/flyout-multilevel-styles';
 
@@ -174,17 +175,21 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       },
     },
     scroller: {
+      display: 'none',
+      overflow: 'hidden auto',
+      // scrollBehavior: 'smooth', // when defined, `.scrollTo()` isn't applied immediately
+      // overscrollBehaviorY: 'none', // when defined, rubber band scroll effect is getting lost on iOS Safari
+      // WebkitOverflowScrolling: 'touch', // when defined, secondary scroller might not be show in iOS Safari on iPhone only
+      background: scrollerBackground[theme],
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        background: scrollerBackground.dark,
+      }),
       [mediaQueryMobile]: {
-        display: 'none',
         ...(isSecondary && {
           display: 'grid',
           gridTemplateRows: 'subgrid',
           gridTemplateColumns: 'subgrid',
           gridArea: '1/1/-1/-1',
-          overflow: 'hidden auto',
-          // overscrollBehaviorY: 'none',  // when defined, rubber band effect on iOS 18 scroll is getting lost
-          scrollBehavior: 'smooth',
-          WebkitOverflowScrolling: 'touch',
           '&::before': {
             zIndex: 1,
             content: '""',
@@ -202,16 +207,11 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
         }),
       },
       [mediaQueryDesktop]: {
-        display: 'none',
         ...(isSecondary && {
           gridArea: '1/1/-1/-1',
           display: 'grid',
           gridTemplateRows: 'subgrid',
           gridTemplateColumns: 'subgrid',
-          overflow: 'hidden auto',
-          scrollBehavior: 'smooth',
-          // overscrollBehaviorY: 'none', // when defined, rubber band scroll effect is getting lost on iOS Safari
-          // WebkitOverflowScrolling: 'touch', // when defined, secondary scroller might not be show in iOS Safari on iPhone only
         }),
         ...((isPrimary || isCascade) && {
           display: 'contents',
