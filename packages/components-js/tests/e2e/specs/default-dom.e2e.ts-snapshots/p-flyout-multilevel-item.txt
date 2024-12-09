@@ -1,10 +1,8 @@
 <p-button-pure class="button hydrated"> </p-button-pure>
-<div class="scroller" inert="">
-  <div class="header">
-    <p-button-pure class="back hydrated"> Back</p-button-pure>
-    <h2 class="heading"></h2>
-  </div>
-  <div class="content">
+<p-button-pure class="back hydrated"> </p-button-pure>
+<h2></h2>
+<div class="drawer">
+  <div class="scroller">
     <slot> </slot>
   </div>
 </div>

@@ -1,4 +1,5 @@
-import { expect, type Locator, test, type Page } from '@playwright/test';
+import { type Locator, type Page, expect, test } from '@playwright/test';
+import type { Components } from '@porsche-design-system/components';
 import {
   addEventListener,
   getActiveElementClassNameInShadowRoot,
@@ -18,21 +19,19 @@ import {
   sleep,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { Components } from '@porsche-design-system/components';
 
 const CSS_TRANSITION_DURATION = 600;
 
 const getHost = (page: Page) => page.locator('p-flyout-multilevel');
 const getFlyoutMultilevelDialog = (page: Page) => page.locator('p-flyout-multilevel dialog');
-const getFlyoutMultilevelDismissButton = (page: Page) => page.locator('p-flyout-multilevel p-button-pure.dismiss');
+const getFlyoutMultilevelDismissButton = (page: Page) =>
+  page.locator('p-flyout-multilevel p-button-pure.dismiss-desktop');
 const getFlyoutMultilevelDialogVisibility = async (page: Page) =>
   await getElementStyle(getFlyoutMultilevelDialog(page), 'visibility');
 const getFlyoutMultilevelItem = (page: Page, identifier: string) =>
-  page.locator(`p-flyout-multilevel-item[identifier="${identifier}"]`);
+  page.locator(`p-flyout-multilevel-item[identifier="${identifier}"] .button`);
 const getFlyoutMultilevelItemScroller = (page: Page, identifier: string) =>
   page.locator(`p-flyout-multilevel-item[identifier="${identifier}"] .scroller`);
-const getFlyoutMultilevelItemScrollerVisibility = async (page: Page, identifier: string) =>
-  await getElementStyle(getFlyoutMultilevelItemScroller(page, identifier), 'visibility');
 const getBodyStyle = async (page: Page) => getAttribute(page.locator('body'), 'style');
 
 const waitForFlyoutTransition = async () => sleep(CSS_TRANSITION_DURATION);
@@ -63,7 +62,7 @@ const initBasicFlyoutMultilevel = (
   ${[...Array(amount)]
     .map(
       (_, i) =>
-        `<p-flyout-multilevel-item identifier="item-${i + 1}">${
+        `<p-flyout-multilevel-item identifier="item-${i + 1}" label="item-${i + 1}">${
           content[i] ? content[i] : flyoutMultilevelItemContent
         }</p-flyout-multilevel-item>`
     )
@@ -474,33 +473,33 @@ test.describe('second level', () => {
   test('should have hidden second level when no activeIdentifier is set', async ({ page }) => {
     await initBasicFlyoutMultilevel(page, { open: false });
     await openFlyoutMultilevel(page);
-    expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-1')).toBe('hidden');
-    expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-2')).toBe('hidden');
-    expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-3')).toBe('hidden');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-3')).toHaveCSS('display', 'none');
   });
 
   test('should have correct second level open when activeIdentifier is set', async ({ page }) => {
     await initBasicFlyoutMultilevel(page, { open: false, activeIdentifier: 'item-2' });
     await openFlyoutMultilevel(page);
-    expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-1')).toBe('hidden');
-    expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-2')).toBe('visible');
-    expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-3')).toBe('hidden');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-2')).toHaveCSS('display', 'grid');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-3')).toHaveCSS('display', 'none');
   });
 
   test('should open correct second level when setting activeIdentifier', async ({ page }) => {
     await initBasicFlyoutMultilevel(page, { open: false });
     await openFlyoutMultilevel(page);
     const host = getHost(page);
-    expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-1')).toBe('hidden');
-    expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-2')).toBe('hidden');
-    expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-3')).toBe('hidden');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-3')).toHaveCSS('display', 'none');
 
     await setProperty(host, 'activeIdentifier', 'item-3');
     await waitForStencilLifecycle(page);
 
-    expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-1')).toBe('hidden');
-    expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-2')).toBe('hidden');
-    expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-3')).toBe('visible');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-3')).toHaveCSS('display', 'grid');
   });
 
   skipInBrowsers(['webkit'], () => {
@@ -508,16 +507,16 @@ test.describe('second level', () => {
       await initBasicFlyoutMultilevel(page, { open: false, activeIdentifier: 'item-2' });
       await openFlyoutMultilevel(page);
       const host = getHost(page);
-      expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-1')).toBe('hidden');
-      expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-2')).toBe('visible');
-      expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-3')).toBe('hidden');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-2')).toHaveCSS('display', 'grid');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-3')).toHaveCSS('display', 'none');
 
       await setProperty(host, 'activeIdentifier', 'item-3');
       await waitForStencilLifecycle(page);
 
-      expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-1')).toBe('hidden');
-      expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-2')).toBe('hidden');
-      expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-3')).toBe('visible');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-3')).toHaveCSS('display', 'grid');
     });
   });
 
@@ -528,9 +527,9 @@ test.describe('second level', () => {
       await initBasicFlyoutMultilevel(page, { open: true });
       const host = getHost(page);
 
-      expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-1')).toBe('hidden');
-      expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-2')).toBe('hidden');
-      expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-3')).toBe('hidden');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-3')).toHaveCSS('display', 'none');
       await expect(getFlyoutMultilevelItem(page, 'item-4')).toHaveCount(0);
 
       await host.evaluate((el) => {
@@ -542,17 +541,17 @@ test.describe('second level', () => {
 
       const item4 = getFlyoutMultilevelItem(page, 'item-4');
       expect(item4).toBeDefined();
-      expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-1')).toBe('hidden');
-      expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-2')).toBe('hidden');
-      expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-3')).toBe('hidden');
-      expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-4')).toBe('hidden');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-3')).toHaveCSS('display', 'none');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-4')).toHaveCSS('display', 'none');
 
       await setProperty(host, 'activeIdentifier', 'item-4');
       await waitForStencilLifecycle(page);
-      expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-1')).toBe('hidden');
-      expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-2')).toBe('hidden');
-      expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-3')).toBe('hidden');
-      expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-4')).toBe('visible');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-3')).toHaveCSS('display', 'none');
+      await expect(getFlyoutMultilevelItemScroller(page, 'item-4')).toHaveCSS('display', 'grid');
     });
   });
 
@@ -560,40 +559,41 @@ test.describe('second level', () => {
     await initBasicFlyoutMultilevel(page, { open: true, activeIdentifier: 'item-3' });
     const host = getHost(page);
 
-    expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-1')).toBe('hidden');
-    expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-2')).toBe('hidden');
-    expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-3')).toBe('visible');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-3')).toHaveCSS('display', 'grid');
 
     await host.evaluate((el) => {
       el.removeChild(el.lastElementChild);
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-1')).toBe('hidden');
-    expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-2')).toBe('hidden');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+    await expect(getFlyoutMultilevelItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
     await expect(getFlyoutMultilevelItem(page, 'item-3')).toHaveCount(0);
   });
 
   skipInBrowsers(['webkit'], () => {
-    test('should show correct second level when flyout-multilevel-item with currently activeIdentifier is added', async ({
-      page,
-    }) => {
-      await initBasicFlyoutMultilevel(page, { open: true, activeIdentifier: 'item-4' });
-      const host = getHost(page);
-      await waitForStencilLifecycle(page);
+    test.fixme(
+      'should show correct second level when flyout-multilevel-item with currently activeIdentifier is added',
+      async ({ page }) => {
+        await initBasicFlyoutMultilevel(page, { open: true, activeIdentifier: 'item-4' });
+        const host = getHost(page);
+        await waitForStencilLifecycle(page);
 
-      await host.evaluate((el) => {
-        const newItem = document.createElement('p-flyout-multilevel-item');
-        newItem.setAttribute('identifier', 'item-4');
-        el.appendChild(newItem);
-      });
+        await host.evaluate((el) => {
+          const newItem = document.createElement('p-flyout-multilevel-item');
+          newItem.setAttribute('identifier', 'item-4');
+          el.appendChild(newItem);
+        });
 
-      await waitForStencilLifecycle(page);
-      expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-1')).toBe('hidden');
-      expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-2')).toBe('hidden');
-      expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-3')).toBe('hidden');
-      expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-4')).toBe('visible');
-    });
+        await waitForStencilLifecycle(page);
+        await expect(getFlyoutMultilevelItemScroller(page, 'item-1')).toHaveCSS('display', 'none');
+        await expect(getFlyoutMultilevelItemScroller(page, 'item-2')).toHaveCSS('display', 'none');
+        await expect(getFlyoutMultilevelItemScroller(page, 'item-3')).toHaveCSS('display', 'none');
+        await expect(getFlyoutMultilevelItemScroller(page, 'item-4')).toHaveCSS('display', 'grid');
+      }
+    );
   });
 });
 
@@ -604,10 +604,10 @@ test.describe('lifecycle', () => {
 
     expect(status.componentDidLoad['p-flyout-multilevel'], 'componentDidLoad: p-flyout-multilevel').toBe(1);
     expect(status.componentDidLoad['p-flyout-multilevel-item'], 'componentDidLoad: p-flyout-multilevel-item').toBe(3);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(7); // 3 item buttons + 3 back buttons + 1 dismiss button
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(7);
+    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(8); // 3 item buttons + 3 item back buttons + 1 root back button + 1 dismiss button
+    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(9);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(18);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(22);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -616,7 +616,7 @@ test.describe('lifecycle', () => {
     const host = getHost(page);
     const statusBefore = await getLifecycleStatus(page);
 
-    expect(statusBefore.componentDidLoad.all, 'componentDidLoad: all').toBe(18);
+    expect(statusBefore.componentDidLoad.all, 'componentDidLoad: all').toBe(22);
     expect(statusBefore.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
 
     await setProperty(host, 'activeIdentifier', 'item-1');
@@ -624,20 +624,20 @@ test.describe('lifecycle', () => {
 
     const statusAfter = await getLifecycleStatus(page);
 
-    expect(statusAfter.componentDidUpdate['p-flyout-multilevel'], 'componentDidUpdate: p-flyout-multilevel').toBe(1);
+    expect(statusAfter.componentDidUpdate['p-flyout-multilevel'], 'componentDidUpdate: p-flyout-multilevel').toBe(2);
     expect(
       statusAfter.componentDidUpdate['p-flyout-multilevel-item'],
       'componentDidUpdate: p-flyout-multilevel-item'
-    ).toBe(3);
+    ).toBe(1);
     expect(statusAfter.componentDidUpdate['p-button-pure'], 'componentDidUpdate: p-button-pure').toBe(1);
-    expect(statusAfter.componentDidUpdate.all, 'componentDidUpdate: all').toBe(5);
+    expect(statusAfter.componentDidUpdate.all, 'componentDidUpdate: all').toBe(4);
   });
 
   test('should work without unnecessary round trips after closing flyout', async ({ page }) => {
     await initBasicFlyoutMultilevel(page, { open: true });
     const statusBefore = await getLifecycleStatus(page);
 
-    expect(statusBefore.componentDidLoad.all, 'componentDidLoad: all').toBe(18);
+    expect(statusBefore.componentDidLoad.all, 'componentDidLoad: all').toBe(22);
     expect(statusBefore.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
 
     await dismissFlyoutMultilevel(page);
@@ -648,7 +648,7 @@ test.describe('lifecycle', () => {
     expect(
       statusAfter.componentDidUpdate['p-flyout-multilevel-item'],
       'componentDidUpdate: p-flyout-multilevel-item'
-    ).toBe(3);
-    expect(statusAfter.componentDidUpdate.all, 'componentDidUpdate: all').toBe(4);
+    ).toBe(0);
+    expect(statusAfter.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 });

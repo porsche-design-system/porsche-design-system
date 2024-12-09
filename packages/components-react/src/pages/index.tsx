@@ -84,6 +84,12 @@ import { FlyoutHeaderScrollableContentPage } from './generated/FlyoutHeaderScrol
 import { FlyoutMultilevelPage } from './generated/FlyoutMultilevel';
 import { FlyoutMultilevelActiveIdentifierPage } from './generated/FlyoutMultilevelActiveIdentifier';
 import { FlyoutMultilevelBasicPage } from './generated/FlyoutMultilevelBasic';
+import { FlyoutMultilevelDeeplyNested_1stPage } from './generated/FlyoutMultilevelDeeplyNested_1st';
+import { FlyoutMultilevelDeeplyNested_2ndPage } from './generated/FlyoutMultilevelDeeplyNested_2nd';
+import { FlyoutMultilevelDeeplyNested_3rdPage } from './generated/FlyoutMultilevelDeeplyNested_3rd';
+import { FlyoutMultilevelDeeplyNested_4thPage } from './generated/FlyoutMultilevelDeeplyNested_4th';
+import { FlyoutMultilevelDeeplyNested_5thPage } from './generated/FlyoutMultilevelDeeplyNested_5th';
+import { FlyoutMultilevelLongTextPage } from './generated/FlyoutMultilevelLongText';
 import { FlyoutMultilevelPrefixedPage } from './generated/FlyoutMultilevelPrefixed';
 import { FlyoutMultilevelScrolledPage } from './generated/FlyoutMultilevelScrolled';
 import { FlyoutPositionLeftPage } from './generated/FlyoutPositionLeft';
@@ -511,6 +517,36 @@ export const generatedRoutes: RouteType[] = [
     name: 'Flyout Multilevel Basic',
     path: '/flyout-multilevel-basic',
     element: <FlyoutMultilevelBasicPage />,
+  },
+  {
+    name: 'Flyout Multilevel Deeply Nested 1st',
+    path: '/flyout-multilevel-deeply-nested-1st',
+    element: <FlyoutMultilevelDeeplyNested_1stPage />,
+  },
+  {
+    name: 'Flyout Multilevel Deeply Nested 2nd',
+    path: '/flyout-multilevel-deeply-nested-2nd',
+    element: <FlyoutMultilevelDeeplyNested_2ndPage />,
+  },
+  {
+    name: 'Flyout Multilevel Deeply Nested 3rd',
+    path: '/flyout-multilevel-deeply-nested-3rd',
+    element: <FlyoutMultilevelDeeplyNested_3rdPage />,
+  },
+  {
+    name: 'Flyout Multilevel Deeply Nested 4th',
+    path: '/flyout-multilevel-deeply-nested-4th',
+    element: <FlyoutMultilevelDeeplyNested_4thPage />,
+  },
+  {
+    name: 'Flyout Multilevel Deeply Nested 5th',
+    path: '/flyout-multilevel-deeply-nested-5th',
+    element: <FlyoutMultilevelDeeplyNested_5thPage />,
+  },
+  {
+    name: 'Flyout Multilevel Long Text',
+    path: '/flyout-multilevel-long-text',
+    element: <FlyoutMultilevelLongTextPage />,
   },
   {
     name: 'Flyout Multilevel Prefixed',
