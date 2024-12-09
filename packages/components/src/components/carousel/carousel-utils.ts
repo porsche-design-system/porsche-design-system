@@ -79,7 +79,6 @@ export const getSlidesAndAddAttributes = (host: HTMLElement): HTMLElement[] => {
   ) as HTMLElement[];
   slides.forEach((el, i) => {
     el.setAttribute('slot', `slide-${i}`);
-    el.setAttribute('tabindex', '0');
   });
 
   return slides;
