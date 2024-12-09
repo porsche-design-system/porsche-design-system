@@ -43,6 +43,7 @@
           configurator: !hasFrameworkMarkup,
           demo: hasFrameworkMarkup,
         }"
+        :dir="dir"
       >
         <slot :theme="theme" />
       </div>
@@ -75,17 +76,17 @@
 </template>
 
 <script lang="ts">
+import CodeBlock from '@/components/CodeBlock.vue';
+import CodeEditor from '@/components/CodeEditor.vue';
+import ThemeSelect from '@/components/ThemeSelect.vue';
+import { getExternalDependenciesOrThrow } from '@/utils/stackblitz/helper';
+import { componentMeta } from '@porsche-design-system/component-meta';
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
-import CodeBlock from '@/components/CodeBlock.vue';
-import CodeEditor from '@/components/CodeEditor.vue';
-import { cleanMarkup, patchThemeIntoMarkup } from '../utils';
-import { componentMeta } from '@porsche-design-system/component-meta';
 import type { BackgroundColor, Framework, FrameworkMarkup, PlaygroundDir, PlaygroundTheme } from '../models';
+import { cleanMarkup, patchThemeIntoMarkup } from '../utils';
 import type { ExternalDependency, SharedImportKey } from '../utils';
-import { getExternalDependenciesOrThrow } from '@/utils/stackblitz/helper';
-import ThemeSelect from '@/components/ThemeSelect.vue';
 
 export type PlaygroundConfig = {
   themeable: boolean;

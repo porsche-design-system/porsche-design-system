@@ -57,6 +57,14 @@ export const dismissButtonJssStyle: JssStyle = {
 export const cssVariableTransitionDuration = '--p-transition-duration';
 export const cssVariableAnimationDuration = '--p-animation-duration';
 
+export const getAnimation = (
+  name: string,
+  duration: MotionDurationKey = 'short',
+  easing: keyof typeof motionEasingMap = 'base'
+): string => {
+  return `${name} var(${cssVariableAnimationDuration}, ${motionDurationMap[duration]}) ${motionEasingMap[easing]}`;
+};
+
 export const getTransition = (
   cssProperty: keyof PropertiesHyphen,
   duration: MotionDurationKey = 'short',
