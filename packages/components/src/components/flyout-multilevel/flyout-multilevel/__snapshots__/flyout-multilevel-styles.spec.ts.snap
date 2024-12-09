@@ -105,7 +105,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isPrimar
       grid-template-columns: subgrid;
       overflow: hidden auto;
       scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .dismiss-mobile {
       display: none;
@@ -263,7 +262,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       grid-template-columns: subgrid;
       overflow: hidden auto;
       scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .dismiss-mobile {
       display: none;
@@ -430,7 +428,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       grid-template-columns: subgrid;
       overflow: hidden auto;
       scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .dismiss-mobile {
       display: none;
@@ -590,7 +587,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       grid-template-columns: subgrid;
       overflow: hidden auto;
       scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .dismiss-mobile {
       display: none;
@@ -782,7 +778,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       grid-template-columns: subgrid;
       overflow: hidden auto;
       scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .dismiss-mobile {
       display: none;
@@ -959,7 +954,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       grid-template-columns: subgrid;
       overflow: hidden auto;
       scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .dismiss-mobile {
       display: none;
@@ -1118,7 +1112,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       grid-template-columns: subgrid;
       overflow: hidden auto;
       scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .dismiss-mobile {
       display: none;

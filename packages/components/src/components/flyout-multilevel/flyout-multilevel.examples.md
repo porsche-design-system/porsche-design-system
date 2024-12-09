@@ -48,13 +48,13 @@ contents and use it as a child.
 
 ## Browser Support
 
-<BrowserSupport 
-  chrome="120" 
-  edge="120" 
-  safari="17.6" 
-  firefox="129" 
-  chromeForAndroid="120" 
-  :safariForiOS="{ version: '17.4', support: 'partial', message: 'Currently, full support is given for mobile view < 760px. only.' }" />
+<BrowserSupport
+  chrome="120"
+  edge="120"
+  safari="17.4"
+  firefox="129"
+  chromeForAndroid="120"
+  safariForiOS="17.4" />
 
 <script lang="ts">
 import Vue from 'vue';

@@ -364,7 +364,6 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
       grid-template-columns: subgrid;
       overflow: hidden auto;
       scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
 }
 
@@ -533,7 +532,6 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
       grid-template-columns: subgrid;
       overflow: hidden auto;
       scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
 }
 
@@ -956,7 +954,6 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
       grid-template-columns: subgrid;
       overflow: hidden auto;
       scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .back {
       width: fit-content;
@@ -1137,7 +1134,6 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
       grid-template-columns: subgrid;
       overflow: hidden auto;
       scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .back {
       width: fit-content;
