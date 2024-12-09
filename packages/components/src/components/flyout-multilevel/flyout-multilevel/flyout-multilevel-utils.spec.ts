@@ -1,8 +1,12 @@
-import type { FlyoutMultilevelItemInternalHTMLProps } from '../flyout-multilevel-item/flyout-multilevel-item-utils';
-import type { Theme } from '../../../types';
-import { syncFlyoutMultilevelItemsProps, validateActiveIdentifier } from './flyout-multilevel-utils';
-import * as stencilCore from '@stencil/core';
+import { expect } from '@jest/globals';
 import * as loggerUtils from '../../../utils/log/logger';
+import type { FlyoutMultilevelItemInternalHTMLProps } from '../flyout-multilevel-item/flyout-multilevel-item-utils';
+import * as flyoutMultilevelUtils from './flyout-multilevel-utils';
+import {
+  traverseTreeAndUpdateState,
+  updateFlyoutMultiLevelItemState,
+  validateActiveIdentifier,
+} from './flyout-multilevel-utils';
 
 const createChild = (
   identifier: string = undefined
@@ -11,52 +15,8 @@ const createChild = (
   el.identifier = identifier;
   return el;
 };
-const theme: Theme = 'dark';
+
 const identifier = 'some-id';
-
-describe('syncFlyoutMultilevelItemsProps()', () => {
-  it('should set theme property on every item', () => {
-    const child1 = createChild();
-    const child2 = createChild();
-    const children = [child1, child2];
-
-    expect(child1.theme).toBeUndefined();
-    expect(child2.theme).toBeUndefined();
-
-    syncFlyoutMultilevelItemsProps(children, undefined, theme);
-
-    expect(child1.theme).toBe(theme);
-    expect(child2.theme).toBe(theme);
-  });
-
-  it('should set open property on every item matching the active-identifier', () => {
-    const child1 = createChild(identifier);
-    const child2 = createChild();
-    const children = [child1, child2];
-
-    expect(child1.open).toBeUndefined();
-    expect(child2.open).toBeUndefined();
-
-    syncFlyoutMultilevelItemsProps(children, identifier, theme);
-
-    expect(child1.open).toBe(true);
-    expect(child2.open).toBe(false);
-  });
-
-  it('should call forceUpdate() on every item', () => {
-    const child1 = createChild();
-    const child2 = createChild();
-    const children = [child1, child2];
-
-    const spy = jest.spyOn(stencilCore, 'forceUpdate');
-
-    syncFlyoutMultilevelItemsProps(children, undefined, theme);
-
-    expect(spy).toHaveBeenCalledTimes(2);
-    expect(spy.mock.calls[0][0]).toEqual(child1); // toHaveBeenNthCalledWith doesn't work
-    expect(spy.mock.calls[1][0]).toEqual(child2);
-  });
-});
 
 const errorMessage = `Invalid value '${identifier}' supplied to p-flyout-multilevel for property 'activeIdentifier' because reference is not present.`;
 const errorMessageMultiple = `Found multiple matching items for value '${identifier}' supplied to p-flyout-multilevel:`;
@@ -100,5 +60,68 @@ describe('validateActiveIdentifier()', () => {
     const spy = jest.spyOn(loggerUtils, 'consoleError').mockImplementation();
     validateActiveIdentifier<typeof SomeInstance>(instance, items, identifier);
     expect(spy).toHaveBeenCalledWith(errorMessageMultiple, ...items);
+  });
+});
+
+describe('updateFlyoutMultiLevelItemState()', () => {
+  let traverseTreeAndUpdateStateSpy: jest.SpyInstance;
+  let host: HTMLElement & { primary?: boolean };
+  let child: HTMLElement & { primary?: boolean; secondary?: boolean; cascade?: boolean; identifier?: string };
+
+  beforeEach(() => {
+    traverseTreeAndUpdateStateSpy = jest
+      .spyOn(flyoutMultilevelUtils, 'traverseTreeAndUpdateState')
+      .mockImplementation();
+
+    host = document.createElement('p-flyout-multilevel');
+    child = document.createElement('p-flyout-multilevel-item');
+    child.setAttribute('identifier', '1');
+    host.appendChild(child);
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('should set secondary prop of item with activeIdentifier to value=true and call functions', () => {
+    updateFlyoutMultiLevelItemState(child, true);
+    expect(child.secondary).toBe(true);
+    expect(traverseTreeAndUpdateStateSpy).toBeCalledWith(host, 'primary', true);
+  });
+  it('should set secondary prop of item with activeIdentifier to value=false and call functions', () => {
+    updateFlyoutMultiLevelItemState(child, false);
+    expect(child.secondary).toBe(false);
+    expect(traverseTreeAndUpdateStateSpy).toBeCalledWith(host, 'primary', false);
+  });
+});
+
+describe('traverseTreeAndUpdateState()', () => {
+  let traverseTreeAndUpdateStateSpy: jest.SpyInstance;
+  let host: HTMLElement & { primary?: boolean };
+  let child: HTMLElement & { primary?: boolean; secondary?: boolean; cascade?: boolean; identifier?: string };
+  let grandChild: HTMLElement & { primary?: boolean; secondary?: boolean; cascade?: boolean; identifier?: string };
+
+  beforeEach(() => {
+    traverseTreeAndUpdateStateSpy = jest.spyOn(flyoutMultilevelUtils, 'traverseTreeAndUpdateState');
+
+    host = document.createElement('p-flyout-multilevel');
+    child = document.createElement('p-flyout-multilevel-item');
+    grandChild = document.createElement('p-flyout-multilevel-item');
+    host.appendChild(child);
+    child.appendChild(grandChild);
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('should traverse up the tree and set states to value', () => {
+    traverseTreeAndUpdateState(grandChild, 'primary', true);
+    expect(grandChild.primary).toBe(true);
+    expect(traverseTreeAndUpdateStateSpy).toBeCalledWith(child, 'cascade', true);
+
+    expect(child.cascade).toBe(true);
+    expect(traverseTreeAndUpdateStateSpy).toHaveBeenCalledTimes(3);
+    expect(traverseTreeAndUpdateStateSpy).toBeCalledWith(host, 'cascade', true);
   });
 });

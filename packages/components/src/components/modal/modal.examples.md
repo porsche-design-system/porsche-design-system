@@ -8,12 +8,6 @@ thoughtfully and sparingly.
 It is a controlled component. This grants flexible control over the modal's behavior especially whether it should stay
 open after user interaction like submission of a form.
 
-<Notification heading="Scroll-lock" heading-tag="h2" state="warning">
-  This component sets <code>overflow: hidden</code> on the body when opened in order to prevent background scrolling.<br> 
-  This doesn't work completely reliable under iOS but is the most stable solution.<br>
-  Feel free to address this issue in an Open Source PR, if you can provide a better solution. <b><a href="https://github.com/porsche-design-system/porsche-design-system/blob/main/packages/components/src/utils/setScrollLock.ts">Current implementation</a></b> 
-</Notification>
-
 <TableOfContents></TableOfContents>
 
 ## Basic
