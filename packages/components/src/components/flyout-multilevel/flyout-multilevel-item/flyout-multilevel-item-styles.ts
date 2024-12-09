@@ -209,9 +209,9 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           gridTemplateRows: 'subgrid',
           gridTemplateColumns: 'subgrid',
           overflow: 'hidden auto',
-          // overscrollBehaviorY: 'none', // when defined, rubber band effect on iOS 18 scroll is getting lost
           scrollBehavior: 'smooth',
-          WebkitOverflowScrolling: 'touch',
+          // overscrollBehaviorY: 'none', // when defined, rubber band scroll effect is getting lost on iOS Safari
+          // WebkitOverflowScrolling: 'touch', // when defined, secondary scroller might not be show in iOS Safari on iPhone only
         }),
         ...((isPrimary || isCascade) && {
           display: 'contents',
