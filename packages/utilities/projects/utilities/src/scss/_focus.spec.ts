@@ -1,12 +1,12 @@
-import * as path from 'path';
 import * as fs from 'fs';
+import * as path from 'path';
 import * as sass from 'sass';
 
 const borderVariables = fs.readFileSync(path.resolve('./src/scss/lib/_border.scss'), 'utf8');
 const themeVariables = fs.readFileSync(path.resolve('./src/scss/lib/_theme.scss'), 'utf8');
 const focusMixin = fs
   .readFileSync(path.resolve('./src/scss/_focus.scss'), 'utf8')
-  .replace(/@use.*;/g, '')
+  .replace(/@use\s'lib.*;/g, '')
   .replace(/border\./g, '')
   .replace(/theme\./g, '');
 
