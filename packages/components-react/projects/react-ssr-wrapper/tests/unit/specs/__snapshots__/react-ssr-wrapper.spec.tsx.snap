@@ -9792,7 +9792,6 @@ exports[`should render dsr component for PFlyoutMultilevel 1`] = `
       grid-template-columns: subgrid;
       overflow: hidden auto;
       scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .dismiss-mobile {
       display: none;

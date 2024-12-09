@@ -36,8 +36,8 @@
   },
   {
     "chunkShortName": "carousel",
-    "size": 48271,
-    "gzipSize": 19523
+    "size": 48047,
+    "gzipSize": 19460
   },
   {
     "chunkShortName": "checkbox",
@@ -91,7 +91,7 @@
   },
   {
     "chunkShortName": "flyout-multilevel",
-    "size": 17765,
+    "size": 17701,
     "gzipSize": 5581
   },
   {
