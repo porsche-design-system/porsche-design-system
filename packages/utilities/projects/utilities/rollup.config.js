@@ -3,9 +3,12 @@ import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 
 const input = 'src/js/index.ts';
+const inputVanillaExtract = 'src/vanilla-extract/index.ts';
 const outputDir = 'dist';
+const outputDirVanillaExtract = `${outputDir}/vanilla-extract`;
 
 export default [
+  // JSS Build - CJS
   {
     input,
     output: {
@@ -16,6 +19,7 @@ export default [
     },
     plugins: [typescript()],
   },
+  // JSS Build - ESM
   {
     input,
     output: {
@@ -35,15 +39,56 @@ export default [
         targets: [{ src: ['src/scss/**/*.scss', 'src/_index.scss'], dest: outputDir }],
         flatten: false,
       }),
-      // seems to be needed at least for webpack 4 in storefront
       generatePackageJson({
         outputFolder: outputDir,
         baseContents: {
-          main: 'cjs/index.cjs',
-          module: 'esm/index.mjs',
-          types: 'esm/index.d.ts',
+          main: 'cjs/index.cjs', // Default JSS export
+          module: 'esm/index.mjs', // Default JSS export in ESM
+          types: 'esm/index.d.ts', // Default types
           sideEffects: false,
+          exports: {
+            // Default export (JSS)
+            '.': {
+              require: './cjs/index.cjs',
+              import: './esm/index.mjs',
+              types: './esm/index.d.ts',
+            },
+            // Vanilla-Extract export
+            './vanilla-extract': {
+              require: './vanilla-extract/cjs/vanilla-extract/index.cjs',
+              import: './vanilla-extract/esm/vanilla-extract/index.mjs',
+              types: './vanilla-extract/esm/vanilla-extract/index.d.ts',
+            },
+          },
         },
+      }),
+    ],
+  },
+  // Vanilla-Extract Build - CJS
+  {
+    input: inputVanillaExtract,
+    output: {
+      dir: `${outputDirVanillaExtract}/cjs`,
+      format: 'cjs',
+      entryFileNames: '[name].cjs',
+      preserveModules: true,
+    },
+    plugins: [typescript()],
+  },
+  // Vanilla-Extract Build - ESM
+  {
+    input: inputVanillaExtract,
+    output: {
+      dir: `${outputDirVanillaExtract}/esm`,
+      format: 'esm',
+      entryFileNames: '[name].mjs',
+      preserveModules: true,
+    },
+    plugins: [
+      typescript({
+        declaration: true,
+        declarationDir: `${outputDirVanillaExtract}/esm`,
+        exclude: '**.spec.ts',
       }),
     ],
   },
