@@ -2,7 +2,7 @@
 
 exports[`getHoverStyle() > should return correct css for opts: { borderRadius: '6px' } 1`] = `
 {
-  "@media(hover:hover)": {
+  "@media (hover:hover)": {
     "&:hover": {
       "background": "rgba(148, 149, 152, .18)",
     },
@@ -18,7 +18,7 @@ exports[`getHoverStyle() > should return correct css for opts: { borderRadius: '
 
 exports[`getHoverStyle() > should return correct css for opts: { borderRadius: 'medium' } 1`] = `
 {
-  "@media(hover:hover)": {
+  "@media (hover:hover)": {
     "&:hover": {
       "background": "rgba(148, 149, 152, .18)",
     },
@@ -34,7 +34,7 @@ exports[`getHoverStyle() > should return correct css for opts: { borderRadius: '
 
 exports[`getHoverStyle() > should return correct css for opts: { borderRadius: 'small' } 1`] = `
 {
-  "@media(hover:hover)": {
+  "@media (hover:hover)": {
     "&:hover": {
       "background": "rgba(148, 149, 152, .18)",
     },
@@ -50,7 +50,7 @@ exports[`getHoverStyle() > should return correct css for opts: { borderRadius: '
 
 exports[`getHoverStyle() > should return correct css for opts: { borderRadius: undefined } 1`] = `
 {
-  "@media(hover:hover)": {
+  "@media (hover:hover)": {
     "&:hover": {
       "background": "rgba(148, 149, 152, .18)",
     },

@@ -42,22 +42,22 @@ export default [
       generatePackageJson({
         outputFolder: outputDir,
         baseContents: {
-          main: 'cjs/index.cjs', // Default JSS export
-          module: 'esm/index.mjs', // Default JSS export in ESM
-          types: 'esm/index.d.ts', // Default types
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
           sideEffects: false,
           exports: {
-            // Default export (JSS)
+            // Default export (JS)
             '.': {
-              require: './cjs/index.cjs',
-              import: './esm/index.mjs',
               types: './esm/index.d.ts',
+              import: './esm/index.mjs',
+              default: './cjs/index.cjs',
             },
             // Vanilla-Extract export
             './vanilla-extract': {
-              require: './vanilla-extract/cjs/vanilla-extract/index.cjs',
-              import: './vanilla-extract/esm/vanilla-extract/index.mjs',
               types: './vanilla-extract/esm/vanilla-extract/index.d.ts',
+              import: './vanilla-extract/esm/vanilla-extract/index.mjs',
+              default: './vanilla-extract/cjs/vanilla-extract/index.cjs',
             },
           },
         },

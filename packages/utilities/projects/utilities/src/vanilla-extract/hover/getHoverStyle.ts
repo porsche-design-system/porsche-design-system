@@ -1,37 +1,15 @@
-import { borderRadiusMedium, borderRadiusSmall } from '../../js';
-import { motionDurationShort, motionEasingBase } from '../../js';
-import { themeLightStateHover } from '../../js';
-// import { frostedGlassStyle } from '../frostedGlass';
-
-type BorderRadius = 'small' | 'medium';
-type Options = {
-  borderRadius?: BorderRadius | string;
-};
-
-const offsetHorizontal = '2px';
+import { type Options, getHoverNestedStyles, getHoverStyles } from '../../js/hover/getHoverStyle'; // Use explicit import to ensure correct bundling
 
 export const getHoverStyle = (opts?: Options) => {
-  const { borderRadius = 'small' } = opts || {};
-  const borderRadiusValue =
-    borderRadius === 'small'
-      ? borderRadiusSmall
-      : borderRadius === 'medium'
-        ? borderRadiusMedium
-        : borderRadius || borderRadiusSmall;
-
+  const { borderRadius } = opts || {};
   return {
-    borderRadius: borderRadiusValue, // it's visually being reflected on both (when placed here), element and hover
-    marginLeft: `-${offsetHorizontal}`,
-    marginRight: `-${offsetHorizontal}`,
-    paddingLeft: offsetHorizontal,
-    paddingRight: offsetHorizontal,
-    transition: `background var(--p-transition-duration, ${motionDurationShort}) ${motionEasingBase}`,
-    // TODO: how can we test this later in vrt?
-    '@media(hover:hover)': {
-      selectors: {
-        '&:hover': {
-          // ...frostedGlassStyle,
-          background: themeLightStateHover, // hover color is equal for light and dark theme
+    ...getHoverStyles(borderRadius),
+    '@media': {
+      '(hover:hover)': {
+        selectors: {
+          '&:hover': {
+            ...getHoverNestedStyles(),
+          },
         },
       },
     },
