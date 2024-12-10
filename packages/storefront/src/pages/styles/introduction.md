@@ -27,10 +27,10 @@ The styles are available as JavaScript and SCSS version and available in the Fig
 
 When working with JavaScript styles, the way you import them depends on the library or tool you're using.
 
-Using css-in-js libraries (e.g., `JSS`, `styled-components`...):
+For most css-in-js libraries (e.g., `JSS`, `styled-components`...):
 `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`.
 
-Using `vanilla-extract`:
+For `vanilla-extract`:
 `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles/vanilla-extract';`.
 
 ### SCSS
