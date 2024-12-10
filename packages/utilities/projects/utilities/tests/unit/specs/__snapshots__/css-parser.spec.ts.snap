@@ -16,7 +16,7 @@ exports[`should match compiled styles with jss (styles package) 1`] = `
 .test:focus:not(:focus-visible) {
   outline-color: transparent;
 }
-@media (hover:hover) {
+@media(hover:hover) {
   .test:hover {
     background: rgba(148, 149, 152, .18);
   }

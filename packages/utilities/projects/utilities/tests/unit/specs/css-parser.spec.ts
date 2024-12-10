@@ -14,6 +14,9 @@ it('should match compiled styles with vanilla-extract (styles/vanilla-extract pa
 });
 
 it('should have equal compiled css for jss and vanilla-extract', () => {
+  // Remove whitespace in media query
+  const styles = vanillaExtractTestCss.replace(/(@media) (\(hover:hover\))/, '$1$2');
+  console.log(styles);
   // JSS adds newline at the end
-  expect(vanillaExtractTestCss + '\n').toStrictEqual(jssTestCss);
+  expect(styles + '\n').toStrictEqual(jssTestCss);
 });

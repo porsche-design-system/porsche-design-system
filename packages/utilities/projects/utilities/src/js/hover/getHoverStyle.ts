@@ -37,7 +37,7 @@ export const getHoverStyle = (opts?: Options) => {
   return {
     ...getHoverStyles(borderRadius),
     // TODO: how can we test this later in vrt?
-    '@media (hover:hover)': {
+    '@media(hover:hover)': {
       '&:hover': {
         ...getHoverNestedStyles(),
       },
