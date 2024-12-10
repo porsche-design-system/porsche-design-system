@@ -34,6 +34,13 @@ const dialogDurationClose = 'short';
 const backdropDurationClose = 'moderate';
 const easingClose = 'out';
 
+// ensures that the scrollbar color is mostly set correctly
+export const scrollerBackground: { [K in Theme]: string } = {
+  light: 'rgba(255,255,255,.01)',
+  dark: 'rgba(0,0,0,.01)',
+  auto: 'rgba(255,255,255,.01)',
+};
+
 export const getComponentCss = (
   isOpen: boolean,
   isPrimary: boolean,
@@ -221,17 +228,21 @@ export const getComponentCss = (
       },
     },
     scroller: {
+      display: 'contents',
+      overflow: 'hidden auto',
+      // scrollBehavior: 'smooth', // when defined, `.scrollTo()` isn't applied immediately
+      // overscrollBehaviorY: 'none', // when defined, rubber band scroll effect is getting lost on iOS Safari
+      // WebkitOverflowScrolling: 'touch', // when defined, secondary scroller might not be show in iOS Safari on iPhone only
+      background: scrollerBackground[theme],
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        background: scrollerBackground.dark,
+      }),
       [mediaQueryMobile]: {
-        display: 'contents',
         ...(!isSecondaryScrollerVisible && {
           gridArea: '1/1/-1/-1',
           display: 'grid',
           gridTemplateRows: 'subgrid',
           gridTemplateColumns: 'subgrid',
-          overflow: 'hidden auto',
-          // overscrollBehaviorY: 'none', // when defined, rubber band effect on iOS 18 scroll is getting lost
-          scrollBehavior: 'smooth',
-          WebkitOverflowScrolling: 'touch',
           '&::before': {
             content: '""',
             position: 'sticky',
@@ -250,10 +261,6 @@ export const getComponentCss = (
         display: 'grid',
         gridTemplateRows: 'subgrid',
         gridTemplateColumns: 'subgrid',
-        overflow: 'hidden auto',
-        // overscrollBehaviorY: 'none', // when defined, rubber band effect on iOS 18 scroll is getting lost
-        scrollBehavior: 'smooth',
-        WebkitOverflowScrolling: 'touch',
       },
     },
     'dismiss-mobile': {
