@@ -3,8 +3,7 @@
 The `p-accordion` is a component that reveals or hides associated sections of content.  
 Accordions are flexible in the context and can include other components of the Porsche Design System.
 
-It is a controlled component. This means it does not contain any internal state, and you got full control over its
-behavior.
+It is an optionally controlled component. This means it does contain internal state, which allows for out-of-the-box open/close functionality. Using the `open` prop and `update` event also expose full control over its behavior.
 
 <TableOfContents></TableOfContents>
 
