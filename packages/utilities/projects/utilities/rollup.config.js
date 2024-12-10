@@ -8,7 +8,7 @@ const outputDir = 'dist';
 const outputDirVanillaExtract = `${outputDir}/vanilla-extract`;
 
 export default [
-  // JSS Build - CJS
+  // Default JS Build - CJS
   {
     input,
     output: {
@@ -19,7 +19,7 @@ export default [
     },
     plugins: [typescript()],
   },
-  // JSS Build - ESM
+  // Default JS Build - ESM
   {
     input,
     output: {
