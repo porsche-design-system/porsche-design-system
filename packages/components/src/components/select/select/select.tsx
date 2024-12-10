@@ -151,7 +151,7 @@ export class Select {
   private isNativePopoverCase: boolean = false;
   private parentTableElement: HTMLElement;
   private popoverElement: HTMLElement;
-  private hasSlottedImage: boolean = false;
+  private slottedImagePath: string = '';
 
   @Listen('internalOptionUpdate')
   public updateOptionHandler(e: Event & { target: SelectOption }): void {
@@ -164,6 +164,7 @@ export class Select {
     this.internals.setFormValue(this.value);
     // When setting initial value the watcher gets called before the options are defined
     if (this.selectOptions.length > 0) {
+      this.slottedImagePath = this.getSelectedOptionImagePath(this.selectOptions);
       if (!this.preventOptionUpdate) {
         updateSelectOptions(this.selectOptions, this.value);
       }
@@ -185,7 +186,7 @@ export class Select {
     this.internals.setFormValue(this.value);
     this.updateOptions();
     updateSelectOptions(this.selectOptions, this.value);
-    this.hasSlottedImage = this.getSelectedOptionImagePath(this.selectOptions) !== '';
+    this.slottedImagePath = this.getSelectedOptionImagePath(this.selectOptions);
   }
 
   public componentDidLoad(): void {
@@ -233,7 +234,7 @@ export class Select {
       this.state,
       this.isNativePopoverCase,
       this.theme,
-      this.hasSlottedImage
+      !!this.slottedImagePath
     );
     syncSelectChildrenProps([...this.selectOptions, ...this.selectOptgroups], this.theme);
 
@@ -270,9 +271,9 @@ export class Select {
             onKeyDown={this.onComboKeyDown}
             ref={(el) => (this.combobox = el)}
           >
-            {this.hasSlottedImage ? (
+            {this.slottedImagePath ? (
               <span>
-                <img src={this.getSelectedOptionImagePath(this.selectOptions)} alt="" />
+                <img src={this.slottedImagePath} alt="" />
                 <span>{getSelectedOptionString(this.selectOptions)}</span>
               </span>
             ) : (
@@ -354,7 +355,6 @@ export class Select {
     }
     this.updateMenuState(false);
     this.combobox.focus();
-    this.hasSlottedImage = this.getSelectedOptionImagePath(this.selectOptions) !== '';
   };
 
   private onComboClick = (): void => {
