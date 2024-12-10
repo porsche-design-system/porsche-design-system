@@ -164,10 +164,10 @@ export class Select {
     this.internals.setFormValue(this.value);
     // When setting initial value the watcher gets called before the options are defined
     if (this.selectOptions.length > 0) {
-      this.slottedImagePath = this.getSelectedOptionImagePath(this.selectOptions);
       if (!this.preventOptionUpdate) {
         updateSelectOptions(this.selectOptions, this.value);
       }
+      this.slottedImagePath = this.getSelectedOptionImagePath(this.selectOptions);
       this.preventOptionUpdate = false;
     }
   }
@@ -319,6 +319,7 @@ export class Select {
   private onSlotchange = (): void => {
     this.updateOptions();
     updateSelectOptions(this.selectOptions, this.value);
+    this.slottedImagePath = this.getSelectedOptionImagePath(this.selectOptions);
     // Necessary to update selected options in placeholder
     forceUpdate(this.host);
   };
