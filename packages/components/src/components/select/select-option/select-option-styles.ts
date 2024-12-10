@@ -1,6 +1,10 @@
-import type { Theme } from '../../../types';
-import { getCss, isHighContrastMode } from '../../../utils';
-import { getNoResultsOptionJssStyle } from '../../../styles/option-styles';
+import {
+  borderRadiusSmall,
+  fontLineHeight,
+  fontWeightRegular,
+  spacingStaticSmall,
+} from '@porsche-design-system/styles';
+import type { Styles } from 'jss';
 import {
   addImportantToEachRule,
   getHighContrastColors,
@@ -11,13 +15,9 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import {
-  borderRadiusSmall,
-  fontLineHeight,
-  fontWeightRegular,
-  spacingStaticSmall,
-} from '@porsche-design-system/styles';
-import type { Styles } from 'jss';
+import { getNoResultsOptionJssStyle } from '../../../styles/option-styles';
+import type { Theme } from '../../../types';
+import { getCss, isHighContrastMode } from '../../../utils';
 
 export const cssVariableSelectPaddingInlineStart = '--p-internal-select-option-padding-left';
 
@@ -66,7 +66,6 @@ export const getOptionStyles = (theme: Theme): Styles => {
       gap: '12px',
       padding: `${spacingStaticSmall} 12px`,
       paddingInlineStart: `var(${cssVariableSelectPaddingInlineStart}, 12px)`,
-      flex: `1 0 calc(${fontLineHeight} + ${spacingStaticSmall} * 2)`,
       minHeight: `calc(${fontLineHeight} + ${spacingStaticSmall} * 2)`, // TODO: Added this line to preserve height for empty option
       color: contrastHighColor,
       ...prefersColorSchemeDarkMediaQuery(theme, {

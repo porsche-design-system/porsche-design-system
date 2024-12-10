@@ -1,5 +1,12 @@
-import type { BreakpointCustomizable, Theme } from '../../../types';
-import { getCss, isHighContrastMode, type SelectDropdownDirectionInternal } from '../../../utils';
+import {
+  borderRadiusSmall,
+  borderWidthBase,
+  fontLineHeight,
+  spacingStaticSmall,
+  spacingStaticXSmall,
+  textSmallStyle,
+} from '@porsche-design-system/styles';
+import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   addImportantToRule,
@@ -12,6 +19,7 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
+import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import {
   formButtonOrIconPadding,
   formElementLayeredSafeZone,
@@ -19,22 +27,14 @@ import {
   formElementPaddingVertical,
   getCalculatedFormElementPaddingHorizontal,
 } from '../../../styles/form-styles';
-import {
-  borderRadiusSmall,
-  borderWidthBase,
-  fontLineHeight,
-  spacingStaticSmall,
-  spacingStaticXSmall,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
-import type { JssStyle } from 'jss';
-import type { FormState } from '../../../utils/form/form-state';
-import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
+import { OPTION_HEIGHT } from '../../../styles/option-styles';
 import { getPlaceholderJssStyle } from '../../../styles/placeholder';
+import { getPopoverResetJssStyle } from '../../../styles/popover-reset-styles';
+import type { BreakpointCustomizable, Theme } from '../../../types';
+import { type SelectDropdownDirectionInternal, getCss, isHighContrastMode } from '../../../utils';
+import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
-import { getPopoverResetJssStyle } from '../../../styles/popover-reset-styles';
-import { OPTION_HEIGHT } from '../../../styles/option-styles';
 
 const cssVarBackgroundColor = '--p-select-background-color';
 const cssVarTextColor = '--p-select-text-color';
@@ -51,7 +51,8 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   isNativePopoverCase: boolean,
-  theme: Theme
+  theme: Theme,
+  hasSlottedImage: boolean
 ): string => {
   return getCss({
     '@global': {
@@ -64,7 +65,7 @@ export const getComponentCss = (
       },
       ...preventFoucOfNestedElementsStyles,
       // TODO: re-use select-wrapper-style
-      button: getButtonStyles(isDisabled, direction, isOpen, state, theme),
+      button: getButtonStyles(isDisabled, direction, isOpen, state, theme, hasSlottedImage),
     },
     root: {
       display: 'grid',
@@ -112,7 +113,8 @@ const getButtonStyles = (
   direction: SelectDropdownDirectionInternal,
   isOpen: boolean,
   state: FormState,
-  theme: Theme
+  theme: Theme,
+  hasSlottedImage: boolean
 ): JssStyle => {
   const isDirectionDown = direction === 'down';
   const { primaryColor, disabledColor, backgroundColor, contrastMediumColor } = getThemedColors(theme);
@@ -132,9 +134,7 @@ const getButtonStyles = (
     textAlign: 'start', // TODO: Newly added (rest is copied from select-wrapper-dropdown), share rest for both components
     overflowX: 'hidden', // TODO: Newly added (rest is copied from select-wrapper-dropdown), share rest for both components
     whiteSpace: 'nowrap', // TODO: Newly added (rest is copied from select-wrapper-dropdown), share rest for both components
-
     gridArea: '1/1/1/-1',
-    flex: 1,
     minWidth: 0,
     // TODO: abstract and re-use for multi-select, select-wrapper and text-field-wrapper
     height: `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`, // we need 10px additionally so input height becomes 54px, // we need 6px additionally so input height becomes 50px
@@ -166,11 +166,26 @@ const getButtonStyles = (
         theme,
         getPlaceholderJssStyle({
           color: `var(${cssVarTextColor}, ${primaryColorDark})`,
-          opacity: 1,
+          opacity: 1, // Opacity fixes placeholder being shown lighter in firefox
         })
       ),
-    }, // Opacity fixes placeholder being shown lighter in firefox
-
+    },
+    ...(hasSlottedImage && {
+      '& > span': {
+        display: 'flex',
+        gap: '12px',
+        alignItems: 'center',
+      },
+      '& > span > span': {
+        textOverflow: 'ellipsis',
+        overflow: 'hidden',
+      },
+      '& img': {
+        height: fontLineHeight,
+        borderRadius: borderRadiusSmall,
+        width: 'auto',
+      },
+    }),
     ...hoverMediaQuery({
       '&:hover:not(:disabled):not(:focus-visible),label:hover~.wrapper &:not(:disabled):not(:focus-visible)': {
         borderColor: `var(${cssVarBorderColor}, ${isOpen ? primaryColor : formStateHoverColor || primaryColor})`,
