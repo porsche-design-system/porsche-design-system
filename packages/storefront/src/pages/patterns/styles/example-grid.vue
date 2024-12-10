@@ -158,6 +158,7 @@ export default class ExampleStylesGrid extends Vue {
 <style lang="scss" scoped>
   // TODO: we should import from vue, but we need to prepare CI first
   @use '@porsche-design-system/components-js/styles' as *;
+  @use 'sass:map';
 
   // Visualize Grid
   .visualize-grid {
@@ -206,7 +207,7 @@ export default class ExampleStylesGrid extends Vue {
     @if $border-radius == true {
       border-radius: $pds-border-radius-large;
     }
-    background: map-get($color-map, $color);
+    background: map.get($color-map, $color);
   }
 
   // Typography
