@@ -9768,6 +9768,11 @@ exports[`should render dsr component for PFlyoutMultilevel 1`] = `
     pointer-events: none;
     opacity: 0;
   }
+  .scroller {
+    display: contents;
+    overflow: hidden auto;
+    background: rgba(255,255,255,.01);
+  }
   .back {
     display: none;
   }
@@ -9790,8 +9795,6 @@ exports[`should render dsr component for PFlyoutMultilevel 1`] = `
       display: grid;
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
-      overflow: hidden auto;
-      scroll-behavior: smooth;
     }
     .dismiss-mobile {
       display: none;
@@ -9819,13 +9822,10 @@ exports[`should render dsr component for PFlyoutMultilevel 1`] = `
       background: #FFF;
     }
     .scroller {
-      display: grid;
       grid-area: 1/1/-1/-1;
+      display: grid;
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
-      overflow: hidden auto;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
     }
     .scroller::before {
       content: "";
@@ -10395,6 +10395,11 @@ exports[`should render dsr component for PFlyoutMultilevelItem 1`] = `
 }
 
 
+  .scroller {
+    display: none;
+    overflow: hidden auto;
+    background: rgba(255,255,255,.01);
+  }
   .button {
     padding: clamp(8px, 0.5vw + 6px, 16px);
     margin: 0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
@@ -10406,16 +10411,10 @@ exports[`should render dsr component for PFlyoutMultilevelItem 1`] = `
     .drawer {
       display: none;
     }
-    .scroller {
-      display: none;
-    }
 }
 
 @media(max-width:759px) {
     .drawer {
-      display: none;
-    }
-    .scroller {
       display: none;
     }
 }
