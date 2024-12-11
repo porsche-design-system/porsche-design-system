@@ -1,10 +1,10 @@
-import { describe, test, expect } from 'vitest';
-import * as path from 'path';
-import * as fs from 'fs';
-import { globbySync } from 'globby';
-import { checkPackage, createPackageFromTarballData, type Analysis, type Problem } from '@arethetypeswrong/core';
-import { createRequire } from 'node:module';
 import { execSync } from 'child_process';
+import * as fs from 'fs';
+import { createRequire } from 'node:module';
+import * as path from 'path';
+import { type Analysis, type Problem, checkPackage, createPackageFromTarballData } from '@arethetypeswrong/core';
+import { globbySync } from 'globby';
+import { describe, expect, test } from 'vitest';
 import componentsJsPackageJson from '../../../../dist/components-wrapper/package.json';
 
 const nodeRequire = createRequire(import.meta.url);
@@ -83,6 +83,11 @@ describe('package.json files', () => {
           types: './styles/esm/index.d.ts',
           import: './styles/esm/index.mjs',
           default: './styles/cjs/index.cjs',
+        },
+        './styles/vanilla-extract': {
+          types: './styles/vanilla-extract/esm/vanilla-extract/index.d.ts',
+          import: './styles/vanilla-extract/esm/vanilla-extract/index.mjs',
+          default: './styles/vanilla-extract/cjs/vanilla-extract/index.cjs',
         },
         './testing': {
           types: './testing/index.d.ts',
