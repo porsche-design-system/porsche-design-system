@@ -1,9 +1,9 @@
-import typescript from '@rollup/plugin-typescript';
-import copy from 'rollup-plugin-copy';
-import generatePackageJson from 'rollup-plugin-generate-package-json';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
+import typescript from '@rollup/plugin-typescript';
 import bin from 'rollup-plugin-bin';
+import copy from 'rollup-plugin-copy';
+import generatePackageJson from 'rollup-plugin-generate-package-json';
 import preserveDirectives from 'rollup-plugin-preserve-directives';
 
 const rootDir = '../..';
@@ -20,6 +20,7 @@ const external = [
   '@porsche-design-system/components-js/jsdom-polyfill',
   '@porsche-design-system/components-js/partials',
   '@porsche-design-system/components-js/styles',
+  '@porsche-design-system/components-js/styles/vanilla-extract',
   '@porsche-design-system/components-js/testing',
   'react',
   'react/jsx-runtime',
@@ -121,6 +122,11 @@ export default [
               types: './styles/esm/index.d.ts',
               import: './styles/esm/index.mjs',
               default: './styles/cjs/index.cjs',
+            },
+            './styles/vanilla-extract': {
+              types: './styles/vanilla-extract/esm/vanilla-extract/index.d.ts',
+              import: './styles/vanilla-extract/esm/vanilla-extract/index.mjs',
+              default: './styles/vanilla-extract/cjs/vanilla-extract/index.cjs',
             },
             './ag-grid/*.css': './ag-grid/*.css',
             './testing': {
@@ -227,8 +233,36 @@ export default [
           module: 'esm/index.mjs',
           types: 'esm/index.d.ts',
           sideEffects: false,
+          exports: {
+            // Default export (JS)
+            '.': {
+              types: './esm/index.d.ts',
+              import: './esm/index.mjs',
+              default: './cjs/index.cjs',
+            },
+            // Vanilla-Extract export
+            './vanilla-extract': {
+              types: './vanilla-extract/esm/vanilla-extract/index.d.ts',
+              import: './vanilla-extract/esm/vanilla-extract/index.mjs',
+              default: './vanilla-extract/cjs/vanilla-extract/index.cjs',
+            },
+          },
         },
       }),
+    ],
+  },
+  {
+    input: `${projectDir}/src/styles/vanilla-extract/index.ts`,
+    external,
+    output: [
+      {
+        file: `${outputDir}/styles/vanilla-extract/cjs/vanilla-extract/index.cjs`,
+        format: 'cjs',
+      },
+      {
+        file: `${outputDir}/styles/vanilla-extract/esm/vanilla-extract/index.mjs`,
+        format: 'esm',
+      },
     ],
   },
   {
