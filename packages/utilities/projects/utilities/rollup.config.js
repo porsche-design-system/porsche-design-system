@@ -90,6 +90,15 @@ export default [
         declarationDir: `${outputDirVanillaExtract}/esm`,
         exclude: '**.spec.ts',
       }),
+      generatePackageJson({
+        outputFolder: outputDirVanillaExtract,
+        baseContents: {
+          main: 'cjs/vanilla-extract/index.cjs',
+          module: 'esm/vanilla-extract/index.mjs',
+          types: 'esm/vanilla-extract/index.d.ts',
+          sideEffects: false,
+        },
+      }),
     ],
   },
 ];
