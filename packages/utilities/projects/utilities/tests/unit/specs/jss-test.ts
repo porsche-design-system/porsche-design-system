@@ -1,9 +1,9 @@
-import { getFocusStyle, getHoverStyle } from '@porsche-design-system/components-js/styles';
 import { type Styles, create } from 'jss';
 import jssPluginCamelCase from 'jss-plugin-camel-case';
 import jssPluginGlobal from 'jss-plugin-global';
 import jssPluginNested from 'jss-plugin-nested';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
+import { getFocusStyle, getHoverStyle } from '../../../src/js';
 
 const jss = create({
   plugins: [
