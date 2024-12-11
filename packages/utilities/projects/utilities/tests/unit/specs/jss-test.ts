@@ -21,9 +21,14 @@ export const getCss = (jssStyles: Styles): string =>
     })
     .toString();
 
-export const jssTestCss = getCss({
+export const jssGetFocusStyleTestCss = getCss({
   test: {
     ...getFocusStyle(),
+  },
+});
+
+export const jssGetHoverStyleTestCss = getCss({
+  test: {
     ...getHoverStyle(),
   },
 });

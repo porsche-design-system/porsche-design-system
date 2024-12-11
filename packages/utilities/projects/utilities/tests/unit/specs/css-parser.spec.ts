@@ -1,21 +1,44 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import { jssTestCss } from './jss-test';
+import * as prettier from 'prettier';
+import { jssGetFocusStyleTestCss, jssGetHoverStyleTestCss } from './jss-test';
 
-const cssFilePath = path.resolve(__dirname, 'generated/vanilla-extract.css');
-const vanillaExtractTestCss = fs.readFileSync(cssFilePath, 'utf-8');
+// TODO:
+// Add smoke test components js all imports
+// extend dependency tree test?
 
-it('should match compiled styles with jss (styles package)', () => {
-  expect(jssTestCss).toMatchSnapshot();
+const readGeneratedCss = (fileName: string) => {
+  const cssFilePath = path.resolve(__dirname, `generated/${fileName}`);
+  return fs.readFileSync(cssFilePath, 'utf-8');
+};
+
+const vanillaExtractGetFocusStyleTestCss = readGeneratedCss('vanilla-extract-getFocusStyle.css.ts.vanilla.css');
+const vanillaExtractGetHoverStyleTestCss = readGeneratedCss('vanilla-extract-getHoverStyle.css.ts.vanilla.css');
+
+it('should match compiled getFocusStyle() with jss (styles package)', () => {
+  expect(jssGetFocusStyleTestCss).toMatchSnapshot();
 });
 
-it('should match compiled styles with vanilla-extract (styles/vanilla-extract package)', () => {
-  expect(vanillaExtractTestCss).toMatchSnapshot();
+it('should match compiled getHoverStyle() with jss (styles package)', () => {
+  expect(jssGetHoverStyleTestCss).toMatchSnapshot();
 });
 
-it('should have equal compiled css for jss and vanilla-extract', () => {
-  // Remove whitespace in media query
-  const styles = vanillaExtractTestCss.replace(/(@media) (\(hover:hover\))/, '$1$2');
-  // JSS adds newline at the end
-  expect(styles + '\n').toStrictEqual(jssTestCss);
+it('should match compiled getFocusStyle() with vanilla-extract (styles/vanilla-extract package)', () => {
+  expect(vanillaExtractGetFocusStyleTestCss).toMatchSnapshot();
+});
+
+it('should match compiled getHoverStyle() with vanilla-extract (styles/vanilla-extract package)', () => {
+  expect(vanillaExtractGetHoverStyleTestCss).toMatchSnapshot();
+});
+
+it('should have equal compiled getFocusStyle() for jss and vanilla-extract', async () => {
+  const veStyles = await prettier.format(vanillaExtractGetFocusStyleTestCss, { parser: 'css' });
+  const jssStyles = await prettier.format(jssGetFocusStyleTestCss, { parser: 'css' });
+  expect(veStyles).toStrictEqual(jssStyles);
+});
+
+it('should have equal compiled getHoverStyle() for jss and vanilla-extract', async () => {
+  const veStyles = await prettier.format(vanillaExtractGetHoverStyleTestCss, { parser: 'css' });
+  const jssStyles = await prettier.format(jssGetHoverStyleTestCss, { parser: 'css' });
+  expect(veStyles).toStrictEqual(jssStyles);
 });

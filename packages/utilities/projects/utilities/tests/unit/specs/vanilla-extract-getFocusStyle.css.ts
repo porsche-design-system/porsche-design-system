@@ -1,8 +1,7 @@
 import { style } from '@vanilla-extract/css';
-import { getFocusStyle, getHoverStyle } from '../../../src/vanilla-extract';
+import { getFocusStyle } from '../../../src/vanilla-extract';
 
 // Will be compiled by rollup into css file which is then used in the unit test
-export const vanillaExtractTestCss = style({
+export const vanillaExtractGetFocusStyle = style({
   ...getFocusStyle(),
-  ...getHoverStyle(),
 });
