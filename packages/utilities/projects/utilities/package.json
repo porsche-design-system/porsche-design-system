@@ -13,8 +13,8 @@
     "build:generateScss": "tsx scripts/generateScss.ts",
     "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs",
     "generateVanillaExtractTestStyles": "rollup -c rollup-test-ve.config.js --bundleConfigAsCjs",
-    "test": "yarn generateVanillaExtractTestStyles && yarn test:unit",
-    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
+    "test": "yarn test:unit",
+    "test:unit": "yarn generateVanillaExtractTestStyles && vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist && rm -rf ./src/scss/lib"
   },
   "devDependencies": {
