@@ -524,8 +524,13 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/tabindex="-1"/, '')
           // replace getSelectedOptionString
           .replace(
-            /\{getSelectedOptionString\(typeof otherChildren\[0] === 'object' && 'props' in otherChildren\[0] && otherChildren\[0]\?\.propsOptions\)}/,
-            '{getSelectedOptionString(otherChildren)}'
+            /getSelectedOptionString\(typeof otherChildren\[0] === 'object' && 'props' in otherChildren\[0] && otherChildren\[0]\?\.propsOptions\)/g,
+            'getSelectedOptionString(otherChildren)'
+          )
+          // replace getSelectedOptionImagePath
+          .replace(
+            /this\.props\.getSelectedOptionImagePath\(typeof otherChildren\[0] === 'object' && 'props' in otherChildren\[0] && otherChildren\[0]\?\.propsOptions\)/,
+            'this.getSelectedOptionImagePath(otherChildren)'
           )
           .replace(/<span className="sr-only"[^<]*<\/span>/, '')
           // .replace(/(SelectDropdownDirectionInternal)/, 'type $1')
