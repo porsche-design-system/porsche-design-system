@@ -65,7 +65,7 @@
     "test:vrt:prepare-regression-snapshots": "tsx tests/vrt/scripts/prepareRegressionSnapshots.ts",
     "test:vrt:update-regression-snapshots": "tsx tests/vrt/scripts/updateRegressionSnapshots.ts",
     "test:smoke": "yarn test:smoke:unit && yarn test:smoke:e2e",
-    "test:smoke:unit": "vitest --config tests/smoke/unit/config/vitest.config.ts styles",
+    "test:smoke:unit": "vitest --config tests/smoke/unit/config/vitest.config.ts",
     "test:smoke:e2e": "playwright test --config=tests/smoke/e2e/config/playwright.config.ts",
     "clean:build": "yarn clean:app:build && yarn clean:components-wrapper:build && yarn clean:components-manager-core:build && yarn clean:components-manager-cli:build && yarn clean:jsdom-polyfill:build && yarn clean:partials:build",
     "clean:app:build": "rm -rf ./dist/demo-app",
