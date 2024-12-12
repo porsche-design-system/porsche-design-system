@@ -38,7 +38,7 @@
     "@angular/platform-browser": "^19.0.0",
     "@angular/platform-browser-dynamic": "^19.0.0",
     "@angular/router": "^19.0.0",
-    "@porsche-design-system/components-angular": "3.22.1",
+    "@porsche-design-system/components-angular": "3.23.0-rc.0",
     "angular-imask": "^7.6.1",
     "imask": "^7.6.1",
     "rxjs": "^7.8.1",
