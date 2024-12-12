@@ -8417,8 +8417,8 @@ dialog::backdrop {
 }
         </style>
         <dialog
+          aria-label="Flyout"
           aria-modal="true"
-          inert=""
           tabindex="-1"
         >
           <div
@@ -9510,8 +9510,8 @@ dialog::backdrop {
 }
     </style>
     <dialog
+      aria-label="Flyout"
       aria-modal="true"
-      inert=""
       tabindex="-1"
     >
       <div
