@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 #### Fixed
 
 - `Flyout`: transition bug in Safari ([3674](https://github.com/porsche-design-system/porsche-design-system/pull/3674))
+- `Styles`: dart sass deprecation warnings in `SCSS` variant
+  ([3664](https://github.com/porsche-design-system/porsche-design-system/pull/3664))
 
 ### [3.22.1] - 2024-12-09
 
