@@ -1,5 +1,7 @@
-import { expect, Locator, test, type Page } from '@playwright/test';
+import { Locator, type Page, expect, test } from '@playwright/test';
+import type { ModalAriaAttribute, SelectedAriaAttributes } from '@porsche-design-system/components';
 import {
+  type Options,
   addEventListener,
   getActiveElementClassNameInShadowRoot,
   getActiveElementId,
@@ -14,9 +16,7 @@ import {
   skipInBrowsers,
   sleep,
   waitForStencilLifecycle,
-  type Options,
 } from '../helpers';
-import type { ModalAriaAttribute, SelectedAriaAttributes } from '@porsche-design-system/components';
 
 const CSS_TRANSITION_DURATION = 600; // Corresponds to motionDurationLong
 
@@ -129,9 +129,8 @@ const expectDismissButtonToBeFocused = async (page: Page, failMessage?: string) 
 };
 
 const expectDialogAndThenDismissButtonToBeFocused = async (page: Page, failMessage?: string) => {
-  // For some reason this is always BODY in playwright even though it is P-MODAL and DIALOG within that in reality
   // In order to assure that its correct we press tab to assure the next element will be the dismiss button
-  await expect(await getActiveElementTagName(page)).toBe('BODY');
+  await expect(await getActiveElementTagName(page)).toBe('P-MODAL');
   await page.keyboard.press('Tab');
   await expectDismissButtonToBeFocused(page);
 };
