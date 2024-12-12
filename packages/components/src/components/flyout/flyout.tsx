@@ -1,20 +1,8 @@
-import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop } from '@stencil/core';
-import {
-  addStickyTopCssVarStyleSheet,
-  FLYOUT_ARIA_ATTRIBUTES,
-  FLYOUT_FOOTER_BEHAVIOR,
-  FLYOUT_POSITIONS,
-  type FlyoutAriaAttribute,
-  type FlyoutFooterBehavior,
-  type FlyoutMotionHiddenEndEventDetail,
-  type FlyoutMotionVisibleEndEventDetail,
-  type FlyoutPosition,
-  type FlyoutPositionDeprecated,
-  handleUpdateStickyTopCssVar,
-} from './flyout-utils';
-import { getComponentCss } from './flyout-styles';
+import { Component, Element, Event, type EventEmitter, type JSX, Prop, forceUpdate, h } from '@stencil/core';
+import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import {
   AllowedTypes,
+  THEMES,
   attachComponentCss,
   getPrefixedTagNames,
   getSlotTextContent,
@@ -26,14 +14,26 @@ import {
   parseAndGetAriaAttributes,
   setDialogVisibility,
   setScrollLock,
-  THEMES,
   unobserveChildren,
   validateProps,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
-import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
-import { observeStickyArea } from '../../utils/dialog/observer';
 import { onTransitionEnd } from '../../utils/dialog/dialog';
+import { observeStickyArea } from '../../utils/dialog/observer';
+import { getComponentCss } from './flyout-styles';
+import {
+  FLYOUT_ARIA_ATTRIBUTES,
+  FLYOUT_FOOTER_BEHAVIOR,
+  FLYOUT_POSITIONS,
+  type FlyoutAriaAttribute,
+  type FlyoutFooterBehavior,
+  type FlyoutMotionHiddenEndEventDetail,
+  type FlyoutMotionVisibleEndEventDetail,
+  type FlyoutPosition,
+  type FlyoutPositionDeprecated,
+  addStickyTopCssVarStyleSheet,
+  handleUpdateStickyTopCssVar,
+} from './flyout-utils';
 
 type PositionDeprecationMapType = Record<FlyoutPositionDeprecated, Exclude<FlyoutPosition, FlyoutPositionDeprecated>>;
 
@@ -172,19 +172,15 @@ export class Flyout {
 
     return (
       <dialog
-        // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
-        // eslint-disable-next-line
-        /* @ts-ignore */
-        inert={this.open ? null : true} // prevents focusable elements during fade-out transition + prevents focusable elements within nested open accordion
-        tabIndex={-1} // dialog always has a dismiss button to be focused
+        tabIndex={-1} // needed for programmatic focus
         ref={(el) => (this.dialog = el)}
         onCancel={(e) => onCancelDialog(e, this.dismissDialog)}
         // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on flyout and mouseup on backdrop) but changed back to native behavior
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
-        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd, this.dialog)}
+        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
         {...parseAndGetAriaAttributes({
           'aria-modal': true,
-          ...(this.hasHeader && { 'aria-label': getSlotTextContent(this.host, 'header') }),
+          ...{ 'aria-label': this.hasHeader ? getSlotTextContent(this.host, 'header') : 'Flyout' },
           ...parseAndGetAriaAttributes(this.aria),
         })}
       >
