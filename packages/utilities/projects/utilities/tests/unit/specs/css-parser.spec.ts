@@ -3,10 +3,6 @@ import * as path from 'node:path';
 import * as prettier from 'prettier';
 import { jssGetFocusStyleTestCss, jssGetHoverStyleTestCss } from './jss-test';
 
-// TODO:
-// Add smoke test components js all imports
-// extend dependency tree test?
-
 const readGeneratedCss = (fileName: string) => {
   const cssFilePath = path.resolve(__dirname, `generated/${fileName}`);
   return fs.readFileSync(cssFilePath, 'utf-8');
