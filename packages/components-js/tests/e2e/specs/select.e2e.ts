@@ -1143,6 +1143,22 @@ test.describe('selection', () => {
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after setting value to undefined').toBeUndefined();
     expect(await getButtonText(page)).toBe('');
   });
+
+  test('should update selected when value is changed programmatically', async ({ page }) => {
+    await initSelect(page, { props: { name: 'options', value: 'c' } }, true);
+    const select = getHost(page);
+
+    expect(await getSelectValue(page)).toBe('c');
+    expect(await getButtonText(page)).toBe('c');
+    expect(await getButtonImage(page)).toBe('image-c.jpg');
+
+    await setProperty(select, 'value', 'b');
+
+    await waitForStencilLifecycle(page);
+    expect(await getSelectValue(page)).toBe('b');
+    expect(await getButtonText(page)).toBe('b');
+    expect(await getButtonImage(page)).toBe('image-b.jpg');
+  });
 });
 
 test.describe('click events', () => {
