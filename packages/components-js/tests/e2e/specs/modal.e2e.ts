@@ -437,17 +437,17 @@ skipInBrowsers(['firefox', 'webkit'], () => {
     test.describe('with disable-close-button', () => {
       const initModalOpts = { isOpen: false, disableCloseButton: true };
 
-      test('should focus body when there is no focusable element', async ({ page }) => {
+      test('should focus p-modal when there is no focusable element', async ({ page }) => {
         await initBasicModal(page, initModalOpts);
         await openModal(page);
-        await expect(await getActiveElementTagName(page)).toBe('BODY');
+        await expect(await getActiveElementTagName(page)).toBe('P-MODAL');
       });
 
       test('should not focus element behind modal if modal has no focusable element', async ({ page }) => {
         await initBasicModal(page, initModalOpts);
         await addButtonsBeforeAndAfterModal(page);
         await openModal(page);
-        await expect(await getActiveElementTagName(page)).toBe('BODY');
+        await expect(await getActiveElementTagName(page)).toBe('P-MODAL');
 
         await page.keyboard.press('Tab');
         expect(await getActiveElementTagName(page)).toBe('BODY');
@@ -482,7 +482,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
                 : `<${tagName}${attributes}>Some element</${tagName}>`) + otherFocusableElement,
           });
           await openModal(page);
-          await expect(await getActiveElementTagName(page)).toBe('BODY');
+          await expect(await getActiveElementTagName(page)).toBe('P-MODAL');
           await page.keyboard.press('Tab');
 
           expect(await getActiveElementTagName(page)).toBe(tagName.toUpperCase());
