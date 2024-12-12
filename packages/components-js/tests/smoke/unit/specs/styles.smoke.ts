@@ -4,18 +4,14 @@ import { describe, expect, test } from 'vitest';
 const nodeRequire = createRequire(import.meta.url);
 
 describe('style package content', () => {
-  test(`should match content without throwing`, () => {
-    expect(() => {
-      const styles = nodeRequire('@porsche-design-system/components-js/styles');
-      expect(styles).toMatchSnapshot();
-    }).not.toThrow();
+  test(`should match content`, () => {
+    const styles = nodeRequire('@porsche-design-system/components-js/styles');
+    expect(styles).toMatchSnapshot();
   });
 
-  test(`should match vanilla-extract content without throwing`, () => {
-    expect(() => {
-      const styles = nodeRequire('@porsche-design-system/components-js/styles/vanilla-extract');
-      expect(styles).toMatchSnapshot();
-    }).not.toThrow();
+  test(`should match vanilla-extract content`, () => {
+    const styles = nodeRequire('@porsche-design-system/components-js/styles/vanilla-extract');
+    expect(styles).toMatchSnapshot();
   });
 
   // Exported names should be the same, only differs in function implementations

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`style package content > should match content without throwing 1`] = `
+exports[`style package content > should match content 1`] = `
 {
   "border": {
     "radius": {
@@ -534,7 +534,7 @@ exports[`style package content > should match content without throwing 1`] = `
 }
 `;
 
-exports[`style package content > should match vanilla-extract content without throwing 1`] = `
+exports[`style package content > should match vanilla-extract content 1`] = `
 {
   "border": {
     "radius": {
