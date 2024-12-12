@@ -177,7 +177,7 @@ export class Flyout {
         onCancel={(e) => onCancelDialog(e, this.dismissDialog)}
         // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on flyout and mouseup on backdrop) but changed back to native behavior
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
-        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd, this.dialog)}
+        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
         {...parseAndGetAriaAttributes({
           'aria-modal': true,
           ...{ 'aria-label': this.hasHeader ? getSlotTextContent(this.host, 'header') : 'Flyout' },
