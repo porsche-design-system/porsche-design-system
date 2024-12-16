@@ -118,7 +118,10 @@ describe('package.json files', () => {
           !(
             prob.kind === 'FalseCJS' ||
             ('entrypoint' in prob &&
-              (prob.entrypoint === '.' || prob.entrypoint === './styles' || prob.entrypoint === './ssr'))
+              (prob.entrypoint === '.' ||
+                prob.entrypoint === './styles' ||
+                prob.entrypoint === './styles/vanilla-extract' ||
+                prob.entrypoint === './ssr'))
           )
       );
 
