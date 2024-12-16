@@ -8417,8 +8417,8 @@ dialog::backdrop {
 }
         </style>
         <dialog
+          aria-label="Flyout"
           aria-modal="true"
-          inert=""
           tabindex="-1"
         >
           <div
@@ -9512,8 +9512,8 @@ dialog::backdrop {
 }
     </style>
     <dialog
+      aria-label="Flyout"
       aria-modal="true"
-      inert=""
       tabindex="-1"
     >
       <div
@@ -14519,7 +14519,6 @@ button {
   overflow-x: hidden;
   white-space: nowrap;
   grid-area: 1/1/1/-1;
-  flex: 1;
   min-width: 0;
   height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -14765,7 +14764,6 @@ exports[`should render dsr component for PSelectOption 1`] = `
   gap: 12px;
   padding: 8px 12px;
   padding-inline-start: var(--p-internal-select-option-padding-left, 12px);
-  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   min-height: calc(calc(6px + 2.125ex) + 8px * 2);
   color: #535457;
   cursor: pointer;

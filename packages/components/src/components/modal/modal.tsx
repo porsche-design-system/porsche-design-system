@@ -1,7 +1,9 @@
-import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, type JSX, Prop, forceUpdate, h } from '@stencil/core';
+import { BACKDROPS } from '../../styles/dialog-styles';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import {
   AllowedTypes,
+  THEMES,
   attachComponentCss,
   consoleWarn,
   getPrefixedTagNames,
@@ -15,12 +17,15 @@ import {
   parseAndGetAriaAttributes,
   setDialogVisibility,
   setScrollLock,
-  THEMES,
   unobserveChildren,
   validateProps,
   warnIfAriaAndHeadingPropsAreUndefined,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
+import { onTransitionEnd } from '../../utils/dialog/dialog';
+import { observeStickyArea } from '../../utils/dialog/observer';
+import { getDeprecatedPropOrSlotWarningMessage } from '../../utils/log/helper';
+import { getComponentCss } from './modal-styles';
 import {
   MODAL_ARIA_ATTRIBUTES,
   type ModalAriaAttribute,
@@ -28,11 +33,6 @@ import {
   type ModalMotionHiddenEndEventDetail,
   type ModalMotionVisibleEndEventDetail,
 } from './modal-utils';
-import { getComponentCss } from './modal-styles';
-import { BACKDROPS } from '../../styles/dialog-styles';
-import { observeStickyArea } from '../../utils/dialog/observer';
-import { getDeprecatedPropOrSlotWarningMessage } from '../../utils/log/helper';
-import { onTransitionEnd } from '../../utils/dialog/dialog';
 
 const propTypes: PropTypes<typeof Modal> = {
   open: AllowedTypes.boolean,
@@ -205,7 +205,7 @@ export class Modal {
         onCancel={(e) => onCancelDialog(e, this.dismissDialog, !this.hasDismissButton)}
         // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on modal and mouseup on backdrop) but changed back to native behavior
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
-        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd, this.dialog)}
+        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
         {...parseAndGetAriaAttributes({
           'aria-modal': true,
           ...(this.hasHeader && { 'aria-label': this.ariaLabel() }),

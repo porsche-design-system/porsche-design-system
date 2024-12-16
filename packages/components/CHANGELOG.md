@@ -14,14 +14,29 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.23.0] - 2024-12-12
+
+### [3.23.0-rc.0] - 2024-12-12
+
+#### Changed
+
+- `Select`: Slotted image of selected option now visible in combobox
+  ([#3651](https://github.com/porsche-design-system/porsche-design-system/pull/3651))
+
+#### Fixed
+
+- `Flyout`: transition bug in Safari ([3674](https://github.com/porsche-design-system/porsche-design-system/pull/3674))
+- `Styles`: dart sass deprecation warnings in `SCSS` variant
+  ([3664](https://github.com/porsche-design-system/porsche-design-system/pull/3664))
+
 ### [3.22.1] - 2024-12-09
 
 ### [3.22.1-rc.0] - 2024-12-09
 
 #### Fixed
 
-`Flyout Multilevel`: Secondary scroll area not shown in iOS Safari (iPhone only)
-([3663](https://github.com/porsche-design-system/porsche-design-system/pull/3663))
+- `Flyout Multilevel`: Secondary scroll area not shown in iOS Safari (iPhone only)
+  ([3663](https://github.com/porsche-design-system/porsche-design-system/pull/3663))
 
 ### [3.22.0] - 2024-12-06
 

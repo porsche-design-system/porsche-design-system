@@ -1,4 +1,4 @@
-<dialog inert="" tabindex="-1" aria-modal="true">
+<dialog tabindex="-1" aria-modal="true" aria-label="Flyout">
   <div class="scroller">
     <div class="flyout">
       <p-button class="dismiss hydrated"> Dismiss flyout</p-button>
