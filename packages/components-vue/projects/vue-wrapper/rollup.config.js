@@ -14,6 +14,7 @@ const external = [
   '@porsche-design-system/components-js/jsdom-polyfill',
   '@porsche-design-system/components-js/partials',
   '@porsche-design-system/components-js/styles',
+  '@porsche-design-system/components-js/styles/vanilla-extract',
   '@porsche-design-system/components-js/testing',
 ];
 
