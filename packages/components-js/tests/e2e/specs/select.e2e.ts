@@ -1,6 +1,8 @@
-import type { Page } from 'playwright';
-import { expect, Locator, test } from '@playwright/test';
+import { Locator, expect, test } from '@playwright/test';
+import { Theme } from '@porsche-design-system/components';
 import type { Components } from '@porsche-design-system/components/src/components';
+import type { SelectOption } from '@porsche-design-system/components/src/components/select/select/select-utils';
+import type { Page } from 'playwright';
 import {
   addEventListener,
   getActiveElementTagName,
@@ -18,13 +20,12 @@ import {
   sleep,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { SelectOption } from '@porsche-design-system/components/src/components/select/select/select-utils';
-import { Theme } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.locator('p-select');
 const getFieldset = (page: Page) => page.locator('fieldset');
 const getSelectValue = async (page: Page): Promise<string | number> => await getProperty(getHost(page), 'value');
 const getButton = (page: Page) => page.locator('p-select button').first();
+const getButtonImage = (page: Page) => page.locator('p-select button img').getAttribute('src');
 const getButtonText = async (page: Page): Promise<string | number> => getProperty(getButton(page), 'textContent');
 const getDropdown = (page: Page) => page.locator('p-select .listbox');
 const getDropdownDisplay = async (page: Page): Promise<string> => await getElementStyle(getDropdown(page), 'display');
@@ -78,18 +79,24 @@ const setValue = async (page: Page, value: string) => {
 };
 
 // TODO: Test adding hidden, disabled option?
-const addOption = async (page: Page, value: string, textContent?: string) => {
+const addOption = async (page: Page, value: string, textContent?: string, image?: string) => {
   const host = getHost(page);
   await host.evaluate(
-    (el, { value, textContent }) => {
+    (el, { value, textContent, image }) => {
       const option: any = document.createElement('p-select-option');
       option.value = value;
       option.textContent = textContent;
+      if (image) {
+        const img = document.createElement('img');
+        img.src = image;
+        option.appendChild(img);
+      }
       el.append(option);
     },
     {
       value,
       textContent: textContent ? textContent : value,
+      image,
     }
   );
 };
@@ -221,6 +228,7 @@ const testValues = [
 type Option = {
   value: string;
   disabled?: boolean;
+  image?: string;
 };
 
 type InitOptions = {
@@ -239,10 +247,14 @@ type InitOptions = {
   };
 };
 
-const initSelect = (page: Page, opt?: InitOptions): Promise<void> => {
+const initSelect = (page: Page, opt?: InitOptions, withImage?: boolean): Promise<void> => {
   const { props = { name: 'options' }, slots, options } = opt || {};
   const {
-    values = [{ value: 'a' }, { value: 'b' }, { value: 'c' }],
+    values = [
+      { value: 'a', ...(withImage && { image: 'image-a.jpg' }) },
+      { value: 'b', ...(withImage && { image: 'image-b.jpg' }) },
+      { value: 'c', ...(withImage && { image: 'image-c.jpg' }) },
+    ],
     isWithinForm = true,
     markupBefore = '',
     markupAfter = '',
@@ -252,7 +264,7 @@ const initSelect = (page: Page, opt?: InitOptions): Promise<void> => {
 
   const getOption = (opt: Option) => {
     const attrs = [opt.disabled ? 'disabled' : ''].join(' ');
-    return `<p-select-option ${opt.value ? `value="${opt.value}"` : ''} ${attrs}>${opt.value}</p-select-option>`;
+    return `<p-select-option ${opt.value ? `value="${opt.value}"` : ''} ${attrs}>${withImage ? `<img src="${opt.image}" alt="">` : ''}${opt.value}</p-select-option>`;
   };
 
   const getOptions = (options: Option | Option[]) =>
@@ -1042,6 +1054,41 @@ test.describe('selection', () => {
     expect(await getButtonText(page)).toBe('c');
   });
 
+  test('should add valid selection with slotted image on Click', async ({ page }) => {
+    await initSelect(page, undefined, true);
+    const buttonElement = getButton(page);
+
+    await buttonElement.click(); // Open dropdown
+    await waitForStencilLifecycle(page);
+
+    expect(await getHighlightedOptionIndex(page)).toBe(-1); // No option highlighted
+
+    const option = getSelectOption(page, 1);
+
+    await option.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getSelectValue(page), 'after first option selected').toBe('a');
+    expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('a');
+    expect(await getButtonText(page)).toBe('a');
+    expect(await getButtonImage(page)).toBe('image-a.jpg');
+
+    await buttonElement.click(); // Open dropdown again
+    await waitForStencilLifecycle(page);
+
+    // TODO: Do we want to set highlight on the option when selecting with click
+    expect(await getHighlightedOptionIndex(page)).toBe(-1); // No option highlighted
+
+    const option2 = getSelectOption(page, 3);
+    await option2.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getSelectValue(page), 'after first option selected').toBe('c');
+    expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('c');
+    expect(await getButtonText(page)).toBe('c');
+    expect(await getButtonImage(page)).toBe('image-c.jpg');
+  });
+
   test('should not select disabled option on Click', async ({ page }) => {
     await initSelect(page, {
       options: { values: [{ value: 'a', disabled: true }, { value: 'b' }, { value: 'c' }] },
@@ -1096,6 +1143,22 @@ test.describe('selection', () => {
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after setting value to undefined').toBeUndefined();
     expect(await getButtonText(page)).toBe('');
   });
+
+  test('should update selected when value is changed programmatically', async ({ page }) => {
+    await initSelect(page, { props: { name: 'options', value: 'c' } }, true);
+    const select = getHost(page);
+
+    expect(await getSelectValue(page)).toBe('c');
+    expect(await getButtonText(page)).toBe('c');
+    expect(await getButtonImage(page)).toBe('image-c.jpg');
+
+    await setProperty(select, 'value', 'b');
+
+    await waitForStencilLifecycle(page);
+    expect(await getSelectValue(page)).toBe('b');
+    expect(await getButtonText(page)).toBe('b');
+    expect(await getButtonImage(page)).toBe('image-b.jpg');
+  });
 });
 
 test.describe('click events', () => {
@@ -1142,19 +1205,20 @@ test.describe('click events', () => {
 
 test.describe('slots', () => {
   test('should update when selected option is added', async ({ page }) => {
-    await initSelect(page);
+    await initSelect(page, undefined, true);
     expect(await getSelectValue(page)).toBeUndefined();
 
     await setValue(page, 'd');
     await waitForStencilLifecycle(page);
     expect(await getSelectValue(page)).toBe('d');
 
-    await addOption(page, 'd', 'd');
+    await addOption(page, 'd', 'd', 'image-d.jpg');
     await waitForStencilLifecycle(page);
 
     expect(await getSelectValue(page), 'after option added').toBe('d');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after option added').toEqual('d');
     expect(await getButtonText(page)).toBe('d');
+    expect(await getButtonImage(page)).toBe('image-d.jpg');
   });
 
   test('should update when selected option is removed', async ({ page }) => {
