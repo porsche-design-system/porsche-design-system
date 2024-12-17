@@ -180,7 +180,10 @@ export class Carousel {
   private btnNext: HTMLPButtonPureElement;
   private paginationEl: HTMLElement;
   private slides: HTMLElement[] = [];
-  private splideSlides: HTMLElement[] = [];
+
+  private get splideSlides(): HTMLElement[] {
+    return this.splide.Components.Elements.slides;
+  }
 
   private get hasNavigation(): boolean {
     return this.slidesPerPage === 'auto' || this.amountOfPages > 1;
@@ -201,7 +204,6 @@ export class Carousel {
       // on reconnect we can reuse the splide instance
       this.updateSlidesAndPagination();
       this.registerSplideHandlers(this.splide);
-      this.getSplideSlides();
     }
   }
 
@@ -245,7 +247,6 @@ export class Carousel {
     });
 
     this.registerSplideHandlers(this.splide);
-    this.getSplideSlides();
   }
 
   public componentDidUpdate(): void {
@@ -476,9 +477,5 @@ export class Carousel {
       },
       ['aria-hidden']
     );
-  }
-
-  private getSplideSlides(): void {
-    this.splideSlides = this.splide.Components.Elements.slides;
   }
 }
