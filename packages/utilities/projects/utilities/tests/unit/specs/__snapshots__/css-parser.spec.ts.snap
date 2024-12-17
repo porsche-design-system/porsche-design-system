@@ -1,0 +1,60 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match compiled getFocusStyle() with jss (styles package) 1`] = `
+".test {
+  border-radius: 4px;
+}
+.test:focus {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+.test:focus:not(:focus-visible) {
+  outline-color: transparent;
+}"
+`;
+
+exports[`should match compiled getFocusStyle() with vanilla-extract (styles/vanilla-extract package) 1`] = `
+".test {
+  border-radius: 4px;
+}
+.test:focus {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+.test:focus:not(:focus-visible) {
+  outline-color: transparent;
+}"
+`;
+
+exports[`should match compiled getHoverStyle() with jss (styles package) 1`] = `
+".test {
+  border-radius: 4px;
+  margin-left: -2px;
+  margin-right: -2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+@media(hover:hover) {
+  .test:hover {
+    background: rgba(148, 149, 152, .18);
+  }
+}
+"
+`;
+
+exports[`should match compiled getHoverStyle() with vanilla-extract (styles/vanilla-extract package) 1`] = `
+".test {
+  border-radius: 4px;
+  margin-left: -2px;
+  margin-right: -2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+@media (hover:hover) {
+  .test:hover {
+    background: rgba(148, 149, 152, .18);
+  }
+}"
+`;

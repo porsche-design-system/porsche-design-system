@@ -23,8 +23,11 @@ The styles are available as `JavaScript` and `SCSS` version. Look at the example
 
 ### JS
 
-JavaScript styles can be imported by
+When using `JSS`, `styled-components` etc. JavaScript styles can be imported by:
 `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`.
+
+When using `vanilla-extract` JavaScript styles can be imported by:
+`import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles/vanilla-extract';`.
 
 - `breakpoints`
 - `breakpoint`

@@ -15,6 +15,7 @@ const external = [
   '@porsche-design-system/components-js/jsdom-polyfill',
   '@porsche-design-system/components-js/partials',
   '@porsche-design-system/components-js/styles',
+  '@porsche-design-system/components-js/styles/vanilla-extract',
   '@porsche-design-system/components-js/testing',
 ];
 
@@ -68,6 +69,20 @@ const buildConfig = (packagePath) => {
 
 export default [
   buildConfig('styles'),
+  {
+    input: `${projectDir}/src/styles/vanilla-extract/index.ts`,
+    external,
+    output: [
+      {
+        file: `${outputDir}/styles/vanilla-extract/cjs/vanilla-extract/index.cjs`,
+        format: 'cjs',
+      },
+      {
+        file: `${outputDir}/styles/vanilla-extract/esm/vanilla-extract/index.mjs`,
+        format: 'esm',
+      },
+    ],
+  },
   {
     input: `${projectDir}/src/partials/index.ts`,
     external,
