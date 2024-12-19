@@ -7,7 +7,7 @@ export const parseJSONAttribute = <T>(attribute: T | string): T => {
   return JSON.parse(
     attribute
       // Convert colon to tmp colon
-      .replace(/(?<=['"]\w+):/g, '__tmp-colon__')
+      .replace(/(?<=['"]\s*\w+[\s\w]*):/g, '__tmp-colon__')
       // Convert single quotes to double quotes except the ones which are escaped by backslash
       .replace(/\\'/g, '__escaped_single_quote__')
       .replace(/'/g, '"')
