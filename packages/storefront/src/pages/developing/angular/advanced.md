@@ -57,10 +57,11 @@ export class AppComponent {
 }
 ```
 
-#### Using Standalone Components
+### Using Standalone Components
 
-When using [Standalone Components](https://angular.dev/guide/components/importing#standalone-components) the `PorscheDesignSystemModule.load()` needs
-to be included in the `bootstrapApplication` config providers section using [importProvidersFrom](https://angular.dev/api/core/importProvidersFrom).
+When using [Standalone Components](https://angular.dev/guide/components/importing#standalone-components) the
+`PorscheDesignSystemModule.load()` needs to be included in the `bootstrapApplication` config providers section using
+[importProvidersFrom](https://angular.dev/api/core/importProvidersFrom).
 
 ```ts
 // main.ts (standalone setup)
@@ -69,11 +70,7 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 
 bootstrapApplication(AppComponent, {
-  providers: [
-    importProvidersFrom(
-      PorscheDesignSystemModule.load({ theme: 'dark' }),
-    ),
-  ]
+  providers: [importProvidersFrom(PorscheDesignSystemModule.load({ theme: 'dark' }))],
 }).catch((err) => console.error(err));
 ```
 

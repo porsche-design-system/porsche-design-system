@@ -1,9 +1,9 @@
-import type { ConsoleMessage, Page } from 'playwright';
-import { expect, type Locator } from '@playwright/test';
-import { waitForComponentsReady } from './stencil';
-import type { TagName } from '@porsche-design-system/shared';
+import { type Locator, expect } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { getInitialStyles } from '@porsche-design-system/components-js/partials';
+import type { TagName } from '@porsche-design-system/shared';
+import type { ConsoleMessage, Page } from 'playwright';
+import { waitForComponentsReady } from './stencil';
 
 // TODO: temporary workaround, because of https://github.com/microsoft/playwright/issues/17075
 // import { kebabCase } from 'change-case';
@@ -187,6 +187,18 @@ export const getActiveElementClassNameInShadowRoot = (element: Locator): Promise
     } catch (e) {
       throw new Error(
         `Could not get "className" from ${el.tagName}.shadowRoot.activeElement (${el.shadowRoot.activeElement}) `
+      );
+    }
+  });
+};
+
+export const getActiveElementIdInShadowRoot = (element: Locator): Promise<string> => {
+  return element.evaluate((el) => {
+    try {
+      return el.shadowRoot.activeElement.id;
+    } catch (e) {
+      throw new Error(
+        `Could not get "id" from ${el.tagName}.shadowRoot.activeElement (${el.shadowRoot.activeElement}) `
       );
     }
   });
