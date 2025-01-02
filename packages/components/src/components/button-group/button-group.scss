@@ -1,0 +1,16 @@
+@mixin host-hidden {
+  &[hidden] {
+    display: none !important;
+  }
+}
+
+:host {
+  display: block;
+  @include host-hidden;
+  // TODO: Color Scheme styles missing
+}
+
+div {
+  display: flex;
+  gap: $pds-spacing-fluid-small;
+}

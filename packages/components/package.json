@@ -55,7 +55,8 @@
     "dts-bundle-generator": "^9.5.1",
     "globby-legacy": "npm:globby@^11.0.4",
     "imask": "7.1.3",
-    "tinycolor2": "^1.6.0"
+    "tinycolor2": "^1.6.0",
+    "@stencil/sass": "^3.0.12"
   },
   "peerDependencies": {
     "@rollup/plugin-replace": "*",

@@ -1,7 +1,8 @@
-import type { Config } from '@stencil/core';
 import * as path from 'node:path';
-import replace from '@rollup/plugin-replace';
 import type { TagName } from '@porsche-design-system/shared';
+import replace from '@rollup/plugin-replace';
+import type { Config } from '@stencil/core';
+import { sass } from '@stencil/sass';
 import { version } from './package.json';
 
 /**
@@ -83,4 +84,9 @@ export const config: Config = {
     ...(isDevBuild && { lifecycleDOMEvents: true }),
     tagNameTransform: true,
   },
+  plugins: [
+    sass({
+      injectGlobalPaths: ['../../node_modules/@porsche-design-system/styles/src/_index.scss'],
+    }),
+  ],
 };
