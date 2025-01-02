@@ -47,7 +47,7 @@
     "@stencil/core": "~4.22.2"
   },
   "devDependencies": {
-    "@types/react": "18.3.12",
+    "@types/react": "^19.0.2",
     "@types/tinycolor2": "^1.4.6",
     "change-case": "^5.4.4",
     "change-case-legacy": "npm:change-case@^4.1.2",

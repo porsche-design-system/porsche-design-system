@@ -25,14 +25,14 @@
     "@remix-run/serve": "^2.15.2",
     "@remix-run/server-runtime": "^2.15.2",
     "isbot": "^5.1.17",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@remix-run/dev": "^2.14.0",
-    "@types/react": "18.3.12",
-    "@types/react-dom": "^18.3.1",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
     "binode": "^1.0.5",
     "cross-env": "^7.0.3"
   },

@@ -27,8 +27,8 @@
   },
   "dependencies": {
     "@porsche-design-system/components-react": "3.23.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "react-imask": "^7.6.1",
     "react-router-dom": "^6.28.0",
     "styled-components": "^6.1.13"
@@ -39,8 +39,8 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
-    "@types/react": "18.3.12",
-    "@types/react-dom": "^18.3.1",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
     "ag-grid-community": "33.0.3",
     "ag-grid-enterprise": "33.0.3",
     "ag-grid-react": "33.0.3",
