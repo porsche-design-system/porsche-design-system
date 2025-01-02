@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@remix-run/dev": "^2.14.0",
+    "@remix-run/dev": "^2.15.2",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
     "binode": "^1.0.5",
