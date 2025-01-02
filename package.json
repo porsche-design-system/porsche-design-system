@@ -229,8 +229,8 @@
     "**/@vue/cli-plugin-unit-jest/jest": ">=29 <30",
     "**/@vue/cli-plugin-unit-jest/ts-jest": ">=29 <30",
     "**/@vue/cli-shared-utils/@achrinza/node-ipc": "^10.1.11",
-    "**/vite/rollup": "^4.13.0",
-    "**/workbox-build/rollup": "^4.13.0"
+    "**/vite/rollup": "^4.29.1",
+    "**/workbox-build/rollup": "^4.29.1"
   },
   "volta": {
     "node": "20.11.1",
