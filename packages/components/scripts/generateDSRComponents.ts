@@ -75,6 +75,11 @@ const generateDSRComponents = (): void => {
         .replace(/( class)([:=])/g, '$1Name$2') // change class prop to className in JSX
         .replace(/getPrefixedTagNames,?\s*/, '') // remove getPrefixedTagNames import
         .replace(/ onSlotchange={.*}/g, '') // doesn't exist in React JSX
+        .replace(
+          /\{\/\* @ts-expect-error although `fetchpriority` should already be supported by TSX, it's not with Stencil\/TSX \*\/}/g,
+          ''
+        ) // remove, otherwise ts-expect-error would through because `fetchpriority` is replaced with `fetchPriority`
+        .replace(/fetchpriority/g, 'fetchPriority') // doesn't exist in Stencil JSX but in React JSX
         // remove all imports except for utils and functional components which are rewritten
         .replace(/import[\s\S]*?from '(.*)';\n/g, (m, group) =>
           group.endsWith('utils')
