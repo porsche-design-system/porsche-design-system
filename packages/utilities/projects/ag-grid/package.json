@@ -13,7 +13,7 @@
     "clean:build": "rm -rf ./dist && rm -rf ./src/css"
   },
   "devDependencies": {
-    "ag-grid-community": "32.3.3"
+    "ag-grid-community": "33.0.3"
   },
   "peerDependencies": {
     "sass": "*"
