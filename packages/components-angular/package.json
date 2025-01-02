@@ -20,13 +20,15 @@
     "build:subPackages:ag-grid": "TARGET=./dist/angular-wrapper/ag-grid && rm -rf $TARGET && cp -r ../utilities/projects/ag-grid/dist $TARGET",
     "build-app": "ng build demo-app --configuration production && yarn build-app:injectPartials",
     "build-app:injectPartials": "tsx scripts/inject-partials.ts",
-    "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
+    "test": "yarn test:unit && yarn test:e2e && yarn test:vrt && yarn test:smoke",
     "test:unit": "yarn test:unit:jest && yarn test:unit:karma",
     "test:unit:jest": "jest --colors -c tests/unit/config/jest.config.js",
     "test:unit:karma": "concurrently -k -s 'first' -n 'cdn,test' 'serve-cdn' 'ng test'",
     "test:unit:karma-ci": "concurrently -k -s 'first' -n 'cdn,test' 'serve-cdn' 'ng test --browsers=ChromeHeadlessCI --watch=false'",
     "test:e2e": "yarn build-app && playwright test --config=tests/e2e/config/playwright.config.ts",
     "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
+    "test:smoke": "yarn test:smoke:unit",
+    "test:smoke:unit": "vitest --config tests/smoke/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist && rm -rf ./tmp && rm -rf ./out-tsc && rm -rf ./bazel-out && rm -rf ./.angular"
   },
   "dependencies": {
