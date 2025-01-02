@@ -31,7 +31,7 @@
     "@porsche-design-system/components-vue": "3.23.0",
     "vue": "^3.5.13",
     "vue-imask": "^7.6.1",
-    "vue-router": "^4.4.5"
+    "vue-router": "^4.5.0"
   },
   "devDependencies": {
     "@porsche-design-system/assets": "5.0.2",
