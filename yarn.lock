@@ -10448,10 +10448,10 @@ concat-stream@^1.5.0:
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
 
-concurrently@^9.1.0:
-  version "9.1.0"
-  resolved "https://registry.yarnpkg.com/concurrently/-/concurrently-9.1.0.tgz#8da6d609f4321752912dab9be8710232ac496aa0"
-  integrity sha512-VxkzwMAn4LP7WyMnJNbHN5mKV9L2IbyDjpzemKr99sXNR3GqRNMMHdm7prV1ws9wg7ETj6WUkNOigZVsptwbgg==
+concurrently@^9.1.2:
+  version "9.1.2"
+  resolved "https://registry.yarnpkg.com/concurrently/-/concurrently-9.1.2.tgz#22d9109296961eaee773e12bfb1ce9a66bc9836c"
+  integrity sha512-H9MWcoPsYddwbOGM6difjVwVZHl63nwMEwDJG/L7VGtuaJhb12h2caPG2tVPWs7emuYix252iGfqOyrz1GczTQ==
   dependencies:
     chalk "^4.1.2"
     lodash "^4.17.21"
@@ -19141,10 +19141,10 @@ mime@^2.4.4, mime@^2.5.2:
   resolved "https://registry.yarnpkg.com/mime/-/mime-2.6.0.tgz#a2a682a95cd4d0cb1d6257e28f83da7e35800367"
   integrity sha512-USPkMeET31rOMiarsBNIHZKLGgvKc/LrjofAnBlOttf5ajRvqiRA8QsenbcooctK6d6Ts6aqZXBA+XbkKthiQg==
 
-mime@^4.0.4:
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/mime/-/mime-4.0.4.tgz#9f851b0fc3c289d063b20a7a8055b3014b25664b"
-  integrity sha512-v8yqInVjhXyqP6+Kw4fV3ZzeMRqEW6FotRsKXjRS5VMTNIuXsdRoAvklpoRgSqXm6o9VNH4/C0mgedko9DdLsQ==
+mime@^4.0.6:
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/mime/-/mime-4.0.6.tgz#ca83bec0bcf2a02353d0e02da99be05603d04839"
+  integrity sha512-4rGt7rvQHBbaSOF9POGkk1ocRP16Md1x36Xma8sz8h8/vfCUI2OtEIeCqe4Ofes853x4xDoPiFLIT47J5fI/7A==
 
 mimic-fn@^1.0.0:
   version "1.2.0"
@@ -19620,10 +19620,10 @@ next@^15.1.3:
     "@next/swc-win32-x64-msvc" "15.1.3"
     sharp "^0.33.5"
 
-ng-packagr@^19.0.0:
-  version "19.0.0"
-  resolved "https://registry.yarnpkg.com/ng-packagr/-/ng-packagr-19.0.0.tgz#250173dae5d98ddd4a1a605333037ea4d22d1e82"
-  integrity sha512-CKJlpZO6sL3+RpXbmtH7wEHnqgktOkmvmoUpTUUuNOA6m3JRypvDZHW29hFzvgFkxTJI13QHuBWauuG42rtIUA==
+ng-packagr@^19.0.1:
+  version "19.0.1"
+  resolved "https://registry.yarnpkg.com/ng-packagr/-/ng-packagr-19.0.1.tgz#012e1aed39a1b3e527d9b0be88e3aefaf75cf830"
+  integrity sha512-PnXa/y3ce3v4bKJNtUBS7qcNoyv5g/tSthoMe23NyMV5kjNY4+hJT7h64zK+8tnJWTelCbIpoep7tmSPsOifBA==
   dependencies:
     "@rollup/plugin-json" "^6.1.0"
     "@rollup/wasm-node" "^4.24.0"
@@ -21902,10 +21902,10 @@ prepend-http@^1.0.0:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.8.tgz#e8c5d7e98a4305ffe3de2e1fc4aca1a71c28b1da"
   integrity sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==
 
-prettier@^3.3.3:
-  version "3.3.3"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.3.3.tgz#30c54fe0be0d8d12e6ae61dbb10109ea00d53105"
-  integrity sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==
+prettier@^3.4.2:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.4.2.tgz#a5ce1fb522a588bf2b78ca44c6e6fe5aa5a2b13f"
+  integrity sha512-e9MewbtFo+Fevyuxn/4rrcDAaq0IYxPGLvObpQjiZBMAzB9IGmzlnG9RZy3FFas+eBMu2vA0CszMeduow5dIuQ==
 
 pretty-bytes@^5.3.0, pretty-bytes@^5.4.1:
   version "5.6.0"
@@ -23367,10 +23367,21 @@ sass@1.80.7:
   optionalDependencies:
     "@parcel/watcher" "^2.4.1"
 
-sass@^1.79.5, sass@^1.81.0:
+sass@^1.79.5:
   version "1.81.0"
   resolved "https://registry.yarnpkg.com/sass/-/sass-1.81.0.tgz#a9010c0599867909dfdbad057e4a6fbdd5eec941"
   integrity sha512-Q4fOxRfhmv3sqCLoGfvrC9pRV8btc0UtqL9mN6Yrv6Qi9ScL55CVH1vlPP863ISLEEMNLLuu9P+enCeGHlnzhA==
+  dependencies:
+    chokidar "^4.0.0"
+    immutable "^5.0.2"
+    source-map-js ">=0.6.2 <2.0.0"
+  optionalDependencies:
+    "@parcel/watcher" "^2.4.1"
+
+sass@^1.83.0:
+  version "1.83.0"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.83.0.tgz#e36842c0b88a94ed336fd16249b878a0541d536f"
+  integrity sha512-qsSxlayzoOjdvXMVLkzF84DJFc2HZEL/rFyGIKbbilYtAvlCxyuzUeff9LawTn4btVnLKg75Z8MMr1lxU1lfGw==
   dependencies:
     chokidar "^4.0.0"
     immutable "^5.0.2"

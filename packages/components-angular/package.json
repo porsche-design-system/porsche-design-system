@@ -65,7 +65,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
     "local-web-server": "^5.4.0",
-    "ng-packagr": "^19.0.0"
+    "ng-packagr": "^19.0.1"
   },
   "peerDependencies": {
     "@playwright/test": "*",

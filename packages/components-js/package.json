@@ -91,7 +91,7 @@
     "devtools-protocol": "^0.0.1304228",
     "jsdom": "^24.1.0",
     "local-web-server": "^5.4.0",
-    "mime": "^4.0.4",
+    "mime": "^4.0.6",
     "terser-webpack-plugin": "^5.3.10",
     "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^5.1.4",
