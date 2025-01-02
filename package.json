@@ -198,7 +198,7 @@
     "@types/jest-expect-message": "^1.1.0",
     "@types/madge": "^5.0.3",
     "@types/node": "^22.9.1",
-    "@vitest/ui": "^2.1.5",
+    "@vitest/ui": "^2.1.8",
     "concurrently": "^9.1.0",
     "globby": "^14.0.2",
     "gzip-size": "^7.0.0",
@@ -221,7 +221,7 @@
     "tsx": "^4.19.2",
     "typescript": "~5.6.3",
     "vite": "^5.4.11",
-    "vitest": "^2.1.5",
+    "vitest": "^2.1.8",
     "webpack": "^5.96.1"
   },
   "resolutions": {
