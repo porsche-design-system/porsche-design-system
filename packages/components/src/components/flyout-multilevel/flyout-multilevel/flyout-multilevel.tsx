@@ -1,10 +1,21 @@
 import { breakpointS } from '@porsche-design-system/styles';
-import { Component, Element, Event, type EventEmitter, type JSX, Listen, Prop, State, Watch, h } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Event,
+  type EventEmitter,
+  Host,
+  type JSX,
+  Listen,
+  Prop,
+  State,
+  Watch,
+  h,
+} from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../../types';
 import {
   AllowedTypes,
   THEMES,
-  attachComponentCss,
   getHTMLElementOfKind,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
@@ -13,7 +24,6 @@ import {
   setScrollLock,
   validateProps,
 } from '../../../utils';
-import { getComponentCss } from './flyout-multilevel-styles';
 import {
   FLYOUT_MULTILEVEL_ARIA_ATTRIBUTES,
   type FlyoutMultilevelAriaAttribute,
@@ -43,6 +53,7 @@ const propTypes: PropTypes<typeof FlyoutMultilevel> = {
 @Component({
   tag: 'p-flyout-multilevel',
   shadow: true,
+  styleUrl: './flyout-multilevel.scss',
 })
 export class FlyoutMultilevel {
   @Element() public host!: HTMLElement;
@@ -136,61 +147,69 @@ export class FlyoutMultilevel {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     validateActiveIdentifier(this, this.flyoutMultilevelItemElements, this.activeIdentifier);
-    attachComponentCss(this.host, getComponentCss, this.open, this.primary, this.isSecondaryDrawerVisible, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <dialog
-        // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
-        /* @ts-ignore */
-        inert={this.open ? null : true} // prevents focusable elements during fade-out transition + prevents focusable elements within nested open accordion
-        ref={(ref) => (this.dialog = ref)}
-        {...parseAndGetAriaAttributes(this.aria)}
-        onCancel={this.onCancelDialog}
-        onClick={this.onClickDialog}
-      >
-        <div class="drawer" ref={(ref) => (this.drawer = ref)}>
-          <PrefixedTagNames.pButtonPure
-            class="back"
-            type="button"
-            size="small"
-            alignLabel="end"
-            stretch={true}
-            icon="arrow-left"
-            theme={this.theme}
-            hideLabel={true}
-            onClick={() => this.emitCloseSecondaryUpdate()}
+      <Host class={`${this.theme}`}>
+        <dialog
+          // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
+          /* @ts-ignore */
+          inert={this.open ? null : true} // prevents focusable elements during fade-out transition + prevents focusable elements within nested open accordion
+          ref={(ref) => (this.dialog = ref)}
+          {...parseAndGetAriaAttributes(this.aria)}
+          onCancel={this.onCancelDialog}
+          onClick={this.onClickDialog}
+          class={{ open: this.open }}
+        >
+          <div
+            class={{ drawer: true, 'secondary-scroller-visible': this.isSecondaryDrawerVisible }}
+            ref={(ref) => (this.drawer = ref)}
           >
-            Back
-          </PrefixedTagNames.pButtonPure>
-          <PrefixedTagNames.pButton
-            class="dismiss-mobile"
-            type="button"
-            variant="ghost"
-            hideLabel={true}
-            icon="close"
-            theme={this.theme}
-            onClick={this.dismissDialog}
-          >
-            Dismiss flyout
-          </PrefixedTagNames.pButton>
-          <PrefixedTagNames.pButtonPure
-            class="dismiss-desktop"
-            type="button"
-            size="medium"
-            icon="close"
-            hideLabel={true}
-            theme={this.theme}
-            onClick={this.dismissDialog}
-          >
-            Dismiss flyout
-          </PrefixedTagNames.pButtonPure>
-          <div class="scroller">
-            <slot />
+            <PrefixedTagNames.pButtonPure
+              class="back"
+              type="button"
+              size="small"
+              alignLabel="end"
+              stretch={true}
+              icon="arrow-left"
+              theme={this.theme}
+              hideLabel={true}
+              onClick={() => this.emitCloseSecondaryUpdate()}
+            >
+              Back
+            </PrefixedTagNames.pButtonPure>
+            <PrefixedTagNames.pButton
+              class="dismiss-mobile"
+              type="button"
+              variant="ghost"
+              hideLabel={true}
+              icon="close"
+              theme={this.theme}
+              onClick={this.dismissDialog}
+            >
+              Dismiss flyout
+            </PrefixedTagNames.pButton>
+            <PrefixedTagNames.pButtonPure
+              class="dismiss-desktop"
+              type="button"
+              size="medium"
+              icon="close"
+              hideLabel={true}
+              theme={this.theme}
+              onClick={this.dismissDialog}
+            >
+              Dismiss flyout
+            </PrefixedTagNames.pButtonPure>
+            <div class="scroller">
+              <slot
+                /* @ts-ignore */
+                class={{ 'secondary-scroller-visible': this.isSecondaryDrawerVisible, primary: this.primary }}
+              />
+            </div>
           </div>
-        </div>
-      </dialog>
+        </dialog>
+      </Host>
     );
   }
 

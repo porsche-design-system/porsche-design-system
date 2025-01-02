@@ -1,0 +1,310 @@
+@mixin host-hidden {
+  &[hidden] {
+    display: none !important;
+  }
+}
+
+@mixin prevent-fouc-of-nested-elements {
+  $s: #{if(&, '&', '')};
+  #{$s}:not(:defined), #{$s}[data-ssr] {
+    visibility: hidden;
+  }
+}
+
+@mixin frosted-glass {
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+}
+
+$css-variable-animation-duration: --p-animation-duration;
+$css-variable-transition-duration: --p-transition-duration;
+
+@mixin animation($name, $duration: short, $easing: base) {
+  animation: #{$name} var(#{$css-variable-animation-duration}, $duration) $easing;
+}
+
+@mixin dismiss-button-style {
+  --p-internal-button-scaling: 0;
+}
+
+/* Start Flyout Multilevel Styles */
+
+$dialog-duration-open: $pds-motion-duration-moderate;
+$backdrop-duration-open: $pds-motion-duration-long;
+$easing-open: $pds-motion-easing-in;
+
+$dialog-duration-close: $pds-motion-duration-short;
+$backdrop-duration-close: $pds-motion-duration-moderate;
+$easing-close: $pds-motion-easing-out;
+
+
+@keyframes slide-up-mobile {
+  from { transform: translate3d(0,$pds-spacing-fluid-medium,0) }
+  to { transform: translate3d(0,0,0) }
+}
+// unfortunately, it's not possible to use transform animation like in mobile view
+// because then a new stacking context within scroll container would be initialized
+// causing the slotted scroll container to become invisible
+@keyframes slide-up-desktop {
+  from { margin-block-start: $pds-spacing-fluid-medium }
+  to { margin-block-start: 0 }
+}
+
+:host {
+  display: block;
+  @include host-hidden;
+  --pds-background: #{$pds-theme-light-background-base};
+  --pds-background-shading: #{$pds-theme-light-background-shading};
+  --pds-background-surface: #{$pds-theme-light-background-surface};
+  --scroller-background: rgba(255,255,255,.01);
+  &.dark {
+    --pds-background: #{$pds-theme-dark-background-base};
+    --pds-background-shading: #{$pds-theme-dark-background-shading};
+    --pds-background-surface: #{$pds-theme-dark-background-surface};
+    --scroller-background: rgba(0,0,0,.01);
+  }
+  &.auto {
+    @media (prefers-color-scheme: dark) {
+      --pds-background: #{$pds-theme-dark-background-base};
+      --pds-background-shading: #{$pds-theme-dark-background-shading};
+      --pds-background-surface: #{$pds-theme-dark-background-surface};
+      --scroller-background: rgba(255,255,255,.01);
+    }
+  }
+  // TODO: Color Scheme styles missing
+}
+
+@include prevent-fouc-of-nested-elements;
+
+dialog {
+  all: unset;
+  position: fixed;
+  inset: 0;
+  z-index: 999999999; // fallback when dialog isn't rendered on #top-layer, e.g. relevant in ssr context or fade-out transition in Safari or Firefox
+  outline: 0; // prevents outline in case dialog becomes focusable
+
+  &:not([open]) {
+    visibility: hidden;
+    transition:
+            visibility 0s linear var($css-variable-transition-duration, $backdrop-duration-close),
+            overlay $backdrop-duration-close $easing-close allow-discrete,
+            background $backdrop-duration-close $easing-close,
+            backdrop-filter $backdrop-duration-close $easing-close,
+            -webkit-backdrop-filter $backdrop-duration-close $easing-close;
+    .drawer {
+      opacity: 0;
+      transform: translate3d(-100%, 0, 0);
+      transition: opacity $backdrop-duration-close $easing-close,
+                  transform $backdrop-duration-close $easing-close;
+      &:dir(rtl) {
+        transform: translate3d(100%, 0, 0);
+      }
+    }
+  }
+
+  &[open] {
+    visibility: inherit;
+    @include frosted-glass;
+    background: var(--pds-background-shading);
+    transition: background $backdrop-duration-open $easing-open,
+                backdrop-filter $backdrop-duration-open $easing-open,
+                -webkit-backdrop-filter $backdrop-duration-open $easing-open;
+    .drawer {
+      opacity: 1;
+      transform: translate3d(0,0,0);
+      transition: opacity $backdrop-duration-open $easing-open,
+                  transform $backdrop-duration-open $easing-open;
+    }
+  }
+
+  &::backdrop {
+    display: none;
+  }
+}
+
+slot {
+  @media (max-width:759px) {
+    display: contents;
+    //&.secondary-scroller-visible {
+    //  ::slotted(*:not([primary],[secondary],[cascade])) {
+    //      display: none;
+    //  }
+    //}
+    &:not(.secondary-scroller-visible) {
+      z-index: 0;
+      display: flex;
+      flex-direction: column;
+      gap: $pds-spacing-fluid-x-small;
+      grid-area: 4 / 2 / auto / -2;
+      height: fit-content; // ensures padding bottom is added instead of subtracted because of grid context
+      padding-block-end: $pds-spacing-fluid-large;
+      &.primary {
+        @include animation('slide-up-mobile', 'moderate', 'base');
+      }
+    }
+  }
+  @media (min-width:759px) {
+    display: flex;
+    flex-direction: column;
+    gap: $pds-spacing-fluid-medium;
+    &.primary {
+      gap: $pds-spacing-fluid-x-small;
+      @include animation('slide-up-desktop', 'moderate', 'base');
+    }
+    grid-area: 2 / 2 / auto / -2;
+    height: fit-content; // ensures padding bottom is added instead of subtracted because of grid context
+    padding-block-end: $pds-spacing-fluid-large;
+  }
+}
+
+
+.secondary-scroller-visible {
+  ::slotted(*:not([primary],[secondary],[cascade])) {
+    @media(max-width:759px) {
+      display: none;
+    }
+  }
+  slot:not(.primary)::slotted(*:not([primary],[cascade])) {
+    @media(min-width:759px) {
+      display: none;
+    }
+  }
+}
+
+$scrollerWidthDesktop: 'clamp(338px, 210px + 18vw, 640px)';
+
+.drawer {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  background: var(--pds-background);
+  @media(max-width:759px) {
+    grid-template: $pds-spacing-fluid-medium auto $pds-spacing-fluid-large minmax(0, 1fr) / $pds-spacing-fluid-large auto minmax(0, 1fr) auto $pds-spacing-fluid-large;
+    &.secondary-scroller-visible {
+      .back {
+        display: block;
+        grid-area: 2/2;
+        width: fit-content;
+        height: fit-content;
+        place-self: center flex-start;
+        z-index: 2;
+      }
+      //slot::slotted(*:not([primary],[secondary],[cascade])) {
+      //  display: none;
+      //}
+    }
+    &:not(.secondary-scroller-visible) {
+      .scroller {
+        grid-area: 1 / 1 / -1 / -1;
+        display: grid;
+        grid-template-rows: subgrid;
+        grid-template-columns: subgrid;
+        &::before {
+          content: "";
+          position: sticky;
+          top: 0;
+          grid-area: 1 / 1 / 4 / -1;
+          z-index: 1;
+          background: linear-gradient(180deg, var(--pds-background) 0%, var(--pds-background) 65%, transparent 100%);
+        }
+      }
+    }
+  }
+  @media(min-width:759px) {
+    width: #{$scrollerWidthDesktop};
+    grid-template: $pds-spacing-fluid-medium minmax(0, 1fr) / repeat(1, $pds-spacing-fluid-large minmax(0, 1fr) $pds-spacing-fluid-large);
+    &.secondary-scroller-visible {
+      width: calc(#{$scrollerWidthDesktop} * 2);
+      grid-template: $pds-spacing-fluid-medium minmax(0, 1fr) / repeat(2, $pds-spacing-fluid-large minmax(0, 1fr) $pds-spacing-fluid-large);
+      background: linear-gradient(90deg, var(--pds-background) 0%, var(--pds-background) 50%, var(--pds-background-surface) 50%, var(--pds-background-surface) 100%);
+
+      &:dir(rtl) {
+        background: linear-gradient(90deg, var(--pds-background-surface) 0%, var(--pds-background-surface) 50%, var(--pds-background) 50%, var(--pds-background) 100%);
+      }
+    }
+    //slot:not(.primary)::slotted(*:not([primary],[cascade])) {
+    //  display: none;
+    //}
+  }
+
+  &::before, &::after {
+    content: "";
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  &::before {
+    background: var(--pds-background);
+    @media(max-width:759px) {
+      grid-area: 1 / 1 / -1 / -1;
+    }
+    @media(min-width:759px) {
+      grid-area: 1 / 1 / -1 / 4;
+    }
+  }
+
+  &::after {
+    background: var(--pds-background);
+    @media(max-width:759px) {
+      grid-area: 1 / 1 / -1 / -1;
+    }
+    @media(min-width:759px) {
+      grid-area: 1 / 4 / -1 / -1;
+    }
+  }
+}
+
+.scroller {
+  display: contents;
+  overflow: hidden auto;
+  // scrollBehavior: 'smooth', // when defined, `.scrollTo()` isn't applied immediately
+  // overscrollBehaviorY: 'none', // when defined, rubber band scroll effect is getting lost on iOS Safari
+  // WebkitOverflowScrolling: 'touch', // when defined, secondary scroller might not be show in iOS Safari on iPhone only
+  background: var(--scroller-background);
+  @media(max-width:759px) {
+    grid-area: 1 / 1 / -1 / -1;
+  }
+  @media(min-width:759px) {
+    grid-area: 1 / 1 / -1 / 4;
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-template-columns: subgrid;
+  }
+}
+
+.dismiss-mobile {
+  @media(max-width:759px) {
+    @include dismiss-button-style;
+    width: fit-content;
+    height: fit-content;
+    place-self: center flex-end;
+    grid-area: 2 / 4;
+    z-index: 3; // ensures dismiss button is on top of opacity animation handled by ::before/::after
+    margin-inline-end: -1px; // improve visual alignment and compensate white space of close icon
+  }
+  @media(min-width:759px) {
+    display: none;
+  }
+}
+
+.dismiss-desktop {
+  @media(max-width:759px) {
+    display: none;
+  }
+  @media(min-width:759px) {
+    --p-internal-icon-filter: invert(1);
+    position: absolute;
+    inset-inline-start: calc(100% + $pds-spacing-fluid-small);
+    inset-block-start: $pds-spacing-fluid-small;
+    padding: $pds-spacing-static-small;
+  }
+}
+
+.back {
+  display: none;
+}
+
+
+
