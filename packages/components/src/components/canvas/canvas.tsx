@@ -1,15 +1,15 @@
+import { breakpointM, breakpointS } from '@porsche-design-system/styles';
+import { Component, Element, Event, type EventEmitter, Host, type JSX, Prop, State, Watch, h } from '@stencil/core';
 import type { PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
+  THEMES,
   attachComponentCss,
   getPrefixedTagNames,
   hasNamedSlot,
-  THEMES,
   validateProps,
 } from '../../utils';
-import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop, State, Watch } from '@stencil/core';
 import { getComponentCss } from './canvas-styles';
-import { breakpointS, breakpointM } from '@porsche-design-system/styles';
 import type { CanvasSidebarStartUpdateEventDetail } from './canvas-utils';
 
 const propTypes: PropTypes<typeof Canvas> = {
@@ -150,10 +150,7 @@ export class Canvas {
           {this.isMediaQueryS && (
             <aside
               class="sidebar sidebar--start"
-              // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
-              // eslint-disable-next-line
-              /* @ts-ignore */
-              inert={this.sidebarStartOpen ? null : true}
+              inert={!this.sidebarStartOpen}
               aria-label={`Navigation sidebar ${this.sidebarStartOpen ? 'open' : 'closed'}`}
               tabIndex={-1}
               ref={(el: HTMLElement) => (this.sidebarStart = el)}
@@ -189,10 +186,7 @@ export class Canvas {
           {this.hasSidebarEnd && this.isMediaQueryM && (
             <aside
               class="sidebar sidebar--end"
-              // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
-              // eslint-disable-next-line
-              /* @ts-ignore */
-              inert={this.sidebarEndOpen ? null : true}
+              inert={!this.sidebarEndOpen}
               aria-label={`Settings sidebar ${this.sidebarEndOpen ? 'open' : 'closed'}`}
               tabIndex={-1}
               ref={(el: HTMLElement) => (this.sidebarEnd = el)}

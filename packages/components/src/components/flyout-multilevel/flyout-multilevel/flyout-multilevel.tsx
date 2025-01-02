@@ -142,9 +142,7 @@ export class FlyoutMultilevel {
 
     return (
       <dialog
-        // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
-        /* @ts-ignore */
-        inert={this.open ? null : true} // prevents focusable elements during fade-out transition + prevents focusable elements within nested open accordion
+        inert={!this.open} // prevents focusable elements during fade-out transition + prevents focusable elements within nested open accordion
         ref={(ref) => (this.dialog = ref)}
         {...parseAndGetAriaAttributes(this.aria)}
         onCancel={this.onCancelDialog}
