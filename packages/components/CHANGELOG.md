@@ -14,6 +14,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Changed
+
+- React: updated peer dependency to `>=19.0.0 <20.0.0`
+
 ### [3.23.0] - 2024-12-12
 
 ### [3.23.0-rc.0] - 2024-12-12
