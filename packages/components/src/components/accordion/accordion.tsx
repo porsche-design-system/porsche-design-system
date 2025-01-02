@@ -1,25 +1,25 @@
-import { Component, Element, Event, type EventEmitter, h, Host, Prop } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, Host, type JSX, Prop, h } from '@stencil/core';
+import { getSlottedAnchorStyles } from '../../styles';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
+  HEADING_TAGS,
+  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
-  HEADING_TAGS,
-  THEMES,
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import { getComponentCss } from './accordion-styles';
 import {
+  ACCORDION_SIZES,
   type AccordionHeadingTag,
   type AccordionSize,
   type AccordionTag,
   type AccordionUpdateEventDetail,
-  ACCORDION_SIZES,
 } from './accordion-utils';
-import { getComponentCss } from './accordion-styles';
-import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Accordion> = {
   size: AllowedTypes.breakpoint<AccordionSize>(ACCORDION_SIZES),

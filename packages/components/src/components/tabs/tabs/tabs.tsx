@@ -1,6 +1,9 @@
-import { Component, Element, Event, type EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, Host, type JSX, Prop, State, Watch, h } from '@stencil/core';
+import { getSlottedAnchorStyles } from '../../../styles';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import {
   AllowedTypes,
+  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
@@ -9,15 +12,13 @@ import {
   removeAttribute,
   setAttribute,
   setAttributes,
-  THEMES,
   throwIfChildrenAreNotOfKind,
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../../utils';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
-import { type TabsBarUpdateEventDetail, TABS_BAR_SIZES, TABS_BAR_WEIGHTS } from '../../tabs-bar/tabs-bar-utils';
+import { GRADIENT_COLORS, GRADIENT_COLOR_SCHEMES } from '../../scroller/scroller-utils';
+import { TABS_BAR_SIZES, TABS_BAR_WEIGHTS, type TabsBarUpdateEventDetail } from '../../tabs-bar/tabs-bar-utils';
 import { getComponentCss } from './tabs-styles';
-import { GRADIENT_COLOR_SCHEMES, GRADIENT_COLORS } from '../../scroller/scroller-utils';
 import {
   type TabsGradientColor,
   type TabsGradientColorScheme,
@@ -26,7 +27,6 @@ import {
   type TabsWeight,
   syncTabsItemsProps,
 } from './tabs-utils';
-import { getSlottedAnchorStyles } from '../../../styles';
 
 const propTypes: PropTypes<typeof Tabs> = {
   size: AllowedTypes.breakpoint<TabsSize>(TABS_BAR_SIZES),
