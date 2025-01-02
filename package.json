@@ -197,7 +197,7 @@
     "@types/jest": "^29.5.14",
     "@types/jest-expect-message": "^1.1.0",
     "@types/madge": "^5.0.3",
-    "@types/node": "^22.9.1",
+    "@types/node": "^22.10.3",
     "@vitest/ui": "^2.1.8",
     "concurrently": "^9.1.2",
     "globby": "^14.0.2",
