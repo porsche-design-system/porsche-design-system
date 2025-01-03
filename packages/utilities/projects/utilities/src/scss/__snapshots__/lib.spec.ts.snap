@@ -199,7 +199,10 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
   grid-template-columns: [full-start] minmax(
       0,
       var(--pds-internal-grid-outer-column, calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px)))
-    ) [wide-start extended-start basic-start narrow-start] repeat(6, minmax(0, 1fr)) [narrow-end basic-end extended-end wide-end] minmax(
+    ) [wide-start extended-start basic-start narrow-start] repeat(
+      6,
+      minmax(0, 1fr)
+    ) [narrow-end basic-end extended-end wide-end] minmax(
       0,
       var(--pds-internal-grid-outer-column, calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px)))
     ) [full-end];
@@ -217,10 +220,13 @@ exports[`should contain correct content for auto generated file ./src/scss/lib/_
           --pds-internal-grid-outer-column,
           calc(var(--pds-internal-grid-safe-zone) - clamp(16px, 1.25vw + 12px, 36px))
         )
-      ) [wide-start] minmax(0, 1fr) [extended-start] minmax(0, 1fr) [basic-start] repeat(2, minmax(0, 1fr)) [narrow-start] repeat(
-        8,
+      ) [wide-start] minmax(0, 1fr) [extended-start] minmax(0, 1fr) [basic-start] repeat(
+        2,
         minmax(0, 1fr)
-      ) [narrow-end] repeat(2, minmax(0, 1fr)) [basic-end] minmax(0, 1fr) [extended-end] minmax(0, 1fr) [wide-end] minmax(
+      ) [narrow-start] repeat(8, minmax(0, 1fr)) [narrow-end] repeat(2, minmax(0, 1fr)) [basic-end] minmax(
+        0,
+        1fr
+      ) [extended-end] minmax(0, 1fr) [wide-end] minmax(
         0,
         var(
           --pds-internal-grid-outer-column,
@@ -258,14 +264,16 @@ $pds-grid-basic-offset-s: calc(
     (
       clamp(16px, 1.25vw + 12px, 36px) +
         calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15)/16)
-    ) * 2
+    ) *
+    2
 );
 $pds-grid-basic-offset-xxl: calc(
   max(0px, 50vw - 2560px/2) + min(50vw - 880px, 400px) +
     (
       clamp(16px, 1.25vw + 12px, 36px) +
         calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15)/16)
-    ) * 2
+    ) *
+    2
 );
 "
 `;
@@ -284,14 +292,16 @@ $pds-grid-extended-offset-s: calc(
     (
       clamp(16px, 1.25vw + 12px, 36px) +
         calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15)/16)
-    ) * 1
+    ) *
+    1
 );
 $pds-grid-extended-offset-xxl: calc(
   max(0px, 50vw - 2560px/2) + min(50vw - 880px, 400px) +
     (
       clamp(16px, 1.25vw + 12px, 36px) +
         calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15)/16)
-    ) * 1
+    ) *
+    1
 );
 "
 `;
@@ -326,14 +336,16 @@ $pds-grid-narrow-offset-s: calc(
     (
       clamp(16px, 1.25vw + 12px, 36px) +
         calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15)/16)
-    ) * 4
+    ) *
+    4
 );
 $pds-grid-narrow-offset-xxl: calc(
   max(0px, 50vw - 2560px/2) + min(50vw - 880px, 400px) +
     (
       clamp(16px, 1.25vw + 12px, 36px) +
         calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15)/16)
-    ) * 4
+    ) *
+    4
 );
 "
 `;

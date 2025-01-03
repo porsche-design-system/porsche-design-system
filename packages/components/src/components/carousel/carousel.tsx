@@ -1,6 +1,6 @@
 import { gridGap, motionEasingBase } from '@porsche-design-system/styles';
 import { Splide } from '@splidejs/splide';
-import { Component, Element, Event, type EventEmitter, Host, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, Host, type JSX, Prop, State, Watch, h } from '@stencil/core';
 import { getSlottedAnchorStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme, ValidatorFunction } from '../../types';
 import {

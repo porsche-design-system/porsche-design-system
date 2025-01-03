@@ -1,13 +1,13 @@
-import { type JSX } from 'react';
-import { render } from '@testing-library/react';
-import * as fromComponents from '../../../src/lib/components';
-import { PorscheDesignSystemProvider } from '../../../src/provider';
-import * as minifyCssUtils from '../../../src/minifyCss';
-import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { type SlotMeta, getComponentMeta } from '@porsche-design-system/component-meta';
+import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
+import { render } from '@testing-library/react';
 import { kebabCase, pascalCase } from 'change-case';
 import Link from 'next/link';
+import { type JSX } from 'react';
 import { vi } from 'vitest';
+import * as fromComponents from '../../../src/lib/components';
+import * as minifyCssUtils from '../../../src/minifyCss';
+import { PorscheDesignSystemProvider } from '../../../src/provider';
 
 it.each(Object.keys(fromComponents))('should render dsr component for %s', (componentName) => {
   const Component = fromComponents[componentName];
@@ -85,13 +85,10 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
     </PorscheDesignSystemProvider>
   );
 
-  // eslint-disable-next-line testing-library/no-node-access
   expect(container.firstElementChild).toMatchSnapshot();
   if (tagName === 'p-canvas') {
-    // eslint-disable-next-line jest/no-conditional-expect
     expect(consoleSpy).toHaveBeenCalledTimes(1); // jsdom isn't able to parse @container queries
   } else {
-    // eslint-disable-next-line jest/no-conditional-expect
     expect(consoleSpy).not.toHaveBeenCalled(); // detect react jsx errors/warnings
   }
 });
