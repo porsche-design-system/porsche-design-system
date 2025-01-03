@@ -9,7 +9,7 @@ import typescript from '@rollup/plugin-typescript';
 import { pascalCase } from 'change-case';
 import { globbySync } from 'globby';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
-import pkgJson from './package.json' assert { type: 'json' };
+import pkgJson from './package.json' with { type: 'json' };
 
 const outputDir = 'dist/styles';
 const input = 'src/styles-entry.ts';
