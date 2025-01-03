@@ -88,7 +88,7 @@
     "@porsche-design-system/shared": "0.0.0",
     "ag-grid-community": "32.3.3",
     "ag-grid-enterprise": "32.3.3",
-    "devtools-protocol": "^0.0.1304228",
+    "devtools-protocol": "^0.0.1400418",
     "jsdom": "^24.1.0",
     "local-web-server": "^5.4.0",
     "mime": "^4.0.6",
