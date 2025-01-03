@@ -1,4 +1,6 @@
 {
+  // TODO: enable once on TypeScript 5
+  // "extends": "@porsche-design-system/shared/tsconfig.json",
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
@@ -20,7 +22,6 @@
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true,
     "strictTemplates": true,
-    "strictDomEventTypes": false,
-    "disableTypeScriptVersionCheck": true
+    "strictDomEventTypes": false
   }
 }
