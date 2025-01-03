@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/playwright:v1.45.2-focal
+FROM mcr.microsoft.com/playwright:v1.49.1-focal
 
 ENV PATH="/opt/porsche-design-system/bin:${PATH}"
 
