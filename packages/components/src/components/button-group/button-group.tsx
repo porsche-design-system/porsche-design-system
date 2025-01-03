@@ -1,8 +1,8 @@
-import { Component, Element, h, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, hasPropValueChanged, validateProps } from '../../utils';
-import type { BreakpointCustomizable, PropTypes } from '../../types';
-import { getComponentCss } from './button-group-styles';
+import { Component, Element, type JSX, Prop, h } from '@stencil/core';
 import { GROUP_DIRECTIONS } from '../../styles/group-direction-styles';
+import type { BreakpointCustomizable, PropTypes } from '../../types';
+import { AllowedTypes, attachComponentCss, hasPropValueChanged, validateProps } from '../../utils';
+import { getComponentCss } from './button-group-styles';
 import type { ButtonGroupDirection } from './button-group-utils';
 
 const propTypes: PropTypes<typeof ButtonGroup> = {

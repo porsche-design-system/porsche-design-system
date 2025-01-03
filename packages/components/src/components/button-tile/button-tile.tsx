@@ -1,3 +1,5 @@
+import { Component, Element, type JSX, Listen, Prop, h } from '@stencil/core';
+import { getSlottedPictureImageStyles } from '../../styles';
 import type {
   BreakpointCustomizable,
   ButtonAriaAttribute,
@@ -6,19 +8,21 @@ import type {
   SelectedAriaAttributes,
 } from '../../types';
 import {
-  type ITileProps,
   AllowedTypes,
-  applyConstructableStylesheetStyles,
-  attachComponentCss,
   BUTTON_ARIA_ATTRIBUTES,
   BUTTON_TYPES,
+  type ITileProps,
+  TILE_WEIGHTS,
+  applyConstructableStylesheetStyles,
+  attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
   isDisabledOrLoading,
-  TILE_WEIGHTS,
-  validateProps,
   preventAutoPlayOfSlottedVideoOnPrefersReducedMotion,
+  validateProps,
 } from '../../utils';
+import { sharedTilePropTypes } from '../link-tile/link-tile-utils';
+import { getComponentCss } from './button-tile-styles';
 import type {
   ButtonTileAlign,
   ButtonTileAriaAttribute,
@@ -29,10 +33,6 @@ import type {
   ButtonTileType,
   ButtonTileWeight,
 } from './button-tile-utils';
-import { Component, Element, h, Listen, Prop } from '@stencil/core';
-import { getComponentCss } from './button-tile-styles';
-import { sharedTilePropTypes } from '../link-tile/link-tile-utils';
-import { getSlottedPictureImageStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof ButtonTile> = {
   ...sharedTilePropTypes,

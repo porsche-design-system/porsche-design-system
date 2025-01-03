@@ -1,27 +1,27 @@
-import { Component, Element, h, Prop } from '@stencil/core';
+import { ICONS_MANIFEST } from '@porsche-design-system/assets';
+import { Component, Element, type JSX, Prop, h } from '@stencil/core';
+import type { IconName, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import {
-  buildIconUrl,
+  AllowedTypes,
+  TEXT_SIZES,
+  THEMES,
+  attachComponentCss,
+  hasPropValueChanged,
+  parseAndGetAriaAttributes,
+  validateProps,
+  warnIfDeprecatedPropIsUsed,
+  warnIfDeprecatedPropValueIsUsed,
+} from '../../utils';
+import { getComponentCss } from './icon-styles';
+import {
   ICON_ARIA_ATTRIBUTES,
   ICON_COLORS,
   type IconAriaAttribute,
   type IconColor,
   type IconColorDeprecated,
   type IconSize,
+  buildIconUrl,
 } from './icon-utils';
-import {
-  AllowedTypes,
-  attachComponentCss,
-  hasPropValueChanged,
-  parseAndGetAriaAttributes,
-  TEXT_SIZES,
-  THEMES,
-  validateProps,
-  warnIfDeprecatedPropIsUsed,
-  warnIfDeprecatedPropValueIsUsed,
-} from '../../utils';
-import type { IconName, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
-import { getComponentCss } from './icon-styles';
-import { ICONS_MANIFEST } from '@porsche-design-system/assets';
 
 type DeprecationMapType = Record<IconColorDeprecated, Exclude<IconColor, IconColorDeprecated>>;
 

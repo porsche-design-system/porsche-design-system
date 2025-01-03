@@ -2,7 +2,7 @@
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 const path = require('path');
 const fs = require('fs');
-const globby = require('globby');
+const globby = require('globby-legacy');
 const injectPartials = require('./scripts/injectPartials');
 
 if (process.env.CI) {

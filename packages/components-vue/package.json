@@ -31,15 +31,15 @@
     "@porsche-design-system/components-vue": "3.23.0",
     "vue": "^3.5.13",
     "vue-imask": "^7.6.1",
-    "vue-router": "^4.4.5"
+    "vue-router": "^4.5.0"
   },
   "devDependencies": {
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
     "@testing-library/vue": "^8.1.0",
     "@tsconfig/node18": "^18.2.4",
-    "@vitejs/plugin-vue": "^5.2.0",
-    "@vitejs/plugin-vue-jsx": "^4.1.0",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vitejs/plugin-vue-jsx": "^4.1.1",
     "@vue/tsconfig": "0.6.0",
     "@vue/vue3-jest": "29.2.6",
     "ag-grid-community": "32.3.3",
@@ -47,7 +47,7 @@
     "ag-grid-vue3": "32.3.3",
     "local-web-server": "^5.4.0",
     "vite-plugin-html": "^3.2.2",
-    "vite-plugin-static-copy": "^1.0.6",
+    "vite-plugin-static-copy": "^2.2.0",
     "vue-tsc": "2.0.22"
   },
   "peerDependencies": {

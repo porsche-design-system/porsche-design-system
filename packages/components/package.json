@@ -44,10 +44,10 @@
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/styles": "0.0.0",
     "@splidejs/splide": "^4.1.4",
-    "@stencil/core": "~4.22.2"
+    "@stencil/core": "~4.23.0"
   },
   "devDependencies": {
-    "@types/react": "18.3.12",
+    "@types/react": "^19.0.2",
     "@types/tinycolor2": "^1.4.6",
     "change-case": "^5.4.4",
     "change-case-legacy": "npm:change-case@^4.1.2",
