@@ -1,14 +1,14 @@
-import typescript from '@rollup/plugin-typescript';
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
-import generatePackageJson from 'rollup-plugin-generate-package-json';
+import typescript from '@rollup/plugin-typescript';
 import { globbySync } from 'globby';
-import * as path from 'node:path';
-import * as fs from 'node:fs';
-import pkgJson from './package.json' assert { type: 'json' };
-import { fileURLToPath } from 'node:url';
-import { dirname } from 'node:path';
+import generatePackageJson from 'rollup-plugin-generate-package-json';
+import pkgJson from './package.json' with { type: 'json' };
 
 const outputDir = 'dist/utils';
 const input = 'src/utils-entry.ts';
