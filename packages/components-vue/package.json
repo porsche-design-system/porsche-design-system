@@ -15,7 +15,7 @@
     "build:subPackages:typings:jsdom-polyfill": "tsc projects/vue-wrapper/src/jsdom-polyfill/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/jsdom-polyfill --types node",
     "build:subPackages:typings:partials": "tsc projects/vue-wrapper/src/partials/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/partials --types node --skipLibCheck true",
     "build:subPackages:typings:testing": "tsc projects/vue-wrapper/src/testing/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/testing --types node",
-    "build:subPackages:typings:styles": "tsc projects/vue-wrapper/src/styles/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/styles/esm --types node",
+    "build:subPackages:typings:styles": "tsc projects/vue-wrapper/src/styles/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/styles/esm --types node && tsc projects/vue-wrapper/src/styles/vanilla-extract/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/styles/vanilla-extract/esm/vanilla-extract --types node",
     "build:subPackages:ag-grid": "TARGET=./dist/vue-wrapper/ag-grid && rm -rf $TARGET && cp -r ../utilities/projects/ag-grid/dist $TARGET",
     "build-app": "vue-tsc --noEmit --project tsconfig.app.json && vite build -c vite.config.app.mts",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt && yarn test:smoke",

@@ -3,9 +3,12 @@ import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 
 const input = 'src/js/index.ts';
+const inputVanillaExtract = 'src/vanilla-extract/index.ts';
 const outputDir = 'dist';
+const outputDirVanillaExtract = `${outputDir}/vanilla-extract`;
 
 export default [
+  // Default JS Build - CJS
   {
     input,
     output: {
@@ -16,6 +19,7 @@ export default [
     },
     plugins: [typescript()],
   },
+  // Default JS Build - ESM
   {
     input,
     output: {
@@ -35,13 +39,63 @@ export default [
         targets: [{ src: ['src/scss/**/*.scss', 'src/_index.scss'], dest: outputDir }],
         flatten: false,
       }),
-      // seems to be needed at least for webpack 4 in storefront
       generatePackageJson({
         outputFolder: outputDir,
         baseContents: {
           main: 'cjs/index.cjs',
           module: 'esm/index.mjs',
           types: 'esm/index.d.ts',
+          sideEffects: false,
+          exports: {
+            // Default export (JS)
+            '.': {
+              types: './esm/index.d.ts',
+              import: './esm/index.mjs',
+              default: './cjs/index.cjs',
+            },
+            // Vanilla-Extract export
+            './vanilla-extract': {
+              types: './vanilla-extract/esm/vanilla-extract/index.d.ts',
+              import: './vanilla-extract/esm/vanilla-extract/index.mjs',
+              default: './vanilla-extract/cjs/vanilla-extract/index.cjs',
+            },
+          },
+        },
+      }),
+    ],
+  },
+  // Vanilla-Extract Build - CJS
+  {
+    input: inputVanillaExtract,
+    output: {
+      dir: `${outputDirVanillaExtract}/cjs`,
+      format: 'cjs',
+      entryFileNames: '[name].cjs',
+      preserveModules: true,
+    },
+    plugins: [typescript()],
+  },
+  // Vanilla-Extract Build - ESM
+  {
+    input: inputVanillaExtract,
+    output: {
+      dir: `${outputDirVanillaExtract}/esm`,
+      format: 'esm',
+      entryFileNames: '[name].mjs',
+      preserveModules: true,
+    },
+    plugins: [
+      typescript({
+        declaration: true,
+        declarationDir: `${outputDirVanillaExtract}/esm`,
+        exclude: '**.spec.ts',
+      }),
+      generatePackageJson({
+        outputFolder: outputDirVanillaExtract,
+        baseContents: {
+          main: 'cjs/vanilla-extract/index.cjs',
+          module: 'esm/vanilla-extract/index.mjs',
+          types: 'esm/vanilla-extract/index.d.ts',
           sideEffects: false,
         },
       }),
