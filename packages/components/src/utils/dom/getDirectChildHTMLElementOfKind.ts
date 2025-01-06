@@ -1,6 +1,6 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { type PrefixedTagNames, getPrefixedTagNames, getTagName } from '../tag-name';
 import { paramCaseToCamelCase } from '../paramCaseToCamelCase';
+import { type PrefixedTagNames, getPrefixedTagNames, getTagName } from '../tag-name';
 
 export const getDirectChildHTMLElementOfKind = (element: HTMLElement, tagName: TagName): HTMLElement[] => {
   const children = Array.from(element.children) as HTMLElement[];

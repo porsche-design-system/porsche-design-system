@@ -1,6 +1,6 @@
-import { minifyHTML } from './utils';
 import { META_ICONS_MANIFEST } from '@porsche-design-system/meta-icons';
 import { CDN_BASE_PATH_META_ICONS, CDN_BASE_URL_CN, CDN_BASE_URL_COM } from '../../../../../cdn.config';
+import { minifyHTML } from './utils';
 
 const convertToJSX = (templates: string[]): JSX.Element[] => {
   return templates.map(
@@ -125,17 +125,19 @@ export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): 
   const manifestUrl = cdn === 'auto' ? manifestUrlCom : manifestUrlCn;
 
   let metaIconTags = ${minifiedMetaIconsHTML};
-  let metaIconTagsJSX = [${metaIconTemplatesJSX}];
 
   if (ogImage) {
     metaIconTags = ${minifiedOgImageMeta}.concat(metaIconTags);
-    metaIconTagsJSX = [${ogImageMetaJSX}].concat(metaIconTagsJSX);
   }
   const meta = metaIconTags.map(metaIconTemplate => metaIconTemplate.replace('$appTitle', \`"\${appTitle}"\`).replace('$cdnBaseUrl', cdnBaseUrl).replace('$manifestUrl', manifestUrl));
 
   if (format === 'html') {
     return meta.join('');
   } else if (format === 'jsx') {
+    let metaIconTagsJSX = [${metaIconTemplatesJSX}];
+    if (ogImage) {
+      metaIconTagsJSX = [${ogImageMetaJSX}].concat(metaIconTagsJSX);
+    }
     return <>{...metaIconTagsJSX}</>;
   } else {
     return ${metadata};

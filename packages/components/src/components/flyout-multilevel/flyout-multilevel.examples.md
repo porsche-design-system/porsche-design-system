@@ -1,60 +1,60 @@
 <ComponentHeading name="Flyout Multilevel"></ComponentHeading>
 
-The `p-flyout-multilevel` component is meant for displaying a multilevel structure in a flyout that overlays the page
-content from the start side of the screen. It is a controlled component that gives you flexible control over its
-behavior.
-
-<Notification heading="Experimental Component" heading-tag="h2" state="warning">
-  Interface of Flyout Multilevel might change in the near future. In addition, animation/transition concept will change in the future. Currently, only two multilevel levels are supported, but we will offer the support of more levels soon.
-</Notification>
-
-<Notification heading="Scroll-lock" heading-tag="h2" state="warning">
-  This component sets <code>overflow: hidden</code> on the body when opened in order to prevent background scrolling.<br> 
-  This doesn't work completely reliable under iOS but is the most stable solution.<br>
-  Feel free to address this issue in an Open Source PR, if you can provide a better solution. <b><a href="https://github.com/porsche-design-system/porsche-design-system/blob/main/packages/components/src/utils/setScrollLock.ts">Current implementation</a></b><br>
-</Notification>
+The `p-flyout-multilevel` component is meant for displaying an infinite multilevel structure in a flyout that overlays
+the page content from the start side of the screen. It is a controlled component that gives you flexible control over
+its behavior.
 
 <TableOfContents></TableOfContents>
 
 ## Basic
 
-The basic concept of the component is to have a button that opens the `p-flyout-multilevel` and a basic 2-level
-multilevel structure. The **1st level** is generated out of custom `p-flyout-multilevel-item` components which generates
-a list of toggle buttons to navigate the 2nd level. These items can be filled with slotted anchor links as children
-which then represent the **2nd level** of the multilevel and are styled automatically by the component.
+The basic concept of the component is to have a button that opens the `p-flyout-multilevel` with an infinite multilevel
+structure. The levels are generated out of `p-flyout-multilevel-item` which generates a list of toggle buttons to
+navigate to a deeper level. These items can be filled with slotted `<a/>` as children which are styled automatically by
+the component, another `p-flyout-multilevel-item` or other components like e.g. `p-link-tile`.
 
-The most important property of p-flyout is its `open` property. When it is set to `true` the flyout will be visible.
+The visibility of `p-flyout-multilevel` can be controlled by its `open` property.
 
-In order to get notified when the `p-flyout-multilevel` gets closed by clicking the x button, you need to register an
-event listener for the dismiss event which is emitted by `p-flyout-multilevel`.
+It's **obligatory** that each `p-flyout-multilevel-item` has a unique `identifier` defined.
+
+Since it's a controlled component it's necessary to register an event listener for the `dismiss` and `update` event in
+order to get notified when `p-flyout-multilevel` needs to be closed or navigated to another hierarchy level.
 
 <Playground :frameworkMarkup="codeExample" :markup="codeExample['vanilla-js']" :config="config"></Playground>
 
 ## Active identifier
 
 The `p-flyout-multilevel` can be initialized with an `active-identifier` property. This identifier is used to open the
-flyout with the corresponding **2nd level** multilevel item expanded. The `active-identifier` must match a value of the
-`identifier` property of the `p-flyout-multilevel-item` component.
+flyout with the corresponding deeply nested `p-flyout-multilevel-item` expanded. The `active-identifier` **must** match
+a value of the `identifier` property of the `p-flyout-multilevel-item` component.
 
 <Playground :frameworkMarkup="codeExampleActiveIdentifier" :markup="codeExampleActiveIdentifier['vanilla-js']" :config="config"></Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
-Always take care that you expose the current state of the multilevel to the user. This can be done by using the
-`aria-current="page"` attribute on the corresponding anchor element. And this also causes automatic styling of this
-anchor.
+When the `p-flyout-multilevel` is used as navigation element then it's necessary to wrap the element and the button
+which opens it within the landmark `<nav />`. In addition, take care that you expose the current navigation state to the
+user. This can be done by using `<a aria-current="page">…</a>`.
 
 ## Example with custom content
 
 To give further flexibility, e.g. if you only want to provide a direct link to a page on the **1st level**, you can just
-use the `p-link-pure` component. Be aware that you have to adapt the styling of those custom **1st level** items to
-match the design of the other 1st level items.
+use the `p-link-pure` component.
 
-To gain more structure on the **2nd level** we also support out-of-the-box styling of `<h1> to <h6>`, `<p>` and `<a>`
-tags. Regarding further individualization of the **2nd level**, you can create your own custom contents and use it as a
-child besides the already supported tags.
+Regarding further individualization, you can use components like e.g. `p-link-tile` and others or create your own custom
+contents and use it as a child.
 
 <Playground :frameworkMarkup="codeExampleCustomContent" :markup="codeExampleCustomContent['vanilla-js']" :config="config"></Playground>
+
+## Browser Support
+
+<BrowserSupport
+  chrome="120"
+  edge="120"
+  safari="17.4"
+  firefox="129"
+  chromeForAndroid="120"
+  safariForiOS="17.4" />
 
 <script lang="ts">
 import Vue from 'vue';
@@ -81,7 +81,7 @@ export default class Code extends Vue {
   registerEvents() {
     this.flyoutMultilevels = document.querySelectorAll('.playground .demo p-flyout-multilevel');
     
-    const buttonsOpen = document.querySelectorAll('.playground .demo > p-button');
+    const buttonsOpen = document.querySelectorAll('.playground .demo > nav > p-button');
     buttonsOpen.forEach((btn, index) => btn.addEventListener('click', () => this.openFlyout(index)));
     
     this.flyoutMultilevels.forEach((flyout, index) => {

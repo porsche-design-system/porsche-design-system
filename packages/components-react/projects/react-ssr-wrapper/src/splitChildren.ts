@@ -15,13 +15,13 @@ import { Fragment } from 'react';
 export const splitChildren = (
   children: ReactNode | undefined
 ): {
-  children: Exclude<ReactNode, null | undefined>[];
-  namedSlotChildren: ReactElement[];
-  otherChildren: Exclude<ReactNode, null | undefined>[];
+  children: any[]; // TODO: Improve typing
+  namedSlotChildren: ReactElement<HTMLSlotElement>[];
+  otherChildren: any[]; // TODO: Improve typing
 } => {
   children =
     typeof children === 'object' && 'type' in children && children.type === Fragment
-      ? children.props.children // Unpack children of React.Fragment
+      ? (children.props as any).children // Unpack children of React.Fragment
       : children;
 
   const childrenArray = (Array.isArray(children) ? children : children ? [children] : []).filter(

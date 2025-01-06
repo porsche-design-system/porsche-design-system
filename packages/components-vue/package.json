@@ -15,7 +15,7 @@
     "build:subPackages:typings:jsdom-polyfill": "tsc projects/vue-wrapper/src/jsdom-polyfill/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/jsdom-polyfill --types node",
     "build:subPackages:typings:partials": "tsc projects/vue-wrapper/src/partials/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/partials --types node --skipLibCheck true",
     "build:subPackages:typings:testing": "tsc projects/vue-wrapper/src/testing/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/testing --types node",
-    "build:subPackages:typings:styles": "tsc projects/vue-wrapper/src/styles/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/styles/esm --types node",
+    "build:subPackages:typings:styles": "tsc projects/vue-wrapper/src/styles/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/styles/esm --types node && tsc projects/vue-wrapper/src/styles/vanilla-extract/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/styles/vanilla-extract/esm/vanilla-extract --types node",
     "build:subPackages:ag-grid": "TARGET=./dist/vue-wrapper/ag-grid && rm -rf $TARGET && cp -r ../utilities/projects/ag-grid/dist $TARGET",
     "build-app": "vue-tsc --noEmit --project tsconfig.app.json && vite build -c vite.config.app.mts",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt && yarn test:smoke",
@@ -28,18 +28,18 @@
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/components-vue": "3.22.0-rc.0",
+    "@porsche-design-system/components-vue": "3.23.0",
     "vue": "^3.5.13",
     "vue-imask": "^7.6.1",
-    "vue-router": "^4.4.5"
+    "vue-router": "^4.5.0"
   },
   "devDependencies": {
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
     "@testing-library/vue": "^8.1.0",
     "@tsconfig/node18": "^18.2.4",
-    "@vitejs/plugin-vue": "^5.2.0",
-    "@vitejs/plugin-vue-jsx": "^4.1.0",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vitejs/plugin-vue-jsx": "^4.1.1",
     "@vue/tsconfig": "0.6.0",
     "@vue/vue3-jest": "29.2.6",
     "ag-grid-community": "32.3.3",
@@ -47,7 +47,7 @@
     "ag-grid-vue3": "32.3.3",
     "local-web-server": "^5.4.0",
     "vite-plugin-html": "^3.2.2",
-    "vite-plugin-static-copy": "^1.0.6",
+    "vite-plugin-static-copy": "^2.2.0",
     "vue-tsc": "2.0.22"
   },
   "peerDependencies": {

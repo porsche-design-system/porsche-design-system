@@ -255,8 +255,11 @@ exports[`should call validateProps() with correct parameters via render for p-fl
 
 exports[`should call validateProps() with correct parameters via render for p-flyout-multilevel-item: propTypes with ValidatorFunctions 1`] = `
 {
+  "cascade": "boolean",
   "identifier": "string",
   "label": "string",
+  "primary": "boolean",
+  "secondary": "boolean",
 }
 `;
 

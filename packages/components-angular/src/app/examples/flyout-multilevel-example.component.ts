@@ -4,55 +4,55 @@ import { type FlyoutMultilevelUpdateEventDetail } from '@porsche-design-system/c
 @Component({
   selector: 'page-flyout-multilevel-example',
   template: `
-    <p-button type="button" [aria]="{ 'aria-haspopup': 'dialog' }" (click)="onOpen()">Open Flyout Multilevel</p-button>
-    <p-flyout-multilevel
-      [open]="isFlyoutMultilevelOpen"
-      [activeIdentifier]="flyoutMultilevelActiveIdentifier"
-      (dismiss)="onDismiss()"
-      (update)="onUpdate($event)"
-    >
-      <p-flyout-multilevel-item identifier="item-1" label="Some Label">
-        <h3>Some heading</h3>
-        <a href="#some-anchor">Some anchor</a>
-        <a href="#some-anchor">Some anchor</a>
-        <a href="#some-anchor">Some anchor</a>
-        <h3>Some heading</h3>
-        <a href="#some-anchor">Some anchor</a>
-        <a href="#some-anchor">Some anchor</a>
-        <a href="#some-anchor">Some anchor</a>
-        <a href="#some-anchor">Some anchor</a>
-        <a href="#some-anchor">Some anchor</a>
-      </p-flyout-multilevel-item>
-      <p-flyout-multilevel-item identifier="item-2" label="Some Label">
-        <h3>Some heading</h3>
-        <a href="#some-anchor">Some anchor</a>
-        <a href="#some-anchor">Some anchor</a>
-        <a href="#some-anchor">Some anchor</a>
-        <a href="#some-anchor">Some anchor</a>
-        <h3>Some heading</h3>
-        <a href="#some-anchor">Some anchor</a>
-        <a href="#some-anchor">Some anchor</a>
-      </p-flyout-multilevel-item>
-      <p-flyout-multilevel-item identifier="item-3" label="Some Label">
-        <h3>Some heading</h3>
-        <a href="#some-anchor">Some anchor</a>
-        <a href="#some-anchor">Some anchor</a>
-        <h3>Some heading</h3>
-        <a href="#some-anchor">Some anchor</a>
-        <a href="#some-anchor">Some anchor</a>
-      </p-flyout-multilevel-item>
-      <p-flyout-multilevel-item identifier="item-4" label="Some Label">
-        <h3>Some heading</h3>
-        <a href="#some-anchor">Some anchor</a>
-        <a href="#some-anchor">Some anchor</a>
-        <a href="#some-anchor">Some anchor</a>
-      </p-flyout-multilevel-item>
-      <p-flyout-multilevel-item identifier="item-5" label="Some Label">
-        <h3>Some heading</h3>
-        <a href="#some-anchor">Some anchor</a>
-        <a href="#some-anchor">Some anchor</a>
-      </p-flyout-multilevel-item>
-    </p-flyout-multilevel>
+    <nav aria-label="Main">
+      <p-button type="button" [aria]="{ 'aria-haspopup': 'dialog' }" (click)="onOpen()">Open Flyout Multilevel</p-button>
+      <p-flyout-multilevel
+        [open]="isFlyoutMultilevelOpen"
+        [activeIdentifier]="flyoutMultilevelActiveIdentifier"
+        (dismiss)="onDismiss()"
+        (update)="onUpdate($event)"
+      >
+        <p-flyout-multilevel-item identifier="id-1" label="Some Label">
+          <p-flyout-multilevel-item identifier="id-1-1" label="Some Label">
+            <a href="#">Some anchor</a>
+            <a href="#">Some anchor</a>
+          </p-flyout-multilevel-item>
+          <p-flyout-multilevel-item identifier="id-1-2" label="Some Label">
+            <a href="#">Some anchor</a>
+            <a href="#">Some anchor</a>
+            <a href="#">Some anchor</a>
+            <p-flyout-multilevel-item identifier="id-1-2-1" label="Some Label">
+              <a href="#">Some anchor</a>
+              <a href="#">Some anchor</a>
+            </p-flyout-multilevel-item>
+            <a href="#">Some anchor</a>
+          </p-flyout-multilevel-item>
+          <a href="#">Some anchor</a>
+          <a href="#">Some anchor</a>
+          <a href="#">Some anchor</a>
+        </p-flyout-multilevel-item>
+        <p-flyout-multilevel-item identifier="id-2" label="Some Label">
+          <a href="#">Some anchor</a>
+          <a href="#">Some anchor</a>
+          <a href="#">Some anchor</a>
+          <a href="#">Some anchor</a>
+        </p-flyout-multilevel-item>
+        <p-flyout-multilevel-item identifier="id-3" label="Some Label">
+          <a href="#">Some anchor</a>
+          <a href="#">Some anchor</a>
+          <a href="#">Some anchor</a>
+        </p-flyout-multilevel-item>
+        <p-flyout-multilevel-item identifier="id-4" label="Some Label">
+          <a href="#">Some anchor</a>
+          <a href="#">Some anchor</a>
+          <a href="#">Some anchor</a>
+        </p-flyout-multilevel-item>
+        <p-flyout-multilevel-item identifier="id-5" label="Some Label">
+          <a href="#">Some anchor</a>
+          <a href="#">Some anchor</a>
+        </p-flyout-multilevel-item>
+      </p-flyout-multilevel>
+    </nav>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,

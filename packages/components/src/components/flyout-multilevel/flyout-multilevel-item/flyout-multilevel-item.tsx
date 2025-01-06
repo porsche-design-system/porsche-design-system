@@ -1,22 +1,26 @@
-import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
-import { getComponentCss } from './flyout-multilevel-item-styles';
+import { Component, Element, Host, type JSX, Prop, h } from '@stencil/core';
+import type { PropTypes, Theme } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  isElementOfKind,
   throwIfParentIsNotOfKind,
   validateProps,
 } from '../../../utils';
-import type { PropTypes, Theme } from '../../../types';
 import {
   type FlyoutMultilevelUpdateEventDetail,
   INTERNAL_UPDATE_EVENT_NAME,
 } from '../flyout-multilevel/flyout-multilevel-utils';
+import { getComponentCss } from './flyout-multilevel-item-styles';
 import type { FlyoutMultilevelItemInternalHTMLProps } from './flyout-multilevel-item-utils';
 
 const propTypes: PropTypes<typeof FlyoutMultilevelItem> = {
   identifier: AllowedTypes.string,
   label: AllowedTypes.string,
+  cascade: AllowedTypes.boolean,
+  secondary: AllowedTypes.boolean,
+  primary: AllowedTypes.boolean,
 };
 
 /**
@@ -35,64 +39,70 @@ export class FlyoutMultilevelItem {
   @Prop() public label?: string;
 
   /** Unique identifier which controls if this item should be shown when the active-identifier on the flyout-multilevel is set to this value. */
-  @Prop() public identifier: string;
+  @Prop({ reflect: true }) public identifier: string;
+
+  /** Private property set by the component itself. */
+  @Prop({ reflect: true, mutable: true }) public primary?: boolean = false;
+
+  /** Private property set by the component itself. */
+  @Prop({ reflect: true, mutable: true }) public secondary?: boolean = false;
+
+  /** Private property set by the component itself. */
+  @Prop({ reflect: true, mutable: true }) public cascade?: boolean = false;
+
+  private scroller: HTMLDivElement;
 
   private get theme(): Theme {
     return this.host.theme || 'light'; // default as fallback (internal private prop is controlled by flyout-multilevel)
   }
 
-  private get open(): boolean {
-    return this.host.open || false; // default as fallback (internal private prop is controlled by flyout-multilevel)
+  public connectedCallback(): void {
+    throwIfParentIsNotOfKind(this.host, ['p-flyout-multilevel', 'p-flyout-multilevel-item']);
   }
 
-  public connectedCallback(): void {
-    throwIfParentIsNotOfKind(this.host, 'p-flyout-multilevel');
+  public componentDidRender() {
+    this.scroller.scrollTo(0, 0); // Reset scroll position when navigated
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.open, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.primary, this.secondary, this.cascade, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host>
         <PrefixedTagNames.pButtonPure
+          inert={this.primary || this.cascade}
           class="button"
           type="button"
           size="medium"
           alignLabel="start"
           stretch={true}
           icon="arrow-head-right"
-          active={this.open}
-          aria={{ 'aria-expanded': this.open }}
+          active={this.secondary}
+          aria={{ 'aria-expanded': this.secondary }}
           theme={this.theme}
-          onClick={() => this.onClickButton(this.open ? undefined : this.identifier)}
+          onClick={() => this.onClickButton()}
         >
           {this.label}
         </PrefixedTagNames.pButtonPure>
-        <div
-          class="scroller"
-          // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
-          // eslint-disable-next-line
-          /* @ts-ignore */
-          inert={this.open ? null : true} // prevents focusable elements during fade-out transition
+        <PrefixedTagNames.pButtonPure
+          class="back"
+          type="button"
+          size="small"
+          alignLabel="end"
+          stretch={true}
+          icon="arrow-left"
+          theme={this.theme}
+          hideLabel={{ base: true, s: false }}
+          onClick={() => this.emitInternalUpdateEvent(this.identifier)}
         >
-          <div class="header">
-            <PrefixedTagNames.pButtonPure
-              class="back"
-              type="button"
-              size="medium"
-              icon="arrow-head-left"
-              hideLabel={true}
-              theme={this.theme}
-              onClick={() => this.onClickButton(undefined)}
-            >
-              Back
-            </PrefixedTagNames.pButtonPure>
-            <h2 class="heading">{this.label}</h2>
-          </div>
-          <div class="content">
+          {this.label}
+        </PrefixedTagNames.pButtonPure>
+        <h2>{this.label}</h2>
+        <div class="drawer">
+          <div class="scroller" ref={(ref) => (this.scroller = ref)}>
             <slot />
           </div>
         </div>
@@ -100,12 +110,20 @@ export class FlyoutMultilevelItem {
     );
   }
 
-  private onClickButton = (activeIdentifier: string | undefined): void => {
+  private onClickButton = (): void => {
+    if (isElementOfKind(this.host.parentElement, 'p-flyout-multilevel')) {
+      this.secondary ? this.emitInternalUpdateEvent(undefined) : this.emitInternalUpdateEvent(this.identifier);
+    } else if (!this.secondary) {
+      this.emitInternalUpdateEvent(this.identifier);
+    }
+  };
+
+  private emitInternalUpdateEvent(activeIdentifier: string | undefined): void {
     this.host.dispatchEvent(
       new CustomEvent<FlyoutMultilevelUpdateEventDetail>(INTERNAL_UPDATE_EVENT_NAME, {
         bubbles: true,
         detail: { activeIdentifier },
       } as CustomEventInit<FlyoutMultilevelUpdateEventDetail>)
     );
-  };
+  }
 }

@@ -1,5 +1,7 @@
-import { expect, type Locator, test, type Page } from '@playwright/test';
+import { type Locator, type Page, expect, test } from '@playwright/test';
+import { Components } from '@porsche-design-system/components';
 import {
+  type Options,
   addEventListener,
   getActiveElementClassNameInShadowRoot,
   getActiveElementId,
@@ -15,9 +17,7 @@ import {
   skipInBrowsers,
   sleep,
   waitForStencilLifecycle,
-  type Options,
 } from '../helpers';
-import { Components } from '@porsche-design-system/components';
 
 const CSS_TRANSITION_DURATION = 600; // Corresponds to motionDurationLong
 const flyoutMinWidth = 320;
@@ -142,9 +142,8 @@ const expectDismissButtonToBeFocused = async (page: Page, failMessage?: string) 
 };
 
 const expectDialogAndThenDismissButtonToBeFocused = async (page: Page, failMessage?: string) => {
-  // For some reason this is always BODY in playwright even though it is P-FLYOUT and DIALOG within that in reality
   // In order to assure that its correct we press tab to assure the next element will be the dismiss button
-  await expect(await getActiveElementTagName(page)).toBe('BODY');
+  await expect(await getActiveElementTagName(page)).toBe('P-FLYOUT');
   await page.keyboard.press('Tab');
   await expectDismissButtonToBeFocused(page);
 };

@@ -32,6 +32,7 @@ export const updatePopoverStyles = (
 
 export const updateNativePopoverStyles = (nativePopover: HTMLElement, nativeButton: HTMLButtonElement): void => {
   const { left, top, width, height } = nativeButton.getBoundingClientRect();
+  nativePopover.style.right = 'auto';
   nativePopover.style.left = `${left + window.scrollX - safeZonePx}px`;
   nativePopover.style.top = `${top + window.scrollY - safeZonePx}px`;
   nativePopover.style.width = `${width + safeZonePx * 2}px`;

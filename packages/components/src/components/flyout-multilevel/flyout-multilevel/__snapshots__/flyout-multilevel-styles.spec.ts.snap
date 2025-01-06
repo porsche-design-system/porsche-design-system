@@ -1,1078 +1,1172 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for isPrimaryScrollerVisible: false, isSecondaryScrollerVisible: false and theme: auto 1`] = `
-":host {
-  display: block;
-  --p-internal-flyout-multilevel-visibility: hidden !important;
-  --p-internal-flyout-multilevel-visibility-transition-duration: 0.6s !important;
-  position: fixed !important;
-  inset: 0 !important;
-  z-index: 99998 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-  -webkit-backdrop-filter: blur(0px) !important;
-  backdrop-filter: blur(0px) !important;
-  opacity: 0 !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-dialog {
-  position: fixed;
-  height: 100dvh;
-  max-height: 100dvh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  outline: 0;
-  inset: 0;
-  display: grid;
-  overflow: hidden;
-  width: auto;
-  max-width: 100vw;
-  background: none;
-  transform: translate3d(-100%, 0, 0);
-  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
-}
-dialog:dir(rtl) {
-  transform: translate3d(100%, 0, 0);
-}
-dialog::backdrop {
-  opacity: 0;
-}
-@media(min-width:760px) {
-  dialog {
-    grid-template-columns: repeat(1, clamp(338px, 10.52vw + 258px, 460px)) auto;
-    grid-template-rows: 100vh;
-    inset-inline-end: auto;
+exports[`getComponentCss() should return correct css for isOpen: false, isPrimary: true, isSecondaryScrollerVisible: true and theme: light 1`] = `
+"@keyframes slide-up-mobile {
+  from {
+    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
+  }
+  to {
+    transform: translate3d(0,0,0);
   }
 }
-
-@media (prefers-color-scheme: dark) {
+@keyframes slide-up-desktop {
+  from {
+    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+  }
+  to {
+    margin-block-start: 0px;
+  }
+}
   :host {
-    background: rgba(38, 38, 41, 0.67) !important;
+    display: block;
+    color-scheme: light dark !important;
   }
-}
-
-.scroller {
-  grid-area: 1/1;
-  overflow: auto;
-  visibility: var(--p-internal-flyout-multilevel-visibility,inherit);
-  transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration, 0.6s);
-  background-color: #FFF;
-}
-.scroller::before {
-  content: "";
-  display: block;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  height: 4rem;
-  background-color: rgba(255, 255, 255, 0.79);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-}
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(4px, 0.25vw + 3px, 8px);
-  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
-}
-.header {
-  position: relative;
-  z-index: 3;
-  grid-area: 1/1;
-  align-self: flex-start;
-  justify-self: flex-end;
-  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
-  height: 4rem;
-  display: flex;
-  align-items: center;
-}
-.dismiss {
-  padding: clamp(8px, 0.5vw + 6px, 16px);
-}
-@media(min-width:760px) {
-  .scroller {
-    visibility: inherit;
-    transition: initial;
+  :host([hidden]) {
+    display: none !important;
   }
-  .scroller::before {
+  :not(:defined,[data-ssr]) {
+    visibility: hidden;
+  }
+  dialog {
+    all: unset;
+    position: fixed;
+    inset: 0;
+    z-index: 999999999;
+    outline: 0;
+    visibility: hidden;
+    transition: visibility 0s linear var(--p-transition-duration, 0.4s), overlay var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1) allow-discrete, background var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1);
+  }
+  dialog::backdrop {
     display: none;
   }
-  .content {
-    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
-  }
-  .header {
-    margin-inline-end: 0;
-    grid-area: 1/-1;
-    place-self: flex-start;
-  }
-  .dismiss {
-    --p-internal-icon-filter: invert(1);
-    margin: clamp(8px, 0.5vw + 6px, 16px);
-    padding: 8px;
-  }
+@media(min-width:760px) {
+    slot {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(4px, 0.25vw + 3px, 8px);
+      grid-area: 2/2/auto/-2;
+      height: fit-content;
+      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
+      animation: slide-up-desktop var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+    }
 }
 
-@media (prefers-color-scheme: dark) {
+@media(max-width:759px) {
+    slot {
+      display: contents;
+    }
+    ::slotted(*:not([primary],[secondary],[cascade])) {
+      display: none;
+    }
+}
+
+  .drawer {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    opacity: 0;
+    transform: translate3d(-100%,0,0);
+    transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+  }
+  .drawer:dir(rtl) {
+    transform: translate3d(100%,0,0);
+  }
+  .drawer::before, .drawer::after {
+    content: "";
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+  }
   .scroller {
-    background-color: #0E0E12;
+    display: contents;
+    overflow: hidden auto;
+    background: rgba(255,255,255,.01);
   }
-  .scroller::before {
-    background-color: rgba(14, 14, 18, 0.79);
+  .back {
+    display: none;
   }
+@media(min-width:760px) {
+    .drawer {
+      width: calc(clamp(338px, 210px + 18vw, 640px) * 2);
+      grid-template: clamp(16px, 1.25vw + 12px, 36px) minmax(0, 1fr)/repeat(2, clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px));
+      background: linear-gradient(90deg,#FFF 0%,#FFF 50%,#EEEFF2 50%,#EEEFF2 100%);
+    }
+    .drawer:dir(rtl) {
+      background: linear-gradient(90deg,#EEEFF2 0%,#EEEFF2 50%,#FFF 50%,#FFF 100%);
+    }
+    .drawer::after {
+      grid-area: 1/4/-1/-1;
+      background: #EEEFF2;
+    }
+    .drawer::before {
+      grid-area: 1/1/-1/4;
+      background: #FFF;
+    }
+    .scroller {
+      grid-area: 1/1/-1/4;
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-template-columns: subgrid;
+    }
+    .dismiss-mobile {
+      display: none;
+    }
+    .dismiss-desktop {
+      --p-internal-icon-filter: invert(1);
+      position: absolute;
+      inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
+      inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
+      padding: 8px;
+    }
+}
+
+@media(max-width:759px) {
+    .drawer {
+      grid-template: clamp(16px, 1.25vw + 12px, 36px) auto clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr)/clamp(32px, 2.75vw + 23px, 76px) auto minmax(0, 1fr) auto clamp(32px, 2.75vw + 23px, 76px);
+      background: #FFF;
+    }
+    .drawer::after {
+      grid-area: 1/1/-1/-1;
+      background: #FFF;
+    }
+    .drawer::before {
+      grid-area: 1/1/-1/-1;
+      background: #FFF;
+    }
+    .dismiss-mobile {
+      --p-internal-button-scaling: 0;
+      width: fit-content;
+      height: fit-content;
+      place-self: center flex-end;
+      grid-area: 2/4;
+      z-index: 3;
+      margin-inline-end: -1px;
+    }
+    .dismiss-desktop {
+      display: none;
+    }
+    .back {
+      display: block;
+      grid-area: 2/2;
+      width: fit-content;
+      height: fit-content;
+      place-self: center flex-start;
+      z-index: 2;
+    }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isPrimaryScrollerVisible: false, isSecondaryScrollerVisible: false and theme: dark 1`] = `
-":host {
-  display: block;
-  --p-internal-flyout-multilevel-visibility: hidden !important;
-  --p-internal-flyout-multilevel-visibility-transition-duration: 0.6s !important;
-  position: fixed !important;
-  inset: 0 !important;
-  z-index: 99998 !important;
-  background: rgba(38, 38, 41, 0.67) !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-  -webkit-backdrop-filter: blur(0px) !important;
-  backdrop-filter: blur(0px) !important;
-  opacity: 0 !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-dialog {
-  position: fixed;
-  height: 100dvh;
-  max-height: 100dvh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  outline: 0;
-  inset: 0;
-  display: grid;
-  overflow: hidden;
-  width: auto;
-  max-width: 100vw;
-  background: none;
-  transform: translate3d(-100%, 0, 0);
-  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
-}
-dialog:dir(rtl) {
-  transform: translate3d(100%, 0, 0);
-}
-dialog::backdrop {
-  opacity: 0;
-}
-@media(min-width:760px) {
-  dialog {
-    grid-template-columns: repeat(1, clamp(338px, 10.52vw + 258px, 460px)) auto;
-    grid-template-rows: 100vh;
-    inset-inline-end: auto;
+exports[`getComponentCss() should return correct css for isOpen: true, isPrimary: false, isSecondaryScrollerVisible: false and theme: light 1`] = `
+"@keyframes slide-up-mobile {
+  from {
+    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
+  }
+  to {
+    transform: translate3d(0,0,0);
   }
 }
-
-.scroller {
-  grid-area: 1/1;
-  overflow: auto;
-  visibility: var(--p-internal-flyout-multilevel-visibility,inherit);
-  transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration, 0.6s);
-  background-color: #0E0E12;
-}
-.scroller::before {
-  content: "";
-  display: block;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  height: 4rem;
-  background-color: rgba(14, 14, 18, 0.79);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-}
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(4px, 0.25vw + 3px, 8px);
-  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
-}
-.header {
-  position: relative;
-  z-index: 3;
-  grid-area: 1/1;
-  align-self: flex-start;
-  justify-self: flex-end;
-  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
-  height: 4rem;
-  display: flex;
-  align-items: center;
-}
-.dismiss {
-  padding: clamp(8px, 0.5vw + 6px, 16px);
-}
-@media(min-width:760px) {
-  .scroller {
-    visibility: inherit;
-    transition: initial;
+@keyframes slide-up-desktop {
+  from {
+    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
   }
-  .scroller::before {
-    display: none;
-  }
-  .content {
-    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
-  }
-  .header {
-    margin-inline-end: 0;
-    grid-area: 1/-1;
-    place-self: flex-start;
-  }
-  .dismiss {
-    --p-internal-icon-filter: invert(1);
-    margin: clamp(8px, 0.5vw + 6px, 16px);
-    padding: 8px;
+  to {
+    margin-block-start: 0px;
   }
 }
-"
-`;
-
-exports[`getComponentCss() should return correct css for isPrimaryScrollerVisible: false, isSecondaryScrollerVisible: false and theme: light 1`] = `
-":host {
-  display: block;
-  --p-internal-flyout-multilevel-visibility: hidden !important;
-  --p-internal-flyout-multilevel-visibility-transition-duration: 0.6s !important;
-  position: fixed !important;
-  inset: 0 !important;
-  z-index: 99998 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-  -webkit-backdrop-filter: blur(0px) !important;
-  backdrop-filter: blur(0px) !important;
-  opacity: 0 !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-dialog {
-  position: fixed;
-  height: 100dvh;
-  max-height: 100dvh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  outline: 0;
-  inset: 0;
-  display: grid;
-  overflow: hidden;
-  width: auto;
-  max-width: 100vw;
-  background: none;
-  transform: translate3d(-100%, 0, 0);
-  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
-}
-dialog:dir(rtl) {
-  transform: translate3d(100%, 0, 0);
-}
-dialog::backdrop {
-  opacity: 0;
-}
-@media(min-width:760px) {
-  dialog {
-    grid-template-columns: repeat(1, clamp(338px, 10.52vw + 258px, 460px)) auto;
-    grid-template-rows: 100vh;
-    inset-inline-end: auto;
-  }
-}
-
-.scroller {
-  grid-area: 1/1;
-  overflow: auto;
-  visibility: var(--p-internal-flyout-multilevel-visibility,inherit);
-  transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration, 0.6s);
-  background-color: #FFF;
-}
-.scroller::before {
-  content: "";
-  display: block;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  height: 4rem;
-  background-color: rgba(255, 255, 255, 0.79);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-}
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(4px, 0.25vw + 3px, 8px);
-  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
-}
-.header {
-  position: relative;
-  z-index: 3;
-  grid-area: 1/1;
-  align-self: flex-start;
-  justify-self: flex-end;
-  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
-  height: 4rem;
-  display: flex;
-  align-items: center;
-}
-.dismiss {
-  padding: clamp(8px, 0.5vw + 6px, 16px);
-}
-@media(min-width:760px) {
-  .scroller {
-    visibility: inherit;
-    transition: initial;
-  }
-  .scroller::before {
-    display: none;
-  }
-  .content {
-    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
-  }
-  .header {
-    margin-inline-end: 0;
-    grid-area: 1/-1;
-    place-self: flex-start;
-  }
-  .dismiss {
-    --p-internal-icon-filter: invert(1);
-    margin: clamp(8px, 0.5vw + 6px, 16px);
-    padding: 8px;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for isPrimaryScrollerVisible: true, isSecondaryScrollerVisible: false and theme: auto 1`] = `
-":host {
-  display: block;
-  position: fixed !important;
-  inset: 0 !important;
-  z-index: 99998 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  visibility: inherit !important;
-  pointer-events: auto !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
-  opacity: 1 !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-dialog {
-  position: fixed;
-  height: 100dvh;
-  max-height: 100dvh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  outline: 0;
-  inset: 0;
-  display: grid;
-  overflow: hidden;
-  width: auto;
-  max-width: 100vw;
-  background: none;
-  transform: translate3d(0, 0, 0);
-  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
-}
-dialog::backdrop {
-  opacity: 0;
-}
-@media(min-width:760px) {
-  dialog {
-    grid-template-columns: repeat(1, clamp(338px, 10.52vw + 258px, 460px)) auto;
-    grid-template-rows: 100vh;
-    inset-inline-end: auto;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
   :host {
-    background: rgba(38, 38, 41, 0.67) !important;
+    display: block;
+    color-scheme: light dark !important;
   }
-}
-
-.scroller {
-  grid-area: 1/1;
-  overflow: auto;
-  visibility: var(--p-internal-flyout-multilevel-visibility,inherit);
-  transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration, 0s);
-  background-color: #FFF;
-}
-.scroller::before {
-  content: "";
-  display: block;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  height: 4rem;
-  background-color: rgba(255, 255, 255, 0.79);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-}
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(4px, 0.25vw + 3px, 8px);
-  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
-}
-.header {
-  position: relative;
-  z-index: 3;
-  grid-area: 1/1;
-  align-self: flex-start;
-  justify-self: flex-end;
-  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
-  height: 4rem;
-  display: flex;
-  align-items: center;
-}
-.dismiss {
-  padding: clamp(8px, 0.5vw + 6px, 16px);
-}
-@media(min-width:760px) {
-  .scroller {
+  :host([hidden]) {
+    display: none !important;
+  }
+  :not(:defined,[data-ssr]) {
+    visibility: hidden;
+  }
+  dialog {
+    all: unset;
+    position: fixed;
+    inset: 0;
+    z-index: 999999999;
+    outline: 0;
     visibility: inherit;
-    transition: initial;
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: rgba(1, 2, 5, 0.67);
+    transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   }
-  .scroller::before {
+  dialog::backdrop {
     display: none;
   }
-  .content {
-    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
-  }
-  .header {
-    margin-inline-end: 0;
-    grid-area: 1/-1;
-    place-self: flex-start;
-  }
-  .dismiss {
-    --p-internal-icon-filter: invert(1);
-    margin: clamp(8px, 0.5vw + 6px, 16px);
-    padding: 8px;
-  }
+@media(min-width:760px) {
+    slot {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(16px, 1.25vw + 12px, 36px);
+      grid-area: 2/2/auto/-2;
+      height: fit-content;
+      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
+    }
 }
 
-@media (prefers-color-scheme: dark) {
+@media(max-width:759px) {
+    slot {
+      display: flex;
+      z-index: 0;
+      flex-direction: column;
+      gap: clamp(4px, 0.25vw + 3px, 8px);
+      grid-area: 4/2/auto/-2;
+      height: fit-content;
+      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
+    }
+}
+
+  .drawer {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    opacity: 1;
+    transform: translate3d(0,0,0);
+    transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  }
+  .drawer::before, .drawer::after {
+    content: "";
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+  }
   .scroller {
-    background-color: #0E0E12;
+    display: contents;
+    overflow: hidden auto;
+    background: rgba(255,255,255,.01);
   }
-  .scroller::before {
-    background-color: rgba(14, 14, 18, 0.79);
+  .back {
+    display: none;
   }
+@media(min-width:760px) {
+    .drawer {
+      width: clamp(338px, 210px + 18vw, 640px);
+      grid-template: clamp(16px, 1.25vw + 12px, 36px) minmax(0, 1fr)/repeat(1, clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px));
+      background: #FFF;
+    }
+    .drawer::after {
+      grid-area: 1/4/-1/-1;
+      background: #EEEFF2;
+    }
+    .drawer::before {
+      grid-area: 1/1/-1/4;
+      background: #FFF;
+    }
+    .scroller {
+      grid-area: 1/1/-1/4;
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-template-columns: subgrid;
+    }
+    .dismiss-mobile {
+      display: none;
+    }
+    .dismiss-desktop {
+      --p-internal-icon-filter: invert(1);
+      position: absolute;
+      inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
+      inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
+      padding: 8px;
+    }
+}
+
+@media(max-width:759px) {
+    .drawer {
+      grid-template: clamp(16px, 1.25vw + 12px, 36px) auto clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr)/clamp(32px, 2.75vw + 23px, 76px) auto minmax(0, 1fr) auto clamp(32px, 2.75vw + 23px, 76px);
+      background: #FFF;
+    }
+    .drawer::after {
+      grid-area: 1/1/-1/-1;
+      background: #FFF;
+    }
+    .drawer::before {
+      grid-area: 1/1/-1/-1;
+      background: #FFF;
+    }
+    .scroller {
+      grid-area: 1/1/-1/-1;
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-template-columns: subgrid;
+    }
+    .scroller::before {
+      content: "";
+      position: sticky;
+      top: 0;
+      grid-area: 1/1/4/-1;
+      z-index: 1;
+      background: linear-gradient(180deg,#FFF 0%,#FFF 65%,transparent 100%);
+    }
+    .dismiss-mobile {
+      --p-internal-button-scaling: 0;
+      width: fit-content;
+      height: fit-content;
+      place-self: center flex-end;
+      grid-area: 2/4;
+      z-index: 3;
+      margin-inline-end: -1px;
+    }
+    .dismiss-desktop {
+      display: none;
+    }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isPrimaryScrollerVisible: true, isSecondaryScrollerVisible: false and theme: dark 1`] = `
-":host {
-  display: block;
-  position: fixed !important;
-  inset: 0 !important;
-  z-index: 99998 !important;
-  background: rgba(38, 38, 41, 0.67) !important;
-  visibility: inherit !important;
-  pointer-events: auto !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
-  opacity: 1 !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-dialog {
-  position: fixed;
-  height: 100dvh;
-  max-height: 100dvh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  outline: 0;
-  inset: 0;
-  display: grid;
-  overflow: hidden;
-  width: auto;
-  max-width: 100vw;
-  background: none;
-  transform: translate3d(0, 0, 0);
-  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
-}
-dialog::backdrop {
-  opacity: 0;
-}
-@media(min-width:760px) {
-  dialog {
-    grid-template-columns: repeat(1, clamp(338px, 10.52vw + 258px, 460px)) auto;
-    grid-template-rows: 100vh;
-    inset-inline-end: auto;
+exports[`getComponentCss() should return correct css for isOpen: true, isPrimary: false, isSecondaryScrollerVisible: true and theme: light 1`] = `
+"@keyframes slide-up-mobile {
+  from {
+    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
+  }
+  to {
+    transform: translate3d(0,0,0);
   }
 }
-
-.scroller {
-  grid-area: 1/1;
-  overflow: auto;
-  visibility: var(--p-internal-flyout-multilevel-visibility,inherit);
-  transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration, 0s);
-  background-color: #0E0E12;
-}
-.scroller::before {
-  content: "";
-  display: block;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  height: 4rem;
-  background-color: rgba(14, 14, 18, 0.79);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-}
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(4px, 0.25vw + 3px, 8px);
-  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
-}
-.header {
-  position: relative;
-  z-index: 3;
-  grid-area: 1/1;
-  align-self: flex-start;
-  justify-self: flex-end;
-  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
-  height: 4rem;
-  display: flex;
-  align-items: center;
-}
-.dismiss {
-  padding: clamp(8px, 0.5vw + 6px, 16px);
-}
-@media(min-width:760px) {
-  .scroller {
-    visibility: inherit;
-    transition: initial;
+@keyframes slide-up-desktop {
+  from {
+    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
   }
-  .scroller::before {
-    display: none;
-  }
-  .content {
-    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
-  }
-  .header {
-    margin-inline-end: 0;
-    grid-area: 1/-1;
-    place-self: flex-start;
-  }
-  .dismiss {
-    --p-internal-icon-filter: invert(1);
-    margin: clamp(8px, 0.5vw + 6px, 16px);
-    padding: 8px;
+  to {
+    margin-block-start: 0px;
   }
 }
-"
-`;
-
-exports[`getComponentCss() should return correct css for isPrimaryScrollerVisible: true, isSecondaryScrollerVisible: false and theme: light 1`] = `
-":host {
-  display: block;
-  position: fixed !important;
-  inset: 0 !important;
-  z-index: 99998 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  visibility: inherit !important;
-  pointer-events: auto !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
-  opacity: 1 !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-dialog {
-  position: fixed;
-  height: 100dvh;
-  max-height: 100dvh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  outline: 0;
-  inset: 0;
-  display: grid;
-  overflow: hidden;
-  width: auto;
-  max-width: 100vw;
-  background: none;
-  transform: translate3d(0, 0, 0);
-  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
-}
-dialog::backdrop {
-  opacity: 0;
-}
-@media(min-width:760px) {
-  dialog {
-    grid-template-columns: repeat(1, clamp(338px, 10.52vw + 258px, 460px)) auto;
-    grid-template-rows: 100vh;
-    inset-inline-end: auto;
-  }
-}
-
-.scroller {
-  grid-area: 1/1;
-  overflow: auto;
-  visibility: var(--p-internal-flyout-multilevel-visibility,inherit);
-  transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration, 0s);
-  background-color: #FFF;
-}
-.scroller::before {
-  content: "";
-  display: block;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  height: 4rem;
-  background-color: rgba(255, 255, 255, 0.79);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-}
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(4px, 0.25vw + 3px, 8px);
-  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
-}
-.header {
-  position: relative;
-  z-index: 3;
-  grid-area: 1/1;
-  align-self: flex-start;
-  justify-self: flex-end;
-  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
-  height: 4rem;
-  display: flex;
-  align-items: center;
-}
-.dismiss {
-  padding: clamp(8px, 0.5vw + 6px, 16px);
-}
-@media(min-width:760px) {
-  .scroller {
-    visibility: inherit;
-    transition: initial;
-  }
-  .scroller::before {
-    display: none;
-  }
-  .content {
-    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
-  }
-  .header {
-    margin-inline-end: 0;
-    grid-area: 1/-1;
-    place-self: flex-start;
-  }
-  .dismiss {
-    --p-internal-icon-filter: invert(1);
-    margin: clamp(8px, 0.5vw + 6px, 16px);
-    padding: 8px;
-  }
-}
-"
-`;
-
-exports[`getComponentCss() should return correct css for isPrimaryScrollerVisible: true, isSecondaryScrollerVisible: true and theme: auto 1`] = `
-":host {
-  display: block;
-  position: fixed !important;
-  inset: 0 !important;
-  z-index: 99998 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  visibility: inherit !important;
-  pointer-events: auto !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
-  opacity: 1 !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-dialog {
-  position: fixed;
-  height: 100dvh;
-  max-height: 100dvh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  outline: 0;
-  inset: 0;
-  display: grid;
-  overflow: hidden;
-  width: auto;
-  max-width: 100vw;
-  background: none;
-  transform: translate3d(0, 0, 0);
-  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
-}
-dialog::backdrop {
-  opacity: 0;
-}
-@media(min-width:760px) {
-  dialog {
-    grid-template-columns: repeat(2, clamp(338px, 10.52vw + 258px, 460px)) auto;
-    grid-template-rows: 100vh;
-    inset-inline-end: auto;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
   :host {
-    background: rgba(38, 38, 41, 0.67) !important;
+    display: block;
+    color-scheme: light dark !important;
   }
-}
-
-.scroller {
-  grid-area: 1/1;
-  overflow: auto;
-  visibility: var(--p-internal-flyout-multilevel-visibility,hidden);
-  transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-transition-duration, 0.6s);
-  background-color: #FFF;
-}
-.scroller::before {
-  content: "";
-  display: block;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  height: 4rem;
-  background-color: rgba(255, 255, 255, 0.79);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-}
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(4px, 0.25vw + 3px, 8px);
-  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
-}
-.header {
-  position: relative;
-  z-index: 3;
-  grid-area: 1/1;
-  align-self: flex-start;
-  justify-self: flex-end;
-  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
-  height: 4rem;
-  display: flex;
-  align-items: center;
-}
-.dismiss {
-  padding: clamp(8px, 0.5vw + 6px, 16px);
-}
-@media(min-width:760px) {
-  .scroller {
+  :host([hidden]) {
+    display: none !important;
+  }
+  :not(:defined,[data-ssr]) {
+    visibility: hidden;
+  }
+  dialog {
+    all: unset;
+    position: fixed;
+    inset: 0;
+    z-index: 999999999;
+    outline: 0;
     visibility: inherit;
-    transition: initial;
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: rgba(1, 2, 5, 0.67);
+    transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   }
-  .scroller::before {
+  dialog::backdrop {
     display: none;
   }
-  .content {
-    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+@media(min-width:760px) {
+    slot {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(16px, 1.25vw + 12px, 36px);
+      grid-area: 2/2/auto/-2;
+      height: fit-content;
+      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
+    }
+    ::slotted(*:not([primary],[cascade])) {
+      display: none;
+    }
+}
+
+@media(max-width:759px) {
+    slot {
+      display: contents;
+    }
+    ::slotted(*:not([primary],[secondary],[cascade])) {
+      display: none;
+    }
+}
+
+  .drawer {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    opacity: 1;
+    transform: translate3d(0,0,0);
+    transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   }
-  .header {
-    margin-inline-end: 0;
-    grid-area: 1/-1;
-    place-self: flex-start;
+  .drawer::before, .drawer::after {
+    content: "";
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
   }
-  .dismiss {
-    --p-internal-icon-filter: invert(1);
-    margin: clamp(8px, 0.5vw + 6px, 16px);
-    padding: 8px;
+  .scroller {
+    display: contents;
+    overflow: hidden auto;
+    background: rgba(255,255,255,.01);
   }
+  .back {
+    display: none;
+  }
+@media(min-width:760px) {
+    .drawer {
+      width: calc(clamp(338px, 210px + 18vw, 640px) * 2);
+      grid-template: clamp(16px, 1.25vw + 12px, 36px) minmax(0, 1fr)/repeat(2, clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px));
+      background: linear-gradient(90deg,#FFF 0%,#FFF 50%,#EEEFF2 50%,#EEEFF2 100%);
+    }
+    .drawer:dir(rtl) {
+      background: linear-gradient(90deg,#EEEFF2 0%,#EEEFF2 50%,#FFF 50%,#FFF 100%);
+    }
+    .drawer::after {
+      grid-area: 1/4/-1/-1;
+      background: #EEEFF2;
+    }
+    .drawer::before {
+      grid-area: 1/1/-1/4;
+      background: #FFF;
+    }
+    .scroller {
+      grid-area: 1/1/-1/4;
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-template-columns: subgrid;
+    }
+    .dismiss-mobile {
+      display: none;
+    }
+    .dismiss-desktop {
+      --p-internal-icon-filter: invert(1);
+      position: absolute;
+      inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
+      inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
+      padding: 8px;
+    }
+}
+
+@media(max-width:759px) {
+    .drawer {
+      grid-template: clamp(16px, 1.25vw + 12px, 36px) auto clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr)/clamp(32px, 2.75vw + 23px, 76px) auto minmax(0, 1fr) auto clamp(32px, 2.75vw + 23px, 76px);
+      background: #FFF;
+    }
+    .drawer::after {
+      grid-area: 1/1/-1/-1;
+      background: #FFF;
+    }
+    .drawer::before {
+      grid-area: 1/1/-1/-1;
+      background: #FFF;
+    }
+    .dismiss-mobile {
+      --p-internal-button-scaling: 0;
+      width: fit-content;
+      height: fit-content;
+      place-self: center flex-end;
+      grid-area: 2/4;
+      z-index: 3;
+      margin-inline-end: -1px;
+    }
+    .dismiss-desktop {
+      display: none;
+    }
+    .back {
+      display: block;
+      grid-area: 2/2;
+      width: fit-content;
+      height: fit-content;
+      place-self: center flex-start;
+      z-index: 2;
+    }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isOpen: true, isPrimary: true, isSecondaryScrollerVisible: false and theme: light 1`] = `
+"@keyframes slide-up-mobile {
+  from {
+    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
+  }
+  to {
+    transform: translate3d(0,0,0);
+  }
+}
+@keyframes slide-up-desktop {
+  from {
+    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+  }
+  to {
+    margin-block-start: 0px;
+  }
+}
+  :host {
+    display: block;
+    color-scheme: light dark !important;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  :not(:defined,[data-ssr]) {
+    visibility: hidden;
+  }
+  dialog {
+    all: unset;
+    position: fixed;
+    inset: 0;
+    z-index: 999999999;
+    outline: 0;
+    visibility: inherit;
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: rgba(1, 2, 5, 0.67);
+    transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+  }
+  dialog::backdrop {
+    display: none;
+  }
+@media(min-width:760px) {
+    slot {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(4px, 0.25vw + 3px, 8px);
+      grid-area: 2/2/auto/-2;
+      height: fit-content;
+      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
+      animation: slide-up-desktop var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+    }
+}
+
+@media(max-width:759px) {
+    slot {
+      display: flex;
+      z-index: 0;
+      flex-direction: column;
+      gap: clamp(4px, 0.25vw + 3px, 8px);
+      grid-area: 4/2/auto/-2;
+      height: fit-content;
+      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
+      animation: slide-up-mobile var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+    }
+}
+
+  .drawer {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    opacity: 1;
+    transform: translate3d(0,0,0);
+    transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  }
+  .drawer::before, .drawer::after {
+    content: "";
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+  }
+  .scroller {
+    display: contents;
+    overflow: hidden auto;
+    background: rgba(255,255,255,.01);
+  }
+  .back {
+    display: none;
+  }
+@media(min-width:760px) {
+    .drawer {
+      width: clamp(338px, 210px + 18vw, 640px);
+      grid-template: clamp(16px, 1.25vw + 12px, 36px) minmax(0, 1fr)/repeat(1, clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px));
+      background: #FFF;
+    }
+    .drawer::after {
+      grid-area: 1/4/-1/-1;
+      background: #EEEFF2;
+    }
+    .drawer::before {
+      grid-area: 1/1/-1/4;
+      background: #FFF;
+    }
+    .scroller {
+      grid-area: 1/1/-1/4;
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-template-columns: subgrid;
+    }
+    .dismiss-mobile {
+      display: none;
+    }
+    .dismiss-desktop {
+      --p-internal-icon-filter: invert(1);
+      position: absolute;
+      inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
+      inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
+      padding: 8px;
+    }
+}
+
+@media(max-width:759px) {
+    .drawer {
+      grid-template: clamp(16px, 1.25vw + 12px, 36px) auto clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr)/clamp(32px, 2.75vw + 23px, 76px) auto minmax(0, 1fr) auto clamp(32px, 2.75vw + 23px, 76px);
+      background: #FFF;
+    }
+    .drawer::after {
+      grid-area: 1/1/-1/-1;
+      background: #FFF;
+    }
+    .drawer::before {
+      grid-area: 1/1/-1/-1;
+      background: #FFF;
+    }
+    .scroller {
+      grid-area: 1/1/-1/-1;
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-template-columns: subgrid;
+    }
+    .scroller::before {
+      content: "";
+      position: sticky;
+      top: 0;
+      grid-area: 1/1/4/-1;
+      z-index: 1;
+      background: linear-gradient(180deg,#FFF 0%,#FFF 65%,transparent 100%);
+    }
+    .dismiss-mobile {
+      --p-internal-button-scaling: 0;
+      width: fit-content;
+      height: fit-content;
+      place-self: center flex-end;
+      grid-area: 2/4;
+      z-index: 3;
+      margin-inline-end: -1px;
+    }
+    .dismiss-desktop {
+      display: none;
+    }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isOpen: true, isPrimary: true, isSecondaryScrollerVisible: true and theme: auto 1`] = `
+"@keyframes slide-up-mobile {
+  from {
+    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
+  }
+  to {
+    transform: translate3d(0,0,0);
+  }
+}
+@keyframes slide-up-desktop {
+  from {
+    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+  }
+  to {
+    margin-block-start: 0px;
+  }
+}
+  :host {
+    display: block;
+    color-scheme: light dark !important;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  :not(:defined,[data-ssr]) {
+    visibility: hidden;
+  }
+  dialog {
+    all: unset;
+    position: fixed;
+    inset: 0;
+    z-index: 999999999;
+    outline: 0;
+    visibility: inherit;
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: rgba(1, 2, 5, 0.67);
+    transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+  }
+  dialog::backdrop {
+    display: none;
+  }
+@media(min-width:760px) {
+    slot {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(4px, 0.25vw + 3px, 8px);
+      grid-area: 2/2/auto/-2;
+      height: fit-content;
+      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
+      animation: slide-up-desktop var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+    }
+}
+
+@media(max-width:759px) {
+    slot {
+      display: contents;
+    }
+    ::slotted(*:not([primary],[secondary],[cascade])) {
+      display: none;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
+    dialog {
+      background: rgba(38, 38, 41, 0.67);
+    }
+}
+
+  .drawer {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    opacity: 1;
+    transform: translate3d(0,0,0);
+    transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  }
+  .drawer::before, .drawer::after {
+    content: "";
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+  }
   .scroller {
-    background-color: #0E0E12;
+    display: contents;
+    overflow: hidden auto;
+    background: rgba(255,255,255,.01);
   }
-  .scroller::before {
-    background-color: rgba(14, 14, 18, 0.79);
+  .back {
+    display: none;
   }
+@media(min-width:760px) {
+    .drawer {
+      width: calc(clamp(338px, 210px + 18vw, 640px) * 2);
+      grid-template: clamp(16px, 1.25vw + 12px, 36px) minmax(0, 1fr)/repeat(2, clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px));
+      background: linear-gradient(90deg,#FFF 0%,#FFF 50%,#EEEFF2 50%,#EEEFF2 100%);
+    }
+    .drawer:dir(rtl) {
+      background: linear-gradient(90deg,#EEEFF2 0%,#EEEFF2 50%,#FFF 50%,#FFF 100%);
+    }
+@media (prefers-color-scheme: dark) {
+      .drawer {
+        background: linear-gradient(90deg,#0E0E12 0%,#0E0E12 50%,#212225 50%,#212225 100%);
+      }
+      .drawer:dir(rtl) {
+        background: linear-gradient(90deg,#212225 0%,#212225 50%,#0E0E12 50%,#0E0E12 100%);
+      }
+}
+
+    .drawer::after {
+      grid-area: 1/4/-1/-1;
+      background: #EEEFF2;
+    }
+@media (prefers-color-scheme: dark) {
+      .drawer::after {
+        background: #212225;
+      }
+}
+
+    .drawer::before {
+      grid-area: 1/1/-1/4;
+      background: #FFF;
+    }
+@media (prefers-color-scheme: dark) {
+      .drawer::before {
+        background: #0E0E12;
+      }
+}
+
+    .scroller {
+      grid-area: 1/1/-1/4;
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-template-columns: subgrid;
+    }
+    .dismiss-mobile {
+      display: none;
+    }
+    .dismiss-desktop {
+      --p-internal-icon-filter: invert(1);
+      position: absolute;
+      inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
+      inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
+      padding: 8px;
+    }
+}
+
+@media(max-width:759px) {
+    .drawer {
+      grid-template: clamp(16px, 1.25vw + 12px, 36px) auto clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr)/clamp(32px, 2.75vw + 23px, 76px) auto minmax(0, 1fr) auto clamp(32px, 2.75vw + 23px, 76px);
+      background: #FFF;
+    }
+@media (prefers-color-scheme: dark) {
+      .drawer {
+        background: #0E0E12;
+      }
+}
+
+    .drawer::after {
+      grid-area: 1/1/-1/-1;
+      background: #FFF;
+    }
+@media (prefers-color-scheme: dark) {
+      .drawer::after {
+        background: #0E0E12;
+      }
+}
+
+    .drawer::before {
+      grid-area: 1/1/-1/-1;
+      background: #FFF;
+    }
+@media (prefers-color-scheme: dark) {
+      .drawer::before {
+        background: #0E0E12;
+      }
+}
+
+    .dismiss-mobile {
+      --p-internal-button-scaling: 0;
+      width: fit-content;
+      height: fit-content;
+      place-self: center flex-end;
+      grid-area: 2/4;
+      z-index: 3;
+      margin-inline-end: -1px;
+    }
+    .dismiss-desktop {
+      display: none;
+    }
+    .back {
+      display: block;
+      grid-area: 2/2;
+      width: fit-content;
+      height: fit-content;
+      place-self: center flex-start;
+      z-index: 2;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .scroller {
+      background: rgba(0,0,0,.01);
+    }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isPrimaryScrollerVisible: true, isSecondaryScrollerVisible: true and theme: dark 1`] = `
-":host {
-  display: block;
-  position: fixed !important;
-  inset: 0 !important;
-  z-index: 99998 !important;
-  background: rgba(38, 38, 41, 0.67) !important;
-  visibility: inherit !important;
-  pointer-events: auto !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
-  opacity: 1 !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
-  color-scheme: light dark !important;
+exports[`getComponentCss() should return correct css for isOpen: true, isPrimary: true, isSecondaryScrollerVisible: true and theme: dark 1`] = `
+"@keyframes slide-up-mobile {
+  from {
+    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
+  }
+  to {
+    transform: translate3d(0,0,0);
+  }
 }
-:host([hidden]) {
-  display: none !important;
+@keyframes slide-up-desktop {
+  from {
+    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+  }
+  to {
+    margin-block-start: 0px;
+  }
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-dialog {
-  position: fixed;
-  height: 100dvh;
-  max-height: 100dvh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  outline: 0;
-  inset: 0;
-  display: grid;
-  overflow: hidden;
-  width: auto;
-  max-width: 100vw;
-  background: none;
-  transform: translate3d(0, 0, 0);
-  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
-}
-dialog::backdrop {
-  opacity: 0;
-}
-@media(min-width:760px) {
+  :host {
+    display: block;
+    color-scheme: light dark !important;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  :not(:defined,[data-ssr]) {
+    visibility: hidden;
+  }
   dialog {
-    grid-template-columns: repeat(2, clamp(338px, 10.52vw + 258px, 460px)) auto;
-    grid-template-rows: 100vh;
-    inset-inline-end: auto;
-  }
-}
-
-.scroller {
-  grid-area: 1/1;
-  overflow: auto;
-  visibility: var(--p-internal-flyout-multilevel-visibility,hidden);
-  transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-transition-duration, 0.6s);
-  background-color: #0E0E12;
-}
-.scroller::before {
-  content: "";
-  display: block;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  height: 4rem;
-  background-color: rgba(14, 14, 18, 0.79);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-}
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(4px, 0.25vw + 3px, 8px);
-  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
-}
-.header {
-  position: relative;
-  z-index: 3;
-  grid-area: 1/1;
-  align-self: flex-start;
-  justify-self: flex-end;
-  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
-  height: 4rem;
-  display: flex;
-  align-items: center;
-}
-.dismiss {
-  padding: clamp(8px, 0.5vw + 6px, 16px);
-}
-@media(min-width:760px) {
-  .scroller {
+    all: unset;
+    position: fixed;
+    inset: 0;
+    z-index: 999999999;
+    outline: 0;
     visibility: inherit;
-    transition: initial;
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: rgba(38, 38, 41, 0.67);
+    transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   }
-  .scroller::before {
+  dialog::backdrop {
     display: none;
   }
-  .content {
-    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+@media(min-width:760px) {
+    slot {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(4px, 0.25vw + 3px, 8px);
+      grid-area: 2/2/auto/-2;
+      height: fit-content;
+      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
+      animation: slide-up-desktop var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+    }
+}
+
+@media(max-width:759px) {
+    slot {
+      display: contents;
+    }
+    ::slotted(*:not([primary],[secondary],[cascade])) {
+      display: none;
+    }
+}
+
+  .drawer {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    opacity: 1;
+    transform: translate3d(0,0,0);
+    transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   }
-  .header {
-    margin-inline-end: 0;
-    grid-area: 1/-1;
-    place-self: flex-start;
+  .drawer::before, .drawer::after {
+    content: "";
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
   }
-  .dismiss {
-    --p-internal-icon-filter: invert(1);
-    margin: clamp(8px, 0.5vw + 6px, 16px);
-    padding: 8px;
+  .scroller {
+    display: contents;
+    overflow: hidden auto;
+    background: rgba(0,0,0,.01);
   }
+  .back {
+    display: none;
+  }
+@media(min-width:760px) {
+    .drawer {
+      width: calc(clamp(338px, 210px + 18vw, 640px) * 2);
+      grid-template: clamp(16px, 1.25vw + 12px, 36px) minmax(0, 1fr)/repeat(2, clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px));
+      background: linear-gradient(90deg,#0E0E12 0%,#0E0E12 50%,#212225 50%,#212225 100%);
+    }
+    .drawer:dir(rtl) {
+      background: linear-gradient(90deg,#212225 0%,#212225 50%,#0E0E12 50%,#0E0E12 100%);
+    }
+    .drawer::after {
+      grid-area: 1/4/-1/-1;
+      background: #212225;
+    }
+    .drawer::before {
+      grid-area: 1/1/-1/4;
+      background: #0E0E12;
+    }
+    .scroller {
+      grid-area: 1/1/-1/4;
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-template-columns: subgrid;
+    }
+    .dismiss-mobile {
+      display: none;
+    }
+    .dismiss-desktop {
+      --p-internal-icon-filter: invert(1);
+      position: absolute;
+      inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
+      inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
+      padding: 8px;
+    }
+}
+
+@media(max-width:759px) {
+    .drawer {
+      grid-template: clamp(16px, 1.25vw + 12px, 36px) auto clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr)/clamp(32px, 2.75vw + 23px, 76px) auto minmax(0, 1fr) auto clamp(32px, 2.75vw + 23px, 76px);
+      background: #0E0E12;
+    }
+    .drawer::after {
+      grid-area: 1/1/-1/-1;
+      background: #0E0E12;
+    }
+    .drawer::before {
+      grid-area: 1/1/-1/-1;
+      background: #0E0E12;
+    }
+    .dismiss-mobile {
+      --p-internal-button-scaling: 0;
+      width: fit-content;
+      height: fit-content;
+      place-self: center flex-end;
+      grid-area: 2/4;
+      z-index: 3;
+      margin-inline-end: -1px;
+    }
+    .dismiss-desktop {
+      display: none;
+    }
+    .back {
+      display: block;
+      grid-area: 2/2;
+      width: fit-content;
+      height: fit-content;
+      place-self: center flex-start;
+      z-index: 2;
+    }
 }
 "
 `;
 
-exports[`getComponentCss() should return correct css for isPrimaryScrollerVisible: true, isSecondaryScrollerVisible: true and theme: light 1`] = `
-":host {
-  display: block;
-  position: fixed !important;
-  inset: 0 !important;
-  z-index: 99998 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  visibility: inherit !important;
-  pointer-events: auto !important;
-  -webkit-backdrop-filter: blur(32px) !important;
-  backdrop-filter: blur(32px) !important;
-  opacity: 1 !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0s) !important;
-  color-scheme: light dark !important;
+exports[`getComponentCss() should return correct css for isOpen: true, isPrimary: true, isSecondaryScrollerVisible: true and theme: light 1`] = `
+"@keyframes slide-up-mobile {
+  from {
+    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
+  }
+  to {
+    transform: translate3d(0,0,0);
+  }
 }
-:host([hidden]) {
-  display: none !important;
+@keyframes slide-up-desktop {
+  from {
+    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+  }
+  to {
+    margin-block-start: 0px;
+  }
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-dialog {
-  position: fixed;
-  height: 100dvh;
-  max-height: 100dvh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  outline: 0;
-  inset: 0;
-  display: grid;
-  overflow: hidden;
-  width: auto;
-  max-width: 100vw;
-  background: none;
-  transform: translate3d(0, 0, 0);
-  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
-}
-dialog::backdrop {
-  opacity: 0;
-}
-@media(min-width:760px) {
+  :host {
+    display: block;
+    color-scheme: light dark !important;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  :not(:defined,[data-ssr]) {
+    visibility: hidden;
+  }
   dialog {
-    grid-template-columns: repeat(2, clamp(338px, 10.52vw + 258px, 460px)) auto;
-    grid-template-rows: 100vh;
-    inset-inline-end: auto;
-  }
-}
-
-.scroller {
-  grid-area: 1/1;
-  overflow: auto;
-  visibility: var(--p-internal-flyout-multilevel-visibility,hidden);
-  transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-transition-duration, 0.6s);
-  background-color: #FFF;
-}
-.scroller::before {
-  content: "";
-  display: block;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  height: 4rem;
-  background-color: rgba(255, 255, 255, 0.79);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-}
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(4px, 0.25vw + 3px, 8px);
-  padding: clamp(8px, 0.5vw + 6px, 16px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
-}
-.header {
-  position: relative;
-  z-index: 3;
-  grid-area: 1/1;
-  align-self: flex-start;
-  justify-self: flex-end;
-  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
-  height: 4rem;
-  display: flex;
-  align-items: center;
-}
-.dismiss {
-  padding: clamp(8px, 0.5vw + 6px, 16px);
-}
-@media(min-width:760px) {
-  .scroller {
+    all: unset;
+    position: fixed;
+    inset: 0;
+    z-index: 999999999;
+    outline: 0;
     visibility: inherit;
-    transition: initial;
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: rgba(1, 2, 5, 0.67);
+    transition: background var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   }
-  .scroller::before {
+  dialog::backdrop {
     display: none;
   }
-  .content {
-    padding: clamp(16px, 1.25vw + 12px, 36px) clamp(32px, 2.75vw + 23px, 76px) clamp(32px, 2.75vw + 23px, 76px);
+@media(min-width:760px) {
+    slot {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(4px, 0.25vw + 3px, 8px);
+      grid-area: 2/2/auto/-2;
+      height: fit-content;
+      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
+      animation: slide-up-desktop var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+    }
+}
+
+@media(max-width:759px) {
+    slot {
+      display: contents;
+    }
+    ::slotted(*:not([primary],[secondary],[cascade])) {
+      display: none;
+    }
+}
+
+  .drawer {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    opacity: 1;
+    transform: translate3d(0,0,0);
+    transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   }
-  .header {
-    margin-inline-end: 0;
-    grid-area: 1/-1;
-    place-self: flex-start;
+  .drawer::before, .drawer::after {
+    content: "";
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
   }
-  .dismiss {
-    --p-internal-icon-filter: invert(1);
-    margin: clamp(8px, 0.5vw + 6px, 16px);
-    padding: 8px;
+  .scroller {
+    display: contents;
+    overflow: hidden auto;
+    background: rgba(255,255,255,.01);
   }
+  .back {
+    display: none;
+  }
+@media(min-width:760px) {
+    .drawer {
+      width: calc(clamp(338px, 210px + 18vw, 640px) * 2);
+      grid-template: clamp(16px, 1.25vw + 12px, 36px) minmax(0, 1fr)/repeat(2, clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px));
+      background: linear-gradient(90deg,#FFF 0%,#FFF 50%,#EEEFF2 50%,#EEEFF2 100%);
+    }
+    .drawer:dir(rtl) {
+      background: linear-gradient(90deg,#EEEFF2 0%,#EEEFF2 50%,#FFF 50%,#FFF 100%);
+    }
+    .drawer::after {
+      grid-area: 1/4/-1/-1;
+      background: #EEEFF2;
+    }
+    .drawer::before {
+      grid-area: 1/1/-1/4;
+      background: #FFF;
+    }
+    .scroller {
+      grid-area: 1/1/-1/4;
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-template-columns: subgrid;
+    }
+    .dismiss-mobile {
+      display: none;
+    }
+    .dismiss-desktop {
+      --p-internal-icon-filter: invert(1);
+      position: absolute;
+      inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
+      inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
+      padding: 8px;
+    }
+}
+
+@media(max-width:759px) {
+    .drawer {
+      grid-template: clamp(16px, 1.25vw + 12px, 36px) auto clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr)/clamp(32px, 2.75vw + 23px, 76px) auto minmax(0, 1fr) auto clamp(32px, 2.75vw + 23px, 76px);
+      background: #FFF;
+    }
+    .drawer::after {
+      grid-area: 1/1/-1/-1;
+      background: #FFF;
+    }
+    .drawer::before {
+      grid-area: 1/1/-1/-1;
+      background: #FFF;
+    }
+    .dismiss-mobile {
+      --p-internal-button-scaling: 0;
+      width: fit-content;
+      height: fit-content;
+      place-self: center flex-end;
+      grid-area: 2/4;
+      z-index: 3;
+      margin-inline-end: -1px;
+    }
+    .dismiss-desktop {
+      display: none;
+    }
+    .back {
+      display: block;
+      grid-area: 2/2;
+      width: fit-content;
+      height: fit-content;
+      place-self: center flex-start;
+      z-index: 2;
+    }
 }
 "
 `;

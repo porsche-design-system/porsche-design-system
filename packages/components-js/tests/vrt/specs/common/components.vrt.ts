@@ -1,10 +1,10 @@
-import { expect, type Page, test } from '@playwright/test';
-import { setupScenario } from '../../helpers';
-import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
-import { getComponentMeta } from '@porsche-design-system/component-meta';
-import { schemes, themes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt';
 import path from 'path';
+import { type Page, expect, test } from '@playwright/test';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
+import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
+import { schemes, themes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt';
 import * as globby from 'globby-legacy';
+import { setupScenario } from '../../helpers';
 
 const sourceDirectory = path.resolve('src/pages');
 const fileNames = globby.sync(`${sourceDirectory}/*.html`).map((filePath) => path.basename(filePath, '.html'));
@@ -44,95 +44,92 @@ test(`should have certain amount of components`, () => {
 });
 
 components.forEach((component) => {
-  // FIXME: Popover is extremely flaky, skipping for now
-  // https://github.com/porsche-design-system/porsche-design-system/issues/3088
-  if (component !== 'popover') {
-    // executed in Chrome + Safari
-    test.describe(component, async () => {
-      themes.forEach((theme) => {
-        test(`should have no visual regression for viewport ${viewportWidthM} and theme ${theme}`, async ({ page }) => {
-          test.skip(
-            (!isComponentThemeable(component) && theme === 'dark') || component === 'stepper-horizontal',
-            'This component has no theme support and stepper-horizontal is flaky'
-          );
+  // executed in Chrome + Safari
+  test.describe(component, async () => {
+    themes.forEach((theme) => {
+      test(`should have no visual regression for viewport ${viewportWidthM} and theme ${theme}`, async ({ page }) => {
+        test.skip(
+          (!isComponentThemeable(component) && theme === 'dark') || component === 'stepper-horizontal',
+          'This component has no theme support and stepper-horizontal is flaky'
+        );
 
-          await setupScenario(page, `/${component}`, viewportWidthM, {
-            forceComponentTheme: isComponentThemeable(component) ? theme : undefined,
-          });
-          await revertAutoFocus(page, component);
-          await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-theme-${theme}.png`);
-        });
-      });
-    });
-
-    // executed in Chrome only
-    test.describe(component, async () => {
-      test.skip(({ browserName }) => browserName !== 'chromium');
-
-      // regular tests on different viewports
-      viewportWidths
-        .filter((x) => x !== viewportWidthM)
-        .forEach((viewportWidth) => {
-          test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
-            await setupScenario(page, `/${component}`, viewportWidth);
-            await revertAutoFocus(page, component);
-            await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidth}.png`);
-          });
-        });
-
-      // prefers-color-scheme: 'light' | 'dark' tests on 1000px viewport
-      schemes.forEach((scheme) => {
-        // theme="auto"
-        test(`should have no visual regression for viewport ${viewportWidthM} and theme auto with prefers-color-scheme ${scheme}`, async ({
-          page,
-        }) => {
-          test.skip(!isComponentThemeable(component), 'This component has no theme support');
-
-          await setupScenario(page, `/${component}`, viewportWidthM, {
-            forceComponentTheme: 'auto',
-            prefersColorScheme: scheme,
-          });
-          await revertAutoFocus(page, component);
-          await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-theme-${scheme}.png`); // fixture is aliased since result has to be equal
-        });
-
-        // high contrast mode
-        test(`should have no visual regression for viewport ${viewportWidthM} and high contrast mode with prefers-color-scheme ${scheme}`, async ({
-          page,
-        }) => {
-          await setupScenario(page, `/${component}`, viewportWidthM, {
-            forcedColorsEnabled: true,
-            prefersColorScheme: scheme,
-          });
-          await revertAutoFocus(page, component);
-          await expect(page.locator('#app')).toHaveScreenshot(
-            `${component}-${viewportWidthM}-high-contrast-scheme-${scheme}.png`
-          );
-        });
-      });
-
-      // 200% font scaling
-      test(`should have no visual regression for viewport ${viewportWidthM} in scale mode`, async ({ page }) => {
         await setupScenario(page, `/${component}`, viewportWidthM, {
-          scalePageFontSize: true,
+          forceComponentTheme: isComponentThemeable(component) ? theme : undefined,
         });
         await revertAutoFocus(page, component);
-        await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-scale-mode.png`);
+        await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-theme-${theme}.png`);
+      });
+    });
+  });
+
+  // executed in Chrome only
+  test.describe(component, async () => {
+    test.skip(({ browserName }) => browserName !== 'chromium');
+
+    // regular tests on different viewports
+    viewportWidths
+      .filter((x) => x !== viewportWidthM)
+      .forEach((viewportWidth) => {
+        test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
+          await setupScenario(page, `/${component}`, viewportWidth);
+          await revertAutoFocus(page, component);
+          await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidth}.png`);
+        });
       });
 
-      // rtl mode
-      test(`should have no visual regression for viewport ${viewportWidthM} in rtl (right-to-left) mode`, async ({
+    // prefers-color-scheme: 'light' | 'dark' tests on 1000px viewport
+    schemes.forEach((scheme) => {
+      // theme="auto"
+      test(`should have no visual regression for viewport ${viewportWidthM} and theme auto with prefers-color-scheme ${scheme}`, async ({
+        page,
+      }) => {
+        test.skip(!isComponentThemeable(component), 'This component has no theme support');
+
+        await setupScenario(page, `/${component}`, viewportWidthM, {
+          forceComponentTheme: 'auto',
+          prefersColorScheme: scheme,
+        });
+        await revertAutoFocus(page, component);
+        await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-theme-${scheme}.png`); // fixture is aliased since result has to be equal
+      });
+
+      // high contrast mode
+      test(`should have no visual regression for viewport ${viewportWidthM} and high contrast mode with prefers-color-scheme ${scheme}`, async ({
         page,
       }) => {
         await setupScenario(page, `/${component}`, viewportWidthM, {
-          forceDirMode: 'rtl',
+          forcedColorsEnabled: true,
+          prefersColorScheme: scheme,
         });
         await revertAutoFocus(page, component);
-        await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-rtl-mode.png`);
+        await expect(page.locator('#app')).toHaveScreenshot(
+          `${component}-${viewportWidthM}-high-contrast-scheme-${scheme}.png`
+        );
       });
+    });
 
-      // print view
-      /*
+    // 200% font scaling
+    test(`should have no visual regression for viewport ${viewportWidthM} in scale mode`, async ({ page }) => {
+      await setupScenario(page, `/${component}`, viewportWidthM, {
+        scalePageFontSize: true,
+      });
+      await revertAutoFocus(page, component);
+      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-scale-mode.png`);
+    });
+
+    // rtl mode
+    test(`should have no visual regression for viewport ${viewportWidthM} in rtl (right-to-left) mode`, async ({
+      page,
+    }) => {
+      await setupScenario(page, `/${component}`, viewportWidthM, {
+        forceDirMode: 'rtl',
+      });
+      await revertAutoFocus(page, component);
+      await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-rtl-mode.png`);
+    });
+
+    // print view
+    /*
       themes.forEach((theme) => {
         test(`should have no visual regression for printed pdf with theme ${theme}`, async ({ page }) => {
           const flakyPrintComponents = [
@@ -165,7 +162,7 @@ components.forEach((component) => {
             // path: `tests/vrt/results/${component}-print-theme-${theme}.pdf`, // optional to write it to file
           });
 
-          // easiest would be to compare file buffers but those always differ, probably meta timestamps and such 🤷‍
+          // easiest would be to compare file buffers but those always differ, probably meta timestamps and such 🤷
           // next best approach is to open the PDF in browser like
           // await page.goto(`/assets/${component}.pdf#toolbar=0&navpanes=0&view=FitH`);
           // and then take a screenshot, but that does not work in headless chrome as described here
@@ -183,6 +180,5 @@ components.forEach((component) => {
         });
       });
       */
-    });
-  }
+  });
 });

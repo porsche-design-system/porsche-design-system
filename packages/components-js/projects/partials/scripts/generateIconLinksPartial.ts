@@ -1,6 +1,6 @@
-import { minifyHTML } from './utils';
+import { ICONS_MANIFEST, ICON_NAMES } from '@porsche-design-system/icons';
 import { CDN_BASE_PATH_ICONS } from '../../../../../cdn.config';
-import { ICON_NAMES, ICONS_MANIFEST } from '@porsche-design-system/icons';
+import { minifyHTML } from './utils';
 
 export const generateIconLinksPartial = (): string => {
   const iconType = ICON_NAMES.map((x) => `'${x}'`).join(' | ');
@@ -44,11 +44,11 @@ Please use only valid icon names:
   const linksHtml = urls
     .map((url) => \`${link}\`)
     .join('');
-  const linksJsx = urls.map((url, index) => <link key={index} rel="prefetch" href={url} as="image" type="image/svg+xml" crossOrigin="" />);
 
   if (format === 'html') {
     return linksHtml;
   } else if (format === 'jsx') {
+    const linksJsx = urls.map((url, index) => <link key={index} rel="prefetch" href={url} as="image" type="image/svg+xml" crossOrigin="" />);
     return <>{linksJsx}</>;
   } else {
     return urls.map((url) => ({ href: url } as PartialLink))

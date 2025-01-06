@@ -1,26 +1,29 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, State, Watch } from '@stencil/core';
-import {
-  FLYOUT_MULTILEVEL_ARIA_ATTRIBUTES,
-  type FlyoutMultilevelAriaAttribute,
-  type FlyoutMultilevelUpdateEventDetail,
-  INTERNAL_UPDATE_EVENT_NAME,
-  syncFlyoutMultilevelItemsProps,
-  validateActiveIdentifier,
-} from './flyout-multilevel-utils';
-import { getComponentCss } from './flyout-multilevel-styles';
+import { breakpointS } from '@porsche-design-system/styles';
+import { Component, Element, Event, type EventEmitter, type JSX, Listen, Prop, State, Watch, h } from '@stencil/core';
+import type { PropTypes, SelectedAriaAttributes, Theme } from '../../../types';
 import {
   AllowedTypes,
+  THEMES,
   attachComponentCss,
-  getDirectChildHTMLElementOfKind,
+  getHTMLElementOfKind,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasPropValueChanged,
   parseAndGetAriaAttributes,
   setScrollLock,
-  THEMES,
   validateProps,
 } from '../../../utils';
-import type { PropTypes, SelectedAriaAttributes, Theme } from '../../../types';
+import { getComponentCss } from './flyout-multilevel-styles';
+import {
+  FLYOUT_MULTILEVEL_ARIA_ATTRIBUTES,
+  type FlyoutMultilevelAriaAttribute,
+  type FlyoutMultilevelUpdateEventDetail,
+  INTERNAL_UPDATE_EVENT_NAME,
+  type Item,
+  syncThemeToItems,
+  updateFlyoutMultiLevelItemState,
+  validateActiveIdentifier,
+} from './flyout-multilevel-utils';
 
 const propTypes: PropTypes<typeof FlyoutMultilevel> = {
   activeIdentifier: AllowedTypes.string,
@@ -44,18 +47,17 @@ const propTypes: PropTypes<typeof FlyoutMultilevel> = {
 export class FlyoutMultilevel {
   @Element() public host!: HTMLElement;
 
-  // TODO: shouldn't open prop be changed internally too?
   /** If true, the flyout-multilevel is visualized as opened. */
   @Prop() public open?: boolean = false;
 
   /** Defines which flyout-multilevel-item to be visualized as opened. */
   @Prop() public activeIdentifier?: string | undefined;
 
-  /** Adapts the flyout-multilevel color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
-
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<FlyoutMultilevelAriaAttribute>;
+
+  /** Adapts the flyout-multilevel color depending on the theme. */
+  @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
@@ -63,26 +65,50 @@ export class FlyoutMultilevel {
   /** Emitted when activeIdentifier is changed. */
   @Event({ bubbles: false }) public update?: EventEmitter<FlyoutMultilevelUpdateEventDetail>;
 
-  @State() private flyoutMultilevelItemElements: HTMLPFlyoutMultilevelItemElement[] = [];
+  @State() private flyoutMultilevelItemElements: Item[] = [];
+  @State() private primary: boolean = true;
+  @State() private isSecondaryDrawerVisible: boolean = !!this.activeIdentifier;
 
   private dialog: HTMLDialogElement;
+  private drawer: HTMLDivElement;
+  private isDesktop = false;
+  private matchMediaQueryS = window.matchMedia(`(min-width: ${breakpointS}px)`);
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
     setScrollLock(isOpen);
   }
 
-  public componentWillLoad(): void {
-    this.defineFlyoutMultilevelItemElements();
+  @Watch('activeIdentifier')
+  public async activeIdentifierChangeHandler(newVal: string | undefined, oldVal: string | undefined): Promise<void> {
+    await this.updateFlyoutMultiLevelState(oldVal, newVal);
+  }
 
-    this.host.shadowRoot.addEventListener(
-      INTERNAL_UPDATE_EVENT_NAME,
-      (e: CustomEvent<FlyoutMultilevelUpdateEventDetail>) => {
-        e.stopPropagation(); // prevents internal event from bubbling further
-        const activeIdentifier = e.detail.activeIdentifier;
-        this.update.emit({ activeIdentifier });
-      }
+  @Watch('theme')
+  public themeChangeHandler(theme: Theme): void {
+    syncThemeToItems(theme, this.flyoutMultilevelItemElements);
+  }
+
+  @Listen(INTERNAL_UPDATE_EVENT_NAME)
+  public onInternalUpdate(e: CustomEvent<FlyoutMultilevelUpdateEventDetail>): void {
+    e.stopPropagation(); // prevents internal event from bubbling further
+    const activeIdentifier = e.detail.activeIdentifier;
+    this.update.emit({ activeIdentifier });
+  }
+
+  public connectedCallback(): void {
+    this.handleMediaQueryS(this.matchMediaQueryS);
+    this.matchMediaQueryS.addEventListener('change', this.handleMediaQueryS);
+  }
+
+  public async componentWillLoad(): Promise<void> {
+    this.defineFlyoutMultilevelItemElements();
+    syncThemeToItems(this.theme, this.flyoutMultilevelItemElements);
+    const activeItem = this.flyoutMultilevelItemElements.find(
+      (item: Item) => item.identifier === this.activeIdentifier
     );
+    activeItem && updateFlyoutMultiLevelItemState(activeItem, true); // Set item state
+    this.primary = !activeItem || activeItem.parentElement === this.host;
   }
 
   public componentDidLoad(): void {
@@ -104,30 +130,51 @@ export class FlyoutMultilevel {
 
   public disconnectedCallback(): void {
     setScrollLock(false);
+    this.matchMediaQueryS.removeEventListener('change', this.handleMediaQueryS);
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
     validateActiveIdentifier(this, this.flyoutMultilevelItemElements, this.activeIdentifier);
-    attachComponentCss(this.host, getComponentCss, this.open, !!this.activeIdentifier, this.theme);
-    syncFlyoutMultilevelItemsProps(this.flyoutMultilevelItemElements, this.activeIdentifier, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.open, this.primary, this.isSecondaryDrawerVisible, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <dialog
-        // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
-        // eslint-disable-next-line
-        /* @ts-ignore */
-        inert={this.open ? null : true} // prevents focusable elements during fade-out transition
-        tabIndex={-1} // dialog always has a dismiss button to be focused
+        inert={!this.open} // prevents focusable elements during fade-out transition + prevents focusable elements within nested open accordion
         ref={(ref) => (this.dialog = ref)}
+        {...parseAndGetAriaAttributes(this.aria)}
         onCancel={this.onCancelDialog}
         onClick={this.onClickDialog}
       >
-        <div class="header">
+        <div class="drawer" ref={(ref) => (this.drawer = ref)}>
           <PrefixedTagNames.pButtonPure
-            class="dismiss"
+            class="back"
+            type="button"
+            size="small"
+            alignLabel="end"
+            stretch={true}
+            icon="arrow-left"
+            theme={this.theme}
+            hideLabel={true}
+            onClick={() => this.emitCloseSecondaryUpdate()}
+          >
+            Back
+          </PrefixedTagNames.pButtonPure>
+          <PrefixedTagNames.pButton
+            class="dismiss-mobile"
+            type="button"
+            variant="ghost"
+            hideLabel={true}
+            icon="close"
+            theme={this.theme}
+            onClick={this.dismissDialog}
+          >
+            Dismiss flyout
+          </PrefixedTagNames.pButton>
+          <PrefixedTagNames.pButtonPure
+            class="dismiss-desktop"
             type="button"
             size="medium"
             icon="close"
@@ -137,21 +184,16 @@ export class FlyoutMultilevel {
           >
             Dismiss flyout
           </PrefixedTagNames.pButtonPure>
-        </div>
-        <div class="scroller">
-          <nav class="content" {...parseAndGetAriaAttributes(this.aria)}>
+          <div class="scroller">
             <slot />
-          </nav>
+          </div>
         </div>
       </dialog>
     );
   }
 
   private defineFlyoutMultilevelItemElements = (): void => {
-    this.flyoutMultilevelItemElements = getDirectChildHTMLElementOfKind(
-      this.host,
-      'p-flyout-multilevel-item'
-    ) as HTMLPFlyoutMultilevelItemElement[];
+    this.flyoutMultilevelItemElements = getHTMLElementOfKind(this.host, 'p-flyout-multilevel-item') as Item[];
   };
 
   private onClickDialog = (e: MouseEvent & { target: HTMLElement }): void => {
@@ -179,4 +221,69 @@ export class FlyoutMultilevel {
       this.dialog.close();
     }
   }
+
+  private async updateFlyoutMultiLevelState(oldVal: string | undefined, newVal: string | undefined): Promise<void> {
+    const oldItem = oldVal && this.flyoutMultilevelItemElements.find((item) => item.identifier === oldVal);
+    const newItem = newVal && this.flyoutMultilevelItemElements.find((item) => item.identifier === newVal);
+
+    // Secondary Drawer is closed => only update state
+    if (!newItem) {
+      if (this.isDesktop) {
+        this.updateStates(oldItem, newItem);
+      } else {
+        const animation = this.animateDrawerFade('::after', 'out');
+        await animation.finished;
+        this.updateStates(oldItem, newItem);
+        this.animateDrawerFade('::after', 'in');
+      }
+    }
+
+    // Secondary Drawer is opened => update state + fade in
+    if (!oldItem) {
+      if (this.isDesktop) {
+        this.updateStates(oldItem, newItem);
+        this.animateDrawerFade('::after', 'in');
+      } else {
+        const animation = this.animateDrawerFade('::after', 'out');
+        await animation.finished;
+        this.updateStates(oldItem, newItem);
+        this.animateDrawerFade('::after', 'in');
+      }
+    }
+
+    // Active item is changed => fade out + update state + fade in
+    if (newItem && oldItem) {
+      const isHierarchyChanged = oldItem.parentElement !== newItem.parentElement;
+      const animations = [
+        this.animateDrawerFade('::after', 'out'),
+        isHierarchyChanged && this.animateDrawerFade('::before', 'out'),
+      ].filter(Boolean);
+
+      await Promise.all(animations.map((a) => a.finished));
+      this.updateStates(oldItem, newItem);
+      isHierarchyChanged && this.animateDrawerFade('::before', 'in');
+      this.animateDrawerFade('::after', 'in');
+    }
+  }
+
+  private emitCloseSecondaryUpdate(): void {
+    this.update.emit({ activeIdentifier: undefined });
+  }
+
+  private updateStates(oldItem: Item | undefined, newItem: Item | undefined): void {
+    this.primary = !oldItem || !newItem || newItem.parentElement === this.host;
+    this.isSecondaryDrawerVisible = !!this.activeIdentifier;
+    oldItem && updateFlyoutMultiLevelItemState(oldItem, false); // Reset old item state
+    newItem && updateFlyoutMultiLevelItemState(newItem, true); // Set new item state
+  }
+
+  private animateDrawerFade(pseudoElement: '::before' | '::after', direction: 'in' | 'out'): Animation {
+    const keyframes = direction === 'in' ? [{ opacity: 1 }, { opacity: 0 }] : [{ opacity: 0 }, { opacity: 1 }];
+    const duration = direction === 'in' ? 400 : 150;
+    return this.drawer?.animate(keyframes, { duration, pseudoElement });
+  }
+
+  private handleMediaQueryS = (e: MediaQueryList | MediaQueryListEvent): void => {
+    this.isDesktop = !!e.matches;
+  };
 }

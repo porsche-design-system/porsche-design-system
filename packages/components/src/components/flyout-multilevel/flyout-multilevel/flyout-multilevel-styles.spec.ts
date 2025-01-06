@@ -1,18 +1,17 @@
-import { getComponentCss } from './flyout-multilevel-styles';
 import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
+import { getComponentCss } from './flyout-multilevel-styles';
+
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    [false, false, 'light'],
-    [true, false, 'light'],
-    [true, true, 'light'],
-    [false, false, 'dark'],
-    [true, false, 'dark'],
-    [true, true, 'dark'],
-    [false, false, 'auto'],
-    [true, false, 'auto'],
-    [true, true, 'auto'],
+    [true, true, true, 'light'],
+    [true, true, false, 'light'],
+    [true, false, true, 'light'],
+    [true, false, false, 'light'],
+    [true, true, true, 'dark'],
+    [true, true, true, 'auto'],
+    [false, true, true, 'light'],
   ])(
-    'should return correct css for isPrimaryScrollerVisible: %s, isSecondaryScrollerVisible: %s and theme: %s',
+    'should return correct css for isOpen: %s, isPrimary: %s, isSecondaryScrollerVisible: %s and theme: %s',
     (...args) => {
       validateCssAndMatchSnapshot(getComponentCss(...args));
     }

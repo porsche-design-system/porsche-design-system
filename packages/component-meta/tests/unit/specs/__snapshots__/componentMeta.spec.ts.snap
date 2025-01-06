@@ -2591,7 +2591,7 @@ exports[`should match snapshot 1`] = `
       "update": {
         "description": "Emitted when activeIdentifier is changed.",
         "type": "FlyoutMultilevelUpdateEventDetail",
-        "typeDetail": "{ activeIdentifier: string }",
+        "typeDetail": "{ activeIdentifier: string | undefined }",
       },
     },
     "hasAriaProp": true,
@@ -2606,6 +2606,7 @@ exports[`should match snapshot 1`] = `
     "isThemeable": true,
     "nestedComponents": [
       "p-button-pure",
+      "p-button",
     ],
     "propsMeta": {
       "activeIdentifier": {
@@ -2662,6 +2663,12 @@ exports[`should match snapshot 1`] = `
       "p-button-pure",
     ],
     "propsMeta": {
+      "cascade": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Private property set by the component itself.",
+        "type": "boolean",
+      },
       "identifier": {
         "allowedValues": "string",
         "defaultValue": null,
@@ -2675,8 +2682,23 @@ exports[`should match snapshot 1`] = `
         "description": "Label of the item.",
         "type": "string",
       },
+      "primary": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Private property set by the component itself.",
+        "type": "boolean",
+      },
+      "secondary": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Private property set by the component itself.",
+        "type": "boolean",
+      },
     },
-    "requiredParent": "p-flyout-multilevel",
+    "requiredParent": [
+      "p-flyout-multilevel",
+      "p-flyout-multilevel-item",
+    ],
     "slotsMeta": {
       "": {
         "description": "Default slot for the main content.",

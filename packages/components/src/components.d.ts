@@ -832,6 +832,10 @@ export namespace Components {
      */
     interface PFlyoutMultilevelItem {
         /**
+          * Private property set by the component itself.
+         */
+        "cascade"?: boolean;
+        /**
           * Unique identifier which controls if this item should be shown when the active-identifier on the flyout-multilevel is set to this value.
          */
         "identifier": string;
@@ -839,6 +843,14 @@ export namespace Components {
           * Label of the item.
          */
         "label"?: string;
+        /**
+          * Private property set by the component itself.
+         */
+        "primary"?: boolean;
+        /**
+          * Private property set by the component itself.
+         */
+        "secondary"?: boolean;
     }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
@@ -4031,6 +4043,10 @@ declare namespace LocalJSX {
      */
     interface PFlyoutMultilevelItem {
         /**
+          * Private property set by the component itself.
+         */
+        "cascade"?: boolean;
+        /**
           * Unique identifier which controls if this item should be shown when the active-identifier on the flyout-multilevel is set to this value.
          */
         "identifier"?: string;
@@ -4038,6 +4054,14 @@ declare namespace LocalJSX {
           * Label of the item.
          */
         "label"?: string;
+        /**
+          * Private property set by the component itself.
+         */
+        "primary"?: boolean;
+        /**
+          * Private property set by the component itself.
+         */
+        "secondary"?: boolean;
     }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.

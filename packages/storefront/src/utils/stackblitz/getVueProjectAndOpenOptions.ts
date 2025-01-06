@@ -1,5 +1,14 @@
-import { devDependencies, dependencies } from '../../../../components-vue/package.json';
+import { initialStyles } from '@/lib/partialResults';
 import { devDependencies as devDependenciesRoot } from '../../../../../package.json';
+import { dependencies, devDependencies } from '../../../../components-vue/package.json';
+import type { PlaygroundDir, StackBlitzProjectDependencies } from '../../models';
+import type {
+  DependencyMap,
+  ExternalDependency,
+  GetStackBlitzProjectAndOpenOptions,
+  SharedImportKey,
+} from '../../utils';
+import { convertMarkup } from '../../utils/formatting';
 import {
   convertImportPaths,
   getExternalDependencies,
@@ -7,15 +16,6 @@ import {
   isStableStorefrontReleaseOrForcedPdsVersion,
   removeSharedImport,
 } from './helper';
-import { convertMarkup } from '../../utils/formatting';
-import type {
-  DependencyMap,
-  GetStackBlitzProjectAndOpenOptions,
-  SharedImportKey,
-  ExternalDependency,
-} from '../../utils';
-import type { PlaygroundDir, StackBlitzProjectDependencies } from '../../models';
-import { initialStyles } from '@/lib/partialResults';
 
 // TODO: this entire puzzle should be refactored into an object-oriented way so that there is a clear and clean structure
 // as well as code flow, similar to our WrapperGenerator
@@ -28,7 +28,7 @@ export const extendExampleWithConstantsAndProvider = (markup: string, sharedImpo
       // add const definitions after last import statement
       .replace(/([\s\S]+import[\s\S]+?;)\n+/, `$1\n\n  ${sharedImportConstants.replace(/\n/g, '$&  ').trim()}\n\n`)
       // add PorscheDesignSystemProvider import
-      .replace(/(?:,\s+)?( } from '@porsche-design-system\/components-vue')/, ', PorscheDesignSystemProvider$1')
+      .replace(/(?:,\s+)?(\s*} from '@porsche-design-system\/components-vue')/, ', PorscheDesignSystemProvider$1')
   ).replace(
     // wrap template in PorscheDesignSystemProvider
     /(<template>)([\s\S]+?)(<\/template>)/,

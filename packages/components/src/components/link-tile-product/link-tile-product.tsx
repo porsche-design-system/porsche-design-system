@@ -1,25 +1,25 @@
-import { Component, Element, Event, type EventEmitter, Fragment, h, Prop } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, Fragment, type JSX, Prop, h } from '@stencil/core';
+import { getSlottedPictureImageStyles } from '../../styles/global/slotted-picture-image-styles';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
+  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
-  THEMES,
   throwIfInvalidLinkTileProductUsage,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './link-tile-product-styles';
 import {
-  anchorSlot,
-  headerSlot,
   type LinkTileProductAspectRatio,
   type LinkTileProductLikeEventDetail,
   type LinkTileProductTarget,
   TILE_PRODUCT_ASPECT_RATIOS,
+  anchorSlot,
+  headerSlot,
 } from './link-tile-product-utils';
-import { getSlottedPictureImageStyles } from '../../styles/global/slotted-picture-image-styles';
 
 const propTypes: PropTypes<typeof LinkTileProduct> = {
   heading: AllowedTypes.string,

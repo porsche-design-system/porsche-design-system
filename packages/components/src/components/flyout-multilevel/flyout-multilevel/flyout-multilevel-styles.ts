@@ -1,185 +1,306 @@
-import type { JssStyle } from 'jss';
-import { getCss, isThemeDark, type Theme } from '../../../utils';
 import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  cssVariableTransitionDuration,
-  getBackdropJssStyle,
-  getThemedColors,
-  getTransition,
-  hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
-  preventFoucOfNestedElementsStyles,
-} from '../../../styles';
-import {
+  frostedGlassStyle,
+  getMediaQueryMax,
   getMediaQueryMin,
-  motionDurationLong,
   spacingFluidLarge,
   spacingFluidMedium,
   spacingFluidSmall,
   spacingFluidXSmall,
   spacingStaticSmall,
 } from '@porsche-design-system/styles';
-import { FLYOUT_Z_INDEX } from '../../../constants';
-import { getFlyoutDialogResetJssStyle } from '../../../styles/flyout-dialog-reset-styles';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  cssVariableTransitionDuration,
+  dismissButtonJssStyle,
+  getAnimation,
+  getThemedColors,
+  getTransition,
+  hostHiddenStyles,
+  motionDurationMap,
+  prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
+} from '../../../styles';
+import { type Theme, getCss } from '../../../utils';
 
-export const cssVariableVisibility = '--p-internal-flyout-multilevel-visibility';
-export const cssVariableVisibilityTransitionDuration = '--p-internal-flyout-multilevel-visibility-transition-duration';
+export const scrollerWidthDesktop = 'clamp(338px, 210px + 18vw, 640px)';
+export const mediaQueryMobile = getMediaQueryMax('s');
+export const mediaQueryDesktop = getMediaQueryMin('s');
 
-export const frostedGlassHeaderHeight = '4rem';
-const frostedGlassBackgroundColorLight = 'rgba(255, 255, 255, 0.79)';
-const frostedGlassBackgroundColorDark = 'rgba(14, 14, 18, 0.79)';
+const dialogDurationOpen = 'moderate';
+const backdropDurationOpen = 'long';
+const easingOpen = 'in';
+const dialogDurationClose = 'short';
+const backdropDurationClose = 'moderate';
+const easingClose = 'out';
 
-export const scrollerWidthEnhancedView = 'clamp(338px, 10.52vw + 258px, 460px)';
-export const mediaQueryEnhancedView = getMediaQueryMin('s');
+// ensures that the scrollbar color is mostly set correctly
+export const scrollerBackground: { [K in Theme]: string } = {
+  light: 'rgba(255,255,255,.01)',
+  dark: 'rgba(0,0,0,.01)',
+  auto: 'rgba(255,255,255,.01)',
+};
 
 export const getComponentCss = (
-  isPrimaryScrollerVisible: boolean,
+  isOpen: boolean,
+  isPrimary: boolean,
   isSecondaryScrollerVisible: boolean,
   theme: Theme
 ): string => {
-  const { backgroundColor } = getThemedColors(theme);
-  const { backgroundColor: backgroundColorDark } = getThemedColors('dark');
-
-  const frostedGlassBackgroundColor = isThemeDark(theme)
-    ? frostedGlassBackgroundColorDark
-    : frostedGlassBackgroundColorLight;
+  const { backgroundColor, backgroundSurfaceColor, backgroundShadingColor } = getThemedColors(theme);
+  const {
+    backgroundColor: backgroundColorDark,
+    backgroundSurfaceColor: backgroundSurfaceColorDark,
+    backgroundShadingColor: backgroundShadingColorDark,
+  } = getThemedColors('dark');
 
   return getCss({
     '@global': {
+      '@keyframes slide-up-mobile': {
+        from: { transform: `translate3d(0,${spacingFluidMedium},0)` },
+        to: { transform: 'translate3d(0,0,0)' },
+      },
+      // unfortunately, it's not possible to use transform animation like in mobile view
+      // because then a new stacking context within scroll container would be initialized
+      // causing the slotted scroll container to become invisible
+      '@keyframes slide-up-desktop': {
+        from: { marginBlockStart: spacingFluidMedium },
+        to: { marginBlockStart: '0px' },
+      },
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          ...(!isPrimaryScrollerVisible && {
-            [cssVariableVisibility]: 'hidden',
-            [cssVariableVisibilityTransitionDuration]: motionDurationLong,
-          }),
-          ...getBackdropJssStyle(isPrimaryScrollerVisible, FLYOUT_Z_INDEX, theme),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
       ...preventFoucOfNestedElementsStyles,
       dialog: {
-        ...getFlyoutDialogResetJssStyle(),
-        inset: '0',
-        display: 'grid',
-        overflow: 'hidden',
-        width: 'auto',
-        maxWidth: '100vw',
-        background: 'none',
-        ...(isPrimaryScrollerVisible
+        all: 'unset',
+        position: 'fixed',
+        inset: 0,
+        zIndex: 999999999, // fallback when dialog isn't rendered on #top-layer, e.g. relevant in ssr context or fade-out transition in Safari or Firefox
+        outline: 0, // prevents outline in case dialog becomes focusable
+        ...(isOpen
           ? {
-              transform: 'translate3d(0, 0, 0)',
-              transition: `${getTransition('transform', 'long', 'in')}`,
+              visibility: 'inherit',
+              ...frostedGlassStyle,
+              background: backgroundShadingColor,
+              transition: `${getTransition('background', backdropDurationOpen, easingOpen)}, ${getTransition('backdrop-filter', backdropDurationOpen, easingOpen)}, ${getTransition('-webkit-backdrop-filter', backdropDurationOpen, easingOpen)}`,
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                background: backgroundShadingColorDark,
+              }),
             }
           : {
-              transform: 'translate3d(-100%, 0, 0)',
-              transition: `${getTransition('transform', 'long', 'out')}`,
+              visibility: 'hidden',
+              transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationMap[backdropDurationClose]}), ${getTransition('overlay', backdropDurationClose, easingClose)} allow-discrete, ${getTransition('background', backdropDurationClose, easingClose)}, ${getTransition('backdrop-filter', backdropDurationClose, easingClose)}, ${getTransition('-webkit-backdrop-filter', backdropDurationClose, easingClose)}`,
             }),
-        [mediaQueryEnhancedView]: {
-          gridTemplateColumns: `repeat(${isSecondaryScrollerVisible ? 2 : 1}, ${scrollerWidthEnhancedView}) auto`,
-          gridTemplateRows: '100vh',
-          insetInlineEnd: 'auto', // to have correct dialog dimensions for ideal transitions
+        '&::backdrop': {
+          display: 'none',
         },
-        '&:dir(rtl)': {
-          ...(!isPrimaryScrollerVisible && {
-            transform: 'translate3d(100%, 0, 0)', // use correct transitions in rtl mode
+      },
+      slot: {
+        [mediaQueryMobile]: {
+          display: 'contents',
+          ...(!isSecondaryScrollerVisible && {
+            zIndex: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: spacingFluidXSmall,
+            gridArea: '4/2/auto/-2',
+            height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
+            paddingBlockEnd: spacingFluidLarge,
+            ...(isPrimary && {
+              animation: getAnimation('slide-up-mobile', 'moderate', 'base'),
+            }),
           }),
         },
-        '&::backdrop': {
-          // to improve browser backwards compatibility we visually style the backdrop on the :host,
-          // although it's not on the #top-layer like it would be for modern browsers supporting ::backdrop
-          opacity: 0, // to support backdrop click for modern browsers supporting ::backdrop
+        [mediaQueryDesktop]: {
+          display: 'flex',
+          flexDirection: 'column',
+          gap: isPrimary ? spacingFluidXSmall : spacingFluidMedium,
+          gridArea: '2/2/auto/-2',
+          height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
+          paddingBlockEnd: spacingFluidLarge,
+          ...(isPrimary && {
+            animation: getAnimation('slide-up-desktop', 'moderate', 'base'),
+          }),
+        },
+      },
+      ...(isSecondaryScrollerVisible && {
+        '::slotted(*:not([primary],[secondary],[cascade]))': {
+          [mediaQueryMobile]: {
+            display: 'none',
+          },
+        },
+        '::slotted(*:not([primary],[cascade]))': {
+          [mediaQueryDesktop]: {
+            ...(!isPrimary && {
+              display: 'none',
+            }),
+          },
+        },
+      }),
+    },
+    drawer: {
+      position: 'absolute',
+      inset: 0,
+      display: 'grid',
+      ...(isOpen
+        ? {
+            opacity: 1,
+            transform: 'translate3d(0,0,0)',
+            transition: `${getTransition('opacity', dialogDurationOpen, easingOpen)}, ${getTransition('transform', dialogDurationOpen, easingOpen)}`,
+          }
+        : {
+            opacity: 0,
+            transform: 'translate3d(-100%,0,0)',
+            transition: `${getTransition('opacity', dialogDurationClose, easingClose)}, ${getTransition('transform', dialogDurationClose, easingClose)}`,
+            '&:dir(rtl)': {
+              transform: 'translate3d(100%,0,0)',
+            },
+          }),
+      [mediaQueryMobile]: {
+        gridTemplate: `${spacingFluidMedium} auto ${spacingFluidLarge} minmax(0, 1fr)/${spacingFluidLarge} auto minmax(0, 1fr) auto ${spacingFluidLarge}`,
+        background: backgroundColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          background: backgroundColorDark,
+        }),
+      },
+      [mediaQueryDesktop]: {
+        width: isSecondaryScrollerVisible ? `calc(${scrollerWidthDesktop} * 2)` : scrollerWidthDesktop,
+        gridTemplate: `${spacingFluidMedium} minmax(0, 1fr)/repeat(${isSecondaryScrollerVisible ? 2 : 1}, ${spacingFluidLarge} minmax(0, 1fr) ${spacingFluidLarge})`,
+        background: backgroundColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          background: backgroundColorDark,
+        }),
+        ...(isSecondaryScrollerVisible && {
+          background: `linear-gradient(90deg,${backgroundColor} 0%,${backgroundColor} 50%,${backgroundSurfaceColor} 50%,${backgroundSurfaceColor} 100%)`,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            background: `linear-gradient(90deg,${backgroundColorDark} 0%,${backgroundColorDark} 50%,${backgroundSurfaceColorDark} 50%,${backgroundSurfaceColorDark} 100%)`,
+          }),
+          '&:dir(rtl)': {
+            background: `linear-gradient(90deg,${backgroundSurfaceColor} 0%,${backgroundSurfaceColor} 50%,${backgroundColor} 50%,${backgroundColor} 100%)`,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              background: `linear-gradient(90deg,${backgroundSurfaceColorDark} 0%,${backgroundSurfaceColorDark} 50%,${backgroundColorDark} 50%,${backgroundColorDark} 100%)`,
+            }),
+          },
+        }),
+      },
+      '&::before, &::after': {
+        content: '""',
+        position: 'relative',
+        zIndex: 2,
+        pointerEvents: 'none',
+        opacity: 0,
+      },
+      '&::before': {
+        [mediaQueryMobile]: {
+          gridArea: '1/1/-1/-1',
+          background: backgroundColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            background: backgroundColorDark,
+          }),
+        },
+        [mediaQueryDesktop]: {
+          gridArea: '1/1/-1/4',
+          background: backgroundColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            background: backgroundColorDark,
+          }),
+        },
+      },
+      '&::after': {
+        [mediaQueryMobile]: {
+          gridArea: '1/1/-1/-1',
+          background: backgroundColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            background: backgroundColorDark,
+          }),
+        },
+        [mediaQueryDesktop]: {
+          gridArea: '1/4/-1/-1',
+          background: backgroundSurfaceColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            background: backgroundSurfaceColorDark,
+          }),
         },
       },
     },
     scroller: {
-      gridArea: '1/1',
-      overflow: 'auto',
-      // cssVariableVisibility ensures secondary scroller is not tabbable when whole flyout-multilevel is closed
-      // on mobile we need to decide if secondary scroller needs to be visible or not, on desktop it's not necessary but also doesn't harm
-      visibility: `var(${cssVariableVisibility},${isSecondaryScrollerVisible ? 'hidden' : 'inherit'})`,
-      transition: `${getTransition(
-        'left',
-        'long',
-        isSecondaryScrollerVisible ? 'in' : 'out'
-      )}, visibility 0s linear var(${cssVariableTransitionDuration}, ${
-        !isPrimaryScrollerVisible || isSecondaryScrollerVisible ? motionDurationLong : '0s'
-      })`,
-      // it's important to define background-color for each scroller to have correct scrollbar coloring
-      backgroundColor,
+      display: 'contents',
+      overflow: 'hidden auto',
+      // scrollBehavior: 'smooth', // when defined, `.scrollTo()` isn't applied immediately
+      // overscrollBehaviorY: 'none', // when defined, rubber band scroll effect is getting lost on iOS Safari
+      // WebkitOverflowScrolling: 'touch', // when defined, secondary scroller might not be show in iOS Safari on iPhone only
+      background: scrollerBackground[theme],
       ...prefersColorSchemeDarkMediaQuery(theme, {
-        backgroundColor: backgroundColorDark,
+        background: scrollerBackground.dark,
       }),
-      [mediaQueryEnhancedView]: {
-        visibility: 'inherit',
-        transition: 'initial',
-      },
-      // simulates frosted glass header, to be visually in sync with header of secondary scroller
-      '&::before': {
-        content: '""',
-        display: 'block',
-        position: 'sticky',
-        top: 0,
-        zIndex: 1,
-        height: frostedGlassHeaderHeight,
-        backgroundColor: frostedGlassBackgroundColor,
-        WebkitBackdropFilter: 'blur(8px)',
-        backdropFilter: 'blur(8px)', // with current frostedGlassStyle of blur(32px) scrolling becomes visually distracting
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          backgroundColor: frostedGlassBackgroundColorDark,
+      [mediaQueryMobile]: {
+        ...(!isSecondaryScrollerVisible && {
+          gridArea: '1/1/-1/-1',
+          display: 'grid',
+          gridTemplateRows: 'subgrid',
+          gridTemplateColumns: 'subgrid',
+          '&::before': {
+            content: '""',
+            position: 'sticky',
+            top: 0,
+            gridArea: '1/1/4/-1',
+            zIndex: 1,
+            background: `linear-gradient(180deg,${backgroundColor} 0%,${backgroundColor} 65%,transparent 100%)`,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              background: `linear-gradient(180deg,${backgroundColorDark} 0%,${backgroundColorDark} 65%,transparent 100%)`,
+            }),
+          },
         }),
-        [mediaQueryEnhancedView]: {
-          display: 'none',
-        },
+      },
+      [mediaQueryDesktop]: {
+        gridArea: '1/1/-1/4',
+        display: 'grid',
+        gridTemplateRows: 'subgrid',
+        gridTemplateColumns: 'subgrid',
       },
     },
-    content: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: spacingFluidXSmall,
-      padding: `${spacingFluidSmall} ${spacingFluidLarge} ${spacingFluidLarge}`,
-      [mediaQueryEnhancedView]: {
-        padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
+    'dismiss-mobile': {
+      [mediaQueryMobile]: {
+        ...dismissButtonJssStyle,
+        width: 'fit-content',
+        height: 'fit-content',
+        placeSelf: 'center flex-end',
+        gridArea: '2/4',
+        zIndex: 3, // ensures dismiss button is on top of opacity animation handled by ::before/::after
+        marginInlineEnd: '-1px', // improve visual alignment and compensate white space of close icon
+      },
+      [mediaQueryDesktop]: {
+        display: 'none',
       },
     },
-    // header is needed to keep position of dismiss button in sync with header of secondary scroller
-    header: {
-      position: 'relative',
-      zIndex: 3, // ensures dismiss button is visible on secondary drawer in mobile view
-      gridArea: '1/1',
-      alignSelf: 'flex-start',
-      justifySelf: 'flex-end',
-      marginInlineEnd: `calc(${spacingFluidLarge} - ${spacingFluidSmall})`,
-      height: frostedGlassHeaderHeight,
-      display: 'flex',
-      alignItems: 'center',
-      [mediaQueryEnhancedView]: {
-        marginInlineEnd: 0,
-        gridArea: '1/-1',
-        placeSelf: 'flex-start',
+    'dismiss-desktop': {
+      [mediaQueryMobile]: {
+        display: 'none',
       },
-    },
-    dismiss: {
-      padding: spacingFluidSmall,
-      [mediaQueryEnhancedView]: {
+      [mediaQueryDesktop]: {
         '--p-internal-icon-filter': 'invert(1)',
-        margin: spacingFluidSmall,
+        position: 'absolute',
+        insetInlineStart: `calc(100% + ${spacingFluidSmall})`,
+        insetBlockStart: spacingFluidSmall,
         padding: spacingStaticSmall,
       },
     },
-  });
-};
-
-export const getContentJssStyle = (): JssStyle => {
-  return {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: spacingFluidXSmall,
-    padding: `${spacingFluidSmall} ${spacingFluidLarge} ${spacingFluidLarge}`,
-    [mediaQueryEnhancedView]: {
-      padding: `${spacingFluidMedium} ${spacingFluidLarge} ${spacingFluidLarge}`,
+    back: {
+      display: 'none',
+      ...(isSecondaryScrollerVisible && {
+        [mediaQueryMobile]: {
+          display: 'block',
+          gridArea: '2/2',
+          width: 'fit-content',
+          height: 'fit-content',
+          placeSelf: 'center flex-start',
+          zIndex: 2,
+        },
+      }),
     },
-  };
+  });
 };
