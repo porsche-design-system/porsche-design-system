@@ -1116,14 +1116,14 @@ test.describe('selection', () => {
     expect(await getSelectedOptionIndex(page)).toBe(1);
     expect(await getSelectValue(page), 'initial').toBe('a');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'initial').toEqual('a');
-    expect(await getButtonText(page)).toBe('a');
+    await expect(getButton(page)).toHaveText('a');
 
     await setValue(page, undefined);
 
     expect(await getSelectedOptionIndex(page)).toBe(0);
     expect(await getSelectValue(page), 'initial').toBeUndefined();
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after setting value to undefined').toBeUndefined();
-    expect(await getButtonText(page)).toBe('');
+    await expect(getButton(page)).toHaveText('');
   });
 
   test('should reset selection to default when value is set to undefined and no empty option provided', async ({
