@@ -10423,7 +10423,6 @@ exports[`should render dsr component for PFlyoutMultilevelItem 1`] = `
     <p-button-pure
       class="button"
       data-ssr=""
-      inert="false"
     >
       <template
         shadowroot="open"
@@ -13627,7 +13626,6 @@ input:disabled {
           inputmode="numeric"
           pattern="\\d*"
           type="text"
-          value=""
         />
         <input
           aria-describedby="label description message"
@@ -13636,7 +13634,6 @@ input:disabled {
           inputmode="numeric"
           pattern="\\d*"
           type="text"
-          value=""
         />
         <input
           aria-describedby="label description message"
@@ -13645,7 +13642,6 @@ input:disabled {
           inputmode="numeric"
           pattern="\\d*"
           type="text"
-          value=""
         />
         <input
           aria-describedby="label description message"
@@ -13654,7 +13650,6 @@ input:disabled {
           inputmode="numeric"
           pattern="\\d*"
           type="text"
-          value=""
         />
       </div>
       <span

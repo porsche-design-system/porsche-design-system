@@ -14,6 +14,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Added
+
+- Styles: support for `vanilla-extract` available under
+  `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles/vanilla-extract';`
+  ([#3666](https://github.com/porsche-design-system/porsche-design-system/pull/3666))
+
+#### Changed
+
+- React: updated peer dependency to `>=19.0.0 <20.0.0`
+
 #### Fixed
 
 - `aria` prop now supports a colon inside of a value, e.g. `aria="{ 'aria-label': 'Always remember: yes you can!' }"`

@@ -1,6 +1,5 @@
+import { Component, Element, type JSX, Prop, Watch, h } from '@stencil/core';
 import type { PropTypes } from '../../../types';
-import type { TabsItemInternalHTMLProps } from './tabs-item-utils';
-import { Component, Element, h, Prop, Watch } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -9,6 +8,7 @@ import {
   validateProps,
 } from '../../../utils';
 import { getComponentCss } from './tabs-item-styles';
+import type { TabsItemInternalHTMLProps } from './tabs-item-utils';
 
 const propTypes: PropTypes<typeof TabsItem> = {
   label: AllowedTypes.string,

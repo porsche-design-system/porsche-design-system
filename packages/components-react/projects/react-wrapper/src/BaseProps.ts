@@ -12,6 +12,7 @@ export type BaseProps = DOMAttributes<{}> &
     | 'dir'
     | 'hidden'
     | 'id'
+    | 'inert'
     | 'lang'
     | 'slot'
     | 'style'

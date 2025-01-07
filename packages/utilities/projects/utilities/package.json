@@ -12,15 +12,19 @@
     "build": "yarn clean:build && yarn build:generateScss && yarn build:bundle",
     "build:generateScss": "tsx scripts/generateScss.ts",
     "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs",
+    "generateVanillaExtractTestStyles": "rollup -c rollup-test-ve.config.js --bundleConfigAsCjs",
     "test": "yarn test:unit",
-    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
+    "test:unit": "yarn generateVanillaExtractTestStyles && vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist && rm -rf ./src/scss/lib"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@types/styled-components": "^5.1.34",
     "react-jss": "^10.10.0",
-    "styled-components": "^6.1.13"
+    "styled-components": "^6.1.13",
+    "@vanilla-extract/css": "^1.16.1",
+    "@vanilla-extract/vite-plugin": "^4.0.18",
+    "@vanilla-extract/rollup-plugin": "^1.3.11"
   },
   "peerDependencies": {
     "@types/madge": "*",
