@@ -1,9 +1,10 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { globbySync } from 'globby';
-import { kebabCase } from 'change-case';
-import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_CHUNK, type TagName } from '@porsche-design-system/shared';
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
+import type { PropOptions } from '@porsche-design-system/components/dist/types/stencil-public-runtime';
+import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_CHUNK, type TagName } from '@porsche-design-system/shared';
+import { kebabCase } from 'change-case';
+import { globbySync } from 'globby';
 import type { ComponentMeta, ComponentsMeta, PropMeta, SlotMeta } from '../src/types/component-meta';
 import { isDeprecatedComponent } from '../src/utils';
 
@@ -22,6 +23,15 @@ global.ROLLUP_REPLACE_IS_STAGING = 'staging';
 // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
 const sourceDirectory = path.resolve('../components/src/components');
 const componentFileNames = globbySync(`${sourceDirectory}/**/*.tsx`);
+
+const parsePropOptions = (propString?: string): PropOptions | undefined =>
+  propString
+    ? (JSON.parse(
+        propString
+          .replace(/(\w+):/g, '"$1":')
+          .replace(/'/g, '"') // Add quotes and convert single to double quotes
+      ) as PropOptions)
+    : undefined;
 
 const getComponentFilePath = (tagName: TagName): string => {
   return componentFileNames.find((fileName) => fileName.match(new RegExp(`${tagName.replace(/^p-/, '/')}\\.tsx$`)));
@@ -74,6 +84,7 @@ const generateComponentMeta = (): void => {
     const isThemeable = source.includes('public theme?: Theme');
     const hasEvent = source.includes('@Event') && source.includes('EventEmitter');
     const hasAriaProp = source.includes('public aria?: SelectedAriaAttributes');
+    const hasElementInternals = source.includes('@AttachInternals()');
     const hasObserveAttributes = source.includes('observeAttributes(this.'); // this should be safe enough, but would miss a local variable as first parameter
     const hasObserveChildren = !!source.match(/\bobserveChildren\(\s*this./); // this should be safe enough, but would miss a local variable as first parameter
     const usesScss = source.includes('styleUrl:');
@@ -142,8 +153,12 @@ const generateComponentMeta = (): void => {
     const propsMeta: ComponentMeta['propsMeta'] = {};
 
     Array.from(
-      source.matchAll(/(  \/\*\*[\s\S]+?)?@Prop\(.*\) public ([a-zA-Z]+)\??(?:(?:: (.+?))| )(?:=[^>]\s*([\s\S]+?))?;/g)
-    ).forEach(([, jsdoc, propName, propType, propValue]) => {
+      source.matchAll(
+        /(  \/\*\*[\s\S]+?)?@Prop\((\{.*?})?\) public ([a-zA-Z]+)\??(?:(?:: (.+?))| )(?:=[^>]\s*([\s\S]+?))?;/g
+      )
+    ).forEach(([, jsdoc, propOptions, propName, propType, propValue]) => {
+      const parsedPropOptions = parsePropOptions(propOptions);
+
       let cleanedValue: boolean | number | string | object =
         propValue === 'true'
           ? true
@@ -186,6 +201,7 @@ const generateComponentMeta = (): void => {
         ...(jsdoc?.match(/@experimental/) && { isExperimental: true }),
         ...(propType.match(/SelectedAriaAttributes/) && { isAria: true }),
         ...(Array.isArray(cleanedValue) && { isArray: true }),
+        propOptions: parsedPropOptions,
       };
     });
 
@@ -580,6 +596,7 @@ const generateComponentMeta = (): void => {
       ...(controlledMeta.length && { controlledMeta }),
       hasAriaProp,
       hasObserveAttributes,
+      hasElementInternals,
       ...(observedAttributes.length && { observedAttributes }),
       hasObserveChildren,
       styling,
