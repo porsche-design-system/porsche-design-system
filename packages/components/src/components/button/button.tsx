@@ -107,6 +107,7 @@ export class Button {
     if (this.form && this.internals?.form) {
       e.preventDefault();
       if (this.type === 'submit') {
+        // Submitter is null because the button can't be passed from the shadow DOM https://github.com/WICG/webcomponents/issues/814
         this.internals.form.requestSubmit();
       } else if (this.type === 'reset') {
         this.internals?.form.reset();

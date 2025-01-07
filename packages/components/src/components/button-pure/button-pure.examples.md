@@ -168,7 +168,8 @@ associate the button with a specific form element.
 <Notification heading="Attention" heading-tag="h2" state="warning">
 When using the <code>p-button-pure</code> component as a <strong>submit</strong> or <strong>reset</strong> button outside a form,
 it relies on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals">ElementInternals</a> API, which has limited
-browser support.
+browser support.<br/><br/> As of now, the submitter in the form event is null because the button cannot be accessed within the shadow DOM
+to be passed as an argument to the <code>requestSubmit()</code> function (<a href="https://github.com/WICG/webcomponents/issues/814">WICG/webcomponents#814</a>).
 </Notification>
 
 <Playground :frameworkMarkup="formAttributeExample" :config="{ ...config, withoutDemo: true }">
