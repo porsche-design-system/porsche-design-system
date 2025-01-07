@@ -25,6 +25,7 @@ exports[`should match snapshot 1`] = `
       },
     },
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -137,6 +138,7 @@ exports[`should match snapshot 1`] = `
       },
     },
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -246,6 +248,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-button": {
     "hasAriaProp": true,
+    "hasElementInternals": true,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -582,6 +585,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-button-group": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -614,6 +618,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-button-pure": {
     "hasAriaProp": true,
+    "hasElementInternals": true,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -996,6 +1001,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-button-tile": {
     "hasAriaProp": true,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -1386,6 +1392,7 @@ exports[`should match snapshot 1`] = `
       },
     },
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -1477,6 +1484,7 @@ exports[`should match snapshot 1`] = `
       },
     },
     "hasAriaProp": true,
+    "hasElementInternals": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": true,
@@ -1668,6 +1676,7 @@ exports[`should match snapshot 1`] = `
       },
     },
     "hasAriaProp": false,
+    "hasElementInternals": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -1788,6 +1797,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-checkbox-wrapper": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": true,
     "hasObserveChildren": false,
@@ -1870,6 +1880,7 @@ exports[`should match snapshot 1`] = `
   "p-content-wrapper": {
     "deprecationMessage": "since v3.0.0, will be removed with next major release. Use native CSS Grid instead.",
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -1923,6 +1934,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-crest": {
     "hasAriaProp": true,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -1966,6 +1978,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-display": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -2053,6 +2066,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-divider": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -2117,6 +2131,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-fieldset": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -2193,6 +2208,7 @@ exports[`should match snapshot 1`] = `
   "p-fieldset-wrapper": {
     "deprecationMessage": "since v3.0.0, will be removed with next major release. Please use "p-fieldset" instead.",
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -2270,6 +2286,7 @@ exports[`should match snapshot 1`] = `
   "p-flex": {
     "deprecationMessage": "since v3.0.0, will be removed with next major release. Use native CSS Flex instead.",
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -2363,6 +2380,7 @@ exports[`should match snapshot 1`] = `
   "p-flex-item": {
     "deprecationMessage": "since v3.0.0, will be removed with next major release. Use native CSS Flex instead.",
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -2483,6 +2501,7 @@ exports[`should match snapshot 1`] = `
       },
     },
     "hasAriaProp": true,
+    "hasElementInternals": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": true,
@@ -2595,6 +2614,7 @@ exports[`should match snapshot 1`] = `
       },
     },
     "hasAriaProp": true,
+    "hasElementInternals": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -2650,6 +2670,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-flyout-multilevel-item": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -2709,6 +2730,7 @@ exports[`should match snapshot 1`] = `
   "p-grid": {
     "deprecationMessage": "since v3.0.0, will be removed with next major release. Use native CSS Grid instead.",
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -2768,6 +2790,7 @@ exports[`should match snapshot 1`] = `
   "p-grid-item": {
     "deprecationMessage": "since v3.0.0, will be removed with next major release. Use native CSS Grid instead.",
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -2829,6 +2852,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-heading": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -2919,6 +2943,7 @@ exports[`should match snapshot 1`] = `
   "p-headline": {
     "deprecationMessage": "since v3.0.0, will be removed with next major release. Please use "p-heading" instead.",
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -3017,6 +3042,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-icon": {
     "hasAriaProp": true,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -3334,6 +3360,7 @@ exports[`should match snapshot 1`] = `
       },
     },
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -3650,6 +3677,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-link": {
     "hasAriaProp": true,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -3974,6 +4002,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-link-pure": {
     "hasAriaProp": true,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -4345,6 +4374,7 @@ exports[`should match snapshot 1`] = `
   "p-link-social": {
     "deprecationMessage": "since v3.0.0, will be removed with next major release. Use \`p-link\` with corresponding social icon instead.",
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -4638,6 +4668,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-link-tile": {
     "hasAriaProp": true,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -4806,6 +4837,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-link-tile-model-signature": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -4950,6 +4982,7 @@ exports[`should match snapshot 1`] = `
       },
     },
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -5062,6 +5095,7 @@ exports[`should match snapshot 1`] = `
   "p-marque": {
     "deprecationMessage": "since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.",
     "hasAriaProp": true,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -5160,6 +5194,7 @@ exports[`should match snapshot 1`] = `
       },
     },
     "hasAriaProp": true,
+    "hasElementInternals": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": true,
@@ -5261,6 +5296,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-model-signature": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -5366,6 +5402,7 @@ exports[`should match snapshot 1`] = `
       },
     },
     "hasAriaProp": false,
+    "hasElementInternals": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -5485,6 +5522,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-multi-select-option": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -5524,6 +5562,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-optgroup": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -5581,6 +5620,7 @@ exports[`should match snapshot 1`] = `
       },
     },
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -5700,6 +5740,7 @@ exports[`should match snapshot 1`] = `
       },
     },
     "hasAriaProp": false,
+    "hasElementInternals": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -5832,6 +5873,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-popover": {
     "hasAriaProp": true,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -5890,6 +5932,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-radio-button-wrapper": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": true,
     "hasObserveChildren": false,
@@ -5971,6 +6014,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-scroller": {
     "hasAriaProp": true,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -6089,6 +6133,7 @@ exports[`should match snapshot 1`] = `
       },
     },
     "hasAriaProp": false,
+    "hasElementInternals": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": true,
@@ -6193,6 +6238,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-segmented-control-item": {
     "hasAriaProp": true,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -6490,6 +6536,7 @@ exports[`should match snapshot 1`] = `
       },
     },
     "hasAriaProp": false,
+    "hasElementInternals": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -6607,6 +6654,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-select-option": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -6645,6 +6693,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-select-wrapper": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": true,
     "hasObserveChildren": false,
@@ -6750,6 +6799,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-select-wrapper-dropdown": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": true,
@@ -6819,6 +6869,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-spinner": {
     "hasAriaProp": true,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -6877,6 +6928,7 @@ exports[`should match snapshot 1`] = `
       },
     },
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -6919,6 +6971,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-stepper-horizontal-item": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -6986,6 +7039,7 @@ exports[`should match snapshot 1`] = `
       },
     },
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -7079,6 +7133,7 @@ exports[`should match snapshot 1`] = `
       },
     },
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -7120,6 +7175,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-table-body": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -7141,6 +7197,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-table-cell": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -7170,6 +7227,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-table-head": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -7191,6 +7249,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-table-head-cell": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -7245,6 +7304,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-table-head-row": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -7266,6 +7326,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-table-row": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -7309,6 +7370,7 @@ exports[`should match snapshot 1`] = `
       },
     },
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -7411,6 +7473,7 @@ exports[`should match snapshot 1`] = `
       },
     },
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -7492,6 +7555,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-tabs-item": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -7522,6 +7586,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-tag": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -7812,6 +7877,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-tag-dismissible": {
     "hasAriaProp": true,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -7872,6 +7938,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-text": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -8007,6 +8074,7 @@ exports[`should match snapshot 1`] = `
       },
     },
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": true,
     "hasObserveAttributes": true,
     "hasObserveChildren": false,
@@ -8148,6 +8216,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-text-list": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -8209,6 +8278,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-text-list-item": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -8247,6 +8317,7 @@ exports[`should match snapshot 1`] = `
       },
     },
     "hasAriaProp": false,
+    "hasElementInternals": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -8426,6 +8497,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-textarea-wrapper": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": true,
     "hasObserveChildren": false,
@@ -8523,6 +8595,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-toast": {
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -8560,6 +8633,7 @@ exports[`should match snapshot 1`] = `
       },
     },
     "hasAriaProp": false,
+    "hasElementInternals": false,
     "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -8599,6 +8673,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-wordmark": {
     "hasAriaProp": true,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
