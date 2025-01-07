@@ -170,6 +170,8 @@ When using the <code>p-button-pure</code> component as a <strong>submit</strong>
 it relies on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals">ElementInternals</a> API, which has limited
 browser support.<br/><br/> As of now, the submitter in the form event is null because the button cannot be accessed within the shadow DOM
 to be passed as an argument to the <code>requestSubmit()</code> function (<a href="https://github.com/WICG/webcomponents/issues/814">WICG/webcomponents#814</a>).
+<br/><br/>Additionally, custom components using ElementInternals may include all values of elements with the same name attribute in form data, rather than only the value of
+the triggering element, deviating from native form behavior.
 </Notification>
 
 <Playground :frameworkMarkup="formAttributeExample" :config="{ ...config, withoutDemo: true }">
