@@ -291,6 +291,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "string",
         "defaultValue": null,
         "description": "The id of a form element the button should be associated with.",
+        "propOptions": {
+          "reflect": true,
+        },
         "type": "string",
       },
       "hideLabel": {
@@ -533,6 +536,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "string",
         "defaultValue": null,
         "description": "The name of the button, submitted as a pair with the button's value as part of the form data, when that button is used to submit the form.",
+        "propOptions": {
+          "reflect": true,
+        },
         "type": "string",
       },
       "theme": {
@@ -676,6 +682,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "string",
         "defaultValue": null,
         "description": "The id of a form element the button should be associated with.",
+        "propOptions": {
+          "reflect": true,
+        },
         "type": "string",
       },
       "hideLabel": {
@@ -918,6 +927,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "string",
         "defaultValue": null,
         "description": "The name of the button, submitted as a pair with the button's value as part of the form data, when that button is used to submit the form.",
+        "propOptions": {
+          "reflect": true,
+        },
         "type": "string",
       },
       "size": {
@@ -1538,6 +1550,9 @@ exports[`should match snapshot 1`] = `
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`pagination\` instead. If true, the carousel will not show pagination bullets at the bottom.",
         "isBreakpointCustomizable": true,
         "isDeprecated": true,
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "focusOnCenterSlide": {
@@ -1589,6 +1604,9 @@ exports[`should match snapshot 1`] = `
         "defaultValue": true,
         "description": "If false, the carousel will not show pagination bullets at the bottom.",
         "isBreakpointCustomizable": true,
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "rewind": {
@@ -1611,6 +1629,9 @@ exports[`should match snapshot 1`] = `
         "defaultValue": 1,
         "description": "Sets the amount of slides visible at the same time. Can be set to \`auto\` if you want to define different widths per slide via CSS.",
         "isBreakpointCustomizable": true,
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "number | 'auto'",
       },
       "theme": {
@@ -1694,6 +1715,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Reflects the checkbox current checked state and allows setting the initial checked state.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "compact": {
@@ -1712,6 +1736,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "string",
         "defaultValue": null,
         "description": "The id of a form element the checkbox should be associated with.",
+        "propOptions": {
+          "reflect": true,
+        },
         "type": "string",
       },
       "hideLabel": {
@@ -1750,6 +1777,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "string",
         "defaultValue": "",
         "description": "The name of the checkbox.",
+        "propOptions": {
+          "reflect": true,
+        },
         "type": "string",
       },
       "required": {
@@ -2688,6 +2718,10 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Private property set by the component itself.",
+        "propOptions": {
+          "mutable": true,
+          "reflect": true,
+        },
         "type": "boolean",
       },
       "identifier": {
@@ -2695,6 +2729,9 @@ exports[`should match snapshot 1`] = `
         "defaultValue": null,
         "description": "Unique identifier which controls if this item should be shown when the active-identifier on the flyout-multilevel is set to this value.",
         "isRequired": true,
+        "propOptions": {
+          "reflect": true,
+        },
         "type": "string",
       },
       "label": {
@@ -2707,12 +2744,20 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Private property set by the component itself.",
+        "propOptions": {
+          "mutable": true,
+          "reflect": true,
+        },
         "type": "boolean",
       },
       "secondary": {
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Private property set by the component itself.",
+        "propOptions": {
+          "mutable": true,
+          "reflect": true,
+        },
         "type": "boolean",
       },
     },
@@ -5442,6 +5487,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "string",
         "defaultValue": null,
         "description": "The id of a form element the multi-select should be associated with.",
+        "propOptions": {
+          "reflect": true,
+        },
         "type": "string",
       },
       "hideLabel": {
@@ -5468,6 +5516,9 @@ exports[`should match snapshot 1`] = `
         "defaultValue": null,
         "description": "The name of the control.",
         "isRequired": true,
+        "propOptions": {
+          "reflect": true,
+        },
         "type": "string",
       },
       "required": {
@@ -5501,6 +5552,9 @@ exports[`should match snapshot 1`] = `
         "defaultValue": [],
         "description": "The selected values.",
         "isArray": true,
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "string[]",
       },
     },
@@ -5637,6 +5691,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "number",
         "defaultValue": 1,
         "description": "Index of the currently active page.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "number",
       },
       "allyLabel": {
@@ -5770,6 +5827,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "string",
         "defaultValue": null,
         "description": "The id of a form element the pin-code should be associated with.",
+        "propOptions": {
+          "reflect": true,
+        },
         "type": "string",
       },
       "hideLabel": {
@@ -5814,6 +5874,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "string",
         "defaultValue": null,
         "description": "Name of the control.",
+        "propOptions": {
+          "reflect": true,
+        },
         "type": "string",
       },
       "required": {
@@ -5855,6 +5918,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "string",
         "defaultValue": "",
         "description": "Sets the initial value of the Pin Code.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "string",
       },
     },
@@ -6083,6 +6149,9 @@ exports[`should match snapshot 1`] = `
         },
         "defaultValue": null,
         "description": "Scrolls the scroll area to the left either smooth or immediately.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "ScrollerScrollToPosition",
       },
       "scrollbar": {
@@ -6195,18 +6264,27 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Disables the segmented-control.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "form": {
         "allowedValues": "string",
         "defaultValue": null,
         "description": "The id of a form element the segmented-control should be associated with.",
+        "propOptions": {
+          "reflect": true,
+        },
         "type": "string",
       },
       "name": {
         "allowedValues": "string",
         "defaultValue": null,
         "description": "The name of the segmented-control.",
+        "propOptions": {
+          "reflect": true,
+        },
         "type": "string",
       },
       "theme": {
@@ -6226,6 +6304,9 @@ exports[`should match snapshot 1`] = `
         ],
         "defaultValue": null,
         "description": "Sets the initial value of the segmented-control.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "string | number",
       },
     },
@@ -6559,6 +6640,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Disables the select.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "boolean",
       },
       "dropdownDirection": {
@@ -6575,6 +6659,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "string",
         "defaultValue": null,
         "description": "The id of a form element the select should be associated with.",
+        "propOptions": {
+          "reflect": true,
+        },
         "type": "string",
       },
       "hideLabel": {
@@ -6601,6 +6688,9 @@ exports[`should match snapshot 1`] = `
         "defaultValue": null,
         "description": "The name of the control.",
         "isRequired": true,
+        "propOptions": {
+          "reflect": true,
+        },
         "type": "string",
       },
       "required": {
@@ -6633,6 +6723,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "string",
         "defaultValue": null,
         "description": "The selected value.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "string",
       },
     },
@@ -7387,6 +7480,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "number",
         "defaultValue": 0,
         "description": "Defines which tab to be visualized as selected (zero-based numbering).",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "number",
       },
       "gradientColor": {
@@ -8356,6 +8452,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "string",
         "defaultValue": null,
         "description": "The id of a form element the textarea should be associated with.",
+        "propOptions": {
+          "reflect": true,
+        },
         "type": "string",
       },
       "hideLabel": {
@@ -8394,6 +8493,9 @@ exports[`should match snapshot 1`] = `
         "defaultValue": null,
         "description": "The name of the textarea.",
         "isRequired": true,
+        "propOptions": {
+          "reflect": true,
+        },
         "type": "string",
       },
       "placeholder": {
@@ -8469,6 +8571,9 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "string",
         "defaultValue": "",
         "description": "The textarea value.",
+        "propOptions": {
+          "mutable": true,
+        },
         "type": "string",
       },
       "wrap": {
