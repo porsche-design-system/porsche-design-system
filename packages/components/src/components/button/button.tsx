@@ -107,7 +107,7 @@ export class Button {
     if (this.form && this.internals?.form) {
       e.preventDefault();
       if (this.type === 'submit') {
-        this.internals?.form.requestSubmit();
+        this.internals.form.requestSubmit();
       } else if (this.type === 'reset') {
         this.internals?.form.reset();
       }
@@ -139,13 +139,15 @@ export class Button {
   }
 
   public componentDidLoad(): void {
-    improveButtonHandlingForCustomElement(
-      this.host,
-      () => this.type,
-      () => isDisabledOrLoading(this.disabled, this.loading),
-      () => this.name,
-      () => this.value
-    );
+    if (!this.form) {
+      improveButtonHandlingForCustomElement(
+        this.host,
+        () => this.type,
+        () => isDisabledOrLoading(this.disabled, this.loading),
+        () => this.name,
+        () => this.value
+      );
+    }
   }
 
   public render(): JSX.Element {
