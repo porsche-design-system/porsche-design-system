@@ -67,6 +67,39 @@ describe('componentWillLoad', () => {
     component.componentWillLoad();
     expect(component['initialLoading']).toBe(false);
   });
+
+  it('should call setFormValue() if form prop is defined', () => {
+    const component = initComponent();
+    const value = 'some-value';
+    component.form = 'some-form';
+    component.value = value;
+    component.componentWillLoad();
+    expect(component['internals'].setFormValue).toHaveBeenCalledWith(value);
+  });
+
+  it('should not call setFormValue() if form prop is undefined', () => {
+    const component = initComponent();
+    component.form = undefined;
+    component.componentWillLoad();
+    expect(component['internals'].setFormValue).not.toHaveBeenCalled();
+  });
+});
+
+describe('onValueChange()', () => {
+  it('should call setFormValue() if form prop is defined', () => {
+    const component = initComponent();
+    const value = 'some-value';
+    component.form = 'some-form';
+    component.onValueChange(value);
+    expect(component['internals'].setFormValue).toHaveBeenCalledWith(value);
+  });
+
+  it('should not call setFormValue() if form prop is undefined', () => {
+    const component = initComponent();
+    component.form = undefined;
+    component.onValueChange('some-value');
+    expect(component['internals'].setFormValue).not.toHaveBeenCalled();
+  });
 });
 
 describe('onClick()', () => {
