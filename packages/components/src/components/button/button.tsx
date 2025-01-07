@@ -117,7 +117,9 @@ export class Button {
 
   @Watch('value')
   public onValueChange(newValue: string): void {
-    this.internals?.setFormValue(newValue);
+    if (this.form) {
+      this.internals?.setFormValue(newValue);
+    }
   }
 
   public connectedCallback(): void {
@@ -125,7 +127,9 @@ export class Button {
   }
 
   public componentWillLoad(): void {
-    this.internals?.setFormValue(this.value);
+    if (this.form) {
+      this.internals?.setFormValue(this.value);
+    }
     this.initialLoading = this.loading;
   }
 
