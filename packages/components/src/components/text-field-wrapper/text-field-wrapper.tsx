@@ -231,6 +231,7 @@ export class TextFieldWrapper {
       this.host,
       getComponentCss,
       disabled,
+      readOnly,
       this.hideLabel,
       this.state,
       this.hasUnit || this.isCounterVisible,

@@ -1,6 +1,11 @@
+import {
+  borderRadiusSmall,
+  borderWidthBase,
+  spacingStaticLarge,
+  spacingStaticXSmall,
+  textSmallStyle,
+} from '@porsche-design-system/styles';
 import type { Styles } from 'jss';
-import type { BreakpointCustomizable, Theme } from '../../types';
-import { getCss } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -12,22 +17,18 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { formElementPaddingHorizontal, getUnitCounterJssStyle } from '../../styles/form-styles';
-import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import type { FormState } from '../../utils/form/form-state';
-import {
-  borderRadiusSmall,
-  borderWidthBase,
-  spacingStaticLarge,
-  spacingStaticXSmall,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
-import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
+import { formElementPaddingHorizontal, getUnitCounterJssStyle } from '../../styles/form-styles';
+import type { BreakpointCustomizable, Theme } from '../../types';
+import { getCss } from '../../utils';
+import type { FormState } from '../../utils/form/form-state';
+import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
+import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import type { TextareaResize } from './textarea-utils';
 
 export const getComponentCss = (
   isDisabled: boolean,
+  isReadonly: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   hasCounter: boolean,
@@ -130,7 +131,7 @@ export const getComponentCss = (
     },
     ...(hasCounter && {
       counter: {
-        ...getUnitCounterJssStyle(isDisabled, theme),
+        ...getUnitCounterJssStyle(isDisabled, isReadonly, theme),
         gridArea: '1/1',
         placeSelf: 'flex-end',
         padding: `6px calc(${formElementPaddingHorizontal} + ${borderWidthBase})`,

@@ -457,7 +457,7 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss sty
 }
 `;
 
-exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: false and theme: auto 1`] = `
+exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: false, isReadonly: false and theme: auto 1`] = `
 {
   "@media (prefers-color-scheme: dark)": {
     "color": "#88898C",
@@ -473,7 +473,7 @@ exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled
 }
 `;
 
-exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: false and theme: dark 1`] = `
+exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: false, isReadonly: false and theme: dark 1`] = `
 {
   "boxSizing": "border-box",
   "color": "#88898C",
@@ -486,7 +486,7 @@ exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled
 }
 `;
 
-exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: false and theme: light 1`] = `
+exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: false, isReadonly: false and theme: light 1`] = `
 {
   "boxSizing": "border-box",
   "color": "#6B6D70",
@@ -499,7 +499,49 @@ exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled
 }
 `;
 
-exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: true and theme: auto 1`] = `
+exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: false, isReadonly: true and theme: auto 1`] = `
+{
+  "@media (prefers-color-scheme: dark)": {
+    "color": "#88898C",
+  },
+  "boxSizing": "border-box",
+  "color": "#535457",
+  "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "maxWidth": "100%",
+  "overflow": "hidden",
+  "pointerEvents": "none",
+  "textOverflow": "ellipsis",
+  "whiteSpace": "nowrap",
+}
+`;
+
+exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: false, isReadonly: true and theme: dark 1`] = `
+{
+  "boxSizing": "border-box",
+  "color": "#AFB0B3",
+  "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "maxWidth": "100%",
+  "overflow": "hidden",
+  "pointerEvents": "none",
+  "textOverflow": "ellipsis",
+  "whiteSpace": "nowrap",
+}
+`;
+
+exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: false, isReadonly: true and theme: light 1`] = `
+{
+  "boxSizing": "border-box",
+  "color": "#535457",
+  "font": "normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+  "maxWidth": "100%",
+  "overflow": "hidden",
+  "pointerEvents": "none",
+  "textOverflow": "ellipsis",
+  "whiteSpace": "nowrap",
+}
+`;
+
+exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: true, isReadonly: false and theme: auto 1`] = `
 {
   "@media (prefers-color-scheme: dark)": {
     "color": "#7E7F82",
@@ -515,7 +557,7 @@ exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled
 }
 `;
 
-exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: true and theme: dark 1`] = `
+exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: true, isReadonly: false and theme: dark 1`] = `
 {
   "boxSizing": "border-box",
   "color": "#7E7F82",
@@ -528,7 +570,7 @@ exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled
 }
 `;
 
-exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: true and theme: light 1`] = `
+exports[`getUnitCounterJssStyle() should return correct jss style for isDisabled: true, isReadonly: false and theme: light 1`] = `
 {
   "boxSizing": "border-box",
   "color": "#949598",
