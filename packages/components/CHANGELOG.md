@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Fixed
+
+- `aria` prop now supports a colon inside of a value, e.g. `aria="{ 'aria-label': 'Always remember: yes you can!' }"`
+  ([#3680](https://github.com/porsche-design-system/porsche-design-system/pull/3680))
+
 ### [3.24.0-rc.1] - 2025-01-08
 
 ### [3.24.0-rc.0] - 2025-01-07
@@ -27,11 +32,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 #### Changed
 
 - React: updated peer dependency to `>=19.0.0 <20.0.0`
-
-#### Fixed
-
-- `aria` prop now supports a colon inside of a value, e.g. `aria="{ 'aria-label': 'Always remember: yes you can!' }"`
-  ([#3680](https://github.com/porsche-design-system/porsche-design-system/pull/3680))
 
 ### [3.23.0] - 2024-12-12
 
