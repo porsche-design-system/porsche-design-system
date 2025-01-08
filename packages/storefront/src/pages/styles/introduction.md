@@ -33,6 +33,9 @@ For most css-in-js libraries (e.g., `JSS`, `styled-components`...):
 For `vanilla-extract`:
 `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles/vanilla-extract';`.
 
+Make sure to use `"moduleResolution": "bundler"` in the `compilerOptions` of your `tsconfig.json` to ensure the correct
+resolution of the styles.
+
 ### SCSS
 
 SCSS styles can be imported by: `@use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *`;
