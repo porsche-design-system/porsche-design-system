@@ -19,6 +19,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Textarea`, `Textarea Wrapper`, `Textfield Wrapper`: color contrast of `unit` prop and counter in `readonly` mode
   meets WCAG 2.2 AA standard ([#3693](https://github.com/porsche-design-system/porsche-design-system/pull/3693))
 
+### [3.24.0] - 2025-01-08
+
 ### [3.24.0-rc.1] - 2025-01-08
 
 ### [3.24.0-rc.0] - 2025-01-07
