@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <style>body{display:none;}</style>
     <meta charset="utf-8" />
     <title>Porsche Design System</title>
     <meta
@@ -40,12 +41,6 @@
     <meta name="twitter:image" content="/assets/og-image.png">
   </head>
   <body>
-    <noscript>
-      <strong
-        >We're sorry but Porsche Design System doesn't work properly without JavaScript enabled. Please enable it to
-        continue.</strong
-      >
-    </noscript>
     <div id="app"></div>
     <!-- prettier-ignore -->
     <%= require('@porsche-design-system/components-js/partials').getLoaderScript() %>
@@ -53,5 +48,12 @@
     <%= require('@porsche-design-system/components-js/partials').getBrowserSupportFallbackScript() %>
     <% } %>
     <!-- built files will be auto injected -->
+    <script>
+      if (self === top) {
+        document.getElementsByTagName("body")[0].style.display = 'block';
+      } else{
+        top.location = self.location;
+      }
+    </script>
   </body>
 </html>
