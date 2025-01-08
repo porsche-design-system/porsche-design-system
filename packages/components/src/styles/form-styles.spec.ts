@@ -23,13 +23,16 @@ describe('getSlottedTextFieldTextareaSelectStyles()', () => {
 
 describe('getUnitCounterJssStyle()', () => {
   it.each<Parameters<typeof getUnitCounterJssStyle>>([
-    [false, 'light'],
-    [true, 'light'],
-    [false, 'dark'],
-    [true, 'dark'],
-    [false, 'auto'],
-    [true, 'auto'],
-  ])('should return correct jss style for isDisabled: %s and theme: %s', (...args) => {
+    [false, false, 'light'],
+    [false, true, 'light'],
+    [true, false, 'light'],
+    [false, false, 'dark'],
+    [false, true, 'dark'],
+    [true, false, 'dark'],
+    [false, false, 'auto'],
+    [false, true, 'auto'],
+    [true, false, 'auto'],
+  ])('should return correct jss style for isDisabled: %s, isReadonly: %s and theme: %s', (...args) => {
     expect(getUnitCounterJssStyle(...args)).toMatchSnapshot();
   });
 });
