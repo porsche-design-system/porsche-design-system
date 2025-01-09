@@ -1,4 +1,4 @@
-import { convertToAngular } from '@porsche-design-system/storefront/src/utils/convertToAngular';
+import { convertToAngular } from '@porsche-design-system/storefront-old/src/utils/convertToAngular';
 import { pascalCase } from 'change-case';
 import { byAlphabet, comment, iconsRegEx, templateRegEx } from './generateVRTPages';
 

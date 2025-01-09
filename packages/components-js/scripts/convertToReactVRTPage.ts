@@ -1,5 +1,5 @@
+import { convertToReact } from '@porsche-design-system/storefront-old/src/utils/convertToReact';
 import { pascalCase } from 'change-case';
-import { convertToReact } from '@porsche-design-system/storefront/src/utils/convertToReact';
 import { byAlphabet, comment, iconsRegEx, templateRegEx } from './generateVRTPages';
 
 export type ReactCharacteristics = {
