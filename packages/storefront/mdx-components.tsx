@@ -35,7 +35,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     tr: ({ children }) => <PTableRow>{children as React.ReactNode}</PTableRow>,
     a: ({ href, children }) => (
       <PLinkPure icon={'none'}>
-        <Link href={href!}>{children as React.ReactNode}</Link>
+        <Link href={href as string}>{children as React.ReactNode}</Link>
       </PLinkPure>
     ),
     ...components,
