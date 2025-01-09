@@ -10,6 +10,7 @@ import {
   PTextListItem,
 } from '@porsche-design-system/components-react/ssr';
 import type { MDXComponents } from 'mdx/types';
+import Link from 'next/link';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -31,6 +32,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     tbody: ({ children }) => <PTableBody>{children as React.ReactNode}</PTableBody>,
     td: ({ children }) => <PTableCell>{children as React.ReactNode}</PTableCell>,
     tr: ({ children }) => <PTableRow>{children as React.ReactNode}</PTableRow>,
+    a: ({ href, children }) => <Link href={href!}>{children as React.ReactNode}</Link>,
     ...components,
   };
 }
