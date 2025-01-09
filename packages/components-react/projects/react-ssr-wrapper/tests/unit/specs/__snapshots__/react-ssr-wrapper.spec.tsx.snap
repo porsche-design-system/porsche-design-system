@@ -8613,9 +8613,6 @@ exports[`should render dsr component for PCarousel 1`] = `
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
-::slotted(::-moz-focus-inner) {
-  border: 0 !important;
-}
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
@@ -8646,6 +8643,7 @@ exports[`should render dsr component for PCarousel 1`] = `
   -webkit-backface-visibility: hidden;
   flex-shrink: 0;
   transform: translateZ(0);
+  border-radius: var(--p-carousel-border-radius, 12px);
 }
 .splide__sr {
   position: absolute;
@@ -8656,6 +8654,9 @@ exports[`should render dsr component for PCarousel 1`] = `
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+.splide__slide::-moz-focus-inner {
+  border: 0;
 }
 .splide__track--draggable {
   cursor: grab;
@@ -8763,6 +8764,7 @@ exports[`should render dsr component for PCarousel 1`] = `
         >
           <div
             class="splide__slide"
+            tabindex="0"
           >
             <slot
               name="slide-0"
@@ -10421,7 +10423,6 @@ exports[`should render dsr component for PFlyoutMultilevelItem 1`] = `
     <p-button-pure
       class="button"
       data-ssr=""
-      inert="false"
     >
       <template
         shadowroot="open"
@@ -13625,7 +13626,6 @@ input:disabled {
           inputmode="numeric"
           pattern="\\d*"
           type="text"
-          value=""
         />
         <input
           aria-describedby="label description message"
@@ -13634,7 +13634,6 @@ input:disabled {
           inputmode="numeric"
           pattern="\\d*"
           type="text"
-          value=""
         />
         <input
           aria-describedby="label description message"
@@ -13643,7 +13642,6 @@ input:disabled {
           inputmode="numeric"
           pattern="\\d*"
           type="text"
-          value=""
         />
         <input
           aria-describedby="label description message"
@@ -13652,7 +13650,6 @@ input:disabled {
           inputmode="numeric"
           pattern="\\d*"
           type="text"
-          value=""
         />
       </div>
       <span

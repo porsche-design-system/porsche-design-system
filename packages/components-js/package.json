@@ -77,8 +77,8 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "@porsche-design-system/components": "3.23.0",
-    "@porsche-design-system/components-js": "3.23.0",
+    "@porsche-design-system/components": "3.24.0",
+    "@porsche-design-system/components-js": "3.24.0",
     "@porsche-design-system/components-manager-cli": "0.0.0",
     "@porsche-design-system/partials": "0.0.0",
     "imask": "^7.6.1"
@@ -88,13 +88,13 @@
     "@porsche-design-system/shared": "0.0.0",
     "ag-grid-community": "32.3.3",
     "ag-grid-enterprise": "32.3.3",
-    "devtools-protocol": "^0.0.1304228",
+    "devtools-protocol": "^0.0.1400418",
     "jsdom": "^24.1.0",
     "local-web-server": "^5.4.0",
-    "mime": "^4.0.4",
-    "terser-webpack-plugin": "^5.3.10",
+    "mime": "^4.0.6",
+    "terser-webpack-plugin": "^5.3.11",
     "webpack-bundle-analyzer": "^4.10.2",
-    "webpack-cli": "^5.1.4",
+    "webpack-cli": "^6.0.1",
     "globby-legacy": "npm:globby@^11.0.4"
   },
   "peerDependencies": {

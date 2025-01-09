@@ -2,9 +2,9 @@
 
 import type { MutableRefObject } from 'react';
 import { useContext, useEffect, useLayoutEffect, useMemo, useRef } from 'react';
+import type { Theme, ToastMessage } from './lib/types';
 import { PorscheDesignSystemContext } from './provider';
 import { getMergedClassName } from './utils';
-import type { Theme, ToastMessage } from './lib/types';
 
 let skipCheck = false;
 
@@ -54,7 +54,7 @@ export const useEventCallback = (
 };
 
 export const useMergedClass = (ref: MutableRefObject<HTMLElement | undefined>, className?: string) => {
-  const prevComponentClassName = useRef<string>();
+  const prevComponentClassName = useRef<string>(undefined);
 
   return useMemo(() => {
     if (!className) {

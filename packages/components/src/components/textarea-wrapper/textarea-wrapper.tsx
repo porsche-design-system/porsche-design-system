@@ -1,10 +1,12 @@
-import { Component, Element, forceUpdate, h, type JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, type JSX, Prop, Watch, forceUpdate, h } from '@stencil/core';
+import { getSlottedAnchorStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
+  FORM_STATES,
+  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
-  FORM_STATES,
   getOnlyChildOfKindHTMLElementOrThrow,
   hasCounter,
   hasPropValueChanged,
@@ -12,17 +14,15 @@ import {
   observeAttributes,
   observeProperties,
   setAriaAttributes,
-  THEMES,
   unobserveAttributes,
   updateCounter,
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
-import type { TextareaWrapperState } from './textarea-wrapper-utils';
-import { getComponentCss } from './textarea-wrapper-styles';
-import { StateMessage } from '../common/state-message/state-message';
 import { Label } from '../common/label/label';
-import { getSlottedAnchorStyles } from '../../styles';
+import { StateMessage } from '../common/state-message/state-message';
+import { getComponentCss } from './textarea-wrapper-styles';
+import type { TextareaWrapperState } from './textarea-wrapper-utils';
 
 const propTypes: PropTypes<typeof TextareaWrapper> = {
   label: AllowedTypes.string,
@@ -129,9 +129,9 @@ export class TextareaWrapper {
       'Please use showCounter prop instead.'
     );
 
-    const { disabled } = this.textarea;
+    const { disabled, readOnly } = this.textarea;
 
-    attachComponentCss(this.host, getComponentCss, disabled, this.hideLabel, this.state, this.hasCounter, this.theme);
+    attachComponentCss(this.host, getComponentCss, disabled, readOnly, this.hideLabel, this.state, this.hasCounter, this.theme);
 
     return (
       <div class="root">

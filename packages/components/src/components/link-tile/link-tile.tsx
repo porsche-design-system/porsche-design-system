@@ -1,15 +1,18 @@
+import { Component, Element, type JSX, Prop, h } from '@stencil/core';
+import { getSlottedPictureImageStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
   AllowedTypes,
+  type ITileProps,
+  LINK_ARIA_ATTRIBUTES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
-  type ITileProps,
-  LINK_ARIA_ATTRIBUTES,
   preventAutoPlayOfSlottedVideoOnPrefersReducedMotion,
   validateProps,
 } from '../../utils';
+import { getComponentCss } from './link-tile-styles';
 import {
   LINK_TILE_WEIGHTS,
   type LinkTileAlign,
@@ -21,9 +24,6 @@ import {
   type LinkTileWeight,
   sharedTilePropTypes,
 } from './link-tile-utils';
-import { Component, Element, h, Prop } from '@stencil/core';
-import { getComponentCss } from './link-tile-styles';
-import { getSlottedPictureImageStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof LinkTile> = {
   ...sharedTilePropTypes,

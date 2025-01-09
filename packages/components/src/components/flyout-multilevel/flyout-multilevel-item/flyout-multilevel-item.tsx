@@ -73,8 +73,6 @@ export class FlyoutMultilevelItem {
     return (
       <Host>
         <PrefixedTagNames.pButtonPure
-          // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
-          /* @ts-ignore */
           inert={this.primary || this.cascade}
           class="button"
           type="button"

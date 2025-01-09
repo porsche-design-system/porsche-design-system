@@ -82,7 +82,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       : propsName;
 
     const componentHooksArr: string[] = [
-      'const elementRef = useRef<HTMLElement>();',
+      'const elementRef = useRef<HTMLElement | undefined>(undefined);',
       ...propsToEventListener.map(
         ({ key }) => `useEventCallback(elementRef, '${camelCase(key.substring(2))}', ${key} as any);`
       ),
@@ -115,7 +115,6 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
 
     const componentPropsArr: string[] = [
       '...rest',
-      'hidden: rest.hidden ? "" : undefined',
       `class: useMergedClass(elementRef, className)`,
       'ref: syncRef(elementRef, ref)',
     ];

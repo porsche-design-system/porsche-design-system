@@ -1,6 +1,8 @@
-import { Component, Element, Event, type EventEmitter, h, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, type JSX, Prop, State, Watch, h } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
+  THEMES,
   attachComponentCss,
   getOnlyChildrenOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
@@ -11,14 +13,16 @@ import {
   observeBreakpointChange,
   parseJSON,
   setAttributes,
-  THEMES,
   unobserveBreakpointChange,
   validateProps,
   warnIfDeprecatedPropIsUsed,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import { GRADIENT_COLORS, GRADIENT_COLOR_SCHEMES, type ScrollerDirection } from '../scroller/scroller-utils';
+import { getComponentCss, scrollerAnimatedCssClass } from './tabs-bar-styles';
 import {
+  TABS_BAR_SIZES,
+  TABS_BAR_WEIGHTS,
   type TabsBarGradientColor,
   type TabsBarGradientColorScheme,
   type TabsBarSize,
@@ -29,11 +33,7 @@ import {
   getPrevNextTabIndex,
   sanitizeActiveTabIndex,
   setBarStyle,
-  TABS_BAR_SIZES,
-  TABS_BAR_WEIGHTS,
 } from './tabs-bar-utils';
-import { getComponentCss, scrollerAnimatedCssClass } from './tabs-bar-styles';
-import { GRADIENT_COLOR_SCHEMES, GRADIENT_COLORS, type ScrollerDirection } from '../scroller/scroller-utils';
 
 type DeprecationMapType = Record<TabsBarWeightDeprecated, Exclude<TabsBarWeight, TabsBarWeightDeprecated>>;
 

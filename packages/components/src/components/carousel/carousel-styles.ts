@@ -1,19 +1,3 @@
-import type { BreakpointCustomizable, Theme } from '../../types';
-import type { CarouselAlignHeader, CarouselGradientColor, CarouselHeadingSize, CarouselWidth } from './carousel-utils';
-import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
-import {
-  addImportantToEachRule,
-  addImportantToRule,
-  colorSchemeStyles,
-  getFocusJssStyle,
-  getHiddenTextJssStyle,
-  getHighContrastColors,
-  getThemedColors,
-  hostHiddenStyles,
-  hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
 import {
   borderRadiusLarge,
   borderRadiusSmall,
@@ -34,6 +18,22 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/styles';
 import type { JssStyle } from 'jss';
+import {
+  addImportantToEachRule,
+  addImportantToRule,
+  colorSchemeStyles,
+  getFocusJssStyle,
+  getHiddenTextJssStyle,
+  getHighContrastColors,
+  getThemedColors,
+  hostHiddenStyles,
+  hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
+import type { BreakpointCustomizable, Theme } from '../../types';
+import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
+import type { CarouselAlignHeader, CarouselGradientColor, CarouselHeadingSize, CarouselWidth } from './carousel-utils';
 
 const cssVariablePrevNextFilter = '--p-carousel-prev-next-filter';
 export const cssVariableGradientColorWidth = '--p-gradient-color-width';
@@ -163,7 +163,6 @@ export const getComponentCss = (
           '&(*)': {
             borderRadius: `var(--p-carousel-border-radius, ${borderRadiusLarge})`,
           },
-          ...getFocusJssStyle(theme, { slotted: true }),
         },
         // TODO: maybe it's better to style with slot[name="heading"] and slot[name="description"] instead, then styles would be part of shadow dom
         // .heading,p,::slotted([slot=description])
@@ -281,6 +280,8 @@ export const getComponentCss = (
         ...backfaceVisibilityJssStyle,
         flexShrink: 0,
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939
+        borderRadius: `var(--p-carousel-border-radius, ${borderRadiusLarge})`,
+        ...getFocusJssStyle(theme),
       },
       '&__sr': getHiddenTextJssStyle(), // appears in the DOM when sliding
       ...(isHeaderAlignCenter && {
