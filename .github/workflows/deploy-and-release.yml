@@ -1,6 +1,12 @@
 on:
   workflow_call:
     secrets:
+      linode-aws-access-key-id:
+        description: 'AWS Access Key ID for Linode'
+        required: true
+      linode-aws-secret-access-key:
+        description: 'AWS Secret Access Key for Linode'
+        required: true
       github-token:
         description: 'github token for container registry'
         required: true
@@ -57,6 +63,8 @@ jobs:
       - name: 'Deploy Assets to CDN'
         uses: ./.github/actions/docker-run-playwright
         env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
           CDN_USER: ${{ secrets.cdn-user }}
           CDN_SSH_KEY: ${{ secrets.cdn-ssh-key }}
         with:
