@@ -1,4 +1,4 @@
-import { convertToReact } from '@porsche-design-system/storefront-old/src/utils/convertToReact';
+import { convertToReact } from '@porsche-design-system/shared/utils/convertToReact';
 import { pascalCase } from 'change-case';
 import { byAlphabet, comment, iconsRegEx, templateRegEx } from './generateVRTPages';
 

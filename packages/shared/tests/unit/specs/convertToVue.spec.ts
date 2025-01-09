@@ -1,13 +1,13 @@
 import {
-  cleanBooleanAndUndefinedValues,
-  unbindNativeAttributes,
-  transformAttributesWithDigitValue,
-  transformAttributesWithNotDigitValue,
-  transformAttributesWithObjectValues,
-  transformEventsToVueSyntax,
+  cleanVueBooleanAndUndefinedValues,
   convertToVue,
-} from '../../src/utils/convertToVue';
-import * as vueUtils from '../../src/utils/convertToVue';
+  transformEventsToVueSyntax,
+  transformVueAttributesWithDigitValue,
+  transformVueAttributesWithNotDigitValue,
+  transformVueAttributesWithObjectValues,
+  unbindVueNativeAttributes,
+} from '../../../src/utils/convertToVue';
+import * as vueUtils from '../../../src/utils/convertToVue';
 
 const markup = `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" negative-digit-attribute="-6" boolean-attribute="true" aria-label="something label" aria-something="Something foo" name="1">
   <span>some text</span>
@@ -33,7 +33,7 @@ describe('transformEventsToViewSyntax()', () => {
 
 describe('transformAttributesWithObjectValues()', () => {
   it('should transform only attributes with object values into vue syntax', () => {
-    expect(transformAttributesWithObjectValues(markup)).toBe(
+    expect(transformVueAttributesWithObjectValues(markup)).toBe(
       `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" :anotherAttribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" negative-digit-attribute="-6" boolean-attribute="true" aria-label="something label" aria-something="Something foo" name="1">
   <span>some text</span>
   <span slot="some-slot">some slot text</span>
@@ -44,7 +44,7 @@ describe('transformAttributesWithObjectValues()', () => {
 
 describe('transformAttributesWithNotDigitValue()', () => {
   it('should transform only attributes without digit values', () => {
-    expect(transformAttributesWithNotDigitValue(markup)).toBe(
+    expect(transformVueAttributesWithNotDigitValue(markup)).toBe(
       `<p-some-tag :someAttribute="'some value'" :attribute="'some value'" :class="'some-class'" :anotherAttribute="'{ bar: 'foo' }'" :onclick="'alert('click'); return false;'" :onchange="'alert('change'); return false;'" digit-attribute="6" negative-digit-attribute="-6" :booleanAttribute="'true'" aria-label="something label" aria-something="Something foo" name="1">
   <span>some text</span>
   <span :slot="'some-slot'">some slot text</span>
@@ -55,7 +55,7 @@ describe('transformAttributesWithNotDigitValue()', () => {
 
 describe('transformAttributesWithDigitValue()', () => {
   it('should transform attributes with digit values', () => {
-    expect(transformAttributesWithDigitValue(markup)).toBe(
+    expect(transformVueAttributesWithDigitValue(markup)).toBe(
       `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" :digitAttribute="6" :negativeDigitAttribute="-6" boolean-attribute="true" aria-label="something label" aria-something="Something foo" :name="'1'">
   <span>some text</span>
   <span slot="some-slot">some slot text</span>
@@ -63,7 +63,7 @@ describe('transformAttributesWithDigitValue()', () => {
     );
   });
   it('transform maxlength with maxLength', () => {
-    expect(transformAttributesWithDigitValue('<textarea maxlength="200">Some value</textarea>')).toBe(
+    expect(transformVueAttributesWithDigitValue('<textarea maxlength="200">Some value</textarea>')).toBe(
       '<textarea :maxLength="200">Some value</textarea>'
     );
   });
@@ -71,9 +71,9 @@ describe('transformAttributesWithDigitValue()', () => {
 
 describe('cleanBooleanAndUndefinedValues()', () => {
   it('should remove single quotes from boolean values after initial transform', () => {
-    const transformedMarkup = transformAttributesWithNotDigitValue(markup);
+    const transformedMarkup = transformVueAttributesWithNotDigitValue(markup);
 
-    expect(cleanBooleanAndUndefinedValues(transformedMarkup)).toBe(
+    expect(cleanVueBooleanAndUndefinedValues(transformedMarkup)).toBe(
       `<p-some-tag :someAttribute="'some value'" :attribute="'some value'" :class="'some-class'" :anotherAttribute="'{ bar: 'foo' }'" :onclick="'alert('click'); return false;'" :onchange="'alert('change'); return false;'" digit-attribute="6" negative-digit-attribute="-6" :booleanAttribute="true" aria-label="something label" aria-something="Something foo" name="1">
   <span>some text</span>
   <span :slot="'some-slot'">some slot text</span>
@@ -82,7 +82,7 @@ describe('cleanBooleanAndUndefinedValues()', () => {
   });
 
   it('should remove single quotes from undefined values after initial transform', () => {
-    expect(cleanBooleanAndUndefinedValues(`<p-some-tag attribute="undefined"></p-some-tag>`)).toBe(
+    expect(cleanVueBooleanAndUndefinedValues(`<p-some-tag attribute="undefined"></p-some-tag>`)).toBe(
       `<p-some-tag attribute="undefined"></p-some-tag>`
     );
   });
@@ -90,9 +90,9 @@ describe('cleanBooleanAndUndefinedValues()', () => {
 
 describe('unbindNativeAttributes()', () => {
   it('should remove colon from "class" and "slot" attributes after initial transform', () => {
-    const transformedMarkup = transformAttributesWithNotDigitValue(markup);
+    const transformedMarkup = transformVueAttributesWithNotDigitValue(markup);
 
-    expect(unbindNativeAttributes(transformedMarkup)).toBe(
+    expect(unbindVueNativeAttributes(transformedMarkup)).toBe(
       `<p-some-tag :someAttribute="'some value'" :attribute="'some value'" class="some-class" :anotherAttribute="'{ bar: 'foo' }'" :onclick="'alert('click'); return false;'" :onchange="'alert('change'); return false;'" digit-attribute="6" negative-digit-attribute="-6" :booleanAttribute="'true'" aria-label="something label" aria-something="Something foo" name="1">
   <span>some text</span>
   <span slot="some-slot">some slot text</span>
@@ -101,15 +101,15 @@ describe('unbindNativeAttributes()', () => {
   });
 
   it('should remove colon from "title" attribute', () => {
-    expect(unbindNativeAttributes(`<div :title="'hello'"></div>`)).toBe('<div title="hello"></div>');
+    expect(unbindVueNativeAttributes(`<div :title="'hello'"></div>`)).toBe('<div title="hello"></div>');
   });
 
   it('should remove colon from "id" attribute', () => {
-    expect(unbindNativeAttributes(`<div :id="'hello'"></div>`)).toBe('<div id="hello"></div>');
+    expect(unbindVueNativeAttributes(`<div :id="'hello'"></div>`)).toBe('<div id="hello"></div>');
   });
 
   it('should remove colon from "style" attribute', () => {
-    expect(unbindNativeAttributes(`<div :style="'background: yellow'"></div>`)).toBe(
+    expect(unbindVueNativeAttributes(`<div :style="'background: yellow'"></div>`)).toBe(
       '<div style="background: yellow"></div>'
     );
   });
@@ -121,14 +121,14 @@ describe('convertToVue()', () => {
   let previousSpy: jest.SpyInstance;
   const transformFunctions: (keyof typeof vueUtils)[] = [
     'transformEventsToVueSyntax',
-    'transformAttributesWithObjectValues',
-    'transformAttributesWithNotDigitValue',
-    'transformAttributesWithDigitValue',
-    'cleanBooleanAndUndefinedValues',
-    'unbindNativeAttributes',
-    'transformCustomElementTagName',
-    'transformInputs',
-    'transformToSelfClosingTags',
+    'transformVueAttributesWithObjectValues',
+    'transformVueAttributesWithNotDigitValue',
+    'transformVueAttributesWithDigitValue',
+    'cleanVueBooleanAndUndefinedValues',
+    'unbindVueNativeAttributes',
+    'transformVueCustomElementTagName',
+    'transformVueInputs',
+    'transformVueToSelfClosingTags',
   ];
 
   it.each(transformFunctions)('should call %s()', (fn) => {

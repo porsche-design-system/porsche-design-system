@@ -1,13 +1,13 @@
 import {
-  cleanBooleanAndUndefinedValues,
-  unbindNativeAttributes,
+  cleanAngularBooleanAndUndefinedValues,
   convertToAngular,
-  transformAttributesWithDigitValue,
-  transformAttributesWithNotDigitValue,
-  transformAttributesWithObjectValues,
+  transformAngularAttributesWithDigitValue,
+  transformAngularAttributesWithNotDigitValue,
+  transformAngularAttributesWithObjectValues,
   transformEventsToAngularSyntax,
-} from '../../src/utils/convertToAngular';
-import * as angularUtils from '../../src/utils/convertToAngular';
+  unbindAngularNativeAttributes,
+} from '../../../src/utils/convertToAngular';
+import * as angularUtils from '../../../src/utils/convertToAngular';
 
 const markup = `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" negative-digit-attribute="-6" boolean-attribute="true" aria-label="something label" aria-something="Something foo" name="1">
   <span>some text</span>
@@ -33,7 +33,7 @@ describe('transformEventsToAngularSyntax()', () => {
 
 describe('transformAttributesWithObjectValues()', () => {
   it('should transform only attributes with object values into angular syntax', () => {
-    expect(transformAttributesWithObjectValues(markup)).toBe(
+    expect(transformAngularAttributesWithObjectValues(markup)).toBe(
       `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" [anotherAttribute]="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" negative-digit-attribute="-6" boolean-attribute="true" aria-label="something label" aria-something="Something foo" name="1">
   <span>some text</span>
   <span slot="some-slot">some slot text</span>
@@ -44,7 +44,7 @@ describe('transformAttributesWithObjectValues()', () => {
 
 describe('transformAttributesWithNotDigitValue()', () => {
   it('should transform only attributes without digit values', () => {
-    expect(transformAttributesWithNotDigitValue(markup)).toBe(
+    expect(transformAngularAttributesWithNotDigitValue(markup)).toBe(
       `<p-some-tag [someAttribute]="'some value'" [attribute]="'some value'" [class]="'some-class'" [anotherAttribute]="'{ bar: 'foo' }'" [onclick]="'alert('click'); return false;'" [onchange]="'alert('change'); return false;'" digit-attribute="6" negative-digit-attribute="-6" [booleanAttribute]="'true'" aria-label="something label" aria-something="Something foo" name="1">
   <span>some text</span>
   <span [slot]="'some-slot'">some slot text</span>
@@ -55,7 +55,7 @@ describe('transformAttributesWithNotDigitValue()', () => {
 
 describe('transformAttributesWithDigitValue()', () => {
   it('should transform attributes with digit values', () => {
-    expect(transformAttributesWithDigitValue(markup)).toBe(
+    expect(transformAngularAttributesWithDigitValue(markup)).toBe(
       `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" [digitAttribute]="6" [negativeDigitAttribute]="-6" boolean-attribute="true" aria-label="something label" aria-something="Something foo" [name]="'1'">
   <span>some text</span>
   <span slot="some-slot">some slot text</span>
@@ -63,17 +63,17 @@ describe('transformAttributesWithDigitValue()', () => {
     );
   });
   it('should transform maxlength with maxLength', () => {
-    expect(transformAttributesWithDigitValue('<textarea maxlength="200">Some value</textarea>')).toBe(
+    expect(transformAngularAttributesWithDigitValue('<textarea maxlength="200">Some value</textarea>')).toBe(
       '<textarea [maxLength]="200">Some value</textarea>'
     );
   });
   it('should not transform prop model with digit values', () => {
-    expect(transformAttributesWithDigitValue('<p-model-signature model="911"></p-model-signature>')).toBe(
+    expect(transformAngularAttributesWithDigitValue('<p-model-signature model="911"></p-model-signature>')).toBe(
       `<p-model-signature [model]="'911'"></p-model-signature>`
     );
   });
   it('should not transform pin codes prop value with digit values', () => {
-    expect(transformAttributesWithDigitValue('<p-pin-code value="1234"></p-pin-code>')).toBe(
+    expect(transformAngularAttributesWithDigitValue('<p-pin-code value="1234"></p-pin-code>')).toBe(
       `<p-pin-code [value]="'1234'"></p-pin-code>`
     );
   });
@@ -81,9 +81,9 @@ describe('transformAttributesWithDigitValue()', () => {
 
 describe('cleanBooleanAndUndefinedValues()', () => {
   it('should remove single quotes from boolean values after initial transform', () => {
-    const transformedMarkup = transformAttributesWithNotDigitValue(markup);
+    const transformedMarkup = transformAngularAttributesWithNotDigitValue(markup);
 
-    expect(cleanBooleanAndUndefinedValues(transformedMarkup)).toBe(
+    expect(cleanAngularBooleanAndUndefinedValues(transformedMarkup)).toBe(
       `<p-some-tag [someAttribute]="'some value'" [attribute]="'some value'" [class]="'some-class'" [anotherAttribute]="'{ bar: 'foo' }'" [onclick]="'alert('click'); return false;'" [onchange]="'alert('change'); return false;'" digit-attribute="6" negative-digit-attribute="-6" [booleanAttribute]="true" aria-label="something label" aria-something="Something foo" name="1">
   <span>some text</span>
   <span [slot]="'some-slot'">some slot text</span>
@@ -92,7 +92,7 @@ describe('cleanBooleanAndUndefinedValues()', () => {
   });
 
   it('should remove single quotes from undefined values after initial transform', () => {
-    expect(cleanBooleanAndUndefinedValues(`<p-some-tag attribute="undefined"></p-some-tag>`)).toBe(
+    expect(cleanAngularBooleanAndUndefinedValues(`<p-some-tag attribute="undefined"></p-some-tag>`)).toBe(
       `<p-some-tag attribute="undefined"></p-some-tag>`
     );
   });
@@ -100,9 +100,9 @@ describe('cleanBooleanAndUndefinedValues()', () => {
 
 describe('unbindNativeAttributes()', () => {
   it('should remove brackets from "class" and "slot" attributes after initial transform', () => {
-    const transformedMarkup = transformAttributesWithNotDigitValue(markup);
+    const transformedMarkup = transformAngularAttributesWithNotDigitValue(markup);
 
-    expect(unbindNativeAttributes(transformedMarkup)).toBe(
+    expect(unbindAngularNativeAttributes(transformedMarkup)).toBe(
       `<p-some-tag [someAttribute]="'some value'" [attribute]="'some value'" class="some-class" [anotherAttribute]="'{ bar: 'foo' }'" [onclick]="'alert('click'); return false;'" [onchange]="'alert('change'); return false;'" digit-attribute="6" negative-digit-attribute="-6" [booleanAttribute]="'true'" aria-label="something label" aria-something="Something foo" name="1">
   <span>some text</span>
   <span slot="some-slot">some slot text</span>
@@ -111,15 +111,15 @@ describe('unbindNativeAttributes()', () => {
   });
 
   it('should remove brackets from "title" attribute', () => {
-    expect(unbindNativeAttributes(`<div [title]="'hello'"></div>`)).toBe('<div title="hello"></div>');
+    expect(unbindAngularNativeAttributes(`<div [title]="'hello'"></div>`)).toBe('<div title="hello"></div>');
   });
 
   it('should remove brackets from "id" attribute', () => {
-    expect(unbindNativeAttributes(`<div [id]="'hello'"></div>`)).toBe('<div id="hello"></div>');
+    expect(unbindAngularNativeAttributes(`<div [id]="'hello'"></div>`)).toBe('<div id="hello"></div>');
   });
 
   it('should remove brackets from "style" attribute', () => {
-    expect(unbindNativeAttributes(`<div [style]="'background: yellow'"></div>`)).toBe(
+    expect(unbindAngularNativeAttributes(`<div [style]="'background: yellow'"></div>`)).toBe(
       '<div style="background: yellow"></div>'
     );
   });
@@ -131,11 +131,11 @@ describe('convertToAngular()', () => {
   let previousSpy: jest.SpyInstance;
   const transformFunctions: (keyof typeof angularUtils)[] = [
     'transformEventsToAngularSyntax',
-    'transformAttributesWithObjectValues',
-    'transformAttributesWithNotDigitValue',
-    'transformAttributesWithDigitValue',
-    'cleanBooleanAndUndefinedValues',
-    'unbindNativeAttributes',
+    'transformAngularAttributesWithObjectValues',
+    'transformAngularAttributesWithNotDigitValue',
+    'transformAngularAttributesWithDigitValue',
+    'cleanAngularBooleanAndUndefinedValues',
+    'unbindAngularNativeAttributes',
   ];
 
   it.each(transformFunctions)('should call %s()', (fn) => {

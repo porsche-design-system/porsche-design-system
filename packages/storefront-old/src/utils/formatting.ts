@@ -1,13 +1,8 @@
-import { paramCase } from 'change-case';
+import { EventMeta, PropMeta, getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
-import { getComponentMeta, EventMeta, PropMeta } from '@porsche-design-system/component-meta';
-import { convertToAngular } from './convertToAngular';
-import { convertToReact } from './convertToReact';
-import { convertToVue } from './convertToVue';
+import { convertToAngular, convertToReact, convertToVue } from '@porsche-design-system/shared/utils';
+import { paramCase } from 'change-case';
 import type { Framework, PlaygroundTheme } from '../models';
-
-export * from './convertToAngular';
-export * from './convertToReact';
 
 export const cleanMarkup = (markup: string): string =>
   markup

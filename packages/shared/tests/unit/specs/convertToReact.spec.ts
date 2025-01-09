@@ -1,3 +1,4 @@
+import { transformAngularAttributesWithDigitValue } from '@porsche-design-system/storefront-old/src/utils';
 import {
   convertToReact,
   transformBooleanDigitAndUndefinedValues,
@@ -9,9 +10,8 @@ import {
   transformStandardAttributes,
   transformStyleAttribute,
   transformToSelfClosingTags,
-} from '../../src/utils/convertToReact';
-import * as reactUtils from '../../src/utils/convertToReact';
-import { transformAttributesWithDigitValue } from '../../src/utils';
+} from '../../../src/utils/convertToReact';
+import * as reactUtils from '../../../src/utils/convertToReact';
 
 const markup = `<p-some-tag some-attribute="some value" attribute="some value" class="some-class" another-attribute="{ bar: 'foo' }" onclick="alert('click'); return false;" onchange="alert('change'); return false;" digit-attribute="6" negative-digit-attribute="-6" boolean-attribute="true">
   <span>Some text</span>
@@ -141,12 +141,12 @@ describe('transformBooleanDigitAndUndefinedValues()', () => {
   });
 
   it('should not transform prop model with digit values', () => {
-    expect(transformAttributesWithDigitValue('<p-model-signature model="911"></p-model-signature>')).toBe(
+    expect(transformAngularAttributesWithDigitValue('<p-model-signature model="911"></p-model-signature>')).toBe(
       `<p-model-signature [model]="'911'"></p-model-signature>`
     );
   });
   it('should not transform pin codes prop value with digit values', () => {
-    expect(transformAttributesWithDigitValue('<p-pin-code value="1234"></p-pin-code>')).toBe(
+    expect(transformAngularAttributesWithDigitValue('<p-pin-code value="1234"></p-pin-code>')).toBe(
       `<p-pin-code [value]="'1234'"></p-pin-code>`
     );
   });

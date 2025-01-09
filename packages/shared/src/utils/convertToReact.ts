@@ -1,4 +1,4 @@
-import { camelCase, pascalCase, paramCase } from 'change-case';
+import { camelCase, kebabCase, pascalCase } from 'change-case';
 
 export const transformObjectValues = (markup: string): string =>
   // remove quotes from object values but add double brackets and camelCase
@@ -10,7 +10,7 @@ export const transformStandardAttributes = (markup: string): string =>
     .replace(/\s(\S+)="(.*?)"/g, (_, $key, $value) => ` ${camelCase($key)}="${$value}"`)
     .replace(/(<(?:input|textarea|select).*?)\sreadonly/g, '$1 readOnly')
     .replace(/(<(?:input|textarea).*?)\smaxlength=/g, '$1 maxLength=')
-    .replace(/\s(aria[A-Z][a-z]+)=/g, (m, $attr) => m.replace($attr, paramCase($attr)))
+    .replace(/\s(aria[A-Z][a-z]+)=/g, (m, $attr) => m.replace($attr, kebabCase($attr)))
     .replace(/(<(?:img|source).*?)srcset=(".*")/g, '$1srcSet={$2}');
 
 export const transformClassAttribute = (markup: string): string =>

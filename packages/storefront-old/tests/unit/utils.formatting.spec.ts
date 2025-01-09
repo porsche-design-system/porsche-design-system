@@ -10,8 +10,8 @@ import {
   patchThemeIntoMarkup,
 } from '../../src/utils';
 
-import * as convertToAngularUtils from '../../src/utils/convertToAngular';
-import * as convertToReactUtils from '../../src/utils/convertToReact';
+import * as convertToAngularUtils from '@porsche-design-system/shared/utils/convertToAngular';
+import * as convertToReactUtils from '@porsche-design-system/shared/utils/convertToReact';
 import * as formattingUtils from '../../src/utils/formatting';
 
 describe('cleanMarkup()', () => {
