@@ -2,16 +2,7 @@
   "name": "@porsche-design-system/components-vue",
   "version": "3.24.0",
   "description": "Porsche Design System is a component library designed to help developers create the best experience for software or services distributed by Dr. Ing. h.c. F. Porsche AG.",
-  "keywords": [
-    "porsche",
-    "design",
-    "system",
-    "web",
-    "component",
-    "library",
-    "vue",
-    "js"
-  ],
+  "keywords": ["porsche", "design", "system", "web", "component", "library", "vue", "js"],
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "SEE LICENSE IN LICENSE",
