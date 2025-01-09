@@ -25,13 +25,7 @@ const sourceDirectory = path.resolve('../components/src/components');
 const componentFileNames = globbySync(`${sourceDirectory}/**/*.tsx`);
 
 const parsePropOptions = (propString?: string): PropOptions | undefined =>
-  propString
-    ? (JSON.parse(
-        propString
-          .replace(/(\w+):/g, '"$1":')
-          .replace(/'/g, '"') // Add quotes and convert single to double quotes
-      ) as PropOptions)
-    : undefined;
+  propString ? (JSON.parse(propString.replace(/(\w+):/g, '"$1":').replace(/'/g, '"')) as PropOptions) : undefined;
 
 const getComponentFilePath = (tagName: TagName): string => {
   return componentFileNames.find((fileName) => fileName.match(new RegExp(`${tagName.replace(/^p-/, '/')}\\.tsx$`)));
