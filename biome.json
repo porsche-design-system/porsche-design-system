@@ -95,7 +95,7 @@
       "**/components-vue/*",
       "**/crawler/*",
       "**/shared/*",
-      "**/storefront/*",
+      "**/storefront-old/*",
       "**/utilities/*"
     ]
   },
