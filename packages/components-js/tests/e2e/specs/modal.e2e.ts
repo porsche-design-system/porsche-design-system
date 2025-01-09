@@ -28,7 +28,6 @@ const getModal = (page: Page) => page.locator('p-modal dialog');
 const getDismissButton = (page: Page) => page.locator('p-modal .dismiss');
 const getFooter = (page: Page) => page.locator('p-modal slot[name="footer"]');
 const getFooterBoxShadow = async (page: Page): Promise<string> => getElementStyle(getFooter(page), 'boxShadow');
-const getBodyStyle = async (page: Page) => getAttribute(page.locator('body'), 'style');
 const waitForModalTransition = async () => sleep(CSS_TRANSITION_DURATION);
 
 const initBasicModal = (
@@ -550,35 +549,33 @@ test('should open modal at scroll top position zero when its content is scrollab
 });
 
 test.describe('scroll lock', () => {
-  const bodyLockedStyle = 'overflow: hidden;';
-
   test('should prevent page from scrolling when open', async ({ page }) => {
     await initBasicModal(page, { isOpen: false });
-    expect(await getBodyStyle(page)).toBe(null);
+    await expect(page.locator('body')).toHaveCSS('overflow', 'visible');
 
     await openModal(page);
-    expect(await getBodyStyle(page)).toBe(bodyLockedStyle);
+    await expect(page.locator('body')).toHaveCSS('overflow', 'hidden');
 
     await setProperty(getHost(page), 'open', false);
     await waitForStencilLifecycle(page);
-    expect(await getBodyStyle(page)).toBe('');
+    await expect(page.locator('body')).toHaveCSS('overflow', 'visible');
   });
 
   test('should prevent page from scrolling when initially open', async ({ page }) => {
     await initBasicModal(page, { isOpen: true });
-    expect(await getBodyStyle(page)).toBe(bodyLockedStyle);
+    await expect(page.locator('body')).toHaveCSS('overflow', 'hidden');
   });
 
   test('should remove overflow hidden from body if unmounted', async ({ page }) => {
     await initBasicModal(page, { isOpen: true });
-    expect(await getBodyStyle(page)).toBe(bodyLockedStyle);
+    await expect(page.locator('body')).toHaveCSS('overflow', 'hidden');
 
     await page.evaluate(() => {
       document.querySelector('p-modal').remove();
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getBodyStyle(page)).toBe('');
+    await expect(page.locator('body')).toHaveCSS('overflow', 'visible');
   });
 });
 

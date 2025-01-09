@@ -1,6 +1,3 @@
-import type { JssStyle, Styles } from 'jss';
-import type { Theme } from '../types';
-import { getThemedColors, getTransition, hoverMediaQuery, prefersColorSchemeDarkMediaQuery } from './';
 import {
   borderRadiusSmall,
   borderWidthBase,
@@ -10,8 +7,11 @@ import {
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/styles';
-import { getThemedFormStateColors } from './form-state-color-styles';
+import type { JssStyle, Styles } from 'jss';
+import type { Theme } from '../types';
 import type { FormState } from '../utils/form/form-state';
+import { getThemedColors, getTransition, hoverMediaQuery, prefersColorSchemeDarkMediaQuery } from './';
+import { getThemedFormStateColors } from './form-state-color-styles';
 
 export type ChildSelector = 'input' | 'select' | 'textarea';
 
@@ -123,8 +123,8 @@ export const getCalculatedFormElementPaddingHorizontal = (buttonOrIconAmount: 1 
 };
 
 // TODO: re-use in textarea-wrapper not only in text-field-wrapper
-export const getUnitCounterJssStyle = (isDisabled: boolean, theme: Theme): JssStyle => {
-  const { disabledColor, contrastMediumColor } = getThemedColors(theme);
+export const getUnitCounterJssStyle = (isDisabled: boolean, isReadonly: boolean, theme: Theme): JssStyle => {
+  const { disabledColor, contrastMediumColor, contrastHighColor } = getThemedColors(theme);
   const { disabledColor: disabledColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
 
   return {
@@ -145,5 +145,8 @@ export const getUnitCounterJssStyle = (isDisabled: boolean, theme: Theme): JssSt
         color: disabledColorDark,
       }),
     }),
+    ...(isReadonly && {
+      color: contrastHighColor,
+    })
   };
 };
