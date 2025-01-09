@@ -208,6 +208,7 @@ export class Textarea {
       this.host,
       getComponentCss,
       this.disabled,
+      this.readOnly,
       this.hideLabel,
       this.state,
       this.hasCounter,

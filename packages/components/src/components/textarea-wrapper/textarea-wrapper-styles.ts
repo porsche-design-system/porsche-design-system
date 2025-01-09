@@ -1,7 +1,13 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { FormState } from '../../utils/form/form-state';
 
-import { getCss, mergeDeep } from '../../utils';
+import {
+  borderWidthBase,
+  spacingStaticLarge,
+  spacingStaticXSmall,
+  textSmallStyle,
+} from '@porsche-design-system/styles';
+import type { Styles } from 'jss';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -14,18 +20,13 @@ import {
   getSlottedTextFieldTextareaSelectStyles,
   getUnitCounterJssStyle,
 } from '../../styles/form-styles';
-import type { Styles } from 'jss';
+import { getCss, mergeDeep } from '../../utils';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import {
-  borderWidthBase,
-  spacingStaticLarge,
-  spacingStaticXSmall,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
 
 export const getComponentCss = (
   isDisabled: boolean,
+  isReadonly: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   hasCounter: boolean,
@@ -75,7 +76,7 @@ export const getComponentCss = (
     },
     ...(hasCounter && {
       counter: {
-        ...getUnitCounterJssStyle(isDisabled, theme),
+        ...getUnitCounterJssStyle(isDisabled, isReadonly, theme),
         gridArea: '1/1',
         placeSelf: 'flex-end',
         padding: `6px calc(${formElementPaddingHorizontal} + ${borderWidthBase})`,

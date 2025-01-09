@@ -33,6 +33,7 @@ export const cssVariableInputPaddingEnd = '--p-internal-text-field-input-padding
 
 export const getComponentCss = (
   isDisabled: boolean,
+  isReadonly: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   hasUnitOrVisibleCounter: boolean,
@@ -148,7 +149,7 @@ export const getComponentCss = (
     }),
     ...(hasUnitOrVisibleCounter && {
       'unit-counter': {
-        ...getUnitCounterJssStyle(isDisabled, theme),
+        ...getUnitCounterJssStyle(isDisabled, isReadonly, theme),
         gridArea: `1/${unitPosition === 'suffix' ? 5 : 1}/1/${unitPosition === 'suffix' ? 7 : 3}`,
         placeSelf: 'center',
         paddingInline:
