@@ -26,7 +26,8 @@
     "@porsche-design-system/component-meta": "0.0.0"
   },
   "devDependencies": {
-    "@octokit/core": "^6.1.2"
+    "@octokit/core": "^6.1.2",
+    "change-case-legacy": "npm:change-case@^4.1.2"
   },
   "peerDependencies": {
     "@rollup/plugin-commonjs": "*",
@@ -38,7 +39,6 @@
     "@types/jest-expect-message": "*",
     "@types/madge": "*",
     "@types/node": "*",
-    "change-case": "*",
     "globby": "*",
     "jest": "*",
     "jest-environment-jsdom": "*",
