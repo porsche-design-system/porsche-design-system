@@ -19,7 +19,7 @@
     "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs && chmod +x bin/serve-dummyassets.js",
     "clearGitHubActionLogs": "tsx scripts/clearGitHubActionLogs.ts",
     "test": "yarn test:unit",
-    "test:unit": "jest --colors -c tests/unit/config/jest.config.js",
+    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
   },
   "dependencies": {
@@ -53,7 +53,8 @@
     "rollup-plugin-terser": "*",
     "ts-jest": "*",
     "tsx": "*",
-    "typescript": "*"
+    "typescript": "*",
+    "vitest": "*"
   },
   "bin": {
     "serve-dummyassets": "./bin/serve-dummyassets.js"
