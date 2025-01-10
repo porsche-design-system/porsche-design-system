@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`should have no regression for dependency tree 1`] = `
 {
@@ -16,11 +16,17 @@ exports[`should have no regression for dependency tree 1`] = `
     "lib/tagNames.js",
     "lib/tagNamesWithChunk.js",
     "styles/getMinifiedCss.js",
+    "utils/convertToAngular.js",
+    "utils/convertToReact.js",
+    "utils/convertToVue.js",
   ],
   "lib/codeSamples.js": [],
   "lib/partialNames.js": [],
   "lib/tagNames.js": [],
   "lib/tagNamesWithChunk.js": [],
   "styles/getMinifiedCss.js": [],
+  "utils/convertToAngular.js": [],
+  "utils/convertToReact.js": [],
+  "utils/convertToVue.js": [],
 }
 `;
