@@ -13,7 +13,6 @@ if
   [[ "--components-react:react-wrapper" == "${1}" ]] ||
   [[ "--components-vue" == "${1}" ]] ||
   [[ "--components-vue:vue-wrapper" == "${1}" ]] ||
-  [[ "--shared" == "${1}" ]] ||
   [[ "--storefront" == "${1}" ]]
 then
   yarn test:unit:${1:2} --ci
@@ -31,6 +30,7 @@ elif
   [[ "--components-react:uxpin-wrapper" == "${1}" ]] ||
   [[ "--components-react:react-ssr-wrapper" == "${1}" ]] ||
   [[ "--vitest:storefront" == "${1}" ]] ||
+  [[ "--shared" == "${1}" ]] ||
   [[ "--utilities" == "${1}" ]]
 then
   yarn test:unit:${1:2}
