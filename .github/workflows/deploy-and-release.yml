@@ -97,7 +97,7 @@ jobs:
           GH_DEPLOY_KEY_STOREFRONT: ${{ secrets.gh-deploy-key-storefront }}
           GH_REPOSITORY_STOREFRONT: ${{ secrets.gh-repository-storefront }}
         with:
-          entrypoint: run-deploy-storefront-gh-pages
+          entrypoint: run-deploy-storefront
   smoke-test:
     name: 'Smoke Test'
     needs:
