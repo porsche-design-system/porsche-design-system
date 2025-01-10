@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { Canvas } from '@/components/layout/Canvas';
 import { HeaderPartials } from '@/partials/HeaderPartials';
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 
@@ -21,7 +22,9 @@ export default function RootLayout({
         <HeaderPartials />
       </head>
       <body>
-        <PorscheDesignSystemProvider>{children}</PorscheDesignSystemProvider>
+        <PorscheDesignSystemProvider>
+          <Canvas>{children}</Canvas>
+        </PorscheDesignSystemProvider>
       </body>
     </html>
   );
