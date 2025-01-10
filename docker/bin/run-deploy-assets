@@ -8,54 +8,62 @@ if [[ -z "${CDN_USER}" ]]; then
   exit 1
 fi
 
+if [[ -z "${AWS_ACCESS_KEY_ID}" ]]; then
+  echo "Please provide the \$AWS_ACCESS_KEY_ID environment variable."
+  exit 1
+fi
+
+if [[ -z "${AWS_SECRET_ACCESS_KEY}" ]]; then
+  echo "Please provide the \$AWS_SECRET_ACCESS_KEY environment variable."
+  exit 1
+fi
+
 SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
 
 # staging cdn can be reached via
 # https://wpc.b2820.taucdn.net/00B2820/assets/porsche-design-system/marque/porsche-marque-trademark.medium.min.aa801f42028b1c385a5e26ae115da598@2x.png
 
-function upload2 {
+function upload_to_edgio {
   echo "task: [$(date)] \"upload\" (${1}, ${2})"
 
   # check if directory exists after stripping away everything after last slash
   dir=$(echo "${1}" | sed "s|\(.*\)/.*|\1|")
   if [ -d ${dir} ]; then
-    # rsync -av --stats --ignore-existing -e "ssh -p22 -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no" ${1} ${CDN_USER}@rsync.ams.B2820.taucdn.net:"/assets/porsche-design-system/${2}"
+    rsync -av --stats --ignore-existing -e "ssh -p22 -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no" ${1} ${CDN_USER}@rsync.ams.B2820.taucdn.net:"/assets/porsche-design-system/${2}"
     echo "matching files in directory '${dir}' have been uploaded to cdn ✅"
   else
     echo "directory '${dir}' does not exist, skipping upload ❌️️"
   fi
 }
 
-function upload {
+function upload_to_akamai {
   echo "task: [$(date)] \"upload\" (${1}, ${2})"
 
-  # check if directory exists after stripping away everything after last slash
-  dir=$(echo "${1}" | sed "s|\(.*\)/.*|\1|")
-  if [ -d ${dir} ]; then
-    rclone copy "${1}" "linode:porsche-design-system/${2}" --ignore-existing --config=./rclone.conf
-    echo "matching files in directory '${dir}' have been uploaded to cdn ✅"
+  if [ -d "${1}" ]; then
+    rclone copy "${1}" "linode:porsche-design-system/${2}" --config=./rclone.conf --ignore-existing -v
+    echo "matching files in directory '${1}' have been uploaded to cdn ✅"
   else
-    echo "directory '${dir}' does not exist, skipping upload ❌️️"
+    echo "directory '${1}' does not exist, skipping upload ❌️️"
   fi
 }
 
 source "${SCRIPT_DIR}/../shared/ensure-cdn-credentials.sh"
-upload2 "packages/assets/cdn/components/*" components/
-upload2 "packages/assets/cdn/crest/*" crest/
-upload2 "packages/assets/cdn/fallbacks/*" fallbacks/
-upload2 "packages/assets/cdn/fonts/*" fonts/
-upload2 "packages/assets/cdn/icons/*" icons/
-upload2 "packages/assets/cdn/marque/*" marque/
-upload2 "packages/assets/cdn/meta-icons/*" meta-icons/
-upload2 "packages/assets/cdn/model-signatures/*" model-signatures/
-upload2 "packages/assets/cdn/styles/font-face.*.css" styles/
+upload_to_edgio "packages/assets/cdn/components/*" components/
+upload_to_edgio "packages/assets/cdn/crest/*" crest/
+upload_to_edgio "packages/assets/cdn/fallbacks/*" fallbacks/
+upload_to_edgio "packages/assets/cdn/fonts/*" fonts/
+upload_to_edgio "packages/assets/cdn/icons/*" icons/
+upload_to_edgio "packages/assets/cdn/marque/*" marque/
+upload_to_edgio "packages/assets/cdn/meta-icons/*" meta-icons/
+upload_to_edgio "packages/assets/cdn/model-signatures/*" model-signatures/
+upload_to_edgio "packages/assets/cdn/styles/font-face.*.css" styles/
 
-upload "packages/assets/cdn/components/" components/
-upload "packages/assets/cdn/crest/" crest/
-upload "packages/assets/cdn/fallbacks/" fallbacks/
-upload "packages/assets/cdn/fonts/" fonts/
-upload "packages/assets/cdn/icons/" icons/
-upload "packages/assets/cdn/marque/" marque/
-upload "packages/assets/cdn/meta-icons/" meta-icons/
-upload "packages/assets/cdn/model-signatures/" model-signatures/
-upload "packages/assets/cdn/styles/" styles/
+upload_to_akamai packages/assets/cdn/components/ components/
+upload_to_akamai packages/assets/cdn/crest/ crest/
+upload_to_akamai packages/assets/cdn/fallbacks/ fallbacks/
+upload_to_akamai packages/assets/cdn/fonts/ fonts/
+upload_to_akamai packages/assets/cdn/icons/ icons/
+upload_to_akamai packages/assets/cdn/marque/ marque/
+upload_to_akamai packages/assets/cdn/meta-icons/ meta-icons/
+upload_to_akamai packages/assets/cdn/model-signatures/ model-signatures/
+upload_to_akamai packages/assets/cdn/styles/ styles/
