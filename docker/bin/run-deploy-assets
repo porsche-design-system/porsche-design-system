@@ -40,7 +40,7 @@ function upload_to_akamai {
   echo "task: [$(date)] \"upload\" (${1}, ${2})"
 
   if [ -d "${1}" ]; then
-    rclone copy "${1}" "linode:porsche-design-system/${2}" --config=./rclone.conf --ignore-existing -v
+    rclone copy "${1}" "linode:porsche-design-system/${2}" --config=./rclone.conf --ignore-existing -v --exclude=font-face.css
     echo "matching files in directory '${1}' have been uploaded to cdn ✅"
   else
     echo "directory '${1}' does not exist, skipping upload ❌️️"
