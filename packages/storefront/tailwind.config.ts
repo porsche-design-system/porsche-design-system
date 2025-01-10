@@ -7,18 +7,25 @@ import {
   fontSizeHeading,
   fontSizeText,
   fontWeight,
-  spacingFluid,
-  themeDark,
-  themeLight,
-} from '@porsche-design-system/components-react/styles';
-import {
   headingLargeStyle,
   headingMediumStyle,
   headingSmallStyle,
   headingXLargeStyle,
   headingXXLargeStyle,
+  spacingFluid,
+  spacingFluidLarge,
+  spacingFluidMedium,
+  spacingFluidSmall,
+  spacingStaticLarge,
+  spacingStaticMedium,
+  spacingStaticSmall,
+  spacingStaticXLarge,
+  spacingStaticXSmall,
+  spacingStaticXXLarge,
   textSmallStyle,
-} from '@porsche-design-system/styles/src/js';
+  themeDark,
+  themeLight,
+} from '@porsche-design-system/components-react/styles';
 import type { Config } from 'tailwindcss';
 import plugin from 'tailwindcss/plugin';
 
@@ -153,17 +160,44 @@ export default {
       md: borderRadius.medium,
       lg: borderRadius.large,
     },
-    extend: {},
+    extend: {
+      spacing: {
+        'static-xs': spacingStaticXSmall,
+        'static-sm': spacingStaticSmall,
+        'static-md': spacingStaticMedium,
+        'static-lg': spacingStaticLarge,
+        'static-xl': spacingStaticXLarge,
+        'static-2xl': spacingStaticXXLarge,
+      },
+    },
   },
   plugins: [
     plugin(({ addComponents }) => {
       addComponents({
-        '.pds-heading-small': headingSmallStyle,
-        '.pds-heading-medium': headingMediumStyle,
-        '.pds-heading-large': headingLargeStyle,
-        '.pds-heading-x-large': headingXLargeStyle,
-        '.pds-heading-xx-large': headingXXLargeStyle,
-        '.pds-text-small': textSmallStyle,
+        '.pds-heading-xx-large': {
+          ...headingXXLargeStyle,
+          marginTop: spacingFluidLarge,
+        },
+        '.pds-heading-x-large': {
+          ...headingXLargeStyle,
+          marginTop: spacingFluidLarge,
+        },
+        '.pds-heading-large': {
+          ...headingLargeStyle,
+          marginTop: spacingFluidLarge,
+        },
+        '.pds-heading-medium': {
+          ...headingMediumStyle,
+          marginTop: spacingFluidMedium,
+        },
+        '.pds-heading-small': {
+          ...headingSmallStyle,
+          marginTop: spacingFluidMedium,
+        },
+        '.pds-text-small': {
+          ...textSmallStyle,
+          marginTop: spacingFluidSmall,
+        },
       });
     }),
   ],
