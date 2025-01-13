@@ -44,8 +44,10 @@
   }
 }
 
-/*TODO: Fix*/
 @layer utilities {
+  p-text-list {
+    margin-top: theme(spacing.md);
+  }
   :where(h3, h4, h5, h6) + p-text-list {
     margin-top: theme(spacing.xs);
   }

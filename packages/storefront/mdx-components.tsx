@@ -25,9 +25,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h6: ({ children }) => <h6 className="pds-heading-small mt-md">{children as React.ReactNode}</h6>,
     p: ({ children }) => <p className="pds-text-small mt-sm">{children as React.ReactNode}</p>,
     hr: ({ children }) => <PDivider className="mt-lg mb-static-md">{children as React.ReactNode}</PDivider>,
-    ul: ({ children }) => <PTextList className="mt-md ps-static-lg">{children as React.ReactNode}</PTextList>,
+    ul: ({ children }) => <PTextList className="ps-static-lg">{children as React.ReactNode}</PTextList>,
     ol: ({ children }) => (
-      <PTextList className="mt-md ps-static-lg" type="numbered">
+      <PTextList className="ps-static-lg" type="numbered">
         {children as React.ReactNode}
       </PTextList>
     ),
