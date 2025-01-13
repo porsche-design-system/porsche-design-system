@@ -10,7 +10,9 @@ const nextConfig: NextConfig = {
   //skipTrailingSlashRedirect: true,
   distDir: 'dist',
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
-  // Optionally, add any other Next.js config below
+  images: {
+    unoptimized: true,
+  },
 };
 
 const withMDX = createMDX({
