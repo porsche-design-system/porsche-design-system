@@ -5,7 +5,6 @@ import {
   PTableCell,
   PTableHead,
   PTableHeadCell,
-  PTableHeadRow,
   PTableRow,
 } from '@porsche-design-system/components-vue';
 import { dataBasic, headBasic } from '@porsche-design-system/shared';
@@ -14,9 +13,9 @@ import { dataBasic, headBasic } from '@porsche-design-system/shared';
 <template>
   <PTable :caption="'Some caption'">
     <PTableHead>
-      <PTableHeadRow>
+      <PTableRow>
         <PTableHeadCell v-for="(item, i) in headBasic" :key="i">{{ item }}</PTableHeadCell>
-      </PTableHeadRow>
+      </PTableRow>
     </PTableHead>
     <PTableBody>
       <PTableRow v-for="(item, i) in dataBasic" :key="i">

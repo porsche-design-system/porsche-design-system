@@ -6,9 +6,9 @@ import { dataBasic, headBasic } from '@porsche-design-system/shared';
   template: `
     <p-table caption="Some caption">
       <p-table-head>
-        <p-table-head-row>
+        <p-table-row>
           <p-table-head-cell *ngFor="let item of head">{{ item }}</p-table-head-cell>
-        </p-table-head-row>
+        </p-table-row>
       </p-table-head>
       <p-table-body>
         <p-table-row *ngFor="let item of data">
