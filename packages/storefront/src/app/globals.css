@@ -2,27 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-.-col-span-full-1 {
-  grid-column: 1 / -1;
+@layer base {
+  code,
+  pre {
+    @apply pds-text-small;
+    font-family: theme(fontFamily.code);
+  }
+
+  code.readonly {
+    user-select: none;
+  }
+
+  :not(pre) > code {
+    padding: 2px theme(spacing.static-sm);
+    border-radius: theme(borderRadius.sm);
+    background-color: theme(colors.background-code.light);
+    color: theme(colors.primary.light);
+  }
+
+  pre {
+    @apply pds-focus;
+  }
+
+  pre > * {
+    margin-top: theme(spacing.static-small);
+    display: block;
+    padding: theme(spacing.static-small) theme(spacing.static-medium);
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: theme(colors.background-code.light);
+    color: theme(colors.primary.light);
+    border-radius: theme(borderRadius.md);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
-.-col-span-full-2 {
-  grid-column: 2 / -2;
+@layer components {
+  p-inline-notification {
+    margin-top: theme(spacing.sm);
+  }
 }
 
-.-col-span-full-3 {
-  grid-column: 3 / -3;
-}
-
-.-col-span-4 {
-  grid-column: span 4;
-}
-
-.tile {
-  margin-top: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-  background: lightpink;
+/*TODO: Fix*/
+@layer utilities {
+  :where(h3, h4, h5, h6) + p-text-list {
+    margin-top: theme(spacing.xs);
+  }
 }

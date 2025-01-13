@@ -7,16 +7,13 @@ import {
   fontSizeHeading,
   fontSizeText,
   fontWeight,
+  getFocusStyle,
   headingLargeStyle,
   headingMediumStyle,
   headingSmallStyle,
   headingXLargeStyle,
   headingXXLargeStyle,
   spacingFluid,
-  spacingFluidLarge,
-  spacingFluidMedium,
-  spacingFluidSmall,
-  spacingFluidXSmall,
   spacingStaticLarge,
   spacingStaticMedium,
   spacingStaticSmall,
@@ -147,35 +144,31 @@ export default {
         dark: themeDark.state.disabled,
       },
     },
-    spacing: {
-      xs: spacingFluid.xSmall,
-      sm: spacingFluid.small,
-      md: spacingFluid.medium,
-      lg: spacingFluid.large,
-      xl: spacingFluid.xLarge,
-      '2xl': spacingFluid.xxLarge,
-    },
-    borderWidth: {
-      DEFAULT: borderWidth.base,
-      thin: borderWidth.thin,
-      base: borderWidth.base,
-      thick: '5px',
-    },
-    borderRadius: {
-      DEFAULT: borderRadius.small,
-      none: '0',
-      sm: borderRadius.small,
-      md: borderRadius.medium,
-      lg: borderRadius.large,
-    },
     extend: {
       spacing: {
+        xs: spacingFluid.xSmall,
+        sm: spacingFluid.small,
+        md: spacingFluid.medium,
+        lg: spacingFluid.large,
+        xl: spacingFluid.xLarge,
+        '2xl': spacingFluid.xxLarge,
         'static-xs': spacingStaticXSmall,
         'static-sm': spacingStaticSmall,
         'static-md': spacingStaticMedium,
         'static-lg': spacingStaticLarge,
         'static-xl': spacingStaticXLarge,
         'static-2xl': spacingStaticXXLarge,
+      },
+      borderWidth: {
+        DEFAULT: borderWidth.base,
+        thin: borderWidth.thin,
+        base: borderWidth.base,
+      },
+      borderRadius: {
+        DEFAULT: borderRadius.small,
+        sm: borderRadius.small,
+        md: borderRadius.medium,
+        lg: borderRadius.large,
       },
     },
   },
@@ -184,36 +177,24 @@ export default {
       addComponents({
         '.pds-heading-xx-large': {
           ...headingXXLargeStyle,
-          marginTop: spacingFluidLarge,
         },
         '.pds-heading-x-large': {
           ...headingXLargeStyle,
-          marginTop: spacingFluidLarge,
         },
         '.pds-heading-large': {
           ...headingLargeStyle,
-          marginTop: spacingFluidLarge,
-          '& + p-text-list': {
-            marginTop: spacingFluidXSmall,
-          },
         },
         '.pds-heading-medium': {
           ...headingMediumStyle,
-          marginTop: spacingFluidMedium,
-          '& + p-text-list': {
-            marginTop: spacingFluidXSmall,
-          },
         },
         '.pds-heading-small': {
           ...headingSmallStyle,
-          marginTop: spacingFluidMedium,
-          '& + p-text-list': {
-            marginTop: spacingFluidXSmall,
-          },
         },
         '.pds-text-small': {
           ...textSmallStyle,
-          marginTop: spacingFluidSmall,
+        },
+        '.pds-focus': {
+          ...getFocusStyle(),
         },
       });
     }),

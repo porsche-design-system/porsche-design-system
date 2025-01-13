@@ -17,13 +17,13 @@ import Link from 'next/link';
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // Allows customizing built-in components, e.g. to add styling.
-    h1: ({ children }) => <h1 className="pds-heading-xx-large">{children as React.ReactNode}</h1>,
-    h2: ({ children }) => <h2 className="pds-heading-x-large">{children as React.ReactNode}</h2>,
-    h3: ({ children }) => <h3 className="pds-heading-large">{children as React.ReactNode}</h3>,
-    h4: ({ children }) => <h4 className="pds-heading-medium">{children as React.ReactNode}</h4>,
-    h5: ({ children }) => <h5 className="pds-heading-small">{children as React.ReactNode}</h5>,
-    h6: ({ children }) => <h6 className="pds-heading-small">{children as React.ReactNode}</h6>,
-    p: ({ children }) => <p className="pds-text-small">{children as React.ReactNode}</p>,
+    h1: ({ children }) => <h1 className="pds-heading-xx-large mt-lg">{children as React.ReactNode}</h1>,
+    h2: ({ children }) => <h2 className="pds-heading-x-large mt-lg">{children as React.ReactNode}</h2>,
+    h3: ({ children }) => <h3 className="pds-heading-large mt-lg">{children as React.ReactNode}</h3>,
+    h4: ({ children }) => <h4 className="pds-heading-medium mt-md">{children as React.ReactNode}</h4>,
+    h5: ({ children }) => <h5 className="pds-heading-small mt-md">{children as React.ReactNode}</h5>,
+    h6: ({ children }) => <h6 className="pds-heading-small mt-md">{children as React.ReactNode}</h6>,
+    p: ({ children }) => <p className="pds-text-small mt-sm">{children as React.ReactNode}</p>,
     hr: ({ children }) => <PDivider className="mt-lg mb-static-md">{children as React.ReactNode}</PDivider>,
     ul: ({ children }) => <PTextList className="mt-md ps-static-lg">{children as React.ReactNode}</PTextList>,
     ol: ({ children }) => (
@@ -43,14 +43,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         <Link href={href as string}>{children as React.ReactNode}</Link>
       </PLinkPure>
     ),
-    b: ({ children }) => <b className="font-bold">{children as React.ReactNode}</b>,
-    strong: ({ children }) => <strong className="font-bold">{children as React.ReactNode}</strong>,
     blockquote: ({ children }) => (
-      <blockquote className="ps-static-md border-s-thick border-solid border-contrast-low">
+      <blockquote className="ps-static-md border-s-4 border-solid border-contrast-low">
         {children as React.ReactNode}
       </blockquote>
     ),
-    code: ({ children }) => <code className="pds-text-small font-code">{children as React.ReactNode}</code>,
+    code: ({ children }) => <code>{children as React.ReactNode}</code>,
     img: ({ src, alt }) => (
       <Image
         src={src as string}
@@ -58,7 +56,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         width={0}
         height={0}
         sizes="100vw"
-        style={{ width: '100%', height: 'auto' }}
+        className="w-full h-auto rounded-lg"
       />
     ),
     ...components,

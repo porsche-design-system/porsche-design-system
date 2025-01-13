@@ -34,7 +34,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       onSidebarStartUpdate={onSidebarStartUpdate}
       onSidebarEndDismiss={onSidebarEndDismiss}
     >
-      <Link slot="title" href="#">
+      <Link slot="title" href="/">
         Porsche Design System
       </Link>
 
@@ -49,11 +49,8 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         Open sidebar
       </PButton>
 
-      <div className="-p-canvas-grid">{children}</div>
-
-      <div slot="footer" className="-p-canvas-grid">
-        <PText className="-col-span-full-1">Footer</PText>
-        <div className="tile -col-span-full-1">12 Grid columns</div>
+      <div className="-p-canvas-grid">
+        <div className="col-span-full">{children}</div>
       </div>
 
       <div slot="sidebar-start">
