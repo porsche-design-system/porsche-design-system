@@ -16,6 +16,7 @@ import {
   spacingFluidLarge,
   spacingFluidMedium,
   spacingFluidSmall,
+  spacingFluidXSmall,
   spacingStaticLarge,
   spacingStaticMedium,
   spacingStaticSmall,
@@ -47,6 +48,7 @@ export default {
     },
     fontFamily: {
       'porsche-next': fontFamily,
+      code: "Menlo, Monaco, Consolas, 'Courier New', monospace",
     },
     fontSize: {
       '2xs': [fontSizeText.xxSmall, fontLineHeight],
@@ -83,6 +85,11 @@ export default {
         light: themeLight.background.shading,
         DEFAULT: themeLight.background.shading,
         dark: themeDark.background.shading,
+      },
+      'background-code': {
+        light: 'rgba(0, 0, 0, 0.06)',
+        DEFAULT: 'rgba(0, 0, 0, 0.06)',
+        dark: 'rgba(255, 255, 255, 0.08)',
       },
       'contrast-low': {
         light: themeLight.contrast.low,
@@ -150,8 +157,9 @@ export default {
     },
     borderWidth: {
       DEFAULT: borderWidth.base,
-      base: borderWidth.base,
       thin: borderWidth.thin,
+      base: borderWidth.base,
+      thick: '5px',
     },
     borderRadius: {
       DEFAULT: borderRadius.small,
@@ -185,14 +193,23 @@ export default {
         '.pds-heading-large': {
           ...headingLargeStyle,
           marginTop: spacingFluidLarge,
+          '& + p-text-list': {
+            marginTop: spacingFluidXSmall,
+          },
         },
         '.pds-heading-medium': {
           ...headingMediumStyle,
           marginTop: spacingFluidMedium,
+          '& + p-text-list': {
+            marginTop: spacingFluidXSmall,
+          },
         },
         '.pds-heading-small': {
           ...headingSmallStyle,
           marginTop: spacingFluidMedium,
+          '& + p-text-list': {
+            marginTop: spacingFluidXSmall,
+          },
         },
         '.pds-text-small': {
           ...textSmallStyle,
