@@ -1,6 +1,7 @@
-import { getCss } from '../../../utils';
-import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 import { fontLineHeight, fontSizeTextXSmall, fontWeightSemiBold } from '@porsche-design-system/styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
+import { getCss } from '../../../utils';
+import { cssVariableTableBorderWidth, cssVariableTableHoverColor } from '../table/table-styles';
 
 export const getComponentCss = (): string => {
   return getCss({
@@ -14,6 +15,10 @@ export const getComponentCss = (): string => {
           ...hostHiddenStyles,
         }),
       },
+      '::slotted(*)': addImportantToEachRule({
+        [cssVariableTableBorderWidth]: '0px',
+        [cssVariableTableHoverColor]: 'none',
+      }),
     },
   });
 };
