@@ -5,6 +5,15 @@ import { By } from '@angular/platform-browser';
 import { componentsReady } from '@porsche-design-system/components-angular';
 import '@porsche-design-system/components-angular/jsdom-polyfill';
 
+if (!HTMLElement.prototype.attachInternals) {
+  Object.defineProperty(HTMLElement.prototype, 'attachInternals', {
+    value: function () {
+      return {};
+    },
+    writable: true,
+  });
+}
+
 @Component({
   selector: 'empty',
   template: '<div></div>',

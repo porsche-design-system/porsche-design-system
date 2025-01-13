@@ -148,7 +148,7 @@ export class Textarea {
 
   @Watch('value')
   public onValueChange(newValue: string): void {
-    this.internals.setFormValue(newValue);
+    this.internals?.setFormValue(newValue);
   }
 
   @Watch('maxLength')
@@ -171,7 +171,7 @@ export class Textarea {
   }
 
   public formResetCallback(): void {
-    this.internals.setFormValue(this.defaultValue);
+    this.internals?.setFormValue(this.defaultValue);
     this.value = this.defaultValue;
   }
 
@@ -187,14 +187,14 @@ export class Textarea {
     return hasPropValueChanged(newVal, oldVal);
   }
   public componentDidLoad(): void {
-    this.internals.setFormValue(this.value);
+    this.internals?.setFormValue(this.value);
   }
 
   public componentDidRender(): void {
     if (this.hasCounter) {
       this.setCounterAriaTextDebounced();
     }
-    this.internals.setValidity(
+    this.internals?.setValidity(
       this.textAreaElement.validity,
       this.textAreaElement.validationMessage,
       this.textAreaElement

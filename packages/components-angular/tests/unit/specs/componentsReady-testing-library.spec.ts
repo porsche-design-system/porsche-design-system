@@ -4,6 +4,15 @@ import { getByRoleShadowed } from '@porsche-design-system/components-angular/tes
 import { fireEvent, render } from '@testing-library/angular';
 import '@porsche-design-system/components-angular/jsdom-polyfill';
 
+if (!HTMLElement.prototype.attachInternals) {
+  Object.defineProperty(HTMLElement.prototype, 'attachInternals', {
+    value: function () {
+      return {};
+    },
+    writable: true,
+  });
+}
+
 @Component({
   selector: 'empty',
   template: `<div></div>`,
