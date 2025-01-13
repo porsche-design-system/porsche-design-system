@@ -1,3 +1,4 @@
+import type { PropOptions } from '@porsche-design-system/components/dist/types/stencil-public-runtime';
 import type { TagName } from '@porsche-design-system/shared';
 
 export type PropMeta = {
@@ -12,6 +13,7 @@ export type PropMeta = {
   isBreakpointCustomizable?: boolean;
   isAria?: boolean;
   isArray?: boolean;
+  propOptions?: PropOptions;
 };
 
 export type EventMeta = {
@@ -71,6 +73,8 @@ export type ComponentMeta = {
   controlledMeta?: ControlledMeta[];
   hasAriaProp: boolean;
   hasObserveAttributes: boolean;
+  /** Indicates if a component uses the ElementInternals API */
+  hasElementInternals: boolean;
   observedAttributes?: string[];
   hasObserveChildren: boolean;
   styling: 'jss' | 'scss' | 'hybrid';

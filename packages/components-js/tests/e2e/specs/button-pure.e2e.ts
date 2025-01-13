@@ -1,9 +1,10 @@
-import { expect, type Locator, test, type Page } from '@playwright/test';
+import { type Locator, type Page, expect, test } from '@playwright/test';
 import {
-  addEventListener,
   ClickableTests,
+  addEventListener,
   getActiveElementId,
   getEventSummary,
+  getFormDataValue,
   getLifecycleStatus,
   hasFocus,
   setContentWithDesignSystem,
@@ -15,6 +16,7 @@ import {
 
 const getHost = (page: Page) => page.locator('p-button-pure');
 const getButton = (page: Page) => page.locator('p-button-pure button');
+const getForm = (page: Page) => page.locator('form');
 
 const initButtonPure = (
   page: Page,
@@ -91,7 +93,7 @@ test('should dispatch correct click events', async ({ page }) => {
   }
 });
 
-test.describe('within form', () => {
+test.describe('form', () => {
   test("submits parent form on click if it's type submit", async ({ page }) => {
     await setContentWithDesignSystem(
       page,
@@ -109,6 +111,63 @@ test.describe('within form', () => {
 
     await waitForImproveButtonHandlingForCustomElement(page);
     expect((await getEventSummary(form, 'submit')).counter).toBe(2);
+  });
+
+  test('Should include name and associated value in FormData on click, if the submit button is outside the form', async ({
+    page,
+  }) => {
+    const value = 'Some value';
+    const formId = 'myForm';
+    const name = 'some-name';
+    await setContentWithDesignSystem(
+      page,
+      `<form onsubmit="return false;" id="${formId}">
+        <p-textarea name="${name}" label="Some Label" value="${value}"></p-textarea>
+      </form>
+      <p-button-pure type="submit" form="${formId}">Submit</p-button-pure>
+    `
+    );
+
+    const form = getForm(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValue(form, name)).toBe(value);
+  });
+
+  test('Should reset value on click, if the reset button is outside the form', async ({ page }) => {
+    const value = 'Some value';
+    const formId = 'myForm';
+    const name = 'some-name';
+    await setContentWithDesignSystem(
+      page,
+      `<form onsubmit="return false;" id="${formId}">
+        <p-textarea name="${name}" label="Some Label" value="${value}"></p-textarea>
+      </form>
+      <p-button-pure type="reset" form="${formId}">Reset</p-button-pure>
+    `
+    );
+
+    const form = getForm(page);
+    const textarea = page.locator('textarea');
+    const newValue = 'New value';
+    await textarea.fill(newValue);
+
+    await waitForStencilLifecycle(page);
+    await expect(textarea).toHaveValue(newValue);
+
+    await addEventListener(form, 'reset');
+    expect((await getEventSummary(form, 'reset')).counter).toBe(0);
+
+    await page.locator('button[type="reset"]').click();
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(form, 'reset')).counter).toBe(1);
+    await expect(textarea).toHaveValue(value);
   });
 
   test('should not submit the form if default is prevented', async ({ page }) => {
@@ -169,6 +228,56 @@ test.describe('within form', () => {
     await host.click();
 
     const urlPart = `?${name}=${value}`;
+
+    await page.waitForURL(`**/*${urlPart}`);
+    // Since the data in only available via the event submitter it is easier to test it by checking the request params
+    expect(page.url()).toContain(urlPart);
+  });
+
+  test("should submit the form when a 'submit' type button outside the form is clicked, passing the button's name and value as parameters", async ({
+    page,
+  }) => {
+    const name = 'name';
+    const value = 'Value';
+    await setContentWithDesignSystem(
+      page,
+      `<form action="/packages/components-js/public" id="myForm"></form>
+    <p-button-pure type="submit" name="${name}" value="${value}" form="myForm">Some label</p-button-pure>`
+    );
+
+    const host = getHost(page);
+    await host.click();
+
+    const urlPart = `?${name}=${value}`;
+
+    await page.waitForURL(`**/*${urlPart}`);
+    // Since the data in only available via the event submitter it is easier to test it by checking the request params
+    expect(page.url()).toContain(urlPart);
+  });
+
+  test("Should submit the correct FormData when the button's value is updated programmatically before submission", async ({
+    page,
+  }) => {
+    const name = 'name';
+    const value = 'Value';
+    const newValue = 'NewValue';
+    await setContentWithDesignSystem(
+      page,
+      `<form action="/packages/components-js/public">
+      <p-button-pure type="submit" name="${name}" value="${value}">Some label</p-button-pure>
+      </form>`
+    );
+
+    const host = getHost(page);
+    await expect(host).toHaveJSProperty('value', value);
+
+    await setProperty(host, 'value', newValue);
+    await waitForStencilLifecycle(page);
+    await expect(host).toHaveJSProperty('value', newValue);
+
+    await host.click();
+
+    const urlPart = `?${name}=${newValue}`;
 
     await page.waitForURL(`**/*${urlPart}`);
     // Since the data in only available via the event submitter it is easier to test it by checking the request params

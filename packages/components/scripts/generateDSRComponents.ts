@@ -683,6 +683,10 @@ $&`
           .replace(/this\.props\.checked = !!state;/, '')
           .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
           .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
+      } else if (tagName === 'p-button') {
+        newFileContent = newFileContent.replace(/@AttachInternals\(\)/, '');
+      } else if (tagName === 'p-button-pure') {
+        newFileContent = newFileContent.replace(/@AttachInternals\(\)/, '');
       }
 
       return newFileContent;

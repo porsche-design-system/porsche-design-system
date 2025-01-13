@@ -20,6 +20,8 @@ jobs:
     needs:
       - build-and-test
     secrets:
+      linode-aws-access-key-id: ${{ secrets.LINODE_AWS_ACCESS_KEY_ID }}
+      linode-aws-secret-access-key: ${{ secrets.LINODE_AWS_SECRET_ACCESS_KEY }}
       github-token: ${{ secrets.GITHUB_TOKEN }}
       gh-repository-storefront: ${{ secrets.GH_REPOSITORY_STOREFRONT }}
       gh-deploy-key-storefront: ${{ secrets.GH_DEPLOY_KEY_STOREFRONT }}
