@@ -16,8 +16,8 @@
   :not(pre) > code {
     padding: 2px theme(spacing.static-sm);
     border-radius: theme(borderRadius.sm);
-    background-color: theme(colors.background-code.light);
-    color: theme(colors.primary.light);
+    background-color: theme(colors.background-code.DEFAULT);
+    color: theme(colors.primary.DEFAULT);
   }
 
   pre {
@@ -30,8 +30,8 @@
     padding: theme(spacing.static-sm) theme(spacing.static-md);
     word-break: break-all;
     word-wrap: break-word;
-    background-color: theme(colors.background-code.light);
-    color: theme(colors.primary.light);
+    background-color: theme(colors.background-code.DEFAULT);
+    color: theme(colors.primary.DEFAULT);
     border-radius: theme(borderRadius.md);
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
