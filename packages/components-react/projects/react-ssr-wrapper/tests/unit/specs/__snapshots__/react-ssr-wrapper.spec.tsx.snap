@@ -16385,6 +16385,10 @@ exports[`should render dsr component for PTableHead 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+::slotted(*) {
+  --p-internal-table-border-width: 0px !important;
+  --p-internal-table-hover-color: none !important;
+}
     </style>
     <slot />
   </template>
@@ -16459,8 +16463,8 @@ exports[`should render dsr component for PTableRow 1`] = `
     <style>
       :host {
   display: table-row;
-  border-top: 1px solid var(--p-internal-table-border-color) !important;
-  border-bottom: 1px solid var(--p-internal-table-border-color) !important;
+  border-top: var(--p-internal-table-border-width,1px) solid var(--p-internal-table-border-color) !important;
+  border-bottom: var(--p-internal-table-border-width,1px) solid var(--p-internal-table-border-color) !important;
   transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
 }
 :host([hidden]) {
