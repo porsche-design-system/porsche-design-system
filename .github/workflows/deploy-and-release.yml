@@ -1,6 +1,12 @@
 on:
   workflow_call:
     secrets:
+      linode-aws-access-key-id:
+        description: 'AWS Access Key ID for Linode'
+        required: true
+      linode-aws-secret-access-key:
+        description: 'AWS Secret Access Key for Linode'
+        required: true
       github-token:
         description: 'github token for container registry'
         required: true
@@ -36,10 +42,10 @@ on:
         required: true
 name: 'Deploy and Release'
 env:
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.49.1-jammy
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.49.1-jammy-3
 jobs:
-  assets-deployment:
-    name: 'Assets Deployment'
+  deploy-assets:
+    name: 'Deploy Assets'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -57,12 +63,14 @@ jobs:
       - name: 'Deploy Assets to CDN'
         uses: ./.github/actions/docker-run-playwright
         env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
           CDN_USER: ${{ secrets.cdn-user }}
           CDN_SSH_KEY: ${{ secrets.cdn-ssh-key }}
         with:
           entrypoint: run-deploy-assets
-  deploy-to-gh-pages:
-    name: 'Deploy to GH Pages'
+  deploy-storefront:
+    name: 'Deploy Storefront'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -89,11 +97,11 @@ jobs:
           GH_DEPLOY_KEY_STOREFRONT: ${{ secrets.gh-deploy-key-storefront }}
           GH_REPOSITORY_STOREFRONT: ${{ secrets.gh-repository-storefront }}
         with:
-          entrypoint: run-deploy-storefront-gh-pages
+          entrypoint: run-deploy-storefront
   smoke-test:
     name: 'Smoke Test'
     needs:
-      - assets-deployment
+      - deploy-assets
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -155,7 +163,7 @@ jobs:
 #  release-components-uxpin:
 #    name: 'Release Components UXPin'
 #    needs:
-#      - assets-deployment
+#      - deploy-assets
 #    runs-on: ubuntu-latest
 #    steps:
 #      - name: 'Checkout'
@@ -187,7 +195,7 @@ jobs:
     name: 'Release Components JS'
     needs:
       - smoke-test
-      - deploy-to-gh-pages
+      - deploy-storefront
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
@@ -300,7 +308,7 @@ jobs:
     name: 'Release Assets'
     needs:
       - smoke-test
-      - deploy-to-gh-pages
+      - deploy-storefront
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
