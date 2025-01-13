@@ -11,6 +11,7 @@ import {
   PTextListItem,
 } from '@porsche-design-system/components-react/ssr';
 import type { MDXComponents } from 'mdx/types';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -23,9 +24,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h5: ({ children }) => <h5 className="pds-heading-small">{children as React.ReactNode}</h5>,
     h6: ({ children }) => <h6 className="pds-heading-small">{children as React.ReactNode}</h6>,
     p: ({ children }) => <p className="pds-text-small">{children as React.ReactNode}</p>,
-    hr: ({ children }) => <PDivider>{children as React.ReactNode}</PDivider>,
-    ul: ({ children }) => <PTextList>{children as React.ReactNode}</PTextList>,
-    ol: ({ children }) => <PTextList type="numbered">{children as React.ReactNode}</PTextList>,
+    hr: ({ children }) => <PDivider className="mt-lg mb-static-md">{children as React.ReactNode}</PDivider>,
+    ul: ({ children }) => <PTextList className="mt-md ps-static-lg">{children as React.ReactNode}</PTextList>,
+    ol: ({ children }) => (
+      <PTextList className="mt-md ps-static-lg" type="numbered">
+        {children as React.ReactNode}
+      </PTextList>
+    ),
     li: ({ children }) => <PTextListItem>{children as React.ReactNode}</PTextListItem>,
     table: ({ children }) => <PTable>{children as React.ReactNode}</PTable>,
     thead: ({ children }) => <PTableHead>{children as React.ReactNode}</PTableHead>,
@@ -37,6 +42,24 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <PLinkPure icon={'none'}>
         <Link href={href as string}>{children as React.ReactNode}</Link>
       </PLinkPure>
+    ),
+    b: ({ children }) => <b className="font-bold">{children as React.ReactNode}</b>,
+    strong: ({ children }) => <strong className="font-bold">{children as React.ReactNode}</strong>,
+    blockquote: ({ children }) => (
+      <blockquote className="ps-static-md border-s-thick border-solid border-contrast-low">
+        {children as React.ReactNode}
+      </blockquote>
+    ),
+    code: ({ children }) => <code className="pds-text-small font-code">{children as React.ReactNode}</code>,
+    img: ({ src, alt }) => (
+      <Image
+        src={src as string}
+        alt={alt as string}
+        width={0}
+        height={0}
+        sizes="100vw"
+        style={{ width: '100%', height: 'auto' }}
+      />
     ),
     ...components,
   };
