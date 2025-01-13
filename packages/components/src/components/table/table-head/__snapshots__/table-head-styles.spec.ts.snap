@@ -9,5 +9,9 @@ exports[`getComponentCss() should return correct css 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+::slotted(*) {
+  --p-internal-table-border-width: 0px !important;
+  --p-internal-table-hover-color: none !important;
 }"
 `;

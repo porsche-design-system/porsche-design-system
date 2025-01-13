@@ -7387,7 +7387,10 @@ exports[`should match snapshot 1`] = `
         "type": "TableHeadCellSort",
       },
     },
-    "requiredParent": "p-table-head-row",
+    "requiredParent": [
+      "p-table-head-row",
+      "p-table-row",
+    ],
     "slotsMeta": {
       "": {
         "description": "Default slot for the table head cell content.",
@@ -7431,7 +7434,10 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
-    "requiredParent": "p-table-body",
+    "requiredParent": [
+      "p-table-body",
+      "p-table-head",
+    ],
     "slotsMeta": {
       "": {
         "description": "Default slot for the table row content.",

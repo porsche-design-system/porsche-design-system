@@ -19,6 +19,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Button`, `Button-Pure`: Add `form` prop to explicitly associate the component with a form, even when it's not
   directly nested within it. ([#3648](https://github.com/porsche-design-system/porsche-design-system/pull/3648))
 
+#### Changed
+
+- `Table`: Enable `Table Head Cell` to be used within `Table Row` in addition to `Table Head Row` to further align with
+  table structure defined by W3C ([#3701](https://github.com/porsche-design-system/porsche-design-system/pull/3701))
+
 #### Fixed
 
 - `Textarea`, `Textarea Wrapper`, `Textfield Wrapper`: color contrast of `unit` prop and counter in `readonly` mode
