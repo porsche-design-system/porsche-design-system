@@ -26,6 +26,7 @@ import {
 } from '@porsche-design-system/components-react/styles';
 import type { Config } from 'tailwindcss';
 import plugin from 'tailwindcss/plugin';
+import type { RecursiveKeyValuePair } from 'tailwindcss/types/config';
 
 export default {
   content: [
@@ -194,7 +195,7 @@ export default {
           ...textSmallStyle,
         },
         '.pds-focus': {
-          ...(getFocusStyle() as any),
+          ...(getFocusStyle() as RecursiveKeyValuePair),
         },
       });
     }),
