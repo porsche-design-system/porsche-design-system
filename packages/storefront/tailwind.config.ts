@@ -194,7 +194,7 @@ export default {
           ...textSmallStyle,
         },
         '.pds-focus': {
-          ...getFocusStyle(),
+          ...(getFocusStyle() as any),
         },
       });
     }),

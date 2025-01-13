@@ -25,9 +25,9 @@
   }
 
   pre > * {
-    margin-top: theme(spacing.static-small);
+    margin-top: theme(spacing.static-sm);
     display: block;
-    padding: theme(spacing.static-small) theme(spacing.static-medium);
+    padding: theme(spacing.static-sm) theme(spacing.static-md);
     word-break: break-all;
     word-wrap: break-word;
     background-color: theme(colors.background-code.light);
