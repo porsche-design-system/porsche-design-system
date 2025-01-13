@@ -4,19 +4,20 @@ import {
   PTableCell,
   PTableHead,
   PTableHeadCell,
+  PTableHeadRow,
   PTableRow,
 } from '@porsche-design-system/components-react';
-import { dataBasic, headBasic } from '@porsche-design-system/shared';
+import { headBasic, dataBasic } from '@porsche-design-system/shared';
 
 export const TableExampleBasicPage = (): JSX.Element => {
   return (
     <PTable caption="Some caption">
       <PTableHead>
-        <PTableRow>
+        <PTableHeadRow>
           {headBasic.map((item, i) => (
             <PTableHeadCell key={i}>{item}</PTableHeadCell>
           ))}
-        </PTableRow>
+        </PTableHeadRow>
       </PTableHead>
       <PTableBody>
         {dataBasic.map((item, i) => (

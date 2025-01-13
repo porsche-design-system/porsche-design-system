@@ -17,9 +17,9 @@
 
     const renderTableHeadRow = (items) =>
       [
-        '<p-table-row>',
+        '<p-table-head-row>',
         ...items.map((item) => `<p-table-head-cell>${item}</p-table-head-cell>`),
-        '</p-table-row>',
+        '</p-table-head-row>',
       ].join('');
 
     const renderTableBodyRows = (items) =>
