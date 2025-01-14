@@ -45,6 +45,44 @@ const pdsThemeStateActive = '--pds-theme-state-active';
 const pdsThemeStateFocus = '--pds-theme-state-focus';
 const pdsThemeStateDisabled = '--pds-theme-state-disabled';
 
+const lightTheme = {
+  [pdsThemePrimary]: themeLight.primary,
+  [pdsThemeBackgroundBase]: themeLight.background.base,
+  [pdsThemeBackgroundSurface]: themeLight.background.surface,
+  [pdsThemeBackgroundShading]: themeLight.background.shading,
+  [pdsThemeCustomBackgroundCode]: 'rgba(0, 0, 0, 0.06)',
+  [pdsThemeContrastLow]: themeLight.contrast.low,
+  [pdsThemeContrastMedium]: themeLight.contrast.medium,
+  [pdsThemeContrastHigh]: themeLight.contrast.high,
+  [pdsThemeNotificationSuccess]: themeLight.notification.success,
+  [pdsThemeNotificationWarning]: themeLight.notification.warning,
+  [pdsThemeNotificationError]: themeLight.notification.error,
+  [pdsThemeNotificationInfo]: themeLight.notification.info,
+  [pdsThemeStateHover]: themeLight.state.hover,
+  [pdsThemeStateActive]: themeLight.state.active,
+  [pdsThemeStateFocus]: themeLight.state.focus,
+  [pdsThemeStateDisabled]: themeLight.state.disabled,
+};
+
+const darkTheme = {
+  [pdsThemePrimary]: themeDark.primary,
+  [pdsThemeBackgroundBase]: themeDark.background.base,
+  [pdsThemeBackgroundSurface]: themeDark.background.surface,
+  [pdsThemeBackgroundShading]: themeDark.background.shading,
+  [pdsThemeCustomBackgroundCode]: 'rgba(255, 255, 255, 0.08)',
+  [pdsThemeContrastLow]: themeDark.contrast.low,
+  [pdsThemeContrastMedium]: themeDark.contrast.medium,
+  [pdsThemeContrastHigh]: themeDark.contrast.high,
+  [pdsThemeNotificationSuccess]: themeDark.notification.success,
+  [pdsThemeNotificationWarning]: themeDark.notification.warning,
+  [pdsThemeNotificationError]: themeDark.notification.error,
+  [pdsThemeNotificationInfo]: themeDark.notification.info,
+  [pdsThemeStateHover]: themeDark.state.hover,
+  [pdsThemeStateActive]: themeDark.state.active,
+  [pdsThemeStateFocus]: themeDark.state.focus,
+  [pdsThemeStateDisabled]: themeDark.state.disabled,
+};
+
 export default {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -219,42 +257,12 @@ export default {
     }),
     plugin(({ addBase }) => {
       addBase({
-        ':root': {
-          [pdsThemePrimary]: themeLight.primary,
-          [pdsThemeBackgroundBase]: themeLight.background.base,
-          [pdsThemeBackgroundSurface]: themeLight.background.surface,
-          [pdsThemeBackgroundShading]: themeLight.background.shading,
-          [pdsThemeCustomBackgroundCode]: 'rgba(0, 0, 0, 0.06)',
-          [pdsThemeContrastLow]: themeLight.contrast.low,
-          [pdsThemeContrastMedium]: themeLight.contrast.medium,
-          [pdsThemeContrastHigh]: themeLight.contrast.high,
-          [pdsThemeNotificationSuccess]: themeLight.notification.success,
-          [pdsThemeNotificationWarning]: themeLight.notification.warning,
-          [pdsThemeNotificationError]: themeLight.notification.error,
-          [pdsThemeNotificationInfo]: themeLight.notification.info,
-          [pdsThemeStateHover]: themeLight.state.hover,
-          [pdsThemeStateActive]: themeLight.state.active,
-          [pdsThemeStateFocus]: themeLight.state.focus,
-          [pdsThemeStateDisabled]: themeLight.state.disabled,
+        body: {
+          ...lightTheme,
+          '@media (prefers-color-scheme: dark)': darkTheme,
         },
-        '.dark': {
-          [pdsThemePrimary]: themeDark.primary,
-          [pdsThemeBackgroundBase]: themeDark.background.base,
-          [pdsThemeBackgroundSurface]: themeDark.background.surface,
-          [pdsThemeBackgroundShading]: themeDark.background.shading,
-          [pdsThemeCustomBackgroundCode]: 'rgba(255, 255, 255, 0.08)',
-          [pdsThemeContrastLow]: themeDark.contrast.low,
-          [pdsThemeContrastMedium]: themeDark.contrast.medium,
-          [pdsThemeContrastHigh]: themeDark.contrast.high,
-          [pdsThemeNotificationSuccess]: themeDark.notification.success,
-          [pdsThemeNotificationWarning]: themeDark.notification.warning,
-          [pdsThemeNotificationError]: themeDark.notification.error,
-          [pdsThemeNotificationInfo]: themeDark.notification.info,
-          [pdsThemeStateHover]: themeDark.state.hover,
-          [pdsThemeStateActive]: themeDark.state.active,
-          [pdsThemeStateFocus]: themeDark.state.focus,
-          [pdsThemeStateDisabled]: themeDark.state.disabled,
-        },
+        'body.light': lightTheme,
+        'body.dark': darkTheme,
       });
     }),
   ],

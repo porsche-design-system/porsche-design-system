@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 @layer base {
+  body {
+    background: theme(colors.background-base.DEFAULT);
+    color: theme(colors.primary.DEFAULT);
+  }
+
   code,
   pre {
     @apply pds-text-small;

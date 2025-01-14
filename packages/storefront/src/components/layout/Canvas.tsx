@@ -1,5 +1,6 @@
 'use client';
 
+import { ThemeCycle } from '@/components/common/ThemeCycle';
 import {
   type CanvasSidebarStartUpdateEventDetail,
   PButton,
@@ -38,19 +39,15 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         Porsche Design System
       </Link>
 
-      <PButton
-        slot="header-end"
-        icon="configurate"
-        variant="ghost"
-        compact={true}
-        hideLabel={true}
-        onClick={onSidebarEndOpen}
-      >
-        Open sidebar
-      </PButton>
+      <div slot="header-end" className="flex gap-sm">
+        <ThemeCycle />
+        <PButton icon="configurate" variant="ghost" compact={true} hideLabel={true} onClick={onSidebarEndOpen}>
+          Open sidebar
+        </PButton>
+      </div>
 
       <div className="-p-canvas-grid">
-        <div className="col-span-full">{children}</div>
+        <div className="col-span-full dark">{children}</div>
       </div>
 
       <div slot="sidebar-start">

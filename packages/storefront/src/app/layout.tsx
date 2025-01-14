@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Canvas } from '@/components/layout/Canvas';
+import { Providers } from '@/components/providers/Providers';
+import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { HeaderPartials } from '@/partials/HeaderPartials';
-import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 
 export const metadata: Metadata = {
   title: 'Porsche Design System',
@@ -22,9 +23,11 @@ export default function RootLayout({
         <HeaderPartials />
       </head>
       <body>
-        <PorscheDesignSystemProvider>
-          <Canvas>{children}</Canvas>
-        </PorscheDesignSystemProvider>
+        <ThemeProvider>
+          <Providers>
+            <Canvas>{children}</Canvas>
+          </Providers>
+        </ThemeProvider>
       </body>
     </html>
   );
