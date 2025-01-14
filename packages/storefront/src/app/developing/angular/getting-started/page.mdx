@@ -1,11 +1,11 @@
+import { Notification } from "@/components/common/Notification";
+
 export const metadata = {
-  title: 'Angular',
+  title: 'Getting started',
   description: 'Getting started developing in Angular with the Porsche Design System.'
 }
 
 # Angular
-
-{/* <TableOfContents></TableOfContents> */}
 
 ## Quick start
 
@@ -16,10 +16,10 @@ To build your own application with the **Angular** components of the Porsche Des
 - Install the Porsche Design System
 
 ```shell script
-// install with npm:
+# install with npm:
 npm install @porsche-design-system/components-angular
 
-// install with yarn:
+# install with yarn:
 yarn add @porsche-design-system/components-angular
 ```
 
@@ -66,11 +66,11 @@ export class AppComponent {}
 
 Run `yarn start` or `npm start` and check if the components are displayed correctly.
 
-{/* <Notification heading="Attention" heading-tag="h4" state="warning">
-  Now, when you look at the result in your browser you should see an error message like
-  <code>The Porsche Design System is used without using the getInitialStyles() partial.</code><br>
-  To fix this, you have to apply the <a href="partials/initial-styles">getInitialStyles() partial</a> which is mandatory since v3.7.0.
-</Notification> */}
+<Notification heading="Attention" heading-tag="h4" state="warning">
+  Now, when you look at the result in your browser you should see an error message like `The Porsche Design System is used without using the getInitialStyles() partial.`
+
+  To fix this, you have to apply the [getInitialStyles() partial](partials/initial-styles) which is mandatory since v3.7.0.
+</Notification>
 
 #### Using Standalone Components
 
