@@ -43,16 +43,16 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       <ThemeCycle slot="header-end" />
       <PLink
         slot="header-end"
-        iconSource="/assets/github.svg"
+        iconSource={
+          process.env.GITHUB_REF_NAME ? `/${process.env.GITHUB_REF_NAME}/assets/github.svg` : '/assets/github.svg'
+        }
         variant="ghost"
         compact={true}
         hideLabel={true}
         href="https://github.com/porsche-design-system/porsche-design-system"
         target="_blank"
         onClick={onSidebarEndOpen}
-      >
-        Open sidebar
-      </PLink>
+      ></PLink>
       <PButton
         icon="configurate"
         variant="ghost"
