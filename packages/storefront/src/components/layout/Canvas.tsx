@@ -5,6 +5,7 @@ import {
   type CanvasSidebarStartUpdateEventDetail,
   PButton,
   PCanvas,
+  PLink,
   PText,
 } from '@porsche-design-system/components-react/ssr';
 import { breakpointS } from '@porsche-design-system/components-react/styles';
@@ -39,12 +40,29 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         Porsche Design System
       </Link>
 
-      <div slot="header-end" className="flex gap-sm">
-        <ThemeCycle />
-        <PButton icon="configurate" variant="ghost" compact={true} hideLabel={true} onClick={onSidebarEndOpen}>
-          Open sidebar
-        </PButton>
-      </div>
+      <ThemeCycle slot="header-end" />
+      <PLink
+        slot="header-end"
+        iconSource="/assets/github.svg"
+        variant="ghost"
+        compact={true}
+        hideLabel={true}
+        href="https://github.com/porsche-design-system/porsche-design-system"
+        target="_blank"
+        onClick={onSidebarEndOpen}
+      >
+        Open sidebar
+      </PLink>
+      <PButton
+        icon="configurate"
+        variant="ghost"
+        compact={true}
+        hideLabel={true}
+        onClick={onSidebarEndOpen}
+        slot="header-end"
+      >
+        Open sidebar
+      </PButton>
 
       <div className="-p-canvas-grid">
         <div className="col-span-full dark">{children}</div>

@@ -32,7 +32,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </PTextList>
     ),
     li: ({ children }) => <PTextListItem>{children as React.ReactNode}</PTextListItem>,
-    table: ({ children }) => <PTable>{children as React.ReactNode}</PTable>,
+    table: ({ children }) => (
+      <PTable className="mt-md" caption="table">
+        {children as React.ReactNode}
+      </PTable>
+    ),
     thead: ({ children }) => <PTableHead>{children as React.ReactNode}</PTableHead>,
     th: ({ children }) => <PTableHeadCell>{children as React.ReactNode}</PTableHeadCell>,
     tbody: ({ children }) => <PTableBody>{children as React.ReactNode}</PTableBody>,
@@ -51,12 +55,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     code: ({ children }) => <code>{children as React.ReactNode}</code>,
     img: ({ src, alt }) => (
       <Image
+        className="w-full h-auto rounded-lg"
         src={src as string}
         alt={alt as string}
         width={0}
         height={0}
         sizes="100vw"
-        className="w-full h-auto rounded-lg"
       />
     ),
     ...components,

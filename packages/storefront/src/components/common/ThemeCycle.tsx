@@ -4,7 +4,11 @@ import { usePreferredColorScheme } from '@/hooks/usePreferredColorScheme';
 import { useTheme } from '@/hooks/useTheme';
 import { PButton } from '@porsche-design-system/components-react/ssr';
 
-export const ThemeCycle = () => {
+type ThemeCycleProps = {
+  slot?: string;
+};
+
+export const ThemeCycle = ({ slot }: ThemeCycleProps) => {
   const { theme, cycleStorefrontTheme } = useTheme();
   const isDark = usePreferredColorScheme();
 
@@ -17,6 +21,7 @@ export const ThemeCycle = () => {
 
   return (
     <PButton
+      slot={slot}
       compact={true}
       variant="ghost"
       icon={getIcon()}
