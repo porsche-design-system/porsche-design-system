@@ -1,5 +1,7 @@
 'use client';
 
+import { Navigation } from '@/components/common/Navigation';
+import Tabs from '@/components/common/Tabs';
 import { ThemeCycle } from '@/components/common/ThemeCycle';
 import {
   type CanvasSidebarStartUpdateEventDetail,
@@ -65,11 +67,14 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       </PButton>
 
       <div className="-p-canvas-grid">
-        <div className="col-span-full dark">{children}</div>
+        <div className="col-span-full dark">
+          <Tabs />
+          {children}
+        </div>
       </div>
 
       <div slot="sidebar-start">
-        <PText>Sidebar Start</PText>
+        <Navigation />
       </div>
       <div slot="sidebar-end">
         <PText>Sidebar End</PText>
