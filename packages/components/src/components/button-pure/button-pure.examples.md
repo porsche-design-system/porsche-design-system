@@ -147,16 +147,62 @@ By setting the `tabindex` attribute to `-1` you can remove the **Button Pure** f
 
 <Playground :markup="taborder" :config="configInline"></Playground>
 
+## Form
+
+When used as a submit button, the `name` and `value` props are submitted as a pair as part of the form data.
+
+<Playground :frameworkMarkup="formExample" :config="{ ...config, withoutDemo: true }">
+  <form @submit.prevent="onSubmit">
+    <p-button-pure name="option" value="A" type="submit" style="margin-inline-end: 16px;" :theme="theme">Button A</p-button-pure>
+    <p-button-pure name="option" value="B" type="submit" :theme="theme">Button B</p-button-pure>
+  </form>
+  <br/>
+  <p-text :theme="theme">{{ selectedValuesForm }}</p-text>
+</Playground>
+
+## Form Attribute
+
+When a button is used as a submit or reset button outside a form, the `form` attribute can be utilized to explicitly
+associate the button with a specific form element.
+
+<Notification heading="Attention" heading-tag="h2" state="warning">
+When using the <code>p-button-pure</code> component as a <strong>submit</strong> or <strong>reset</strong> button outside a form,
+it relies on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals">ElementInternals</a> API, which has limited
+browser support.<br/><br/> As of now, the submitter in the form event is null because the button cannot be accessed within the shadow DOM
+to be passed as an argument to the <code>requestSubmit()</code> function (<a href="https://github.com/WICG/webcomponents/issues/814">WICG/webcomponents#814</a>).
+<br/><br/>Additionally, custom components using ElementInternals may include all values of elements with the same name attribute in form data, rather than only the value of
+the triggering element, deviating from native form behavior.
+</Notification>
+
+<Playground :frameworkMarkup="formAttributeExample" :config="{ ...config, withoutDemo: true }">
+  <form @submit.prevent="handleSubmit" id="some-form">
+    <p-textarea name="some-name" label="Some Label" :theme="theme" />
+  </form>
+  <br/>
+  <p-button-group>
+    <p-button-pure type="submit" form="some-form" :theme="theme">Submit</p-button-pure>
+    <p-button-pure type="reset" form="some-form" :theme="theme">Reset</p-button-pure>
+  </p-button-group>
+  <br/>
+  <p-text :theme="theme">{{ selectedValueForm }}</p-text>
+</Playground>
+
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import {getButtonPureCodeSamples} from "@porsche-design-system/shared"; 
 import { TEXT_SIZES } from '../../utils/typography/text-size';
 import { ALIGN_LABELS, ALIGN_LABELS_DEPRECATED } from '../../utils';
+import type { Theme } from '@/models';
 
 @Component
 export default class Code extends Vue {
   config = { themeable: true };
   configInline = { ...this.config, spacing: 'inline' };
+
+  get theme(): Theme {
+    return this.$store.getters.playgroundTheme;
+  }
 
   stretch = 'stretch="true" align-label="start"';
   stretches = [
@@ -166,6 +212,24 @@ export default class Code extends Vue {
     'stretch="false" align-label="end"',
     'stretch="{ base: true, l: false }" align-label="start"',
   ];
+
+  formExample = getButtonPureCodeSamples('example-form');
+  formAttributeExample = getButtonPureCodeSamples('example-form-attribute');
+
+  selectedValuesForm = 'Last submitted data: none';
+  onSubmit(e) {
+    const formData = Array.from(new FormData(e.target, e.submitter).entries())[0];
+    this.selectedValuesForm = `Last submitted data: ${formData.join('=') || 'none'}`;
+  }
+
+  selectedValueForm = 'Last submitted data: none';
+  handleSubmit(e) {
+    const formData = new FormData(e.target);
+    this.selectedValueForm = `Last submitted data: ${
+      Array.from(formData.entries(), ([_, value]) => value)
+        .join('') || 'none'
+    }`;
+  }
 
   withoutIcon =
 `<p-button-pure icon="none">Some label</p-button-pure>

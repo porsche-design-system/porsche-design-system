@@ -1,3 +1,4 @@
+import { AttachInternals, Component, Element, Host, type JSX, Listen, Prop, Watch, h } from '@stencil/core';
 import type {
   BreakpointCustomizable,
   ButtonAriaAttribute,
@@ -9,22 +10,21 @@ import type {
 } from '../../types';
 import {
   AllowedTypes,
-  attachComponentCss,
   BUTTON_ARIA_ATTRIBUTES,
   BUTTON_TYPES,
-  getPrefixedTagNames,
-  hasVisibleIcon,
-  improveButtonHandlingForCustomElement,
-  hasPropValueChanged,
-  isDisabledOrLoading,
   LINK_BUTTON_VARIANTS,
   THEMES,
+  attachComponentCss,
+  getPrefixedTagNames,
+  hasPropValueChanged,
+  hasVisibleIcon,
+  improveButtonHandlingForCustomElement,
+  isDisabledOrLoading,
   validateProps,
 } from '../../utils';
-import { Component, Element, h, Host, type JSX, Listen, Prop } from '@stencil/core';
-import { getButtonAriaAttributes, type ButtonIcon } from './button-utils';
+import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
 import { getComponentCss } from './button-styles';
-import { loadingId, LoadingMessage } from '../common/loading-message/loading-message';
+import { type ButtonIcon, getButtonAriaAttributes } from './button-utils';
 
 const propTypes: PropTypes<typeof Button> = {
   type: AllowedTypes.oneOf<ButtonType>(BUTTON_TYPES),
@@ -39,6 +39,7 @@ const propTypes: PropTypes<typeof Button> = {
   compact: AllowedTypes.breakpoint('boolean'),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<ButtonAriaAttribute>(BUTTON_ARIA_ATTRIBUTES),
+  form: AllowedTypes.string,
 };
 
 /**
@@ -47,6 +48,7 @@ const propTypes: PropTypes<typeof Button> = {
 @Component({
   tag: 'p-button',
   shadow: { delegatesFocus: true },
+  formAssociated: true,
 })
 export class Button {
   @Element() public host!: HTMLElement;
@@ -55,7 +57,7 @@ export class Button {
   @Prop() public type?: ButtonType = 'submit';
 
   /** The name of the button, submitted as a pair with the button's value as part of the form data, when that button is used to submit the form. */
-  @Prop() public name?: string;
+  @Prop({ reflect: true }) public name?: string;
 
   /** Defines the value associated with the button's name when it's submitted with the form data. This value is passed to the server in params when the form is submitted using this button. */
   @Prop() public value?: string;
@@ -87,12 +89,36 @@ export class Button {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttribute>;
 
+  /** The id of a form element the button should be associated with. */
+  @Prop({ reflect: true }) public form?: string;
+  // In the React wrapper, all props are synced as properties on the element ref, so reflecting "form" as an attribute ensures it is properly handled in the form submission process.
+
+  @AttachInternals() private internals: ElementInternals;
+
   private initialLoading: boolean = false;
 
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
     if (isDisabledOrLoading(this.disabled, this.loading)) {
       e.stopPropagation();
+      return;
+    }
+
+    if (this.form && this.internals?.form) {
+      e.preventDefault();
+      if (this.type === 'submit') {
+        // Submitter is null because the button can't be passed from the shadow DOM https://github.com/WICG/webcomponents/issues/814
+        this.internals?.form.requestSubmit();
+      } else if (this.type === 'reset') {
+        this.internals?.form.reset();
+      }
+    }
+  }
+
+  @Watch('value')
+  public onValueChange(newValue: string): void {
+    if (this.form) {
+      this.internals?.setFormValue(newValue);
     }
   }
 
@@ -101,6 +127,9 @@ export class Button {
   }
 
   public componentWillLoad(): void {
+    if (this.form) {
+      this.internals?.setFormValue(this.value);
+    }
     this.initialLoading = this.loading;
   }
 
@@ -115,13 +144,15 @@ export class Button {
   }
 
   public componentDidLoad(): void {
-    improveButtonHandlingForCustomElement(
-      this.host,
-      () => this.type,
-      () => isDisabledOrLoading(this.disabled, this.loading),
-      () => this.name,
-      () => this.value
-    );
+    if (!this.form) {
+      improveButtonHandlingForCustomElement(
+        this.host,
+        () => this.type,
+        () => isDisabledOrLoading(this.disabled, this.loading),
+        () => this.name,
+        () => this.value
+      );
+    }
   }
 
   public render(): JSX.Element {
