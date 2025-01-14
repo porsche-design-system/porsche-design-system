@@ -31,7 +31,7 @@ export default function Tabs() {
 
     // Redirect to the first tab if page has tabs
     if (keys.length === 2 && typeof navigation[keys[0]][keys[1]] !== 'string') {
-      redirect(`${pathname}/${navigation[keys[1]][0]}`);
+      redirect(`${pathname}/${Object.values(navigation[keys[0]][keys[1]])[0]}`);
     }
 
     if (keys.length === 3) {

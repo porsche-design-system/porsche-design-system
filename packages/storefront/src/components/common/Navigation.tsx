@@ -30,8 +30,8 @@ const transformComponentName = (name: string): string => {
 export const navigation: StorefrontNavigation = {
   News: {
     'Migration Guide': {
-      'Porsche Design System': '/news/migration-guide',
-      Utilities: '/news/migration-guide-utilities',
+      'Porsche Design System': '/news/migration-guide/porsche-design-system',
+      Utilities: '/news/migration-guide/utilities',
     },
     Changelog: '/news/changelog',
     Roadmap: '/news/roadmap',
