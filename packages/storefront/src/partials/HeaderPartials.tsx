@@ -12,12 +12,13 @@ export const HeaderPartials = (): JSX.Element => {
       {getInitialStyles({ format: 'jsx' })}
       <style
         data-pds-font-face-styles=""
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: Only used locally
         dangerouslySetInnerHTML={{
           __html: getFontFaceStyles({ format: 'html' })
             .replace(/<\/?style[^>]*?>/g, '')
             .replace('https://cdn.ui.porsche.com/porsche-design-system', 'http://localhost:3001'),
         }}
-      ></style>
+      />
       {Array.from(getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }).matchAll(/https:\/\/[a-z0-9./-]+/g))
         .map(([url]) => url.replace('https://cdn.ui.porsche.com/porsche-design-system', 'http://localhost:3001'))
         .map((url) => (
