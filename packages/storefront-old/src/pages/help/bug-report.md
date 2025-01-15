@@ -1,7 +1,5 @@
 # Bug Report
 
-<TableOfContents></TableOfContents>
-
 ## Introduction
 
 If you encounter a bug by using the Porsche Design System, please report it to us and help us improve.

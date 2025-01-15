@@ -1,172 +1,67 @@
 export const metadata = {
-  title: 'Some title',
+  title: 'Contribution',
   description: 'Some description'
 }
 
-## Typography
+# Contribution
 
-# h1 Heading
+If you want to contribute solutions or fixes, you can create pull requests in the
+[Porsche Design System repository](https://github.com/porsche-design-system/porsche-design-system).
 
-## h2 Heading
+Besides our [Definition of Done](must-know/definition-of-done), there are several things to keep in mind.
 
-### h3 Heading
+To keep the quality high we rely on extensive testing and test automation.
+Our CI pipeline will report back most issues for already existing features and it is possible to work by trial and
+error. Since this isn't ideal you can use the following high-level checklist to get a better understanding of how, where
+and in which context a single component is tested.
 
-#### h4 Heading
+## Checklist to keep in mind per package when modifying components
 
-##### h5 Heading
+### `components`
 
-###### h6 Heading
+- unit tests for component itself, e.g. `button.spec.ts`
+- unit tests for component styles, e.g. `button-styles.spec.ts`
+- unit tests for component utils, e.g. `button-utils.spec.ts`
+- generic unit tests for all components, e.g. `lifecycleValidtion.spec.ts` or `a11y.spec.ts`
 
-## Horizontal Rules
+### `components-js`
 
----
+- e2e tests for component, e.g. `e2e/specs/button.e2e.ts`
+- generic e2e tests for all components, e.g. `e2e/specs/default-dom.e2e.ts` and
+`e2e/specs/lifecycle-after-disconnect.e2e.ts`
+- vrt tests of `button.html` page for component, e.g. `vrt/specs/button.vrt.ts`
+- vrt tests of `button.html` with playwright for component, e.g. `vrt/specs/button.vrt.ts`
+- vrt tests of hover and focus states for component, e.g. `vrt/specs/button.vrt.ts`
+- vrt tests of `overview.html` for all components including prefixing, e.g. `vrt/specs/overview.vrt.ts`
+- generic vrt tests for all components, e.g. `vrt/specs/component-high-contrast-mode.vrt.ts` and
+`vrt/specs/component-scaling.vrt.ts`
 
----
+### `components-angular`
 
----
+- vrt pages are generated via `generateVRTPages.ts` but tests are maintained manually and have to match shared fixtures
+of components-js, e.g. `vrt/specs/button.vrt.ts`
 
-## Emphasis
+### `components-react`
 
-**This is bold text**
+- vrt pages are generated via `generateVRTPages.ts` but tests are maintained manually and have to match shared fixtures
+of components-js, e.g. `vrt/specs/button.vrt.ts`
 
-**This is bold text**
+### `components-vue`
 
-_This is italic text_
+- vrt pages and tests are maintained manually and `OverviewPage.vue` need to be kept in sync, e.g.
+`vrt/specs/overview.vrt.ts`
 
-_This is italic text_
+### `components-react/projects/react-ssr-wrapper`
 
-~~Strikethrough~~
+- unit tests for component edge cases, e.g. `react-ssr-wrapper.spec.tsx`
+- generic unit tests for all components, e.g. `react-ssr-wrapper.spec.tsx`
 
-## Blockquote
+### `components-react/projects/next-js`
 
-> Blockquote can also be nested...
->
-> > ...by using additional greater-than signs right next to each other...
-> >
-> > > ...or with spaces between arrows.
-## Lists
+- vrt pages are generated automatically via `generateVRTPages.ts` but fixtures are separate because we are
+screenshotting the server side rendered pages with disabled javascript, e.g. `vrt/specs/button.vrt.ts`
 
-Unordered
+### `components-react/projects/remix`
 
-- Create a **list** by starting a line with `+`, `-`, or `*`
-- Sub-lists are made by indenting 2 spaces:
-- Marker character change forces new list start:
-- Ac tristique libero volutpat at
-* Facilisis in pretium nisl aliquet
-- Nulla volutpat aliquam velit
-- Very easy!
-
-Ordered
-
-1. Lorem ipsum dolor sit amet
-1. Consectetur adipiscing elit
-1. Integer molestie lorem at massa
-
-Start numbering with offset:
-
-57. foo
-1. bar
-
-## Heading (H3 - H6) with List
-
-### Heading H3
-
-- Unordered List
-
-#### Heading H4
-
-- Unordered List
-
-##### Heading H5
-
-- Unordered List
-
-###### Heading H6
-
-- Unordered List
-
-### Heading H3
-
-1. Ordered List
-
-#### Heading H4
-
-1. Ordered List
-
-##### Heading H5
-
-1. Ordered List
-
-###### Heading H6
-
-1. Ordered List
-
-## Code
-
-Inline `code`
-
-Indented code
-
-    // Some comments
-    line 1 of code
-    line 2 of code
-    line 3 of code
-
-Block code "fences"
-
-```
-Sample text here...
-```
-
-Diff
-
-```diff
-- <p-banner></p-banner>
-+ <p-banner open="true"></p-banner>
-```
-
-Syntax highlighting
-
-```js
-var foo = function (bar) {
-  return bar++;
-};
-
-console.log(foo(5));
-```
-
-## Tables
-
-| Option | Description                                                                        |
-| ------ | ---------------------------------------------------------------------------------- |
-| data   | Lorem ipsum dolor sit amet.                                                        |
-| engine | Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. |
-| ext    | At vero eos et accusam et justo duo dolores et ea rebum.                           |
-
-Right aligned columns
-
-| Option |                                                                        Description |
-| -----: | ---------------------------------------------------------------------------------: |
-|   data |                                                        Lorem ipsum dolor sit amet. |
-| engine | Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. |
-|    ext |                           At vero eos et accusam et justo duo dolores et ea rebum. |
-
-## Links
-
-[link text](https://designsystem.porsche.com/)
-
-[link with title](https://designsystem.porsche.com/ 'Porsche Design System')
-
-Autoconverted link https://designsystem.porsche.com/
-
-## Images
-
-![Porsche 992 Carrera S](../assets/porsche-992-carrera-s.jpg)
-
-![Porsche 718 GTS](../assets/porsche-718-gts.jpg 'The Porsche 718 GTS')
-
-Like links, Images also have a footnote style syntax with a reference later in the document defining the URL location.
-
-![Alt text][id]
-
-[id]: ../assets/porsche-911-gt2-rs.jpg '911 GT2 RS'
+- vrt pages are generated automatically via `generateVRTPages.ts` but only `overview.tsx` and fixtures are shared with
+projects/next-js and have to match, e.g. `vrt/specs/overview.vrt.ts`

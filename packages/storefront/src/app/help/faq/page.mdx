@@ -1,172 +1,65 @@
 export const metadata = {
-  title: 'Some title',
+  title: 'FAQ',
   description: 'Some description'
 }
 
-## Typography
+# Faq
 
-# h1 Heading
+To answer the most frequently asked questions the following list is constantly updated. Please read through before using
+the support and communication channels for questions. **Still missing anything? [We are happy to hear from you!](help/support)**
 
-## h2 Heading
+## Who develops the Porsche Design System?
 
-### h3 Heading
+The Porsche Design System is developed and maintained centrally by a designated team from Porsche Digital GmbH in Germany
+and is under the responsibility of Dr. Ing. h.c. F. Porsche AG. In an open community, everyone is encouraged to participate
+and contribute to the Porsche Design System and give feedback at any time.
 
-#### h4 Heading
+## How can I get in contact with the Porsche Design System team?
 
-##### h5 Heading
+We want to enable continuous communication within the community. Therefore we offer different use-case-related
+communication channels to get in contact or ask for support or submit support requests. You can find all of them
+[in the support section](help/support).
 
-###### h6 Heading
+## How can I access the Porsche Design System files?
 
-## Horizontal Rules
+**Developer**
+The source code of the Porsche Design System is stored and developed within a public GitHub repository and distributed
+via npm packages. For further information, have a look at [Start Developing](developing/introduction).
 
----
+**Designer**
+There is a Figma and a UXPin library available. For access and more details, have a look at
+[Start Designing](designing/introduction).
 
----
+## What is the release strategy and how are the issues prioritized?
 
----
+All versioned releases of the Porsche Design System combine both design and code. All changes are based on the overall
+business goals and the actual needs of the teams. The upcoming release content is accessible in the
+[quarterly roadmap](news/roadmap). The roadmap is not a delivery commitment and may be changed based on upcoming needs,
+feedback and associated requirements.
 
-## Emphasis
+## What happens with contents marked as deprecated?
 
-**This is bold text**
+Please take a look at our [versioning and release strategy](must-know/versioning).
 
-**This is bold text**
+## How often should I update?
 
-_This is italic text_
+As part of professional software development, it's recommended to update the
+`@porsche-design-system/components-{js|react|angular|vue}` npm package (like any other npm dependency) on a regular
+basis, e.g. every 2 weeks. This is important to get the latest bug fixes, security fixes and performance improvements as
+well as ensuring a harmonic visual appearance and user experience across different Porsche applications.
 
-_This is italic text_
+## How to handle older versions?
 
-~~Strikethrough~~
+If you are still running older versions (e.g. `@porsche/ui-kit-core`–`v0`, `@porsche/ui-kit-react`–`v0`,
+`@porsche-design-system/components-{js|react|angular}@{v1|v2}`), we highly recommend updating to the latest Porsche
+Design System release if possible.
 
-## Blockquote
+## How do I submit bug reports or feature requests and how are they handled?
 
-> Blockquote can also be nested...
->
-> > ...by using additional greater-than signs right next to each other...
-> >
-> > > ...or with spaces between arrows.
-## Lists
-
-Unordered
-
-- Create a **list** by starting a line with `+`, `-`, or `*`
-- Sub-lists are made by indenting 2 spaces:
-- Marker character change forces new list start:
-- Ac tristique libero volutpat at
-* Facilisis in pretium nisl aliquet
-- Nulla volutpat aliquam velit
-- Very easy!
-
-Ordered
-
-1. Lorem ipsum dolor sit amet
-1. Consectetur adipiscing elit
-1. Integer molestie lorem at massa
-
-Start numbering with offset:
-
-57. foo
-1. bar
-
-## Heading (H3 - H6) with List
-
-### Heading H3
-
-- Unordered List
-
-#### Heading H4
-
-- Unordered List
-
-##### Heading H5
-
-- Unordered List
-
-###### Heading H6
-
-- Unordered List
-
-### Heading H3
-
-1. Ordered List
-
-#### Heading H4
-
-1. Ordered List
-
-##### Heading H5
-
-1. Ordered List
-
-###### Heading H6
-
-1. Ordered List
-
-## Code
-
-Inline `code`
-
-Indented code
-
-    // Some comments
-    line 1 of code
-    line 2 of code
-    line 3 of code
-
-Block code "fences"
-
-```
-Sample text here...
-```
-
-Diff
-
-```diff
-- <p-banner></p-banner>
-+ <p-banner open="true"></p-banner>
-```
-
-Syntax highlighting
-
-```js
-var foo = function (bar) {
-  return bar++;
-};
-
-console.log(foo(5));
-```
-
-## Tables
-
-| Option | Description                                                                        |
-| ------ | ---------------------------------------------------------------------------------- |
-| data   | Lorem ipsum dolor sit amet.                                                        |
-| engine | Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. |
-| ext    | At vero eos et accusam et justo duo dolores et ea rebum.                           |
-
-Right aligned columns
-
-| Option |                                                                        Description |
-| -----: | ---------------------------------------------------------------------------------: |
-|   data |                                                        Lorem ipsum dolor sit amet. |
-| engine | Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. |
-|    ext |                           At vero eos et accusam et justo duo dolores et ea rebum. |
-
-## Links
-
-[link text](https://designsystem.porsche.com/)
-
-[link with title](https://designsystem.porsche.com/ 'Porsche Design System')
-
-Autoconverted link https://designsystem.porsche.com/
-
-## Images
-
-![Porsche 992 Carrera S](../assets/porsche-992-carrera-s.jpg)
-
-![Porsche 718 GTS](../assets/porsche-718-gts.jpg 'The Porsche 718 GTS')
-
-Like links, Images also have a footnote style syntax with a reference later in the document defining the URL location.
-
-![Alt text][id]
-
-[id]: ../assets/porsche-911-gt2-rs.jpg '911 GT2 RS'
+Once you find a reproducible bug, you can
+[open an issue](https://github.com/porsche-design-system/porsche-design-system/issues/new/choose) or directly submit a
+fix as a pull request within the
+[public Porsche Design System repository](https://github.com/porsche-design-system/porsche-design-system). We will
+address and respond to new bug reports as soon as possible, usually within a few days. Bugs should be fixed within one
+sprint depending on current capacity planning. The best approach for urgent bugs is to fix them locally within your
+project and submit the fix or create a PR afterwards.
