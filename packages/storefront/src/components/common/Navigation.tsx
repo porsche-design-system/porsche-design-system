@@ -1,18 +1,14 @@
-import type { StorefrontNavigation } from '@/models/navigation';
-import { sitemap } from '@/sitemap';
+import { type Routes, sitemap } from '@/sitemap';
 import { getPathnameRoutes } from '@/utils/pathname';
 import { type AccordionUpdateEventDetail, PAccordion, PLinkPure } from '@porsche-design-system/components-react/ssr';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-const initialAccordionState = Object.keys(sitemap).reduce<Record<keyof StorefrontNavigation, boolean>>(
-  (acc, section) => {
-    acc[section] = false;
-    return acc;
-  },
-  {}
-);
+const initialAccordionState = Object.keys(sitemap).reduce<Record<keyof Routes, boolean>>((acc, section) => {
+  acc[section] = false;
+  return acc;
+}, {});
 
 export const Navigation = () => {
   const pathname = usePathname();
