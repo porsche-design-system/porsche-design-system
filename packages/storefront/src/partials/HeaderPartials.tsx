@@ -1,4 +1,5 @@
 import { getFontFaceStyles, getFontLinks, getInitialStyles } from '@porsche-design-system/components-react/partials';
+import { getComponentChunkLinks, getIconLinks } from '@porsche-design-system/partials/src';
 
 export const HeaderPartials = (): JSX.Element => {
   return process.env.NODE_ENV === 'production' ? (
@@ -6,6 +7,8 @@ export const HeaderPartials = (): JSX.Element => {
       {getInitialStyles({ format: 'jsx' })}
       {getFontFaceStyles({ format: 'jsx' })}
       {getFontLinks({ format: 'jsx', weights: ['regular', 'semi-bold', 'bold'] })}
+      {getComponentChunkLinks({ format: 'jsx', components: ['tabs-bar', 'scroller'] })}
+      {getIconLinks({ format: 'jsx', icons: ['arrow-head-left', 'arrow-head-right'] })}
     </>
   ) : (
     <>
