@@ -40,6 +40,7 @@ export const Navigation = () => {
           heading={category.name}
           headingTag="h3"
           compact={true}
+          className={['Components', 'Must Know'].includes(category.name) ? 'mt-sm' : ''}
           open={openSections[path]}
           onUpdate={handleAccordionUpdate(path)}
         >
@@ -48,7 +49,13 @@ export const Navigation = () => {
               // If page has subPaths (tabs) link to first tab
               const link = page.subPaths ? Object.values(page.subPaths)[0].path : page.path;
               return (
-                <PLinkPure key={link} icon="none" stretch={true} active={pathname.includes(page.path)}>
+                <PLinkPure
+                  className="my-static-xs inline-block"
+                  key={link}
+                  icon="none"
+                  stretch={true}
+                  active={pathname.includes(page.path)}
+                >
                   <Link href={link}>{page.name}</Link>
                 </PLinkPure>
               );
