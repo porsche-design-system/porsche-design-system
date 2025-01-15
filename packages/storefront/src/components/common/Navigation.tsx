@@ -30,8 +30,8 @@ const transformComponentName = (name: string): string => {
 export const navigation: StorefrontNavigation = {
   News: {
     'Migration Guide': {
-      'Porsche Design System': '/news/migration-guide',
-      Utilities: '/news/migration-guide-utilities',
+      'Porsche Design System': '/news/migration-guide/porsche-design-system',
+      Utilities: '/news/migration-guide/utilities',
     },
     Changelog: '/news/changelog',
     Roadmap: '/news/roadmap',
@@ -57,12 +57,10 @@ export const navigation: StorefrontNavigation = {
     },
     'Next Js': {
       'Getting Started': '/developing/next-js/getting-started',
-      'Ssr Support': '/developing/next-js/ssr-support', // TODO: developing/shared/ssr-support-table.md was imported here as well
       Testing: '/developing/next-js/testing',
     },
     Remix: {
       'Getting Started': '/developing/remix/getting-started',
-      'Ssr Support': '/developing/remix/ssr-support', // TODO: developing/shared/ssr-support-table.md was imported here as well
     },
     Vue: {
       'Getting Started': '/developing/vue/getting-started',
