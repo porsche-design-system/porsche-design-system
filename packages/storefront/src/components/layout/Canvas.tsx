@@ -54,7 +54,9 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         href="https://github.com/porsche-design-system/porsche-design-system"
         target="_blank"
         onClick={onSidebarEndOpen}
-      />
+      >
+        Navigate to GitHub repository of Porsche Design System
+      </PLink>
       <PButton
         icon="configurate"
         variant="ghost"
