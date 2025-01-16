@@ -7,12 +7,6 @@ import {
   fontSizeHeading,
   fontSizeText,
   fontWeight,
-  getFocusStyle,
-  headingLargeStyle,
-  headingMediumStyle,
-  headingSmallStyle,
-  headingXLargeStyle,
-  headingXXLargeStyle,
   spacingFluid,
   spacingStaticLarge,
   spacingStaticMedium,
@@ -20,19 +14,16 @@ import {
   spacingStaticXLarge,
   spacingStaticXSmall,
   spacingStaticXXLarge,
-  textSmallStyle,
   themeDark,
   themeLight,
 } from '@porsche-design-system/components-react/styles';
 import type { Config } from 'tailwindcss';
 import plugin from 'tailwindcss/plugin';
-import type { RecursiveKeyValuePair } from 'tailwindcss/types/config';
 
 const pdsThemePrimary = '--pds-theme-primary';
 const pdsThemeBackgroundBase = '--pds-theme-background-base';
 const pdsThemeBackgroundSurface = '--pds-theme-background-surface';
 const pdsThemeBackgroundShading = '--pds-theme-background-shading';
-const pdsThemeCustomBackgroundCode = '--pds-theme-custom-background-code';
 const pdsThemeContrastLow = '--pds-theme-contrast-low';
 const pdsThemeContrastMedium = '--pds-theme-contrast-medium';
 const pdsThemeContrastHigh = '--pds-theme-contrast-high';
@@ -50,7 +41,6 @@ const lightTheme = {
   [pdsThemeBackgroundBase]: themeLight.background.base,
   [pdsThemeBackgroundSurface]: themeLight.background.surface,
   [pdsThemeBackgroundShading]: themeLight.background.shading,
-  [pdsThemeCustomBackgroundCode]: 'rgba(0, 0, 0, 0.06)',
   [pdsThemeContrastLow]: themeLight.contrast.low,
   [pdsThemeContrastMedium]: themeLight.contrast.medium,
   [pdsThemeContrastHigh]: themeLight.contrast.high,
@@ -69,7 +59,6 @@ const darkTheme = {
   [pdsThemeBackgroundBase]: themeDark.background.base,
   [pdsThemeBackgroundSurface]: themeDark.background.surface,
   [pdsThemeBackgroundShading]: themeDark.background.shading,
-  [pdsThemeCustomBackgroundCode]: 'rgba(255, 255, 255, 0.08)',
   [pdsThemeContrastLow]: themeDark.contrast.low,
   [pdsThemeContrastMedium]: themeDark.contrast.medium,
   [pdsThemeContrastHigh]: themeDark.contrast.high,
@@ -140,11 +129,6 @@ export default {
         DEFAULT: `var(${pdsThemeBackgroundShading})`,
         dark: themeDark.background.shading,
       },
-      'background-code': {
-        light: 'rgba(0, 0, 0, 0.06)',
-        DEFAULT: `var(${pdsThemeCustomBackgroundCode})`,
-        dark: 'rgba(255, 255, 255, 0.08)',
-      },
       'contrast-low': {
         light: themeLight.contrast.low,
         DEFAULT: `var(${pdsThemeContrastLow})`,
@@ -202,6 +186,9 @@ export default {
       },
     },
     extend: {
+      maxWidth: {
+        prose: '85ch',
+      },
       spacing: {
         xs: spacingFluid.xSmall,
         sm: spacingFluid.small,
@@ -230,31 +217,6 @@ export default {
     },
   },
   plugins: [
-    plugin(({ addComponents }) => {
-      addComponents({
-        '.pds-heading-xx-large': {
-          ...headingXXLargeStyle,
-        },
-        '.pds-heading-x-large': {
-          ...headingXLargeStyle,
-        },
-        '.pds-heading-large': {
-          ...headingLargeStyle,
-        },
-        '.pds-heading-medium': {
-          ...headingMediumStyle,
-        },
-        '.pds-heading-small': {
-          ...headingSmallStyle,
-        },
-        '.pds-text-small': {
-          ...textSmallStyle,
-        },
-        '.pds-focus': {
-          ...(getFocusStyle() as RecursiveKeyValuePair),
-        },
-      });
-    }),
     plugin(({ addBase }) => {
       addBase({
         body: {

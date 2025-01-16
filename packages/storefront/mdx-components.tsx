@@ -21,46 +21,46 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // Allows customizing built-in components, e.g. to add styling.
     h1: ({ children }) => (
-      <PDisplay tag="h1" size="medium" className="mt-lg max-w-4xl">
+      <PDisplay tag="h1" size="medium" className="mt-lg mb-md max-w-prose">
         {children as React.ReactNode}
       </PDisplay>
     ),
     h2: ({ children }) => (
-      <PHeading tag="h2" size="x-large" className="mt-lg max-w-4xl">
+      <PHeading tag="h2" size="x-large" className="mt-lg mb-md max-w-prose">
         {children as React.ReactNode}
       </PHeading>
     ),
     h3: ({ children }) => (
-      <PHeading tag="h3" size="large" className="mt-lg max-w-4xl">
+      <PHeading tag="h3" size="large" className="mt-lg mb-md max-w-prose">
         {children as React.ReactNode}
       </PHeading>
     ),
     h4: ({ children }) => (
-      <PHeading tag="h4" size="medium" className="mt-md max-w-4xl">
+      <PHeading tag="h4" size="medium" className="my-md max-w-prose">
         {children as React.ReactNode}
       </PHeading>
     ),
     h5: ({ children }) => (
-      <PHeading tag="h5" size="small" className="mt-md max-w-4xl">
+      <PHeading tag="h5" size="small" className="my-md max-w-prose">
         {children as React.ReactNode}
       </PHeading>
     ),
     h6: ({ children }) => (
-      <PHeading tag="h6" size="small" className="mt-md max-w-4xl">
+      <PHeading tag="h6" size="small" className="my-md max-w-prose">
         {children as React.ReactNode}
       </PHeading>
     ),
-    p: ({ children }) => <PText className="mt-sm max-w-4xl">{children as React.ReactNode}</PText>,
-    hr: ({ children }) => <PDivider className="mt-lg mb-static-md">{children as React.ReactNode}</PDivider>,
-    ul: ({ children }) => <PTextList className="ps-static-lg max-w-4xl">{children as React.ReactNode}</PTextList>,
+    p: ({ children }) => <PText className="my-sm max-w-prose">{children as React.ReactNode}</PText>,
+    hr: ({ children }) => <PDivider className="my-lg">{children as React.ReactNode}</PDivider>,
+    ul: ({ children }) => <PTextList className="max-w-prose">{children as React.ReactNode}</PTextList>,
     ol: ({ children }) => (
-      <PTextList className="ps-static-lg max-w-4xl" type="numbered">
+      <PTextList className="max-w-prose" type="numbered">
         {children as React.ReactNode}
       </PTextList>
     ),
     li: ({ children }) => <PTextListItem>{children as React.ReactNode}</PTextListItem>,
     table: ({ children }) => (
-      <PTable className="mt-md" caption="table">
+      <PTable className="my-md" caption="table">
         {children as React.ReactNode}
       </PTable>
     ),
@@ -75,10 +75,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </PLinkPure>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="ps-static-md border-s-4 border-solid border-contrast-low">
+      <blockquote className="my-sm ps-static-md border-s-4 border-solid border-contrast-low">
         {children as React.ReactNode}
       </blockquote>
     ),
+    pre: ({ children }) => <pre className="my-sm">{children as React.ReactNode}</pre>,
     code: ({ children }) => <code>{children as React.ReactNode}</code>,
     img: ({ src, alt }) => (
       <Image
