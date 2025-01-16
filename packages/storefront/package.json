@@ -35,7 +35,8 @@
     "@playwright/test": "*",
     "concurrently": "*",
     "globby": "*",
-    "typescript": "*"
+    "typescript": "*",
+    "change-case": "*"
   },
   "scope": "@porsche-design-system",
   "volta": {

@@ -28,4 +28,9 @@
     overflow-x: visible;
     font-weight: theme(fontWeight.bold);
   }
+
+  .deprecated {
+    color: theme(colors.notification-error.DEFAULT);
+    text-transform: uppercase;
+  }
 }
