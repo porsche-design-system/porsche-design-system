@@ -359,6 +359,11 @@ export const sitemap: Routes = {
         path: '/partials/dsr-ponyfill',
         type: 'PAGE',
       },
+      'font-face-styles': {
+        name: 'Font Face Styles',
+        path: '/partials/font-face-styles',
+        type: 'PAGE',
+      },
       'font-face-stylesheet': {
         name: 'Font Face Stylesheet',
         path: '/partials/font-face-stylesheet',
