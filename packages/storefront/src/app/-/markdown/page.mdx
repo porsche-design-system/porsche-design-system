@@ -5,17 +5,19 @@ export const metadata = {
 
 ## Typography
 
-# h1 Heading
+# Heading h1
 
-## h2 Heading
+## Heading h2
 
-### h3 Heading
+### Heading h3
 
-#### h4 Heading
+#### Heading h4
 
-##### h5 Heading
+##### Heading h5
 
-###### h6 Heading
+###### Heading h6
+
+Paragraph
 
 ## Horizontal Rules
 
@@ -49,23 +51,15 @@ _This is italic text_
 Unordered
 
 - Create a **list** by starting a line with `+`, `-`, or `*`
-- Sub-lists are made by indenting 2 spaces:
-- Marker character change forces new list start:
+  - Sub-lists are made by indenting 2 spaces:
+  - Marker character change forces new list start:
 - Ac tristique libero volutpat at
-* Facilisis in pretium nisl aliquet
-- Nulla volutpat aliquam velit
-- Very easy!
 
 Ordered
 
 1. Lorem ipsum dolor sit amet
 1. Consectetur adipiscing elit
 1. Integer molestie lorem at massa
-
-Start numbering with offset:
-
-57. foo
-1. bar
 
 ## Heading (H3 - H6) with List
 
@@ -107,10 +101,12 @@ Inline `code`
 
 Indented code
 
-    // Some comments
-    line 1 of code
-    line 2 of code
-    line 3 of code
+```
+  // Some comments
+  line 1 of code
+  line 2 of code
+  line 3 of code
+```
 
 Block code "fences"
 
@@ -118,14 +114,14 @@ Block code "fences"
 Sample text here...
 ```
 
-Diff
+Syntax highlighting (Diff)
 
 ```diff
 - <p-banner></p-banner>
 + <p-banner open="true"></p-banner>
 ```
 
-Syntax highlighting
+Syntax highlighting (JS)
 
 ```js
 var foo = function (bar) {
@@ -142,14 +138,6 @@ console.log(foo(5));
 | data   | Lorem ipsum dolor sit amet.                                                        |
 | engine | Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. |
 | ext    | At vero eos et accusam et justo duo dolores et ea rebum.                           |
-
-Right aligned columns
-
-| Option |                                                                        Description |
-| -----: | ---------------------------------------------------------------------------------: |
-|   data |                                                        Lorem ipsum dolor sit amet. |
-| engine | Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. |
-|    ext |                           At vero eos et accusam et justo duo dolores et ea rebum. |
 
 ## Links
 

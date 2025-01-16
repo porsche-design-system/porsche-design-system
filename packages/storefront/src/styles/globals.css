@@ -8,57 +8,29 @@
     color: theme(colors.primary.DEFAULT);
   }
 
-  code,
-  pre {
-    @apply pds-text-small;
+  code {
+    display: block;
+    padding: theme(spacing.static-md);
+    border-radius: theme(borderRadius.md);
+    overflow-x: auto;
+    background-color: theme(colors.background-surface.DEFAULT);
     font-family: theme(fontFamily.code);
-  }
-
-  code.readonly {
-    user-select: none;
+    font-weight: theme(fontWeight.regular);
+    font-size: theme(fontSize.xs);
+    line-height: 1.5;
+    color: theme(colors.contrast-high.DEFAULT);
   }
 
   :not(pre) > code {
-    padding: 2px theme(spacing.static-sm);
+    display: inline;
+    padding: 2px 6px;
     border-radius: theme(borderRadius.sm);
-    background-color: theme(colors.background-code.DEFAULT);
-    color: theme(colors.primary.DEFAULT);
-  }
-
-  pre {
-    @apply pds-focus;
-  }
-
-  pre > * {
-    margin-top: theme(spacing.static-sm);
-    display: block;
-    padding: theme(spacing.static-sm) theme(spacing.static-md);
-    word-break: break-all;
-    word-wrap: break-word;
-    background-color: theme(colors.background-code.DEFAULT);
-    color: theme(colors.primary.DEFAULT);
-    border-radius: theme(borderRadius.md);
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    overflow-x: visible;
+    font-weight: theme(fontWeight.bold);
   }
 
   .deprecated {
     color: theme(colors.notification-error.DEFAULT);
     text-transform: uppercase;
-  }
-}
-
-@layer components {
-  p-inline-notification {
-    margin-top: theme(spacing.sm);
-  }
-}
-
-@layer utilities {
-  p-text-list {
-    margin-top: theme(spacing.md);
-  }
-  :where(h3, h4, h5, h6) + p-text-list {
-    margin-top: theme(spacing.xs);
   }
 }

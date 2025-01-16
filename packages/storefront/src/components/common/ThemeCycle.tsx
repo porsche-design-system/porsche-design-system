@@ -29,6 +29,8 @@ export const ThemeCycle = ({ slot }: ThemeCycleProps) => {
       aria-live="polite"
       type="button"
       onClick={() => cycleStorefrontTheme()}
-    />
+    >
+      Switch theme
+    </PButton>
   );
 };
