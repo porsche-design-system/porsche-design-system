@@ -17,6 +17,8 @@ import type { MDXComponents } from 'mdx/types';
 import Image from 'next/image';
 import Link from 'next/link';
 import type React from 'react';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -83,7 +85,27 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </blockquote>
     ),
     pre: ({ children }) => <pre className="my-sm">{children as React.ReactNode}</pre>,
-    code: ({ children }) => <code>{children as React.ReactNode}</code>,
+    code: ({ children, className }) => {
+      const hasLang = /language-(\w+)/.exec(className || '');
+      return (
+        <code>
+          {hasLang ? (
+            <SyntaxHighlighter
+              language={hasLang[1]}
+              PreTag="div"
+              CodeTag="div"
+              style={docco}
+              showLineNumbers={false}
+              useInlineStyles={true}
+            >
+              {children as React.ReactNode}
+            </SyntaxHighlighter>
+          ) : (
+            (children as React.ReactNode)
+          )}
+        </code>
+      );
+    },
     img: ({ src, alt }) => (
       <Image
         className="w-full h-auto rounded-lg"
