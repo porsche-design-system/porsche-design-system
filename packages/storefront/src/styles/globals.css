@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    background: theme(colors.background-base.DEFAULT);
+    background: theme(colors.background-surface.DEFAULT);
     color: theme(colors.primary.DEFAULT);
   }
 
