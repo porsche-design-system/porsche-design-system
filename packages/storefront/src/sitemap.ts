@@ -241,7 +241,14 @@ export const sitemap: Routes = {
     path: '/components',
     type: 'CATEGORY',
     redirect: '/components/introduction',
-    subPaths: getComponents(), // Assuming this is dynamically fetched or implemented elsewhere.
+    subPaths: {
+      introduction: {
+        name: 'Introduction',
+        path: '/components/introduction',
+        type: 'PAGE',
+      },
+      ...getComponents(),
+    }, // Assuming this is dynamically fetched or implemented elsewhere.
   },
   styles: {
     name: 'Styles',
