@@ -41,6 +41,11 @@
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
+
+  .deprecated {
+    color: theme(colors.notification-error.DEFAULT);
+    text-transform: uppercase;
+  }
 }
 
 @layer components {

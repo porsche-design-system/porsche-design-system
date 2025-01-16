@@ -1,5 +1,6 @@
 'use client';
 
+import { getFlags } from '@/utils/getFlags';
 import { type PropMeta, componentMeta } from '@porsche-design-system/component-meta';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import type { EventMeta, SlotMeta } from '@porsche-design-system/component-meta/src';
@@ -34,13 +35,6 @@ export const ComponentMetaOverview = () => {
       filterProps ? value[filterProps] : true
     );
   };
-
-  const getFlags = <T extends { isDeprecated?: boolean; isBreakpointCustomizable?: boolean; isExperimental?: boolean }>(
-    meta: T
-  ): string =>
-    [meta.isDeprecated && ' 🚫', meta.isBreakpointCustomizable && ' 🛠', meta.isExperimental && ' 🧪']
-      .filter(Boolean)
-      .join('');
 
   const formatAllowedValues = (allowedValues: PropMeta['allowedValues'], isDeprecated: boolean): ReactNode => {
     if (Array.isArray(allowedValues)) {
