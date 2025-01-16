@@ -183,11 +183,6 @@ export const sitemap: Routes = {
             path: '/developing/next-js/getting-started',
             type: 'TAB',
           },
-          'ssr-support': {
-            name: 'SSR Support',
-            path: '/developing/next-js/ssr-support',
-            type: 'TAB',
-          },
           testing: {
             name: 'Testing',
             path: '/developing/next-js/testing',
@@ -203,11 +198,6 @@ export const sitemap: Routes = {
           'getting-started': {
             name: 'Getting Started',
             path: '/developing/remix/getting-started',
-            type: 'TAB',
-          },
-          'ssr-support': {
-            name: 'SSR Support',
-            path: '/developing/remix/ssr-support',
             type: 'TAB',
           },
         },
