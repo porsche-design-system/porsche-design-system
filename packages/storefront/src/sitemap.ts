@@ -21,9 +21,9 @@ const getComponents = (): Routes => {
             path: `/components/${componentName}/usage`,
             type: 'TAB',
           },
-          props: {
-            name: 'Props',
-            path: `/components/${componentName}/props`,
+          api: {
+            name: 'API',
+            path: `/components/${componentName}/api`,
             type: 'TAB',
           },
         },
