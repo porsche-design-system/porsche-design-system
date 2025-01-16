@@ -1,5 +1,7 @@
 import {
+  PDisplay,
   PDivider,
+  PHeading,
   PLinkPure,
   PTable,
   PTableBody,
@@ -7,6 +9,7 @@ import {
   PTableHead,
   PTableHeadCell,
   PTableRow,
+  PText,
   PTextList,
   PTextListItem,
 } from '@porsche-design-system/components-react/ssr';
@@ -17,17 +20,41 @@ import Link from 'next/link';
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // Allows customizing built-in components, e.g. to add styling.
-    h1: ({ children }) => <h1 className="pds-heading-xx-large mt-lg">{children as React.ReactNode}</h1>,
-    h2: ({ children }) => <h2 className="pds-heading-x-large mt-lg">{children as React.ReactNode}</h2>,
-    h3: ({ children }) => <h3 className="pds-heading-large mt-lg">{children as React.ReactNode}</h3>,
-    h4: ({ children }) => <h4 className="pds-heading-medium mt-md">{children as React.ReactNode}</h4>,
-    h5: ({ children }) => <h5 className="pds-heading-small mt-md">{children as React.ReactNode}</h5>,
-    h6: ({ children }) => <h6 className="pds-heading-small mt-md">{children as React.ReactNode}</h6>,
-    p: ({ children }) => <p className="pds-text-small mt-sm">{children as React.ReactNode}</p>,
+    h1: ({ children }) => (
+      <PDisplay tag="h1" size="medium" className="mt-lg max-w-4xl">
+        {children as React.ReactNode}
+      </PDisplay>
+    ),
+    h2: ({ children }) => (
+      <PHeading tag="h2" size="x-large" className="mt-lg max-w-4xl">
+        {children as React.ReactNode}
+      </PHeading>
+    ),
+    h3: ({ children }) => (
+      <PHeading tag="h3" size="large" className="mt-lg max-w-4xl">
+        {children as React.ReactNode}
+      </PHeading>
+    ),
+    h4: ({ children }) => (
+      <PHeading tag="h4" size="medium" className="mt-md max-w-4xl">
+        {children as React.ReactNode}
+      </PHeading>
+    ),
+    h5: ({ children }) => (
+      <PHeading tag="h5" size="small" className="mt-md max-w-4xl">
+        {children as React.ReactNode}
+      </PHeading>
+    ),
+    h6: ({ children }) => (
+      <PHeading tag="h6" size="small" className="mt-md max-w-4xl">
+        {children as React.ReactNode}
+      </PHeading>
+    ),
+    p: ({ children }) => <PText className="mt-sm max-w-4xl">{children as React.ReactNode}</PText>,
     hr: ({ children }) => <PDivider className="mt-lg mb-static-md">{children as React.ReactNode}</PDivider>,
-    ul: ({ children }) => <PTextList className="ps-static-lg">{children as React.ReactNode}</PTextList>,
+    ul: ({ children }) => <PTextList className="ps-static-lg max-w-4xl">{children as React.ReactNode}</PTextList>,
     ol: ({ children }) => (
-      <PTextList className="ps-static-lg" type="numbered">
+      <PTextList className="ps-static-lg max-w-4xl" type="numbered">
         {children as React.ReactNode}
       </PTextList>
     ),

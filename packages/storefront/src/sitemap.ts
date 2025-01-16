@@ -449,6 +449,11 @@ export const sitemap: Routes = {
         path: '/must-know/initialization',
         type: 'PAGE',
         subPaths: {
+          introduction: {
+            name: 'Introduction',
+            path: '/must-know/initialization/introduction',
+            type: 'PAGE',
+          },
           'vanilla-js': {
             name: 'Vanilla JS',
             path: '/must-know/initialization/vanilla-js',
