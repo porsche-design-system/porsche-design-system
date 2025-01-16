@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    background: theme(colors.background-base.DEFAULT);
+    background: theme(colors.background-surface.DEFAULT);
     color: theme(colors.primary.DEFAULT);
   }
 
@@ -27,6 +27,10 @@
     border-radius: theme(borderRadius.sm);
     overflow-x: visible;
     font-weight: theme(fontWeight.bold);
+  }
+
+  p-text-list p-text-list {
+    margin: 0 !important;
   }
 
   .deprecated {

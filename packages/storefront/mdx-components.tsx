@@ -16,6 +16,7 @@ import {
 import type { MDXComponents } from 'mdx/types';
 import Image from 'next/image';
 import Link from 'next/link';
+import type React from 'react';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -52,9 +53,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     p: ({ children }) => <PText className="my-sm max-w-prose">{children as React.ReactNode}</PText>,
     hr: ({ children }) => <PDivider className="my-lg">{children as React.ReactNode}</PDivider>,
-    ul: ({ children }) => <PTextList className="max-w-prose">{children as React.ReactNode}</PTextList>,
+    ul: ({ children }) => (
+      <PTextList className="my-sm ms-static-lg max-w-prose">{children as React.ReactNode}</PTextList>
+    ),
     ol: ({ children }) => (
-      <PTextList className="max-w-prose" type="numbered">
+      <PTextList className="my-sm ms-static-lg max-w-prose" type="numbered">
         {children as React.ReactNode}
       </PTextList>
     ),
@@ -70,7 +73,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     td: ({ children }) => <PTableCell>{children as React.ReactNode}</PTableCell>,
     tr: ({ children }) => <PTableRow>{children as React.ReactNode}</PTableRow>,
     a: ({ href, children }) => (
-      <PLinkPure icon={'none'} underline={true}>
+      <PLinkPure icon="none" underline={true}>
         <Link href={href as string}>{children as React.ReactNode}</Link>
       </PLinkPure>
     ),
