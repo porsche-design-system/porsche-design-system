@@ -54,7 +54,7 @@ export const Navigation = () => {
                   key={link}
                   icon="none"
                   stretch={true}
-                  active={pathname.includes(page.path)}
+                  active={pathname.includes(`${page.path}/`)}
                 >
                   <Link href={link}>{page.name}</Link>
                 </PLinkPure>
