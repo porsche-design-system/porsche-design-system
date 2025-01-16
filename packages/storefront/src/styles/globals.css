@@ -29,6 +29,10 @@
     font-weight: theme(fontWeight.bold);
   }
 
+  p-text-list p-text-list {
+    margin: 0 !important;
+  }
+
   .deprecated {
     color: theme(colors.notification-error.DEFAULT);
     text-transform: uppercase;

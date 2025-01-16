@@ -53,9 +53,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     p: ({ children }) => <PText className="my-sm max-w-prose">{children as React.ReactNode}</PText>,
     hr: ({ children }) => <PDivider className="my-lg">{children as React.ReactNode}</PDivider>,
-    ul: ({ children }) => <PTextList className="max-w-prose">{children as React.ReactNode}</PTextList>,
+    ul: ({ children }) => (
+      <PTextList className="my-sm ms-static-lg max-w-prose">{children as React.ReactNode}</PTextList>
+    ),
     ol: ({ children }) => (
-      <PTextList className="max-w-prose" type="numbered">
+      <PTextList className="my-sm ms-static-lg max-w-prose" type="numbered">
         {children as React.ReactNode}
       </PTextList>
     ),
