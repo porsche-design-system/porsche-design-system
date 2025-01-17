@@ -83,7 +83,12 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       </div>
 
       <div slot="footer" className="-p-canvas-grid">
-        <PText size="xx-small" color="neutral-contrast-medium" className="col-span-full xs:col-start-2 xs:col-end-12">
+        <PText
+          size="xx-small"
+          color="neutral-contrast-medium"
+          align="center"
+          className="col-span-full xs:col-start-2 xs:col-end-12"
+        >
           © 2025 Dr. Ing. h.c. F. Porsche AG. &nbsp;
           <a href="https://brand.porsche.com/d/aXCSDnXaTiSY">Privacy Policy</a>
           &nbsp;
