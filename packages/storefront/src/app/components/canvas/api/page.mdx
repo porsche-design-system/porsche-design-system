@@ -1,11 +1,15 @@
-import { ComponentStatus } from "@/components/components/ComponentStatus";
-import { ComponentMetaSlots } from "@/components/components/ComponentMetaSlots";
-import { ComponentMetaEvents } from "@/components/components/ComponentMetaEvents";
+import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentMetaProps } from "@/components/components/ComponentMetaProps";
+import { ComponentMetaEvents } from "@/components/components/ComponentMetaEvents";
+import { ComponentMetaSlots } from "@/components/components/ComponentMetaSlots";
+import { ComponentMetaCssVariables } from "@/components/components/ComponentMetaCssVariables";
+
+export const metadata = {
+  title: 'Canvas - Porsche Design System',
+  description: 'Some description'
+}
 
 # Canvas <ComponentStatus tagName="p-canvas"></ComponentStatus>
-
-## API
 
 ## Properties
 
@@ -18,3 +22,7 @@ import { ComponentMetaProps } from "@/components/components/ComponentMetaProps";
 ## Slots
 
 <ComponentMetaSlots tagName="p-canvas"></ComponentMetaSlots>
+
+## CSS Variables
+
+<ComponentMetaCssVariables tagName="p-canvas"></ComponentMetaCssVariables>
