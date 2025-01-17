@@ -90,6 +90,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       return (
         <code>
           {hasLang ? (
+            // @ts-expect-error
             <SyntaxHighlighter
               language={
                 {
