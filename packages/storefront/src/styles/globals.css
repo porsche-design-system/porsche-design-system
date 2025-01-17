@@ -13,12 +13,12 @@
     padding: theme(spacing.static-md);
     border-radius: theme(borderRadius.md);
     overflow-x: auto;
-    background-color: theme(colors.background-surface.DEFAULT);
+    background-color: theme(colors.background-code.DEFAULT);
     font-family: theme(fontFamily.code);
     font-weight: theme(fontWeight.regular);
     font-size: theme(fontSize.xs);
     line-height: 1.5;
-    color: theme(colors.contrast-high.DEFAULT);
+    color: theme(colors.primary.DEFAULT);
   }
 
   :not(pre) > code {
@@ -27,6 +27,7 @@
     border-radius: theme(borderRadius.sm);
     overflow-x: visible;
     font-weight: theme(fontWeight.bold);
+    color: theme(colors.contrast-high.DEFAULT);
   }
 
   p-text-list p-text-list {

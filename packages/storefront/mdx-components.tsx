@@ -87,11 +87,28 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     pre: ({ children }) => <pre className="my-sm">{children as React.ReactNode}</pre>,
     code: ({ children, className }) => {
       const hasLang = /language-(\w+)/.exec(className || '');
+
       return (
         <code>
           {hasLang ? (
             <SyntaxHighlighter
-              language={hasLang[1]}
+              language={
+                {
+                  js: 'javascript',
+                  javascript: 'javascript',
+                  ts: 'typescript',
+                  typescript: 'typescript',
+                  diff: 'diff',
+                  json: 'json',
+                  html: 'html',
+                  scss: 'scss',
+                  css: 'css',
+                  shell: 'shell',
+                  bash: 'bash',
+                  tsx: 'typescript',
+                  jsx: 'javascript',
+                }[hasLang[1]] || 'javascript'
+              }
               PreTag="div"
               CodeTag="div"
               style={docco}

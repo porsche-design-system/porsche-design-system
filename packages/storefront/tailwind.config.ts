@@ -24,6 +24,7 @@ const pdsThemePrimary = '--pds-theme-primary';
 const pdsThemeBackgroundBase = '--pds-theme-background-base';
 const pdsThemeBackgroundSurface = '--pds-theme-background-surface';
 const pdsThemeBackgroundShading = '--pds-theme-background-shading';
+const pdsThemeCustomBackgroundCode = '--pds-theme-custom-background-code';
 const pdsThemeContrastLow = '--pds-theme-contrast-low';
 const pdsThemeContrastMedium = '--pds-theme-contrast-medium';
 const pdsThemeContrastHigh = '--pds-theme-contrast-high';
@@ -41,6 +42,7 @@ const lightTheme = {
   [pdsThemeBackgroundBase]: themeLight.background.base,
   [pdsThemeBackgroundSurface]: themeLight.background.surface,
   [pdsThemeBackgroundShading]: themeLight.background.shading,
+  [pdsThemeCustomBackgroundCode]: '#f8f8ff',
   [pdsThemeContrastLow]: themeLight.contrast.low,
   [pdsThemeContrastMedium]: themeLight.contrast.medium,
   [pdsThemeContrastHigh]: themeLight.contrast.high,
@@ -59,6 +61,7 @@ const darkTheme = {
   [pdsThemeBackgroundBase]: themeDark.background.base,
   [pdsThemeBackgroundSurface]: themeDark.background.surface,
   [pdsThemeBackgroundShading]: themeDark.background.shading,
+  [pdsThemeCustomBackgroundCode]: '#070700',
   [pdsThemeContrastLow]: themeDark.contrast.low,
   [pdsThemeContrastMedium]: themeDark.contrast.medium,
   [pdsThemeContrastHigh]: themeDark.contrast.high,
@@ -128,6 +131,11 @@ export default {
         light: themeLight.background.shading,
         DEFAULT: `var(${pdsThemeBackgroundShading})`,
         dark: themeDark.background.shading,
+      },
+      'background-code': {
+        light: '#f8f8ff',
+        DEFAULT: `var(${pdsThemeCustomBackgroundCode})`,
+        dark: '#070700',
       },
       'contrast-low': {
         light: themeLight.contrast.low,
