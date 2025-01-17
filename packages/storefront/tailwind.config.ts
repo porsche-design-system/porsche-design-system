@@ -248,8 +248,7 @@ export default {
     './mdx-components.tsx',
   ],
   safelist: [
-    'hljs-color',
-    'hljs-background',
+    'hljs',
     'hljs-comment',
     'hljs-quote',
     'hljs-doctag',
