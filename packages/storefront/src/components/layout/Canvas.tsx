@@ -81,6 +81,19 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       <div slot="sidebar-end">
         <PText>Sidebar End</PText>
       </div>
+
+      <video
+        className="w-full h-full"
+        slot="background"
+        poster="assets/bg.webp"
+        loop={true}
+        muted={true}
+        autoPlay={true}
+        playsInline={true}
+      >
+        <source src="assets/bg.webm" type="video/webm" />
+        <source src="assets/bg.mp4" type="video/mp4" />
+      </video>
     </PCanvas>
   );
 };
