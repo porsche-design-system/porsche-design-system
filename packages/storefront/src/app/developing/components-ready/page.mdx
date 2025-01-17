@@ -32,7 +32,7 @@ The `componentsReady` function is provided as part of the following components p
 `componentsReady` is quite flexible. You can call it wherever and as often as you like.
 By default, it uses the current document's `body` element to look for any web component of the Porsche Design System.
 
-```js
+```ts
 import { componentsReady } from '@porsche-design-system/components-{js|angular|react|vue}';
 
 const doSomeStuff = async () => {
@@ -54,7 +54,7 @@ You can also specify the [`readyState`](https://developer.mozilla.org/en-US/docs
 document or component should reach before the promise resolves. The default `readyState` is set to `complete`, but you
 can adjust it to other states like `interactive` or `loading` based on your requirements.
 
-```js
+```ts
 import { componentsReady } from '@porsche-design-system/components-{js|angular|react|vue}';
 
 const initSomeSidebar = async () => {
