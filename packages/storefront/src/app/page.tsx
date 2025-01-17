@@ -1,4 +1,5 @@
 import { PDisplay, PLinkTile, PText } from '@porsche-design-system/components-react/ssr';
+import Image from 'next/image';
 
 export default function Home() {
   return (
@@ -39,7 +40,7 @@ export default function Home() {
           weight="regular"
           compact={true}
         >
-          <img src="/assets/start-designing.jpg" alt="Some wireframes" />
+          <Image src="/assets/start-designing.jpg" width={1052} height={1398} alt="Some wireframes" />
         </PLinkTile>
         <PLinkTile
           href="/developing/introduction"
@@ -49,7 +50,12 @@ export default function Home() {
           weight="regular"
           compact={true}
         >
-          <img src="/assets/start-developing.jpg" alt="Some woman developing with Porsche Design System version 3" />
+          <Image
+            src="/assets/start-developing.jpg"
+            width={1052}
+            height={1398}
+            alt="Some woman developing with Porsche Design System version 3."
+          />
         </PLinkTile>
         <PLinkTile
           className="sm:col-span-2"
@@ -81,8 +87,10 @@ export default function Home() {
               src="/assets/migrate-v2-to-v3-light.jpg"
               alt="Sample Porsche web application with Porsche Design System version 3."
             /> */}
-            <img
+            <Image
               src="/assets/migrate-v2-to-v3-light.jpg"
+              width={2168}
+              height={1222}
               alt="Sample Porsche web application with Porsche Design System version 3."
             />
           </picture>
