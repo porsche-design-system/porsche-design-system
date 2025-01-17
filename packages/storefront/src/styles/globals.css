@@ -30,8 +30,12 @@
     color: theme(colors.contrast-high.DEFAULT);
   }
 
-  p-text-list p-text-list {
+  p-text-list :is(p-text-list, p-text) {
     margin: 0 !important;
+  }
+
+  p-inline-notification {
+    margin-block: theme(spacing.sm);
   }
 
   .deprecated {
