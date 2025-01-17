@@ -62,6 +62,9 @@ export const Navigation = () => {
             })}
         </PAccordion>
       ))}
+      <PLinkPure className="mt-lg" href="https://brand.porsche.com" target="_blank" icon="external">
+        brand.porsche.com
+      </PLinkPure>
     </>
   );
 };

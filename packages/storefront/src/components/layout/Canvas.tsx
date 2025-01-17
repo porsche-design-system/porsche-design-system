@@ -69,7 +69,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       </PButton>
 
       <div className="-p-canvas-grid">
-        <div className="col-span-full dark xs:col-start-2 xs:col-end-12">
+        <div className="col-span-full xs:col-start-2 xs:col-end-12">
           <Tabs />
           {children}
         </div>
@@ -80,6 +80,17 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       </div>
       <div slot="sidebar-end">
         <PText>Sidebar End</PText>
+      </div>
+
+      <div slot="footer" className="-p-canvas-grid">
+        <PText size="xx-small" color="neutral-contrast-medium" className="col-span-full xs:col-start-2 xs:col-end-12">
+          © 2025 Dr. Ing. h.c. F. Porsche AG. &nbsp;
+          <a href="https://brand.porsche.com/d/aXCSDnXaTiSY">Privacy Policy</a>
+          &nbsp;
+          <a href="https://brand.porsche.com/d/S5pRV9qVeHyf">Legal Notice</a>
+          &nbsp;
+          <Link href="/license">License</Link>
+        </PText>
       </div>
 
       <video
