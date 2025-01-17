@@ -265,7 +265,7 @@ implementation.
 
 Example mock:
 
-```js
+```ts
 HTMLDialogElement.prototype.show = jest.fn();
 HTMLDialogElement.prototype.showModal = jest.fn();
 HTMLDialogElement.prototype.close = jest.fn();
@@ -280,7 +280,7 @@ the test setup.
 
 Example mock:
 
-```js
+```ts
 HTMLElement.prototype.attachInternals = jest.fn(
 () =>
   ({

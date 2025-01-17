@@ -76,7 +76,7 @@ set if the component has the `hide-label` property.
 ```diff
 <p-button-pure>
   Some label
-  -   <p slot="subline">Some Subline</p>
+-   <p slot="subline">Some Subline</p>
 </p-button-pure>
 ```
 
@@ -126,7 +126,7 @@ set if the component has the `hide-label` property.
 ```diff
 <p-link-pure href="#">
   Some label
-  -   <p slot="subline">Some Subline</p>
+-   <p slot="subline">Some Subline</p>
 </p-link-pure>
 ```
 
@@ -181,11 +181,11 @@ layout needs for a harmonic appearance across all digital Porsche touch-points.
 
 ```diff
 - <p-fieldset-wrapper label="Some legend label">
-  + <p-fieldset label="Some legend label">
++ <p-fieldset label="Some legend label">
   <p-text-field-wrapper label="Some label">
     <input type="text" name="some-name" />
   </p-text-field-wrapper>
-  - </p-fieldset-wrapper>
+- </p-fieldset-wrapper>
 + </p-fieldset>
 ```
 
@@ -260,15 +260,15 @@ default.
 
 ```diff
 <p-banner>
-  - <span slot="title">Some heading</span>
-  + <span slot="heading">Some heading</span>
+- <span slot="title">Some heading</span>
++ <span slot="heading">Some heading</span>
   <span slot="description">Some notification description.</span>
 </p-banner>
 
 - <p-banner>
-  + <p-banner heading="Some heading" description="Some notification description.">
-  -   <span slot="title">Some heading</span>
-  -   <span slot="description">Some notification description.</span>
++ <p-banner heading="Some heading" description="Some notification description.">
+-   <span slot="title">Some heading</span>
+-   <span slot="description">Some notification description.</span>
 </p-banner>
 ```
 
@@ -425,13 +425,10 @@ is used.
 
 ```diff
 - <p-segmented-control background-color="background-surface">
-<p-segmented-control-item value="xs">XS</p-segmented-control-item>
-<p-segmented-control-item value="s">S</p-segmented-control-item>
-p-segmented-control>
 + <p-segmented-control>
-<p-segmented-control-item value="xs">XS</p-segmented-control-item>
-<p-segmented-control-item value="s">S</p-segmented-control-item>
-p-segmented-control>
+  <p-segmented-control-item value="xs">XS</p-segmented-control-item>
+  <p-segmented-control-item value="s">S</p-segmented-control-item>
+</p-segmented-control>
 ```
 
 - Event `segmentedControlChange` is deprecated, use new event `update`.

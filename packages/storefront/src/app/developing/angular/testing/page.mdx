@@ -24,7 +24,7 @@ To apply the polyfill, simply import it in your `setupTest.{js|ts}` file.
 
 ### Setup file
 
-```js
+```ts
 // setupTest.{js|ts}
 
 import '@porsche-design-system/components-angular/jsdom-polyfill';
@@ -32,7 +32,7 @@ import '@porsche-design-system/components-angular/jsdom-polyfill';
 
 ### Example component
 
-```js
+```ts
 // single-component.ts
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
@@ -61,7 +61,7 @@ export class SingleComponent {
 
 ### Test example component
 
-```js
+```ts
 // single-component.test.ts
 
 import { componentsReady } from '@porsche-design-system/components-angular';
@@ -112,7 +112,7 @@ easiest, but this is overridden by `@angular-devkit/build-angular/plugins/karma`
 - `karma.conf.js` custom middleware which injects the `getInitialStyles()` partial on the fly
 - manipulation of `karma-context.html` via `post-install` or within `karma.conf.js`
 
-```js
+```ts
 // yarn add --dev glob
 
 <!-- karma.conf.js -->
@@ -168,7 +168,7 @@ implementation.
 
 Example mock:
 
-```js
+```ts
 HTMLDialogElement.prototype.show = jest.fn();
 HTMLDialogElement.prototype.showModal = jest.fn();
 HTMLDialogElement.prototype.close = jest.fn();
