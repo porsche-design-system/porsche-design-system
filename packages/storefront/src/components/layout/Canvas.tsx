@@ -21,8 +21,6 @@ export const Canvas = ({ children }: PropsWithChildren) => {
     global?.window && window.matchMedia(`(min-width: ${breakpointS}px)`).matches
   );
   const [isSidebarEndOpen, setIsSidebarEndOpen] = useState(false);
-  const pathname = usePathname();
-  const isRootPage = pathname === '/';
 
   const onSidebarStartUpdate = (e: CustomEvent<CanvasSidebarStartUpdateEventDetail>) => {
     setIsSidebarStartOpen(e.detail.open);
@@ -101,7 +99,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         </PText>
       </div>
 
-      {isRootPage && (
+      {usePathname() === '/' && (
         <video
           className="w-full h-full"
           slot="background"
