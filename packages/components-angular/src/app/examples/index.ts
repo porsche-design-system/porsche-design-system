@@ -1,4 +1,5 @@
 import { AccordionExampleComponent } from './accordion-example.component';
+import { ActionSheetExampleComponent } from './action-sheet-example.component';
 import { AgGridExampleStorefrontComponent } from './ag-grid-example-storefront.component';
 import { AgGridExampleComponent } from './ag-grid-example.component';
 import { BannerExampleComponent } from './banner-example.component';
@@ -51,6 +52,7 @@ import { ToastExampleComponent } from './toast-example.component';
 
 export const examples = [
   AccordionExampleComponent,
+  ActionSheetExampleComponent,
   AgGridExampleComponent,
   AgGridExampleStorefrontComponent,
   BannerExampleComponent,
@@ -103,6 +105,7 @@ export const examples = [
 ];
 
 export * from './accordion-example.component';
+export * from './action-sheet-example.component';
 export * from './ag-grid-example.component';
 export * from './ag-grid-example-storefront.component';
 export * from './banner-example.component';

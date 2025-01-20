@@ -31,6 +31,11 @@ export const routes: RouteType[] = [
     component: fromExamples.AccordionExample,
   },
   {
+    path: '/action-sheet-example',
+    name: 'Action Sheet Example',
+    component: fromExamples.ActionSheetExample,
+  },
+  {
     path: '/ag-grid-example',
     name: 'AG Grid Example',
     component: fromExamples.AGGridExample,
