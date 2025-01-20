@@ -19,6 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_BASE_PATH && (
+          <base href={`/${process.env.NEXT_PUBLIC_BASE_PATH}`} />
+        )}
         <HeaderPartials />
       </head>
       <body>

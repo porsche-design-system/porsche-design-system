@@ -3,6 +3,9 @@
 set -o errexit
 set -o pipefail
 
+# Next.js needs NEXT_PUBLIC prefix in order to bundle the variable
+export NEXT_PUBLIC_BASE_PATH=GITHUB_REF_NAME
+
 if
   [[ "--core-dependencies" == "${1}" ]] ||
   [[ "--assets" == "${1}" ]] ||
