@@ -29,7 +29,7 @@ export const ComponentMetaCssVariables = ({ tagName }: ComponentMetaCssVariables
       </PTableHead>
       <PTableBody>
         {cssVariablesMeta.map(([cssVariableName, cssVariablesMeta]) => (
-          <PTableRow>
+          <PTableRow key={cssVariableName}>
             <PTableCell className="align-top">
               <code>
                 {cssVariableName} {getFlags(cssVariablesMeta)}
