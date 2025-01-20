@@ -18,7 +18,6 @@ import {
   getDialogJssStyle,
   getDialogTransitionJssStyle,
   getScrollerJssStyle,
-  headingTags,
 } from '../../styles/dialog-styles';
 import type { Theme } from '../../types';
 import { getCss } from '../../utils';
@@ -39,9 +38,6 @@ export const getComponentCss = (isOpen: boolean, hasDismissButton: boolean, them
         display: 'block',
         gridColumn: '2/3',
         zIndex: 0, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
-      },
-      [`::slotted([slot="header"]:is(${headingTags}))`]: {
-        margin: 0, // ua-style (relevant for e.g. <h2 slot="header"/>)
       },
       dialog: getDialogJssStyle(isOpen, theme, 'shading'),
     },

@@ -1,0 +1,448 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getComponentCss() should return correct css for open: false, dismissButton: false and theme: light 1`] = `
+":host {
+  display: block;
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot {
+  display: block;
+  grid-column: 2/3;
+  z-index: 0;
+}
+dialog {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100dvw;
+  height: 100dvh;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: block;
+  outline: 0;
+  z-index: 9999999;
+  visibility: hidden;
+  pointer-events: none;
+  background: transparent;
+  transition: visibility 0s linear var(--p-transition-duration, 0.4s), background-color var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1);
+}
+dialog::backdrop {
+  display: none;
+}
+@supports (transition-behavior: allow-discrete) {
+  dialog {
+    transition: visibility 0s linear var(--p-transition-duration, 0.4s), background-color var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), overlay var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1) allow-discrete;
+  }
+}
+
+.scroller {
+  position: absolute;
+  isolation: isolate;
+  display: grid;
+  inset: 0;
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
+  background: rgba(255,255,255,.01);
+}
+.action-sheet {
+  display: grid;
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
+  row-gap: clamp(16px, 1.25vw + 12px, 36px);
+  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  align-content: flex-start;
+  color: #010205;
+  background: #FFF;
+  opacity: 0;
+  transform: translateY(25vh);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+  width: 100%;
+  align-self: flex-end;
+  margin-block-start: clamp(32px, 2.75vw + 23px, 76px);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.action-sheet:dir(rtl) {
+  transform: translateY(25vh);
+}"
+`;
+
+exports[`getComponentCss() should return correct css for open: false, dismissButton: true and theme: light 1`] = `
+":host {
+  display: block;
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot {
+  display: block;
+  grid-column: 2/3;
+  z-index: 0;
+}
+dialog {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100dvw;
+  height: 100dvh;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: block;
+  outline: 0;
+  z-index: 9999999;
+  visibility: hidden;
+  pointer-events: none;
+  background: transparent;
+  transition: visibility 0s linear var(--p-transition-duration, 0.4s), background-color var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1);
+}
+dialog::backdrop {
+  display: none;
+}
+@supports (transition-behavior: allow-discrete) {
+  dialog {
+    transition: visibility 0s linear var(--p-transition-duration, 0.4s), background-color var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), overlay var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1) allow-discrete;
+  }
+}
+
+.scroller {
+  position: absolute;
+  isolation: isolate;
+  display: grid;
+  inset: 0;
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
+  background: rgba(255,255,255,.01);
+}
+.action-sheet {
+  display: grid;
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
+  row-gap: clamp(16px, 1.25vw + 12px, 36px);
+  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  align-content: flex-start;
+  color: #010205;
+  background: #FFF;
+  opacity: 0;
+  transform: translateY(25vh);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+  width: 100%;
+  align-self: flex-end;
+  margin-block-start: clamp(32px, 2.75vw + 23px, 76px);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.action-sheet:dir(rtl) {
+  transform: translateY(25vh);
+}
+.dismiss {
+  --p-internal-button-scaling: 0;
+  grid-area: 1/3;
+  z-index: 2;
+  position: sticky;
+  inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
+  margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
+  margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
+  place-self: flex-start flex-end;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for open: true, dismissButton: true and theme: auto 1`] = `
+":host {
+  display: block;
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot {
+  display: block;
+  grid-column: 2/3;
+  z-index: 0;
+}
+dialog {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100dvw;
+  height: 100dvh;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: block;
+  outline: 0;
+  z-index: 9999999;
+  visibility: inherit;
+  pointer-events: auto;
+  background: rgba(1, 2, 5, 0.67);
+  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+}
+dialog::backdrop {
+  display: none;
+}
+@media (prefers-color-scheme: dark) {
+  dialog {
+    background: rgba(38, 38, 41, 0.67);
+  }
+}
+
+@supports (transition-behavior: allow-discrete) {
+  dialog {
+    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), overlay var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) allow-discrete;
+  }
+}
+
+.scroller {
+  position: absolute;
+  isolation: isolate;
+  display: grid;
+  inset: 0;
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
+  background: rgba(255,255,255,.01);
+}
+.action-sheet {
+  display: grid;
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
+  row-gap: clamp(16px, 1.25vw + 12px, 36px);
+  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  align-content: flex-start;
+  color: #010205;
+  background: #FFF;
+  opacity: 1;
+  transform: initial;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  width: 100%;
+  align-self: flex-end;
+  margin-block-start: clamp(32px, 2.75vw + 23px, 76px);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.dismiss {
+  --p-internal-button-scaling: 0;
+  grid-area: 1/3;
+  z-index: 2;
+  position: sticky;
+  inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
+  margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
+  margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
+  place-self: flex-start flex-end;
+}
+@media (prefers-color-scheme: dark) {
+  .scroller {
+    background: rgba(0,0,0,.01);
+  }
+  .action-sheet {
+    color: #FBFCFF;
+    background: #0E0E12;
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for open: true, dismissButton: true and theme: dark 1`] = `
+":host {
+  display: block;
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot {
+  display: block;
+  grid-column: 2/3;
+  z-index: 0;
+}
+dialog {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100dvw;
+  height: 100dvh;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: block;
+  outline: 0;
+  z-index: 9999999;
+  visibility: inherit;
+  pointer-events: auto;
+  background: rgba(38, 38, 41, 0.67);
+  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+}
+dialog::backdrop {
+  display: none;
+}
+@supports (transition-behavior: allow-discrete) {
+  dialog {
+    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), overlay var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) allow-discrete;
+  }
+}
+
+.scroller {
+  position: absolute;
+  isolation: isolate;
+  display: grid;
+  inset: 0;
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
+  background: rgba(0,0,0,.01);
+}
+.action-sheet {
+  display: grid;
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
+  row-gap: clamp(16px, 1.25vw + 12px, 36px);
+  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  align-content: flex-start;
+  color: #FBFCFF;
+  background: #0E0E12;
+  opacity: 1;
+  transform: initial;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  width: 100%;
+  align-self: flex-end;
+  margin-block-start: clamp(32px, 2.75vw + 23px, 76px);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.dismiss {
+  --p-internal-button-scaling: 0;
+  grid-area: 1/3;
+  z-index: 2;
+  position: sticky;
+  inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
+  margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
+  margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
+  place-self: flex-start flex-end;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for open: true, dismissButton: true and theme: light 1`] = `
+":host {
+  display: block;
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot {
+  display: block;
+  grid-column: 2/3;
+  z-index: 0;
+}
+dialog {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100dvw;
+  height: 100dvh;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: block;
+  outline: 0;
+  z-index: 9999999;
+  visibility: inherit;
+  pointer-events: auto;
+  background: rgba(1, 2, 5, 0.67);
+  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+}
+dialog::backdrop {
+  display: none;
+}
+@supports (transition-behavior: allow-discrete) {
+  dialog {
+    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), overlay var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) allow-discrete;
+  }
+}
+
+.scroller {
+  position: absolute;
+  isolation: isolate;
+  display: grid;
+  inset: 0;
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
+  background: rgba(255,255,255,.01);
+}
+.action-sheet {
+  display: grid;
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
+  row-gap: clamp(16px, 1.25vw + 12px, 36px);
+  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  align-content: flex-start;
+  color: #010205;
+  background: #FFF;
+  opacity: 1;
+  transform: initial;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  width: 100%;
+  align-self: flex-end;
+  margin-block-start: clamp(32px, 2.75vw + 23px, 76px);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.dismiss {
+  --p-internal-button-scaling: 0;
+  grid-area: 1/3;
+  z-index: 2;
+  position: sticky;
+  inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
+  margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
+  margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
+  place-self: flex-start flex-end;
+}"
+`;
