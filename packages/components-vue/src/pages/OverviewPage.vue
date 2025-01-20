@@ -31,7 +31,6 @@ import {
   PModelSignature,
   PMultiSelect,
   PMultiSelectOption,
-  PorscheDesignSystemProvider,
   PPagination,
   PPinCode,
   PPopover,
@@ -59,11 +58,12 @@ import {
   PTag,
   PTagDismissible,
   PText,
-  PTextareaWrapper,
   PTextFieldWrapper,
   PTextList,
   PTextListItem,
+  PTextareaWrapper,
   PWordmark,
+  PorscheDesignSystemProvider,
 } from '@porsche-design-system/components-vue';
 </script>
 
@@ -82,8 +82,12 @@ import {
         <PDisplay>Some Display</PDisplay>
       </div>
 
+      <div class="playground light" title="should render default action-sheet">
+        <iframe src="/action-sheet-basic?iframe=true" loading="eager" title="fix-linter-1a"></iframe>
+      </div>
+
       <div class="playground light" title="should render default modal">
-        <iframe src="/modal-basic?iframe=true" loading="eager" title="fix-linter-1a"></iframe>
+        <iframe src="/modal-basic?iframe=true" loading="eager" title="fix-linter-1b"></iframe>
       </div>
 
       <div class="playground light" title="should render default flyout">
@@ -419,6 +423,10 @@ import {
 
         <div class="playground light" title="should render default display with custom prefix">
           <PDisplay>Some Display</PDisplay>
+        </div>
+
+        <div class="playground light" title="should render default action-sheet with custom prefix">
+          <iframe src="/action-sheet-prefixed?iframe=true" loading="eager" title="fix-linter-1a"></iframe>
         </div>
 
         <div class="playground light" title="should render default modal with custom prefix">

@@ -176,6 +176,16 @@ export const routes: RouteType[] = [
     component: fromExamples.LinkTileProductExample,
   },
   {
+    path: '/action-sheet-basic',
+    name: 'ActionSheetBasic',
+    component: fromPages.ActionSheetBasicPage,
+  },
+  {
+    path: '/action-sheet-prefixed',
+    name: 'ActionSheetPrefixed',
+    component: fromPages.ActionSheetPrefixedPage,
+  },
+  {
     path: '/modal-basic',
     name: 'ModalBasic',
     component: fromPages.ModalBasicPage,
