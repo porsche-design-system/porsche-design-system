@@ -32,6 +32,14 @@ export * from './tabs-bar-navigation-bug';
 export * from './generated/core-initializer.component';
 export * from './generated/overview.component';
 import { AccordionComponent } from './generated/accordion.component';
+import { ActionSheetComponent } from './generated/action-sheet.component';
+import { ActionSheetBasicComponent } from './generated/action-sheet-basic.component';
+import { ActionSheetGridComponent } from './generated/action-sheet-grid.component';
+import { ActionSheetPrefixedComponent } from './generated/action-sheet-prefixed.component';
+import { ActionSheetScrollableComponent } from './generated/action-sheet-scrollable.component';
+import { ActionSheetScrolledComponent } from './generated/action-sheet-scrolled.component';
+import { ActionSheetWithoutDismissButtonComponent } from './generated/action-sheet-without-dismiss-button.component';
+import { ActionSheetWithoutHeadingComponent } from './generated/action-sheet-without-heading.component';
 import { BannerComponent } from './generated/banner.component';
 import { BannerBasicComponent } from './generated/banner-basic.component';
 import { BannerErrorComponent } from './generated/banner-error.component';
@@ -184,6 +192,14 @@ import { WordmarkComponent } from './generated/wordmark.component';
 
 export const generatedPages = [
   AccordionComponent,
+  ActionSheetComponent,
+  ActionSheetBasicComponent,
+  ActionSheetGridComponent,
+  ActionSheetPrefixedComponent,
+  ActionSheetScrollableComponent,
+  ActionSheetScrolledComponent,
+  ActionSheetWithoutDismissButtonComponent,
+  ActionSheetWithoutHeadingComponent,
   BannerComponent,
   BannerBasicComponent,
   BannerErrorComponent,
@@ -340,6 +356,46 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Accordion',
     path: 'accordion',
     component: AccordionComponent,
+  },
+  {
+    name: 'Action Sheet',
+    path: 'action-sheet',
+    component: ActionSheetComponent,
+  },
+  {
+    name: 'Action Sheet Basic',
+    path: 'action-sheet-basic',
+    component: ActionSheetBasicComponent,
+  },
+  {
+    name: 'Action Sheet Grid',
+    path: 'action-sheet-grid',
+    component: ActionSheetGridComponent,
+  },
+  {
+    name: 'Action Sheet Prefixed',
+    path: 'action-sheet-prefixed',
+    component: ActionSheetPrefixedComponent,
+  },
+  {
+    name: 'Action Sheet Scrollable',
+    path: 'action-sheet-scrollable',
+    component: ActionSheetScrollableComponent,
+  },
+  {
+    name: 'Action Sheet Scrolled',
+    path: 'action-sheet-scrolled',
+    component: ActionSheetScrolledComponent,
+  },
+  {
+    name: 'Action Sheet Without Dismiss Button',
+    path: 'action-sheet-without-dismiss-button',
+    component: ActionSheetWithoutDismissButtonComponent,
+  },
+  {
+    name: 'Action Sheet Without Heading',
+    path: 'action-sheet-without-heading',
+    component: ActionSheetWithoutHeadingComponent,
   },
   {
     name: 'Banner',

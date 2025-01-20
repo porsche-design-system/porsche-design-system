@@ -14,6 +14,14 @@ export * from './Utilities';
 export * from './generated/CoreInitializer';
 export * from './generated/Overview';
 import { AccordionPage } from './generated/Accordion';
+import { ActionSheetPage } from './generated/ActionSheet';
+import { ActionSheetBasicPage } from './generated/ActionSheetBasic';
+import { ActionSheetGridPage } from './generated/ActionSheetGrid';
+import { ActionSheetPrefixedPage } from './generated/ActionSheetPrefixed';
+import { ActionSheetScrollablePage } from './generated/ActionSheetScrollable';
+import { ActionSheetScrolledPage } from './generated/ActionSheetScrolled';
+import { ActionSheetWithoutDismissButtonPage } from './generated/ActionSheetWithoutDismissButton';
+import { ActionSheetWithoutHeadingPage } from './generated/ActionSheetWithoutHeading';
 import { BannerPage } from './generated/Banner';
 import { BannerBasicPage } from './generated/BannerBasic';
 import { BannerErrorPage } from './generated/BannerError';
@@ -167,6 +175,46 @@ export const generatedRoutes: RouteType[] = [
     name: 'Accordion',
     path: '/accordion',
     element: <AccordionPage />,
+  },
+  {
+    name: 'Action Sheet',
+    path: '/action-sheet',
+    element: <ActionSheetPage />,
+  },
+  {
+    name: 'Action Sheet Basic',
+    path: '/action-sheet-basic',
+    element: <ActionSheetBasicPage />,
+  },
+  {
+    name: 'Action Sheet Grid',
+    path: '/action-sheet-grid',
+    element: <ActionSheetGridPage />,
+  },
+  {
+    name: 'Action Sheet Prefixed',
+    path: '/action-sheet-prefixed',
+    element: <ActionSheetPrefixedPage />,
+  },
+  {
+    name: 'Action Sheet Scrollable',
+    path: '/action-sheet-scrollable',
+    element: <ActionSheetScrollablePage />,
+  },
+  {
+    name: 'Action Sheet Scrolled',
+    path: '/action-sheet-scrolled',
+    element: <ActionSheetScrolledPage />,
+  },
+  {
+    name: 'Action Sheet Without Dismiss Button',
+    path: '/action-sheet-without-dismiss-button',
+    element: <ActionSheetWithoutDismissButtonPage />,
+  },
+  {
+    name: 'Action Sheet Without Heading',
+    path: '/action-sheet-without-heading',
+    element: <ActionSheetWithoutHeadingPage />,
   },
   {
     name: 'Banner',
