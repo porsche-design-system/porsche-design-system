@@ -1,7 +1,7 @@
 <ComponentHeading name="Action Sheet"></ComponentHeading>
 
-The `p-action-sheet` is a temporary overlay to focus the user's attention on one task while interactions with the
-underlying page are blocked but still visisble. It should be used thoughtfully and sparingly.
+The `p-action-sheet` is a temporary overlay to focus the user's attention on one or multiple tasks while the underlying
+page is still visible but interactions with it are blocked. It should be used thoughtfully and sparingly.
 
 It is a controlled component. This grants flexible control over the action-sheet's behavior especially whether it should
 stay open after user interaction like submission of a form.
