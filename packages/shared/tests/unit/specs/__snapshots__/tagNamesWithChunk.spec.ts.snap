@@ -3,6 +3,7 @@
 exports[`should match snapshot 1`] = `
 [
   "p-accordion",
+  "p-action-sheet",
   "p-banner",
   "p-button",
   "p-button-group",
