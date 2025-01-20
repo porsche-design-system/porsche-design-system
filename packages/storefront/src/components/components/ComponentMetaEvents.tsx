@@ -30,24 +30,24 @@ export const ComponentMetaEvents = ({ tagName }: ComponentMetaEventsProps) => {
       </PTableHead>
       <PTableBody>
         {eventsMeta.map(([eventName, eventMeta]) => (
-          <PTableRow>
+          <PTableRow key={eventName}>
             <PTableCell className="align-top">
               <code>
                 {eventName} {getFlags(eventMeta)}
               </code>
             </PTableCell>
-            <PTableCell
-              multiline={true}
-              className="min-w-40 align-top"
-              // biome-ignore lint/security/noDangerouslySetInnerHtml: // TODO: Refactor to use TSX instead of string
-              dangerouslySetInnerHTML={{ __html: formatDescription(eventMeta) }}
-            />
-            <PTableCell
-              multiline={true}
-              className="min-w-40 align-top"
-              // biome-ignore lint/security/noDangerouslySetInnerHtml: // TODO: Refactor to use TSX instead of string
-              dangerouslySetInnerHTML={{ __html: formatEventType(eventMeta) }}
-            />
+            <PTableCell multiline={true} className="min-w-40 align-top">
+              <span
+                // biome-ignore lint/security/noDangerouslySetInnerHtml: // TODO: Refactor to use TSX instead of string
+                dangerouslySetInnerHTML={{ __html: formatDescription(eventMeta) }}
+              />
+            </PTableCell>
+            <PTableCell multiline={true} className="min-w-40 align-top">
+              <span
+                // biome-ignore lint/security/noDangerouslySetInnerHtml: // TODO: Refactor to use TSX instead of string
+                dangerouslySetInnerHTML={{ __html: formatEventType(eventMeta) }}
+              />
+            </PTableCell>
           </PTableRow>
         ))}
       </PTableBody>

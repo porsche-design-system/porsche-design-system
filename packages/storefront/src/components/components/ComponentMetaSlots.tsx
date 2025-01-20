@@ -31,10 +31,10 @@ export const ComponentMetaSlots = ({ tagName }: ComponentMetaSlotsProps) => {
       </PTableHead>
       <PTableBody>
         {slotsMeta.map(([slotName, slotsMeta]) => (
-          <PTableRow>
+          <PTableRow key={slotName}>
             <PTableCell className="align-top">
               <code>
-                {slotName} {getFlags(slotsMeta)}
+                {slotName === '' ? '<slot>' : `<slot name="${slotName}">`} {getFlags(slotsMeta)}
               </code>
             </PTableCell>
             <PTableCell className="align-top">{slotsMeta.description}</PTableCell>
