@@ -131,6 +131,16 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
+    "cssVariablesMeta": {
+      "--p-banner-position-bottom": {
+        "defaultValue": "56px",
+        "description": "Position bottom of banner",
+      },
+      "--p-banner-position-top": {
+        "defaultValue": "56px",
+        "description": "Position top of banner",
+      },
+    },
     "eventsMeta": {
       "dismiss": {
         "description": "Emitted when the close button is clicked.",
@@ -1482,6 +1492,12 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
+    "cssVariablesMeta": {
+      "--p-carousel-prev-next-filter": {
+        "defaultValue": "none",
+        "description": "CSS Filter applied to the navigation (prev/next buttons)",
+      },
+    },
     "eventsMeta": {
       "carouselChange": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when carousel's content slides.",
@@ -2514,6 +2530,12 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
+    "cssVariablesMeta": {
+      "--p-flyout-width": {
+        "defaultValue": "auto",
+        "description": "Width of the flyout.",
+      },
+    },
     "eventsMeta": {
       "dismiss": {
         "description": "Emitted when the component requests to be dismissed.",
@@ -5217,6 +5239,20 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
+    "cssVariablesMeta": {
+      "--p-modal-spacing-bottom": {
+        "defaultValue": "clamp(16px, 10vh, 192px)",
+        "description": "Spacing of the modal to the bottom.",
+      },
+      "--p-modal-spacing-top": {
+        "defaultValue": "clamp(16px, 10vh, 192px)",
+        "description": "Spacing of the modal to the top.",
+      },
+      "--p-modal-width": {
+        "defaultValue": "auto",
+        "description": "Width of the modal.",
+      },
+    },
     "eventsMeta": {
       "close": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`dismiss\` event instead. Emitted when the component requests to be dismissed.",
@@ -8705,6 +8741,12 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-toast": {
+    "cssVariablesMeta": {
+      "--p-toast-position-bottom": {
+        "defaultValue": "56px",
+        "description": "Defines the spacing between the toast and the bottom edge of its container.",
+      },
+    },
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
