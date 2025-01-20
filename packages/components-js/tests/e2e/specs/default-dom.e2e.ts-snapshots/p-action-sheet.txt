@@ -1,0 +1,8 @@
+<dialog inert="" tabindex="-1" aria-modal="true">
+  <div class="scroller">
+    <div class="action-sheet">
+      <p-button class="dismiss hydrated"> Dismiss action-sheet</p-button>
+      <slot> </slot>
+    </div>
+  </div>
+</dialog>
