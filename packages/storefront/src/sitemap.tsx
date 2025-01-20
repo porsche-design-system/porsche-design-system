@@ -1,29 +1,41 @@
+import { getFlags } from '@/utils/getFlags';
 import { componentMeta } from '@porsche-design-system/component-meta/src';
+import type { ReactNode } from 'react';
 
 const getComponents = (): Routes => {
   return Object.entries(componentMeta)
     .filter(([_, value]) => !value.requiredParent)
-    .reduce((acc, [key, _]) => {
-      const linkName = transformComponentName(key); // Transforms p-link-tile => Link Tile
-      const componentName = key.replace('p-', ''); // Removes the "p-" prefix => link-tile
-      acc[componentName] = {
+    .sort(([, aMeta], [, bMeta]) => {
+      // Sort by isDeprecated
+      const aIsDeprecated = aMeta.isDeprecated ? 1 : 0;
+      const bIsDeprecated = bMeta.isDeprecated ? 1 : 0;
+      return aIsDeprecated - bIsDeprecated;
+    })
+    .reduce((acc, [key, meta]) => {
+      const linkName = (
+        <>
+          {transformComponentName(key)} {getFlags(meta)}
+        </>
+      ); // Transforms p-link-tile => Link Tile & Adds flags 🚫, 🛠, 🧪
+      const component = key.replace('p-', ''); // Removes the "p-" prefix => link-tile
+      acc[component] = {
         name: linkName,
-        path: `/components/${componentName}`,
+        path: `/components/${component}`,
         type: 'PAGE',
         subPaths: {
           examples: {
             name: 'Examples',
-            path: `/components/${componentName}/examples`,
+            path: `/components/${component}/examples`,
             type: 'TAB',
           },
           usage: {
             name: 'Usage',
-            path: `/components/${componentName}/usage`,
+            path: `/components/${component}/usage`,
             type: 'TAB',
           },
           api: {
             name: 'API',
-            path: `/components/${componentName}/api`,
+            path: `/components/${component}/api`,
             type: 'TAB',
           },
         },
@@ -41,7 +53,7 @@ const transformComponentName = (name: string): string => {
 };
 
 export type Route = {
-  name: string;
+  name: string | ReactNode;
   path: string;
   redirect?: string;
   type: 'CATEGORY' | 'PAGE' | 'TAB';

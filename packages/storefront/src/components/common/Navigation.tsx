@@ -37,10 +37,10 @@ export const Navigation = () => {
       {Object.entries(sitemap).map(([path, category]) => (
         <PAccordion
           key={path}
-          heading={category.name}
+          heading={category.name as string}
           headingTag="h3"
           compact={true}
-          className={['Components', 'Must Know'].includes(category.name) ? 'mt-sm' : ''}
+          className={['Components', 'Must Know'].includes(category.name as string) ? 'mt-sm' : ''}
           open={openSections[path]}
           onUpdate={handleAccordionUpdate(path)}
         >
