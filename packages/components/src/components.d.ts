@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, TextSize, Theme } from "./types";
 import { AccordionHeadingTag, AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
+import { ActionSheetAriaAttribute, ActionSheetMotionHiddenEndEventDetail, ActionSheetMotionVisibleEndEventDetail } from "./components/action-sheet/action-sheet-utils";
 import { BannerHeadingTag, BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
@@ -71,6 +72,7 @@ import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
 export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, TextSize, Theme } from "./types";
 export { AccordionHeadingTag, AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
+export { ActionSheetAriaAttribute, ActionSheetMotionHiddenEndEventDetail, ActionSheetMotionVisibleEndEventDetail } from "./components/action-sheet/action-sheet-utils";
 export { BannerHeadingTag, BannerState, BannerWidth } from "./components/banner/banner-utils";
 export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonGroupDirection } from "./components/button-group/button-group-utils";
@@ -168,6 +170,31 @@ export namespace Components {
         "tag"?: AccordionTag;
         /**
           * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
+    }
+    /**
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     */
+    interface PActionSheet {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<ActionSheetAriaAttribute>;
+        /**
+          * If true, the action-sheet will not be closable via backdrop click.
+         */
+        "disableBackdropClick"?: boolean;
+        /**
+          * If false, the action-sheet will not have a dismiss button.
+         */
+        "dismissButton"?: boolean;
+        /**
+          * If true, the action-sheet is open.
+         */
+        "open": boolean;
+        /**
+          * Adapts the action-sheet color depending on the theme.
          */
         "theme"?: Theme;
     }
@@ -2317,6 +2344,10 @@ export interface PAccordionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPAccordionElement;
 }
+export interface PActionSheetCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPActionSheetElement;
+}
 export interface PBannerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPBannerElement;
@@ -2426,6 +2457,28 @@ declare global {
     var HTMLPAccordionElement: {
         prototype: HTMLPAccordionElement;
         new (): HTMLPAccordionElement;
+    };
+    interface HTMLPActionSheetElementEventMap {
+        "dismiss": void;
+        "motionVisibleEnd": ActionSheetMotionVisibleEndEventDetail;
+        "motionHiddenEnd": ActionSheetMotionHiddenEndEventDetail;
+    }
+    /**
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     */
+    interface HTMLPActionSheetElement extends Components.PActionSheet, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPActionSheetElementEventMap>(type: K, listener: (this: HTMLPActionSheetElement, ev: PActionSheetCustomEvent<HTMLPActionSheetElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPActionSheetElementEventMap>(type: K, listener: (this: HTMLPActionSheetElement, ev: PActionSheetCustomEvent<HTMLPActionSheetElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPActionSheetElement: {
+        prototype: HTMLPActionSheetElement;
+        new (): HTMLPActionSheetElement;
     };
     interface HTMLPBannerElementEventMap {
         "dismiss": void;
@@ -3212,6 +3265,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "p-accordion": HTMLPAccordionElement;
+        "p-action-sheet": HTMLPActionSheetElement;
         "p-banner": HTMLPBannerElement;
         "p-button": HTMLPButtonElement;
         "p-button-group": HTMLPButtonGroupElement;
@@ -3331,6 +3385,43 @@ declare namespace LocalJSX {
         "tag"?: AccordionTag;
         /**
           * Adapts the color when used on dark background.
+         */
+        "theme"?: Theme;
+    }
+    /**
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     */
+    interface PActionSheet {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<ActionSheetAriaAttribute>;
+        /**
+          * If true, the action-sheet will not be closable via backdrop click.
+         */
+        "disableBackdropClick"?: boolean;
+        /**
+          * If false, the action-sheet will not have a dismiss button.
+         */
+        "dismissButton"?: boolean;
+        /**
+          * Emitted when the component requests to be dismissed.
+         */
+        "onDismiss"?: (event: PActionSheetCustomEvent<void>) => void;
+        /**
+          * Emitted when the action-sheet is closed and the transition is finished.
+         */
+        "onMotionHiddenEnd"?: (event: PActionSheetCustomEvent<ActionSheetMotionHiddenEndEventDetail>) => void;
+        /**
+          * Emitted when the action-sheet is opened and the transition is finished.
+         */
+        "onMotionVisibleEnd"?: (event: PActionSheetCustomEvent<ActionSheetMotionVisibleEndEventDetail>) => void;
+        /**
+          * If true, the action-sheet is open.
+         */
+        "open"?: boolean;
+        /**
+          * Adapts the action-sheet color depending on the theme.
          */
         "theme"?: Theme;
     }
@@ -5640,6 +5731,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "p-accordion": PAccordion;
+        "p-action-sheet": PActionSheet;
         "p-banner": PBanner;
         "p-button": PButton;
         "p-button-group": PButtonGroup;
@@ -5724,6 +5816,10 @@ declare module "@stencil/core" {
              * @controlled {"props": ["open"], "event": "update"}
              */
             "p-accordion": LocalJSX.PAccordion & JSXBase.HTMLAttributes<HTMLPAccordionElement>;
+            /**
+             * @controlled {"props": ["open"], "event": "dismiss"}
+             */
+            "p-action-sheet": LocalJSX.PActionSheet & JSXBase.HTMLAttributes<HTMLPActionSheetElement>;
             /**
              * @controlled {"props": ["open"], "event": "dismiss"}
              */
