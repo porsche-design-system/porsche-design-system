@@ -33,17 +33,17 @@ export default function Home() {
 
       <div className="mt-lg grid gap-md sm:grid-cols-2">
         <PLinkTile
-          href="/designing/introduction"
+          href="designing/introduction"
           aspectRatio={{ base: '4:3', xs: '16:9', s: '3:4' }}
           description="Start Designing"
           label="Start Designing"
           weight="regular"
           compact={true}
         >
-          <Image src="/assets/start-designing.jpg" width={1052} height={1398} alt="Some wireframes" />
+          <Image src="assets/start-designing.jpg" width={1052} height={1398} alt="Some wireframes" />
         </PLinkTile>
         <PLinkTile
-          href="/developing/introduction"
+          href="developing/introduction"
           aspectRatio={{ base: '4:3', xs: '16:9', s: '3:4' }}
           description="Start Developing"
           label="Start Developing"
@@ -51,7 +51,7 @@ export default function Home() {
           compact={true}
         >
           <Image
-            src="/assets/start-developing.jpg"
+            src="assets/start-developing.jpg"
             width={1052}
             height={1398}
             alt="Some woman developing with Porsche Design System version 3."
@@ -59,7 +59,7 @@ export default function Home() {
         </PLinkTile>
         <PLinkTile
           className="sm:col-span-2"
-          href="/news/migration-guide/porsche-design-system"
+          href="news/migration-guide/porsche-design-system"
           aspectRatio={{ base: '4:3', xs: '16:9' }}
           description="Migrate from v2 to v3"
           label="Migrate from v2 to v3"
@@ -88,7 +88,7 @@ export default function Home() {
               alt="Sample Porsche web application with Porsche Design System version 3."
             /> */}
             <Image
-              src="/assets/migrate-v2-to-v3-light.jpg"
+              src="assets/migrate-v2-to-v3-light.jpg"
               width={2168}
               height={1222}
               alt="Sample Porsche web application with Porsche Design System version 3."

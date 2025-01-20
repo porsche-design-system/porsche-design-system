@@ -19,7 +19,7 @@ As a workaround we provide a polyfill as part of the `@porsche-design-system/com
 To apply the polyfill, simply import it in your `setupTest.{js|ts}` file.
 
 <Notification heading="Attention" heading-tag="h2" state="warning">
-  Certain modern browser APIs are not supported in the jsdom environment. See [Unsupported APIs](developing/react/testing#unsupported-ap-is) for more information.
+  Certain modern browser APIs are not supported in the jsdom environment. See [Unsupported APIs](/developing/react/testing#unsupported-ap-is) for more information.
 </Notification>
 
 ### Setup file
@@ -91,16 +91,16 @@ it('should render Tabs Bar from Porsche Design System and use its events', async
 });
 ```
 
-More test examples can be found at the [componentsReady() documentation](developing/components-ready#testing).
+More test examples can be found at the [componentsReady() documentation](/developing/components-ready#testing).
 
 ## Testing with Karma
 
 ### Config
 
-Since the [getInitialStyles()](partials/initial-styles) partial is mandatory for using Porsche Design System, the
+Since the [getInitialStyles()](/partials/initial-styles) partial is mandatory for using Porsche Design System, the
 partial needs to be included within test environments. With help of `@angular-builders/custom-webpack` and its
 `indexTransform` option, the partial can be injected into the `index.html`. See
-[getInitialStyles()](partials/initial-styles) for a manual how to integrate the partial within `build` and `serve`
+[getInitialStyles()](/partials/initial-styles) for a manual how to integrate the partial within `build` and `serve`
 environment.
 Since Karma does not use the `index.html`, but instead relies on `karma-context.html` the transformation of `index.html`
 is not applicable for testing with `Karma`.
@@ -149,7 +149,7 @@ module.exports = function (config) {
 }
 ```
 
-More test examples can be found at the [componentsReady() documentation](developing/components-ready#testing).
+More test examples can be found at the [componentsReady() documentation](/developing/components-ready#testing).
 
 We also provide test examples in our
 [sample integration project](https://github.com/porsche-design-system/sample-integration-angular/tree/master/src/app/pages).

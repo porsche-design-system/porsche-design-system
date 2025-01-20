@@ -13,7 +13,7 @@ With the new **Porsche Design Language** comes a lot of changes regarding layout
 refactoring efforts as low as possible when upgrading from `v2` to `v3`, **breaking changes** were avoided as far as
 possible. Nevertheless, there are a few breaking changes and some more deprecations which should receive attention.
 
-Please follow the migration guide on this page. In addition, we offer a [components overview](components/introduction)
+Please follow the migration guide on this page. In addition, we offer a [components overview](/components/introduction)
 which shows all component information including deprecated components/props/values.
 
 <Notification heading="Deprecation hint" headingTag="h3" state="error">
@@ -36,7 +36,7 @@ which shows all component information including deprecated components/props/valu
 ### Banner:
 
 - It's a controlled component now and its visibility has to be controlled via the `open` prop (similar like
-**[Modal](components/modal)**).
+**[Modal](/components/modal)**).
 
 ```diff
 - <p-banner></p-banner>
@@ -170,14 +170,14 @@ major version.
 
 ### Content Wrapper:
 
-- Component is deprecated and will be removed with the next major release. Please use **[Porsche Grid](styles/grid)**
+- Component is deprecated and will be removed with the next major release. Please use **[Porsche Grid](/styles/grid)**
 instead, which is based on [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid) covering the specific
 layout needs for a harmonic appearance across all digital Porsche touch-points.
 
 ### Fieldset Wrapper:
 
 - Component is deprecated and will be removed with the next major release. Please use the
-**[Fieldset](components/fieldset)** component instead.
+**[Fieldset](/components/fieldset)** component instead.
 
 ```diff
 - <p-fieldset-wrapper label="Some legend label">
@@ -199,12 +199,12 @@ standardized layout technique.
 
 - Component is deprecated and will be removed with the next major release. In general, please use native
 [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid) in combination with
-**[Porsche Grid](styles/grid)** instead for better performance and more standardized layout technique.
+**[Porsche Grid](/styles/grid)** instead for better performance and more standardized layout technique.
 
 ### Headline:
 
 - Component is deprecated and will be removed with the next major release. Please use the
-**[Heading](components/heading)** component instead.
+**[Heading](/components/heading)** component instead.
 
 ```diff
 - <p-headline>The quick brown fox jumps over the lazy dog</p-headline>
@@ -213,7 +213,7 @@ standardized layout technique.
 
 ### Link Social:
 
-- Component is deprecated and will be removed with the next major release. Please use the **[Link](components/link)**
+- Component is deprecated and will be removed with the next major release. Please use the **[Link](/components/link)**
 component instead.
 
 ```diff
@@ -224,7 +224,7 @@ component instead.
 ### Marque:
 
 - Component is deprecated and will be removed with the next major release. Please use the
-**[Wordmark](components/wordmark)** component instead.
+**[Wordmark](/components/wordmark)** component instead.
 
 ```diff
 - <p-marque></p-marque>
@@ -248,7 +248,7 @@ recommend to migrate and remove the deprecated props since those ones will be re
 
 ### Banner:
 
-- Prop `width` is deprecated, instead the component is aligned with the **[Porsche Grid](styles/grid)** "extended" by
+- Prop `width` is deprecated, instead the component is aligned with the **[Porsche Grid](/styles/grid)** "extended" by
 default.
 
 ```diff
@@ -286,7 +286,7 @@ default.
 
 ### Carousel:
 
-- Prop `wrap-content` is deprecated. The component is always aligned with the **[Porsche Grid](styles/grid)** now,
+- Prop `wrap-content` is deprecated. The component is always aligned with the **[Porsche Grid](/styles/grid)** now,
 adjustable by prop `width`.
 
 ```diff

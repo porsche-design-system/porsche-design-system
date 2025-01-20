@@ -17,14 +17,14 @@ which needs to be injected into the `<head>` of your `index.html`. The partial d
 all relevant font-face definitions.
 
 An in-depth optimization guide can be found at
-[Vanilla Js Optimization](must-know/initialization/vanilla-js#optimization).
+[Vanilla Js Optimization](/must-know/initialization/vanilla-js#optimization).
 
 ## Supported options
 
 | Option   | Description                                                                                                                                                                                                                                                                 | Type    | Default |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ------- |
 | `cdn`    | Decides from which CDN the resources are loaded.                                                                                                                                                                                                                            | `'auto' \| 'cn'`   | `'auto'`  |
-| `format` | Defines the output format of the partial. By default, it returns a html string. For `jsx` it return a jsx element. For `sha256` it returns a SHA-256 hash of the innerHTML to use in a [Content Security Policy (CSP)](must-know/security/content-security-policy). | `'html' \| 'jsx' \| 'sha256'` | `'html'` |
+| `format` | Defines the output format of the partial. By default, it returns a html string. For `jsx` it return a jsx element. For `sha256` it returns a SHA-256 hash of the innerHTML to use in a [Content Security Policy (CSP)](/must-know/security/content-security-policy). | `'html' \| 'jsx' \| 'sha256'` | `'html'` |
 
 When using `jsx` in the `format` option, it is necessary to have `react/jsx-runtime` as a dependency in the project
 included.

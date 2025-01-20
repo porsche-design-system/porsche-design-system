@@ -24,7 +24,7 @@ The `componentsReady` function is provided as part of the following components p
 
 <Notification heading="Attention" state="warning">
   Before proceeding, consider using the `whenDefined` function from the [CustomElementRegistry](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry">) API.
-  If you're unsure, review our [comparison](developing/components-ready#component-readiness-explained) and [example usage](developing/components-ready#basic-example-when-defined) for guidance.
+  If you're unsure, review our [comparison](/developing/components-ready#component-readiness-explained) and [example usage](/developing/components-ready#basic-example-when-defined) for guidance.
 </Notification>
 
 ## Basic Example
@@ -102,7 +102,7 @@ Setup: `jest`, `jsdom` with `@testing-library/angular`
 - **[`componentOnReady`](https://stenciljs.com/docs/api#componentonready) (Stencil):** Resolves when a single Stencil
 component and its internal DOM are fully initialized. Ideal for ensuring readiness before operations.
 
-- **[`componentsReady`](developing/components-ready#basic-example) (PDS):** A Porsche Design System (PDS) utility that
+- **[`componentsReady`](/developing/components-ready#basic-example) (PDS):** A Porsche Design System (PDS) utility that
 wraps `componentOnReady`, resolving when all currently used PDS components are fully loaded and operational.
 
 - **[`whenDefined`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/whenDefined) (Web API):**

@@ -13,7 +13,7 @@ behavior.
 
 ## Setup
 
-The most basic [integration](developing/vanilla-js/getting-started#integration) of
+The most basic [integration](/developing/vanilla-js/getting-started#integration) of
 `@porsche-design-system/components-js` without any bundler after loading the npm package on any html page looks like
 this.
 
@@ -30,7 +30,7 @@ network tab of Chrome Developer Tools by its name containing the version number,
 Once the **core chunk** is loaded and executed the following things happen:
 
 - `customElements.define()` is called for every component to register the custom html element in the browser (this is
-how [prefixing](developing/vanilla-js/advanced) for micro frontend architectures is even possible)
+how [prefixing](/developing/vanilla-js/advanced) for micro frontend architectures is even possible)
 - if any of the registered component tags is already in or is later added to the DOM, its corresponding **component
 chunk** is loaded from the CDN on demand
 - a checklist is maintained that tracks which **component chunks** are loaded already
@@ -46,7 +46,7 @@ In the example from above we didn't render any component, yet, so let's add a si
 ```
 
 For now, this is just a "dead" html tag without any appearance or functionality. You can't see it because it is hidden
-via CSS by the mandatory [getInitialStyles()](partials/initial-styles) partial which outputs something like
+via CSS by the mandatory [getInitialStyles()](/partials/initial-styles) partial which outputs something like
 
 ```html
 p-button { visibility: hidden; }
