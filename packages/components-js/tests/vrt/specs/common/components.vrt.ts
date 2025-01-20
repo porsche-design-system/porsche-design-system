@@ -40,10 +40,10 @@ const revertAutoFocus = async (page: Page, component: string): Promise<void> => 
 };
 
 test(`should have certain amount of components`, () => {
-  expect(components.length).toBe(58);
+  expect(components.length).toBe(59);
 });
 
-components.forEach((component) => {
+for (const component of components) {
   // executed in Chrome + Safari
   test.describe(component, async () => {
     themes.forEach((theme) => {
@@ -181,4 +181,4 @@ components.forEach((component) => {
       });
       */
   });
-});
+}
