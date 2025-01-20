@@ -1,6 +1,7 @@
 import { getFlags } from '@/utils/getFlags';
-import { componentMeta } from '@porsche-design-system/component-meta';
+import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import {
+  PHeading,
   PTable,
   PTableBody,
   PTableCell,
@@ -8,40 +9,42 @@ import {
   PTableHeadCell,
   PTableRow,
 } from '@porsche-design-system/components-react/ssr';
-import type { TagName } from '@porsche-design-system/shared';
 import React from 'react';
 
 type ComponentMetaCssVariablesProps = {
-  tagName: TagName;
+  cssVariablesMeta: ComponentMeta['cssVariablesMeta'];
 };
 
-export const ComponentMetaCssVariables = ({ tagName }: ComponentMetaCssVariablesProps) => {
-  const meta = componentMeta[tagName];
-  const cssVariablesMeta = Object.entries(meta.cssVariablesMeta ?? {});
+export const ComponentMetaCssVariables = ({ cssVariablesMeta }: ComponentMetaCssVariablesProps) => {
   return (
-    <PTable caption="Props" className="mt-static-md">
-      <PTableHead>
-        <PTableRow>
-          <PTableHeadCell>CSS Variable</PTableHeadCell>
-          <PTableHeadCell>Description</PTableHeadCell>
-          <PTableHeadCell>defaultValue</PTableHeadCell>
-        </PTableRow>
-      </PTableHead>
-      <PTableBody>
-        {cssVariablesMeta.map(([cssVariableName, cssVariablesMeta]) => (
-          <PTableRow key={cssVariableName}>
-            <PTableCell className="align-top">
-              <code>
-                {cssVariableName} {getFlags(cssVariablesMeta)}
-              </code>
-            </PTableCell>
-            <PTableCell className="align-top">{cssVariablesMeta.description}</PTableCell>
-            <PTableCell className="align-top">
-              <code>{cssVariablesMeta.defaultValue}</code>
-            </PTableCell>
+    <>
+      <PHeading tag="h2" size="x-large" className="mt-lg mb-md max-w-prose">
+        CSS Variables
+      </PHeading>
+      <PTable caption="Props" className="mt-static-md">
+        <PTableHead>
+          <PTableRow>
+            <PTableHeadCell>CSS Variable</PTableHeadCell>
+            <PTableHeadCell>Description</PTableHeadCell>
+            <PTableHeadCell>defaultValue</PTableHeadCell>
           </PTableRow>
-        ))}
-      </PTableBody>
-    </PTable>
+        </PTableHead>
+        <PTableBody>
+          {Object.entries(cssVariablesMeta ?? {}).map(([cssVariableName, cssVariablesMeta]) => (
+            <PTableRow key={cssVariableName}>
+              <PTableCell className="align-top">
+                <code>
+                  {cssVariableName} {getFlags(cssVariablesMeta)}
+                </code>
+              </PTableCell>
+              <PTableCell className="align-top">{cssVariablesMeta.description}</PTableCell>
+              <PTableCell className="align-top">
+                <code>{cssVariablesMeta.defaultValue}</code>
+              </PTableCell>
+            </PTableRow>
+          ))}
+        </PTableBody>
+      </PTable>
+    </>
   );
 };

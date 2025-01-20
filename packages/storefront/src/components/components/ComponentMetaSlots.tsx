@@ -1,6 +1,7 @@
 import { getFlags } from '@/utils/getFlags';
-import { componentMeta } from '@porsche-design-system/component-meta';
+import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import {
+  PHeading,
   PTable,
   PTableBody,
   PTableCell,
@@ -8,46 +9,48 @@ import {
   PTableHeadCell,
   PTableRow,
 } from '@porsche-design-system/components-react/ssr';
-import type { TagName } from '@porsche-design-system/shared';
 import React from 'react';
 
 type ComponentMetaSlotsProps = {
-  tagName: TagName;
+  slotsMeta: ComponentMeta['slotsMeta'];
 };
 
-export const ComponentMetaSlots = ({ tagName }: ComponentMetaSlotsProps) => {
-  const meta = componentMeta[tagName];
-  const slotsMeta = Object.entries(meta.slotsMeta ?? {}).sort(([keyA], [keyB]) => keyA.localeCompare(keyB));
+export const ComponentMetaSlots = ({ slotsMeta }: ComponentMetaSlotsProps) => {
   return (
-    <PTable caption="Props" className="mt-static-md">
-      <PTableHead>
-        <PTableRow>
-          <PTableHeadCell>Slot</PTableHeadCell>
-          <PTableHeadCell>Description</PTableHeadCell>
-          <PTableHeadCell>isRequired</PTableHeadCell>
-          <PTableHeadCell>altProp</PTableHeadCell>
-          <PTableHeadCell>allowedTagNames</PTableHeadCell>
-        </PTableRow>
-      </PTableHead>
-      <PTableBody>
-        {slotsMeta.map(([slotName, slotsMeta]) => (
-          <PTableRow key={slotName}>
-            <PTableCell className="align-top">
-              <code>
-                {slotName === '' ? '<slot>' : `<slot name="${slotName}">`} {getFlags(slotsMeta)}
-              </code>
-            </PTableCell>
-            <PTableCell className="align-top">{slotsMeta.description}</PTableCell>
-            <PTableCell className="align-top">{slotsMeta.isRequired ? '✅' : ''}</PTableCell>
-            <PTableCell className="align-top">{slotsMeta.hasAltProp ? <code>{slotName}</code> : ''}</PTableCell>
-            <PTableCell className="align-top">
-              {slotsMeta.allowedTagNames?.map((tagName) => (
-                <code>{tagName}</code>
-              ))}
-            </PTableCell>
+    <>
+      <PHeading tag="h2" size="x-large" className="mt-lg mb-md max-w-prose">
+        Slots
+      </PHeading>
+      <PTable caption="Props" className="mt-static-md">
+        <PTableHead>
+          <PTableRow>
+            <PTableHeadCell>Slot</PTableHeadCell>
+            <PTableHeadCell>Description</PTableHeadCell>
+            <PTableHeadCell>isRequired</PTableHeadCell>
+            <PTableHeadCell>altProp</PTableHeadCell>
+            <PTableHeadCell>allowedTagNames</PTableHeadCell>
           </PTableRow>
-        ))}
-      </PTableBody>
-    </PTable>
+        </PTableHead>
+        <PTableBody>
+          {Object.entries(slotsMeta ?? {}).map(([slotName, slotsMeta]) => (
+            <PTableRow key={slotName}>
+              <PTableCell className="align-top">
+                <code>
+                  {slotName === '' ? '<slot>' : `<slot name="${slotName}">`} {getFlags(slotsMeta)}
+                </code>
+              </PTableCell>
+              <PTableCell className="align-top">{slotsMeta.description}</PTableCell>
+              <PTableCell className="align-top">{slotsMeta.isRequired ? '✅' : ''}</PTableCell>
+              <PTableCell className="align-top">{slotsMeta.hasAltProp ? <code>{slotName}</code> : ''}</PTableCell>
+              <PTableCell className="align-top">
+                {slotsMeta.allowedTagNames?.map((tagName) => (
+                  <code>{tagName}</code>
+                ))}
+              </PTableCell>
+            </PTableRow>
+          ))}
+        </PTableBody>
+      </PTable>
+    </>
   );
 };
