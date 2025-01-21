@@ -34,7 +34,7 @@ const isComponentThemeable = (component: string): boolean =>
 // VRT pages making use of iFrames can't reliably ensure which iframe is loaded last
 // and therefore can't be sure which autofocus gets triggered
 const revertAutoFocus = async (page: Page, component: string): Promise<void> => {
-  if (['flyout-multilevel', 'flyout', 'modal', 'canvas'].includes(component.replace(/-\d+/, ''))) {
+  if (['flyout-multilevel', 'flyout', 'modal', 'sheet', 'canvas', 'banner'].includes(component.replace(/-\d+/, ''))) {
     await page.mouse.click(0, 0); // click top left corner of the page to remove focus
   }
 };
