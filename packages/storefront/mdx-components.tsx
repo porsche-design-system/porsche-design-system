@@ -80,7 +80,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     thead: ({ children }) => <PTableHead>{children as React.ReactNode}</PTableHead>,
     th: ({ children }) => <PTableHeadCell>{children as React.ReactNode}</PTableHeadCell>,
     tbody: ({ children }) => <PTableBody>{children as React.ReactNode}</PTableBody>,
-    td: ({ children }) => <PTableCell>{children as React.ReactNode}</PTableCell>,
+    td: ({ children }) => <PTableCell multiline={true}>{children as React.ReactNode}</PTableCell>,
     tr: ({ children }) => <PTableRow>{children as React.ReactNode}</PTableRow>,
     a: ({ href, children }) => (
       <PLinkPure icon="none" underline={true}>
