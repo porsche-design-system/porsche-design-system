@@ -45,7 +45,7 @@ It's possible to disable closing the sheet by click on the backdrop.
 
 <Playground :markup="disableBackdropClickMarkup" :config="config"></Playground>
 
-## Example: Modal with Porsche Grid
+## Example: Action Sheet with Porsche Grid
 
 The `p-sheet` component makes decent changes to the Porsche Grid to give support if used as slotted content. The
 following example shows the visualization of the Porsche Grid when used inside the sheet component:
