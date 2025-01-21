@@ -24,7 +24,7 @@ export const ComponentMetaProps = ({ propsMeta }: ComponentMetaPropsProps) => {
 
   return (
     <>
-      <PHeading tag="h2" size="x-large" className="mt-lg mb-md max-w-prose">
+      <PHeading tag="h2" size="x-large" className="mt-lg mb-md max-w-prose" id="properties">
         Properties
       </PHeading>
       <PTable caption="Props" className="mt-static-md">

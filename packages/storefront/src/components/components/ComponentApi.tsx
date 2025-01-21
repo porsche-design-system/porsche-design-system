@@ -1,3 +1,4 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
 import { ComponentMetaCssVariables } from '@/components/components/ComponentMetaCssVariables';
 import { ComponentMetaEvents } from '@/components/components/ComponentMetaEvents';
 import { ComponentMetaSlots } from '@/components/components/ComponentMetaSlots';
@@ -14,6 +15,14 @@ export const ComponentApi = ({ tagName }: ComponentApiProps) => {
   const { propsMeta, eventsMeta, slotsMeta, cssVariablesMeta } = componentMeta[tagName];
   return (
     <>
+      <TableOfContents
+        headings={[
+          ...(propsMeta ? ['Props'] : []),
+          ...(eventsMeta ? ['Events'] : []),
+          ...(slotsMeta ? ['Slots'] : []),
+          ...(cssVariablesMeta ? ['CSS Variables'] : []),
+        ]}
+      />
       {propsMeta && <ComponentMetaProps propsMeta={propsMeta} />}
       {eventsMeta && <ComponentMetaEvents eventsMeta={eventsMeta} />}
       {slotsMeta && <ComponentMetaSlots slotsMeta={slotsMeta} />}
