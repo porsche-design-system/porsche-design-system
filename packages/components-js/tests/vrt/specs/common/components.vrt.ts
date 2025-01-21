@@ -39,14 +39,14 @@ const revertAutoFocus = async (page: Page, component: string): Promise<void> => 
   }
 };
 
-test(`should have certain amount of components`, () => {
+test('should have certain amount of components', () => {
   expect(components.length).toBe(59);
 });
 
 for (const component of components) {
   // executed in Chrome + Safari
-  test.describe(component, async () => {
-    themes.forEach((theme) => {
+  test.describe(component, () => {
+    for (const theme of themes) {
       test(`should have no visual regression for viewport ${viewportWidthM} and theme ${theme}`, async ({ page }) => {
         test.skip(
           (!isComponentThemeable(component) && theme === 'dark') || component === 'stepper-horizontal',
@@ -59,26 +59,24 @@ for (const component of components) {
         await revertAutoFocus(page, component);
         await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-theme-${theme}.png`);
       });
-    });
+    }
   });
 
   // executed in Chrome only
-  test.describe(component, async () => {
+  test.describe(component, () => {
     test.skip(({ browserName }) => browserName !== 'chromium');
 
     // regular tests on different viewports
-    viewportWidths
-      .filter((x) => x !== viewportWidthM)
-      .forEach((viewportWidth) => {
-        test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
-          await setupScenario(page, `/${component}`, viewportWidth);
-          await revertAutoFocus(page, component);
-          await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidth}.png`);
-        });
+    for (const viewportWidth of viewportWidths.filter((x) => x !== viewportWidthM)) {
+      test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
+        await setupScenario(page, `/${component}`, viewportWidth);
+        await revertAutoFocus(page, component);
+        await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidth}.png`);
       });
+    }
 
     // prefers-color-scheme: 'light' | 'dark' tests on 1000px viewport
-    schemes.forEach((scheme) => {
+    for (const scheme of schemes) {
       // theme="auto"
       test(`should have no visual regression for viewport ${viewportWidthM} and theme auto with prefers-color-scheme ${scheme}`, async ({
         page,
@@ -106,7 +104,7 @@ for (const component of components) {
           `${component}-${viewportWidthM}-high-contrast-scheme-${scheme}.png`
         );
       });
-    });
+    }
 
     // 200% font scaling
     test(`should have no visual regression for viewport ${viewportWidthM} in scale mode`, async ({ page }) => {
