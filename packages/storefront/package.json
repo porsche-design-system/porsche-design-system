@@ -4,8 +4,9 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "dev": "concurrently -k -s 'first' -n 'cdn,next' 'serve-cdn' 'next dev'",
-    "build": "next build",
+    "dev": "yarn build:generateTableOfContents && concurrently -k -s 'first' -n 'cdn,next' 'serve-cdn' 'next dev'",
+    "build": "yarn build:generateTableOfContents && next build",
+    "build:generateTableOfContents": "tsx --tsconfig tsconfig.node.json scripts/generateTableOfContents.ts",
     "start": "concurrently -k -s 'first' -n 'cdn,next' 'serve-cdn' 'next start'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws --spa index.html -p 8080 -d ./dist'",
     "lint": "next lint"
