@@ -7,6 +7,10 @@ type TableOfContentsProps = {
 };
 
 export const TableOfContents = ({ headings }: TableOfContentsProps) => {
+  if (headings.length === 0) {
+    return null;
+  }
+
   return (
     <>
       <PHeading size="medium" tag="h2">
