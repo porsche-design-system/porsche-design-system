@@ -60,11 +60,6 @@ export const config: StorefrontConfig = {
       Usage: [() => import('@/../../components/src/components/accordion/accordion.usage.md')],
       Props: [() => import('@/../../components/src/components/accordion/accordion.props.md')],
     },
-    Sheet: {
-      Examples: [() => import('@/../../components/src/components/sheet/sheet.examples.md')],
-      Usage: [() => import('@/../../components/src/components/sheet/sheet.usage.md')],
-      Props: [() => import('@/../../components/src/components/sheet/sheet.props.md')],
-    },
     Banner: {
       Examples: [() => import('@/../../components/src/components/banner/banner.examples.md')],
       Props: [() => import('@/../../components/src/components/banner/banner.props.md')],
@@ -296,6 +291,11 @@ export const config: StorefrontConfig = {
       ],
       Usage: [() => import('@/../../components/src/components/select-wrapper/select-wrapper/select-wrapper.usage.md')],
       Props: [() => import('@/../../components/src/components/select-wrapper/select-wrapper/select-wrapper.props.md')],
+    },
+    Sheet: {
+      Examples: [() => import('@/../../components/src/components/sheet/sheet.examples.md')],
+      Usage: [() => import('@/../../components/src/components/sheet/sheet.usage.md')],
+      Props: [() => import('@/../../components/src/components/sheet/sheet.props.md')],
     },
     Spinner: {
       Examples: [() => import('@/../../components/src/components/spinner/spinner.examples.md')],
