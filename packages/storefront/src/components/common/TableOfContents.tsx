@@ -13,13 +13,13 @@ export const TableOfContents = ({ headings }: TableOfContentsProps) => {
 
   return (
     <>
-      <PHeading size="medium" tag="h2" className="mt-lg">
+      <PHeading className="mt-lg" size="medium" tag="h2">
         Table of Contents
       </PHeading>
       <ul className="mt-sm mb-lg">
         {headings.map((heading) => (
           <li key={heading}>
-            <PLinkPure>
+            <PLinkPure iconSource="/assets/icon-return.svg">
               <Link href={`#${kebabCase(heading)}`}>{heading}</Link>
             </PLinkPure>
           </li>

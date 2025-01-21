@@ -4,6 +4,11 @@ import Image from 'next/image';
 export default function Home() {
   return (
     <>
+      <video className="w-full" poster="assets/bg.webp" loop={true} muted={true} autoPlay={true} playsInline={true}>
+        <source src="assets/bg.webm" type="video/webm" />
+        <source src="assets/bg.mp4" type="video/mp4" />
+      </video>
+
       <PDisplay className="mt-lg max-w-lg" size="medium">
         Welcome to the new digital
       </PDisplay>

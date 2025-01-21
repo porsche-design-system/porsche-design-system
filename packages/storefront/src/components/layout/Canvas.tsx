@@ -12,7 +12,6 @@ import {
 } from '@porsche-design-system/components-react/ssr';
 import { breakpointS } from '@porsche-design-system/components-react/styles';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { type PropsWithChildren, useState } from 'react';
 
 export const Canvas = ({ children }: PropsWithChildren) => {
@@ -80,21 +79,6 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       <div slot="sidebar-end">
         <PText>Sidebar End</PText>
       </div>
-
-      {usePathname() === '/' && (
-        <video
-          className="w-full h-full"
-          slot="background"
-          poster="assets/bg.webp"
-          loop={true}
-          muted={true}
-          autoPlay={true}
-          playsInline={true}
-        >
-          <source src="assets/bg.webm" type="video/webm" />
-          <source src="assets/bg.mp4" type="video/mp4" />
-        </video>
-      )}
     </PCanvas>
   );
 };
