@@ -4,7 +4,7 @@ import { type Framework, type FrameworkMarkup, frameworkNameMap } from '@/models
 import { PTabsBar, type TabsBarUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
 import type React from 'react';
 import { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import SyntaxHighlighter from 'react-syntax-highlighter';
 
 type CodeBlockProps = {
   frameworkMarkup: FrameworkMarkup;
@@ -19,6 +19,7 @@ export const CodeBlock = ({ frameworkMarkup }: CodeBlockProps) => {
     setTabIndex(e.detail.activeTabIndex);
   };
 
+  // @ts-ignore
   return (
     <div className="">
       <PTabsBar activeTabIndex={tabIndex} onUpdate={onUpdate}>
@@ -28,7 +29,10 @@ export const CodeBlock = ({ frameworkMarkup }: CodeBlockProps) => {
           </button>
         ))}
       </PTabsBar>
-      <SyntaxHighlighter language="html">{frameworkMarkup[selectedFramework]}</SyntaxHighlighter>
+      {/* @ts-expect-error: Suppress type incompatibility */}
+      <SyntaxHighlighter language="html" PreTag="div" CodeTag="div">
+        {frameworkMarkup[selectedFramework] as string}
+      </SyntaxHighlighter>
     </div>
   );
 };
