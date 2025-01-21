@@ -6960,6 +6960,95 @@ exports[`should match snapshot 1`] = `
     ],
     "styling": "jss",
   },
+  "p-sheet": {
+    "controlledMeta": [
+      {
+        "event": "dismiss",
+        "props": [
+          "open",
+        ],
+      },
+    ],
+    "eventsMeta": {
+      "dismiss": {
+        "description": "Emitted when the component requests to be dismissed.",
+        "type": "void",
+      },
+      "motionHiddenEnd": {
+        "description": "Emitted when the sheet is closed and the transition is finished.",
+        "type": "SheetMotionHiddenEndEventDetail",
+        "typeDetail": "TransitionEvent",
+      },
+      "motionVisibleEnd": {
+        "description": "Emitted when the sheet is opened and the transition is finished.",
+        "type": "SheetMotionVisibleEndEventDetail",
+        "typeDetail": "TransitionEvent",
+      },
+    },
+    "hasAriaProp": true,
+    "hasElementInternals": false,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": true,
+    "nestedComponents": [
+      "p-button",
+    ],
+    "propsMeta": {
+      "aria": {
+        "allowedValues": {
+          "aria-label": "string",
+          "role": "string",
+        },
+        "defaultValue": null,
+        "description": "Add ARIA attributes.",
+        "isAria": true,
+        "type": "SheetAriaAttribute",
+      },
+      "disableBackdropClick": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "If true, the sheet will not be closable via backdrop click.",
+        "type": "boolean",
+      },
+      "dismissButton": {
+        "allowedValues": "boolean",
+        "defaultValue": true,
+        "description": "If false, the sheet will not have a dismiss button.",
+        "type": "boolean",
+      },
+      "open": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "If true, the sheet is open.",
+        "isRequired": true,
+        "type": "boolean",
+      },
+      "theme": {
+        "allowedValues": [
+          "light",
+          "dark",
+          "auto",
+        ],
+        "defaultValue": "light",
+        "description": "Adapts the sheet color depending on the theme.",
+        "type": "Theme",
+      },
+    },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the main content.",
+      },
+      "header": {
+        "description": "Renders a header section above the content area.",
+      },
+    },
+    "styling": "jss",
+  },
   "p-spinner": {
     "hasAriaProp": true,
     "hasElementInternals": false,

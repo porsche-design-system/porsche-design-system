@@ -135,6 +135,14 @@ import { ScrollerPage } from './generated/Scroller';
 import { SegmentedControlPage } from './generated/SegmentedControl';
 import { SelectPage } from './generated/Select';
 import { SelectWrapperPage } from './generated/SelectWrapper';
+import { SheetPage } from './generated/Sheet';
+import { SheetBasicPage } from './generated/SheetBasic';
+import { SheetGridPage } from './generated/SheetGrid';
+import { SheetPrefixedPage } from './generated/SheetPrefixed';
+import { SheetScrollablePage } from './generated/SheetScrollable';
+import { SheetScrolledPage } from './generated/SheetScrolled';
+import { SheetWithoutDismissButtonPage } from './generated/SheetWithoutDismissButton';
+import { SheetWithoutHeadingPage } from './generated/SheetWithoutHeading';
 import { SpinnerPage } from './generated/Spinner';
 import { StepperHorizontalPage } from './generated/StepperHorizontal';
 import { SwitchPage } from './generated/Switch';
@@ -772,6 +780,46 @@ export const generatedRoutes: RouteType[] = [
     name: 'Select Wrapper',
     path: '/select-wrapper',
     element: <SelectWrapperPage />,
+  },
+  {
+    name: 'Sheet',
+    path: '/sheet',
+    element: <SheetPage />,
+  },
+  {
+    name: 'Sheet Basic',
+    path: '/sheet-basic',
+    element: <SheetBasicPage />,
+  },
+  {
+    name: 'Sheet Grid',
+    path: '/sheet-grid',
+    element: <SheetGridPage />,
+  },
+  {
+    name: 'Sheet Prefixed',
+    path: '/sheet-prefixed',
+    element: <SheetPrefixedPage />,
+  },
+  {
+    name: 'Sheet Scrollable',
+    path: '/sheet-scrollable',
+    element: <SheetScrollablePage />,
+  },
+  {
+    name: 'Sheet Scrolled',
+    path: '/sheet-scrolled',
+    element: <SheetScrolledPage />,
+  },
+  {
+    name: 'Sheet Without Dismiss Button',
+    path: '/sheet-without-dismiss-button',
+    element: <SheetWithoutDismissButtonPage />,
+  },
+  {
+    name: 'Sheet Without Heading',
+    path: '/sheet-without-heading',
+    element: <SheetWithoutHeadingPage />,
   },
   {
     name: 'Spinner',

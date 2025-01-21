@@ -96,6 +96,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.AccordionExampleComponent,
   },
   {
+    name: 'Sheet Example',
+    path: 'sheet-example',
+    component: fromExamples.SheetExampleComponent,
+  },
+  {
     name: 'AG Grid Example',
     path: 'ag-grid-example',
     component: fromExamples.AgGridExampleComponent,

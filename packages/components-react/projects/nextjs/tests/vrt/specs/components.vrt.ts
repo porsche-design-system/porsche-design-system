@@ -1,9 +1,9 @@
+import path from 'path';
 import { expect, test } from '@playwright/test';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt';
-import path from 'path';
 import * as globby from 'globby-legacy';
-import { getComponentMeta } from '@porsche-design-system/component-meta';
 
 const sourceDirectory = path.resolve('../../../components-js/src/pages');
 const fileNames = globby.sync(`${sourceDirectory}/*.html`).map((filePath) => path.basename(filePath, '.html'));
@@ -25,11 +25,11 @@ const components = fileNames
     return !argv.length || argv.includes(name);
   });
 
-test(`should have certain amount of components`, () => {
-  expect(components.length).toBe(58);
+test('should have certain amount of components', () => {
+  expect(components.length).toBe(59);
 });
 
-components.forEach((component) => {
+for (const component of components) {
   test.describe(component, async () => {
     viewportWidths.forEach((viewportWidth) => {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
@@ -51,4 +51,4 @@ components.forEach((component) => {
       });
     });
   });
-});
+}
