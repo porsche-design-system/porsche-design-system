@@ -29,8 +29,16 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </PDisplay>
     ),
     h2: ({ children }) => (
-      <PHeading tag="h2" size="x-large" className="mt-lg mb-md max-w-prose" id={kebabCase(children as string)}>
+      <PHeading tag="h2" size="x-large" className="mt-lg mb-md max-w-prose group" id={kebabCase(children as string)}>
         {children as React.ReactNode}
+        <PLinkPure
+          className="ms-static-sm invisible group-hover:visible"
+          title="Link to this heading"
+          icon="none"
+          size="inherit"
+        >
+          <Link href={`#${kebabCase(children as string)}`}>#</Link>
+        </PLinkPure>
       </PHeading>
     ),
     h3: ({ children }) => (
