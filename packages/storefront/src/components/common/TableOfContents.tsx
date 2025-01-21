@@ -13,10 +13,10 @@ export const TableOfContents = ({ headings }: TableOfContentsProps) => {
 
   return (
     <>
-      <PHeading size="medium" tag="h2">
+      <PHeading size="medium" tag="h2" className="mt-lg">
         Table of Contents
       </PHeading>
-      <ul>
+      <ul className="mt-sm mb-lg">
         {headings.map((heading) => (
           <li key={heading}>
             <PLinkPure>
