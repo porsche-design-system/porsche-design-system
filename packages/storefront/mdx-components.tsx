@@ -13,6 +13,7 @@ import {
   PTextList,
   PTextListItem,
 } from '@porsche-design-system/components-react/ssr';
+import { kebabCase } from 'change-case';
 import type { MDXComponents } from 'mdx/types';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -28,7 +29,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </PDisplay>
     ),
     h2: ({ children }) => (
-      <PHeading tag="h2" size="x-large" className="mt-lg mb-md max-w-prose">
+      <PHeading tag="h2" size="x-large" className="mt-lg mb-md max-w-prose" id={kebabCase(children as string)}>
         {children as React.ReactNode}
       </PHeading>
     ),
