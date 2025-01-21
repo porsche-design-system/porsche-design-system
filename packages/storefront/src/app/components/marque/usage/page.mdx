@@ -1,4 +1,5 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
 import { Notification } from "@/components/common/Notification";
 
 export const metadata = {
@@ -7,6 +8,8 @@ export const metadata = {
 }
 
 # Marque <ComponentStatus tagName="p-marque"></ComponentStatus>
+
+<TableOfContents headings={[]} />
 
 <Notification heading="Deprecation hint" heading-tag="h2" state="error">
   This component is deprecated and will be removed with the next major release.
