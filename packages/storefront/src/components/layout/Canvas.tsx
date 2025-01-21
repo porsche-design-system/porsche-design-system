@@ -67,10 +67,8 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       </PButton>
 
       <div className="-p-canvas-grid">
-        <div className="col-span-full xs:col-start-2 xs:col-end-12">
-          <Tabs />
-          {children}
-        </div>
+        <Tabs />
+        {children}
       </div>
 
       <div slot="sidebar-start">

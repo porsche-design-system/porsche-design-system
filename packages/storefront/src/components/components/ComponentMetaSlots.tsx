@@ -39,7 +39,9 @@ export const ComponentMetaSlots = ({ slotsMeta }: ComponentMetaSlotsProps) => {
                   {slotName === '' ? '<slot>' : `<slot name="${slotName}">`} {getFlags(slotsMeta)}
                 </code>
               </PTableCell>
-              <PTableCell className="align-top">{slotsMeta.description}</PTableCell>
+              <PTableCell className="align-top min-w-40" multiline={true}>
+                {slotsMeta.description}
+              </PTableCell>
               <PTableCell className="align-top">{slotsMeta.isRequired ? '✅' : ''}</PTableCell>
               <PTableCell className="align-top">{slotsMeta.hasAltProp ? <code>{slotName}</code> : ''}</PTableCell>
               <PTableCell className="align-top">

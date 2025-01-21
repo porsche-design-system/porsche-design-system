@@ -37,7 +37,9 @@ export const ComponentMetaCssVariables = ({ cssVariablesMeta }: ComponentMetaCss
                   {cssVariableName} {getFlags(cssVariablesMeta)}
                 </code>
               </PTableCell>
-              <PTableCell className="align-top">{cssVariablesMeta.description}</PTableCell>
+              <PTableCell className="align-top min-w-40" multiline={true}>
+                {cssVariablesMeta.description}
+              </PTableCell>
               <PTableCell className="align-top">
                 <code>{cssVariablesMeta.defaultValue}</code>
               </PTableCell>

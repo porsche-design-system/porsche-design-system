@@ -39,13 +39,13 @@ export const ComponentMetaEvents = ({ eventsMeta }: ComponentMetaEventsProps) =>
                   {eventName} {getFlags(eventMeta)}
                 </code>
               </PTableCell>
-              <PTableCell multiline={true} className="min-w-40 align-top">
+              <PTableCell className="min-w-40 align-top" multiline={true}>
                 <span
                   // biome-ignore lint/security/noDangerouslySetInnerHtml: // TODO: Refactor to use TSX instead of string
                   dangerouslySetInnerHTML={{ __html: formatDescription(eventMeta) }}
                 />
               </PTableCell>
-              <PTableCell multiline={true} className="min-w-40 align-top">
+              <PTableCell className="min-w-40 align-top" multiline={true}>
                 <span
                   // biome-ignore lint/security/noDangerouslySetInnerHtml: // TODO: Refactor to use TSX instead of string
                   dangerouslySetInnerHTML={{ __html: formatEventType(eventMeta) }}
