@@ -9,7 +9,7 @@ import { setupScenario } from '../../helpers';
 const component = 'banner';
 
 // executed in Chrome only
-test.describe(component, async () => {
+test.describe(component, () => {
   test.skip(({ browserName }) => browserName !== 'chromium');
 
   for (const viewportWidth of [viewportWidthXXL, viewportWidth3XL, viewportWidth4XL]) {

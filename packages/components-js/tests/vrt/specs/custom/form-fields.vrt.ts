@@ -1,4 +1,7 @@
-import { expect, type Page, test } from '@playwright/test';
+import { type Page, expect, test } from '@playwright/test';
+import type { TagName } from '@porsche-design-system/shared';
+import { themes, viewportWidthXXL } from '@porsche-design-system/shared/testing/playwright.vrt';
+import type { Theme } from '@porsche-design-system/styles';
 import {
   forceFocusHoverState,
   forceFocusState,
@@ -8,9 +11,6 @@ import {
   getValueOfForAttribute,
   setContentWithDesignSystem,
 } from '../../helpers';
-import { type Theme } from '@porsche-design-system/styles';
-import { type TagName } from '@porsche-design-system/shared';
-import { themes, viewportWidthXXL } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 const component = 'form-fields';
 
@@ -118,14 +118,14 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
 };
 
 // executed in Chrome only
-test.describe(component, async () => {
+test.describe(component, () => {
   test.skip(({ browserName }) => browserName !== 'chromium');
 
-  themes.forEach((theme) => {
+  for (const theme of themes) {
     test(`should have no visual regression for :hover + :focus-visible with theme ${theme}`, async ({ page }) => {
       await scenario(page, theme);
       await page.setViewportSize({ width: viewportWidthXXL, height: 600 });
       await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthXXL}-states-theme-${theme}.png`);
     });
-  });
+  }
 });

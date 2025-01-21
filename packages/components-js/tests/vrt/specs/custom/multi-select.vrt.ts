@@ -1,6 +1,6 @@
-import { expect, type Page, test } from '@playwright/test';
-import { openAllSelect, setNativePopoversToAllowMultipleOpen, setContentWithDesignSystem } from '../../helpers';
+import { type Page, expect, test } from '@playwright/test';
 import { viewportWidthXL } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { openAllSelect, setContentWithDesignSystem, setNativePopoversToAllowMultipleOpen } from '../../helpers';
 
 const component = 'multi-select';
 
@@ -55,7 +55,7 @@ const scenario = async (page: Page): Promise<void> => {
 };
 
 // executed in Chrome only
-test.describe(component, async () => {
+test.describe(component, () => {
   test.skip(({ browserName }) => browserName !== 'chromium');
 
   test(`should have no visual regression on multi-select within table component for viewport ${viewportWidthXL}`, async ({
