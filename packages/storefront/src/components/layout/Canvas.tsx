@@ -81,22 +81,6 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         <PText>Sidebar End</PText>
       </div>
 
-      <div slot="footer" className="-p-canvas-grid">
-        <PText
-          size="xx-small"
-          color="contrast-medium"
-          align="center"
-          className="col-span-full xs:col-start-2 xs:col-end-12"
-        >
-          © 2025 Dr. Ing. h.c. F. Porsche AG. &nbsp;
-          <a href="https://brand.porsche.com/d/aXCSDnXaTiSY">Privacy Policy</a>
-          &nbsp;
-          <a href="https://brand.porsche.com/d/S5pRV9qVeHyf">Legal Notice</a>
-          &nbsp;
-          <Link href="/license">License</Link>
-        </PText>
-      </div>
-
       {usePathname() === '/' && (
         <video
           className="w-full h-full"
