@@ -8,13 +8,14 @@ import { getFlyoutCodeSamples } from '@porsche-design-system/shared';
 
 export const Playground = () => {
   const defaultExample = getFlyoutCodeSamples('default');
-  const formExample = getFlyoutCodeSamples('example-form');
 
   const handleThemeUpdate = (e: CustomEvent<SelectUpdateEventDetail>) => {
+    // biome-ignore lint/suspicious/noConsole: <explanation>
     console.log(e);
   };
 
   const handleDirectionUpdate = (e: CustomEvent<SelectUpdateEventDetail>) => {
+    // biome-ignore lint/suspicious/noConsole: <explanation>
     console.log(e);
   };
 

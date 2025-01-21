@@ -19,7 +19,6 @@ export const CodeBlock = ({ frameworkMarkup }: CodeBlockProps) => {
     setTabIndex(e.detail.activeTabIndex);
   };
 
-  // @ts-ignore
   return (
     <div className="">
       <PTabsBar activeTabIndex={tabIndex} onUpdate={onUpdate}>
