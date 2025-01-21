@@ -125,8 +125,8 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
         ? [
             'banner-basic',
             'banner-prefixed',
-            'action-sheet-basic',
-            'action-sheet-prefixed',
+            'sheet-basic',
+            'sheet-prefixed',
             'flyout-basic',
             'flyout-prefixed',
             'flyout-multilevel-basic',

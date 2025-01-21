@@ -1,5 +1,5 @@
 import { type Locator, type Page, expect, test } from '@playwright/test';
-import type { ActionSheetAriaAttribute, SelectedAriaAttributes } from '@porsche-design-system/components';
+import type { SelectedAriaAttributes, SheetAriaAttribute } from '@porsche-design-system/components';
 import {
   type Options,
   addEventListener,
@@ -20,18 +20,18 @@ import {
 
 const CSS_TRANSITION_DURATION = 600; // Corresponds to motionDurationLong
 
-const getHost = (page: Page) => page.locator('p-action-sheet');
-const getHeader = (page: Page) => page.locator('p-action-sheet slot[name="header"]');
-const getDialog = (page: Page) => page.locator('p-action-sheet dialog');
-const getDismissButton = (page: Page) => page.locator('p-action-sheet .dismiss');
-const waitForActionSheetTransition = async () => sleep(CSS_TRANSITION_DURATION);
+const getHost = (page: Page) => page.locator('p-sheet');
+const getHeader = (page: Page) => page.locator('p-sheet slot[name="header"]');
+const getDialog = (page: Page) => page.locator('p-sheet dialog');
+const getDismissButton = (page: Page) => page.locator('p-sheet .dismiss');
+const waitForSheetTransition = async () => sleep(CSS_TRANSITION_DURATION);
 
-const initBasicActionSheet = (
+const initBasicSheet = (
   page: Page,
   opts?: {
     isOpen?: boolean;
     content?: string;
-    aria?: SelectedAriaAttributes<ActionSheetAriaAttribute>;
+    aria?: SelectedAriaAttributes<SheetAriaAttribute>;
     hasSlottedHeader?: boolean;
     disableCloseButton?: boolean;
     markupBefore?: string;
@@ -55,18 +55,18 @@ const initBasicActionSheet = (
 
   return setContentWithDesignSystem(
     page,
-    `${markupBefore ? markupBefore : ''}<p-action-sheet ${attributes}>
+    `${markupBefore ? markupBefore : ''}<p-sheet ${attributes}>
   ${hasSlottedHeader ? '<div slot="header"><h2>Some Heading</h2><a href="#">some anchor</a></div>' : ''}
   ${content}
-</p-action-sheet>${markupAfter ? markupAfter : ''}`,
+</p-sheet>${markupAfter ? markupAfter : ''}`,
     options
   );
 };
 
-const initAdvancedActionSheet = (page: Page): Promise<void> => {
+const initAdvancedSheet = (page: Page): Promise<void> => {
   return setContentWithDesignSystem(
     page,
-    `<p-action-sheet>
+    `<p-sheet>
   <h2 slot="header">Some Heading</h2>
   Some Content
   <p-button id="btn-content-1">Content Button 1</p-button>
@@ -76,23 +76,23 @@ const initAdvancedActionSheet = (page: Page): Promise<void> => {
     <p-button id="btn-footer-1">Footer Button 1</p-button>
     <p-button id="btn-footer-2">Footer Button 2</p-button>
   </div>
-</p-action-sheet>`
+</p-sheet>`
   );
 };
 
-const openActionSheet = async (page: Page) => {
+const openSheet = async (page: Page) => {
   await setProperty(getHost(page), 'open', true);
   await waitForStencilLifecycle(page);
 };
 
-const dismissActionSheet = async (page: Page) => {
+const dismissSheet = async (page: Page) => {
   await setProperty(getHost(page), 'open', false);
   await waitForStencilLifecycle(page);
 };
 
-const getActionSheetVisibility = async (page: Page) => await getElementStyle(getDialog(page), 'visibility');
+const getSheetVisibility = async (page: Page) => await getElementStyle(getDialog(page), 'visibility');
 
-const addButtonsBeforeAndAfterActionSheet = (page: Page) =>
+const addButtonsBeforeAndAfterSheet = (page: Page) =>
   page.evaluate(() => {
     const buttonBefore = document.createElement('button');
     buttonBefore.innerText = 'Button Before';
@@ -113,7 +113,7 @@ const expectDismissButtonToBeFocused = async (page: Page, failMessage?: string) 
 
 const expectDialogAndThenDismissButtonToBeFocused = async (page: Page, failMessage?: string) => {
   // In order to assure that its correct we press tab to assure the next element will be the dismiss button
-  await expect(await getActiveElementTagName(page)).toBe('P-ACTION-SHEET');
+  await expect(await getActiveElementTagName(page)).toBe('P-SHEET');
   await page.keyboard.press('Tab');
   await expectDismissButtonToBeFocused(page);
 };
@@ -121,26 +121,26 @@ const expectDialogAndThenDismissButtonToBeFocused = async (page: Page, failMessa
 const waitForSlotChange = () => new Promise((resolve) => setTimeout(resolve));
 
 test('should render and be visible when open', async ({ page }) => {
-  await initBasicActionSheet(page);
+  await initBasicSheet(page);
 
   expect(getDialog(page)).not.toBeNull();
-  expect(await getActionSheetVisibility(page)).toBe('visible');
+  expect(await getSheetVisibility(page)).toBe('visible');
 });
 
 test('should not be visible when not open', async ({ page }) => {
-  await initBasicActionSheet(page, { isOpen: false });
+  await initBasicSheet(page, { isOpen: false });
 
-  expect(await getActionSheetVisibility(page)).toBe('hidden');
+  expect(await getSheetVisibility(page)).toBe('hidden');
 });
 
 // TODO: fails in CI while it works locally
 skipInBrowsers(['webkit'], () => {
   test('should be visible after opened', async ({ page }) => {
-    await initBasicActionSheet(page, { isOpen: false });
+    await initBasicSheet(page, { isOpen: false });
     const host = getHost(page);
     await setProperty(host, 'open', true);
 
-    expect(await getActionSheetVisibility(page)).toBe('visible');
+    expect(await getSheetVisibility(page)).toBe('visible');
   });
 });
 
@@ -148,7 +148,7 @@ test.describe('can be dismissed', () => {
   let host: Locator;
 
   test.beforeEach(async ({ page }) => {
-    await initBasicActionSheet(page);
+    await initBasicSheet(page);
     host = getHost(page);
     await addEventListener(host, 'dismiss');
   });
@@ -157,7 +157,7 @@ test.describe('can be dismissed', () => {
     const dismissBtn = getDismissButton(page);
     expect(dismissBtn).not.toBeNull();
 
-    const dismissBtnReal = page.locator('p-action-sheet .dismiss button');
+    const dismissBtnReal = page.locator('p-sheet .dismiss button');
     expect(await getAttribute(dismissBtnReal, 'type')).toBe('button');
 
     await dismissBtn.click();
@@ -179,7 +179,7 @@ test.describe('can be dismissed', () => {
     expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(1);
   });
 
-  test('should not be dismissed if mousedown inside action-sheet', async ({ page }) => {
+  test('should not be dismissed if mousedown inside sheet', async ({ page }) => {
     const viewportSize = page.viewportSize();
     await page.mouse.move(viewportSize.width / 2, viewportSize.height - 1);
     await page.mouse.down();
@@ -222,37 +222,37 @@ test.describe('can be dismissed', () => {
 skipInBrowsers(['firefox', 'webkit'], () => {
   test.describe('focus behavior', () => {
     test('should focus dismiss button after open', async ({ page }) => {
-      await initAdvancedActionSheet(page);
-      await openActionSheet(page);
+      await initAdvancedSheet(page);
+      await openSheet(page);
       await expectDialogAndThenDismissButtonToBeFocused(page);
     });
 
     test('should focus dismiss button after open when there is no focusable content element', async ({ page }) => {
-      await initBasicActionSheet(page, { isOpen: false });
-      await openActionSheet(page);
+      await initBasicSheet(page, { isOpen: false });
+      await openSheet(page);
       await expectDialogAndThenDismissButtonToBeFocused(page);
     });
 
     test('should focus dismiss button after open when there is a focusable content element', async ({ page }) => {
-      await initBasicActionSheet(page, {
+      await initBasicSheet(page, {
         isOpen: false,
         content: `<a href="https://porsche.com">Some link in content</a>`,
         aria: "{'aria-label': 'Some Heading'}",
       });
-      await openActionSheet(page);
+      await openSheet(page);
       await expectDialogAndThenDismissButtonToBeFocused(page);
     });
 
     test('should have correct focus order when there is a focusable content element and focusable slotted element in header', async ({
       page,
     }) => {
-      await initBasicActionSheet(page, {
+      await initBasicSheet(page, {
         isOpen: false,
         content: '<p-button>Some focusable button in content</p-button>',
         aria: "{'aria-label': 'Some Heading'}",
         hasSlottedHeader: true,
       });
-      await openActionSheet(page);
+      await openSheet(page);
 
       await expectDialogAndThenDismissButtonToBeFocused(page);
       await page.keyboard.press('Tab');
@@ -261,10 +261,10 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       expect(await getActiveElementTagName(page)).toBe('P-BUTTON'); // slotted content button
     });
 
-    test('should not allow focusing element behind of action-sheet when pressing Tab', async ({ page }) => {
-      await initBasicActionSheet(page, { isOpen: false, content: '<p-text>Some text content</p-text>' });
-      await addButtonsBeforeAndAfterActionSheet(page);
-      await openActionSheet(page);
+    test('should not allow focusing element behind of sheet when pressing Tab', async ({ page }) => {
+      await initBasicSheet(page, { isOpen: false, content: '<p-text>Some text content</p-text>' });
+      await addButtonsBeforeAndAfterSheet(page);
+      await openSheet(page);
 
       await expectDialogAndThenDismissButtonToBeFocused(page);
 
@@ -275,10 +275,10 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       await expectDismissButtonToBeFocused(page);
     });
 
-    test('should not allow focusing element behind of action-sheet when pressing Shift Tab', async ({ page }) => {
-      await initBasicActionSheet(page, { isOpen: false, content: '<p-text>Some text content</p-text>' });
-      await addButtonsBeforeAndAfterActionSheet(page);
-      await openActionSheet(page);
+    test('should not allow focusing element behind of sheet when pressing Shift Tab', async ({ page }) => {
+      await initBasicSheet(page, { isOpen: false, content: '<p-text>Some text content</p-text>' });
+      await addButtonsBeforeAndAfterSheet(page);
+      await openSheet(page);
 
       await expectDialogAndThenDismissButtonToBeFocused(page);
       await page.keyboard.down('Shift');
@@ -288,32 +288,32 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       await expectDismissButtonToBeFocused(page);
     });
 
-    test('should focus last focused element after action-sheet is dismissed', async ({ page }) => {
+    test('should focus last focused element after sheet is dismissed', async ({ page }) => {
       await setContentWithDesignSystem(
         page,
         `
       <button id="btn-open"></button>
-      <p-action-sheet id="action-sheet" heading="Some Heading">
+      <p-sheet id="sheet" heading="Some Heading">
         Some Content
-      </p-action-sheet>
+      </p-sheet>
       <script>
-        const actionSheet = document.getElementById('action-sheet');
+        const sheet = document.getElementById('sheet');
         document.getElementById('btn-open').addEventListener('click', () => {
-          actionSheet.open = true;
+          sheet.open = true;
         });
-        actionSheet.addEventListener('dismiss', () => {
-          actionSheet.open = false;
+        sheet.addEventListener('dismiss', () => {
+          sheet.open = false;
         });
       </script>`
       );
 
-      expect(await getActionSheetVisibility(page), 'initial').toBe('hidden');
+      expect(await getSheetVisibility(page), 'initial').toBe('hidden');
       expect(await getActiveElementTagName(page)).toBe('BODY');
 
       await page.locator('#btn-open').click();
       await waitForStencilLifecycle(page);
 
-      expect(await getActionSheetVisibility(page)).toBe('visible');
+      expect(await getSheetVisibility(page)).toBe('visible');
 
       await page.keyboard.press('Escape');
       await waitForStencilLifecycle(page);
@@ -322,20 +322,20 @@ skipInBrowsers(['firefox', 'webkit'], () => {
 
       // transition delay for visibility
 
-      expect(await getActionSheetVisibility(page), 'after escape').toBe('hidden');
+      expect(await getSheetVisibility(page), 'after escape').toBe('hidden');
       expect(await getActiveElementId(page)).toBe('btn-open');
     });
 
-    test('should focus element after action-sheet when open accordion contains link but action-sheet is not open', async ({
+    test('should focus element after sheet when open accordion contains link but sheet is not open', async ({
       page,
     }) => {
-      await initBasicActionSheet(page, {
+      await initBasicSheet(page, {
         isOpen: false,
         content: `<p-accordion heading="Some Heading" open="true">
-  <a id="inside" href="#inside-action-sheet">Some anchor inside action-sheet</a>
+  <a id="inside" href="#inside-sheet">Some anchor inside sheet</a>
 </p-accordion>`,
-        markupBefore: '<a id="before" href="#before-action-sheet">Some anchor before action-sheet</a>',
-        markupAfter: '<a id="after" href="#after-action-sheet">Some anchor after action-sheet</a>',
+        markupBefore: '<a id="before" href="#before-sheet">Some anchor before sheet</a>',
+        markupAfter: '<a id="after" href="#after-sheet">Some anchor after sheet</a>',
       });
 
       await page.keyboard.press('Tab');
@@ -347,10 +347,10 @@ skipInBrowsers(['firefox', 'webkit'], () => {
     });
 
     test.describe('after content change', () => {
-      test('should not allow focusing element behind of action-sheet', async ({ page }) => {
-        await initAdvancedActionSheet(page);
-        await addButtonsBeforeAndAfterActionSheet(page);
-        await openActionSheet(page);
+      test('should not allow focusing element behind of sheet', async ({ page }) => {
+        await initAdvancedSheet(page);
+        await addButtonsBeforeAndAfterSheet(page);
+        await openSheet(page);
         await expectDialogAndThenDismissButtonToBeFocused(page, 'initially');
 
         await page.keyboard.press('Tab');
@@ -373,8 +373,8 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       });
 
       test('should correctly focus dismiss button from appended focusable element', async ({ page }) => {
-        await initAdvancedActionSheet(page);
-        await openActionSheet(page);
+        await initAdvancedSheet(page);
+        await openSheet(page);
 
         const host = getHost(page);
         await host.evaluate((el) => {
@@ -401,25 +401,23 @@ skipInBrowsers(['firefox', 'webkit'], () => {
     });
 
     test.describe('with disable-dismiss-button', () => {
-      const initActionSheetOpts = { isOpen: false, dismissButton: true };
+      const initSheetOpts = { isOpen: false, dismissButton: true };
 
-      test('should focus p-action-sheet when there is no focusable element', async ({ page }) => {
-        await initBasicActionSheet(page, initActionSheetOpts);
-        await openActionSheet(page);
-        await expect(await getActiveElementTagName(page)).toBe('P-ACTION-SHEET');
+      test('should focus p-sheet when there is no focusable element', async ({ page }) => {
+        await initBasicSheet(page, initSheetOpts);
+        await openSheet(page);
+        await expect(await getActiveElementTagName(page)).toBe('P-SHEET');
       });
 
-      test('should not focus element behind action-sheet if action-sheet has no focusable element', async ({
-        page,
-      }) => {
-        await initBasicActionSheet(page, initActionSheetOpts);
-        await addButtonsBeforeAndAfterActionSheet(page);
-        await openActionSheet(page);
-        await expect(await getActiveElementTagName(page)).toBe('P-ACTION-SHEET');
+      test('should not focus element behind sheet if sheet has no focusable element', async ({ page }) => {
+        await initBasicSheet(page, initSheetOpts);
+        await addButtonsBeforeAndAfterSheet(page);
+        await openSheet(page);
+        await expect(await getActiveElementTagName(page)).toBe('P-SHEET');
 
-        // TODO: why is second tab still 'P-ACTION-SHEET'?
+        // TODO: why is second tab still 'P-SHEET'?
         await page.keyboard.press('Tab');
-        expect(await getActiveElementTagName(page)).toBe('P-ACTION-SHEET');
+        expect(await getActiveElementTagName(page)).toBe('P-SHEET');
 
         await page.keyboard.press('Tab');
         expect(await getActiveElementTagName(page)).toBe('BODY');
@@ -443,19 +441,19 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       ]) {
         test(`should focus first focusable element: ${tagName}`, async ({ page }) => {
           const attributes = tagName.includes('link') || tagName === 'a' ? ' href="#"' : '';
-          await initBasicActionSheet(page, {
-            ...initActionSheetOpts,
+          await initBasicSheet(page, {
+            ...initSheetOpts,
             content:
               (tagName === 'input'
                 ? `<${tagName} type="text" />`
                 : `<${tagName}${attributes}>Some element</${tagName}>`) + otherFocusableElement,
           });
-          await openActionSheet(page);
-          await expect(await getActiveElementTagName(page)).toBe('P-ACTION-SHEET');
+          await openSheet(page);
+          await expect(await getActiveElementTagName(page)).toBe('P-SHEET');
           await page.keyboard.press('Tab');
 
           // TODO: why do we need to tab twice?
-          await expect(await getActiveElementTagName(page)).toBe('P-ACTION-SHEET');
+          await expect(await getActiveElementTagName(page)).toBe('P-SHEET');
           await page.keyboard.press('Tab');
 
           expect(await getActiveElementTagName(page)).toBe(tagName.toUpperCase());
@@ -473,9 +471,9 @@ skipInBrowsers(['firefox', 'webkit'], () => {
 
 skipInBrowsers(['firefox', 'webkit'], () => {
   test.describe('can be controlled via keyboard', () => {
-    test('should cycle tab events within action-sheet', async ({ page }) => {
-      await initAdvancedActionSheet(page);
-      await openActionSheet(page);
+    test('should cycle tab events within sheet', async ({ page }) => {
+      await initAdvancedSheet(page);
+      await openSheet(page);
       await expectDialogAndThenDismissButtonToBeFocused(page, 'initially');
 
       await page.keyboard.press('Tab');
@@ -490,9 +488,9 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       expect(await getActiveElementTagName(page)).toBe('BODY');
     });
 
-    test('should reverse cycle tab events within action-sheet', async ({ page }) => {
-      await initAdvancedActionSheet(page);
-      await openActionSheet(page);
+    test('should reverse cycle tab events within sheet', async ({ page }) => {
+      await initAdvancedSheet(page);
+      await openSheet(page);
       await expectDialogAndThenDismissButtonToBeFocused(page, 'after 1st tab');
 
       await page.keyboard.down('ShiftLeft');
@@ -513,8 +511,8 @@ skipInBrowsers(['firefox', 'webkit'], () => {
   });
 });
 
-test('should open action-sheet at scroll top position zero when its content is scrollable', async ({ page }) => {
-  await initBasicActionSheet(page, { isOpen: true, content: '<div style="height: 150vh;"></div>' });
+test('should open sheet at scroll top position zero when its content is scrollable', async ({ page }) => {
+  await initBasicSheet(page, { isOpen: true, content: '<div style="height: 150vh;"></div>' });
 
   const host = getHost(page);
   const hostScrollTop = await host.evaluate((el) => el.scrollTop);
@@ -524,10 +522,10 @@ test('should open action-sheet at scroll top position zero when its content is s
 
 test.describe('scroll lock', () => {
   test('should prevent page from scrolling when open', async ({ page }) => {
-    await initBasicActionSheet(page, { isOpen: false });
+    await initBasicSheet(page, { isOpen: false });
     await expect(page.locator('body')).toHaveCSS('overflow', 'visible');
 
-    await openActionSheet(page);
+    await openSheet(page);
     await expect(page.locator('body')).toHaveCSS('overflow', 'hidden');
 
     await setProperty(getHost(page), 'open', false);
@@ -536,16 +534,16 @@ test.describe('scroll lock', () => {
   });
 
   test('should prevent page from scrolling when initially open', async ({ page }) => {
-    await initBasicActionSheet(page, { isOpen: true });
+    await initBasicSheet(page, { isOpen: true });
     await expect(page.locator('body')).toHaveCSS('overflow', 'hidden');
   });
 
   test('should remove overflow hidden from body if unmounted', async ({ page }) => {
-    await initBasicActionSheet(page, { isOpen: true });
+    await initBasicSheet(page, { isOpen: true });
     await expect(page.locator('body')).toHaveCSS('overflow', 'hidden');
 
     await page.evaluate(() => {
-      document.querySelector('p-action-sheet').remove();
+      document.querySelector('p-sheet').remove();
     });
     await waitForStencilLifecycle(page);
 
@@ -555,10 +553,10 @@ test.describe('scroll lock', () => {
 
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {
-    await initBasicActionSheet(page);
+    await initBasicSheet(page);
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidLoad['p-action-sheet'], 'componentDidLoad: p-action-sheet').toBe(1);
+    expect(status.componentDidLoad['p-sheet'], 'componentDidLoad: p-sheet').toBe(1);
     expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1); // includes p-icon
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
@@ -566,14 +564,14 @@ test.describe('lifecycle', () => {
   });
 
   test('should work without unnecessary round trips after state change', async ({ page }) => {
-    await initBasicActionSheet(page);
+    await initBasicSheet(page);
     const host = getHost(page);
 
     await setProperty(host, 'open', false);
     await waitForStencilLifecycle(page);
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidUpdate['p-action-sheet'], 'componentDidUpdate: p-action-sheet').toBe(1);
+    expect(status.componentDidUpdate['p-sheet'], 'componentDidUpdate: p-sheet').toBe(1);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
@@ -582,7 +580,7 @@ test.describe('lifecycle', () => {
 
 test.describe('slotted header', () => {
   test('should set slotted header', async ({ page }) => {
-    await initBasicActionSheet(page, { hasSlottedHeader: true });
+    await initBasicSheet(page, { hasSlottedHeader: true });
     const header = getHeader(page);
     expect(header).toBeDefined();
     // TODO: not sure, if this is really ideal?
@@ -590,7 +588,7 @@ test.describe('slotted header', () => {
   });
 
   test('should use aria text from aria prop instead of slotted header', async ({ page }) => {
-    await initBasicActionSheet(page, {
+    await initBasicSheet(page, {
       hasSlottedHeader: true,
       aria: "{'aria-label': 'A slightly more detailed label'}",
     });
@@ -602,7 +600,7 @@ test.describe('slotted header', () => {
 test.describe('events', () => {
   skipInBrowsers(['firefox', 'webkit']);
   test('should call motionVisibleEnd event when opening transition is finished', async ({ page }) => {
-    await initBasicActionSheet(
+    await initBasicSheet(
       page,
       { isOpen: false },
       { injectIntoHead: '<style>:root { --p-transition-duration: unset; }</style>' }
@@ -615,14 +613,14 @@ test.describe('events', () => {
     expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(0);
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
 
-    await openActionSheet(page);
-    await waitForActionSheetTransition();
+    await openSheet(page);
+    await waitForSheetTransition();
 
     expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(1);
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
   });
   test('should call motionHiddenEnd event when closing transition is finished', async ({ page }) => {
-    await initBasicActionSheet(
+    await initBasicSheet(
       page,
       { isOpen: true },
       { injectIntoHead: '<style>:root { --p-transition-duration: unset; }</style>' }
@@ -635,8 +633,8 @@ test.describe('events', () => {
     expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(0);
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
 
-    await dismissActionSheet(page);
-    await waitForActionSheetTransition();
+    await dismissSheet(page);
+    await waitForSheetTransition();
 
     expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(0);
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(1);

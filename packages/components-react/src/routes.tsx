@@ -77,9 +77,9 @@ export const routes: RouteType[] = [
     element: <fromExamples.AccordionExamplePage />,
   },
   {
-    name: 'Action Sheet Example',
-    path: '/action-sheet-example',
-    element: <fromExamples.ActionSheetExamplePage />,
+    name: 'Sheet Example',
+    path: '/sheet-example',
+    element: <fromExamples.SheetExamplePage />,
   },
   {
     name: 'AG Grid Example',

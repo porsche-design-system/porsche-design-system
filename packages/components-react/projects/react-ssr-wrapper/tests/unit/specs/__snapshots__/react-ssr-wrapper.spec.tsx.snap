@@ -6791,8 +6791,8 @@ img {
 </p-accordion>
 `;
 
-exports[`should render dsr component for PActionSheet 1`] = `
-<p-action-sheet
+exports[`should render dsr component for PSheet 1`] = `
+<p-sheet
   data-ssr=""
 >
   <template
@@ -6856,7 +6856,7 @@ dialog::backdrop {
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
 }
-.action-sheet {
+.sheet {
   display: grid;
   grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
   padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
@@ -6874,7 +6874,7 @@ dialog::backdrop {
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
-.action-sheet:dir(rtl) {
+.sheet:dir(rtl) {
   transform: translateY(25vh);
 }
 .dismiss {
@@ -6897,7 +6897,7 @@ dialog::backdrop {
         class="scroller"
       >
         <div
-          class="action-sheet"
+          class="sheet"
         >
           <p-button
             class="dismiss"
@@ -7044,7 +7044,7 @@ img {
                 role="status"
               />
             </template>
-            Dismiss action-sheet
+            Dismiss sheet
           </p-button>
           <slot />
         </div>
@@ -7052,7 +7052,7 @@ img {
     </dialog>
   </template>
   Some child
-</p-action-sheet>
+</p-sheet>
 `;
 
 exports[`should render dsr component for PBanner 1`] = `

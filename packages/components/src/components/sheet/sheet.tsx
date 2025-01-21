@@ -17,19 +17,19 @@ import {
   warnIfAriaAndHeadingPropsAreUndefined,
 } from '../../utils';
 import { onTransitionEnd } from '../../utils/dialog/dialog';
-import { getComponentCss } from './action-sheet-styles';
+import { getComponentCss } from './sheet-styles';
 import {
-  ACTION_SHEET_ARIA_ATTRIBUTES,
-  type ActionSheetAriaAttribute,
-  type ActionSheetMotionHiddenEndEventDetail,
-  type ActionSheetMotionVisibleEndEventDetail,
-} from './action-sheet-utils';
+  SHEET_ARIA_ATTRIBUTES,
+  type SheetAriaAttribute,
+  type SheetMotionHiddenEndEventDetail,
+  type SheetMotionVisibleEndEventDetail,
+} from './sheet-utils';
 
-const propTypes: PropTypes<typeof ActionSheet> = {
+const propTypes: PropTypes<typeof Sheet> = {
   open: AllowedTypes.boolean,
   dismissButton: AllowedTypes.boolean,
   disableBackdropClick: AllowedTypes.boolean,
-  aria: AllowedTypes.aria<ActionSheetAriaAttribute>(ACTION_SHEET_ARIA_ATTRIBUTES),
+  aria: AllowedTypes.aria<SheetAriaAttribute>(SHEET_ARIA_ATTRIBUTES),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -40,35 +40,35 @@ const propTypes: PropTypes<typeof ActionSheet> = {
  * @controlled {"props": ["open"], "event": "dismiss"}
  */
 @Component({
-  tag: 'p-action-sheet',
+  tag: 'p-sheet',
   shadow: true,
 })
-export class ActionSheet {
+export class Sheet {
   @Element() public host!: HTMLElement;
 
-  /** If true, the action-sheet is open. */
+  /** If true, the sheet is open. */
   @Prop() public open: boolean = false;
 
-  /** If false, the action-sheet will not have a dismiss button. */
+  /** If false, the sheet will not have a dismiss button. */
   @Prop() public dismissButton?: boolean = true;
 
-  /** If true, the action-sheet will not be closable via backdrop click. */
+  /** If true, the sheet will not be closable via backdrop click. */
   @Prop() public disableBackdropClick?: boolean = false;
 
   /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<ActionSheetAriaAttribute>;
+  @Prop() public aria?: SelectedAriaAttributes<SheetAriaAttribute>;
 
-  /** Adapts the action-sheet color depending on the theme. */
+  /** Adapts the sheet color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
-  /** Emitted when the action-sheet is opened and the transition is finished. */
-  @Event({ bubbles: false }) public motionVisibleEnd?: EventEmitter<ActionSheetMotionVisibleEndEventDetail>;
+  /** Emitted when the sheet is opened and the transition is finished. */
+  @Event({ bubbles: false }) public motionVisibleEnd?: EventEmitter<SheetMotionVisibleEndEventDetail>;
 
-  /** Emitted when the action-sheet is closed and the transition is finished. */
-  @Event({ bubbles: false }) public motionHiddenEnd?: EventEmitter<ActionSheetMotionHiddenEndEventDetail>;
+  /** Emitted when the sheet is closed and the transition is finished. */
+  @Event({ bubbles: false }) public motionHiddenEnd?: EventEmitter<SheetMotionHiddenEndEventDetail>;
 
   private dialog: HTMLDialogElement;
   private scroller: HTMLDivElement;
@@ -109,7 +109,7 @@ export class ActionSheet {
         tabIndex={-1} // dialog always has a dismiss button to be focused
         ref={(el) => (this.dialog = el)}
         onCancel={(e) => onCancelDialog(e, this.dismissDialog, !this.dismissButton)}
-        // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on action-sheet and mouseup on backdrop) but changed back to native behavior
+        // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on sheet and mouseup on backdrop) but changed back to native behavior
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
         {...parseAndGetAriaAttributes({
@@ -121,7 +121,7 @@ export class ActionSheet {
         })}
       >
         <div class="scroller" ref={(el) => (this.scroller = el)}>
-          <div class="action-sheet">
+          <div class="sheet">
             {this.dismissButton && (
               <PrefixedTagNames.pButton
                 variant="ghost"
@@ -132,7 +132,7 @@ export class ActionSheet {
                 onClick={this.dismissDialog}
                 theme={this.theme}
               >
-                Dismiss action-sheet
+                Dismiss sheet
               </PrefixedTagNames.pButton>
             )}
             {this.hasHeader && <slot name="header" />}

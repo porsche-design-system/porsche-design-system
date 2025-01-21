@@ -1,15 +1,15 @@
 import { expect } from '@jest/globals';
 import * as dialogUtils from '../../utils/dialog/dialog';
 import * as setScrollLockUtils from '../../utils/setScrollLock';
-import { ActionSheet } from './action-sheet';
+import { Sheet } from './sheet';
 
 jest.mock('../../utils/dom');
 
-let component: ActionSheet;
+let component: Sheet;
 
 beforeEach(() => {
-  component = new ActionSheet();
-  component.host = document.createElement('p-action-sheet');
+  component = new Sheet();
+  component.host = document.createElement('p-sheet');
   component.host.attachShadow({ mode: 'open' });
   component['dialog'] = document.createElement('dialog');
 });

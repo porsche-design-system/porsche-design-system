@@ -1,7 +1,7 @@
 export { default as EventsPage } from './EventsPage.vue';
 export { default as OverviewPage } from './OverviewPage.vue';
-export { default as ActionSheetBasicPage } from './ActionSheetBasicPage.vue';
-export { default as ActionSheetPrefixedPage } from './ActionSheetPrefixedPage.vue';
+export { default as SheetBasicPage } from './SheetBasicPage.vue';
+export { default as SheetPrefixedPage } from './SheetPrefixedPage.vue';
 export { default as BannerBasicPage } from './BannerBasicPage.vue';
 export { default as BannerPrefixedPage } from './BannerPrefixedPage.vue';
 export { default as ModalBasicPage } from './ModalBasicPage.vue';

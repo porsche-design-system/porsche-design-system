@@ -34,7 +34,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   <span slot="heading">Some Slotted Heading</span>
   <p>Some Text</p>
 </p-accordion>`,
-  'p-action-sheet': `<p-action-sheet open="true"><h2 slot="header">Some Heading</h2></p-action-sheet>`,
+  'p-sheet': `<p-sheet open="true"><h2 slot="header">Some Heading</h2></p-sheet>`,
   'p-banner': `<p-banner heading="Some heading">
     <span slot="description">Some banner description.</span>
   </p-banner>`,

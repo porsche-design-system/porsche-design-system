@@ -42,13 +42,13 @@ export const getComponentCss = (isOpen: boolean, hasDismissButton: boolean, them
       dialog: getDialogJssStyle(isOpen, theme, 'shading'),
     },
     scroller: getScrollerJssStyle('fullscreen', theme),
-    'action-sheet': {
+    sheet: {
       ...dialogGridJssStyle,
       ...getDialogColorJssStyle(theme),
       ...getDialogTransitionJssStyle(isOpen, '^'),
       width: '100%',
       alignSelf: 'flex-end',
-      marginBlockStart: spacingFluidLarge, // ensures minimal space at the top to visualize paper sheet like border top radius in case action sheet becomes scrollable
+      marginBlockStart: spacingFluidLarge, // ensures minimal space at the top to visualize paper sheet like border top radius in case sheet becomes scrollable
       borderTopLeftRadius: borderRadiusLarge,
       borderTopRightRadius: borderRadiusLarge,
     },

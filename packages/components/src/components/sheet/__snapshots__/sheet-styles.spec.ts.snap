@@ -57,7 +57,7 @@ dialog::backdrop {
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
 }
-.action-sheet {
+.sheet {
   display: grid;
   grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
   padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
@@ -75,7 +75,7 @@ dialog::backdrop {
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
-.action-sheet:dir(rtl) {
+.sheet:dir(rtl) {
   transform: translateY(25vh);
 }"
 `;
@@ -137,7 +137,7 @@ dialog::backdrop {
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
 }
-.action-sheet {
+.sheet {
   display: grid;
   grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
   padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
@@ -155,7 +155,7 @@ dialog::backdrop {
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
 }
-.action-sheet:dir(rtl) {
+.sheet:dir(rtl) {
   transform: translateY(25vh);
 }
 .dismiss {
@@ -233,7 +233,7 @@ dialog::backdrop {
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
 }
-.action-sheet {
+.sheet {
   display: grid;
   grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
   padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
@@ -265,7 +265,7 @@ dialog::backdrop {
   .scroller {
     background: rgba(0,0,0,.01);
   }
-  .action-sheet {
+  .sheet {
     color: #FBFCFF;
     background: #0E0E12;
   }
@@ -330,7 +330,7 @@ dialog::backdrop {
   overscroll-behavior-y: none;
   background: rgba(0,0,0,.01);
 }
-.action-sheet {
+.sheet {
   display: grid;
   grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
   padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
@@ -417,7 +417,7 @@ dialog::backdrop {
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
 }
-.action-sheet {
+.sheet {
   display: grid;
   grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
   padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));

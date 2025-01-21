@@ -3,10 +3,10 @@ import { CoreInitializerPrefixedComponent } from './core-initializer-prefixed.co
 import { EventsComponent } from './events.component';
 import { FormWrapperBindingComponent } from './form-wrapper-binding.component';
 import { OptionalPropertiesComponent } from './optional-properties.component';
-import { ThemeInjectionComponent } from './theme-injection.component';
-import { UtilitiesComponent } from './utilities.component';
 import { tabsBarNavigationComponents } from './tabs-bar-navigation';
 import { tabsBarNavigationBugComponents } from './tabs-bar-navigation-bug';
+import { ThemeInjectionComponent } from './theme-injection.component';
+import { UtilitiesComponent } from './utilities.component';
 
 export const pages = [
   CoreInitializerPrefixedComponent,
@@ -32,14 +32,6 @@ export * from './tabs-bar-navigation-bug';
 export * from './generated/core-initializer.component';
 export * from './generated/overview.component';
 import { AccordionComponent } from './generated/accordion.component';
-import { ActionSheetComponent } from './generated/action-sheet.component';
-import { ActionSheetBasicComponent } from './generated/action-sheet-basic.component';
-import { ActionSheetGridComponent } from './generated/action-sheet-grid.component';
-import { ActionSheetPrefixedComponent } from './generated/action-sheet-prefixed.component';
-import { ActionSheetScrollableComponent } from './generated/action-sheet-scrollable.component';
-import { ActionSheetScrolledComponent } from './generated/action-sheet-scrolled.component';
-import { ActionSheetWithoutDismissButtonComponent } from './generated/action-sheet-without-dismiss-button.component';
-import { ActionSheetWithoutHeadingComponent } from './generated/action-sheet-without-heading.component';
 import { BannerComponent } from './generated/banner.component';
 import { BannerBasicComponent } from './generated/banner-basic.component';
 import { BannerErrorComponent } from './generated/banner-error.component';
@@ -163,6 +155,14 @@ import { ScrollerComponent } from './generated/scroller.component';
 import { SegmentedControlComponent } from './generated/segmented-control.component';
 import { SelectComponent } from './generated/select.component';
 import { SelectWrapperComponent } from './generated/select-wrapper.component';
+import { SheetComponent } from './generated/sheet.component';
+import { SheetBasicComponent } from './generated/sheet-basic.component';
+import { SheetGridComponent } from './generated/sheet-grid.component';
+import { SheetPrefixedComponent } from './generated/sheet-prefixed.component';
+import { SheetScrollableComponent } from './generated/sheet-scrollable.component';
+import { SheetScrolledComponent } from './generated/sheet-scrolled.component';
+import { SheetWithoutDismissButtonComponent } from './generated/sheet-without-dismiss-button.component';
+import { SheetWithoutHeadingComponent } from './generated/sheet-without-heading.component';
 import { SpinnerComponent } from './generated/spinner.component';
 import { StepperHorizontalComponent } from './generated/stepper-horizontal.component';
 import { SwitchComponent } from './generated/switch.component';
@@ -192,14 +192,6 @@ import { WordmarkComponent } from './generated/wordmark.component';
 
 export const generatedPages = [
   AccordionComponent,
-  ActionSheetComponent,
-  ActionSheetBasicComponent,
-  ActionSheetGridComponent,
-  ActionSheetPrefixedComponent,
-  ActionSheetScrollableComponent,
-  ActionSheetScrolledComponent,
-  ActionSheetWithoutDismissButtonComponent,
-  ActionSheetWithoutHeadingComponent,
   BannerComponent,
   BannerBasicComponent,
   BannerErrorComponent,
@@ -323,6 +315,14 @@ export const generatedPages = [
   SegmentedControlComponent,
   SelectComponent,
   SelectWrapperComponent,
+  SheetComponent,
+  SheetBasicComponent,
+  SheetGridComponent,
+  SheetPrefixedComponent,
+  SheetScrollableComponent,
+  SheetScrolledComponent,
+  SheetWithoutDismissButtonComponent,
+  SheetWithoutHeadingComponent,
   SpinnerComponent,
   StepperHorizontalComponent,
   SwitchComponent,
@@ -356,46 +356,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Accordion',
     path: 'accordion',
     component: AccordionComponent,
-  },
-  {
-    name: 'Action Sheet',
-    path: 'action-sheet',
-    component: ActionSheetComponent,
-  },
-  {
-    name: 'Action Sheet Basic',
-    path: 'action-sheet-basic',
-    component: ActionSheetBasicComponent,
-  },
-  {
-    name: 'Action Sheet Grid',
-    path: 'action-sheet-grid',
-    component: ActionSheetGridComponent,
-  },
-  {
-    name: 'Action Sheet Prefixed',
-    path: 'action-sheet-prefixed',
-    component: ActionSheetPrefixedComponent,
-  },
-  {
-    name: 'Action Sheet Scrollable',
-    path: 'action-sheet-scrollable',
-    component: ActionSheetScrollableComponent,
-  },
-  {
-    name: 'Action Sheet Scrolled',
-    path: 'action-sheet-scrolled',
-    component: ActionSheetScrolledComponent,
-  },
-  {
-    name: 'Action Sheet Without Dismiss Button',
-    path: 'action-sheet-without-dismiss-button',
-    component: ActionSheetWithoutDismissButtonComponent,
-  },
-  {
-    name: 'Action Sheet Without Heading',
-    path: 'action-sheet-without-heading',
-    component: ActionSheetWithoutHeadingComponent,
   },
   {
     name: 'Banner',
@@ -1001,6 +961,46 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Select Wrapper',
     path: 'select-wrapper',
     component: SelectWrapperComponent,
+  },
+  {
+    name: 'Sheet',
+    path: 'sheet',
+    component: SheetComponent,
+  },
+  {
+    name: 'Sheet Basic',
+    path: 'sheet-basic',
+    component: SheetBasicComponent,
+  },
+  {
+    name: 'Sheet Grid',
+    path: 'sheet-grid',
+    component: SheetGridComponent,
+  },
+  {
+    name: 'Sheet Prefixed',
+    path: 'sheet-prefixed',
+    component: SheetPrefixedComponent,
+  },
+  {
+    name: 'Sheet Scrollable',
+    path: 'sheet-scrollable',
+    component: SheetScrollableComponent,
+  },
+  {
+    name: 'Sheet Scrolled',
+    path: 'sheet-scrolled',
+    component: SheetScrolledComponent,
+  },
+  {
+    name: 'Sheet Without Dismiss Button',
+    path: 'sheet-without-dismiss-button',
+    component: SheetWithoutDismissButtonComponent,
+  },
+  {
+    name: 'Sheet Without Heading',
+    path: 'sheet-without-heading',
+    component: SheetWithoutHeadingComponent,
   },
   {
     name: 'Spinner',

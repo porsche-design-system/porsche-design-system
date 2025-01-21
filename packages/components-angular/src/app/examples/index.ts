@@ -1,5 +1,4 @@
 import { AccordionExampleComponent } from './accordion-example.component';
-import { ActionSheetExampleComponent } from './action-sheet-example.component';
 import { AgGridExampleStorefrontComponent } from './ag-grid-example-storefront.component';
 import { AgGridExampleComponent } from './ag-grid-example.component';
 import { BannerExampleComponent } from './banner-example.component';
@@ -36,6 +35,7 @@ import { SelectExampleControlledComponent } from './select-example-controlled.co
 import { SelectExampleDynamicComponent } from './select-example-dynamic.component';
 import { SelectExampleRequiredComponent } from './select-example-required.component';
 import { SelectExampleComponent } from './select-example.component';
+import { SheetExampleComponent } from './sheet-example.component';
 import { StepperHorizontalExampleComponent } from './stepper-horizontal-example.component';
 import { StepperHorizontalNavigationExampleSecondComponent } from './stepper-horizontal-navigation-example-second.component';
 import { StepperHorizontalNavigationExampleStartComponent } from './stepper-horizontal-navigation-example-start.component';
@@ -52,7 +52,7 @@ import { ToastExampleComponent } from './toast-example.component';
 
 export const examples = [
   AccordionExampleComponent,
-  ActionSheetExampleComponent,
+  SheetExampleComponent,
   AgGridExampleComponent,
   AgGridExampleStorefrontComponent,
   BannerExampleComponent,
@@ -105,7 +105,7 @@ export const examples = [
 ];
 
 export * from './accordion-example.component';
-export * from './action-sheet-example.component';
+export * from './sheet-example.component';
 export * from './ag-grid-example.component';
 export * from './ag-grid-example-storefront.component';
 export * from './banner-example.component';

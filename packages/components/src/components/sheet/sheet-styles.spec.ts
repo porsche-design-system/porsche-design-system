@@ -1,5 +1,5 @@
 import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
-import { getComponentCss } from './action-sheet-styles';
+import { getComponentCss } from './sheet-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([

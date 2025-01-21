@@ -316,7 +316,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             /className=\{(\{[\S\s]+?})}/g,
             `className={Object.entries($1).map(([key, value]) => value && key).filter(Boolean).join(' ')}`
           );
-      } else if (tagName === 'p-action-sheet') {
+      } else if (tagName === 'p-sheet') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasDismissButton)/g, '$1')
           .replace(/(this\.props\.ariaLabel)\(\)/g, '$1')

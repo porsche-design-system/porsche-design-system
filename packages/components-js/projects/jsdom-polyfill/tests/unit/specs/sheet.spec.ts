@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { getMarkup } from '../helper';
 
 it('should have initialized shadow dom', async () => {
-  document.body.innerHTML = getMarkup('p-action-sheet');
+  document.body.innerHTML = getMarkup('p-sheet');
   expect(await componentsReady()).toBe(1);
 
   const el = document.body.firstElementChild;
@@ -13,7 +13,7 @@ it('should have initialized shadow dom', async () => {
 });
 
 it('should have working events', async () => {
-  document.body.innerHTML = `${getMarkup('p-action-sheet')}<div id="debug">Event Counter: <span>0</span></div>`;
+  document.body.innerHTML = `${getMarkup('p-sheet')}<div id="debug">Event Counter: <span>0</span></div>`;
   await componentsReady();
 
   const el = document.body.firstElementChild;

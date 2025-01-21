@@ -31,9 +31,9 @@ export const routes: RouteType[] = [
     component: fromExamples.AccordionExample,
   },
   {
-    path: '/action-sheet-example',
-    name: 'Action Sheet Example',
-    component: fromExamples.ActionSheetExample,
+    path: '/sheet-example',
+    name: 'Sheet Example',
+    component: fromExamples.SheetExample,
   },
   {
     path: '/ag-grid-example',
@@ -176,14 +176,14 @@ export const routes: RouteType[] = [
     component: fromExamples.LinkTileProductExample,
   },
   {
-    path: '/action-sheet-basic',
-    name: 'ActionSheetBasic',
-    component: fromPages.ActionSheetBasicPage,
+    path: '/sheet-basic',
+    name: 'SheetBasic',
+    component: fromPages.SheetBasicPage,
   },
   {
-    path: '/action-sheet-prefixed',
-    name: 'ActionSheetPrefixed',
-    component: fromPages.ActionSheetPrefixedPage,
+    path: '/sheet-prefixed',
+    name: 'SheetPrefixed',
+    component: fromPages.SheetPrefixedPage,
   },
   {
     path: '/modal-basic',

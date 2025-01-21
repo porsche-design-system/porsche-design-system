@@ -70,13 +70,13 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
-      component: 'p-action-sheet',
+      component: 'p-sheet',
       samples: [
         [
-          componentsJsPath + '/action-sheet-example.html',
-          componentsAngularPath + '/action-sheet-example.component.ts',
-          componentsReactPath + '/ActionSheetExample.tsx',
-          componentsVuePath + '/ActionSheetExample.vue',
+          componentsJsPath + '/sheet-example.html',
+          componentsAngularPath + '/sheet-example.component.ts',
+          componentsReactPath + '/SheetExample.tsx',
+          componentsVuePath + '/SheetExample.vue',
         ],
       ],
     },

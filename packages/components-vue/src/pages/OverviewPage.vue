@@ -82,8 +82,8 @@ import {
         <PDisplay>Some Display</PDisplay>
       </div>
 
-      <div class="playground light" title="should render default action-sheet">
-        <iframe src="/action-sheet-basic?iframe=true" loading="eager" title="fix-linter-1a"></iframe>
+      <div class="playground light" title="should render default sheet">
+        <iframe src="/sheet-basic?iframe=true" loading="eager" title="fix-linter-1a"></iframe>
       </div>
 
       <div class="playground light" title="should render default modal">
@@ -425,8 +425,8 @@ import {
           <PDisplay>Some Display</PDisplay>
         </div>
 
-        <div class="playground light" title="should render default action-sheet with custom prefix">
-          <iframe src="/action-sheet-prefixed?iframe=true" loading="eager" title="fix-linter-1a"></iframe>
+        <div class="playground light" title="should render default sheet with custom prefix">
+          <iframe src="/sheet-prefixed?iframe=true" loading="eager" title="fix-linter-1a"></iframe>
         </div>
 
         <div class="playground light" title="should render default modal with custom prefix">

@@ -60,10 +60,10 @@ export const config: StorefrontConfig = {
       Usage: [() => import('@/../../components/src/components/accordion/accordion.usage.md')],
       Props: [() => import('@/../../components/src/components/accordion/accordion.props.md')],
     },
-    'Action Sheet': {
-      Examples: [() => import('@/../../components/src/components/action-sheet/action-sheet.examples.md')],
-      Usage: [() => import('@/../../components/src/components/action-sheet/action-sheet.usage.md')],
-      Props: [() => import('@/../../components/src/components/action-sheet/action-sheet.props.md')],
+    Sheet: {
+      Examples: [() => import('@/../../components/src/components/sheet/sheet.examples.md')],
+      Usage: [() => import('@/../../components/src/components/sheet/sheet.usage.md')],
+      Props: [() => import('@/../../components/src/components/sheet/sheet.props.md')],
     },
     Banner: {
       Examples: [() => import('@/../../components/src/components/banner/banner.examples.md')],

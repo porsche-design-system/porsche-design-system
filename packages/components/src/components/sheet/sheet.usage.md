@@ -1,4 +1,4 @@
-<ComponentHeading name="Action Sheet"></ComponentHeading>
+<ComponentHeading name="Sheet"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 
@@ -9,7 +9,7 @@ component in various situations.
 
 ### Do:
 
-- Use an action sheet only for critical decisions or when multiple related actions need to be presented.
+- Use an sheet only for critical decisions or when multiple related actions need to be presented.
 - Keep the options clear, concise, and easy to understand.
 - Limit the number of choices to avoid overwhelming the user.
 - Use descriptive labels that indicate the outcome of each action.
@@ -17,8 +17,8 @@ component in various situations.
 
 ### Don't:
 
-- Don’t use action sheets for non-essential or minor tasks.
+- Don’t use sheets for non-essential or minor tasks.
 - Avoid presenting too many options or complex decisions.
 - Don’t use vague labels like “OK” or “Cancel” without context.
-- Avoid stacking multiple action sheets on top of each other.
+- Avoid stacking multiple sheets on top of each other.
 - Don’t interrupt the user’s workflow unnecessarily.

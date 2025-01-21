@@ -14,14 +14,6 @@ export * from './Utilities';
 export * from './generated/CoreInitializer';
 export * from './generated/Overview';
 import { AccordionPage } from './generated/Accordion';
-import { ActionSheetPage } from './generated/ActionSheet';
-import { ActionSheetBasicPage } from './generated/ActionSheetBasic';
-import { ActionSheetGridPage } from './generated/ActionSheetGrid';
-import { ActionSheetPrefixedPage } from './generated/ActionSheetPrefixed';
-import { ActionSheetScrollablePage } from './generated/ActionSheetScrollable';
-import { ActionSheetScrolledPage } from './generated/ActionSheetScrolled';
-import { ActionSheetWithoutDismissButtonPage } from './generated/ActionSheetWithoutDismissButton';
-import { ActionSheetWithoutHeadingPage } from './generated/ActionSheetWithoutHeading';
 import { BannerPage } from './generated/Banner';
 import { BannerBasicPage } from './generated/BannerBasic';
 import { BannerErrorPage } from './generated/BannerError';
@@ -143,6 +135,14 @@ import { ScrollerPage } from './generated/Scroller';
 import { SegmentedControlPage } from './generated/SegmentedControl';
 import { SelectPage } from './generated/Select';
 import { SelectWrapperPage } from './generated/SelectWrapper';
+import { SheetPage } from './generated/Sheet';
+import { SheetBasicPage } from './generated/SheetBasic';
+import { SheetGridPage } from './generated/SheetGrid';
+import { SheetPrefixedPage } from './generated/SheetPrefixed';
+import { SheetScrollablePage } from './generated/SheetScrollable';
+import { SheetScrolledPage } from './generated/SheetScrolled';
+import { SheetWithoutDismissButtonPage } from './generated/SheetWithoutDismissButton';
+import { SheetWithoutHeadingPage } from './generated/SheetWithoutHeading';
 import { SpinnerPage } from './generated/Spinner';
 import { StepperHorizontalPage } from './generated/StepperHorizontal';
 import { SwitchPage } from './generated/Switch';
@@ -175,46 +175,6 @@ export const generatedRoutes: RouteType[] = [
     name: 'Accordion',
     path: '/accordion',
     element: <AccordionPage />,
-  },
-  {
-    name: 'Action Sheet',
-    path: '/action-sheet',
-    element: <ActionSheetPage />,
-  },
-  {
-    name: 'Action Sheet Basic',
-    path: '/action-sheet-basic',
-    element: <ActionSheetBasicPage />,
-  },
-  {
-    name: 'Action Sheet Grid',
-    path: '/action-sheet-grid',
-    element: <ActionSheetGridPage />,
-  },
-  {
-    name: 'Action Sheet Prefixed',
-    path: '/action-sheet-prefixed',
-    element: <ActionSheetPrefixedPage />,
-  },
-  {
-    name: 'Action Sheet Scrollable',
-    path: '/action-sheet-scrollable',
-    element: <ActionSheetScrollablePage />,
-  },
-  {
-    name: 'Action Sheet Scrolled',
-    path: '/action-sheet-scrolled',
-    element: <ActionSheetScrolledPage />,
-  },
-  {
-    name: 'Action Sheet Without Dismiss Button',
-    path: '/action-sheet-without-dismiss-button',
-    element: <ActionSheetWithoutDismissButtonPage />,
-  },
-  {
-    name: 'Action Sheet Without Heading',
-    path: '/action-sheet-without-heading',
-    element: <ActionSheetWithoutHeadingPage />,
   },
   {
     name: 'Banner',
@@ -820,6 +780,46 @@ export const generatedRoutes: RouteType[] = [
     name: 'Select Wrapper',
     path: '/select-wrapper',
     element: <SelectWrapperPage />,
+  },
+  {
+    name: 'Sheet',
+    path: '/sheet',
+    element: <SheetPage />,
+  },
+  {
+    name: 'Sheet Basic',
+    path: '/sheet-basic',
+    element: <SheetBasicPage />,
+  },
+  {
+    name: 'Sheet Grid',
+    path: '/sheet-grid',
+    element: <SheetGridPage />,
+  },
+  {
+    name: 'Sheet Prefixed',
+    path: '/sheet-prefixed',
+    element: <SheetPrefixedPage />,
+  },
+  {
+    name: 'Sheet Scrollable',
+    path: '/sheet-scrollable',
+    element: <SheetScrollablePage />,
+  },
+  {
+    name: 'Sheet Scrolled',
+    path: '/sheet-scrolled',
+    element: <SheetScrolledPage />,
+  },
+  {
+    name: 'Sheet Without Dismiss Button',
+    path: '/sheet-without-dismiss-button',
+    element: <SheetWithoutDismissButtonPage />,
+  },
+  {
+    name: 'Sheet Without Heading',
+    path: '/sheet-without-heading',
+    element: <SheetWithoutHeadingPage />,
   },
   {
     name: 'Spinner',

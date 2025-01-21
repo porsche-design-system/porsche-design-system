@@ -13,7 +13,7 @@ exports[`should call validateProps() with correct parameters via render for p-ac
 }
 `;
 
-exports[`should call validateProps() with correct parameters via render for p-action-sheet: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-sheet: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
   "disableBackdropClick": "boolean",

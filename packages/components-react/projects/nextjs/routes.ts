@@ -4,38 +4,6 @@ const generatedRoutes = {
     "path": "/accordion",
     "name": "Accordion"
   },
-  "actionSheet": {
-    "path": "/action-sheet",
-    "name": "ActionSheet"
-  },
-  "actionSheetBasic": {
-    "path": "/action-sheet-basic",
-    "name": "ActionSheetBasic"
-  },
-  "actionSheetGrid": {
-    "path": "/action-sheet-grid",
-    "name": "ActionSheetGrid"
-  },
-  "actionSheetPrefixed": {
-    "path": "/action-sheet-prefixed",
-    "name": "ActionSheetPrefixed"
-  },
-  "actionSheetScrollable": {
-    "path": "/action-sheet-scrollable",
-    "name": "ActionSheetScrollable"
-  },
-  "actionSheetScrolled": {
-    "path": "/action-sheet-scrolled",
-    "name": "ActionSheetScrolled"
-  },
-  "actionSheetWithoutDismissButton": {
-    "path": "/action-sheet-without-dismiss-button",
-    "name": "ActionSheetWithoutDismissButton"
-  },
-  "actionSheetWithoutHeading": {
-    "path": "/action-sheet-without-heading",
-    "name": "ActionSheetWithoutHeading"
-  },
   "banner": {
     "path": "/banner",
     "name": "Banner"
@@ -527,6 +495,38 @@ const generatedRoutes = {
   "selectWrapper": {
     "path": "/select-wrapper",
     "name": "SelectWrapper"
+  },
+  "sheet": {
+    "path": "/sheet",
+    "name": "Sheet"
+  },
+  "sheetBasic": {
+    "path": "/sheet-basic",
+    "name": "SheetBasic"
+  },
+  "sheetGrid": {
+    "path": "/sheet-grid",
+    "name": "SheetGrid"
+  },
+  "sheetPrefixed": {
+    "path": "/sheet-prefixed",
+    "name": "SheetPrefixed"
+  },
+  "sheetScrollable": {
+    "path": "/sheet-scrollable",
+    "name": "SheetScrollable"
+  },
+  "sheetScrolled": {
+    "path": "/sheet-scrolled",
+    "name": "SheetScrolled"
+  },
+  "sheetWithoutDismissButton": {
+    "path": "/sheet-without-dismiss-button",
+    "name": "SheetWithoutDismissButton"
+  },
+  "sheetWithoutHeading": {
+    "path": "/sheet-without-heading",
+    "name": "SheetWithoutHeading"
   },
   "spinner": {
     "path": "/spinner",
