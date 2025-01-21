@@ -84,7 +84,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       <div slot="footer" className="-p-canvas-grid">
         <PText
           size="xx-small"
-          color="neutral-contrast-medium"
+          color="contrast-medium"
           align="center"
           className="col-span-full xs:col-start-2 xs:col-end-12"
         >
