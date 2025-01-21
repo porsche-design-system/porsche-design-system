@@ -3,7 +3,6 @@
 exports[`should match snapshot 1`] = `
 [
   "p-accordion",
-  "p-sheet",
   "p-banner",
   "p-button",
   "p-button-group",
@@ -46,6 +45,7 @@ exports[`should match snapshot 1`] = `
   "p-segmented-control",
   "p-select",
   "p-select-wrapper",
+  "p-sheet",
   "p-spinner",
   "p-stepper-horizontal",
   "p-switch",
