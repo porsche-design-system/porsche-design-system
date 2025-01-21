@@ -1,4 +1,5 @@
 export { default as AccordionExample } from './AccordionExample.vue';
+export { default as SheetExample } from './SheetExample.vue';
 export { default as AGGridExample } from './AGGridExample.vue';
 export { default as AGGridExampleStorefront } from './AGGridExampleStorefront.vue';
 export { default as ButtonExampleForm } from './ButtonExampleForm.vue';

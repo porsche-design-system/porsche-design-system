@@ -95,6 +95,8 @@ packages/components-react/projects/react-ssr-wrapper/src/utils.ts
 
 packages/components-react/projects/remix/app/routes/banner-basic.tsx
 packages/components-react/projects/remix/app/routes/banner-prefixed.tsx
+packages/components-react/projects/remix/app/routes/sheet-basic.tsx
+packages/components-react/projects/remix/app/routes/sheet-prefixed.tsx
 packages/components-react/projects/remix/app/routes/flyout-basic.tsx
 packages/components-react/projects/remix/app/routes/flyout-prefixed.tsx
 packages/components-react/projects/remix/app/routes/flyout-multilevel-basic.tsx

@@ -1,7 +1,7 @@
 import { expect } from '@jest/globals';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
-import { getCssObject } from '../../../src/test-utils';
 import type { TagName } from '@porsche-design-system/shared';
+import { getCssObject } from '../../../src/test-utils';
 
 export const validateCssAndMatchSnapshot = (css: string) => {
   const cssObject: any = getCssObject(css);
@@ -80,7 +80,7 @@ const validateFormComponentHostDisplayStyle = (cssObject: any, tagName: TagName)
 // Expect all slotted styles to be !important since they shouldn't be overridable
 const validateSlottedStyles = (cssObject: any, tagName: TagName) => {
   recursivelyApplyForKeyIncludes(cssObject, '::slotted', (_, value) => {
-    Object.entries(value).forEach(([cssProp, cssValue]) => {
+    for (const [cssProp, cssValue] of Object.entries(value)) {
       // exceptions for tagName and css property are defined here
       if (
         !['p-textarea-wrapper', 'p-optgroup'].includes(tagName) &&
@@ -92,28 +92,28 @@ const validateSlottedStyles = (cssObject: any, tagName: TagName) => {
       // merging jss objects with `key: 'undefined'` to unset a css property won't work
       // when it is interpolated to `undefined !important` already which is invalid
       expect(cssValue).not.toMatch(/undefined !important$/);
-    });
+    }
   });
 };
 
 // All :hover styles should be wrapped in a @media(hover:hover) since they are only needed for devices which support hover
 const validateHoverMediaQuery = (cssObject: object) => {
-  Object.entries(cssObject).forEach(([key, value]) => {
+  for (const [key, value] of Object.entries(cssObject)) {
     // potential media query
     if (typeof value === 'object') {
-      Object.keys(value).forEach((childKey) => {
+      for (const childKey of Object.keys(value)) {
         // nested selectors inside media query
         if (childKey.match(/:hover/)) {
           expect(key).toBe('@media(hover:hover)');
         }
-      });
+      }
     }
 
     // top level selectors
     if (!key.match(/^@media\(hover:hover\)$/)) {
       expect(key).not.toMatch(/:hover/);
     }
-  });
+  }
 };
 
 /**

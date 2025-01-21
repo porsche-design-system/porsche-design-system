@@ -31,6 +31,11 @@ export const routes: RouteType[] = [
     component: fromExamples.AccordionExample,
   },
   {
+    path: '/sheet-example',
+    name: 'Sheet Example',
+    component: fromExamples.SheetExample,
+  },
+  {
     path: '/ag-grid-example',
     name: 'AG Grid Example',
     component: fromExamples.AGGridExample,
@@ -169,6 +174,16 @@ export const routes: RouteType[] = [
     path: '/link-tile-product-example',
     name: 'Link Tile Product Example',
     component: fromExamples.LinkTileProductExample,
+  },
+  {
+    path: '/sheet-basic',
+    name: 'SheetBasic',
+    component: fromPages.SheetBasicPage,
+  },
+  {
+    path: '/sheet-prefixed',
+    name: 'SheetPrefixed',
+    component: fromPages.SheetPrefixedPage,
   },
   {
     path: '/modal-basic',

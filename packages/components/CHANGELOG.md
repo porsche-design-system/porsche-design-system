@@ -14,8 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.25.0-rc.0] - 2025-01-21
+
 #### Added
 
+- `Sheet` ([#3704](https://github.com/porsche-design-system/porsche-design-system/pull/3704))
 - `Button`, `Button-Pure`: Add `form` prop to explicitly associate the component with a form, even when it's not
   directly nested within it. ([#3648](https://github.com/porsche-design-system/porsche-design-system/pull/3648))
 
