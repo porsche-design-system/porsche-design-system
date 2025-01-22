@@ -22,7 +22,9 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    // Allows customizing built-in components, e.g. to add styling.
+    wrapper: ({ children }) => (
+      <article className="col-span-full xs:col-start-2 xs:col-end-12">{children as React.ReactNode}</article>
+    ),
     h1: ({ children }) => (
       <PDisplay tag="h1" size="medium" className="mt-lg mb-md max-w-prose">
         {children as React.ReactNode}
@@ -80,7 +82,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     thead: ({ children }) => <PTableHead>{children as React.ReactNode}</PTableHead>,
     th: ({ children }) => <PTableHeadCell>{children as React.ReactNode}</PTableHeadCell>,
     tbody: ({ children }) => <PTableBody>{children as React.ReactNode}</PTableBody>,
-    td: ({ children }) => <PTableCell>{children as React.ReactNode}</PTableCell>,
+    td: ({ children }) => <PTableCell multiline={true}>{children as React.ReactNode}</PTableCell>,
     tr: ({ children }) => <PTableRow>{children as React.ReactNode}</PTableRow>,
     a: ({ href, children }) => (
       <PLinkPure icon="none" underline={true}>

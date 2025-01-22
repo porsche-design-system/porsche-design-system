@@ -19,6 +19,7 @@
     font-size: theme(fontSize.xs);
     line-height: 1.5;
     color: theme(colors.primary.DEFAULT);
+    hyphens: none;
   }
 
   :not(pre) > code {

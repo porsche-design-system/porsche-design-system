@@ -6,12 +6,12 @@ import {
   PSelectOption,
   type PSelectProps,
   type SelectUpdateEventDetail,
-} from '@porsche-design-system/components-react';
+} from '@porsche-design-system/components-react/ssr';
 
 type ThemeSelectProps = {
   theme: PlaygroundTheme;
-  label: PSelectProps['label'];
-  hideLabel: PSelectProps['hideLabel'];
+  label?: PSelectProps['label'];
+  hideLabel?: PSelectProps['hideLabel'];
   onUpdate: (event: CustomEvent<SelectUpdateEventDetail>) => void;
 };
 

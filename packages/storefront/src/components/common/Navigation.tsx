@@ -1,6 +1,12 @@
 import { type Routes, sitemap } from '@/sitemap';
 import { getPathnameRoutes } from '@/utils/pathname';
-import { type AccordionUpdateEventDetail, PAccordion, PLinkPure } from '@porsche-design-system/components-react/ssr';
+import {
+  type AccordionUpdateEventDetail,
+  PAccordion,
+  PDivider,
+  PLinkPure,
+  PText,
+} from '@porsche-design-system/components-react/ssr';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -34,37 +40,51 @@ export const Navigation = () => {
 
   return (
     <>
-      {Object.entries(sitemap).map(([path, category]) => (
-        <PAccordion
-          key={path}
-          heading={category.name as string}
-          headingTag="h3"
-          compact={true}
-          className={['Components', 'Must Know'].includes(category.name as string) ? 'mt-sm' : ''}
-          open={openSections[path]}
-          onUpdate={handleAccordionUpdate(path)}
-        >
-          {category.subPaths &&
-            Object.entries(category.subPaths).map(([_, page]) => {
-              // If page has subPaths (tabs) link to first tab
-              const link = page.subPaths ? Object.values(page.subPaths)[0].path : page.path;
-              return (
-                <PLinkPure
-                  className="my-static-xs inline-block"
-                  key={link}
-                  icon="none"
-                  stretch={true}
-                  active={pathname.includes(`${page.path}/`)}
-                >
-                  <Link href={link}>{page.name}</Link>
-                </PLinkPure>
-              );
-            })}
-        </PAccordion>
-      ))}
-      <PLinkPure className="mt-lg" href="https://brand.porsche.com" target="_blank" icon="external">
-        brand.porsche.com
-      </PLinkPure>
+      <nav aria-label="Main">
+        {Object.entries(sitemap).map(([path, category]) => (
+          <PAccordion
+            key={path}
+            heading={category.name as string}
+            headingTag="h3"
+            compact={true}
+            className={['Components', 'Must Know'].includes(category.name as string) ? 'mt-sm' : ''}
+            open={openSections[path]}
+            onUpdate={handleAccordionUpdate(path)}
+          >
+            {category.subPaths &&
+              Object.entries(category.subPaths).map(([_, page]) => {
+                // If page has subPaths (tabs) link to first tab
+                const link = page.subPaths ? Object.values(page.subPaths)[0].path : page.path;
+                return (
+                  <PLinkPure
+                    className="my-static-xs inline-block"
+                    key={link}
+                    icon="none"
+                    stretch={true}
+                    active={pathname.includes(`${page.path}/`)}
+                  >
+                    <Link href={link}>{page.name}</Link>
+                  </PLinkPure>
+                );
+              })}
+          </PAccordion>
+        ))}
+      </nav>
+      <PDivider className="my-lg" />
+      <footer className="flex flex-col gap-md">
+        <PLinkPure className="self-start" href="https://brand.porsche.com" target="_blank" icon="external">
+          brand.porsche.com
+        </PLinkPure>
+        <PText size="xx-small" color="contrast-medium">
+          © 2025 Dr. Ing. h.c. F. Porsche AG.
+          <br />
+          <Link href="https://brand.porsche.com/d/aXCSDnXaTiSY">Privacy Policy</Link>
+          <br />
+          <Link href="https://brand.porsche.com/d/S5pRV9qVeHyf">Legal Notice</Link>
+          <br />
+          <Link href="/license">License</Link>
+        </PText>
+      </footer>
     </>
   );
 };

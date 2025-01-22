@@ -12,7 +12,6 @@ import {
 } from '@porsche-design-system/components-react/ssr';
 import { breakpointS } from '@porsche-design-system/components-react/styles';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { type PropsWithChildren, useState } from 'react';
 
 export const Canvas = ({ children }: PropsWithChildren) => {
@@ -68,10 +67,8 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       </PButton>
 
       <div className="-p-canvas-grid">
-        <div className="col-span-full xs:col-start-2 xs:col-end-12">
-          <Tabs />
-          {children}
-        </div>
+        <Tabs />
+        {children}
       </div>
 
       <div slot="sidebar-start">
@@ -80,37 +77,6 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       <div slot="sidebar-end">
         <PText>Sidebar End</PText>
       </div>
-
-      <div slot="footer" className="-p-canvas-grid">
-        <PText
-          size="xx-small"
-          color="contrast-medium"
-          align="center"
-          className="col-span-full xs:col-start-2 xs:col-end-12"
-        >
-          © 2025 Dr. Ing. h.c. F. Porsche AG. &nbsp;
-          <a href="https://brand.porsche.com/d/aXCSDnXaTiSY">Privacy Policy</a>
-          &nbsp;
-          <a href="https://brand.porsche.com/d/S5pRV9qVeHyf">Legal Notice</a>
-          &nbsp;
-          <Link href="/license">License</Link>
-        </PText>
-      </div>
-
-      {usePathname() === '/' && (
-        <video
-          className="w-full h-full"
-          slot="background"
-          poster="assets/bg.webp"
-          loop={true}
-          muted={true}
-          autoPlay={true}
-          playsInline={true}
-        >
-          <source src="assets/bg.webm" type="video/webm" />
-          <source src="assets/bg.mp4" type="video/mp4" />
-        </video>
-      )}
     </PCanvas>
   );
 };

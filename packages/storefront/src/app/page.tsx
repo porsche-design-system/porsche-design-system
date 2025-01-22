@@ -4,14 +4,35 @@ import Image from 'next/image';
 export default function Home() {
   return (
     <>
-      <PDisplay className="mt-lg max-w-lg" size="medium">
-        Welcome to the new digital
-      </PDisplay>
-      <PText className="mt-md max-w-prose" color="contrast-high" size="large">
+      <div
+        className="col-span-full grid"
+        style={{ marginBlockStart: '-70px', marginInline: 'calc(clamp(16px, 12px + 1.25vw, 24px) * -1)' }}
+      >
+        <video
+          className="w-full col-start-1 row-start-1"
+          poster="assets/bg.webp"
+          loop={true}
+          muted={true}
+          autoPlay={true}
+          playsInline={true}
+        >
+          <source src="assets/bg.webm" type="video/webm" />
+          <source src="assets/bg.mp4" type="video/mp4" />
+        </video>
+        <PDisplay className="mt-xl ms-lg mix-blend-soft-light max-w-lg  col-start-1 row-start-1" size="medium">
+          Welcome to the new digital
+        </PDisplay>
+      </div>
+
+      <PText
+        className="mt-md max-w-prose col-span-full xs:col-start-2 xs:col-end-12"
+        color="contrast-high"
+        size="large"
+      >
         Become today a part of tomorrow’s Porsche new design language with the new Porsche Design System v3.
       </PText>
 
-      <article className="mt-lg max-w-prose">
+      <article className="mt-lg max-w-prose col-span-full xs:col-start-2 xs:col-end-12">
         <PText size="large">
           The Porsche Design System provides the design fundamentals and elements for efficiently creating aesthetic and
           high-quality web applications, including easy-to-use Figma and UX Pin libraries, coded Web Components and
@@ -31,7 +52,7 @@ export default function Home() {
         </PText>
       </article>
 
-      <div className="mt-lg grid gap-md sm:grid-cols-2">
+      <div className="mt-lg grid gap-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12">
         <PLinkTile
           href="designing/introduction"
           aspectRatio={{ base: '4:3', xs: '16:9', s: '3:4' }}
