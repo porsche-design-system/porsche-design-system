@@ -19,7 +19,7 @@ export const TableOfContents = ({ headings }: TableOfContentsProps) => {
       <ul className="mt-sm mb-lg">
         {headings.map((heading) => (
           <li key={heading}>
-            <PLinkPure iconSource="/assets/icon-return.svg">
+            <PLinkPure iconSource="assets/icon-return.svg">
               <Link href={`#${kebabCase(heading)}`}>{heading}</Link>
             </PLinkPure>
           </li>
