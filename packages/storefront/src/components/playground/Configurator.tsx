@@ -75,7 +75,7 @@ const flyoutExample: ElementConfig = {
 
 import React from 'react';
 
-type ElementConfig = {
+export type ElementConfig = {
   tag: string; // The HTML tag or React component name
   attributes?: Record<string, string | number | boolean>; // Props/attributes
   children?: (string | ElementConfig)[]; // Nested children

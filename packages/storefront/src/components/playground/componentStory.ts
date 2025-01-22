@@ -1,9 +1,11 @@
+import type { ElementConfig } from '@/components/playground/Configurator';
 import type { componentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 
 /**
  * Questions:
  * Add story information to componentMeta directly?
+ * How to deal with href vs slotted anchor (slotsMeta already has hasAltProp but only for named slots )?
  */
 
 export type PropStory = {
@@ -11,8 +13,7 @@ export type PropStory = {
 };
 
 export type SlotStory = {
-  markup: string;
-  description: string;
+  markup: ElementConfig;
   isShown: boolean;
 };
 
@@ -52,28 +53,32 @@ export const componentsStory: ComponentsStory = {
   'p-flyout': {
     slotsStory: {
       header: {
-        markup: '<p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>',
-        description: 'Renders a sticky header section above the content area.',
+        markup: {
+          tag: 'p-heading',
+          attributes: { slot: 'header', size: 'large', tag: 'h2' },
+          children: ['Some Heading'],
+        },
         isShown: false,
       },
       '': {
-        markup: '<p-text>Some Content</p-text>',
+        markup: { tag: 'p-text', attributes: { slot: '' }, children: ['Some Content'] },
         description: '',
         isShown: true,
       },
       footer: {
-        markup: `<p-button-group slot="footer">
-    <p-button type="button">Proceed</p-button>
-    <p-button type="button" variant="secondary">Cancel</p-button>
-  </p-button-group>`,
-        description: 'Shows a sticky footer section, flowing under the content area when scrollable.',
+        markup: {
+          tag: 'p-button-group',
+          attributes: { slot: 'footer' },
+          children: [
+            { tag: 'p-button', attributes: { type: 'button' }, children: ['Proceed'] },
+            { tag: 'p-button', attributes: { type: 'button', variant: 'secondary' }, children: ['Cancel'] },
+          ],
+        },
         isShown: false,
       },
       'sub-footer': {
         name: 'sub-footer',
-        markup: '<p-text slot="sub-footer">Some additional Sub-Footer</p-text>',
-        description:
-          'Shows a sub-footer section to display additional information below the footer. This slot is ideal for less critical content, such as legal information or FAQs, which provides further details to the user. It appears when scrolling to the end of the flyout or when there is available space to accommodate the content.',
+        markup: { tag: 'p-text', attributes: { slot: 'sub-footer' }, children: ['Some additional Sub-Footer'] },
         isShown: false,
       },
     },
