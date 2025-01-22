@@ -21,12 +21,26 @@ type ComponentMetaPropsProps = {
 
 export const ComponentMetaProps = ({ propsMeta }: ComponentMetaPropsProps) => {
   const sortedPropsMeta = Object.entries(propsMeta ?? {}).sort(([keyA], [keyB]) => keyA.localeCompare(keyB));
+  const hasBreakpointCustomizable = Object.values(propsMeta ?? {}).some(
+    (propMeta) => propMeta.isBreakpointCustomizable
+  );
+
+  const breakpointCustomizableType = `type BreakpointCustomizable<T> = {
+  base: T;
+  xs?: T;
+  s?: T;
+  m?: T;
+  l?: T;
+  xl?: T;
+  xxl?: T;
+};`;
 
   return (
     <>
       <PHeading tag="h2" size="x-large" className="mt-lg mb-md max-w-prose" id="properties">
         Properties
       </PHeading>
+      {hasBreakpointCustomizable && <code>{breakpointCustomizableType}</code>}
       <PTable caption="Props" className="mt-static-md">
         <PTableHead>
           <PTableRow>

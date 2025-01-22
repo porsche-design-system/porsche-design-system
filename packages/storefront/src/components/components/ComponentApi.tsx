@@ -9,20 +9,23 @@ import { ComponentMetaProps } from './ComponentMetaProps';
 
 type ComponentApiProps = {
   tagName: TagName;
+  showTableOfContents?: boolean;
 };
 
-export const ComponentApi = ({ tagName }: ComponentApiProps) => {
+export const ComponentApi = ({ tagName, showTableOfContents = true }: ComponentApiProps) => {
   const { propsMeta, eventsMeta, slotsMeta, cssVariablesMeta } = componentMeta[tagName];
   return (
     <>
-      <TableOfContents
-        headings={[
-          ...(propsMeta ? ['Props'] : []),
-          ...(eventsMeta ? ['Events'] : []),
-          ...(slotsMeta ? ['Slots'] : []),
-          ...(cssVariablesMeta ? ['CSS Variables'] : []),
-        ]}
-      />
+      {showTableOfContents && (
+        <TableOfContents
+          headings={[
+            ...(propsMeta ? ['Props'] : []),
+            ...(eventsMeta ? ['Events'] : []),
+            ...(slotsMeta ? ['Slots'] : []),
+            ...(cssVariablesMeta ? ['CSS Variables'] : []),
+          ]}
+        />
+      )}
       {propsMeta && <ComponentMetaProps propsMeta={propsMeta} />}
       {eventsMeta && <ComponentMetaEvents eventsMeta={eventsMeta} />}
       {slotsMeta && <ComponentMetaSlots slotsMeta={slotsMeta} />}
