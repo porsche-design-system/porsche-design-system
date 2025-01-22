@@ -1,5 +1,5 @@
 import type { SlotStory } from '@/components/playground/componentStory';
-import { PCheckboxWrapper } from '@porsche-design-system/react-ssr-wrapper/src/lib/components';
+import { PCheckboxWrapper } from '@porsche-design-system/components-react/ssr';
 
 // TODO: Improve typing
 type ConfigureSlotsProps = {

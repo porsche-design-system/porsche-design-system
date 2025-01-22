@@ -1,6 +1,5 @@
 import type { PropMeta } from '@porsche-design-system/component-meta';
-import { PSelect, PSelectOption } from '@porsche-design-system/components-react/ssr';
-import { PTextFieldWrapper } from '@porsche-design-system/react-ssr-wrapper/src/lib/components';
+import { PSelect, PSelectOption, PTextFieldWrapper } from '@porsche-design-system/components-react/ssr';
 
 export type ComponentProps = {
   [propName: string]: ComponentProp;
