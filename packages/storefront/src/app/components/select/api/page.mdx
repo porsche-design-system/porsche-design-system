@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from "@/components/components/ComponentApi";
+import { TableOfContents } from "@/components/common/TableOfContents";
 
 export const metadata = {
   title: 'Select - Porsche Design System',
@@ -8,4 +9,12 @@ export const metadata = {
 
 # Select <ComponentStatus tagName="p-select"></ComponentStatus>
 
-<ComponentApi tagName="p-select" />
+<TableOfContents headings={["Select","Select Option"]} />
+
+## Select
+
+<ComponentApi tagName="p-select" showTableOfContents={false} />
+
+## Select Option
+
+<ComponentApi tagName="p-select-option" showTableOfContents={false} />

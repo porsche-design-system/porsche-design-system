@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { ComponentApi } from "@/components/components/ComponentApi";
+import { TableOfContents } from "@/components/common/TableOfContents";
 
 export const metadata = {
   title: 'Tabs - Porsche Design System',
@@ -8,4 +9,12 @@ export const metadata = {
 
 # Tabs <ComponentStatus tagName="p-tabs"></ComponentStatus>
 
-<ComponentApi tagName="p-tabs" />
+<TableOfContents headings={["Tabs","Tabs Item"]} />
+
+## Tabs
+
+<ComponentApi tagName="p-tabs" showTableOfContents={false} />
+
+## Tabs Item
+
+<ComponentApi tagName="p-tabs-item" showTableOfContents={false} />
