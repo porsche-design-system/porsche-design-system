@@ -1629,9 +1629,6 @@ exports[`should match snapshot 1`] = `
         "defaultValue": 1,
         "description": "Sets the amount of slides visible at the same time. Can be set to \`auto\` if you want to define different widths per slide via CSS.",
         "isBreakpointCustomizable": true,
-        "propOptions": {
-          "mutable": true,
-        },
         "type": "number | 'auto'",
       },
       "theme": {
