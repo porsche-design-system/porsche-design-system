@@ -1,17 +1,22 @@
-import { PLink } from "@porsche-design-system/components-react/ssr";
-import { A11yIcon } from "@/components/common/A11yIcon";
+import { PLink } from '@porsche-design-system/components-react/ssr';
+import { A11yIcon } from '@/components/common/A11yIcon';
+import Image from 'next/image';
+import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
   title: 'Accessibility - Porsche Design System',
-  description: 'Accessibility is a key aspect of the Porsche Design System. Learn more about the importance of accessibility and how we ensure compliance.',
-}
+  description:
+    'Accessibility is a key aspect of the Porsche Design System. Learn more about the importance of accessibility and how we ensure compliance.',
+};
 
 # Accessibility
 
 > „If our mission is to be customer-driven, connected, simple, helpful and inclusive – accessibility must be part of
 > that!“
 
-## What is Accessibility
+![Accessibility at Porsche](assets/a11y-hero.png)
+
+## What is digital accessibility
 
 When we say a digital product is **accessible** we mean that its content is available to, and its functionality can be
 operated by, literally anyone. For **creators of digital products**, it's frivolous to assume that all users can see and
@@ -44,23 +49,51 @@ who uses accessible products:
 - **Better business** (e.g. more customers)
 - **Better legal compliance** (e.g. avoiding lawsuits)
 
+**By using our components, you get all these benefits for free!** We take care of the **accessibility** on component
+level, so you can focus on your business logic.
+
 [Read more about this topic on our UX Platform compliance page.](https://ux.porsche.com/d/6VNB3CeLHcJz/accessibility#/accessibility/legal-compliance)
 
-## How we reach and sustain accessibility compliance
+## Meeting global accessibility standards
 
 At Porsche, we are **driven by excellence**, and the **Porsche Design System** is committed to deliver highly **usable
-and accessible** components that are not limited to certain users or use cases. The **Design System Components** are
-tested automatically and manually against all official success criteria of [WCAG 2.2 (AA)](https://w3.org/TR/WCAG22).
+and accessible** components that are not limited to certain users or use cases. To ensure that our components meet the
+official [**WCAG**](https://www.w3.org/WAI/standards-guidelines/wcag/) **2.2 AA** standards, we follow a set of
+**guidelines** and **best practices**:
 
-If you find any accessibility issue, please feel free to [**report it**](/help/bug-report).
+### Evaluate & research
 
-Further you can find **accessibility specific documentation** on component level marked with
-<A11yIcon size="small"></A11yIcon>.
+Before starting development of a new component, we evaluate the **use cases** and **requirements** to ensure that the
+component is **usable** and **accessible** for all users. We also research **best practices** and **guidelines** to
+ensure that the component is **compliant** with the latest WCAG 2.2 standards.
+
+### Design & develop
+
+During the design & development phase, we follow **inclusive design** guidelines and integrate **accessibility
+features** wherever it makes sense (e.g. by respecting official keyboard mappings for UI components). We also ensure
+that the component is **usable** with keyboard navigation, screen readers, and other assistive technologies.
+
+### Test & validate
+
+After the component is developed, it runs through a consecutive **testing** and **validation** process:
+
+#### Stage 1: Automated tests
+
+- **AXE-Core** test ensures that the component is **compliant** with the latest WCAG 2.2 standards.
+- **High Contrast Mode** visual regression tests ensure that the component is **usable** in high contrast mode.
+- **Text Zoom** visual regression tests ensure that the component is **usable** with text zoomed up to 200%.
+- **RTL** (Right-to-Left) tests ensure that the component is **usable** in right-to-left languages.
+
+#### Stage 2: Manual tests
+
+- **Keyboard Navigation** tests ensure that the component is **usable** with keyboard navigation.
+- **Screen Reader** tests ensure that the component is **usable** with screen readers.
+
+If you find any **accessibility issue**, please feel free to [**report it**](/help/bug-report).
 
 ## Further information
 
-For more information about the topic and insights how to reduce possible
-[**violations against country-specific laws**](https://ux.porsche.com/d/6VNB3CeLHcJz/accessibility#/accessibility/legal-compliance),
-we highly recommend our guidelines to enhance accessibility in your products:
+For more information about the topic and insights how to reduce possible violations against country-specific laws, we
+highly recommend our guidelines to enhance accessibility in your products:
 
-<PLink href="https://ux.porsche.com/d/6VNB3CeLHcJz/accessibility#/accessibility/introduction">Accessibility of digital products at Porsche</PLink>
+[**Accessibility of digital products at Porsche**](https://ux.porsche.com/d/6VNB3CeLHcJz/accessibility#/accessibility/introduction)
