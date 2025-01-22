@@ -24,7 +24,7 @@ export const CodeBlock = ({ frameworkMarkup }: CodeBlockProps) => {
       <PTabsBar activeTabIndex={tabIndex} onUpdate={onUpdate}>
         {frameworks.map((framework) => (
           <button key={framework} type="button">
-            {frameworkNameMap[framework as Framework]}
+            {frameworkNameMap[framework]}
           </button>
         ))}
       </PTabsBar>
