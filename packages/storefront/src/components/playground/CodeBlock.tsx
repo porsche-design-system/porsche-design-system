@@ -20,7 +20,7 @@ export const CodeBlock = ({ frameworkMarkup }: CodeBlockProps) => {
   };
 
   return (
-    <div className="">
+    <div>
       <PTabsBar activeTabIndex={tabIndex} onUpdate={onUpdate}>
         {frameworks.map((framework) => (
           <button key={framework} type="button">
@@ -28,10 +28,14 @@ export const CodeBlock = ({ frameworkMarkup }: CodeBlockProps) => {
           </button>
         ))}
       </PTabsBar>
-      {/* @ts-expect-error: Suppress type incompatibility */}
-      <SyntaxHighlighter language="html" PreTag="div" CodeTag="div">
-        {frameworkMarkup[selectedFramework] as string}
-      </SyntaxHighlighter>
+      <pre className="my-sm">
+        <code>
+          {/* @ts-expect-error: Suppress type incompatibility */}
+          <SyntaxHighlighter language="html" PreTag="div" CodeTag="div" showLineNumbers={false} useInlineStyles={false}>
+            {frameworkMarkup[selectedFramework] as string}
+          </SyntaxHighlighter>
+        </code>
+      </pre>
     </div>
   );
 };

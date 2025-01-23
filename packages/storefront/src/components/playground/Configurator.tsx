@@ -1,6 +1,7 @@
 'use client';
 
 import { ConfigureProps } from '@/components/playground/ConfigureProps';
+import { Playground } from '@/components/playground/Playground';
 import { componentsStory } from '@/components/playground/componentStory';
 import { isDefaultValue } from '@/components/playground/configuratorUtils';
 import { componentMeta } from '@porsche-design-system/component-meta';
@@ -166,10 +167,7 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
         configuredProps={buttonExample.attributes}
         onUpdateProps={handleUpdateProps}
       />
-      {jsx}
-      <pre>
-        <code>{markup}</code>
-      </pre>
+      <Playground frameworkMarkup={{ 'vanilla-js': markup }}>{jsx}</Playground>
     </>
   );
 };

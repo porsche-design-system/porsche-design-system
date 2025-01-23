@@ -17,7 +17,14 @@ type ThemeSelectProps = {
 
 export const ThemeSelect = ({ theme = 'light', label = 'Theme', hideLabel = false, onUpdate }: ThemeSelectProps) => {
   return (
-    <PSelect name="theme" value={theme} label={label} hideLabel={hideLabel} onUpdate={onUpdate}>
+    <PSelect
+      className="xs:w-[min(calc(50%-theme(spacing.xs)/2),12.5rem)]"
+      name="theme"
+      value={theme}
+      label={label}
+      hideLabel={hideLabel}
+      onUpdate={onUpdate}
+    >
       <PSelectOption disabled={true}>Select theme</PSelectOption>
       <PSelectOption value="light">Light</PSelectOption>
       <PSelectOption value="dark">Dark</PSelectOption>
