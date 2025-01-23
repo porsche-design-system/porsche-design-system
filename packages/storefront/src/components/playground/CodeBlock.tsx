@@ -33,7 +33,7 @@ ${frameworkMarkup[selectedFramework]}
 
   return (
     <div>
-      <PTabsBar activeTabIndex={tabIndex} onUpdate={onUpdate}>
+      <PTabsBar className="mt-lg mb-sm" activeTabIndex={tabIndex} onUpdate={onUpdate}>
         {frameworks.map((framework) => (
           <button key={framework} type="button">
             {frameworkNameMap[framework]}

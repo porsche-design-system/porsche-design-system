@@ -47,6 +47,7 @@
   .hljs {
     color: theme(colors.hljsColor.DEFAULT);
     background: theme(colors.hljsBackground.DEFAULT);
+    border-radius: theme(borderRadius.md);
   }
 
   .hljs-comment {
