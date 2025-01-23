@@ -6,11 +6,19 @@ import type { TagName } from '@porsche-design-system/shared';
  * Questions:
  * Add story information to componentMeta directly?
  * How to deal with href vs slotted anchor (slotsMeta already has hasAltProp but only for named slots )?
+ * How to specify which slot/prop is shown/rendered in the markup?
+ *
+ * TODO:
+ * - [x] - Show if prop is default in select & select default
+ * - [x] - AllowedValue string[] - select
+ * - [x] - AllowedValue string - text input
+ * - [x] - AllowedValue boolean - select (true/false)
+ * - [x] - string[] - Remove prop from markup if its default
+ * - [x] - string - Remove prop from markup if its default or empty string
+ * - [x] - boolean - Remove prop from markup if its default
  */
 
-export type PropStory = {
-  value: string;
-};
+export type PropStory = ElementConfig['attributes'];
 
 export type SlotStory = {
   markup: ElementConfig;

@@ -1,34 +1,40 @@
-import type { PropMeta } from '@porsche-design-system/component-meta';
+import type { ElementConfig } from '@/components/playground/Configurator';
+import { isDefaultValue } from '@/components/playground/configuratorUtils';
+import type { ComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
 import { PSelect, PSelectOption, PTextFieldWrapper } from '@porsche-design-system/components-react/ssr';
 
-export type ComponentProps = {
-  [propName: string]: ComponentProp;
-};
-
-type ComponentProp = PropMeta & {
-  selectedValue?: any; // Value which will be applied to the rendered component markup
-};
-
 type ConfigurePropsProps = {
-  componentProps: ComponentProps;
+  componentProps: ComponentMeta['propsMeta'];
+  configuredProps: ElementConfig['attributes'];
+  onUpdateProps: (propName: string, selectedValue: string) => void;
 };
 
-export const ConfigureProps = ({ componentProps }: ConfigurePropsProps) => {
-  const onUpdateProps = (propName: string, selectedValue: string) => {
-    // biome-ignore lint/suspicious/noConsole: <explanation>
-    console.log(propName, selectedValue);
-  };
-  const filteredComponentProps = Object.entries(componentProps).filter(
+export const ConfigureProps = ({ componentProps, configuredProps, onUpdateProps }: ConfigurePropsProps) => {
+  const filteredComponentProps = Object.entries(componentProps ?? {}).filter(
     ([key, value]) => !value.isAria && key !== 'theme' && value.type !== 'string[]'
   );
 
-  const renderInput = (propName: string, propMeta: ComponentProp) => {
+  const getCurrentValue = (propName: string, propMeta: PropMeta): string | undefined => {
+    const value = configuredProps?.[propName] || propMeta.defaultValue;
+
+    if (typeof value === 'string') {
+      return value;
+    }
+
+    if (typeof value === 'boolean') {
+      return value ? 'true' : 'false';
+    }
+  };
+
+  const renderInput = (propName: string, propMeta: PropMeta) => {
     if (propMeta.allowedValues === 'boolean' || Array.isArray(propMeta.allowedValues)) {
       return (
         <PSelect
           key={propName}
           name={propName}
-          value={propMeta.selectedValue}
+          value={getCurrentValue(propName, propMeta)}
+          label={propName}
+          description={propMeta.description}
           required={propMeta.isRequired}
           onUpdate={(e) => onUpdateProps(propName, e.detail.value)}
         >
@@ -39,10 +45,10 @@ export const ConfigureProps = ({ componentProps }: ConfigurePropsProps) => {
 
     if (propMeta.allowedValues === 'string') {
       return (
-        <PTextFieldWrapper>
+        <PTextFieldWrapper key={propName} label={propName} description={propMeta.description}>
           <input
             type="text"
-            value={propMeta.selectedValue || ''}
+            value={getCurrentValue(propName, propMeta)}
             required={propMeta.isRequired}
             onInput={(e) => onUpdateProps(propName, e.currentTarget.value)}
           />
@@ -51,12 +57,12 @@ export const ConfigureProps = ({ componentProps }: ConfigurePropsProps) => {
     }
   };
 
-  const renderOptions = (propMeta: ComponentProp) => {
+  const renderOptions = (propMeta: PropMeta) => {
     if (propMeta.allowedValues === 'boolean') {
       return ['true', 'false'].map((option) => (
         <PSelectOption key={option} value={option}>
           {option}
-          {propMeta.defaultValue === option ? ' (default)' : ''}
+          {isDefaultValue(propMeta.defaultValue, option) ? ' (default)' : ''}
         </PSelectOption>
       ));
     }
@@ -65,17 +71,11 @@ export const ConfigureProps = ({ componentProps }: ConfigurePropsProps) => {
       return propMeta.allowedValues.map((option) => (
         <PSelectOption key={option} value={option}>
           {option}
-          {propMeta.defaultValue === option ? ' (default)' : ''}
+          {isDefaultValue(propMeta.defaultValue, option) ? ' (default)' : ''}
         </PSelectOption>
       ));
     }
   };
 
-  return (
-    <>
-      {filteredComponentProps.map(([propName, propMeta]) => (
-        <>{renderInput(propName, propMeta)}</>
-      ))}
-    </>
-  );
+  return <>{filteredComponentProps.map(([propName, propMeta]) => renderInput(propName, propMeta))}</>;
 };

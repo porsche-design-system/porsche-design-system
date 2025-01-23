@@ -1,8 +1,26 @@
 'use client';
 
+import { ConfigureProps } from '@/components/playground/ConfigureProps';
+import { componentsStory } from '@/components/playground/componentStory';
+import { isDefaultValue } from '@/components/playground/configuratorUtils';
+import { componentMeta } from '@porsche-design-system/component-meta';
+import { PButton } from '@porsche-design-system/components-react/ssr';
+import type { TagName } from '@porsche-design-system/shared';
+import React, { useState } from 'react';
+
+const componentMap: Record<string, React.ElementType> = {
+  'p-button': PButton,
+};
+
+export type ElementConfig = {
+  tag: string; // The component tag e.g. 'p-button'
+  attributes?: Record<string, string | boolean>; // The component attributes/props written in camelCase e.g. { hideLabel: 'true' }
+  children?: (string | ElementConfig)[]; // Nested children either as string for text or ElementConfig for nested components
+};
+
 const buttonExample: ElementConfig = {
   tag: 'p-button',
-  attributes: { 'hide-label': 'true', icon: 'arrow-right' },
+  attributes: { hideLabel: true, icon: 'arrow-right' },
   children: ['Some label'],
 };
 
@@ -73,14 +91,6 @@ const flyoutExample: ElementConfig = {
 //   return { node: element, markup };
 // };
 
-import React from 'react';
-
-export type ElementConfig = {
-  tag: string; // The HTML tag or React component name
-  attributes?: Record<string, string | number | boolean>; // Props/attributes
-  children?: (string | ElementConfig)[]; // Nested children
-};
-
 type GeneratedOutput = {
   jsx: React.ReactNode;
   markup: string;
@@ -105,7 +115,8 @@ const generateOutput = (
   const jsxChildren = processedChildren.map((child) => child.jsx);
   const markupChildren = processedChildren.map((child) => child.markup).join('\n');
 
-  const jsx = React.createElement(tag, { key: JSON.stringify(attributes), ...attributes }, ...jsxChildren);
+  const ReactComponent = componentMap[tag];
+  const jsx = React.createElement(ReactComponent, { key: JSON.stringify(attributes), ...attributes }, ...jsxChildren);
 
   const indent = '  '.repeat(indentLevel);
 
@@ -117,10 +128,44 @@ const generateOutput = (
   return { jsx, markup };
 };
 
-export const Configurator = () => {
-  const { jsx, markup } = generateOutput(buttonExample);
+type ConfiguratorProps = {
+  tagName: TagName;
+};
+
+export const Configurator = ({ tagName }: ConfiguratorProps) => {
+  const [example, setExample] = useState(buttonExample);
+
+  const meta = componentMeta[tagName];
+  const story = componentsStory[tagName];
+
+  const { jsx, markup } = generateOutput(example);
+
+  const handleUpdateProps = (propName: string, selectedValue: string) => {
+    setExample((prev) => {
+      const { attributes = {} } = prev;
+
+      const updatedAttributes = {
+        ...attributes,
+        [propName]: selectedValue,
+      };
+
+      if (isDefaultValue(meta.propsMeta?.[propName]?.defaultValue, selectedValue) || selectedValue === '') {
+        delete updatedAttributes[propName];
+      }
+
+      return { ...prev, attributes: updatedAttributes };
+    });
+  };
+
+  if (!meta.propsMeta) return null;
+
   return (
     <>
+      <ConfigureProps
+        componentProps={meta.propsMeta}
+        configuredProps={buttonExample.attributes}
+        onUpdateProps={handleUpdateProps}
+      />
       {jsx}
       <pre>
         <code>{markup}</code>
