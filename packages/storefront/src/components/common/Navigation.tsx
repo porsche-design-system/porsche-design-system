@@ -77,12 +77,17 @@ export const Navigation = () => {
         </PLinkPure>
         <PText size="xx-small" color="contrast-medium">
           © 2025 Dr. Ing. h.c. F. Porsche AG.
-          <br />
-          <Link href="https://brand.porsche.com/d/aXCSDnXaTiSY">Privacy Policy</Link>
-          <br />
-          <Link href="https://brand.porsche.com/d/S5pRV9qVeHyf">Legal Notice</Link>
-          <br />
-          <Link href="/license">License</Link>
+          <ul className="flex flex-col gap-xs mt-xs">
+            <li>
+              <Link href="https://brand.porsche.com/d/aXCSDnXaTiSY">Privacy Policy</Link>
+            </li>
+            <li>
+              <Link href="https://brand.porsche.com/d/S5pRV9qVeHyf">Legal Notice</Link>
+            </li>
+            <li>
+              <Link href="/license">License</Link>
+            </li>
+          </ul>
         </PText>
       </footer>
     </>
