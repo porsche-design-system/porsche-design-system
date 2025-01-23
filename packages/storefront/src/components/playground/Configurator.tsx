@@ -71,7 +71,7 @@ import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 export type ElementConfig = {
-  tag: TagNameWithChunk; // The component tag e.g. 'p-button'
+  tag: TagNameWithChunk | keyof HTMLElementTagNameMap; // The component tag e.g. 'p-button'
   attributes?: Record<string, string | boolean>; // The component attributes/props written in camelCase e.g. { hideLabel: 'true' }
   children?: (string | ElementConfig)[]; // Nested children either as string for text or ElementConfig for nested components
 };
@@ -162,7 +162,7 @@ const generateOutput = (
   const jsxChildren = processedChildren.map((child) => child.jsx);
   const markupChildren = processedChildren.map((child) => child.markup).join('\n');
 
-  const ReactComponent = tag.startsWith('p-') ? componentMap[tag] : tag;
+  const ReactComponent = tag.startsWith('p-') ? componentMap[tag as TagNameWithChunk] : tag;
   const jsx = React.createElement(ReactComponent, { key: JSON.stringify(attributes), ...attributes }, ...jsxChildren);
 
   const indent = '  '.repeat(indentLevel);
