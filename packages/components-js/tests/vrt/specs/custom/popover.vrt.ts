@@ -1,12 +1,12 @@
-import { expect, type Page, test } from '@playwright/test';
-import { openAllPopover, setContentWithDesignSystem, setNativePopoversToAllowMultipleOpen } from '../../helpers';
-import { type Theme } from '@porsche-design-system/styles';
+import { type Page, expect, test } from '@playwright/test';
 import { themes, viewportWidthXL } from '@porsche-design-system/shared/testing/playwright.vrt';
+import type { Theme } from '@porsche-design-system/styles';
+import { openAllPopover, setContentWithDesignSystem, setNativePopoversToAllowMultipleOpen } from '../../helpers';
 
 const component = 'popover';
 
-const scenario = async (page: Page, theme: Theme, withinTable: boolean = false): Promise<void> => {
-  const getPopover = (direction: string, length: number = 1): string => {
+const scenario = async (page: Page, theme: Theme, withinTable = false): Promise<void> => {
+  const getPopover = (direction: string, length = 1): string => {
     return `<p-popover direction=${direction}>
     ${Array.from(Array(length))
       .map(() => `<div>Direction ${direction}</div>`)
@@ -148,10 +148,10 @@ const scenario = async (page: Page, theme: Theme, withinTable: boolean = false):
 };
 
 // executed in Chrome only
-test.describe(component, async () => {
+test.describe(component, () => {
   test.skip(({ browserName }) => browserName !== 'chromium');
 
-  themes.forEach((theme) => {
+  for (const theme of themes) {
     test(`should have no visual regression on popover-overview for viewport ${viewportWidthXL} with theme ${theme}`, async ({
       page,
     }) => {
@@ -160,9 +160,7 @@ test.describe(component, async () => {
         `${component}-${viewportWidthXL}-overview-theme-${theme}.png`
       );
     });
-  });
 
-  themes.forEach((theme) => {
     test(`should have no visual regression on popover-overview within table component for viewport ${viewportWidthXL} with theme ${theme}`, async ({
       page,
     }) => {
@@ -171,5 +169,5 @@ test.describe(component, async () => {
         `${component}-${viewportWidthXL}-overview-within-table-theme-${theme}.png`
       );
     });
-  });
+  }
 });

@@ -96,6 +96,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.AccordionExampleComponent,
   },
   {
+    name: 'Sheet Example',
+    path: 'sheet-example',
+    component: fromExamples.SheetExampleComponent,
+  },
+  {
     name: 'AG Grid Example',
     path: 'ag-grid-example',
     component: fromExamples.AgGridExampleComponent,
@@ -114,6 +119,21 @@ export const routes: ExtendedRoute[] = [
     name: 'Button Example Form',
     path: 'button-example-form',
     component: fromExamples.ButtonExampleFormComponent,
+  },
+  {
+    name: 'Button Example Form Attribute',
+    path: 'button-example-form-attribute',
+    component: fromExamples.ButtonExampleFormAttributeComponent,
+  },
+  {
+    name: 'Button Pure Example Form',
+    path: 'button-pure-example-form',
+    component: fromExamples.ButtonPureExampleFormComponent,
+  },
+  {
+    name: 'Button Pure Example Form Attribute',
+    path: 'button-pure-example-form-attribute',
+    component: fromExamples.ButtonPureExampleFormAttributeComponent,
   },
   {
     name: 'Canvas Example',
@@ -144,6 +164,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Flyout Example',
     path: 'flyout-example',
     component: fromExamples.FlyoutExampleComponent,
+  },
+  {
+    name: 'Flyout Form Example',
+    path: 'flyout-form-example',
+    component: fromExamples.FlyoutExampleFormComponent,
   },
   {
     name: 'Flyout Multilevel Example',

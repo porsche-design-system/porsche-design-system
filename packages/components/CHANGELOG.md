@@ -14,6 +14,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.25.0] - 2025-01-23
+
+### [3.25.0-rc.1] - 2025-01-22
+
+#### Fixed
+
+- `Carousel`: throws error when object-like string is passed by `slides-per-page`
+  ([#3710](https://github.com/porsche-design-system/porsche-design-system/pull/3710))
+
+### [3.25.0-rc.0] - 2025-01-21
+
+#### Added
+
+- `Sheet` ([#3704](https://github.com/porsche-design-system/porsche-design-system/pull/3704))
+- `Button`, `Button-Pure`: Add `form` prop to explicitly associate the component with a form, even when it's not
+  directly nested within it. ([#3648](https://github.com/porsche-design-system/porsche-design-system/pull/3648))
+
+#### Changed
+
+- `Table`: Enable `Table Head Cell` to be used within `Table Row` in addition to `Table Head Row` to further align with
+  table structure defined by W3C ([#3701](https://github.com/porsche-design-system/porsche-design-system/pull/3701))
+
 #### Fixed
 
 - `Textarea`, `Textarea Wrapper`, `Textfield Wrapper`: color contrast of `unit` prop and counter in `readonly` mode

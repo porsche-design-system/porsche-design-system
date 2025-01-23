@@ -2,7 +2,10 @@ import { AccordionExampleComponent } from './accordion-example.component';
 import { AgGridExampleStorefrontComponent } from './ag-grid-example-storefront.component';
 import { AgGridExampleComponent } from './ag-grid-example.component';
 import { BannerExampleComponent } from './banner-example.component';
+import { ButtonExampleFormAttributeComponent } from './button-example-form-attribute.component';
 import { ButtonExampleFormComponent } from './button-example-form.component';
+import { ButtonPureExampleFormAttributeComponent } from './button-pure-example-form-attribute.component';
+import { ButtonPureExampleFormComponent } from './button-pure-example-form.component';
 import { CanvasExampleComponent } from './canvas-example.component';
 import { CarouselExampleDynamicSlidesComponent } from './carousel-example-dynamic-slides.component';
 import { CarouselExampleEventsComponent } from './carousel-example-events.component';
@@ -10,6 +13,7 @@ import { CarouselExampleFocusOnCenterSlideComponent } from './carousel-example-f
 import { CarouselExampleJumpToSlideComponent } from './carousel-example-jump-to-slide.component';
 import { CheckboxExampleControlledComponent } from './checkbox-example-controlled.component';
 import { CheckboxExampleComponent } from './checkbox-example.component';
+import { FlyoutExampleFormComponent } from './flyout-example-form.component';
 import { FlyoutExampleComponent } from './flyout-example.component';
 import { FlyoutMultilevelExampleActiveIdentifierComponent } from './flyout-multilevel-example-active-identifier.component';
 import { FlyoutMultilevelExampleCustomContentComponent } from './flyout-multilevel-example-custom-content.component';
@@ -31,6 +35,7 @@ import { SelectExampleControlledComponent } from './select-example-controlled.co
 import { SelectExampleDynamicComponent } from './select-example-dynamic.component';
 import { SelectExampleRequiredComponent } from './select-example-required.component';
 import { SelectExampleComponent } from './select-example.component';
+import { SheetExampleComponent } from './sheet-example.component';
 import { StepperHorizontalExampleComponent } from './stepper-horizontal-example.component';
 import { StepperHorizontalNavigationExampleSecondComponent } from './stepper-horizontal-navigation-example-second.component';
 import { StepperHorizontalNavigationExampleStartComponent } from './stepper-horizontal-navigation-example-start.component';
@@ -47,10 +52,14 @@ import { ToastExampleComponent } from './toast-example.component';
 
 export const examples = [
   AccordionExampleComponent,
+  SheetExampleComponent,
   AgGridExampleComponent,
   AgGridExampleStorefrontComponent,
   BannerExampleComponent,
   ButtonExampleFormComponent,
+  ButtonExampleFormAttributeComponent,
+  ButtonPureExampleFormComponent,
+  ButtonPureExampleFormAttributeComponent,
   CanvasExampleComponent,
   CarouselExampleDynamicSlidesComponent,
   CarouselExampleFocusOnCenterSlideComponent,
@@ -59,6 +68,7 @@ export const examples = [
   CheckboxExampleControlledComponent,
   CheckboxExampleComponent,
   FlyoutExampleComponent,
+  FlyoutExampleFormComponent,
   FlyoutMultilevelExampleComponent,
   FlyoutMultilevelExampleActiveIdentifierComponent,
   FlyoutMultilevelExampleCustomContentComponent,
@@ -95,10 +105,14 @@ export const examples = [
 ];
 
 export * from './accordion-example.component';
+export * from './sheet-example.component';
 export * from './ag-grid-example.component';
 export * from './ag-grid-example-storefront.component';
 export * from './banner-example.component';
 export * from './button-example-form.component';
+export * from './button-example-form-attribute.component';
+export * from './button-pure-example-form.component';
+export * from './button-pure-example-form-attribute.component';
 export * from './canvas-example.component';
 export * from './carousel-example-dynamic-slides.component';
 export * from './carousel-example-focus-on-center-slide.component';
@@ -107,6 +121,7 @@ export * from './carousel-example-jump-to-slide.component';
 export * from './checkbox-example.component';
 export * from './checkbox-example-controlled.component';
 export * from './flyout-example.component';
+export * from './flyout-example-form.component';
 export * from './flyout-multilevel-example.component';
 export * from './flyout-multilevel-example-active-identifier.component';
 export * from './flyout-multilevel-example-custom-content.component';

@@ -1,10 +1,10 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { globbySync } from 'globby';
 import { camelCase, capitalCase, kebabCase, pascalCase } from 'change-case';
+import { globbySync } from 'globby';
 import { type AngularCharacteristics, convertToAngularVRTPage } from './convertToAngularVRTPage';
-import { convertToReactVRTPage, type ReactCharacteristics } from './convertToReactVRTPage';
 import { convertToNextJsVRTPage } from './convertToNextJsVRTPage';
+import { type ReactCharacteristics, convertToReactVRTPage } from './convertToReactVRTPage';
 import { convertToRemixVRTPage } from './convertToRemixVRTPage';
 
 /** array of html file names that don't get converted */
@@ -125,6 +125,8 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
         ? [
             'banner-basic',
             'banner-prefixed',
+            'sheet-basic',
+            'sheet-prefixed',
             'flyout-basic',
             'flyout-prefixed',
             'flyout-multilevel-basic',

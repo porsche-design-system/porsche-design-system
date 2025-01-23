@@ -104,6 +104,31 @@ When used as a submit button, the `name` and `value` props are submitted as a pa
   <p-text :theme="theme">{{ selectedValuesForm }}</p-text>
 </Playground>
 
+## Form Attribute
+
+When a button is used as a submit or reset button outside a form, the `form` attribute can be utilized to explicitly
+associate the button with a specific form element.
+
+<Notification heading="Attention" heading-tag="h2" state="warning">
+When using the <code>p-button</code> component as a <strong>submit</strong> or <strong>reset</strong> button outside a form,
+it relies on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals">ElementInternals</a> API, which has limited
+browser support.<br/><br/> As of now, the submitter in the form event is null because the button cannot be accessed within the shadow DOM
+to be passed as an argument to the <code>requestSubmit()</code> function (<a href="https://github.com/WICG/webcomponents/issues/814">WICG/webcomponents#814</a>).
+<br/><br/>Additionally, custom components using ElementInternals may include all values of elements with the same name attribute in form data, rather than only the value of
+the triggering element, deviating from native form behavior.
+</Notification>
+
+<Playground :frameworkMarkup="formAttributeExample" :config="{ ...config, withoutDemo: true }">
+  <form @submit.prevent="handleSubmit" id="some-form">
+    <p-textarea name="some-name" label="Some Label" :theme="theme" />
+  </form>
+  <p-button-group>
+    <p-button type="submit" form="some-form" :theme="theme">Submit</p-button>
+    <p-button type="reset" form="some-form" :theme="theme">Reset</p-button>
+  </p-button-group>
+  <p-text :theme="theme">{{ selectedValueForm }}</p-text>
+</Playground>
+
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component'; 
@@ -118,7 +143,8 @@ export default class Code extends Vue {
     return this.$store.getters.playgroundTheme;
   }
 
-  formExample = getButtonCodeSamples();
+  formExample = getButtonCodeSamples('example-form');
+  formAttributeExample = getButtonCodeSamples('example-form-attribute');
   
   primary = 
 `<p-button>Some label</p-button>
@@ -194,6 +220,15 @@ export default class Code extends Vue {
   onSubmit(e) {
     const formData = Array.from(new FormData(e.target, e.submitter).entries())[0];
     this.selectedValuesForm = `Last submitted data: ${formData.join('=') || 'none'}`;
+  }
+
+  selectedValueForm = 'Last submitted data: none';
+  handleSubmit(e) {
+    const formData = new FormData(e.target);
+    this.selectedValueForm = `Last submitted data: ${
+      Array.from(formData.entries(), ([_, value]) => value)
+        .join('') || 'none'
+    }`;
   }
 }
 </script>

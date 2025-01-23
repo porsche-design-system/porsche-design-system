@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
+import { Component, Element, Host, type JSX, Prop, h } from '@stencil/core';
 import type { PropTypes } from '../../../types';
 import {
   AllowedTypes,
@@ -9,14 +9,14 @@ import {
   throwIfParentIsNotOfKind,
   validateProps,
 } from '../../../utils';
-import { createSortedEventInitDictDetail, getAriaSort, isSortable } from './table-head-cell-utils';
 import {
   type Direction,
-  type TableUpdateEventDetail,
-  type TableHeadCellSort,
   SORT_EVENT_NAME,
+  type TableHeadCellSort,
+  type TableUpdateEventDetail,
 } from '../table/table-utils';
 import { getComponentCss } from './table-head-cell-styles';
+import { createSortedEventInitDictDetail, getAriaSort, isSortable } from './table-head-cell-utils';
 
 const propTypes: PropTypes<typeof TableHeadCell> = {
   sort: AllowedTypes.shape<TableHeadCellSort>({
@@ -48,7 +48,7 @@ export class TableHeadCell {
   @Prop() public multiline?: boolean = false;
 
   public connectedCallback(): void {
-    throwIfParentIsNotOfKind(this.host, 'p-table-head-row');
+    throwIfParentIsNotOfKind(this.host, ['p-table-head-row', 'p-table-row']);
     throwIfElementHasAttribute(this.host, 'sort');
   }
 

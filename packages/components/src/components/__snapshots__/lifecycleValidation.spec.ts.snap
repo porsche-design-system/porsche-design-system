@@ -13,6 +13,16 @@ exports[`should call validateProps() with correct parameters via render for p-ac
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-sheet: propTypes with ValidatorFunctions 1`] = `
+{
+  "aria": "aria",
+  "disableBackdropClick": "boolean",
+  "dismissButton": "boolean",
+  "open": "boolean",
+  "theme": "oneOf",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-banner: propTypes with ValidatorFunctions 1`] = `
 {
   "description": "string",
@@ -31,6 +41,7 @@ exports[`should call validateProps() with correct parameters via render for p-bu
   "aria": "aria",
   "compact": "breakpoint",
   "disabled": "boolean",
+  "form": "string",
   "hideLabel": "breakpoint",
   "icon": "string",
   "iconSource": "string",
@@ -55,6 +66,7 @@ exports[`should call validateProps() with correct parameters via render for p-bu
   "alignLabel": "breakpoint",
   "aria": "aria",
   "disabled": "boolean",
+  "form": "string",
   "hideLabel": "breakpoint",
   "icon": "string",
   "iconSource": "string",

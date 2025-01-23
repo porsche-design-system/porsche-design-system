@@ -52,6 +52,7 @@ import { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedCont
 import { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 import { SelectDropdownDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
 import { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
+import { SheetAriaAttribute, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
 import { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
 import { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
 import { StepperHorizontalItemState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
@@ -116,6 +117,7 @@ export { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedCont
 export { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 export { SelectDropdownDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
 export { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
+export { SheetAriaAttribute, SheetMotionHiddenEndEventDetail, SheetMotionVisibleEndEventDetail } from "./components/sheet/sheet-utils";
 export { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
 export { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
 export { StepperHorizontalItemState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
@@ -227,6 +229,10 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
+          * The id of a form element the button should be associated with.
+         */
+        "form"?: string;
+        /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
@@ -286,6 +292,10 @@ export namespace Components {
           * Disables the button. No events will be triggered while disabled state is active.
          */
         "disabled"?: boolean;
+        /**
+          * The id of a form element the button should be associated with.
+         */
+        "form"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
@@ -1824,6 +1834,31 @@ export namespace Components {
         "state"?: SelectWrapperState;
         "theme"?: Theme;
     }
+    /**
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     */
+    interface PSheet {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<SheetAriaAttribute>;
+        /**
+          * If true, the sheet will not be closable via backdrop click.
+         */
+        "disableBackdropClick"?: boolean;
+        /**
+          * If false, the sheet will not have a dismiss button.
+         */
+        "dismissButton"?: boolean;
+        /**
+          * If true, the sheet is open.
+         */
+        "open": boolean;
+        /**
+          * Adapts the sheet color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
     interface PSpinner {
         /**
           * Add ARIA attributes.
@@ -2364,6 +2399,10 @@ export interface PSegmentedControlCustomEvent<T> extends CustomEvent<T> {
 export interface PSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPSelectElement;
+}
+export interface PSheetCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPSheetElement;
 }
 export interface PStepperHorizontalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2948,6 +2987,28 @@ declare global {
         prototype: HTMLPSelectWrapperDropdownElement;
         new (): HTMLPSelectWrapperDropdownElement;
     };
+    interface HTMLPSheetElementEventMap {
+        "dismiss": void;
+        "motionVisibleEnd": SheetMotionVisibleEndEventDetail;
+        "motionHiddenEnd": SheetMotionHiddenEndEventDetail;
+    }
+    /**
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     */
+    interface HTMLPSheetElement extends Components.PSheet, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPSheetElementEventMap>(type: K, listener: (this: HTMLPSheetElement, ev: PSheetCustomEvent<HTMLPSheetElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPSheetElementEventMap>(type: K, listener: (this: HTMLPSheetElement, ev: PSheetCustomEvent<HTMLPSheetElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPSheetElement: {
+        prototype: HTMLPSheetElement;
+        new (): HTMLPSheetElement;
+    };
     interface HTMLPSpinnerElement extends Components.PSpinner, HTMLStencilElement {
     }
     var HTMLPSpinnerElement: {
@@ -3253,6 +3314,7 @@ declare global {
         "p-select-option": HTMLPSelectOptionElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-select-wrapper-dropdown": HTMLPSelectWrapperDropdownElement;
+        "p-sheet": HTMLPSheetElement;
         "p-spinner": HTMLPSpinnerElement;
         "p-stepper-horizontal": HTMLPStepperHorizontalElement;
         "p-stepper-horizontal-item": HTMLPStepperHorizontalItemElement;
@@ -3386,6 +3448,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * The id of a form element the button should be associated with.
+         */
+        "form"?: string;
+        /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
@@ -3445,6 +3511,10 @@ declare namespace LocalJSX {
           * Disables the button. No events will be triggered while disabled state is active.
          */
         "disabled"?: boolean;
+        /**
+          * The id of a form element the button should be associated with.
+         */
+        "form"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
@@ -5083,6 +5153,43 @@ declare namespace LocalJSX {
         "state"?: SelectWrapperState;
         "theme"?: Theme;
     }
+    /**
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     */
+    interface PSheet {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<SheetAriaAttribute>;
+        /**
+          * If true, the sheet will not be closable via backdrop click.
+         */
+        "disableBackdropClick"?: boolean;
+        /**
+          * If false, the sheet will not have a dismiss button.
+         */
+        "dismissButton"?: boolean;
+        /**
+          * Emitted when the component requests to be dismissed.
+         */
+        "onDismiss"?: (event: PSheetCustomEvent<void>) => void;
+        /**
+          * Emitted when the sheet is closed and the transition is finished.
+         */
+        "onMotionHiddenEnd"?: (event: PSheetCustomEvent<SheetMotionHiddenEndEventDetail>) => void;
+        /**
+          * Emitted when the sheet is opened and the transition is finished.
+         */
+        "onMotionVisibleEnd"?: (event: PSheetCustomEvent<SheetMotionVisibleEndEventDetail>) => void;
+        /**
+          * If true, the sheet is open.
+         */
+        "open"?: boolean;
+        /**
+          * Adapts the sheet color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
     interface PSpinner {
         /**
           * Add ARIA attributes.
@@ -5673,6 +5780,7 @@ declare namespace LocalJSX {
         "p-select-option": PSelectOption;
         "p-select-wrapper": PSelectWrapper;
         "p-select-wrapper-dropdown": PSelectWrapperDropdown;
+        "p-sheet": PSheet;
         "p-spinner": PSpinner;
         "p-stepper-horizontal": PStepperHorizontal;
         "p-stepper-horizontal-item": PStepperHorizontalItem;
@@ -5826,6 +5934,10 @@ declare module "@stencil/core" {
             "p-select-option": LocalJSX.PSelectOption & JSXBase.HTMLAttributes<HTMLPSelectOptionElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-select-wrapper-dropdown": LocalJSX.PSelectWrapperDropdown & JSXBase.HTMLAttributes<HTMLPSelectWrapperDropdownElement>;
+            /**
+             * @controlled {"props": ["open"], "event": "dismiss"}
+             */
+            "p-sheet": LocalJSX.PSheet & JSXBase.HTMLAttributes<HTMLPSheetElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
             "p-stepper-horizontal": LocalJSX.PStepperHorizontal & JSXBase.HTMLAttributes<HTMLPStepperHorizontalElement>;
             "p-stepper-horizontal-item": LocalJSX.PStepperHorizontalItem & JSXBase.HTMLAttributes<HTMLPStepperHorizontalItemElement>;

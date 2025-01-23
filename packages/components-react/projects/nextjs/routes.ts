@@ -496,6 +496,38 @@ const generatedRoutes = {
     "path": "/select-wrapper",
     "name": "SelectWrapper"
   },
+  "sheet": {
+    "path": "/sheet",
+    "name": "Sheet"
+  },
+  "sheetBasic": {
+    "path": "/sheet-basic",
+    "name": "SheetBasic"
+  },
+  "sheetGrid": {
+    "path": "/sheet-grid",
+    "name": "SheetGrid"
+  },
+  "sheetPrefixed": {
+    "path": "/sheet-prefixed",
+    "name": "SheetPrefixed"
+  },
+  "sheetScrollable": {
+    "path": "/sheet-scrollable",
+    "name": "SheetScrollable"
+  },
+  "sheetScrolled": {
+    "path": "/sheet-scrolled",
+    "name": "SheetScrolled"
+  },
+  "sheetWithoutDismissButton": {
+    "path": "/sheet-without-dismiss-button",
+    "name": "SheetWithoutDismissButton"
+  },
+  "sheetWithoutHeading": {
+    "path": "/sheet-without-heading",
+    "name": "SheetWithoutHeading"
+  },
   "spinner": {
     "path": "/spinner",
     "name": "Spinner"

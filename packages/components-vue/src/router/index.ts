@@ -31,6 +31,11 @@ export const routes: RouteType[] = [
     component: fromExamples.AccordionExample,
   },
   {
+    path: '/sheet-example',
+    name: 'Sheet Example',
+    component: fromExamples.SheetExample,
+  },
+  {
     path: '/ag-grid-example',
     name: 'AG Grid Example',
     component: fromExamples.AGGridExample,
@@ -54,6 +59,21 @@ export const routes: RouteType[] = [
     path: '/button-example-form',
     name: 'Button Example Form',
     component: fromExamples.ButtonExampleForm,
+  },
+  {
+    path: '/button-example-form-attribute',
+    name: 'Button Example Form Attribute',
+    component: fromExamples.ButtonExampleFormAttribute,
+  },
+  {
+    path: '/button-pure-example-form',
+    name: 'Button Pure Example Form',
+    component: fromExamples.ButtonPureExampleForm,
+  },
+  {
+    path: '/button-pure-example-form-attribute',
+    name: 'Button Pure Example Form Attribute',
+    component: fromExamples.ButtonPureExampleFormAttribute,
   },
   {
     path: '/canvas-example',
@@ -106,6 +126,11 @@ export const routes: RouteType[] = [
     component: fromExamples.FlyoutExample,
   },
   {
+    path: '/flyout-example-form',
+    name: 'Flyout Example Form',
+    component: fromExamples.FlyoutExampleForm,
+  },
+  {
     path: '/flyout-multilevel-example',
     name: 'Flyout Multilevel Example',
     component: fromExamples.FlyoutMultilevelExample,
@@ -149,6 +174,16 @@ export const routes: RouteType[] = [
     path: '/link-tile-product-example',
     name: 'Link Tile Product Example',
     component: fromExamples.LinkTileProductExample,
+  },
+  {
+    path: '/sheet-basic',
+    name: 'SheetBasic',
+    component: fromPages.SheetBasicPage,
+  },
+  {
+    path: '/sheet-prefixed',
+    name: 'SheetPrefixed',
+    component: fromPages.SheetPrefixedPage,
   },
   {
     path: '/modal-basic',

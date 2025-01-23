@@ -77,6 +77,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.AccordionExamplePage />,
   },
   {
+    name: 'Sheet Example',
+    path: '/sheet-example',
+    element: <fromExamples.SheetExamplePage />,
+  },
+  {
     name: 'AG Grid Example',
     path: '/aggrid-example',
     element: <fromExamples.AGGridExamplePage />,
@@ -95,6 +100,21 @@ export const routes: RouteType[] = [
     name: 'Button Example Form',
     path: '/button-example-form',
     element: <fromExamples.ButtonExampleFormPage />,
+  },
+  {
+    name: 'Button Example Form Attribute',
+    path: '/button-example-form-attribute',
+    element: <fromExamples.ButtonExampleFormAttributePage />,
+  },
+  {
+    name: 'Button Pure Example Form',
+    path: '/button-pure-example-form',
+    element: <fromExamples.ButtonPureExampleFormPage />,
+  },
+  {
+    name: 'Button Pure Example Form Attribute',
+    path: '/button-pure-example-form-attribute',
+    element: <fromExamples.ButtonPureExampleFormAttributePage />,
   },
   {
     name: 'Canvas Example',
@@ -135,6 +155,11 @@ export const routes: RouteType[] = [
     name: 'Flyout Example',
     path: '/flyout-example',
     element: <fromExamples.FlyoutExamplePage />,
+  },
+  {
+    name: 'Flyout Example Form',
+    path: '/flyout-example-form',
+    element: <fromExamples.FlyoutExampleFormPage />,
   },
   {
     name: 'Flyout Example Conditional',

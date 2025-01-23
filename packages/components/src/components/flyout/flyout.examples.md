@@ -6,6 +6,12 @@ allows users to complete tasks without navigating to a new page or as a mobile n
 It is a controlled component. This grants flexible control over the flyout's behavior especially whether it should stay
 open after user interaction like submission of a form.
 
+<Notification heading="Scroll-lock" heading-tag="h2" state="warning">
+  This component sets <code>overflow: hidden</code> on the body when opened in order to prevent background scrolling.<br> 
+  This doesn't work completely reliable under iOS but is the most stable solution.<br>
+  Feel free to address this issue in an Open Source PR, if you can provide a better solution. <b><a href="https://github.com/porsche-design-system/porsche-design-system/blob/main/packages/components/src/utils/setScrollLock.ts">Current implementation</a></b> 
+</Notification>
+
 <TableOfContents></TableOfContents>
 
 ## Basic
@@ -30,7 +36,7 @@ The size of `p-flyout` adjusts itself to the content with a predefined **min/max
   for less critical content, such as legal information or FAQs, which provides further details to the user. It appears
   when scrolling to the end of the flyout or when there is available space to accommodate the content.
 
-<Playground :frameworkMarkup="codeSamples" :markup="codeSamples['vanilla-js']" :config="config"></Playground>
+<Playground :frameworkMarkup="defaultExample" :markup="defaultExample['vanilla-js']" :config="config"></Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
@@ -80,7 +86,7 @@ following example shows the visualization of the Porsche Grid when used inside t
 <template>
   <div class="playground">
     <div class="demo">
-      <p-button type="button" aria="{ 'aria-haspopup': 'dialog' }" :theme="this.$store.getters.storefrontTheme">Open Flyout</p-button>
+      <p-button type="button" aria="{ 'aria-haspopup': 'dialog' }" :theme="theme">Open Flyout</p-button>
       <p-flyout open="false" aria="{ 'aria-label': 'Some Heading' }">
         <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
         <ExampleStylesGrid :visualizeGrid="true"/>
@@ -93,6 +99,26 @@ following example shows the visualization of the Porsche Grid when used inside t
     </div>
   </div>
 </template>
+
+## Example: Flyout Form
+
+The following example demonstrates how a form can be used within a flyout component:
+
+<Playground :frameworkMarkup="formExample" :config="config">
+  <p-button type="button" aria="{ 'aria-haspopup': 'dialog' }" :theme="theme">Open Flyout</p-button>
+  <p-flyout open="false" aria="{ 'aria-label': 'Some Heading' }" :theme="theme">
+    <p-heading slot="header" size="large" tag="h2" :theme="theme">Some Heading</p-heading>
+    <form id="some-form" @submit.prevent="onSubmit">
+      <p-checkbox name="some-checkbox" label="Some Label" :theme="theme"></p-checkbox>
+      <p-textarea name="some-textarea" label="Some Label" :theme="theme"></p-textarea>
+    </form>
+    <p-button-group slot="footer" :theme="theme">
+      <p-button type="submit" form="some-form" :theme="theme">Submit</p-button>
+      <p-button type="reset" variant="secondary" form="some-form" :theme="theme">Reset</p-button>
+    </p-button-group>
+    <p-text slot="sub-footer" :theme="theme" v-html="'Last submitted data:<br/><br/> ' + lastSubmittedData"></p-text>
+</p-flyout>
+</Playground>
 
 ## Custom styling
 
@@ -113,6 +139,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component'; 
 import { getFlyoutCodeSamples } from "@porsche-design-system/shared";  
 import ExampleStylesGrid from '@/pages/patterns/styles/example-grid.vue';
+import type { Theme } from '@/models';
 
 @Component({
   components: {
@@ -122,7 +149,8 @@ import ExampleStylesGrid from '@/pages/patterns/styles/example-grid.vue';
 export default class Code extends Vue {
   config = { themeable: true };
   flyouts = [];
-  codeSamples = getFlyoutCodeSamples();
+  defaultExample = getFlyoutCodeSamples('default');
+  formExample = getFlyoutCodeSamples('example-form');
 
   mounted() {
     this.registerEvents();
@@ -145,6 +173,10 @@ export default class Code extends Vue {
 
   closeFlyout(index: number): void {
     this.flyouts[index].open = false;
+  }
+
+  get theme(): Theme {
+    return this.$store.getters.playgroundTheme;
   }
 
   disableBackdropClickMarkup =
@@ -198,6 +230,14 @@ export default class Code extends Vue {
     </div>  
   </div>
 </p-flyout>`;
+
+  lastSubmittedData = 'checkbox: none<br/>textarea: none';
+  onSubmit(e) {
+    const formData = new FormData(e.target);
+    this.lastSubmittedData = `checkbox: ${formData.get('some-checkbox') || 'none'} <br/>textarea: ${formData.get('some-textarea') || 'none'}`;
+  }
+
+
 
   footerBehaviors = ['sticky', 'fixed'];
   footerBehavior = 'fixed';

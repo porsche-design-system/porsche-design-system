@@ -17,6 +17,14 @@ export const routes: Route[] = [
     path: '/accordion-layout-shift',
   },
   {
+    name: 'SheetBasic',
+    path: '/sheet-basic',
+  },
+  {
+    name: 'SheetPrefixed',
+    path: '/sheet-prefixed',
+  },
+  {
     name: 'ModalPage',
     path: '/modal-standalone',
   },

@@ -70,6 +70,17 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-sheet',
+      samples: [
+        [
+          componentsJsPath + '/sheet-example.html',
+          componentsAngularPath + '/sheet-example.component.ts',
+          componentsReactPath + '/SheetExample.tsx',
+          componentsVuePath + '/SheetExample.vue',
+        ],
+      ],
+    },
+    {
       component: 'p-banner',
       samples: [
         [
@@ -88,6 +99,29 @@ const generateCodeSamples = (): void => {
           componentsAngularPath + '/button-example-form.component.ts',
           componentsReactPath + '/ButtonExampleForm.tsx',
           componentsVuePath + '/ButtonExampleForm.vue',
+        ],
+        [
+          componentsJsPath + '/button-example-form-attribute.html',
+          componentsAngularPath + '/button-example-form-attribute.component.ts',
+          componentsReactPath + '/ButtonExampleFormAttribute.tsx',
+          componentsVuePath + '/ButtonExampleFormAttribute.vue',
+        ],
+      ],
+    },
+    {
+      component: 'p-button-pure',
+      samples: [
+        [
+          componentsJsPath + '/button-pure-example-form.html',
+          componentsAngularPath + '/button-pure-example-form.component.ts',
+          componentsReactPath + '/ButtonPureExampleForm.tsx',
+          componentsVuePath + '/ButtonPureExampleForm.vue',
+        ],
+        [
+          componentsJsPath + '/button-pure-example-form-attribute.html',
+          componentsAngularPath + '/button-pure-example-form-attribute.component.ts',
+          componentsReactPath + '/ButtonPureExampleFormAttribute.tsx',
+          componentsVuePath + '/ButtonPureExampleFormAttribute.vue',
         ],
       ],
     },
@@ -156,6 +190,12 @@ const generateCodeSamples = (): void => {
           componentsAngularPath + '/flyout-example.component.ts',
           componentsReactPath + '/FlyoutExample.tsx',
           componentsVuePath + '/FlyoutExample.vue',
+        ],
+        [
+          componentsJsPath + '/flyout-example-form.html',
+          componentsAngularPath + '/flyout-example-form.component.ts',
+          componentsReactPath + '/FlyoutExampleForm.tsx',
+          componentsVuePath + '/FlyoutExampleForm.vue',
         ],
       ],
     },
