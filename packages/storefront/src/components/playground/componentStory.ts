@@ -1,5 +1,5 @@
 import type { ElementConfig } from '@/components/playground/Configurator';
-import type { TagNameWithChunk } from 'shared/src';
+import type { TagNameWithChunk } from '@porsche-design-system/shared';
 
 /**
  * Questions:
