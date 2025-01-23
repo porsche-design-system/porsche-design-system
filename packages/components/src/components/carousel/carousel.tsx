@@ -25,6 +25,7 @@ import {
   warnIfDeprecatedPropIsUsed,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
+import type { BreakpointValues } from '../../utils/breakpoint-customizable';
 import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
 import {
   CAROUSEL_ALIGN_HEADERS,
@@ -127,7 +128,7 @@ export class Carousel {
   @Prop() public width?: CarouselWidth = 'basic';
 
   /** Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS. */
-  @Prop({ mutable: true }) public slidesPerPage?: BreakpointCustomizable<number> | 'auto' = 1; // eslint-disable-line @typescript-eslint/no-redundant-type-constituents
+  @Prop() public slidesPerPage?: BreakpointCustomizable<number> | 'auto' = 1; // eslint-disable-line @typescript-eslint/no-redundant-type-constituents
 
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `pagination` instead.
@@ -181,12 +182,16 @@ export class Carousel {
   private paginationEl: HTMLElement;
   private slides: HTMLElement[] = [];
 
+  private get parsedSlidesPerPage(): BreakpointValues<number> | number | 'auto' {
+    return parseJSON(this.slidesPerPage) as BreakpointValues<number> | number | 'auto';
+  }
+
   private get splideSlides(): HTMLElement[] {
     return this.splide.Components.Elements.slides;
   }
 
   private get hasNavigation(): boolean {
-    return this.slidesPerPage === 'auto' || this.amountOfPages > 1;
+    return this.parsedSlidesPerPage === 'auto' || this.amountOfPages > 1;
   }
 
   @Watch('activeSlideIndex')
@@ -208,8 +213,6 @@ export class Carousel {
   }
 
   public componentWillLoad(): void {
-    this.slidesPerPage = parseJSON(this.slidesPerPage) as any; // dynamic change is not supported right now
-
     this.updateSlidesAndPagination();
     this.observeBreakpointChange();
   }
@@ -226,7 +229,7 @@ export class Carousel {
     this.observeSlides(); // initial, adjust aria attributes on slides
     this.splide = new Splide(this.container, {
       start: this.activeSlideIndex,
-      autoWidth: this.slidesPerPage === 'auto', // https://splidejs.com/guides/auto-width/#auto-width
+      autoWidth: this.parsedSlidesPerPage === 'auto', // https://splidejs.com/guides/auto-width/#auto-width
       arrows: false,
       easing: motionEasingBase,
       focus: this.focusOnCenterSlide ? 'center' : undefined,
@@ -240,7 +243,9 @@ export class Carousel {
       speed: Number.parseFloat(carouselTransitionDuration) * 1000,
       gap: gridGap,
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
-      breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number> | 'auto', string>), // eslint-disable-line @typescript-eslint/no-redundant-type-constituents
+      breakpoints: getSplideBreakpoints(
+        this.parsedSlidesPerPage as Exclude<BreakpointCustomizable<number> | 'auto', string>
+      ), // eslint-disable-line @typescript-eslint/no-redundant-type-constituents
       // https://splidejs.com/guides/i18n/#default-texts
       i18n: parseJSONAttribute(this.intl || {}), // can only be applied initially atm
       direction: getLangDirection(this.host),
@@ -418,7 +423,7 @@ export class Carousel {
   }
 
   private observeBreakpointChange(): void {
-    if (typeof this.slidesPerPage === 'object') {
+    if (typeof this.parsedSlidesPerPage === 'object') {
       observeBreakpointChange(this.host, this.updateAmountOfPages);
     }
   }
@@ -432,7 +437,7 @@ export class Carousel {
     this.amountOfPages = getAmountOfPages(
       this.slides.length,
       // round to sanitize floating numbers
-      this.slidesPerPage === 'auto' ? 1 : Math.round(getCurrentMatchingBreakpointValue(this.slidesPerPage))
+      this.parsedSlidesPerPage === 'auto' ? 1 : Math.round(getCurrentMatchingBreakpointValue(this.parsedSlidesPerPage))
     );
     renderPagination(this.paginationEl, this.getPageCount(), this.splide?.index || 0, this.splide);
   };

@@ -316,6 +316,12 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             /className=\{(\{[\S\s]+?})}/g,
             `className={Object.entries($1).map(([key, value]) => value && key).filter(Boolean).join(' ')}`
           );
+      } else if (tagName === 'p-sheet') {
+        newFileContent = newFileContent
+          .replace(/this\.props\.(hasHeader|hasDismissButton)/g, '$1')
+          .replace(/(this\.props\.ariaLabel)\(\)/g, '$1')
+          .replace(/hasHeader =/, 'const $&')
+          .replace(/onTransitionEnd={[^}]*}\s*/, '');
       } else if (tagName === 'p-modal') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasFooter|hasDismissButton)/g, '$1')

@@ -1,7 +1,7 @@
-import { expect, type Page, test } from '@playwright/test';
+import { type Page, expect, test } from '@playwright/test';
 import type { Theme } from '@porsche-design-system/components/dist/types/types';
-import { forceHoverState, getPlaygroundPseudoStatesMarkup, setContentWithDesignSystem } from '../../helpers';
 import { viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { forceHoverState, getPlaygroundPseudoStatesMarkup, setContentWithDesignSystem } from '../../helpers';
 
 const component = 'select-wrapper-dropdown';
 
@@ -117,7 +117,7 @@ const scenario = async (page: Page): Promise<void> => {
 };
 
 // executed in Chrome only
-test.describe(component, async () => {
+test.describe(component, () => {
   test.skip(({ browserName }) => browserName !== 'chromium');
 
   test(`should have no visual regression on select-wrapper-dropdown component for viewport ${viewportWidthM}`, async ({

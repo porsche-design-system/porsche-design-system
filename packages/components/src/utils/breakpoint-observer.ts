@@ -36,8 +36,7 @@ export const unobserveBreakpointChange = (node: HTMLElement): void => {
 };
 
 export const handleBreakpointChange = (): void => {
-  // biome-ignore lint/complexity/noForEach: to be refactored
-  breakpointChangeCallbackMap.forEach((breakpointChangeCallback) => {
+  for (const [_, breakpointChangeCallback] of breakpointChangeCallbackMap) {
     breakpointChangeCallback();
-  });
+  }
 };
