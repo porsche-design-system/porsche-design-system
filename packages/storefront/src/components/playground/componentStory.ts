@@ -9,6 +9,10 @@ import type { TagName } from '@porsche-design-system/shared';
  * How to specify which slot/prop is shown/rendered in the markup?
  *
  * TODO:
+ * - [x] - Render Example
+ * - [x] - Render markup
+ * - [ ] - Sync Playground Theme
+ * - [ ] - Sync Playground Dir
  * - [x] - Show if prop is default in select & select default
  * - [x] - AllowedValue string[] - select
  * - [x] - AllowedValue string - text input
