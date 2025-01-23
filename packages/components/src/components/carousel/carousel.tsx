@@ -186,6 +186,10 @@ export class Carousel {
     return parseJSON(this.slidesPerPage) as BreakpointValues<number> | number | 'auto';
   }
 
+  private get parsedDisablePagination(): BreakpointValues<boolean> | boolean {
+    return parseJSON(this.disablePagination) as BreakpointValues<boolean> | boolean;
+  }
+
   private get splideSlides(): HTMLElement[] {
     return this.splide.Components.Elements.slides;
   }
@@ -285,7 +289,6 @@ export class Carousel {
     const hasHeadingPropOrSlot = hasHeading(this.host, this.heading);
     const hasDescriptionPropOrSlot = hasDescription(this.host, this.description);
     const hasControlsSlot = hasNamedSlot(this.host, 'controls');
-    this.disablePagination = parseJSON(this.disablePagination) as any; // parsing the value just once per lifecycle
     this.pagination = parseJSON(this.pagination) as any; // parsing the value just once per lifecycle
     attachComponentCss(
       this.host,
@@ -297,12 +300,12 @@ export class Carousel {
       this.headingSize,
       this.width,
       // flip boolean values of disablePagination since it is the inverse of pagination
-      this.disablePagination
-        ? typeof this.disablePagination === 'object'
+      this.parsedDisablePagination
+        ? typeof this.parsedDisablePagination === 'object'
           ? (Object.fromEntries(
-              Object.entries(this.disablePagination).map(([key, value]) => [key, !value])
+              Object.entries(this.parsedDisablePagination).map(([key, value]) => [key, !value])
             ) as BreakpointCustomizable<boolean>)
-          : !this.disablePagination
+          : !this.parsedDisablePagination
         : this.pagination,
       isInfinitePagination(this.focusOnCenterSlide ? this.slides.length : this.amountOfPages),
       (alignHeaderDeprecationMap[this.alignHeader as keyof AlignHeaderDeprecationMapType] ||
@@ -395,11 +398,12 @@ export class Carousel {
           </div>
         </div>
 
-        {(this.disablePagination ? this.disablePagination !== true : this.pagination) && this.hasNavigation && (
-          <div class="pagination-container" aria-hidden="true">
-            <div class="pagination" ref={(ref) => (this.paginationEl = ref)} />
-          </div>
-        )}
+        {(this.parsedDisablePagination ? this.parsedDisablePagination !== true : this.pagination) &&
+          this.hasNavigation && (
+            <div class="pagination-container" aria-hidden="true">
+              <div class="pagination" ref={(ref) => (this.paginationEl = ref)} />
+            </div>
+          )}
       </Host>
     );
   }
