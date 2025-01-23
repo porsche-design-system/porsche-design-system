@@ -133,10 +133,10 @@ export class Carousel {
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `pagination` instead.
    * If true, the carousel will not show pagination bullets at the bottom. */
-  @Prop({ mutable: true }) public disablePagination?: BreakpointCustomizable<boolean>;
+  @Prop() public disablePagination?: BreakpointCustomizable<boolean>;
 
   /** If false, the carousel will not show pagination bullets at the bottom. */
-  @Prop({ mutable: true }) public pagination?: BreakpointCustomizable<boolean> = true;
+  @Prop() public pagination?: BreakpointCustomizable<boolean> = true;
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<CarouselAriaAttribute>;
@@ -188,6 +188,10 @@ export class Carousel {
 
   private get parsedDisablePagination(): BreakpointValues<boolean> | boolean {
     return parseJSON(this.disablePagination) as BreakpointValues<boolean> | boolean;
+  }
+
+  private get parsedPagination(): BreakpointValues<boolean> | boolean {
+    return parseJSON(this.pagination) as BreakpointValues<boolean> | boolean;
   }
 
   private get splideSlides(): HTMLElement[] {
@@ -289,7 +293,6 @@ export class Carousel {
     const hasHeadingPropOrSlot = hasHeading(this.host, this.heading);
     const hasDescriptionPropOrSlot = hasDescription(this.host, this.description);
     const hasControlsSlot = hasNamedSlot(this.host, 'controls');
-    this.pagination = parseJSON(this.pagination) as any; // parsing the value just once per lifecycle
     attachComponentCss(
       this.host,
       getComponentCss,
@@ -306,7 +309,7 @@ export class Carousel {
               Object.entries(this.parsedDisablePagination).map(([key, value]) => [key, !value])
             ) as BreakpointCustomizable<boolean>)
           : !this.parsedDisablePagination
-        : this.pagination,
+        : this.parsedPagination,
       isInfinitePagination(this.focusOnCenterSlide ? this.slides.length : this.amountOfPages),
       (alignHeaderDeprecationMap[this.alignHeader as keyof AlignHeaderDeprecationMapType] ||
         this.alignHeader) as Exclude<CarouselAlignHeader, CarouselAlignHeaderDeprecated>,
@@ -398,7 +401,7 @@ export class Carousel {
           </div>
         </div>
 
-        {(this.parsedDisablePagination ? this.parsedDisablePagination !== true : this.pagination) &&
+        {(this.parsedDisablePagination ? this.parsedDisablePagination !== true : this.parsedPagination) &&
           this.hasNavigation && (
             <div class="pagination-container" aria-hidden="true">
               <div class="pagination" ref={(ref) => (this.paginationEl = ref)} />
