@@ -20,57 +20,57 @@ import {
 import type { Config } from 'tailwindcss';
 import plugin from 'tailwindcss/plugin';
 
-const pdsThemePrimary = '--pds-theme-primary';
-const pdsThemeBackgroundBase = '--pds-theme-background-base';
-const pdsThemeBackgroundSurface = '--pds-theme-background-surface';
-const pdsThemeBackgroundShading = '--pds-theme-background-shading';
-const pdsThemeContrastLow = '--pds-theme-contrast-low';
-const pdsThemeContrastMedium = '--pds-theme-contrast-medium';
-const pdsThemeContrastHigh = '--pds-theme-contrast-high';
-const pdsThemeNotificationSuccess = '--pds-theme-notification-success';
-const pdsThemeNotificationWarning = '--pds-theme-notification-warning';
-const pdsThemeNotificationError = '--pds-theme-notification-error';
-const pdsThemeNotificationInfo = '--pds-theme-notification-info';
-const pdsThemeStateHover = '--pds-theme-state-hover';
-const pdsThemeStateActive = '--pds-theme-state-active';
-const pdsThemeStateFocus = '--pds-theme-state-focus';
-const pdsThemeStateDisabled = '--pds-theme-state-disabled';
+const pdsPrimaryColor = '--pds-primary-color';
+const pdsBackgroundBaseColor = '--pds-background-base-color';
+const pdsBackgroundSurfaceColor = '--pds-background-surface-color';
+const pdsBackgroundShadingColor = '--pds-background-shading-color';
+const pdsContrastLowColor = '--pds-contrast-low-color';
+const pdsContrastMediumColor = '--pds-contrast-medium-color';
+const pdsContrastHighColor = '--pds-contrast-high-color';
+const pdsNotificationSuccessColor = '--pds-notification-success-color';
+const pdsNotificationWarningColor = '--pds-notification-warning-color';
+const pdsNotificationErrorColor = '--pds-notification-error-color';
+const pdsNotificationInfoColor = '--pds-notification-info-color';
+const pdsStateHoverColor = '--pds-state-hover-color';
+const pdsStateActiveColor = '--pds-state-active-color';
+const pdsStateFocusColor = '--pds-state-focus-color';
+const pdsStateDisabledColor = '--pds-state-disabled-color';
 
 const hljsColor = '--hljs-color';
 const hljsBackground = '--hljs-background';
-const hljsComment = '--hljs-comment';
-const hljsQuote = '--hljs-quote';
-const hljsDoctag = '--hljs-doctag';
-const hljsKeyword = '--hljs-keyword';
-const hljsFormula = '--hljs-formula';
-const hljsSection = '--hljs-section';
-const hljsName = '--hljs-name';
-const hljsSelectorTag = '--hljs-selector-tag';
+const hljsCommentColor = '--hljs-comment-color';
+const hljsQuoteColor = '--hljs-quote-color';
+const hljsDoctagColor = '--hljs-doctag-color';
+const hljsKeywordColor = '--hljs-keyword-color';
+const hljsFormulaColor = '--hljs-formula-color';
+const hljsSectionColor = '--hljs-section-color';
+const hljsNameColor = '--hljs-name-color';
+const hljsSelectorTagColor = '--hljs-selector-tag-color';
 const hljsDeletionColor = '--hljs-deletion-color';
 const hljsDeletionBackground = '--hljs-deletion-background';
-const hljsSubst = '--hljs-subst';
-const hljsLiteral = '--hljs-literal';
-const hljsString = '--hljs-string';
-const hljsRegexp = '--hljs-regexp';
+const hljsSubstColor = '--hljs-subst-color';
+const hljsLiteralColor = '--hljs-literal-color';
+const hljsStringColor = '--hljs-string-color';
+const hljsRegexpColor = '--hljs-regexp-color';
 const hljsAdditionColor = '--hljs-addition-color';
 const hljsAdditionBackground = '--hljs-addition-background';
-const hljsAttribute = '--hljs-attribute';
-const hljsMetaString = '--hljs-meta-string';
-const hljsBuiltIn = '--hljs-built-in';
-const hljsAttr = '--hljs-attr';
-const hljsVariable = '--hljs-variable';
-const hljsTemplateVariable = '--hljs-template-variable';
-const hljsType = '--hljs-type';
-const hljsSelectorClass = '--hljs-selector-class';
-const hljsSelectorAttr = '--hljs-selector-attr';
-const hljsSelectorPseudo = '--hljs-selector-pseudo';
-const hljsNumber = '--hljs-number';
-const hljsSymbol = '--hljs-symbol';
-const hljsBullet = '--hljs-bullet';
-const hljsLink = '--hljs-link';
-const hljsMeta = '--hljs-meta';
-const hljsSelectorId = '--hljs-selector-id';
-const hljsTitle = '--hljs-title';
+const hljsAttributeColor = '--hljs-attribute-color';
+const hljsMetaStringColor = '--hljs-meta-string-color';
+const hljsBuiltInColor = '--hljs-built-in-color';
+const hljsAttrColor = '--hljs-attr-color';
+const hljsVariableColor = '--hljs-variable-color';
+const hljsTemplateVariableColor = '--hljs-template-variable-color';
+const hljsTypeColor = '--hljs-type-color';
+const hljsSelectorClassColor = '--hljs-selector-class-color';
+const hljsSelectorAttrColor = '--hljs-selector-attr-color';
+const hljsSelectorPseudoColor = '--hljs-selector-pseudo-color';
+const hljsNumberColor = '--hljs-number-color';
+const hljsSymbolColor = '--hljs-symbol-color';
+const hljsBulletColor = '--hljs-bullet-color';
+const hljsLinkColor = '--hljs-link-color';
+const hljsMetaColor = '--hljs-meta-color';
+const hljsSelectorIdColor = '--hljs-selector-id-color';
+const hljsTitleColor = '--hljs-title-color';
 
 const hljsColorLight = '#383a42';
 const hljsBackgroundLight = '#EEEFF266';
@@ -145,109 +145,109 @@ const hljsSelectorIdColorDark = '#61aeee';
 const hljsTitleColorDark = '#61aeee';
 
 const lightTheme = {
-  [pdsThemePrimary]: themeLight.primary,
-  [pdsThemeBackgroundBase]: themeLight.background.base,
-  [pdsThemeBackgroundSurface]: themeLight.background.surface,
-  [pdsThemeBackgroundShading]: themeLight.background.shading,
-  [pdsThemeContrastLow]: themeLight.contrast.low,
-  [pdsThemeContrastMedium]: themeLight.contrast.medium,
-  [pdsThemeContrastHigh]: themeLight.contrast.high,
-  [pdsThemeNotificationSuccess]: themeLight.notification.success,
-  [pdsThemeNotificationWarning]: themeLight.notification.warning,
-  [pdsThemeNotificationError]: themeLight.notification.error,
-  [pdsThemeNotificationInfo]: themeLight.notification.info,
-  [pdsThemeStateHover]: themeLight.state.hover,
-  [pdsThemeStateActive]: themeLight.state.active,
-  [pdsThemeStateFocus]: themeLight.state.focus,
-  [pdsThemeStateDisabled]: themeLight.state.disabled,
+  [pdsPrimaryColor]: themeLight.primary,
+  [pdsBackgroundBaseColor]: themeLight.background.base,
+  [pdsBackgroundSurfaceColor]: themeLight.background.surface,
+  [pdsBackgroundShadingColor]: themeLight.background.shading,
+  [pdsContrastLowColor]: themeLight.contrast.low,
+  [pdsContrastMediumColor]: themeLight.contrast.medium,
+  [pdsContrastHighColor]: themeLight.contrast.high,
+  [pdsNotificationSuccessColor]: themeLight.notification.success,
+  [pdsNotificationWarningColor]: themeLight.notification.warning,
+  [pdsNotificationErrorColor]: themeLight.notification.error,
+  [pdsNotificationInfoColor]: themeLight.notification.info,
+  [pdsStateHoverColor]: themeLight.state.hover,
+  [pdsStateActiveColor]: themeLight.state.active,
+  [pdsStateFocusColor]: themeLight.state.focus,
+  [pdsStateDisabledColor]: themeLight.state.disabled,
   [hljsColor]: hljsColorLight,
   [hljsBackground]: hljsBackgroundLight,
-  [hljsComment]: hljsCommentColorLight,
-  [hljsQuote]: hljsQuoteColorLight,
-  [hljsDoctag]: hljsDoctagColorLight,
-  [hljsKeyword]: hljsKeywordColorLight,
-  [hljsFormula]: hljsFormulaColorLight,
-  [hljsSection]: hljsSectionColorLight,
-  [hljsName]: hljsNameColorLight,
-  [hljsSelectorTag]: hljsSelectorTagColorLight,
+  [hljsCommentColor]: hljsCommentColorLight,
+  [hljsQuoteColor]: hljsQuoteColorLight,
+  [hljsDoctagColor]: hljsDoctagColorLight,
+  [hljsKeywordColor]: hljsKeywordColorLight,
+  [hljsFormulaColor]: hljsFormulaColorLight,
+  [hljsSectionColor]: hljsSectionColorLight,
+  [hljsNameColor]: hljsNameColorLight,
+  [hljsSelectorTagColor]: hljsSelectorTagColorLight,
   [hljsDeletionColor]: hljsDeletionColorLight,
   [hljsDeletionBackground]: hljsDeletionBackgroundLight,
-  [hljsSubst]: hljsSubstColorLight,
-  [hljsLiteral]: hljsLiteralColorLight,
-  [hljsString]: hljsStringColorLight,
-  [hljsRegexp]: hljsRegexpColorLight,
+  [hljsSubstColor]: hljsSubstColorLight,
+  [hljsLiteralColor]: hljsLiteralColorLight,
+  [hljsStringColor]: hljsStringColorLight,
+  [hljsRegexpColor]: hljsRegexpColorLight,
   [hljsAdditionColor]: hljsAdditionColorLight,
   [hljsAdditionBackground]: hljsAdditionBackgroundLight,
-  [hljsAttribute]: hljsAttributeColorLight,
-  [hljsMetaString]: hljsMetaStringColorLight,
-  [hljsBuiltIn]: hljsBuiltInColorLight,
-  [hljsAttr]: hljsAttrColorLight,
-  [hljsVariable]: hljsVariableColorLight,
-  [hljsTemplateVariable]: hljsTemplateVariableColorLight,
-  [hljsType]: hljsTypeColorLight,
-  [hljsSelectorClass]: hljsSelectorClassColorLight,
-  [hljsSelectorAttr]: hljsSelectorAttrColorLight,
-  [hljsSelectorPseudo]: hljsSelectorPseudoColorLight,
-  [hljsNumber]: hljsNumberColorLight,
-  [hljsSymbol]: hljsSymbolColorLight,
-  [hljsBullet]: hljsBulletColorLight,
-  [hljsLink]: hljsLinkColorLight,
-  [hljsMeta]: hljsMetaColorLight,
-  [hljsSelectorId]: hljsSelectorIdColorLight,
-  [hljsTitle]: hljsTitleColorLight,
+  [hljsAttributeColor]: hljsAttributeColorLight,
+  [hljsMetaStringColor]: hljsMetaStringColorLight,
+  [hljsBuiltInColor]: hljsBuiltInColorLight,
+  [hljsAttrColor]: hljsAttrColorLight,
+  [hljsVariableColor]: hljsVariableColorLight,
+  [hljsTemplateVariableColor]: hljsTemplateVariableColorLight,
+  [hljsTypeColor]: hljsTypeColorLight,
+  [hljsSelectorClassColor]: hljsSelectorClassColorLight,
+  [hljsSelectorAttrColor]: hljsSelectorAttrColorLight,
+  [hljsSelectorPseudoColor]: hljsSelectorPseudoColorLight,
+  [hljsNumberColor]: hljsNumberColorLight,
+  [hljsSymbolColor]: hljsSymbolColorLight,
+  [hljsBulletColor]: hljsBulletColorLight,
+  [hljsLinkColor]: hljsLinkColorLight,
+  [hljsMetaColor]: hljsMetaColorLight,
+  [hljsSelectorIdColor]: hljsSelectorIdColorLight,
+  [hljsTitleColor]: hljsTitleColorLight,
 };
 
 const darkTheme = {
-  [pdsThemePrimary]: themeDark.primary,
-  [pdsThemeBackgroundBase]: themeDark.background.base,
-  [pdsThemeBackgroundSurface]: themeDark.background.surface,
-  [pdsThemeBackgroundShading]: themeDark.background.shading,
-  [pdsThemeContrastLow]: themeDark.contrast.low,
-  [pdsThemeContrastMedium]: themeDark.contrast.medium,
-  [pdsThemeContrastHigh]: themeDark.contrast.high,
-  [pdsThemeNotificationSuccess]: themeDark.notification.success,
-  [pdsThemeNotificationWarning]: themeDark.notification.warning,
-  [pdsThemeNotificationError]: themeDark.notification.error,
-  [pdsThemeNotificationInfo]: themeDark.notification.info,
-  [pdsThemeStateHover]: themeDark.state.hover,
-  [pdsThemeStateActive]: themeDark.state.active,
-  [pdsThemeStateFocus]: themeDark.state.focus,
-  [pdsThemeStateDisabled]: themeDark.state.disabled,
+  [pdsPrimaryColor]: themeDark.primary,
+  [pdsBackgroundBaseColor]: themeDark.background.base,
+  [pdsBackgroundSurfaceColor]: themeDark.background.surface,
+  [pdsBackgroundShadingColor]: themeDark.background.shading,
+  [pdsContrastLowColor]: themeDark.contrast.low,
+  [pdsContrastMediumColor]: themeDark.contrast.medium,
+  [pdsContrastHighColor]: themeDark.contrast.high,
+  [pdsNotificationSuccessColor]: themeDark.notification.success,
+  [pdsNotificationWarningColor]: themeDark.notification.warning,
+  [pdsNotificationErrorColor]: themeDark.notification.error,
+  [pdsNotificationInfoColor]: themeDark.notification.info,
+  [pdsStateHoverColor]: themeDark.state.hover,
+  [pdsStateActiveColor]: themeDark.state.active,
+  [pdsStateFocusColor]: themeDark.state.focus,
+  [pdsStateDisabledColor]: themeDark.state.disabled,
   [hljsColor]: hljsColorDark,
   [hljsBackground]: hljsBackgroundDark,
-  [hljsComment]: hljsCommentColorDark,
-  [hljsQuote]: hljsQuoteColorDark,
-  [hljsDoctag]: hljsDoctagColorDark,
-  [hljsKeyword]: hljsKeywordColorDark,
-  [hljsFormula]: hljsFormulaColorDark,
-  [hljsSection]: hljsSectionColorDark,
-  [hljsName]: hljsNameColorDark,
-  [hljsSelectorTag]: hljsSelectorTagColorDark,
+  [hljsCommentColor]: hljsCommentColorDark,
+  [hljsQuoteColor]: hljsQuoteColorDark,
+  [hljsDoctagColor]: hljsDoctagColorDark,
+  [hljsKeywordColor]: hljsKeywordColorDark,
+  [hljsFormulaColor]: hljsFormulaColorDark,
+  [hljsSectionColor]: hljsSectionColorDark,
+  [hljsNameColor]: hljsNameColorDark,
+  [hljsSelectorTagColor]: hljsSelectorTagColorDark,
   [hljsDeletionColor]: hljsDeletionColorDark,
   [hljsDeletionBackground]: hljsDeletionBackgroundDark,
-  [hljsSubst]: hljsSubstColorDark,
-  [hljsLiteral]: hljsLiteralColorDark,
-  [hljsString]: hljsStringColorDark,
-  [hljsRegexp]: hljsRegexpColorDark,
+  [hljsSubstColor]: hljsSubstColorDark,
+  [hljsLiteralColor]: hljsLiteralColorDark,
+  [hljsStringColor]: hljsStringColorDark,
+  [hljsRegexpColor]: hljsRegexpColorDark,
   [hljsAdditionColor]: hljsAdditionColorDark,
   [hljsAdditionBackground]: hljsAdditionBackgroundDark,
-  [hljsAttribute]: hljsAttributeColorDark,
-  [hljsMetaString]: hljsMetaStringColorDark,
-  [hljsBuiltIn]: hljsBuiltInColorDark,
-  [hljsAttr]: hljsAttrColorDark,
-  [hljsVariable]: hljsVariableColorDark,
-  [hljsTemplateVariable]: hljsTemplateVariableColorDark,
-  [hljsType]: hljsTypeColorDark,
-  [hljsSelectorClass]: hljsSelectorClassColorDark,
-  [hljsSelectorAttr]: hljsSelectorAttrColorDark,
-  [hljsSelectorPseudo]: hljsSelectorPseudoColorDark,
-  [hljsNumber]: hljsNumberColorDark,
-  [hljsSymbol]: hljsSymbolColorDark,
-  [hljsBullet]: hljsBulletColorDark,
-  [hljsLink]: hljsLinkColorDark,
-  [hljsMeta]: hljsMetaColorDark,
-  [hljsSelectorId]: hljsSelectorIdColorDark,
-  [hljsTitle]: hljsTitleColorDark,
+  [hljsAttributeColor]: hljsAttributeColorDark,
+  [hljsMetaStringColor]: hljsMetaStringColorDark,
+  [hljsBuiltInColor]: hljsBuiltInColorDark,
+  [hljsAttrColor]: hljsAttrColorDark,
+  [hljsVariableColor]: hljsVariableColorDark,
+  [hljsTemplateVariableColor]: hljsTemplateVariableColorDark,
+  [hljsTypeColor]: hljsTypeColorDark,
+  [hljsSelectorClassColor]: hljsSelectorClassColorDark,
+  [hljsSelectorAttrColor]: hljsSelectorAttrColorDark,
+  [hljsSelectorPseudoColor]: hljsSelectorPseudoColorDark,
+  [hljsNumberColor]: hljsNumberColorDark,
+  [hljsSymbolColor]: hljsSymbolColorDark,
+  [hljsBulletColor]: hljsBulletColorDark,
+  [hljsLinkColor]: hljsLinkColorDark,
+  [hljsMetaColor]: hljsMetaColorDark,
+  [hljsSelectorIdColor]: hljsSelectorIdColorDark,
+  [hljsTitleColor]: hljsTitleColorDark,
 };
 
 export default {
@@ -325,77 +325,77 @@ export default {
     colors: {
       primary: {
         light: themeLight.primary,
-        DEFAULT: `var(${pdsThemePrimary})`,
+        DEFAULT: `var(${pdsPrimaryColor})`,
         dark: themeDark.primary,
       },
       'background-base': {
         light: themeLight.background.base,
-        DEFAULT: `var(${pdsThemeBackgroundBase})`,
+        DEFAULT: `var(${pdsBackgroundBaseColor})`,
         dark: themeDark.background.base,
       },
       'background-surface': {
         light: themeLight.background.surface,
-        DEFAULT: `var(${pdsThemeBackgroundSurface})`,
+        DEFAULT: `var(${pdsBackgroundSurfaceColor})`,
         dark: themeDark.background.surface,
       },
       'background-shading': {
         light: themeLight.background.shading,
-        DEFAULT: `var(${pdsThemeBackgroundShading})`,
+        DEFAULT: `var(${pdsBackgroundShadingColor})`,
         dark: themeDark.background.shading,
       },
       'contrast-low': {
         light: themeLight.contrast.low,
-        DEFAULT: `var(${pdsThemeContrastLow})`,
+        DEFAULT: `var(${pdsContrastLowColor})`,
         dark: themeDark.contrast.low,
       },
       'contrast-medium': {
         light: themeLight.contrast.medium,
-        DEFAULT: `var(${pdsThemeContrastMedium})`,
+        DEFAULT: `var(${pdsContrastMediumColor})`,
         dark: themeDark.contrast.medium,
       },
       'contrast-high': {
         light: themeLight.contrast.high,
-        DEFAULT: `var(${pdsThemeContrastHigh})`,
+        DEFAULT: `var(${pdsContrastHighColor})`,
         dark: themeDark.contrast.high,
       },
       'notification-success': {
         light: themeLight.notification.success,
-        DEFAULT: `var(${pdsThemeNotificationSuccess})`,
+        DEFAULT: `var(${pdsNotificationSuccessColor})`,
         dark: themeDark.notification.success,
       },
       'notification-warning': {
         light: themeLight.notification.warning,
-        DEFAULT: `var(${pdsThemeNotificationWarning})`,
+        DEFAULT: `var(${pdsNotificationWarningColor})`,
         dark: themeDark.notification.warning,
       },
       'notification-error': {
         light: themeLight.notification.error,
-        DEFAULT: `var(${pdsThemeNotificationError})`,
+        DEFAULT: `var(${pdsNotificationErrorColor})`,
         dark: themeDark.notification.error,
       },
       'notification-info': {
         light: themeLight.notification.info,
-        DEFAULT: `var(${pdsThemeNotificationInfo})`,
+        DEFAULT: `var(${pdsNotificationInfoColor})`,
         dark: themeDark.notification.info,
       },
       'state-hover': {
         light: themeLight.state.hover,
-        DEFAULT: `var(${pdsThemeStateHover})`,
+        DEFAULT: `var(${pdsStateHoverColor})`,
         dark: themeDark.state.hover,
       },
       'state-active': {
         light: themeLight.state.active,
-        DEFAULT: `var(${pdsThemeStateActive})`,
+        DEFAULT: `var(${pdsStateActiveColor})`,
         dark: themeDark.state.active,
       },
       'state-focus': {
         light: themeLight.state.focus,
-        DEFAULT: `var(${pdsThemeStateFocus})`,
+        DEFAULT: `var(${pdsStateFocusColor})`,
         dark: themeDark.state.focus,
       },
       'state-disabled': {
         light: themeLight.state.disabled,
-        DEFAULT: `var(${pdsThemeStateDisabled})`,
+        DEFAULT: `var(${pdsStateDisabledColor})`,
         dark: themeDark.state.disabled,
       },
     },
@@ -413,42 +413,42 @@ export default {
         },
         hljsComment: {
           light: hljsCommentColorLight,
-          DEFAULT: `var(${hljsComment})`,
+          DEFAULT: `var(${hljsCommentColor})`,
           dark: hljsCommentColorDark,
         },
         hljsQuote: {
           light: hljsQuoteColorLight,
-          DEFAULT: `var(${hljsQuote})`,
+          DEFAULT: `var(${hljsQuoteColor})`,
           dark: hljsQuoteColorDark,
         },
         hljsDoctag: {
           light: hljsDoctagColorLight,
-          DEFAULT: `var(${hljsDoctag})`,
+          DEFAULT: `var(${hljsDoctagColor})`,
           dark: hljsDoctagColorDark,
         },
         hljsKeyword: {
           light: hljsKeywordColorLight,
-          DEFAULT: `var(${hljsKeyword})`,
+          DEFAULT: `var(${hljsKeywordColor})`,
           dark: hljsKeywordColorDark,
         },
         hljsFormula: {
           light: hljsFormulaColorLight,
-          DEFAULT: `var(${hljsFormula})`,
+          DEFAULT: `var(${hljsFormulaColor})`,
           dark: hljsFormulaColorDark,
         },
         hljsSection: {
           light: hljsSectionColorLight,
-          DEFAULT: `var(${hljsSection})`,
+          DEFAULT: `var(${hljsSectionColor})`,
           dark: hljsSectionColorDark,
         },
         hljsName: {
           light: hljsNameColorLight,
-          DEFAULT: `var(${hljsName})`,
+          DEFAULT: `var(${hljsNameColor})`,
           dark: hljsNameColorDark,
         },
         hljsSelectorTag: {
           light: hljsSelectorTagColorLight,
-          DEFAULT: `var(${hljsSelectorTag})`,
+          DEFAULT: `var(${hljsSelectorTagColor})`,
           dark: hljsSelectorTagColorDark,
         },
         hljsDeletionColor: {
@@ -463,22 +463,22 @@ export default {
         },
         hljsSubst: {
           light: hljsSubstColorLight,
-          DEFAULT: `var(${hljsSubst})`,
+          DEFAULT: `var(${hljsSubstColor})`,
           dark: hljsSubstColorDark,
         },
         hljsLiteral: {
           light: hljsLiteralColorLight,
-          DEFAULT: `var(${hljsLiteral})`,
+          DEFAULT: `var(${hljsLiteralColor})`,
           dark: hljsLiteralColorDark,
         },
         hljsString: {
           light: hljsStringColorLight,
-          DEFAULT: `var(${hljsString})`,
+          DEFAULT: `var(${hljsStringColor})`,
           dark: hljsStringColorDark,
         },
         hljsRegexp: {
           light: hljsRegexpColorLight,
-          DEFAULT: `var(${hljsRegexp})`,
+          DEFAULT: `var(${hljsRegexpColor})`,
           dark: hljsRegexpColorDark,
         },
         hljsAdditionColor: {
@@ -493,87 +493,87 @@ export default {
         },
         hljsAttribute: {
           light: hljsAttributeColorLight,
-          DEFAULT: `var(${hljsAttribute})`,
+          DEFAULT: `var(${hljsAttributeColor})`,
           dark: hljsAttributeColorDark,
         },
         hljsMetaString: {
           light: hljsMetaStringColorLight,
-          DEFAULT: `var(${hljsMetaString})`,
+          DEFAULT: `var(${hljsMetaStringColor})`,
           dark: hljsMetaStringColorDark,
         },
         hljsBuiltIn: {
           light: hljsBuiltInColorLight,
-          DEFAULT: `var(${hljsBuiltIn})`,
+          DEFAULT: `var(${hljsBuiltInColor})`,
           dark: hljsBuiltInColorDark,
         },
         hljsAttr: {
           light: hljsAttrColorLight,
-          DEFAULT: `var(${hljsAttr})`,
+          DEFAULT: `var(${hljsAttrColor})`,
           dark: hljsAttrColorDark,
         },
         hljsVariable: {
           light: hljsVariableColorLight,
-          DEFAULT: `var(${hljsVariable})`,
+          DEFAULT: `var(${hljsVariableColor})`,
           dark: hljsVariableColorDark,
         },
         hljsTemplateVariable: {
           light: hljsTemplateVariableColorLight,
-          DEFAULT: `var(${hljsTemplateVariable})`,
+          DEFAULT: `var(${hljsTemplateVariableColor})`,
           dark: hljsTemplateVariableColorDark,
         },
         hljsType: {
           light: hljsTypeColorLight,
-          DEFAULT: `var(${hljsType})`,
+          DEFAULT: `var(${hljsTypeColor})`,
           dark: hljsTypeColorDark,
         },
         hljsSelectorClass: {
           light: hljsSelectorClassColorLight,
-          DEFAULT: `var(${hljsSelectorClass})`,
+          DEFAULT: `var(${hljsSelectorClassColor})`,
           dark: hljsSelectorClassColorDark,
         },
         hljsSelectorAttr: {
           light: hljsSelectorAttrColorLight,
-          DEFAULT: `var(${hljsSelectorAttr})`,
+          DEFAULT: `var(${hljsSelectorAttrColor})`,
           dark: hljsSelectorAttrColorDark,
         },
         hljsSelectorPseudo: {
           light: hljsSelectorPseudoColorLight,
-          DEFAULT: `var(${hljsSelectorPseudo})`,
+          DEFAULT: `var(${hljsSelectorPseudoColor})`,
           dark: hljsSelectorPseudoColorDark,
         },
         hljsNumber: {
           light: hljsNumberColorLight,
-          DEFAULT: `var(${hljsNumber})`,
+          DEFAULT: `var(${hljsNumberColor})`,
           dark: hljsNumberColorDark,
         },
         hljsSymbol: {
           light: hljsSymbolColorLight,
-          DEFAULT: `var(${hljsSymbol})`,
+          DEFAULT: `var(${hljsSymbolColor})`,
           dark: hljsSymbolColorDark,
         },
         hljsBullet: {
           light: hljsBulletColorLight,
-          DEFAULT: `var(${hljsBullet})`,
+          DEFAULT: `var(${hljsBulletColor})`,
           dark: hljsBulletColorDark,
         },
         hljsLink: {
           light: hljsLinkColorLight,
-          DEFAULT: `var(${hljsLink})`,
+          DEFAULT: `var(${hljsLinkColor})`,
           dark: hljsLinkColorDark,
         },
         hljsMeta: {
           light: hljsMetaColorLight,
-          DEFAULT: `var(${hljsMeta})`,
+          DEFAULT: `var(${hljsMetaColor})`,
           dark: hljsMetaColorDark,
         },
         hljsSelectorId: {
           light: hljsSelectorIdColorLight,
-          DEFAULT: `var(${hljsSelectorId})`,
+          DEFAULT: `var(${hljsSelectorIdColor})`,
           dark: hljsSelectorIdColorDark,
         },
         hljsTitle: {
           light: hljsTitleColorLight,
-          DEFAULT: `var(${hljsTitle})`,
+          DEFAULT: `var(${hljsTitleColor})`,
           dark: hljsTitleColorDark,
         },
       },
