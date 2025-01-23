@@ -19,6 +19,18 @@ export const CodeBlock = ({ frameworkMarkup }: CodeBlockProps) => {
     setTabIndex(e.detail.activeTabIndex);
   };
 
+  const code = `<!doctype html>
+<html lang="en">
+<head>
+  <title></title>
+</head>
+<body>
+
+${frameworkMarkup[selectedFramework]}
+
+</body>
+</html>`;
+
   return (
     <div>
       <PTabsBar activeTabIndex={tabIndex} onUpdate={onUpdate}>
@@ -28,14 +40,10 @@ export const CodeBlock = ({ frameworkMarkup }: CodeBlockProps) => {
           </button>
         ))}
       </PTabsBar>
-      <pre className="my-sm">
-        <code>
-          {/* @ts-expect-error: Suppress type incompatibility */}
-          <SyntaxHighlighter language="html" PreTag="div" CodeTag="div" showLineNumbers={false} useInlineStyles={false}>
-            {frameworkMarkup[selectedFramework] as string}
-          </SyntaxHighlighter>
-        </code>
-      </pre>
+      {/* @ts-expect-error: Suppress type incompatibility */}
+      <SyntaxHighlighter language="html" showLineNumbers={false} useInlineStyles={false}>
+        {code}
+      </SyntaxHighlighter>
     </div>
   );
 };
