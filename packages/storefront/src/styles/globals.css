@@ -36,7 +36,7 @@
   }
 
   p-inline-notification {
-    margin-block: theme(spacing.sm);
+    margin-block: theme(spacing.md);
   }
 
   .deprecated {
