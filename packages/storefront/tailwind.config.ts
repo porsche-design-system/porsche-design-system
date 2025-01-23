@@ -46,12 +46,14 @@ const hljsFormula = '--hljs-formula';
 const hljsSection = '--hljs-section';
 const hljsName = '--hljs-name';
 const hljsSelectorTag = '--hljs-selector-tag';
-const hljsDeletion = '--hljs-deletion';
+const hljsDeletionColor = '--hljs-deletion-color';
+const hljsDeletionBackground = '--hljs-deletion-background';
 const hljsSubst = '--hljs-subst';
 const hljsLiteral = '--hljs-literal';
 const hljsString = '--hljs-string';
 const hljsRegexp = '--hljs-regexp';
-const hljsAddition = '--hljs-addition';
+const hljsAdditionColor = '--hljs-addition-color';
+const hljsAdditionBackground = '--hljs-addition-background';
 const hljsAttribute = '--hljs-attribute';
 const hljsMetaString = '--hljs-meta-string';
 const hljsBuiltIn = '--hljs-built-in';
@@ -71,23 +73,25 @@ const hljsSelectorId = '--hljs-selector-id';
 const hljsTitle = '--hljs-title';
 
 const hljsColorLight = '#383a42';
-const hljsBackgroundLight = '#fafafa';
-const hljsCommentColorLight = '#a0a1a7';
-const hljsQuoteColorLight = '#a0a1a7';
+const hljsBackgroundLight = '#EEEFF266';
+const hljsCommentColorLight = '#717277';
+const hljsQuoteColorLight = '#717277';
 const hljsDoctagColorLight = '#a626a4';
 const hljsKeywordColorLight = '#a626a4';
 const hljsFormulaColorLight = '#a626a4';
-const hljsSectionColorLight = '#e45649';
-const hljsNameColorLight = '#e45649';
-const hljsSelectorTagColorLight = '#e45649';
-const hljsDeletionColorLight = '#fdd';
-const hljsSubstColorLight = '#e45649';
-const hljsLiteralColorLight = '#0184bb';
-const hljsStringColorLight = '#50a14f';
-const hljsRegexpColorLight = '#50a14f';
-const hljsAdditionColorLight = '#dfd';
-const hljsAttributeColorLight = '#50a14f';
-const hljsMetaStringColorLight = '#50a14f';
+const hljsSectionColorLight = '#e41300';
+const hljsNameColorLight = '#e41300';
+const hljsSelectorTagColorLight = '#e41300';
+const hljsDeletionColorLight = '#82071e';
+const hljsDeletionBackgroundLight = '#ffebe9';
+const hljsSubstColorLight = '#e41300';
+const hljsLiteralColorLight = '#007aad';
+const hljsStringColorLight = '#028500';
+const hljsRegexpColorLight = '#028500';
+const hljsAdditionColorLight = '#116329';
+const hljsAdditionBackgroundLight = '#dafbe1';
+const hljsAttributeColorLight = '#028500';
+const hljsMetaStringColorLight = '#028500';
 const hljsBuiltInColorLight = '#c18401';
 const hljsAttrColorLight = '#986801';
 const hljsVariableColorLight = '#986801';
@@ -97,29 +101,31 @@ const hljsSelectorClassColorLight = '#986801';
 const hljsSelectorAttrColorLight = '#986801';
 const hljsSelectorPseudoColorLight = '#986801';
 const hljsNumberColorLight = '#986801';
-const hljsSymbolColorLight = '#4078f2';
-const hljsBulletColorLight = '#4078f2';
-const hljsLinkColorLight = '#4078f2';
-const hljsMetaColorLight = '#4078f2';
-const hljsSelectorIdColorLight = '#4078f2';
-const hljsTitleColorLight = '#4078f2';
+const hljsSymbolColorLight = '#1f66ff';
+const hljsBulletColorLight = '#1f66ff';
+const hljsLinkColorLight = '#1f66ff';
+const hljsMetaColorLight = '#1f66ff';
+const hljsSelectorIdColorLight = '#1f66ff';
+const hljsTitleColorLight = '#1f66ff';
 
 const hljsColorDark = '#abb2bf';
-const hljsBackgroundDark = '#282c34';
-const hljsCommentColorDark = '#5c6370';
-const hljsQuoteColorDark = '#5c6370';
+const hljsBackgroundDark = '#21222599';
+const hljsCommentColorDark = '#7b8495';
+const hljsQuoteColorDark = '#7b8495';
 const hljsDoctagColorDark = '#c678dd';
 const hljsKeywordColorDark = '#c678dd';
 const hljsFormulaColorDark = '#c678dd';
 const hljsSectionColorDark = '#e06c75';
 const hljsNameColorDark = '#e06c75';
 const hljsSelectorTagColorDark = '#e06c75';
-const hljsDeletionColorDark = '#be4678';
+const hljsDeletionColorDark = '#ffdcd7';
+const hljsDeletionBackgroundDark = '#67060c';
 const hljsSubstColorDark = '#e06c75';
 const hljsLiteralColorDark = '#56b6c2';
 const hljsStringColorDark = '#98c379';
 const hljsRegexpColorDark = '#98c379';
-const hljsAdditionColorDark = '#2a9292';
+const hljsAdditionColorDark = '#aff5b4';
+const hljsAdditionBackgroundDark = '#033a16';
 const hljsAttributeColorDark = '#98c379';
 const hljsMetaStringColorDark = '#98c379';
 const hljsBuiltInColorDark = '#e6c07b';
@@ -164,12 +170,14 @@ const lightTheme = {
   [hljsSection]: hljsSectionColorLight,
   [hljsName]: hljsNameColorLight,
   [hljsSelectorTag]: hljsSelectorTagColorLight,
-  [hljsDeletion]: hljsDeletionColorLight,
+  [hljsDeletionColor]: hljsDeletionColorLight,
+  [hljsDeletionBackground]: hljsDeletionBackgroundLight,
   [hljsSubst]: hljsSubstColorLight,
   [hljsLiteral]: hljsLiteralColorLight,
   [hljsString]: hljsStringColorLight,
   [hljsRegexp]: hljsRegexpColorLight,
-  [hljsAddition]: hljsAdditionColorLight,
+  [hljsAdditionColor]: hljsAdditionColorLight,
+  [hljsAdditionBackground]: hljsAdditionBackgroundLight,
   [hljsAttribute]: hljsAttributeColorLight,
   [hljsMetaString]: hljsMetaStringColorLight,
   [hljsBuiltIn]: hljsBuiltInColorLight,
@@ -215,12 +223,14 @@ const darkTheme = {
   [hljsSection]: hljsSectionColorDark,
   [hljsName]: hljsNameColorDark,
   [hljsSelectorTag]: hljsSelectorTagColorDark,
-  [hljsDeletion]: hljsDeletionColorDark,
+  [hljsDeletionColor]: hljsDeletionColorDark,
+  [hljsDeletionBackground]: hljsDeletionBackgroundDark,
   [hljsSubst]: hljsSubstColorDark,
   [hljsLiteral]: hljsLiteralColorDark,
   [hljsString]: hljsStringColorDark,
   [hljsRegexp]: hljsRegexpColorDark,
-  [hljsAddition]: hljsAdditionColorDark,
+  [hljsAdditionColor]: hljsAdditionColorDark,
+  [hljsAdditionBackground]: hljsAdditionBackgroundDark,
   [hljsAttribute]: hljsAttributeColorDark,
   [hljsMetaString]: hljsMetaStringColorDark,
   [hljsBuiltIn]: hljsBuiltInColorDark,
@@ -257,12 +267,14 @@ export default {
     'hljs-section',
     'hljs-name',
     'hljs-selector-tag',
-    'hljs-deletion',
+    'hljs-deletion-color',
+    'hljs-deletion-background',
     'hljs-subst',
     'hljs-literal',
     'hljs-string',
     'hljs-regexp',
-    'hljs-addition',
+    'hljs-addition-color',
+    'hljs-addition-background',
     'hljs-attribute',
     'hljs-meta-string',
     'hljs-built-in',
@@ -439,10 +451,15 @@ export default {
           DEFAULT: `var(${hljsSelectorTag})`,
           dark: hljsSelectorTagColorDark,
         },
-        hljsDeletion: {
+        hljsDeletionColor: {
           light: hljsDeletionColorLight,
-          DEFAULT: `var(${hljsDeletion})`,
+          DEFAULT: `var(${hljsDeletionColor})`,
           dark: hljsDeletionColorDark,
+        },
+        hljsDeletionBackground: {
+          light: hljsDeletionBackgroundLight,
+          DEFAULT: `var(${hljsDeletionBackground})`,
+          dark: hljsDeletionBackgroundDark,
         },
         hljsSubst: {
           light: hljsSubstColorLight,
@@ -464,10 +481,15 @@ export default {
           DEFAULT: `var(${hljsRegexp})`,
           dark: hljsRegexpColorDark,
         },
-        hljsAddition: {
+        hljsAdditionColor: {
           light: hljsAdditionColorLight,
-          DEFAULT: `var(${hljsAddition})`,
+          DEFAULT: `var(${hljsAdditionColor})`,
           dark: hljsAdditionColorDark,
+        },
+        hljsAdditionBackground: {
+          light: hljsAdditionBackgroundLight,
+          DEFAULT: `var(${hljsAdditionBackground})`,
+          dark: hljsAdditionBackgroundDark,
         },
         hljsAttribute: {
           light: hljsAttributeColorLight,
