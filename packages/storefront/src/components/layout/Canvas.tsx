@@ -1,5 +1,6 @@
 'use client';
 
+import path from 'node:path';
 import { Navigation } from '@/components/common/Navigation';
 import Tabs from '@/components/common/Tabs';
 import { ThemeCycle } from '@/components/common/ThemeCycle';
@@ -12,9 +13,11 @@ import {
 } from '@porsche-design-system/components-react/ssr';
 import { breakpointS } from '@porsche-design-system/components-react/styles';
 import Link from 'next/link';
-import { type PropsWithChildren, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { type PropsWithChildren, useEffect, useState } from 'react';
 
 export const Canvas = ({ children }: PropsWithChildren) => {
+  const pathname = usePathname();
   const [isSidebarStartOpen, setIsSidebarStartOpen] = useState(
     // initially, sidebar should be closed on mobile and opened on desktop
     global?.window && window.matchMedia(`(min-width: ${breakpointS}px)`).matches
@@ -30,6 +33,10 @@ export const Canvas = ({ children }: PropsWithChildren) => {
   const onSidebarEndDismiss = () => {
     setIsSidebarEndOpen(false);
   };
+
+  useEffect(() => {
+    setIsSidebarEndOpen(pathname.includes('examples'));
+  }, [pathname]);
 
   return (
     <PCanvas
@@ -74,9 +81,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       <div slot="sidebar-start">
         <Navigation />
       </div>
-      <div slot="sidebar-end">
-        <PText>Sidebar End</PText>
-      </div>
+      <div slot="sidebar-end" />
     </PCanvas>
   );
 };

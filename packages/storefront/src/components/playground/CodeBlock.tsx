@@ -19,9 +19,21 @@ export const CodeBlock = ({ frameworkMarkup }: CodeBlockProps) => {
     setTabIndex(e.detail.activeTabIndex);
   };
 
+  const code = `<!doctype html>
+<html lang="en">
+<head>
+  <title></title>
+</head>
+<body>
+
+${frameworkMarkup[selectedFramework]}
+
+</body>
+</html>`;
+
   return (
-    <div className="">
-      <PTabsBar activeTabIndex={tabIndex} onUpdate={onUpdate}>
+    <div>
+      <PTabsBar className="mt-lg mb-sm" activeTabIndex={tabIndex} onUpdate={onUpdate}>
         {frameworks.map((framework) => (
           <button key={framework} type="button">
             {frameworkNameMap[framework]}
@@ -29,8 +41,8 @@ export const CodeBlock = ({ frameworkMarkup }: CodeBlockProps) => {
         ))}
       </PTabsBar>
       {/* @ts-expect-error: Suppress type incompatibility */}
-      <SyntaxHighlighter language="html" PreTag="div" CodeTag="div">
-        {frameworkMarkup[selectedFramework] as string}
+      <SyntaxHighlighter language="html" showLineNumbers={false} useInlineStyles={false}>
+        {code}
       </SyntaxHighlighter>
     </div>
   );

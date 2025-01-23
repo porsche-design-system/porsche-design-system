@@ -22,7 +22,14 @@ export const DirectionSelect = ({
   onUpdate,
 }: DirectionSelectProps) => {
   return (
-    <PSelect name="theme" value={dir} label={label} hideLabel={hideLabel} onUpdate={onUpdate}>
+    <PSelect
+      className="xs:w-[min(calc(50%-theme(spacing.xs)/2),12.5rem)]"
+      name="theme"
+      value={dir}
+      label={label}
+      hideLabel={hideLabel}
+      onUpdate={onUpdate}
+    >
       <PSelectOption disabled={true}>Select direction</PSelectOption>
       <PSelectOption value="ltr">LTR (left-to-right)</PSelectOption>
       <PSelectOption value="rtl">RTL (right-to-left)</PSelectOption>

@@ -1,95 +1,142 @@
 'use client';
 
 import { ConfigureProps } from '@/components/playground/ConfigureProps';
+import { Playground } from '@/components/playground/Playground';
 import { componentsStory } from '@/components/playground/componentStory';
 import { isDefaultValue } from '@/components/playground/configuratorUtils';
 import { componentMeta } from '@porsche-design-system/component-meta';
-import { PButton } from '@porsche-design-system/components-react/ssr';
-import type { TagName } from '@porsche-design-system/shared';
-import React, { useState } from 'react';
-
-const componentMap: Record<string, React.ElementType> = {
-  'p-button': PButton,
-};
+import {
+  PAccordion,
+  PBanner,
+  PButton,
+  PButtonGroup,
+  PButtonPure,
+  PButtonTile,
+  PCanvas,
+  PCarousel,
+  PCheckbox,
+  PCheckboxWrapper,
+  PContentWrapper,
+  PCrest,
+  PDisplay,
+  PDivider,
+  PFieldset,
+  PFieldsetWrapper,
+  PFlex,
+  PFlyout,
+  PFlyoutMultilevel,
+  PGrid,
+  PHeading,
+  PHeadline,
+  PIcon,
+  PInlineNotification,
+  PLink,
+  PLinkPure,
+  PLinkSocial,
+  PLinkTile,
+  PLinkTileModelSignature,
+  PLinkTileProduct,
+  PMarque,
+  PModal,
+  PModelSignature,
+  PMultiSelect,
+  POptgroup,
+  PPagination,
+  PPinCode,
+  PPopover,
+  PRadioButtonWrapper,
+  PScroller,
+  PSegmentedControl,
+  PSelect,
+  PSelectWrapper,
+  PSheet,
+  PSpinner,
+  PStepperHorizontal,
+  PSwitch,
+  PTable,
+  PTabs,
+  PTabsBar,
+  PTag,
+  PTagDismissible,
+  PText,
+  PTextFieldWrapper,
+  PTextList,
+  PTextarea,
+  PTextareaWrapper,
+  PToast,
+  PWordmark,
+} from '@porsche-design-system/components-react/ssr';
+import type { TagNameWithChunk } from '@porsche-design-system/shared';
+import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 export type ElementConfig = {
-  tag: string; // The component tag e.g. 'p-button'
+  tag: TagNameWithChunk | keyof HTMLElementTagNameMap; // The component tag e.g. 'p-button'
   attributes?: Record<string, string | boolean>; // The component attributes/props written in camelCase e.g. { hideLabel: 'true' }
   children?: (string | ElementConfig)[]; // Nested children either as string for text or ElementConfig for nested components
 };
 
-const buttonExample: ElementConfig = {
-  tag: 'p-button',
-  attributes: { hideLabel: true, icon: 'arrow-right' },
-  children: ['Some label'],
+const componentMap: Record<TagNameWithChunk, React.ElementType> = {
+  'p-accordion': PAccordion,
+  'p-banner': PBanner,
+  'p-button': PButton,
+  'p-button-group': PButtonGroup,
+  'p-button-pure': PButtonPure,
+  'p-button-tile': PButtonTile,
+  'p-canvas': PCanvas,
+  'p-carousel': PCarousel,
+  'p-checkbox': PCheckbox,
+  'p-checkbox-wrapper': PCheckboxWrapper,
+  'p-content-wrapper': PContentWrapper,
+  'p-crest': PCrest,
+  'p-display': PDisplay,
+  'p-divider': PDivider,
+  'p-fieldset': PFieldset,
+  'p-fieldset-wrapper': PFieldsetWrapper,
+  'p-flex': PFlex,
+  'p-flyout': PFlyout,
+  'p-flyout-multilevel': PFlyoutMultilevel,
+  'p-grid': PGrid,
+  'p-heading': PHeading,
+  'p-headline': PHeadline,
+  'p-icon': PIcon,
+  'p-inline-notification': PInlineNotification,
+  'p-link': PLink,
+  'p-link-pure': PLinkPure,
+  'p-link-social': PLinkSocial,
+  'p-link-tile': PLinkTile,
+  'p-link-tile-model-signature': PLinkTileModelSignature,
+  'p-link-tile-product': PLinkTileProduct,
+  'p-marque': PMarque,
+  'p-modal': PModal,
+  'p-model-signature': PModelSignature,
+  'p-multi-select': PMultiSelect,
+  'p-optgroup': POptgroup,
+  'p-pagination': PPagination,
+  'p-pin-code': PPinCode,
+  'p-popover': PPopover,
+  'p-radio-button-wrapper': PRadioButtonWrapper,
+  'p-scroller': PScroller,
+  'p-segmented-control': PSegmentedControl,
+  'p-select': PSelect,
+  'p-select-wrapper': PSelectWrapper,
+  'p-sheet': PSheet,
+  'p-spinner': PSpinner,
+  'p-stepper-horizontal': PStepperHorizontal,
+  'p-switch': PSwitch,
+  'p-table': PTable,
+  'p-tabs': PTabs,
+  'p-tabs-bar': PTabsBar,
+  'p-tag': PTag,
+  'p-tag-dismissible': PTagDismissible,
+  'p-text': PText,
+  'p-text-field-wrapper': PTextFieldWrapper,
+  'p-text-list': PTextList,
+  'p-textarea': PTextarea,
+  'p-textarea-wrapper': PTextareaWrapper,
+  'p-toast': PToast,
+  'p-wordmark': PWordmark,
 };
-
-// biome-ignore lint/correctness/noUnusedVariables: <explanation>
-const flyoutExample: ElementConfig = {
-  tag: 'p-flyout',
-  attributes: { open: 'false', aria: '{ "aria-label": "Some Heading" }' },
-  children: [
-    {
-      tag: 'p-heading',
-      attributes: { slot: 'header', size: 'large', tag: 'h2' },
-      children: ['Some Heading'],
-    },
-    { tag: 'p-text', attributes: { slot: '' }, children: ['Some Content'] },
-    {
-      tag: 'p-button-group',
-      attributes: { slot: 'footer' },
-      children: [
-        { tag: 'p-button', attributes: { type: 'button' }, children: ['Proceed'] },
-        { tag: 'p-button', attributes: { type: 'button', variant: 'secondary' }, children: ['Cancel'] },
-      ],
-    },
-    { tag: 'p-text', attributes: { slot: 'sub-footer' }, children: ['Some additional Sub-Footer'] },
-  ],
-};
-
-// type ElementConfig = {
-//   tag: string;
-//   attributes?: Record<string, string>;
-//   children?: (string | ElementConfig)[];
-// };
-//
-// export const generateHtml = (config: ElementConfig): { node: HTMLElement | Text; markup: string } => {
-//   const { tag, attributes = {}, children = [] } = config;
-//
-//   // // Special case: text node
-//   // if (tag === '#text') {
-//   //   const textNode = document.createTextNode(children as string);
-//   //   return {
-//   //     node: textNode,
-//   //     markup: children as string,
-//   //   };
-//   // }
-//
-//   // Create the DOM element
-//   const element = document.createElement(tag);
-//
-//   // Set attributes
-//   for (const [key, value] of Object.entries(attributes)) {
-//     element.setAttribute(key, value);
-//   }
-//
-//   // Build children recursively
-//   const childMarkup: string[] = [];
-//
-//   for (const child of children) {
-//     const { node: childNode, markup: childMarkupString } =
-//       typeof child === 'string' ? { node: document.createTextNode(child), markup: child } : generateHtml(child);
-//     element.appendChild(childNode);
-//     childMarkup.push(childMarkupString);
-//   }
-//
-//   // Generate the string representation of the element
-//   const markup = `<${tag} ${Object.entries(attributes)
-//     .map(([key, value]) => `${key}="${value}"`)
-//     .join(' ')}>${childMarkup.join('')}</${tag}>`;
-//
-//   return { node: element, markup };
-// };
 
 type GeneratedOutput = {
   jsx: React.ReactNode;
@@ -115,7 +162,7 @@ const generateOutput = (
   const jsxChildren = processedChildren.map((child) => child.jsx);
   const markupChildren = processedChildren.map((child) => child.markup).join('\n');
 
-  const ReactComponent = componentMap[tag];
+  const ReactComponent = tag.startsWith('p-') ? componentMap[tag as TagNameWithChunk] : tag;
   const jsx = React.createElement(ReactComponent, { key: JSON.stringify(attributes), ...attributes }, ...jsxChildren);
 
   const indent = '  '.repeat(indentLevel);
@@ -129,14 +176,14 @@ const generateOutput = (
 };
 
 type ConfiguratorProps = {
-  tagName: TagName;
+  tagName: TagNameWithChunk;
 };
 
 export const Configurator = ({ tagName }: ConfiguratorProps) => {
-  const [example, setExample] = useState(buttonExample);
+  const [example, setExample] = useState<ElementConfig>(componentsStory[tagName]);
+  const [domReady, setDomReady] = useState(false);
 
   const meta = componentMeta[tagName];
-  const story = componentsStory[tagName];
 
   const { jsx, markup } = generateOutput(example);
 
@@ -157,19 +204,27 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
     });
   };
 
+  useEffect(() => {
+    setDomReady(true);
+  }, []);
+
   if (!meta.propsMeta) return null;
 
   return (
     <>
-      <ConfigureProps
-        componentProps={meta.propsMeta}
-        configuredProps={buttonExample.attributes}
-        onUpdateProps={handleUpdateProps}
-      />
-      {jsx}
-      <pre>
-        <code>{markup}</code>
-      </pre>
+      {domReady
+        ? createPortal(
+            <ConfigureProps
+              componentProps={meta.propsMeta}
+              configuredProps={example.attributes}
+              onUpdateProps={handleUpdateProps}
+            />,
+            // biome-ignore lint/style/noNonNullAssertion: <explanation>
+            document.querySelector('[slot="sidebar-end"]')!
+          )
+        : null}
+
+      <Playground frameworkMarkup={{ 'vanilla-js': markup }}>{jsx}</Playground>
     </>
   );
 };

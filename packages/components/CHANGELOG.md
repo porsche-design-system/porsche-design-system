@@ -14,6 +14,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.25.0] - 2025-01-23
+
+### [3.25.0-rc.1] - 2025-01-22
+
+#### Fixed
+
+- `Carousel`: throws error when object-like string is passed by `slides-per-page`
+  ([#3710](https://github.com/porsche-design-system/porsche-design-system/pull/3710))
+
 ### [3.25.0-rc.0] - 2025-01-21
 
 #### Added
