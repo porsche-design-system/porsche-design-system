@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Fixed
+
+- `aria` prop now supports a colon inside of a value, e.g. `aria="{ 'aria-label': 'Always remember: yes you can!' }"`
+  ([#3680](https://github.com/porsche-design-system/porsche-design-system/pull/3680))
+
 ### [3.25.0-rc.1] - 2025-01-22
 
 #### Fixed
@@ -36,8 +41,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Fixed
 
-- `aria` prop now supports a colon inside of a value, e.g. `aria="{ 'aria-label': 'Always remember: yes you can!' }"`
-  ([#3680](https://github.com/porsche-design-system/porsche-design-system/pull/3680))
 - `Textarea`, `Textarea Wrapper`, `Textfield Wrapper`: color contrast of `unit` prop and counter in `readonly` mode
   meets WCAG 2.2 AA standard ([#3693](https://github.com/porsche-design-system/porsche-design-system/pull/3693))
 
