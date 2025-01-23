@@ -1,7 +1,7 @@
-import { PLink } from "@porsche-design-system/components-react/ssr";
-import { A11yIcon } from "@/components/common/A11yIcon";
+import { PLink } from '@porsche-design-system/components-react/ssr';
+import { A11yIcon } from '@/components/common/A11yIcon';
 import Image from 'next/image';
-import { TableOfContents } from "@/components/common/TableOfContents";
+import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
   title: 'Accessibility - Porsche Design System',
@@ -11,7 +11,7 @@ export const metadata = {
 
 # Accessibility
 
-<TableOfContents headings={["What is digital accessibility","Why it matters","Meeting global accessibility standards","Further information"]} />
+<TableOfContents headings={["What is digital accessibility","Why it matters","Meeting global accessibility standards","Web Components & accessibility","Further information"]} />
 
 > „If our mission is to be customer-driven, connected, simple, helpful and inclusive – accessibility must be part of
 > that!“
@@ -92,6 +92,16 @@ After the component is developed, it runs through a consecutive **testing** and 
 - **Screen Reader** tests ensure that the component is **usable** with screen readers.
 
 If you find any **accessibility issue**, please feel free to [**report it**](/help/bug-report).
+
+## Web Components & accessibility
+
+Technically our components are build out of **Web Components** to have a real single-source-of–truth regardless in which
+Framework the component is used. Though Web Components are widely adopted, there are still some **accessibility
+challenges**. One example is that it’s currently not possible to set `IDRef` **relationships** due to the architecture
+of custom elements and their scoped shadowDOM. This represents a limitation in **ARIA** support. However, there is an
+ongoing draft for a new **AOM** ([Accessibility Object Model](https://github.com/WICG/aom)), which aims to address this
+issue and enhance JS-based accessibility support for all web components. We are continuously working to improve these
+existing limitations.
 
 ## Further information
 
