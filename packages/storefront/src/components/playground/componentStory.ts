@@ -3,10 +3,17 @@ import type { TagNameWithChunk } from '@porsche-design-system/shared';
 
 /**
  * Questions:
+ * No Configurator for deprecated components?
+ * p-display should have h1 as defaultValue & p-heading should have h2 as default value set in componentMeta
+ * Config in vanilla HTML Style or React? TagName casing, props camelCase and value, class/className
+ * How to deal with string values which have a default value? p-checkbox value default is "on".
+ * How to deal with mix of options and string? p-crest "allowedValues": ["_self", "_blank", "_parent", "_top", "string"]
  * How to specify which slot/prop is shown/rendered in the markup? Currently all slots have to be specified in the story.
  * Add story information to componentMeta directly?
  * How to deal with href vs slotted anchor (slotsMeta already has hasAltProp but only for named slots )?
- * ButtonGroup has breakpoint customizable as default value. Currently not shown in the select of direction.
+ * ButtonGroup/LinkTileModelSignature has breakpoint customizable as default value. Currently not shown in the select of direction.
+ * Some edge cases like p-carousel slidesPerPages which is type number | 'auto'
+ * How to deal with aria attributes? Currently not shown in the configurator. 'p-icon'
  *
  * TODO:
  * - [ ] - Dynamic import of React Component in Configurator
@@ -27,12 +34,15 @@ import type { TagNameWithChunk } from '@porsche-design-system/shared';
  * - [x] - filter deprecated prop values (deprecatedValues)
  * - [x] - split element config and only keep config which changes in state, render rest separately
  * - [x] - fix keys
+ * - [x] - AllowedValue string with default value
  * - [ ] - AllowedValue number - text field
  * - [ ] - ComponentSlots checkboxes/switches
+ * - [ ] - syntax highlight broken for p-fieldset-wrapper
+ * - [ ] - console error when initially loading image of p-link-tile (image is still shown)
  */
 
 export type ComponentsStory = {
-  [Tag in TagNameWithChunk]: ElementConfig[];
+  [Tag in Exclude<TagNameWithChunk, 'p-flex' | 'p-grid' | 'p-headline' | 'p-link-social'>]: ElementConfig[];
 };
 
 export const componentsStory: ComponentsStory = {
@@ -119,55 +129,64 @@ export const componentsStory: ComponentsStory = {
   'p-checkbox': [
     {
       tag: 'p-checkbox',
-      // TODO: Add story
+      attributes: { label: 'Some label', hideLabel: false, name: 'some-name' },
     },
   ],
   'p-checkbox-wrapper': [
     {
       tag: 'p-checkbox-wrapper',
-      // TODO: Add story
+      attributes: { label: 'Some label', hideLabel: false },
+      children: [{ tag: 'input', attributes: { type: 'checkbox', name: 'some-name' } }],
     },
   ],
   'p-content-wrapper': [
     {
       tag: 'p-content-wrapper',
-      // TODO: Add story
+      attributes: { width: 'extended' },
+      children: [{ tag: 'div', attributes: { className: 'example-content' }, children: ['Some content'] }],
     },
   ],
   'p-crest': [
     {
       tag: 'p-crest',
-      // TODO: Add story
     },
   ],
   'p-display': [
     {
       tag: 'p-display',
-      // TODO: Add story
+      attributes: { tag: 'h3', size: 'large' },
+      children: ['The quick brown fox jumps over the lazy dog'],
     },
   ],
   'p-divider': [
     {
       tag: 'p-divider',
-      // TODO: Add story
     },
   ],
   'p-fieldset': [
     {
       tag: 'p-fieldset',
-      // TODO: Add story
+      attributes: { label: 'Some legend label' },
+      children: [
+        {
+          tag: 'p-text-field-wrapper',
+          attributes: { label: 'Some label' },
+          children: [{ tag: 'input', attributes: { type: 'text', name: 'some-name' } }],
+        },
+      ],
     },
   ],
   'p-fieldset-wrapper': [
     {
       tag: 'p-fieldset-wrapper',
-      // TODO: Add story
-    },
-  ],
-  'p-flex': [
-    {
-      tag: 'p-flex',
-      // TODO: Add story
+      attributes: { label: 'Some legend label' },
+      children: [
+        {
+          tag: 'p-text-field-wrapper',
+          attributes: { label: 'Some label' },
+          children: [{ tag: 'input', attributes: { type: 'text', name: 'some-name' } }],
+        },
+      ],
     },
   ],
   'p-flyout': [
@@ -199,81 +218,82 @@ export const componentsStory: ComponentsStory = {
       // TODO: Add story
     },
   ],
-  'p-grid': [
-    {
-      tag: 'p-grid',
-      // TODO: Add story
-    },
-  ],
   'p-heading': [
     {
       tag: 'p-heading',
-      // TODO: Add story
-    },
-  ],
-  'p-headline': [
-    {
-      tag: 'p-headline',
-      // TODO: Add story
+      attributes: { tag: 'h3', size: 'large' },
+      children: ['The quick brown fox jumps over the lazy dog'],
     },
   ],
   'p-icon': [
     {
       tag: 'p-icon',
-      // TODO: Add story
+      attributes: { name: '360' },
     },
   ],
   'p-inline-notification': [
     {
       tag: 'p-inline-notification',
-      // TODO: Add story
+      attributes: { heading: 'Some heading', headingTag: 'h3', description: 'Some description.' },
     },
   ],
   'p-link': [
     {
       tag: 'p-link',
-      // TODO: Add story
+      attributes: { href: 'https://porsche.com' },
+      children: ['Some label'],
     },
   ],
   'p-link-pure': [
     {
       tag: 'p-link-pure',
-      // TODO: Add story
-    },
-  ],
-  'p-link-social': [
-    {
-      tag: 'p-link-social',
-      // TODO: Add story
+      attributes: { href: 'https://porsche.com' },
+      children: ['Some label'],
     },
   ],
   'p-link-tile': [
     {
       tag: 'p-link-tile',
+      attributes: { href: 'https://porsche.com', label: 'Some label', description: 'Some Description' },
+      children: [
+        {
+          tag: 'p-tag',
+          attributes: { slot: 'header', color: 'background-frosted', compact: 'true' },
+          children: ['Some tag'],
+        },
+        { tag: 'img', attributes: { src: 'assets/lights.jpg', alt: 'Some image description' } },
+      ],
     },
   ],
-  // 'p-link-tile': {
-  //   propsStory: {
-  //     href: { value: 'https://porsche.com' },
-  //     label: { value: 'Some label' },
-  //     description: { value: 'Some Description' },
-  //   },
-  // }],
   'p-link-tile-model-signature': [
     {
       tag: 'p-link-tile-model-signature',
+      attributes: { heading: 'Some heading' },
+      children: [
+        {
+          tag: 'p-tag',
+          attributes: { slot: 'header', color: 'background-frosted', compact: 'true' },
+          children: ['Some tag'],
+        },
+        { tag: 'img', attributes: { src: 'assets/lights.jpg', alt: 'Some image description' } },
+        {
+          tag: 'p-link',
+          attributes: { slot: 'primary', href: 'https://porsche.com/#primary' },
+          children: ['Primary label'],
+        },
+        {
+          tag: 'p-link',
+          attributes: { slot: 'secondary', href: 'https://porsche.com/#secondary' },
+          children: ['Secondary label'],
+        },
+      ],
     },
   ],
-  // 'p-link-tile-model-signature': {
-  //   propsStory: {
-  //     heading: { value: 'Some heading' },
-  //     description: { value: 'Some description' },
-  //   },
-  // }],
   'p-link-tile-product': [
     {
       tag: 'p-link-tile-product',
-      // TODO: Add story
+      attributes: { heading: 'Some heading', price: '1.911,00 €', href: 'https://porsche.com' },
+      children: [{ tag: 'img', attributes: { src: 'assets/weekender.webp', alt: 'Some alt text' } }],
     },
   ],
   'p-marque': [
