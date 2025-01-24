@@ -11,7 +11,7 @@ type ConfigurePropsProps = {
 
 export const ConfigureProps = ({ componentProps, configuredProps, onUpdateProps }: ConfigurePropsProps) => {
   const filteredComponentProps = Object.entries(componentProps ?? {}).filter(
-    ([key, value]) => !value.isAria && key !== 'theme' && value.type !== 'string[]'
+    ([key, value]) => !value.isAria && key !== 'theme' && value.type !== 'string[]' && !value.isDeprecated
   );
 
   const getCurrentValue = (propName: string, propMeta: PropMeta): string | undefined => {
@@ -38,7 +38,7 @@ export const ConfigureProps = ({ componentProps, configuredProps, onUpdateProps 
           required={propMeta.isRequired}
           onUpdate={(e) => onUpdateProps(propName, e.detail.value)}
         >
-          {renderOptions(propMeta)}
+          {renderOptions(propName, propMeta)}
         </PSelect>
       );
     }
@@ -48,7 +48,7 @@ export const ConfigureProps = ({ componentProps, configuredProps, onUpdateProps 
         <PTextFieldWrapper key={propName} label={propName} description={propMeta.description}>
           <input
             type="text"
-            value={getCurrentValue(propName, propMeta)}
+            value={getCurrentValue(propName, propMeta) ?? ''}
             required={propMeta.isRequired}
             onInput={(e) => onUpdateProps(propName, e.currentTarget.value)}
           />
@@ -57,7 +57,7 @@ export const ConfigureProps = ({ componentProps, configuredProps, onUpdateProps 
     }
   };
 
-  const renderOptions = (propMeta: PropMeta) => {
+  const renderOptions = (propName: string, propMeta: PropMeta) => {
     if (propMeta.allowedValues === 'boolean') {
       return ['true', 'false'].map((option) => (
         <PSelectOption key={option} value={option}>
@@ -68,7 +68,13 @@ export const ConfigureProps = ({ componentProps, configuredProps, onUpdateProps 
     }
 
     if (Array.isArray(propMeta.allowedValues)) {
-      return propMeta.allowedValues.map((option) => (
+      // TODO: Improve special case for p-carousel type number | 'auto'?
+      const options =
+        propName === 'slidesPerPage'
+          ? [1, 2, 3, 4, 'auto']
+          : propMeta.allowedValues.filter((prop) => !propMeta?.deprecatedValues?.includes(prop));
+
+      return options.map((option) => (
         <PSelectOption key={option} value={option}>
           {option}
           {isDefaultValue(propMeta.defaultValue, option) ? ' (default)' : ''}

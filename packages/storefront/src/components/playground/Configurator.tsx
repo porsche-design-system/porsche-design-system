@@ -67,7 +67,8 @@ import {
   PWordmark,
 } from '@porsche-design-system/components-react/ssr';
 import type { TagNameWithChunk } from '@porsche-design-system/shared';
-import React, { useEffect, useState } from 'react';
+import { kebabCase } from 'change-case';
+import React, { useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 export type ElementConfig = {
@@ -143,36 +144,47 @@ type GeneratedOutput = {
   markup: string;
 };
 
-const generateOutput = (
-  descriptor: ElementConfig,
-  indentLevel = 0 // Track indentation level for formatting
-): GeneratedOutput => {
+const generateCode = (configs: ElementConfig[]): GeneratedOutput => {
+  return useMemo(() => {
+    const outputs = configs.map((config) => generateOutput(config));
+    return {
+      jsx: outputs.map((output) => output.jsx),
+      markup: outputs.map((output) => output.markup).join('\n\n'),
+    };
+  }, [configs]);
+};
+
+const generateOutput = (descriptor: ElementConfig, indentLevel = 0, index?: number): GeneratedOutput => {
   const { tag, attributes = {}, children = [] } = descriptor;
 
-  const attributesString = Object.entries(attributes)
-    .map(([key, value]) => (typeof value === 'string' ? `${key}="${value}"` : `${key}='${JSON.stringify(value)}'`))
-    .join(' ');
+  const attributesArray = Object.entries(attributes).map(([key, value]) =>
+    typeof value === 'string'
+      ? `${key === 'className' ? 'class' : kebabCase(key)}="${value}"`
+      : `${key}='${JSON.stringify(value)}'`
+  );
+  const attributesString = attributesArray.length > 0 ? ` ${attributesArray.join(' ')}` : '';
 
-  const processedChildren = children.map((child) =>
+  // Process children
+  const processedChildren = children.map((child, childIndex) =>
     typeof child === 'string'
       ? { jsx: child, markup: `${'  '.repeat(indentLevel + 1)}${child}` }
-      : generateOutput(child, indentLevel + 1)
+      : generateOutput(child, indentLevel + 1, childIndex)
   );
 
   const jsxChildren = processedChildren.map((child) => child.jsx);
   const markupChildren = processedChildren.map((child) => child.markup).join('\n');
 
   const ReactComponent = tag.startsWith('p-') ? componentMap[tag as TagNameWithChunk] : tag;
-  const jsx = React.createElement(ReactComponent, { key: JSON.stringify(attributes), ...attributes }, ...jsxChildren);
 
-  const indent = '  '.repeat(indentLevel);
+  const uniqueKey = index !== undefined ? `${tag}-${index}` : JSON.stringify(attributes);
 
-  const markup =
-    children.length > 0
-      ? `${indent}<${tag}${attributesString ? ` ${attributesString}` : ''}>\n${markupChildren}\n${indent}</${tag}>`
-      : `${indent}<${tag}${attributesString ? ` ${attributesString}` : ''} />`;
-
-  return { jsx, markup };
+  return {
+    jsx: React.createElement(ReactComponent, { key: uniqueKey, ...attributes }, ...jsxChildren),
+    markup:
+      children.length > 0
+        ? `${'  '.repeat(indentLevel)}<${tag}${attributesString}>\n${markupChildren}\n${'  '.repeat(indentLevel)}</${tag}>`
+        : `${'  '.repeat(indentLevel)}<${tag}${attributesString} />`,
+  };
 };
 
 type ConfiguratorProps = {
@@ -180,19 +192,28 @@ type ConfiguratorProps = {
 };
 
 export const Configurator = ({ tagName }: ConfiguratorProps) => {
-  const [example, setExample] = useState<ElementConfig>(componentsStory[tagName]);
+  const configIndex = componentsStory[tagName].indexOf(
+    // biome-ignore lint/style/noNonNullAssertion: <explanation>
+    componentsStory[tagName].find((config) => config.tag === tagName)!
+  );
+  const [example, setExample] = useState<ElementConfig>(componentsStory[tagName][configIndex]);
   const [domReady, setDomReady] = useState(false);
 
   const meta = componentMeta[tagName];
 
-  const { jsx, markup } = generateOutput(example);
+  // Replace the editable part in the global config for rendering
+  const updatedConfig = [
+    ...componentsStory[tagName].slice(0, configIndex),
+    example,
+    ...componentsStory[tagName].slice(configIndex + 1),
+  ];
+
+  const { jsx, markup } = generateCode(updatedConfig);
 
   const handleUpdateProps = (propName: string, selectedValue: string) => {
     setExample((prev) => {
-      const { attributes = {} } = prev;
-
       const updatedAttributes = {
-        ...attributes,
+        ...prev.attributes,
         [propName]: selectedValue,
       };
 
@@ -205,7 +226,7 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
   };
 
   useEffect(() => {
-    setDomReady(true);
+    requestAnimationFrame(() => setDomReady(true));
   }, []);
 
   if (!meta.propsMeta) return null;
