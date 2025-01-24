@@ -1,11 +1,8 @@
 'use client';
 
-import { DirectionSelect } from '@/components/common/DirectionSelect';
-import { FrameworkSelect } from '@/components/common/FrameworkSelect';
-import { ThemeSelect } from '@/components/common/ThemeSelect';
-import type { FrameworkMarkup } from '@/models/framework';
-import type { SelectUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
-import type React from 'react';
+import { type Framework, type FrameworkMarkup, frameworkNameMap } from '@/models/framework';
+import { PTabsBar, type TabsBarUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
+import React, { useState } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 
 type CodeBlockProps = {
@@ -13,21 +10,12 @@ type CodeBlockProps = {
 };
 
 export const CodeBlock = ({ frameworkMarkup }: CodeBlockProps) => {
-  const selectedFramework = 'vanilla-js';
+  const [tabIndex, setTabIndex] = useState(0);
+  const frameworks = Object.keys(frameworkMarkup) as Framework[];
+  const selectedFramework = frameworks[tabIndex];
 
-  const handleFrameworkUpdate = (e: CustomEvent<SelectUpdateEventDetail>) => {
-    // biome-ignore lint/suspicious/noConsole: <explanation>
-    console.log(e);
-  };
-
-  const handleThemeUpdate = (e: CustomEvent<SelectUpdateEventDetail>) => {
-    // biome-ignore lint/suspicious/noConsole: <explanation>
-    console.log(e);
-  };
-
-  const handleDirectionUpdate = (e: CustomEvent<SelectUpdateEventDetail>) => {
-    // biome-ignore lint/suspicious/noConsole: <explanation>
-    console.log(e);
+  const onUpdate = (e: CustomEvent<TabsBarUpdateEventDetail>) => {
+    setTabIndex(e.detail.activeTabIndex);
   };
 
   const code = `<!doctype html>
@@ -44,11 +32,17 @@ ${frameworkMarkup[selectedFramework]}
 
   return (
     <div className="flex flex-col gap-sm">
-      <div className="flex flex-col gap-xs xs:flex-row">
-        <FrameworkSelect framework="vanilla-js" onUpdate={(e) => handleFrameworkUpdate(e)} hideLabel={true} />
-        <ThemeSelect theme="light" onUpdate={(e) => handleThemeUpdate(e)} hideLabel={true} />
-        <DirectionSelect dir="ltr" onUpdate={(e) => handleDirectionUpdate(e)} hideLabel={true} />
-      </div>
+      <PTabsBar activeTabIndex={tabIndex} onUpdate={onUpdate}>
+        {frameworks.map((framework) => (
+          <button key={framework} type="button">
+            {frameworkNameMap[framework]}
+          </button>
+        ))}
+        <button type="button">Angular</button>
+        <button type="button">React</button>
+        <button type="button">Next</button>
+        <button type="button">Vue</button>
+      </PTabsBar>
       {/* @ts-expect-error: Suppress type incompatibility */}
       <SyntaxHighlighter language="html" showLineNumbers={false} useInlineStyles={false}>
         {code}
