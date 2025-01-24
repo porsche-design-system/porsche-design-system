@@ -113,6 +113,25 @@ export const ConfigureProps = ({ componentProps, configuredProps, onUpdateProps 
         </PTextFieldWrapper>
       );
     }
+
+    if (propMeta.allowedValues === 'number') {
+      return (
+        <PTextFieldWrapper key={propName}>
+          <input
+            type="number"
+            value={getCurrentValue(propName, propMeta) ?? ''}
+            required={propMeta.isRequired}
+            onInput={(e) => onUpdateProps(propName, e.currentTarget.value)}
+          />
+          <span slot="label">
+            {capitalCase(propName)}
+            <PPopover className="ms-static-xs" onClick={(e) => e.preventDefault()}>
+              {propMeta.description}
+            </PPopover>
+          </span>
+        </PTextFieldWrapper>
+      );
+    }
   };
 
   const renderOptions = (propName: string, propMeta: PropMeta) => {

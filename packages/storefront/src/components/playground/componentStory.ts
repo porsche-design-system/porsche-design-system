@@ -42,6 +42,7 @@ import type { TagNameWithChunk } from '@porsche-design-system/shared';
  * - [ ] - syntax highlight broken for p-fieldset-wrapper
  * - [ ] - console error when initially loading image of p-link-tile (image is still shown)
  * - [ ] - Add breakpoint customizable icon to configurator props p-tag
+ * - [ ] - Error when filling in form prop and deleting again
  */
 
 export type ComponentsStoryTagNames = Exclude<
@@ -319,7 +320,7 @@ export const componentsStory: ComponentsStory = {
   'p-multi-select': [
     {
       tag: 'p-multi-select',
-      attributes: { name: 'name', label: 'Some Label', description: 'Some description', required: true },
+      attributes: { name: 'name', label: 'Some Label', description: 'Some description' },
       children: [
         { tag: 'p-multi-select-option', attributes: { value: 'a' }, children: ['Option A'] },
         { tag: 'p-multi-select-option', attributes: { value: 'b' }, children: ['Option B'] },
@@ -346,7 +347,7 @@ export const componentsStory: ComponentsStory = {
   'p-pagination': [
     {
       tag: 'p-pagination',
-      // TODO: Add story
+      attributes: { totalItemsCount: '500', itemsPerPage: '25', activePage: '1' },
     },
   ],
   'p-pin-code': [

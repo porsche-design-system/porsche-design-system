@@ -239,6 +239,7 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
     ...componentsStory[tagName].slice(configIndex + 1),
   ];
 
+  // TODO: Call this in useEffect when example changes?
   const { jsx, markup } = generateCode(updatedConfig);
 
   const handleUpdateProps = (propName: string, selectedValue: string) => {
