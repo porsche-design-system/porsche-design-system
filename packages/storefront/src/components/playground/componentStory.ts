@@ -3,17 +3,19 @@ import type { TagNameWithChunk } from '@porsche-design-system/shared';
 
 /**
  * Questions:
- * No Configurator for deprecated components?
+ * No Configurator for deprecated components? Add all components configurator
  * p-display should have h1 as defaultValue & p-heading should have h2 as default value set in componentMeta
- * Config in vanilla HTML Style or React? TagName casing, props camelCase and value, class/className
- * How to deal with string values which have a default value? p-checkbox value default is "on".
- * How to deal with mix of options and string? p-crest "allowedValues": ["_self", "_blank", "_parent", "_top", "string"]
+ * Config in vanilla HTML Style or React? use React typing
+ * How to deal with string values which have a default value? p-checkbox value default is "on". Leave empty string as soon as value changed form=""
+ * How to deal with mix of options and string? p-crest "allowedValues": ["_self", "_blank", "_parent", "_top", "string"] - Remove "string" from options
  * How to specify which slot/prop is shown/rendered in the markup? Currently all slots have to be specified in the story.
  * Add story information to componentMeta directly?
  * How to deal with href vs slotted anchor (slotsMeta already has hasAltProp but only for named slots )?
  * ButtonGroup/LinkTileModelSignature has breakpoint customizable as default value. Currently not shown in the select of direction.
  * Some edge cases like p-carousel slidesPerPages which is type number | 'auto'
  * How to deal with aria attributes? Currently not shown in the configurator. 'p-icon'
+ *
+ * Model Signature size inherit?
  *
  * TODO:
  * - [ ] - Dynamic import of React Component in Configurator
@@ -39,9 +41,13 @@ import type { TagNameWithChunk } from '@porsche-design-system/shared';
  * - [ ] - ComponentSlots checkboxes/switches
  * - [ ] - syntax highlight broken for p-fieldset-wrapper
  * - [ ] - console error when initially loading image of p-link-tile (image is still shown)
+ * - [ ] - Add breakpoint customizable icon to configurator props p-tag
  */
 
-export type ComponentsStoryTagNames = Exclude<TagNameWithChunk, 'p-flex' | 'p-grid' | 'p-headline' | 'p-link-social'>;
+export type ComponentsStoryTagNames = Exclude<
+  TagNameWithChunk,
+  'p-flex' | 'p-grid' | 'p-headline' | 'p-link-social' | 'p-marque'
+>;
 
 export type ComponentsStory = {
   [Tag in ComponentsStoryTagNames]: ElementConfig[];
@@ -298,12 +304,6 @@ export const componentsStory: ComponentsStory = {
       children: [{ tag: 'img', attributes: { src: 'assets/weekender.webp', alt: 'Some alt text' } }],
     },
   ],
-  'p-marque': [
-    {
-      tag: 'p-marque',
-      // TODO: Add story
-    },
-  ],
   'p-modal': [
     {
       tag: 'p-modal',
@@ -313,12 +313,21 @@ export const componentsStory: ComponentsStory = {
   'p-model-signature': [
     {
       tag: 'p-model-signature',
-      // TODO: Add story
+      attributes: { model: '911' },
     },
   ],
   'p-multi-select': [
     {
       tag: 'p-multi-select',
+      attributes: { name: 'name', label: 'Some Label', description: 'Some description', required: true },
+      children: [
+        { tag: 'p-multi-select-option', attributes: { value: 'a' }, children: ['Option A'] },
+        { tag: 'p-multi-select-option', attributes: { value: 'b' }, children: ['Option B'] },
+        { tag: 'p-multi-select-option', attributes: { value: 'c' }, children: ['Option C'] },
+        { tag: 'p-multi-select-option', attributes: { value: 'd' }, children: ['Option D'] },
+        { tag: 'p-multi-select-option', attributes: { value: 'e' }, children: ['Option E'] },
+        { tag: 'p-multi-select-option', attributes: { value: 'f' }, children: ['Option F'] },
+      ],
     },
   ],
   // 'p-multi-select': {
