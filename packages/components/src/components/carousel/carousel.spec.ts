@@ -227,7 +227,7 @@ describe('render', () => {
     expect(spy).toHaveBeenCalledWith(component.host, component.description);
   });
 
-  it('should call parseJSON() with correct parameter and set this.disablePagination', () => {
+  it('should call parseJSON() with correct parameter and set this.parsedDisablePagination', () => {
     jest.spyOn(validatePropsUtils, 'validateProps').mockImplementation();
     const spy = jest.spyOn(breakpointCustomizableUtils, 'parseJSON').mockReturnValue(false);
     const component = new Carousel();
@@ -238,7 +238,21 @@ describe('render', () => {
     component.render();
     expect(spy).toHaveBeenCalledWith(true);
 
-    expect(component.disablePagination).toBe(false);
+    expect((component as any).parsedDisablePagination).toBe(false);
+  });
+
+  it('should call parseJSON() with correct parameter and set this.parsedPagination', () => {
+    jest.spyOn(validatePropsUtils, 'validateProps').mockImplementation();
+    const spy = jest.spyOn(breakpointCustomizableUtils, 'parseJSON').mockReturnValue(false);
+    const component = new Carousel();
+    component.host = document.createElement('p-carousel');
+    component.host.attachShadow({ mode: 'open' });
+    component.pagination = true;
+
+    component.render();
+    expect(spy).toHaveBeenCalledWith(true);
+
+    expect((component as any).parsedPagination).toBe(false);
   });
 });
 
