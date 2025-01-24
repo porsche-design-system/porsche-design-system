@@ -81,7 +81,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       <div slot="sidebar-start">
         <Navigation />
       </div>
-      <div slot="sidebar-end" className="flex flex-col gap-sm" />
+      <div slot="sidebar-end" />
     </PCanvas>
   );
 };

@@ -1,14 +1,20 @@
+import { DirectionSelect } from '@/components/common/DirectionSelect';
 import type { ElementConfig } from '@/components/playground/Configurator';
 import { isDefaultValue } from '@/components/playground/configuratorUtils';
 import type { ComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
 import {
+  PAccordion,
+  PDivider,
   PPopover,
   PSelect,
   PSelectOption,
   PSwitch,
+  PTag,
   PTextFieldWrapper,
+  type SelectUpdateEventDetail,
 } from '@porsche-design-system/components-react/ssr';
 import { capitalCase } from 'change-case';
+import type React from 'react';
 
 type ConfigurePropsProps = {
   componentProps: ComponentMeta['propsMeta'];
@@ -26,8 +32,13 @@ type ConfigurePropsProps = {
  */
 
 export const ConfigureProps = ({ componentProps, configuredProps, onUpdateProps }: ConfigurePropsProps) => {
+  const handleDirectionUpdate = (e: CustomEvent<SelectUpdateEventDetail>) => {
+    // biome-ignore lint/suspicious/noConsole: <explanation>
+    console.log(e);
+  };
+
   const filteredComponentProps = Object.entries(componentProps ?? {}).filter(
-    ([key, value]) => !value.isAria && key !== 'theme' && value.type !== 'string[]' && !value.isDeprecated
+    ([_, value]) => !value.isAria && value.type !== 'string[]' && !value.isDeprecated
   );
 
   const getSanitizedArrayValue = (value: string | number | null) => {
@@ -133,5 +144,28 @@ export const ConfigureProps = ({ componentProps, configuredProps, onUpdateProps 
     }
   };
 
-  return <>{filteredComponentProps.map(([propName, propMeta]) => renderInput(propName, propMeta))}</>;
+  return (
+    <>
+      <PAccordion headingTag="h3" open={true}>
+        <span slot="heading">
+          Properties <PTag compact={true}>3</PTag>{' '}
+          <PTag compact={true}>
+            <button type="button">Reset</button>
+          </PTag>
+        </span>
+        <div className="flex flex-col gap-sm">
+          {filteredComponentProps.map(([propName, propMeta]) => renderInput(propName, propMeta))}
+        </div>
+      </PAccordion>
+      <PAccordion heading="Slots" headingTag="h3" open={false} />
+      <PAccordion heading="CSS Variables" headingTag="h3" open={false} />
+      <PAccordion heading="Direction" headingTag="h3" open={true}>
+        <DirectionSelect
+          dir="ltr"
+          onUpdate={(e) => handleDirectionUpdate(e)}
+          label="Changes the direction of HTML elements, mostly used on <body> tag to support languages which are read from right to left like e.g. Arabic."
+        />
+      </PAccordion>
+    </>
+  );
 };
