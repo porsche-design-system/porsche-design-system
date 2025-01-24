@@ -33,6 +33,11 @@ const getComponents = (): Routes => {
             path: `/components/${component}/usage`,
             type: 'TAB',
           },
+          accessibility: {
+            name: 'Accessibility',
+            path: `/components/${component}/accessibility`,
+            type: 'TAB',
+          },
           api: {
             name: 'API',
             path: `/components/${component}/api`,

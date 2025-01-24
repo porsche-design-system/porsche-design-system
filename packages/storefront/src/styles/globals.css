@@ -18,7 +18,7 @@
     font-weight: theme(fontWeight.regular);
     font-size: theme(fontSize.xs);
     line-height: 1.5;
-    color: theme(colors.primary.DEFAULT);
+    color: theme(colors.hljsColor.DEFAULT);
     hyphens: none;
   }
 
@@ -36,7 +36,7 @@
   }
 
   p-inline-notification {
-    margin-block: theme(spacing.sm);
+    margin-block: theme(spacing.md);
   }
 
   .deprecated {
@@ -45,8 +45,8 @@
   }
 
   .hljs {
-    color: theme(colors.hljsColor.DEFAULT);
-    background: theme(colors.hljsBackground.DEFAULT);
+    /* color: theme(colors.hljsColor.DEFAULT);
+    background: theme(colors.hljsBackground.DEFAULT); */
     border-radius: theme(borderRadius.md);
   }
 
@@ -83,7 +83,8 @@
   }
 
   .hljs-deletion {
-    background: theme(colors.hljsDeletion.DEFAULT);
+    color: theme(colors.hljsDeletionColor.DEFAULT);
+    background: theme(colors.hljsDeletionBackground.DEFAULT);
   }
 
   .hljs-subst {
@@ -103,7 +104,8 @@
   }
 
   .hljs-addition {
-    background: theme(colors.hljsAddition.DEFAULT);
+    color: theme(colors.hljsAdditionColor.DEFAULT);
+    background: theme(colors.hljsAdditionBackground.DEFAULT);
   }
 
   .hljs-attribute {
