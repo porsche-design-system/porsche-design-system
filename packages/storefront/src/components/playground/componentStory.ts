@@ -43,6 +43,7 @@ import type { TagNameWithChunk } from '@porsche-design-system/shared';
  * - [ ] - console error when initially loading image of p-link-tile (image is still shown)
  * - [ ] - Add breakpoint customizable icon to configurator props p-tag
  * - [ ] - Error when filling in form prop and deleting again
+ * - [ ] - Refactor value conversions (default value, selects...)
  */
 
 export type ComponentsStoryTagNames = Exclude<
@@ -353,7 +354,7 @@ export const componentsStory: ComponentsStory = {
   'p-pin-code': [
     {
       tag: 'p-pin-code',
-      // TODO: Add story
+      attributes: { label: 'Some label' },
     },
   ],
   'p-popover': [

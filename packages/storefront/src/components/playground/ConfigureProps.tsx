@@ -54,6 +54,10 @@ export const ConfigureProps = ({ componentProps, configuredProps, onUpdateProps 
       return value;
     }
 
+    if (typeof value === 'number') {
+      return `${value}`;
+    }
+
     if (typeof value === 'boolean') {
       return value ? 'true' : 'false';
     }
@@ -156,7 +160,7 @@ export const ConfigureProps = ({ componentProps, configuredProps, onUpdateProps 
         return (
           <PSelectOption key={option} value={sanitizedOption}>
             {sanitizedOption}
-            {isDefaultValue(propMeta.defaultValue, option) ? ' (default)' : ''}
+            {isDefaultValue(propMeta.defaultValue, sanitizedOption) ? ' (default)' : ''}
           </PSelectOption>
         );
       });
