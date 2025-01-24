@@ -1,7 +1,14 @@
 import type { ElementConfig } from '@/components/playground/Configurator';
 import { isDefaultValue } from '@/components/playground/configuratorUtils';
 import type { ComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
-import { PSelect, PSelectOption, PTextFieldWrapper } from '@porsche-design-system/components-react/ssr';
+import {
+  PPopover,
+  PSelect,
+  PSelectOption,
+  PSwitch,
+  PTextFieldWrapper,
+} from '@porsche-design-system/components-react/ssr';
+import { capitalCase } from 'change-case';
 
 type ConfigurePropsProps = {
   componentProps: ComponentMeta['propsMeta'];
@@ -42,17 +49,36 @@ export const ConfigureProps = ({ componentProps, configuredProps, onUpdateProps 
   };
 
   const renderInput = (propName: string, propMeta: PropMeta) => {
-    if (propMeta.allowedValues === 'boolean' || Array.isArray(propMeta.allowedValues)) {
+    if (propMeta.allowedValues === 'boolean') {
+      return (
+        <PSwitch
+          key={propName}
+          checked={getCurrentValue(propName, propMeta) === 'true'}
+          onUpdate={(e) => onUpdateProps(propName, e.detail.checked ? 'true' : 'false')}
+        >
+          {capitalCase(propName)}
+          <PPopover className="ms-static-xs" onClick={(e) => e.preventDefault()}>
+            {propMeta.description}
+          </PPopover>
+        </PSwitch>
+      );
+    }
+
+    if (Array.isArray(propMeta.allowedValues)) {
       return (
         <PSelect
           key={propName}
           name={propName}
           value={getCurrentValue(propName, propMeta)}
-          label={propName}
-          description={propMeta.description}
           required={propMeta.isRequired}
           onUpdate={(e) => onUpdateProps(propName, e.detail.value)}
         >
+          <span slot="label">
+            {capitalCase(propName)}
+            <PPopover className="ms-static-xs" onClick={(e) => e.preventDefault()}>
+              {propMeta.description}
+            </PPopover>
+          </span>
           {renderOptions(propName, propMeta)}
         </PSelect>
       );
@@ -60,13 +86,19 @@ export const ConfigureProps = ({ componentProps, configuredProps, onUpdateProps 
 
     if (propMeta.allowedValues === 'string') {
       return (
-        <PTextFieldWrapper key={propName} label={propName} description={propMeta.description}>
+        <PTextFieldWrapper key={propName}>
           <input
             type="text"
             value={getCurrentValue(propName, propMeta) ?? ''}
             required={propMeta.isRequired}
             onInput={(e) => onUpdateProps(propName, e.currentTarget.value)}
           />
+          <span slot="label">
+            {capitalCase(propName)}
+            <PPopover className="ms-static-xs" onClick={(e) => e.preventDefault()}>
+              {propMeta.description}
+            </PPopover>
+          </span>
         </PTextFieldWrapper>
       );
     }

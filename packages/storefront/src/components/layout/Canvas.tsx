@@ -35,7 +35,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
   };
 
   useEffect(() => {
-    setIsSidebarEndOpen(pathname.includes('examples'));
+    setIsSidebarEndOpen(pathname?.includes('examples') || false);
   }, [pathname]);
 
   return (
@@ -81,7 +81,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       <div slot="sidebar-start">
         <Navigation />
       </div>
-      <div slot="sidebar-end" />
+      <div slot="sidebar-end" className="flex flex-col gap-sm" />
     </PCanvas>
   );
 };
