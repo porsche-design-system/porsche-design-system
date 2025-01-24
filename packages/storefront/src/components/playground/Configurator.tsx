@@ -2,7 +2,7 @@
 
 import { ConfigureProps } from '@/components/playground/ConfigureProps';
 import { Playground } from '@/components/playground/Playground';
-import { componentsStory } from '@/components/playground/componentStory';
+import { type ComponentsStoryTagNames, componentsStory } from '@/components/playground/componentStory';
 import { isDefaultValue } from '@/components/playground/configuratorUtils';
 import { componentMeta } from '@porsche-design-system/component-meta';
 import {
@@ -23,9 +23,12 @@ import {
   PFieldset,
   PFieldsetWrapper,
   PFlex,
+  PFlexItem,
   PFlyout,
   PFlyoutMultilevel,
+  PFlyoutMultilevelItem,
   PGrid,
+  PGridItem,
   PHeading,
   PHeadline,
   PIcon,
@@ -40,6 +43,7 @@ import {
   PModal,
   PModelSignature,
   PMultiSelect,
+  PMultiSelectOption,
   POptgroup,
   PPagination,
   PPinCode,
@@ -47,37 +51,48 @@ import {
   PRadioButtonWrapper,
   PScroller,
   PSegmentedControl,
+  PSegmentedControlItem,
   PSelect,
+  PSelectOption,
   PSelectWrapper,
   PSheet,
   PSpinner,
   PStepperHorizontal,
+  PStepperHorizontalItem,
   PSwitch,
   PTable,
+  PTableBody,
+  PTableCell,
+  PTableHead,
+  PTableHeadCell,
+  PTableHeadRow,
+  PTableRow,
   PTabs,
   PTabsBar,
+  PTabsItem,
   PTag,
   PTagDismissible,
   PText,
   PTextFieldWrapper,
   PTextList,
+  PTextListItem,
   PTextarea,
   PTextareaWrapper,
   PToast,
   PWordmark,
 } from '@porsche-design-system/components-react/ssr';
-import type { TagNameWithChunk } from '@porsche-design-system/shared';
+import type { TagName, TagNameWithChunk } from '@porsche-design-system/shared';
 import { kebabCase } from 'change-case';
 import React, { useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 export type ElementConfig = {
-  tag: TagNameWithChunk | keyof HTMLElementTagNameMap; // The component tag e.g. 'p-button'
+  tag: TagName | keyof HTMLElementTagNameMap; // The component tag e.g. 'p-button'
   attributes?: Record<string, string | boolean>; // The component attributes/props written in camelCase e.g. { hideLabel: 'true' }
   children?: (string | ElementConfig)[]; // Nested children either as string for text or ElementConfig for nested components
 };
 
-const componentMap: Record<TagNameWithChunk, React.ElementType> = {
+const componentMap: Record<Exclude<TagName, 'p-select-wrapper-dropdown' | 'p-toast-item'>, React.ElementType> = {
   'p-accordion': PAccordion,
   'p-banner': PBanner,
   'p-button': PButton,
@@ -95,9 +110,12 @@ const componentMap: Record<TagNameWithChunk, React.ElementType> = {
   'p-fieldset': PFieldset,
   'p-fieldset-wrapper': PFieldsetWrapper,
   'p-flex': PFlex,
+  'p-flex-item': PFlexItem,
   'p-flyout': PFlyout,
   'p-flyout-multilevel': PFlyoutMultilevel,
+  'p-flyout-multilevel-item': PFlyoutMultilevelItem,
   'p-grid': PGrid,
+  'p-grid-item': PGridItem,
   'p-heading': PHeading,
   'p-headline': PHeadline,
   'p-icon': PIcon,
@@ -112,6 +130,7 @@ const componentMap: Record<TagNameWithChunk, React.ElementType> = {
   'p-modal': PModal,
   'p-model-signature': PModelSignature,
   'p-multi-select': PMultiSelect,
+  'p-multi-select-option': PMultiSelectOption,
   'p-optgroup': POptgroup,
   'p-pagination': PPagination,
   'p-pin-code': PPinCode,
@@ -119,20 +138,31 @@ const componentMap: Record<TagNameWithChunk, React.ElementType> = {
   'p-radio-button-wrapper': PRadioButtonWrapper,
   'p-scroller': PScroller,
   'p-segmented-control': PSegmentedControl,
+  'p-segmented-control-item': PSegmentedControlItem,
   'p-select': PSelect,
+  'p-select-option': PSelectOption,
   'p-select-wrapper': PSelectWrapper,
   'p-sheet': PSheet,
   'p-spinner': PSpinner,
   'p-stepper-horizontal': PStepperHorizontal,
+  'p-stepper-horizontal-item': PStepperHorizontalItem,
   'p-switch': PSwitch,
   'p-table': PTable,
+  'p-table-body': PTableBody,
+  'p-table-cell': PTableCell,
+  'p-table-head-cell': PTableHeadCell,
+  'p-table-row': PTableRow,
+  'p-table-head-row': PTableHeadRow,
+  'p-table-head': PTableHead,
   'p-tabs': PTabs,
+  'p-tabs-item': PTabsItem,
   'p-tabs-bar': PTabsBar,
   'p-tag': PTag,
   'p-tag-dismissible': PTagDismissible,
   'p-text': PText,
   'p-text-field-wrapper': PTextFieldWrapper,
   'p-text-list': PTextList,
+  'p-text-list-item': PTextListItem,
   'p-textarea': PTextarea,
   'p-textarea-wrapper': PTextareaWrapper,
   'p-toast': PToast,
@@ -146,7 +176,7 @@ type GeneratedOutput = {
 
 const generateCode = (configs: ElementConfig[]): GeneratedOutput => {
   return useMemo(() => {
-    const outputs = configs.map((config) => generateOutput(config));
+    const outputs = configs.map((config, index) => generateOutput(config, 0, index));
     return {
       jsx: outputs.map((output) => output.jsx),
       markup: outputs.map((output) => output.markup).join('\n\n'),
@@ -188,7 +218,7 @@ const generateOutput = (descriptor: ElementConfig, indentLevel = 0, index?: numb
 };
 
 type ConfiguratorProps = {
-  tagName: TagNameWithChunk;
+  tagName: ComponentsStoryTagNames;
 };
 
 export const Configurator = ({ tagName }: ConfiguratorProps) => {

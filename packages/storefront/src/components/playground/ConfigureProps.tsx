@@ -9,13 +9,28 @@ type ConfigurePropsProps = {
   onUpdateProps: (propName: string, selectedValue: string) => void;
 };
 
+/*
+ * Different cases to deal with:
+ * - propMeta.allowedValues === 'string'
+ * - propMeta.allowedValues === 'boolean'
+ * - Array.isArray(propMeta.allowedValues)
+ *   - array can contain string | number | null
+ *   - special case for p-carousel type number | 'auto'
+ */
+
 export const ConfigureProps = ({ componentProps, configuredProps, onUpdateProps }: ConfigurePropsProps) => {
   const filteredComponentProps = Object.entries(componentProps ?? {}).filter(
     ([key, value]) => !value.isAria && key !== 'theme' && value.type !== 'string[]' && !value.isDeprecated
   );
 
+  const getSanitizedArrayValue = (value: string | number | null) => {
+    if (typeof value === 'string') return value;
+    if (typeof value === 'number') return `${value}`;
+    if (value === null) return undefined;
+  };
+
   const getCurrentValue = (propName: string, propMeta: PropMeta): string | undefined => {
-    const value = configuredProps?.[propName] || propMeta.defaultValue;
+    const value = configuredProps?.[propName] ?? propMeta.defaultValue;
 
     if (typeof value === 'string') {
       return value;
@@ -74,12 +89,15 @@ export const ConfigureProps = ({ componentProps, configuredProps, onUpdateProps 
           ? [1, 2, 3, 4, 'auto']
           : propMeta.allowedValues.filter((prop) => !propMeta?.deprecatedValues?.includes(prop));
 
-      return options.map((option) => (
-        <PSelectOption key={option} value={option}>
-          {option}
-          {isDefaultValue(propMeta.defaultValue, option) ? ' (default)' : ''}
-        </PSelectOption>
-      ));
+      return options.map((option) => {
+        const sanitizedOption = getSanitizedArrayValue(option);
+        return (
+          <PSelectOption key={option} value={sanitizedOption}>
+            {sanitizedOption}
+            {isDefaultValue(propMeta.defaultValue, option) ? ' (default)' : ''}
+          </PSelectOption>
+        );
+      });
     }
   };
 

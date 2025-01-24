@@ -41,8 +41,10 @@ import type { TagNameWithChunk } from '@porsche-design-system/shared';
  * - [ ] - console error when initially loading image of p-link-tile (image is still shown)
  */
 
+export type ComponentsStoryTagNames = Exclude<TagNameWithChunk, 'p-flex' | 'p-grid' | 'p-headline' | 'p-link-social'>;
+
 export type ComponentsStory = {
-  [Tag in Exclude<TagNameWithChunk, 'p-flex' | 'p-grid' | 'p-headline' | 'p-link-social'>]: ElementConfig[];
+  [Tag in ComponentsStoryTagNames]: ElementConfig[];
 };
 
 export const componentsStory: ComponentsStory = {
