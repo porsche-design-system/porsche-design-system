@@ -63,7 +63,7 @@ export const componentsStory: ComponentsStory = {
   'p-button': [
     {
       tag: 'p-button',
-      attributes: { hideLabel: true, icon: 'arrow-right' },
+      attributes: { icon: 'arrow-right' },
       children: ['Some label'],
     },
   ],
