@@ -10,12 +10,13 @@ import type { TagNameWithChunk } from '@porsche-design-system/shared';
  * How to deal with mix of options and string? p-crest "allowedValues": ["_self", "_blank", "_parent", "_top", "string"] - Remove "string" from options
  * How to specify which slot/prop is shown/rendered in the markup? Currently all slots have to be specified in the story.
  * Add story information to componentMeta directly?
- * How to deal with href vs slotted anchor (slotsMeta already has hasAltProp but only for named slots )?
+ * How to deal with href vs slotted anchor (slotsMeta already has hasAltProp but only for named slots )? p-popover description/default
  * ButtonGroup/LinkTileModelSignature has breakpoint customizable as default value. Currently not shown in the select of direction.
  * Some edge cases like p-carousel slidesPerPages which is type number | 'auto'
  * How to deal with aria attributes? Currently not shown in the configurator. 'p-icon'
  *
  * Model Signature size inherit?
+ * How to handle styles in examples? style tag currently works. Inline style is missing conversion react/vanilla.js. Tailwind would be also an option. Currently affecting p-carousel, p-radio-button-wrapper
  *
  * TODO:
  * - [ ] - Dynamic import of React Component in Configurator
@@ -39,7 +40,7 @@ import type { TagNameWithChunk } from '@porsche-design-system/shared';
  * - [x] - AllowedValue string with default value
  * - [ ] - AllowedValue number - text field
  * - [ ] - ComponentSlots checkboxes/switches
- * - [ ] - syntax highlight broken for p-fieldset-wrapper
+ * - [ ] - syntax highlight broken for p-fieldset-wrapper, radio-button-wrapper
  * - [ ] - console error when initially loading image of p-link-tile (image is still shown)
  * - [ ] - Add breakpoint customizable icon to configurator props p-tag
  * - [ ] - Error when filling in form prop and deleting again
@@ -360,13 +361,19 @@ export const componentsStory: ComponentsStory = {
   'p-popover': [
     {
       tag: 'p-popover',
-      // TODO: Add story
+      children: ['Some additional content.'],
     },
   ],
   'p-radio-button-wrapper': [
     {
       tag: 'p-radio-button-wrapper',
-      // TODO: Add story
+      attributes: { label: 'Some label' },
+      children: [{ tag: 'input', attributes: { type: 'radio', name: 'some-name' } }],
+    },
+    {
+      tag: 'p-radio-button-wrapper',
+      attributes: { label: 'Some label' },
+      children: [{ tag: 'input', attributes: { type: 'radio', name: 'some-name' } }],
     },
   ],
   'p-scroller': [
