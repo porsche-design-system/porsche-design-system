@@ -41,11 +41,11 @@ import type { TagNameWithChunk } from '@porsche-design-system/shared';
  * - [x] - AllowedValue string with default value
  * - [ ] - AllowedValue number - text field
  * - [ ] - ComponentSlots checkboxes/switches
- * - [ ] - syntax highlight broken for p-fieldset-wrapper, radio-button-wrapper
+ * - [x] - syntax highlight broken for p-fieldset-wrapper, radio-button-wrapper
  * - [ ] - console error when initially loading image of p-link-tile (image is still shown)
  * - [ ] - Add breakpoint customizable icon to configurator props p-tag
- * - [ ] - Error when filling in form prop and deleting again
  * - [ ] - Refactor value conversions (default value, selects...)
+ * - [ ] - Weird error when changing form prop of p-select to empty string => form property gets set to null
  */
 
 export type ComponentsStoryTagNames = Exclude<
@@ -503,13 +503,35 @@ export const componentsStory: ComponentsStory = {
   'p-select': [
     {
       tag: 'p-select',
-      // TODO: Add story
+      attributes: { name: 'options', label: 'Some Label', description: 'Some description', value: 'a', required: true },
+      children: [
+        { tag: 'p-select-option', attributes: { value: 'a' }, children: ['Option A'] },
+        { tag: 'p-select-option', attributes: { value: 'b' }, children: ['Option B'] },
+        { tag: 'p-select-option', attributes: { value: 'c' }, children: ['Option C'] },
+        { tag: 'p-select-option', attributes: { value: 'd' }, children: ['Option D'] },
+        { tag: 'p-select-option', attributes: { value: 'e' }, children: ['Option E'] },
+        { tag: 'p-select-option', attributes: { value: 'f' }, children: ['Option F'] },
+      ],
     },
   ],
   'p-select-wrapper': [
     {
       tag: 'p-select-wrapper',
-      // TODO: Add story
+      attributes: { label: 'Some label', hideLabel: false },
+      children: [
+        {
+          tag: 'select',
+          attributes: { name: 'some-name' },
+          children: [
+            { tag: 'option', attributes: { value: 'a' }, children: ['Option A'] },
+            { tag: 'option', attributes: { value: 'b' }, children: ['Option B'] },
+            { tag: 'option', attributes: { value: 'c' }, children: ['Option C'] },
+            { tag: 'option', attributes: { value: 'd' }, children: ['Option D'] },
+            { tag: 'option', attributes: { value: 'e' }, children: ['Option E'] },
+            { tag: 'option', attributes: { value: 'f' }, children: ['Option F'] },
+          ],
+        },
+      ],
     },
   ],
   'p-sheet': [

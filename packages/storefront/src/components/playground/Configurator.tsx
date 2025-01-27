@@ -176,13 +176,11 @@ type GeneratedOutput = {
 };
 
 const generateCode = (configs: ElementConfig[]): GeneratedOutput => {
-  return useMemo(() => {
-    const outputs = configs.map((config, index) => generateOutput(config, 0, index));
-    return {
-      jsx: outputs.map((output) => output.jsx),
-      markup: outputs.map((output) => output.markup).join('\n\n'),
-    };
-  }, [configs]);
+  const outputs = configs.map((config, index) => generateOutput(config, 0, index));
+  return {
+    jsx: outputs.map((output) => output.jsx),
+    markup: outputs.map((output) => output.markup).join('\n\n'),
+  };
 };
 
 const generateOutput = (descriptor: ElementConfig, indentLevel = 0, index?: number): GeneratedOutput => {
@@ -228,19 +226,10 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
     componentsStory[tagName].find((config) => config.tag === tagName)!
   );
   const [example, setExample] = useState<ElementConfig>(componentsStory[tagName][configIndex]);
+  const [{ jsx, markup }, setGenerated] = useState<GeneratedOutput>({ jsx: null, markup: '' });
   const [domReady, setDomReady] = useState(false);
 
   const meta = componentMeta[tagName];
-
-  // Replace the editable part in the global config for rendering
-  const updatedConfig = [
-    ...componentsStory[tagName].slice(0, configIndex),
-    example,
-    ...componentsStory[tagName].slice(configIndex + 1),
-  ];
-
-  // TODO: Call this in useEffect when example changes?
-  const { jsx, markup } = generateCode(updatedConfig);
 
   const handleUpdateProps = (propName: string, selectedValue: string) => {
     setExample((prev) => {
@@ -256,6 +245,17 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
       return { ...prev, attributes: updatedAttributes };
     });
   };
+
+  useEffect(() => {
+    // Replace the editable part in the global config for rendering
+    const updatedConfig = [
+      ...componentsStory[tagName].slice(0, configIndex),
+      example,
+      ...componentsStory[tagName].slice(configIndex + 1),
+    ];
+
+    setGenerated(generateCode(updatedConfig));
+  }, [example, configIndex, tagName]);
 
   useEffect(() => {
     requestAnimationFrame(() => setDomReady(true));
@@ -278,7 +278,7 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
           )
         : null}
 
-      <Playground frameworkMarkup={{ 'vanilla-js': markup }}>{jsx}</Playground>
+      <Playground frameworkMarkup={{ 'vanilla-js': markup, angular: '', react: '', vue: '' }}>{jsx}</Playground>
     </>
   );
 };

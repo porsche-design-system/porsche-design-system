@@ -50,7 +50,7 @@ export const ConfigureProps = ({ tagName, componentProps, configuredProps, onUpd
   };
 
   const getCurrentValue = (propName: string, propMeta: PropMeta): string | undefined => {
-    const value = configuredProps?.[propName] ?? propMeta.defaultValue;
+    const value = configuredProps?.[propName] ?? (propMeta.defaultValue === null ? undefined : propMeta.defaultValue);
 
     if (typeof value === 'string') {
       return value;

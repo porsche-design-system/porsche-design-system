@@ -33,15 +33,17 @@ ${frameworkMarkup[selectedFramework]}
   return (
     <div className="flex flex-col gap-sm">
       <PTabsBar activeTabIndex={tabIndex} onUpdate={onUpdate}>
-        {frameworks.map((framework) => (
-          <button key={framework} type="button">
+        {frameworks.map((framework, index) => (
+          <button
+            key={framework}
+            type="button"
+            role="tab"
+            tabIndex={index === tabIndex ? 0 : -1}
+            aria-selected={index === tabIndex}
+          >
             {frameworkNameMap[framework]}
           </button>
         ))}
-        <button type="button">Angular</button>
-        <button type="button">React</button>
-        <button type="button">Next</button>
-        <button type="button">Vue</button>
       </PTabsBar>
       {/* @ts-expect-error: Suppress type incompatibility */}
       <SyntaxHighlighter language="javascript" showLineNumbers={false} useInlineStyles={false}>
