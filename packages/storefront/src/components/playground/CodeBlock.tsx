@@ -44,7 +44,7 @@ ${frameworkMarkup[selectedFramework]}
         <button type="button">Vue</button>
       </PTabsBar>
       {/* @ts-expect-error: Suppress type incompatibility */}
-      <SyntaxHighlighter language="html" showLineNumbers={false} useInlineStyles={false}>
+      <SyntaxHighlighter language="javascript" showLineNumbers={false} useInlineStyles={false}>
         {code}
       </SyntaxHighlighter>
     </div>
