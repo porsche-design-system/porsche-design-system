@@ -4,7 +4,7 @@ export const isDefaultValue = (
   defaultValue: PropMeta['defaultValue'] | undefined,
   currentValue: string | undefined
 ) => {
-  if (defaultValue === undefined) {
+  if (defaultValue === undefined || defaultValue === null) {
     return currentValue === undefined;
   }
 

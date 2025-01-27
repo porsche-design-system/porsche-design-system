@@ -89,7 +89,7 @@ import { createPortal } from 'react-dom';
 export type ElementConfig = {
   tag: TagName | keyof HTMLElementTagNameMap; // The component tag e.g. 'p-button'
   // TODO: Rename property
-  attributes?: Record<string, string | boolean>; // The component attributes/props written in camelCase e.g. { hideLabel: 'true' }
+  attributes?: Record<string, string | boolean | object>; // The component attributes/props written in camelCase e.g. { hideLabel: 'true' }
   children?: (string | ElementConfig)[]; // Nested children either as string for text or ElementConfig for nested components
 };
 
@@ -268,6 +268,7 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
       {domReady
         ? createPortal(
             <ConfigureProps
+              tagName={tagName}
               componentProps={meta.propsMeta}
               configuredProps={example.attributes}
               onUpdateProps={handleUpdateProps}
