@@ -238,12 +238,21 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
         [propName]: selectedValue,
       };
 
-      if (isDefaultValue(meta.propsMeta?.[propName]?.defaultValue, selectedValue) || selectedValue === '') {
-        delete updatedAttributes[propName];
-      }
+      // TODO: Without this props which were once changed will be stay on the markup.
+      //  Adding this causes trouble when there is a default value.
+      //  When the attribute is removed the component will have the default value again.
+      //  This needs to be reflected in the input field. Which is causing the input to be non clearable.
+      //  Solution would be to either make all changes resettable or make each prop input individually resettable.
+      // if (isDefaultValue(meta.propsMeta?.[propName]?.defaultValue, selectedValue) || selectedValue === '') {
+      //   delete updatedAttributes[propName];
+      // }
 
       return { ...prev, attributes: updatedAttributes };
     });
+  };
+
+  const handleResetProps = () => {
+    setExample(componentsStory[tagName][configIndex]);
   };
 
   useEffect(() => {
@@ -272,6 +281,7 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
               componentProps={meta.propsMeta}
               configuredProps={example.attributes}
               onUpdateProps={handleUpdateProps}
+              onReset={handleResetProps}
             />,
             // biome-ignore lint/style/noNonNullAssertion: <explanation>
             document.querySelector('[slot="sidebar-end"]')!

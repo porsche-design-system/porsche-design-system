@@ -1,5 +1,5 @@
 import type { ElementConfig } from '@/components/playground/Configurator';
-import type { TagNameWithChunk } from '@porsche-design-system/shared';
+import type { TagName, TagNameWithChunk } from '@porsche-design-system/shared';
 
 /**
  * Questions:
@@ -13,11 +13,13 @@ import type { TagNameWithChunk } from '@porsche-design-system/shared';
  * How to deal with href vs slotted anchor (slotsMeta already has hasAltProp but only for named slots )? p-popover description/default
  * ButtonGroup/LinkTileModelSignature has breakpoint customizable as default value. Currently not shown in the select of direction.
  * Some edge cases like p-carousel slidesPerPages which is type number | 'auto'
- * How to deal with aria attributes? Currently not shown in the configurator. 'p-icon'
+ * How to deal with aria attributes? Currently not shown in the configurator ('p-icon'). Shown for ('p-spinner') .
  *
  * Model Signature size inherit?
  * How to handle styles in examples? style tag currently works. Inline style is missing conversion react/vanilla.js. Tailwind would be also an option. Currently affecting p-carousel, p-radio-button-wrapper (Missing spacing)
  * How to render allowedValues ['string' | 'number'] like in p-segmented-control? Currently textfield since string can be any value.
+ * How to deal with relations? e.g. p-text-field-wrapper needs input with type number when unit is used => Make stories function which gets the current state and returns the correct story
+ * How to show undefined default value in select props?
  *
  * TODO:
  * - [ ] - Dynamic import of React Component in Configurator
@@ -46,15 +48,11 @@ import type { TagNameWithChunk } from '@porsche-design-system/shared';
  * - [ ] - Add breakpoint customizable icon to configurator props p-tag
  * - [ ] - Refactor value conversions (default value, selects...)
  * - [ ] - Weird error when changing form prop of p-select to empty string => form property gets set to null
+ * - [ ] - Link social icon undefined error
  */
 
-export type ComponentsStoryTagNames = Exclude<
-  TagNameWithChunk,
-  'p-flex' | 'p-grid' | 'p-headline' | 'p-link-social' | 'p-marque'
->;
-
 export type ComponentsStory = {
-  [Tag in ComponentsStoryTagNames]: ElementConfig[];
+  [Tag in TagNameWithChunk]: ElementConfig[];
 };
 
 /**
@@ -204,6 +202,40 @@ export const componentsStory: ComponentsStory = {
       ],
     },
   ],
+  'p-flex': [
+    {
+      tag: 'p-flex',
+      attributes: { className: 'example-flex' },
+      children: [
+        { tag: 'p-flex-item', children: ['1'] },
+        { tag: 'p-flex-item', children: ['2'] },
+      ],
+    },
+    {
+      tag: 'p-flex',
+      attributes: { className: 'example-flex' },
+      children: [
+        { tag: 'p-flex-item', children: ['1'] },
+        { tag: 'p-flex-item', children: ['2'] },
+      ],
+    },
+    {
+      tag: 'style',
+      children: [
+        `.example-flex > :nth-child(1n) {
+    background-color: #87cefa;
+  }
+  .example-flex > :nth-child(2n) {
+    background-color: #00bfff;
+  }
+  .example-flex > * {
+    padding: 0 6vw;
+    color: #010205;
+    text-align: center;
+  }`,
+      ],
+    },
+  ],
   'p-flyout': [
     {
       tag: 'p-flyout',
@@ -233,10 +265,113 @@ export const componentsStory: ComponentsStory = {
       // TODO: Add story
     },
   ],
+  'p-grid': [
+    {
+      tag: 'p-grid',
+      children: [{ tag: 'p-grid-item', attributes: { size: '12' }, children: ['12'] }],
+    },
+    {
+      tag: 'p-grid',
+      children: [
+        { tag: 'p-grid-item', attributes: { size: '1' }, children: ['1'] },
+        { tag: 'p-grid-item', attributes: { size: '11' }, children: ['11'] },
+      ],
+    },
+    {
+      tag: 'p-grid',
+      children: [
+        { tag: 'p-grid-item', attributes: { size: '2' }, children: ['2'] },
+        { tag: 'p-grid-item', attributes: { size: '10' }, children: ['10'] },
+      ],
+    },
+    {
+      tag: 'p-grid',
+      children: [
+        { tag: 'p-grid-item', attributes: { size: '3' }, children: ['3'] },
+        { tag: 'p-grid-item', attributes: { size: '9' }, children: ['9'] },
+      ],
+    },
+    {
+      tag: 'p-grid',
+      children: [
+        { tag: 'p-grid-item', attributes: { size: '4' }, children: ['4'] },
+        { tag: 'p-grid-item', attributes: { size: '8' }, children: ['8'] },
+      ],
+    },
+    {
+      tag: 'p-grid',
+      children: [
+        { tag: 'p-grid-item', attributes: { size: '5' }, children: ['5'] },
+        { tag: 'p-grid-item', attributes: { size: '7' }, children: ['7'] },
+      ],
+    },
+    {
+      tag: 'p-grid',
+      children: [
+        { tag: 'p-grid-item', attributes: { size: '6' }, children: ['6'] },
+        { tag: 'p-grid-item', attributes: { size: '6' }, children: ['6'] },
+      ],
+    },
+    {
+      tag: 'p-grid',
+      children: [
+        { tag: 'p-grid-item', attributes: { size: '7' }, children: ['7'] },
+        { tag: 'p-grid-item', attributes: { size: '5' }, children: ['5'] },
+      ],
+    },
+    {
+      tag: 'p-grid',
+      children: [
+        { tag: 'p-grid-item', attributes: { size: '8' }, children: ['8'] },
+        { tag: 'p-grid-item', attributes: { size: '4' }, children: ['4'] },
+      ],
+    },
+    {
+      tag: 'p-grid',
+      children: [
+        { tag: 'p-grid-item', attributes: { size: '9' }, children: ['9'] },
+        { tag: 'p-grid-item', attributes: { size: '3' }, children: ['3'] },
+      ],
+    },
+    {
+      tag: 'p-grid',
+      children: [
+        { tag: 'p-grid-item', attributes: { size: '10' }, children: ['10'] },
+        { tag: 'p-grid-item', attributes: { size: '2' }, children: ['2'] },
+      ],
+    },
+    {
+      tag: 'p-grid',
+      children: [
+        { tag: 'p-grid-item', attributes: { size: '11' }, children: ['11'] },
+        { tag: 'p-grid-item', attributes: { size: '1' }, children: ['1'] },
+      ],
+    },
+    {
+      tag: 'style',
+      children: [
+        `p-grid {
+    margin-top: 8px;
+  }
+        p-grid-item {
+    color: #010205;
+    text-align: center;
+    background: #87cefa;
+    background-clip: content-box;
+  }`,
+      ],
+    },
+  ],
   'p-heading': [
     {
       tag: 'p-heading',
       attributes: { tag: 'h3', size: 'large' },
+      children: ['The quick brown fox jumps over the lazy dog'],
+    },
+  ],
+  'p-headline': [
+    {
+      tag: 'p-headline',
       children: ['The quick brown fox jumps over the lazy dog'],
     },
   ],
@@ -264,6 +399,13 @@ export const componentsStory: ComponentsStory = {
       tag: 'p-link-pure',
       attributes: { href: 'https://porsche.com' },
       children: ['Some label'],
+    },
+  ],
+  'p-link-social': [
+    {
+      tag: 'p-link-social',
+      attributes: { href: 'https://example.com', icon: 'logo-facebook', target: '_blank', rel: 'nofollow noopener' },
+      children: ['Facebook'],
     },
   ],
   'p-link-tile': [
@@ -309,6 +451,11 @@ export const componentsStory: ComponentsStory = {
       tag: 'p-link-tile-product',
       attributes: { heading: 'Some heading', price: '1.911,00 €', href: 'https://porsche.com' },
       children: [{ tag: 'img', attributes: { src: 'assets/weekender.webp', alt: 'Some alt text' } }],
+    },
+  ],
+  'p-marque': [
+    {
+      tag: 'p-marque',
     },
   ],
   'p-modal': [
@@ -543,31 +690,124 @@ export const componentsStory: ComponentsStory = {
   'p-spinner': [
     {
       tag: 'p-spinner',
-      // TODO: Add story
+      attributes: { aria: { 'aria-label': 'Loading page content' } },
     },
   ],
   'p-stepper-horizontal': [
     {
       tag: 'p-stepper-horizontal',
-      // TODO: Add story
+      children: [
+        { tag: 'p-stepper-horizontal-item', attributes: { state: 'complete' }, children: ['Step 1'] },
+        { tag: 'p-stepper-horizontal-item', attributes: { state: 'warning' }, children: ['Step 2'] },
+        { tag: 'p-stepper-horizontal-item', attributes: { state: 'current' }, children: ['Step 3'] },
+        { tag: 'p-stepper-horizontal-item', children: ['Step 4'] },
+      ],
     },
   ],
   'p-switch': [
     {
       tag: 'p-switch',
-      // TODO: Add story
+      children: ['Some label'],
     },
   ],
   'p-table': [
     {
       tag: 'p-table',
-      // TODO: Add story
+      attributes: { caption: 'Some caption' },
+      children: [
+        {
+          tag: 'p-table-head',
+          children: [
+            {
+              tag: 'p-table-head-row',
+              children: [
+                { tag: 'p-table-head-cell', children: ['Model'] },
+                { tag: 'p-table-head-cell', children: ['Date'] },
+                { tag: 'p-table-head-cell', children: ['Purchase Intention'] },
+                { tag: 'p-table-head-cell', children: ['Status'] },
+                { tag: 'p-table-head-cell', children: ['Lead ID'] },
+              ],
+            },
+          ],
+        },
+        {
+          tag: 'p-table-body',
+          children: [
+            {
+              tag: 'p-table-row',
+              children: [
+                { tag: 'p-table-cell', children: ['718 Cayman'] },
+                { tag: 'p-table-cell', children: ['23.06.2021'] },
+                { tag: 'p-table-cell', children: ['New Car'] },
+                { tag: 'p-table-cell', children: ['Won'] },
+                { tag: 'p-table-cell', children: ['0000824402'] },
+              ],
+            },
+            {
+              tag: 'p-table-row',
+              children: [
+                { tag: 'p-table-cell', children: ['Panamera 4S'] },
+                { tag: 'p-table-cell', children: ['19.06.2021'] },
+                { tag: 'p-table-cell', children: ['New Car'] },
+                { tag: 'p-table-cell', children: ['Lost'] },
+                { tag: 'p-table-cell', children: ['0000824409'] },
+              ],
+            },
+            {
+              tag: 'p-table-row',
+              children: [
+                { tag: 'p-table-cell', children: ['911 Carrera S'] },
+                { tag: 'p-table-cell', children: ['19.05.2021'] },
+                { tag: 'p-table-cell', children: ['Used Car'] },
+                { tag: 'p-table-cell', children: ['Won'] },
+                { tag: 'p-table-cell', children: ['0000824408'] },
+              ],
+            },
+            {
+              tag: 'p-table-row',
+              children: [
+                { tag: 'p-table-cell', children: ['Macan Turbo'] },
+                { tag: 'p-table-cell', children: ['10.05.2021'] },
+                { tag: 'p-table-cell', children: ['Used Car'] },
+                { tag: 'p-table-cell', children: ['Lost'] },
+                { tag: 'p-table-cell', children: ['0000824407'] },
+              ],
+            },
+            {
+              tag: 'p-table-row',
+              children: [
+                { tag: 'p-table-cell', children: ['Taycan'] },
+                { tag: 'p-table-cell', children: ['03.05.2021'] },
+                { tag: 'p-table-cell', children: ['New Car'] },
+                { tag: 'p-table-cell', children: ['Won'] },
+                { tag: 'p-table-cell', children: ['0000824406'] },
+              ],
+            },
+          ],
+        },
+      ],
     },
   ],
   'p-tabs': [
     {
       tag: 'p-tabs',
-      // TODO: Add story
+      children: [
+        {
+          tag: 'p-tabs-item',
+          attributes: { label: 'Tab One' },
+          children: [{ tag: 'p-text', children: ['Tab Content One'] }],
+        },
+        {
+          tag: 'p-tabs-item',
+          attributes: { label: 'Tab Two' },
+          children: [{ tag: 'p-text', children: ['Tab Content Two'] }],
+        },
+        {
+          tag: 'p-tabs-item',
+          attributes: { label: 'Tab Three' },
+          children: [{ tag: 'p-text', children: ['Tab Content Three'] }],
+        },
+      ],
     },
   ],
   'p-tabs-bar': [
@@ -579,43 +819,61 @@ export const componentsStory: ComponentsStory = {
   'p-tag': [
     {
       tag: 'p-tag',
-      // TODO: Add story
+      children: ['Some label'],
     },
   ],
   'p-tag-dismissible': [
     {
       tag: 'p-tag-dismissible',
-      // TODO: Add story
+      children: ['Some label'],
     },
   ],
   'p-text': [
     {
       tag: 'p-text',
-      // TODO: Add story
+      children: ['The quick brown fox jumps over the lazy dog'],
     },
   ],
   'p-text-field-wrapper': [
     {
       tag: 'p-text-field-wrapper',
-      // TODO: Add story
+      attributes: { label: 'Some label' },
+      children: [{ tag: 'input', attributes: { type: 'text', name: 'some-name' } }],
     },
   ],
   'p-text-list': [
     {
       tag: 'p-text-list',
-      // TODO: Add story
+      children: [
+        { tag: 'p-text-list-item', children: ['The quick brown fox jumps over the lazy dog'] },
+        {
+          tag: 'p-text-list-item',
+          children: [
+            'The quick brown fox jumps over the lazy dog',
+            {
+              tag: 'p-text-list',
+              children: [
+                { tag: 'p-text-list-item', children: ['The quick brown fox jumps over the lazy dog'] },
+                { tag: 'p-text-list-item', children: ['The quick brown fox jumps over the lazy dog'] },
+              ],
+            },
+          ],
+        },
+        { tag: 'p-text-list-item', children: ['The quick brown fox jumps over the lazy dog'] },
+      ],
     },
   ],
   'p-textarea': [
     {
       tag: 'p-textarea',
-      // TODO: Add story
+      attributes: { name: 'some-name', label: 'Some label' },
     },
   ],
   'p-textarea-wrapper': [
     {
       tag: 'p-textarea-wrapper',
-      // TODO: Add story
+      attributes: { label: 'Some label' },
+      children: [{ tag: 'textarea', attributes: { name: 'some-name' } }],
     },
   ],
   'p-toast': [
@@ -627,7 +885,82 @@ export const componentsStory: ComponentsStory = {
   'p-wordmark': [
     {
       tag: 'p-wordmark',
-      // TODO: Add story
     },
   ],
 };
+
+// TODO: Revised config for dynamic generation of children based on active slots
+// type Config = {
+//   tag: TagName | keyof HTMLElementTagNameMap; // The component tag e.g. 'p-button'
+//   properties?: Record<string, string | boolean | object>; // The component attributes/props written in camelCase e.g. { hideLabel: 'true' }
+//   children?: (string | Config)[]; // Nested children either as string for text or ElementConfig for nested components
+// };
+//
+// type Configuration = {
+//   props: object;
+//   activeSlots: string[];
+// };
+//
+// type ConfigGen = (config: Configuration) => Config[];
+//
+// type SlotConfig = {
+//   name: string;
+//   slot: ConfigGen;
+// };
+//
+// const defaultFlyoutSlots: SlotConfig[] = [
+//   {
+//     name: 'header',
+//     slot: () => [
+//       {
+//         tag: 'p-heading',
+//         properties: { slot: 'header', size: 'large', tag: 'h2' },
+//         children: ['Some Heading'],
+//       },
+//     ],
+//   },
+//   {
+//     name: '',
+//     slot: () => [{ tag: 'p-text', properties: { slot: '' }, children: ['Some Content'] }],
+//   },
+// ];
+//
+// /**
+//  * Utility function to generate children dynamically based on active slot names.
+//  */
+// const generateChildren = (config: Configuration, content: SlotConfig[]) =>
+//   content
+//     .filter((slot) => config.activeSlots.includes(slot.name)) // Only include active slots
+//     .flatMap((slot) => slot.slot(config, content));
+//
+// const newConfigTest: Record<string, ConfigGen> = {
+//   'p-flyout': (config) => [
+//     {
+//       tag: 'p-flyout',
+//       attributes: { open: 'false', aria: '{ "aria-label": "Some Heading" }' },
+//       children: generateChildren(config, defaultFlyoutSlots),
+//     },
+//   ],
+// };
+//
+// type Config = {
+//   tag: TagName | keyof HTMLElementTagNameMap; // The component tag e.g. 'p-button'
+//   properties?: Record<string, string | boolean | object>; // The component attributes/props written in camelCase e.g. { hideLabel: 'true' }
+//   children?: (string | Config)[]; // Nested children either as string for text or ElementConfig for nested components
+// };
+//
+// const test2 = {
+//   'p-flyout': (config = { activeSlots: ['header'] }) => [
+//     {
+//       tag: 'p-flyout',
+//       attributes: { open: 'false', aria: '{ "aria-label": "Some Heading" }' },
+//       children: [
+//         ...(config.activeSlots.includes('header') && {
+//           tag: 'p-heading',
+//           properties: { slot: 'header', size: 'large', tag: 'h2' },
+//           children: ['Some Heading'],
+//         }),
+//       ],
+//     },
+//   ],
+// };

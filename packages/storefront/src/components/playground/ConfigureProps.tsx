@@ -22,6 +22,7 @@ type ConfigurePropsProps = {
   componentProps: ComponentMeta['propsMeta'];
   configuredProps: ElementConfig['attributes'];
   onUpdateProps: (propName: string, selectedValue: string) => void;
+  onReset: () => void;
 };
 
 /*
@@ -33,7 +34,15 @@ type ConfigurePropsProps = {
  *   - special case for p-carousel type number | 'auto'
  */
 
-export const ConfigureProps = ({ tagName, componentProps, configuredProps, onUpdateProps }: ConfigurePropsProps) => {
+export const ConfigureProps = ({
+  tagName,
+  componentProps,
+  configuredProps,
+  onUpdateProps,
+  onReset,
+}: ConfigurePropsProps) => {
+  const amountOfConfiguredProps = Object.keys(configuredProps ?? {}).length;
+
   const handleDirectionUpdate = (e: CustomEvent<SelectUpdateEventDetail>) => {
     // biome-ignore lint/suspicious/noConsole: <explanation>
     console.log(e);
@@ -178,11 +187,18 @@ export const ConfigureProps = ({ tagName, componentProps, configuredProps, onUpd
   return (
     <>
       <PAccordion headingTag="h3" open={true}>
-        <span slot="heading">
-          Properties <PTag compact={true}>3</PTag>{' '}
-          <PTag compact={true}>
-            <button type="button">Reset</button>
-          </PTag>
+        <span slot="heading" className="flex gap-xs">
+          Properties{' '}
+          {amountOfConfiguredProps > 0 && (
+            <>
+              <PTag compact={true}>{amountOfConfiguredProps}</PTag>
+              <PTag compact={true}>
+                <button type="button" onClick={() => onReset()}>
+                  Reset
+                </button>
+              </PTag>
+            </>
+          )}
         </span>
         <div className="flex flex-col gap-sm">
           {filteredComponentProps.map(([propName, propMeta]) => renderInput(propName, propMeta))}
