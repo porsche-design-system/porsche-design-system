@@ -16,7 +16,8 @@ import type { TagNameWithChunk } from '@porsche-design-system/shared';
  * How to deal with aria attributes? Currently not shown in the configurator. 'p-icon'
  *
  * Model Signature size inherit?
- * How to handle styles in examples? style tag currently works. Inline style is missing conversion react/vanilla.js. Tailwind would be also an option. Currently affecting p-carousel, p-radio-button-wrapper
+ * How to handle styles in examples? style tag currently works. Inline style is missing conversion react/vanilla.js. Tailwind would be also an option. Currently affecting p-carousel, p-radio-button-wrapper (Missing spacing)
+ * How to render allowedValues ['string' | 'number'] like in p-segmented-control? Currently textfield since string can be any value.
  *
  * TODO:
  * - [ ] - Dynamic import of React Component in Configurator
@@ -56,6 +57,9 @@ export type ComponentsStory = {
   [Tag in ComponentsStoryTagNames]: ElementConfig[];
 };
 
+/**
+ * Properties have to be written in jsx syntax. (class => className, style => object). Property values have to be the real value (boolean, object etc.).
+ */
 export const componentsStory: ComponentsStory = {
   'p-accordion': [
     {
@@ -379,13 +383,121 @@ export const componentsStory: ComponentsStory = {
   'p-scroller': [
     {
       tag: 'p-scroller',
-      // TODO: Add story
+      attributes: { className: 'scroller' },
+      children: [
+        {
+          tag: 'p-tag',
+          attributes: { color: 'primary' },
+          children: [
+            {
+              tag: 'button',
+              attributes: { type: 'button' },
+              children: ['Some tag content'],
+            },
+          ],
+        },
+        {
+          tag: 'p-tag',
+          attributes: { color: 'notification-info-soft' },
+          children: [
+            {
+              tag: 'button',
+              attributes: { type: 'button' },
+              children: ['Some tag content'],
+            },
+          ],
+        },
+        {
+          tag: 'p-tag',
+          attributes: { color: 'notification-warning-soft' },
+          children: [
+            {
+              tag: 'button',
+              attributes: { type: 'button' },
+              children: ['Some tag content'],
+            },
+          ],
+        },
+        {
+          tag: 'p-tag',
+          attributes: { color: 'primary' },
+          children: [
+            {
+              tag: 'button',
+              attributes: { type: 'button' },
+              children: ['Some tag content'],
+            },
+          ],
+        },
+        {
+          tag: 'p-tag',
+          attributes: { color: 'notification-info-soft' },
+          children: [
+            {
+              tag: 'button',
+              attributes: { type: 'button' },
+              children: ['Some tag content'],
+            },
+          ],
+        },
+        {
+          tag: 'p-tag',
+          attributes: { color: 'notification-warning-soft' },
+          children: [
+            {
+              tag: 'button',
+              attributes: { type: 'button' },
+              children: ['Some tag content'],
+            },
+          ],
+        },
+        {
+          tag: 'p-tag',
+          attributes: { color: 'primary' },
+          children: [
+            {
+              tag: 'button',
+              attributes: { type: 'button' },
+              children: ['Some tag content'],
+            },
+          ],
+        },
+        {
+          tag: 'p-tag',
+          attributes: { color: 'notification-info-soft' },
+          children: [
+            {
+              tag: 'button',
+              attributes: { type: 'button' },
+              children: ['Some tag content'],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      tag: 'style',
+      children: [
+        `.scroller {
+    max-width: 600px;
+    & > :not(:last-child) {
+      margin-inline-end: 16px;
+    }
+  }`,
+      ],
     },
   ],
   'p-segmented-control': [
     {
       tag: 'p-segmented-control',
-      // TODO: Add story
+      attributes: { 'aria-label': 'Choose an Option' },
+      children: [
+        { tag: 'p-segmented-control-item', attributes: { value: '1' }, children: ['Option 1'] },
+        { tag: 'p-segmented-control-item', attributes: { value: '2' }, children: ['Option 2'] },
+        { tag: 'p-segmented-control-item', attributes: { value: '3' }, children: ['Option 3'] },
+        { tag: 'p-segmented-control-item', attributes: { value: '4' }, children: ['Option 4'] },
+        { tag: 'p-segmented-control-item', attributes: { value: '5' }, children: ['Option 5'] },
+      ],
     },
   ],
   'p-select': [

@@ -13,10 +13,12 @@ import {
   PTextFieldWrapper,
   type SelectUpdateEventDetail,
 } from '@porsche-design-system/components-react/ssr';
+import type { TagName } from '@porsche-design-system/shared';
 import { capitalCase } from 'change-case';
 import type React from 'react';
 
 type ConfigurePropsProps = {
+  tagName: TagName;
   componentProps: ComponentMeta['propsMeta'];
   configuredProps: ElementConfig['attributes'];
   onUpdateProps: (propName: string, selectedValue: string) => void;
@@ -31,7 +33,7 @@ type ConfigurePropsProps = {
  *   - special case for p-carousel type number | 'auto'
  */
 
-export const ConfigureProps = ({ componentProps, configuredProps, onUpdateProps }: ConfigurePropsProps) => {
+export const ConfigureProps = ({ tagName, componentProps, configuredProps, onUpdateProps }: ConfigurePropsProps) => {
   const handleDirectionUpdate = (e: CustomEvent<SelectUpdateEventDetail>) => {
     // biome-ignore lint/suspicious/noConsole: <explanation>
     console.log(e);
@@ -79,27 +81,10 @@ export const ConfigureProps = ({ componentProps, configuredProps, onUpdateProps 
       );
     }
 
-    if (Array.isArray(propMeta.allowedValues)) {
-      return (
-        <PSelect
-          key={propName}
-          name={propName}
-          value={getCurrentValue(propName, propMeta)}
-          required={propMeta.isRequired}
-          onUpdate={(e) => onUpdateProps(propName, e.detail.value)}
-        >
-          <span slot="label">
-            {capitalCase(propName)}
-            <PPopover className="ms-static-xs" onClick={(e) => e.preventDefault()}>
-              {propMeta.description}
-            </PPopover>
-          </span>
-          {renderOptions(propName, propMeta)}
-        </PSelect>
-      );
-    }
-
-    if (propMeta.allowedValues === 'string') {
+    if (
+      (Array.isArray(propMeta.allowedValues) && propMeta.allowedValues.includes('string')) ||
+      propMeta.allowedValues === 'string'
+    ) {
       return (
         <PTextFieldWrapper key={propName}>
           <input
@@ -136,6 +121,26 @@ export const ConfigureProps = ({ componentProps, configuredProps, onUpdateProps 
         </PTextFieldWrapper>
       );
     }
+
+    if (Array.isArray(propMeta.allowedValues)) {
+      return (
+        <PSelect
+          key={propName}
+          name={propName}
+          value={getCurrentValue(propName, propMeta)}
+          required={propMeta.isRequired}
+          onUpdate={(e) => onUpdateProps(propName, e.detail.value)}
+        >
+          <span slot="label">
+            {capitalCase(propName)}
+            <PPopover className="ms-static-xs" onClick={(e) => e.preventDefault()}>
+              {propMeta.description}
+            </PPopover>
+          </span>
+          {renderOptions(propName, propMeta)}
+        </PSelect>
+      );
+    }
   };
 
   const renderOptions = (propName: string, propMeta: PropMeta) => {
@@ -149,16 +154,19 @@ export const ConfigureProps = ({ componentProps, configuredProps, onUpdateProps 
     }
 
     if (Array.isArray(propMeta.allowedValues)) {
+      let options: any[] = [];
+
       // TODO: Improve special case for p-carousel type number | 'auto'?
-      const options =
-        propName === 'slidesPerPage'
-          ? [1, 2, 3, 4, 'auto']
-          : propMeta.allowedValues.filter((prop) => !propMeta?.deprecatedValues?.includes(prop));
+      if (tagName === 'p-carousel' && propName === 'slidesPerPage') {
+        options = [1, 2, 3, 4, 'auto'];
+      } else {
+        options = propMeta.allowedValues.filter((prop) => !propMeta?.deprecatedValues?.includes(prop));
+      }
 
       return options.map((option) => {
         const sanitizedOption = getSanitizedArrayValue(option);
         return (
-          <PSelectOption key={option} value={sanitizedOption}>
+          <PSelectOption key={option === undefined ? 'default' : option} value={sanitizedOption}>
             {sanitizedOption}
             {isDefaultValue(propMeta.defaultValue, sanitizedOption) ? ' (default)' : ''}
           </PSelectOption>
