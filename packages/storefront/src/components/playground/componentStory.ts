@@ -3,8 +3,6 @@ import type { TagName, TagNameWithChunk } from '@porsche-design-system/shared';
 
 /**
  * Questions:
- * No Configurator for deprecated components? Add all components configurator
- * p-display should have h1 as defaultValue & p-heading should have h2 as default value set in componentMeta
  * Config in vanilla HTML Style or React? use React typing
  * How to deal with string values which have a default value? p-checkbox value default is "on". Leave empty string as soon as value changed form=""
  * How to deal with mix of options and string? p-crest "allowedValues": ["_self", "_blank", "_parent", "_top", "string"] - Remove "string" from options
@@ -167,7 +165,6 @@ export const componentsStory: ComponentsStory = {
   'p-display': [
     {
       tag: 'p-display',
-      attributes: { tag: 'h3', size: 'large' },
       children: ['The quick brown fox jumps over the lazy dog'],
     },
   ],
@@ -365,7 +362,6 @@ export const componentsStory: ComponentsStory = {
   'p-heading': [
     {
       tag: 'p-heading',
-      attributes: { tag: 'h3', size: 'large' },
       children: ['The quick brown fox jumps over the lazy dog'],
     },
   ],
