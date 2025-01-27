@@ -72,7 +72,7 @@ export const componentsStory: ComponentsStory = {
   'p-button': [
     {
       tag: 'p-button',
-      attributes: { icon: 'arrow-right' },
+      properties: { icon: 'arrow-right' },
       children: ['Some label'],
     },
   ],
@@ -80,8 +80,8 @@ export const componentsStory: ComponentsStory = {
     {
       tag: 'p-button-group',
       children: [
-        { tag: 'p-button', attributes: { variant: 'primary' }, children: ['Some label'] },
-        { tag: 'p-button', attributes: { variant: 'secondary' }, children: ['Some label'] },
+        { tag: 'p-button', properties: { variant: 'primary' }, children: ['Some label'] },
+        { tag: 'p-button', properties: { variant: 'secondary' }, children: ['Some label'] },
       ],
     },
   ],
@@ -94,14 +94,14 @@ export const componentsStory: ComponentsStory = {
   'p-button-tile': [
     {
       tag: 'p-button-tile',
-      attributes: { label: 'Some label', description: 'Some Description' },
+      properties: { label: 'Some label', description: 'Some Description' },
       children: [
         {
           tag: 'p-tag',
-          attributes: { slot: 'header', theme: 'dark', color: 'background-frosted', compact: 'true' },
+          properties: { slot: 'header', theme: 'dark', color: 'background-frosted', compact: 'true' },
           children: ['Some tag'],
         },
-        { tag: 'img', attributes: { src: 'assets/lights.jpg', alt: 'Some image description' } },
+        { tag: 'img', properties: { src: 'assets/lights.jpg', alt: 'Some image description' } },
       ],
     },
   ],
@@ -114,12 +114,12 @@ export const componentsStory: ComponentsStory = {
   'p-carousel': [
     {
       tag: 'p-carousel',
-      attributes: { heading: 'Some heading' },
+      properties: { heading: 'Some heading' },
       children: [
-        { tag: 'div', attributes: { className: 'slide' }, children: ['Slide 1'] },
-        { tag: 'div', attributes: { className: 'slide' }, children: ['Slide 2'] },
-        { tag: 'div', attributes: { className: 'slide' }, children: ['Slide 3'] },
-        { tag: 'div', attributes: { className: 'slide' }, children: ['Slide 4'] },
+        { tag: 'div', properties: { className: 'slide' }, children: ['Slide 1'] },
+        { tag: 'div', properties: { className: 'slide' }, children: ['Slide 2'] },
+        { tag: 'div', properties: { className: 'slide' }, children: ['Slide 3'] },
+        { tag: 'div', properties: { className: 'slide' }, children: ['Slide 4'] },
       ],
     },
     {
@@ -140,21 +140,21 @@ export const componentsStory: ComponentsStory = {
   'p-checkbox': [
     {
       tag: 'p-checkbox',
-      attributes: { label: 'Some label', hideLabel: false, name: 'some-name' },
+      properties: { label: 'Some label', hideLabel: false, name: 'some-name' },
     },
   ],
   'p-checkbox-wrapper': [
     {
       tag: 'p-checkbox-wrapper',
-      attributes: { label: 'Some label', hideLabel: false },
-      children: [{ tag: 'input', attributes: { type: 'checkbox', name: 'some-name' } }],
+      properties: { label: 'Some label', hideLabel: false },
+      children: [{ tag: 'input', properties: { type: 'checkbox', name: 'some-name' } }],
     },
   ],
   'p-content-wrapper': [
     {
       tag: 'p-content-wrapper',
-      attributes: { width: 'extended' },
-      children: [{ tag: 'div', attributes: { className: 'example-content' }, children: ['Some content'] }],
+      properties: { width: 'extended' },
+      children: [{ tag: 'div', properties: { className: 'example-content' }, children: ['Some content'] }],
     },
   ],
   'p-crest': [
@@ -176,12 +176,12 @@ export const componentsStory: ComponentsStory = {
   'p-fieldset': [
     {
       tag: 'p-fieldset',
-      attributes: { label: 'Some legend label' },
+      properties: { label: 'Some legend label' },
       children: [
         {
           tag: 'p-text-field-wrapper',
-          attributes: { label: 'Some label' },
-          children: [{ tag: 'input', attributes: { type: 'text', name: 'some-name' } }],
+          properties: { label: 'Some label' },
+          children: [{ tag: 'input', properties: { type: 'text', name: 'some-name' } }],
         },
       ],
     },
@@ -189,12 +189,12 @@ export const componentsStory: ComponentsStory = {
   'p-fieldset-wrapper': [
     {
       tag: 'p-fieldset-wrapper',
-      attributes: { label: 'Some legend label' },
+      properties: { label: 'Some legend label' },
       children: [
         {
           tag: 'p-text-field-wrapper',
-          attributes: { label: 'Some label' },
-          children: [{ tag: 'input', attributes: { type: 'text', name: 'some-name' } }],
+          properties: { label: 'Some label' },
+          children: [{ tag: 'input', properties: { type: 'text', name: 'some-name' } }],
         },
       ],
     },
@@ -202,7 +202,7 @@ export const componentsStory: ComponentsStory = {
   'p-flex': [
     {
       tag: 'p-flex',
-      attributes: { className: 'example-flex' },
+      properties: { className: 'example-flex' },
       children: [
         { tag: 'p-flex-item', children: ['1'] },
         { tag: 'p-flex-item', children: ['2'] },
@@ -210,7 +210,7 @@ export const componentsStory: ComponentsStory = {
     },
     {
       tag: 'p-flex',
-      attributes: { className: 'example-flex' },
+      properties: { className: 'example-flex' },
       children: [
         { tag: 'p-flex-item', children: ['1'] },
         { tag: 'p-flex-item', children: ['2'] },
@@ -236,23 +236,23 @@ export const componentsStory: ComponentsStory = {
   'p-flyout': [
     {
       tag: 'p-flyout',
-      attributes: { open: 'false', aria: '{ "aria-label": "Some Heading" }' },
+      properties: { open: 'false', aria: '{ "aria-label": "Some Heading" }' },
       children: [
         {
           tag: 'p-heading',
-          attributes: { slot: 'header', size: 'large', tag: 'h2' },
+          properties: { slot: 'header', size: 'large', tag: 'h2' },
           children: ['Some Heading'],
         },
-        { tag: 'p-text', attributes: { slot: '' }, children: ['Some Content'] },
+        { tag: 'p-text', properties: { slot: '' }, children: ['Some Content'] },
         {
           tag: 'p-button-group',
-          attributes: { slot: 'footer' },
+          properties: { slot: 'footer' },
           children: [
-            { tag: 'p-button', attributes: { type: 'button' }, children: ['Proceed'] },
-            { tag: 'p-button', attributes: { type: 'button', variant: 'secondary' }, children: ['Cancel'] },
+            { tag: 'p-button', properties: { type: 'button' }, children: ['Proceed'] },
+            { tag: 'p-button', properties: { type: 'button', variant: 'secondary' }, children: ['Cancel'] },
           ],
         },
-        { tag: 'p-text', attributes: { slot: 'sub-footer' }, children: ['Some additional Sub-Footer'] },
+        { tag: 'p-text', properties: { slot: 'sub-footer' }, children: ['Some additional Sub-Footer'] },
       ],
     },
   ],
@@ -265,83 +265,83 @@ export const componentsStory: ComponentsStory = {
   'p-grid': [
     {
       tag: 'p-grid',
-      children: [{ tag: 'p-grid-item', attributes: { size: '12' }, children: ['12'] }],
+      children: [{ tag: 'p-grid-item', properties: { size: '12' }, children: ['12'] }],
     },
     {
       tag: 'p-grid',
       children: [
-        { tag: 'p-grid-item', attributes: { size: '1' }, children: ['1'] },
-        { tag: 'p-grid-item', attributes: { size: '11' }, children: ['11'] },
+        { tag: 'p-grid-item', properties: { size: '1' }, children: ['1'] },
+        { tag: 'p-grid-item', properties: { size: '11' }, children: ['11'] },
       ],
     },
     {
       tag: 'p-grid',
       children: [
-        { tag: 'p-grid-item', attributes: { size: '2' }, children: ['2'] },
-        { tag: 'p-grid-item', attributes: { size: '10' }, children: ['10'] },
+        { tag: 'p-grid-item', properties: { size: '2' }, children: ['2'] },
+        { tag: 'p-grid-item', properties: { size: '10' }, children: ['10'] },
       ],
     },
     {
       tag: 'p-grid',
       children: [
-        { tag: 'p-grid-item', attributes: { size: '3' }, children: ['3'] },
-        { tag: 'p-grid-item', attributes: { size: '9' }, children: ['9'] },
+        { tag: 'p-grid-item', properties: { size: '3' }, children: ['3'] },
+        { tag: 'p-grid-item', properties: { size: '9' }, children: ['9'] },
       ],
     },
     {
       tag: 'p-grid',
       children: [
-        { tag: 'p-grid-item', attributes: { size: '4' }, children: ['4'] },
-        { tag: 'p-grid-item', attributes: { size: '8' }, children: ['8'] },
+        { tag: 'p-grid-item', properties: { size: '4' }, children: ['4'] },
+        { tag: 'p-grid-item', properties: { size: '8' }, children: ['8'] },
       ],
     },
     {
       tag: 'p-grid',
       children: [
-        { tag: 'p-grid-item', attributes: { size: '5' }, children: ['5'] },
-        { tag: 'p-grid-item', attributes: { size: '7' }, children: ['7'] },
+        { tag: 'p-grid-item', properties: { size: '5' }, children: ['5'] },
+        { tag: 'p-grid-item', properties: { size: '7' }, children: ['7'] },
       ],
     },
     {
       tag: 'p-grid',
       children: [
-        { tag: 'p-grid-item', attributes: { size: '6' }, children: ['6'] },
-        { tag: 'p-grid-item', attributes: { size: '6' }, children: ['6'] },
+        { tag: 'p-grid-item', properties: { size: '6' }, children: ['6'] },
+        { tag: 'p-grid-item', properties: { size: '6' }, children: ['6'] },
       ],
     },
     {
       tag: 'p-grid',
       children: [
-        { tag: 'p-grid-item', attributes: { size: '7' }, children: ['7'] },
-        { tag: 'p-grid-item', attributes: { size: '5' }, children: ['5'] },
+        { tag: 'p-grid-item', properties: { size: '7' }, children: ['7'] },
+        { tag: 'p-grid-item', properties: { size: '5' }, children: ['5'] },
       ],
     },
     {
       tag: 'p-grid',
       children: [
-        { tag: 'p-grid-item', attributes: { size: '8' }, children: ['8'] },
-        { tag: 'p-grid-item', attributes: { size: '4' }, children: ['4'] },
+        { tag: 'p-grid-item', properties: { size: '8' }, children: ['8'] },
+        { tag: 'p-grid-item', properties: { size: '4' }, children: ['4'] },
       ],
     },
     {
       tag: 'p-grid',
       children: [
-        { tag: 'p-grid-item', attributes: { size: '9' }, children: ['9'] },
-        { tag: 'p-grid-item', attributes: { size: '3' }, children: ['3'] },
+        { tag: 'p-grid-item', properties: { size: '9' }, children: ['9'] },
+        { tag: 'p-grid-item', properties: { size: '3' }, children: ['3'] },
       ],
     },
     {
       tag: 'p-grid',
       children: [
-        { tag: 'p-grid-item', attributes: { size: '10' }, children: ['10'] },
-        { tag: 'p-grid-item', attributes: { size: '2' }, children: ['2'] },
+        { tag: 'p-grid-item', properties: { size: '10' }, children: ['10'] },
+        { tag: 'p-grid-item', properties: { size: '2' }, children: ['2'] },
       ],
     },
     {
       tag: 'p-grid',
       children: [
-        { tag: 'p-grid-item', attributes: { size: '11' }, children: ['11'] },
-        { tag: 'p-grid-item', attributes: { size: '1' }, children: ['1'] },
+        { tag: 'p-grid-item', properties: { size: '11' }, children: ['11'] },
+        { tag: 'p-grid-item', properties: { size: '1' }, children: ['1'] },
       ],
     },
     {
@@ -374,69 +374,69 @@ export const componentsStory: ComponentsStory = {
   'p-icon': [
     {
       tag: 'p-icon',
-      attributes: { name: '360' },
+      properties: { name: '360' },
     },
   ],
   'p-inline-notification': [
     {
       tag: 'p-inline-notification',
-      attributes: { heading: 'Some heading', headingTag: 'h3', description: 'Some description.' },
+      properties: { heading: 'Some heading', headingTag: 'h3', description: 'Some description.' },
     },
   ],
   'p-link': [
     {
       tag: 'p-link',
-      attributes: { href: 'https://porsche.com' },
+      properties: { href: 'https://porsche.com' },
       children: ['Some label'],
     },
   ],
   'p-link-pure': [
     {
       tag: 'p-link-pure',
-      attributes: { href: 'https://porsche.com' },
+      properties: { href: 'https://porsche.com' },
       children: ['Some label'],
     },
   ],
   'p-link-social': [
     {
       tag: 'p-link-social',
-      attributes: { href: 'https://example.com', icon: 'logo-facebook', target: '_blank', rel: 'nofollow noopener' },
+      properties: { href: 'https://example.com', icon: 'logo-facebook', target: '_blank', rel: 'nofollow noopener' },
       children: ['Facebook'],
     },
   ],
   'p-link-tile': [
     {
       tag: 'p-link-tile',
-      attributes: { href: 'https://porsche.com', label: 'Some label', description: 'Some Description' },
+      properties: { href: 'https://porsche.com', label: 'Some label', description: 'Some Description' },
       children: [
         {
           tag: 'p-tag',
-          attributes: { slot: 'header', color: 'background-frosted', compact: 'true' },
+          properties: { slot: 'header', color: 'background-frosted', compact: 'true' },
           children: ['Some tag'],
         },
-        { tag: 'img', attributes: { src: 'assets/lights.jpg', alt: 'Some image description' } },
+        { tag: 'img', properties: { src: 'assets/lights.jpg', alt: 'Some image description' } },
       ],
     },
   ],
   'p-link-tile-model-signature': [
     {
       tag: 'p-link-tile-model-signature',
-      attributes: { heading: 'Some heading' },
+      properties: { heading: 'Some heading' },
       children: [
         {
           tag: 'p-tag',
-          attributes: { slot: 'header', color: 'background-frosted', compact: 'true' },
+          properties: { slot: 'header', color: 'background-frosted', compact: 'true' },
           children: ['Some tag'],
         },
-        { tag: 'img', attributes: { src: 'assets/lights.jpg', alt: 'Some image description' } },
+        { tag: 'img', properties: { src: 'assets/lights.jpg', alt: 'Some image description' } },
         {
           tag: 'p-link',
-          attributes: { slot: 'primary', href: 'https://porsche.com/#primary' },
+          properties: { slot: 'primary', href: 'https://porsche.com/#primary' },
           children: ['Primary label'],
         },
         {
           tag: 'p-link',
-          attributes: { slot: 'secondary', href: 'https://porsche.com/#secondary' },
+          properties: { slot: 'secondary', href: 'https://porsche.com/#secondary' },
           children: ['Secondary label'],
         },
       ],
@@ -445,8 +445,8 @@ export const componentsStory: ComponentsStory = {
   'p-link-tile-product': [
     {
       tag: 'p-link-tile-product',
-      attributes: { heading: 'Some heading', price: '1.911,00 €', href: 'https://porsche.com' },
-      children: [{ tag: 'img', attributes: { src: 'assets/weekender.webp', alt: 'Some alt text' } }],
+      properties: { heading: 'Some heading', price: '1.911,00 €', href: 'https://porsche.com' },
+      children: [{ tag: 'img', properties: { src: 'assets/weekender.webp', alt: 'Some alt text' } }],
     },
   ],
   'p-marque': [
@@ -463,20 +463,20 @@ export const componentsStory: ComponentsStory = {
   'p-model-signature': [
     {
       tag: 'p-model-signature',
-      attributes: { model: '911' },
+      properties: { model: '911' },
     },
   ],
   'p-multi-select': [
     {
       tag: 'p-multi-select',
-      attributes: { name: 'name', label: 'Some Label', description: 'Some description' },
+      properties: { name: 'name', label: 'Some Label', description: 'Some description' },
       children: [
-        { tag: 'p-multi-select-option', attributes: { value: 'a' }, children: ['Option A'] },
-        { tag: 'p-multi-select-option', attributes: { value: 'b' }, children: ['Option B'] },
-        { tag: 'p-multi-select-option', attributes: { value: 'c' }, children: ['Option C'] },
-        { tag: 'p-multi-select-option', attributes: { value: 'd' }, children: ['Option D'] },
-        { tag: 'p-multi-select-option', attributes: { value: 'e' }, children: ['Option E'] },
-        { tag: 'p-multi-select-option', attributes: { value: 'f' }, children: ['Option F'] },
+        { tag: 'p-multi-select-option', properties: { value: 'a' }, children: ['Option A'] },
+        { tag: 'p-multi-select-option', properties: { value: 'b' }, children: ['Option B'] },
+        { tag: 'p-multi-select-option', properties: { value: 'c' }, children: ['Option C'] },
+        { tag: 'p-multi-select-option', properties: { value: 'd' }, children: ['Option D'] },
+        { tag: 'p-multi-select-option', properties: { value: 'e' }, children: ['Option E'] },
+        { tag: 'p-multi-select-option', properties: { value: 'f' }, children: ['Option F'] },
       ],
     },
   ],
@@ -496,13 +496,13 @@ export const componentsStory: ComponentsStory = {
   'p-pagination': [
     {
       tag: 'p-pagination',
-      attributes: { totalItemsCount: '500', itemsPerPage: '25', activePage: '1' },
+      properties: { totalItemsCount: '500', itemsPerPage: '25', activePage: '1' },
     },
   ],
   'p-pin-code': [
     {
       tag: 'p-pin-code',
-      attributes: { label: 'Some label' },
+      properties: { label: 'Some label' },
     },
   ],
   'p-popover': [
@@ -514,104 +514,104 @@ export const componentsStory: ComponentsStory = {
   'p-radio-button-wrapper': [
     {
       tag: 'p-radio-button-wrapper',
-      attributes: { label: 'Some label' },
-      children: [{ tag: 'input', attributes: { type: 'radio', name: 'some-name' } }],
+      properties: { label: 'Some label' },
+      children: [{ tag: 'input', properties: { type: 'radio', name: 'some-name' } }],
     },
     {
       tag: 'p-radio-button-wrapper',
-      attributes: { label: 'Some label' },
-      children: [{ tag: 'input', attributes: { type: 'radio', name: 'some-name' } }],
+      properties: { label: 'Some label' },
+      children: [{ tag: 'input', properties: { type: 'radio', name: 'some-name' } }],
     },
   ],
   'p-scroller': [
     {
       tag: 'p-scroller',
-      attributes: { className: 'scroller' },
+      properties: { className: 'scroller' },
       children: [
         {
           tag: 'p-tag',
-          attributes: { color: 'primary' },
+          properties: { color: 'primary' },
           children: [
             {
               tag: 'button',
-              attributes: { type: 'button' },
+              properties: { type: 'button' },
               children: ['Some tag content'],
             },
           ],
         },
         {
           tag: 'p-tag',
-          attributes: { color: 'notification-info-soft' },
+          properties: { color: 'notification-info-soft' },
           children: [
             {
               tag: 'button',
-              attributes: { type: 'button' },
+              properties: { type: 'button' },
               children: ['Some tag content'],
             },
           ],
         },
         {
           tag: 'p-tag',
-          attributes: { color: 'notification-warning-soft' },
+          properties: { color: 'notification-warning-soft' },
           children: [
             {
               tag: 'button',
-              attributes: { type: 'button' },
+              properties: { type: 'button' },
               children: ['Some tag content'],
             },
           ],
         },
         {
           tag: 'p-tag',
-          attributes: { color: 'primary' },
+          properties: { color: 'primary' },
           children: [
             {
               tag: 'button',
-              attributes: { type: 'button' },
+              properties: { type: 'button' },
               children: ['Some tag content'],
             },
           ],
         },
         {
           tag: 'p-tag',
-          attributes: { color: 'notification-info-soft' },
+          properties: { color: 'notification-info-soft' },
           children: [
             {
               tag: 'button',
-              attributes: { type: 'button' },
+              properties: { type: 'button' },
               children: ['Some tag content'],
             },
           ],
         },
         {
           tag: 'p-tag',
-          attributes: { color: 'notification-warning-soft' },
+          properties: { color: 'notification-warning-soft' },
           children: [
             {
               tag: 'button',
-              attributes: { type: 'button' },
+              properties: { type: 'button' },
               children: ['Some tag content'],
             },
           ],
         },
         {
           tag: 'p-tag',
-          attributes: { color: 'primary' },
+          properties: { color: 'primary' },
           children: [
             {
               tag: 'button',
-              attributes: { type: 'button' },
+              properties: { type: 'button' },
               children: ['Some tag content'],
             },
           ],
         },
         {
           tag: 'p-tag',
-          attributes: { color: 'notification-info-soft' },
+          properties: { color: 'notification-info-soft' },
           children: [
             {
               tag: 'button',
-              attributes: { type: 'button' },
+              properties: { type: 'button' },
               children: ['Some tag content'],
             },
           ],
@@ -633,45 +633,45 @@ export const componentsStory: ComponentsStory = {
   'p-segmented-control': [
     {
       tag: 'p-segmented-control',
-      attributes: { 'aria-label': 'Choose an Option' },
+      properties: { 'aria-label': 'Choose an Option' },
       children: [
-        { tag: 'p-segmented-control-item', attributes: { value: '1' }, children: ['Option 1'] },
-        { tag: 'p-segmented-control-item', attributes: { value: '2' }, children: ['Option 2'] },
-        { tag: 'p-segmented-control-item', attributes: { value: '3' }, children: ['Option 3'] },
-        { tag: 'p-segmented-control-item', attributes: { value: '4' }, children: ['Option 4'] },
-        { tag: 'p-segmented-control-item', attributes: { value: '5' }, children: ['Option 5'] },
+        { tag: 'p-segmented-control-item', properties: { value: '1' }, children: ['Option 1'] },
+        { tag: 'p-segmented-control-item', properties: { value: '2' }, children: ['Option 2'] },
+        { tag: 'p-segmented-control-item', properties: { value: '3' }, children: ['Option 3'] },
+        { tag: 'p-segmented-control-item', properties: { value: '4' }, children: ['Option 4'] },
+        { tag: 'p-segmented-control-item', properties: { value: '5' }, children: ['Option 5'] },
       ],
     },
   ],
   'p-select': [
     {
       tag: 'p-select',
-      attributes: { name: 'options', label: 'Some Label', description: 'Some description', value: 'a', required: true },
+      properties: { name: 'options', label: 'Some Label', description: 'Some description', value: 'a', required: true },
       children: [
-        { tag: 'p-select-option', attributes: { value: 'a' }, children: ['Option A'] },
-        { tag: 'p-select-option', attributes: { value: 'b' }, children: ['Option B'] },
-        { tag: 'p-select-option', attributes: { value: 'c' }, children: ['Option C'] },
-        { tag: 'p-select-option', attributes: { value: 'd' }, children: ['Option D'] },
-        { tag: 'p-select-option', attributes: { value: 'e' }, children: ['Option E'] },
-        { tag: 'p-select-option', attributes: { value: 'f' }, children: ['Option F'] },
+        { tag: 'p-select-option', properties: { value: 'a' }, children: ['Option A'] },
+        { tag: 'p-select-option', properties: { value: 'b' }, children: ['Option B'] },
+        { tag: 'p-select-option', properties: { value: 'c' }, children: ['Option C'] },
+        { tag: 'p-select-option', properties: { value: 'd' }, children: ['Option D'] },
+        { tag: 'p-select-option', properties: { value: 'e' }, children: ['Option E'] },
+        { tag: 'p-select-option', properties: { value: 'f' }, children: ['Option F'] },
       ],
     },
   ],
   'p-select-wrapper': [
     {
       tag: 'p-select-wrapper',
-      attributes: { label: 'Some label', hideLabel: false },
+      properties: { label: 'Some label', hideLabel: false },
       children: [
         {
           tag: 'select',
-          attributes: { name: 'some-name' },
+          properties: { name: 'some-name' },
           children: [
-            { tag: 'option', attributes: { value: 'a' }, children: ['Option A'] },
-            { tag: 'option', attributes: { value: 'b' }, children: ['Option B'] },
-            { tag: 'option', attributes: { value: 'c' }, children: ['Option C'] },
-            { tag: 'option', attributes: { value: 'd' }, children: ['Option D'] },
-            { tag: 'option', attributes: { value: 'e' }, children: ['Option E'] },
-            { tag: 'option', attributes: { value: 'f' }, children: ['Option F'] },
+            { tag: 'option', properties: { value: 'a' }, children: ['Option A'] },
+            { tag: 'option', properties: { value: 'b' }, children: ['Option B'] },
+            { tag: 'option', properties: { value: 'c' }, children: ['Option C'] },
+            { tag: 'option', properties: { value: 'd' }, children: ['Option D'] },
+            { tag: 'option', properties: { value: 'e' }, children: ['Option E'] },
+            { tag: 'option', properties: { value: 'f' }, children: ['Option F'] },
           ],
         },
       ],
@@ -686,16 +686,16 @@ export const componentsStory: ComponentsStory = {
   'p-spinner': [
     {
       tag: 'p-spinner',
-      attributes: { aria: { 'aria-label': 'Loading page content' } },
+      properties: { aria: { 'aria-label': 'Loading page content' } },
     },
   ],
   'p-stepper-horizontal': [
     {
       tag: 'p-stepper-horizontal',
       children: [
-        { tag: 'p-stepper-horizontal-item', attributes: { state: 'complete' }, children: ['Step 1'] },
-        { tag: 'p-stepper-horizontal-item', attributes: { state: 'warning' }, children: ['Step 2'] },
-        { tag: 'p-stepper-horizontal-item', attributes: { state: 'current' }, children: ['Step 3'] },
+        { tag: 'p-stepper-horizontal-item', properties: { state: 'complete' }, children: ['Step 1'] },
+        { tag: 'p-stepper-horizontal-item', properties: { state: 'warning' }, children: ['Step 2'] },
+        { tag: 'p-stepper-horizontal-item', properties: { state: 'current' }, children: ['Step 3'] },
         { tag: 'p-stepper-horizontal-item', children: ['Step 4'] },
       ],
     },
@@ -709,7 +709,7 @@ export const componentsStory: ComponentsStory = {
   'p-table': [
     {
       tag: 'p-table',
-      attributes: { caption: 'Some caption' },
+      properties: { caption: 'Some caption' },
       children: [
         {
           tag: 'p-table-head',
@@ -790,17 +790,17 @@ export const componentsStory: ComponentsStory = {
       children: [
         {
           tag: 'p-tabs-item',
-          attributes: { label: 'Tab One' },
+          properties: { label: 'Tab One' },
           children: [{ tag: 'p-text', children: ['Tab Content One'] }],
         },
         {
           tag: 'p-tabs-item',
-          attributes: { label: 'Tab Two' },
+          properties: { label: 'Tab Two' },
           children: [{ tag: 'p-text', children: ['Tab Content Two'] }],
         },
         {
           tag: 'p-tabs-item',
-          attributes: { label: 'Tab Three' },
+          properties: { label: 'Tab Three' },
           children: [{ tag: 'p-text', children: ['Tab Content Three'] }],
         },
       ],
@@ -833,8 +833,8 @@ export const componentsStory: ComponentsStory = {
   'p-text-field-wrapper': [
     {
       tag: 'p-text-field-wrapper',
-      attributes: { label: 'Some label' },
-      children: [{ tag: 'input', attributes: { type: 'text', name: 'some-name' } }],
+      properties: { label: 'Some label' },
+      children: [{ tag: 'input', properties: { type: 'text', name: 'some-name' } }],
     },
   ],
   'p-text-list': [
@@ -862,14 +862,14 @@ export const componentsStory: ComponentsStory = {
   'p-textarea': [
     {
       tag: 'p-textarea',
-      attributes: { name: 'some-name', label: 'Some label' },
+      properties: { name: 'some-name', label: 'Some label' },
     },
   ],
   'p-textarea-wrapper': [
     {
       tag: 'p-textarea-wrapper',
-      attributes: { label: 'Some label' },
-      children: [{ tag: 'textarea', attributes: { name: 'some-name' } }],
+      properties: { label: 'Some label' },
+      children: [{ tag: 'textarea', properties: { name: 'some-name' } }],
     },
   ],
   'p-toast': [

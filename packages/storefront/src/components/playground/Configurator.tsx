@@ -88,7 +88,7 @@ import { createPortal } from 'react-dom';
 export type ElementConfig = {
   tag: TagName | keyof HTMLElementTagNameMap; // The component tag e.g. 'p-button'
   // TODO: Rename property
-  attributes?: Record<string, string | boolean | object>; // The component attributes/props written in camelCase e.g. { hideLabel: 'true' }
+  properties?: Record<string, string | boolean | object>; // The component attributes/props written in camelCase e.g. { hideLabel: 'true' }
   children?: (string | ElementConfig)[]; // Nested children either as string for text or ElementConfig for nested components
 };
 
@@ -183,9 +183,9 @@ const generateCode = (configs: ElementConfig[]): GeneratedOutput => {
 };
 
 const generateOutput = (descriptor: ElementConfig, indentLevel = 0, index?: number): GeneratedOutput => {
-  const { tag, attributes = {}, children = [] } = descriptor;
+  const { tag, properties = {}, children = [] } = descriptor;
 
-  const attributesArray = Object.entries(attributes).map(([key, value]) =>
+  const attributesArray = Object.entries(properties).map(([key, value]) =>
     typeof value === 'string'
       ? `${key === 'className' ? 'class' : kebabCase(key)}="${value}"`
       : `${key}='${JSON.stringify(value)}'`
@@ -204,10 +204,10 @@ const generateOutput = (descriptor: ElementConfig, indentLevel = 0, index?: numb
 
   const ReactComponent = tag.startsWith('p-') ? componentMap[tag as TagNameWithChunk] : tag;
 
-  const uniqueKey = index !== undefined ? `${tag}-${index}` : JSON.stringify(attributes);
+  const uniqueKey = index !== undefined ? `${tag}-${index}` : JSON.stringify(properties);
 
   return {
-    jsx: React.createElement(ReactComponent, { key: uniqueKey, ...attributes }, ...jsxChildren),
+    jsx: React.createElement(ReactComponent, { key: uniqueKey, ...properties }, ...jsxChildren),
     markup:
       children.length > 0
         ? `${'  '.repeat(indentLevel)}<${tag}${attributesString}>\n${markupChildren}\n${'  '.repeat(indentLevel)}</${tag}>`
@@ -233,7 +233,7 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
   const handleUpdateProps = (propName: string, selectedValue: string) => {
     setExample((prev) => {
       const updatedAttributes = {
-        ...prev.attributes,
+        ...prev.properties,
         [propName]: selectedValue,
       };
 
@@ -250,7 +250,7 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
       //   delete updatedAttributes[propName];
       // }
 
-      return { ...prev, attributes: updatedAttributes };
+      return { ...prev, properties: updatedAttributes };
     });
   };
 
@@ -282,7 +282,7 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
             <ConfigureProps
               tagName={tagName}
               componentProps={meta.propsMeta}
-              configuredProps={example.attributes}
+              configuredProps={example.properties}
               onUpdateProps={handleUpdateProps}
               onReset={handleResetProps}
             />,

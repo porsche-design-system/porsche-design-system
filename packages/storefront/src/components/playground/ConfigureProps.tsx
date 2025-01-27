@@ -20,7 +20,7 @@ import type React from 'react';
 type ConfigurePropsProps = {
   tagName: TagName;
   componentProps: ComponentMeta['propsMeta'];
-  configuredProps: ElementConfig['attributes'];
+  configuredProps: ElementConfig['properties'];
   onUpdateProps: (propName: string, selectedValue: string) => void;
   onReset: () => void;
 };
