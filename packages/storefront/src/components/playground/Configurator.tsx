@@ -2,8 +2,7 @@
 
 import { ConfigureProps } from '@/components/playground/ConfigureProps';
 import { Playground } from '@/components/playground/Playground';
-import { type ComponentsStoryTagNames, componentsStory } from '@/components/playground/componentStory';
-import { isDefaultValue } from '@/components/playground/configuratorUtils';
+import { componentsStory } from '@/components/playground/componentStory';
 import { componentMeta } from '@porsche-design-system/component-meta';
 import {
   PAccordion,
@@ -83,7 +82,7 @@ import {
 } from '@porsche-design-system/components-react/ssr';
 import type { TagName, TagNameWithChunk } from '@porsche-design-system/shared';
 import { kebabCase } from 'change-case';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 export type ElementConfig = {
@@ -217,7 +216,7 @@ const generateOutput = (descriptor: ElementConfig, indentLevel = 0, index?: numb
 };
 
 type ConfiguratorProps = {
-  tagName: ComponentsStoryTagNames;
+  tagName: TagNameWithChunk;
 };
 
 export const Configurator = ({ tagName }: ConfiguratorProps) => {
