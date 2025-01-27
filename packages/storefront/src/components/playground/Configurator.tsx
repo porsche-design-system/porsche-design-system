@@ -238,6 +238,10 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
         [propName]: selectedValue,
       };
 
+      if (selectedValue === undefined) {
+        delete updatedAttributes[propName];
+      }
+
       // TODO: Without this props which were once changed will be stay on the markup.
       //  Adding this causes trouble when there is a default value.
       //  When the attribute is removed the component will have the default value again.
