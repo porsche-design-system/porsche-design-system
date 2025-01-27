@@ -1,5 +1,4 @@
-import type { ElementConfig } from '@/components/playground/Configurator';
-import type { TagName, TagNameWithChunk } from '@porsche-design-system/shared';
+import type { ConfiguratorTagNames, ElementConfig } from '@/components/playground/Configurator';
 
 /**
  * Questions:
@@ -50,7 +49,7 @@ import type { TagName, TagNameWithChunk } from '@porsche-design-system/shared';
  */
 
 export type ComponentsStory = {
-  [Tag in TagNameWithChunk]: ElementConfig[];
+  [Tag in ConfiguratorTagNames]: ElementConfig[];
 };
 
 /**
@@ -66,7 +65,7 @@ export const componentsStory: ComponentsStory = {
   'p-banner': [
     {
       tag: 'p-banner',
-      // TODO: Add story
+      properties: { open: true },
     },
   ],
   'p-button': [
@@ -98,7 +97,7 @@ export const componentsStory: ComponentsStory = {
       children: [
         {
           tag: 'p-tag',
-          properties: { slot: 'header', theme: 'dark', color: 'background-frosted', compact: 'true' },
+          properties: { slot: 'header', theme: 'dark', color: 'background-frosted', compact: true },
           children: ['Some tag'],
         },
         { tag: 'img', properties: { src: 'assets/lights.jpg', alt: 'Some image description' } },
@@ -236,7 +235,7 @@ export const componentsStory: ComponentsStory = {
   'p-flyout': [
     {
       tag: 'p-flyout',
-      properties: { open: 'false', aria: '{ "aria-label": "Some Heading" }' },
+      properties: { open: false, aria: { 'aria-label': 'Some Heading' } },
       children: [
         {
           tag: 'p-heading',
@@ -265,83 +264,83 @@ export const componentsStory: ComponentsStory = {
   'p-grid': [
     {
       tag: 'p-grid',
-      children: [{ tag: 'p-grid-item', properties: { size: '12' }, children: ['12'] }],
+      children: [{ tag: 'p-grid-item', properties: { size: 12 }, children: ['12'] }],
     },
     {
       tag: 'p-grid',
       children: [
-        { tag: 'p-grid-item', properties: { size: '1' }, children: ['1'] },
-        { tag: 'p-grid-item', properties: { size: '11' }, children: ['11'] },
+        { tag: 'p-grid-item', properties: { size: 1 }, children: ['1'] },
+        { tag: 'p-grid-item', properties: { size: 11 }, children: ['11'] },
       ],
     },
     {
       tag: 'p-grid',
       children: [
-        { tag: 'p-grid-item', properties: { size: '2' }, children: ['2'] },
-        { tag: 'p-grid-item', properties: { size: '10' }, children: ['10'] },
+        { tag: 'p-grid-item', properties: { size: 2 }, children: ['2'] },
+        { tag: 'p-grid-item', properties: { size: 10 }, children: ['10'] },
       ],
     },
     {
       tag: 'p-grid',
       children: [
-        { tag: 'p-grid-item', properties: { size: '3' }, children: ['3'] },
-        { tag: 'p-grid-item', properties: { size: '9' }, children: ['9'] },
+        { tag: 'p-grid-item', properties: { size: 3 }, children: ['3'] },
+        { tag: 'p-grid-item', properties: { size: 9 }, children: ['9'] },
       ],
     },
     {
       tag: 'p-grid',
       children: [
-        { tag: 'p-grid-item', properties: { size: '4' }, children: ['4'] },
-        { tag: 'p-grid-item', properties: { size: '8' }, children: ['8'] },
+        { tag: 'p-grid-item', properties: { size: 4 }, children: ['4'] },
+        { tag: 'p-grid-item', properties: { size: 8 }, children: ['8'] },
       ],
     },
     {
       tag: 'p-grid',
       children: [
-        { tag: 'p-grid-item', properties: { size: '5' }, children: ['5'] },
-        { tag: 'p-grid-item', properties: { size: '7' }, children: ['7'] },
+        { tag: 'p-grid-item', properties: { size: 5 }, children: ['5'] },
+        { tag: 'p-grid-item', properties: { size: 7 }, children: ['7'] },
       ],
     },
     {
       tag: 'p-grid',
       children: [
-        { tag: 'p-grid-item', properties: { size: '6' }, children: ['6'] },
-        { tag: 'p-grid-item', properties: { size: '6' }, children: ['6'] },
+        { tag: 'p-grid-item', properties: { size: 6 }, children: ['6'] },
+        { tag: 'p-grid-item', properties: { size: 6 }, children: ['6'] },
       ],
     },
     {
       tag: 'p-grid',
       children: [
-        { tag: 'p-grid-item', properties: { size: '7' }, children: ['7'] },
-        { tag: 'p-grid-item', properties: { size: '5' }, children: ['5'] },
+        { tag: 'p-grid-item', properties: { size: 7 }, children: ['7'] },
+        { tag: 'p-grid-item', properties: { size: 5 }, children: ['5'] },
       ],
     },
     {
       tag: 'p-grid',
       children: [
-        { tag: 'p-grid-item', properties: { size: '8' }, children: ['8'] },
-        { tag: 'p-grid-item', properties: { size: '4' }, children: ['4'] },
+        { tag: 'p-grid-item', properties: { size: 8 }, children: ['8'] },
+        { tag: 'p-grid-item', properties: { size: 4 }, children: ['4'] },
       ],
     },
     {
       tag: 'p-grid',
       children: [
-        { tag: 'p-grid-item', properties: { size: '9' }, children: ['9'] },
-        { tag: 'p-grid-item', properties: { size: '3' }, children: ['3'] },
+        { tag: 'p-grid-item', properties: { size: 9 }, children: ['9'] },
+        { tag: 'p-grid-item', properties: { size: 3 }, children: ['3'] },
       ],
     },
     {
       tag: 'p-grid',
       children: [
-        { tag: 'p-grid-item', properties: { size: '10' }, children: ['10'] },
-        { tag: 'p-grid-item', properties: { size: '2' }, children: ['2'] },
+        { tag: 'p-grid-item', properties: { size: 10 }, children: ['10'] },
+        { tag: 'p-grid-item', properties: { size: 2 }, children: ['2'] },
       ],
     },
     {
       tag: 'p-grid',
       children: [
-        { tag: 'p-grid-item', properties: { size: '11' }, children: ['11'] },
-        { tag: 'p-grid-item', properties: { size: '1' }, children: ['1'] },
+        { tag: 'p-grid-item', properties: { size: 11 }, children: ['11'] },
+        { tag: 'p-grid-item', properties: { size: 1 }, children: ['1'] },
       ],
     },
     {
@@ -411,7 +410,7 @@ export const componentsStory: ComponentsStory = {
       children: [
         {
           tag: 'p-tag',
-          properties: { slot: 'header', color: 'background-frosted', compact: 'true' },
+          properties: { slot: 'header', color: 'background-frosted', compact: true },
           children: ['Some tag'],
         },
         { tag: 'img', properties: { src: 'assets/lights.jpg', alt: 'Some image description' } },
@@ -425,7 +424,7 @@ export const componentsStory: ComponentsStory = {
       children: [
         {
           tag: 'p-tag',
-          properties: { slot: 'header', color: 'background-frosted', compact: 'true' },
+          properties: { slot: 'header', color: 'background-frosted', compact: true },
           children: ['Some tag'],
         },
         { tag: 'img', properties: { src: 'assets/lights.jpg', alt: 'Some image description' } },
@@ -496,7 +495,7 @@ export const componentsStory: ComponentsStory = {
   'p-pagination': [
     {
       tag: 'p-pagination',
-      properties: { totalItemsCount: '500', itemsPerPage: '25', activePage: '1' },
+      properties: { totalItemsCount: 500, itemsPerPage: 25, activePage: 1 },
     },
   ],
   'p-pin-code': [
@@ -633,7 +632,6 @@ export const componentsStory: ComponentsStory = {
   'p-segmented-control': [
     {
       tag: 'p-segmented-control',
-      properties: { 'aria-label': 'Choose an Option' },
       children: [
         { tag: 'p-segmented-control-item', properties: { value: '1' }, children: ['Option 1'] },
         { tag: 'p-segmented-control-item', properties: { value: '2' }, children: ['Option 2'] },
@@ -883,6 +881,22 @@ export const componentsStory: ComponentsStory = {
       tag: 'p-wordmark',
     },
   ],
+  // Unused only for typing purposes
+  'p-flex-item': [],
+  'p-flyout-multilevel-item': [],
+  'p-grid-item': [],
+  'p-multi-select-option': [],
+  'p-segmented-control-item': [],
+  'p-select-option': [],
+  'p-stepper-horizontal-item': [],
+  'p-table-body': [],
+  'p-table-cell': [],
+  'p-table-head-cell': [],
+  'p-table-row': [],
+  'p-table-head-row': [],
+  'p-table-head': [],
+  'p-tabs-item': [],
+  'p-text-list-item': [],
 };
 
 // TODO: Revised config for dynamic generation of children based on active slots
