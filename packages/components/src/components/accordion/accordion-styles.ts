@@ -1,6 +1,14 @@
-import type { BreakpointCustomizable, Theme } from '../../types';
-import type { AccordionSize } from './accordion-utils';
-import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import {
+  borderRadiusSmall,
+  fontLineHeight,
+  fontSizeTextMedium,
+  fontSizeTextSmall,
+  fontSizeTextXXSmall,
+  fontWeightSemiBold,
+  motionDurationShort,
+  spacingStaticSmall,
+  textSmallStyle,
+} from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -13,17 +21,9 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import {
-  borderRadiusSmall,
-  fontLineHeight,
-  fontSizeTextMedium,
-  fontSizeTextSmall,
-  fontSizeTextXXSmall,
-  fontWeightSemiBold,
-  motionDurationShort,
-  spacingStaticSmall,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
+import type { BreakpointCustomizable, Theme } from '../../types';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import type { AccordionSize } from './accordion-utils';
 
 export const getComponentCss = (
   size: BreakpointCustomizable<AccordionSize>,
@@ -176,9 +176,6 @@ export const getComponentCss = (
         // Necessary to make focus outlines fully visible
         padding: '4px',
         margin: '-4px',
-        // Fix scrollbar issues when slotted content includes .sr-only styles (see issue #3042)
-        transform: 'translate3d(0,0,0)',
-        zIndex: 1,
       },
     },
     '@keyframes overflow': {
