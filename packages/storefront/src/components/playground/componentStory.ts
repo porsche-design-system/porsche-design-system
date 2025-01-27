@@ -16,7 +16,7 @@ import type { TagNameWithChunk } from '@porsche-design-system/shared';
  * How to deal with aria attributes? Currently not shown in the configurator. 'p-icon'
  *
  * Model Signature size inherit?
- * How to handle styles in examples? style tag currently works. Inline style is missing conversion react/vanilla.js. Tailwind would be also an option. Currently affecting p-carousel, p-radio-button-wrapper
+ * How to handle styles in examples? style tag currently works. Inline style is missing conversion react/vanilla.js. Tailwind would be also an option. Currently affecting p-carousel, p-radio-button-wrapper (Missing spacing)
  *
  * TODO:
  * - [ ] - Dynamic import of React Component in Configurator
