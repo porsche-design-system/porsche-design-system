@@ -1,0 +1,49 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Banner: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Banner component',
+};
+
+# Banner <ComponentStatus tagName="p-banner"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state | Function                                      |
+| ----------- | --------------------------------------------- |
+| `ESC`       | Closes the Banner                             |
+| `focus`     | Moves focus automatically to the close button |
+
+### ARIA attributes & states
+
+#### Internal **ARIA** attributes that are managed by the component:
+
+| ARIA                 | Usage                                                                                                     |
+| -------------------- | --------------------------------------------------------------------------------------------------------- |
+| `role="status"`      | When content is populated or changed in `state="info"`, the component announces them unobtrusively        |
+| `role="alert"`       | When content is populated or changed in `state="warning/error"`, the component announces them immediately |
+| `aria="labelledby"`  | The Banner is labelled by the `heading` prop or its corresponding slot                                    |
+| `aria="describedby"` | The Banner is described by the `description` prop or its corresponding slot                               |
+| `aria-hidden="true"` | State `icon` is hidden from the screen reader                                                             |
+
+## Development considerations
+
+### Focus handling
+
+To support **keyboard navigation**, please take care of correct **focus handling** after closing the Banner with `ESC`
+or `Enter` key: The trigger element (e.g. a button) which has opened the Banner must receive focus state again after the
+Banner is closed. This is important to keep focus order consistent.
+
+## Tests
+
+| Technology               | Support |
+| ------------------------ | ------- |
+| Keyboard                 | ✅      |
+| Screenreader (VoiceOver) | ✅      |
+| High-Contrast Mode (HCM) | ✅      |
+| Text-Zoom (200%)         | ✅      |

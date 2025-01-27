@@ -3,22 +3,22 @@ import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
   title: 'Button: Accessibility - Porsche Design System',
-  description: 'Some description',
+  description: 'Accessibility information and best practices for the Button component',
 };
 
 # Button <ComponentStatus tagName="p-button"></ComponentStatus>
 
-<TableOfContents headings={["A11Y support","Limitations","Considerations for developers","Tests"]} />
+<TableOfContents headings={["Accessibility support","Limitations","Development considerations","Tests"]} />
 
-## A11Y support
+## Accessibility support
 
-### Keyboard support
+### Keyboard
 
-| Key / state        | Function                                            |
-| ------------------ | --------------------------------------------------- |
-| `Tab`, `Shift-Tab` | Moves focus to next (or previous) focusable element |
-| `Enter`, `Space`   | Activates the button                                |
-| `disabled`         | Button still focusable                              |
+| Key / state        | Function                                                |
+| ------------------ | ------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element |
+| `Enter`, `Space`   | Activates the button                                    |
+| `disabled`         | Button still focusable                                  |
 
 ### ARIA attributes & states
 
@@ -37,28 +37,32 @@ export const metadata = {
 | ---------------------- | -------------------------------------------------------------------------------------------------------------- |
 | `aria-disabled="true"` | When `disabled` prop is set, this ARIA attribute is set on the button element                                  |
 | `role="status"`        | When `loading` prop is set, the component announces the loading state (start and finish) through the live area |
+| `aria-hidden="true"`   | When the `icon` prop is set, the icon is hidden from the screen reader                                         |
 
 ## Limitations
 
-Due to the nature of **Web Components** and **shadowDOM**, there are limitations ins usage of **ARIA** attributes and
-states if they try to set relationship between elements in different shadow roots of lightDOM.
+Due to the nature of **Web Components** and **shadowDOM**, there are limitations in the usage of some **ARIA**
+attributes if they try to set relationship between elements in different shadowDOM's or shadowDOM/lightDOM combinations.
 
-| ARIA               | Support |
-| ------------------ | ------- |
-| `aria-labelledby`  | 🚫      |
-| `aria-describedby` | 🚫      |
-| `aria-owns`        | 🚫      |
-| `aria-controls`    | 🚫      |
+| ARIA                    | Support |
+| ----------------------- | ------- |
+| `aria-labelledby`       | 🚫      |
+| `aria-describedby`      | 🚫      |
+| `aria-owns`             | 🚫      |
+| `aria-controls`         | 🚫      |
+| `aria-activedescendant` | 🚫      |
 
-## Considerations for developers
+## Development considerations
 
 ### Labelling
 
-If the text on a button does not clearly indicate what the button's behavior is, add a brief, descriptive label using
+If the text of a button does not clearly indicate what the button's behavior is, add a brief, descriptive label using
 the `aria` property with the `aria-label` value to provide more context for e.g. screen reader users. Phrases like
 "Add," "Detail," or "Show" can be unclear when read out of context by a screen reader. In such instances, provide an
-alternative text that offers more detailed information, such as "Add itemXYZ to shopping cart" or "Details of
-productXYZ."
+alternative text that offers more detailed information, such as "Add item XYZ to shopping cart" or "Details of product
+XYZ."
+
+If the button is used with the `hide-label` prop, the `aria` prop is **required** to provide a meaningful label.
 
 ## Tests
 

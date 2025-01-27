@@ -5249,6 +5249,11 @@
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.25.tgz#f077fdc0b5d0078d30893396ff4827a13f99e817"
   integrity sha512-j7P6Rgr3mmtdkeDGTe0E/aYyWEWVtc5yFXtHCRHs28/jptDEWfaVOc5T7cblqy1XKPPfCxJc/8DwQ5YgLOZOVQ==
 
+"@porsche-design-system/components-js@3.25.0-rc.0":
+  version "3.25.0-rc.0"
+  resolved "https://registry.yarnpkg.com/@porsche-design-system/components-js/-/components-js-3.25.0-rc.0.tgz#d168865f4d57473ff7907f490cc5e21114c375e3"
+  integrity sha512-j36B2yfuXGRPcYqC/ZDKomTJa3LfOsvRYzS5IiYPsAkqY9KJ6Mk0BgjFekPL+y5rWlI+HCgMC6wjy0PPx6N0kQ==
+
 "@porsche-design-system/prettier-config@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@porsche-design-system/prettier-config/-/prettier-config-1.0.1.tgz#6b0fc60d3d42c7b4d9c998bf7b685513a5488400"
