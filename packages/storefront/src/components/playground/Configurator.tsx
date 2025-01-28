@@ -1,11 +1,15 @@
 'use client';
 
+import { DirectionSelect } from '@/components/common/DirectionSelect';
+import { ConfigureCssVariables } from '@/components/playground/ConfigureCssVariables';
 import { ConfigureProps } from '@/components/playground/ConfigureProps';
+import { ConfigureSlots } from '@/components/playground/ConfigureSlots';
 import { Playground } from '@/components/playground/Playground';
 import { componentsStory } from '@/components/playground/componentStory';
 import { isDefaultValue } from '@/components/playground/configuratorUtils';
 import { componentMeta } from '@porsche-design-system/component-meta';
 import {
+  type AccordionUpdateEventDetail,
   PAccordion,
   type PAccordionProps,
   PBanner,
@@ -154,6 +158,7 @@ import {
   type PToastProps,
   PWordmark,
   type PWordmarkProps,
+  type SelectUpdateEventDetail,
 } from '@porsche-design-system/components-react/ssr';
 import type { TagName, TagNameWithChunk } from '@porsche-design-system/shared';
 import { kebabCase } from 'change-case';
@@ -393,11 +398,19 @@ type ConfiguratorProps = {
 export const Configurator = ({ tagName }: ConfiguratorProps) => {
   const componentConfig = componentsStory[tagName].find((config) => config.tag === tagName) as PDSComponentConfig;
   const configIndex = componentsStory[tagName].indexOf(componentConfig as ElementConfig);
+  const meta = componentMeta[tagName];
+
+  const [accordionState, setAccordionState] = useState<Record<number, boolean>>({});
   const [example, setExample] = useState<PDSComponentConfig>(componentConfig);
   const [{ jsx, markup }, setGenerated] = useState<GeneratedOutput>({ jsx: null, markup: '' });
   const [domReady, setDomReady] = useState(false);
 
-  const meta = componentMeta[tagName];
+  const handleAccordionUpdate = (index: number, e: CustomEvent<AccordionUpdateEventDetail>) => {
+    setAccordionState((prevState) => ({
+      ...prevState,
+      [index]: e.detail.open,
+    }));
+  };
 
   const shouldUpdate = (selectedValue: string | undefined, propName: keyof PDSComponentConfig['properties']) => {
     const isEqualToCurrentValue = selectedValue === example.properties?.[propName];
@@ -414,8 +427,6 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
       const isDefault = isDefaultValue(meta.propsMeta?.[propName]?.defaultValue, selectedValue);
       const updatedAttributes = { ...prev.properties };
 
-      // Delete the prop if value is undefined or if it's a default value based on input type and onBlur
-      // When the inputType is a text-field we can only delete the property onBlur since it would mess with the user input otherwise
       if (selectedValue === undefined || isDefault) {
         delete updatedAttributes[propName];
       } else {
@@ -429,6 +440,11 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
 
   const handleResetAllProps = () => {
     setExample(componentConfig);
+  };
+
+  const handleDirectionUpdate = (e: CustomEvent<SelectUpdateEventDetail>) => {
+    // biome-ignore lint/suspicious/noConsole: <explanation>
+    console.log(e);
   };
 
   useEffect(() => {
@@ -448,18 +464,44 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
 
   if (!meta.propsMeta) return null;
 
+  const controls = [
+    <ConfigureProps
+      tagName={tagName}
+      componentProps={meta.propsMeta}
+      configuredProps={example.properties}
+      defaultProps={componentConfig.properties}
+      onUpdateProps={handleUpdateProps}
+      onResetAllProps={handleResetAllProps}
+    />,
+    <ConfigureSlots />,
+    <ConfigureCssVariables />,
+    <>
+      <span slot="heading">Direction</span>
+      <DirectionSelect
+        dir="ltr"
+        onUpdate={(e) => handleDirectionUpdate(e)}
+        label="Changes the direction of HTML elements, mostly used on <body> tag to support languages which are read from right to left like e.g. Arabic."
+      />
+    </>,
+  ];
+
   return (
     <>
       {domReady
         ? createPortal(
-            <ConfigureProps
-              tagName={tagName}
-              componentProps={meta.propsMeta}
-              configuredProps={example.properties}
-              defaultProps={componentConfig.properties}
-              onUpdateProps={handleUpdateProps}
-              onResetAllProps={handleResetAllProps}
-            />,
+            // biome-ignore lint/complexity/noUselessFragments: <explanation>
+            <>
+              {controls.map((control, index) => (
+                <PAccordion
+                  key={index}
+                  headingTag="h3"
+                  open={accordionState[index] || false}
+                  onUpdate={(e) => handleAccordionUpdate(index, e)}
+                >
+                  {control}
+                </PAccordion>
+              ))}
+            </>,
             // biome-ignore lint/style/noNonNullAssertion: <explanation>
             document.querySelector('[slot="sidebar-end"]')!
           )

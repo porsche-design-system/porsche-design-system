@@ -1,7 +1,7 @@
 import { PTag } from '@porsche-design-system/components-react/ssr';
 import React from 'react';
 
-export const ConfigureSlots = () => {
+export const ConfigureCssVariables = () => {
   // const onUpdateSlots = (slotName: string, selected: boolean) => {
   //   // biome-ignore lint/suspicious/noConsole: <explanation>
   //   console.log(slotName, selected);
@@ -12,7 +12,7 @@ export const ConfigureSlots = () => {
   return (
     <>
       <span slot="heading" className="flex gap-xs">
-        Slots
+        CSS Variables
         {amountOfConfiguredSlots > 0 && (
           <>
             <PTag compact={true}>{amountOfConfiguredSlots}</PTag>
