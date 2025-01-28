@@ -148,7 +148,7 @@ export class Canvas {
             </div>
           </header>
           {this.isMediaQueryS && (
-            <aside
+            <nav
               class="sidebar sidebar--start"
               inert={!this.sidebarStartOpen}
               aria-label={`Navigation sidebar ${this.sidebarStartOpen ? 'open' : 'closed'}`}
@@ -178,7 +178,7 @@ export class Canvas {
                   <slot name="sidebar-start" />
                 </div>
               </div>
-            </aside>
+            </nav>
           )}
           <main class="main">
             <slot />
