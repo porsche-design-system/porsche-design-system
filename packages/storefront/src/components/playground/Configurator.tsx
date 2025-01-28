@@ -399,19 +399,33 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
 
   const meta = componentMeta[tagName];
 
-  const handleUpdateProps = (propName: keyof ElementConfig['properties'], selectedValue: string, onBlur?: boolean) => {
-    setExample((prev) => {
-      const updatedAttributes = {
-        ...prev.properties,
-        [propName]: selectedValue,
-      };
+  const shouldUpdate = (selectedValue: string, propName: keyof PDSComponentConfig['properties']) => {
+    const isEqualToCurrentValue = selectedValue === example.properties?.[propName];
+    const isEmptyStringAndNotApplied = selectedValue === '' && example.properties?.[propName] === undefined;
+    const isNotAppliedAndDefaultValue =
+      example.properties?.[propName] === undefined && meta.propsMeta?.[propName]?.defaultValue === selectedValue;
+    return !(isEqualToCurrentValue || isEmptyStringAndNotApplied || isNotAppliedAndDefaultValue);
+  };
 
-      if (selectedValue === undefined) {
+  const handleUpdateProps = (
+    propName: keyof PDSComponentConfig['properties'],
+    selectedValue: string,
+    inputType?: 'text-field' | 'checkbox' | 'select',
+    onBlur?: boolean
+  ) => {
+    if (!shouldUpdate(selectedValue, propName)) return;
+
+    setExample((prev) => {
+      const isDefault = isDefaultValue(meta.propsMeta?.[propName]?.defaultValue, selectedValue);
+      const updatedAttributes = { ...prev.properties };
+
+      // Delete the prop if value is undefined or if it's a default value based on input type and onBlur
+      // When the inputType is a text-field we can only delete the property onBlur since it would mess with the user input otherwise
+      if (selectedValue === undefined || (isDefault && (inputType === 'text-field' ? onBlur : true))) {
         delete updatedAttributes[propName];
-      }
-      // This has to be done onBlur in order to avoid the input field to be reset when the value is the same as the default value while typing.
-      else if (onBlur && isDefaultValue(meta.propsMeta?.[propName]?.defaultValue, selectedValue)) {
-        delete updatedAttributes[propName];
+      } else {
+        // @ts-ignore
+        updatedAttributes[propName] = selectedValue;
       }
 
       return { ...prev, properties: updatedAttributes as PropTypeMapping[typeof tagName] };
@@ -429,6 +443,9 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
       example,
       ...componentsStory[tagName].slice(configIndex + 1),
     ] as ElementConfig[];
+
+    console.log(updatedConfig);
+    console.log(generateCode(updatedConfig).jsx);
 
     setGenerated(generateCode(updatedConfig));
   }, [example, configIndex, tagName]);
