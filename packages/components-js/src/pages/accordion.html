@@ -128,3 +128,32 @@
   </p-accordion>
   <p-accordion heading="Heading"></p-accordion>
 </div>
+
+<div
+  class="playground light"
+  title="should render multiple accordions with nested select without z-index issues"
+  style="padding-bottom: 200px"
+>
+  <p-accordion heading="Heading" open="true">
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+    <p-select name="options" label="Some Label" value="a" dropdown-direction="down" class="open" style="width: 240px">
+      <p-select-option value="a">Option A</p-select-option>
+      <p-select-option value="b">Option B</p-select-option>
+      <p-select-option value="c">Option C</p-select-option>
+      <p-select-option value="d">Option D</p-select-option>
+    </p-select>
+  </p-accordion>
+  <p-accordion heading="Heading" open="true">
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+  </p-accordion>
+</div>
+
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    // Call click on the shadow root input so isOutsideClick won't close the dropdowns
+    document.querySelectorAll('p-select.open').forEach((el) => el.shadowRoot.querySelector('BUTTON').click());
+  });
+</script>

@@ -22,7 +22,7 @@
       <slot name="header-end"> </slot>
     </div>
   </header>
-  <aside
+  <nav
     class="sidebar sidebar--start"
     inert=""
     aria-label="Navigation sidebar closed"
@@ -38,7 +38,7 @@
         <slot name="sidebar-start"> </slot>
       </div>
     </div>
-  </aside>
+  </nav>
   <main class="main">
     <slot> </slot>
   </main>

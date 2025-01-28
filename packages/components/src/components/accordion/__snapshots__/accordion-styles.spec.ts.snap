@@ -92,12 +92,11 @@ button:focus-visible::before {
   transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.25s);
 }
 .collapsible div {
-  overflow: hidden;
-  animation: none;
   padding: 4px;
   margin: -4px;
+  overflow: hidden;
+  animation: none;
   transform: translate3d(0,0,0);
-  z-index: 1;
 }
 @keyframes keyframes-overflow {
   from {
@@ -202,12 +201,10 @@ button:focus-visible::before {
   padding-bottom: 24px;
 }
 .collapsible div {
-  overflow: visible;
-  animation: keyframes-overflow var(--p-transition-duration,0.25s);
   padding: 4px;
   margin: -4px;
-  transform: translate3d(0,0,0);
-  z-index: 1;
+  overflow: visible;
+  animation: keyframes-overflow var(--p-transition-duration,0.25s);
 }
 @keyframes keyframes-overflow {
   from {
@@ -311,12 +308,11 @@ button:focus-visible::before {
   transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.25s);
 }
 .collapsible div {
-  overflow: hidden;
-  animation: none;
   padding: 4px;
   margin: -4px;
+  overflow: hidden;
+  animation: none;
   transform: translate3d(0,0,0);
-  z-index: 1;
 }
 @keyframes keyframes-overflow {
   from {
@@ -426,12 +422,11 @@ button:focus-visible::before {
   transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.25s);
 }
 .collapsible div {
-  overflow: hidden;
-  animation: none;
   padding: 4px;
   margin: -4px;
+  overflow: hidden;
+  animation: none;
   transform: translate3d(0,0,0);
-  z-index: 1;
 }
 @keyframes keyframes-overflow {
   from {
@@ -535,12 +530,11 @@ button:focus-visible::before {
   transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.25s);
 }
 .collapsible div {
-  overflow: hidden;
-  animation: none;
   padding: 4px;
   margin: -4px;
+  overflow: hidden;
+  animation: none;
   transform: translate3d(0,0,0);
-  z-index: 1;
 }
 @keyframes keyframes-overflow {
   from {
@@ -650,12 +644,11 @@ button:focus-visible::before {
   transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.25s);
 }
 .collapsible div {
-  overflow: hidden;
-  animation: none;
   padding: 4px;
   margin: -4px;
+  overflow: hidden;
+  animation: none;
   transform: translate3d(0,0,0);
-  z-index: 1;
 }
 @keyframes keyframes-overflow {
   from {
@@ -760,12 +753,10 @@ button:focus-visible::before {
   padding-bottom: 8px;
 }
 .collapsible div {
-  overflow: visible;
-  animation: keyframes-overflow var(--p-transition-duration,0.25s);
   padding: 4px;
   margin: -4px;
-  transform: translate3d(0,0,0);
-  z-index: 1;
+  overflow: visible;
+  animation: keyframes-overflow var(--p-transition-duration,0.25s);
 }
 @keyframes keyframes-overflow {
   from {
@@ -869,12 +860,11 @@ button:focus-visible::before {
   transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.25s);
 }
 .collapsible div {
-  overflow: hidden;
-  animation: none;
   padding: 4px;
   margin: -4px;
+  overflow: hidden;
+  animation: none;
   transform: translate3d(0,0,0);
-  z-index: 1;
 }
 @keyframes keyframes-overflow {
   from {
@@ -979,12 +969,10 @@ button:focus-visible::before {
   padding-bottom: 24px;
 }
 .collapsible div {
-  overflow: visible;
-  animation: keyframes-overflow var(--p-transition-duration,0.25s);
   padding: 4px;
   margin: -4px;
-  transform: translate3d(0,0,0);
-  z-index: 1;
+  overflow: visible;
+  animation: keyframes-overflow var(--p-transition-duration,0.25s);
 }
 @keyframes keyframes-overflow {
   from {
@@ -1089,12 +1077,10 @@ button:focus-visible::before {
   padding-bottom: 24px;
 }
 .collapsible div {
-  overflow: visible;
-  animation: keyframes-overflow var(--p-transition-duration,0.25s);
   padding: 4px;
   margin: -4px;
-  transform: translate3d(0,0,0);
-  z-index: 1;
+  overflow: visible;
+  animation: keyframes-overflow var(--p-transition-duration,0.25s);
 }
 @keyframes keyframes-overflow {
   from {
@@ -1198,12 +1184,11 @@ button:focus-visible::before {
   transition: grid-template-rows var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.25s);
 }
 .collapsible div {
-  overflow: hidden;
-  animation: none;
   padding: 4px;
   margin: -4px;
+  overflow: hidden;
+  animation: none;
   transform: translate3d(0,0,0);
-  z-index: 1;
 }
 @keyframes keyframes-overflow {
   from {
@@ -1308,12 +1293,10 @@ button:focus-visible::before {
   padding-bottom: 8px;
 }
 .collapsible div {
-  overflow: visible;
-  animation: keyframes-overflow var(--p-transition-duration,0.25s);
   padding: 4px;
   margin: -4px;
-  transform: translate3d(0,0,0);
-  z-index: 1;
+  overflow: visible;
+  animation: keyframes-overflow var(--p-transition-duration,0.25s);
 }
 @keyframes keyframes-overflow {
   from {
@@ -1453,12 +1436,10 @@ button:focus-visible::before {
   padding-bottom: 24px;
 }
 .collapsible div {
-  overflow: visible;
-  animation: keyframes-overflow var(--p-transition-duration,0.25s);
   padding: 4px;
   margin: -4px;
-  transform: translate3d(0,0,0);
-  z-index: 1;
+  overflow: visible;
+  animation: keyframes-overflow var(--p-transition-duration,0.25s);
 }
 @keyframes keyframes-overflow {
   from {
