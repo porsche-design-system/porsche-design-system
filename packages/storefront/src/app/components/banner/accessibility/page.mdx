@@ -8,29 +8,29 @@ export const metadata = {
 
 # Banner <ComponentStatus tagName="p-banner"></ComponentStatus>
 
-<TableOfContents headings={["Accessibility support","Development considerations","Tests"]} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
 
 ## Accessibility support
 
 ### Keyboard
 
-| Key / state | Function                                      |
-| ----------- | --------------------------------------------- |
-| `ESC`       | Closes the Banner                             |
-| `focus`     | Moves focus automatically to the close button |
+| Key / state | Function                                       |
+| ----------- | ---------------------------------------------- |
+| `ESC`       | Closes the Banner.                             |
+| `focus`     | Moves focus automatically to the close button. |
 
 ### ARIA enhancements
 
 #### Internal **ARIA** that is managed by the component:
 
-| ARIA                       | Usage                                                                                                     |
-| -------------------------- | --------------------------------------------------------------------------------------------------------- |
-| `role="status"`            | When content is populated or changed in `state="info"`, the component announces them unobtrusively        |
-| `role="alert"`             | When content is populated or changed in `state="warning/error"`, the component announces them immediately |
-| `aria-labelledby="IDREF"`  | The Banner is labelled by the `heading` prop or its corresponding slot                                    |
-| `aria-describedby="IDREF"` | The Banner is described by the `description` prop or its corresponding slot                               |
-| `aria-hidden="true"`       | State `icon` is hidden from the screen reader                                                             |
-| `aria-controls="ID"`       | Exposes relationship of close button                                                                      |
+| ARIA                       | Usage                                                                                                      |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `role="status"`            | When content is populated or changed in `state="info"`, the component announces them unobtrusively.        |
+| `role="alert"`             | When content is populated or changed in `state="warning/error"`, the component announces them immediately. |
+| `aria-labelledby="IDREF"`  | The Banner is labelled by the `heading` prop or its corresponding slot.                                    |
+| `aria-describedby="IDREF"` | The Banner is described by the `description` prop or its corresponding slot.                               |
+| `aria-hidden="true"`       | State `icon` is hidden from the screen reader.                                                             |
+| `aria-controls="ID"`       | Exposes relationship of close button.                                                                      |
 
 ## Development considerations
 
