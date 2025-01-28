@@ -21,7 +21,12 @@ type ConfigurePropsProps = {
   tagName: TagName;
   componentProps: ComponentMeta['propsMeta'];
   configuredProps: ElementConfig['properties'];
-  onUpdateProps: (propName: keyof ElementConfig['properties'], selectedValue: string, onBlur?: boolean) => void;
+  onUpdateProps: (
+    propName: keyof ElementConfig['properties'],
+    selectedValue: string,
+    inputType?: 'text-field' | 'checkbox' | 'select',
+    onBlur?: boolean
+  ) => void;
   onReset: () => void;
 };
 
@@ -101,7 +106,7 @@ export const ConfigureProps = ({
             value={getCurrentValue(propName, propMeta) ?? ''}
             required={propMeta.isRequired}
             onInput={(e) => onUpdateProps(propName, e.currentTarget.value)}
-            onBlur={(e) => onUpdateProps(propName, (e.currentTarget as HTMLInputElement).value, true)}
+            onBlur={(e) => onUpdateProps(propName, (e.currentTarget as HTMLInputElement).value, 'text-field', true)}
           />
           <span slot="label">
             {capitalCase(propName)}
@@ -140,7 +145,7 @@ export const ConfigureProps = ({
           value={getCurrentValue(propName, propMeta)}
           required={propMeta.isRequired}
           onUpdate={(e) => onUpdateProps(propName, e.detail.value)}
-          onBlur={(e) => onUpdateProps(propName, (e.currentTarget as HTMLSelectElement).value, true)}
+          onBlur={(e) => onUpdateProps(propName, (e.currentTarget as HTMLSelectElement).value)}
         >
           <span slot="label">
             {capitalCase(propName)}
@@ -170,6 +175,8 @@ export const ConfigureProps = ({
       // TODO: Improve special case for p-carousel type number | 'auto'?
       if (tagName === 'p-carousel' && propName === 'slidesPerPage') {
         options = [1, 2, 3, 4, 'auto'];
+      } else if (tagName === 'p-link-social' && propName === 'icon') {
+        options = propMeta.allowedValues.map((prop) => (prop === '' ? undefined : prop));
       } else {
         options = propMeta.allowedValues.filter((prop) => !propMeta?.deprecatedValues?.includes(prop));
       }
