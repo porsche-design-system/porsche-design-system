@@ -46,11 +46,6 @@ export const ConfigureProps = ({
     (key) => !Object.keys(defaultProps ?? {}).includes(key) || configuredProps?.[key] !== defaultProps?.[key]
   ).length;
 
-  const handleDirectionUpdate = (e: CustomEvent<SelectUpdateEventDetail>) => {
-    // biome-ignore lint/suspicious/noConsole: <explanation>
-    console.log(e);
-  };
-
   const filteredComponentProps = Object.entries(componentProps ?? {}).filter(
     ([_, value]) => !value.isAria && value.type !== 'string[]' && !value.isDeprecated
   );
@@ -217,35 +212,24 @@ export const ConfigureProps = ({
 
   return (
     <>
-      <PAccordion headingTag="h3" open={true}>
-        <span slot="heading" className="flex gap-xs">
-          Properties{' '}
-          {amountOfConfiguredProps > 0 && (
-            <>
-              <PTag compact={true}>{amountOfConfiguredProps}</PTag>
-              <PTag compact={true}>
-                <button type="button" onClick={() => onResetAllProps()}>
-                  Reset all
-                </button>
-              </PTag>
-            </>
-          )}
-        </span>
-        <div className="flex flex-col gap-sm">
-          {filteredComponentProps.map(([propName, propMeta]) =>
-            renderInput(propName as keyof ElementConfig['properties'], propMeta)
-          )}
-        </div>
-      </PAccordion>
-      <PAccordion heading="Slots" headingTag="h3" open={false} />
-      <PAccordion heading="CSS Variables" headingTag="h3" open={false} />
-      <PAccordion heading="Direction" headingTag="h3" open={true}>
-        <DirectionSelect
-          dir="ltr"
-          onUpdate={(e) => handleDirectionUpdate(e)}
-          label="Changes the direction of HTML elements, mostly used on <body> tag to support languages which are read from right to left like e.g. Arabic."
-        />
-      </PAccordion>
+      <span slot="heading" className="flex gap-xs">
+        Properties{' '}
+        {amountOfConfiguredProps > 0 && (
+          <>
+            <PTag compact={true}>{amountOfConfiguredProps}</PTag>
+            <PTag compact={true}>
+              <button type="button" onClick={() => onResetAllProps()}>
+                Reset all
+              </button>
+            </PTag>
+          </>
+        )}
+      </span>
+      <div className="flex flex-col gap-sm">
+        {filteredComponentProps.map(([propName, propMeta]) =>
+          renderInput(propName as keyof ElementConfig['properties'], propMeta)
+        )}
+      </div>
     </>
   );
 };
