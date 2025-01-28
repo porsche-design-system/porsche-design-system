@@ -4,7 +4,7 @@ import type { ReactNode } from 'react';
 
 const getComponents = (): Routes => {
   return Object.entries(componentMeta)
-    .filter(([_, value]) => !value.requiredParent)
+    .filter(([_, value]) => value.isChunked)
     .sort(([, aMeta], [, bMeta]) => {
       // Sort by isDeprecated
       const aIsDeprecated = aMeta.isDeprecated ? 1 : 0;
