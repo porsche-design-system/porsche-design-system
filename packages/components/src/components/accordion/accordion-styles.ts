@@ -170,12 +170,19 @@ export const getComponentCss = (
             )}, visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationShort})`,
           }),
       '& div': {
-        overflow: open ? 'visible' : 'hidden',
-        // Fix overflow issues for overlapping content (e.g. select dropdown)
-        animation: open ? `$overflow var(${cssVariableTransitionDuration},${motionDurationShort})` : 'none',
-        // Necessary to make focus outlines fully visible
         padding: '4px',
         margin: '-4px',
+        ...(open
+          ? {
+              overflow: 'visible',
+              animation: `$overflow var(${cssVariableTransitionDuration},${motionDurationShort})`,
+            }
+          : {
+              overflow: 'hidden',
+              animation: 'none',
+              // Fix scrollbar issues when slotted content includes .sr-only styles (see issue #3042)
+              transform: 'translate3d(0,0,0)',
+            }),
       },
     },
     '@keyframes overflow': {
