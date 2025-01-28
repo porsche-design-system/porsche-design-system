@@ -2,8 +2,7 @@ import type { ConfiguratorTagNames, ElementConfig } from '@/components/playgroun
 
 /**
  * Questions:
- * Config in vanilla HTML Style or React? use React typing
- * How to deal with string values which have a default value? p-checkbox value default is "on". Leave empty string as soon as value changed form=""
+ * How to deal with string values which have a default value? p-checkbox value default is "on". Text-field prop is not only deleted onBlur.
  * How to deal with mix of options and string? p-crest "allowedValues": ["_self", "_blank", "_parent", "_top", "string"] - Remove "string" from options
  * How to specify which slot/prop is shown/rendered in the markup? Currently all slots have to be specified in the story.
  * Add story information to componentMeta directly?
@@ -12,6 +11,7 @@ import type { ConfiguratorTagNames, ElementConfig } from '@/components/playgroun
  * Some edge cases like p-carousel slidesPerPages which is type number | 'auto'
  * How to deal with aria attributes? Currently not shown in the configurator ('p-icon'). Shown for ('p-spinner') .
  *
+ * Should we delete empty string text-field from props? Usually the default is undefined.
  * Model Signature size inherit?
  * How to handle styles in examples? style tag currently works. Inline style is missing conversion react/vanilla.js. Tailwind would be also an option. Currently affecting p-carousel, p-radio-button-wrapper (Missing spacing)
  * How to render allowedValues ['string' | 'number'] like in p-segmented-control? Currently textfield since string can be any value.
@@ -44,8 +44,8 @@ import type { ConfiguratorTagNames, ElementConfig } from '@/components/playgroun
  * - [ ] - console error when initially loading image of p-link-tile (image is still shown)
  * - [ ] - Add breakpoint customizable icon to configurator props p-tag
  * - [ ] - Refactor value conversions (default value, selects...)
- * - [ ] - Weird error when changing form prop of p-select to empty string => form property gets set to null
- * - [ ] - Link social icon undefined error
+ * - [ ] - Weird error when changing form prop of p-select to empty string => form property gets set to null. Seems to be a general error when resetting a text-field prop. The example and generatedOutput looks good so maybe there is a problem when the component quickly disconnects and conntects again?
+ * - [ ] - Link social icon error when switching icon back to undefined
  */
 
 export type ComponentsStory = {
