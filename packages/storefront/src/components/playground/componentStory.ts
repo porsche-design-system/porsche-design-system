@@ -17,6 +17,7 @@ import type { ConfiguratorTagNames, ElementConfig } from '@/components/playgroun
  * How to render allowedValues ['string' | 'number'] like in p-segmented-control? Currently textfield since string can be any value.
  * How to deal with relations? e.g. p-text-field-wrapper needs input with type number when unit is used => Make stories function which gets the current state and returns the correct story
  * How to show undefined default value in select props?
+ * Required * is shown at the end of the label and the reset button?
  *
  * TODO:
  * - [ ] - Dynamic import of React Component in Configurator

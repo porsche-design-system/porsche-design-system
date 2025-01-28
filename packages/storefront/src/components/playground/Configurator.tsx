@@ -359,7 +359,7 @@ const generateOutput = (descriptor: ElementConfig, indentLevel = 0, index?: numb
   const attributesArray = Object.entries(properties).map(([key, value]) =>
     typeof value === 'string'
       ? `${key === 'className' ? 'class' : kebabCase(key)}="${value}"`
-      : `${key}='${JSON.stringify(value)}'`
+      : `${kebabCase(key)}='${JSON.stringify(value)}'`
   );
   const attributesString = attributesArray.length > 0 ? ` ${attributesArray.join(' ')}` : '';
 
@@ -399,7 +399,7 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
 
   const meta = componentMeta[tagName];
 
-  const shouldUpdate = (selectedValue: string, propName: keyof PDSComponentConfig['properties']) => {
+  const shouldUpdate = (selectedValue: string | undefined, propName: keyof PDSComponentConfig['properties']) => {
     const isEqualToCurrentValue = selectedValue === example.properties?.[propName];
     const isEmptyStringAndNotApplied = selectedValue === '' && example.properties?.[propName] === undefined;
     const isNotAppliedAndDefaultValue =
@@ -407,12 +407,7 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
     return !(isEqualToCurrentValue || isEmptyStringAndNotApplied || isNotAppliedAndDefaultValue);
   };
 
-  const handleUpdateProps = (
-    propName: keyof PDSComponentConfig['properties'],
-    selectedValue: string,
-    inputType?: 'text-field' | 'checkbox' | 'select',
-    onBlur?: boolean
-  ) => {
+  const handleUpdateProps = (propName: keyof PDSComponentConfig['properties'], selectedValue: string | undefined) => {
     if (!shouldUpdate(selectedValue, propName)) return;
 
     setExample((prev) => {
@@ -421,7 +416,7 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
 
       // Delete the prop if value is undefined or if it's a default value based on input type and onBlur
       // When the inputType is a text-field we can only delete the property onBlur since it would mess with the user input otherwise
-      if (selectedValue === undefined || (isDefault && (inputType === 'text-field' ? onBlur : true))) {
+      if (selectedValue === undefined || isDefault) {
         delete updatedAttributes[propName];
       } else {
         // @ts-ignore
@@ -432,7 +427,7 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
     });
   };
 
-  const handleResetProps = () => {
+  const handleResetAllProps = () => {
     setExample(componentConfig);
   };
 
@@ -443,9 +438,6 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
       example,
       ...componentsStory[tagName].slice(configIndex + 1),
     ] as ElementConfig[];
-
-    console.log(updatedConfig);
-    console.log(generateCode(updatedConfig).jsx);
 
     setGenerated(generateCode(updatedConfig));
   }, [example, configIndex, tagName]);
@@ -464,8 +456,9 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
               tagName={tagName}
               componentProps={meta.propsMeta}
               configuredProps={example.properties}
+              defaultProps={componentConfig.properties}
               onUpdateProps={handleUpdateProps}
-              onReset={handleResetProps}
+              onResetAllProps={handleResetAllProps}
             />,
             // biome-ignore lint/style/noNonNullAssertion: <explanation>
             document.querySelector('[slot="sidebar-end"]')!

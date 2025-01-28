@@ -15,38 +15,36 @@ import {
 } from '@porsche-design-system/components-react/ssr';
 import type { TagName } from '@porsche-design-system/shared';
 import { capitalCase } from 'change-case';
-import type React from 'react';
+import React, { Fragment } from 'react';
 
 type ConfigurePropsProps = {
   tagName: TagName;
   componentProps: ComponentMeta['propsMeta'];
   configuredProps: ElementConfig['properties'];
+  defaultProps: ElementConfig['properties'];
   onUpdateProps: (
     propName: keyof ElementConfig['properties'],
-    selectedValue: string,
+    selectedValue: string | undefined,
     inputType?: 'text-field' | 'checkbox' | 'select',
     onBlur?: boolean
   ) => void;
-  onReset: () => void;
+  // onResetProp: (propName: keyof ElementConfig['properties']) => void;
+  onResetAllProps: () => void;
 };
-
-/*
- * Different cases to deal with:
- * - propMeta.allowedValues === 'string'
- * - propMeta.allowedValues === 'boolean'
- * - Array.isArray(propMeta.allowedValues)
- *   - array can contain string | number | null
- *   - special case for p-carousel type number | 'auto'
- */
 
 export const ConfigureProps = ({
   tagName,
   componentProps,
   configuredProps,
+  defaultProps,
   onUpdateProps,
-  onReset,
+  // onResetProp,
+  onResetAllProps,
 }: ConfigurePropsProps) => {
-  const amountOfConfiguredProps = Object.keys(configuredProps ?? {}).length;
+  const amountOfConfiguredProps = Object.keys(configuredProps ?? {}).filter(
+    // @ts-ignore
+    (key) => !Object.keys(defaultProps ?? {}).includes(key) || configuredProps?.[key] !== defaultProps?.[key]
+  ).length;
 
   const handleDirectionUpdate = (e: CustomEvent<SelectUpdateEventDetail>) => {
     // biome-ignore lint/suspicious/noConsole: <explanation>
@@ -82,23 +80,27 @@ export const ConfigureProps = ({
   const renderInput = (propName: keyof ElementConfig['properties'], propMeta: PropMeta) => {
     if (propMeta.allowedValues === 'boolean') {
       return (
-        <PSwitch
-          key={propName}
-          checked={getCurrentValue(propName, propMeta) === 'true'}
-          onUpdate={(e) => onUpdateProps(propName, e.detail.checked ? 'true' : 'false')}
-        >
-          {capitalCase(propName)}
-          <PPopover className="ms-static-xs" onClick={(e) => e.preventDefault()}>
-            {propMeta.description}
-          </PPopover>
-        </PSwitch>
+        <div key={propName} className="flex gap-xs">
+          <PSwitch
+            checked={getCurrentValue(propName, propMeta) === 'true'}
+            onUpdate={(e) => onUpdateProps(propName, e.detail.checked ? 'true' : 'false')}
+          >
+            {capitalCase(propName)}
+            <PPopover className="ms-static-xs" onClick={(e) => e.preventDefault()}>
+              {propMeta.description}
+            </PPopover>
+          </PSwitch>
+          <ResetButton
+            propName={propName}
+            configuredProps={configuredProps}
+            defaultProps={defaultProps}
+            onReset={() => onUpdateProps(propName, defaultProps?.[propName])}
+          />
+        </div>
       );
     }
 
-    if (
-      (Array.isArray(propMeta.allowedValues) && propMeta.allowedValues.includes('string')) ||
-      propMeta.allowedValues === 'string'
-    ) {
+    if (propMeta.allowedValues === 'string') {
       return (
         <PTextFieldWrapper key={propName}>
           <input
@@ -106,13 +108,16 @@ export const ConfigureProps = ({
             value={getCurrentValue(propName, propMeta) ?? ''}
             required={propMeta.isRequired}
             onInput={(e) => onUpdateProps(propName, e.currentTarget.value)}
-            onBlur={(e) => onUpdateProps(propName, (e.currentTarget as HTMLInputElement).value, 'text-field', true)}
           />
-          <span slot="label">
+          <span slot="label" className="inline-flex gap-xs">
             {capitalCase(propName)}
-            <PPopover className="ms-static-xs" onClick={(e) => e.preventDefault()}>
-              {propMeta.description}
-            </PPopover>
+            <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
+            <ResetButton
+              propName={propName}
+              configuredProps={configuredProps}
+              defaultProps={defaultProps}
+              onReset={() => onUpdateProps(propName, defaultProps?.[propName])}
+            />
           </span>
         </PTextFieldWrapper>
       );
@@ -127,11 +132,17 @@ export const ConfigureProps = ({
             required={propMeta.isRequired}
             onInput={(e) => onUpdateProps(propName, e.currentTarget.value)}
           />
-          <span slot="label">
+          <span slot="label" className="inline-flex gap-xs">
             {capitalCase(propName)}
             <PPopover className="ms-static-xs" onClick={(e) => e.preventDefault()}>
               {propMeta.description}
             </PPopover>
+            <ResetButton
+              propName={propName}
+              configuredProps={configuredProps}
+              defaultProps={defaultProps}
+              onReset={() => onUpdateProps(propName, defaultProps?.[propName])}
+            />
           </span>
         </PTextFieldWrapper>
       );
@@ -145,13 +156,18 @@ export const ConfigureProps = ({
           value={getCurrentValue(propName, propMeta)}
           required={propMeta.isRequired}
           onUpdate={(e) => onUpdateProps(propName, e.detail.value)}
-          onBlur={(e) => onUpdateProps(propName, (e.currentTarget as HTMLSelectElement).value)}
         >
-          <span slot="label">
+          <span slot="label" className="inline-flex gap-xs">
             {capitalCase(propName)}
             <PPopover className="ms-static-xs" onClick={(e) => e.preventDefault()}>
               {propMeta.description}
             </PPopover>
+            <ResetButton
+              propName={propName}
+              configuredProps={configuredProps}
+              defaultProps={defaultProps}
+              onReset={() => onUpdateProps(propName, defaultProps?.[propName])}
+            />
           </span>
           {renderOptions(propName, propMeta)}
         </PSelect>
@@ -172,11 +188,17 @@ export const ConfigureProps = ({
     if (Array.isArray(propMeta.allowedValues)) {
       let options: any[] = [];
 
-      // TODO: Improve special case for p-carousel type number | 'auto'?
+      // TODO: Improve componentMeta to include the typing in a better way to handle cases for p-carousel slidesPerPage number | 'auto', p-pin-code type 'number' | 'password', p-segmented-control value ['string | 'number']?
       if (tagName === 'p-carousel' && propName === 'slidesPerPage') {
         options = [1, 2, 3, 4, 'auto'];
       } else if (tagName === 'p-link-social' && propName === 'icon') {
         options = propMeta.allowedValues.map((prop) => (prop === '' ? undefined : prop));
+      } else if (tagName === 'p-segmented-control' && propName === 'value') {
+        options = [1, 2, 3, 4, 5];
+      }
+      // E.g. p-link target "allowedValues": ["_self", "_blank", "_parent", "_top", "string"]
+      else if (propMeta.allowedValues.includes('string')) {
+        options = propMeta.allowedValues.filter((prop) => prop !== 'string');
       } else {
         options = propMeta.allowedValues.filter((prop) => !propMeta?.deprecatedValues?.includes(prop));
       }
@@ -202,8 +224,8 @@ export const ConfigureProps = ({
             <>
               <PTag compact={true}>{amountOfConfiguredProps}</PTag>
               <PTag compact={true}>
-                <button type="button" onClick={() => onReset()}>
-                  Reset
+                <button type="button" onClick={() => onResetAllProps()}>
+                  Reset all
                 </button>
               </PTag>
             </>
@@ -224,6 +246,27 @@ export const ConfigureProps = ({
           label="Changes the direction of HTML elements, mostly used on <body> tag to support languages which are read from right to left like e.g. Arabic."
         />
       </PAccordion>
+    </>
+  );
+};
+
+type ResetButtonProps = {
+  propName: keyof ElementConfig['properties'];
+  configuredProps: ElementConfig['properties'];
+  defaultProps: ElementConfig['properties'];
+  onReset: (propName: keyof ElementConfig['properties']) => void;
+};
+
+const ResetButton = ({ propName, configuredProps, defaultProps, onReset }: ResetButtonProps) => {
+  return (
+    <>
+      {configuredProps?.[propName] !== defaultProps?.[propName] && (
+        <PTag compact={true}>
+          <button type="button" onClick={() => onReset(propName)}>
+            Reset
+          </button>
+        </PTag>
+      )}
     </>
   );
 };
