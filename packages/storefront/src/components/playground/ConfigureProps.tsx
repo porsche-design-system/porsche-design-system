@@ -21,7 +21,7 @@ type ConfigurePropsProps = {
   tagName: TagName;
   componentProps: ComponentMeta['propsMeta'];
   configuredProps: ElementConfig['properties'];
-  onUpdateProps: (propName: string, selectedValue: string) => void;
+  onUpdateProps: (propName: keyof ElementConfig['properties'], selectedValue: string, onBlur?: boolean) => void;
   onReset: () => void;
 };
 
@@ -58,7 +58,7 @@ export const ConfigureProps = ({
     if (value === null) return undefined;
   };
 
-  const getCurrentValue = (propName: string, propMeta: PropMeta): string | undefined => {
+  const getCurrentValue = (propName: keyof ElementConfig['properties'], propMeta: PropMeta): string | undefined => {
     const value = configuredProps?.[propName] ?? (propMeta.defaultValue === null ? undefined : propMeta.defaultValue);
 
     if (typeof value === 'string') {
@@ -74,7 +74,7 @@ export const ConfigureProps = ({
     }
   };
 
-  const renderInput = (propName: string, propMeta: PropMeta) => {
+  const renderInput = (propName: keyof ElementConfig['properties'], propMeta: PropMeta) => {
     if (propMeta.allowedValues === 'boolean') {
       return (
         <PSwitch
@@ -101,6 +101,7 @@ export const ConfigureProps = ({
             value={getCurrentValue(propName, propMeta) ?? ''}
             required={propMeta.isRequired}
             onInput={(e) => onUpdateProps(propName, e.currentTarget.value)}
+            onBlur={(e) => onUpdateProps(propName, (e.currentTarget as HTMLInputElement).value, true)}
           />
           <span slot="label">
             {capitalCase(propName)}
@@ -139,6 +140,7 @@ export const ConfigureProps = ({
           value={getCurrentValue(propName, propMeta)}
           required={propMeta.isRequired}
           onUpdate={(e) => onUpdateProps(propName, e.detail.value)}
+          onBlur={(e) => onUpdateProps(propName, (e.currentTarget as HTMLSelectElement).value, true)}
         >
           <span slot="label">
             {capitalCase(propName)}
@@ -201,7 +203,9 @@ export const ConfigureProps = ({
           )}
         </span>
         <div className="flex flex-col gap-sm">
-          {filteredComponentProps.map(([propName, propMeta]) => renderInput(propName, propMeta))}
+          {filteredComponentProps.map(([propName, propMeta]) =>
+            renderInput(propName as keyof ElementConfig['properties'], propMeta)
+          )}
         </div>
       </PAccordion>
       <PAccordion heading="Slots" headingTag="h3" open={false} />

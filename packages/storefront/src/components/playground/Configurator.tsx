@@ -3,6 +3,7 @@
 import { ConfigureProps } from '@/components/playground/ConfigureProps';
 import { Playground } from '@/components/playground/Playground';
 import { componentsStory } from '@/components/playground/componentStory';
+import { isDefaultValue } from '@/components/playground/configuratorUtils';
 import { componentMeta } from '@porsche-design-system/component-meta';
 import {
   PAccordion,
@@ -159,7 +160,7 @@ import { kebabCase } from 'change-case';
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-export type ConfiguratorTagNames = keyof PropTypeMapping;
+export type ConfiguratorTagNames = keyof SafePropTypeMapping;
 
 type HTMLTagOrComponent = keyof JSX.IntrinsicElements | ConfiguratorTagNames;
 
@@ -170,12 +171,20 @@ export type ElementConfig<T extends HTMLTagOrComponent = HTMLTagOrComponent> = T
       children?: (string | ElementConfig)[];
     }
   : T extends ConfiguratorTagNames // Ensure T is in ConfiguratorTagNames for custom components
-    ? {
-        tag: T;
-        properties?: PropTypeMapping[T];
-        children?: (string | ElementConfig)[];
-      }
+    ? PDSComponentConfig<T>
     : never;
+
+export type PDSComponentConfig<T extends ConfiguratorTagNames = ConfiguratorTagNames> = {
+  tag: T;
+  properties?: SafePropTypeMapping[T];
+  children?: (string | ElementConfig)[];
+};
+
+type SafePropTypeMapping = {
+  [K in Exclude<TagName, 'p-toast-item' | 'p-select-wrapper-dropdown'>]: K extends keyof PropTypeMapping
+    ? PropTypeMapping[K]
+    : never;
+};
 
 type PropTypeMapping = {
   'p-accordion': PAccordionProps;
@@ -382,18 +391,15 @@ type ConfiguratorProps = {
 };
 
 export const Configurator = ({ tagName }: ConfiguratorProps) => {
-  const configIndex = componentsStory[tagName].indexOf(
-    // biome-ignore lint/style/noNonNullAssertion: <explanation>
-    componentsStory[tagName].find((config) => config.tag === tagName)!
-  );
-  const [example, setExample] = useState<ElementConfig>(componentsStory[tagName][configIndex]);
+  const componentConfig = componentsStory[tagName].find((config) => config.tag === tagName) as PDSComponentConfig;
+  const configIndex = componentsStory[tagName].indexOf(componentConfig as ElementConfig);
+  const [example, setExample] = useState<PDSComponentConfig>(componentConfig);
   const [{ jsx, markup }, setGenerated] = useState<GeneratedOutput>({ jsx: null, markup: '' });
   const [domReady, setDomReady] = useState(false);
 
   const meta = componentMeta[tagName];
 
-  const handleUpdateProps = (propName: string, selectedValue: string) => {
-    // @ts-ignore
+  const handleUpdateProps = (propName: keyof ElementConfig['properties'], selectedValue: string, onBlur?: boolean) => {
     setExample((prev) => {
       const updatedAttributes = {
         ...prev.properties,
@@ -401,25 +407,19 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
       };
 
       if (selectedValue === undefined) {
-        // @ts-ignore
+        delete updatedAttributes[propName];
+      }
+      // This has to be done onBlur in order to avoid the input field to be reset when the value is the same as the default value while typing.
+      else if (onBlur && isDefaultValue(meta.propsMeta?.[propName]?.defaultValue, selectedValue)) {
         delete updatedAttributes[propName];
       }
 
-      // TODO: Without this props which were once changed will be stay on the markup.
-      //  Adding this causes trouble when there is a default value.
-      //  When the attribute is removed the component will have the default value again.
-      //  This needs to be reflected in the input field. Which is causing the input to be non clearable.
-      //  Solution would be to either make all changes resettable or make each prop input individually resettable.
-      // if (isDefaultValue(meta.propsMeta?.[propName]?.defaultValue, selectedValue) || selectedValue === '') {
-      //   delete updatedAttributes[propName];
-      // }
-
-      return { ...prev, properties: updatedAttributes };
+      return { ...prev, properties: updatedAttributes as PropTypeMapping[typeof tagName] };
     });
   };
 
   const handleResetProps = () => {
-    setExample(componentsStory[tagName][configIndex]);
+    setExample(componentConfig);
   };
 
   useEffect(() => {
@@ -428,7 +428,7 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
       ...componentsStory[tagName].slice(0, configIndex),
       example,
       ...componentsStory[tagName].slice(configIndex + 1),
-    ];
+    ] as ElementConfig[];
 
     setGenerated(generateCode(updatedConfig));
   }, [example, configIndex, tagName]);
