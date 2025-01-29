@@ -57,6 +57,10 @@ export const ConfigureProps = ({
   };
 
   const getCurrentValue = (propName: keyof ElementConfig['properties'], propMeta: PropMeta): string | undefined => {
+    if (propName === 'theme') {
+      return configuredProps?.[propName];
+    }
+
     const value = configuredProps?.[propName] ?? (propMeta.defaultValue === null ? undefined : propMeta.defaultValue);
 
     if (typeof value === 'string') {
@@ -175,7 +179,7 @@ export const ConfigureProps = ({
       return ['true', 'false'].map((option) => (
         <PSelectOption key={option} value={option}>
           {option}
-          {isDefaultValue(propMeta.defaultValue, option) ? ' (default)' : ''}
+          {isDefaultValue(propMeta, option) ? ' (default)' : ''}
         </PSelectOption>
       ));
     }
@@ -194,16 +198,18 @@ export const ConfigureProps = ({
       // E.g. p-link target "allowedValues": ["_self", "_blank", "_parent", "_top", "string"]
       else if (propMeta.allowedValues.includes('string')) {
         options = propMeta.allowedValues.filter((prop) => prop !== 'string');
+      } else if (propName === 'theme') {
+        options = [undefined, ...propMeta.allowedValues];
       } else {
         options = propMeta.allowedValues.filter((prop) => !propMeta?.deprecatedValues?.includes(prop));
       }
 
       return options.map((option) => {
-        const sanitizedOption = getSanitizedArrayValue(option);
+        const sanitizedOption = propName === 'theme' ? option : getSanitizedArrayValue(option);
         return (
           <PSelectOption key={option === undefined ? 'default' : option} value={sanitizedOption}>
             {sanitizedOption}
-            {isDefaultValue(propMeta.defaultValue, sanitizedOption) ? ' (default)' : ''}
+            {isDefaultValue(propMeta, sanitizedOption) ? ' (default)' : ''}
           </PSelectOption>
         );
       });

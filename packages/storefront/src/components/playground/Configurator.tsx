@@ -5,7 +5,7 @@ import { ConfigureCssVariables } from '@/components/playground/ConfigureCssVaria
 import { ConfigureProps } from '@/components/playground/ConfigureProps';
 import { ConfigureSlots } from '@/components/playground/ConfigureSlots';
 import { Playground } from '@/components/playground/Playground';
-import { componentsStory } from '@/components/playground/componentStory';
+import { type StoryState, componentsStory } from '@/components/playground/componentStory';
 import { isDefaultValue } from '@/components/playground/configuratorUtils';
 import { componentMeta } from '@porsche-design-system/component-meta';
 import {
@@ -191,7 +191,7 @@ type SafePropTypeMapping = {
     : never;
 };
 
-type PropTypeMapping = {
+export type PropTypeMapping = {
   'p-accordion': PAccordionProps;
   'p-banner': PBannerProps;
   'p-button': PButtonProps;
@@ -396,14 +396,11 @@ type ConfiguratorProps = {
 };
 
 export const Configurator = ({ tagName }: ConfiguratorProps) => {
-  const componentConfig = componentsStory[tagName].find((config) => config.tag === tagName) as PDSComponentConfig;
-  const configIndex = componentsStory[tagName].indexOf(componentConfig as ElementConfig);
   const meta = componentMeta[tagName];
-
-  const [accordionState, setAccordionState] = useState<Record<number, boolean>>({});
-  const [example, setExample] = useState<PDSComponentConfig>(componentConfig);
-  const [{ jsx, markup }, setGenerated] = useState<GeneratedOutput>({ jsx: null, markup: '' });
   const [domReady, setDomReady] = useState(false);
+  const [accordionState, setAccordionState] = useState<Record<number, boolean>>({});
+  const [storyState, setStoryState] = useState(componentsStory[tagName].state ?? {});
+  const [{ jsx, markup }, setGenerated] = useState<GeneratedOutput>({ jsx: null, markup: '' });
 
   const handleAccordionUpdate = (index: number, e: CustomEvent<AccordionUpdateEventDetail>) => {
     setAccordionState((prevState) => ({
@@ -413,18 +410,19 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
   };
 
   const shouldUpdate = (selectedValue: string | undefined, propName: keyof PDSComponentConfig['properties']) => {
-    const isEqualToCurrentValue = selectedValue === example.properties?.[propName];
-    const isEmptyStringAndNotApplied = selectedValue === '' && example.properties?.[propName] === undefined;
+    if (propName === 'theme') return true;
+    const isEqualToCurrentValue = selectedValue === storyState.properties?.[propName];
+    const isEmptyStringAndNotApplied = selectedValue === '' && storyState.properties?.[propName] === undefined;
     const isNotAppliedAndDefaultValue =
-      example.properties?.[propName] === undefined && meta.propsMeta?.[propName]?.defaultValue === selectedValue;
+      storyState.properties?.[propName] === undefined && meta.propsMeta?.[propName]?.defaultValue === selectedValue;
     return !(isEqualToCurrentValue || isEmptyStringAndNotApplied || isNotAppliedAndDefaultValue);
   };
 
   const handleUpdateProps = (propName: keyof PDSComponentConfig['properties'], selectedValue: string | undefined) => {
     if (!shouldUpdate(selectedValue, propName)) return;
 
-    setExample((prev) => {
-      const isDefault = isDefaultValue(meta.propsMeta?.[propName]?.defaultValue, selectedValue);
+    setStoryState((prev) => {
+      const isDefault = isDefaultValue(meta.propsMeta?.[propName], selectedValue);
       const updatedAttributes = { ...prev.properties };
 
       if (selectedValue === undefined || isDefault) {
@@ -439,7 +437,7 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
   };
 
   const handleResetAllProps = () => {
-    setExample(componentConfig);
+    setStoryState(componentsStory[tagName].state ?? {});
   };
 
   const handleDirectionUpdate = (e: CustomEvent<SelectUpdateEventDetail>) => {
@@ -448,15 +446,9 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
   };
 
   useEffect(() => {
-    // Replace the editable part in the global config for rendering
-    const updatedConfig = [
-      ...componentsStory[tagName].slice(0, configIndex),
-      example,
-      ...componentsStory[tagName].slice(configIndex + 1),
-    ] as ElementConfig[];
-
-    setGenerated(generateCode(updatedConfig));
-  }, [example, configIndex, tagName]);
+    const generatedConfig = componentsStory[tagName].generator(storyState as any); // TODO: Fix typing
+    setGenerated(generateCode(generatedConfig));
+  }, [storyState, tagName]);
 
   useEffect(() => {
     requestAnimationFrame(() => setDomReady(true));
@@ -468,8 +460,8 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
     <ConfigureProps
       tagName={tagName}
       componentProps={meta.propsMeta}
-      configuredProps={example.properties}
-      defaultProps={componentConfig.properties}
+      configuredProps={storyState.properties}
+      defaultProps={componentsStory[tagName].state?.properties ?? {}}
       onUpdateProps={handleUpdateProps}
       onResetAllProps={handleResetAllProps}
     />,
