@@ -12,7 +12,7 @@ import {
 } from '@porsche-design-system/components-react/ssr';
 import type { TagName } from '@porsche-design-system/shared';
 import { capitalCase } from 'change-case';
-import React, { Fragment } from 'react';
+import React from 'react';
 
 type ConfigurePropsProps = {
   tagName: TagName;
@@ -25,7 +25,6 @@ type ConfigurePropsProps = {
     inputType?: 'text-field' | 'checkbox' | 'select',
     onBlur?: boolean
   ) => void;
-  // onResetProp: (propName: keyof ElementConfig['properties']) => void;
   onResetAllProps: () => void;
 };
 
@@ -35,7 +34,6 @@ export const ConfigureProps = ({
   configuredProps,
   defaultProps,
   onUpdateProps,
-  // onResetProp,
   onResetAllProps,
 }: ConfigurePropsProps) => {
   const amountOfConfiguredProps = Object.keys(configuredProps ?? {}).filter(
