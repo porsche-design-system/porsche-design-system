@@ -1,19 +1,18 @@
 'use client';
 
-import path from 'node:path';
 import { DirectionSelect } from '@/components/common/DirectionSelect';
 import { Navigation } from '@/components/common/Navigation';
 import Tabs from '@/components/common/Tabs';
-import { ThemeCycle } from '@/components/common/ThemeCycle';
 import { ThemeSelect } from '@/components/common/ThemeSelect';
+import { useDirection } from '@/hooks/useDirection';
 import { useTheme } from '@/hooks/useTheme';
+import type { StorefrontDirection } from '@/models/dir';
 import type { StorefrontTheme } from '@/models/theme';
 import {
   type CanvasSidebarStartUpdateEventDetail,
   PButton,
   PCanvas,
   PLink,
-  PText,
 } from '@porsche-design-system/components-react/ssr';
 import { breakpointS } from '@porsche-design-system/components-react/styles';
 import Link from 'next/link';
@@ -22,6 +21,7 @@ import { type PropsWithChildren, useEffect, useState } from 'react';
 
 export const Canvas = ({ children }: PropsWithChildren) => {
   const { theme, setStorefrontTheme } = useTheme();
+  const { direction, setStorefrontDirection } = useDirection();
   const pathname = usePathname();
   const [isSidebarStartOpen, setIsSidebarStartOpen] = useState(
     // initially, sidebar should be closed on mobile and opened on desktop
@@ -87,7 +87,10 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       </div>
       <div slot="sidebar-end">
         <ThemeSelect theme={theme} onUpdate={(e) => setStorefrontTheme(e.detail.value as StorefrontTheme)} />
-        <DirectionSelect dir={'ltr'} onUpdate={() => {}} />
+        <DirectionSelect
+          dir={direction}
+          onUpdate={(e) => setStorefrontDirection(e.detail.value as StorefrontDirection)}
+        />
       </div>
     </PCanvas>
   );

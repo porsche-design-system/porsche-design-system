@@ -23,7 +23,7 @@ import type { ConfiguratorTagNames, ElementConfig, PropTypeMapping } from '@/com
  * - [ ] - Dynamic import of React Component in Configurator
  * - [x] - Render Example
  * - [x] - Render markup
- * - [ ] - Sync Playground Theme
+ * - [x] - Sync Playground Theme
  * - [ ] - Sync Playground Dir
  * - [x] - Show if prop is default in select & select default
  * - [x] - AllowedValue string[] - select
