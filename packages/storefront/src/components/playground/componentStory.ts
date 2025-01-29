@@ -24,7 +24,7 @@ import type { ConfiguratorTagNames, ElementConfig, PropTypeMapping } from '@/com
  * - [x] - Render Example
  * - [x] - Render markup
  * - [x] - Sync Playground Theme
- * - [ ] - Sync Playground Dir
+ * - [x] - Sync Playground Dir
  * - [x] - Show if prop is default in select & select default
  * - [x] - AllowedValue string[] - select
  * - [x] - AllowedValue string - text input
@@ -39,8 +39,8 @@ import type { ConfiguratorTagNames, ElementConfig, PropTypeMapping } from '@/com
  * - [x] - split element config and only keep config which changes in state, render rest separately
  * - [x] - fix keys
  * - [x] - AllowedValue string with default value
- * - [ ] - AllowedValue number - text field
- * - [ ] - ComponentSlots checkboxes/switches
+ * - [x] - AllowedValue number - text field
+ * - [x] - ComponentSlots checkboxes/switches
  * - [x] - syntax highlight broken for p-fieldset-wrapper, radio-button-wrapper
  * - [ ] - console error when initially loading image of p-link-tile (image is still shown)
  * - [ ] - Add breakpoint customizable icon to configurator props p-tag
