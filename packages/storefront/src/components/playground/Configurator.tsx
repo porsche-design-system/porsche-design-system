@@ -173,7 +173,7 @@ export type ElementConfig<T extends HTMLTagOrComponent = HTMLTagOrComponent> = T
   ? {
       tag: T;
       properties?: Partial<JSX.IntrinsicElements[T]>;
-      children?: (string | ElementConfig)[];
+      children?: (string | ElementConfig | undefined)[];
     }
   : T extends ConfiguratorTagNames // Ensure T is in ConfiguratorTagNames for custom components
     ? PDSComponentConfig<T>
@@ -182,7 +182,7 @@ export type ElementConfig<T extends HTMLTagOrComponent = HTMLTagOrComponent> = T
 export type PDSComponentConfig<T extends ConfiguratorTagNames = ConfiguratorTagNames> = {
   tag: T;
   properties?: SafePropTypeMapping[T];
-  children?: (string | ElementConfig)[];
+  children?: (string | ElementConfig | undefined)[];
 };
 
 type SafePropTypeMapping = {
@@ -361,18 +361,31 @@ const generateCode = (configs: ElementConfig[]): GeneratedOutput => {
 const generateOutput = (descriptor: ElementConfig, indentLevel = 0, index?: number): GeneratedOutput => {
   const { tag, properties = {}, children = [] } = descriptor;
 
-  const attributesArray = Object.entries(properties).map(([key, value]) =>
-    typeof value === 'string'
-      ? `${key === 'className' ? 'class' : kebabCase(key)}="${value}"`
-      : `${kebabCase(key)}='${JSON.stringify(value)}'`
-  );
+  const attributesArray = Object.entries(properties).map(([key, value]) => {
+    if (typeof value === 'string') {
+      return `${key === 'className' ? 'class' : kebabCase(key)}="${value}"`;
+    }
+
+    if (key === 'style') {
+      const styles = Object.entries(value)
+        .map(([key, value]) => `${kebabCase(key)}: ${value}`)
+        .join('; ');
+      return `style="${styles}"`;
+    }
+
+    return `${kebabCase(key)}='${JSON.stringify(value)}'`;
+  });
+
   const attributesString = attributesArray.length > 0 ? ` ${attributesArray.join(' ')}` : '';
 
-  // Process children
-  const processedChildren = children.map((child, childIndex) =>
-    typeof child === 'string'
-      ? { jsx: child, markup: `${'  '.repeat(indentLevel + 1)}${child}` }
-      : generateOutput(child, indentLevel + 1, childIndex)
+  // Process children (filter out undefined values)
+  const processedChildren = (children || []).map(
+    (child, childIndex) =>
+      child !== undefined
+        ? typeof child === 'string'
+          ? { jsx: child, markup: `${'  '.repeat(indentLevel + 1)}${child}` }
+          : generateOutput(child, indentLevel + 1, childIndex)
+        : { jsx: null, markup: '' } // Handle undefined children as empty
   );
 
   const jsxChildren = processedChildren.map((child) => child.jsx);
@@ -436,6 +449,15 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
     });
   };
 
+  const handleUpdateSlots = (slotName: string, selectedExample: string | undefined) => {
+    setStoryState((prev) => {
+      const updatedSlots = { ...prev.slots };
+      // TODO: Fix typing
+      updatedSlots[slotName] = selectedExample as string | number;
+      return { ...prev, slots: updatedSlots };
+    });
+  };
+
   const handleResetAllProps = () => {
     setStoryState(componentsStory[tagName].state ?? {});
   };
@@ -465,7 +487,7 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
       onUpdateProps={handleUpdateProps}
       onResetAllProps={handleResetAllProps}
     />,
-    <ConfigureSlots />,
+    <ConfigureSlots tagName={tagName} storyState={storyState} onUpdateSlots={handleUpdateSlots} />,
     <ConfigureCssVariables />,
     <>
       <span slot="heading">Direction</span>

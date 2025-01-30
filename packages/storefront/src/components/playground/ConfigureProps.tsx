@@ -19,12 +19,7 @@ type ConfigurePropsProps = {
   componentProps: ComponentMeta['propsMeta'];
   configuredProps: ElementConfig['properties'];
   defaultProps: ElementConfig['properties'];
-  onUpdateProps: (
-    propName: keyof ElementConfig['properties'],
-    selectedValue: string | undefined,
-    inputType?: 'text-field' | 'checkbox' | 'select',
-    onBlur?: boolean
-  ) => void;
+  onUpdateProps: (propName: keyof ElementConfig['properties'], selectedValue: string | undefined) => void;
   onResetAllProps: () => void;
 };
 
