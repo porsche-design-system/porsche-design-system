@@ -1,34 +1,25 @@
-import { DirectionSelect } from '@/components/common/DirectionSelect';
 import type { ElementConfig } from '@/components/playground/Configurator';
 import { isDefaultValue } from '@/components/playground/configuratorUtils';
+import { getFlags } from '@/utils/getFlags';
 import type { ComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
 import {
-  PAccordion,
-  PDivider,
   PPopover,
   PSelect,
   PSelectOption,
   PSwitch,
   PTag,
   PTextFieldWrapper,
-  type SelectUpdateEventDetail,
 } from '@porsche-design-system/components-react/ssr';
 import type { TagName } from '@porsche-design-system/shared';
 import { capitalCase } from 'change-case';
-import React, { Fragment } from 'react';
+import React from 'react';
 
 type ConfigurePropsProps = {
   tagName: TagName;
   componentProps: ComponentMeta['propsMeta'];
   configuredProps: ElementConfig['properties'];
   defaultProps: ElementConfig['properties'];
-  onUpdateProps: (
-    propName: keyof ElementConfig['properties'],
-    selectedValue: string | undefined,
-    inputType?: 'text-field' | 'checkbox' | 'select',
-    onBlur?: boolean
-  ) => void;
-  // onResetProp: (propName: keyof ElementConfig['properties']) => void;
+  onUpdateProps: (propName: keyof ElementConfig['properties'], selectedValue: string | undefined) => void;
   onResetAllProps: () => void;
 };
 
@@ -38,7 +29,6 @@ export const ConfigureProps = ({
   configuredProps,
   defaultProps,
   onUpdateProps,
-  // onResetProp,
   onResetAllProps,
 }: ConfigurePropsProps) => {
   const amountOfConfiguredProps = Object.keys(configuredProps ?? {}).filter(
@@ -89,6 +79,7 @@ export const ConfigureProps = ({
               {propMeta.description}
             </PPopover>
           </PSwitch>
+          {getFlags(propMeta)}
           <ResetButton
             propName={propName}
             configuredProps={configuredProps}
@@ -111,6 +102,7 @@ export const ConfigureProps = ({
           <span slot="label" className="inline-flex gap-xs">
             {capitalCase(propName)}
             <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
+            {getFlags(propMeta)}
             <ResetButton
               propName={propName}
               configuredProps={configuredProps}
@@ -136,6 +128,7 @@ export const ConfigureProps = ({
             <PPopover className="ms-static-xs" onClick={(e) => e.preventDefault()}>
               {propMeta.description}
             </PPopover>
+            {getFlags(propMeta)}
             <ResetButton
               propName={propName}
               configuredProps={configuredProps}
@@ -161,6 +154,7 @@ export const ConfigureProps = ({
             <PPopover className="ms-static-xs" onClick={(e) => e.preventDefault()}>
               {propMeta.description}
             </PPopover>
+            {getFlags(propMeta)}
             <ResetButton
               propName={propName}
               configuredProps={configuredProps}

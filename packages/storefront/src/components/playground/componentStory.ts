@@ -1,5 +1,137 @@
 import type { ConfiguratorTagNames, ElementConfig, PropTypeMapping } from '@/components/playground/Configurator';
 
+type SlotStory = {
+  [storyName: string]: {
+    generator: (string | ElementConfig | undefined)[];
+  };
+};
+
+type ComponentSlotStory = {
+  [Tag in keyof PropTypeMapping]: {
+    [slotName: string]: SlotStory;
+  };
+};
+
+export const componentSlotStories: ComponentSlotStory = {
+  'p-accordion': {},
+  'p-banner': {},
+  'p-button': {},
+  'p-button-group': {},
+  'p-button-pure': {},
+  'p-button-tile': {},
+  'p-canvas': {},
+  'p-carousel': {},
+  'p-checkbox': {},
+  'p-checkbox-wrapper': {},
+  'p-content-wrapper': {},
+  'p-crest': {},
+  'p-display': {},
+  'p-divider': {},
+  'p-fieldset': {},
+  'p-fieldset-wrapper': {},
+  'p-flex': {},
+  'p-flex-item': {},
+  'p-flyout': {
+    header: {
+      basic: {
+        generator: [
+          {
+            tag: 'p-heading',
+            properties: { slot: 'header', size: 'large', tag: 'h2' },
+            children: ['Some Heading'],
+          },
+        ],
+      },
+    },
+    default: {
+      basic: {
+        generator: [{ tag: 'p-text', children: ['Some Content'] }],
+      },
+      scrollable: {
+        generator: [
+          { tag: 'p-text', children: ['Some Content Begin'] },
+          { tag: 'div', properties: { style: { width: '10px', height: '120vh', background: 'deeppink' } } },
+          { tag: 'p-text', children: ['Some Content End'] },
+        ],
+      },
+    },
+    footer: {
+      basic: {
+        generator: [
+          {
+            tag: 'p-button-group',
+            properties: { slot: 'footer' },
+            children: [
+              { tag: 'p-button', properties: { type: 'button' }, children: ['Proceed'] },
+              { tag: 'p-button', properties: { type: 'button', variant: 'secondary' }, children: ['Cancel'] },
+            ],
+          },
+        ],
+      },
+    },
+    'sub-footer': {
+      basic: {
+        generator: [{ tag: 'p-text', properties: { slot: 'sub-footer' }, children: ['Some additional Sub-Footer'] }],
+      },
+    },
+  },
+  'p-flyout-multilevel': {},
+  'p-flyout-multilevel-item': {},
+  'p-grid': {},
+  'p-grid-item': {},
+  'p-heading': {},
+  'p-headline': {},
+  'p-icon': {},
+  'p-inline-notification': {},
+  'p-link': {},
+  'p-link-pure': {},
+  'p-link-social': {},
+  'p-link-tile': {},
+  'p-link-tile-model-signature': {},
+  'p-link-tile-product': {},
+  'p-marque': {},
+  'p-modal': {},
+  'p-model-signature': {},
+  'p-multi-select': {},
+  'p-multi-select-option': {},
+  'p-optgroup': {},
+  'p-pagination': {},
+  'p-pin-code': {},
+  'p-popover': {},
+  'p-radio-button-wrapper': {},
+  'p-scroller': {},
+  'p-segmented-control': {},
+  'p-segmented-control-item': {},
+  'p-select': {},
+  'p-select-option': {},
+  'p-select-wrapper': {},
+  'p-sheet': {},
+  'p-spinner': {},
+  'p-stepper-horizontal': {},
+  'p-stepper-horizontal-item': {},
+  'p-switch': {},
+  'p-table': {},
+  'p-table-body': {},
+  'p-table-cell': {},
+  'p-table-head-cell': {},
+  'p-table-row': {},
+  'p-table-head-row': {},
+  'p-table-head': {},
+  'p-tabs': {},
+  'p-tabs-item': {},
+  'p-tabs-bar': {},
+  'p-tag': {},
+  'p-tag-dismissible': {},
+  'p-text': {},
+  'p-text-field-wrapper': {},
+  'p-text-list': {},
+  'p-text-list-item': {},
+  'p-textarea': {},
+  'p-textarea-wrapper': {},
+  'p-toast': {},
+  'p-wordmark': {},
+};
+
 /**
  * Questions:
  * x - How to deal with string values which have a default value? p-checkbox value default is "on". Text-field prop is not only deleted onBlur.
@@ -24,7 +156,7 @@ import type { ConfiguratorTagNames, ElementConfig, PropTypeMapping } from '@/com
  * - [x] - Render Example
  * - [x] - Render markup
  * - [x] - Sync Playground Theme
- * - [ ] - Sync Playground Dir
+ * - [x] - Sync Playground Dir
  * - [x] - Show if prop is default in select & select default
  * - [x] - AllowedValue string[] - select
  * - [x] - AllowedValue string - text input
@@ -33,24 +165,30 @@ import type { ConfiguratorTagNames, ElementConfig, PropTypeMapping } from '@/com
  * - [x] - string[] - Remove prop from markup if its default
  * - [x] - string - Remove prop from markup if its default or empty string
  * - [x] - boolean - Remove prop from markup if its default
- * - [ ] - type string[] - multi-select currently filtered in ComponentProps
  * - [x] - filter deprecated props
  * - [x] - filter deprecated prop values (deprecatedValues)
  * - [x] - split element config and only keep config which changes in state, render rest separately
  * - [x] - fix keys
  * - [x] - AllowedValue string with default value
- * - [ ] - AllowedValue number - text field
- * - [ ] - ComponentSlots checkboxes/switches
+ * - [x] - AllowedValue number - text field
+ * - [x] - ComponentSlots checkboxes/switches
  * - [x] - syntax highlight broken for p-fieldset-wrapper, radio-button-wrapper
- * - [ ] - console error when initially loading image of p-link-tile (image is still shown)
- * - [ ] - Add breakpoint customizable icon to configurator props p-tag
+ * - [x] - Add breakpoint customizable icon to configurator props p-tag
+ * - [ ] - type string[] - multi-select currently filtered in ComponentProps
  * - [ ] - Refactor value conversions (default value, selects...)
+ * - [ ] - console error when initially loading image of p-link-tile (image is still shown)
  * - [ ] - Weird error when changing form prop of p-select to empty string => form property gets set to null. Seems to be a general error when resetting a text-field prop. The example and generatedOutput looks good so maybe there is a problem when the component quickly disconnects and conntects again?
  * - [ ] - Link social icon error when switching icon back to undefined
  */
 
+export type SlotState<T extends keyof PropTypeMapping> = {
+  [SlotName in keyof ComponentSlotStory[T]]: keyof ComponentSlotStory[T][SlotName]; // Ensures selected slot is a key in SlotVariants
+};
+
 export type StoryState<T extends keyof PropTypeMapping> = {
   properties?: PropTypeMapping[T];
+  slots?: SlotState<T>;
+  slotVariants?: ComponentSlotStory[T];
 };
 
 export type ComponentsStory = {
@@ -305,28 +443,23 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-flyout': {
-    state: { properties: { open: false, aria: { 'aria-label': 'Some Heading' } } },
-    generator: ({ properties }) => [
+    state: {
+      properties: { open: false, aria: { 'aria-label': 'Some Heading' } },
+      slots: {
+        header: 'basic',
+        default: 'basic',
+        footer: 'basic',
+        'sub-footer': 'basic',
+      },
+      slotVariants: componentSlotStories['p-flyout'],
+    },
+    generator: ({ properties, slots, slotVariants }) => [
       {
         tag: 'p-flyout',
         properties,
-        children: [
-          {
-            tag: 'p-heading',
-            properties: { slot: 'header', size: 'large', tag: 'h2' },
-            children: ['Some Heading'],
-          },
-          { tag: 'p-text', properties: { slot: '' }, children: ['Some Content'] },
-          {
-            tag: 'p-button-group',
-            properties: { slot: 'footer' },
-            children: [
-              { tag: 'p-button', properties: { type: 'button' }, children: ['Proceed'] },
-              { tag: 'p-button', properties: { type: 'button', variant: 'secondary' }, children: ['Cancel'] },
-            ],
-          },
-          { tag: 'p-text', properties: { slot: 'sub-footer' }, children: ['Some additional Sub-Footer'] },
-        ],
+        children: Object.entries(slots ?? {}).flatMap(
+          ([slotName, selectedSlot]) => slotVariants?.[slotName]?.[selectedSlot]?.generator
+        ),
       },
     ],
   },
@@ -1328,3 +1461,29 @@ export const componentsStory: ComponentsStory = {
 //     ],
 //   },
 // };
+
+// const test = {
+//   'p-flyout': {
+//     state: {
+//       properties: { open: false, aria: { 'aria-label': 'Some Heading' } },
+//       slots: {
+//         header: ({ properties, slots }) => slots.basic,
+//         default: ({ properties, slots }) => slots.basic,
+//         footer: ({ properties, slots }) => slots.basic,
+//         'sub-footer': ({ properties, slots }) => slots.basic,
+//       },
+//     },
+//     generator: ({ properties, slots }) => [
+//       {
+//         tag: 'p-flyout',
+//         properties,
+//         children: [
+//           ...(slots.header()),
+//           ...(slots.default()),
+//           ...(slots.footer()),
+//           ...(slots['sub-footer']()),
+//         ],
+//       },
+//     ],
+//   },
+// }
