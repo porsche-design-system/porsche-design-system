@@ -1,0 +1,66 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Carousel: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Carousel component',
+};
+
+# Carousel <ComponentStatus tagName="p-carousel"></ComponentStatus>
+
+<TableOfContents headings={["Accessibility support","Development considerations","Tests"]} />
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                                                                                                                              |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | - Moves focus to the next (or previous) focusable element. <br/>- Supports cycling through all items. <br/>- Activates "Skip" link (if set through `skipLinkTarget`). |
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA         | Usage                                            |
+| ------------ | ------------------------------------------------ |
+| `aria-label` | Defines a string value that labels the carousel. |
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                              | Usage                                                            |
+| --------------------------------- | ---------------------------------------------------------------- |
+| `aria-label="Some label"`         | Defines a string value that labels prev/next and carousel items. |
+| `role="region"`                   | Defines the carousel as a semantic region.                       |
+| `role="group"`                    | Defines the carousel item as a semantic group.                   |
+| `aria-labelledby="IDREF"`         | References the accessible name.                                  |
+| `aria-roledescription="carousel"` | Specifies the role as "carousel".                                |
+| `aria-roledescription="slide"`    | Specifies the role of the carousel item as "slide".              |
+| `aria-live="polite"`              | Announces current active slide item.                             |
+
+## Development considerations
+
+### Skip Carousel Entries
+
+Through the `skipLinkTarget` property, a skip link for keyboard users can be provided to give the possibility to skip
+over all carousel entries. The skip link is only visible when it receives focus from the keyboard.
+
+- Use the `skipLinkTarget` property if you have >5 carousel items
+- The target of the skip link should point to the next heading or element right after the carousel
+
+## Tests
+
+### Automated
+
+| Technology               | Support |
+| ------------------------ | ------- |
+| AXE-Core                 | ✅      |
+| High-Contrast Mode (HCM) | ✅      |
+| Text-Zoom (200%)         | ✅      |
+
+### Manual
+
+| Technology               | Support |
+| ------------------------ | ------- |
+| Keyboard                 | ✅      |
+| Screenreader (VoiceOver) | ✅      |
