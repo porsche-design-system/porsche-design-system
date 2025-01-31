@@ -1,15 +1,19 @@
 import type { ConfiguratorTagNames, ElementConfig, PropTypeMapping } from '@/components/playground/Configurator';
 
-type SlotStory = {
-  [storyName: string]: {
-    generator: (string | ElementConfig | undefined)[];
+export type SlotStory = {
+  name: string; // Also used as key
+  generator: (string | ElementConfig | undefined)[];
+};
+
+// TODO: slotName must be typed to only allow slots of current component
+export type SlotStories = {
+  [slotName: string]: {
+    [storyName: string]: SlotStory;
   };
 };
 
-type ComponentSlotStory = {
-  [Tag in keyof PropTypeMapping]: {
-    [slotName: string]: SlotStory;
-  };
+export type ComponentSlotStory = {
+  [Tag in keyof PropTypeMapping]: SlotStories;
 };
 
 export const componentSlotStories: ComponentSlotStory = {
@@ -34,6 +38,7 @@ export const componentSlotStories: ComponentSlotStory = {
   'p-flyout': {
     header: {
       basic: {
+        name: 'Basic',
         generator: [
           {
             tag: 'p-heading',
@@ -45,9 +50,11 @@ export const componentSlotStories: ComponentSlotStory = {
     },
     default: {
       basic: {
+        name: 'Basic',
         generator: [{ tag: 'p-text', children: ['Some Content'] }],
       },
       scrollable: {
+        name: 'Scrollable Content',
         generator: [
           { tag: 'p-text', children: ['Some Content Begin'] },
           { tag: 'div', properties: { style: { width: '10px', height: '120vh', background: 'deeppink' } } },
@@ -57,6 +64,7 @@ export const componentSlotStories: ComponentSlotStory = {
     },
     footer: {
       basic: {
+        name: 'Two Button Footer',
         generator: [
           {
             tag: 'p-button-group',
@@ -71,6 +79,7 @@ export const componentSlotStories: ComponentSlotStory = {
     },
     'sub-footer': {
       basic: {
+        name: 'Basic Sub-Footer',
         generator: [{ tag: 'p-text', properties: { slot: 'sub-footer' }, children: ['Some additional Sub-Footer'] }],
       },
     },
@@ -86,9 +95,11 @@ export const componentSlotStories: ComponentSlotStory = {
   'p-link': {
     default: {
       basic: {
+        name: 'Basic',
         generator: ['Some label'],
       },
       'slotted-anchor': {
+        name: 'Slotted Anchor',
         generator: [{ tag: 'a', properties: { href: 'https://www.porsche.com' }, children: ['Some label'] }],
       },
     },
@@ -191,7 +202,7 @@ export const componentSlotStories: ComponentSlotStory = {
  */
 
 export type SlotState<T extends keyof PropTypeMapping> = {
-  [SlotName in keyof ComponentSlotStory[T]]: keyof ComponentSlotStory[T][SlotName]; // Ensures selected slot is a key in SlotVariants
+  [SlotName in keyof ComponentSlotStory[T]]: SlotStory; // Ensures selected slot is a key in SlotVariants
 };
 
 export type StoryState<T extends keyof PropTypeMapping> = {
@@ -466,20 +477,22 @@ export const componentsStory: ComponentsStory = {
     state: {
       properties: { open: false, aria: { 'aria-label': 'Some Heading' } },
       slots: {
-        header: 'basic',
-        default: 'basic',
-        footer: 'basic',
-        'sub-footer': 'basic',
+        header: componentSlotStories['p-flyout'].header.basic,
+        default: componentSlotStories['p-flyout'].default.basic,
+        footer: componentSlotStories['p-flyout'].footer.basic,
+        'sub-footer': componentSlotStories['p-flyout']['sub-footer'].basic,
       },
-      slotVariants: componentSlotStories['p-flyout'],
     },
-    generator: ({ properties, slots, slotVariants }) => [
+    generator: ({ properties, slots = {} }) => [
       {
         tag: 'p-flyout',
         properties,
-        children: Object.entries(slots ?? {}).flatMap(
-          ([slotName, selectedSlot]) => slotVariants?.[slotName]?.[selectedSlot]?.generator
-        ),
+        children: [
+          ...slots.header.generator,
+          ...slots.default.generator,
+          ...slots.footer.generator,
+          ...slots['sub-footer'].generator,
+        ],
       },
     ],
   },
@@ -632,15 +645,14 @@ export const componentsStory: ComponentsStory = {
     state: {
       properties: { href: 'https://porsche.com' },
       slots: {
-        default: 'basic',
+        default: componentSlotStories['p-link'].default.basic,
       },
-      slotVariants: componentSlotStories['p-link'],
     },
-    generator: ({ properties, slots, slotVariants }) => [
+    generator: ({ properties, slots = {} }) => [
       {
         tag: 'p-link',
         properties,
-        children: slotVariants?.default[slots?.default ?? 0].generator,
+        children: slots.default.generator,
       },
     ],
   },

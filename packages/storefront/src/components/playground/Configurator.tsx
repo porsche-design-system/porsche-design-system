@@ -5,7 +5,13 @@ import { ConfigureCssVariables } from '@/components/playground/ConfigureCssVaria
 import { ConfigureProps } from '@/components/playground/ConfigureProps';
 import { ConfigureSlots } from '@/components/playground/ConfigureSlots';
 import { Playground } from '@/components/playground/Playground';
-import { type StoryState, componentsStory } from '@/components/playground/componentStory';
+import {
+  ComponentSlotStory,
+  type SlotStory,
+  type StoryState,
+  componentSlotStories,
+  componentsStory,
+} from '@/components/playground/componentStory';
 import { isDefaultValue } from '@/components/playground/configuratorUtils';
 import { componentMeta } from '@porsche-design-system/component-meta';
 import {
@@ -410,6 +416,7 @@ type ConfiguratorProps = {
 
 export const Configurator = ({ tagName }: ConfiguratorProps) => {
   const meta = componentMeta[tagName];
+  const slots = componentSlotStories[tagName];
   const [domReady, setDomReady] = useState(false);
   const [accordionState, setAccordionState] = useState<Record<number, boolean>>({});
   const [storyState, setStoryState] = useState(componentsStory[tagName].state ?? {});
@@ -449,11 +456,11 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
     });
   };
 
-  const handleUpdateSlots = (slotName: string, selectedExample: string | undefined) => {
+  const handleUpdateSlots = (slotName: string, selectedSlotStory: SlotStory | undefined) => {
     setStoryState((prev) => {
       const updatedSlots = { ...prev.slots };
       // TODO: Fix typing
-      updatedSlots[slotName] = selectedExample as string | number;
+      (updatedSlots as any)[slotName] = selectedSlotStory;
       return { ...prev, slots: updatedSlots };
     });
   };
@@ -487,7 +494,13 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
       onUpdateProps={handleUpdateProps}
       onResetAllProps={handleResetAllProps}
     />,
-    <ConfigureSlots tagName={tagName} storyState={storyState} onUpdateSlots={handleUpdateSlots} />,
+    <ConfigureSlots
+      tagName={tagName}
+      componentSlots={meta.slotsMeta}
+      configuredSlots={storyState}
+      slotStories={slots}
+      onUpdateSlots={handleUpdateSlots}
+    />,
     <ConfigureCssVariables />,
     <>
       <span slot="heading">Direction</span>
