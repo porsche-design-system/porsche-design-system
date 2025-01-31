@@ -1,4 +1,4 @@
-import { getCss, type Theme } from '../../utils';
+import { spacingFluidMedium, spacingFluidSmall } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -6,8 +6,6 @@ import {
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { spacingFluidMedium, spacingFluidSmall } from '@porsche-design-system/styles';
-import type { FlyoutFooterBehavior, FlyoutPosition } from './flyout-utils';
 import {
   dialogGridJssStyle,
   dialogHostJssStyle,
@@ -18,7 +16,12 @@ import {
   getDialogTransitionJssStyle,
   getScrollerJssStyle,
 } from '../../styles/dialog-styles';
+import { type Theme, getCss } from '../../utils';
+import type { FlyoutFooterBehavior, FlyoutPosition } from './flyout-utils';
 
+/**
+ * @css-variable {"name": "--p-flyout-width", "description": "Width of the flyout.", "defaultValue": "auto"}
+ */
 const cssVariableWidth = '--p-flyout-width';
 // TODO: we shouldn't expose --p-flyout-max-width
 const cssVariableMaxWidth = '--p-flyout-max-width';

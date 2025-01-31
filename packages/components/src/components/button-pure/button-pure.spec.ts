@@ -15,19 +15,6 @@ const initComponent = (): ButtonPure => {
   return component;
 };
 
-describe('render', () => {
-  it('should call warnIfParentIsPTextAndIconIsNone() with correct parameters', () => {
-    const spy = jest.spyOn(buttonLinkPureUtils, 'warnIfParentIsPTextAndIconIsNone');
-
-    const component = new ButtonPure();
-    component.host = document.createElement('p-button-pure');
-    component.host.attachShadow({ mode: 'open' });
-    component.render();
-
-    expect(spy).toHaveBeenCalledWith(component.host, component.icon, component.iconSource);
-  });
-});
-
 describe('connectedCallback()', () => {
   it('should assign this.initialLoading to value of this.loading', () => {
     const component = initComponent();

@@ -3,6 +3,13 @@
 set -o errexit
 set -o pipefail
 
+if [[ -z "${GITHUB_REF_NAME}" ]]; then
+  echo "Error: \$GITHUB_REF_NAME is not set."
+  exit 1
+fi
+# Next.js needs NEXT_PUBLIC prefix in order to bundle the variable
+export NEXT_PUBLIC_BASE_PATH=${GITHUB_REF_NAME}
+
 if
   [[ "--core-dependencies" == "${1}" ]] ||
   [[ "--assets" == "${1}" ]] ||

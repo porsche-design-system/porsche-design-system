@@ -1,0 +1,81 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Button Tile: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Button Tile component',
+};
+
+# Button Tile <ComponentStatus tagName="p-button-tile"></ComponentStatus>
+
+<TableOfContents headings={["Accessibility support","Limitations","Development considerations","Tests"]} />
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                 |
+| ------------------ | -------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
+| `Enter`, `Space`   | Activates the button.                                    |
+| `disabled`         | Button still focusable.                                  |
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA            | Usage                                                                                                                                         |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `aria-label`    | Defines a string value that labels an interactive element. It's required for buttons with `hideLabel="true"`.                                 |
+| `aria-expanded` | Exposes a visual state (e.g. expanded/collapsed) of another element.                                                                          |
+| `aria-pressed`  | Exposes the `pressed` state of a toggle button.                                                                                               |
+| `aria-haspopup` | Defines that the button opens a popup (e.g. `dialog`). It can be used in combination with `aria-expanded` to indicate the state of the popup. |
+
+## Limitations
+
+Due to the nature of **Web Components** and **shadowDOM**, there are limitations in the usage of some **ARIA**
+attributes if they try to set relationship between elements in different shadowDOM's or shadowDOM/lightDOM combinations.
+
+| ARIA                    | Support |
+| ----------------------- | ------- |
+| `aria-labelledby`       | 🚫      |
+| `aria-describedby`      | 🚫      |
+| `aria-owns`             | 🚫      |
+| `aria-controls`         | 🚫      |
+| `aria-activedescendant` | 🚫      |
+
+## Development considerations
+
+### Text over image or video
+
+In general, placing textual contents above an image or video can easily lead to **contrast issues**. Though we are
+providing a scalable background gradient to reduce the risk of low contrasts between foreground text and background
+image, there still can occur issues with color contrast ratios, especially if different aspect ratios for multiple
+viewport sizes are used. So, always **check readability** and play around with the `size` and `weight` properties to
+achieve the best results.
+
+### Reduced motion
+
+In case a video background is used, the component checks whether **reduced motion** is enabled in the operating system
+settings and prevents the `<video autoplay loop />` attribute from working to improve accessibility & UX. In addition,
+the slotted video should have no audio or is muted by `<video muted />`. Also keep in mind that long videos or videos in
+general might increase the page load time. The video content should support the **CTA** instead of distracting from it.
+To support screen reader users, it's recommended to define an alternative video description
+`<video aria-label="Some video description"" />`.
+
+## Tests
+
+### Automated
+
+| Technology               | Support |
+| ------------------------ | ------- |
+| AXE-Core                 | ✅      |
+| High-Contrast Mode (HCM) | ✅      |
+| Text-Zoom (200%)         | ✅      |
+
+### Manual
+
+| Technology               | Support |
+| ------------------------ | ------- |
+| Keyboard                 | ✅      |
+| Screenreader (VoiceOver) | ✅      |

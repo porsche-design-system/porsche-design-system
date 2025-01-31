@@ -1,0 +1,56 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Checkbox: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Checkbox component',
+};
+
+# Checkbox <ComponentStatus tagName="p-checkbox"></ComponentStatus>
+
+<TableOfContents headings={["Accessibility support","Development considerations","Tests"]} />
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                 |
+| ------------------ | -------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
+| `Space`            | Activates/Deactivates checkbox.                          |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                            | Usage                                                                                                                                                    |
+| ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `aria-describedby="IDREF"`      | References the accessible description and status messages.                                                                                               |
+| `role="status"`, `role="alert"` | - When `loading` prop is set, the component announces the loading state (start and finish).<br/>- When `message` prop changes, the message is announced. |
+| `aria-hidden="true"`            | If `required` attribute is set, the visible indicator is hidden from assistive technologies.                                                             |
+
+## Development considerations
+
+### Disabled state
+
+In general, you should prevent using the `disabled="true"` state. Disabled elements are not reachable (focusable)
+anymore and can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out
+why these elements are disabled. A good practice when to use the disabled state is during form submission to prevent
+changes while this process is performed.
+
+## Tests
+
+### Automated
+
+| Technology               | Support |
+| ------------------------ | ------- |
+| AXE-Core                 | ✅      |
+| High-Contrast Mode (HCM) | ✅      |
+| Text-Zoom (200%)         | ✅      |
+
+### Manual
+
+| Technology               | Support |
+| ------------------------ | ------- |
+| Keyboard                 | ✅      |
+| Screenreader (VoiceOver) | ✅      |

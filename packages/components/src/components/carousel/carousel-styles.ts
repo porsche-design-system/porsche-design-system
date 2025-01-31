@@ -35,6 +35,9 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import type { CarouselAlignHeader, CarouselGradientColor, CarouselHeadingSize, CarouselWidth } from './carousel-utils';
 
+/**
+ * @css-variable {"name": "--p-carousel-prev-next-filter", "description": "CSS Filter applied to the navigation (prev/next buttons)", "defaultValue": "none"}
+ */
 const cssVariablePrevNextFilter = '--p-carousel-prev-next-filter';
 export const cssVariableGradientColorWidth = '--p-gradient-color-width';
 export const carouselTransitionDuration = motionDurationModerate;

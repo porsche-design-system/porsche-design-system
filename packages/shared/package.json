@@ -19,14 +19,15 @@
     "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs && chmod +x bin/serve-dummyassets.js",
     "clearGitHubActionLogs": "tsx scripts/clearGitHubActionLogs.ts",
     "test": "yarn test:unit",
-    "test:unit": "jest --colors -c tests/unit/config/jest.config.js",
+    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
   },
   "dependencies": {
     "@porsche-design-system/component-meta": "0.0.0"
   },
   "devDependencies": {
-    "@octokit/core": "^6.1.2"
+    "@octokit/core": "^6.1.2",
+    "change-case-legacy": "npm:change-case@^4.1.2"
   },
   "peerDependencies": {
     "@rollup/plugin-commonjs": "*",
@@ -38,7 +39,6 @@
     "@types/jest-expect-message": "*",
     "@types/madge": "*",
     "@types/node": "*",
-    "change-case": "*",
     "globby": "*",
     "jest": "*",
     "jest-environment-jsdom": "*",
@@ -53,7 +53,8 @@
     "rollup-plugin-terser": "*",
     "ts-jest": "*",
     "tsx": "*",
-    "typescript": "*"
+    "typescript": "*",
+    "vitest": "*"
   },
   "bin": {
     "serve-dummyassets": "./bin/serve-dummyassets.js"

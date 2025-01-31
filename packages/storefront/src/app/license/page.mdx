@@ -1,0 +1,58 @@
+import { PLinkPure } from "@porsche-design-system/components-react/ssr";
+import { TableOfContents } from "@/components/common/TableOfContents";
+
+export const metadata = {
+  title: 'License - Porsche Design System',
+  description: 'License of the Porsche Design System.',
+}
+
+# License
+
+<TableOfContents headings={["Agreement","General Notices","Open Source Software Notice"]} />
+
+By accessing, using or contributing to the Design System of Porsche ('**Porsche Design System**'), you agree to the
+following licensing agreement ('**Agreement**') with Dr. Ing. h.c. F. Porsche AG, Germany ('**Porsche AG**'). Porsche
+reserves the right to change and update this licensing agreement at any time.
+
+## Agreement
+
+{/* <Markdown><component :is="license"></component></Markdown> */}
+
+## General Notices
+
+Further information regarding license terms and – where required by license – source codes are available at
+<PLinkPure icon="none" target="_blank" href="https://porsche.com/softwareinfo">www.porsche.com/softwareinfo</PLinkPure>
+  free of charge. Some licenses, however, require the provision of physical copies of source or object code. In this case,
+you may obtain a copy of the source codes by contacting us at
+<PLinkPure icon="none" target="_blank" href="https://porsche.com/softwareinfo">www.porsche.com/softwareinfo</PLinkPure>.
+Furthermore, please contact us at the foregoing URL in case you need assistance regarding the exercise of rights
+guaranteed by an Open Source License. A nominal fee (i.e., the cost of physically performing the distribution) will be
+charged for these services.
+
+**Note:** your copy of this product may not contain code covered by one or more of the licenses listed here, depending
+on the exact product and version you choose.
+
+## Open Source Software Notice
+
+This software may or may not contain the following specific Open Source Software:
+
+<PLinkPure icon="download" href="assets/compulsory-statement.txt" download={true}>Download Compulsory Statement</PLinkPure>
+
+{/* <script lang="ts">
+  import Vue from 'vue';
+  import Component from 'vue-class-component';
+  import Markdown from '@/components/Markdown.vue';
+
+  @Component({
+  components: {
+  Markdown,
+},
+})
+  export default class Code extends Vue {
+  license = '';
+
+  async mounted() {
+  this.license = (await import('@/../../../LICENSE.md')).default;
+}
+}
+</script> */}
