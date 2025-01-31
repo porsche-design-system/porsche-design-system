@@ -1,19 +1,19 @@
-import type { PropTypeMapping } from '@/components/playground/Configurator';
-import type { SlotStories, SlotStory, StoryState } from '@/components/playground/componentStory';
+import type { HTMLTagOrComponent, PropTypeMapping } from '@/components/playground/Configurator';
+import type { SlotStories, Story, StoryState } from '@/components/playground/componentStory';
 import type { SlotMeta } from '@porsche-design-system/component-meta';
 import { PPopover, PSelect, PSelectOption, PTag } from '@porsche-design-system/components-react/ssr';
 import { capitalCase } from 'change-case';
 import React from 'react';
 
-type ConfigureSlotsProps<T extends keyof PropTypeMapping> = {
-  tagName: T;
+type ConfigureSlotsProps<Tag extends HTMLTagOrComponent> = {
+  tagName: Tag;
   componentSlots: SlotMeta | undefined;
-  configuredSlots: StoryState<T>;
+  configuredSlots: StoryState<Tag>;
   slotStories: SlotStories;
-  onUpdateSlots: (slotName: string, selectedSlotStory: SlotStory | undefined) => void;
+  onUpdateSlots: (slotName: string, selectedSlotStory: Story | undefined) => void;
 };
 
-export const ConfigureSlots = <T extends keyof PropTypeMapping>({
+export const ConfigureSlots = <T extends HTMLTagOrComponent>({
   tagName,
   componentSlots,
   configuredSlots,
@@ -43,6 +43,7 @@ export const ConfigureSlots = <T extends keyof PropTypeMapping>({
             <PSelect
               key={slotName}
               name={slotName}
+              // @ts-ignore
               value={configuredSlots?.slots?.[slotName].name}
               onUpdate={(e) =>
                 onUpdateSlots(
