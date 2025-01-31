@@ -27,8 +27,8 @@ export const metadata = {
 | -------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | `role="status"`            | When content is populated or changed in `state="info"`, the component announces them unobtrusively.        |
 | `role="alert"`             | When content is populated or changed in `state="warning/error"`, the component announces them immediately. |
-| `aria-labelledby="IDREF"`  | The Banner is labelled by the `heading` prop or its corresponding slot.                                    |
-| `aria-describedby="IDREF"` | The Banner is described by the `description` prop or its corresponding slot.                               |
+| `aria-labelledby="IDREF"`  | References the accessible name.                                                                            |
+| `aria-describedby="IDREF"` | References the accessible description.                                                                     |
 | `aria-hidden="true"`       | State `icon` is hidden from the screen reader.                                                             |
 | `aria-controls="ID"`       | Exposes relationship of close button.                                                                      |
 
@@ -42,9 +42,17 @@ Banner is closed. This is important to keep focus order consistent.
 
 ## Tests
 
+### Automated
+
+| Technology               | Support |
+| ------------------------ | ------- |
+| AXE-Core                 | ✅      |
+| High-Contrast Mode (HCM) | ✅      |
+| Text-Zoom (200%)         | ✅      |
+
+### Manual
+
 | Technology               | Support |
 | ------------------------ | ------- |
 | Keyboard                 | ✅      |
 | Screenreader (VoiceOver) | ✅      |
-| High-Contrast Mode (HCM) | ✅      |
-| Text-Zoom (200%)         | ✅      |

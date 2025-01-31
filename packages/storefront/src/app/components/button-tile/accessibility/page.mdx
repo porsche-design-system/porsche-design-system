@@ -26,7 +26,7 @@ export const metadata = {
 
 | ARIA            | Usage                                                                                                                                         |
 | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `aria-label`    | Defines a string value that labels an interactive element. It's required for buttons with `hide-label="true"`.                                |
+| `aria-label`    | Defines a string value that labels an interactive element. It's required for buttons with `hideLabel="true"`.                                 |
 | `aria-expanded` | Exposes a visual state (e.g. expanded/collapsed) of another element.                                                                          |
 | `aria-pressed`  | Exposes the `pressed` state of a toggle button.                                                                                               |
 | `aria-haspopup` | Defines that the button opens a popup (e.g. `dialog`). It can be used in combination with `aria-expanded` to indicate the state of the popup. |
@@ -65,9 +65,17 @@ To support screen reader users, it's recommended to define an alternative video 
 
 ## Tests
 
-| Technology               | Support | Details |
-| ------------------------ | ------- | ------- |
-| Keyboard                 | ✅      |         |
-| Screenreader (VoiceOver) | ✅      |         |
-| High-Contrast Mode (HCM) | ✅      |         |
-| Text-Zoom (200%)         | ✅      |         |
+### Automated
+
+| Technology               | Support |
+| ------------------------ | ------- |
+| AXE-Core                 | ✅      |
+| High-Contrast Mode (HCM) | ✅      |
+| Text-Zoom (200%)         | ✅      |
+
+### Manual
+
+| Technology               | Support |
+| ------------------------ | ------- |
+| Keyboard                 | ✅      |
+| Screenreader (VoiceOver) | ✅      |

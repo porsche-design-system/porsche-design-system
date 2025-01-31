@@ -28,7 +28,7 @@ export const metadata = {
 | `aria-expanded="true/false"` | Exposes expanded or collapsed state.                         |
 | `aria-controls="ID"`         | Exposes relationship of header and associated panel.         |
 | `role="region"`              | Creates a landmark region that contains the accordion panel. |
-| `aria-labelledby="IDREF"`    | Defines the accessible name for the region element.          |
+| `aria-labelledby="IDREF"`    | Defines the accessible name.                                 |
 
 ## Development considerations
 
@@ -39,9 +39,17 @@ no `heading-tag` property provided, it defaults to `h2`.
 
 ## Tests
 
+### Automated
+
+| Technology               | Support |
+| ------------------------ | ------- |
+| AXE-Core                 | ✅      |
+| High-Contrast Mode (HCM) | ✅      |
+| Text-Zoom (200%)         | ✅      |
+
+### Manual
+
 | Technology               | Support |
 | ------------------------ | ------- |
 | Keyboard                 | ✅      |
 | Screenreader (VoiceOver) | ✅      |
-| High-Contrast Mode (HCM) | ✅      |
-| Text-Zoom (200%)         | ✅      |
