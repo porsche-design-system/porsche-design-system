@@ -83,7 +83,16 @@ export const componentSlotStories: ComponentSlotStory = {
   'p-headline': {},
   'p-icon': {},
   'p-inline-notification': {},
-  'p-link': {},
+  'p-link': {
+    default: {
+      basic: {
+        generator: ['Some label'],
+      },
+      'slotted-anchor': {
+        generator: [{ tag: 'a', properties: { href: 'https://www.porsche.com' }, children: ['Some label'] }],
+      },
+    },
+  },
   'p-link-pure': {},
   'p-link-social': {},
   'p-link-tile': {},
@@ -204,10 +213,21 @@ export type ComponentsStory = {
 export const componentsStory: ComponentsStory = {
   // TODO: Add Story
   'p-accordion': {
+    state: {
+      properties: { heading: 'Some Heading' },
+    },
     generator: ({ properties }) => [
       {
         tag: 'p-accordion',
         properties,
+        children: [
+          {
+            tag: 'p-text',
+            children: [
+              'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.',
+            ],
+          },
+        ],
       },
     ],
   },
@@ -607,15 +627,20 @@ export const componentsStory: ComponentsStory = {
       },
     ],
   },
+  // TODO: Add relation in componentMeta that href and not are mutually exclusive and disable one or the other
   'p-link': {
     state: {
       properties: { href: 'https://porsche.com' },
+      slots: {
+        default: 'basic',
+      },
+      slotVariants: componentSlotStories['p-link'],
     },
-    generator: ({ properties }) => [
+    generator: ({ properties, slots, slotVariants }) => [
       {
         tag: 'p-link',
         properties,
-        children: ['Some label'],
+        children: slotVariants?.default[slots?.default ?? 0].generator,
       },
     ],
   },
