@@ -13,16 +13,6 @@ exports[`should call validateProps() with correct parameters via render for p-ac
 }
 `;
 
-exports[`should call validateProps() with correct parameters via render for p-sheet: propTypes with ValidatorFunctions 1`] = `
-{
-  "aria": "aria",
-  "disableBackdropClick": "boolean",
-  "dismissButton": "boolean",
-  "open": "boolean",
-  "theme": "oneOf",
-}
-`;
-
 exports[`should call validateProps() with correct parameters via render for p-banner: propTypes with ValidatorFunctions 1`] = `
 {
   "description": "string",
@@ -628,6 +618,16 @@ exports[`should call validateProps() with correct parameters via render for p-se
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-sheet: propTypes with ValidatorFunctions 1`] = `
+{
+  "aria": "aria",
+  "disableBackdropClick": "boolean",
+  "dismissButton": "boolean",
+  "open": "boolean",
+  "theme": "oneOf",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-spinner: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
@@ -654,6 +654,7 @@ exports[`should call validateProps() with correct parameters via render for p-sw
 {
   "alignLabel": "breakpoint",
   "checked": "boolean",
+  "compact": "boolean",
   "disabled": "boolean",
   "hideLabel": "breakpoint",
   "loading": "boolean",
