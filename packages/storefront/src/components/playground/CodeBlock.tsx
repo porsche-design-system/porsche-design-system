@@ -3,7 +3,27 @@
 import { type Framework, type FrameworkMarkup, frameworkNameMap } from '@/models/framework';
 import { PTabsBar, type TabsBarUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
 import React, { useState } from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
+import SyntaxHighlighter, { type SyntaxHighlighterProps } from 'react-syntax-highlighter';
+
+const getVanillaJsCode = (code: string | undefined) => `<!doctype html>
+<html lang="en">
+<head>
+  <title></title>
+</head>
+<body>
+
+${code}
+
+</body>
+</html>`;
+
+const getReactCode = (code: string | undefined) => `export const Example = () => {
+  return (
+    <>
+      ${code}
+    </>
+  )
+}`;
 
 type CodeBlockProps = {
   frameworkMarkup: FrameworkMarkup;
@@ -18,17 +38,21 @@ export const CodeBlock = ({ frameworkMarkup }: CodeBlockProps) => {
     setTabIndex(e.detail.activeTabIndex);
   };
 
-  const code = `<!doctype html>
-<html lang="en">
-<head>
-  <title></title>
-</head>
-<body>
+  const getMarkupMap = {
+    'vanilla-js': getVanillaJsCode,
+    react: getReactCode,
+    angular: getVanillaJsCode,
+    vue: getVanillaJsCode,
+    next: getVanillaJsCode,
+  };
 
-${frameworkMarkup[selectedFramework]}
-
-</body>
-</html>`;
+  const frameworkLanguageMap: Record<Framework, SyntaxHighlighterProps['language']> = {
+    'vanilla-js': 'javascript',
+    react: 'typescript',
+    angular: 'typescript',
+    vue: 'typescript',
+    next: 'typescript',
+  };
 
   return (
     <div className="flex flex-col gap-sm">
@@ -46,8 +70,12 @@ ${frameworkMarkup[selectedFramework]}
         ))}
       </PTabsBar>
       {/* @ts-expect-error: Suppress type incompatibility */}
-      <SyntaxHighlighter language="javascript" showLineNumbers={false} useInlineStyles={false}>
-        {code}
+      <SyntaxHighlighter
+        language={frameworkLanguageMap[selectedFramework]}
+        showLineNumbers={false}
+        useInlineStyles={false}
+      >
+        {getMarkupMap[selectedFramework]?.(frameworkMarkup[selectedFramework])}
       </SyntaxHighlighter>
     </div>
   );

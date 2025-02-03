@@ -206,6 +206,7 @@ export const componentSlotStories: ComponentSlotStory = {
  * - [ ] - Make slots toggleable if they are not required. Default slot required? In case of link required when href not set?
  * - [ ] - prop/slot relation? link href -> default slotted anchor
  * - [ ] - make all props removable?
+ * - [ ] - values are not stored with correct types in state => true => 'true'
  */
 
 export type ComponentsStory = {
@@ -488,7 +489,11 @@ export const componentsStory: ComponentsStory = {
   },
   'p-flyout': {
     state: {
-      properties: { open: false, aria: { 'aria-label': 'Some Heading' } },
+      properties: {
+        open: false,
+        aria: { 'aria-label': 'Some Heading' },
+        // onDismiss: () => (document.querySelector('p-flyout').open = false),
+      },
       slots: {
         header: componentSlotStories['p-flyout']?.header.basic,
         default: componentSlotStories['p-flyout']?.default.basic,
@@ -499,7 +504,11 @@ export const componentsStory: ComponentsStory = {
     generator: ({ properties, slots } = {}) => [
       {
         tag: 'p-button',
-        properties: { type: 'button', aria: { 'aria-haspopup': 'dialog' } },
+        properties: {
+          type: 'button',
+          aria: { 'aria-haspopup': 'dialog' },
+          // onClick: () => (document.querySelector('p-flyout').open = true),
+        },
         children: ['Open Flyout'],
       },
       {
@@ -769,6 +778,11 @@ export const componentsStory: ComponentsStory = {
   // TODO: Add story
   'p-modal': {
     generator: ({ properties } = {}) => [
+      {
+        tag: 'p-button',
+        properties: { type: 'button', aria: { 'aria-haspopup': 'dialog' } },
+        children: ['Open Modal'],
+      },
       {
         tag: 'p-modal',
         properties,

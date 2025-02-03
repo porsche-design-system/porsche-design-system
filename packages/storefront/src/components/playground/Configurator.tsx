@@ -12,7 +12,10 @@ import {
   componentsStory,
 } from '@/components/playground/componentStory';
 import { isDefaultValue } from '@/components/playground/configuratorUtils';
-import { type GeneratedOutput, generateCode } from '@/utils/generator';
+import type { FrameworkMarkup } from '@/models/framework';
+import { generateReactMarkup } from '@/utils/generator/generateReactMarkup';
+import { generateVanillaJsMarkup } from '@/utils/generator/generateVanillaJsMarkup';
+import { createElements } from '@/utils/generator/generator';
 import { componentMeta } from '@porsche-design-system/component-meta';
 import {
   type AccordionUpdateEventDetail,
@@ -91,10 +94,9 @@ import {
   type PTextareaWrapperProps,
   type PToastProps,
   type PWordmarkProps,
-  type SelectUpdateEventDetail,
 } from '@porsche-design-system/components-react/ssr';
 import type { TagName } from '@porsche-design-system/shared';
-import React, { useEffect, useState } from 'react';
+import React, { type ReactNode, Suspense, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 type SafePropTypeMapping = {
@@ -213,7 +215,8 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
   // TODO: Pass story as param into configurator
   // @ts-ignore
   const [storyState, setStoryState] = useState<StoryState<typeof tagName>>(componentsStory[tagName].state ?? {});
-  const [{ jsx, markup }, setGenerated] = useState<GeneratedOutput>({ jsx: null, markup: '' });
+  const [exampleElement, setExampleElement] = useState<ReactNode>(null);
+  const [exampleMarkup, setExampleMarkup] = useState<FrameworkMarkup>({});
 
   const handleAccordionUpdate = (index: number, e: CustomEvent<AccordionUpdateEventDetail>) => {
     setAccordionState((prevState) => ({
@@ -290,14 +293,13 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
     setStoryState(componentsStory[tagName].state);
   };
 
-  const handleDirectionUpdate = (e: CustomEvent<SelectUpdateEventDetail>) => {
-    // biome-ignore lint/suspicious/noConsole: <explanation>
-    console.log(e);
-  };
-
   useEffect(() => {
     const generatedConfig = componentsStory[tagName].generator(storyState as any); // TODO: Fix typing
-    setGenerated(generateCode(generatedConfig));
+    setExampleElement(createElements(generatedConfig));
+    setExampleMarkup({
+      'vanilla-js': generateVanillaJsMarkup(generatedConfig),
+      react: generateReactMarkup(generatedConfig),
+    });
   }, [storyState, tagName]);
 
   useEffect(() => {
@@ -355,7 +357,9 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
           )
         : null}
 
-      <Playground frameworkMarkup={{ 'vanilla-js': markup, angular: '', react: '', vue: '' }}>{jsx}</Playground>
+      <Playground frameworkMarkup={exampleMarkup}>
+        <Suspense fallback={<div>Loading...</div>}>{exampleElement}</Suspense>
+      </Playground>
     </>
   );
 };
