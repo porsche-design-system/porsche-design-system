@@ -1,6 +1,14 @@
-import type { AlignLabel, BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, isDisabledOrLoading, isHighContrastMode, mergeDeep } from '../../utils';
 import {
+  borderWidthBase,
+  fontFamily,
+  fontLineHeight,
+  fontSizeTextSmall,
+  spacingStaticSmall,
+  spacingStaticXSmall,
+  textSmallStyle,
+} from '@porsche-design-system/styles';
+import {
+  SCALING_BASE_VALUE,
   addImportantToEachRule,
   colorSchemeStyles,
   getFocusJssStyle,
@@ -13,15 +21,11 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import {
-  borderWidthBase,
-  fontFamily,
-  fontLineHeight,
-  fontSizeTextSmall,
-  spacingStaticSmall,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
+import type { AlignLabel, BreakpointCustomizable, Theme } from '../../types';
+import { buildResponsiveStyles, getCss, isDisabledOrLoading, isHighContrastMode, mergeDeep } from '../../utils';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
+
+const cssVarInternalSwitchScaling = '--p-internal-switch-scaling';
 
 const getColors = (
   checked: boolean,
@@ -74,6 +78,7 @@ export const getComponentCss = (
   checked: boolean,
   disabled: boolean,
   loading: boolean,
+  compact: boolean,
   theme: Theme
 ): string => {
   const {
@@ -94,8 +99,27 @@ export const getComponentCss = (
     toggleBackgroundColorHover: toggleBackgroundColorHoverDark,
     textColor: textColorDark,
   } = getColors(checked, disabled, loading, 'dark');
-  const toggleTransitionOffsetLtr = `calc(${fontLineHeight} - 2px)`;
-  const toggleTransitionOffsetRtl = `calc((${fontLineHeight} - 2px) * -1)`;
+
+  const minimumTouchTargetSize = '24px'; // Minimum touch target size to comply with accessibility guidelines.
+
+  const scalingVar = `var(${cssVarInternalSwitchScaling}, ${compact ? 0.6668 : 1})`;
+  // Determines the scaling factor for the switch size. In "compact" mode, it uses 0.6668 to achieve a 20px switch (compact size).
+  // Defaults to 1 for the standard size and can be overridden by the CSS variable `cssVarInternalSwitchScaling`.
+
+  const dimension = `calc(max(${SCALING_BASE_VALUE} * 0.75, ${scalingVar} * ${fontLineHeight}))`;
+  // Calculates the switch size and ensures a minimum size of 12px (0.75 * SCALING_BASE_VALUE).
+  // Scales proportionally with the line height and the scaling factor.
+
+  const dimensionFull = `calc(${dimension} + ${borderWidthBase} * 2)`; // Calculates the total size of the switch including its borders.
+  const touchTargetSizeDiff = `calc(${minimumTouchTargetSize} - ${dimensionFull})`; // Difference between the minimum touch target size and the switch full size.
+
+  const gap = `max(${spacingStaticXSmall}, calc(${spacingStaticSmall} - (max(0px, ${touchTargetSizeDiff}))))`;
+  // Adjusts padding to maintain consistent spacing when the switch is smaller than the minimum touch target size.
+  // Uses asymmetric padding instead of `gap` to ensure there is no non-clickable area between the label and the input.
+
+  const marginTop = `max(0px, calc((${fontLineHeight} - ${dimensionFull}) / 2))`; // Vertically centers the switch label relative to the switch size (depending on which is smaller).
+  const paddingTop = `max(0px, calc((${dimensionFull} - ${fontLineHeight}) / 2))`; // Vertically centers the switch label relative to the switch size (depending on which is smaller).
+  const inset = `calc(-${borderWidthBase} - max(0px, ${touchTargetSizeDiff} / 2))`; // Positions the switch ::before pseudo-element with a negative offset to align it with the touch target.
 
   return getCss({
     '@global': {
@@ -105,7 +129,8 @@ export const getComponentCss = (
         })),
         ...addImportantToEachRule({
           outline: 0, // custom element is able to delegate the focus
-          gap: spacingStaticSmall,
+          font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct gap definition based on ex-unit
+          gap,
           ...colorSchemeStyles,
           ...hostHiddenStyles,
           ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
@@ -117,15 +142,16 @@ export const getComponentCss = (
       },
       ...preventFoucOfNestedElementsStyles,
       button: {
+        position: 'relative', // ensures relative positioning for ::before pseudo element
         display: 'flex',
         alignItems: 'center',
         flexShrink: 0,
-        width: `calc(${fontLineHeight} * 2 - ${borderWidthBase}*2)`,
-        height: fontLineHeight,
+        width: `calc(${dimension} * 2 - ${borderWidthBase} * 2)`,
+        height: dimension,
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
         boxSizing: 'content-box',
         border: `${borderWidthBase} solid ${buttonBorderColor}`,
-        borderRadius: `calc((${fontLineHeight} + ${borderWidthBase}*2) / 2)`,
+        borderRadius: `calc((${dimension} + ${borderWidthBase} * 2) / 2)`,
         backgroundColor: buttonBackgroundColor,
         cursor: isDisabledOrLoading(disabled, loading) ? 'not-allowed' : 'pointer',
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
@@ -135,6 +161,7 @@ export const getComponentCss = (
         }),
         margin: 0, // Removes default button margin on safari 15
         padding: 0,
+        marginTop,
         WebkitAppearance: 'none', // iOS safari
         appearance: 'none',
         ...(!isDisabledOrLoading(disabled, loading) &&
@@ -155,6 +182,13 @@ export const getComponentCss = (
             },
           })),
         ...getFocusJssStyle(theme),
+        '&::before': {
+          // Ensures the touch target is at least 24px, even if the switch is smaller than the minimum touch target size.
+          // This pseudo-element expands the clickable area without affecting the visual size of the switch itself.
+          content: '""',
+          position: 'absolute',
+          inset,
+        },
       },
       label: {
         ...textSmallStyle,
@@ -172,7 +206,7 @@ export const getComponentCss = (
           })),
           buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
             getHiddenTextJssStyle(isHidden, {
-              paddingTop: '2px', // currently, line-height of textSmall doesn't match height of switch
+              paddingTop,
             })
           )
         ),
@@ -180,16 +214,16 @@ export const getComponentCss = (
     },
     toggle: {
       display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      width: `calc(${fontLineHeight} - ${borderWidthBase}*2)`,
-      height: `calc(${fontLineHeight} - ${borderWidthBase}*2)`,
+      placeItems: 'center',
+      placeContent: 'center',
+      width: `calc(${dimension} - ${borderWidthBase} * 2)`,
+      height: `calc(${dimension} - ${borderWidthBase} * 2)`,
       borderRadius: '50%',
       backgroundColor: toggleBackgroundColor,
       transition: `${getTransition('background-color')}, ${getTransition('transform')}`,
-      transform: `translate3d(${checked ? toggleTransitionOffsetLtr : '2px'}, 0, 0)`,
+      transform: `translate3d(${checked ? `calc(100% + ${borderWidthBase})` : borderWidthBase}, 0, 0)`,
       '&:dir(rtl)': {
-        transform: `translate3d(${checked ? toggleTransitionOffsetRtl : '-2px'}, 0, 0)`,
+        transform: `translate3d(calc(${checked ? `calc(100% + ${borderWidthBase})` : borderWidthBase} * -1), 0, 0)`,
       },
       ...prefersColorSchemeDarkMediaQuery(theme, {
         backgroundColor: toggleBackgroundColorDark,
@@ -197,8 +231,8 @@ export const getComponentCss = (
     },
     ...(loading && {
       spinner: {
-        width: `calc(${fontLineHeight} + ${borderWidthBase}*2)`,
-        height: `calc(${fontLineHeight} + ${borderWidthBase}*2)`,
+        width: dimensionFull,
+        height: dimensionFull,
       },
     }),
     // .loading

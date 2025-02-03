@@ -1,17 +1,19 @@
-import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Listen, Prop } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, Host, type JSX, Listen, Prop, h } from '@stencil/core';
+import { getSlottedAnchorStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   ALIGN_LABELS,
   AllowedTypes,
+  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
   isDisabledOrLoading,
-  THEMES,
   validateProps,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
+import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
 import { getComponentCss } from './switch-styles';
 import {
   type SwitchAlignLabel,
@@ -19,8 +21,6 @@ import {
   type SwitchUpdateEventDetail,
   getSwitchButtonAriaAttributes,
 } from './switch-utils';
-import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
-import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Switch> = {
   alignLabel: AllowedTypes.breakpoint<SwitchAlignLabel>(ALIGN_LABELS),
@@ -29,6 +29,7 @@ const propTypes: PropTypes<typeof Switch> = {
   checked: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
+  compact: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -61,6 +62,9 @@ export class Switch {
 
   /** Disables the switch and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public loading?: boolean = false;
+
+  /** Displays as compact version. */
+  @Prop() public compact?: boolean = false;
 
   /** Adapts the switch color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -126,6 +130,7 @@ export class Switch {
       this.checked,
       this.disabled,
       this.loading,
+      this.compact,
       this.theme
     );
 
