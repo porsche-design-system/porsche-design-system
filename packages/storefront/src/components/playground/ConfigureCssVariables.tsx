@@ -26,8 +26,6 @@ export const ConfigureCssVariables = ({
   ) as { [x: string]: string };
   const amountOfConfiguredCssVariables = 0;
 
-  console.log(cssVariables['--p-banner-position-top']);
-
   return (
     <>
       <span slot="heading" className="flex gap-xs">

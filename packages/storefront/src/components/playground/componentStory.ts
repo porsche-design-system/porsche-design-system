@@ -498,6 +498,11 @@ export const componentsStory: ComponentsStory = {
     },
     generator: ({ properties, slots } = {}) => [
       {
+        tag: 'p-button',
+        properties: { type: 'button', aria: { 'aria-haspopup': 'dialog' } },
+        children: ['Open Flyout'],
+      },
+      {
         tag: 'p-flyout',
         properties,
         children: [
