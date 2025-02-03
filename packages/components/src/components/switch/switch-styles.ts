@@ -4,6 +4,7 @@ import {
   fontLineHeight,
   fontSizeTextSmall,
   spacingStaticSmall,
+  spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/styles';
 import {
@@ -112,7 +113,7 @@ export const getComponentCss = (
   const dimensionFull = `calc(${dimension} + ${borderWidthBase} * 2)`; // Calculates the total size of the switch including its borders.
   const touchTargetSizeDiff = `calc(${minimumTouchTargetSize} - ${dimensionFull})`; // Difference between the minimum touch target size and the switch full size.
 
-  const gap = `calc(${spacingStaticSmall} - (max(0px, ${touchTargetSizeDiff})))`;
+  const gap = `max(${spacingStaticXSmall}, calc(${spacingStaticSmall} - (max(0px, ${touchTargetSizeDiff}))))`;
   // Adjusts padding to maintain consistent spacing when the switch is smaller than the minimum touch target size.
   // Uses asymmetric padding instead of `gap` to ensure there is no non-clickable area between the label and the input.
 
@@ -150,7 +151,7 @@ export const getComponentCss = (
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
         boxSizing: 'content-box',
         border: `${borderWidthBase} solid ${buttonBorderColor}`,
-        borderRadius: `calc((${fontLineHeight} + ${borderWidthBase}*2) / 2)`,
+        borderRadius: `calc((${dimension} + ${borderWidthBase} * 2) / 2)`,
         backgroundColor: buttonBackgroundColor,
         cursor: isDisabledOrLoading(disabled, loading) ? 'not-allowed' : 'pointer',
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,

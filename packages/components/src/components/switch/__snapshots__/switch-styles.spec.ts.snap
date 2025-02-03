@@ -5,7 +5,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   display: inline-flex;
   outline: 0 !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2))))) !important;
+  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
   color-scheme: light dark !important;
   justify-content: flex-start !important;
   width: auto !important;
@@ -27,7 +27,7 @@ button {
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   box-sizing: content-box;
   border: 2px solid #6B6D70;
-  border-radius: calc((calc(6px + 2.125ex) + 2px*2) / 2);
+  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) / 2);
   background-color: transparent;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
@@ -112,7 +112,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   display: inline-flex;
   outline: 0 !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 0.6668) * calc(6px + 2.125ex))) + 2px * 2))))) !important;
+  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 0.6668) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
   color-scheme: light dark !important;
   justify-content: flex-start !important;
   width: auto !important;
@@ -134,7 +134,7 @@ button {
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   box-sizing: content-box;
   border: 2px solid #6B6D70;
-  border-radius: calc((calc(6px + 2.125ex) + 2px*2) / 2);
+  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 0.6668) * calc(6px + 2.125ex))) + 2px * 2) / 2);
   background-color: transparent;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
@@ -219,7 +219,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   display: inline-flex;
   outline: 0 !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2))))) !important;
+  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
   color-scheme: light dark !important;
   justify-content: flex-start !important;
   width: auto !important;
@@ -241,7 +241,7 @@ button {
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   box-sizing: content-box;
   border: 2px solid #949598;
-  border-radius: calc((calc(6px + 2.125ex) + 2px*2) / 2);
+  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) / 2);
   background-color: transparent;
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
@@ -316,7 +316,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   display: flex;
   outline: 0 !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2))))) !important;
+  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
   color-scheme: light dark !important;
   justify-content: space-between !important;
   width: 100% !important;
@@ -337,7 +337,7 @@ button {
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   box-sizing: content-box;
   border: 2px solid #6B6D70;
-  border-radius: calc((calc(6px + 2.125ex) + 2px*2) / 2);
+  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) / 2);
   background-color: transparent;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
@@ -422,7 +422,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   display: flex;
   outline: 0 !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2))))) !important;
+  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
   color-scheme: light dark !important;
   justify-content: space-between !important;
   width: 100% !important;
@@ -443,7 +443,7 @@ button {
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   box-sizing: content-box;
   border: 2px solid #949598;
-  border-radius: calc((calc(6px + 2.125ex) + 2px*2) / 2);
+  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) / 2);
   background-color: transparent;
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
@@ -522,7 +522,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   display: flex;
   outline: 0 !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2))))) !important;
+  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
   color-scheme: light dark !important;
   justify-content: space-between !important;
   width: 100% !important;
@@ -543,7 +543,7 @@ button {
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   box-sizing: content-box;
   border: 2px solid #7E7F82;
-  border-radius: calc((calc(6px + 2.125ex) + 2px*2) / 2);
+  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) / 2);
   background-color: transparent;
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
@@ -622,7 +622,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   display: flex;
   outline: 0 !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2))))) !important;
+  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
   color-scheme: light dark !important;
   justify-content: space-between !important;
   width: 100% !important;
@@ -643,7 +643,7 @@ button {
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   box-sizing: content-box;
   border: 2px solid #949598;
-  border-radius: calc((calc(6px + 2.125ex) + 2px*2) / 2);
+  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) / 2);
   background-color: transparent;
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
@@ -722,7 +722,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
   display: flex;
   outline: 0 !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2))))) !important;
+  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
   color-scheme: light dark !important;
   justify-content: space-between !important;
   width: 100% !important;
@@ -743,7 +743,7 @@ button {
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   box-sizing: content-box;
   border: 2px solid #197E10;
-  border-radius: calc((calc(6px + 2.125ex) + 2px*2) / 2);
+  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) / 2);
   background-color: #197E10;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
@@ -828,7 +828,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
   display: inline-flex;
   outline: 0 !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2))))) !important;
+  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
   color-scheme: light dark !important;
   justify-content: flex-start !important;
   width: auto !important;
@@ -850,7 +850,7 @@ button {
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   box-sizing: content-box;
   border: 2px solid #6B6D70;
-  border-radius: calc((calc(6px + 2.125ex) + 2px*2) / 2);
+  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) / 2);
   background-color: transparent;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
@@ -935,7 +935,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
   display: inline-flex;
   outline: 0 !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2))))) !important;
+  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
   color-scheme: light dark !important;
   justify-content: flex-start !important;
   width: auto !important;
@@ -957,7 +957,7 @@ button {
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   box-sizing: content-box;
   border: 2px solid #6B6D70;
-  border-radius: calc((calc(6px + 2.125ex) + 2px*2) / 2);
+  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) / 2);
   background-color: transparent;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
@@ -1042,7 +1042,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"start","
   display: inline-flex;
   outline: 0 !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2))))) !important;
+  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
   color-scheme: light dark !important;
   justify-content: flex-start !important;
   width: auto !important;
@@ -1064,7 +1064,7 @@ button {
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   box-sizing: content-box;
   border: 2px solid #6B6D70;
-  border-radius: calc((calc(6px + 2.125ex) + 2px*2) / 2);
+  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) / 2);
   background-color: transparent;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
@@ -1148,7 +1148,7 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
   display: inline-flex;
   outline: 0 !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  gap: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2))))) !important;
+  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
   color-scheme: light dark !important;
   justify-content: flex-start !important;
   width: auto !important;
@@ -1170,7 +1170,7 @@ button {
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   box-sizing: content-box;
   border: 2px solid #6B6D70;
-  border-radius: calc((calc(6px + 2.125ex) + 2px*2) / 2);
+  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) / 2);
   background-color: transparent;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
