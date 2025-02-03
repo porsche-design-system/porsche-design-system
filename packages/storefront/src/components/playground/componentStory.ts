@@ -1,19 +1,21 @@
-import type { ConfiguratorTagNames, ElementConfig, PropTypeMapping } from '@/components/playground/Configurator';
+import type {
+  ConfiguratorTagNames,
+  ElementConfig,
+  HTMLElementOrComponentProps,
+  HTMLTagOrComponent,
+} from '@/components/playground/Configurator';
 
-export type SlotStory = {
-  name: string; // Also used as key
-  generator: (string | ElementConfig | undefined)[];
-};
-
-// TODO: slotName must be typed to only allow slots of current component
-export type SlotStories = {
+// TODO: slotName must be typed to only allow slots of current component when PDS component is used
+export type SlotStories<Tag extends HTMLTagOrComponent = HTMLTagOrComponent> = {
   [slotName: string]: {
-    [storyName: string]: SlotStory;
+    [storyName: string]: Story<Tag>;
   };
 };
 
 export type ComponentSlotStory = {
-  [Tag in keyof PropTypeMapping]: SlotStories;
+  [Tag in ConfiguratorTagNames]: SlotStories<Tag>; // Required keys
+} & {
+  [Tag in keyof JSX.IntrinsicElements]?: SlotStories<Tag>; // Optional keys
 };
 
 export const componentSlotStories: ComponentSlotStory = {
@@ -39,7 +41,7 @@ export const componentSlotStories: ComponentSlotStory = {
     header: {
       basic: {
         name: 'Basic',
-        generator: [
+        generator: () => [
           {
             tag: 'p-heading',
             properties: { slot: 'header', size: 'large', tag: 'h2' },
@@ -51,11 +53,11 @@ export const componentSlotStories: ComponentSlotStory = {
     default: {
       basic: {
         name: 'Basic',
-        generator: [{ tag: 'p-text', children: ['Some Content'] }],
+        generator: () => [{ tag: 'p-text', children: ['Some Content'] }],
       },
       scrollable: {
         name: 'Scrollable Content',
-        generator: [
+        generator: () => [
           { tag: 'p-text', children: ['Some Content Begin'] },
           { tag: 'div', properties: { style: { width: '10px', height: '120vh', background: 'deeppink' } } },
           { tag: 'p-text', children: ['Some Content End'] },
@@ -65,7 +67,7 @@ export const componentSlotStories: ComponentSlotStory = {
     footer: {
       basic: {
         name: 'Two Button Footer',
-        generator: [
+        generator: () => [
           {
             tag: 'p-button-group',
             properties: { slot: 'footer' },
@@ -80,7 +82,9 @@ export const componentSlotStories: ComponentSlotStory = {
     'sub-footer': {
       basic: {
         name: 'Basic Sub-Footer',
-        generator: [{ tag: 'p-text', properties: { slot: 'sub-footer' }, children: ['Some additional Sub-Footer'] }],
+        generator: () => [
+          { tag: 'p-text', properties: { slot: 'sub-footer' }, children: ['Some additional Sub-Footer'] },
+        ],
       },
     },
   },
@@ -96,11 +100,11 @@ export const componentSlotStories: ComponentSlotStory = {
     default: {
       basic: {
         name: 'Basic',
-        generator: ['Some label'],
+        generator: () => ['Some label'],
       },
       'slotted-anchor': {
         name: 'Slotted Anchor',
-        generator: [{ tag: 'a', properties: { href: 'https://www.porsche.com' }, children: ['Some label'] }],
+        generator: () => [{ tag: 'a', properties: { href: 'https://www.porsche.com' }, children: ['Some label'] }],
       },
     },
   },
@@ -198,24 +202,30 @@ export const componentSlotStories: ComponentSlotStory = {
  * - [ ] - Refactor value conversions (default value, selects...)
  * - [ ] - console error when initially loading image of p-link-tile (image is still shown)
  * - [ ] - Weird error when changing form prop of p-select to empty string => form property gets set to null. Seems to be a general error when resetting a text-field prop. The example and generatedOutput looks good so maybe there is a problem when the component quickly disconnects and conntects again?
+ * - [ ] - Error when setting theme initially
  * - [ ] - Link social icon error when switching icon back to undefined
+ * - [ ] - Make slots toggleable if they are not required. Default slot required? In case of link required when href not set?
+ * - [ ] - prop/slot relation? link href -> default slotted anchor
+ * - [ ] - make all props removable?
  */
 
-export type SlotState<T extends keyof PropTypeMapping> = {
-  [SlotName in keyof ComponentSlotStory[T]]: SlotStory; // Ensures selected slot is a key in SlotVariants
-};
-
-export type StoryState<T extends keyof PropTypeMapping> = {
-  properties?: PropTypeMapping[T];
-  slots?: SlotState<T>;
-  slotVariants?: ComponentSlotStory[T];
-};
-
 export type ComponentsStory = {
-  [Tag in ConfiguratorTagNames]: {
-    state?: StoryState<Tag>;
-    generator: (state: StoryState<Tag>) => ElementConfig[];
-  };
+  [Tag in ConfiguratorTagNames]: Story<Tag>;
+};
+
+export type Story<Tag extends HTMLTagOrComponent = HTMLTagOrComponent> = {
+  name?: string;
+  state?: StoryState<Tag>;
+  generator: (state?: StoryState<Tag>) => (string | ElementConfig | undefined)[];
+};
+
+export type StoryState<Tag extends HTMLTagOrComponent> = {
+  properties?: HTMLElementOrComponentProps<Tag>;
+  slots?: SlotState<Tag>;
+};
+
+export type SlotState<Tag extends HTMLTagOrComponent> = {
+  [SlotName in keyof ComponentSlotStory[Tag]]: Story<Tag>; // Ensures selected slot is a key in SlotVariants
 };
 
 /**
@@ -227,7 +237,7 @@ export const componentsStory: ComponentsStory = {
     state: {
       properties: { heading: 'Some Heading' },
     },
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-accordion',
         properties,
@@ -244,9 +254,13 @@ export const componentsStory: ComponentsStory = {
   },
   'p-banner': {
     state: {
-      properties: { open: true },
+      properties: {
+        open: true,
+        heading: 'Some Heading',
+        description: 'Some Description',
+      },
     },
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-banner',
         properties,
@@ -254,7 +268,7 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-button': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-button',
         properties,
@@ -263,7 +277,7 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-button-group': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-button-group',
         properties,
@@ -275,7 +289,7 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-button-pure': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-button-pure',
         properties,
@@ -287,7 +301,7 @@ export const componentsStory: ComponentsStory = {
     state: {
       properties: { label: 'Some label', description: 'Some Description' },
     },
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-button-tile',
         properties,
@@ -304,7 +318,7 @@ export const componentsStory: ComponentsStory = {
   },
   // TODO: Add story
   'p-canvas': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-canvas',
         properties,
@@ -315,7 +329,7 @@ export const componentsStory: ComponentsStory = {
     state: {
       properties: { heading: 'Some heading' },
     },
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-carousel',
         properties,
@@ -346,7 +360,7 @@ export const componentsStory: ComponentsStory = {
     state: {
       properties: { label: 'Some label', name: 'some-name' },
     },
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-checkbox',
         properties,
@@ -357,7 +371,7 @@ export const componentsStory: ComponentsStory = {
     state: {
       properties: { label: 'Some label' },
     },
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-checkbox-wrapper',
         properties,
@@ -366,7 +380,7 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-content-wrapper': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-content-wrapper',
         properties,
@@ -375,7 +389,7 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-crest': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-crest',
         properties,
@@ -383,7 +397,7 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-display': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-display',
         properties,
@@ -392,7 +406,7 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-divider': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-divider',
         properties,
@@ -403,7 +417,7 @@ export const componentsStory: ComponentsStory = {
     state: {
       properties: { label: 'Some legend label' },
     },
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-fieldset',
         properties,
@@ -421,7 +435,7 @@ export const componentsStory: ComponentsStory = {
     state: {
       properties: { label: 'Some legend label' },
     },
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-fieldset-wrapper',
         properties,
@@ -436,7 +450,7 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-flex': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-flex',
         properties: { ...properties, className: 'example-flex' },
@@ -477,28 +491,28 @@ export const componentsStory: ComponentsStory = {
     state: {
       properties: { open: false, aria: { 'aria-label': 'Some Heading' } },
       slots: {
-        header: componentSlotStories['p-flyout'].header.basic,
-        default: componentSlotStories['p-flyout'].default.basic,
-        footer: componentSlotStories['p-flyout'].footer.basic,
-        'sub-footer': componentSlotStories['p-flyout']['sub-footer'].basic,
+        header: componentSlotStories['p-flyout']?.header.basic,
+        default: componentSlotStories['p-flyout']?.default.basic,
+        footer: componentSlotStories['p-flyout']?.footer.basic,
+        'sub-footer': componentSlotStories['p-flyout']?.['sub-footer'].basic,
       },
     },
-    generator: ({ properties, slots = {} }) => [
+    generator: ({ properties, slots = {} } = {}) => [
       {
         tag: 'p-flyout',
         properties,
         children: [
-          ...slots.header.generator,
-          ...slots.default.generator,
-          ...slots.footer.generator,
-          ...slots['sub-footer'].generator,
+          ...slots.header.generator(),
+          ...slots.default.generator(),
+          ...slots.footer.generator(),
+          ...slots['sub-footer'].generator(),
         ],
       },
     ],
   },
   // TODO: Add story
   'p-flyout-multilevel': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-flyout-multilevel',
         properties,
@@ -506,7 +520,7 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-grid': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-grid',
         properties,
@@ -606,7 +620,7 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-heading': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-heading',
         properties,
@@ -615,7 +629,7 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-headline': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-headline',
         properties,
@@ -624,7 +638,7 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-icon': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-icon',
         properties,
@@ -633,7 +647,7 @@ export const componentsStory: ComponentsStory = {
   },
   'p-inline-notification': {
     state: { properties: { heading: 'Some heading', headingTag: 'h3', description: 'Some description.' } },
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-inline-notification',
         properties,
@@ -645,14 +659,14 @@ export const componentsStory: ComponentsStory = {
     state: {
       properties: { href: 'https://porsche.com' },
       slots: {
-        default: componentSlotStories['p-link'].default.basic,
+        default: componentSlotStories['p-link']?.default.basic,
       },
     },
-    generator: ({ properties, slots = {} }) => [
+    generator: ({ properties, slots = {} } = {}) => [
       {
         tag: 'p-link',
         properties,
-        children: slots.default.generator,
+        children: slots.default.generator(),
       },
     ],
   },
@@ -660,7 +674,7 @@ export const componentsStory: ComponentsStory = {
     state: {
       properties: { href: 'https://porsche.com' },
     },
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-link-pure',
         properties,
@@ -672,7 +686,7 @@ export const componentsStory: ComponentsStory = {
     state: {
       properties: { href: 'https://example.com', icon: 'logo-facebook', target: '_blank', rel: 'nofollow noopener' },
     },
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-link-social',
         properties,
@@ -684,7 +698,7 @@ export const componentsStory: ComponentsStory = {
     state: {
       properties: { href: 'https://porsche.com', label: 'Some label', description: 'Some Description' },
     },
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-link-tile',
         properties,
@@ -703,7 +717,7 @@ export const componentsStory: ComponentsStory = {
     state: {
       properties: { heading: 'Some heading' },
     },
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-link-tile-model-signature',
         properties,
@@ -732,7 +746,7 @@ export const componentsStory: ComponentsStory = {
     state: {
       properties: { heading: 'Some heading', price: '1.911,00 €', href: 'https://porsche.com' },
     },
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-link-tile-product',
         properties,
@@ -741,7 +755,7 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-marque': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-marque',
         properties,
@@ -750,7 +764,7 @@ export const componentsStory: ComponentsStory = {
   },
   // TODO: Add story
   'p-modal': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-modal',
         properties,
@@ -758,7 +772,7 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-model-signature': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-model-signature',
         properties,
@@ -769,7 +783,7 @@ export const componentsStory: ComponentsStory = {
     state: {
       properties: { name: 'name', label: 'Some Label', description: 'Some description' },
     },
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-multi-select',
         properties,
@@ -793,7 +807,7 @@ export const componentsStory: ComponentsStory = {
   // }],
   // TODO: Add story
   'p-optgroup': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-optgroup',
         properties,
@@ -804,7 +818,7 @@ export const componentsStory: ComponentsStory = {
     state: {
       properties: { totalItemsCount: 500, itemsPerPage: 25, activePage: 1 },
     },
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-pagination',
         properties,
@@ -815,7 +829,7 @@ export const componentsStory: ComponentsStory = {
     state: {
       properties: { label: 'Some label' },
     },
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-pin-code',
         properties,
@@ -823,7 +837,7 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-popover': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-popover',
         properties,
@@ -837,7 +851,7 @@ export const componentsStory: ComponentsStory = {
         label: 'Some label',
       },
     },
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-radio-button-wrapper',
         properties,
@@ -853,7 +867,7 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-scroller': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-scroller',
         properties: { ...properties, className: 'scroller' },
@@ -962,7 +976,7 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-segmented-control': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-segmented-control',
         properties,
@@ -985,7 +999,7 @@ export const componentsStory: ComponentsStory = {
         value: 'a',
       },
     },
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-select',
         properties,
@@ -1004,7 +1018,7 @@ export const componentsStory: ComponentsStory = {
     state: {
       properties: { label: 'Some label' },
     },
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-select-wrapper',
         properties,
@@ -1027,7 +1041,7 @@ export const componentsStory: ComponentsStory = {
   },
   // TODO: Add story
   'p-sheet': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-sheet',
         properties,
@@ -1038,7 +1052,7 @@ export const componentsStory: ComponentsStory = {
     state: {
       properties: { aria: { 'aria-label': 'Loading page content' } },
     },
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-spinner',
         properties,
@@ -1046,7 +1060,7 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-stepper-horizontal': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-stepper-horizontal',
         properties,
@@ -1060,7 +1074,7 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-switch': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-switch',
         properties,
@@ -1070,7 +1084,7 @@ export const componentsStory: ComponentsStory = {
   },
   'p-table': {
     state: { properties: { caption: 'Some caption' } },
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-table',
         properties,
@@ -1150,7 +1164,7 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-tabs': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-tabs',
         properties,
@@ -1176,7 +1190,7 @@ export const componentsStory: ComponentsStory = {
   },
   // TODO: Add story
   'p-tabs-bar': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-tabs-bar',
         properties,
@@ -1184,7 +1198,7 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-tag': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-tag',
         properties,
@@ -1193,7 +1207,7 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-tag-dismissible': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-tag-dismissible',
         properties,
@@ -1202,7 +1216,7 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-text': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-text',
         properties,
@@ -1212,7 +1226,7 @@ export const componentsStory: ComponentsStory = {
   },
   'p-text-field-wrapper': {
     state: { properties: { label: 'Some label' } },
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-text-field-wrapper',
         properties,
@@ -1221,7 +1235,7 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-text-list': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-text-list',
         properties,
@@ -1249,7 +1263,7 @@ export const componentsStory: ComponentsStory = {
     state: {
       properties: { name: 'some-name', label: 'Some label' },
     },
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-textarea',
         properties,
@@ -1260,7 +1274,7 @@ export const componentsStory: ComponentsStory = {
     state: {
       properties: { label: 'Some label' },
     },
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-textarea-wrapper',
         properties,
@@ -1270,7 +1284,7 @@ export const componentsStory: ComponentsStory = {
   },
   // TODO: Add story
   'p-toast': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-toast',
         properties,
@@ -1278,7 +1292,7 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   'p-wordmark': {
-    generator: ({ properties }) => [
+    generator: ({ properties } = {}) => [
       {
         tag: 'p-wordmark',
         properties,
@@ -1286,21 +1300,21 @@ export const componentsStory: ComponentsStory = {
     ],
   },
   // Unused only for typing purposes
-  'p-flex-item': { generator: ({ properties }) => [] },
-  'p-flyout-multilevel-item': { generator: ({ properties }) => [] },
-  'p-grid-item': { generator: ({ properties }) => [] },
-  'p-multi-select-option': { generator: ({ properties }) => [] },
-  'p-segmented-control-item': { generator: ({ properties }) => [] },
-  'p-select-option': { generator: ({ properties }) => [] },
-  'p-stepper-horizontal-item': { generator: ({ properties }) => [] },
-  'p-table-body': { generator: ({ properties }) => [] },
-  'p-table-cell': { generator: ({ properties }) => [] },
-  'p-table-head-cell': { generator: ({ properties }) => [] },
-  'p-table-row': { generator: ({ properties }) => [] },
-  'p-table-head-row': { generator: ({ properties }) => [] },
-  'p-table-head': { generator: ({ properties }) => [] },
-  'p-tabs-item': { generator: ({ properties }) => [] },
-  'p-text-list-item': { generator: ({ properties }) => [] },
+  'p-flex-item': { generator: ({ properties } = {}) => [] },
+  'p-flyout-multilevel-item': { generator: ({ properties } = {}) => [] },
+  'p-grid-item': { generator: ({ properties } = {}) => [] },
+  'p-multi-select-option': { generator: ({ properties } = {}) => [] },
+  'p-segmented-control-item': { generator: ({ properties } = {}) => [] },
+  'p-select-option': { generator: ({ properties } = {}) => [] },
+  'p-stepper-horizontal-item': { generator: ({ properties } = {}) => [] },
+  'p-table-body': { generator: ({ properties } = {}) => [] },
+  'p-table-cell': { generator: ({ properties } = {}) => [] },
+  'p-table-head-cell': { generator: ({ properties } = {}) => [] },
+  'p-table-row': { generator: ({ properties } = {}) => [] },
+  'p-table-head-row': { generator: ({ properties } = {}) => [] },
+  'p-table-head': { generator: ({ properties } = {}) => [] },
+  'p-tabs-item': { generator: ({ properties } = {}) => [] },
+  'p-text-list-item': { generator: ({ properties } = {}) => [] },
 };
 
 // TODO: Revised config for dynamic generation of children based on active slots
@@ -1474,10 +1488,10 @@ export const componentsStory: ComponentsStory = {
 //     slots: {
 //       '': {
 //         Basic: {
-//           generator: ({ properties }) => [{ tag: 'span', children: ['Some label'] }],
+//           generator: ({ properties } = {}) => [{ tag: 'span', children: ['Some label'] }],
 //         },
 //         'Slotted Anchor': {
-//           generator: ({ properties }) => [
+//           generator: ({ properties } = {}) => [
 //             {
 //               tag: 'a',
 //               properties: { href: 'https://porsche.com' },

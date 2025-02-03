@@ -6,8 +6,8 @@ import { ConfigureProps } from '@/components/playground/ConfigureProps';
 import { ConfigureSlots } from '@/components/playground/ConfigureSlots';
 import { Playground } from '@/components/playground/Playground';
 import {
-  ComponentSlotStory,
-  type SlotStory,
+  type SlotStories,
+  type Story,
   type StoryState,
   componentSlotStories,
   componentsStory,
@@ -168,33 +168,33 @@ import {
 } from '@porsche-design-system/components-react/ssr';
 import type { TagName, TagNameWithChunk } from '@porsche-design-system/shared';
 import { kebabCase } from 'change-case';
-import React, { useEffect, useState } from 'react';
+import React, { type CSSProperties, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-
-export type ConfiguratorTagNames = keyof SafePropTypeMapping;
-
-type HTMLTagOrComponent = keyof JSX.IntrinsicElements | ConfiguratorTagNames;
-
-export type ElementConfig<T extends HTMLTagOrComponent = HTMLTagOrComponent> = T extends keyof JSX.IntrinsicElements
-  ? {
-      tag: T;
-      properties?: Partial<JSX.IntrinsicElements[T]>;
-      children?: (string | ElementConfig | undefined)[];
-    }
-  : T extends ConfiguratorTagNames // Ensure T is in ConfiguratorTagNames for custom components
-    ? PDSComponentConfig<T>
-    : never;
-
-export type PDSComponentConfig<T extends ConfiguratorTagNames = ConfiguratorTagNames> = {
-  tag: T;
-  properties?: SafePropTypeMapping[T];
-  children?: (string | ElementConfig | undefined)[];
-};
 
 type SafePropTypeMapping = {
   [K in Exclude<TagName, 'p-toast-item' | 'p-select-wrapper-dropdown'>]: K extends keyof PropTypeMapping
     ? PropTypeMapping[K]
     : never;
+};
+
+export type ConfiguratorTagNames = keyof SafePropTypeMapping;
+
+export type HTMLTagOrComponent = keyof JSX.IntrinsicElements | ConfiguratorTagNames;
+
+/**
+ * Represents the properties of T which can be either a PDS Component or an HTML Element
+ */
+export type HTMLElementOrComponentProps<T extends HTMLTagOrComponent = HTMLTagOrComponent> =
+  T extends keyof JSX.IntrinsicElements
+    ? Partial<JSX.IntrinsicElements[T]>
+    : T extends ConfiguratorTagNames
+      ? SafePropTypeMapping[T]
+      : never;
+
+export type ElementConfig<T extends HTMLTagOrComponent = HTMLTagOrComponent> = {
+  tag: T;
+  properties?: HTMLElementOrComponentProps<T>;
+  children?: (string | ElementConfig | undefined)[];
 };
 
 export type PropTypeMapping = {
@@ -356,7 +356,7 @@ type GeneratedOutput = {
   markup: string;
 };
 
-const generateCode = (configs: ElementConfig[]): GeneratedOutput => {
+const generateCode = (configs: (string | ElementConfig | undefined)[]): GeneratedOutput => {
   const outputs = configs.map((config, index) => generateOutput(config, 0, index));
   return {
     jsx: outputs.map((output) => output.jsx),
@@ -364,7 +364,25 @@ const generateCode = (configs: ElementConfig[]): GeneratedOutput => {
   };
 };
 
-const generateOutput = (descriptor: ElementConfig, indentLevel = 0, index?: number): GeneratedOutput => {
+const generateOutput = (
+  descriptor: string | ElementConfig | undefined,
+  indentLevel = 0,
+  index?: number
+): GeneratedOutput => {
+  if (typeof descriptor === 'string') {
+    return {
+      jsx: descriptor,
+      markup: `${'  '.repeat(indentLevel)}${descriptor}`,
+    };
+  }
+
+  if (!descriptor) {
+    return {
+      jsx: null,
+      markup: '',
+    };
+  }
+
   const { tag, properties = {}, children = [] } = descriptor;
 
   const attributesArray = Object.entries(properties).map(([key, value]) => {
@@ -374,12 +392,22 @@ const generateOutput = (descriptor: ElementConfig, indentLevel = 0, index?: numb
 
     if (key === 'style') {
       const styles = Object.entries(value)
-        .map(([key, value]) => `${kebabCase(key)}: ${value}`)
+        .map(([key, value]) => {
+          // CSS Custom Property
+          if (key.startsWith('--')) {
+            return `${key}: ${value}`;
+          }
+          return `${kebabCase(key)}: ${value}`;
+        })
         .join('; ');
       return `style="${styles}"`;
     }
 
-    return `${kebabCase(key)}='${JSON.stringify(value)}'`;
+    if (key === 'aria') {
+      return `${kebabCase(key)}="${JSON.stringify(value).replace(/"/g, "'")}"`;
+    }
+
+    return `${kebabCase(key)}="${JSON.stringify(value)}"`;
   });
 
   const attributesString = attributesArray.length > 0 ? ` ${attributesArray.join(' ')}` : '';
@@ -416,10 +444,13 @@ type ConfiguratorProps = {
 
 export const Configurator = ({ tagName }: ConfiguratorProps) => {
   const meta = componentMeta[tagName];
-  const slots = componentSlotStories[tagName];
+  // @ts-ignore
+  const slots: SlotStories<typeof tagName> = componentSlotStories[tagName];
   const [domReady, setDomReady] = useState(false);
   const [accordionState, setAccordionState] = useState<Record<number, boolean>>({});
-  const [storyState, setStoryState] = useState(componentsStory[tagName].state ?? {});
+  // TODO: Pass story as param into configurator
+  // @ts-ignore
+  const [storyState, setStoryState] = useState<StoryState<typeof tagName>>(componentsStory[tagName].state ?? {});
   const [{ jsx, markup }, setGenerated] = useState<GeneratedOutput>({ jsx: null, markup: '' });
 
   const handleAccordionUpdate = (index: number, e: CustomEvent<AccordionUpdateEventDetail>) => {
@@ -429,7 +460,7 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
     }));
   };
 
-  const shouldUpdate = (selectedValue: string | undefined, propName: keyof PDSComponentConfig['properties']) => {
+  const shouldUpdate = (selectedValue: string | undefined, propName: keyof ElementConfig['properties']) => {
     if (propName === 'theme') return true;
     const isEqualToCurrentValue = selectedValue === storyState.properties?.[propName];
     const isEmptyStringAndNotApplied = selectedValue === '' && storyState.properties?.[propName] === undefined;
@@ -438,9 +469,11 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
     return !(isEqualToCurrentValue || isEmptyStringAndNotApplied || isNotAppliedAndDefaultValue);
   };
 
-  const handleUpdateProps = (propName: keyof PDSComponentConfig['properties'], selectedValue: string | undefined) => {
+  const handleUpdateProps = (propName: keyof ElementConfig['properties'], selectedValue: string | undefined) => {
     if (!shouldUpdate(selectedValue, propName)) return;
 
+    // TODO: Fix typing
+    // @ts-ignore
     setStoryState((prev) => {
       const isDefault = isDefaultValue(meta.propsMeta?.[propName], selectedValue);
       const updatedAttributes = { ...prev.properties };
@@ -448,6 +481,7 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
       if (selectedValue === undefined || isDefault) {
         delete updatedAttributes[propName];
       } else {
+        // TODO: Fix typing
         // @ts-ignore
         updatedAttributes[propName] = selectedValue;
       }
@@ -456,7 +490,7 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
     });
   };
 
-  const handleUpdateSlots = (slotName: string, selectedSlotStory: SlotStory | undefined) => {
+  const handleUpdateSlots = (slotName: string, selectedSlotStory: Story | undefined) => {
     setStoryState((prev) => {
       const updatedSlots = { ...prev.slots };
       // TODO: Fix typing
@@ -465,8 +499,33 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
     });
   };
 
+  const handleUpdateCssVariable = (name: string, value: string | undefined) => {
+    setStoryState((prev) => {
+      const updatedProps: StoryState<typeof tagName>['properties'] = { ...prev.properties };
+
+      // Ensure style is initialized
+      updatedProps.style = { ...updatedProps.style };
+
+      if (value !== undefined) {
+        (updatedProps.style as any)[name] = value;
+      } else {
+        delete (updatedProps.style as any)[name];
+        if (Object.keys(updatedProps.style).length === 0) {
+          // biome-ignore lint/performance/noDelete: <explanation>
+          delete updatedProps.style;
+        }
+      }
+
+      return {
+        ...prev,
+        properties: updatedProps as PropTypeMapping[typeof tagName],
+      };
+    });
+  };
+
   const handleResetAllProps = () => {
-    setStoryState(componentsStory[tagName].state ?? {});
+    // @ts-ignore
+    setStoryState(componentsStory[tagName].state);
   };
 
   const handleDirectionUpdate = (e: CustomEvent<SelectUpdateEventDetail>) => {
@@ -498,18 +557,18 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
       tagName={tagName}
       componentSlots={meta.slotsMeta}
       configuredSlots={storyState}
+      // @ts-ignore
       slotStories={slots}
       onUpdateSlots={handleUpdateSlots}
     />,
-    <ConfigureCssVariables />,
-    <>
-      <span slot="heading">Direction</span>
-      <DirectionSelect
-        dir="ltr"
-        onUpdate={(e) => handleDirectionUpdate(e)}
-        label="Changes the direction of HTML elements, mostly used on <body> tag to support languages which are read from right to left like e.g. Arabic."
-      />
-    </>,
+    <ConfigureCssVariables
+      tagName={tagName}
+      componentCssVariables={meta.cssVariablesMeta}
+      configuredCssVariables={storyState.properties}
+      defaultCssVariables={componentsStory[tagName].state?.properties ?? {}}
+      onUpdateCssVariables={handleUpdateCssVariable}
+      onResetAllCssVariables={() => {}}
+    />,
   ];
 
   return (
