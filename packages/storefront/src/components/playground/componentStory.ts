@@ -167,7 +167,6 @@ export const componentSlotStories: ComponentSlotStory = {
  * Some edge cases like p-carousel slidesPerPages which is type number | 'auto'
  * How to deal with aria attributes? Currently not shown in the configurator ('p-icon'). Shown for ('p-spinner') .
  *
- * Should we delete empty string text-field from props? Usually the default is undefined.
  * Model Signature size inherit?
  * How to handle styles in examples? style tag currently works. Inline style is missing conversion react/vanilla.js. Tailwind would be also an option. Currently affecting p-carousel, p-radio-button-wrapper (Missing spacing)
  * How to render allowedValues ['string' | 'number'] like in p-segmented-control? Currently textfield since string can be any value.
@@ -497,15 +496,15 @@ export const componentsStory: ComponentsStory = {
         'sub-footer': componentSlotStories['p-flyout']?.['sub-footer'].basic,
       },
     },
-    generator: ({ properties, slots = {} } = {}) => [
+    generator: ({ properties, slots } = {}) => [
       {
         tag: 'p-flyout',
         properties,
         children: [
-          ...slots.header.generator(),
-          ...slots.default.generator(),
-          ...slots.footer.generator(),
-          ...slots['sub-footer'].generator(),
+          ...(slots?.header?.generator() ?? []),
+          ...(slots?.default?.generator() ?? []),
+          ...(slots?.footer?.generator() ?? []),
+          ...(slots?.['sub-footer']?.generator() ?? []),
         ],
       },
     ],
@@ -662,11 +661,11 @@ export const componentsStory: ComponentsStory = {
         default: componentSlotStories['p-link']?.default.basic,
       },
     },
-    generator: ({ properties, slots = {} } = {}) => [
+    generator: ({ properties, slots } = {}) => [
       {
         tag: 'p-link',
         properties,
-        children: slots.default.generator(),
+        children: slots?.default?.generator() ?? [],
       },
     ],
   },
@@ -996,7 +995,6 @@ export const componentsStory: ComponentsStory = {
         name: 'options',
         label: 'Some Label',
         description: 'Some description',
-        value: 'a',
       },
     },
     generator: ({ properties } = {}) => [
