@@ -23,7 +23,7 @@ import { getCss } from '../../utils';
 
 /**
  * @css-variable {"name": "--p-banner-position-top", "description": "Position top of banner", "defaultValue": "56px"}
- * @css-variable {"name": "--p-banner-position-bottom", "description": "Position bottom of banner", "defaultValue": "56px"}
+ * @css-variable {"name": "--p-banner-position-bottom", "description": "Position bottom of banner. Only has an effect below breakpoint 's'.", "defaultValue": "56px"}
  */
 const cssVariableTop = '--p-banner-position-top';
 const cssVariableBottom = '--p-banner-position-bottom';
