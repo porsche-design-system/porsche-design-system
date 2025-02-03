@@ -202,7 +202,11 @@ export const componentSlotStories: ComponentSlotStory = {
  * - [ ] - Refactor value conversions (default value, selects...)
  * - [ ] - console error when initially loading image of p-link-tile (image is still shown)
  * - [ ] - Weird error when changing form prop of p-select to empty string => form property gets set to null. Seems to be a general error when resetting a text-field prop. The example and generatedOutput looks good so maybe there is a problem when the component quickly disconnects and conntects again?
+ * - [ ] - Error when setting theme initially
  * - [ ] - Link social icon error when switching icon back to undefined
+ * - [ ] - Make slots toggleable if they are not required. Default slot required? In case of link required when href not set?
+ * - [ ] - prop/slot relation? link href -> default slotted anchor
+ * - [ ] - make all props removable?
  */
 
 export type ComponentsStory = {
@@ -250,7 +254,11 @@ export const componentsStory: ComponentsStory = {
   },
   'p-banner': {
     state: {
-      properties: { open: true },
+      properties: {
+        open: true,
+        heading: 'Some Heading',
+        description: 'Some Description',
+      },
     },
     generator: ({ properties } = {}) => [
       {

@@ -31,10 +31,12 @@ export const ConfigureProps = ({
   onUpdateProps,
   onResetAllProps,
 }: ConfigurePropsProps) => {
-  const amountOfConfiguredProps = Object.keys(configuredProps ?? {}).filter(
-    // @ts-ignore
-    (key) => !Object.keys(defaultProps ?? {}).includes(key) || configuredProps?.[key] !== defaultProps?.[key]
-  ).length;
+  const amountOfConfiguredProps = Object.keys(configuredProps ?? {})
+    .filter((key) => key !== 'style')
+    .filter(
+      // @ts-ignore
+      (key) => !Object.keys(defaultProps ?? {}).includes(key) || configuredProps?.[key] !== defaultProps?.[key]
+    ).length;
 
   const filteredComponentProps = Object.entries(componentProps ?? {}).filter(
     ([_, value]) => !value.isAria && value.type !== 'string[]' && !value.isDeprecated
@@ -97,6 +99,7 @@ export const ConfigureProps = ({
             type="text"
             value={getCurrentValue(propName, propMeta) ?? ''}
             required={propMeta.isRequired}
+            // disabled={propMeta.hasAlternativeSlot ? configuredSlots.default propMeta.hasAlternativeSlot.tag : false}
             onInput={(e) => onUpdateProps(propName, e.currentTarget.value)}
           />
           <span slot="label" className="inline-flex gap-xs">

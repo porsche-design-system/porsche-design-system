@@ -168,7 +168,7 @@ import {
 } from '@porsche-design-system/components-react/ssr';
 import type { TagName, TagNameWithChunk } from '@porsche-design-system/shared';
 import { kebabCase } from 'change-case';
-import React, { useEffect, useState } from 'react';
+import React, { type CSSProperties, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 type SafePropTypeMapping = {
@@ -392,12 +392,22 @@ const generateOutput = (
 
     if (key === 'style') {
       const styles = Object.entries(value)
-        .map(([key, value]) => `${kebabCase(key)}: ${value}`)
+        .map(([key, value]) => {
+          // CSS Custom Property
+          if (key.startsWith('--')) {
+            return `${key}: ${value}`;
+          }
+          return `${kebabCase(key)}: ${value}`;
+        })
         .join('; ');
       return `style="${styles}"`;
     }
 
-    return `${kebabCase(key)}='${JSON.stringify(value)}'`;
+    if (key === 'aria') {
+      return `${kebabCase(key)}="${JSON.stringify(value).replace(/"/g, "'")}"`;
+    }
+
+    return `${kebabCase(key)}="${JSON.stringify(value)}"`;
   });
 
   const attributesString = attributesArray.length > 0 ? ` ${attributesArray.join(' ')}` : '';
@@ -440,7 +450,7 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
   const [accordionState, setAccordionState] = useState<Record<number, boolean>>({});
   // TODO: Pass story as param into configurator
   // @ts-ignore
-  const [storyState, setStoryState] = useState<StoryState<typeof tagName>>(componentsStory[tagName].state);
+  const [storyState, setStoryState] = useState<StoryState<typeof tagName>>(componentsStory[tagName].state ?? {});
   const [{ jsx, markup }, setGenerated] = useState<GeneratedOutput>({ jsx: null, markup: '' });
 
   const handleAccordionUpdate = (index: number, e: CustomEvent<AccordionUpdateEventDetail>) => {
@@ -489,6 +499,30 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
     });
   };
 
+  const handleUpdateCssVariable = (name: string, value: string | undefined) => {
+    setStoryState((prev) => {
+      const updatedProps: StoryState<typeof tagName>['properties'] = { ...prev.properties };
+
+      // Ensure style is initialized
+      updatedProps.style = { ...updatedProps.style };
+
+      if (value !== undefined) {
+        (updatedProps.style as any)[name] = value;
+      } else {
+        delete (updatedProps.style as any)[name];
+        if (Object.keys(updatedProps.style).length === 0) {
+          // biome-ignore lint/performance/noDelete: <explanation>
+          delete updatedProps.style;
+        }
+      }
+
+      return {
+        ...prev,
+        properties: updatedProps as PropTypeMapping[typeof tagName],
+      };
+    });
+  };
+
   const handleResetAllProps = () => {
     // @ts-ignore
     setStoryState(componentsStory[tagName].state);
@@ -527,15 +561,14 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
       slotStories={slots}
       onUpdateSlots={handleUpdateSlots}
     />,
-    <ConfigureCssVariables />,
-    <>
-      <span slot="heading">Direction</span>
-      <DirectionSelect
-        dir="ltr"
-        onUpdate={(e) => handleDirectionUpdate(e)}
-        label="Changes the direction of HTML elements, mostly used on <body> tag to support languages which are read from right to left like e.g. Arabic."
-      />
-    </>,
+    <ConfigureCssVariables
+      tagName={tagName}
+      componentCssVariables={meta.cssVariablesMeta}
+      configuredCssVariables={storyState.properties}
+      defaultCssVariables={componentsStory[tagName].state?.properties ?? {}}
+      onUpdateCssVariables={handleUpdateCssVariable}
+      onResetAllCssVariables={() => {}}
+    />,
   ];
 
   return (
