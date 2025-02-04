@@ -13,8 +13,10 @@ import {
 } from '@/components/playground/componentStory';
 import { isDefaultValue } from '@/components/playground/configuratorUtils';
 import type { FrameworkMarkup } from '@/models/framework';
+import { generateAngularMarkup } from '@/utils/generator/generateAngularMarkup';
 import { generateReactMarkup } from '@/utils/generator/generateReactMarkup';
 import { generateVanillaJsMarkup } from '@/utils/generator/generateVanillaJsMarkup';
+import { generateVueMarkup } from '@/utils/generator/generateVueMarkup';
 import { createElements } from '@/utils/generator/generator';
 import { componentMeta } from '@porsche-design-system/component-meta';
 import {
@@ -299,6 +301,8 @@ export const Configurator = ({ tagName }: ConfiguratorProps) => {
     setExampleMarkup({
       'vanilla-js': generateVanillaJsMarkup(generatedConfig),
       react: generateReactMarkup(generatedConfig),
+      angular: generateAngularMarkup(generatedConfig),
+      vue: generateVueMarkup(generatedConfig),
     });
   }, [storyState, tagName]);
 
