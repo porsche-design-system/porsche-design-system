@@ -1906,6 +1906,10 @@ export namespace Components {
          */
         "checked"?: boolean;
         /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
+        /**
           * Disables the switch. No events will be triggered while disabled state is active.
          */
         "disabled"?: boolean;
@@ -5244,6 +5248,10 @@ declare namespace LocalJSX {
           * Visualize the switch with on/off status.
          */
         "checked"?: boolean;
+        /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
         /**
           * Disables the switch. No events will be triggered while disabled state is active.
          */
