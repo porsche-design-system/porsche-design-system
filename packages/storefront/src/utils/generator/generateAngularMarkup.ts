@@ -1,8 +1,8 @@
 import type { ElementConfig } from '@/components/playground/Configurator';
 import { pascalCase } from 'change-case';
 
-export const generateAngularMarkup = (configs: (string | ElementConfig | undefined)[]): string => {
-  const outputs = configs.map((config) => createAngularMarkup(config));
+export const generateAngularMarkup = (configs: (string | ElementConfig | undefined)[], indentLevel = 2): string => {
+  const outputs = configs.map((config) => createAngularMarkup(config, indentLevel));
   return outputs.join('\n\n');
 };
 

@@ -1,8 +1,8 @@
 import type { ElementConfig } from '@/components/playground/Configurator';
 import { pascalCase } from 'change-case';
 
-export const generateReactMarkup = (configs: (string | ElementConfig | undefined)[]): string => {
-  const outputs = configs.map((config) => createReactJSMarkup(config));
+export const generateReactMarkup = (configs: (string | ElementConfig | undefined)[], indentLevel = 3): string => {
+  const outputs = configs.map((config) => createReactJSMarkup(config, indentLevel));
   return outputs.join('\n\n');
 };
 
