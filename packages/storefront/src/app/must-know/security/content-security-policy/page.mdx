@@ -1,0 +1,113 @@
+import { Notification } from "@/components/common/Notification";
+import { TableOfContents } from "@/components/common/TableOfContents";
+
+export const metadata = {
+  title: 'Security: Content Security Policy - Porsche Design System',
+  description: 'Learn how to secure your website with a Content Security Policy (CSP) while using the Porsche Design System.',
+}
+
+# Security
+
+<TableOfContents headings={["Basic","Partials"]} />
+
+The HTTP [Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy)
+(CSP) response header and meta tag allow website administrators to control resources the user agent is allowed to load
+for a given page. With a few exceptions, policies mostly involve specifying server origins and script endpoints. This
+helps guard against cross-site scripting attacks.
+
+Therefore, we recommend specifying a Content Security Policy for every website and web app.
+Further information can be found in the [Content Security Policy Reference](https://content-security-policy.com).
+
+## Basic
+
+By specifying `https://cdn.ui.porsche.com` and `https://cdn.ui.porsche.cn` for `default-src`, `style-src` and
+`script-src`, all basic use cases should be covered.
+
+For example, this website currently uses the following one.
+
+{/* <Playground :showCodeEditor="false" :frameworkMarkup="[this.currentCSP]"></Playground> */}
+
+## Partials
+
+However, the Porsche Design System requires and recommends the usage of [partials](/partials/introduction) for injecting
+styles/scripts and preloading assets.
+
+While partials for preloading are covered by whitelisting our CDN domains from above, partials that produce dynamic
+innerHTML are **not**.
+
+The ones affected are:
+
+- [getInitialStyles()](/partials/initial-styles) **required since v3.7.0**
+- [getLoaderScript()](/partials/loader-script)
+- [getDSRPonyfill()](/partials/dsr-ponyfill)
+- [getBrowserSupportFallbackScript()](/partials/browser-support-fallback-script)
+- [getCookiesFallbackScript()](/partials/cookies-fallback-script)
+
+To allow their result being executed by the browser there are two options:
+
+1. Apply a unique `nonce` attribute on the `script` and `style` tag that the partial produces and whitelist this nonce
+in the CSP header/meta tag
+2. Whitelist the `script`'s and `style`'s hashed content in the CSP header/meta tag
+
+While the 1st option might be easier to apply by post processing the partial's output it is important that the nonce
+**is not reused** which means a new nonce has to be generated **each time the website is requested** by a user.
+
+Our recommendation is to go with the 2nd option.
+To make integration easy, the affected partials accept the option `{ format: 'sha256' }` in order to receive the hash
+that needs to be applied with single quotes in the CSP header/meta tag.
+
+<Notification heading="Important note" headingTag="h3" state="success">
+  The returned string from calling a partial, e.g. `getInitialStyles({ format: 'sha256' })` is already wrapped in single
+  quotes so it can be used directly in your policy.
+</Notification>
+
+So an example integration could look like this.
+
+{/* <Playground :showCodeEditor="false" :frameworkMarkup="[this.integration]"></Playground> */}
+
+{/* <script lang="ts">
+  import Vue from 'vue';
+  import Component from 'vue-class-component';
+
+  @Component
+  export default class Code extends Vue {
+  get currentCSP(): string {
+  return document.head.querySelector('[http-equiv="Content-Security-Policy"]')?.outerHTML.replace(/content="|; /g, '$&\n  ').replace(/>$/, '\n$&') || 'CSP meta tag not found.';
+    }
+
+    get integration(): string {
+      return `
+  const styleHashes = [
+    getInitialStyles({ format: 'sha256' })
+  ].join(' ');
+
+  const scriptHashes = [
+    getBrowserSupportFallbackScript({ format: 'sha256' }),
+    getCookiesFallbackScript({ format: 'sha256' })
+  ].join(' ');
+
+  const cspContent = [
+    \`default-src 'self' https://cdn.ui.porsche.com\`,
+    \`style-src 'self' \${styleHashes}\`,
+    \`script-src 'self' https://cdn.ui.porsche.com \${scriptHashes}\`,
+    \`img-src 'self' https://cdn.ui.porsche.com data:\` // data: is needed for inline background images, e.g. used in checkbox-wrapper and radio-button-wrapper
+  ].join('; ');
+
+  return (
+  <>
+  <head>
+  <meta http-equiv="Content-Security-Policy" content={cspContent} />
+{getInitialStyles({ format: 'jsx' })}
+</head>
+<body>
+<div id="app"></div>
+
+{getBrowserSupportFallbackScript({ format: 'jsx' })}
+{getCookiesFallbackScript({ format: 'jsx' })}
+</body>
+</>
+);`;
+  }
+}
+</script> */}
+

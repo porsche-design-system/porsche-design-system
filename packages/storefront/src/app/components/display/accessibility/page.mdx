@@ -1,0 +1,48 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Display: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Display component',
+};
+
+# Display <ComponentStatus tagName="p-display"></ComponentStatus>
+
+<TableOfContents headings={["Accessibility support","Development considerations","Tests"]} />
+
+## Accessibility support
+
+No special accessibility features are available for this component.
+
+## Development considerations
+
+### Heading hierarchy
+
+While using the `Display` component, take care of the correct heading hierarchy which can be adjusted through the `tag`
+property. Keep in mind that the visual appearance must not always be identical with the semantic hierarchy.
+
+#### Best practices
+
+- Use one unique `h1` per page that describes what that page is about.
+- Use headings to describe the content below. Do not use an HTML heading just to make the text appear bigger or stand
+  out.
+- Use heading levels like the index of a book: hierarchical.
+- Do not choose a heading by its size, but by its level in the context of the content.
+- Heading hierarch should not increase by more than one level at a time.
+- Do not skip a heading level from the top down.
+
+## Tests
+
+### Automated
+
+| Technology               | Support |
+| ------------------------ | ------- |
+| AXE-Core                 | ✅      |
+| High-Contrast Mode (HCM) | ✅      |
+| Text-Zoom (200%)         | ✅      |
+
+### Manual
+
+| Technology               | Support |
+| ------------------------ | ------- |
+| Screenreader (VoiceOver) | ✅      |

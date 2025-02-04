@@ -16,7 +16,6 @@ import {
   isDisabledOrLoading,
   validateProps,
   warnIfDeprecatedPropValueIsUsed,
-  warnIfParentIsPTextAndIconIsNone,
 } from '../../utils';
 import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
 import { getComponentCss } from './button-pure-styles';
@@ -188,7 +187,6 @@ export class ButtonPure {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     warnIfIsLoadingAndIconIsNone(this.host, this.loading, this.icon, this.iconSource);
-    warnIfParentIsPTextAndIconIsNone(this.host, this.icon, this.iconSource);
 
     const alignLabelDeprecationMap: Record<
       ButtonPureAlignLabelDeprecated,

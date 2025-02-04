@@ -36,12 +36,29 @@ import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 
+/**
+ * @css-variable {"name": "--p-select-background-color", "description": "Background color of select.", "defaultValue": "backgroundColor"}
+ */
 const cssVarBackgroundColor = '--p-select-background-color';
+/**
+ * @css-variable {"name": "--p-select-text-color", "description": "Text color of select", "defaultValue": "primaryColor"}
+ */
 const cssVarTextColor = '--p-select-text-color';
+/**
+ * @css-variable {"name": "--p-select-border-color", "description": "Border color of select", "defaultValue": "primaryColor"}
+ */
 const cssVarBorderColor = '--p-select-border-color';
+/**
+ * @css-variable {"name": "--p-select-icon-filter", "description": "Position top of banner", "defaultValue": "56px"}
+ */
 const cssVarIconFilter = '--p-select-icon-filter';
-
+/**
+ * @css-variable {"name": "--p-select-focus-background-color", "description": "Background color to be applied when focused.", "defaultValue": "backgroundColor"}
+ */
 const cssVarBackgroundColorFocus = '--p-select-focus-background-color';
+/**
+ * @css-variable {"name": "--p-select-focus-border-color", "description": "Border color to be applied when focused.", "defaultValue": "primaryColor"}
+ */
 const cssVarBorderColorFocus = '--p-select-focus-border-color';
 
 export const getComponentCss = (
