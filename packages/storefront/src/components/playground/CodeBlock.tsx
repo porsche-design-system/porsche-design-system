@@ -20,7 +20,7 @@ ${code}
 const getReactCode = (code: string | undefined) => `export const Example = () => {
   return (
     <>
-      ${code}
+${code}
     </>
   )
 }`;
@@ -28,7 +28,7 @@ const getReactCode = (code: string | undefined) => `export const Example = () =>
 const getAngularCode = (code: string | undefined) => `@Component({
   selector: 'example',
   template: \`
-    ${code}
+${code}
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
@@ -38,7 +38,7 @@ export class ExampleComponent {}`;
 const getVueCode = (code: string | undefined) => `<script setup lang="ts"></script>
 
 <template>
-  ${code}
+${code}
 </template>`;
 
 type CodeBlockProps = {
