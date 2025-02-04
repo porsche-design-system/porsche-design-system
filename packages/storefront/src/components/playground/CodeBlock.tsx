@@ -25,6 +25,22 @@ const getReactCode = (code: string | undefined) => `export const Example = () =>
   )
 }`;
 
+const getAngularCode = (code: string | undefined) => `@Component({
+  selector: 'example',
+  template: \`
+    ${code}
+  \`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+})
+export class ExampleComponent {}`;
+
+const getVueCode = (code: string | undefined) => `<script setup lang="ts"></script>
+
+<template>
+  ${code}
+</template>`;
+
 type CodeBlockProps = {
   frameworkMarkup: FrameworkMarkup;
 };
@@ -41,9 +57,9 @@ export const CodeBlock = ({ frameworkMarkup }: CodeBlockProps) => {
   const getMarkupMap = {
     'vanilla-js': getVanillaJsCode,
     react: getReactCode,
-    angular: getVanillaJsCode,
-    vue: getVanillaJsCode,
-    next: getVanillaJsCode,
+    next: getReactCode,
+    angular: getAngularCode,
+    vue: getVueCode,
   };
 
   const frameworkLanguageMap: Record<Framework, SyntaxHighlighterProps['language']> = {
