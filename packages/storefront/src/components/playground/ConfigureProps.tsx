@@ -74,6 +74,7 @@ export const ConfigureProps = ({
         <div key={propName} className="flex gap-xs">
           <PSwitch
             checked={getCurrentValue(propName, propMeta) === 'true'}
+            compact={true}
             onUpdate={(e) => onUpdateProps(propName, e.detail.checked ? 'true' : 'false')}
           >
             {capitalCase(propName)}
