@@ -1,4 +1,4 @@
-import { arrow, autoUpdate, computePosition, flip } from '@floating-ui/dom';
+import { autoUpdate, computePosition, flip } from '@floating-ui/dom';
 import { Component, Element, Host, type JSX, Prop, State, h } from '@stencil/core';
 import { getSlottedAnchorStyles } from '../../styles';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
@@ -126,7 +126,6 @@ export class Popover {
         flip({
           fallbackAxisSideDirection: 'end',
         }),
-        arrow({ element: this.arrow }),
       ],
     }).then(({ x, y, placement }) => {
       const placementVertical = placement === 'top' || placement === 'bottom';
