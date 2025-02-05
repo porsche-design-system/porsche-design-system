@@ -95,7 +95,7 @@ export const ConfigureProps = ({
 
     if (propMeta.allowedValues === 'string') {
       return (
-        <PTextFieldWrapper key={propName}>
+        <PTextFieldWrapper key={propName} style={{ '--p-internal-text-field-scaling': 0.5 }}>
           <input
             type="text"
             value={getCurrentValue(propName, propMeta) ?? ''}
@@ -120,7 +120,7 @@ export const ConfigureProps = ({
 
     if (propMeta.allowedValues === 'number') {
       return (
-        <PTextFieldWrapper key={propName}>
+        <PTextFieldWrapper key={propName} style={{ '--p-internal-text-field-scaling': 0.5 }}>
           <input
             type="number"
             value={getCurrentValue(propName, propMeta) ?? ''}
@@ -150,6 +150,7 @@ export const ConfigureProps = ({
           key={propName}
           name={propName}
           value={getCurrentValue(propName, propMeta)}
+          compact={true}
           required={propMeta.isRequired}
           onUpdate={(e) => onUpdateProps(propName, e.detail.value)}
         >
