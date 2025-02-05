@@ -74,8 +74,8 @@ export const getComponentCss = (
         }),
       },
       '::slotted(*)': addImportantToEachRule({
-        '--p-internal-select-option-scaling': compact ? 0.5 : 1,
-        '--p-internal-optgroup-scaling': compact ? 0.5 : 1,
+        '--p-internal-select-option-scaling': scalingVar,
+        '--p-internal-optgroup-scaling': scalingVar,
       }),
       ...preventFoucOfNestedElementsStyles,
       button: getButtonStyles(isDisabled, direction, isOpen, state, compact, theme, hasSlottedImage),
