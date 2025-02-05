@@ -13,13 +13,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -28,7 +28,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -61,8 +62,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + 0px);
@@ -198,13 +199,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #CC1922 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -213,7 +214,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -246,7 +248,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   --p-internal-text-field-input-padding-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   display: grid;
   gap: 4px;
@@ -327,13 +329,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #CC1922 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -342,7 +344,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -375,8 +378,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + 0px);
@@ -448,13 +451,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #CC1922 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -463,7 +466,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: calc(9px + 16px + 2px + 3 * 1ch * log(2.6)) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -496,8 +500,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
@@ -582,13 +586,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #FC4040 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -597,7 +601,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
   color: #FBFCFF !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: calc(9px + 16px + 2px + 3 * 1ch * log(2.6)) !important;
 }
@@ -630,8 +635,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
@@ -716,13 +721,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #CC1922 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -731,7 +736,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: calc(9px + 16px + 2px + 3 * 1ch * log(2.6)) !important;
 }
@@ -764,8 +770,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
@@ -850,13 +856,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -865,7 +871,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -898,7 +905,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   --p-internal-text-field-input-padding-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   display: grid;
   gap: 4px;
@@ -978,13 +985,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -993,7 +1000,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -1112,13 +1120,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -1127,7 +1135,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -1246,13 +1255,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -1261,7 +1270,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -1294,7 +1304,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   --p-internal-text-field-input-padding-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   display: grid;
   gap: 4px;
@@ -1374,13 +1384,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -1389,7 +1399,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -1422,8 +1433,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + 0px);
@@ -1494,13 +1505,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -1509,7 +1520,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: calc(9px + 16px + 2px + 3 * 1ch * log(2.6)) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -1549,8 +1561,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
@@ -1634,13 +1646,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -1649,7 +1661,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: calc(9px + 16px + 2px + 3 * 1ch * log(2.6)) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -1689,8 +1702,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
@@ -1774,13 +1787,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -1789,7 +1802,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: calc(9px + 16px + 2px + 3 * 1ch * log(2.6)) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
   -moz-appearance: textfield !important;
@@ -1823,8 +1837,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
@@ -1908,13 +1922,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -1923,7 +1937,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: calc(9px + 16px + 2px + 3 * 1ch * log(2.6)) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -1956,8 +1971,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
@@ -2041,13 +2056,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -2056,7 +2071,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: calc(9px + 16px + 2px + 3 * 1ch * log(2.6)) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -2096,8 +2112,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
@@ -2181,13 +2197,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -2196,7 +2212,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: calc(9px + 16px + 2px + 3 * 1ch * log(2.6)) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -2236,8 +2253,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
@@ -2321,13 +2338,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #88898C !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -2336,7 +2353,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
   color: #FBFCFF !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: calc(9px + 16px + 2px + 3 * 1ch * log(2.6)) !important;
 }
@@ -2369,8 +2387,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
@@ -2454,13 +2472,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -2469,7 +2487,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: calc(9px + 16px + 2px + 3 * 1ch * log(2.6)) !important;
 }
@@ -2502,8 +2521,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
@@ -2587,13 +2606,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #197E10 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -2602,7 +2621,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -2635,7 +2655,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   --p-internal-text-field-input-padding-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   display: grid;
   gap: 4px;
@@ -2716,13 +2736,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #197E10 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -2731,7 +2751,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -2764,8 +2785,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + 0px);
@@ -2837,13 +2858,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #197E10 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -2852,7 +2873,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: calc(9px + 16px + 2px + 3 * 1ch * log(2.6)) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -2885,8 +2907,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
@@ -2971,13 +2993,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #09D087 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -2986,7 +3008,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
   color: #FBFCFF !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: calc(9px + 16px + 2px + 3 * 1ch * log(2.6)) !important;
 }
@@ -3019,8 +3042,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
@@ -3105,13 +3128,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #197E10 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -3120,7 +3143,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: calc(9px + 16px + 2px + 3 * 1ch * log(2.6)) !important;
 }
@@ -3153,8 +3177,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
@@ -3239,13 +3263,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -3254,7 +3278,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: calc(9px + 16px + 2px + 3 * 1ch * log(2.6)) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -3287,8 +3312,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isRe
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
@@ -3372,13 +3397,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #CC1922 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -3387,7 +3412,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -3420,7 +3446,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   --p-internal-text-field-input-padding-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   display: grid;
   gap: 4px;
@@ -3500,13 +3526,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #CC1922 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -3515,7 +3541,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -3548,8 +3575,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + 0px);
@@ -3620,13 +3647,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #CC1922 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -3635,7 +3662,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: calc(9px + 16px + 2px + 3 * 1ch * log(2.6)) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -3668,8 +3696,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
@@ -3753,13 +3781,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -3768,7 +3796,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -3801,7 +3830,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   --p-internal-text-field-input-padding-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   display: grid;
   gap: 4px;
@@ -3880,13 +3909,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -3895,7 +3924,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -3928,8 +3958,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + 0px);
@@ -3999,13 +4029,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -4014,7 +4044,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: calc(9px + 16px + 2px + 3 * 1ch * log(2.6)) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -4047,8 +4078,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
@@ -4131,13 +4162,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #197E10 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -4146,7 +4177,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -4179,7 +4211,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   --p-internal-text-field-input-padding-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   display: grid;
   gap: 4px;
@@ -4259,13 +4291,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #197E10 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -4274,7 +4306,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -4307,8 +4340,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + 0px);
@@ -4379,13 +4412,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #197E10 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -4394,7 +4427,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: calc(9px + 16px + 2px + 3 * 1ch * log(2.6)) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -4427,8 +4461,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
@@ -4512,13 +4546,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #CC1922 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -4527,7 +4561,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -4560,8 +4595,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
@@ -4632,13 +4667,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #CC1922 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -4647,7 +4682,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -4680,7 +4716,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isRea
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   --p-internal-text-field-input-padding-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   display: grid;
   gap: 4px;
