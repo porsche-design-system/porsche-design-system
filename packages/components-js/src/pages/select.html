@@ -7,6 +7,26 @@
     --p-select-focus-background-color: #000;
     --p-select-focus-border-color: #000;
   }
+
+  .scaling-0 {
+    --p-internal-select-scaling: 0;
+  }
+
+  .scaling-0-5 {
+    --p-internal-select-scaling: 0.5;
+  }
+
+  .scaling-0-8 {
+    --p-internal-select-scaling: 0.8;
+  }
+
+  .scaling-1 {
+    --p-internal-select-scaling: 1;
+  }
+
+  .scaling-2 {
+    --p-internal-select-scaling: 2;
+  }
 </style>
 
 <!-- skip this axe-core test because it is just needed for vrt -->
@@ -434,6 +454,216 @@
     <p-select-option value="a">Option A</p-select-option>
     <p-select-option value="b">Option B</p-select-option>
     <p-select-option value="c">Option C</p-select-option>
+  </p-select>
+</div>
+
+<div class="playground light auto-layout-block" title="should render in compact mode" style="padding-bottom: calc(1rem + 450px)">
+  <p-select name="options" label="Some label with pre-selected option" value="a" compact>
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+  </p-select>
+
+  <p-select class="open" name="options" value="d" label="Some label with preselected slotted image, optgroup and empty option" dropdown-direction="down" open="true" compact>
+    <p-select-option></p-select-option>
+    <p-select-option value="a">
+      <img src="http://localhost:3002/placeholder_800x500.svg" alt="Some alt text" width="800" height="500" />
+      Multiline options could be quite long, especially on smaller screens.</p-select-option
+    >
+    <p-select-option value="b">
+      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
+      Option B
+    </p-select-option>
+    <p-optgroup label="Some optgroup label 1">
+      <p-select-option value="oa">Option OA</p-select-option>
+      <p-select-option value="ob">Option OB</p-select-option>
+      <p-select-option value="oc">Option OC</p-select-option>
+    </p-optgroup>
+    <p-select-option value="c">Option C</p-select-option>
+    <p-select-option value="d">
+      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
+      Option D
+    </p-select-option>
+    <p-select-option value="e">
+      <img src="http://localhost:3002/718.png" alt="Some alt text" width="271" height="96" />
+      Option E
+    </p-select-option>
+    <p-select-option value="f">Option E</p-select-option>
+  </p-select>
+</div>
+
+<div class="playground light auto-layout-block" title="should render with scaling 0" style="padding-bottom: calc(1rem + 450px)">
+  <p-select class="scaling-0" name="options" label="Some label with pre-selected option" value="a" compact>
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+  </p-select>
+
+  <p-select class="open scaling-0" name="options" value="d" label="Some label with preselected slotted image, optgroup and empty option" dropdown-direction="down" open="true" compact>
+    <p-select-option></p-select-option>
+    <p-select-option value="a">
+      <img src="http://localhost:3002/placeholder_800x500.svg" alt="Some alt text" width="800" height="500" />
+      Multiline options could be quite long, especially on smaller screens.</p-select-option
+    >
+    <p-select-option value="b">
+      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
+      Option B
+    </p-select-option>
+    <p-optgroup label="Some optgroup label 1">
+      <p-select-option value="oa">Option OA</p-select-option>
+      <p-select-option value="ob">Option OB</p-select-option>
+      <p-select-option value="oc">Option OC</p-select-option>
+    </p-optgroup>
+    <p-select-option value="c">Option C</p-select-option>
+    <p-select-option value="d">
+      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
+      Option D
+    </p-select-option>
+    <p-select-option value="e">
+      <img src="http://localhost:3002/718.png" alt="Some alt text" width="271" height="96" />
+      Option E
+    </p-select-option>
+    <p-select-option value="f">Option E</p-select-option>
+  </p-select>
+</div>
+
+<div class="playground light auto-layout-block" title="should render with scaling 0.5" style="padding-bottom: calc(1rem + 450px)">
+  <p-select class="scaling-0-5" name="options" label="Some label with pre-selected option" value="a" compact>
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+  </p-select>
+
+  <p-select class="open scaling-0-5" name="options" value="d" label="Some label with preselected slotted image, optgroup and empty option" dropdown-direction="down" open="true" compact>
+    <p-select-option></p-select-option>
+    <p-select-option value="a">
+      <img src="http://localhost:3002/placeholder_800x500.svg" alt="Some alt text" width="800" height="500" />
+      Multiline options could be quite long, especially on smaller screens.</p-select-option
+    >
+    <p-select-option value="b">
+      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
+      Option B
+    </p-select-option>
+    <p-optgroup label="Some optgroup label 1">
+      <p-select-option value="oa">Option OA</p-select-option>
+      <p-select-option value="ob">Option OB</p-select-option>
+      <p-select-option value="oc">Option OC</p-select-option>
+    </p-optgroup>
+    <p-select-option value="c">Option C</p-select-option>
+    <p-select-option value="d">
+      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
+      Option D
+    </p-select-option>
+    <p-select-option value="e">
+      <img src="http://localhost:3002/718.png" alt="Some alt text" width="271" height="96" />
+      Option E
+    </p-select-option>
+    <p-select-option value="f">Option E</p-select-option>
+  </p-select>
+</div>
+
+<div class="playground light auto-layout-block" title="should render with scaling 0.8" style="padding-bottom: calc(1rem + 450px)">
+  <p-select class="scaling-0-8" name="options" label="Some label with pre-selected option" value="a" compact>
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+  </p-select>
+
+  <p-select class="open scaling-0-8" name="options" value="d" label="Some label with preselected slotted image, optgroup and empty option" dropdown-direction="down" open="true" compact>
+    <p-select-option></p-select-option>
+    <p-select-option value="a">
+      <img src="http://localhost:3002/placeholder_800x500.svg" alt="Some alt text" width="800" height="500" />
+      Multiline options could be quite long, especially on smaller screens.</p-select-option
+    >
+    <p-select-option value="b">
+      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
+      Option B
+    </p-select-option>
+    <p-optgroup label="Some optgroup label 1">
+      <p-select-option value="oa">Option OA</p-select-option>
+      <p-select-option value="ob">Option OB</p-select-option>
+      <p-select-option value="oc">Option OC</p-select-option>
+    </p-optgroup>
+    <p-select-option value="c">Option C</p-select-option>
+    <p-select-option value="d">
+      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
+      Option D
+    </p-select-option>
+    <p-select-option value="e">
+      <img src="http://localhost:3002/718.png" alt="Some alt text" width="271" height="96" />
+      Option E
+    </p-select-option>
+    <p-select-option value="f">Option E</p-select-option>
+  </p-select>
+</div>
+
+<div class="playground light auto-layout-block" title="should render with scaling 1" style="padding-bottom: calc(1rem + 450px)">
+  <p-select class="scaling-1" name="options" label="Some label with pre-selected option" value="a" compact>
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+  </p-select>
+
+  <p-select class="open scaling-1" name="options" value="d" label="Some label with preselected slotted image, optgroup and empty option" dropdown-direction="down" open="true" compact>
+    <p-select-option></p-select-option>
+    <p-select-option value="a">
+      <img src="http://localhost:3002/placeholder_800x500.svg" alt="Some alt text" width="800" height="500" />
+      Multiline options could be quite long, especially on smaller screens.</p-select-option
+    >
+    <p-select-option value="b">
+      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
+      Option B
+    </p-select-option>
+    <p-optgroup label="Some optgroup label 1">
+      <p-select-option value="oa">Option OA</p-select-option>
+      <p-select-option value="ob">Option OB</p-select-option>
+      <p-select-option value="oc">Option OC</p-select-option>
+    </p-optgroup>
+    <p-select-option value="c">Option C</p-select-option>
+    <p-select-option value="d">
+      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
+      Option D
+    </p-select-option>
+    <p-select-option value="e">
+      <img src="http://localhost:3002/718.png" alt="Some alt text" width="271" height="96" />
+      Option E
+    </p-select-option>
+    <p-select-option value="f">Option E</p-select-option>
+  </p-select>
+</div>
+
+<div class="playground light auto-layout-block" title="should render with scaling 2" style="padding-bottom: calc(1rem + 450px)">
+  <p-select class="scaling-2" name="options" label="Some label with pre-selected option" value="a" compact>
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+  </p-select>
+
+  <p-select class="open scaling-2" name="options" value="d" label="Some label with preselected slotted image, optgroup and empty option" dropdown-direction="down" open="true" compact>
+    <p-select-option></p-select-option>
+    <p-select-option value="a">
+      <img src="http://localhost:3002/placeholder_800x500.svg" alt="Some alt text" width="800" height="500" />
+      Multiline options could be quite long, especially on smaller screens.</p-select-option
+    >
+    <p-select-option value="b">
+      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
+      Option B
+    </p-select-option>
+    <p-optgroup label="Some optgroup label 1">
+      <p-select-option value="oa">Option OA</p-select-option>
+      <p-select-option value="ob">Option OB</p-select-option>
+      <p-select-option value="oc">Option OC</p-select-option>
+    </p-optgroup>
+    <p-select-option value="c">Option C</p-select-option>
+    <p-select-option value="d">
+      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
+      Option D
+    </p-select-option>
+    <p-select-option value="e">
+      <img src="http://localhost:3002/718.png" alt="Some alt text" width="271" height="96" />
+      Option E
+    </p-select-option>
+    <p-select-option value="f">Option E</p-select-option>
   </p-select>
 </div>
 
