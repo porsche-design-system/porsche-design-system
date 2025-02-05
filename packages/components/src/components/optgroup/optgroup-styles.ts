@@ -1,5 +1,5 @@
-import type { Theme } from '../../types';
-import { getCss } from '../../utils';
+import { fontSizeTextXSmall, fontWeightSemiBold, spacingStaticSmall } from '@porsche-design-system/styles';
+import type { Styles } from 'jss';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -7,10 +7,13 @@ import {
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
-import { fontSizeTextXSmall, fontWeightSemiBold, spacingStaticSmall } from '@porsche-design-system/styles';
-import type { Styles } from 'jss';
-import { cssVariableSelectPaddingInlineStart } from '../select/select-option/select-option-styles';
+import type { Theme } from '../../types';
+import { getCss } from '../../utils';
 import { cssVariableMultiSelectPaddingInlineStart } from '../multi-select/multi-select-option/multi-select-option-styles';
+import { cssVariableSelectPaddingInlineStart } from '../select/select-option/select-option-styles';
+
+const cssVarInternalOptgroupScaling = '--p-internal-optgroup-scaling';
+const scalingVar = `var(${cssVarInternalOptgroupScaling})`;
 
 export const getComponentCss = (isDisabled: boolean, theme: Theme): string =>
   getCss({
@@ -31,11 +34,14 @@ export const getOptgroupStyles = (isDisabled: boolean, theme: Theme): Styles => 
   const { primaryColor, disabledColor } = getThemedColors(theme);
   const { primaryColor: primaryColorDark, disabledColor: disabledColorDark } = getThemedColors('dark');
 
+  const gap = `max(2px, ${scalingVar} * ${spacingStaticSmall})`;
+  const padding = `max(2px, ${scalingVar} * ${spacingStaticSmall}) max(4px, ${scalingVar} * 12px)`;
+
   return {
     optgroup: {
       display: 'flex',
       flexDirection: 'column',
-      gap: spacingStaticSmall,
+      gap,
     },
     label: {
       color: primaryColor,
@@ -49,7 +55,7 @@ export const getOptgroupStyles = (isDisabled: boolean, theme: Theme): Styles => 
         }),
       }),
       display: 'block',
-      padding: `${spacingStaticSmall} 12px`,
+      padding,
       fontSize: fontSizeTextXSmall,
       fontWeight: fontWeightSemiBold,
     },
