@@ -1,369 +1,257 @@
+// @ts-nocheck
+
 'use client';
 
-import { ConfigureCssVariables } from '@/components/playground/ConfigureCssVariables';
-import { ConfigureProps } from '@/components/playground/ConfigureProps';
-import { ConfigureSlots } from '@/components/playground/ConfigureSlots';
+import { ConfiguratorControls, type ConfiguratorTagNames } from '@/components/playground/ConfiguratorControls';
 import { Playground } from '@/components/playground/Playground';
-import {
-  type SlotStories,
-  type Story,
-  type StoryState,
-  componentSlotStories,
-  componentsStory,
-} from '@/components/playground/componentStory';
-import { isDefaultValue } from '@/components/playground/configuratorUtils';
+import { type SlotStories, type Story, componentSlotStories } from '@/components/playground/componentStory';
 import type { FrameworkMarkup } from '@/models/framework';
 import { generateAngularMarkup } from '@/utils/generator/generateAngularMarkup';
 import { generateReactMarkup } from '@/utils/generator/generateReactMarkup';
 import { generateVanillaJsMarkup } from '@/utils/generator/generateVanillaJsMarkup';
 import { generateVueMarkup } from '@/utils/generator/generateVueMarkup';
 import { createElements } from '@/utils/generator/generator';
-import { componentMeta } from '@porsche-design-system/component-meta';
-import {
-  type AccordionUpdateEventDetail,
-  PAccordion,
-  type PAccordionProps,
-  type PBannerProps,
-  type PButtonGroupProps,
-  type PButtonProps,
-  type PButtonPureProps,
-  type PButtonTileProps,
-  type PCanvasProps,
-  type PCarouselProps,
-  type PCheckboxProps,
-  type PCheckboxWrapperProps,
-  type PContentWrapperProps,
-  type PCrestProps,
-  type PDisplayProps,
-  type PDividerProps,
-  type PFieldsetProps,
-  type PFieldsetWrapperProps,
-  type PFlexItemProps,
-  type PFlexProps,
-  type PFlyoutMultilevelItemProps,
-  type PFlyoutMultilevelProps,
-  type PFlyoutProps,
-  type PGridItemProps,
-  type PGridProps,
-  type PHeadingProps,
-  type PHeadlineProps,
-  type PIconProps,
-  type PInlineNotificationProps,
-  type PLinkProps,
-  type PLinkPureProps,
-  type PLinkSocialProps,
-  type PLinkTileModelSignatureProps,
-  type PLinkTileProductProps,
-  type PLinkTileProps,
-  type PMarqueProps,
-  type PModalProps,
-  type PModelSignatureProps,
-  type PMultiSelectOptionProps,
-  type PMultiSelectProps,
-  type POptgroupProps,
-  type PPaginationProps,
-  type PPinCodeProps,
-  type PPopoverProps,
-  type PRadioButtonWrapperProps,
-  type PScrollerProps,
-  type PSegmentedControlItemProps,
-  type PSegmentedControlProps,
-  type PSelectOptionProps,
-  type PSelectProps,
-  type PSelectWrapperProps,
-  type PSheetProps,
-  type PSpinnerProps,
-  type PStepperHorizontalItemProps,
-  type PStepperHorizontalProps,
-  type PSwitchProps,
-  type PTableBodyProps,
-  type PTableCellProps,
-  type PTableHeadCellProps,
-  type PTableHeadProps,
-  type PTableHeadRowProps,
-  type PTableProps,
-  type PTableRowProps,
-  type PTabsBarProps,
-  type PTabsItemProps,
-  type PTabsProps,
-  type PTagDismissibleProps,
-  type PTagProps,
-  type PTextFieldWrapperProps,
-  type PTextListItemProps,
-  type PTextListProps,
-  type PTextProps,
-  type PTextareaProps,
-  type PTextareaWrapperProps,
-  type PToastProps,
-  type PWordmarkProps,
-} from '@porsche-design-system/components-react/ssr';
-import type { TagName } from '@porsche-design-system/shared';
-import React, { type ReactNode, Suspense, useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
+import React, { type ReactNode, useEffect, useState } from 'react';
 
-type SafePropTypeMapping = {
-  [K in Exclude<TagName, 'p-toast-item' | 'p-select-wrapper-dropdown'>]: K extends keyof PropTypeMapping
-    ? PropTypeMapping[K]
-    : never;
-};
-
-export type ConfiguratorTagNames = keyof SafePropTypeMapping;
-
-export type HTMLTagOrComponent = keyof JSX.IntrinsicElements | ConfiguratorTagNames;
-
+// const config = {
+//   state: (setState = () => {}) => ({
+//     properties: {
+//       open: false,
+//       aria: { 'aria-label': 'Some Heading' },
+//     },
+//     events: {
+//       openFlyout: () => {
+//         setState((prevState) => ({
+//           ...prevState,
+//           properties: { ...prevState?.properties, open: true },
+//         }));
+//       },
+//       closeFlyout: () =>
+//         setState((prevState) => ({
+//           ...prevState,
+//           properties: { ...prevState?.properties, open: false },
+//         })),
+//     },
+//     slots: {
+//       header: componentSlotStories['p-flyout']?.header.basic,
+//       default: componentSlotStories['p-flyout']?.default.basic,
+//       footer: componentSlotStories['p-flyout']?.footer.basic,
+//       'sub-footer': componentSlotStories['p-flyout']?.['sub-footer'].basic,
+//     },
+//   }),
+//   generator: ({ properties, events, slots } = {}) => [
+//     {
+//       tag: 'p-button',
+//       properties: {
+//         type: 'button',
+//         aria: { 'aria-haspopup': 'dialog' },
+//         onClick: events.openFlyout,
+//       },
+//       children: ['Open Flyout'],
+//     },
+//     {
+//       tag: 'p-flyout',
+//       properties: {
+//         ...properties,
+//         onDismiss: events.closeFlyout,
+//       },
+//       children: [
+//         ...(slots?.header?.generator() ?? []),
+//         ...(slots?.default?.generator() ?? []),
+//         ...(slots?.footer?.generator() ?? []),
+//         ...(slots?.['sub-footer']?.generator() ?? []),
+//       ],
+//     },
+//   ],
+// };
 /**
- * Represents the properties of T which can be either a PDS Component or an HTML Element
+ * eventName
+ * value directly or detailKey of event (e.detail.value)
+ * propToChange
+ *
+ * onUpdate: (e) => {
+ *   eventName: 'update',
+ *   value: e.detail.value,
+ *   propToChange: open,
+ * }
+ *
+ * controlled: {
+ *   open: {
+ *     initialValue: false;
+ *     changeEvent: 'update',
+ *     eventPayload?: 'value',
+ *     value?: null,
+ *   }
+ * }
+ *
+ * React functionality setState on Event
+ * Vanilla JS functionality document.querySelector on Event
+ * Generate markup vanilla, react
  */
-export type HTMLElementOrComponentProps<T extends HTMLTagOrComponent = HTMLTagOrComponent> =
-  T extends keyof JSX.IntrinsicElements
-    ? Partial<JSX.IntrinsicElements[T]>
-    : T extends ConfiguratorTagNames
-      ? SafePropTypeMapping[T]
-      : never;
 
-export type ElementConfig<T extends HTMLTagOrComponent = HTMLTagOrComponent> = {
-  tag: T;
-  properties?: HTMLElementOrComponentProps<T>;
-  children?: (string | ElementConfig | undefined)[];
+// Option 1
+// const accordionConfig = {
+//   state: (setState: () => {}) => ({
+//     properties: { heading: 'Some Heading' },
+//     events: {
+//       onUpdate: (e) => {
+//         setState((prevState) => ({
+//           ...prevState,
+//           properties: { ...prevState?.properties, open: e.detail.open },
+//         }));
+//       },
+//     },
+//   }),
+//   generator: ({ properties, events } = {}) => [
+//     {
+//       tag: 'p-accordion',
+//       properties: { ...properties, onUpdate: events.onUpdate },
+//       children: [
+//         {
+//           tag: 'p-text',
+//           children: [
+//             'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.',
+//           ],
+//         },
+//       ],
+//     },
+//   ],
+// };
+//
+// export const ConfiguratorTest = () => {
+//   const [exampleState, setExampleState] = useState();
+//   const [exampleElement, setExampleElement] = useState<ReactNode>(
+//     createElements(accordionConfig.generator(accordionConfig.state()))
+//   );
+//   const [exampleMarkup, setExampleMarkup] = useState<FrameworkMarkup>({});
+//
+//   useEffect(() => {
+//     // Initially pass the setter to the config so the state can be updated by event callbacks
+//     setExampleState(accordionConfig.state(setExampleState));
+//   }, []);
+//
+//   useEffect(() => {
+//     if (exampleState) {
+//       const generatedConfig = accordionConfig.generator(exampleState);
+//       setExampleElement(createElements(generatedConfig));
+//       setExampleMarkup({
+//         'vanilla-js': generateVanillaJsMarkup(generatedConfig),
+//         react: generateReactMarkup(generatedConfig),
+//         angular: generateAngularMarkup(generatedConfig),
+//         vue: generateVueMarkup(generatedConfig),
+//       });
+//     }
+//   }, [exampleState]);
+//
+//   return <Playground frameworkMarkup={exampleMarkup}>{exampleElement}</Playground>;
+// };
+
+const config = {
+  state: {
+    properties: {
+      heading: 'Some product',
+      price: '1.911,00 €',
+      description: 'Some description',
+      href: 'https://porsche.com',
+    },
+  },
+  generator: ({ properties }, updateState) => [
+    {
+      tag: 'p-link-tile-product',
+      properties: { ...properties, onLike: (e) => updateState('p-link-tile-product', 'liked', !e.detail.liked) },
+      children: [
+        {
+          tag: 'p-tag',
+          properties: {
+            slot: 'header',
+            color: 'background-base',
+          },
+          children: ['New'],
+        },
+        {
+          tag: 'img',
+          properties: {
+            src: 'assets/placeholder_800x900.svg',
+            width: 800,
+            height: 900,
+            alt: 'Some alt text',
+          },
+        },
+      ],
+    },
+  ],
 };
 
-export type PropTypeMapping = {
-  'p-accordion': PAccordionProps;
-  'p-banner': PBannerProps;
-  'p-button': PButtonProps;
-  'p-button-group': PButtonGroupProps;
-  'p-button-pure': PButtonPureProps;
-  'p-button-tile': PButtonTileProps;
-  'p-canvas': PCanvasProps;
-  'p-carousel': PCarouselProps;
-  'p-checkbox': PCheckboxProps;
-  'p-checkbox-wrapper': PCheckboxWrapperProps;
-  'p-content-wrapper': PContentWrapperProps;
-  'p-crest': PCrestProps;
-  'p-display': PDisplayProps;
-  'p-divider': PDividerProps;
-  'p-fieldset': PFieldsetProps;
-  'p-fieldset-wrapper': PFieldsetWrapperProps;
-  'p-flex': PFlexProps;
-  'p-flex-item': PFlexItemProps;
-  'p-flyout': PFlyoutProps;
-  'p-flyout-multilevel': PFlyoutMultilevelProps;
-  'p-flyout-multilevel-item': PFlyoutMultilevelItemProps;
-  'p-grid': PGridProps;
-  'p-grid-item': PGridItemProps;
-  'p-heading': PHeadingProps;
-  'p-headline': PHeadlineProps;
-  'p-icon': PIconProps;
-  'p-inline-notification': PInlineNotificationProps;
-  'p-link': PLinkProps;
-  'p-link-pure': PLinkPureProps;
-  'p-link-social': PLinkSocialProps;
-  'p-link-tile': PLinkTileProps;
-  'p-link-tile-model-signature': PLinkTileModelSignatureProps;
-  'p-link-tile-product': PLinkTileProductProps;
-  'p-marque': PMarqueProps;
-  'p-modal': PModalProps;
-  'p-model-signature': PModelSignatureProps;
-  'p-multi-select': PMultiSelectProps;
-  'p-multi-select-option': PMultiSelectOptionProps;
-  'p-optgroup': POptgroupProps;
-  'p-pagination': PPaginationProps;
-  'p-pin-code': PPinCodeProps;
-  'p-popover': PPopoverProps;
-  'p-radio-button-wrapper': PRadioButtonWrapperProps;
-  'p-scroller': PScrollerProps;
-  'p-segmented-control': PSegmentedControlProps;
-  'p-segmented-control-item': PSegmentedControlItemProps;
-  'p-select': PSelectProps;
-  'p-select-option': PSelectOptionProps;
-  'p-select-wrapper': PSelectWrapperProps;
-  'p-sheet': PSheetProps;
-  'p-spinner': PSpinnerProps;
-  'p-stepper-horizontal': PStepperHorizontalProps;
-  'p-stepper-horizontal-item': PStepperHorizontalItemProps;
-  'p-switch': PSwitchProps;
-  'p-table': PTableProps;
-  'p-table-body': PTableBodyProps;
-  'p-table-cell': PTableCellProps;
-  'p-table-head-cell': PTableHeadCellProps;
-  'p-table-row': PTableRowProps;
-  'p-table-head-row': PTableHeadRowProps;
-  'p-table-head': PTableHeadProps;
-  'p-tabs': PTabsProps;
-  'p-tabs-item': PTabsItemProps;
-  'p-tabs-bar': PTabsBarProps;
-  'p-tag': PTagProps;
-  'p-tag-dismissible': PTagDismissibleProps;
-  'p-text': PTextProps;
-  'p-text-field-wrapper': PTextFieldWrapperProps;
-  'p-text-list': PTextListProps;
-  'p-text-list-item': PTextListItemProps;
-  'p-textarea': PTextareaProps;
-  'p-textarea-wrapper': PTextareaWrapperProps;
-  'p-toast': PToastProps;
-  'p-wordmark': PWordmarkProps;
-};
+// const config = {
+//   state: {
+//     properties: {
+//       activeTabIndex: 0,
+//     },
+//   },
+//   generator: ({ properties }, updateState) => [
+//     {
+//       tag: 'p-tabs-bar',
+//       properties: {
+//         ...properties,
+//         onUpdate: (e) => updateState('p-link-tile-product', 'activeTabIndex', e.detail.activeTabIndex),
+//       },
+//       children: [
+//         ...['Tab One', 'Tab Two', 'Tab Three'].map((tab) => ({
+//           tag: 'button',
+//           properties: {
+//             type: 'button',
+//           },
+//           children: [tab],
+//         })),
+//       ],
+//     },
+//   ],
+// };
 
-type ConfiguratorProps = {
+type ConfiguratorTestProps = {
   tagName: ConfiguratorTagNames;
+  story: Story;
+  slotStories?: SlotStories;
 };
 
-export const Configurator = ({ tagName }: ConfiguratorProps) => {
-  const meta = componentMeta[tagName];
-  // @ts-ignore
-  const slots: SlotStories<typeof tagName> = componentSlotStories[tagName];
-  const [domReady, setDomReady] = useState(false);
-  const [accordionState, setAccordionState] = useState<Record<number, boolean>>({});
-  // TODO: Pass story as param into configurator
-  // @ts-ignore
-  const [storyState, setStoryState] = useState<StoryState<typeof tagName>>(componentsStory[tagName].state ?? {});
-  const [exampleElement, setExampleElement] = useState<ReactNode>(null);
+export const Configurator = ({ tagName, story, slotStories }: ConfiguratorTestProps) => {
+  const [exampleState, setExampleState] = useState(story.state ?? {});
+  const [exampleElement, setExampleElement] = useState<ReactNode>(createElements(story.generator(story.state)));
   const [exampleMarkup, setExampleMarkup] = useState<FrameworkMarkup>({});
 
-  const handleAccordionUpdate = (index: number, e: CustomEvent<AccordionUpdateEventDetail>) => {
-    setAccordionState((prevState) => ({
-      ...prevState,
-      [index]: e.detail.open,
-    }));
+  const updateState = (_: string, property: string, value: any) => {
+    setExampleState((prev) => ({ ...prev, properties: { ...prev.properties, [property]: value } }));
   };
 
-  const shouldUpdate = (selectedValue: string | undefined, propName: keyof ElementConfig['properties']) => {
-    if (propName === 'theme') return true;
-    const isEqualToCurrentValue = selectedValue === storyState.properties?.[propName];
-    const isEmptyStringAndNotApplied = selectedValue === '' && storyState.properties?.[propName] === undefined;
-    const isNotAppliedAndDefaultValue =
-      storyState.properties?.[propName] === undefined && meta.propsMeta?.[propName]?.defaultValue === selectedValue;
-    return !(isEqualToCurrentValue || isEmptyStringAndNotApplied || isNotAppliedAndDefaultValue);
-  };
-
-  const handleUpdateProps = (propName: keyof ElementConfig['properties'], selectedValue: string | undefined) => {
-    if (!shouldUpdate(selectedValue, propName)) return;
-
-    // TODO: Fix typing
-    // @ts-ignore
-    setStoryState((prev) => {
-      const isDefault = isDefaultValue(meta.propsMeta?.[propName], selectedValue);
-      const updatedAttributes = { ...prev.properties };
-
-      if (selectedValue === undefined || isDefault) {
-        delete updatedAttributes[propName];
-      } else {
-        // TODO: Fix typing
-        // @ts-ignore
-        updatedAttributes[propName] = selectedValue;
-      }
-
-      return { ...prev, properties: updatedAttributes as PropTypeMapping[typeof tagName] };
-    });
-  };
-
-  const handleUpdateSlots = (slotName: string, selectedSlotStory: Story | undefined) => {
-    setStoryState((prev) => {
-      const updatedSlots = { ...prev.slots };
-      // TODO: Fix typing
-      (updatedSlots as any)[slotName] = selectedSlotStory;
-      return { ...prev, slots: updatedSlots };
-    });
-  };
-
-  const handleUpdateCssVariable = (name: string, value: string | undefined) => {
-    setStoryState((prev) => {
-      const updatedProps: StoryState<typeof tagName>['properties'] = { ...prev.properties };
-
-      // Ensure style is initialized
-      updatedProps.style = { ...updatedProps.style };
-
-      if (value !== undefined) {
-        (updatedProps.style as any)[name] = value;
-      } else {
-        delete (updatedProps.style as any)[name];
-        if (Object.keys(updatedProps.style).length === 0) {
-          // biome-ignore lint/performance/noDelete: <explanation>
-          delete updatedProps.style;
-        }
-      }
-
-      return {
-        ...prev,
-        properties: updatedProps as PropTypeMapping[typeof tagName],
-      };
-    });
-  };
-
-  const handleResetAllProps = () => {
-    // @ts-ignore
-    setStoryState(componentsStory[tagName].state);
-  };
-
+  // biome-ignore lint/correctness/useExhaustiveDependencies: only has to run once on mount to pass the setter function to react to event updates
   useEffect(() => {
-    const generatedConfig = componentsStory[tagName].generator(storyState as any); // TODO: Fix typing
-    setExampleElement(createElements(generatedConfig));
-    setExampleMarkup({
-      'vanilla-js': generateVanillaJsMarkup(generatedConfig),
-      react: generateReactMarkup(generatedConfig),
-      angular: generateAngularMarkup(generatedConfig),
-      vue: generateVueMarkup(generatedConfig),
-    });
-  }, [storyState, tagName]);
-
-  useEffect(() => {
-    requestAnimationFrame(() => setDomReady(true));
+    setExampleElement(createElements(story.generator(story.state, updateState)));
   }, []);
 
-  if (!meta.propsMeta) return null;
-
-  const controls = [
-    <ConfigureProps
-      tagName={tagName}
-      componentProps={meta.propsMeta}
-      configuredProps={storyState.properties}
-      defaultProps={componentsStory[tagName].state?.properties ?? {}}
-      onUpdateProps={handleUpdateProps}
-      onResetAllProps={handleResetAllProps}
-    />,
-    <ConfigureSlots
-      tagName={tagName}
-      componentSlots={meta.slotsMeta}
-      configuredSlots={storyState}
-      // @ts-ignore
-      slotStories={slots}
-      onUpdateSlots={handleUpdateSlots}
-    />,
-    <ConfigureCssVariables
-      tagName={tagName}
-      componentCssVariables={meta.cssVariablesMeta}
-      configuredCssVariables={storyState.properties}
-      defaultCssVariables={componentsStory[tagName].state?.properties ?? {}}
-      onUpdateCssVariables={handleUpdateCssVariable}
-      onResetAllCssVariables={() => {}}
-    />,
-  ];
+  // biome-ignore lint/correctness/useExhaustiveDependencies: only thing that will change is the state
+  useEffect(() => {
+    if (exampleState) {
+      const generatedStory = story.generator(exampleState, updateState);
+      setExampleElement(createElements(generatedStory));
+      setExampleMarkup({
+        'vanilla-js': generateVanillaJsMarkup(generatedStory),
+        react: generateReactMarkup(generatedStory),
+        angular: generateAngularMarkup(generatedStory),
+        vue: generateVueMarkup(generatedStory),
+      });
+    }
+  }, [exampleState]);
 
   return (
     <>
-      {domReady
-        ? createPortal(
-            // biome-ignore lint/complexity/noUselessFragments: <explanation>
-            <>
-              {controls.map((control, index) => (
-                <PAccordion
-                  key={index}
-                  headingTag="h3"
-                  open={accordionState[index] || false}
-                  onUpdate={(e) => handleAccordionUpdate(index, e)}
-                >
-                  {control}
-                </PAccordion>
-              ))}
-            </>,
-            // biome-ignore lint/style/noNonNullAssertion: <explanation>
-            document.querySelector('[slot="sidebar-end"]')!
-          )
-        : null}
-
-      <Playground frameworkMarkup={exampleMarkup}>
-        <Suspense fallback={<div>Loading...</div>}>{exampleElement}</Suspense>
-      </Playground>
+      <Playground frameworkMarkup={exampleMarkup}>{exampleElement}</Playground>
+      <ConfiguratorControls
+        tagName={tagName}
+        defaultStoryState={story.state}
+        storyState={exampleState}
+        setStoryState={setExampleState}
+        slotStories={slotStories}
+      />
     </>
   );
 };

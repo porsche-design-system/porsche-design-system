@@ -1,85 +1,108 @@
-import type { ConfiguratorTagNames, ElementConfig } from '@/components/playground/Configurator';
-import { type ControlledMeta, componentMeta } from '@porsche-design-system/component-meta';
+import type { ElementConfig } from '@/components/playground/ConfiguratorControls';
 import { camelCase, kebabCase } from 'change-case';
 
+type ControlledInfo = { eventName: string; component: string; prop: string; val: string; isEventVal: boolean }[];
+
 export const generateVanillaJsMarkup = (configs: (string | ElementConfig | undefined)[]): string => {
-  const outputs = configs.map((config) => createVanillaJSMarkup(config));
-  return outputs.join('\n\n');
+  const results = configs.map((config) => createVanillaJSMarkup(config));
+  const markup = results.map(({ markup }) => markup).join('\n\n');
+  const scripts = results.flatMap(({ scripts }) => scripts).join('\n');
+
+  return `${markup}\n\n<script>\n${scripts}\n</script>`;
 };
 
-const createVanillaJSMarkup = (config: string | ElementConfig | undefined, indentLevel = 0): string => {
+const createVanillaJSMarkup = (
+  config: string | ElementConfig | undefined,
+  indentLevel = 0
+): { markup: string; scripts: string[] } => {
+  if (!config) return { markup: '', scripts: [] };
   const indent = '  '.repeat(indentLevel);
 
-  if (!config) return '';
-  if (typeof config === 'string') return `${indent}${config}`;
+  if (typeof config === 'string') return { markup: `${indent}${config}`, scripts: [] };
 
   const { tag, properties = {}, children = [] } = config;
-  const isPDSComponent = tag.startsWith('p-');
-  const meta = isPDSComponent ? componentMeta[tag as ConfiguratorTagNames] : undefined;
 
-  const attributesArray = Object.entries(properties).map(([key, value]) => {
-    if (typeof value === 'string') {
-      return `${key === 'className' ? 'class' : kebabCase(key)}="${value}"`;
-    }
+  const events: ControlledInfo = [];
+  const props = [];
 
-    if (key === 'style') {
+  const propEntries = Object.entries(properties);
+  for (const [key, value] of propEntries) {
+    if (key.startsWith('on')) {
+      const eventName = camelCase(key.replace('on', ''));
+      const {
+        eventParams,
+        updateStateParams: [component, prop, val],
+      } = extractParams(value);
+      events.push({ eventName, component, prop, val, isEventVal: eventParams.length > 0 });
+    } else if (typeof value === 'string') {
+      props.push({ key: key === 'className' ? 'class' : kebabCase(key), value });
+    } else if (key === 'style') {
       const styles = Object.entries(value)
-        .map(([key, value]) => {
-          // CSS Custom Property
-          if (key.startsWith('--')) {
-            return `${key}: ${value}`;
-          }
-          return `${kebabCase(key)}: ${value}`;
-        })
+        .map(([styleKey, styleValue]) =>
+          styleKey.startsWith('--') ? `${styleKey}: ${styleValue}` : `${kebabCase(styleKey)}: ${styleValue}`
+        )
         .join('; ');
-      return `style="${styles}"`;
+      props.push({ key: 'style', value: styles });
+    } else {
+      props.push({ key: key, value: JSON.stringify(value) });
     }
-
-    if (key === 'aria') {
-      return `${kebabCase(key)}="${JSON.stringify(value).replace(/"/g, "'")}"`;
-    }
-
-    return `${kebabCase(key)}="${JSON.stringify(value)}"`;
-  });
-
-  const attributesString = attributesArray.length > 0 ? ` ${attributesArray.join(' ')}` : '';
-  const processedChildren = (children || []).map((child) => createVanillaJSMarkup(child, indentLevel + 1)).join('\n');
-
-  let markup =
-    children.length > 0
-      ? `${'  '.repeat(indentLevel)}<${tag}${attributesString}>\n${processedChildren}\n${'  '.repeat(indentLevel)}</${tag}>`
-      : `${'  '.repeat(indentLevel)}<${tag}${attributesString} />`;
-
-  if (meta?.controlledMeta) {
-    markup += `\n\n${generateVanillaJSControlledScript(tag as ConfiguratorTagNames, meta.controlledMeta)}`;
   }
 
-  return markup;
+  console.log(events);
+  console.log(props);
+  // const propsWithoutControlled =
+
+  const propertiesString =
+    props.length > 0
+      ? ` ${props
+          .filter(({ key }) => !events.some(({ prop }) => prop === key))
+          .map(({ key, value }) => `${kebabCase(key)}="${value}"`)
+          .join(' ')}`
+      : '';
+
+  const childrenResults = children.map((child) => createVanillaJSMarkup(child, indentLevel + 1));
+  const childMarkup = childrenResults.map(({ markup }) => markup).join('\n');
+  const childScripts = childrenResults.flatMap(({ scripts }) => scripts);
+
+  const markup =
+    children.length > 0
+      ? `${indent}<${tag}${propertiesString}>\n${childMarkup}\n${indent}</${tag}>`
+      : `${indent}<${tag}${propertiesString} />`;
+
+  const scripts = events.length > 0 ? [generateVanillaJSControlledScript(tag, events), ...childScripts] : childScripts;
+
+  return { markup, scripts };
 };
 
-const generateVanillaJSControlledScript = (tagName: ConfiguratorTagNames, controlledMeta: ControlledMeta[]) => {
-  return controlledMeta
-    .map((controlledInfo) => {
-      const constant = camelCase(tagName.replace('p-', ''));
-      const selector = `const ${constant} = document.querySelector('${tagName}');`;
-      let listeners = '';
+const generateVanillaJSControlledScript = (tagName: string, controlled: ControlledInfo) => {
+  const constant = camelCase(tagName.replace('p-', ''));
+  const selector = `  const ${constant} = document.querySelector('${tagName}');`;
 
-      if (controlledInfo.event === 'dismiss') {
-        const closeListeners = controlledInfo.props
-          .map((prop) => `${constant}.addEventListener('${controlledInfo.event}', () => (${constant}.${prop} = false))`)
-          .join('\n  ');
-        const openListeners = controlledInfo.props
-          .map(
-            (prop) => `document.querySelector('p-button').addEventListener('click', () => (${constant}.${prop} = true))`
-          )
-          .join('\n  ');
-        listeners += `${closeListeners}\n  ${openListeners}`;
+  const listeners = controlled
+    .map(({ eventName, component, prop, val, isEventVal }) => {
+      const element = camelCase(component.replace('p-', ''));
+      if (isEventVal) {
+        return `  ${constant}.addEventListener('${eventName}', (e) => (e.target.${prop} = ${val}))`;
       }
-
-      return `<script>
-  ${selector}
-  ${listeners}
-</script>`;
+      return `  ${constant}.addEventListener('${eventName}', () => (${element}.${prop} = ${val}))`;
     })
     .join('\n');
+
+  return [selector, listeners].join('\n');
+};
+
+const extractParams = (fn: typeof Function): { eventParams: string[]; updateStateParams: string[] } => {
+  const match = fn.toString().match(/\(([^)]*)\)\s*=>\s*updateState\??.?\(([^)]*)\)/);
+
+  if (match) {
+    const eventParams = match[1] ? match[1].split(',').map((arg) => arg.trim()) : [];
+    const updateStateParams = match[2].split(',').map((arg) => arg.trim().replaceAll("'", ''));
+
+    return {
+      eventParams,
+      updateStateParams,
+    };
+  }
+
+  return { eventParams: [], updateStateParams: [] };
 };

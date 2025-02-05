@@ -1,4 +1,4 @@
-import type { ElementConfig } from '@/components/playground/Configurator';
+import type { ElementConfig } from '@/components/playground/ConfiguratorControls';
 import { getFlags } from '@/utils/getFlags';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import { PPopover, PTag, PTextFieldWrapper } from '@porsche-design-system/components-react/ssr';

@@ -1,4 +1,4 @@
-import type { ElementConfig } from '@/components/playground/Configurator';
+import type { ElementConfig } from '@/components/playground/ConfiguratorControls';
 import { pascalCase } from 'change-case';
 
 export const generateVueMarkup = (configs: (string | ElementConfig | undefined)[], indentLevel = 1): string => {

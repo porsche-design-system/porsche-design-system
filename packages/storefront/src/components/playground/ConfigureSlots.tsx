@@ -1,4 +1,4 @@
-import type { HTMLTagOrComponent } from '@/components/playground/Configurator';
+import type { HTMLTagOrComponent } from '@/components/playground/ConfiguratorControls';
 import type { ComponentSlotStory, SlotStories, Story, StoryState } from '@/components/playground/componentStory';
 import type { SlotMeta } from '@porsche-design-system/component-meta';
 import { PPopover, PSelect, PSelectOption, PSwitch } from '@porsche-design-system/components-react/ssr';

@@ -3,7 +3,7 @@ import type {
   ElementConfig,
   HTMLElementOrComponentProps,
   HTMLTagOrComponent,
-} from '@/components/playground/Configurator';
+} from '@/components/playground/ConfiguratorControls';
 
 // TODO: slotName must be typed to only allow slots of current component when PDS component is used
 export type SlotStories<Tag extends HTMLTagOrComponent = HTMLTagOrComponent> = {
@@ -37,57 +37,7 @@ export const componentSlotStories: ComponentSlotStory = {
   'p-fieldset-wrapper': {},
   'p-flex': {},
   'p-flex-item': {},
-  'p-flyout': {
-    header: {
-      basic: {
-        name: 'Basic',
-        generator: () => [
-          {
-            tag: 'p-heading',
-            properties: { slot: 'header', size: 'large', tag: 'h2' },
-            children: ['Some Heading'],
-          },
-        ],
-      },
-    },
-    default: {
-      basic: {
-        name: 'Basic',
-        generator: () => [{ tag: 'p-text', children: ['Some Content'] }],
-      },
-      scrollable: {
-        name: 'Scrollable Content',
-        generator: () => [
-          { tag: 'p-text', children: ['Some Content Begin'] },
-          { tag: 'div', properties: { style: { width: '10px', height: '120vh', background: 'deeppink' } } },
-          { tag: 'p-text', children: ['Some Content End'] },
-        ],
-      },
-    },
-    footer: {
-      basic: {
-        name: 'Two Button Footer',
-        generator: () => [
-          {
-            tag: 'p-button-group',
-            properties: { slot: 'footer' },
-            children: [
-              { tag: 'p-button', properties: { type: 'button' }, children: ['Proceed'] },
-              { tag: 'p-button', properties: { type: 'button', variant: 'secondary' }, children: ['Cancel'] },
-            ],
-          },
-        ],
-      },
-    },
-    'sub-footer': {
-      basic: {
-        name: 'Basic Sub-Footer',
-        generator: () => [
-          { tag: 'p-text', properties: { slot: 'sub-footer' }, children: ['Some additional Sub-Footer'] },
-        ],
-      },
-    },
-  },
+  'p-flyout': {},
   'p-flyout-multilevel': {},
   'p-flyout-multilevel-item': {},
   'p-grid': {},
@@ -207,6 +157,7 @@ export const componentSlotStories: ComponentSlotStory = {
  * - [ ] - prop/slot relation? link href -> default slotted anchor
  * - [ ] - make all props removable?
  * - [ ] - values are not stored with correct types in state => true => 'true'
+ * - [ ] - when closing banner properties show reset despite being in default state
  */
 
 export type ComponentsStory = {
@@ -216,10 +167,13 @@ export type ComponentsStory = {
 export type Story<Tag extends HTMLTagOrComponent = HTMLTagOrComponent> = {
   name?: string;
   state?: StoryState<Tag>;
-  generator: (state?: StoryState<Tag>) => (string | ElementConfig | undefined)[];
+  generator: (
+    state?: StoryState<Tag>,
+    updateState?: (componentName: string, property: string, value: any) => void
+  ) => (string | ElementConfig | undefined)[];
 };
 
-export type StoryState<Tag extends HTMLTagOrComponent> = {
+export type StoryState<Tag extends HTMLTagOrComponent = HTMLTagOrComponent> = {
   properties?: HTMLElementOrComponentProps<Tag>;
   slots?: SlotState<Tag>;
 };
@@ -232,306 +186,6 @@ export type SlotState<Tag extends HTMLTagOrComponent> = {
  * Properties have to be written in jsx syntax. (class => className, style => object). Property values have to be the real value (boolean, object etc.).
  */
 export const componentsStory: ComponentsStory = {
-  // TODO: Add Story
-  'p-accordion': {
-    state: {
-      properties: { heading: 'Some Heading' },
-    },
-    generator: ({ properties } = {}) => [
-      {
-        tag: 'p-accordion',
-        properties,
-        children: [
-          {
-            tag: 'p-text',
-            children: [
-              'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore agna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.',
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  'p-banner': {
-    state: {
-      properties: {
-        open: true,
-        heading: 'Some Heading',
-        description: 'Some Description',
-      },
-    },
-    generator: ({ properties } = {}) => [
-      {
-        tag: 'p-banner',
-        properties,
-      },
-    ],
-  },
-  'p-button': {
-    generator: ({ properties } = {}) => [
-      {
-        tag: 'p-button',
-        properties,
-        children: ['Some label'],
-      },
-    ],
-  },
-  'p-button-group': {
-    generator: ({ properties } = {}) => [
-      {
-        tag: 'p-button-group',
-        properties,
-        children: [
-          { tag: 'p-button', properties: { variant: 'primary' }, children: ['Some label'] },
-          { tag: 'p-button', properties: { variant: 'secondary' }, children: ['Some label'] },
-        ],
-      },
-    ],
-  },
-  'p-button-pure': {
-    generator: ({ properties } = {}) => [
-      {
-        tag: 'p-button-pure',
-        properties,
-        children: ['Some label'],
-      },
-    ],
-  },
-  'p-button-tile': {
-    state: {
-      properties: { label: 'Some label', description: 'Some Description' },
-    },
-    generator: ({ properties } = {}) => [
-      {
-        tag: 'p-button-tile',
-        properties,
-        children: [
-          {
-            tag: 'p-tag',
-            properties: { slot: 'header', theme: 'dark', color: 'background-frosted', compact: true },
-            children: ['Some tag'],
-          },
-          { tag: 'img', properties: { src: 'assets/lights.jpg', alt: 'Some image description' } },
-        ],
-      },
-    ],
-  },
-  // TODO: Add story
-  'p-canvas': {
-    generator: ({ properties } = {}) => [
-      {
-        tag: 'p-canvas',
-        properties,
-      },
-    ],
-  },
-  'p-carousel': {
-    state: {
-      properties: { heading: 'Some heading' },
-    },
-    generator: ({ properties } = {}) => [
-      {
-        tag: 'p-carousel',
-        properties,
-        children: [
-          { tag: 'div', properties: { className: 'slide' }, children: ['Slide 1'] },
-          { tag: 'div', properties: { className: 'slide' }, children: ['Slide 2'] },
-          { tag: 'div', properties: { className: 'slide' }, children: ['Slide 3'] },
-          { tag: 'div', properties: { className: 'slide' }, children: ['Slide 4'] },
-        ],
-      },
-      {
-        tag: 'style',
-        children: [
-          `.slide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background: #00b0f4;
-    height: 150px;
-    color: #010205;
-  }`,
-        ],
-      },
-    ],
-  },
-  'p-checkbox': {
-    state: {
-      properties: { label: 'Some label', name: 'some-name' },
-    },
-    generator: ({ properties } = {}) => [
-      {
-        tag: 'p-checkbox',
-        properties,
-      },
-    ],
-  },
-  'p-checkbox-wrapper': {
-    state: {
-      properties: { label: 'Some label' },
-    },
-    generator: ({ properties } = {}) => [
-      {
-        tag: 'p-checkbox-wrapper',
-        properties,
-        children: [{ tag: 'input', properties: { type: 'checkbox', name: 'some-name' } }],
-      },
-    ],
-  },
-  'p-content-wrapper': {
-    generator: ({ properties } = {}) => [
-      {
-        tag: 'p-content-wrapper',
-        properties,
-        children: [{ tag: 'div', properties: { className: 'example-content' }, children: ['Some content'] }],
-      },
-    ],
-  },
-  'p-crest': {
-    generator: ({ properties } = {}) => [
-      {
-        tag: 'p-crest',
-        properties,
-      },
-    ],
-  },
-  'p-display': {
-    generator: ({ properties } = {}) => [
-      {
-        tag: 'p-display',
-        properties,
-        children: ['The quick brown fox jumps over the lazy dog'],
-      },
-    ],
-  },
-  'p-divider': {
-    generator: ({ properties } = {}) => [
-      {
-        tag: 'p-divider',
-        properties,
-      },
-    ],
-  },
-  'p-fieldset': {
-    state: {
-      properties: { label: 'Some legend label' },
-    },
-    generator: ({ properties } = {}) => [
-      {
-        tag: 'p-fieldset',
-        properties,
-        children: [
-          {
-            tag: 'p-text-field-wrapper',
-            properties: { label: 'Some label' },
-            children: [{ tag: 'input', properties: { type: 'text', name: 'some-name' } }],
-          },
-        ],
-      },
-    ],
-  },
-  'p-fieldset-wrapper': {
-    state: {
-      properties: { label: 'Some legend label' },
-    },
-    generator: ({ properties } = {}) => [
-      {
-        tag: 'p-fieldset-wrapper',
-        properties,
-        children: [
-          {
-            tag: 'p-text-field-wrapper',
-            properties: { label: 'Some label' },
-            children: [{ tag: 'input', properties: { type: 'text', name: 'some-name' } }],
-          },
-        ],
-      },
-    ],
-  },
-  'p-flex': {
-    generator: ({ properties } = {}) => [
-      {
-        tag: 'p-flex',
-        properties: { ...properties, className: 'example-flex' },
-        children: [
-          { tag: 'p-flex-item', children: ['1'] },
-          { tag: 'p-flex-item', children: ['2'] },
-        ],
-      },
-      {
-        tag: 'p-flex',
-        properties: {
-          className: 'example-flex',
-        },
-        children: [
-          { tag: 'p-flex-item', children: ['1'] },
-          { tag: 'p-flex-item', children: ['2'] },
-        ],
-      },
-      {
-        tag: 'style',
-        children: [
-          `.example-flex > :nth-child(1n) {
-    background-color: #87cefa;
-  }
-  .example-flex > :nth-child(2n) {
-    background-color: #00bfff;
-  }
-  .example-flex > * {
-    padding: 0 6vw;
-    color: #010205;
-    text-align: center;
-  }`,
-        ],
-      },
-    ],
-  },
-  'p-flyout': {
-    state: {
-      properties: {
-        open: false,
-        aria: { 'aria-label': 'Some Heading' },
-        // onDismiss: () => (document.querySelector('p-flyout').open = false),
-      },
-      slots: {
-        header: componentSlotStories['p-flyout']?.header.basic,
-        default: componentSlotStories['p-flyout']?.default.basic,
-        footer: componentSlotStories['p-flyout']?.footer.basic,
-        'sub-footer': componentSlotStories['p-flyout']?.['sub-footer'].basic,
-      },
-    },
-    generator: ({ properties, slots } = {}) => [
-      {
-        tag: 'p-button',
-        properties: {
-          type: 'button',
-          aria: { 'aria-haspopup': 'dialog' },
-          // onClick: () => (document.querySelector('p-flyout').open = true),
-        },
-        children: ['Open Flyout'],
-      },
-      {
-        tag: 'p-flyout',
-        properties,
-        children: [
-          ...(slots?.header?.generator() ?? []),
-          ...(slots?.default?.generator() ?? []),
-          ...(slots?.footer?.generator() ?? []),
-          ...(slots?.['sub-footer']?.generator() ?? []),
-        ],
-      },
-    ],
-  },
-  // TODO: Add story
-  'p-flyout-multilevel': {
-    generator: ({ properties } = {}) => [
-      {
-        tag: 'p-flyout-multilevel',
-        properties,
-      },
-    ],
-  },
   'p-grid': {
     generator: ({ properties } = {}) => [
       {

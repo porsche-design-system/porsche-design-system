@@ -1,4 +1,4 @@
-import type { ElementConfig } from '@/components/playground/Configurator';
+import type { ElementConfig } from '@/components/playground/ConfiguratorControls';
 import { isDefaultValue } from '@/components/playground/configuratorUtils';
 import { getFlags } from '@/utils/getFlags';
 import type { ComponentMeta, PropMeta } from '@porsche-design-system/component-meta';

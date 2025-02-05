@@ -1,4 +1,4 @@
-import type { ConfiguratorTagNames, ElementConfig } from '@/components/playground/Configurator';
+import type { ConfiguratorTagNames, ElementConfig } from '@/components/playground/ConfiguratorControls';
 import { type ControlledMeta, componentMeta } from '@porsche-design-system/component-meta';
 import {
   PAccordion,
