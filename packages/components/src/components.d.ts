@@ -1724,6 +1724,10 @@ export namespace Components {
      */
     interface PSelect {
         /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
+        /**
           * The description text.
          */
         "description"?: string;
@@ -5042,6 +5046,10 @@ declare namespace LocalJSX {
      * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
      */
     interface PSelect {
+        /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
         /**
           * The description text.
          */
