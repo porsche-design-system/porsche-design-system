@@ -2,15 +2,12 @@
 
 import type { Story } from '@/components/playground/componentStory';
 
-export const buttonGroupStory: Story = {
+export const headingStory: Story = {
   generator: ({ properties } = {}) => [
     {
-      tag: 'p-button-group',
+      tag: 'p-heading',
       properties,
-      children: [
-        { tag: 'p-button', properties: { variant: 'primary' }, children: ['Some label'] },
-        { tag: 'p-button', properties: { variant: 'secondary' }, children: ['Some label'] },
-      ],
+      children: ['The quick brown fox jumps over the lazy dog'],
     },
   ],
 };

@@ -2,14 +2,17 @@
 
 import type { Story } from '@/components/playground/componentStory';
 
-export const buttonGroupStory: Story = {
+export const segmentedControlStory: Story = {
   generator: ({ properties } = {}) => [
     {
-      tag: 'p-button-group',
+      tag: 'p-segmented-control',
       properties,
       children: [
-        { tag: 'p-button', properties: { variant: 'primary' }, children: ['Some label'] },
-        { tag: 'p-button', properties: { variant: 'secondary' }, children: ['Some label'] },
+        { tag: 'p-segmented-control-item', properties: { value: '1' }, children: ['Option 1'] },
+        { tag: 'p-segmented-control-item', properties: { value: '2' }, children: ['Option 2'] },
+        { tag: 'p-segmented-control-item', properties: { value: '3' }, children: ['Option 3'] },
+        { tag: 'p-segmented-control-item', properties: { value: '4' }, children: ['Option 4'] },
+        { tag: 'p-segmented-control-item', properties: { value: '5' }, children: ['Option 5'] },
       ],
     },
   ],

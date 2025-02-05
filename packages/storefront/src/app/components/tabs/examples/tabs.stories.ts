@@ -2,14 +2,27 @@
 
 import type { Story } from '@/components/playground/componentStory';
 
-export const buttonGroupStory: Story = {
+export const tabsStory: Story = {
   generator: ({ properties } = {}) => [
     {
-      tag: 'p-button-group',
+      tag: 'p-tabs',
       properties,
       children: [
-        { tag: 'p-button', properties: { variant: 'primary' }, children: ['Some label'] },
-        { tag: 'p-button', properties: { variant: 'secondary' }, children: ['Some label'] },
+        {
+          tag: 'p-tabs-item',
+          properties: { label: 'Tab One' },
+          children: [{ tag: 'p-text', children: ['Tab Content One'] }],
+        },
+        {
+          tag: 'p-tabs-item',
+          properties: { label: 'Tab Two' },
+          children: [{ tag: 'p-text', children: ['Tab Content Two'] }],
+        },
+        {
+          tag: 'p-tabs-item',
+          properties: { label: 'Tab Three' },
+          children: [{ tag: 'p-text', children: ['Tab Content Three'] }],
+        },
       ],
     },
   ],

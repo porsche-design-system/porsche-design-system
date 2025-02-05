@@ -2,14 +2,31 @@
 
 import type { Story } from '@/components/playground/componentStory';
 
-export const buttonGroupStory: Story = {
+export const linkTileModelSignatureStory: Story = {
+  state: {
+    properties: { heading: 'Some heading' },
+  },
   generator: ({ properties } = {}) => [
     {
-      tag: 'p-button-group',
+      tag: 'p-link-tile-model-signature',
       properties,
       children: [
-        { tag: 'p-button', properties: { variant: 'primary' }, children: ['Some label'] },
-        { tag: 'p-button', properties: { variant: 'secondary' }, children: ['Some label'] },
+        {
+          tag: 'p-tag',
+          properties: { slot: 'header', color: 'background-frosted', compact: true },
+          children: ['Some tag'],
+        },
+        { tag: 'img', properties: { src: 'assets/lights.jpg', alt: 'Some image description' } },
+        {
+          tag: 'p-link',
+          properties: { slot: 'primary', href: 'https://porsche.com/#primary' },
+          children: ['Primary label'],
+        },
+        {
+          tag: 'p-link',
+          properties: { slot: 'secondary', href: 'https://porsche.com/#secondary' },
+          children: ['Secondary label'],
+        },
       ],
     },
   ],

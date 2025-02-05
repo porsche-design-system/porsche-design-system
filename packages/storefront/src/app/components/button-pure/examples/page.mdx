@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
-import { ConfiguratorControls } from "@/components/playground/ConfiguratorControls";
+import { Configurator } from "@/components/playground/Configurator";
+import { buttonPureStory } from "@/app/components/button-pure/examples/button-pure.stories";
 
 export const metadata = {
   title: 'Button Pure - Porsche Design System',
@@ -11,5 +12,5 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-<ConfiguratorControls tagName="p-button-pure" />
+<Configurator tagName="p-button-pure" story={buttonPureStory} />
 

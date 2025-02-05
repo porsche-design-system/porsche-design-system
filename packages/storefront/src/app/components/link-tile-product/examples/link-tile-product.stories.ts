@@ -2,14 +2,37 @@
 
 import type { Story } from '@/components/playground/componentStory';
 
-export const buttonGroupStory: Story = {
-  generator: ({ properties } = {}) => [
+export const linkTileProductStory: Story = {
+  state: {
+    properties: {
+      heading: 'Some product',
+      price: '1.911,00 €',
+      description: 'Some description',
+      href: 'https://porsche.com',
+    },
+  },
+  generator: ({ properties } = {}, updateState = () => {}) => [
     {
-      tag: 'p-button-group',
-      properties,
+      tag: 'p-link-tile-product',
+      properties: { ...properties, onLike: (e) => updateState?.('p-link-tile-product', 'liked', !e.detail.liked) },
       children: [
-        { tag: 'p-button', properties: { variant: 'primary' }, children: ['Some label'] },
-        { tag: 'p-button', properties: { variant: 'secondary' }, children: ['Some label'] },
+        {
+          tag: 'p-tag',
+          properties: {
+            slot: 'header',
+            color: 'background-base',
+          },
+          children: ['New'],
+        },
+        {
+          tag: 'img',
+          properties: {
+            src: 'assets/placeholder_800x900.svg',
+            width: 800,
+            height: 900,
+            alt: 'Some alt text',
+          },
+        },
       ],
     },
   ],

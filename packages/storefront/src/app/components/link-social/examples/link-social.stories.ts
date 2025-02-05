@@ -2,15 +2,15 @@
 
 import type { Story } from '@/components/playground/componentStory';
 
-export const buttonGroupStory: Story = {
+export const linkSocialStory: Story = {
+  state: {
+    properties: { href: 'https://example.com', icon: 'logo-facebook', target: '_blank', rel: 'nofollow noopener' },
+  },
   generator: ({ properties } = {}) => [
     {
-      tag: 'p-button-group',
+      tag: 'p-link-social',
       properties,
-      children: [
-        { tag: 'p-button', properties: { variant: 'primary' }, children: ['Some label'] },
-        { tag: 'p-button', properties: { variant: 'secondary' }, children: ['Some label'] },
-      ],
+      children: ['Facebook'],
     },
   ],
 };

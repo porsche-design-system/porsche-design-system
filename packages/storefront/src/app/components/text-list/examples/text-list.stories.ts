@@ -2,14 +2,27 @@
 
 import type { Story } from '@/components/playground/componentStory';
 
-export const buttonGroupStory: Story = {
+export const textListStory: Story = {
   generator: ({ properties } = {}) => [
     {
-      tag: 'p-button-group',
+      tag: 'p-text-list',
       properties,
       children: [
-        { tag: 'p-button', properties: { variant: 'primary' }, children: ['Some label'] },
-        { tag: 'p-button', properties: { variant: 'secondary' }, children: ['Some label'] },
+        { tag: 'p-text-list-item', children: ['The quick brown fox jumps over the lazy dog'] },
+        {
+          tag: 'p-text-list-item',
+          children: [
+            'The quick brown fox jumps over the lazy dog',
+            {
+              tag: 'p-text-list',
+              children: [
+                { tag: 'p-text-list-item', children: ['The quick brown fox jumps over the lazy dog'] },
+                { tag: 'p-text-list-item', children: ['The quick brown fox jumps over the lazy dog'] },
+              ],
+            },
+          ],
+        },
+        { tag: 'p-text-list-item', children: ['The quick brown fox jumps over the lazy dog'] },
       ],
     },
   ],

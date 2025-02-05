@@ -2,15 +2,15 @@
 
 import type { Story } from '@/components/playground/componentStory';
 
-export const buttonGroupStory: Story = {
+export const linkPureStory: Story = {
+  state: {
+    properties: { href: 'https://porsche.com' },
+  },
   generator: ({ properties } = {}) => [
     {
-      tag: 'p-button-group',
+      tag: 'p-link-pure',
       properties,
-      children: [
-        { tag: 'p-button', properties: { variant: 'primary' }, children: ['Some label'] },
-        { tag: 'p-button', properties: { variant: 'secondary' }, children: ['Some label'] },
-      ],
+      children: ['Some label'],
     },
   ],
 };

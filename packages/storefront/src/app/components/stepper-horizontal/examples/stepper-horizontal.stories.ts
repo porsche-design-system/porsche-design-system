@@ -2,14 +2,16 @@
 
 import type { Story } from '@/components/playground/componentStory';
 
-export const buttonGroupStory: Story = {
+export const stepperHorizontalStory: Story = {
   generator: ({ properties } = {}) => [
     {
-      tag: 'p-button-group',
+      tag: 'p-stepper-horizontal',
       properties,
       children: [
-        { tag: 'p-button', properties: { variant: 'primary' }, children: ['Some label'] },
-        { tag: 'p-button', properties: { variant: 'secondary' }, children: ['Some label'] },
+        { tag: 'p-stepper-horizontal-item', properties: { state: 'complete' }, children: ['Step 1'] },
+        { tag: 'p-stepper-horizontal-item', properties: { state: 'warning' }, children: ['Step 2'] },
+        { tag: 'p-stepper-horizontal-item', properties: { state: 'current' }, children: ['Step 3'] },
+        { tag: 'p-stepper-horizontal-item', children: ['Step 4'] },
       ],
     },
   ],

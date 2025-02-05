@@ -2,15 +2,12 @@
 
 import type { Story } from '@/components/playground/componentStory';
 
-export const buttonGroupStory: Story = {
+export const inlineNotificationStory: Story = {
+  state: { properties: { heading: 'Some heading', headingTag: 'h3', description: 'Some description.' } },
   generator: ({ properties } = {}) => [
     {
-      tag: 'p-button-group',
+      tag: 'p-inline-notification',
       properties,
-      children: [
-        { tag: 'p-button', properties: { variant: 'primary' }, children: ['Some label'] },
-        { tag: 'p-button', properties: { variant: 'secondary' }, children: ['Some label'] },
-      ],
     },
   ],
 };

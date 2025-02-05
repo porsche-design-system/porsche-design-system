@@ -2,14 +2,27 @@
 
 import type { Story } from '@/components/playground/componentStory';
 
-export const buttonGroupStory: Story = {
+export const selectWrapperStory: Story = {
+  state: {
+    properties: { label: 'Some label' },
+  },
   generator: ({ properties } = {}) => [
     {
-      tag: 'p-button-group',
+      tag: 'p-select-wrapper',
       properties,
       children: [
-        { tag: 'p-button', properties: { variant: 'primary' }, children: ['Some label'] },
-        { tag: 'p-button', properties: { variant: 'secondary' }, children: ['Some label'] },
+        {
+          tag: 'select',
+          properties: { name: 'some-name' },
+          children: [
+            { tag: 'option', properties: { value: 'a' }, children: ['Option A'] },
+            { tag: 'option', properties: { value: 'b' }, children: ['Option B'] },
+            { tag: 'option', properties: { value: 'c' }, children: ['Option C'] },
+            { tag: 'option', properties: { value: 'd' }, children: ['Option D'] },
+            { tag: 'option', properties: { value: 'e' }, children: ['Option E'] },
+            { tag: 'option', properties: { value: 'f' }, children: ['Option F'] },
+          ],
+        },
       ],
     },
   ],

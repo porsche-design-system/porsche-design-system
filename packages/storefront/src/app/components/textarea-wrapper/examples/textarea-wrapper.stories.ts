@@ -2,15 +2,15 @@
 
 import type { Story } from '@/components/playground/componentStory';
 
-export const buttonGroupStory: Story = {
+export const textareaWrapperStory: Story = {
+  state: {
+    properties: { label: 'Some label' },
+  },
   generator: ({ properties } = {}) => [
     {
-      tag: 'p-button-group',
+      tag: 'p-textarea-wrapper',
       properties,
-      children: [
-        { tag: 'p-button', properties: { variant: 'primary' }, children: ['Some label'] },
-        { tag: 'p-button', properties: { variant: 'secondary' }, children: ['Some label'] },
-      ],
+      children: [{ tag: 'textarea', properties: { name: 'some-name' } }],
     },
   ],
 };

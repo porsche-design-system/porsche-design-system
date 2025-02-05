@@ -1,16 +1,32 @@
 'use client';
 
-import type { Story } from '@/components/playground/componentStory';
+import { type SlotStories, type Story, componentSlotStories } from '@/components/playground/componentStory';
 
-export const buttonGroupStory: Story = {
-  generator: ({ properties } = {}) => [
+export const linkSlotStories: SlotStories = {
+  default: {
+    basic: {
+      name: 'Basic',
+      generator: () => ['Some label'],
+    },
+    'slotted-anchor': {
+      name: 'Slotted Anchor',
+      generator: () => [{ tag: 'a', properties: { href: 'https://www.porsche.com' }, children: ['Some label'] }],
+    },
+  },
+};
+
+export const linkStory: Story = {
+  state: {
+    properties: { href: 'https://porsche.com' },
+    slots: {
+      default: linkSlotStories.default.basic,
+    },
+  },
+  generator: ({ properties, slots } = {}) => [
     {
-      tag: 'p-button-group',
+      tag: 'p-link',
       properties,
-      children: [
-        { tag: 'p-button', properties: { variant: 'primary' }, children: ['Some label'] },
-        { tag: 'p-button', properties: { variant: 'secondary' }, children: ['Some label'] },
-      ],
+      children: slots?.default?.generator() ?? [],
     },
   ],
 };
