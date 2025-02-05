@@ -16012,7 +16012,8 @@ exports[`should render dsr component for PSwitch 1`] = `
       :host {
   display: inline-flex;
   outline: 0 !important;
-  gap: 8px !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
   color-scheme: light dark !important;
   justify-content: flex-start !important;
   width: auto !important;
@@ -16025,25 +16026,32 @@ exports[`should render dsr component for PSwitch 1`] = `
   visibility: hidden;
 }
 button {
+  position: relative;
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  width: calc(calc(6px + 2.125ex) * 2 - 2px*2);
-  height: calc(6px + 2.125ex);
+  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) * 2 - 2px * 2);
+  height: calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex)));
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   box-sizing: content-box;
   border: 2px solid #6B6D70;
-  border-radius: calc((calc(6px + 2.125ex) + 2px*2) / 2);
+  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) / 2);
   background-color: transparent;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   margin: 0;
   padding: 0;
+  margin-top: max(0px, calc((calc(6px + 2.125ex) - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
   -webkit-appearance: none;
   appearance: none;
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button::before {
+  content: "";
+  position: absolute;
+  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
 }
 label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -16062,22 +16070,22 @@ label {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: 2px;
+  padding-top: max(0px, calc((calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2));
 }
 
 .toggle {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: calc(calc(6px + 2.125ex) - 2px*2);
-  height: calc(calc(6px + 2.125ex) - 2px*2);
+  place-items: center;
+  place-content: center;
+  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
+  height: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
   border-radius: 50%;
   background-color: #010205;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(2px, 0, 0);
 }
 .toggle:dir(rtl) {
-  transform: translate3d(-2px, 0, 0);
+  transform: translate3d(calc(2px * -1), 0, 0);
 }
 .loading {
   position: absolute;
