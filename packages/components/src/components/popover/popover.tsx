@@ -1,14 +1,13 @@
-import { Component, Element, Host, type JSX, Prop, State, forceUpdate, h } from '@stencil/core';
+import { arrow, autoUpdate, computePosition, flip } from '@floating-ui/dom';
+import { Component, Element, Host, type JSX, Prop, State, h } from '@stencil/core';
 import { getSlottedAnchorStyles } from '../../styles';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import {
   AllowedTypes,
   THEMES,
-  addNativePopoverScrollAndResizeListeners,
   applyConstructableStylesheetStyles,
   attachComponentCss,
-  detectNativePopoverCase,
-  findClosestComponent,
+  getHasNativePopoverSupport,
   getPrefixedTagNames,
   hasPropValueChanged,
   parseAndGetAriaAttributes,
@@ -20,10 +19,6 @@ import {
   POPOVER_DIRECTIONS,
   type PopoverAriaAttribute,
   type PopoverDirection,
-  addDocumentEventListener,
-  removeDocumentEventListener,
-  updateNativePopoverStyles,
-  updatePopoverStyles,
 } from './popover-utils';
 
 const propTypes: PropTypes<typeof Popover> = {
@@ -58,46 +53,23 @@ export class Popover {
 
   @State() private open = false;
 
-  private spacer: HTMLDivElement;
   private popover: HTMLDivElement;
   private button: HTMLButtonElement;
+  private arrow: HTMLDivElement;
 
-  private isNativePopoverCase: boolean = false;
-  private parentTableElement: HTMLElement;
+  private autoUpdatePopoverPosition: () => void;
 
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
-    addDocumentEventListener(this);
-    this.isNativePopoverCase = detectNativePopoverCase(this.host, false);
-    if (this.isNativePopoverCase) {
-      this.parentTableElement = findClosestComponent(this.host, 'pTable');
-    }
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentDidRender(): void {
-    if (this.isNativePopoverCase && this.spacer?.matches(':popover-open')) {
-      addNativePopoverScrollAndResizeListeners(this.host, this.parentTableElement, this.spacer);
-      // Set new popover position depending on button position
-      updateNativePopoverStyles(this.spacer, this.button);
-      // Update popover styles with new position
-      updatePopoverStyles(this.host, this.spacer, this.popover, this.direction, this.theme, this.isNativePopoverCase);
-    } else if (this.open) {
-      // calculate / update position only possible after render
-      updatePopoverStyles(this.host, this.spacer, this.popover, this.direction, this.theme, false);
-    }
-  }
-
-  public disconnectedCallback(): void {
-    removeDocumentEventListener(this);
-  }
-
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.direction, this.isNativePopoverCase, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -105,27 +77,24 @@ export class Popover {
       <Host onKeydown={this.onKeydown}>
         <button
           type="button"
-          {...(this.isNativePopoverCase ? { popoverTarget: 'spacer' } : { onClick: () => (this.open = !this.open) })}
+          popoverTarget="popover"
+          onClick={() => {
+            this.open = !this.open;
+            getHasNativePopoverSupport && this.fallbackToggle(this.open);
+          }}
           {...parseAndGetAriaAttributes({
             ...parseAndGetAriaAttributes(this.aria),
-            ...(!this.isNativePopoverCase && { 'aria-expanded': this.open }),
+            ...{ 'aria-expanded': this.open },
           })}
           ref={(el) => (this.button = el)}
         >
           <PrefixedTagNames.pIcon class="icon" name="information" theme={this.theme} />
           <span class="label">More information</span>
         </button>
-        {(this.open || this.isNativePopoverCase) && (
-          <div
-            class="spacer"
-            ref={(el) => (this.spacer = el)}
-            {...(this.isNativePopoverCase && { popover: 'auto', id: 'spacer', onToggle: this.onToggle })}
-          >
-            <div class="popover" ref={(el) => (this.popover = el)}>
-              {this.description ? <p>{this.description}</p> : <slot />}
-            </div>
-          </div>
-        )}
+        <div class="popover" ref={(el) => (this.popover = el)} popover="auto" id="popover" onToggle={this.onToggle}>
+          <div class="arrow" ref={(el) => (this.arrow = el)} />
+          <div class="content">{this.description ? <p>{this.description}</p> : <slot />}</div>
+        </div>
       </Host>
     );
   }
@@ -138,7 +107,50 @@ export class Popover {
 
   private onToggle = (e: ToggleEvent): void => {
     if (e.newState === 'open') {
-      forceUpdate(this.host); // Necessary to update popover styles since opening of native popover doesn't trigger rerender
+      this.autoUpdate(false);
+    } else {
+      this.autoUpdate(true);
+    }
+  };
+
+  private fallbackToggle = (open: boolean): void => {
+    if (open) {
+      this.updatePopoverPosition();
+    }
+  };
+
+  private updatePopoverPosition = (): void => {
+    computePosition(this.button, this.popover, {
+      placement: this.direction,
+      middleware: [
+        flip({
+          fallbackAxisSideDirection: 'end',
+        }),
+        arrow({ element: this.arrow }),
+      ],
+    }).then(({ x, y, placement }) => {
+      const placementVertical = placement === 'top' || placement === 'bottom';
+      const placementTopLeft = placement === 'top' || placement === 'left';
+      Object.assign(this.popover.style, {
+        left: `${x}px`,
+        top: `${y}px`,
+        flexDirection: placementVertical ? 'column' : 'row',
+      });
+      Object.assign(this.arrow.style, {
+        clipPath: placementVertical ? 'polygon(50% 0, 100% 110%, 0 110%)' : 'polygon(0 50%, 110% 0, 110% 100%)',
+        order: placementTopLeft ? '1' : '0',
+        width: placementVertical ? '24px' : '12px',
+        height: placementVertical ? '12px' : '24px',
+        transform: `rotate(${placementTopLeft ? '180deg' : '0'}`,
+      });
+    });
+  };
+
+  private autoUpdate = (cleanUp: boolean) => {
+    if (cleanUp) {
+      this.autoUpdatePopoverPosition();
+    } else {
+      this.autoUpdatePopoverPosition = autoUpdate(this.button, this.popover, this.updatePopoverPosition);
     }
   };
 }
