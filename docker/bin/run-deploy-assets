@@ -3,11 +3,6 @@
 set -o errexit
 set -o pipefail
 
-if [[ -z "${CDN_USER}" ]]; then
-  echo "Please provide the \$CDN_USER environment variable."
-  exit 1
-fi
-
 if [[ -z "${AWS_ACCESS_KEY_ID}" ]]; then
   echo "Please provide the \$AWS_ACCESS_KEY_ID environment variable."
   exit 1
@@ -30,8 +25,6 @@ function upload_to_akamai {
     echo "directory '${1}' does not exist, skipping upload ❌️️"
   fi
 }
-
-source "${SCRIPT_DIR}/../shared/ensure-cdn-credentials.sh"
 
 upload_to_akamai packages/assets/cdn/components/ components/
 upload_to_akamai packages/assets/cdn/crest/ crest/
