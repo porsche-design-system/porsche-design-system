@@ -582,6 +582,7 @@ exports[`should call validateProps() with correct parameters via render for p-se
 
 exports[`should call validateProps() with correct parameters via render for p-select: propTypes with ValidatorFunctions 1`] = `
 {
+  "compact": "boolean",
   "description": "string",
   "disabled": "boolean",
   "dropdownDirection": "oneOf",

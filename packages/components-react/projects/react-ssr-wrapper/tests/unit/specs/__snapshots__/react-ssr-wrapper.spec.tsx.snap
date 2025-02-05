@@ -5582,13 +5582,13 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -5597,7 +5597,8 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -5619,8 +5620,8 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + 0px);
@@ -5722,13 +5723,13 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -5737,7 +5738,8 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -5759,8 +5761,8 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + 0px);
@@ -5862,13 +5864,13 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -5877,7 +5879,8 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -5899,7 +5902,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   --p-internal-text-field-input-padding-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   display: grid;
   gap: 4px;
@@ -6164,13 +6167,13 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -6179,7 +6182,8 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -13222,12 +13226,12 @@ exports[`should render dsr component for POptgroup 1`] = `
 .optgroup {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: max(2px, var(--p-internal-optgroup-scaling, 1) * 8px);
 }
 .label {
   color: #010205;
   display: block;
-  padding: 8px 12px;
+  padding: max(2px, var(--p-internal-optgroup-scaling, 1) * 8px) max(4px, var(--p-internal-optgroup-scaling, 1) * 12px);
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
 }
@@ -14506,6 +14510,10 @@ exports[`should render dsr component for PSelect 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+::slotted(*) {
+  --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+  --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -14515,12 +14523,12 @@ button {
   white-space: nowrap;
   grid-area: 1/1/1/-1;
   min-width: 0;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
+  height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
-  padding: 8px 16px;
-  padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
-  box-sizing: border-box;
+  padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+  padding-inline: max(4px, var(--p-internal-select-scaling, 1) * 16px) calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
+  box-sizing: content-box;
   outline: 0;
   -webkit-appearance: none;
   appearance: none;
@@ -14540,13 +14548,13 @@ button:disabled {
 
 .root {
   display: grid;
-  gap: 4px;
+  gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
   min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto calc(9px + 2px);
+  grid-template-columns: minmax(0, 1fr) auto auto calc(max(2px, var(--p-internal-select-scaling, 1) * 9px) + 2px);
 }
 .icon {
   grid-area: 1/3;
@@ -14565,8 +14573,8 @@ button:disabled {
   margin: 0;
   display: none;
   flex-direction: column;
-  gap: 8px;
-  padding: 6px;
+  gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+  padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -14756,15 +14764,15 @@ exports[`should render dsr component for PSelectOption 1`] = `
 .option {
   font-weight: 400;
   display: flex;
-  gap: 12px;
-  padding: 8px 12px;
-  padding-inline-start: var(--p-internal-select-option-padding-left, 12px);
-  min-height: calc(calc(6px + 2.125ex) + 8px * 2);
+  gap: max(4px, var(--p-internal-select-option-scaling, 1) * 12px);
+  padding-block: max(2px, var(--p-internal-select-option-scaling, 1) * 8px);
+  padding-inline: max(4px, var(--p-internal-select-option-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-option-scaling, 1) * 12px);
+  min-height: calc(6px + 2.125ex);
   color: #535457;
   cursor: pointer;
   text-align: start;
   word-break: break-word;
-  box-sizing: border-box;
+  box-sizing: content-box;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -18157,13 +18165,13 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -18172,7 +18180,8 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -18194,8 +18203,8 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + 0px);

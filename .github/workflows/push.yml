@@ -27,8 +27,6 @@ jobs:
       gh-deploy-key-storefront: ${{ secrets.GH_DEPLOY_KEY_STOREFRONT }}
       porsche-npm-registry-token: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
       npmjs-registry-token: ${{ secrets.NPMJS_REGISTRY_TOKEN }}
-      cdn-user: ${{ secrets.CDN_USER }}
-      cdn-ssh-key: ${{ secrets.CDN_SSH_KEY }}
       algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
       algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
       uxpin-token-dev: ${{ secrets.UXPIN_TOKEN_DEV }}
