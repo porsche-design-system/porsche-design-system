@@ -13,7 +13,7 @@ import { cssVariableMultiSelectPaddingInlineStart } from '../multi-select/multi-
 import { cssVariableSelectPaddingInlineStart } from '../select/select-option/select-option-styles';
 
 const cssVarInternalOptgroupScaling = '--p-internal-optgroup-scaling';
-const scalingVar = `var(${cssVarInternalOptgroupScaling})`;
+const scalingVar = `var(${cssVarInternalOptgroupScaling}, 1)`;
 
 export const getComponentCss = (isDisabled: boolean, theme: Theme): string =>
   getCss({

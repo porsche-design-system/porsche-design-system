@@ -22,7 +22,7 @@ import { getCss, isHighContrastMode } from '../../../utils';
 export const cssVariableSelectPaddingInlineStart = '--p-internal-select-option-padding-left';
 
 const cssVarInternalSelectOptionScaling = '--p-internal-select-option-scaling';
-const scalingVar = `var(${cssVarInternalSelectOptionScaling})`;
+const scalingVar = `var(${cssVarInternalSelectOptionScaling}, 1)`;
 
 // TODO: Enforce order of slotted text, img
 export const getComponentCss = (theme: Theme): string => {
