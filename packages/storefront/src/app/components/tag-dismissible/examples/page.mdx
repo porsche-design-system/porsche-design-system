@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
-import { ConfiguratorControls } from "@/components/playground/ConfiguratorControls";
+import { Configurator } from "@/components/playground/Configurator";
+import { tagDismissibleStory } from "@/app/components/tag-dismissible/examples/tag-dismissible.stories";
 
 export const metadata = {
   title: 'Tag Dismissible - Porsche Design System',
@@ -11,4 +12,4 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-<ConfiguratorControls tagName="p-tag-dismissible" />
+<Configurator tagName="p-tag-dismissible" story={tagDismissibleStory} />

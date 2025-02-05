@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
-import { ConfiguratorControls } from "@/components/playground/ConfiguratorControls";
+import { Configurator } from "@/components/playground/Configurator";
+import { fieldsetWrapperStory } from "@/app/components/fieldset-wrapper/examples/fieldset-wrapper.stories";
 
 export const metadata = {
   title: 'Fieldset Wrapper - Porsche Design System',
@@ -11,5 +12,5 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-<ConfiguratorControls tagName="p-fieldset-wrapper" />
+<Configurator tagName="p-fieldset-wrapper" story={fieldsetWrapperStory} />
 

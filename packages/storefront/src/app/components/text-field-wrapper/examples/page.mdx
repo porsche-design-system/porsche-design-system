@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
-import { ConfiguratorControls } from "@/components/playground/ConfiguratorControls";
+import { Configurator } from "@/components/playground/Configurator";
+import { textFieldWrapperStory } from "@/app/components/text-field-wrapper/examples/text-field-wrapper.stories";
 
 export const metadata = {
   title: 'Text Field Wrapper - Porsche Design System',
@@ -11,4 +12,4 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-<ConfiguratorControls tagName="p-text-field-wrapper" />
+<Configurator tagName="p-text-field-wrapper" story={textFieldWrapperStory} />

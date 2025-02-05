@@ -1,8 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
-import {Playground} from "@/components/playground/Playground";
-import {ConfiguratorControls} from "@/components/playground/ConfiguratorControls";
-import {Configurator} from "@/components/playground/Configurator";
+import { Configurator } from "@/components/playground/Configurator";
+import { flyoutSlotStories, flyoutStory } from "@/app/components/flyout/examples/flyout.stories";
 
 export const metadata = {
   title: 'Flyout - Porsche Design System',
@@ -13,5 +12,5 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-<Configurator />
+<Configurator tagName="p-flyout" story={flyoutStory} slotStories={flyoutSlotStories} />
 

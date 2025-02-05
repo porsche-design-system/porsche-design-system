@@ -1,6 +1,9 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
-import { ConfiguratorControls } from "@/components/playground/ConfiguratorControls";
+import { Configurator } from "@/components/playground/Configurator";
+import {
+  linkTileModelSignatureStory
+} from "@/app/components/link-tile-model-signature/examples/link-tile-model-signature.stories";
 
 export const metadata = {
   title: 'Link Tile Model Signature - Porsche Design System',
@@ -11,4 +14,4 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-<ConfiguratorControls tagName="p-link-tile-model-signature" />
+<Configurator tagName="p-link-tile-model-signature" story={linkTileModelSignatureStory} />

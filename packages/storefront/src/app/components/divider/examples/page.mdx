@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
-import { ConfiguratorControls } from "@/components/playground/ConfiguratorControls";
+import { Configurator } from "@/components/playground/Configurator";
+import { dividerStory } from "@/app/components/divider/examples/divider.stories";
 
 export const metadata = {
   title: 'Divider - Porsche Design System',
@@ -11,5 +12,5 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-<ConfiguratorControls tagName="p-divider" />
+<Configurator tagName="p-divider" story={dividerStory} />
 
