@@ -12,14 +12,13 @@ import {
   type CanvasSidebarStartUpdateEventDetail,
   PButton,
   PCanvas,
+  PHeading,
   PLink,
-  PTextFieldWrapper,
-  PTextarea,
 } from '@porsche-design-system/components-react/ssr';
 import { breakpointS } from '@porsche-design-system/components-react/styles';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { type PropsWithChildren, useEffect, useState } from 'react';
+import React, { type PropsWithChildren, useEffect, useState } from 'react';
 
 export const Canvas = ({ children }: PropsWithChildren) => {
   const { theme, setStorefrontTheme } = useTheme();
@@ -88,11 +87,16 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         <Navigation />
       </div>
       <div slot="sidebar-end">
-        <ThemeSelect theme={theme} onUpdate={(e) => setStorefrontTheme(e.detail.value as StorefrontTheme)} />
-        <DirectionSelect
-          dir={direction}
-          onUpdate={(e) => setStorefrontDirection(e.detail.value as StorefrontDirection)}
-        />
+        <div className="flex flex-col gap-sm mb-lg">
+          <PHeading size="small" tag="h3">
+            Global settings
+          </PHeading>
+          <ThemeSelect theme={theme} onUpdate={(e) => setStorefrontTheme(e.detail.value as StorefrontTheme)} />
+          <DirectionSelect
+            dir={direction}
+            onUpdate={(e) => setStorefrontDirection(e.detail.value as StorefrontDirection)}
+          />
+        </div>
       </div>
     </PCanvas>
   );

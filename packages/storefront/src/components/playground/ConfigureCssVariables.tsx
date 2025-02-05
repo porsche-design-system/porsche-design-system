@@ -49,7 +49,7 @@ export const ConfigureCssVariables = ({
               value={cssVariables[cssVariableName] ?? ''}
               onInput={(e) => onUpdateCssVariables(cssVariableName, e.currentTarget.value)}
             />
-            <span slot="label" className="inline-flex gap-xs">
+            <span slot="label" className="inline-flex gap-static-xs">
               {cssVariableName}
               <PPopover onClick={(e) => e.preventDefault()}>{cssVariableMeta.description}</PPopover>
               {getFlags(cssVariableMeta)}

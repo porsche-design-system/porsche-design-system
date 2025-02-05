@@ -2,6 +2,7 @@
 
 import type { StorefrontDirection } from '@/models/dir';
 import {
+  PPopover,
   PSelect,
   PSelectOption,
   type PSelectProps,
@@ -22,7 +23,17 @@ export const DirectionSelect = ({
   onUpdate,
 }: DirectionSelectProps) => {
   return (
-    <PSelect name="direction" value={dir} label={label} hideLabel={hideLabel} onUpdate={onUpdate}>
+    <PSelect name="direction" value={dir} hideLabel={hideLabel} compact={true} onUpdate={onUpdate}>
+      <span slot="label" className="inline-flex gap-static-xs">
+        {label}
+        <PPopover onClick={(e) => e.preventDefault()}>
+          Changes the direction of HTML elements, mostly used on
+          <code>
+            {'<'}body{'>'}
+          </code>{' '}
+          tag to support languages which are read from right to left like e.g. Arabic.
+        </PPopover>
+      </span>
       <PSelectOption value="ltr">LTR (left-to-right)</PSelectOption>
       <PSelectOption value="rtl">RTL (right-to-left)</PSelectOption>
       <PSelectOption value="auto">Auto</PSelectOption>

@@ -36,7 +36,7 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
                 onUpdate={(e) => onUpdateSlots(slotName, e.detail.checked ? Object.values(slotExamples)[0] : undefined)}
               >
                 {capitalCase(slotName)}
-                <PPopover className="ms-static-xs" onClick={(e) => e.preventDefault()}>
+                <PPopover onClick={(e) => e.preventDefault()}>
                   {/* TODO: Fix typing */}
                   {(componentSlots as any)?.[slotName === 'default' ? '' : slotName]?.description}
                 </PPopover>
@@ -55,9 +55,9 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
                   )
                 }
               >
-                <span slot="label" className="inline-flex gap-xs">
+                <span slot="label" className="inline-flex gap-static-xs">
                   {capitalCase(slotName)}
-                  <PPopover className="ms-static-xs" onClick={(e) => e.preventDefault()}>
+                  <PPopover onClick={(e) => e.preventDefault()}>
                     {/* TODO: Fix typing */}
                     {(componentSlots as any)?.[slotName === 'default' ? '' : slotName]?.description}
                   </PPopover>

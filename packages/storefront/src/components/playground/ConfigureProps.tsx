@@ -71,16 +71,16 @@ export const ConfigureProps = ({
   const renderInput = (propName: keyof ElementConfig['properties'], propMeta: PropMeta) => {
     if (propMeta.allowedValues === 'boolean') {
       return (
-        <div key={propName} className="flex gap-xs">
+        <div key={propName} className="flex gap-static-xs">
           <PSwitch
             checked={getCurrentValue(propName, propMeta) === 'true'}
             compact={true}
             onUpdate={(e) => onUpdateProps(propName, e.detail.checked ? 'true' : 'false')}
           >
-            {capitalCase(propName)}
-            <PPopover className="ms-static-xs" onClick={(e) => e.preventDefault()}>
-              {propMeta.description}
-            </PPopover>
+            <span className="inline-flex gap-static-xs">
+              {capitalCase(propName)}
+              <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
+            </span>
           </PSwitch>
           {getFlags(propMeta)}
           <ResetButton
@@ -103,7 +103,7 @@ export const ConfigureProps = ({
             // disabled={propMeta.hasAlternativeSlot ? configuredSlots.default propMeta.hasAlternativeSlot.tag : false}
             onInput={(e) => onUpdateProps(propName, e.currentTarget.value)}
           />
-          <span slot="label" className="inline-flex gap-xs">
+          <span slot="label" className="inline-flex gap-static-xs">
             {capitalCase(propName)}
             <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
             {getFlags(propMeta)}
@@ -127,11 +127,9 @@ export const ConfigureProps = ({
             required={propMeta.isRequired}
             onInput={(e) => onUpdateProps(propName, e.currentTarget.value)}
           />
-          <span slot="label" className="inline-flex gap-xs">
+          <span slot="label" className="inline-flex gap-static-xs">
             {capitalCase(propName)}
-            <PPopover className="ms-static-xs" onClick={(e) => e.preventDefault()}>
-              {propMeta.description}
-            </PPopover>
+            <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
             {getFlags(propMeta)}
             <ResetButton
               propName={propName}
@@ -154,11 +152,9 @@ export const ConfigureProps = ({
           required={propMeta.isRequired}
           onUpdate={(e) => onUpdateProps(propName, e.detail.value)}
         >
-          <span slot="label" className="inline-flex gap-xs">
+          <span slot="label" className="inline-flex gap-static-xs">
             {capitalCase(propName)}
-            <PPopover className="ms-static-xs" onClick={(e) => e.preventDefault()}>
-              {propMeta.description}
-            </PPopover>
+            <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
             {getFlags(propMeta)}
             <ResetButton
               propName={propName}
