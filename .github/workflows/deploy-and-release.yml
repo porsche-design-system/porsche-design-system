@@ -22,12 +22,6 @@ on:
       npmjs-registry-token:
         description: 'npm registry token for npmjs'
         required: true
-      cdn-user:
-        description: 'cdn user'
-        required: true
-      cdn-ssh-key:
-        description: 'cdn ssh key'
-        required: true
       algolia-app-id:
         description: 'algolia app id'
         required: true
