@@ -1,4 +1,4 @@
-import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/styles';
+import { borderWidthBase, fontLineHeight, spacingStaticXSmall } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -31,6 +31,8 @@ import {
 export const cssVariableInputPaddingStart = '--p-internal-text-field-input-padding-start';
 export const cssVariableInputPaddingEnd = '--p-internal-text-field-input-padding-end';
 
+export const cssVarInternalTextFieldScaling = '--p-internal-text-field-scaling';
+
 export const getComponentCss = (
   isDisabled: boolean,
   isReadonly: boolean,
@@ -59,6 +61,14 @@ export const getComponentCss = (
     hasUnitOrVisibleCounter &&
     `calc(${formElementLayeredGap} + ${formElementPaddingHorizontal} + ${borderWidthBase} + ${unitLength || counterCharacterLengthCssVar} * 1ch * log(2.6))`;
 
+  // Determines the scaling factor for the text field size. In "compact" mode, it uses 0.5 to achieve a 36px text field (compact size).
+  // Defaults to 1 for the standard size and can be overridden by the CSS variable `cssVarInternalTextFieldScaling`.
+  const scalingVar = `var(${cssVarInternalTextFieldScaling}, 1)`;
+
+  const paddingBlock = `max(2px, ${formElementPaddingVertical} * ${scalingVar})`;
+  const paddingInline = `max(4px, ${formElementPaddingHorizontal} * ${scalingVar})`;
+  const height = `max(${fontLineHeight}, ${scalingVar} * (${fontLineHeight} + 10px))`;
+
   return getCss({
     '@global': {
       ':host': {
@@ -73,7 +83,11 @@ export const getComponentCss = (
       ...addImportantToEachRule({
         ...getSlottedTextFieldTextareaSelectStyles('input', state, false, theme, {
           gridArea: '1/1/1/-1',
-          padding: `${formElementPaddingVertical} ${formElementPaddingHorizontal}`,
+          paddingBlock,
+          paddingInline,
+          width: 'auto',
+          height,
+          boxSizing: 'content-box',
           paddingInlineStart:
             hasUnitOrVisibleCounter && unitPosition === 'prefix'
               ? paddingInlineIfUnitOrCounter
@@ -112,11 +126,11 @@ export const getComponentCss = (
     root: {
       [cssVariableInputPaddingStart]: isSearchWithoutFormOrSubmitButton
         ? getCalculatedFormElementPaddingHorizontal(1)
-        : formElementPaddingHorizontal,
+        : paddingInline,
       [cssVariableInputPaddingEnd]:
         isSearchOrPassword || isCalendarOrTimeWithCustomIndicator
           ? getCalculatedFormElementPaddingHorizontal(isSearchWithForm && hasSubmitButton ? 2 : 1)
-          : formElementPaddingHorizontal,
+          : paddingInline,
       display: 'grid',
       gap: spacingStaticXSmall,
       // min width is needed for showing at least 1 character in very narrow containers. The "2rem" value is the minimum safe zone to show at least 1 character plus the ellipsis dots.
