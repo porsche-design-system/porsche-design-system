@@ -1,14 +1,3 @@
-import { getCss, isThemeDark, type Theme } from '../../utils';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  getFocusJssStyle,
-  getThemedColors,
-  getTransition,
-  hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
-  preventFoucOfNestedElementsStyles,
-} from '../../styles';
 import {
   borderRadiusSmall,
   breakpointS,
@@ -19,6 +8,17 @@ import {
   textSmallStyle,
   textXSmallStyle,
 } from '@porsche-design-system/styles';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  getFocusJssStyle,
+  getThemedColors,
+  getTransition,
+  hostHiddenStyles,
+  prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
+import { type Theme, getCss, isThemeDark } from '../../utils';
 
 // public css classes
 const cssClassGrid = '-p-canvas-grid';
@@ -83,6 +83,9 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
             borderRadius: borderRadiusSmall,
           },
           ...getFocusJssStyle(theme, { slotted: 'a' }),
+        },
+        '&[name="sidebar-end-header"]': {
+          display: 'block',
         },
         '&[name="background"]': {
           zIndex: 3,
@@ -354,7 +357,7 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
           },
         },
         '&--end': {
-          justifyContent: 'flex-end',
+          justifyContent: 'space-between',
           '&::before': {
             background: `linear-gradient(180deg,var(${cssVarColorBackgroundBase}) 0%,var(${cssVarColorBackgroundBase}) 65%,transparent 100%)`,
           },

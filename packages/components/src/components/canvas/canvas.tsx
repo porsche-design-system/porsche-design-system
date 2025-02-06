@@ -26,6 +26,7 @@ const propTypes: PropTypes<typeof Canvas> = {
  * @slot {"name": "footer", "description": "Renders a **sticky** footer section underneath the main content." }
  * @slot {"name": "sidebar-start", "description": "Renders a sidebar area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). On mobile view it transforms into a flyout." }
  * @slot {"name": "sidebar-end", "description": "Renders a sidebar area on the **end** side (**right** in **LTR** mode / **left** in **RTL** mode). On mobile view it transforms into a flyout." }
+ * @slot {"name": "sidebar-end-header", "description": "Renders in the header section of the sidebar end area." }
  * @slot {"name": "background", "description": "Can be used to pass a sticky media element <img/> or <video/> placed underneath the main content." }
  *
  * @experimental
@@ -193,6 +194,7 @@ export class Canvas {
             >
               <div class="sidebar__scroller">
                 <div class="sidebar__header sidebar__header--end">
+                  <slot name="sidebar-end-header" />
                   <PrefixedTagNames.pButton
                     theme={this.theme}
                     icon="close"
@@ -242,6 +244,7 @@ export class Canvas {
             position="end"
             onDismiss={this.onDismissSidebarEnd}
           >
+            <slot slot="header" name="sidebar-end-header" />
             <slot name="sidebar-end" />
           </PrefixedTagNames.pFlyout>
         )}
