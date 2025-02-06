@@ -1,9 +1,19 @@
 import type { ElementConfig } from '@/components/playground/ConfiguratorControls';
 import { pascalCase } from 'change-case';
 
+const getAngularCode = (code: string | undefined) => `@Component({
+  selector: 'example',
+  template: \`
+${code}
+  \`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+})
+export class ExampleComponent {}`;
+
 export const generateAngularMarkup = (configs: (string | ElementConfig | undefined)[], indentLevel = 2): string => {
   const outputs = configs.map((config) => createAngularMarkup(config, indentLevel));
-  return outputs.join('\n\n');
+  return getAngularCode(outputs.join('\n\n'));
 };
 
 const createAngularMarkup = (config: string | ElementConfig | undefined, indentLevel = 0): string => {

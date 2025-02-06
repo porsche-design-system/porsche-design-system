@@ -1,14 +1,35 @@
 import type { ElementConfig } from '@/components/playground/ConfiguratorControls';
 import { camelCase, kebabCase } from 'change-case';
 
-type ControlledInfo = { eventName: string; component: string; prop: string; val: string; isEventVal: boolean }[];
+export type ControlledInfo = {
+  tagName?: string; // tagName of element the eventListener is attached to e.g. p-button, p-accordion...
+  eventName: string; // Name of the event e.g. onUpdate
+  component: string; // tagName of the component to update the state of e.g. p-accordion
+  prop: string; // Name of the affected prop e.g. open
+  // TODO: Fix typing
+  initialValue?: any | undefined; // The initialValue of the state
+  newValue: string; // The value which will be assigned to the state/element e.g. either e.detail.open or the direct value e.g. true depending on isEventVal
+  isEventVal: boolean; // Specifies if the val will be directly used or taken out of the event
+}[];
+
+const getVanillaJsCode = (code: string | undefined, script: string | undefined) => `<!doctype html>
+<html lang="en">
+<head>
+  <title></title>
+</head>
+<body>
+
+${code}
+${script ? `\n<script>\n${script}\n</script>\n` : ''}
+</body>
+</html>`;
 
 export const generateVanillaJsMarkup = (configs: (string | ElementConfig | undefined)[]): string => {
   const results = configs.map((config) => createVanillaJSMarkup(config));
   const markup = results.map(({ markup }) => markup).join('\n\n');
   const scripts = results.flatMap(({ scripts }) => scripts).join('\n');
 
-  return `${markup}\n\n<script>\n${scripts}\n</script>`;
+  return getVanillaJsCode(markup, scripts);
 };
 
 const createVanillaJSMarkup = (
@@ -33,7 +54,7 @@ const createVanillaJSMarkup = (
         eventParams,
         updateStateParams: [component, prop, val],
       } = extractParams(value);
-      events.push({ eventName, component, prop, val, isEventVal: eventParams.length > 0 });
+      events.push({ eventName, component, prop, newValue: val, isEventVal: eventParams.length > 0 });
     } else if (typeof value === 'string') {
       props.push({ key: key === 'className' ? 'class' : kebabCase(key), value });
     } else if (key === 'style') {
@@ -74,19 +95,19 @@ const generateVanillaJSControlledScript = (tagName: string, controlled: Controll
   const selector = `  const ${constant} = document.querySelector('${tagName}');`;
 
   const listeners = controlled
-    .map(({ eventName, component, prop, val, isEventVal }) => {
+    .map(({ eventName, component, prop, newValue, isEventVal }) => {
       const element = camelCase(component.replace('p-', ''));
       if (isEventVal) {
-        return `  ${constant}.addEventListener('${eventName}', (e) => (e.target.${prop} = ${val}))`;
+        return `  ${constant}.addEventListener('${eventName}', (e) => (e.target.${prop} = ${newValue}))`;
       }
-      return `  ${constant}.addEventListener('${eventName}', () => (${element}.${prop} = ${val}))`;
+      return `  ${constant}.addEventListener('${eventName}', () => (${element}.${prop} = ${newValue}))`;
     })
     .join('\n');
 
   return [selector, listeners].join('\n');
 };
 
-const extractParams = (fn: typeof Function): { eventParams: string[]; updateStateParams: string[] } => {
+export const extractParams = (fn: typeof Function): { eventParams: string[]; updateStateParams: string[] } => {
   const match = fn.toString().match(/\(([^)]*)\)\s*=>\s*updateState\??.?\(([^)]*)\)/);
 
   if (match) {

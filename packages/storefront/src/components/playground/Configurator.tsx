@@ -5,7 +5,7 @@
 import { ConfiguratorControls, type ConfiguratorTagNames } from '@/components/playground/ConfiguratorControls';
 import { Playground } from '@/components/playground/Playground';
 import type { FrameworkMarkup } from '@/models/framework';
-import { type SlotStories, type Story, componentSlotStories } from '@/models/story';
+import type { SlotStories, Story } from '@/models/story';
 import { generateAngularMarkup } from '@/utils/generator/generateAngularMarkup';
 import { generateReactMarkup } from '@/utils/generator/generateReactMarkup';
 import { generateVanillaJsMarkup } from '@/utils/generator/generateVanillaJsMarkup';
@@ -39,7 +39,7 @@ export const Configurator = ({ tagName, story, slotStories }: ConfiguratorTestPr
     setExampleElement(createElements(generatedStory));
     setExampleMarkup({
       'vanilla-js': generateVanillaJsMarkup(generatedStory),
-      react: generateReactMarkup(generatedStory),
+      react: generateReactMarkup(generatedStory, story.state ?? {}),
       angular: generateAngularMarkup(generatedStory),
       vue: generateVueMarkup(generatedStory),
     });

@@ -1,9 +1,15 @@
 import type { ElementConfig } from '@/components/playground/ConfiguratorControls';
 import { pascalCase } from 'change-case';
 
+const getVueCode = (code: string | undefined) => `<script setup lang="ts"></script>
+
+<template>
+${code}
+</template>`;
+
 export const generateVueMarkup = (configs: (string | ElementConfig | undefined)[], indentLevel = 1): string => {
   const outputs = configs.map((config) => createVueMarkup(config, indentLevel));
-  return outputs.join('\n\n');
+  return getVueCode(outputs.join('\n\n'));
 };
 
 const createVueMarkup = (config: string | ElementConfig | undefined, indentLevel = 0): string => {

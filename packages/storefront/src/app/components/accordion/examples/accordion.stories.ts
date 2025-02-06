@@ -5,7 +5,7 @@ import type { AccordionUpdateEventDetail } from '@porsche-design-system/componen
 
 export const accordionStory: Story = {
   state: {
-    properties: { heading: 'Some Heading' },
+    properties: { open: false, heading: 'Some Heading' },
   },
   generator: ({ properties } = {}, updateState = () => {}) => [
     {
