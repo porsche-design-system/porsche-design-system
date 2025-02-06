@@ -10,26 +10,26 @@ import {
 } from '@porsche-design-system/components-react/ssr';
 
 type DirectionSelectProps = {
-  dir: StorefrontDirection;
+  value: StorefrontDirection;
   label?: PSelectProps['label'];
   hideLabel?: PSelectProps['hideLabel'];
   onUpdate: (event: CustomEvent<SelectUpdateEventDetail>) => void;
 };
 
 export const DirectionSelect = ({
-  dir = 'ltr',
+  value = 'ltr',
   label = 'Direction',
   hideLabel = false,
   onUpdate,
 }: DirectionSelectProps) => {
   return (
-    <PSelect name="direction" value={dir} hideLabel={hideLabel} compact={true} onUpdate={onUpdate}>
+    <PSelect name="direction" value={value} hideLabel={hideLabel} compact={true} onUpdate={onUpdate}>
       <span slot="label" className="inline-flex gap-static-xs">
         {label}
         <PPopover onClick={(e) => e.preventDefault()}>
           Changes the direction of HTML elements, mostly used on
           <code>
-            {'<'}body{'>'}
+            {'<'}html{'>'}
           </code>{' '}
           tag to support languages which are read from right to left like e.g. Arabic.
         </PPopover>

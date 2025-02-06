@@ -9,15 +9,15 @@ import {
 } from '@porsche-design-system/components-react/ssr';
 
 type ThemeSelectProps = {
-  theme: PlaygroundTheme;
+  value: PlaygroundTheme;
   label?: PSelectProps['label'];
   hideLabel?: PSelectProps['hideLabel'];
   onUpdate: (event: CustomEvent<SelectUpdateEventDetail>) => void;
 };
 
-export const ThemeSelect = ({ theme = 'light', label = 'Theme', hideLabel = false, onUpdate }: ThemeSelectProps) => {
+export const ThemeSelect = ({ value = 'light', label = 'Theme', hideLabel = false, onUpdate }: ThemeSelectProps) => {
   return (
-    <PSelect name="theme" value={theme} label={label} hideLabel={hideLabel} compact={true} onUpdate={onUpdate}>
+    <PSelect name="theme" value={value} label={label} hideLabel={hideLabel} compact={true} onUpdate={onUpdate}>
       <PSelectOption value="light">Light</PSelectOption>
       <PSelectOption value="dark">Dark</PSelectOption>
       <PSelectOption value="auto">Auto (sync with operating system)</PSelectOption>

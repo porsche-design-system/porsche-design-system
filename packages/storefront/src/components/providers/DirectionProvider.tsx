@@ -21,7 +21,7 @@ export const DirectionProvider = ({ children }: PropsWithChildren) => {
   const [direction, setDirection] = useState<StorefrontDirection>(getInitialDirection);
 
   useEffect(() => {
-    document.body.dir = direction;
+    document.documentElement.dir = direction;
     localStorage.setItem('direction', direction);
   }, [direction]);
 
