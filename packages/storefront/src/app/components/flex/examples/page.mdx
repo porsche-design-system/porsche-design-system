@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import { flexStory } from "@/app/components/flex/examples/flex.stories";
 
 export const metadata = {
   title: 'Flex - Porsche Design System',
@@ -10,3 +12,4 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
+<Configurator tagName="p-flex" story={flexStory} />

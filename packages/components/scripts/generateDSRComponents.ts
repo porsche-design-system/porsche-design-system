@@ -294,7 +294,11 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.slides(\.map)/, `otherChildren$1`)
           .replace(/^/, "$&import type { BreakpointCustomizable } from '../types';\n")
           .replace(/.*onFocusin=\{.*\n/, '')
-          .replace(/this\.slidesPerPage/, 'this.props.slidesPerPage')
+          // .replace(/this\.slidesPerPage/, 'this.props.slidesPerPage')
+          .replace(/this\.props\.parsedSlidesPerPage/g, 'this.props.slidesPerPage')
+          .replace(/this\.props\.parsedDisablePagination/g, 'this.props.disablePagination')
+          .replace(/this\.props\.parsedPagination/g, 'this.props.pagination')
+          .replace(/private\sget\sparsed.*\{\n?.*\n?}/g, '')
           // Since slidesPerPage is BreakpointCustomizable we have to replace hasNavigation with a working serverside condition
           .replace(
             /this\.props\.hasNavigation/g,

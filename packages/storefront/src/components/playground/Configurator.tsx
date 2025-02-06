@@ -1,130 +1,60 @@
+// @ts-nocheck
+
 'use client';
 
-const buttonExample: ElementConfig = {
-  tag: 'p-button',
-  attributes: { 'hide-label': 'true', icon: 'arrow-right' },
-  children: ['Some label'],
+import { ConfiguratorControls, type ConfiguratorTagNames } from '@/components/playground/ConfiguratorControls';
+import { Playground } from '@/components/playground/Playground';
+import type { FrameworkMarkup } from '@/models/framework';
+import type { SlotStories, Story } from '@/models/story';
+import { generateAngularMarkup } from '@/utils/generator/generateAngularMarkup';
+import { generateReactMarkup } from '@/utils/generator/generateReactMarkup';
+import { generateVanillaJsMarkup } from '@/utils/generator/generateVanillaJsMarkup';
+import { generateVueMarkup } from '@/utils/generator/generateVueMarkup';
+import { createElements } from '@/utils/generator/generator';
+import React, { type ReactNode, useEffect, useState } from 'react';
+
+type ConfiguratorTestProps = {
+  tagName: ConfiguratorTagNames;
+  story: Story;
+  slotStories?: SlotStories;
 };
 
-// biome-ignore lint/correctness/noUnusedVariables: <explanation>
-const flyoutExample: ElementConfig = {
-  tag: 'p-flyout',
-  attributes: { open: 'false', aria: '{ "aria-label": "Some Heading" }' },
-  children: [
-    {
-      tag: 'p-heading',
-      attributes: { slot: 'header', size: 'large', tag: 'h2' },
-      children: ['Some Heading'],
-    },
-    { tag: 'p-text', attributes: { slot: '' }, children: ['Some Content'] },
-    {
-      tag: 'p-button-group',
-      attributes: { slot: 'footer' },
-      children: [
-        { tag: 'p-button', attributes: { type: 'button' }, children: ['Proceed'] },
-        { tag: 'p-button', attributes: { type: 'button', variant: 'secondary' }, children: ['Cancel'] },
-      ],
-    },
-    { tag: 'p-text', attributes: { slot: 'sub-footer' }, children: ['Some additional Sub-Footer'] },
-  ],
-};
+export const Configurator = ({ tagName, story, slotStories }: ConfiguratorTestProps) => {
+  const [exampleState, setExampleState] = useState(story.state ?? {});
+  const [exampleElement, setExampleElement] = useState<ReactNode>(createElements(story.generator(story.state)));
+  const [exampleMarkup, setExampleMarkup] = useState<FrameworkMarkup>({});
 
-// type ElementConfig = {
-//   tag: string;
-//   attributes?: Record<string, string>;
-//   children?: (string | ElementConfig)[];
-// };
-//
-// export const generateHtml = (config: ElementConfig): { node: HTMLElement | Text; markup: string } => {
-//   const { tag, attributes = {}, children = [] } = config;
-//
-//   // // Special case: text node
-//   // if (tag === '#text') {
-//   //   const textNode = document.createTextNode(children as string);
-//   //   return {
-//   //     node: textNode,
-//   //     markup: children as string,
-//   //   };
-//   // }
-//
-//   // Create the DOM element
-//   const element = document.createElement(tag);
-//
-//   // Set attributes
-//   for (const [key, value] of Object.entries(attributes)) {
-//     element.setAttribute(key, value);
-//   }
-//
-//   // Build children recursively
-//   const childMarkup: string[] = [];
-//
-//   for (const child of children) {
-//     const { node: childNode, markup: childMarkupString } =
-//       typeof child === 'string' ? { node: document.createTextNode(child), markup: child } : generateHtml(child);
-//     element.appendChild(childNode);
-//     childMarkup.push(childMarkupString);
-//   }
-//
-//   // Generate the string representation of the element
-//   const markup = `<${tag} ${Object.entries(attributes)
-//     .map(([key, value]) => `${key}="${value}"`)
-//     .join(' ')}>${childMarkup.join('')}</${tag}>`;
-//
-//   return { node: element, markup };
-// };
+  const updateState = (_: string, property: string, value: any) => {
+    setExampleState((prev) => ({ ...prev, properties: { ...prev.properties, [property]: value } }));
+  };
 
-import React from 'react';
+  // biome-ignore lint/correctness/useExhaustiveDependencies: only has to run once on mount to pass the setter function to react to event updates
+  useEffect(() => {
+    setExampleElement(createElements(story.generator(story.state, updateState)));
+  }, []);
 
-export type ElementConfig = {
-  tag: string; // The HTML tag or React component name
-  attributes?: Record<string, string | number | boolean>; // Props/attributes
-  children?: (string | ElementConfig)[]; // Nested children
-};
+  // biome-ignore lint/correctness/useExhaustiveDependencies: only thing that will change is the state
+  useEffect(() => {
+    const generatedStory = story.generator(exampleState, updateState);
+    setExampleElement(createElements(generatedStory));
+    setExampleMarkup({
+      'vanilla-js': generateVanillaJsMarkup(generatedStory),
+      react: generateReactMarkup(generatedStory, story.state ?? {}),
+      angular: generateAngularMarkup(generatedStory),
+      vue: generateVueMarkup(generatedStory),
+    });
+  }, [exampleState]);
 
-type GeneratedOutput = {
-  jsx: React.ReactNode;
-  markup: string;
-};
-
-const generateOutput = (
-  descriptor: ElementConfig,
-  indentLevel = 0 // Track indentation level for formatting
-): GeneratedOutput => {
-  const { tag, attributes = {}, children = [] } = descriptor;
-
-  const attributesString = Object.entries(attributes)
-    .map(([key, value]) => (typeof value === 'string' ? `${key}="${value}"` : `${key}='${JSON.stringify(value)}'`))
-    .join(' ');
-
-  const processedChildren = children.map((child) =>
-    typeof child === 'string'
-      ? { jsx: child, markup: `${'  '.repeat(indentLevel + 1)}${child}` }
-      : generateOutput(child, indentLevel + 1)
-  );
-
-  const jsxChildren = processedChildren.map((child) => child.jsx);
-  const markupChildren = processedChildren.map((child) => child.markup).join('\n');
-
-  const jsx = React.createElement(tag, { key: JSON.stringify(attributes), ...attributes }, ...jsxChildren);
-
-  const indent = '  '.repeat(indentLevel);
-
-  const markup =
-    children.length > 0
-      ? `${indent}<${tag}${attributesString ? ` ${attributesString}` : ''}>\n${markupChildren}\n${indent}</${tag}>`
-      : `${indent}<${tag}${attributesString ? ` ${attributesString}` : ''} />`;
-
-  return { jsx, markup };
-};
-
-export const Configurator = () => {
-  const { jsx, markup } = generateOutput(buttonExample);
   return (
     <>
-      {jsx}
-      <pre>
-        <code>{markup}</code>
-      </pre>
+      <Playground frameworkMarkup={exampleMarkup}>{exampleElement}</Playground>
+      <ConfiguratorControls
+        tagName={tagName}
+        defaultStoryState={story.state}
+        storyState={exampleState}
+        setStoryState={setExampleState}
+        slotStories={slotStories}
+      />
     </>
   );
 };

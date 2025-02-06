@@ -107,7 +107,7 @@ export class SegmentedControl {
 
   @Watch('value')
   public onValueChange(): void {
-    this.internals?.setFormValue(this.value.toString());
+    this.internals?.setFormValue(this.value?.toString());
   }
 
   public connectedCallback(): void {

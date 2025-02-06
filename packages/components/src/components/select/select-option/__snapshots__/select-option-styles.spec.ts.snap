@@ -18,15 +18,15 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 .option {
   font-weight: 400;
   display: flex;
-  gap: 12px;
-  padding: 8px 12px;
-  padding-inline-start: var(--p-internal-select-option-padding-left, 12px);
-  min-height: calc(calc(6px + 2.125ex) + 8px * 2);
+  gap: max(4px, var(--p-internal-select-option-scaling, 1) * 12px);
+  padding-block: max(2px, var(--p-internal-select-option-scaling, 1) * 8px);
+  padding-inline: max(4px, var(--p-internal-select-option-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-option-scaling, 1) * 12px);
+  min-height: calc(6px + 2.125ex);
   color: #AFB0B3;
   cursor: pointer;
   text-align: start;
   word-break: break-word;
-  box-sizing: border-box;
+  box-sizing: content-box;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -91,15 +91,15 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
 .option {
   font-weight: 400;
   display: flex;
-  gap: 12px;
-  padding: 8px 12px;
-  padding-inline-start: var(--p-internal-select-option-padding-left, 12px);
-  min-height: calc(calc(6px + 2.125ex) + 8px * 2);
+  gap: max(4px, var(--p-internal-select-option-scaling, 1) * 12px);
+  padding-block: max(2px, var(--p-internal-select-option-scaling, 1) * 8px);
+  padding-inline: max(4px, var(--p-internal-select-option-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-option-scaling, 1) * 12px);
+  min-height: calc(6px + 2.125ex);
   color: #535457;
   cursor: pointer;
   text-align: start;
   word-break: break-word;
-  box-sizing: border-box;
+  box-sizing: content-box;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }

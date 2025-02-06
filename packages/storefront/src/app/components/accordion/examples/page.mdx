@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import { accordionStory } from "@/app/components/accordion/examples/accordion.stories";
 
 export const metadata = {
   title: 'Accordion - Porsche Design System',
@@ -9,6 +11,8 @@ export const metadata = {
 # Accordion <ComponentStatus tagName="p-accordion"></ComponentStatus>
 
 <TableOfContents headings={[]} />
+
+<Configurator tagName="p-accordion" story={accordionStory} />
 
 
 

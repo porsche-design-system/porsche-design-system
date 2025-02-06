@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import { popoverStory } from "@/app/components/popover/examples/popover.stories";
 
 export const metadata = {
   title: 'Popover - Porsche Design System',
@@ -10,3 +12,4 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
+<Configurator tagName="p-popover" story={popoverStory} />

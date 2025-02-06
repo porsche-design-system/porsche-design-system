@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import { wordmarkStory } from "@/app/components/wordmark/examples/wordmark.stories";
 
 export const metadata = {
   title: 'Wordmark - Porsche Design System',
@@ -10,3 +12,4 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
+<Configurator tagName="p-wordmark" story={wordmarkStory} />

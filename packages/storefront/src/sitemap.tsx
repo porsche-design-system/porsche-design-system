@@ -1,10 +1,10 @@
 import { getFlags } from '@/utils/getFlags';
-import { componentMeta } from '@porsche-design-system/component-meta/src';
+import { componentMeta } from '@porsche-design-system/component-meta';
 import type { ReactNode } from 'react';
 
 const getComponents = (): Routes => {
   return Object.entries(componentMeta)
-    .filter(([_, value]) => !value.requiredParent)
+    .filter(([_, value]) => value.isChunked)
     .sort(([, aMeta], [, bMeta]) => {
       // Sort by isDeprecated
       const aIsDeprecated = aMeta.isDeprecated ? 1 : 0;
@@ -31,6 +31,11 @@ const getComponents = (): Routes => {
           usage: {
             name: 'Usage',
             path: `/components/${component}/usage`,
+            type: 'TAB',
+          },
+          accessibility: {
+            name: 'Accessibility',
+            path: `/components/${component}/accessibility`,
             type: 'TAB',
           },
           api: {

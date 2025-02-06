@@ -74,6 +74,7 @@ const propTypes: PropTypes<typeof Select> = {
   required: AllowedTypes.boolean,
   form: AllowedTypes.string,
   dropdownDirection: AllowedTypes.oneOf<SelectDropdownDirection>(SELECT_DROPDOWN_DIRECTIONS),
+  compact: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -124,6 +125,9 @@ export class Select {
 
   /** Changes the direction to which the dropdown list appears. */
   @Prop() public dropdownDirection?: SelectDropdownDirection = 'auto';
+
+  /** Displays as compact version. */
+  @Prop() public compact?: boolean = false;
 
   /** Adapts the select color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -233,6 +237,7 @@ export class Select {
       this.hideLabel,
       this.state,
       this.isNativePopoverCase,
+      this.compact,
       this.theme,
       !!this.slottedImagePath
     );

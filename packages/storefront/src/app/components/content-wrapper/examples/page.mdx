@@ -1,5 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import { contentWrapperStory } from "@/app/components/content-wrapper/examples/content-wrapper.stories";
 
 export const metadata = {
   title: 'Content Wrapper - Porsche Design System',
@@ -9,4 +11,6 @@ export const metadata = {
 # Content Wrapper <ComponentStatus tagName="p-content-wrapper"></ComponentStatus>
 
 <TableOfContents headings={[]} />
+
+<Configurator tagName="p-content-wrapper" story={contentWrapperStory} />
 

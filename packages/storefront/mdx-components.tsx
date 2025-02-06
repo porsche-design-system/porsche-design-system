@@ -99,7 +99,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       const hasLang = /language-(\w+)/.exec(className || '');
 
       return (
-        <code>
+        <code className="my-md">
           {hasLang ? (
             // @ts-expect-error
             <SyntaxHighlighter

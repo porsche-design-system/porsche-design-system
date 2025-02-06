@@ -1566,9 +1566,6 @@ exports[`should match snapshot 1`] = `
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`pagination\` instead. If true, the carousel will not show pagination bullets at the bottom.",
         "isBreakpointCustomizable": true,
         "isDeprecated": true,
-        "propOptions": {
-          "mutable": true,
-        },
         "type": "boolean",
       },
       "focusOnCenterSlide": {
@@ -1620,9 +1617,6 @@ exports[`should match snapshot 1`] = `
         "defaultValue": true,
         "description": "If false, the carousel will not show pagination bullets at the bottom.",
         "isBreakpointCustomizable": true,
-        "propOptions": {
-          "mutable": true,
-        },
         "type": "boolean",
       },
       "rewind": {
@@ -1645,9 +1639,6 @@ exports[`should match snapshot 1`] = `
         "defaultValue": 1,
         "description": "Sets the amount of slides visible at the same time. Can be set to \`auto\` if you want to define different widths per slide via CSS.",
         "isBreakpointCustomizable": true,
-        "propOptions": {
-          "mutable": true,
-        },
         "type": "number | 'auto'",
       },
       "theme": {
@@ -6666,6 +6657,12 @@ exports[`should match snapshot 1`] = `
       "p-icon",
     ],
     "propsMeta": {
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Displays as compact version.",
+        "type": "boolean",
+      },
       "description": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -7290,6 +7287,12 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Visualize the switch with on/off status.",
+        "type": "boolean",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Displays as compact version.",
         "type": "boolean",
       },
       "disabled": {

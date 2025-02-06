@@ -94,8 +94,8 @@ describe('connectedCallback', () => {
 });
 
 describe('componentWillLoad', () => {
-  it('should call parseJSON() with correct parameters and set slidesPerPage', () => {
-    const spy = jest.spyOn(breakpointCustomizableUtils, 'parseJSON').mockReturnValueOnce(5).mockReturnValueOnce(10);
+  it('should call parseJSON() in private "parsedSlidesPerPage()" with correct parameters', () => {
+    const spy = jest.spyOn(breakpointCustomizableUtils, 'parseJSON').mockReturnValue(5);
     const component = new Carousel();
     component.host = document.createElement('p-carousel');
     component.slidesPerPage = 2;
@@ -103,7 +103,8 @@ describe('componentWillLoad', () => {
     component.componentWillLoad();
     expect(spy).toHaveBeenCalledWith(2);
 
-    expect(component.slidesPerPage).toBe(5);
+    expect(component.slidesPerPage).toBe(2);
+    expect((component as any).parsedSlidesPerPage).toBe(5);
   });
 
   it('should call this.updateSlidesAndPagination()', () => {
@@ -226,7 +227,7 @@ describe('render', () => {
     expect(spy).toHaveBeenCalledWith(component.host, component.description);
   });
 
-  it('should call parseJSON() with correct parameter and set this.disablePagination', () => {
+  it('should call parseJSON() with correct parameter and set this.parsedDisablePagination', () => {
     jest.spyOn(validatePropsUtils, 'validateProps').mockImplementation();
     const spy = jest.spyOn(breakpointCustomizableUtils, 'parseJSON').mockReturnValue(false);
     const component = new Carousel();
@@ -237,7 +238,21 @@ describe('render', () => {
     component.render();
     expect(spy).toHaveBeenCalledWith(true);
 
-    expect(component.disablePagination).toBe(false);
+    expect((component as any).parsedDisablePagination).toBe(false);
+  });
+
+  it('should call parseJSON() with correct parameter and set this.parsedPagination', () => {
+    jest.spyOn(validatePropsUtils, 'validateProps').mockImplementation();
+    const spy = jest.spyOn(breakpointCustomizableUtils, 'parseJSON').mockReturnValue(false);
+    const component = new Carousel();
+    component.host = document.createElement('p-carousel');
+    component.host.attachShadow({ mode: 'open' });
+    component.pagination = true;
+
+    component.render();
+    expect(spy).toHaveBeenCalledWith(true);
+
+    expect((component as any).parsedPagination).toBe(false);
   });
 });
 

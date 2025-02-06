@@ -1,0 +1,55 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Accordion: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Accordion component',
+};
+
+# Accordion <ComponentStatus tagName="p-accordion"></ComponentStatus>
+
+<TableOfContents headings={["Accessibility support","Development considerations","Tests"]} />
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                                          |
+| ------------------ | --------------------------------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element.                          |
+| `Enter/Space`      | When focus is on the accordion header, the associated panel expands or collapses. |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                         | Usage                                                        |
+| ---------------------------- | ------------------------------------------------------------ |
+| `aria-expanded="true/false"` | Exposes expanded or collapsed state.                         |
+| `aria-controls="ID"`         | Exposes relationship of header and associated panel.         |
+| `role="region"`              | Creates a landmark region that contains the accordion panel. |
+| `aria-labelledby="IDREF"`    | Defines the accessible name.                                 |
+
+## Development considerations
+
+### Focus handling
+
+The `heading-tag` property needs to be set in order for the accordion to fit into the outline of the page. If there is
+no `heading-tag` property provided, it defaults to `h2`.
+
+## Tests
+
+### Automated
+
+| Technology               | Support |
+| ------------------------ | ------- |
+| AXE-Core                 | ✅      |
+| High-Contrast Mode (HCM) | ✅      |
+| Text-Zoom (200%)         | ✅      |
+
+### Manual
+
+| Technology               | Support |
+| ------------------------ | ------- |
+| Keyboard                 | ✅      |
+| Screenreader (VoiceOver) | ✅      |

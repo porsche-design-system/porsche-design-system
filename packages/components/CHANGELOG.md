@@ -14,6 +14,31 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Added
+
+- `Switch`: `compact` prop to enable a smaller, space-saving version for compact layouts
+  ([#3728](https://github.com/porsche-design-system/porsche-design-system/pull/3728))
+- `Select`: `compact` prop to enable a smaller, space-saving version for compact layouts
+  ([#3731](https://github.com/porsche-design-system/porsche-design-system/pull/3731))
+
+### [3.25.1] - 2025-01-23
+
+### [3.25.1-rc.0] - 2025-01-23
+
+#### Fixed
+
+- `Carousel`: throws error when object-like string is passed by `pagination`
+  ([#3715](https://github.com/porsche-design-system/porsche-design-system/pull/3715))
+
+### [3.25.0] - 2025-01-23
+
+### [3.25.0-rc.1] - 2025-01-22
+
+#### Fixed
+
+- `Carousel`: throws error when object-like string is passed by `slides-per-page`
+  ([#3710](https://github.com/porsche-design-system/porsche-design-system/pull/3710))
+
 ### [3.25.0-rc.0] - 2025-01-21
 
 #### Added

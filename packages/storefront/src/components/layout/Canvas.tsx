@@ -1,20 +1,32 @@
 'use client';
 
+import { DirectionSelect } from '@/components/common/DirectionSelect';
 import { Navigation } from '@/components/common/Navigation';
 import Tabs from '@/components/common/Tabs';
-import { ThemeCycle } from '@/components/common/ThemeCycle';
+import { TextZoomSelect } from '@/components/common/TextZoomSelect';
+import { ThemeSelect } from '@/components/common/ThemeSelect';
+import { useDirection } from '@/hooks/useDirection';
+import { useTextZoom } from '@/hooks/useTextZoom';
+import { useTheme } from '@/hooks/useTheme';
+import type { StorefrontDirection, StorefrontTextZoom } from '@/models/dir';
+import type { StorefrontTheme } from '@/models/theme';
 import {
   type CanvasSidebarStartUpdateEventDetail,
   PButton,
   PCanvas,
+  PHeading,
   PLink,
-  PText,
 } from '@porsche-design-system/components-react/ssr';
 import { breakpointS } from '@porsche-design-system/components-react/styles';
 import Link from 'next/link';
-import { type PropsWithChildren, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import React, { type PropsWithChildren, useEffect, useState } from 'react';
 
 export const Canvas = ({ children }: PropsWithChildren) => {
+  const { theme, setStorefrontTheme } = useTheme();
+  const { direction, setStorefrontDirection } = useDirection();
+  const { textZoom, setStorefrontTextZoom } = useTextZoom();
+  const pathname = usePathname();
   const [isSidebarStartOpen, setIsSidebarStartOpen] = useState(
     // initially, sidebar should be closed on mobile and opened on desktop
     global?.window && window.matchMedia(`(min-width: ${breakpointS}px)`).matches
@@ -31,6 +43,10 @@ export const Canvas = ({ children }: PropsWithChildren) => {
     setIsSidebarEndOpen(false);
   };
 
+  useEffect(() => {
+    setIsSidebarEndOpen(pathname?.includes('examples') || false);
+  }, [pathname]);
+
   return (
     <PCanvas
       sidebarStartOpen={isSidebarStartOpen}
@@ -42,7 +58,6 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         Porsche Design System
       </Link>
 
-      <ThemeCycle slot="header-end" />
       <PLink
         slot="header-end"
         iconSource="assets/github.svg"
@@ -75,7 +90,20 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         <Navigation />
       </div>
       <div slot="sidebar-end">
-        <PText>Sidebar End</PText>
+        <div className="flex flex-col gap-sm mb-lg">
+          <PHeading size="small" tag="h3">
+            Global settings
+          </PHeading>
+          <ThemeSelect value={theme} onUpdate={(e): void => setStorefrontTheme(e.detail.value as StorefrontTheme)} />
+          <DirectionSelect
+            value={direction}
+            onUpdate={(e): void => setStorefrontDirection(e.detail.value as StorefrontDirection)}
+          />
+          <TextZoomSelect
+            value={textZoom}
+            onUpdate={(e): void => setStorefrontTextZoom(e.detail.value as StorefrontTextZoom)}
+          />
+        </div>
       </div>
     </PCanvas>
   );
