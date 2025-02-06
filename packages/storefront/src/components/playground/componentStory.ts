@@ -112,6 +112,8 @@ export const componentSlotStories: ComponentSlotStory = {
  * How to show undefined default value in select props?
  * Required * is shown at the end of the label and the reset button?
  *
+ * When changing controlled props they won't be reflected on the markup in vanilla-js, is this confusing?
+ *
  * TODO:
  * - [ ] - Dynamic import of React Component in Configurator
  * - [x] - Render Example
