@@ -299,10 +299,10 @@ export const ConfiguratorControls = ({
     <ConfigureProps
       tagName={tagName}
       componentProps={meta.propsMeta}
-      configuredProps={storyState.properties}
-      defaultProps={defaultStoryState?.properties ?? {}}
+      configuredProps={storyState?.properties}
+      defaultProps={defaultStoryState?.properties}
       onUpdateProps={handleUpdateProps}
-      onResetAllProps={() => setStoryState(defaultStoryState)}
+      onResetAllProps={() => setStoryState(defaultStoryState ?? {})}
     />,
     <ConfigureSlots
       tagName={tagName}
@@ -314,7 +314,7 @@ export const ConfiguratorControls = ({
     <ConfigureCssVariables
       tagName={tagName}
       componentCssVariables={meta.cssVariablesMeta}
-      configuredCssVariables={storyState.properties}
+      configuredCssVariables={storyState?.properties}
       defaultCssVariables={defaultStoryState?.properties ?? {}}
       onUpdateCssVariables={handleUpdateCssVariable}
       onResetAllCssVariables={() => {}}
