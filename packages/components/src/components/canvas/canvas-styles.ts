@@ -85,7 +85,9 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
           ...getFocusJssStyle(theme, { slotted: 'a' }),
         },
         '&[name="sidebar-end-header"]': {
-          display: 'block',
+          [mediaQueryM]: {
+            display: 'block', // ensures header section of sidebar-end area is aligned correctly
+          },
         },
         '&[name="background"]': {
           zIndex: 3,
