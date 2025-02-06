@@ -76,6 +76,7 @@
   { "name": "dislike-filled", "size": 623, "gzipSize": 385 },
   { "name": "dislike", "size": 1047, "gzipSize": 580 },
   { "name": "document", "size": 242, "gzipSize": 192 },
+  { "name": "door", "size": 362, "gzipSize": 258 },
   { "name": "download", "size": 312, "gzipSize": 223 },
   { "name": "drag", "size": 255, "gzipSize": 193 },
   { "name": "duration", "size": 443, "gzipSize": 304 },
