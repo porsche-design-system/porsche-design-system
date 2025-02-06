@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import {
-  PCanvas,
-  PText,
-  PButton,
   type CanvasSidebarStartUpdateEventDetail,
+  PButton,
+  PCanvas,
+  PHeading,
+  PText,
 } from '@porsche-design-system/components-vue';
 import { breakpointS } from '@porsche-design-system/components-vue/styles';
 import { ref } from 'vue';
@@ -65,6 +66,11 @@ const onSidebarEndDismiss = (): void => {
     <div slot="sidebar-start">
       <PText>Sidebar Start</PText>
     </div>
+
+    <PHeading slot="sidebar-end-header" tag="h2" size="small">
+      Sidebar End Header
+    </PHeading>
+
     <div slot="sidebar-end">
       <PText>Sidebar End</PText>
     </div>
