@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const checkboxWrapperStory: Story = {
+export const checkboxWrapperStory: Story<'p-checkbox-wrapper'> = {
   state: {
     properties: { label: 'Some label' },
   },

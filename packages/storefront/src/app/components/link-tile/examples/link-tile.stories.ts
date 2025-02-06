@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const linkTileStory: Story = {
+export const linkTileStory: Story<'p-link-tile'> = {
   state: {
     properties: { href: 'https://porsche.com', label: 'Some label', description: 'Some Description' },
   },

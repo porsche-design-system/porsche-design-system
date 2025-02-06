@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const stepperHorizontalStory: Story = {
+export const stepperHorizontalStory: Story<'p-stepper-horizontal'> = {
   generator: ({ properties } = {}) => [
     {
       tag: 'p-stepper-horizontal',

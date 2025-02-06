@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const selectStory: Story = {
+export const selectStory: Story<'p-select'> = {
   state: {
     properties: {
       name: 'options',

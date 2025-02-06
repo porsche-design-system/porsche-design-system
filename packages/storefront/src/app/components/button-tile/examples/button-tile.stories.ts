@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const buttonTileStory: Story = {
+export const buttonTileStory: Story<'p-button-tile'> = {
   state: {
     properties: { label: 'Some label', description: 'Some Description' },
   },

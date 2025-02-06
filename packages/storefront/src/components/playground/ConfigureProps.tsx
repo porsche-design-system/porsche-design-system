@@ -1,4 +1,8 @@
-import type { ElementConfig } from '@/components/playground/ConfiguratorControls';
+import type {
+  ConfiguratorTagNames,
+  ElementConfig,
+  HTMLTagOrComponent,
+} from '@/components/playground/ConfiguratorControls';
 import { isDefaultValue } from '@/components/playground/configuratorUtils';
 import { getFlags } from '@/utils/getFlags';
 import type { ComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
@@ -12,27 +16,27 @@ import {
 } from '@porsche-design-system/components-react/ssr';
 import type { TagName } from '@porsche-design-system/shared';
 import { capitalCase } from 'change-case';
-import React from 'react';
+import type React from 'react';
 
 // TODO: Only show reset/reset all when not controlled value
 
-type ConfigurePropsProps = {
+type ConfigurePropsProps<T extends ConfiguratorTagNames> = {
   tagName: TagName;
   componentProps: ComponentMeta['propsMeta'];
-  configuredProps: ElementConfig['properties'];
-  defaultProps: ElementConfig['properties'];
-  onUpdateProps: (propName: keyof ElementConfig['properties'], selectedValue: string | undefined) => void;
+  configuredProps: ElementConfig<T>['properties'];
+  defaultProps: ElementConfig<HTMLTagOrComponent>['properties'];
+  onUpdateProps: (propName: keyof ElementConfig<T>['properties'], selectedValue: string | undefined) => void;
   onResetAllProps: () => void;
 };
 
-export const ConfigureProps = ({
+export const ConfigureProps = <T extends ConfiguratorTagNames>({
   tagName,
   componentProps,
   configuredProps,
   defaultProps,
   onUpdateProps,
   onResetAllProps,
-}: ConfigurePropsProps) => {
+}: ConfigurePropsProps<T>) => {
   const amountOfConfiguredProps = Object.keys(configuredProps ?? {})
     .filter((key) => key !== 'style')
     .filter(
@@ -50,7 +54,7 @@ export const ConfigureProps = ({
     if (value === null) return undefined;
   };
 
-  const getCurrentValue = (propName: keyof ElementConfig['properties'], propMeta: PropMeta): string | undefined => {
+  const getCurrentValue = (propName: keyof ElementConfig<T>['properties'], propMeta: PropMeta): string | undefined => {
     if (propName === 'theme') {
       return configuredProps?.[propName];
     }
@@ -70,7 +74,7 @@ export const ConfigureProps = ({
     }
   };
 
-  const renderInput = (propName: keyof ElementConfig['properties'], propMeta: PropMeta) => {
+  const renderInput = (propName: keyof ElementConfig<T>['properties'], propMeta: PropMeta) => {
     if (propMeta.allowedValues === 'boolean') {
       return (
         <div key={propName} className="flex gap-static-xs">
@@ -97,7 +101,7 @@ export const ConfigureProps = ({
 
     if (propMeta.allowedValues === 'string') {
       return (
-        <PTextFieldWrapper key={propName} style={{ '--p-internal-text-field-scaling': 0.5 }}>
+        <PTextFieldWrapper key={propName} style={{ '--p-internal-text-field-scaling': 0.5 } as React.CSSProperties}>
           <input
             type="text"
             value={getCurrentValue(propName, propMeta) ?? ''}
@@ -122,7 +126,7 @@ export const ConfigureProps = ({
 
     if (propMeta.allowedValues === 'number') {
       return (
-        <PTextFieldWrapper key={propName} style={{ '--p-internal-text-field-scaling': 0.5 }}>
+        <PTextFieldWrapper key={propName} style={{ '--p-internal-text-field-scaling': 0.5 } as React.CSSProperties}>
           <input
             type="number"
             value={getCurrentValue(propName, propMeta) ?? ''}
@@ -235,21 +239,26 @@ export const ConfigureProps = ({
       </span>
       <div className="flex flex-col gap-sm">
         {filteredComponentProps.map(([propName, propMeta]) =>
-          renderInput(propName as keyof ElementConfig['properties'], propMeta)
+          renderInput(propName as keyof ElementConfig<T>['properties'], propMeta)
         )}
       </div>
     </>
   );
 };
 
-type ResetButtonProps = {
-  propName: keyof ElementConfig['properties'];
-  configuredProps: ElementConfig['properties'];
-  defaultProps: ElementConfig['properties'];
-  onReset: (propName: keyof ElementConfig['properties']) => void;
+type ResetButtonProps<T extends ConfiguratorTagNames> = {
+  propName: keyof ElementConfig<T>['properties'];
+  configuredProps: ElementConfig<T>['properties'];
+  defaultProps: ElementConfig<HTMLTagOrComponent>['properties'];
+  onReset: (propName: keyof ElementConfig<T>['properties']) => void;
 };
 
-const ResetButton = ({ propName, configuredProps, defaultProps, onReset }: ResetButtonProps) => {
+const ResetButton = <T extends ConfiguratorTagNames>({
+  propName,
+  configuredProps,
+  defaultProps,
+  onReset,
+}: ResetButtonProps<T>) => {
   return (
     <>
       {configuredProps?.[propName] !== defaultProps?.[propName] && (

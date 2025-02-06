@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const carouselStory: Story = {
+export const carouselStory: Story<'p-carousel'> = {
   state: {
     properties: { heading: 'Some heading' },
   },

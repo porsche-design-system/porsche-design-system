@@ -1,8 +1,8 @@
 'use client';
 
-import { type SlotStories, type Story, componentSlotStories } from '@/models/story';
+import type { SlotStories, Story } from '@/models/story';
 
-export const linkSlotStories: SlotStories = {
+export const linkSlotStories: SlotStories<'p-link'> = {
   default: {
     basic: {
       name: 'Basic',
@@ -15,7 +15,7 @@ export const linkSlotStories: SlotStories = {
   },
 };
 
-export const linkStory: Story = {
+export const linkStory: Story<'p-link'> = {
   state: {
     properties: { href: 'https://porsche.com' },
     slots: {

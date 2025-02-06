@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const flexStory: Story = {
+export const flexStory: Story<'p-flex'> = {
   generator: ({ properties } = {}) => [
     {
       tag: 'p-flex',

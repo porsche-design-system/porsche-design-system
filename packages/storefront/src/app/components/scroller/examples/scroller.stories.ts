@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const scrollerStory: Story = {
+export const scrollerStory: Story<'p-scroller'> = {
   generator: ({ properties } = {}) => [
     {
       tag: 'p-scroller',

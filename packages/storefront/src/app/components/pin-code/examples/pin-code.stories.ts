@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const pinCodeStory: Story = {
+export const pinCodeStory: Story<'p-pin-code'> = {
   state: {
     properties: { label: 'Some label' },
   },

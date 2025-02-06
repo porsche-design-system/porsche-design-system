@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const tableStory: Story = {
+export const tableStory: Story<'p-table'> = {
   state: { properties: { caption: 'Some caption' } },
   generator: ({ properties } = {}) => [
     {

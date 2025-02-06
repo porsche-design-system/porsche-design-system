@@ -3,7 +3,7 @@
 import type { Story } from '@/models/story';
 import type { AccordionUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
 
-export const accordionStory: Story = {
+export const accordionStory: Story<'p-accordion'> = {
   state: {
     properties: { open: false, heading: 'Some Heading' },
   },

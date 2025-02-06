@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const fieldsetWrapperStory: Story = {
+export const fieldsetWrapperStory: Story<'p-fieldset-wrapper'> = {
   state: {
     properties: { label: 'Some legend label' },
   },

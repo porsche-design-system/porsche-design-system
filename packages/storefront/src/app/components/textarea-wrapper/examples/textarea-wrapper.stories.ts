@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const textareaWrapperStory: Story = {
+export const textareaWrapperStory: Story<'p-textarea-wrapper'> = {
   state: {
     properties: { label: 'Some label' },
   },

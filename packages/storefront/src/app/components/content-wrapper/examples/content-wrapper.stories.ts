@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const contentWrapperStory: Story = {
+export const contentWrapperStory: Story<'p-content-wrapper'> = {
   generator: ({ properties } = {}) => [
     {
       tag: 'p-content-wrapper',

@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const linkSocialStory: Story = {
+export const linkSocialStory: Story<'p-link-social'> = {
   state: {
     properties: { href: 'https://example.com', icon: 'logo-facebook', target: '_blank', rel: 'nofollow noopener' },
   },

@@ -2,7 +2,7 @@
 
 import type { SlotStories, Story } from '@/models/story';
 
-export const flyoutSlotStories: SlotStories = {
+export const flyoutSlotStories: SlotStories<'p-flyout'> = {
   header: {
     basic: {
       name: 'Basic',
@@ -54,7 +54,7 @@ export const flyoutSlotStories: SlotStories = {
   },
 };
 
-export const flyoutStory: Story = {
+export const flyoutStory: Story<'p-flyout'> = {
   state: {
     properties: {
       open: false,

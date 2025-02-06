@@ -85,7 +85,8 @@ import {
   type PWordmarkProps,
 } from '@porsche-design-system/components-react/ssr';
 import type { TagName } from '@porsche-design-system/shared';
-import React, { useEffect, useState } from 'react';
+import type React from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 type SafePropTypeMapping = {
@@ -101,17 +102,16 @@ export type HTMLTagOrComponent = keyof JSX.IntrinsicElements | ConfiguratorTagNa
 /**
  * Represents the properties of T which can be either a PDS Component or an HTML Element
  */
-export type HTMLElementOrComponentProps<T extends HTMLTagOrComponent = HTMLTagOrComponent> =
-  T extends keyof JSX.IntrinsicElements
-    ? Partial<JSX.IntrinsicElements[T]>
-    : T extends ConfiguratorTagNames
-      ? SafePropTypeMapping[T]
-      : never;
+export type HTMLElementOrComponentProps<T extends HTMLTagOrComponent> = T extends keyof JSX.IntrinsicElements
+  ? Partial<JSX.IntrinsicElements[T]>
+  : T extends ConfiguratorTagNames
+    ? SafePropTypeMapping[T]
+    : never;
 
-export type ElementConfig<T extends HTMLTagOrComponent = HTMLTagOrComponent> = {
+export type ElementConfig<T extends HTMLTagOrComponent> = {
   tag: T;
   properties?: HTMLElementOrComponentProps<T>;
-  children?: (string | ElementConfig | undefined)[];
+  children?: (string | ElementConfig<HTMLTagOrComponent> | undefined)[];
 };
 
 export type PropTypeMapping = {
@@ -191,21 +191,21 @@ export type PropTypeMapping = {
   'p-wordmark': PWordmarkProps;
 };
 
-type ConfiguratorProps = {
-  tagName: ConfiguratorTagNames;
-  defaultStoryState: StoryState;
-  storyState: StoryState;
-  setStoryState: (storyState: StoryState) => void;
-  slotStories?: SlotStories;
+type ConfiguratorControlsProps<T extends HTMLTagOrComponent> = {
+  tagName: T;
+  defaultStoryState: StoryState<HTMLTagOrComponent>;
+  storyState: StoryState<T>;
+  setStoryState: React.Dispatch<React.SetStateAction<StoryState<HTMLTagOrComponent>>>;
+  slotStories?: SlotStories<T>;
 };
 
-export const ConfiguratorControls = ({
+export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
   tagName,
   defaultStoryState,
   storyState,
   setStoryState,
   slotStories,
-}: ConfiguratorProps) => {
+}: ConfiguratorControlsProps<T>) => {
   const meta = componentMeta[tagName];
   const [domReady, setDomReady] = useState(false);
   const [accordionState, setAccordionState] = useState<Record<number, boolean>>({});
@@ -217,7 +217,10 @@ export const ConfiguratorControls = ({
     }));
   };
 
-  const shouldUpdate = (selectedValue: string | undefined, propName: keyof ElementConfig['properties']) => {
+  const shouldUpdate = (
+    selectedValue: string | undefined,
+    propName: keyof ElementConfig<typeof tagName>['properties']
+  ) => {
     if (propName === 'theme') return true;
     const isEqualToCurrentValue = selectedValue === storyState.properties?.[propName];
     const isEmptyStringAndNotApplied = selectedValue === '' && storyState.properties?.[propName] === undefined;
@@ -226,44 +229,49 @@ export const ConfiguratorControls = ({
     return !(isEqualToCurrentValue || isEmptyStringAndNotApplied || isNotAppliedAndDefaultValue);
   };
 
-  const handleUpdateProps = (propName: keyof ElementConfig['properties'], selectedValue: string | undefined) => {
+  const handleUpdateProps = (
+    propName: keyof ElementConfig<typeof tagName>['properties'],
+    selectedValue: string | undefined
+  ) => {
     if (!shouldUpdate(selectedValue, propName)) return;
 
     setStoryState((prev) => {
       const isDefault = isDefaultValue(meta.propsMeta?.[propName], selectedValue);
-      const updatedAttributes = { ...prev.properties };
+      const updatedProperties = { ...prev.properties };
 
       if (selectedValue === undefined || isDefault) {
-        delete updatedAttributes[propName];
+        delete updatedProperties[propName];
       } else {
-        updatedAttributes[propName] = selectedValue;
+        // @ts-ignore TODO: Fix typing
+        updatedProperties[propName] = selectedValue;
       }
 
-      return { ...prev, properties: updatedAttributes as PropTypeMapping[typeof tagName] };
+      return { ...prev, properties: updatedProperties as PropTypeMapping[typeof tagName] };
     });
   };
 
-  const handleUpdateSlots = (slotName: string, selectedSlotStory: Story | undefined) => {
+  const handleUpdateSlots = (slotName: string, selectedSlotStory: Story<T> | undefined) => {
     setStoryState((prev) => {
       const updatedSlots = { ...prev.slots };
-      // TODO: Fix typing
-      (updatedSlots as any)[slotName] = selectedSlotStory;
+      // @ts-ignore TODO: Fix typing
+      updatedSlots[slotName] = selectedSlotStory;
       return { ...prev, slots: updatedSlots };
     });
   };
 
   const handleUpdateCssVariable = (name: string, value: string | undefined) => {
     setStoryState((prev) => {
-      const updatedProps: StoryState<typeof tagName>['properties'] = { ...prev.properties };
-
-      // Ensure style is initialized
-      updatedProps.style = { ...updatedProps.style };
+      const updatedProps = {
+        ...prev.properties,
+        style: prev.properties?.style ? { ...prev.properties.style } : {},
+      };
 
       if (value !== undefined) {
-        (updatedProps.style as any)[name] = value;
+        (updatedProps.style as Record<string, string>)[name] = value;
       } else {
-        delete (updatedProps.style as any)[name];
+        delete (updatedProps.style as Record<string, string>)[name];
         if (Object.keys(updatedProps.style).length === 0) {
+          // @ts-ignore TODO: Fix typing
           // biome-ignore lint/performance/noDelete: <explanation>
           delete updatedProps.style;
         }

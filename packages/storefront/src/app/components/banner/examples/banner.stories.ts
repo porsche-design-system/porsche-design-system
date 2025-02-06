@@ -2,9 +2,10 @@
 
 import type { Story } from '@/models/story';
 
-export const bannerStory: Story = {
+export const bannerStory: Story<'p-banner'> = {
   state: {
     properties: {
+      open: false,
       heading: 'Some Heading',
       headingTag: 'h3',
       description: 'Some Description',

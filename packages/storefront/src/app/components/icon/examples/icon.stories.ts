@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const iconStory: Story = {
+export const iconStory: Story<'p-icon'> = {
   generator: ({ properties } = {}) => [
     {
       tag: 'p-icon',

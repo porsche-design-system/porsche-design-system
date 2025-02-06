@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const textFieldWrapperStory: Story = {
+export const textFieldWrapperStory: Story<'p-text-field-wrapper'> = {
   state: { properties: { label: 'Some label' } },
   generator: ({ properties } = {}) => [
     {

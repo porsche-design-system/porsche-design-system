@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const buttonGroupStory: Story = {
+export const buttonGroupStory: Story<'p-button-group'> = {
   generator: ({ properties } = {}) => [
     {
       tag: 'p-button-group',

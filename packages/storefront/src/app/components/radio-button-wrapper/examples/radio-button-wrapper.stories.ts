@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const radioButtonWrapperStory: Story = {
+export const radioButtonWrapperStory: Story<'p-radio-button-wrapper'> = {
   state: {
     properties: {
       label: 'Some label',

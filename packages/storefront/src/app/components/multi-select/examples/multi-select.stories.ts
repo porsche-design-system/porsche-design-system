@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const multiSelectStory: Story = {
+export const multiSelectStory: Story<'p-multi-select'> = {
   state: {
     properties: { name: 'name', label: 'Some Label', description: 'Some description' },
   },

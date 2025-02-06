@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const switchStory: Story = {
+export const switchStory: Story<'p-switch'> = {
   generator: ({ properties } = {}) => [
     {
       tag: 'p-switch',

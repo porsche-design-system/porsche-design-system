@@ -1,25 +1,26 @@
-import type { ElementConfig } from '@/components/playground/ConfiguratorControls';
+import type { ConfiguratorTagNames, ElementConfig } from '@/components/playground/ConfiguratorControls';
 import { getFlags } from '@/utils/getFlags';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import { PPopover, PTag, PTextFieldWrapper } from '@porsche-design-system/components-react/ssr';
 import type { TagName } from '@porsche-design-system/shared';
 import React from 'react';
 
-type ConfigureCssVariablesProps = {
+type ConfigureCssVariablesProps<T extends ConfiguratorTagNames> = {
   tagName: TagName;
   componentCssVariables: ComponentMeta['cssVariablesMeta'];
-  configuredCssVariables: ElementConfig['properties'];
-  defaultCssVariables: ElementConfig['properties'];
+  configuredCssVariables: ElementConfig<T>['properties'];
+  // biome-ignore lint/complexity/noBannedTypes: <explanation>
+  defaultCssVariables: ElementConfig<T>['properties'] | {};
   onUpdateCssVariables: (cssVariableName: string, selectedValue: string | undefined) => void;
   onResetAllCssVariables: () => void;
 };
 
-export const ConfigureCssVariables = ({
+export const ConfigureCssVariables = <T extends ConfiguratorTagNames>({
   componentCssVariables,
   configuredCssVariables,
   defaultCssVariables,
   onUpdateCssVariables,
-}: ConfigureCssVariablesProps) => {
+}: ConfigureCssVariablesProps<T>) => {
   const styleObject = Object.entries(configuredCssVariables ?? {}).find(([key]) => key === 'style')?.[1];
   const cssVariables = Object.fromEntries(
     Object.entries(styleObject ?? {}).filter(([key, _]) => key.startsWith('--p'))

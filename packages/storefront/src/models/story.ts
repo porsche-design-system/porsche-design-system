@@ -60,16 +60,16 @@ import type {
  * - [ ] - when closing banner properties show reset despite being in default state
  */
 
-export type Story<Tag extends HTMLTagOrComponent = HTMLTagOrComponent> = {
+export type Story<Tag extends HTMLTagOrComponent> = {
   name?: string;
   state?: StoryState<Tag>;
   generator: (
     state?: StoryState<Tag>,
     updateState?: (componentName: string, property: string, value: any) => void
-  ) => (string | ElementConfig | undefined)[];
+  ) => (string | ElementConfig<HTMLTagOrComponent> | undefined)[];
 };
 
-export type StoryState<Tag extends HTMLTagOrComponent = HTMLTagOrComponent> = {
+export type StoryState<Tag extends HTMLTagOrComponent> = {
   /**
    * Properties have to be written in jsx syntax. (class => className, style => object). Property values have to be the real value (boolean, object etc.).
    */
@@ -78,11 +78,11 @@ export type StoryState<Tag extends HTMLTagOrComponent = HTMLTagOrComponent> = {
 };
 
 export type SlotState<Tag extends HTMLTagOrComponent> = {
-  [SlotName in keyof SlotStories[Tag]]: Story<Tag>; // Ensures selected slot is a key in SlotVariants
+  [SlotName in keyof SlotStories<Tag>[Tag]]: Story<Tag>; // Ensures selected slot is a key in SlotVariants
 };
 
 // TODO: slotName must be typed to only allow slots of current component when PDS component is used
-export type SlotStories<Tag extends HTMLTagOrComponent = HTMLTagOrComponent> = {
+export type SlotStories<Tag extends HTMLTagOrComponent> = {
   [slotName: string]: {
     [storyName: string]: Story<Tag>;
   };

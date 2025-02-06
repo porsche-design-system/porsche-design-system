@@ -1,9 +1,10 @@
 'use client';
 
+import type { HTMLTagOrComponent } from '@/components/playground/ConfiguratorControls';
 import type { Story } from '@/models/story';
 import type { TabsBarUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
 
-export const tabsBarStory: Story = {
+export const tabsBarStory: Story<'p-tabs-bar'> = {
   state: {
     properties: {
       activeTabIndex: 0,
@@ -19,7 +20,7 @@ export const tabsBarStory: Story = {
       },
       children: [
         ...['Tab One', 'Tab Two', 'Tab Three'].map((tab) => ({
-          tag: 'button',
+          tag: 'button' as HTMLTagOrComponent,
           properties: {
             type: 'button',
           },

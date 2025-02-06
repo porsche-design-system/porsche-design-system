@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const linkTileProductStory: Story = {
+export const linkTileProductStory: Story<'p-link-tile-product'> = {
   state: {
     properties: {
       heading: 'Some product',

@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const crestStory: Story = {
+export const crestStory: Story<'p-crest'> = {
   generator: ({ properties } = {}) => [
     {
       tag: 'p-crest',

@@ -24,7 +24,10 @@ export const generateReactMarkup = (
 ): string => {
   const results = configs.map((config) => createReactJSMarkup(config, initialState, indentLevel));
   const markup = results.map(({ markup }) => markup).join('\n\n');
-  const states = results.flatMap(({ states }) => states).join('\n');
+  const states = results
+    .flatMap(({ states }) => states)
+    .filter((state) => state)
+    .join('\n');
   const eventHandlers = results.flatMap(({ eventHandlers }) => eventHandlers).join('\n');
 
   return getReactCode(states, eventHandlers, markup);
@@ -80,7 +83,7 @@ const createReactJSMarkup = (
       ? ` ${props
           .map(({ key, value }) => {
             if (events.some(({ prop }) => prop === key)) {
-              return `${key}={on${pascalCase(key)}}`;
+              return `${key}={${key}}`;
             }
             return `${key}=${value}`;
           })
@@ -128,6 +131,7 @@ const generateReactControlledScript = (controlled: ControlledInfo): ReactScripts
     })
     .join('\n');
 
-  // return states ? `${states}\n\n${eventHandler}\n` : `${eventHandler}\n`;
+  console.log(states);
+
   return { states, eventHandler };
 };

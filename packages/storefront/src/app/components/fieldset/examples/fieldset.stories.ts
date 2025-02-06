@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const fieldsetStory: Story = {
+export const fieldsetStory: Story<'p-fieldset'> = {
   state: {
     properties: { label: 'Some legend label' },
   },

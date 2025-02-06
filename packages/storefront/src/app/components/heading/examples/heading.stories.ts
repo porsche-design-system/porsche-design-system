@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const headingStory: Story = {
+export const headingStory: Story<'p-heading'> = {
   generator: ({ properties } = {}) => [
     {
       tag: 'p-heading',

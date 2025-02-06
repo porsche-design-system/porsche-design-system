@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const selectWrapperStory: Story = {
+export const selectWrapperStory: Story<'p-select-wrapper'> = {
   state: {
     properties: { label: 'Some label' },
   },

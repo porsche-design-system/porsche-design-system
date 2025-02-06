@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const segmentedControlStory: Story = {
+export const segmentedControlStory: Story<'p-segmented-control'> = {
   generator: ({ properties } = {}) => [
     {
       tag: 'p-segmented-control',
