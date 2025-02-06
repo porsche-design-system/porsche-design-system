@@ -20,6 +20,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#3728](https://github.com/porsche-design-system/porsche-design-system/pull/3728))
 - `Select`: `compact` prop to enable a smaller, space-saving version for compact layouts
   ([#3731](https://github.com/porsche-design-system/porsche-design-system/pull/3731))
+- `Canvas`: named slot `sidebar-end-header`
+  ([#3736](https://github.com/porsche-design-system/porsche-design-system/pull/3736))
 
 ### [3.25.1] - 2025-01-23
 
