@@ -3,10 +3,12 @@
 import { DirectionSelect } from '@/components/common/DirectionSelect';
 import { Navigation } from '@/components/common/Navigation';
 import Tabs from '@/components/common/Tabs';
+import { TextZoomSelect } from '@/components/common/TextZoomSelect';
 import { ThemeSelect } from '@/components/common/ThemeSelect';
 import { useDirection } from '@/hooks/useDirection';
+import { useTextZoom } from '@/hooks/useTextZoom';
 import { useTheme } from '@/hooks/useTheme';
-import type { StorefrontDirection } from '@/models/dir';
+import type { StorefrontDirection, StorefrontTextZoom } from '@/models/dir';
 import type { StorefrontTheme } from '@/models/theme';
 import {
   type CanvasSidebarStartUpdateEventDetail,
@@ -23,6 +25,7 @@ import React, { type PropsWithChildren, useEffect, useState } from 'react';
 export const Canvas = ({ children }: PropsWithChildren) => {
   const { theme, setStorefrontTheme } = useTheme();
   const { direction, setStorefrontDirection } = useDirection();
+  const { textZoom, setStorefrontTextZoom } = useTextZoom();
   const pathname = usePathname();
   const [isSidebarStartOpen, setIsSidebarStartOpen] = useState(
     // initially, sidebar should be closed on mobile and opened on desktop
@@ -91,10 +94,14 @@ export const Canvas = ({ children }: PropsWithChildren) => {
           <PHeading size="small" tag="h3">
             Global settings
           </PHeading>
-          <ThemeSelect theme={theme} onUpdate={(e) => setStorefrontTheme(e.detail.value as StorefrontTheme)} />
+          <ThemeSelect value={theme} onUpdate={(e): void => setStorefrontTheme(e.detail.value as StorefrontTheme)} />
           <DirectionSelect
-            dir={direction}
-            onUpdate={(e) => setStorefrontDirection(e.detail.value as StorefrontDirection)}
+            value={direction}
+            onUpdate={(e): void => setStorefrontDirection(e.detail.value as StorefrontDirection)}
+          />
+          <TextZoomSelect
+            value={textZoom}
+            onUpdate={(e): void => setStorefrontTextZoom(e.detail.value as StorefrontTextZoom)}
           />
         </div>
       </div>
