@@ -1,6 +1,6 @@
 'use client';
 
-import type { Story } from '@/components/playground/componentStory';
+import type { Story } from '@/models/story';
 import type { AccordionUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
 
 export const accordionStory: Story = {

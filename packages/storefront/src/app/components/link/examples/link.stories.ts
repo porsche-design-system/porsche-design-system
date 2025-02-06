@@ -1,6 +1,6 @@
 'use client';
 
-import { type SlotStories, type Story, componentSlotStories } from '@/components/playground/componentStory';
+import { type SlotStories, type Story, componentSlotStories } from '@/models/story';
 
 export const linkSlotStories: SlotStories = {
   default: {
