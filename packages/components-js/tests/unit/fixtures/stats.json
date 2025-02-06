@@ -7,12 +7,12 @@
   {
     "chunkShortName": "banner",
     "size": 6811,
-    "gzipSize": 2777
+    "gzipSize": 2776
   },
   {
     "chunkShortName": "button",
-    "size": 9630,
-    "gzipSize": 3855
+    "size": 9338,
+    "gzipSize": 3732
   },
   {
     "chunkShortName": "button-group",
@@ -21,8 +21,8 @@
   },
   {
     "chunkShortName": "button-pure",
-    "size": 9612,
-    "gzipSize": 3968
+    "size": 9275,
+    "gzipSize": 3861
   },
   {
     "chunkShortName": "button-tile",
@@ -121,18 +121,18 @@
   },
   {
     "chunkShortName": "link",
-    "size": 7330,
-    "gzipSize": 3147
+    "size": 7038,
+    "gzipSize": 3021
   },
   {
     "chunkShortName": "link-pure",
-    "size": 7815,
-    "gzipSize": 3318
+    "size": 7478,
+    "gzipSize": 3203
   },
   {
     "chunkShortName": "link-social",
-    "size": 7071,
-    "gzipSize": 3093
+    "size": 6771,
+    "gzipSize": 2974
   },
   {
     "chunkShortName": "link-tile",
@@ -152,7 +152,7 @@
   {
     "chunkShortName": "main",
     "size": 82341,
-    "gzipSize": 27129
+    "gzipSize": 27134
   },
   {
     "chunkShortName": "marque",
@@ -172,7 +172,7 @@
   {
     "chunkShortName": "multi-select",
     "size": 26648,
-    "gzipSize": 9304
+    "gzipSize": 9302
   },
   {
     "chunkShortName": "optgroup",
@@ -187,7 +187,7 @@
   {
     "chunkShortName": "pin-code",
     "size": 14142,
-    "gzipSize": 5578
+    "gzipSize": 5577
   },
   {
     "chunkShortName": "popover",
@@ -206,18 +206,18 @@
   },
   {
     "chunkShortName": "segmented-control",
-    "size": 8998,
-    "gzipSize": 3581
+    "size": 8999,
+    "gzipSize": 3580
   },
   {
     "chunkShortName": "select",
     "size": 27349,
-    "gzipSize": 9482
+    "gzipSize": 9480
   },
   {
     "chunkShortName": "select-wrapper",
     "size": 27942,
-    "gzipSize": 9367
+    "gzipSize": 9369
   },
   {
     "chunkShortName": "sheet",
@@ -281,13 +281,13 @@
   },
   {
     "chunkShortName": "textarea",
-    "size": 13742,
-    "gzipSize": 5064
+    "size": 13765,
+    "gzipSize": 5069
   },
   {
     "chunkShortName": "textarea-wrapper",
     "size": 12353,
-    "gzipSize": 4903
+    "gzipSize": 4898
   },
   {
     "chunkShortName": "toast",
