@@ -194,16 +194,14 @@ export const Configurator = ({ tagName, story, slotStories }: ConfiguratorTestPr
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: only thing that will change is the state
   useEffect(() => {
-    if (exampleState) {
-      const generatedStory = story.generator(exampleState, updateState);
-      setExampleElement(createElements(generatedStory));
-      setExampleMarkup({
-        'vanilla-js': generateVanillaJsMarkup(generatedStory),
-        react: generateReactMarkup(generatedStory),
-        angular: generateAngularMarkup(generatedStory),
-        vue: generateVueMarkup(generatedStory),
-      });
-    }
+    const generatedStory = story.generator(exampleState, updateState);
+    setExampleElement(createElements(generatedStory));
+    setExampleMarkup({
+      'vanilla-js': generateVanillaJsMarkup(generatedStory),
+      react: generateReactMarkup(generatedStory),
+      angular: generateAngularMarkup(generatedStory),
+      vue: generateVueMarkup(generatedStory),
+    });
   }, [exampleState]);
 
   return (
