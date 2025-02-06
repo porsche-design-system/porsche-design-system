@@ -1,4 +1,4 @@
-import type { ElementConfig } from '@/components/playground/ConfiguratorControls';
+import type { ElementConfig, HTMLTagOrComponent } from '@/components/playground/ConfiguratorControls';
 import { camelCase, kebabCase } from 'change-case';
 
 export type ControlledInfo = {
@@ -24,7 +24,9 @@ ${script ? `\n<script>\n${script}\n</script>\n` : ''}
 </body>
 </html>`;
 
-export const generateVanillaJsMarkup = (configs: (string | ElementConfig | undefined)[]): string => {
+export const generateVanillaJsMarkup = (
+  configs: (string | ElementConfig<HTMLTagOrComponent> | undefined)[]
+): string => {
   const results = configs.map((config) => createVanillaJSMarkup(config));
   const markup = results.map(({ markup }) => markup).join('\n\n');
   const scripts = results.flatMap(({ scripts }) => scripts).join('\n');
@@ -33,7 +35,7 @@ export const generateVanillaJsMarkup = (configs: (string | ElementConfig | undef
 };
 
 const createVanillaJSMarkup = (
-  config: string | ElementConfig | undefined,
+  config: string | ElementConfig<HTMLTagOrComponent> | undefined,
   indentLevel = 0
 ): { markup: string; scripts: string[] } => {
   if (!config) return { markup: '', scripts: [] };

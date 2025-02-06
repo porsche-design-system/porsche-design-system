@@ -1,4 +1,8 @@
-import type { ElementConfig } from '@/components/playground/ConfiguratorControls';
+import type {
+  ConfiguratorTagNames,
+  ElementConfig,
+  HTMLTagOrComponent,
+} from '@/components/playground/ConfiguratorControls';
 import type { StoryState } from '@/models/story';
 import { type ControlledInfo, extractParams } from '@/utils/generator/generateVanillaJsMarkup';
 import { camelCase, kebabCase, pascalCase } from 'change-case';
@@ -18,8 +22,8 @@ ${code}
 }`;
 
 export const generateReactMarkup = (
-  configs: (string | ElementConfig | undefined)[],
-  initialState: StoryState,
+  configs: (string | ElementConfig<HTMLTagOrComponent> | undefined)[],
+  initialState: StoryState<ConfiguratorTagNames>,
   indentLevel = 3
 ): string => {
   const results = configs.map((config) => createReactJSMarkup(config, initialState, indentLevel));
@@ -34,8 +38,8 @@ export const generateReactMarkup = (
 };
 
 const createReactJSMarkup = (
-  config: string | ElementConfig | undefined,
-  initialState: StoryState,
+  config: string | ElementConfig<HTMLTagOrComponent> | undefined,
+  initialState: StoryState<ConfiguratorTagNames>,
   indentLevel = 0
 ): { markup: string; states: string[]; eventHandlers: string[] } => {
   if (!config) return { markup: '', states: [], eventHandlers: [] };
@@ -67,7 +71,7 @@ const createReactJSMarkup = (
         eventName: key,
         component,
         prop,
-        initialValue: initialState?.properties?.[prop as keyof StoryState['properties']],
+        initialValue: initialState?.properties?.[prop as keyof StoryState<ConfiguratorTagNames>['properties']],
         newValue: val,
         isEventVal: eventParams.length > 0,
       });
@@ -130,8 +134,6 @@ const generateReactControlledScript = (controlled: ControlledInfo): ReactScripts
   }`;
     })
     .join('\n');
-
-  console.log(states);
 
   return { states, eventHandler };
 };

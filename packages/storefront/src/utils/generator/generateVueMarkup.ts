@@ -1,4 +1,4 @@
-import type { ElementConfig } from '@/components/playground/ConfiguratorControls';
+import type { ElementConfig, HTMLTagOrComponent } from '@/components/playground/ConfiguratorControls';
 import { pascalCase } from 'change-case';
 
 const getVueCode = (code: string | undefined) => `<script setup lang="ts"></script>
@@ -7,12 +7,15 @@ const getVueCode = (code: string | undefined) => `<script setup lang="ts"></scri
 ${code}
 </template>`;
 
-export const generateVueMarkup = (configs: (string | ElementConfig | undefined)[], indentLevel = 1): string => {
+export const generateVueMarkup = (
+  configs: (string | ElementConfig<HTMLTagOrComponent> | undefined)[],
+  indentLevel = 1
+): string => {
   const outputs = configs.map((config) => createVueMarkup(config, indentLevel));
   return getVueCode(outputs.join('\n\n'));
 };
 
-const createVueMarkup = (config: string | ElementConfig | undefined, indentLevel = 0): string => {
+const createVueMarkup = (config: string | ElementConfig<HTMLTagOrComponent> | undefined, indentLevel = 0): string => {
   const indent = '  '.repeat(indentLevel);
 
   if (!config) return '';

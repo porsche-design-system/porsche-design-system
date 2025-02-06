@@ -1,5 +1,8 @@
-import type { ConfiguratorTagNames, ElementConfig } from '@/components/playground/ConfiguratorControls';
-import { type ControlledMeta, componentMeta } from '@porsche-design-system/component-meta';
+import type {
+  ConfiguratorTagNames,
+  ElementConfig,
+  HTMLTagOrComponent,
+} from '@/components/playground/ConfiguratorControls';
 import {
   PAccordion,
   PBanner,
@@ -76,7 +79,7 @@ import {
   PToast,
   PWordmark,
 } from '@porsche-design-system/components-react/ssr';
-import { camelCase, kebabCase, pascalCase } from 'change-case';
+import { pascalCase } from 'change-case';
 import React, { type ReactNode } from 'react';
 
 const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
@@ -169,11 +172,14 @@ const getPDSReactComponentLazy = (tag: string) => {
   );
 };
 
-export const createElements = (configs: (string | ElementConfig | undefined)[]): ReactNode => {
+export const createElements = (configs: (string | ElementConfig<HTMLTagOrComponent> | undefined)[]): ReactNode => {
   return configs.map((config, index) => createElement(config, index));
 };
 
-export const createElement = (config: string | ElementConfig | undefined, key: number): ReactNode => {
+export const createElement = (
+  config: string | ElementConfig<HTMLTagOrComponent> | undefined,
+  key: number
+): ReactNode => {
   if (!config) return null;
   if (typeof config === 'string') return config;
 

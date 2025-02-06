@@ -1,5 +1,5 @@
 import type { HTMLTagOrComponent } from '@/components/playground/ConfiguratorControls';
-import type { ComponentSlotStory, SlotState, SlotStories, Story, StoryState } from '@/models/story';
+import type { SlotState, SlotStories, Story, StoryState } from '@/models/story';
 import type { SlotMeta } from '@porsche-design-system/component-meta';
 import { PPopover, PSelect, PSelectOption, PSwitch } from '@porsche-design-system/components-react/ssr';
 import { capitalCase } from 'change-case';
@@ -9,8 +9,8 @@ type ConfigureSlotsProps<Tag extends HTMLTagOrComponent> = {
   tagName: Tag;
   componentSlots: SlotMeta | undefined;
   configuredSlots: StoryState<Tag>;
-  slotStories: SlotStories;
-  onUpdateSlots: (slotName: string, selectedSlotStory: Story | undefined) => void;
+  slotStories: SlotStories<Tag>;
+  onUpdateSlots: (slotName: string, selectedSlotStory: Story<Tag> | undefined) => void;
 };
 
 export const ConfigureSlots = <T extends HTMLTagOrComponent>({

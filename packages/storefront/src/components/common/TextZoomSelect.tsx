@@ -1,6 +1,6 @@
 'use client';
 
-import type { StorefrontTextZoom } from '@/models/dir';
+import type { StorefrontTextZoom } from '@/models/textZoom';
 import {
   PPopover,
   PSelect,

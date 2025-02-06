@@ -8,7 +8,8 @@ import { ThemeSelect } from '@/components/common/ThemeSelect';
 import { useDirection } from '@/hooks/useDirection';
 import { useTextZoom } from '@/hooks/useTextZoom';
 import { useTheme } from '@/hooks/useTheme';
-import type { StorefrontDirection, StorefrontTextZoom } from '@/models/dir';
+import type { StorefrontDirection } from '@/models/dir';
+import type { StorefrontTextZoom } from '@/models/textZoom';
 import type { StorefrontTheme } from '@/models/theme';
 import {
   type CanvasSidebarStartUpdateEventDetail,
