@@ -3,21 +3,8 @@
 import { ConfigureCssVariables } from '@/components/playground/ConfigureCssVariables';
 import { ConfigureProps } from '@/components/playground/ConfigureProps';
 import { ConfigureSlots } from '@/components/playground/ConfigureSlots';
-import { Playground } from '@/components/playground/Playground';
-import {
-  type SlotStories,
-  type Story,
-  type StoryState,
-  componentSlotStories,
-  componentsStory,
-} from '@/components/playground/componentStory';
 import { isDefaultValue } from '@/components/playground/configuratorUtils';
-import type { FrameworkMarkup } from '@/models/framework';
-import { generateAngularMarkup } from '@/utils/generator/generateAngularMarkup';
-import { generateReactMarkup } from '@/utils/generator/generateReactMarkup';
-import { generateVanillaJsMarkup } from '@/utils/generator/generateVanillaJsMarkup';
-import { generateVueMarkup } from '@/utils/generator/generateVueMarkup';
-import { createElements } from '@/utils/generator/generator';
+import type { SlotStories, Story, StoryState } from '@/models/story';
 import { componentMeta } from '@porsche-design-system/component-meta';
 import {
   type AccordionUpdateEventDetail,
@@ -98,7 +85,7 @@ import {
   type PWordmarkProps,
 } from '@porsche-design-system/components-react/ssr';
 import type { TagName } from '@porsche-design-system/shared';
-import React, { type ReactNode, Suspense, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 type SafePropTypeMapping = {

@@ -1,5 +1,5 @@
 import type { HTMLTagOrComponent } from '@/components/playground/ConfiguratorControls';
-import type { ComponentSlotStory, SlotStories, Story, StoryState } from '@/components/playground/componentStory';
+import type { ComponentSlotStory, SlotState, SlotStories, Story, StoryState } from '@/models/story';
 import type { SlotMeta } from '@porsche-design-system/component-meta';
 import { PPopover, PSelect, PSelectOption, PSwitch } from '@porsche-design-system/components-react/ssr';
 import { capitalCase } from 'change-case';
@@ -30,7 +30,7 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
           return (
             <div key={slotName} className="flex flex-col gap-sm bg-background-shading p-sm rounded-md">
               <PSwitch
-                checked={!!configuredSlots?.slots?.[slotName as keyof ComponentSlotStory[typeof tagName]]}
+                checked={!!configuredSlots?.slots?.[slotName as keyof SlotState<typeof tagName>]}
                 alignLabel="start"
                 stretch={true}
                 onUpdate={(e) => onUpdateSlots(slotName, e.detail.checked ? Object.values(slotExamples)[0] : undefined)}
@@ -46,7 +46,7 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
                 name={slotName}
                 // @ts-ignore
                 value={configuredSlots?.slots?.[slotName]?.name}
-                disabled={!configuredSlots?.slots?.[slotName as keyof ComponentSlotStory[typeof tagName]]}
+                disabled={!configuredSlots?.slots?.[slotName as keyof SlotState<typeof tagName>]}
                 hideLabel={true}
                 onUpdate={(e) =>
                   onUpdateSlots(

@@ -1,6 +1,6 @@
 'use client';
 
-import type { SlotStories, Story } from '@/components/playground/componentStory';
+import type { SlotStories, Story } from '@/models/story';
 
 export const flyoutSlotStories: SlotStories = {
   header: {

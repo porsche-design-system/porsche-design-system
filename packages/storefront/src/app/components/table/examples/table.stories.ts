@@ -1,6 +1,6 @@
 'use client';
 
-import type { Story } from '@/components/playground/componentStory';
+import type { Story } from '@/models/story';
 
 export const tableStory: Story = {
   state: { properties: { caption: 'Some caption' } },
