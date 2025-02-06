@@ -14,6 +14,8 @@ import type { TagName } from '@porsche-design-system/shared';
 import { capitalCase } from 'change-case';
 import React from 'react';
 
+// TODO: Only show reset/reset all when not controlled value
+
 type ConfigurePropsProps = {
   tagName: TagName;
   componentProps: ComponentMeta['propsMeta'];
@@ -218,8 +220,13 @@ export const ConfigureProps = ({
         {amountOfConfiguredProps > 0 && (
           <>
             <PTag compact={true}>{amountOfConfiguredProps}</PTag>
-            <PTag compact={true}>
-              <button type="button" onClick={() => onResetAllProps()}>
+            <PTag compact={true} onClick={(e) => e.preventDefault()}>
+              <button
+                type="button"
+                onClick={() => {
+                  onResetAllProps();
+                }}
+              >
                 Reset all
               </button>
             </PTag>
@@ -247,7 +254,13 @@ const ResetButton = ({ propName, configuredProps, defaultProps, onReset }: Reset
     <>
       {configuredProps?.[propName] !== defaultProps?.[propName] && (
         <PTag compact={true}>
-          <button type="button" onClick={() => onReset(propName)}>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              onReset(propName);
+            }}
+          >
             Reset
           </button>
         </PTag>
