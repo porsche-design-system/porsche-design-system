@@ -48,16 +48,11 @@ const createVanillaJSMarkup = (
     }
   }
 
-  console.log(events);
-  console.log(props);
-  // const propsWithoutControlled =
+  const propsWithoutControlled = props.filter(({ key }) => !events.some(({ prop }) => prop === key));
 
   const propertiesString =
-    props.length > 0
-      ? ` ${props
-          .filter(({ key }) => !events.some(({ prop }) => prop === key))
-          .map(({ key, value }) => `${kebabCase(key)}="${value}"`)
-          .join(' ')}`
+    propsWithoutControlled.length > 0
+      ? ` ${propsWithoutControlled.map(({ key, value }) => `${kebabCase(key)}="${value}"`).join(' ')}`
       : '';
 
   const childrenResults = children.map((child) => createVanillaJSMarkup(child, indentLevel + 1));
