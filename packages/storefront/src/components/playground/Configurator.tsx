@@ -21,7 +21,9 @@ type ConfiguratorTestProps = {
 
 export const Configurator = ({ tagName, story, slotStories }: ConfiguratorTestProps) => {
   const [exampleState, setExampleState] = useState(story.state ?? {});
-  const [exampleElement, setExampleElement] = useState<ReactNode>(createElements(story.generator(story.state)));
+  const [exampleElement, setExampleElement] = useState<ReactNode>();
+  // TODO: Static generation disable because of problems with controlled examples (extraction of information)
+  // const [exampleElement, setExampleElement] = useState<ReactNode>(createElements(story.generator(story.state)));
   const [exampleMarkup, setExampleMarkup] = useState<FrameworkMarkup>({});
 
   const updateState = (_: string, property: string, value: any) => {

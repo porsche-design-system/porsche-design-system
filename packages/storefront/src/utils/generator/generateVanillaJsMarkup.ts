@@ -109,6 +109,8 @@ const generateVanillaJSControlledScript = (tagName: string, controlled: Controll
   return [selector, listeners].join('\n');
 };
 
+// TODO: This will run for the first time without the updateState function being passed as argument into the generator in order to statically generate the page.
+// Make sure this can't fail
 export const extractParams = (fn: typeof Function): { eventParams: string[]; updateStateParams: string[] } => {
   const match = fn.toString().match(/\(([^)]*)\)\s*=>\s*updateState\??.?\(([^)]*)\)/);
 
