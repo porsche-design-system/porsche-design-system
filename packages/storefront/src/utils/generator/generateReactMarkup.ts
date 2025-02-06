@@ -11,9 +11,7 @@ const getReactCode = (
   states: string | undefined,
   eventHandlers: string | undefined,
   code: string | undefined
-) => `export const Example = () => {
-${states}
-${eventHandlers}
+) => `export const Example = () => {${states ? `\n${states}\n` : ''}${eventHandlers ? `\n${eventHandlers}\n` : ''}
   return (
     <>
 ${code}
