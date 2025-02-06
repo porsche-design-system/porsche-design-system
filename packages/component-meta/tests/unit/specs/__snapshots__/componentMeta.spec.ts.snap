@@ -134,7 +134,7 @@ exports[`should match snapshot 1`] = `
     "cssVariablesMeta": {
       "--p-banner-position-bottom": {
         "defaultValue": "56px",
-        "description": "Position bottom of banner",
+        "description": "Position bottom of banner. Only has an effect below breakpoint 's'.",
       },
       "--p-banner-position-top": {
         "defaultValue": "56px",
@@ -4053,7 +4053,7 @@ exports[`should match snapshot 1`] = `
     },
     "slotsMeta": {
       "": {
-        "description": "Default slot to render the link label.",
+        "description": "Default slot to render the link label. This slot can be used to slot an anchor tag instead of using the href prop.",
       },
     },
     "styling": "jss",
@@ -6636,6 +6636,32 @@ exports[`should match snapshot 1`] = `
         ],
       },
     ],
+    "cssVariablesMeta": {
+      "--p-select-background-color": {
+        "defaultValue": "backgroundColor",
+        "description": "Background color of select.",
+      },
+      "--p-select-border-color": {
+        "defaultValue": "primaryColor",
+        "description": "Border color of select",
+      },
+      "--p-select-focus-background-color": {
+        "defaultValue": "backgroundColor",
+        "description": "Background color to be applied when focused.",
+      },
+      "--p-select-focus-border-color": {
+        "defaultValue": "primaryColor",
+        "description": "Border color to be applied when focused.",
+      },
+      "--p-select-icon-filter": {
+        "defaultValue": "56px",
+        "description": "Position top of banner",
+      },
+      "--p-select-text-color": {
+        "defaultValue": "primaryColor",
+        "description": "Text color of select",
+      },
+    },
     "eventsMeta": {
       "update": {
         "description": "Emitted when the selection is changed.",
