@@ -61,6 +61,7 @@ export class Canvas {
 
   private hasTitle: boolean;
   private hasSidebarEnd: boolean;
+  private hasSidebarEndHeader: boolean;
   private hasFooter: boolean;
   private hasBackground: boolean;
 
@@ -105,6 +106,7 @@ export class Canvas {
 
     this.hasTitle = hasNamedSlot(this.host, 'title');
     this.hasSidebarEnd = hasNamedSlot(this.host, 'sidebar-end');
+    this.hasSidebarEndHeader = hasNamedSlot(this.host, 'sidebar-end-header');
     this.hasFooter = hasNamedSlot(this.host, 'footer');
     this.hasBackground = hasNamedSlot(this.host, 'background');
 
@@ -244,7 +246,7 @@ export class Canvas {
             position="end"
             onDismiss={this.onDismissSidebarEnd}
           >
-            <slot slot="header" name="sidebar-end-header" />
+            {this.hasSidebarEndHeader && <slot slot="header" name="sidebar-end-header" />}
             <slot name="sidebar-end" />
           </PrefixedTagNames.pFlyout>
         )}
