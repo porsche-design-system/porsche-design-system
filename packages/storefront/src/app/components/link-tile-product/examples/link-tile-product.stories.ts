@@ -5,6 +5,7 @@ import type { Story } from '@/models/story';
 export const linkTileProductStory: Story<'p-link-tile-product'> = {
   state: {
     properties: {
+      liked: false,
       heading: 'Some product',
       price: '1.911,00 €',
       description: 'Some description',

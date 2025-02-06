@@ -8,6 +8,7 @@ export const flyoutMultilevelStory: Story<'p-flyout-multilevel'> = {
   state: {
     properties: {
       open: false,
+      activeIdentifier: undefined,
       aria: { 'aria-label': 'Main' },
     },
   },

@@ -16,7 +16,7 @@ export const tabsBarStory: Story<'p-tabs-bar'> = {
       properties: {
         ...properties,
         onUpdate: (e: CustomEvent<TabsBarUpdateEventDetail>) =>
-          updateState?.('p-link-tile-product', 'activeTabIndex', e.detail.activeTabIndex),
+          updateState?.('p-tabs-bar', 'activeTabIndex', e.detail.activeTabIndex),
       },
       children: [
         ...['Tab One', 'Tab Two', 'Tab Three'].map((tab) => ({
