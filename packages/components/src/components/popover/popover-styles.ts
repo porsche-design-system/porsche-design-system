@@ -1,9 +1,13 @@
 import {
   borderRadiusSmall,
+  fontFamily,
   fontLineHeight,
+  fontSizeTextSmall,
   frostedGlassStyle,
   motionDurationShort,
   motionEasingBase,
+  spacingStaticMedium,
+  spacingStaticSmall,
   textSmallStyle,
 } from '@porsche-design-system/styles';
 import {
@@ -20,7 +24,6 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { getPopoverResetJssStyle } from '../../styles/popover-reset-styles';
 import type { Theme } from '../../types';
 import { getCss, isHighContrastMode, isThemeDark } from '../../utils';
 
@@ -52,18 +55,13 @@ export const getComponentCss = (theme: Theme): string => {
         margin: 0,
       },
       button: {
+        all: 'unset',
         display: 'block',
-        WebkitAppearance: 'none', // iOS safari
-        appearance: 'none',
-        background: 'transparent',
-        border: 0,
-        padding: 0,
-        cursor: 'pointer',
-        ...textSmallStyle,
+        font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width/height definition based on ex-unit
         width: fontLineHeight, // width needed to improve ssr support
         height: fontLineHeight, // height needed to improve ssr support
         borderRadius: '50%',
-        // TODO: we should try to use getHoverStyle()
+        cursor: 'pointer',
         ...hoverMediaQuery({
           transition: getTransition('background-color'),
           '&:hover': {
@@ -82,25 +80,25 @@ export const getComponentCss = (theme: Theme): string => {
       transform: 'translate3d(0,0,0)', // Fixes movement on hover in Safari
     },
     popover: {
-      ...getPopoverResetJssStyle(),
-      '&[popover]:is(:popover-open)': {
-        display: 'flex',
-      },
+      all: 'unset',
+      position: 'absolute',
+      display: 'flex',
       flexDirection: 'column',
-      inset: 0,
-      width: 'max-content',
-      filter: `drop-shadow(0 0 16px ${shadowColor})`,
+      placeItems: 'center',
       pointerEvents: 'none',
+      filter: `drop-shadow(0 0 16px ${shadowColor})`,
       animation:
         ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
           ? `${motionDurationShort} $fadeIn ${motionEasingBase} forwards`
           : `var(${cssVariableAnimationDuration}, ${motionDurationShort}) $fadeIn ${motionEasingBase} forwards`,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        filter: `drop-shadow(0 0 16px ${shadowColor})`,
-      }),
+      '&:not(:popover-open)': {
+        display: 'none', // ensures popover is not flickering when closed in some situations
+      },
+      '&:-internal-popover-in-top-layer::backdrop': {
+        display: 'none',
+      },
     },
     arrow: {
-      alignSelf: 'center',
       width: '24px',
       height: '12px',
       clipPath: 'polygon(50% 0, 100% 110%, 0 110%)',
@@ -117,20 +115,16 @@ export const getComponentCss = (theme: Theme): string => {
     },
     content: {
       maxWidth: 'min(90vw, 48ch)',
-      width: 'max-content',
-      height: 'max-content',
       boxSizing: 'border-box',
-      background: isThemeDark(theme) ? backgroundSurfaceColor : backgroundColor,
-      padding: '8px 16px',
+      padding: `${spacingStaticSmall} ${spacingStaticMedium}`,
       pointerEvents: 'auto',
-      ...textSmallStyle,
-      listStyleType: 'none',
-      color: primaryColor,
-      whiteSpace: 'inherit',
       borderRadius: borderRadiusSmall,
       ...(isHighContrastMode && {
         outline: `1px solid ${canvasTextColor}`,
       }),
+      ...textSmallStyle,
+      background: isThemeDark(theme) ? backgroundSurfaceColor : backgroundColor,
+      color: primaryColor,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         background: backgroundSurfaceColorDark,
         color: primaryColorDark,
