@@ -65,6 +65,7 @@ export type Story<Tag extends HTMLTagOrComponent> = {
   state?: StoryState<Tag>;
   generator: (
     state?: StoryState<Tag>,
+    // TODO: Remove
     updateState?: (componentName: string, property: string, value: any) => void
   ) => (string | ElementConfig<HTMLTagOrComponent> | undefined)[];
 };

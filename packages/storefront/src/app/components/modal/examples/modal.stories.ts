@@ -58,21 +58,31 @@ export const modalStory: Story<'p-modal'> = {
       footer: modalSlotStories.footer.basic,
     },
   },
-  generator: ({ properties, slots } = {}, updateState = () => {}) => [
+  generator: ({ properties, slots } = {}) => [
     {
       tag: 'p-button',
       properties: {
         type: 'button',
         aria: { 'aria-haspopup': 'dialog' },
-        onClick: () => updateState?.('p-modal', 'open', true),
+      },
+      events: {
+        onClick: {
+          target: 'p-modal',
+          prop: 'open',
+          value: true,
+        },
       },
       children: ['Open Modal'],
     },
     {
       tag: 'p-modal',
-      properties: {
-        ...properties,
-        onDismiss: () => updateState?.('p-modal', 'open', false),
+      properties,
+      events: {
+        onDismiss: {
+          target: 'p-modal',
+          prop: 'open',
+          value: false,
+        },
       },
       children: [
         ...(slots?.header?.generator() ?? []),

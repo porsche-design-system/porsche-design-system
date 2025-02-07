@@ -21,22 +21,15 @@ type ConfiguratorTestProps = {
 
 export const Configurator = ({ tagName, story, slotStories }: ConfiguratorTestProps) => {
   const [exampleState, setExampleState] = useState(story.state ?? {});
-  const [exampleElement, setExampleElement] = useState<ReactNode>(createElements(story.generator(story.state)));
+  const [exampleElement, setExampleElement] = useState<ReactNode>(
+    createElements(story.generator(story.state), setExampleState)
+  );
   const [exampleMarkup, setExampleMarkup] = useState<FrameworkMarkup>({});
-
-  const updateState = (_: string, property: string, value: any) => {
-    setExampleState((prev) => ({ ...prev, properties: { ...prev.properties, [property]: value } }));
-  };
-
-  // biome-ignore lint/correctness/useExhaustiveDependencies: only has to run once on mount to pass the setter function to react to event updates
-  useEffect(() => {
-    setExampleElement(createElements(story.generator(story.state, updateState)));
-  }, []);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: only thing that will change is the state
   useEffect(() => {
-    const generatedStory = story.generator(exampleState, updateState);
-    setExampleElement(createElements(generatedStory));
+    const generatedStory = story.generator(exampleState);
+    setExampleElement(createElements(generatedStory, setExampleState));
     setExampleMarkup({
       'vanilla-js': generateVanillaJsMarkup(generatedStory),
       react: generateReactMarkup(generatedStory, story.state ?? {}),

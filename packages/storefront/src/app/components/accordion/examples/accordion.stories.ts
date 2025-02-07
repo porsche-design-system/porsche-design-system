@@ -7,12 +7,20 @@ export const accordionStory: Story<'p-accordion'> = {
   state: {
     properties: { open: false, heading: 'Some Heading' },
   },
-  generator: ({ properties } = {}, updateState = () => {}) => [
+  generator: ({ properties } = {}) => [
     {
       tag: 'p-accordion',
       properties: {
         ...properties,
-        onUpdate: (e: CustomEvent<AccordionUpdateEventDetail>) => updateState('p-accordion', 'open', e.detail.open),
+      },
+      events: {
+        // @ts-ignore
+        onUpdate: {
+          target: 'p-accordion',
+          prop: 'open',
+          eventValueKey: 'open',
+          eventType: 'CustomEvent<AccordionUpdateEventDetail>',
+        },
       },
       children: [
         {

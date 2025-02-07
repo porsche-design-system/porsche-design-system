@@ -1,7 +1,6 @@
 'use client';
 
 import type { Story } from '@/models/story';
-import type { SwitchUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
 
 export const switchStory: Story<'p-switch'> = {
   state: {
@@ -9,12 +8,20 @@ export const switchStory: Story<'p-switch'> = {
       checked: false,
     },
   },
-  generator: ({ properties } = {}, updateState = () => {}) => [
+  generator: ({ properties } = {}) => [
     {
       tag: 'p-switch',
       properties: {
         ...properties,
-        onUpdate: (e: CustomEvent<SwitchUpdateEventDetail>) => updateState?.('p-switch', 'checked', e.detail.checked),
+      },
+      events: {
+        // @ts-ignore
+        onUpdate: {
+          target: 'p-switch',
+          prop: 'checked',
+          eventValueKey: 'checked',
+          eventType: 'CustomEvent<SwitchUpdateEventDetail>',
+        },
       },
       children: ['Some label'],
     },

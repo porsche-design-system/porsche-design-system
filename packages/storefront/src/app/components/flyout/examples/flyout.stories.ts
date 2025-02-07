@@ -67,21 +67,31 @@ export const flyoutStory: Story<'p-flyout'> = {
       'sub-footer': flyoutSlotStories['sub-footer'].basic,
     },
   },
-  generator: ({ properties, slots } = {}, updateState = () => {}) => [
+  generator: ({ properties, slots } = {}) => [
     {
       tag: 'p-button',
       properties: {
         type: 'button',
         aria: { 'aria-haspopup': 'dialog' },
-        onClick: () => updateState?.('p-flyout', 'open', true),
+      },
+      events: {
+        onClick: {
+          target: 'p-flyout',
+          prop: 'open',
+          value: true,
+        },
       },
       children: ['Open Flyout'],
     },
     {
       tag: 'p-flyout',
-      properties: {
-        ...properties,
-        onDismiss: () => updateState?.('p-flyout', 'open', false),
+      properties,
+      events: {
+        onDismiss: {
+          target: 'p-flyout',
+          prop: 'open',
+          value: false,
+        },
       },
       children: [
         ...(slots?.header?.generator() ?? []),

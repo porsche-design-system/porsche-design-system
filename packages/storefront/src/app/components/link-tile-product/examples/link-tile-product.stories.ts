@@ -12,10 +12,20 @@ export const linkTileProductStory: Story<'p-link-tile-product'> = {
       href: 'https://porsche.com',
     },
   },
-  generator: ({ properties } = {}, updateState = () => {}) => [
+  generator: ({ properties } = {}) => [
     {
       tag: 'p-link-tile-product',
-      properties: { ...properties, onLike: (e) => updateState?.('p-link-tile-product', 'liked', !e.detail.liked) },
+      properties,
+      events: {
+        // @ts-ignore
+        onLike: {
+          target: 'p-link-tile-product',
+          prop: 'liked',
+          eventValueKey: 'liked',
+          eventType: 'CustomEvent<LinkTileProductLikeEvent>',
+          negateValue: true,
+        },
+      },
       children: [
         {
           tag: 'p-tag',

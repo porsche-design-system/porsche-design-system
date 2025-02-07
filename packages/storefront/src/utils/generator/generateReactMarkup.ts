@@ -1,11 +1,11 @@
 import type {
   ConfiguratorTagNames,
   ElementConfig,
+  EventConfig,
   HTMLTagOrComponent,
 } from '@/components/playground/ConfiguratorControls';
 import type { StoryState } from '@/models/story';
-import { type ControlledInfo, extractParams } from '@/utils/generator/generateVanillaJsMarkup';
-import { camelCase, kebabCase, pascalCase } from 'change-case';
+import { pascalCase } from 'change-case';
 
 const getReactCode = (
   states: string | undefined,
@@ -45,7 +45,7 @@ const createReactJSMarkup = (
 
   if (typeof config === 'string') return { markup: `${indent}${config}`, states: [], eventHandlers: [] };
 
-  const { tag, properties = {}, children = [] } = config;
+  const { tag, properties = {}, events = {}, children = [] } = config;
   const isPDSComponent = tag.startsWith('p-');
 
   let transformedTag: string = tag;
@@ -53,27 +53,13 @@ const createReactJSMarkup = (
     transformedTag = pascalCase(tag);
   }
 
-  const events: ControlledInfo = [];
   const props = [];
 
   const propEntries = Object.entries(properties);
+  const eventEntries = Object.entries(events);
+
   for (const [key, value] of propEntries) {
-    if (key.startsWith('on')) {
-      const {
-        eventParams,
-        updateStateParams: [component, prop, val],
-      } = extractParams(value);
-      props.push({ key, value: `{${key}}` });
-      events.push({
-        tagName: tag,
-        eventName: key,
-        component,
-        prop,
-        initialValue: initialState?.properties?.[prop as keyof StoryState<ConfiguratorTagNames>['properties']],
-        newValue: val,
-        isEventVal: eventParams.length > 0,
-      });
-    } else if (typeof value === 'string') {
+    if (typeof value === 'string') {
       props.push({ key, value: `"${value}"` });
     } else {
       props.push({ key, value: `{${JSON.stringify(value)}}` });
@@ -84,13 +70,16 @@ const createReactJSMarkup = (
     props.length > 0
       ? ` ${props
           .map(({ key, value }) => {
-            if (events.some(({ prop }) => prop === key)) {
+            if (eventEntries.some(([_, { prop }]) => prop === key)) {
               return `${key}={${key}}`;
             }
             return `${key}=${value}`;
           })
           .join(' ')}`
       : '';
+
+  const eventListenersString =
+    eventEntries.length > 0 ? ` ${eventEntries.map(([eventName]) => `${eventName}={${eventName}}`).join(' ')}` : '';
 
   const childrenResults = children.map((child) => createReactJSMarkup(child, initialState, indentLevel + 1));
   const childMarkup = childrenResults.map(({ markup }) => markup).join('\n');
@@ -99,13 +88,17 @@ const createReactJSMarkup = (
 
   const markup =
     children.length > 0
-      ? `${'  '.repeat(indentLevel)}<${transformedTag}${propertiesString}>\n${childMarkup}\n${'  '.repeat(indentLevel)}</${transformedTag}>`
-      : `${'  '.repeat(indentLevel)}<${transformedTag}${propertiesString} />`;
+      ? `${'  '.repeat(indentLevel)}<${transformedTag}${propertiesString}${eventListenersString}>\n${childMarkup}\n${'  '.repeat(indentLevel)}</${transformedTag}>`
+      : `${'  '.repeat(indentLevel)}<${transformedTag}${propertiesString}${eventListenersString} />`;
 
-  const states = events.length > 0 ? [generateReactControlledScript(events).states, ...childStates] : childStates;
+  // TODO: Refactor to one function call
+  const states =
+    eventEntries.length > 0
+      ? [generateReactControlledScript(tag, eventEntries, initialState).states, ...childStates]
+      : childStates;
   const eventHandlers =
-    events.length > 0
-      ? [generateReactControlledScript(events).eventHandler, ...childEventHandlers]
+    eventEntries.length > 0
+      ? [generateReactControlledScript(tag, eventEntries, initialState).eventHandler, ...childEventHandlers]
       : childEventHandlers;
 
   return { markup, states, eventHandlers };
@@ -113,22 +106,29 @@ const createReactJSMarkup = (
 
 type ReactScripts = { states: string; eventHandler: string };
 
-const generateReactControlledScript = (controlled: ControlledInfo): ReactScripts => {
-  const states = controlled
+const generateReactControlledScript = (
+  tagName: string,
+  eventEntries: [string, EventConfig][],
+  initialState: StoryState<ConfiguratorTagNames>
+): ReactScripts => {
+  const states = eventEntries
     // Only create state if the current element's tagName is the same as the element the state is applied to e.g. don't create state for p-button onClick open flyout
-    .filter(({ tagName, component }) => tagName === component)
-    .map(({ prop, initialValue }) => `  const [${prop}, set${pascalCase(prop)}] = useState(${initialValue});`)
+    .filter(([_, { target }]) => tagName === target)
+    .map(
+      ([_, { prop }]) =>
+        `  const [${prop}, set${pascalCase(prop)}] = useState(${(initialState?.properties as any)?.[prop]});`
+    )
     .join('\n');
 
-  const eventHandler = controlled
-    .map(({ eventName, prop, newValue, isEventVal }) => {
-      if (isEventVal) {
-        return `  const ${eventName} = (e) => {
-    set${pascalCase(prop)}(${newValue});
+  const eventHandler = eventEntries
+    .map(([eventName, { prop, value, eventValueKey, eventType, negateValue }]) => {
+      if (eventValueKey) {
+        return `  const ${eventName} = (e: ${eventType}) => {
+    set${pascalCase(prop)}(${negateValue ? '!' : ''}e.detail.${eventValueKey});
   }`;
       }
       return `  const ${eventName} = () => {
-    set${pascalCase(prop)}(${newValue});
+    set${pascalCase(prop)}(${negateValue ? '!' : ''}${value});
   }`;
     })
     .join('\n');

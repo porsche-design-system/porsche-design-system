@@ -111,7 +111,21 @@ export type HTMLElementOrComponentProps<T extends HTMLTagOrComponent> = T extend
 export type ElementConfig<T extends HTMLTagOrComponent> = {
   tag: T;
   properties?: HTMLElementOrComponentProps<T>;
+  events?: EventsConfig<T>;
   children?: (string | ElementConfig<HTMLTagOrComponent> | undefined)[];
+};
+
+export type EventsConfig<T extends HTMLTagOrComponent> = {
+  [eventName in keyof HTMLElementOrComponentProps<T>]: EventConfig;
+};
+
+export type EventConfig = {
+  target: string;
+  prop: string;
+  value?: any; // direct value
+  eventValueKey?: string; // key of value in event e.detail.open => open
+  eventType?: string; // 'CustomEvent<AccordionUpdateEventDetail>'
+  negateValue?: boolean;
 };
 
 export type PropTypeMapping = {

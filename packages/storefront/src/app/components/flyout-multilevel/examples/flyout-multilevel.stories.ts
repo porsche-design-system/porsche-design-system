@@ -12,7 +12,7 @@ export const flyoutMultilevelStory: Story<'p-flyout-multilevel'> = {
       aria: { 'aria-label': 'Main' },
     },
   },
-  generator: ({ properties } = {}, updateState = () => {}) => [
+  generator: ({ properties } = {}) => [
     {
       tag: 'nav',
       properties: { 'aria-label': 'Main' },
@@ -22,17 +22,31 @@ export const flyoutMultilevelStory: Story<'p-flyout-multilevel'> = {
           properties: {
             type: 'button',
             aria: { 'aria-haspopup': 'dialog' },
-            onClick: () => updateState?.('p-flyout-multilevel', 'open', true),
+          },
+          events: {
+            onClick: {
+              target: 'p-flyout-multilevel',
+              prop: 'open',
+              value: true,
+            },
           },
           children: ['Open Flyout Multilevel'],
         },
         {
           tag: 'p-flyout-multilevel',
-          properties: {
-            ...properties,
-            onDismiss: () => updateState?.('p-flyout-multilevel', 'open', false),
-            onUpdate: (e: CustomEvent<FlyoutMultilevelUpdateEventDetail>) =>
-              updateState?.('p-flyout-multilevel', 'activeIdentifier', e.detail.activeIdentifier),
+          properties,
+          events: {
+            onDismiss: {
+              target: 'p-flyout-multilevel',
+              prop: 'open',
+              value: false,
+            },
+            onUpdate: {
+              target: 'p-flyout-multilevel',
+              prop: 'activeIdentifier',
+              eventValueKey: 'activeIdentifier',
+              eventType: 'CustomEvent<FlyoutMultilevelUpdateEventDetail>',
+            },
           },
           children: [
             {

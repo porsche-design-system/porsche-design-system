@@ -11,18 +11,31 @@ export const bannerStory: Story<'p-banner'> = {
       description: 'Some Description',
     },
   },
-  generator: ({ properties } = {}, updateState = () => {}) => [
+  generator: ({ properties } = {}) => [
     {
       tag: 'p-button',
       properties: {
         type: 'button',
-        onClick: () => updateState('p-banner', 'open', true),
+      },
+      events: {
+        onClick: {
+          target: 'p-banner',
+          prop: 'open',
+          value: true,
+        },
       },
       children: ['Open Banner'],
     },
     {
       tag: 'p-banner',
-      properties: { ...properties, onDismiss: () => updateState('p-banner', 'open', false) },
+      properties,
+      events: {
+        onDismiss: {
+          target: 'p-banner',
+          prop: 'open',
+          value: false,
+        },
+      },
     },
   ],
 };

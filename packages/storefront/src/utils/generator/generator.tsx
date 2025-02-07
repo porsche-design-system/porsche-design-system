@@ -1,8 +1,10 @@
 import type {
   ConfiguratorTagNames,
   ElementConfig,
+  EventConfig,
   HTMLTagOrComponent,
 } from '@/components/playground/ConfiguratorControls';
+import type { StoryState } from '@/models/story';
 import {
   PAccordion,
   PBanner,
@@ -172,25 +174,56 @@ const getPDSReactComponentLazy = (tag: string) => {
   );
 };
 
-export const createElements = (configs: (string | ElementConfig<HTMLTagOrComponent> | undefined)[]): ReactNode => {
-  return configs.map((config, index) => createElement(config, index));
+export const createElements = (
+  configs: (string | ElementConfig<HTMLTagOrComponent> | undefined)[],
+  updateState: React.Dispatch<React.SetStateAction<StoryState<HTMLTagOrComponent>>>
+): ReactNode => {
+  return configs.map((config, index) => createElement(config, index, updateState));
 };
 
 export const createElement = (
   config: string | ElementConfig<HTMLTagOrComponent> | undefined,
-  key: number
+  key: number,
+  updateState: React.Dispatch<React.SetStateAction<StoryState<HTMLTagOrComponent>>>
 ): ReactNode => {
   if (!config) return null;
   if (typeof config === 'string') return config;
 
-  const { tag, properties = {}, children = [] } = config;
+  const { tag, properties = {}, events = {}, children = [] } = config;
   const isPDSComponent = tag.startsWith('p-');
 
   const ReactComponent = isPDSComponent ? componentMap[tag as ConfiguratorTagNames] : tag;
 
+  const eventEntries = Object.entries(events);
+
+  const handleEvent = ({ prop, eventValueKey, negateValue, value }: EventConfig) => {
+    return (event: any) => {
+      const eventValue = eventValueKey ? event.detail[eventValueKey] : value;
+      const newValue = negateValue ? !eventValue : eventValue;
+      updateState((prev) => ({
+        ...prev,
+        properties: {
+          ...prev.properties,
+          [prop]: newValue,
+        },
+      }));
+    };
+  };
+
+  const propsWithEvents =
+    eventEntries.length > 0
+      ? {
+          ...properties,
+          ...eventEntries.reduce((acc, [eventName, eventInfo]) => {
+            acc[eventName] = handleEvent(eventInfo);
+            return acc;
+          }, {} as any),
+        }
+      : properties;
+
   return React.createElement(
     ReactComponent,
-    { key, ...properties },
-    ...(children || []).map((child, index) => createElement(child, index))
+    { key, ...propsWithEvents },
+    ...(children || []).map((child, index) => createElement(child, index, updateState))
   );
 };

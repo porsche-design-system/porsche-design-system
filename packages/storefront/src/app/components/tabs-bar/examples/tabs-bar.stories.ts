@@ -2,7 +2,6 @@
 
 import type { HTMLTagOrComponent } from '@/components/playground/ConfiguratorControls';
 import type { Story } from '@/models/story';
-import type { TabsBarUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
 
 export const tabsBarStory: Story<'p-tabs-bar'> = {
   state: {
@@ -10,13 +9,18 @@ export const tabsBarStory: Story<'p-tabs-bar'> = {
       activeTabIndex: 0,
     },
   },
-  generator: ({ properties } = {}, updateState = () => {}) => [
+  generator: ({ properties } = {}) => [
     {
       tag: 'p-tabs-bar',
-      properties: {
-        ...properties,
-        onUpdate: (e: CustomEvent<TabsBarUpdateEventDetail>) =>
-          updateState?.('p-tabs-bar', 'activeTabIndex', e.detail.activeTabIndex),
+      properties: properties,
+      events: {
+        // @ts-ignore
+        onUpdate: {
+          target: 'p-tabs-bar',
+          prop: 'activeTabIndex',
+          eventValueKey: 'activeTabIndex',
+          eventType: 'CustomEvent<TabsBarUpdateEventDetail>',
+        },
       },
       children: [
         ...['Tab One', 'Tab Two', 'Tab Three'].map((tab) => ({

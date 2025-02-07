@@ -1,16 +1,5 @@
-import type { ElementConfig, HTMLTagOrComponent } from '@/components/playground/ConfiguratorControls';
+import type { ElementConfig, EventConfig, HTMLTagOrComponent } from '@/components/playground/ConfiguratorControls';
 import { camelCase, kebabCase } from 'change-case';
-
-export type ControlledInfo = {
-  tagName?: string; // tagName of element the eventListener is attached to e.g. p-button, p-accordion...
-  eventName: string; // Name of the event e.g. onUpdate
-  component: string; // tagName of the component to update the state of e.g. p-accordion
-  prop: string; // Name of the affected prop e.g. open
-  // TODO: Fix typing
-  initialValue?: any | undefined; // The initialValue of the state
-  newValue: string; // The value which will be assigned to the state/element e.g. either e.detail.open or the direct value e.g. true depending on isEventVal
-  isEventVal: boolean; // Specifies if the val will be directly used or taken out of the event
-}[];
 
 const getVanillaJsCode = (code: string | undefined, script: string | undefined) => `<!doctype html>
 <html lang="en">
@@ -43,21 +32,15 @@ const createVanillaJSMarkup = (
 
   if (typeof config === 'string') return { markup: `${indent}${config}`, scripts: [] };
 
-  const { tag, properties = {}, children = [] } = config;
+  const { tag, properties = {}, events = {}, children = [] } = config;
 
-  const events: ControlledInfo = [];
   const props = [];
 
   const propEntries = Object.entries(properties);
+  const eventEntries = Object.entries(events);
+
   for (const [key, value] of propEntries) {
-    if (key.startsWith('on')) {
-      const eventName = camelCase(key.replace('on', ''));
-      const {
-        eventParams,
-        updateStateParams: [component, prop, val],
-      } = extractParams(value);
-      events.push({ eventName, component, prop, newValue: val, isEventVal: eventParams.length > 0 });
-    } else if (typeof value === 'string') {
+    if (typeof value === 'string') {
       props.push({ key: key === 'className' ? 'class' : kebabCase(key), value });
     } else if (key === 'style') {
       const styles = Object.entries(value)
@@ -71,7 +54,7 @@ const createVanillaJSMarkup = (
     }
   }
 
-  const propsWithoutControlled = props.filter(({ key }) => !events.some(({ prop }) => prop === key));
+  const propsWithoutControlled = props.filter(({ key }) => !eventEntries.some(([_, { prop }]) => prop === key));
 
   const propertiesString =
     propsWithoutControlled.length > 0
@@ -87,42 +70,26 @@ const createVanillaJSMarkup = (
       ? `${indent}<${tag}${propertiesString}>\n${childMarkup}\n${indent}</${tag}>`
       : `${indent}<${tag}${propertiesString} />`;
 
-  const scripts = events.length > 0 ? [generateVanillaJSControlledScript(tag, events), ...childScripts] : childScripts;
+  const scripts =
+    eventEntries.length > 0 ? [generateVanillaJSControlledScript(tag, eventEntries), ...childScripts] : childScripts;
 
   return { markup, scripts };
 };
 
-const generateVanillaJSControlledScript = (tagName: string, controlled: ControlledInfo) => {
+const generateVanillaJSControlledScript = (tagName: string, eventEntries: [string, EventConfig][]) => {
   const constant = camelCase(tagName.replace('p-', ''));
   const selector = `  const ${constant} = document.querySelector('${tagName}');`;
 
-  const listeners = controlled
-    .map(({ eventName, component, prop, newValue, isEventVal }) => {
-      const element = camelCase(component.replace('p-', ''));
-      if (isEventVal) {
-        return `  ${constant}.addEventListener('${eventName}', (e) => (e.target.${prop} = ${newValue}))`;
+  const listeners = eventEntries
+    .map(([eventName, { target, prop, value, eventValueKey, eventType, negateValue }]) => {
+      const element = camelCase(target.replace('p-', ''));
+      const nativeEventName = camelCase(eventName.replace('on', ''));
+      if (eventValueKey) {
+        return `  ${constant}.addEventListener('${nativeEventName}', (e: ${eventType}) => (e.target.${prop} = ${negateValue ? '!' : ''}e.detail.${eventValueKey}))`;
       }
-      return `  ${constant}.addEventListener('${eventName}', () => (${element}.${prop} = ${newValue}))`;
+      return `  ${constant}.addEventListener('${nativeEventName}', () => (${element}.${prop} = ${negateValue ? '!' : ''}${value}))`;
     })
     .join('\n');
 
   return [selector, listeners].join('\n');
-};
-
-// TODO: This will run for the first time without the updateState function being passed as argument into the generator in order to statically generate the page.
-// Make sure this can't fail
-export const extractParams = (fn: typeof Function): { eventParams: string[]; updateStateParams: string[] } => {
-  const match = fn.toString().match(/\(([^)]*)\)\s*=>\s*updateState|.\??.?\(([^)]*)\)/);
-
-  if (match) {
-    const eventParams = match[1] ? match[1].split(',').map((arg) => arg.trim()) : [];
-    const updateStateParams = match[2].split(',').map((arg) => arg.trim().replaceAll("'", ''));
-
-    return {
-      eventParams,
-      updateStateParams,
-    };
-  }
-
-  return { eventParams: [], updateStateParams: [] };
 };
