@@ -33,8 +33,8 @@ export const Configurator = ({ tagName, story, slotStories }: ConfiguratorTestPr
     setExampleMarkup({
       'vanilla-js': generateVanillaJsMarkup(generatedStory),
       react: generateReactMarkup(generatedStory, story.state ?? {}),
-      angular: generateAngularMarkup(generatedStory),
-      vue: generateVueMarkup(generatedStory),
+      angular: generateAngularMarkup(generatedStory, story.state ?? {}),
+      vue: generateVueMarkup(generatedStory, story.state ?? {}),
     });
   }, [exampleState]);
 
