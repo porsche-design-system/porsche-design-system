@@ -10,7 +10,7 @@ type CodeBlockProps = {
 };
 
 export const CodeBlock = ({ frameworkMarkup }: CodeBlockProps) => {
-  const [tabIndex, setTabIndex] = useState(1);
+  const [tabIndex, setTabIndex] = useState(0);
   const frameworks = Object.keys(frameworkMarkup) as Framework[];
   const selectedFramework = frameworks[tabIndex];
 

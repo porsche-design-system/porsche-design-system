@@ -1,7 +1,11 @@
 import type { ElementConfig, EventConfig, HTMLTagOrComponent } from '@/components/playground/ConfiguratorControls';
 import { camelCase, kebabCase } from 'change-case';
 
-const getVanillaJsCode = (code: string | undefined, script: string | undefined) => `<!doctype html>
+const getVanillaJsCode = (
+  selector: string | undefined,
+  eventHandlers: string | undefined,
+  code: string | undefined
+) => `<!doctype html>
 <html lang="en">
 <head>
   <title></title>
@@ -9,28 +13,34 @@ const getVanillaJsCode = (code: string | undefined, script: string | undefined) 
 <body>
 
 ${code}
-${script ? `\n<script>\n${script}\n</script>\n` : ''}
+
+<script>${selector ? `\n${selector}\n` : ''}${eventHandlers ? `\n${eventHandlers}\n` : ''}</script>
 </body>
 </html>`;
 
 export const generateVanillaJsMarkup = (
-  configs: (string | ElementConfig<HTMLTagOrComponent> | undefined)[]
+  configs: (string | ElementConfig<HTMLTagOrComponent> | undefined)[],
+  indentLevel = 0
 ): string => {
-  const results = configs.map((config) => createVanillaJSMarkup(config));
+  const results = configs.map((config) => createVanillaJSMarkup(config, indentLevel));
   const markup = results.map(({ markup }) => markup).join('\n\n');
-  const scripts = results.flatMap(({ scripts }) => scripts).join('\n');
+  const selector = results
+    .flatMap(({ selector }) => selector)
+    .filter((state) => state)
+    .join('\n');
+  const eventHandlers = results.flatMap(({ eventHandlers }) => eventHandlers).join('\n');
 
-  return getVanillaJsCode(markup, scripts);
+  return getVanillaJsCode(selector, eventHandlers, markup);
 };
 
 const createVanillaJSMarkup = (
   config: string | ElementConfig<HTMLTagOrComponent> | undefined,
   indentLevel = 0
-): { markup: string; scripts: string[] } => {
-  if (!config) return { markup: '', scripts: [] };
+): { markup: string; selector: string[]; eventHandlers: string[] } => {
+  if (!config) return { markup: '', selector: [], eventHandlers: [] };
   const indent = '  '.repeat(indentLevel);
 
-  if (typeof config === 'string') return { markup: `${indent}${config}`, scripts: [] };
+  if (typeof config === 'string') return { markup: `${indent}${config}`, selector: [], eventHandlers: [] };
 
   const { tag, properties = {}, events = {}, children = [] } = config;
 
@@ -63,24 +73,31 @@ const createVanillaJSMarkup = (
 
   const childrenResults = children.map((child) => createVanillaJSMarkup(child, indentLevel + 1));
   const childMarkup = childrenResults.map(({ markup }) => markup).join('\n');
-  const childScripts = childrenResults.flatMap(({ scripts }) => scripts);
+  const childSelectors = childrenResults.flatMap(({ selector }) => selector);
+  const childEventHandlers = childrenResults.flatMap(({ eventHandlers }) => eventHandlers);
 
   const markup =
     children.length > 0
       ? `${indent}<${tag}${propertiesString}>\n${childMarkup}\n${indent}</${tag}>`
       : `${indent}<${tag}${propertiesString} />`;
 
-  const scripts =
-    eventEntries.length > 0 ? [generateVanillaJSControlledScript(tag, eventEntries), ...childScripts] : childScripts;
+  const scripts = eventEntries.length > 0 ? generateVanillaJSControlledScript(tag, eventEntries) : null;
+  const selector = scripts ? [scripts.selector, ...childSelectors] : childSelectors;
+  const eventHandlers = scripts ? [scripts.eventHandler, ...childEventHandlers] : childEventHandlers;
 
-  return { markup, scripts };
+  return { markup, selector, eventHandlers };
 };
 
-const generateVanillaJSControlledScript = (tagName: string, eventEntries: [string, EventConfig][]) => {
+type VanillaJSScripts = { selector: string; eventHandler: string };
+
+const generateVanillaJSControlledScript = (
+  tagName: string,
+  eventEntries: [string, EventConfig][]
+): VanillaJSScripts => {
   const constant = camelCase(tagName.replace('p-', ''));
   const selector = `  const ${constant} = document.querySelector('${tagName}');`;
 
-  const listeners = eventEntries
+  const eventHandler = eventEntries
     .map(([eventName, { target, prop, value, eventValueKey, negateValue }]) => {
       const element = camelCase(target.replace('p-', ''));
       const nativeEventName = camelCase(eventName.replace('on', ''));
@@ -91,5 +108,5 @@ const generateVanillaJSControlledScript = (tagName: string, eventEntries: [strin
     })
     .join('\n');
 
-  return [selector, listeners].join('\n');
+  return { selector, eventHandler };
 };

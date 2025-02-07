@@ -91,15 +91,9 @@ const createReactJSMarkup = (
       ? `${'  '.repeat(indentLevel)}<${transformedTag}${propertiesString}${eventListenersString}>\n${childMarkup}\n${'  '.repeat(indentLevel)}</${transformedTag}>`
       : `${'  '.repeat(indentLevel)}<${transformedTag}${propertiesString}${eventListenersString} />`;
 
-  // TODO: Refactor to one function call
-  const states =
-    eventEntries.length > 0
-      ? [generateReactControlledScript(tag, eventEntries, initialState).states, ...childStates]
-      : childStates;
-  const eventHandlers =
-    eventEntries.length > 0
-      ? [generateReactControlledScript(tag, eventEntries, initialState).eventHandler, ...childEventHandlers]
-      : childEventHandlers;
+  const scripts = eventEntries.length > 0 ? generateReactControlledScript(tag, eventEntries, initialState) : null;
+  const states = scripts ? [scripts.states, ...childStates] : childStates;
+  const eventHandlers = scripts ? [scripts.eventHandler, ...childEventHandlers] : childEventHandlers;
 
   return { markup, states, eventHandlers };
 };
