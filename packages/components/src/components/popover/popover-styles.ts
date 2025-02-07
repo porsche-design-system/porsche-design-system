@@ -116,7 +116,7 @@ export const getComponentCss = (theme: Theme): string => {
           }),
     },
     content: {
-      maxWidth: 'min(90vw, 27rem)',
+      maxWidth: 'min(90vw, 48ch)',
       width: 'max-content',
       height: 'max-content',
       boxSizing: 'border-box',
