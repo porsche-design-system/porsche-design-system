@@ -1,23 +1,23 @@
+import { pdsTheme } from '@porsche-design-system/ag-grid/src/js';
+import { PorscheDesignSystemContext } from '@porsche-design-system/components-react';
+import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
+import { AllEnterpriseModule, type ColDef, ModuleRegistry } from 'ag-grid-enterprise';
 import { AgGridReact } from 'ag-grid-react';
-import { dataAdvanced, type DataAdvanced } from '@porsche-design-system/shared';
-import 'ag-grid-community';
-import { ColDef } from 'ag-grid-community';
-import '@porsche-design-system/components-react/ag-grid/theme.css';
-import { Theme } from '@porsche-design-system/components-react';
+import { useContext } from 'react';
+
+ModuleRegistry.registerModules([AllEnterpriseModule]);
 
 type ColumnDefs = DataAdvanced & {
   active: boolean;
 };
 
-const theme: Theme = 'light';
-
 export const AGGridExampleStorefrontPage = (): JSX.Element => {
+  const { theme } = useContext(PorscheDesignSystemContext);
   const rowData = dataAdvanced.map((row, index) => ({ active: Boolean(index % 2) /* odd rows */, ...row }));
 
   const columnDefs: ColDef<ColumnDefs>[] = [
     {
       field: 'active',
-      showDisabledCheckboxes: true,
       width: 170,
     },
     {
@@ -59,8 +59,14 @@ export const AGGridExampleStorefrontPage = (): JSX.Element => {
   };
 
   return (
-    <div className={theme === 'light' ? 'ag-theme-pds' : 'ag-theme-pds-dark'} style={{ height: '100vh' }}>
-      <AgGridReact rowData={rowData} columnDefs={columnDefs} defaultColDef={defaultColDef} pagination={true} />
+    <div data-ag-theme-mode={theme === 'light' ? '' : 'ag-theme-pds-dark'} style={{ height: '100vh' }}>
+      <AgGridReact
+        rowData={rowData}
+        columnDefs={columnDefs}
+        defaultColDef={defaultColDef}
+        pagination={true}
+        theme={pdsTheme}
+      />
     </div>
   );
 };
