@@ -1,5 +1,9 @@
 <script type="module">
+
+  const theme = new URL(document.location).searchParams.get('theme') || 'light';
   const grid = document.querySelector('#my-grid');
+
+  grid.setAttribute('data-ag-theme-mode', theme === 'light' ? '' : 'ag-theme-pds-dark');
 
   const rowData = [
     {
@@ -55,6 +59,7 @@
   ];
 
   const gridOptions = {
+    // theme: 'legacy', // Forces AG Grid to use v32 styling
     // Data to be displayed
     rowData: rowData.map((row, index) => ({ active: Boolean(index % 2) /* odd rows */, ...row })),
     // Columns to be displayed (Should match rowData properties)
@@ -62,7 +67,7 @@
       {
         field: 'active',
         showDisabledCheckboxes: true,
-        width: '170px',
+        width: 170,
       },
       {
         field: 'model',
@@ -79,7 +84,7 @@
       },
       {
         field: 'vin',
-        width: '250px',
+        width: 250,
         editable: false,
       },
       {
@@ -93,7 +98,7 @@
       {
         field: 'comment',
         filter: false,
-        width: '500px',
+        width: 500,
       },
     ],
     // Configurations applied to all columns
@@ -105,7 +110,8 @@
     pagination: true,
   };
 
+
   agGrid.createGrid(grid, gridOptions);
 </script>
 
-<div id="my-grid" class="ag-theme-pds" style="height: 100vh; padding: 1rem"></div>
+<div id="my-grid" style="height: 100vh; padding: 1rem"></div>
