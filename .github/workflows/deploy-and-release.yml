@@ -22,12 +22,6 @@ on:
       npmjs-registry-token:
         description: 'npm registry token for npmjs'
         required: true
-      cdn-user:
-        description: 'cdn user'
-        required: true
-      cdn-ssh-key:
-        description: 'cdn ssh key'
-        required: true
       algolia-app-id:
         description: 'algolia app id'
         required: true
@@ -42,7 +36,7 @@ on:
         required: true
 name: 'Deploy and Release'
 env:
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.49.1-jammy-3
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.49.1-jammy-5
 jobs:
   deploy-assets:
     name: 'Deploy Assets'
@@ -65,8 +59,6 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
-          CDN_USER: ${{ secrets.cdn-user }}
-          CDN_SSH_KEY: ${{ secrets.cdn-ssh-key }}
         with:
           entrypoint: run-deploy-assets
   deploy-storefront:

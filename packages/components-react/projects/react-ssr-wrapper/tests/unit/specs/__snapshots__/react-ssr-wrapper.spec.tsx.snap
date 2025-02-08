@@ -5582,13 +5582,13 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -5597,7 +5597,8 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -5619,8 +5620,8 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + 0px);
@@ -5722,13 +5723,13 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -5737,7 +5738,8 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -5759,8 +5761,8 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + 0px);
@@ -5862,13 +5864,13 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -5877,7 +5879,8 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -5899,7 +5902,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   --p-internal-text-field-input-padding-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   display: grid;
   gap: 4px;
@@ -6164,13 +6167,13 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -6179,7 +6182,8 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -6789,270 +6793,6 @@ img {
   </template>
   Some child
 </p-accordion>
-`;
-
-exports[`should render dsr component for PSheet 1`] = `
-<p-sheet
-  data-ssr=""
->
-  <template
-    shadowroot="open"
-    shadowrootmode="open"
-  >
-    <style>
-      :host {
-  display: block;
-  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
-  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  --pds-internal-grid-width-min: auto !important;
-  --pds-internal-grid-width-max: none !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-slot {
-  display: block;
-  grid-column: 2/3;
-  z-index: 0;
-}
-dialog {
-  position: fixed;
-  inset: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100dvw;
-  height: 100dvh;
-  max-width: 100dvw;
-  max-height: 100dvh;
-  overflow: hidden;
-  display: block;
-  outline: 0;
-  z-index: 9999999;
-  visibility: hidden;
-  pointer-events: none;
-  background: transparent;
-  transition: visibility 0s linear var(--p-transition-duration, 0.4s), background-color var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1);
-}
-dialog::backdrop {
-  display: none;
-}
-@supports (transition-behavior: allow-discrete) {
-  dialog {
-    transition: visibility 0s linear var(--p-transition-duration, 0.4s), background-color var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), overlay var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1) allow-discrete;
-  }
-}
-
-.scroller {
-  position: absolute;
-  isolation: isolate;
-  display: grid;
-  inset: 0;
-  overflow: hidden auto;
-  overscroll-behavior-y: none;
-  background: rgba(255,255,255,.01);
-}
-.sheet {
-  display: grid;
-  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
-  padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
-  row-gap: clamp(16px, 1.25vw + 12px, 36px);
-  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
-  align-content: flex-start;
-  color: #010205;
-  background: #FFF;
-  opacity: 0;
-  transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
-  width: 100%;
-  align-self: flex-end;
-  margin-block-start: clamp(32px, 2.75vw + 23px, 76px);
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-}
-.sheet:dir(rtl) {
-  transform: translateY(25vh);
-}
-.dismiss {
-  --p-internal-button-scaling: 0;
-  grid-area: 1/3;
-  z-index: 2;
-  position: sticky;
-  inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
-  margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
-  margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
-  place-self: flex-start flex-end;
-}
-    </style>
-    <dialog
-      aria-modal="true"
-      inert=""
-      tabindex="-1"
-    >
-      <div
-        class="scroller"
-      >
-        <div
-          class="sheet"
-        >
-          <p-button
-            class="dismiss"
-            data-ssr=""
-          >
-            <template
-              shadowroot="open"
-              shadowrootdelegatesfocus="true"
-              shadowrootmode="open"
-            >
-              <style>
-                :host {
-  display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 4% 85%/35%);
-  color: #010205;
-  --p-internal-scaling-factor: 1;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px);
-  gap: 0;
-  cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: 0;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-
-              </style>
-              <button
-                class="root"
-                type="button"
-              >
-                <p-icon
-                  aria-hidden="true"
-                  class="icon"
-                  data-ssr=""
-                >
-                  <template
-                    shadowroot="open"
-                    shadowrootmode="open"
-                  >
-                    <style>
-                      :host {
-  display: inline-block;
-  vertical-align: top;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  display: block;
-  margin: 0;
-  padding: 0;
-  pointer-events: none;
-  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
-  -webkit-animation: rerender-light-primary 1ms;
-  width: inherit;
-  height: inherit;
-}
-@keyframes rerender-light-primary {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
-}
-                    </style>
-                    <img
-                      alt=""
-                      height="24"
-                      loading="lazy"
-                      src="http://localhost:3001/icons/close.eec3c5d.svg"
-                      width="24"
-                    />
-                  </template>
-                </p-icon>
-                <span
-                  class="label"
-                >
-                  <slot />
-                </span>
-              </button>
-              <span
-                class="loading"
-                id="loading"
-                role="status"
-              />
-            </template>
-            Dismiss sheet
-          </p-button>
-          <slot />
-        </div>
-      </div>
-    </dialog>
-  </template>
-  Some child
-</p-sheet>
 `;
 
 exports[`should render dsr component for PBanner 1`] = `
@@ -7959,6 +7699,9 @@ exports[`should render dsr component for PCanvas 1`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+slot[name="sidebar-end-header"] {
+  display: block;
+}
 slot[name="background"] {
   z-index: 3;
   display: block;
@@ -8188,7 +7931,7 @@ h2 {
   justify-content: flex-start;
 }
 .sidebar__header--end {
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 .sidebar__header::before {
   content: "";
@@ -13486,12 +13229,12 @@ exports[`should render dsr component for POptgroup 1`] = `
 .optgroup {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: max(2px, var(--p-internal-optgroup-scaling, 1) * 8px);
 }
 .label {
   color: #010205;
   display: block;
-  padding: 8px 12px;
+  padding: max(2px, var(--p-internal-optgroup-scaling, 1) * 8px) max(4px, var(--p-internal-optgroup-scaling, 1) * 12px);
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
 }
@@ -14770,6 +14513,10 @@ exports[`should render dsr component for PSelect 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+::slotted(*) {
+  --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+  --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
+}
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
@@ -14779,12 +14526,12 @@ button {
   white-space: nowrap;
   grid-area: 1/1/1/-1;
   min-width: 0;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
+  height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   margin: 0;
-  padding: 8px 16px;
-  padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
-  box-sizing: border-box;
+  padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+  padding-inline: max(4px, var(--p-internal-select-scaling, 1) * 16px) calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
+  box-sizing: content-box;
   outline: 0;
   -webkit-appearance: none;
   appearance: none;
@@ -14804,13 +14551,13 @@ button:disabled {
 
 .root {
   display: grid;
-  gap: 4px;
+  gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
   min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto calc(9px + 2px);
+  grid-template-columns: minmax(0, 1fr) auto auto calc(max(2px, var(--p-internal-select-scaling, 1) * 9px) + 2px);
 }
 .icon {
   grid-area: 1/3;
@@ -14829,8 +14576,8 @@ button:disabled {
   margin: 0;
   display: none;
   flex-direction: column;
-  gap: 8px;
-  padding: 6px;
+  gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+  padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -15020,15 +14767,15 @@ exports[`should render dsr component for PSelectOption 1`] = `
 .option {
   font-weight: 400;
   display: flex;
-  gap: 12px;
-  padding: 8px 12px;
-  padding-inline-start: var(--p-internal-select-option-padding-left, 12px);
-  min-height: calc(calc(6px + 2.125ex) + 8px * 2);
+  gap: max(4px, var(--p-internal-select-option-scaling, 1) * 12px);
+  padding-block: max(2px, var(--p-internal-select-option-scaling, 1) * 8px);
+  padding-inline: max(4px, var(--p-internal-select-option-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-option-scaling, 1) * 12px);
+  min-height: calc(6px + 2.125ex);
   color: #535457;
   cursor: pointer;
   text-align: start;
   word-break: break-word;
-  box-sizing: border-box;
+  box-sizing: content-box;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -15309,6 +15056,270 @@ button:disabled {
   </template>
   <select />
 </p-select-wrapper>
+`;
+
+exports[`should render dsr component for PSheet 1`] = `
+<p-sheet
+  data-ssr=""
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: block;
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot {
+  display: block;
+  grid-column: 2/3;
+  z-index: 0;
+}
+dialog {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100dvw;
+  height: 100dvh;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: block;
+  outline: 0;
+  z-index: 9999999;
+  visibility: hidden;
+  pointer-events: none;
+  background: transparent;
+  transition: visibility 0s linear var(--p-transition-duration, 0.4s), background-color var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1);
+}
+dialog::backdrop {
+  display: none;
+}
+@supports (transition-behavior: allow-discrete) {
+  dialog {
+    transition: visibility 0s linear var(--p-transition-duration, 0.4s), background-color var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), overlay var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1) allow-discrete;
+  }
+}
+
+.scroller {
+  position: absolute;
+  isolation: isolate;
+  display: grid;
+  inset: 0;
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
+  background: rgba(255,255,255,.01);
+}
+.sheet {
+  display: grid;
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
+  row-gap: clamp(16px, 1.25vw + 12px, 36px);
+  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  align-content: flex-start;
+  color: #010205;
+  background: #FFF;
+  opacity: 0;
+  transform: translateY(25vh);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+  width: 100%;
+  align-self: flex-end;
+  margin-block-start: clamp(32px, 2.75vw + 23px, 76px);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.sheet:dir(rtl) {
+  transform: translateY(25vh);
+}
+.dismiss {
+  --p-internal-button-scaling: 0;
+  grid-area: 1/3;
+  z-index: 2;
+  position: sticky;
+  inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
+  margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
+  margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
+  place-self: flex-start flex-end;
+}
+    </style>
+    <dialog
+      aria-modal="true"
+      inert=""
+      tabindex="-1"
+    >
+      <div
+        class="scroller"
+      >
+        <div
+          class="sheet"
+        >
+          <p-button
+            class="dismiss"
+            data-ssr=""
+          >
+            <template
+              shadowroot="open"
+              shadowrootdelegatesfocus="true"
+              shadowrootmode="open"
+            >
+              <style>
+                :host {
+  display: inline-block;
+  vertical-align: top !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  min-width: min-content;
+  box-sizing: border-box;
+  text-align: start;
+  -webkit-appearance: none;
+  appearance: none;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: none;
+  border-radius: 4px;
+  transform: translate3d(0,0,0);
+  background-color: hsl(240 4% 85%/35%);
+  color: #010205;
+  --p-internal-scaling-factor: 1;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px);
+  gap: 0;
+  cursor: pointer;
+  margin: 0;
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  margin-inline-start: 0;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+              </style>
+              <button
+                class="root"
+                type="button"
+              >
+                <p-icon
+                  aria-hidden="true"
+                  class="icon"
+                  data-ssr=""
+                >
+                  <template
+                    shadowroot="open"
+                    shadowrootmode="open"
+                  >
+                    <style>
+                      :host {
+  display: inline-block;
+  vertical-align: top;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
+  -webkit-animation: rerender-light-primary 1ms;
+  width: inherit;
+  height: inherit;
+}
+@keyframes rerender-light-primary {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+                    </style>
+                    <img
+                      alt=""
+                      height="24"
+                      loading="lazy"
+                      src="http://localhost:3001/icons/close.eec3c5d.svg"
+                      width="24"
+                    />
+                  </template>
+                </p-icon>
+                <span
+                  class="label"
+                >
+                  <slot />
+                </span>
+              </button>
+              <span
+                class="loading"
+                id="loading"
+                role="status"
+              />
+            </template>
+            Dismiss sheet
+          </p-button>
+          <slot />
+        </div>
+      </div>
+    </dialog>
+  </template>
+  Some child
+</p-sheet>
 `;
 
 exports[`should render dsr component for PSpinner 1`] = `
@@ -15992,7 +16003,8 @@ exports[`should render dsr component for PSwitch 1`] = `
       :host {
   display: inline-flex;
   outline: 0 !important;
-  gap: 8px !important;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  gap: max(4px, calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))))) !important;
   color-scheme: light dark !important;
   justify-content: flex-start !important;
   width: auto !important;
@@ -16005,25 +16017,32 @@ exports[`should render dsr component for PSwitch 1`] = `
   visibility: hidden;
 }
 button {
+  position: relative;
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  width: calc(calc(6px + 2.125ex) * 2 - 2px*2);
-  height: calc(6px + 2.125ex);
+  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) * 2 - 2px * 2);
+  height: calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex)));
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   box-sizing: content-box;
   border: 2px solid #6B6D70;
-  border-radius: calc((calc(6px + 2.125ex) + 2px*2) / 2);
+  border-radius: calc((calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) / 2);
   background-color: transparent;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   margin: 0;
   padding: 0;
+  margin-top: max(0px, calc((calc(6px + 2.125ex) - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
   -webkit-appearance: none;
   appearance: none;
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button::before {
+  content: "";
+  position: absolute;
+  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
 }
 label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -16042,22 +16061,22 @@ label {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  padding-top: 2px;
+  padding-top: max(0px, calc((calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2));
 }
 
 .toggle {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: calc(calc(6px + 2.125ex) - 2px*2);
-  height: calc(calc(6px + 2.125ex) - 2px*2);
+  place-items: center;
+  place-content: center;
+  width: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
+  height: calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) - 2px * 2);
   border-radius: 50%;
   background-color: #010205;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(2px, 0, 0);
 }
 .toggle:dir(rtl) {
-  transform: translate3d(-2px, 0, 0);
+  transform: translate3d(calc(2px * -1), 0, 0);
 }
 .loading {
   position: absolute;
@@ -18149,13 +18168,13 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
 }
 ::slotted(input) {
   display: block !important;
-  width: 100% !important;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2) !important;
+  width: auto !important;
+  height: max(calc(6px + 2.125ex), var(--p-internal-text-field-scaling, 1) * (calc(6px + 2.125ex) + 10px)) !important;
   margin: 0 !important;
   outline: 0 !important;
   -webkit-appearance: none !important;
   appearance: none !important;
-  box-sizing: border-box !important;
+  box-sizing: content-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
   background: transparent !important;
@@ -18164,7 +18183,8 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
   color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
-  padding: 8px 16px !important;
+  padding-block: max(2px, 8px * var(--p-internal-text-field-scaling, 1)) !important;
+  padding-inline: max(4px, 16px * var(--p-internal-text-field-scaling, 1)) !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
@@ -18186,8 +18206,8 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
 }
 
 .root {
-  --p-internal-text-field-input-padding-start: 16px;
-  --p-internal-text-field-input-padding-end: 16px;
+  --p-internal-text-field-input-padding-start: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
+  --p-internal-text-field-input-padding-end: max(4px, 16px * var(--p-internal-text-field-scaling, 1));
   display: grid;
   gap: 4px;
   min-width: calc(2rem + 16px + 2px*2 + 0px);

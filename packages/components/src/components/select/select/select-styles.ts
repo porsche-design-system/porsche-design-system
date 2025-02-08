@@ -22,7 +22,7 @@ import {
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import {
   formButtonOrIconPadding,
-  formElementLayeredSafeZone,
+  formElementLayeredGap,
   formElementPaddingHorizontal,
   formElementPaddingVertical,
   getCalculatedFormElementPaddingHorizontal,
@@ -44,6 +44,8 @@ const cssVarIconFilter = '--p-select-icon-filter';
 const cssVarBackgroundColorFocus = '--p-select-focus-background-color';
 const cssVarBorderColorFocus = '--p-select-focus-border-color';
 
+export const cssVarInternalSelectScaling = '--p-internal-select-scaling';
+
 export const getComponentCss = (
   direction: SelectDropdownDirectionInternal,
   isOpen: boolean,
@@ -51,9 +53,17 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   isNativePopoverCase: boolean,
+  compact: boolean,
   theme: Theme,
   hasSlottedImage: boolean
 ): string => {
+  // Determines the scaling factor for the select size. In "compact" mode, it uses 0.5 to achieve a 36px select (compact size).
+  // Defaults to 1 for the standard size and can be overridden by the CSS variable `cssVarInternalSelectScaling`.
+  const scalingVar = `var(${cssVarInternalSelectScaling}, ${compact ? 0.5 : 1})`;
+
+  const gap = `max(2px, ${scalingVar} * ${spacingStaticXSmall})`;
+  const gridTemplateColumns = `minmax(0, 1fr) auto auto calc(max(2px, ${scalingVar} * ${formElementLayeredGap}) + ${borderWidthBase})`;
+
   return getCss({
     '@global': {
       ':host': {
@@ -63,20 +73,23 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      '::slotted(*)': addImportantToEachRule({
+        '--p-internal-select-option-scaling': scalingVar,
+        '--p-internal-optgroup-scaling': scalingVar,
+      }),
       ...preventFoucOfNestedElementsStyles,
-      // TODO: re-use select-wrapper-style
-      button: getButtonStyles(isDisabled, direction, isOpen, state, theme, hasSlottedImage),
+      button: getButtonStyles(isDisabled, direction, isOpen, state, compact, theme, hasSlottedImage),
     },
     root: {
       display: 'grid',
-      gap: spacingStaticXSmall,
+      gap,
       // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character plus the ellipsis dots.
       minWidth: `calc(1rem + ${formElementPaddingHorizontal} + ${borderWidthBase} * 2 + ${getCalculatedFormElementPaddingHorizontal(1)})`,
     },
     wrapper: {
       position: 'relative',
       display: 'grid',
-      gridTemplateColumns: `minmax(0, 1fr) auto auto ${formElementLayeredSafeZone}`,
+      gridTemplateColumns,
     },
     icon: {
       gridArea: '1/3',
@@ -92,7 +105,7 @@ export const getComponentCss = (
         transform: 'rotate3d(0,0,1,180deg)',
       },
     },
-    listbox: getListStyles(isOpen, direction, theme),
+    listbox: getListStyles(isOpen, direction, compact, theme),
     'sr-only': getHiddenTextJssStyle(),
     // .label / .required
     ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, theme),
@@ -113,6 +126,7 @@ const getButtonStyles = (
   direction: SelectDropdownDirectionInternal,
   isOpen: boolean,
   state: FormState,
+  compact: boolean,
   theme: Theme,
   hasSlottedImage: boolean
 ): JssStyle => {
@@ -130,6 +144,14 @@ const getButtonStyles = (
     state
   );
 
+  const scalingVar = `var(${cssVarInternalSelectScaling}, ${compact ? 0.5 : 1})`;
+
+  const height = `max(${fontLineHeight}, ${scalingVar} * (${fontLineHeight} + 10px))`;
+  const paddingBlock = `max(2px, ${scalingVar} * ${formElementPaddingVertical})`;
+  const paddingInline = `max(4px, ${scalingVar} * ${formElementPaddingHorizontal}) ${getCalculatedFormElementPaddingHorizontal(1)}`;
+
+  const gap = `max(4px, ${scalingVar} * 12px)`;
+
   return {
     textAlign: 'start', // TODO: Newly added (rest is copied from select-wrapper-dropdown), share rest for both components
     overflowX: 'hidden', // TODO: Newly added (rest is copied from select-wrapper-dropdown), share rest for both components
@@ -137,12 +159,12 @@ const getButtonStyles = (
     gridArea: '1/1/1/-1',
     minWidth: 0,
     // TODO: abstract and re-use for multi-select, select-wrapper and text-field-wrapper
-    height: `calc(${fontLineHeight} + 10px + ${borderWidthBase} * 2 + ${spacingStaticSmall} * 2)`, // we need 10px additionally so input height becomes 54px, // we need 6px additionally so input height becomes 50px
+    height,
     font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is alig
     margin: 0, // necessary reset for iOS Safari 15 (and maybe other browsers)
-    padding: `${formElementPaddingVertical} ${formElementPaddingHorizontal}`,
-    paddingInlineEnd: getCalculatedFormElementPaddingHorizontal(1),
-    boxSizing: 'border-box',
+    paddingBlock,
+    paddingInline,
+    boxSizing: 'content-box',
     outline: 0,
     WebkitAppearance: 'none', // iOS safari
     appearance: 'none',
@@ -173,7 +195,7 @@ const getButtonStyles = (
     ...(hasSlottedImage && {
       '& > span': {
         display: 'flex',
-        gap: '12px',
+        gap,
         alignItems: 'center',
       },
       '& > span > span': {
@@ -205,7 +227,7 @@ const getButtonStyles = (
       },
     }),
     ...(isOpen && {
-      [isDirectionDown ? 'paddingBottom' : 'paddingTop']: `calc(${formElementPaddingVertical} + 1px)`, // Add padding to keep same height when border changes
+      [isDirectionDown ? 'paddingBottom' : 'paddingTop']: `calc(${paddingBlock} + 1px)`, // Add padding to keep same height when border changes
       [isDirectionDown ? 'borderBottom' : 'borderTop']: addImportantToRule(`1px solid ${contrastMediumColor}`),
       [isDirectionDown ? 'borderBottomLeftRadius' : 'borderTopLeftRadius']: 0,
       [isDirectionDown ? 'borderBottomRightRadius' : 'borderTopRightRadius']: 0,
@@ -238,18 +260,28 @@ const getButtonStyles = (
 
 // TODO: Rename to JSSStyles
 // TODO: Copied from multi-select, extract and use in select and multi-select
-const getListStyles = (isOpen: boolean, direction: SelectDropdownDirectionInternal, theme: Theme): JssStyle => {
+const getListStyles = (
+  isOpen: boolean,
+  direction: SelectDropdownDirectionInternal,
+  compact: boolean,
+  theme: Theme
+): JssStyle => {
   const isDirectionDown = direction === 'down';
   const { primaryColor, backgroundColor } = getThemedColors(theme);
   const { primaryColor: primaryColorDark, backgroundColor: backgroundColorDark } = getThemedColors('dark');
+
+  const scalingVar = `var(${cssVarInternalSelectScaling}, ${compact ? 0.5 : 1})`;
+
+  const gap = `max(2px, ${scalingVar} * ${spacingStaticSmall})`;
+  const padding = `max(2px, ${scalingVar} * 6px)`;
 
   return {
     position: 'absolute',
     margin: 0,
     display: isOpen ? 'flex' : 'none',
     flexDirection: 'column',
-    gap: spacingStaticSmall,
-    padding: '6px',
+    gap,
+    padding,
     ...textSmallStyle,
     zIndex: 10,
     // TODO: Inset inline 0
