@@ -18,8 +18,8 @@
     "@porsche-design-system/shared": "0.0.0"
   },
   "peerDependencies": {
-    "ag-grid-enterprise": ">= 32.0.0 <33.0.0",
-    "ag-grid-react": ">= 32.0.0 <33.0.0"
+    "ag-grid-enterprise": ">= 33.0.0 <34.0.0",
+    "ag-grid-react": ">= 33.0.0 <34.0.0"
   },
   "volta": {
     "extends": "../../../../package.json"

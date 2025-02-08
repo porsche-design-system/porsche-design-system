@@ -2,16 +2,7 @@
   "name": "@porsche-design-system/components-react",
   "version": "3.25.1",
   "description": "Porsche Design System is a component library designed to help developers create the best experience for software or services distributed by Dr. Ing. h.c. F. Porsche AG.",
-  "keywords": [
-    "porsche",
-    "design",
-    "system",
-    "web",
-    "component",
-    "library",
-    "react",
-    "js"
-  ],
+  "keywords": ["porsche", "design", "system", "web", "component", "library", "react", "js"],
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "SEE LICENSE IN LICENSE",
@@ -20,9 +11,9 @@
     "@porsche-design-system/components-js": "3.25.1"
   },
   "peerDependencies": {
-    "ag-grid-community": ">= 32.0.0 <33.0.0",
-    "ag-grid-enterprise": ">= 32.0.0 <33.0.0",
-    "ag-grid-react": ">= 32.0.0 <33.0.0",
+    "ag-grid-community": ">= 33.0.0 <34.0.0",
+    "ag-grid-enterprise": ">= 33.0.0 <34.0.0",
+    "ag-grid-react": ">= 33.0.0 <34.0.0",
     "react": ">=19.0.0 <20.0.0",
     "react-dom": ">=19.0.0 <20.0.0"
   },
