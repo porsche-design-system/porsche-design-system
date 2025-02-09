@@ -1,5 +1,5 @@
 import type { IconName } from '@porsche-design-system/icons';
-import { iconOverrides } from 'ag-grid-community';
+import { type Part, iconOverrides } from 'ag-grid-community';
 import { buildIconUrl } from '../utils';
 
 /** Map of AG Grid icon names to their corresponding PDS icons */
@@ -57,7 +57,7 @@ const agGridToPdsIconMap: Record<string, IconName> = {
   up: 'arrow-up',
 };
 
-export const pdsSvgIcons = iconOverrides({
+export const pdsSvgIcons: Part = iconOverrides({
   type: 'image',
   mask: true,
   icons: {
