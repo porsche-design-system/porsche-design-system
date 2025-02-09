@@ -1,6 +1,6 @@
 import type { IconName } from '@porsche-design-system/icons';
 import { iconOverrides } from 'ag-grid-community';
-import { buildIconUrl } from '../utils/icon-utils';
+import { buildIconUrl } from '../utils';
 
 /** Map of AG Grid icon names to their corresponding PDS icons */
 const agGridToPdsIconMap: Record<string, IconName> = {
