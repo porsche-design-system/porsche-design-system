@@ -123,7 +123,7 @@ export const AGGridExamplePage = (): JSX.Element => {
   const { theme } = useContext(PorscheDesignSystemContext);
 
   return (
-    <div data-ag-theme-mode={theme === 'light' ? null : 'ag-theme-pds-dark'} style={{ height: '80vh' }}>
+    <div data-ag-theme-mode={theme === 'light' ? null : 'dark'} style={{ height: '80vh' }}>
       <AgGridReact
         rowData={rowData}
         columnDefs={columnDefs}

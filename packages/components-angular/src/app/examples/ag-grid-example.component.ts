@@ -101,7 +101,7 @@ class ButtonRenderer implements ICellRendererAngularComp {
 @Component({
   selector: 'ag-grid-example',
   template: `
-  <div [attr.data-ag-theme-mode]="(theme$ | async) === 'light' ? null : 'ag-theme-pds-dark'">
+  <div [attr.data-ag-theme-mode]="(theme$ | async) === 'light' ? null : 'dark'">
     <ag-grid-angular
       style="width: 100%; height: 550px;"
       [rowData]="rowData"

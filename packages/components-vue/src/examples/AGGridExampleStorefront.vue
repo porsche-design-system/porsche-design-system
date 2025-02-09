@@ -63,7 +63,7 @@ const defaultColDef = {
     :columnDefs="columnDefs"
     :defaultColDef="defaultColDef"
     style="height: 100vh"
-    :data-ag-theme-mode="theme === 'light' ? null : 'ag-theme-pds-dark'"
+    :data-ag-theme-mode="theme === 'light' ? null : 'dark'"
     :pagination="true"
   >
   </ag-grid-vue>
