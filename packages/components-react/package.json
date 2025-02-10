@@ -12,7 +12,7 @@
     "build-app": "tsc -b && vite build",
     "build:react-wrapper": "yarn rollup -c ./projects/react-wrapper/rollup.config.js --bundleConfigAsCjs && yarn build:typings && chmod +x dist/react-wrapper/bin/patchRemixRunProcessBrowserGlobalIdentifier.js",
     "build:react-ssr-wrapper": "yarn --cwd ./projects/react-ssr-wrapper build",
-    "build:typings": "DEST=./dist/react-wrapper && SRC=$DEST/esm && mv $SRC/jsdom-polyfill/index.d.ts $DEST/jsdom-polyfill/index.d.ts && rm -rf $SRC/jsdom-polyfill && mv $SRC/partials/index.d.ts $DEST/partials/index.d.ts && rm -rf $SRC/partials && mv $SRC/styles/index.d.ts $DEST/styles/esm/index.d.ts && mv $SRC/styles/vanilla-extract/index.d.ts $DEST/styles/vanilla-extract/esm/vanilla-extract/index.d.ts && rm -rf $SRC/styles && mv $SRC/testing/index.d.ts $DEST/testing/index.d.ts && rm -rf $SRC/testing",
+    "build:typings": "DEST=./dist/react-wrapper && SRC=$DEST/esm && mv $SRC/jsdom-polyfill/index.d.ts $DEST/jsdom-polyfill/index.d.ts && rm -rf $SRC/jsdom-polyfill && mv $SRC/partials/index.d.ts $DEST/partials/index.d.ts && rm -rf $SRC/partials && mv $SRC/styles/index.d.ts $DEST/styles/esm/index.d.ts && mv $SRC/ag-grid/index.d.ts $DEST/ag-grid/esm/index.d.ts && mv $SRC/styles/vanilla-extract/index.d.ts $DEST/styles/vanilla-extract/esm/vanilla-extract/index.d.ts && rm -rf $SRC/styles && mv $SRC/testing/index.d.ts $DEST/testing/index.d.ts && rm -rf $SRC/testing",
     "build:ag-grid": "TARGET=./dist/react-wrapper/ag-grid && rm -rf $TARGET && cp -r ../utilities/projects/ag-grid/dist $TARGET",
     "build:uxpin-wrapper": "yarn --cwd ./projects/uxpin-wrapper build",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",

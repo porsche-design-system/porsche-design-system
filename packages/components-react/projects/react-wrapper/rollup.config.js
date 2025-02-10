@@ -128,7 +128,11 @@ export default [
               import: './styles/vanilla-extract/esm/vanilla-extract/index.mjs',
               default: './styles/vanilla-extract/cjs/vanilla-extract/index.cjs',
             },
-            './ag-grid/*.css': './ag-grid/*.css',
+            './ag-grid': {
+              types: './ag-grid/esm/index.d.ts',
+              module: './ag-grid/esm/index.js',
+              default: './ag-grid/cjs/index.cjs',
+            },
             './testing': {
               types: './testing/index.d.ts',
               default: './testing/index.cjs',
