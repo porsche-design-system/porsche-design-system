@@ -20,6 +20,7 @@ const external = [
   '@porsche-design-system/components-js/jsdom-polyfill',
   '@porsche-design-system/components-js/partials',
   '@porsche-design-system/components-js/styles',
+  '@porsche-design-system/components-js/ag-grid',
   '@porsche-design-system/components-js/styles/vanilla-extract',
   '@porsche-design-system/components-js/testing',
   'react',
@@ -203,6 +204,41 @@ export default [
         // support Webpack 4 by pointing `"module"` to a file with a `.js` extension
         targets: [{ src: `${outputDir}/partials/index.cjs`, dest: `${outputDir}/partials`, rename: () => 'index.js' }],
         hook: 'writeBundle',
+      }),
+    ],
+  },
+  {
+    input: `${projectDir}/src/ag-grid/index.ts`,
+    external,
+    output: [
+      {
+        file: `${outputDir}/ag-grid/cjs/index.cjs`,
+        format: 'cjs',
+      },
+      {
+        file: `${outputDir}/ag-grid/esm/index.mjs`,
+        format: 'esm',
+      },
+    ],
+    plugins: [
+      // typings are produced by main build
+      typescript(typescriptOpts),
+      generatePackageJson({
+        outputFolder: `${outputDir}/ag-grid`,
+        baseContents: {
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
+          sideEffects: false,
+          exports: {
+            // Default export (JS)
+            '.': {
+              types: './esm/index.d.ts',
+              import: './esm/index.mjs',
+              default: './cjs/index.cjs',
+            },
+          },
+        },
       }),
     ],
   },

@@ -1,5 +1,5 @@
-import { pdsTheme } from '@porsche-design-system/ag-grid';
 import { PorscheDesignSystemContext } from '@porsche-design-system/components-react';
+import { pdsTheme } from '@porsche-design-system/components-react/ag-grid';
 import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
 import { AllEnterpriseModule, type ColDef, ModuleRegistry } from 'ag-grid-enterprise';
 import { AgGridReact } from 'ag-grid-react';
