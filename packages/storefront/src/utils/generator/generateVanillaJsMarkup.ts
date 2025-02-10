@@ -1,4 +1,4 @@
-import type { ElementConfig, EventConfig, HTMLTagOrComponent } from '@/components/playground/ConfiguratorControls';
+import type { ElementConfig, EventConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
 import { camelCase, kebabCase } from 'change-case';
 import type { CSSProperties } from 'react';
 

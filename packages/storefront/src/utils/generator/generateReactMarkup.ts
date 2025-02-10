@@ -1,10 +1,5 @@
-import type {
-  ConfiguratorTagNames,
-  ElementConfig,
-  EventConfig,
-  HTMLTagOrComponent,
-} from '@/components/playground/ConfiguratorControls';
 import type { StoryState } from '@/models/story';
+import type { ConfiguratorTagNames, ElementConfig, EventConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
 import { pascalCase } from 'change-case';
 
 const getReactCode = (
