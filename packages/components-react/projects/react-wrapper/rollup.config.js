@@ -27,15 +27,6 @@ const external = [
   'react/jsx-runtime',
 ];
 
-const subPackageJsonConfig = {
-  baseContents: {
-    main: 'index.js',
-    module: 'esm/index.js',
-    types: 'index.d.ts',
-    sideEffects: false,
-  },
-};
-
 // to silence warnings like
 // Module level directives cause errors when bundled, "use client" in "..." was ignored.
 // https://github.com/Ephem/rollup-plugin-preserve-directives#disabling-warnings
