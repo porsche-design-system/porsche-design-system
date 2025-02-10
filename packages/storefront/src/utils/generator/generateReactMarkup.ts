@@ -8,10 +8,13 @@ import type { StoryState } from '@/models/story';
 import { pascalCase } from 'change-case';
 
 const getReactCode = (
+  imports: string,
   states: string | undefined,
   eventHandlers: string | undefined,
   code: string | undefined
-) => `export const Example = () => {${states ? `\n${states}\n` : ''}${eventHandlers ? `\n${eventHandlers}\n` : ''}
+) => `${imports}
+
+export const Example = () => {${states ? `\n${states}\n` : ''}${eventHandlers ? `\n${eventHandlers}\n` : ''}
   return (
     <>
 ${code}
@@ -31,26 +34,35 @@ export const generateReactMarkup = (
     .filter((state) => state)
     .join('\n');
   const eventHandlers = results.flatMap(({ eventHandlers }) => eventHandlers).join('\n');
+  const pdsComponents = new Set(results.flatMap(({ pdsComponents }) => pdsComponents));
+  const imports = `${states.length > 0 ? "import { useState } from 'react';\n" : ''}${
+    pdsComponents.size > 0
+      ? `import { ${Array.from(pdsComponents).sort().join(', ')} } from '@porsche-design-system/components-react';`
+      : ''
+  }`;
 
-  return getReactCode(states, eventHandlers, markup);
+  return getReactCode(imports, states, eventHandlers, markup);
 };
 
 const createReactJSMarkup = (
   config: string | ElementConfig<HTMLTagOrComponent> | undefined,
   initialState: StoryState<ConfiguratorTagNames>,
   indentLevel = 0
-): { markup: string; states: string[]; eventHandlers: string[] } => {
-  if (!config) return { markup: '', states: [], eventHandlers: [] };
+): { markup: string; states: string[]; eventHandlers: string[]; pdsComponents: string[] } => {
+  if (!config) return { markup: '', states: [], eventHandlers: [], pdsComponents: [] };
   const indent = '  '.repeat(indentLevel);
 
-  if (typeof config === 'string') return { markup: `${indent}${config}`, states: [], eventHandlers: [] };
+  if (typeof config === 'string')
+    return { markup: `${indent}${config}`, states: [], eventHandlers: [], pdsComponents: [] };
 
   const { tag, properties = {}, events = {}, children = [] } = config;
   const isPDSComponent = tag.startsWith('p-');
 
   let transformedTag: string = tag;
+  const pdsComponents: string[] = [];
   if (isPDSComponent) {
     transformedTag = pascalCase(tag);
+    pdsComponents.push(transformedTag);
   }
 
   const props = [];
@@ -85,6 +97,7 @@ const createReactJSMarkup = (
   const childMarkup = childrenResults.map(({ markup }) => markup).join('\n');
   const childStates = childrenResults.flatMap(({ states }) => states);
   const childEventHandlers = childrenResults.flatMap(({ eventHandlers }) => eventHandlers);
+  const childPDSComponents = childrenResults.flatMap(({ pdsComponents }) => pdsComponents);
 
   const markup =
     children.length > 0
@@ -95,7 +108,7 @@ const createReactJSMarkup = (
   const states = scripts ? [scripts.states, ...childStates] : childStates;
   const eventHandlers = scripts ? [scripts.eventHandler, ...childEventHandlers] : childEventHandlers;
 
-  return { markup, states, eventHandlers };
+  return { markup, states, eventHandlers, pdsComponents: [...pdsComponents, ...childPDSComponents] };
 };
 
 type ReactScripts = { states: string; eventHandler: string };

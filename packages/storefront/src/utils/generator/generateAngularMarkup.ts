@@ -10,7 +10,9 @@ const getAngularCode = (
   states: string | undefined,
   eventHandlers: string | undefined,
   code: string | undefined
-) => `@Component({
+) => `import { ChangeDetectionStrategy, Component } from '@angular/core';
+
+@Component({
   selector: 'example',
   template: \`
 ${code}

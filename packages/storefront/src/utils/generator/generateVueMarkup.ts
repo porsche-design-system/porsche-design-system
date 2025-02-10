@@ -8,10 +8,11 @@ import type { StoryState } from '@/models/story';
 import { camelCase, pascalCase } from 'change-case';
 
 const getVueCode = (
+  imports: string,
   states: string | undefined,
   eventHandlers: string | undefined,
   code: string | undefined
-) => `<script setup lang="ts">${states ? `\n${states}\n` : ''}${eventHandlers ? `\n${eventHandlers}\n` : ''}</script>
+) => `<script setup lang="ts">\n${imports}\n${states ? `\n${states}\n` : ''}${eventHandlers ? `\n${eventHandlers}\n` : ''}</script>
 
 <template>
 ${code}
@@ -29,26 +30,35 @@ export const generateVueMarkup = (
     .filter((state) => state)
     .join('\n');
   const eventHandlers = results.flatMap(({ eventHandlers }) => eventHandlers).join('\n');
+  const pdsComponents = new Set(results.flatMap(({ pdsComponents }) => pdsComponents));
+  const imports = `${states.length > 0 ? "  import { ref } from 'vue';\n" : ''}${
+    pdsComponents.size > 0
+      ? `  import { ${Array.from(pdsComponents).sort().join(', ')} } from '@porsche-design-system/components-vue';`
+      : ''
+  }`;
 
-  return getVueCode(states, eventHandlers, markup);
+  return getVueCode(imports, states, eventHandlers, markup);
 };
 
 const createVueMarkup = (
   config: string | ElementConfig<HTMLTagOrComponent> | undefined,
   initialState: StoryState<ConfiguratorTagNames>,
   indentLevel = 0
-): { markup: string; states: string[]; eventHandlers: string[] } => {
-  if (!config) return { markup: '', states: [], eventHandlers: [] };
+): { markup: string; states: string[]; eventHandlers: string[]; pdsComponents: string[] } => {
+  if (!config) return { markup: '', states: [], eventHandlers: [], pdsComponents: [] };
   const indent = '  '.repeat(indentLevel);
 
-  if (typeof config === 'string') return { markup: `${indent}${config}`, states: [], eventHandlers: [] };
+  if (typeof config === 'string')
+    return { markup: `${indent}${config}`, states: [], eventHandlers: [], pdsComponents: [] };
 
   const { tag, properties = {}, events = {}, children = [] } = config;
   const isPDSComponent = tag.startsWith('p-');
 
   let transformedTag: string = tag;
+  const pdsComponents: string[] = [];
   if (isPDSComponent) {
     transformedTag = pascalCase(tag);
+    pdsComponents.push(transformedTag);
   }
 
   const props = [];
@@ -85,6 +95,7 @@ const createVueMarkup = (
   const childMarkup = childrenResults.map(({ markup }) => markup).join('\n');
   const childStates = childrenResults.flatMap(({ states }) => states);
   const childEventHandlers = childrenResults.flatMap(({ eventHandlers }) => eventHandlers);
+  const childPDSComponents = childrenResults.flatMap(({ pdsComponents }) => pdsComponents);
 
   const markup =
     children.length > 0
@@ -95,7 +106,7 @@ const createVueMarkup = (
   const states = scripts ? [scripts.states, ...childStates] : childStates;
   const eventHandlers = scripts ? [scripts.eventHandler, ...childEventHandlers] : childEventHandlers;
 
-  return { markup, states, eventHandlers };
+  return { markup, states, eventHandlers, pdsComponents: [...pdsComponents, ...childPDSComponents] };
 };
 
 type VueScripts = { states: string; eventHandler: string };
