@@ -110,7 +110,7 @@ export const generateVanillaJsProperties = (
           )
           .join('; ')}"`;
       if (key === 'aria') {
-        return ` ${kebabCase(key)}="${JSON.stringify(value).replace(/"/g, "'")}"`;
+        return ` ${key}="${JSON.stringify(value).replace(/"/g, "'")}"`;
       }
       return ` ${kebabCase(key)}="${JSON.stringify(value)}"`;
     })

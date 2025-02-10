@@ -68,7 +68,7 @@ const createReactMarkup = (
   }
 
   const eventEntries = Object.entries(events);
-  const propertiesString = generateReactProperties(properties, events);
+  const propertiesString = generateReactProperties(properties, eventEntries);
 
   const eventListenersString =
     eventEntries.length > 0 ? ` ${eventEntries.map(([eventName]) => `${eventName}={${eventName}}`).join(' ')}` : '';
@@ -125,11 +125,11 @@ export const generateReactControlledScript = (
 
 export const generateReactProperties = (
   properties: HTMLElementOrComponentProps<HTMLTagOrComponent>,
-  events: EventsConfig<HTMLTagOrComponent>
+  eventEntries: [string, EventConfig][]
 ) => {
   return Object.entries(properties)
     .map(([key, value]) => {
-      if (Object.values(events).some(({ prop }) => prop === key)) {
+      if (eventEntries.some(([_, { prop }]) => prop === key)) {
         return ` ${key}={${key}}`;
       }
       if (typeof value === 'string') return ` ${key}="${value}"`;

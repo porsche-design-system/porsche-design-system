@@ -1,25 +1,29 @@
 import type { CSSProperties } from 'react';
 import {
-  generateReactControlledScript,
-  generateReactMarkup,
-  generateReactProperties,
-} from '../../../src/utils/generator/generateReactMarkup';
+  generateAngularControlledScript,
+  generateAngularMarkup,
+  generateAngularProperties,
+} from '../../../src/utils/generator/generateAngularMarkup';
 import { buttonTestConfig, flyoutTestConfig } from '../data/generator.testdata';
 
-describe('generateReactMarkup()', () => {
+describe('generateAngularMarkup()', () => {
   it('should generate correct Vanilla JS markup for button', () => {
-    const output = generateReactMarkup(buttonTestConfig, {});
+    const output = generateAngularMarkup(buttonTestConfig, {
+      properties: {
+        open: false,
+      },
+    });
     expect(output).toMatchSnapshot();
   });
   it('should generate correct Vanilla JS markup for flyout', () => {
-    const output = generateReactMarkup(flyoutTestConfig, {});
+    const output = generateAngularMarkup(flyoutTestConfig, { properties: { open: false } });
     expect(output).toMatchSnapshot();
   });
 });
 
-describe('generateReactControlledScript()', () => {
+describe('generateAngularControlledScript()', () => {
   it('should return correct selector & eventHandler for direct value', () => {
-    const { states, eventHandler } = generateReactControlledScript(
+    const { states, eventHandler } = generateAngularControlledScript(
       'p-flyout',
       [
         [
@@ -33,15 +37,17 @@ describe('generateReactControlledScript()', () => {
       ],
       {}
     );
-    expect(states).toMatchInlineSnapshot('"  const [open, setOpen] = useState(undefined);"');
+    expect(states).toMatchInlineSnapshot(`"  open = undefined;"`);
     expect(eventHandler).toMatchInlineSnapshot(
-      `"  const onDismiss = () => {
-    setOpen(false);
-  }"`
+      `
+      "  const onDismiss = () => {
+          this.open = false;
+        }"
+    `
     );
   });
   it('should return correct selector & eventHandler for event value', () => {
-    const { states, eventHandler } = generateReactControlledScript(
+    const { states, eventHandler } = generateAngularControlledScript(
       'p-accordion',
       [
         [
@@ -60,15 +66,17 @@ describe('generateReactControlledScript()', () => {
         },
       }
     );
-    expect(states).toMatchInlineSnapshot('"  const [open, setOpen] = useState(true);"');
+    expect(states).toMatchInlineSnapshot(`"  open = true;"`);
     expect(eventHandler).toMatchInlineSnapshot(
-      `"  const onUpdate = (e: CustomEvent<AccordionUpdateEventDetail>) => {
-    setOpen(e.detail.open);
-  }"`
+      `
+      "  onUpdate(e: CustomEvent<AccordionUpdateEventDetail>) {
+          this.open = e.detail.open;
+        }"
+    `
     );
   });
   it('should return correct selector & eventHandler for event value with negated value', () => {
-    const { states, eventHandler } = generateReactControlledScript(
+    const { states, eventHandler } = generateAngularControlledScript(
       'p-link-tile-product',
       [
         [
@@ -84,16 +92,18 @@ describe('generateReactControlledScript()', () => {
       ],
       {}
     );
-    expect(states).toMatchInlineSnapshot('"  const [liked, setLiked] = useState(undefined);"');
+    expect(states).toMatchInlineSnapshot(`"  liked = undefined;"`);
     expect(eventHandler).toMatchInlineSnapshot(
-      `"  const onLike = (e: CustomEvent<LinkTileProductLikeEvent>) => {
-    setLiked(!e.detail.liked);
-  }"`
+      `
+      "  onLike(e: CustomEvent<LinkTileProductLikeEvent>) {
+          this.liked = !e.detail.liked;
+        }"
+    `
     );
   });
 
   it('should return correct selector & eventHandler when target is not current tagName', () => {
-    const { states, eventHandler } = generateReactControlledScript(
+    const { states, eventHandler } = generateAngularControlledScript(
       'p-button',
       [
         [
@@ -109,16 +119,18 @@ describe('generateReactControlledScript()', () => {
     );
     expect(states).toMatchInlineSnapshot('""');
     expect(eventHandler).toMatchInlineSnapshot(
-      `"  const onClick = () => {
-    setOpen(true);
-  }"`
+      `
+      "  const onClick = () => {
+          this.open = true;
+        }"
+    `
     );
   });
 });
 
-describe('generateReactProperties()', () => {
+describe('generateAngularProperties()', () => {
   it('should generate correct properties', () => {
-    const props = generateReactProperties(
+    const props = generateAngularProperties(
       {
         aria: { 'aria-haspopup': true, 'aria-label': 'Some more descriptive label' },
         type: 'button',
@@ -128,22 +140,22 @@ describe('generateReactProperties()', () => {
       []
     );
     expect(props).toMatchInlineSnapshot(
-      `" aria={{"aria-haspopup":true,"aria-label":"Some more descriptive label"}} type="button" compact={true} icon="add""`
+      `" [aria]="{'aria-haspopup':true,'aria-label':'Some more descriptive label'}" type="button" [compact]="true" icon="add""`
     );
   });
 
   it('should generate correct properties for style prop', () => {
-    const props = generateReactProperties(
+    const props = generateAngularProperties(
       {
         style: { backgroundColor: 'red', '--custom-prop': '1px' } as CSSProperties,
       },
       []
     );
-    expect(props).toMatchInlineSnapshot(`" style={{"backgroundColor":"red","--custom-prop":"1px"}}"`);
+    expect(props).toMatchInlineSnapshot(`" [style]="{"backgroundColor":"red","--custom-prop":"1px"}""`);
   });
 
   it('should remove props included in events', () => {
-    const props = generateReactProperties(
+    const props = generateAngularProperties(
       {
         open: true,
         name: 'Some prop',
@@ -158,6 +170,6 @@ describe('generateReactProperties()', () => {
         ],
       ]
     );
-    expect(props).toMatchInlineSnapshot(`" open={open} name="Some prop""`);
+    expect(props).toMatchInlineSnapshot(`" [open]="open" name="Some prop""`);
   });
 });

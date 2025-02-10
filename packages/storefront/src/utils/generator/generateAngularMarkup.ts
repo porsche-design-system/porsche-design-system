@@ -1,5 +1,11 @@
 import type { StoryState } from '@/models/story';
-import type { ConfiguratorTagNames, ElementConfig, EventConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
+import type {
+  ConfiguratorTagNames,
+  ElementConfig,
+  EventConfig,
+  HTMLElementOrComponentProps,
+  HTMLTagOrComponent,
+} from '@/utils/generator/generator';
 
 const getAngularCode = (
   states: string | undefined,
@@ -45,20 +51,8 @@ const createAngularMarkup = (
 
   const { tag, properties = {}, events = {}, children = [] } = config;
 
-  const props = generateAngularProperties(Object.entries(properties));
   const eventEntries = Object.entries(events);
-
-  const propertiesString =
-    props.length > 0
-      ? ` ${props
-          .map(({ key, value }) => {
-            if (eventEntries.some(([_, { prop }]) => prop === key)) {
-              return `[${key}]="${key}"`;
-            }
-            return `[${key}]=${value}`;
-          })
-          .join(' ')}`
-      : '';
+  const propertiesString = generateAngularProperties(properties, eventEntries);
 
   const eventListenersString =
     eventEntries.length > 0 ? ` ${eventEntries.map(([eventName]) => `(${eventName})="${eventName}"`).join(' ')}` : '';
@@ -82,7 +76,7 @@ const createAngularMarkup = (
 
 type AngularScripts = { states: string; eventHandler: string };
 
-const generateAngularControlledScript = (
+export const generateAngularControlledScript = (
   tagName: string,
   eventEntries: [string, EventConfig][],
   initialState: StoryState<ConfiguratorTagNames>
@@ -109,11 +103,20 @@ const generateAngularControlledScript = (
   return { states, eventHandler };
 };
 
-const generateAngularProperties = (props: [string, ElementConfig<HTMLTagOrComponent>['properties']][]) => {
-  return props.map(([key, value]) => {
-    if (typeof value === 'string') {
-      return { key, value: `"${value}"` };
-    }
-    return { key, value: `"${JSON.stringify(value)}"` };
-  });
+export const generateAngularProperties = (
+  properties: HTMLElementOrComponentProps<HTMLTagOrComponent>,
+  eventEntries: [string, EventConfig][]
+) => {
+  return Object.entries(properties)
+    .map(([key, value]) => {
+      if (eventEntries.some(([_, { prop }]) => prop === key)) {
+        return ` [${key}]="${key}"`;
+      }
+      if (typeof value === 'string') return ` ${key}="${value}"`;
+      if (key === 'aria') {
+        return ` [${key}]="${JSON.stringify(value).replace(/"/g, "'")}"`;
+      }
+      return ` [${key}]="${JSON.stringify(value)}"`;
+    })
+    .join('');
 };

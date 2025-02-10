@@ -1,0 +1,77 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`generateAngularMarkup() > should generate correct Vanilla JS markup for button 1`] = `
+"import { ChangeDetectionStrategy, Component } from '@angular/core';
+
+@Component({
+  selector: 'example',
+  template: \`
+      <p-button [aria]="{'aria-haspopup':true,'aria-label':'Some more descriptive label'}" type="button" [compact]="true" icon="add" (onClick)="onClick">
+        Open Banner
+      </p-button>
+
+      <p-banner [open]="open" [dismissButton]="false" heading="Some heading" headingTag="h4" state="warning" (onDismiss)="onDismiss" />
+  \`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+})
+export class ExampleComponent {
+  open = false;
+
+  const onClick = () => {
+    this.open = true;
+  }
+  const onDismiss = () => {
+    this.open = false;
+  }
+}"
+`;
+
+exports[`generateAngularMarkup() > should generate correct Vanilla JS markup for flyout 1`] = `
+"import { ChangeDetectionStrategy, Component } from '@angular/core';
+
+@Component({
+  selector: 'example',
+  template: \`
+      <p-button type="button" [aria]="{'aria-haspopup':'dialog'}" (onClick)="onClick">
+        Open Flyout
+      </p-button>
+
+      <p-flyout [open]="open" [aria]="{'aria-label':'Some Heading'}" (onDismiss)="onDismiss">
+        <p-heading slot="header" size="large" tag="h2">
+          Some Heading
+        </p-heading>
+        <p-text>
+          Some Content Begin
+        </p-text>
+        <div [style]="{"width":"10px","height":"120vh","background":"deeppink"}" />
+        <p-text>
+          Some Content End
+        </p-text>
+        <p-button-group slot="footer">
+          <p-button type="button">
+            Proceed
+          </p-button>
+          <p-button type="button" variant="secondary">
+            Cancel
+          </p-button>
+        </p-button-group>
+        <p-text slot="sub-footer">
+          Some additional Sub-Footer
+        </p-text>
+      </p-flyout>
+  \`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+})
+export class ExampleComponent {
+  open = false;
+
+  const onClick = () => {
+    this.open = true;
+  }
+  const onDismiss = () => {
+    this.open = false;
+  }
+}"
+`;

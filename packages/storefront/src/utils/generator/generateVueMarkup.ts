@@ -1,6 +1,13 @@
 import type { StoryState } from '@/models/story';
-import type { ConfiguratorTagNames, ElementConfig, EventConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
-import { camelCase, pascalCase } from 'change-case';
+import type {
+  ConfiguratorTagNames,
+  ElementConfig,
+  EventConfig,
+  EventsConfig,
+  HTMLElementOrComponentProps,
+  HTMLTagOrComponent,
+} from '@/utils/generator/generator';
+import { camelCase, kebabCase, pascalCase } from 'change-case';
 
 const getVueCode = (
   imports: string,
@@ -56,20 +63,8 @@ const createVueMarkup = (
     pdsComponents.push(transformedTag);
   }
 
-  const props = generateVueProperties(Object.entries(properties));
   const eventEntries = Object.entries(events);
-
-  const propertiesString =
-    props.length > 0
-      ? ` ${props
-          .map(({ key, value }) => {
-            if (eventEntries.some(([_, { prop }]) => prop === key)) {
-              return `:${key}="${key}"`;
-            }
-            return `${key}=${value}`;
-          })
-          .join(' ')}`
-      : '';
+  const propertiesString = generateVueProperties(properties, eventEntries);
 
   const eventListenersString =
     eventEntries.length > 0
@@ -96,7 +91,7 @@ const createVueMarkup = (
 
 type VueScripts = { states: string; eventHandler: string };
 
-const generateVueControlledScript = (
+export const generateVueControlledScript = (
   tagName: string,
   eventEntries: [string, EventConfig][],
   initialState: StoryState<ConfiguratorTagNames>
@@ -123,11 +118,20 @@ const generateVueControlledScript = (
   return { states, eventHandler };
 };
 
-const generateVueProperties = (props: [string, ElementConfig<HTMLTagOrComponent>['properties']][]) => {
-  return props.map(([key, value]) => {
-    if (typeof value === 'string') {
-      return { key, value: `\"${value}\"` };
-    }
-    return { key, value: `\"${JSON.stringify(value)}\"` };
-  });
+export const generateVueProperties = (
+  properties: HTMLElementOrComponentProps<HTMLTagOrComponent>,
+  eventEntries: [string, EventConfig][]
+) => {
+  return Object.entries(properties)
+    .map(([key, value]) => {
+      if (eventEntries.some(([_, { prop }]) => prop === key)) {
+        return ` :${key}="${key}"`;
+      }
+      if (typeof value === 'string') return ` ${key}="${value}"`;
+      if (key === 'aria') {
+        return ` ${key}="${JSON.stringify(value).replace(/"/g, "'")}"`;
+      }
+      return ` :${key}="${JSON.stringify(value)}"`;
+    })
+    .join('');
 };
