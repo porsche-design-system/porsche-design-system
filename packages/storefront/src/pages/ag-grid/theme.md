@@ -7,7 +7,7 @@ required beyond the capabilities of our [p-table](components/table/examples) com
 Porsche Design System's visual language and ensures consistency across your application.
 
 The Porsche Design System AG Grid theme is based on the default AG Grid theme, `ag-theme-quartz`, and is available in
-both light (`ag-theme-pds`) and dark (`ag-theme-pds-dark`) modes.
+both light (default) and dark (`data-ag-theme-mode="dark"`) modes.
 
 For more information on AG Grid's base themes, you can refer to the official
 [AG Grid Themes documentation](https://ag-grid.com/javascript-data-grid/themes).
@@ -57,7 +57,7 @@ You can apply the theme using one of the following methods:
    <AgGridReact theme={pdsTheme} />
    ```
 
-#### 3. Changing the Color Scheme
+#### 3. Change the Theme Mode
 
 By default, the Porsche Design System AG Grid theme uses a light color scheme. You can control the color scheme by
 setting the `data-ag-theme-mode` attribute on any parent element of the grid, such as the `<html>` or `<body>` tag.
