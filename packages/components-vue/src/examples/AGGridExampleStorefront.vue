@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { pdsTheme } from '@porsche-design-system/ag-grid/src/js';
+import { pdsTheme } from '@porsche-design-system/ag-grid';
 import { type Theme, themeInjectionKey } from '@porsche-design-system/components-vue';
 import { dataAdvanced } from '@porsche-design-system/shared';
 import { AllEnterpriseModule, ModuleRegistry } from 'ag-grid-enterprise';

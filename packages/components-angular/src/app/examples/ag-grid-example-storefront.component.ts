@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation, inject } from '@angular/core';
-import { pdsTheme } from '@porsche-design-system/ag-grid/dist/esm/js/theme';
+import { pdsTheme } from '@porsche-design-system/ag-grid';
 import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
 
 import { THEME_TOKEN } from '@porsche-design-system/components-angular';

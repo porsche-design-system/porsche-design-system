@@ -1,6 +1,6 @@
 import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { pdsTheme } from '@porsche-design-system/ag-grid/dist/esm/js/theme';
+import { pdsTheme } from '@porsche-design-system/ag-grid';
 import { PorscheDesignSystemModule, THEME_TOKEN, Theme } from '@porsche-design-system/components-angular';
 import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
 import { type ICellRendererAngularComp } from 'ag-grid-angular';

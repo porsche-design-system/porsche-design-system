@@ -1,4 +1,4 @@
-import { pdsTheme } from '@porsche-design-system/ag-grid/src/js';
+import { pdsTheme } from '@porsche-design-system/ag-grid';
 import { PorscheDesignSystemContext } from '@porsche-design-system/components-react';
 import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
 import { AllEnterpriseModule, type ColDef, ModuleRegistry } from 'ag-grid-enterprise';
