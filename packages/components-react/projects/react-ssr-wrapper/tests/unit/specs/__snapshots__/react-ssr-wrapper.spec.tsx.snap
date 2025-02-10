@@ -7699,6 +7699,9 @@ exports[`should render dsr component for PCanvas 1`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+slot[name="sidebar-end-header"] {
+  display: block;
+}
 slot[name="background"] {
   z-index: 3;
   display: block;
@@ -7928,7 +7931,7 @@ h2 {
   justify-content: flex-start;
 }
 .sidebar__header--end {
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 .sidebar__header::before {
   content: "";

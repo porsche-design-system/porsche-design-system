@@ -12,7 +12,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "3.25.1",
+    "@porsche-design-system/components-js": "3.26.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-syntax-highlighter": "^15.6.1",

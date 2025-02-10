@@ -57,6 +57,12 @@ recommended on mobile views.
 
 ---
 
+## Compact
+
+<Playground :markup="compact" :config="configInline"></Playground>
+
+---
+
 ## Bind events
 
 You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the **Switch**.
@@ -133,6 +139,9 @@ const SomeSwitchPage = (): JSX.Element => {
 
   loading = `<p-switch loading="true">Some label</p-switch>
 <p-switch loading="true" checked="true">Some label</p-switch>`;
+
+  compact = `<p-switch compact="true">Some label</p-switch>
+<p-switch compact="true" checked="true">Some label</p-switch>`;
 
   events = `<p-switch
   onclick="alert('click')"

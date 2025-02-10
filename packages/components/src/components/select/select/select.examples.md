@@ -67,6 +67,12 @@ that the `p-select-option` can only contain a `#text` and an `img` node.
 
 ---
 
+## Compact
+
+<Playground :markup="compact" :config="config"></Playground>
+
+---
+
 ## Form
 
 The `p-select` component is a form-associated custom element that integrates seamlessly with forms. Leveraging the
@@ -267,6 +273,16 @@ export default class Code extends Vue {
     <p-select-option value="h">Option H</p-select-option>
     <p-select-option value="i">Option I</p-select-option>
   </p-optgroup>
+</p-select>
+  `;
+
+compact = `<p-select name="options" label="Some Label" value="a" compact="true">
+  <p-select-option value="a">Option A</p-select-option>
+  <p-select-option value="b">Option B</p-select-option>
+  <p-select-option value="c">Option C</p-select-option>
+  <p-select-option value="d">Option D</p-select-option>
+  <p-select-option value="e">Option E</p-select-option>
+  <p-select-option value="f">Option F</p-select-option>
 </p-select>
   `;
  
