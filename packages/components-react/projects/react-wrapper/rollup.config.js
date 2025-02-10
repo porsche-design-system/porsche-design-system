@@ -130,7 +130,7 @@ export default [
             },
             './ag-grid': {
               types: './ag-grid/esm/index.d.ts',
-              module: './ag-grid/esm/index.js',
+              import: './ag-grid/esm/index.mjs',
               default: './ag-grid/cjs/index.cjs',
             },
             './testing': {
