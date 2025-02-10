@@ -1,9 +1,5 @@
-import type {
-  ConfiguratorTagNames,
-  ElementConfig,
-  HTMLTagOrComponent,
-} from '@/components/playground/ConfiguratorControls';
 import { isDefaultValue } from '@/components/playground/configuratorUtils';
+import type { ConfiguratorTagNames, ElementConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
 import { getFlags } from '@/utils/getFlags';
 import type { ComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
 import {
@@ -17,8 +13,6 @@ import {
 import type { TagName } from '@porsche-design-system/shared';
 import { capitalCase } from 'change-case';
 import type React from 'react';
-
-// TODO: Only show reset/reset all when not controlled value
 
 type ConfigurePropsProps<T extends ConfiguratorTagNames> = {
   tagName: TagName;

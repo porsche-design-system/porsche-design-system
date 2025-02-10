@@ -1,5 +1,5 @@
-import type { HTMLTagOrComponent } from '@/components/playground/ConfiguratorControls';
 import type { SlotState, SlotStories, Story, StoryState } from '@/models/story';
+import type { HTMLTagOrComponent } from '@/utils/generator/generator';
 import type { SlotMeta } from '@porsche-design-system/component-meta';
 import { PPopover, PSelect, PSelectOption, PSwitch } from '@porsche-design-system/components-react/ssr';
 import { capitalCase } from 'change-case';
