@@ -5,6 +5,7 @@ import {
   AllowedTypes,
   THEMES,
   attachComponentCss,
+  getHasNativePopoverSupport,
   getPrefixedTagNames,
   hasPropValueChanged,
   parseAndGetAriaAttributes,
@@ -54,6 +55,7 @@ export class Popover {
   private button: HTMLButtonElement;
   private arrow: HTMLDivElement;
   private cleanUp: () => void;
+  private hasNativePopoverSupport = getHasNativePopoverSupport();
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
@@ -96,7 +98,9 @@ export class Popover {
 
   public componentDidRender(): void {
     if (this.open) {
-      this.popover.showPopover(); // needs to be called after render cycle to be able to render the popover conditionally
+      if (this.hasNativePopoverSupport) {
+        this.popover.showPopover(); // needs to be called after render cycle to be able to render the popover conditionally
+      }
       this.cleanUp = autoUpdate(this.button, this.popover, this.updatePosition);
     } else if (typeof this.cleanUp === 'function') {
       this.cleanUp(); // cleanup function to stop the auto updates, https://floating-ui.com/docs/autoupdate

@@ -42,6 +42,7 @@ export const getComponentCss = (theme: Theme): string => {
   return getCss({
     '@global': {
       ':host': {
+        position: 'relative', // ensures correct reference for floating ui fallback positioning in older browsers
         display: 'inline-block',
         verticalAlign: 'top',
         ...addImportantToEachRule({
@@ -115,6 +116,7 @@ export const getComponentCss = (theme: Theme): string => {
     },
     content: {
       maxWidth: 'min(90vw, 48ch)',
+      width: 'max-content', // ensures in older browsers correct width
       boxSizing: 'border-box',
       padding: `${spacingStaticSmall} ${spacingStaticMedium}`,
       pointerEvents: 'auto',
