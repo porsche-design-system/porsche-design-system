@@ -13676,11 +13676,11 @@ exports[`should render dsr component for PPopover 1`] = `
 >
   <template
     shadowroot="open"
-    shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
     <style>
       :host {
+  position: relative;
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -13698,19 +13698,13 @@ p {
   margin: 0;
 }
 button {
+  all: unset;
   display: block;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
   border-radius: 50%;
+  cursor: pointer;
 }
 button::-moz-focus-inner {
   border: 0;
@@ -13730,47 +13724,37 @@ button::-moz-focus-inner {
   transform: translate3d(0,0,0);
 }
 .popover {
+  all: unset;
   position: absolute;
-  border: none;
-  background: none;
   pointer-events: none;
-  padding: 0;
-  margin: 0;
-  overflow: initial;
-  flex-direction: column;
-  inset: 0;
-  width: max-content;
   filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
   animation: var(--p-animation-duration, 0.25s) keyframes-fadeIn cubic-bezier(0.25,0.1,0.25,1) forwards;
+}
+.popover:not(:popover-open) {
+  display: none;
 }
 .popover:-internal-popover-in-top-layer::backdrop {
   display: none;
 }
-.popover[popover]:is(:popover-open) {
-  display: flex;
-}
 .arrow {
-  align-self: center;
+  position: absolute;
   width: 24px;
   height: 12px;
   clip-path: polygon(50% 0, 100% 110%, 0 110%);
   background: #FFF;
 }
 .content {
-  max-width: min(90vw, 27rem);
+  max-width: min(calc(100dvw - 16px), 48ch);
   width: max-content;
-  height: max-content;
   box-sizing: border-box;
-  background: #FFF;
   padding: 8px 16px;
   pointer-events: auto;
+  border-radius: 4px;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  list-style-type: none;
+  background: #FFF;
   color: #010205;
-  white-space: inherit;
-  border-radius: 4px;
 }
 @keyframes keyframes-fadeIn {
   from {
@@ -13782,7 +13766,6 @@ button::-moz-focus-inner {
 }
     </style>
     <button
-      popovertarget="popover"
       type="button"
     >
       <p-icon
@@ -13837,20 +13820,6 @@ img {
         More information
       </span>
     </button>
-    <div
-      class="popover"
-      id="popover"
-      popover="auto"
-    >
-      <div
-        class="arrow"
-      />
-      <div
-        class="content"
-      >
-        <slot />
-      </div>
-    </div>
   </template>
   Some child
 </p-popover>
