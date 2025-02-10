@@ -1,9 +1,8 @@
-import commonjs from '@rollup/plugin-commonjs';
 import replace from '@rollup/plugin-replace';
 import typescript from '@rollup/plugin-typescript';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
 
-const input = 'src/js/theme.ts';
+const input = 'src/index.ts';
 const outputDir = 'dist';
 
 const isDevBuild = process.env.PDS_IS_STAGING === '1';
@@ -16,7 +15,6 @@ const sharedPlugins = [
       : 'global.PORSCHE_DESIGN_SYSTEM_CDN_URL + "/porsche-design-system"', // global (not window!) because this is used during SSR on server side in nodejs
     'process.env.NODE_ENV': '"production"',
   }),
-  commonjs(),
 ];
 
 export default [

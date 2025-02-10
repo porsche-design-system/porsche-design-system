@@ -1,5 +1,4 @@
-import { ICONS_MANIFEST } from '@porsche-design-system/assets';
-import type { IconName } from '@porsche-design-system/icons';
+import { ICONS_MANIFEST, type IconName } from '@porsche-design-system/icons';
 import { getCDNBaseURL } from './get-cdn-base-url';
 
 const DEFAULT_ICON_NAME: IconName = 'question';

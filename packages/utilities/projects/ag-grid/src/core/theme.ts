@@ -33,9 +33,9 @@ import { type Theme, themeQuartz } from 'ag-grid-community';
 
 // TODO update focus glow for inputs
 
-import { themeDark, themeLight } from '../colors';
 import { checkboxStyle, pdsSvgIcons, toggleButtonStyle } from '../parts';
 import { PdsThemeMode } from '../types/theme-mode';
+import { themeDark, themeLight } from './colors';
 
 export const pdsTheme: Theme = themeQuartz
   .withParams({

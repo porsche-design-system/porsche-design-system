@@ -14,7 +14,7 @@ import {
 } from '@porsche-design-system/components-js/styles';
 
 import { type Part, createPart } from 'ag-grid-community';
-import { themeDark, themeLight } from '../colors';
+import { themeDark, themeLight } from '../core/colors';
 import { PdsThemeMode } from '../types/theme-mode';
 
 export const toggleButtonStyle: Part = createPart({
