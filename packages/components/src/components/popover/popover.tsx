@@ -61,6 +61,12 @@ export class Popover {
     return hasPropValueChanged(newVal, oldVal);
   }
 
+  public disconnectedCallback(): void {
+    if (typeof this.cleanUp === 'function') {
+      this.cleanUp(); // cleanup function to stop the auto updates, https://floating-ui.com/docs/autoupdate
+    }
+  }
+
   public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.theme);
