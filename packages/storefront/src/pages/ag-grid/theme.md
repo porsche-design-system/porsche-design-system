@@ -32,8 +32,8 @@ You can apply the theme using one of the following methods:
 
 1. Global Grid Options (Applies to all grid instances)
 
-   Use [global grid options](https://www.ag-grid.com/javascript-data-grid/grid-interface/#global-grid-options) to set
-   the theme globally:
+   Use [global grid options](https://ag-grid.com/javascript-data-grid/grid-interface/#global-grid-options) to set the
+   theme globally:
 
    ```js
    import { provideGlobalGridOptions } from 'ag-grid-community';
