@@ -65,18 +65,8 @@ const createReactJSMarkup = (
     pdsComponents.push(transformedTag);
   }
 
-  const props = [];
-
-  const propEntries = Object.entries(properties);
+  const props = generateReactProperties(Object.entries(properties));
   const eventEntries = Object.entries(events);
-
-  for (const [key, value] of propEntries) {
-    if (typeof value === 'string') {
-      props.push({ key, value: `"${value}"` });
-    } else {
-      props.push({ key, value: `{${JSON.stringify(value)}}` });
-    }
-  }
 
   const propertiesString =
     props.length > 0
@@ -141,4 +131,13 @@ const generateReactControlledScript = (
     .join('\n');
 
   return { states, eventHandler };
+};
+
+const generateReactProperties = (props: [string, ElementConfig<HTMLTagOrComponent>['properties']][]) => {
+  return props.map(([key, value]) => {
+    if (typeof value === 'string') {
+      return { key, value: `"${value}"` };
+    }
+    return { key, value: `{${JSON.stringify(value)}}` };
+  });
 };

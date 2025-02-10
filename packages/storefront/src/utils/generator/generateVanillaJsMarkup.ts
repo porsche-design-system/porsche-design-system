@@ -1,5 +1,6 @@
 import type { ElementConfig, EventConfig, HTMLTagOrComponent } from '@/components/playground/ConfiguratorControls';
 import { camelCase, kebabCase } from 'change-case';
+import type { CSSProperties } from 'react';
 
 const getVanillaJsCode = (
   selector: string | undefined,
@@ -44,25 +45,8 @@ const createVanillaJSMarkup = (
 
   const { tag, properties = {}, events = {}, children = [] } = config;
 
-  const props = [];
-
-  const propEntries = Object.entries(properties);
+  const props = generateVanillaJsProperties(Object.entries(properties));
   const eventEntries = Object.entries(events);
-
-  for (const [key, value] of propEntries) {
-    if (typeof value === 'string') {
-      props.push({ key: key === 'className' ? 'class' : kebabCase(key), value });
-    } else if (key === 'style') {
-      const styles = Object.entries(value)
-        .map(([styleKey, styleValue]) =>
-          styleKey.startsWith('--') ? `${styleKey}: ${styleValue}` : `${kebabCase(styleKey)}: ${styleValue}`
-        )
-        .join('; ');
-      props.push({ key: 'style', value: styles });
-    } else {
-      props.push({ key: key, value: JSON.stringify(value) });
-    }
-  }
 
   const propsWithoutControlled = props.filter(({ key }) => !eventEntries.some(([_, { prop }]) => prop === key));
 
@@ -109,4 +93,23 @@ const generateVanillaJSControlledScript = (
     .join('\n');
 
   return { selector, eventHandler };
+};
+
+const generateVanillaJsProperties = (props: [string, ElementConfig<HTMLTagOrComponent>['properties']][]) => {
+  return props.map(([key, value]) => {
+    if (typeof value === 'string') {
+      return { key: key === 'className' ? 'class' : kebabCase(key), value };
+    }
+
+    if (key === 'style') {
+      const styles = Object.entries(value as CSSProperties)
+        .map(([styleKey, styleValue]) =>
+          styleKey.startsWith('--') ? `${styleKey}: ${styleValue}` : `${kebabCase(styleKey)}: ${styleValue}`
+        )
+        .join('; ');
+      return { key: 'style', value: styles };
+    }
+
+    return { key: key, value: JSON.stringify(value) };
+  });
 };
