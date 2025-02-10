@@ -18,19 +18,58 @@ For more information on AG Grid's base themes, you can refer to the official
 
 ## Usage
 
-1. **Import the Theme**  
-   Import the Porsche Design System AG Grid theme into your application:
+#### 1. Import the Theme
+
+First, import the Porsche Design System AG Grid theme into your application:
+
+```js
+import { pdsTheme } from '@porsche-design-system/components-{js|angular|react|vue}/ag-grid';
+```
+
+#### 2. Apply the Theme
+
+You can apply the theme using one of the following methods:
+
+1. Global Grid Options (Applies to all grid instances)
+
+   Use [global grid options](https://www.ag-grid.com/javascript-data-grid/grid-interface/#global-grid-options) to set
+   the theme globally:
 
    ```js
-   import '@porsche-design-system/components-{js|angular|react|vue}/ag-grid/theme.css';
+   import { provideGlobalGridOptions } from 'ag-grid-community';
+
+   provideGlobalGridOptions({ theme: pdsTheme });
    ```
 
-2. **Apply the Theme Class**  
-   Add the theme class (`ag-theme-pds` or `ag-theme-pds-dark`) to the AG Grid container:
+2. Individual Grid Options (Overrides global options):
 
-   ```html
-   <div id="my-grid" class="ag-theme-pds"></div>
+   Set the theme for a specific grid instance:
+
+   ```js
+   const gridOptions = { theme: pdsTheme };
    ```
+
+3. Component Prop Assignment
+
+   Pass the theme directly as a prop:
+
+   ```tsx
+   <AgGridReact theme={pdsTheme} />
+   ```
+
+#### 3. Changing the Color Scheme
+
+By default, the Porsche Design System AG Grid theme uses a light color scheme. You can control the color scheme by
+setting the `data-ag-theme-mode` attribute on any parent element of the grid, such as the `<html>` or `<body>` tag.
+
+**Available Modes:**
+
+- Light Mode (default) → `data-ag-theme-mode` is not set.
+- Dark Mode → Set `data-ag-theme-mode="dark"`.
+
+```html
+<body data-ag-theme-mode="dark"></body>
+```
 
 ## Example
 
