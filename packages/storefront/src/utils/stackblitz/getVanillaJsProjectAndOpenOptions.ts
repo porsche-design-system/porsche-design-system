@@ -1,19 +1,18 @@
+import { initialStyles } from '@/lib/partialResults';
 import { dependencies, devDependencies } from '../../../../components-js/package.json';
+import type { PlaygroundDir, StackBlitzProjectDependencies } from '../../models';
 import {
   getExternalDependencies,
   getSharedImportConstants,
   isStableStorefrontReleaseOrForcedPdsVersion,
 } from './helper';
-import type { PlaygroundDir, StackBlitzProjectDependencies } from '../../models';
 import type { DependencyMap, ExternalDependency, GetStackBlitzProjectAndOpenOptions, SharedImportKey } from './helper';
-import { initialStyles } from '@/lib/partialResults';
 
 // TODO: this entire puzzle should be refactored into an object-oriented way so that there is a clear and clean structure
 // as well as code flow, similar to our WrapperGenerator
 
 const externalDependencyToSrcMap: Partial<Record<ExternalDependency, string>> = {
   imask: 'node_modules/imask/dist/imask.min.js',
-  'ag-grid-community': 'node_modules/ag-grid-community/dist/ag-grid-community.min.js',
 };
 
 export const replaceSharedAsyncFunctionWithConstants = (
@@ -77,17 +76,10 @@ export const getIndexHtml = (
 
 export const getIndexJs = (pdsVersion: string, externalDependencies?: ExternalDependency[]): string => {
   const localImports = `import * as porscheDesignSystem from './@porsche-design-system/components-js';
-window.porscheDesignSystem = porscheDesignSystem;${
-    externalDependencies?.includes('ag-grid-community')
-      ? `\nimport './@porsche-design-system/components-js/ag-grid/theme.css';`
-      : ''
-  }`;
-  const releaseImports = externalDependencies?.includes('ag-grid-community')
-    ? `import '@porsche-design-system/components-js/ag-grid/theme.css';`
-    : '';
+window.porscheDesignSystem = porscheDesignSystem;`;
 
   // workaround to initialize local package
-  return isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) ? releaseImports : localImports; // appears to be using cjs build
+  return isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) ? '' : localImports; // appears to be using cjs build
 };
 
 export const dependencyMap: Partial<DependencyMap<typeof dependencies & typeof devDependencies>> = {
