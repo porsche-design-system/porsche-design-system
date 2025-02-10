@@ -1,5 +1,5 @@
 import { Part, _asThemeImpl } from 'ag-grid-community';
-import { pdsTheme } from '../../../src/js';
+import { pdsTheme } from '../../../src';
 import { checkboxStyle /*, pdsSvgIcons */, toggleButtonStyle } from '../../../src/parts';
 
 describe('pdsTheme', () => {
