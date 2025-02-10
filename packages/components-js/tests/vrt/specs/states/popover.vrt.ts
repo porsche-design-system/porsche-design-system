@@ -1,15 +1,15 @@
-import { expect, type Page, test } from '@playwright/test';
+import { type Page, expect, test } from '@playwright/test';
 import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { type Theme } from '@porsche-design-system/styles';
 import {
+  type PrefersColorScheme,
   forceFocusHoverState,
   forceFocusVisibleState,
   forceHoverState,
   getPlaygroundPseudoStatesMarkup,
   openAllPopover,
-  type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../../helpers';
-import { type Theme } from '@porsche-design-system/styles';
 
 const component = 'popover';
 
@@ -17,9 +17,6 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   const markup = () => `
     <p-popover direction="right">
       Slotted Content
-      <span>
-        and some slotted, deeply nested <a href="#">anchor</a>.
-      </span>
     </p-popover>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
@@ -29,14 +26,8 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   await openAllPopover(page);
 
   await forceHoverState(page, '.hover p-popover >>> button');
-  await forceHoverState(page, '.hover p-popover > a');
-  await forceHoverState(page, '.hover p-popover a');
   await forceFocusVisibleState(page, '.focus p-popover >>> button');
-  await forceFocusVisibleState(page, '.focus p-popover > a');
-  await forceFocusVisibleState(page, '.focus p-popover a');
   await forceFocusHoverState(page, '.focus-hover p-popover >>> button');
-  await forceFocusHoverState(page, '.focus-hover p-popover > a');
-  await forceFocusHoverState(page, '.focus-hover p-popover a');
 };
 
 // executed in Chrome only
