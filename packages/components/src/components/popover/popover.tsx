@@ -1,4 +1,4 @@
-import { autoUpdate, computePosition, flip, offset } from '@floating-ui/dom';
+import { arrow, autoUpdate, computePosition, flip, limitShift, offset, shift } from '@floating-ui/dom';
 import { Component, Element, Host, type JSX, Prop, State, h } from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import {
@@ -15,6 +15,7 @@ import { getComponentCss } from './popover-styles';
 import {
   POPOVER_ARIA_ATTRIBUTES,
   POPOVER_DIRECTIONS,
+  POPOVER_SAFE_ZONE,
   type PopoverAriaAttribute,
   type PopoverDirection,
 } from './popover-utils';
@@ -114,13 +115,21 @@ export class Popover {
   }
 
   private updatePosition = async (): Promise<void> => {
-    const { x, y, placement } = await computePosition(this.button, this.popover, {
+    const { x, y, placement, middlewareData } = await computePosition(this.button, this.popover, {
       placement: this.direction,
       middleware: [
+        offset(16),
+        shift({
+          padding: POPOVER_SAFE_ZONE,
+          limiter: limitShift({
+            offset: ({ rects }) => rects.reference.width,
+          }),
+        }),
         flip({
+          padding: POPOVER_SAFE_ZONE,
           fallbackAxisSideDirection: 'end',
         }),
-        offset(4),
+        arrow({ element: this.arrow }),
       ],
     });
 
@@ -128,17 +137,21 @@ export class Popover {
     const placementTopLeft = placement === 'top' || placement === 'left';
 
     Object.assign(this.popover.style, {
-      insetInlineStart: `${x}px`,
-      insetBlockStart: `${y}px`,
-      flexDirection: placementVertical ? 'column' : 'row',
+      left: `${x}px`,
+      top: `${y}px`,
     });
+
+    const { x: xArrow, y: yArrow } = middlewareData.arrow;
 
     Object.assign(this.arrow.style, {
       clipPath: placementVertical ? 'polygon(50% 0, 100% 110%, 0 110%)' : 'polygon(0 50%, 110% 0, 110% 100%)',
-      order: placementTopLeft ? '1' : '0',
       width: placementVertical ? '24px' : '12px',
       height: placementVertical ? '12px' : '24px',
       transform: `rotate(${placementTopLeft ? '180deg' : '0'}`,
+      left: ['right', 'bottom', 'top'].includes(placement) ? (xArrow != null ? `${xArrow}px` : '-12px') : '',
+      right: placement === 'left' ? (xArrow != null ? `${xArrow}px` : '-12px') : '',
+      top: ['bottom', 'left', 'right'].includes(placement) ? (yArrow != null ? `${yArrow}px` : '-12px') : '',
+      bottom: placement === 'top' ? (yArrow != null ? `${yArrow}px` : '-12px') : '',
     });
   };
 }

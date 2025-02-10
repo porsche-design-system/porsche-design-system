@@ -26,6 +26,7 @@ import {
 } from '../../styles';
 import type { Theme } from '../../types';
 import { getCss, isHighContrastMode, isThemeDark } from '../../utils';
+import { POPOVER_SAFE_ZONE } from './popover-utils';
 
 const { canvasTextColor } = getHighContrastColors();
 
@@ -83,9 +84,6 @@ export const getComponentCss = (theme: Theme): string => {
     popover: {
       all: 'unset',
       position: 'absolute',
-      display: 'flex',
-      flexDirection: 'column',
-      placeItems: 'center',
       pointerEvents: 'none',
       filter: `drop-shadow(0 0 16px ${shadowColor})`,
       animation:
@@ -100,6 +98,7 @@ export const getComponentCss = (theme: Theme): string => {
       },
     },
     arrow: {
+      position: 'absolute',
       width: '24px',
       height: '12px',
       clipPath: 'polygon(50% 0, 100% 110%, 0 110%)',
@@ -115,7 +114,7 @@ export const getComponentCss = (theme: Theme): string => {
           }),
     },
     content: {
-      maxWidth: 'min(90vw, 48ch)',
+      maxWidth: `min(calc(100dvw - ${POPOVER_SAFE_ZONE * 2}px), 48ch)`,
       width: 'max-content', // ensures in older browsers correct width
       boxSizing: 'border-box',
       padding: `${spacingStaticSmall} ${spacingStaticMedium}`,
