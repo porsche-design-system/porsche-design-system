@@ -19,6 +19,39 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `aria` prop now supports a colon inside of a value, e.g. `aria="{ 'aria-label': 'Always remember: yes you can!' }"`
   ([#3680](https://github.com/porsche-design-system/porsche-design-system/pull/3680))
 
+### [3.26.0] - 2025-02-07
+
+### [3.26.0-rc.0] - 2025-02-06
+
+#### Added
+
+- `Switch`: `compact` prop to enable a smaller, space-saving version for compact layouts
+  ([#3728](https://github.com/porsche-design-system/porsche-design-system/pull/3728))
+- `Select`: `compact` prop to enable a smaller, space-saving version for compact layouts
+  ([#3731](https://github.com/porsche-design-system/porsche-design-system/pull/3731))
+- `Canvas`: named slot `sidebar-end-header`
+  ([#3736](https://github.com/porsche-design-system/porsche-design-system/pull/3736))
+- `Icon`: `4-wheel-drive`, `aggregation`, `arrow-compact-down`, `arrow-compact-left`, `arrow-compact-right`,
+  `arrow-compact-up`, `arrows`, `battery-half`, `battery-one-quarter`, `battery-three-quarters`, `brain`, `cabriolet`,
+  `charging-network`, `cloud`, `color-picker`, `compass`, `coupe`, `cut`, `door`, `drag`, `ear`, `error`,
+  `exclamation-filled`, `fast-backward`, `fast-forward`, `file-csv`, `file-excel`, `flag`, `genuine-parts`,
+  `geo-localization`, `grip`, `group`, `hand`, `highway-filled`, `history`, `laptop`, `limousine`, `linked`,
+  `logo-apple-carplay`, `logo-apple-music`, `logo-kununu`, `logo-snapchat`, `microphone`, `news`, `north-arrow`,
+  `online-search`, `paste`, `pivot`, `price-tag`, `qr-off`, `question-filled`, `radar`, `radio`, `return`, `road`,
+  `seat`, `service-technician`, `skip-backward`, `skip-forward`, `stop`, `suv`, `theme`, `turismo`, `trigger-finger`,
+  `unlinked` and `weather` ([#3737](https://github.com/porsche-design-system/porsche-design-system/pull/3737))
+
+### [3.25.1] - 2025-01-23
+
+### [3.25.1-rc.0] - 2025-01-23
+
+#### Fixed
+
+- `Carousel`: throws error when object-like string is passed by `pagination`
+  ([#3715](https://github.com/porsche-design-system/porsche-design-system/pull/3715))
+
+### [3.25.0] - 2025-01-23
+
 ### [3.25.0-rc.1] - 2025-01-22
 
 #### Fixed

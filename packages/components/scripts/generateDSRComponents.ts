@@ -194,7 +194,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             `namedSlotChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
           )
           .replace(
-            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|background)'\)/g,
+            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background)'\)/g,
             `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
           );
       } else if (newFileContent.includes('FunctionalComponent')) {
@@ -294,7 +294,11 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.slides(\.map)/, `otherChildren$1`)
           .replace(/^/, "$&import type { BreakpointCustomizable } from '../types';\n")
           .replace(/.*onFocusin=\{.*\n/, '')
-          .replace(/this\.slidesPerPage/, 'this.props.slidesPerPage')
+          // .replace(/this\.slidesPerPage/, 'this.props.slidesPerPage')
+          .replace(/this\.props\.parsedSlidesPerPage/g, 'this.props.slidesPerPage')
+          .replace(/this\.props\.parsedDisablePagination/g, 'this.props.disablePagination')
+          .replace(/this\.props\.parsedPagination/g, 'this.props.pagination')
+          .replace(/private\sget\sparsed.*\{\n?.*\n?}/g, '')
           // Since slidesPerPage is BreakpointCustomizable we have to replace hasNavigation with a working serverside condition
           .replace(
             /this\.props\.hasNavigation/g,
@@ -674,11 +678,11 @@ $&`
       } else if (tagName === 'p-canvas') {
         newFileContent = newFileContent
           .replace(
-            /this\.props\.(hasTitle|hasSidebarStart|hasSidebarEnd|hasHeaderStart|hasHeaderEnd|hasFooter|hasBackground)/g,
+            /this\.props\.(hasTitle|hasSidebarStart|hasSidebarEnd|hasSidebarEndHeader|hasHeaderStart|hasHeaderEnd|hasFooter|hasBackground)/g,
             '$1'
           )
           .replace(
-            /(?:hasTitle|hasSidebarStart|hasSidebarEnd|hasHeaderStart|hasHeaderEnd|hasFooter|hasBackground) =/g,
+            /(?:hasTitle|hasSidebarStart|hasSidebarEnd|hasSidebarEndHeader|hasHeaderStart|hasHeaderEnd|hasFooter|hasBackground) =/g,
             'const $&'
           );
       } else if (tagName === 'p-checkbox') {

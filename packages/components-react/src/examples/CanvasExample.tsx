@@ -1,8 +1,9 @@
 import {
-  PCanvas,
-  PText,
-  PButton,
   type CanvasSidebarStartUpdateEventDetail,
+  PButton,
+  PCanvas,
+  PHeading,
+  PText,
 } from '@porsche-design-system/components-react';
 import { breakpointS } from '@porsche-design-system/components-react/styles';
 import { useCallback, useState } from 'react';
@@ -95,6 +96,11 @@ export const CanvasExamplePage = (): JSX.Element => {
         <div slot="sidebar-start">
           <PText>Sidebar Start</PText>
         </div>
+
+        <PHeading slot="sidebar-end-header" tag="h2" size="small">
+          Sidebar End Header
+        </PHeading>
+
         <div slot="sidebar-end">
           <PText>Sidebar End</PText>
         </div>

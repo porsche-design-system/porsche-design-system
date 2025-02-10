@@ -21,6 +21,9 @@ import { getCss, isHighContrastMode } from '../../../utils';
 
 export const cssVariableSelectPaddingInlineStart = '--p-internal-select-option-padding-left';
 
+const cssVarInternalSelectOptionScaling = '--p-internal-select-option-scaling';
+const scalingVar = `var(${cssVarInternalSelectOptionScaling}, 1)`;
+
 // TODO: Enforce order of slotted text, img
 export const getComponentCss = (theme: Theme): string => {
   return getCss({
@@ -59,14 +62,18 @@ export const getOptionStyles = (theme: Theme): Styles => {
     getThemedColors(theme);
   const { highlightColor } = getHighContrastColors();
 
+  const gap = `max(4px, ${scalingVar} * 12px)`;
+  const paddingBlock = `max(2px, ${scalingVar} * ${spacingStaticSmall})`;
+  const paddingInline = `max(4px, ${scalingVar} * var(${cssVariableSelectPaddingInlineStart}, 12px)) max(4px, ${scalingVar} * 12px)`;
+
   return {
     option: {
       fontWeight: fontWeightRegular,
       display: 'flex',
-      gap: '12px',
-      padding: `${spacingStaticSmall} 12px`,
-      paddingInlineStart: `var(${cssVariableSelectPaddingInlineStart}, 12px)`,
-      minHeight: `calc(${fontLineHeight} + ${spacingStaticSmall} * 2)`, // TODO: Added this line to preserve height for empty option
+      gap,
+      paddingBlock,
+      paddingInline,
+      minHeight: fontLineHeight, // preserves height for empty option
       color: contrastHighColor,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: contrastHighColorDark,
@@ -74,7 +81,7 @@ export const getOptionStyles = (theme: Theme): Styles => {
       cursor: 'pointer',
       textAlign: 'start',
       wordBreak: 'break-word',
-      boxSizing: 'border-box',
+      boxSizing: 'content-box',
       borderRadius: borderRadiusSmall,
       transition: `${getTransition('background-color')}, ${getTransition('color')}`,
       ...getNoResultsOptionJssStyle(),

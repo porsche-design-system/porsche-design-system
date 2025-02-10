@@ -1724,6 +1724,10 @@ export namespace Components {
      */
     interface PSelect {
         /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
+        /**
           * The description text.
          */
         "description"?: string;
@@ -1905,6 +1909,10 @@ export namespace Components {
           * Visualize the switch with on/off status.
          */
         "checked"?: boolean;
+        /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
         /**
           * Disables the switch. No events will be triggered while disabled state is active.
          */
@@ -5039,6 +5047,10 @@ declare namespace LocalJSX {
      */
     interface PSelect {
         /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
+        /**
           * The description text.
          */
         "description"?: string;
@@ -5244,6 +5256,10 @@ declare namespace LocalJSX {
           * Visualize the switch with on/off status.
          */
         "checked"?: boolean;
+        /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
         /**
           * Disables the switch. No events will be triggered while disabled state is active.
          */
