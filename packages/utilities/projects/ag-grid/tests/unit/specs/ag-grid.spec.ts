@@ -1,10 +1,10 @@
 import { Part, _asThemeImpl } from 'ag-grid-community';
 import { pdsTheme } from '../../../src';
-import { checkboxStyle /*, pdsSvgIcons */, toggleButtonStyle } from '../../../src/parts';
+import { checkboxStyle, pdsSvgIcons, toggleButtonStyle } from '../../../src/parts';
 
 describe('pdsTheme', () => {
   const theme = _asThemeImpl(pdsTheme);
-  const parts: Part[] = [checkboxStyle, toggleButtonStyle /*, pdsSvgIcons */];
+  const parts: Part[] = [checkboxStyle, toggleButtonStyle, pdsSvgIcons];
 
   it('should match the snapshot for CSS Class Names', () => {
     const classNames = theme._getCssClass();
@@ -22,7 +22,7 @@ describe('pdsTheme', () => {
   });
 
   parts.forEach((part) => {
-    it(`should match the snapshot for ${part.feature} CSS`, () => {
+    it(`should match the snapshot for ${part.feature ?? 'pdsSvgIcons'} CSS`, () => {
       expect(part.css).toMatchSnapshot();
     });
   });
