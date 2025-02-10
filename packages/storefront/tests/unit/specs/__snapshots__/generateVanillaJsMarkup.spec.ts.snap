@@ -1,0 +1,71 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`generateVanillaJsMarkup() > should generate correct Vanilla JS markup for button 1`] = `
+"<!doctype html>
+<html lang="en">
+<head>
+  <title></title>
+</head>
+<body>
+
+<p-button aria="{'aria-haspopup':true,'aria-label':'Some more descriptive label'}" type="button" compact="true" icon="add">
+  Open Banner
+</p-button>
+
+<p-banner dismiss-button="false" heading="Some heading" heading-tag="h4" state="warning" />
+
+<script>
+  const button = document.querySelector("p-button");
+  const banner = document.querySelector("p-banner");
+  button.addEventListener('click', () => (banner.open = true));
+  banner.addEventListener('dismiss', () => (banner.open = false));
+</script>
+</body>
+</html>"
+`;
+
+exports[`generateVanillaJsMarkup() > should generate correct Vanilla JS markup for flyout 1`] = `
+"<!doctype html>
+<html lang="en">
+<head>
+  <title></title>
+</head>
+<body>
+
+<p-button type="button" aria="{'aria-haspopup':'dialog'}">
+  Open Flyout
+</p-button>
+
+<p-flyout aria="{'aria-label':'Some Heading'}">
+  <p-heading slot="header" size="large" tag="h2">
+    Some Heading
+  </p-heading>
+  <p-text>
+    Some Content Begin
+  </p-text>
+  <div style="width: 10px; height: 120vh; background: deeppink" />
+  <p-text>
+    Some Content End
+  </p-text>
+  <p-button-group slot="footer">
+    <p-button type="button">
+      Proceed
+    </p-button>
+    <p-button type="button" variant="secondary">
+      Cancel
+    </p-button>
+  </p-button-group>
+  <p-text slot="sub-footer">
+    Some additional Sub-Footer
+  </p-text>
+</p-flyout>
+
+<script>
+  const button = document.querySelector("p-button");
+  const flyout = document.querySelector("p-flyout");
+  button.addEventListener('click', () => (flyout.open = true));
+  flyout.addEventListener('dismiss', () => (flyout.open = false));
+</script>
+</body>
+</html>"
+`;

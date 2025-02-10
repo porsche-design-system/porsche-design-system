@@ -199,8 +199,10 @@ export type HTMLElementOrComponentProps<T extends HTMLTagOrComponent> = T extend
     ? SafePropTypeMapping[T]
     : never;
 
+type EventProps<T> = Pick<T, Extract<keyof T, `on${string}`>>;
+
 export type EventsConfig<T extends HTMLTagOrComponent> = {
-  [eventName in keyof HTMLElementOrComponentProps<T>]: EventConfig;
+  [eventName in keyof EventProps<HTMLElementOrComponentProps<T>>]: EventConfig;
 };
 
 /**

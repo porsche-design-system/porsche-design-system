@@ -9,7 +9,9 @@
     "build:generateTableOfContents": "tsx --tsconfig tsconfig.node.json scripts/generateTableOfContents.ts",
     "start": "concurrently -k -s 'first' -n 'cdn,next' 'serve-cdn' 'next start'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws --spa index.html -p 8080 -d ./dist'",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "yarn test:unit",
+    "test:unit": "vitest --config tests/unit/config/vitest.config.ts"
   },
   "dependencies": {
     "@porsche-design-system/components-js": "3.26.0",
@@ -39,7 +41,8 @@
     "concurrently": "*",
     "globby": "*",
     "typescript": "*",
-    "change-case": "*"
+    "change-case": "*",
+    "vitest": "*"
   },
   "scope": "@porsche-design-system",
   "volta": {

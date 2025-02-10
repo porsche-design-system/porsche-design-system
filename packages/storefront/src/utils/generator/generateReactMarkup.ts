@@ -1,5 +1,12 @@
 import type { StoryState } from '@/models/story';
-import type { ConfiguratorTagNames, ElementConfig, EventConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
+import type {
+  ConfiguratorTagNames,
+  ElementConfig,
+  EventConfig,
+  EventsConfig,
+  HTMLElementOrComponentProps,
+  HTMLTagOrComponent,
+} from '@/utils/generator/generator';
 import { pascalCase } from 'change-case';
 
 const getReactCode = (
@@ -22,7 +29,7 @@ export const generateReactMarkup = (
   initialState: StoryState<ConfiguratorTagNames>,
   indentLevel = 3
 ): string => {
-  const results = configs.map((config) => createReactJSMarkup(config, initialState, indentLevel));
+  const results = configs.map((config) => createReactMarkup(config, initialState, indentLevel));
   const markup = results.map(({ markup }) => markup).join('\n\n');
   const states = results
     .flatMap(({ states }) => states)
@@ -39,7 +46,7 @@ export const generateReactMarkup = (
   return getReactCode(imports, states, eventHandlers, markup);
 };
 
-const createReactJSMarkup = (
+const createReactMarkup = (
   config: string | ElementConfig<HTMLTagOrComponent> | undefined,
   initialState: StoryState<ConfiguratorTagNames>,
   indentLevel = 0
@@ -60,25 +67,13 @@ const createReactJSMarkup = (
     pdsComponents.push(transformedTag);
   }
 
-  const props = generateReactProperties(Object.entries(properties));
   const eventEntries = Object.entries(events);
-
-  const propertiesString =
-    props.length > 0
-      ? ` ${props
-          .map(({ key, value }) => {
-            if (eventEntries.some(([_, { prop }]) => prop === key)) {
-              return `${key}={${key}}`;
-            }
-            return `${key}=${value}`;
-          })
-          .join(' ')}`
-      : '';
+  const propertiesString = generateReactProperties(properties, events);
 
   const eventListenersString =
     eventEntries.length > 0 ? ` ${eventEntries.map(([eventName]) => `${eventName}={${eventName}}`).join(' ')}` : '';
 
-  const childrenResults = children.map((child) => createReactJSMarkup(child, initialState, indentLevel + 1));
+  const childrenResults = children.map((child) => createReactMarkup(child, initialState, indentLevel + 1));
   const childMarkup = childrenResults.map(({ markup }) => markup).join('\n');
   const childStates = childrenResults.flatMap(({ states }) => states);
   const childEventHandlers = childrenResults.flatMap(({ eventHandlers }) => eventHandlers);
@@ -98,7 +93,7 @@ const createReactJSMarkup = (
 
 type ReactScripts = { states: string; eventHandler: string };
 
-const generateReactControlledScript = (
+export const generateReactControlledScript = (
   tagName: string,
   eventEntries: [string, EventConfig][],
   initialState: StoryState<ConfiguratorTagNames>
@@ -128,11 +123,17 @@ const generateReactControlledScript = (
   return { states, eventHandler };
 };
 
-const generateReactProperties = (props: [string, ElementConfig<HTMLTagOrComponent>['properties']][]) => {
-  return props.map(([key, value]) => {
-    if (typeof value === 'string') {
-      return { key, value: `"${value}"` };
-    }
-    return { key, value: `{${JSON.stringify(value)}}` };
-  });
+export const generateReactProperties = (
+  properties: HTMLElementOrComponentProps<HTMLTagOrComponent>,
+  events: EventsConfig<HTMLTagOrComponent>
+) => {
+  return Object.entries(properties)
+    .map(([key, value]) => {
+      if (Object.values(events).some(({ prop }) => prop === key)) {
+        return ` ${key}={${key}}`;
+      }
+      if (typeof value === 'string') return ` ${key}="${value}"`;
+      return ` ${key}={${JSON.stringify(value)}}`;
+    })
+    .join('');
 };
