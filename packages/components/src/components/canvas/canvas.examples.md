@@ -16,6 +16,7 @@ The `p-canvas` is an experimental layout component for productive web applicatio
   **LTR** mode / **left** in **RTL** mode).
 - `slot="header-start"`: Renders a **sticky** header section above the content area on the **start** side (**left** in
   **LTR** mode / **right** in **RTL** mode).
+- `slot="sidebar-end-header"`: Renders in the header section of the sidebar end area.
 - `slot="sidebar-end"`: Renders a sidebar area on the **end** side (**right** in **LTR** mode / **left** in **RTL**
   mode). On mobile view it transforms into a flyout.
 - `slot="sidebar-start"`: Renders a sidebar area on the **start** side (**left** in **LTR** mode / **right** in **RTL**

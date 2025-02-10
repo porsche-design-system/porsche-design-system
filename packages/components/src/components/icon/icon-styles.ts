@@ -1,5 +1,3 @@
-import type { IconName, TextSize, Theme } from '../../types';
-import { getCss, isHighContrastMode, isThemeDark } from '../../utils';
 import {
   fontFamily,
   fontLineHeight,
@@ -17,7 +15,6 @@ import {
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
-import type { IconColor, IconColorDeprecated } from './icon-utils';
 import {
   filterDarkContrastHigh,
   filterDarkContrastLow,
@@ -38,6 +35,9 @@ import {
   filterLightNotificationWarning,
   filterLightPrimary,
 } from '../../styles/color-filters';
+import type { IconName, TextSize, Theme } from '../../types';
+import { getCss, isHighContrastMode, isThemeDark } from '../../utils';
+import type { IconColor, IconColorDeprecated } from './icon-utils';
 
 const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
   'xx-small': fontSizeTextXXSmall,
@@ -94,7 +94,9 @@ const cssVariableFilter = '--p-internal-icon-filter';
 const isFlippableIcon = (name: IconName, source: string): boolean => {
   return (
     !source &&
-    (name === 'arrow-double-left' ||
+    (name === 'arrow-compact-left' ||
+      name === 'arrow-compact-right' ||
+      name === 'arrow-double-left' ||
       name === 'arrow-double-right' ||
       name === 'arrow-first' ||
       name === 'arrow-head-left' ||
@@ -108,6 +110,7 @@ const isFlippableIcon = (name: IconName, source: string): boolean => {
       name === 'increase' ||
       name === 'list' ||
       name === 'logout' ||
+      name === 'return' ||
       name === 'send')
   );
 };
