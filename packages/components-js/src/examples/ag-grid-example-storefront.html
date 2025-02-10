@@ -1,5 +1,7 @@
 <script type="module">
 
+  import {pdsTheme} from "@porsche-design-system/ag-grid/src";
+
   const theme = new URL(document.location).searchParams.get('theme') || 'light';
   const grid = document.querySelector('#my-grid');
 
@@ -59,7 +61,7 @@
   ];
 
   const gridOptions = {
-    // theme: 'legacy', // Forces AG Grid to use v32 styling
+    theme: pdsTheme,
     // Data to be displayed
     rowData: rowData.map((row, index) => ({ active: Boolean(index % 2) /* odd rows */, ...row })),
     // Columns to be displayed (Should match rowData properties)
