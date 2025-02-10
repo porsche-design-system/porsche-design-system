@@ -13,9 +13,12 @@ import {
   themeLightStateDisabled,
 } from '@porsche-design-system/components-js/styles';
 
+import { darkenColor } from '@porsche-design-system/shared';
 import { type Part, createPart } from 'ag-grid-community';
-import { themeDark, themeLight } from '../core/colors';
 import { PdsThemeMode } from '../types/theme-mode';
+
+const themeLightSuccessColorDarken = darkenColor(themeLightNotificationSuccess);
+const themeDarkSuccessColorDarken = darkenColor(themeDarkNotificationSuccess);
 
 export const toggleButtonStyle: Part = createPart({
   feature: 'toggleButtonStyle',
@@ -23,9 +26,9 @@ export const toggleButtonStyle: Part = createPart({
     toggleButtonOnBackgroundColor: themeLightNotificationSuccess,
     toggleButtonOffBackgroundColor: themeLightBackgroundBase,
     toggleButtonSwitchBackgroundColor: themeLightPrimary,
-    toggleButtonOnHoverBackgroundColor: themeLight.successColorDarken,
+    toggleButtonOnHoverBackgroundColor: themeLightSuccessColorDarken,
     toggleButtonOnBorderColor: themeLightNotificationSuccess,
-    toggleButtonOnHoverBorderColor: themeLight.successColorDarken,
+    toggleButtonOnHoverBorderColor: themeLightSuccessColorDarken,
     toggleButtonOffHoverBorderColor: themeLightPrimary,
     toggleButtonOffBorderColor: themeLightContrastMedium,
     toggleButtonDisabledColor: themeLightStateDisabled,
@@ -35,9 +38,9 @@ export const toggleButtonStyle: Part = createPart({
       toggleButtonOnBackgroundColor: themeDarkNotificationSuccess,
       toggleButtonOffBackgroundColor: themeDarkBackgroundBase,
       toggleButtonSwitchBackgroundColor: themeDarkPrimary,
-      toggleButtonOnHoverBackgroundColor: themeDark.successColorDarken,
+      toggleButtonOnHoverBackgroundColor: themeDarkSuccessColorDarken,
       toggleButtonOnBorderColor: themeDarkNotificationSuccess,
-      toggleButtonOnHoverBorderColor: themeDark.successColorDarken,
+      toggleButtonOnHoverBorderColor: themeDarkSuccessColorDarken,
       toggleButtonOffHoverBorderColor: themeDarkPrimary,
       toggleButtonOffBorderColor: themeDarkContrastMedium,
       toggleButtonDisabledColor: themeDarkStateDisabled,

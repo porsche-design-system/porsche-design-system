@@ -31,11 +31,9 @@ import {
 
 import { type Theme, themeQuartz } from 'ag-grid-community';
 
-// TODO update focus glow for inputs
-
+import { darkenColor } from '@porsche-design-system/shared';
 import { checkboxStyle, pdsSvgIcons, toggleButtonStyle } from '../parts';
 import { PdsThemeMode } from '../types/theme-mode';
-import { themeDark, themeLight } from './colors';
 
 export const pdsTheme: Theme = themeQuartz
   .withParams({
@@ -61,7 +59,7 @@ export const pdsTheme: Theme = themeQuartz
     backgroundColor: themeLightBackgroundBase,
     foregroundColor: themeLightPrimary,
     headerBackgroundColor: themeLightBackgroundSurface,
-    selectedRowBackgroundColor: themeLight.backgroundSurfaceColorDarken,
+    selectedRowBackgroundColor: darkenColor(themeLightBackgroundSurface),
     oddRowBackgroundColor: themeLightBackgroundSurface,
     modalOverlayBackgroundColor: themeLightBackgroundFrosted,
     rowHoverColor: themeLightStateHover,
@@ -82,7 +80,7 @@ export const pdsTheme: Theme = themeQuartz
       backgroundColor: themeDarkBackgroundBase,
       foregroundColor: themeDarkPrimary,
       headerBackgroundColor: themeDarkBackgroundSurface,
-      selectedRowBackgroundColor: themeDark.backgroundSurfaceColorDarken,
+      selectedRowBackgroundColor: darkenColor(themeDarkBackgroundSurface),
       oddRowBackgroundColor: themeDarkBackgroundSurface,
       modalOverlayBackgroundColor: themeDarkBackgroundFrosted,
       rowHoverColor: themeDarkStateHover,
