@@ -2,10 +2,10 @@
 import { type Theme, themeInjectionKey } from '@porsche-design-system/components-vue';
 import { pdsTheme } from '@porsche-design-system/components-vue/ag-grid';
 import { dataAdvanced } from '@porsche-design-system/shared';
-import { AllEnterpriseModule, ModuleRegistry } from 'ag-grid-enterprise';
+import { AllCommunityModule, ModuleRegistry } from 'ag-grid-enterprise';
 import { AgGridVue } from 'ag-grid-vue3';
 import { inject } from 'vue';
-ModuleRegistry.registerModules([AllEnterpriseModule]);
+ModuleRegistry.registerModules([AllCommunityModule]);
 
 const theme = inject<Theme>(themeInjectionKey, 'light');
 

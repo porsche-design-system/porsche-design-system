@@ -1,11 +1,11 @@
 import { PorscheDesignSystemContext } from '@porsche-design-system/components-react';
 import { pdsTheme } from '@porsche-design-system/components-react/ag-grid';
 import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
-import { AllEnterpriseModule, type ColDef, ModuleRegistry } from 'ag-grid-enterprise';
+import { AllCommunityModule, type ColDef, ModuleRegistry } from 'ag-grid-enterprise';
 import { AgGridReact } from 'ag-grid-react';
 import { useContext } from 'react';
 
-ModuleRegistry.registerModules([AllEnterpriseModule]);
+ModuleRegistry.registerModules([AllCommunityModule]);
 
 type ColumnDefs = DataAdvanced & {
   active: boolean;

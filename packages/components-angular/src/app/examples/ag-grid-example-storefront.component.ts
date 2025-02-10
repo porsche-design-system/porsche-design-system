@@ -4,12 +4,12 @@ import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
 
 import { THEME_TOKEN } from '@porsche-design-system/components-angular';
 import {
-  AllEnterpriseModule,
+  AllCommunityModule,
   type ColDef,
   ModuleRegistry,
   ValidationModule /* Development Only */,
 } from 'ag-grid-enterprise';
-ModuleRegistry.registerModules([AllEnterpriseModule, ValidationModule]);
+ModuleRegistry.registerModules([AllCommunityModule, ValidationModule]);
 
 type ColumnDefs = DataAdvanced & {
   active: boolean;
