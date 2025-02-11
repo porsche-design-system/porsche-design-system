@@ -1,5 +1,6 @@
-import type { Page } from 'playwright';
 import { expect, test } from '@playwright/test';
+import type { PopoverDirection } from '@porsche-design-system/components';
+import type { Page } from 'playwright';
 import {
   addEventListener,
   getActiveElementId,
@@ -14,7 +15,6 @@ import {
   skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { PopoverDirection } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.locator('p-popover');
 const getSpacer = (page: Page) => page.locator('p-popover .spacer');
@@ -357,48 +357,5 @@ test.describe('lifecycle', () => {
 
     expect(status.componentDidUpdate['p-popover'], 'componentDidUpdate: p-popover').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
-  });
-});
-
-test.describe('native', () => {
-  skipInBrowsers(['firefox', 'webkit']);
-  test('should not render native popover when used outside of table', async ({ page }) => {
-    await initPopover(page);
-    await togglePopover(page);
-    const button = getButton(page);
-    const spacer = getSpacer(page);
-
-    expect(await getAttribute(button, 'popoverTarget')).toBe(null);
-    expect(await getProperty(spacer, 'popover')).toBe(null);
-  });
-
-  test('should render native popover when used within table', async ({ page }) => {
-    await initPopoverWithinTable(page);
-    const button = getButton(page);
-    const spacer = getSpacer(page);
-
-    expect(await getAttribute(button, 'popoverTarget')).toBe(await getProperty(spacer, 'id'));
-    expect(await getProperty(spacer, 'popover')).toBe('auto');
-  });
-
-  test('should open popover with correct position on click', async ({ page }) => {
-    await initPopoverWithinTable(page);
-    await togglePopover(page);
-
-    expect(await isNativePopoverOpen(page)).toBe(true);
-  });
-
-  test('should close popover on table scroll', async ({ page }) => {
-    await initPopoverWithinTable(page);
-    await togglePopover(page);
-
-    expect(await isNativePopoverOpen(page)).toBe(true);
-
-    // Simulate a scroll event on the table
-    await getTableScroller(page).evaluate((el) => {
-      el.dispatchEvent(new Event('scroll'));
-    });
-
-    expect(await isNativePopoverOpen(page)).toBe(false);
   });
 });

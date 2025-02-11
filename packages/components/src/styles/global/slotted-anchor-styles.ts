@@ -1,7 +1,7 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { addImportantToEachRule, getFocusJssStyle } from '../common-styles';
 import { getHoverStyle } from '@porsche-design-system/styles';
 import type { Styles } from 'jss';
+import { addImportantToEachRule, getFocusJssStyle } from '../common-styles';
 
 export const tagNamesWithSlottedAnchorArray: TagName[] = [
   'p-accordion',
@@ -14,7 +14,6 @@ export const tagNamesWithSlottedAnchorArray: TagName[] = [
   'p-inline-notification',
   'p-multi-select',
   'p-pin-code',
-  'p-popover',
   'p-radio-button-wrapper',
   'p-select',
   'p-select-wrapper',
