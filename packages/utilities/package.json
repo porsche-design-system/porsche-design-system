@@ -5,10 +5,11 @@
   "license": "UNLICENSED",
   "scripts": {
     "start-app": "react-scripts start",
-    "build": "yarn build:utilities && yarn build:ag-grid",
+    "build": "yarn build:utilities && PDS_IS_STAGING=${PDS_IS_STAGING:-1} yarn build:ag-grid",
     "build:utilities": "yarn --cwd ./projects/utilities build",
     "build:ag-grid": "yarn --cwd ./projects/ag-grid build",
     "build-app": "react-scripts build",
+    "build-prod": "PDS_IS_STAGING=0 yarn build",
     "test": "yarn test:unit",
     "test:unit": "yarn --cwd ./projects/utilities test:unit",
     "clean:build": "yarn --cwd ./projects/utilities clean:build"
