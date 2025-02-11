@@ -11,7 +11,8 @@
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws --spa index.html -p 8080 -d ./dist'",
     "lint": "next lint",
     "test": "yarn test:unit",
-    "test:unit": "vitest --config tests/unit/config/vitest.config.ts"
+    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
+    "test:e2e": "playwright test --config=tests/e2e/config/playwright.config.ts --ui"
   },
   "dependencies": {
     "@porsche-design-system/components-js": "3.26.0",

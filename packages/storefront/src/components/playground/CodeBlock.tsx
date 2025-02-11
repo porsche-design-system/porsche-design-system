@@ -43,6 +43,7 @@ export const CodeBlock = ({ frameworkMarkup }: CodeBlockProps) => {
       </PTabsBar>
       {/* @ts-expect-error: Suppress type incompatibility */}
       <SyntaxHighlighter
+        className="markup"
         language={frameworkLanguageMap[selectedFramework]}
         showLineNumbers={false}
         useInlineStyles={false}
