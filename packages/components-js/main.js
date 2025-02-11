@@ -125,7 +125,6 @@ const updateSelect = (id, value) => {
     );
   };
 
-  // Register the required module
   ModuleRegistry.registerModules([AllEnterpriseModule, ValidationModule]);
 
   provideGlobalGridOptions({
