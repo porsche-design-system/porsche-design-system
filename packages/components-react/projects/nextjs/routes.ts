@@ -476,6 +476,34 @@ const generatedRoutes = {
     "path": "/popover",
     "name": "Popover"
   },
+  "popoverBasic": {
+    "path": "/popover-basic",
+    "name": "PopoverBasic"
+  },
+  "popoverBottom": {
+    "path": "/popover-bottom",
+    "name": "PopoverBottom"
+  },
+  "popoverEdgeCase": {
+    "path": "/popover-edge-case",
+    "name": "PopoverEdgeCase"
+  },
+  "popoverLeft": {
+    "path": "/popover-left",
+    "name": "PopoverLeft"
+  },
+  "popoverRight": {
+    "path": "/popover-right",
+    "name": "PopoverRight"
+  },
+  "popoverScrolled": {
+    "path": "/popover-scrolled",
+    "name": "PopoverScrolled"
+  },
+  "popoverTop": {
+    "path": "/popover-top",
+    "name": "PopoverTop"
+  },
   "radioButtonWrapper": {
     "path": "/radio-button-wrapper",
     "name": "RadioButtonWrapper"

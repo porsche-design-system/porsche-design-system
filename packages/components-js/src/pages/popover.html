@@ -1,39 +1,27 @@
-<div class="playground light" title="should render multiple popovers" style="position: relative; height: 500px">
-  <span style="position: absolute; top: 15%; left: 50vw; transform: translate(-50%)">
-    <p-popover>
-      <span>
-        Some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
-        <em>emphasized</em> and <i>italic</i> text.
-      </span>
-    </p-popover>
-  </span>
-  <span style="position: absolute; top: 55%; left: 50vw; transform: translate(-50%)">
-    <p-popover direction="top">Top direction</p-popover>
-  </span>
-  <span style="position: absolute; top: 60%; left: 50vw; transform: translate(-50%)">
-    <p-popover description="Some description via prop"></p-popover>
-  </span>
-  <!-- skip this axe-core test because it is just needed for vrt -->
-  <p-table
-    class="skip-axe-core-test"
-    style="position: absolute; top: 80%; left: 50vw; transform: translate(-50%); background: deeppink"
-  >
-    <p-table-head>
-      <p-table-head-row>
-        <p-table-head-cell>Within table <p-popover>Some additional content.</p-popover></p-table-head-cell>
-      </p-table-head-row>
-    </p-table-head>
-  </p-table>
+<div class="playground light" title="should show popover">
+  <iframe src="/popover-basic?iframe=true" loading="eager" title="fix-linter-1"></iframe>
 </div>
 
-<script>
-  window.addEventListener('resize', (e) => e.stopImmediatePropagation(), true);
-  window.addEventListener('scroll', (e) => e.stopImmediatePropagation(), true);
+<div class="playground light" title="should show popover with left direction">
+  <iframe src="/popover-left?iframe=true" loading="eager" title="fix-linter-2"></iframe>
+</div>
 
-  porscheDesignSystem.componentsReady().then(() => {
-    document.addEventListener('mousedown', (e) => e.stopPropagation(), true);
-    document.querySelectorAll('p-popover').forEach((popover) => {
-      popover.shadowRoot.querySelector('button').click();
-    });
-  });
-</script>
+<div class="playground light" title="should show popover with right direction">
+  <iframe src="/popover-right?iframe=true" loading="eager" title="fix-linter-3"></iframe>
+</div>
+
+<div class="playground light" title="should show popover with top direction">
+  <iframe src="/popover-top?iframe=true" loading="eager" title="fix-linter-4"></iframe>
+</div>
+
+<div class="playground light" title="should show popover with bottom direction">
+  <iframe src="/popover-bottom?iframe=true" loading="eager" title="fix-linter-5"></iframe>
+</div>
+
+<div class="playground light" title="should overflow popover within scroll container">
+  <iframe src="/popover-scrolled?iframe=true" loading="eager" title="fix-linter-6"></iframe>
+</div>
+
+<div class="playground light" title="should show popover in edge case situation">
+  <iframe src="/popover-edge-case?iframe=true" loading="eager" title="fix-linter-7"></iframe>
+</div>
