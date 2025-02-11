@@ -1,8 +1,7 @@
 'use client';
 
-import type { ElementConfig, HTMLTagOrComponent } from '@/components/playground/ConfiguratorControls';
 import type { Story } from '@/models/story';
-import type { FlyoutMultilevelUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
+import type { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
 
 export const flyoutMultilevelStory: Story<'p-flyout-multilevel'> = {
   state: {
