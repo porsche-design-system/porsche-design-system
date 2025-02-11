@@ -25,7 +25,7 @@ export class ExampleComponent {${states ? `\n${states}\n` : ''}${eventHandlers ?
 
 export const generateAngularMarkup = (
   configs: (string | ElementConfig<HTMLTagOrComponent> | undefined)[],
-  initialState: StoryState<ConfiguratorTagNames>,
+  initialState: StoryState<HTMLTagOrComponent>,
   indentLevel = 3
 ): string => {
   const results = configs.map((config) => createAngularMarkup(config, initialState, indentLevel));
@@ -41,7 +41,7 @@ export const generateAngularMarkup = (
 
 const createAngularMarkup = (
   config: string | ElementConfig<HTMLTagOrComponent> | undefined,
-  initialState: StoryState<ConfiguratorTagNames>,
+  initialState: StoryState<HTMLTagOrComponent>,
   indentLevel = 0
 ): { markup: string; states: string[]; eventHandlers: string[] } => {
   const indent = '  '.repeat(indentLevel);
@@ -79,7 +79,7 @@ type AngularScripts = { states: string; eventHandler: string };
 export const generateAngularControlledScript = (
   tagName: string,
   eventEntries: [string, EventConfig][],
-  initialState: StoryState<ConfiguratorTagNames>
+  initialState: StoryState<HTMLTagOrComponent>
 ): AngularScripts => {
   const states = eventEntries
     // Only create state if the current element's tagName is the same as the element the state is applied to e.g. don't create state for p-button onClick open flyout

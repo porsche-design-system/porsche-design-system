@@ -1,7 +1,7 @@
 'use client';
 
-import type { HTMLTagOrComponent } from '@/components/playground/ConfiguratorControls';
 import type { Story } from '@/models/story';
+import type { HTMLTagOrComponent } from '@/utils/generator/generator';
 
 export const tabsBarStory: Story<'p-tabs-bar'> = {
   state: {

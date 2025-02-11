@@ -22,7 +22,7 @@ ${code}
 
 export const generateVueMarkup = (
   configs: (string | ElementConfig<HTMLTagOrComponent> | undefined)[],
-  initialState: StoryState<ConfiguratorTagNames>,
+  initialState: StoryState<HTMLTagOrComponent>,
   indentLevel = 1
 ): string => {
   const results = configs.map((config) => createVueMarkup(config, initialState, indentLevel));
@@ -44,7 +44,7 @@ export const generateVueMarkup = (
 
 const createVueMarkup = (
   config: string | ElementConfig<HTMLTagOrComponent> | undefined,
-  initialState: StoryState<ConfiguratorTagNames>,
+  initialState: StoryState<HTMLTagOrComponent>,
   indentLevel = 0
 ): { markup: string; states: string[]; eventHandlers: string[]; pdsComponents: string[] } => {
   if (!config) return { markup: '', states: [], eventHandlers: [], pdsComponents: [] };
@@ -94,7 +94,7 @@ type VueScripts = { states: string; eventHandler: string };
 export const generateVueControlledScript = (
   tagName: string,
   eventEntries: [string, EventConfig][],
-  initialState: StoryState<ConfiguratorTagNames>
+  initialState: StoryState<HTMLTagOrComponent>
 ): VueScripts => {
   const states = eventEntries
     // Only create state if the current element's tagName is the same as the element the state is applied to e.g. don't create state for p-button onClick open flyout

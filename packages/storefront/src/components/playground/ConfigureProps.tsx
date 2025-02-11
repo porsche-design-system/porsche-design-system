@@ -191,7 +191,7 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
         options = [1, 2, 3, 4, 5];
       }
       // E.g. p-link target "allowedValues": ["_self", "_blank", "_parent", "_top", "string"]
-      else if (propMeta.allowedValues.includes('string')) {
+      else if (propMeta.allowedValues.includes('string' as never)) {
         options = propMeta.allowedValues.filter((prop) => prop !== 'string');
       } else if (propName === 'theme') {
         options = [undefined, ...propMeta.allowedValues];

@@ -26,7 +26,7 @@ ${code}
 
 export const generateReactMarkup = (
   configs: (string | ElementConfig<HTMLTagOrComponent> | undefined)[],
-  initialState: StoryState<ConfiguratorTagNames>,
+  initialState: StoryState<HTMLTagOrComponent>,
   indentLevel = 3
 ): string => {
   const results = configs.map((config) => createReactMarkup(config, initialState, indentLevel));
@@ -48,7 +48,7 @@ export const generateReactMarkup = (
 
 const createReactMarkup = (
   config: string | ElementConfig<HTMLTagOrComponent> | undefined,
-  initialState: StoryState<ConfiguratorTagNames>,
+  initialState: StoryState<HTMLTagOrComponent>,
   indentLevel = 0
 ): { markup: string; states: string[]; eventHandlers: string[]; pdsComponents: string[] } => {
   if (!config) return { markup: '', states: [], eventHandlers: [], pdsComponents: [] };
@@ -96,7 +96,7 @@ type ReactScripts = { states: string; eventHandler: string };
 export const generateReactControlledScript = (
   tagName: string,
   eventEntries: [string, EventConfig][],
-  initialState: StoryState<ConfiguratorTagNames>
+  initialState: StoryState<HTMLTagOrComponent>
 ): ReactScripts => {
   const states = eventEntries
     // Only create state if the current element's tagName is the same as the element the state is applied to e.g. don't create state for p-button onClick open flyout
