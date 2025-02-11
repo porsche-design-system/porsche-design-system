@@ -1,14 +1,11 @@
-import { Component, Element, Host, type JSX, Prop, State, forceUpdate, h } from '@stencil/core';
-import { getSlottedAnchorStyles } from '../../styles';
+import { arrow, autoUpdate, computePosition, flip, limitShift, offset, shift } from '@floating-ui/dom';
+import { Component, Element, Host, type JSX, Prop, State, h } from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import {
   AllowedTypes,
   THEMES,
-  addNativePopoverScrollAndResizeListeners,
-  applyConstructableStylesheetStyles,
   attachComponentCss,
-  detectNativePopoverCase,
-  findClosestComponent,
+  getHasNativePopoverSupport,
   getPrefixedTagNames,
   hasPropValueChanged,
   parseAndGetAriaAttributes,
@@ -18,12 +15,9 @@ import { getComponentCss } from './popover-styles';
 import {
   POPOVER_ARIA_ATTRIBUTES,
   POPOVER_DIRECTIONS,
+  POPOVER_SAFE_ZONE,
   type PopoverAriaAttribute,
   type PopoverDirection,
-  addDocumentEventListener,
-  removeDocumentEventListener,
-  updateNativePopoverStyles,
-  updatePopoverStyles,
 } from './popover-utils';
 
 const propTypes: PropTypes<typeof Popover> = {
@@ -38,7 +32,7 @@ const propTypes: PropTypes<typeof Popover> = {
  */
 @Component({
   tag: 'p-popover',
-  shadow: true, // delegatesFocus: true prevents text selection inside
+  shadow: true,
 })
 export class Popover {
   @Element() public host!: HTMLElement;
@@ -58,87 +52,106 @@ export class Popover {
 
   @State() private open = false;
 
-  private spacer: HTMLDivElement;
   private popover: HTMLDivElement;
   private button: HTMLButtonElement;
-
-  private isNativePopoverCase: boolean = false;
-  private parentTableElement: HTMLElement;
-
-  public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
-    addDocumentEventListener(this);
-    this.isNativePopoverCase = detectNativePopoverCase(this.host, false);
-    if (this.isNativePopoverCase) {
-      this.parentTableElement = findClosestComponent(this.host, 'pTable');
-    }
-  }
+  private arrow: HTMLDivElement;
+  private cleanUp: () => void;
+  private hasNativePopoverSupport = getHasNativePopoverSupport();
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentDidRender(): void {
-    if (this.isNativePopoverCase && this.spacer?.matches(':popover-open')) {
-      addNativePopoverScrollAndResizeListeners(this.host, this.parentTableElement, this.spacer);
-      // Set new popover position depending on button position
-      updateNativePopoverStyles(this.spacer, this.button);
-      // Update popover styles with new position
-      updatePopoverStyles(this.host, this.spacer, this.popover, this.direction, this.theme, this.isNativePopoverCase);
-    } else if (this.open) {
-      // calculate / update position only possible after render
-      updatePopoverStyles(this.host, this.spacer, this.popover, this.direction, this.theme, false);
-    }
-  }
-
   public disconnectedCallback(): void {
-    removeDocumentEventListener(this);
+    if (typeof this.cleanUp === 'function') {
+      this.cleanUp(); // cleanup function to stop the auto updates, https://floating-ui.com/docs/autoupdate
+    }
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.direction, this.isNativePopoverCase, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host onKeydown={this.onKeydown}>
+      <Host onKeydown={(e: KeyboardEvent) => e.key === 'Escape' && this.button.focus()}>
         <button
           type="button"
-          {...(this.isNativePopoverCase ? { popoverTarget: 'spacer' } : { onClick: () => (this.open = !this.open) })}
+          onClick={() => (this.open = !this.open)}
           {...parseAndGetAriaAttributes({
             ...parseAndGetAriaAttributes(this.aria),
-            ...(!this.isNativePopoverCase && { 'aria-expanded': this.open }),
+            ...{ 'aria-expanded': this.open },
           })}
           ref={(el) => (this.button = el)}
         >
           <PrefixedTagNames.pIcon class="icon" name="information" theme={this.theme} />
           <span class="label">More information</span>
         </button>
-        {(this.open || this.isNativePopoverCase) && (
+        {this.open && (
           <div
-            class="spacer"
-            ref={(el) => (this.spacer = el)}
-            {...(this.isNativePopoverCase && { popover: 'auto', id: 'spacer', onToggle: this.onToggle })}
+            class="popover"
+            popover="auto"
+            onToggle={(e: ToggleEvent) => (this.open = e.newState === 'open')}
+            ref={(el) => (this.popover = el)}
           >
-            <div class="popover" ref={(el) => (this.popover = el)}>
-              {this.description ? <p>{this.description}</p> : <slot />}
-            </div>
+            <div class="arrow" ref={(el) => (this.arrow = el)} />
+            <div class="content">{this.description ? <p>{this.description}</p> : <slot />}</div>
           </div>
         )}
       </Host>
     );
   }
 
-  private onKeydown = (e: KeyboardEvent): void => {
-    if (e.key === 'Escape') {
-      this.button.focus();
+  public componentDidRender(): void {
+    if (this.open) {
+      if (this.hasNativePopoverSupport) {
+        this.popover.showPopover(); // needs to be called after render cycle to be able to render the popover conditionally
+      }
+      this.cleanUp = autoUpdate(this.button, this.popover, this.updatePosition);
+    } else if (typeof this.cleanUp === 'function') {
+      this.cleanUp(); // cleanup function to stop the auto updates, https://floating-ui.com/docs/autoupdate
     }
-  };
+  }
 
-  private onToggle = (e: ToggleEvent): void => {
-    if (e.newState === 'open') {
-      forceUpdate(this.host); // Necessary to update popover styles since opening of native popover doesn't trigger rerender
-    }
+  private updatePosition = async (): Promise<void> => {
+    const { x, y, placement, middlewareData } = await computePosition(this.button, this.popover, {
+      placement: this.direction,
+      middleware: [
+        offset(16),
+        shift({
+          padding: POPOVER_SAFE_ZONE,
+          limiter: limitShift({
+            offset: ({ rects }) => rects.reference.width,
+          }),
+        }),
+        flip({
+          padding: POPOVER_SAFE_ZONE,
+          fallbackAxisSideDirection: 'end',
+        }),
+        arrow({ element: this.arrow }),
+      ],
+    });
+
+    const placementVertical = placement === 'top' || placement === 'bottom';
+    const placementTopLeft = placement === 'top' || placement === 'left';
+
+    Object.assign(this.popover.style, {
+      left: `${x}px`,
+      top: `${y}px`,
+    });
+
+    const { x: xArrow, y: yArrow } = middlewareData.arrow;
+
+    Object.assign(this.arrow.style, {
+      clipPath: placementVertical ? 'polygon(50% 0, 100% 110%, 0 110%)' : 'polygon(0 50%, 110% 0, 110% 100%)',
+      width: placementVertical ? '24px' : '12px',
+      height: placementVertical ? '12px' : '24px',
+      transform: `rotate(${placementTopLeft ? '180deg' : '0'}`,
+      left: ['right', 'bottom', 'top'].includes(placement) ? (xArrow != null ? `${xArrow}px` : '-12px') : '',
+      right: placement === 'left' ? (xArrow != null ? `${xArrow}px` : '-12px') : '',
+      top: ['bottom', 'left', 'right'].includes(placement) ? (yArrow != null ? `${yArrow}px` : '-12px') : '',
+      bottom: placement === 'top' ? (yArrow != null ? `${yArrow}px` : '-12px') : '',
+    });
   };
 }

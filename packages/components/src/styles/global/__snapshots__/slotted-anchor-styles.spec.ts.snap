@@ -320,38 +320,6 @@ exports[`should return correct slotted anchor styles for component: p-pin-code 1
 }
 `;
 
-exports[`should return correct slotted anchor styles for component: p-popover 1`] = `
-{
-  "@global": {
-    "p-popover a": {
-      "&::-moz-focus-inner": {
-        "border": "0 !important",
-      },
-      "&:focus": {
-        "outline": "0 !important",
-      },
-      "&:focus-visible": {
-        "outline": "2px solid #1A44EA !important",
-        "outlineOffset": "0 !important",
-      },
-      "@media(hover:hover)": {
-        "&:hover": {
-          "background": "rgba(148, 149, 152, .18) !important",
-        },
-      },
-      "borderRadius": "4px !important",
-      "color": "currentcolor !important",
-      "marginLeft": "-2px !important",
-      "marginRight": "-2px !important",
-      "paddingLeft": "2px !important",
-      "paddingRight": "2px !important",
-      "textDecoration": "underline !important",
-      "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important",
-    },
-  },
-}
-`;
-
 exports[`should return correct slotted anchor styles for component: p-radio-button-wrapper 1`] = `
 {
   "@global": {
