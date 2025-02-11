@@ -130,6 +130,13 @@ import { MultiSelectPage } from './generated/MultiSelect';
 import { PaginationPage } from './generated/Pagination';
 import { PinCodePage } from './generated/PinCode';
 import { PopoverPage } from './generated/Popover';
+import { PopoverBasicPage } from './generated/PopoverBasic';
+import { PopoverBottomPage } from './generated/PopoverBottom';
+import { PopoverEdgeCasePage } from './generated/PopoverEdgeCase';
+import { PopoverLeftPage } from './generated/PopoverLeft';
+import { PopoverRightPage } from './generated/PopoverRight';
+import { PopoverScrolledPage } from './generated/PopoverScrolled';
+import { PopoverTopPage } from './generated/PopoverTop';
 import { RadioButtonWrapperPage } from './generated/RadioButtonWrapper';
 import { ScrollerPage } from './generated/Scroller';
 import { SegmentedControlPage } from './generated/SegmentedControl';
@@ -755,6 +762,41 @@ export const generatedRoutes: RouteType[] = [
     name: 'Popover',
     path: '/popover',
     element: <PopoverPage />,
+  },
+  {
+    name: 'Popover Basic',
+    path: '/popover-basic',
+    element: <PopoverBasicPage />,
+  },
+  {
+    name: 'Popover Bottom',
+    path: '/popover-bottom',
+    element: <PopoverBottomPage />,
+  },
+  {
+    name: 'Popover Edge Case',
+    path: '/popover-edge-case',
+    element: <PopoverEdgeCasePage />,
+  },
+  {
+    name: 'Popover Left',
+    path: '/popover-left',
+    element: <PopoverLeftPage />,
+  },
+  {
+    name: 'Popover Right',
+    path: '/popover-right',
+    element: <PopoverRightPage />,
+  },
+  {
+    name: 'Popover Scrolled',
+    path: '/popover-scrolled',
+    element: <PopoverScrolledPage />,
+  },
+  {
+    name: 'Popover Top',
+    path: '/popover-top',
+    element: <PopoverTopPage />,
   },
   {
     name: 'Radio Button Wrapper',

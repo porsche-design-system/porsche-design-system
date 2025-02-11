@@ -59,7 +59,7 @@ for (const component of components.filter(
               contentType: 'application/json',
             });
 
-            expect(accessibilityScanResults.violations.length).toBe(0);
+            expect(accessibilityScanResults.violations).toEqual([]);
           });
         });
       } else {
@@ -79,7 +79,7 @@ for (const component of components.filter(
 
           console.log(accessibilityScanResults.violations);
 
-          expect(accessibilityScanResults.violations.length).toBe(0);
+          expect(accessibilityScanResults.violations).toEqual([]);
         });
       }
     });
