@@ -34,7 +34,9 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
 }: ConfiguratorControlsProps<T>) => {
   const meta = componentMeta[tagName];
   const [domReady, setDomReady] = useState(false);
-  const [accordionState, setAccordionState] = useState<Record<number, boolean>>({});
+  const [accordionState, setAccordionState] = useState<Record<number, boolean>>({
+    0: true,
+  });
 
   const handleAccordionUpdate = (index: number, e: CustomEvent<AccordionUpdateEventDetail>) => {
     setAccordionState((prevState) => ({
@@ -125,41 +127,42 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
       onUpdateProps={handleUpdateProps}
       onResetAllProps={() => setStoryState(defaultStoryState ?? {})}
     />,
-    <ConfigureSlots
-      tagName={tagName}
-      componentSlots={meta.slotsMeta}
-      configuredSlots={storyState}
-      slotStories={slotStories ?? {}}
-      onUpdateSlots={handleUpdateSlots}
-    />,
-    <ConfigureCssVariables
-      tagName={tagName}
-      componentCssVariables={meta.cssVariablesMeta}
-      configuredCssVariables={storyState?.properties}
-      defaultCssVariables={defaultStoryState?.properties ?? {}}
-      onUpdateCssVariables={handleUpdateCssVariable}
-      onResetAllCssVariables={() => {}}
-    />,
+    slotStories && (
+      <ConfigureSlots
+        tagName={tagName}
+        componentSlots={meta.slotsMeta}
+        configuredSlots={storyState}
+        slotStories={slotStories ?? {}}
+        onUpdateSlots={handleUpdateSlots}
+      />
+    ),
+    meta.cssVariablesMeta && (
+      <ConfigureCssVariables
+        tagName={tagName}
+        componentCssVariables={meta.cssVariablesMeta}
+        configuredCssVariables={storyState?.properties}
+        defaultCssVariables={defaultStoryState?.properties ?? {}}
+        onUpdateCssVariables={handleUpdateCssVariable}
+        onResetAllCssVariables={() => {}}
+      />
+    ),
   ];
 
   return (
     <>
       {domReady
         ? createPortal(
-            // biome-ignore lint/complexity/noUselessFragments: <explanation>
-            <>
-              {controls.map((control, index) => (
-                <PAccordion
-                  key={index}
-                  headingTag="h3"
-                  open={accordionState[index] || false}
-                  onUpdate={(e) => handleAccordionUpdate(index, e)}
-                >
-                  {control}
-                </PAccordion>
-              ))}
-            </>,
-            // biome-ignore lint/style/noNonNullAssertion: <explanation>
+            controls.filter(Boolean).map((control, index) => (
+              <PAccordion
+                key={index}
+                headingTag="h3"
+                open={accordionState[index] || false}
+                onUpdate={(e) => handleAccordionUpdate(index, e)}
+              >
+                {control}
+              </PAccordion>
+            )),
+            // biome-ignore lint/style/noNonNullAssertion: part of p-canvas
             document.querySelector('[slot="sidebar-end"]')!
           )
         : null}
