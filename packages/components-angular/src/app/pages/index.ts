@@ -150,6 +150,13 @@ import { OverviewComponent } from './generated/overview.component';
 import { PaginationComponent } from './generated/pagination.component';
 import { PinCodeComponent } from './generated/pin-code.component';
 import { PopoverComponent } from './generated/popover.component';
+import { PopoverBasicComponent } from './generated/popover-basic.component';
+import { PopoverBottomComponent } from './generated/popover-bottom.component';
+import { PopoverEdgeCaseComponent } from './generated/popover-edge-case.component';
+import { PopoverLeftComponent } from './generated/popover-left.component';
+import { PopoverRightComponent } from './generated/popover-right.component';
+import { PopoverScrolledComponent } from './generated/popover-scrolled.component';
+import { PopoverTopComponent } from './generated/popover-top.component';
 import { RadioButtonWrapperComponent } from './generated/radio-button-wrapper.component';
 import { ScrollerComponent } from './generated/scroller.component';
 import { SegmentedControlComponent } from './generated/segmented-control.component';
@@ -310,6 +317,13 @@ export const generatedPages = [
   PaginationComponent,
   PinCodeComponent,
   PopoverComponent,
+  PopoverBasicComponent,
+  PopoverBottomComponent,
+  PopoverEdgeCaseComponent,
+  PopoverLeftComponent,
+  PopoverRightComponent,
+  PopoverScrolledComponent,
+  PopoverTopComponent,
   RadioButtonWrapperComponent,
   ScrollerComponent,
   SegmentedControlComponent,
@@ -936,6 +950,41 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Popover',
     path: 'popover',
     component: PopoverComponent,
+  },
+  {
+    name: 'Popover Basic',
+    path: 'popover-basic',
+    component: PopoverBasicComponent,
+  },
+  {
+    name: 'Popover Bottom',
+    path: 'popover-bottom',
+    component: PopoverBottomComponent,
+  },
+  {
+    name: 'Popover Edge Case',
+    path: 'popover-edge-case',
+    component: PopoverEdgeCaseComponent,
+  },
+  {
+    name: 'Popover Left',
+    path: 'popover-left',
+    component: PopoverLeftComponent,
+  },
+  {
+    name: 'Popover Right',
+    path: 'popover-right',
+    component: PopoverRightComponent,
+  },
+  {
+    name: 'Popover Scrolled',
+    path: 'popover-scrolled',
+    component: PopoverScrolledComponent,
+  },
+  {
+    name: 'Popover Top',
+    path: 'popover-top',
+    component: PopoverTopComponent,
   },
   {
     name: 'Radio Button Wrapper',
