@@ -1,9 +1,3 @@
-import type {
-  ElementConfig,
-  HTMLElementOrComponentProps,
-  HTMLTagOrComponent,
-} from '@/components/playground/ConfiguratorControls';
-
 /**
  * Questions:
  * x - How to deal with string values which have a default value? p-checkbox value default is "on". Text-field prop is not only deleted onBlur.
@@ -59,15 +53,12 @@ import type {
  * - [ ] - values are not stored with correct types in state => true => 'true'
  * - [ ] - when closing banner properties show reset despite being in default state
  */
+import type { ElementConfig, HTMLElementOrComponentProps, HTMLTagOrComponent } from '@/utils/generator/generator';
 
 export type Story<Tag extends HTMLTagOrComponent> = {
   name?: string;
   state?: StoryState<Tag>;
-  generator: (
-    state?: StoryState<Tag>,
-    // TODO: Remove
-    updateState?: (componentName: string, property: string, value: any) => void
-  ) => (string | ElementConfig<HTMLTagOrComponent> | undefined)[];
+  generator: (state?: StoryState<Tag>) => (string | ElementConfig<HTMLTagOrComponent> | undefined)[];
 };
 
 export type StoryState<Tag extends HTMLTagOrComponent> = {
