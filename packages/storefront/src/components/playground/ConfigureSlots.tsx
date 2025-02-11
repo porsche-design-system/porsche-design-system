@@ -28,7 +28,7 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
       <div className="flex flex-col gap-sm">
         {Object.entries(slotStories ?? {}).map(([slotName, slotExamples]) => {
           return (
-            <div key={slotName} className="flex flex-col gap-sm bg-background-shading p-sm rounded-md">
+            <div key={slotName} className="flex flex-col gap-sm bg-background-surface p-sm rounded-md">
               <PSwitch
                 checked={!!configuredSlots?.slots?.[slotName as keyof SlotState<typeof tagName>]}
                 alignLabel="start"
