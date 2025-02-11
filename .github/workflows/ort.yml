@@ -7,7 +7,7 @@ name: 'OSS Review Toolkit'
 env:
   OSO_PROJECT_NAME: porsche_design_system
   OSO_AWS_ECR_REGISTRY: 936427553375.dkr.ecr.eu-central-1.amazonaws.com
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.49.1-jammy-5
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.49.1-jammy-6
 jobs:
   ort:
     name: 'ORT'
