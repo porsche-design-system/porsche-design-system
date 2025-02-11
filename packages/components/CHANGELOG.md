@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Popover`: gets rendered on `#top-layer` which enables it to be shown correctly even when used e.g. within a scroll
   container.
+- **Breaking Change** `AG Grid`: Migrated from a CSS-based theming approach to the new Theming API using JavaScript
+  objects ([#3740](https://github.com/porsche-design-system/porsche-design-system/pull/3740))
 
 #### Removed
 
