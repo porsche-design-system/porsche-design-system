@@ -10,6 +10,7 @@ export const linkSlotStories: SlotStories<'p-link'> = {
     },
     'slotted-anchor': {
       name: 'Slotted Anchor',
+      // @ts-ignore
       generator: ({ properties } = { href: 'https://www.porsche.com' }) => [
         { tag: 'a', properties, children: ['Some label'] },
       ],
@@ -28,13 +29,13 @@ export const linkStory: Story<'p-link'> = {
     {
       tag: 'p-link',
       properties: Object.fromEntries(
-        Object.entries(properties).filter(([name]) =>
+        Object.entries(properties ?? {}).filter(([name]) =>
           slots?.default.name === 'Slotted Anchor' ? name !== 'href' : true
         )
       ),
       children:
         slots?.default?.generator(
-          slots?.default.name === 'Slotted Anchor' ? { properties: { href: properties.href } } : undefined
+          slots?.default.name === 'Slotted Anchor' ? { properties: { href: properties?.href } } : undefined
         ) ?? [],
     },
   ],
