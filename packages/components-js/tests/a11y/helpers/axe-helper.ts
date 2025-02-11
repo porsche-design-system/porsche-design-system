@@ -1,7 +1,7 @@
 import { AxeBuilder } from '@axe-core/playwright';
 import { test as base } from '@playwright/test';
-import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
+import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 
 const deprecatedComponents = (TAG_NAMES as unknown as TagName[]).filter((tagName) => {
   const { isDeprecated } = getComponentMeta(tagName);
@@ -28,7 +28,7 @@ export const test = base.extend<AxeFixture>({
           })})`
         )
         // disable some "best-practice" rules referring to general page compliance which is not needed because only components itself are tested
-        .disableRules(['landmark-one-main', 'page-has-heading-one', 'landmark-unique', 'heading-order']);
+        .disableRules(['region', 'landmark-one-main', 'page-has-heading-one', 'landmark-unique', 'heading-order']);
 
     await use(makeAxeBuilder);
   },
