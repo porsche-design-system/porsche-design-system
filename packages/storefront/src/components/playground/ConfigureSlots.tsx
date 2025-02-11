@@ -34,6 +34,7 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
                 alignLabel="start"
                 stretch={true}
                 onUpdate={(e) => onUpdateSlots(slotName, e.detail.checked ? Object.values(slotExamples)[0] : undefined)}
+                disabled={slotName === 'default'}
               >
                 {capitalCase(slotName)}
                 <PPopover onClick={(e) => e.preventDefault()}>
