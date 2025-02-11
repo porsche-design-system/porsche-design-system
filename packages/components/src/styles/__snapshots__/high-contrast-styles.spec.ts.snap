@@ -95,6 +95,16 @@ exports[`should have only high contrast styles for p-multi-select-option 1`] = `
 ]
 `;
 
+exports[`should have only high contrast styles for p-popover 1`] = `
+[
+  {
+    ".arrow": {
+      "background": "CanvasText",
+    },
+  },
+]
+`;
+
 exports[`should have only high contrast styles for p-select-option 1`] = `
 [
   {

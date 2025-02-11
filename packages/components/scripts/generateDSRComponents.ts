@@ -61,6 +61,7 @@ const generateDSRComponents = (): void => {
         .replace(/\s+ref={.*?}/g, '') // ref props
         .replace(/\s+onMouseDown={.*?}/g, '') // onMouseDown props
         .replace(/\s+onClick={.*?}/g, '') // onClick props
+        .replace(/\s+onToggle={.*?}/g, '') // onToggle props
         .replace(/\s+onCancel={.*?}/g, '') // onCancel props
         .replace(/\s+onDismiss={.*?}/g, '') // onDismiss props
         .replace(/\s+onKeyDown={.*?}/g, '') // onKeyDown props
