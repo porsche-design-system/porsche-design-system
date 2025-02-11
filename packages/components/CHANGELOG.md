@@ -24,6 +24,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Popover`: default styling for slotted anchors
   ([#3732](https://github.com/porsche-design-system/porsche-design-system/pull/3732))
 
+### [3.26.0] - 2025-02-07
+
 ### [3.26.0-rc.0] - 2025-02-06
 
 #### Added
