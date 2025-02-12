@@ -14,7 +14,6 @@
  * How to render allowedValues ['string' | 'number'] like in p-segmented-control? Currently textfield since string can be any value.
  * How to deal with relations? e.g. p-text-field-wrapper needs input with type number when unit is used => Make stories function which gets the current state and returns the correct story
  * How to show undefined default value in select props?
- * Required * is shown at the end of the label and the reset button?
  *
  * When changing controlled props they won't be reflected on the markup in vanilla-js, is this confusing?
  *
@@ -43,15 +42,14 @@
  * - [x] - Add breakpoint customizable icon to configurator props p-tag
  * - [ ] - type string[] - multi-select currently filtered in ComponentProps
  * - [ ] - Refactor value conversions (default value, selects...)
- * - [ ] - console error when initially loading image of p-link-tile (image is still shown)
- * - [ ] - Weird error when changing form prop of p-select to empty string => form property gets set to null. Seems to be a general error when resetting a text-field prop. The example and generatedOutput looks good so maybe there is a problem when the component quickly disconnects and conntects again?
- * - [ ] - Error when setting theme initially
- * - [ ] - Link social icon error when switching icon back to undefined
- * - [ ] - Make slots toggleable if they are not required. Default slot required? In case of link required when href not set?
- * - [ ] - prop/slot relation? link href -> default slotted anchor
- * - [ ] - make all props removable?
  * - [ ] - values are not stored with correct types in state => true => 'true'
- * - [ ] - when closing banner properties show reset despite being in default state
+ *
+ * Current Errors:
+ * 404 error when initially loading image of p-link-tile (image is still shown)
+ * When resetting a reflected prop to undefined. Stencil bug: it will be set to null instead (https://github.com/ionic-team/stencil/issues/3586)
+ * When setting the theme on the prop first time. Some error in the react wrapper (select.wrapper.mjs:13 React has detected a change in the order of Hooks called by ForwardRef.)
+ *
+ * Link social icon error when switching icon back to undefined. Problem of component itself.
  */
 import type { ElementConfig, HTMLElementOrComponentProps, HTMLTagOrComponent } from '@/utils/generator/generator';
 

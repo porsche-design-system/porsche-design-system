@@ -10,7 +10,7 @@ type PlaygroundProps = {
 
 export const Playground = ({ frameworkMarkup, children }: PropsWithChildren<PlaygroundProps>) => {
   return (
-    <div className="mt-lg flex flex-col gap-lg">
+    <div className="playground mt-lg flex flex-col gap-lg">
       <div className="demo">{children}</div>
       <CodeBlock frameworkMarkup={frameworkMarkup} />
     </div>
