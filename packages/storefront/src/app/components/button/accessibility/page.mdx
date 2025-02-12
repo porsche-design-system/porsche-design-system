@@ -26,7 +26,7 @@ export const metadata = {
 
 | ARIA            | Usage                                                                                                                                         |
 | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `aria-label`    | Defines a string value that labels the interactive element. It's required for buttons with `hide-label="true"`.                               |
+| `aria-label`    | Defines a string value that labels the interactive element.                                                                                   |
 | `aria-expanded` | Exposes a visual state (e.g. expanded/collapsed) of another element.                                                                          |
 | `aria-pressed`  | Exposes the `pressed` state of a toggle button.                                                                                               |
 | `aria-haspopup` | Defines that the button opens a popup (e.g. `dialog`). It can be used in combination with `aria-expanded` to indicate the state of the popup. |
@@ -58,11 +58,9 @@ attributes if they try to set relationship between elements in different shadowD
 
 If the text of a button does not clearly indicate what the button's behavior is, add a brief, descriptive label using
 the `aria` property with the `aria-label` value to provide more context for e.g. screen reader users. Phrases like
-"Add," "Detail," or "Show" can be unclear when read out of context by a screen reader. In such instances, provide an
+"Add", "Detail" or "Show" can be unclear when read out of context by a screen reader. In such instances, provide an
 alternative text that offers more detailed information, such as "Add item XYZ to shopping cart" or "Details of product
 XYZ."
-
-If the button is used with the `hide-label` prop, the `aria` prop is **required** to provide a meaningful label.
 
 ## Tests
 

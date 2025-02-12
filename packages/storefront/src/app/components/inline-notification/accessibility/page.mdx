@@ -8,8 +8,49 @@ export const metadata = {
 
 # Inline Notification <ComponentStatus tagName="p-inline-notification"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={["Accessibility support","Development considerations","Tests"]} />
 
 ## Accessibility support
 
-TBD.
+### Keyboard
+
+| Key / state        | Function                                   |
+| ------------------ | ------------------------------------------ |
+| `Tab`, `Shift-Tab` | Moves focus to the next focusable element. |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                       | Usage                                                                                                    |
+| -------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `role="status"`            | When content is populated or changed in `state="info"`, the component announces it unobtrusively.        |
+| `role="alert"`             | When content is populated or changed in `state="warning/error"`, the component announces it immediately. |
+| `aria-labelledby="IDREF"`  | References the accessible name.                                                                          |
+| `aria-describedby="IDREF"` | References the accessible description.                                                                   |
+| `aria-hidden="true"`       | State `icon` is hidden from the screen reader.                                                           |
+| `aria-controls="ID"`       | Exposes relationship of close button.                                                                    |
+
+## Development considerations
+
+### ARIA live announcements
+
+The `Inline Notification` component uses `role="status"` and `role="alert"` to announce **content changes** for
+assistive technologies, but only if the component is **pre-rendered** and the content is added dynamically.
+
+## Tests
+
+### Automated
+
+| Technology               | Support |
+| ------------------------ | ------- |
+| AXE-Core                 | ✅      |
+| High-Contrast Mode (HCM) | ✅      |
+| Text-Zoom (200%)         | ✅      |
+
+### Manual
+
+| Technology               | Support |
+| ------------------------ | ------- |
+| Keyboard                 | ✅      |
+| Screenreader (VoiceOver) | ✅      |
