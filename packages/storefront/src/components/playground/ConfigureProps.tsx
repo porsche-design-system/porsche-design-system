@@ -19,7 +19,7 @@ type ConfigurePropsProps<T extends ConfiguratorTagNames> = {
   componentProps: ComponentMeta['propsMeta'];
   configuredProps: ElementConfig<T>['properties'];
   defaultProps: ElementConfig<HTMLTagOrComponent>['properties'];
-  onUpdateProps: (propName: keyof ElementConfig<T>['properties'], selectedValue: string | undefined) => void;
+  onUpdateProps: (propName: keyof ElementConfig<T>['properties'], selectedValue: string | boolean | undefined) => void;
   onResetAllProps: () => void;
 };
 
@@ -75,7 +75,7 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
           <PSwitch
             checked={getCurrentValue(propName, propMeta) === 'true'}
             compact={true}
-            onUpdate={(e) => onUpdateProps(propName, e.detail.checked ? 'true' : 'false')}
+            onUpdate={(e) => onUpdateProps(propName, e.detail.checked)}
           >
             <span className="inline-flex gap-static-xs">
               {capitalCase(propName)}
@@ -98,6 +98,7 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
         <PTextFieldWrapper key={propName} style={{ '--p-internal-text-field-scaling': 0.5 } as React.CSSProperties}>
           <input
             type="text"
+            name={propName}
             value={getCurrentValue(propName, propMeta) ?? ''}
             required={propMeta.isRequired}
             // disabled={propMeta.hasAlternativeSlot ? configuredSlots.default propMeta.hasAlternativeSlot.tag : false}
