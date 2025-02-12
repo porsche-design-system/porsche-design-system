@@ -12,4 +12,38 @@ export const metadata = {
 
 ## Accessibility support
 
-TBD.
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA         | Usage                                                                         |
+| ------------ | ----------------------------------------------------------------------------- |
+| `aria-label` | Defines a string value that labels the element (through the `alt` attribute). |
+
+## Development considerations
+
+### Hiding an icon from assistive technologies
+
+Sometimes icons are used purely for **decorative purposes** and do not convey any additional information. In these
+cases, it is important to **hide** the icon from assistive technologies. This can be achieved by setting the
+`aria-hidden` attribute directly on the `Icon` component.
+
+```html
+<p-icon aria-hidden="true" name="phone" /><p-text>+49 123 456 7890</p-text>
+```
+
+## Tests
+
+### Automated
+
+| Technology               | Support |
+| ------------------------ | ------- |
+| AXE-Core                 | ✅      |
+| High-Contrast Mode (HCM) | ✅      |
+| Text-Zoom (200%)         | ✅      |
+
+### Manual
+
+| Technology               | Support |
+| ------------------------ | ------- |
+| Screenreader (VoiceOver) | ✅      |
