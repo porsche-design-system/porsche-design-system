@@ -46,7 +46,7 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
   };
 
   const shouldUpdate = (
-    selectedValue: string | undefined,
+    selectedValue: string | boolean | undefined,
     propName: keyof ElementConfig<typeof tagName>['properties']
   ) => {
     if (propName === 'theme') return true;
@@ -59,12 +59,12 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
 
   const handleUpdateProps = (
     propName: keyof ElementConfig<typeof tagName>['properties'],
-    selectedValue: string | undefined
+    selectedValue: string | boolean | undefined
   ) => {
     if (!shouldUpdate(selectedValue, propName)) return;
 
     setStoryState((prev) => {
-      const isDefault = isDefaultValue(meta.propsMeta?.[propName], selectedValue);
+      const isDefault = isDefaultValue(meta.propsMeta![propName], selectedValue);
       const updatedProperties = { ...prev.properties };
 
       if (selectedValue === undefined || isDefault) {
