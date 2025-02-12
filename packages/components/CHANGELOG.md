@@ -14,10 +14,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Added
+
+- `@font-face` supports Thai language
+  ([#3750](https://github.com/porsche-design-system/porsche-design-system/pull/3750))
+- Partials: `getFontLinks` supports preloading `thai` subset
+  ([#3750](https://github.com/porsche-design-system/porsche-design-system/pull/3750))
+
 #### Changed
 
 - `Popover`: gets rendered on `#top-layer` which enables it to be shown correctly even when used e.g. within a scroll
-  container.
+  container ([#3732](https://github.com/porsche-design-system/porsche-design-system/pull/3732))
 
 #### Removed
 
