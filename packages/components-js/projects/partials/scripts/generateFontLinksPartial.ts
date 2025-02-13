@@ -3,7 +3,7 @@ import { CDN_BASE_PATH_FONTS } from '../../../../../cdn.config';
 import { minifyHTML } from './utils';
 
 export const generateFontLinksPartial = (): string => {
-  const fontSubsets = ['latin', 'greek', 'cyril', 'arabic', 'pashto', 'urdu'];
+  const fontSubsets = ['latin', 'greek', 'cyril', 'thai', 'arabic', 'pashto', 'urdu'];
   const fontWeights = ['regular', 'semi-bold', 'bold'];
 
   const types = `type FontSubset = ${fontSubsets.map((x) => `'${x}'`).join(' | ')};
@@ -47,6 +47,11 @@ export function getFontLinks(opts?: GetFontLinksOptions): string | JSX.Element |
       regular: '${FONTS_MANIFEST.porscheNextCyrilRegular}',
       'semi-bold': '${FONTS_MANIFEST.porscheNextCyrilSemiBold}',
       bold: '${FONTS_MANIFEST.porscheNextCyrilBold}',
+    },
+    thai: {
+      regular: '${FONTS_MANIFEST.porscheNextThaiRegular}',
+      'semi-bold': '${FONTS_MANIFEST.porscheNextThaiSemiBold}',
+      bold: '${FONTS_MANIFEST.porscheNextThaiBold}',
     },
     arabic: {
       regular: '${FONTS_MANIFEST.porscheNextArabicRegular}',

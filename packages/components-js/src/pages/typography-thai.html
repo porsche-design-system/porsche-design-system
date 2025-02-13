@@ -1,0 +1,554 @@
+<style>
+  p-text {
+    display: inline-flex;
+    vertical-align: top;
+    align-items: center;
+    justify-content: center;
+    margin: 4px;
+    padding: 4px;
+    background: rgba(125, 125, 125, 0.1);
+    width: 36px;
+    height: 36px;
+  }
+</style>
+
+<!-- taken from https://en.wikipedia.org/wiki/Arabic_script_in_Unicode#Compact_table -->
+<div class="playground" title="should show regular typography in thai charset (U+0E00-0E7F)">
+  <table>
+    <thead>
+    <tr>
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>E</th>
+      <th>F</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>U+0E0x</th>
+        <td><p-text size="medium" align="center" title="U+0E00 | Dec:3584">฀</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E01 | Dec:3585">ก</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E02 | Dec:3586">ข</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E03 | Dec:3587">ฃ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E04 | Dec:3588">ค</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E05 | Dec:3589">ฅ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E06 | Dec:3590">ฆ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E07 | Dec:3591">ง</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E08 | Dec:3592">จ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E09 | Dec:3593">ฉ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E0A | Dec:3594">ช</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E0B | Dec:3595">ซ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E0C | Dec:3596">ฌ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E0D | Dec:3597">ญ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E0E | Dec:3598">ฎ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E0F | Dec:3599">ฏ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+0E1x</th>
+        <td><p-text size="medium" align="center" title="U+0E10 | Dec:3600">ฐ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E11 | Dec:3601">ฑ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E12 | Dec:3602">ฒ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E13 | Dec:3603">ณ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E14 | Dec:3604">ด</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E15 | Dec:3605">ต</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E16 | Dec:3606">ถ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E17 | Dec:3607">ท</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E18 | Dec:3608">ธ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E19 | Dec:3609">น</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E1A | Dec:3610">บ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E1B | Dec:3611">ป</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E1C | Dec:3612">ผ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E1D | Dec:3613">ฝ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E1E | Dec:3614">พ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E1F | Dec:3615">ฟ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+0E2x</th>
+        <td><p-text size="medium" align="center" title="U+0E20 | Dec:3616">ภ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E21 | Dec:3617">ม</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E22 | Dec:3618">ย</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E23 | Dec:3619">ร</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E24 | Dec:3620">ฤ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E25 | Dec:3621">ล</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E26 | Dec:3622">ฦ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E27 | Dec:3623">ว</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E28 | Dec:3624">ศ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E29 | Dec:3625">ษ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E2A | Dec:3626">ส</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E2B | Dec:3627">ห</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E2C | Dec:3628">ฬ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E2D | Dec:3629">อ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E2E | Dec:3630">ฮ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E2F | Dec:3631">ฯ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+0E3x</th>
+        <td><p-text size="medium" align="center" title="U+0E30 | Dec:3632">ะ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E31 | Dec:3633">ั</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E32 | Dec:3634">า</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E33 | Dec:3635">ำ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E34 | Dec:3636">ิ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E35 | Dec:3637">ี</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E36 | Dec:3638">ึ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E37 | Dec:3639">ื</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E38 | Dec:3640">ุ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E39 | Dec:3641">ู</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E3A | Dec:3642">ฺ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E3B | Dec:3643">฻</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E3C | Dec:3644">฼</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E3D | Dec:3645">฽</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E3E | Dec:3646">฾</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E3F | Dec:3647">฿</p-text></td>
+      </tr>
+      <tr>
+        <th>U+0E4x</th>
+        <td><p-text size="medium" align="center" title="U+0E40 | Dec:3648">เ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E41 | Dec:3649">แ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E42 | Dec:3650">โ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E43 | Dec:3651">ใ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E44 | Dec:3652">ไ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E45 | Dec:3653">ๅ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E46 | Dec:3654">ๆ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E47 | Dec:3655">็</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E48 | Dec:3656">่</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E49 | Dec:3657">้</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E4A | Dec:3658">๊</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E4B | Dec:3659">๋</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E4C | Dec:3660">์</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E4D | Dec:3661">ํ</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E4E | Dec:3662">๎</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E4F | Dec:3663">๏</p-text></td>
+      </tr>
+      <tr>
+        <th>U+0E5x</th>
+        <td><p-text size="medium" align="center" title="U+0E50 | Dec:3664">๐</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E51 | Dec:3665">๑</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E52 | Dec:3666">๒</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E53 | Dec:3667">๓</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E54 | Dec:3668">๔</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E55 | Dec:3669">๕</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E56 | Dec:3670">๖</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E57 | Dec:3671">๗</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E58 | Dec:3672">๘</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E59 | Dec:3673">๙</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E5A | Dec:3674">๚</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E5B | Dec:3675">๛</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E5C | Dec:3676">๜</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E5D | Dec:3677">๝</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E5E | Dec:3678">๞</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E5F | Dec:3679">๟</p-text></td>
+      </tr>
+      <tr>
+        <th>U+0E6x</th>
+        <td><p-text size="medium" align="center" title="U+0E60 | Dec:3680">๠</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E61 | Dec:3681">๡</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E62 | Dec:3682">๢</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E63 | Dec:3683">๣</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E64 | Dec:3684">๤</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E65 | Dec:3685">๥</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E66 | Dec:3686">๦</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E67 | Dec:3687">๧</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E68 | Dec:3688">๨</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E69 | Dec:3689">๩</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E6A | Dec:3690">๪</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E6B | Dec:3691">๫</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E6C | Dec:3692">๬</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E6D | Dec:3693">๭</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E6E | Dec:3694">๮</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E6F | Dec:3695">๯</p-text></td>
+      </tr>
+      <tr>
+        <th>U+0E7x</th>
+        <td><p-text size="medium" align="center" title="U+0E70 | Dec:3696">๰</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E71 | Dec:3697">๱</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E72 | Dec:3698">๲</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E73 | Dec:3699">๳</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E74 | Dec:3700">๴</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E75 | Dec:3701">๵</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E76 | Dec:3702">๶</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E77 | Dec:3703">๷</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E78 | Dec:3704">๸</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E79 | Dec:3705">๹</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E7A | Dec:3706">๺</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E7B | Dec:3707">๻</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E7C | Dec:3708">๼</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E7D | Dec:3709">๽</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E7E | Dec:3710">๾</p-text></td>
+        <td><p-text size="medium" align="center" title="U+0E7F | Dec:3711">๿</p-text></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="playground" title="should show semi-bold typography in thai charset (U+0E00-0E7F)">
+  <table>
+    <thead>
+    <tr>
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>E</th>
+      <th>F</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>U+0E0x</th>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E00 | Dec:3584">฀</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E01 | Dec:3585">ก</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E02 | Dec:3586">ข</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E03 | Dec:3587">ฃ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E04 | Dec:3588">ค</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E05 | Dec:3589">ฅ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E06 | Dec:3590">ฆ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E07 | Dec:3591">ง</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E08 | Dec:3592">จ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E09 | Dec:3593">ฉ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E0A | Dec:3594">ช</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E0B | Dec:3595">ซ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E0C | Dec:3596">ฌ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E0D | Dec:3597">ญ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E0E | Dec:3598">ฎ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E0F | Dec:3599">ฏ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+0E1x</th>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E10 | Dec:3600">ฐ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E11 | Dec:3601">ฑ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E12 | Dec:3602">ฒ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E13 | Dec:3603">ณ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E14 | Dec:3604">ด</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E15 | Dec:3605">ต</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E16 | Dec:3606">ถ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E17 | Dec:3607">ท</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E18 | Dec:3608">ธ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E19 | Dec:3609">น</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E1A | Dec:3610">บ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E1B | Dec:3611">ป</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E1C | Dec:3612">ผ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E1D | Dec:3613">ฝ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E1E | Dec:3614">พ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E1F | Dec:3615">ฟ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+0E2x</th>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E20 | Dec:3616">ภ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E21 | Dec:3617">ม</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E22 | Dec:3618">ย</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E23 | Dec:3619">ร</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E24 | Dec:3620">ฤ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E25 | Dec:3621">ล</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E26 | Dec:3622">ฦ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E27 | Dec:3623">ว</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E28 | Dec:3624">ศ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E29 | Dec:3625">ษ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E2A | Dec:3626">ส</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E2B | Dec:3627">ห</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E2C | Dec:3628">ฬ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E2D | Dec:3629">อ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E2E | Dec:3630">ฮ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E2F | Dec:3631">ฯ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+0E3x</th>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E30 | Dec:3632">ะ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E31 | Dec:3633">ั</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E32 | Dec:3634">า</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E33 | Dec:3635">ำ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E34 | Dec:3636">ิ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E35 | Dec:3637">ี</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E36 | Dec:3638">ึ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E37 | Dec:3639">ื</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E38 | Dec:3640">ุ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E39 | Dec:3641">ู</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E3A | Dec:3642">ฺ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E3B | Dec:3643">฻</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E3C | Dec:3644">฼</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E3D | Dec:3645">฽</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E3E | Dec:3646">฾</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E3F | Dec:3647">฿</p-text></td>
+      </tr>
+      <tr>
+        <th>U+0E4x</th>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E40 | Dec:3648">เ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E41 | Dec:3649">แ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E42 | Dec:3650">โ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E43 | Dec:3651">ใ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E44 | Dec:3652">ไ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E45 | Dec:3653">ๅ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E46 | Dec:3654">ๆ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E47 | Dec:3655">็</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E48 | Dec:3656">่</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E49 | Dec:3657">้</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E4A | Dec:3658">๊</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E4B | Dec:3659">๋</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E4C | Dec:3660">์</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E4D | Dec:3661">ํ</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E4E | Dec:3662">๎</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E4F | Dec:3663">๏</p-text></td>
+      </tr>
+      <tr>
+        <th>U+0E5x</th>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E50 | Dec:3664">๐</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E51 | Dec:3665">๑</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E52 | Dec:3666">๒</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E53 | Dec:3667">๓</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E54 | Dec:3668">๔</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E55 | Dec:3669">๕</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E56 | Dec:3670">๖</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E57 | Dec:3671">๗</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E58 | Dec:3672">๘</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E59 | Dec:3673">๙</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E5A | Dec:3674">๚</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E5B | Dec:3675">๛</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E5C | Dec:3676">๜</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E5D | Dec:3677">๝</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E5E | Dec:3678">๞</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E5F | Dec:3679">๟</p-text></td>
+      </tr>
+      <tr>
+        <th>U+0E6x</th>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E60 | Dec:3680">๠</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E61 | Dec:3681">๡</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E62 | Dec:3682">๢</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E63 | Dec:3683">๣</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E64 | Dec:3684">๤</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E65 | Dec:3685">๥</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E66 | Dec:3686">๦</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E67 | Dec:3687">๧</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E68 | Dec:3688">๨</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E69 | Dec:3689">๩</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E6A | Dec:3690">๪</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E6B | Dec:3691">๫</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E6C | Dec:3692">๬</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E6D | Dec:3693">๭</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E6E | Dec:3694">๮</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E6F | Dec:3695">๯</p-text></td>
+      </tr>
+      <tr>
+        <th>U+0E7x</th>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E70 | Dec:3696">๰</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E71 | Dec:3697">๱</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E72 | Dec:3698">๲</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E73 | Dec:3699">๳</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E74 | Dec:3700">๴</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E75 | Dec:3701">๵</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E76 | Dec:3702">๶</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E77 | Dec:3703">๷</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E78 | Dec:3704">๸</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E79 | Dec:3705">๹</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E7A | Dec:3706">๺</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E7B | Dec:3707">๻</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E7C | Dec:3708">๼</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E7D | Dec:3709">๽</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E7E | Dec:3710">๾</p-text></td>
+        <td><p-text size="medium" align="center" weight="semi-bold" title="U+0E7F | Dec:3711">๿</p-text></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="playground" title="should show bold typography in thai charset (U+0E00-0E7F)">
+  <table>
+    <thead>
+    <tr>
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>E</th>
+      <th>F</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>U+0E0x</th>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E00 | Dec:3584">฀</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E01 | Dec:3585">ก</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E02 | Dec:3586">ข</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E03 | Dec:3587">ฃ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E04 | Dec:3588">ค</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E05 | Dec:3589">ฅ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E06 | Dec:3590">ฆ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E07 | Dec:3591">ง</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E08 | Dec:3592">จ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E09 | Dec:3593">ฉ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E0A | Dec:3594">ช</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E0B | Dec:3595">ซ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E0C | Dec:3596">ฌ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E0D | Dec:3597">ญ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E0E | Dec:3598">ฎ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E0F | Dec:3599">ฏ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+0E1x</th>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E10 | Dec:3600">ฐ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E11 | Dec:3601">ฑ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E12 | Dec:3602">ฒ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E13 | Dec:3603">ณ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E14 | Dec:3604">ด</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E15 | Dec:3605">ต</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E16 | Dec:3606">ถ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E17 | Dec:3607">ท</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E18 | Dec:3608">ธ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E19 | Dec:3609">น</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E1A | Dec:3610">บ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E1B | Dec:3611">ป</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E1C | Dec:3612">ผ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E1D | Dec:3613">ฝ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E1E | Dec:3614">พ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E1F | Dec:3615">ฟ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+0E2x</th>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E20 | Dec:3616">ภ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E21 | Dec:3617">ม</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E22 | Dec:3618">ย</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E23 | Dec:3619">ร</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E24 | Dec:3620">ฤ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E25 | Dec:3621">ล</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E26 | Dec:3622">ฦ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E27 | Dec:3623">ว</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E28 | Dec:3624">ศ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E29 | Dec:3625">ษ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E2A | Dec:3626">ส</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E2B | Dec:3627">ห</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E2C | Dec:3628">ฬ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E2D | Dec:3629">อ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E2E | Dec:3630">ฮ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E2F | Dec:3631">ฯ</p-text></td>
+      </tr>
+      <tr>
+        <th>U+0E3x</th>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E30 | Dec:3632">ะ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E31 | Dec:3633">ั</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E32 | Dec:3634">า</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E33 | Dec:3635">ำ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E34 | Dec:3636">ิ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E35 | Dec:3637">ี</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E36 | Dec:3638">ึ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E37 | Dec:3639">ื</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E38 | Dec:3640">ุ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E39 | Dec:3641">ู</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E3A | Dec:3642">ฺ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E3B | Dec:3643">฻</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E3C | Dec:3644">฼</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E3D | Dec:3645">฽</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E3E | Dec:3646">฾</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E3F | Dec:3647">฿</p-text></td>
+      </tr>
+      <tr>
+        <th>U+0E4x</th>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E40 | Dec:3648">เ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E41 | Dec:3649">แ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E42 | Dec:3650">โ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E43 | Dec:3651">ใ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E44 | Dec:3652">ไ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E45 | Dec:3653">ๅ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E46 | Dec:3654">ๆ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E47 | Dec:3655">็</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E48 | Dec:3656">่</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E49 | Dec:3657">้</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E4A | Dec:3658">๊</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E4B | Dec:3659">๋</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E4C | Dec:3660">์</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E4D | Dec:3661">ํ</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E4E | Dec:3662">๎</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E4F | Dec:3663">๏</p-text></td>
+      </tr>
+      <tr>
+        <th>U+0E5x</th>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E50 | Dec:3664">๐</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E51 | Dec:3665">๑</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E52 | Dec:3666">๒</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E53 | Dec:3667">๓</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E54 | Dec:3668">๔</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E55 | Dec:3669">๕</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E56 | Dec:3670">๖</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E57 | Dec:3671">๗</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E58 | Dec:3672">๘</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E59 | Dec:3673">๙</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E5A | Dec:3674">๚</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E5B | Dec:3675">๛</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E5C | Dec:3676">๜</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E5D | Dec:3677">๝</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E5E | Dec:3678">๞</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E5F | Dec:3679">๟</p-text></td>
+      </tr>
+      <tr>
+        <th>U+0E6x</th>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E60 | Dec:3680">๠</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E61 | Dec:3681">๡</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E62 | Dec:3682">๢</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E63 | Dec:3683">๣</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E64 | Dec:3684">๤</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E65 | Dec:3685">๥</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E66 | Dec:3686">๦</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E67 | Dec:3687">๧</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E68 | Dec:3688">๨</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E69 | Dec:3689">๩</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E6A | Dec:3690">๪</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E6B | Dec:3691">๫</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E6C | Dec:3692">๬</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E6D | Dec:3693">๭</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E6E | Dec:3694">๮</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E6F | Dec:3695">๯</p-text></td>
+      </tr>
+      <tr>
+        <th>U+0E7x</th>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E70 | Dec:3696">๰</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E71 | Dec:3697">๱</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E72 | Dec:3698">๲</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E73 | Dec:3699">๳</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E74 | Dec:3700">๴</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E75 | Dec:3701">๵</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E76 | Dec:3702">๶</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E77 | Dec:3703">๷</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E78 | Dec:3704">๸</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E79 | Dec:3705">๹</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E7A | Dec:3706">๺</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E7B | Dec:3707">๻</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E7C | Dec:3708">๼</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E7D | Dec:3709">๽</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E7E | Dec:3710">๾</p-text></td>
+        <td><p-text size="medium" align="center" weight="bold" title="U+0E7F | Dec:3711">๿</p-text></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

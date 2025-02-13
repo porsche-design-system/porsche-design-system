@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components",
-  "version": "3.26.0",
+  "version": "3.27.0-rc.0",
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
@@ -38,6 +38,7 @@
     "clean:build": "rm -rf ./.stencil && rm -rf ./dist && rm -rf ./www"
   },
   "dependencies": {
+    "@floating-ui/dom": "^1.6.13",
     "@porsche-design-system/crest": "0.0.0",
     "@porsche-design-system/icons": "0.0.0",
     "@porsche-design-system/marque": "0.0.0",
@@ -45,7 +46,6 @@
     "@porsche-design-system/shared": "0.0.0",
     "@porsche-design-system/styles": "0.0.0",
     "@splidejs/splide": "^4.1.4",
-    "@floating-ui/dom": "^1.6.13",
     "@stencil/core": "~4.23.0"
   },
   "devDependencies": {

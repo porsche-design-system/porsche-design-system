@@ -39,11 +39,11 @@ describe('format: jsx', () => {
 describe('format: sha256', () => {
   it('should return hash for font-face styles', async () => {
     const result = getFontFaceStyles({ format: 'sha256' });
-    expect(result).toMatchInlineSnapshot(`"'sha256-yxwVJW/K4jacbKpVjEl1gF4lo1qrXE250ZTsjsFayTQ='"`);
+    expect(result).toMatchInlineSnapshot(`"'sha256-rXyw25PeQ2oHdM/JTsxVSGkALBIeU2FeF0K6alV0aNo='"`);
   });
 
   it('should return hash for font-face styles for china cdn', async () => {
     const result = getFontFaceStyles({ format: 'sha256', cdn: 'cn' });
-    expect(result).toMatchInlineSnapshot(`"'sha256-6u6yvVBA0e9fHJMWNYhggxpV2aUJvM2TXDAKcYI84K4='"`);
+    expect(result).toMatchInlineSnapshot(`"'sha256-ArHnzpu6s752rekMd79oCrY9Y2QJzN79W17f/sUwuYE='"`);
   });
 });
