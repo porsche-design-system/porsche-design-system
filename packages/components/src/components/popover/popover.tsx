@@ -63,9 +63,8 @@ export class Popover {
   }
 
   public disconnectedCallback(): void {
-    if (typeof this.cleanUp === 'function') {
-      this.cleanUp(); // cleanup function to stop the auto updates, https://floating-ui.com/docs/autoupdate
-    }
+    // ensures floating ui event listeners are removed in case popover is removed from DOM
+    this.handlePopover(false);
   }
 
   public render(): JSX.Element {
@@ -104,15 +103,23 @@ export class Popover {
   }
 
   public componentDidRender(): void {
-    if (this.open) {
-      if (this.hasNativePopoverSupport) {
-        this.popover.showPopover(); // needs to be called after render cycle to be able to render the popover conditionally
-      }
-      this.cleanUp = autoUpdate(this.button, this.popover, this.updatePosition);
-    } else if (typeof this.cleanUp === 'function') {
-      this.cleanUp(); // cleanup function to stop the auto updates, https://floating-ui.com/docs/autoupdate
-    }
+    // needs to be called after render cycle to be able to render the popover conditionally
+    this.handlePopover(this.open);
   }
+
+  private handlePopover = (open: boolean): void => {
+    if (open && typeof this.cleanUp === 'undefined') {
+      if (this.hasNativePopoverSupport) {
+        this.popover.showPopover();
+      }
+      // ensures floating ui event listeners are added when popover is opened
+      this.cleanUp = autoUpdate(this.button, this.popover, this.updatePosition);
+    } else if (!open && typeof this.cleanUp === 'function') {
+      // ensures floating ui event listeners are removed when popover is closed
+      this.cleanUp();
+      this.cleanUp = undefined;
+    }
+  };
 
   private updatePosition = async (): Promise<void> => {
     const { x, y, placement, middlewareData } = await computePosition(this.button, this.popover, {
