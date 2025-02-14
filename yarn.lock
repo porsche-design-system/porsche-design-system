@@ -428,16 +428,17 @@
     jsonpointer "^5.0.0"
     leven "^3.1.0"
 
-"@arethetypeswrong/core@0.15.1":
-  version "0.15.1"
-  resolved "https://registry.yarnpkg.com/@arethetypeswrong/core/-/core-0.15.1.tgz#b01b2d73ffa9d341fcc1c1ccc23bb30d2e64cf0e"
-  integrity sha512-FYp6GBAgsNz81BkfItRz8RLZO03w5+BaeiPma1uCfmxTnxbtuMrI/dbzGiOk8VghO108uFI0oJo0OkewdSHw7g==
+"@arethetypeswrong/core@0.17.3":
+  version "0.17.3"
+  resolved "https://registry.yarnpkg.com/@arethetypeswrong/core/-/core-0.17.3.tgz#ddcf903660f971e4b9948c6691f9b2f04919f5f0"
+  integrity sha512-2TB7O5JmC7UX7QHRGGftxRVQjV4Ce6oOIDGIDDERyT9dQ8lK/tRGfFubzO80rWeXm/gSrA8jirlXSWSE1i5ynQ==
   dependencies:
     "@andrewbranch/untar.js" "^1.0.3"
+    cjs-module-lexer "^1.2.3"
     fflate "^0.8.2"
+    lru-cache "^10.4.3"
     semver "^7.5.4"
-    ts-expose-internals-conditionally "1.0.0-empty.0"
-    typescript "5.3.3"
+    typescript "5.6.1-rc"
     validate-npm-package-name "^5.0.0"
 
 "@axe-core/playwright@^4.10.1":
@@ -10253,6 +10254,11 @@ cjs-module-lexer@^1.0.0:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/cjs-module-lexer/-/cjs-module-lexer-1.2.3.tgz#6c370ab19f8a3394e318fe682686ec0ac684d107"
   integrity sha512-0TNiGstbQmCFwt4akjjBg5pLRTSyj/PkWQ1ZoO2zntmg9yLqSRxwEa4iCfQLGjqhiqBfOJa7W/E8wfGrTDmlZQ==
+
+cjs-module-lexer@^1.2.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/cjs-module-lexer/-/cjs-module-lexer-1.4.3.tgz#0f79731eb8cfe1ec72acd4066efac9d61991b00d"
+  integrity sha512-9z8TZaGM1pfswYeXrUpzPrkx8UnWYdhJclsiYMm6x/w5+nN+8Tf/LnAgfLGQCm59qAOxU8WwHEq2vNwF6i4j+Q==
 
 class-utils@^0.3.5:
   version "0.3.6"
@@ -25600,11 +25606,6 @@ ts-api-utils@^1.3.0:
   resolved "https://registry.yarnpkg.com/ts-api-utils/-/ts-api-utils-1.3.0.tgz#4b490e27129f1e8e686b45cc4ab63714dc60eea1"
   integrity sha512-UQMIo7pb8WRomKR1/+MFVLTroIvDVtMX3K6OUir8ynLyzB8Jeriont2bTAtmNPa1ekAgN7YPDyf6V+ygrdU+eQ==
 
-ts-expose-internals-conditionally@1.0.0-empty.0:
-  version "1.0.0-empty.0"
-  resolved "https://registry.yarnpkg.com/ts-expose-internals-conditionally/-/ts-expose-internals-conditionally-1.0.0-empty.0.tgz#fd9e5acb481466b0f5936f6e246eb37d0c3ceb28"
-  integrity sha512-F8m9NOF6ZhdOClDVdlM8gj3fDCav4ZIFSs/EI3ksQbAAXVSCN/Jh5OCJDDZWBuBy9psFc6jULGDlPwjMYMhJDw==
-
 ts-graphviz@^2.1.2:
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/ts-graphviz/-/ts-graphviz-2.1.4.tgz#16db94dc83a7a7b5af6f5b113cd26c0c56c7f9f8"
@@ -25928,10 +25929,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
-typescript@5.3.3:
-  version "5.3.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.3.tgz#b3ce6ba258e72e6305ba66f5c9b452aaee3ffe37"
-  integrity sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==
+typescript@5.6.1-rc:
+  version "5.6.1-rc"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.6.1-rc.tgz#d5e4d7d8170174fed607b74cc32aba3d77018e02"
+  integrity sha512-E3b2+1zEFu84jB0YQi9BORDjz9+jGbwwy1Zi3G0LUNw7a7cePUrHMRNy8aPh53nXpkFGVHSxIZo5vKTfYaFiBQ==
 
 typescript@>=5.0.2:
   version "5.4.4"
