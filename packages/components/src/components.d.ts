@@ -32,6 +32,7 @@ import { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
 import { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 import { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
+import { InputPasswordAutoComplete, InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
 import { LinkIcon } from "./components/link/link-utils";
 import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 import { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
@@ -97,6 +98,7 @@ export { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
 export { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 export { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 export { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
+export { InputPasswordAutoComplete, InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
 export { LinkIcon } from "./components/link/link-utils";
 export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 export { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
@@ -1012,6 +1014,80 @@ export namespace Components {
           * Adapts the inline-notification color depending on the theme.
          */
         "theme"?: Theme;
+    }
+    interface PInputPassword {
+        /**
+          * Specifies whether the input can be autofilled by the browser
+         */
+        "autoComplete"?: InputPasswordAutoComplete;
+        /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Marks the password input as disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * The id of a form element the password input should be associated with.
+         */
+        "form"?: string;
+        /**
+          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * The max length of the password input.
+         */
+        "maxLength"?: number;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The min length of the password input.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the password input.
+         */
+        "name": string;
+        /**
+          * The placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * Specifies whether the password input should be read-only.
+         */
+        "readOnly"?: boolean;
+        /**
+          * Marks the password input as required.
+         */
+        "required"?: boolean;
+        /**
+          * @experimental Show or hide password toggle for `input type="password"`.
+         */
+        "showPasswordToggle"?: boolean;
+        /**
+          * Specifies whether the input should have its spelling and grammar checked
+         */
+        "spellCheck"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: InputPasswordState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * The password input value.
+         */
+        "value"?: string;
     }
     interface PLink {
         /**
@@ -2380,6 +2456,10 @@ export interface PInlineNotificationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPInlineNotificationElement;
 }
+export interface PInputPasswordCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPInputPasswordElement;
+}
 export interface PLinkTileProductCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPLinkTileProductElement;
@@ -2746,6 +2826,25 @@ declare global {
     var HTMLPInlineNotificationElement: {
         prototype: HTMLPInlineNotificationElement;
         new (): HTMLPInlineNotificationElement;
+    };
+    interface HTMLPInputPasswordElementEventMap {
+        "change": InputPasswordChangeEventDetail;
+        "blur": InputPasswordBlurEventDetail;
+        "input": InputPasswordInputEventDetail;
+    }
+    interface HTMLPInputPasswordElement extends Components.PInputPassword, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPInputPasswordElementEventMap>(type: K, listener: (this: HTMLPInputPasswordElement, ev: PInputPasswordCustomEvent<HTMLPInputPasswordElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPInputPasswordElementEventMap>(type: K, listener: (this: HTMLPInputPasswordElement, ev: PInputPasswordCustomEvent<HTMLPInputPasswordElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPInputPasswordElement: {
+        prototype: HTMLPInputPasswordElement;
+        new (): HTMLPInputPasswordElement;
     };
     interface HTMLPLinkElement extends Components.PLink, HTMLStencilElement {
     }
@@ -3299,6 +3398,7 @@ declare global {
         "p-headline": HTMLPHeadlineElement;
         "p-icon": HTMLPIconElement;
         "p-inline-notification": HTMLPInlineNotificationElement;
+        "p-input-password": HTMLPInputPasswordElement;
         "p-link": HTMLPLinkElement;
         "p-link-pure": HTMLPLinkPureElement;
         "p-link-social": HTMLPLinkSocialElement;
@@ -4291,6 +4391,92 @@ declare namespace LocalJSX {
           * Adapts the inline-notification color depending on the theme.
          */
         "theme"?: Theme;
+    }
+    interface PInputPassword {
+        /**
+          * Specifies whether the input can be autofilled by the browser
+         */
+        "autoComplete"?: InputPasswordAutoComplete;
+        /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Marks the password input as disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * The id of a form element the password input should be associated with.
+         */
+        "form"?: string;
+        /**
+          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * The max length of the password input.
+         */
+        "maxLength"?: number;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The min length of the password input.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the password input.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the password input has lost focus.
+         */
+        "onBlur"?: (event: PInputPasswordCustomEvent<InputPasswordBlurEventDetail>) => void;
+        /**
+          * Emitted when the password input loses focus after its value was changed.
+         */
+        "onChange"?: (event: PInputPasswordCustomEvent<InputPasswordChangeEventDetail>) => void;
+        /**
+          * Emitted when the value has been changed as a direct result of a user action.
+         */
+        "onInput"?: (event: PInputPasswordCustomEvent<InputPasswordInputEventDetail>) => void;
+        /**
+          * The placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * Specifies whether the password input should be read-only.
+         */
+        "readOnly"?: boolean;
+        /**
+          * Marks the password input as required.
+         */
+        "required"?: boolean;
+        /**
+          * @experimental Show or hide password toggle for `input type="password"`.
+         */
+        "showPasswordToggle"?: boolean;
+        /**
+          * Specifies whether the input should have its spelling and grammar checked
+         */
+        "spellCheck"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: InputPasswordState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * The password input value.
+         */
+        "value"?: string;
     }
     interface PLink {
         /**
@@ -5773,6 +5959,7 @@ declare namespace LocalJSX {
         "p-headline": PHeadline;
         "p-icon": PIcon;
         "p-inline-notification": PInlineNotification;
+        "p-input-password": PInputPassword;
         "p-link": PLink;
         "p-link-pure": PLinkPure;
         "p-link-social": PLinkSocial;
@@ -5899,6 +6086,7 @@ declare module "@stencil/core" {
             "p-headline": LocalJSX.PHeadline & JSXBase.HTMLAttributes<HTMLPHeadlineElement>;
             "p-icon": LocalJSX.PIcon & JSXBase.HTMLAttributes<HTMLPIconElement>;
             "p-inline-notification": LocalJSX.PInlineNotification & JSXBase.HTMLAttributes<HTMLPInlineNotificationElement>;
+            "p-input-password": LocalJSX.PInputPassword & JSXBase.HTMLAttributes<HTMLPInputPasswordElement>;
             "p-link": LocalJSX.PLink & JSXBase.HTMLAttributes<HTMLPLinkElement>;
             "p-link-pure": LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
             /**
