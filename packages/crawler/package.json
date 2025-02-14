@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "@porsche-design-system/components-js": "3.26.0",
+    "@porsche-design-system/components-js": "3.27.0-rc.0",
     "@porsche-design-system/shared": "0.0.0"
   },
   "peerDependencies": {

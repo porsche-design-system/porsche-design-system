@@ -16,11 +16,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Changed
 
-- `Popover`: gets rendered on `#top-layer` which enables it to be shown correctly even when used e.g. within a scroll
-  container.
 - **Breaking Change** `AG Grid`: Updated from v32 to v33, which introduced a new Theming API. AG Grid migrated from a
   CSS-based theming approach to a JavaScript object-based theming system. As a result, our custom theme also had to be
   adjusted accordingly. ([#3740](https://github.com/porsche-design-system/porsche-design-system/pull/3740))
+
+### [3.27.0-rc.0] - 2025-02-13
+
+#### Added
+
+- `@font-face` supports Thai language
+  ([#3750](https://github.com/porsche-design-system/porsche-design-system/pull/3750))
+- Partials: `getFontLinks` supports preloading `thai` subset
+  ([#3750](https://github.com/porsche-design-system/porsche-design-system/pull/3750))
+
+#### Changed
+
+- `Popover`: gets rendered on `#top-layer` which enables it to be shown correctly even when used e.g. within a scroll
+  container ([#3732](https://github.com/porsche-design-system/porsche-design-system/pull/3732))
 
 #### Removed
 
