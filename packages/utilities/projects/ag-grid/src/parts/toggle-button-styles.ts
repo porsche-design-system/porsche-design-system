@@ -11,7 +11,7 @@ import {
   themeLightNotificationSuccess,
   themeLightPrimary,
   themeLightStateDisabled,
-} from '@porsche-design-system/components-js/styles';
+} from '@porsche-design-system/styles';
 
 import { darkenColor } from '@porsche-design-system/shared';
 import { type Part, createPart } from 'ag-grid-community';
