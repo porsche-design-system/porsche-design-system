@@ -288,6 +288,7 @@
   "/styles/theme",
   "/styles/typography",
   "https://ag-grid.com",
+  "https://ag-grid.com/javascript-data-grid/grid-interface/#global-grid-options",
   "https://ag-grid.com/javascript-data-grid/themes",
   "https://angular.dev/api/core/importProvidersFrom",
   "https://angular.dev/guide/components/importing#standalone-components",

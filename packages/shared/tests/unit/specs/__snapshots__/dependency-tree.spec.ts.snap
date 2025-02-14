@@ -15,12 +15,14 @@ exports[`should have no regression for dependency tree 1`] = `
     "lib/partialNames.js",
     "lib/tagNames.js",
     "lib/tagNamesWithChunk.js",
+    "styles/color-utils.js",
     "styles/getMinifiedCss.js",
   ],
   "lib/codeSamples.js": [],
   "lib/partialNames.js": [],
   "lib/tagNames.js": [],
   "lib/tagNamesWithChunk.js": [],
+  "styles/color-utils.js": [],
   "styles/getMinifiedCss.js": [],
 }
 `;

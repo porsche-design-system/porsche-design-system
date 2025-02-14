@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Changed
+
+- **Breaking Change** `AG Grid`: Updated from v32 to v33, which introduced a new Theming API. AG Grid migrated from a
+  CSS-based theming approach to a JavaScript object-based theming system. As a result, our custom theme also had to be
+  adjusted accordingly. ([#3740](https://github.com/porsche-design-system/porsche-design-system/pull/3740))
+
 ### [3.27.0-rc.0] - 2025-02-13
 
 #### Added

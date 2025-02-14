@@ -192,9 +192,10 @@ import { ToastStateNeutralComponent } from './generated/toast-state-neutral.comp
 import { ToastStateSuccessComponent } from './generated/toast-state-success.component';
 import { TypographyCyrilComponent } from './generated/typography-cyril.component';
 import { TypographyFallbackComponent } from './generated/typography-fallback.component';
-import { TypographyGreekAndCopticComponent } from './generated/typography-greek-and-coptic.component';
+import { TypographyGreekCopticComponent } from './generated/typography-greek-coptic.component';
 import { TypographyLatinComponent } from './generated/typography-latin.component';
 import { TypographyMiddleEastComponent } from './generated/typography-middle-east.component';
+import { TypographyThaiComponent } from './generated/typography-thai.component';
 import { WordmarkComponent } from './generated/wordmark.component';
 
 export const generatedPages = [
@@ -359,9 +360,10 @@ export const generatedPages = [
   ToastStateSuccessComponent,
   TypographyCyrilComponent,
   TypographyFallbackComponent,
-  TypographyGreekAndCopticComponent,
+  TypographyGreekCopticComponent,
   TypographyLatinComponent,
   TypographyMiddleEastComponent,
+  TypographyThaiComponent,
   WordmarkComponent,
 ];
 
@@ -1162,9 +1164,9 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: TypographyFallbackComponent,
   },
   {
-    name: 'Typography Greek And Coptic',
-    path: 'typography-greek-and-coptic',
-    component: TypographyGreekAndCopticComponent,
+    name: 'Typography Greek Coptic',
+    path: 'typography-greek-coptic',
+    component: TypographyGreekCopticComponent,
   },
   {
     name: 'Typography Latin',
@@ -1175,6 +1177,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Typography Middle East',
     path: 'typography-middle-east',
     component: TypographyMiddleEastComponent,
+  },
+  {
+    name: 'Typography Thai',
+    path: 'typography-thai',
+    component: TypographyThaiComponent,
   },
   {
     name: 'Wordmark',
