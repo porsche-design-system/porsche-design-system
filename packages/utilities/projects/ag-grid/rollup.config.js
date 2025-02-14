@@ -8,7 +8,7 @@ const outputDir = 'dist';
 
 const isDevBuild = process.env.PDS_IS_STAGING === '1';
 
-const external = ['ag-grid-community', '@porsche-design-system/components-js/styles'];
+const external = ['ag-grid-community'];
 
 const sharedPlugins = [
   replace({
@@ -19,7 +19,7 @@ const sharedPlugins = [
     'process.env.NODE_ENV': '"production"',
   }),
   resolve({
-    resolveOnly: [/^@porsche-design-system\/(shared|icons).*$/],
+    resolveOnly: [/^@porsche-design-system\/(shared|icons|styles).*$/],
   }),
 ];
 
