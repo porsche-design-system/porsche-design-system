@@ -15,7 +15,7 @@ import {
 
 import { darkenColor } from '@porsche-design-system/shared';
 import { type Part, createPart } from 'ag-grid-community';
-import { PdsThemeMode } from '../types/theme-mode';
+import { pdsThemeModeDark } from '../types/theme-mode';
 
 const themeLightSuccessColorDarken = darkenColor(themeLightNotificationSuccess);
 const themeDarkSuccessColorDarken = darkenColor(themeDarkNotificationSuccess);
@@ -34,7 +34,7 @@ export const toggleButtonStyle: Part = createPart({
     toggleButtonDisabledColor: themeLightStateDisabled,
   },
   modeParams: {
-    [PdsThemeMode.DARK]: {
+    [pdsThemeModeDark]: {
       toggleButtonOnBackgroundColor: themeDarkNotificationSuccess,
       toggleButtonOffBackgroundColor: themeDarkBackgroundBase,
       toggleButtonSwitchBackgroundColor: themeDarkPrimary,

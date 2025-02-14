@@ -33,7 +33,7 @@ import { type Theme, themeQuartz } from 'ag-grid-community';
 
 import { darkenColor } from '@porsche-design-system/shared';
 import { checkboxStyle, pdsSvgIcons, toggleButtonStyle } from '../parts';
-import { PdsThemeMode } from '../types/theme-mode';
+import { pdsThemeModeDark } from '../types/theme-mode';
 
 export const pdsTheme: Theme = themeQuartz
   .withParams({
@@ -94,7 +94,7 @@ export const pdsTheme: Theme = themeQuartz
       invalidColor: themeDarkNotificationError,
       inputFocusBorder: `1px solid ${themeDarkPrimary}`,
     },
-    PdsThemeMode.DARK
+    pdsThemeModeDark
   )
   .withPart(pdsSvgIcons)
   .withPart(toggleButtonStyle)

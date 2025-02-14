@@ -1,3 +1,1 @@
-export enum PdsThemeMode {
-  DARK = 'dark',
-}
+export const pdsThemeModeDark = 'dark';
