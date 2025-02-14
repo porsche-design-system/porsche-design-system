@@ -852,6 +852,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --shared
+      - name: 'Build Assets'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --assets
       - name: 'Build Utilities'
         uses: ./.github/actions/docker-run-playwright
         with:
