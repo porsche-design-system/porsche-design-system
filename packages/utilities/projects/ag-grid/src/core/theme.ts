@@ -27,7 +27,7 @@ import {
   themeLightStateDisabled,
   themeLightStateFocus,
   themeLightStateHover,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/components-js/styles';
 
 import { type Theme, themeQuartz } from 'ag-grid-community';
 
