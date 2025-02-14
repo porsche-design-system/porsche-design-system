@@ -1,9 +1,10 @@
 import { FONTS_MANIFEST } from '@porsche-design-system/fonts';
-import { fontWeight } from '@porsche-design-system/styles';
-import { CDN_BASE_PATH_FONTS, CDN_BASE_URL_COM, CDN_BASE_URL_CN } from '../../../../../cdn.config';
 import { camelCase } from 'change-case';
+import { CDN_BASE_PATH_FONTS, CDN_BASE_URL_CN, CDN_BASE_URL_COM } from '../../../../../cdn.config';
 
 import { getMinifiedCss } from '@porsche-design-system/shared';
+// TODO: This should be imported from @porsche-design-system/styles but we currently have a circular dependency between the assets and utilities package
+import { fontWeight } from '@porsche-design-system/styles/src/js';
 import type { Styles } from 'jss';
 
 type Cdn = 'com' | 'cn' | 'localhost';
