@@ -1,3 +1,4 @@
+import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import typescript from '@rollup/plugin-typescript';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
@@ -7,6 +8,8 @@ const outputDir = 'dist';
 
 const isDevBuild = process.env.PDS_IS_STAGING === '1';
 
+const external = ['ag-grid-community', '@porsche-design-system/components-js/styles'];
+
 const sharedPlugins = [
   replace({
     preventAssignment: true,
@@ -15,28 +18,35 @@ const sharedPlugins = [
       : 'global.PORSCHE_DESIGN_SYSTEM_CDN_URL + "/porsche-design-system"', // global (not window!) because this is used during SSR on server side in nodejs
     'process.env.NODE_ENV': '"production"',
   }),
+  resolve({
+    resolveOnly: [/^@porsche-design-system\/(shared|icons).*$/],
+  }),
 ];
 
 export default [
   // Default JS Build - CJS
   {
     input,
+    external,
     output: {
       dir: `${outputDir}/cjs`,
       format: 'cjs',
       entryFileNames: '[name].cjs',
       preserveModules: true,
+      preserveModulesRoot: 'src',
     },
     plugins: [...sharedPlugins, typescript()],
   },
   // Default JS Build - ESM
   {
     input,
+    external,
     output: {
       dir: `${outputDir}/esm`,
       format: 'esm',
       entryFileNames: '[name].mjs',
       preserveModules: true,
+      preserveModulesRoot: 'src',
     },
     plugins: [
       ...sharedPlugins,
