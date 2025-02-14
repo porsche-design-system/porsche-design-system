@@ -9,7 +9,7 @@ import {
   themeLightContrastMedium,
   themeLightPrimary,
   themeLightStateDisabled,
-} from '@porsche-design-system/components-js/styles';
+} from '@porsche-design-system/styles';
 import { type Part, createPart } from 'ag-grid-community';
 import { pdsThemeModeDark } from '../types/theme-mode';
 
