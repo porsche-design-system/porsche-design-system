@@ -20,6 +20,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   CSS-based theming approach to a JavaScript object-based theming system. As a result, our custom theme also had to be
   adjusted accordingly. ([#3740](https://github.com/porsche-design-system/porsche-design-system/pull/3740))
 
+#### Fixed
+
+- Styles: `vanilla-extract` returns `getMediaQueryMax`, `getMediaQueryMin` & `getMediaQueryMinMax` in wrong format
+  ([#3753](https://github.com/porsche-design-system/porsche-design-system/pull/3753))
+
 ### [3.27.0-rc.0] - 2025-02-13
 
 #### Added
