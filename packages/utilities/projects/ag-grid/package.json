@@ -4,19 +4,28 @@
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
+  "main": "dist/cjs/index.cjs",
+  "module": "dist/esm/index.mjs",
+  "types": "dist/esm/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "build": "yarn clean:build && yarn build:sass",
-    "build:sass": "sass src/scss:dist --load-path=../../../../node_modules --no-source-map",
+    "build": "yarn clean:build && PDS_IS_STAGING=${PDS_IS_STAGING:-1} yarn build:bundle",
+    "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs",
+    "build-prod": "PDS_IS_STAGING=0 yarn build",
     "test": "yarn build && yarn test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
-    "clean:build": "rm -rf ./dist && rm -rf ./src/css"
+    "clean:build": "rm -rf ./dist"
+  },
+  "dependencies": {
+    "@porsche-design-system/icons": "0.0.0",
+    "@porsche-design-system/styles": "0.0.0"
   },
   "devDependencies": {
-    "ag-grid-community": "32.3.3"
+    "@porsche-design-system/shared": "0.0.0",
+    "ag-grid-community": "33.0.4"
   },
   "peerDependencies": {
-    "sass": "*"
+    "typescript": "*"
   },
   "volta": {
     "extends": "../../package.json"

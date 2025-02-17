@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import 'ag-grid-enterprise';
-import { AgGridVue } from 'ag-grid-vue3'; // Vue Data Grid Component
+import { PLinkPure, type Theme, themeInjectionKey } from '@porsche-design-system/components-vue';
+import { pdsTheme } from '@porsche-design-system/components-vue/ag-grid';
 import { dataAdvanced } from '@porsche-design-system/shared';
-import { PLinkPure } from '@porsche-design-system/components-vue';
+import { AllEnterpriseModule, ModuleRegistry } from 'ag-grid-enterprise';
+import { AgGridVue } from 'ag-grid-vue3';
+import { inject } from 'vue';
+ModuleRegistry.registerModules([AllEnterpriseModule]);
 
-const theme = 'light';
+const theme = inject<Theme>(themeInjectionKey, 'light');
 
 const ImageUrlRendererer = {
   template: `
@@ -107,11 +110,12 @@ const defaultColDef = {
 
 <template>
   <ag-grid-vue
+    :theme="pdsTheme"
     :rowData="rowData"
     :columnDefs="columnDefs"
     :defaultColDef="defaultColDef"
     style="height: 80vh"
-    :class="theme === 'light' ? 'ag-theme-pds' : 'ag-theme-pds-dark'"
+    :data-ag-theme-mode="theme === 'light' ? null : 'dark'"
     :pagination="true"
     :sideBar="true"
     :enableRangeSelection="true"
@@ -120,7 +124,6 @@ const defaultColDef = {
 </template>
 
 <style>
-  @import '@porsche-design-system/components-vue/ag-grid/theme.css';
 
   img {
     object-fit: contain;

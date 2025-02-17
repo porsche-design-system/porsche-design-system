@@ -1,9 +1,10 @@
 import { FONTS_MANIFEST } from '@porsche-design-system/fonts';
-import { fontWeight } from '@porsche-design-system/styles';
-import { CDN_BASE_PATH_FONTS, CDN_BASE_URL_COM, CDN_BASE_URL_CN } from '../../../../../cdn.config';
 import { camelCase } from 'change-case';
+import { CDN_BASE_PATH_FONTS, CDN_BASE_URL_CN, CDN_BASE_URL_COM } from '../../../../../cdn.config';
 
 import { getMinifiedCss } from '@porsche-design-system/shared';
+// TODO: This should be imported from @porsche-design-system/styles but we currently have a circular dependency between the assets and utilities package
+import { fontWeight } from '@porsche-design-system/styles/src/js';
 import type { Styles } from 'jss';
 
 type Cdn = 'com' | 'cn' | 'localhost';
@@ -22,12 +23,13 @@ export type GetMinifiedPorscheNextFontFaceCssOptions = {
 // - U+1EA0-1EF1 (part of U+1E00-1EFF "Latin Extended Additional")
 
 // while persian "pe" font files exist, they are identical to pashto "pa"
-type LanguageCode = 'cyril' | 'greek' | 'latin' | 'arabic' | 'pashto' | 'urdu';
+type LanguageCode = 'cyril' | 'greek' | 'latin' | 'arabic' | 'pashto' | 'urdu' | 'thai';
 export const unicodeRangeMap: Record<LanguageCode, string> = {
   latin:
-    'U+0020-007F, U+0080-00FF, U+0100-017F, U+0180-024F, U+0250-02AF, U+02B0-02FF, U+0300-036F, U+0E00-0E7F, U+1E00-1EFF, U+2000-206F, U+2070-209F, U+20A0-20CF, U+2100-214F, U+2150-218F, U+2190-21FF, U+2200-22FF, U+25A0-25FF, U+2600-26FF, U+FB00-FB4F, U+FE70-FEFF',
+    'U+0020-007F, U+0080-00FF, U+0100-017F, U+0180-024F, U+0250-02AF, U+02B0-02FF, U+0300-036F, U+1E00-1EFF, U+2000-206F, U+2070-209F, U+20A0-20CF, U+2100-214F, U+2150-218F, U+2190-21FF, U+2200-22FF, U+25A0-25FF, U+2600-26FF, U+FB00-FB4F, U+FE70-FEFF',
   greek: 'U+0370-03FF',
   cyril: 'U+0400-04FF',
+  thai: 'U+0E00-0E7F',
   arabic: 'U+0600-0671, U+06A1, U+06A4, U+06BA, U+06CC, U+06D5, U+06F8, U+06F9',
   pashto:
     'U+067C, U+067E, U+0681, U+0682, U+0685, U+0686, U+0689, U+067C, U+0693, U+0696, U+0698, U+069A, U+06A9, U+06AB, U+06AF, U+06BC, U+06CD, U+06D0',
@@ -46,7 +48,7 @@ export const getMinifiedPorscheNextFontFaceCss = (opts: GetMinifiedPorscheNextFo
   const style: Styles = {
     '@font-face': Object.entries(FONTS_MANIFEST).map(([name, resource]) => {
       const [, charset, weight] =
-        /porscheNext(Latin|Greek|Cyril|Arabic|Pashto|Urdu)(Regular|SemiBold|Bold)/.exec(name) || [];
+        /porscheNext(Latin|Greek|Cyril|Arabic|Pashto|Urdu|Thai)(Regular|SemiBold|Bold)/.exec(name) || [];
       return {
         fontFamily: 'Porsche Next',
         fontStyle: 'normal',

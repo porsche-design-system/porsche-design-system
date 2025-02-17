@@ -1,0 +1,692 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`style package content > should match content 1`] = `
+{
+  "pdsTheme": _ThemeImpl {
+    "parts": [
+      PartImpl {
+        "css": ".ag-checkbox-input-wrapper,.ag-radio-button-input-wrapper{background-color:var(--ag-checkbox-unchecked-background-color);border:solid var(--ag-checkbox-border-width) var(--ag-checkbox-unchecked-border-color);flex:none;height:var(--ag-icon-size);position:relative;width:var(--ag-icon-size);:where(input){-webkit-appearance:none;-moz-appearance:none;appearance:none;cursor:pointer;display:block;height:var(--ag-icon-size);margin:0;opacity:0;width:var(--ag-icon-size)}&:after{content:"";display:block;inset:0;-webkit-mask-position:center;mask-position:center;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;pointer-events:none;position:absolute}&:where(.ag-checked){background-color:var(--ag-checkbox-checked-background-color);border-color:var(--ag-checkbox-checked-border-color);&:after{background-color:var(--ag-checkbox-checked-shape-color)}}&:where(:focus-within,:active){box-shadow:var(--ag-focus-shadow)}&:where(.ag-disabled){filter:grayscale();opacity:.5}}.ag-checkbox-input-wrapper{border-radius:var(--ag-checkbox-border-radius);&:where(.ag-checked):after{-webkit-mask-image:var(--ag-checkbox-checked-shape-image);mask-image:var(--ag-checkbox-checked-shape-image)}&:where(.ag-indeterminate){background-color:var(--ag-checkbox-indeterminate-background-color);border-color:var(--ag-checkbox-indeterminate-border-color);&:after{background-color:var(--ag-checkbox-indeterminate-shape-color);-webkit-mask-image:var(--ag-checkbox-indeterminate-shape-image);mask-image:var(--ag-checkbox-indeterminate-shape-image)}}}.ag-radio-button-input-wrapper{border-radius:100%;&:where(.ag-checked):after{-webkit-mask-image:var(--ag-radio-checked-shape-image);mask-image:var(--ag-radio-checked-shape-image)}}",
+        "cssImports": undefined,
+        "feature": "checkboxStyle",
+        "modeParams": {
+          "$default": {
+            "checkboxBorderRadius": {
+              "ref": "borderRadius",
+            },
+            "checkboxBorderWidth": 1,
+            "checkboxCheckedBackgroundColor": {
+              "ref": "accentColor",
+            },
+            "checkboxCheckedBorderColor": {
+              "ref": "accentColor",
+            },
+            "checkboxCheckedShapeColor": {
+              "ref": "backgroundColor",
+            },
+            "checkboxCheckedShapeImage": {
+              "svg": "<svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" fill="none"><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M1 3.5 3.5 6l5-5"/></svg>",
+            },
+            "checkboxIndeterminateBackgroundColor": {
+              "mix": 0.3,
+              "onto": "backgroundColor",
+              "ref": "foregroundColor",
+            },
+            "checkboxIndeterminateBorderColor": {
+              "mix": 0.3,
+              "onto": "backgroundColor",
+              "ref": "foregroundColor",
+            },
+            "checkboxIndeterminateShapeColor": {
+              "ref": "backgroundColor",
+            },
+            "checkboxIndeterminateShapeImage": {
+              "svg": "<svg xmlns="http://www.w3.org/2000/svg" width="10" height="2" fill="none"><rect width="10" height="2" fill="#000" rx="1"/></svg>",
+            },
+            "checkboxUncheckedBackgroundColor": {
+              "ref": "backgroundColor",
+            },
+            "checkboxUncheckedBorderColor": {
+              "mix": 0.3,
+              "onto": "backgroundColor",
+              "ref": "foregroundColor",
+            },
+            "radioCheckedShapeImage": {
+              "svg": "<svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" fill="none"><circle cx="3" cy="3" r="3" fill="#000"/></svg>",
+            },
+          },
+        },
+      },
+      PartImpl {
+        "css": undefined,
+        "cssImports": undefined,
+        "feature": "colorScheme",
+        "modeParams": {
+          "$default": {
+            "backgroundColor": "#fff",
+            "borderColor": {
+              "mix": 0.15,
+              "ref": "foregroundColor",
+            },
+            "browserColorScheme": "light",
+            "chromeBackgroundColor": {
+              "mix": 0.02,
+              "onto": "backgroundColor",
+              "ref": "foregroundColor",
+            },
+            "foregroundColor": "#181d1f",
+          },
+          "dark": {
+            "advancedFilterBuilderColumnPillColor": "#355f2d",
+            "advancedFilterBuilderJoinPillColor": "#7a3a37",
+            "advancedFilterBuilderOptionPillColor": "#5a3168",
+            "advancedFilterBuilderValuePillColor": "#374c86",
+            "backgroundColor": "hsl(217, 0%, 17%)",
+            "borderColor": {
+              "mix": 0.15,
+              "ref": "foregroundColor",
+            },
+            "browserColorScheme": "dark",
+            "cardShadow": "0 1px 4px 1px #000A",
+            "checkboxUncheckedBorderColor": {
+              "mix": 0.4,
+              "onto": "backgroundColor",
+              "ref": "foregroundColor",
+            },
+            "chromeBackgroundColor": {
+              "mix": 0.05,
+              "onto": "backgroundColor",
+              "ref": "foregroundColor",
+            },
+            "foregroundColor": "#FFF",
+            "menuBackgroundColor": {
+              "mix": 0.1,
+              "onto": "backgroundColor",
+              "ref": "foregroundColor",
+            },
+            "popupShadow": "0 0px 20px #000A",
+            "rowHoverColor": {
+              "mix": 0.15,
+              "ref": "accentColor",
+            },
+            "selectedRowBackgroundColor": {
+              "mix": 0.2,
+              "ref": "accentColor",
+            },
+            "toggleButtonOffBackgroundColor": {
+              "mix": 0.4,
+              "onto": "backgroundColor",
+              "ref": "foregroundColor",
+            },
+          },
+          "dark-blue": {
+            "advancedFilterBuilderColumnPillColor": "#355f2d",
+            "advancedFilterBuilderJoinPillColor": "#7a3a37",
+            "advancedFilterBuilderOptionPillColor": "#5a3168",
+            "advancedFilterBuilderValuePillColor": "#374c86",
+            "backgroundColor": "#1f2836",
+            "borderColor": {
+              "mix": 0.15,
+              "ref": "foregroundColor",
+            },
+            "browserColorScheme": "dark",
+            "cardShadow": "0 1px 4px 1px #000A",
+            "checkboxUncheckedBorderColor": {
+              "mix": 0.4,
+              "onto": "backgroundColor",
+              "ref": "foregroundColor",
+            },
+            "chromeBackgroundColor": {
+              "mix": 0.05,
+              "onto": "backgroundColor",
+              "ref": "foregroundColor",
+            },
+            "foregroundColor": "#FFF",
+            "menuBackgroundColor": {
+              "mix": 0.1,
+              "onto": "backgroundColor",
+              "ref": "foregroundColor",
+            },
+            "popupShadow": "0 0px 20px #000A",
+            "rowHoverColor": {
+              "mix": 0.15,
+              "ref": "accentColor",
+            },
+            "selectedRowBackgroundColor": {
+              "mix": 0.2,
+              "ref": "accentColor",
+            },
+            "toggleButtonOffBackgroundColor": {
+              "mix": 0.4,
+              "onto": "backgroundColor",
+              "ref": "foregroundColor",
+            },
+          },
+          "light": {
+            "backgroundColor": "#fff",
+            "borderColor": {
+              "mix": 0.15,
+              "ref": "foregroundColor",
+            },
+            "browserColorScheme": "light",
+            "chromeBackgroundColor": {
+              "mix": 0.02,
+              "onto": "backgroundColor",
+              "ref": "foregroundColor",
+            },
+            "foregroundColor": "#181d1f",
+          },
+        },
+      },
+      PartImpl {
+        "css": [Function],
+        "cssImports": undefined,
+        "feature": "iconSet",
+        "modeParams": {
+          "$default": {},
+        },
+      },
+      PartImpl {
+        "css": ".ag-tabs-header{background-color:var(--ag-tab-bar-background-color);border-bottom:var(--ag-tab-bar-border);display:flex;flex:1;gap:var(--ag-tab-spacing);padding:var(--ag-tab-bar-top-padding) var(--ag-tab-bar-horizontal-padding) 0}.ag-tabs-header-wrapper{display:flex}.ag-tabs-close-button-wrapper{align-items:center;border:0;display:flex;padding:var(--ag-spacing)}:where(.ag-ltr) .ag-tabs-close-button-wrapper{border-right:1px solid var(--ag-border-color)}:where(.ag-rtl) .ag-tabs-close-button-wrapper{border-left:1px solid var(--ag-border-color)}.ag-tabs-close-button{background-color:unset;border:0;cursor:pointer;padding:0}.ag-tab{align-items:center;background-color:var(--ag-tab-background-color);border-left:var(--ag-tab-selected-border-width) solid transparent;border-right:var(--ag-tab-selected-border-width) solid transparent;color:var(--ag-tab-text-color);cursor:pointer;display:flex;flex:1;justify-content:center;padding:var(--ag-tab-top-padding) var(--ag-tab-horizontal-padding) var(--ag-tab-bottom-padding);position:relative;&:hover{background-color:var(--ag-tab-hover-background-color);color:var(--ag-tab-hover-text-color)}&.ag-tab-selected{background-color:var(--ag-tab-selected-background-color);color:var(--ag-tab-selected-text-color)}&:after{background-color:var(--ag-tab-selected-underline-color);bottom:0;content:"";display:block;height:var(--ag-tab-selected-underline-width);left:0;opacity:0;position:absolute;right:0;transition:opacity var(--ag-tab-selected-underline-transition-duration)}&.ag-tab-selected:after{opacity:1}}:where(.ag-ltr) .ag-tab{&.ag-tab-selected{&:where(:not(:first-of-type)){border-left-color:var(--ag-tab-selected-border-color)}&:where(:not(:last-of-type)){border-right-color:var(--ag-tab-selected-border-color)}}}:where(.ag-rtl) .ag-tab{&.ag-tab-selected{&:where(:not(:first-of-type)){border-right-color:var(--ag-tab-selected-border-color)}&:where(:not(:last-of-type)){border-left-color:var(--ag-tab-selected-border-color)}}}",
+        "cssImports": undefined,
+        "feature": "tabStyle",
+        "modeParams": {
+          "$default": {
+            "tabBackgroundColor": "transparent",
+            "tabBarBackgroundColor": {
+              "mix": 0.05,
+              "ref": "foregroundColor",
+            },
+            "tabBarBorder": true,
+            "tabBarHorizontalPadding": 0,
+            "tabBarTopPadding": 0,
+            "tabBottomPadding": {
+              "ref": "spacing",
+            },
+            "tabHorizontalPadding": {
+              "ref": "spacing",
+            },
+            "tabHoverBackgroundColor": {
+              "ref": "tabBackgroundColor",
+            },
+            "tabHoverTextColor": {
+              "ref": "textColor",
+            },
+            "tabSelectedBackgroundColor": {
+              "ref": "backgroundColor",
+            },
+            "tabSelectedBorderColor": {
+              "ref": "borderColor",
+            },
+            "tabSelectedBorderWidth": 1,
+            "tabSelectedTextColor": {
+              "ref": "textColor",
+            },
+            "tabSelectedUnderlineColor": "transparent",
+            "tabSelectedUnderlineTransitionDuration": 0,
+            "tabSelectedUnderlineWidth": 0,
+            "tabSpacing": "0",
+            "tabTextColor": {
+              "mix": 0.7,
+              "ref": "textColor",
+            },
+            "tabTopPadding": {
+              "ref": "spacing",
+            },
+          },
+        },
+      },
+      PartImpl {
+        "css": [Function],
+        "cssImports": undefined,
+        "feature": "inputStyle",
+        "modeParams": {
+          "$default": {
+            "inputBackgroundColor": {
+              "ref": "backgroundColor",
+            },
+            "inputBorder": true,
+            "inputBorderRadius": {
+              "ref": "borderRadius",
+            },
+            "inputDisabledBackgroundColor": {
+              "mix": 0.06,
+              "onto": "backgroundColor",
+              "ref": "foregroundColor",
+            },
+            "inputDisabledBorder": {
+              "ref": "inputBorder",
+            },
+            "inputDisabledTextColor": {
+              "mix": 0.5,
+              "ref": "textColor",
+            },
+            "inputFocusBackgroundColor": {
+              "ref": "inputBackgroundColor",
+            },
+            "inputFocusBorder": {
+              "color": {
+                "ref": "accentColor",
+              },
+            },
+            "inputFocusShadow": {
+              "ref": "focusShadow",
+            },
+            "inputFocusTextColor": {
+              "ref": "inputTextColor",
+            },
+            "inputHeight": {
+              "calc": "max(iconSize, fontSize) + spacing * 2",
+            },
+            "inputIconColor": {
+              "ref": "inputTextColor",
+            },
+            "inputInvalidBackgroundColor": {
+              "ref": "inputBackgroundColor",
+            },
+            "inputInvalidBorder": {
+              "color": {
+                "ref": "invalidColor",
+              },
+            },
+            "inputInvalidTextColor": {
+              "ref": "inputTextColor",
+            },
+            "inputPaddingStart": {
+              "ref": "spacing",
+            },
+            "inputPlaceholderTextColor": {
+              "mix": 0.5,
+              "ref": "inputTextColor",
+            },
+            "inputTextColor": {
+              "ref": "textColor",
+            },
+          },
+        },
+      },
+      PartImpl {
+        "css": undefined,
+        "cssImports": undefined,
+        "feature": undefined,
+        "modeParams": {
+          "$default": {
+            "fontFamily": [
+              {
+                "googleFont": "IBM Plex Sans",
+              },
+              "-apple-system",
+              "BlinkMacSystemFont",
+              "Segoe UI",
+              "Roboto",
+              "Oxygen-Sans",
+              "Ubuntu",
+            ],
+          },
+        },
+      },
+      PartImpl {
+        "css": undefined,
+        "cssImports": undefined,
+        "feature": undefined,
+        "modeParams": {
+          "$default": {
+            "accentColor": "#2762EC",
+            "backgroundColor": "#FFF",
+            "borderColor": "#D8D8DB",
+            "borderRadius": "4px",
+            "browserColorScheme": "light",
+            "checkboxBorderRadius": "4px",
+            "checkboxBorderWidth": 2,
+            "columnHoverColor": "rgba(148, 149, 152, .18)",
+            "focusShadow": "none",
+            "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
+            "fontSize": "1rem",
+            "foregroundColor": "#010205",
+            "headerBackgroundColor": "#EEEFF2",
+            "headerFontSize": "clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)",
+            "headerFontWeight": 600,
+            "headerHeight": "calc(var(--ag-font-size) + var(--ag-spacing) * 2.9)",
+            "iconSize": 24,
+            "inputBorder": "1px solid #6B6D70",
+            "inputDisabledBackgroundColor": "#FFF",
+            "inputDisabledBorder": "1px solid #949598",
+            "inputFocusBorder": "1px solid #010205",
+            "inputFocusShadow": "none",
+            "inputInvalidBorder": "1px solid #CC1922",
+            "invalidColor": "#CC1922",
+            "modalOverlayBackgroundColor": "hsl(240 4% 85%/35%)",
+            "oddRowBackgroundColor": "#EEEFF2",
+            "rangeSelectionBorderColor": "#1A44EA",
+            "rowHeight": "calc(var(--ag-font-size) + var(--ag-spacing) * 4)",
+            "rowHoverColor": "rgba(148, 149, 152, .18)",
+            "selectedRowBackgroundColor": "#CBCED7",
+            "spacing": 10,
+            "toggleButtonHeight": 28,
+            "toggleButtonSwitchInset": 3,
+            "toggleButtonWidth": 48,
+            "wrapperBorderRadius": "8px",
+          },
+        },
+      },
+      PartImpl {
+        "css": undefined,
+        "cssImports": undefined,
+        "feature": undefined,
+        "modeParams": {
+          "$default": {},
+          "dark": {
+            "accentColor": "#178BFF",
+            "backgroundColor": "#0E0E12",
+            "borderColor": "#404044",
+            "browserColorScheme": "dark",
+            "columnHoverColor": "rgba(148, 149, 152, .18)",
+            "foregroundColor": "#FBFCFF",
+            "headerBackgroundColor": "#212225",
+            "inputBorder": "1px solid #88898C",
+            "inputDisabledBackgroundColor": "#0E0E12",
+            "inputDisabledBorder": "1px solid #7E7F82",
+            "inputFocusBorder": "1px solid #FBFCFF",
+            "inputInvalidBorder": "1px solid #FC4040",
+            "invalidColor": "#FC4040",
+            "modalOverlayBackgroundColor": "hsl(240 3% 26%/35%)",
+            "oddRowBackgroundColor": "#212225",
+            "rangeSelectionBorderColor": "#1A44EA",
+            "rowHoverColor": "rgba(148, 149, 152, .18)",
+            "selectedRowBackgroundColor": "#040405",
+          },
+        },
+      },
+      PartImpl {
+        "css": ":where(.ag-icon):before{align-items:center;background-color:currentcolor;color:inherit;content:"";display:flex;font-family:inherit;font-size:var(--ag-icon-size);font-style:normal;font-variant:normal;height:var(--ag-icon-size);justify-content:center;line-height:var(--ag-icon-size);-webkit-mask-size:contain;mask-size:contain;text-transform:none;width:var(--ag-icon-size)}.ag-icon{background-position:50%;background-repeat:no-repeat;background-size:contain;display:block;height:var(--ag-icon-size);position:relative;-webkit-user-select:none;-moz-user-select:none;user-select:none;width:var(--ag-icon-size)};
+.ag-icon-aggregation::before { mask-image: url("undefined/porsche-design-system/icons/aggregation.96f06e5.svg"); };
+.ag-icon-arrows::before { mask-image: url("undefined/porsche-design-system/icons/arrows.de040f9.svg"); };
+.ag-icon-asc::before { mask-image: url("undefined/porsche-design-system/icons/arrow-up.9d294d1.svg"); };
+.ag-icon-cancel::before { mask-image: url("undefined/porsche-design-system/icons/close.eec3c5d.svg"); };
+.ag-icon-chart::before { mask-image: url("undefined/porsche-design-system/icons/chart.c8c32d2.svg"); };
+.ag-icon-color-picker::before { mask-image: url("undefined/porsche-design-system/icons/color-picker.598f402.svg"); };
+.ag-icon-columns::before { mask-image: url("undefined/porsche-design-system/icons/grid.06bc31a.svg"); };
+.ag-icon-contracted::before { mask-image: url("undefined/porsche-design-system/icons/arrow-head-right.304b330.svg"); };
+.ag-icon-copy::before { mask-image: url("undefined/porsche-design-system/icons/copy.0fcd086.svg"); };
+.ag-icon-cross::before { mask-image: url("undefined/porsche-design-system/icons/close.eec3c5d.svg"); };
+.ag-icon-csv::before { mask-image: url("undefined/porsche-design-system/icons/file-csv.4140e24.svg"); };
+.ag-icon-cut::before { mask-image: url("undefined/porsche-design-system/icons/cut.851e5c2.svg"); };
+.ag-icon-desc::before { mask-image: url("undefined/porsche-design-system/icons/arrow-down.49c6983.svg"); };
+.ag-icon-down::before { mask-image: url("undefined/porsche-design-system/icons/arrow-down.49c6983.svg"); };
+.ag-icon-expanded::before { mask-image: url("undefined/porsche-design-system/icons/arrow-head-left.cf1395d.svg"); };
+.ag-icon-excel::before { mask-image: url("undefined/porsche-design-system/icons/file-excel.56d577d.svg"); };
+.ag-icon-eye::before { mask-image: url("undefined/porsche-design-system/icons/view.5b4d7f6.svg"); };
+.ag-icon-eye-slash::before { mask-image: url("undefined/porsche-design-system/icons/view-off.a4ede54.svg"); };
+.ag-icon-filter::before { mask-image: url("undefined/porsche-design-system/icons/filter.610f808.svg"); };
+.ag-icon-first::before { mask-image: url("undefined/porsche-design-system/icons/arrow-first.beb7d9f.svg"); };
+.ag-icon-grip::before { mask-image: url("undefined/porsche-design-system/icons/grip.5ec4289.svg"); };
+.ag-icon-group::before { mask-image: url("undefined/porsche-design-system/icons/group.051436a.svg"); };
+.ag-icon-last::before { mask-image: url("undefined/porsche-design-system/icons/arrow-last.cc24903.svg"); };
+.ag-icon-left::before { mask-image: url("undefined/porsche-design-system/icons/arrow-left.e03c25b.svg"); };
+.ag-icon-linked::before { mask-image: url("undefined/porsche-design-system/icons/linked.8f30cb5.svg"); };
+.ag-icon-maximize::before { mask-image: url("undefined/porsche-design-system/icons/zoom-out.ebb6246.svg"); };
+.ag-icon-menu::before { mask-image: url("undefined/porsche-design-system/icons/menu-lines.e332216.svg"); };
+.ag-icon-menu-alt::before { mask-image: url("undefined/porsche-design-system/icons/menu-dots-vertical.4970a65.svg"); };
+.ag-icon-minimize::before { mask-image: url("undefined/porsche-design-system/icons/zoom-in.ff299b8.svg"); };
+.ag-icon-minus::before { mask-image: url("undefined/porsche-design-system/icons/minus.f6d964c.svg"); };
+.ag-icon-next::before { mask-image: url("undefined/porsche-design-system/icons/arrow-head-right.304b330.svg"); };
+.ag-icon-not-allowed::before { mask-image: url("undefined/porsche-design-system/icons/disable.5918c32.svg"); };
+.ag-icon-none::before { mask-image: url("undefined/porsche-design-system/icons/list.411dd00.svg"); };
+.ag-icon-paste::before { mask-image: url("undefined/porsche-design-system/icons/paste.dd60261.svg"); };
+.ag-icon-pin::before { mask-image: url("undefined/porsche-design-system/icons/push-pin.89e4ead.svg"); };
+.ag-icon-pivot::before { mask-image: url("undefined/porsche-design-system/icons/pivot.3ae18b8.svg"); };
+.ag-icon-plus::before { mask-image: url("undefined/porsche-design-system/icons/plus.319993e.svg"); };
+.ag-icon-previous::before { mask-image: url("undefined/porsche-design-system/icons/arrow-head-left.cf1395d.svg"); };
+.ag-icon-right::before { mask-image: url("undefined/porsche-design-system/icons/arrow-right.872716b.svg"); };
+.ag-icon-save::before { mask-image: url("undefined/porsche-design-system/icons/save.6171ff5.svg"); };
+.ag-icon-settings::before { mask-image: url("undefined/porsche-design-system/icons/configurate.5311c8d.svg"); };
+.ag-icon-small-down::before { mask-image: url("undefined/porsche-design-system/icons/arrow-compact-down.9b37afe.svg"); };
+.ag-icon-small-left::before { mask-image: url("undefined/porsche-design-system/icons/arrow-compact-left.7169de6.svg"); };
+.ag-icon-small-right::before { mask-image: url("undefined/porsche-design-system/icons/arrow-compact-right.cc2d1d2.svg"); };
+.ag-icon-small-up::before { mask-image: url("undefined/porsche-design-system/icons/arrow-compact-up.36724bb.svg"); };
+.ag-icon-tick::before { mask-image: url("undefined/porsche-design-system/icons/check.8ba06be.svg"); };
+.ag-icon-tree-closed::before { mask-image: url("undefined/porsche-design-system/icons/arrow-head-right.304b330.svg"); };
+.ag-icon-tree-indeterminate::before { mask-image: url("undefined/porsche-design-system/icons/minus.f6d964c.svg"); };
+.ag-icon-tree-open::before { mask-image: url("undefined/porsche-design-system/icons/arrow-head-down.1e3cbb8.svg"); };
+.ag-icon-unlinked::before { mask-image: url("undefined/porsche-design-system/icons/unlinked.e9afe39.svg"); };
+.ag-icon-up::before { mask-image: url("undefined/porsche-design-system/icons/arrow-up.9d294d1.svg"); }",
+        "cssImports": undefined,
+        "feature": undefined,
+        "modeParams": {
+          "$default": {},
+        },
+      },
+      PartImpl {
+        "css": "
+    .ag-toggle-button-input-wrapper {
+        border: 2px solid var(--ag-toggle-button-off-border-color);
+        position: relative;
+
+        &::before {
+            height: calc(var(--ag-toggle-button-height) - 4px * 2) !important;
+            width: calc(var(--ag-toggle-button-height) - 4px * 2) !important;
+            top: calc(4px - 2px) !important;
+            left: calc(4px - 2px) !important;
+        }
+
+        &.ag-checked {
+            border-color: var(--ag-toggle-button-on-border-color);
+
+            &::before {
+                --ag-toggle-button-switch-background-color: #FFF;
+                --ag-toggle-button-on-border-color: #FFF;
+                left: calc(100% - var(--ag-toggle-button-height) + 6px) !important;
+            }
+        }
+
+        &:not(.ag-disabled):hover {
+            border-color: var(--ag-toggle-button-off-hover-border-color);
+        }
+
+        &.ag-checked:not(.ag-disabled):hover {
+            border-color: var(--ag-toggle-button-on-hover-border-color);
+            background-color: var(--ag-toggle-button-on-hover-background-color);
+        }
+
+        &.ag-disabled {
+            opacity: 1 !important;
+            border-color: var(--ag-toggle-button-disabled-color);
+
+            &:hover input {
+                cursor: not-allowed;
+            }
+
+            &:not(.ag-checked)::before {
+                background-color: var(--ag-toggle-button-disabled-color);
+            }
+
+            &.ag-checked {
+                background-color: var(--ag-toggle-button-disabled-color);
+            }
+        }
+    }
+  ",
+        "cssImports": undefined,
+        "feature": "toggleButtonStyle",
+        "modeParams": {
+          "$default": {
+            "toggleButtonDisabledColor": "#949598",
+            "toggleButtonOffBackgroundColor": "#FFF",
+            "toggleButtonOffBorderColor": "#6B6D70",
+            "toggleButtonOffHoverBorderColor": "#010205",
+            "toggleButtonOnBackgroundColor": "#197E10",
+            "toggleButtonOnBorderColor": "#197E10",
+            "toggleButtonOnHoverBackgroundColor": "#0E4809",
+            "toggleButtonOnHoverBorderColor": "#0E4809",
+            "toggleButtonSwitchBackgroundColor": "#010205",
+          },
+          "dark": {
+            "toggleButtonDisabledColor": "#7E7F82",
+            "toggleButtonOffBackgroundColor": "#0E0E12",
+            "toggleButtonOffBorderColor": "#88898C",
+            "toggleButtonOffHoverBorderColor": "#FBFCFF",
+            "toggleButtonOnBackgroundColor": "#09D087",
+            "toggleButtonOnBorderColor": "#09D087",
+            "toggleButtonOnHoverBackgroundColor": "#069561",
+            "toggleButtonOnHoverBorderColor": "#069561",
+            "toggleButtonSwitchBackgroundColor": "#FBFCFF",
+          },
+        },
+      },
+      PartImpl {
+        "css": "
+    .ag-checkbox-input-wrapper,
+    .ag-radio-button-input-wrapper {
+        flex: none;
+        position: relative;
+        width: var(--ag-icon-size);
+        height: var(--ag-icon-size);
+        background-color: var(--ag-checkbox-unchecked-background-color);
+        border: solid var(--ag-checkbox-border-width) var(--ag-checkbox-unchecked-border-color);
+
+        :where(input) {
+            cursor: pointer;
+            appearance: none;
+            opacity: 0;
+            margin: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            display: block;
+            mask-position: center;
+            mask-repeat: no-repeat;
+            pointer-events: none;
+        }
+
+        &.ag-checked {
+            background-color: var(--ag-checkbox-checked-background-color);
+            border-color: var(--ag-checkbox-checked-border-color);
+
+            &::after {
+                background-color: var(--ag-checkbox-checked-shape-color);
+            }
+        }
+
+        &:focus-within,
+        &:active {
+            box-shadow: var(--ag-focus-shadow);
+        }
+
+        &.ag-disabled {
+            opacity: 1;
+            filter: unset;
+            border-color: var(--ag-checkbox-disabled-color);
+
+            &.ag-checked {
+                background-color: var(--ag-checkbox-disabled-color);
+            }
+
+            &:hover input {
+                cursor: not-allowed;
+            }
+        }
+
+        &:not(.ag-disabled):hover {
+            border-color: var(--ag-checkbox-unchecked-hover-border-color) !important;
+        }
+
+        &.ag-checked:not(.ag-disabled):hover {
+            border-color: var(--ag-checkbox-checked-hover-border-color) !important;
+            background-color: var(--ag-checkbox-checked-hover-background-color) !important;
+        }
+    }
+
+    .ag-checkbox-input-wrapper {
+        border-radius: var(--ag-checkbox-border-radius);
+
+        &.ag-checked::after {
+            mask-image: var(--ag-checkbox-checked-shape-image);
+        }
+
+        &.ag-indeterminate {
+            background-color: var(--ag-checkbox-indeterminate-background-color);
+            border-color: var(--ag-checkbox-indeterminate-border-color);
+
+            &::after {
+                background-color: var(--ag-checkbox-indeterminate-shape-color);
+                mask-image: var(--ag-checkbox-indeterminate-shape-image);
+            }
+        }
+    }
+
+    .ag-radio-button-input-wrapper {
+        border-radius: 50%;
+
+        &.ag-checked::after {
+            mask-image: var(--ag-radio-checked-shape-image);
+        }
+    }
+  ",
+        "cssImports": undefined,
+        "feature": "checkboxStyle",
+        "modeParams": {
+          "$default": {
+            "checkboxCheckedBackgroundColor": "#010205",
+            "checkboxCheckedBorderColor": "#010205",
+            "checkboxCheckedHoverBackgroundColor": "#535457",
+            "checkboxCheckedHoverBorderColor": "#535457",
+            "checkboxCheckedShapeColor": {
+              "ref": "backgroundColor",
+            },
+            "checkboxCheckedShapeImage": {
+              "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>",
+            },
+            "checkboxDisabledColor": "#949598",
+            "checkboxIndeterminateBackgroundColor": "#FFF",
+            "checkboxIndeterminateBorderColor": "#6B6D70",
+            "checkboxIndeterminateShapeColor": "#010205",
+            "checkboxIndeterminateShapeImage": {
+              "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>",
+            },
+            "checkboxUncheckedBackgroundColor": {
+              "ref": "backgroundColor",
+            },
+            "checkboxUncheckedBorderColor": "#6B6D70",
+            "checkboxUncheckedHoverBorderColor": "#010205",
+            "radioCheckedShapeImage": {
+              "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>",
+            },
+          },
+          "dark": {
+            "checkboxCheckedBackgroundColor": "#FBFCFF",
+            "checkboxCheckedBorderColor": "#FBFCFF",
+            "checkboxCheckedHoverBackgroundColor": "#AFB0B3",
+            "checkboxCheckedHoverBorderColor": "#AFB0B3",
+            "checkboxCheckedShapeColor": {
+              "ref": "backgroundColor",
+            },
+            "checkboxCheckedShapeImage": {
+              "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>",
+            },
+            "checkboxDisabledColor": "#7E7F82",
+            "checkboxIndeterminateBackgroundColor": "#0E0E12",
+            "checkboxIndeterminateBorderColor": "#88898C",
+            "checkboxIndeterminateShapeColor": "#FBFCFF",
+            "checkboxIndeterminateShapeImage": {
+              "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20,11v2H4v-2h16Z"/></svg>",
+            },
+            "checkboxUncheckedBackgroundColor": {
+              "ref": "backgroundColor",
+            },
+            "checkboxUncheckedBorderColor": "#88898C",
+            "checkboxUncheckedHoverBorderColor": "#FBFCFF",
+            "radioCheckedShapeImage": {
+              "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>",
+            },
+          },
+        },
+      },
+    ],
+  },
+}
+`;

@@ -1,5 +1,5 @@
-import { getFontLinks } from '../../../src';
 import { renderToString } from 'react-dom/server';
+import { getFontLinks } from '../../../src';
 
 const hash = '[a-z0-9]{7}';
 const baseHrefCom = 'https:\\/\\/cdn\\.ui\\.porsche.com\\/porsche-design-system\\/fonts';
@@ -22,7 +22,7 @@ Please use only valid font weights:
   some-invalid-subset
 
 Please use only valid font subset:
-  latin, greek, cyril, arabic, pashto, urdu]
+  latin, greek, cyril, thai, arabic, pashto, urdu]
 `);
   });
 });
@@ -120,6 +120,27 @@ describe('format: html', () => {
       [{ subset: 'arabic', weights: ['regular'] }, regularRegex],
       [{ subset: 'arabic', weights: ['semi-bold'] }, semiBoldRegex],
       [{ subset: 'arabic', weights: ['bold'] }, boldRegex],
+    ])('should match regex for %j', (parameters, regex) => {
+      const result = getFontLinks(parameters);
+      expect(result).toMatch(regex);
+    });
+  });
+
+  describe('subset thai', () => {
+    const regularRegex = new RegExp(
+      `^<link rel=preload href=${baseHrefCom}/porsche-next-thai-regular\\.${hash}\\.woff2 as=font type=font/woff2 crossorigin>$`
+    );
+    const semiBoldRegex = new RegExp(
+      `^<link rel=preload href=${baseHrefCom}/porsche-next-thai-semi-bold\\.${hash}\\.woff2 as=font type=font/woff2 crossorigin>$`
+    );
+    const boldRegex = new RegExp(
+      `^<link rel=preload href=${baseHrefCom}/porsche-next-thai-bold\\.${hash}\\.woff2 as=font type=font/woff2 crossorigin>$`
+    );
+
+    it.each<[Parameters<typeof getFontLinks>[0], RegExp]>([
+      [{ subset: 'thai', weights: ['regular'] }, regularRegex],
+      [{ subset: 'thai', weights: ['semi-bold'] }, semiBoldRegex],
+      [{ subset: 'thai', weights: ['bold'] }, boldRegex],
     ])('should match regex for %j', (parameters, regex) => {
       const result = getFontLinks(parameters);
       expect(result).toMatch(regex);
@@ -258,6 +279,27 @@ describe('format: jsx', () => {
       [{ format: 'jsx', subset: 'arabic', weights: ['regular'] }, regularRegex],
       [{ format: 'jsx', subset: 'arabic', weights: ['semi-bold'] }, semiBoldRegex],
       [{ format: 'jsx', subset: 'arabic', weights: ['bold'] }, boldRegex],
+    ])('should match regex for %j', (parameters, regex) => {
+      const result = getFontLinks(parameters) as unknown as JSX.Element;
+      expect(renderToString(result)).toMatch(regex);
+    });
+  });
+
+  describe('subset thai', () => {
+    const regularRegex = new RegExp(
+      `^<link rel="preload" href="${baseHrefCom}/porsche-next-thai-regular\\.${hash}\\.woff2" as="font" type="font/woff2" crossorigin=""/>$`
+    );
+    const semiBoldRegex = new RegExp(
+      `^<link rel="preload" href="${baseHrefCom}/porsche-next-thai-semi-bold\\.${hash}\\.woff2" as="font" type="font/woff2" crossorigin=""/>$`
+    );
+    const boldRegex = new RegExp(
+      `^<link rel="preload" href="${baseHrefCom}/porsche-next-thai-bold\\.${hash}\\.woff2" as="font" type="font/woff2" crossorigin=""/>$`
+    );
+
+    it.each<[Parameters<typeof getFontLinks>[0], RegExp]>([
+      [{ format: 'jsx', subset: 'thai', weights: ['regular'] }, regularRegex],
+      [{ format: 'jsx', subset: 'thai', weights: ['semi-bold'] }, semiBoldRegex],
+      [{ format: 'jsx', subset: 'thai', weights: ['bold'] }, boldRegex],
     ])('should match regex for %j', (parameters, regex) => {
       const result = getFontLinks(parameters) as unknown as JSX.Element;
       expect(renderToString(result)).toMatch(regex);

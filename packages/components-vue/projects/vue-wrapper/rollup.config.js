@@ -15,6 +15,7 @@ const external = [
   '@porsche-design-system/components-js/partials',
   '@porsche-design-system/components-js/styles',
   '@porsche-design-system/components-js/styles/vanilla-extract',
+  '@porsche-design-system/components-js/ag-grid',
   '@porsche-design-system/components-js/testing',
 ];
 
@@ -136,6 +137,33 @@ export default [
         baseContents: {
           main: 'index.cjs',
           types: 'index.d.ts',
+          sideEffects: false,
+        },
+      }),
+    ],
+  },
+  {
+    input: `${projectDir}/src/ag-grid/index.ts`,
+    external,
+    output: [
+      {
+        file: `${outputDir}/ag-grid/cjs/index.cjs`,
+        format: 'cjs',
+      },
+      {
+        file: `${outputDir}/ag-grid/esm/index.mjs`,
+        format: 'esm',
+      },
+    ],
+    plugins: [
+      // typings are produced by main build
+      typescript(typescriptOpts),
+      generatePackageJson({
+        outputFolder: `${outputDir}/ag-grid`,
+        baseContents: {
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
           sideEffects: false,
         },
       }),
