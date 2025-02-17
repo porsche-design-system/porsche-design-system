@@ -57,7 +57,9 @@
     "globby": "*",
     "tsx": "*",
     "typescript": "*",
-    "vite": "*"
+    "vite": "*",
+    "@vanilla-extract/css": "*",
+    "@vanilla-extract/vite-plugin": "*"
   },
   "volta": {
     "extends": "../../package.json"
