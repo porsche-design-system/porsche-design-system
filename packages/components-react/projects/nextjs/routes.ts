@@ -644,9 +644,9 @@ const generatedRoutes = {
     "path": "/typography-fallback",
     "name": "TypographyFallback"
   },
-  "typographyGreekAndCoptic": {
-    "path": "/typography-greek-and-coptic",
-    "name": "TypographyGreekAndCoptic"
+  "typographyGreekCoptic": {
+    "path": "/typography-greek-coptic",
+    "name": "TypographyGreekCoptic"
   },
   "typographyLatin": {
     "path": "/typography-latin",
@@ -655,6 +655,10 @@ const generatedRoutes = {
   "typographyMiddleEast": {
     "path": "/typography-middle-east",
     "name": "TypographyMiddleEast"
+  },
+  "typographyThai": {
+    "path": "/typography-thai",
+    "name": "TypographyThai"
   },
   "wordmark": {
     "path": "/wordmark",

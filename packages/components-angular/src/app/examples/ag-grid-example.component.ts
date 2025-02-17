@@ -1,10 +1,17 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
-import 'ag-grid-enterprise';
 import { AsyncPipe } from '@angular/common';
-import { PorscheDesignSystemModule, Theme } from '@porsche-design-system/components-angular';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { PorscheDesignSystemModule, THEME_TOKEN } from '@porsche-design-system/components-angular';
+import { pdsTheme } from '@porsche-design-system/components-angular/ag-grid';
+import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
 import { type ICellRendererAngularComp } from 'ag-grid-angular';
-import { type ColDef, type ICellRendererParams } from 'ag-grid-community';
+import {
+  AllEnterpriseModule,
+  type ColDef,
+  type ICellRendererParams,
+  ModuleRegistry,
+  ValidationModule /* Development Only */,
+} from 'ag-grid-enterprise';
+ModuleRegistry.registerModules([AllEnterpriseModule, ValidationModule]);
 
 type ColumnDefs = DataAdvanced & {
   active: boolean;
@@ -53,7 +60,7 @@ class ImageUrlRendererer implements ICellRendererAngularComp {
     <span class="cell-centered'">
       <p-link-pure
         [underline]="true"
-        [theme]="theme"
+        [theme]="(theme$ | async) ?? undefined"
         target="_blank"
         [href]="'https://www.porsche.com/germany/models/' + data.model.toLowerCase()"
       >
@@ -73,12 +80,12 @@ class ImageUrlRendererer implements ICellRendererAngularComp {
       }
     `,
   ],
-  imports: [PorscheDesignSystemModule],
+  imports: [PorscheDesignSystemModule, AsyncPipe],
 })
 class ButtonRenderer implements ICellRendererAngularComp {
   // Init Cell Value
   public data!: any;
-  public theme: Theme = 'light';
+  protected readonly theme$ = inject(THEME_TOKEN);
 
   agInit(params: ICellRendererParams): void {
     this.data = params.data;
@@ -93,27 +100,31 @@ class ButtonRenderer implements ICellRendererAngularComp {
 
 @Component({
   selector: 'ag-grid-example',
-  template: ` <ag-grid-angular
-    style="width: 100%; height: 550px;"
-    [class]="theme === 'light' ? 'ag-theme-pds' : 'ag-theme-pds-dark'"
-    [rowData]="rowData"
-    [columnDefs]="columnDefs"
-    [defaultColDef]="defaultColDef"
-    [pagination]="true"
-    [sideBar]="true"
-    [enableRangeSelection]="true"
-  />`,
+  template: `
+  <div [attr.data-ag-theme-mode]="(theme$ | async) === 'light' ? null : 'dark'">
+    <ag-grid-angular
+      style="width: 100%; height: 550px;"
+      [rowData]="rowData"
+      [columnDefs]="columnDefs"
+      [defaultColDef]="defaultColDef"
+      [pagination]="true"
+      [sideBar]="true"
+      [cellSelection]="true"
+      [theme]="agGridTheme"
+    />
+  </div>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })
 export class AgGridExampleComponent {
-  public theme: Theme = 'light';
+  protected readonly theme$ = inject(THEME_TOKEN);
+  protected readonly agGridTheme = pdsTheme;
+
   rowData = dataAdvanced.map((row, index) => ({ active: Boolean(index % 2) /* odd rows */, ...row }));
   // Columns to be displayed (Should match rowData properties)
   columnDefs: ColDef<ColumnDefs>[] = [
     {
       field: 'active',
-      showDisabledCheckboxes: true,
       width: 170,
     },
     {

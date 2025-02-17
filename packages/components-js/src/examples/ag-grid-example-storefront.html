@@ -1,5 +1,8 @@
 <script type="module">
+  const theme = new URL(document.location).searchParams.get('theme') || 'light';
   const grid = document.querySelector('#my-grid');
+
+  grid.setAttribute('data-ag-theme-mode', theme === 'light' ? null : 'dark');
 
   const rowData = [
     {
@@ -62,7 +65,7 @@
       {
         field: 'active',
         showDisabledCheckboxes: true,
-        width: '170px',
+        width: 170,
       },
       {
         field: 'model',
@@ -79,7 +82,7 @@
       },
       {
         field: 'vin',
-        width: '250px',
+        width: 250,
         editable: false,
       },
       {
@@ -93,7 +96,7 @@
       {
         field: 'comment',
         filter: false,
-        width: '500px',
+        width: 500,
       },
     ],
     // Configurations applied to all columns
@@ -105,7 +108,8 @@
     pagination: true,
   };
 
+
   agGrid.createGrid(grid, gridOptions);
 </script>
 
-<div id="my-grid" class="ag-theme-pds" style="height: 100vh; padding: 1rem"></div>
+<div id="my-grid" style="height: 100vh; padding: 1rem"></div>
