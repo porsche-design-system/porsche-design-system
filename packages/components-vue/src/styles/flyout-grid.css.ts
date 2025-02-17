@@ -10,6 +10,8 @@ export const Wrapper = style({
   paddingRight: spacingFluidLarge,
   paddingBottom: '150px',
   paddingLeft: spacingFluidLarge,
-  '--pds-internal-grid-outer-column': `calc(${spacingFluidLarge} - ${gridGap})`,
-  '--pds-internal-grid-margin': `calc(${spacingFluidLarge} * -1)`,
+  vars: {
+    '--pds-internal-grid-outer-column': `calc(${spacingFluidLarge} - ${gridGap})`,
+    '--pds-internal-grid-margin': `calc(${spacingFluidLarge} * -1)`,
+  },
 });

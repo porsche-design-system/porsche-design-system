@@ -154,16 +154,20 @@ export const WideGrid = style({
 export const WideSidebar = style({
   ...getTileStyle('orange'),
   gridColumn: `${gridWideColumnStart} / ${gridWideColumnEnd}`,
-  [getMediaQueryMin('s')]: {
-    gridColumn: `${gridWideColumnStart} / span 5`,
+  '@media': {
+    [getMediaQueryMin('s')]: {
+      gridColumn: `${gridWideColumnStart} / span 5`,
+    },
   },
 });
 
 export const WideContent = style({
   ...getTileStyle('orange'),
   gridColumn: `${gridWideColumnStart} / ${gridWideColumnEnd}`,
-  [getMediaQueryMin('s')]: {
-    gridColumn: `span 11 / ${gridWideColumnEnd}`,
+  '@media': {
+    [getMediaQueryMin('s')]: {
+      gridColumn: `span 11 / ${gridWideColumnEnd}`,
+    },
   },
 });
 
@@ -260,40 +264,50 @@ export const BasicContentHalfRight = style({
 export const BasicContentOneThirdLeft = style({
   ...getTileStyle('purple'),
   gridColumn: `${gridBasicColumnStart} / ${gridBasicColumnEnd}`,
-  [getMediaQueryMin('s')]: {
-    gridColumn: `${gridBasicColumnStart} / ${gridBasicSpanOneThird}`,
+  '@media': {
+    [getMediaQueryMin('s')]: {
+      gridColumn: `${gridBasicColumnStart} / ${gridBasicSpanOneThird}`,
+    },
   },
 });
 
 export const BasicContentOneThirdFollow = style({
   ...getTileStyle('purple'),
   gridColumn: `${gridBasicColumnStart} / ${gridBasicColumnEnd}`,
-  [getMediaQueryMin('s')]: {
-    gridColumn: `${gridBasicSpanOneThird}`,
+  '@media': {
+    [getMediaQueryMin('s')]: {
+      gridColumn: `${gridBasicSpanOneThird}`,
+    },
   },
 });
 
 export const BasicContentOneThirdRight = style({
   ...getTileStyle('purple'),
   gridColumn: `${gridBasicColumnStart} / ${gridBasicColumnEnd}`,
-  [getMediaQueryMin('s')]: {
-    gridColumn: `${gridBasicSpanOneThird} / ${gridBasicColumnEnd}`,
+  '@media': {
+    [getMediaQueryMin('s')]: {
+      gridColumn: `${gridBasicSpanOneThird} / ${gridBasicColumnEnd}`,
+    },
   },
 });
 
 export const BasicContentTwoThirdsLeft = style({
   ...getTileStyle('purple'),
   gridColumn: `${gridBasicColumnStart} / ${gridBasicColumnEnd}`,
-  [getMediaQueryMin('s')]: {
-    gridColumn: `${gridBasicColumnStart} / ${gridBasicSpanTwoThirds}`,
+  '@media': {
+    [getMediaQueryMin('s')]: {
+      gridColumn: `${gridBasicColumnStart} / ${gridBasicSpanTwoThirds}`,
+    },
   },
 });
 
 export const BasicContentCustomLeft = style({
   ...getTileStyle('purple'),
   gridColumn: `${gridBasicColumnStart} / ${gridBasicColumnEnd}`,
-  [getMediaQueryMin('s')]: {
-    gridColumn: `${gridBasicColumnStart} / span 5`,
+  '@media': {
+    [getMediaQueryMin('s')]: {
+      gridColumn: `${gridBasicColumnStart} / span 5`,
+    },
   },
 });
 
