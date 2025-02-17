@@ -39,7 +39,6 @@ import {
   attachComponentCss,
   getActionFromKeyboardEvent,
   getComboboxAriaAttributes,
-  getHasCSSAnchorPositioningSupport,
   getHasNativePopoverSupport,
   getHighlightedSelectOption,
   getHighlightedSelectOptionIndex,
@@ -55,6 +54,7 @@ import {
   throwIfElementIsNotOfKind,
   validateProps,
 } from '../../../utils';
+import { getHasCSSAnchorPositioningSupport } from '../../../utils/supportsNativeCSSAnchorPositioning';
 import { Label, labelId } from '../../common/label/label';
 import { StateMessage, messageId } from '../../common/state-message/state-message';
 import { getComponentCss } from './select-styles';
