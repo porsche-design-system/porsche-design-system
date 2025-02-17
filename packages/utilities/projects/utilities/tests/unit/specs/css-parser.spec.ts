@@ -8,9 +8,6 @@ import {
   jssGetMediaQueryMin,
   jssGetMediaQueryMinMax,
 } from './jss-test';
-import { vanillaExtractGetMediaQueryMax } from './vanilla-extract-getMediaQueryMax.css';
-import { vanillaExtractGetMediaQueryMin } from './vanilla-extract-getMediaQueryMin.css';
-import { vanillaExtractGetMediaQueryMinMax } from './vanilla-extract-getMediaQueryMinMax.css';
 
 const readGeneratedCss = (fileName: string) => {
   const cssFilePath = path.resolve(__dirname, `generated/${fileName}`);
@@ -24,6 +21,7 @@ const vanillaExtractGetMediaQueryMinTestCss = readGeneratedCss('vanilla-extract-
 const vanillaExtractGetMediaQueryMinMaxTestCss = readGeneratedCss(
   'vanilla-extract-getMediaQueryMinMax.css.ts.vanilla.css'
 );
+const vanillaExtractGetSkeletonStyleTestCss = readGeneratedCss('vanilla-extract-getSkeletonStyle.css.ts.vanilla.css');
 
 it('should match compiled getFocusStyle() with jss (styles package)', () => {
   expect(jssGetFocusStyleTestCss).toMatchSnapshot();
@@ -45,6 +43,11 @@ it('should match compiled getMediaQueryMinMax() with jss (styles package)', () =
   expect(jssGetMediaQueryMinMax).toMatchSnapshot();
 });
 
+// TODO: JSS throws error when using getSkeletonStyle function
+// it.skip('should match compiled getSkeletonStyle() with jss (styles package)', () => {
+//   expect(jssGetSkeletonStyles).toMatchSnapshot();
+// });
+
 it('should match compiled getFocusStyle() with vanilla-extract (styles/vanilla-extract package)', () => {
   expect(vanillaExtractGetFocusStyleTestCss).toMatchSnapshot();
 });
@@ -63,6 +66,10 @@ it('should match compiled getMediaQueryMin() with vanilla-extract (styles/vanill
 
 it('should match compiled getMediaQueryMinMax() with vanilla-extract (styles/vanilla-extract package)', () => {
   expect(vanillaExtractGetMediaQueryMinMaxTestCss).toMatchSnapshot();
+});
+
+it('should match compiled getSkeletonStyle() with vanilla-extract (styles/vanilla-extract package)', () => {
+  expect(vanillaExtractGetSkeletonStyleTestCss).toMatchSnapshot();
 });
 
 it('should have equal compiled getFocusStyle() for jss and vanilla-extract', async () => {
@@ -94,3 +101,10 @@ it('should have equal compiled getMediaQueryMinMax() for jss and vanilla-extract
   const jssStyles = await prettier.format(jssGetMediaQueryMinMax, { parser: 'css' });
   expect(veStyles).toStrictEqual(jssStyles);
 });
+
+// TODO: JSS throws error when using getSkeletonStyle function
+// it.skip('should have equal compiled getSkeletonStyle() for jss and vanilla-extract', async () => {
+//   const veStyles = await prettier.format(vanillaExtractGetSkeletonStyleTestCss, { parser: 'css' });
+//   const jssStyles = await prettier.format(jssGetSkeletonStyles, { parser: 'css' });
+//   expect(veStyles).toStrictEqual(jssStyles);
+// });

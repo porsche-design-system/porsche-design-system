@@ -9,7 +9,7 @@ export * from '../js/grid';
 export * from './hover'; // Import Vanilla Extract version here
 export * from './mediaQuery'; // Import Vanilla Extract version here
 export * from '../js/motion';
-export * from '../js/skeleton';
+export * from './skeleton'; // Import Vanilla Extract version here
 export * from '../js/spacing';
 export * from '../js/theme';
 export * from '../js/typography';

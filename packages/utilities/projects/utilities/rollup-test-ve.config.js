@@ -9,6 +9,7 @@ export default {
     'tests/unit/specs/vanilla-extract-getMediaQueryMax.css.ts',
     'tests/unit/specs/vanilla-extract-getMediaQueryMin.css.ts',
     'tests/unit/specs/vanilla-extract-getMediaQueryMinMax.css.ts',
+    'tests/unit/specs/vanilla-extract-getSkeletonStyle.css.ts',
   ],
   plugins: [
     vanillaExtractPlugin({

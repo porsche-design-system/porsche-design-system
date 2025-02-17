@@ -21,10 +21,23 @@ The styles are available as `JavaScript` and `SCSS` version. Look at the example
 When using `JSS`, `styled-components` etc. JavaScript styles can be imported by:
 `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`.
 
+- `getSkeletonStyle({ theme: 'light' | 'dark' })`
+
+### Vanilla Extract
+
 When using `vanilla-extract` JavaScript styles can be imported by:
 `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles/vanilla-extract';`.
 
-- `getSkeletonStyle({ theme: 'light' | 'dark' })`
+```ts
+import { keyframes, style } from '@vanilla-extract/css';
+import {
+  getSkeletonStyle,
+  skeletonAnimation,
+} from '@porsche-design-system/components-{js|angular|react|vue}/styles/vanilla-extract';
+
+export const animation = keyframes(skeletonAnimation);
+export const styles = style(getSkeletonStyle(animation));
+```
 
 ---
 
