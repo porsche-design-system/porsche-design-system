@@ -3,7 +3,7 @@ import { GridLayout } from '../components';
 </script>
 
 <template>
-  <GridLayout :visualizeGrid="true" />;
+  <GridLayout :visualizeGrid="true" />
 </template>
 
 

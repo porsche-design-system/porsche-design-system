@@ -62,7 +62,6 @@ const onAccordion2Update = (e: AccordionUpdateEventDetail) => {
 </script>
 
 <template>
-  <div>
     <div :class="VisualizeGrid" v-if="visualizeGrid">
       <span :class="VisualizeGridColumns" v-for="i in 18" :key="i" />
     </div>
@@ -228,5 +227,4 @@ const onAccordion2Update = (e: AccordionUpdateEventDetail) => {
         </p>
       </div>
     </div>
-  </div>
 </template>
