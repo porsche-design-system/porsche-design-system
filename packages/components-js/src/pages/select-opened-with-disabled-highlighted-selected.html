@@ -27,5 +27,9 @@
 <script>
   porscheDesignSystem.componentsReady().then(() => {
     document.querySelector('p-select').shadowRoot.querySelector('button').click();
+
+    document
+      .querySelectorAll('p-select-option.highlight')
+      .forEach((option) => option.shadowRoot.firstElementChild.classList.add('option--highlighted'));
   });
 </script>
