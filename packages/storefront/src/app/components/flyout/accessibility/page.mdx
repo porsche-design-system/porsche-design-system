@@ -12,12 +12,16 @@ export const metadata = {
 
 ## Accessibility support
 
+The `Flyout` component uses the native `dialog` element to provide a modal dialog which comes with browser-specific
+behavior which means that some of the accessibility features may be different in browsers.
+
 ### Keyboard
 
-| Key / state        | Function                                                                                                         |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------- |
-| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element inside the dialog. Focus is trapped (browser behaviour). |
-| `ESC`              | Closes the dialog.                                                                                               |
+| Key / state                | Function                                                                                                         |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `Tab`, `Shift-Tab`         | Moves focus to the next (or previous) focusable element inside the dialog. Focus is trapped (browser behaviour). |
+| `ESC`                      | Closes the dialog.                                                                                               |
+| `focus` on trigger element | The focus is returned to the trigger element after closing the dialog (browser behavior).                        |
 
 ### ARIA enhancements
 
@@ -37,11 +41,11 @@ export const metadata = {
 
 ### Automated
 
-| Technology               | Support |
-| ------------------------ | ------- |
-| AXE-Core                 | ✅      |
-| High-Contrast Mode (HCM) | ✅      |
-| Text-Zoom (200%)         | ✅      |
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| AXE-Core                        | ✅      |
+| High-Contrast Mode (light/dark) | ✅      |
+| Text-Zoom (200%)                | ✅      |
 
 ### Manual
 
