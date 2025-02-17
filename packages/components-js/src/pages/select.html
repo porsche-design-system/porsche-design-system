@@ -8,24 +8,10 @@
     --p-select-focus-border-color: #000;
   }
 
-  .scaling-0 {
-    --p-internal-select-scaling: 0;
-  }
-
-  .scaling-0-5 {
-    --p-internal-select-scaling: 0.5;
-  }
-
-  .scaling-0-8 {
-    --p-internal-select-scaling: 0.8;
-  }
-
-  .scaling-1 {
-    --p-internal-select-scaling: 1;
-  }
-
-  .scaling-2 {
-    --p-internal-select-scaling: 2;
+  .playground > iframe {
+    margin-inline-start: 0;
+    width: calc(100vw - 32px);
+    height: 40rem;
   }
 </style>
 
@@ -220,194 +206,54 @@
   </p-select>
 </div>
 
-<div class="playground light" title="should render opened" style="padding-bottom: calc(1rem + 450px)">
-  <p-select name="options" value="a" label="Opened" dropdown-direction="down" class="open">
-    <p-select-option value="a"
-      >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
-      displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
-      top.</p-select-option
-    >
-    <p-select-option value="b">Option B</p-select-option>
-    <p-select-option value="c">Option C</p-select-option>
-    <p-select-option value="d"
-      >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
-      displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
-      top.</p-select-option
-    >
-    <p-select-option value="e">Option E</p-select-option>
-    <p-select-option value="f">Option F</p-select-option>
-    <p-select-option value="g">Option G</p-select-option>
-    <p-select-option value="h">Option H</p-select-option>
-    <p-select-option value="i">Option I</p-select-option>
-    <p-select-option value="j">Option J</p-select-option>
-    <p-select-option value="k">Option K</p-select-option>
-  </p-select>
+<div class="playground light" title="should render opened with direction bottom">
+  <iframe src="/select-opened-bottom?iframe=true" loading="eager"></iframe>
 </div>
 
-<div
-  class="playground light"
-  title="should render with open dropdown direction up"
-  style="padding-top: calc(1rem + 450px)"
->
-  <p-select name="options" value="a" label="Opened direction up" dropdown-direction="up" class="open">
-    <p-select-option value="a">Should show dropdown direction up</p-select-option>
-    <p-select-option value="b">Option B</p-select-option>
-    <p-select-option value="c">Option C</p-select-option>
-    <p-select-option value="d"
-      >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
-      displaying correctly.</p-select-option
-    >
-    <p-select-option value="e">Option E</p-select-option>
-    <p-select-option value="f">Option F</p-select-option>
-    <p-select-option value="g">Option G</p-select-option>
-    <p-select-option value="h">Option H</p-select-option>
-    <p-select-option value="i">Option I</p-select-option>
-    <p-select-option value="j">Option J</p-select-option>
-    <p-select-option value="k">Option K</p-select-option>
-  </p-select>
+<div class="playground light" title="should render opened with direction top">
+  <iframe src="/select-opened-top?iframe=true" loading="eager"></iframe>
 </div>
 
 <div
   class="playground light"
   title="should render opened and with disabled, highlighted and selected"
-  style="padding-bottom: calc(1rem + 450px)"
 >
-  <p-select
-    name="options"
-    value="c"
-    label="Opened with disabled (Option A), highlighted (Option B) and selected (Option C)"
-    dropdown-direction="down"
-    class="open"
-  >
-    <p-select-option value="a" disabled="true">Option A</p-select-option>
-    <p-select-option class="highlight" value="b">Option B</p-select-option>
-    <p-select-option value="c">Option C</p-select-option>
-    <p-select-option value="d">Option D</p-select-option>
-    <p-select-option value="e">Option E</p-select-option>
-    <p-select-option value="f">Option F</p-select-option>
-    <p-select-option value="g">Option G</p-select-option>
-    <p-select-option value="h">Option H</p-select-option>
-    <p-select-option value="i">Option I</p-select-option>
-    <p-select-option value="j">Option J</p-select-option>
-    <p-select-option value="k">Option K</p-select-option>
-  </p-select>
+  <iframe src="/select-opened-with-disabled-highlighted-selected?iframe=true" loading="eager"></iframe>
 </div>
 
 <div
   class="playground light"
   title="should render opened and with selected empty option"
-  style="padding-bottom: calc(1rem + 450px)"
 >
-  <p-select name="options" label="Opened with selected empty Option" dropdown-direction="down" class="open">
-    <p-select-option></p-select-option>
-    <p-select-option value="a">Option A</p-select-option>
-    <p-select-option value="b">Option B</p-select-option>
-    <p-select-option value="c">Option C</p-select-option>
-    <p-select-option value="d">Option D</p-select-option>
-    <p-select-option value="e">Option E</p-select-option>
-    <p-select-option value="f">Option F</p-select-option>
-    <p-select-option value="g">Option G</p-select-option>
-    <p-select-option value="h">Option H</p-select-option>
-    <p-select-option value="i">Option I</p-select-option>
-    <p-select-option value="j">Option J</p-select-option>
-    <p-select-option value="k">Option K</p-select-option>
-  </p-select>
+  <iframe src="/select-opened-with-selected-empty-option?iframe=true" loading="eager"></iframe>
 </div>
 
 <div
   class="playground light"
   title="should render opened and with optgroups"
-  style="padding-bottom: calc(1rem + 450px)"
 >
-  <p-select name="options" value="a" label="Opened with optgroups" dropdown-direction="down" class="open">
-    <p-optgroup label="Some optgroup label 1">
-      <p-select-option value="a">Option A</p-select-option>
-      <p-select-option value="b">Option B</p-select-option>
-      <p-select-option value="c">Option C</p-select-option>
-    </p-optgroup>
-    <p-optgroup label="Some optgroup label 2">
-      <p-select-option value="d">Option D</p-select-option>
-      <p-select-option value="e">Option E</p-select-option>
-      <p-select-option value="f">Option F</p-select-option>
-    </p-optgroup>
-  </p-select>
+  <iframe src="/select-opened-with-optgroups?iframe=true" loading="eager"></iframe>
 </div>
 
 <div
   class="playground light"
   title="should render opened and with optgroup in disabled state"
-  style="padding-bottom: calc(1rem + 450px)"
 >
-  <p-select
-    name="options"
-    value="c"
-    label="Opened with disabled (Option A), highlighted (Option B) and selected (Option C) inside optgroup + optgroup in disabled state"
-    dropdown-direction="down"
-    class="open"
-  >
-    <p-optgroup label="Some optgroup label 1">
-      <p-select-option value="a" disabled="true">Option A</p-select-option>
-      <p-select-option class="highlight" value="b">Option B</p-select-option>
-      <p-select-option value="c">Option C</p-select-option>
-    </p-optgroup>
-    <p-optgroup label="Some optgroup label 2" disabled="true">
-      <p-select-option value="d">Option D</p-select-option>
-      <p-select-option value="e">Option E</p-select-option>
-      <p-select-option value="f">Option F</p-select-option>
-    </p-optgroup>
-  </p-select>
+  <iframe src="/select-opened-with-optgroups-disabled?iframe=true" loading="eager"></iframe>
 </div>
 
 <div
   class="playground light"
   title="should render opened and with options within and outside optgroup"
-  style="padding-bottom: calc(1rem + 450px)"
 >
-  <p-select
-    name="options"
-    value="a"
-    label="Opened with options within and outside optgroup"
-    dropdown-direction="down"
-    class="open"
-  >
-    <p-optgroup label="Some optgroup label 1">
-      <p-select-option value="a">Option A</p-select-option>
-      <p-select-option value="b">Option B</p-select-option>
-      <p-select-option value="c">Option C</p-select-option>
-    </p-optgroup>
-    <p-select-option value="d">Option D</p-select-option>
-    <p-select-option value="e">Option E</p-select-option>
-    <p-select-option value="f">Option F</p-select-option>
-  </p-select>
+  <iframe src="/select-opened-with-and-without-optgroups?iframe=true" loading="eager"></iframe>
 </div>
 
 <div
   class="playground light"
   title="should render opened and with slotted images"
-  style="padding-bottom: calc(1rem + 450px)"
 >
-  <p-select name="options" label="Opened with slotted images" dropdown-direction="down" class="open">
-    <p-select-option value="a">
-      <img src="http://localhost:3002/placeholder_800x500.svg" alt="Some alt text" width="800" height="500" />
-      Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
-      displaying correctly. Also, the slotted image should be aligned correctly to the top-left and preserve the space
-      even for multiple lines.</p-select-option
-    >
-    <p-select-option value="b">
-      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
-      Option B
-    </p-select-option>
-    <p-select-option value="c">
-      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
-      Option C
-    </p-select-option>
-    <p-select-option value="d">
-      <img src="http://localhost:3002/718.png" alt="Some alt text" width="271" height="96" />
-      Option D
-    </p-select-option>
-    <p-select-option value="e">Option E</p-select-option>
-    <p-select-option value="f">Option F</p-select-option>
-  </p-select>
+  <iframe src="/select-opened-with-slotted-images?iframe=true" loading="eager"></iframe>
 </div>
 
 <div
@@ -457,224 +303,26 @@
   </p-select>
 </div>
 
-<div class="playground light auto-layout-block" title="should render in compact mode" style="padding-bottom: calc(1rem + 450px)">
-  <p-select name="options" label="Some label with pre-selected option" value="a" compact="true">
-    <p-select-option value="a">Option A</p-select-option>
-    <p-select-option value="b">Option B</p-select-option>
-    <p-select-option value="c">Option C</p-select-option>
-  </p-select>
-
-  <p-select class="open" name="options" value="d" label="Some label with preselected slotted image, optgroup and empty option" dropdown-direction="down" compact="true">
-    <p-select-option></p-select-option>
-    <p-select-option value="a">
-      <img src="http://localhost:3002/placeholder_800x500.svg" alt="Some alt text" width="800" height="500" />
-      Multiline options could be quite long, especially on smaller screens.</p-select-option
-    >
-    <p-select-option value="b">
-      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
-      Option B
-    </p-select-option>
-    <p-optgroup label="Some optgroup label 1">
-      <p-select-option value="oa">Option OA</p-select-option>
-      <p-select-option value="ob">Option OB</p-select-option>
-      <p-select-option value="oc">Option OC</p-select-option>
-    </p-optgroup>
-    <p-select-option value="c">Option C</p-select-option>
-    <p-select-option value="d">
-      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
-      Option D
-    </p-select-option>
-    <p-select-option value="e">
-      <img src="http://localhost:3002/718.png" alt="Some alt text" width="271" height="96" />
-      Option E
-    </p-select-option>
-    <p-select-option value="f">Option E</p-select-option>
-  </p-select>
+<div class="playground light" title="should render in compact mode">
+  <iframe src="/select-compact?iframe=true" loading="eager"></iframe>
 </div>
 
-<div class="playground light auto-layout-block" title="should render with scaling 0" style="padding-bottom: calc(1rem + 450px)">
-  <p-select class="scaling-0" name="options" label="Some label with pre-selected option" value="a" compact="true">
-    <p-select-option value="a">Option A</p-select-option>
-    <p-select-option value="b">Option B</p-select-option>
-    <p-select-option value="c">Option C</p-select-option>
-  </p-select>
-
-  <p-select class="open scaling-0" name="options" value="d" label="Some label with preselected slotted image, optgroup and empty option" dropdown-direction="down" compact="true">
-    <p-select-option></p-select-option>
-    <p-select-option value="a">
-      <img src="http://localhost:3002/placeholder_800x500.svg" alt="Some alt text" width="800" height="500" />
-      Multiline options could be quite long, especially on smaller screens.</p-select-option
-    >
-    <p-select-option value="b">
-      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
-      Option B
-    </p-select-option>
-    <p-optgroup label="Some optgroup label 1">
-      <p-select-option value="oa">Option OA</p-select-option>
-      <p-select-option value="ob">Option OB</p-select-option>
-      <p-select-option value="oc">Option OC</p-select-option>
-    </p-optgroup>
-    <p-select-option value="c">Option C</p-select-option>
-    <p-select-option value="d">
-      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
-      Option D
-    </p-select-option>
-    <p-select-option value="e">
-      <img src="http://localhost:3002/718.png" alt="Some alt text" width="271" height="96" />
-      Option E
-    </p-select-option>
-    <p-select-option value="f">Option E</p-select-option>
-  </p-select>
+<div class="playground light auto-layout-block" title="should render with scaling 0">
+  <iframe src="/select-scaling-0?iframe=true" loading="eager"></iframe>
 </div>
 
-<div class="playground light auto-layout-block" title="should render with scaling 0.5" style="padding-bottom: calc(1rem + 450px)">
-  <p-select class="scaling-0-5" name="options" label="Some label with pre-selected option" value="a" compact="true">
-    <p-select-option value="a">Option A</p-select-option>
-    <p-select-option value="b">Option B</p-select-option>
-    <p-select-option value="c">Option C</p-select-option>
-  </p-select>
-
-  <p-select class="open scaling-0-5" name="options" value="d" label="Some label with preselected slotted image, optgroup and empty option" dropdown-direction="down" compact="true">
-    <p-select-option></p-select-option>
-    <p-select-option value="a">
-      <img src="http://localhost:3002/placeholder_800x500.svg" alt="Some alt text" width="800" height="500" />
-      Multiline options could be quite long, especially on smaller screens.</p-select-option
-    >
-    <p-select-option value="b">
-      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
-      Option B
-    </p-select-option>
-    <p-optgroup label="Some optgroup label 1">
-      <p-select-option value="oa">Option OA</p-select-option>
-      <p-select-option value="ob">Option OB</p-select-option>
-      <p-select-option value="oc">Option OC</p-select-option>
-    </p-optgroup>
-    <p-select-option value="c">Option C</p-select-option>
-    <p-select-option value="d">
-      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
-      Option D
-    </p-select-option>
-    <p-select-option value="e">
-      <img src="http://localhost:3002/718.png" alt="Some alt text" width="271" height="96" />
-      Option E
-    </p-select-option>
-    <p-select-option value="f">Option E</p-select-option>
-  </p-select>
+<div class="playground light auto-layout-block" title="should render with scaling 0.5">
+  <iframe src="/select-scaling-0-5?iframe=true" loading="eager"></iframe>
 </div>
 
-<div class="playground light auto-layout-block" title="should render with scaling 0.8" style="padding-bottom: calc(1rem + 450px)">
-  <p-select class="scaling-0-8" name="options" label="Some label with pre-selected option" value="a" compact="true">
-    <p-select-option value="a">Option A</p-select-option>
-    <p-select-option value="b">Option B</p-select-option>
-    <p-select-option value="c">Option C</p-select-option>
-  </p-select>
-
-  <p-select class="open scaling-0-8" name="options" value="d" label="Some label with preselected slotted image, optgroup and empty option" dropdown-direction="down" compact="true">
-    <p-select-option></p-select-option>
-    <p-select-option value="a">
-      <img src="http://localhost:3002/placeholder_800x500.svg" alt="Some alt text" width="800" height="500" />
-      Multiline options could be quite long, especially on smaller screens.</p-select-option
-    >
-    <p-select-option value="b">
-      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
-      Option B
-    </p-select-option>
-    <p-optgroup label="Some optgroup label 1">
-      <p-select-option value="oa">Option OA</p-select-option>
-      <p-select-option value="ob">Option OB</p-select-option>
-      <p-select-option value="oc">Option OC</p-select-option>
-    </p-optgroup>
-    <p-select-option value="c">Option C</p-select-option>
-    <p-select-option value="d">
-      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
-      Option D
-    </p-select-option>
-    <p-select-option value="e">
-      <img src="http://localhost:3002/718.png" alt="Some alt text" width="271" height="96" />
-      Option E
-    </p-select-option>
-    <p-select-option value="f">Option E</p-select-option>
-  </p-select>
+<div class="playground light auto-layout-block" title="should render with scaling 0.8">
+  <iframe src="/select-scaling-0-8?iframe=true" loading="eager"></iframe>
 </div>
 
-<div class="playground light auto-layout-block" title="should render with scaling 1" style="padding-bottom: calc(1rem + 450px)">
-  <p-select class="scaling-1" name="options" label="Some label with pre-selected option" value="a" compact="true">
-    <p-select-option value="a">Option A</p-select-option>
-    <p-select-option value="b">Option B</p-select-option>
-    <p-select-option value="c">Option C</p-select-option>
-  </p-select>
-
-  <p-select class="open scaling-1" name="options" value="d" label="Some label with preselected slotted image, optgroup and empty option" dropdown-direction="down" compact="true">
-    <p-select-option></p-select-option>
-    <p-select-option value="a">
-      <img src="http://localhost:3002/placeholder_800x500.svg" alt="Some alt text" width="800" height="500" />
-      Multiline options could be quite long, especially on smaller screens.</p-select-option
-    >
-    <p-select-option value="b">
-      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
-      Option B
-    </p-select-option>
-    <p-optgroup label="Some optgroup label 1">
-      <p-select-option value="oa">Option OA</p-select-option>
-      <p-select-option value="ob">Option OB</p-select-option>
-      <p-select-option value="oc">Option OC</p-select-option>
-    </p-optgroup>
-    <p-select-option value="c">Option C</p-select-option>
-    <p-select-option value="d">
-      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
-      Option D
-    </p-select-option>
-    <p-select-option value="e">
-      <img src="http://localhost:3002/718.png" alt="Some alt text" width="271" height="96" />
-      Option E
-    </p-select-option>
-    <p-select-option value="f">Option E</p-select-option>
-  </p-select>
+<div class="playground light auto-layout-block" title="should render with scaling 1">
+  <iframe src="/select-scaling-1?iframe=true" loading="eager"></iframe>
 </div>
 
-<div class="playground light auto-layout-block" title="should render with scaling 2" style="padding-bottom: calc(1rem + 450px)">
-  <p-select class="scaling-2" name="options" label="Some label with pre-selected option" value="a" compact="true">
-    <p-select-option value="a">Option A</p-select-option>
-    <p-select-option value="b">Option B</p-select-option>
-    <p-select-option value="c">Option C</p-select-option>
-  </p-select>
-
-  <p-select class="open scaling-2" name="options" value="d" label="Some label with preselected slotted image, optgroup and empty option" dropdown-direction="down" compact="true">
-    <p-select-option></p-select-option>
-    <p-select-option value="a">
-      <img src="http://localhost:3002/placeholder_800x500.svg" alt="Some alt text" width="800" height="500" />
-      Multiline options could be quite long, especially on smaller screens.</p-select-option
-    >
-    <p-select-option value="b">
-      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
-      Option B
-    </p-select-option>
-    <p-optgroup label="Some optgroup label 1">
-      <p-select-option value="oa">Option OA</p-select-option>
-      <p-select-option value="ob">Option OB</p-select-option>
-      <p-select-option value="oc">Option OC</p-select-option>
-    </p-optgroup>
-    <p-select-option value="c">Option C</p-select-option>
-    <p-select-option value="d">
-      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
-      Option D
-    </p-select-option>
-    <p-select-option value="e">
-      <img src="http://localhost:3002/718.png" alt="Some alt text" width="271" height="96" />
-      Option E
-    </p-select-option>
-    <p-select-option value="f">Option E</p-select-option>
-  </p-select>
+<div class="playground light auto-layout-block" title="should render with scaling 2">
+  <iframe src="/select-scaling-2?iframe=true" loading="eager"></iframe>
 </div>
-
-<script>
-  porscheDesignSystem.componentsReady().then(() => {
-    // Call click on the shadow root input so isOutsideClick won't close the dropdowns
-    document.querySelectorAll('p-select.open').forEach((el) => el.shadowRoot.querySelector('BUTTON').click());
-
-    // Highlight second option
-    document
-      .querySelectorAll('p-select-option.highlight')
-      .forEach((option) => option.shadowRoot.firstElementChild.classList.add('option--highlighted'));
-  });
-</script>

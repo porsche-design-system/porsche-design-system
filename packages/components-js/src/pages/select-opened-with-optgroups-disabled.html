@@ -1,0 +1,24 @@
+<p-select
+  name="options"
+  value="c"
+  label="Opened with disabled (Option A), highlighted (Option B) and selected (Option C) inside optgroup + optgroup in disabled state"
+  dropdown-direction="down"
+  class="open"
+>
+  <p-optgroup label="Some optgroup label 1">
+    <p-select-option value="a" disabled="true">Option A</p-select-option>
+    <p-select-option class="highlight" value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+  </p-optgroup>
+  <p-optgroup label="Some optgroup label 2" disabled="true">
+    <p-select-option value="d">Option D</p-select-option>
+    <p-select-option value="e">Option E</p-select-option>
+    <p-select-option value="f">Option F</p-select-option>
+  </p-optgroup>
+</p-select>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    document.querySelector('p-select').shadowRoot.querySelector('button').click();
+  });
+</script>

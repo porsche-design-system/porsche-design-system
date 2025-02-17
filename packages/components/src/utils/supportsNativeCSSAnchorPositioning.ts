@@ -9,7 +9,7 @@ export const supportsNativeCSSAnchorPositioning = (): boolean => {
   if (!hasWindow) {
     return false;
   }
-  return CSS.supports(
+  return CSS?.supports(
     '(anchor-name: --test) and (position-anchor: --test) and (position-area: bottom) and (position-try-fallbacks: flip-block) and (width: anchor-size(width))'
   );
 };
