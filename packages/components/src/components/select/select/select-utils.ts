@@ -1,16 +1,15 @@
 import { forceUpdate } from '@stencil/core';
 import {
   type SelectComponentsDropdownDirection,
-  type SelectDropdownDirectionInternal,
   type Theme,
   consoleWarn,
-  determineDropdownDirection,
   getHighlightedSelectOptionIndex,
   getUsableSelectOptions,
 } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import type { OptgroupInternalHTMLProps } from '../../optgroup/optgroup-utils';
 import type { SelectOptionInternalHTMLProps } from '../select-option/select-option-utils';
+
 export type SelectState = FormState;
 export type SelectOption = HTMLPSelectOptionElement & SelectOptionInternalHTMLProps;
 export type SelectDropdownDirection = SelectComponentsDropdownDirection;
@@ -20,6 +19,8 @@ export type SelectUpdateEventDetail = {
   name: string;
   value: string;
 };
+
+export const OPTIONS_LIST_SAFE_ZONE = 6;
 
 // TODO: share between select & multi-select
 export const syncSelectChildrenProps = (children: (SelectOption | SelectOptgroup)[], theme: Theme): void => {
@@ -66,22 +67,6 @@ export const setSelectedOption = (options: SelectOption[], selectedOption: Selec
   resetSelectedOption(options);
   selectedOption.selected = true;
   forceUpdate(selectedOption);
-};
-
-// TODO: This is copied from multi-select, extract and reuse in both components
-export const getSelectDropdownDirection = (
-  direction: SelectComponentsDropdownDirection,
-  host: HTMLElement,
-  options: SelectOption[]
-): SelectDropdownDirectionInternal => {
-  if (direction !== 'auto') {
-    return direction;
-  }
-  if (host) {
-    const visibleOptionsLength = options.filter((option) => !option.hidden).length;
-    return determineDropdownDirection(host, visibleOptionsLength);
-  }
-  return 'down';
 };
 
 export const getSrHighlightedOptionText = (options: SelectOption[]): string => {

@@ -3,6 +3,7 @@ import {
   fontLineHeight,
   fontWeightRegular,
   spacingStaticSmall,
+  textSmallStyle,
 } from '@porsche-design-system/styles';
 import type { Styles } from 'jss';
 import {
@@ -74,6 +75,7 @@ export const getOptionStyles = (theme: Theme): Styles => {
       paddingBlock,
       paddingInline,
       minHeight: fontLineHeight, // preserves height for empty option
+      ...textSmallStyle,
       color: contrastHighColor,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: contrastHighColorDark,
