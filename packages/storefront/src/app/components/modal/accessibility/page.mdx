@@ -8,8 +8,49 @@ export const metadata = {
 
 # Modal <ComponentStatus tagName="p-modal"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={['Accessibility support', 'Tests']} />
 
 ## Accessibility support
 
-TBD.
+The `Modal` component uses the native `dialog` element to provide a modal dialog which comes with browser-specific
+behavior. As a result, accessibility features may vary across different browsers.
+
+### Keyboard
+
+| Key / state                | Function                                                                                                         |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `Tab`, `Shift-Tab`         | Moves focus to the next (or previous) focusable element inside the dialog. Focus is trapped (browser behaviour). |
+| `ESC`                      | Closes the dialog.                                                                                               |
+| `focus` on trigger element | The focus is returned to the trigger element after closing the dialog (browser behavior).                        |
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA         | Usage                                                                   |
+| ------------ | ----------------------------------------------------------------------- |
+| `aria-label` | Defines a string value that labels the dialog element.                  |
+| `role`       | Defines the semantic of the dialog element (`dialog` or `alertdialog`). |
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                  | Usage                                                                                                                               |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `aria-label="STRING"` | Defines the accessible name if no `aria` property is provided, uses the contents of the header slot and falls back to a fixed name. |
+
+## Tests
+
+### Automated
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| AXE-Core                        | ✅      |
+| High-Contrast Mode (light/dark) | ✅      |
+| Text-Zoom (200%)                | ✅      |
+
+### Manual
+
+| Technology                | Support |
+| ------------------------- | ------- |
+| Keyboard                  | ✅      |
+| Screen reader (VoiceOver) | ✅      |

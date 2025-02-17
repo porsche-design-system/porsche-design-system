@@ -8,7 +8,7 @@ export const metadata = {
 
 # Checkbox <ComponentStatus tagName="p-checkbox"></ComponentStatus>
 
-<TableOfContents headings={["Accessibility support","Development considerations","Tests"]} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
 
 ## Accessibility support
 
@@ -35,22 +35,21 @@ export const metadata = {
 
 In general, you should prevent using the `disabled="true"` state. Disabled elements are not reachable (focusable)
 anymore and can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out
-why these elements are disabled. A good practice when to use the disabled state is during form submission to prevent
-changes while this process is performed.
+why these elements are disabled.
 
 ## Tests
 
 ### Automated
 
-| Technology               | Support |
-| ------------------------ | ------- |
-| AXE-Core                 | ✅      |
-| High-Contrast Mode (HCM) | ✅      |
-| Text-Zoom (200%)         | ✅      |
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| AXE-Core                        | ✅      |
+| High-Contrast Mode (light/dark) | ✅      |
+| Text-Zoom (200%)                | ✅      |
 
 ### Manual
 
-| Technology               | Support |
-| ------------------------ | ------- |
-| Keyboard                 | ✅      |
-| Screenreader (VoiceOver) | ✅      |
+| Technology                | Support |
+| ------------------------- | ------- |
+| Keyboard                  | ✅      |
+| Screen reader (VoiceOver) | ✅      |
