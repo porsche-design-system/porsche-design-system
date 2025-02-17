@@ -58,3 +58,57 @@ exports[`should match compiled getHoverStyle() with vanilla-extract (styles/vani
   }
 }"
 `;
+
+exports[`should match compiled getMediaQueryMax() with jss (styles package) 1`] = `
+"
+@media(max-width:1919px) {
+  .test {
+    margin: 0;
+  }
+}
+"
+`;
+
+exports[`should match compiled getMediaQueryMax() with vanilla-extract (styles/vanilla-extract package) 1`] = `
+"@media (max-width:1919px) {
+  .test {
+    margin: 0;
+  }
+}"
+`;
+
+exports[`should match compiled getMediaQueryMin() with jss (styles package) 1`] = `
+"
+@media(min-width:1920px) {
+  .test {
+    margin: 0;
+  }
+}
+"
+`;
+
+exports[`should match compiled getMediaQueryMin() with vanilla-extract (styles/vanilla-extract package) 1`] = `
+"@media (min-width:1920px) {
+  .test {
+    margin: 0;
+  }
+}"
+`;
+
+exports[`should match compiled getMediaQueryMinMax() with jss (styles package) 1`] = `
+"
+@media(min-width:0px) and (max-width:1919px) {
+  .test {
+    margin: 0;
+  }
+}
+"
+`;
+
+exports[`should match compiled getMediaQueryMinMax() with vanilla-extract (styles/vanilla-extract package) 1`] = `
+"@media (min-width:0px) and (max-width:1919px) {
+  .test {
+    margin: 0;
+  }
+}"
+`;

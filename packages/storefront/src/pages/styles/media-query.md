@@ -42,6 +42,22 @@ When using `vanilla-extract` JavaScript styles can be imported by:
 - `getMediaQueryMax('xs'|'s'|'m'|'l'|'xl'|'xxl')`
 - `getMediaQueryMinMax('base'|'xs'|'s'|'m'|'l'|'xl', 'xs'|'s'|'m'|'l'|'xl'|'xxl')`
 
+Since `vanilla-extract` uses an object style syntax the `getMediaQueryMax`, `getMediaQueryMin` & `getMediaQueryMinMax`
+will only return the media condition as string and need to be wrapped with a `@media` key like this:
+
+```
+import { style } from '@vanilla-extract/css';
+import { getMediaQueryMax } from '@porsche-design-system/components-{js|angular|react|vue}/styles/vanilla-extract';
+
+const myStyle = style({
+  '@media': {
+    [getMediaQueryMax('xxl')]: {
+      margin: 0,
+    },
+  }
+});
+```
+
 ---
 
 ### SCSS

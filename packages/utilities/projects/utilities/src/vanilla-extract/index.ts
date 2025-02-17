@@ -7,7 +7,7 @@ export * from '../js/frostedGlass';
 export * from '../js/gradient';
 export * from '../js/grid';
 export * from './hover'; // Import Vanilla Extract version here
-export * from '../js/mediaQuery';
+export * from './mediaQuery'; // Import Vanilla Extract version here
 export * from '../js/motion';
 export * from '../js/skeleton';
 export * from '../js/spacing';

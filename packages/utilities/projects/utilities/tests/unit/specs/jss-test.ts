@@ -3,7 +3,8 @@ import jssPluginCamelCase from 'jss-plugin-camel-case';
 import jssPluginGlobal from 'jss-plugin-global';
 import jssPluginNested from 'jss-plugin-nested';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
-import { getFocusStyle, getHoverStyle } from '../../../src/js';
+import { getFocusStyle, getHoverStyle, getMediaQueryMax, getMediaQueryMin, getMediaQueryMinMax } from '../../../src/js';
+import { vanillaExtractGetMediaQueryMax } from './vanilla-extract-getMediaQueryMax.css';
 
 const jss = create({
   plugins: [
@@ -30,5 +31,29 @@ export const jssGetFocusStyleTestCss = getCss({
 export const jssGetHoverStyleTestCss = getCss({
   test: {
     ...getHoverStyle(),
+  },
+});
+
+export const jssGetMediaQueryMax = getCss({
+  [getMediaQueryMax('xxl')]: {
+    test: {
+      margin: 0,
+    },
+  },
+});
+
+export const jssGetMediaQueryMin = getCss({
+  [getMediaQueryMin('xxl')]: {
+    test: {
+      margin: 0,
+    },
+  },
+});
+
+export const jssGetMediaQueryMinMax = getCss({
+  [getMediaQueryMinMax('base', 'xxl')]: {
+    test: {
+      margin: 0,
+    },
   },
 });
