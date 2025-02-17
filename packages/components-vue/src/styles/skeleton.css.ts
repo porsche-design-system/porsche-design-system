@@ -6,13 +6,16 @@ import {
   getSkeletonStyle,
   gridGap,
   headingMediumStyle,
+  skeletonKeyframes,
   spacingFluidMedium,
   themeDarkBackgroundBase,
   themeDarkPrimary,
   themeLightBackgroundBase,
   themeLightPrimary,
 } from '@porsche-design-system/components-vue/styles/vanilla-extract';
-import { style } from '@vanilla-extract/css';
+import { keyframes, style } from '@vanilla-extract/css';
+
+export const skeletonAnimation = keyframes(skeletonKeyframes);
 
 export const Wrapper = style({
   display: 'flex',
@@ -40,8 +43,8 @@ export const Heading = style({
   margin: 0,
 });
 
-export const SkeletonLight = style(getSkeletonStyle({ theme: 'light' }));
-export const SkeletonDark = style(getSkeletonStyle({ theme: 'dark' }));
+export const SkeletonLight = style(getSkeletonStyle(skeletonAnimation, { theme: 'light' }));
+export const SkeletonDark = style(getSkeletonStyle(skeletonAnimation, { theme: 'dark' }));
 
 export const boxStyles = style({
   height: '200px',

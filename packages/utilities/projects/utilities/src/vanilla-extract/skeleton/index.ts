@@ -1,1 +1,1 @@
-export { skeletonAnimation, getSkeletonStyle } from './getSkeletonStyle';
+export { skeletonKeyframes, getSkeletonStyle } from './getSkeletonStyle';

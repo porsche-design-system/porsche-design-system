@@ -1,13 +1,13 @@
 import * as fromSkeleton from './';
-import { skeletonAnimation } from './';
+import { skeletonKeyframes } from './';
 import { getSkeletonStyle } from './getSkeletonStyle';
 
 it('should provide all exports', () => {
   expect(Object.keys(fromSkeleton).length).toBe(2);
 });
 
-it('should return correct animation', () => {
-  expect(skeletonAnimation).toMatchSnapshot();
+it('should return correct keyframes', () => {
+  expect(skeletonKeyframes).toMatchSnapshot();
 });
 
 describe('getSkeletonStyle()', () => {

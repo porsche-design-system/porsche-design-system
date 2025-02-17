@@ -6,7 +6,7 @@ type Options = {
   theme?: Exclude<Theme, 'auto'>;
 };
 
-export const skeletonAnimation = {
+export const skeletonKeyframes = {
   from: { backgroundPositionX: '100%' },
   to: { backgroundPositionX: '-100%' },
 };
