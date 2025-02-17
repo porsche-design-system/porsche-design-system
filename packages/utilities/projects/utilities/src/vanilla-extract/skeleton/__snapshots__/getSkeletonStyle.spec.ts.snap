@@ -18,7 +18,7 @@ exports[`getSkeletonStyle() > should return correct css for opts: animationName 
 }
 `;
 
-exports[`should return correct animation 1`] = `
+exports[`should return correct keyframes 1`] = `
 {
   "from": {
     "backgroundPositionX": "100%",
