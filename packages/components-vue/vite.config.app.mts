@@ -4,12 +4,14 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import * as partials from '@porsche-design-system/components-vue/partials';
+import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 
 // Config to build static demo-app
 export default defineConfig({
   plugins: [
     vue(),
     vueJsx(),
+    vanillaExtractPlugin(),
     createHtmlPlugin({
       inject: {
         data: {
