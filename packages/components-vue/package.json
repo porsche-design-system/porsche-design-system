@@ -28,7 +28,7 @@
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/components-vue": "3.27.0-rc.0",
+    "@porsche-design-system/components-vue": "3.27.0-rc.1",
     "vue": "^3.5.13",
     "vue-imask": "^7.6.1",
     "vue-router": "^4.5.0"
@@ -57,7 +57,9 @@
     "globby": "*",
     "tsx": "*",
     "typescript": "*",
-    "vite": "*"
+    "vite": "*",
+    "@vanilla-extract/css": "*",
+    "@vanilla-extract/vite-plugin": "*"
   },
   "volta": {
     "extends": "../../package.json"
