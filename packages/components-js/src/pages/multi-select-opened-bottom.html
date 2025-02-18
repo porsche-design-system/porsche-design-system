@@ -1,0 +1,33 @@
+<style>
+  p-multi-select {
+    margin: 16px;
+  }
+</style>
+
+<p-multi-select name="options" label="Opened" dropdown-direction="down" class="open skip-axe-core-test">
+  <p-multi-select-option value="a"
+    >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
+    displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
+    top.</p-multi-select-option
+  >
+  <p-multi-select-option value="b">Option B</p-multi-select-option>
+  <p-multi-select-option value="c">Option C</p-multi-select-option>
+  <p-multi-select-option value="d"
+    >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
+    displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
+    top.</p-multi-select-option
+  >
+  <p-multi-select-option value="e">Option E</p-multi-select-option>
+  <p-multi-select-option value="f">Option F</p-multi-select-option>
+  <p-multi-select-option value="g">Option G</p-multi-select-option>
+  <p-multi-select-option value="h">Option H</p-multi-select-option>
+  <p-multi-select-option value="i">Option I</p-multi-select-option>
+  <p-multi-select-option value="j">Option J</p-multi-select-option>
+  <p-multi-select-option value="k">Option K</p-multi-select-option>
+</p-multi-select>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    document.querySelector('p-multi-select').shadowRoot.querySelector('label').click();
+  });
+</script>
