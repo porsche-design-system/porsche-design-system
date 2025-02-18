@@ -1,15 +1,18 @@
 import {
+  borderRadiusMedium,
   borderRadiusSmall,
   borderWidthBase,
   fontLineHeight,
   fontSizeTextXSmall,
   fontWeightSemiBold,
+  motionDurationShort,
+  motionEasingBase,
   spacingStaticSmall,
   textSmallStyle,
 } from '@porsche-design-system/styles';
 import type { JssStyle, Styles } from 'jss';
 import {
-  addImportantToRule,
+  cssVariableAnimationDuration,
   getHighContrastColors,
   getThemedColors,
   getTransition,
@@ -19,7 +22,7 @@ import {
 } from '../../../styles';
 import type { Theme } from '../../../types';
 import { getCss, isHighContrastMode, mergeDeep } from '../../../utils';
-import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
+import type { SelectWrapperDropdownDirection } from '../select-wrapper/select-wrapper-utils';
 
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import {
@@ -28,15 +31,16 @@ import {
   getCalculatedFormElementPaddingHorizontal,
 } from '../../../styles/form-styles';
 import { OPTION_HEIGHT, getNoResultsOptionJssStyle } from '../../../styles/option-styles';
-import { getPopoverResetJssStyle } from '../../../styles/popover-reset-styles';
 import type { FormState } from '../../../utils/form/form-state';
+import { OPTIONS_LIST_SAFE_ZONE } from '../../select/select/select-utils';
 
-const dropdownPositionVar = '--p-internal-dropdown-position';
+const anchorName = '--anchor-select-wrapper';
 
 export const getButtonStyles = (
-  direction: DropdownDirectionInternal,
+  direction: SelectWrapperDropdownDirection,
   isOpen: boolean,
   state: FormState,
+  hasNativeCSSAnchorPositioningSupport: boolean,
   theme: Theme
 ): Styles => {
   const { primaryColor, disabledColor, contrastMediumColor } = getThemedColors(theme);
@@ -68,6 +72,9 @@ export const getButtonStyles = (
         outline: '0',
         cursor: 'pointer',
         transition: getTransition('border-color'), // background and text color are handled on select
+        ...(hasNativeCSSAnchorPositioningSupport && {
+          anchorName,
+        }),
         ...prefersColorSchemeDarkMediaQuery(theme, {
           borderColor: isOpen ? primaryColorDark : formStateColorDark || contrastMediumColorDark,
         }),
@@ -103,10 +110,11 @@ export const getButtonStyles = (
 };
 
 export const getFilterStyles = (
-  direction: DropdownDirectionInternal,
+  direction: SelectWrapperDropdownDirection,
   isOpen: boolean,
   state: FormState,
   disabled: boolean,
+  hasNativeCSSAnchorPositioningSupport: boolean,
   theme: Theme
 ): Styles<'@global'> => {
   const { primaryColor, backgroundColor, disabledColor, contrastMediumColor } = getThemedColors(theme);
@@ -163,6 +171,9 @@ export const getFilterStyles = (
         ...prefersColorSchemeDarkMediaQuery(theme, {
           color: primaryColorDark,
           background: backgroundColorDark,
+        }),
+        ...(hasNativeCSSAnchorPositioningSupport && {
+          anchorName,
         }),
         '&::placeholder': {
           ...placeHolderJssStyle,
@@ -226,68 +237,72 @@ export const getFilterStyles = (
   };
 };
 
-export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme): Styles => {
-  const isDirectionDown = direction === 'down';
+export const getListStyles = (
+  direction: SelectWrapperDropdownDirection,
+  isOpen: boolean,
+  hasNativeCSSAnchorPositioningSupport: boolean,
+  theme: Theme
+): Styles => {
+  const { contrastHighColor, primaryColor, backgroundColor, backgroundSurfaceColor, disabledColor, contrastLowColor } =
+    getThemedColors(theme);
   const {
+    contrastHighColor: contrastHighColorDark,
     primaryColor: primaryColorDark,
     backgroundColor: backgroundColorDark,
-    contrastMediumColor: contrastMediumColorDark,
     disabledColor: disabledColorDark,
-    contrastHighColor: contrastHighColorDark,
     backgroundSurfaceColor: backgroundSurfaceColorDark,
     contrastLowColor: contrastLowColorDark,
   } = getThemedColors('dark');
-  const {
-    primaryColor,
-    backgroundColor,
-    contrastMediumColor,
-    contrastHighColor,
-    backgroundSurfaceColor,
-    disabledColor,
-    contrastLowColor,
-  } = getThemedColors(theme);
   const { highlightColor } = getHighContrastColors();
 
   return {
     '@global': {
-      '[role="listbox"]': {
-        display: 'flex',
+      '[popover]': {
+        all: 'unset',
+        position: 'absolute',
+        padding: '6px',
+        display: isOpen ? 'flex' : 'none',
         flexDirection: 'column',
         gap: spacingStaticSmall,
-        position: `var(${dropdownPositionVar}, absolute)`, // for vrt tests
-        padding: '6px',
-        margin: 0,
-        background: backgroundColor,
-        ...textSmallStyle,
-        color: contrastHighColor,
-        zIndex: 10,
-        left: 0,
-        right: 0,
-        [isDirectionDown ? 'top' : 'bottom']: 'calc(100% - 2px)', // 2px border + 2px safety for rounded corners
+        maxHeight: `${8.5 * (OPTION_HEIGHT + 8) + 6 + 2}px`, // 8.5 options * option height + 8px gap + additional spacing (6px = padding, 2px = border)
         boxSizing: 'border-box',
-        maxHeight: `${8.5 * (OPTION_HEIGHT + 8) + 6 + 2}px`, // 8px = gap, 6px = padding, 2px = border
-        overflowY: 'auto',
-        WebkitOverflowScrolling: 'touch',
-        scrollBehavior: 'smooth',
-        border: `2px solid ${primaryColor}`,
-        [isDirectionDown ? 'borderTop' : 'borderBottom']: addImportantToRule(`1px solid ${contrastMediumColor}`),
-        ...(isDirectionDown
-          ? ['borderBottomLeftRadius', 'borderBottomRightRadius']
-          : ['borderTopLeftRadius', 'borderTopRightRadius']
-        ).reduce((result, curr) => ({ ...result, [curr]: borderRadiusSmall }), {}),
+        overflow: 'hidden auto',
+        // scrollBehavior: 'smooth', // when defined, `.scrollTo()` isn't applied immediately
+        // overscrollBehaviorY: 'none', // when defined, rubber band scroll effect is getting lost on iOS Safari
+        // WebkitOverflowScrolling: 'touch', // not necessary anymore for iOS Safari
         scrollbarWidth: 'thin', // firefox
         scrollbarColor: 'auto', // firefox
-        transition: getTransition('border-color'),
-        transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
+        animation: `var(${cssVariableAnimationDuration}, ${motionDurationShort}) fade-in ${motionEasingBase} forwards`,
+        // TODO: extract to shared colors
+        filter: 'drop-shadow(0 0 8px rgba(0,0,0,0.15))',
+        background: backgroundColor,
+        border: `1px solid ${contrastLowColor}`,
+        borderRadius: borderRadiusMedium,
         ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: contrastHighColorDark,
           background: backgroundColorDark,
-          borderColor: primaryColorDark,
-          [isDirectionDown ? 'borderTopColor' : 'borderBottomColor']: addImportantToRule(contrastMediumColorDark),
+          borderColor: contrastLowColorDark,
+        }),
+        '&:not(:popover-open)': {
+          display: 'none',
+        },
+        zIndex: 99, // ensures option list is rendered on top for browsers not supporting #top-layer
+        ...(hasNativeCSSAnchorPositioningSupport && {
+          positionAnchor: anchorName,
+          positionVisibility: 'always',
+          positionTryOrder: 'normal',
+          positionArea: direction === 'up' ? 'top' : 'bottom',
+          positionTryFallbacks: 'flip-block',
+          width: 'anchor-size(width)',
+          margin: `${OPTIONS_LIST_SAFE_ZONE}px 0`,
         }),
       },
     },
     option: {
+      ...textSmallStyle,
+      color: contrastHighColor,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: contrastHighColorDark,
+      }),
       display: 'flex',
       justifyContent: 'space-between',
       gap: '12px',
@@ -367,12 +382,12 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
 };
 
 export const getComponentCss = (
-  direction: DropdownDirectionInternal,
+  direction: SelectWrapperDropdownDirection,
   isOpen: boolean,
   state: FormState,
   disabled: boolean,
   filter: boolean,
-  isNativePopoverCase: boolean,
+  hasNativeCSSAnchorPositioningSupport: boolean,
   theme: Theme
 ): string => {
   return getCss(
@@ -389,16 +404,11 @@ export const getComponentCss = (
         'sr-text': {
           display: 'none',
         },
-        ...(isNativePopoverCase && {
-          popover: {
-            ...getPopoverResetJssStyle(),
-          },
-        }),
       },
       filter
-        ? getFilterStyles(direction, isOpen, state, disabled, theme)
-        : getButtonStyles(direction, isOpen, state, theme),
-      isOpen && getListStyles(direction, theme)
+        ? getFilterStyles(direction, isOpen, state, disabled, hasNativeCSSAnchorPositioningSupport, theme)
+        : getButtonStyles(direction, isOpen, state, hasNativeCSSAnchorPositioningSupport, theme),
+      getListStyles(direction, isOpen, hasNativeCSSAnchorPositioningSupport, theme)
     )
   );
 };

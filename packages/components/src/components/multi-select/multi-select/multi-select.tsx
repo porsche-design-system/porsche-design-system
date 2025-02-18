@@ -143,7 +143,6 @@ export class MultiSelect {
   private multiSelectOptions: MultiSelectOption[] = [];
   private multiSelectOptgroups: MultiSelectOptgroup[] = [];
   private inputElement: HTMLInputElement;
-  private listElement: HTMLDivElement;
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
   private popoverElement: HTMLDivElement;
   private hasNativePopoverSupport = getHasNativePopoverSupport();
@@ -454,13 +453,13 @@ export class MultiSelect {
       case 'PageUp':
         if (this.isOpen) {
           e.preventDefault();
-          setFirstOptionHighlighted(this.listElement, this.multiSelectOptions);
+          setFirstOptionHighlighted(this.popoverElement, this.multiSelectOptions);
         }
         break;
       case 'PageDown':
         if (this.isOpen) {
           e.preventDefault();
-          setLastOptionHighlighted(this.listElement, this.multiSelectOptions);
+          setLastOptionHighlighted(this.popoverElement, this.multiSelectOptions);
         }
         break;
       default:
@@ -470,7 +469,7 @@ export class MultiSelect {
 
   private cycleDropdown(direction: SelectDropdownDirectionInternal): void {
     this.isOpen = true;
-    updateHighlightedOption(this.listElement, this.multiSelectOptions, direction);
+    updateHighlightedOption(this.popoverElement, this.multiSelectOptions, direction);
     this.updateSrHighlightedOptionText();
   }
 
