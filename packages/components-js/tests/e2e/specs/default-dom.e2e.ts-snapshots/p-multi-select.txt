@@ -13,17 +13,16 @@
       aria-autocomplete="list"
     />
     <p-icon class="icon hydrated" aria-hidden="true"> </p-icon>
-    <div>
-      <div
-        id="list"
-        class="listbox"
-        role="listbox"
-        aria-label=""
-        aria-hidden="true"
-        aria-multiselectable="true"
-      >
-        <slot> </slot>
-      </div>
+    <div
+      id="list"
+      popover="auto"
+      tabindex="-1"
+      role="listbox"
+      aria-label=""
+      aria-hidden="true"
+      aria-multiselectable="true"
+    >
+      <slot> </slot>
     </div>
   </div>
   <span

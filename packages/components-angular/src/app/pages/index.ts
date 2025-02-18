@@ -147,6 +147,7 @@ import { ModalWithoutHeadingComponent } from './generated/modal-without-heading.
 import { ModelSignatureComponent } from './generated/model-signature.component';
 import { MultiSelectComponent } from './generated/multi-select.component';
 import { MultiSelectOpenedBottomComponent } from './generated/multi-select-opened-bottom.component';
+import { MultiSelectOpenedScrollContextComponent } from './generated/multi-select-opened-scroll-context.component';
 import { MultiSelectOpenedTopComponent } from './generated/multi-select-opened-top.component';
 import { MultiSelectOpenedWithAndWithoutOptgroupsComponent } from './generated/multi-select-opened-with-and-without-optgroups.component';
 import { MultiSelectOpenedWithDisabledHighlightedSelectedComponent } from './generated/multi-select-opened-with-disabled-highlighted-selected.component';
@@ -171,6 +172,7 @@ import { SegmentedControlComponent } from './generated/segmented-control.compone
 import { SelectComponent } from './generated/select.component';
 import { SelectCompactComponent } from './generated/select-compact.component';
 import { SelectOpenedBottomComponent } from './generated/select-opened-bottom.component';
+import { SelectOpenedScrollContextComponent } from './generated/select-opened-scroll-context.component';
 import { SelectOpenedTopComponent } from './generated/select-opened-top.component';
 import { SelectOpenedWithAndWithoutOptgroupsComponent } from './generated/select-opened-with-and-without-optgroups.component';
 import { SelectOpenedWithDisabledHighlightedSelectedComponent } from './generated/select-opened-with-disabled-highlighted-selected.component';
@@ -184,6 +186,7 @@ import { SelectScaling_0_8Component } from './generated/select-scaling-0-8.compo
 import { SelectScaling_1Component } from './generated/select-scaling-1.component';
 import { SelectScaling_2Component } from './generated/select-scaling-2.component';
 import { SelectWrapperComponent } from './generated/select-wrapper.component';
+import { SelectWrapperOpenedScrollContextComponent } from './generated/select-wrapper-opened-scroll-context.component';
 import { SheetComponent } from './generated/sheet.component';
 import { SheetBasicComponent } from './generated/sheet-basic.component';
 import { SheetGridComponent } from './generated/sheet-grid.component';
@@ -337,6 +340,7 @@ export const generatedPages = [
   ModelSignatureComponent,
   MultiSelectComponent,
   MultiSelectOpenedBottomComponent,
+  MultiSelectOpenedScrollContextComponent,
   MultiSelectOpenedTopComponent,
   MultiSelectOpenedWithAndWithoutOptgroupsComponent,
   MultiSelectOpenedWithDisabledHighlightedSelectedComponent,
@@ -361,6 +365,7 @@ export const generatedPages = [
   SelectComponent,
   SelectCompactComponent,
   SelectOpenedBottomComponent,
+  SelectOpenedScrollContextComponent,
   SelectOpenedTopComponent,
   SelectOpenedWithAndWithoutOptgroupsComponent,
   SelectOpenedWithDisabledHighlightedSelectedComponent,
@@ -374,6 +379,7 @@ export const generatedPages = [
   SelectScaling_1Component,
   SelectScaling_2Component,
   SelectWrapperComponent,
+  SelectWrapperOpenedScrollContextComponent,
   SheetComponent,
   SheetBasicComponent,
   SheetGridComponent,
@@ -988,6 +994,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: MultiSelectOpenedBottomComponent,
   },
   {
+    name: 'Multi Select Opened Scroll Context',
+    path: 'multi-select-opened-scroll-context',
+    component: MultiSelectOpenedScrollContextComponent,
+  },
+  {
     name: 'Multi Select Opened Top',
     path: 'multi-select-opened-top',
     component: MultiSelectOpenedTopComponent,
@@ -1103,6 +1114,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: SelectOpenedBottomComponent,
   },
   {
+    name: 'Select Opened Scroll Context',
+    path: 'select-opened-scroll-context',
+    component: SelectOpenedScrollContextComponent,
+  },
+  {
     name: 'Select Opened Top',
     path: 'select-opened-top',
     component: SelectOpenedTopComponent,
@@ -1166,6 +1182,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Select Wrapper',
     path: 'select-wrapper',
     component: SelectWrapperComponent,
+  },
+  {
+    name: 'Select Wrapper Opened Scroll Context',
+    path: 'select-wrapper-opened-scroll-context',
+    component: SelectWrapperOpenedScrollContextComponent,
   },
   {
     name: 'Sheet',

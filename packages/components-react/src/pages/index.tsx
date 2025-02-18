@@ -128,6 +128,7 @@ import { ModalWithoutHeadingPage } from './generated/ModalWithoutHeading';
 import { ModelSignaturePage } from './generated/ModelSignature';
 import { MultiSelectPage } from './generated/MultiSelect';
 import { MultiSelectOpenedBottomPage } from './generated/MultiSelectOpenedBottom';
+import { MultiSelectOpenedScrollContextPage } from './generated/MultiSelectOpenedScrollContext';
 import { MultiSelectOpenedTopPage } from './generated/MultiSelectOpenedTop';
 import { MultiSelectOpenedWithAndWithoutOptgroupsPage } from './generated/MultiSelectOpenedWithAndWithoutOptgroups';
 import { MultiSelectOpenedWithDisabledHighlightedSelectedPage } from './generated/MultiSelectOpenedWithDisabledHighlightedSelected';
@@ -151,6 +152,7 @@ import { SegmentedControlPage } from './generated/SegmentedControl';
 import { SelectPage } from './generated/Select';
 import { SelectCompactPage } from './generated/SelectCompact';
 import { SelectOpenedBottomPage } from './generated/SelectOpenedBottom';
+import { SelectOpenedScrollContextPage } from './generated/SelectOpenedScrollContext';
 import { SelectOpenedTopPage } from './generated/SelectOpenedTop';
 import { SelectOpenedWithAndWithoutOptgroupsPage } from './generated/SelectOpenedWithAndWithoutOptgroups';
 import { SelectOpenedWithDisabledHighlightedSelectedPage } from './generated/SelectOpenedWithDisabledHighlightedSelected';
@@ -164,6 +166,7 @@ import { SelectScaling_0_8Page } from './generated/SelectScaling_0_8';
 import { SelectScaling_1Page } from './generated/SelectScaling_1';
 import { SelectScaling_2Page } from './generated/SelectScaling_2';
 import { SelectWrapperPage } from './generated/SelectWrapper';
+import { SelectWrapperOpenedScrollContextPage } from './generated/SelectWrapperOpenedScrollContext';
 import { SheetPage } from './generated/Sheet';
 import { SheetBasicPage } from './generated/SheetBasic';
 import { SheetGridPage } from './generated/SheetGrid';
@@ -777,6 +780,11 @@ export const generatedRoutes: RouteType[] = [
     element: <MultiSelectOpenedBottomPage />,
   },
   {
+    name: 'Multi Select Opened Scroll Context',
+    path: '/multi-select-opened-scroll-context',
+    element: <MultiSelectOpenedScrollContextPage />,
+  },
+  {
     name: 'Multi Select Opened Top',
     path: '/multi-select-opened-top',
     element: <MultiSelectOpenedTopPage />,
@@ -892,6 +900,11 @@ export const generatedRoutes: RouteType[] = [
     element: <SelectOpenedBottomPage />,
   },
   {
+    name: 'Select Opened Scroll Context',
+    path: '/select-opened-scroll-context',
+    element: <SelectOpenedScrollContextPage />,
+  },
+  {
     name: 'Select Opened Top',
     path: '/select-opened-top',
     element: <SelectOpenedTopPage />,
@@ -955,6 +968,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Select Wrapper',
     path: '/select-wrapper',
     element: <SelectWrapperPage />,
+  },
+  {
+    name: 'Select Wrapper Opened Scroll Context',
+    path: '/select-wrapper-opened-scroll-context',
+    element: <SelectWrapperOpenedScrollContextPage />,
   },
   {
     name: 'Sheet',

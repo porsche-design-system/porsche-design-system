@@ -464,6 +464,10 @@ const generatedRoutes = {
     "path": "/multi-select-opened-bottom",
     "name": "MultiSelectOpenedBottom"
   },
+  "multiSelectOpenedScrollContext": {
+    "path": "/multi-select-opened-scroll-context",
+    "name": "MultiSelectOpenedScrollContext"
+  },
   "multiSelectOpenedTop": {
     "path": "/multi-select-opened-top",
     "name": "MultiSelectOpenedTop"
@@ -560,6 +564,10 @@ const generatedRoutes = {
     "path": "/select-opened-bottom",
     "name": "SelectOpenedBottom"
   },
+  "selectOpenedScrollContext": {
+    "path": "/select-opened-scroll-context",
+    "name": "SelectOpenedScrollContext"
+  },
   "selectOpenedTop": {
     "path": "/select-opened-top",
     "name": "SelectOpenedTop"
@@ -611,6 +619,10 @@ const generatedRoutes = {
   "selectWrapper": {
     "path": "/select-wrapper",
     "name": "SelectWrapper"
+  },
+  "selectWrapperOpenedScrollContext": {
+    "path": "/select-wrapper-opened-scroll-context",
+    "name": "SelectWrapperOpenedScrollContext"
   },
   "sheet": {
     "path": "/sheet",
