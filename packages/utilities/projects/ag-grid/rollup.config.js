@@ -19,7 +19,7 @@ const sharedPlugins = [
     'process.env.NODE_ENV': '"production"',
   }),
   resolve({
-    resolveOnly: [/^@porsche-design-system\/(shared|icons|styles).*$/, /tinycolor2/],
+    resolveOnly: [/^@porsche-design-system\/icons.*$/],
   }),
 ];
 
