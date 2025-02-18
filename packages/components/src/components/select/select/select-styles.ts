@@ -240,6 +240,7 @@ export const getComponentCss = (
         '&:not(:popover-open)': {
           display: 'none',
         },
+        zIndex: 99, // ensures option list is rendered on top for browsers not supporting #top-layer
         ...(hasNativeCSSAnchorPositioningSupport && {
           positionAnchor: anchorName,
           positionVisibility: 'always',
