@@ -1,3 +1,4 @@
+import { autoUpdate, computePosition, flip, offset, size } from '@floating-ui/dom';
 import {
   AttachInternals,
   Component,
@@ -20,33 +21,29 @@ import {
   SELECT_DROPDOWN_DIRECTIONS,
   type SelectDropdownDirectionInternal,
   THEMES,
-  addNativePopoverScrollAndResizeListeners,
   applyConstructableStylesheetStyles,
   attachComponentCss,
-  detectNativePopoverCase,
-  findClosestComponent,
   getFilterInputAriaAttributes,
+  getHasNativePopoverSupport,
   getListAriaAttributes,
-  getNativePopoverDropdownPosition,
   getPrefixedTagNames,
-  getShadowRootHTMLElement,
   handleButtonEvent,
   hasPropValueChanged,
-  isClickOutside,
   isElementOfKind,
   throwIfElementIsNotOfKind,
   validateProps,
 } from '../../../utils';
+import { getHasCSSAnchorPositioningSupport } from '../../../utils/supportsNativeCSSAnchorPositioning';
 import { Label, descriptionId, labelId } from '../../common/label/label';
 import { StateMessage, messageId } from '../../common/state-message/state-message';
 import { getComponentCss } from './multi-select-styles';
 import {
+  MULTI_SELECT_OPTION_LIST_SAFE_ZONE,
   type MultiSelectDropdownDirection,
   type MultiSelectOptgroup,
   type MultiSelectOption,
   type MultiSelectState,
   type MultiSelectUpdateEventDetail,
-  getDropdownDirection,
   getHighlightedOption,
   getHighlightedOptionIndex,
   getSelectedOptionValues,
@@ -145,13 +142,13 @@ export class MultiSelect {
   private defaultValue: string[];
   private multiSelectOptions: MultiSelectOption[] = [];
   private multiSelectOptgroups: MultiSelectOptgroup[] = [];
-  private inputContainer: HTMLDivElement;
   private inputElement: HTMLInputElement;
   private listElement: HTMLDivElement;
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
-  private isNativePopoverCase: boolean = false;
-  private parentTableElement: HTMLElement;
-  private popoverElement: HTMLElement;
+  private popoverElement: HTMLDivElement;
+  private hasNativePopoverSupport = getHasNativePopoverSupport();
+  private hasNativeCSSAnchorPositioningSupport = getHasCSSAnchorPositioningSupport();
+  private cleanUp: () => void;
 
   private get currentValue(): string[] {
     return getSelectedOptionValues(this.multiSelectOptions);
@@ -179,6 +176,28 @@ export class MultiSelect {
     }
   }
 
+  @Watch('isOpen')
+  public onIsOpenChange(): void {
+    if (this.isOpen) {
+      if (this.hasNativePopoverSupport) {
+        this.popoverElement.showPopover();
+      }
+      if (!this.hasNativeCSSAnchorPositioningSupport && typeof this.cleanUp === 'undefined') {
+        // ensures floating ui event listeners are added when options list is opened
+        this.cleanUp = autoUpdate(this.inputElement, this.popoverElement, this.updatePosition);
+      }
+    } else {
+      if (this.hasNativePopoverSupport) {
+        this.popoverElement.hidePopover();
+      }
+      if (!this.hasNativeCSSAnchorPositioningSupport && typeof this.cleanUp === 'function') {
+        // ensures floating ui event listeners are removed when options list is closed
+        this.cleanUp();
+        this.cleanUp = undefined;
+      }
+    }
+  }
+
   public setFormValue(value: string[]): void {
     const formData = new FormData();
     for (const val of value) {
@@ -189,10 +208,12 @@ export class MultiSelect {
 
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
-    document.addEventListener('mousedown', this.onClickOutside, true);
-    this.isNativePopoverCase = detectNativePopoverCase(this.host, false);
-    if (this.isNativePopoverCase) {
-      this.parentTableElement = findClosestComponent(this.host, 'pTable');
+  }
+
+  public disconnectedCallback(): void {
+    if (typeof this.cleanUp === 'function') {
+      // ensures floating ui event listeners are removed in case popover is removed from DOM
+      this.cleanUp();
     }
   }
 
@@ -204,35 +225,8 @@ export class MultiSelect {
     setSelectedOptions(this.multiSelectOptions, this.value);
   }
 
-  public componentDidLoad(): void {
-    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
-  }
-
-  public componentDidRender(): void {
-    if (this.isNativePopoverCase) {
-      addNativePopoverScrollAndResizeListeners(this.host, this.parentTableElement, this.popoverElement, () => {
-        this.isOpen = false;
-      });
-      if (this.isOpen) {
-        getNativePopoverDropdownPosition(
-          this.inputElement,
-          this.multiSelectOptions.filter((option) => !option.hidden).length,
-          this.popoverElement,
-          this.dropdownDirection
-        );
-        this.popoverElement.showPopover();
-      } else {
-        this.popoverElement.hidePopover();
-      }
-    }
-  }
-
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
-  }
-
-  public disconnectedCallback(): void {
-    document.removeEventListener('mousedown', this.onClickOutside, true);
   }
 
   public formDisabledCallback(disabled: boolean): void {
@@ -253,21 +247,20 @@ export class MultiSelect {
     attachComponentCss(
       this.host,
       getComponentCss,
-      getDropdownDirection(this.dropdownDirection, this.inputContainer, this.multiSelectOptions),
+      this.dropdownDirection,
       this.isOpen,
       this.disabled,
       this.hideLabel,
       this.state,
-      this.isNativePopoverCase,
+      this.hasNativeCSSAnchorPositioningSupport,
       this.theme
     );
     syncMultiSelectChildrenProps([...this.multiSelectOptions, ...this.multiSelectOptgroups], this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const optionsSelectedId = 'options-selected';
-    const dropdownId = 'list';
-
     const inputId = 'filter';
+    const popoverId = 'list';
+    const optionsSelectedId = 'options-selected';
 
     return (
       <div class="root">
@@ -285,7 +278,7 @@ export class MultiSelect {
             {getSelectedOptions(this.multiSelectOptions).length} options selected
           </span>
         )}
-        <div class={{ wrapper: true, disabled: this.disabled }} ref={(el) => (this.inputContainer = el)}>
+        <div class={{ wrapper: true, disabled: this.disabled }}>
           <input
             id={inputId}
             role="combobox"
@@ -303,7 +296,7 @@ export class MultiSelect {
               this.required,
               labelId,
               `${descriptionId} ${optionsSelectedId} ${messageId}`,
-              dropdownId
+              popoverId
             )}
           />
           <PrefixedTagNames.pIcon
@@ -327,31 +320,21 @@ export class MultiSelect {
               Reset selection
             </PrefixedTagNames.pButtonPure>
           )}
-
           <div
-            {...(this.isNativePopoverCase && {
-              popover: 'auto',
-              class: 'popover',
-              ...(this.popoverElement?.matches(':popover-open') && {
-                'popover-open': true,
-              }),
-            })}
+            id={popoverId}
+            popover="auto"
+            tabindex="-1"
+            {...getListAriaAttributes(this.label, this.required, true, this.isOpen, true)}
+            onToggle={(e: ToggleEvent) => (this.isOpen = e.newState === 'open')}
             ref={(el) => (this.popoverElement = el)}
           >
-            <div
-              id={dropdownId}
-              class="listbox"
-              {...getListAriaAttributes(this.label, this.required, true, this.isOpen, true)}
-              ref={(el) => (this.listElement = el)}
-            >
-              {!this.hasFilterResults && (
-                <div class="no-results" role="option">
-                  <span aria-hidden="true">---</span>
-                  <span class="sr-only">No results found</span>
-                </div>
-              )}
-              <slot />
-            </div>
+            {!this.hasFilterResults && (
+              <div class="no-results" role="option">
+                <span aria-hidden="true">---</span>
+                <span class="sr-only">No results found</span>
+              </div>
+            )}
+            <slot onSlotchange={this.onSlotchange} />
           </div>
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
@@ -408,9 +391,6 @@ export class MultiSelect {
 
   private onInputClick = (): void => {
     this.isOpen = true;
-    if (this.isNativePopoverCase) {
-      this.popoverElement.showPopover();
-    }
   };
 
   private onResetClick = (): void => {
@@ -419,13 +399,6 @@ export class MultiSelect {
     this.inputElement.focus();
     this.emitUpdateEvent();
     forceUpdate(this.host);
-  };
-
-  private onClickOutside = (e: MouseEvent): void => {
-    if (this.isOpen && isClickOutside(e, this.inputContainer) && isClickOutside(e, this.listElement)) {
-      this.isOpen = false;
-      this.resetFilter();
-    }
   };
 
   private resetFilter = (): void => {
@@ -516,6 +489,32 @@ export class MultiSelect {
     this.update.emit({
       value: this.currentValue,
       name: this.name,
+    });
+  };
+
+  private updatePosition = async (): Promise<void> => {
+    const { x, y } = await computePosition(this.inputElement, this.popoverElement, {
+      placement: this.dropdownDirection === 'up' ? 'top' : 'bottom',
+      middleware: [
+        size({
+          // @ts-expect-error
+          apply({ rects, elements }) {
+            Object.assign(elements.floating.style, {
+              width: `${rects.reference.width}px`,
+            });
+          },
+        }),
+        offset(MULTI_SELECT_OPTION_LIST_SAFE_ZONE),
+        flip({
+          padding: MULTI_SELECT_OPTION_LIST_SAFE_ZONE,
+          fallbackAxisSideDirection: 'none',
+        }),
+      ],
+    });
+
+    Object.assign(this.popoverElement.style, {
+      left: `${x}px`,
+      top: `${y}px`,
     });
   };
 }
