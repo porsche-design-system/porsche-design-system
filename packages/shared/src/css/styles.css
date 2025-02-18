@@ -10,8 +10,15 @@ body {
   position: static !important;
   background: var(--playground-background-base, #fff);
 }
+
 body.dark {
   --playground-background-base: #0e0e12;
+}
+
+@media (prefers-color-scheme: dark) {
+  body.auto {
+    --playground-background-base: #0e0e12;
+  }
 }
 
 button,
