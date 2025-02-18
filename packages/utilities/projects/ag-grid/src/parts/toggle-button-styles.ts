@@ -1,3 +1,4 @@
+import { type Part, createPart } from 'ag-grid-community';
 import {
   borderWidthBase,
   spacingStaticXSmall,
@@ -6,19 +7,15 @@ import {
   themeDarkNotificationSuccess,
   themeDarkPrimary,
   themeDarkStateDisabled,
+  themeDarkSuccessColorDarken,
   themeLightBackgroundBase,
   themeLightContrastMedium,
   themeLightNotificationSuccess,
   themeLightPrimary,
   themeLightStateDisabled,
-} from '@porsche-design-system/styles';
-
-import { darkenColor } from '@porsche-design-system/shared';
-import { type Part, createPart } from 'ag-grid-community';
+  themeLightSuccessColorDarken,
+} from '../styles';
 import { pdsThemeModeDark } from '../types/theme-mode';
-
-const themeLightSuccessColorDarken = darkenColor(themeLightNotificationSuccess);
-const themeDarkSuccessColorDarken = darkenColor(themeDarkNotificationSuccess);
 
 export const toggleButtonStyle: Part = createPart({
   feature: 'toggleButtonStyle',

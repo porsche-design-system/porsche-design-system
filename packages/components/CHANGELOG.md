@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Fixed
+
+- `AG Grid`: not resolving dependencies correctly.
+  ([#3757](https://github.com/porsche-design-system/porsche-design-system/pull/3757))
+
 ### [3.27.0-rc.2] - 2025-02-18
 
 #### Fixed
