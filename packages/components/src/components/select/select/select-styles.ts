@@ -115,7 +115,6 @@ export const getComponentCss = (
       button: {
         gridArea: '1/1/1/-1',
         minWidth: 0,
-        // TODO: abstract and re-use for multi-select, select-wrapper and text-field-wrapper
         height: buttonHeight,
         font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is alig
         margin: 0, // necessary reset for iOS Safari 15 (and maybe other browsers)
@@ -220,7 +219,6 @@ export const getComponentCss = (
         gap: popoverGap,
         maxHeight: `${8.5 * (OPTION_HEIGHT + 8) + 6 + 2}px`, // 8.5 options * option height + 8px gap + additional spacing (6px = padding, 2px = border)
         boxSizing: 'border-box',
-        // TODO: extract to shared scroll wrapper styles, to be re-used in e.g. Flyout, Modal, etc.
         overflow: 'hidden auto',
         // scrollBehavior: 'smooth', // when defined, `.scrollTo()` isn't applied immediately
         // overscrollBehaviorY: 'none', // when defined, rubber band scroll effect is getting lost on iOS Safari
@@ -240,6 +238,7 @@ export const getComponentCss = (
         '&:not(:popover-open)': {
           display: 'none',
         },
+        zIndex: 99, // ensures option list is rendered on top for browsers not supporting #top-layer
         ...(hasNativeCSSAnchorPositioningSupport && {
           positionAnchor: anchorName,
           positionVisibility: 'always',

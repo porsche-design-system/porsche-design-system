@@ -1,0 +1,38 @@
+<style>
+  p-multi-select {
+    margin: 16px;
+  }
+</style>
+
+<p-multi-select
+  name="options"
+  label="Opened with multiple selected options and Option B highlighted"
+  dropdown-direction="down"
+  class="open selected-multiple skip-axe-core-test"
+>
+  <p-multi-select-option value="a">Option A</p-multi-select-option>
+  <p-multi-select-option class="highlight" value="b">Option B</p-multi-select-option>
+  <p-multi-select-option value="c">Option C</p-multi-select-option>
+  <p-multi-select-option value="d">Option D</p-multi-select-option>
+  <p-multi-select-option value="e">Option E</p-multi-select-option>
+  <p-multi-select-option value="f">Option F</p-multi-select-option>
+  <p-multi-select-option value="g">Option G</p-multi-select-option>
+  <p-multi-select-option value="h">Option H</p-multi-select-option>
+  <p-multi-select-option value="i">Option I</p-multi-select-option>
+  <p-multi-select-option value="j">Option J</p-multi-select-option>
+  <p-multi-select-option value="k">Option K</p-multi-select-option>
+</p-multi-select>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    document.querySelector('p-multi-select').shadowRoot.querySelector('label').click();
+  });
+
+  document
+    .querySelectorAll('p-multi-select.selected-multiple')
+    .forEach((select) => (select.value = ['a', 'b', 'c', 'd', 'e', 'f']));
+
+  document
+    .querySelectorAll('p-multi-select-option.highlight')
+    .forEach((option) => option.shadowRoot.firstElementChild.classList.add('option--highlighted'));
+</script>

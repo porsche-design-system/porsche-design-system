@@ -1,0 +1,29 @@
+<style>
+  p-multi-select {
+    margin: 16px;
+  }
+</style>
+
+<p-multi-select
+  name="options"
+  label="Opened with disabled (Option A), highlighted (Option B) and selected (Option C) inside optgroup + optgroup in disabled state"
+  dropdown-direction="down"
+  class="open selected skip-axe-core-test"
+>
+  <p-optgroup label="Some optgroup label 1">
+    <p-multi-select-option value="a" disabled="true">Option A</p-multi-select-option>
+    <p-multi-select-option class="highlight" value="b">Option B</p-multi-select-option>
+    <p-multi-select-option value="c">Option C</p-multi-select-option>
+  </p-optgroup>
+  <p-optgroup label="Some optgroup label 2" disabled="true">
+    <p-multi-select-option value="d">Option D</p-multi-select-option>
+    <p-multi-select-option value="e">Option E</p-multi-select-option>
+    <p-multi-select-option value="f">Option F</p-multi-select-option>
+  </p-optgroup>
+</p-multi-select>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    document.querySelector('p-multi-select').shadowRoot.querySelector('label').click();
+  });
+</script>
