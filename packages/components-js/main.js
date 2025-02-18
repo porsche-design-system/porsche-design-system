@@ -51,6 +51,7 @@ const updateRoute = async (opts) => {
     const animation = getAnimation();
     const directory = page.match(/^[a-z-]+-example/) ? 'examples' : 'pages';
     document.querySelector('html').setAttribute('dir', dir);
+    document.querySelector('body').classList.toggle('dark', theme === 'dark'); // needed to style the body background color of iframe to have correct a11y bg color.
     document.querySelector('html').style.fontSize = `${scale}%`;
 
     if (isPageLoadedInIFrame()) {
