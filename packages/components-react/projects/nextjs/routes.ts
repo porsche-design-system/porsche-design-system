@@ -460,6 +460,38 @@ const generatedRoutes = {
     "path": "/multi-select",
     "name": "MultiSelect"
   },
+  "multiSelectOpenedBottom": {
+    "path": "/multi-select-opened-bottom",
+    "name": "MultiSelectOpenedBottom"
+  },
+  "multiSelectOpenedTop": {
+    "path": "/multi-select-opened-top",
+    "name": "MultiSelectOpenedTop"
+  },
+  "multiSelectOpenedWithAndWithoutOptgroups": {
+    "path": "/multi-select-opened-with-and-without-optgroups",
+    "name": "MultiSelectOpenedWithAndWithoutOptgroups"
+  },
+  "multiSelectOpenedWithDisabledHighlightedSelected": {
+    "path": "/multi-select-opened-with-disabled-highlighted-selected",
+    "name": "MultiSelectOpenedWithDisabledHighlightedSelected"
+  },
+  "multiSelectOpenedWithFilterButNoResults": {
+    "path": "/multi-select-opened-with-filter-but-no-results",
+    "name": "MultiSelectOpenedWithFilterButNoResults"
+  },
+  "multiSelectOpenedWithMultipleSelectedOptions": {
+    "path": "/multi-select-opened-with-multiple-selected-options",
+    "name": "MultiSelectOpenedWithMultipleSelectedOptions"
+  },
+  "multiSelectOpenedWithOptgroups": {
+    "path": "/multi-select-opened-with-optgroups",
+    "name": "MultiSelectOpenedWithOptgroups"
+  },
+  "multiSelectOpenedWithOptgroupsDisabled": {
+    "path": "/multi-select-opened-with-optgroups-disabled",
+    "name": "MultiSelectOpenedWithOptgroupsDisabled"
+  },
   "overview": {
     "path": "/overview",
     "name": "Overview"
@@ -519,6 +551,62 @@ const generatedRoutes = {
   "select": {
     "path": "/select",
     "name": "Select"
+  },
+  "selectCompact": {
+    "path": "/select-compact",
+    "name": "SelectCompact"
+  },
+  "selectOpenedBottom": {
+    "path": "/select-opened-bottom",
+    "name": "SelectOpenedBottom"
+  },
+  "selectOpenedTop": {
+    "path": "/select-opened-top",
+    "name": "SelectOpenedTop"
+  },
+  "selectOpenedWithAndWithoutOptgroups": {
+    "path": "/select-opened-with-and-without-optgroups",
+    "name": "SelectOpenedWithAndWithoutOptgroups"
+  },
+  "selectOpenedWithDisabledHighlightedSelected": {
+    "path": "/select-opened-with-disabled-highlighted-selected",
+    "name": "SelectOpenedWithDisabledHighlightedSelected"
+  },
+  "selectOpenedWithOptgroups": {
+    "path": "/select-opened-with-optgroups",
+    "name": "SelectOpenedWithOptgroups"
+  },
+  "selectOpenedWithOptgroupsDisabled": {
+    "path": "/select-opened-with-optgroups-disabled",
+    "name": "SelectOpenedWithOptgroupsDisabled"
+  },
+  "selectOpenedWithSelectedEmptyOption": {
+    "path": "/select-opened-with-selected-empty-option",
+    "name": "SelectOpenedWithSelectedEmptyOption"
+  },
+  "selectOpenedWithSlottedImages": {
+    "path": "/select-opened-with-slotted-images",
+    "name": "SelectOpenedWithSlottedImages"
+  },
+  "selectScaling_0": {
+    "path": "/select-scaling-0",
+    "name": "SelectScaling_0"
+  },
+  "selectScaling_0_5": {
+    "path": "/select-scaling-0-5",
+    "name": "SelectScaling_0_5"
+  },
+  "selectScaling_0_8": {
+    "path": "/select-scaling-0-8",
+    "name": "SelectScaling_0_8"
+  },
+  "selectScaling_1": {
+    "path": "/select-scaling-1",
+    "name": "SelectScaling_1"
+  },
+  "selectScaling_2": {
+    "path": "/select-scaling-2",
+    "name": "SelectScaling_2"
   },
   "selectWrapper": {
     "path": "/select-wrapper",
