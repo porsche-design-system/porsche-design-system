@@ -1,4 +1,5 @@
-import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
+import { Component, Element, Host, type JSX, Prop, h } from '@stencil/core';
+import type { PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -7,9 +8,8 @@ import {
   throwIfParentIsNotOfKind,
   validateProps,
 } from '../../../utils';
-import type { MultiSelectOptionInternalHTMLProps } from './multi-select-option-utils';
-import type { PropTypes } from '../../../types';
 import { getComponentCss } from './multi-select-option-styles';
+import type { MultiSelectOptionInternalHTMLProps } from './multi-select-option-utils';
 
 const propTypes: PropTypes<typeof MultiSelectOption> = {
   value: AllowedTypes.string,
@@ -62,7 +62,7 @@ export class MultiSelectOption {
               disabled={isDisabled}
               {...getOptionAriaAttributes(selected, isDisabled, hidden, !!this.value)}
               aria-label={textContent}
-              tabindex="-1"
+              tabIndex={-1}
             />
             <slot slot="label" />
           </PrefixedTagNames.pCheckboxWrapper>

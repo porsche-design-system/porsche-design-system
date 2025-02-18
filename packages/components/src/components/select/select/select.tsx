@@ -299,7 +299,7 @@ export class Select {
           <div
             id={popoverId}
             popover="auto"
-            tabindex="-1"
+            tabIndex={-1}
             {...getListAriaAttributes(this.label, this.required, false, this.isOpen)}
             onToggle={(e: ToggleEvent) => (this.isOpen = e.newState === 'open')}
             ref={(el) => (this.popoverElement = el)}

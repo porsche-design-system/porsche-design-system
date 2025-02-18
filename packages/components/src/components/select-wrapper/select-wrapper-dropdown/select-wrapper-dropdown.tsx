@@ -224,7 +224,7 @@ export class SelectWrapperDropdown {
           <div
             id={popoverId}
             popover="auto"
-            tabindex="-1"
+            tabIndex={-1}
             {...getListAriaAttributes(this.label, this.required, this.filter, this.isOpen)}
             onToggle={(e: ToggleEvent) => (this.isOpen = e.newState === 'open')}
             ref={(el) => (this.popoverElement = el)}
