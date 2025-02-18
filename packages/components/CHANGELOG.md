@@ -16,7 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Changed
 
-- `Select`:
+- `Select`, `Multi Select`:
   - gets rendered on `#top-layer` which enables it to be shown correctly even when used e.g. within a scroll container
     ([#3754](https://github.com/porsche-design-system/porsche-design-system/pull/3754))
   - gets positioned by [CSS Anchor Positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning)
