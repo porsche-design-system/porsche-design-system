@@ -1,3 +1,4 @@
+import dependencies from '@porsche-design-system/shared/package.json';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import typescript from '@rollup/plugin-typescript';
@@ -19,7 +20,7 @@ const sharedPlugins = [
     'process.env.NODE_ENV': '"production"',
   }),
   resolve({
-    resolveOnly: [/^@porsche-design-system\/(shared|icons|styles).*$/, /tinycolor2/],
+    resolveOnly: [/^@porsche-design-system\/(shared|icons|styles).*$/],
   }),
 ];
 
@@ -71,6 +72,7 @@ export default [
               default: './cjs/index.cjs',
             },
           },
+          dependencies: { tinycolor2: dependencies['tinycolor2'] },
         },
       }),
     ],
