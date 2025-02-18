@@ -23,7 +23,7 @@ module.exports = {
     // https://webpack.js.org/guides/code-splitting/
     // https://webpack.js.org/plugins/split-chunks-plugin/
     splitChunks: {
-      minSize: 100000,
+      minSize: 150000,
     },
     usedExports: true,
     chunkIds: false, // when this is set false, we need to provide a custom plugin to generate our chunkIds
