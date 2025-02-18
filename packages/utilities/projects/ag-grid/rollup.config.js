@@ -1,8 +1,8 @@
+import dependencies from '@porsche-design-system/shared/package.json';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import typescript from '@rollup/plugin-typescript';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
-import pkg from './../../../shared/package.json';
 
 const input = 'src/index.ts';
 const outputDir = 'dist';
@@ -72,7 +72,7 @@ export default [
               default: './cjs/index.cjs',
             },
           },
-          dependencies: { tinycolor2: pkg.dependencies['tinycolor2'] },
+          dependencies: { tinycolor2: dependencies['tinycolor2'] },
         },
       }),
     ],
