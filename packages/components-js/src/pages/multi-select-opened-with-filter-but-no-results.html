@@ -4,12 +4,7 @@
   }
 </style>
 
-<p-multi-select
-  name="options"
-  label="Opened with no results"
-  dropdown-direction="down"
-  class="open no-results skip-axe-core-test"
->
+<p-multi-select name="options" label="Opened with no results" dropdown-direction="down" class="skip-axe-core-test">
   <p-multi-select-option value="a">Option A</p-multi-select-option>
   <p-multi-select-option value="b">Option B</p-multi-select-option>
   <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -27,7 +22,7 @@
   porscheDesignSystem.componentsReady().then(() => {
     document.querySelector('p-multi-select').shadowRoot.querySelector('label').click();
 
-    const inputElement = document.querySelector('p-multi-select.no-results').shadowRoot.querySelector('input');
+    const inputElement = document.querySelector('p-multi-select').shadowRoot.querySelector('input');
     inputElement.value = 'No matching option';
     inputElement.dispatchEvent(new Event('input', { bubbles: true }));
   });

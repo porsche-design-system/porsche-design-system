@@ -8,10 +8,10 @@
   name="options"
   label="Opened with disabled (Option A), highlighted (Option B) and selected (Option C)"
   dropdown-direction="down"
-  class="open selected skip-axe-core-test"
+  class="skip-axe-core-test"
 >
   <p-multi-select-option value="a" disabled="true">Option A</p-multi-select-option>
-  <p-multi-select-option class="highlight" value="b">Option B</p-multi-select-option>
+  <p-multi-select-option value="b">Option B</p-multi-select-option>
   <p-multi-select-option value="c">Option C</p-multi-select-option>
   <p-multi-select-option value="d">Option D</p-multi-select-option>
   <p-multi-select-option value="e">Option E</p-multi-select-option>
@@ -27,10 +27,10 @@
   porscheDesignSystem.componentsReady().then(() => {
     document.querySelector('p-multi-select').shadowRoot.querySelector('label').click();
 
-    document.querySelectorAll('p-multi-select.selected').forEach((select) => (select.value = ['c']));
+    document.querySelector('p-multi-select').value = ['c'];
 
     document
-      .querySelectorAll('p-multi-select-option.highlight')
-      .forEach((option) => option.shadowRoot.firstElementChild.classList.add('option--highlighted'));
+      .querySelector('p-multi-select-option:nth-child(2)')
+      .shadowRoot.firstElementChild.classList.add('option--highlighted');
   });
 </script>

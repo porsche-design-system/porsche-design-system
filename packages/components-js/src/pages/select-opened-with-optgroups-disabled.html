@@ -9,11 +9,10 @@
   value="c"
   label="Opened with disabled (Option A), highlighted (Option B) and selected (Option C) inside optgroup + optgroup in disabled state"
   dropdown-direction="down"
-  class="open"
 >
   <p-optgroup label="Some optgroup label 1">
     <p-select-option value="a" disabled="true">Option A</p-select-option>
-    <p-select-option class="highlight" value="b">Option B</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
     <p-select-option value="c">Option C</p-select-option>
   </p-optgroup>
   <p-optgroup label="Some optgroup label 2" disabled="true">
@@ -28,7 +27,7 @@
     document.querySelector('p-select').shadowRoot.querySelector('label').click();
 
     document
-      .querySelectorAll('p-select-option.highlight')
-      .forEach((option) => option.shadowRoot.firstElementChild.classList.add('option--highlighted'));
+      .querySelector('p-select-option:nth-child(2)')
+      .shadowRoot.firstElementChild.classList.add('option--highlighted');
   });
 </script>
