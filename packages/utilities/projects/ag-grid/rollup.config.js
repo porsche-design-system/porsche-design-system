@@ -8,6 +8,8 @@ const outputDir = 'dist';
 
 const isDevBuild = process.env.PDS_IS_STAGING === '1';
 
+const external = ['ag-grid-community'];
+
 const sharedPlugins = [
   replace({
     preventAssignment: true,
@@ -17,7 +19,7 @@ const sharedPlugins = [
     'process.env.NODE_ENV': '"production"',
   }),
   resolve({
-    resolveOnly: [/ag-grid-community/, /^@porsche-design-system\/(shared|icons|styles).*$/, /tinycolor2/],
+    resolveOnly: [/^@porsche-design-system\/(shared|icons|styles).*$/, /tinycolor2/],
   }),
 ];
 
@@ -25,7 +27,7 @@ export default [
   // Default JS Build - CJS
   {
     input,
-    // external,
+    external,
     output: {
       dir: `${outputDir}/cjs`,
       format: 'cjs',
@@ -38,7 +40,7 @@ export default [
   // Default JS Build - ESM
   {
     input,
-    // external,
+    external,
     output: {
       dir: `${outputDir}/esm`,
       format: 'esm',
