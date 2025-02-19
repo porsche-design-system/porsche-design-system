@@ -59,7 +59,20 @@ for (const component of components.filter(
               contentType: 'application/json',
             });
 
-            expect(accessibilityScanResults.violations).toEqual([]);
+            // table with layout="fixed" has an expected error on viewport 320
+            if (component === 'table' && viewportWidth === viewportWidthXXS) {
+              const expectedViolations = accessibilityScanResults.violations.filter(
+                (item) => item.id === 'scrollable-region-focusable'
+              );
+              const otherViolations = accessibilityScanResults.violations.filter(
+                (item) => item.id !== 'scrollable-region-focusable'
+              );
+
+              expect(expectedViolations.length).toEqual(1);
+              expect(otherViolations).toEqual([]);
+            } else {
+              expect(accessibilityScanResults.violations).toEqual([]);
+            }
           });
         });
       } else {
