@@ -45,6 +45,77 @@
   </p-table>
 </div>
 
+<div class="playground light" title="should render table with compact: true">
+  <p-table caption="Some caption" compact="true">
+    <p-table-head>
+      <p-table-head-row>
+        <p-table-head-cell>Slotted Styles</p-table-head-cell>
+        <p-table-head-cell>Multiline text</p-table-head-cell>
+        <p-table-head-cell style="min-width: 250px">Min width cell</p-table-head-cell>
+        <p-table-head-cell>
+          Forced Multiline<br />
+          header<br />
+          cell
+        </p-table-head-cell>
+        <p-table-head-cell multiline="true">Natural multiline header cell</p-table-head-cell>
+        <p-table-head-cell>Hide header cell</p-table-head-cell>
+      </p-table-head-row>
+    </p-table-head>
+    <p-table-body>
+      <p-table-row>
+        <p-table-cell>
+          <div style="display: flex; align-items: center">
+            <img
+              src="https://nav.porsche.com/00BC524/series-assets/1366/911@2x.jpg"
+              width="80"
+              height="48"
+              style="margin-inline-end: 8px"
+              alt="911 vehicle"
+            />
+            <span>
+              <a href="#">link</a>&nbsp;<b>bold</b>&nbsp;<i>italic</i>&nbsp;<strong>strong</strong>&nbsp;<em
+                >emphasized</em
+              >
+            </span>
+          </div>
+        </p-table-cell>
+        <p-table-cell multiline="true">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</p-table-cell>
+        <p-table-cell>Some text</p-table-cell>
+        <p-table-cell>Some text</p-table-cell>
+        <p-table-cell>Some text</p-table-cell>
+        <p-table-cell>
+          <p-button-pure icon="edit" style="padding: 8px">Edit</p-button-pure>
+          <p-button-pure icon="delete" style="padding: 8px">Delete</p-button-pure>
+        </p-table-cell>
+      </p-table-row>
+    </p-table-body>
+  </p-table>
+</div>
+
+<div class="playground light" title="should render table with layout: fixed">
+  <p-table caption="Some caption" layout="fixed">
+    <p-table-head>
+      <p-table-head-row>
+        <p-table-head-cell style="width: 50%">Column 1 (50%)</p-table-head-cell>
+        <p-table-head-cell style="width: 150px">Column 2 (150px)</p-table-head-cell>
+        <p-table-head-cell>Column 3 (auto)</p-table-head-cell>
+      </p-table-head-row>
+    </p-table-head>
+    <p-table-body>
+      <p-table-row>
+        <p-table-cell style="width: 50%">Cell 1</p-table-cell>
+        <p-table-cell style="width: 150px">Cell 2</p-table-cell>
+        <p-table-cell>Cell 3</p-table-cell>
+      </p-table-row>
+      <p-table-row>
+        <p-table-cell style="width: 50%">Cell 1</p-table-cell>
+        <p-table-cell style="width: 150px">Cell 2 with more content</p-table-cell>
+        <p-table-cell>Cell 3</p-table-cell>
+      </p-table-row>
+    </p-table-body>
+  </p-table>
+</div>
+
 <div class="playground light" title="should render table with table-row instead of table-head-row in head section">
   <p-table caption="Some caption">
     <p-table-head>
@@ -74,8 +145,8 @@
             />
             <span>
               <a href="#">link</a>&nbsp;<b>bold</b>&nbsp;<i>italic</i>&nbsp;<strong>strong</strong>&nbsp;<em
-            >emphasized</em
-            >
+                >emphasized</em
+              >
             </span>
           </div>
         </p-table-cell>
