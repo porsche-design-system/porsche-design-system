@@ -57,11 +57,19 @@ fluidly by screen width.
 ## Layout: fixed
 
 By setting `layout` to `fixed` you can get full control over every column width that are otherwise controlled by their
-content. A custom width has to be specified on every `p-table-head-cell` and `p-table-cell` within the same column. If
-there is more content than available space, it will be overflowing, which you need to take care of, e.g. by using
-`<p-text ellipsis>Some content</p-text>`.  
-Since truncated content cannot be read, it is important to provide an alternative like a `title` attribute or custom
-tooltip.
+content. An identical `width`, `min-width` and/or `max-width` depending on what you want to achieve, has to be specified
+on **every** `p-table-head-cell` and `p-table-cell` within the **same column**.
+
+While it is possible to use relative `width` units likes `50%` or `50vw`, these may lead to unexpected results when the
+table is scrollable especially on smaller screens or when combined with absolute (e.g. `50px`) or default auto values
+(based on content).
+
+If there is more content than available space, it will be overflowing, which you need to take care of, e.g. by using
+`<p-text ellipsis>Some content</p-text>`.
+
+<Notification heading="Note" heading-tag="h3" state="warning">
+  Since truncated content cannot be fully read, it is important to provide an alternative like a <code>title</code> attribute or custom tooltip.
+</Notification>
 
 <Playground :markup="layoutFixed" :config="config"></Playground>
 
@@ -266,20 +274,20 @@ export default class Code extends Vue {
   layoutFixed = `<p-table caption="Some caption" layout="fixed">
   <p-table-head>
     <p-table-head-row>
-      <p-table-head-cell style="width: 50%">Column 1 (50%)</p-table-head-cell>
-      <p-table-head-cell style="width: 150px">Column 2 (150px)</p-table-head-cell>
+      <p-table-head-cell style="width: 50%; max-width: 50%">Column 1 (50%)</p-table-head-cell>
+      <p-table-head-cell style="width: 150px; max-width: 150px">Column 2 (150px)</p-table-head-cell>
       <p-table-head-cell>Column 3 (auto)</p-table-head-cell>
     </p-table-head-row>
   </p-table-head>
   <p-table-body>
     <p-table-row>
-      <p-table-cell style="width: 50%">Cell 1</p-table-cell>
-      <p-table-cell style="width: 150px"><p-text ellipsis title="Cell 2">Cell 2</p-text></p-table-cell>
+      <p-table-cell style="width: 50%; max-width: 50%">Cell 1</p-table-cell>
+      <p-table-cell style="width: 150px; max-width: 150px"><p-text ellipsis title="Cell 2">Cell 2</p-text></p-table-cell>
       <p-table-cell>Cell 3</p-table-cell>
     </p-table-row>
     <p-table-row>
-      <p-table-cell style="width: 50%">Cell 1</p-table-cell>
-      <p-table-cell style="width: 150px"><p-text ellipsis title="Cell 2 with more content">Cell 2 with more content</p-text></p-table-cell>
+      <p-table-cell style="width: 50%; max-width: 50%">Cell 1</p-table-cell>
+      <p-table-cell style="width: 150px; max-width: 150px"><p-text ellipsis title="Cell 2 with more content">Cell 2 with more content</p-text></p-table-cell>
       <p-table-cell>Cell 3</p-table-cell>
     </p-table-row>
   </p-table-body>
