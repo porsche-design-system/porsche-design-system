@@ -69,8 +69,14 @@ export const getComponentCss = (compact: boolean, layout: TableLayout, theme: Th
     table: {
       display: 'table',
       borderCollapse: 'collapse',
-      ...(layout === 'fixed' && { tableLayout: 'fixed' }),
-      width: '100%',
+      // with table-layout: fixed, width: 100% crops border-bottom of p-table-row when scrollable
+      // also relative width units (%, vw) don't work as expected when scrollable or combined with auto columns
+      ...(layout === 'fixed'
+        ? {
+            tableLayout: 'fixed',
+            minWidth: '100%',
+          }
+        : { width: '100%' }),
       whiteSpace: 'nowrap', // shouldn't be inherited for caption, that's why it's defined here
     },
   });

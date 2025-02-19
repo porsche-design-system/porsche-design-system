@@ -92,7 +92,7 @@ exports[`getComponentCss() should return correct css for compact: false, layout:
   display: table;
   border-collapse: collapse;
   table-layout: fixed;
-  width: 100%;
+  min-width: 100%;
   white-space: nowrap;
 }"
 `;
@@ -125,7 +125,7 @@ exports[`getComponentCss() should return correct css for compact: false, layout:
   display: table;
   border-collapse: collapse;
   table-layout: fixed;
-  width: 100%;
+  min-width: 100%;
   white-space: nowrap;
 }"
 `;
@@ -225,7 +225,7 @@ exports[`getComponentCss() should return correct css for compact: true, layout: 
   display: table;
   border-collapse: collapse;
   table-layout: fixed;
-  width: 100%;
+  min-width: 100%;
   white-space: nowrap;
 }"
 `;
@@ -259,7 +259,7 @@ exports[`getComponentCss() should return correct css for compact: true, layout: 
   display: table;
   border-collapse: collapse;
   table-layout: fixed;
-  width: 100%;
+  min-width: 100%;
   white-space: nowrap;
 }"
 `;
