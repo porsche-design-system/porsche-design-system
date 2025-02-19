@@ -10,7 +10,7 @@ import {
 } from '../../../styles';
 import type { Theme } from '../../../types';
 import { getCss, isHighContrastMode, isThemeDark } from '../../../utils';
-import { TableLayout } from './table-utils';
+import type { TableLayout } from './table-utils';
 
 export const cssVariableTablePadding = '--p-internal-table-padding';
 export const cssVariableTableHoverColor = '--p-internal-table-hover-color';
