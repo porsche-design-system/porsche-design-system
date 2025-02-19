@@ -3,7 +3,7 @@
 exports[`getComponentCss() should return correct css for active: false, direction: asc, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
+  padding: 2px var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
 }
@@ -75,7 +75,7 @@ button:focus-visible::before {
 exports[`getComponentCss() should return correct css for active: false, direction: desc, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
+  padding: 2px var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
 }
@@ -147,7 +147,7 @@ button:focus-visible::before {
 exports[`getComponentCss() should return correct css for active: true, direction: asc, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
+  padding: 2px var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
 }
@@ -219,7 +219,7 @@ button:focus-visible::before {
 exports[`getComponentCss() should return correct css for active: true, direction: desc, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
+  padding: 2px var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
 }
@@ -291,7 +291,7 @@ button:focus-visible::before {
 exports[`getComponentCss() should return correct css for active: true, direction: desc, hideLabel: false and multiline: true 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
+  padding: 2px var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) !important;
   vertical-align: bottom !important;
   white-space: normal !important;
 }
@@ -363,7 +363,7 @@ button:focus-visible::before {
 exports[`getComponentCss() should return correct css for active: undefined, direction: undefined, hideLabel: false and multiline: false 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
+  padding: 2px var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
 }
@@ -378,7 +378,7 @@ exports[`getComponentCss() should return correct css for active: undefined, dire
 exports[`getComponentCss() should return correct css for active: undefined, direction: undefined, hideLabel: true and multiline: false 1`] = `
 ":host {
   display: table-cell;
-  padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
+  padding: 2px var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
 }
