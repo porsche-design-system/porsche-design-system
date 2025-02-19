@@ -1,4 +1,4 @@
-import { spacingFluidMedium, textSmallStyle } from '@porsche-design-system/styles';
+import { spacingFluidMedium, textSmallStyle, spacingStaticSmall } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -10,13 +10,15 @@ import {
 } from '../../../styles';
 import type { Theme } from '../../../types';
 import { getCss, isHighContrastMode, isThemeDark } from '../../../utils';
+import { TableLayout } from './table-utils';
 
+export const cssVariableTablePadding = '--p-internal-table-padding';
 export const cssVariableTableHoverColor = '--p-internal-table-hover-color';
 export const cssVariableTableBorderColor = '--p-internal-table-border-color';
 export const cssVariableTableBorderWidth = '--p-internal-table-border-width';
 export const cssVariableTableHeadCellIconFilter = '--p-internal-table-head-cell-icon-filter';
 
-export const getComponentCss = (theme: Theme): string => {
+export const getComponentCss = (compact: boolean, layout: TableLayout, theme: Theme): string => {
   const { primaryColor, hoverColor, contrastLowColor } = doGetThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
@@ -41,6 +43,7 @@ export const getComponentCss = (theme: Theme): string => {
       },
       ...preventFoucOfNestedElementsStyles,
       '::slotted(*)': addImportantToEachRule({
+        ...(compact && { [cssVariableTablePadding]: spacingStaticSmall }),
         [cssVariableTableHoverColor]: hoverColor,
         [cssVariableTableBorderColor]: contrastLowColor,
         [cssVariableTableHeadCellIconFilter]: isThemeDark(theme) ? 'invert(100%)' : 'none',
@@ -66,6 +69,7 @@ export const getComponentCss = (theme: Theme): string => {
     table: {
       display: 'table',
       borderCollapse: 'collapse',
+      ...(layout === 'fixed' && { tableLayout: 'fixed' }),
       width: '100%',
       whiteSpace: 'nowrap', // shouldn't be inherited for caption, that's why it's defined here
     },
