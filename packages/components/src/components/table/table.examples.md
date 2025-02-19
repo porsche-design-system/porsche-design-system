@@ -49,7 +49,8 @@ When using the `caption` slot its content will be rendered while offering full c
 
 ## Compact
 
-By setting `compact` to `true` you can have a more compact table with reduced paddings.
+By setting `compact` to `true` you can have a more compact table with reduced paddings, which will by default grow
+fluidly by screen width.
 
 <Playground :markup="compact" :config="config"></Playground>
 
