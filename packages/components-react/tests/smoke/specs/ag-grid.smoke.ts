@@ -1,10 +1,19 @@
 import * as fs from 'fs';
 import { createRequire } from 'node:module';
 import * as path from 'path';
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test, vi } from 'vitest';
 
 const nodeRequire = createRequire(import.meta.url);
 const ESMBuildDirAgGrid = path.resolve(__dirname, './../../../dist/react-wrapper/ag-grid/esm');
+
+// Ag grid theme will access the cdn url in order to build the icon urls
+vi.stubGlobal('document', {
+  porscheDesignSystem: {
+    cdn: {
+      url: 'test',
+    },
+  },
+});
 
 describe('style package content', () => {
   test('should contain typings', () => {
