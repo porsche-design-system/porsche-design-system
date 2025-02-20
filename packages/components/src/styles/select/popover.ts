@@ -30,8 +30,8 @@ export const getPopoverJssStyle = (
   isOpen: boolean,
   direction: Direction,
   anchorName: string,
-  cssVarScaling: string | number,
-  optionHeight: number,
+  cssVarScaling: string | 1,
+  optionHeight: 40 | 44,
   theme: Theme
 ): JssStyle => {
   const { contrastLowColor, backgroundColor } = getThemedColors(theme);

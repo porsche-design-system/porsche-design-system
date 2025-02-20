@@ -4,7 +4,7 @@ import type { Theme } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getHasCSSAnchorPositioningSupport } from '../../utils/supportsNativeCSSAnchorPositioning';
 import { getThemedColors } from '../colors';
-import { getTransition } from '../common-styles';
+import { getFocusJssStyle, getTransition } from '../common-styles';
 import { getThemedFormStateColors } from '../form-state-color-styles';
 import { formElementPaddingHorizontal, formElementPaddingVertical } from '../form-styles';
 import { hoverMediaQuery } from '../hover-media-query';
@@ -23,8 +23,6 @@ export const getButtonJssStyle = (
   const cssVarBackgroundColor = `--p-${componentName}-background-color`;
   const cssVarTextColor = `--p-${componentName}-text-color`;
   const cssVarBorderColor = `--p-${componentName}-border-color`;
-  const cssVarBackgroundColorFocus = `--p-${componentName}-focus-background-color`;
-  const cssVarBorderColorFocus = `--p-${componentName}-focus-border-color`;
 
   const { backgroundColor, primaryColor, disabledColor, contrastMediumColor } = getThemedColors(theme);
   const {
@@ -73,21 +71,14 @@ export const getButtonJssStyle = (
     }),
     ...(!isDisabled && {
       ...hoverMediaQuery({
-        '&:hover:not(:focus-visible),label:hover~&:not(:focus-visible)': {
+        '&:hover,label:hover~&': {
           borderColor: `var(${cssVarBorderColor}, ${isOpen ? primaryColor : formStateHoverColor || primaryColor})`,
           ...prefersColorSchemeDarkMediaQuery(theme, {
             borderColor: `var(${cssVarBorderColor}, ${isOpen ? primaryColorDark : formStateHoverColorDark || primaryColorDark})`,
           }),
         },
       }),
-      '&:focus-visible': {
-        borderColor: `var(${cssVarBorderColorFocus}, ${primaryColor})`,
-        background: `var(${cssVarBackgroundColorFocus}, ${backgroundColor})`,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: `var(${cssVarBorderColorFocus}, ${primaryColorDark})`,
-          background: `var(${cssVarBackgroundColorFocus}, ${backgroundColorDark})`,
-        }),
-      },
+      ...getFocusJssStyle(theme),
     }),
   };
 };

@@ -9,6 +9,7 @@ import {
 } from '@porsche-design-system/styles';
 import type { JssStyle, Styles } from 'jss';
 import {
+  getFocusJssStyle,
   getHighContrastColors,
   getThemedColors,
   getTransition,
@@ -33,7 +34,6 @@ import type { FormState } from '../../../utils/form/form-state';
 const anchorName = '--anchor-select-wrapper';
 
 export const getButtonStyles = (
-  direction: SelectWrapperDropdownDirection,
   isOpen: boolean,
   state: FormState,
   hasNativeCSSAnchorPositioningSupport: boolean,
@@ -50,12 +50,14 @@ export const getButtonStyles = (
     'dark',
     state
   );
-  const isDirectionDown = direction === 'down';
 
   return {
     '@global': {
       // TODO: extract generic default button/anchor reset style
       button: {
+        ...(hasNativeCSSAnchorPositioningSupport && {
+          anchorName,
+        }),
         position: 'absolute',
         inset: 0,
         width: '100%', // fixes Firefox positioning issue
@@ -68,26 +70,8 @@ export const getButtonStyles = (
         outline: '0',
         cursor: 'pointer',
         transition: getTransition('border-color'), // background and text color are handled on select
-        ...(hasNativeCSSAnchorPositioningSupport && {
-          anchorName,
-        }),
         ...prefersColorSchemeDarkMediaQuery(theme, {
           borderColor: isOpen ? primaryColorDark : formStateColorDark || contrastMediumColorDark,
-        }),
-        // TODO: getFocusJssStyle() can't be re-used because focus style differs for form elements
-        '&:focus, &:focus ~ ul': {
-          borderColor: primaryColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: primaryColorDark,
-          }),
-        },
-        ...hoverMediaQuery({
-          '&:not(:disabled):not(:focus):hover': {
-            borderColor: isOpen ? primaryColor : formStateHoverColor || primaryColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: isOpen ? primaryColorDark : formStateHoverColorDark || primaryColorDark,
-            }),
-          },
         }),
         '&:disabled': {
           cursor: 'not-allowed',
@@ -96,17 +80,21 @@ export const getButtonStyles = (
             borderColor: disabledColorDark,
           }),
         },
-        ...(isOpen && {
-          [isDirectionDown ? 'borderBottomLeftRadius' : 'borderTopLeftRadius']: 0,
-          [isDirectionDown ? 'borderBottomRightRadius' : 'borderTopRightRadius']: 0,
+        ...hoverMediaQuery({
+          '&:not(:disabled):hover': {
+            borderColor: isOpen ? primaryColor : formStateHoverColor || primaryColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              borderColor: isOpen ? primaryColorDark : formStateHoverColorDark || primaryColorDark,
+            }),
+          },
         }),
+        ...getFocusJssStyle(theme),
       },
     },
   };
 };
 
 export const getFilterStyles = (
-  direction: SelectWrapperDropdownDirection,
   isOpen: boolean,
   state: FormState,
   disabled: boolean,
@@ -125,7 +113,6 @@ export const getFilterStyles = (
     'dark',
     state
   );
-  const isDirectionDown = direction === 'down';
 
   const placeHolderJssStyle: JssStyle = {
     opacity: 1,
@@ -223,10 +210,6 @@ export const getFilterStyles = (
             borderColor: isOpen ? primaryColorDark : formStateColorDark || contrastMediumColorDark,
           }),
           borderRadius: borderRadiusSmall,
-          ...(isOpen && {
-            [isDirectionDown ? 'borderBottomLeftRadius' : 'borderTopLeftRadius']: 0,
-            [isDirectionDown ? 'borderBottomRightRadius' : 'borderTopRightRadius']: 0,
-          }),
         },
       },
     },
@@ -360,8 +343,8 @@ export const getComponentCss = (
         },
       },
       filter
-        ? getFilterStyles(direction, isOpen, state, disabled, hasNativeCSSAnchorPositioningSupport, theme)
-        : getButtonStyles(direction, isOpen, state, hasNativeCSSAnchorPositioningSupport, theme),
+        ? getFilterStyles(isOpen, state, disabled, hasNativeCSSAnchorPositioningSupport, theme)
+        : getButtonStyles(isOpen, state, hasNativeCSSAnchorPositioningSupport, theme),
       getListStyles(direction, isOpen, theme)
     )
   );
