@@ -14,6 +14,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.27.0-rc.5] - 2025-02-20
+
+#### Fixed
+
+- `AG Grid`: error on reload in next.js.
+  ([#3759](https://github.com/porsche-design-system/porsche-design-system/pull/3759))
+
 ### [3.27.0-rc.4] - 2025-02-20
 
 #### Fixed
