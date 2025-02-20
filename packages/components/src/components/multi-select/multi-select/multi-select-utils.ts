@@ -180,6 +180,8 @@ export const handleDropdownScroll = (scrollElement: HTMLElement, element: HTMLEl
   const { maxHeight } = getComputedStyle(scrollElement);
   const hostElementHeight = Number.parseInt(maxHeight, 10);
   if (scrollElement.scrollHeight > hostElementHeight) {
-    element.scrollIntoView();
+    element.scrollIntoView({
+      block: 'nearest',
+    });
   }
 };
