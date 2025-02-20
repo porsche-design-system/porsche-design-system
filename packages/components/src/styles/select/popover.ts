@@ -13,8 +13,6 @@ import { prefersColorSchemeDarkMediaQuery } from '../prefers-color-scheme-dark-m
 
 type Direction = 'up' | 'down' | 'auto';
 
-const hasNativeCSSAnchorPositioningSupport = getHasCSSAnchorPositioningSupport();
-
 const keyframesName = 'fade-in';
 
 export const getPopoverKeyframesStyles: Styles = {
@@ -42,16 +40,14 @@ export const getPopoverJssStyle = (
   return {
     all: 'unset',
     position: 'absolute',
+    zIndex: 99, // needed for backwards compatibility, to enable browsers not supporting #top-layer
     padding: `max(2px, ${cssVarScaling} * 6px)`,
-    display: isOpen ? 'flex' : 'none',
+    display: isOpen ? 'flex' : 'none', // needed for backwards compatibility, otherwise 'flex' would be enough
     flexDirection: 'column',
     gap: `max(2px, ${cssVarScaling} * ${spacingStaticSmall})`,
     maxHeight: `${8.5 * (optionHeight + 8) + 6 + 2}px`, // 8.5 options * option height + 8px gap + additional spacing (6px = padding, 2px = border)
     boxSizing: 'border-box',
     overflow: 'hidden auto',
-    // scrollBehavior: 'smooth', // when defined, `.scrollTo()` isn't applied immediately
-    // overscrollBehaviorY: 'none', // when defined, rubber band scroll effect is getting lost on iOS Safari
-    // WebkitOverflowScrolling: 'touch', // not necessary anymore for iOS Safari
     scrollbarWidth: 'thin', // firefox
     scrollbarColor: 'auto', // firefox
     animation: `var(${cssVariableAnimationDuration}, ${motionDurationShort}) ${keyframesName} ${motionEasingBase} forwards`,
@@ -63,11 +59,7 @@ export const getPopoverJssStyle = (
       background: backgroundColorDark,
       borderColor: contrastLowColorDark,
     }),
-    '&:not(:popover-open)': {
-      display: 'none',
-    },
-    zIndex: 99, // ensures option list is rendered on top for browsers not supporting #top-layer
-    ...(hasNativeCSSAnchorPositioningSupport && {
+    ...(getHasCSSAnchorPositioningSupport() && {
       positionAnchor: anchorName,
       positionVisibility: 'always',
       positionTryOrder: 'normal',
@@ -76,5 +68,8 @@ export const getPopoverJssStyle = (
       width: 'anchor-size(width)',
       margin: `${OPTION_LIST_SAFE_ZONE}px 0`,
     }),
+    '&:not(:popover-open)': {
+      display: 'none',
+    },
   };
 };

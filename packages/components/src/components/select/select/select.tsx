@@ -242,7 +242,6 @@ export class Select {
       this.disabled,
       this.hideLabel,
       this.state,
-      this.hasNativeCSSAnchorPositioningSupport,
       this.compact,
       this.theme,
       !!this.slottedImagePath
@@ -256,6 +255,7 @@ export class Select {
     const selectMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
     const initialStatusId = 'initial-status';
     const ariaDescribedBy = [descriptionId, selectMessageId, initialStatusId].filter(Boolean).join(' ');
+    const selectedOption = getSelectedOptionString(this.selectOptions);
 
     return (
       <div class="root">
@@ -268,46 +268,38 @@ export class Select {
           isDisabled={this.disabled}
         />
         <span class="sr-only" id={initialStatusId}>
-          {`${getSelectedOptionString(this.selectOptions) ? '' : 'No option selected. '} ${this.selectOptions.length} options in total.`}
+          {`${selectedOption ? '' : 'No option selected. '} ${this.selectOptions.length} options in total.`}
         </span>
-        <div class={{ wrapper: true, disabled: this.disabled }}>
-          <button
-            aria-invalid={this.state === 'error' ? 'true' : null}
-            type="button"
-            role="combobox"
-            id={buttonId}
-            {...getComboboxAriaAttributes(this.isOpen, this.required, labelId, ariaDescribedBy, popoverId)}
-            disabled={this.disabled}
-            onClick={this.onComboClick}
-            onKeyDown={this.onComboKeyDown}
-            ref={(el) => (this.buttonElement = el)}
-          >
-            {this.slottedImagePath ? (
-              <span>
-                <img src={this.slottedImagePath} alt="" />
-                <span>{getSelectedOptionString(this.selectOptions)}</span>
-              </span>
-            ) : (
-              getSelectedOptionString(this.selectOptions)
-            )}
-          </button>
+        <button
+          aria-invalid={this.state === 'error' ? 'true' : null}
+          type="button"
+          role="combobox"
+          id={buttonId}
+          {...getComboboxAriaAttributes(this.isOpen, this.required, labelId, ariaDescribedBy, popoverId)}
+          disabled={this.disabled}
+          onClick={this.onComboClick}
+          onKeyDown={this.onComboKeyDown}
+          ref={(el) => (this.buttonElement = el)}
+        >
+          {this.slottedImagePath && <img src={this.slottedImagePath} alt="" />}
+          <span>{selectedOption}</span>
           <PrefixedTagNames.pIcon
-            class={{ icon: true, 'icon--rotate': this.isOpen }}
+            class="icon"
             name="arrow-head-down"
             theme={this.theme}
             color={this.disabled ? 'state-disabled' : 'primary'}
             aria-hidden="true"
           />
-          <div
-            id={popoverId}
-            popover="auto"
-            tabIndex={-1}
-            {...getListAriaAttributes(this.label, this.required, false, this.isOpen)}
-            onToggle={(e: ToggleEvent) => (this.isOpen = e.newState === 'open')}
-            ref={(el) => (this.popoverElement = el)}
-          >
-            <slot onSlotchange={this.onSlotchange} />
-          </div>
+        </button>
+        <div
+          id={popoverId}
+          popover="auto"
+          tabIndex={-1}
+          {...getListAriaAttributes(this.label, this.required, false, this.isOpen)}
+          onToggle={(e: ToggleEvent) => (this.isOpen = e.newState === 'open')}
+          ref={(el) => (this.popoverElement = el)}
+        >
+          <slot onSlotchange={this.onSlotchange} />
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
         <span class="sr-only" role="status" aria-live="assertive" aria-relevant="additions text">
