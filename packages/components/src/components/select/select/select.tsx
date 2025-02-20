@@ -1,7 +1,6 @@
-import { autoUpdate, computePosition, flip, offset, size } from '@floating-ui/dom';
+import { autoUpdate } from '@floating-ui/dom';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import {
-  OPTIONS_LIST_SAFE_ZONE,
   type SelectDropdownDirection,
   type SelectOptgroup,
   type SelectOption,
@@ -50,6 +49,7 @@ import {
   hasMessage,
   hasPropValueChanged,
   isElementOfKind,
+  optionListUpdatePosition,
   setNextSelectOptionHighlighted,
   throwIfElementIsNotOfKind,
   validateProps,
@@ -151,7 +151,7 @@ export class Select {
   private slottedImagePath: string = '';
   private hasNativePopoverSupport = getHasNativePopoverSupport();
   private hasNativeCSSAnchorPositioningSupport = getHasCSSAnchorPositioningSupport();
-  private cleanUp: () => void;
+  private cleanUpAutoUpdate: () => void;
 
   @Listen('internalOptionUpdate')
   public updateOptionHandler(e: Event & { target: SelectOption }): void {
@@ -178,18 +178,20 @@ export class Select {
       if (this.hasNativePopoverSupport) {
         this.popoverElement.showPopover();
       }
-      if (!this.hasNativeCSSAnchorPositioningSupport && typeof this.cleanUp === 'undefined') {
+      if (!this.hasNativeCSSAnchorPositioningSupport && typeof this.cleanUpAutoUpdate === 'undefined') {
         // ensures floating ui event listeners are added when options list is opened
-        this.cleanUp = autoUpdate(this.buttonElement, this.popoverElement, this.updatePosition);
+        this.cleanUpAutoUpdate = autoUpdate(this.buttonElement, this.popoverElement, async (): Promise<void> => {
+          await optionListUpdatePosition(this.dropdownDirection, this.buttonElement, this.popoverElement);
+        });
       }
     } else {
       if (this.hasNativePopoverSupport) {
         this.popoverElement.hidePopover();
       }
-      if (!this.hasNativeCSSAnchorPositioningSupport && typeof this.cleanUp === 'function') {
+      if (typeof this.cleanUpAutoUpdate === 'function') {
         // ensures floating ui event listeners are removed when options list is closed
-        this.cleanUp();
-        this.cleanUp = undefined;
+        this.cleanUpAutoUpdate();
+        this.cleanUpAutoUpdate = undefined;
       }
     }
   }
@@ -199,9 +201,9 @@ export class Select {
   }
 
   public disconnectedCallback(): void {
-    if (typeof this.cleanUp === 'function') {
+    if (typeof this.cleanUpAutoUpdate === 'function') {
       // ensures floating ui event listeners are removed in case popover is removed from DOM
-      this.cleanUp();
+      this.cleanUpAutoUpdate();
     }
   }
 
@@ -465,31 +467,5 @@ export class Select {
         ?.querySelector('img')
         ?.getAttribute('src') ?? ''
     );
-  };
-
-  private updatePosition = async (): Promise<void> => {
-    const { x, y } = await computePosition(this.buttonElement, this.popoverElement, {
-      placement: this.dropdownDirection === 'up' ? 'top' : 'bottom',
-      middleware: [
-        size({
-          // @ts-expect-error
-          apply({ rects, elements }) {
-            Object.assign(elements.floating.style, {
-              width: `${rects.reference.width}px`,
-            });
-          },
-        }),
-        offset(OPTIONS_LIST_SAFE_ZONE),
-        flip({
-          padding: OPTIONS_LIST_SAFE_ZONE,
-          fallbackAxisSideDirection: 'none',
-        }),
-      ],
-    });
-
-    Object.assign(this.popoverElement.style, {
-      left: `${x}px`,
-      top: `${y}px`,
-    });
   };
 }

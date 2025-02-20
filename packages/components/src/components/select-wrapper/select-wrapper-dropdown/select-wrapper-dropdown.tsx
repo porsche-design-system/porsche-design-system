@@ -1,4 +1,4 @@
-import { autoUpdate, computePosition, flip, offset, size } from '@floating-ui/dom';
+import { autoUpdate } from '@floating-ui/dom';
 import { Component, Element, Host, type JSX, Prop, State, Watch, h } from '@stencil/core';
 import type { Theme } from '../../../types';
 import {
@@ -12,11 +12,11 @@ import {
   isSsrHydration,
   observeChildren,
   observeProperties,
+  optionListUpdatePosition,
   throwIfRootNodeIsNotOneOfKind,
   unobserveChildren,
 } from '../../../utils';
 import { getHasCSSAnchorPositioningSupport } from '../../../utils/supportsNativeCSSAnchorPositioning';
-import { OPTIONS_LIST_SAFE_ZONE } from '../../select/select/select-utils';
 import type {
   DropdownDirectionInternal,
   SelectWrapperDropdownDirection,
@@ -73,7 +73,7 @@ export class SelectWrapperDropdown {
   private popoverElement: HTMLElement;
   private hasNativePopoverSupport = getHasNativePopoverSupport();
   private hasNativeCSSAnchorPositioningSupport = getHasCSSAnchorPositioningSupport();
-  private cleanUp: () => void;
+  private cleanUpAutoUpdate: () => void;
 
   private get selectedIndex(): number {
     return this.selectRef.selectedIndex;
@@ -85,18 +85,20 @@ export class SelectWrapperDropdown {
       if (this.hasNativePopoverSupport) {
         this.popoverElement.showPopover();
       }
-      if (!this.hasNativeCSSAnchorPositioningSupport && typeof this.cleanUp === 'undefined') {
+      if (!this.hasNativeCSSAnchorPositioningSupport && typeof this.cleanUpAutoUpdate === 'undefined') {
         // ensures floating ui event listeners are added when options list is opened
-        this.cleanUp = autoUpdate(this.inputOrButtonElement, this.popoverElement, this.updatePosition);
+        this.cleanUpAutoUpdate = autoUpdate(this.inputOrButtonElement, this.popoverElement, async (): Promise<void> => {
+          await optionListUpdatePosition(this.direction, this.inputOrButtonElement, this.popoverElement);
+        });
       }
     } else {
       if (this.hasNativePopoverSupport) {
         this.popoverElement.hidePopover();
       }
-      if (!this.hasNativeCSSAnchorPositioningSupport && typeof this.cleanUp === 'function') {
+      if (typeof this.cleanUpAutoUpdate === 'function') {
         // ensures floating ui event listeners are removed when options list is closed
-        this.cleanUp();
-        this.cleanUp = undefined;
+        this.cleanUpAutoUpdate();
+        this.cleanUpAutoUpdate = undefined;
       }
     }
   }
@@ -118,9 +120,9 @@ export class SelectWrapperDropdown {
   public disconnectedCallback(): void {
     unobserveChildren(this.host);
 
-    if (typeof this.cleanUp === 'function') {
+    if (typeof this.cleanUpAutoUpdate === 'function') {
       // ensures floating ui event listeners are removed in case popover is removed from DOM
-      this.cleanUp();
+      this.cleanUpAutoUpdate();
     }
   }
 
@@ -424,31 +426,5 @@ export class SelectWrapperDropdown {
 
     // in case input is focused via tab instead of click
     this.setDropdownVisibility('show');
-  };
-
-  private updatePosition = async (): Promise<void> => {
-    const { x, y } = await computePosition(this.inputOrButtonElement, this.popoverElement, {
-      placement: this.direction === 'up' ? 'top' : 'bottom',
-      middleware: [
-        size({
-          // @ts-expect-error
-          apply({ rects, elements }) {
-            Object.assign(elements.floating.style, {
-              width: `${rects.reference.width}px`,
-            });
-          },
-        }),
-        offset(OPTIONS_LIST_SAFE_ZONE),
-        flip({
-          padding: OPTIONS_LIST_SAFE_ZONE,
-          fallbackAxisSideDirection: 'none',
-        }),
-      ],
-    });
-
-    Object.assign(this.popoverElement.style, {
-      left: `${x}px`,
-      top: `${y}px`,
-    });
   };
 }

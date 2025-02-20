@@ -1,4 +1,4 @@
-import { autoUpdate, computePosition, flip, offset, size } from '@floating-ui/dom';
+import { autoUpdate } from '@floating-ui/dom';
 import {
   AttachInternals,
   Component,
@@ -30,6 +30,7 @@ import {
   handleButtonEvent,
   hasPropValueChanged,
   isElementOfKind,
+  optionListUpdatePosition,
   throwIfElementIsNotOfKind,
   validateProps,
 } from '../../../utils';
@@ -38,7 +39,6 @@ import { Label, descriptionId, labelId } from '../../common/label/label';
 import { StateMessage, messageId } from '../../common/state-message/state-message';
 import { getComponentCss } from './multi-select-styles';
 import {
-  MULTI_SELECT_OPTION_LIST_SAFE_ZONE,
   type MultiSelectDropdownDirection,
   type MultiSelectOptgroup,
   type MultiSelectOption,
@@ -147,7 +147,7 @@ export class MultiSelect {
   private popoverElement: HTMLDivElement;
   private hasNativePopoverSupport = getHasNativePopoverSupport();
   private hasNativeCSSAnchorPositioningSupport = getHasCSSAnchorPositioningSupport();
-  private cleanUp: () => void;
+  private cleanUpAutoUpdate: () => void;
 
   private get currentValue(): string[] {
     return getSelectedOptionValues(this.multiSelectOptions);
@@ -181,18 +181,20 @@ export class MultiSelect {
       if (this.hasNativePopoverSupport) {
         this.popoverElement.showPopover();
       }
-      if (!this.hasNativeCSSAnchorPositioningSupport && typeof this.cleanUp === 'undefined') {
+      if (!this.hasNativeCSSAnchorPositioningSupport && typeof this.cleanUpAutoUpdate === 'undefined') {
         // ensures floating ui event listeners are added when options list is opened
-        this.cleanUp = autoUpdate(this.inputElement, this.popoverElement, this.updatePosition);
+        this.cleanUpAutoUpdate = autoUpdate(this.inputElement, this.popoverElement, async (): Promise<void> => {
+          await optionListUpdatePosition(this.dropdownDirection, this.inputElement, this.popoverElement);
+        });
       }
     } else {
       if (this.hasNativePopoverSupport) {
         this.popoverElement.hidePopover();
       }
-      if (!this.hasNativeCSSAnchorPositioningSupport && typeof this.cleanUp === 'function') {
+      if (typeof this.cleanUpAutoUpdate === 'function') {
         // ensures floating ui event listeners are removed when options list is closed
-        this.cleanUp();
-        this.cleanUp = undefined;
+        this.cleanUpAutoUpdate();
+        this.cleanUpAutoUpdate = undefined;
       }
     }
   }
@@ -210,9 +212,9 @@ export class MultiSelect {
   }
 
   public disconnectedCallback(): void {
-    if (typeof this.cleanUp === 'function') {
+    if (typeof this.cleanUpAutoUpdate === 'function') {
       // ensures floating ui event listeners are removed in case popover is removed from DOM
-      this.cleanUp();
+      this.cleanUpAutoUpdate();
     }
   }
 
@@ -488,32 +490,6 @@ export class MultiSelect {
     this.update.emit({
       value: this.currentValue,
       name: this.name,
-    });
-  };
-
-  private updatePosition = async (): Promise<void> => {
-    const { x, y } = await computePosition(this.inputElement, this.popoverElement, {
-      placement: this.dropdownDirection === 'up' ? 'top' : 'bottom',
-      middleware: [
-        size({
-          // @ts-expect-error
-          apply({ rects, elements }) {
-            Object.assign(elements.floating.style, {
-              width: `${rects.reference.width}px`,
-            });
-          },
-        }),
-        offset(MULTI_SELECT_OPTION_LIST_SAFE_ZONE),
-        flip({
-          padding: MULTI_SELECT_OPTION_LIST_SAFE_ZONE,
-          fallbackAxisSideDirection: 'none',
-        }),
-      ],
-    });
-
-    Object.assign(this.popoverElement.style, {
-      left: `${x}px`,
-      top: `${y}px`,
     });
   };
 }
