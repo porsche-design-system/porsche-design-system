@@ -1,10 +1,7 @@
 import {
-  borderRadiusMedium,
   borderRadiusSmall,
   borderWidthBase,
   fontLineHeight,
-  motionDurationShort,
-  motionEasingBase,
   spacingStaticSmall,
   spacingStaticXSmall,
   textSmallStyle,
@@ -12,7 +9,6 @@ import {
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  cssVariableAnimationDuration,
   getHiddenTextJssStyle,
   getThemedColors,
   getTransition,
@@ -29,15 +25,15 @@ import {
   formElementPaddingVertical,
   getCalculatedFormElementPaddingHorizontal,
 } from '../../../styles/form-styles';
-import { MULTI_SELECT_OPTION_HEIGHT, getNoResultsOptionJssStyle } from '../../../styles/option-styles';
+import { getNoResultsOptionJssStyle } from '../../../styles/option-styles';
 import { getPlaceholderJssStyle } from '../../../styles/placeholder';
+import { getPopoverJssStyle, getPopoverKeyframesStyles } from '../../../styles/select';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import { getCss } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import type { SelectDropdownDirection } from '../../select/select/select-utils';
-import { MULTI_SELECT_OPTION_LIST_SAFE_ZONE } from './multi-select-utils';
 
 const anchorName = '--anchor-multi-select';
 
@@ -50,14 +46,13 @@ export const getComponentCss = (
   hasNativeCSSAnchorPositioningSupport: boolean,
   theme: Theme
 ): string => {
-  const { primaryColor, disabledColor, contrastHighColor, contrastLowColor, contrastMediumColor, backgroundColor } =
+  const { primaryColor, disabledColor, contrastHighColor, contrastMediumColor, backgroundColor } =
     getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
     disabledColor: disabledColorDark,
     contrastMediumColor: contrastMediumColorDark,
     contrastHighColor: contrastHighColorDark,
-    contrastLowColor: contrastLowColorDark,
     backgroundColor: backgroundColorDark,
   } = getThemedColors('dark');
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
@@ -66,21 +61,10 @@ export const getComponentCss = (
     state
   );
 
-  const scalingVar = 1;
-
-  const popoverPadding = `max(2px, ${scalingVar} * 6px)`;
-  const popoverGap = `max(2px, ${scalingVar} * ${spacingStaticSmall})`;
-
   return getCss({
     '@global': {
-      '@keyframes fade-in': {
-        from: {
-          opacity: 0,
-        },
-        to: {
-          opacity: 1,
-        },
-      },
+      // @keyframes fade-in
+      ...getPopoverKeyframesStyles,
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
@@ -155,46 +139,7 @@ export const getComponentCss = (
           anchorName,
         }),
       },
-      // TODO: can be shared with select
-      '[popover]': {
-        all: 'unset',
-        position: 'absolute',
-        padding: popoverPadding,
-        display: isOpen ? 'flex' : 'none',
-        flexDirection: 'column',
-        gap: popoverGap,
-        maxHeight: `${8.5 * (MULTI_SELECT_OPTION_HEIGHT + 8) + 6 + 2}px`, // 8.5 options * option height + 8px gap + additional spacing (6px = padding, 2px = border)
-        boxSizing: 'border-box',
-        overflow: 'hidden auto',
-        // scrollBehavior: 'smooth', // when defined, `.scrollTo()` isn't applied immediately
-        // overscrollBehaviorY: 'none', // when defined, rubber band scroll effect is getting lost on iOS Safari
-        // WebkitOverflowScrolling: 'touch', // not necessary anymore for iOS Safari
-        scrollbarWidth: 'thin', // firefox
-        scrollbarColor: 'auto', // firefox
-        animation: `var(${cssVariableAnimationDuration}, ${motionDurationShort}) fade-in ${motionEasingBase} forwards`,
-        // TODO: extract to shared colors
-        filter: 'drop-shadow(0 0 8px rgba(0,0,0,0.15))',
-        background: backgroundColor,
-        border: `1px solid ${contrastLowColor}`,
-        borderRadius: borderRadiusMedium,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          background: backgroundColorDark,
-          borderColor: contrastLowColorDark,
-        }),
-        '&:not(:popover-open)': {
-          display: 'none',
-        },
-        zIndex: 99, // ensures option list is rendered on top for browsers not supporting #top-layer
-        ...(hasNativeCSSAnchorPositioningSupport && {
-          positionAnchor: anchorName,
-          positionVisibility: 'always',
-          positionTryOrder: 'normal',
-          positionArea: direction === 'up' ? 'top' : 'bottom',
-          positionTryFallbacks: 'flip-block',
-          width: 'anchor-size(width)',
-          margin: `${MULTI_SELECT_OPTION_LIST_SAFE_ZONE}px 0`,
-        }),
-      },
+      '[popover]': getPopoverJssStyle(isOpen, direction, anchorName, 1, 44, theme),
     },
     root: {
       display: 'grid',

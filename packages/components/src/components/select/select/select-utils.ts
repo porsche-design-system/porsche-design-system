@@ -20,8 +20,6 @@ export type SelectUpdateEventDetail = {
   value: string;
 };
 
-export const OPTIONS_LIST_SAFE_ZONE = 6;
-
 // TODO: share between select & multi-select
 export const syncSelectChildrenProps = (children: (SelectOption | SelectOptgroup)[], theme: Theme): void => {
   for (const child of children.filter((child) => child.theme !== theme)) {

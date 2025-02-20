@@ -21,8 +21,6 @@ export type MultiSelectUpdateEvent = {
 };
 export type MultiSelectUpdateEventDetail = MultiSelectUpdateEvent;
 
-export const MULTI_SELECT_OPTION_LIST_SAFE_ZONE = 6;
-
 // TODO: share between select & multi-select
 export const syncMultiSelectChildrenProps = (
   children: (MultiSelectOption | MultiSelectOptgroup)[],

@@ -1,1 +1,1 @@
-export { OPTION_LIST_SAFE_ZONE, optionListUpdatePosition } from './update-position-option-list';
+export { OPTION_LIST_SAFE_ZONE, optionListUpdatePosition } from './option-list';

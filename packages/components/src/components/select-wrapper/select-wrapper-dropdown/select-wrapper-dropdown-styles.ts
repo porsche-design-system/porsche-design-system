@@ -1,18 +1,14 @@
 import {
-  borderRadiusMedium,
   borderRadiusSmall,
   borderWidthBase,
   fontLineHeight,
   fontSizeTextXSmall,
   fontWeightSemiBold,
-  motionDurationShort,
-  motionEasingBase,
   spacingStaticSmall,
   textSmallStyle,
 } from '@porsche-design-system/styles';
 import type { JssStyle, Styles } from 'jss';
 import {
-  cssVariableAnimationDuration,
   getHighContrastColors,
   getThemedColors,
   getTransition,
@@ -30,9 +26,9 @@ import {
   formElementPaddingVertical,
   getCalculatedFormElementPaddingHorizontal,
 } from '../../../styles/form-styles';
-import { OPTION_HEIGHT, getNoResultsOptionJssStyle } from '../../../styles/option-styles';
+import { getNoResultsOptionJssStyle } from '../../../styles/option-styles';
+import { getPopoverJssStyle, getPopoverKeyframesStyles } from '../../../styles/select';
 import type { FormState } from '../../../utils/form/form-state';
-import { OPTIONS_LIST_SAFE_ZONE } from '../../select/select/select-utils';
 
 const anchorName = '--anchor-select-wrapper';
 
@@ -237,18 +233,12 @@ export const getFilterStyles = (
   };
 };
 
-export const getListStyles = (
-  direction: SelectWrapperDropdownDirection,
-  isOpen: boolean,
-  hasNativeCSSAnchorPositioningSupport: boolean,
-  theme: Theme
-): Styles => {
-  const { contrastHighColor, primaryColor, backgroundColor, backgroundSurfaceColor, disabledColor, contrastLowColor } =
+export const getListStyles = (direction: SelectWrapperDropdownDirection, isOpen: boolean, theme: Theme): Styles => {
+  const { contrastHighColor, primaryColor, backgroundSurfaceColor, disabledColor, contrastLowColor } =
     getThemedColors(theme);
   const {
     contrastHighColor: contrastHighColorDark,
     primaryColor: primaryColorDark,
-    backgroundColor: backgroundColorDark,
     disabledColor: disabledColorDark,
     backgroundSurfaceColor: backgroundSurfaceColorDark,
     contrastLowColor: contrastLowColorDark,
@@ -257,45 +247,9 @@ export const getListStyles = (
 
   return {
     '@global': {
-      '[popover]': {
-        all: 'unset',
-        position: 'absolute',
-        padding: '6px',
-        display: isOpen ? 'flex' : 'none',
-        flexDirection: 'column',
-        gap: spacingStaticSmall,
-        maxHeight: `${8.5 * (OPTION_HEIGHT + 8) + 6 + 2}px`, // 8.5 options * option height + 8px gap + additional spacing (6px = padding, 2px = border)
-        boxSizing: 'border-box',
-        overflow: 'hidden auto',
-        // scrollBehavior: 'smooth', // when defined, `.scrollTo()` isn't applied immediately
-        // overscrollBehaviorY: 'none', // when defined, rubber band scroll effect is getting lost on iOS Safari
-        // WebkitOverflowScrolling: 'touch', // not necessary anymore for iOS Safari
-        scrollbarWidth: 'thin', // firefox
-        scrollbarColor: 'auto', // firefox
-        animation: `var(${cssVariableAnimationDuration}, ${motionDurationShort}) fade-in ${motionEasingBase} forwards`,
-        // TODO: extract to shared colors
-        filter: 'drop-shadow(0 0 8px rgba(0,0,0,0.15))',
-        background: backgroundColor,
-        border: `1px solid ${contrastLowColor}`,
-        borderRadius: borderRadiusMedium,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          background: backgroundColorDark,
-          borderColor: contrastLowColorDark,
-        }),
-        '&:not(:popover-open)': {
-          display: 'none',
-        },
-        zIndex: 99, // ensures option list is rendered on top for browsers not supporting #top-layer
-        ...(hasNativeCSSAnchorPositioningSupport && {
-          positionAnchor: anchorName,
-          positionVisibility: 'always',
-          positionTryOrder: 'normal',
-          positionArea: direction === 'up' ? 'top' : 'bottom',
-          positionTryFallbacks: 'flip-block',
-          width: 'anchor-size(width)',
-          margin: `${OPTIONS_LIST_SAFE_ZONE}px 0`,
-        }),
-      },
+      // @keyframes fade-in
+      ...getPopoverKeyframesStyles,
+      '[popover]': getPopoverJssStyle(isOpen, direction, anchorName, 1, 40, theme),
     },
     option: {
       ...textSmallStyle,
@@ -408,7 +362,7 @@ export const getComponentCss = (
       filter
         ? getFilterStyles(direction, isOpen, state, disabled, hasNativeCSSAnchorPositioningSupport, theme)
         : getButtonStyles(direction, isOpen, state, hasNativeCSSAnchorPositioningSupport, theme),
-      getListStyles(direction, isOpen, hasNativeCSSAnchorPositioningSupport, theme)
+      getListStyles(direction, isOpen, theme)
     )
   );
 };
