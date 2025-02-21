@@ -1,4 +1,4 @@
-import { borderRadiusSmall, borderWidthBase, textSmallStyle } from '@porsche-design-system/styles';
+import { borderRadiusSmall, borderWidthBase, fontLineHeight, textSmallStyle } from '@porsche-design-system/styles';
 import type { JssStyle } from 'jss';
 import type { Theme } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
@@ -48,6 +48,8 @@ export const getButtonJssStyle = (
     gap: `max(4px, ${cssVarScaling} * 12px)`,
     padding: `max(2px, ${cssVarScaling} * ${formElementPaddingVertical}) max(4px, ${cssVarScaling} * ${formElementPaddingHorizontal})`,
     minWidth: 0,
+    height: `max(${fontLineHeight}, ${cssVarScaling} * (${fontLineHeight} + 10px))`,
+    boxSizing: 'content-box', // ensures height calculation is based on content, not including padding
     font: textSmallStyle.font,
     cursor: 'pointer',
     transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states

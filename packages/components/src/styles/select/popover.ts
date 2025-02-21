@@ -30,7 +30,7 @@ export const getPopoverJssStyle = (
   isOpen: boolean,
   direction: Direction,
   anchorName: string,
-  cssVarScaling: string | 1,
+  cssVarScaling: string | 1, // "1" is needed for components not yet supporting compact mode
   optionHeight: 40 | 44,
   theme: Theme
 ): JssStyle => {
