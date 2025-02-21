@@ -44,6 +44,7 @@ import {
   getListAriaAttributes,
   getMatchingSelectOptionIndex,
   getPrefixedTagNames,
+  getShadowRootHTMLElement,
   getUpdatedIndex,
   getUsableSelectOptions,
   hasMessage,
@@ -218,6 +219,10 @@ export class Select {
     this.slottedImagePath = this.getSelectedOptionImagePath(this.selectOptions);
   }
 
+  public componentDidLoad(): void {
+    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
+  }
+
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
@@ -301,7 +306,7 @@ export class Select {
           {...getListAriaAttributes(this.label, this.required, false, this.isOpen)}
           ref={(el) => (this.popoverElement = el)}
         >
-          <slot onSlotchange={this.onSlotchange} />
+          <slot />
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
         <span class="sr-only" role="status" aria-live="assertive" aria-relevant="additions text">

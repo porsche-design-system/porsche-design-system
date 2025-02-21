@@ -27,6 +27,7 @@ import {
   getHasNativePopoverSupport,
   getListAriaAttributes,
   getPrefixedTagNames,
+  getShadowRootHTMLElement,
   handleButtonEvent,
   hasPropValueChanged,
   isClickOutside,
@@ -230,6 +231,10 @@ export class MultiSelect {
     setSelectedOptions(this.multiSelectOptions, this.value);
   }
 
+  public componentDidLoad(): void {
+    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
+  }
+
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
@@ -339,7 +344,7 @@ export class MultiSelect {
                 <span class="sr-only">No results found</span>
               </div>
             )}
-            <slot onSlotchange={this.onSlotchange} />
+            <slot />
           </div>
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
