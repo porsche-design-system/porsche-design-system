@@ -17,12 +17,8 @@ import {
 } from '../helpers';
 
 const getHost = (page: Page) => page.locator('p-popover');
-const getSpacer = (page: Page) => page.locator('p-popover .spacer');
-const getPopover = (page: Page) => page.locator('p-popover .popover');
+const getPopover = (page: Page) => page.locator('p-popover [popover]');
 const getButton = (page: Page) => page.locator('p-popover button').first();
-const getTableScroller = (page: Page) => page.locator('p-table p-scroller .scroll-area');
-const isNativePopoverOpen = async (page: Page): Promise<boolean> =>
-  getSpacer(page).evaluate((el) => el.matches(':popover-open'));
 
 const togglePopover = async (page: Page): Promise<void> => {
   const button = getButton(page);

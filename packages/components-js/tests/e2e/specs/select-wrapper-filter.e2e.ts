@@ -1,5 +1,5 @@
-import type { Page } from 'playwright';
 import { expect, test } from '@playwright/test';
+import type { Page } from 'playwright';
 import {
   addEventListener,
   getAttribute,
@@ -25,7 +25,7 @@ const selectedClass = 'option--selected';
 const hiddenClass = 'option--hidden';
 
 const getDropdown = (page: Page) => page.locator(dropdownSelector);
-const getDropdownList = (page: Page) => page.locator(`${dropdownSelector} [role="listbox"]`);
+const getDropdownList = (page: Page) => page.locator(`${dropdownSelector} [popover]`);
 const getDropdownOption1 = (page: Page) => page.locator(`${dropdownSelector} .option:nth-child(1)`);
 const getDropdownOption2 = (page: Page) => page.locator(`${dropdownSelector} .option:nth-child(2)`);
 const getSelectedDropdownOption = (page: Page) => page.locator(`${dropdownSelector} .${selectedClass}`);

@@ -27,7 +27,7 @@ const getSelectValue = async (page: Page): Promise<string | number> => await get
 const getButton = (page: Page) => page.locator('p-select button').first();
 const getButtonImage = (page: Page) => page.locator('p-select button img').getAttribute('src');
 const getButtonText = async (page: Page): Promise<string | number> => getProperty(getButton(page), 'textContent');
-const getDropdown = (page: Page) => page.locator('p-select .listbox');
+const getDropdown = (page: Page) => page.locator('p-select [popover]');
 const getDropdownDisplay = async (page: Page): Promise<string> => await getElementStyle(getDropdown(page), 'display');
 const getSelectOption = (page: Page, n: number) => page.locator(`p-select p-select-option:nth-child(${n})`);
 const getSelectedSelectOptionProperty = async <K extends keyof SelectOption>(
@@ -469,13 +469,13 @@ test.describe('focus', () => {
     await addEventListener(buttonElement, 'focus');
 
     expect((await getEventSummary(buttonElement, 'focus')).counter).toBe(0);
-    await expect(buttonElement).toHaveCSS('border-color', 'rgb(107, 109, 112)');
+    await expect(buttonElement).toHaveCSS('outline-color', 'rgb(1, 2, 5)');
 
     await host.focus();
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(buttonElement, 'focus')).counter).toBe(1);
-    await expect(buttonElement).toHaveCSS('border-color', 'rgb(1, 2, 5)');
+    await expect(buttonElement).toHaveCSS('outline-color', 'rgb(26, 68, 234)');
   });
 });
 

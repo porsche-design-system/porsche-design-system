@@ -1,6 +1,8 @@
-import type { Page } from 'playwright';
-import { expect, type Locator, test } from '@playwright/test';
+import { type Locator, expect, test } from '@playwright/test';
+import { Theme } from '@porsche-design-system/components';
+import type { MultiSelectOption } from '@porsche-design-system/components/dist/types/components/multi-select/multi-select/multi-select-utils';
 import type { Components } from '@porsche-design-system/components/src/components';
+import type { Page } from 'playwright';
 import {
   addEventListener,
   getActiveElementTagNameInShadowRoot,
@@ -18,8 +20,6 @@ import {
   skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { MultiSelectOption } from '@porsche-design-system/components/dist/types/components/multi-select/multi-select/multi-select-utils';
-import { Theme } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.locator('p-multi-select');
 const getFieldset = (page: Page) => page.locator('fieldset');
@@ -27,9 +27,9 @@ const getMultiSelectValue = async (page: Page): Promise<string[]> => await getPr
 const getInput = (page: Page) => page.locator('p-multi-select input').first();
 const getInputValue = async (page: Page): Promise<string | number> => getProperty(getInput(page), 'value');
 const getInputPlaceholder = async (page: Page): Promise<string> => getAttribute(getInput(page), 'placeholder');
-const getDropdown = (page: Page) => page.locator('p-multi-select .listbox');
+const getDropdown = (page: Page) => page.locator('p-multi-select [popover]');
 const getDropdownDisplay = async (page: Page): Promise<string> => await getElementStyle(getDropdown(page), 'display');
-const getShadowDropdownOption = (page: Page, n: number) => page.locator(`p-multi-select .listbox div:nth-child(${n})`);
+const getShadowDropdownOption = (page: Page, n: number) => page.locator(`p-multi-select [popover] div:nth-child(${n})`);
 const getMultiSelectOption = (page: Page, n: number) =>
   page.locator(`p-multi-select p-multi-select-option:nth-child(${n})`);
 const getMultiSelectOptions = (page: Page): Promise<Locator[]> =>
