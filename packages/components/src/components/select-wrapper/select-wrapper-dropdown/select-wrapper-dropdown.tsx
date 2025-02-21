@@ -9,6 +9,7 @@ import {
   getOptionAriaAttributes,
   getPrefixedTagNames,
   getSelectDropdownButtonAriaAttributes,
+  isClickOutside,
   isSsrHydration,
   observeChildren,
   observeProperties,
@@ -118,6 +119,7 @@ export class SelectWrapperDropdown {
   }
 
   public disconnectedCallback(): void {
+    document.removeEventListener('mousedown', this.onClickOutside, true);
     unobserveChildren(this.host);
 
     if (typeof this.cleanUpAutoUpdate === 'function') {
@@ -137,6 +139,7 @@ export class SelectWrapperDropdown {
       // when ssr rendered component is partially hydrated before being rerendered by its parent select-wrapper
       // it has no select ref and options can't be accessed
       this.observeProperties();
+      document.addEventListener('mousedown', this.onClickOutside, true);
     }
   }
 
@@ -225,10 +228,9 @@ export class SelectWrapperDropdown {
           ),
           <div
             id={popoverId}
-            popover="auto"
+            popover="manual"
             tabIndex={-1}
             {...getListAriaAttributes(this.label, this.required, this.filter, this.isOpen)}
-            onToggle={(e: ToggleEvent) => (this.isOpen = e.newState === 'open')}
             ref={(el) => (this.popoverElement = el)}
           >
             {this.filter && !hasFilterResults(this.optionMaps) ? (
@@ -308,6 +310,12 @@ export class SelectWrapperDropdown {
       observeProperties(el, ['selected', 'disabled'], this.setOptionMaps);
     }
   }
+
+  private onClickOutside = (e: MouseEvent): void => {
+    if (this.isOpen && isClickOutside(e, this.host)) {
+      this.setDropdownVisibility('hide');
+    }
+  };
 
   private setDropdownVisibility = (type: DropdownInteractionType): void => {
     this.isOpen = getDropdownVisibility(this.isOpen, type, this.filter && this.resetFilter);
