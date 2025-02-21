@@ -48,6 +48,7 @@ import {
   getUsableSelectOptions,
   hasMessage,
   hasPropValueChanged,
+  isClickOutside,
   isElementOfKind,
   optionListUpdatePosition,
   setNextSelectOptionHighlighted,
@@ -198,9 +199,11 @@ export class Select {
 
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
+    document.addEventListener('mousedown', this.onClickOutside, true);
   }
 
   public disconnectedCallback(): void {
+    document.removeEventListener('mousedown', this.onClickOutside, true);
     if (typeof this.cleanUpAutoUpdate === 'function') {
       // ensures floating ui event listeners are removed in case popover is removed from DOM
       this.cleanUpAutoUpdate();
@@ -293,10 +296,9 @@ export class Select {
         </button>
         <div
           id={popoverId}
-          popover="auto"
+          popover="manual"
           tabIndex={-1}
           {...getListAriaAttributes(this.label, this.required, false, this.isOpen)}
-          onToggle={(e: ToggleEvent) => (this.isOpen = e.newState === 'open')}
           ref={(el) => (this.popoverElement = el)}
         >
           <slot onSlotchange={this.onSlotchange} />
@@ -319,6 +321,12 @@ export class Select {
 
   private onComboClick = (): void => {
     this.updateMenuState(!this.isOpen);
+  };
+
+  private onClickOutside = (e: MouseEvent): void => {
+    if (this.isOpen && isClickOutside(e, this.buttonElement) && isClickOutside(e, this.popoverElement)) {
+      this.isOpen = false;
+    }
   };
 
   private onComboKeyDown = (event: KeyboardEvent): void => {
