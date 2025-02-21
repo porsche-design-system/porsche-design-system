@@ -538,28 +538,24 @@ test.describe('hover state', () => {
 });
 
 test.describe('dropdown position', () => {
-  const expectedDropdownStyle = '1px solid rgb(107, 109, 112)';
-
-  test('should set direction to up', async ({ page }) => {
-    await initSelect(page, { dropdownDirection: 'up' });
+  test('should set direction to up if there is enough space', async ({ page }) => {
+    await initSelect(page, { dropdownDirection: 'up', markupBefore: '<div style="height: 10rem"></div>' });
 
     const dropdownCombobox = getDropdownCombobox(page);
     await dropdownCombobox.click();
     await waitForStencilLifecycle(page);
 
-    const dropdownStyle = await getElementStyle(getDropdownList(page), 'borderBottom');
-    expect(dropdownStyle).toBe(expectedDropdownStyle);
+    expect((await getDropdownList(page).boundingBox()).y).toBe(32);
   });
 
   test('should set direction to down', async ({ page }) => {
-    await initSelect(page, { dropdownDirection: 'down' });
+    await initSelect(page, { dropdownDirection: 'down', markupBefore: '<div style="height: 10rem"></div>' });
 
     const dropdownCombobox = getDropdownCombobox(page);
     await dropdownCombobox.click();
     await waitForStencilLifecycle(page);
 
-    const dropdownStyle = await getElementStyle(getDropdownList(page), 'borderTop');
-    expect(dropdownStyle).toBe(expectedDropdownStyle);
+    expect((await getDropdownList(page).boundingBox()).y).toBe(248);
   });
 
   test('should auto position to up if bottom space is less than dropdown height', async ({ page }) => {
@@ -573,8 +569,7 @@ test.describe('dropdown position', () => {
     await dropdownCombobox.click();
     await waitForStencilLifecycle(page);
 
-    const dropdownStyle = await getElementStyle(getDropdownList(page), 'borderBottom');
-    expect(dropdownStyle).toBe(expectedDropdownStyle);
+    expect((await getDropdownList(page).boundingBox()).y).toBe(326);
   });
 });
 
