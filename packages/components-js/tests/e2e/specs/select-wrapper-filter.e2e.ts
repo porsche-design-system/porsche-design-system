@@ -179,7 +179,7 @@ test('should render dropdown list if filter input is clicked and remove via outs
   const filterInput = getFilterInput(page);
   const text = page.locator('p-text');
 
-  await expect(getDropdownList(page), 'initially').not.toBeVisible();
+  await expect(getDropdownList(page), 'initially').toBeHidden();
 
   await filterInput.click();
   await waitForStencilLifecycle(page);
@@ -189,7 +189,7 @@ test('should render dropdown list if filter input is clicked and remove via outs
   await text.click();
   await waitForStencilLifecycle(page);
 
-  await expect(getDropdownList(page), 'after 1st text click').not.toBeVisible();
+  await expect(getDropdownList(page), 'after 1st text click').toBeHidden();
 
   await filterInput.click();
   await waitForStencilLifecycle(page);
@@ -334,7 +334,7 @@ test.describe('keyboard and click events', () => {
 
     await addEventListener(select, 'change');
 
-    await expect(getDropdownList(page), 'initially').not.toBeVisible();
+    await expect(getDropdownList(page), 'initially').toBeHidden();
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('ArrowDown'); //this just opens the dropdown
@@ -347,7 +347,7 @@ test.describe('keyboard and click events', () => {
     await page.keyboard.press('Enter');
     await waitForStencilLifecycle(page);
 
-    await expect(getDropdownList(page), 'initially').not.toBeVisible();
+    await expect(getDropdownList(page), 'initially').toBeHidden();
     expect(await getSelectedIndex(page), 'for selected index after enter').toBe(0);
 
     await page.keyboard.press('Space'); // open dropdown to retrieve aria-active-descendant
@@ -420,7 +420,7 @@ test.describe('keyboard and click events', () => {
 
     await page.keyboard.press('Tab');
 
-    await expect(getDropdownList(page), 'initially').not.toBeVisible();
+    await expect(getDropdownList(page), 'initially').toBeHidden();
 
     await page.keyboard.press('Space');
     await waitForStencilLifecycle(page);
@@ -452,7 +452,7 @@ test.describe('keyboard and click events', () => {
       await page.keyboard.press('PageDown');
       await waitForStencilLifecycle(page);
 
-      await expect(getDropdownList(page), 'for dropdown list').not.toBeVisible();
+      await expect(getDropdownList(page), 'for dropdown list').toBeHidden();
       expect(await getSelectedIndex(page), 'for selected index').toBe(0);
     });
 
@@ -462,7 +462,7 @@ test.describe('keyboard and click events', () => {
       await page.keyboard.press('PageUp');
       await waitForStencilLifecycle(page);
 
-      await expect(getDropdownList(page), 'for dropdown list').not.toBeVisible();
+      await expect(getDropdownList(page), 'for dropdown list').toBeHidden();
       expect(await getSelectedIndex(page), 'for selected index').toBe(0);
     });
   });
@@ -482,7 +482,7 @@ test.describe('keyboard and click events', () => {
       await waitForStencilLifecycle(page);
 
       expect(await getSelectedIndex(page), 'for selected index').toBe(0);
-      await expect(getDropdownList(page), 'for opacity').not.toBeVisible();
+      await expect(getDropdownList(page), 'for opacity').toBeHidden();
     });
 
     test('should highlight and select last option on PageDown', async ({ page }) => {
@@ -501,7 +501,7 @@ test.describe('keyboard and click events', () => {
       await waitForStencilLifecycle(page);
 
       expect(await getSelectedIndex(page), 'for selected index').toBe(2);
-      await expect(getDropdownList(page), 'for opacity').not.toBeVisible();
+      await expect(getDropdownList(page), 'for opacity').toBeHidden();
     });
 
     test('should highlight and select first option on PageUp', async ({ page }) => {
@@ -520,7 +520,7 @@ test.describe('keyboard and click events', () => {
       await waitForStencilLifecycle(page);
 
       expect(await getSelectedIndex(page), 'for selected index').toBe(0);
-      await expect(getDropdownList(page), 'for opacity').not.toBeVisible();
+      await expect(getDropdownList(page), 'for opacity').toBeHidden();
     });
   });
 
@@ -552,7 +552,7 @@ test.describe('keyboard and click events', () => {
     await dropdownOption2.click();
     await waitForStencilLifecycle(page);
 
-    await expect(getDropdownList(page), 'for opacity').not.toBeVisible();
+    await expect(getDropdownList(page), 'for opacity').toBeHidden();
     expect(await getSelectedIndex(page), 'for selected index').toBe(1);
   });
 
@@ -572,7 +572,7 @@ test.describe('keyboard and click events', () => {
       await page.keyboard.press('Tab');
       await waitForStencilLifecycle(page);
 
-      await expect(getDropdownList(page), 'for dropdown list').not.toBeVisible();
+      await expect(getDropdownList(page), 'for dropdown list').toBeHidden();
       expect((await getEventSummary(filterInput, 'blur')).counter, 'for calls').toBe(1);
     });
   });

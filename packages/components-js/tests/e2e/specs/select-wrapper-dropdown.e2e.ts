@@ -538,28 +538,24 @@ test.describe('hover state', () => {
 });
 
 test.describe('dropdown position', () => {
-  const expectedDropdownStyle = '1px solid rgb(107, 109, 112)';
-
-  test('should set direction to up', async ({ page }) => {
-    await initSelect(page, { dropdownDirection: 'up' });
+  test('should set direction to up if there is enough space', async ({ page }) => {
+    await initSelect(page, { dropdownDirection: 'up', markupBefore: '<div style="height: 10rem"></div>' });
 
     const dropdownCombobox = getDropdownCombobox(page);
     await dropdownCombobox.click();
     await waitForStencilLifecycle(page);
 
-    const dropdownStyle = await getElementStyle(getDropdownList(page), 'borderBottom');
-    expect(dropdownStyle).toBe(expectedDropdownStyle);
+    expect((await getDropdownList(page).boundingBox()).y).toBe(32);
   });
 
   test('should set direction to down', async ({ page }) => {
-    await initSelect(page, { dropdownDirection: 'down' });
+    await initSelect(page, { dropdownDirection: 'down', markupBefore: '<div style="height: 10rem"></div>' });
 
     const dropdownCombobox = getDropdownCombobox(page);
     await dropdownCombobox.click();
     await waitForStencilLifecycle(page);
 
-    const dropdownStyle = await getElementStyle(getDropdownList(page), 'borderTop');
-    expect(dropdownStyle).toBe(expectedDropdownStyle);
+    expect((await getDropdownList(page).boundingBox()).y).toBe(248);
   });
 
   test('should auto position to up if bottom space is less than dropdown height', async ({ page }) => {
@@ -573,8 +569,7 @@ test.describe('dropdown position', () => {
     await dropdownCombobox.click();
     await waitForStencilLifecycle(page);
 
-    const dropdownStyle = await getElementStyle(getDropdownList(page), 'borderBottom');
-    expect(dropdownStyle).toBe(expectedDropdownStyle);
+    expect((await getDropdownList(page).boundingBox()).y).toBe(326);
   });
 });
 
@@ -586,7 +581,7 @@ test.describe('keyboard and click events', () => {
 
     await addEventListener(select, 'change');
 
-    await expect(getDropdownList(page), 'initially').not.toBeVisible();
+    await expect(getDropdownList(page), 'initially').toBeHidden();
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('ArrowDown'); //this just opens the dropdown
@@ -599,7 +594,7 @@ test.describe('keyboard and click events', () => {
     await page.keyboard.press('Enter');
     await waitForStencilLifecycle(page);
 
-    await expect(getDropdownList(page), 'after Enter').not.toBeVisible();
+    await expect(getDropdownList(page), 'after Enter').toBeHidden();
     expect(await getSelectedIndex(page), 'for selected index').toBe(0);
 
     expect((await getEventSummary(select, 'change')).counter, 'for calls').toBe(0);
@@ -674,7 +669,7 @@ test.describe('keyboard and click events', () => {
     await addEventListener(select, 'change');
 
     await page.keyboard.press('Tab');
-    await expect(getDropdownList(page), 'for dropdown list after tab').not.toBeVisible();
+    await expect(getDropdownList(page), 'for dropdown list after tab').toBeHidden();
 
     await page.keyboard.press('Space');
     await waitForStencilLifecycle(page);
@@ -689,7 +684,7 @@ test.describe('keyboard and click events', () => {
     await addEventListener(select, 'change');
 
     await page.keyboard.press('Tab');
-    await expect(getDropdownList(page), 'for dropdown list after tab').not.toBeVisible();
+    await expect(getDropdownList(page), 'for dropdown list after tab').toBeHidden();
 
     await page.keyboard.press('Space');
     await waitForStencilLifecycle(page);
@@ -713,7 +708,7 @@ test.describe('keyboard and click events', () => {
       await page.keyboard.press('PageDown');
       await waitForStencilLifecycle(page);
 
-      await expect(getDropdownList(page), 'for dropdown list after page down').not.toBeVisible();
+      await expect(getDropdownList(page), 'for dropdown list after page down').toBeHidden();
       expect(await getSelectedIndex(page), 'for selected index').toBe(0);
     });
 
@@ -724,7 +719,7 @@ test.describe('keyboard and click events', () => {
       await page.keyboard.press('PageUp');
       await waitForStencilLifecycle(page);
 
-      await expect(getDropdownList(page), 'for dropdown list after page up').not.toBeVisible();
+      await expect(getDropdownList(page), 'for dropdown list after page up').toBeHidden();
       expect(await getSelectedIndex(page), 'for selected index').toBe(0);
     });
   });
@@ -746,7 +741,7 @@ test.describe('keyboard and click events', () => {
       await page.keyboard.press('Space');
       await waitForStencilLifecycle(page);
 
-      await expect(getDropdownList(page), 'for dropdown list after space').not.toBeVisible();
+      await expect(getDropdownList(page), 'for dropdown list after space').toBeHidden();
       expect(await getSelectedIndex(page), 'for selected index').toBe(2);
     });
 
@@ -766,7 +761,7 @@ test.describe('keyboard and click events', () => {
       await page.keyboard.press('Space');
       await waitForStencilLifecycle(page);
 
-      await expect(getDropdownList(page), 'for dropdown list after space').not.toBeVisible();
+      await expect(getDropdownList(page), 'for dropdown list after space').toBeHidden();
       expect(await getSelectedIndex(page), 'for selected index').toBe(0);
     });
 
@@ -785,7 +780,7 @@ test.describe('keyboard and click events', () => {
       await waitForStencilLifecycle(page);
 
       expect(await getSelectedIndex(page), 'for selected index').toBe(0);
-      await expect(getDropdownList(page), 'for dropdown list').not.toBeVisible();
+      await expect(getDropdownList(page), 'for dropdown list').toBeHidden();
     });
 
     test('should highlight first matching option via keyboard search', async ({ page }) => {
@@ -817,7 +812,7 @@ test.describe('keyboard and click events', () => {
     await host.click();
     await waitForStencilLifecycle(page);
 
-    await expect(getDropdownList(page), 'after 2nd click').not.toBeVisible();
+    await expect(getDropdownList(page), 'after 2nd click').toBeHidden();
   });
 
   test('should open/close select on icon click', async ({ page }) => {
@@ -838,7 +833,7 @@ test.describe('keyboard and click events', () => {
 
     await clickIcon();
 
-    await expect(getDropdownList(page), 'after 2nd click').not.toBeVisible();
+    await expect(getDropdownList(page), 'after 2nd click').toBeHidden();
   });
 
   test('should select second option on mouseclick', async ({ page }) => {
@@ -854,7 +849,7 @@ test.describe('keyboard and click events', () => {
     await dropdownOption2.click();
     await waitForStencilLifecycle(page);
 
-    await expect(getDropdownList(page), 'after option click').not.toBeVisible();
+    await expect(getDropdownList(page), 'after option click').toBeHidden();
     expect(await getSelectedIndex(page), 'for selected index').toBe(1);
   });
 
@@ -922,7 +917,7 @@ test.describe('keyboard and click events', () => {
     await page.keyboard.press('Tab');
     await waitForStencilLifecycle(page);
 
-    await expect(getDropdownList(page), 'after tab').not.toBeVisible();
+    await expect(getDropdownList(page), 'after tab').toBeHidden();
     expect(await selectHasFocus(page)).toBe(false);
   });
 
@@ -1052,7 +1047,7 @@ test.describe('optgroups', () => {
     page.locator('optgroup[label="b"]').evaluate((element) => (element.hidden = true));
     await waitForStencilLifecycle(page);
 
-    await expect(optgroup).not.toBeVisible();
-    await expect(child).not.toBeVisible();
+    await expect(optgroup).toBeHidden();
+    await expect(child).toBeHidden();
   });
 });

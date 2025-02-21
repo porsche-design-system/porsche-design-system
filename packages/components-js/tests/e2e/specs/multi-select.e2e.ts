@@ -1205,9 +1205,9 @@ test.describe('optgroups', () => {
 
     const visibleOptgroup = page.locator('p-optgroup[label="1"]');
     await expect(visibleOptgroup.locator('p-multi-select-option').getByText('b')).toBeVisible();
-    await expect(page.locator('p-optgroup[label="a"]')).not.toBeVisible();
+    await expect(page.locator('p-optgroup[label="a"]')).toBeHidden();
     await expect(visibleOptgroup).toBeVisible();
-    await expect(page.locator('p-optgroup[label="c"]')).not.toBeVisible();
+    await expect(page.locator('p-optgroup[label="c"]')).toBeHidden();
   });
 
   test('should disable all options inside disabled optgroup', async ({ page }) => {
@@ -1252,10 +1252,10 @@ test.describe('optgroups', () => {
     await optgroup.evaluate((element) => ((element as HTMLPOptgroupElement).hidden = true));
     await waitForStencilLifecycle(page);
 
-    await expect(optgroup).not.toBeVisible();
+    await expect(optgroup).toBeHidden();
 
     for (const child of children) {
-      await expect(child).not.toBeVisible();
+      await expect(child).toBeHidden();
     }
   });
 });
