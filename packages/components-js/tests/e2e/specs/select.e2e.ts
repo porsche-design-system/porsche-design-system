@@ -25,7 +25,7 @@ const getHost = (page: Page) => page.locator('p-select');
 const getFieldset = (page: Page) => page.locator('fieldset');
 const getSelectValue = async (page: Page): Promise<string | number> => await getProperty(getHost(page), 'value');
 const getButton = (page: Page) => page.locator('p-select button').first();
-const getButtonImage = (page: Page) => page.locator('p-select button img').getAttribute('src');
+const getButtonImage = (page: Page) => page.locator('p-select button img').first().getAttribute('src');
 const getButtonText = async (page: Page): Promise<string | number> => getProperty(getButton(page), 'textContent');
 const getDropdown = (page: Page) => page.locator('p-select [popover]');
 const getDropdownDisplay = async (page: Page): Promise<string> => await getElementStyle(getDropdown(page), 'display');
