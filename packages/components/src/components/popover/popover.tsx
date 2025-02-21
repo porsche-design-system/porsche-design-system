@@ -94,7 +94,11 @@ export class Popover {
           <span class="label">More information</span>
         </button>
         {this.isOpen && (
-          <div class="popover" popover="manual" ref={(el) => (this.popover = el)}>
+          <div
+            popover="auto"
+            onToggle={(e: ToggleEvent) => (this.isOpen = e.newState === 'open')}
+            ref={(el) => (this.popover = el)}
+          >
             <div class="arrow" ref={(el) => (this.arrow = el)} />
             <div class="content">{this.description ? <p>{this.description}</p> : <slot />}</div>
           </div>
