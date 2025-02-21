@@ -38,3 +38,4 @@ export { isThemeDark, THEMES } from './theme';
 export * from './typography';
 export * from './validation';
 export { OPTION_LIST_SAFE_ZONE, optionListUpdatePosition } from './floating-ui';
+export * from './is-click-outside';

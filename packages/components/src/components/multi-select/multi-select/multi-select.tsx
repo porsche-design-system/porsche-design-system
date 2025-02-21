@@ -29,6 +29,7 @@ import {
   getPrefixedTagNames,
   handleButtonEvent,
   hasPropValueChanged,
+  isClickOutside,
   isElementOfKind,
   optionListUpdatePosition,
   throwIfElementIsNotOfKind,
@@ -143,6 +144,7 @@ export class MultiSelect {
   private multiSelectOptions: MultiSelectOption[] = [];
   private multiSelectOptgroups: MultiSelectOptgroup[] = [];
   private inputElement: HTMLInputElement;
+  private resetButtonElement: HTMLElement;
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
   private popoverElement: HTMLDivElement;
   private hasNativePopoverSupport = getHasNativePopoverSupport();
@@ -209,9 +211,11 @@ export class MultiSelect {
 
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
+    document.addEventListener('mousedown', this.onClickOutside, true);
   }
 
   public disconnectedCallback(): void {
+    document.removeEventListener('mousedown', this.onClickOutside, true);
     if (typeof this.cleanUpAutoUpdate === 'function') {
       // ensures floating ui event listeners are removed in case popover is removed from DOM
       this.cleanUpAutoUpdate();
@@ -317,16 +321,16 @@ export class MultiSelect {
               onClick={this.onResetClick}
               onKeyDown={(e: KeyboardEvent) => e.key === 'Tab' && (this.isOpen = false)}
               disabled={this.disabled}
+              ref={(el: HTMLElement) => (this.resetButtonElement = el)}
             >
               Reset selection
             </PrefixedTagNames.pButtonPure>
           )}
           <div
             id={popoverId}
-            popover="auto"
+            popover="manual"
             tabIndex={-1}
             {...getListAriaAttributes(this.label, this.required, true, this.isOpen, true)}
-            onToggle={(e: ToggleEvent) => (this.isOpen = e.newState === 'open')}
             ref={(el) => (this.popoverElement = el)}
           >
             {!this.hasFilterResults && (
@@ -372,6 +376,18 @@ export class MultiSelect {
           this.multiSelectOptions.push(optGroupChild as MultiSelectOption);
         }
       }
+    }
+  };
+
+  private onClickOutside = (e: MouseEvent): void => {
+    if (
+      this.isOpen &&
+      isClickOutside(e, this.inputElement) &&
+      isClickOutside(e, this.resetButtonElement) &&
+      isClickOutside(e, this.popoverElement)
+    ) {
+      this.isOpen = false;
+      this.resetFilter();
     }
   };
 
