@@ -35,18 +35,9 @@ const isComponentThemeable = (component: string): boolean =>
 // and therefore can't be sure which autofocus gets triggered
 const revertAutoFocus = async (page: Page, component: string): Promise<void> => {
   if (
-    [
-      'flyout-multilevel',
-      'flyout',
-      'modal',
-      'sheet',
-      'canvas',
-      'banner',
-      'select-wrapper',
-      'select',
-      'multi-select',
-      'popover',
-    ].includes(component.replace(/-\d+/, ''))
+    ['flyout-multilevel', 'flyout', 'modal', 'sheet', 'canvas', 'banner', 'select', 'multi-select', 'popover'].includes(
+      component.replace(/-\d+/, '')
+    )
   ) {
     await page.mouse.click(0, 0); // click top left corner of the page to remove focus
   }
