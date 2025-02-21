@@ -15,7 +15,7 @@
     <p-icon class="icon hydrated" aria-hidden="true"> </p-icon>
     <div
       id="list"
-      popover="auto"
+      popover="manual"
       tabindex="-1"
       role="listbox"
       aria-label=""
