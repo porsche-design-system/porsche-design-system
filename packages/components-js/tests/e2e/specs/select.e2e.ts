@@ -26,7 +26,6 @@ const getFieldset = (page: Page) => page.locator('fieldset');
 const getSelectValue = async (page: Page): Promise<string | number> => await getProperty(getHost(page), 'value');
 const getButton = (page: Page) => page.locator('p-select button').first();
 const getButtonImage = (page: Page) => page.locator('p-select button img').first().getAttribute('src');
-const getButtonText = async (page: Page): Promise<string | number> => getProperty(getButton(page), 'textContent');
 const getDropdown = (page: Page) => page.locator('p-select [popover]');
 const getDropdownDisplay = async (page: Page): Promise<string> => await getElementStyle(getDropdown(page), 'display');
 const getSelectOption = (page: Page, n: number) => page.locator(`p-select p-select-option:nth-child(${n})`);
@@ -904,7 +903,7 @@ test.describe('selection', () => {
 
     expect(await getSelectValue(page), 'after first option selected').toBe('b');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('b');
-    expect(await getButtonText(page)).toBe('b');
+    await expect(getButton(page)).toHaveText('b');
 
     await page.keyboard.press('Space'); // Open dropdown again
     await waitForStencilLifecycle(page);
@@ -920,7 +919,7 @@ test.describe('selection', () => {
 
     expect(await getSelectValue(page), 'after first option selected').toBe('c');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('c');
-    expect(await getButtonText(page)).toBe('c');
+    await expect(getButton(page)).toHaveText('c');
   });
 
   test('should add valid selection on Space', async ({ page }) => {
@@ -938,7 +937,7 @@ test.describe('selection', () => {
 
     expect(await getSelectValue(page), 'after first option selected').toBe('b');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('b');
-    expect(await getButtonText(page)).toBe('b');
+    await expect(getButton(page)).toHaveText('b');
 
     await page.keyboard.press('Space'); // Open dropdown again
     await waitForStencilLifecycle(page);
@@ -954,7 +953,7 @@ test.describe('selection', () => {
 
     expect(await getSelectValue(page), 'after first option selected').toBe('c');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('c');
-    expect(await getButtonText(page)).toBe('c');
+    await expect(getButton(page)).toHaveText('c');
   });
 
   test('should add valid selection on Tab', async ({ page }) => {
@@ -972,7 +971,7 @@ test.describe('selection', () => {
 
     expect(await getSelectValue(page), 'after first option selected').toBe('b');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('b');
-    expect(await getButtonText(page)).toBe('b');
+    await expect(getButton(page)).toHaveText('b');
 
     await page.keyboard.press('Space'); // Open dropdown again
     await waitForStencilLifecycle(page);
@@ -988,7 +987,7 @@ test.describe('selection', () => {
 
     expect(await getSelectValue(page), 'after first option selected').toBe('c');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('c');
-    expect(await getButtonText(page)).toBe('c');
+    await expect(getButton(page)).toHaveText('c');
   });
 
   test('should reset selection on enter empty selection', async ({ page }) => {
@@ -1006,7 +1005,7 @@ test.describe('selection', () => {
 
     expect(await getSelectValue(page), 'after first option selected').toBe('b');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('b');
-    expect(await getButtonText(page)).toBe('b');
+    await expect(getButton(page)).toHaveText('b');
 
     await page.keyboard.press('Space'); // Open dropdown again
     await page.keyboard.press('PageUp');
@@ -1019,7 +1018,7 @@ test.describe('selection', () => {
 
     expect(await getSelectValue(page), 'after first option selected').toBeUndefined();
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toBeUndefined();
-    expect(await getButtonText(page)).toBe('');
+    await expect(getButton(page)).toHaveText('');
   });
 
   test('should add valid selection on Click', async ({ page }) => {
@@ -1037,7 +1036,7 @@ test.describe('selection', () => {
 
     expect(await getSelectValue(page), 'after first option selected').toBe('a');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('a');
-    expect(await getButtonText(page)).toBe('a');
+    await expect(getButton(page)).toHaveText('a');
 
     await buttonElement.click(); // Open dropdown again
     await waitForStencilLifecycle(page);
@@ -1051,7 +1050,7 @@ test.describe('selection', () => {
 
     expect(await getSelectValue(page), 'after first option selected').toBe('c');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('c');
-    expect(await getButtonText(page)).toBe('c');
+    await expect(getButton(page)).toHaveText('c');
   });
 
   test('should add valid selection with slotted image on Click', async ({ page }) => {
@@ -1070,7 +1069,7 @@ test.describe('selection', () => {
 
     expect(await getSelectValue(page), 'after first option selected').toBe('a');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('a');
-    expect(await getButtonText(page)).toBe('a');
+    await expect(getButton(page)).toHaveText('a');
     expect(await getButtonImage(page)).toBe('image-a.jpg');
 
     await buttonElement.click(); // Open dropdown again
@@ -1085,7 +1084,7 @@ test.describe('selection', () => {
 
     expect(await getSelectValue(page), 'after first option selected').toBe('c');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('c');
-    expect(await getButtonText(page)).toBe('c');
+    await expect(getButton(page)).toHaveText('c');
     expect(await getButtonImage(page)).toBe('image-c.jpg');
   });
 
@@ -1104,7 +1103,7 @@ test.describe('selection', () => {
 
     expect(await getSelectValue(page), 'after first option selected').toBeUndefined();
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toBeUndefined();
-    expect(await getButtonText(page)).toBe('');
+    await expect(getButton(page)).toHaveText('');
   });
 
   test('should select empty option when setting value to undefined', async ({ page }) => {
@@ -1134,14 +1133,14 @@ test.describe('selection', () => {
     expect(await getSelectedOptionIndex(page)).toBe(2);
     expect(await getSelectValue(page), 'initial').toBe('c');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'initial').toEqual('c');
-    expect(await getButtonText(page)).toBe('c');
+    await expect(getButton(page)).toHaveText('c');
 
     await setValue(page, undefined);
 
     expect(await getSelectedOptionIndex(page)).toBe(-1);
     expect(await getSelectValue(page), 'initial').toBeUndefined();
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after setting value to undefined').toBeUndefined();
-    expect(await getButtonText(page)).toBe('');
+    await expect(getButton(page)).toHaveText('');
   });
 
   test('should update selected when value is changed programmatically', async ({ page }) => {
@@ -1149,14 +1148,14 @@ test.describe('selection', () => {
     const select = getHost(page);
 
     expect(await getSelectValue(page)).toBe('c');
-    expect(await getButtonText(page)).toBe('c');
+    await expect(getButton(page)).toHaveText('c');
     expect(await getButtonImage(page)).toBe('image-c.jpg');
 
     await setProperty(select, 'value', 'b');
 
     await waitForStencilLifecycle(page);
     expect(await getSelectValue(page)).toBe('b');
-    expect(await getButtonText(page)).toBe('b');
+    await expect(getButton(page)).toHaveText('b');
     expect(await getButtonImage(page)).toBe('image-b.jpg');
   });
 });
@@ -1217,7 +1216,7 @@ test.describe('slots', () => {
 
     expect(await getSelectValue(page), 'after option added').toBe('d');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after option added').toEqual('d');
-    expect(await getButtonText(page)).toBe('d');
+    await expect(getButton(page)).toHaveText('d');
     expect(await getButtonImage(page)).toBe('image-d.jpg');
   });
 
@@ -1227,7 +1226,7 @@ test.describe('slots', () => {
 
     expect(await getSelectValue(page), 'initial').toBe('c');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'initial').toEqual('c');
-    expect(await getButtonText(page)).toBe('c');
+    await expect(getButton(page)).toHaveText('c');
 
     const host: Locator = getHost(page);
     await host.evaluate((el) => {
@@ -1238,7 +1237,7 @@ test.describe('slots', () => {
 
     expect(await getSelectValue(page), 'after option selected removed').toBe('c');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after option selected removed').toBeUndefined();
-    expect(await getButtonText(page)).toBe('');
+    await expect(getButton(page)).toHaveText('');
   });
 });
 
