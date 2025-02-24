@@ -6,11 +6,13 @@ import { getCss } from '../../../utils';
 export const getComponentCss = (theme: Theme): string => {
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
+      ':host': {
         display: 'block',
-        scrollMargin: '6px', // Aligns option when list is scrolled by navigating with keyboard
-        ...hostHiddenStyles,
-      }),
+        ...addImportantToEachRule({
+          scrollMargin: '6px', // Aligns option when list is scrolled by navigating with keyboard
+          ...hostHiddenStyles,
+        }),
+      },
       ...preventFoucOfNestedElementsStyles,
     },
     option: getOptionJssStyle('multi-select-option', 1, theme),

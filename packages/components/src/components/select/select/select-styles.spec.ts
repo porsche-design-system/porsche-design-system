@@ -1,9 +1,5 @@
 import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
-import type { Theme } from '../../../utils';
-import type { BreakpointCustomizable } from '../../../utils/breakpoint-customizable';
-import type { FormState } from '../../../utils/form/form-state';
 import { getComponentCss } from './select-styles';
-import type { SelectDropdownDirection } from './select-utils';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
