@@ -22,7 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - gets positioned by [CSS Anchor Positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning)
     or [Floating UI](https://floating-ui.com) as fallback for browsers not supporting it yet
     ([#3754](https://github.com/porsche-design-system/porsche-design-system/pull/3754))
-  - modernized visual appearance and fade in animation of option list
+  - modernized visual appearance, dynamic max-height based on viewport and fade in animation of option list
     ([#3754](https://github.com/porsche-design-system/porsche-design-system/pull/3754))
 - `Select`, `Select Wrapper`:
   - focus outline becomes default focus style when no filter is used

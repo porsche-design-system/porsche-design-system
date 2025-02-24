@@ -9,8 +9,6 @@ import {
 } from '../../styles';
 import type { Theme } from '../../types';
 import { getCss } from '../../utils';
-import { cssVariableMultiSelectPaddingInlineStart } from '../multi-select/multi-select-option/multi-select-option-styles';
-import { cssVariableSelectPaddingInlineStart } from '../select/select-option/select-option-styles';
 
 const cssVarInternalOptgroupScaling = '--p-internal-optgroup-scaling';
 const scalingVar = `var(${cssVarInternalOptgroupScaling}, 1)`;
@@ -23,8 +21,8 @@ export const getComponentCss = (isDisabled: boolean, theme: Theme): string =>
         ...hostHiddenStyles,
       }),
       '::slotted(*)': {
-        [cssVariableSelectPaddingInlineStart]: '28px',
-        [cssVariableMultiSelectPaddingInlineStart]: '28px',
+        '--p-internal-select-option-padding-left': '28px',
+        '--p-internal-multi-select-option-padding-left': '28px',
       },
     },
     ...getOptgroupStyles(isDisabled, theme),

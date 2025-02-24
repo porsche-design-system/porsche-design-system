@@ -1,7 +1,7 @@
 import type { PropTypes } from '../../../types';
 import { type SelectOptionInternalHTMLProps, validateSelectOption } from './select-option-utils';
 
-import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
+import { Component, Element, Host, type JSX, Prop, h } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -59,7 +59,6 @@ export class SelectOption {
           <slot onSlotchange={this.onSlotChange} />
           {selected && (
             <PrefixedTagNames.pIcon
-              class="icon"
               aria-hidden="true"
               name="check"
               color={isDisabled ? 'state-disabled' : 'primary'}

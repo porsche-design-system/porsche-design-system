@@ -5,7 +5,7 @@ import {
   spacingStaticSmall,
 } from '@porsche-design-system/styles';
 import type { JssStyle, Styles } from 'jss';
-import { OPTION_LIST_SAFE_ZONE, type Theme } from '../../utils';
+import { OPTION_LIST_SAFE_ZONE, type Theme, isThemeDark } from '../../utils';
 import { getHasCSSAnchorPositioningSupport } from '../../utils/supportsNativeCSSAnchorPositioning';
 import { getThemedColors } from '../colors';
 import { cssVariableAnimationDuration } from '../common-styles';
@@ -34,8 +34,11 @@ export const getPopoverJssStyle = (
   optionHeight: 40 | 44,
   theme: Theme
 ): JssStyle => {
-  const { contrastLowColor, backgroundColor } = getThemedColors(theme);
-  const { contrastLowColor: contrastLowColorDark, backgroundColor: backgroundColorDark } = getThemedColors('dark');
+  const { contrastLowColor, backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
+  const { contrastLowColor: contrastLowColorDark, backgroundSurfaceColor: backgroundSurfaceColorDark } =
+    getThemedColors('dark');
+
+  const minHeightOptionList = `calc(${4.5 * (optionHeight + 8) + 6 + 2}px)`; // 4.5 options * option height + 8px gap + additional spacing (6px = padding, 2px = border)
 
   return {
     all: 'unset',
@@ -45,18 +48,18 @@ export const getPopoverJssStyle = (
     display: isOpen ? 'flex' : 'none', // needed for backwards compatibility, otherwise 'flex' would be enough
     flexDirection: 'column',
     gap: `max(2px, ${cssVarScaling} * ${spacingStaticSmall})`,
-    maxHeight: `${8.5 * (optionHeight + 8) + 6 + 2}px`, // 8.5 options * option height + 8px gap + additional spacing (6px = padding, 2px = border)
+    maxHeight: `max(${minHeightOptionList}, calc(50dvh - 54px / 2 - ${OPTION_LIST_SAFE_ZONE}px * 2))`,
     boxSizing: 'border-box',
     overflow: 'hidden auto',
     scrollbarWidth: 'thin', // firefox
     scrollbarColor: 'auto', // firefox
     animation: `var(${cssVariableAnimationDuration}, ${motionDurationShort}) ${keyframesName} ${motionEasingBase} forwards`,
     filter: 'drop-shadow(0 0 8px rgba(0,0,0,0.15))',
-    background: backgroundColor,
+    background: isThemeDark(theme) ? backgroundSurfaceColor : backgroundColor,
     border: `1px solid ${contrastLowColor}`,
     borderRadius: borderRadiusMedium,
     ...prefersColorSchemeDarkMediaQuery(theme, {
-      background: backgroundColorDark,
+      background: backgroundSurfaceColorDark,
       borderColor: contrastLowColorDark,
     }),
     ...(getHasCSSAnchorPositioningSupport() && {
@@ -66,6 +69,7 @@ export const getPopoverJssStyle = (
       positionArea: direction === 'up' ? 'top' : 'bottom',
       positionTryFallbacks: 'flip-block',
       width: 'anchor-size(width)',
+      maxHeight: `max(${minHeightOptionList}, calc(50dvh - anchor-size(height) / 2 - ${OPTION_LIST_SAFE_ZONE}px * 2))`,
       margin: `${OPTION_LIST_SAFE_ZONE}px 0`,
     }),
     '&:not(:popover-open)': {
