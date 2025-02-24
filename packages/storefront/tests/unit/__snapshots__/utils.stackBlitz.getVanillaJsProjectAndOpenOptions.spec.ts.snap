@@ -505,12 +505,11 @@ window.porscheDesignSystem = porscheDesignSystem;"
 
 exports[`getIndexJs() development mode or non stable storefront release (e.g. /issue/…, /release/…) should return correct script with additionalImports 1`] = `
 "import * as porscheDesignSystem from './@porsche-design-system/components-js';
-window.porscheDesignSystem = porscheDesignSystem;
-import './@porsche-design-system/components-js/ag-grid/theme.css';"
+window.porscheDesignSystem = porscheDesignSystem;"
 `;
 
 exports[`getIndexJs() stable storefront release (e.g. /v2/…, /v3/…) should return correct no script when pds version is chosen for bug reporting 1`] = `""`;
 
 exports[`getIndexJs() stable storefront release (e.g. /v2/…, /v3/…) should return correct no script when pds version is not chosen for bug reporting 1`] = `""`;
 
-exports[`getIndexJs() stable storefront release (e.g. /v2/…, /v3/…) should return correct script with additionalImports 1`] = `"import '@porsche-design-system/components-js/ag-grid/theme.css';"`;
+exports[`getIndexJs() stable storefront release (e.g. /v2/…, /v3/…) should return correct script with additionalImports 1`] = `""`;

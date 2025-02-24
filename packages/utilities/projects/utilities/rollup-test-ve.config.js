@@ -6,6 +6,10 @@ export default {
   input: [
     'tests/unit/specs/vanilla-extract-getFocusStyle.css.ts',
     'tests/unit/specs/vanilla-extract-getHoverStyle.css.ts',
+    'tests/unit/specs/vanilla-extract-getMediaQueryMax.css.ts',
+    'tests/unit/specs/vanilla-extract-getMediaQueryMin.css.ts',
+    'tests/unit/specs/vanilla-extract-getMediaQueryMinMax.css.ts',
+    'tests/unit/specs/vanilla-extract-getSkeletonStyle.css.ts',
   ],
   plugins: [
     vanillaExtractPlugin({

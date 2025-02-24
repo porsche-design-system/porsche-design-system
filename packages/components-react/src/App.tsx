@@ -1,7 +1,7 @@
-import { type JSX, useState } from 'react';
-import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
-import { routes } from './routes';
 import { PorscheDesignSystemProvider, type Theme } from '@porsche-design-system/components-react';
+import { type JSX, useState } from 'react';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { routes } from './routes';
 
 export const App = (): JSX.Element => {
   const navigate = useNavigate();

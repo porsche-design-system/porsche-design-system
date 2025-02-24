@@ -22,19 +22,21 @@ describe('style package content', () => {
   });
 
   test(`should match content`, () => {
-    const styles = nodeRequire('@porsche-design-system/components-angular/styles');
+    const styles = nodeRequire('@porsche-design-system/components-react/styles');
     expect(styles).toMatchSnapshot();
   });
 
   test(`should match vanilla-extract content`, () => {
-    const styles = nodeRequire('@porsche-design-system/components-angular/styles/vanilla-extract');
+    const styles = nodeRequire('@porsche-design-system/components-react/styles/vanilla-extract');
     expect(styles).toMatchSnapshot();
   });
 
   // Exported names should be the same, only differs in function implementations
   test(`should have identical exported content for style and style/vanilla-extract`, () => {
-    const styles = nodeRequire('@porsche-design-system/components-angular/styles');
-    const veStyles = nodeRequire('@porsche-design-system/components-angular/styles/vanilla-extract');
-    expect(JSON.stringify(styles)).toEqual(JSON.stringify(veStyles));
+    const styles = nodeRequire('@porsche-design-system/components-react/styles');
+    const veStyles = nodeRequire('@porsche-design-system/components-react/styles/vanilla-extract');
+    // Vanilla-Extract is also exporting a separate skeletonKeyframe object which is not exported in the normal styles package
+    const { skeletonKeyframes, ...rest } = veStyles;
+    expect(JSON.stringify(styles)).toEqual(JSON.stringify(rest));
   });
 });
