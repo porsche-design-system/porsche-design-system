@@ -1,7 +1,6 @@
 import {
   borderRadiusSmall,
   borderWidthBase,
-  fontLineHeight,
   fontSizeTextXSmall,
   fontWeightSemiBold,
   spacingStaticSmall,
@@ -10,7 +9,6 @@ import {
 import type { JssStyle, Styles } from 'jss';
 import {
   getFocusJssStyle,
-  getHighContrastColors,
   getThemedColors,
   getTransition,
   hoverMediaQuery,
@@ -18,7 +16,7 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import type { Theme } from '../../../types';
-import { getCss, isHighContrastMode, mergeDeep } from '../../../utils';
+import { getCss, mergeDeep } from '../../../utils';
 import type { SelectWrapperDropdownDirection } from '../select-wrapper/select-wrapper-utils';
 
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
@@ -27,8 +25,7 @@ import {
   formElementPaddingVertical,
   getCalculatedFormElementPaddingHorizontal,
 } from '../../../styles/form-styles';
-import { getNoResultsOptionJssStyle } from '../../../styles/option-styles';
-import { getPopoverJssStyle, getPopoverKeyframesStyles } from '../../../styles/select';
+import { getOptionJssStyle, getPopoverJssStyle, getPopoverKeyframesStyles } from '../../../styles/select';
 import type { FormState } from '../../../utils/form/form-state';
 
 const anchorName = '--anchor-select-wrapper';
@@ -217,16 +214,8 @@ export const getFilterStyles = (
 };
 
 export const getListStyles = (direction: SelectWrapperDropdownDirection, isOpen: boolean, theme: Theme): Styles => {
-  const { contrastHighColor, primaryColor, backgroundSurfaceColor, disabledColor, contrastLowColor } =
-    getThemedColors(theme);
-  const {
-    contrastHighColor: contrastHighColorDark,
-    primaryColor: primaryColorDark,
-    disabledColor: disabledColorDark,
-    backgroundSurfaceColor: backgroundSurfaceColorDark,
-    contrastLowColor: contrastLowColorDark,
-  } = getThemedColors('dark');
-  const { highlightColor } = getHighContrastColors();
+  const { primaryColor, disabledColor } = getThemedColors(theme);
+  const { primaryColor: primaryColorDark, disabledColor: disabledColorDark } = getThemedColors('dark');
 
   return {
     '@global': {
@@ -235,66 +224,13 @@ export const getListStyles = (direction: SelectWrapperDropdownDirection, isOpen:
       '[popover]': getPopoverJssStyle(isOpen, direction, anchorName, 1, 40, theme),
     },
     option: {
-      ...textSmallStyle,
-      color: contrastHighColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: contrastHighColorDark,
-      }),
-      display: 'flex',
-      justifyContent: 'space-between',
-      gap: '12px',
-      padding: `${spacingStaticSmall} 12px`,
-      flex: `1 0 calc(${fontLineHeight} + ${spacingStaticSmall} * 2)`,
-      cursor: 'pointer',
-      textAlign: 'start',
-      wordBreak: 'break-word',
-      boxSizing: 'border-box',
-      borderRadius: borderRadiusSmall,
-      transition: `${getTransition('background-color')}, ${getTransition('color')}`,
-      ...getNoResultsOptionJssStyle(),
-      ...hoverMediaQuery({
-        '&:not([aria-disabled]):not(.option--disabled):not([role=status]):hover': {
-          color: isHighContrastMode ? highlightColor : primaryColor,
-          background: contrastLowColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: isHighContrastMode ? highlightColor : primaryColorDark,
-            background: contrastLowColorDark,
-          }),
-        },
-      }),
-      '&--highlighted': {
-        background: contrastLowColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          background: contrastLowColorDark,
-        }),
-      },
-      '&--selected': {
-        cursor: 'default',
-        pointerEvents: 'none',
-        background: backgroundSurfaceColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          background: backgroundSurfaceColorDark,
-        }),
-      },
-      '&--highlighted, &--selected': {
-        color: isHighContrastMode ? highlightColor : primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: isHighContrastMode ? highlightColor : primaryColorDark,
-        }),
-      },
-      '&--disabled': {
-        cursor: 'not-allowed',
-        color: disabledColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: disabledColorDark,
-        }),
-      },
-      '&--hidden': {
-        display: 'none',
-      },
+      ...getOptionJssStyle('select-wrapper', 1, theme),
       '&--indent': {
         paddingLeft: '28px',
       },
+    },
+    icon: {
+      marginInlineStart: 'auto',
     },
     optgroup: {
       '&--hidden': {

@@ -71,7 +71,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
     display: none;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -255,7 +255,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
     display: none;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -452,7 +452,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
     display: none;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -647,7 +647,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
     display: none;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -843,7 +843,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
     display: none;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -1038,7 +1038,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
     display: none;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -1234,7 +1234,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
     display: none;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -1429,7 +1429,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
     display: none;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -1612,7 +1612,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
     display: flex;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -1796,7 +1796,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
     display: flex;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -1980,7 +1980,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
     display: flex;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -2164,7 +2164,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
     display: flex;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -2361,7 +2361,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
     display: flex;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -2556,7 +2556,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
     display: flex;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -2739,14 +2739,14 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
     display: none;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
-    background: #0E0E12;
+    background: #212225;
     border: 1px solid #404044;
     border-radius: 8px;
   }
@@ -2924,14 +2924,14 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
     display: none;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
-    background: #0E0E12;
+    background: #212225;
     border: 1px solid #404044;
     border-radius: 8px;
   }
@@ -3121,14 +3121,14 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
     display: none;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
-    background: #0E0E12;
+    background: #212225;
     border: 1px solid #404044;
     border-radius: 8px;
   }
@@ -3317,14 +3317,14 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
     display: none;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
-    background: #0E0E12;
+    background: #212225;
     border: 1px solid #404044;
     border-radius: 8px;
   }
@@ -3513,14 +3513,14 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
     display: none;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
-    background: #0E0E12;
+    background: #212225;
     border: 1px solid #404044;
     border-radius: 8px;
   }
@@ -3709,14 +3709,14 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
     display: none;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
-    background: #0E0E12;
+    background: #212225;
     border: 1px solid #404044;
     border-radius: 8px;
   }
@@ -3893,14 +3893,14 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
     display: flex;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
-    background: #0E0E12;
+    background: #212225;
     border: 1px solid #404044;
     border-radius: 8px;
   }
@@ -4078,14 +4078,14 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
     display: flex;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
-    background: #0E0E12;
+    background: #212225;
     border: 1px solid #404044;
     border-radius: 8px;
   }
@@ -4263,14 +4263,14 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
     display: flex;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
-    background: #0E0E12;
+    background: #212225;
     border: 1px solid #404044;
     border-radius: 8px;
   }
@@ -4448,14 +4448,14 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
     display: flex;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
-    background: #0E0E12;
+    background: #212225;
     border: 1px solid #404044;
     border-radius: 8px;
   }
@@ -4645,14 +4645,14 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
     display: flex;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
-    background: #0E0E12;
+    background: #212225;
     border: 1px solid #404044;
     border-radius: 8px;
   }
@@ -4841,14 +4841,14 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
     display: flex;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
-    background: #0E0E12;
+    background: #212225;
     border: 1px solid #404044;
     border-radius: 8px;
   }
@@ -5038,14 +5038,14 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
     display: flex;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
-    background: #0E0E12;
+    background: #212225;
     border: 1px solid #404044;
     border-radius: 8px;
   }
@@ -5234,14 +5234,14 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
     display: flex;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 450px;
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
     scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
-    background: #0E0E12;
+    background: #212225;
     border: 1px solid #404044;
     border-radius: 8px;
   }

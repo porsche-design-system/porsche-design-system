@@ -8,9 +8,11 @@ const cssVarInternalSelectOptionScaling = '--p-internal-select-option-scaling';
 export const getComponentCss = (theme: Theme): string => {
   return getCss({
     '@global': {
+      ':host': {
+        display: 'block',
+      },
       ...addImportantToEachRule({
         ':host': {
-          display: 'block',
           scrollMargin: '6px', // Aligns option when list is scrolled by navigating with keyboard
           ...hostHiddenStyles,
         },
@@ -19,5 +21,8 @@ export const getComponentCss = (theme: Theme): string => {
       ...preventFoucOfNestedElementsStyles,
     },
     option: getOptionJssStyle('select-option', `var(${cssVarInternalSelectOptionScaling}, 1)`, theme),
+    icon: {
+      marginInlineStart: 'auto',
+    },
   });
 };

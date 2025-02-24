@@ -128,6 +128,8 @@ import { ModalWithoutHeadingPage } from './generated/ModalWithoutHeading';
 import { ModelSignaturePage } from './generated/ModelSignature';
 import { MultiSelectPage } from './generated/MultiSelect';
 import { MultiSelectOpenedBottomPage } from './generated/MultiSelectOpenedBottom';
+import { MultiSelectOpenedMaxHeightPage } from './generated/MultiSelectOpenedMaxHeight';
+import { MultiSelectOpenedMinHeightPage } from './generated/MultiSelectOpenedMinHeight';
 import { MultiSelectOpenedScrollContextPage } from './generated/MultiSelectOpenedScrollContext';
 import { MultiSelectOpenedTopPage } from './generated/MultiSelectOpenedTop';
 import { MultiSelectOpenedWithAndWithoutOptgroupsPage } from './generated/MultiSelectOpenedWithAndWithoutOptgroups';
@@ -152,6 +154,8 @@ import { SegmentedControlPage } from './generated/SegmentedControl';
 import { SelectPage } from './generated/Select';
 import { SelectCompactPage } from './generated/SelectCompact';
 import { SelectOpenedBottomPage } from './generated/SelectOpenedBottom';
+import { SelectOpenedMaxHeightPage } from './generated/SelectOpenedMaxHeight';
+import { SelectOpenedMinHeightPage } from './generated/SelectOpenedMinHeight';
 import { SelectOpenedScrollContextPage } from './generated/SelectOpenedScrollContext';
 import { SelectOpenedTopPage } from './generated/SelectOpenedTop';
 import { SelectOpenedWithAndWithoutOptgroupsPage } from './generated/SelectOpenedWithAndWithoutOptgroups';
@@ -780,6 +784,16 @@ export const generatedRoutes: RouteType[] = [
     element: <MultiSelectOpenedBottomPage />,
   },
   {
+    name: 'Multi Select Opened Max Height',
+    path: '/multi-select-opened-max-height',
+    element: <MultiSelectOpenedMaxHeightPage />,
+  },
+  {
+    name: 'Multi Select Opened Min Height',
+    path: '/multi-select-opened-min-height',
+    element: <MultiSelectOpenedMinHeightPage />,
+  },
+  {
     name: 'Multi Select Opened Scroll Context',
     path: '/multi-select-opened-scroll-context',
     element: <MultiSelectOpenedScrollContextPage />,
@@ -898,6 +912,16 @@ export const generatedRoutes: RouteType[] = [
     name: 'Select Opened Bottom',
     path: '/select-opened-bottom',
     element: <SelectOpenedBottomPage />,
+  },
+  {
+    name: 'Select Opened Max Height',
+    path: '/select-opened-max-height',
+    element: <SelectOpenedMaxHeightPage />,
+  },
+  {
+    name: 'Select Opened Min Height',
+    path: '/select-opened-min-height',
+    element: <SelectOpenedMinHeightPage />,
   },
   {
     name: 'Select Opened Scroll Context',

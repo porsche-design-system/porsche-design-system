@@ -1057,7 +1057,7 @@ test.describe('lifecycle', () => {
 
     expect(status1.componentDidLoad['p-multi-select'], 'componentDidLoad: p-multi-select').toBe(1);
     expect(status1.componentDidLoad['p-multi-select-option'], 'componentDidLoad: p-multi-select-option').toBe(3);
-    expect(status1.componentDidLoad['p-checkbox-wrapper'], 'componentDidLoad: p-checkbox-wrapper').toBe(3);
+    expect(status1.componentDidLoad['p-checkbox'], 'componentDidLoad: p-checkbox').toBe(3);
     expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down and reset icon
 
     expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
@@ -1080,7 +1080,7 @@ test.describe('lifecycle', () => {
 
     expect(status1.componentDidLoad['p-multi-select'], 'componentDidLoad: p-multi-select').toBe(1);
     expect(status1.componentDidLoad['p-multi-select-option'], 'componentDidLoad: p-multi-select-option').toBe(3);
-    expect(status1.componentDidLoad['p-checkbox-wrapper'], 'componentDidLoad: p-checkbox-wrapper').toBe(3);
+    expect(status1.componentDidLoad['p-checkbox'], 'componentDidLoad: p-checkbox').toBe(3);
     expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down and reset icon
 
     expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
@@ -1094,7 +1094,8 @@ test.describe('lifecycle', () => {
     expect(status2.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // reset button
     expect(status2.componentDidUpdate['p-multi-select-option'], 'componentDidUpdate: p-multi-select-option').toBe(1);
     expect(status2.componentDidUpdate['p-multi-select'], 'componentDidUpdate: p-multi-select').toBe(2);
-    expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
+    expect(status2.componentDidUpdate['p-checkbox'], 'componentDidUpdate: p-checkbox').toBe(1);
+    expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(4);
   });
 
   test('should work without unnecessary round trips on filter input change', async ({ page }) => {
@@ -1107,7 +1108,7 @@ test.describe('lifecycle', () => {
     const status1 = await getLifecycleStatus(page);
     expect(status1.componentDidLoad['p-multi-select'], 'componentDidLoad: p-multi-select').toBe(1);
     expect(status1.componentDidLoad['p-multi-select-option'], 'componentDidLoad: p-multi-select-option').toBe(3);
-    expect(status1.componentDidLoad['p-checkbox-wrapper'], 'componentDidLoad: p-checkbox-wrapper').toBe(3);
+    expect(status1.componentDidLoad['p-checkbox'], 'componentDidLoad: p-checkbox').toBe(3);
     expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down and reset icon
 
     expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
