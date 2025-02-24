@@ -3457,7 +3457,6 @@ input+span {
   }
   .option {
     display: flex;
-    justify-content: space-between;
     gap: max(4px, 1 * 12px);
     padding-block: max(2px, 1 * 8px);
     padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
@@ -3504,6 +3503,9 @@ input+span {
   }
   .option--indent {
     padding-left: 28px;
+  }
+  .icon {
+    margin-inline-start: auto;
   }
   .optgroup {
     color: #010205;
@@ -14749,7 +14751,6 @@ exports[`should render dsr component for PSelectOption 1`] = `
 }
 .option {
   display: flex;
-  justify-content: space-between;
   gap: max(4px, var(--p-internal-select-option-scaling, 1) * 12px);
   padding-block: max(2px, var(--p-internal-select-option-scaling, 1) * 8px);
   padding-inline: max(4px, var(--p-internal-select-option-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-option-scaling, 1) * 12px);
@@ -14795,6 +14796,9 @@ exports[`should render dsr component for PSelectOption 1`] = `
 }
 .option--hidden {
   display: none;
+}
+.icon {
+  margin-inline-start: auto;
 }
 
     </style>
@@ -15060,7 +15064,6 @@ button::-moz-focus-inner {
   }
   .option {
     display: flex;
-    justify-content: space-between;
     gap: max(4px, 1 * 12px);
     padding-block: max(2px, 1 * 8px);
     padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
@@ -15107,6 +15110,9 @@ button::-moz-focus-inner {
   }
   .option--indent {
     padding-left: 28px;
+  }
+  .icon {
+    margin-inline-start: auto;
   }
   .optgroup {
     color: #010205;
