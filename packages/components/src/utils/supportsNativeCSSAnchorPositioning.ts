@@ -4,7 +4,8 @@
  * @returns {boolean} `true` if native CSS Anchor Positioning is supported, `false` otherwise.
  */
 export const supportsNativeCSSAnchorPositioning = (): boolean => {
-  if (!CSS) {
+  // SSR or older browsers
+  if (typeof CSS === 'undefined') {
     return false;
   }
   return CSS.supports(
