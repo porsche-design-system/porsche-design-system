@@ -3,7 +3,6 @@ import type { PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
-  getOptionAriaAttributes,
   getPrefixedTagNames,
   throwIfParentIsNotOfKind,
   validateProps,

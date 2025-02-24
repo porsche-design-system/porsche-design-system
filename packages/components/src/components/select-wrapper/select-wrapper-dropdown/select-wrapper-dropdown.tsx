@@ -4,6 +4,7 @@ import type { Theme } from '../../../types';
 import {
   attachComponentCss,
   getFilterInputAriaAttributes,
+  getHasCSSAnchorPositioningSupport,
   getHasNativePopoverSupport,
   getListAriaAttributes,
   getOptionAriaAttributes,
@@ -17,7 +18,6 @@ import {
   throwIfRootNodeIsNotOneOfKind,
   unobserveChildren,
 } from '../../../utils';
-import { getHasCSSAnchorPositioningSupport } from '../../../utils/supportsNativeCSSAnchorPositioning';
 import type {
   DropdownDirectionInternal,
   SelectWrapperDropdownDirection,
