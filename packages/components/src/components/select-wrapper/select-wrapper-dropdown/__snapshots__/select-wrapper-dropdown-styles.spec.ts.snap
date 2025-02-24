@@ -77,7 +77,6 @@ button:focus-visible {
   }
   .option {
     display: flex;
-    justify-content: space-between;
     gap: max(4px, 1 * 12px);
     padding-block: max(2px, 1 * 8px);
     padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
@@ -124,6 +123,9 @@ button:focus-visible {
   }
   .option--indent {
     padding-left: 28px;
+  }
+  .icon {
+    margin-inline-start: auto;
   }
   .optgroup {
     color: #010205;
@@ -251,7 +253,6 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   }
   .option {
     display: flex;
-    justify-content: space-between;
     gap: max(4px, 1 * 12px);
     padding-block: max(2px, 1 * 8px);
     padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
@@ -298,6 +299,9 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   }
   .option--indent {
     padding-left: 28px;
+  }
+  .icon {
+    margin-inline-start: auto;
   }
   .optgroup {
     color: #010205;
@@ -398,7 +402,6 @@ button:focus-visible {
   }
   .option {
     display: flex;
-    justify-content: space-between;
     gap: max(4px, 1 * 12px);
     padding-block: max(2px, 1 * 8px);
     padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
@@ -445,6 +448,9 @@ button:focus-visible {
   }
   .option--indent {
     padding-left: 28px;
+  }
+  .icon {
+    margin-inline-start: auto;
   }
   .optgroup {
     color: #010205;
@@ -572,7 +578,6 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   }
   .option {
     display: flex;
-    justify-content: space-between;
     gap: max(4px, 1 * 12px);
     padding-block: max(2px, 1 * 8px);
     padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
@@ -619,6 +624,9 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   }
   .option--indent {
     padding-left: 28px;
+  }
+  .icon {
+    margin-inline-start: auto;
   }
   .optgroup {
     color: #010205;
@@ -719,7 +727,6 @@ button:focus-visible {
   }
   .option {
     display: flex;
-    justify-content: space-between;
     gap: max(4px, 1 * 12px);
     padding-block: max(2px, 1 * 8px);
     padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
@@ -766,6 +773,9 @@ button:focus-visible {
   }
   .option--indent {
     padding-left: 28px;
+  }
+  .icon {
+    margin-inline-start: auto;
   }
   .optgroup {
     color: #010205;
@@ -867,7 +877,6 @@ button:focus-visible {
   }
   .option {
     display: flex;
-    justify-content: space-between;
     gap: max(4px, 1 * 12px);
     padding-block: max(2px, 1 * 8px);
     padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
@@ -914,6 +923,9 @@ button:focus-visible {
   }
   .option--indent {
     padding-left: 28px;
+  }
+  .icon {
+    margin-inline-start: auto;
   }
   .optgroup {
     color: #010205;
@@ -1041,7 +1053,6 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   }
   .option {
     display: flex;
-    justify-content: space-between;
     gap: max(4px, 1 * 12px);
     padding-block: max(2px, 1 * 8px);
     padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
@@ -1088,6 +1099,9 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   }
   .option--indent {
     padding-left: 28px;
+  }
+  .icon {
+    margin-inline-start: auto;
   }
   .optgroup {
     color: #010205;
@@ -1188,7 +1202,6 @@ button:focus-visible {
   }
   .option {
     display: flex;
-    justify-content: space-between;
     gap: max(4px, 1 * 12px);
     padding-block: max(2px, 1 * 8px);
     padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
@@ -1235,6 +1248,9 @@ button:focus-visible {
   }
   .option--indent {
     padding-left: 28px;
+  }
+  .icon {
+    margin-inline-start: auto;
   }
   .optgroup {
     color: #010205;
@@ -1362,7 +1378,6 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   }
   .option {
     display: flex;
-    justify-content: space-between;
     gap: max(4px, 1 * 12px);
     padding-block: max(2px, 1 * 8px);
     padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
@@ -1409,6 +1424,9 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   }
   .option--indent {
     padding-left: 28px;
+  }
+  .icon {
+    margin-inline-start: auto;
   }
   .optgroup {
     color: #010205;
@@ -1509,7 +1527,6 @@ button:focus-visible {
   }
   .option {
     display: flex;
-    justify-content: space-between;
     gap: max(4px, 1 * 12px);
     padding-block: max(2px, 1 * 8px);
     padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
@@ -1556,6 +1573,9 @@ button:focus-visible {
   }
   .option--indent {
     padding-left: 28px;
+  }
+  .icon {
+    margin-inline-start: auto;
   }
   .optgroup {
     color: #010205;
@@ -1683,7 +1703,6 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   }
   .option {
     display: flex;
-    justify-content: space-between;
     gap: max(4px, 1 * 12px);
     padding-block: max(2px, 1 * 8px);
     padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
@@ -1730,6 +1749,9 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   }
   .option--indent {
     padding-left: 28px;
+  }
+  .icon {
+    margin-inline-start: auto;
   }
   .optgroup {
     color: #010205;
@@ -1830,7 +1852,6 @@ button:focus-visible {
   }
   .option {
     display: flex;
-    justify-content: space-between;
     gap: max(4px, 1 * 12px);
     padding-block: max(2px, 1 * 8px);
     padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
@@ -1877,6 +1898,9 @@ button:focus-visible {
   }
   .option--indent {
     padding-left: 28px;
+  }
+  .icon {
+    margin-inline-start: auto;
   }
   .optgroup {
     color: #010205;
@@ -2004,7 +2028,6 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   }
   .option {
     display: flex;
-    justify-content: space-between;
     gap: max(4px, 1 * 12px);
     padding-block: max(2px, 1 * 8px);
     padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
@@ -2051,6 +2074,9 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   }
   .option--indent {
     padding-left: 28px;
+  }
+  .icon {
+    margin-inline-start: auto;
   }
   .optgroup {
     color: #010205;
@@ -2151,7 +2177,6 @@ button:focus-visible {
   }
   .option {
     display: flex;
-    justify-content: space-between;
     gap: max(4px, 1 * 12px);
     padding-block: max(2px, 1 * 8px);
     padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
@@ -2198,6 +2223,9 @@ button:focus-visible {
   }
   .option--indent {
     padding-left: 28px;
+  }
+  .icon {
+    margin-inline-start: auto;
   }
   .optgroup {
     color: #010205;
@@ -2299,7 +2327,6 @@ button:focus-visible {
   }
   .option {
     display: flex;
-    justify-content: space-between;
     gap: max(4px, 1 * 12px);
     padding-block: max(2px, 1 * 8px);
     padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
@@ -2346,6 +2373,9 @@ button:focus-visible {
   }
   .option--indent {
     padding-left: 28px;
+  }
+  .icon {
+    margin-inline-start: auto;
   }
   .optgroup {
     color: #010205;
@@ -2473,7 +2503,6 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   }
   .option {
     display: flex;
-    justify-content: space-between;
     gap: max(4px, 1 * 12px);
     padding-block: max(2px, 1 * 8px);
     padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
@@ -2520,6 +2549,9 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   }
   .option--indent {
     padding-left: 28px;
+  }
+  .icon {
+    margin-inline-start: auto;
   }
   .optgroup {
     color: #010205;
@@ -2620,7 +2652,6 @@ button:focus-visible {
   }
   .option {
     display: flex;
-    justify-content: space-between;
     gap: max(4px, 1 * 12px);
     padding-block: max(2px, 1 * 8px);
     padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
@@ -2667,6 +2698,9 @@ button:focus-visible {
   }
   .option--indent {
     padding-left: 28px;
+  }
+  .icon {
+    margin-inline-start: auto;
   }
   .optgroup {
     color: #010205;
@@ -2794,7 +2828,6 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   }
   .option {
     display: flex;
-    justify-content: space-between;
     gap: max(4px, 1 * 12px);
     padding-block: max(2px, 1 * 8px);
     padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
@@ -2841,6 +2874,9 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   }
   .option--indent {
     padding-left: 28px;
+  }
+  .icon {
+    margin-inline-start: auto;
   }
   .optgroup {
     color: #010205;

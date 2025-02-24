@@ -5,5 +5,5 @@
   aria-label="Empty value"
 >
   <slot> </slot>
-  <p-icon aria-hidden="true" class="hydrated"> </p-icon>
+  <p-icon class="icon hydrated" aria-hidden="true"> </p-icon>
 </div>

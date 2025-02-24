@@ -13,7 +13,6 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 }
 .option {
   display: flex;
-  justify-content: space-between;
   gap: max(4px, 1 * 12px);
   padding-block: max(2px, 1 * 8px);
   padding-inline: max(4px, 1 * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, 1 * 12px);
@@ -83,7 +82,6 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
 }
 .option {
   display: flex;
-  justify-content: space-between;
   gap: max(4px, 1 * 12px);
   padding-block: max(2px, 1 * 8px);
   padding-inline: max(4px, 1 * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, 1 * 12px);

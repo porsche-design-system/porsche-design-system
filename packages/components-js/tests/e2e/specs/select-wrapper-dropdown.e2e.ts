@@ -21,8 +21,7 @@ import {
 
 const getHost = (page: Page) => page.locator('p-select-wrapper');
 const getSelect = (page: Page) => page.locator('p-select-wrapper select');
-const getSelectOptgroup = (page: Page) => page.locator('p-select-wrapper select optgroup');
-const getSelectIcon = (page: Page) => page.locator('p-select-wrapper .icon');
+const getSelectIcon = (page: Page) => page.locator('p-select-wrapper .icon').first();
 
 const dropdownSelector = 'p-select-wrapper p-select-wrapper-dropdown';
 const highlightedClass = 'option--highlighted';
@@ -828,7 +827,7 @@ test.describe('keyboard and click events', () => {
 
     await clickIcon();
 
-    expect(getDropdownList(page), 'after 1st click').toBeVisible();
+    await expect(getDropdownList(page), 'after 1st click').toBeVisible();
     expect(await getHighlightedDropdownOptionIndex(page), 'for highlighted custom option after 1st click').toBe(0);
 
     await clickIcon();

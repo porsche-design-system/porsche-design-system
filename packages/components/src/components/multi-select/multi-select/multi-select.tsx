@@ -448,7 +448,6 @@ export class MultiSelect {
           highlightedOption.selected = !highlightedOption.selected;
           this.value = this.currentValue;
           this.emitUpdateEvent();
-          this.updateSrHighlightedOptionText();
           forceUpdate(highlightedOption);
         } else if (this.internals?.form) {
           handleButtonEvent(

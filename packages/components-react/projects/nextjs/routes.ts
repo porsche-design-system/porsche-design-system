@@ -464,6 +464,14 @@ const generatedRoutes = {
     "path": "/multi-select-opened-bottom",
     "name": "MultiSelectOpenedBottom"
   },
+  "multiSelectOpenedMaxHeight": {
+    "path": "/multi-select-opened-max-height",
+    "name": "MultiSelectOpenedMaxHeight"
+  },
+  "multiSelectOpenedMinHeight": {
+    "path": "/multi-select-opened-min-height",
+    "name": "MultiSelectOpenedMinHeight"
+  },
   "multiSelectOpenedScrollContext": {
     "path": "/multi-select-opened-scroll-context",
     "name": "MultiSelectOpenedScrollContext"
@@ -563,6 +571,14 @@ const generatedRoutes = {
   "selectOpenedBottom": {
     "path": "/select-opened-bottom",
     "name": "SelectOpenedBottom"
+  },
+  "selectOpenedMaxHeight": {
+    "path": "/select-opened-max-height",
+    "name": "SelectOpenedMaxHeight"
+  },
+  "selectOpenedMinHeight": {
+    "path": "/select-opened-min-height",
+    "name": "SelectOpenedMinHeight"
   },
   "selectOpenedScrollContext": {
     "path": "/select-opened-scroll-context",
