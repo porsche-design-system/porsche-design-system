@@ -24,6 +24,7 @@ import {
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getFilterInputAriaAttributes,
+  getHasCSSAnchorPositioningSupport,
   getHasNativePopoverSupport,
   getListAriaAttributes,
   getPrefixedTagNames,
@@ -36,7 +37,6 @@ import {
   throwIfElementIsNotOfKind,
   validateProps,
 } from '../../../utils';
-import { getHasCSSAnchorPositioningSupport } from '../../../utils/supportsNativeCSSAnchorPositioning';
 import { Label, descriptionId, labelId } from '../../common/label/label';
 import { StateMessage, messageId } from '../../common/state-message/state-message';
 import { getComponentCss } from './multi-select-styles';
