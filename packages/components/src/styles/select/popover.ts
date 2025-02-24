@@ -48,7 +48,7 @@ export const getPopoverJssStyle = (
     display: isOpen ? 'flex' : 'none', // needed for backwards compatibility, otherwise 'flex' would be enough
     flexDirection: 'column',
     gap: `max(2px, ${cssVarScaling} * ${spacingStaticSmall})`,
-    maxHeight: `max(${minHeightOptionList}, calc(50dvh - 54px / 2 - ${OPTION_LIST_SAFE_ZONE}px * 2))`,
+    maxHeight: `max(${minHeightOptionList}, calc(50vh - 54px / 2 - ${OPTION_LIST_SAFE_ZONE}px * 2))`,
     boxSizing: 'border-box',
     overflow: 'hidden auto',
     scrollbarWidth: 'thin', // firefox
@@ -69,7 +69,7 @@ export const getPopoverJssStyle = (
       positionArea: direction === 'up' ? 'top' : 'bottom',
       positionTryFallbacks: 'flip-block',
       width: 'anchor-size(width)',
-      maxHeight: `max(${minHeightOptionList}, calc(50dvh - anchor-size(height) / 2 - ${OPTION_LIST_SAFE_ZONE}px * 2))`,
+      maxHeight: `max(${minHeightOptionList}, calc(50vh - anchor-size(height) / 2 - ${OPTION_LIST_SAFE_ZONE}px * 2))`,
       margin: `${OPTION_LIST_SAFE_ZONE}px 0`,
     }),
     '&:not(:popover-open)': {
