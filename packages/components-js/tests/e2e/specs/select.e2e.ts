@@ -1354,13 +1354,13 @@ test.describe('theme', () => {
     const options = await page.locator('p-select-option').all();
 
     for (const child of [...optgroups, ...options]) {
-      expect(await getProperty<Theme>(child, 'theme')).toBe('light');
+      await expect(child).toHaveJSProperty('theme', 'light');
     }
     await setProperty(select, 'theme', 'dark');
     await waitForStencilLifecycle(page);
 
     for (const child of [...optgroups, ...options]) {
-      expect(await getProperty<Theme>(child, 'theme')).toBe('dark');
+      await expect(child).toHaveJSProperty('theme', 'dark');
     }
   });
 });
