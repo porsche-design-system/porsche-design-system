@@ -8,7 +8,7 @@ import { getNoResultsOptionJssStyle } from '../option-styles';
 import { prefersColorSchemeDarkMediaQuery } from '../prefers-color-scheme-dark-media-query';
 
 export const getOptionJssStyle = (
-  componentName: 'select-option' | 'multi-select-option',
+  componentName: 'select-wrapper' | 'select-option' | 'multi-select-option',
   cssVarScaling: string | 1, // "1" is needed for components not yet supporting compact mode
   theme: Theme
 ): JssStyle => {
