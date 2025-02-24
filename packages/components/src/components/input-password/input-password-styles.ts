@@ -31,10 +31,10 @@ import type { FormState } from '../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 
-export const cssVariableInputPaddingStart = '--p-internal-text-field-input-padding-start';
-export const cssVariableInputPaddingEnd = '--p-internal-text-field-input-padding-end';
+export const cssVariableInputPaddingStart = '--p-internal-input-password-input-padding-start';
+export const cssVariableInputPaddingEnd = '--p-internal-input-password-input-padding-end';
 
-export const cssVarInternalTextFieldScaling = '--p-internal-text-field-scaling';
+export const cssVarInternalInputPasswordScaling = '--p-internal-input-password-scaling';
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -44,8 +44,8 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   // Determines the scaling factor for the text field size. In "compact" mode, it uses 0.5 to achieve a 36px text field (compact size).
-  // Defaults to 1 for the standard size and can be overridden by the CSS variable `cssVarInternalTextFieldScaling`.
-  const scalingVar = `var(${cssVarInternalTextFieldScaling}, 1)`;
+  // Defaults to 1 for the standard size and can be overridden by the CSS variable `cssVarInternalInputPasswordScaling`.
+  const scalingVar = `var(${cssVarInternalInputPasswordScaling}, 1)`;
 
   const paddingBlock = `max(2px, ${formElementPaddingVertical} * ${scalingVar})`;
   const paddingInline = `max(4px, ${formElementPaddingHorizontal} * ${scalingVar})`;
