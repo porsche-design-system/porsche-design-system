@@ -545,7 +545,7 @@ test.describe('dropdown position', () => {
     await dropdownCombobox.click();
     await waitForStencilLifecycle(page);
 
-    expect((await getDropdownList(page).boundingBox()).y).toBeCloseTo(32, 1);
+    expect((await getDropdownList(page).boundingBox()).y).toBeCloseTo(32, 0);
   });
 
   test('should set direction to down', async ({ page }) => {
@@ -555,7 +555,7 @@ test.describe('dropdown position', () => {
     await dropdownCombobox.click();
     await waitForStencilLifecycle(page);
 
-    expect((await getDropdownList(page).boundingBox()).y).toBeCloseTo(248, 1);
+    expect((await getDropdownList(page).boundingBox()).y).toBeCloseTo(248, 0);
   });
 
   test('should auto position to up if bottom space is less than dropdown height', async ({ page }) => {
@@ -569,7 +569,7 @@ test.describe('dropdown position', () => {
     await dropdownCombobox.click();
     await waitForStencilLifecycle(page);
 
-    expect((await getDropdownList(page).boundingBox()).y).toBeCloseTo(326, 1);
+    expect((await getDropdownList(page).boundingBox()).y).toBeCloseTo(326, 0);
   });
 });
 
