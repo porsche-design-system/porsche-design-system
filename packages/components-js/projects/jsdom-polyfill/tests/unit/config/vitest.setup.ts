@@ -18,6 +18,11 @@ beforeAll(() => {
         setValidity: vi.fn(),
       }) as unknown as ElementInternals
   );
+
+  global.CSS = {
+    // @ts-ignore
+    supports: (k, v) => false,
+  };
 });
 
 beforeEach(() => {
