@@ -1,12 +1,5 @@
 <div class="option">
-  <p-checkbox-wrapper class="checkbox hydrated">
-    <input
-      role="option"
-      type="checkbox"
-      aria-selected="false"
-      aria-label="Some child"
-      tabindex="-1"
-    />
+  <p-checkbox class="checkbox hydrated" name="">
     <slot slot="label"> </slot>
-  </p-checkbox-wrapper>
+  </p-checkbox>
 </div>
