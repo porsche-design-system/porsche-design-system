@@ -533,12 +533,14 @@ test.describe('selection', () => {
     await waitForStencilLifecycle(page);
 
     const value = await getMultiSelectValue(page);
-    const filterPlaceholder = await getInputPlaceholder(page);
     const selectedMultiSelectOptions = await getSelectedMultiSelectOptionProperty(page, 'textContent');
 
     expect(value).toStrictEqual(['b']);
     expect(selectedMultiSelectOptions, 'after first option selected').toEqual(['Option B']);
-    expect(filterPlaceholder, 'after first option selected').toBe(selectedMultiSelectOptions.join(', '));
+    await expect(getInput(page), 'after first option selected').toHaveAttribute(
+      'placeholder',
+      selectedMultiSelectOptions.join(', ')
+    );
 
     await inputElement.press('Backspace');
     await page.keyboard.press('ArrowDown');
@@ -547,12 +549,14 @@ test.describe('selection', () => {
     await waitForStencilLifecycle(page);
 
     const valueAfter = await getMultiSelectValue(page);
-    const filterPlaceholderSecond = await getInputPlaceholder(page);
     const selectedMultiSelectOptionsSecond = await getSelectedMultiSelectOptionProperty(page, 'textContent');
 
     expect(valueAfter).toStrictEqual(['b', 'c']);
     expect(selectedMultiSelectOptionsSecond, 'after second option selected').toEqual(['Option B', 'Option C']);
-    expect(filterPlaceholderSecond, 'after second option selected').toBe(selectedMultiSelectOptionsSecond.join(', '));
+    await expect(getInput(page), 'after second option selected').toHaveAttribute(
+      'placeholder',
+      selectedMultiSelectOptionsSecond.join(', ')
+    );
   });
 
   test('should add valid selection on click', async ({ page }) => {
@@ -584,7 +588,10 @@ test.describe('selection', () => {
 
     expect(valueAfter).toStrictEqual(['b', 'c']);
     expect(filterPlaceholderSecond, 'after second selection').toBe('Option B, Option C');
-    expect(filterPlaceholderSecond, 'after second selection').toEqual(selectedMultiSelectOptionsSecond.join(', '));
+    await expect(getInput(page), 'after second selection').toHaveAttribute(
+      'placeholder',
+      selectedMultiSelectOptionsSecond.join(', ')
+    );
   });
 
   skipInBrowsers(['webkit'], () => {
