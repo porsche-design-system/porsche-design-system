@@ -676,6 +676,20 @@ $&`
           .replace(/this\.props\.value = state;/, '')
           .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
           .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
+      } else if (tagName === 'p-input-password') {
+        newFileContent = newFileContent
+          .replace(/@AttachInternals\(\)/, '')
+          .replace(/maxlength/, 'maxLength')
+          .replace(/minlength/, 'minLength')
+          .replace(/readonly/, 'readOnly')
+          .replace(/spellcheck/, 'spellCheck')
+          .replace(/autocomplete/, 'autoComplete')
+          // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
+          .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
+          .replace(/this\.props\.disabled = disabled;/, '')
+          .replace(/this\.props\.value = state;/, '')
+          .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
+          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
       } else if (tagName === 'p-canvas') {
         newFileContent = newFileContent
           .replace(
