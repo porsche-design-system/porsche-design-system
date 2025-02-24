@@ -147,6 +147,8 @@ import { ModalWithoutHeadingComponent } from './generated/modal-without-heading.
 import { ModelSignatureComponent } from './generated/model-signature.component';
 import { MultiSelectComponent } from './generated/multi-select.component';
 import { MultiSelectOpenedBottomComponent } from './generated/multi-select-opened-bottom.component';
+import { MultiSelectOpenedMaxHeightComponent } from './generated/multi-select-opened-max-height.component';
+import { MultiSelectOpenedMinHeightComponent } from './generated/multi-select-opened-min-height.component';
 import { MultiSelectOpenedScrollContextComponent } from './generated/multi-select-opened-scroll-context.component';
 import { MultiSelectOpenedTopComponent } from './generated/multi-select-opened-top.component';
 import { MultiSelectOpenedWithAndWithoutOptgroupsComponent } from './generated/multi-select-opened-with-and-without-optgroups.component';
@@ -172,6 +174,8 @@ import { SegmentedControlComponent } from './generated/segmented-control.compone
 import { SelectComponent } from './generated/select.component';
 import { SelectCompactComponent } from './generated/select-compact.component';
 import { SelectOpenedBottomComponent } from './generated/select-opened-bottom.component';
+import { SelectOpenedMaxHeightComponent } from './generated/select-opened-max-height.component';
+import { SelectOpenedMinHeightComponent } from './generated/select-opened-min-height.component';
 import { SelectOpenedScrollContextComponent } from './generated/select-opened-scroll-context.component';
 import { SelectOpenedTopComponent } from './generated/select-opened-top.component';
 import { SelectOpenedWithAndWithoutOptgroupsComponent } from './generated/select-opened-with-and-without-optgroups.component';
@@ -340,6 +344,8 @@ export const generatedPages = [
   ModelSignatureComponent,
   MultiSelectComponent,
   MultiSelectOpenedBottomComponent,
+  MultiSelectOpenedMaxHeightComponent,
+  MultiSelectOpenedMinHeightComponent,
   MultiSelectOpenedScrollContextComponent,
   MultiSelectOpenedTopComponent,
   MultiSelectOpenedWithAndWithoutOptgroupsComponent,
@@ -365,6 +371,8 @@ export const generatedPages = [
   SelectComponent,
   SelectCompactComponent,
   SelectOpenedBottomComponent,
+  SelectOpenedMaxHeightComponent,
+  SelectOpenedMinHeightComponent,
   SelectOpenedScrollContextComponent,
   SelectOpenedTopComponent,
   SelectOpenedWithAndWithoutOptgroupsComponent,
@@ -994,6 +1002,16 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: MultiSelectOpenedBottomComponent,
   },
   {
+    name: 'Multi Select Opened Max Height',
+    path: 'multi-select-opened-max-height',
+    component: MultiSelectOpenedMaxHeightComponent,
+  },
+  {
+    name: 'Multi Select Opened Min Height',
+    path: 'multi-select-opened-min-height',
+    component: MultiSelectOpenedMinHeightComponent,
+  },
+  {
     name: 'Multi Select Opened Scroll Context',
     path: 'multi-select-opened-scroll-context',
     component: MultiSelectOpenedScrollContextComponent,
@@ -1112,6 +1130,16 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Select Opened Bottom',
     path: 'select-opened-bottom',
     component: SelectOpenedBottomComponent,
+  },
+  {
+    name: 'Select Opened Max Height',
+    path: 'select-opened-max-height',
+    component: SelectOpenedMaxHeightComponent,
+  },
+  {
+    name: 'Select Opened Min Height',
+    path: 'select-opened-min-height',
+    component: SelectOpenedMinHeightComponent,
   },
   {
     name: 'Select Opened Scroll Context',
