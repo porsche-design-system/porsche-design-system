@@ -1,5 +1,6 @@
 import { expect } from '@jest/globals';
 import { getSlottedAnchorStyles } from '../../styles';
+import { getSlottedInputIndicatorStyles } from '../../styles/global/slotted-input-indicator-styles';
 import * as applyConstructableStylesheetStylesUtils from '../../utils/applyConstructableStylesheetStyle';
 import { InputPassword } from './input-password';
 
@@ -14,14 +15,11 @@ let mockEmit: jest.SpyInstance;
 
 const initComponent = (): InputPassword => {
   const component = new InputPassword();
-  component.host = document.createElement('p-textarea');
+  component.host = document.createElement('p-input-password');
   component.host.attachShadow({ mode: 'open' });
-  const textarea = document.createElement('textarea');
-  const counterElement = document.createElement('span');
-  component.host.shadowRoot.appendChild(textarea);
-  component.host.shadowRoot.appendChild(counterElement);
-  component['textAreaElement'] = textarea;
-  component['counterElement'] = counterElement;
+  const input = document.createElement('input');
+  component.host.shadowRoot.appendChild(input);
+  component['inputElement'] = input;
   component['internals'] = new MockElementInternals() as unknown as ElementInternals;
 
   mockEmit = jest.fn();
@@ -42,20 +40,14 @@ describe('connectedCallback', () => {
     const component = initComponent();
 
     component.connectedCallback();
-    expect(applyConstructableStylesheetStylesSpy).toHaveBeenCalledWith(component.host, getSlottedAnchorStyles);
+    expect(applyConstructableStylesheetStylesSpy).toHaveBeenCalledWith(
+      component.host,
+      getSlottedAnchorStyles,
+      getSlottedInputIndicatorStyles
+    );
   });
 });
-describe('componentWillLoad', () => {
-  it('should call updateCounterVisibility()', () => {
-    const component = initComponent();
-    const value = 'test';
-    component.value = value;
-    const updateCounterVisibilitySpy = jest.spyOn(component, 'updateCounterVisibility' as any);
-    component.componentWillLoad();
-    expect(updateCounterVisibilitySpy).toHaveBeenCalledTimes(1);
-    expect(component['defaultValue']).toBe(value);
-  });
-});
+
 describe('formResetCallback', () => {
   const component = initComponent();
   const defaultValue = 'default-value';
@@ -123,7 +115,6 @@ describe('onInput', () => {
         value: testValue,
       },
     } as unknown as InputEvent;
-    component['hasCounter'] = true;
 
     component['onInput'](event);
 
@@ -140,47 +131,9 @@ describe('componentDidRender', () => {
     component.componentDidRender();
     expect(setValiditySpy).toHaveBeenCalledTimes(1);
     expect(setValiditySpy).toHaveBeenCalledWith(
-      component['textAreaElement'].validity,
-      component['textAreaElement'].validationMessage,
-      component['textAreaElement']
+      component['inputElement'].validity,
+      component['inputElement'].validationMessage,
+      component['inputElement']
     );
-  });
-
-  it('should call setCounterAriaTextDebounced() when hasCounter is true', () => {
-    const component = initComponent();
-    const setCounterAriaTextDebouncedSpy = jest.spyOn(component as any, 'setCounterAriaTextDebounced');
-    component['hasCounter'] = true;
-    component.componentDidRender();
-    expect(setCounterAriaTextDebouncedSpy).toHaveBeenCalledTimes(1);
-  });
-
-  it('should not call setCounterAriaTextDebounced() when hasCounter is false', () => {
-    const component = initComponent();
-    const setCounterAriaTextDebouncedSpy = jest.spyOn(component as any, 'setCounterAriaTextDebounced');
-    component['hasCounter'] = false;
-    component.componentDidRender();
-    expect(setCounterAriaTextDebouncedSpy).not.toHaveBeenCalledTimes(1);
-  });
-});
-describe('updateCounterVisibility', () => {
-  it('should update counter visibility based on maxLength and showCounter', () => {
-    const component = initComponent();
-    component.maxLength = 100;
-    component.showCounter = true;
-
-    component['updateCounterVisibility']();
-
-    expect(component['hasCounter']).toBe(true);
-  });
-});
-describe('setCounterAriaText', () => {
-  it('should set correct counter aria text on setCounterAriaText', () => {
-    const component = initComponent();
-    component.maxLength = 100;
-    component.value = 'test';
-
-    component['setCounterAriaText']();
-
-    expect(component['counterElement'].innerText).toBe('You have 96 out of 100 characters left');
   });
 });
