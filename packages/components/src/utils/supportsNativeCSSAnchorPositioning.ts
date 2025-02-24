@@ -5,9 +5,7 @@
  */
 export const supportsNativeCSSAnchorPositioning = (): boolean => {
   // SSR or older browsers
-  if (typeof CSS === 'undefined') {
-    return false;
-  }
+  if (typeof CSS === 'undefined' || !CSS.supports) return false;
   return CSS.supports(
     '(anchor-name: --test) and (position-anchor: --test) and (position-area: bottom) and (position-try-fallbacks: flip-block) and (width: anchor-size(width))'
   );
