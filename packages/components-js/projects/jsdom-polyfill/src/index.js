@@ -15,12 +15,6 @@ if (!navigator.userAgent.includes('Node.js') && !navigator.userAgent.includes('j
   );
 }
 
-// Mock for CSS.supports
-global.CSS = {
-  // @ts-ignore
-  supports: (k, v) => false,
-};
-
 // skip initial stylesheet fetch
 window.PDS_SKIP_FETCH = true;
 
