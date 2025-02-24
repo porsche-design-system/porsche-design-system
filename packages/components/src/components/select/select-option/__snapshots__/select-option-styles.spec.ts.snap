@@ -8,16 +8,17 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
   display: none !important;
 }
 ::slotted(img) {
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  width: auto !important;
   height: calc(6px + 2.125ex) !important;
   border-radius: 4px !important;
-  width: auto !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 .option {
-  font-weight: 400;
   display: flex;
+  justify-content: space-between;
   gap: max(4px, var(--p-internal-select-option-scaling, 1) * 12px);
   padding-block: max(2px, var(--p-internal-select-option-scaling, 1) * 8px);
   padding-inline: max(4px, var(--p-internal-select-option-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-option-scaling, 1) * 12px);
@@ -49,7 +50,7 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 .option--selected {
   cursor: default;
   pointer-events: none;
-  background: #212225;
+  background: rgba(148, 149, 152, .18);
 }
 .option--highlighted {
   background: #404044;
@@ -64,13 +65,10 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-inline-start: auto;
-}
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #FBFCFF;
-    background: #404044;
+    background: rgba(148, 149, 152, .18);
   }
 }
 "
@@ -84,16 +82,17 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
   display: none !important;
 }
 ::slotted(img) {
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  width: auto !important;
   height: calc(6px + 2.125ex) !important;
   border-radius: 4px !important;
-  width: auto !important;
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
 .option {
-  font-weight: 400;
   display: flex;
+  justify-content: space-between;
   gap: max(4px, var(--p-internal-select-option-scaling, 1) * 12px);
   padding-block: max(2px, var(--p-internal-select-option-scaling, 1) * 8px);
   padding-inline: max(4px, var(--p-internal-select-option-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-option-scaling, 1) * 12px);
@@ -125,7 +124,7 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
 .option--selected {
   cursor: default;
   pointer-events: none;
-  background: #EEEFF2;
+  background: rgba(148, 149, 152, .18);
 }
 .option--highlighted {
   background: #D8D8DB;
@@ -140,13 +139,10 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
 .option--hidden {
   display: none;
 }
-.icon {
-  margin-inline-start: auto;
-}
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
     color: #010205;
-    background: #D8D8DB;
+    background: rgba(148, 149, 152, .18);
   }
 }
 "

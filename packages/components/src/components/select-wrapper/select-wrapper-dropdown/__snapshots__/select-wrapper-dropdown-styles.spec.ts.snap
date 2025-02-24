@@ -52,7 +52,7 @@ button:focus-visible {
     display: none;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 416px;
+    max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -76,19 +76,20 @@ button:focus-visible {
     display: none;
   }
   .option {
+    display: flex;
+    justify-content: space-between;
+    gap: max(4px, 1 * 12px);
+    padding-block: max(2px, 1 * 8px);
+    padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
+    min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
     color: #535457;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 8px 12px;
-    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
-    box-sizing: border-box;
+    box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
@@ -105,13 +106,11 @@ button:focus-visible {
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--highlighted {
     background: #D8D8DB;
-  }
-  .option--selected {
-    cursor: default;
-    pointer-events: none;
-    background: #EEEFF2;
   }
   .option--highlighted, .option--selected {
     color: #010205;
@@ -142,7 +141,7 @@ button:focus-visible {
 @media(hover:hover) {
     .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
       color: #010205;
-      background: #D8D8DB;
+      background: rgba(148, 149, 152, .18);
     }
 }
 "
@@ -224,7 +223,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     display: none;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 416px;
+    max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -251,19 +250,20 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     display: none;
   }
   .option {
+    display: flex;
+    justify-content: space-between;
+    gap: max(4px, 1 * 12px);
+    padding-block: max(2px, 1 * 8px);
+    padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
+    min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
     color: #535457;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 8px 12px;
-    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
-    box-sizing: border-box;
+    box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
@@ -280,13 +280,11 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--highlighted {
     background: #D8D8DB;
-  }
-  .option--selected {
-    cursor: default;
-    pointer-events: none;
-    background: #EEEFF2;
   }
   .option--highlighted, .option--selected {
     color: #010205;
@@ -317,7 +315,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 @media(hover:hover) {
     .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
       color: #010205;
-      background: #D8D8DB;
+      background: rgba(148, 149, 152, .18);
     }
 }
 "
@@ -375,7 +373,7 @@ button:focus-visible {
     display: none;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 416px;
+    max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -399,19 +397,20 @@ button:focus-visible {
     display: none;
   }
   .option {
+    display: flex;
+    justify-content: space-between;
+    gap: max(4px, 1 * 12px);
+    padding-block: max(2px, 1 * 8px);
+    padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
+    min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
     color: #535457;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 8px 12px;
-    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
-    box-sizing: border-box;
+    box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
@@ -428,13 +427,11 @@ button:focus-visible {
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--highlighted {
     background: #D8D8DB;
-  }
-  .option--selected {
-    cursor: default;
-    pointer-events: none;
-    background: #EEEFF2;
   }
   .option--highlighted, .option--selected {
     color: #010205;
@@ -465,7 +462,7 @@ button:focus-visible {
 @media(hover:hover) {
     .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
       color: #010205;
-      background: #D8D8DB;
+      background: rgba(148, 149, 152, .18);
     }
 }
 "
@@ -547,7 +544,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     display: none;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 416px;
+    max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -574,19 +571,20 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     display: none;
   }
   .option {
+    display: flex;
+    justify-content: space-between;
+    gap: max(4px, 1 * 12px);
+    padding-block: max(2px, 1 * 8px);
+    padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
+    min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
     color: #535457;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 8px 12px;
-    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
-    box-sizing: border-box;
+    box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
@@ -603,13 +601,11 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--highlighted {
     background: #D8D8DB;
-  }
-  .option--selected {
-    cursor: default;
-    pointer-events: none;
-    background: #EEEFF2;
   }
   .option--highlighted, .option--selected {
     color: #010205;
@@ -640,7 +636,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 @media(hover:hover) {
     .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
       color: #010205;
-      background: #D8D8DB;
+      background: rgba(148, 149, 152, .18);
     }
 }
 "
@@ -698,7 +694,7 @@ button:focus-visible {
     display: flex;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 416px;
+    max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -722,19 +718,20 @@ button:focus-visible {
     display: none;
   }
   .option {
+    display: flex;
+    justify-content: space-between;
+    gap: max(4px, 1 * 12px);
+    padding-block: max(2px, 1 * 8px);
+    padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
+    min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
     color: #535457;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 8px 12px;
-    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
-    box-sizing: border-box;
+    box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
@@ -751,13 +748,11 @@ button:focus-visible {
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--highlighted {
     background: #D8D8DB;
-  }
-  .option--selected {
-    cursor: default;
-    pointer-events: none;
-    background: #EEEFF2;
   }
   .option--highlighted, .option--selected {
     color: #010205;
@@ -788,7 +783,7 @@ button:focus-visible {
 @media(hover:hover) {
     .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
       color: #010205;
-      background: #D8D8DB;
+      background: rgba(148, 149, 152, .18);
     }
 }
 "
@@ -847,7 +842,7 @@ button:focus-visible {
     display: flex;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 416px;
+    max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -871,19 +866,20 @@ button:focus-visible {
     display: none;
   }
   .option {
+    display: flex;
+    justify-content: space-between;
+    gap: max(4px, 1 * 12px);
+    padding-block: max(2px, 1 * 8px);
+    padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
+    min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
     color: #535457;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 8px 12px;
-    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
-    box-sizing: border-box;
+    box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
@@ -900,13 +896,11 @@ button:focus-visible {
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--highlighted {
     background: #D8D8DB;
-  }
-  .option--selected {
-    cursor: default;
-    pointer-events: none;
-    background: #EEEFF2;
   }
   .option--highlighted, .option--selected {
     color: #010205;
@@ -937,7 +931,7 @@ button:focus-visible {
 @media(hover:hover) {
     .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
       color: #010205;
-      background: #D8D8DB;
+      background: rgba(148, 149, 152, .18);
     }
 }
 "
@@ -1019,7 +1013,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     display: flex;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 416px;
+    max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -1046,19 +1040,20 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     display: none;
   }
   .option {
+    display: flex;
+    justify-content: space-between;
+    gap: max(4px, 1 * 12px);
+    padding-block: max(2px, 1 * 8px);
+    padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
+    min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
     color: #535457;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 8px 12px;
-    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
-    box-sizing: border-box;
+    box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
@@ -1075,13 +1070,11 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--highlighted {
     background: #D8D8DB;
-  }
-  .option--selected {
-    cursor: default;
-    pointer-events: none;
-    background: #EEEFF2;
   }
   .option--highlighted, .option--selected {
     color: #010205;
@@ -1112,7 +1105,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 @media(hover:hover) {
     .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
       color: #010205;
-      background: #D8D8DB;
+      background: rgba(148, 149, 152, .18);
     }
 }
 "
@@ -1170,7 +1163,7 @@ button:focus-visible {
     display: flex;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 416px;
+    max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -1194,19 +1187,20 @@ button:focus-visible {
     display: none;
   }
   .option {
+    display: flex;
+    justify-content: space-between;
+    gap: max(4px, 1 * 12px);
+    padding-block: max(2px, 1 * 8px);
+    padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
+    min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
     color: #535457;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 8px 12px;
-    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
-    box-sizing: border-box;
+    box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
@@ -1223,13 +1217,11 @@ button:focus-visible {
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--highlighted {
     background: #D8D8DB;
-  }
-  .option--selected {
-    cursor: default;
-    pointer-events: none;
-    background: #EEEFF2;
   }
   .option--highlighted, .option--selected {
     color: #010205;
@@ -1260,7 +1252,7 @@ button:focus-visible {
 @media(hover:hover) {
     .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
       color: #010205;
-      background: #D8D8DB;
+      background: rgba(148, 149, 152, .18);
     }
 }
 "
@@ -1342,7 +1334,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     display: flex;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 416px;
+    max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -1369,19 +1361,20 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     display: none;
   }
   .option {
+    display: flex;
+    justify-content: space-between;
+    gap: max(4px, 1 * 12px);
+    padding-block: max(2px, 1 * 8px);
+    padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
+    min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
     color: #535457;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 8px 12px;
-    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
-    box-sizing: border-box;
+    box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
@@ -1398,13 +1391,11 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--highlighted {
     background: #D8D8DB;
-  }
-  .option--selected {
-    cursor: default;
-    pointer-events: none;
-    background: #EEEFF2;
   }
   .option--highlighted, .option--selected {
     color: #010205;
@@ -1435,7 +1426,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 @media(hover:hover) {
     .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
       color: #010205;
-      background: #D8D8DB;
+      background: rgba(148, 149, 152, .18);
     }
 }
 "
@@ -1493,7 +1484,7 @@ button:focus-visible {
     display: none;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 416px;
+    max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -1517,19 +1508,20 @@ button:focus-visible {
     display: none;
   }
   .option {
+    display: flex;
+    justify-content: space-between;
+    gap: max(4px, 1 * 12px);
+    padding-block: max(2px, 1 * 8px);
+    padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
+    min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
     color: #535457;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 8px 12px;
-    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
-    box-sizing: border-box;
+    box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
@@ -1546,13 +1538,11 @@ button:focus-visible {
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--highlighted {
     background: #D8D8DB;
-  }
-  .option--selected {
-    cursor: default;
-    pointer-events: none;
-    background: #EEEFF2;
   }
   .option--highlighted, .option--selected {
     color: #010205;
@@ -1583,7 +1573,7 @@ button:focus-visible {
 @media(hover:hover) {
     .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
       color: #010205;
-      background: #D8D8DB;
+      background: rgba(148, 149, 152, .18);
     }
 }
 "
@@ -1665,7 +1655,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     display: none;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 416px;
+    max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -1692,19 +1682,20 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     display: none;
   }
   .option {
+    display: flex;
+    justify-content: space-between;
+    gap: max(4px, 1 * 12px);
+    padding-block: max(2px, 1 * 8px);
+    padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
+    min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
     color: #535457;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 8px 12px;
-    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
-    box-sizing: border-box;
+    box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
@@ -1721,13 +1712,11 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--highlighted {
     background: #D8D8DB;
-  }
-  .option--selected {
-    cursor: default;
-    pointer-events: none;
-    background: #EEEFF2;
   }
   .option--highlighted, .option--selected {
     color: #010205;
@@ -1758,7 +1747,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 @media(hover:hover) {
     .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
       color: #010205;
-      background: #D8D8DB;
+      background: rgba(148, 149, 152, .18);
     }
 }
 "
@@ -1816,7 +1805,7 @@ button:focus-visible {
     display: none;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 416px;
+    max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -1840,19 +1829,20 @@ button:focus-visible {
     display: none;
   }
   .option {
+    display: flex;
+    justify-content: space-between;
+    gap: max(4px, 1 * 12px);
+    padding-block: max(2px, 1 * 8px);
+    padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
+    min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
     color: #535457;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 8px 12px;
-    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
-    box-sizing: border-box;
+    box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
@@ -1869,13 +1859,11 @@ button:focus-visible {
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--highlighted {
     background: #D8D8DB;
-  }
-  .option--selected {
-    cursor: default;
-    pointer-events: none;
-    background: #EEEFF2;
   }
   .option--highlighted, .option--selected {
     color: #010205;
@@ -1906,7 +1894,7 @@ button:focus-visible {
 @media(hover:hover) {
     .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
       color: #010205;
-      background: #D8D8DB;
+      background: rgba(148, 149, 152, .18);
     }
 }
 "
@@ -1988,7 +1976,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     display: none;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 416px;
+    max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -2015,19 +2003,20 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     display: none;
   }
   .option {
+    display: flex;
+    justify-content: space-between;
+    gap: max(4px, 1 * 12px);
+    padding-block: max(2px, 1 * 8px);
+    padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
+    min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
     color: #535457;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 8px 12px;
-    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
-    box-sizing: border-box;
+    box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
@@ -2044,13 +2033,11 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--highlighted {
     background: #D8D8DB;
-  }
-  .option--selected {
-    cursor: default;
-    pointer-events: none;
-    background: #EEEFF2;
   }
   .option--highlighted, .option--selected {
     color: #010205;
@@ -2081,7 +2068,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 @media(hover:hover) {
     .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
       color: #010205;
-      background: #D8D8DB;
+      background: rgba(148, 149, 152, .18);
     }
 }
 "
@@ -2139,7 +2126,7 @@ button:focus-visible {
     display: flex;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 416px;
+    max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -2163,19 +2150,20 @@ button:focus-visible {
     display: none;
   }
   .option {
+    display: flex;
+    justify-content: space-between;
+    gap: max(4px, 1 * 12px);
+    padding-block: max(2px, 1 * 8px);
+    padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
+    min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
     color: #535457;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 8px 12px;
-    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
-    box-sizing: border-box;
+    box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
@@ -2192,13 +2180,11 @@ button:focus-visible {
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--highlighted {
     background: #D8D8DB;
-  }
-  .option--selected {
-    cursor: default;
-    pointer-events: none;
-    background: #EEEFF2;
   }
   .option--highlighted, .option--selected {
     color: #010205;
@@ -2229,7 +2215,7 @@ button:focus-visible {
 @media(hover:hover) {
     .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
       color: #010205;
-      background: #D8D8DB;
+      background: rgba(148, 149, 152, .18);
     }
 }
 "
@@ -2288,7 +2274,7 @@ button:focus-visible {
     display: flex;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 416px;
+    max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -2312,19 +2298,20 @@ button:focus-visible {
     display: none;
   }
   .option {
+    display: flex;
+    justify-content: space-between;
+    gap: max(4px, 1 * 12px);
+    padding-block: max(2px, 1 * 8px);
+    padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
+    min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
     color: #535457;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 8px 12px;
-    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
-    box-sizing: border-box;
+    box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
@@ -2341,13 +2328,11 @@ button:focus-visible {
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--highlighted {
     background: #D8D8DB;
-  }
-  .option--selected {
-    cursor: default;
-    pointer-events: none;
-    background: #EEEFF2;
   }
   .option--highlighted, .option--selected {
     color: #010205;
@@ -2378,7 +2363,7 @@ button:focus-visible {
 @media(hover:hover) {
     .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
       color: #010205;
-      background: #D8D8DB;
+      background: rgba(148, 149, 152, .18);
     }
 }
 "
@@ -2460,7 +2445,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     display: flex;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 416px;
+    max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -2487,19 +2472,20 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     display: none;
   }
   .option {
+    display: flex;
+    justify-content: space-between;
+    gap: max(4px, 1 * 12px);
+    padding-block: max(2px, 1 * 8px);
+    padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
+    min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
     color: #535457;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 8px 12px;
-    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
-    box-sizing: border-box;
+    box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
@@ -2516,13 +2502,11 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--highlighted {
     background: #D8D8DB;
-  }
-  .option--selected {
-    cursor: default;
-    pointer-events: none;
-    background: #EEEFF2;
   }
   .option--highlighted, .option--selected {
     color: #010205;
@@ -2553,7 +2537,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 @media(hover:hover) {
     .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
       color: #010205;
-      background: #D8D8DB;
+      background: rgba(148, 149, 152, .18);
     }
 }
 "
@@ -2611,7 +2595,7 @@ button:focus-visible {
     display: flex;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 416px;
+    max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -2635,19 +2619,20 @@ button:focus-visible {
     display: none;
   }
   .option {
+    display: flex;
+    justify-content: space-between;
+    gap: max(4px, 1 * 12px);
+    padding-block: max(2px, 1 * 8px);
+    padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
+    min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
     color: #535457;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 8px 12px;
-    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
-    box-sizing: border-box;
+    box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
@@ -2664,13 +2649,11 @@ button:focus-visible {
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--highlighted {
     background: #D8D8DB;
-  }
-  .option--selected {
-    cursor: default;
-    pointer-events: none;
-    background: #EEEFF2;
   }
   .option--highlighted, .option--selected {
     color: #010205;
@@ -2701,7 +2684,7 @@ button:focus-visible {
 @media(hover:hover) {
     .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
       color: #010205;
-      background: #D8D8DB;
+      background: rgba(148, 149, 152, .18);
     }
 }
 "
@@ -2783,7 +2766,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     display: flex;
     flex-direction: column;
     gap: max(2px, 1 * 8px);
-    max-height: 416px;
+    max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
     scrollbar-width: thin;
@@ -2810,19 +2793,20 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     display: none;
   }
   .option {
+    display: flex;
+    justify-content: space-between;
+    gap: max(4px, 1 * 12px);
+    padding-block: max(2px, 1 * 8px);
+    padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
+    min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
     color: #535457;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 8px 12px;
-    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
     cursor: pointer;
     text-align: start;
     word-break: break-word;
-    box-sizing: border-box;
+    box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
@@ -2839,13 +2823,11 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--highlighted {
     background: #D8D8DB;
-  }
-  .option--selected {
-    cursor: default;
-    pointer-events: none;
-    background: #EEEFF2;
   }
   .option--highlighted, .option--selected {
     color: #010205;
@@ -2876,7 +2858,7 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
 @media(hover:hover) {
     .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
       color: #010205;
-      background: #D8D8DB;
+      background: rgba(148, 149, 152, .18);
     }
 }
 "
