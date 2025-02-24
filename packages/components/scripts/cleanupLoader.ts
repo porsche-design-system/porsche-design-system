@@ -19,7 +19,7 @@ const cleanupLoader = () => {
   const [fileName] = fs.readdirSync(directory).filter((el) => !!el.match(/^validateProps-[\d\w]*.js$/));
   const filePath = path.resolve(directory, fileName);
   const fileContent = fs.readFileSync(filePath, 'utf8');
-  const [, hasWindowExport] = /export {.*?hasWindow as ([a-zA-Z_]+).*?};/.exec(fileContent) || [];
+  const [, hasWindowExport] = /export\s*{.*?hasWindow\s*as\s*([^,\s]+).*?};/.exec(fileContent) || [];
 
   if (hasWindowExport === undefined) {
     throw new Error('hasWindowExport could not be extracted.');
