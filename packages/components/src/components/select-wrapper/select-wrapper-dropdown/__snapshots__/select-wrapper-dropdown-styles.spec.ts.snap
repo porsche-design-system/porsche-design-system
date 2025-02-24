@@ -22,22 +22,130 @@ button {
   cursor: pointer;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-button:focus, button:focus ~ ul {
-  border-color: #010205;
-}
 button:disabled {
   cursor: not-allowed;
   border-color: #949598;
 }
-@media(hover:hover) {
-  button:not(:disabled):not(:focus):hover {
-    border-color: #010205;
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, 1 * 6px);
+    display: none;
+    flex-direction: column;
+    gap: max(2px, 1 * 8px);
+    max-height: 416px;
+    box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #FFF;
+    border: 1px solid #D8D8DB;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
+@media(hover:hover) {
+    button:not(:disabled):hover {
+      border-color: #010205;
+    }
+}
 
-.sr-text {
-  display: none;
-}"
+  .sr-text {
+    display: none;
+  }
+  .option {
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #535457;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 12px;
+    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: border-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .option[role=status] {
+    cursor: not-allowed;
+  }
+  .option__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .option--highlighted {
+    background: #D8D8DB;
+  }
+  .option--selected {
+    cursor: default;
+    pointer-events: none;
+    background: #EEEFF2;
+  }
+  .option--highlighted, .option--selected {
+    color: #010205;
+  }
+  .option--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .option--hidden {
+    display: none;
+  }
+  .option--indent {
+    padding-left: 28px;
+  }
+  .optgroup {
+    color: #010205;
+    display: block;
+    padding: 8px 12px;
+    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+    font-weight: 600;
+  }
+  .optgroup--hidden {
+    display: none;
+  }
+  .optgroup--disabled {
+    color: #949598;
+  }
+@media(hover:hover) {
+    .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: #D8D8DB;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: false, state: none, disabled: false, filter: true, isNativePopoverCase: false and theme: light 1`] = `
@@ -100,18 +208,119 @@ input+span {
 input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   border-color: #010205;
 }
-@media(hover:hover) {
-  input:not(:disabled)+span:hover {
-    border-color: #010205;
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
-  input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
-    border-color: #010205;
+  to {
+    opacity: 1;
   }
 }
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, 1 * 6px);
+    display: none;
+    flex-direction: column;
+    gap: max(2px, 1 * 8px);
+    max-height: 416px;
+    box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #FFF;
+    border: 1px solid #D8D8DB;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
+@media(hover:hover) {
+    input:not(:disabled)+span:hover {
+      border-color: #010205;
+    }
+    input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
+      border-color: #010205;
+    }
+}
 
-.sr-text {
-  display: none;
-}"
+  .sr-text {
+    display: none;
+  }
+  .option {
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #535457;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 12px;
+    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: border-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .option[role=status] {
+    cursor: not-allowed;
+  }
+  .option__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .option--highlighted {
+    background: #D8D8DB;
+  }
+  .option--selected {
+    cursor: default;
+    pointer-events: none;
+    background: #EEEFF2;
+  }
+  .option--highlighted, .option--selected {
+    color: #010205;
+  }
+  .option--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .option--hidden {
+    display: none;
+  }
+  .option--indent {
+    padding-left: 28px;
+  }
+  .optgroup {
+    color: #010205;
+    display: block;
+    padding: 8px 12px;
+    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+    font-weight: 600;
+  }
+  .optgroup--hidden {
+    display: none;
+  }
+  .optgroup--disabled {
+    color: #949598;
+  }
+@media(hover:hover) {
+    .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: #D8D8DB;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: false, state: none, disabled: true, filter: false, isNativePopoverCase: false and theme: light 1`] = `
@@ -136,22 +345,130 @@ button {
   cursor: pointer;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-button:focus, button:focus ~ ul {
-  border-color: #010205;
-}
 button:disabled {
   cursor: not-allowed;
   border-color: #949598;
 }
-@media(hover:hover) {
-  button:not(:disabled):not(:focus):hover {
-    border-color: #010205;
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, 1 * 6px);
+    display: none;
+    flex-direction: column;
+    gap: max(2px, 1 * 8px);
+    max-height: 416px;
+    box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #FFF;
+    border: 1px solid #D8D8DB;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
+@media(hover:hover) {
+    button:not(:disabled):hover {
+      border-color: #010205;
+    }
+}
 
-.sr-text {
-  display: none;
-}"
+  .sr-text {
+    display: none;
+  }
+  .option {
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #535457;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 12px;
+    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: border-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .option[role=status] {
+    cursor: not-allowed;
+  }
+  .option__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .option--highlighted {
+    background: #D8D8DB;
+  }
+  .option--selected {
+    cursor: default;
+    pointer-events: none;
+    background: #EEEFF2;
+  }
+  .option--highlighted, .option--selected {
+    color: #010205;
+  }
+  .option--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .option--hidden {
+    display: none;
+  }
+  .option--indent {
+    padding-left: 28px;
+  }
+  .optgroup {
+    color: #010205;
+    display: block;
+    padding: 8px 12px;
+    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+    font-weight: 600;
+  }
+  .optgroup--hidden {
+    display: none;
+  }
+  .optgroup--disabled {
+    color: #949598;
+  }
+@media(hover:hover) {
+    .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: #D8D8DB;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: false, state: none, disabled: true, filter: true, isNativePopoverCase: false and theme: light 1`] = `
@@ -214,18 +531,119 @@ input+span {
 input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   border-color: #010205;
 }
-@media(hover:hover) {
-  input:not(:disabled)+span:hover {
-    border-color: #010205;
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
-  input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
-    border-color: #010205;
+  to {
+    opacity: 1;
   }
 }
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, 1 * 6px);
+    display: none;
+    flex-direction: column;
+    gap: max(2px, 1 * 8px);
+    max-height: 416px;
+    box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #FFF;
+    border: 1px solid #D8D8DB;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
+@media(hover:hover) {
+    input:not(:disabled)+span:hover {
+      border-color: #010205;
+    }
+    input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
+      border-color: #010205;
+    }
+}
 
-.sr-text {
-  display: none;
-}"
+  .sr-text {
+    display: none;
+  }
+  .option {
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #535457;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 12px;
+    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: border-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .option[role=status] {
+    cursor: not-allowed;
+  }
+  .option__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .option--highlighted {
+    background: #D8D8DB;
+  }
+  .option--selected {
+    cursor: default;
+    pointer-events: none;
+    background: #EEEFF2;
+  }
+  .option--highlighted, .option--selected {
+    color: #010205;
+  }
+  .option--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .option--hidden {
+    display: none;
+  }
+  .option--indent {
+    padding-left: 28px;
+  }
+  .optgroup {
+    color: #010205;
+    display: block;
+    padding: 8px 12px;
+    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+    font-weight: 600;
+  }
+  .optgroup--hidden {
+    display: none;
+  }
+  .optgroup--disabled {
+    color: #949598;
+  }
+@media(hover:hover) {
+    .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: #D8D8DB;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: true, state: none, disabled: false, filter: false, isNativePopoverCase: false and theme: light 1`] = `
@@ -249,120 +667,129 @@ button {
   outline: 0;
   cursor: pointer;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-button:focus, button:focus ~ ul {
-  border-color: #010205;
 }
 button:disabled {
   cursor: not-allowed;
   border-color: #949598;
 }
-[role="listbox"] {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: var(--p-internal-dropdown-position, absolute);
-  padding: 6px;
-  margin: 0;
-  background: #FFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #535457;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  top: calc(100% - 2px);
-  box-sizing: border-box;
-  max-height: 416px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  border: 2px solid #010205;
-  border-top: 1px solid #6B6D70 !important;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  transform: translate3d(0,0,0);
+button::-moz-focus-inner {
+  border: 0;
 }
-@media(hover:hover) {
-  button:not(:disabled):not(:focus):hover {
-    border-color: #010205;
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, 1 * 6px);
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, 1 * 8px);
+    max-height: 416px;
+    box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #FFF;
+    border: 1px solid #D8D8DB;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
+@media(hover:hover) {
+    button:not(:disabled):hover {
+      border-color: #010205;
+    }
 }
 
-.sr-text {
-  display: none;
-}
-.option {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 12px;
-  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
-  cursor: pointer;
-  text-align: start;
-  word-break: break-word;
-  box-sizing: border-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.option--highlighted {
-  background: #D8D8DB;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-  background: #EEEFF2;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.option--indent {
-  padding-left: 28px;
-}
-.optgroup {
-  color: #010205;
-  display: block;
-  padding: 8px 12px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  font-weight: 600;
-}
-.optgroup--hidden {
-  display: none;
-}
-.optgroup--disabled {
-  color: #949598;
-}
-@media(hover:hover) {
-  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-    color: #010205;
+  .sr-text {
+    display: none;
+  }
+  .option {
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #535457;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 12px;
+    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: border-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .option[role=status] {
+    cursor: not-allowed;
+  }
+  .option__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .option--highlighted {
     background: #D8D8DB;
   }
+  .option--selected {
+    cursor: default;
+    pointer-events: none;
+    background: #EEEFF2;
+  }
+  .option--highlighted, .option--selected {
+    color: #010205;
+  }
+  .option--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .option--hidden {
+    display: none;
+  }
+  .option--indent {
+    padding-left: 28px;
+  }
+  .optgroup {
+    color: #010205;
+    display: block;
+    padding: 8px 12px;
+    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+    font-weight: 600;
+  }
+  .optgroup--hidden {
+    display: none;
+  }
+  .optgroup--disabled {
+    color: #949598;
+  }
+@media(hover:hover) {
+    .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: #D8D8DB;
+    }
 }
 "
 `;
@@ -376,6 +803,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   visibility: hidden;
 }
 button {
+  anchor-name: --anchor-select-wrapper;
   position: absolute;
   inset: 0;
   width: 100%;
@@ -388,132 +816,129 @@ button {
   outline: 0;
   cursor: pointer;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-button:focus, button:focus ~ ul {
-  border-color: #010205;
 }
 button:disabled {
   cursor: not-allowed;
   border-color: #949598;
 }
-[role="listbox"] {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: var(--p-internal-dropdown-position, absolute);
-  padding: 6px;
-  margin: 0;
-  background: #FFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #535457;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  top: calc(100% - 2px);
-  box-sizing: border-box;
-  max-height: 416px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  border: 2px solid #010205;
-  border-top: 1px solid #6B6D70 !important;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  transform: translate3d(0,0,0);
+button::-moz-focus-inner {
+  border: 0;
 }
-@media(hover:hover) {
-  button:not(:disabled):not(:focus):hover {
-    border-color: #010205;
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, 1 * 6px);
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, 1 * 8px);
+    max-height: 416px;
+    box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #FFF;
+    border: 1px solid #D8D8DB;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
+@media(hover:hover) {
+    button:not(:disabled):hover {
+      border-color: #010205;
+    }
 }
 
-.sr-text {
-  display: none;
-}
-.popover {
-  position: absolute;
-  border: none;
-  background: none;
-  pointer-events: all;
-  padding: 0;
-  margin: 0;
-  overflow: initial;
-}
-.popover:-internal-popover-in-top-layer::backdrop {
-  display: none;
-}
-.option {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 12px;
-  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
-  cursor: pointer;
-  text-align: start;
-  word-break: break-word;
-  box-sizing: border-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.option--highlighted {
-  background: #D8D8DB;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-  background: #EEEFF2;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.option--indent {
-  padding-left: 28px;
-}
-.optgroup {
-  color: #010205;
-  display: block;
-  padding: 8px 12px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  font-weight: 600;
-}
-.optgroup--hidden {
-  display: none;
-}
-.optgroup--disabled {
-  color: #949598;
-}
-@media(hover:hover) {
-  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-    color: #010205;
+  .sr-text {
+    display: none;
+  }
+  .option {
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #535457;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 12px;
+    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: border-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .option[role=status] {
+    cursor: not-allowed;
+  }
+  .option__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .option--highlighted {
     background: #D8D8DB;
   }
+  .option--selected {
+    cursor: default;
+    pointer-events: none;
+    background: #EEEFF2;
+  }
+  .option--highlighted, .option--selected {
+    color: #010205;
+  }
+  .option--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .option--hidden {
+    display: none;
+  }
+  .option--indent {
+    padding-left: 28px;
+  }
+  .optgroup {
+    color: #010205;
+    display: block;
+    padding: 8px 12px;
+    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+    font-weight: 600;
+  }
+  .optgroup--hidden {
+    display: none;
+  }
+  .optgroup--disabled {
+    color: #949598;
+  }
+@media(hover:hover) {
+    .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: #D8D8DB;
+    }
 }
 "
 `;
@@ -574,119 +999,121 @@ input+span {
   cursor: pointer;
   border: 2px solid #010205;
   border-radius: 4px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
 }
 input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   border-color: #010205;
 }
-[role="listbox"] {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: var(--p-internal-dropdown-position, absolute);
-  padding: 6px;
-  margin: 0;
-  background: #FFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #535457;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  top: calc(100% - 2px);
-  box-sizing: border-box;
-  max-height: 416px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  border: 2px solid #010205;
-  border-top: 1px solid #6B6D70 !important;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  transform: translate3d(0,0,0);
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, 1 * 6px);
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, 1 * 8px);
+    max-height: 416px;
+    box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #FFF;
+    border: 1px solid #D8D8DB;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
 @media(hover:hover) {
-  input:not(:disabled)+span:hover {
-    border-color: #010205;
-  }
-  input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
-    border-color: #010205;
-  }
+    input:not(:disabled)+span:hover {
+      border-color: #010205;
+    }
+    input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
+      border-color: #010205;
+    }
 }
 
-.sr-text {
-  display: none;
-}
-.option {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 12px;
-  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
-  cursor: pointer;
-  text-align: start;
-  word-break: break-word;
-  box-sizing: border-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.option--highlighted {
-  background: #D8D8DB;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-  background: #EEEFF2;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.option--indent {
-  padding-left: 28px;
-}
-.optgroup {
-  color: #010205;
-  display: block;
-  padding: 8px 12px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  font-weight: 600;
-}
-.optgroup--hidden {
-  display: none;
-}
-.optgroup--disabled {
-  color: #949598;
-}
-@media(hover:hover) {
-  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-    color: #010205;
+  .sr-text {
+    display: none;
+  }
+  .option {
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #535457;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 12px;
+    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: border-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .option[role=status] {
+    cursor: not-allowed;
+  }
+  .option__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .option--highlighted {
     background: #D8D8DB;
   }
+  .option--selected {
+    cursor: default;
+    pointer-events: none;
+    background: #EEEFF2;
+  }
+  .option--highlighted, .option--selected {
+    color: #010205;
+  }
+  .option--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .option--hidden {
+    display: none;
+  }
+  .option--indent {
+    padding-left: 28px;
+  }
+  .optgroup {
+    color: #010205;
+    display: block;
+    padding: 8px 12px;
+    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+    font-weight: 600;
+  }
+  .optgroup--hidden {
+    display: none;
+  }
+  .optgroup--disabled {
+    color: #949598;
+  }
+@media(hover:hover) {
+    .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: #D8D8DB;
+    }
 }
 "
 `;
@@ -712,120 +1139,129 @@ button {
   outline: 0;
   cursor: pointer;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-button:focus, button:focus ~ ul {
-  border-color: #010205;
 }
 button:disabled {
   cursor: not-allowed;
   border-color: #949598;
 }
-[role="listbox"] {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: var(--p-internal-dropdown-position, absolute);
-  padding: 6px;
-  margin: 0;
-  background: #FFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #535457;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  top: calc(100% - 2px);
-  box-sizing: border-box;
-  max-height: 416px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  border: 2px solid #010205;
-  border-top: 1px solid #6B6D70 !important;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  transform: translate3d(0,0,0);
+button::-moz-focus-inner {
+  border: 0;
 }
-@media(hover:hover) {
-  button:not(:disabled):not(:focus):hover {
-    border-color: #010205;
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, 1 * 6px);
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, 1 * 8px);
+    max-height: 416px;
+    box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #FFF;
+    border: 1px solid #D8D8DB;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
+@media(hover:hover) {
+    button:not(:disabled):hover {
+      border-color: #010205;
+    }
 }
 
-.sr-text {
-  display: none;
-}
-.option {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 12px;
-  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
-  cursor: pointer;
-  text-align: start;
-  word-break: break-word;
-  box-sizing: border-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.option--highlighted {
-  background: #D8D8DB;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-  background: #EEEFF2;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.option--indent {
-  padding-left: 28px;
-}
-.optgroup {
-  color: #010205;
-  display: block;
-  padding: 8px 12px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  font-weight: 600;
-}
-.optgroup--hidden {
-  display: none;
-}
-.optgroup--disabled {
-  color: #949598;
-}
-@media(hover:hover) {
-  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-    color: #010205;
+  .sr-text {
+    display: none;
+  }
+  .option {
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #535457;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 12px;
+    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: border-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .option[role=status] {
+    cursor: not-allowed;
+  }
+  .option__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .option--highlighted {
     background: #D8D8DB;
   }
+  .option--selected {
+    cursor: default;
+    pointer-events: none;
+    background: #EEEFF2;
+  }
+  .option--highlighted, .option--selected {
+    color: #010205;
+  }
+  .option--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .option--hidden {
+    display: none;
+  }
+  .option--indent {
+    padding-left: 28px;
+  }
+  .optgroup {
+    color: #010205;
+    display: block;
+    padding: 8px 12px;
+    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+    font-weight: 600;
+  }
+  .optgroup--hidden {
+    display: none;
+  }
+  .optgroup--disabled {
+    color: #949598;
+  }
+@media(hover:hover) {
+    .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: #D8D8DB;
+    }
 }
 "
 `;
@@ -886,119 +1322,121 @@ input+span {
   cursor: not-allowed;
   border: 2px solid #010205;
   border-radius: 4px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
 }
 input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   border-color: #010205;
 }
-[role="listbox"] {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: var(--p-internal-dropdown-position, absolute);
-  padding: 6px;
-  margin: 0;
-  background: #FFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #535457;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  top: calc(100% - 2px);
-  box-sizing: border-box;
-  max-height: 416px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  border: 2px solid #010205;
-  border-top: 1px solid #6B6D70 !important;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  transform: translate3d(0,0,0);
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, 1 * 6px);
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, 1 * 8px);
+    max-height: 416px;
+    box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #FFF;
+    border: 1px solid #D8D8DB;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
 @media(hover:hover) {
-  input:not(:disabled)+span:hover {
-    border-color: #010205;
-  }
-  input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
-    border-color: #010205;
-  }
+    input:not(:disabled)+span:hover {
+      border-color: #010205;
+    }
+    input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
+      border-color: #010205;
+    }
 }
 
-.sr-text {
-  display: none;
-}
-.option {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 12px;
-  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
-  cursor: pointer;
-  text-align: start;
-  word-break: break-word;
-  box-sizing: border-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.option--highlighted {
-  background: #D8D8DB;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-  background: #EEEFF2;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.option--indent {
-  padding-left: 28px;
-}
-.optgroup {
-  color: #010205;
-  display: block;
-  padding: 8px 12px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  font-weight: 600;
-}
-.optgroup--hidden {
-  display: none;
-}
-.optgroup--disabled {
-  color: #949598;
-}
-@media(hover:hover) {
-  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-    color: #010205;
+  .sr-text {
+    display: none;
+  }
+  .option {
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #535457;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 12px;
+    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: border-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .option[role=status] {
+    cursor: not-allowed;
+  }
+  .option__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .option--highlighted {
     background: #D8D8DB;
   }
+  .option--selected {
+    cursor: default;
+    pointer-events: none;
+    background: #EEEFF2;
+  }
+  .option--highlighted, .option--selected {
+    color: #010205;
+  }
+  .option--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .option--hidden {
+    display: none;
+  }
+  .option--indent {
+    padding-left: 28px;
+  }
+  .optgroup {
+    color: #010205;
+    display: block;
+    padding: 8px 12px;
+    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+    font-weight: 600;
+  }
+  .optgroup--hidden {
+    display: none;
+  }
+  .optgroup--disabled {
+    color: #949598;
+  }
+@media(hover:hover) {
+    .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: #D8D8DB;
+    }
 }
 "
 `;
@@ -1025,22 +1463,130 @@ button {
   cursor: pointer;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-button:focus, button:focus ~ ul {
-  border-color: #010205;
-}
 button:disabled {
   cursor: not-allowed;
   border-color: #949598;
 }
-@media(hover:hover) {
-  button:not(:disabled):not(:focus):hover {
-    border-color: #010205;
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, 1 * 6px);
+    display: none;
+    flex-direction: column;
+    gap: max(2px, 1 * 8px);
+    max-height: 416px;
+    box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #FFF;
+    border: 1px solid #D8D8DB;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
+@media(hover:hover) {
+    button:not(:disabled):hover {
+      border-color: #010205;
+    }
+}
 
-.sr-text {
-  display: none;
-}"
+  .sr-text {
+    display: none;
+  }
+  .option {
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #535457;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 12px;
+    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: border-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .option[role=status] {
+    cursor: not-allowed;
+  }
+  .option__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .option--highlighted {
+    background: #D8D8DB;
+  }
+  .option--selected {
+    cursor: default;
+    pointer-events: none;
+    background: #EEEFF2;
+  }
+  .option--highlighted, .option--selected {
+    color: #010205;
+  }
+  .option--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .option--hidden {
+    display: none;
+  }
+  .option--indent {
+    padding-left: 28px;
+  }
+  .optgroup {
+    color: #010205;
+    display: block;
+    padding: 8px 12px;
+    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+    font-weight: 600;
+  }
+  .optgroup--hidden {
+    display: none;
+  }
+  .optgroup--disabled {
+    color: #949598;
+  }
+@media(hover:hover) {
+    .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: #D8D8DB;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: false, state: none, disabled: false, filter: true, isNativePopoverCase: false and theme: light 1`] = `
@@ -1103,18 +1649,119 @@ input+span {
 input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   border-color: #010205;
 }
-@media(hover:hover) {
-  input:not(:disabled)+span:hover {
-    border-color: #010205;
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
-  input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
-    border-color: #010205;
+  to {
+    opacity: 1;
   }
 }
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, 1 * 6px);
+    display: none;
+    flex-direction: column;
+    gap: max(2px, 1 * 8px);
+    max-height: 416px;
+    box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #FFF;
+    border: 1px solid #D8D8DB;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
+@media(hover:hover) {
+    input:not(:disabled)+span:hover {
+      border-color: #010205;
+    }
+    input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
+      border-color: #010205;
+    }
+}
 
-.sr-text {
-  display: none;
-}"
+  .sr-text {
+    display: none;
+  }
+  .option {
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #535457;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 12px;
+    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: border-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .option[role=status] {
+    cursor: not-allowed;
+  }
+  .option__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .option--highlighted {
+    background: #D8D8DB;
+  }
+  .option--selected {
+    cursor: default;
+    pointer-events: none;
+    background: #EEEFF2;
+  }
+  .option--highlighted, .option--selected {
+    color: #010205;
+  }
+  .option--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .option--hidden {
+    display: none;
+  }
+  .option--indent {
+    padding-left: 28px;
+  }
+  .optgroup {
+    color: #010205;
+    display: block;
+    padding: 8px 12px;
+    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+    font-weight: 600;
+  }
+  .optgroup--hidden {
+    display: none;
+  }
+  .optgroup--disabled {
+    color: #949598;
+  }
+@media(hover:hover) {
+    .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: #D8D8DB;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: false, state: none, disabled: true, filter: false, isNativePopoverCase: false and theme: light 1`] = `
@@ -1139,22 +1786,130 @@ button {
   cursor: pointer;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-button:focus, button:focus ~ ul {
-  border-color: #010205;
-}
 button:disabled {
   cursor: not-allowed;
   border-color: #949598;
 }
-@media(hover:hover) {
-  button:not(:disabled):not(:focus):hover {
-    border-color: #010205;
+button::-moz-focus-inner {
+  border: 0;
+}
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, 1 * 6px);
+    display: none;
+    flex-direction: column;
+    gap: max(2px, 1 * 8px);
+    max-height: 416px;
+    box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #FFF;
+    border: 1px solid #D8D8DB;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
+@media(hover:hover) {
+    button:not(:disabled):hover {
+      border-color: #010205;
+    }
+}
 
-.sr-text {
-  display: none;
-}"
+  .sr-text {
+    display: none;
+  }
+  .option {
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #535457;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 12px;
+    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: border-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .option[role=status] {
+    cursor: not-allowed;
+  }
+  .option__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .option--highlighted {
+    background: #D8D8DB;
+  }
+  .option--selected {
+    cursor: default;
+    pointer-events: none;
+    background: #EEEFF2;
+  }
+  .option--highlighted, .option--selected {
+    color: #010205;
+  }
+  .option--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .option--hidden {
+    display: none;
+  }
+  .option--indent {
+    padding-left: 28px;
+  }
+  .optgroup {
+    color: #010205;
+    display: block;
+    padding: 8px 12px;
+    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+    font-weight: 600;
+  }
+  .optgroup--hidden {
+    display: none;
+  }
+  .optgroup--disabled {
+    color: #949598;
+  }
+@media(hover:hover) {
+    .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: #D8D8DB;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: false, state: none, disabled: true, filter: true, isNativePopoverCase: false and theme: light 1`] = `
@@ -1217,18 +1972,119 @@ input+span {
 input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   border-color: #010205;
 }
-@media(hover:hover) {
-  input:not(:disabled)+span:hover {
-    border-color: #010205;
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
-  input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
-    border-color: #010205;
+  to {
+    opacity: 1;
   }
 }
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, 1 * 6px);
+    display: none;
+    flex-direction: column;
+    gap: max(2px, 1 * 8px);
+    max-height: 416px;
+    box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #FFF;
+    border: 1px solid #D8D8DB;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
+@media(hover:hover) {
+    input:not(:disabled)+span:hover {
+      border-color: #010205;
+    }
+    input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
+      border-color: #010205;
+    }
+}
 
-.sr-text {
-  display: none;
-}"
+  .sr-text {
+    display: none;
+  }
+  .option {
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #535457;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 12px;
+    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: border-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .option[role=status] {
+    cursor: not-allowed;
+  }
+  .option__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .option--highlighted {
+    background: #D8D8DB;
+  }
+  .option--selected {
+    cursor: default;
+    pointer-events: none;
+    background: #EEEFF2;
+  }
+  .option--highlighted, .option--selected {
+    color: #010205;
+  }
+  .option--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .option--hidden {
+    display: none;
+  }
+  .option--indent {
+    padding-left: 28px;
+  }
+  .optgroup {
+    color: #010205;
+    display: block;
+    padding: 8px 12px;
+    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+    font-weight: 600;
+  }
+  .optgroup--hidden {
+    display: none;
+  }
+  .optgroup--disabled {
+    color: #949598;
+  }
+@media(hover:hover) {
+    .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: #D8D8DB;
+    }
+}
+"
 `;
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: true, state: none, disabled: false, filter: false, isNativePopoverCase: false and theme: light 1`] = `
@@ -1252,120 +2108,129 @@ button {
   outline: 0;
   cursor: pointer;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-button:focus, button:focus ~ ul {
-  border-color: #010205;
 }
 button:disabled {
   cursor: not-allowed;
   border-color: #949598;
 }
-[role="listbox"] {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: var(--p-internal-dropdown-position, absolute);
-  padding: 6px;
-  margin: 0;
-  background: #FFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #535457;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  bottom: calc(100% - 2px);
-  box-sizing: border-box;
-  max-height: 416px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  border: 2px solid #010205;
-  border-bottom: 1px solid #6B6D70 !important;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  transform: translate3d(0,0,0);
+button::-moz-focus-inner {
+  border: 0;
 }
-@media(hover:hover) {
-  button:not(:disabled):not(:focus):hover {
-    border-color: #010205;
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, 1 * 6px);
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, 1 * 8px);
+    max-height: 416px;
+    box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #FFF;
+    border: 1px solid #D8D8DB;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
+@media(hover:hover) {
+    button:not(:disabled):hover {
+      border-color: #010205;
+    }
 }
 
-.sr-text {
-  display: none;
-}
-.option {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 12px;
-  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
-  cursor: pointer;
-  text-align: start;
-  word-break: break-word;
-  box-sizing: border-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.option--highlighted {
-  background: #D8D8DB;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-  background: #EEEFF2;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.option--indent {
-  padding-left: 28px;
-}
-.optgroup {
-  color: #010205;
-  display: block;
-  padding: 8px 12px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  font-weight: 600;
-}
-.optgroup--hidden {
-  display: none;
-}
-.optgroup--disabled {
-  color: #949598;
-}
-@media(hover:hover) {
-  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-    color: #010205;
+  .sr-text {
+    display: none;
+  }
+  .option {
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #535457;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 12px;
+    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: border-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .option[role=status] {
+    cursor: not-allowed;
+  }
+  .option__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .option--highlighted {
     background: #D8D8DB;
   }
+  .option--selected {
+    cursor: default;
+    pointer-events: none;
+    background: #EEEFF2;
+  }
+  .option--highlighted, .option--selected {
+    color: #010205;
+  }
+  .option--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .option--hidden {
+    display: none;
+  }
+  .option--indent {
+    padding-left: 28px;
+  }
+  .optgroup {
+    color: #010205;
+    display: block;
+    padding: 8px 12px;
+    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+    font-weight: 600;
+  }
+  .optgroup--hidden {
+    display: none;
+  }
+  .optgroup--disabled {
+    color: #949598;
+  }
+@media(hover:hover) {
+    .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: #D8D8DB;
+    }
 }
 "
 `;
@@ -1379,6 +2244,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   visibility: hidden;
 }
 button {
+  anchor-name: --anchor-select-wrapper;
   position: absolute;
   inset: 0;
   width: 100%;
@@ -1391,132 +2257,129 @@ button {
   outline: 0;
   cursor: pointer;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-button:focus, button:focus ~ ul {
-  border-color: #010205;
 }
 button:disabled {
   cursor: not-allowed;
   border-color: #949598;
 }
-[role="listbox"] {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: var(--p-internal-dropdown-position, absolute);
-  padding: 6px;
-  margin: 0;
-  background: #FFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #535457;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  bottom: calc(100% - 2px);
-  box-sizing: border-box;
-  max-height: 416px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  border: 2px solid #010205;
-  border-bottom: 1px solid #6B6D70 !important;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  transform: translate3d(0,0,0);
+button::-moz-focus-inner {
+  border: 0;
 }
-@media(hover:hover) {
-  button:not(:disabled):not(:focus):hover {
-    border-color: #010205;
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, 1 * 6px);
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, 1 * 8px);
+    max-height: 416px;
+    box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #FFF;
+    border: 1px solid #D8D8DB;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
+@media(hover:hover) {
+    button:not(:disabled):hover {
+      border-color: #010205;
+    }
 }
 
-.sr-text {
-  display: none;
-}
-.popover {
-  position: absolute;
-  border: none;
-  background: none;
-  pointer-events: all;
-  padding: 0;
-  margin: 0;
-  overflow: initial;
-}
-.popover:-internal-popover-in-top-layer::backdrop {
-  display: none;
-}
-.option {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 12px;
-  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
-  cursor: pointer;
-  text-align: start;
-  word-break: break-word;
-  box-sizing: border-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.option--highlighted {
-  background: #D8D8DB;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-  background: #EEEFF2;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.option--indent {
-  padding-left: 28px;
-}
-.optgroup {
-  color: #010205;
-  display: block;
-  padding: 8px 12px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  font-weight: 600;
-}
-.optgroup--hidden {
-  display: none;
-}
-.optgroup--disabled {
-  color: #949598;
-}
-@media(hover:hover) {
-  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-    color: #010205;
+  .sr-text {
+    display: none;
+  }
+  .option {
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #535457;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 12px;
+    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: border-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .option[role=status] {
+    cursor: not-allowed;
+  }
+  .option__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .option--highlighted {
     background: #D8D8DB;
   }
+  .option--selected {
+    cursor: default;
+    pointer-events: none;
+    background: #EEEFF2;
+  }
+  .option--highlighted, .option--selected {
+    color: #010205;
+  }
+  .option--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .option--hidden {
+    display: none;
+  }
+  .option--indent {
+    padding-left: 28px;
+  }
+  .optgroup {
+    color: #010205;
+    display: block;
+    padding: 8px 12px;
+    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+    font-weight: 600;
+  }
+  .optgroup--hidden {
+    display: none;
+  }
+  .optgroup--disabled {
+    color: #949598;
+  }
+@media(hover:hover) {
+    .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: #D8D8DB;
+    }
 }
 "
 `;
@@ -1577,119 +2440,121 @@ input+span {
   cursor: pointer;
   border: 2px solid #010205;
   border-radius: 4px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
 }
 input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   border-color: #010205;
 }
-[role="listbox"] {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: var(--p-internal-dropdown-position, absolute);
-  padding: 6px;
-  margin: 0;
-  background: #FFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #535457;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  bottom: calc(100% - 2px);
-  box-sizing: border-box;
-  max-height: 416px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  border: 2px solid #010205;
-  border-bottom: 1px solid #6B6D70 !important;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  transform: translate3d(0,0,0);
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, 1 * 6px);
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, 1 * 8px);
+    max-height: 416px;
+    box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #FFF;
+    border: 1px solid #D8D8DB;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
 @media(hover:hover) {
-  input:not(:disabled)+span:hover {
-    border-color: #010205;
-  }
-  input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
-    border-color: #010205;
-  }
+    input:not(:disabled)+span:hover {
+      border-color: #010205;
+    }
+    input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
+      border-color: #010205;
+    }
 }
 
-.sr-text {
-  display: none;
-}
-.option {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 12px;
-  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
-  cursor: pointer;
-  text-align: start;
-  word-break: break-word;
-  box-sizing: border-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.option--highlighted {
-  background: #D8D8DB;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-  background: #EEEFF2;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.option--indent {
-  padding-left: 28px;
-}
-.optgroup {
-  color: #010205;
-  display: block;
-  padding: 8px 12px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  font-weight: 600;
-}
-.optgroup--hidden {
-  display: none;
-}
-.optgroup--disabled {
-  color: #949598;
-}
-@media(hover:hover) {
-  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-    color: #010205;
+  .sr-text {
+    display: none;
+  }
+  .option {
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #535457;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 12px;
+    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: border-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .option[role=status] {
+    cursor: not-allowed;
+  }
+  .option__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .option--highlighted {
     background: #D8D8DB;
   }
+  .option--selected {
+    cursor: default;
+    pointer-events: none;
+    background: #EEEFF2;
+  }
+  .option--highlighted, .option--selected {
+    color: #010205;
+  }
+  .option--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .option--hidden {
+    display: none;
+  }
+  .option--indent {
+    padding-left: 28px;
+  }
+  .optgroup {
+    color: #010205;
+    display: block;
+    padding: 8px 12px;
+    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+    font-weight: 600;
+  }
+  .optgroup--hidden {
+    display: none;
+  }
+  .optgroup--disabled {
+    color: #949598;
+  }
+@media(hover:hover) {
+    .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: #D8D8DB;
+    }
 }
 "
 `;
@@ -1715,120 +2580,129 @@ button {
   outline: 0;
   cursor: pointer;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-button:focus, button:focus ~ ul {
-  border-color: #010205;
 }
 button:disabled {
   cursor: not-allowed;
   border-color: #949598;
 }
-[role="listbox"] {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: var(--p-internal-dropdown-position, absolute);
-  padding: 6px;
-  margin: 0;
-  background: #FFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #535457;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  bottom: calc(100% - 2px);
-  box-sizing: border-box;
-  max-height: 416px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  border: 2px solid #010205;
-  border-bottom: 1px solid #6B6D70 !important;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  transform: translate3d(0,0,0);
+button::-moz-focus-inner {
+  border: 0;
 }
-@media(hover:hover) {
-  button:not(:disabled):not(:focus):hover {
-    border-color: #010205;
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, 1 * 6px);
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, 1 * 8px);
+    max-height: 416px;
+    box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #FFF;
+    border: 1px solid #D8D8DB;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
+@media(hover:hover) {
+    button:not(:disabled):hover {
+      border-color: #010205;
+    }
 }
 
-.sr-text {
-  display: none;
-}
-.option {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 12px;
-  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
-  cursor: pointer;
-  text-align: start;
-  word-break: break-word;
-  box-sizing: border-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.option--highlighted {
-  background: #D8D8DB;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-  background: #EEEFF2;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.option--indent {
-  padding-left: 28px;
-}
-.optgroup {
-  color: #010205;
-  display: block;
-  padding: 8px 12px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  font-weight: 600;
-}
-.optgroup--hidden {
-  display: none;
-}
-.optgroup--disabled {
-  color: #949598;
-}
-@media(hover:hover) {
-  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-    color: #010205;
+  .sr-text {
+    display: none;
+  }
+  .option {
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #535457;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 12px;
+    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: border-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .option[role=status] {
+    cursor: not-allowed;
+  }
+  .option__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .option--highlighted {
     background: #D8D8DB;
   }
+  .option--selected {
+    cursor: default;
+    pointer-events: none;
+    background: #EEEFF2;
+  }
+  .option--highlighted, .option--selected {
+    color: #010205;
+  }
+  .option--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .option--hidden {
+    display: none;
+  }
+  .option--indent {
+    padding-left: 28px;
+  }
+  .optgroup {
+    color: #010205;
+    display: block;
+    padding: 8px 12px;
+    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+    font-weight: 600;
+  }
+  .optgroup--hidden {
+    display: none;
+  }
+  .optgroup--disabled {
+    color: #949598;
+  }
+@media(hover:hover) {
+    .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: #D8D8DB;
+    }
 }
 "
 `;
@@ -1889,119 +2763,121 @@ input+span {
   cursor: not-allowed;
   border: 2px solid #010205;
   border-radius: 4px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
 }
 input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   border-color: #010205;
 }
-[role="listbox"] {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: var(--p-internal-dropdown-position, absolute);
-  padding: 6px;
-  margin: 0;
-  background: #FFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #535457;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  bottom: calc(100% - 2px);
-  box-sizing: border-box;
-  max-height: 416px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  border: 2px solid #010205;
-  border-bottom: 1px solid #6B6D70 !important;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  transform: translate3d(0,0,0);
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, 1 * 6px);
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, 1 * 8px);
+    max-height: 416px;
+    box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #FFF;
+    border: 1px solid #D8D8DB;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
 @media(hover:hover) {
-  input:not(:disabled)+span:hover {
-    border-color: #010205;
-  }
-  input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
-    border-color: #010205;
-  }
+    input:not(:disabled)+span:hover {
+      border-color: #010205;
+    }
+    input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
+      border-color: #010205;
+    }
 }
 
-.sr-text {
-  display: none;
-}
-.option {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 12px;
-  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
-  cursor: pointer;
-  text-align: start;
-  word-break: break-word;
-  box-sizing: border-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.option--highlighted {
-  background: #D8D8DB;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-  background: #EEEFF2;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.option--indent {
-  padding-left: 28px;
-}
-.optgroup {
-  color: #010205;
-  display: block;
-  padding: 8px 12px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  font-weight: 600;
-}
-.optgroup--hidden {
-  display: none;
-}
-.optgroup--disabled {
-  color: #949598;
-}
-@media(hover:hover) {
-  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-    color: #010205;
+  .sr-text {
+    display: none;
+  }
+  .option {
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #535457;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 12px;
+    flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: border-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .option[role=status] {
+    cursor: not-allowed;
+  }
+  .option__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .option--highlighted {
     background: #D8D8DB;
   }
+  .option--selected {
+    cursor: default;
+    pointer-events: none;
+    background: #EEEFF2;
+  }
+  .option--highlighted, .option--selected {
+    color: #010205;
+  }
+  .option--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .option--hidden {
+    display: none;
+  }
+  .option--indent {
+    padding-left: 28px;
+  }
+  .optgroup {
+    color: #010205;
+    display: block;
+    padding: 8px 12px;
+    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+    font-weight: 600;
+  }
+  .optgroup--hidden {
+    display: none;
+  }
+  .optgroup--disabled {
+    color: #949598;
+  }
+@media(hover:hover) {
+    .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: #D8D8DB;
+    }
 }
 "
 `;
