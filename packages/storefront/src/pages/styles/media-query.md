@@ -26,9 +26,6 @@ The styles are available as `JavaScript` and `SCSS` version. Look at the example
 When using `JSS`, `styled-components` etc. JavaScript styles can be imported by:
 `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`.
 
-When using `vanilla-extract` JavaScript styles can be imported by:
-`import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles/vanilla-extract';`.
-
 - `breakpoints`
 - `breakpoint`
 - `breakpointBase`
@@ -41,6 +38,25 @@ When using `vanilla-extract` JavaScript styles can be imported by:
 - `getMediaQueryMin('base'|'xs'|'s'|'m'|'l'|'xl'|'xxl')`
 - `getMediaQueryMax('xs'|'s'|'m'|'l'|'xl'|'xxl')`
 - `getMediaQueryMinMax('base'|'xs'|'s'|'m'|'l'|'xl', 'xs'|'s'|'m'|'l'|'xl'|'xxl')`
+
+### Vanilla Extract
+
+When using `vanilla-extract` JavaScript styles can be imported by:
+`import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles/vanilla-extract';`.
+
+The `getMediaQueryMax`, `getMediaQueryMin` & `getMediaQueryMinMax` functions behave slightly different for the
+`vanilla-extract` version. Since `vanilla-extract` uses an object style syntax the functions will only return the media
+condition as string and need to be wrapped with a `@media` key like this.
+
+```ts
+const myStyle = style({
+  '@media': {
+    [getMediaQueryMax('xxl')]: {
+      margin: 0,
+    },
+  },
+});
+```
 
 ---
 

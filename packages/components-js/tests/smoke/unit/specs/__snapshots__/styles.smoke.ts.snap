@@ -827,6 +827,14 @@ exports[`style package content > should match vanilla-extract content 1`] = `
   "motionEasingBase": "cubic-bezier(0.25,0.1,0.25,1)",
   "motionEasingIn": "cubic-bezier(0,0,0.2,1)",
   "motionEasingOut": "cubic-bezier(0.4,0,0.5,1)",
+  "skeletonKeyframes": {
+    "from": {
+      "backgroundPositionX": "100%",
+    },
+    "to": {
+      "backgroundPositionX": "-100%",
+    },
+  },
   "spacing": {
     "fluid": {
       "large": "clamp(32px, 2.75vw + 23px, 76px)",

@@ -1,15 +1,15 @@
+import { PLinkPure, PorscheDesignSystemContext } from '@porsche-design-system/components-react';
+import { pdsTheme } from '@porsche-design-system/components-react/ag-grid';
+import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
+import { AllEnterpriseModule, type ColDef, ModuleRegistry } from 'ag-grid-enterprise';
 import { AgGridReact } from 'ag-grid-react';
-import { dataAdvanced, type DataAdvanced } from '@porsche-design-system/shared';
-import 'ag-grid-enterprise';
-import { type ColDef } from 'ag-grid-community';
-import '@porsche-design-system/components-react/ag-grid/theme.css';
-import { PLinkPure, type Theme } from '@porsche-design-system/components-react';
+import { useContext } from 'react';
+
+ModuleRegistry.registerModules([AllEnterpriseModule]);
 
 type ColumnDefs = DataAdvanced & {
   active: boolean;
 };
-
-const theme: Theme = 'light';
 
 const ImageUrlRendererer = ({ value }: { value: string }) => {
   return (
@@ -34,6 +34,8 @@ const ImageUrlRendererer = ({ value }: { value: string }) => {
 };
 
 const ButtonRenderer = ({ data }: { data: any }) => {
+  const { theme } = useContext(PorscheDesignSystemContext);
+
   return (
     <span
       style={{
@@ -118,15 +120,18 @@ const defaultColDef = {
 };
 
 export const AGGridExamplePage = (): JSX.Element => {
+  const { theme } = useContext(PorscheDesignSystemContext);
+
   return (
-    <div className={theme === 'light' ? 'ag-theme-pds' : 'ag-theme-pds-dark'} style={{ height: '80vh' }}>
+    <div data-ag-theme-mode={theme === 'light' ? null : 'dark'} style={{ height: '80vh' }}>
       <AgGridReact
         rowData={rowData}
         columnDefs={columnDefs}
         defaultColDef={defaultColDef}
         pagination={true}
         sideBar={true}
-        enableRangeSelection={true}
+        cellSelection={true}
+        theme={pdsTheme}
       />
     </div>
   );

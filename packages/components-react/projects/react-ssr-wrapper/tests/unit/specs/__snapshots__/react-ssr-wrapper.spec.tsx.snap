@@ -16624,7 +16624,7 @@ exports[`should render dsr component for PTableCell 1`] = `
       :host {
   display: table-cell;
   vertical-align: middle;
-  padding: clamp(8px, 0.5vw + 6px, 16px) !important;
+  padding: var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) !important;
   margin: 0 !important;
   white-space: nowrap !important;
 }
@@ -16681,7 +16681,7 @@ exports[`should render dsr component for PTableHeadCell 1`] = `
     <style>
       :host {
   display: table-cell;
-  padding: 2px clamp(8px, 0.5vw + 6px, 16px) clamp(8px, 0.5vw + 6px, 16px) !important;
+  padding: 2px var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) var(--p-internal-table-padding, clamp(8px, 0.5vw + 6px, 16px)) !important;
   vertical-align: bottom !important;
   white-space: nowrap !important;
 }

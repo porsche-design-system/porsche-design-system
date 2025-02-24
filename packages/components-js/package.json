@@ -77,17 +77,17 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "@porsche-design-system/components": "3.26.0",
-    "@porsche-design-system/components-js": "3.26.0",
+    "@porsche-design-system/components": "3.27.0-rc.5",
+    "@porsche-design-system/components-js": "3.27.0-rc.5",
     "@porsche-design-system/components-manager-cli": "0.0.0",
     "@porsche-design-system/partials": "0.0.0",
     "imask": "^7.6.1"
   },
   "devDependencies": {
-    "@arethetypeswrong/core": "0.15.1",
+    "@arethetypeswrong/core": "0.17.3",
     "@porsche-design-system/shared": "0.0.0",
-    "ag-grid-community": "32.3.3",
-    "ag-grid-enterprise": "32.3.3",
+    "ag-grid-community": "33.0.4",
+    "ag-grid-enterprise": "33.0.4",
     "devtools-protocol": "^0.0.1400418",
     "jsdom": "^24.1.0",
     "local-web-server": "^5.4.0",
@@ -99,8 +99,8 @@
   },
   "peerDependencies": {
     "@playwright/test": "*",
-    "ag-grid-enterprise": ">= 32.0.0 <33.0.0",
-    "ag-grid-react": ">= 32.0.0 <33.0.0",
+    "ag-grid-enterprise": ">= 33.0.0 <34.0.0",
+    "ag-grid-react": ">= 33.0.0 <34.0.0",
     "change-case": "*",
     "concurrently": "*",
     "globby": "*",

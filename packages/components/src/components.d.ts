@@ -58,7 +58,7 @@ import { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-
 import { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
 import { StepperHorizontalItemState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
 import { SwitchAlignLabel, SwitchUpdateEventDetail } from "./components/switch/switch-utils";
-import { TableHeadCellSort, TableUpdateEventDetail } from "./components/table/table/table-utils";
+import { TableHeadCellSort, TableLayout, TableUpdateEventDetail } from "./components/table/table/table-utils";
 import { TabsGradientColor, TabsGradientColorScheme, TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
 import { TabsBarGradientColor, TabsBarGradientColorScheme, TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
 import { TagColor, TagIcon } from "./components/tag/tag-utils";
@@ -124,7 +124,7 @@ export { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-
 export { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
 export { StepperHorizontalItemState } from "./components/stepper-horizontal/stepper-horizontal-item/stepper-horizontal-item-utils";
 export { SwitchAlignLabel, SwitchUpdateEventDetail } from "./components/switch/switch-utils";
-export { TableHeadCellSort, TableUpdateEventDetail } from "./components/table/table/table-utils";
+export { TableHeadCellSort, TableLayout, TableUpdateEventDetail } from "./components/table/table/table-utils";
 export { TabsGradientColor, TabsGradientColorScheme, TabsSize, TabsUpdateEventDetail, TabsWeight } from "./components/tabs/tabs/tabs-utils";
 export { TabsBarGradientColor, TabsBarGradientColorScheme, TabsBarSize, TabsBarUpdateEventDetail, TabsBarWeight } from "./components/tabs-bar/tabs-bar-utils";
 export { TagColor, TagIcon } from "./components/tag/tag-utils";
@@ -2015,6 +2015,14 @@ export namespace Components {
           * A caption describing the contents of the table for accessibility only. This won't be visible in the browser. Use an element with an attribute of `slot="caption"` for a visible caption.
          */
         "caption"?: string;
+        /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Controls the layout behavior of the table.
+         */
+        "layout"?: TableLayout;
         /**
           * Adapts the color when used on dark background.
          */
@@ -5480,6 +5488,14 @@ declare namespace LocalJSX {
           * A caption describing the contents of the table for accessibility only. This won't be visible in the browser. Use an element with an attribute of `slot="caption"` for a visible caption.
          */
         "caption"?: string;
+        /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Controls the layout behavior of the table.
+         */
+        "layout"?: TableLayout;
         /**
           * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when sorting is changed.
          */

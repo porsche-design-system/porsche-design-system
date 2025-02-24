@@ -3,6 +3,7 @@ import type { RouteComponent, RouteRecordRaw } from 'vue-router';
 import { createRouter, createWebHistory } from 'vue-router';
 import * as fromExamples from '../examples';
 import * as fromPages from '../pages';
+import * as fromStyles from '../styles';
 
 export type RouteType = RouteRecordRaw & {
   isDisabled?: boolean;
@@ -314,6 +315,82 @@ export const routes: RouteType[] = [
     path: '/toast-example',
     name: 'Toast Example',
     component: fromExamples.ToastExample,
+  },
+  {
+    path: '/---',
+    name: '---',
+    isDisabled: true,
+    children: [],
+  },
+  {
+    name: 'Styles Border',
+    path: '/styles-border',
+    component: fromStyles.StylesBorderExample,
+  },
+  {
+    name: 'Styles Drop Shadow',
+    path: '/styles-drop-shadow',
+    component: fromStyles.StylesDropShadowExample,
+  },
+  {
+    name: 'Styles Flyout Grid',
+    path: '/styles-flyout-grid',
+    component: fromStyles.StylesFlyoutGridExample,
+  },
+  {
+    name: 'Styles Focus',
+    path: '/styles-focus',
+    component: fromStyles.StylesFocusExample,
+  },
+  {
+    name: 'Styles Frosted Glass',
+    path: '/styles-frosted-glass',
+    component: fromStyles.StylesFrostedGlassExample,
+  },
+  {
+    name: 'Styles Gradient',
+    path: '/styles-gradient',
+    component: fromStyles.StylesGradientExample,
+  },
+  {
+    name: 'Styles Grid',
+    path: '/styles-grid',
+    component: fromStyles.StylesGridExample,
+  },
+  {
+    name: 'Styles Hover',
+    path: '/styles-hover',
+    component: fromStyles.StylesHoverExample,
+  },
+  {
+    name: 'Styles Media Query',
+    path: '/styles-media-query',
+    component: fromStyles.StylesMediaQueryExample,
+  },
+  {
+    name: 'Styles Motion',
+    path: '/styles-motion',
+    component: fromStyles.StylesMotionExample,
+  },
+  {
+    name: 'Styles Skeleton',
+    path: '/styles-skeleton',
+    component: fromStyles.StylesSkeletonExample,
+  },
+  {
+    name: 'Styles Spacing',
+    path: '/styles-spacing',
+    component: fromStyles.StylesSpacingExample,
+  },
+  {
+    name: 'Styles Theme',
+    path: '/styles-theme',
+    component: fromStyles.StylesThemeExample,
+  },
+  {
+    name: 'Styles Typography',
+    path: '/styles-typography',
+    component: fromStyles.StylesTypographyExample,
   },
 ];
 

@@ -68,7 +68,11 @@ describe('package.json files', () => {
           import: './esm/index.mjs',
           default: './cjs/index.cjs',
         },
-        './ag-grid/*.css': './ag-grid/*.css',
+        './ag-grid': {
+          types: './ag-grid/esm/index.d.ts',
+          import: './ag-grid/esm/index.mjs',
+          default: './ag-grid/cjs/index.cjs',
+        },
         './jsdom-polyfill': {
           types: './jsdom-polyfill/index.d.ts',
           default: './jsdom-polyfill/index.cjs',

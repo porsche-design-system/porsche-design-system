@@ -172,9 +172,10 @@ import { ToastStateNeutralPage } from './generated/ToastStateNeutral';
 import { ToastStateSuccessPage } from './generated/ToastStateSuccess';
 import { TypographyCyrilPage } from './generated/TypographyCyril';
 import { TypographyFallbackPage } from './generated/TypographyFallback';
-import { TypographyGreekAndCopticPage } from './generated/TypographyGreekAndCoptic';
+import { TypographyGreekCopticPage } from './generated/TypographyGreekCoptic';
 import { TypographyLatinPage } from './generated/TypographyLatin';
 import { TypographyMiddleEastPage } from './generated/TypographyMiddleEast';
+import { TypographyThaiPage } from './generated/TypographyThai';
 import { WordmarkPage } from './generated/Wordmark';
 
 export const generatedRoutes: RouteType[] = [
@@ -974,9 +975,9 @@ export const generatedRoutes: RouteType[] = [
     element: <TypographyFallbackPage />,
   },
   {
-    name: 'Typography Greek And Coptic',
-    path: '/typography-greek-and-coptic',
-    element: <TypographyGreekAndCopticPage />,
+    name: 'Typography Greek Coptic',
+    path: '/typography-greek-coptic',
+    element: <TypographyGreekCopticPage />,
   },
   {
     name: 'Typography Latin',
@@ -987,6 +988,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Typography Middle East',
     path: '/typography-middle-east',
     element: <TypographyMiddleEastPage />,
+  },
+  {
+    name: 'Typography Thai',
+    path: '/typography-thai',
+    element: <TypographyThaiPage />,
   },
   {
     name: 'Wordmark',

@@ -10,11 +10,19 @@ import {
 } from '../../../utils';
 import type { PropTypes, Theme } from '../../../types';
 import { getComponentCss } from './table-styles';
-import { type TableUpdateEventDetail, SORT_EVENT_NAME, warnIfCaptionIsMissing } from './table-utils';
+import {
+  type TableUpdateEventDetail,
+  SORT_EVENT_NAME,
+  warnIfCaptionIsMissing,
+  type TableLayout,
+  TABLE_LAYOUTS,
+} from './table-utils';
 import { getSlottedAnchorStyles } from '../../../styles';
 
 const propTypes: PropTypes<typeof Table> = {
   caption: AllowedTypes.string,
+  compact: AllowedTypes.boolean,
+  layout: AllowedTypes.oneOf<TableLayout>(TABLE_LAYOUTS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -32,6 +40,12 @@ export class Table {
   /** A caption describing the contents of the table for accessibility only. This won't be visible in the browser.
    * Use an element with an attribute of `slot="caption"` for a visible caption. */
   @Prop() public caption?: string;
+
+  /** Displays as compact version. */
+  @Prop() public compact?: boolean = false;
+
+  /** Controls the layout behavior of the table. */
+  @Prop() public layout?: TableLayout = 'auto';
 
   /** Adapts the color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
@@ -59,7 +73,7 @@ export class Table {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.compact, this.layout, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const hasSlottedCaption = hasNamedSlot(this.host, 'caption');
