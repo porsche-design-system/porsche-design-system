@@ -19,5 +19,8 @@ export const getComponentCss = (theme: Theme): string => {
       ...preventFoucOfNestedElementsStyles,
     },
     option: getOptionJssStyle('select-option', `var(${cssVarInternalSelectOptionScaling}, 1)`, theme),
+    icon: {
+      marginInlineStart: 'auto',
+    },
   });
 };
