@@ -605,7 +605,7 @@ test.describe('lifecycle', () => {
     expect(status1.componentDidLoad['p-select-wrapper-dropdown'], 'componentDidLoad: p-select-wrapper-dropdown').toBe(
       1
     );
-    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // arrow down and checkmark of first option
+    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // arrow down and checkmark of selected option
 
     expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
     expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);

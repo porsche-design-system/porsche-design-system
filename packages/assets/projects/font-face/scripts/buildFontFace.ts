@@ -1,8 +1,8 @@
-import type { GetMinifiedPorscheNextFontFaceCssOptions } from './fontFaceStyles';
-import * as fs from 'fs';
-import * as path from 'path';
 import * as crypto from 'crypto';
+import * as fs from 'node:fs';
+import * as path from 'node:path';
 import { CDN_BASE_PATH_STYLES } from '../../../../../cdn.config';
+import type { GetMinifiedPorscheNextFontFaceCssOptions } from './fontFaceStyles';
 import { getMinifiedPorscheNextFontFaceCss } from './fontFaceStyles';
 
 const toHash = (str: string): string => {

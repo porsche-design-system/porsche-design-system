@@ -36,7 +36,7 @@ on:
         required: true
 name: 'Deploy and Release'
 env:
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.49.1-jammy-5
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.49.1-jammy-6
 jobs:
   deploy-assets:
     name: 'Deploy Assets'

@@ -545,7 +545,7 @@ test.describe('dropdown position', () => {
     await dropdownCombobox.click();
     await waitForStencilLifecycle(page);
 
-    expect((await getDropdownList(page).boundingBox()).y).toBe(32);
+    expect((await getDropdownList(page).boundingBox()).y).toBeCloseTo(32, 1);
   });
 
   test('should set direction to down', async ({ page }) => {
@@ -555,7 +555,7 @@ test.describe('dropdown position', () => {
     await dropdownCombobox.click();
     await waitForStencilLifecycle(page);
 
-    expect((await getDropdownList(page).boundingBox()).y).toBe(248);
+    expect((await getDropdownList(page).boundingBox()).y).toBeCloseTo(248, 1);
   });
 
   test('should auto position to up if bottom space is less than dropdown height', async ({ page }) => {
@@ -569,7 +569,7 @@ test.describe('dropdown position', () => {
     await dropdownCombobox.click();
     await waitForStencilLifecycle(page);
 
-    expect((await getDropdownList(page).boundingBox()).y).toBe(326);
+    expect((await getDropdownList(page).boundingBox()).y).toBeCloseTo(326, 1);
   });
 });
 
@@ -964,15 +964,15 @@ test.describe('lifecycle', () => {
 
     expect(status.componentDidLoad['p-select-wrapper'], 'componentDidLoad: p-select-wrapper').toBe(1);
     expect(status.componentDidLoad['p-select-wrapper-dropdown'], 'componentDidLoad: p-select-wrapper-dropdown').toBe(1);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down
+    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // arrow down and checkmark of selected option
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
 
     await openSelect(page);
 
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // arrow down and checkmark of selected option
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -985,7 +985,7 @@ test.describe('lifecycle', () => {
     await waitForStencilLifecycle(page);
     const status1 = await getLifecycleStatus(page);
 
-    expect(status1.componentDidLoad['p-icon'], '1st componentDidLoad: p-icon').toBe(2);
+    expect(status1.componentDidLoad['p-icon'], '1st componentDidLoad: p-icon').toBe(2); // arrow down and checkmark of selected option
     expect(status1.componentDidLoad.all, '1st componentDidLoad: all').toBe(4);
 
     expect(
@@ -998,13 +998,13 @@ test.describe('lifecycle', () => {
     await waitForStencilLifecycle(page);
     const status2 = await getLifecycleStatus(page);
 
-    expect(status2.componentDidLoad['p-icon'], '2nd componentDidLoad: p-icon').toBe(2);
+    expect(status2.componentDidLoad['p-icon'], '2nd componentDidLoad: p-icon').toBe(3);
     expect(
       status2.componentDidUpdate['p-select-wrapper-dropdown'],
       '2nd componentDidUpdate: p-select-wrapper-dropdown'
     ).toBe(2);
 
-    expect(status2.componentDidLoad.all, '2nd componentDidLoad: all').toBe(4);
+    expect(status2.componentDidLoad.all, '2nd componentDidLoad: all').toBe(5);
     expect(status2.componentDidUpdate.all, '2nd componentDidUpdate: all').toBe(2);
   });
 });

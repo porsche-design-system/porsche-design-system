@@ -478,7 +478,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           // fix warning about read-only field
           .replace(/value={/, 'defaultValue={')
           .replace(/\{\.\.\.getFilterInputAriaAttributes\([^}]*\}\s*/, '')
-          .replace(/\{\.\.\.getSelectDropdownButtonAriaAttributes\([^}]*\}\s*/, '');
+          .replace(/\{\.\.\.getSelectDropdownButtonAriaAttributes\([^}]*\}\s*/, '')
+          // Import is not resolved and will return false anyway
+          .replace(/getHasCSSAnchorPositioningSupport\(\)/, 'false');
       } else if (tagName === 'p-select-wrapper') {
         newFileContent = newFileContent
           .replace(/(required={).*(})/, '$1false$2')
@@ -517,7 +519,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.disabled = disabled;/, '')
           .replace(/this\.props\.value = state.getAll\(this.props.name\) as string\[];/, '')
           .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
-          .replace(/formStateRestoreCallback\(state: FormData\)/, 'formStateRestoreCallback()');
+          .replace(/formStateRestoreCallback\(state: FormData\)/, 'formStateRestoreCallback()')
+          // Import is not resolved and will return false anyway
+          .replace(/getHasCSSAnchorPositioningSupport\(\)/, 'false');
       } else if (tagName === 'p-multi-select-option') {
         newFileContent = newFileContent
           // remove any jsx since options are not visible in closed multi-select
@@ -555,7 +559,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.disabled = disabled;/, '')
           .replace(/this\.props\.value = state;/, '')
           .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
-          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
+          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()')
+          // Import is not resolved and will return false anyway
+          .replace(/getHasCSSAnchorPositioningSupport\(\)/, 'false');
       } else if (tagName === 'p-select-option') {
         newFileContent = newFileContent.replace(/this\.theme/, 'this.props.theme');
       } else if (tagName === 'p-text-field-wrapper') {

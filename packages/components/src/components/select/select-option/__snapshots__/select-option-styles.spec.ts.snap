@@ -22,6 +22,9 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
   padding-block: max(2px, var(--p-internal-select-option-scaling, 1) * 8px);
   padding-inline: max(4px, var(--p-internal-select-option-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-option-scaling, 1) * 12px);
   min-height: calc(6px + 2.125ex);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #AFB0B3;
   cursor: pointer;
   text-align: start;
@@ -95,6 +98,9 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
   padding-block: max(2px, var(--p-internal-select-option-scaling, 1) * 8px);
   padding-inline: max(4px, var(--p-internal-select-option-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-option-scaling, 1) * 12px);
   min-height: calc(6px + 2.125ex);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   color: #535457;
   cursor: pointer;
   text-align: start;
