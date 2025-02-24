@@ -172,6 +172,16 @@ export const routes: RouteType[] = [
     component: fromExamples.InlineNotificationExampleEvents,
   },
   {
+    path: '/input-password-example',
+    name: 'Input Password Example',
+    component: fromExamples.InputPasswordExample,
+  },
+  {
+    path: '/input-password-example-controlled',
+    name: 'Input Password Example Controlled',
+    component: fromExamples.InputPasswordExampleControlled,
+  },
+  {
     path: '/link-tile-product-example',
     name: 'Link Tile Product Example',
     component: fromExamples.LinkTileProductExample,

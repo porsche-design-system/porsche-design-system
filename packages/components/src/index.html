@@ -106,8 +106,16 @@
     </header>
 
     <main>
-      <p-input-password label="Some label"></p-input-password>
-      <p-textarea name="some-name" label="Some label"></p-textarea>
+
+
+
+
+
+      <p-input-password read-only="true" label="Some label" value="some password"></p-input-password>
+      <p-textarea read-only="true" name="some-name" label="Some label"></p-textarea>
+      <p-text-field-wrapper label="Some label">
+        <input readonly type="password" name="some-name" value="some password" />
+      </p-text-field-wrapper>
 
 
     </main>
