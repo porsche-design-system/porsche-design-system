@@ -197,13 +197,13 @@ test.describe('mouse behavior', () => {
       // We have to click the second button first, otherwise it gets overlapped by the first button and cant be clicked
       await secondButton.click();
       await waitForStencilLifecycle(page);
-      await expect(page.locator('p-popover.second .popover'), 'second popover, second click').not.toHaveCount(0);
-      await expect(page.locator('p-popover.first .popover'), 'first popover, second click').toHaveCount(0);
+      await expect(page.locator('p-popover.second [popover]'), 'second popover, second click').toBeVisible();
+      await expect(page.locator('p-popover.first [popover]'), 'first popover, second click').toBeHidden();
 
       await firstButton.click();
       await waitForStencilLifecycle(page);
-      await expect(page.locator('p-popover.first .popover'), 'first popover, first click').not.toHaveCount(0);
-      await expect(page.locator('p-popover.second .popover'), 'second popover, first click').toHaveCount(0);
+      await expect(page.locator('p-popover.first [popover]'), 'first popover, first click').toBeVisible();
+      await expect(page.locator('p-popover.second [popover]'), 'second popover, first click').toBeHidden();
     });
   });
 
@@ -318,15 +318,15 @@ test.describe('keyboard behavior', () => {
       await page.keyboard.press('Enter');
       await waitForStencilLifecycle(page);
 
-      await expect(page.locator('p-popover.first .popover'), 'first popover, first enter').not.toHaveCount(0);
-      await expect(page.locator('p-popover.second .popover'), 'second popover, first enter').toHaveCount(0);
+      await expect(page.locator('p-popover.first [popover]'), 'first popover, first enter').toBeVisible();
+      await expect(page.locator('p-popover.second [popover]'), 'second popover, first enter').toBeHidden();
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await waitForStencilLifecycle(page);
 
-      await expect(page.locator('p-popover.first .popover'), 'first popover, second enter').toHaveCount(0);
-      await expect(page.locator('p-popover.second .popover'), 'second popover, second enter').not.toHaveCount(0);
+      await expect(page.locator('p-popover.first [popover]'), 'first popover, second enter').toBeHidden();
+      await expect(page.locator('p-popover.second [popover]'), 'second popover, second enter').toBeVisible();
     });
   });
 });
