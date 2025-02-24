@@ -282,6 +282,7 @@ export class SelectWrapperDropdown {
                     {value}
                     {selected && !disabled && (
                       <PrefixedTagNames.pIcon
+                        class="icon"
                         aria-hidden="true"
                         name="check"
                         color={disabled ? 'state-disabled' : 'primary'}

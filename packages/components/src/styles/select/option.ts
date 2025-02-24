@@ -28,7 +28,6 @@ export const getOptionJssStyle = (
 
   return {
     display: 'flex',
-    justifyContent: 'space-between',
     gap,
     paddingBlock,
     paddingInline,

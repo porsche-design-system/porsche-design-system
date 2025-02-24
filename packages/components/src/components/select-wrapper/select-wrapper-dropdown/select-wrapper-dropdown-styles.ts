@@ -229,6 +229,9 @@ export const getListStyles = (direction: SelectWrapperDropdownDirection, isOpen:
         paddingLeft: '28px',
       },
     },
+    icon: {
+      marginInlineStart: 'auto',
+    },
     optgroup: {
       '&--hidden': {
         display: 'none',
