@@ -50,9 +50,10 @@ export const getComponentCss = (
 
   const paddingBlock = `max(2px, ${formElementPaddingVertical} * ${scalingVar})`;
   const paddingInline = `max(4px, ${formElementPaddingHorizontal} * ${scalingVar})`;
-  const paddingButton =
-    Number.parseFloat(scalingVar) <= 0.5 ? '0px' : `calc(${formButtonOrIconPadding} * ${scalingVar})`;
 
+  // TODO: Ideally, 'compact' should only influence the calculation of scalingVar,
+  // ensuring that the paddingButton calculation solely depends on the scaling factor.
+  const paddingButton = compact ? '0px' : `calc(${formButtonOrIconPadding} * ${scalingVar})`;
   const height = `max(${fontLineHeight}, ${scalingVar} * (${fontLineHeight} + 10px))`;
 
   const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
