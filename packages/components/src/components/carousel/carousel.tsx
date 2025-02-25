@@ -28,10 +28,12 @@ import {
 import type { BreakpointValues } from '../../utils/breakpoint-customizable';
 import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
 import {
+  CAROUSEL_ALIGN_CONTROLS,
   CAROUSEL_ALIGN_HEADERS,
   CAROUSEL_ARIA_ATTRIBUTES,
   CAROUSEL_GRADIENT_COLORS,
   CAROUSEL_WIDTHS,
+  type CarouselAlignControls,
   type CarouselAlignHeader,
   type CarouselAlignHeaderDeprecated,
   type CarouselAriaAttribute,
@@ -86,6 +88,7 @@ const propTypes: PropTypes<typeof Carousel> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   activeSlideIndex: AllowedTypes.number,
   skipLinkTarget: AllowedTypes.string,
+  alignControls: AllowedTypes.oneOf<CarouselAlignControls>(CAROUSEL_ALIGN_CONTROLS),
 };
 
 /**
@@ -164,6 +167,9 @@ export class Carousel {
 
   /** Determines whether to trim spaces before/after the carousel if `focusOnCenterSlide` option is true. */
   @Prop() public trimSpace?: boolean = true;
+
+  /** Alignment of slotted controls */
+  @Prop() public alignControls?: CarouselAlignControls = 'auto';
 
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
@@ -314,7 +320,8 @@ export class Carousel {
       (alignHeaderDeprecationMap[this.alignHeader as keyof AlignHeaderDeprecationMapType] ||
         this.alignHeader) as Exclude<CarouselAlignHeader, CarouselAlignHeaderDeprecated>,
       this.theme,
-      this.hasNavigation
+      this.hasNavigation,
+      this.alignControls
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
