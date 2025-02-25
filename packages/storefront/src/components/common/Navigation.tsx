@@ -29,12 +29,14 @@ export const Navigation = () => {
 
   // Open section in which current page is
   useEffect(() => {
-    const { keys } = getPathnameRoutes(pathname);
-    if (keys[0]) {
-      setOpenSections((prevState) => ({
-        ...prevState,
-        [keys[0]]: true,
-      }));
+    if (pathname) {
+      const { keys } = getPathnameRoutes(pathname);
+      if (keys[0]) {
+        setOpenSections((prevState) => ({
+          ...prevState,
+          [keys[0]]: true,
+        }));
+      }
     }
   }, [pathname]);
 
@@ -61,7 +63,7 @@ export const Navigation = () => {
                     key={link}
                     icon="none"
                     stretch={true}
-                    active={pathname.includes(`${page.path}/`)}
+                    active={pathname?.includes(`${page.path}/`)}
                   >
                     <Link href={link}>{page.name}</Link>
                   </PLinkPure>

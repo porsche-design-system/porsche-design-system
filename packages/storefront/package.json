@@ -15,7 +15,7 @@
     "test:e2e": "playwright test --config=tests/e2e/config/playwright.config.ts --ui"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "3.26.0",
+    "@porsche-design-system/components-js": "3.27.0-rc.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-syntax-highlighter": "^15.6.1",

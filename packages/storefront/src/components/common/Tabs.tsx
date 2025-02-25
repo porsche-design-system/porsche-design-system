@@ -14,19 +14,21 @@ export default function Tabs() {
   const pathname = usePathname();
 
   const tabs = useMemo(() => {
-    const { category, page, tab } = getPathnameRoutes(pathname);
+    if (pathname) {
+      const { category, page, tab } = getPathnameRoutes(pathname);
 
-    if (!page && category?.redirect) {
-      redirect(category.redirect);
-    }
+      if (!page && category?.redirect) {
+        redirect(category.redirect);
+      }
 
-    if (!tab && page?.subPaths) {
-      redirect(`${Object.values(page.subPaths)[0].path}`);
-    }
+      if (!tab && page?.subPaths) {
+        redirect(`${Object.values(page.subPaths)[0].path}`);
+      }
 
-    if (tab && page?.subPaths) {
-      setTabIndex(Object.values(page.subPaths).indexOf(tab));
-      return page.subPaths;
+      if (tab && page?.subPaths) {
+        setTabIndex(Object.values(page.subPaths).indexOf(tab));
+        return page.subPaths;
+      }
     }
   }, [pathname]);
 
