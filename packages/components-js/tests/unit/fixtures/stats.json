@@ -36,8 +36,8 @@
   },
   {
     "chunkShortName": "carousel",
-    "size": 48320,
-    "gzipSize": 19535
+    "size": 48130,
+    "gzipSize": 19447
   },
   {
     "chunkShortName": "checkbox",
@@ -51,8 +51,8 @@
   },
   {
     "chunkShortName": "content-wrapper",
-    "size": 2527,
-    "gzipSize": 1271
+    "size": 2507,
+    "gzipSize": 1261
   },
   {
     "chunkShortName": "crest",
@@ -171,8 +171,8 @@
   },
   {
     "chunkShortName": "multi-select",
-    "size": 43648,
-    "gzipSize": 15927
+    "size": 43695,
+    "gzipSize": 15920
   },
   {
     "chunkShortName": "optgroup",
@@ -211,13 +211,13 @@
   },
   {
     "chunkShortName": "select",
-    "size": 43075,
-    "gzipSize": 15776
+    "size": 43099,
+    "gzipSize": 15778
   },
   {
     "chunkShortName": "select-wrapper",
-    "size": 45473,
-    "gzipSize": 16138
+    "size": 45487,
+    "gzipSize": 16135
   },
   {
     "chunkShortName": "sheet",
