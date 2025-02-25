@@ -53,6 +53,7 @@ const propTypes: PropTypes<typeof InputPassword> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   showPasswordToggle: AllowedTypes.boolean,
   readOnly: AllowedTypes.boolean,
+  compact: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -74,6 +75,9 @@ export class InputPassword {
 
   /** The description text. */
   @Prop() public description?: string = '';
+
+  /** Displays as compact version. */
+  @Prop() public compact?: boolean = false;
 
   /** The name of the password input. */
   @Prop({ reflect: true }) public name: string;
@@ -191,6 +195,7 @@ export class InputPassword {
       this.hideLabel,
       this.state,
       this.showPasswordToggle,
+      this.compact,
       this.theme
     );
 

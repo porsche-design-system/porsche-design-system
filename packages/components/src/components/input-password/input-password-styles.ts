@@ -41,11 +41,12 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   showPasswordToggle: boolean,
+  compact: boolean,
   theme: Theme
 ): string => {
-  // Determines the scaling factor for the text field size. In "compact" mode, it uses 0.5 to achieve a 36px text field (compact size).
+  // Determines the scaling factor for the input-password size. In "compact" mode, it uses 0.5 to achieve a 36px input-password (compact size).
   // Defaults to 1 for the standard size and can be overridden by the CSS variable `cssVarInternalInputPasswordScaling`.
-  const scalingVar = `var(${cssVarInternalInputPasswordScaling}, 1)`;
+  const scalingVar = `var(${cssVarInternalInputPasswordScaling}, ${compact ? 0.5 : 1})`;
 
   const paddingBlock = `max(2px, ${formElementPaddingVertical} * ${scalingVar})`;
   const paddingInline = `max(4px, ${formElementPaddingHorizontal} * ${scalingVar})`;
