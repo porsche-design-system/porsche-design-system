@@ -4081,6 +4081,8 @@ exports[`should match snapshot 1`] = `
         "allowedValues": [
           "off",
           "on",
+          "current-password",
+          "new-password",
           "",
         ],
         "defaultValue": "",
