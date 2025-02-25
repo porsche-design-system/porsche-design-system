@@ -1,4 +1,3 @@
-export * from './add-native-popover-scroll-and-resize-listeners';
 export * from './a11y';
 export * from './color';
 export * from './applyConstructableStylesheetStyle';
@@ -10,14 +9,12 @@ export * from './button-handling';
 export * from './button-link-pure-utils';
 export * from './children-observer';
 export * from './device-detection';
-export * from './detect-native-popover-case';
 export * from './dialog';
 export * from './dom';
 export * from './form';
 export * from './getCDNBaseURL';
 export * from './inject-global-style'; // to trick bundling and avoid separate jss chunk 🤷
 export { hasPropValueChanged } from './has-prop-value-changed';
-export * from './is-click-outside';
 export * from './is-ssr-hydration';
 export * from './jss';
 export { parseJSONAttribute } from './json';
@@ -33,6 +30,7 @@ export * from './select';
 export * from './setScrollLock';
 export * from './supportsChromiumMediaQuery';
 export * from './supportsNativePopover';
+export * from './supportsNativeCSSAnchorPositioning';
 export * from './has-document';
 export * from './has-window';
 export * from './sync';
@@ -40,3 +38,5 @@ export { getPrefixedTagNames, getTagName, getTagNameWithoutPrefix } from './tag-
 export { isThemeDark, THEMES } from './theme';
 export * from './typography';
 export * from './validation';
+export { OPTION_LIST_SAFE_ZONE, optionListUpdatePosition } from './floating-ui';
+export * from './is-click-outside';

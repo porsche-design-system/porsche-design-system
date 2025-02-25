@@ -1,3 +1,4 @@
+import { autoUpdate } from '@floating-ui/dom';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import {
   type SelectDropdownDirection,
@@ -5,7 +6,6 @@ import {
   type SelectOption,
   type SelectState,
   type SelectUpdateEventDetail,
-  getSelectDropdownDirection,
   getSelectedOptionString,
   getSrHighlightedOptionText,
   setSelectedOption,
@@ -34,18 +34,16 @@ import {
   SELECT_DROPDOWN_DIRECTIONS,
   SELECT_SEARCH_TIMEOUT,
   THEMES,
-  addNativePopoverScrollAndResizeListeners,
   applyConstructableStylesheetStyles,
   attachComponentCss,
-  detectNativePopoverCase,
-  findClosestComponent,
   getActionFromKeyboardEvent,
   getComboboxAriaAttributes,
+  getHasCSSAnchorPositioningSupport,
+  getHasNativePopoverSupport,
   getHighlightedSelectOption,
   getHighlightedSelectOptionIndex,
   getListAriaAttributes,
   getMatchingSelectOptionIndex,
-  getNativePopoverDropdownPosition,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   getUpdatedIndex,
@@ -54,6 +52,7 @@ import {
   hasPropValueChanged,
   isClickOutside,
   isElementOfKind,
+  optionListUpdatePosition,
   setNextSelectOptionHighlighted,
   throwIfElementIsNotOfKind,
   validateProps,
@@ -144,18 +143,17 @@ export class Select {
   @AttachInternals() private internals: ElementInternals;
 
   private defaultValue: string;
-  private comboboxContainer: HTMLDivElement;
-  private combobox: HTMLButtonElement;
-  private listElement: HTMLDivElement;
+  private buttonElement: HTMLButtonElement;
+  private popoverElement: HTMLDivElement;
   private selectOptions: SelectOption[] = [];
   private selectOptgroups: SelectOptgroup[] = [];
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
   private searchString: string = '';
   private searchTimeout: ReturnType<typeof setTimeout> | number = null;
-  private isNativePopoverCase: boolean = false;
-  private parentTableElement: HTMLElement;
-  private popoverElement: HTMLElement;
   private slottedImagePath: string = '';
+  private hasNativePopoverSupport = getHasNativePopoverSupport();
+  private hasNativeCSSAnchorPositioningSupport = getHasCSSAnchorPositioningSupport();
+  private cleanUpAutoUpdate: () => void;
 
   @Listen('internalOptionUpdate')
   public updateOptionHandler(e: Event & { target: SelectOption }): void {
@@ -176,12 +174,40 @@ export class Select {
     }
   }
 
+  @Watch('isOpen')
+  public onIsOpenChange(): void {
+    if (this.isOpen) {
+      if (this.hasNativePopoverSupport) {
+        this.popoverElement.showPopover();
+      }
+      if (!this.hasNativeCSSAnchorPositioningSupport && typeof this.cleanUpAutoUpdate === 'undefined') {
+        // ensures floating ui event listeners are added when options list is opened
+        this.cleanUpAutoUpdate = autoUpdate(this.buttonElement, this.popoverElement, async (): Promise<void> => {
+          await optionListUpdatePosition(this.dropdownDirection, this.buttonElement, this.popoverElement);
+        });
+      }
+    } else {
+      if (this.hasNativePopoverSupport) {
+        this.popoverElement.hidePopover();
+      }
+      if (typeof this.cleanUpAutoUpdate === 'function') {
+        // ensures floating ui event listeners are removed when options list is closed
+        this.cleanUpAutoUpdate();
+        this.cleanUpAutoUpdate = undefined;
+      }
+    }
+  }
+
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     document.addEventListener('mousedown', this.onClickOutside, true);
-    this.isNativePopoverCase = detectNativePopoverCase(this.host, false);
-    if (this.isNativePopoverCase) {
-      this.parentTableElement = findClosestComponent(this.host, 'pTable');
+  }
+
+  public disconnectedCallback(): void {
+    document.removeEventListener('mousedown', this.onClickOutside, true);
+    if (typeof this.cleanUpAutoUpdate === 'function') {
+      // ensures floating ui event listeners are removed in case popover is removed from DOM
+      this.cleanUpAutoUpdate();
     }
   }
 
@@ -197,20 +223,8 @@ export class Select {
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
   }
 
-  public componentDidRender(): void {
-    if (this.isNativePopoverCase && this.isOpen) {
-      addNativePopoverScrollAndResizeListeners(this.host, this.parentTableElement, this.popoverElement, () => {
-        this.isOpen = false;
-      });
-    }
-  }
-
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
-  }
-
-  public disconnectedCallback(): void {
-    document.removeEventListener('mousedown', this.onClickOutside, true);
   }
 
   public formDisabledCallback(disabled: boolean): void {
@@ -231,12 +245,11 @@ export class Select {
     attachComponentCss(
       this.host,
       getComponentCss,
-      getSelectDropdownDirection(this.dropdownDirection, this.comboboxContainer, this.selectOptions),
+      this.dropdownDirection,
       this.isOpen,
       this.disabled,
       this.hideLabel,
       this.state,
-      this.isNativePopoverCase,
       this.compact,
       this.theme,
       !!this.slottedImagePath
@@ -245,11 +258,12 @@ export class Select {
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const buttonId = 'value';
-    const dropdownId = 'list';
+    const popoverId = 'list';
     const descriptionId = this.description ? 'description' : undefined;
     const selectMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
     const initialStatusId = 'initial-status';
     const ariaDescribedBy = [descriptionId, selectMessageId, initialStatusId].filter(Boolean).join(' ');
+    const selectedOption = getSelectedOptionString(this.selectOptions);
 
     return (
       <div class="root">
@@ -262,56 +276,37 @@ export class Select {
           isDisabled={this.disabled}
         />
         <span class="sr-only" id={initialStatusId}>
-          {`${getSelectedOptionString(this.selectOptions) ? '' : 'No option selected. '} ${this.selectOptions.length} options in total.`}
+          {`${selectedOption ? '' : 'No option selected. '} ${this.selectOptions.length} options in total.`}
         </span>
-        <div class={{ wrapper: true, disabled: this.disabled }} ref={(el) => (this.comboboxContainer = el)}>
-          <button
-            aria-invalid={this.state === 'error' ? 'true' : null}
-            type="button"
-            role="combobox"
-            id={buttonId}
-            {...getComboboxAriaAttributes(this.isOpen, this.required, labelId, ariaDescribedBy, dropdownId)}
-            disabled={this.disabled}
-            onClick={this.onComboClick}
-            onKeyDown={this.onComboKeyDown}
-            ref={(el) => (this.combobox = el)}
-          >
-            {this.slottedImagePath ? (
-              <span>
-                <img src={this.slottedImagePath} alt="" />
-                <span>{getSelectedOptionString(this.selectOptions)}</span>
-              </span>
-            ) : (
-              getSelectedOptionString(this.selectOptions)
-            )}
-          </button>
+        <button
+          aria-invalid={this.state === 'error' ? 'true' : null}
+          type="button"
+          role="combobox"
+          id={buttonId}
+          {...getComboboxAriaAttributes(this.isOpen, this.required, labelId, ariaDescribedBy, popoverId)}
+          disabled={this.disabled}
+          onClick={this.onComboClick}
+          onKeyDown={this.onComboKeyDown}
+          ref={(el) => (this.buttonElement = el)}
+        >
+          {this.slottedImagePath && <img src={this.slottedImagePath} alt="" />}
+          <span>{selectedOption}</span>
           <PrefixedTagNames.pIcon
-            class={{ icon: true, 'icon--rotate': this.isOpen }}
+            class="icon"
             name="arrow-head-down"
             theme={this.theme}
             color={this.disabled ? 'state-disabled' : 'primary'}
             aria-hidden="true"
           />
-          <div
-            {...(this.isNativePopoverCase && {
-              popover: 'auto',
-              class: 'popover',
-              ...(this.popoverElement?.matches(':popover-open') && {
-                'popover-open': true,
-              }),
-            })}
-            ref={(el) => (this.popoverElement = el)}
-          >
-            <div
-              id={dropdownId}
-              class="listbox"
-              {...getListAriaAttributes(this.label, this.required, false, this.isOpen)}
-              tabindex="-1"
-              ref={(el) => (this.listElement = el)}
-            >
-              <slot />
-            </div>
-          </div>
+        </button>
+        <div
+          id={popoverId}
+          popover="manual"
+          tabIndex={-1}
+          {...getListAriaAttributes(this.label, this.required, false, this.isOpen)}
+          ref={(el) => (this.popoverElement = el)}
+        >
+          <slot />
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
         <span class="sr-only" role="status" aria-live="assertive" aria-relevant="additions text">
@@ -329,61 +324,13 @@ export class Select {
     forceUpdate(this.host);
   };
 
-  private updateOptions = (): void => {
-    this.selectOptions = [];
-    this.selectOptgroups = [];
-
-    for (const child of Array.from(this.host.children).filter(
-      (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
-    )) {
-      throwIfElementIsNotOfKind(this.host, child as HTMLElement, ['p-select-option', 'p-optgroup']);
-
-      if (isElementOfKind(child as HTMLElement, 'p-select-option')) {
-        this.selectOptions.push(child as SelectOption);
-      } else if (isElementOfKind(child as HTMLElement, 'p-optgroup')) {
-        this.selectOptgroups.push(child as SelectOptgroup);
-        for (const optGroupChild of Array.from(child.children)) {
-          throwIfElementIsNotOfKind(child as HTMLElement, optGroupChild as HTMLElement, 'p-select-option');
-          this.selectOptions.push(optGroupChild as SelectOption);
-        }
-      }
-    }
-  };
-
-  private updateSelectedOption = (selectedOption: SelectOption): void => {
-    // option can be undefined when no option is highlighted and keyboard action calls this
-    if (selectedOption) {
-      this.preventOptionUpdate = true; // Avoid unnecessary updating of options in value watcher
-      setSelectedOption(this.selectOptions, selectedOption);
-      this.value = selectedOption.value;
-      this.emitUpdateEvent();
-      this.updateSrHighlightedOptionText();
-    }
-    this.updateMenuState(false);
-    this.combobox.focus();
-  };
-
   private onComboClick = (): void => {
     this.updateMenuState(!this.isOpen);
   };
 
-  private updateMenuState = (open: boolean): void => {
-    if (this.isOpen === open) {
-      return;
-    }
-    this.isOpen = open;
-    if (this.isNativePopoverCase) {
-      if (this.isOpen) {
-        getNativePopoverDropdownPosition(
-          this.combobox,
-          this.selectOptions.filter((option) => !option.hidden).length,
-          this.popoverElement,
-          this.dropdownDirection
-        );
-        this.popoverElement.showPopover();
-      } else {
-        this.popoverElement.hidePopover();
-      }
+  private onClickOutside = (e: MouseEvent): void => {
+    if (this.isOpen && isClickOutside(e, this.buttonElement) && isClickOutside(e, this.popoverElement)) {
+      this.isOpen = false;
     }
   };
 
@@ -404,7 +351,7 @@ export class Select {
       case 'PageDown': {
         event.preventDefault();
         setNextSelectOptionHighlighted(
-          this.listElement,
+          this.popoverElement,
           this.selectOptions,
           getUpdatedIndex(
             getHighlightedSelectOptionIndex(this.selectOptions),
@@ -443,12 +390,53 @@ export class Select {
     this.updateSearchString(letter);
     const matchingIndex = getMatchingSelectOptionIndex(this.selectOptions, this.searchString);
     if (matchingIndex !== -1) {
-      setNextSelectOptionHighlighted(this.listElement, this.selectOptions, matchingIndex);
+      setNextSelectOptionHighlighted(this.popoverElement, this.selectOptions, matchingIndex);
       this.updateSrHighlightedOptionText();
     } else {
       window.clearTimeout(this.searchTimeout);
       this.searchString = '';
     }
+  };
+
+  private updateOptions = (): void => {
+    this.selectOptions = [];
+    this.selectOptgroups = [];
+
+    for (const child of Array.from(this.host.children).filter(
+      (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
+    )) {
+      throwIfElementIsNotOfKind(this.host, child as HTMLElement, ['p-select-option', 'p-optgroup']);
+
+      if (isElementOfKind(child as HTMLElement, 'p-select-option')) {
+        this.selectOptions.push(child as SelectOption);
+      } else if (isElementOfKind(child as HTMLElement, 'p-optgroup')) {
+        this.selectOptgroups.push(child as SelectOptgroup);
+        for (const optGroupChild of Array.from(child.children)) {
+          throwIfElementIsNotOfKind(child as HTMLElement, optGroupChild as HTMLElement, 'p-select-option');
+          this.selectOptions.push(optGroupChild as SelectOption);
+        }
+      }
+    }
+  };
+
+  private updateMenuState = (open: boolean): void => {
+    if (this.isOpen === open) {
+      return;
+    }
+    this.isOpen = open;
+  };
+
+  private updateSelectedOption = (selectedOption: SelectOption): void => {
+    // option can be undefined when no option is highlighted and keyboard action calls this
+    if (selectedOption) {
+      this.preventOptionUpdate = true; // Avoid unnecessary updating of options in value watcher
+      setSelectedOption(this.selectOptions, selectedOption);
+      this.value = selectedOption.value;
+      this.emitUpdateEvent();
+      this.updateSrHighlightedOptionText();
+    }
+    this.updateMenuState(false);
+    this.buttonElement.focus();
   };
 
   private updateSearchString = (char: string): void => {
@@ -470,12 +458,6 @@ export class Select {
     this.srHighlightedOptionText = getSrHighlightedOptionText(this.selectOptions);
   };
 
-  private onClickOutside = (e: MouseEvent): void => {
-    if (this.isOpen && isClickOutside(e, this.comboboxContainer) && isClickOutside(e, this.listElement)) {
-      this.isOpen = false;
-    }
-  };
-
   private emitUpdateEvent = (): void => {
     this.update.emit({
       value: this.value,
@@ -483,9 +465,12 @@ export class Select {
     });
   };
 
-  private getSelectedOptionImagePath = (options: SelectOption[]): string =>
-    options
-      .find((option) => option.selected)
-      ?.querySelector('img')
-      ?.getAttribute('src') ?? '';
+  private getSelectedOptionImagePath = (options: SelectOption[]): string => {
+    return (
+      options
+        .find((option) => option.selected)
+        ?.querySelector('img')
+        ?.getAttribute('src') ?? ''
+    );
+  };
 }

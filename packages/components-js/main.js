@@ -59,6 +59,8 @@ const updateRoute = async (opts) => {
     const directory = page.match(/^[a-z-]+-example/) ? 'examples' : 'pages';
     document.querySelector('html').setAttribute('dir', dir);
     document.querySelector('html').style.fontSize = `${scale}%`;
+    document.querySelector('body').classList.remove('light', 'dark', 'auto');
+    document.querySelector('body').classList.add(theme);
 
     if (isPageLoadedInIFrame()) {
       controls.remove();
