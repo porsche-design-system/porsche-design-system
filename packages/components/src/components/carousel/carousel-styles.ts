@@ -161,6 +161,7 @@ export const getComponentCss = (
           alignSelf: 'center', // ensures vertical alignment to prev/next buttons
           justifySelf: alignControls !== 'auto' ? alignControls : isHeaderAlignCenter ? 'center' : 'start',
           [mediaQueryS]: {
+            gridColumn: alignControls !== 'center' && hasNavigation ? '1/2' : '1/-1',
             justifySelf:
               alignControls !== 'auto' ? alignControls : isHeaderAlignCenter && !hasNavigation ? 'center' : 'start',
           },
