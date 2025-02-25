@@ -4,7 +4,6 @@ import {
   type SelectDropdownDirectionInternal,
   type Theme,
   consoleWarn,
-  determineDropdownDirection,
 } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import type { OptgroupInternalHTMLProps } from '../../optgroup/optgroup-utils';
@@ -179,21 +178,8 @@ export const handleDropdownScroll = (scrollElement: HTMLElement, element: HTMLEl
   const { maxHeight } = getComputedStyle(scrollElement);
   const hostElementHeight = Number.parseInt(maxHeight, 10);
   if (scrollElement.scrollHeight > hostElementHeight) {
-    element.scrollIntoView();
+    element.scrollIntoView({
+      block: 'nearest',
+    });
   }
-};
-
-export const getDropdownDirection = (
-  direction: SelectComponentsDropdownDirection,
-  host: HTMLElement,
-  options: MultiSelectOption[]
-): SelectDropdownDirectionInternal => {
-  if (direction !== 'auto') {
-    return direction;
-  }
-  if (host) {
-    const visibleOptionsLength = options.filter((option) => !option.hidden).length;
-    return determineDropdownDirection(host, visibleOptionsLength);
-  }
-  return 'down';
 };

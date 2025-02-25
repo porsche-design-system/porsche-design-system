@@ -1,0 +1,33 @@
+<style>
+  p-select {
+    margin: 16px;
+  }
+</style>
+
+<p-select name="options" value="a" label="Opened" dropdown-direction="down">
+  <p-select-option value="a"
+    >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
+    displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
+    top.</p-select-option
+  >
+  <p-select-option value="b">Option B</p-select-option>
+  <p-select-option value="c">Option C</p-select-option>
+  <p-select-option value="d"
+    >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
+    displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
+    top.</p-select-option
+  >
+  <p-select-option value="e">Option E</p-select-option>
+  <p-select-option value="f">Option F</p-select-option>
+  <p-select-option value="g">Option G</p-select-option>
+  <p-select-option value="h">Option H</p-select-option>
+  <p-select-option value="i">Option I</p-select-option>
+  <p-select-option value="j">Option J</p-select-option>
+  <p-select-option value="k">Option K</p-select-option>
+</p-select>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    document.querySelector('p-select').shadowRoot.querySelector('label').click();
+  });
+</script>

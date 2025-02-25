@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components-angular",
-  "version": "3.26.0",
+  "version": "3.27.0-rc.5",
   "description": "Porsche Design System is a component library designed to help developers create the best experience for software or services distributed by Dr. Ing. h.c. F. Porsche AG.",
   "keywords": ["porsche", "design", "system", "web", "component", "library", "angular", "js"],
   "scope": "@porsche-design-system",
@@ -8,14 +8,14 @@
   "license": "SEE LICENSE IN LICENSE",
   "homepage": "https://designsystem.porsche.com",
   "dependencies": {
-    "@porsche-design-system/components-js": "3.26.0",
+    "@porsche-design-system/components-js": "3.27.0-rc.5",
     "tslib": "^2.8.1"
   },
   "peerDependencies": {
     "@angular/common": ">=19.0.0 <20.0.0",
     "@angular/core": ">=19.0.0 <20.0.0",
-    "ag-grid-angular": ">= 32.0.0 <33.0.0",
-    "ag-grid-enterprise": ">= 32.0.0 <33.0.0",
+    "ag-grid-angular": ">= 33.0.0 <34.0.0",
+    "ag-grid-enterprise": ">= 33.0.0 <34.0.0",
     "rxjs": "^6.5.3 || ^7.4.0"
   },
   "peerDependenciesMeta": {
@@ -47,7 +47,11 @@
       "import": "./styles/vanilla-extract/esm/vanilla-extract/index.mjs",
       "default": "./styles/vanilla-extract/cjs/vanilla-extract/index.cjs"
     },
-    "./ag-grid/*.css": "./ag-grid/*.css",
+    "./ag-grid": {
+      "types": "./ag-grid/esm/index.d.ts",
+      "import": "./ag-grid/esm/index.mjs",
+      "default": "./ag-grid/cjs/index.cjs"
+    },
     "./testing": {
       "types": "./testing/index.d.ts",
       "default": "./testing/index.cjs"

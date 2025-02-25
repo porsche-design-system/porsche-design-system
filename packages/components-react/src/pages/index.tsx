@@ -127,6 +127,17 @@ import { ModalWithoutDismissButtonPage } from './generated/ModalWithoutDismissBu
 import { ModalWithoutHeadingPage } from './generated/ModalWithoutHeading';
 import { ModelSignaturePage } from './generated/ModelSignature';
 import { MultiSelectPage } from './generated/MultiSelect';
+import { MultiSelectOpenedBottomPage } from './generated/MultiSelectOpenedBottom';
+import { MultiSelectOpenedMaxHeightPage } from './generated/MultiSelectOpenedMaxHeight';
+import { MultiSelectOpenedMinHeightPage } from './generated/MultiSelectOpenedMinHeight';
+import { MultiSelectOpenedScrollContextPage } from './generated/MultiSelectOpenedScrollContext';
+import { MultiSelectOpenedTopPage } from './generated/MultiSelectOpenedTop';
+import { MultiSelectOpenedWithAndWithoutOptgroupsPage } from './generated/MultiSelectOpenedWithAndWithoutOptgroups';
+import { MultiSelectOpenedWithDisabledHighlightedSelectedPage } from './generated/MultiSelectOpenedWithDisabledHighlightedSelected';
+import { MultiSelectOpenedWithFilterButNoResultsPage } from './generated/MultiSelectOpenedWithFilterButNoResults';
+import { MultiSelectOpenedWithMultipleSelectedOptionsPage } from './generated/MultiSelectOpenedWithMultipleSelectedOptions';
+import { MultiSelectOpenedWithOptgroupsPage } from './generated/MultiSelectOpenedWithOptgroups';
+import { MultiSelectOpenedWithOptgroupsDisabledPage } from './generated/MultiSelectOpenedWithOptgroupsDisabled';
 import { PaginationPage } from './generated/Pagination';
 import { PinCodePage } from './generated/PinCode';
 import { PopoverPage } from './generated/Popover';
@@ -141,7 +152,25 @@ import { RadioButtonWrapperPage } from './generated/RadioButtonWrapper';
 import { ScrollerPage } from './generated/Scroller';
 import { SegmentedControlPage } from './generated/SegmentedControl';
 import { SelectPage } from './generated/Select';
+import { SelectCompactPage } from './generated/SelectCompact';
+import { SelectOpenedBottomPage } from './generated/SelectOpenedBottom';
+import { SelectOpenedMaxHeightPage } from './generated/SelectOpenedMaxHeight';
+import { SelectOpenedMinHeightPage } from './generated/SelectOpenedMinHeight';
+import { SelectOpenedScrollContextPage } from './generated/SelectOpenedScrollContext';
+import { SelectOpenedTopPage } from './generated/SelectOpenedTop';
+import { SelectOpenedWithAndWithoutOptgroupsPage } from './generated/SelectOpenedWithAndWithoutOptgroups';
+import { SelectOpenedWithDisabledHighlightedSelectedPage } from './generated/SelectOpenedWithDisabledHighlightedSelected';
+import { SelectOpenedWithOptgroupsPage } from './generated/SelectOpenedWithOptgroups';
+import { SelectOpenedWithOptgroupsDisabledPage } from './generated/SelectOpenedWithOptgroupsDisabled';
+import { SelectOpenedWithSelectedEmptyOptionPage } from './generated/SelectOpenedWithSelectedEmptyOption';
+import { SelectOpenedWithSlottedImagesPage } from './generated/SelectOpenedWithSlottedImages';
+import { SelectScaling_0Page } from './generated/SelectScaling_0';
+import { SelectScaling_0_5Page } from './generated/SelectScaling_0_5';
+import { SelectScaling_0_8Page } from './generated/SelectScaling_0_8';
+import { SelectScaling_1Page } from './generated/SelectScaling_1';
+import { SelectScaling_2Page } from './generated/SelectScaling_2';
 import { SelectWrapperPage } from './generated/SelectWrapper';
+import { SelectWrapperOpenedScrollContextPage } from './generated/SelectWrapperOpenedScrollContext';
 import { SheetPage } from './generated/Sheet';
 import { SheetBasicPage } from './generated/SheetBasic';
 import { SheetGridPage } from './generated/SheetGrid';
@@ -172,9 +201,10 @@ import { ToastStateNeutralPage } from './generated/ToastStateNeutral';
 import { ToastStateSuccessPage } from './generated/ToastStateSuccess';
 import { TypographyCyrilPage } from './generated/TypographyCyril';
 import { TypographyFallbackPage } from './generated/TypographyFallback';
-import { TypographyGreekAndCopticPage } from './generated/TypographyGreekAndCoptic';
+import { TypographyGreekCopticPage } from './generated/TypographyGreekCoptic';
 import { TypographyLatinPage } from './generated/TypographyLatin';
 import { TypographyMiddleEastPage } from './generated/TypographyMiddleEast';
+import { TypographyThaiPage } from './generated/TypographyThai';
 import { WordmarkPage } from './generated/Wordmark';
 
 export const generatedRoutes: RouteType[] = [
@@ -749,6 +779,61 @@ export const generatedRoutes: RouteType[] = [
     element: <MultiSelectPage />,
   },
   {
+    name: 'Multi Select Opened Bottom',
+    path: '/multi-select-opened-bottom',
+    element: <MultiSelectOpenedBottomPage />,
+  },
+  {
+    name: 'Multi Select Opened Max Height',
+    path: '/multi-select-opened-max-height',
+    element: <MultiSelectOpenedMaxHeightPage />,
+  },
+  {
+    name: 'Multi Select Opened Min Height',
+    path: '/multi-select-opened-min-height',
+    element: <MultiSelectOpenedMinHeightPage />,
+  },
+  {
+    name: 'Multi Select Opened Scroll Context',
+    path: '/multi-select-opened-scroll-context',
+    element: <MultiSelectOpenedScrollContextPage />,
+  },
+  {
+    name: 'Multi Select Opened Top',
+    path: '/multi-select-opened-top',
+    element: <MultiSelectOpenedTopPage />,
+  },
+  {
+    name: 'Multi Select Opened With And Without Optgroups',
+    path: '/multi-select-opened-with-and-without-optgroups',
+    element: <MultiSelectOpenedWithAndWithoutOptgroupsPage />,
+  },
+  {
+    name: 'Multi Select Opened With Disabled Highlighted Selected',
+    path: '/multi-select-opened-with-disabled-highlighted-selected',
+    element: <MultiSelectOpenedWithDisabledHighlightedSelectedPage />,
+  },
+  {
+    name: 'Multi Select Opened With Filter But No Results',
+    path: '/multi-select-opened-with-filter-but-no-results',
+    element: <MultiSelectOpenedWithFilterButNoResultsPage />,
+  },
+  {
+    name: 'Multi Select Opened With Multiple Selected Options',
+    path: '/multi-select-opened-with-multiple-selected-options',
+    element: <MultiSelectOpenedWithMultipleSelectedOptionsPage />,
+  },
+  {
+    name: 'Multi Select Opened With Optgroups',
+    path: '/multi-select-opened-with-optgroups',
+    element: <MultiSelectOpenedWithOptgroupsPage />,
+  },
+  {
+    name: 'Multi Select Opened With Optgroups Disabled',
+    path: '/multi-select-opened-with-optgroups-disabled',
+    element: <MultiSelectOpenedWithOptgroupsDisabledPage />,
+  },
+  {
     name: 'Pagination',
     path: '/pagination',
     element: <PaginationPage />,
@@ -819,9 +904,99 @@ export const generatedRoutes: RouteType[] = [
     element: <SelectPage />,
   },
   {
+    name: 'Select Compact',
+    path: '/select-compact',
+    element: <SelectCompactPage />,
+  },
+  {
+    name: 'Select Opened Bottom',
+    path: '/select-opened-bottom',
+    element: <SelectOpenedBottomPage />,
+  },
+  {
+    name: 'Select Opened Max Height',
+    path: '/select-opened-max-height',
+    element: <SelectOpenedMaxHeightPage />,
+  },
+  {
+    name: 'Select Opened Min Height',
+    path: '/select-opened-min-height',
+    element: <SelectOpenedMinHeightPage />,
+  },
+  {
+    name: 'Select Opened Scroll Context',
+    path: '/select-opened-scroll-context',
+    element: <SelectOpenedScrollContextPage />,
+  },
+  {
+    name: 'Select Opened Top',
+    path: '/select-opened-top',
+    element: <SelectOpenedTopPage />,
+  },
+  {
+    name: 'Select Opened With And Without Optgroups',
+    path: '/select-opened-with-and-without-optgroups',
+    element: <SelectOpenedWithAndWithoutOptgroupsPage />,
+  },
+  {
+    name: 'Select Opened With Disabled Highlighted Selected',
+    path: '/select-opened-with-disabled-highlighted-selected',
+    element: <SelectOpenedWithDisabledHighlightedSelectedPage />,
+  },
+  {
+    name: 'Select Opened With Optgroups',
+    path: '/select-opened-with-optgroups',
+    element: <SelectOpenedWithOptgroupsPage />,
+  },
+  {
+    name: 'Select Opened With Optgroups Disabled',
+    path: '/select-opened-with-optgroups-disabled',
+    element: <SelectOpenedWithOptgroupsDisabledPage />,
+  },
+  {
+    name: 'Select Opened With Selected Empty Option',
+    path: '/select-opened-with-selected-empty-option',
+    element: <SelectOpenedWithSelectedEmptyOptionPage />,
+  },
+  {
+    name: 'Select Opened With Slotted Images',
+    path: '/select-opened-with-slotted-images',
+    element: <SelectOpenedWithSlottedImagesPage />,
+  },
+  {
+    name: 'Select Scaling 0',
+    path: '/select-scaling-0',
+    element: <SelectScaling_0Page />,
+  },
+  {
+    name: 'Select Scaling 0 5',
+    path: '/select-scaling-0-5',
+    element: <SelectScaling_0_5Page />,
+  },
+  {
+    name: 'Select Scaling 0 8',
+    path: '/select-scaling-0-8',
+    element: <SelectScaling_0_8Page />,
+  },
+  {
+    name: 'Select Scaling 1',
+    path: '/select-scaling-1',
+    element: <SelectScaling_1Page />,
+  },
+  {
+    name: 'Select Scaling 2',
+    path: '/select-scaling-2',
+    element: <SelectScaling_2Page />,
+  },
+  {
     name: 'Select Wrapper',
     path: '/select-wrapper',
     element: <SelectWrapperPage />,
+  },
+  {
+    name: 'Select Wrapper Opened Scroll Context',
+    path: '/select-wrapper-opened-scroll-context',
+    element: <SelectWrapperOpenedScrollContextPage />,
   },
   {
     name: 'Sheet',
@@ -974,9 +1149,9 @@ export const generatedRoutes: RouteType[] = [
     element: <TypographyFallbackPage />,
   },
   {
-    name: 'Typography Greek And Coptic',
-    path: '/typography-greek-and-coptic',
-    element: <TypographyGreekAndCopticPage />,
+    name: 'Typography Greek Coptic',
+    path: '/typography-greek-coptic',
+    element: <TypographyGreekCopticPage />,
   },
   {
     name: 'Typography Latin',
@@ -987,6 +1162,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Typography Middle East',
     path: '/typography-middle-east',
     element: <TypographyMiddleEastPage />,
+  },
+  {
+    name: 'Typography Thai',
+    path: '/typography-thai',
+    element: <TypographyThaiPage />,
   },
   {
     name: 'Wordmark',

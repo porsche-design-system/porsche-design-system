@@ -27,7 +27,9 @@
   },
   "devDependencies": {
     "@octokit/core": "^6.1.2",
-    "change-case-legacy": "npm:change-case@^4.1.2"
+    "change-case-legacy": "npm:change-case@^4.1.2",
+    "@types/tinycolor2": "^1.4.6",
+    "tinycolor2": "^1.6.0"
   },
   "peerDependencies": {
     "@rollup/plugin-commonjs": "*",

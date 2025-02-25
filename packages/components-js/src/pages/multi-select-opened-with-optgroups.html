@@ -1,0 +1,24 @@
+<style>
+  p-multi-select {
+    margin: 16px;
+  }
+</style>
+
+<p-multi-select name="options" label="Opened with optgroups" dropdown-direction="down" class="skip-axe-core-test">
+  <p-optgroup label="Some optgroup label 1">
+    <p-multi-select-option value="a">Option A</p-multi-select-option>
+    <p-multi-select-option value="b">Option B</p-multi-select-option>
+    <p-multi-select-option value="c">Option C</p-multi-select-option>
+  </p-optgroup>
+  <p-optgroup label="Some optgroup label 2">
+    <p-multi-select-option value="d">Option D</p-multi-select-option>
+    <p-multi-select-option value="e">Option E</p-multi-select-option>
+    <p-multi-select-option value="f">Option F</p-multi-select-option>
+  </p-optgroup>
+</p-multi-select>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    document.querySelector('p-multi-select').shadowRoot.querySelector('label').click();
+  });
+</script>

@@ -1,6 +1,8 @@
-import type { Page } from 'playwright';
-import { expect, type Locator, test } from '@playwright/test';
+import { type Locator, expect, test } from '@playwright/test';
+import { Theme } from '@porsche-design-system/components';
+import type { MultiSelectOption } from '@porsche-design-system/components/dist/types/components/multi-select/multi-select/multi-select-utils';
 import type { Components } from '@porsche-design-system/components/src/components';
+import type { Page } from 'playwright';
 import {
   addEventListener,
   getActiveElementTagNameInShadowRoot,
@@ -18,8 +20,6 @@ import {
   skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { MultiSelectOption } from '@porsche-design-system/components/dist/types/components/multi-select/multi-select/multi-select-utils';
-import { Theme } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.locator('p-multi-select');
 const getFieldset = (page: Page) => page.locator('fieldset');
@@ -27,9 +27,9 @@ const getMultiSelectValue = async (page: Page): Promise<string[]> => await getPr
 const getInput = (page: Page) => page.locator('p-multi-select input').first();
 const getInputValue = async (page: Page): Promise<string | number> => getProperty(getInput(page), 'value');
 const getInputPlaceholder = async (page: Page): Promise<string> => getAttribute(getInput(page), 'placeholder');
-const getDropdown = (page: Page) => page.locator('p-multi-select .listbox');
+const getDropdown = (page: Page) => page.locator('p-multi-select [popover]');
 const getDropdownDisplay = async (page: Page): Promise<string> => await getElementStyle(getDropdown(page), 'display');
-const getShadowDropdownOption = (page: Page, n: number) => page.locator(`p-multi-select .listbox div:nth-child(${n})`);
+const getShadowDropdownOption = (page: Page, n: number) => page.locator(`p-multi-select [popover] div:nth-child(${n})`);
 const getMultiSelectOption = (page: Page, n: number) =>
   page.locator(`p-multi-select p-multi-select-option:nth-child(${n})`);
 const getMultiSelectOptions = (page: Page): Promise<Locator[]> =>
@@ -533,12 +533,14 @@ test.describe('selection', () => {
     await waitForStencilLifecycle(page);
 
     const value = await getMultiSelectValue(page);
-    const filterPlaceholder = await getInputPlaceholder(page);
     const selectedMultiSelectOptions = await getSelectedMultiSelectOptionProperty(page, 'textContent');
 
     expect(value).toStrictEqual(['b']);
     expect(selectedMultiSelectOptions, 'after first option selected').toEqual(['Option B']);
-    expect(filterPlaceholder, 'after first option selected').toBe(selectedMultiSelectOptions.join(', '));
+    await expect(getInput(page), 'after first option selected').toHaveAttribute(
+      'placeholder',
+      selectedMultiSelectOptions.join(', ')
+    );
 
     await inputElement.press('Backspace');
     await page.keyboard.press('ArrowDown');
@@ -547,12 +549,14 @@ test.describe('selection', () => {
     await waitForStencilLifecycle(page);
 
     const valueAfter = await getMultiSelectValue(page);
-    const filterPlaceholderSecond = await getInputPlaceholder(page);
     const selectedMultiSelectOptionsSecond = await getSelectedMultiSelectOptionProperty(page, 'textContent');
 
     expect(valueAfter).toStrictEqual(['b', 'c']);
     expect(selectedMultiSelectOptionsSecond, 'after second option selected').toEqual(['Option B', 'Option C']);
-    expect(filterPlaceholderSecond, 'after second option selected').toBe(selectedMultiSelectOptionsSecond.join(', '));
+    await expect(getInput(page), 'after second option selected').toHaveAttribute(
+      'placeholder',
+      selectedMultiSelectOptionsSecond.join(', ')
+    );
   });
 
   test('should add valid selection on click', async ({ page }) => {
@@ -584,7 +588,10 @@ test.describe('selection', () => {
 
     expect(valueAfter).toStrictEqual(['b', 'c']);
     expect(filterPlaceholderSecond, 'after second selection').toBe('Option B, Option C');
-    expect(filterPlaceholderSecond, 'after second selection').toEqual(selectedMultiSelectOptionsSecond.join(', '));
+    await expect(getInput(page), 'after second selection').toHaveAttribute(
+      'placeholder',
+      selectedMultiSelectOptionsSecond.join(', ')
+    );
   });
 
   skipInBrowsers(['webkit'], () => {
@@ -1050,7 +1057,7 @@ test.describe('lifecycle', () => {
 
     expect(status1.componentDidLoad['p-multi-select'], 'componentDidLoad: p-multi-select').toBe(1);
     expect(status1.componentDidLoad['p-multi-select-option'], 'componentDidLoad: p-multi-select-option').toBe(3);
-    expect(status1.componentDidLoad['p-checkbox-wrapper'], 'componentDidLoad: p-checkbox-wrapper').toBe(3);
+    expect(status1.componentDidLoad['p-checkbox'], 'componentDidLoad: p-checkbox').toBe(3);
     expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down and reset icon
 
     expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
@@ -1073,7 +1080,7 @@ test.describe('lifecycle', () => {
 
     expect(status1.componentDidLoad['p-multi-select'], 'componentDidLoad: p-multi-select').toBe(1);
     expect(status1.componentDidLoad['p-multi-select-option'], 'componentDidLoad: p-multi-select-option').toBe(3);
-    expect(status1.componentDidLoad['p-checkbox-wrapper'], 'componentDidLoad: p-checkbox-wrapper').toBe(3);
+    expect(status1.componentDidLoad['p-checkbox'], 'componentDidLoad: p-checkbox').toBe(3);
     expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down and reset icon
 
     expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
@@ -1087,7 +1094,8 @@ test.describe('lifecycle', () => {
     expect(status2.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // reset button
     expect(status2.componentDidUpdate['p-multi-select-option'], 'componentDidUpdate: p-multi-select-option').toBe(1);
     expect(status2.componentDidUpdate['p-multi-select'], 'componentDidUpdate: p-multi-select').toBe(2);
-    expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
+    expect(status2.componentDidUpdate['p-checkbox'], 'componentDidUpdate: p-checkbox').toBe(1);
+    expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(4);
   });
 
   test('should work without unnecessary round trips on filter input change', async ({ page }) => {
@@ -1100,7 +1108,7 @@ test.describe('lifecycle', () => {
     const status1 = await getLifecycleStatus(page);
     expect(status1.componentDidLoad['p-multi-select'], 'componentDidLoad: p-multi-select').toBe(1);
     expect(status1.componentDidLoad['p-multi-select-option'], 'componentDidLoad: p-multi-select-option').toBe(3);
-    expect(status1.componentDidLoad['p-checkbox-wrapper'], 'componentDidLoad: p-checkbox-wrapper').toBe(3);
+    expect(status1.componentDidLoad['p-checkbox'], 'componentDidLoad: p-checkbox').toBe(3);
     expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down and reset icon
 
     expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
@@ -1205,9 +1213,9 @@ test.describe('optgroups', () => {
 
     const visibleOptgroup = page.locator('p-optgroup[label="1"]');
     await expect(visibleOptgroup.locator('p-multi-select-option').getByText('b')).toBeVisible();
-    await expect(page.locator('p-optgroup[label="a"]')).not.toBeVisible();
+    await expect(page.locator('p-optgroup[label="a"]')).toBeHidden();
     await expect(visibleOptgroup).toBeVisible();
-    await expect(page.locator('p-optgroup[label="c"]')).not.toBeVisible();
+    await expect(page.locator('p-optgroup[label="c"]')).toBeHidden();
   });
 
   test('should disable all options inside disabled optgroup', async ({ page }) => {
@@ -1252,10 +1260,10 @@ test.describe('optgroups', () => {
     await optgroup.evaluate((element) => ((element as HTMLPOptgroupElement).hidden = true));
     await waitForStencilLifecycle(page);
 
-    await expect(optgroup).not.toBeVisible();
+    await expect(optgroup).toBeHidden();
 
     for (const child of children) {
-      await expect(child).not.toBeVisible();
+      await expect(child).toBeHidden();
     }
   });
 });

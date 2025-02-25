@@ -1,0 +1,34 @@
+<style>
+  p-select {
+    margin: 16px;
+  }
+</style>
+
+<p-select name="options" label="Opened with slotted images" dropdown-direction="down">
+  <p-select-option value="a">
+    <img src="http://localhost:3002/placeholder_800x500.svg" alt="Some alt text" width="800" height="500" />
+    Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
+    displaying correctly. Also, the slotted image should be aligned correctly to the top-left and preserve the space
+    even for multiple lines.</p-select-option
+  >
+  <p-select-option value="b">
+    <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
+    Option B
+  </p-select-option>
+  <p-select-option value="c">
+    <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
+    Option C
+  </p-select-option>
+  <p-select-option value="d">
+    <img src="http://localhost:3002/718.png" alt="Some alt text" width="271" height="96" />
+    Option D
+  </p-select-option>
+  <p-select-option value="e">Option E</p-select-option>
+  <p-select-option value="f">Option F</p-select-option>
+</p-select>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    document.querySelector('p-select').shadowRoot.querySelector('label').click();
+  });
+</script>

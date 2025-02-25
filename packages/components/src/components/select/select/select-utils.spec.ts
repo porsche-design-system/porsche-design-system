@@ -1,11 +1,9 @@
 import * as stencilUtils from '@stencil/core';
 import * as loggerUtils from '../../../utils/log/logger';
 import * as keyboardBehaviorUtils from '../../../utils/select/keyboard-behavior';
-import * as dropdownDirectionUtils from '../../../utils/select/select-dropdown';
 import * as selectUtils from './select-utils';
 import {
   type SelectOption,
-  getSelectDropdownDirection,
   getSelectedOptionString,
   getSrHighlightedOptionText,
   resetSelectedOption,
@@ -155,22 +153,6 @@ describe('setSelectedOption', () => {
     expect(options[2].selected).toBe(false);
     expect(resetSelectedOptionSpy).toHaveBeenCalledWith(options);
     expect(forceUpdateSpy).toHaveBeenCalledWith(options[1]);
-  });
-});
-
-describe('getSelectDropdownDirection()', () => {
-  it('should return correct direction', () => {
-    const options = generateOptions({ amount: 5, hiddenIndex: 2 });
-    const host = document.createElement('p-select');
-    expect(getSelectDropdownDirection('down', host, options)).toBe('down');
-    expect(getSelectDropdownDirection('up', host, options)).toBe('up');
-
-    const spy = jest.spyOn(dropdownDirectionUtils, 'determineDropdownDirection');
-    getSelectDropdownDirection('auto', host, options);
-    expect(spy).toHaveBeenCalledWith(host, 4);
-
-    // Fallback when host is undefined
-    expect(getSelectDropdownDirection('auto', undefined, options)).toBe('down');
   });
 });
 

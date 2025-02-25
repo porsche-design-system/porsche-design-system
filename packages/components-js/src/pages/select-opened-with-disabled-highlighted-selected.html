@@ -1,0 +1,34 @@
+<style>
+  p-select {
+    margin: 16px;
+  }
+</style>
+
+<p-select
+  name="options"
+  value="c"
+  label="Opened with disabled (Option A), highlighted (Option B) and selected (Option C)"
+  dropdown-direction="down"
+>
+  <p-select-option value="a" disabled="true">Option A</p-select-option>
+  <p-select-option value="b">Option B</p-select-option>
+  <p-select-option value="c">Option C</p-select-option>
+  <p-select-option value="d">Option D</p-select-option>
+  <p-select-option value="e">Option E</p-select-option>
+  <p-select-option value="f">Option F</p-select-option>
+  <p-select-option value="g">Option G</p-select-option>
+  <p-select-option value="h">Option H</p-select-option>
+  <p-select-option value="i">Option I</p-select-option>
+  <p-select-option value="j">Option J</p-select-option>
+  <p-select-option value="k">Option K</p-select-option>
+</p-select>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    document.querySelector('p-select').shadowRoot.querySelector('label').click();
+
+    document
+      .querySelector('p-select-option:nth-child(2)')
+      .shadowRoot.firstElementChild.classList.add('option--highlighted');
+  });
+</script>

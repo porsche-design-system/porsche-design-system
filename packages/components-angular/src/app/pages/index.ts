@@ -146,6 +146,17 @@ import { ModalWithoutDismissButtonComponent } from './generated/modal-without-di
 import { ModalWithoutHeadingComponent } from './generated/modal-without-heading.component';
 import { ModelSignatureComponent } from './generated/model-signature.component';
 import { MultiSelectComponent } from './generated/multi-select.component';
+import { MultiSelectOpenedBottomComponent } from './generated/multi-select-opened-bottom.component';
+import { MultiSelectOpenedMaxHeightComponent } from './generated/multi-select-opened-max-height.component';
+import { MultiSelectOpenedMinHeightComponent } from './generated/multi-select-opened-min-height.component';
+import { MultiSelectOpenedScrollContextComponent } from './generated/multi-select-opened-scroll-context.component';
+import { MultiSelectOpenedTopComponent } from './generated/multi-select-opened-top.component';
+import { MultiSelectOpenedWithAndWithoutOptgroupsComponent } from './generated/multi-select-opened-with-and-without-optgroups.component';
+import { MultiSelectOpenedWithDisabledHighlightedSelectedComponent } from './generated/multi-select-opened-with-disabled-highlighted-selected.component';
+import { MultiSelectOpenedWithFilterButNoResultsComponent } from './generated/multi-select-opened-with-filter-but-no-results.component';
+import { MultiSelectOpenedWithMultipleSelectedOptionsComponent } from './generated/multi-select-opened-with-multiple-selected-options.component';
+import { MultiSelectOpenedWithOptgroupsComponent } from './generated/multi-select-opened-with-optgroups.component';
+import { MultiSelectOpenedWithOptgroupsDisabledComponent } from './generated/multi-select-opened-with-optgroups-disabled.component';
 import { OverviewComponent } from './generated/overview.component';
 import { PaginationComponent } from './generated/pagination.component';
 import { PinCodeComponent } from './generated/pin-code.component';
@@ -161,7 +172,25 @@ import { RadioButtonWrapperComponent } from './generated/radio-button-wrapper.co
 import { ScrollerComponent } from './generated/scroller.component';
 import { SegmentedControlComponent } from './generated/segmented-control.component';
 import { SelectComponent } from './generated/select.component';
+import { SelectCompactComponent } from './generated/select-compact.component';
+import { SelectOpenedBottomComponent } from './generated/select-opened-bottom.component';
+import { SelectOpenedMaxHeightComponent } from './generated/select-opened-max-height.component';
+import { SelectOpenedMinHeightComponent } from './generated/select-opened-min-height.component';
+import { SelectOpenedScrollContextComponent } from './generated/select-opened-scroll-context.component';
+import { SelectOpenedTopComponent } from './generated/select-opened-top.component';
+import { SelectOpenedWithAndWithoutOptgroupsComponent } from './generated/select-opened-with-and-without-optgroups.component';
+import { SelectOpenedWithDisabledHighlightedSelectedComponent } from './generated/select-opened-with-disabled-highlighted-selected.component';
+import { SelectOpenedWithOptgroupsComponent } from './generated/select-opened-with-optgroups.component';
+import { SelectOpenedWithOptgroupsDisabledComponent } from './generated/select-opened-with-optgroups-disabled.component';
+import { SelectOpenedWithSelectedEmptyOptionComponent } from './generated/select-opened-with-selected-empty-option.component';
+import { SelectOpenedWithSlottedImagesComponent } from './generated/select-opened-with-slotted-images.component';
+import { SelectScaling_0Component } from './generated/select-scaling-0.component';
+import { SelectScaling_0_5Component } from './generated/select-scaling-0-5.component';
+import { SelectScaling_0_8Component } from './generated/select-scaling-0-8.component';
+import { SelectScaling_1Component } from './generated/select-scaling-1.component';
+import { SelectScaling_2Component } from './generated/select-scaling-2.component';
 import { SelectWrapperComponent } from './generated/select-wrapper.component';
+import { SelectWrapperOpenedScrollContextComponent } from './generated/select-wrapper-opened-scroll-context.component';
 import { SheetComponent } from './generated/sheet.component';
 import { SheetBasicComponent } from './generated/sheet-basic.component';
 import { SheetGridComponent } from './generated/sheet-grid.component';
@@ -192,9 +221,10 @@ import { ToastStateNeutralComponent } from './generated/toast-state-neutral.comp
 import { ToastStateSuccessComponent } from './generated/toast-state-success.component';
 import { TypographyCyrilComponent } from './generated/typography-cyril.component';
 import { TypographyFallbackComponent } from './generated/typography-fallback.component';
-import { TypographyGreekAndCopticComponent } from './generated/typography-greek-and-coptic.component';
+import { TypographyGreekCopticComponent } from './generated/typography-greek-coptic.component';
 import { TypographyLatinComponent } from './generated/typography-latin.component';
 import { TypographyMiddleEastComponent } from './generated/typography-middle-east.component';
+import { TypographyThaiComponent } from './generated/typography-thai.component';
 import { WordmarkComponent } from './generated/wordmark.component';
 
 export const generatedPages = [
@@ -313,6 +343,17 @@ export const generatedPages = [
   ModalWithoutHeadingComponent,
   ModelSignatureComponent,
   MultiSelectComponent,
+  MultiSelectOpenedBottomComponent,
+  MultiSelectOpenedMaxHeightComponent,
+  MultiSelectOpenedMinHeightComponent,
+  MultiSelectOpenedScrollContextComponent,
+  MultiSelectOpenedTopComponent,
+  MultiSelectOpenedWithAndWithoutOptgroupsComponent,
+  MultiSelectOpenedWithDisabledHighlightedSelectedComponent,
+  MultiSelectOpenedWithFilterButNoResultsComponent,
+  MultiSelectOpenedWithMultipleSelectedOptionsComponent,
+  MultiSelectOpenedWithOptgroupsComponent,
+  MultiSelectOpenedWithOptgroupsDisabledComponent,
   OverviewComponent,
   PaginationComponent,
   PinCodeComponent,
@@ -328,7 +369,25 @@ export const generatedPages = [
   ScrollerComponent,
   SegmentedControlComponent,
   SelectComponent,
+  SelectCompactComponent,
+  SelectOpenedBottomComponent,
+  SelectOpenedMaxHeightComponent,
+  SelectOpenedMinHeightComponent,
+  SelectOpenedScrollContextComponent,
+  SelectOpenedTopComponent,
+  SelectOpenedWithAndWithoutOptgroupsComponent,
+  SelectOpenedWithDisabledHighlightedSelectedComponent,
+  SelectOpenedWithOptgroupsComponent,
+  SelectOpenedWithOptgroupsDisabledComponent,
+  SelectOpenedWithSelectedEmptyOptionComponent,
+  SelectOpenedWithSlottedImagesComponent,
+  SelectScaling_0Component,
+  SelectScaling_0_5Component,
+  SelectScaling_0_8Component,
+  SelectScaling_1Component,
+  SelectScaling_2Component,
   SelectWrapperComponent,
+  SelectWrapperOpenedScrollContextComponent,
   SheetComponent,
   SheetBasicComponent,
   SheetGridComponent,
@@ -359,9 +418,10 @@ export const generatedPages = [
   ToastStateSuccessComponent,
   TypographyCyrilComponent,
   TypographyFallbackComponent,
-  TypographyGreekAndCopticComponent,
+  TypographyGreekCopticComponent,
   TypographyLatinComponent,
   TypographyMiddleEastComponent,
+  TypographyThaiComponent,
   WordmarkComponent,
 ];
 
@@ -937,6 +997,61 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: MultiSelectComponent,
   },
   {
+    name: 'Multi Select Opened Bottom',
+    path: 'multi-select-opened-bottom',
+    component: MultiSelectOpenedBottomComponent,
+  },
+  {
+    name: 'Multi Select Opened Max Height',
+    path: 'multi-select-opened-max-height',
+    component: MultiSelectOpenedMaxHeightComponent,
+  },
+  {
+    name: 'Multi Select Opened Min Height',
+    path: 'multi-select-opened-min-height',
+    component: MultiSelectOpenedMinHeightComponent,
+  },
+  {
+    name: 'Multi Select Opened Scroll Context',
+    path: 'multi-select-opened-scroll-context',
+    component: MultiSelectOpenedScrollContextComponent,
+  },
+  {
+    name: 'Multi Select Opened Top',
+    path: 'multi-select-opened-top',
+    component: MultiSelectOpenedTopComponent,
+  },
+  {
+    name: 'Multi Select Opened With And Without Optgroups',
+    path: 'multi-select-opened-with-and-without-optgroups',
+    component: MultiSelectOpenedWithAndWithoutOptgroupsComponent,
+  },
+  {
+    name: 'Multi Select Opened With Disabled Highlighted Selected',
+    path: 'multi-select-opened-with-disabled-highlighted-selected',
+    component: MultiSelectOpenedWithDisabledHighlightedSelectedComponent,
+  },
+  {
+    name: 'Multi Select Opened With Filter But No Results',
+    path: 'multi-select-opened-with-filter-but-no-results',
+    component: MultiSelectOpenedWithFilterButNoResultsComponent,
+  },
+  {
+    name: 'Multi Select Opened With Multiple Selected Options',
+    path: 'multi-select-opened-with-multiple-selected-options',
+    component: MultiSelectOpenedWithMultipleSelectedOptionsComponent,
+  },
+  {
+    name: 'Multi Select Opened With Optgroups',
+    path: 'multi-select-opened-with-optgroups',
+    component: MultiSelectOpenedWithOptgroupsComponent,
+  },
+  {
+    name: 'Multi Select Opened With Optgroups Disabled',
+    path: 'multi-select-opened-with-optgroups-disabled',
+    component: MultiSelectOpenedWithOptgroupsDisabledComponent,
+  },
+  {
     name: 'Pagination',
     path: 'pagination',
     component: PaginationComponent,
@@ -1007,9 +1122,99 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: SelectComponent,
   },
   {
+    name: 'Select Compact',
+    path: 'select-compact',
+    component: SelectCompactComponent,
+  },
+  {
+    name: 'Select Opened Bottom',
+    path: 'select-opened-bottom',
+    component: SelectOpenedBottomComponent,
+  },
+  {
+    name: 'Select Opened Max Height',
+    path: 'select-opened-max-height',
+    component: SelectOpenedMaxHeightComponent,
+  },
+  {
+    name: 'Select Opened Min Height',
+    path: 'select-opened-min-height',
+    component: SelectOpenedMinHeightComponent,
+  },
+  {
+    name: 'Select Opened Scroll Context',
+    path: 'select-opened-scroll-context',
+    component: SelectOpenedScrollContextComponent,
+  },
+  {
+    name: 'Select Opened Top',
+    path: 'select-opened-top',
+    component: SelectOpenedTopComponent,
+  },
+  {
+    name: 'Select Opened With And Without Optgroups',
+    path: 'select-opened-with-and-without-optgroups',
+    component: SelectOpenedWithAndWithoutOptgroupsComponent,
+  },
+  {
+    name: 'Select Opened With Disabled Highlighted Selected',
+    path: 'select-opened-with-disabled-highlighted-selected',
+    component: SelectOpenedWithDisabledHighlightedSelectedComponent,
+  },
+  {
+    name: 'Select Opened With Optgroups',
+    path: 'select-opened-with-optgroups',
+    component: SelectOpenedWithOptgroupsComponent,
+  },
+  {
+    name: 'Select Opened With Optgroups Disabled',
+    path: 'select-opened-with-optgroups-disabled',
+    component: SelectOpenedWithOptgroupsDisabledComponent,
+  },
+  {
+    name: 'Select Opened With Selected Empty Option',
+    path: 'select-opened-with-selected-empty-option',
+    component: SelectOpenedWithSelectedEmptyOptionComponent,
+  },
+  {
+    name: 'Select Opened With Slotted Images',
+    path: 'select-opened-with-slotted-images',
+    component: SelectOpenedWithSlottedImagesComponent,
+  },
+  {
+    name: 'Select Scaling 0',
+    path: 'select-scaling-0',
+    component: SelectScaling_0Component,
+  },
+  {
+    name: 'Select Scaling 0 5',
+    path: 'select-scaling-0-5',
+    component: SelectScaling_0_5Component,
+  },
+  {
+    name: 'Select Scaling 0 8',
+    path: 'select-scaling-0-8',
+    component: SelectScaling_0_8Component,
+  },
+  {
+    name: 'Select Scaling 1',
+    path: 'select-scaling-1',
+    component: SelectScaling_1Component,
+  },
+  {
+    name: 'Select Scaling 2',
+    path: 'select-scaling-2',
+    component: SelectScaling_2Component,
+  },
+  {
     name: 'Select Wrapper',
     path: 'select-wrapper',
     component: SelectWrapperComponent,
+  },
+  {
+    name: 'Select Wrapper Opened Scroll Context',
+    path: 'select-wrapper-opened-scroll-context',
+    component: SelectWrapperOpenedScrollContextComponent,
   },
   {
     name: 'Sheet',
@@ -1162,9 +1367,9 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: TypographyFallbackComponent,
   },
   {
-    name: 'Typography Greek And Coptic',
-    path: 'typography-greek-and-coptic',
-    component: TypographyGreekAndCopticComponent,
+    name: 'Typography Greek Coptic',
+    path: 'typography-greek-coptic',
+    component: TypographyGreekCopticComponent,
   },
   {
     name: 'Typography Latin',
@@ -1175,6 +1380,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Typography Middle East',
     path: 'typography-middle-east',
     component: TypographyMiddleEastComponent,
+  },
+  {
+    name: 'Typography Thai',
+    path: 'typography-thai',
+    component: TypographyThaiComponent,
   },
   {
     name: 'Wordmark',

@@ -460,6 +460,50 @@ const generatedRoutes = {
     "path": "/multi-select",
     "name": "MultiSelect"
   },
+  "multiSelectOpenedBottom": {
+    "path": "/multi-select-opened-bottom",
+    "name": "MultiSelectOpenedBottom"
+  },
+  "multiSelectOpenedMaxHeight": {
+    "path": "/multi-select-opened-max-height",
+    "name": "MultiSelectOpenedMaxHeight"
+  },
+  "multiSelectOpenedMinHeight": {
+    "path": "/multi-select-opened-min-height",
+    "name": "MultiSelectOpenedMinHeight"
+  },
+  "multiSelectOpenedScrollContext": {
+    "path": "/multi-select-opened-scroll-context",
+    "name": "MultiSelectOpenedScrollContext"
+  },
+  "multiSelectOpenedTop": {
+    "path": "/multi-select-opened-top",
+    "name": "MultiSelectOpenedTop"
+  },
+  "multiSelectOpenedWithAndWithoutOptgroups": {
+    "path": "/multi-select-opened-with-and-without-optgroups",
+    "name": "MultiSelectOpenedWithAndWithoutOptgroups"
+  },
+  "multiSelectOpenedWithDisabledHighlightedSelected": {
+    "path": "/multi-select-opened-with-disabled-highlighted-selected",
+    "name": "MultiSelectOpenedWithDisabledHighlightedSelected"
+  },
+  "multiSelectOpenedWithFilterButNoResults": {
+    "path": "/multi-select-opened-with-filter-but-no-results",
+    "name": "MultiSelectOpenedWithFilterButNoResults"
+  },
+  "multiSelectOpenedWithMultipleSelectedOptions": {
+    "path": "/multi-select-opened-with-multiple-selected-options",
+    "name": "MultiSelectOpenedWithMultipleSelectedOptions"
+  },
+  "multiSelectOpenedWithOptgroups": {
+    "path": "/multi-select-opened-with-optgroups",
+    "name": "MultiSelectOpenedWithOptgroups"
+  },
+  "multiSelectOpenedWithOptgroupsDisabled": {
+    "path": "/multi-select-opened-with-optgroups-disabled",
+    "name": "MultiSelectOpenedWithOptgroupsDisabled"
+  },
   "overview": {
     "path": "/overview",
     "name": "Overview"
@@ -520,9 +564,81 @@ const generatedRoutes = {
     "path": "/select",
     "name": "Select"
   },
+  "selectCompact": {
+    "path": "/select-compact",
+    "name": "SelectCompact"
+  },
+  "selectOpenedBottom": {
+    "path": "/select-opened-bottom",
+    "name": "SelectOpenedBottom"
+  },
+  "selectOpenedMaxHeight": {
+    "path": "/select-opened-max-height",
+    "name": "SelectOpenedMaxHeight"
+  },
+  "selectOpenedMinHeight": {
+    "path": "/select-opened-min-height",
+    "name": "SelectOpenedMinHeight"
+  },
+  "selectOpenedScrollContext": {
+    "path": "/select-opened-scroll-context",
+    "name": "SelectOpenedScrollContext"
+  },
+  "selectOpenedTop": {
+    "path": "/select-opened-top",
+    "name": "SelectOpenedTop"
+  },
+  "selectOpenedWithAndWithoutOptgroups": {
+    "path": "/select-opened-with-and-without-optgroups",
+    "name": "SelectOpenedWithAndWithoutOptgroups"
+  },
+  "selectOpenedWithDisabledHighlightedSelected": {
+    "path": "/select-opened-with-disabled-highlighted-selected",
+    "name": "SelectOpenedWithDisabledHighlightedSelected"
+  },
+  "selectOpenedWithOptgroups": {
+    "path": "/select-opened-with-optgroups",
+    "name": "SelectOpenedWithOptgroups"
+  },
+  "selectOpenedWithOptgroupsDisabled": {
+    "path": "/select-opened-with-optgroups-disabled",
+    "name": "SelectOpenedWithOptgroupsDisabled"
+  },
+  "selectOpenedWithSelectedEmptyOption": {
+    "path": "/select-opened-with-selected-empty-option",
+    "name": "SelectOpenedWithSelectedEmptyOption"
+  },
+  "selectOpenedWithSlottedImages": {
+    "path": "/select-opened-with-slotted-images",
+    "name": "SelectOpenedWithSlottedImages"
+  },
+  "selectScaling_0": {
+    "path": "/select-scaling-0",
+    "name": "SelectScaling_0"
+  },
+  "selectScaling_0_5": {
+    "path": "/select-scaling-0-5",
+    "name": "SelectScaling_0_5"
+  },
+  "selectScaling_0_8": {
+    "path": "/select-scaling-0-8",
+    "name": "SelectScaling_0_8"
+  },
+  "selectScaling_1": {
+    "path": "/select-scaling-1",
+    "name": "SelectScaling_1"
+  },
+  "selectScaling_2": {
+    "path": "/select-scaling-2",
+    "name": "SelectScaling_2"
+  },
   "selectWrapper": {
     "path": "/select-wrapper",
     "name": "SelectWrapper"
+  },
+  "selectWrapperOpenedScrollContext": {
+    "path": "/select-wrapper-opened-scroll-context",
+    "name": "SelectWrapperOpenedScrollContext"
   },
   "sheet": {
     "path": "/sheet",
@@ -644,9 +760,9 @@ const generatedRoutes = {
     "path": "/typography-fallback",
     "name": "TypographyFallback"
   },
-  "typographyGreekAndCoptic": {
-    "path": "/typography-greek-and-coptic",
-    "name": "TypographyGreekAndCoptic"
+  "typographyGreekCoptic": {
+    "path": "/typography-greek-coptic",
+    "name": "TypographyGreekCoptic"
   },
   "typographyLatin": {
     "path": "/typography-latin",
@@ -655,6 +771,10 @@ const generatedRoutes = {
   "typographyMiddleEast": {
     "path": "/typography-middle-east",
     "name": "TypographyMiddleEast"
+  },
+  "typographyThai": {
+    "path": "/typography-thai",
+    "name": "TypographyThai"
   },
   "wordmark": {
     "path": "/wordmark",

@@ -17,7 +17,7 @@ import {
   spacingStaticXSmall,
 } from '@porsche-design-system/styles';
 import { isDirectionAsc, isSortable } from './table-head-cell-utils';
-import { cssVariableTableHeadCellIconFilter } from '../table/table-styles';
+import { cssVariableTableHeadCellIconFilter, cssVariableTablePadding } from '../table/table-styles';
 
 const { hoverColor } = getThemedColors('light'); // hover color and focus color are the same for light and dark
 
@@ -37,7 +37,7 @@ export const getComponentCss = (
       ':host': {
         display: 'table-cell',
         ...addImportantToEachRule({
-          padding: `2px ${spacingFluidSmall} ${spacingFluidSmall}`,
+          padding: `2px var(${cssVariableTablePadding}, ${spacingFluidSmall}) var(${cssVariableTablePadding}, ${spacingFluidSmall})`,
           verticalAlign: 'bottom',
           whiteSpace: multiline ? 'normal' : 'nowrap',
           ...hostHiddenStyles,
