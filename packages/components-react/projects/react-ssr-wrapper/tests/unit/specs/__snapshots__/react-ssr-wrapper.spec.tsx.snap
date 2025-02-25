@@ -8725,12 +8725,6 @@ exports[`should render dsr component for PCarousel 1`] = `
   }
 }
 
-@media(max-width:479px) {
-  .splide__track {
-    padding-right: calc(max(22px, 10.625vw - 12px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
-  }
-}
-
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
