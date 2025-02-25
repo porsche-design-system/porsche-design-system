@@ -21,6 +21,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Table`: `layout` prop to render table with `table-layout: fixed` css for manual control of column widths
   ([#3758](https://github.com/porsche-design-system/porsche-design-system/pull/3758))
 
+#### Changed
+
+- `Select`, `Multi Select`, `Select Wrapper`:
+  - gets rendered on `#top-layer` which enables it to be shown correctly even when used e.g. within a scroll container
+    or overflow context ([#3754](https://github.com/porsche-design-system/porsche-design-system/pull/3754))
+  - gets positioned by [CSS Anchor Positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning)
+    or [Floating UI](https://floating-ui.com) as fallback for browsers not supporting it yet
+    ([#3754](https://github.com/porsche-design-system/porsche-design-system/pull/3754))
+  - modernized visual appearance, dynamic max-height based on viewport and fade in animation of option list
+    ([#3754](https://github.com/porsche-design-system/porsche-design-system/pull/3754))
+- `Select`, `Select Wrapper`:
+  - focus outline becomes default focus style when no filter is used
+    ([#3754](https://github.com/porsche-design-system/porsche-design-system/pull/3754))
+
 ### [3.27.0-rc.5] - 2025-02-20
 
 #### Fixed

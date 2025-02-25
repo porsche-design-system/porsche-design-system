@@ -1,8 +1,7 @@
+import { expect } from '@jest/globals';
+import * as getShadowRootHTMLElementUtils from '../../../utils/dom/getShadowRootHTMLElement';
 import { MultiSelect } from './multi-select';
 import * as multiSelectUtils from './multi-select-utils';
-import * as addNativePopoverScrollAndResizeListenersUtils from '../../../utils/add-native-popover-scroll-and-resize-listeners';
-import * as getShadowRootHTMLElementUtils from '../../../utils/dom/getShadowRootHTMLElement';
-import { expect } from '@jest/globals';
 
 class MockElementInternals {
   setValidity = jest.fn();
