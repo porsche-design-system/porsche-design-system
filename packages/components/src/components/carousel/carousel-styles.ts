@@ -159,8 +159,11 @@ export const getComponentCss = (
           gridColumn: '1/-1',
           gridRowStart: 3,
           alignSelf: 'center', // ensures vertical alignment to prev/next buttons
-          justifySelf:
-            alignControls !== 'auto' ? alignControls : isHeaderAlignCenter && !hasNavigation ? 'center' : 'start',
+          justifySelf: alignControls !== 'auto' ? alignControls : isHeaderAlignCenter ? 'center' : 'start',
+          [mediaQueryS]: {
+            justifySelf:
+              alignControls !== 'auto' ? alignControls : isHeaderAlignCenter && !hasNavigation ? 'center' : 'start',
+          },
         },
       }),
       ...addImportantToEachRule({
