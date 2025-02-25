@@ -16,7 +16,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
 }
@@ -205,7 +205,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
 }
@@ -341,7 +341,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
 }
@@ -600,7 +600,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
 }
@@ -952,7 +952,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
 }
@@ -1185,7 +1185,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
 }
@@ -1393,7 +1393,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
 }
@@ -1588,7 +1588,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
 }
@@ -1807,7 +1807,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
 }
@@ -1954,7 +1954,7 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
 }
@@ -2190,7 +2190,7 @@ exports[`getComponentCss() should return correct css for gradientColor: none, ha
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
 }
@@ -2331,7 +2331,7 @@ exports[`getComponentCss() should return correct css for gradientColor: none, ha
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
 }
@@ -2479,7 +2479,7 @@ exports[`getComponentCss() should return correct css for gradientColor: none, ha
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
 }
