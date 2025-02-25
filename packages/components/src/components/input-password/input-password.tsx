@@ -126,8 +126,6 @@ export class InputPassword {
   /** @experimental Show or hide password toggle for `input type="password"`. */
   @Prop() public showPasswordToggle?: boolean = true;
 
-  // @Prop() public pattern?: string;
-
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
