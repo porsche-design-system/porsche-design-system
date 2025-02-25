@@ -4087,6 +4087,12 @@ exports[`should match snapshot 1`] = `
         "description": "Specifies whether the input can be autofilled by the browser",
         "type": "InputPasswordAutoComplete",
       },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Displays as compact version.",
+        "type": "boolean",
+      },
       "description": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -4147,10 +4153,6 @@ exports[`should match snapshot 1`] = `
         "propOptions": {
           "reflect": true,
         },
-        "type": "string",
-      },
-      "pattern": {
-        "defaultValue": null,
         "type": "string",
       },
       "placeholder": {
