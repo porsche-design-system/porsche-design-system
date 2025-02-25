@@ -64,7 +64,7 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
     if (!shouldUpdate(selectedValue, propName)) return;
 
     setStoryState((prev) => {
-      const isDefault = isDefaultValue(meta.propsMeta![propName], selectedValue);
+      const isDefault = meta.propsMeta && isDefaultValue(meta.propsMeta[propName], selectedValue);
       const updatedProperties = { ...prev.properties };
 
       if (selectedValue === undefined || isDefault) {
@@ -143,7 +143,9 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
         configuredCssVariables={storyState?.properties}
         defaultCssVariables={defaultStoryState?.properties ?? {}}
         onUpdateCssVariables={handleUpdateCssVariable}
-        onResetAllCssVariables={() => {}}
+        onResetAllCssVariables={() => {
+          // TODO: Implement
+        }}
       />
     ),
   ];

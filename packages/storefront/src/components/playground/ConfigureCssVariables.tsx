@@ -35,9 +35,8 @@ export const ConfigureCssVariables = <T extends ConfiguratorTagNames>({
           <>
             <PTag compact={true}>{amountOfConfiguredCssVariables}</PTag>
             <PTag compact={true}>
-              <button type="button" onClick={() => {}}>
-                Reset all
-              </button>
+              {/*// TODO: Implement */}
+              <button type="button">Reset all</button>
             </PTag>
           </>
         )}

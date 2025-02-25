@@ -393,17 +393,17 @@ const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
 };
 
 // TODO: Better to lazily import components? Suspense and loading needed
-const getPDSReactComponentLazy = (tag: string) => {
-  return React.lazy(() =>
-    import('@porsche-design-system/components-react/ssr').then((module) => {
-      const component = module[pascalCase(tag)];
-      if (!component) {
-        throw new Error(`Component ${pascalCase(tag)} not found.`);
-      }
-      return { default: component as React.ComponentType<any> };
-    })
-  );
-};
+// const getPDSReactComponentLazy = (tag: string) => {
+//   return React.lazy(() =>
+//     import('@porsche-design-system/components-react/ssr').then((module) => {
+//       const component = module[pascalCase(tag)];
+//       if (!component) {
+//         throw new Error(`Component ${pascalCase(tag)} not found.`);
+//       }
+//       return { default: component as React.ComponentType<any> };
+//     })
+//   );
+// };
 
 export const createElements = (
   configs: (string | ElementConfig<HTMLTagOrComponent> | undefined)[],
