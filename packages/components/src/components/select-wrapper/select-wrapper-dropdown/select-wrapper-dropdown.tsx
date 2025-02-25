@@ -1,14 +1,12 @@
-import { Component, Element, Host, type JSX, Prop, State, h } from '@stencil/core';
+import { autoUpdate } from '@floating-ui/dom';
+import { Component, Element, Host, type JSX, Prop, State, Watch, h } from '@stencil/core';
 import type { Theme } from '../../../types';
 import {
-  addNativePopoverScrollAndResizeListeners,
   attachComponentCss,
-  detectNativePopoverCase,
-  determineDropdownDirection,
-  findClosestComponent,
   getFilterInputAriaAttributes,
+  getHasCSSAnchorPositioningSupport,
+  getHasNativePopoverSupport,
   getListAriaAttributes,
-  getNativePopoverDropdownPosition,
   getOptionAriaAttributes,
   getPrefixedTagNames,
   getSelectDropdownButtonAriaAttributes,
@@ -16,6 +14,7 @@ import {
   isSsrHydration,
   observeChildren,
   observeProperties,
+  optionListUpdatePosition,
   throwIfRootNodeIsNotOneOfKind,
   unobserveChildren,
 } from '../../../utils';
@@ -28,7 +27,6 @@ import { getComponentCss } from './select-wrapper-dropdown-styles';
 import {
   type DropdownInteractionType,
   type OptionMap,
-  getAmountOfVisibleOptionsAndOptgroups,
   getDropdownVisibility,
   getHighlightedOptionMapIndex,
   getMatchingOptionMaps,
@@ -72,14 +70,38 @@ export class SelectWrapperDropdown {
   @State() private optionMaps: OptionMap[] = [];
   @State() private searchString = '';
 
-  private inputElement: HTMLInputElement;
-  private listElement: HTMLElement;
-  private isNativePopoverCase: boolean = false;
-  private parentTableElement: HTMLElement;
+  private inputOrButtonElement: HTMLInputElement | HTMLButtonElement;
   private popoverElement: HTMLElement;
+  private hasNativePopoverSupport = getHasNativePopoverSupport();
+  private hasNativeCSSAnchorPositioningSupport = getHasCSSAnchorPositioningSupport();
+  private cleanUpAutoUpdate: () => void;
 
   private get selectedIndex(): number {
     return this.selectRef.selectedIndex;
+  }
+
+  @Watch('isOpen')
+  public onIsOpenChange(): void {
+    if (this.isOpen) {
+      if (this.hasNativePopoverSupport) {
+        this.popoverElement.showPopover();
+      }
+      if (!this.hasNativeCSSAnchorPositioningSupport && typeof this.cleanUpAutoUpdate === 'undefined') {
+        // ensures floating ui event listeners are added when options list is opened
+        this.cleanUpAutoUpdate = autoUpdate(this.inputOrButtonElement, this.popoverElement, async (): Promise<void> => {
+          await optionListUpdatePosition(this.direction, this.inputOrButtonElement, this.popoverElement);
+        });
+      }
+    } else {
+      if (this.hasNativePopoverSupport) {
+        this.popoverElement.hidePopover();
+      }
+      if (typeof this.cleanUpAutoUpdate === 'function') {
+        // ensures floating ui event listeners are removed when options list is closed
+        this.cleanUpAutoUpdate();
+        this.cleanUpAutoUpdate = undefined;
+      }
+    }
   }
 
   public connectedCallback(): void {
@@ -94,24 +116,21 @@ export class SelectWrapperDropdown {
       // therefore we do it here via attribute
       ['hidden', 'disabled', 'selected']
     );
-    this.isNativePopoverCase = detectNativePopoverCase(this.host, true);
-    if (this.isNativePopoverCase) {
-      this.parentTableElement = findClosestComponent(
-        (this.host.getRootNode() as ShadowRoot).host as HTMLElement,
-        'pTable'
-      );
+  }
+
+  public disconnectedCallback(): void {
+    document.removeEventListener('mousedown', this.onClickOutside, true);
+    unobserveChildren(this.host);
+
+    if (typeof this.cleanUpAutoUpdate === 'function') {
+      // ensures floating ui event listeners are removed in case popover is removed from DOM
+      this.cleanUpAutoUpdate();
     }
   }
 
   public componentDidRender(): void {
     if (this.isOpen) {
-      handleScroll(this.listElement, getHighlightedOptionMapIndex(this.optionMaps));
-
-      if (this.isNativePopoverCase) {
-        addNativePopoverScrollAndResizeListeners(this.host, this.parentTableElement, this.popoverElement, () => {
-          this.setDropdownVisibility('hide');
-        });
-      }
+      handleScroll(this.popoverElement, getHighlightedOptionMapIndex(this.optionMaps));
     }
   }
 
@@ -124,30 +143,24 @@ export class SelectWrapperDropdown {
     }
   }
 
-  public disconnectedCallback(): void {
-    document.removeEventListener('mousedown', this.onClickOutside, true);
-    unobserveChildren(this.host);
-  }
-
   public render(): JSX.Element {
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.direction === 'auto'
-        ? determineDropdownDirection(this.host, getAmountOfVisibleOptionsAndOptgroups(this.optionMaps))
-        : this.direction,
+      this.direction,
       this.isOpen,
       this.state,
       this.disabled,
       this.filter,
-      this.isNativePopoverCase,
+      this.hasNativeCSSAnchorPositioningSupport,
       this.theme
     );
 
     // TODO: part won't be needed as soon as button/input of select-wrapper-dropdown is part of shadow dom of select-wrapper itself
     const part = 'select-wrapper-dropdown';
-    const dropdownId = 'list';
+    const popoverId = 'list';
     const labelId = 'label';
+    const inputId = 'filter';
     const descriptionId = this.description && 'description';
     const buttonId = 'value';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -157,6 +170,7 @@ export class SelectWrapperDropdown {
         {this.filter ? (
           [
             <input
+              id={inputId}
               key="input"
               type="text"
               role="combobox"
@@ -169,13 +183,13 @@ export class SelectWrapperDropdown {
                 this.required,
                 labelId,
                 descriptionId,
-                dropdownId,
+                popoverId,
                 getHighlightedOptionMapIndex(this.optionMaps)
               )}
               onKeyDown={this.onComboboxKeyDown}
               onInput={this.onFilterChange}
               onClick={() => this.setDropdownVisibility('show')}
-              ref={(el) => (this.inputElement = el)}
+              ref={(el) => (this.inputOrButtonElement = el)}
             />,
             <span
               part={part}
@@ -194,11 +208,12 @@ export class SelectWrapperDropdown {
               this.isOpen,
               labelId,
               descriptionId,
-              dropdownId,
+              popoverId,
               getHighlightedOptionMapIndex(this.optionMaps)
             )}
             onClick={() => this.setDropdownVisibility('toggle')}
             onKeyDown={this.onComboboxKeyDown}
+            ref={(el) => (this.inputOrButtonElement = el)}
           />
         )}
         {[
@@ -212,83 +227,71 @@ export class SelectWrapperDropdown {
             </div>
           ),
           <div
-            {...(this.isNativePopoverCase && {
-              popover: 'auto',
-              class: 'popover',
-              ...(this.popoverElement?.matches(':popover-open') && {
-                'popover-open': true,
-              }),
-            })}
+            id={popoverId}
+            popover="manual"
+            tabIndex={-1}
+            {...getListAriaAttributes(this.label, this.required, this.filter, this.isOpen)}
             ref={(el) => (this.popoverElement = el)}
           >
-            {this.isOpen && (
-              <div
-                id={dropdownId}
-                role="listbox"
-                tabIndex={-1}
-                {...getListAriaAttributes(this.label, this.required, this.filter, this.isOpen)}
-                ref={(el) => (this.listElement = el)}
-              >
-                {this.filter && !hasFilterResults(this.optionMaps) ? (
-                  <div class="option" aria-live="polite" role="option">
-                    <span aria-hidden="true">---</span>
-                    <span class="option__sr">No results found</span>
-                  </div>
-                ) : (
-                  this.optionMaps.map((option, index) => {
-                    const {
-                      value,
-                      disabled,
-                      hidden,
-                      initiallyHidden,
-                      selected,
-                      highlighted,
-                      title,
-                      showOptgroup,
-                      optgroupOptions,
-                    } = option;
-
-                    return [
-                      showOptgroup && (
-                        <span
-                          class={{
-                            optgroup: true,
-                            'optgroup--hidden': optgroupOptions.hidden,
-                            'optgroup--disabled': optgroupOptions.disabled,
-                          }}
-                          role="presentation"
-                        >
-                          {title}
-                        </span>
-                      ),
-                      <div
-                        id={`option-${index}`}
-                        role="option"
-                        class={{
-                          option: true,
-                          'option--selected': selected,
-                          'option--highlighted': highlighted,
-                          'option--disabled': disabled,
-                          'option--hidden': hidden || initiallyHidden,
-                          'option--indent': !!title,
-                        }}
-                        onClick={!selected && !disabled ? () => this.setOptionSelected(index) : undefined}
-                        {...getOptionAriaAttributes(selected, disabled, hidden, !!value)}
-                      >
-                        {value}
-                        {selected && !disabled && (
-                          <PrefixedTagNames.pIcon
-                            aria-hidden="true"
-                            name="check"
-                            color={disabled ? 'state-disabled' : 'primary'}
-                            theme={this.theme}
-                          />
-                        )}
-                      </div>,
-                    ];
-                  })
-                )}
+            {this.filter && !hasFilterResults(this.optionMaps) ? (
+              <div class="option" aria-live="polite" role="option">
+                <span aria-hidden="true">---</span>
+                <span class="option__sr">No results found</span>
               </div>
+            ) : (
+              this.optionMaps.map((option, index) => {
+                const {
+                  value,
+                  disabled,
+                  hidden,
+                  initiallyHidden,
+                  selected,
+                  highlighted,
+                  title,
+                  showOptgroup,
+                  optgroupOptions,
+                } = option;
+
+                return [
+                  showOptgroup && (
+                    <span
+                      class={{
+                        optgroup: true,
+                        'optgroup--hidden': optgroupOptions.hidden,
+                        'optgroup--disabled': optgroupOptions.disabled,
+                      }}
+                      role="presentation"
+                    >
+                      {title}
+                    </span>
+                  ),
+                  <div
+                    id={`option-${index}`}
+                    role="option"
+                    class={{
+                      option: true,
+                      'option--selected': selected,
+                      'option--highlighted': highlighted,
+                      'option--disabled': disabled,
+                      'option--hidden': hidden || initiallyHidden,
+                      'option--indent': !!title,
+                    }}
+                    onClick={!selected && !disabled ? () => this.setOptionSelected(index) : undefined}
+                    {...getOptionAriaAttributes(selected, disabled, hidden, !!value)}
+                  >
+                    {value}
+                    {selected && !disabled && (
+                      <PrefixedTagNames.pIcon
+                        class="icon"
+                        aria-hidden="true"
+                        name="check"
+                        color={disabled ? 'state-disabled' : 'primary'}
+                        theme={this.theme}
+                      />
+                    )}
+                  </div>,
+                ];
+              })
             )}
           </div>,
         ]}
@@ -318,20 +321,6 @@ export class SelectWrapperDropdown {
   private setDropdownVisibility = (type: DropdownInteractionType): void => {
     this.isOpen = getDropdownVisibility(this.isOpen, type, this.filter && this.resetFilter);
     this.onOpenChange(this.isOpen);
-
-    if (this.isNativePopoverCase) {
-      if (this.isOpen) {
-        getNativePopoverDropdownPosition(
-          this.host,
-          getAmountOfVisibleOptionsAndOptgroups(this.optionMaps),
-          this.popoverElement,
-          this.direction
-        );
-        this.popoverElement.showPopover();
-      } else {
-        this.popoverElement.hidePopover();
-      }
-    }
   };
 
   private onComboboxKeyDown = (e: KeyboardEvent): void => {
@@ -432,7 +421,7 @@ export class SelectWrapperDropdown {
     if (this.filter) {
       this.searchString = '';
       this.optionMaps = resetFilteredOptionMaps(this.optionMaps);
-      this.inputElement.value = '';
+      this.inputOrButtonElement.value = '';
     }
   };
 
