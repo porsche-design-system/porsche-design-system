@@ -24,6 +24,9 @@ slot[name="controls"] {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 @media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/2;
+  }
 }
 
 .header {
@@ -216,6 +219,9 @@ slot[name="controls"] {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 @media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/2;
+  }
 }
 
 .header {
@@ -368,6 +374,9 @@ p,::slotted([slot="description"]) {
   hyphens: auto !important;
 }
 @media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/2;
+  }
 }
 
 .header {
@@ -630,6 +639,9 @@ slot[name="controls"] {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 @media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/2;
+  }
 }
 
 .header {
@@ -992,6 +1004,9 @@ p,::slotted([slot="description"]) {
   hyphens: auto !important;
 }
 @media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/2;
+  }
 }
 
 .header {
@@ -1228,6 +1243,9 @@ p,::slotted([slot="description"]) {
   hyphens: auto !important;
 }
 @media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/-1;
+  }
 }
 
 .header {
@@ -1419,6 +1437,9 @@ slot[name="controls"] {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 @media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/2;
+  }
 }
 
 .header {
@@ -1617,6 +1638,9 @@ slot[name="controls"] {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
 @media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/2;
+  }
 }
 
 .header {
@@ -1850,6 +1874,9 @@ p,::slotted([slot="description"]) {
   hyphens: auto !important;
 }
 @media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/2;
+  }
 }
 
 .header {
@@ -2009,6 +2036,9 @@ p,::slotted([slot="description"]) {
   hyphens: auto !important;
 }
 @media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/2;
+  }
 }
 
 .header {
@@ -2243,6 +2273,9 @@ slot[name="controls"] {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 @media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/2;
+  }
 }
 
 .header {
@@ -2394,6 +2427,9 @@ p,::slotted([slot="description"]) {
   hyphens: auto !important;
 }
 @media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/2;
+  }
 }
 
 .header {
@@ -2545,6 +2581,9 @@ p,::slotted([slot="description"]) {
   hyphens: auto !important;
 }
 @media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/2;
+  }
 }
 
 .header {
