@@ -50,6 +50,9 @@ export const getComponentCss = (
 
   const paddingBlock = `max(2px, ${formElementPaddingVertical} * ${scalingVar})`;
   const paddingInline = `max(4px, ${formElementPaddingHorizontal} * ${scalingVar})`;
+  const paddingButton =
+    Number.parseFloat(scalingVar) <= 0.5 ? '0px' : `calc(${formButtonOrIconPadding} * ${scalingVar})`;
+
   const height = `max(${fontLineHeight}, ${scalingVar} * (${fontLineHeight} + 10px))`;
 
   const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
@@ -162,7 +165,7 @@ export const getComponentCss = (
       button: {
         gridArea: '1/5',
         placeSelf: 'center',
-        padding: formButtonOrIconPadding,
+        padding: paddingButton,
         // TODO: maybe we should render hidden button conditionally, needs to be checked if a11y compliant
         '&:not([hidden])~.button': {
           gridArea: '1/4',
