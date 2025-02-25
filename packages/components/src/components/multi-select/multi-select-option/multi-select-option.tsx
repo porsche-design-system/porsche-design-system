@@ -1,4 +1,5 @@
-import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
+import { Component, Element, Host, type JSX, Prop, h } from '@stencil/core';
+import type { PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -7,9 +8,8 @@ import {
   throwIfParentIsNotOfKind,
   validateProps,
 } from '../../../utils';
-import type { MultiSelectOptionInternalHTMLProps } from './multi-select-option-utils';
-import type { PropTypes } from '../../../types';
 import { getComponentCss } from './multi-select-option-styles';
+import type { MultiSelectOptionInternalHTMLProps } from './multi-select-option-utils';
 
 const propTypes: PropTypes<typeof MultiSelectOption> = {
   value: AllowedTypes.string,
@@ -38,7 +38,7 @@ export class MultiSelectOption {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const { theme = 'light', selected, highlighted, hidden, textContent } = this.host;
+    const { theme = 'light', selected, highlighted } = this.host;
     attachComponentCss(this.host, getComponentCss, theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -47,6 +47,9 @@ export class MultiSelectOption {
     return (
       <Host onClick={!isDisabled && this.onClick}>
         <div
+          role="option"
+          aria-labelledby="checkbox"
+          {...getOptionAriaAttributes(selected, isDisabled, false, !!this.value)}
           class={{
             option: true,
             'option--selected': selected,
@@ -54,18 +57,16 @@ export class MultiSelectOption {
             'option--disabled': isDisabled,
           }}
         >
-          <PrefixedTagNames.pCheckboxWrapper class="checkbox" theme={theme}>
-            <input
-              role="option"
-              type="checkbox"
-              checked={selected}
-              disabled={isDisabled}
-              {...getOptionAriaAttributes(selected, isDisabled, hidden, !!this.value)}
-              aria-label={textContent}
-              tabindex="-1"
-            />
+          <PrefixedTagNames.pCheckbox
+            id="checkbox"
+            class="checkbox"
+            theme={theme}
+            checked={selected}
+            disabled={isDisabled}
+            aria-hidden="true"
+          >
             <slot slot="label" />
-          </PrefixedTagNames.pCheckboxWrapper>
+          </PrefixedTagNames.pCheckbox>
         </div>
       </Host>
     );

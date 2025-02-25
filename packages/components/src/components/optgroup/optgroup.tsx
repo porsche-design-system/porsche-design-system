@@ -1,7 +1,7 @@
 import type { PropTypes } from '../../types';
 import { type OptgroupInternalHTMLProps, updateOptionsDisabled } from './optgroup-utils';
 
-import { Component, Element, h, Host, type JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, Host, type JSX, Prop, Watch, h } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../utils';
 import { getComponentCss } from './optgroup-styles';
 
@@ -44,19 +44,17 @@ export class Optgroup {
     const { theme = 'light', hidden } = this.host;
     attachComponentCss(this.host, getComponentCss, this.disabled, theme);
 
+    const labelId = 'label';
+
     return (
       <Host>
         <div
           role="group"
-          class={{
-            optgroup: true,
-            'optgroup--disabled': this.disabled,
-          }}
           aria-disabled={this.disabled ? 'true' : null}
           aria-hidden={hidden ? 'true' : null}
-          aria-labelledby="label"
+          aria-labelledby={labelId}
         >
-          <span class="label" role="presentation" id="label">
+          <span id={labelId} role="presentation">
             {this.label}
           </span>
           <slot />

@@ -42,6 +42,14 @@ export const getComponentCss = (theme: Theme): string => {
 
   return getCss({
     '@global': {
+      '@keyframes fade-in': {
+        from: {
+          opacity: 0,
+        },
+        to: {
+          opacity: 1,
+        },
+      },
       ':host': {
         position: 'relative', // ensures correct reference for floating ui fallback positioning in older browsers
         display: 'inline-block',
@@ -76,26 +84,20 @@ export const getComponentCss = (theme: Theme): string => {
         }),
         ...getFocusJssStyle(theme, { offset: 0 }),
       },
+      '[popover]': {
+        all: 'unset',
+        position: 'absolute',
+        pointerEvents: 'none',
+        filter: `drop-shadow(0 0 16px ${shadowColor})`,
+        animation: `var(${cssVariableAnimationDuration}, ${motionDurationShort}) fade-in ${motionEasingBase} forwards`,
+        '&:not(:popover-open)': {
+          display: 'none', // ensures popover is not flickering when closed in some situations
+        },
+      },
     },
     label: getHiddenTextJssStyle(),
     icon: {
       transform: 'translate3d(0,0,0)', // Fixes movement on hover in Safari
-    },
-    popover: {
-      all: 'unset',
-      position: 'absolute',
-      pointerEvents: 'none',
-      filter: `drop-shadow(0 0 16px ${shadowColor})`,
-      animation:
-        ROLLUP_REPLACE_IS_STAGING === 'production' || process.env.NODE_ENV === 'test'
-          ? `${motionDurationShort} $fadeIn ${motionEasingBase} forwards`
-          : `var(${cssVariableAnimationDuration}, ${motionDurationShort}) $fadeIn ${motionEasingBase} forwards`,
-      '&:not(:popover-open)': {
-        display: 'none', // ensures popover is not flickering when closed in some situations
-      },
-      '&:-internal-popover-in-top-layer::backdrop': {
-        display: 'none',
-      },
     },
     arrow: {
       position: 'absolute',
@@ -130,14 +132,6 @@ export const getComponentCss = (theme: Theme): string => {
         background: backgroundSurfaceColorDark,
         color: primaryColorDark,
       }),
-    },
-    '@keyframes fadeIn': {
-      from: {
-        opacity: 0,
-      },
-      to: {
-        opacity: 1,
-      },
     },
   });
 };

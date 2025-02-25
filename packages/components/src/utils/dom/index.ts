@@ -17,7 +17,6 @@ export * from './isDisabledOrLoading';
 export * from './isElementOfKind';
 export * from './isParentOfKind';
 export * from './isShadowRootParentOfKind';
-export * from './findClosestComponent';
 export * from './removeAttribute';
 export * from './setAttribute';
 export * from './setAttributes';

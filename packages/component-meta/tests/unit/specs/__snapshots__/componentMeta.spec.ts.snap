@@ -6291,7 +6291,7 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "isThemeable": false,
     "nestedComponents": [
-      "p-checkbox-wrapper",
+      "p-checkbox",
     ],
     "propsMeta": {
       "disabled": {

@@ -12,10 +12,6 @@ both light (default) and dark (`data-ag-theme-mode="dark"`) modes.
 For more information on AG Grid's base themes, you can refer to the official
 [AG Grid Themes documentation](https://ag-grid.com/javascript-data-grid/themes).
 
-<Notification heading="Attention" heading-tag="h2" state="warning">
-  Please note that components such as <code>p-select</code>, <code>p-select-wrapper</code>, <code>p-multi-select</code>, and <code>p-popover</code> will not work correctly within the AG Grid at the moment. The dropdowns will be cut off because the table cells have <code>overflow: hidden</code> set, and the dropdowns do not yet use the native popover API.
-</Notification>
-
 ## Usage
 
 #### 1. Import the Theme

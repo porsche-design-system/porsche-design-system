@@ -1,0 +1,30 @@
+<style>
+  .scroll {
+    border: 1px solid deeppink;
+    margin: 16px;
+    width: 240px;
+    height: 240px;
+    overflow: scroll;
+  }
+
+  p-select {
+    margin: 16px;
+  }
+</style>
+
+<div class="scroll">
+  <p-select name="options" value="a" label="Some label">
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+    <p-select-option value="d">Option D</p-select-option>
+    <p-select-option value="e">Option E</p-select-option>
+    <p-select-option value="f">Option F</p-select-option>
+  </p-select>
+</div>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    document.querySelector('p-select').shadowRoot.querySelector('label').click();
+  });
+</script>
