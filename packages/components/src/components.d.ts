@@ -1021,6 +1021,10 @@ export namespace Components {
          */
         "autoComplete"?: InputPasswordAutoComplete;
         /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
+        /**
           * The description text.
          */
         "description"?: string;
@@ -4405,6 +4409,10 @@ declare namespace LocalJSX {
           * Specifies whether the input can be autofilled by the browser
          */
         "autoComplete"?: InputPasswordAutoComplete;
+        /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
         /**
           * The description text.
          */
