@@ -1,0 +1,16 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import { crestStory } from "@/app/components/crest/examples/crest.stories";
+
+export const metadata = {
+  title: 'Crest - Porsche Design System',
+  description: 'Some description'
+}
+
+# Crest <ComponentStatus tagName="p-crest"></ComponentStatus>
+
+<TableOfContents headings={[]} />
+
+<Configurator tagName="p-crest" story={crestStory} />
+

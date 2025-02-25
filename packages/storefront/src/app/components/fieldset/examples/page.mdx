@@ -1,0 +1,16 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { ConfiguratorControls } from "@/components/playground/ConfiguratorControls";
+import { Configurator } from "@/components/playground/Configurator";
+import { fieldsetStory } from "@/app/components/fieldset/examples/fieldset.stories";
+
+export const metadata = {
+  title: 'Fieldset - Porsche Design System',
+  description: 'Some description'
+}
+
+# Fieldset <ComponentStatus tagName="p-fieldset"></ComponentStatus>
+
+<TableOfContents headings={[]} />
+
+<Configurator tagName="p-fieldset" story={fieldsetStory} />

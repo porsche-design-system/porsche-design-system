@@ -1,0 +1,16 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import { pinCodeStory } from "@/app/components/pin-code/examples/pin-code.stories";
+
+export const metadata = {
+  title: 'Pin Code - Porsche Design System',
+  description: 'Some description'
+}
+
+# Pin Code <ComponentStatus tagName="p-pin-code"></ComponentStatus>
+
+<TableOfContents headings={[]} />
+
+<Configurator tagName="p-pin-code" story={pinCodeStory} />
+

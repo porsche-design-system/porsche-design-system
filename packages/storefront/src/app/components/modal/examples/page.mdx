@@ -1,0 +1,15 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator} from "@/components/playground/Configurator";
+import { modalSlotStories, modalStory} from "@/app/components/modal/examples/modal.stories";
+
+export const metadata = {
+  title: 'Modal - Porsche Design System',
+  description: 'Some description'
+}
+
+# Modal <ComponentStatus tagName="p-modal"></ComponentStatus>
+
+<TableOfContents headings={[]} />
+
+<Configurator tagName="p-modal" story={modalStory} slotStories={modalSlotStories} />

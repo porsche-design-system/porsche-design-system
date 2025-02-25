@@ -1,0 +1,15 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import { modelSignatureStory } from "@/app/components/model-signature/examples/model-signature.stories";
+
+export const metadata = {
+  title: 'Model Signature - Porsche Design System',
+  description: 'Some description'
+}
+
+# Model Signature <ComponentStatus tagName="p-model-signature"></ComponentStatus>
+
+<TableOfContents headings={[]} />
+
+<Configurator tagName="p-model-signature" story={modelSignatureStory} />

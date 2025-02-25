@@ -1,0 +1,15 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import { flexStory } from "@/app/components/flex/examples/flex.stories";
+
+export const metadata = {
+  title: 'Flex - Porsche Design System',
+  description: 'Some description'
+}
+
+# Flex <ComponentStatus tagName="p-flex"></ComponentStatus>
+
+<TableOfContents headings={[]} />
+
+<Configurator tagName="p-flex" story={flexStory} />

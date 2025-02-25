@@ -1,0 +1,16 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import { marqueStory } from "@/app/components/marque/examples/marque.stories";
+
+export const metadata = {
+  title: 'Marque - Porsche Design System',
+  description: 'Some description'
+}
+
+# Marque <ComponentStatus tagName="p-marque"></ComponentStatus>
+
+<TableOfContents headings={[]} />
+
+<Configurator tagName="p-marque" story={marqueStory} />
+

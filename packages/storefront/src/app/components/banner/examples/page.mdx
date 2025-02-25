@@ -1,0 +1,16 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import { bannerStory } from "@/app/components/banner/examples/banner.stories";
+
+export const metadata = {
+  title: 'Banner - Porsche Design System',
+  description: 'Some description'
+}
+
+# Banner <ComponentStatus tagName="p-banner"></ComponentStatus>
+
+<TableOfContents headings={[]} />
+
+<Configurator tagName="p-banner" story={bannerStory} />
+

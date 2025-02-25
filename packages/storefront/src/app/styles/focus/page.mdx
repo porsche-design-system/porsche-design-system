@@ -1,0 +1,63 @@
+import { Notification } from "@/components/common/Notification";
+import { TableOfContents } from "@/components/common/TableOfContents";
+
+export const metadata = {
+  title: 'Styles: Focus - Porsche Design System',
+  description: 'Focus styles help you to navigate through all interactive elements via tab on keyboard.',
+}
+
+# Focus
+
+<TableOfContents headings={["Example","Usage","Styles"]} />
+
+## Example
+
+{/* <Playground :frameworkMarkup="codeExample" :externalStackBlitzDependencies="['styled-components']"><ExampleStylesFocus /></Playground> */}
+
+## Usage
+
+The `:focus` state helps you to navigate through all interactive elements via tab on keyboard. It is only visible when
+using the keyboard but not with the mouse.
+
+## Styles
+
+The styles are available as `JavaScript` and `SCSS` version. Look at the example above to see how the styles work.
+
+### JS
+
+When using `JSS`, `styled-components` etc. JavaScript styles can be imported by:
+  `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`.
+
+When using `vanilla-extract` JavaScript styles can be imported by:
+  `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles/vanilla-extract';`.
+
+- `getFocusStyle({ offset: 'small' | 'none' | string, borderRadius: 'small' | 'medium' | string })`
+
+---
+
+### SCSS
+
+SCSS styles can be imported by `@use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;`
+
+- `@mixin pds-focus($offset: 'small' | 'none' | any, $border-radius: 'small' | 'medium' | any)`
+
+{/* <script lang="ts">
+  import Vue from 'vue';
+  import Component from 'vue-class-component';
+  import { getStylesFocusCodeSamples } from '@porsche-design-system/shared';
+  import { adjustSelectedFramework } from '@/utils';
+  import ExampleStylesFocus from '@/pages/patterns/styles/example-focus.vue';
+
+  @Component({
+  components: {
+  ExampleStylesFocus
+},
+})
+  export default class Code extends Vue {
+  codeExample = getStylesFocusCodeSamples();
+
+  public mounted(): void {
+  adjustSelectedFramework(this.codeExample);
+}
+}
+</script> */}

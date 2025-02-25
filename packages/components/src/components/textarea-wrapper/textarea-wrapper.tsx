@@ -131,7 +131,16 @@ export class TextareaWrapper {
 
     const { disabled, readOnly } = this.textarea;
 
-    attachComponentCss(this.host, getComponentCss, disabled, readOnly, this.hideLabel, this.state, this.hasCounter, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      disabled,
+      readOnly,
+      this.hideLabel,
+      this.state,
+      this.hasCounter,
+      this.theme
+    );
 
     return (
       <div class="root">

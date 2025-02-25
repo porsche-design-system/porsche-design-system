@@ -114,9 +114,9 @@ packages/components-react/projects/nextjs/styles/getSharedStyles.tsx
 packages/shared/bin/
 
 # Storefront
-packages/storefront/scripts/algoliaRecords.json
-packages/storefront/src/pages/changelog.md
-packages/storefront/public/porsche-design-system
+packages/storefront-old/scripts/algoliaRecords.json
+packages/storefront-old/src/pages/changelog.md
+packages/storefront-old/public/porsche-design-system
 
 # Lib
 packages/shared/src/lib/*
@@ -127,7 +127,7 @@ packages/components-react/projects/react-ssr-wrapper/src/lib/*
 packages/components-react/projects/uxpin-wrapper/src/lib/*
 packages/components-vue/projects/vue-wrapper/src/lib/*
 packages/components-angular/projects/angular-wrapper/src/lib/*
-packages/storefront/src/lib/*
+packages/storefront-old/src/lib/*
 packages/component-meta/src/lib/*
 packages/components-js/projects/partials/src/lib/*
 packages/utilities/projects/utilities/src/scss/lib/*
