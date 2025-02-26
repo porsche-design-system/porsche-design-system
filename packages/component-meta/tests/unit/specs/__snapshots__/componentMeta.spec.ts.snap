@@ -1717,6 +1717,16 @@ exports[`should match snapshot 1`] = `
         "description": "Defines which slide to be active (zero-based numbering).",
         "type": "number",
       },
+      "alignControls": {
+        "allowedValues": [
+          "start",
+          "center",
+          "auto",
+        ],
+        "defaultValue": "auto",
+        "description": "Alignment of slotted controls",
+        "type": "CarouselAlignControls",
+      },
       "alignHeader": {
         "allowedValues": [
           "start",

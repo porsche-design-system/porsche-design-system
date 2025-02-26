@@ -25,6 +25,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#3758](https://github.com/porsche-design-system/porsche-design-system/pull/3758))
 - `Table`: `layout` prop to render table with `table-layout: fixed` css for manual control of column widths
   ([#3758](https://github.com/porsche-design-system/porsche-design-system/pull/3758))
+- `Carousel`: `align-controls` prop to align the controls slot to the left or center (overwrites auto-alignment)
+  ([#3766](https://github.com/porsche-design-system/porsche-design-system/pull/3766))
 
 #### Changed
 

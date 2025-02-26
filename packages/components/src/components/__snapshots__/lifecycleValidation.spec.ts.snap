@@ -103,6 +103,7 @@ exports[`should call validateProps() with correct parameters via render for p-ca
 exports[`should call validateProps() with correct parameters via render for p-carousel: propTypes with ValidatorFunctions 1`] = `
 {
   "activeSlideIndex": "number",
+  "alignControls": "oneOf",
   "alignHeader": "oneOf",
   "aria": "aria",
   "description": "string",
