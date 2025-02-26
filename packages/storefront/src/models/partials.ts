@@ -1,14 +1,14 @@
 export type Partials =
+  | 'getBrowserSupportFallbackScript'
   | 'getComponentChunkLinks'
-  | 'getMetaTagsAndIconLinks'
-  | 'getFontLinks'
-  | 'getFontFaceStylesheet'
+  | 'getCookiesFallbackScript'
+  | 'getDSRPonyfill'
   | 'getFontFaceStyles'
+  | 'getFontFaceStylesheet'
+  | 'getFontLinks'
+  | 'getIconLinks'
   | 'getInitialStyles'
-  | 'getIconLinks';
-// | 'getDSRPonyfill'
-// | 'getBrowserSupportFallbackScript'
-// | 'getCookiesFallbackScript';
+  | 'getMetaTagsAndIconLinks';
 export type PartialLocation = 'head' | 'body';
 
 export type PartialCall = {

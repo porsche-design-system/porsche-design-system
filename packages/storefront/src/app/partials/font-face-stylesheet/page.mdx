@@ -1,5 +1,6 @@
 import { Notification } from "@/components/common/Notification";
 import { TableOfContents } from "@/components/common/TableOfContents";
+import {PartialDocs} from "@/components/partials/PartialDocs";
 
 export const metadata = {
   title: 'Partials: Font Face Stylesheet - Porsche Design System',
@@ -49,22 +50,17 @@ included.
 Project integration differs based on the project setup.
 The following showcases the most common ways.
 
-{/* <PartialDocs name="getFontFaceStylesheet" :params="params" location="head"></PartialDocs> */}
-
-{/* <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-
-  @Component
-  export default class Code extends Vue {
-  public params = [
-{
-  value: ""
-},
-{
-  value: "{ cdn: 'cn' }",
-  comment: 'force using China CDN',
-},
-  ];
-}
-</script> */}
+<PartialDocs name="getFontFaceStylesheet" location="head" partialCalls={[
+  {
+    params: [],
+  },
+  {
+    comment: 'Alternative: Force using China CDN',
+    params: [
+      {
+        key: 'cdn',
+        value: 'cn',
+      }
+    ]
+  }
+]} />

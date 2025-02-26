@@ -1,4 +1,5 @@
 import { TableOfContents } from "@/components/common/TableOfContents";
+import {PartialDocs} from "@/components/partials/PartialDocs";
 
 export const metadata = {
   title: 'Partials: DSR Ponyfill - Porsche Design System',
@@ -13,8 +14,7 @@ export const metadata = {
 
 In SSR projects like NextJS, the Porsche Design System components are getting rendered on the server using native web
 platform API called [Declarative Shadow DOM (DSR)](https://web.dev/declarative-shadow-dom). The
-[browser support](https://caniuse.com/?search=declarative%20shadow%20dom) is already good but major browsers like Safari
-and Firefox aren't supporting it yet.
+[browser support](https://caniuse.com/?search=declarative%20shadow%20dom) is already good but still limited.
 
 Therefore, we provide a partial in `@porsche-design-system/components-react` package based on
 [@webcomponents/template-shadowroot](https://npmjs.com/package/@webcomponents/template-shadowroot) which needs to be
@@ -34,28 +34,17 @@ included.
 Project integration differs based on the project setup.
 The following showcases the most common ways.
 
-{/* <PartialDocs name="getDSRPonyfill" :params="params" location="body"></PartialDocs> */}
-
-{/* <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-
-  @Component
-  export default class Code extends Vue {
-  public params = [
-{
-  value: ""
-},
-{
-  value: "{ format: 'jsx' }",
-  comment: 'Use JSX element for e.g. NextJS'
-},
-  ];
-}
-</script> */}
-
-{/* <style scoped lang="scss">
-  :deep(table code::before) {
-  content: '' !important;
-}
-</style> */}
+<PartialDocs name="getDSRPonyfill" location="body" partialCalls={[
+  {
+    params: []
+  },
+  {
+    comment: 'Use JSX element for e.g. NextJS',
+    params: [
+      {
+        key: 'format',
+        value: 'jsx'
+      }
+    ]
+  }
+]} />

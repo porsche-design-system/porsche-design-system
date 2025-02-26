@@ -5,7 +5,6 @@ import { getNextPartialExample } from '@/utils/partials/getNextPartialExample';
 import { getReactPartialExample } from '@/utils/partials/getReactPartialExample';
 import { getVanillaJsPartialExample } from '@/utils/partials/getVanillaJsPartialExample';
 import { getVuePartialExample } from '@/utils/partials/getVuePartialExample';
-import { getComponentChunkLinks } from '@porsche-design-system/components-react/partials';
 import { PHeading } from '@porsche-design-system/components-react/ssr';
 import type React from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
@@ -37,7 +36,7 @@ export const PartialDocs = ({ name, location, partialCalls }: PartialDocsProps) 
         {partialCalls
           .map(
             (call) =>
-              `${call.comment ? `// ${call.comment}\n` : ''}${getComponentChunkLinks(...call.params.map(({ key, value }) => ({ [key]: value })))}`
+              `${call.comment ? `// ${call.comment}\n` : ''}${require('@porsche-design-system/components-react/partials')[name](...call.params.map(({ key, value }) => ({ [key]: value })))}`
           )
           .join('\n')}
       </SyntaxHighlighter>

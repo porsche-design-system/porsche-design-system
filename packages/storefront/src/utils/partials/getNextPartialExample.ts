@@ -7,6 +7,9 @@ export const getNextPartialExample = (name: Partials) => {
 const nextExamples: {
   [partial in Partials]: string;
 } = {
+  getBrowserSupportFallbackScript: '',
+  getCookiesFallbackScript: '',
+  getDSRPonyfill: '',
   getMetaTagsAndIconLinks: `/* ./app/layout.tsx */
 import type { Metadata, Viewport } from "next";
 import { getMetaTagsAndIconLinks } from '@porsche-design-system/components-react/partials';

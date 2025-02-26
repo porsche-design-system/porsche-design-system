@@ -1,4 +1,5 @@
 import { TableOfContents } from "@/components/common/TableOfContents";
+import {PartialDocs} from "@/components/partials/PartialDocs";
 
 export const metadata = {
   title: 'Partials: Icon Links - Porsche Design System',
@@ -39,24 +40,26 @@ The following showcases the most common ways.
 
 **Note:** Make sure to preload only icons which are really needed initially!
 
-{/* <PartialDocs name="getIconLinks" :params="params" location="head"></PartialDocs> */}
-
-{/* <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { ICON_NAMES } from '@porsche-design-system/icons';
-
-  @Component
-  export default class Code extends Vue {
-  public iconNames: string = ICON_NAMES.map(x => `'${x}'`).join(' | ');
-  public params = [
-{
-  value: "{ icons: ['arrowHeadRight', 'plus'] }"
-},
-{
-  value: "{ icons: ['arrowHeadRight', 'plus'], cdn: 'cn' }",
-  comment: 'force using China CDN',
-},
-  ];
-}
-</script> */}
+<PartialDocs name="getIconLinks" location="head" partialCalls={[
+  {
+    params: [
+      {
+        key: 'icons',
+        value: ['arrow-head-right', 'plus']
+      }
+    ]
+  },
+  {
+    comment: 'Alternative: Force using China CDN',
+    params: [
+      {
+        key: 'icons',
+        value: ['arrow-head-right', 'plus']
+      },
+      {
+        key: 'cdn',
+        value: 'cn'
+      }
+    ]
+  }
+]} />
