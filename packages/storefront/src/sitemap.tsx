@@ -450,6 +450,19 @@ export const sitemap: Routes = {
       },
     },
   },
+  'ag-grid': {
+    name: 'AG Grid',
+    path: '/ag-grid',
+    type: 'CATEGORY',
+    redirect: '/ag-grid/theme',
+    subPaths: {
+      theme: {
+        name: 'Theme',
+        path: '/ag-grid/theme',
+        type: 'PAGE',
+      },
+    },
+  },
   'must-know': {
     name: 'Must Know',
     path: '/must-know',
