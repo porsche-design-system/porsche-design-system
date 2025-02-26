@@ -1,15 +1,19 @@
-import type { PartialLocation, PartialParam, Partials } from '@/models/partials';
+import type { PartialCall, PartialLocation, Partials } from '@/models/partials';
+import { formatPartialParams } from '@/utils/partials/formatPartialParams';
 
-export const getAngularPartialExample = (name: Partials, location: PartialLocation, params: PartialParam[]) => {
+export const getAngularPartialExample = (name: Partials, location: PartialLocation, partialCalls: PartialCall[]) => {
   const partialImportPath = '@porsche-design-system/components-angular/partials';
   const glue = '\n  ';
 
-  const angularPartials = params
-    .map(({ value, comment }, i) =>
-      [comment && `// ${comment}`, `${i === 0 ? 'let ' : ''}partialContent = ${name}(${value});`]
+  const angularPartials = partialCalls
+    .map(({ comment, params }, i) => {
+      return [
+        comment && `// ${comment}`,
+        `${i === 0 ? 'let ' : ''}partialContent = ${name}({ ${formatPartialParams(params)} });`,
+      ]
         .filter(Boolean)
-        .join(glue)
-    )
+        .join(glue);
+    })
     .join('\n\n  ');
   return `<!-- prerequisite -->
 <!-- docs: https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack#index-transform -->

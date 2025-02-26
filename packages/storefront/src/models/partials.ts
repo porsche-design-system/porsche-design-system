@@ -10,8 +10,13 @@ export type Partials =
 // | 'getBrowserSupportFallbackScript'
 // | 'getCookiesFallbackScript';
 export type PartialLocation = 'head' | 'body';
-export type PartialParam = {
-  value: string;
-  options: object;
+
+export type PartialCall = {
+  params: PartialParam[];
   comment?: string;
+};
+
+export type PartialParam = {
+  key: string;
+  value: string | string[];
 };

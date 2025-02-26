@@ -1,20 +1,21 @@
-import type { PartialLocation, PartialParam, Partials } from '@/models/partials';
+import type { PartialCall, PartialLocation, Partials } from '@/models/partials';
+import { formatPartialParams } from '@/utils/partials/formatPartialParams';
 import { camelCase } from 'change-case';
 
-export const getVuePartialExample = (name: Partials, location: PartialLocation, params: PartialParam[]) => {
+export const getVuePartialExample = (name: Partials, location: PartialLocation, partialCalls: PartialCall[]) => {
   const partialImportPath = '@porsche-design-system/components-vue/partials';
   const partialRequirePath = `require('${partialImportPath}').${name}`;
   const glue = '\n  ';
 
-  const vuePartials = params
-    .map(({ value, comment }) =>
-      [
+  const vuePartials = partialCalls
+    .map(({ params, comment }) => {
+      return [
         comment && `        // ${comment}`,
-        `        ${camelCase(name.replace('get', ''))}: ${partialRequirePath}(${value}),`,
+        `        ${camelCase(name.replace('get', ''))}: ${partialRequirePath}({ ${formatPartialParams(params)} }),`,
       ]
         .filter(Boolean)
-        .join(glue)
-    )
+        .join(glue);
+    })
     .join('\n\n  ');
 
   return `<!-- prerequisite -->

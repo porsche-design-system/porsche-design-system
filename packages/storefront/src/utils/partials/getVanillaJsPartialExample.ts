@@ -1,15 +1,16 @@
-import type { PartialLocation, PartialParam, Partials } from '@/models/partials';
+import type { PartialCall, PartialLocation, Partials } from '@/models/partials';
+import { formatPartialParams } from '@/utils/partials/formatPartialParams';
 import { constantCase } from 'change-case';
 
-export const getVanillaJsPartialExample = (name: Partials, location: PartialLocation, params: PartialParam[]) => {
+export const getVanillaJsPartialExample = (name: Partials, location: PartialLocation, partialCalls: PartialCall[]) => {
   const partialImportPath = '@porsche-design-system/components-js/partials';
   const glue = '\n  ';
   const placeholder = `PLACEHOLDER_${constantCase(name.replace('get', ''))}`;
   const partialRequirePath = `require('${partialImportPath}').${name}`;
 
-  const jsPartials = params
-    .map(({ value, comment }) => {
-      const partialCall = `${partialRequirePath}(${value})`.replace(/'/g, '\\"'); // transform quotes
+  const jsPartials = partialCalls
+    .map(({ comment, params }) => {
+      const partialCall = `${partialRequirePath}({ ${formatPartialParams(params)} })`;
       return [
         comment && `<!-- ${comment} -->`,
         `"replace": "placeholder='<!--${placeholder}-->' && partial=$placeholder$(node -e 'console.log(${partialCall})') && regex=$placeholder'.*' && sed -i '' -E -e \\"s^$regex^$partial^\\" index.html"`,

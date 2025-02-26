@@ -1,5 +1,5 @@
 import { CodeBlock } from '@/components/playground/CodeBlock';
-import type { PartialLocation, PartialParam, Partials } from '@/models/partials';
+import type { PartialCall, PartialLocation, Partials } from '@/models/partials';
 import { getAngularPartialExample } from '@/utils/partials/getAngularPartialExample';
 import { getNextPartialExample } from '@/utils/partials/getNextPartialExample';
 import { getReactPartialExample } from '@/utils/partials/getReactPartialExample';
@@ -13,28 +13,32 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 type PartialDocsProps = {
   name: Partials;
   location: PartialLocation;
-  params: PartialParam[];
+  partialCalls: PartialCall[];
 };
 
-export const PartialDocs = ({ name, location, params }: PartialDocsProps) => {
+export const PartialDocs = ({ name, location, partialCalls }: PartialDocsProps) => {
   return (
     <>
       <CodeBlock
         frameworkMarkup={{
-          'vanilla-js': getVanillaJsPartialExample(name, location, params),
-          angular: getAngularPartialExample(name, location, params),
-          react: getReactPartialExample(name, location, params),
-          vue: getVuePartialExample(name, location, params),
+          'vanilla-js': getVanillaJsPartialExample(name, location, partialCalls),
+          angular: getAngularPartialExample(name, location, partialCalls),
+          react: getReactPartialExample(name, location, partialCalls),
+          vue: getVuePartialExample(name, location, partialCalls),
           next: getNextPartialExample(name),
         }}
       />
+      {/*// TODO: Heading should be in MD or use shared component */}
       <PHeading tag="h3" size="large" className="mt-lg mb-md max-w-prose">
         Output
       </PHeading>
       {/* @ts-expect-error: Suppress type incompatibility */}
       <SyntaxHighlighter className="markup select-none" language="html" useInlineStyles={false}>
-        {params
-          .map((param) => `${param.comment ? `// ${param.comment}\n` : ''}${getComponentChunkLinks(param.options)}`)
+        {partialCalls
+          .map(
+            (call) =>
+              `${call.comment ? `// ${call.comment}\n` : ''}${getComponentChunkLinks(...call.params.map(({ key, value }) => ({ [key]: value })))}`
+          )
           .join('\n')}
       </SyntaxHighlighter>
     </>
