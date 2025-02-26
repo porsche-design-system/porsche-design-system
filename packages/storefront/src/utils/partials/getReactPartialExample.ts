@@ -7,7 +7,7 @@ export const getReactPartialExample = (name: Partials, location: PartialLocation
   const glue = '\n  ';
   return `<${location}>\n  ${partialCall
     .map(({ params, comment }) => {
-      return [comment && `<!-- ${comment} -->`, `<%= ${partialRequirePath}({ ${formatPartialParams(params)} }) %>`]
+      return [comment && `<!-- ${comment} -->`, `<%= ${partialRequirePath}(${formatPartialParams(params)}) %>`]
         .filter(Boolean)
         .join(glue);
     })

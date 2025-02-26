@@ -9,7 +9,7 @@ export const getAngularPartialExample = (name: Partials, location: PartialLocati
     .map(({ comment, params }, i) => {
       return [
         comment && `// ${comment}`,
-        `${i === 0 ? 'let ' : ''}partialContent = ${name}({ ${formatPartialParams(params)} });`,
+        `${i === 0 ? 'let ' : ''}partialContent = ${name}(${formatPartialParams(params)});`,
       ]
         .filter(Boolean)
         .join(glue);

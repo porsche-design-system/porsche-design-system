@@ -11,7 +11,7 @@ export const getVuePartialExample = (name: Partials, location: PartialLocation, 
     .map(({ params, comment }) => {
       return [
         comment && `        // ${comment}`,
-        `        ${camelCase(name.replace('get', ''))}: ${partialRequirePath}({ ${formatPartialParams(params)} }),`,
+        `        ${camelCase(name.replace('get', ''))}: ${partialRequirePath}(${formatPartialParams(params)}),`,
       ]
         .filter(Boolean)
         .join(glue);

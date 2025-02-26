@@ -17,18 +17,21 @@ import type { PartialParam } from '@/models/partials';
  * ];
  *
  * formatPartialParams(params);
- * // Output: "components: ['button', 'marque'], cdn: 'cn'"
+ * // Output: "{ components: ['button', 'marque'], cdn: 'cn' }"
  * ```
  */
-export const formatPartialParams = (params: PartialParam[]): string =>
-  params
+export const formatPartialParams = (params: PartialParam[]): string => {
+  if (params.length === 0) return '';
+
+  return `{ ${params
     .map(({ key, value }) => {
       const formattedValue = Array.isArray(value)
-        ? `[${value.map((v) => `'${v}'`).join(', ')}]` // Format arrays properly
+        ? `[${value.map((v) => `'${v}'`).join(', ')}]`
         : typeof value === 'string'
-          ? `'${value}'` // Wrap strings in single quotes
-          : value; // Leave numbers, booleans, and other types as-is
+          ? `'${value}'`
+          : value;
 
       return `${key}: ${formattedValue}`;
     })
-    .join(', ');
+    .join(', ')} }`;
+};
