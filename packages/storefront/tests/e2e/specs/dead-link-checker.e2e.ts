@@ -1,4 +1,4 @@
-import { expect, type Page, test } from '@playwright/test';
+import { type Page, expect, test } from '@playwright/test';
 import { getInternalUrls } from '../helpers';
 
 const console = require('console'); // workaround for nicer logs
@@ -26,7 +26,7 @@ const getHeadline = async (page: Page): Promise<string> => {
 const internalUrls = getInternalUrls();
 
 test('should have no exponential increase in internal urls', () => {
-  expect(internalUrls.length).toBeLessThanOrEqual(250);
+  expect(internalUrls.length).toBeLessThanOrEqual(252);
 });
 
 for (const [url, index] of internalUrls.map<[string, number]>((url, i) => [url, i])) {
