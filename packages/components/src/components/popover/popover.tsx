@@ -8,6 +8,7 @@ import {
   getHasNativePopoverSupport,
   getPrefixedTagNames,
   hasPropValueChanged,
+  isClickOutside,
   parseAndGetAriaAttributes,
   validateProps,
 } from '../../utils';
@@ -50,21 +51,26 @@ export class Popover {
   /** Adapts the popover color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  @State() private open = false;
+  @State() private isOpen = false;
 
   private popover: HTMLDivElement;
   private button: HTMLButtonElement;
   private arrow: HTMLDivElement;
-  private cleanUp: () => void;
+  private cleanUpAutoUpdate: () => void;
   private hasNativePopoverSupport = getHasNativePopoverSupport();
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public connectedCallback(): void {
+    document.addEventListener('mousedown', this.onClickOutside, true);
   }
 
   public disconnectedCallback(): void {
+    document.removeEventListener('mousedown', this.onClickOutside, true);
     // ensures floating ui event listeners are removed in case popover is removed from DOM
     this.handlePopover(false);
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {
@@ -77,21 +83,20 @@ export class Popover {
       <Host onKeydown={(e: KeyboardEvent) => e.key === 'Escape' && this.button.focus()}>
         <button
           type="button"
-          onClick={() => (this.open = !this.open)}
+          onClick={() => (this.isOpen = !this.isOpen)}
           {...parseAndGetAriaAttributes({
             ...parseAndGetAriaAttributes(this.aria),
-            ...{ 'aria-expanded': this.open },
+            ...{ 'aria-expanded': this.isOpen },
           })}
           ref={(el) => (this.button = el)}
         >
           <PrefixedTagNames.pIcon class="icon" name="information" theme={this.theme} />
           <span class="label">More information</span>
         </button>
-        {this.open && (
+        {this.isOpen && (
           <div
-            class="popover"
             popover="auto"
-            onToggle={(e: ToggleEvent) => (this.open = e.newState === 'open')}
+            onToggle={(e: ToggleEvent) => (this.isOpen = e.newState === 'open')}
             ref={(el) => (this.popover = el)}
           >
             <div class="arrow" ref={(el) => (this.arrow = el)} />
@@ -104,20 +109,34 @@ export class Popover {
 
   public componentDidRender(): void {
     // needs to be called after render cycle to be able to render the popover conditionally
-    this.handlePopover(this.open);
+    this.handlePopover(this.isOpen);
   }
 
   private handlePopover = (open: boolean): void => {
-    if (open && typeof this.cleanUp === 'undefined') {
+    if (open) {
       if (this.hasNativePopoverSupport) {
         this.popover.showPopover();
       }
-      // ensures floating ui event listeners are added when popover is opened
-      this.cleanUp = autoUpdate(this.button, this.popover, this.updatePosition);
-    } else if (!open && typeof this.cleanUp === 'function') {
-      // ensures floating ui event listeners are removed when popover is closed
-      this.cleanUp();
-      this.cleanUp = undefined;
+      if (typeof this.cleanUpAutoUpdate === 'undefined') {
+        // ensures floating ui event listeners are added when popover is opened
+        this.cleanUpAutoUpdate = autoUpdate(this.button, this.popover, this.updatePosition);
+      }
+    } else {
+      // we can't call hidePopover() because the popover element itself is rendered conditionally
+      // if (this.hasNativePopoverSupport) {
+      //   this.popover.hidePopover();
+      // }
+      if (typeof this.cleanUpAutoUpdate === 'function') {
+        // ensures floating ui event listeners are removed when popover is closed
+        this.cleanUpAutoUpdate();
+        this.cleanUpAutoUpdate = undefined;
+      }
+    }
+  };
+
+  private onClickOutside = (e: MouseEvent): void => {
+    if (this.isOpen && isClickOutside(e, this.button) && isClickOutside(e, this.popover)) {
+      this.isOpen = false;
     }
   };
 

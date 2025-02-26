@@ -1717,6 +1717,16 @@ exports[`should match snapshot 1`] = `
         "description": "Defines which slide to be active (zero-based numbering).",
         "type": "number",
       },
+      "alignControls": {
+        "allowedValues": [
+          "start",
+          "center",
+          "auto",
+        ],
+        "defaultValue": "auto",
+        "description": "Alignment of slotted controls",
+        "type": "CarouselAlignControls",
+      },
       "alignHeader": {
         "allowedValues": [
           "start",
@@ -6108,7 +6118,7 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "isThemeable": false,
     "nestedComponents": [
-      "p-checkbox-wrapper",
+      "p-checkbox",
     ],
     "propsMeta": {
       "disabled": {
@@ -7933,6 +7943,21 @@ exports[`should match snapshot 1`] = `
         "defaultValue": null,
         "description": "A caption describing the contents of the table for accessibility only. This won't be visible in the browser. Use an element with an attribute of \`slot="caption"\` for a visible caption.",
         "type": "string",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Displays as compact version.",
+        "type": "boolean",
+      },
+      "layout": {
+        "allowedValues": [
+          "auto",
+          "fixed",
+        ],
+        "defaultValue": "auto",
+        "description": "Controls the layout behavior of the table.",
+        "type": "TableLayout",
       },
       "theme": {
         "allowedValues": [

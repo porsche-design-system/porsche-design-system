@@ -21,9 +21,72 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Changed
 
+- `Carousel`: Center layout of Carousel on mobile view
+  ([#3765](https://github.com/porsche-design-system/porsche-design-system/pull/3765))
+
+#### Added
+
+- `Table`: `compact` prop to enable a smaller, space-saving version for compact layouts
+  ([#3758](https://github.com/porsche-design-system/porsche-design-system/pull/3758))
+- `Table`: `layout` prop to render table with `table-layout: fixed` css for manual control of column widths
+  ([#3758](https://github.com/porsche-design-system/porsche-design-system/pull/3758))
+- `Carousel`: `align-controls` prop to align the controls slot to the left or center (overwrites auto-alignment)
+  ([#3766](https://github.com/porsche-design-system/porsche-design-system/pull/3766))
+
+#### Changed
+
+- `Select`, `Multi Select`, `Select Wrapper`:
+  - gets rendered on `#top-layer` which enables it to be shown correctly even when used e.g. within a scroll container
+    or overflow context ([#3754](https://github.com/porsche-design-system/porsche-design-system/pull/3754))
+  - gets positioned by [CSS Anchor Positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning)
+    or [Floating UI](https://floating-ui.com) as fallback for browsers not supporting it yet
+    ([#3754](https://github.com/porsche-design-system/porsche-design-system/pull/3754))
+  - modernized visual appearance, dynamic max-height based on viewport and fade in animation of option list
+    ([#3754](https://github.com/porsche-design-system/porsche-design-system/pull/3754))
+- `Select`, `Select Wrapper`:
+  - focus outline becomes default focus style when no filter is used
+    ([#3754](https://github.com/porsche-design-system/porsche-design-system/pull/3754))
+
+### [3.27.0-rc.5] - 2025-02-20
+
+#### Fixed
+
+- `AG Grid`: error on reload in next.js.
+  ([#3759](https://github.com/porsche-design-system/porsche-design-system/pull/3759))
+
+### [3.27.0-rc.4] - 2025-02-20
+
+#### Fixed
+
+- `AG Grid`: not accessing cdn base url correctly.
+  ([#3759](https://github.com/porsche-design-system/porsche-design-system/pull/3759))
+
+### [3.27.0-rc.3] - 2025-02-18
+
+#### Fixed
+
+- `AG Grid`: not resolving dependencies correctly.
+  ([#3757](https://github.com/porsche-design-system/porsche-design-system/pull/3757))
+
+### [3.27.0-rc.2] - 2025-02-18
+
+#### Fixed
+
+- `AG Grid`: not resolving dependencies correctly.
+  ([#3756](https://github.com/porsche-design-system/porsche-design-system/pull/3756))
+
+### [3.27.0-rc.1] - 2025-02-17
+
+#### Changed
+
 - **Breaking Change** `AG Grid`: Updated from v32 to v33, which introduced a new Theming API. AG Grid migrated from a
   CSS-based theming approach to a JavaScript object-based theming system. As a result, our custom theme also had to be
   adjusted accordingly. ([#3740](https://github.com/porsche-design-system/porsche-design-system/pull/3740))
+
+#### Fixed
+
+- Styles: `vanilla-extract` returns `getMediaQueryMax`, `getMediaQueryMin`, `getMediaQueryMinMax` & `getSkeletonStyle`
+  in wrong format ([#3753](https://github.com/porsche-design-system/porsche-design-system/pull/3753))
 
 ### [3.27.0-rc.0] - 2025-02-13
 

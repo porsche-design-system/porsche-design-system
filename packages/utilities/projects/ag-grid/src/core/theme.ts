@@ -1,3 +1,5 @@
+import { type Theme, themeQuartz } from 'ag-grid-community';
+import { checkboxStyle, pdsSvgIcons, toggleButtonStyle } from '../parts';
 import {
   borderRadiusMedium,
   borderRadiusSmall,
@@ -8,6 +10,7 @@ import {
   themeDarkBackgroundBase,
   themeDarkBackgroundFrosted,
   themeDarkBackgroundSurface,
+  themeDarkBackgroundSurfaceDarken,
   themeDarkContrastLow,
   themeDarkContrastMedium,
   themeDarkNotificationError,
@@ -19,6 +22,7 @@ import {
   themeLightBackgroundBase,
   themeLightBackgroundFrosted,
   themeLightBackgroundSurface,
+  themeLightBackgroundSurfaceDarken,
   themeLightContrastLow,
   themeLightContrastMedium,
   themeLightNotificationError,
@@ -27,12 +31,7 @@ import {
   themeLightStateDisabled,
   themeLightStateFocus,
   themeLightStateHover,
-} from '@porsche-design-system/styles';
-
-import { type Theme, themeQuartz } from 'ag-grid-community';
-
-import { darkenColor } from '@porsche-design-system/shared';
-import { checkboxStyle, pdsSvgIcons, toggleButtonStyle } from '../parts';
+} from '../styles';
 import { pdsThemeModeDark } from '../types/theme-mode';
 
 export const pdsTheme: Theme = themeQuartz
@@ -59,7 +58,7 @@ export const pdsTheme: Theme = themeQuartz
     backgroundColor: themeLightBackgroundBase,
     foregroundColor: themeLightPrimary,
     headerBackgroundColor: themeLightBackgroundSurface,
-    selectedRowBackgroundColor: darkenColor(themeLightBackgroundSurface),
+    selectedRowBackgroundColor: themeLightBackgroundSurfaceDarken,
     oddRowBackgroundColor: themeLightBackgroundSurface,
     modalOverlayBackgroundColor: themeLightBackgroundFrosted,
     rowHoverColor: themeLightStateHover,
@@ -80,7 +79,7 @@ export const pdsTheme: Theme = themeQuartz
       backgroundColor: themeDarkBackgroundBase,
       foregroundColor: themeDarkPrimary,
       headerBackgroundColor: themeDarkBackgroundSurface,
-      selectedRowBackgroundColor: darkenColor(themeDarkBackgroundSurface),
+      selectedRowBackgroundColor: themeDarkBackgroundSurfaceDarken,
       oddRowBackgroundColor: themeDarkBackgroundSurface,
       modalOverlayBackgroundColor: themeDarkBackgroundFrosted,
       rowHoverColor: themeDarkStateHover,

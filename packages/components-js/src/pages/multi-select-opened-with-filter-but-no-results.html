@@ -1,0 +1,29 @@
+<style>
+  p-multi-select {
+    margin: 16px;
+  }
+</style>
+
+<p-multi-select name="options" label="Opened with no results" dropdown-direction="down" class="skip-axe-core-test">
+  <p-multi-select-option value="a">Option A</p-multi-select-option>
+  <p-multi-select-option value="b">Option B</p-multi-select-option>
+  <p-multi-select-option value="c">Option C</p-multi-select-option>
+  <p-multi-select-option value="d">Option D</p-multi-select-option>
+  <p-multi-select-option value="e">Option E</p-multi-select-option>
+  <p-multi-select-option value="f">Option F</p-multi-select-option>
+  <p-multi-select-option value="g">Option G</p-multi-select-option>
+  <p-multi-select-option value="h">Option H</p-multi-select-option>
+  <p-multi-select-option value="i">Option I</p-multi-select-option>
+  <p-multi-select-option value="j">Option J</p-multi-select-option>
+  <p-multi-select-option value="k">Option K</p-multi-select-option>
+</p-multi-select>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    document.querySelector('p-multi-select').shadowRoot.querySelector('label').click();
+
+    const inputElement = document.querySelector('p-multi-select').shadowRoot.querySelector('input');
+    inputElement.value = 'No matching option';
+    inputElement.dispatchEvent(new Event('input', { bubbles: true }));
+  });
+</script>

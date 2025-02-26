@@ -1,3 +1,17 @@
+<style>
+  .playground > iframe {
+    height: 40rem;
+  }
+
+  .playground > iframe.max-height {
+    height: 62rem;
+  }
+
+  .playground > iframe.min-height {
+    height: 25rem;
+  }
+</style>
+
 <!-- skip this axe-core test because it is just needed for vrt -->
 <div class="playground light skip-axe-core-test" title="should render without label and without description">
   <p-multi-select name="options">
@@ -188,202 +202,77 @@
   </p-multi-select>
 </div>
 
-<div class="playground light" title="should render opened" style="padding-bottom: calc(1rem + 450px)">
-  <!-- TODO: axe-core test deactivated until issue #3193 is resolved -->
-  <p-multi-select name="options" label="Opened" dropdown-direction="down" class="open skip-axe-core-test">
-    <p-multi-select-option value="a"
-      >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
-      displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
-      top.</p-multi-select-option
-    >
-    <p-multi-select-option value="b">Option B</p-multi-select-option>
-    <p-multi-select-option value="c">Option C</p-multi-select-option>
-    <p-multi-select-option value="d"
-      >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
-      displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
-      top.</p-multi-select-option
-    >
-    <p-multi-select-option value="e">Option E</p-multi-select-option>
-    <p-multi-select-option value="f">Option F</p-multi-select-option>
-    <p-multi-select-option value="g">Option G</p-multi-select-option>
-    <p-multi-select-option value="h">Option H</p-multi-select-option>
-    <p-multi-select-option value="i">Option I</p-multi-select-option>
-    <p-multi-select-option value="j">Option J</p-multi-select-option>
-    <p-multi-select-option value="k">Option K</p-multi-select-option>
-  </p-multi-select>
+<div class="playground light skip-axe-core-test" title="should render opened with direction bottom">
+  <iframe
+    src="/multi-select-opened-bottom?iframe=true"
+    loading="eager"
+    title="should show multi-select with bottom direction"
+  ></iframe>
+</div>
+
+<div class="playground light skip-axe-core-test" title="should render opened with direction up">
+  <iframe
+    src="/multi-select-opened-top?iframe=true"
+    loading="eager"
+    title="should show multi-select with top direction"
+  ></iframe>
 </div>
 
 <div
-  class="playground light"
-  title="should render with open dropdown direction up"
-  style="padding-top: calc(1rem + 450px)"
->
-  <!-- TODO: axe-core test deactivated until issue #3193 is resolved -->
-  <p-multi-select name="options" label="Opened direction up" dropdown-direction="up" class="open skip-axe-core-test">
-    <p-multi-select-option value="a">Should show dropdown direction up</p-multi-select-option>
-    <p-multi-select-option value="b">Option B</p-multi-select-option>
-    <p-multi-select-option value="c">Option C</p-multi-select-option>
-    <p-multi-select-option value="d"
-      >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
-      displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
-      top.</p-multi-select-option
-    >
-    <p-multi-select-option value="e">Option E</p-multi-select-option>
-    <p-multi-select-option value="f">Option F</p-multi-select-option>
-    <p-multi-select-option value="g">Option G</p-multi-select-option>
-    <p-multi-select-option value="h">Option H</p-multi-select-option>
-    <p-multi-select-option value="i">Option I</p-multi-select-option>
-    <p-multi-select-option value="j">Option J</p-multi-select-option>
-    <p-multi-select-option value="k">Option K</p-multi-select-option>
-  </p-multi-select>
-</div>
-
-<div
-  class="playground light"
+  class="playground light skip-axe-core-test"
   title="should render opened and with disabled, highlighted and selected"
-  style="padding-bottom: calc(1rem + 450px)"
 >
-  <!-- TODO: axe-core test deactivated until issue #3193 is resolved -->
-  <p-multi-select
-    name="options"
-    label="Opened with disabled (Option A), highlighted (Option B) and selected (Option C)"
-    dropdown-direction="down"
-    class="open selected skip-axe-core-test"
-  >
-    <p-multi-select-option value="a" disabled="true">Option A</p-multi-select-option>
-    <p-multi-select-option class="highlight" value="b">Option B</p-multi-select-option>
-    <p-multi-select-option value="c">Option C</p-multi-select-option>
-    <p-multi-select-option value="d">Option D</p-multi-select-option>
-    <p-multi-select-option value="e">Option E</p-multi-select-option>
-    <p-multi-select-option value="f">Option F</p-multi-select-option>
-    <p-multi-select-option value="g">Option G</p-multi-select-option>
-    <p-multi-select-option value="h">Option H</p-multi-select-option>
-    <p-multi-select-option value="i">Option I</p-multi-select-option>
-    <p-multi-select-option value="j">Option J</p-multi-select-option>
-    <p-multi-select-option value="k">Option K</p-multi-select-option>
-  </p-multi-select>
+  <iframe
+    src="/multi-select-opened-with-disabled-highlighted-selected?iframe=true"
+    loading="eager"
+    title="should show multi-select with disabled highlighted selected"
+  ></iframe>
+</div>
+
+<div class="playground light skip-axe-core-test" title="should render opened and with optgroups">
+  <iframe
+    src="/multi-select-opened-with-optgroups?iframe=true"
+    loading="eager"
+    title="should show multi-select with optgroups"
+  ></iframe>
+</div>
+
+<div class="playground light skip-axe-core-test" title="should render opened and with optgroup in disabled state">
+  <iframe
+    src="/multi-select-opened-with-optgroups-disabled?iframe=true"
+    loading="eager"
+    title="should show multi-select optgroups disabled"
+  ></iframe>
 </div>
 
 <div
-  class="playground light"
-  title="should render opened and with optgroups"
-  style="padding-bottom: calc(1rem + 450px)"
->
-  <p-multi-select
-    name="options"
-    label="Opened with optgroups"
-    dropdown-direction="down"
-    class="open skip-axe-core-test"
-  >
-    <p-optgroup label="Some optgroup label 1">
-      <p-multi-select-option value="a">Option A</p-multi-select-option>
-      <p-multi-select-option value="b">Option B</p-multi-select-option>
-      <p-multi-select-option value="c">Option C</p-multi-select-option>
-    </p-optgroup>
-    <p-optgroup label="Some optgroup label 2">
-      <p-multi-select-option value="d">Option D</p-multi-select-option>
-      <p-multi-select-option value="e">Option E</p-multi-select-option>
-      <p-multi-select-option value="f">Option F</p-multi-select-option>
-    </p-optgroup>
-  </p-multi-select>
-</div>
-
-<div
-  class="playground light"
-  title="should render opened and with optgroup in disabled state"
-  style="padding-bottom: calc(1rem + 450px)"
->
-  <p-multi-select
-    name="options"
-    label="Opened with disabled (Option A), highlighted (Option B) and selected (Option C) inside optgroup + optgroup in disabled state"
-    dropdown-direction="down"
-    class="open selected skip-axe-core-test"
-  >
-    <p-optgroup label="Some optgroup label 1">
-      <p-multi-select-option value="a" disabled="true">Option A</p-multi-select-option>
-      <p-multi-select-option class="highlight" value="b">Option B</p-multi-select-option>
-      <p-multi-select-option value="c">Option C</p-multi-select-option>
-    </p-optgroup>
-    <p-optgroup label="Some optgroup label 2" disabled="true">
-      <p-multi-select-option value="d">Option D</p-multi-select-option>
-      <p-multi-select-option value="e">Option E</p-multi-select-option>
-      <p-multi-select-option value="f">Option F</p-multi-select-option>
-    </p-optgroup>
-  </p-multi-select>
-</div>
-
-<div
-  class="playground light"
+  class="playground light skip-axe-core-test"
   title="should render opened and with options within and outside optgroup"
-  style="padding-bottom: calc(1rem + 450px)"
 >
-  <p-multi-select
-    name="options"
-    label="Opened with options within and outside optgroup"
-    dropdown-direction="down"
-    class="open skip-axe-core-test"
-  >
-    <p-optgroup label="Some optgroup label 1">
-      <p-multi-select-option value="a">Option A</p-multi-select-option>
-      <p-multi-select-option value="b">Option B</p-multi-select-option>
-      <p-multi-select-option value="c">Option C</p-multi-select-option>
-    </p-optgroup>
-    <p-multi-select-option value="d">Option D</p-multi-select-option>
-    <p-multi-select-option value="e">Option E</p-multi-select-option>
-    <p-multi-select-option value="f">Option F</p-multi-select-option>
-  </p-multi-select>
+  <iframe
+    src="/multi-select-opened-with-and-without-optgroups?iframe=true"
+    loading="eager"
+    title="should show multi-select without optgroups"
+  ></iframe>
 </div>
 
 <div
-  class="playground light"
+  class="playground light skip-axe-core-test"
   title="should render opened and with multiple selected options and highlighted"
-  style="padding-bottom: calc(1rem + 450px)"
 >
-  <!-- TODO: axe-core test deactivated until issue #3193 is resolved -->
-  <p-multi-select
-    name="options"
-    label="Opened with multiple selected options and Option B highlighted"
-    dropdown-direction="down"
-    class="open selected-multiple skip-axe-core-test"
-  >
-    <p-multi-select-option value="a">Option A</p-multi-select-option>
-    <p-multi-select-option class="highlight" value="b">Option B</p-multi-select-option>
-    <p-multi-select-option value="c">Option C</p-multi-select-option>
-    <p-multi-select-option value="d">Option D</p-multi-select-option>
-    <p-multi-select-option value="e">Option E</p-multi-select-option>
-    <p-multi-select-option value="f">Option F</p-multi-select-option>
-    <p-multi-select-option value="g">Option G</p-multi-select-option>
-    <p-multi-select-option value="h">Option H</p-multi-select-option>
-    <p-multi-select-option value="i">Option I</p-multi-select-option>
-    <p-multi-select-option value="j">Option J</p-multi-select-option>
-    <p-multi-select-option value="k">Option K</p-multi-select-option>
-  </p-multi-select>
+  <iframe
+    src="/multi-select-opened-with-multiple-selected-options?iframe=true"
+    loading="eager"
+    title="should show multi-select with multiple selected options"
+  ></iframe>
 </div>
 
-<div
-  class="playground light"
-  title="should render opened with filter input and no results"
-  style="padding-bottom: calc(1rem + 60px)"
->
-  <!-- TODO: axe-core test deactivated until issue #3193 is resolved -->
-  <p-multi-select
-    name="options"
-    label="Opened with no results"
-    dropdown-direction="down"
-    class="open no-results skip-axe-core-test"
-  >
-    <p-multi-select-option value="a">Option A</p-multi-select-option>
-    <p-multi-select-option value="b">Option B</p-multi-select-option>
-    <p-multi-select-option value="c">Option C</p-multi-select-option>
-    <p-multi-select-option value="d">Option D</p-multi-select-option>
-    <p-multi-select-option value="e">Option E</p-multi-select-option>
-    <p-multi-select-option value="f">Option F</p-multi-select-option>
-    <p-multi-select-option value="g">Option G</p-multi-select-option>
-    <p-multi-select-option value="h">Option H</p-multi-select-option>
-    <p-multi-select-option value="i">Option I</p-multi-select-option>
-    <p-multi-select-option value="j">Option J</p-multi-select-option>
-    <p-multi-select-option value="k">Option K</p-multi-select-option>
-  </p-multi-select>
+<div class="playground light skip-axe-core-test" title="should render opened with filter input and no results">
+  <iframe
+    src="/multi-select-opened-with-filter-but-no-results?iframe=true"
+    loading="eager"
+    title="should show multi-select with filter button"
+  ></iframe>
 </div>
 
 <div class="playground light" title="should render with ellipsis and min-width in a smaller container">
@@ -396,27 +285,35 @@
   </div>
 </div>
 
+<div class="playground light skip-axe-core-test" title="should render opened on #top-layer within scroll container">
+  <iframe
+    src="/multi-select-opened-scroll-context?iframe=true"
+    loading="eager"
+    title="should render opened within scroll container"
+  ></iframe>
+</div>
+
+<div class="playground light skip-axe-core-test" title="should render opened with max-height option list">
+  <iframe
+    class="max-height"
+    src="/multi-select-opened-max-height?iframe=true"
+    loading="eager"
+    title="should render opened with max-height option list"
+  ></iframe>
+</div>
+
+<div class="playground light skip-axe-core-test" title="should render opened with min-height option list">
+  <iframe
+    class="min-height"
+    src="/multi-select-opened-min-height?iframe=true"
+    loading="eager"
+    title="should render opened with min-height option list"
+  ></iframe>
+</div>
+
 <script>
   porscheDesignSystem.componentsReady().then(() => {
-    // Call click on the shadow root input so isOutsideClick won't close the dropdowns
-    document.querySelectorAll('p-multi-select.open').forEach((el) => el.shadowRoot.querySelector('INPUT').click());
-
-    // Highlight second option
-    document
-      .querySelectorAll('p-multi-select-option.highlight')
-      .forEach((option) => option.shadowRoot.firstElementChild.classList.add('option--highlighted'));
-
     // Select options with value "c"
     document.querySelectorAll('p-multi-select.selected').forEach((select) => (select.value = ['c']));
-
-    // Select multiple options
-    document
-      .querySelectorAll('p-multi-select.selected-multiple')
-      .forEach((select) => (select.value = ['a', 'b', 'c', 'd', 'e', 'f']));
-
-    // Type into input
-    const inputElement = document.querySelector('p-multi-select.no-results').shadowRoot.querySelector('input');
-    inputElement.value = 'No matching option';
-    inputElement.dispatchEvent(new Event('input', { bubbles: true }));
   });
 </script>
