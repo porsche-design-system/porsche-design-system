@@ -1,5 +1,6 @@
 import { Notification } from "@/components/common/Notification";
 import { TableOfContents } from "@/components/common/TableOfContents";
+import {PartialDocs} from "@/components/partials/PartialDocs";
 
 export const metadata = {
   title: 'Partials: Initial Styles - Porsche Design System',
@@ -38,38 +39,32 @@ included.
 Project integration differs based on the project setup.
 The following showcases the most common ways.
 
-{/* <PartialDocs name="getInitialStyles" :params="params" location="head"></PartialDocs> */}
+<PartialDocs name="getInitialStyles" location="head" partialCalls={[
+  {
+    params: [],
+  },
+  {
+    comment: 'Alternative: With custom prefix to match your prefixed components',
+    params: [
+      {
+        key: 'prefix',
+        value: 'custom-prefix'
+      },
+    ]
+  },
+  {
+    comment: 'Alternative: With multiple prefixes to match prefixed components coming from micro frontends',
+    params: [
+      {
+        key: 'prefix',
+        value: ['', 'custom-prefix', 'another-prefix']
+      },
+    ]
+  }
+]} />
 
 <Notification heading="Hint" headingTag="h3" state="success">
   In case, micro frontends with custom prefixed Porsche Design System components are used,
   it's possible to provide proper initial styles to all of them by defining an array of custom prefixes (see example below).
   By entering `document.porscheDesignSystem` in the browser console of your application, it's possible to find out which prefixes are used.
 </Notification>
-
-{/* <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-
-  @Component
-  export default class Code extends Vue {
-  public params = [
-{
-  value: ""
-},
-{
-  value: "{ prefix: 'custom-prefix' }",
-  comment: 'with custom prefix to match your prefixed components',
-},
-{
-  value: "{ prefix: ['', 'custom-prefix', 'another-prefix'] }",
-  comment: 'with multiple prefixes to match prefixed components coming from micro frontends',
-},
-  ];
-}
-</script> */}
-
-{/* <style scoped lang="scss">
-  :deep(table code::before) {
-  content: '' !important;
-}
-</style> */}

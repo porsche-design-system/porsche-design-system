@@ -18,7 +18,16 @@ import type { MDXComponents } from 'mdx/types';
 import Image from 'next/image';
 import Link from 'next/link';
 import type React from 'react';
+import type { PropsWithChildren } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
+
+export const H3 = ({ children }: PropsWithChildren) => (
+  <PHeading tag="h3" size="large" className="mt-lg mb-md max-w-prose">
+    {children}
+  </PHeading>
+);
+
+export const P = ({ children }: PropsWithChildren) => <PText className="my-sm max-w-prose">{children}</PText>;
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -43,11 +52,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         </PLinkPure>
       </PHeading>
     ),
-    h3: ({ children }) => (
-      <PHeading tag="h3" size="large" className="mt-lg mb-md max-w-prose">
-        {children as React.ReactNode}
-      </PHeading>
-    ),
+    h3: ({ children }) => <H3>{children as React.ReactNode}</H3>,
     h4: ({ children }) => (
       <PHeading tag="h4" size="medium" className="my-md max-w-prose">
         {children as React.ReactNode}
@@ -63,7 +68,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children as React.ReactNode}
       </PHeading>
     ),
-    p: ({ children }) => <PText className="my-sm max-w-prose">{children as React.ReactNode}</PText>,
+    p: ({ children }) => <P>{children as React.ReactNode}</P>,
     hr: ({ children }) => <PDivider className="my-lg">{children as React.ReactNode}</PDivider>,
     ul: ({ children }) => (
       <PTextList className="my-sm ms-static-lg max-w-prose">{children as React.ReactNode}</PTextList>

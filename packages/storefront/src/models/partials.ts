@@ -8,6 +8,7 @@ export type Partials =
   | 'getFontLinks'
   | 'getIconLinks'
   | 'getInitialStyles'
+  | 'getLoaderScript'
   | 'getMetaTagsAndIconLinks';
 export type PartialLocation = 'head' | 'body';
 

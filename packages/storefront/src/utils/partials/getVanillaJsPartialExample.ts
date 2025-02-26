@@ -10,7 +10,7 @@ export const getVanillaJsPartialExample = (name: Partials, location: PartialLoca
 
   const jsPartials = partialCalls
     .map(({ comment, params }) => {
-      const partialCall = `${partialRequirePath}(${formatPartialParams(params)})`;
+      const partialCall = `${partialRequirePath}(${formatPartialParams(params)})`.replace(/'/g, '\\"'); // transform quotes;
       return [
         comment && `<!-- ${comment} -->`,
         `"replace": "placeholder='<!--${placeholder}-->' && partial=$placeholder$(node -e 'console.log(${partialCall})') && regex=$placeholder'.*' && sed -i '' -E -e \\"s^$regex^$partial^\\" index.html"`,

@@ -7,9 +7,61 @@ export const getNextPartialExample = (name: Partials) => {
 const nextExamples: {
   [partial in Partials]: string;
 } = {
-  getBrowserSupportFallbackScript: '',
-  getCookiesFallbackScript: '',
-  getDSRPonyfill: '',
+  getBrowserSupportFallbackScript: `/* ./app/layout.tsx */
+import React from 'react';
+import { preload } from 'react-dom';
+import { getBrowserSupportFallbackScript } from '@porsche-design-system/components-react/partials';
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <>
+      {children}
+      {getBrowserSupportFallbackScript({ format: 'jsx' })}
+      <!-- Alternative: Force using China CDN -->
+      {getBrowserSupportFallbackScript({ format: 'jsx', cdn: 'cn' })}
+    </>
+  );
+}`,
+  getCookiesFallbackScript: `/* ./app/layout.tsx */
+import React from 'react';
+import { preload } from 'react-dom';
+import { getCookiesFallbackScript } from '@porsche-design-system/components-react/partials';
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <>
+      {children}
+      {getCookiesFallbackScript({ format: 'jsx' })}
+      <!-- Alternative: Force using China CDN -->
+      {getCookiesFallbackScript({ format: 'jsx', cdn: 'cn' })}
+    </>
+  );
+}`,
+  getDSRPonyfill: `/* ./app/layout.tsx */
+import React from 'react';
+import { preload } from 'react-dom';
+import { getDSRPonyfill } from '@porsche-design-system/components-react/partials';
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <>
+      {children}
+      {getDSRPonyfill({ format: 'jsx' })}
+    </>
+  );
+}`,
   getMetaTagsAndIconLinks: `/* ./app/layout.tsx */
 import type { Metadata, Viewport } from "next";
 import { getMetaTagsAndIconLinks } from '@porsche-design-system/components-react/partials';
@@ -106,7 +158,7 @@ export const Partials = () => {
       isServerInserted.current = true;
       return <>
         {getInitialStyles({ format: 'jsx' })}
-        <!-- Alternative: force using China CDN -->
+        <!-- Alternative: Force using China CDN -->
         {getInitialStyles({ format: 'jsx', cdn: 'cn' })}
       </>
     }
@@ -132,7 +184,7 @@ export const Partials = () => {
       isServerInserted.current = true;
       return <>
           {getFontFaceStylesheet({ format: 'jsx' })}
-          <!-- Alternative: force using China CDN -->
+          <!-- Alternative: Force using China CDN -->
           {getFontFaceStylesheet({ format: 'jsx', cdn: 'cn' })}
       </>
     }
@@ -158,7 +210,7 @@ export const Partials = () => {
       isServerInserted.current = true;
       return <>
           {getFontFaceStyles({ format: 'jsx' })}
-          <!-- Alternative: force using China CDN -->
+          <!-- Alternative: Force using China CDN -->
           {getFontFaceStyles({ format: 'jsx', cdn: 'cn' })}
       </>
     }
@@ -168,4 +220,25 @@ export const Partials = () => {
 }
 
 /* render </Partials> component in root layout */`,
+  getLoaderScript: `/* ./app/layout.tsx */
+import React from 'react';
+import { preload } from 'react-dom';
+import { getLoaderScript } from '@porsche-design-system/components-react/partials';
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <>
+      {children}
+      {getLoaderScript({ format: 'jsx' })}
+      <!-- Alternative: With custom prefix -->
+      {getLoaderScript({ format: 'jsx', prefix: 'custom-prefix' })}
+      <!-- Alternative: With multiple custom prefixes -->
+      {getLoaderScript({ format: 'jsx', prefix: ['', 'custom-prefix', 'another-prefix'] })}
+    </>
+  );
+}\`,`,
 };

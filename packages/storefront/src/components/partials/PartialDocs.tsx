@@ -5,9 +5,9 @@ import { getNextPartialExample } from '@/utils/partials/getNextPartialExample';
 import { getReactPartialExample } from '@/utils/partials/getReactPartialExample';
 import { getVanillaJsPartialExample } from '@/utils/partials/getVanillaJsPartialExample';
 import { getVuePartialExample } from '@/utils/partials/getVuePartialExample';
-import { PHeading } from '@porsche-design-system/components-react/ssr';
 import type React from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
+import { H3, P } from '../../../mdx-components';
 
 type PartialDocsProps = {
   name: Partials;
@@ -16,6 +16,14 @@ type PartialDocsProps = {
 };
 
 export const PartialDocs = ({ name, location, partialCalls }: PartialDocsProps) => {
+  // Apply some basic formatting to make the output easier readable
+  const formatPartial = (partial: unknown): string => {
+    if (typeof partial === 'string') {
+      return partial.replace(/(>)/g, '>\n').replace(/(<\/)/g, '\n</');
+    }
+    return String(partial);
+  };
+
   return (
     <>
       <CodeBlock
@@ -27,17 +35,16 @@ export const PartialDocs = ({ name, location, partialCalls }: PartialDocsProps) 
           next: getNextPartialExample(name),
         }}
       />
-      {/*// TODO: Heading should be in MD or use shared component */}
-      <PHeading tag="h3" size="large" className="mt-lg mb-md max-w-prose">
-        Output
-      </PHeading>
+      <H3>Output</H3>
+      <P>The result of this partial looks like this:</P>
       {/* @ts-expect-error: Suppress type incompatibility */}
       <SyntaxHighlighter className="markup select-none" language="html" useInlineStyles={false}>
         {partialCalls
-          .map(
-            (call) =>
-              `${call.comment ? `// ${call.comment}\n` : ''}${require('@porsche-design-system/components-react/partials')[name](...call.params.map(({ key, value }) => ({ [key]: value })))}`
-          )
+          .map(({ comment, params }) => {
+            const paramObj = Object.fromEntries(params.map(({ key, value }) => [key, value]));
+            const partialResult = require('@porsche-design-system/components-react/partials')[name](paramObj);
+            return `${comment ? `// ${comment}\n` : ''}${formatPartial(partialResult)}`;
+          })
           .join('\n')}
       </SyntaxHighlighter>
     </>

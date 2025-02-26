@@ -1,4 +1,5 @@
 import { TableOfContents } from "@/components/common/TableOfContents";
+import {PartialDocs} from "@/components/partials/PartialDocs";
 
 export const metadata = {
   title: 'Partials: Loader Script - Porsche Design System',
@@ -37,7 +38,29 @@ included.
 Project integration differs based on the project setup.
 The following showcases the most common ways.
 
-{/* <PartialDocs name="getLoaderScript" :params="params"></PartialDocs> */}
+<PartialDocs name="getLoaderScript" location="body" partialCalls={[
+  {
+    params: [],
+  },
+  {
+    comment: 'Alternative: With custom prefix',
+    params: [
+      {
+        key: 'prefix',
+        value: 'custom-prefix'
+      },
+    ]
+  },
+  {
+    comment: 'Alternative: With multiple custom prefixes',
+    params: [
+      {
+        key: 'prefix',
+        value: ['', 'custom-prefix', 'another-prefix']
+      },
+    ]
+  }
+]} />
 
 {/* <script lang="ts">
   import Vue from 'vue';

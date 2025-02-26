@@ -1,4 +1,5 @@
 import { TableOfContents } from "@/components/common/TableOfContents";
+import {PartialDocs} from "@/components/partials/PartialDocs";
 
 export const metadata = {
   title: 'Partials: Meta Tags And Icon Links - Porsche Design System',
@@ -38,30 +39,26 @@ included.
 Project integration differs based on the project setup.
 The following showcases the most common ways.
 
-{/* <PartialDocs name="getMetaTagsAndIconLinks" :params="params" location="head"></PartialDocs> */}
-
-## Result
-
-The result of this partial looks like this:
-
-{/* <Playground :showCodeEditor="false" :frameworkMarkup="[this.metaTagsAndIconLinks]"></Playground> */}
-
-{/* <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import { metaTagsAndIconLinksDemo } from '@/lib/partialResults';
-
-  @Component
-  export default class Code extends Vue {
-  public metaTagsAndIconLinks = metaTagsAndIconLinksDemo.replaceAll('><', '>\n<');
-  public params = [
-{
-  value: "{ appTitle: 'TITLE_OF_YOUR_APP' }",
-},
-{
-  value: "{ appTitle: 'TITLE_OF_YOUR_APP', cdn: 'cn' }",
-  comment: 'force using China CDN'
-},
-  ];
-}
-</script> */}
+<PartialDocs name="getMetaTagsAndIconLinks" location="head" partialCalls={[
+  {
+    params: [
+      {
+        key: 'appTitle',
+        value: 'TITLE_OF_YOUR_APP'
+      }
+    ]
+  },
+  {
+    comment: 'Alternative: Force using China CDN',
+    params: [
+      {
+        key: 'appTitle',
+        value: 'TITLE_OF_YOUR_APP'
+      },
+      {
+        key: 'cdn',
+        value: 'cn'
+      }
+    ]
+  }
+]} />
