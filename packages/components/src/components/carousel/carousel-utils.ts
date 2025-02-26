@@ -51,6 +51,9 @@ export type SplideBreakpoints = Options['breakpoints'];
 
 export type CarouselLanguageDirection = Extract<Options['direction'], 'ltr' | 'rtl'>;
 
+export const CAROUSEL_ALIGN_CONTROLS = ['start', 'center', 'auto'] as const;
+export type CarouselAlignControls = (typeof CAROUSEL_ALIGN_CONTROLS)[number];
+
 export const getSplideBreakpoints = (
   perPage: Exclude<BreakpointCustomizable<number>, string> | 'auto'
 ): SplideBreakpoints => {

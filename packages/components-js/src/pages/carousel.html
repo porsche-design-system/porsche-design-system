@@ -686,6 +686,48 @@
     <div>Slide 2</div>
   </p-carousel>
 </div>
+
+<div
+  class="playground light"
+  title="should render carousel with align-header=center, heading, description and slotted controls align-controls=start"
+>
+  <p-carousel
+    heading="Heading (align-header=center)"
+    description="Description (align-header=center)"
+    align-header="center"
+    align-controls="start"
+  >
+    <p-tabs-bar slot="controls" active-tab-index="0">
+      <button type="button">Tab One</button>
+      <button type="button">Tab Two</button>
+      <button type="button">Tab Three</button>
+    </p-tabs-bar>
+    <div>Slide 1</div>
+    <div>Slide 2</div>
+    <div>Slide 3</div>
+  </p-carousel>
+</div>
+
+<div
+  class="playground light"
+  title="should render carousel with heading, description and slotted controls align-controls=center"
+>
+  <p-carousel
+    heading="Heading"
+    description="Description"
+    align-controls="center"
+  >
+    <p-tabs-bar slot="controls" active-tab-index="0">
+      <button type="button">Tab One</button>
+      <button type="button">Tab Two</button>
+      <button type="button">Tab Three</button>
+    </p-tabs-bar>
+    <div>Slide 1</div>
+    <div>Slide 2</div>
+    <div>Slide 3</div>
+  </p-carousel>
+</div>
+
 <script>
   const carousel = document.querySelector('#focus-on-center-slide');
 

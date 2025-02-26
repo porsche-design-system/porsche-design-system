@@ -28,10 +28,12 @@ import {
 import type { BreakpointValues } from '../../utils/breakpoint-customizable';
 import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
 import {
+  CAROUSEL_ALIGN_CONTROLS,
   CAROUSEL_ALIGN_HEADERS,
   CAROUSEL_ARIA_ATTRIBUTES,
   CAROUSEL_GRADIENT_COLORS,
   CAROUSEL_WIDTHS,
+  type CarouselAlignControls,
   type CarouselAlignHeader,
   type CarouselAlignHeaderDeprecated,
   type CarouselAriaAttribute,
@@ -86,6 +88,7 @@ const propTypes: PropTypes<typeof Carousel> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   activeSlideIndex: AllowedTypes.number,
   skipLinkTarget: AllowedTypes.string,
+  alignControls: AllowedTypes.oneOf<CarouselAlignControls>(CAROUSEL_ALIGN_CONTROLS),
 };
 
 /**
@@ -114,6 +117,9 @@ export class Carousel {
 
   /** Alignment of heading and description */
   @Prop() public alignHeader?: CarouselAlignHeader = 'start';
+
+  /** Alignment of slotted controls */
+  @Prop() public alignControls?: CarouselAlignControls = 'auto';
 
   /** Whether the slides should rewind from last to first slide and vice versa. */
   @Prop() public rewind?: boolean = true;
@@ -314,7 +320,8 @@ export class Carousel {
       (alignHeaderDeprecationMap[this.alignHeader as keyof AlignHeaderDeprecationMapType] ||
         this.alignHeader) as Exclude<CarouselAlignHeader, CarouselAlignHeaderDeprecated>,
       this.theme,
-      this.hasNavigation
+      this.hasNavigation,
+      this.alignControls
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);

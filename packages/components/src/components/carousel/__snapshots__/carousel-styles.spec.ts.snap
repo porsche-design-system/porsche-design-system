@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for gradientColor: background-base, hasHeading: false, hasDescription: false, hasControlsSlot: true, headingSize: x-large, width: extended, hasPagination: true, isInfinitePagination: false, alignHeader: start, theme: light and hasNavigation: true 1`] = `
+exports[`getComponentCss() should return correct css for gradientColor: background-base, hasHeading: false, hasDescription: false, hasControlsSlot: true, headingSize: x-large, width: extended, hasPagination: true, isInfinitePagination: false, alignHeader: start, theme: light, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -16,13 +16,21 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
+  justify-self: start;
 }
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
+@media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/2;
+    justify-self: start;
+  }
+}
+
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
@@ -183,7 +191,7 @@ slot[name="controls"] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: background-base, hasHeading: false, hasDescription: false, hasControlsSlot: true, headingSize: xx-large, width: extended, hasPagination: false, isInfinitePagination: true, alignHeader: start, theme: light and hasNavigation: true 1`] = `
+exports[`getComponentCss() should return correct css for gradientColor: background-base, hasHeading: false, hasDescription: false, hasControlsSlot: true, headingSize: xx-large, width: extended, hasPagination: false, isInfinitePagination: true, alignHeader: start, theme: light, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -199,13 +207,21 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
+  justify-self: start;
 }
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
+@media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/2;
+    justify-self: start;
+  }
+}
+
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
@@ -313,7 +329,7 @@ slot[name="controls"] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: background-base, hasHeading: false, hasDescription: true, hasControlsSlot: true, headingSize: xx-large, width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: true, alignHeader: center, theme: light and hasNavigation: true 1`] = `
+exports[`getComponentCss() should return correct css for gradientColor: background-base, hasHeading: false, hasDescription: true, hasControlsSlot: true, headingSize: xx-large, width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: true, alignHeader: center, theme: light, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -329,9 +345,10 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
+  justify-self: center;
 }
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
@@ -349,6 +366,13 @@ p,::slotted([slot="description"]) {
   overflow-wrap: break-word !important;
   hyphens: auto !important;
 }
+@media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/2;
+    justify-self: start;
+  }
+}
+
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
@@ -566,7 +590,7 @@ p,::slotted([slot="description"]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: background-base, hasHeading: true, hasDescription: false, hasControlsSlot: true, headingSize: x-large, width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: start, theme: light and hasNavigation: true 1`] = `
+exports[`getComponentCss() should return correct css for gradientColor: background-base, hasHeading: true, hasDescription: false, hasControlsSlot: true, headingSize: x-large, width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: start, theme: light, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -582,9 +606,10 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
+  justify-self: start;
 }
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
@@ -602,6 +627,13 @@ slot[name="controls"] {
   margin: 0 !important;
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
+@media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/2;
+    justify-self: start;
+  }
+}
+
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
@@ -709,7 +741,7 @@ slot[name="controls"] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: background-base, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: start, theme: light and hasNavigation: true 1`] = `
+exports[`getComponentCss() should return correct css for gradientColor: background-base, hasHeading: true, hasDescription: true, hasControlsSlot: false, headingSize: xx-large, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: start, theme: light, hasNavigation: true and alignControls: center 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -906,7 +938,7 @@ p,::slotted([slot="description"]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: background-base, hasHeading: true, hasDescription: true, hasControlsSlot: true, headingSize: x-large, width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: start, theme: dark and hasNavigation: true 1`] = `
+exports[`getComponentCss() should return correct css for gradientColor: background-base, hasHeading: true, hasDescription: true, hasControlsSlot: true, headingSize: x-large, width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: start, theme: dark, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -922,9 +954,10 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
+  justify-self: start;
 }
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
@@ -949,6 +982,13 @@ p,::slotted([slot="description"]) {
   overflow-wrap: break-word !important;
   hyphens: auto !important;
 }
+@media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/2;
+    justify-self: start;
+  }
+}
+
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
@@ -1133,7 +1173,7 @@ p,::slotted([slot="description"]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: background-base, hasHeading: true, hasDescription: true, hasControlsSlot: true, headingSize: xx-large, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: start, theme: light and hasNavigation: false 1`] = `
+exports[`getComponentCss() should return correct css for gradientColor: background-base, hasHeading: true, hasDescription: true, hasControlsSlot: true, headingSize: xx-large, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: start, theme: light, hasNavigation: false and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1149,9 +1189,10 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
+  justify-self: start;
 }
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
@@ -1176,6 +1217,13 @@ p,::slotted([slot="description"]) {
   overflow-wrap: break-word !important;
   hyphens: auto !important;
 }
+@media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/-1;
+    justify-self: start;
+  }
+}
+
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
@@ -1335,7 +1383,7 @@ p,::slotted([slot="description"]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: background-surface, hasHeading: false, hasDescription: false, hasControlsSlot: true, headingSize: x-large, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: center, theme: dark and hasNavigation: true 1`] = `
+exports[`getComponentCss() should return correct css for gradientColor: background-surface, hasHeading: false, hasDescription: false, hasControlsSlot: true, headingSize: x-large, width: basic, hasPagination: true, isInfinitePagination: false, alignHeader: center, theme: dark, hasNavigation: true and alignControls: start 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1351,13 +1399,21 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
+  justify-self: start;
 }
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
+@media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/2;
+    justify-self: start;
+  }
+}
+
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
@@ -1524,7 +1580,7 @@ slot[name="controls"] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: background-surface, hasHeading: false, hasDescription: false, hasControlsSlot: true, headingSize: xx-large, width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: center, theme: light and hasNavigation: true 1`] = `
+exports[`getComponentCss() should return correct css for gradientColor: background-surface, hasHeading: false, hasDescription: false, hasControlsSlot: true, headingSize: xx-large, width: basic, hasPagination: true, isInfinitePagination: true, alignHeader: center, theme: light, hasNavigation: true and alignControls: center 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1540,13 +1596,21 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
+  justify-self: center;
 }
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
+@media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/-1;
+    justify-self: center;
+  }
+}
+
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
@@ -1737,7 +1801,7 @@ slot[name="controls"] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: background-surface, hasHeading: false, hasDescription: true, hasControlsSlot: true, headingSize: xx-large, width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: left, theme: light and hasNavigation: true 1`] = `
+exports[`getComponentCss() should return correct css for gradientColor: background-surface, hasHeading: false, hasDescription: true, hasControlsSlot: true, headingSize: xx-large, width: basic, hasPagination: false, isInfinitePagination: true, alignHeader: left, theme: light, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1753,9 +1817,10 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
+  justify-self: start;
 }
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
@@ -1771,6 +1836,13 @@ p,::slotted([slot="description"]) {
   overflow-wrap: break-word !important;
   hyphens: auto !important;
 }
+@media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/2;
+    justify-self: start;
+  }
+}
+
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
@@ -1878,7 +1950,7 @@ p,::slotted([slot="description"]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: background-surface, hasHeading: true, hasDescription: true, hasControlsSlot: true, headingSize: x-large, width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: false, alignHeader: start, theme: light and hasNavigation: true 1`] = `
+exports[`getComponentCss() should return correct css for gradientColor: background-surface, hasHeading: true, hasDescription: true, hasControlsSlot: true, headingSize: x-large, width: extended, hasPagination: {"base":false,"xs":true,"s":false,"m":true,"l":false,"xl":true}, isInfinitePagination: false, alignHeader: start, theme: light, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -1894,9 +1966,10 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
+  justify-self: start;
 }
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
@@ -1921,6 +1994,13 @@ p,::slotted([slot="description"]) {
   overflow-wrap: break-word !important;
   hyphens: auto !important;
 }
+@media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/2;
+    justify-self: start;
+  }
+}
+
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
@@ -2108,7 +2188,7 @@ p,::slotted([slot="description"]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: none, hasHeading: true, hasDescription: false, hasControlsSlot: true, headingSize: x-large, width: extended, hasPagination: false, isInfinitePagination: false, alignHeader: center, theme: light and hasNavigation: true 1`] = `
+exports[`getComponentCss() should return correct css for gradientColor: none, hasHeading: true, hasDescription: false, hasControlsSlot: true, headingSize: x-large, width: extended, hasPagination: false, isInfinitePagination: false, alignHeader: center, theme: light, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -2124,9 +2204,10 @@ exports[`getComponentCss() should return correct css for gradientColor: none, ha
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
+  justify-self: center;
 }
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
@@ -2146,6 +2227,13 @@ slot[name="controls"] {
   margin: 0 !important;
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
+@media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/2;
+    justify-self: start;
+  }
+}
+
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
@@ -2243,7 +2331,7 @@ slot[name="controls"] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: none, hasHeading: true, hasDescription: true, hasControlsSlot: true, headingSize: x-large, width: basic, hasPagination: false, isInfinitePagination: false, alignHeader: center, theme: light and hasNavigation: true 1`] = `
+exports[`getComponentCss() should return correct css for gradientColor: none, hasHeading: true, hasDescription: true, hasControlsSlot: true, headingSize: x-large, width: basic, hasPagination: false, isInfinitePagination: false, alignHeader: center, theme: light, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -2259,9 +2347,10 @@ exports[`getComponentCss() should return correct css for gradientColor: none, ha
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
+  justify-self: center;
 }
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
@@ -2288,6 +2377,13 @@ p,::slotted([slot="description"]) {
   overflow-wrap: break-word !important;
   hyphens: auto !important;
 }
+@media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/2;
+    justify-self: start;
+  }
+}
+
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
@@ -2385,7 +2481,7 @@ p,::slotted([slot="description"]) {
 "
 `;
 
-exports[`getComponentCss() should return correct css for gradientColor: none, hasHeading: true, hasDescription: true, hasControlsSlot: true, headingSize: xx-large, width: extended, hasPagination: true, isInfinitePagination: true, alignHeader: center, theme: light and hasNavigation: true 1`] = `
+exports[`getComponentCss() should return correct css for gradientColor: none, hasHeading: true, hasDescription: true, hasControlsSlot: true, headingSize: xx-large, width: extended, hasPagination: true, isInfinitePagination: true, alignHeader: center, theme: light, hasNavigation: true and alignControls: auto 1`] = `
 ":host {
   display: flex;
   gap: clamp(16px, 1.25vw + 12px, 36px) !important;
@@ -2401,9 +2497,10 @@ exports[`getComponentCss() should return correct css for gradientColor: none, ha
 }
 slot[name="controls"] {
   display: block;
-  grid-column-start: 1;
+  grid-column: 1/-1;
   grid-row-start: 3;
   align-self: center;
+  justify-self: center;
 }
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
@@ -2430,6 +2527,13 @@ p,::slotted([slot="description"]) {
   overflow-wrap: break-word !important;
   hyphens: auto !important;
 }
+@media(min-width:760px) {
+  slot[name="controls"] {
+    grid-column: 1/2;
+    justify-self: start;
+  }
+}
+
 .header {
   display: grid;
   padding: 0 max(22px, 10.625vw - 12px);
