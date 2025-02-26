@@ -118,6 +118,9 @@ export class Carousel {
   /** Alignment of heading and description */
   @Prop() public alignHeader?: CarouselAlignHeader = 'start';
 
+  /** Alignment of slotted controls */
+  @Prop() public alignControls?: CarouselAlignControls = 'auto';
+
   /** Whether the slides should rewind from last to first slide and vice versa. */
   @Prop() public rewind?: boolean = true;
 
@@ -167,9 +170,6 @@ export class Carousel {
 
   /** Determines whether to trim spaces before/after the carousel if `focusOnCenterSlide` option is true. */
   @Prop() public trimSpace?: boolean = true;
-
-  /** Alignment of slotted controls */
-  @Prop() public alignControls?: CarouselAlignControls = 'auto';
 
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
