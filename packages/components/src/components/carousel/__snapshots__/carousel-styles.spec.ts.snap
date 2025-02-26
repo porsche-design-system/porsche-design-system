@@ -164,12 +164,6 @@ slot[name="controls"] {
   }
 }
 
-@media(max-width:479px) {
-  .splide__track {
-    padding-right: calc(max(22px, 10.625vw - 12px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
-  }
-}
-
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -330,12 +324,6 @@ slot[name="controls"] {
   }
   .splide__track {
     padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
-  }
-}
-
-@media(max-width:479px) {
-  .splide__track {
-    padding-right: calc(max(22px, 10.625vw - 12px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
   }
 }
 "
@@ -575,12 +563,6 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media(max-width:479px) {
-  .splide__track {
-    padding-right: calc(max(22px, 10.625vw - 12px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
-  }
-}
-
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -756,12 +738,6 @@ slot[name="controls"] {
     padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
   }
 }
-
-@media(max-width:479px) {
-  .splide__track {
-    padding-right: calc(max(22px, 10.625vw - 12px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
-  }
-}
 "
 `;
 
@@ -932,12 +908,6 @@ p,::slotted([slot="description"]) {
   }
   .splide__track {
     padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
-  }
-}
-
-@media(max-width:479px) {
-  .splide__track {
-    padding-right: calc(max(22px, 10.625vw - 12px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
   }
 }
 
@@ -1176,12 +1146,6 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media(max-width:479px) {
-  .splide__track {
-    padding-right: calc(max(22px, 10.625vw - 12px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
-  }
-}
-
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -1392,12 +1356,6 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media(max-width:479px) {
-  .splide__track {
-    padding-right: calc(max(22px, 10.625vw - 12px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
-  }
-}
-
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -1592,12 +1550,6 @@ slot[name="controls"] {
   }
   .splide__track {
     padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
-  }
-}
-
-@media(max-width:479px) {
-  .splide__track {
-    padding-right: calc(max(22px, 10.625vw - 12px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
   }
 }
 
@@ -1822,12 +1774,6 @@ slot[name="controls"] {
   }
 }
 
-@media(max-width:479px) {
-  .splide__track {
-    padding-right: calc(max(22px, 10.625vw - 12px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
-  }
-}
-
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -1999,12 +1945,6 @@ p,::slotted([slot="description"]) {
   }
   .splide__track {
     padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
-  }
-}
-
-@media(max-width:479px) {
-  .splide__track {
-    padding-right: calc(max(22px, 10.625vw - 12px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
   }
 }
 "
@@ -2221,12 +2161,6 @@ p,::slotted([slot="description"]) {
   }
 }
 
-@media(max-width:479px) {
-  .splide__track {
-    padding-right: calc(max(22px, 10.625vw - 12px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
-  }
-}
-
 @media (pointer: coarse) {
   .pagination-container {
     width: calc(20px + 8px * 4 + 16px * 4 + 2 * 8px);
@@ -2394,12 +2328,6 @@ slot[name="controls"] {
     padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
   }
 }
-
-@media(max-width:479px) {
-  .splide__track {
-    padding-right: calc(max(22px, 10.625vw - 12px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
-  }
-}
 "
 `;
 
@@ -2548,12 +2476,6 @@ p,::slotted([slot="description"]) {
   }
   .splide__track {
     padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2) !important;
-  }
-}
-
-@media(max-width:479px) {
-  .splide__track {
-    padding-right: calc(max(22px, 10.625vw - 12px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
   }
 }
 "
@@ -2756,12 +2678,6 @@ p,::slotted([slot="description"]) {
   }
   .splide__track {
     padding: 0 calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
-  }
-}
-
-@media(max-width:479px) {
-  .splide__track {
-    padding-right: calc(max(22px, 10.625vw - 12px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
   }
 }
 

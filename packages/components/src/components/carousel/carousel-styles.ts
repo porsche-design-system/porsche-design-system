@@ -1,12 +1,9 @@
 import {
   borderRadiusLarge,
   borderRadiusSmall,
-  getMediaQueryMax,
   getMediaQueryMin,
   gridBasicOffset,
-  gridBasicOffsetBase,
   gridExtendedOffset,
-  gridGap,
   headingXLargeStyle,
   headingXXLargeStyle,
   motionDurationModerate,
@@ -251,9 +248,6 @@ export const getComponentCss = (
         // !important is necessary to override inline styles set by splide library
         ...addImportantToEachRule({
           padding: `0 ${spacingMap[width].base}`,
-          [getMediaQueryMax('xs')]: {
-            paddingRight: `calc(${gridBasicOffsetBase} + ${gridGap})`, // we need to give cut off slides a bit more space on mobile views
-          },
           [mediaQueryS]: {
             padding: `0 ${spacingMap[width].s}`,
           },
