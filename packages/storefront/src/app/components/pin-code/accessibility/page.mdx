@@ -8,8 +8,47 @@ export const metadata = {
 
 # Pin Code <ComponentStatus tagName="p-pin-code"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={["Accessibility support","Development considerations","Tests"]} />
 
 ## Accessibility support
 
-TBD.
+### Keyboard
+
+| Key / state        | Function                                                 |
+| ------------------ | -------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                            | Usage                                                                                 |
+| ------------------------------- | ------------------------------------------------------------------------------------- |
+| `aria-label="STRING"`           | References the current position of the input group.                                   |
+| `aria-describedby="IDREF"`      | References the accessible description and status messages of the component.           |
+| `role="status"`, `role="alert"` | When `message` and `state` or `loading` prop change, the status message is announced. |
+
+## Development considerations
+
+### Disabled state
+
+In general, you should prevent using the `disabled="true"` state. Disabled elements are not reachable (focusable)
+anymore and can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out
+why these elements are disabled.
+
+## Tests
+
+### Automated
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| AXE-Core                        | ✅      |
+| High-Contrast Mode (light/dark) | ✅      |
+| Text-Zoom (200%)                | ✅      |
+
+### Manual
+
+| Technology                | Support |
+| ------------------------- | ------- |
+| Keyboard                  | ✅      |
+| Screen reader (VoiceOver) | ✅      |

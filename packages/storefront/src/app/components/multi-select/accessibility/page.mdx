@@ -16,8 +16,8 @@ export const metadata = {
 
 #### Combobox
 
-| Key / state                     | Function                                                                                                                                |
-| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Key / state                     | Function                                                                                                                                  |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | `Down Arrow` `Up Arrow` `Space` | - Opens the listbox if it is not already displayed without moving focus or changing selection.<br /> - DOM focus remains on the combobox. |
 
 #### Listbox
@@ -37,10 +37,11 @@ export const metadata = {
 | ------------------------------- | -------------------------------------------------------------------------------------------- |
 | `aria-labelledby="IDREF"`       | References the accessible name of the combobox.                                              |
 | `aria-describedby="IDREF"`      | References the accessible description and status messages of the combobox.                   |
-| `role="status"`, `role="alert"` | When `message` prop changes, the message is announced.                                       |
-| `aria-expanded="true/false"`    | Indicates that the popover element is displayed/hidden.                                      |
-| `aria-controls="IDREF"`         | Identifies the element that serves as the popup.                                             |
+| `role="status"`, `role="alert"` | When `message` and `state` prop change, the status message is announced.                     |
+| `aria-expanded="true/false"`    | Indicates that the listbox element is displayed/hidden.                                      |
+| `aria-controls="IDREF"`         | Identifies the element that serves as the listbox.                                           |
 | `aria-hidden="true"`            | If `required` attribute is set, the visible indicator is hidden from assistive technologies. |
+| `aria-multiselectable="true"`   | Indicates that more than one item from the current selectable descendants can be selected.   |
 
 ## Development considerations
 
