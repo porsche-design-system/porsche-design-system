@@ -1,30 +1,29 @@
+import type { FrameworkConfiguratorMarkup } from '@/models/framework';
 import type { StoryState } from '@/models/story';
 import type {
-  ConfiguratorTagNames,
   ElementConfig,
   EventConfig,
-  EventsConfig,
   HTMLElementOrComponentProps,
   HTMLTagOrComponent,
 } from '@/utils/generator/generator';
-import { camelCase, kebabCase, pascalCase } from 'change-case';
+import { camelCase, pascalCase } from 'change-case';
 
-const getVueCode = (
-  imports: string,
-  states: string | undefined,
-  eventHandlers: string | undefined,
-  code: string | undefined
-) => `<script setup lang="ts">\n${imports}\n${states ? `\n${states}\n` : ''}${eventHandlers ? `\n${eventHandlers}\n` : ''}</script>
+export const getVueCode = ({
+  imports,
+  states,
+  eventHandlers,
+  markup,
+}: FrameworkConfiguratorMarkup['vue']) => `<script setup lang="ts">\n${imports}\n${states ? `\n${states}\n` : ''}${eventHandlers ? `\n${eventHandlers}\n` : ''}</script>
 
 <template>
-${code}
+${markup}
 </template>`;
 
 export const generateVueMarkup = (
   configs: (string | ElementConfig<HTMLTagOrComponent> | undefined)[],
   initialState: StoryState<HTMLTagOrComponent>,
   indentLevel = 1
-): string => {
+): FrameworkConfiguratorMarkup['vue'] => {
   const results = configs.map((config) => createVueMarkup(config, initialState, indentLevel));
   const markup = results.map(({ markup }) => markup).join('\n\n');
   const states = results
@@ -39,7 +38,7 @@ export const generateVueMarkup = (
       : ''
   }`;
 
-  return getVueCode(imports, states, eventHandlers, markup);
+  return { imports, states, eventHandlers, markup };
 };
 
 const createVueMarkup = (

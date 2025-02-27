@@ -1,32 +1,65 @@
+import type { FrameworkConfiguratorMarkup } from '@/models/framework';
+import type { StorefrontTheme } from '@/models/theme';
 import type {
   ElementConfig,
   EventConfig,
-  EventsConfig,
   HTMLElementOrComponentProps,
   HTMLTagOrComponent,
 } from '@/utils/generator/generator';
+import { themeDark, themeLight } from '@porsche-design-system/components-js/styles';
 import { camelCase, kebabCase } from 'change-case';
 import type { CSSProperties } from 'react';
 
-const getVanillaJsCode = (code: string, selector?: string, eventHandlers?: string) => `<!doctype html>
+export const getVanillaJsCode = (
+  { markup, states, eventHandlers }: FrameworkConfiguratorMarkup['vanilla-js'],
+  { isFullConfig, theme }: { isFullConfig: boolean; theme: StorefrontTheme } = {
+    isFullConfig: false,
+    theme: 'light',
+  }
+) => {
+  const metaTags = isFullConfig
+    ? `  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Porsche Design System</title>\n`
+    : '  <title></title>';
+
+  const scripts = isFullConfig
+    ? '  <script src="node_modules/@porsche-design-system/components-js/index.js"></script>\n'
+    : '';
+
+  const globalStyle = isFullConfig
+    ? `  <style>
+${
+  theme === 'auto'
+    ? `    body { background: ${themeLight.background.base}; }
+    @media (prefers-color-scheme: dark) {
+      body { background: ${themeDark.background.base}; }
+    }`
+    : `    body { background: ${(theme === 'light' ? themeLight : themeDark).background.base}; }`
+};
+  </style>`
+    : '';
+
+  return `<!doctype html>
 <html lang="en">
 <head>
-  <title></title>
+${metaTags}${scripts}${globalStyle}
 </head>
 <body>
 
-${code ?? ''}
+${markup ?? ''}
 
-<script>
-${[selector, eventHandlers].filter(Boolean).join('\n')}
+<script>${isFullConfig ? '\n  porscheDesignSystem.load();\n\n' : ''}
+${[states, eventHandlers].filter(Boolean).join('\n')}
 </script>
 </body>
 </html>`;
+};
 
 export const generateVanillaJsMarkup = (
   configs: (string | ElementConfig<HTMLTagOrComponent> | undefined)[],
   indentLevel = 0
-): string => {
+): FrameworkConfiguratorMarkup['vanilla-js'] => {
   const { markup, selector, eventHandlers } = configs.reduce(
     (acc, config) => {
       const result = createVanillaJSMarkup(config, indentLevel);
@@ -38,7 +71,7 @@ export const generateVanillaJsMarkup = (
     { markup: [], selector: [], eventHandlers: [] } as { markup: string[]; selector: string[]; eventHandlers: string[] }
   );
 
-  return getVanillaJsCode(markup.join('\n\n'), selector.join('\n'), eventHandlers.join('\n'));
+  return { states: selector.join('\n'), eventHandlers: eventHandlers.join('\n'), markup: markup.join('\n\n') };
 };
 
 const createVanillaJSMarkup = (

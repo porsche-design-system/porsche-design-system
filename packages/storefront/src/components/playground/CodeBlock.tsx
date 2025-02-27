@@ -1,10 +1,9 @@
 'use client';
 
-import { StackblitzButton } from '@/components/playground/StackblitzButton';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
 import { type Framework, type FrameworkMarkup, frameworkNameMap } from '@/models/framework';
 import { PTabsBar, type TabsBarUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
-import React, { useState } from 'react';
+import React from 'react';
 import SyntaxHighlighter, { type SyntaxHighlighterProps } from 'react-syntax-highlighter';
 
 type CodeBlockProps = {
@@ -53,7 +52,6 @@ export const CodeBlock = ({ frameworkMarkup }: CodeBlockProps) => {
       >
         {frameworkMarkup[selectedFramework]}
       </SyntaxHighlighter>
-      <StackblitzButton markup={frameworkMarkup[selectedFramework] ?? ''} />
     </div>
   );
 };

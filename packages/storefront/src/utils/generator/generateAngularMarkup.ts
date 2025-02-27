@@ -1,3 +1,4 @@
+import type { FrameworkConfiguratorMarkup } from '@/models/framework';
 import type { StoryState } from '@/models/story';
 import type {
   ConfiguratorTagNames,
@@ -7,16 +8,16 @@ import type {
   HTMLTagOrComponent,
 } from '@/utils/generator/generator';
 
-const getAngularCode = (
-  states: string | undefined,
-  eventHandlers: string | undefined,
-  code: string | undefined
-) => `import { ChangeDetectionStrategy, Component } from '@angular/core';
+export const getAngularCode = ({
+  states,
+  eventHandlers,
+  markup,
+}: FrameworkConfiguratorMarkup['angular']) => `import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'example',
   template: \`
-${code}
+${markup}
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
@@ -27,7 +28,7 @@ export const generateAngularMarkup = (
   configs: (string | ElementConfig<HTMLTagOrComponent> | undefined)[],
   initialState: StoryState<HTMLTagOrComponent>,
   indentLevel = 3
-): string => {
+): FrameworkConfiguratorMarkup['angular'] => {
   const results = configs.map((config) => createAngularMarkup(config, initialState, indentLevel));
   const markup = results.map(({ markup }) => markup).join('\n\n');
   const states = results
@@ -36,7 +37,7 @@ export const generateAngularMarkup = (
     .join('\n');
   const eventHandlers = results.flatMap(({ eventHandlers }) => eventHandlers).join('\n');
 
-  return getAngularCode(states, eventHandlers, markup);
+  return { states, eventHandlers, markup };
 };
 
 const createAngularMarkup = (

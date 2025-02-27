@@ -1,3 +1,4 @@
+import type { FrameworkConfiguratorMarkup } from '@/models/framework';
 import type { StoryState } from '@/models/story';
 import type {
   ConfiguratorTagNames,
@@ -9,17 +10,17 @@ import type {
 } from '@/utils/generator/generator';
 import { pascalCase } from 'change-case';
 
-const getReactCode = (
-  imports: string,
-  states: string | undefined,
-  eventHandlers: string | undefined,
-  code: string | undefined
-) => `${imports}
+export const getReactCode = ({
+  imports,
+  states,
+  eventHandlers,
+  markup,
+}: FrameworkConfiguratorMarkup['react']) => `${imports}
 
 export const Example = () => {${states ? `\n${states}\n` : ''}${eventHandlers ? `\n${eventHandlers}\n` : ''}
   return (
     <>
-${code}
+${markup}
     </>
   )
 }`;
@@ -28,7 +29,7 @@ export const generateReactMarkup = (
   configs: (string | ElementConfig<HTMLTagOrComponent> | undefined)[],
   initialState: StoryState<HTMLTagOrComponent>,
   indentLevel = 3
-): string => {
+): FrameworkConfiguratorMarkup['react'] => {
   const results = configs.map((config) => createReactMarkup(config, initialState, indentLevel));
   const markup = results.map(({ markup }) => markup).join('\n\n');
   const states = results
@@ -43,7 +44,7 @@ export const generateReactMarkup = (
       : ''
   }`;
 
-  return getReactCode(imports, states, eventHandlers, markup);
+  return { imports, states, eventHandlers, markup };
 };
 
 const createReactMarkup = (
