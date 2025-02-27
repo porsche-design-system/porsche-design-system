@@ -8,6 +8,8 @@ interface StorefrontFrameworkContextProps {
   setStorefrontFramework: (storefrontFramework: Framework) => void;
 }
 
+const storefrontFrameworkLocalStorageKey = 'storefrontFramework';
+
 export const StorefrontFrameworkContext = createContext<StorefrontFrameworkContextProps | undefined>(undefined);
 
 export const StorefrontFrameworkProvider = ({ children }: PropsWithChildren) => {
@@ -15,7 +17,7 @@ export const StorefrontFrameworkProvider = ({ children }: PropsWithChildren) => 
 
   // Load initial state from localStorage once component mounts
   useEffect(() => {
-    const storedFramework = localStorage.getItem('storefrontFramework') as Framework | null;
+    const storedFramework = localStorage.getItem(storefrontFrameworkLocalStorageKey) as Framework | null;
     if (storedFramework) {
       setSelectedFramework(storedFramework);
     }
@@ -23,7 +25,7 @@ export const StorefrontFrameworkProvider = ({ children }: PropsWithChildren) => 
 
   const setStorefrontFramework = (storefrontFramework: Framework) => {
     setSelectedFramework(storefrontFramework);
-    localStorage.setItem('storefrontFramework', storefrontFramework);
+    localStorage.setItem(storefrontFrameworkLocalStorageKey, storefrontFramework);
   };
 
   return (

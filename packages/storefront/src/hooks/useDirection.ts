@@ -1,8 +1,8 @@
-import { DirectionContext } from '@/components/providers/DirectionProvider';
+import { StorefrontDirectionContext } from '@/components/providers/StorefrontDirectionProvider';
 import { useContext } from 'react';
 
 export const useDirection = () => {
-  const context = useContext(DirectionContext);
+  const context = useContext(StorefrontDirectionContext);
   if (!context) {
     throw new Error('useDirection must be used within a DirectionProvider');
   }

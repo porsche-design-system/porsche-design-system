@@ -1,21 +1,21 @@
 'use client';
 
-import { DirectionProvider } from '@/components/providers/DirectionProvider';
+import { StorefrontDirectionProvider } from '@/components/providers/StorefrontDirectionProvider';
 import { StorefrontFrameworkProvider } from '@/components/providers/StorefrontFrameworkProvider';
-import { TextZoomProvider } from '@/components/providers/TextZoomProvider';
-import { useTheme } from '@/hooks/useTheme';
+import { StorefrontTextZoomProvider } from '@/components/providers/StorefrontTextZoomProvider';
+import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 import type { PropsWithChildren } from 'react';
 
 export const Providers = ({ children }: PropsWithChildren) => {
-  const { theme } = useTheme();
+  const { storefrontTheme } = useStorefrontTheme();
   return (
-    <TextZoomProvider>
-      <DirectionProvider>
+    <StorefrontTextZoomProvider>
+      <StorefrontDirectionProvider>
         <StorefrontFrameworkProvider>
-          <PorscheDesignSystemProvider theme={theme}>{children}</PorscheDesignSystemProvider>
+          <PorscheDesignSystemProvider theme={storefrontTheme}>{children}</PorscheDesignSystemProvider>
         </StorefrontFrameworkProvider>
-      </DirectionProvider>
-    </TextZoomProvider>
+      </StorefrontDirectionProvider>
+    </StorefrontTextZoomProvider>
   );
 };

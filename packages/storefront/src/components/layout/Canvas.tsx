@@ -6,8 +6,8 @@ import Tabs from '@/components/common/Tabs';
 import { TextZoomSelect } from '@/components/common/TextZoomSelect';
 import { ThemeSelect } from '@/components/common/ThemeSelect';
 import { useDirection } from '@/hooks/useDirection';
+import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import { useTextZoom } from '@/hooks/useTextZoom';
-import { useTheme } from '@/hooks/useTheme';
 import type { StorefrontDirection } from '@/models/dir';
 import type { StorefrontTextZoom } from '@/models/textZoom';
 import type { StorefrontTheme } from '@/models/theme';
@@ -24,9 +24,9 @@ import { usePathname } from 'next/navigation';
 import React, { type PropsWithChildren, useEffect, useState } from 'react';
 
 export const Canvas = ({ children }: PropsWithChildren) => {
-  const { theme, setStorefrontTheme } = useTheme();
-  const { direction, setStorefrontDirection } = useDirection();
-  const { textZoom, setStorefrontTextZoom } = useTextZoom();
+  const { storefrontTheme, setStorefrontTheme } = useStorefrontTheme();
+  const { storefrontDirection, setStorefrontDirection } = useDirection();
+  const { storefrontTextZoom, setStorefrontTextZoom } = useTextZoom();
   const pathname = usePathname();
   const [isSidebarStartOpen, setIsSidebarStartOpen] = useState(
     // initially, sidebar should be closed on mobile and opened on desktop
@@ -95,13 +95,16 @@ export const Canvas = ({ children }: PropsWithChildren) => {
           <PHeading size="small" tag="h3">
             Global settings
           </PHeading>
-          <ThemeSelect value={theme} onUpdate={(e): void => setStorefrontTheme(e.detail.value as StorefrontTheme)} />
+          <ThemeSelect
+            value={storefrontTheme}
+            onUpdate={(e): void => setStorefrontTheme(e.detail.value as StorefrontTheme)}
+          />
           <DirectionSelect
-            value={direction}
+            value={storefrontDirection}
             onUpdate={(e): void => setStorefrontDirection(e.detail.value as StorefrontDirection)}
           />
           <TextZoomSelect
-            value={textZoom}
+            value={storefrontTextZoom}
             onUpdate={(e): void => setStorefrontTextZoom(e.detail.value as StorefrontTextZoom)}
           />
         </div>

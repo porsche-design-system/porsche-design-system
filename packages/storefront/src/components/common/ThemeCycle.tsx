@@ -1,7 +1,7 @@
 'use client';
 
 import { usePreferredColorScheme } from '@/hooks/usePreferredColorScheme';
-import { useTheme } from '@/hooks/useTheme';
+import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import { PButton } from '@porsche-design-system/components-react/ssr';
 
 type ThemeCycleProps = {
@@ -9,11 +9,11 @@ type ThemeCycleProps = {
 };
 
 export const ThemeCycle = ({ slot }: ThemeCycleProps) => {
-  const { theme, cycleStorefrontTheme } = useTheme();
+  const { storefrontTheme, cycleStorefrontTheme } = useStorefrontTheme();
   const isDark = usePreferredColorScheme();
 
   const getIcon = () => {
-    if ((theme === 'auto' && isDark) || theme === 'dark') {
+    if ((storefrontTheme === 'auto' && isDark) || storefrontTheme === 'dark') {
       return 'sun';
     }
     return 'moon';

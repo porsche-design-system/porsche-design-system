@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import '@/styles/globals.css';
 import { Canvas } from '@/components/layout/Canvas';
 import { Providers } from '@/components/providers/Providers';
-import { ThemeProvider } from '@/components/providers/ThemeProvider';
+import { StorefrontThemeProvider } from '@/components/providers/StorefrontThemeProvider';
 import { HeaderPartials } from '@/partials/HeaderPartials';
 
 export const metadata: Metadata = {
@@ -23,11 +23,11 @@ export default function RootLayout({
         <HeaderPartials />
       </head>
       <body>
-        <ThemeProvider>
+        <StorefrontThemeProvider>
           <Providers>
             <Canvas>{children}</Canvas>
           </Providers>
-        </ThemeProvider>
+        </StorefrontThemeProvider>
       </body>
     </html>
   );
