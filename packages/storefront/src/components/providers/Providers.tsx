@@ -1,6 +1,7 @@
 'use client';
 
 import { DirectionProvider } from '@/components/providers/DirectionProvider';
+import { StorefrontFrameworkProvider } from '@/components/providers/StorefrontFrameworkProvider';
 import { TextZoomProvider } from '@/components/providers/TextZoomProvider';
 import { useTheme } from '@/hooks/useTheme';
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
@@ -11,7 +12,9 @@ export const Providers = ({ children }: PropsWithChildren) => {
   return (
     <TextZoomProvider>
       <DirectionProvider>
-        <PorscheDesignSystemProvider theme={theme}>{children}</PorscheDesignSystemProvider>
+        <StorefrontFrameworkProvider>
+          <PorscheDesignSystemProvider theme={theme}>{children}</PorscheDesignSystemProvider>
+        </StorefrontFrameworkProvider>
       </DirectionProvider>
     </TextZoomProvider>
   );

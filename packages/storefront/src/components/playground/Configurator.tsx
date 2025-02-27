@@ -28,7 +28,6 @@ export const Configurator = <T extends HTMLTagOrComponent>({
   );
   const [exampleMarkup, setExampleMarkup] = useState<FrameworkMarkup>({});
 
-  // TODO: regenerate onUpdateProps/Slots/Variables instead of useEffect
   // biome-ignore lint/correctness/useExhaustiveDependencies: only thing that will change is the state
   useEffect(() => {
     const generatedStory = story.generator(exampleState);

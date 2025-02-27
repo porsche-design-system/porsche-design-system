@@ -1,5 +1,7 @@
 'use client';
 
+import { StackblitzButton } from '@/components/playground/StackblitzButton';
+import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
 import { type Framework, type FrameworkMarkup, frameworkNameMap } from '@/models/framework';
 import { PTabsBar, type TabsBarUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
 import React, { useState } from 'react';
@@ -10,12 +12,13 @@ type CodeBlockProps = {
 };
 
 export const CodeBlock = ({ frameworkMarkup }: CodeBlockProps) => {
-  const [tabIndex, setTabIndex] = useState(0);
+  const { storefrontFramework, setStorefrontFramework } = useStorefrontFramework();
   const frameworks = Object.keys(frameworkMarkup) as Framework[];
+  const tabIndex = frameworks.indexOf(storefrontFramework) !== -1 ? frameworks.indexOf(storefrontFramework) : 0;
   const selectedFramework = frameworks[tabIndex];
 
   const onUpdate = (e: CustomEvent<TabsBarUpdateEventDetail>) => {
-    setTabIndex(e.detail.activeTabIndex);
+    setStorefrontFramework(frameworks[e.detail.activeTabIndex]);
   };
 
   const frameworkLanguageMap: Record<Framework, SyntaxHighlighterProps['language']> = {
@@ -50,6 +53,7 @@ export const CodeBlock = ({ frameworkMarkup }: CodeBlockProps) => {
       >
         {frameworkMarkup[selectedFramework]}
       </SyntaxHighlighter>
+      <StackblitzButton markup={frameworkMarkup[selectedFramework] ?? ''} />
     </div>
   );
 };
