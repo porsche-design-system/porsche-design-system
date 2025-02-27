@@ -17,21 +17,22 @@ import {
 
 describe('getSplideBreakpoints()', () => {
   it('should return correct result for flat BreakpointCustomizable parameter', () => {
-    expect(getSplideBreakpoints(10)).toEqual({ 0: { perPage: 10 } });
+    expect(getSplideBreakpoints(10)).toEqual({ 0: { autoWidth: false, perPage: 10 } });
   });
 
   it('should return correct result for nested BreakpointCustomizable parameter', () => {
-    expect(getSplideBreakpoints({ base: 5, s: 10 })).toEqual({
-      0: { perPage: 5 },
-      760: { perPage: 10 },
+    expect(getSplideBreakpoints({ base: 5, s: 10, m: 'auto' })).toEqual({
+      0: { autoWidth: false, perPage: 5 },
+      760: { autoWidth: false, perPage: 10 },
+      1000: { autoWidth: true, perPage: 1 },
     });
   });
 
   it('should return correct result for nested floating number BreakpointCustomizable parameter', () => {
     expect(getSplideBreakpoints({ base: 2.2, xs: 2.5, s: 2.9 })).toEqual({
-      0: { perPage: 2 },
-      480: { perPage: 3 },
-      760: { perPage: 3 },
+      0: { autoWidth: false, perPage: 2 },
+      480: { autoWidth: false, perPage: 3 },
+      760: { autoWidth: false, perPage: 3 },
     });
   });
 });

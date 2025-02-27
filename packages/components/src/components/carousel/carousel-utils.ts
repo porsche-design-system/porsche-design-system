@@ -14,6 +14,9 @@ export type CarouselWidth = (typeof CAROUSEL_WIDTHS)[number];
 export const CAROUSEL_TYPE = ['loop', 'slide'] as const;
 export type CarouselType = (typeof CAROUSEL_TYPE)[number];
 
+export const CAROUSEL_SLIDES_PER_PAGE = ['auto', ...Array.from(new Array(10), (_, i) => i + 1)];
+export type CarouselSlidesPerPage = (typeof CAROUSEL_SLIDES_PER_PAGE)[number];
+
 export const CAROUSEL_GRADIENT_COLORS = ['background-base', 'background-surface', 'none'] as const;
 export type CarouselGradientColor = (typeof CAROUSEL_GRADIENT_COLORS)[number];
 
@@ -55,15 +58,16 @@ export const CAROUSEL_ALIGN_CONTROLS = ['start', 'center', 'auto'] as const;
 export type CarouselAlignControls = (typeof CAROUSEL_ALIGN_CONTROLS)[number];
 
 export const getSplideBreakpoints = (
-  perPage: Exclude<BreakpointCustomizable<number>, string> | 'auto'
+  perPage: Exclude<BreakpointCustomizable<CarouselSlidesPerPage>, string> | 'auto'
 ): SplideBreakpoints => {
   return typeof perPage === 'object'
     ? Object.entries(perPage).reduce(
-        (result, [key, val]: [Breakpoint, number]) => ({
+        (result, [key, val]: [Breakpoint, number | string]) => ({
           ...result,
           [breakpoint[key]]: {
             // round to sanitize floating numbers
-            perPage: Math.round(val),
+            perPage: val === 'auto' ? 1 : Math.round(val as number),
+            autoWidth: val === 'auto',
           },
         }),
         {}
@@ -72,6 +76,7 @@ export const getSplideBreakpoints = (
         0: {
           // round to sanitize floating numbers
           perPage: perPage === 'auto' ? 1 : Math.round(perPage as unknown as number),
+          autoWidth: perPage === 'auto',
         },
       };
 };
