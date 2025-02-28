@@ -15,7 +15,7 @@ export const getReactCode = ({
   states,
   eventHandlers,
   markup,
-}: FrameworkConfiguratorMarkup['react']) => `${imports}
+}: FrameworkConfiguratorMarkup['react']) => `import React from 'react';${imports}
 
 export const Example = () => {${states ? `\n${states}\n` : ''}${eventHandlers ? `\n${eventHandlers}\n` : ''}
   return (
@@ -38,9 +38,9 @@ export const generateReactMarkup = (
     .join('\n');
   const eventHandlers = results.flatMap(({ eventHandlers }) => eventHandlers).join('\n');
   const pdsComponents = new Set(results.flatMap(({ pdsComponents }) => pdsComponents));
-  const imports = `${states.length > 0 ? "import { useState } from 'react';\n" : ''}${
+  const imports = `${states.length > 0 ? "\nimport { useState } from 'react';" : ''}${
     pdsComponents.size > 0
-      ? `import { ${Array.from(pdsComponents).sort().join(', ')} } from '@porsche-design-system/components-react';`
+      ? `\nimport { ${Array.from(pdsComponents).sort().join(', ')} } from '@porsche-design-system/components-react';`
       : ''
   }`;
 
@@ -94,6 +94,7 @@ const createReactMarkup = (
 
 type ReactScripts = { states: string; eventHandler: string };
 
+// TODO: Import for type must be returned and added to imports array
 export const generateReactControlledScript = (
   tagName: string,
   eventEntries: [string, EventConfig][],

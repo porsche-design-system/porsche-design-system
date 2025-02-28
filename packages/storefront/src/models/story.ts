@@ -18,6 +18,7 @@
  * When changing controlled props they won't be reflected on the markup in vanilla-js, is this confusing?
  *
  * TODO:
+ * - [ ] - inline style in p-carousel does not work like this in react
  * - [ ] - Dynamic import of React Component in Configurator
  * - [x] - Render Example
  * - [x] - Render markup

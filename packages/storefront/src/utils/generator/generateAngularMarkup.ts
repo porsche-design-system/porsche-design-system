@@ -7,6 +7,7 @@ import type {
   HTMLElementOrComponentProps,
   HTMLTagOrComponent,
 } from '@/utils/generator/generator';
+import { camelCase } from 'change-case';
 
 export const getAngularCode = ({
   states,
@@ -15,7 +16,7 @@ export const getAngularCode = ({
 }: FrameworkConfiguratorMarkup['angular']) => `import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'example',
+  selector: 'porsche-design-system-app',
   template: \`
 ${markup}
   \`,
@@ -52,11 +53,13 @@ const createAngularMarkup = (
 
   const { tag, properties = {}, events = {}, children = [] } = config;
 
-  const eventEntries = Object.entries(events);
+  const eventEntries: [string, EventConfig][] = Object.entries(events);
   const propertiesString = generateAngularProperties(properties, eventEntries);
 
   const eventListenersString =
-    eventEntries.length > 0 ? ` ${eventEntries.map(([eventName]) => `(${eventName})="${eventName}"`).join(' ')}` : '';
+    eventEntries.length > 0
+      ? ` ${eventEntries.map(([eventName, eventMeta]) => `(${camelCase(eventName.replace('on', ''))})="${eventName}(${eventMeta.eventValueKey ? '$event' : ''})"`).join(' ')}`
+      : '';
 
   const childrenResults = children.map((child) => createAngularMarkup(child, initialState, indentLevel + 1));
   const childMarkup = childrenResults.map(({ markup }) => markup).join('\n');

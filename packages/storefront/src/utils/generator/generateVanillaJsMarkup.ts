@@ -1,3 +1,4 @@
+import { getStackblitzGlobalStyle } from '@/lib/stackblitz/openInStackblitz';
 import type { FrameworkConfiguratorMarkup } from '@/models/framework';
 import type { StorefrontTheme } from '@/models/theme';
 import type {
@@ -6,7 +7,6 @@ import type {
   HTMLElementOrComponentProps,
   HTMLTagOrComponent,
 } from '@/utils/generator/generator';
-import { themeDark, themeLight } from '@porsche-design-system/components-js/styles';
 import { camelCase, kebabCase } from 'change-case';
 import type { CSSProperties } from 'react';
 
@@ -27,18 +27,7 @@ export const getVanillaJsCode = (
     ? '  <script src="node_modules/@porsche-design-system/components-js/index.js"></script>\n'
     : '';
 
-  const globalStyle = isFullConfig
-    ? `  <style>
-${
-  theme === 'auto'
-    ? `    body { background: ${themeLight.background.base}; }
-    @media (prefers-color-scheme: dark) {
-      body { background: ${themeDark.background.base}; }
-    }`
-    : `    body { background: ${(theme === 'light' ? themeLight : themeDark).background.base}; }`
-};
-  </style>`
-    : '';
+  const globalStyle = isFullConfig ? getStackblitzGlobalStyle(theme) : '';
 
   return `<!doctype html>
 <html lang="en">

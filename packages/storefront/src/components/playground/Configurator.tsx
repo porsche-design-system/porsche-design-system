@@ -2,9 +2,10 @@
 
 import { ConfiguratorControls } from '@/components/playground/ConfiguratorControls';
 import { Playground } from '@/components/playground/Playground';
+import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
 import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import { openInStackblitz } from '@/lib/stackblitz/openInStackblitz';
-import type { FrameworkMarkup } from '@/models/framework';
+import type { Framework, FrameworkMarkup } from '@/models/framework';
 import type { SlotStories, Story, StoryState } from '@/models/story';
 import type { StorefrontTheme } from '@/models/theme';
 import { applyPropertyRecursively } from '@/utils/generator/applyPropertyRecursively';
@@ -12,12 +13,7 @@ import { generateAngularMarkup, getAngularCode } from '@/utils/generator/generat
 import { generateReactMarkup, getReactCode } from '@/utils/generator/generateReactMarkup';
 import { generateVanillaJsMarkup, getVanillaJsCode } from '@/utils/generator/generateVanillaJsMarkup';
 import { generateVueMarkup, getVueCode } from '@/utils/generator/generateVueMarkup';
-import {
-  type ConfiguratorTagNames,
-  type ElementConfig,
-  type HTMLTagOrComponent,
-  createElements,
-} from '@/utils/generator/generator';
+import { type ConfiguratorTagNames, type HTMLTagOrComponent, createElements } from '@/utils/generator/generator';
 import { PButton } from '@porsche-design-system/components-react/ssr';
 import React, { type ReactNode, useEffect, useState } from 'react';
 
@@ -33,6 +29,7 @@ export const Configurator = <T extends HTMLTagOrComponent>({
   slotStories,
 }: ConfiguratorTestProps<T>) => {
   const { storefrontTheme } = useStorefrontTheme();
+  const { storefrontFramework } = useStorefrontFramework();
   const [exampleState, setExampleState] = useState<StoryState<HTMLTagOrComponent>>(story.state ?? {});
   const [exampleElement, setExampleElement] = useState<ReactNode>(
     createElements(story.generator(story.state), setExampleState)
@@ -59,7 +56,19 @@ export const Configurator = <T extends HTMLTagOrComponent>({
       theme !== 'light'
         ? applyPropertyRecursively(story.generator(exampleState), 'theme', theme)
         : story.generator(exampleState);
-    openInStackblitz(getVanillaJsCode(generateVanillaJsMarkup(generatedStory), { isFullConfig: true, theme }));
+
+    const frameworkMap: Record<Exclude<Framework, 'next'>, string> = {
+      'vanilla-js': getVanillaJsCode(generateVanillaJsMarkup(generatedStory), { isFullConfig: true, theme }),
+      react: getReactCode(generateReactMarkup(generatedStory, exampleState)),
+      angular: getAngularCode(generateAngularMarkup(generatedStory, exampleState)),
+      vue: getVueCode(generateVueMarkup(generatedStory, exampleState)),
+    };
+
+    openInStackblitz(
+      frameworkMap[storefrontFramework as Exclude<Framework, 'next'>],
+      storefrontFramework as Exclude<Framework, 'next'>,
+      theme
+    );
   };
 
   return (
