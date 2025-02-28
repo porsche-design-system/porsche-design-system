@@ -53,6 +53,7 @@
  */
 import type { ElementConfig, HTMLElementOrComponentProps, HTMLTagOrComponent } from '@/utils/generator/generator';
 
+// TODO: Create type for generator result and share with ElementConfig children type.
 export type Story<Tag extends HTMLTagOrComponent> = {
   name?: string;
   state?: StoryState<Tag>;

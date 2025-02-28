@@ -163,6 +163,7 @@ export type ConfiguratorTagNames = keyof SafePropTypeMapping;
 // HTML tags (a, img, div...) or PDS component tags (p-accordion, p-banner...)
 export type HTMLTagOrComponent = keyof JSX.IntrinsicElements | ConfiguratorTagNames;
 
+// TODO: Create type for children and share with story generator return type. Maybe make ElementConfig also string | undefined?
 export type ElementConfig<T extends HTMLTagOrComponent> = {
   /**
    * The tag name of the element, which can be an HTML element (e.g., 'div', 'button')

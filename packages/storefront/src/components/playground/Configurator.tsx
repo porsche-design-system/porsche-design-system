@@ -2,14 +2,22 @@
 
 import { ConfiguratorControls } from '@/components/playground/ConfiguratorControls';
 import { Playground } from '@/components/playground/Playground';
+import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import { openInStackblitz } from '@/lib/stackblitz/openInStackblitz';
 import type { FrameworkMarkup } from '@/models/framework';
 import type { SlotStories, Story, StoryState } from '@/models/story';
+import type { StorefrontTheme } from '@/models/theme';
+import { applyPropertyRecursively } from '@/utils/generator/applyPropertyRecursively';
 import { generateAngularMarkup, getAngularCode } from '@/utils/generator/generateAngularMarkup';
 import { generateReactMarkup, getReactCode } from '@/utils/generator/generateReactMarkup';
 import { generateVanillaJsMarkup, getVanillaJsCode } from '@/utils/generator/generateVanillaJsMarkup';
 import { generateVueMarkup, getVueCode } from '@/utils/generator/generateVueMarkup';
-import { type ConfiguratorTagNames, type HTMLTagOrComponent, createElements } from '@/utils/generator/generator';
+import {
+  type ConfiguratorTagNames,
+  type ElementConfig,
+  type HTMLTagOrComponent,
+  createElements,
+} from '@/utils/generator/generator';
 import { PButton } from '@porsche-design-system/components-react/ssr';
 import React, { type ReactNode, useEffect, useState } from 'react';
 
@@ -24,6 +32,7 @@ export const Configurator = <T extends HTMLTagOrComponent>({
   story,
   slotStories,
 }: ConfiguratorTestProps<T>) => {
+  const { storefrontTheme } = useStorefrontTheme();
   const [exampleState, setExampleState] = useState<StoryState<HTMLTagOrComponent>>(story.state ?? {});
   const [exampleElement, setExampleElement] = useState<ReactNode>(
     createElements(story.generator(story.state), setExampleState)
@@ -43,14 +52,20 @@ export const Configurator = <T extends HTMLTagOrComponent>({
   }, [exampleState]);
 
   const onOpenInStackblitz = () => {
-    const generatedStory = story.generator(exampleState);
-    openInStackblitz(getVanillaJsCode(generateVanillaJsMarkup(generatedStory), { isFullConfig: true, theme: 'light' }));
+    // Either use the theme from the configurator state or the storefront theme
+    const theme = (exampleState.properties as { theme: StorefrontTheme })?.theme ?? storefrontTheme;
+    // Since vanilla-js doesn't have a provider we need to apply the theme to the elements
+    const generatedStory =
+      theme !== 'light'
+        ? applyPropertyRecursively(story.generator(exampleState), 'theme', theme)
+        : story.generator(exampleState);
+    openInStackblitz(getVanillaJsCode(generateVanillaJsMarkup(generatedStory), { isFullConfig: true, theme }));
   };
 
   return (
     <>
       <Playground frameworkMarkup={exampleMarkup}>{exampleElement}</Playground>
-      <PButton type="button" icon-source="stackBlitzIcon" onClick={() => onOpenInStackblitz()}>
+      <PButton className="mt-md" type="button" icon-source="stackBlitzIcon" onClick={() => onOpenInStackblitz()}>
         Open in Stackblitz
       </PButton>
       <ConfiguratorControls
