@@ -1,0 +1,18 @@
+<style>
+  body {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+
+<p-popover direction="bottom">
+  <p-text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p-text>
+</p-popover>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    document.querySelector('p-popover').shadowRoot.querySelector('button').click();
+  });
+</script>

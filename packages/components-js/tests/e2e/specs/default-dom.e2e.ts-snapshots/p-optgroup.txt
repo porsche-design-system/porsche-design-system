@@ -1,4 +1,4 @@
-<div role="group" class="optgroup" aria-labelledby="label">
-  <span class="label" role="presentation" id="label"> </span>
+<div role="group" aria-labelledby="label">
+  <span id="label" role="presentation"> </span>
   <slot> </slot>
 </div>

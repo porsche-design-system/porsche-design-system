@@ -1,0 +1,30 @@
+<style>
+  .scroll {
+    border: 1px solid deeppink;
+    margin: 16px;
+    width: 240px;
+    height: 240px;
+    overflow: scroll;
+  }
+
+  p-multi-select {
+    margin: 16px;
+  }
+</style>
+
+<div class="scroll">
+  <p-multi-select name="options" label="Scroll container" class="skip-axe-core-test">
+    <p-multi-select-option value="a">Option A</p-multi-select-option>
+    <p-multi-select-option value="b">Option B</p-multi-select-option>
+    <p-multi-select-option value="c">Option C</p-multi-select-option>
+    <p-multi-select-option value="d">Option D</p-multi-select-option>
+    <p-multi-select-option value="e">Option E</p-multi-select-option>
+    <p-multi-select-option value="f">Option F</p-multi-select-option>
+  </p-multi-select>
+</div>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    document.querySelector('p-multi-select').shadowRoot.querySelector('label').click();
+  });
+</script>

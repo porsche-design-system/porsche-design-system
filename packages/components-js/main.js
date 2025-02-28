@@ -2,8 +2,15 @@ import './style.scss';
 
 import { componentsReady } from '@porsche-design-system/components-js';
 
+import { pdsTheme } from '@porsche-design-system/components-js/ag-grid';
 import { dataAdvanced } from '@porsche-design-system/shared';
 import * as agGrid from 'ag-grid-enterprise';
+import {
+  AllEnterpriseModule,
+  ModuleRegistry,
+  ValidationModule /* Development Only */,
+  provideGlobalGridOptions,
+} from 'ag-grid-enterprise';
 
 const getPage = () => window.location.pathname.substring(1);
 const getTheme = () => new URL(document.location).searchParams.get('theme') || 'light';
@@ -52,6 +59,8 @@ const updateRoute = async (opts) => {
     const directory = page.match(/^[a-z-]+-example/) ? 'examples' : 'pages';
     document.querySelector('html').setAttribute('dir', dir);
     document.querySelector('html').style.fontSize = `${scale}%`;
+    document.querySelector('body').classList.remove('light', 'dark', 'auto');
+    document.querySelector('body').classList.add(theme);
 
     if (isPageLoadedInIFrame()) {
       controls.remove();
@@ -117,6 +126,12 @@ const updateSelect = (id, value) => {
       })
     );
   };
+
+  ModuleRegistry.registerModules([AllEnterpriseModule, ValidationModule]);
+
+  provideGlobalGridOptions({
+    theme: pdsTheme,
+  });
 
   window.agGrid = agGrid;
   window.rowData = dataAdvanced;

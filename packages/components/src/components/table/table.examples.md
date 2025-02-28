@@ -30,8 +30,6 @@ behavior.
   </p-table>
 </Playground>
 
----
-
 ## Caption
 
 A caption that describes the content of the table can be set in two ways. It's mandatory to define a descriptive caption
@@ -49,7 +47,31 @@ When using the `caption` slot its content will be rendered while offering full c
 
 <Playground :markup="captionSlot" :config="config"></Playground>
 
----
+## Compact
+
+By setting `compact` to `true` you can have a more compact table with reduced paddings, which will by default grow
+fluidly by screen width.
+
+<Playground :markup="compact" :config="config"></Playground>
+
+## Layout: fixed
+
+By setting `layout` to `fixed` you can get full control over every column width that are otherwise controlled by their
+content. An identical `width`, `min-width` and/or `max-width` depending on what you want to achieve, has to be specified
+on **every** `p-table-head-cell` and `p-table-cell` within the **same column**.
+
+While it is possible to use relative `width` units likes `50%` or `50vw`, these may lead to unexpected results when the
+table is scrollable especially on smaller screens or when combined with absolute (e.g. `50px`) or default auto values
+(based on content).
+
+If there is more content than available space, it will be overflowing, which you need to take care of, e.g. by using
+`<p-text ellipsis>Some content</p-text>`.
+
+<Notification heading="Note" heading-tag="h3" state="warning">
+  Since truncated content cannot be fully read, it is important to provide an alternative like a <code>title</code> attribute or custom tooltip.
+</Notification>
+
+<Playground :markup="layoutFixed" :config="config"></Playground>
 
 ## Column Headers
 
@@ -99,8 +121,6 @@ Sometimes you want to hide the label of a table column for example when the colu
 can be achieved by setting the `hide-label` property.
 
 <Playground :markup="hideLabel" :config="config"></Playground>
-
----
 
 ## Advanced Table
 
@@ -244,6 +264,33 @@ export default class Code extends Vue {
   <p-heading slot="caption" :theme="theme" size="large">Some slotted caption</p-heading>
   ${this.basicTableHead}
   ${this.basicTableBody}
+</p-table>`;
+
+  compact = `<p-table caption="Some caption" compact="true">
+  ${this.basicTableHead}
+  ${this.basicTableBody}
+</p-table>`;
+
+  layoutFixed = `<p-table caption="Some caption" layout="fixed">
+  <p-table-head>
+    <p-table-head-row>
+      <p-table-head-cell style="width: 50%; max-width: 50%">Column 1 (50%)</p-table-head-cell>
+      <p-table-head-cell style="width: 150px; max-width: 150px">Column 2 (150px)</p-table-head-cell>
+      <p-table-head-cell>Column 3 (auto)</p-table-head-cell>
+    </p-table-head-row>
+  </p-table-head>
+  <p-table-body>
+    <p-table-row>
+      <p-table-cell style="width: 50%; max-width: 50%">Cell 1</p-table-cell>
+      <p-table-cell style="width: 150px; max-width: 150px"><p-text ellipsis title="Cell 2">Cell 2</p-text></p-table-cell>
+      <p-table-cell>Cell 3</p-table-cell>
+    </p-table-row>
+    <p-table-row>
+      <p-table-cell style="width: 50%; max-width: 50%">Cell 1</p-table-cell>
+      <p-table-cell style="width: 150px; max-width: 150px"><p-text ellipsis title="Cell 2 with more content">Cell 2 with more content</p-text></p-table-cell>
+      <p-table-cell>Cell 3</p-table-cell>
+    </p-table-row>
+  </p-table-body>
 </p-table>`;
 
   hideLabel = `<p-table caption="Some caption">

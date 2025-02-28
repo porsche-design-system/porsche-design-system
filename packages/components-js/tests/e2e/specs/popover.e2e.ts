@@ -1,5 +1,6 @@
-import type { Page } from 'playwright';
 import { expect, test } from '@playwright/test';
+import type { PopoverDirection } from '@porsche-design-system/components';
+import type { Page } from 'playwright';
 import {
   addEventListener,
   getActiveElementId,
@@ -14,15 +15,10 @@ import {
   skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { PopoverDirection } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.locator('p-popover');
-const getSpacer = (page: Page) => page.locator('p-popover .spacer');
-const getPopover = (page: Page) => page.locator('p-popover .popover');
+const getPopover = (page: Page) => page.locator('p-popover [popover]');
 const getButton = (page: Page) => page.locator('p-popover button').first();
-const getTableScroller = (page: Page) => page.locator('p-table p-scroller .scroll-area');
-const isNativePopoverOpen = async (page: Page): Promise<boolean> =>
-  getSpacer(page).evaluate((el) => el.matches(':popover-open'));
 
 const togglePopover = async (page: Page): Promise<void> => {
   const button = getButton(page);
@@ -201,13 +197,13 @@ test.describe('mouse behavior', () => {
       // We have to click the second button first, otherwise it gets overlapped by the first button and cant be clicked
       await secondButton.click();
       await waitForStencilLifecycle(page);
-      await expect(page.locator('p-popover.second .popover'), 'second popover, second click').not.toHaveCount(0);
-      await expect(page.locator('p-popover.first .popover'), 'first popover, second click').toHaveCount(0);
+      await expect(page.locator('p-popover.second [popover]'), 'second popover, second click').toBeVisible();
+      await expect(page.locator('p-popover.first [popover]'), 'first popover, second click').toBeHidden();
 
       await firstButton.click();
       await waitForStencilLifecycle(page);
-      await expect(page.locator('p-popover.first .popover'), 'first popover, first click').not.toHaveCount(0);
-      await expect(page.locator('p-popover.second .popover'), 'second popover, first click').toHaveCount(0);
+      await expect(page.locator('p-popover.first [popover]'), 'first popover, first click').toBeVisible();
+      await expect(page.locator('p-popover.second [popover]'), 'second popover, first click').toBeHidden();
     });
   });
 
@@ -322,15 +318,15 @@ test.describe('keyboard behavior', () => {
       await page.keyboard.press('Enter');
       await waitForStencilLifecycle(page);
 
-      await expect(page.locator('p-popover.first .popover'), 'first popover, first enter').not.toHaveCount(0);
-      await expect(page.locator('p-popover.second .popover'), 'second popover, first enter').toHaveCount(0);
+      await expect(page.locator('p-popover.first [popover]'), 'first popover, first enter').toBeVisible();
+      await expect(page.locator('p-popover.second [popover]'), 'second popover, first enter').toBeHidden();
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await waitForStencilLifecycle(page);
 
-      await expect(page.locator('p-popover.first .popover'), 'first popover, second enter').toHaveCount(0);
-      await expect(page.locator('p-popover.second .popover'), 'second popover, second enter').not.toHaveCount(0);
+      await expect(page.locator('p-popover.first [popover]'), 'first popover, second enter').toBeHidden();
+      await expect(page.locator('p-popover.second [popover]'), 'second popover, second enter').toBeVisible();
     });
   });
 });
@@ -357,48 +353,5 @@ test.describe('lifecycle', () => {
 
     expect(status.componentDidUpdate['p-popover'], 'componentDidUpdate: p-popover').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
-  });
-});
-
-test.describe('native', () => {
-  skipInBrowsers(['firefox', 'webkit']);
-  test('should not render native popover when used outside of table', async ({ page }) => {
-    await initPopover(page);
-    await togglePopover(page);
-    const button = getButton(page);
-    const spacer = getSpacer(page);
-
-    expect(await getAttribute(button, 'popoverTarget')).toBe(null);
-    expect(await getProperty(spacer, 'popover')).toBe(null);
-  });
-
-  test('should render native popover when used within table', async ({ page }) => {
-    await initPopoverWithinTable(page);
-    const button = getButton(page);
-    const spacer = getSpacer(page);
-
-    expect(await getAttribute(button, 'popoverTarget')).toBe(await getProperty(spacer, 'id'));
-    expect(await getProperty(spacer, 'popover')).toBe('auto');
-  });
-
-  test('should open popover with correct position on click', async ({ page }) => {
-    await initPopoverWithinTable(page);
-    await togglePopover(page);
-
-    expect(await isNativePopoverOpen(page)).toBe(true);
-  });
-
-  test('should close popover on table scroll', async ({ page }) => {
-    await initPopoverWithinTable(page);
-    await togglePopover(page);
-
-    expect(await isNativePopoverOpen(page)).toBe(true);
-
-    // Simulate a scroll event on the table
-    await getTableScroller(page).evaluate((el) => {
-      el.dispatchEvent(new Event('scroll'));
-    });
-
-    expect(await isNativePopoverOpen(page)).toBe(false);
   });
 });

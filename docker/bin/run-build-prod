@@ -4,7 +4,6 @@ set -o errexit
 set -o pipefail
 
 if
-  [[ "--core-dependencies" == "${1}" ]] ||
   [[ "--assets" == "${1}" ]] ||
   [[ "--crest" == "${1}" ]] ||
   [[ "--icons" == "${1}" ]] ||
@@ -21,6 +20,7 @@ if
 then
   yarn build:${1:2}
 elif
+  [[ "--core-dependencies" == "${1}" ]] ||
   [[ "--components" == "${1}" ]] ||
   [[ "--components-js" == "${1}" ]]
 then

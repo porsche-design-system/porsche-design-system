@@ -1,10 +1,8 @@
-import * as dropdownDirectionUtils from '../../../utils/select/select-dropdown';
 import type { DropdownDirectionInternal } from '../../select-wrapper/select-wrapper/select-wrapper-utils';
 import * as multiSelectUtils from './multi-select-utils';
 import {
   type MultiSelectOptgroup,
   type MultiSelectOption,
-  getDropdownDirection,
   getHighlightedOption,
   getHighlightedOptionIndex,
   getNewOptionIndex,
@@ -396,24 +394,5 @@ describe('updateHighlightedOption()', () => {
 
     expect(getNewOptionIndexSpy).toHaveBeenCalledTimes(1);
     expect(setNextOptionHighlightedSpy).toHaveBeenCalledWith(host, options, 1);
-  });
-});
-
-// handleDropdownScroll is not tested on purpose
-// describe('handleDropdownScroll()', () => {});
-
-describe('getDropdownDirection()', () => {
-  it('should return correct direction', () => {
-    const options = generateMultiSelectOptions({ amount: 5, hiddenIndex: 2 });
-    const host = document.createElement('p-multi-select');
-    expect(getDropdownDirection('down', host, options)).toBe('down');
-    expect(getDropdownDirection('up', host, options)).toBe('up');
-
-    const spy = jest.spyOn(dropdownDirectionUtils, 'determineDropdownDirection');
-    getDropdownDirection('auto', host, options);
-    expect(spy).toHaveBeenCalledWith(host, 4);
-
-    // Fallback when host is undefined
-    expect(getDropdownDirection('auto', undefined, options)).toBe('down');
   });
 });

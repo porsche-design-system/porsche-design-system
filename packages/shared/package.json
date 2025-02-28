@@ -26,6 +26,8 @@
     "@porsche-design-system/component-meta": "0.0.0"
   },
   "devDependencies": {
+    "@types/tinycolor2": "^1.4.6",
+    "tinycolor2": "^1.6.0",
     "@octokit/core": "^6.1.2"
   },
   "peerDependencies": {
