@@ -105,7 +105,7 @@ export const generateVueControlledScript = (
     .map(([eventName, { prop, value, eventValueKey, eventType, negateValue }]) => {
       if (eventValueKey) {
         return `  const ${eventName} = (e: ${eventType}) => {
-    ${prop}.value = ${negateValue ? '!' : ''}e.detail.${eventValueKey};
+    ${prop}.value = ${negateValue ? '!' : ''}e.${eventValueKey};
   }`;
       }
       return `  const ${eventName} = () => {

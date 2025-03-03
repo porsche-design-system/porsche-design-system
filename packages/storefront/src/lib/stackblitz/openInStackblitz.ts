@@ -3,8 +3,13 @@ import type { Framework } from '@/models/framework';
 import type { StorefrontTheme } from '@/models/theme';
 import { themeDark, themeLight } from '@porsche-design-system/components-js/styles';
 import sdk, { type OpenOptions, type Project } from '@stackblitz/sdk';
+import { devDependencies as devDependenciesRoot } from '../../../../../package.json';
 import { dependencies as angularDependencies } from '../../../../components-angular/package.json';
 import { dependencies } from '../../../../components-js/package.json';
+import {
+  dependencies as vueDependencies,
+  devDependencies as vueDevDependencies,
+} from '../../../../components-vue/package.json';
 
 /* TODO:
  * - local development
@@ -90,25 +95,83 @@ const stackblitzOptions: Record<
   vue: (markup, theme) => [
     {
       files: {
+        'src/App.vue': getVueAppVue(),
         'src/Example.vue': markup,
-        'src/main.ts': `import { createApp } from 'vue';
-import Example from './Example.vue';
+        'src/main.ts': getVueMainTs(),
+        'index.html': getVueIndexHTML(theme),
+        'vite.config.ts': `import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
 
-const app = createApp(Example);
-
-app.mount('#root');
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [vue()],
+});
 `,
-        'public/index.html': getVueIndexHTML(theme),
+        'package.json': JSON.stringify(
+          {
+            name: 'porsche-design-system-vue-example',
+            private: true,
+            version: '0.0.0',
+            type: 'module',
+            scripts: {
+              dev: 'vite',
+              build: 'vue-tsc && vite build',
+              preview: 'vite preview',
+            },
+            stackblitz: {
+              installDependencies: false, // disable initial `npm i`
+              startCommand: 'yarn && yarn dev', // manually install dependencies and start app
+            },
+            dependencies: {
+              '@porsche-design-system/components-vue': dependencies['@porsche-design-system/components-js'],
+              vue: vueDependencies.vue,
+            },
+            devDependencies: {
+              '@vitejs/plugin-vue': vueDevDependencies['@vitejs/plugin-vue'],
+              '@vitejs/plugin-vue-jsx': vueDevDependencies['@vitejs/plugin-vue-jsx'],
+              typescript: devDependenciesRoot.typescript,
+              vite: devDependenciesRoot.vite,
+              'vue-tsc': vueDevDependencies['vue-tsc'],
+            },
+          },
+          null,
+          2
+        ),
       },
-      template: 'vue',
+      template: 'node',
       title: 'Porsche Design System vue sandbox',
       description: 'Porsche Design System component example',
       dependencies: {
         '@porsche-design-system/components-vue': dependencies['@porsche-design-system/components-js'],
       },
     },
-    {},
+    {
+      openFile: 'src/Example.vue',
+    },
   ],
+};
+
+export const getVueAppVue = () => {
+  return `<script setup lang="ts">
+  import Example from './Example.vue';
+  import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PorscheDesignSystemProvider>
+    <Example />
+  </PorscheDesignSystemProvider>
+</template>`;
+};
+
+export const getVueMainTs = (): string => {
+  return `import { createApp } from 'vue';
+import App from './App.vue';
+
+const app = createApp(App);
+
+app.mount('#root');
+`;
 };
 
 export const getVueIndexHTML = (theme: StorefrontTheme) => {
