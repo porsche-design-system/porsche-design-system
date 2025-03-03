@@ -11,14 +11,19 @@ import {
 
 type ThemeSelectProps = {
   value: PlaygroundTheme;
-  label?: PSelectProps['label'];
-  hideLabel?: PSelectProps['hideLabel'];
   onUpdate: (event: CustomEvent<SelectUpdateEventDetail>) => void;
-};
+} & Partial<PSelectProps>;
 
-export const ThemeSelect = ({ value = 'light', label = 'Theme', hideLabel = false, onUpdate }: ThemeSelectProps) => {
+export const ThemeSelect = ({
+  value = 'light',
+  onUpdate,
+  name = 'theme',
+  label = 'Theme',
+  hideLabel = false,
+  ...rest
+}: ThemeSelectProps) => {
   return (
-    <PSelect name="theme" value={value} hideLabel={hideLabel} compact={true} onUpdate={onUpdate}>
+    <PSelect name={name} value={value} onUpdate={onUpdate} label={label} hideLabel={hideLabel} {...rest}>
       <span slot="label" className="inline-flex gap-static-xs">
         {label}
         <PPopover onClick={(e) => e.preventDefault()}>

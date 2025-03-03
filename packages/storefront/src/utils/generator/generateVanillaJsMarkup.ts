@@ -16,7 +16,6 @@ export const getVanillaJsCode = (
   { isFullConfig, theme, pdsVersion }: { isFullConfig: boolean; theme: StorefrontTheme; pdsVersion?: string } = {
     isFullConfig: false,
     theme: 'light',
-    pdsVersion: '',
   }
 ) => {
   const metaTags = isFullConfig

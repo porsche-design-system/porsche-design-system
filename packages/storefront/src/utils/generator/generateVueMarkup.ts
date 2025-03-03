@@ -13,7 +13,7 @@ export const getVueCode = ({
   states,
   eventHandlers,
   markup,
-}: FrameworkConfiguratorMarkup['vue']) => `<script setup lang="ts">\n${imports}\n${states ? `\n${states}\n` : ''}${eventHandlers ? `\n${eventHandlers}\n` : ''}</script>
+}: FrameworkConfiguratorMarkup['vue']) => `<script setup lang="ts">\n${imports ? imports : ''}\n${states ? `\n${states}\n` : ''}${eventHandlers ? `\n${eventHandlers}\n` : ''}</script>
 
 <template>
 ${markup}

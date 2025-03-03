@@ -98,6 +98,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
           <ThemeSelect
             value={storefrontTheme}
             onUpdate={(e): void => setStorefrontTheme(e.detail.value as StorefrontTheme)}
+            compact={true}
           />
           <DirectionSelect
             value={storefrontDirection}

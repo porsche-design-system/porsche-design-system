@@ -1,5 +1,10 @@
 import { initialStyles } from '@/lib/partialResults';
-import { type PorscheDesignSystemBundle, getPorscheDesignSystemBundle, isReleasedPds } from '@/lib/stackblitz/helper';
+import {
+  type PorscheDesignSystemBundle,
+  convertImportPaths,
+  getPorscheDesignSystemBundle,
+  isReleasedPds,
+} from '@/lib/stackblitz/helper';
 import type { Framework } from '@/models/framework';
 import type { StorefrontTheme } from '@/models/theme';
 import { themeDark, themeLight } from '@porsche-design-system/components-js/styles';
@@ -13,7 +18,7 @@ import {
 } from '../../../../components-vue/package.json';
 
 /* TODO:
- * - local development
+ * - local development not working for angular/vue
  * - src/srcset transform?
  * - add dependencies
  * - add dir
@@ -22,10 +27,11 @@ import {
 export const openInStackblitz = async (
   markup: string,
   framework: Exclude<Framework, 'next'>,
-  theme: StorefrontTheme
+  theme: StorefrontTheme,
+  pdsVersion?: string
 ) => {
-  if (isReleasedPds()) {
-    sdk.openProject(...stackblitzOptions[framework](markup, theme, undefined, ''));
+  if (pdsVersion || isReleasedPds()) {
+    sdk.openProject(...stackblitzOptions[framework](markup, theme, undefined, pdsVersion));
   } else {
     // Use local bundle for non-released PDS versions
     const porscheDesignSystemBundle = await getPorscheDesignSystemBundle(framework);
@@ -45,7 +51,7 @@ const stackblitzOptions: Record<
     markup: string,
     theme: StorefrontTheme,
     porscheDesignSystemBundle: PorscheDesignSystemBundle | undefined,
-    pdsVersion: string
+    pdsVersion: string | undefined
   ) => [Project, OpenOptions]
 > = {
   'vanilla-js': (markup, theme, porscheDesignSystemBundle, pdsVersion) => [
@@ -72,38 +78,44 @@ window.porscheDesignSystem = porscheDesignSystem;`,
       openFile: 'index.html',
     },
   ],
-  react: (markup, theme) => [
+  react: (markup, theme, porscheDesignSystemBundle, pdsVersion) => [
     {
       files: {
-        'Example.tsx': markup,
+        ...porscheDesignSystemBundle,
+        'Example.tsx': porscheDesignSystemBundle ? convertImportPaths(markup, 'react') : markup,
         'index.html': getIndexHtml(theme),
-        'index.tsx': getIndexTsx(theme),
+        'index.tsx': getIndexTsx(theme, !!porscheDesignSystemBundle),
         'style.css': '', // empty file seems to be required
       },
       template: 'create-react-app',
       title: 'Porsche Design System react sandbox',
       description: 'Porsche Design System component example',
       dependencies: {
-        '@porsche-design-system/components-react': dependencies['@porsche-design-system/components-js'],
+        ...(isReleasedPds(pdsVersion) && {
+          '@porsche-design-system/components-react': pdsVersion || dependencies['@porsche-design-system/components-js'],
+        }),
       },
     },
     {
       openFile: 'App.tsx',
     },
   ],
-  angular: (markup, theme) => [
+  angular: (markup, theme, porscheDesignSystemBundle, pdsVersion) => [
     {
       files: {
-        'src/app/app.component.ts': markup,
-        // 'src/app/app.module.ts': getAppModuleTs(theme),
+        ...porscheDesignSystemBundle,
+        'src/app/app.component.ts': porscheDesignSystemBundle ? convertImportPaths(markup, 'angular') : markup,
         'src/index.html': getAngularIndexHtml(theme),
-        'src/main.ts': getMainTs(theme),
+        'src/main.ts': getMainTs(theme, !!porscheDesignSystemBundle),
       },
       template: 'angular-cli',
       title: 'Porsche Design System angular sandbox',
       description: 'Porsche Design System component example',
       dependencies: {
-        '@porsche-design-system/components-angular': dependencies['@porsche-design-system/components-js'],
+        ...(isReleasedPds(pdsVersion) && {
+          '@porsche-design-system/components-angular':
+            pdsVersion || dependencies['@porsche-design-system/components-js'],
+        }),
         '@angular/animations': angularDependencies['@angular/animations'],
         '@angular/common': angularDependencies['@angular/common'],
         '@angular/compiler': angularDependencies['@angular/compiler'],
@@ -121,11 +133,12 @@ window.porscheDesignSystem = porscheDesignSystem;`,
       openFile: 'app.component.html',
     },
   ],
-  vue: (markup, theme) => [
+  vue: (markup, theme, porscheDesignSystemBundle) => [
     {
       files: {
+        ...porscheDesignSystemBundle,
         'src/App.vue': getVueAppVue(theme),
-        'src/Example.vue': markup,
+        'src/Example.vue': porscheDesignSystemBundle ? convertImportPaths(markup, 'vue') : markup,
         'src/main.ts': getVueMainTs(),
         'index.html': getVueIndexHTML(theme),
         'vite.config.ts': `import { defineConfig } from 'vite'
@@ -180,10 +193,10 @@ export default defineConfig({
   ],
 };
 
-export const getVueAppVue = (theme: StorefrontTheme) => {
+export const getVueAppVue = (theme: StorefrontTheme, isLocalPdsBundle: boolean = false) => {
   return `<script setup lang="ts">
   import Example from './Example.vue';
-  import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
+  import { PorscheDesignSystemProvider } from '${isLocalPdsBundle ? './../' : ''}@porsche-design-system/components-vue';
 </script>
 
 <template>
@@ -212,11 +225,6 @@ export const getVueIndexHTML = (theme: StorefrontTheme) => {
 
     ${initialStyles}
   ${getStackblitzGlobalStyle(theme)}
-
-    <style>
-      html, body { margin: 0; padding: 0; }
-      body { background: #FFF; }
-    </style>
   </head>
   <body dir="ltr">
     <div id="root"></div>
@@ -225,10 +233,10 @@ export const getVueIndexHTML = (theme: StorefrontTheme) => {
 </html>`;
 };
 
-export const getMainTs = (theme: StorefrontTheme): string => {
+export const getMainTs = (theme: StorefrontTheme, isLocalPdsBundle: boolean = false): string => {
   return `import { bootstrapApplication } from '@angular/platform-browser';
 import { importProvidersFrom } from '@angular/core';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { PorscheDesignSystemModule } from '${isLocalPdsBundle ? './../' : ''}@porsche-design-system/components-angular';
 import { ExampleComponent } from './app/app.component';
 import 'zone.js';
 
@@ -281,10 +289,10 @@ export const getIndexHtml = (theme: StorefrontTheme) => `<!doctype html>
   </body>
 </html>`;
 
-export const getIndexTsx = (theme: StorefrontTheme): string => {
+export const getIndexTsx = (theme: StorefrontTheme, isLocalPdsBundle: boolean = false): string => {
   return `import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
+import { PorscheDesignSystemProvider } from '${isLocalPdsBundle ? './' : ''}@porsche-design-system/components-react';
 
 import { Example } from './Example';
 

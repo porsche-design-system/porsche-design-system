@@ -1,17 +1,15 @@
 import type { Framework } from '@/models/framework';
 
-export const isStableStorefrontRelease = (): boolean => /^\/v\d+\//.test(location.pathname);
-
 export const isReleasedPds = (pdsVersion?: string): boolean => !!pdsVersion || isStableStorefrontRelease();
 
-export const convertImportPaths = (markup: string, framework: Framework, pdsVersion: string): string => {
+export const isStableStorefrontRelease = (): boolean => /^\/v\d+\//.test(location.pathname);
+
+export const convertImportPaths = (markup: string, framework: Framework): string => {
   const relativeDirectory = framework === 'angular' ? '../../' : framework === 'vue' ? '../' : '';
-  return isReleasedPds(pdsVersion)
-    ? markup
-    : markup.replace(
-        new RegExp(`@porsche-design-system\\/components-${framework.replace(/^vanilla-/, '')}`, 'g'),
-        `./${relativeDirectory}@porsche-design-system/components-${framework}`
-      );
+  return markup.replace(
+    new RegExp(`@porsche-design-system\\/components-${framework.replace(/^vanilla-/, '')}`, 'g'),
+    `./${relativeDirectory}@porsche-design-system/components-${framework}`
+  );
 };
 
 export type PorscheDesignSystemBundle = { [path: string]: string };

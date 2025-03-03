@@ -5,8 +5,8 @@ export type FrameworkMarkup = { [key in Framework]?: string };
 export type FrameworkConfiguratorMarkup = {
   [key in Exclude<Framework, 'next'>]: {
     imports?: string;
-    states: string | undefined; // Can be useState, ref or const
-    eventHandlers: string | undefined; // Can be functions or eventListeners
+    states?: string | undefined; // Can be useState, ref or const
+    eventHandlers?: string | undefined; // Can be functions or eventListeners
     markup: string | undefined; // The actual markup
   };
 };

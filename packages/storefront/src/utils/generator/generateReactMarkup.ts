@@ -15,7 +15,7 @@ export const getReactCode = ({
   states,
   eventHandlers,
   markup,
-}: FrameworkConfiguratorMarkup['react']) => `import React from 'react';${imports}
+}: FrameworkConfiguratorMarkup['react']) => `import React from 'react';${imports ? imports : ''}
 
 export const Example = () => {${states ? `\n${states}\n` : ''}${eventHandlers ? `\n${eventHandlers}\n` : ''}
   return (
