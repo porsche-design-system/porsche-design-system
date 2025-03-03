@@ -14,6 +14,7 @@ export const getAngularCode = ({
   eventHandlers,
   markup,
 }: FrameworkConfiguratorMarkup['angular']) => `import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'porsche-design-system-app',
@@ -21,7 +22,8 @@ export const getAngularCode = ({
 ${markup}
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
 })
 export class ExampleComponent {${states ? `\n${states}\n` : ''}${eventHandlers ? `\n${eventHandlers}\n` : ''}}`;
 

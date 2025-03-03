@@ -9,6 +9,7 @@ import type { ElementConfig, HTMLElementOrComponentProps, HTMLTagOrComponent } f
  * @param {T} propertyKey - The property key to apply.
  * @param {HTMLElementOrComponentProps<HTMLTagOrComponent>[T]} propertyValue - The value of the property to apply.
  * @param {boolean} [onlyPdsComponents=true] - Whether to apply the property only to PDS components (tags starting with 'p-').
+ * @param {boolean} [overrideExisting=false] - Whether to override the value if the property already exists on the element.
  * @returns {Array<string | ElementConfig<HTMLTagOrComponent> | undefined>} - The modified elements with the applied property.
  */
 export const applyPropertyRecursively = <
@@ -17,13 +18,19 @@ export const applyPropertyRecursively = <
   elements: (string | ElementConfig<HTMLTagOrComponent> | undefined)[],
   propertyKey: T,
   propertyValue: (HTMLElementOrComponentProps<HTMLTagOrComponent> & { theme: StorefrontTheme })[T],
-  onlyPdsComponents: boolean = true
+  onlyPdsComponents: boolean = true,
+  overrideExisting: boolean = false
 ): typeof elements => {
   return elements.map((element) => {
     if (typeof element === 'object' && element !== null && (!onlyPdsComponents || element.tag.startsWith('p-'))) {
       return {
         ...element,
-        properties: { ...element.properties, [propertyKey]: propertyValue },
+        properties: {
+          ...element.properties,
+          ...(overrideExisting || (element.properties as any)?.[propertyKey] === undefined
+            ? { [propertyKey]: propertyValue }
+            : {}),
+        },
         children: element.children
           ? applyPropertyRecursively(element.children, propertyKey, propertyValue, onlyPdsComponents)
           : undefined,

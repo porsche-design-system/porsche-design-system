@@ -49,16 +49,17 @@ export const Configurator = <T extends HTMLTagOrComponent>({
   }, [exampleState]);
 
   const onOpenInStackblitz = () => {
-    // Either use the theme from the configurator state or the storefront theme
-    const theme = (exampleState.properties as { theme: StorefrontTheme })?.theme ?? storefrontTheme;
-    // Since vanilla-js doesn't have a provider we need to apply the theme to the elements
+    // Since vanilla-js doesn't have a provider we need to apply the global theme to the elements
     const generatedStory =
-      theme !== 'light'
-        ? applyPropertyRecursively(story.generator(exampleState), 'theme', theme)
+      storefrontFramework === 'vanilla-js' && storefrontTheme !== 'light'
+        ? applyPropertyRecursively(story.generator(exampleState), 'theme', storefrontTheme)
         : story.generator(exampleState);
 
     const frameworkMap: Record<Exclude<Framework, 'next'>, string> = {
-      'vanilla-js': getVanillaJsCode(generateVanillaJsMarkup(generatedStory), { isFullConfig: true, theme }),
+      'vanilla-js': getVanillaJsCode(generateVanillaJsMarkup(generatedStory), {
+        isFullConfig: true,
+        theme: storefrontTheme,
+      }),
       react: getReactCode(generateReactMarkup(generatedStory, exampleState)),
       angular: getAngularCode(generateAngularMarkup(generatedStory, exampleState)),
       vue: getVueCode(generateVueMarkup(generatedStory, exampleState)),
@@ -67,7 +68,7 @@ export const Configurator = <T extends HTMLTagOrComponent>({
     openInStackblitz(
       frameworkMap[storefrontFramework as Exclude<Framework, 'next'>],
       storefrontFramework as Exclude<Framework, 'next'>,
-      theme
+      storefrontTheme
     );
   };
 

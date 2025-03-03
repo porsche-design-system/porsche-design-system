@@ -48,7 +48,7 @@ const stackblitzOptions: Record<
       files: {
         'Example.tsx': markup,
         'index.html': getIndexHtml(theme),
-        'index.tsx': getIndexTsx(),
+        'index.tsx': getIndexTsx(theme),
         'style.css': '', // empty file seems to be required
       },
       template: 'create-react-app',
@@ -66,9 +66,9 @@ const stackblitzOptions: Record<
     {
       files: {
         'src/app/app.component.ts': markup,
-        'src/app/app.module.ts': getAppModuleTs(),
+        // 'src/app/app.module.ts': getAppModuleTs(theme),
         'src/index.html': getAngularIndexHtml(theme),
-        'src/main.ts': getMainTs(),
+        'src/main.ts': getMainTs(theme),
       },
       template: 'angular-cli',
       title: 'Porsche Design System angular sandbox',
@@ -95,7 +95,7 @@ const stackblitzOptions: Record<
   vue: (markup, theme) => [
     {
       files: {
-        'src/App.vue': getVueAppVue(),
+        'src/App.vue': getVueAppVue(theme),
         'src/Example.vue': markup,
         'src/main.ts': getVueMainTs(),
         'index.html': getVueIndexHTML(theme),
@@ -151,14 +151,14 @@ export default defineConfig({
   ],
 };
 
-export const getVueAppVue = () => {
+export const getVueAppVue = (theme: StorefrontTheme) => {
   return `<script setup lang="ts">
   import Example from './Example.vue';
   import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
 </script>
 
 <template>
-  <PorscheDesignSystemProvider>
+  <PorscheDesignSystemProvider${theme !== 'light' ? ` theme="${theme}"` : ''}>
     <Example />
   </PorscheDesignSystemProvider>
 </template>`;
@@ -196,17 +196,19 @@ export const getVueIndexHTML = (theme: StorefrontTheme) => {
 </html>`;
 };
 
-export const getMainTs = (): string => {
-  return `import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { AppModule } from './app/app.module';
+export const getMainTs = (theme: StorefrontTheme): string => {
+  return `import { bootstrapApplication } from '@angular/platform-browser';
+import { importProvidersFrom } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { ExampleComponent } from './app/app.component';
 import 'zone.js';
 
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
-  .catch((err) => console.error(err));`;
+bootstrapApplication(ExampleComponent, {
+  providers: [importProvidersFrom(PorscheDesignSystemModule${theme !== 'light' ? `.load({ theme: '${theme}' })` : ''})],
+}).catch((err) => console.error(err));`;
 };
 
-export const getAppModuleTs = (): string => {
+export const getAppModuleTs = (theme: StorefrontTheme): string => {
   return `import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
@@ -214,7 +216,7 @@ import { ExampleComponent } from './app.component';
 
 @NgModule({
   declarations: [ExampleComponent],
-  imports: [BrowserModule, PorscheDesignSystemModule], // <-- PDS module is imported here
+  imports: [BrowserModule, PorscheDesignSystemModule${theme !== 'light' ? `.load({ theme: '${theme}' })` : ''}], // <-- PDS module is imported here
   providers: [],
   bootstrap: [ExampleComponent],
 })
@@ -250,7 +252,7 @@ export const getIndexHtml = (theme: StorefrontTheme) => `<!doctype html>
   </body>
 </html>`;
 
-export const getIndexTsx = (): string => {
+export const getIndexTsx = (theme: StorefrontTheme): string => {
   return `import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
@@ -262,7 +264,7 @@ const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
-    <PorscheDesignSystemProvider>
+    <PorscheDesignSystemProvider${theme !== 'light' ? ` theme="${theme}"` : ''}>
       <Example />
     </PorscheDesignSystemProvider>
   </StrictMode>
