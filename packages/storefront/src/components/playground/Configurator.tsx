@@ -7,7 +7,6 @@ import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import { openInStackblitz } from '@/lib/stackblitz/openInStackblitz';
 import type { Framework, FrameworkMarkup } from '@/models/framework';
 import type { SlotStories, Story, StoryState } from '@/models/story';
-import type { StorefrontTheme } from '@/models/theme';
 import { applyPropertyRecursively } from '@/utils/generator/applyPropertyRecursively';
 import { generateAngularMarkup, getAngularCode } from '@/utils/generator/generateAngularMarkup';
 import { generateReactMarkup, getReactCode } from '@/utils/generator/generateReactMarkup';
@@ -48,7 +47,7 @@ export const Configurator = <T extends HTMLTagOrComponent>({
     });
   }, [exampleState]);
 
-  const onOpenInStackblitz = () => {
+  const onOpenInStackblitz = async () => {
     // Since vanilla-js doesn't have a provider we need to apply the global theme to the elements
     const generatedStory =
       storefrontFramework === 'vanilla-js' && storefrontTheme !== 'light'
@@ -65,7 +64,7 @@ export const Configurator = <T extends HTMLTagOrComponent>({
       vue: getVueCode(generateVueMarkup(generatedStory, exampleState)),
     };
 
-    openInStackblitz(
+    await openInStackblitz(
       frameworkMap[storefrontFramework as Exclude<Framework, 'next'>],
       storefrontFramework as Exclude<Framework, 'next'>,
       storefrontTheme

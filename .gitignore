@@ -117,6 +117,7 @@ packages/shared/bin/
 packages/storefront-old/scripts/algoliaRecords.json
 packages/storefront-old/src/pages/changelog.md
 packages/storefront-old/public/porsche-design-system
+packages/storefront/public/porsche-design-system
 
 # Lib
 packages/shared/src/lib/*

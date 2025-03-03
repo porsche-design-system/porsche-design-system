@@ -1,4 +1,5 @@
 import { initialStyles } from '@/lib/partialResults';
+import { type PorscheDesignSystemBundle, getPorscheDesignSystemBundle, isReleasedPds } from '@/lib/stackblitz/helper';
 import type { Framework } from '@/models/framework';
 import type { StorefrontTheme } from '@/models/theme';
 import { themeDark, themeLight } from '@porsche-design-system/components-js/styles';
@@ -18,25 +19,53 @@ import {
  * - add dir
  * - add text zoom
  **/
-export const openInStackblitz = (markup: string, framework: Exclude<Framework, 'next'>, theme: StorefrontTheme) => {
-  sdk.openProject(...stackblitzOptions[framework](markup, theme));
+export const openInStackblitz = async (
+  markup: string,
+  framework: Exclude<Framework, 'next'>,
+  theme: StorefrontTheme
+) => {
+  if (isReleasedPds()) {
+    sdk.openProject(...stackblitzOptions[framework](markup, theme, undefined, ''));
+  } else {
+    // Use local bundle for non-released PDS versions
+    const porscheDesignSystemBundle = await getPorscheDesignSystemBundle(framework);
+    // Seems to be too many files for stackblitz to handle all styles thus we filter out vanilla-extract styles
+    const minifiedBundle = Object.fromEntries(
+      Object.entries(porscheDesignSystemBundle ?? {}).filter(([path]) => {
+        return !path.includes('styles/vanilla-extract');
+      })
+    );
+    sdk.openProject(...stackblitzOptions[framework](markup, theme, minifiedBundle, ''));
+  }
 };
 
 const stackblitzOptions: Record<
   Exclude<Framework, 'next'>,
-  (markup: string, theme: StorefrontTheme) => [Project, OpenOptions]
+  (
+    markup: string,
+    theme: StorefrontTheme,
+    porscheDesignSystemBundle: PorscheDesignSystemBundle | undefined,
+    pdsVersion: string
+  ) => [Project, OpenOptions]
 > = {
-  'vanilla-js': (markup) => [
+  'vanilla-js': (markup, theme, porscheDesignSystemBundle, pdsVersion) => [
     {
       files: {
+        ...porscheDesignSystemBundle,
         'index.html': markup,
-        'index.js': '',
+        // Workaround to make local bundle work in stackblitz
+        'index.js': isReleasedPds(pdsVersion)
+          ? ''
+          : `import * as porscheDesignSystem from './@porsche-design-system/components-js';
+window.porscheDesignSystem = porscheDesignSystem;`,
       },
       template: 'javascript',
       title: 'Porsche Design System vanilla-js sandbox',
       description: 'Porsche Design System component example',
       dependencies: {
-        '@porsche-design-system/components-js': dependencies['@porsche-design-system/components-js'],
+        ...(isReleasedPds(pdsVersion) && {
+          '@porsche-design-system/components-js': pdsVersion || dependencies['@porsche-design-system/components-js'],
+        }),
       },
     },
     {

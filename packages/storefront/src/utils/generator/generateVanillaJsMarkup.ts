@@ -1,3 +1,4 @@
+import { isReleasedPds } from '@/lib/stackblitz/helper';
 import { getStackblitzGlobalStyle } from '@/lib/stackblitz/openInStackblitz';
 import type { FrameworkConfiguratorMarkup } from '@/models/framework';
 import type { StorefrontTheme } from '@/models/theme';
@@ -12,9 +13,10 @@ import type { CSSProperties } from 'react';
 
 export const getVanillaJsCode = (
   { markup, states, eventHandlers }: FrameworkConfiguratorMarkup['vanilla-js'],
-  { isFullConfig, theme }: { isFullConfig: boolean; theme: StorefrontTheme } = {
+  { isFullConfig, theme, pdsVersion }: { isFullConfig: boolean; theme: StorefrontTheme; pdsVersion?: string } = {
     isFullConfig: false,
     theme: 'light',
+    pdsVersion: '',
   }
 ) => {
   const metaTags = isFullConfig
@@ -23,9 +25,9 @@ export const getVanillaJsCode = (
   <title>Porsche Design System</title>\n`
     : '  <title></title>';
 
-  const scripts = isFullConfig
-    ? '  <script src="node_modules/@porsche-design-system/components-js/index.js"></script>\n'
-    : '';
+  const basePath = isReleasedPds(pdsVersion) ? 'node_modules' : '.';
+  const porscheDesignSystemScript = `<script src="${basePath}/@porsche-design-system/components-js/index.js"></script>`;
+  const scripts = isFullConfig ? `  ${porscheDesignSystemScript}\n` : '';
 
   const globalStyle = isFullConfig ? getStackblitzGlobalStyle(theme) : '';
 
