@@ -64,10 +64,10 @@ of the label text and is technically connected with the `hide-label` property.
 
 ## Hide password toggle button
 
-If you want to remove the password toggle button, you can pass `showPasswordToggle="false"`.
+If you want to remove the password toggle button, you can pass `passwordToggle="false"`.
 
 <Notification heading="Attention" heading-tag="h3" state="warning">
-  The <code>showPasswordToggle</code> prop is experimental and might be removed in a future release.
+  The <code>passwordToggle</code> prop is experimental and might be removed in a future release.
 </Notification>
 
 <Playground :markup="typePasswordWithoutPasswordToggle" :config="config"></Playground>
@@ -120,9 +120,7 @@ export default class Code extends Vue {
 
   
   typePasswordWithoutPasswordToggle =
-`<p-text-field-wrapper label="Some label" show-password-toggle="false">
-  <input type="password" name="some-name" value="some password" />
-</p-text-field-wrapper>`;
+`<p-input-password name="some-name" label="Some label" value="some password" password-toggle="false"></p-input-password>`;
 
   withDescriptionText =
 `<p-input-password name="some-name" label="Some label" description="Some description"></p-input-password>`;
