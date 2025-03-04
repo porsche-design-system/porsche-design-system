@@ -61,7 +61,7 @@ export const OpenBugTemplateInStackBlitz = ({ pdsVersions }: OpenBugTemplateInSt
   };
 
   return (
-    <div className="flex flex-col gap-sm [&>*]:max-w-[30rem]">
+    <div className="flex flex-col gap-sm">
       <PSegmentedControl value={selectedFramework} onUpdate={onUpdateFramework} aria-label="Choose your Framework:">
         {Object.entries(frameworkNameMap)
           .filter(([framework]) => framework !== 'next')
@@ -71,20 +71,23 @@ export const OpenBugTemplateInStackBlitz = ({ pdsVersions }: OpenBugTemplateInSt
             </PSegmentedControlItem>
           ))}
       </PSegmentedControl>
-      <PSelect
-        name="pds-versions"
-        label="Choose your Porsche Design System version:"
-        value={selectedPdsVersion}
-        onUpdate={onUpdatePdsVersion}
-      >
-        {pdsVersions.map((pdsVersion, index) => (
-          <PSelectOption key={index} value={pdsVersion}>
-            {pdsVersion}
-          </PSelectOption>
-        ))}
-      </PSelect>
-      <ThemeSelect value={selectedTheme} onUpdate={onUpdateTheme} />
-      <PButton type="button" icon-source="stackBlitzIcon" onClick={() => onOpenInStackblitz()}>
+      <div className="flex gap-xs">
+        <PSelect
+          className="w-[13rem]"
+          name="pds-versions"
+          label="Version"
+          value={selectedPdsVersion}
+          onUpdate={onUpdatePdsVersion}
+        >
+          {pdsVersions.map((pdsVersion, index) => (
+            <PSelectOption key={index} value={pdsVersion}>
+              {pdsVersion}
+            </PSelectOption>
+          ))}
+        </PSelect>
+        <ThemeSelect className="w-[13rem]" value={selectedTheme} onUpdate={onUpdateTheme} />
+      </div>
+      <PButton className="w-fit mt-sm" type="button" icon-source="stackBlitzIcon" onClick={() => onOpenInStackblitz()}>
         Open template in StackBlitz
       </PButton>
     </div>

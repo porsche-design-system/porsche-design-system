@@ -83,8 +83,8 @@ window.porscheDesignSystem = porscheDesignSystem;`,
       files: {
         ...porscheDesignSystemBundle,
         'Example.tsx': porscheDesignSystemBundle ? convertImportPaths(markup, 'react') : markup,
-        'index.html': getIndexHtml(theme),
-        'index.tsx': getIndexTsx(theme, !!porscheDesignSystemBundle),
+        'index.html': getReactIndexHtml(theme),
+        'index.tsx': getReactIndexTsx(theme, !!porscheDesignSystemBundle),
         'style.css': '', // empty file seems to be required
       },
       template: 'create-react-app',
@@ -106,7 +106,7 @@ window.porscheDesignSystem = porscheDesignSystem;`,
         ...porscheDesignSystemBundle,
         'src/app/app.component.ts': porscheDesignSystemBundle ? convertImportPaths(markup, 'angular') : markup,
         'src/index.html': getAngularIndexHtml(theme),
-        'src/main.ts': getMainTs(theme, !!porscheDesignSystemBundle),
+        'src/main.ts': getAngularMainTs(theme, !!porscheDesignSystemBundle),
       },
       template: 'angular-cli',
       title: 'Porsche Design System angular sandbox',
@@ -233,7 +233,7 @@ export const getVueIndexHTML = (theme: StorefrontTheme) => {
 </html>`;
 };
 
-export const getMainTs = (theme: StorefrontTheme, isLocalPdsBundle: boolean = false): string => {
+export const getAngularMainTs = (theme: StorefrontTheme, isLocalPdsBundle: boolean = false): string => {
   return `import { bootstrapApplication } from '@angular/platform-browser';
 import { importProvidersFrom } from '@angular/core';
 import { PorscheDesignSystemModule } from '${isLocalPdsBundle ? './../' : ''}@porsche-design-system/components-angular';
@@ -243,22 +243,6 @@ import 'zone.js';
 bootstrapApplication(ExampleComponent, {
   providers: [importProvidersFrom(PorscheDesignSystemModule${theme !== 'light' ? `.load({ theme: '${theme}' })` : ''})],
 }).catch((err) => console.error(err));`;
-};
-
-export const getAppModuleTs = (theme: StorefrontTheme): string => {
-  return `import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
-import { ExampleComponent } from './app.component';
-
-@NgModule({
-  declarations: [ExampleComponent],
-  imports: [BrowserModule, PorscheDesignSystemModule${theme !== 'light' ? `.load({ theme: '${theme}' })` : ''}], // <-- PDS module is imported here
-  providers: [],
-  bootstrap: [ExampleComponent],
-})
-export class AppModule {}
-`;
 };
 
 export const getAngularIndexHtml = (theme: StorefrontTheme): string => {
@@ -276,7 +260,7 @@ export const getAngularIndexHtml = (theme: StorefrontTheme): string => {
 </html>`;
 };
 
-export const getIndexHtml = (theme: StorefrontTheme) => `<!doctype html>
+export const getReactIndexHtml = (theme: StorefrontTheme) => `<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -289,7 +273,7 @@ export const getIndexHtml = (theme: StorefrontTheme) => `<!doctype html>
   </body>
 </html>`;
 
-export const getIndexTsx = (theme: StorefrontTheme, isLocalPdsBundle: boolean = false): string => {
+export const getReactIndexTsx = (theme: StorefrontTheme, isLocalPdsBundle: boolean = false): string => {
   return `import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { PorscheDesignSystemProvider } from '${isLocalPdsBundle ? './' : ''}@porsche-design-system/components-react';
