@@ -15,9 +15,9 @@ exports[`componentDidLoad should call Splide constructor with correct parameters
   </div>,
   {
     "arrows": false,
-    "autoWidth": false,
     "breakpoints": {
       "0": {
+        "autoWidth": false,
         "perPage": 1,
       },
     },
@@ -54,9 +54,9 @@ exports[`componentDidLoad should call Splide constructor with correct parameters
   </div>,
   {
     "arrows": false,
-    "autoWidth": true,
     "breakpoints": {
       "0": {
+        "autoWidth": true,
         "perPage": 1,
       },
     },
