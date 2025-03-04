@@ -11324,7 +11324,6 @@ exports[`should render dsr component for PInputPassword 1`] = `
 >
   <template
     shadowroot="open"
-    shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
     <style>
@@ -11360,7 +11359,7 @@ input {
   padding-inline-start: var(--p-internal-input-password-input-padding-start);
   padding-inline-end: var(--p-internal-input-password-input-padding-end);
 }
-:not(input[type="password"]) {
+input:not([type="password"]) {
   text-overflow: ellipsis;
 }
 input:disabled {
@@ -11389,19 +11388,6 @@ input[readonly] {
   grid-area: 1/5;
   place-self: center;
   padding: calc(4px * var(--p-internal-input-password-scaling, 1));
-}
-.button:not([hidden])~.button {
-  grid-area: 1/4;
-}
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
