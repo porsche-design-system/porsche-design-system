@@ -22,7 +22,7 @@ export const linkTileProductStory: Story<'p-link-tile-product'> = {
           target: 'p-link-tile-product',
           prop: 'liked',
           eventValueKey: 'liked',
-          eventType: 'CustomEvent<LinkTileProductLikeEvent>',
+          eventType: 'LinkTileProductLikeEvent',
           negateValue: true,
         },
       },

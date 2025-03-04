@@ -38,10 +38,14 @@ export const generateReactMarkup = (
     .join('\n');
   const eventHandlers = results.flatMap(({ eventHandlers }) => eventHandlers).join('\n');
   const pdsComponents = new Set(results.flatMap(({ pdsComponents }) => pdsComponents));
+  const types = results.flatMap(({ types }) => types);
+  const allImports = [...pdsComponents].sort();
+  if (types.length > 0) {
+    allImports.push(...types.map((t) => `type ${t}`));
+  }
+
   const imports = `${states.length > 0 ? "\nimport { useState } from 'react';" : ''}${
-    pdsComponents.size > 0
-      ? `\nimport { ${Array.from(pdsComponents).sort().join(', ')} } from '@porsche-design-system/components-react';`
-      : ''
+    allImports.length > 0 ? `\nimport { ${allImports.join(', ')} } from '@porsche-design-system/components-react';` : ''
   }`;
 
   return { imports, states, eventHandlers, markup };
@@ -51,12 +55,12 @@ const createReactMarkup = (
   config: string | ElementConfig<HTMLTagOrComponent> | undefined,
   initialState: StoryState<HTMLTagOrComponent>,
   indentLevel = 0
-): { markup: string; states: string[]; eventHandlers: string[]; pdsComponents: string[] } => {
-  if (!config) return { markup: '', states: [], eventHandlers: [], pdsComponents: [] };
+): { markup: string; states: string[]; eventHandlers: string[]; pdsComponents: string[]; types: string[] } => {
+  if (!config) return { markup: '', states: [], eventHandlers: [], pdsComponents: [], types: [] };
   const indent = '  '.repeat(indentLevel);
 
   if (typeof config === 'string')
-    return { markup: `${indent}${config}`, states: [], eventHandlers: [], pdsComponents: [] };
+    return { markup: `${indent}${config}`, states: [], eventHandlers: [], pdsComponents: [], types: [] };
 
   const { tag, properties = {}, events = {}, children = [] } = config;
   const isPDSComponent = tag.startsWith('p-');
@@ -78,6 +82,7 @@ const createReactMarkup = (
   const childMarkup = childrenResults.map(({ markup }) => markup).join('\n');
   const childStates = childrenResults.flatMap(({ states }) => states);
   const childEventHandlers = childrenResults.flatMap(({ eventHandlers }) => eventHandlers);
+  const childTypes = childrenResults.flatMap(({ types }) => types);
   const childPDSComponents = childrenResults.flatMap(({ pdsComponents }) => pdsComponents);
 
   const markup =
@@ -88,11 +93,18 @@ const createReactMarkup = (
   const scripts = eventEntries.length > 0 ? generateReactControlledScript(tag, eventEntries, initialState) : null;
   const states = scripts ? [scripts.states, ...childStates] : childStates;
   const eventHandlers = scripts ? [scripts.eventHandler, ...childEventHandlers] : childEventHandlers;
+  const types = scripts ? [...scripts.types, ...childTypes] : childTypes;
 
-  return { markup, states, eventHandlers, pdsComponents: [...pdsComponents, ...childPDSComponents] };
+  return {
+    markup,
+    states,
+    eventHandlers,
+    types,
+    pdsComponents: [...pdsComponents, ...childPDSComponents],
+  };
 };
 
-type ReactScripts = { states: string; eventHandler: string };
+type ReactScripts = { states: string; eventHandler: string; types: string[] };
 
 // TODO: Import for type must be returned and added to imports array
 export const generateReactControlledScript = (
@@ -100,6 +112,7 @@ export const generateReactControlledScript = (
   eventEntries: [string, EventConfig][],
   initialState: StoryState<HTMLTagOrComponent>
 ): ReactScripts => {
+  const types: string[] = [];
   const states = eventEntries
     // Only create state if the current element's tagName is the same as the element the state is applied to e.g. don't create state for p-button onClick open flyout
     .filter(([_, { target }]) => tagName === target)
@@ -112,7 +125,8 @@ export const generateReactControlledScript = (
   const eventHandler = eventEntries
     .map(([eventName, { prop, value, eventValueKey, eventType, negateValue }]) => {
       if (eventValueKey) {
-        return `  const ${eventName} = (e: ${eventType}) => {
+        eventType && types.push(eventType);
+        return `  const ${eventName} = (e: CustomEvent<${eventType}>) => {
     set${pascalCase(prop)}(${negateValue ? '!' : ''}e.detail.${eventValueKey});
   }`;
       }
@@ -122,7 +136,7 @@ export const generateReactControlledScript = (
     })
     .join('\n');
 
-  return { states, eventHandler };
+  return { states, eventHandler, types };
 };
 
 export const generateReactProperties = (

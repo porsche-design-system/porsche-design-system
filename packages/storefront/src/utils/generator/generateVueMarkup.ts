@@ -32,10 +32,14 @@ export const generateVueMarkup = (
     .join('\n');
   const eventHandlers = results.flatMap(({ eventHandlers }) => eventHandlers).join('\n');
   const pdsComponents = new Set(results.flatMap(({ pdsComponents }) => pdsComponents));
+  const types = results.flatMap(({ types }) => types);
+  const allImports = [...pdsComponents].sort();
+  if (types.length > 0) {
+    allImports.push(...types.map((t) => `type ${t}`));
+  }
+
   const imports = `${states.length > 0 ? "  import { ref } from 'vue';\n" : ''}${
-    pdsComponents.size > 0
-      ? `  import { ${Array.from(pdsComponents).sort().join(', ')} } from '@porsche-design-system/components-vue';`
-      : ''
+    allImports.length > 0 ? `  import { ${allImports.join(', ')} } from '@porsche-design-system/components-vue';` : ''
   }`;
 
   return { imports, states, eventHandlers, markup };
@@ -45,12 +49,12 @@ const createVueMarkup = (
   config: string | ElementConfig<HTMLTagOrComponent> | undefined,
   initialState: StoryState<HTMLTagOrComponent>,
   indentLevel = 0
-): { markup: string; states: string[]; eventHandlers: string[]; pdsComponents: string[] } => {
-  if (!config) return { markup: '', states: [], eventHandlers: [], pdsComponents: [] };
+): { markup: string; states: string[]; eventHandlers: string[]; pdsComponents: string[]; types: string[] } => {
+  if (!config) return { markup: '', states: [], eventHandlers: [], pdsComponents: [], types: [] };
   const indent = '  '.repeat(indentLevel);
 
   if (typeof config === 'string')
-    return { markup: `${indent}${config}`, states: [], eventHandlers: [], pdsComponents: [] };
+    return { markup: `${indent}${config}`, states: [], eventHandlers: [], pdsComponents: [], types: [] };
 
   const { tag, properties = {}, events = {}, children = [] } = config;
   const isPDSComponent = tag.startsWith('p-');
@@ -74,6 +78,7 @@ const createVueMarkup = (
   const childMarkup = childrenResults.map(({ markup }) => markup).join('\n');
   const childStates = childrenResults.flatMap(({ states }) => states);
   const childEventHandlers = childrenResults.flatMap(({ eventHandlers }) => eventHandlers);
+  const childTypes = childrenResults.flatMap(({ types }) => types);
   const childPDSComponents = childrenResults.flatMap(({ pdsComponents }) => pdsComponents);
 
   const markup =
@@ -84,17 +89,19 @@ const createVueMarkup = (
   const scripts = eventEntries.length > 0 ? generateVueControlledScript(tag, eventEntries, initialState) : null;
   const states = scripts ? [scripts.states, ...childStates] : childStates;
   const eventHandlers = scripts ? [scripts.eventHandler, ...childEventHandlers] : childEventHandlers;
+  const types = scripts ? [...scripts.types, ...childTypes] : childTypes;
 
-  return { markup, states, eventHandlers, pdsComponents: [...pdsComponents, ...childPDSComponents] };
+  return { markup, states, eventHandlers, pdsComponents: [...pdsComponents, ...childPDSComponents], types };
 };
 
-type VueScripts = { states: string; eventHandler: string };
+type VueScripts = { states: string; eventHandler: string; types: string[] };
 
 export const generateVueControlledScript = (
   tagName: string,
   eventEntries: [string, EventConfig][],
   initialState: StoryState<HTMLTagOrComponent>
 ): VueScripts => {
+  const types: string[] = [];
   const states = eventEntries
     // Only create state if the current element's tagName is the same as the element the state is applied to e.g. don't create state for p-button onClick open flyout
     .filter(([_, { target }]) => tagName === target)
@@ -104,7 +111,8 @@ export const generateVueControlledScript = (
   const eventHandler = eventEntries
     .map(([eventName, { prop, value, eventValueKey, eventType, negateValue }]) => {
       if (eventValueKey) {
-        return `  const ${eventName} = (e: ${eventType}) => {
+        eventType && types.push(eventType);
+        return `  const ${eventName} = (e: CustomEvent<${eventType}>) => {
     ${prop}.value = ${negateValue ? '!' : ''}e.${eventValueKey};
   }`;
       }
@@ -114,7 +122,7 @@ export const generateVueControlledScript = (
     })
     .join('\n');
 
-  return { states, eventHandler };
+  return { states, eventHandler, types };
 };
 
 export const generateVueProperties = (

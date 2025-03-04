@@ -44,7 +44,7 @@ export const flyoutMultilevelStory: Story<'p-flyout-multilevel'> = {
               target: 'p-flyout-multilevel',
               prop: 'activeIdentifier',
               eventValueKey: 'activeIdentifier',
-              eventType: 'CustomEvent<FlyoutMultilevelUpdateEventDetail>',
+              eventType: 'FlyoutMultilevelUpdateEventDetail',
             },
           },
           children: [

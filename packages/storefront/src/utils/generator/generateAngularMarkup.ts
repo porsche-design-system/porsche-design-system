@@ -10,11 +10,12 @@ import type {
 import { camelCase } from 'change-case';
 
 export const getAngularCode = ({
+  imports,
   states,
   eventHandlers,
   markup,
 }: FrameworkConfiguratorMarkup['angular']) => `import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { PorscheDesignSystemModule${imports ? `, ${imports}` : ''} } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'porsche-design-system-app',
@@ -39,19 +40,23 @@ export const generateAngularMarkup = (
     .filter((state) => state)
     .join('\n');
   const eventHandlers = results.flatMap(({ eventHandlers }) => eventHandlers).join('\n');
+  const imports = results
+    .flatMap(({ types }) => types)
+    .map((t) => `type ${t}`)
+    .join(', ');
 
-  return { states, eventHandlers, markup };
+  return { imports, states, eventHandlers, markup };
 };
 
 const createAngularMarkup = (
   config: string | ElementConfig<HTMLTagOrComponent> | undefined,
   initialState: StoryState<HTMLTagOrComponent>,
   indentLevel = 0
-): { markup: string; states: string[]; eventHandlers: string[] } => {
+): { markup: string; states: string[]; eventHandlers: string[]; types: string[] } => {
   const indent = '  '.repeat(indentLevel);
 
-  if (!config) return { markup: '', states: [], eventHandlers: [] };
-  if (typeof config === 'string') return { markup: `${indent}${config}`, states: [], eventHandlers: [] };
+  if (!config) return { markup: '', states: [], eventHandlers: [], types: [] };
+  if (typeof config === 'string') return { markup: `${indent}${config}`, states: [], eventHandlers: [], types: [] };
 
   const { tag, properties = {}, events = {}, children = [] } = config;
 
@@ -67,6 +72,7 @@ const createAngularMarkup = (
   const childMarkup = childrenResults.map(({ markup }) => markup).join('\n');
   const childStates = childrenResults.flatMap(({ states }) => states);
   const childEventHandlers = childrenResults.flatMap(({ eventHandlers }) => eventHandlers);
+  const childTypes = childrenResults.flatMap(({ types }) => types);
 
   const markup =
     children.length > 0
@@ -76,17 +82,19 @@ const createAngularMarkup = (
   const scripts = eventEntries.length > 0 ? generateAngularControlledScript(tag, eventEntries, initialState) : null;
   const states = scripts ? [scripts.states, ...childStates] : childStates;
   const eventHandlers = scripts ? [scripts.eventHandler, ...childEventHandlers] : childEventHandlers;
+  const types = scripts ? [...scripts.types, ...childTypes] : childTypes;
 
-  return { markup, states, eventHandlers };
+  return { markup, states, eventHandlers, types };
 };
 
-type AngularScripts = { states: string; eventHandler: string };
+type AngularScripts = { states: string; eventHandler: string; types: string[] };
 
 export const generateAngularControlledScript = (
   tagName: string,
   eventEntries: [string, EventConfig][],
   initialState: StoryState<HTMLTagOrComponent>
 ): AngularScripts => {
+  const types: string[] = [];
   const states = eventEntries
     // Only create state if the current element's tagName is the same as the element the state is applied to e.g. don't create state for p-button onClick open flyout
     .filter(([_, { target }]) => tagName === target)
@@ -96,7 +104,8 @@ export const generateAngularControlledScript = (
   const eventHandler = eventEntries
     .map(([eventName, { prop, value, eventValueKey, eventType, negateValue }]) => {
       if (eventValueKey) {
-        return `  ${eventName}(e: ${eventType}) {
+        eventType && types.push(eventType);
+        return `  ${eventName}(e: CustomEvent<${eventType}>) {
     this.${prop} = ${negateValue ? '!' : ''}e.detail.${eventValueKey};
   }`;
       }
@@ -106,7 +115,7 @@ export const generateAngularControlledScript = (
     })
     .join('\n');
 
-  return { states, eventHandler };
+  return { states, eventHandler, types };
 };
 
 export const generateAngularProperties = (

@@ -19,7 +19,7 @@ export const accordionStory: Story<'p-accordion'> = {
           target: 'p-accordion',
           prop: 'open',
           eventValueKey: 'open',
-          eventType: 'CustomEvent<AccordionUpdateEventDetail>',
+          eventType: 'AccordionUpdateEventDetail',
         },
       },
       children: [

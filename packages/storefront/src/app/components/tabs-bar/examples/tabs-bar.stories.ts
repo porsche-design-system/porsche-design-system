@@ -19,7 +19,7 @@ export const tabsBarStory: Story<'p-tabs-bar'> = {
           target: 'p-tabs-bar',
           prop: 'activeTabIndex',
           eventValueKey: 'activeTabIndex',
-          eventType: 'CustomEvent<TabsBarUpdateEventDetail>',
+          eventType: 'TabsBarUpdateEventDetail',
         },
       },
       children: [

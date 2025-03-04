@@ -230,7 +230,8 @@ export type EventConfig = {
    */
   eventValueKey?: string;
   /**
-   * The type of the event callback. E.g. if (e: CustomEvent<AccordionUpdateEventDetail>) this would be CustomEvent<AccordionUpdateEventDetail>
+   * TODO: We could automatically create this type as long as we follow the consistent naming scheme of <Component><EventName>EventDetail
+   * The type of the event callback. E.g. if (e: CustomEvent<AccordionUpdateEventDetail>) this would be AccordionUpdateEventDetail
    */
   eventType?: string;
   /**

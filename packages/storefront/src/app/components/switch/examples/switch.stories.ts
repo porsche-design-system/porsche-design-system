@@ -20,7 +20,7 @@ export const switchStory: Story<'p-switch'> = {
           target: 'p-switch',
           prop: 'checked',
           eventValueKey: 'checked',
-          eventType: 'CustomEvent<SwitchUpdateEventDetail>',
+          eventType: 'SwitchUpdateEventDetail',
         },
       },
       children: ['Some label'],
