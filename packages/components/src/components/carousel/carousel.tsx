@@ -456,6 +456,14 @@ export class Carousel {
         : Math.round(getCurrentMatchingBreakpointValue(this.parsedSlidesPerPage as number))
     );
     renderPagination(this.paginationEl, this.getPageCount(), this.splide?.index || 0, this.splide);
+
+    // splideJS needs to be refreshed to apply new 'autoWidth' option which is not supported by splideJS breakpoint feature
+    if (this.splide) {
+      getCurrentMatchingBreakpointValue(this.parsedSlidesPerPage) === 'auto'
+        ? (this.splide.options = { autoWidth: true })
+        : false;
+      this.splide.refresh();
+    }
   };
 
   private onNextKeyDown = (e: KeyboardEvent): void => {
