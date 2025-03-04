@@ -9,7 +9,6 @@ import type { Styles } from 'jss';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getHiddenTextJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -40,7 +39,7 @@ export const getComponentCss = (
   isDisabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
-  showPasswordToggle: boolean,
+  passwordToggle: boolean,
   compact: boolean,
   theme: Theme
 ): string => {
@@ -79,7 +78,6 @@ export const getComponentCss = (
         }),
       },
       ...preventFoucOfNestedElementsStyles,
-
       input: {
         display: 'block',
         margin: 0,
@@ -105,13 +103,42 @@ export const getComponentCss = (
         boxSizing: 'content-box',
         paddingInlineStart: `var(${cssVariableInputPaddingStart})`, // iOS Safari 14.5 can't handle padding-inline shorthand with css variables
         paddingInlineEnd: `var(${cssVariableInputPaddingEnd})`, // iOS Safari 14.5 can't handle padding-inline shorthand with css variables
-      },
-      ':not(input[type="password"])': {
-        textOverflow: 'ellipsis',
+        '&:not([type="password"])': {
+          textOverflow: 'ellipsis',
+        },
+        '&:focus': {
+          borderColor: primaryColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: primaryColorDark,
+          }),
+        },
+        '&:disabled': {
+          cursor: 'not-allowed',
+          color: disabledColor,
+          borderColor: disabledColor,
+          WebkitTextFillColor: disabledColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            color: disabledColorDark,
+            borderColor: disabledColorDark,
+            WebkitTextFillColor: disabledColorDark,
+          }),
+        },
+        '&[readonly]': {
+          borderColor: contrastLowColor,
+          background: contrastLowColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: contrastLowColorDark,
+            background: contrastLowColorDark,
+          }),
+        },
+        '&:is(:-webkit-autofill, :-internal-autofill-previewed, :-internal-autofill-selected, :-webkit-autofill:focus)':
+          {
+            WebkitBackgroundClip: 'padding-box', // reset webkit autofill styles
+          },
       },
       ...(hoverMediaQuery({
         // with the media query the selector has higher priority and overrides disabled styles
-        'input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly])':
+        'input:not(:disabled, :focus, [readonly]):hover,label:hover~.wrapper input:not(:disabled, :focus, [readonly])':
           {
             borderColor: formStateHoverColor || primaryColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -119,39 +146,10 @@ export const getComponentCss = (
             }),
           },
       }) as Styles),
-      'input:focus': {
-        borderColor: primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: primaryColorDark,
-        }),
-      },
-      'input:disabled': {
-        cursor: 'not-allowed',
-        color: disabledColor,
-        borderColor: disabledColor,
-        WebkitTextFillColor: disabledColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: disabledColorDark,
-          borderColor: disabledColorDark,
-          WebkitTextFillColor: disabledColorDark,
-        }),
-      },
-      'input[readonly]': {
-        borderColor: contrastLowColor,
-        background: contrastLowColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: contrastLowColorDark,
-          background: contrastLowColorDark,
-        }),
-      },
-      '&(input:-internal-autofill-selected),&(input:-internal-autofill-previewed),&(input:-webkit-autofill),&(input:-webkit-autofill:focus)':
-        {
-          WebkitBackgroundClip: 'padding-box', // reset webkit autofill styles
-        },
     },
     root: {
       [cssVariableInputPaddingStart]: paddingInline,
-      [cssVariableInputPaddingEnd]: showPasswordToggle ? getCalculatedFormElementPaddingHorizontal(1) : paddingInline,
+      [cssVariableInputPaddingEnd]: passwordToggle ? getCalculatedFormElementPaddingHorizontal(1) : paddingInline,
       display: 'grid',
       gap: spacingStaticXSmall,
       // min width is needed for showing at least 1 character in very narrow containers. The "2rem" value is the minimum safe zone to show at least 1 character plus the ellipsis dots.
@@ -161,20 +159,13 @@ export const getComponentCss = (
       display: 'grid',
       gridTemplateColumns: `${formElementLayeredSafeZone} auto minmax(0, 1fr) auto auto ${formElementLayeredSafeZone}`,
     },
-    ...(showPasswordToggle && {
-      // TODO: extract for multi-select, select-wrapper and text-field (not gridArea and placeSelf) like done for unit class
+    ...(passwordToggle && {
       button: {
         gridArea: '1/5',
         placeSelf: 'center',
         padding: paddingButton,
-        // TODO: maybe we should render hidden button conditionally, needs to be checked if a11y compliant
-        '&:not([hidden])~.button': {
-          gridArea: '1/4',
-        },
       },
     }),
-    // TODO: maybe we should extract it as functional component too
-    'sr-only': getHiddenTextJssStyle(),
     // .label / .required
     ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, theme),
     // .message
