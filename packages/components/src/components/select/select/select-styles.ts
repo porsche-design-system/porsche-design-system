@@ -20,14 +20,10 @@ import { getCss } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
-import type { SelectDropdownDirection } from './select-utils';
 
 export const cssVarInternalSelectScaling = '--p-internal-select-scaling';
 
-const anchorName = '--anchor-select';
-
 export const getComponentCss = (
-  direction: SelectDropdownDirection,
   isOpen: boolean,
   isDisabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
@@ -55,11 +51,11 @@ export const getComponentCss = (
       }),
       ...preventFoucOfNestedElementsStyles,
       button: {
-        ...getButtonJssStyle('select', isOpen, isDisabled, state, hasSlottedImage, anchorName, scalingVar, theme),
+        ...getButtonJssStyle('select', isOpen, isDisabled, state, hasSlottedImage, scalingVar, theme),
         '& img': getButtonImageJssStyle,
         '& span': getButtonLabelJssStyle,
       },
-      '[popover]': getPopoverJssStyle(isOpen, direction, anchorName, scalingVar, 40, theme),
+      '[popover]': getPopoverJssStyle(isOpen, scalingVar, 40, theme),
     },
     root: {
       display: 'grid',

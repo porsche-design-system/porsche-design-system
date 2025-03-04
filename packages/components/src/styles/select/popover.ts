@@ -6,12 +6,9 @@ import {
 } from '@porsche-design-system/styles';
 import type { JssStyle, Styles } from 'jss';
 import { OPTION_LIST_SAFE_ZONE, type Theme, isThemeDark } from '../../utils';
-import { getHasCSSAnchorPositioningSupport } from '../../utils/supportsNativeCSSAnchorPositioning';
 import { getThemedColors } from '../colors';
 import { cssVariableAnimationDuration } from '../common-styles';
 import { prefersColorSchemeDarkMediaQuery } from '../prefers-color-scheme-dark-media-query';
-
-type Direction = 'up' | 'down' | 'auto';
 
 const keyframesName = 'fade-in';
 
@@ -28,8 +25,6 @@ export const getPopoverKeyframesStyles: Styles = {
 
 export const getPopoverJssStyle = (
   isOpen: boolean,
-  direction: Direction,
-  anchorName: string,
   cssVarScaling: string | 1, // "1" is needed for components not yet supporting compact mode
   optionHeight: 40 | 44,
   theme: Theme
@@ -61,16 +56,6 @@ export const getPopoverJssStyle = (
     ...prefersColorSchemeDarkMediaQuery(theme, {
       background: backgroundSurfaceColorDark,
       borderColor: contrastLowColorDark,
-    }),
-    ...(getHasCSSAnchorPositioningSupport() && {
-      positionAnchor: anchorName,
-      positionVisibility: 'always',
-      positionTryOrder: 'normal',
-      positionArea: direction === 'up' ? 'top' : 'bottom',
-      positionTryFallbacks: 'flip-block',
-      width: 'anchor-size(width)',
-      maxHeight: `max(${minHeightOptionList}, calc(50vh - anchor-size(height) / 2 - ${OPTION_LIST_SAFE_ZONE}px * 2))`,
-      margin: `${OPTION_LIST_SAFE_ZONE}px 0`,
     }),
     '&:not(:popover-open)': {
       display: 'none',
