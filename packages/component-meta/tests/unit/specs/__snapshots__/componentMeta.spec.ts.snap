@@ -4079,7 +4079,7 @@ exports[`should match snapshot 1`] = `
     "hasObserveChildren": false,
     "hasSlot": true,
     "isChunked": true,
-    "isDelegatingFocus": true,
+    "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
@@ -4167,6 +4167,13 @@ exports[`should match snapshot 1`] = `
         },
         "type": "string",
       },
+      "passwordToggle": {
+        "allowedValues": "boolean",
+        "defaultValue": true,
+        "description": "@experimental Show or hide password toggle for \`input type="password"\`.",
+        "isExperimental": true,
+        "type": "boolean",
+      },
       "placeholder": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -4183,13 +4190,6 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Marks the password input as required.",
-        "type": "boolean",
-      },
-      "showPasswordToggle": {
-        "allowedValues": "boolean",
-        "defaultValue": true,
-        "description": "@experimental Show or hide password toggle for \`input type="password"\`.",
-        "isExperimental": true,
         "type": "boolean",
       },
       "spellCheck": {
