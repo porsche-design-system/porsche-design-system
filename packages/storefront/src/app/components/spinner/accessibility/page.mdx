@@ -8,8 +8,47 @@ export const metadata = {
 
 # Spinner <ComponentStatus tagName="p-spinner"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={["Accessibility support","Development considerations","Tests"]} />
 
 ## Accessibility support
 
-TBD.
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA         | Usage                                               |
+| ------------ | --------------------------------------------------- |
+| `aria-label` | Defines a string value that labels the live region. |
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA           | Usage                          |
+| -------------- | ------------------------------ |
+| `role="alert"` | Provided message is announced. |
+
+## Development considerations
+
+### Announcing loading messages
+
+To provide feedback to screen reader users, it's mandatory to announce the loading state of the spinner. This can be
+achieved by the following:
+
+- Pre-rendering of the the component in the DOM.
+- Providing a meaningful loading state message through the `aria` property, e.g.
+  `aria="{ 'aria-label': 'Start/End loading content'}"`.
+
+## Tests
+
+### Automated
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| AXE-Core                        | ✅      |
+| High-Contrast Mode (light/dark) | ✅      |
+| Text-Zoom (200%)                | ✅      |
+
+### Manual
+
+| Technology                | Support |
+| ------------------------- | ------- |
+| Screen reader (VoiceOver) | ✅      |

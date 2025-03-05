@@ -8,8 +8,41 @@ export const metadata = {
 
 # Switch <ComponentStatus tagName="p-switch"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={["Accessibility support","Tests"]} />
 
 ## Accessibility support
 
-TBD.
+### Keyboard
+
+| Key / state        | Function                                                                        |
+| ------------------ | ------------------------------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the scroll container or to next (or previous) focusable element. |
+| `Enter`, `Space`   | Activates the completed and current step-item.                                  |
+| `disabled`         | Step-item still focusable.                                                      |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                     | Usage                                                                                     |
+| ------------------------ | ----------------------------------------------------------------------------------------- |
+| `role="switch"`          | Indicates the element as switch element.                                                  |
+| `aria-checked="BOOLEAN"` | Indicates the status of the switch element.                                               |
+| `role="status"`          | When `loading` prop is set, the component announces the loading state (start and finish). |
+
+## Tests
+
+### Automated
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| AXE-Core                        | ✅      |
+| High-Contrast Mode (light/dark) | ✅      |
+| Text-Zoom (200%)                | ✅      |
+
+### Manual
+
+| Technology                | Support |
+| ------------------------- | ------- |
+| Keyboard                  | ✅      |
+| Screen reader (VoiceOver) | ✅      |
