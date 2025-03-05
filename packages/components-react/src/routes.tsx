@@ -197,6 +197,16 @@ export const routes: RouteType[] = [
     element: <fromExamples.InlineNotificationExampleEventsPage />,
   },
   {
+    name: 'Input Password Example',
+    path: '/input-password-example',
+    element: <fromExamples.InputPasswordExamplePage />,
+  },
+  {
+    name: 'Input Password Example Controlled',
+    path: '/input-password-example-controlled',
+    element: <fromExamples.InputPasswordControlledExamplePage />,
+  },
+  {
     name: 'Modal Example Accessibility',
     path: '/modal-example-accessibility',
     element: <fromExamples.ModalExampleAccessibilityPage />,
