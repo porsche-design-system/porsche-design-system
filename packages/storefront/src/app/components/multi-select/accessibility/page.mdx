@@ -37,19 +37,23 @@ export const metadata = {
 | ------------------------------- | -------------------------------------------------------------------------------------------- |
 | `aria-labelledby="IDREF"`       | References the accessible name of the combobox.                                              |
 | `aria-describedby="IDREF"`      | References the accessible description and status messages of the combobox.                   |
+| `aria-label="STRING"`           | References the accessible name of the listbox.                                               |
 | `role="status"`, `role="alert"` | When `message` and `state` prop change, the status message is announced.                     |
 | `aria-expanded="true/false"`    | Indicates that the listbox element is displayed/hidden.                                      |
 | `aria-controls="IDREF"`         | Identifies the element that serves as the listbox.                                           |
 | `aria-hidden="true"`            | If `required` attribute is set, the visible indicator is hidden from assistive technologies. |
 | `aria-multiselectable="true"`   | Indicates that more than one item from the current selectable descendants can be selected.   |
+| `aria-autocomplete="list"`      | Indicates that user input effects results of listbox.                                        |
+| `aria-haspopup="listbox"`       | Indicates that the combobox will open a listbox.                                             |
+| `aria-required="true"`          | Indicates if the element is required.                                                        |
 
 ## Development considerations
 
 ### Disabled state
 
-In general, you should prevent using the `disabled="true"` state. Disabled elements are not reachable (focusable)
-anymore and can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out
-why these elements are disabled.
+In general, you should prevent using the `disabled` state. Disabled elements are not reachable (focusable) anymore and
+can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out why these
+elements are disabled.
 
 ## Limitations
 

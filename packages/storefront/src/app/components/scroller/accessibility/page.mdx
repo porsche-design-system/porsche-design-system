@@ -8,8 +8,30 @@ export const metadata = {
 
 # Scroller <ComponentStatus tagName="p-scroller"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+<TableOfContents headings={["Accessibility support","Tests"]} />
 
 ## Accessibility support
 
-TBD.
+### Keyboard
+
+| Key / state                 | Function                                                                        |
+| --------------------------- | ------------------------------------------------------------------------------- |
+| `Tab`, `Shift-Tab`          | Moves focus to the scroll container or to next (or previous) focusable element. |
+| `Arrow left`, `Arrow right` | Scrolls the container.                                                          |
+
+## Tests
+
+### Automated
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| AXE-Core                        | ✅      |
+| High-Contrast Mode (light/dark) | ✅      |
+| Text-Zoom (200%)                | ✅      |
+
+### Manual
+
+| Technology                | Support |
+| ------------------------- | ------- |
+| Keyboard                  | ✅      |
+| Screen reader (VoiceOver) | ✅      |
