@@ -1,13 +1,12 @@
 'use client';
 
 import { Panel } from '@/components/search/Panel';
+import { SearchInput } from '@/components/search/SearchInput';
+import { SearchResults } from '@/components/search/SearchResults';
 import { algoliaClient } from '@/lib/algolia/client';
-import { PHeading, PLinkPure } from '@porsche-design-system/components-react/ssr';
 import type { SearchOptions, SearchResponses } from 'algoliasearch-helper/types/algoliasearch';
-import type { Hit as AlgoliaHit } from 'instantsearch.js';
-import Link from 'next/link';
 import React from 'react';
-import { DynamicWidgets, Hits, InstantSearch, RefinementList, SearchBox } from 'react-instantsearch';
+import { DynamicWidgets, InstantSearch, RefinementList } from 'react-instantsearch';
 
 export type AlgoliaRecord = {
   objectID: string;
@@ -18,29 +17,6 @@ export type AlgoliaRecord = {
   tab?: string;
   url: string;
 };
-
-type HitProps = {
-  hit: AlgoliaHit<AlgoliaRecord>;
-};
-
-function Hit({ hit }: HitProps) {
-  return (
-    <>
-      <PHeading size="small" tag="h2">
-        {hit.category}
-      </PHeading>
-      <ul>
-        <li>
-          <PLinkPure icon="none">
-            <Link href={hit.url}>
-              {hit.page} {hit.tab ? ` - ${hit.tab}` : ''}
-            </Link>
-          </PLinkPure>
-        </li>
-      </ul>
-    </>
-  );
-}
 
 export const Search = () => {
   const searchClient = {
@@ -83,8 +59,8 @@ export const Search = () => {
           <DynamicWidgets fallbackComponent={FallbackComponent} />
         </div>
         <div>
-          <SearchBox />
-          <Hits hitComponent={Hit} />
+          <SearchInput />
+          <SearchResults />
         </div>
       </div>
     </InstantSearch>
