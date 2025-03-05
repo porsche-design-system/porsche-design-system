@@ -30,7 +30,6 @@ export * from './select';
 export * from './setScrollLock';
 export * from './supportsChromiumMediaQuery';
 export * from './supportsNativePopover';
-export * from './supportsNativeCSSAnchorPositioning';
 export * from './has-document';
 export * from './has-window';
 export * from './sync';

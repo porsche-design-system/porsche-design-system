@@ -24,7 +24,6 @@ import {
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getFilterInputAriaAttributes,
-  getHasCSSAnchorPositioningSupport,
   getHasNativePopoverSupport,
   getListAriaAttributes,
   getPrefixedTagNames,
@@ -149,7 +148,6 @@ export class MultiSelect {
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
   private popoverElement: HTMLDivElement;
   private hasNativePopoverSupport = getHasNativePopoverSupport();
-  private hasNativeCSSAnchorPositioningSupport = getHasCSSAnchorPositioningSupport();
   private cleanUpAutoUpdate: () => void;
 
   private get currentValue(): string[] {
@@ -184,7 +182,7 @@ export class MultiSelect {
       if (this.hasNativePopoverSupport) {
         this.popoverElement.showPopover();
       }
-      if (!this.hasNativeCSSAnchorPositioningSupport && typeof this.cleanUpAutoUpdate === 'undefined') {
+      if (typeof this.cleanUpAutoUpdate === 'undefined') {
         // ensures floating ui event listeners are added when options list is opened
         this.cleanUpAutoUpdate = autoUpdate(this.inputElement, this.popoverElement, async (): Promise<void> => {
           await optionListUpdatePosition(this.dropdownDirection, this.inputElement, this.popoverElement);
@@ -254,17 +252,7 @@ export class MultiSelect {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.dropdownDirection,
-      this.isOpen,
-      this.disabled,
-      this.hideLabel,
-      this.state,
-      this.hasNativeCSSAnchorPositioningSupport,
-      this.theme
-    );
+    attachComponentCss(this.host, getComponentCss, this.isOpen, this.disabled, this.hideLabel, this.state, this.theme);
     syncMultiSelectChildrenProps([...this.multiSelectOptions, ...this.multiSelectOptgroups], this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
