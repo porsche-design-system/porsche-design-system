@@ -131,10 +131,6 @@ export const getComponentCss = (
             background: contrastLowColorDark,
           }),
         },
-        '&:is(:-webkit-autofill, :-internal-autofill-previewed, :-internal-autofill-selected, :-webkit-autofill:focus)':
-          {
-            WebkitBackgroundClip: 'padding-box', // reset webkit autofill styles
-          },
       },
       ...(hoverMediaQuery({
         // with the media query the selector has higher priority and overrides disabled styles
