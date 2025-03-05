@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Fixed
 
+- `Carousel`: `auto` value of `slides-per-page` prop is breakpoint customizable
+  ([#3783](https://github.com/porsche-design-system/porsche-design-system/pull/3783))
 - `Select`, `Multi Select`, `Select Wrapper`: remove positioning with native anchor positioning due to a Chrome bug
   ([#3780](https://github.com/porsche-design-system/porsche-design-system/pull/3780))
 
@@ -48,7 +50,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Carousel`: Center layout of Carousel on mobile view
   ([#3765](https://github.com/porsche-design-system/porsche-design-system/pull/3765))
 - `Carousel`: `auto` value of `slides-per-page` prop is breakpoint customizable
-  ([#3767](https://github.com/porsche-design-system/porsche-design-system/pull/3767))
+  ([#3771](https://github.com/porsche-design-system/porsche-design-system/pull/3771))
 
 ### [3.27.0-rc.5] - 2025-02-20
 
