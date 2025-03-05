@@ -121,8 +121,8 @@
   },
   {
     "chunkShortName": "input-password",
-    "size": 13663,
-    "gzipSize": 5086
+    "size": 13551,
+    "gzipSize": 5052
   },
   {
     "chunkShortName": "link",
@@ -157,7 +157,7 @@
   {
     "chunkShortName": "main",
     "size": 83103,
-    "gzipSize": 27267
+    "gzipSize": 27268
   },
   {
     "chunkShortName": "marque",
