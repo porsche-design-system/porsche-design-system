@@ -5,6 +5,7 @@ import { Navigation } from '@/components/common/Navigation';
 import Tabs from '@/components/common/Tabs';
 import { TextZoomSelect } from '@/components/common/TextZoomSelect';
 import { ThemeSelect } from '@/components/common/ThemeSelect';
+import { Search } from '@/components/search/Search';
 import { useDirection } from '@/hooks/useDirection';
 import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import { useTextZoom } from '@/hooks/useTextZoom';
@@ -17,22 +18,22 @@ import {
   PCanvas,
   PHeading,
   PLink,
+  PModal,
 } from '@porsche-design-system/components-react/ssr';
 import { breakpointS } from '@porsche-design-system/components-react/styles';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React, { type PropsWithChildren, useEffect, useState } from 'react';
+import React, { type PropsWithChildren, useEffect, useRef, useState } from 'react';
 
 export const Canvas = ({ children }: PropsWithChildren) => {
   const { storefrontTheme, setStorefrontTheme } = useStorefrontTheme();
   const { storefrontDirection, setStorefrontDirection } = useDirection();
   const { storefrontTextZoom, setStorefrontTextZoom } = useTextZoom();
   const pathname = usePathname();
-  const [isSidebarStartOpen, setIsSidebarStartOpen] = useState(
-    // initially, sidebar should be closed on mobile and opened on desktop
-    global?.window && window.matchMedia(`(min-width: ${breakpointS}px)`).matches
-  );
+  const [isSidebarStartOpen, setIsSidebarStartOpen] = useState(true);
   const [isSidebarEndOpen, setIsSidebarEndOpen] = useState(false);
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState<boolean>(false);
+  const searchInputRef = useRef<HTMLInputElement | null>(null);
 
   const onSidebarStartUpdate = (e: CustomEvent<CanvasSidebarStartUpdateEventDetail>) => {
     setIsSidebarStartOpen(e.detail.open);
@@ -43,6 +44,22 @@ export const Canvas = ({ children }: PropsWithChildren) => {
   const onSidebarEndDismiss = () => {
     setIsSidebarEndOpen(false);
   };
+
+  const onOpenSearch = () => {
+    setIsSearchModalOpen(true);
+    // Small timeout is needed after opening for the input to be focusable
+    setTimeout(() => {
+      searchInputRef.current?.focus();
+    }, 10);
+  };
+  const onDismissSearch = () => {
+    setIsSearchModalOpen(false);
+  };
+
+  useEffect(() => {
+    // initially, sidebar should be closed on mobile and opened on desktop
+    setIsSidebarStartOpen(window.matchMedia(`(min-width: ${breakpointS}px)`).matches);
+  }, []);
 
   useEffect(() => {
     setIsSidebarEndOpen(pathname?.includes('examples') || false);
@@ -59,6 +76,9 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         Porsche Design System
       </Link>
 
+      <PButton slot="header-end" icon="search" variant="ghost" compact={true} hideLabel={true} onClick={onOpenSearch}>
+        Search
+      </PButton>
       <PLink
         slot="header-end"
         iconSource="assets/github.svg"
@@ -67,22 +87,24 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         hideLabel={true}
         href="https://github.com/porsche-design-system/porsche-design-system"
         target="_blank"
-        onClick={onSidebarEndOpen}
       >
         Navigate to GitHub repository of Porsche Design System
       </PLink>
       <PButton
+        slot="header-end"
         icon="configurate"
         variant="ghost"
         compact={true}
         hideLabel={true}
         onClick={onSidebarEndOpen}
-        slot="header-end"
       >
         Open sidebar
       </PButton>
 
       <div className="-p-canvas-grid">
+        <PModal open={isSearchModalOpen} onDismiss={onDismissSearch} aria={{ 'aria-label': 'Search' }}>
+          <Search />
+        </PModal>
         <Tabs />
         {children}
       </div>
