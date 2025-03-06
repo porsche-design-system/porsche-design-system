@@ -194,6 +194,7 @@ export class InputPassword {
       this.state,
       this.passwordToggle,
       this.compact,
+      this.readOnly,
       this.theme
     );
 
