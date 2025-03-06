@@ -208,7 +208,6 @@ export class InputPassword {
           label={this.label}
           description={this.description}
           htmlFor={id}
-          formElement={this.inputElement}
           isRequired={this.required}
           isDisabled={this.disabled}
         />

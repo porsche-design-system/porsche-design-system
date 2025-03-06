@@ -21,7 +21,7 @@ import {
   getUnitCounterJssStyle,
 } from '../../styles/form-styles';
 import { getCss, mergeDeep } from '../../utils';
-import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
+import { getFunctionalComponentLegacyLabelStyles } from '../common/legacy-label/legacy-label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 
 export const getComponentCss = (
@@ -85,7 +85,7 @@ export const getComponentCss = (
       'sr-only': getHiddenTextJssStyle(),
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, theme),
+    ...getFunctionalComponentLegacyLabelStyles(isDisabled, hideLabel, theme),
     // .message
     ...getFunctionalComponentStateMessageStyles(theme, state),
   });

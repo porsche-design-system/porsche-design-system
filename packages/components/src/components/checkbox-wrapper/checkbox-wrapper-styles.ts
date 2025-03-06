@@ -1,9 +1,11 @@
-import type { BreakpointCustomizable, Theme } from '../../types';
-import type { FormState } from '../../utils/form/form-state';
-import { getSlottedCheckboxRadioButtonStyles } from '../../styles/checkbox-radio-styles';
-import { getCss, isDisabledOrLoading, isHighContrastMode, mergeDeep } from '../../utils';
-import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
-import { escapeHashCharacter } from '../../utils/svg/escapeHashCharacter';
+import {
+  borderRadiusSmall,
+  fontFamily,
+  fontLineHeight,
+  fontSizeTextSmall,
+  spacingStaticSmall,
+  spacingStaticXSmall,
+} from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -14,17 +16,15 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import {
-  borderRadiusSmall,
-  fontFamily,
-  fontLineHeight,
-  fontSizeTextSmall,
-  spacingStaticSmall,
-  spacingStaticXSmall,
-} from '@porsche-design-system/styles';
-import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
-import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
+import { getSlottedCheckboxRadioButtonStyles } from '../../styles/checkbox-radio-styles';
+import type { BreakpointCustomizable, Theme } from '../../types';
+import { getCss, isDisabledOrLoading, isHighContrastMode, mergeDeep } from '../../utils';
+import type { FormState } from '../../utils/form/form-state';
+import { escapeHashCharacter } from '../../utils/svg/escapeHashCharacter';
+import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
+import { getFunctionalComponentLegacyLabelStyles } from '../common/legacy-label/legacy-label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
+import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 
 const getCheckedSVGBackgroundImage = (fill: string): string => {
   return getInlineSVGBackgroundImage(
@@ -132,7 +132,7 @@ export const getComponentCss = (
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(
+    ...getFunctionalComponentLegacyLabelStyles(
       isDisabled || isLoading,
       hideLabel,
       theme,

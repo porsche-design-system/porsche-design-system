@@ -66,6 +66,13 @@ export const getComponentCss = (
     state
   );
 
+  const hoverStyles = {
+    borderColor: formStateHoverColor || primaryColor,
+    ...prefersColorSchemeDarkMediaQuery(theme, {
+      borderColor: formStateHoverColorDark || primaryColorDark,
+    }),
+  };
+
   return getCss({
     '@global': {
       ':host': {
@@ -117,12 +124,7 @@ export const getComponentCss = (
       ...hoverMediaQuery({
         ...(!disabled &&
           !readOnly && {
-            '&:hover:not(:has(input:focus)):not(:has(p-button-pure:hover))': {
-              borderColor: formStateHoverColor || primaryColor,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                borderColor: formStateHoverColorDark || primaryColorDark,
-              }),
-            },
+            '&:hover:not(:has(input:focus)):not(:has(p-button-pure:hover))': hoverStyles,
           }),
       }),
       ...(disabled && {
@@ -153,7 +155,15 @@ export const getComponentCss = (
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(disabled, hideLabel, theme),
+    ...getFunctionalComponentLabelStyles(disabled, hideLabel, theme, {
+      ...hoverMediaQuery({
+        ...(!disabled &&
+          !readOnly && {
+            '&:hover~.wrapper': hoverStyles,
+          }),
+      }),
+    }), // TODO hover border color on hover label missing
+
     // .message
     ...getFunctionalComponentStateMessageStyles(theme, state),
   });

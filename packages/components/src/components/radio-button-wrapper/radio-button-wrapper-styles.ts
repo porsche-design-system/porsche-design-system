@@ -1,5 +1,10 @@
-import type { BreakpointCustomizable, Theme } from '../../types';
-import type { FormState } from '../../utils/form/form-state';
+import {
+  fontFamily,
+  fontLineHeight,
+  fontSizeTextSmall,
+  spacingStaticSmall,
+  spacingStaticXSmall,
+} from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -10,19 +15,14 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { getSlottedCheckboxRadioButtonStyles } from '../../styles/checkbox-radio-styles';
+import type { BreakpointCustomizable, Theme } from '../../types';
 import { getCss, isDisabledOrLoading, isHighContrastMode, mergeDeep } from '../../utils';
-import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
+import type { FormState } from '../../utils/form/form-state';
 import { escapeHashCharacter } from '../../utils/svg/escapeHashCharacter';
-import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
-import {
-  fontFamily,
-  fontLineHeight,
-  fontSizeTextSmall,
-  spacingStaticSmall,
-  spacingStaticXSmall,
-} from '@porsche-design-system/styles';
-import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
+import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
+import { getFunctionalComponentLegacyLabelStyles } from '../common/legacy-label/legacy-label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
+import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 
 const getCheckedSVGBackgroundImage = (fill: string): string => {
   return getInlineSVGBackgroundImage(`<circle fill="${fill}" cx="12" cy="12" r="6"/>`);
@@ -106,7 +106,7 @@ export const getComponentCss = (
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(
+    ...getFunctionalComponentLegacyLabelStyles(
       isDisabled || isLoading,
       hideLabel,
       theme,

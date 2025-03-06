@@ -10,7 +10,7 @@ import { type Theme, buildResponsiveStyles } from '../../../utils';
 import type { BreakpointCustomizable } from '../../../utils/breakpoint-customizable';
 import { getFunctionalComponentRequiredStyles } from '../required/required-styles';
 
-export const getFunctionalComponentLabelStyles = (
+export const getFunctionalComponentLegacyLabelStyles = (
   isDisabledOrLoading: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   theme: Theme,

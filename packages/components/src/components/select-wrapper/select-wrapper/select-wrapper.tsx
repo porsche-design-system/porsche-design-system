@@ -1,9 +1,13 @@
-import { Component, Element, forceUpdate, h, type JSX, Prop } from '@stencil/core';
+import { Component, Element, type JSX, Prop, forceUpdate, h } from '@stencil/core';
+import { getSlottedAnchorStyles } from '../../../styles';
+import { getSlottedSelectOptionStyles } from '../../../styles/global/slotted-select-option-styles';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import {
   AllowedTypes,
+  FORM_STATES,
+  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
-  FORM_STATES,
   getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   getSlotTextContent,
@@ -12,22 +16,18 @@ import {
   observeAttributes,
   setAriaAttributes,
   setAttribute,
-  THEMES,
   unobserveAttributes,
   validateProps,
 } from '../../../utils';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
+import { LegacyLabel } from '../../common/legacy-label/legacy-label';
+import { StateMessage } from '../../common/state-message/state-message';
+import { getComponentCss } from './select-wrapper-styles';
 import {
+  DROPDOWN_DIRECTIONS,
   type SelectWrapperDropdownDirection,
   type SelectWrapperState,
-  DROPDOWN_DIRECTIONS,
   isCustomDropdown,
 } from './select-wrapper-utils';
-import { getComponentCss } from './select-wrapper-styles';
-import { StateMessage } from '../../common/state-message/state-message';
-import { Label } from '../../common/label/label';
-import { getSlottedAnchorStyles } from '../../../styles';
-import { getSlottedSelectOptionStyles } from '../../../styles/global/slotted-select-option-styles';
 
 const propTypes: PropTypes<typeof SelectWrapper> = {
   label: AllowedTypes.string,
@@ -141,7 +141,7 @@ export class SelectWrapper {
 
     return (
       <div class="root">
-        <Label
+        <LegacyLabel
           host={this.host}
           label={this.label}
           description={this.description}

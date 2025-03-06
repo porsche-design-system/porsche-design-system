@@ -33,7 +33,7 @@ import {
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
-import { Label } from '../common/label/label';
+import { LegacyLabel } from '../common/legacy-label/legacy-label';
 import { StateMessage } from '../common/state-message/state-message';
 import { getComponentCss } from './text-field-wrapper-styles';
 import {
@@ -257,7 +257,7 @@ export class TextFieldWrapper {
 
     return (
       <div class="root">
-        <Label
+        <LegacyLabel
           host={this.host}
           label={this.label}
           description={this.description}
