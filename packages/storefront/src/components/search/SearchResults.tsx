@@ -4,6 +4,7 @@ import type { Hit as AlgoliaHit } from 'instantsearch.js/es/types/results';
 import Link from 'next/link';
 import React from 'react';
 import { type UseHitsProps, useHits } from 'react-instantsearch';
+import { SearchRecommendations } from './SearchRecommendations';
 
 const transformItems = (items: AlgoliaRecord[]) => {
   return items.reduce((results, current) => {
@@ -18,7 +19,10 @@ const transformItems = (items: AlgoliaRecord[]) => {
   }, [] as AlgoliaResult[]);
 };
 
-export const SearchResults = (props: UseHitsProps<AlgoliaHit<AlgoliaRecord>>) => {
+export const SearchResults = ({
+  onResultClick,
+  ...props
+}: UseHitsProps<AlgoliaHit<AlgoliaRecord>> & { onResultClick: () => void }) => {
   const { items } = useHits<AlgoliaRecord>({ ...props, transformItems } as any);
 
   return (
@@ -30,7 +34,7 @@ export const SearchResults = (props: UseHitsProps<AlgoliaHit<AlgoliaRecord>>) =>
           </PHeading>
           <ol className="flex flex-col gap-sm">
             {hits.map((hit) => (
-              <Link key={hit.url} href={hit.url}>
+              <Link key={hit.url} href={hit.url} onClick={onResultClick}>
                 <li className="py-sm px-md bg-background-surface rounded-md">
                   <p className="text-sm">
                     {hit.page} {hit.tab ? ` - ${hit.tab}` : ''}
@@ -42,6 +46,7 @@ export const SearchResults = (props: UseHitsProps<AlgoliaHit<AlgoliaRecord>>) =>
           </ol>
         </section>
       ))}
+      <SearchRecommendations onRecommendationClick={onResultClick} />
     </div>
   );
 };

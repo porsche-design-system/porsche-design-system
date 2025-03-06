@@ -93,7 +93,7 @@ export const Search = ({ isSearchOpen, onDismissSearch }: SearchProps) => {
               Search
             </PHeading>
             <SearchInput ref={inputRef} />
-            <SearchResults />
+            <SearchResults onResultClick={onDismissSearch} />
           </div>
         </div>
       </InstantSearch>
