@@ -103,20 +103,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       </PButton>
 
       <div className="-p-canvas-grid">
-        <PModal
-          open={isSearchModalOpen}
-          onDismiss={onDismissSearch}
-          aria={{ 'aria-label': 'Search' }}
-          style={
-            {
-              '--p-modal-spacing-top': '10vh',
-              '--p-modal-spacing-bottom': '10vh',
-              '--p-modal-width': 'clamp(276px, 45.25vw + 131px, 640px)',
-            } as React.CSSProperties
-          }
-        >
-          <Search />
-        </PModal>
+        <Search isSearchOpen={isSearchModalOpen} onDismissSearch={onDismissSearch} />
         <Tabs />
         {children}
       </div>

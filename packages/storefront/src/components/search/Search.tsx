@@ -3,9 +3,10 @@
 import { SearchInput } from '@/components/search/SearchInput';
 import { SearchResults } from '@/components/search/SearchResults';
 import { algoliaClient } from '@/lib/algolia/client';
-import { PHeading } from '@porsche-design-system/components-react/ssr';
+import { PHeading, PModal } from '@porsche-design-system/components-react/ssr';
 import type { SearchOptions, SearchResponses } from 'algoliasearch-helper/types/algoliasearch';
-import React, { useRef, useState } from 'react';
+import type React from 'react';
+import { useEffect, useRef } from 'react';
 import { InstantSearch } from 'react-instantsearch';
 
 export type AlgoliaRecord = {
@@ -23,21 +24,21 @@ export type AlgoliaResult = {
   hits: AlgoliaRecord[];
 };
 
-export const Search = () => {
-  const [isSearchModalOpen, setIsSearchModalOpen] = useState<boolean>(false);
-  const searchInputRef = useRef<HTMLInputElement | null>(null);
+type SearchProps = {
+  isSearchOpen: boolean;
+  onDismissSearch: () => void;
+};
 
-  const onOpenSearch = () => {
-    setIsSearchModalOpen(true);
-    // Small timeout is needed after opening for the input to be focusable
-    setTimeout(() => {
-      searchInputRef.current?.focus();
-    }, 10);
-  };
+export const Search = ({ isSearchOpen, onDismissSearch }: SearchProps) => {
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const onDismissSearch = () => {
-    setIsSearchModalOpen(false);
-  };
+  useEffect(() => {
+    if (isSearchOpen) {
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 10);
+    }
+  }, [isSearchOpen]);
 
   const searchClient = {
     ...algoliaClient,
@@ -73,16 +74,29 @@ export const Search = () => {
   };
 
   return (
-    <InstantSearch searchClient={searchClient} indexName={getAlgoliaIndexName()} routing={true}>
-      <div className="stretch-to-full-modal-width h-[80vh] p-lg">
-        <div className="flex flex-col gap-sm h-full">
-          <PHeading size="medium" tag="h2">
-            Search
-          </PHeading>
-          <SearchInput />
-          <SearchResults />
+    <PModal
+      open={isSearchOpen}
+      onDismiss={onDismissSearch}
+      aria={{ 'aria-label': 'Search' }}
+      style={
+        {
+          '--p-modal-spacing-top': '10vh',
+          '--p-modal-spacing-bottom': '10vh',
+          '--p-modal-width': 'clamp(276px, 45.25vw + 131px, 640px)',
+        } as React.CSSProperties
+      }
+    >
+      <InstantSearch searchClient={searchClient} indexName={getAlgoliaIndexName()} routing={true}>
+        <div className="stretch-to-full-modal-width h-[80vh] p-lg">
+          <div className="flex flex-col gap-sm h-full">
+            <PHeading size="medium" tag="h2">
+              Search
+            </PHeading>
+            <SearchInput ref={inputRef} />
+            <SearchResults />
+          </div>
         </div>
-      </div>
-    </InstantSearch>
+      </InstantSearch>
+    </PModal>
   );
 };

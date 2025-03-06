@@ -1,12 +1,11 @@
 import { PTextFieldWrapper } from '@porsche-design-system/components-react/ssr';
-import { useRef, useState } from 'react';
+import { forwardRef, useState } from 'react';
 import { type UseSearchBoxProps, useInstantSearch, useSearchBox } from 'react-instantsearch';
 
-export const SearchInput = (props: UseSearchBoxProps) => {
+export const SearchInput = forwardRef<HTMLInputElement, UseSearchBoxProps>((props, ref) => {
   const { query, refine } = useSearchBox({ ...props, queryHook });
   const { status } = useInstantSearch();
   const [inputValue, setInputValue] = useState(query);
-  const inputRef = useRef<HTMLInputElement>(null);
 
   const isSearchStalled = status === 'stalled';
 
@@ -18,32 +17,10 @@ export const SearchInput = (props: UseSearchBoxProps) => {
 
   return (
     <div>
-      <form
-        action=""
-        role="search"
-        noValidate={true}
-        onSubmit={(event) => {
-          event.preventDefault();
-          event.stopPropagation();
-
-          if (inputRef.current) {
-            inputRef.current.blur();
-          }
-        }}
-        onReset={(event) => {
-          event.preventDefault();
-          event.stopPropagation();
-
-          setQuery('');
-
-          if (inputRef.current) {
-            inputRef.current.focus();
-          }
-        }}
-      >
+      <form action="" role="search" noValidate={true}>
         <PTextFieldWrapper label="Search" hideLabel={true}>
           <input
-            ref={inputRef}
+            ref={ref}
             autoComplete="off"
             autoCorrect="off"
             autoCapitalize="off"
@@ -55,14 +32,13 @@ export const SearchInput = (props: UseSearchBoxProps) => {
             onChange={(event) => {
               setQuery(event.currentTarget.value);
             }}
-            autoFocus={true}
           />
         </PTextFieldWrapper>
         <span hidden={!isSearchStalled}>Searching…</span>
       </form>
     </div>
   );
-};
+});
 
 const timeout = 200;
 let timerId: NodeJS.Timeout | undefined;
