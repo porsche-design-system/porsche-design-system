@@ -1,12 +1,12 @@
 'use client';
 
-import { Panel } from '@/components/search/Panel';
 import { SearchInput } from '@/components/search/SearchInput';
 import { SearchResults } from '@/components/search/SearchResults';
 import { algoliaClient } from '@/lib/algolia/client';
+import { PHeading } from '@porsche-design-system/components-react/ssr';
 import type { SearchOptions, SearchResponses } from 'algoliasearch-helper/types/algoliasearch';
-import React from 'react';
-import { DynamicWidgets, InstantSearch, RefinementList } from 'react-instantsearch';
+import React, { useRef, useState } from 'react';
+import { InstantSearch } from 'react-instantsearch';
 
 export type AlgoliaRecord = {
   objectID: string;
@@ -18,7 +18,27 @@ export type AlgoliaRecord = {
   url: string;
 };
 
+export type AlgoliaResult = {
+  category: string;
+  hits: AlgoliaRecord[];
+};
+
 export const Search = () => {
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState<boolean>(false);
+  const searchInputRef = useRef<HTMLInputElement | null>(null);
+
+  const onOpenSearch = () => {
+    setIsSearchModalOpen(true);
+    // Small timeout is needed after opening for the input to be focusable
+    setTimeout(() => {
+      searchInputRef.current?.focus();
+    }, 10);
+  };
+
+  const onDismissSearch = () => {
+    setIsSearchModalOpen(false);
+  };
+
   const searchClient = {
     ...algoliaClient,
     search<T>(requests: Array<{ indexName: string; params: SearchOptions }>): Promise<SearchResponses<T>> {
@@ -54,11 +74,11 @@ export const Search = () => {
 
   return (
     <InstantSearch searchClient={searchClient} indexName={getAlgoliaIndexName()} routing={true}>
-      <div className="Container">
-        <div>
-          <DynamicWidgets fallbackComponent={FallbackComponent} />
-        </div>
-        <div>
+      <div className="stretch-to-full-modal-width h-[80vh] p-lg">
+        <div className="flex flex-col gap-sm h-full">
+          <PHeading size="medium" tag="h2">
+            Search
+          </PHeading>
           <SearchInput />
           <SearchResults />
         </div>
@@ -66,11 +86,3 @@ export const Search = () => {
     </InstantSearch>
   );
 };
-
-function FallbackComponent({ attribute }: { attribute: string }) {
-  return (
-    <Panel header={attribute}>
-      <RefinementList attribute={attribute} />
-    </Panel>
-  );
-}

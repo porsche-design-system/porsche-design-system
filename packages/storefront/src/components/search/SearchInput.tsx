@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import { type UseSearchBoxProps, useInstantSearch, useSearchBox } from 'react-instantsearch';
 
 export const SearchInput = (props: UseSearchBoxProps) => {
-  const { query, refine } = useSearchBox(props);
+  const { query, refine } = useSearchBox({ ...props, queryHook });
   const { status } = useInstantSearch();
   const [inputValue, setInputValue] = useState(query);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -63,3 +63,14 @@ export const SearchInput = (props: UseSearchBoxProps) => {
     </div>
   );
 };
+
+const timeout = 200;
+let timerId: NodeJS.Timeout | undefined;
+
+function queryHook(query: string, search: (query: string) => void) {
+  if (timerId) {
+    clearTimeout(timerId);
+  }
+
+  timerId = setTimeout(() => search(query), timeout);
+}

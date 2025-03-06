@@ -23,7 +23,8 @@ import {
 import { breakpointS } from '@porsche-design-system/components-react/styles';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React, { type PropsWithChildren, useEffect, useRef, useState } from 'react';
+import type React from 'react';
+import { type PropsWithChildren, useEffect, useRef, useState } from 'react';
 
 export const Canvas = ({ children }: PropsWithChildren) => {
   const { storefrontTheme, setStorefrontTheme } = useStorefrontTheme();
@@ -102,7 +103,18 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       </PButton>
 
       <div className="-p-canvas-grid">
-        <PModal open={isSearchModalOpen} onDismiss={onDismissSearch} aria={{ 'aria-label': 'Search' }}>
+        <PModal
+          open={isSearchModalOpen}
+          onDismiss={onDismissSearch}
+          aria={{ 'aria-label': 'Search' }}
+          style={
+            {
+              '--p-modal-spacing-top': '10vh',
+              '--p-modal-spacing-bottom': '10vh',
+              '--p-modal-width': 'clamp(276px, 45.25vw + 131px, 640px)',
+            } as React.CSSProperties
+          }
+        >
           <Search />
         </PModal>
         <Tabs />
