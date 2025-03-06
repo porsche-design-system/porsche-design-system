@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Changed
+
+- `Table`: add border-bottom styles to `Table Head` to support both, empty and missing `Table Body`
+  ([#3788](https://github.com/porsche-design-system/porsche-design-system/pull/3788))
+
 ### [3.27.1] - 2025-03-05
 
 ### [3.27.1-rc.0] - 2025-03-05
