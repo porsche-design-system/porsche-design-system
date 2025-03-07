@@ -65,7 +65,7 @@ const propTypes: PropTypes<typeof InputPassword> = {
  */
 @Component({
   tag: 'p-input-password',
-  shadow: { delegatesFocus: true },
+  shadow: { delegatesFocus: true }, // TODO fix focus issues on label click
   formAssociated: true,
 })
 export class InputPassword {
