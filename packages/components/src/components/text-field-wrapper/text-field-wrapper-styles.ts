@@ -20,7 +20,7 @@ import {
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { getCss, isThemeDark } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
-import { getFunctionalComponentLegacyLabelStyles } from '../common/legacy-label/legacy-label-styles';
+import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import {
   type TextFieldWrapperUnitPosition,
@@ -175,7 +175,7 @@ export const getComponentCss = (
     // TODO: maybe we should extract it as functional component too
     'sr-only': getHiddenTextJssStyle(),
     // .label / .required
-    ...getFunctionalComponentLegacyLabelStyles(isDisabled, hideLabel, theme),
+    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, theme),
     // .message
     ...getFunctionalComponentStateMessageStyles(theme, state),
   });

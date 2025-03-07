@@ -19,7 +19,7 @@ import {
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
-import { LegacyLabel } from '../common/legacy-label/legacy-label';
+import { LegacyLabel } from '../common/label/legacy-label';
 import { StateMessage } from '../common/state-message/state-message';
 import { getComponentCss } from './textarea-wrapper-styles';
 import type { TextareaWrapperState } from './textarea-wrapper-utils';

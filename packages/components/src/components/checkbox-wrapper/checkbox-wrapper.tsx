@@ -17,7 +17,7 @@ import {
   validateProps,
 } from '../../utils';
 import { getCheckboxRadioButtonSafariRenderingFix } from '../../utils/form/applyCheckboxRadioButtonSafariRenderingFix';
-import { LegacyLabel } from '../common/legacy-label/legacy-label';
+import { LegacyLabel } from '../common/label/legacy-label';
 import { LoadingMessage } from '../common/loading-message/loading-message';
 import { StateMessage } from '../common/state-message/state-message';
 import { getComponentCss } from './checkbox-wrapper-styles';

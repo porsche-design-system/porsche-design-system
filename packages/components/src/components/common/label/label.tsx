@@ -1,18 +1,11 @@
 import { Fragment, type FunctionalComponent, h } from '@stencil/core';
 import { hasDescription, hasLabel, isParentFieldsetRequired } from '../../../utils';
 import { Required } from '../required/required';
+import { type BaseLabelProps, descriptionId, labelId } from './label-utils';
 
-export const labelId = 'label';
-export const descriptionId = 'description';
-
-type LabelProps = {
-  host: HTMLElement;
-  label: string;
-  description?: string;
+type LabelProps = BaseLabelProps & {
   htmlFor: string;
   isRequired?: boolean;
-  isLoading?: boolean;
-  isDisabled?: boolean;
 };
 
 export const Label: FunctionalComponent<LabelProps> = ({

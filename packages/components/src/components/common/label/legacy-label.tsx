@@ -1,17 +1,10 @@
 import { Fragment, type FunctionalComponent, h } from '@stencil/core';
 import { getClosestHTMLElement, hasDescription, hasLabel, isRequiredAndParentNotRequired } from '../../../utils';
 import { Required } from '../required/required';
-
-export const labelId = 'label';
-export const descriptionId = 'description';
+import { type BaseLabelProps, descriptionId, labelId } from './label-utils';
 
 type FormElement = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
-type LegacyLabelProps = {
-  host: HTMLElement;
-  label: string;
-  description?: string;
-  isLoading?: boolean;
-  isDisabled?: boolean;
+type LegacyLabelProps = BaseLabelProps & {
   formElement?: FormElement;
 };
 

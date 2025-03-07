@@ -19,7 +19,7 @@ import {
   unobserveAttributes,
   validateProps,
 } from '../../../utils';
-import { LegacyLabel } from '../../common/legacy-label/legacy-label';
+import { LegacyLabel } from '../../common/label/legacy-label';
 import { StateMessage } from '../../common/state-message/state-message';
 import { getComponentCss } from './select-wrapper-styles';
 import {

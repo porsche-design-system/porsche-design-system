@@ -22,7 +22,7 @@ import { getCss, isDisabledOrLoading, isHighContrastMode, mergeDeep } from '../.
 import type { FormState } from '../../utils/form/form-state';
 import { escapeHashCharacter } from '../../utils/svg/escapeHashCharacter';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
-import { getFunctionalComponentLegacyLabelStyles } from '../common/legacy-label/legacy-label-styles';
+import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 
@@ -132,7 +132,7 @@ export const getComponentCss = (
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLegacyLabelStyles(
+    ...getFunctionalComponentLabelStyles(
       isDisabled || isLoading,
       hideLabel,
       theme,
