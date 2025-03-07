@@ -32,7 +32,9 @@ export const P = ({ children }: PropsWithChildren) => <PText className="my-sm ma
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     wrapper: ({ children }) => (
-      <article className="col-span-full xs:col-start-2 xs:col-end-12">{children as React.ReactNode}</article>
+      <article id="main-content" className="col-span-full xs:col-start-2 xs:col-end-12">
+        {children as React.ReactNode}
+      </article>
     ),
     h1: ({ children }) => (
       <PDisplay tag="h1" size="medium" className="mt-lg mb-md max-w-prose">

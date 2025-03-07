@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const getFlags = <
   T extends { isDeprecated?: boolean; isBreakpointCustomizable?: boolean; isExperimental?: boolean },
 >(

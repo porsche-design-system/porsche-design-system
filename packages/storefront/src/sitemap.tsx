@@ -1,5 +1,6 @@
 import { getFlags } from '@/utils/getFlags';
 import { componentMeta } from '@porsche-design-system/component-meta';
+import React from 'react';
 import type { ReactNode } from 'react';
 
 const getComponents = (): Routes => {

@@ -12,6 +12,7 @@
     "build:generateComponentsBundleForStackBlitz": "tsx --tsconfig tsconfig.node.json scripts/generateComponentsBundleForStackBlitz.ts",
     "start": "concurrently -k -s 'first' -n 'cdn,next' 'serve-cdn' 'next start'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws --spa index.html -p 8080 -d ./dist'",
+    "updateAlgolia": "tsx --tsconfig tsconfig.json scripts/updateAlgoliaIndex.tsx",
     "lint": "next lint",
     "test": "yarn test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
@@ -40,7 +41,8 @@
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "autoprefixer": "^10.4.20",
-    "remark-gfm": "^4.0.0"
+    "remark-gfm": "^4.0.0",
+    "cheerio": "^1.0.0"
   },
   "peerDependencies": {
     "@axe-core/playwright": "*",

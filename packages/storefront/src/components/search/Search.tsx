@@ -16,6 +16,7 @@ export type AlgoliaRecord = {
   category: string;
   page: string;
   tab?: string;
+  section?: string;
   url: string;
 };
 
