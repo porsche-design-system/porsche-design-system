@@ -17,7 +17,7 @@ import {
 } from '../../styles';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import {
-  /* formButtonOrIconPadding, */
+  formButtonOrIconPadding,
   formElementLayeredGap,
   formElementPaddingHorizontal,
   formElementPaddingVertical,
@@ -51,7 +51,7 @@ export const getComponentCss = (
 
   // TODO: Ideally, 'compact' should only influence the calculation of scalingVar,
   // ensuring that the paddingButton calculation solely depends on the scaling factor.
-  // const paddingButton = compact ? '0px' : `calc(${formButtonOrIconPadding} * ${scalingVar})`;
+  const paddingButton = compact ? '0px' : `calc(${formButtonOrIconPadding} * ${scalingVar})`;
   const height = `max(${fontLineHeight}, ${scalingVar} * (${fontLineHeight} + 10px))`;
 
   const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
@@ -152,7 +152,7 @@ export const getComponentCss = (
     ...(passwordToggle && {
       button: {
         placeSelf: 'center',
-        // padding: paddingButton, TODO resolve inconsistency in Figma
+        padding: paddingButton, // TODO resolve inconsistency in Figma
       },
     }),
     // .label / .required
