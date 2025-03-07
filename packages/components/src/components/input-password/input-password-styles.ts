@@ -162,8 +162,7 @@ export const getComponentCss = (
             '&:hover~.wrapper': hoverStyles,
           }),
       }),
-    }), // TODO hover border color on hover label missing
-
+    }),
     // .message
     ...getFunctionalComponentStateMessageStyles(theme, state),
   });

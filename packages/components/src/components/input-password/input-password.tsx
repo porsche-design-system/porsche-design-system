@@ -23,7 +23,8 @@ import {
   hasPropValueChanged,
   validateProps,
 } from '../../utils';
-import { Label, descriptionId } from '../common/label/label';
+import { Label } from '../common/label/label';
+import { descriptionId } from '../common/label/label-utils';
 import { StateMessage, messageId } from '../common/state-message/state-message';
 import { getComponentCss } from './input-password-styles';
 import {
