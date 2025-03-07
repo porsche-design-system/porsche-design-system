@@ -15,6 +15,7 @@ import {
 const getHost = (page: Page) => page.locator('p-input-password');
 const getFieldset = (page: Page) => page.locator('fieldset');
 const getInputPassword = (page: Page) => page.locator('p-input-password input');
+const getInputPasswordWrapper = (page: Page) => page.locator('p-input-password .wrapper');
 const getLabel = (page: Page) => page.locator('p-input-password label');
 const getForm = (page: Page) => page.locator('form');
 
@@ -325,15 +326,16 @@ test.describe('focus state', () => {
     await initInputPassword(page);
     const host = getHost(page);
     const inputPassword = getInputPassword(page);
+    const inputPasswordWrapper = getInputPasswordWrapper(page);
 
     await addEventListener(inputPassword, 'focus');
     expect((await getEventSummary(inputPassword, 'focus')).counter).toBe(0);
-    await expect(inputPassword).toHaveCSS('border-color', 'rgb(107, 109, 112)');
+    await expect(inputPasswordWrapper).toHaveCSS('border-color', 'rgb(107, 109, 112)');
 
     await host.focus();
     await waitForStencilLifecycle(page);
     expect((await getEventSummary(inputPassword, 'focus')).counter).toBe(1);
-    await expect(inputPassword).toHaveCSS('border-color', 'rgb(1, 2, 5)');
+    await expect(inputPasswordWrapper).toHaveCSS('border-color', 'rgb(1, 2, 5)');
   });
 });
 
@@ -393,17 +395,18 @@ test.describe('hover state', () => {
     await page.mouse.move(0, 300); // avoid potential hover initially
     const label = getLabel(page);
     const inputPassword = getInputPassword(page);
+    const inputPasswordWrapper = getInputPasswordWrapper(page);
 
-    await expect(inputPassword).toHaveCSS('border-color', defaultBorderColor);
+    await expect(inputPasswordWrapper).toHaveCSS('border-color', defaultBorderColor);
     await inputPassword.hover();
 
-    await expect(inputPassword).toHaveCSS('border-color', hoverBorderColor);
+    await expect(inputPasswordWrapper).toHaveCSS('border-color', hoverBorderColor);
 
     await page.mouse.move(0, 300); // undo hover
-    await expect(inputPassword).toHaveCSS('border-color', defaultBorderColor);
+    await expect(inputPasswordWrapper).toHaveCSS('border-color', defaultBorderColor);
 
     await label.hover();
-    await expect(inputPassword).toHaveCSS('border-color', hoverBorderColor);
+    await expect(inputPasswordWrapper).toHaveCSS('border-color', hoverBorderColor);
   });
 });
 
