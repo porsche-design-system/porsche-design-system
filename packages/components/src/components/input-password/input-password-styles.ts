@@ -17,7 +17,7 @@ import {
 } from '../../styles';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 import {
-  formButtonOrIconPadding,
+  /* formButtonOrIconPadding, */
   formElementLayeredGap,
   formElementPaddingHorizontal,
   formElementPaddingVertical,
@@ -45,12 +45,13 @@ export const getComponentCss = (
   // Determines the scaling factor for the input-password size. In "compact" mode, it uses 0.5 to achieve a 36px input-password (compact size).
   // Defaults to 1 for the standard size and can be overridden by the CSS variable `cssVarInternalInputPasswordScaling`.
   const scalingVar = `var(${cssVarInternalInputPasswordScaling}, ${compact ? 0.5 : 1})`;
+
   const paddingBlock = `max(2px, ${formElementPaddingVertical} * ${scalingVar})`;
   const paddingInline = `max(2px, ${formElementPaddingHorizontal} * ${scalingVar})`;
 
   // TODO: Ideally, 'compact' should only influence the calculation of scalingVar,
   // ensuring that the paddingButton calculation solely depends on the scaling factor.
-  const paddingButton = compact ? '0px' : `calc(${formButtonOrIconPadding} * ${scalingVar})`;
+  // const paddingButton = compact ? '0px' : `calc(${formButtonOrIconPadding} * ${scalingVar})`;
   const height = `max(${fontLineHeight}, ${scalingVar} * (${fontLineHeight} + 10px))`;
 
   const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
@@ -97,7 +98,7 @@ export const getComponentCss = (
     },
     root: {
       [cssVariableInputPaddingStart]: paddingInline,
-      [cssVariableInputPaddingEnd]: `calc(${paddingInline} - (${paddingButton} * 2))`,
+      [cssVariableInputPaddingEnd]: paddingBlock, // `calc(${paddingInline} - (${paddingButton} * 2))`, TODO resolve inconsistency in Figma
       display: 'grid',
       gap: spacingStaticXSmall,
     },
@@ -151,7 +152,7 @@ export const getComponentCss = (
     ...(passwordToggle && {
       button: {
         placeSelf: 'center',
-        padding: paddingButton,
+        // padding: paddingButton, TODO resolve inconsistency in Figma
       },
     }),
     // .label / .required
