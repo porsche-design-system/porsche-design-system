@@ -22,9 +22,8 @@ export const LegacyLabel: FunctionalComponent<LegacyLabelProps> = ({
         class="label"
         id={labelId}
         aria-disabled={isLoading || isDisabled ? 'true' : null}
-        onClick={(event: MouseEvent & { target: HTMLElement }) =>
-          onLabelClick(event, formElement, isLoading, isDisabled, host)
-        }
+        // biome-ignore format: TODO fix generateDSRComponents
+        onClick={(event: MouseEvent & { target: HTMLElement }) => onLabelClick(event, formElement, isLoading, isDisabled, host)}
       >
         {hasLabel(host, label) && (
           <Fragment>
