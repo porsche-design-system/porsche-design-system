@@ -1,12 +1,19 @@
 import { Fragment, type FunctionalComponent, h } from '@stencil/core';
 import { getClosestHTMLElement, hasDescription, hasLabel, isRequiredAndParentNotRequired } from '../../../utils';
 import { Required } from '../required/required';
-import { type BaseLabelProps, descriptionId, labelId } from './label-utils';
+import { descriptionId, labelId } from './label-utils';
 
 type FormElement = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
-type LegacyLabelProps = BaseLabelProps & {
+type LegacyLabelProps = {
   formElement?: FormElement;
+  host: HTMLElement;
+  label: string;
+  description?: string;
+  isLoading?: boolean;
+  isDisabled?: boolean;
 };
+
+type LabelClickEvent = MouseEvent & { target: HTMLElement };
 
 export const LegacyLabel: FunctionalComponent<LegacyLabelProps> = ({
   host,
@@ -22,8 +29,7 @@ export const LegacyLabel: FunctionalComponent<LegacyLabelProps> = ({
         class="label"
         id={labelId}
         aria-disabled={isLoading || isDisabled ? 'true' : null}
-        // biome-ignore format: TODO fix generateDSRComponents
-        onClick={(event: MouseEvent & { target: HTMLElement }) => onLabelClick(event, formElement, isLoading, isDisabled, host)}
+        onClick={(event: LabelClickEvent) => onLabelClick(event, formElement, isLoading, isDisabled, host)}
       >
         {hasLabel(host, label) && (
           <Fragment>
@@ -42,7 +48,7 @@ export const LegacyLabel: FunctionalComponent<LegacyLabelProps> = ({
 };
 
 const onLabelClick = (
-  event: MouseEvent & { target: HTMLElement },
+  event: LabelClickEvent,
   formElement: FormElement,
   isLoading: boolean,
   isDisabled: boolean,

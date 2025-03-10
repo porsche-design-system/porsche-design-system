@@ -206,7 +206,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/: Theme/g, ': any')
           .replace(new RegExp(`\n.*${stylesBundleImportPath}.*`), '')
           .replace(/&& !isParentFieldsetRequired\(.*?\)/, '/* $& */') // let's disable it for now
-          .replace(/\|\|\s.*\(.*isRequiredAndParentNotRequired\(.*?\)\)/, '/* $& */') // let's disable it for now
+          // .replace(/\|\|\s.*\(.*isRequiredAndParentNotRequired\(.*?\)\)/, '/* $& */') // let's disable it for now
           .replace(/host,|formElement,/g, '// $&'); // don't destructure unused const
 
         if (newFileContent.includes('export const Label:')) {
@@ -215,6 +215,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             .replace(/(hasDescription)\(.*\)/, '$1') // replace function call with boolean const
             .replace(/(type LabelProps = {)/, '$1 hasLabel: boolean; hasDescription: boolean; ') // add types for LabelProps
             .replace(/(Label: FC<LabelProps> = \({)/, '$1 hasLabel, hasDescription, '); // destructure newly introduced hasLabel and hasDescription
+        }
+        if (newFileContent.includes('export const LegacyLabel:')) {
+          newFileContent = newFileContent
+            .replace(/(hasLabel)\(.*\)/, '$1') // replace function call with boolean const
+            .replace(/(hasDescription)\(.*\)/, '$1') // replace function call with boolean const
+            .replace(/(type LegacyLabelProps = {)/, '$1 hasLabel: boolean; hasDescription: boolean; ') // add types for LabelProps
+            .replace(/(LegacyLabel: FC<LegacyLabelProps> = \({)/, '$1 hasLabel, hasDescription, ') // destructure newly introduced hasLabel and hasDescription
+            .replace(/{formElement && isRequiredAndParentNotRequired.*}/, ''); // let's disable it for now
         }
 
         if (newFileContent.includes('export const StateMessage:')) {
@@ -230,6 +238,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       newFileContent = newFileContent
         .replace(
           /(<Label(?!Props))([\s\S]*?\/>)/,
+          "$1 hasLabel={this.props.label || namedSlotChildren.filter(({ props: { slot } }) => slot === 'label').length > 0} hasDescription={this.props.description || namedSlotChildren.filter(({ props: { slot } }) => slot === 'description').length > 0}$2"
+        )
+        .replace(
+          /(<LegacyLabel(?!Props))([\s\S]*?\/>)/,
           "$1 hasLabel={this.props.label || namedSlotChildren.filter(({ props: { slot } }) => slot === 'label').length > 0} hasDescription={this.props.description || namedSlotChildren.filter(({ props: { slot } }) => slot === 'description').length > 0}$2"
         )
         .replace(
