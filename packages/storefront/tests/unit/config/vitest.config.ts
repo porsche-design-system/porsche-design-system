@@ -4,7 +4,7 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'), // Adjust path as necessary based on your project structure
+      '@': resolve(__dirname, '../../../src'), // Adjust path as necessary based on your project structure
     },
   },
   test: {

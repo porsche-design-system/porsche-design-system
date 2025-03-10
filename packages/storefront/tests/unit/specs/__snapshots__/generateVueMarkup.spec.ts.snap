@@ -1,46 +1,35 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`generateVueMarkup() > should generate correct Vanilla JS markup for button 1`] = `
-"<script setup lang="ts">
-  import { ref } from 'vue';
-  import { PBanner, PButton } from '@porsche-design-system/components-vue';
-
-  const open = ref(undefined);
-
-  const onClick = () => {
+{
+  "eventHandlers": "  const onClick = () => {
     open.value = true;
   }
   const onDismiss = () => {
     open.value = false;
-  }
-</script>
-
-<template>
-  <PButton aria="{'aria-haspopup':true,'aria-label':'Some more descriptive label'}" type="button" :compact="true" icon="add" @click="onClick">
+  }",
+  "imports": "  import { ref } from 'vue';
+  import { PBanner, PButton } from '@porsche-design-system/components-vue';",
+  "markup": "  <PButton aria="{'aria-haspopup':true,'aria-label':'Some more descriptive label'}" type="button" :compact="true" icon="add" @click="onClick">
     Open Banner
   </PButton>
 
-  <PBanner :open="open" :dismissButton="false" heading="Some heading" headingTag="h4" state="warning" @dismiss="onDismiss" />
-</template>"
+  <PBanner :open="open" :dismissButton="false" heading="Some heading" headingTag="h4" state="warning" @dismiss="onDismiss" />",
+  "states": "  const open = ref(undefined);",
+}
 `;
 
 exports[`generateVueMarkup() > should generate correct Vanilla JS markup for flyout 1`] = `
-"<script setup lang="ts">
-  import { ref } from 'vue';
-  import { PButton, PButtonGroup, PFlyout, PHeading, PText } from '@porsche-design-system/components-vue';
-
-  const open = ref(undefined);
-
-  const onClick = () => {
+{
+  "eventHandlers": "  const onClick = () => {
     open.value = true;
   }
   const onDismiss = () => {
     open.value = false;
-  }
-</script>
-
-<template>
-  <PButton type="button" aria="{'aria-haspopup':'dialog'}" @click="onClick">
+  }",
+  "imports": "  import { ref } from 'vue';
+  import { PButton, PButtonGroup, PFlyout, PHeading, PText } from '@porsche-design-system/components-vue';",
+  "markup": "  <PButton type="button" aria="{'aria-haspopup':'dialog'}" @click="onClick">
     Open Flyout
   </PButton>
 
@@ -66,6 +55,7 @@ exports[`generateVueMarkup() > should generate correct Vanilla JS markup for fly
     <PText slot="sub-footer">
       Some additional Sub-Footer
     </PText>
-  </PFlyout>
-</template>"
+  </PFlyout>",
+  "states": "  const open = ref(undefined);",
+}
 `;

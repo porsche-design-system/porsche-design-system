@@ -1,43 +1,37 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`generateAngularMarkup() > should generate correct Vanilla JS markup for button 1`] = `
-"import { ChangeDetectionStrategy, Component } from '@angular/core';
-
-@Component({
-  selector: 'example',
-  template: \`
-      <p-button [aria]="{'aria-haspopup':true,'aria-label':'Some more descriptive label'}" type="button" [compact]="true" icon="add" (onClick)="onClick">
-        Open Banner
-      </p-button>
-
-      <p-banner [open]="open" [dismissButton]="false" heading="Some heading" headingTag="h4" state="warning" (onDismiss)="onDismiss" />
-  \`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
-})
-export class ExampleComponent {
-  open = false;
-
-  const onClick = () => {
+{
+  "eventHandlers": "  const onClick = () => {
     this.open = true;
   }
   const onDismiss = () => {
     this.open = false;
-  }
-}"
+  }",
+  "imports": "",
+  "markup": "      <p-button [aria]="{'aria-haspopup':true,'aria-label':'Some more descriptive label'}" type="button" [compact]="true" icon="add" (click)="onClick()">
+        Open Banner
+      </p-button>
+
+      <p-banner [open]="open" [dismissButton]="false" heading="Some heading" headingTag="h4" state="warning" (dismiss)="onDismiss()" />",
+  "states": "  open = false;",
+}
 `;
 
 exports[`generateAngularMarkup() > should generate correct Vanilla JS markup for flyout 1`] = `
-"import { ChangeDetectionStrategy, Component } from '@angular/core';
-
-@Component({
-  selector: 'example',
-  template: \`
-      <p-button type="button" [aria]="{'aria-haspopup':'dialog'}" (onClick)="onClick">
+{
+  "eventHandlers": "  const onClick = () => {
+    this.open = true;
+  }
+  const onDismiss = () => {
+    this.open = false;
+  }",
+  "imports": "",
+  "markup": "      <p-button type="button" [aria]="{'aria-haspopup':'dialog'}" (click)="onClick()">
         Open Flyout
       </p-button>
 
-      <p-flyout [open]="open" [aria]="{'aria-label':'Some Heading'}" (onDismiss)="onDismiss">
+      <p-flyout [open]="open" [aria]="{'aria-label':'Some Heading'}" (dismiss)="onDismiss()">
         <p-heading slot="header" size="large" tag="h2">
           Some Heading
         </p-heading>
@@ -59,19 +53,7 @@ exports[`generateAngularMarkup() > should generate correct Vanilla JS markup for
         <p-text slot="sub-footer">
           Some additional Sub-Footer
         </p-text>
-      </p-flyout>
-  \`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
-})
-export class ExampleComponent {
-  open = false;
-
-  const onClick = () => {
-    this.open = true;
-  }
-  const onDismiss = () => {
-    this.open = false;
-  }
-}"
+      </p-flyout>",
+  "states": "  open = false;",
+}
 `;

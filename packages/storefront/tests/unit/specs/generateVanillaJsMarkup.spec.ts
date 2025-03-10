@@ -42,7 +42,7 @@ describe('generateVanillaJSControlledScript()', () => {
           target: 'p-accordion',
           prop: 'open',
           eventValueKey: 'open',
-          eventType: 'CustomEvent<AccordionUpdateEventDetail>',
+          eventType: 'AccordionUpdateEventDetail',
         },
       ],
     ]);
@@ -59,7 +59,7 @@ describe('generateVanillaJSControlledScript()', () => {
           target: 'p-link-tile-product',
           prop: 'liked',
           eventValueKey: 'liked',
-          eventType: 'CustomEvent<LinkTileProductLikeEvent>',
+          eventType: 'LinkTileProductLikeEvent',
           negateValue: true,
         },
       ],

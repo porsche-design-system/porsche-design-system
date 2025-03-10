@@ -52,7 +52,7 @@ describe('generateVueControlledScript()', () => {
             target: 'p-accordion',
             prop: 'open',
             eventValueKey: 'open',
-            eventType: 'CustomEvent<AccordionUpdateEventDetail>',
+            eventType: 'AccordionUpdateEventDetail',
           },
         ],
       ],
@@ -66,7 +66,7 @@ describe('generateVueControlledScript()', () => {
     expect(eventHandler).toMatchInlineSnapshot(
       `
       "  const onUpdate = (e: CustomEvent<AccordionUpdateEventDetail>) => {
-          open.value = e.detail.open;
+          open.value = e.open;
         }"
     `
     );
@@ -81,7 +81,7 @@ describe('generateVueControlledScript()', () => {
             target: 'p-link-tile-product',
             prop: 'liked',
             eventValueKey: 'liked',
-            eventType: 'CustomEvent<LinkTileProductLikeEvent>',
+            eventType: 'LinkTileProductLikeEvent',
             negateValue: true,
           },
         ],
@@ -92,7 +92,7 @@ describe('generateVueControlledScript()', () => {
     expect(eventHandler).toMatchInlineSnapshot(
       `
       "  const onLike = (e: CustomEvent<LinkTileProductLikeEvent>) => {
-          liked.value = !e.detail.liked;
+          liked.value = !e.liked;
         }"
     `
     );
