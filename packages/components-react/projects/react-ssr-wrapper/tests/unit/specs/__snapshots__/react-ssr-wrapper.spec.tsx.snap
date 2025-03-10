@@ -11339,54 +11339,37 @@ exports[`should render dsr component for PInputPassword 1`] = `
   visibility: hidden;
 }
 input {
-  display: block;
-  margin: 0;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  border: 2px solid #6B6D70;
-  border-radius: 4px;
-  background: transparent;
+  all: unset;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  text-indent: 0;
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-area: 1/1/1/-1;
-  padding-block: max(2px, 8px * var(--p-internal-input-password-scaling, 1));
-  padding-inline: max(4px, 16px * var(--p-internal-input-password-scaling, 1));
-  width: auto;
   height: max(calc(6px + 2.125ex), var(--p-internal-input-password-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  box-sizing: content-box;
-  padding-inline-start: var(--p-internal-input-password-input-padding-start);
-  padding-inline-end: var(--p-internal-input-password-input-padding-end);
+  padding-block: max(2px, 8px * var(--p-internal-input-password-scaling, 1));
+  text-indent: 0;
+  min-width: 2rem;
 }
-input:not([type="password"]) {
+input[type="text"] {
   text-overflow: ellipsis;
 }
-input:disabled {
-  cursor: not-allowed;
-  color: #949598;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
+.root {
+  --p-internal-input-password-input-padding-start: max(2px, 16px * var(--p-internal-input-password-scaling, 1));
+  --p-internal-input-password-input-padding-end: max(2px, 8px * var(--p-internal-input-password-scaling, 1));
+  display: grid;
+  gap: 4px;
 }
-input[readonly] {
+.wrapper {
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  padding-inline-start: var(--p-internal-input-password-input-padding-start);
+  padding-inline-end: var(--p-internal-input-password-input-padding-end);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 9px;
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  cursor: text;
   border-color: #D8D8DB;
   background: #D8D8DB;
 }
-
-.root {
-  --p-internal-input-password-input-padding-start: max(4px, 16px * var(--p-internal-input-password-scaling, 1));
-  --p-internal-input-password-input-padding-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
-  display: grid;
-  gap: 4px;
-  min-width: calc(2rem + 16px + 2px*2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
-}
-.wrapper {
-  display: grid;
-  grid-template-columns: calc(9px + 2px) auto minmax(0, 1fr) auto auto calc(9px + 2px);
-}
 .button {
-  grid-area: 1/5;
   place-self: center;
   padding: calc(4px * var(--p-internal-input-password-scaling, 1));
 }
@@ -11427,6 +11410,7 @@ input[readonly] {
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
+
     </style>
     <div
       class="root"
