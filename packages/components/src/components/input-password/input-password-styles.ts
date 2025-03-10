@@ -90,6 +90,10 @@ export const getComponentCss = (
         height,
         paddingBlock,
         textIndent: 0,
+        color: primaryColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: primaryColorDark,
+        }),
         minWidth: '2rem',
         '&[type="text"]': {
           textOverflow: 'ellipsis',
@@ -110,11 +114,9 @@ export const getComponentCss = (
       display: 'grid',
       gridTemplateColumns: '1fr auto',
       gap: formElementLayeredGap,
-      color: primaryColor,
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         borderColor: formStateColorDark || contrastMediumColorDark,
-        color: primaryColorDark,
       }),
       '&:has(input:focus:not([readonly]))': {
         borderColor: primaryColor,
