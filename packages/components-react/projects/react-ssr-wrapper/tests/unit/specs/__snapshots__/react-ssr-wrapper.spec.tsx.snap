@@ -11344,6 +11344,7 @@ input {
   height: max(calc(6px + 2.125ex), var(--p-internal-input-password-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   padding-block: max(2px, 8px * var(--p-internal-input-password-scaling, 1));
   text-indent: 0;
+  color: #010205;
   min-width: 2rem;
 }
 input[type="text"] {
@@ -11363,7 +11364,6 @@ input[type="text"] {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 9px;
-  color: #010205;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: text;
   border-color: #D8D8DB;
