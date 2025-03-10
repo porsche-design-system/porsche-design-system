@@ -1,9 +1,9 @@
-import { config } from '../storefront.config';
-import type { AlgoliaRecord, StorefrontConfigPage, StorefrontConfigTabPage } from '../src/models';
-import * as path from 'path';
 import * as fs from 'fs';
+import * as path from 'path';
 import algoliasearch from 'algoliasearch';
 import { paramCase } from 'change-case';
+import type { AlgoliaRecord, StorefrontConfigPage, StorefrontConfigTabPage } from '../src/models';
+import { config } from '../storefront.config';
 
 export type StorefrontContentTabPage = { [tab: string]: string };
 
@@ -63,9 +63,9 @@ const generateIndex = (): StorefrontContent => {
   }
 
   // Uncomment this for easier debugging
-  // fs.writeFileSync(path.resolve(__dirname, 'indexed.json'), JSON.stringify(storefrontContent, null, 2), {
-  //   encoding: 'utf8',
-  // });
+  fs.writeFileSync(path.resolve(__dirname, 'indexed.json'), JSON.stringify(storefrontContent, null, 2), {
+    encoding: 'utf8',
+  });
 
   return storefrontContent;
 };
@@ -152,12 +152,12 @@ const updateAlgoliaIndex = (): void => {
   const index = generateIndex();
   const records = transformToAlgoliaRecords(index);
 
-  // Uncomment this for easier debugging
-  // fs.writeFileSync(path.resolve(__dirname, 'algoliaRecords.json'), JSON.stringify(records, null, 2), {
-  //   encoding: 'utf8',
-  // });
+  //Uncomment this for easier debugging
+  fs.writeFileSync(path.resolve(__dirname, 'algoliaRecords.json'), JSON.stringify(records, null, 2), {
+    encoding: 'utf8',
+  });
 
-  uploadAndOverrideRecords(records);
+  // uploadAndOverrideRecords(records);
 };
 
 updateAlgoliaIndex();

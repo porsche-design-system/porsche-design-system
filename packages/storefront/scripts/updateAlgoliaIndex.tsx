@@ -1,6 +1,7 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import type { AlgoliaRecord } from '@/components/search/Search';
+import { algoliasearch } from 'algoliasearch';
 import * as cheerio from 'cheerio';
 import { type Route, type Routes, sitemap } from '../src/sitemap';
 
@@ -20,20 +21,6 @@ const extractContentAndSections = (
     $('#main-content')
       .children()
       .each((_, el) => {
-        // Skip Table of Contents
-        if (
-          ($(el).is('p-heading') && $(el).text().includes('Table of Contents')) ||
-          // If the current element is a <ul> and the previous <p-heading> is the Table of Contents
-          ($(el).is('ul') && $(el).prev().is('p-heading') && $(el).prev().text().includes('Table of Contents'))
-        ) {
-          return true;
-        }
-
-        // Stop once we reach the first p-heading with an id
-        if ($(el).is('p-heading[id]')) {
-          return false;
-        }
-
         const innerText = $(el).prop('innerText')?.trim();
         if (innerText) {
           // Remove excess whitespace and newlines
@@ -84,7 +71,7 @@ const extractName = (node: React.ReactNode): string => {
   return '';
 };
 
-const generateIndex = (sitemap: Routes): AlgoliaRecord[] => {
+const generateAlgoliaRecords = (sitemap: Routes): AlgoliaRecord[] => {
   const records: AlgoliaRecord[] = [];
 
   for (const category of Object.values(sitemap)) {
@@ -143,20 +130,70 @@ const generateIndex = (sitemap: Routes): AlgoliaRecord[] => {
   }
 
   // Uncomment this for easier debugging
-  fs.writeFileSync(path.resolve(__dirname, 'indexed.json'), JSON.stringify(records, null, 2), {
-    encoding: 'utf8',
-  });
+  // fs.writeFileSync(path.resolve(__dirname, 'indexed.json'), JSON.stringify(records, null, 2), {
+  //   encoding: 'utf8',
+  // });
 
   return records;
 };
 
+const searchableAttributes: (keyof Omit<AlgoliaRecord, 'url'>)[] = [
+  'name',
+  'category',
+  'page',
+  'tab',
+  'section',
+  'content',
+];
+
+/**
+ * 'category' gives nice overview over different categories together with distinct: 5 and hitsPerPage: 5
+ * 'page' gives nice overview over different components but the hits for components are too big set distinct: true and
+ *  hitsPerPage: 20 there
+ **/
+const attributeForDistinct: keyof AlgoliaRecord = 'page';
+
+const customRanking = ['desc(category)', 'desc(page)', 'desc(name)', 'desc(tab)', 'desc(section)', 'desc(content)'];
+export const ALGOLIA_INDEX_NAME = process.env.P_CURRENT_BRANCH?.replace('/', '_') || 'localhost';
+const uploadAndOverrideRecords = (records: AlgoliaRecord[]) => {
+  const client = algoliasearch(process.env.ALGOLIA_APP_ID as string, process.env.ALGOLIA_API_KEY as string);
+  // const index = client.index.initIndex(ALGOLIA_INDEX_NAME);
+  client
+    .setSettings({
+      indexName: ALGOLIA_INDEX_NAME,
+      indexSettings: {
+        searchableAttributes,
+        distinct: true,
+        attributeForDistinct,
+        hitsPerPage: 20,
+        customRanking,
+      },
+    })
+    .then(() => {
+      console.log('Algolia - Successfully set settings.');
+    })
+    .catch((error) => {
+      console.log('Algolia - Saving settings failed:', error);
+    });
+  client
+    .saveObjects({ indexName: ALGOLIA_INDEX_NAME, objects: records })
+    .then(() => {
+      console.log('Algolia - Successfully updated index:', ALGOLIA_INDEX_NAME);
+    })
+    .catch((error) => {
+      console.log('Algolia - Saving objects failed:', error);
+    });
+};
+
 const updateAlgoliaIndex = () => {
-  try {
-    const index = generateIndex(sitemap);
-    console.log(index);
-  } catch (error) {
-    console.error('Error loading sitemap:', error);
-  }
+  const records = generateAlgoliaRecords(sitemap);
+
+  //Uncomment this for easier debugging
+  // fs.writeFileSync(path.resolve(__dirname, 'algoliaRecords.json'), JSON.stringify(records, null, 2), {
+  //   encoding: 'utf8',
+  // });
+
+  // uploadAndOverrideRecords(records);
 };
 
 updateAlgoliaIndex();
