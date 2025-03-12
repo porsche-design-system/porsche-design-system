@@ -344,7 +344,6 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "placeholder": "string",
   "readOnly": "boolean",
   "required": "boolean",
-  "spellCheck": "boolean",
   "state": "oneOf",
   "theme": "oneOf",
   "value": "string",
