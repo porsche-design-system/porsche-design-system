@@ -24,8 +24,7 @@ browser support. For broader browser compatibility, consider using a
 
 ## Basic example
 
-Instead of relying on slotted content, the `p-input-password` component offers a `value` attribute and property that
-remain synchronized with user input.
+The `p-input-password` component offers a `value` attribute and property that remain synchronized with user input.
 
 <Playground :markup="labelMarkup" :config="config"></Playground>
 
