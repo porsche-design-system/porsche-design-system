@@ -11351,16 +11351,14 @@ input[type="text"] {
   text-overflow: ellipsis;
 }
 .root {
-  --p-internal-input-password-input-padding-start: max(2px, 16px * var(--p-internal-input-password-scaling, 1));
-  --p-internal-input-password-input-padding-end: max(2px, 8px * var(--p-internal-input-password-scaling, 1));
   display: grid;
   gap: 4px;
 }
 .wrapper {
   border: 2px solid #6B6D70;
   border-radius: 4px;
-  padding-inline-start: var(--p-internal-input-password-input-padding-start);
-  padding-inline-end: var(--p-internal-input-password-input-padding-end);
+  padding-inline-start: max(2px, 16px * var(--p-internal-input-password-scaling, 1));
+  padding-inline-end: max(2px, 8px * var(--p-internal-input-password-scaling, 1));
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 9px;
