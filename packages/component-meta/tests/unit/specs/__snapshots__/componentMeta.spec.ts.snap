@@ -4179,8 +4179,7 @@ exports[`should match snapshot 1`] = `
       "passwordToggle": {
         "allowedValues": "boolean",
         "defaultValue": true,
-        "description": "@experimental Show or hide password toggle for \`input type="password"\`.",
-        "isExperimental": true,
+        "description": "Show or hide password toggle for \`input type="password"\`.",
         "type": "boolean",
       },
       "placeholder": {
@@ -4199,12 +4198,6 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Marks the password input as required.",
-        "type": "boolean",
-      },
-      "spellCheck": {
-        "allowedValues": "boolean",
-        "defaultValue": null,
-        "description": "Specifies whether the input should have its spelling and grammar checked",
         "type": "boolean",
       },
       "state": {
