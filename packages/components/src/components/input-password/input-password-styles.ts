@@ -28,9 +28,6 @@ import type { FormState } from '../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 
-export const cssVariableInputPaddingStart = '--p-internal-input-password-input-padding-start';
-export const cssVariableInputPaddingEnd = '--p-internal-input-password-input-padding-end';
-
 export const cssVarInternalInputPasswordScaling = '--p-internal-input-password-scaling';
 
 export const getComponentCss = (
@@ -101,16 +98,14 @@ export const getComponentCss = (
       },
     },
     root: {
-      [cssVariableInputPaddingStart]: paddingInline,
-      [cssVariableInputPaddingEnd]: paddingBlock, // `calc(${paddingInline} - (${paddingButton} * 2))`, TODO resolve inconsistency in Figma
       display: 'grid',
       gap: spacingStaticXSmall,
     },
     wrapper: {
       border: `${borderWidthBase} solid ${formStateColor || contrastMediumColor}`,
       borderRadius: borderRadiusSmall,
-      paddingInlineStart: `var(${cssVariableInputPaddingStart})`, // iOS Safari 14.5 can't handle padding-inline shorthand with css variables
-      paddingInlineEnd: `var(${cssVariableInputPaddingEnd})`, // iOS Safari 14.5 can't handle padding-inline shorthand with css variables
+      paddingInlineStart: paddingInline,
+      paddingInlineEnd: paddingBlock, // `calc(${paddingInline} - (${paddingButton} * 2))`, TODO resolve inconsistency in Figma
       display: 'grid',
       gridTemplateColumns: '1fr auto',
       gap: formElementLayeredGap,

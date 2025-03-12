@@ -1065,7 +1065,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * @experimental Show or hide password toggle for `input type="password"`.
+          * Show or hide password toggle for `input type="password"`.
          */
         "passwordToggle"?: boolean;
         /**
@@ -1080,10 +1080,6 @@ export namespace Components {
           * Marks the password input as required.
          */
         "required"?: boolean;
-        /**
-          * Specifies whether the input should have its spelling and grammar checked
-         */
-        "spellCheck"?: boolean;
         /**
           * The validation state.
          */
@@ -4470,7 +4466,7 @@ declare namespace LocalJSX {
          */
         "onInput"?: (event: PInputPasswordCustomEvent<InputPasswordInputEventDetail>) => void;
         /**
-          * @experimental Show or hide password toggle for `input type="password"`.
+          * Show or hide password toggle for `input type="password"`.
          */
         "passwordToggle"?: boolean;
         /**
@@ -4485,10 +4481,6 @@ declare namespace LocalJSX {
           * Marks the password input as required.
          */
         "required"?: boolean;
-        /**
-          * Specifies whether the input should have its spelling and grammar checked
-         */
-        "spellCheck"?: boolean;
         /**
           * The validation state.
          */

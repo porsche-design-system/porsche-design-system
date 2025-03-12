@@ -48,7 +48,6 @@ const propTypes: PropTypes<typeof InputPassword> = {
   minLength: AllowedTypes.number,
   form: AllowedTypes.string,
   autoComplete: AllowedTypes.oneOf<InputPasswordAutoComplete>(INPUT_PASSWORD_AUTO_COMPLETE),
-  spellCheck: AllowedTypes.boolean,
   state: AllowedTypes.oneOf<InputPasswordState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
@@ -91,9 +90,6 @@ export class InputPassword {
   /** Specifies whether the input can be autofilled by the browser */
   @Prop() public autoComplete?: InputPasswordAutoComplete = '';
 
-  /** Specifies whether the input should have its spelling and grammar checked */
-  @Prop() public spellCheck?: boolean;
-
   /** Specifies whether the password input should be read-only. */
   @Prop() public readOnly?: boolean = false;
 
@@ -124,7 +120,7 @@ export class InputPassword {
   /** Show or hide label and description text. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** @experimental Show or hide password toggle for `input type="password"`. */
+  /** Show or hide password toggle for `input type="password"`. */
   @Prop() public passwordToggle?: boolean = true;
 
   /** Adapts the color depending on the theme. */
@@ -230,7 +226,6 @@ export class InputPassword {
             minlength={this.minLength}
             value={this.value}
             readonly={this.readOnly}
-            spellcheck={this.spellCheck}
             autocomplete={this.autoComplete}
             disabled={this.disabled}
           />
