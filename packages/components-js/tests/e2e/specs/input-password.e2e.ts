@@ -15,6 +15,7 @@ import {
 const getHost = (page: Page) => page.locator('p-input-password');
 const getFieldset = (page: Page) => page.locator('fieldset');
 const getInputPassword = (page: Page) => page.locator('p-input-password input');
+const getInputPasswordToggle = (page: Page) => page.locator('p-input-password p-button-pure');
 const getInputPasswordWrapper = (page: Page) => page.locator('p-input-password .wrapper');
 const getLabel = (page: Page) => page.locator('p-input-password label');
 const getForm = (page: Page) => page.locator('form');
@@ -422,6 +423,7 @@ test.describe('lifecycle', () => {
 
     expect(status.componentDidLoad['p-input-password'], 'componentDidLoad: p-input-password').toBe(1);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
+    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1);
 
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
@@ -459,5 +461,36 @@ test.describe('lifecycle', () => {
 
     expect(statusAfterChange.componentDidUpdate['p-input-password'], 'componentDidUpdate: input-password').toBe(1);
     expect(statusAfterChange.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+  });
+});
+
+test.describe('Password Visibility', () => {
+  test('should change input type to `text` if password toggle is clicked', async ({ page }) => {
+    await initInputPassword(page);
+    const host = getHost(page);
+    const inputPassword = getInputPassword(page);
+    const inputPasswordToggle = getInputPasswordToggle(page);
+
+    await setProperty(host, 'value', 'test');
+    await waitForStencilLifecycle(page);
+    expect(await inputPassword.getAttribute('type')).toEqual('password');
+    await inputPasswordToggle.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await inputPassword.getAttribute('type')).toEqual('text');
+  });
+
+  test('should hide password toggle if `passwordToggle` prop is set to `false`', async ({ page }) => {
+    await initInputPassword(page);
+    const host = getHost(page);
+    const inputPassword = getInputPassword(page);
+    const inputPasswordToggle = getInputPasswordToggle(page);
+
+    await setProperty(host, 'value', 'test');
+    await setProperty(host, 'passwordToggle', false);
+    await waitForStencilLifecycle(page);
+
+    expect(await inputPasswordToggle.count()).toBe(0);
+    expect(await inputPassword.getAttribute('type')).toEqual('password');
   });
 });
