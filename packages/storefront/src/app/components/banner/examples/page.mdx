@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
-import { Configurator } from "@/components/playground/Configurator";
-import { bannerStory } from "@/app/components/banner/examples/banner.stories";
+import {ComponentExample} from "@/components/playground/ComponentExample";
+import {bannerStory, bannerStoryCustomStyling} from "@/app/components/banner/configure/banner.stories";
 
 export const metadata = {
   title: 'Banner - Porsche Design System',
@@ -10,7 +10,21 @@ export const metadata = {
 
 # Banner <ComponentStatus tagName="p-banner"></ComponentStatus>
 
+The `p-banner` component provides action-based feedback messages (e.g. after performing a task) or to convey
+informational and/or critical notification like some site related topics.
+
+Review the [notification decision tree](/patterns/notifications/decision-tree) to determine which notification component
+is best for a particular scenario.
+
 <TableOfContents headings={[]} />
 
-<Configurator tagName="p-banner" story={bannerStory} />
+## Basic Example
 
+<ComponentExample story={bannerStory} />
+
+## Customization
+
+Rich content for `heading` and `description` can be provided via named slots.
+Additionally, some values which can be overwritten by CSS Custom Properties (aka CSS Variables):
+
+<ComponentExample story={bannerStoryCustomStyling} />

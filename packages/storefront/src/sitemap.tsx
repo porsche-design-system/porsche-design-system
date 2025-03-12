@@ -29,6 +29,11 @@ const getComponents = (): Routes => {
             path: `/components/${component}/examples`,
             type: 'TAB',
           },
+          configure: {
+            name: 'Configure',
+            path: `/components/${component}/configure`,
+            type: 'TAB',
+          },
           usage: {
             name: 'Usage',
             path: `/components/${component}/usage`,

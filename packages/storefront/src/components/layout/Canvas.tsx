@@ -31,7 +31,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
   const { storefrontDirection, setStorefrontDirection } = useDirection();
   const { storefrontTextZoom, setStorefrontTextZoom } = useTextZoom();
   const pathname = usePathname();
-  const [isSidebarStartOpen, setIsSidebarStartOpen] = useState(true);
+  const [isSidebarStartOpen, setIsSidebarStartOpen] = useState(false);
   const [isSidebarEndOpen, setIsSidebarEndOpen] = useState(false);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState<boolean>(false);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
@@ -63,7 +63,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
   }, []);
 
   useEffect(() => {
-    setIsSidebarEndOpen(pathname?.includes('examples') || false);
+    setIsSidebarEndOpen(pathname?.includes('configure') || false);
   }, [pathname]);
 
   return (

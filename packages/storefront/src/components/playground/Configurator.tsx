@@ -73,10 +73,9 @@ export const Configurator = <T extends HTMLTagOrComponent>({
 
   return (
     <>
-      <Playground frameworkMarkup={exampleMarkup}>{exampleElement}</Playground>
-      <PButton className="mt-md" type="button" icon-source="stackBlitzIcon" onClick={() => onOpenInStackblitz()}>
-        Open in Stackblitz
-      </PButton>
+      <Playground frameworkMarkup={exampleMarkup} onOpenInStackblitz={() => onOpenInStackblitz()}>
+        {exampleElement}
+      </Playground>
       <ConfiguratorControls
         tagName={tagName as ConfiguratorTagNames}
         defaultStoryState={story.state ?? {}}

@@ -6,6 +6,8 @@ import {
 } from '../../../src/utils/generator/generateVueMarkup';
 import { buttonTestConfig, flyoutTestConfig } from '../data/generator.testdata';
 
+// TODO: Test inline style generation. :style="{"--p-banner-position-top":"200px"}". Quotes seem to be wrong
+
 describe('generateVueMarkup()', () => {
   it('should generate correct Vanilla JS markup for button', () => {
     const output = generateVueMarkup(buttonTestConfig, {});
