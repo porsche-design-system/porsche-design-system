@@ -1,12 +1,12 @@
-import { type ChangeEvent, useState } from 'react';
 import {
   type MultiSelectUpdateEventDetail,
   PMultiSelect,
   PMultiSelectOption,
   type PMultiSelectProps,
 } from '@porsche-design-system/components-react';
+import { type ChangeEvent, useState } from 'react';
 
-export const MultiSelectDynamicExamplePage = (): JSX.Element => {
+export const MultiSelectExampleDynamicPage = (): JSX.Element => {
   const [selectedValues, setSelectedValues] = useState<PMultiSelectProps['value']>([]);
   const [inputValue, setInputValue] = useState('');
   const [optionCount, setOptionCount] = useState(3);

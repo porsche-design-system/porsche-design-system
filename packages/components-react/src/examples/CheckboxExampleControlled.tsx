@@ -1,7 +1,7 @@
+import { type CheckboxUpdateEventDetail, PCheckbox, PText } from '@porsche-design-system/components-react';
 import { useState } from 'react';
-import { PCheckbox, PText, type CheckboxUpdateEventDetail } from '@porsche-design-system/components-react';
 
-export const CheckboxControlledExamplePage = (): JSX.Element => {
+export const CheckboxExampleControlledPage = (): JSX.Element => {
   const [state, setState] = useState({
     'some-name': true,
   });

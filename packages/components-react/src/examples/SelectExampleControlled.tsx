@@ -1,13 +1,13 @@
-import { useState } from 'react';
 import {
-  type SelectUpdateEventDetail,
   PSelect,
   PSelectOption,
   type PSelectProps,
   PText,
+  type SelectUpdateEventDetail,
 } from '@porsche-design-system/components-react';
+import { useState } from 'react';
 
-export const SelectControlledExamplePage = (): JSX.Element => {
+export const SelectExampleControlledPage = (): JSX.Element => {
   const [selectedValue, setSelectedValue] = useState<PSelectProps['value']>('a');
 
   const onUpdate = (e: CustomEvent<SelectUpdateEventDetail>) => {
