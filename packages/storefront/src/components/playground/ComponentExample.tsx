@@ -5,7 +5,10 @@ import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
 import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import { createStackblitzMarkupFromSample } from '@/lib/stackblitz/createStackblitzMarkupFromSample';
 import { openInStackblitz } from '@/lib/stackblitz/openInStackblitz';
+import { getVanillaJsCode } from '@/utils/generator/generateVanillaJsMarkup';
+import { splitVanillaJsCode } from '@/utils/splitVanillaJsCode';
 import type { CodeSample, Framework } from '@porsche-design-system/shared';
+import { useMemo } from 'react';
 
 type ComponentSampleProps = {
   codeSample: CodeSample;
@@ -14,7 +17,17 @@ type ComponentSampleProps = {
 export const ComponentExample = ({ codeSample }: ComponentSampleProps) => {
   const { storefrontTheme } = useStorefrontTheme();
   const { storefrontFramework } = useStorefrontFramework();
+
   const Component = codeSample.component;
+
+  // Vanilla Js Markup needs to be wrapped in containing html code
+  const frameworkMarkup = useMemo(() => {
+    const { markup, script } = splitVanillaJsCode(codeSample.frameworkMarkup['vanilla-js'] ?? '');
+    return {
+      ...codeSample.frameworkMarkup,
+      'vanilla-js': getVanillaJsCode({ markup, eventHandlers: script }),
+    };
+  }, [codeSample]);
 
   const onOpenInStackblitz = async () => {
     const markup = createStackblitzMarkupFromSample(codeSample.frameworkMarkup, storefrontFramework, storefrontTheme);
@@ -22,7 +35,7 @@ export const ComponentExample = ({ codeSample }: ComponentSampleProps) => {
   };
 
   return (
-    <Playground frameworkMarkup={codeSample.frameworkMarkup} onOpenInStackblitz={() => onOpenInStackblitz()}>
+    <Playground frameworkMarkup={frameworkMarkup} onOpenInStackblitz={() => onOpenInStackblitz()}>
       <Component />
     </Playground>
   );

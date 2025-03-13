@@ -16,7 +16,7 @@ export const createStackblitzMarkupFromSample = (
     const { markup, script } = splitVanillaJsCode(stackblitzMarkup);
     const themedMarkup = patchThemeIntoVanillaJsMarkup(markup, storefrontTheme);
     stackblitzMarkup = getVanillaJsCode(
-      { markup: themedMarkup, eventHandlers: script.replace(/<\/?script>/g, '') },
+      { markup: themedMarkup, eventHandlers: script },
       { isFullConfig: true, theme: storefrontTheme }
     );
   }
