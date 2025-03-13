@@ -1,6 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
-import {ComponentExample} from "@/components/playground/ComponentExample";
+import {ComponentStory} from "@/components/playground/ComponentStory";
 import {bannerStory, bannerStoryCustomStyling} from "@/app/components/banner/configure/banner.stories";
 
 export const metadata = {
@@ -16,15 +16,15 @@ informational and/or critical notification like some site related topics.
 Review the [notification decision tree](/patterns/notifications/decision-tree) to determine which notification component
 is best for a particular scenario.
 
-<TableOfContents headings={[]} />
+<TableOfContents headings={["Basic Example","Customization"]} />
 
 ## Basic Example
 
-<ComponentExample story={bannerStory} />
+<ComponentStory story={bannerStory} />
 
 ## Customization
 
 Rich content for `heading` and `description` can be provided via named slots.
 Additionally, some values which can be overwritten by CSS Custom Properties (aka CSS Variables):
 
-<ComponentExample story={bannerStoryCustomStyling} />
+<ComponentStory story={bannerStoryCustomStyling} />

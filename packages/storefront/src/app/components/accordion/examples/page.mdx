@@ -1,7 +1,9 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
-import {ComponentExample} from "@/components/playground/ComponentExample";
-import {accordionStory, accordionStoryExpandedClickArea} from "@/app/components/accordion/configure/accordion.stories";
+import { ComponentStory } from "@/components/playground/ComponentStory";
+import { accordionStoryExpandedClickArea } from "@/app/components/accordion/configure/accordion.stories";
+import { accordionExample } from "@porsche-design-system/shared/examples";
+import { ComponentExample } from "@/components/playground/ComponentExample";
 
 export const metadata = {
   title: 'Accordion - Porsche Design System',
@@ -20,11 +22,11 @@ behavior.
 
 ## Basic Example
 
-<ComponentExample story={accordionStory} />
+<ComponentExample codeSample={accordionExample} />
 
 ## Custom clickable/focusable area
 
 Sometimes it might be useful to enlarge the clickable/focusable area to fulfill accessibility guidelines. Therefore, a
 custom padding can be set on the slotted heading element.
 
-<ComponentExample story={accordionStoryExpandedClickArea} />
+<ComponentStory story={accordionStoryExpandedClickArea} />

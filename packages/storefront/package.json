@@ -16,7 +16,8 @@
     "lint": "next lint",
     "test": "yarn test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
-    "test:e2e": "playwright test --config=tests/e2e/config/playwright.config.ts --ui"
+    "test:e2e": "playwright test --config=tests/e2e/config/playwright.config.ts --ui",
+    "clean:build": "rm -rf ./dist && rm -rf ./.next"
   },
   "dependencies": {
     "@porsche-design-system/components-js": "3.27.0-rc.5",
