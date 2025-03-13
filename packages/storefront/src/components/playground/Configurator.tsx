@@ -5,7 +5,6 @@ import { Playground } from '@/components/playground/Playground';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
 import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import { openInStackblitz } from '@/lib/stackblitz/openInStackblitz';
-import type { Framework, FrameworkMarkup } from '@/models/framework';
 import type { SlotStories, Story, StoryState } from '@/models/story';
 import { applyPropertyRecursively } from '@/utils/generator/applyPropertyRecursively';
 import { generateAngularMarkup, getAngularCode } from '@/utils/generator/generateAngularMarkup';
@@ -13,7 +12,7 @@ import { generateReactMarkup, getReactCode } from '@/utils/generator/generateRea
 import { generateVanillaJsMarkup, getVanillaJsCode } from '@/utils/generator/generateVanillaJsMarkup';
 import { generateVueMarkup, getVueCode } from '@/utils/generator/generateVueMarkup';
 import { type ConfiguratorTagNames, type HTMLTagOrComponent, createElements } from '@/utils/generator/generator';
-import { PButton } from '@porsche-design-system/components-react/ssr';
+import type { Framework, FrameworkMarkup } from '@porsche-design-system/shared';
 import React, { type ReactNode, useEffect, useState } from 'react';
 
 type ConfiguratorTestProps<T extends HTMLTagOrComponent> = {
@@ -65,8 +64,8 @@ export const Configurator = <T extends HTMLTagOrComponent>({
     };
 
     await openInStackblitz(
-      frameworkMap[storefrontFramework as Exclude<Framework, 'next'>],
-      storefrontFramework as Exclude<Framework, 'next'>,
+      frameworkMap[storefrontFramework as Framework],
+      storefrontFramework as Framework,
       storefrontTheme
     );
   };

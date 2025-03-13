@@ -5,9 +5,9 @@ import {
   getPorscheDesignSystemBundle,
   isReleasedPds,
 } from '@/lib/stackblitz/helper';
-import type { Framework } from '@/models/framework';
 import type { StorefrontTheme } from '@/models/theme';
 import { themeDark, themeLight } from '@porsche-design-system/components-js/styles';
+import type { Framework } from '@porsche-design-system/shared';
 import sdk, { type OpenOptions, type Project } from '@stackblitz/sdk';
 import { devDependencies as devDependenciesRoot } from '../../../../../package.json';
 import { dependencies as angularDependencies } from '../../../../components-angular/package.json';
@@ -26,7 +26,7 @@ import {
  **/
 export const openInStackblitz = async (
   markup: string,
-  framework: Exclude<Framework, 'next'>,
+  framework: Framework,
   theme: StorefrontTheme,
   pdsVersion?: string
 ) => {

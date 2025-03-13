@@ -1,13 +1,14 @@
 'use client';
 
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
-import { type Framework, type FrameworkMarkup, frameworkNameMap } from '@/models/framework';
+import { frameworkNameMap } from '@/models/framework';
 import { PTabsBar, type TabsBarUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
+import type { Framework, FrameworkMarkup } from '@porsche-design-system/shared';
 import React, { type PropsWithChildren } from 'react';
 import SyntaxHighlighter, { type SyntaxHighlighterProps } from 'react-syntax-highlighter';
 
 type CodeBlockProps = {
-  frameworkMarkup: FrameworkMarkup;
+  frameworkMarkup: FrameworkMarkup & { next?: string };
 };
 
 export const CodeBlock = ({ frameworkMarkup, children }: PropsWithChildren<CodeBlockProps>) => {
@@ -20,7 +21,7 @@ export const CodeBlock = ({ frameworkMarkup, children }: PropsWithChildren<CodeB
     setStorefrontFramework(frameworks[e.detail.activeTabIndex]);
   };
 
-  const frameworkLanguageMap: Record<Framework, SyntaxHighlighterProps['language']> = {
+  const frameworkLanguageMap: Record<Framework | 'next', SyntaxHighlighterProps['language']> = {
     'vanilla-js': 'javascript',
     react: 'typescript',
     angular: 'typescript',

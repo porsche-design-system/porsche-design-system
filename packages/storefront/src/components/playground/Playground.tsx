@@ -1,8 +1,8 @@
 'use client';
 
 import { CodeBlock } from '@/components/playground/CodeBlock';
-import type { FrameworkMarkup } from '@/models/framework';
 import { PButton } from '@porsche-design-system/components-react/ssr';
+import type { FrameworkMarkup } from '@porsche-design-system/shared';
 import React, { type PropsWithChildren } from 'react';
 
 type PlaygroundProps = {

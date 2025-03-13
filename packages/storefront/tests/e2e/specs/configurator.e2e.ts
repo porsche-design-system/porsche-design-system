@@ -1,11 +1,10 @@
-import type { Framework } from '@/models/framework';
 import { type Page, expect, test } from '@playwright/test';
+import type { Framework } from '@porsche-design-system/shared';
 
 const selectMarkupFramework = async (page: Page, framework: Framework) => {
   const buttonFrameworkMap: Record<Framework, string> = {
     'vanilla-js': 'Vanilla JS',
     react: 'React',
-    next: 'React',
     angular: 'Angular',
     vue: 'Vue',
   };

@@ -1,4 +1,4 @@
-import type { Framework } from '@/models/framework';
+import type { Framework } from '@porsche-design-system/shared';
 
 export const isReleasedPds = (pdsVersion?: string): boolean => !!pdsVersion || isStableStorefrontRelease();
 

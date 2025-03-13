@@ -2,7 +2,7 @@
 
 import { ThemeSelect } from '@/components/common/ThemeSelect';
 import { openInStackblitz } from '@/lib/stackblitz/openInStackblitz';
-import { type Framework, frameworkNameMap } from '@/models/framework';
+import { frameworkNameMap } from '@/models/framework';
 import type { StorefrontTheme } from '@/models/theme';
 import { getAngularCode } from '@/utils/generator/generateAngularMarkup';
 import { getReactCode } from '@/utils/generator/generateReactMarkup';
@@ -17,6 +17,7 @@ import {
   type SegmentedControlUpdateEventDetail,
   type SelectUpdateEventDetail,
 } from '@porsche-design-system/components-react/ssr';
+import type { Framework } from '@porsche-design-system/shared';
 import React, { useState } from 'react';
 
 type OpenBugTemplateInStackBlitzProps = {
@@ -25,11 +26,11 @@ type OpenBugTemplateInStackBlitzProps = {
 
 export const OpenBugTemplateInStackBlitz = ({ pdsVersions }: OpenBugTemplateInStackBlitzProps) => {
   const [selectedPdsVersion, setSelectedPdsVersion] = useState<string>(pdsVersions[0]);
-  const [selectedFramework, setSelectedFramework] = useState<Exclude<Framework, 'next'>>('vanilla-js');
+  const [selectedFramework, setSelectedFramework] = useState<Framework>('vanilla-js');
   const [selectedTheme, setSelectedTheme] = useState<StorefrontTheme>('light');
 
   const onUpdateFramework = (e: CustomEvent<SegmentedControlUpdateEventDetail>) => {
-    setSelectedFramework(e.detail.value as Exclude<Framework, 'next'>);
+    setSelectedFramework(e.detail.value as Framework);
   };
 
   const onUpdatePdsVersion = (e: CustomEvent<SelectUpdateEventDetail>) => {
@@ -42,7 +43,7 @@ export const OpenBugTemplateInStackBlitz = ({ pdsVersions }: OpenBugTemplateInSt
 
   const onOpenInStackblitz = async () => {
     const markup = '<p-text>Place your reproduction code here</p-text>';
-    const frameworkMarkup: Record<Exclude<Framework, 'next'>, string> = {
+    const frameworkMarkup: Record<Framework, string> = {
       'vanilla-js': getVanillaJsCode(
         {
           markup: `<p-text theme="${selectedTheme}">Place your reproduction code here</p-text>`,
