@@ -1,6 +1,6 @@
 'use client';
 
-import type { Framework } from '@/models/framework';
+import type { Framework } from '@porsche-design-system/shared';
 import React, { createContext, type PropsWithChildren, useEffect, useState } from 'react';
 
 interface StorefrontFrameworkContextProps {

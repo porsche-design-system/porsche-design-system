@@ -1,12 +1,9 @@
 import {
   borderRadiusLarge,
   borderRadiusSmall,
-  getMediaQueryMax,
   getMediaQueryMin,
   gridBasicOffset,
-  gridBasicOffsetBase,
   gridExtendedOffset,
-  gridGap,
   headingXLargeStyle,
   headingXXLargeStyle,
   motionDurationModerate,
@@ -33,7 +30,13 @@ import {
 } from '../../styles';
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
-import type { CarouselAlignHeader, CarouselGradientColor, CarouselHeadingSize, CarouselWidth } from './carousel-utils';
+import type {
+  CarouselAlignControls,
+  CarouselAlignHeader,
+  CarouselGradientColor,
+  CarouselHeadingSize,
+  CarouselWidth,
+} from './carousel-utils';
 
 /**
  * @css-variable {"name": "--p-carousel-prev-next-filter", "description": "CSS Filter applied to the navigation (prev/next buttons)", "defaultValue": "none"}
@@ -118,7 +121,8 @@ export const getComponentCss = (
   isInfinitePagination: boolean,
   alignHeader: CarouselAlignHeader,
   theme: Theme,
-  hasNavigation: boolean
+  hasNavigation: boolean,
+  alignControls: CarouselAlignControls
 ): string => {
   const { primaryColor, contrastMediumColor } = getThemedColors(theme);
   const { primaryColor: primaryColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
@@ -152,13 +156,15 @@ export const getComponentCss = (
       ...(hasControlsSlot && {
         'slot[name="controls"]': {
           display: 'block',
-          gridColumnStart: 1,
+          gridColumn: '1/-1',
           gridRowStart: 3,
           alignSelf: 'center', // ensures vertical alignment to prev/next buttons
-          ...(isHeaderAlignCenter &&
-            !hasNavigation && {
-              justifySelf: 'center',
-            }),
+          justifySelf: alignControls !== 'auto' ? alignControls : isHeaderAlignCenter ? 'center' : 'start',
+          [mediaQueryS]: {
+            gridColumn: alignControls !== 'center' && hasNavigation ? '1/2' : '1/-1',
+            justifySelf:
+              alignControls !== 'auto' ? alignControls : isHeaderAlignCenter && !hasNavigation ? 'center' : 'start',
+          },
         },
       }),
       ...addImportantToEachRule({
@@ -245,9 +251,6 @@ export const getComponentCss = (
         // !important is necessary to override inline styles set by splide library
         ...addImportantToEachRule({
           padding: `0 ${spacingMap[width].base}`,
-          [getMediaQueryMax('xs')]: {
-            paddingRight: `calc(${gridBasicOffsetBase} + ${gridGap})`, // we need to give cut off slides a bit more space on mobile views
-          },
           [mediaQueryS]: {
             padding: `0 ${spacingMap[width].s}`,
           },

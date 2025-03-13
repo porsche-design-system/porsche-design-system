@@ -33,17 +33,12 @@ import { getCss } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
-import type { SelectDropdownDirection } from '../../select/select/select-utils';
-
-const anchorName = '--anchor-multi-select';
 
 export const getComponentCss = (
-  direction: SelectDropdownDirection,
   isOpen: boolean,
   isDisabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
-  hasNativeCSSAnchorPositioningSupport: boolean,
   theme: Theme
 ): string => {
   const { primaryColor, disabledColor, contrastHighColor, contrastMediumColor, backgroundColor } =
@@ -135,11 +130,8 @@ export const getComponentCss = (
             WebkitTextFillColor: disabledColorDark,
           }),
         }),
-        ...(hasNativeCSSAnchorPositioningSupport && {
-          anchorName,
-        }),
       },
-      '[popover]': getPopoverJssStyle(isOpen, direction, anchorName, 1, 44, theme),
+      '[popover]': getPopoverJssStyle(isOpen, 1, 44, theme),
     },
     root: {
       display: 'grid',

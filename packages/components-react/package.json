@@ -26,9 +26,7 @@
     "clean:build": "rm -rf ./dist && yarn --cwd projects/nextjs clean:build && yarn --cwd projects/remix clean:build && yarn --cwd projects/uxpin-wrapper clean:build"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "3.27.0-rc.5",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "@porsche-design-system/components-react": "3.27.1",
     "react-imask": "^7.6.1",
     "react-router-dom": "^7.1.1",
     "styled-components": "^6.1.13"
@@ -54,7 +52,9 @@
     "concurrently": "*",
     "globby": "*",
     "vite": "*",
-    "typescript": "*"
+    "typescript": "*",
+    "react": "*",
+    "react-dom": "*"
   },
   "volta": {
     "extends": "../../package.json"

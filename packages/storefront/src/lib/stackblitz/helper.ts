@@ -1,8 +1,9 @@
-import type { Framework } from '@/models/framework';
+import type { Framework } from '@porsche-design-system/shared';
 
 export const isReleasedPds = (pdsVersion?: string): boolean => !!pdsVersion || isStableStorefrontRelease();
 
-export const isStableStorefrontRelease = (): boolean => /^\/v\d+\//.test(location.pathname);
+export const isStableStorefrontRelease = (): boolean =>
+  typeof window === 'undefined' ? false : /^\/v\d+\//.test(location.pathname);
 
 export const convertImportPaths = (markup: string, framework: Framework): string => {
   const relativeDirectory = framework === 'angular' ? '../../' : framework === 'vue' ? '../' : '';

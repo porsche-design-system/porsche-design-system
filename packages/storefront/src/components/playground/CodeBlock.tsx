@@ -1,16 +1,17 @@
 'use client';
 
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
-import { type Framework, type FrameworkMarkup, frameworkNameMap } from '@/models/framework';
+import { frameworkNameMap } from '@/models/framework';
 import { PTabsBar, type TabsBarUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
-import React from 'react';
+import type { Framework, FrameworkMarkup } from '@porsche-design-system/shared';
+import React, { type PropsWithChildren } from 'react';
 import SyntaxHighlighter, { type SyntaxHighlighterProps } from 'react-syntax-highlighter';
 
 type CodeBlockProps = {
-  frameworkMarkup: FrameworkMarkup;
+  frameworkMarkup: FrameworkMarkup & { next?: string };
 };
 
-export const CodeBlock = ({ frameworkMarkup }: CodeBlockProps) => {
+export const CodeBlock = ({ frameworkMarkup, children }: PropsWithChildren<CodeBlockProps>) => {
   const { storefrontFramework, setStorefrontFramework } = useStorefrontFramework();
   const frameworks = Object.keys(frameworkMarkup) as Framework[];
   const tabIndex = frameworks.indexOf(storefrontFramework) !== -1 ? frameworks.indexOf(storefrontFramework) : 0;
@@ -20,7 +21,7 @@ export const CodeBlock = ({ frameworkMarkup }: CodeBlockProps) => {
     setStorefrontFramework(frameworks[e.detail.activeTabIndex]);
   };
 
-  const frameworkLanguageMap: Record<Framework, SyntaxHighlighterProps['language']> = {
+  const frameworkLanguageMap: Record<Framework | 'next', SyntaxHighlighterProps['language']> = {
     'vanilla-js': 'javascript',
     react: 'typescript',
     angular: 'typescript',
@@ -29,20 +30,23 @@ export const CodeBlock = ({ frameworkMarkup }: CodeBlockProps) => {
   };
 
   return (
-    <div className="flex flex-col gap-sm">
-      <PTabsBar activeTabIndex={tabIndex} onUpdate={onUpdate}>
-        {frameworks.map((framework, index) => (
-          <button
-            key={framework}
-            type="button"
-            role="tab"
-            tabIndex={index === tabIndex ? 0 : -1}
-            aria-selected={index === tabIndex}
-          >
-            {frameworkNameMap[framework]}
-          </button>
-        ))}
-      </PTabsBar>
+    <>
+      <div className="m-static-md flex justify-between">
+        <PTabsBar activeTabIndex={tabIndex} onUpdate={onUpdate}>
+          {frameworks.map((framework, index) => (
+            <button
+              key={framework}
+              type="button"
+              role="tab"
+              tabIndex={index === tabIndex ? 0 : -1}
+              aria-selected={index === tabIndex}
+            >
+              {frameworkNameMap[framework]}
+            </button>
+          ))}
+        </PTabsBar>
+        {children}
+      </div>
       {/* @ts-expect-error: Suppress type incompatibility */}
       <SyntaxHighlighter
         className="markup"
@@ -52,6 +56,6 @@ export const CodeBlock = ({ frameworkMarkup }: CodeBlockProps) => {
       >
         {frameworkMarkup[selectedFramework]}
       </SyntaxHighlighter>
-    </div>
+    </>
   );
 };

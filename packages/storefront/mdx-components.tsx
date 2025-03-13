@@ -37,7 +37,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </article>
     ),
     h1: ({ children }) => (
-      <PDisplay tag="h1" size="medium" className="mt-lg mb-md max-w-prose">
+      <PDisplay tag="h1" size="small" className="mt-lg mb-md max-w-prose">
         {children as React.ReactNode}
       </PDisplay>
     ),
