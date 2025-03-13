@@ -1733,6 +1733,16 @@ exports[`should match snapshot 1`] = `
         "description": "Defines which slide to be active (zero-based numbering).",
         "type": "number",
       },
+      "alignControls": {
+        "allowedValues": [
+          "start",
+          "center",
+          "auto",
+        ],
+        "defaultValue": "auto",
+        "description": "Alignment of slotted controls",
+        "type": "CarouselAlignControls",
+      },
       "alignHeader": {
         "allowedValues": [
           "start",
@@ -1834,13 +1844,22 @@ exports[`should match snapshot 1`] = `
       },
       "slidesPerPage": {
         "allowedValues": [
-          "number",
           "auto",
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
         ],
         "defaultValue": 1,
         "description": "Sets the amount of slides visible at the same time. Can be set to \`auto\` if you want to define different widths per slide via CSS.",
         "isBreakpointCustomizable": true,
-        "type": "number | 'auto'",
+        "type": "CarouselSlidesPerPage",
       },
       "theme": {
         "allowedValues": [

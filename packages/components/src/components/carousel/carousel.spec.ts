@@ -559,11 +559,22 @@ describe('updateAmountOfPages()', () => {
   it('should call renderPagination() with correct parameters', () => {
     jest.spyOn(carouselUtils, 'getAmountOfPages').mockReturnValue(5);
     const spy = jest.spyOn(carouselUtils, 'renderPagination');
+    const refreshSpy: () => Splide = jest.fn();
     const component = new Carousel();
     component['slides'] = new Array(2);
-    component['splide'] = { index: 1 } as Splide;
+    component['splide'] = { index: 1, refresh: refreshSpy } as Splide;
 
     component['updateAmountOfPages']();
     expect(spy).toHaveBeenCalledWith(component['paginationEl'], 5, 1, component['splide']);
+  });
+
+  it('should call this.splide.refresh()', () => {
+    jest.spyOn(carouselUtils, 'getAmountOfPages').mockImplementation();
+    const refreshSpy: () => Splide = jest.fn();
+    const component = new Carousel();
+    component['splide'] = { refresh: refreshSpy } as Splide;
+
+    component['updateAmountOfPages']();
+    expect(refreshSpy).toHaveBeenCalledWith();
   });
 });

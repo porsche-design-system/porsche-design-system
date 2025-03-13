@@ -14,12 +14,34 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Changed
+
+- `Table`: add border-bottom styles to `Table Head` to support both, empty and missing `Table Body`
+  ([#3788](https://github.com/porsche-design-system/porsche-design-system/pull/3788))
+
+### [3.27.1] - 2025-03-05
+
+### [3.27.1-rc.0] - 2025-03-05
+
+#### Fixed
+
+- `Carousel`: `auto` value of `slides-per-page` prop is breakpoint customizable
+  ([#3783](https://github.com/porsche-design-system/porsche-design-system/pull/3783))
+- `Select`, `Multi Select`, `Select Wrapper`: remove positioning with native anchor positioning due to a Chrome bug
+  ([#3780](https://github.com/porsche-design-system/porsche-design-system/pull/3780))
+
+### [3.27.0] - 2025-02-28
+
+### [3.27.0-rc.6] - 2025-02-28
+
 #### Added
 
 - `Table`: `compact` prop to enable a smaller, space-saving version for compact layouts
   ([#3758](https://github.com/porsche-design-system/porsche-design-system/pull/3758))
 - `Table`: `layout` prop to render table with `table-layout: fixed` css for manual control of column widths
   ([#3758](https://github.com/porsche-design-system/porsche-design-system/pull/3758))
+- `Carousel`: `align-controls` prop to align the controls slot to the left or center (overwrites auto-alignment)
+  ([#3766](https://github.com/porsche-design-system/porsche-design-system/pull/3766))
 
 #### Changed
 
@@ -34,6 +56,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Select`, `Select Wrapper`:
   - focus outline becomes default focus style when no filter is used
     ([#3754](https://github.com/porsche-design-system/porsche-design-system/pull/3754))
+- `Carousel`: Center layout of Carousel on mobile view
+  ([#3765](https://github.com/porsche-design-system/porsche-design-system/pull/3765))
+- `Carousel`: `auto` value of `slides-per-page` prop is breakpoint customizable
+  ([#3771](https://github.com/porsche-design-system/porsche-design-system/pull/3771))
 
 ### [3.27.0-rc.5] - 2025-02-20
 

@@ -2,7 +2,6 @@ import { borderRadiusSmall, borderWidthBase, fontLineHeight, textSmallStyle } fr
 import type { JssStyle } from 'jss';
 import type { Theme } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
-import { getHasCSSAnchorPositioningSupport } from '../../utils/supportsNativeCSSAnchorPositioning';
 import { getThemedColors } from '../colors';
 import { getFocusJssStyle, getTransition } from '../common-styles';
 import { getThemedFormStateColors } from '../form-state-color-styles';
@@ -16,7 +15,6 @@ export const getButtonJssStyle = (
   isDisabled: boolean,
   state: FormState,
   hasSlottedImage: boolean,
-  anchorName: string,
   cssVarScaling: string,
   theme: Theme
 ): JssStyle => {
@@ -39,9 +37,6 @@ export const getButtonJssStyle = (
 
   return {
     all: 'unset',
-    ...(getHasCSSAnchorPositioningSupport() && {
-      anchorName,
-    }),
     display: 'grid',
     gridTemplateColumns: `${hasSlottedImage ? 'auto ' : ''}minmax(0, 1fr) auto`,
     alignItems: 'center',

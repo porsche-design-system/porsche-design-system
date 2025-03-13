@@ -28,16 +28,20 @@ import {
 import type { BreakpointValues } from '../../utils/breakpoint-customizable';
 import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
 import {
+  CAROUSEL_ALIGN_CONTROLS,
   CAROUSEL_ALIGN_HEADERS,
   CAROUSEL_ARIA_ATTRIBUTES,
   CAROUSEL_GRADIENT_COLORS,
+  CAROUSEL_SLIDES_PER_PAGE,
   CAROUSEL_WIDTHS,
+  type CarouselAlignControls,
   type CarouselAlignHeader,
   type CarouselAlignHeaderDeprecated,
   type CarouselAriaAttribute,
   type CarouselGradientColor,
   type CarouselHeadingSize,
   type CarouselInternationalization,
+  type CarouselSlidesPerPage,
   type CarouselUpdateEventDetail,
   type CarouselWidth,
   getAmountOfPages,
@@ -66,8 +70,7 @@ const propTypes: PropTypes<typeof Carousel> = {
   wrapContent: AllowedTypes.boolean,
   width: AllowedTypes.oneOf<CarouselWidth>(CAROUSEL_WIDTHS),
   slidesPerPage: AllowedTypes.oneOf<ValidatorFunction>([
-    AllowedTypes.breakpoint('number'),
-    AllowedTypes.oneOf(['auto']),
+    AllowedTypes.breakpoint<CarouselSlidesPerPage>(CAROUSEL_SLIDES_PER_PAGE),
   ]),
   gradientColor: AllowedTypes.oneOf<CarouselGradientColor>(CAROUSEL_GRADIENT_COLORS),
   focusOnCenterSlide: AllowedTypes.boolean,
@@ -86,6 +89,7 @@ const propTypes: PropTypes<typeof Carousel> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   activeSlideIndex: AllowedTypes.number,
   skipLinkTarget: AllowedTypes.string,
+  alignControls: AllowedTypes.oneOf<CarouselAlignControls>(CAROUSEL_ALIGN_CONTROLS),
 };
 
 /**
@@ -115,6 +119,9 @@ export class Carousel {
   /** Alignment of heading and description */
   @Prop() public alignHeader?: CarouselAlignHeader = 'start';
 
+  /** Alignment of slotted controls */
+  @Prop() public alignControls?: CarouselAlignControls = 'auto';
+
   /** Whether the slides should rewind from last to first slide and vice versa. */
   @Prop() public rewind?: boolean = true;
 
@@ -128,7 +135,7 @@ export class Carousel {
   @Prop() public width?: CarouselWidth = 'basic';
 
   /** Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS. */
-  @Prop() public slidesPerPage?: BreakpointCustomizable<number> | 'auto' = 1; // eslint-disable-line @typescript-eslint/no-redundant-type-constituents
+  @Prop() public slidesPerPage?: BreakpointCustomizable<CarouselSlidesPerPage> = 1;
 
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `pagination` instead.
@@ -182,8 +189,8 @@ export class Carousel {
   private paginationEl: HTMLElement;
   private slides: HTMLElement[] = [];
 
-  private get parsedSlidesPerPage(): BreakpointValues<number> | number | 'auto' {
-    return parseJSON(this.slidesPerPage) as BreakpointValues<number> | number | 'auto';
+  private get parsedSlidesPerPage(): BreakpointValues<CarouselSlidesPerPage> | number | 'auto' {
+    return parseJSON(this.slidesPerPage) as BreakpointValues<CarouselSlidesPerPage> | number | 'auto';
   }
 
   private get parsedDisablePagination(): BreakpointValues<boolean> | boolean {
@@ -237,7 +244,6 @@ export class Carousel {
     this.observeSlides(); // initial, adjust aria attributes on slides
     this.splide = new Splide(this.container, {
       start: this.activeSlideIndex,
-      autoWidth: this.parsedSlidesPerPage === 'auto', // https://splidejs.com/guides/auto-width/#auto-width
       arrows: false,
       easing: motionEasingBase,
       focus: this.focusOnCenterSlide ? 'center' : undefined,
@@ -252,7 +258,7 @@ export class Carousel {
       gap: gridGap,
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
       breakpoints: getSplideBreakpoints(
-        this.parsedSlidesPerPage as Exclude<BreakpointCustomizable<number> | 'auto', string>
+        this.parsedSlidesPerPage as Exclude<BreakpointCustomizable<CarouselSlidesPerPage> | 'auto', string>
       ), // eslint-disable-line @typescript-eslint/no-redundant-type-constituents
       // https://splidejs.com/guides/i18n/#default-texts
       i18n: parseJSONAttribute(this.intl || {}), // can only be applied initially atm
@@ -314,7 +320,8 @@ export class Carousel {
       (alignHeaderDeprecationMap[this.alignHeader as keyof AlignHeaderDeprecationMapType] ||
         this.alignHeader) as Exclude<CarouselAlignHeader, CarouselAlignHeaderDeprecated>,
       this.theme,
-      this.hasNavigation
+      this.hasNavigation,
+      this.alignControls
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -444,9 +451,19 @@ export class Carousel {
     this.amountOfPages = getAmountOfPages(
       this.slides.length,
       // round to sanitize floating numbers
-      this.parsedSlidesPerPage === 'auto' ? 1 : Math.round(getCurrentMatchingBreakpointValue(this.parsedSlidesPerPage))
+      getCurrentMatchingBreakpointValue(this.parsedSlidesPerPage) === 'auto'
+        ? 1
+        : Math.round(getCurrentMatchingBreakpointValue(this.parsedSlidesPerPage as number))
     );
     renderPagination(this.paginationEl, this.getPageCount(), this.splide?.index || 0, this.splide);
+
+    // splideJS needs to be refreshed to apply new 'autoWidth' option which is not supported by splideJS breakpoint feature
+    if (this.splide) {
+      getCurrentMatchingBreakpointValue(this.parsedSlidesPerPage) === 'auto'
+        ? (this.splide.options = { autoWidth: true })
+        : false;
+      this.splide.refresh();
+    }
   };
 
   private onNextKeyDown = (e: KeyboardEvent): void => {

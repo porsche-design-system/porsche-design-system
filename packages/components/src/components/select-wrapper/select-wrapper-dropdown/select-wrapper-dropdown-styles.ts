@@ -17,7 +17,6 @@ import {
 } from '../../../styles';
 import type { Theme } from '../../../types';
 import { getCss, mergeDeep } from '../../../utils';
-import type { SelectWrapperDropdownDirection } from '../select-wrapper/select-wrapper-utils';
 
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import {
@@ -28,14 +27,7 @@ import {
 import { getOptionJssStyle, getPopoverJssStyle, getPopoverKeyframesStyles } from '../../../styles/select';
 import type { FormState } from '../../../utils/form/form-state';
 
-const anchorName = '--anchor-select-wrapper';
-
-export const getButtonStyles = (
-  isOpen: boolean,
-  state: FormState,
-  hasNativeCSSAnchorPositioningSupport: boolean,
-  theme: Theme
-): Styles => {
+export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme): Styles => {
   const { primaryColor, disabledColor, contrastMediumColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
@@ -52,9 +44,6 @@ export const getButtonStyles = (
     '@global': {
       // TODO: extract generic default button/anchor reset style
       button: {
-        ...(hasNativeCSSAnchorPositioningSupport && {
-          anchorName,
-        }),
         position: 'absolute',
         inset: 0,
         width: '100%', // fixes Firefox positioning issue
@@ -95,7 +84,6 @@ export const getFilterStyles = (
   isOpen: boolean,
   state: FormState,
   disabled: boolean,
-  hasNativeCSSAnchorPositioningSupport: boolean,
   theme: Theme
 ): Styles<'@global'> => {
   const { primaryColor, backgroundColor, disabledColor, contrastMediumColor } = getThemedColors(theme);
@@ -151,9 +139,6 @@ export const getFilterStyles = (
         ...prefersColorSchemeDarkMediaQuery(theme, {
           color: primaryColorDark,
           background: backgroundColorDark,
-        }),
-        ...(hasNativeCSSAnchorPositioningSupport && {
-          anchorName,
         }),
         '&::placeholder': {
           ...placeHolderJssStyle,
@@ -213,7 +198,7 @@ export const getFilterStyles = (
   };
 };
 
-export const getListStyles = (direction: SelectWrapperDropdownDirection, isOpen: boolean, theme: Theme): Styles => {
+export const getListStyles = (isOpen: boolean, theme: Theme): Styles => {
   const { primaryColor, disabledColor } = getThemedColors(theme);
   const { primaryColor: primaryColorDark, disabledColor: disabledColorDark } = getThemedColors('dark');
 
@@ -221,7 +206,7 @@ export const getListStyles = (direction: SelectWrapperDropdownDirection, isOpen:
     '@global': {
       // @keyframes fade-in
       ...getPopoverKeyframesStyles,
-      '[popover]': getPopoverJssStyle(isOpen, direction, anchorName, 1, 40, theme),
+      '[popover]': getPopoverJssStyle(isOpen, 1, 40, theme),
     },
     option: {
       ...getOptionJssStyle('select-wrapper', 1, theme),
@@ -255,12 +240,10 @@ export const getListStyles = (direction: SelectWrapperDropdownDirection, isOpen:
 };
 
 export const getComponentCss = (
-  direction: SelectWrapperDropdownDirection,
   isOpen: boolean,
   state: FormState,
   disabled: boolean,
   filter: boolean,
-  hasNativeCSSAnchorPositioningSupport: boolean,
   theme: Theme
 ): string => {
   return getCss(
@@ -278,10 +261,8 @@ export const getComponentCss = (
           display: 'none',
         },
       },
-      filter
-        ? getFilterStyles(isOpen, state, disabled, hasNativeCSSAnchorPositioningSupport, theme)
-        : getButtonStyles(isOpen, state, hasNativeCSSAnchorPositioningSupport, theme),
-      getListStyles(direction, isOpen, theme)
+      filter ? getFilterStyles(isOpen, state, disabled, theme) : getButtonStyles(isOpen, state, theme),
+      getListStyles(isOpen, theme)
     )
   );
 };

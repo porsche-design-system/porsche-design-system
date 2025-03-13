@@ -1,7 +1,11 @@
 import { fontLineHeight, fontSizeTextXSmall, fontWeightSemiBold } from '@porsche-design-system/styles';
 import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
 import { getCss } from '../../../utils';
-import { cssVariableTableBorderWidth, cssVariableTableHoverColor } from '../table/table-styles';
+import {
+  cssVariableTableBorderColor,
+  cssVariableTableBorderWidth,
+  cssVariableTableHoverColor,
+} from '../table/table-styles';
 
 export const getComponentCss = (): string => {
   return getCss({
@@ -12,6 +16,7 @@ export const getComponentCss = (): string => {
           fontSize: fontSizeTextXSmall,
           lineHeight: fontLineHeight,
           fontWeight: fontWeightSemiBold,
+          borderBottom: `1px solid var(${cssVariableTableBorderColor})`,
           ...hostHiddenStyles,
         }),
       },
