@@ -1,3 +1,4 @@
+export * from './models';
 export * from './data';
 export * from './lib/codeSamples';
 export * from './lib/partialNames';

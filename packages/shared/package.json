@@ -11,9 +11,10 @@
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "start": "yarn build && node ./bin/serve-dummyassets.js",
-    "build": "yarn clean:build && yarn build:generateTagNames && yarn build:generateChunkNames && yarn build:generatePartialNames && yarn build:generateCodeSamples && yarn build:bundle",
+    "build": "yarn clean:build && yarn build:generateTagNames && yarn build:generateChunkNames && yarn build:generatePartialNames && yarn build:generateCodeSamples && yarn build:generateCodeExamples && yarn build:bundle",
     "build:generateTagNames": "tsx scripts/generateTagNames.ts",
     "build:generateCodeSamples": "tsx scripts/generateCodeSamples.ts",
+    "build:generateCodeExamples": "tsx scripts/generateCodeExamples.ts",
     "build:generateChunkNames": "tsx scripts/generateTagNamesWithChunk.ts",
     "build:generatePartialNames": "tsx scripts/generatePartialNames.ts",
     "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs && chmod +x bin/serve-dummyassets.js",
@@ -56,7 +57,8 @@
     "ts-jest": "*",
     "tsx": "*",
     "typescript": "*",
-    "vitest": "*"
+    "vitest": "*",
+    "react": "*"
   },
   "bin": {
     "serve-dummyassets": "./bin/serve-dummyassets.js"
