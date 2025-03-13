@@ -4,9 +4,9 @@ import { ConfiguratorControls } from '@/components/playground/ConfiguratorContro
 import { Playground } from '@/components/playground/Playground';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
 import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
+import { createStackblitzMarkupFromStory } from '@/lib/stackblitz/createStackblitzMarkupFromStory';
 import { openInStackblitz } from '@/lib/stackblitz/openInStackblitz';
 import type { SlotStories, Story, StoryState } from '@/models/story';
-import { applyPropertyRecursively } from '@/utils/generator/applyPropertyRecursively';
 import { generateAngularMarkup, getAngularCode } from '@/utils/generator/generateAngularMarkup';
 import { generateReactMarkup, getReactCode } from '@/utils/generator/generateReactMarkup';
 import { generateVanillaJsMarkup, getVanillaJsCode } from '@/utils/generator/generateVanillaJsMarkup';
@@ -47,27 +47,8 @@ export const Configurator = <T extends HTMLTagOrComponent>({
   }, [exampleState]);
 
   const onOpenInStackblitz = async () => {
-    // Since vanilla-js doesn't have a provider we need to apply the global theme to the elements
-    const generatedStory =
-      storefrontFramework === 'vanilla-js' && storefrontTheme !== 'light'
-        ? applyPropertyRecursively(story.generator(exampleState), 'theme', storefrontTheme)
-        : story.generator(exampleState);
-
-    const frameworkMap: Record<Exclude<Framework, 'next'>, string> = {
-      'vanilla-js': getVanillaJsCode(generateVanillaJsMarkup(generatedStory), {
-        isFullConfig: true,
-        theme: storefrontTheme,
-      }),
-      react: getReactCode(generateReactMarkup(generatedStory, exampleState)),
-      angular: getAngularCode(generateAngularMarkup(generatedStory, exampleState)),
-      vue: getVueCode(generateVueMarkup(generatedStory, exampleState)),
-    };
-
-    await openInStackblitz(
-      frameworkMap[storefrontFramework as Framework],
-      storefrontFramework as Framework,
-      storefrontTheme
-    );
+    const markup = createStackblitzMarkupFromStory(story, exampleState, storefrontFramework, storefrontTheme);
+    await openInStackblitz(markup, storefrontFramework as Framework, storefrontTheme);
   };
 
   return (
