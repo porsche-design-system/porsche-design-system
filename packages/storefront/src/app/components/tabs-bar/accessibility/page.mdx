@@ -14,11 +14,20 @@ export const metadata = {
 
 ### Keyboard
 
+#### Tabs Bar as a tabbed interface
+
 | Key / state                 | Function                                                                                                                                                            |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Tab`                       | - Moves focus to the active tab.<br/> - When the tab list contains the focus, moves focus to the next element in the tab sequence, which is the `tabpanel` element. |
 | `Right Arrow`, `Left Arrow` | - Moves focus to the next tab.<br/> - Activates the newly focused tab.<br/> - If focus is on the last tab, moves focus to the first tab.                            |
 | `Home`, `End`               | - Moves focus to the first/last tab and activates it.                                                                                                               |
+
+#### Tabs Bar as link list
+
+| Key / state        | Function                                             |
+| ------------------ | ---------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to next (or previous) focusable element. |
+| `Enter`            | Activates the link.                                  |
 
 ### ARIA enhancements
 
