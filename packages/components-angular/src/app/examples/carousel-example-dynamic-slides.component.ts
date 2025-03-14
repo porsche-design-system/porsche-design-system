@@ -1,4 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-carousel-example-dynamic-slides',
@@ -25,7 +27,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, PorscheDesignSystemModule],
 })
 export class CarouselExampleDynamicSlidesComponent {
   amountOfSlides = 3;

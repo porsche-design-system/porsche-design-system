@@ -1,0 +1,15 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import { headlineStory } from "@/app/components/headline/examples/headline.stories";
+
+export const metadata = {
+  title: 'Headline - Porsche Design System',
+  description: 'Some description'
+}
+
+# Headline <ComponentStatus tagName="p-headline"></ComponentStatus>
+
+<TableOfContents headings={[]} />
+
+<Configurator tagName="p-headline" story={headlineStory} />

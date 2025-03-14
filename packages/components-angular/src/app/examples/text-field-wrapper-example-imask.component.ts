@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { IMaskModule } from 'angular-imask';
 import { MaskedRange } from 'imask';
 
 @Component({
@@ -9,7 +11,8 @@ import { MaskedRange } from 'imask';
     </p-text-field-wrapper>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule, IMaskModule],
 })
 export class TextFieldWrapperExampleImaskComponent {
   public isDeLocale = Intl.NumberFormat().resolvedOptions().locale.startsWith('de');

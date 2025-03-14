@@ -1,5 +1,5 @@
-import { config } from '@porsche-design-system/shared/testing/playwright.e2e';
 import { defineConfig, devices } from '@playwright/test';
+import { config } from '@porsche-design-system/shared/testing/playwright.e2e';
 
 export default defineConfig({
   ...config,
@@ -10,7 +10,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'yarn start-app',
-    port: 8080,
+    command: 'yarn dev',
+    port: 3000,
   },
 });

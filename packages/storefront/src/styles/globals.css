@@ -1,0 +1,234 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background: theme(colors.background-surface.DEFAULT);
+    color: theme(colors.primary.DEFAULT);
+  }
+
+  code {
+    display: block;
+    padding: theme(spacing.static-md);
+    border-radius: theme(borderRadius.md);
+    overflow-x: auto;
+    background-color: theme(colors.hljsBackground.DEFAULT);
+    font-family: theme(fontFamily.code);
+    font-weight: theme(fontWeight.regular);
+    font-size: theme(fontSize.xs);
+    line-height: 1.5;
+    color: theme(colors.hljsColor.DEFAULT);
+    hyphens: none;
+  }
+
+  :not(pre) > code {
+    display: inline;
+    padding: 2px 6px;
+    border-radius: theme(borderRadius.sm);
+    overflow-x: visible;
+    font-weight: theme(fontWeight.bold);
+    color: theme(colors.contrast-high.DEFAULT);
+  }
+
+  p-text-list :is(p-text-list, p-text) {
+    margin: 0 !important;
+  }
+
+  p-inline-notification {
+    margin-block: theme(spacing.md);
+  }
+
+  .deprecated {
+    color: theme(colors.notification-error.DEFAULT);
+    text-transform: uppercase;
+  }
+
+  .hljs {
+    /* color: theme(colors.hljsColor.DEFAULT);
+    background: theme(colors.hljsBackground.DEFAULT); */
+    border-radius: theme(borderRadius.md);
+  }
+
+  .hljs-comment {
+    color: theme(colors.hljsComment.DEFAULT);
+  }
+
+  .hljs-quote {
+    color: theme(colors.hljsQuote.DEFAULT);
+  }
+
+  .hljs-doctag {
+    color: theme(colors.hljsDoctag.DEFAULT);
+  }
+
+  .hljs-keyword {
+    color: theme(colors.hljsKeyword.DEFAULT);
+  }
+
+  .hljs-formula {
+    color: theme(colors.hljsFormula.DEFAULT);
+  }
+
+  .hljs-section {
+    color: theme(colors.hljsSection.DEFAULT);
+  }
+
+  .hljs-name {
+    color: theme(colors.hljsName.DEFAULT);
+  }
+
+  .hljs-selector-tag {
+    color: theme(colors.hljsSelectorTag.DEFAULT);
+  }
+
+  .hljs-deletion {
+    color: theme(colors.hljsDeletionColor.DEFAULT);
+    background: theme(colors.hljsDeletionBackground.DEFAULT);
+  }
+
+  .hljs-subst {
+    color: theme(colors.hljsSubst.DEFAULT);
+  }
+
+  .hljs-literal {
+    color: theme(colors.hljsLiteral.DEFAULT);
+  }
+
+  .hljs-string {
+    color: theme(colors.hljsString.DEFAULT);
+  }
+
+  .hljs-regexp {
+    color: theme(colors.hljsRegexp.DEFAULT);
+  }
+
+  .hljs-addition {
+    color: theme(colors.hljsAdditionColor.DEFAULT);
+    background: theme(colors.hljsAdditionBackground.DEFAULT);
+  }
+
+  .hljs-attribute {
+    color: theme(colors.hljsAttribute.DEFAULT);
+  }
+
+  .hljs-meta-string {
+    color: theme(colors.hljsMetaString.DEFAULT);
+  }
+
+  .hljs-built_in {
+    color: theme(colors.hljsBuiltIn.DEFAULT);
+  }
+
+  .hljs-attr {
+    color: theme(colors.hljsAttr.DEFAULT);
+  }
+
+  .hljs-variable {
+    color: theme(colors.hljsVariable.DEFAULT);
+  }
+
+  .hljs-template-variable {
+    color: theme(colors.hljsTemplateVariable.DEFAULT);
+  }
+
+  .hljs-type {
+    color: theme(colors.hljsType.DEFAULT);
+  }
+
+  .hljs-selector-class {
+    color: theme(colors.hljsSelectorClass.DEFAULT);
+  }
+
+  .hljs-selector-attr {
+    color: theme(colors.hljsSelectorAttr.DEFAULT);
+  }
+
+  .hljs-selector-pseudo {
+    color: theme(colors.hljsSelectorPseudo.DEFAULT);
+  }
+
+  .hljs-number {
+    color: theme(colors.hljsNumber.DEFAULT);
+  }
+
+  .hljs-symbol {
+    color: theme(colors.hljsSymbol.DEFAULT);
+  }
+
+  .hljs-bullet {
+    color: theme(colors.hljsBullet.DEFAULT);
+  }
+
+  .hljs-link {
+    color: theme(colors.hljsLink.DEFAULT);
+    text-decoration: underline;
+  }
+
+  .hljs-meta {
+    color: theme(colors.hljsMeta.DEFAULT);
+  }
+
+  .hljs-selector-id {
+    color: theme(colors.hljsSelectorId.DEFAULT);
+  }
+
+  .hljs-title {
+    color: theme(colors.hljsTitle.DEFAULT);
+  }
+
+  .hljs-emphasis {
+    font-style: italic;
+  }
+
+  .hljs-strong {
+    font-weight: theme(fontWeight.bold);
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[data-animation="fade-in-up"] {
+  opacity: 0;
+  transform: translateY(60px);
+}
+[data-animation="fade-in-up"].animation-play {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+@keyframes tile-fade-in-up {
+  0% {
+    opacity: 0.3;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[data-animation="tile-fade-in-up"] {
+  opacity: 0.3;
+  transform: translateY(20px);
+}
+[data-animation="tile-fade-in-up"].animation-play {
+  animation: tile-fade-in-up 0.6s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+[data-animation].animation-play {
+  animation-delay: var(--animation-delay, 0s); /* Standard: 0s */
+}
+
+[data-animation].animation-play {
+  animation: fade-in-up 0.6s ease-out forwards;
+}

@@ -1,12 +1,12 @@
-import { type ChangeEvent, useState } from 'react';
 import {
-  type SelectUpdateEventDetail,
   PSelect,
   PSelectOption,
   type PSelectProps,
+  type SelectUpdateEventDetail,
 } from '@porsche-design-system/components-react';
+import { type ChangeEvent, useState } from 'react';
 
-export const SelectDynamicExamplePage = (): JSX.Element => {
+export const SelectExampleDynamicPage = (): JSX.Element => {
   const [selectedValue, setSelectedValue] = useState<PSelectProps['value']>('1');
   const [inputValue, setInputValue] = useState('');
   const [optionCount, setOptionCount] = useState(3);

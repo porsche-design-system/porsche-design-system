@@ -1,11 +1,11 @@
+import commonjs from '@rollup/plugin-commonjs';
+import json from '@rollup/plugin-json';
+import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
-import pkg from './package.json';
 import shebang from 'rollup-plugin-preserve-shebang';
-import resolve from '@rollup/plugin-node-resolve';
-import json from '@rollup/plugin-json';
-import commonjs from '@rollup/plugin-commonjs';
+import pkg from './package.json';
 
 const input = 'src/index.ts';
 const external = [...Object.keys(pkg.dependencies), 'fs', 'path'];
@@ -38,6 +38,7 @@ export default [
           { src: 'src/css/*', dest: 'dist/css' },
           { src: 'src/tsconfig.json', dest: 'dist' },
           { src: 'src/dummyassets/*', dest: 'dist/dummyassets' },
+          { src: 'src/examples/*', dest: 'dist/examples' },
         ],
       }),
       typescript({ declaration: true, declarationDir: 'dist', rootDir: 'src' }),

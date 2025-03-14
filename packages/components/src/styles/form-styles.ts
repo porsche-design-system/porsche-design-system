@@ -147,6 +147,6 @@ export const getUnitCounterJssStyle = (isDisabled: boolean, isReadonly: boolean,
     }),
     ...(isReadonly && {
       color: contrastHighColor,
-    })
+    }),
   };
 };

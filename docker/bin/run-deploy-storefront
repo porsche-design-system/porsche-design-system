@@ -66,13 +66,6 @@ prepare_deployment() {
   rm -rf "/opt/porsche-design-system-gh-pages/${1}"
 }
 
-update_base_tag() {
-  echo "task: [$(date)] \"update_base_tag\" (${1})"
-  pushd "./packages/storefront/dist"
-    find . -type f -name "index.html" -exec sed -i -E -e 's$<base href="/">$<base href="/'${1}'/">$' {} +
-  popd
-}
-
 copy_storefront() {
   echo "task: [$(date)] \"copy_storefront\" (${1})"
   mkdir -p "/opt/porsche-design-system-gh-pages/${1}"
@@ -107,13 +100,11 @@ if [[ "${GITHUB_REF_TYPE}" == "branch" ]]; then
   add_deployment_version
   if [[ "${GITHUB_REF_NAME}" == "main" ]]; then
     prepare_deployment "nightly"
-    update_base_tag "nightly"
     copy_storefront "nightly"
     deploy_to_gh_pages "nightly"
     update_algolia_index "nightly"
   else
     prepare_deployment "${GITHUB_REF_NAME}"
-    update_base_tag "${GITHUB_REF_NAME}"
     copy_storefront "${GITHUB_REF_NAME}"
     deploy_to_gh_pages "${GITHUB_REF_NAME}"
     if [[ "${GITHUB_REF_NAME}" == v* ]]; then

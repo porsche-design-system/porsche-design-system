@@ -1,7 +1,7 @@
-import { useState } from 'react';
 import { type LinkTileProductLikeEventDetail, PLinkTileProduct, PTag } from '@porsche-design-system/components-react';
+import { useState } from 'react';
 
-export const LinkTileProductExample = (): JSX.Element => {
+export const LinkTileProductExamplePage = (): JSX.Element => {
   const [liked, setLiked] = useState(false);
 
   const handleLike = (e: CustomEvent<LinkTileProductLikeEventDetail>) => {

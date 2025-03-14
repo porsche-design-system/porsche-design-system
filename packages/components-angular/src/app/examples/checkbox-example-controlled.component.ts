@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { type CheckboxUpdateEventDetail } from '@porsche-design-system/components-angular';
+import { type CheckboxUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-checkbox-example-controlled',
@@ -14,7 +14,8 @@ import { type CheckboxUpdateEventDetail } from '@porsche-design-system/component
     <p-text>some-name: {{ state['some-name'] }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
 })
 export class CheckboxExampleControlledComponent {
   state: { [key: string]: boolean } = {

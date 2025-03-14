@@ -1,0 +1,15 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import { linkPureStory } from "@/app/components/link-pure/examples/link-pure.stories";
+
+export const metadata = {
+  title: 'Link Pure - Porsche Design System',
+  description: 'Some description'
+}
+
+# Link Pure <ComponentStatus tagName="p-link-pure"></ComponentStatus>
+
+<TableOfContents headings={[]} />
+
+<Configurator tagName="p-link-pure" story={linkPureStory} />

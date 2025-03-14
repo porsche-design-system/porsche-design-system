@@ -2,7 +2,9 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation, inject } from '@
 import { pdsTheme } from '@porsche-design-system/components-angular/ag-grid';
 import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
 
-import { THEME_TOKEN } from '@porsche-design-system/components-angular';
+import { AsyncPipe } from '@angular/common';
+import { PorscheDesignSystemModule, THEME_TOKEN } from '@porsche-design-system/components-angular';
+import { AgGridAngular } from 'ag-grid-angular';
 import {
   AllCommunityModule,
   type ColDef,
@@ -30,7 +32,8 @@ type ColumnDefs = DataAdvanced & {
     </div>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule, AgGridAngular, AsyncPipe],
 })
 export class AgGridExampleStorefrontComponent {
   protected readonly theme$ = inject(THEME_TOKEN);

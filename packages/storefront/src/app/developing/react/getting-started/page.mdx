@@ -1,0 +1,106 @@
+import { Notification } from "@/components/common/Notification";
+import { TableOfContents } from "@/components/common/TableOfContents";
+
+export const metadata = {
+  title: 'React: Getting started - Porsche Design System',
+  description: 'Start developing in React with the Porsche Design System.'
+}
+
+# React
+
+<TableOfContents headings={["Quick start","Integration","When are Porsche Design System components initialized?","How do Porsche Design System components work in detail?","Sample integration"]} />
+
+## Quick start
+
+To build your own application with the **React** components of Porsche Design System, follow these steps:
+
+- Follow the instructions at (Introduction)[/developing/introduction] to get the required npm package
+- Run `yarn create react-app my-app --template typescript` or `npx create-react-app my-app --template typescript` to
+create a directory inside the current folder with the initial project structure called `my-app`
+- To add TypeScript to your **Create React App**, you have to install it:
+
+```bash
+# install with yarn:
+yarn add typescript @types/node @types/react @types/react-dom @types/jest
+
+# install with npm:
+npm install typescript @types/node @types/react @types/react-dom @types/jest
+```
+
+- Install the Porsche Design System
+
+```bash
+# install with yarn:
+yarn add @porsche-design-system/components-react
+
+# install with npm:
+npm install @porsche-design-system/components-react
+```
+
+You are ready to start building your own application.
+
+## Integration
+
+The following project is a standard React (Create React App) setup extended by the necessary
+`PorscheDesignSystemProvider` which you can import from `@porsche-design-system/components-react` :
+
+```tsx
+// index.tsx
+
+import ReactDOM from 'react-dom';
+import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
+import './index.css';
+import { App } from './App';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <PorscheDesignSystemProvider>
+      <App />
+    </PorscheDesignSystemProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+
+Change your App file to use at least one Porsche Design System component, for example:
+
+```tsx
+// App.tsx
+
+import { PHeading } from '@porsche-design-system/components-react';
+
+export const App = (): JSX.Element => (
+  <div className="App">
+    <PHeading>Welcome to React</PHeading>
+  </div>
+);
+```
+
+Run `yarn start` or `npm start` and check if the components are displayed correctly.
+
+<Notification heading="Attention" headingTag="h3" state="warning">
+  Now, when you look at the result in your browser you should see an error message like
+  "The Porsche Design System is used without using the `getInitialStyles()` partial".
+  To fix this, you have to apply the [getInitialStyles() partial](/partials/initial-styles) which is mandatory since v3.7.0.
+</Notification>
+
+## When are Porsche Design System components initialized?
+
+See [componentsReady()](/developing/components-ready) for further information.
+
+## How do Porsche Design System components work in detail?
+
+See [Initialization](/must-know/initialization/introduction) for further information.
+
+## Sample integration
+
+We provide a public GitHub repository with a basic sample project setup to show how it is managed in real code.
+You can find the repository of the React example project here:
+[Sample integration React](https://github.com/porsche-design-system/sample-integration-react)
+
+### Get the project up and running
+
+- Clone the repository by executing
+`git clone https://github.com/porsche-design-system/sample-integration-react.git`
+- Follow the installation guidelines in the `README.md` file
+
