@@ -694,6 +694,17 @@ const generateNextJsCodeExamples = (codeExamples: CodeSample[]) => {
         })
       );
 
+      // TODO: Can we change the examples so this wouldn't be necessary?
+      const transformedFrameworkMarkup = {
+        ...frameworkMarkup,
+        // Stackblitz needs explicit React import & adjust component name to match what's used in stackblitz example
+        react: `import React from 'react';\n${frameworkMarkup.react.replace(/export const (\w+)Page\s*=/, 'export const Example =')}`,
+        // Adjust selector & component name to match what's used in stackblitz example
+        angular: frameworkMarkup.angular
+          .replace(/export class (\w+)Component\s*\{/, 'export class ExampleComponent {')
+          .replace(/selector: '[^']*'/g, "selector: 'porsche-design-system-app'"),
+      };
+
       // Adjust the import and to use ssr package
       const nextJsMarkup = `'use client';\nimport type { CodeSample } from "../models";\n${frameworkMarkup.react.replace(
         '@porsche-design-system/components-react',
@@ -706,7 +717,7 @@ const generateNextJsCodeExamples = (codeExamples: CodeSample[]) => {
       // Add export of codeSamples
       const fileContent = `${nextJsMarkup}\n\nexport const ${camelCase(componentName)}: CodeSample = {
   component: ${componentName}Page,
-  frameworkMarkup: ${JSON.stringify(frameworkMarkup)}
+  frameworkMarkup: ${JSON.stringify(transformedFrameworkMarkup)}
 }`;
 
       const targetFile = path.resolve(targetDirectory, fileName);
