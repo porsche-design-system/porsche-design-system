@@ -1,4 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 import { dataBasic, headBasic } from '@porsche-design-system/shared';
 
 @Component({
@@ -22,7 +24,8 @@ import { dataBasic, headBasic } from '@porsche-design-system/shared';
     </p-table>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, PorscheDesignSystemModule],
 })
 export class TableExampleBasicComponent {
   public head = headBasic;

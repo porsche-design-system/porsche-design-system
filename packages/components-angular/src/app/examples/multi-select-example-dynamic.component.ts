@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { MultiSelectUpdateEventDetail } from '@porsche-design-system/components-angular';
+import { MultiSelectUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-multi-select-example-dynamic',
@@ -27,7 +27,8 @@ import type { MultiSelectUpdateEventDetail } from '@porsche-design-system/compon
     <button type="button" (click)="onRemoveOption()">Remove last option</button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
 })
 export class MultiSelectExampleDynamicComponent {
   selectedValues: string[] = [];

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { SelectUpdateEventDetail } from '@porsche-design-system/components-angular';
+import { PorscheDesignSystemModule, SelectUpdateEventDetail } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-select-example-dynamic',
@@ -21,7 +21,8 @@ import type { SelectUpdateEventDetail } from '@porsche-design-system/components-
     <button type="button" (click)="onRemoveOption()">Remove last option</button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
 })
 export class SelectExampleDynamicComponent {
   selectedValue: string = '1';

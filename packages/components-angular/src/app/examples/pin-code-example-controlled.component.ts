@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { PinCodeUpdateEventDetail } from '@porsche-design-system/components-angular';
+import { PinCodeUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-pin-code-example-controlled',
@@ -9,7 +9,8 @@ import type { PinCodeUpdateEventDetail } from '@porsche-design-system/components
     <p-text>Completely filled: {{ isComplete }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
 })
 export class PinCodeExampleControlledComponent {
   value = '';
