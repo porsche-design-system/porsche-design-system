@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.27.2-rc.0] - 2025-03-18
+
 #### Changed
 
 - `Table`: add border-bottom styles to `Table Head` to support both, empty and missing `Table Body`
