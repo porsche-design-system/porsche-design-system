@@ -11,7 +11,6 @@ if
   [[ "--components-angular:jest" == "${1}" ]] ||
   [[ "--components-react" == "${1}" ]] ||
   [[ "--components-react:react-wrapper" == "${1}" ]] ||
-  [[ "--components-vue" == "${1}" ]] ||
   [[ "--shared" == "${1}" ]] ||
   [[ "--storefront" == "${1}" ]]
 then
@@ -29,6 +28,7 @@ elif
   [[ "--components-js:partials" == "${1}" ]] ||
   [[ "--components-react:uxpin-wrapper" == "${1}" ]] ||
   [[ "--components-react:react-ssr-wrapper" == "${1}" ]] ||
+  [[ "--components-vue" == "${1}" ]] ||
   [[ "--components-vue:vue-wrapper" == "${1}" ]] ||
   [[ "--vitest:storefront" == "${1}" ]] ||
   [[ "--utilities" == "${1}" ]]
