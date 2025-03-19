@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/playwright:v1.49.1-jammy-1
+FROM mcr.microsoft.com/playwright:v1.49.1-jammy
 
 ENV PATH="/opt/porsche-design-system/bin:${PATH}"
 
