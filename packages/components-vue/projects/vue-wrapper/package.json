@@ -17,7 +17,7 @@
   "license": "SEE LICENSE IN LICENSE",
   "homepage": "https://designsystem.porsche.com",
   "dependencies": {
-    "@porsche-design-system/components-js": "v3.27.2"
+    "@porsche-design-system/components-js": "3.27.2"
   },
   "peerDependencies": {
     "ag-grid-enterprise": ">= 33.0.0 <34.0.0",
