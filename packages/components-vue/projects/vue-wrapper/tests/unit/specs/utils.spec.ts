@@ -1,54 +1,55 @@
-import {
-  addEventListenerToElementRef,
-  usePrefix,
-  prefixInjectionKey,
-  syncProperties,
-  useToastManager,
-} from '../../../src/utils';
-import type { ToastMessage } from '../../../src/public-api';
-import * as utils from '../../../src/utils';
+import { beforeEach, describe, expect, test, vi } from 'vitest';
 import * as Vue from 'vue';
 import type { Ref } from 'vue';
+import type { ToastMessage } from '../../../src/lib/types';
+import * as utils from '../../../src/utils';
 
 describe('getPrefixedTagName()', () => {
-  it('should call inject() with correctParameters', () => {
-    const spy = jest.spyOn(Vue, 'inject').mockReturnValue('');
+  vi.mock('vue', async (importOriginal) =>
+    Object.assign({}, await importOriginal(), {
+      inject: vi.fn().mockReturnValue(''), // Mock inject properly
+    })
+  );
 
-    usePrefix('p-text');
+  test('should call inject() with correctParameters', () => {
+    const spy = vi.spyOn(Vue, 'inject').mockReturnValue('');
 
-    expect(spy).toHaveBeenCalledWith(prefixInjectionKey);
+    utils.usePrefix('p-text');
+
+    expect(spy).toHaveBeenCalledWith(utils.prefixInjectionKey);
   });
 
-  it('should throw error if inject returns undefined', () => {
-    jest.spyOn(Vue, 'inject').mockReturnValue(undefined);
+  test('should throw error if inject returns undefined', () => {
+    vi.mocked(Vue.inject).mockReturnValueOnce(undefined);
 
-    expect(() => usePrefix('p-text')).toThrowError();
+    expect(() => utils.usePrefix('p-text')).toThrowError();
   });
 
-  it('should return passed parameter if inject() returns ""', () => {
-    jest.spyOn(Vue, 'inject').mockReturnValue('');
+  test('should return passed parameter if inject() returns ""', () => {
+    vi.spyOn(Vue, 'inject').mockReturnValue('');
+
     const tagName = 'p-text';
-    usePrefix('p-text');
+    utils.usePrefix('p-text');
 
-    expect(usePrefix(tagName)).toBe(tagName);
+    expect(utils.usePrefix(tagName)).toBe(tagName);
   });
 
-  it('should return prefixed parameter if prefix is defined', () => {
+  test('should return prefixed parameter if prefix is defined', () => {
     const prefix = 'my-prefix';
-    jest.spyOn(Vue, 'inject').mockReturnValue(prefix);
+    vi.spyOn(Vue, 'inject').mockReturnValue(prefix);
     const tagName = 'p-text';
 
-    expect(usePrefix(tagName)).toBe(prefix + '-' + tagName);
+    expect(utils.usePrefix(tagName)).toBe(prefix + '-' + tagName);
 
     const prefix2 = 'another-prefix';
-    jest.spyOn(Vue, 'inject').mockReturnValue(prefix2);
+    vi.spyOn(Vue, 'inject').mockReturnValue(prefix2);
 
-    expect(usePrefix(tagName)).toBe(prefix2 + '-' + tagName);
+    expect(utils.usePrefix(tagName)).toBe(prefix2 + '-' + tagName);
   });
 });
 
 describe('syncProperties()', () => {
-  it('should sync passed properties with passed element', () => {
+  test('should sync passed properties with passed element', () => {
     type PropsType = {
       customProp1: string;
       customProp2: boolean;
@@ -70,7 +71,7 @@ describe('syncProperties()', () => {
       customProp3: 1,
       customProp4: {},
     };
-    syncProperties(elementRef, props1);
+    utils.syncProperties(elementRef, props1);
 
     expect(element.customProp1).toBe(props1.customProp1);
     expect(element.customProp2).toBe(props1.customProp2);
@@ -83,7 +84,7 @@ describe('syncProperties()', () => {
       customProp3: 2,
       customProp4: { key: 'value' },
     };
-    syncProperties(elementRef, props2);
+    utils.syncProperties(elementRef, props2);
 
     expect(element.customProp1).toBe(props2.customProp1);
     expect(element.customProp2).toBe(props2.customProp2);
@@ -93,24 +94,24 @@ describe('syncProperties()', () => {
 });
 
 describe('addEventListenerToElementRef()', () => {
-  it('should call addEventListener() with correct parameters on passed element', () => {
+  test('should call addEventListener() with correct parameters on passed element', () => {
     const element = document.createElement('custom-el');
     const elementRef = { value: element } as unknown as Ref<HTMLElement>;
     const eventName = 'someEventName';
-    const spy = jest.spyOn(element, 'addEventListener');
+    const spy = vi.spyOn(element, 'addEventListener');
 
-    addEventListenerToElementRef(elementRef, eventName, () => {});
+    utils.addEventListenerToElementRef(elementRef, eventName, () => {});
 
     expect(spy).toHaveBeenCalledWith(eventName, expect.any(Function));
   });
 
-  it('should call passed emit() with correct parameters', () => {
+  test('should call passed emit() with correct parameters', () => {
     const element = document.createElement('custom-el');
     const elementRef = { value: element } as unknown as Ref<HTMLElement>;
-    const emit = jest.fn();
+    const emit = vi.fn();
     const eventName = 'someEventName';
 
-    addEventListenerToElementRef(elementRef, eventName, emit);
+    utils.addEventListenerToElementRef(elementRef, eventName, emit);
 
     const event = new CustomEvent(eventName, { detail: 'someDetail' });
     element.dispatchEvent(event);
@@ -119,41 +120,26 @@ describe('addEventListenerToElementRef()', () => {
   });
 });
 
-describe('useToastManager()', () => {
+describe('addMessage()', () => {
   beforeEach(() => {
-    jest.spyOn(Vue, 'inject').mockReturnValue(''); // Needed so that the error is not thrown in getPrefixedTagName() without PorscheDesignSystemProvider
+    vi.spyOn(Vue, 'inject').mockReturnValue(''); // Needed so that the error is not thrown in getPrefixedTagName() without PorscheDesignSystemProvider
   });
+  test('should call addMessage() on toast element', async () => {
+    const toastElement = document.createElement('p-toast') as HTMLElement & {
+      addMessage(message: ToastMessage): void;
+    };
+    const addMessageMock = vi.fn();
+    toastElement.addMessage = addMessageMock;
+    document.body.appendChild(toastElement);
+    customElements.define('p-toast', class PToast extends HTMLElement {});
 
-  it('should call getPrefixedTagName() with correct parameters', () => {
-    const spy = jest.spyOn(utils, 'usePrefix');
+    const { addMessage } = utils.useToastManager();
+    const message: ToastMessage = { text: 'Test', state: 'success' };
+    addMessage(message);
 
-    useToastManager();
+    // wait for customElements.whenDefined to be resolved
+    await new Promise((resolve) => setTimeout(resolve));
 
-    expect(spy).toHaveBeenCalledWith('p-toast');
-  });
-
-  it('should provide addMessage()', () => {
-    expect(useToastManager()).toEqual({ addMessage: expect.anything() });
-  });
-
-  describe('addMessage()', () => {
-    it('should call addMessage() on toast element', async () => {
-      const toastElement = document.createElement('p-toast') as HTMLElement & {
-        addMessage(message: ToastMessage): void;
-      };
-      const addMessageMock = jest.fn();
-      toastElement.addMessage = addMessageMock;
-      document.body.appendChild(toastElement);
-      customElements.define('p-toast', class PToast extends HTMLElement {});
-
-      const { addMessage } = useToastManager();
-      const message: ToastMessage = { text: 'Test', state: 'success' };
-      addMessage(message);
-
-      // wait for customElements.whenDefined to be resolved
-      await new Promise((resolve) => setTimeout(resolve));
-
-      expect(addMessageMock).toHaveBeenCalledWith(message);
-    });
+    expect(addMessageMock).toHaveBeenCalledWith(message);
   });
 });
