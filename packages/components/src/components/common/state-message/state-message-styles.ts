@@ -12,15 +12,19 @@ export const getFunctionalComponentStateMessageStyles = (
 ): Styles<'message'> => {
   return {
     message: {
-      display: 'flex',
-      gap: spacingStaticXSmall,
-      ...textSmallStyle,
-      color: getThemedFormStateColors(theme, state).formStateColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: getThemedFormStateColors('dark', state).formStateColor,
-      }),
-      transition: getTransition('color'),
-      ...additionalDefaultJssStyle,
+      ...(state === 'none'
+        ? { position: 'absolute' } // Needed to breakout of grid gap if no status is set
+        : {
+            display: 'flex',
+            gap: spacingStaticXSmall,
+            ...textSmallStyle,
+            color: getThemedFormStateColors(theme, state).formStateColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              color: getThemedFormStateColors('dark', state).formStateColor,
+            }),
+            transition: getTransition('color'),
+            ...additionalDefaultJssStyle,
+          }),
     },
   };
 };

@@ -96,13 +96,7 @@ exports[`manual test cases > should pass internal props correctly to p-checkbox-
   user-select: none;
 }
 .message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -229,6 +223,11 @@ circle:last-child {
         </p-spinner>
       </div>
       <span
+        class="message"
+        id="message"
+        role="alert"
+      />
+      <span
         class="loading"
         id="loading"
         role="status"
@@ -339,13 +338,7 @@ exports[`manual test cases > should pass internal props correctly to p-checkbox-
   user-select: none;
 }
 .message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -471,6 +464,11 @@ circle:last-child {
           </template>
         </p-spinner>
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
       <span
         class="loading"
         id="loading"
@@ -2352,12 +2350,7 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     user-select: none;
   }
   .message {
-    display: flex;
-    gap: 4px;
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    position: absolute;
   }
     </style>
     <div
@@ -2446,6 +2439,11 @@ img {
           <slot />
         </div>
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
       <span
         aria-live="assertive"
         aria-relevant="additions text"
@@ -2586,12 +2584,7 @@ input:disabled {
   user-select: none;
 }
 .message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -2653,6 +2646,11 @@ input:disabled {
           value="4"
         />
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
       <span
         class="loading"
         id="loading"
@@ -2759,13 +2757,7 @@ exports[`manual test cases > should pass internal props correctly to p-radio-but
   user-select: none;
 }
 .message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -2892,6 +2884,11 @@ circle:last-child {
         </p-spinner>
       </div>
       <span
+        class="message"
+        id="message"
+        role="alert"
+      />
+      <span
         class="loading"
         id="loading"
         role="status"
@@ -2995,13 +2992,7 @@ exports[`manual test cases > should pass internal props correctly to p-radio-but
   user-select: none;
 }
 .message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -3028,6 +3019,11 @@ exports[`manual test cases > should pass internal props correctly to p-radio-but
       >
         <slot />
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
       <span
         class="loading"
         id="loading"
@@ -3290,12 +3286,7 @@ exports[`manual test cases > should pass internal props correctly to p-select-wr
   user-select: none;
 }
 .message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: absolute;
 }
     </style>
     <div
@@ -3535,6 +3526,11 @@ input+span {
           </template>
         </p-select-wrapper-dropdown>
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
     </div>
   </template>
   <select
@@ -3682,12 +3678,7 @@ exports[`manual test cases > should pass internal props correctly to p-select-wr
   user-select: none;
 }
 .message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: absolute;
 }
     </style>
     <div
@@ -3751,6 +3742,11 @@ img {
           </template>
         </p-icon>
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
     </div>
   </template>
   <select
@@ -5745,12 +5741,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   user-select: none;
 }
 .message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: absolute;
 }
     </style>
     <div
@@ -5767,6 +5758,11 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
       >
         <slot />
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
     </div>
   </template>
   <input
@@ -5886,12 +5882,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   user-select: none;
 }
 .message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: absolute;
 }
     </style>
     <div
@@ -5908,6 +5899,11 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
       >
         <slot />
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
     </div>
   </template>
   <input
@@ -6035,12 +6031,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   user-select: none;
 }
 .message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: absolute;
 }
     </style>
     <div
@@ -6212,6 +6203,11 @@ img {
           Toggle password visibility
         </p-button-pure>
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
     </div>
   </template>
   <input
@@ -6344,12 +6340,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   user-select: none;
 }
 .message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: absolute;
 }
     </style>
     <div
@@ -6569,6 +6560,11 @@ img {
           Clear field
         </p-button-pure>
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
     </div>
   </template>
   <input
@@ -8966,13 +8962,7 @@ input::-moz-focus-inner {
   user-select: none;
 }
 .message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -9004,6 +8994,11 @@ input::-moz-focus-inner {
           value="on"
         />
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
       <span
         class="loading"
         id="loading"
@@ -9107,13 +9102,7 @@ exports[`should render dsr component for PCheckboxWrapper 1`] = `
   user-select: none;
 }
 .message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -9138,6 +9127,11 @@ exports[`should render dsr component for PCheckboxWrapper 1`] = `
       >
         <slot />
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
       <span
         class="loading"
         id="loading"
@@ -9369,17 +9363,17 @@ fieldset {
   user-select: none;
 }
 .message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: absolute;
   margin-top: 16px;
 }
     </style>
     <fieldset>
       <slot />
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
     </fieldset>
   </template>
   Some child
@@ -9414,17 +9408,17 @@ fieldset {
   user-select: none;
 }
 .message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: absolute;
   margin-top: 16px;
 }
     </style>
     <fieldset>
       <slot />
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
     </fieldset>
   </template>
   Some child
@@ -13140,12 +13134,7 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     user-select: none;
   }
   .message {
-    display: flex;
-    gap: 4px;
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    position: absolute;
   }
     </style>
     <div
@@ -13234,6 +13223,11 @@ img {
           <slot />
         </div>
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
       <span
         aria-live="assertive"
         aria-relevant="additions text"
@@ -13639,12 +13633,7 @@ input:disabled {
   user-select: none;
 }
 .message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -13702,6 +13691,11 @@ input:disabled {
           type="text"
         />
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
       <span
         class="loading"
         id="loading"
@@ -13944,13 +13938,7 @@ exports[`should render dsr component for PRadioButtonWrapper 1`] = `
   user-select: none;
 }
 .message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  grid-column: 1/3;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -13975,6 +13963,11 @@ exports[`should render dsr component for PRadioButtonWrapper 1`] = `
       >
         <slot />
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
       <span
         class="loading"
         id="loading"
@@ -14621,12 +14614,7 @@ exports[`should render dsr component for PSelect 1`] = `
     user-select: none;
   }
   .message {
-    display: flex;
-    gap: 4px;
-    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    position: absolute;
   }
     </style>
     <div
@@ -14707,6 +14695,11 @@ img {
       >
         <slot />
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
       <span
         aria-live="assertive"
         aria-relevant="additions text"
@@ -14918,12 +14911,7 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
   user-select: none;
 }
 .message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: absolute;
 }
     </style>
     <div
@@ -15132,6 +15120,11 @@ button::-moz-focus-inner {
           </template>
         </p-select-wrapper-dropdown>
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
     </div>
   </template>
   <select />
@@ -18336,12 +18329,7 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
   user-select: none;
 }
 .message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: absolute;
 }
     </style>
     <div
@@ -18356,6 +18344,11 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
       >
         <slot />
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
     </div>
   </template>
   <input
@@ -18534,12 +18527,7 @@ textarea[readonly] {
   user-select: none;
 }
 .message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: absolute;
 }
     </style>
     <div
@@ -18563,6 +18551,11 @@ textarea[readonly] {
           wrap="soft"
         />
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
     </div>
   </template>
   Some child
@@ -18661,12 +18654,7 @@ exports[`should render dsr component for PTextareaWrapper 1`] = `
   user-select: none;
 }
 .message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: absolute;
 }
     </style>
     <div
@@ -18681,6 +18669,11 @@ exports[`should render dsr component for PTextareaWrapper 1`] = `
       >
         <slot />
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
     </div>
   </template>
   <textarea />
