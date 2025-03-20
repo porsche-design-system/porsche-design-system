@@ -12,19 +12,20 @@ export const getFunctionalComponentStateMessageStyles = (
 ): Styles<'message'> => {
   return {
     message: {
-      ...(state === 'none'
-        ? { position: 'absolute' } // Needed to breakout of grid gap if no status is set
-        : {
-            display: 'flex',
-            gap: spacingStaticXSmall,
-            ...textSmallStyle,
-            color: getThemedFormStateColors(theme, state).formStateColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              color: getThemedFormStateColors('dark', state).formStateColor,
-            }),
-            transition: getTransition('color'),
-            ...additionalDefaultJssStyle,
-          }),
+      opacity: '1',
+      display: 'flex',
+      gap: spacingStaticXSmall,
+      ...textSmallStyle,
+      color: getThemedFormStateColors(theme, state).formStateColor,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: getThemedFormStateColors('dark', state).formStateColor,
+      }),
+      transition: `${getTransition('color')}, ${getTransition('opacity')}`,
+      ...additionalDefaultJssStyle,
+      '&:empty': {
+        opacity: '0',
+        position: 'absolute',
+      },
     },
   };
 };
