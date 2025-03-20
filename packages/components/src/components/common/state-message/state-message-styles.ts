@@ -12,7 +12,6 @@ export const getFunctionalComponentStateMessageStyles = (
 ): Styles<'message'> => {
   return {
     message: {
-      opacity: '1',
       display: 'flex',
       gap: spacingStaticXSmall,
       ...textSmallStyle,
