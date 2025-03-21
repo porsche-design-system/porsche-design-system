@@ -7,8 +7,6 @@ SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
 
 source "${SCRIPT_DIR}/run-check-version"
 
-exit 1
-
 # set new version in components
 pushd "./packages/components"
   yarn version --no-git-tag-version --new-version "${1}"
