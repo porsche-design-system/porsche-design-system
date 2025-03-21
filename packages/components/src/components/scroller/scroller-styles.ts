@@ -10,7 +10,7 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import type { Theme } from '../../types';
-import type { ScrollerGradientColor, ScrollerScrollIndicatorPosition } from './scroller-utils';
+import type { ScrollerAlignScrollIndicator, ScrollerGradientColor } from './scroller-utils';
 import { borderRadiusSmall, dropShadowLowStyle, fontLineHeight } from '@porsche-design-system/styles';
 
 const gradientColorLight: Record<ScrollerGradientColor, string> = {
@@ -46,7 +46,7 @@ export const getComponentCss = (
   gradientColor: ScrollerGradientColor,
   isNextHidden: boolean,
   isPrevHidden: boolean,
-  scrollIndicatorPosition: ScrollerScrollIndicatorPosition,
+  alignScrollIndicator: ScrollerAlignScrollIndicator,
   hasScrollbar: boolean,
   theme: Theme
 ): string => {
@@ -58,7 +58,7 @@ export const getComponentCss = (
     width: prevNextWrapperWidth,
     padding: '4px 0',
     display: 'flex',
-    alignItems: scrollIndicatorPosition === 'center' ? 'center' : 'flex-start',
+    alignItems: alignScrollIndicator === 'center' ? 'center' : 'flex-start',
   };
 
   return getCss({

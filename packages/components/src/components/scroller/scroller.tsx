@@ -161,8 +161,8 @@ export class Scroller {
       this.theme
     );
 
+    const PrefixedTagNames = getPrefixedTagNames(this.host);
     const renderPrevNextButton = (direction: ScrollerDirection): JSX.Element => {
-      const PrefixedTagNames = getPrefixedTagNames(this.host);
       return (
         <div key={direction} class={direction === 'next' ? 'action-next' : 'action-prev'}>
           <PrefixedTagNames.pButton
@@ -195,7 +195,7 @@ export class Scroller {
             <div class="trigger" />
           </div>
         </div>
-        {(['prev', 'next'] as ScrollerDirection[]).map(renderPrevNextButton)}
+        {(['prev', 'next'] satisfies ScrollerDirection[]).map(renderPrevNextButton)}
       </div>
     );
   }
