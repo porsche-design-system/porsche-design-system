@@ -19,7 +19,7 @@ import {
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
-import { Label } from '../common/label/label';
+import { LegacyLabel } from '../common/label/legacy-label';
 import { StateMessage } from '../common/state-message/state-message';
 import { getComponentCss } from './textarea-wrapper-styles';
 import type { TextareaWrapperState } from './textarea-wrapper-utils';
@@ -131,11 +131,20 @@ export class TextareaWrapper {
 
     const { disabled, readOnly } = this.textarea;
 
-    attachComponentCss(this.host, getComponentCss, disabled, readOnly, this.hideLabel, this.state, this.hasCounter, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      disabled,
+      readOnly,
+      this.hideLabel,
+      this.state,
+      this.hasCounter,
+      this.theme
+    );
 
     return (
       <div class="root">
-        <Label
+        <LegacyLabel
           host={this.host}
           label={this.label}
           description={this.description}
