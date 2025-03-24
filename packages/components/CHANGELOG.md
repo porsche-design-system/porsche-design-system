@@ -19,6 +19,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Accessibility: fix ARIA live announcements of form components status messages
   ([#3796](https://github.com/porsche-design-system/porsche-design-system/pull/3796))
 
+### [3.27.3] - 2025-03-21
+
+### [3.27.2] - 2025-03-20
+
 ### [3.27.2-rc.0] - 2025-03-18
 
 #### Changed
