@@ -75,20 +75,21 @@ test('should add/remove message text and update aria-label attribute with messag
   await waitForStencilLifecycle(page);
 
   expect(getMessage(page), 'when state = error').toBeDefined();
-  await expect(getMessage(page), 'initially').toContainText('Some error message');
+  await expect(getMessage(page), 'when state = error').toContainText('Some error message');
 
   await setProperty(host, 'state', 'success');
   await setProperty(host, 'message', 'Some success message');
   await waitForStencilLifecycle(page);
 
   expect(getMessage(page), 'when state = success').toBeDefined();
-  await expect(getMessage(page), 'initially').toContainText('Some success message');
+  await expect(getMessage(page), 'when state = success').toContainText('Some success message');
 
   await setProperty(host, 'state', 'none');
   await setProperty(host, 'message', '');
   await waitForStencilLifecycle(page);
 
   await expect(getMessage(page), 'when state = none').toHaveCount(1);
+  await expect(getMessage(page), 'when state = none').toBeEmpty();
 });
 
 test('should disable select when select is disabled programmatically', async ({ page }) => {

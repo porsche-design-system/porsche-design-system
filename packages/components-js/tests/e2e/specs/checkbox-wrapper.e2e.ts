@@ -75,26 +75,28 @@ test('should add/remove message text with message if state changes programmatica
   await initCheckbox(page);
   const host = getHost(page);
   await expect(getMessage(page), 'initially').toHaveCount(1);
+  await expect(getMessage(page), 'initially').toBeEmpty();
 
   await setProperty(host, 'state', 'error');
   await setProperty(host, 'message', 'Some error message');
   await waitForStencilLifecycle(page);
 
   expect(getMessage(page), 'when state = error').toBeDefined();
-  await expect(getMessage(page), 'initially').toContainText('Some error message');
+  await expect(getMessage(page), 'when state = error').toContainText('Some error message');
 
   await setProperty(host, 'state', 'success');
   await setProperty(host, 'message', 'Some success message');
   await waitForStencilLifecycle(page);
 
   expect(getMessage(page), 'when state = success').toBeDefined();
-  await expect(getMessage(page), 'initially').toContainText('Some success message');
+  await expect(getMessage(page), 'when state = success').toContainText('Some success message');
 
   await setProperty(host, 'state', 'none');
   await setProperty(host, 'message', '');
   await waitForStencilLifecycle(page);
 
   await expect(getMessage(page), 'when state = none').toHaveCount(1);
+  await expect(getMessage(page), 'when state = none').toBeEmpty();
 });
 
 test('should toggle checkbox when input is clicked', async ({ page }) => {
