@@ -38,7 +38,6 @@ import {
   attachComponentCss,
   getActionFromKeyboardEvent,
   getComboboxAriaAttributes,
-  getHasCSSAnchorPositioningSupport,
   getHasNativePopoverSupport,
   getHighlightedSelectOption,
   getHighlightedSelectOptionIndex,
@@ -152,7 +151,6 @@ export class Select {
   private searchTimeout: ReturnType<typeof setTimeout> | number = null;
   private slottedImagePath: string = '';
   private hasNativePopoverSupport = getHasNativePopoverSupport();
-  private hasNativeCSSAnchorPositioningSupport = getHasCSSAnchorPositioningSupport();
   private cleanUpAutoUpdate: () => void;
 
   @Listen('internalOptionUpdate')
@@ -180,7 +178,7 @@ export class Select {
       if (this.hasNativePopoverSupport) {
         this.popoverElement.showPopover();
       }
-      if (!this.hasNativeCSSAnchorPositioningSupport && typeof this.cleanUpAutoUpdate === 'undefined') {
+      if (typeof this.cleanUpAutoUpdate === 'undefined') {
         // ensures floating ui event listeners are added when options list is opened
         this.cleanUpAutoUpdate = autoUpdate(this.buttonElement, this.popoverElement, async (): Promise<void> => {
           await optionListUpdatePosition(this.dropdownDirection, this.buttonElement, this.popoverElement);
@@ -245,7 +243,6 @@ export class Select {
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.dropdownDirection,
       this.isOpen,
       this.disabled,
       this.hideLabel,

@@ -4,7 +4,6 @@ import type { Theme } from '../../../types';
 import {
   attachComponentCss,
   getFilterInputAriaAttributes,
-  getHasCSSAnchorPositioningSupport,
   getHasNativePopoverSupport,
   getListAriaAttributes,
   getOptionAriaAttributes,
@@ -73,7 +72,6 @@ export class SelectWrapperDropdown {
   private inputOrButtonElement: HTMLInputElement | HTMLButtonElement;
   private popoverElement: HTMLElement;
   private hasNativePopoverSupport = getHasNativePopoverSupport();
-  private hasNativeCSSAnchorPositioningSupport = getHasCSSAnchorPositioningSupport();
   private cleanUpAutoUpdate: () => void;
 
   private get selectedIndex(): number {
@@ -86,7 +84,7 @@ export class SelectWrapperDropdown {
       if (this.hasNativePopoverSupport) {
         this.popoverElement.showPopover();
       }
-      if (!this.hasNativeCSSAnchorPositioningSupport && typeof this.cleanUpAutoUpdate === 'undefined') {
+      if (typeof this.cleanUpAutoUpdate === 'undefined') {
         // ensures floating ui event listeners are added when options list is opened
         this.cleanUpAutoUpdate = autoUpdate(this.inputOrButtonElement, this.popoverElement, async (): Promise<void> => {
           await optionListUpdatePosition(this.direction, this.inputOrButtonElement, this.popoverElement);
@@ -144,17 +142,7 @@ export class SelectWrapperDropdown {
   }
 
   public render(): JSX.Element {
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.direction,
-      this.isOpen,
-      this.state,
-      this.disabled,
-      this.filter,
-      this.hasNativeCSSAnchorPositioningSupport,
-      this.theme
-    );
+    attachComponentCss(this.host, getComponentCss, this.isOpen, this.state, this.disabled, this.filter, this.theme);
 
     // TODO: part won't be needed as soon as button/input of select-wrapper-dropdown is part of shadow dom of select-wrapper itself
     const part = 'select-wrapper-dropdown';

@@ -11,6 +11,48 @@
     height: 100px;
   }
 
+  @media screen and (min-width: 760px) and (max-width: 999px) {
+      p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(1) {
+          width: 10vw;
+      }
+      p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(2) {
+          width: 200px;
+      }
+      p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(3) {
+          width: 100px;
+      }
+      p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(4) {
+          width: 40vw;
+      }
+      p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(5) {
+          width: 150px;
+      }
+      p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(6) {
+          width: 50vw;
+      }
+  }
+
+  @media screen and (min-width: 1300px) and (max-width: 1759px) {
+      p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(1) {
+          width: 10vw;
+      }
+      p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(2) {
+          width: 200px;
+      }
+      p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(3) {
+          width: 100px;
+      }
+      p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(4) {
+          width: 40vw;
+      }
+      p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(5) {
+          width: 150px;
+      }
+      p-carousel[slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"] div:nth-child(6) {
+          width: 50vw;
+      }
+  }
+
   .is-active {
     background: #fc4040;
   }
@@ -451,8 +493,8 @@
 
 <div class="playground light" title="should render carousel with responsive slidesPerPage">
   <p-carousel
-    heading="Responsive slides per page: {base: 2, s: 3, m: 4, l: 5, xl: 6}"
-    slides-per-page="{base: 2, s: 3, m: 4, l: 5, xl: 6}"
+    heading="Responsive slides per page: {base: 1, s: auto, m: 4, l: auto, xl: 6}"
+    slides-per-page="{base: 1, s: 'auto', m: 4, l: 'auto', xl: 6}"
   >
     <div>Slide 1</div>
     <div>Slide 2</div>
