@@ -26,6 +26,7 @@ IFS='.' read -r current_major current_minor current_patch <<< "$PACKAGE_VERSION"
 IFS='.' read -r new_major new_minor new_patch <<< "$1"
 
 # Compare versions
+# This could be done with 'semver', but we avoid additional dependencies for simplicity.
 if (( new_major < current_major )); then
   echo -e "${RED}Error: New major version can't be lower than the current version. Current: ${PACKAGE_VERSION}, New: ${1}${NC}"
   exit 1
