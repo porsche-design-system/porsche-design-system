@@ -3,9 +3,10 @@
 set -o errexit
 set -o pipefail
 
-SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
-
-source "${SCRIPT_DIR}/run-check-version"
+if [[ -z "${1}" ]]; then
+  echo "Please provide a target version, e.g. './docker.sh run-prepare-release-assets 1.2.3'"
+  exit 1
+fi
 
 pushd "packages/assets"
   yarn version --no-git-tag-version --new-version "${1}"
