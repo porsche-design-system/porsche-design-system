@@ -1,7 +1,8 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
-import { Configurator } from "@/components/playground/Configurator";
-import { buttonTileStory } from "@/app/components/button-tile/examples/button-tile.stories";
+import {Notification} from "@/components/common/Notification";
+import {ComponentStory} from "@/components/playground/ComponentStory";
+import {buttonTileStoryGrid} from "@/app/components/button-tile/button-tile.stories";
 
 export const metadata = {
   title: 'Button Tile - Porsche Design System',
@@ -12,4 +13,16 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-<Configurator tagName="p-button-tile" story={buttonTileStory} />
+## UI behaviour
+
+The component is able to break out of its aspect ratio in case content overflows to be accessibility compliant (see
+first row in example).
+
+Additionally, the component is able to align to the highest CSS Grid child independent of the aspect ratio when used in
+CSS Grid context (see second row in example).
+
+<Notification heading="Browser Support Limitation" heading-tag="h3" state="warning">
+  Currently, Safari is only able to align the height per CSS Grid row as long as the content does not overflow.
+</Notification>
+
+<ComponentStory story={buttonTileStoryGrid} />

@@ -1,7 +1,14 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
-import { Configurator } from "@/components/playground/Configurator";
-import { carouselStory } from "@/app/components/carousel/examples/carousel.stories";
+import { Notification } from "@/components/common/Notification";
+import {ComponentStory} from "@/components/playground/ComponentStory";
+import {carouselStoryFlexibleWidths, carouselStoryIntl} from "@/app/components/carousel/carousel.stories";
+import {ComponentExample} from "@/components/playground/ComponentExample";
+import {
+  carouselExampleDynamicSlides,
+  carouselExampleFocusOnCenterSlide,
+  carouselExampleJumpToSlide
+} from "@porsche-design-system/shared/examples";
 
 export const metadata = {
   title: 'Carousel - Porsche Design System',
@@ -12,4 +19,52 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-<Configurator tagName="p-carousel" story={carouselStory} />
+## Slides with flexible widths
+
+In case you want to have slides with different widths you can use `slidesPerPage` with a value of `auto`.
+
+<Notification heading="Attention" heading-tag="h3" state="warning">
+  It is <strong>crucial</strong> that each slide has explicit dimensions by specifying their width via CSS.
+</Notification>
+
+<ComponentStory story={carouselStoryFlexibleWidths} />
+
+## Jump to slide (activeSlideIndex)
+
+To control the `p-carousel` from the outside you can specify its `activeSlideIndex` initially but also later.
+
+<ComponentExample codeSample={carouselExampleJumpToSlide} />
+
+## Add/remove slides
+
+Slides can be added and removed dynamically.
+
+<ComponentExample codeSample={carouselExampleDynamicSlides} />
+
+## Centered Slide and Gradient Customization
+
+The carousel centers the active slide and loops through slides individually rather than by page when multiple slides are
+visible. You can control its behavior with the `focusOnCenterSlide` prop to keep the active slide centered, and the
+`trimSpace` prop to manage spacing around the carousel. The `gradientColor` prop allows you to customize the background
+gradient, while the `--p-gradient-color-width` CSS variable gives you precise control over the gradient’s width,
+ensuring a consistent and visually polished design.
+
+<ComponentExample codeSample={carouselExampleFocusOnCenterSlide} />
+
+## Internationalization (i18n)
+
+Default wordings for screen readers can be overridden or translated by passing an object to the `intl` property.
+It has the following defaults:
+
+```ts
+type CarouselInternationalization = {
+  prev: 'Previous slide'; // aria-label of prev button
+  next: 'Next slide'; // aria-label of next button
+  first: 'Go to first slide'; // aria-label of next button when on last slide
+  last: 'Go to last slide'; // aria-label of prev button when on first slide
+  slideLabel: '%s of %s'; // aria-label of each slide as "1 of 6"
+  slide: 'slide'; // aria-roledescription of each slide
+};
+```
+
+<ComponentStory story={carouselStoryIntl} />

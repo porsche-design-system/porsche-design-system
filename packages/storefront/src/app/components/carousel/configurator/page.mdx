@@ -1,0 +1,26 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from "@/components/playground/Configurator";
+import { carouselStory } from "@/app/components/carousel/carousel.stories";
+import {Notification} from "@/components/common/Notification";
+
+export const metadata = {
+  title: 'Carousel - Porsche Design System',
+  description: 'Some description'
+}
+
+# Carousel <ComponentStatus tagName="p-carousel"></ComponentStatus>
+
+The `p-carousel` component allows related or similar content to be consumed on a step by step basis with a better
+overview than just showing them in a grid or as a list. The reason for this is, that only a certain amount of slides is
+visible at the same time.
+
+Therefore, the `p-carousel`'s content has to be divided into multiple parts or slides.
+The amount of slides visible can be specified on a per-breakpoint basis.
+
+<Notification heading="Layout hint" heading-tag="h2" state="warning">
+  The component can only be used with the full viewport width. The alignment of its content can be controlled
+  by the <code>width</code> prop, which is in sync with the <b><a href="styles/grid">Porsche Grid</a></b>.<br /><br />
+  Therefore, the following examples only work in fullscreen after clicking the <strong>Maximize</strong> buttons.
+</Notification>
+
+<Configurator tagName="p-carousel" story={carouselStory} />

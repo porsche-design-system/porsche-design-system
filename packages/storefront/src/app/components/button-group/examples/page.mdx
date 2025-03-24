@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
-import { Configurator } from "@/components/playground/Configurator";
-import { buttonGroupStory } from "@/app/components/button-group/examples/button-group.stories";
+import {ComponentStory} from "@/components/playground/ComponentStory";
+import {buttonGroupStoryCustomBreakpoint} from "@/app/components/button-group/button-group.stories";
 
 export const metadata = {
   title: 'Button Group - Porsche Design System',
@@ -12,4 +12,6 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-<Configurator tagName="p-button-group" story={buttonGroupStory} />
+## With custom direction breakpoint
+
+<ComponentStory story={buttonGroupStoryCustomBreakpoint} />
