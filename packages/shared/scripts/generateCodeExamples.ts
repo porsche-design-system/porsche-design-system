@@ -48,20 +48,20 @@ const codeExamples: CodeSample[] = [
   //     },
   //   ],
   // },
-  {
-    component: 'p-accordion',
-    examples: [
-      {
-        name: 'AccordionExample',
-        paths: {
-          'vanilla-js': '/accordion-example.html',
-          angular: '/accordion-example.component.ts',
-          react: '/AccordionExample.tsx',
-          vue: '/AccordionExample.vue',
-        },
-      },
-    ],
-  },
+  // {
+  //   component: 'p-accordion',
+  //   examples: [
+  //     {
+  //       name: 'AccordionExample',
+  //       paths: {
+  //         'vanilla-js': '/accordion-example.html',
+  //         angular: '/accordion-example.component.ts',
+  //         react: '/AccordionExample.tsx',
+  //         vue: '/AccordionExample.vue',
+  //       },
+  //     },
+  //   ],
+  // },
   {
     component: 'p-sheet',
     examples: [

@@ -24,14 +24,14 @@ const getComponents = (): Routes => {
         path: `/components/${component}`,
         type: 'PAGE',
         subPaths: {
+          configurator: {
+            name: 'Configurator',
+            path: `/components/${component}/configurator`,
+            type: 'TAB',
+          },
           examples: {
             name: 'Examples',
             path: `/components/${component}/examples`,
-            type: 'TAB',
-          },
-          configure: {
-            name: 'Configure',
-            path: `/components/${component}/configure`,
             type: 'TAB',
           },
           usage: {

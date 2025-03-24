@@ -1,6 +1,7 @@
 'use client';
 
 import type { SlotStories, Story } from '@/models/story';
+import type { CSSProperties } from 'react';
 
 export const accordionSlotStories: SlotStories<'p-accordion'> = {
   default: {
@@ -90,6 +91,40 @@ export const accordionStoryExpandedClickArea: Story<'p-accordion'> = {
         },
       },
       children: [...(slots?.default.generator() ?? [])],
+    },
+  ],
+};
+
+export const accordionStoryStickyHeadline: Story<'p-accordion'> = {
+  state: {
+    properties: {
+      open: true,
+      heading: 'Some Heading',
+      sticky: true,
+      style: { '--p-accordion-position-sticky-top': '56px' } as CSSProperties,
+    },
+  },
+  generator: ({ properties } = {}) => [
+    {
+      tag: 'p-accordion',
+      properties,
+      events: {
+        // @ts-ignore
+        onUpdate: {
+          target: 'p-accordion',
+          prop: 'open',
+          eventValueKey: 'open',
+          eventType: 'AccordionUpdateEventDetail',
+        },
+      },
+      children: [
+        {
+          tag: 'p-text',
+          children: [
+            'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.',
+          ],
+        },
+      ],
     },
   ],
 };

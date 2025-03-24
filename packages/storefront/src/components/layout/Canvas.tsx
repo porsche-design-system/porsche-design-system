@@ -63,7 +63,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
   }, []);
 
   useEffect(() => {
-    setIsSidebarEndOpen(pathname?.includes('configure') || false);
+    setIsSidebarEndOpen(pathname?.includes('configurator') || false);
   }, [pathname]);
 
   return (
