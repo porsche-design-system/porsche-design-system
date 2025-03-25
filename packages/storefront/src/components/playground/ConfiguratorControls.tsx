@@ -64,7 +64,11 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
     if (!shouldUpdate(selectedValue, propName)) return;
 
     setStoryState((prev) => {
-      const isDefault = meta.propsMeta && isDefaultValue(meta.propsMeta[propName], selectedValue);
+      const isDefault =
+        meta.propsMeta &&
+        isDefaultValue(meta.propsMeta[propName], selectedValue) &&
+        // If the prop is controlled we need to keep it in the state
+        !meta.controlledMeta?.some(({ props }) => props.includes(propName));
       const updatedProperties = { ...prev.properties };
 
       if (selectedValue === undefined || isDefault) {
