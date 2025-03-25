@@ -1,7 +1,9 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
-import { Configurator } from "@/components/playground/Configurator";
-import { flyoutSlotStories, flyoutStory } from "@/app/components/flyout/examples/flyout.stories";
+import {ComponentStory} from "@/components/playground/ComponentStory";
+import {flyoutStoryGrid, flyoutStoryStickyTop} from "@/app/components/flyout/flyout.stories";
+import {ComponentExample} from "@/components/playground/ComponentExample";
+import {flyoutExampleForm} from "@porsche-design-system/shared/examples";
 
 export const metadata = {
   title: 'Flyout - Porsche Design System',
@@ -12,5 +14,23 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-<Configurator tagName="p-flyout" story={flyoutStory} slotStories={flyoutSlotStories} />
+## Sticky content with Custom CSS Property (Experimental)
+
+In order to display some sticky element within the flyout content you can use the experimental `--p-flyout-sticky-top`
+CSS custom property to account for the height of the header.
+
+<ComponentStory story={flyoutStoryStickyTop} />
+
+## Flyout with Porsche Grid
+
+The `p-flyout` component makes decent changes to the Porsche Grid to give support if used as slotted content. The
+following example shows the visualization of the Porsche Grid when used inside the flyout component:
+
+<ComponentStory story={flyoutStoryGrid} />
+
+## Flyout Form
+
+The following example demonstrates how a form can be used within a flyout component:
+
+<ComponentExample codeSample={flyoutExampleForm} />
 

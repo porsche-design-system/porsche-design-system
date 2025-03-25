@@ -10,16 +10,7 @@ export const flexStory: Story<'p-flex'> = {
       children: [
         { tag: 'p-flex-item', children: ['1'] },
         { tag: 'p-flex-item', children: ['2'] },
-      ],
-    },
-    {
-      tag: 'p-flex',
-      properties: {
-        className: 'example-flex',
-      },
-      children: [
-        { tag: 'p-flex-item', children: ['1'] },
-        { tag: 'p-flex-item', children: ['2'] },
+        { tag: 'p-flex-item', children: ['3'] },
       ],
     },
     {
@@ -30,6 +21,9 @@ export const flexStory: Story<'p-flex'> = {
   }
   .example-flex > :nth-child(2n) {
     background-color: #00bfff;
+  }
+  .example-flex > :nth-child(3n) {
+    background-color: #1e90ff;
   }
   .example-flex > * {
     padding: 0 6vw;

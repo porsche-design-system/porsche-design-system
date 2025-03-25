@@ -1,8 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
-import { ConfiguratorControls } from "@/components/playground/ConfiguratorControls";
-import { Configurator } from "@/components/playground/Configurator";
-import { fieldsetStory } from "@/app/components/fieldset/examples/fieldset.stories";
+import {fieldsetStorySlottedLabel, fieldsetStorySlottedMessage} from "@/app/components/fieldset/fieldset.stories";
+import {ComponentStory} from "@/components/playground/ComponentStory";
 
 export const metadata = {
   title: 'Fieldset - Porsche Design System',
@@ -13,4 +12,10 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-<Configurator tagName="p-fieldset" story={fieldsetStory} />
+## Slotted label
+
+<ComponentStory story={fieldsetStorySlottedLabel} />
+
+## Slotted message
+
+<ComponentStory story={fieldsetStorySlottedMessage} />

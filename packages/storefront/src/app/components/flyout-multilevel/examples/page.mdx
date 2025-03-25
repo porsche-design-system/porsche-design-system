@@ -1,7 +1,8 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
 import { Configurator } from "@/components/playground/Configurator";
-import { flyoutMultilevelStory } from "@/app/components/flyout-multilevel/examples/flyout-multilevel.stories";
+import {ComponentStory} from "@/components/playground/ComponentStory";
+import {flyoutMultilevelActiveIdentifier} from "@/app/components/flyout-multilevel/flyout-multilevel.stories";
 
 export const metadata = {
   title: 'Flyout Multilevel - Porsche Design System',
@@ -12,5 +13,11 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-<Configurator tagName="p-flyout-multilevel" story={flyoutMultilevelStory} />
+## Active identifier
+
+The `p-flyout-multilevel` can be initialized with an `active-identifier` property. This identifier is used to open the
+flyout with the corresponding deeply nested `p-flyout-multilevel-item` expanded. The `active-identifier` **must** match
+a value of the `identifier` property of the `p-flyout-multilevel-item` component.
+
+<ComponentStory story={flyoutMultilevelActiveIdentifier} />
 

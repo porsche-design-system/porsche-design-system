@@ -1,0 +1,22 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from "@/components/playground/Configurator";
+import { flexStory } from "@/app/components/flex/flex.stories";
+import {Notification} from "@/components/common/Notification";
+
+export const metadata = {
+  title: 'Flex - Porsche Design System',
+  description: 'Some description'
+}
+
+# Flex <ComponentStatus tagName="p-flex"></ComponentStatus>
+
+The Porsche Design System flex layout system is based on standard CSS Flexbox browser behaviour and can be controlled by
+the properties of the `p-flex` container and `p-flex-item`. It can be used to quickly layout standard content blocks or
+components.
+
+<Notification heading="Deprecation hint" heading-tag="h2" state="error">
+  This component is deprecated and will be removed with the next major release.
+  In general, please use native <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox">CSS Flex</a> instead for better performance and more standardized layout technique.
+</Notification>
+
+<Configurator tagName="p-flex" story={flexStory} />

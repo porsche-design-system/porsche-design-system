@@ -98,3 +98,63 @@ export const flyoutMultilevelStory: Story<'p-flyout-multilevel'> = {
     },
   ],
 };
+
+export const flyoutMultilevelActiveIdentifier: Story<'p-flyout-multilevel'> = {
+  state: {
+    properties: {
+      open: false,
+      activeIdentifier: 'id-2',
+    },
+  },
+  generator: ({ properties } = {}) => [
+    {
+      tag: 'nav',
+      properties: { 'aria-label': 'Main' },
+      children: [
+        {
+          tag: 'p-button',
+          properties: {
+            type: 'button',
+            aria: { 'aria-haspopup': 'dialog' },
+          },
+          events: {
+            onClick: {
+              target: 'p-flyout-multilevel',
+              prop: 'open',
+              value: true,
+            },
+          },
+          children: ['Open Flyout Multilevel'],
+        },
+        {
+          tag: 'p-flyout-multilevel',
+          properties,
+          events: {
+            onDismiss: {
+              target: 'p-flyout-multilevel',
+              prop: 'open',
+              value: false,
+            },
+            onUpdate: {
+              target: 'p-flyout-multilevel',
+              prop: 'activeIdentifier',
+              eventValueKey: 'activeIdentifier',
+              eventType: 'FlyoutMultilevelUpdateEventDetail',
+            },
+          },
+          children: [
+            ...(['id-1', 'id-2', 'id-3', 'id-4', 'id-5'].map((id) => ({
+              tag: 'p-flyout-multilevel-item',
+              properties: { identifier: id, label: 'Some Label' },
+              children: [
+                { tag: 'a', properties: { href: '#' }, children: ['Some anchor'] },
+                { tag: 'a', properties: { href: '#' }, children: ['Some anchor'] },
+                { tag: 'a', properties: { href: '#' }, children: ['Some anchor'] },
+              ].filter(Boolean),
+            })) as ElementConfig<'p-flyout-multilevel-item'>[]),
+          ],
+        },
+      ],
+    },
+  ],
+};

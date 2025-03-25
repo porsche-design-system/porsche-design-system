@@ -1,0 +1,17 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { ConfiguratorControls } from "@/components/playground/ConfiguratorControls";
+import { Configurator } from "@/components/playground/Configurator";
+import {fieldsetSlotStories, fieldsetStory} from "@/app/components/fieldset/fieldset.stories";
+
+export const metadata = {
+  title: 'Fieldset - Porsche Design System',
+  description: 'Some description'
+}
+
+# Fieldset <ComponentStatus tagName="p-fieldset"></ComponentStatus>
+
+The `p-fieldset` is a grouping component for wrapping contextual associated form elements. Its visible part is an HTML
+_legend_ element, which can be seen like a headline for describing the meaning of a form block. You can see some usage
+examples on our [form patterns section](patterns/forms/resources).
+
+<Configurator tagName="p-fieldset" story={fieldsetStory} slotStories={fieldsetSlotStories} />
