@@ -40,3 +40,33 @@ export const linkStory: Story<'p-link'> = {
     },
   ],
 };
+
+export const linkStoryFrameworkRouting: Story<'p-link'> = {
+  generator: () => [
+    {
+      tag: 'p-link',
+      children: [
+        {
+          tag: 'a',
+          properties: { href: 'https://porsche.com' },
+          children: ['Some label'],
+        },
+      ],
+    },
+  ],
+};
+
+export const linkStoryIcon: Story<'p-link'> = {
+  generator: () => [
+    {
+      tag: 'p-link',
+      properties: { href: 'https://porsche.com', icon: 'phone' },
+      children: ['Some label'],
+    },
+    {
+      tag: 'p-link',
+      properties: { href: 'https://porsche.com', iconSource: 'assets/icon-custom-kaixin.svg', hideLabel: true },
+      children: ['Some label'],
+    },
+  ],
+};

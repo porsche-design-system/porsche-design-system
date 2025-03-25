@@ -1,7 +1,12 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
 import { Configurator } from "@/components/playground/Configurator";
-import { headlineStory } from "@/app/components/headline/examples/headline.stories";
+import {
+  headlineStory,
+  headlineStoryCustomColor,
+  headlineStorySemantics
+} from "@/app/components/headline/headline.stories";
+import {ComponentStory} from "@/components/playground/ComponentStory";
 
 export const metadata = {
   title: 'Headline - Porsche Design System',
@@ -10,6 +15,16 @@ export const metadata = {
 
 # Headline <ComponentStatus tagName="p-headline"></ComponentStatus>
 
-<TableOfContents headings={[]} />
+<TableOfContents headings={["Semantics","Color"]} />
 
-<Configurator tagName="p-headline" story={headlineStory} />
+## Semantics
+
+To provide more contextual HTML semantics you can either pass them with the `tag` property or directly inside a slot.
+
+<ComponentStory story={headlineStorySemantics} />
+
+## Color
+
+Predefined colors associated with its theme are available but also inherit mode can be used to define a custom color.
+
+<ComponentStory story={headlineStoryCustomColor} />

@@ -1,7 +1,8 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
 import { Configurator } from "@/components/playground/Configurator";
-import { iconStory } from "@/app/components/icon/examples/icon.stories";
+import {iconStory, iconStoryCustom, iconStoryOverview} from "@/app/components/icon/icon.stories";
+import {ComponentStory} from "@/components/playground/ComponentStory";
 
 export const metadata = {
   title: 'Icon - Porsche Design System',
@@ -10,6 +11,21 @@ export const metadata = {
 
 # Icon <ComponentStatus tagName="p-icon"></ComponentStatus>
 
-<TableOfContents headings={[]} />
+<TableOfContents headings={["Name","Custom icon"]} />
 
-<Configurator tagName="p-icon" story={iconStory} />
+## Name
+
+For more information and a complete overview of all available Porsche icons, head over to Porsche Icons
+([Porsche Icons](https://icons.porsche.com)).
+To reference an icon just use the `name` property with a predefined icon id.
+
+<ComponentStory story={iconStoryOverview} />
+
+## Custom icon
+
+The whole Porsche icon set is hosted on the Porsche Design System CDN. If there is need to show a custom icon which
+doesn't exist yet, you can define a custom path (absolute or relative) to your SVG icon in the `source` property. Be
+sure that the custom icon serves the specific needs like size and viewbox which are described in the
+[usage documentation](components/icon/usage).
+
+<ComponentStory story={iconStoryCustom} />

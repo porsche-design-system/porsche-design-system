@@ -49,7 +49,7 @@ export const CodeBlock = ({ frameworkMarkup, children }: PropsWithChildren<CodeB
       </div>
       {/* @ts-expect-error: Suppress type incompatibility */}
       <SyntaxHighlighter
-        className="markup"
+        className="markup max-h-96 overflow-auto"
         language={frameworkLanguageMap[selectedFramework]}
         showLineNumbers={false}
         useInlineStyles={false}

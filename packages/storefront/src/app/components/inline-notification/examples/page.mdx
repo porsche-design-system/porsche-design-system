@@ -1,7 +1,12 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
 import { Configurator } from "@/components/playground/Configurator";
-import { inlineNotificationStory } from "@/app/components/inline-notification/examples/inline-notifications.stories";
+import { inlineNotificationStory } from "@/app/components/inline-notification/inline-notifications.stories";
+import {ComponentExample} from "@/components/playground/ComponentExample";
+import {
+  inlineNotificationExampleActionButton,
+  inlineNotificationExampleEvents
+} from "@porsche-design-system/shared/examples";
 
 export const metadata = {
   title: 'Inline Notification - Porsche Design System',
@@ -12,5 +17,19 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-<Configurator tagName="p-inline-notification" story={inlineNotificationStory} />
+## Event Handling
+
+The custom event that is emitted on close button click is called `dismiss`.
+It can be used to remove the component.
+
+<ComponentExample codeSample={inlineNotificationExampleEvents} />
+
+### Action Button
+
+A custom interaction, e.g., to retry the previous action like submitting a form, can be provided by setting the optional
+`actionLabel`, `actionIcon` and `actionLoading` properties.
+The custom event that is emitted on action button click is called `action`.
+
+<ComponentExample codeSample={inlineNotificationExampleActionButton} />
+
 

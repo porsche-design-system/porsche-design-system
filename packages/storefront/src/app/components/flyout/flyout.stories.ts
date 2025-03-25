@@ -1,6 +1,6 @@
 'use client';
 
-import { visualizeGridConfig } from '@/app/components/grid/examples/grid.stories';
+import { visualizeGridConfig } from '@/app/components/grid/grid.stories';
 import type { SlotStories, Story } from '@/models/story';
 
 export const flyoutSlotStories: SlotStories<'p-flyout'> = {
