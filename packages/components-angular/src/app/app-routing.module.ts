@@ -201,6 +201,16 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.InlineNotificationExampleEventsComponent,
   },
   {
+    name: 'Input Password Example',
+    path: 'input-password-example',
+    component: fromExamples.InputPasswordExampleComponent,
+  },
+  {
+    name: 'Input Password Example Controlled',
+    path: 'input-password-controlled-example',
+    component: fromExamples.InputPasswordExampleControlledComponent,
+  },
+  {
     name: 'Link Tile Product Example',
     path: 'link-tile-product-example',
     component: fromExamples.LinkTileProductExampleComponent,

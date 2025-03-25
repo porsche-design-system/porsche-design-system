@@ -36,7 +36,8 @@ import {
   throwIfElementIsNotOfKind,
   validateProps,
 } from '../../../utils';
-import { Label, descriptionId, labelId } from '../../common/label/label';
+import { Label } from '../../common/label/label';
+import { descriptionId, labelId } from '../../common/label/label-utils';
 import { StateMessage, messageId } from '../../common/state-message/state-message';
 import { getComponentCss } from './multi-select-styles';
 import {
