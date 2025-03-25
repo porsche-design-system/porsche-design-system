@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
-import { Configurator } from "@/components/playground/Configurator";
-import { dividerStory } from "@/app/components/divider/examples/divider.stories";
+import {ComponentStory} from "@/components/playground/ComponentStory";
+import {dividerStoryResponsive, dividerStoryVertical} from "@/app/components/divider/divider.stories";
 
 export const metadata = {
   title: 'Divider - Porsche Design System',
@@ -12,5 +12,15 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-<Configurator tagName="p-divider" story={dividerStory} />
+## Vertical
 
+**Hint:** The component has not an implicit vertical height unless we set a container which provides it or define the
+height on the component itself.
+
+<ComponentStory story={dividerStoryVertical} />
+
+## Responsive
+
+You can change the divider's direction by using different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+
+<ComponentStory story={dividerStoryResponsive} />

@@ -1,0 +1,16 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from "@/components/playground/Configurator";
+import { dividerStory } from "@/app/components/divider/divider.stories";
+
+export const metadata = {
+  title: 'Divider - Porsche Design System',
+  description: 'Some description'
+}
+
+# Divider <ComponentStatus tagName="p-divider"></ComponentStatus>
+
+The `p-divider` is used as 'horizontal or vertical rule' and displays a dividing line. The component is self-closing.
+Slotted content between the component tags won't be displayed.
+
+<Configurator tagName="p-divider" story={dividerStory} />
+

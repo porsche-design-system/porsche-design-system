@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
-import { Configurator } from "@/components/playground/Configurator";
-import { crestStory } from "@/app/components/crest/examples/crest.stories";
+import {crestStory, crestStoryCustomPadding, crestStoryLink} from "@/app/components/crest/crest.stories";
+import {ComponentStory} from "@/components/playground/ComponentStory";
 
 export const metadata = {
   title: 'Crest - Porsche Design System',
@@ -12,5 +12,17 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-<Configurator tagName="p-crest" story={crestStory} />
+## Link
+
+The Porsche Crest will be rendered as `<a>`-tag as soon as an `href` is provided.
+
+<ComponentStory story={crestStoryLink} />
+
+## Custom clickable/focusable area
+
+Sometimes it might be useful to enlarge the clickable/focusable area of the Porsche Crest. Therefore, a custom padding
+can be set on the host element.
+
+<ComponentStory story={crestStoryCustomPadding} />
+
 
