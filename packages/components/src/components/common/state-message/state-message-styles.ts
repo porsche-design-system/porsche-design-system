@@ -19,8 +19,12 @@ export const getFunctionalComponentStateMessageStyles = (
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: getThemedFormStateColors('dark', state).formStateColor,
       }),
-      transition: getTransition('color'),
+      transition: `${getTransition('color')}, ${getTransition('opacity')}`,
       ...additionalDefaultJssStyle,
+      '&:empty': {
+        opacity: '0',
+        position: 'absolute',
+      },
     },
   };
 };
