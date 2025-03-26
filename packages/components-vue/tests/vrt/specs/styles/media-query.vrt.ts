@@ -1,9 +1,8 @@
 import { expect, test } from '@playwright/test';
 import {
   viewportWidth3XL,
-  viewportWidth4XL,
-  viewportWidths,
   viewportWidthXXL,
+  viewportWidths,
 } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 const style = 'styles-media-query';

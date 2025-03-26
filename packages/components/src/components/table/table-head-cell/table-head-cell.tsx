@@ -24,7 +24,7 @@ const propTypes: PropTypes<typeof TableHeadCell> = {
     active: AllowedTypes.boolean,
     direction: AllowedTypes.oneOf<Direction>([undefined, 'asc', 'desc']),
   }),
-  hideLabel: AllowedTypes.breakpoint('boolean'),
+  hideLabel: AllowedTypes.boolean,
   multiline: AllowedTypes.boolean,
 };
 

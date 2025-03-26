@@ -1,9 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
-
-const PDS_PATCH_COMMENT = '/* ========= PDS PATCH ========= */';
-
-const escapeString = (str: string): string => str.replace(/[\\"'()\[\]{}.?+*^$|]/g, '\\$&');
+import { PDS_PATCH_COMMENT } from './constants';
+import { backupOrRestoreFile, escapeString, getPatchMarkerCount } from './utils';
 
 /**
  * This script patches the bindings for the `ElementInternals` object created by the Stencil compiler to support
@@ -33,28 +31,32 @@ const escapeString = (str: string): string => str.replace(/[\\"'()\[\]{}.?+*^$|]
  * this.internals = hostRef.$hostElement$.attachInternals?.();
  * ```
  */
-const patchStencilCompiler = (): void => {
-  const stencilFilePath = path.resolve(require.resolve('@stencil/core'), '../../../compiler/stencil.js');
-
+const patchStencilElementInternals = (fileContent: string): string => {
   const pdsPatchValue = `createIdentifier("attachInternals?.") ${PDS_PATCH_COMMENT}`;
   const pdsPatchRegExPattern = escapeString(pdsPatchValue);
-
-  const fileContent = fs.readFileSync(stencilFilePath, 'utf8');
   const pdsPatchRegEx = new RegExp(pdsPatchRegExPattern, 'g');
-  const getPatchCount = (script: string): number => (script.match(pdsPatchRegEx) || []).length;
 
-  if (getPatchCount(fileContent) === 0) {
+  if (getPatchMarkerCount(fileContent, pdsPatchRegEx) === 0) {
     const newFileContent = fileContent.replace(/createIdentifier\("attachInternals"\)/g, pdsPatchValue);
-
-    if (getPatchCount(newFileContent) !== 2) {
-      throw new Error('Failed patching stencil core. Position for snippets not found.\n');
-    } else {
-      fs.writeFileSync(stencilFilePath, newFileContent);
-      process.stdout.write('Successfully patched stencil compiler.\n');
+    if (getPatchMarkerCount(newFileContent, pdsPatchRegEx) !== 2) {
+      throw new Error('Failed patching @stencil/core compiler. Position for snippets not found.\n');
     }
-  } else {
-    process.stdout.write('Stencil compiler already patched. Doing nothing.\n');
+    return newFileContent;
   }
+
+  process.stdout.write('@stencil/core compiler already patched. Doing nothing.\n');
+  return fileContent;
 };
 
-patchStencilCompiler();
+const patchStencilCoreCompiler = (): void => {
+  const stencilFilePath = path.resolve(require.resolve('@stencil/core'), '../../../compiler/stencil.js');
+  backupOrRestoreFile(stencilFilePath);
+
+  let fileContent = fs.readFileSync(stencilFilePath, 'utf8');
+  fileContent = patchStencilElementInternals(fileContent);
+
+  fs.writeFileSync(stencilFilePath, fileContent);
+  process.stdout.write('Successfully patched @stencil/core compiler.\n');
+};
+
+patchStencilCoreCompiler();
