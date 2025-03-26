@@ -4,6 +4,5 @@ export default defineConfig({
   test: {
     include: ['**/tests/smoke/specs/**/*.smoke.ts'],
     testTimeout: 10000,
-    environment: 'jsdom',
   },
 });
