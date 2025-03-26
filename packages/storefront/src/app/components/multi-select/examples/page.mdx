@@ -1,7 +1,15 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
 import { Configurator } from "@/components/playground/Configurator";
-import { multiSelectStory } from "@/app/components/multi-select/examples/multi-select.stories";
+import {multiSelectStory, multiSelectStoryOptgroup} from "@/app/components/multi-select/multi-select.stories";
+import {Notification} from "@/components/common/Notification";
+import {ComponentExample} from "@/components/playground/ComponentExample";
+import {
+  multiSelectExample,
+  multiSelectExampleControlled,
+  multiSelectExampleDynamic
+} from "@porsche-design-system/shared/examples";
+import {ComponentStory} from "@/components/playground/ComponentStory";
 
 export const metadata = {
   title: 'Multi Select - Porsche Design System',
@@ -12,4 +20,40 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-<Configurator tagName="p-multi-select" story={multiSelectStory} />
+## Form
+
+The `p-multi-select` component is a form-associated custom element that integrates seamlessly with forms. Leveraging the
+[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API, it functions similar to a
+native select, ensuring compatibility with form behaviors. However, note that browser support for this API is limited.
+
+When used within a form element, it's required to provide a name attribute to the `p-multi-select` component. This
+attribute establishes the link between the component and the form, enabling the selected values to be included in the
+form's data when it's submitted.
+
+<Notification heading="Attention" heading-tag="h2" state="warning">
+  <code>p-multi-select</code> does not use a native select internally. As a result, it lacks access to native <code>ValidityState</code>
+  properties and <code>validationMessage</code>, and it cannot display the native validation popover. This means validation behavior
+  and error display will need to be implemented separately if required.
+</Notification>
+
+<ComponentExample codeSample={multiSelectExample} />
+
+## Controlled
+
+In the controlled approach, the `p-multi-select` component is externally controlled. Selected options trigger a custom
+update event, allowing you to use the updated value. Internally, the value will be updated automatically but can be
+overwritten by passing in a new value.
+
+<ComponentExample codeSample={multiSelectExampleControlled} />
+
+## Set Value
+
+The `p-multi-select` component behaves like regular form elements. It updates its value automatically based on user
+choices, but can also be changed manually by using the value property. This property takes an array of strings that
+represent the selected option values.
+
+<ComponentExample codeSample={multiSelectExampleDynamic} />
+
+## With optgroups
+
+<ComponentStory story={multiSelectStoryOptgroup} />

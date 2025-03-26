@@ -1,15 +1,69 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
-import { Configurator } from "@/components/playground/Configurator";
-import { modelSignatureStory } from "@/app/components/model-signature/examples/model-signature.stories";
+import {
+  modelSignatureStoryCustomStyling,
+  modelSignatureStoryMaskBlendMode, modelSignatureStoryMaskImage, modelSignatureStoryMaskVideo,
+  modelSignatureStorySafeZone
+} from "@/app/components/model-signature/model-signature.stories";
+import {ComponentStory} from "@/components/playground/ComponentStory";
+import { componentMeta } from '@porsche-design-system/component-meta';
+import {Notification} from "@/components/common/Notification";
 
 export const metadata = {
   title: 'Model Signature - Porsche Design System',
   description: 'Some description'
 }
 
+export const modelSignatureSafeZoneDefault = JSON.stringify(componentMeta["p-model-signature"].propsMeta.safeZone.defaultValue);
+
 # Model Signature <ComponentStatus tagName="p-model-signature"></ComponentStatus>
 
 <TableOfContents headings={[]} />
 
-<Configurator tagName="p-model-signature" story={modelSignatureStory} />
+## Safe Zone
+
+The `safe-zone` prop's default is <code>{modelSignatureSafeZoneDefault}</code>, which ensures a visual balance across
+all model signatures. This is most likely the best option when the model signatures are used in combination or within
+tiles next to each other. When `false` is set as value, the model signatures come without any safe zone which is
+probably preferred when the element is positioned independently.
+
+<ComponentStory story={modelSignatureStorySafeZone} />
+
+## Mask: Blend Mode
+
+In case, `p-model-signature` shall be blended with its background, the CSS property
+[mix-blend-mode](https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode) can be used (`{{ blendMode }}` will
+bring the best results). Depending on the use case it may be important to use it together with the CSS property
+[isolation](https://developer.mozilla.org/en-US/docs/Web/CSS/isolation) to create a new stacking context. It's also
+important to mention, that the `p-model-signature` has to be used together with `contrast-{high|medium}` color to have
+proper blend mode results.
+
+<ComponentStory story={modelSignatureStoryMaskBlendMode} />
+
+## Mask: Image
+
+<Notification heading="Experimental" heading-tag="h3" state="warning">
+  The following example shows what is technically possible but has not yet been approved by the Porsche Brand Guide.
+</Notification>
+
+<ComponentStory story={modelSignatureStoryMaskImage} />
+
+## Mask: Video
+
+<Notification heading="Experimental" heading-tag="h3" state="warning">
+  The following example shows what is technically possible but has not yet been approved by the Porsche Brand Guide.
+</Notification>
+
+<ComponentStory story={modelSignatureStoryMaskVideo} />
+
+## Custom styling
+
+The `p-model-signature` component has some values which can be overwritten by CSS Custom Properties (aka CSS Variables):
+
+```scss
+--p-model-signature-color
+--p-model-signature-width
+--p-model-signature-height
+```
+
+<ComponentStory story={modelSignatureStoryCustomStyling} />

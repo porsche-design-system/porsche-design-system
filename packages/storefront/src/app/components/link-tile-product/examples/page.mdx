@@ -1,7 +1,11 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
 import { Configurator } from "@/components/playground/Configurator";
-import { linkTileProductStory } from "@/app/components/link-tile-product/examples/link-tile-product.stories";
+import {
+  linkTileProductStory,
+  linkTileProductStoryFrameworkRouting
+} from "@/app/components/link-tile-product/link-tile-product.stories";
+import {ComponentStory} from "@/components/playground/ComponentStory";
 
 export const metadata = {
   title: 'Link Tile Product - Porsche Design System',
@@ -12,4 +16,10 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-<Configurator tagName="p-link-tile-product" story={linkTileProductStory} />
+## Framework routing (anchor nesting)
+
+To support framework routing you can provide the link as a slotted element by using the `anchor` slot instead of using
+the `href` property. Ensure the named slot is directly on the anchor element, without nesting. To ensure accessibility,
+the slotted link must be labeled with both the product name, its price and optionally with the original price.
+
+<ComponentStory story={linkTileProductStoryFrameworkRouting} />

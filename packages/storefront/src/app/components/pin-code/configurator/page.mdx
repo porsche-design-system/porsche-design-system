@@ -1,0 +1,37 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from "@/components/playground/Configurator";
+import { pinCodeStory } from "@/app/components/pin-code/pin-code.stories";
+import {Notification} from "@/components/common/Notification";
+
+export const metadata = {
+  title: 'Pin Code - Porsche Design System',
+  description: 'Some description'
+}
+
+# Pin Code <ComponentStatus tagName="p-pin-code"></ComponentStatus>
+
+The `p-pin-code` component is optimized for entering sequences of digits. The most common use case is for entering
+one-time-passwords (OTP) or pin codes. The input fields allow only one digit at a time. When a digit is entered, the
+focus shifts automatically to the next input, until every input is filled.
+
+A few things to note:
+
+- Only digits can be entered.
+- Only one digit can be entered per input.
+- Pressing `Delete` or `Backspace`: If the focussed input is blank and `Delete`/`Backspace` is pressed the focus
+transfers to the next/previous input, and clears the value of the next/previous input (if any). This avoids the need
+to explicitly `Shift+Tab & Delete`/ `Tab & Backspace`.
+
+<Notification heading="Attention" heading-tag="h2" state="warning">
+  When the <code>p-pin-code</code> component is used within a form, it utilizes the
+  <a href="https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals">ElementInternals</a> API, which has limited
+  browser support. For broader browser compatibility, consider using a
+  <a href="components/textarea/examples#controlled">controlled</a> approach instead.
+</Notification>
+
+A `label` is a caption which informs the user what information a particular form field is asking for. The `p-pin-code`
+component can be used with or without a label, but it's recommended to keep the label visible for better accessibility
+whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.
+
+<Configurator tagName="p-pin-code" story={pinCodeStory} />
+

@@ -1,7 +1,14 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
 import { Configurator} from "@/components/playground/Configurator";
-import { modalSlotStories, modalStory} from "@/app/components/modal/examples/modal.stories";
+import {
+  modalSlotStories,
+  modalStory,
+  modalStoryAlertDialog, modalStoryCustomStyling,
+  modalStoryGrid,
+  modalStoryScrollable
+} from "@/app/components/modal/modal.stories";
+import {ComponentStory} from "@/components/playground/ComponentStory";
 
 export const metadata = {
   title: 'Modal - Porsche Design System',
@@ -12,4 +19,43 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-<Configurator tagName="p-modal" story={modalStory} slotStories={modalSlotStories} />
+## Scrollable modal with sticky footer
+
+If the modal's content does not fit into the current boundaries the content becomes scrollable and the footer area
+sticky.
+
+<ComponentStory story={modalStoryScrollable} />
+
+## Modal with Porsche Grid
+
+The `p-modal` component makes decent changes to the Porsche Grid to give support if used as slotted content. The
+following example shows the visualization of the Porsche Grid when used inside the modal component:
+
+<ComponentStory story={modalStoryGrid} />
+
+## Modal as alert dialog
+
+The `p-modal` component can be used as an alert dialog. This is a modal dialog that interrupts the user's workflow to
+draw attention to an important message and requires a response.
+
+<ComponentStory story={modalStoryAlertDialog} />
+
+## Custom styling
+
+The modal component has some values which can be overwritten by CSS Custom Properties (aka CSS Variables). This might be
+useful for e.g. a "Cookie Consent Dialog" to reserve certain space when used with `backdrop: 'shading'` to always have
+the Porsche [crest](components/crest) or [wordmark](components/wordmark) visible in the background of the page. Since
+the modal is centered within the viewport and shrinks to its content, the custom vertical spacing definition will act
+like a safe zone.
+
+In addition, it's possible to make containers or elements (e.g. `div`, `img` etc.) stretch into the padding safe-zone by
+adding the <code v-text="stretchClassName"></code> CSS class.
+
+```scss
+// the modal comes with predefined margin / safe-zone which needs to be considered when a custom width is defined
+--p-modal-width: clamp(276px, 45.25vw + 131px, 1000px);
+--p-modal-spacing-top: 200px;
+--p-modal-spacing-bottom: 50px;
+```
+
+<ComponentStory story={modalStoryCustomStyling} />

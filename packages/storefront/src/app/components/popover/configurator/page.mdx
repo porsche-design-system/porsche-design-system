@@ -1,0 +1,23 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import { popoverStory } from "@/app/components/popover/popover.stories";
+import {PPopover} from "@porsche-design-system/components-react/ssr";
+
+export const metadata = {
+  title: 'Popover - Porsche Design System',
+  description: 'Some description'
+}
+
+# Popover <ComponentStatus tagName="p-popover"></ComponentStatus>
+
+The `p-popover` component can be used to display some additional content on top of another in conjunction with the info
+<PPopover description="Hello World"></PPopover>-button.
+
+Only one Popover can be opened at the time, by clicking another Popover the opened Popover will be closed.
+
+You can use the `description` or the slot of the Popover to provide content which will be displayed in the open Popover.
+
+**Hint:** The `p-popover` utilizes the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) and gets rendered on the `#top-layer` which enables it to be shown correctly even when used e.g. within a scroll container.
+
+<Configurator tagName="p-popover" story={popoverStory} />
