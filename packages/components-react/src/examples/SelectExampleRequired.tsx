@@ -23,11 +23,11 @@ export const SelectExampleRequiredPage = (): JSX.Element => {
   return (
     <>
       <label>
-        <input type="checkbox" name="required" checked={isRequired} onChange={() => onChangeRequired} />
+        <input type="checkbox" name="required" checked={isRequired} onChange={onChangeRequired} />
         Required
       </label>
       <label>
-        <input type="checkbox" name="deselection" checked={hasDeselection} onChange={() => onChangeDeselection} />
+        <input type="checkbox" name="deselection" checked={hasDeselection} onChange={onChangeDeselection} />
         Allow deselection
       </label>
 

@@ -1,7 +1,14 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
 import { Configurator } from "@/components/playground/Configurator";
-import { segmentedControlStory } from "@/app/components/segmented-control/examples/segmented-control.stories";
+import {
+  segmentedControlStory,
+  segmentedControlStoryEvent, segmentedControlStoryLabel
+} from "@/app/components/segmented-control/segmented-control.stories";
+import {ComponentStory} from "@/components/playground/ComponentStory";
+import {ComponentExample} from "@/components/playground/ComponentExample";
+import {segmentedControlExample, segmentedControlExampleControlled} from "@porsche-design-system/shared/examples";
+import {Notification} from "@/components/common/Notification";
 
 export const metadata = {
   title: 'Segmented Control - Porsche Design System',
@@ -12,5 +19,35 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-<Configurator tagName="p-segmented-control" story={segmentedControlStory} />
+## Form
+
+The `p-segmented-control` component is a form-associated custom element that integrates seamlessly with forms. Leveraging the
+[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API, it functions similar to a
+native select, ensuring compatibility with form behaviors. However, note that browser support for this API is limited.
+
+When used within a form element, it's required to provide a name attribute to the `p-segmented-control` component. This
+attribute establishes the link between the component and the form, enabling the selected value to be included in the
+form's data when it's submitted.
+
+<Notification heading="Attention" heading-tag="h2" state="warning">
+  The <code>p-segmented-control</code> lacks access to native <code>ValidityState</code>
+  properties and <code>validationMessage</code>, and it cannot display the native validation popover. This means validation behavior
+  and error display will need to be implemented separately if required.
+</Notification>
+
+<ComponentExample codeSample={segmentedControlExample} />
+
+## Controlled
+
+In the controlled approach, the `p-segmented-control` component is externally controlled. Selected items trigger a custom
+update event, allowing you to use the updated value. Internally, the value will be updated automatically but can be
+overwritten by passing in a new value.
+
+<ComponentExample codeSample={segmentedControlExampleControlled} />
+
+## With Labels
+
+Additional meta information can be displayed by setting a `label` on each child.
+
+<ComponentStory story={segmentedControlStoryLabel} />
 

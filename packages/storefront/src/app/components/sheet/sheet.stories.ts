@@ -1,5 +1,6 @@
 'use client';
 
+import { visualizeGridConfig } from '@/app/components/grid/grid.stories';
 import type { SlotStories, Story } from '@/models/story';
 
 export const sheetSlotStories: SlotStories<'p-sheet'> = {
@@ -69,6 +70,59 @@ export const sheetStory: Story<'p-sheet'> = {
         },
       },
       children: [...(slots?.header?.generator() ?? []), ...(slots?.default?.generator() ?? [])],
+    },
+  ],
+};
+
+export const sheetStoryGrid: Story<'p-sheet'> = {
+  state: {
+    properties: {
+      open: false,
+      aria: { 'aria-label': 'Some Heading' },
+    },
+  },
+  generator: ({ properties } = {}) => [
+    {
+      tag: 'p-button',
+      properties: {
+        type: 'button',
+        aria: { 'aria-haspopup': 'dialog' },
+      },
+      events: {
+        onClick: {
+          target: 'p-sheet',
+          prop: 'open',
+          value: true,
+        },
+      },
+      children: ['Open Sheet'],
+    },
+    {
+      tag: 'p-sheet',
+      properties,
+      events: {
+        onDismiss: {
+          target: 'p-sheet',
+          prop: 'open',
+          value: false,
+        },
+      },
+      children: [
+        {
+          tag: 'p-heading',
+          properties: { slot: 'header', size: 'large', tag: 'h2' },
+          children: ['Some Heading'],
+        },
+        visualizeGridConfig,
+        {
+          tag: 'p-button-group',
+          properties: { slot: 'footer' },
+          children: [
+            { tag: 'p-button', children: ['Accept'] },
+            { tag: 'p-button', properties: { type: 'button', variant: 'secondary' }, children: ['Deny'] },
+          ],
+        },
+      ],
     },
   ],
 };

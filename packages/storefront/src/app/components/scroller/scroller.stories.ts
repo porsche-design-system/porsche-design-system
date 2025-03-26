@@ -1,6 +1,7 @@
 'use client';
 
 import type { Story } from '@/models/story';
+import type { ElementConfig } from '@/utils/generator/generator';
 
 export const scrollerStory: Story<'p-scroller'> = {
   generator: ({ properties } = {}) => [
@@ -96,6 +97,58 @@ export const scrollerStory: Story<'p-scroller'> = {
             },
           ],
         },
+      ],
+    },
+    {
+      tag: 'style',
+      children: [
+        `.scroller {
+    max-width: 600px;
+    & > :not(:last-child) {
+      margin-inline-end: 16px;
+    }
+  }`,
+      ],
+    },
+  ],
+};
+
+export const scrollerStoryHeight: Story<'p-scroller'> = {
+  generator: ({ properties } = {}) => [
+    {
+      tag: 'p-scroller',
+      properties: { ...properties, className: 'scroller', style: { whiteSpace: 'nowrap' } },
+      children: [
+        ...(new Array(5).fill(null).map(() => ({
+          tag: 'p-tag-dismissible',
+          children: ['Some tag content'],
+        })) as ElementConfig<'p-tag-dismissible'>[]),
+      ],
+    },
+    {
+      tag: 'style',
+      children: [
+        `.scroller {
+    max-width: 600px;
+    & > :not(:last-child) {
+      margin-inline-end: 16px;
+    }
+  }`,
+      ],
+    },
+  ],
+};
+
+export const scrollerStorySize: Story<'p-scroller'> = {
+  generator: ({ properties } = {}) => [
+    {
+      tag: 'p-scroller',
+      properties: { ...properties, className: 'scroller', style: { fontSize: '24px', whiteSpace: 'nowrap' } },
+      children: [
+        ...(new Array(5).fill(null).map(() => ({
+          tag: 'p-tag-dismissible',
+          children: ['Some tag content'],
+        })) as ElementConfig<'p-tag-dismissible'>[]),
       ],
     },
     {

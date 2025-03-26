@@ -19,7 +19,7 @@ import {
 
 /* TODO:
  * - local development not working for angular/vue
- * - src/srcset transform?
+ * - src/srcset transform? local images?
  * - add dependencies
  * - add dir
  * - add text zoom

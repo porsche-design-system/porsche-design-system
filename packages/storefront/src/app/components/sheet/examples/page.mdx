@@ -1,7 +1,8 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { Configurator } from '@/components/playground/Configurator';
-import { sheetSlotStories, sheetStory } from '@/app/components/sheet/examples/sheet.stories';
+import {sheetSlotStories, sheetStory, sheetStoryGrid} from '@/app/components/sheet/sheet.stories';
+import {ComponentStory} from "@/components/playground/ComponentStory";
 
 export const metadata = {
   title: 'Sheet - Porsche Design System',
@@ -12,4 +13,9 @@ export const metadata = {
 
 <TableOfContents headings={[]} />
 
-<Configurator tagName="p-sheet" story={sheetStory} slotStories={sheetSlotStories} />
+## Action Sheet with Porsche Grid
+
+The `p-sheet` component makes decent changes to the Porsche Grid to give support if used as slotted content. The
+following example shows the visualization of the Porsche Grid when used inside the sheet component:
+
+<ComponentStory story={sheetStoryGrid} />
