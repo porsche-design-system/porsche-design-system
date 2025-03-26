@@ -44,20 +44,7 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter(Boolean).join('\n'
       .filter((x) => !x.match(/ {2}on[A-Z][a-z]+.+/))
       .join(';\n');
 
-    /*
-      Fixes Vue prop ambiguity by ensuring `BreakpointCustomizable<boolean>` is treated as a boolean shorthand prop.
-
-      Although `BreakpointCustomizable<boolean>` includes `boolean`, Vue treats it as a complex type
-      (`T | BreakpointValues<T> | string`), which causes ambiguity and prevents shorthand syntax
-      (e.g., `<PButton hideLabel />`) from working correctly.
-
-      This fix adds `| boolean` to clarify that the prop can be a simple boolean, enabling shorthand usage.
-    */
-    const fixBooleanShorthand = (input: string) =>
-      input.replace(/BreakpointCustomizable<boolean>/g, 'BreakpointCustomizable<boolean> | boolean');
-
-    const fixedComponentInterface = fixBooleanShorthand(componentInterfaceWithoutEventProps);
-    return getComponentMeta(component).propsMeta ? `type ${propsName} = {${fixedComponentInterface}};` : '';
+    return getComponentMeta(component).propsMeta ? `type ${propsName} = {${componentInterfaceWithoutEventProps}};` : '';
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
