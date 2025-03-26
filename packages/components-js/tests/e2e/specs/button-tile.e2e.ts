@@ -63,7 +63,7 @@ test.describe('lifecycle', () => {
     expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -76,7 +76,7 @@ test.describe('lifecycle', () => {
     expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button').toBe(1);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
