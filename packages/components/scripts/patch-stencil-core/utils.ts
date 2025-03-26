@@ -7,7 +7,7 @@ import * as path from 'path';
 export const backupOrRestoreFile = (filePath: string): void => {
   const fileExt = path.extname(filePath);
   const fileName = path.basename(filePath, fileExt);
-  const backupFilePath = path.resolve(filePath, `../${fileName}-original${fileExt}'`);
+  const backupFilePath = path.resolve(filePath, `../${fileName}-original${fileExt}`);
 
   if (fs.existsSync(backupFilePath)) {
     // Restore backup if it exists
