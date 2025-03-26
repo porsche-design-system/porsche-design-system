@@ -27,19 +27,19 @@ import {
 <template>
   <div class="root">
     <div class="playground light" title="should render button-pure with boolean shorthand prop: hideLabel">
-      <PButtonPure hideLabel>Some Heading</PButtonPure>
+      <PButtonPure hideLabel>Some Label</PButtonPure>
     </div>
 
     <div class="playground light" title="should render button-pure with boolean shorthand prop: stretch">
-      <PButtonPure stretch>Some Heading</PButtonPure>
+      <PButtonPure stretch>Some Label</PButtonPure>
     </div>
 
     <div class="playground light" title="should render button with boolean shorthand prop: hideLabel">
-      <PButton hideLabel icon="arrow-right">Some Heading</PButton>
+      <PButton hideLabel icon="arrow-right">Some Label</PButton>
     </div>
 
     <div class="playground light" title="should render button with boolean shorthand prop: compact">
-      <PButton compact>Some Heading</PButton>
+      <PButton compact>Some Label</PButton>
     </div>
 
     <div class="playground light" title="should render button-tile with boolean shorthand prop: compact">
