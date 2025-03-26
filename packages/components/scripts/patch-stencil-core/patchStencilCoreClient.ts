@@ -12,7 +12,7 @@ import { backupOrRestoreFile, getPatchMarkerCount } from './utils';
  *
  * Basically it fixes: Flash of Hydration
  */
-const patchStencilSSRHydration = (): void => {
+const patchStencilCoreClient = (): void => {
   const stencilIndexFilePath = path.resolve(require.resolve('@stencil/core'), '../../client/index.js');
   backupOrRestoreFile(stencilIndexFilePath);
 
@@ -76,4 +76,4 @@ const patchStencilSSRHydration = (): void => {
   }
 };
 
-patchStencilSSRHydration();
+patchStencilCoreClient();
