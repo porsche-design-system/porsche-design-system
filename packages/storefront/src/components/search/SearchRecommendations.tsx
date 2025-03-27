@@ -31,15 +31,15 @@ export const SearchRecommendations = ({ onRecommendationClick }: SearchRecommend
           className="py-4 px-6 bg-background-surface rounded-md flex items-center gap-4"
           onClick={onRecommendationClick}
         >
-          <div className="relative w-18 h-18">
-            <Image
-              src={imageSrc}
-              layout="fill"
-              objectFit="contain"
-              alt={`${name} Image`}
-              className="transition-transform duration-300 ease-in-out"
-            />
-          </div>
+          {/*<div className="relative w-18 h-18">*/}
+          {/*<Image*/}
+          {/*  src={imageSrc}*/}
+          {/*  layout="fill"*/}
+          {/*  objectFit="contain"*/}
+          {/*  alt={`${name} Image`}*/}
+          {/*  className="transition-transform duration-300 ease-in-out"*/}
+          {/*/>*/}
+          {/*</div>*/}
           <PText size="medium">{name}</PText>
         </Link>
       ))}
