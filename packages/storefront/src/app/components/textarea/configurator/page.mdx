@@ -1,0 +1,36 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import { textareaStory } from "@/app/components/textarea/textarea.stories";
+import {Notification} from "@/components/common/Notification";
+
+export const metadata = {
+  title: 'Textarea - Porsche Design System',
+  description: 'Some description'
+}
+
+# Textarea <ComponentStatus tagName="p-textarea"></ComponentStatus>
+
+The `p-textarea` component is a multi-line text input control. Don't use a Textarea component if you want to allow users
+to enter shorter responses that are no longer than a single line, such as a phone number or name. In this case, you
+should use the Text Field component.
+
+A `label` is a caption which informs the user what information a particular form field is asking for. The `p-textarea`
+component can be used with or without a label, but it's recommended to keep the label visible for better accessibility
+whenever possible. When used without a label, it's mandatory to provide a descriptive label text for screen readers.
+
+While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to
+give the user visual cues to fill out the form.
+
+<Notification heading="Attention" heading-tag="h2" state="warning">
+  When the <code>p-textarea</code> component is used within a form, it utilizes the
+  <a href="https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals">ElementInternals</a> API, which has limited
+  browser support. For broader browser compatibility, consider using a
+  <a href="components/textarea/examples#controlled">controlled</a> approach instead.
+</Notification>
+
+Instead of relying on slotted content, the `p-textarea` component offers a `value` attribute and property that remain
+synchronized with user input.
+
+<Configurator tagName="p-textarea" story={textareaStory} />
+
