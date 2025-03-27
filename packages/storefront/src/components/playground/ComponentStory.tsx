@@ -1,6 +1,7 @@
 'use client';
 
 import { Playground } from '@/components/playground/Playground';
+import type { BackgroundColor } from '@/models/backgroundColor';
 import type { Story } from '@/models/story';
 import { generateAngularMarkup, getAngularCode } from '@/utils/generator/generateAngularMarkup';
 import { generateReactMarkup, getReactCode } from '@/utils/generator/generateReactMarkup';
@@ -11,9 +12,10 @@ import React, { type ReactNode, useEffect, useMemo, useState } from 'react';
 
 type ComponentExampleProps = {
   story: Story<HTMLTagOrComponent>;
+  backgroundColor?: BackgroundColor;
 };
 
-export const ComponentStory = ({ story }: ComponentExampleProps) => {
+export const ComponentStory = ({ story, backgroundColor }: ComponentExampleProps) => {
   // State needs to be updated for controlled components
   const [exampleState, setExampleState] = useState(story.state ?? {});
   const [exampleElement, setExampleElement] = useState<ReactNode>(
@@ -40,7 +42,7 @@ export const ComponentStory = ({ story }: ComponentExampleProps) => {
 
   return (
     <>
-      <Playground frameworkMarkup={exampleMarkup} onOpenInStackblitz={() => {}}>
+      <Playground frameworkMarkup={exampleMarkup} backgroundColor={backgroundColor} onOpenInStackblitz={() => {}}>
         {exampleElement}
       </Playground>
     </>
