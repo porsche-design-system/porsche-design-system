@@ -1,4 +1,4 @@
-import type { Framework } from '@porsche-design-system/shared';
+import type { Framework, FrameworkMarkup } from '@porsche-design-system/shared';
 
 export type FrameworkConfiguratorMarkup = {
   [key in Framework]: {
@@ -9,9 +9,12 @@ export type FrameworkConfiguratorMarkup = {
   };
 };
 
-export const frameworkNameMap: Record<Framework, string> = {
+export type FrameworkWithNext = Framework | 'next';
+
+export const frameworkNameMap: Record<FrameworkWithNext, string> = {
   'vanilla-js': 'Vanilla JS',
   angular: 'Angular',
   react: 'React',
   vue: 'Vue',
+  next: 'Next',
 };
