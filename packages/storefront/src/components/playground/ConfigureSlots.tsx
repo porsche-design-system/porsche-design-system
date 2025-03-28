@@ -29,21 +29,26 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
         {Object.entries(slotStories ?? {}).map(([slotName, slotExamples]) => {
           return (
             <div key={slotName} className="flex flex-col gap-sm bg-background-surface p-sm rounded-md">
-              <PSwitch
-                checked={!!configuredSlots?.slots?.[slotName as keyof SlotState<typeof tagName>]}
-                alignLabel="start"
-                stretch={true}
-                onUpdate={(e) => onUpdateSlots(slotName, e.detail.checked ? Object.values(slotExamples)[0] : undefined)}
-                disabled={slotName === 'default'}
-              >
-                <span className="flex gap-static-xs">
+              <div className="w-full flex justify-between">
+                <div className="w-full flex gap-static-xs">
                   {capitalCase(slotName)}
-                  <PPopover onClick={(e) => e.preventDefault()}>
+                  <PPopover>
                     {/* TODO: Fix typing */}
                     {(componentSlots as any)?.[slotName === 'default' ? '' : slotName]?.description}
                   </PPopover>
-                </span>
-              </PSwitch>
+                </div>
+                <PSwitch
+                  className="flex-1"
+                  checked={!!configuredSlots?.slots?.[slotName as keyof SlotState<typeof tagName>]}
+                  alignLabel="start"
+                  stretch={true}
+                  compact={true}
+                  onUpdate={(e) =>
+                    onUpdateSlots(slotName, e.detail.checked ? Object.values(slotExamples)[0] : undefined)
+                  }
+                  disabled={slotName === 'default'}
+                />
+              </div>
               {Object.keys(slotExamples).length > 1 && (
                 <PSelect
                   className="[--p-select-background-color:bg-background-shading]"
@@ -52,6 +57,8 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
                   value={configuredSlots?.slots?.[slotName]?.name}
                   disabled={!configuredSlots?.slots?.[slotName as keyof SlotState<typeof tagName>]}
                   hideLabel={true}
+                  label="Select slot to be configured"
+                  compact={true}
                   onUpdate={(e) =>
                     onUpdateSlots(
                       slotName,
@@ -59,13 +66,6 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
                     )
                   }
                 >
-                  <span slot="label" className="inline-flex gap-static-xs">
-                    {capitalCase(slotName)}
-                    <PPopover onClick={(e) => e.preventDefault()}>
-                      {/* TODO: Fix typing */}
-                      {(componentSlots as any)?.[slotName === 'default' ? '' : slotName]?.description}
-                    </PPopover>
-                  </span>
                   {Object.values(slotExamples ?? {}).map((slot) => (
                     <PSelectOption key={slot.name} value={slot.name}>
                       {slot.name}
