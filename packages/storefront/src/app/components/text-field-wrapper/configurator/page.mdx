@@ -1,7 +1,10 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
 import { Configurator } from "@/components/playground/Configurator";
-import { textFieldWrapperStory } from "@/app/components/text-field-wrapper/text-field-wrapper.stories";
+import {
+  textFieldWrapperSlotStories,
+  textFieldWrapperStory
+} from "@/app/components/text-field-wrapper/text-field-wrapper.stories";
 
 export const metadata = {
   title: 'Text Field Wrapper - Porsche Design System',
@@ -21,4 +24,4 @@ text for screen readers.
 While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to
 give the user visual cues to fill out the form.
 
-<Configurator tagName="p-text-field-wrapper" story={textFieldWrapperStory} />
+<Configurator tagName="p-text-field-wrapper" story={textFieldWrapperStory} slotStories={textFieldWrapperSlotStories} />

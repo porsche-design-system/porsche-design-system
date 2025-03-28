@@ -1,14 +1,31 @@
 'use client';
 
-import type { Story } from '@/models/story';
+import type { SlotStories, Story } from '@/models/story';
+
+export const textFieldWrapperSlotStories: SlotStories<'p-text-field-wrapper'> = {
+  default: Object.fromEntries(
+    ['text', 'number', 'email', 'tel', 'search', 'url', 'date', 'time', 'month', 'week', 'password'].map((type) => [
+      type,
+      {
+        name: type[0].toUpperCase() + type.slice(1),
+        generator: () => [{ tag: 'input', properties: { type, name: 'some-name' } }],
+      },
+    ])
+  ),
+};
 
 export const textFieldWrapperStory: Story<'p-text-field-wrapper'> = {
-  state: { properties: { label: 'Some label' } },
-  generator: ({ properties } = {}) => [
+  state: {
+    properties: { label: 'Some label' },
+    slots: {
+      default: textFieldWrapperSlotStories.default.text,
+    },
+  },
+  generator: ({ properties, slots } = {}) => [
     {
       tag: 'p-text-field-wrapper',
       properties,
-      children: [{ tag: 'input', properties: { type: 'text', name: 'some-name' } }],
+      children: [...(slots?.default?.generator() ?? [])],
     },
   ],
 };
