@@ -36,11 +36,13 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
                 onUpdate={(e) => onUpdateSlots(slotName, e.detail.checked ? Object.values(slotExamples)[0] : undefined)}
                 disabled={slotName === 'default'}
               >
-                {capitalCase(slotName)}
-                <PPopover onClick={(e) => e.preventDefault()}>
-                  {/* TODO: Fix typing */}
-                  {(componentSlots as any)?.[slotName === 'default' ? '' : slotName]?.description}
-                </PPopover>
+                <span className="flex gap-static-xs">
+                  {capitalCase(slotName)}
+                  <PPopover onClick={(e) => e.preventDefault()}>
+                    {/* TODO: Fix typing */}
+                    {(componentSlots as any)?.[slotName === 'default' ? '' : slotName]?.description}
+                  </PPopover>
+                </span>
               </PSwitch>
               {Object.keys(slotExamples).length > 1 && (
                 <PSelect
