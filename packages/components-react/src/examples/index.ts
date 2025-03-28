@@ -7,6 +7,7 @@ export * from './ButtonExampleForm';
 export * from './ButtonExampleFormAttribute';
 export * from './ButtonPureExampleForm';
 export * from './ButtonPureExampleFormAttribute';
+export * from './ButtonTileExampleHyphens';
 export * from './CanvasExample';
 export * from './CarouselExampleDynamicSlides';
 export * from './CarouselExampleFocusOnCenterSlide';

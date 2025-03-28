@@ -117,6 +117,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.ButtonPureExampleFormAttributePage />,
   },
   {
+    name: 'Button Tile Example Hyphens',
+    path: '/button-tile-example-hyphens',
+    element: <fromExamples.ButtonTileExampleHyphensPage />,
+  },
+  {
     name: 'Canvas Example',
     path: '/canvas-example',
     element: <fromExamples.CanvasExamplePage />,

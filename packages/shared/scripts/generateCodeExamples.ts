@@ -123,6 +123,20 @@ const codeExamples: CodeSample[] = [
     ],
   },
   {
+    component: 'p-button-tile',
+    examples: [
+      {
+        name: 'ButtonTileExampleHyphens',
+        paths: {
+          'vanilla-js': '/button-tile-example-hyphens.html',
+          angular: '/button-tile-example-hyphens.component.ts',
+          react: '/ButtonTileExampleHyphens.tsx',
+          vue: '/ButtonTileExampleHyphens.vue',
+        },
+      },
+    ],
+  },
+  {
     component: 'p-canvas',
     examples: [
       {

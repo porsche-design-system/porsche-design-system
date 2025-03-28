@@ -6,6 +6,7 @@ export { default as ButtonExampleForm } from './ButtonExampleForm.vue';
 export { default as ButtonExampleFormAttribute } from './ButtonExampleFormAttribute.vue';
 export { default as ButtonPureExampleForm } from './ButtonPureExampleForm.vue';
 export { default as ButtonPureExampleFormAttribute } from './ButtonPureExampleFormAttribute.vue';
+export { default as ButtonTileExampleHyphens } from './ButtonTileExampleHyphens.vue';
 export { default as CanvasExample } from './CanvasExample.vue';
 export { default as CarouselExampleDynamicSlides } from './CarouselExampleDynamicSlides.vue';
 export { default as CarouselExampleFocusOnCenterSlide } from './CarouselExampleFocusOnCenterSlide.vue';

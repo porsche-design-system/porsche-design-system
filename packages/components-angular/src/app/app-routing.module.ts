@@ -136,6 +136,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.ButtonPureExampleFormAttributeComponent,
   },
   {
+    name: 'Button Tile Example Hyphens',
+    path: 'button-tile-example-hyphens',
+    component: fromExamples.ButtonTileExampleHyphensComponent,
+  },
+  {
     name: 'Canvas Example',
     path: 'canvas-example',
     component: fromExamples.CanvasExampleComponent,
