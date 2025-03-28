@@ -12,9 +12,10 @@ import { useMemo } from 'react';
 
 type ComponentSampleProps = {
   codeSample: CodeSample;
+  disableDemo?: boolean;
 };
 
-export const ComponentExample = ({ codeSample }: ComponentSampleProps) => {
+export const ComponentExample = ({ codeSample, disableDemo = false }: ComponentSampleProps) => {
   const { storefrontTheme } = useStorefrontTheme();
   const { storefrontFramework } = useStorefrontFramework();
 
@@ -36,7 +37,7 @@ export const ComponentExample = ({ codeSample }: ComponentSampleProps) => {
 
   return (
     <Playground frameworkMarkup={frameworkMarkup} onOpenInStackblitz={() => onOpenInStackblitz()}>
-      <Component />
+      {!disableDemo && <Component />}
     </Playground>
   );
 };

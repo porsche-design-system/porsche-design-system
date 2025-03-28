@@ -1,9 +1,12 @@
 import { getFlags } from '@/utils/getFlags';
 import { componentMeta } from '@porsche-design-system/component-meta';
+import type { TagName } from '@porsche-design-system/shared';
 import React from 'react';
 import type { ReactNode } from 'react';
 
 const getComponents = (): Routes => {
+  const COMPONENTS_WITHOUT_EXAMPLES: TagName[] = ['p-canvas', 'p-tag-dismissible'];
+
   return Object.entries(componentMeta)
     .filter(([_, value]) => value.isChunked && !value.requiredParent)
     .sort(([, aMeta], [, bMeta]) => {
@@ -29,11 +32,13 @@ const getComponents = (): Routes => {
             path: `/components/${component}/configurator`,
             type: 'TAB',
           },
-          examples: {
-            name: 'Examples',
-            path: `/components/${component}/examples`,
-            type: 'TAB',
-          },
+          ...(!COMPONENTS_WITHOUT_EXAMPLES.includes(key as TagName) && {
+            examples: {
+              name: 'Examples',
+              path: `/components/${component}/examples`,
+              type: 'TAB',
+            },
+          }),
           usage: {
             name: 'Usage',
             path: `/components/${component}/usage`,
