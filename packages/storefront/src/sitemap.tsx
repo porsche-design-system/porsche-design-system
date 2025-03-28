@@ -5,7 +5,21 @@ import React from 'react';
 import type { ReactNode } from 'react';
 
 const getComponents = (): Routes => {
-  const COMPONENTS_WITHOUT_EXAMPLES: TagName[] = ['p-canvas', 'p-tag-dismissible'];
+  // TODO: Maybe we could automatically generate this depending what routes/folders exist?
+  const COMPONENTS_WITHOUT_EXAMPLES: TagName[] = [
+    'p-canvas',
+    'p-checkbox-wrapper',
+    'p-content-wrapper',
+    'p-flex',
+    'p-grid',
+    'p-marque',
+    'p-pagination',
+    'p-popover',
+    'p-switch',
+    'p-tag-dismissible',
+    'p-text-list',
+    'p-toast',
+  ];
 
   return Object.entries(componentMeta)
     .filter(([_, value]) => value.isChunked && !value.requiredParent)
