@@ -11,14 +11,14 @@ import { CarouselUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-d
       <div>Slide 3</div>
     </p-carousel>
 
-    <button
+    <p-button
       *ngFor="let _ of [].constructor(3); let i = index"
       type="button"
       (click)="onButtonClick($event)"
       [disabled]="activeSlideIndex === i"
     >
       {{ i + 1 }}
-    </button>
+    </p-button>
   `,
   styles: `
     @use '@porsche-design-system/components-angular/styles' as *;

@@ -1,8 +1,10 @@
 import {
   type MultiSelectUpdateEventDetail,
+  PButton,
   PMultiSelect,
   PMultiSelectOption,
   type PMultiSelectProps,
+  PTextFieldWrapper,
 } from '@porsche-design-system/components-react';
 import { type ChangeEvent, useState } from 'react';
 
@@ -41,16 +43,15 @@ export const MultiSelectExampleDynamicPage = (): JSX.Element => {
 
   return (
     <>
-      <label>
-        Value:{' '}
+      <PTextFieldWrapper label="Value:">
         <input name="input-value" type="text" value={inputValue} onChange={onChangeInput} placeholder="e.g. 1,2" />
-      </label>
-      <button type="button" onClick={onSetValue}>
+      </PTextFieldWrapper>
+      <PButton type="button" onClick={onSetValue} compact={true}>
         Set Value
-      </button>
-      <button type="button" onClick={onResetValue}>
+      </PButton>
+      <PButton type="button" onClick={onResetValue} compact={true}>
         Reset value
-      </button>
+      </PButton>
 
       <PMultiSelect name="options" label="Some Label" value={selectedValues} onUpdate={onUpdate}>
         {[...Array(optionCount).keys()].map((idx) => (
@@ -60,12 +61,12 @@ export const MultiSelectExampleDynamicPage = (): JSX.Element => {
         ))}
       </PMultiSelect>
 
-      <button type="button" onClick={onAddOption}>
+      <PButton type="button" onClick={onAddOption} compact={true}>
         Add option
-      </button>
-      <button type="button" onClick={onRemoveOption}>
+      </PButton>
+      <PButton type="button" onClick={onRemoveOption} compact={true}>
         Remove last option
-      </button>
+      </PButton>
     </>
   );
 };

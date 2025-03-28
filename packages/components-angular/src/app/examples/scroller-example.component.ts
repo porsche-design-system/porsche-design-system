@@ -15,9 +15,9 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
     `,
   ],
   template: `
-    <button type="button" (click)="onClick(0)">Scroll to start</button>
-    <button type="button" (click)="onClick(220)">Scroll to middle</button>
-    <button type="button" (click)="onClick(720)">Scroll to end</button>
+    <p-button type="button" (click)="onClick(0)" [compact]="true">Scroll to start</p-button>
+    <p-button type="button" (click)="onClick(220)" [compact]="true">Scroll to middle</p-button>
+    <p-button type="button" (click)="onClick(720)" [compact]="true">Scroll to end</p-button>
     <div style="max-width: 400px; white-space: nowrap">
       <p-scroller [scrollToPosition]="{scrollPosition, isSmooth}">
         <p-tag-dismissible>START - some tag content</p-tag-dismissible>

@@ -5,14 +5,8 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
 @Component({
   selector: 'page-select-example-required',
   template: `
-    <label>
-      <input type="checkbox" name="required" [checked]="isRequired" (change)="onChangeRequired()" />
-      Required
-    </label>
-    <label>
-      <input type="checkbox" name="deselection" [checked]="hasDeselection" (change)="onChangeDeselection()" />
-      Allow deselection
-    </label>
+    <p-checkbox label="Required" name="required" [checked]="isRequired" (change)="onChangeRequired()" />
+    <p-checkbox label="Allow deselection" name="deselection" [checked]="hasDeselection" (change)="onChangeDeselection()" />
 
     <form (submit)="onSubmit($event)">
       <p-select name="options" label="Some Label" [required]="isRequired">
@@ -21,7 +15,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
         <p-select-option value="2">Option 2</p-select-option>
         <p-select-option value="3">Option 3</p-select-option>
       </p-select>
-      <button type="submit">Submit</button>
+      <p-button type="submit">Submit</p-button>
     </form>
 
     <p-text>Last submitted data: {{ lastSubmittedData }}</p-text>

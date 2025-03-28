@@ -1,4 +1,4 @@
-import { PSelect, PSelectOption, PText } from '@porsche-design-system/components-react';
+import { PButton, PCheckbox, PSelect, PSelectOption, PText } from '@porsche-design-system/components-react';
 import { type FormEvent, useState } from 'react';
 
 export const SelectExampleRequiredPage = (): JSX.Element => {
@@ -22,14 +22,8 @@ export const SelectExampleRequiredPage = (): JSX.Element => {
 
   return (
     <>
-      <label>
-        <input type="checkbox" name="required" checked={isRequired} onChange={onChangeRequired} />
-        Required
-      </label>
-      <label>
-        <input type="checkbox" name="deselection" checked={hasDeselection} onChange={onChangeDeselection} />
-        Allow deselection
-      </label>
+      <PCheckbox label="Required" name="required" checked={isRequired} onChange={onChangeRequired} />
+      <PCheckbox label="Allow deselection" name="deselection" checked={hasDeselection} onChange={onChangeDeselection} />
 
       <form onSubmit={onSubmit}>
         <PSelect name="options" label="Some Label" required={isRequired}>
@@ -38,7 +32,7 @@ export const SelectExampleRequiredPage = (): JSX.Element => {
           <PSelectOption value="2">Option 2</PSelectOption>
           <PSelectOption value="3">Option 3</PSelectOption>
         </PSelect>
-        <button type="submit">Submit</button>
+        <PButton type="submit">Submit</PButton>
       </form>
 
       <PText>Last submitted data: {lastSubmittedData}</PText>

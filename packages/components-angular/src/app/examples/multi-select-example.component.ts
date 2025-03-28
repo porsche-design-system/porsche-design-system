@@ -13,8 +13,8 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
         <p-multi-select-option value="e">Option E</p-multi-select-option>
         <p-multi-select-option value="f">Option F</p-multi-select-option>
       </p-multi-select>
-      <button type="submit">Submit</button>
-      <button type="reset">Reset</button>
+      <p-button type="submit">Submit</p-button>
+      <p-button type="reset">Reset</p-button>
     </form>
 
     <p-text>Last submitted data: {{ lastSubmittedData }}</p-text>
