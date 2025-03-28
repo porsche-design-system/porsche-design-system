@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PButtonTile, PSelect, PSelectOption, SelectUpdateEventDetail } from '@porsche-design-system/components-vue';
+import { PLinkTile, PSelect, PSelectOption, SelectUpdateEventDetail } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
 const selectedValue = ref('auto');
@@ -16,7 +16,8 @@ const onUpdate = (e: SelectUpdateEventDetail) => {
     <PSelectOption value="none">style="hyphens: none;"</PSelectOption>
   </PSelect>
 
-  <PButtonTile
+  <PLinkTile
+    href="https://porsche.com"
     label="Some label"
     description="An extra&shy;ordinarily Porsche"
     :compact="true"
@@ -24,5 +25,5 @@ const onUpdate = (e: SelectUpdateEventDetail) => {
     :style="{ maxWidth: '400px', fontSize: '45px', hyphens: selectedValue }"
   >
   <img src="assets/lights.jpg" alt="Some image description" />
-  </PButtonTile>
+  </PLinkTile>
 </template>

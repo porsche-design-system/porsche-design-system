@@ -77,6 +77,7 @@ export const examples = [
   HiddenAttributeExampleComponent,
   InlineNotificationExampleActionButtonComponent,
   InlineNotificationExampleEventsComponent,
+  LinkTileExampleHyphensComponent,
   LinkTileProductExampleComponent,
   ModalExampleComponent,
   MultiSelectExampleComponent,
@@ -131,6 +132,7 @@ export * from './flyout-multilevel-example-custom-content.component';
 export * from './hidden-attribute-example.component';
 export * from './inline-notification-example-action-button.component';
 export * from './inline-notification-example-events.component';
+export * from './link-tile-example-hyphens.component';
 export * from './link-tile-product-example.component';
 export * from './modal-example.component';
 export * from './multi-select-example.component';

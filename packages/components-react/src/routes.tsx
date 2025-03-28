@@ -202,6 +202,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.InlineNotificationExampleEventsPage />,
   },
   {
+    name: 'Link Tile Example Hyphens',
+    path: '/link-tile-example-hyphens',
+    element: <fromExamples.LinkTileExampleHyphensPage />,
+  },
+  {
     name: 'Link Tile Product',
     path: '/link-tile-product-example',
     element: <fromExamples.LinkTileProductExamplePage />,

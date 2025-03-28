@@ -293,6 +293,20 @@ const codeExamples: CodeSample[] = [
     ],
   },
   {
+    component: 'p-link-tile',
+    examples: [
+      {
+        name: 'LinkTileExampleHyphens',
+        paths: {
+          'vanilla-js': '/link-tile-example-hyphens.html',
+          angular: '/link-tile-example-hyphens.component.ts',
+          react: '/LinkTileExampleHyphens.tsx',
+          vue: '/LinkTileExampleHyphens.vue',
+        },
+      },
+    ],
+  },
+  {
     component: 'p-link-tile-product',
     examples: [
       {

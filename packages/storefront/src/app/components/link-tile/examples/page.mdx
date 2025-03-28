@@ -3,6 +3,8 @@ import { TableOfContents } from "@/components/common/TableOfContents";
 import {ComponentStory} from "@/components/playground/ComponentStory";
 import {linkTileStoryLayout, linkTileStoryVideo} from "@/app/components/link-tile/link-tile.stories";
 import {Notification} from "@/components/common/Notification";
+import {ComponentExample} from "@/components/playground/ComponentExample";
+import {linkTileExampleHyphens} from "@porsche-design-system/shared/examples";
 
 export const metadata = {
   title: 'Link Tile - Porsche Design System',
@@ -30,3 +32,12 @@ CSS Grid context (see second row in example).
 </Notification>
 
 <ComponentStory story={linkTileStoryLayout} />
+
+## Hyphens
+
+It is possible to overwrite the hyphens style on the host element and use 'soft' hyphens. However, please note that
+hyphenation behavior can vary depending on the browser and the language of the text. In some cases, it may be necessary
+to set the appropriate lang attribute on your HTML element to ensure that hyphenation works correctly for the desired
+language.
+
+<ComponentExample codeSample={linkTileExampleHyphens} />

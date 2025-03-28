@@ -24,6 +24,7 @@ export * from './FlyoutMultilevelExampleCustomContent';
 export * from './HiddenAttributeExample';
 export * from './InlineNotificationExampleActionButton';
 export * from './InlineNotificationExampleEvents';
+export * from './LinkTileExampleHyphens';
 export * from './LinkTileProductExample';
 export * from './ModalExample';
 export * from './ModalExampleConditional';

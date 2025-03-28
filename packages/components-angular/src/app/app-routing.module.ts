@@ -206,6 +206,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.InlineNotificationExampleEventsComponent,
   },
   {
+    name: 'Link Tile Example Hyphens',
+    path: 'link-tile-example-hyphens',
+    component: fromExamples.LinkTileExampleHyphensComponent,
+  },
+  {
     name: 'Link Tile Product Example',
     path: 'link-tile-product-example',
     component: fromExamples.LinkTileProductExampleComponent,
