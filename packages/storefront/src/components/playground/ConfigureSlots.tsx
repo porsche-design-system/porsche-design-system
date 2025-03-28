@@ -42,33 +42,35 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
                   {(componentSlots as any)?.[slotName === 'default' ? '' : slotName]?.description}
                 </PPopover>
               </PSwitch>
-              <PSelect
-                className="[--p-select-background-color:bg-background-shading]"
-                name={slotName}
-                // @ts-ignore
-                value={configuredSlots?.slots?.[slotName]?.name}
-                disabled={!configuredSlots?.slots?.[slotName as keyof SlotState<typeof tagName>]}
-                hideLabel={true}
-                onUpdate={(e) =>
-                  onUpdateSlots(
-                    slotName,
-                    Object.values(slotExamples).find((slot) => slot.name === e.detail.value)
-                  )
-                }
-              >
-                <span slot="label" className="inline-flex gap-static-xs">
-                  {capitalCase(slotName)}
-                  <PPopover onClick={(e) => e.preventDefault()}>
-                    {/* TODO: Fix typing */}
-                    {(componentSlots as any)?.[slotName === 'default' ? '' : slotName]?.description}
-                  </PPopover>
-                </span>
-                {Object.values(slotExamples ?? {}).map((slot) => (
-                  <PSelectOption key={slot.name} value={slot.name}>
-                    {slot.name}
-                  </PSelectOption>
-                ))}
-              </PSelect>
+              {Object.keys(slotExamples).length > 1 && (
+                <PSelect
+                  className="[--p-select-background-color:bg-background-shading]"
+                  name={slotName}
+                  // @ts-ignore
+                  value={configuredSlots?.slots?.[slotName]?.name}
+                  disabled={!configuredSlots?.slots?.[slotName as keyof SlotState<typeof tagName>]}
+                  hideLabel={true}
+                  onUpdate={(e) =>
+                    onUpdateSlots(
+                      slotName,
+                      Object.values(slotExamples).find((slot) => slot.name === e.detail.value)
+                    )
+                  }
+                >
+                  <span slot="label" className="inline-flex gap-static-xs">
+                    {capitalCase(slotName)}
+                    <PPopover onClick={(e) => e.preventDefault()}>
+                      {/* TODO: Fix typing */}
+                      {(componentSlots as any)?.[slotName === 'default' ? '' : slotName]?.description}
+                    </PPopover>
+                  </span>
+                  {Object.values(slotExamples ?? {}).map((slot) => (
+                    <PSelectOption key={slot.name} value={slot.name}>
+                      {slot.name}
+                    </PSelectOption>
+                  ))}
+                </PSelect>
+              )}
             </div>
           );
         })}
