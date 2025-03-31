@@ -68,6 +68,7 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
     propName: keyof ElementConfig<typeof tagName>['properties'],
     selectedValue: string | boolean | number | undefined
   ) => {
+    console.log(selectedValue);
     if (!shouldUpdate(selectedValue, propName)) return;
 
     setStoryState((prev) => {
