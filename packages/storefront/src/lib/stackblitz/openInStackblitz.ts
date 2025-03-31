@@ -97,7 +97,7 @@ window.porscheDesignSystem = porscheDesignSystem;`,
       },
     },
     {
-      openFile: 'App.tsx',
+      openFile: 'Example.tsx',
     },
   ],
   angular: (markup, theme, porscheDesignSystemBundle, pdsVersion) => [
