@@ -410,9 +410,3 @@ test.describe('properties > text-field number', () => {
 });
 
 // TODO: Test default value is deleted again for all types
-
-// TODO: Test p-tabs-bar activeTabIndex should not be deletable since controlled but should be changeable
-
-// TODO: Pagination, Tabs, Textarea number fields should not be clearable only numbers allowed until we have p-input-number
-// TODO: Improve componentMeta to include the typing in a better way to handle cases for p-carousel slidesPerPage number | 'auto', p-pin-code type 'number' | 'password', p-segmented-control value ['string | 'number']?
-// Tabs-Bar activeTabIndex: "type": "number | undefined",
