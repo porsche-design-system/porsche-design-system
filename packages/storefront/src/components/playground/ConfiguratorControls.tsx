@@ -46,7 +46,7 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
   };
 
   const shouldUpdate = (
-    selectedValue: string | boolean | undefined,
+    selectedValue: string | boolean | number | undefined,
     propName: keyof ElementConfig<typeof tagName>['properties']
   ) => {
     if (propName === 'theme') return true;
@@ -54,12 +54,19 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
     const isEmptyStringAndNotApplied = selectedValue === '' && storyState.properties?.[propName] === undefined;
     const isNotAppliedAndDefaultValue =
       storyState.properties?.[propName] === undefined && meta.propsMeta?.[propName]?.defaultValue === selectedValue;
-    return !(isEqualToCurrentValue || isEmptyStringAndNotApplied || isNotAppliedAndDefaultValue);
+    // Workaround since we don't have a number input which only allows numbers
+    const isNumberAndEmptyString = meta.propsMeta?.[propName]?.type === 'number' && selectedValue === '';
+    return !(
+      isEqualToCurrentValue ||
+      isEmptyStringAndNotApplied ||
+      isNotAppliedAndDefaultValue ||
+      isNumberAndEmptyString
+    );
   };
 
   const handleUpdateProps = (
     propName: keyof ElementConfig<typeof tagName>['properties'],
-    selectedValue: string | boolean | undefined
+    selectedValue: string | boolean | number | undefined
   ) => {
     if (!shouldUpdate(selectedValue, propName)) return;
 

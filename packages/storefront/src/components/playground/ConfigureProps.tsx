@@ -123,6 +123,7 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
       return (
         <PTextFieldWrapper key={propName} style={{ '--p-internal-text-field-scaling': 0.5 } as React.CSSProperties}>
           <input
+            name={propName}
             type="number"
             value={getCurrentValue(propName, propMeta) ?? ''}
             required={propMeta.isRequired}
