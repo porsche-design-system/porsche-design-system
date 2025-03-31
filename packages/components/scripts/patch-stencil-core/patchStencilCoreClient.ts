@@ -70,66 +70,12 @@ const patchStencilSSRHydration = (fileContent: string): string => {
   return fileContent;
 };
 
-/**
- * ## Stencil Compiler Patch: Boolean Shorthand Prop Fix
- *
- * This patch ensures boolean shorthand props work with complex types like `BreakpointCustomizable<boolean>`.
- *
- * ### **Background**
- * Stencil determines prop types using `propTypeFromTSType`. If a prop is a **union of primitive types**
- * (e.g., `string | boolean | number`), Stencil defaults to `any`, breaking shorthand usage (`<my-component compact />`).
- *
- * ### **Problem**
- * Stencil classifies mixed primitive types as `any` using:
- * ```typescript
- * if (Number(isStr) + Number(isNu) + Number(isBool) > 1) {
- *   return 'any';
- * }
- * ```
- * This makes `number | boolean` → `any`, preventing `parsePropertyValue` from applying boolean parsing.
- *
- * ### **Solution**
- * This patch updates `parsePropertyValue` to ensure that:
- * - If a prop has type `any`, an empty string (`""`) is interpreted as `true`, preserving shorthand behavior.
- *
- * ### **Patch Behavior**
- * - **Before:** `compact: number | boolean` → **ignored** (shorthand fails)
- * - **After:** `compact: number | boolean` → **parsed as `true`** (shorthand works)
- */
-const patchStencilParsePropertyValue = (fileContent: string): string => {
-  const pdsPatchSnippet = `
-  if (propValue != null && !isComplexType(propValue)) {
-   ${PDS_PATCH_START}
-    if (propType & 8 /* Any */) {
-      return propValue === '' ? true : propValue;
-    }
-    ${PDS_PATCH_END}\n`;
-
-  const pdsPatchRegExPattern = escapeString(pdsPatchSnippet);
-  const pdsPatchRegEx = new RegExp(pdsPatchRegExPattern, 'g');
-
-  if (getPatchMarkerCount(fileContent, pdsPatchRegEx) === 0) {
-    const newFileContent = fileContent.replace(
-      /if \(propValue != null && !isComplexType\(propValue\)\) \{/g,
-      pdsPatchSnippet
-    );
-    if (getPatchMarkerCount(newFileContent, pdsPatchRegEx) !== 1) {
-      throw new Error('Failed patching @stencil/core compiler. Position for snippets not found.\n');
-    }
-    return newFileContent;
-  }
-
-  process.stdout.write('@stencil/core compiler already patched. Doing nothing.\n');
-  return fileContent;
-};
-
 const patchStencilCoreClient = (): void => {
   const stencilFilePath = path.resolve(require.resolve('@stencil/core'), '../../client/index.js');
   backupOrRestoreFile(stencilFilePath);
 
   let fileContent = fs.readFileSync(stencilFilePath, 'utf8');
   fileContent = patchStencilSSRHydration(fileContent);
-  fileContent = patchStencilParsePropertyValue(fileContent);
 
   fs.writeFileSync(stencilFilePath, fileContent);
   process.stdout.write('Successfully patched @stencil/core client.\n');
