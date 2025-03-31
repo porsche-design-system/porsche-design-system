@@ -1,13 +1,14 @@
+import { generateReactMarkup } from '@/utils/generator/generateReactMarkup';
 import type { CSSProperties } from 'react';
 import {
   generateAngularControlledScript,
   generateAngularMarkup,
   generateAngularProperties,
 } from '../../../src/utils/generator/generateAngularMarkup';
-import { buttonTestConfig, flyoutTestConfig } from '../data/generator.testdata';
+import { buttonTestConfig, carouselTestConfig, flyoutTestConfig } from '../data/generator.testdata';
 
 describe('generateAngularMarkup()', () => {
-  it('should generate correct Vanilla JS markup for button', () => {
+  it('should generate correct Angular markup for button', () => {
     const output = generateAngularMarkup(buttonTestConfig, {
       properties: {
         open: false,
@@ -15,8 +16,12 @@ describe('generateAngularMarkup()', () => {
     });
     expect(output).toMatchSnapshot();
   });
-  it('should generate correct Vanilla JS markup for flyout', () => {
+  it('should generate correct Angular markup for flyout', () => {
     const output = generateAngularMarkup(flyoutTestConfig, { properties: { open: false } });
+    expect(output).toMatchSnapshot();
+  });
+  it('should generate correct Angular markup for carousel', () => {
+    const output = generateAngularMarkup(carouselTestConfig, {});
     expect(output).toMatchSnapshot();
   });
 });
@@ -140,7 +145,7 @@ describe('generateAngularProperties()', () => {
       []
     );
     expect(props).toMatchInlineSnapshot(
-      `" [aria]="{'aria-haspopup':true,'aria-label':'Some more descriptive label'}" type="button" [compact]="true" icon="add""`
+      `" [aria]="{'aria-haspopup': 'true', 'aria-label': 'Some more descriptive label'}" type="button" [compact]="true" icon="add""`
     );
   });
 
@@ -151,7 +156,7 @@ describe('generateAngularProperties()', () => {
       },
       []
     );
-    expect(props).toMatchInlineSnapshot(`" [style]="{"backgroundColor":"red","--custom-prop":"1px"}""`);
+    expect(props).toMatchInlineSnapshot(`" [style]="{'backgroundColor': 'red', '--custom-prop': '1px'}""`);
   });
 
   it('should remove props included in events', () => {

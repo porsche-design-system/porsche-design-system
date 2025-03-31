@@ -4,7 +4,7 @@ import {
   generateVanillaJsMarkup,
   generateVanillaJsProperties,
 } from '../../../src/utils/generator/generateVanillaJsMarkup';
-import { buttonTestConfig, flyoutTestConfig } from '../data/generator.testdata';
+import { buttonTestConfig, carouselTestConfig, flyoutTestConfig } from '../data/generator.testdata';
 
 describe('generateVanillaJsMarkup()', () => {
   it('should generate correct Vanilla JS markup for button', () => {
@@ -13,6 +13,10 @@ describe('generateVanillaJsMarkup()', () => {
   });
   it('should generate correct Vanilla JS markup for flyout', () => {
     const output = generateVanillaJsMarkup(flyoutTestConfig);
+    expect(output).toMatchSnapshot();
+  });
+  it('should generate correct Vanilla JS markup for carousel', () => {
+    const output = generateVanillaJsMarkup(carouselTestConfig, {});
     expect(output).toMatchSnapshot();
   });
 });
@@ -100,7 +104,7 @@ describe('generateVanillaJsProperties()', () => {
       []
     );
     expect(props).toMatchInlineSnapshot(
-      '" aria="{\'aria-haspopup\':true,\'aria-label\':\'Some more descriptive label\'}" type="button" compact="true" icon="add""'
+      `" aria="{'aria-haspopup': 'true', 'aria-label': 'Some more descriptive label'}" type="button" compact="true" icon="add""`
     );
   });
 

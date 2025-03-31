@@ -4,15 +4,19 @@ import {
   generateReactMarkup,
   generateReactProperties,
 } from '../../../src/utils/generator/generateReactMarkup';
-import { buttonTestConfig, flyoutTestConfig } from '../data/generator.testdata';
+import { buttonTestConfig, carouselTestConfig, flyoutTestConfig } from '../data/generator.testdata';
 
 describe('generateReactMarkup()', () => {
-  it('should generate correct Vanilla JS markup for button', () => {
+  it('should generate correct React markup for button', () => {
     const output = generateReactMarkup(buttonTestConfig, {});
     expect(output).toMatchSnapshot();
   });
-  it('should generate correct Vanilla JS markup for flyout', () => {
+  it('should generate correct React markup for flyout', () => {
     const output = generateReactMarkup(flyoutTestConfig, {});
+    expect(output).toMatchSnapshot();
+  });
+  it('should generate correct React markup for carousel', () => {
+    const output = generateReactMarkup(carouselTestConfig, {});
     expect(output).toMatchSnapshot();
   });
 });
@@ -128,7 +132,7 @@ describe('generateReactProperties()', () => {
       []
     );
     expect(props).toMatchInlineSnapshot(
-      `" aria={{"aria-haspopup":true,"aria-label":"Some more descriptive label"}} type="button" compact={true} icon="add""`
+      `" aria={{'aria-haspopup': 'true', 'aria-label': 'Some more descriptive label'}} type="button" compact={true} icon="add""`
     );
   });
 
@@ -139,7 +143,7 @@ describe('generateReactProperties()', () => {
       },
       []
     );
-    expect(props).toMatchInlineSnapshot(`" style={{"backgroundColor":"red","--custom-prop":"1px"}}"`);
+    expect(props).toMatchInlineSnapshot(`" style={{'backgroundColor': 'red', '--custom-prop': '1px'}}"`);
   });
 
   it('should remove props included in events', () => {

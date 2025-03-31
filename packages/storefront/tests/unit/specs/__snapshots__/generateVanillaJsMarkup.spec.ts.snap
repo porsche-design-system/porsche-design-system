@@ -4,7 +4,7 @@ exports[`generateVanillaJsMarkup() > should generate correct Vanilla JS markup f
 {
   "eventHandlers": "  button.addEventListener('click', () => (banner.open = true));
   banner.addEventListener('dismiss', () => (banner.open = false));",
-  "markup": "<p-button aria="{'aria-haspopup':true,'aria-label':'Some more descriptive label'}" type="button" compact="true" icon="add">
+  "markup": "<p-button aria="{'aria-haspopup': 'true', 'aria-label': 'Some more descriptive label'}" type="button" compact="true" icon="add">
   Open Banner
 </p-button>
 
@@ -14,15 +14,45 @@ exports[`generateVanillaJsMarkup() > should generate correct Vanilla JS markup f
 }
 `;
 
+exports[`generateVanillaJsMarkup() > should generate correct Vanilla JS markup for carousel 1`] = `
+{
+  "eventHandlers": "",
+  "markup": "<p-carousel heading="Some heading" intl="{'slideLabel': 'Slide %s von %s', 'prev': 'Vorheriger Slide', 'next': 'Nächster Slide', 'first': 'Zum ersten Slide', 'last': 'Zum letzten Slide'}">
+<div class="slide">
+Slide 1
+</div>
+<div class="slide">
+Slide 2
+</div>
+<div class="slide">
+Slide 3
+</div>
+</p-carousel>
+
+<style>
+.slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #00b0f4;
+    height: 150px;
+    color: #010205;
+  }
+</style>",
+  "states": "",
+}
+`;
+
 exports[`generateVanillaJsMarkup() > should generate correct Vanilla JS markup for flyout 1`] = `
 {
   "eventHandlers": "  button.addEventListener('click', () => (flyout.open = true));
   flyout.addEventListener('dismiss', () => (flyout.open = false));",
-  "markup": "<p-button type="button" aria="{'aria-haspopup':'dialog'}">
+  "markup": "<p-button type="button" aria="{'aria-haspopup': 'dialog'}">
   Open Flyout
 </p-button>
 
-<p-flyout aria="{'aria-label':'Some Heading'}">
+<p-flyout aria="{'aria-label': 'Some Heading'}">
   <p-heading slot="header" size="large" tag="h2">
     Some Heading
   </p-heading>

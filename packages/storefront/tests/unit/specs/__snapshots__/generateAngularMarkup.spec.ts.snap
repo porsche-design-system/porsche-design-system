@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`generateAngularMarkup() > should generate correct Vanilla JS markup for button 1`] = `
+exports[`generateAngularMarkup() > should generate correct Angular markup for button 1`] = `
 {
   "eventHandlers": "  const onClick = () => {
     this.open = true;
@@ -9,7 +9,7 @@ exports[`generateAngularMarkup() > should generate correct Vanilla JS markup for
     this.open = false;
   }",
   "imports": "",
-  "markup": "      <p-button [aria]="{'aria-haspopup':true,'aria-label':'Some more descriptive label'}" type="button" [compact]="true" icon="add" (click)="onClick()">
+  "markup": "      <p-button [aria]="{'aria-haspopup': 'true', 'aria-label': 'Some more descriptive label'}" type="button" [compact]="true" icon="add" (click)="onClick()">
         Open Banner
       </p-button>
 
@@ -18,7 +18,38 @@ exports[`generateAngularMarkup() > should generate correct Vanilla JS markup for
 }
 `;
 
-exports[`generateAngularMarkup() > should generate correct Vanilla JS markup for flyout 1`] = `
+exports[`generateAngularMarkup() > should generate correct Angular markup for carousel 1`] = `
+{
+  "eventHandlers": "",
+  "imports": "",
+  "markup": "      <p-carousel heading="Some heading" [intl]="{'slideLabel': 'Slide %s von %s', 'prev': 'Vorheriger Slide', 'next': 'Nächster Slide', 'first': 'Zum ersten Slide', 'last': 'Zum letzten Slide'}">
+        <div className="slide">
+          Slide 1
+        </div>
+        <div className="slide">
+          Slide 2
+        </div>
+        <div className="slide">
+          Slide 3
+        </div>
+      </p-carousel>
+
+      <style>
+        .slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #00b0f4;
+    height: 150px;
+    color: #010205;
+  }
+      </style>",
+  "states": "",
+}
+`;
+
+exports[`generateAngularMarkup() > should generate correct Angular markup for flyout 1`] = `
 {
   "eventHandlers": "  const onClick = () => {
     this.open = true;
@@ -27,18 +58,18 @@ exports[`generateAngularMarkup() > should generate correct Vanilla JS markup for
     this.open = false;
   }",
   "imports": "",
-  "markup": "      <p-button type="button" [aria]="{'aria-haspopup':'dialog'}" (click)="onClick()">
+  "markup": "      <p-button type="button" [aria]="{'aria-haspopup': 'dialog'}" (click)="onClick()">
         Open Flyout
       </p-button>
 
-      <p-flyout [open]="open" [aria]="{'aria-label':'Some Heading'}" (dismiss)="onDismiss()">
+      <p-flyout [open]="open" [aria]="{'aria-label': 'Some Heading'}" (dismiss)="onDismiss()">
         <p-heading slot="header" size="large" tag="h2">
           Some Heading
         </p-heading>
         <p-text>
           Some Content Begin
         </p-text>
-        <div [style]="{"width":"10px","height":"120vh","background":"deeppink"}" />
+        <div [style]="{'width': '10px', 'height': '120vh', 'background': 'deeppink'}" />
         <p-text>
           Some Content End
         </p-text>

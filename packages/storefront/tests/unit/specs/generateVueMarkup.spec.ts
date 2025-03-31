@@ -4,17 +4,19 @@ import {
   generateVueMarkup,
   generateVueProperties,
 } from '../../../src/utils/generator/generateVueMarkup';
-import { buttonTestConfig, flyoutTestConfig } from '../data/generator.testdata';
-
-// TODO: Test inline style generation. :style="{"--p-banner-position-top":"200px"}". Quotes seem to be wrong
+import { buttonTestConfig, carouselTestConfig, flyoutTestConfig } from '../data/generator.testdata';
 
 describe('generateVueMarkup()', () => {
-  it('should generate correct Vanilla JS markup for button', () => {
+  it('should generate correct Vue markup for button', () => {
     const output = generateVueMarkup(buttonTestConfig, {});
     expect(output).toMatchSnapshot();
   });
-  it('should generate correct Vanilla JS markup for flyout', () => {
+  it('should generate correct Vue markup for flyout', () => {
     const output = generateVueMarkup(flyoutTestConfig, {});
+    expect(output).toMatchSnapshot();
+  });
+  it('should generate correct Vue markup for carousel', () => {
+    const output = generateVueMarkup(carouselTestConfig, {});
     expect(output).toMatchSnapshot();
   });
 });
@@ -138,7 +140,7 @@ describe('generateVueProperties()', () => {
       []
     );
     expect(props).toMatchInlineSnapshot(
-      `" aria="{'aria-haspopup':true,'aria-label':'Some more descriptive label'}" type="button" :compact="true" icon="add""`
+      `" :aria="{'aria-haspopup': 'true', 'aria-label': 'Some more descriptive label'}" type="button" :compact="true" icon="add""`
     );
   });
 
@@ -149,7 +151,7 @@ describe('generateVueProperties()', () => {
       },
       []
     );
-    expect(props).toMatchInlineSnapshot(`" :style="{"backgroundColor":"red","--custom-prop":"1px"}""`);
+    expect(props).toMatchInlineSnapshot(`" :style="{'backgroundColor': 'red', '--custom-prop': '1px'}""`);
   });
 
   it('should remove props included in events', () => {

@@ -1,3 +1,4 @@
+import type { Story } from '@/models/story';
 import type { ElementConfig } from '@/utils/generator/generator';
 
 export const buttonTestConfig: [ElementConfig<'p-button'>, ElementConfig<'p-banner'>] = [
@@ -78,6 +79,41 @@ export const flyoutTestConfig: [ElementConfig<'p-button'>, ElementConfig<'p-flyo
       },
 
       { tag: 'p-text', properties: { slot: 'sub-footer' }, children: ['Some additional Sub-Footer'] },
+    ],
+  },
+];
+
+export const carouselTestConfig: [ElementConfig<'p-carousel'>, ElementConfig<'style'>] = [
+  {
+    tag: 'p-carousel',
+    properties: {
+      heading: 'Some heading',
+      intl: {
+        slideLabel: 'Slide %s von %s',
+        prev: 'Vorheriger Slide',
+        next: 'Nächster Slide',
+        first: 'Zum ersten Slide',
+        last: 'Zum letzten Slide',
+      },
+    },
+    children: [
+      { tag: 'div', properties: { className: 'slide' }, children: ['Slide 1'] },
+      { tag: 'div', properties: { className: 'slide' }, children: ['Slide 2'] },
+      { tag: 'div', properties: { className: 'slide' }, children: ['Slide 3'] },
+    ],
+  },
+  {
+    tag: 'style',
+    children: [
+      `.slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #00b0f4;
+    height: 150px;
+    color: #010205;
+  }`,
     ],
   },
 ];
