@@ -32,7 +32,7 @@ export const CodeBlock = ({ frameworkMarkup, children }: PropsWithChildren<CodeB
   return (
     <>
       <div className="m-static-md flex justify-between">
-        <PTabsBar activeTabIndex={tabIndex} onUpdate={onUpdate}>
+        <PTabsBar className="framework-select" activeTabIndex={tabIndex} onUpdate={onUpdate}>
           {frameworks.map((framework, index) => (
             <button
               key={framework}

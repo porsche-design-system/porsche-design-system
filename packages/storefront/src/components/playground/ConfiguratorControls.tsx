@@ -11,6 +11,7 @@ import type {
   HTMLTagOrComponent,
   PropTypeMapping,
 } from '@/utils/generator/generator';
+import { isAllowedValue } from '@/utils/isAllowedValue';
 import { componentMeta } from '@porsche-design-system/component-meta';
 import { type AccordionUpdateEventDetail, PAccordion } from '@porsche-design-system/components-react/ssr';
 import type React from 'react';
@@ -50,25 +51,27 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
     propName: keyof ElementConfig<typeof tagName>['properties']
   ) => {
     if (propName === 'theme') return true;
+    if (isAllowedValue(meta.propsMeta?.[propName]?.allowedValues, 'number')) {
+      if (selectedValue === undefined && !meta.propsMeta?.[propName]?.isRequired) {
+        // If it's a controlled prop we don't want the prop to be removed since its necessary to have it in the state
+        const isControlledProp = meta.controlledMeta?.some(({ props }) => props.includes(propName));
+        return !isControlledProp;
+      }
+      return true;
+    }
     const isEqualToCurrentValue = selectedValue === storyState.properties?.[propName];
     const isEmptyStringAndNotApplied = selectedValue === '' && storyState.properties?.[propName] === undefined;
     const isNotAppliedAndDefaultValue =
       storyState.properties?.[propName] === undefined && meta.propsMeta?.[propName]?.defaultValue === selectedValue;
-    // Workaround since we don't have a number input which only allows numbers
-    const isNumberAndEmptyString = meta.propsMeta?.[propName]?.type === 'number' && selectedValue === '';
-    return !(
-      isEqualToCurrentValue ||
-      isEmptyStringAndNotApplied ||
-      isNotAppliedAndDefaultValue ||
-      isNumberAndEmptyString
-    );
+
+    return !(isEqualToCurrentValue || isEmptyStringAndNotApplied || isNotAppliedAndDefaultValue);
   };
 
   const handleUpdateProps = (
     propName: keyof ElementConfig<typeof tagName>['properties'],
     selectedValue: string | boolean | number | undefined
   ) => {
-    console.log(selectedValue);
+    console.log(shouldUpdate(selectedValue, propName));
     if (!shouldUpdate(selectedValue, propName)) return;
 
     setStoryState((prev) => {

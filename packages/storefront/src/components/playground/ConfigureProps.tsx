@@ -19,7 +19,10 @@ type ConfigurePropsProps<T extends ConfiguratorTagNames> = {
   componentProps: ComponentMeta['propsMeta'];
   configuredProps: ElementConfig<T>['properties'];
   defaultProps: ElementConfig<HTMLTagOrComponent>['properties'];
-  onUpdateProps: (propName: keyof ElementConfig<T>['properties'], selectedValue: string | boolean | undefined) => void;
+  onUpdateProps: (
+    propName: keyof ElementConfig<T>['properties'],
+    selectedValue: string | boolean | number | undefined
+  ) => void;
   onResetAllProps: () => void;
 };
 
@@ -127,7 +130,15 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
             type="number"
             value={getCurrentValue(propName, propMeta) ?? ''}
             required={propMeta.isRequired}
-            onInput={(e) => onUpdateProps(propName, e.currentTarget.value)}
+            onInput={(e) => {
+              const value = e.currentTarget.value.trim();
+              if (value === '') {
+                onUpdateProps(propName, undefined);
+                return;
+              }
+              const number = Number(value);
+              onUpdateProps(propName, Number.isNaN(number) ? undefined : number);
+            }}
           />
           <span slot="label" className="inline-flex gap-static-xs">
             {capitalCase(propName)}
