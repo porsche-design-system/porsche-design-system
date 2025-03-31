@@ -58,11 +58,13 @@ of the label text and is technically connected with the `hide-label` property.
 
 If you want to remove the password toggle button, you can pass `passwordToggle="false"`.
 
-<Notification heading="Attention" heading-tag="h3" state="warning">
-  The <code>passwordToggle</code> prop is experimental and might be removed in a future release.
-</Notification>
-
 <Playground :markup="typePasswordWithoutPasswordToggle" :config="config"></Playground>
+
+## Compact
+
+By setting `compact` to `true` you can have a more compact variant with reduced spacings.
+
+<Playground :markup="compact" :config="config"></Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
@@ -110,6 +112,8 @@ export default class Code extends Vue {
     return `<p-input-password name="some-name" label="Some label"></p-input-password>`;
   }
 
+  compact =
+`<p-input-password name="some-name" label="Some label" value="some password" compact="true"></p-input-password>`;
   
   typePasswordWithoutPasswordToggle =
 `<p-input-password name="some-name" label="Some label" value="some password" password-toggle="false"></p-input-password>`;
