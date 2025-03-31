@@ -37,7 +37,7 @@ const selectStringProperty: { framework: Framework; expectedTag: string; sizePro
 test.describe('properties > select', () => {
   for (const { framework, expectedTag, sizePropText } of selectStringProperty) {
     test(`should reflect selection correctly for ${framework}`, async ({ page }) => {
-      await page.goto('/components/accordion/examples');
+      await page.goto('/components/accordion/configurator');
 
       await selectMarkupFramework(page, framework);
       const markup = page.locator('.markup');
@@ -76,7 +76,7 @@ const changeBooleanProperty: { framework: Framework; expectedTag: string; propSt
 test.describe('properties > switch', () => {
   for (const { framework, expectedTag, propString } of changeBooleanProperty) {
     test(`should reflect selection correctly for ${framework}`, async ({ page }) => {
-      await page.goto('/components/accordion/examples');
+      await page.goto('/components/accordion/configurator');
 
       await selectMarkupFramework(page, framework);
       const markup = page.locator('.markup');
@@ -109,7 +109,7 @@ test.describe('properties > switch', () => {
 // Tests text input of type string and checks if default is handled (Button)
 test.describe('properties > text-field', () => {
   test('should reflect input correctly for vanilla-js', async ({ page }) => {
-    await page.goto('/components/button/examples');
+    await page.goto('/components/button/configurator');
 
     const markup = page.locator('.markup');
     const button = page.locator('.demo p-button');
@@ -137,7 +137,7 @@ test.describe('properties > text-field', () => {
     await expect(markup).not.toContainText('name');
   });
   test('should reflect input correctly for react', async ({ page }) => {
-    await page.goto('/components/button/examples');
+    await page.goto('/components/button/configurator');
 
     await selectMarkupFramework(page, 'react');
 
@@ -167,7 +167,7 @@ test.describe('properties > text-field', () => {
     await expect(markup).not.toContainText('name');
   });
   test('should reflect input correctly for angular', async ({ page }) => {
-    await page.goto('/components/button/examples');
+    await page.goto('/components/button/configurator');
 
     await selectMarkupFramework(page, 'angular');
 
@@ -197,7 +197,7 @@ test.describe('properties > text-field', () => {
     await expect(markup).not.toContainText('name');
   });
   test('should reflect input correctly for vue', async ({ page }) => {
-    await page.goto('/components/button/examples');
+    await page.goto('/components/button/configurator');
 
     await selectMarkupFramework(page, 'vue');
 
@@ -228,4 +228,135 @@ test.describe('properties > text-field', () => {
   });
 });
 
+// TODO: Should be improved as soon as p-input-number is available
+// Tests text input of type number and checks if default is handled
+test.describe('properties > text-field number', () => {
+  test.describe('> p-pagination', () => {
+    test('should reflect input correctly for vanilla-js', async ({ page }) => {
+      await page.goto('/components/pagination/configurator');
+
+      const markup = page.locator('.markup');
+      const pagination = page.locator('.demo p-pagination');
+
+      await expect(pagination).toBeVisible();
+      await expect(markup).toContainText('p-pagination');
+
+      const textField = page.locator('input[name="activePage"]');
+      await expect(pagination).toHaveJSProperty('activePage', 1);
+      await expect(textField).toHaveJSProperty('value', '1');
+      await expect(markup).toContainText('active-page="1"');
+
+      await textField.press('Backspace');
+      // Input should not be changed since we prevent empty string
+      await expect(pagination).toHaveJSProperty('activePage', 1);
+      await expect(textField).toHaveJSProperty('value', '1');
+      await expect(markup).toContainText('active-page="1"');
+
+      await textField.fill('2');
+      await expect(pagination).toHaveJSProperty('activePage', 2);
+      await expect(markup).toContainText('active-page="2"');
+
+      await page.locator('p-text-field-wrapper').filter({ hasText: 'Active Page' }).getByText('Reset').click();
+
+      await expect(pagination).toHaveJSProperty('activePage', 1);
+      await expect(textField).toHaveJSProperty('value', '1');
+      await expect(markup).toContainText('active-page="1"');
+    });
+    // test('should reflect input correctly for react', async ({ page }) => {
+    //   await page.goto('/components/button/examples');
+    //
+    //   await selectMarkupFramework(page, 'react');
+    //
+    //   const markup = page.locator('.markup');
+    //   const button = page.locator('.demo p-button');
+    //
+    //   await expect(button).toBeVisible();
+    //   await expect(markup).toContainText('PButton');
+    //
+    //   const nameTextField = page.locator('input[name="name"]');
+    //   await expect(nameTextField).toHaveJSProperty('value', '');
+    //   await expect(markup).not.toContainText('name');
+    //
+    //   const testInput = 'test';
+    //   await nameTextField.fill(testInput);
+    //   await expect(button).toHaveJSProperty('name', testInput);
+    //   await expect(markup).toContainText(`name="${testInput}"`);
+    //
+    //   await nameTextField.fill('');
+    //   await expect(button).toHaveJSProperty('name', '');
+    //   // Default value is for name is undefined but prop is not removed until reset is clicked
+    //   await expect(markup).toContainText('name=""');
+    //
+    //   await page.locator('p-text-field-wrapper').filter({ hasText: 'Name' }).getByText('Reset').click();
+    //   // This is a stencil bug when setting a reflected prop to undefined, it will be set to null instead (https://github.com/ionic-team/stencil/issues/3586)
+    //   await expect(button).toHaveJSProperty('name', null);
+    //   await expect(markup).not.toContainText('name');
+    // });
+    // test('should reflect input correctly for angular', async ({ page }) => {
+    //   await page.goto('/components/button/examples');
+    //
+    //   await selectMarkupFramework(page, 'angular');
+    //
+    //   const markup = page.locator('.markup');
+    //   const button = page.locator('.demo p-button');
+    //
+    //   await expect(button).toBeVisible();
+    //   await expect(markup).toContainText('p-button');
+    //
+    //   const nameTextField = page.locator('input[name="name"]');
+    //   await expect(nameTextField).toHaveJSProperty('value', '');
+    //   await expect(markup).not.toContainText('name');
+    //
+    //   const testInput = 'test';
+    //   await nameTextField.fill(testInput);
+    //   await expect(button).toHaveJSProperty('name', testInput);
+    //   await expect(markup).toContainText(`name="${testInput}"`);
+    //
+    //   await nameTextField.fill('');
+    //   await expect(button).toHaveJSProperty('name', '');
+    //   // Default value is for name is undefined but prop is not removed until reset is clicked
+    //   await expect(markup).toContainText('name=""');
+    //
+    //   await page.locator('p-text-field-wrapper').filter({ hasText: 'Name' }).getByText('Reset').click();
+    //   // This is a stencil bug when setting a reflected prop to undefined, it will be set to null instead (https://github.com/ionic-team/stencil/issues/3586)
+    //   await expect(button).toHaveJSProperty('name', null);
+    //   await expect(markup).not.toContainText('name');
+    // });
+    // test('should reflect input correctly for vue', async ({ page }) => {
+    //   await page.goto('/components/button/examples');
+    //
+    //   await selectMarkupFramework(page, 'vue');
+    //
+    //   const markup = page.locator('.markup');
+    //   const button = page.locator('.demo p-button');
+    //
+    //   await expect(button).toBeVisible();
+    //   await expect(markup).toContainText('PButton');
+    //
+    //   const nameTextField = page.locator('input[name="name"]');
+    //   await expect(nameTextField).toHaveJSProperty('value', '');
+    //   await expect(markup).not.toContainText('name');
+    //
+    //   const testInput = 'test';
+    //   await nameTextField.fill(testInput);
+    //   await expect(button).toHaveJSProperty('name', testInput);
+    //   await expect(markup).toContainText(`name="${testInput}"`);
+    //
+    //   await nameTextField.fill('');
+    //   await expect(button).toHaveJSProperty('name', '');
+    //   // Default value is for name is undefined but prop is not removed until reset is clicked
+    //   await expect(markup).toContainText('name=""');
+    //
+    //   await page.locator('p-text-field-wrapper').filter({ hasText: 'Name' }).getByText('Reset').click();
+    //   // This is a stencil bug when setting a reflected prop to undefined, it will be set to null instead (https://github.com/ionic-team/stencil/issues/3586)
+    //   await expect(button).toHaveJSProperty('name', null);
+    //   await expect(markup).not.toContainText('name');
+    // });
+  });
+});
+
 // TODO: Test default value is deleted again for all types
+
+// TODO: Pagination, Tabs, Textarea number fields should not be clearable only numbers allowed until we have p-input-number
+// TODO: Improve componentMeta to include the typing in a better way to handle cases for p-carousel slidesPerPage number | 'auto', p-pin-code type 'number' | 'password', p-segmented-control value ['string | 'number']?
+// Tabs-Bar activeTabIndex: "type": "number | undefined",

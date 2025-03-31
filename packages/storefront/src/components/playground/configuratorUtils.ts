@@ -1,6 +1,6 @@
 import type { PropMeta } from '@porsche-design-system/component-meta';
 
-export const isDefaultValue = (propMeta: PropMeta, currentValue: string | boolean | undefined) => {
+export const isDefaultValue = (propMeta: PropMeta, currentValue: string | boolean | number | undefined) => {
   if (propMeta.type === 'Theme') return false;
 
   const defaultValue = propMeta.defaultValue;
@@ -19,6 +19,6 @@ export const isDefaultValue = (propMeta: PropMeta, currentValue: string | boolea
   }
 
   if (typeof defaultValue === 'number') {
-    return `${defaultValue}` === currentValue;
+    return defaultValue === currentValue;
   }
 };
