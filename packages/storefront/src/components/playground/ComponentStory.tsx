@@ -1,6 +1,10 @@
 'use client';
 
 import { Playground } from '@/components/playground/Playground';
+import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
+import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
+import { createStackblitzMarkupFromStory } from '@/lib/stackblitz/createStackblitzMarkupFromStory';
+import { openInStackblitz } from '@/lib/stackblitz/openInStackblitz';
 import type { BackgroundColor } from '@/models/backgroundColor';
 import type { Story } from '@/models/story';
 import { generateAngularMarkup, getAngularCode } from '@/utils/generator/generateAngularMarkup';
@@ -8,6 +12,7 @@ import { generateReactMarkup, getReactCode } from '@/utils/generator/generateRea
 import { generateVanillaJsMarkup, getVanillaJsCode } from '@/utils/generator/generateVanillaJsMarkup';
 import { generateVueMarkup, getVueCode } from '@/utils/generator/generateVueMarkup';
 import { type HTMLTagOrComponent, createElements } from '@/utils/generator/generator';
+import type { Framework } from '@porsche-design-system/shared';
 import React, { type ReactNode, useEffect, useMemo, useState } from 'react';
 
 type ComponentExampleProps = {
@@ -16,6 +21,8 @@ type ComponentExampleProps = {
 };
 
 export const ComponentStory = ({ story, backgroundColor }: ComponentExampleProps) => {
+  const { storefrontTheme } = useStorefrontTheme();
+  const { storefrontFramework } = useStorefrontFramework();
   // State needs to be updated for controlled components
   const [exampleState, setExampleState] = useState(story.state ?? {});
   const [exampleElement, setExampleElement] = useState<ReactNode>(
@@ -40,9 +47,18 @@ export const ComponentStory = ({ story, backgroundColor }: ComponentExampleProps
     setExampleElement(createElements(generatedStory, setExampleState));
   }, [exampleState]);
 
+  const onOpenInStackblitz = async () => {
+    const markup = createStackblitzMarkupFromStory(story, exampleState, storefrontFramework, storefrontTheme);
+    await openInStackblitz(markup, storefrontFramework as Framework, storefrontTheme);
+  };
+
   return (
     <>
-      <Playground frameworkMarkup={exampleMarkup} backgroundColor={backgroundColor} onOpenInStackblitz={() => {}}>
+      <Playground
+        frameworkMarkup={exampleMarkup}
+        backgroundColor={backgroundColor}
+        onOpenInStackblitz={onOpenInStackblitz}
+      >
         {exampleElement}
       </Playground>
     </>
