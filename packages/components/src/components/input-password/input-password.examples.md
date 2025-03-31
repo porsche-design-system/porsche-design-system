@@ -13,13 +13,6 @@ for screen readers.
 While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to
 give the user visual cues to fill out the form.
 
-<Notification heading="Attention" heading-tag="h2" state="warning">
-When the <code>p-input-password</code> component is used within a form, it utilizes the
-<a href="https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals">ElementInternals</a> API, which has limited
-browser support. For broader browser compatibility, consider using a
-<a href="components/input-password/examples#controlled">controlled</a> approach instead.
-</Notification>
-
 <TableOfContents></TableOfContents>
 
 ## Basic example
