@@ -72,7 +72,7 @@ const createReactMarkup = (
     pdsComponents.push(transformedTag);
   }
 
-  const eventEntries = Object.entries(events);
+  const eventEntries: [string, EventConfig][] = Object.entries(events);
   const propertiesString = generateReactProperties(properties, eventEntries);
 
   const eventListenersString =
@@ -149,6 +149,12 @@ export const generateReactProperties = (
         return ` ${key}={${key}}`;
       }
       if (typeof value === 'string') return ` ${key}="${value}"`;
+      if (typeof value === 'object') {
+        const formattedObject = Object.entries(value ?? {})
+          .map(([k, v]) => `'${k}': '${v}'`)
+          .join(', ');
+        return ` ${key}={{${formattedObject}}}`;
+      }
       return ` ${key}={${JSON.stringify(value)}}`;
     })
     .join('');

@@ -75,7 +75,7 @@ const createVanillaJSMarkup = (
 
   const { tag, properties = {}, events = {}, children = [] } = config;
 
-  const eventEntries = Object.entries(events);
+  const eventEntries: [string, EventConfig][] = Object.entries(events);
   const propertyString = generateVanillaJsProperties(properties, eventEntries);
 
   const childrenMarkup = children.map((child) => createVanillaJSMarkup(child, indentLevel + 1));
@@ -132,8 +132,11 @@ export const generateVanillaJsProperties = (
             ([styleKey, styleValue]) => `${styleKey.startsWith('--') ? styleKey : kebabCase(styleKey)}: ${styleValue}`
           )
           .join('; ')}"`;
-      if (key === 'aria') {
-        return ` ${key}="${JSON.stringify(value).replace(/"/g, "'")}"`;
+      if (typeof value === 'object') {
+        const formattedObject = Object.entries(value ?? {})
+          .map(([k, v]) => `'${k}': '${v}'`)
+          .join(', ');
+        return ` ${key}="{${formattedObject}}"`;
       }
       return ` ${kebabCase(key)}="${JSON.stringify(value)}"`;
     })

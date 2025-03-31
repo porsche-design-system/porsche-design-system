@@ -128,8 +128,11 @@ export const generateAngularProperties = (
         return ` [${key}]="${key}"`;
       }
       if (typeof value === 'string') return ` ${key}="${value}"`;
-      if (key === 'aria') {
-        return ` [${key}]="${JSON.stringify(value).replace(/"/g, "'")}"`;
+      if (typeof value === 'object') {
+        const formattedObject = Object.entries(value ?? {})
+          .map(([k, v]) => `'${k}': '${v}'`)
+          .join(', ');
+        return ` [${key}]="{${formattedObject}}"`;
       }
       return ` [${key}]="${JSON.stringify(value)}"`;
     })

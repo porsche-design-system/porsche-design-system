@@ -66,7 +66,7 @@ const createVueMarkup = (
     pdsComponents.push(transformedTag);
   }
 
-  const eventEntries = Object.entries(events);
+  const eventEntries: [string, EventConfig][] = Object.entries(events);
   const propertiesString = generateVueProperties(properties, eventEntries);
 
   const eventListenersString =
@@ -135,8 +135,11 @@ export const generateVueProperties = (
         return ` :${key}="${key}"`;
       }
       if (typeof value === 'string') return ` ${key}="${value}"`;
-      if (key === 'aria') {
-        return ` ${key}="${JSON.stringify(value).replace(/"/g, "'")}"`;
+      if (typeof value === 'object') {
+        const formattedObject = Object.entries(value ?? {})
+          .map(([k, v]) => `'${k}': '${v}'`)
+          .join(', ');
+        return ` :${key}="{${formattedObject}}"`;
       }
       return ` :${key}="${JSON.stringify(value)}"`;
     })
