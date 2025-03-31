@@ -87,7 +87,7 @@ const createReactMarkup = (
 
   const markup =
     children.length > 0
-      ? `${'  '.repeat(indentLevel)}<${transformedTag}${propertiesString}${eventListenersString}>\n${childMarkup}\n${'  '.repeat(indentLevel)}</${transformedTag}>`
+      ? `${'  '.repeat(indentLevel)}<${transformedTag}${propertiesString}${eventListenersString}>\n${tag === 'style' ? `{\`${childMarkup}\`}` : childMarkup}\n${'  '.repeat(indentLevel)}</${transformedTag}>`
       : `${'  '.repeat(indentLevel)}<${transformedTag}${propertiesString}${eventListenersString} />`;
 
   const scripts = eventEntries.length > 0 ? generateReactControlledScript(tag, eventEntries, initialState) : null;
@@ -106,7 +106,6 @@ const createReactMarkup = (
 
 type ReactScripts = { states: string; eventHandler: string; types: string[] };
 
-// TODO: Import for type must be returned and added to imports array
 export const generateReactControlledScript = (
   tagName: string,
   eventEntries: [string, EventConfig][],
