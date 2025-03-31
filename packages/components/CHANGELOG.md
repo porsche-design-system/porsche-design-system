@@ -14,10 +14,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Fixed
+
+- `aria` prop now supports a colon inside of a value, e.g. `aria="{ 'aria-label': 'Always remember: yes you can!' }"`
+  ([#3680](https://github.com/porsche-design-system/porsche-design-system/pull/3680))
+
+### [3.27.3] - 2025-03-21
+
+### [3.27.2] - 2025-03-20
+
+### [3.27.2-rc.0] - 2025-03-18
+
 #### Changed
 
 - `Table`: add border-bottom styles to `Table Head` to support both, empty and missing `Table Body`
   ([#3788](https://github.com/porsche-design-system/porsche-design-system/pull/3788))
+
+#### Fixed
+
+- `Styles`: change `Gradient` color values from `rgba` to `hsla` to fix Chrome rendering bug
+  ([#3793](https://github.com/porsche-design-system/porsche-design-system/pull/3793))
 
 ### [3.27.1] - 2025-03-05
 

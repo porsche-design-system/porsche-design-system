@@ -46,4 +46,10 @@ describe('parseJSONAttribute()', () => {
       scrollToPosition: 4,
     });
   });
+
+  it('should return parsed object if value has a colon as character', () => {
+    expect(parseJSONAttribute("{ 'aria-label': 'Some: label' }")).toEqual({
+      'aria-label': 'Some: label',
+    });
+  });
 });
