@@ -4,7 +4,6 @@ import {
   AllowedTypes,
   attachComponentCss,
   getOptionAriaAttributes,
-  getPrefixedTagNames,
   throwIfParentIsNotOfKind,
   validateProps,
 } from '../../../utils';
@@ -39,10 +38,9 @@ export class MultiSelectOption {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     const { theme = 'light', selected, highlighted } = this.host;
-    attachComponentCss(this.host, getComponentCss, theme);
-
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
     const isDisabled = this.disabled || this.host.disabledParent;
+
+    attachComponentCss(this.host, getComponentCss, theme, isDisabled, selected);
 
     return (
       <Host onClick={!isDisabled && this.onClick}>
@@ -57,16 +55,8 @@ export class MultiSelectOption {
             'option--disabled': isDisabled,
           }}
         >
-          <PrefixedTagNames.pCheckbox
-            id="checkbox"
-            class="checkbox"
-            theme={theme}
-            checked={selected}
-            disabled={isDisabled}
-            aria-hidden="true"
-          >
-            <slot slot="label" />
-          </PrefixedTagNames.pCheckbox>
+          <span class="checkbox" aria-hidden="true" />
+          <slot slot="label" />
         </div>
       </Host>
     );
