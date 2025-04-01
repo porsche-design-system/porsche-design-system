@@ -2,6 +2,7 @@ import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
 import { Configurator } from "@/components/playground/Configurator";
 import { flyoutMultilevelStory } from "@/app/components/flyout-multilevel/flyout-multilevel.stories";
+import {BrowserSupport} from "@/components/common/BrowserSupport";
 
 export const metadata = {
   title: 'Flyout Multilevel - Porsche Design System',
@@ -15,4 +16,16 @@ the page content from the start side of the screen. It is a controlled component
 its behavior.
 
 <Configurator tagName="p-flyout-multilevel" story={flyoutMultilevelStory} />
+
+## Browser Support
+
+<BrowserSupport
+support={{
+  chrome: "120",
+  edge: "120",
+  safari: "17.4",
+  firefox: "129",
+  chromeForAndroid: "120",
+  safariForiOS: "17.4"
+}} />
 
