@@ -414,7 +414,7 @@ test.describe('hover state', () => {
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {
     await initInputPassword(page, {
-      props: { name: 'Some name', state: 'error' },
+      props: { name: 'Some name', state: 'error', toggle: true },
       useSlottedLabel: true,
       useSlottedMessage: true,
       useSlottedDescription: true,
@@ -431,7 +431,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips after state change', async ({ page }) => {
     await initInputPassword(page, {
-      props: { name: 'Some name', state: 'error' },
+      props: { name: 'Some name', state: 'error', toggle: true },
       useSlottedLabel: true,
       useSlottedMessage: true,
       useSlottedDescription: true,
@@ -448,7 +448,7 @@ test.describe('lifecycle', () => {
   });
 
   test('should work without unnecessary round trips after value change', async ({ page }) => {
-    await initInputPassword(page);
+    await initInputPassword(page, { props: { name: 'Some name', state: 'error', toggle: true } });
     const host = getHost(page);
     const status = await getLifecycleStatus(page);
 
@@ -466,7 +466,7 @@ test.describe('lifecycle', () => {
 
 test.describe('Password Visibility', () => {
   test('should change input type to `text` if password toggle is clicked', async ({ page }) => {
-    await initInputPassword(page);
+    await initInputPassword(page, { props: { name: 'Some name', label: 'Some label', toggle: true } });
     const host = getHost(page);
     const inputPassword = getInputPassword(page);
     const inputPasswordToggle = getInputPasswordToggle(page);
@@ -480,14 +480,13 @@ test.describe('Password Visibility', () => {
     expect(await inputPassword.getAttribute('type')).toEqual('text');
   });
 
-  test('should hide password toggle if `passwordToggle` prop is set to `false`', async ({ page }) => {
+  test('should hide password toggle if `toggle` prop is `false`', async ({ page }) => {
     await initInputPassword(page);
     const host = getHost(page);
     const inputPassword = getInputPassword(page);
     const inputPasswordToggle = getInputPasswordToggle(page);
 
     await setProperty(host, 'value', 'test');
-    await setProperty(host, 'passwordToggle', false);
     await waitForStencilLifecycle(page);
 
     expect(await inputPasswordToggle.count()).toBe(0);

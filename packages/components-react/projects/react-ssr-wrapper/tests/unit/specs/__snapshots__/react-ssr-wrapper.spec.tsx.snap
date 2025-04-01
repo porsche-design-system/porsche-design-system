@@ -11360,17 +11360,13 @@ input[type="text"] {
   border: 2px solid #6B6D70;
   border-radius: 4px;
   padding-inline-start: max(2px, 16px * var(--p-internal-input-password-scaling, 1));
-  padding-inline-end: max(2px, 8px * var(--p-internal-input-password-scaling, 1));
+  padding-inline-end: max(2px, 16px * var(--p-internal-input-password-scaling, 1));
   display: flex;
   gap: 9px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: text;
   border-color: #D8D8DB;
   background: #D8D8DB;
-}
-.button {
-  place-self: center;
-  padding: calc(4px * var(--p-internal-input-password-scaling, 1));
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -11431,161 +11427,6 @@ input[type="text"] {
           type="password"
           value=""
         />
-        <p-button-pure
-          class="button"
-          data-ssr=""
-        >
-          <template
-            shadowroot="open"
-            shadowrootdelegatesfocus="true"
-            shadowrootmode="open"
-          >
-            <style>
-              :host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
-  display: inline-block;
-  width: auto;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  display: flex;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #010205;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  gap: 0;
-  justify-content: flex-start;
-  align-items: flex-start;
-  font-size: 1rem;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: pointer;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
-.label {
-  z-index: 1;
-  white-space: nowrap;
-  text-indent: -999999px;
-  overflow: hidden;
-  order: 0;
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-
-            </style>
-            <button
-              aria-pressed="false"
-              class="root"
-              type="button"
-            >
-              <p-icon
-                aria-hidden="true"
-                class="icon"
-                data-ssr=""
-              >
-                <template
-                  shadowroot="open"
-                  shadowrootmode="open"
-                >
-                  <style>
-                    :host {
-  display: inline-block;
-  vertical-align: top;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  display: block;
-  margin: 0;
-  padding: 0;
-  pointer-events: none;
-  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
-  -webkit-animation: rerender-light-primary 1ms;
-  width: inherit;
-  height: inherit;
-}
-@keyframes rerender-light-primary {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
-}
-                  </style>
-                  <img
-                    alt=""
-                    height="24"
-                    loading="lazy"
-                    src="http://localhost:3001/icons/view.5b4d7f6.svg"
-                    width="24"
-                  />
-                </template>
-              </p-icon>
-              <span
-                class="label"
-              >
-                <slot />
-              </span>
-            </button>
-            <span
-              class="loading"
-              id="loading"
-              role="status"
-            />
-          </template>
-          Toggle password visibility
-        </p-button-pure>
       </div>
     </div>
   </template>

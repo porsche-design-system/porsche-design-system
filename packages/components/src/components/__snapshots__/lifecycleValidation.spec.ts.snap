@@ -340,12 +340,12 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "message": "string",
   "minLength": "number",
   "name": "string",
-  "passwordToggle": "boolean",
   "placeholder": "string",
   "readOnly": "boolean",
   "required": "boolean",
   "state": "oneOf",
   "theme": "oneOf",
+  "toggle": "boolean",
   "value": "string",
 }
 `;
