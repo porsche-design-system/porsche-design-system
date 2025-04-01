@@ -11340,11 +11340,13 @@ exports[`should render dsr component for PInputPassword 1`] = `
 }
 input {
   all: unset;
+  flex: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   height: max(calc(6px + 2.125ex), var(--p-internal-input-password-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   padding-block: max(2px, 8px * var(--p-internal-input-password-scaling, 1));
   text-indent: 0;
   color: #010205;
+  width: 100%;
   min-width: 2rem;
 }
 input[type="text"] {
@@ -11359,8 +11361,7 @@ input[type="text"] {
   border-radius: 4px;
   padding-inline-start: max(2px, 16px * var(--p-internal-input-password-scaling, 1));
   padding-inline-end: max(2px, 8px * var(--p-internal-input-password-scaling, 1));
-  display: grid;
-  grid-template-columns: 1fr auto;
+  display: flex;
   gap: 9px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: text;
