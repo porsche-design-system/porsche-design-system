@@ -54,11 +54,11 @@ of the label text and is technically connected with the `hide-label` property.
 
 <Playground :markup="withDescriptionText" :config="config"></Playground>
 
-## Hide password toggle button
+## Show password toggle button
 
-If you want to remove the password toggle button, you can pass `passwordToggle="false"`.
+If you want to show the password toggle button, you can pass `toggle="true"`.
 
-<Playground :markup="typePasswordWithoutPasswordToggle" :config="config"></Playground>
+<Playground :markup="typePasswordWithPasswordToggle" :config="config"></Playground>
 
 ## Compact
 
@@ -115,8 +115,8 @@ export default class Code extends Vue {
   compact =
 `<p-input-password name="some-name" label="Some label" value="some password" compact="true"></p-input-password>`;
   
-  typePasswordWithoutPasswordToggle =
-`<p-input-password name="some-name" label="Some label" value="some password" password-toggle="false"></p-input-password>`;
+  typePasswordWithPasswordToggle =
+`<p-input-password name="some-name" label="Some label" value="some password" toggle="true"></p-input-password>`;
 
   withDescriptionText =
 `<p-input-password name="some-name" label="Some label" description="Some description"></p-input-password>`;
