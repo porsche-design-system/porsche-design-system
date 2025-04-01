@@ -1,5 +1,6 @@
 import { PLinkPure } from "@porsche-design-system/components-react/ssr";
 import { TableOfContents } from "@/components/common/TableOfContents";
+import License from '../../../../../LICENSE.mdx';
 
 export const metadata = {
   title: 'License - Porsche Design System',
@@ -16,7 +17,7 @@ reserves the right to change and update this licensing agreement at any time.
 
 ## Agreement
 
-{/* <Markdown><component :is="license"></component></Markdown> */}
+<License />
 
 ## General Notices
 
@@ -36,23 +37,4 @@ on the exact product and version you choose.
 
 This software may or may not contain the following specific Open Source Software:
 
-<PLinkPure icon="download" href="assets/compulsory-statement.txt" download={true}>Download Compulsory Statement</PLinkPure>
-
-{/* <script lang="ts">
-  import Vue from 'vue';
-  import Component from 'vue-class-component';
-  import Markdown from '@/components/Markdown.vue';
-
-  @Component({
-  components: {
-  Markdown,
-},
-})
-  export default class Code extends Vue {
-  license = '';
-
-  async mounted() {
-  this.license = (await import('@/../../../LICENSE.md')).default;
-}
-}
-</script> */}
+<PLinkPure icon="download" href="assets/compulsory-statement.txt" download="compulsory-statement.txt">Download Compulsory Statement</PLinkPure>
