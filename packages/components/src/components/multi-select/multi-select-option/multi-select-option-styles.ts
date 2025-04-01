@@ -7,7 +7,6 @@ import {
   getTransition,
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
-  preventFoucOfNestedElementsStyles,
   SCALING_BASE_VALUE,
 } from '../../../styles';
 import { getOptionJssStyle } from '../../../styles/select';
@@ -61,7 +60,6 @@ export const getComponentCss = (theme: Theme, isDisabled: boolean, selected: boo
           ...hostHiddenStyles,
         }),
       },
-      ...preventFoucOfNestedElementsStyles,
       slot: {
         display: 'block',
         paddingTop,
