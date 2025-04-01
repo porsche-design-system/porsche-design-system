@@ -123,7 +123,7 @@ export const getComponentCss = (
       ...hoverMediaQuery({
         ...(!disabled &&
           !readOnly && {
-            '&:hover:not(:has(input:focus)):not(:has(.button:hover))': hoverStyles,
+            '&:hover:not(:has(.button:hover, input:focus ))': hoverStyles,
           }),
       }),
       ...(disabled && {
