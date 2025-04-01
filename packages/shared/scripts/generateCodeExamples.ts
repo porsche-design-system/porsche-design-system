@@ -29,7 +29,7 @@ type CodeSample = {
 
 type CodeExample = {
   name: string; // Name of the example
-  paths: { [key in Framework]: string };
+  paths: { [key in Framework]?: string };
 };
 
 const codeExamples: CodeSample[] = [
@@ -577,124 +577,162 @@ const codeExamples: CodeSample[] = [
       },
     ],
   },
-  // {
-  //   component: 'styles-border',
-  //   examples: [
-  //     [
-  //       componentsAngularPath + '/../styles/styles-border-example.component.ts',
-  //       componentsReactPath + '/../styles/StylesBorderExample.tsx',
-  //     ],
-  //   ],
-  // },
-  // {
-  //   component: 'styles-drop-shadow',
-  //   examples: [
-  //     [
-  //       componentsAngularPath + '/../styles/styles-drop-shadow-example.component.ts',
-  //       componentsReactPath + '/../styles/StylesDropShadowExample.tsx',
-  //     ],
-  //   ],
-  // },
-  // {
-  //   component: 'styles-focus',
-  //   examples: [
-  //     [
-  //       componentsAngularPath + '/../styles/styles-focus-example.component.ts',
-  //       componentsReactPath + '/../styles/StylesFocusExample.tsx',
-  //     ],
-  //   ],
-  // },
-  // {
-  //   component: 'styles-frosted-glass',
-  //   examples: [
-  //     [
-  //       componentsAngularPath + '/../styles/styles-frosted-glass-example.component.ts',
-  //       componentsReactPath + '/../styles/StylesFrostedGlassExample.tsx',
-  //     ],
-  //   ],
-  // },
-  // {
-  //   component: 'styles-gradient',
-  //   examples: [
-  //     [
-  //       componentsAngularPath + '/../styles/styles-gradient-example.component.ts',
-  //       componentsReactPath + '/../styles/StylesGradientExample.tsx',
-  //     ],
-  //   ],
-  // },
-  // {
-  //   component: 'styles-grid',
-  //   examples: [
-  //     [
-  //       // special path to get the Grid-Layout component itself with fully rendered HTML and CSS
-  //       componentsAngularPath + '/../components/grid-layout.component.ts',
-  //       componentsReactPath + '/../components/GridLayout.tsx',
-  //     ],
-  //   ],
-  // },
-  // {
-  //   component: 'styles-hover',
-  //   examples: [
-  //     [
-  //       componentsAngularPath + '/../styles/styles-hover-example.component.ts',
-  //       componentsReactPath + '/../styles/StylesHoverExample.tsx',
-  //     ],
-  //   ],
-  // },
-  // {
-  //   component: 'styles-media-query',
-  //   examples: [
-  //     [
-  //       componentsAngularPath + '/../styles/styles-media-query-example.component.ts',
-  //       componentsReactPath + '/../styles/StylesMediaQueryExample.tsx',
-  //     ],
-  //   ],
-  // },
-  // {
-  //   component: 'styles-motion',
-  //   examples: [
-  //     [
-  //       componentsAngularPath + '/../styles/styles-motion-example.component.ts',
-  //       componentsReactPath + '/../styles/StylesMotionExample.tsx',
-  //     ],
-  //   ],
-  // },
-  // {
-  //   component: 'styles-skeleton',
-  //   examples: [
-  //     [
-  //       componentsAngularPath + '/../styles/styles-skeleton-example.component.ts',
-  //       componentsReactPath + '/../styles/StylesSkeletonExample.tsx',
-  //     ],
-  //   ],
-  // },
-  // {
-  //   component: 'styles-spacing',
-  //   examples: [
-  //     [
-  //       componentsAngularPath + '/../styles/styles-spacing-example.component.ts',
-  //       componentsReactPath + '/../styles/StylesSpacingExample.tsx',
-  //     ],
-  //   ],
-  // },
-  // {
-  //   component: 'styles-theme',
-  //   examples: [
-  //     [
-  //       componentsAngularPath + '/../styles/styles-theme-example.component.ts',
-  //       componentsReactPath + '/../styles/StylesThemeExample.tsx',
-  //     ],
-  //   ],
-  // },
-  // {
-  //   component: 'styles-typography',
-  //   examples: [
-  //     [
-  //       componentsAngularPath + '/../styles/styles-typography-example.component.ts',
-  //       componentsReactPath + '/../styles/StylesTypographyExample.tsx',
-  //     ],
-  //   ],
-  // },
+  {
+    component: 'styles-border',
+    examples: [
+      {
+        name: 'styles-border',
+        paths: {
+          angular: '/../styles/styles-border-example.component.ts',
+          react: '/../styles/StylesBorderExample.tsx',
+        },
+      },
+    ],
+  },
+  {
+    component: 'styles-drop-shadow',
+    examples: [
+      {
+        name: 'styles-drop-shadow',
+        paths: {
+          angular: '/../styles/styles-drop-shadow-example.component.ts',
+          react: '/../styles/StylesDropShadowExample.tsx',
+        },
+      },
+    ],
+  },
+  {
+    component: 'styles-focus',
+    examples: [
+      {
+        name: 'styles-focus',
+        paths: {
+          angular: '/../styles/styles-focus-example.component.ts',
+          react: '/../styles/StylesFocusExample.tsx',
+        },
+      },
+    ],
+  },
+  {
+    component: 'styles-frosted-glass',
+    examples: [
+      {
+        name: 'styles-frosted-glass',
+        paths: {
+          angular: '/../styles/styles-frosted-glass-example.component.ts',
+          react: '/../styles/StylesFrostedGlassExample.tsx',
+        },
+      },
+    ],
+  },
+  {
+    component: 'styles-gradient',
+    examples: [
+      {
+        name: 'styles-gradient',
+        paths: {
+          angular: '/../styles/styles-gradient-example.component.ts',
+          react: '/../styles/StylesGradientExample.tsx',
+        },
+      },
+    ],
+  },
+  {
+    component: 'styles-grid',
+    examples: [
+      {
+        name: 'styles-grid',
+        paths: {
+          angular: '/../components/grid-layout.component.ts',
+          react: '/../components/GridLayout.tsx',
+        },
+      },
+    ],
+  },
+  {
+    component: 'styles-hover',
+    examples: [
+      {
+        name: 'styles-hover',
+        paths: {
+          angular: '/../styles/styles-hover-example.component.ts',
+          react: '/../styles/StylesHoverExample.tsx',
+        },
+      },
+    ],
+  },
+  {
+    component: 'styles-media-query',
+    examples: [
+      {
+        name: 'styles-media-query',
+        paths: {
+          angular: '/../styles/styles-media-query-example.component.ts',
+          react: '/../styles/StylesMediaQueryExample.tsx',
+        },
+      },
+    ],
+  },
+  {
+    component: 'styles-motion',
+    examples: [
+      {
+        name: 'styles-motion',
+        paths: {
+          angular: '/../styles/styles-motion-example.component.ts',
+          react: '/../styles/StylesMotionExample.tsx',
+        },
+      },
+    ],
+  },
+  {
+    component: 'styles-skeleton',
+    examples: [
+      {
+        name: 'styles-skeleton',
+        paths: {
+          angular: '/../styles/styles-skeleton-example.component.ts',
+          react: '/../styles/StylesSkeletonExample.tsx',
+        },
+      },
+    ],
+  },
+  {
+    component: 'styles-spacing',
+    examples: [
+      {
+        name: 'styles-spacing',
+        paths: {
+          angular: '/../styles/styles-spacing-example.component.ts',
+          react: '/../styles/StylesSpacingExample.tsx',
+        },
+      },
+    ],
+  },
+  {
+    component: 'styles-theme',
+    examples: [
+      {
+        name: 'styles-theme',
+        paths: {
+          angular: '/../styles/styles-theme-example.component.ts',
+          react: '/../styles/StylesThemeExample.tsx',
+        },
+      },
+    ],
+  },
+  {
+    component: 'styles-typography',
+    examples: [
+      {
+        name: 'styles-typography',
+        paths: {
+          angular: '/../styles/styles-typography-example.component.ts',
+          react: '/../styles/StylesTypographyExample.tsx',
+        },
+      },
+    ],
+  },
 ];
 
 // Paths to the examples folder for each framework in the monorepo
@@ -726,7 +764,7 @@ const generateNextJsCodeExamples = (codeExamples: CodeSample[]) => {
       const transformedFrameworkMarkup = {
         ...frameworkMarkup,
         // Stackblitz needs explicit React import & adjust component name to match what's used in stackblitz example
-        react: `import React from 'react';\n${frameworkMarkup.react.replace(/export const (\w+)Page\s*=/, 'export const Example =')}`,
+        react: `import React from 'react';\n${frameworkMarkup.react.replace(/export const (\w+)\s*=/, 'export const Example =')}`,
         // Adjust selector & component name to match what's used in stackblitz example
         angular: frameworkMarkup.angular
           .replace(/export class (\w+)Component\s*\{/, 'export class ExampleComponent {')
@@ -734,17 +772,18 @@ const generateNextJsCodeExamples = (codeExamples: CodeSample[]) => {
       };
 
       // Adjust the import and to use ssr package
-      const nextJsMarkup = `'use client';\nimport type { CodeSample } from "../models";\n${frameworkMarkup.react.replace(
-        '@porsche-design-system/components-react',
-        '@porsche-design-system/components-react/ssr'
-      )}`;
+      const nextJsMarkup = `'use client';\nimport type { CodeSample } from "../models";\n${frameworkMarkup.react
+        .replace("@porsche-design-system/components-react'", "@porsche-design-system/components-react/ssr'")
+        .replace(/export const (\w+)\s*=/, 'const Example =')}`;
+
+      console.log(nextJsMarkup);
 
       const fileName = path.basename(example.paths.react);
       const componentName = fileName.replace('.tsx', '');
 
       // Add export of codeSamples
       const fileContent = `${nextJsMarkup}\n\nexport const ${camelCase(componentName)}: CodeSample = {
-  component: ${componentName}Page,
+  component: Example,
   frameworkMarkup: ${JSON.stringify(transformedFrameworkMarkup)}
 }`;
 

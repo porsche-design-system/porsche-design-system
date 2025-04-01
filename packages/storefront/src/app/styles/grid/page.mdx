@@ -1,5 +1,8 @@
 import { Notification } from "@/components/common/Notification";
 import { TableOfContents } from "@/components/common/TableOfContents";
+import {ComponentExample} from "@/components/playground/ComponentExample";
+import {gridLayout} from "@porsche-design-system/shared/examples";
+import {themeLightBackgroundBase} from "@porsche-design-system/components-react/styles";
 
 export const metadata = {
   title: 'Styles: Grid - Porsche Design System',
@@ -23,7 +26,7 @@ between 320px and 2560px, using fluid sized columns and gaps.
   Therefore, the following example only works in fullscreen after clicking the **Maximize** button.
 </Notification>
 
-{/* <Playground :frameworkMarkup="codeExample" :externalStackBlitzDependencies="['styled-components']" :config="config"><ExampleStylesGrid /></Playground> */}
+<ComponentExample codeSample={gridLayout} disableOpenInStackblitz={true} fixedBackgroundColor={themeLightBackgroundBase} />
 
 ## Usage
 

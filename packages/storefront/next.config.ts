@@ -14,6 +14,9 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  compiler: {
+    styledComponents: true,
+  },
 };
 
 const withMDX = createMDX({

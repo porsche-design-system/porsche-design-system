@@ -1,5 +1,8 @@
 import { Notification } from "@/components/common/Notification";
 import { TableOfContents } from "@/components/common/TableOfContents";
+import {ComponentExample} from "@/components/playground/ComponentExample";
+import {stylesHoverExample} from "@porsche-design-system/shared/examples";
+import {themeLightBackgroundBase} from "@porsche-design-system/components-react/styles";
 
 export const metadata = {
   title: 'Styles: Hover - Porsche Design System',
@@ -16,7 +19,7 @@ export const metadata = {
   The `getHoverStyle() / pds-hover()` style is still experimental, interface might change.
 </Notification>
 
-{/* <Playground :frameworkMarkup="codeExample" :externalStackBlitzDependencies="['styled-components']"><ExampleStylesHover /></Playground> */}
+<ComponentExample codeSample={stylesHoverExample} disableOpenInStackblitz={true} fixedBackgroundColor={themeLightBackgroundBase} />
 
 ## Usage
 

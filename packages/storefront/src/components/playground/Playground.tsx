@@ -9,28 +9,39 @@ import React, { type PropsWithChildren } from 'react';
 type PlaygroundProps = {
   frameworkMarkup: FrameworkMarkup;
   onOpenInStackblitz: () => void;
+  disableOpenInStackblitz?: boolean;
   backgroundColor?: BackgroundColor;
+  fixedBackgroundColor?: string;
 };
 
 export const Playground = ({
   frameworkMarkup,
   onOpenInStackblitz,
+  disableOpenInStackblitz = false,
   backgroundColor = 'background-base',
+  fixedBackgroundColor,
   children,
 }: PropsWithChildren<PlaygroundProps>) => {
   return (
     <div className="playground mt-md border-thin border-contrast-low rounded-lg">
-      <div className={`demo p-static-lg border-b-thin border-contrast-low bg-${backgroundColor}`}>{children}</div>
+      <div
+        className={`demo p-static-lg border-b-thin border-contrast-low bg-${backgroundColor} rounded-t-lg translate-x-0`}
+        style={{ ...(fixedBackgroundColor && { backgroundColor: fixedBackgroundColor }) }}
+      >
+        {children}
+      </div>
       <CodeBlock frameworkMarkup={frameworkMarkup}>
-        <PButton
-          type="button"
-          icon-source="assets/icon-stackblitz.svg"
-          variant="ghost"
-          compact={true}
-          onClick={onOpenInStackblitz}
-        >
-          Open in Stackblitz
-        </PButton>
+        {!disableOpenInStackblitz && (
+          <PButton
+            type="button"
+            icon-source="assets/icon-stackblitz.svg"
+            variant="ghost"
+            compact={true}
+            onClick={onOpenInStackblitz}
+          >
+            Open in Stackblitz
+          </PButton>
+        )}
       </CodeBlock>
     </div>
   );

@@ -1,5 +1,8 @@
 import { Notification } from "@/components/common/Notification";
 import { TableOfContents } from "@/components/common/TableOfContents";
+import {ComponentExample} from "@/components/playground/ComponentExample";
+import {stylesFocusExample} from "@porsche-design-system/shared/examples";
+import {themeLightBackgroundBase} from "@porsche-design-system/components-react/styles";
 
 export const metadata = {
   title: 'Styles: Focus - Porsche Design System',
@@ -12,7 +15,7 @@ export const metadata = {
 
 ## Example
 
-{/* <Playground :frameworkMarkup="codeExample" :externalStackBlitzDependencies="['styled-components']"><ExampleStylesFocus /></Playground> */}
+<ComponentExample codeSample={stylesFocusExample} disableOpenInStackblitz={true} fixedBackgroundColor={themeLightBackgroundBase} />
 
 ## Usage
 

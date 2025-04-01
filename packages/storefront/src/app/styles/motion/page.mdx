@@ -1,4 +1,7 @@
 import { TableOfContents } from "@/components/common/TableOfContents";
+import {ComponentExample} from "@/components/playground/ComponentExample";
+import {stylesMotionExample} from "@porsche-design-system/shared/examples";
+import {themeLightBackgroundBase} from "@porsche-design-system/components-react/styles";
 
 export const metadata = {
   title: 'Styles: Motion - Porsche Design System',
@@ -34,7 +37,7 @@ Effects are the key for turning components from static to interactive and keepin
 
 ## Examples
 
-{/* <Playground :frameworkMarkup="motionExamples" :externalStackBlitzDependencies="['styled-components']"><ExampleStylesMotion /></Playground> */}
+<ComponentExample codeSample={stylesMotionExample} disableOpenInStackblitz={true} fixedBackgroundColor={themeLightBackgroundBase} />
 
 ## Styles
 
