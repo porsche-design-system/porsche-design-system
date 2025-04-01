@@ -136,4 +136,43 @@ describe('generateVanillaJsProperties()', () => {
     );
     expect(props).toMatchInlineSnapshot('" name="Some prop""');
   });
+
+  it('should transform react properties correctly for vanilla-js', () => {
+    const propsTruthy = generateVanillaJsProperties(
+      {
+        className: 'test',
+        disabled: true,
+        loop: true,
+        muted: true,
+        autoPlay: true,
+        defaultChecked: true,
+        readOnly: true,
+        maxLength: 10,
+        minLength: 10,
+        srcSet: 'test',
+      },
+      []
+    );
+    expect(propsTruthy).toMatchInlineSnapshot(
+      `" class="test" disabled loop muted autoplay checked readonly maxlength="10" minlength="10" srcset="test""`
+    );
+    const propsFalsy = generateVanillaJsProperties(
+      {
+        className: '',
+        disabled: false,
+        loop: false,
+        muted: false,
+        autoPlay: false,
+        defaultChecked: false,
+        readOnly: false,
+        maxLength: 0,
+        minLength: 0,
+        srcSet: '',
+      },
+      []
+    );
+    expect(propsFalsy).toMatchInlineSnapshot(
+      `" class="" maxlength="0" minlength="0" srcset="""`
+    );
+  });
 });
