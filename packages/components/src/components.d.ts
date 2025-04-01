@@ -1065,10 +1065,6 @@ export namespace Components {
          */
         "name": string;
         /**
-          * Show or hide password toggle for `input type="password"`.
-         */
-        "passwordToggle"?: boolean;
-        /**
           * The placeholder text.
          */
         "placeholder"?: string;
@@ -1088,6 +1084,10 @@ export namespace Components {
           * Adapts the color depending on the theme.
          */
         "theme"?: Theme;
+        /**
+          * Show or hide password toggle for `input type="password"`.
+         */
+        "toggle"?: boolean;
         /**
           * The password input value.
          */
@@ -4466,10 +4466,6 @@ declare namespace LocalJSX {
          */
         "onInput"?: (event: PInputPasswordCustomEvent<InputPasswordInputEventDetail>) => void;
         /**
-          * Show or hide password toggle for `input type="password"`.
-         */
-        "passwordToggle"?: boolean;
-        /**
           * The placeholder text.
          */
         "placeholder"?: string;
@@ -4489,6 +4485,10 @@ declare namespace LocalJSX {
           * Adapts the color depending on the theme.
          */
         "theme"?: Theme;
+        /**
+          * Show or hide password toggle for `input type="password"`.
+         */
+        "toggle"?: boolean;
         /**
           * The password input value.
          */

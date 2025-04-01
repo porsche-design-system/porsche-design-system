@@ -51,7 +51,7 @@ const propTypes: PropTypes<typeof InputPassword> = {
   state: AllowedTypes.oneOf<InputPasswordState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
-  passwordToggle: AllowedTypes.boolean,
+  toggle: AllowedTypes.boolean,
   readOnly: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
@@ -121,7 +121,7 @@ export class InputPassword {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Show or hide password toggle for `input type="password"`. */
-  @Prop() public passwordToggle?: boolean = true;
+  @Prop() public toggle?: boolean = false;
 
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -189,7 +189,7 @@ export class InputPassword {
       this.disabled,
       this.hideLabel,
       this.state,
-      this.passwordToggle,
+      this.toggle,
       this.compact,
       this.readOnly,
       this.theme
@@ -229,7 +229,7 @@ export class InputPassword {
             autocomplete={this.autoComplete}
             disabled={this.disabled}
           />
-          {this.passwordToggle && (
+          {this.toggle && (
             <PrefixedTagNames.pButtonPure
               hideLabel={true}
               theme={this.theme}

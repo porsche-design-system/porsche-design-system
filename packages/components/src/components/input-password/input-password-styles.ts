@@ -34,7 +34,7 @@ export const getComponentCss = (
   disabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
-  passwordToggle: boolean,
+  toggle: boolean,
   compact: boolean,
   readOnly: boolean,
   theme: Theme
@@ -107,7 +107,7 @@ export const getComponentCss = (
       border: `${borderWidthBase} solid ${formStateColor || contrastMediumColor}`,
       borderRadius: borderRadiusSmall,
       paddingInlineStart: paddingInline,
-      paddingInlineEnd: passwordToggle ? paddingBlock : paddingInline, // TODO resolve inconsistency in Figma
+      paddingInlineEnd: toggle ? paddingBlock : paddingInline, // TODO resolve inconsistency in Figma
       display: 'flex',
       gap: formElementLayeredGap,
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
@@ -147,7 +147,7 @@ export const getComponentCss = (
         }),
       }),
     },
-    ...(passwordToggle && {
+    ...(toggle && {
       button: {
         placeSelf: 'center',
         padding: paddingButton, // TODO resolve inconsistency in Figma
