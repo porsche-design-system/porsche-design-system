@@ -19,7 +19,7 @@ approach leads to more intuitive, maintainable, and predictable component APIs.
 
 | ❌ Don't (Action/State-Based) | ✅ Do (Feature-Based)       |
 | ----------------------------- | --------------------------- |
-| `showPasswordToggle`          | `passwordToggle`            |
+| `showPasswordToggle`          | `toggle`                    |
 | `enableDarkMode`              | `mode`                      |
 | `isActive`                    | `active`                    |
 | `hideBorder`                  | `border` or `borderVisible` |

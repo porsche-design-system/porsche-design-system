@@ -4176,12 +4176,6 @@ exports[`should match snapshot 1`] = `
         },
         "type": "string",
       },
-      "passwordToggle": {
-        "allowedValues": "boolean",
-        "defaultValue": true,
-        "description": "Show or hide password toggle for \`input type="password"\`.",
-        "type": "boolean",
-      },
       "placeholder": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -4219,6 +4213,12 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "light",
         "description": "Adapts the color depending on the theme.",
         "type": "Theme",
+      },
+      "toggle": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Show or hide password toggle for \`input type="password"\`.",
+        "type": "boolean",
       },
       "value": {
         "allowedValues": "string",
