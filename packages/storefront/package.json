@@ -5,18 +5,19 @@
   "license": "UNLICENSED",
   "scripts": {
     "dev": "yarn build:generateTableOfContents && concurrently -k -s 'first' -n 'cdn,next' 'serve-cdn' 'next dev'",
-    "prebuild": "yarn build:generateTableOfContents && yarn build:preparePartialResults && yarn build:generateComponentsBundleForStackBlitz",
+    "prebuild": "yarn build:generateTableOfContents && yarn build:preparePartialResults && yarn build:generateComponentsBundleForStackBlitz && yarn build:prepareChangelog",
     "build": "next build",
     "build:generateTableOfContents": "tsx --tsconfig tsconfig.node.json scripts/generateTableOfContents.ts",
     "build:preparePartialResults": "tsx --tsconfig tsconfig.node.json scripts/preparePartialResults.ts",
     "build:generateComponentsBundleForStackBlitz": "tsx --tsconfig tsconfig.node.json scripts/generateComponentsBundleForStackBlitz.ts",
+    "build:prepareChangelog": "tsx --tsconfig tsconfig.node.json scripts/prepareChangelog.ts",
     "start": "concurrently -k -s 'first' -n 'cdn,next' 'serve-cdn' 'next start'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws --spa index.html -p 8080 -d ./dist'",
     "updateAlgolia": "tsx --tsconfig tsconfig.json scripts/updateAlgoliaIndex.tsx",
     "lint": "next lint",
     "test": "yarn test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
-    "test:e2e": "playwright test --config=tests/e2e/config/playwright.config.ts --ui",
+    "test:e2e": "playwright test --config=tests/e2e/config/playwright.config.ts",
     "clean:build": "rm -rf ./dist && rm -rf ./.next"
   },
   "dependencies": {
