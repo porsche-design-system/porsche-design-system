@@ -467,33 +467,38 @@ const codeExamples: CodeSample[] = [
       },
     ],
   },
-  // TODO: Change Table Example to not include shared data
-  // {
-  //   component: 'p-table',
-  //   examples: [
-  //     [
-  //       componentsJsPath + '/table-example-basic.html',
-  //       componentsAngularPath + '/table-example-basic.component.ts',
-  //       componentsReactPath + '/TableExampleBasic.tsx',
-  //       componentsVuePath + '/TableExampleBasic.vue',
-  //       'src/data/table-data-basic.ts', // order is important since part of filename is extracted for param types of function name
-  //     ],
-  //     [
-  //       componentsJsPath + '/table-example-sorting.html',
-  //       componentsAngularPath + '/table-example-sorting.component.ts',
-  //       componentsReactPath + '/TableExampleSorting.tsx',
-  //       componentsVuePath + '/TableExampleSorting.vue',
-  //       'src/data/table-data-sorting.ts', // order is important since part of filename is extracted for param types of function name
-  //     ],
-  //     [
-  //       componentsJsPath + '/table-example-advanced.html',
-  //       componentsAngularPath + '/table-example-advanced.component.ts',
-  //       componentsReactPath + '/TableExampleAdvanced.tsx',
-  //       componentsVuePath + '/TableExampleAdvanced.vue',
-  //       'src/data/table-data-advanced.ts', // order is important since part of filename is extracted for param types of function name
-  //     ],
-  //   ],
-  // },
+  {
+    component: 'p-table',
+    examples: [
+      {
+        name: 'table-example-basic',
+        paths: {
+          'vanilla-js': '/table-example-basic.html',
+          angular: '/table-example-basic.component.ts',
+          react: '/TableExampleBasic.tsx',
+          vue: '/TableExampleBasic.vue',
+        },
+      },
+      {
+        name: 'table-example-sorting',
+        paths: {
+          'vanilla-js': '/table-example-sorting.html',
+          angular: '/table-example-sorting.component.ts',
+          react: '/TableExampleSorting.tsx',
+          vue: '/TableExampleSorting.vue',
+        },
+      },
+      {
+        name: 'table-example-advanced',
+        paths: {
+          'vanilla-js': '/table-example-advanced.html',
+          angular: '/table-example-advanced.component.ts',
+          react: '/TableExampleAdvanced.tsx',
+          vue: '/TableExampleAdvanced.vue',
+        },
+      },
+    ],
+  },
   {
     component: 'p-tabs-bar',
     examples: [
@@ -755,7 +760,9 @@ const generateNextJsCodeExamples = (codeExamples: CodeSample[]) => {
       const frameworkMarkup: FrameworkMarkup = Object.fromEntries(
         Object.entries(example.paths).map(([framework, filePath]: [Framework, string]) => {
           const exampleFilePath = path.resolve(frameworkPaths[framework] + filePath);
-          const fileContent = fs.readFileSync(exampleFilePath, 'utf8').trim();
+          let fileContent = fs.readFileSync(exampleFilePath, 'utf8').trim();
+          // Replace locally served assets with public assets folder of storefront
+          fileContent = fileContent.replace(/http:\/\/localhost:3002/g, 'assets');
           return [framework, fileContent];
         })
       );

@@ -1,8 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
-import { Configurator } from "@/components/playground/Configurator";
 import {
-  tableStory,
   tableStoryCaptionProperty,
   tableStoryCaptionSlot, tableStoryHideLabel,
   tableStoryLayoutFixed
@@ -10,6 +8,7 @@ import {
 import {ComponentStory} from "@/components/playground/ComponentStory";
 import {Notification} from "@/components/common/Notification";
 import {ComponentExample} from "@/components/playground/ComponentExample";
+import {tableExampleAdvanced, tableExampleSorting} from "@porsche-design-system/shared/examples";
 
 export const metadata = {
   title: 'Table - Porsche Design System',
@@ -81,10 +80,18 @@ to.
   Please use the <code>update</code> event instead.
 </Notification>
 
+<ComponentExample codeSample={tableExampleSorting} />
+
 ### Hide Label
 
 Sometimes you want to hide the label of a table column for example when the column's content is self-explanatory. This
 can be achieved by setting the `hide-label` property.
 
 <ComponentStory story={tableStoryHideLabel} />
+
+## Advanced Table
+
+The appearance of a table's contents can be customized as illustrated in the following example.
+
+<ComponentExample codeSample={tableExampleAdvanced} />
 

@@ -5,19 +5,85 @@
 </p-table>
 
 <script>
-  const getHeadAndData = async () => {
-    const content = await fetch('assets/table-data-advanced.js').then((res) => res.text());
-    const [, headStr] = /const headAdvanced = ((\s|\S)*?);/.exec(content) || [];
-    const headAdvanced = eval(headStr);
-
-    const [, dataStr] = /const dataAdvanced = ((\s|\S)*?);/.exec(content) || [];
-    const dataAdvanced = eval(dataStr);
-
-    return { headAdvanced, dataAdvanced };
-  };
-
-  (async () => {
-    const { headAdvanced, dataAdvanced } = await getHeadAndData();
+  (() => {
+    const headAdvanced = [
+      { name: 'Model', id: 'model' },
+      { name: 'Interest', id: 'interest' },
+      { name: 'VIN', id: 'vin' },
+      { name: 'Purchase Intention', id: 'purchaseIntention' },
+      { name: 'Status', id: 'status' },
+      { name: 'Comment', id: 'comment' },
+      { name: 'Lead ID', id: 'leadId' },
+      { name: 'Select Wrapper', id: 'selectWrapper' },
+      { name: 'Select', id: 'select' },
+      { name: 'Multi-Select', id: 'multiSelect' },
+      { name: 'Action', id: 'action', hideLabel: true },
+    ].map((item, i) => ({
+      ...item,
+      ...(i > 0 &&
+        i < 7 &&
+        i !== 5 && {
+          active: i === 1,
+          direction: 'asc',
+        }),
+    }));
+    const dataAdvanced = [
+      {
+        imageUrl: 'http://localhost:3002/718.png',
+        model: '718',
+        date: '23.06.2021',
+        interest: 'New Car',
+        vin: '1FM5K7F84FGB16304',
+        purchaseIntention: '08/2021',
+        status: 'Won',
+        comment: '-',
+        leadId: '0000824402',
+      },
+      {
+        imageUrl: 'http://localhost:3002/panamera.png',
+        model: 'Panamera',
+        date: '19.06.2021',
+        interest: 'New Car',
+        vin: '2GCEC13T141374801',
+        purchaseIntention: '11/2021',
+        status: 'Lost',
+        comment: 'Some multiline text and a column with a min width.',
+        leadId: '0000824409',
+      },
+      {
+        imageUrl: 'http://localhost:3002/911.png',
+        model: '911',
+        date: '19.05.2021',
+        interest: 'Used Car',
+        vin: '5GAKVCKD8EJ335750',
+        purchaseIntention: '09/2021',
+        status: 'Won',
+        comment: '-',
+        leadId: '0000824408',
+      },
+      {
+        imageUrl: 'http://localhost:3002/macan.png',
+        model: 'Macan',
+        date: '10.05.2021',
+        interest: 'Used Car',
+        vin: '1FMPU17L83LC09302',
+        purchaseIntention: '07/2021',
+        status: 'Lost',
+        comment: '-',
+        leadId: '0000824407',
+      },
+      {
+        imageUrl: 'http://localhost:3002/taycan.png',
+        model: 'Taycan',
+        date: '03.05.2021',
+        interest: 'New Car',
+        vin: 'JN1BY1AR3BM375187',
+        purchaseIntention: '05/2021',
+        status: 'Won',
+        comment: '-',
+        leadId: '0000824406',
+      },
+    ];
 
     const renderTableHeadRow = (items) =>
       [
@@ -33,7 +99,7 @@
 <p-table-row>
   <p-table-cell>
     <div style="display: flex;">
-      <img src="${item.imageUrl}" width="80" height="45" style="margin-right: .5rem" alt="" />
+      <img src="${item.imageUrl}" width="80" height="45" style="margin-right: .5rem; object-fit: contain; max-width: none;" alt="" />
       <div>
         <p-text weight='semi-bold'>${item.model}</p-text>
         <p-text size='x-small'>${item.date}</p-text>
