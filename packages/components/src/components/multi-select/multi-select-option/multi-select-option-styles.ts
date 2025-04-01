@@ -67,12 +67,11 @@ export const getComponentCss = (theme: Theme, isDisabled: boolean, selected: boo
     },
     option: {
       ...getOptionJssStyle('multi-select-option', 1, theme),
-      display: 'grid',
-      gridTemplateColumns: 'auto minmax(0px, 1fr)',
       columnGap: '8px',
     },
     checkbox: {
       position: 'relative',
+      flexShrink: 0,
       width: dimension,
       height: dimension,
       font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
