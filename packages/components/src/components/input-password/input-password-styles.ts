@@ -92,6 +92,7 @@ export const getComponentCss = (
         ...prefersColorSchemeDarkMediaQuery(theme, {
           color: primaryColorDark,
         }),
+        width: '100%',
         minWidth: '2rem',
         '&[type="text"]': {
           textOverflow: 'ellipsis',
@@ -108,7 +109,6 @@ export const getComponentCss = (
       paddingInlineStart: paddingInline,
       paddingInlineEnd: passwordToggle ? paddingBlock : paddingInline, // TODO resolve inconsistency in Figma
       display: 'flex',
-      gridTemplateColumns: '1fr auto',
       gap: formElementLayeredGap,
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
       ...prefersColorSchemeDarkMediaQuery(theme, {
