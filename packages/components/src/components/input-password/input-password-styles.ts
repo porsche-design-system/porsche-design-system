@@ -83,6 +83,7 @@ export const getComponentCss = (
       ...preventFoucOfNestedElementsStyles,
       input: {
         all: 'unset',
+        flex: 1,
         font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
         height,
         paddingBlock,
@@ -105,8 +106,8 @@ export const getComponentCss = (
       border: `${borderWidthBase} solid ${formStateColor || contrastMediumColor}`,
       borderRadius: borderRadiusSmall,
       paddingInlineStart: paddingInline,
-      paddingInlineEnd: paddingBlock, // `calc(${paddingInline} - (${paddingButton} * 2))`, TODO resolve inconsistency in Figma
-      display: 'grid',
+      paddingInlineEnd: passwordToggle ? paddingBlock : paddingInline, // TODO resolve inconsistency in Figma
+      display: 'flex',
       gridTemplateColumns: '1fr auto',
       gap: formElementLayeredGap,
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
