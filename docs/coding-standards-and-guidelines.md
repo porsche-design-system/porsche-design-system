@@ -25,3 +25,23 @@ approach leads to more intuitive, maintainable, and predictable component APIs.
 | `hideBorder`                  | `border` or `borderVisible` |
 
 By following these principles, prop names remain intuitive and maintainable, ensuring clarity across the design system.
+
+## Boolean Props
+
+Boolean props should always indicate activation or presence of a feature, and their default value should be `false`.
+This ensures that shorthand usage remains intuitive and predictable.
+
+### Best Practices
+
+- **Always Positive**: Boolean props should enable a feature rather than disable it.
+- **Default to False**: A missing prop should imply `false`, avoiding unnecessary explicit declarations.
+
+### Examples
+
+| ❌ Don't (Negative Boolean) | ✅ Do (Positive Boolean) |
+| --------------------------- | ------------------------ |
+| `disableAnimation`          | `animation`              |
+| `hideLabel`                 | `labelVisible`           |
+| `isNotClickable`            | `clickable`              |
+
+This approach simplifies component usage and improves readability, making the API more predictable and user-friendly.
