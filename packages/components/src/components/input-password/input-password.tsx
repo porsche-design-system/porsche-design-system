@@ -269,5 +269,6 @@ export class InputPassword {
 
   private togglePassword = (): void => {
     this.showPassword = !this.showPassword;
+    this.inputElement.focus();
   };
 }
