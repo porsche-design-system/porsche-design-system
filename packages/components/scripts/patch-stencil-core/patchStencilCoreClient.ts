@@ -1,8 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
-
-const PDS_PATCH_START = '//========= PDS PATCH START';
-const PDS_PATCH_END = '//========= PDS PATCH END';
+import { PDS_PATCH_END, PDS_PATCH_START } from './constants';
+import { backupOrRestoreFile, escapeString, getPatchMarkerCount } from './utils';
 
 /**
  * This script patches stencil core behaviour when initializing web components together with SSR/SSG.
@@ -13,23 +12,10 @@ const PDS_PATCH_END = '//========= PDS PATCH END';
  *
  * Basically it fixes: Flash of Hydration
  */
-const patchStencilCore = (): void => {
-  const stencilIndexFilePath = path.resolve(require.resolve('@stencil/core'), '../../client/index.js');
-  const stencilIndexFileBackupPath = path.resolve(stencilIndexFilePath, '../index-original.js');
-
-  if (fs.existsSync(stencilIndexFileBackupPath)) {
-    // restore backup
-    fs.copyFileSync(stencilIndexFileBackupPath, stencilIndexFilePath);
-  } else {
-    // create backup
-    fs.copyFileSync(stencilIndexFilePath, stencilIndexFileBackupPath);
-  }
-
-  const fileContent = fs.readFileSync(stencilIndexFilePath, 'utf8');
+const patchStencilSSRHydration = (fileContent: string): string => {
   const pdsPatchStartRegEx = new RegExp(`(${PDS_PATCH_START})`, 'g');
-  const getPatchMarkerCount = (script: string): number => (script.match(pdsPatchStartRegEx) || []).length;
 
-  if (getPatchMarkerCount(fileContent) === 0) {
+  if (getPatchMarkerCount(fileContent, pdsPatchStartRegEx) === 0) {
     // no markers found, patch stencil core
     const extractSnippet = `
                             ${PDS_PATCH_START}
@@ -75,15 +61,24 @@ const patchStencilCore = (): void => {
         `${cleanupSnippet}$&`
       );
 
-    if (getPatchMarkerCount(newFileContent) !== 4) {
-      throw new Error('Failed patching stencil core. Position for snippets not found.\n');
-    } else {
-      fs.writeFileSync(stencilIndexFilePath, newFileContent);
-      process.stdout.write('Successfully patched stencil core.\n');
+    if (getPatchMarkerCount(newFileContent, pdsPatchStartRegEx) !== 4) {
+      throw new Error('Failed patching @stencil/core client. Position for snippets not found.\n');
     }
-  } else {
-    process.stdout.write('Stencil core already patched. Doing nothing.\n');
+    return newFileContent;
   }
+  process.stdout.write('@stencil/core client already patched. Doing nothing.\n');
+  return fileContent;
 };
 
-patchStencilCore();
+const patchStencilCoreClient = (): void => {
+  const stencilFilePath = path.resolve(require.resolve('@stencil/core'), '../../client/index.js');
+  backupOrRestoreFile(stencilFilePath);
+
+  let fileContent = fs.readFileSync(stencilFilePath, 'utf8');
+  fileContent = patchStencilSSRHydration(fileContent);
+
+  fs.writeFileSync(stencilFilePath, fileContent);
+  process.stdout.write('Successfully patched @stencil/core client.\n');
+};
+
+patchStencilCoreClient();
