@@ -2914,7 +2914,7 @@ exports[`should match snapshot 1`] = `
     "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
-    "hasObserveChildren": false,
+    "hasObserveChildren": true,
     "hasSlot": true,
     "isChunked": false,
     "isDelegatingFocus": false,
@@ -2979,6 +2979,12 @@ exports[`should match snapshot 1`] = `
     "slotsMeta": {
       "": {
         "description": "Default slot for the main content.",
+      },
+      "button": {
+        "description": "Shows a custom button to reach a deeper level of the navigation structure.",
+      },
+      "header": {
+        "description": "Shows a custom header section on mobile view",
       },
     },
     "styling": "jss",
