@@ -93,7 +93,7 @@
     "lint": "biome lint",
     "lint:components": "biome lint",
     "lint:components-vue": "biome lint",
-    "lint:storefront": "echo 'disabled'",
+    "lint:storefront": "biome lint",
     "test:unit:assets": "yarn --cwd ./packages/assets test:unit",
     "test:unit:assets:assets": "yarn --cwd ./packages/assets test:unit:assets",
     "test:unit:assets:fallbacks": "yarn --cwd ./packages/assets/projects/fallbacks test:unit",

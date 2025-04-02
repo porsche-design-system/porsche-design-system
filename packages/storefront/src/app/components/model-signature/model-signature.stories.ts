@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 import type { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
-import { MODEL_SIGNATURE_MODELS } from '@porsche-design-system/components/src/components/model-signature/model-signature-utils';
+import { MODEL_SIGNATURES_MANIFEST } from '@porsche-design-system/assets';
 import type { CSSProperties } from 'react';
 
 export const modelSignatureStory: Story<'p-model-signature'> = {
@@ -16,7 +16,7 @@ export const modelSignatureStory: Story<'p-model-signature'> = {
 
 export const modelSignatureStorySafeZone: Story<'p-model-signature'> = {
   generator: () => [
-    ...MODEL_SIGNATURE_MODELS.map(
+    ...Object.keys(MODEL_SIGNATURES_MANIFEST).map(
       (model) =>
         ({
           tag: 'div',

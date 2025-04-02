@@ -783,8 +783,6 @@ const generateNextJsCodeExamples = (codeExamples: CodeSample[]) => {
         .replace("@porsche-design-system/components-react'", "@porsche-design-system/components-react/ssr'")
         .replace(/export const (\w+)\s*=/, 'const Example =')}`;
 
-      console.log(nextJsMarkup);
-
       const fileName = path.basename(example.paths.react);
       const componentName = fileName.replace('.tsx', '');
 
