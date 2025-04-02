@@ -1,3 +1,4 @@
+import { NgForOf } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PorscheDesignSystemModule, SelectUpdateEventDetail } from '@porsche-design-system/components-angular';
 
@@ -21,7 +22,7 @@ import { PorscheDesignSystemModule, SelectUpdateEventDetail } from '@porsche-des
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [PorscheDesignSystemModule],
+  imports: [PorscheDesignSystemModule, NgForOf],
 })
 export class SelectExampleDynamicComponent {
   selectedValue: string = '1';
