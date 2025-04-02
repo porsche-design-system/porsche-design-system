@@ -54,37 +54,60 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
         }),
       },
       slot: {
-        display: 'none',
-        [mediaQueryMobile]: {
-          ...(isSecondary && {
-            zIndex: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            gap: spacingFluidXSmall,
-            gridArea: '4/2/auto/-2',
-            height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
-            paddingBlockEnd: spacingFluidLarge,
-            animation: getAnimation('slide-up-mobile', 'moderate', 'base'),
-          }),
-          ...((isPrimary || isCascade) && {
-            display: 'contents',
-          }),
+        '&[name="header"]': {
+          display: 'none',
+          [mediaQueryMobile]: {
+            ...(isSecondary && {
+              gridArea: '2/3',
+              display: 'grid',
+              placeItems: 'center',
+              zIndex: 2,
+            }),
+          },
         },
-        [mediaQueryDesktop]: {
-          ...((isPrimary || isSecondary) && {
-            display: 'flex',
-            flexDirection: 'column',
-            gap: spacingFluidXSmall,
-            height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
-            animation: getAnimation(`slide-up-desktop-${isPrimary ? 'primary' : 'secondary'}`, 'moderate', 'base'),
+        '&[name="button"]': {
+          ...((isPrimary || isCascade) && {
+            display: 'none',
           }),
-          ...(isSecondary && {
-            gridArea: '2/2/auto/-2',
-            paddingBlockEnd: spacingFluidLarge,
-          }),
-          ...(isCascade && {
-            display: 'contents',
-          }),
+          [mediaQueryMobile]: {
+            ...(isSecondary && {
+              display: 'none',
+            }),
+          },
+        },
+        '&:not([name])': {
+          display: 'none',
+          [mediaQueryMobile]: {
+            ...(isSecondary && {
+              zIndex: 0,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: spacingFluidXSmall,
+              gridArea: '4/2/auto/-2',
+              height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
+              paddingBlockEnd: spacingFluidLarge,
+              animation: getAnimation('slide-up-mobile', 'moderate', 'base'),
+            }),
+            ...((isPrimary || isCascade) && {
+              display: 'contents',
+            }),
+          },
+          [mediaQueryDesktop]: {
+            ...((isPrimary || isSecondary) && {
+              display: 'flex',
+              flexDirection: 'column',
+              gap: spacingFluidXSmall,
+              height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
+              animation: getAnimation(`slide-up-desktop-${isPrimary ? 'primary' : 'secondary'}`, 'moderate', 'base'),
+            }),
+            ...(isSecondary && {
+              gridArea: '2/2/auto/-2',
+              paddingBlockEnd: spacingFluidLarge,
+            }),
+            ...(isCascade && {
+              display: 'contents',
+            }),
+          },
         },
       },
       h2: {
