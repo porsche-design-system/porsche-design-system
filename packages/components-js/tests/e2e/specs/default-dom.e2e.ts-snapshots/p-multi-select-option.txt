@@ -4,12 +4,6 @@
   aria-selected="false"
   class="option"
 >
-  <p-checkbox
-    id="checkbox"
-    class="checkbox hydrated"
-    aria-hidden="true"
-    name=""
-  >
-    <slot slot="label"> </slot>
-  </p-checkbox>
+  <span class="checkbox" aria-hidden="true"> </span>
+  <slot slot="label"> </slot>
 </div>
