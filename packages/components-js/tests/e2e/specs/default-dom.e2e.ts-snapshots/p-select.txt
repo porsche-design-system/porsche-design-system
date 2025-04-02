@@ -27,6 +27,7 @@
   >
     <slot> </slot>
   </div>
+  <span id="message" class="message" role="alert"> </span>
   <span
     class="sr-only"
     role="status"

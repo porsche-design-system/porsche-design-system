@@ -6,4 +6,5 @@
     <p-select-wrapper-dropdown class="dropdown hydrated">
     </p-select-wrapper-dropdown>
   </div>
+  <span id="message" class="message" role="alert"> </span>
 </div>

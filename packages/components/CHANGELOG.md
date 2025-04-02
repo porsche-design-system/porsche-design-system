@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Fixed
 
+- Accessibility: fix ARIA live announcements of form components status messages
+  ([#3796](https://github.com/porsche-design-system/porsche-design-system/pull/3796))
 - `aria` prop now supports a colon inside of a value, e.g. `aria="{ 'aria-label': 'Always remember: yes you can!' }"`
   ([#3680](https://github.com/porsche-design-system/porsche-design-system/pull/3680))
 
