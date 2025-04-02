@@ -155,7 +155,7 @@ const attributeForDistinct: keyof AlgoliaRecord = 'page';
 
 const customRanking = ['desc(category)', 'desc(page)', 'desc(name)', 'desc(tab)', 'desc(section)', 'desc(content)'];
 export const ALGOLIA_INDEX_NAME = process.env.P_CURRENT_BRANCH?.replace('/', '_') || 'localhost';
-const uploadAndOverrideRecords = (records: AlgoliaRecord[]) => {
+const _uploadAndOverrideRecords = (records: AlgoliaRecord[]) => {
   const client = algoliasearch(process.env.ALGOLIA_APP_ID as string, process.env.ALGOLIA_API_KEY as string);
   // const index = client.index.initIndex(ALGOLIA_INDEX_NAME);
   client
@@ -186,7 +186,7 @@ const uploadAndOverrideRecords = (records: AlgoliaRecord[]) => {
 };
 
 const updateAlgoliaIndex = () => {
-  const records = generateAlgoliaRecords(sitemap);
+  const _records = generateAlgoliaRecords(sitemap);
 
   //Uncomment this for easier debugging
   // fs.writeFileSync(path.resolve(__dirname, 'algoliaRecords.json'), JSON.stringify(records, null, 2), {

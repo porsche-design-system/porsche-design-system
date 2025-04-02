@@ -143,7 +143,7 @@ export const visualizeGridConfig: ElementConfig<HTMLTagOrComponent> = {
         {
           tag: 'div',
           properties: { className: 'wide-sidebar' },
-          children: Array(3).fill({
+          children: new Array(3).fill({
             tag: 'p-accordion',
             properties: { heading: 'Some Heading', tag: 'h2' },
           }),

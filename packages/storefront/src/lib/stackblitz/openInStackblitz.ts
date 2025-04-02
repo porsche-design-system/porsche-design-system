@@ -54,7 +54,7 @@ const stackblitzOptions: Record<
     pdsVersion: string | undefined
   ) => [Project, OpenOptions]
 > = {
-  'vanilla-js': (markup, theme, porscheDesignSystemBundle, pdsVersion) => [
+  'vanilla-js': (markup, _, porscheDesignSystemBundle, pdsVersion) => [
     {
       files: {
         ...porscheDesignSystemBundle,
