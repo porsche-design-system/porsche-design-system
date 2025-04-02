@@ -32,7 +32,10 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
   :host([hidden]) {
     display: none !important;
   }
-  slot {
+  slot[name="header"] {
+    display: none;
+  }
+  slot:not([name]) {
     display: none;
   }
   h2 {
@@ -137,7 +140,13 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
   :host([hidden]) {
     display: none !important;
   }
-  slot {
+  slot[name="header"] {
+    display: none;
+  }
+  slot[name="button"] {
+    display: none;
+  }
+  slot:not([name]) {
     display: none;
   }
   h2 {
@@ -176,13 +185,13 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
     visibility: hidden;
   }
 @media(min-width:760px) {
-    slot {
+    slot:not([name]) {
       display: contents;
     }
 }
 
 @media(max-width:759px) {
-    slot {
+    slot:not([name]) {
       display: contents;
     }
 }
@@ -271,7 +280,10 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
   :host([hidden]) {
     display: none !important;
   }
-  slot {
+  slot[name="header"] {
+    display: none;
+  }
+  slot:not([name]) {
     display: none;
   }
   h2 {
@@ -307,7 +319,7 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
     visibility: hidden;
   }
 @media(min-width:760px) {
-    slot {
+    slot:not([name]) {
       display: flex;
       flex-direction: column;
       gap: clamp(4px, 0.25vw + 3px, 8px);
@@ -319,7 +331,7 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
 }
 
 @media(max-width:759px) {
-    slot {
+    slot:not([name]) {
       z-index: 0;
       display: flex;
       flex-direction: column;
@@ -328,6 +340,15 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
       height: fit-content;
       padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
       animation: slide-up-mobile var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+    }
+    slot[name="button"] {
+      display: none;
+    }
+    slot[name="header"] {
+      grid-area: 2/3;
+      display: grid;
+      place-items: center;
+      z-index: 2;
     }
     h2 {
       font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -437,7 +458,13 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
   :host([hidden]) {
     display: none !important;
   }
-  slot {
+  slot[name="header"] {
+    display: none;
+  }
+  slot[name="button"] {
+    display: none;
+  }
+  slot:not([name]) {
     display: none;
   }
   h2 {
@@ -476,7 +503,7 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
     visibility: hidden;
   }
 @media(min-width:760px) {
-    slot {
+    slot:not([name]) {
       display: contents;
       flex-direction: column;
       gap: clamp(4px, 0.25vw + 3px, 8px);
@@ -488,7 +515,7 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
 }
 
 @media(max-width:759px) {
-    slot {
+    slot:not([name]) {
       z-index: 0;
       display: contents;
       flex-direction: column;
@@ -497,6 +524,15 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
       height: fit-content;
       padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
       animation: slide-up-mobile var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+    }
+    slot[name="button"] {
+      display: none;
+    }
+    slot[name="header"] {
+      grid-area: 2/3;
+      display: grid;
+      place-items: center;
+      z-index: 2;
     }
     h2 {
       font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -605,7 +641,13 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
   :host([hidden]) {
     display: none !important;
   }
-  slot {
+  slot[name="header"] {
+    display: none;
+  }
+  slot[name="button"] {
+    display: none;
+  }
+  slot:not([name]) {
     display: none;
   }
   h2 {
@@ -641,7 +683,7 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
     visibility: hidden;
   }
 @media(min-width:760px) {
-    slot {
+    slot:not([name]) {
       display: flex;
       flex-direction: column;
       gap: clamp(4px, 0.25vw + 3px, 8px);
@@ -651,7 +693,7 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
 }
 
 @media(max-width:759px) {
-    slot {
+    slot:not([name]) {
       display: contents;
     }
     ::slotted(*:not([secondary])) {
@@ -737,7 +779,13 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
   :host([hidden]) {
     display: none !important;
   }
-  slot {
+  slot[name="header"] {
+    display: none;
+  }
+  slot[name="button"] {
+    display: none;
+  }
+  slot:not([name]) {
     display: none;
   }
   h2 {
@@ -776,7 +824,7 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
     visibility: hidden;
   }
 @media(min-width:760px) {
-    slot {
+    slot:not([name]) {
       display: contents;
       flex-direction: column;
       gap: clamp(4px, 0.25vw + 3px, 8px);
@@ -786,7 +834,7 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
 }
 
 @media(max-width:759px) {
-    slot {
+    slot:not([name]) {
       display: contents;
     }
     ::slotted(*:not([secondary])) {
@@ -872,7 +920,13 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
   :host([hidden]) {
     display: none !important;
   }
-  slot {
+  slot[name="header"] {
+    display: none;
+  }
+  slot[name="button"] {
+    display: none;
+  }
+  slot:not([name]) {
     display: none;
   }
   h2 {
@@ -908,7 +962,7 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
     visibility: hidden;
   }
 @media(min-width:760px) {
-    slot {
+    slot:not([name]) {
       display: flex;
       flex-direction: column;
       gap: clamp(4px, 0.25vw + 3px, 8px);
@@ -920,7 +974,7 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
 }
 
 @media(max-width:759px) {
-    slot {
+    slot:not([name]) {
       z-index: 0;
       display: contents;
       flex-direction: column;
@@ -929,6 +983,15 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
       height: fit-content;
       padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
       animation: slide-up-mobile var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+    }
+    slot[name="button"] {
+      display: none;
+    }
+    slot[name="header"] {
+      grid-area: 2/3;
+      display: grid;
+      place-items: center;
+      z-index: 2;
     }
     h2 {
       font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1049,7 +1112,13 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
   :host([hidden]) {
     display: none !important;
   }
-  slot {
+  slot[name="header"] {
+    display: none;
+  }
+  slot[name="button"] {
+    display: none;
+  }
+  slot:not([name]) {
     display: none;
   }
   h2 {
@@ -1088,7 +1157,7 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
     visibility: hidden;
   }
 @media(min-width:760px) {
-    slot {
+    slot:not([name]) {
       display: contents;
       flex-direction: column;
       gap: clamp(4px, 0.25vw + 3px, 8px);
@@ -1100,7 +1169,7 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
 }
 
 @media(max-width:759px) {
-    slot {
+    slot:not([name]) {
       z-index: 0;
       display: contents;
       flex-direction: column;
@@ -1109,6 +1178,15 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
       height: fit-content;
       padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
       animation: slide-up-mobile var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+    }
+    slot[name="button"] {
+      display: none;
+    }
+    slot[name="header"] {
+      grid-area: 2/3;
+      display: grid;
+      place-items: center;
+      z-index: 2;
     }
     h2 {
       font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
