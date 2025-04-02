@@ -250,8 +250,9 @@ exports[`should match snapshot 1`] = `
         "hasAltProp": true,
       },
       "title": {
-        "description": "Defines the title used in the banner. Can be used alternatively to the heading prop. Can be used for rich content.",
+        "description": "Please use the heading prop or slot="heading" instead.",
         "hasAltProp": true,
+        "isDeprecated": true,
       },
     },
     "styling": "jss",
