@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PLinkTile, PSelect, PSelectOption, SelectUpdateEventDetail } from '@porsche-design-system/components-vue';
+import { PLinkTile, PSelect, PSelectOption, type SelectUpdateEventDetail } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
 const selectedValue = ref('auto');

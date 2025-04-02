@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { PButtonTile, PSelect, PSelectOption, SelectUpdateEventDetail } from '@porsche-design-system/components-vue';
+import {
+  PButtonTile,
+  PSelect,
+  PSelectOption,
+  type SelectUpdateEventDetail,
+} from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
 const selectedValue = ref('auto');
