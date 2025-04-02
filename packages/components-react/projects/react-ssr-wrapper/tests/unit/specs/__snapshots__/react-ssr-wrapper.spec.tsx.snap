@@ -10441,7 +10441,10 @@ exports[`should render dsr component for PFlyoutMultilevelItem 1`] = `
   :host([hidden]) {
     display: none !important;
   }
-  slot {
+  slot[name="header"] {
+    display: none;
+  }
+  slot:not([name]) {
     display: none;
   }
   h2 {
