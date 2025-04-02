@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-modal-example',
@@ -14,7 +15,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </p-modal>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
 })
 export class ModalExampleComponent {
   isModalOpen = false;

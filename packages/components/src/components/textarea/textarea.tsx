@@ -285,6 +285,8 @@ export class Textarea {
   };
 
   private setCounterAriaText = (): void => {
-    this.counterElement.innerText = `You have ${this.maxLength - this.value.length} out of ${this.maxLength} characters left`;
+    if (this.counterElement) {
+      this.counterElement.innerText = `You have ${this.maxLength - this.value.length} out of ${this.maxLength} characters left`;
+    }
   };
 }

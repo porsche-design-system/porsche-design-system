@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type CarouselUpdateEventDetail, PCarousel } from '@porsche-design-system/components-vue';
+import { type CarouselUpdateEventDetail, PButton, PCarousel } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
 const activeSlideIndex = ref(1);
@@ -19,7 +19,7 @@ const onButtonClick = (e: MouseEvent): void => {
     <div>Slide 3</div>
   </PCarousel>
 
-  <button
+  <PButton
     v-for="(_, i) in Array.from(Array(3))"
     :key="i"
     type="button"
@@ -27,7 +27,7 @@ const onButtonClick = (e: MouseEvent): void => {
     :disabled="activeSlideIndex === i"
   >
     {{ i + 1 }}
-  </button>
+  </PButton>
 </template>
 <style scoped>
   p-carousel div {

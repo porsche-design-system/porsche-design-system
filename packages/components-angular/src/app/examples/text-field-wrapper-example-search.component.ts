@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'text-field-wrapper-example-search',
@@ -15,7 +16,8 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/
     <p-text>Value: {{ value }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
 })
 export class TextFieldWrapperExampleSearchComponent {
   public value = '';

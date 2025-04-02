@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { MultiSelectUpdateEventDetail } from '@porsche-design-system/components-angular';
+import { MultiSelectUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-multi-select-example-controlled',
@@ -16,7 +16,8 @@ import type { MultiSelectUpdateEventDetail } from '@porsche-design-system/compon
     <p-text>{{ debugText }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
 })
 export class MultiSelectExampleControlledComponent {
   selectedValues: string[] = [];

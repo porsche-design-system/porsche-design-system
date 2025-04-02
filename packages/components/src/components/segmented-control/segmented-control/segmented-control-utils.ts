@@ -74,7 +74,12 @@ export const getItemMaxWidth = (host: HTMLElement): number => {
 
 type Item = HTMLElement & SegmentedControlItem & SegmentedControlItemInternalHTMLProps;
 
-export const syncSegmentedControlItemsProps = (host: HTMLElement, value: string | number, disabled: boolean,theme: Theme): void => {
+export const syncSegmentedControlItemsProps = (
+  host: HTMLElement,
+  value: string | number,
+  disabled: boolean,
+  theme: Theme
+): void => {
   for (const item of Array.from(host.children)) {
     (item as Item).selected = (item as Item).value === value;
     (item as Item).theme = theme;

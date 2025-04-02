@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PMultiSelect, PMultiSelectOption, PText } from '@porsche-design-system/components-vue';
+import { PButton, PMultiSelect, PMultiSelectOption, PText } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
 const lastSubmittedData = ref('none');
@@ -19,8 +19,8 @@ const onSubmit = (e: Event) => {
       <PMultiSelectOption :value="'e'">Option E</PMultiSelectOption>
       <PMultiSelectOption :value="'f'">Option F</PMultiSelectOption>
     </PMultiSelect>
-    <button type="submit">Submit</button>
-    <button type="reset">Reset</button>
+    <PButton type="submit">Submit</PButton>
+    <PButton type="reset">Reset</PButton>
   </form>
 
   <PText>Last submitted data: {{ lastSubmittedData }}</PText>

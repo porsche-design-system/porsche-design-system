@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+import * as fs from 'node:fs';
 import { globbySync } from 'globby';
 
 const frameworks = ['js', 'angular', 'react', 'vue'] as const;

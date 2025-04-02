@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-scroller-example',
@@ -14,9 +15,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     `,
   ],
   template: `
-    <button type="button" (click)="onClick(0)">Scroll to start</button>
-    <button type="button" (click)="onClick(220)">Scroll to middle</button>
-    <button type="button" (click)="onClick(720)">Scroll to end</button>
+    <p-button type="button" (click)="onClick(0)" [compact]="true">Scroll to start</p-button>
+    <p-button type="button" (click)="onClick(220)" [compact]="true">Scroll to middle</p-button>
+    <p-button type="button" (click)="onClick(720)" [compact]="true">Scroll to end</p-button>
     <div style="max-width: 400px; white-space: nowrap">
       <p-scroller [scrollToPosition]="{scrollPosition, isSmooth}">
         <p-tag-dismissible>START - some tag content</p-tag-dismissible>
@@ -26,7 +27,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
 })
 export class ScrollerExampleComponent {
   scrollPosition: number = 220;

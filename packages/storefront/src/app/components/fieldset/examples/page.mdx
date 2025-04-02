@@ -1,0 +1,21 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import {fieldsetStorySlottedLabel, fieldsetStorySlottedMessage} from "@/app/components/fieldset/fieldset.stories";
+import {ComponentStory} from "@/components/playground/ComponentStory";
+
+export const metadata = {
+  title: 'Fieldset - Porsche Design System',
+  description: 'Some description'
+}
+
+# Fieldset <ComponentStatus tagName="p-fieldset"></ComponentStatus>
+
+<TableOfContents headings={["Slotted label","Slotted message"]} />
+
+## Slotted label
+
+<ComponentStory story={fieldsetStorySlottedLabel} />
+
+## Slotted message
+
+<ComponentStory story={fieldsetStorySlottedMessage} />

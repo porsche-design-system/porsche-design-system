@@ -11,24 +11,26 @@
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "start": "yarn build && node ./bin/serve-dummyassets.js",
-    "build": "yarn clean:build && yarn build:generateTagNames && yarn build:generateChunkNames && yarn build:generatePartialNames && yarn build:generateCodeSamples && yarn build:bundle",
+    "build": "yarn clean:build && yarn build:generateTagNames && yarn build:generateChunkNames && yarn build:generatePartialNames && yarn build:generateCodeSamples && yarn build:generateCodeExamples && yarn build:bundle",
     "build:generateTagNames": "tsx scripts/generateTagNames.ts",
     "build:generateCodeSamples": "tsx scripts/generateCodeSamples.ts",
+    "build:generateCodeExamples": "tsx scripts/generateCodeExamples.ts",
     "build:generateChunkNames": "tsx scripts/generateTagNamesWithChunk.ts",
     "build:generatePartialNames": "tsx scripts/generatePartialNames.ts",
     "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs && chmod +x bin/serve-dummyassets.js",
     "clearGitHubActionLogs": "tsx scripts/clearGitHubActionLogs.ts",
     "test": "yarn test:unit",
-    "test:unit": "jest --colors -c tests/unit/config/jest.config.js",
+    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
   },
   "dependencies": {
     "@porsche-design-system/component-meta": "0.0.0"
   },
   "devDependencies": {
+    "@octokit/core": "^6.1.2",
+    "change-case-legacy": "npm:change-case@^4.1.2",
     "@types/tinycolor2": "^1.4.6",
-    "tinycolor2": "^1.6.0",
-    "@octokit/core": "^6.1.2"
+    "tinycolor2": "^1.6.0"
   },
   "peerDependencies": {
     "@rollup/plugin-commonjs": "*",
@@ -40,7 +42,6 @@
     "@types/jest-expect-message": "*",
     "@types/madge": "*",
     "@types/node": "*",
-    "change-case": "*",
     "globby": "*",
     "jest": "*",
     "jest-environment-jsdom": "*",
@@ -55,7 +56,9 @@
     "rollup-plugin-terser": "*",
     "ts-jest": "*",
     "tsx": "*",
-    "typescript": "*"
+    "typescript": "*",
+    "vitest": "*",
+    "react": "*"
   },
   "bin": {
     "serve-dummyassets": "./bin/serve-dummyassets.js"

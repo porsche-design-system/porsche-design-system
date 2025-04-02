@@ -1,6 +1,6 @@
-<label>Value: <input name="input-value" type="text" placeholder="e.g. 1,2" /></label>
-<button id="btn-input-value" type="button">Set Value</button>
-<button id="btn-reset" type="button">Reset value</button>
+<p-text-field-wrapper label="Value:"><input name="input-value" type="text" placeholder="e.g. 1,2" /></p-text-field-wrapper>
+<p-button id="btn-input-value" type="button" compact="true">Set Value</p-button>
+<p-button id="btn-reset" type="button" compact="true">Reset value</p-button>
 
 <p-multi-select name="options" label="Some Label">
   <p-multi-select-option value="1">Option 1</p-multi-select-option>
@@ -8,8 +8,8 @@
   <p-multi-select-option value="3">Option 3</p-multi-select-option>
 </p-multi-select>
 
-<button id="btn-add" type="button">Add option</button>
-<button id="btn-remove" type="button">Remove last option</button>
+<p-button id="btn-add" type="button" compact="true">Add option</p-button>
+<p-button id="btn-remove" type="button" compact="true">Remove last option</p-button>
 
 <script>
   const input = document.querySelector('input');

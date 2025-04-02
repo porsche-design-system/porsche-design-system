@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-hidden-attribute-example',
@@ -30,6 +31,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </p-button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
 })
 export class HiddenAttributeExampleComponent {}

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-pin-code-example',
@@ -6,12 +7,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <form (submit)="onSubmit($event)">
       <p-pin-code [label]="'Some Label'" [name]="'pin-code'"></p-pin-code>
       <p-button type="submit">Submit</p-button>
-      <button type="reset">Reset</button>
+      <p-button type="reset">Reset</p-button>
     </form>
     <p-text>Last submitted data: {{ lastSubmittedValue }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
 })
 export class PinCodeExampleComponent {
   lastSubmittedValue = 'none';

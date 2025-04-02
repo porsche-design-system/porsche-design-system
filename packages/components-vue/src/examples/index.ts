@@ -6,6 +6,7 @@ export { default as ButtonExampleForm } from './ButtonExampleForm.vue';
 export { default as ButtonExampleFormAttribute } from './ButtonExampleFormAttribute.vue';
 export { default as ButtonPureExampleForm } from './ButtonPureExampleForm.vue';
 export { default as ButtonPureExampleFormAttribute } from './ButtonPureExampleFormAttribute.vue';
+export { default as ButtonTileExampleHyphens } from './ButtonTileExampleHyphens.vue';
 export { default as CanvasExample } from './CanvasExample.vue';
 export { default as CarouselExampleDynamicSlides } from './CarouselExampleDynamicSlides.vue';
 export { default as CarouselExampleFocusOnCenterSlide } from './CarouselExampleFocusOnCenterSlide.vue';
@@ -21,6 +22,7 @@ export { default as FlyoutMultilevelExampleCustomContent } from './FlyoutMultile
 export { default as HiddenAttributeExample } from './HiddenAttributeExample.vue';
 export { default as InlineNotificationExampleActionButton } from './InlineNotificationExampleActionButton.vue';
 export { default as InlineNotificationExampleEvents } from './InlineNotificationExampleEvents.vue';
+export { default as LinkTileExampleHyphens } from './LinkTileExampleHyphens.vue';
 export { default as LinkTileProductExample } from './LinkTileProductExample.vue';
 export { default as ModalExampleAccessibility } from './ModalExample.vue';
 export { default as MultiSelectExample } from './MultiSelectExample.vue';

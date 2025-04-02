@@ -1,0 +1,21 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import { tableStory } from "@/app/components/table/table.stories";
+
+export const metadata = {
+  title: 'Table - Porsche Design System',
+  description: 'Some description'
+}
+
+# Table <ComponentStatus tagName="p-table"></ComponentStatus>
+
+The `p-table` component displays tabular data and offers column-wise sorting options.
+It combines a consistent appearance together with great accessibility while not having restrictions regarding its
+content. Therefore, it can be used for plain text but also rich content like images, form elements and buttons.
+
+It is a controlled component. This means it does not contain any internal state, and you got full control over its
+behavior.
+
+<Configurator tagName="p-table" story={tableStory} />
+

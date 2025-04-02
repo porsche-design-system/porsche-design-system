@@ -1,0 +1,111 @@
+import { PLink } from '@porsche-design-system/components-react/ssr';
+import { A11yIcon } from '@/components/common/A11yIcon';
+import Image from 'next/image';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Accessibility - Porsche Design System',
+  description:
+    'Accessibility is a key aspect of the Porsche Design System. Learn more about the importance of accessibility and how we ensure compliance.',
+};
+
+# Accessibility
+
+<TableOfContents headings={["What is digital accessibility","Why it matters","Meeting global accessibility standards","Web Components & accessibility","Further information"]} />
+
+> „If our mission is to be customer-driven, connected, simple, helpful and inclusive – accessibility must be part of
+> that!“
+
+![Accessibility at Porsche](assets/a11y-hero.png)
+
+## What is digital accessibility
+
+When we say a digital product is **accessible** we mean that its content is available to, and its functionality can be
+operated by, literally anyone. For **creators of digital products**, it's frivolous to assume that all users can see and
+use a keyboard, mouse or touch screen, and can interact with the page content the same way they do. This can lead to an
+experience that works well for those people but **creates issues** which range from simple annoyances to absolute
+horrible user experiences.
+
+Accessibility refers to the experience of users who might be outside the narrow scope of the "typical" user, and who
+might access or interact with things differently than you expect. Specifically, we are talking about more than **15% of
+worldwide users who have some type of impairment or disability**.
+
+For example, although we tend to centre our discussion of accessibility on users with **physical impairments**, we can
+all relate to the experience of using an interface that is not accessible to us for other reasons. Have you ever had a
+problem using a desktop site on a mobile phone, or seen the message "This content is not available in your area", or
+couldn't read a text because the font-size and contrast were too low? Those are all **accessibility issues** we have to
+face and find **practical solutions** for.
+
+## Why it matters
+
+As maintainers of the **Porsche Design System**, we always want the **best experience for all users** and provide best
+in class solutions for our customers. And this includes **accessibility**. There are several overall benefits to anyone
+who uses accessible products:
+
+- **Better user experience** for everyone
+- **Better SEO** (Search Engine Optimization)
+- **Better performance** (e.g. faster loading times)
+- **Better maintainability** (e.g. less code)
+- **Better compatibility** (e.g. with assistive technologies)
+- **Better brand image** (e.g. more trust)
+- **Better business** (e.g. more customers)
+- **Better legal compliance** (e.g. avoiding lawsuits)
+
+**By using our components, you get all these benefits for free!** We take care of the **accessibility** on component
+level, so you can focus on your business logic.
+
+[Read more about this topic on our UX Platform compliance page.](https://ux.porsche.com/d/6VNB3CeLHcJz/accessibility#/accessibility/legal-compliance)
+
+## Meeting global accessibility standards
+
+At Porsche, we are **driven by excellence**, and the **Porsche Design System** is committed to deliver highly **usable
+and accessible** components that are not limited to certain users or use cases. To ensure that our components meet the
+official [**WCAG**](https://www.w3.org/WAI/standards-guidelines/wcag/) **2.2 AA** standards, we follow a set of
+**guidelines** and **best practices**:
+
+### Evaluate & research
+
+Before starting development of a new component, we evaluate the **use cases** and **requirements** to ensure that the
+component is **usable** and **accessible** for all users. We also research **best practices** and **guidelines** to
+ensure that the component is **compliant** with the latest WCAG 2.2 standards.
+
+### Design & develop
+
+During the design & development phase, we follow **inclusive design** guidelines and integrate **accessibility
+features** wherever it makes sense (e.g. by respecting official keyboard mappings for UI components). We also ensure
+that the component is **usable** with keyboard navigation, screen readers, and other assistive technologies.
+
+### Test & validate
+
+After the component is developed, it runs through a consecutive **testing** and **validation** process:
+
+#### Stage 1: Automated tests
+
+- **AXE-Core** test ensures that the component is **compliant** with the latest WCAG 2.2 standards.
+- **High Contrast Mode** visual regression tests ensure that the component is **usable** in high contrast mode.
+- **Text Zoom** visual regression tests ensure that the component is **usable** with text zoomed up to 200%.
+- **RTL** (Right-to-Left) tests ensure that the component is **usable** in right-to-left languages.
+
+#### Stage 2: Manual tests
+
+- **Keyboard Navigation** tests ensure that the component is **usable** with keyboard navigation.
+- **Screen Reader** tests ensure that the component is **usable** with screen readers.
+
+If you find any **accessibility issue**, please feel free to [**report it**](/help/bug-report).
+
+## Web Components & accessibility
+
+Technically our components are build out of **Web Components** to have a real single-source-of–truth regardless in which
+Framework the component is used. Though Web Components are widely adopted, there are still some **accessibility
+challenges**. One example is that it’s currently not possible to set `IDRef` **relationships** due to the architecture
+of custom elements and their scoped shadowDOM. This represents a limitation in **ARIA** support. However, there is an
+ongoing draft for a new **AOM** ([Accessibility Object Model](https://github.com/WICG/aom)), which aims to address this
+issue and enhance JS-based accessibility support for all web components. We are continuously working to improve these
+existing limitations.
+
+## Further information
+
+For more information about the topic and insights how to reduce possible violations against country-specific laws, we
+highly recommend our guidelines to enhance accessibility in your products:
+
+[**Accessibility of digital products at Porsche**](https://ux.porsche.com/d/6VNB3CeLHcJz/accessibility#/accessibility/introduction)

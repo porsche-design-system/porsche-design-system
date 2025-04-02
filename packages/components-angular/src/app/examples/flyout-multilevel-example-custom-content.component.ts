@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { type FlyoutMultilevelUpdateEventDetail } from '@porsche-design-system/components-angular';
+import {
+  type FlyoutMultilevelUpdateEventDetail,
+  PorscheDesignSystemModule,
+} from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-flyout-multilevel-example-custom-content',
@@ -90,7 +93,8 @@ import { type FlyoutMultilevelUpdateEventDetail } from '@porsche-design-system/c
     </nav>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
 })
 export class FlyoutMultilevelExampleCustomContentComponent {
   isFlyoutMultilevelOpen = false;

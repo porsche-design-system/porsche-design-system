@@ -1,5 +1,11 @@
 <script setup lang="ts">
-import { type SelectUpdateEventDetail, PSelect, PSelectOption } from '@porsche-design-system/components-vue';
+import {
+  PButton,
+  PSelect,
+  PSelectOption,
+  PTextFieldWrapper,
+  type SelectUpdateEventDetail,
+} from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
 const selectedValue = ref<string>('1');
@@ -33,18 +39,17 @@ const onRemoveOption = () => {
 
 <template>
   <div>
-    <label>
-      Value:
+    <PTextFieldWrapper label="Value:">
       <input name="input-value" type="text" v-model="inputValue" placeholder="e.g. 1" />
-    </label>
-    <button type="button" @click="onSetValue">Set Value</button>
-    <button type="button" @click="onResetValue">Reset value</button>
+    </PTextFieldWrapper>
+    <PButton type="button" @click="onSetValue" :compact="true">Set Value</PButton>
+    <PButton type="button" @click="onResetValue" :compact="true">Reset value</PButton>
 
     <PSelect :name="'options'" :label="'Some Label'" :value="selectedValue" @update="onUpdate">
       <PSelectOption v-for="idx in optionCount" :key="idx" :value="`${idx}`"> Option {{ idx }} </PSelectOption>
     </PSelect>
 
-    <button type="button" @click="onAddOption">Add option</button>
-    <button type="button" @click="onRemoveOption">Remove last option</button>
+    <PButton type="button" @click="onAddOption" :compact="true">Add option</PButton>
+    <PButton type="button" @click="onRemoveOption" :compact="true">Remove last option</PButton>
   </div>
 </template>

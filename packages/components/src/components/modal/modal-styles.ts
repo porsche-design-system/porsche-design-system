@@ -6,8 +6,6 @@ import {
   spacingFluidMedium,
   spacingFluidSmall,
 } from '@porsche-design-system/styles';
-import type { BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -15,7 +13,6 @@ import {
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import type { ModalBackdrop } from './modal-utils';
 import {
   dialogGridJssStyle,
   dialogHostJssStyle,
@@ -26,7 +23,15 @@ import {
   getScrollerJssStyle,
   headingTags,
 } from '../../styles/dialog-styles';
+import type { BreakpointCustomizable, Theme } from '../../types';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import type { ModalBackdrop } from './modal-utils';
 
+/**
+ * @css-variable {"name": "--p-modal-width", "description": "Width of the modal.", "defaultValue": "auto"}
+ * @css-variable {"name": "--p-modal-spacing-top", "description": "Spacing of the modal to the top.", "defaultValue": "clamp(16px, 10vh, 192px)"}
+ * @css-variable {"name": "--p-modal-spacing-bottom", "description": "Spacing of the modal to the bottom.", "defaultValue": "clamp(16px, 10vh, 192px)"}
+ */
 const cssVariableWidth = '--p-modal-width';
 const cssVariableSpacingTop = '--p-modal-spacing-top'; // TODO: maybe --p-modal-spacing-block-start would be more precise?
 const cssVariableSpacingBottom = '--p-modal-spacing-bottom'; // TODO: maybe --p-modal-spacing-block-end would be more precise?

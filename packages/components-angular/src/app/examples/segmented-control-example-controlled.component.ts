@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { SegmentedControlUpdateEventDetail } from '@porsche-design-system/components-angular';
+import {
+  PorscheDesignSystemModule,
+  SegmentedControlUpdateEventDetail,
+} from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-segmented-control-example-controlled',
@@ -15,7 +18,8 @@ import type { SegmentedControlUpdateEventDetail } from '@porsche-design-system/c
     <p-text>Current value: {{ currentValue }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
 })
 export class SegmentedControlExampleControlledComponent {
   currentValue = 1;

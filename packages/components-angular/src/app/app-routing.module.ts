@@ -136,6 +136,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.ButtonPureExampleFormAttributeComponent,
   },
   {
+    name: 'Button Tile Example Hyphens',
+    path: 'button-tile-example-hyphens',
+    component: fromExamples.ButtonTileExampleHyphensComponent,
+  },
+  {
     name: 'Canvas Example',
     path: 'canvas-example',
     component: fromExamples.CanvasExampleComponent,
@@ -199,6 +204,11 @@ export const routes: ExtendedRoute[] = [
     name: 'Inline Notification Example Events',
     path: 'inline-notification-example-events',
     component: fromExamples.InlineNotificationExampleEventsComponent,
+  },
+  {
+    name: 'Link Tile Example Hyphens',
+    path: 'link-tile-example-hyphens',
+    component: fromExamples.LinkTileExampleHyphensComponent,
   },
   {
     name: 'Link Tile Product Example',

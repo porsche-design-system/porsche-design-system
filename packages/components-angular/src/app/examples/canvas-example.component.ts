@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { CanvasSidebarStartUpdateEventDetail } from '@porsche-design-system/components-angular';
+import {
+  CanvasSidebarStartUpdateEventDetail,
+  PorscheDesignSystemModule,
+} from '@porsche-design-system/components-angular';
 import { breakpointS } from '@porsche-design-system/components-angular/styles';
 
 @Component({
@@ -82,7 +85,8 @@ import { breakpointS } from '@porsche-design-system/components-angular/styles';
     </p-canvas>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
 })
 export class CanvasExampleComponent {
   // initially, sidebar should be closed on mobile and opened on desktop

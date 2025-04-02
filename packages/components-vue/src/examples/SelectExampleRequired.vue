@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PSelect, PSelectOption, PText } from '@porsche-design-system/components-vue';
+import { PButton, PCheckbox, PSelect, PSelectOption, PText } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
 const lastSubmittedData = ref<string>('none');
@@ -21,14 +21,8 @@ const onSubmit = (e: Event) => {
 </script>
 
 <template>
-  <label>
-    <input type="checkbox" name="required" :checked="isRequired" @change="onChangeRequired" />
-    Required
-  </label>
-  <label>
-    <input type="checkbox" name="deselection" :checked="hasDeselection" @change="onChangeDeselection" />
-    Allow deselection
-  </label>
+  <PCheckbox label="Required" name="required" :checked="isRequired" @change="onChangeRequired" />
+  <PCheckbox label="Allow deselection" name="deselection" :checked="hasDeselection" @change="onChangeDeselection" />
 
   <form @submit.prevent="onSubmit">
     <p-select name="options" label="Some Label" :required="isRequired">
@@ -37,7 +31,7 @@ const onSubmit = (e: Event) => {
       <p-select-option value="2">Option 2</p-select-option>
       <p-select-option value="3">Option 3</p-select-option>
     </p-select>
-    <button type="submit">Submit</button>
+    <PButton type="submit">Submit</PButton>
   </form>
 
   <PText>Last submitted data: {{ lastSubmittedData }}</PText>

@@ -1,0 +1,16 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import { modelSignatureStory } from "@/app/components/model-signature/model-signature.stories";
+
+export const metadata = {
+  title: 'Model Signature - Porsche Design System',
+  description: 'Some description'
+}
+
+# Model Signature <ComponentStatus tagName="p-model-signature"></ComponentStatus>
+
+The `p-model-signature` component is purely visual and renders the different signatures of Porsche car models.
+It can be used to overlay background images or enhance cards and teasers to be more dynamic and recognizable.
+
+<Configurator tagName="p-model-signature" story={modelSignatureStory} />

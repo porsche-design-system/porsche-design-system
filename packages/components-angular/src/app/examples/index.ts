@@ -6,6 +6,7 @@ import { ButtonExampleFormAttributeComponent } from './button-example-form-attri
 import { ButtonExampleFormComponent } from './button-example-form.component';
 import { ButtonPureExampleFormAttributeComponent } from './button-pure-example-form-attribute.component';
 import { ButtonPureExampleFormComponent } from './button-pure-example-form.component';
+import { ButtonTileExampleHyphensComponent } from './button-tile-example-hyphens.component';
 import { CanvasExampleComponent } from './canvas-example.component';
 import { CarouselExampleDynamicSlidesComponent } from './carousel-example-dynamic-slides.component';
 import { CarouselExampleEventsComponent } from './carousel-example-events.component';
@@ -60,6 +61,7 @@ export const examples = [
   ButtonExampleFormAttributeComponent,
   ButtonPureExampleFormComponent,
   ButtonPureExampleFormAttributeComponent,
+  ButtonTileExampleHyphensComponent,
   CanvasExampleComponent,
   CarouselExampleDynamicSlidesComponent,
   CarouselExampleFocusOnCenterSlideComponent,
@@ -75,6 +77,7 @@ export const examples = [
   HiddenAttributeExampleComponent,
   InlineNotificationExampleActionButtonComponent,
   InlineNotificationExampleEventsComponent,
+  LinkTileExampleHyphensComponent,
   LinkTileProductExampleComponent,
   ModalExampleComponent,
   MultiSelectExampleComponent,
@@ -113,6 +116,7 @@ export * from './button-example-form.component';
 export * from './button-example-form-attribute.component';
 export * from './button-pure-example-form.component';
 export * from './button-pure-example-form-attribute.component';
+export * from './button-tile-example-hyphens.component';
 export * from './canvas-example.component';
 export * from './carousel-example-dynamic-slides.component';
 export * from './carousel-example-focus-on-center-slide.component';
@@ -128,6 +132,7 @@ export * from './flyout-multilevel-example-custom-content.component';
 export * from './hidden-attribute-example.component';
 export * from './inline-notification-example-action-button.component';
 export * from './inline-notification-example-events.component';
+export * from './link-tile-example-hyphens.component';
 export * from './link-tile-product-example.component';
 export * from './modal-example.component';
 export * from './multi-select-example.component';

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
   type MultiSelectUpdateEventDetail,
   PMultiSelect,
@@ -6,8 +5,9 @@ import {
   type PMultiSelectProps,
   PText,
 } from '@porsche-design-system/components-react';
+import { useState } from 'react';
 
-export const MultiSelectControlledExamplePage = (): JSX.Element => {
+export const MultiSelectExampleControlledPage = (): JSX.Element => {
   const [selectedValues, setSelectedValues] = useState<PMultiSelectProps['value']>([]);
 
   const onUpdate = (e: CustomEvent<MultiSelectUpdateEventDetail>) => {

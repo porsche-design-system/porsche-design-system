@@ -1,0 +1,40 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import { stepperHorizontalStory } from "@/app/components/stepper-horizontal/stepper-horizontal.stories";
+
+export const metadata = {
+  title: 'Stepper Horizontal - Porsche Design System',
+  description: 'Some description'
+}
+
+# Stepper Horizontal <ComponentStatus tagName="p-stepper-horizontal"></ComponentStatus>
+
+The `p-stepper-horizontal` component displays progress through a sequence of logical and numbered steps.
+It is ideal when the contents of one step depends on an earlier step.
+Avoid using long step names.
+
+The component does not handle the display of your content. When using the component you have to manually take care of
+the content to be rendered beneath. To help with this task, if a step is clicked, the component triggers an event called
+`change` with the index of the clicked step.
+
+**Note**: Maximum of 9 steps are supported.
+
+It is a controlled component. This means it does not contain any internal state and you got full control over its
+behavior.
+
+Use `p-stepper-horizontal-item`s inside the `p-stepper-horizontal` component. Each item will be rendered as a step. You
+have to manually manage the state of the items by setting the `state` property.
+
+The `state` property can be set to `complete` when a step is complete, `warning` when a user has to revisit the step,
+`current` for the step that is in progress and `undefined`.
+
+If the `state` property is `undefined` the step renders as stateless and disabled.
+This can be used to prevent the user from navigating to a step which is not yet reachable. This is to be used for future
+steps which cannot yet be processed at the time.
+
+By clicking on a previous step, the `p-stepper-horizontal` emits the `update` event, which contains the index of the
+clicked step.
+
+<Configurator tagName="p-stepper-horizontal" story={stepperHorizontalStory} />
+

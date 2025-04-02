@@ -1,4 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-carousel-example-dynamic-slides',
@@ -7,10 +9,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <div *ngFor="let _ of [].constructor(amountOfSlides); let i = index">Slide {{ i + 1 }}</div>
     </p-carousel>
 
-    <button type="button" (click)="amountOfSlides = amountOfSlides + 1">Add slide</button>
-    <button type="button" (click)="amountOfSlides = amountOfSlides === 0 ? 0 : amountOfSlides - 1">
+    <p-button type="button" (click)="amountOfSlides = amountOfSlides + 1">Add slide</p-button>
+    <p-button type="button" (click)="amountOfSlides = amountOfSlides === 0 ? 0 : amountOfSlides - 1">
       Remove last slide
-    </button>
+    </p-button>
   `,
   styles: `
     @use '@porsche-design-system/components-angular/styles' as *;
@@ -25,7 +27,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, PorscheDesignSystemModule],
 })
 export class CarouselExampleDynamicSlidesComponent {
   amountOfSlides = 3;
