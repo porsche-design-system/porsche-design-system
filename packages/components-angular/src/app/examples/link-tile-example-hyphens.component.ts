@@ -18,7 +18,7 @@ import { PorscheDesignSystemModule, SelectUpdateEventDetail } from '@porsche-des
       size="inherit"
       [style]="{ maxWidth: '400px', fontSize: '45px', hyphens: selectedValue }"
     >
-      <img src="assets/lights.jpg" alt="Some image description" />
+      <img src="http://localhost:3002/lights.jpg" alt="Some image description" />
     </p-link-tile>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
