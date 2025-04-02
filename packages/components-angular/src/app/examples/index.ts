@@ -22,6 +22,7 @@ import { FlyoutMultilevelExampleComponent } from './flyout-multilevel-example.co
 import { HiddenAttributeExampleComponent } from './hidden-attribute-example.component';
 import { InlineNotificationExampleActionButtonComponent } from './inline-notification-example-action-button.component';
 import { InlineNotificationExampleEventsComponent } from './inline-notification-example-events.component';
+import { LinkTileExampleHyphensComponent } from './link-tile-example-hyphens.component';
 import { LinkTileProductExampleComponent } from './link-tile-product-example.component';
 import { ModalExampleComponent } from './modal-example.component';
 import { MultiSelectExampleControlledComponent } from './multi-select-example-controlled.component';
