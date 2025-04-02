@@ -1,10 +1,10 @@
-import type { TagName } from '@porsche-design-system/shared';
-import { TAG_NAMES } from '@porsche-design-system/shared';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import * as globby from 'globby-legacy';
 import { expect } from '@jest/globals';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
+import type { TagName } from '@porsche-design-system/shared';
+import { TAG_NAMES } from '@porsche-design-system/shared';
+import * as globby from 'globby-legacy';
 
 const componentsDir = path.resolve(__dirname);
 const sourceFilePaths = globby.sync(`${componentsDir}/**/*.tsx`).sort();
@@ -48,10 +48,10 @@ describe.each<TagName>(
         (slot) => !slot.includes('internal') && !slot.includes('INTERNAL')
       );
 
-      if (sourceFileContent.includes('<Label')) {
+      if (sourceFileContent.includes('<Label') || sourceFileContent.includes('<LegacyLabel')) {
         namedSlotsUnique.push('label');
       }
-      if (/<Label[\s\S]+?description/.test(sourceFileContent)) {
+      if (/<(Label|LegacyLabel)[\s\S]+?description/.test(sourceFileContent)) {
         namedSlotsUnique.push('description');
       }
       if (sourceFileContent.includes('<StateMessage')) {

@@ -240,6 +240,23 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-input-password',
+      samples: [
+        [
+          componentsJsPath + '/input-password-example.html',
+          componentsAngularPath + '/input-password-example.component.ts',
+          componentsReactPath + '/InputPasswordExample.tsx',
+          componentsVuePath + '/InputPasswordExample.vue',
+        ],
+        [
+          componentsJsPath + '/input-password-example-controlled.html',
+          componentsAngularPath + '/input-password-example-controlled.component.ts',
+          componentsReactPath + '/InputPasswordExampleControlled.tsx',
+          componentsVuePath + '/InputPasswordExampleControlled.vue',
+        ],
+      ],
+    },
+    {
       component: 'p-link-tile-product',
       samples: [
         [
