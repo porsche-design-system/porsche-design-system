@@ -277,8 +277,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="bg-background-surface rounded-lg mt-xl mb-xl pb-32 grid gap-md sm:grid-cols-full col-span-full xs:col-start-1 xs:col-end-13">
-        <article className="mt-2xl mb-xl max-w-prose mx-auto ">
+      <div className="bg-background-surface rounded-lg mt-xl mb-xl pb-32 grid grid-cols-subgrid gap-md sm:grid-cols-full col-span-full xs:col-start-1 xs:col-end-13">
+        <article className="col-start-2 col-end-12 mt-2xl mb-xl max-w-prose mx-auto">
           <PText size="x-large" align="center">
             Benefits
           </PText>
@@ -288,7 +288,7 @@ export default function Home() {
             integration.
           </PText>
         </article>
-        <PCarousel width="extended">
+        <PCarousel width="extended" className="col-start-2 col-end-13">
           <div>
             <article className="place-items-center min-h-[600px] mt-sm mb-sm grid gap-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12 bg-background-base rounded-lg p-[100px]">
               <div>
