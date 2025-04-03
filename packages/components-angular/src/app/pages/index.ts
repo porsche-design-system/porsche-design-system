@@ -111,6 +111,7 @@ import { FlyoutMultilevelDeeplyNested_5thComponent } from './generated/flyout-mu
 import { FlyoutMultilevelLongTextComponent } from './generated/flyout-multilevel-long-text.component';
 import { FlyoutMultilevelPrefixedComponent } from './generated/flyout-multilevel-prefixed.component';
 import { FlyoutMultilevelScrolledComponent } from './generated/flyout-multilevel-scrolled.component';
+import { FlyoutMultilevelSlottedButtonHeaderComponent } from './generated/flyout-multilevel-slotted-button-header.component';
 import { FlyoutPositionLeftComponent } from './generated/flyout-position-left.component';
 import { FlyoutPositionStartComponent } from './generated/flyout-position-start.component';
 import { FlyoutPrefixedComponent } from './generated/flyout-prefixed.component';
@@ -308,6 +309,7 @@ export const generatedPages = [
   FlyoutMultilevelLongTextComponent,
   FlyoutMultilevelPrefixedComponent,
   FlyoutMultilevelScrolledComponent,
+  FlyoutMultilevelSlottedButtonHeaderComponent,
   FlyoutPositionLeftComponent,
   FlyoutPositionStartComponent,
   FlyoutPrefixedComponent,
@@ -820,6 +822,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Flyout Multilevel Scrolled',
     path: 'flyout-multilevel-scrolled',
     component: FlyoutMultilevelScrolledComponent,
+  },
+  {
+    name: 'Flyout Multilevel Slotted Button Header',
+    path: 'flyout-multilevel-slotted-button-header',
+    component: FlyoutMultilevelSlottedButtonHeaderComponent,
   },
   {
     name: 'Flyout Position Left',

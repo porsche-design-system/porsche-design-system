@@ -92,6 +92,7 @@ import { FlyoutMultilevelDeeplyNested_5thPage } from './generated/FlyoutMultilev
 import { FlyoutMultilevelLongTextPage } from './generated/FlyoutMultilevelLongText';
 import { FlyoutMultilevelPrefixedPage } from './generated/FlyoutMultilevelPrefixed';
 import { FlyoutMultilevelScrolledPage } from './generated/FlyoutMultilevelScrolled';
+import { FlyoutMultilevelSlottedButtonHeaderPage } from './generated/FlyoutMultilevelSlottedButtonHeader';
 import { FlyoutPositionLeftPage } from './generated/FlyoutPositionLeft';
 import { FlyoutPositionStartPage } from './generated/FlyoutPositionStart';
 import { FlyoutPrefixedPage } from './generated/FlyoutPrefixed';
@@ -602,6 +603,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Flyout Multilevel Scrolled',
     path: '/flyout-multilevel-scrolled',
     element: <FlyoutMultilevelScrolledPage />,
+  },
+  {
+    name: 'Flyout Multilevel Slotted Button Header',
+    path: '/flyout-multilevel-slotted-button-header',
+    element: <FlyoutMultilevelSlottedButtonHeaderPage />,
   },
   {
     name: 'Flyout Position Left',
