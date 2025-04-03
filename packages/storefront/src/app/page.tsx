@@ -210,7 +210,7 @@ export default function Home() {
         <div className="relative bg-background-surface rounded-lg overflow-hidden group flex items-center gap-4 p-4">
           <a href="https://porsche.com" className="flex items-center w-full gap-3" tabIndex={-1}>
             <div className="relative w-16 h-16 flex-shrink-0 overflow-hidden">
-              <div className="w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110 will-change-transform">
+              <div className="relative w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110 will-change-transform">
                 <Image
                   src="assets/design.png"
                   fill={true}
@@ -237,7 +237,7 @@ export default function Home() {
         <div className="relative bg-background-surface rounded-lg overflow-hidden group flex items-center gap-4 p-4 group-hover:bg-background-hover">
           <a href="https://porsche.com" className="flex items-center w-full gap-3" tabIndex={-1}>
             <div className="relative w-16 h-16 flex-shrink-0 overflow-hidden">
-              <div className="w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110 will-change-transform ">
+              <div className="relative w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110 will-change-transform">
                 <Image
                   src="assets/code.png"
                   fill={true}
@@ -308,6 +308,7 @@ export default function Home() {
                   alt="Some wireframes"
                   fill={true}
                   className="relative object-contain"
+                  priority={false}
                 />
               </div>
             </article>
@@ -328,10 +329,10 @@ export default function Home() {
               <div className="relative w-full h-full">
                 <Image
                   src="assets/agnostic.png"
-                  layout="fill"
-                  objectFit="contain"
+                  fill={true}
                   alt="Some wireframes"
-                  className="relative"
+                  className="relative object-contain"
+                  priority={false}
                 />
               </div>
             </article>
@@ -352,10 +353,10 @@ export default function Home() {
               <div className="relative w-full h-full">
                 <Image
                   src="assets/agnostic.png"
-                  layout="fill"
-                  objectFit="contain"
                   alt="Some wireframes"
-                  className="relative"
+                  fill={true}
+                  className="relative object-contain"
+                  priority={false}
                 />
               </div>
             </article>
@@ -376,10 +377,10 @@ export default function Home() {
               <div className="relative w-full h-full">
                 <Image
                   src="assets/agnostic.png"
-                  layout="fill"
-                  objectFit="contain"
+                  fill={true}
                   alt="Some wireframes"
-                  className="relative"
+                  className="relative object-contain"
+                  priority={false}
                 />
               </div>
             </article>
