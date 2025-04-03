@@ -293,11 +293,11 @@ export default function Home() {
             <article className="place-items-center min-h-[600px] mt-sm mb-sm grid gap-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12 bg-background-base rounded-lg p-[100px]">
               <div>
                 <div className="mb-4">
-                  <PText size="small" weight="semi-bold" align="left">
+                  <PText size="small" weight="semi-bold" align="start">
                     Updated Capability
                   </PText>
                 </div>
-                <PText size="large" className="" color="contrast-medium" align="left">
+                <PText size="large" className="" color="contrast-medium" align="start">
                   The ability to update styles, tokens, and components at any time ensures flexibility, continuous
                   improvement, and alignment with evolving design trends.
                 </PText>
@@ -316,11 +316,11 @@ export default function Home() {
             <article className="place-items-center min-h-[600px] mt-sm mb-sm grid gap-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12 bg-background-base rounded-lg p-[100px]">
               <div>
                 <div className="mb-4">
-                  <PText size="small" weight="semi-bold" align="left">
+                  <PText size="small" weight="semi-bold" align="start">
                     Accessibility
                   </PText>
                 </div>
-                <PText size="large" className="" color="contrast-medium" align="left">
+                <PText size="large" className="" color="contrast-medium" align="start">
                   Ensures an inclusive experience by meeting accessibility standards, enhancing usability, compliance,
                   and overall satisfaction for people with diverse abilities.
                 </PText>
@@ -340,11 +340,11 @@ export default function Home() {
             <article className="place-items-center min-h-[600px] mt-sm mb-sm grid gap-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12 bg-background-base rounded-lg p-[100px]">
               <div>
                 <div className="mb-4">
-                  <PText size="small" weight="semi-bold" align="left">
+                  <PText size="small" weight="semi-bold" align="start">
                     Brand Fit
                   </PText>
                 </div>
-                <PText size="large" className="" color="contrast-medium" align="left">
+                <PText size="large" className="" color="contrast-medium" align="start">
                   Built on Porsche's design guidelines, it ensures alignment with the brand’s identity, delivering a
                   cohesive and premium user experience.
                 </PText>
@@ -364,11 +364,11 @@ export default function Home() {
             <article className="place-items-center min-h-[600px] mt-sm mb-sm grid gap-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12 bg-background-base rounded-lg p-[100px]">
               <div>
                 <div className="mb-4">
-                  <PText size="small" weight="semi-bold" align="left">
+                  <PText size="small" weight="semi-bold" align="start">
                     Framework Agnostic
                   </PText>
                 </div>
-                <PText size="large" className="" color="contrast-medium" align="left">
+                <PText size="large" className="" color="contrast-medium" align="start">
                   Works seamlessly with any framework, offering flexibility, compatibility, and ease of use across
                   platforms.
                 </PText>
