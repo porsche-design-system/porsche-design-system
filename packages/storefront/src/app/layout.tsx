@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   description:
     'Find all the fundamental UXI guidelines and pattern-based web components to build brand driven, consistent and intuitive designs for digital Porsche products.',
   appleWebApp,
-  icons,
+  icons: process.env.NODE_ENV === 'production' ? icons : undefined,
 };
 
 export default function RootLayout({
