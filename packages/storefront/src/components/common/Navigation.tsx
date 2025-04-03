@@ -1,3 +1,4 @@
+import { VersionSelect } from '@/components/common/VersionSelect';
 import { type Routes, sitemap } from '@/sitemap';
 import { getPathnameRoutes } from '@/utils/pathname';
 import {
@@ -9,7 +10,7 @@ import {
 } from '@porsche-design-system/components-react/ssr';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const initialAccordionState = Object.keys(sitemap).reduce<Record<keyof Routes, boolean>>((acc, section) => {
   acc[section] = false;
@@ -74,6 +75,7 @@ export const Navigation = () => {
       </nav>
       <PDivider className="my-lg" />
       <footer className="flex flex-col gap-md">
+        <VersionSelect />
         <PLinkPure className="self-start" href="https://brand.porsche.com" target="_blank" icon="external">
           brand.porsche.com
         </PLinkPure>
