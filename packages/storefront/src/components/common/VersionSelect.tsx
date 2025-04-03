@@ -1,6 +1,4 @@
-import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import { PSelect, PSelectOption, type SelectUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
-import { getThemedColors } from '@porsche-design-system/components/src/styles';
 import type { CSSProperties } from 'react';
 
 type Version = {
@@ -40,11 +38,7 @@ export const VersionSelect = () => {
       label="Switch version"
       aria-label="Switch Porsche Design System version"
       compact={true}
-      style={
-        {
-          '--p-select-background-color': getThemedColors(useStorefrontTheme().storefrontTheme).backgroundSurfaceColor,
-        } as CSSProperties
-      }
+      style={{ '--p-select-background-color': 'theme(colors.backgroundSurface)' } as CSSProperties}
     >
       {versions.map(({ name, path }) => (
         <PSelectOption key={path} value={path}>
