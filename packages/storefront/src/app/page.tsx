@@ -15,7 +15,6 @@ export default function Home() {
           className="row-start-1 col-start-1 w-full h-[90vh] object-cover"
           style={{ filter: 'contrast(0.9) brightness(1.25) saturate(0.8)' }}
           slot="background"
-          poster="/templates/assets/bg-Q94iMsVP.webp"
           loop={true}
           muted={true}
           autoPlay={true}
@@ -23,7 +22,6 @@ export default function Home() {
           aria-hidden="true"
           tabIndex={-1}
         >
-          <source src="/templates/assets/bg-BP9F-keA.webm" type="video/webm" />
           <source src="assets/test-video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -81,10 +79,9 @@ export default function Home() {
               <div className="relative w-full h-full">
                 <Image
                   src="assets/styles-tokens.png"
-                  layout="fill"
-                  objectFit="contain"
+                  fill={true}
                   alt="Styles & Tokens Image"
-                  className="transition-transform duration-300 ease-in-out group-hover:scale-110"
+                  className="transition-transform duration-300 ease-in-out group-hover:scale-110 object-contain"
                 />
               </div>
 
@@ -101,10 +98,9 @@ export default function Home() {
               <div className="relative w-full h-full">
                 <Image
                   src="assets/components.png"
-                  layout="fill"
-                  objectFit="contain"
+                  fill={true}
                   alt="Components Image"
-                  className="transition-transform duration-300 ease-in-out group-hover:scale-110"
+                  className="transition-transform duration-300 ease-in-out group-hover:scale-110 object-contain"
                 />
               </div>
               <div className="absolute bottom-0 w-full bg-white/70 px-md py-md flex justify-between box-border">
@@ -120,10 +116,9 @@ export default function Home() {
               <div className="relative w-full h-full">
                 <Image
                   src="assets/assets.png"
-                  layout="fill"
-                  objectFit="contain"
+                  fill={true}
                   alt="Assets Image"
-                  className="transition-transform duration-300 ease-in-out group-hover:scale-110"
+                  className="transition-transform duration-300 ease-in-out group-hover:scale-110 object-contain"
                 />
               </div>
               <div className="absolute bottom-0 w-full bg-white/70 px-md py-md flex justify-between box-border">
@@ -139,10 +134,9 @@ export default function Home() {
               <div className="relative w-full h-full">
                 <Image
                   src="assets/templates.png"
-                  layout="fill"
-                  objectFit="contain"
+                  fill={true}
                   alt="Templates Image"
-                  className="transition-transform duration-300 ease-in-out group-hover:scale-110"
+                  className="transition-transform duration-300 ease-in-out group-hover:scale-110 object-contain"
                 />
               </div>
               <div className="absolute bottom-0 w-full bg-white/70 px-md py-md flex justify-between box-border">
@@ -158,10 +152,9 @@ export default function Home() {
               <div className="relative w-full h-full">
                 <Image
                   src="assets/release-notes.png"
-                  layout="fill"
-                  objectFit="contain"
+                  fill={true}
                   alt="Release Notes Image"
-                  className="transition-transform duration-300 ease-in-out group-hover:scale-110"
+                  className="transition-transform duration-300 ease-in-out group-hover:scale-110 object-contain"
                 />
               </div>
               <div className="absolute bottom-0 w-full bg-white/70 px-md py-md flex justify-between box-border">
@@ -177,10 +170,9 @@ export default function Home() {
               <div className="relative w-full h-full">
                 <Image
                   src="assets/feedback.png"
-                  layout="fill"
-                  objectFit="contain"
+                  fill={true}
                   alt="Feedback & Requests Image"
-                  className="transition-transform duration-300 ease-in-out group-hover:scale-110"
+                  className="transition-transform duration-300 ease-in-out group-hover:scale-110 object-contain"
                 />
               </div>
               <div className="absolute bottom-0 w-full bg-white/70 px-md py-md flex justify-between box-border">
@@ -198,10 +190,9 @@ export default function Home() {
             <div className="relative w-full h-full">
               <Image
                 src="assets/accessibility.png"
-                layout="fill"
-                objectFit="contain"
+                fill={true}
                 alt="Some wireframes"
-                className="transition-transform duration-300 ease-in-out group-hover:scale-110"
+                className="transition-transform duration-300 ease-in-out group-hover:scale-110 object-contain"
               />
             </div>
 
@@ -222,10 +213,9 @@ export default function Home() {
               <div className="w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110 will-change-transform">
                 <Image
                   src="assets/design.png"
-                  layout="fill"
-                  objectFit="cover"
+                  fill={true}
                   alt="Feedback & Requests Image"
-                  className="block"
+                  className="block object-contain"
                   style={{
                     backfaceVisibility: 'hidden',
                     transform: 'translateZ(0)',
@@ -250,10 +240,9 @@ export default function Home() {
               <div className="w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110 will-change-transform ">
                 <Image
                   src="assets/code.png"
-                  layout="fill"
-                  objectFit="cover"
+                  fill={true}
                   alt="Feedback & Requests Image"
-                  className="block"
+                  className="block object-contain"
                   style={{
                     backfaceVisibility: 'hidden',
                     transform: 'translateZ(0)',
@@ -316,10 +305,9 @@ export default function Home() {
               <div className="relative w-full h-full">
                 <Image
                   src="assets/agnostic.png"
-                  layout="fill"
-                  objectFit="contain"
                   alt="Some wireframes"
-                  className="relative"
+                  fill={true}
+                  className="relative object-contain"
                 />
               </div>
             </article>
