@@ -8,12 +8,8 @@ type Version = {
 
 const versions: Version[] = [
   {
-    name: '> v3.27.3',
+    name: 'v3',
     path: 'v3',
-  },
-  {
-    name: '<= v3.27.3',
-    path: 'v3-old', // TODO: Adjust path
   },
   {
     name: 'v2',
