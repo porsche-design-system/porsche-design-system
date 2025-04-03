@@ -16,7 +16,7 @@ export const HeaderPartials = (): JSX.Element => {
   /* preloads PDS component core chunk from CDN for PDS component hydration (=> improve loading performance) */
   // biome-ignore lint/complexity/noForEach: <explanation>
   getComponentChunkLinks({
-    components: ['accordion', 'button', 'canvas', 'tabs-bar', 'scroller', 'icon'],
+    components: ['accordion', 'button', 'canvas', 'icon', 'select'],
     format: 'js',
   }).forEach(({ href, options }) => preload(getHref(href), options));
   /* preloads Porsche icons (=> minimize FOUC) */
@@ -39,7 +39,7 @@ export const HeaderPartials = (): JSX.Element => {
         dangerouslySetInnerHTML={{
           __html: getFontFaceStyles({ format: 'html' })
             .replace(/<\/?style[^>]*?>/g, '')
-            .replace('https://cdn.ui.porsche.com/porsche-design-system', 'http://localhost:3001'),
+            .replace(/https:\/\/cdn\.ui\.porsche.com\/porsche-design-system/g, 'http://localhost:3001'),
         }}
       />
     </>
