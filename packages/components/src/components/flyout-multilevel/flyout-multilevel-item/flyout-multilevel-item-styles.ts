@@ -10,7 +10,6 @@ import {
 } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
-  addImportantToRule,
   colorSchemeStyles,
   getAnimation,
   getFocusJssStyle,
@@ -28,6 +27,40 @@ import {
   scrollerBackground,
   scrollerWidthDesktop,
 } from '../flyout-multilevel/flyout-multilevel-styles';
+import type { JssStyle } from 'jss';
+
+export const getLinkStyle = (theme: Theme): JssStyle => {
+  const { primaryColor } = getThemedColors(theme);
+  const { primaryColor: primaryColorDark } = getThemedColors('dark');
+
+  return {
+    '&(a)': {
+      all: 'unset',
+      alignSelf: 'flex-start',
+      font: textMediumStyle.font,
+      cursor: 'pointer',
+      borderRadius: borderRadiusSmall,
+      padding: spacingFluidSmall,
+      marginInline: `calc(${spacingFluidSmall} * -1)`,
+      color: primaryColor,
+      textDecoration: 'underline',
+      textDecorationColor: 'transparent',
+      transition: `${getTransition('text-decoration-color')}`,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: primaryColorDark,
+      }),
+    },
+    '&(a[aria-current])': {
+      textDecoration: 'underline',
+    },
+    ...hoverMediaQuery({
+      '&(a:hover)': {
+        textDecorationColor: 'inherit',
+      },
+    }),
+    ...getFocusJssStyle(theme, { slotted: 'a', offset: '-2px' }),
+  };
+};
 
 export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCascade: boolean, theme: Theme): string => {
   const { primaryColor, backgroundColor } = getThemedColors(theme);
@@ -147,31 +180,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
         },
       }),
       '::slotted': {
-        '&(a)': {
-          all: 'unset',
-          alignSelf: 'flex-start',
-          font: textMediumStyle.font,
-          cursor: 'pointer',
-          borderRadius: borderRadiusSmall,
-          padding: addImportantToRule(spacingFluidSmall),
-          marginInline: addImportantToRule(`calc(${spacingFluidSmall} * -1)`),
-          color: primaryColor,
-          textDecoration: 'underline',
-          textDecorationColor: 'transparent',
-          transition: `${getTransition('text-decoration-color')}`,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: primaryColorDark,
-          }),
-        },
-        '&(a[aria-current])': {
-          textDecoration: 'underline',
-        },
-        ...hoverMediaQuery({
-          '&(a:hover)': {
-            textDecorationColor: 'inherit',
-          },
-        }),
-        ...getFocusJssStyle(theme, { slotted: 'a', offset: '-2px' }),
+        ...getLinkStyle(theme),
       },
       ...preventFoucOfNestedElementsStyles,
     },
@@ -263,9 +272,10 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       ...(isPrimary && {
         [mediaQueryMobile]: {
           gridArea: '2/2',
+          marginTop: '2px', // compensate negative margin of ::pseudo background of button-pure
           width: 'fit-content',
           height: 'fit-content',
-          placeSelf: 'center flex-start',
+          placeSelf: 'start',
           zIndex: 2,
         },
         [mediaQueryDesktop]: {

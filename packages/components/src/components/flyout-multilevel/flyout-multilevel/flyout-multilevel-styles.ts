@@ -22,6 +22,7 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import { type Theme, getCss } from '../../../utils';
+import { getLinkStyle } from '../flyout-multilevel-item/flyout-multilevel-item-styles';
 
 export const scrollerWidthDesktop = 'clamp(338px, 210px + 18vw, 640px)';
 export const mediaQueryMobile = getMediaQueryMax('s');
@@ -75,6 +76,9 @@ export const getComponentCss = (
         }),
       },
       ...preventFoucOfNestedElementsStyles,
+      '::slotted': {
+        ...getLinkStyle(theme),
+      },
       dialog: {
         all: 'unset',
         position: 'fixed',
@@ -268,7 +272,7 @@ export const getComponentCss = (
         ...dismissButtonJssStyle,
         width: 'fit-content',
         height: 'fit-content',
-        placeSelf: 'center flex-end',
+        placeSelf: 'start end',
         gridArea: '2/4',
         zIndex: 3, // ensures dismiss button is on top of opacity animation handled by ::before/::after
         marginInlineEnd: '-1px', // improve visual alignment and compensate white space of close icon
@@ -291,16 +295,18 @@ export const getComponentCss = (
     },
     back: {
       display: 'none',
-      ...(isSecondaryScrollerVisible && {
-        [mediaQueryMobile]: {
-          display: 'block',
-          gridArea: '2/2',
-          width: 'fit-content',
-          height: 'fit-content',
-          placeSelf: 'center flex-start',
-          zIndex: 2,
-        },
-      }),
+      ...(isSecondaryScrollerVisible &&
+        isPrimary && {
+          [mediaQueryMobile]: {
+            display: 'block',
+            marginTop: '2px', // compensate negative margin of ::pseudo background of button-pure
+            gridArea: '2/2',
+            width: 'fit-content',
+            height: 'fit-content',
+            placeSelf: 'start',
+            zIndex: 2,
+          },
+        }),
     },
   });
 };

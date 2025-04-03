@@ -1,13 +1,16 @@
 <style>
-  p-model-signature[slot='header'] {
+  p-model-signature {
     --p-model-signature-width: auto;
-    --p-model-signature-height: 24px;
+    --p-model-signature-height: clamp(24px, 1.786vw + 1.143rem, 32px);
   }
 </style>
 
 <p-flyout-multilevel open="true" active-identifier="id-1">
   <p-flyout-multilevel-item identifier="id-1" label="Some label">
-    <p-model-signature slot="header" model="911"></p-model-signature>
+    <div slot="header">
+      <p-model-signature model="911"></p-model-signature>
+      <p-text size="x-small" color="contrast-medium" align="center">Gasoline</p-text>
+    </div>
     <p-button slot="button">Some slotted button (1)</p-button>
     <p-flyout-multilevel-item identifier="id-1-1" label="Some label">
       <p-model-signature slot="header" model="718"></p-model-signature>
