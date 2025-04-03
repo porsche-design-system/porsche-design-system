@@ -11,6 +11,7 @@ const title = 'Porsche Design System';
 const { themeColor, appleWebApp, icons } = getMetaTagsAndIconLinks({
   appTitle: title,
   format: 'js',
+  ogImage: false, // Custom og:image added below
 });
 
 /* injects meta theme-color. */
