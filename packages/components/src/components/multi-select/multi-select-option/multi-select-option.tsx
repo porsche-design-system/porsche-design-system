@@ -46,7 +46,6 @@ export class MultiSelectOption {
       <Host onClick={!isDisabled && this.onClick}>
         <div
           role="option"
-          aria-labelledby="checkbox"
           {...getOptionAriaAttributes(selected, isDisabled, false, !!this.value)}
           class={{
             option: true,
