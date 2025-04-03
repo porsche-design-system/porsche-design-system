@@ -25,7 +25,7 @@ export const Playground = ({
   return (
     <div className="playground mt-md border-thin border-contrast-low rounded-lg">
       <div
-        className={`demo p-static-lg border-b-thin border-contrast-low bg-${backgroundColor} rounded-t-lg translate-x-0`}
+        className={`demo p-static-lg border-b-thin border-contrast-low bg-${backgroundColor} rounded-t-lg`}
         style={{ ...(fixedBackgroundColor && { backgroundColor: fixedBackgroundColor }) }}
       >
         {children}
