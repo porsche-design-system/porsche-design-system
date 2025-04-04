@@ -2,25 +2,6 @@ import createMDX from '@next/mdx';
 import type { NextConfig } from 'next';
 import remarkGfm from 'remark-gfm';
 
-const cdnUrl =
-  process.env.NODE_ENV === 'production' ? 'https://cdn.ui.porsche.com' : 'http://localhost:8080 http://localhost:3001';
-
-const connectUrls = [
-  'https://*.algolia.net',
-  'https://*.algolianet.com',
-  'https://registry.npmjs.org/@porsche-design-system/components-js',
-].join(' ');
-
-const cspHeader = `
-    default-src 'self' ${cdnUrl};
-    frame-src https://stackblitz.com;
-    style-src 'self' 'unsafe-inline' ${cdnUrl};
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' ${cdnUrl};
-    img-src 'self' ${cdnUrl} data:;
-    media-src 'self' https://porsche-design-system.github.io;
-    connect-src 'self' ${connectUrls}"
-`;
-
 const nextConfig: NextConfig = {
   basePath:
     process.env.NODE_ENV === 'production' ? (process.env.GITHUB_REF_NAME ? `/${process.env.GITHUB_REF_NAME}` : '') : '',
@@ -35,20 +16,6 @@ const nextConfig: NextConfig = {
   },
   compiler: {
     styledComponents: true,
-  },
-  // biome-ignore lint/suspicious/useAwait: <explanation>
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'Content-Security-Policy',
-            value: cspHeader.replace(/\n/g, ''),
-          },
-        ],
-      },
-    ];
   },
 };
 
