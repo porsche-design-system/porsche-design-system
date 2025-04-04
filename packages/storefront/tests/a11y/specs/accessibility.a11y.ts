@@ -3,17 +3,17 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 import type { Locator, Page } from '@playwright/test';
 import { schemes } from '@porsche-design-system/shared/testing/playwright.vrt';
-import { expect, test } from '../helpers';
+import { expect, test } from '../helpers/axe-helper';
 
 const getInternalUrls = (): string[] => {
   const sitemapPath = path.resolve(__dirname, '../../e2e/fixtures/sitemap.json');
-  const sitemap = JSON.parse(fs.readFileSync(sitemapPath, 'utf8'));
+  const sitemap: string[] = JSON.parse(fs.readFileSync(sitemapPath, 'utf8'));
 
   return (
     sitemap
       .filter((link) => link.startsWith('/'))
       // drop "base" links that are redirected to first tab
-      .filter((link, i, array) => !array.some((x) => x.startsWith(link + '/')))
+      .filter((link, _, array) => !array.some((x) => x.startsWith(`${link}/`)))
   );
 };
 
