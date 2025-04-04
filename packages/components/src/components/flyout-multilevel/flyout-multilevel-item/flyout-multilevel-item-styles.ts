@@ -10,7 +10,6 @@ import {
 } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
-  addImportantToRule,
   colorSchemeStyles,
   getAnimation,
   getFocusJssStyle,
@@ -23,11 +22,48 @@ import {
 } from '../../../styles';
 import { type Theme, getCss } from '../../../utils';
 import {
+  cssVariableGap,
+  cssVariableGridTemplate,
   mediaQueryDesktop,
   mediaQueryMobile,
   scrollerBackground,
   scrollerWidthDesktop,
 } from '../flyout-multilevel/flyout-multilevel-styles';
+import type { JssStyle } from 'jss';
+
+export const getLinkStyle = (theme: Theme): JssStyle => {
+  const { primaryColor } = getThemedColors(theme);
+  const { primaryColor: primaryColorDark } = getThemedColors('dark');
+
+  return {
+    '&(a)': {
+      all: 'unset',
+      gridColumn: '1/-1',
+      alignSelf: 'flex-start',
+      font: textMediumStyle.font,
+      cursor: 'pointer',
+      borderRadius: borderRadiusSmall,
+      padding: spacingFluidSmall,
+      marginInline: `calc(${spacingFluidSmall} * -1)`,
+      color: primaryColor,
+      textDecoration: 'underline',
+      textDecorationColor: 'transparent',
+      transition: `${getTransition('text-decoration-color')}`,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: primaryColorDark,
+      }),
+    },
+    '&(a[aria-current])': {
+      textDecoration: 'underline',
+    },
+    ...hoverMediaQuery({
+      '&(a:hover)': {
+        textDecorationColor: 'inherit',
+      },
+    }),
+    ...getFocusJssStyle(theme, { slotted: 'a', offset: '-2px' }),
+  };
+};
 
 export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCascade: boolean, theme: Theme): string => {
   const { primaryColor, backgroundColor } = getThemedColors(theme);
@@ -54,37 +90,70 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
         }),
       },
       slot: {
-        display: 'none',
-        [mediaQueryMobile]: {
-          ...(isSecondary && {
-            zIndex: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            gap: spacingFluidXSmall,
-            gridArea: '4/2/auto/-2',
-            height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
-            paddingBlockEnd: spacingFluidLarge,
-            animation: getAnimation('slide-up-mobile', 'moderate', 'base'),
-          }),
-          ...((isPrimary || isCascade) && {
-            display: 'contents',
-          }),
+        '&[name="header"]': {
+          display: 'none',
+          [mediaQueryMobile]: {
+            ...(isSecondary && {
+              gridArea: '2/3',
+              display: 'grid',
+              placeItems: 'center',
+              zIndex: 2,
+            }),
+          },
         },
-        [mediaQueryDesktop]: {
-          ...((isPrimary || isSecondary) && {
-            display: 'flex',
-            flexDirection: 'column',
-            gap: spacingFluidXSmall,
-            height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
-            animation: getAnimation(`slide-up-desktop-${isPrimary ? 'primary' : 'secondary'}`, 'moderate', 'base'),
+        '&[name="button"]': {
+          ...((isPrimary || isCascade) && {
+            display: 'none',
           }),
-          ...(isSecondary && {
-            gridArea: '2/2/auto/-2',
-            paddingBlockEnd: spacingFluidLarge,
-          }),
-          ...(isCascade && {
-            display: 'contents',
-          }),
+          [mediaQueryMobile]: {
+            ...(isSecondary && {
+              display: 'none',
+            }),
+          },
+        },
+        '&:not([name])': {
+          display: 'none',
+          [mediaQueryMobile]: {
+            ...(isSecondary && {
+              gridArea: '4/2/auto/-2',
+              zIndex: 0,
+              display: 'grid',
+              gridTemplate: `var(${cssVariableGridTemplate},auto/auto)`,
+              gap: `var(${cssVariableGap},${spacingFluidXSmall})`,
+              alignContent: 'start',
+              alignItems: 'start',
+              boxSizing: 'border-box',
+              minHeight: '100%',
+              height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
+              paddingBlockEnd: spacingFluidLarge,
+              animation: getAnimation('slide-up-mobile', 'moderate', 'base'),
+            }),
+            ...((isPrimary || isCascade) && {
+              display: 'contents',
+            }),
+          },
+          [mediaQueryDesktop]: {
+            ...((isPrimary || isSecondary) && {
+              gridArea: '3/2/auto/-2',
+              display: 'grid',
+              gridTemplate: `var(${cssVariableGridTemplate},auto/auto)`,
+              gap: `var(${cssVariableGap},${spacingFluidXSmall})`,
+              alignContent: 'start',
+              alignItems: 'start',
+              boxSizing: 'border-box',
+              minHeight: '100%',
+              height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
+              paddingBlockEnd: spacingFluidLarge,
+              animation: getAnimation(`slide-up-desktop-${isPrimary ? 'primary' : 'secondary'}`, 'moderate', 'base'),
+            }),
+            ...(isSecondary && {
+              gridArea: '2/2/auto/-2',
+              paddingBlockEnd: spacingFluidLarge,
+            }),
+            ...(isCascade && {
+              display: 'contents',
+            }),
+          },
         },
       },
       h2: {
@@ -124,31 +193,11 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
         },
       }),
       '::slotted': {
-        '&(a)': {
-          all: 'unset',
-          alignSelf: 'flex-start',
-          font: textMediumStyle.font,
-          cursor: 'pointer',
-          borderRadius: borderRadiusSmall,
-          padding: addImportantToRule(spacingFluidSmall),
-          marginInline: addImportantToRule(`calc(${spacingFluidSmall} * -1)`),
-          color: primaryColor,
-          textDecoration: 'underline',
-          textDecorationColor: 'transparent',
-          transition: `${getTransition('text-decoration-color')}`,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            color: primaryColorDark,
-          }),
+        ...getLinkStyle(theme),
+        '&(*)': {
+          [cssVariableGridTemplate]: 'auto/auto', // reset css variable to prevent inheritance
+          [cssVariableGap]: spacingFluidXSmall, // reset css variable to prevent inheritance
         },
-        '&(a[aria-current])': {
-          textDecoration: 'underline',
-        },
-        ...hoverMediaQuery({
-          '&(a:hover)': {
-            textDecorationColor: 'inherit',
-          },
-        }),
-        ...getFocusJssStyle(theme, { slotted: 'a', offset: '-2px' }),
       },
       ...preventFoucOfNestedElementsStyles,
     },
@@ -229,6 +278,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       },
       ...(!isPrimary &&
         !isCascade && {
+          gridColumn: '1/-1',
           padding: spacingFluidSmall,
           margin: `0 calc(${spacingFluidSmall} * -1)`,
         }),
@@ -240,12 +290,15 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       ...(isPrimary && {
         [mediaQueryMobile]: {
           gridArea: '2/2',
+          marginTop: '2px', // compensate negative margin of ::pseudo background of button-pure
           width: 'fit-content',
           height: 'fit-content',
-          placeSelf: 'center flex-start',
+          placeSelf: 'start',
           zIndex: 2,
         },
         [mediaQueryDesktop]: {
+          gridArea: '2/2',
+          marginBottom: spacingFluidMedium,
           width: 'fit-content',
           height: 'fit-content',
           marginInlineStart: '-4px', // improve visual alignment and compensate white space of arrow-left icon

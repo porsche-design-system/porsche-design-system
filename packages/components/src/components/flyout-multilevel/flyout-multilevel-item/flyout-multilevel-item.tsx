@@ -1,11 +1,14 @@
-import { Component, Element, Host, type JSX, Prop, h } from '@stencil/core';
+import { Component, Element, forceUpdate, h, Host, type JSX, Prop } from '@stencil/core';
 import type { PropTypes, Theme } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  hasNamedSlot,
   isElementOfKind,
+  observeChildren,
   throwIfParentIsNotOfKind,
+  unobserveChildren,
   validateProps,
 } from '../../../utils';
 import {
@@ -14,6 +17,7 @@ import {
 } from '../flyout-multilevel/flyout-multilevel-utils';
 import { getComponentCss } from './flyout-multilevel-item-styles';
 import type { FlyoutMultilevelItemInternalHTMLProps } from './flyout-multilevel-item-utils';
+import { getNamedSlot } from '../../../utils/getNamedSlot';
 
 const propTypes: PropTypes<typeof FlyoutMultilevelItem> = {
   identifier: AllowedTypes.string,
@@ -25,7 +29,8 @@ const propTypes: PropTypes<typeof FlyoutMultilevelItem> = {
 
 /**
  * @slot {"name": "", "description": "Default slot for the main content." }
- *
+ * @slot {"name": "button", "description": "Shows a custom button to reach a deeper level of the navigation structure." } *
+ * @slot {"name": "header", "description": "Shows a custom header section on mobile view" } *
  * @experimental
  */
 @Component({
@@ -52,16 +57,43 @@ export class FlyoutMultilevelItem {
 
   private scroller: HTMLDivElement;
 
+  private hasSlottedHeader: boolean;
+  private slottedHTMLButtonElement: HTMLElement;
+
   private get theme(): Theme {
     return this.host.theme || 'light'; // default as fallback (internal private prop is controlled by flyout-multilevel)
   }
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-flyout-multilevel', 'p-flyout-multilevel-item']);
+
+    // Observe dynamic slot changes
+    observeChildren(
+      this.host,
+      () => {
+        forceUpdate(this.host);
+      },
+      undefined,
+      { subtree: false, childList: true, attributes: false }
+    );
+  }
+
+  public disconnectedCallback(): void {
+    unobserveChildren(this.host);
+  }
+
+  public componentWillRender() {
+    this.hasSlottedHeader = hasNamedSlot(this.host, 'header');
+
+    this.slottedHTMLButtonElement = getNamedSlot(this.host, 'button');
+    this.slottedHTMLButtonElement?.removeEventListener('click', this.onClickButton);
   }
 
   public componentDidRender() {
     this.scroller.scrollTo(0, 0); // Reset scroll position when navigated
+
+    this.slottedHTMLButtonElement?.addEventListener('click', this.onClickButton);
+    this.slottedHTMLButtonElement?.setAttribute('aria-expanded', this.secondary ? 'true' : 'false');
   }
 
   public render(): JSX.Element {
@@ -72,21 +104,25 @@ export class FlyoutMultilevelItem {
 
     return (
       <Host>
-        <PrefixedTagNames.pButtonPure
-          inert={this.primary || this.cascade}
-          class="button"
-          type="button"
-          size="medium"
-          alignLabel="start"
-          stretch={true}
-          icon="arrow-head-right"
-          active={this.secondary}
-          aria={{ 'aria-expanded': this.secondary }}
-          theme={this.theme}
-          onClick={() => this.onClickButton()}
-        >
-          {this.label}
-        </PrefixedTagNames.pButtonPure>
+        {this.slottedHTMLButtonElement ? (
+          <slot name="button" />
+        ) : (
+          <PrefixedTagNames.pButtonPure
+            inert={this.primary || this.cascade}
+            class="button"
+            type="button"
+            size="medium"
+            alignLabel="start"
+            stretch={true}
+            icon="arrow-head-right"
+            active={this.secondary}
+            aria={{ 'aria-expanded': this.secondary }}
+            theme={this.theme}
+            onClick={() => this.onClickButton()}
+          >
+            {this.label}
+          </PrefixedTagNames.pButtonPure>
+        )}
         <PrefixedTagNames.pButtonPure
           class="back"
           type="button"
@@ -100,7 +136,7 @@ export class FlyoutMultilevelItem {
         >
           {this.label}
         </PrefixedTagNames.pButtonPure>
-        <h2>{this.label}</h2>
+        {this.hasSlottedHeader ? <slot name="header" /> : <h2>{this.label}</h2>}
         <div class="drawer">
           <div class="scroller" ref={(ref) => (this.scroller = ref)}>
             <slot />

@@ -22,10 +22,14 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import { type Theme, getCss } from '../../../utils';
+import { getLinkStyle } from '../flyout-multilevel-item/flyout-multilevel-item-styles';
 
 export const scrollerWidthDesktop = 'clamp(338px, 210px + 18vw, 640px)';
 export const mediaQueryMobile = getMediaQueryMax('s');
 export const mediaQueryDesktop = getMediaQueryMin('s');
+
+export const cssVariableGridTemplate = '--p-flyout-multilevel-grid-template';
+export const cssVariableGap = '--p-flyout-multilevel-gap';
 
 const dialogDurationOpen = 'moderate';
 const backdropDurationOpen = 'long';
@@ -75,6 +79,13 @@ export const getComponentCss = (
         }),
       },
       ...preventFoucOfNestedElementsStyles,
+      '::slotted': {
+        ...getLinkStyle(theme),
+        '&(*)': {
+          [cssVariableGridTemplate]: 'auto/auto', // reset css variable to prevent inheritance
+          [cssVariableGap]: spacingFluidXSmall, // reset css variable to prevent inheritance
+        },
+      },
       dialog: {
         all: 'unset',
         position: 'fixed',
@@ -103,11 +114,15 @@ export const getComponentCss = (
         [mediaQueryMobile]: {
           display: 'contents',
           ...(!isSecondaryScrollerVisible && {
-            zIndex: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            gap: spacingFluidXSmall,
             gridArea: '4/2/auto/-2',
+            zIndex: 0,
+            display: 'grid',
+            gridTemplate: `var(${cssVariableGridTemplate},auto/auto)`,
+            gap: `var(${cssVariableGap},${spacingFluidXSmall})`,
+            alignContent: 'start',
+            alignItems: 'start',
+            boxSizing: 'border-box',
+            minHeight: '100%',
             height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
             paddingBlockEnd: spacingFluidLarge,
             ...(isPrimary && {
@@ -116,13 +131,17 @@ export const getComponentCss = (
           }),
         },
         [mediaQueryDesktop]: {
-          display: 'flex',
-          flexDirection: 'column',
-          gap: isPrimary ? spacingFluidXSmall : spacingFluidMedium,
-          gridArea: '2/2/auto/-2',
-          height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
-          paddingBlockEnd: spacingFluidLarge,
           ...(isPrimary && {
+            gridArea: '3/2/auto/-2',
+            display: 'grid',
+            gridTemplate: `var(${cssVariableGridTemplate},auto/auto)`,
+            gap: `var(${cssVariableGap},${isPrimary ? spacingFluidXSmall : spacingFluidMedium})`,
+            alignContent: 'start',
+            alignItems: 'start',
+            boxSizing: 'border-box',
+            minHeight: '100%',
+            height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
+            paddingBlockEnd: spacingFluidLarge,
             animation: getAnimation('slide-up-desktop', 'moderate', 'base'),
           }),
         },
@@ -169,7 +188,7 @@ export const getComponentCss = (
       },
       [mediaQueryDesktop]: {
         width: isSecondaryScrollerVisible ? `calc(${scrollerWidthDesktop} * 2)` : scrollerWidthDesktop,
-        gridTemplate: `${spacingFluidMedium} minmax(0, 1fr)/repeat(${isSecondaryScrollerVisible ? 2 : 1}, ${spacingFluidLarge} minmax(0, 1fr) ${spacingFluidLarge})`,
+        gridTemplate: `${spacingFluidMedium} auto minmax(0, 1fr)/repeat(${isSecondaryScrollerVisible ? 2 : 1}, ${spacingFluidLarge} minmax(0, 1fr) ${spacingFluidLarge})`,
         background: backgroundColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
           background: backgroundColorDark,
@@ -268,7 +287,7 @@ export const getComponentCss = (
         ...dismissButtonJssStyle,
         width: 'fit-content',
         height: 'fit-content',
-        placeSelf: 'center flex-end',
+        placeSelf: 'start end',
         gridArea: '2/4',
         zIndex: 3, // ensures dismiss button is on top of opacity animation handled by ::before/::after
         marginInlineEnd: '-1px', // improve visual alignment and compensate white space of close icon
@@ -291,16 +310,18 @@ export const getComponentCss = (
     },
     back: {
       display: 'none',
-      ...(isSecondaryScrollerVisible && {
-        [mediaQueryMobile]: {
-          display: 'block',
-          gridArea: '2/2',
-          width: 'fit-content',
-          height: 'fit-content',
-          placeSelf: 'center flex-start',
-          zIndex: 2,
-        },
-      }),
+      ...(isSecondaryScrollerVisible &&
+        isPrimary && {
+          [mediaQueryMobile]: {
+            display: 'block',
+            marginTop: '2px', // compensate negative margin of ::pseudo background of button-pure
+            gridArea: '2/2',
+            width: 'fit-content',
+            height: 'fit-content',
+            placeSelf: 'start',
+            zIndex: 2,
+          },
+        }),
     },
   });
 };

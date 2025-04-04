@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Added
+
+- `Flyout Multilevel`: named slot `button` and `header`
+  ([#3822](https://github.com/porsche-design-system/porsche-design-system/pull/3822))
+
 #### Fixed
 
 - `aria` prop now supports a colon inside of a value, e.g. `aria="{ 'aria-label': 'Always remember: yes you can!' }"`
