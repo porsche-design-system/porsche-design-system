@@ -288,6 +288,26 @@ const generatedRoutes = {
     "path": "/flyout-multilevel-basic",
     "name": "FlyoutMultilevelBasic"
   },
+  "flyoutMultilevelCssVariables_1": {
+    "path": "/flyout-multilevel-css-variables-1",
+    "name": "FlyoutMultilevelCssVariables_1"
+  },
+  "flyoutMultilevelCssVariables_2": {
+    "path": "/flyout-multilevel-css-variables-2",
+    "name": "FlyoutMultilevelCssVariables_2"
+  },
+  "flyoutMultilevelCssVariables_3": {
+    "path": "/flyout-multilevel-css-variables-3",
+    "name": "FlyoutMultilevelCssVariables_3"
+  },
+  "flyoutMultilevelCssVariables_4": {
+    "path": "/flyout-multilevel-css-variables-4",
+    "name": "FlyoutMultilevelCssVariables_4"
+  },
+  "flyoutMultilevelCssVariables_5": {
+    "path": "/flyout-multilevel-css-variables-5",
+    "name": "FlyoutMultilevelCssVariables_5"
+  },
   "flyoutMultilevelDeeplyNested_1st": {
     "path": "/flyout-multilevel-deeply-nested-1st",
     "name": "FlyoutMultilevelDeeplyNested_1st"

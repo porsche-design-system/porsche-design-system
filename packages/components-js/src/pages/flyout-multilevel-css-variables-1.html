@@ -1,0 +1,66 @@
+<style>
+  p-flyout-multilevel {
+    --p-flyout-multilevel-grid-template: auto minmax(0, 1fr) auto / auto;
+    --p-flyout-multilevel-gap: 20px 40px;
+
+    & > p-flyout-multilevel-item:nth-child(1) {
+      --p-flyout-multilevel-grid-template: auto / repeat(2, minmax(0, 1fr));
+      --p-flyout-multilevel-gap: 20px 40px;
+
+      & > a {
+        grid-column: initial;
+      }
+    }
+
+    & > p-flyout-multilevel-item:nth-child(2) {
+      --p-flyout-multilevel-grid-template: minmax(0, 1fr) repeat(2, auto) / auto;
+    }
+  }
+</style>
+
+<p-flyout-multilevel open="true" active-identifier="id-1">
+  <p-flyout-multilevel-item identifier="id-1" label="Some Label (1)">
+    <a href="#some-anchor">Some anchor (1)</a>
+    <a href="#some-anchor">Some anchor (1)</a>
+    <a href="#some-anchor">Some anchor (1)</a>
+    <a href="#some-anchor">Some anchor (1)</a>
+    <a href="#some-anchor">Some anchor (1)</a>
+  </p-flyout-multilevel-item>
+  <p-flyout-multilevel-item identifier="id-2" label="Some Label (2)">
+    <p-flyout-multilevel-item identifier="id-2-1" label="Some Label (2-1)">
+      <p-flyout-multilevel-item identifier="id-2-1-1" label="Some Label (2-1-1)">
+        <a href="#some-anchor">Some anchor (2-1-1)</a>
+        <a href="#some-anchor">Some anchor (2-1-1)</a>
+      </p-flyout-multilevel-item>
+      <p-flyout-multilevel-item identifier="id-2-1-2" label="Some Label (2-1-2)">
+        <a href="#some-anchor">Some anchor (2-1-2)</a>
+        <a href="#some-anchor">Some anchor (2-1-2)</a>
+        <p-flyout-multilevel-item identifier="id-2-1-2-1" label="Some Label (2-1-2-1)">
+          <a href="#some-anchor">Some anchor (2-1-2-1)</a>
+          <p-flyout-multilevel-item identifier="id-2-1-2-1-1" label="Some Label (2-1-2-1-1)">
+            <a href="#some-anchor">Some anchor (2-1-2-1-1)</a>
+          </p-flyout-multilevel-item>
+          <a href="#some-anchor">Some anchor (2-1-2-1)</a>
+        </p-flyout-multilevel-item>
+      </p-flyout-multilevel-item>
+      <a href="#some-anchor">Some anchor (2-1)</a>
+      <a href="#some-anchor">Some anchor (2-1)</a>
+      <a href="#some-anchor">Some anchor (2-1)</a>
+    </p-flyout-multilevel-item>
+    <p-flyout-multilevel-item identifier="id-2-2" label="Some Label (2-2)">
+      <a href="#some-anchor">Some anchor (2-2)</a>
+      <a href="#some-anchor">Some anchor (2-2)</a>
+      <a href="#some-anchor">Some anchor (2-2)</a>
+      <a href="#some-anchor">Some anchor (2-2)</a>
+    </p-flyout-multilevel-item>
+    <a href="#some-anchor">Some anchor (2)</a>
+  </p-flyout-multilevel-item>
+  <p-flyout-multilevel-item identifier="id-3" label="Some Label (3)">
+    <a href="#some-anchor">Some anchor (3)</a>
+    <a href="#some-anchor">Some anchor (3)</a>
+    <a href="#some-anchor">Some anchor (3)</a>
+    <a href="#some-anchor">Some anchor (3)</a>
+    <a href="#some-anchor">Some anchor (3)</a>
+  </p-flyout-multilevel-item>
+  <p-button>Some button</p-button>
+</p-flyout-multilevel>

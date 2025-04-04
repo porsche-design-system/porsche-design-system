@@ -84,6 +84,11 @@ import { FlyoutHeaderScrollableContentPage } from './generated/FlyoutHeaderScrol
 import { FlyoutMultilevelPage } from './generated/FlyoutMultilevel';
 import { FlyoutMultilevelActiveIdentifierPage } from './generated/FlyoutMultilevelActiveIdentifier';
 import { FlyoutMultilevelBasicPage } from './generated/FlyoutMultilevelBasic';
+import { FlyoutMultilevelCssVariables_1Page } from './generated/FlyoutMultilevelCssVariables_1';
+import { FlyoutMultilevelCssVariables_2Page } from './generated/FlyoutMultilevelCssVariables_2';
+import { FlyoutMultilevelCssVariables_3Page } from './generated/FlyoutMultilevelCssVariables_3';
+import { FlyoutMultilevelCssVariables_4Page } from './generated/FlyoutMultilevelCssVariables_4';
+import { FlyoutMultilevelCssVariables_5Page } from './generated/FlyoutMultilevelCssVariables_5';
 import { FlyoutMultilevelDeeplyNested_1stPage } from './generated/FlyoutMultilevelDeeplyNested_1st';
 import { FlyoutMultilevelDeeplyNested_2ndPage } from './generated/FlyoutMultilevelDeeplyNested_2nd';
 import { FlyoutMultilevelDeeplyNested_3rdPage } from './generated/FlyoutMultilevelDeeplyNested_3rd';
@@ -563,6 +568,31 @@ export const generatedRoutes: RouteType[] = [
     name: 'Flyout Multilevel Basic',
     path: '/flyout-multilevel-basic',
     element: <FlyoutMultilevelBasicPage />,
+  },
+  {
+    name: 'Flyout Multilevel Css Variables 1',
+    path: '/flyout-multilevel-css-variables-1',
+    element: <FlyoutMultilevelCssVariables_1Page />,
+  },
+  {
+    name: 'Flyout Multilevel Css Variables 2',
+    path: '/flyout-multilevel-css-variables-2',
+    element: <FlyoutMultilevelCssVariables_2Page />,
+  },
+  {
+    name: 'Flyout Multilevel Css Variables 3',
+    path: '/flyout-multilevel-css-variables-3',
+    element: <FlyoutMultilevelCssVariables_3Page />,
+  },
+  {
+    name: 'Flyout Multilevel Css Variables 4',
+    path: '/flyout-multilevel-css-variables-4',
+    element: <FlyoutMultilevelCssVariables_4Page />,
+  },
+  {
+    name: 'Flyout Multilevel Css Variables 5',
+    path: '/flyout-multilevel-css-variables-5',
+    element: <FlyoutMultilevelCssVariables_5Page />,
   },
   {
     name: 'Flyout Multilevel Deeply Nested 1st',

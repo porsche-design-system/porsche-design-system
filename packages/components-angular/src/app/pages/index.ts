@@ -103,6 +103,11 @@ import { FlyoutHeaderScrollableContentComponent } from './generated/flyout-heade
 import { FlyoutMultilevelComponent } from './generated/flyout-multilevel.component';
 import { FlyoutMultilevelActiveIdentifierComponent } from './generated/flyout-multilevel-active-identifier.component';
 import { FlyoutMultilevelBasicComponent } from './generated/flyout-multilevel-basic.component';
+import { FlyoutMultilevelCssVariables_1Component } from './generated/flyout-multilevel-css-variables-1.component';
+import { FlyoutMultilevelCssVariables_2Component } from './generated/flyout-multilevel-css-variables-2.component';
+import { FlyoutMultilevelCssVariables_3Component } from './generated/flyout-multilevel-css-variables-3.component';
+import { FlyoutMultilevelCssVariables_4Component } from './generated/flyout-multilevel-css-variables-4.component';
+import { FlyoutMultilevelCssVariables_5Component } from './generated/flyout-multilevel-css-variables-5.component';
 import { FlyoutMultilevelDeeplyNested_1stComponent } from './generated/flyout-multilevel-deeply-nested-1st.component';
 import { FlyoutMultilevelDeeplyNested_2ndComponent } from './generated/flyout-multilevel-deeply-nested-2nd.component';
 import { FlyoutMultilevelDeeplyNested_3rdComponent } from './generated/flyout-multilevel-deeply-nested-3rd.component';
@@ -301,6 +306,11 @@ export const generatedPages = [
   FlyoutMultilevelComponent,
   FlyoutMultilevelActiveIdentifierComponent,
   FlyoutMultilevelBasicComponent,
+  FlyoutMultilevelCssVariables_1Component,
+  FlyoutMultilevelCssVariables_2Component,
+  FlyoutMultilevelCssVariables_3Component,
+  FlyoutMultilevelCssVariables_4Component,
+  FlyoutMultilevelCssVariables_5Component,
   FlyoutMultilevelDeeplyNested_1stComponent,
   FlyoutMultilevelDeeplyNested_2ndComponent,
   FlyoutMultilevelDeeplyNested_3rdComponent,
@@ -782,6 +792,31 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Flyout Multilevel Basic',
     path: 'flyout-multilevel-basic',
     component: FlyoutMultilevelBasicComponent,
+  },
+  {
+    name: 'Flyout Multilevel Css Variables 1',
+    path: 'flyout-multilevel-css-variables-1',
+    component: FlyoutMultilevelCssVariables_1Component,
+  },
+  {
+    name: 'Flyout Multilevel Css Variables 2',
+    path: 'flyout-multilevel-css-variables-2',
+    component: FlyoutMultilevelCssVariables_2Component,
+  },
+  {
+    name: 'Flyout Multilevel Css Variables 3',
+    path: 'flyout-multilevel-css-variables-3',
+    component: FlyoutMultilevelCssVariables_3Component,
+  },
+  {
+    name: 'Flyout Multilevel Css Variables 4',
+    path: 'flyout-multilevel-css-variables-4',
+    component: FlyoutMultilevelCssVariables_4Component,
+  },
+  {
+    name: 'Flyout Multilevel Css Variables 5',
+    path: 'flyout-multilevel-css-variables-5',
+    component: FlyoutMultilevelCssVariables_5Component,
   },
   {
     name: 'Flyout Multilevel Deeply Nested 1st',
