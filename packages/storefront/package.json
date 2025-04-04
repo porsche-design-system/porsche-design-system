@@ -12,7 +12,6 @@
     "build:generateComponentsBundleForStackBlitz": "tsx --tsconfig tsconfig.node.json scripts/generateComponentsBundleForStackBlitz.ts",
     "build:prepareChangelog": "tsx --tsconfig tsconfig.node.json scripts/prepareChangelog.ts",
     "build:copyLicense": "cp ../../LICENSE.md ./src/app/license/license.mdx",
-    "start": "concurrently -k -s 'first' -n 'cdn,next' 'serve-cdn' 'next start'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws --spa index.html -p 8080 -d ./dist'",
     "updateAlgolia": "tsx --tsconfig tsconfig.json scripts/updateAlgoliaIndex.tsx",
     "lint": "biome lint",
