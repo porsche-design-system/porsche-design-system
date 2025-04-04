@@ -142,7 +142,7 @@
     "test:e2e:storefront:2/4": "echo 'disabled'",
     "test:e2e:storefront:3/4": "echo 'disabled'",
     "test:e2e:storefront:4/4": "echo 'disabled'",
-    "test:e2e:storefront:sitemap": "echo 'disabled'",
+    "test:e2e:storefront:sitemap": "yarn --cwd ./packages/storefront test:e2e:sitemap",
     "test:a11y:components-js": "yarn --cwd ./packages/components-js test:a11y",
     "test:a11y:storefront": "echo 'disabled'",
     "test:a11y:storefront:1/3": "echo 'disabled'",
