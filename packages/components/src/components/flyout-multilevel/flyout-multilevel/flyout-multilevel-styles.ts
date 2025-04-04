@@ -28,6 +28,9 @@ export const scrollerWidthDesktop = 'clamp(338px, 210px + 18vw, 640px)';
 export const mediaQueryMobile = getMediaQueryMax('s');
 export const mediaQueryDesktop = getMediaQueryMin('s');
 
+export const cssVariableGridTemplate = '--p-flyout-multilevel-grid-template';
+export const cssVariableGap = '--p-flyout-multilevel-gap';
+
 const dialogDurationOpen = 'moderate';
 const backdropDurationOpen = 'long';
 const easingOpen = 'in';
@@ -78,6 +81,10 @@ export const getComponentCss = (
       ...preventFoucOfNestedElementsStyles,
       '::slotted': {
         ...getLinkStyle(theme),
+        '&(*)': {
+          [cssVariableGridTemplate]: 'auto/auto', // reset css variable to prevent inheritance
+          [cssVariableGap]: spacingFluidXSmall, // reset css variable to prevent inheritance
+        },
       },
       dialog: {
         all: 'unset',
@@ -107,11 +114,15 @@ export const getComponentCss = (
         [mediaQueryMobile]: {
           display: 'contents',
           ...(!isSecondaryScrollerVisible && {
-            zIndex: 0,
-            display: 'flex',
-            flexDirection: 'column',
-            gap: spacingFluidXSmall,
             gridArea: '4/2/auto/-2',
+            zIndex: 0,
+            display: 'grid',
+            gridTemplate: `var(${cssVariableGridTemplate},auto/auto)`,
+            gap: `var(${cssVariableGap},${spacingFluidXSmall})`,
+            alignContent: 'start',
+            alignItems: 'start',
+            boxSizing: 'border-box',
+            minHeight: '100%',
             height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
             paddingBlockEnd: spacingFluidLarge,
             ...(isPrimary && {
@@ -120,13 +131,17 @@ export const getComponentCss = (
           }),
         },
         [mediaQueryDesktop]: {
-          display: 'flex',
-          flexDirection: 'column',
-          gap: isPrimary ? spacingFluidXSmall : spacingFluidMedium,
-          gridArea: '2/2/auto/-2',
-          height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
-          paddingBlockEnd: spacingFluidLarge,
           ...(isPrimary && {
+            gridArea: '3/2/auto/-2',
+            display: 'grid',
+            gridTemplate: `var(${cssVariableGridTemplate},auto/auto)`,
+            gap: `var(${cssVariableGap},${isPrimary ? spacingFluidXSmall : spacingFluidMedium})`,
+            alignContent: 'start',
+            alignItems: 'start',
+            boxSizing: 'border-box',
+            minHeight: '100%',
+            height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
+            paddingBlockEnd: spacingFluidLarge,
             animation: getAnimation('slide-up-desktop', 'moderate', 'base'),
           }),
         },
@@ -173,7 +188,7 @@ export const getComponentCss = (
       },
       [mediaQueryDesktop]: {
         width: isSecondaryScrollerVisible ? `calc(${scrollerWidthDesktop} * 2)` : scrollerWidthDesktop,
-        gridTemplate: `${spacingFluidMedium} minmax(0, 1fr)/repeat(${isSecondaryScrollerVisible ? 2 : 1}, ${spacingFluidLarge} minmax(0, 1fr) ${spacingFluidLarge})`,
+        gridTemplate: `${spacingFluidMedium} auto minmax(0, 1fr)/repeat(${isSecondaryScrollerVisible ? 2 : 1}, ${spacingFluidLarge} minmax(0, 1fr) ${spacingFluidLarge})`,
         background: backgroundColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
           background: backgroundColorDark,

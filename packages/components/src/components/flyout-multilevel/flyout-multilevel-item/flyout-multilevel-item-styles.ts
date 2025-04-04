@@ -22,6 +22,8 @@ import {
 } from '../../../styles';
 import { type Theme, getCss } from '../../../utils';
 import {
+  cssVariableGap,
+  cssVariableGridTemplate,
   mediaQueryDesktop,
   mediaQueryMobile,
   scrollerBackground,
@@ -36,6 +38,7 @@ export const getLinkStyle = (theme: Theme): JssStyle => {
   return {
     '&(a)': {
       all: 'unset',
+      gridColumn: '1/-1',
       alignSelf: 'flex-start',
       font: textMediumStyle.font,
       cursor: 'pointer',
@@ -112,11 +115,15 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           display: 'none',
           [mediaQueryMobile]: {
             ...(isSecondary && {
-              zIndex: 0,
-              display: 'flex',
-              flexDirection: 'column',
-              gap: spacingFluidXSmall,
               gridArea: '4/2/auto/-2',
+              zIndex: 0,
+              display: 'grid',
+              gridTemplate: `var(${cssVariableGridTemplate},auto/auto)`,
+              gap: `var(${cssVariableGap},${spacingFluidXSmall})`,
+              alignContent: 'start',
+              alignItems: 'start',
+              boxSizing: 'border-box',
+              minHeight: '100%',
               height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
               paddingBlockEnd: spacingFluidLarge,
               animation: getAnimation('slide-up-mobile', 'moderate', 'base'),
@@ -127,10 +134,16 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           },
           [mediaQueryDesktop]: {
             ...((isPrimary || isSecondary) && {
-              display: 'flex',
-              flexDirection: 'column',
-              gap: spacingFluidXSmall,
+              gridArea: '3/2/auto/-2',
+              display: 'grid',
+              gridTemplate: `var(${cssVariableGridTemplate},auto/auto)`,
+              gap: `var(${cssVariableGap},${spacingFluidXSmall})`,
+              alignContent: 'start',
+              alignItems: 'start',
+              boxSizing: 'border-box',
+              minHeight: '100%',
               height: 'fit-content', // ensures padding bottom is added instead of subtracted because of grid context
+              paddingBlockEnd: spacingFluidLarge,
               animation: getAnimation(`slide-up-desktop-${isPrimary ? 'primary' : 'secondary'}`, 'moderate', 'base'),
             }),
             ...(isSecondary && {
@@ -181,6 +194,10 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       }),
       '::slotted': {
         ...getLinkStyle(theme),
+        '&(*)': {
+          [cssVariableGridTemplate]: 'auto/auto', // reset css variable to prevent inheritance
+          [cssVariableGap]: spacingFluidXSmall, // reset css variable to prevent inheritance
+        },
       },
       ...preventFoucOfNestedElementsStyles,
     },
@@ -261,6 +278,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       },
       ...(!isPrimary &&
         !isCascade && {
+          gridColumn: '1/-1',
           padding: spacingFluidSmall,
           margin: `0 calc(${spacingFluidSmall} * -1)`,
         }),
@@ -279,6 +297,8 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           zIndex: 2,
         },
         [mediaQueryDesktop]: {
+          gridArea: '2/2',
+          marginBottom: spacingFluidMedium,
           width: 'fit-content',
           height: 'fit-content',
           marginInlineStart: '-4px', // improve visual alignment and compensate white space of arrow-left icon
