@@ -26,6 +26,8 @@
     "react-syntax-highlighter": "^15.6.1",
     "next": "15.2.4",
     "algoliasearch": "^5.1.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "react-instantsearch": "^7.15.4",
     "react-instantsearch-nextjs": "^0.4.5"
   },
