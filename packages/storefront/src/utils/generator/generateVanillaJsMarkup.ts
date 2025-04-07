@@ -76,7 +76,7 @@ const createVanillaJSMarkup = (
   const { tag, properties = {}, events = {}, children = [] } = config;
 
   const eventEntries: [string, EventConfig][] = Object.entries(events);
-  const propertyString = generateVanillaJsProperties(properties, eventEntries);
+  const propertyString = generateVanillaJsProperties(tag, properties, eventEntries);
 
   const childrenMarkup = children.map((child) => createVanillaJSMarkup(child, indentLevel + 1));
 
@@ -119,6 +119,7 @@ export const generateVanillaJSControlledScript = (
 };
 
 export const generateVanillaJsProperties = (
+  tag: HTMLTagOrComponent,
   properties: HTMLElementOrComponentProps<HTMLTagOrComponent>,
   eventEntries: [string, EventConfig][]
 ) => {
@@ -137,8 +138,8 @@ export const generateVanillaJsProperties = (
   return Object.entries(properties)
     .filter(([key]) => !eventEntries.some(([_, { prop }]) => prop === key))
     .map(([key, value]) => {
-      // Some props need to be treated differently for vanilla-js e.g. boolean props without value (loop: true => loop)
-      if (specialProps[key]) return specialProps[key](value);
+      // Some props need to be treated differently for vanilla-js e.g. boolean props without value (loop: true => loop) only for non pds tags
+      if (!tag.startsWith('p-') && specialProps[key]) return specialProps[key](value);
       if (typeof value === 'string') return ` ${kebabCase(key === 'className' ? 'class' : key)}="${value}"`;
       if (key === 'style')
         return ` style="${Object.entries(value as CSSProperties)

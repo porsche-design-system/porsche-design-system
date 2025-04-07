@@ -16,7 +16,7 @@ describe('generateVanillaJsMarkup()', () => {
     expect(output).toMatchSnapshot();
   });
   it('should generate correct Vanilla JS markup for carousel', () => {
-    const output = generateVanillaJsMarkup(carouselTestConfig, {});
+    const output = generateVanillaJsMarkup(carouselTestConfig);
     expect(output).toMatchSnapshot();
   });
 });
@@ -95,6 +95,7 @@ describe('generateVanillaJSControlledScript()', () => {
 describe('generateVanillaJsProperties()', () => {
   it('should generate correct properties', () => {
     const props = generateVanillaJsProperties(
+      'p-button',
       {
         aria: { 'aria-haspopup': true, 'aria-label': 'Some more descriptive label' },
         type: 'button',
@@ -110,6 +111,7 @@ describe('generateVanillaJsProperties()', () => {
 
   it('should generate correct properties for style prop', () => {
     const props = generateVanillaJsProperties(
+      'p-button',
       {
         style: { backgroundColor: 'red', '--custom-prop': '1px' } as CSSProperties,
       },
@@ -120,6 +122,7 @@ describe('generateVanillaJsProperties()', () => {
 
   it('should remove props included in events', () => {
     const props = generateVanillaJsProperties(
+      'p-button',
       {
         open: true,
         name: 'Some prop',
@@ -137,8 +140,9 @@ describe('generateVanillaJsProperties()', () => {
     expect(props).toMatchInlineSnapshot('" name="Some prop""');
   });
 
-  it('should transform react properties correctly for vanilla-js', () => {
+  it('should transform react properties correctly for vanilla-js when using html tag', () => {
     const propsTruthy = generateVanillaJsProperties(
+      'input',
       {
         className: 'test',
         disabled: true,
@@ -157,6 +161,7 @@ describe('generateVanillaJsProperties()', () => {
       `" class="test" disabled loop muted autoplay checked readonly maxlength="10" minlength="10" srcset="test""`
     );
     const propsFalsy = generateVanillaJsProperties(
+      'input',
       {
         className: '',
         disabled: false,
@@ -171,8 +176,45 @@ describe('generateVanillaJsProperties()', () => {
       },
       []
     );
-    expect(propsFalsy).toMatchInlineSnapshot(
-      `" class="" maxlength="0" minlength="0" srcset="""`
+    expect(propsFalsy).toMatchInlineSnapshot(`" class="" maxlength="0" minlength="0" srcset="""`);
+  });
+
+  it('should transform react properties correctly for vanilla-js when using pds tag', () => {
+    const propsTruthy = generateVanillaJsProperties(
+      'p-button',
+      {
+        className: 'test',
+        disabled: true,
+        loop: true,
+        muted: true,
+        autoPlay: true,
+        defaultChecked: true,
+        readOnly: true,
+        maxLength: 10,
+        minLength: 10,
+        srcSet: 'test',
+      },
+      []
     );
+    expect(propsTruthy).toMatchInlineSnapshot(
+      `" class="test" disabled="true" loop="true" muted="true" auto-play="true" default-checked="true" read-only="true" max-length="10" min-length="10" src-set="test""`
+    );
+    const propsFalsy = generateVanillaJsProperties(
+      'p-button',
+      {
+        className: '',
+        disabled: false,
+        loop: false,
+        muted: false,
+        autoPlay: false,
+        defaultChecked: false,
+        readOnly: false,
+        maxLength: 0,
+        minLength: 0,
+        srcSet: '',
+      },
+      []
+    );
+    expect(propsFalsy).toMatchInlineSnapshot(`" class="" disabled="false" loop="false" muted="false" auto-play="false" default-checked="false" read-only="false" max-length="0" min-length="0" src-set="""`);
   });
 });
