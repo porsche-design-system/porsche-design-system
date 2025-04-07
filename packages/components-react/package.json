@@ -29,7 +29,9 @@
     "@porsche-design-system/components-react": "3.27.3",
     "react-imask": "^7.6.1",
     "react-router-dom": "^7.1.1",
-    "styled-components": "^6.1.13"
+    "styled-components": "^6.1.13",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@porsche-design-system/assets": "5.0.2",
@@ -52,9 +54,7 @@
     "concurrently": "*",
     "globby": "*",
     "vite": "*",
-    "typescript": "*",
-    "react": "*",
-    "react-dom": "*"
+    "typescript": "*"
   },
   "volta": {
     "extends": "../../package.json"
