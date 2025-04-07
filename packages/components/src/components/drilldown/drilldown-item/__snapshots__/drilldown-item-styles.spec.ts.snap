@@ -43,12 +43,13 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
   }
   ::slotted(a) {
     all: unset;
+    grid-column: 1/-1;
     align-self: flex-start;
     font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: pointer;
     border-radius: 4px;
-    padding: clamp(8px, 0.5vw + 6px, 16px) !important;
-    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1) !important;
+    padding: clamp(8px, 0.5vw + 6px, 16px);
+    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
     color: #FBFCFF;
     text-decoration: underline;
     text-decoration-color: transparent;
@@ -66,6 +67,10 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
   ::slotted(a:focus-visible) {
     outline: 2px solid #1A44EA;
     outline-offset: -2px;
+  }
+  ::slotted(*) {
+    --p-drilldown-grid-template: auto/auto;
+    --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -88,6 +93,7 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
     background: rgba(0,0,0,.01);
   }
   .button {
+    grid-column: 1/-1;
     padding: clamp(8px, 0.5vw + 6px, 16px);
     margin: 0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
   }
@@ -157,12 +163,13 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
   }
   ::slotted(a) {
     all: unset;
+    grid-column: 1/-1;
     align-self: flex-start;
     font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: pointer;
     border-radius: 4px;
-    padding: clamp(8px, 0.5vw + 6px, 16px) !important;
-    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1) !important;
+    padding: clamp(8px, 0.5vw + 6px, 16px);
+    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
     color: #010205;
     text-decoration: underline;
     text-decoration-color: transparent;
@@ -180,6 +187,10 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
   ::slotted(a:focus-visible) {
     outline: 2px solid #1A44EA;
     outline-offset: -2px;
+  }
+  ::slotted(*) {
+    --p-drilldown-grid-template: auto/auto;
+    --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
@@ -291,12 +302,13 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
   }
   ::slotted(a) {
     all: unset;
+    grid-column: 1/-1;
     align-self: flex-start;
     font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: pointer;
     border-radius: 4px;
-    padding: clamp(8px, 0.5vw + 6px, 16px) !important;
-    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1) !important;
+    padding: clamp(8px, 0.5vw + 6px, 16px);
+    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
     color: #010205;
     text-decoration: underline;
     text-decoration-color: transparent;
@@ -315,28 +327,40 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
     outline: 2px solid #1A44EA;
     outline-offset: -2px;
   }
+  ::slotted(*) {
+    --p-drilldown-grid-template: auto/auto;
+    --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
 @media(min-width:760px) {
     slot:not([name]) {
-      display: flex;
-      flex-direction: column;
-      gap: clamp(4px, 0.25vw + 3px, 8px);
-      height: fit-content;
-      animation: slide-up-desktop-secondary var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
       grid-area: 2/2/auto/-2;
+      display: grid;
+      grid-template: var(--p-drilldown-grid-template,auto/auto);
+      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      align-content: start;
+      align-items: start;
+      box-sizing: border-box;
+      min-height: 100%;
+      height: fit-content;
       padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
+      animation: slide-up-desktop-secondary var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
     }
 }
 
 @media(max-width:759px) {
     slot:not([name]) {
-      z-index: 0;
-      display: flex;
-      flex-direction: column;
-      gap: clamp(4px, 0.25vw + 3px, 8px);
       grid-area: 4/2/auto/-2;
+      z-index: 0;
+      display: grid;
+      grid-template: var(--p-drilldown-grid-template,auto/auto);
+      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      align-content: start;
+      align-items: start;
+      box-sizing: border-box;
+      min-height: 100%;
       height: fit-content;
       padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
       animation: slide-up-mobile var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
@@ -379,6 +403,7 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
     background: rgba(255,255,255,.01);
   }
   .button {
+    grid-column: 1/-1;
     padding: clamp(8px, 0.5vw + 6px, 16px);
     margin: 0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
   }
@@ -475,12 +500,13 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
   }
   ::slotted(a) {
     all: unset;
+    grid-column: 1/-1;
     align-self: flex-start;
     font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: pointer;
     border-radius: 4px;
-    padding: clamp(8px, 0.5vw + 6px, 16px) !important;
-    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1) !important;
+    padding: clamp(8px, 0.5vw + 6px, 16px);
+    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
     color: #010205;
     text-decoration: underline;
     text-decoration-color: transparent;
@@ -499,28 +525,40 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
     outline: 2px solid #1A44EA;
     outline-offset: -2px;
   }
+  ::slotted(*) {
+    --p-drilldown-grid-template: auto/auto;
+    --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
 @media(min-width:760px) {
     slot:not([name]) {
-      display: contents;
-      flex-direction: column;
-      gap: clamp(4px, 0.25vw + 3px, 8px);
-      height: fit-content;
-      animation: slide-up-desktop-secondary var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
       grid-area: 2/2/auto/-2;
+      display: contents;
+      grid-template: var(--p-drilldown-grid-template,auto/auto);
+      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      align-content: start;
+      align-items: start;
+      box-sizing: border-box;
+      min-height: 100%;
+      height: fit-content;
       padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
+      animation: slide-up-desktop-secondary var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
     }
 }
 
 @media(max-width:759px) {
     slot:not([name]) {
+      grid-area: 4/2/auto/-2;
       z-index: 0;
       display: contents;
-      flex-direction: column;
-      gap: clamp(4px, 0.25vw + 3px, 8px);
-      grid-area: 4/2/auto/-2;
+      grid-template: var(--p-drilldown-grid-template,auto/auto);
+      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      align-content: start;
+      align-items: start;
+      box-sizing: border-box;
+      min-height: 100%;
       height: fit-content;
       padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
       animation: slide-up-mobile var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
@@ -655,12 +693,13 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
   }
   ::slotted(a) {
     all: unset;
+    grid-column: 1/-1;
     align-self: flex-start;
     font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: pointer;
     border-radius: 4px;
-    padding: clamp(8px, 0.5vw + 6px, 16px) !important;
-    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1) !important;
+    padding: clamp(8px, 0.5vw + 6px, 16px);
+    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
     color: #010205;
     text-decoration: underline;
     text-decoration-color: transparent;
@@ -679,15 +718,25 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
     outline: 2px solid #1A44EA;
     outline-offset: -2px;
   }
+  ::slotted(*) {
+    --p-drilldown-grid-template: auto/auto;
+    --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
 @media(min-width:760px) {
     slot:not([name]) {
-      display: flex;
-      flex-direction: column;
-      gap: clamp(4px, 0.25vw + 3px, 8px);
+      grid-area: 3/2/auto/-2;
+      display: grid;
+      grid-template: var(--p-drilldown-grid-template,auto/auto);
+      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      align-content: start;
+      align-items: start;
+      box-sizing: border-box;
+      min-height: 100%;
       height: fit-content;
+      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
       animation: slide-up-desktop-primary var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
     }
 }
@@ -723,6 +772,8 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
       display: contents;
     }
     .back {
+      grid-area: 2/2;
+      margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
       width: fit-content;
       height: fit-content;
       margin-inline-start: -4px;
@@ -738,9 +789,10 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
     }
     .back {
       grid-area: 2/2;
+      margin-top: 2px;
       width: fit-content;
       height: fit-content;
-      place-self: center flex-start;
+      place-self: start;
       z-index: 2;
     }
 }
@@ -796,12 +848,13 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
   }
   ::slotted(a) {
     all: unset;
+    grid-column: 1/-1;
     align-self: flex-start;
     font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: pointer;
     border-radius: 4px;
-    padding: clamp(8px, 0.5vw + 6px, 16px) !important;
-    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1) !important;
+    padding: clamp(8px, 0.5vw + 6px, 16px);
+    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
     color: #010205;
     text-decoration: underline;
     text-decoration-color: transparent;
@@ -820,15 +873,25 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
     outline: 2px solid #1A44EA;
     outline-offset: -2px;
   }
+  ::slotted(*) {
+    --p-drilldown-grid-template: auto/auto;
+    --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
 @media(min-width:760px) {
     slot:not([name]) {
+      grid-area: 3/2/auto/-2;
       display: contents;
-      flex-direction: column;
-      gap: clamp(4px, 0.25vw + 3px, 8px);
+      grid-template: var(--p-drilldown-grid-template,auto/auto);
+      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      align-content: start;
+      align-items: start;
+      box-sizing: border-box;
+      min-height: 100%;
       height: fit-content;
+      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
       animation: slide-up-desktop-primary var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
     }
 }
@@ -864,6 +927,8 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
       display: contents;
     }
     .back {
+      grid-area: 2/2;
+      margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
       width: fit-content;
       height: fit-content;
       margin-inline-start: -4px;
@@ -879,9 +944,10 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
     }
     .back {
       grid-area: 2/2;
+      margin-top: 2px;
       width: fit-content;
       height: fit-content;
-      place-self: center flex-start;
+      place-self: start;
       z-index: 2;
     }
 }
@@ -934,12 +1000,13 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
   }
   ::slotted(a) {
     all: unset;
+    grid-column: 1/-1;
     align-self: flex-start;
     font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: pointer;
     border-radius: 4px;
-    padding: clamp(8px, 0.5vw + 6px, 16px) !important;
-    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1) !important;
+    padding: clamp(8px, 0.5vw + 6px, 16px);
+    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
     color: #010205;
     text-decoration: underline;
     text-decoration-color: transparent;
@@ -958,28 +1025,40 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
     outline: 2px solid #1A44EA;
     outline-offset: -2px;
   }
+  ::slotted(*) {
+    --p-drilldown-grid-template: auto/auto;
+    --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
 @media(min-width:760px) {
     slot:not([name]) {
-      display: flex;
-      flex-direction: column;
-      gap: clamp(4px, 0.25vw + 3px, 8px);
-      height: fit-content;
-      animation: slide-up-desktop-primary var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
       grid-area: 2/2/auto/-2;
+      display: grid;
+      grid-template: var(--p-drilldown-grid-template,auto/auto);
+      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      align-content: start;
+      align-items: start;
+      box-sizing: border-box;
+      min-height: 100%;
+      height: fit-content;
       padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
+      animation: slide-up-desktop-primary var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
     }
 }
 
 @media(max-width:759px) {
     slot:not([name]) {
+      grid-area: 4/2/auto/-2;
       z-index: 0;
       display: contents;
-      flex-direction: column;
-      gap: clamp(4px, 0.25vw + 3px, 8px);
-      grid-area: 4/2/auto/-2;
+      grid-template: var(--p-drilldown-grid-template,auto/auto);
+      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      align-content: start;
+      align-items: start;
+      box-sizing: border-box;
+      min-height: 100%;
       height: fit-content;
       padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
       animation: slide-up-mobile var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
@@ -1042,6 +1121,8 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
       grid-template-columns: subgrid;
     }
     .back {
+      grid-area: 2/2;
+      margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
       width: fit-content;
       height: fit-content;
       margin-inline-start: -4px;
@@ -1071,9 +1152,10 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
     }
     .back {
       grid-area: 2/2;
+      margin-top: 2px;
       width: fit-content;
       height: fit-content;
-      place-self: center flex-start;
+      place-self: start;
       z-index: 2;
     }
 }
@@ -1129,12 +1211,13 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
   }
   ::slotted(a) {
     all: unset;
+    grid-column: 1/-1;
     align-self: flex-start;
     font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: pointer;
     border-radius: 4px;
-    padding: clamp(8px, 0.5vw + 6px, 16px) !important;
-    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1) !important;
+    padding: clamp(8px, 0.5vw + 6px, 16px);
+    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
     color: #010205;
     text-decoration: underline;
     text-decoration-color: transparent;
@@ -1153,28 +1236,40 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
     outline: 2px solid #1A44EA;
     outline-offset: -2px;
   }
+  ::slotted(*) {
+    --p-drilldown-grid-template: auto/auto;
+    --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
 @media(min-width:760px) {
     slot:not([name]) {
-      display: contents;
-      flex-direction: column;
-      gap: clamp(4px, 0.25vw + 3px, 8px);
-      height: fit-content;
-      animation: slide-up-desktop-primary var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
       grid-area: 2/2/auto/-2;
+      display: contents;
+      grid-template: var(--p-drilldown-grid-template,auto/auto);
+      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      align-content: start;
+      align-items: start;
+      box-sizing: border-box;
+      min-height: 100%;
+      height: fit-content;
       padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
+      animation: slide-up-desktop-primary var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
     }
 }
 
 @media(max-width:759px) {
     slot:not([name]) {
+      grid-area: 4/2/auto/-2;
       z-index: 0;
       display: contents;
-      flex-direction: column;
-      gap: clamp(4px, 0.25vw + 3px, 8px);
-      grid-area: 4/2/auto/-2;
+      grid-template: var(--p-drilldown-grid-template,auto/auto);
+      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      align-content: start;
+      align-items: start;
+      box-sizing: border-box;
+      min-height: 100%;
       height: fit-content;
       padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
       animation: slide-up-mobile var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
@@ -1237,6 +1332,8 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
       grid-template-columns: subgrid;
     }
     .back {
+      grid-area: 2/2;
+      margin-bottom: clamp(16px, 1.25vw + 12px, 36px);
       width: fit-content;
       height: fit-content;
       margin-inline-start: -4px;
@@ -1266,9 +1363,10 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
     }
     .back {
       grid-area: 2/2;
+      margin-top: 2px;
       width: fit-content;
       height: fit-content;
-      place-self: center flex-start;
+      place-self: start;
       z-index: 2;
     }
 }
