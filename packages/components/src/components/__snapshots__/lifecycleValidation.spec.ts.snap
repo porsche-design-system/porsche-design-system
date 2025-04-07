@@ -327,6 +327,29 @@ exports[`should call validateProps() with correct parameters via render for p-in
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-input-password: propTypes with ValidatorFunctions 1`] = `
+{
+  "autoComplete": "oneOf",
+  "compact": "boolean",
+  "description": "string",
+  "disabled": "boolean",
+  "form": "string",
+  "hideLabel": "breakpoint",
+  "label": "string",
+  "maxLength": "number",
+  "message": "string",
+  "minLength": "number",
+  "name": "string",
+  "placeholder": "string",
+  "readOnly": "boolean",
+  "required": "boolean",
+  "state": "oneOf",
+  "theme": "oneOf",
+  "toggle": "boolean",
+  "value": "string",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-link: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
@@ -682,7 +705,7 @@ exports[`should call validateProps() with correct parameters via render for p-ta
 
 exports[`should call validateProps() with correct parameters via render for p-table-head-cell: propTypes with ValidatorFunctions 1`] = `
 {
-  "hideLabel": "breakpoint",
+  "hideLabel": "boolean",
   "multiline": "boolean",
   "sort": "shape",
 }

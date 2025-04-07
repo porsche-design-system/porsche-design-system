@@ -22,6 +22,8 @@ export { default as FlyoutMultilevelExampleCustomContent } from './FlyoutMultile
 export { default as HiddenAttributeExample } from './HiddenAttributeExample.vue';
 export { default as InlineNotificationExampleActionButton } from './InlineNotificationExampleActionButton.vue';
 export { default as InlineNotificationExampleEvents } from './InlineNotificationExampleEvents.vue';
+export { default as InputPasswordExample } from './InputPasswordExample.vue';
+export { default as InputPasswordExampleControlled } from './InputPasswordExampleControlled.vue';
 export { default as LinkTileExampleHyphens } from './LinkTileExampleHyphens.vue';
 export { default as LinkTileProductExample } from './LinkTileProductExample.vue';
 export { default as ModalExampleAccessibility } from './ModalExample.vue';

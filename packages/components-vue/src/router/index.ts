@@ -177,6 +177,16 @@ export const routes: RouteType[] = [
     component: fromExamples.InlineNotificationExampleEvents,
   },
   {
+    path: '/input-password-example',
+    name: 'Input Password Example',
+    component: fromExamples.InputPasswordExample,
+  },
+  {
+    path: '/input-password-example-controlled',
+    name: 'Input Password Example Controlled',
+    component: fromExamples.InputPasswordExampleControlled,
+  },
+  {
     path: '/link-tile-example-hyphens',
     name: 'Link Tile Example Hyphens',
     component: fromExamples.LinkTileExampleHyphens,
@@ -248,7 +258,7 @@ export const routes: RouteType[] = [
   },
   {
     path: '/segmented-control-example-controlled',
-    name: 'Segmented Control Example COntrolled',
+    name: 'Segmented Control Example Controlled',
     component: fromExamples.SegmentedControlExampleControlled,
   },
   {

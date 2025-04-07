@@ -22,6 +22,8 @@ import { FlyoutMultilevelExampleComponent } from './flyout-multilevel-example.co
 import { HiddenAttributeExampleComponent } from './hidden-attribute-example.component';
 import { InlineNotificationExampleActionButtonComponent } from './inline-notification-example-action-button.component';
 import { InlineNotificationExampleEventsComponent } from './inline-notification-example-events.component';
+import { InputPasswordExampleControlledComponent } from './input-password-example-controlled.component';
+import { InputPasswordExampleComponent } from './input-password-example.component';
 import { LinkTileExampleHyphensComponent } from './link-tile-example-hyphens.component';
 import { LinkTileProductExampleComponent } from './link-tile-product-example.component';
 import { ModalExampleComponent } from './modal-example.component';
@@ -78,6 +80,8 @@ export const examples = [
   HiddenAttributeExampleComponent,
   InlineNotificationExampleActionButtonComponent,
   InlineNotificationExampleEventsComponent,
+  InputPasswordExampleControlledComponent,
+  InputPasswordExampleComponent,
   LinkTileExampleHyphensComponent,
   LinkTileProductExampleComponent,
   ModalExampleComponent,
@@ -133,6 +137,8 @@ export * from './flyout-multilevel-example-custom-content.component';
 export * from './hidden-attribute-example.component';
 export * from './inline-notification-example-action-button.component';
 export * from './inline-notification-example-events.component';
+export * from './input-password-example.component';
+export * from './input-password-example-controlled.component';
 export * from './link-tile-example-hyphens.component';
 export * from './link-tile-product-example.component';
 export * from './modal-example.component';
