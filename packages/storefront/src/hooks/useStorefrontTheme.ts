@@ -1,3 +1,5 @@
+'use client';
+
 import { StorefrontThemeContext } from '@/components/providers/StorefrontThemeProvider';
 import { useContext } from 'react';
 

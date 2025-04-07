@@ -1,3 +1,5 @@
+'use client';
+
 import { StorefrontFrameworkContext } from '@/components/providers/StorefrontFrameworkProvider';
 import { useContext } from 'react';
 

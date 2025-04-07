@@ -1,3 +1,5 @@
+'use client';
+
 import { StorefrontDirectionContext } from '@/components/providers/StorefrontDirectionProvider';
 import { useContext } from 'react';
 

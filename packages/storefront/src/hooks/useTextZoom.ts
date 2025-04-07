@@ -1,3 +1,5 @@
+'use client';
+
 import { StorefrontTextZoomContext } from '@/components/providers/StorefrontTextZoomProvider';
 import { useContext } from 'react';
 
