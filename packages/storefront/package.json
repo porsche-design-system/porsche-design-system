@@ -17,7 +17,7 @@
     "lint": "biome lint",
     "test": "yarn test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
-    "test:e2e": "playwright test --config=tests/e2e/config/playwright.config.ts",
+    "test:e2e": "NEXT_PUBLIC_PDS_ENV=development yarn build && playwright test --config=tests/e2e/config/playwright.config.ts",
     "test:e2e:sitemap": "yarn test:e2e --grep 'sitemap.json'",
     "clean:build": "rm -rf ./dist && rm -rf ./.next"
   },
