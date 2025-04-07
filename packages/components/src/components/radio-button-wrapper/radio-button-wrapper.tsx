@@ -1,26 +1,26 @@
-import { Component, Element, forceUpdate, h, type JSX, Prop } from '@stencil/core';
+import { Component, Element, type JSX, Prop, forceUpdate, h } from '@stencil/core';
+import { getSlottedAnchorStyles } from '../../styles';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
+  FORM_STATES,
+  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
-  FORM_STATES,
   getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   hasPropValueChanged,
   observeAttributes,
   setAriaAttributes,
-  THEMES,
   unobserveAttributes,
   validateProps,
 } from '../../utils';
 import { getCheckboxRadioButtonSafariRenderingFix } from '../../utils/form/applyCheckboxRadioButtonSafariRenderingFix';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import { LegacyLabel } from '../common/label/legacy-label';
+import { LoadingMessage } from '../common/loading-message/loading-message';
+import { StateMessage } from '../common/state-message/state-message';
 import { getComponentCss } from './radio-button-wrapper-styles';
 import type { RadioButtonWrapperState } from './radio-button-wrapper-utils';
-import { StateMessage } from '../common/state-message/state-message';
-import { Label } from '../common/label/label';
-import { LoadingMessage } from '../common/loading-message/loading-message';
-import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof RadioButtonWrapper> = {
   label: AllowedTypes.string,
@@ -115,7 +115,7 @@ export class RadioButtonWrapper {
 
     return (
       <div class="root">
-        <Label
+        <LegacyLabel
           host={this.host}
           label={this.label}
           isLoading={isLoading}

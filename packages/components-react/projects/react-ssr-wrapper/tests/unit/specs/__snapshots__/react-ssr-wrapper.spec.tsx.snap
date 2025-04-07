@@ -12333,6 +12333,122 @@ img {
 </p-inline-notification>
 `;
 
+exports[`should render dsr component for PInputPassword 1`] = `
+<p-input-password
+  data-ssr=""
+>
+  <template
+    shadowroot="open"
+    shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: block;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+input {
+  all: unset;
+  flex: 1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  height: max(calc(6px + 2.125ex), var(--p-internal-input-password-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+  padding-block: max(2px, 8px * var(--p-internal-input-password-scaling, 1));
+  text-indent: 0;
+  color: #010205;
+  width: 100%;
+  min-width: 2rem;
+}
+input[type="text"] {
+  text-overflow: ellipsis;
+}
+.root {
+  display: grid;
+  gap: 4px;
+}
+.wrapper {
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  padding-inline-start: max(2px, 16px * var(--p-internal-input-password-scaling, 1));
+  padding-inline-end: max(2px, 16px * var(--p-internal-input-password-scaling, 1));
+  display: flex;
+  gap: 9px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  cursor: text;
+  border-color: #D8D8DB;
+  background: #D8D8DB;
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
+  color: #010205;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+
+    </style>
+    <div
+      class="root"
+    >
+      <label
+        class="label"
+        for="input-password"
+        id="label"
+      />
+      <div
+        class="wrapper"
+      >
+        <input
+          aria-describedby="description message"
+          autocomplete=""
+          id="input-password"
+          placeholder=""
+          readonly=""
+          type="password"
+          value=""
+        />
+      </div>
+    </div>
+  </template>
+  Some child
+</p-input-password>
+`;
+
 exports[`should render dsr component for PLink 1`] = `
 <p-link
   data-ssr=""

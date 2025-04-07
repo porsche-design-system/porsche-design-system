@@ -376,6 +376,10 @@ const generatedRoutes = {
     "path": "/inline-notification",
     "name": "InlineNotification"
   },
+  "inputPassword": {
+    "path": "/input-password",
+    "name": "InputPassword"
+  },
   "link": {
     "path": "/link",
     "name": "Link"

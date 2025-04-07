@@ -16,8 +16,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Added
 
+- `Input Password`: ([#3763](https://github.com/porsche-design-system/porsche-design-system/pull/3763))
 - `Drilldown`, `Drilldown Item`: CSS variable `--p-drilldown-grid-template` and `--p-drilldown-gap` (experimental)
-  ([#3822](https://github.com/porsche-design-system/porsche-design-system/pull/3822))
+    ([#3822](https://github.com/porsche-design-system/porsche-design-system/pull/3822))
 - `Drilldown Item`: named slot `button` and `header` (experimental)
   ([#3822](https://github.com/porsche-design-system/porsche-design-system/pull/3822))
 

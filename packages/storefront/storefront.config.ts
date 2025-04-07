@@ -180,6 +180,11 @@ export const config: StorefrontConfig = {
       Examples: [() => import('@/../../components/src/components/inline-notification/inline-notification.examples.md')],
       Props: [() => import('@/../../components/src/components/inline-notification/inline-notification.props.md')],
     },
+    'Input Password': {
+      Examples: [() => import('@/../../components/src/components/input-password/input-password.examples.md')],
+      Usage: [() => import('@/../../components/src/components/input-password/input-password.usage.md')],
+      Props: [() => import('@/../../components/src/components/input-password/input-password.props.md')],
+    },
     Link: {
       Examples: [() => import('@/../../components/src/components/link/link.examples.md')],
       Usage: [() => import('@/../../components/src/components/link/link.usage.md')],

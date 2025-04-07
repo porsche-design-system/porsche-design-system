@@ -23,6 +23,8 @@ export * from './DrilldownExampleCustomContent';
 export * from './HiddenAttributeExample';
 export * from './InlineNotificationExampleActionButton';
 export * from './InlineNotificationExampleEvents';
+export * from './InputPasswordExample';
+export * from './InputPasswordExampleControlled';
 export * from './LinkTileProductExample';
 export * from './ModalExample';
 export * from './ModalExampleConditional';
