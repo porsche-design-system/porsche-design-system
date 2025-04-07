@@ -9754,8 +9754,8 @@ img {
 </p-flyout>
 `;
 
-exports[`should render dsr component for PFlyoutMultilevel 1`] = `
-<p-flyout-multilevel
+exports[`should render dsr component for PDrilldown 1`] = `
+<p-drilldown
   data-ssr=""
 >
   <template
@@ -10398,11 +10398,11 @@ img {
     </dialog>
   </template>
   Some child
-</p-flyout-multilevel>
+</p-drilldown>
 `;
 
-exports[`should render dsr component for PFlyoutMultilevelItem 1`] = `
-<p-flyout-multilevel-item
+exports[`should render dsr component for PDrilldownItem 1`] = `
+<p-drilldown-item
   data-ssr=""
 >
   <template
@@ -10837,7 +10837,7 @@ img:dir(rtl) {
     </div>
   </template>
   Some child
-</p-flyout-multilevel-item>
+</p-drilldown-item>
 `;
 
 exports[`should render dsr component for PGrid 1`] = `

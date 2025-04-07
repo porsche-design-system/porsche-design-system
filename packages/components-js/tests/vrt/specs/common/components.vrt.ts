@@ -35,7 +35,7 @@ const isComponentThemeable = (component: string): boolean =>
 // and therefore can't be sure which autofocus gets triggered
 const revertAutoFocus = async (page: Page, component: string): Promise<void> => {
   if (
-    ['flyout-multilevel', 'flyout', 'modal', 'sheet', 'canvas', 'banner', 'select', 'multi-select', 'popover'].includes(
+    ['drilldown', 'flyout', 'modal', 'sheet', 'canvas', 'banner', 'select', 'multi-select', 'popover'].includes(
       component.replace(/-\d+/, '')
     )
   ) {
@@ -144,7 +144,7 @@ for (const component of components) {
             'modal',
             'toast',
             'flyout',
-            'flyout-multilevel',
+            'drilldown',
           ];
           test.skip(flakyPrintComponents.includes(component), `${component} is flaky`);
 

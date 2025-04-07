@@ -23,7 +23,7 @@ const isDevBuild = process.env.PDS_IS_STAGING === '1';
 // it's important to list the parent component first since it affects the chunk name
 export const bundles: { components: TagName[] }[] = [
   { components: ['p-flex', 'p-flex-item'] },
-  { components: ['p-flyout-multilevel', 'p-flyout-multilevel-item'] },
+  { components: ['p-drilldown', 'p-drilldown-item'] },
   { components: ['p-grid', 'p-grid-item'] },
   { components: ['p-multi-select', 'p-multi-select-option'] },
   { components: ['p-segmented-control', 'p-segmented-control-item'] },

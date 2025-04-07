@@ -245,7 +245,7 @@ exports[`should call validateProps() with correct parameters via render for p-fl
 }
 `;
 
-exports[`should call validateProps() with correct parameters via render for p-flyout-multilevel: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-drilldown: propTypes with ValidatorFunctions 1`] = `
 {
   "activeIdentifier": "string",
   "aria": "aria",
@@ -254,7 +254,7 @@ exports[`should call validateProps() with correct parameters via render for p-fl
 }
 `;
 
-exports[`should call validateProps() with correct parameters via render for p-flyout-multilevel-item: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-drilldown-item: propTypes with ValidatorFunctions 1`] = `
 {
   "cascade": "boolean",
   "identifier": "string",

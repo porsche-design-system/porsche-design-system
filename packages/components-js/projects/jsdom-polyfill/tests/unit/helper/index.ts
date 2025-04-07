@@ -3,8 +3,8 @@ import type { TagName } from '@porsche-design-system/shared';
 export const WHITELISTED_TAG_NAMES = [
   'p-canvas',
   'p-flex-item',
-  'p-flyout-multilevel',
-  'p-flyout-multilevel-item',
+  'p-drilldown',
+  'p-drilldown-item',
   'p-grid-item',
   'p-multi-select-option',
   'p-optgroup',
@@ -66,17 +66,17 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-flyout': `
     <p-flyout></p-flyout>
   `,
-  //   'p-flyout-multilevel': `<p-flyout-multilevel>
-  //     <p-flyout-multilevel-item identifier="identifier-1" label="Button 1">
+  //   'p-drilldown': `<p-drilldown>
+  //     <p-drilldown-item identifier="identifier-1" label="Button 1">
   //       <a href="#some-anchor-1">Some anchor</a>
-  //     </p-flyout-multilevel-item>
-  //     <p-flyout-multilevel-item identifier="identifier-2" label="Button 2">
+  //     </p-drilldown-item>
+  //     <p-drilldown-item identifier="identifier-2" label="Button 2">
   //       <a href="#some-anchor-2">Some anchor</a>
-  //     </p-flyout-multilevel-item>
-  //     <p-flyout-multilevel-item identifier="identifier-3" label="Button 3">
+  //     </p-drilldown-item>
+  //     <p-drilldown-item identifier="identifier-3" label="Button 3">
   //       <a href="#some-anchor-3">Some anchor</a>
-  //     </p-flyout-multilevel-item>
-  // </p-flyout-multilevel>`,
+  //     </p-drilldown-item>
+  // </p-drilldown>`,
   'p-grid': `<p-grid>
     <p-grid-item size="6"></p-grid-item>
     <p-grid-item size="6"></p-grid-item>

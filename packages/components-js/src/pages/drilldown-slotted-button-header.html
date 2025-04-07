@@ -1,0 +1,46 @@
+<style>
+  p-model-signature {
+    --p-model-signature-width: auto;
+    --p-model-signature-height: clamp(24px, 1.786vw + 1.143rem, 32px);
+  }
+</style>
+
+<p-drilldown open="true" active-identifier="id-1">
+  <p-drilldown-item identifier="id-1" label="Some label">
+    <div slot="header">
+      <p-model-signature model="911"></p-model-signature>
+      <p-text size="x-small" color="contrast-medium" align="center">Gasoline</p-text>
+    </div>
+    <p-button slot="button">Some slotted button (1)</p-button>
+    <p-drilldown-item identifier="id-1-1" label="Some label">
+      <p-model-signature slot="header" model="718"></p-model-signature>
+      <p-button slot="button" variant="secondary">Some slotted button (1-1)</p-button>
+      <a href="#some-anchor">Some anchor</a>
+    </p-drilldown-item>
+    <a href="#some-anchor">Some anchor</a>
+    <a href="#some-anchor">Some anchor</a>
+    <p-drilldown-item identifier="id-1-2" label="Some label">
+      <p-model-signature slot="header" model="macan"></p-model-signature>
+      <p-button slot="button" variant="secondary">Some slotted button (1-2)</p-button>
+      <a href="#some-anchor">Some anchor</a>
+    </p-drilldown-item>
+  </p-drilldown-item>
+  <p-drilldown-item identifier="id-2" label="Some label">
+    <p-drilldown-item identifier="id-2-1" label="Some label">
+      <a href="#some-anchor">Some anchor</a>
+      <a href="#some-anchor">Some anchor</a>
+      <a href="#some-anchor">Some anchor</a>
+    </p-drilldown-item>
+  </p-drilldown-item>
+  <p-drilldown-item identifier="id-3" label="Some label">
+    <p-heading slot="header" tag="h2" size="large">Some slotted header (id-3)</p-heading>
+    <p-button slot="button" variant="ghost">Some slotted button (3)</p-button>
+    <p-drilldown-item identifier="id-3-1" label="Some label">
+      <p-heading slot="header" tag="h2" size="large">Some slotted header (id-3-1)</p-heading>
+      <p-button slot="button">Some slotted button (3-1)</p-button>
+      <a href="#some-anchor">Some anchor</a>
+      <a href="#some-anchor">Some anchor</a>
+      <a href="#some-anchor">Some anchor</a>
+    </p-drilldown-item>
+  </p-drilldown-item>
+</p-drilldown>

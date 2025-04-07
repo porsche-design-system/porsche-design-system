@@ -67,6 +67,23 @@ import { CoreInitializerComponent } from './generated/core-initializer.component
 import { CrestComponent } from './generated/crest.component';
 import { DisplayComponent } from './generated/display.component';
 import { DividerComponent } from './generated/divider.component';
+import { DrilldownComponent } from './generated/drilldown.component';
+import { DrilldownActiveIdentifierComponent } from './generated/drilldown-active-identifier.component';
+import { DrilldownBasicComponent } from './generated/drilldown-basic.component';
+import { DrilldownCssVariables_1Component } from './generated/drilldown-css-variables-1.component';
+import { DrilldownCssVariables_2Component } from './generated/drilldown-css-variables-2.component';
+import { DrilldownCssVariables_3Component } from './generated/drilldown-css-variables-3.component';
+import { DrilldownCssVariables_4Component } from './generated/drilldown-css-variables-4.component';
+import { DrilldownCssVariables_5Component } from './generated/drilldown-css-variables-5.component';
+import { DrilldownDeeplyNested_1stComponent } from './generated/drilldown-deeply-nested-1st.component';
+import { DrilldownDeeplyNested_2ndComponent } from './generated/drilldown-deeply-nested-2nd.component';
+import { DrilldownDeeplyNested_3rdComponent } from './generated/drilldown-deeply-nested-3rd.component';
+import { DrilldownDeeplyNested_4thComponent } from './generated/drilldown-deeply-nested-4th.component';
+import { DrilldownDeeplyNested_5thComponent } from './generated/drilldown-deeply-nested-5th.component';
+import { DrilldownLongTextComponent } from './generated/drilldown-long-text.component';
+import { DrilldownPrefixedComponent } from './generated/drilldown-prefixed.component';
+import { DrilldownScrolledComponent } from './generated/drilldown-scrolled.component';
+import { DrilldownSlottedButtonHeaderComponent } from './generated/drilldown-slotted-button-header.component';
 import { FieldsetComponent } from './generated/fieldset.component';
 import { FieldsetWrapperComponent } from './generated/fieldset-wrapper.component';
 import { FlexComponent } from './generated/flex.component';
@@ -100,23 +117,6 @@ import { FlyoutHeaderFooterSubfooterScrollableContentComponent } from './generat
 import { FlyoutHeaderFooterSubfooterScrolledComponent } from './generated/flyout-header-footer-subfooter-scrolled.component';
 import { FlyoutHeaderFooterSubfooterScrolledOverlapComponent } from './generated/flyout-header-footer-subfooter-scrolled-overlap.component';
 import { FlyoutHeaderScrollableContentComponent } from './generated/flyout-header-scrollable-content.component';
-import { FlyoutMultilevelComponent } from './generated/flyout-multilevel.component';
-import { FlyoutMultilevelActiveIdentifierComponent } from './generated/flyout-multilevel-active-identifier.component';
-import { FlyoutMultilevelBasicComponent } from './generated/flyout-multilevel-basic.component';
-import { FlyoutMultilevelCssVariables_1Component } from './generated/flyout-multilevel-css-variables-1.component';
-import { FlyoutMultilevelCssVariables_2Component } from './generated/flyout-multilevel-css-variables-2.component';
-import { FlyoutMultilevelCssVariables_3Component } from './generated/flyout-multilevel-css-variables-3.component';
-import { FlyoutMultilevelCssVariables_4Component } from './generated/flyout-multilevel-css-variables-4.component';
-import { FlyoutMultilevelCssVariables_5Component } from './generated/flyout-multilevel-css-variables-5.component';
-import { FlyoutMultilevelDeeplyNested_1stComponent } from './generated/flyout-multilevel-deeply-nested-1st.component';
-import { FlyoutMultilevelDeeplyNested_2ndComponent } from './generated/flyout-multilevel-deeply-nested-2nd.component';
-import { FlyoutMultilevelDeeplyNested_3rdComponent } from './generated/flyout-multilevel-deeply-nested-3rd.component';
-import { FlyoutMultilevelDeeplyNested_4thComponent } from './generated/flyout-multilevel-deeply-nested-4th.component';
-import { FlyoutMultilevelDeeplyNested_5thComponent } from './generated/flyout-multilevel-deeply-nested-5th.component';
-import { FlyoutMultilevelLongTextComponent } from './generated/flyout-multilevel-long-text.component';
-import { FlyoutMultilevelPrefixedComponent } from './generated/flyout-multilevel-prefixed.component';
-import { FlyoutMultilevelScrolledComponent } from './generated/flyout-multilevel-scrolled.component';
-import { FlyoutMultilevelSlottedButtonHeaderComponent } from './generated/flyout-multilevel-slotted-button-header.component';
 import { FlyoutPositionLeftComponent } from './generated/flyout-position-left.component';
 import { FlyoutPositionStartComponent } from './generated/flyout-position-start.component';
 import { FlyoutPrefixedComponent } from './generated/flyout-prefixed.component';
@@ -270,6 +270,23 @@ export const generatedPages = [
   CrestComponent,
   DisplayComponent,
   DividerComponent,
+  DrilldownComponent,
+  DrilldownActiveIdentifierComponent,
+  DrilldownBasicComponent,
+  DrilldownCssVariables_1Component,
+  DrilldownCssVariables_2Component,
+  DrilldownCssVariables_3Component,
+  DrilldownCssVariables_4Component,
+  DrilldownCssVariables_5Component,
+  DrilldownDeeplyNested_1stComponent,
+  DrilldownDeeplyNested_2ndComponent,
+  DrilldownDeeplyNested_3rdComponent,
+  DrilldownDeeplyNested_4thComponent,
+  DrilldownDeeplyNested_5thComponent,
+  DrilldownLongTextComponent,
+  DrilldownPrefixedComponent,
+  DrilldownScrolledComponent,
+  DrilldownSlottedButtonHeaderComponent,
   FieldsetComponent,
   FieldsetWrapperComponent,
   FlexComponent,
@@ -303,23 +320,6 @@ export const generatedPages = [
   FlyoutHeaderFooterSubfooterScrolledComponent,
   FlyoutHeaderFooterSubfooterScrolledOverlapComponent,
   FlyoutHeaderScrollableContentComponent,
-  FlyoutMultilevelComponent,
-  FlyoutMultilevelActiveIdentifierComponent,
-  FlyoutMultilevelBasicComponent,
-  FlyoutMultilevelCssVariables_1Component,
-  FlyoutMultilevelCssVariables_2Component,
-  FlyoutMultilevelCssVariables_3Component,
-  FlyoutMultilevelCssVariables_4Component,
-  FlyoutMultilevelCssVariables_5Component,
-  FlyoutMultilevelDeeplyNested_1stComponent,
-  FlyoutMultilevelDeeplyNested_2ndComponent,
-  FlyoutMultilevelDeeplyNested_3rdComponent,
-  FlyoutMultilevelDeeplyNested_4thComponent,
-  FlyoutMultilevelDeeplyNested_5thComponent,
-  FlyoutMultilevelLongTextComponent,
-  FlyoutMultilevelPrefixedComponent,
-  FlyoutMultilevelScrolledComponent,
-  FlyoutMultilevelSlottedButtonHeaderComponent,
   FlyoutPositionLeftComponent,
   FlyoutPositionStartComponent,
   FlyoutPrefixedComponent,
@@ -614,6 +614,91 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: DividerComponent,
   },
   {
+    name: 'Drilldown',
+    path: 'drilldown',
+    component: DrilldownComponent,
+  },
+  {
+    name: 'Drilldown Active Identifier',
+    path: 'drilldown-active-identifier',
+    component: DrilldownActiveIdentifierComponent,
+  },
+  {
+    name: 'Drilldown Basic',
+    path: 'drilldown-basic',
+    component: DrilldownBasicComponent,
+  },
+  {
+    name: 'Drilldown Css Variables 1',
+    path: 'drilldown-css-variables-1',
+    component: DrilldownCssVariables_1Component,
+  },
+  {
+    name: 'Drilldown Css Variables 2',
+    path: 'drilldown-css-variables-2',
+    component: DrilldownCssVariables_2Component,
+  },
+  {
+    name: 'Drilldown Css Variables 3',
+    path: 'drilldown-css-variables-3',
+    component: DrilldownCssVariables_3Component,
+  },
+  {
+    name: 'Drilldown Css Variables 4',
+    path: 'drilldown-css-variables-4',
+    component: DrilldownCssVariables_4Component,
+  },
+  {
+    name: 'Drilldown Css Variables 5',
+    path: 'drilldown-css-variables-5',
+    component: DrilldownCssVariables_5Component,
+  },
+  {
+    name: 'Drilldown Deeply Nested 1st',
+    path: 'drilldown-deeply-nested-1st',
+    component: DrilldownDeeplyNested_1stComponent,
+  },
+  {
+    name: 'Drilldown Deeply Nested 2nd',
+    path: 'drilldown-deeply-nested-2nd',
+    component: DrilldownDeeplyNested_2ndComponent,
+  },
+  {
+    name: 'Drilldown Deeply Nested 3rd',
+    path: 'drilldown-deeply-nested-3rd',
+    component: DrilldownDeeplyNested_3rdComponent,
+  },
+  {
+    name: 'Drilldown Deeply Nested 4th',
+    path: 'drilldown-deeply-nested-4th',
+    component: DrilldownDeeplyNested_4thComponent,
+  },
+  {
+    name: 'Drilldown Deeply Nested 5th',
+    path: 'drilldown-deeply-nested-5th',
+    component: DrilldownDeeplyNested_5thComponent,
+  },
+  {
+    name: 'Drilldown Long Text',
+    path: 'drilldown-long-text',
+    component: DrilldownLongTextComponent,
+  },
+  {
+    name: 'Drilldown Prefixed',
+    path: 'drilldown-prefixed',
+    component: DrilldownPrefixedComponent,
+  },
+  {
+    name: 'Drilldown Scrolled',
+    path: 'drilldown-scrolled',
+    component: DrilldownScrolledComponent,
+  },
+  {
+    name: 'Drilldown Slotted Button Header',
+    path: 'drilldown-slotted-button-header',
+    component: DrilldownSlottedButtonHeaderComponent,
+  },
+  {
     name: 'Fieldset',
     path: 'fieldset',
     component: FieldsetComponent,
@@ -777,91 +862,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Flyout Header Scrollable Content',
     path: 'flyout-header-scrollable-content',
     component: FlyoutHeaderScrollableContentComponent,
-  },
-  {
-    name: 'Flyout Multilevel',
-    path: 'flyout-multilevel',
-    component: FlyoutMultilevelComponent,
-  },
-  {
-    name: 'Flyout Multilevel Active Identifier',
-    path: 'flyout-multilevel-active-identifier',
-    component: FlyoutMultilevelActiveIdentifierComponent,
-  },
-  {
-    name: 'Flyout Multilevel Basic',
-    path: 'flyout-multilevel-basic',
-    component: FlyoutMultilevelBasicComponent,
-  },
-  {
-    name: 'Flyout Multilevel Css Variables 1',
-    path: 'flyout-multilevel-css-variables-1',
-    component: FlyoutMultilevelCssVariables_1Component,
-  },
-  {
-    name: 'Flyout Multilevel Css Variables 2',
-    path: 'flyout-multilevel-css-variables-2',
-    component: FlyoutMultilevelCssVariables_2Component,
-  },
-  {
-    name: 'Flyout Multilevel Css Variables 3',
-    path: 'flyout-multilevel-css-variables-3',
-    component: FlyoutMultilevelCssVariables_3Component,
-  },
-  {
-    name: 'Flyout Multilevel Css Variables 4',
-    path: 'flyout-multilevel-css-variables-4',
-    component: FlyoutMultilevelCssVariables_4Component,
-  },
-  {
-    name: 'Flyout Multilevel Css Variables 5',
-    path: 'flyout-multilevel-css-variables-5',
-    component: FlyoutMultilevelCssVariables_5Component,
-  },
-  {
-    name: 'Flyout Multilevel Deeply Nested 1st',
-    path: 'flyout-multilevel-deeply-nested-1st',
-    component: FlyoutMultilevelDeeplyNested_1stComponent,
-  },
-  {
-    name: 'Flyout Multilevel Deeply Nested 2nd',
-    path: 'flyout-multilevel-deeply-nested-2nd',
-    component: FlyoutMultilevelDeeplyNested_2ndComponent,
-  },
-  {
-    name: 'Flyout Multilevel Deeply Nested 3rd',
-    path: 'flyout-multilevel-deeply-nested-3rd',
-    component: FlyoutMultilevelDeeplyNested_3rdComponent,
-  },
-  {
-    name: 'Flyout Multilevel Deeply Nested 4th',
-    path: 'flyout-multilevel-deeply-nested-4th',
-    component: FlyoutMultilevelDeeplyNested_4thComponent,
-  },
-  {
-    name: 'Flyout Multilevel Deeply Nested 5th',
-    path: 'flyout-multilevel-deeply-nested-5th',
-    component: FlyoutMultilevelDeeplyNested_5thComponent,
-  },
-  {
-    name: 'Flyout Multilevel Long Text',
-    path: 'flyout-multilevel-long-text',
-    component: FlyoutMultilevelLongTextComponent,
-  },
-  {
-    name: 'Flyout Multilevel Prefixed',
-    path: 'flyout-multilevel-prefixed',
-    component: FlyoutMultilevelPrefixedComponent,
-  },
-  {
-    name: 'Flyout Multilevel Scrolled',
-    path: 'flyout-multilevel-scrolled',
-    component: FlyoutMultilevelScrolledComponent,
-  },
-  {
-    name: 'Flyout Multilevel Slotted Button Header',
-    path: 'flyout-multilevel-slotted-button-header',
-    component: FlyoutMultilevelSlottedButtonHeaderComponent,
   },
   {
     name: 'Flyout Position Left',

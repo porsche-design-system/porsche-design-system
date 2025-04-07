@@ -1,0 +1,51 @@
+<nav aria-label="Main">
+  <p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Drilldown</p-button>
+  <p-drilldown active-identifier="id-2">
+    <p-drilldown-item identifier="id-1" label="Some Label">
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+    </p-drilldown-item>
+    <p-drilldown-item identifier="id-2" label="Some Label">
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+      <a href="#" aria-current="page">Some anchor</a>
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+    </p-drilldown-item>
+    <p-drilldown-item identifier="id-3" label="Some Label">
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+    </p-drilldown-item>
+    <p-drilldown-item identifier="id-4" label="Some Label">
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+    </p-drilldown-item>
+    <p-drilldown-item identifier="id-5" label="Some Label">
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+    </p-drilldown-item>
+  </p-drilldown>
+</nav>
+
+<script>
+  const drilldown = document.querySelector('p-drilldown');
+  document.querySelector('p-button').addEventListener('click', () => {
+    drilldown.open = true;
+  });
+  drilldown.addEventListener('dismiss', () => {
+    drilldown.open = false;
+  });
+  drilldown.addEventListener('update', (e) => {
+    drilldown.activeIdentifier = e.detail.activeIdentifier;
+  });
+</script>

@@ -614,14 +614,14 @@ $&`
           .replace(/this\.props\.value = state;/, '')
           .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
           .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
-      } else if (tagName === 'p-flyout-multilevel') {
+      } else if (tagName === 'p-drilldown') {
         newFileContent = newFileContent
           .replace(/validateActiveIdentifier\(.*\);/g, '')
           // .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2") // transform true to empty string '';
           .replace(/this\.props\.primary = !activeItem \|\| activeItem\.parentElement === this\.props;/, '')
           .replace(/this\.props\.primary/, 'this.primary')
           .replace(/this\.props\.isSecondaryDrawerVisible/, 'this.isSecondaryDrawerVisible');
-      } else if (tagName === 'p-flyout-multilevel-item') {
+      } else if (tagName === 'p-drilldown-item') {
         newFileContent = newFileContent
           .replace(/: Theme/g, ': any')
           .replace(/this\.props\.theme(?! \|\|)/g, 'this.theme')

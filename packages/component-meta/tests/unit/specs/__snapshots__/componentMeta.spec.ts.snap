@@ -2828,7 +2828,7 @@ exports[`should match snapshot 1`] = `
     },
     "styling": "jss",
   },
-  "p-flyout-multilevel": {
+  "p-drilldown": {
     "controlledMeta": [
       {
         "event": "dismiss",
@@ -2850,7 +2850,7 @@ exports[`should match snapshot 1`] = `
       },
       "update": {
         "description": "Emitted when activeIdentifier is changed.",
-        "type": "FlyoutMultilevelUpdateEventDetail",
+        "type": "DrilldownUpdateEventDetail",
         "typeDetail": "{ activeIdentifier: string | undefined }",
       },
     },
@@ -2873,7 +2873,7 @@ exports[`should match snapshot 1`] = `
       "activeIdentifier": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Defines which flyout-multilevel-item to be visualized as opened.",
+        "description": "Defines which drilldown-item to be visualized as opened.",
         "type": "string | undefined",
       },
       "aria": {
@@ -2883,12 +2883,12 @@ exports[`should match snapshot 1`] = `
         "defaultValue": null,
         "description": "Add ARIA attributes.",
         "isAria": true,
-        "type": "FlyoutMultilevelAriaAttribute",
+        "type": "DrilldownAriaAttribute",
       },
       "open": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "If true, the flyout-multilevel is visualized as opened.",
+        "description": "If true, the drilldown is visualized as opened.",
         "type": "boolean",
       },
       "theme": {
@@ -2898,18 +2898,18 @@ exports[`should match snapshot 1`] = `
           "auto",
         ],
         "defaultValue": "light",
-        "description": "Adapts the flyout-multilevel color depending on the theme.",
+        "description": "Adapts the drilldown color depending on the theme.",
         "type": "Theme",
       },
     },
     "slotsMeta": {
       "": {
-        "description": "Default slot to render p-flyout-multilevel items.",
+        "description": "Default slot to render p-drilldown items.",
       },
     },
     "styling": "jss",
   },
-  "p-flyout-multilevel-item": {
+  "p-drilldown-item": {
     "hasAriaProp": false,
     "hasElementInternals": false,
     "hasEvent": false,
@@ -2938,7 +2938,7 @@ exports[`should match snapshot 1`] = `
       "identifier": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Unique identifier which controls if this item should be shown when the active-identifier on the flyout-multilevel is set to this value.",
+        "description": "Unique identifier which controls if this item should be shown when the active-identifier on the drilldown is set to this value.",
         "isRequired": true,
         "propOptions": {
           "reflect": true,
@@ -2973,8 +2973,8 @@ exports[`should match snapshot 1`] = `
       },
     },
     "requiredParent": [
-      "p-flyout-multilevel",
-      "p-flyout-multilevel-item",
+      "p-drilldown",
+      "p-drilldown-item",
     ],
     "slotsMeta": {
       "": {

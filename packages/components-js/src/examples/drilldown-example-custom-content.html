@@ -1,0 +1,85 @@
+<nav aria-label="Main">
+  <p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Drilldown</p-button>
+  <p-drilldown active-identifier="id-1">
+    <p-drilldown-item identifier="id-1" label="Some Label">
+      <p-link-tile
+        href="#"
+        label="Some label"
+        description="Some Description"
+        weight="semi-bold"
+        compact="true"
+        aspect-ratio="{base: '4/3', xs: '16/9', s: '1/1'}"
+        style="margin-bottom: clamp(8px, 0.5vw + 6px, 16px)"
+      >
+        <img
+          srcset="http://localhost:3002/porsche-963@2x.webp 2x"
+          src="http://localhost:3002/porsche-963.webp"
+          width="636"
+          height="847"
+          alt="Porsche 963"
+        />
+      </p-link-tile>
+      <a href="#">Some anchor</a>
+      <a href="#" aria-current="page">Some anchor</a>
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+    </p-drilldown-item>
+    <p-drilldown-item identifier="id-2" label="Some Label">
+      <p-drilldown-item identifier="id-2-1" label="Some Label">
+        <a href="#">Some anchor</a>
+        <a href="#">Some anchor</a>
+        <a href="#">Some anchor</a>
+        <a href="#">Some anchor</a>
+      </p-drilldown-item>
+      <p-drilldown-item identifier="id-2-2" label="Some Label">
+        <a href="#">Some anchor</a>
+        <a href="#">Some anchor</a>
+        <a href="#">Some anchor</a>
+      </p-drilldown-item>
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+    </p-drilldown-item>
+    <p-drilldown-item identifier="id-3" label="Some Label">
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+    </p-drilldown-item>
+    <p-drilldown-item identifier="id-4" label="Some Label">
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+    </p-drilldown-item>
+    <p-drilldown-item identifier="id-5" label="Some Label">
+      <a href="#">Some anchor</a>
+      <a href="#">Some anchor</a>
+    </p-drilldown-item>
+    <p-link-pure
+      size="medium"
+      href="#"
+      icon="external"
+      style="padding: clamp(8px, 0.5vw + 6px, 16px); margin: 0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1)"
+      >Some external anchor</p-link-pure
+    >
+  </p-drilldown>
+</nav>
+
+<script>
+  const drilldown = document.querySelector('p-drilldown');
+  document.querySelector('p-button').addEventListener('click', () => {
+    drilldown.open = true;
+  });
+  drilldown.addEventListener('dismiss', () => {
+    drilldown.open = false;
+  });
+  drilldown.addEventListener('update', (e) => {
+    drilldown.activeIdentifier = e.detail.activeIdentifier;
+  });
+</script>

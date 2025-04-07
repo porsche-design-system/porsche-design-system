@@ -20,12 +20,12 @@ import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components
 import { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
 import { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
 import { DividerColor, DividerDirection, DividerOrientation } from "./components/divider/divider-utils";
+import { DrilldownAriaAttribute, DrilldownUpdateEventDetail } from "./components/drilldown/drilldown/drilldown-utils";
 import { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
 import { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 import { FlyoutAriaAttribute, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
-import { FlyoutMultilevelAriaAttribute, FlyoutMultilevelUpdateEventDetail } from "./components/flyout-multilevel/flyout-multilevel/flyout-multilevel-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
 import { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
@@ -85,12 +85,12 @@ export { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components
 export { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
 export { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
 export { DividerColor, DividerDirection, DividerOrientation } from "./components/divider/divider-utils";
+export { DrilldownAriaAttribute, DrilldownUpdateEventDetail } from "./components/drilldown/drilldown/drilldown-utils";
 export { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
 export { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 export { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 export { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 export { FlyoutAriaAttribute, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
-export { FlyoutMultilevelAriaAttribute, FlyoutMultilevelUpdateEventDetail } from "./components/flyout-multilevel/flyout-multilevel/flyout-multilevel-utils";
 export { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 export { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
 export { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
@@ -668,6 +668,54 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    /**
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     * @controlled {"props": ["activeIdentifier"], "event": "update"}
+     * @experimental 
+     */
+    interface PDrilldown {
+        /**
+          * Defines which drilldown-item to be visualized as opened.
+         */
+        "activeIdentifier"?: string | undefined;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<DrilldownAriaAttribute>;
+        /**
+          * If true, the drilldown is visualized as opened.
+         */
+        "open"?: boolean;
+        /**
+          * Adapts the drilldown color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
+    /**
+     * @experimental 
+     */
+    interface PDrilldownItem {
+        /**
+          * Private property set by the component itself.
+         */
+        "cascade"?: boolean;
+        /**
+          * Unique identifier which controls if this item should be shown when the active-identifier on the drilldown is set to this value.
+         */
+        "identifier": string;
+        /**
+          * Label of the item.
+         */
+        "label"?: string;
+        /**
+          * Private property set by the component itself.
+         */
+        "primary"?: boolean;
+        /**
+          * Private property set by the component itself.
+         */
+        "secondary"?: boolean;
+    }
     interface PFieldset {
         /**
           * The label text.
@@ -809,54 +857,6 @@ export namespace Components {
           * Adapts the flyout color depending on the theme.
          */
         "theme"?: Theme;
-    }
-    /**
-     * @controlled {"props": ["open"], "event": "dismiss"}
-     * @controlled {"props": ["activeIdentifier"], "event": "update"}
-     * @experimental 
-     */
-    interface PFlyoutMultilevel {
-        /**
-          * Defines which flyout-multilevel-item to be visualized as opened.
-         */
-        "activeIdentifier"?: string | undefined;
-        /**
-          * Add ARIA attributes.
-         */
-        "aria"?: SelectedAriaAttributes<FlyoutMultilevelAriaAttribute>;
-        /**
-          * If true, the flyout-multilevel is visualized as opened.
-         */
-        "open"?: boolean;
-        /**
-          * Adapts the flyout-multilevel color depending on the theme.
-         */
-        "theme"?: Theme;
-    }
-    /**
-     * @experimental 
-     */
-    interface PFlyoutMultilevelItem {
-        /**
-          * Private property set by the component itself.
-         */
-        "cascade"?: boolean;
-        /**
-          * Unique identifier which controls if this item should be shown when the active-identifier on the flyout-multilevel is set to this value.
-         */
-        "identifier": string;
-        /**
-          * Label of the item.
-         */
-        "label"?: string;
-        /**
-          * Private property set by the component itself.
-         */
-        "primary"?: boolean;
-        /**
-          * Private property set by the component itself.
-         */
-        "secondary"?: boolean;
     }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
@@ -2380,13 +2380,13 @@ export interface PCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPCheckboxElement;
 }
+export interface PDrilldownCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPDrilldownElement;
+}
 export interface PFlyoutCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPFlyoutElement;
-}
-export interface PFlyoutMultilevelCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLPFlyoutMultilevelElement;
 }
 export interface PInlineNotificationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2615,6 +2615,38 @@ declare global {
         prototype: HTMLPDividerElement;
         new (): HTMLPDividerElement;
     };
+    interface HTMLPDrilldownElementEventMap {
+        "dismiss": void;
+        "update": DrilldownUpdateEventDetail;
+    }
+    /**
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     * @controlled {"props": ["activeIdentifier"], "event": "update"}
+     * @experimental 
+     */
+    interface HTMLPDrilldownElement extends Components.PDrilldown, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPDrilldownElementEventMap>(type: K, listener: (this: HTMLPDrilldownElement, ev: PDrilldownCustomEvent<HTMLPDrilldownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPDrilldownElementEventMap>(type: K, listener: (this: HTMLPDrilldownElement, ev: PDrilldownCustomEvent<HTMLPDrilldownElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPDrilldownElement: {
+        prototype: HTMLPDrilldownElement;
+        new (): HTMLPDrilldownElement;
+    };
+    /**
+     * @experimental 
+     */
+    interface HTMLPDrilldownItemElement extends Components.PDrilldownItem, HTMLStencilElement {
+    }
+    var HTMLPDrilldownItemElement: {
+        prototype: HTMLPDrilldownItemElement;
+        new (): HTMLPDrilldownItemElement;
+    };
     interface HTMLPFieldsetElement extends Components.PFieldset, HTMLStencilElement {
     }
     var HTMLPFieldsetElement: {
@@ -2669,38 +2701,6 @@ declare global {
     var HTMLPFlyoutElement: {
         prototype: HTMLPFlyoutElement;
         new (): HTMLPFlyoutElement;
-    };
-    interface HTMLPFlyoutMultilevelElementEventMap {
-        "dismiss": void;
-        "update": FlyoutMultilevelUpdateEventDetail;
-    }
-    /**
-     * @controlled {"props": ["open"], "event": "dismiss"}
-     * @controlled {"props": ["activeIdentifier"], "event": "update"}
-     * @experimental 
-     */
-    interface HTMLPFlyoutMultilevelElement extends Components.PFlyoutMultilevel, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLPFlyoutMultilevelElementEventMap>(type: K, listener: (this: HTMLPFlyoutMultilevelElement, ev: PFlyoutMultilevelCustomEvent<HTMLPFlyoutMultilevelElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLPFlyoutMultilevelElementEventMap>(type: K, listener: (this: HTMLPFlyoutMultilevelElement, ev: PFlyoutMultilevelCustomEvent<HTMLPFlyoutMultilevelElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLPFlyoutMultilevelElement: {
-        prototype: HTMLPFlyoutMultilevelElement;
-        new (): HTMLPFlyoutMultilevelElement;
-    };
-    /**
-     * @experimental 
-     */
-    interface HTMLPFlyoutMultilevelItemElement extends Components.PFlyoutMultilevelItem, HTMLStencilElement {
-    }
-    var HTMLPFlyoutMultilevelItemElement: {
-        prototype: HTMLPFlyoutMultilevelItemElement;
-        new (): HTMLPFlyoutMultilevelItemElement;
     };
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
@@ -3298,13 +3298,13 @@ declare global {
         "p-crest": HTMLPCrestElement;
         "p-display": HTMLPDisplayElement;
         "p-divider": HTMLPDividerElement;
+        "p-drilldown": HTMLPDrilldownElement;
+        "p-drilldown-item": HTMLPDrilldownItemElement;
         "p-fieldset": HTMLPFieldsetElement;
         "p-fieldset-wrapper": HTMLPFieldsetWrapperElement;
         "p-flex": HTMLPFlexElement;
         "p-flex-item": HTMLPFlexItemElement;
         "p-flyout": HTMLPFlyoutElement;
-        "p-flyout-multilevel": HTMLPFlyoutMultilevelElement;
-        "p-flyout-multilevel-item": HTMLPFlyoutMultilevelItemElement;
         "p-grid": HTMLPGridElement;
         "p-grid-item": HTMLPGridItemElement;
         "p-heading": HTMLPHeadingElement;
@@ -3931,6 +3931,62 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    /**
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     * @controlled {"props": ["activeIdentifier"], "event": "update"}
+     * @experimental 
+     */
+    interface PDrilldown {
+        /**
+          * Defines which drilldown-item to be visualized as opened.
+         */
+        "activeIdentifier"?: string | undefined;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<DrilldownAriaAttribute>;
+        /**
+          * Emitted when the component requests to be dismissed.
+         */
+        "onDismiss"?: (event: PDrilldownCustomEvent<void>) => void;
+        /**
+          * Emitted when activeIdentifier is changed.
+         */
+        "onUpdate"?: (event: PDrilldownCustomEvent<DrilldownUpdateEventDetail>) => void;
+        /**
+          * If true, the drilldown is visualized as opened.
+         */
+        "open"?: boolean;
+        /**
+          * Adapts the drilldown color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
+    /**
+     * @experimental 
+     */
+    interface PDrilldownItem {
+        /**
+          * Private property set by the component itself.
+         */
+        "cascade"?: boolean;
+        /**
+          * Unique identifier which controls if this item should be shown when the active-identifier on the drilldown is set to this value.
+         */
+        "identifier"?: string;
+        /**
+          * Label of the item.
+         */
+        "label"?: string;
+        /**
+          * Private property set by the component itself.
+         */
+        "primary"?: boolean;
+        /**
+          * Private property set by the component itself.
+         */
+        "secondary"?: boolean;
+    }
     interface PFieldset {
         /**
           * The label text.
@@ -4084,62 +4140,6 @@ declare namespace LocalJSX {
           * Adapts the flyout color depending on the theme.
          */
         "theme"?: Theme;
-    }
-    /**
-     * @controlled {"props": ["open"], "event": "dismiss"}
-     * @controlled {"props": ["activeIdentifier"], "event": "update"}
-     * @experimental 
-     */
-    interface PFlyoutMultilevel {
-        /**
-          * Defines which flyout-multilevel-item to be visualized as opened.
-         */
-        "activeIdentifier"?: string | undefined;
-        /**
-          * Add ARIA attributes.
-         */
-        "aria"?: SelectedAriaAttributes<FlyoutMultilevelAriaAttribute>;
-        /**
-          * Emitted when the component requests to be dismissed.
-         */
-        "onDismiss"?: (event: PFlyoutMultilevelCustomEvent<void>) => void;
-        /**
-          * Emitted when activeIdentifier is changed.
-         */
-        "onUpdate"?: (event: PFlyoutMultilevelCustomEvent<FlyoutMultilevelUpdateEventDetail>) => void;
-        /**
-          * If true, the flyout-multilevel is visualized as opened.
-         */
-        "open"?: boolean;
-        /**
-          * Adapts the flyout-multilevel color depending on the theme.
-         */
-        "theme"?: Theme;
-    }
-    /**
-     * @experimental 
-     */
-    interface PFlyoutMultilevelItem {
-        /**
-          * Private property set by the component itself.
-         */
-        "cascade"?: boolean;
-        /**
-          * Unique identifier which controls if this item should be shown when the active-identifier on the flyout-multilevel is set to this value.
-         */
-        "identifier"?: string;
-        /**
-          * Label of the item.
-         */
-        "label"?: string;
-        /**
-          * Private property set by the component itself.
-         */
-        "primary"?: boolean;
-        /**
-          * Private property set by the component itself.
-         */
-        "secondary"?: boolean;
     }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
@@ -5784,13 +5784,13 @@ declare namespace LocalJSX {
         "p-crest": PCrest;
         "p-display": PDisplay;
         "p-divider": PDivider;
+        "p-drilldown": PDrilldown;
+        "p-drilldown-item": PDrilldownItem;
         "p-fieldset": PFieldset;
         "p-fieldset-wrapper": PFieldsetWrapper;
         "p-flex": PFlex;
         "p-flex-item": PFlexItem;
         "p-flyout": PFlyout;
-        "p-flyout-multilevel": PFlyoutMultilevel;
-        "p-flyout-multilevel-item": PFlyoutMultilevelItem;
         "p-grid": PGrid;
         "p-grid-item": PGridItem;
         "p-heading": PHeading;
@@ -5881,6 +5881,16 @@ declare module "@stencil/core" {
             "p-crest": LocalJSX.PCrest & JSXBase.HTMLAttributes<HTMLPCrestElement>;
             "p-display": LocalJSX.PDisplay & JSXBase.HTMLAttributes<HTMLPDisplayElement>;
             "p-divider": LocalJSX.PDivider & JSXBase.HTMLAttributes<HTMLPDividerElement>;
+            /**
+             * @controlled {"props": ["open"], "event": "dismiss"}
+             * @controlled {"props": ["activeIdentifier"], "event": "update"}
+             * @experimental 
+             */
+            "p-drilldown": LocalJSX.PDrilldown & JSXBase.HTMLAttributes<HTMLPDrilldownElement>;
+            /**
+             * @experimental 
+             */
+            "p-drilldown-item": LocalJSX.PDrilldownItem & JSXBase.HTMLAttributes<HTMLPDrilldownItemElement>;
             "p-fieldset": LocalJSX.PFieldset & JSXBase.HTMLAttributes<HTMLPFieldsetElement>;
             /**
              * @deprecated since v3.0.0, will be removed with next major release. Please use "p-fieldset" instead.
@@ -5898,16 +5908,6 @@ declare module "@stencil/core" {
              * @controlled {"props": ["open"], "event": "dismiss"}
              */
             "p-flyout": LocalJSX.PFlyout & JSXBase.HTMLAttributes<HTMLPFlyoutElement>;
-            /**
-             * @controlled {"props": ["open"], "event": "dismiss"}
-             * @controlled {"props": ["activeIdentifier"], "event": "update"}
-             * @experimental 
-             */
-            "p-flyout-multilevel": LocalJSX.PFlyoutMultilevel & JSXBase.HTMLAttributes<HTMLPFlyoutMultilevelElement>;
-            /**
-             * @experimental 
-             */
-            "p-flyout-multilevel-item": LocalJSX.PFlyoutMultilevelItem & JSXBase.HTMLAttributes<HTMLPFlyoutMultilevelItemElement>;
             /**
              * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
              */

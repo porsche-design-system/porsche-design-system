@@ -48,6 +48,23 @@ import { ContentWrapperPage } from './generated/ContentWrapper';
 import { CrestPage } from './generated/Crest';
 import { DisplayPage } from './generated/Display';
 import { DividerPage } from './generated/Divider';
+import { DrilldownPage } from './generated/Drilldown';
+import { DrilldownActiveIdentifierPage } from './generated/DrilldownActiveIdentifier';
+import { DrilldownBasicPage } from './generated/DrilldownBasic';
+import { DrilldownCssVariables_1Page } from './generated/DrilldownCssVariables_1';
+import { DrilldownCssVariables_2Page } from './generated/DrilldownCssVariables_2';
+import { DrilldownCssVariables_3Page } from './generated/DrilldownCssVariables_3';
+import { DrilldownCssVariables_4Page } from './generated/DrilldownCssVariables_4';
+import { DrilldownCssVariables_5Page } from './generated/DrilldownCssVariables_5';
+import { DrilldownDeeplyNested_1stPage } from './generated/DrilldownDeeplyNested_1st';
+import { DrilldownDeeplyNested_2ndPage } from './generated/DrilldownDeeplyNested_2nd';
+import { DrilldownDeeplyNested_3rdPage } from './generated/DrilldownDeeplyNested_3rd';
+import { DrilldownDeeplyNested_4thPage } from './generated/DrilldownDeeplyNested_4th';
+import { DrilldownDeeplyNested_5thPage } from './generated/DrilldownDeeplyNested_5th';
+import { DrilldownLongTextPage } from './generated/DrilldownLongText';
+import { DrilldownPrefixedPage } from './generated/DrilldownPrefixed';
+import { DrilldownScrolledPage } from './generated/DrilldownScrolled';
+import { DrilldownSlottedButtonHeaderPage } from './generated/DrilldownSlottedButtonHeader';
 import { FieldsetPage } from './generated/Fieldset';
 import { FieldsetWrapperPage } from './generated/FieldsetWrapper';
 import { FlexPage } from './generated/Flex';
@@ -81,23 +98,6 @@ import { FlyoutHeaderFooterSubfooterScrollableContentPage } from './generated/Fl
 import { FlyoutHeaderFooterSubfooterScrolledPage } from './generated/FlyoutHeaderFooterSubfooterScrolled';
 import { FlyoutHeaderFooterSubfooterScrolledOverlapPage } from './generated/FlyoutHeaderFooterSubfooterScrolledOverlap';
 import { FlyoutHeaderScrollableContentPage } from './generated/FlyoutHeaderScrollableContent';
-import { FlyoutMultilevelPage } from './generated/FlyoutMultilevel';
-import { FlyoutMultilevelActiveIdentifierPage } from './generated/FlyoutMultilevelActiveIdentifier';
-import { FlyoutMultilevelBasicPage } from './generated/FlyoutMultilevelBasic';
-import { FlyoutMultilevelCssVariables_1Page } from './generated/FlyoutMultilevelCssVariables_1';
-import { FlyoutMultilevelCssVariables_2Page } from './generated/FlyoutMultilevelCssVariables_2';
-import { FlyoutMultilevelCssVariables_3Page } from './generated/FlyoutMultilevelCssVariables_3';
-import { FlyoutMultilevelCssVariables_4Page } from './generated/FlyoutMultilevelCssVariables_4';
-import { FlyoutMultilevelCssVariables_5Page } from './generated/FlyoutMultilevelCssVariables_5';
-import { FlyoutMultilevelDeeplyNested_1stPage } from './generated/FlyoutMultilevelDeeplyNested_1st';
-import { FlyoutMultilevelDeeplyNested_2ndPage } from './generated/FlyoutMultilevelDeeplyNested_2nd';
-import { FlyoutMultilevelDeeplyNested_3rdPage } from './generated/FlyoutMultilevelDeeplyNested_3rd';
-import { FlyoutMultilevelDeeplyNested_4thPage } from './generated/FlyoutMultilevelDeeplyNested_4th';
-import { FlyoutMultilevelDeeplyNested_5thPage } from './generated/FlyoutMultilevelDeeplyNested_5th';
-import { FlyoutMultilevelLongTextPage } from './generated/FlyoutMultilevelLongText';
-import { FlyoutMultilevelPrefixedPage } from './generated/FlyoutMultilevelPrefixed';
-import { FlyoutMultilevelScrolledPage } from './generated/FlyoutMultilevelScrolled';
-import { FlyoutMultilevelSlottedButtonHeaderPage } from './generated/FlyoutMultilevelSlottedButtonHeader';
 import { FlyoutPositionLeftPage } from './generated/FlyoutPositionLeft';
 import { FlyoutPositionStartPage } from './generated/FlyoutPositionStart';
 import { FlyoutPrefixedPage } from './generated/FlyoutPrefixed';
@@ -390,6 +390,91 @@ export const generatedRoutes: RouteType[] = [
     element: <DividerPage />,
   },
   {
+    name: 'Drilldown',
+    path: '/drilldown',
+    element: <DrilldownPage />,
+  },
+  {
+    name: 'Drilldown Active Identifier',
+    path: '/drilldown-active-identifier',
+    element: <DrilldownActiveIdentifierPage />,
+  },
+  {
+    name: 'Drilldown Basic',
+    path: '/drilldown-basic',
+    element: <DrilldownBasicPage />,
+  },
+  {
+    name: 'Drilldown Css Variables 1',
+    path: '/drilldown-css-variables-1',
+    element: <DrilldownCssVariables_1Page />,
+  },
+  {
+    name: 'Drilldown Css Variables 2',
+    path: '/drilldown-css-variables-2',
+    element: <DrilldownCssVariables_2Page />,
+  },
+  {
+    name: 'Drilldown Css Variables 3',
+    path: '/drilldown-css-variables-3',
+    element: <DrilldownCssVariables_3Page />,
+  },
+  {
+    name: 'Drilldown Css Variables 4',
+    path: '/drilldown-css-variables-4',
+    element: <DrilldownCssVariables_4Page />,
+  },
+  {
+    name: 'Drilldown Css Variables 5',
+    path: '/drilldown-css-variables-5',
+    element: <DrilldownCssVariables_5Page />,
+  },
+  {
+    name: 'Drilldown Deeply Nested 1st',
+    path: '/drilldown-deeply-nested-1st',
+    element: <DrilldownDeeplyNested_1stPage />,
+  },
+  {
+    name: 'Drilldown Deeply Nested 2nd',
+    path: '/drilldown-deeply-nested-2nd',
+    element: <DrilldownDeeplyNested_2ndPage />,
+  },
+  {
+    name: 'Drilldown Deeply Nested 3rd',
+    path: '/drilldown-deeply-nested-3rd',
+    element: <DrilldownDeeplyNested_3rdPage />,
+  },
+  {
+    name: 'Drilldown Deeply Nested 4th',
+    path: '/drilldown-deeply-nested-4th',
+    element: <DrilldownDeeplyNested_4thPage />,
+  },
+  {
+    name: 'Drilldown Deeply Nested 5th',
+    path: '/drilldown-deeply-nested-5th',
+    element: <DrilldownDeeplyNested_5thPage />,
+  },
+  {
+    name: 'Drilldown Long Text',
+    path: '/drilldown-long-text',
+    element: <DrilldownLongTextPage />,
+  },
+  {
+    name: 'Drilldown Prefixed',
+    path: '/drilldown-prefixed',
+    element: <DrilldownPrefixedPage />,
+  },
+  {
+    name: 'Drilldown Scrolled',
+    path: '/drilldown-scrolled',
+    element: <DrilldownScrolledPage />,
+  },
+  {
+    name: 'Drilldown Slotted Button Header',
+    path: '/drilldown-slotted-button-header',
+    element: <DrilldownSlottedButtonHeaderPage />,
+  },
+  {
     name: 'Fieldset',
     path: '/fieldset',
     element: <FieldsetPage />,
@@ -553,91 +638,6 @@ export const generatedRoutes: RouteType[] = [
     name: 'Flyout Header Scrollable Content',
     path: '/flyout-header-scrollable-content',
     element: <FlyoutHeaderScrollableContentPage />,
-  },
-  {
-    name: 'Flyout Multilevel',
-    path: '/flyout-multilevel',
-    element: <FlyoutMultilevelPage />,
-  },
-  {
-    name: 'Flyout Multilevel Active Identifier',
-    path: '/flyout-multilevel-active-identifier',
-    element: <FlyoutMultilevelActiveIdentifierPage />,
-  },
-  {
-    name: 'Flyout Multilevel Basic',
-    path: '/flyout-multilevel-basic',
-    element: <FlyoutMultilevelBasicPage />,
-  },
-  {
-    name: 'Flyout Multilevel Css Variables 1',
-    path: '/flyout-multilevel-css-variables-1',
-    element: <FlyoutMultilevelCssVariables_1Page />,
-  },
-  {
-    name: 'Flyout Multilevel Css Variables 2',
-    path: '/flyout-multilevel-css-variables-2',
-    element: <FlyoutMultilevelCssVariables_2Page />,
-  },
-  {
-    name: 'Flyout Multilevel Css Variables 3',
-    path: '/flyout-multilevel-css-variables-3',
-    element: <FlyoutMultilevelCssVariables_3Page />,
-  },
-  {
-    name: 'Flyout Multilevel Css Variables 4',
-    path: '/flyout-multilevel-css-variables-4',
-    element: <FlyoutMultilevelCssVariables_4Page />,
-  },
-  {
-    name: 'Flyout Multilevel Css Variables 5',
-    path: '/flyout-multilevel-css-variables-5',
-    element: <FlyoutMultilevelCssVariables_5Page />,
-  },
-  {
-    name: 'Flyout Multilevel Deeply Nested 1st',
-    path: '/flyout-multilevel-deeply-nested-1st',
-    element: <FlyoutMultilevelDeeplyNested_1stPage />,
-  },
-  {
-    name: 'Flyout Multilevel Deeply Nested 2nd',
-    path: '/flyout-multilevel-deeply-nested-2nd',
-    element: <FlyoutMultilevelDeeplyNested_2ndPage />,
-  },
-  {
-    name: 'Flyout Multilevel Deeply Nested 3rd',
-    path: '/flyout-multilevel-deeply-nested-3rd',
-    element: <FlyoutMultilevelDeeplyNested_3rdPage />,
-  },
-  {
-    name: 'Flyout Multilevel Deeply Nested 4th',
-    path: '/flyout-multilevel-deeply-nested-4th',
-    element: <FlyoutMultilevelDeeplyNested_4thPage />,
-  },
-  {
-    name: 'Flyout Multilevel Deeply Nested 5th',
-    path: '/flyout-multilevel-deeply-nested-5th',
-    element: <FlyoutMultilevelDeeplyNested_5thPage />,
-  },
-  {
-    name: 'Flyout Multilevel Long Text',
-    path: '/flyout-multilevel-long-text',
-    element: <FlyoutMultilevelLongTextPage />,
-  },
-  {
-    name: 'Flyout Multilevel Prefixed',
-    path: '/flyout-multilevel-prefixed',
-    element: <FlyoutMultilevelPrefixedPage />,
-  },
-  {
-    name: 'Flyout Multilevel Scrolled',
-    path: '/flyout-multilevel-scrolled',
-    element: <FlyoutMultilevelScrolledPage />,
-  },
-  {
-    name: 'Flyout Multilevel Slotted Button Header',
-    path: '/flyout-multilevel-slotted-button-header',
-    element: <FlyoutMultilevelSlottedButtonHeaderPage />,
   },
   {
     name: 'Flyout Position Left',
