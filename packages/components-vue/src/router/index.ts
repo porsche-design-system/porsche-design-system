@@ -248,7 +248,7 @@ export const routes: RouteType[] = [
   },
   {
     path: '/segmented-control-example-controlled',
-    name: 'Segmented Control Example COntrolled',
+    name: 'Segmented Control Example Controlled',
     component: fromExamples.SegmentedControlExampleControlled,
   },
   {
