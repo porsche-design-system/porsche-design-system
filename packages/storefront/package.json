@@ -18,6 +18,10 @@
     "test": "yarn test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "test:e2e": "NEXT_PUBLIC_PDS_ENV=development yarn build && playwright test --config=tests/e2e/config/playwright.config.ts",
+    "test:e2e:1/4": "yarn test:e2e --shard=1/4 --grep-invert 'sitemap.json'",
+    "test:e2e:2/4": "yarn test:e2e --shard=2/4 --grep-invert 'sitemap.json'",
+    "test:e2e:3/4": "yarn test:e2e --shard=3/4 --grep-invert 'sitemap.json'",
+    "test:e2e:4/4": "yarn test:e2e --shard=4/4 --grep-invert 'sitemap.json'",
     "test:e2e:sitemap": "yarn test:e2e --grep 'sitemap.json'",
     "clean:build": "rm -rf ./dist && rm -rf ./.next"
   },
