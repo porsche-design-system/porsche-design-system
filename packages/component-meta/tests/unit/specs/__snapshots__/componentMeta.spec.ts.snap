@@ -2370,6 +2370,167 @@ exports[`should match snapshot 1`] = `
     },
     "styling": "jss",
   },
+  "p-drilldown": {
+    "controlledMeta": [
+      {
+        "event": "dismiss",
+        "props": [
+          "open",
+        ],
+      },
+      {
+        "event": "update",
+        "props": [
+          "activeIdentifier",
+        ],
+      },
+    ],
+    "eventsMeta": {
+      "dismiss": {
+        "description": "Emitted when the component requests to be dismissed.",
+        "type": "void",
+      },
+      "update": {
+        "description": "Emitted when activeIdentifier is changed.",
+        "type": "DrilldownUpdateEventDetail",
+        "typeDetail": "{ activeIdentifier: string | undefined }",
+      },
+    },
+    "hasAriaProp": true,
+    "hasElementInternals": false,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": false,
+    "isExperimental": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "nestedComponents": [
+      "p-button-pure",
+      "p-button",
+    ],
+    "propsMeta": {
+      "activeIdentifier": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Defines which drilldown-item to be visualized as opened.",
+        "type": "string | undefined",
+      },
+      "aria": {
+        "allowedValues": {
+          "aria-label": "string",
+        },
+        "defaultValue": null,
+        "description": "Add ARIA attributes.",
+        "isAria": true,
+        "type": "DrilldownAriaAttribute",
+      },
+      "open": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "If true, the drilldown is visualized as opened.",
+        "type": "boolean",
+      },
+      "theme": {
+        "allowedValues": [
+          "light",
+          "dark",
+          "auto",
+        ],
+        "defaultValue": "light",
+        "description": "Adapts the drilldown color depending on the theme.",
+        "type": "Theme",
+      },
+    },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot to render p-drilldown items.",
+      },
+    },
+    "styling": "jss",
+  },
+  "p-drilldown-item": {
+    "hasAriaProp": false,
+    "hasElementInternals": false,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": true,
+    "hasSlot": true,
+    "isChunked": false,
+    "isDelegatingFocus": false,
+    "isExperimental": true,
+    "isInternal": false,
+    "isThemeable": false,
+    "nestedComponents": [
+      "p-button-pure",
+    ],
+    "propsMeta": {
+      "cascade": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Private property set by the component itself.",
+        "propOptions": {
+          "mutable": true,
+          "reflect": true,
+        },
+        "type": "boolean",
+      },
+      "identifier": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Unique identifier which controls if this item should be shown when the active-identifier on the drilldown is set to this value.",
+        "isRequired": true,
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Label of the item.",
+        "type": "string",
+      },
+      "primary": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Private property set by the component itself.",
+        "propOptions": {
+          "mutable": true,
+          "reflect": true,
+        },
+        "type": "boolean",
+      },
+      "secondary": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Private property set by the component itself.",
+        "propOptions": {
+          "mutable": true,
+          "reflect": true,
+        },
+        "type": "boolean",
+      },
+    },
+    "requiredParent": [
+      "p-drilldown",
+      "p-drilldown-item",
+    ],
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the main content.",
+      },
+      "button": {
+        "description": "Shows a custom button to reach a deeper level of the navigation structure.",
+      },
+      "header": {
+        "description": "Shows a custom header section on mobile view",
+      },
+    },
+    "styling": "jss",
+  },
   "p-fieldset": {
     "hasAriaProp": false,
     "hasElementInternals": false,
@@ -2824,167 +2985,6 @@ exports[`should match snapshot 1`] = `
       },
       "sub-footer": {
         "description": "Shows a sub-footer section to display additional information below the footer. This slot is ideal for less critical content, such as legal information or FAQs, which provides further details to the user. It appears when scrolling to the end of the flyout or when there is available space to accommodate the content.",
-      },
-    },
-    "styling": "jss",
-  },
-  "p-drilldown": {
-    "controlledMeta": [
-      {
-        "event": "dismiss",
-        "props": [
-          "open",
-        ],
-      },
-      {
-        "event": "update",
-        "props": [
-          "activeIdentifier",
-        ],
-      },
-    ],
-    "eventsMeta": {
-      "dismiss": {
-        "description": "Emitted when the component requests to be dismissed.",
-        "type": "void",
-      },
-      "update": {
-        "description": "Emitted when activeIdentifier is changed.",
-        "type": "DrilldownUpdateEventDetail",
-        "typeDetail": "{ activeIdentifier: string | undefined }",
-      },
-    },
-    "hasAriaProp": true,
-    "hasElementInternals": false,
-    "hasEvent": true,
-    "hasObserveAttributes": false,
-    "hasObserveChildren": false,
-    "hasSlot": true,
-    "isChunked": true,
-    "isDelegatingFocus": false,
-    "isExperimental": true,
-    "isInternal": false,
-    "isThemeable": true,
-    "nestedComponents": [
-      "p-button-pure",
-      "p-button",
-    ],
-    "propsMeta": {
-      "activeIdentifier": {
-        "allowedValues": "string",
-        "defaultValue": null,
-        "description": "Defines which drilldown-item to be visualized as opened.",
-        "type": "string | undefined",
-      },
-      "aria": {
-        "allowedValues": {
-          "aria-label": "string",
-        },
-        "defaultValue": null,
-        "description": "Add ARIA attributes.",
-        "isAria": true,
-        "type": "DrilldownAriaAttribute",
-      },
-      "open": {
-        "allowedValues": "boolean",
-        "defaultValue": false,
-        "description": "If true, the drilldown is visualized as opened.",
-        "type": "boolean",
-      },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the drilldown color depending on the theme.",
-        "type": "Theme",
-      },
-    },
-    "slotsMeta": {
-      "": {
-        "description": "Default slot to render p-drilldown items.",
-      },
-    },
-    "styling": "jss",
-  },
-  "p-drilldown-item": {
-    "hasAriaProp": false,
-    "hasElementInternals": false,
-    "hasEvent": false,
-    "hasObserveAttributes": false,
-    "hasObserveChildren": true,
-    "hasSlot": true,
-    "isChunked": false,
-    "isDelegatingFocus": false,
-    "isExperimental": true,
-    "isInternal": false,
-    "isThemeable": false,
-    "nestedComponents": [
-      "p-button-pure",
-    ],
-    "propsMeta": {
-      "cascade": {
-        "allowedValues": "boolean",
-        "defaultValue": false,
-        "description": "Private property set by the component itself.",
-        "propOptions": {
-          "mutable": true,
-          "reflect": true,
-        },
-        "type": "boolean",
-      },
-      "identifier": {
-        "allowedValues": "string",
-        "defaultValue": null,
-        "description": "Unique identifier which controls if this item should be shown when the active-identifier on the drilldown is set to this value.",
-        "isRequired": true,
-        "propOptions": {
-          "reflect": true,
-        },
-        "type": "string",
-      },
-      "label": {
-        "allowedValues": "string",
-        "defaultValue": null,
-        "description": "Label of the item.",
-        "type": "string",
-      },
-      "primary": {
-        "allowedValues": "boolean",
-        "defaultValue": false,
-        "description": "Private property set by the component itself.",
-        "propOptions": {
-          "mutable": true,
-          "reflect": true,
-        },
-        "type": "boolean",
-      },
-      "secondary": {
-        "allowedValues": "boolean",
-        "defaultValue": false,
-        "description": "Private property set by the component itself.",
-        "propOptions": {
-          "mutable": true,
-          "reflect": true,
-        },
-        "type": "boolean",
-      },
-    },
-    "requiredParent": [
-      "p-drilldown",
-      "p-drilldown-item",
-    ],
-    "slotsMeta": {
-      "": {
-        "description": "Default slot for the main content.",
-      },
-      "button": {
-        "description": "Shows a custom button to reach a deeper level of the navigation structure.",
-      },
-      "header": {
-        "description": "Shows a custom header section on mobile view",
       },
     },
     "styling": "jss",
