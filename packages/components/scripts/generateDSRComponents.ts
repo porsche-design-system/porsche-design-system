@@ -98,7 +98,6 @@ const generateDSRComponents = (): void => {
           /^/g,
           `import { Component } from 'react';
 import { minifyCss } from '../../minifyCss';
-import { stripFocusAndHoverStyles } from '../../stripFocusAndHoverStyles';
 import { get${componentName}Css } from '${stylesBundleImportPath}';
 `
         )
@@ -132,7 +131,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           const delegatesFocusProp = isDelegatingFocus ? ' shadowrootdelegatesfocus="true"' : '';
           return match.replace(/\n    return \(?([\s\S]*?(?:\n    )|.*)\)?;/, (_, g1) => {
             return `
-    const style = minifyCss(stripFocusAndHoverStyles(get${componentName}Css(${getComponentCssParams})));
+    const style = minifyCss(get${componentName}Css(${getComponentCssParams}));
 
     return (
       <>
