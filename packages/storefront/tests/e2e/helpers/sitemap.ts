@@ -85,7 +85,7 @@ const scanForUrls = async (page: Page): Promise<string[]> => {
 
     for (const anchor of document.querySelectorAll('body [href]')) {
       // don't collect "toc"-links since anchor links lead to the same page they were found on
-      if (anchor.parentElement?.parentElement?.className === 'toc') {
+      if (anchor.parentElement?.parentElement?.parentElement?.className === 'toc') {
         continue;
       }
 

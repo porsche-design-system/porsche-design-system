@@ -10,7 +10,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'yarn dev', // TODO: Use start-app, problem is next build does not work with NODE_ENV=development
-    port: 3000,
+    command: 'yarn start-app',
+    port: 8080,
   },
 });
