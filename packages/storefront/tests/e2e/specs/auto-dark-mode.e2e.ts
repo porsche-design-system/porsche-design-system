@@ -10,14 +10,8 @@ const themeableComponents = TAG_NAMES.filter((tagName) => getComponentMeta(tagNa
 const componentsWithThemeAutoSelector = `:where(${themeableComponents}):not(.playground *):not(p-link-tile *)`; // everything inside playground is not based on color-scheme preferences
 
 for (const [url, index] of internalUrls.map<[string, number]>((url, i) => [url, i])) {
-  test.skip(`should have auto dark mode support at (${index + 1}/${internalUrls.length}) "${url}"`, async ({
-    page,
-  }) => {
-    await page.goto(url, { waitUntil: 'domcontentloaded' });
-    await page.waitForSelector('html.hydrated');
-    await page.evaluate(() =>
-      (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
-    );
+  test(`should have auto dark mode support at (${index + 1}/${internalUrls.length}) "${url}"`, async ({ page }) => {
+    await page.goto(url);
 
     const components = page.locator(componentsWithThemeAutoSelector);
     const count = await components.count();

@@ -4,6 +4,12 @@ import type { TagName } from '@porsche-design-system/shared';
 import React from 'react';
 import type { ReactNode } from 'react';
 
+export const COMPONENT_ROUTES_META = Object.entries(componentMeta).filter(
+  ([_, value]) => value.isChunked && !value.requiredParent
+);
+
+export const COMPONENT_ROUTES = COMPONENT_ROUTES_META.map(([key]) => ({ component: key.replace('p-', '') }));
+
 const getComponents = (): Routes => {
   // TODO: Maybe we could automatically generate this depending what routes/folders exist?
   const COMPONENTS_WITHOUT_EXAMPLES: TagName[] = [
@@ -21,57 +27,54 @@ const getComponents = (): Routes => {
     'p-toast',
   ];
 
-  return Object.entries(componentMeta)
-    .filter(([_, value]) => value.isChunked && !value.requiredParent)
-    .sort(([, aMeta], [, bMeta]) => {
-      // Sort by isDeprecated
-      const aIsDeprecated = aMeta.isDeprecated ? 1 : 0;
-      const bIsDeprecated = bMeta.isDeprecated ? 1 : 0;
-      return aIsDeprecated - bIsDeprecated;
-    })
-    .reduce((acc, [key, meta]) => {
-      const linkName = (
-        <>
-          {transformComponentName(key)} {getFlags(meta)}
-        </>
-      ); // Transforms p-link-tile => Link Tile & Adds flags 🚫, 🛠, 🧪
-      const component = key.replace('p-', ''); // Removes the "p-" prefix => link-tile
-      acc[component] = {
-        name: linkName,
-        path: `/components/${component}`,
-        type: 'PAGE',
-        subPaths: {
-          configurator: {
-            name: 'Configurator',
-            path: `/components/${component}/configurator`,
-            type: 'TAB',
-          },
-          ...(!COMPONENTS_WITHOUT_EXAMPLES.includes(key as TagName) && {
-            examples: {
-              name: 'Examples',
-              path: `/components/${component}/examples`,
-              type: 'TAB',
-            },
-          }),
-          usage: {
-            name: 'Usage',
-            path: `/components/${component}/usage`,
-            type: 'TAB',
-          },
-          accessibility: {
-            name: 'Accessibility',
-            path: `/components/${component}/accessibility`,
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: `/components/${component}/api`,
-            type: 'TAB',
-          },
+  return COMPONENT_ROUTES_META.sort(([, aMeta], [, bMeta]) => {
+    // Sort by isDeprecated
+    const aIsDeprecated = aMeta.isDeprecated ? 1 : 0;
+    const bIsDeprecated = bMeta.isDeprecated ? 1 : 0;
+    return aIsDeprecated - bIsDeprecated;
+  }).reduce((acc, [key, meta]) => {
+    const linkName = (
+      <>
+        {transformComponentName(key)} {getFlags(meta)}
+      </>
+    ); // Transforms p-link-tile => Link Tile & Adds flags 🚫, 🛠, 🧪
+    const component = key.replace('p-', ''); // Removes the "p-" prefix => link-tile
+    acc[component] = {
+      name: linkName,
+      path: `/components/${component}`,
+      type: 'PAGE',
+      subPaths: {
+        configurator: {
+          name: 'Configurator',
+          path: `/components/${component}/configurator`,
+          type: 'TAB',
         },
-      };
-      return acc;
-    }, {} as Routes);
+        ...(!COMPONENTS_WITHOUT_EXAMPLES.includes(key as TagName) && {
+          examples: {
+            name: 'Examples',
+            path: `/components/${component}/examples`,
+            type: 'TAB',
+          },
+        }),
+        usage: {
+          name: 'Usage',
+          path: `/components/${component}/usage`,
+          type: 'TAB',
+        },
+        accessibility: {
+          name: 'Accessibility',
+          path: `/components/${component}/accessibility`,
+          type: 'TAB',
+        },
+        api: {
+          name: 'API',
+          path: `/components/${component}/api`,
+          type: 'TAB',
+        },
+      },
+    };
+    return acc;
+  }, {} as Routes);
 };
 
 const transformComponentName = (name: string): string => {
@@ -85,7 +88,6 @@ const transformComponentName = (name: string): string => {
 export type Route = {
   name: string | ReactNode;
   path: string;
-  redirect?: string;
   type: 'CATEGORY' | 'PAGE' | 'TAB';
   subPaths?: Routes;
 };
@@ -99,7 +101,6 @@ export const sitemap: Routes = {
     name: 'News',
     path: '/news',
     type: 'CATEGORY',
-    redirect: '/news/changelog',
     subPaths: {
       'migration-guide': {
         name: 'Migration Guide',
@@ -134,7 +135,6 @@ export const sitemap: Routes = {
     name: 'Designing',
     path: '/designing',
     type: 'CATEGORY',
-    redirect: '/designing/introduction',
     subPaths: {
       introduction: {
         name: 'Introduction',
@@ -147,7 +147,6 @@ export const sitemap: Routes = {
     name: 'Developing',
     path: '/developing',
     type: 'CATEGORY',
-    redirect: '/developing/introduction',
     subPaths: {
       introduction: {
         name: 'Introduction',
@@ -272,7 +271,6 @@ export const sitemap: Routes = {
     name: 'Components',
     path: '/components',
     type: 'CATEGORY',
-    redirect: '/components/introduction',
     subPaths: {
       introduction: {
         name: 'Introduction',
@@ -286,7 +284,6 @@ export const sitemap: Routes = {
     name: 'Styles',
     path: '/styles',
     type: 'CATEGORY',
-    redirect: '/styles/introduction',
     subPaths: {
       introduction: {
         name: 'Introduction',
@@ -364,7 +361,6 @@ export const sitemap: Routes = {
     name: 'Partials',
     path: '/partials',
     type: 'CATEGORY',
-    redirect: '/partials/introduction',
     subPaths: {
       introduction: {
         name: 'Introduction',
@@ -432,7 +428,6 @@ export const sitemap: Routes = {
     name: 'Patterns',
     path: '/patterns',
     type: 'CATEGORY',
-    redirect: '/patterns/forms',
     subPaths: {
       forms: {
         name: 'Forms',
@@ -479,7 +474,6 @@ export const sitemap: Routes = {
     name: 'AG Grid',
     path: '/ag-grid',
     type: 'CATEGORY',
-    redirect: '/ag-grid/theme',
     subPaths: {
       theme: {
         name: 'Theme',
@@ -492,7 +486,6 @@ export const sitemap: Routes = {
     name: 'Must Know',
     path: '/must-know',
     type: 'CATEGORY',
-    redirect: '/must-know/initialization',
     subPaths: {
       initialization: {
         name: 'Initialization',
@@ -608,7 +601,6 @@ export const sitemap: Routes = {
     name: 'Help',
     path: '/help',
     type: 'CATEGORY',
-    redirect: '/help/support',
     subPaths: {
       support: {
         name: 'Support',
