@@ -1,4 +1,6 @@
 import { TableOfContents } from "@/components/common/TableOfContents";
+import {ComponentStory} from "@/components/playground/ComponentStory";
+import {statementStory} from "@/app/must-know/accessibility/statement/statement.story";
 
 export const metadata = {
   title: 'Accessibility: Statement - Porsche Design System',
@@ -39,7 +41,7 @@ needs**.
 This template is based on the guidelines on
 [How to develop an Accessibility Statement](https://w3.org/WAI/planning/statements) provided by **W3C**.
 
-{/* <Playground :markup="statement" class="p-accessibility-statement"></Playground> */}
+<ComponentStory story={statementStory} />
 
 {/* <script lang="ts">
   import Vue from 'vue';

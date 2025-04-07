@@ -10,6 +10,8 @@ const blacklistedUrls: string[] = [
   'https://sitepoint.com/introduction-wai-aria/',
   'https://adabook.com/',
   'https://etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf',
+  '/mailto:[e-mail address]',
+  '/mailto:.external@porsche.de',
 ];
 const sitemapFixturePath = path.resolve(__dirname, '../fixtures/sitemap.json');
 const sitemapResultPath = path.resolve(__dirname, '../results/sitemap.json');
