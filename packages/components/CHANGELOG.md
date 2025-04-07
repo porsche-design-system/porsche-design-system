@@ -16,8 +16,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Added
 
-- `Flyout Multilevel`: named slot `button` and `header`
+- `Drilldown`, `Drilldown Item`: CSS variable `--p-drilldown-grid-template` and `--p-drilldown-gap` (experimental)
   ([#3822](https://github.com/porsche-design-system/porsche-design-system/pull/3822))
+- `Drilldown Item`: named slot `button` and `header` (experimental)
+  ([#3822](https://github.com/porsche-design-system/porsche-design-system/pull/3822))
+
+#### Changed
+
+- **Breaking Change** `Flyout Multilevel`, `Flyout Multilevel Item`: renamed (experimental) component to `Drilldown` and
+  `Drilldown Item` ([#3822](https://github.com/porsche-design-system/porsche-design-system/pull/3822))
 
 #### Fixed
 
