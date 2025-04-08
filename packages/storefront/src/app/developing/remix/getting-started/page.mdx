@@ -76,7 +76,7 @@ While this modifies 3rd party code, the only other solutions are:
 - extend `@remix-run/dev` to include the patch by default
 - extend `@remix-run/dev` to support more options in `remix.config.js` so that `{ 'process.browser': 'true' }` can be
 passed to the `define` object of `esbuild`s
-[https://esbuild.github.io/api/#define](configuration)
+[configuration](https://esbuild.github.io/api/#define)
 - build your app twice by passing a special value to one of the two flags that are being replaced by `@remix-run/dev`
 already: `process.env.NODE_ENV` or `process.env.REMIX_DEV_SERVER_WS_PORT`
 - post process the browser build to strip away the server code used to render Declarative Shadow DOM
