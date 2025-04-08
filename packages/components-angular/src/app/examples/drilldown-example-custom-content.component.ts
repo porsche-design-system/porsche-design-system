@@ -7,13 +7,21 @@ import { type DrilldownUpdateEventDetail } from '@porsche-design-system/componen
     `
       @use '@porsche-design-system/components-angular/styles' as *;
 
-      p-link-tile {
+      p-drilldown {
+        --p-drilldown-grid-template: repeat(5, auto) minmax(0, 1fr) / auto
+      }
+
+      p-drilldown > p-drilldown-item:first-of-type {
+        --p-drilldown-grid-template: auto / repeat(2, minmax(0, 1fr));
+        --p-drilldown-gap: 0px 16px
+      }
+
+      p-button-tile {
         margin-bottom: $pds-spacing-fluid-small;
       }
 
-      p-link-pure {
-        margin: 0 calc(#{$pds-spacing-fluid-small} * -1);
-        padding: $pds-spacing-fluid-small;
+      p-link {
+        align-self: end
       }
     `,
   ],
@@ -26,23 +34,51 @@ import { type DrilldownUpdateEventDetail } from '@porsche-design-system/componen
         (dismiss)="onDismiss()"
         (update)="onUpdate($event)"
       >
-        <p-drilldown-item identifier="id-1" label="Some Label">
-          <p-link-tile
-            href="#"
-            label="Some label"
-            description="Some Description"
-            weight="semi-bold"
-            [compact]="true"
-            [aspectRatio]="{ base: '4/3', xs: '16/9', s: '1/1' }"
-          >
-            <img
-              srcset="http://localhost:3002/porsche-963@2x.webp 2x"
-              src="http://localhost:3002/porsche-963.webp"
-              width="636"
-              height="847"
-              alt="Porsche 963"
-            />
-          </p-link-tile>
+        <p-drilldown-item identifier="id-1" label="Models">
+          <p-drilldown-item identifier="id-1-1" label="718">
+            <p-model-signature slot="header" model="718"></p-model-signature>
+            <p-button-tile
+              slot="button"
+              label="Some label"
+              description="718"
+              weight="semi-bold"
+              [compact]="true"
+              [aspectRatio]="{ base: '1/1', s: '9/16' }"
+            >
+              <img
+                srcset="http://localhost:3002/porsche-963@2x.webp 2x"
+                src="http://localhost:3002/porsche-963.webp"
+                width="636"
+                height="847"
+                alt="Porsche 963"
+              />
+            </p-button-tile>
+            <a href="#">Some anchor</a>
+            <a href="#">Some anchor</a>
+            <a href="#">Some anchor</a>
+            <a href="#">Some anchor</a>
+          </p-drilldown-item>
+          <p-drilldown-item identifier="id-1-2" label="911">
+            <p-model-signature slot="header" model="911"></p-model-signature>
+            <p-button-tile
+              slot="button"
+              label="Some label"
+              description="911"
+              weight="semi-bold"
+              [compact]="true"
+              [aspectRatio]="{ base: '1/1', s: '9/16' }"
+            >
+              <img
+                srcset="http://localhost:3002/porsche-963@2x.webp 2x"
+                src="http://localhost:3002/porsche-963.webp"
+                width="636"
+                height="847"
+                alt="Porsche 963"
+              />
+            </p-button-tile>
+            <a href="#">Some anchor</a>
+            <a href="#">Some anchor</a>
+          </p-drilldown-item>
           <a href="#">Some anchor</a>
           <a href="#" aria-current="page">Some anchor</a>
           <a href="#">Some anchor</a>
@@ -85,7 +121,7 @@ import { type DrilldownUpdateEventDetail } from '@porsche-design-system/componen
           <a href="#">Some anchor</a>
           <a href="#">Some anchor</a>
         </p-drilldown-item>
-        <p-link-pure size="medium" href="#" icon="external">Some external anchor</p-link-pure>
+        <p-link href="#" icon="external" variant="secondary">Some external anchor</p-link>
       </p-drilldown>
     </nav>
   `,

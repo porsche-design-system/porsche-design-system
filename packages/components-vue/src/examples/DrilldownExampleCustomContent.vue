@@ -4,8 +4,9 @@ import {
   PButton,
   PDrilldown,
   PDrilldownItem,
-  PLinkPure,
-  PLinkTile,
+  PLink,
+  PButtonTile,
+  PModelSignature,
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
@@ -31,23 +32,51 @@ const onUpdate = (e: DrilldownUpdateEventDetail): void => {
       @dismiss="onDismiss"
       @update="onUpdate"
     >
-      <PDrilldownItem identifier="id-1" label="Some Label">
-        <PLinkTile
-          href="#"
-          label="Some label"
-          description="Some Description"
-          weight="semi-bold"
-          :compact="true"
-          :aspectRatio="{ base: '4:3', xs: '16:9', s: '1:1' }"
-        >
-          <img
-            srcset="http://localhost:3002/porsche-963@2x.webp 2x"
-            src="http://localhost:3002/porsche-963.webp"
-            width="636"
-            height="847"
-            alt="Porsche 963"
-          />
-        </PLinkTile>
+      <PDrilldownItem identifier="id-1" label="Models">
+        <PDrilldownItem identifier="id-1-1" label="718">
+          <PModelSignature slot="header" model="718"></PModelSignature>
+          <PButtonTile
+            slot="button"
+            label="Some label"
+            description="718"
+            weight="semi-bold"
+            :compact="true"
+            :aspectRatio="{ base: '1/1', s: '9/16' }"
+          >
+            <img
+              srcset="http://localhost:3002/porsche-963@2x.webp 2x"
+              src="http://localhost:3002/porsche-963.webp"
+              width="636"
+              height="847"
+              alt="Porsche 963"
+            />
+          </PButtonTile>
+          <a href="#">Some anchor</a>
+          <a href="#">Some anchor</a>
+          <a href="#">Some anchor</a>
+          <a href="#">Some anchor</a>
+        </PDrilldownItem>
+        <PDrilldownItem identifier="id-1-2" label="911">
+          <PModelSignature slot="header" model="911"></PModelSignature>
+          <PButtonTile
+            slot="button"
+            label="Some label"
+            description="911"
+            weight="semi-bold"
+            :compact="true"
+            :aspectRatio="{ base: '1/1', s: '9/16' }"
+          >
+            <img
+              srcset="http://localhost:3002/porsche-963@2x.webp 2x"
+              src="http://localhost:3002/porsche-963.webp"
+              width="636"
+              height="847"
+              alt="Porsche 963"
+            />
+          </PButtonTile>
+          <a href="#">Some anchor</a>
+          <a href="#">Some anchor</a>
+        </PDrilldownItem>
         <a href="#">Some anchor</a>
         <a href="#" aria-current="page">Some anchor</a>
         <a href="#">Some anchor</a>
@@ -90,7 +119,7 @@ const onUpdate = (e: DrilldownUpdateEventDetail): void => {
         <a href="#">Some anchor</a>
         <a href="#">Some anchor</a>
       </PDrilldownItem>
-      <PLinkPure size="medium" href="#" icon="external">Some external anchor</PLinkPure>
+      <PLink variant="secondary" href="#" icon="external">Some external anchor</PLink>
     </PDrilldown>
   </nav>
 </template>
@@ -98,12 +127,20 @@ const onUpdate = (e: DrilldownUpdateEventDetail): void => {
 <style lang="scss" scoped>
   @use '@porsche-design-system/components-vue/styles' as *;
 
-  p-link-tile {
+  p-drilldown {
+    --p-drilldown-grid-template: repeat(5, auto) minmax(0, 1fr) / auto
+  }
+
+  p-drilldown > p-drilldown-item:first-of-type {
+    --p-drilldown-grid-template: auto / repeat(2, minmax(0, 1fr));
+    --p-drilldown-gap: 0px 16px
+  }
+
+  p-button-tile {
     margin-bottom: $pds-spacing-fluid-small;
   }
 
-  p-link-pure {
-    margin: 0 calc(#{$pds-spacing-fluid-small} * -1);
-    padding: $pds-spacing-fluid-small;
+  p-link {
+    align-self: end
   }
 </style>
