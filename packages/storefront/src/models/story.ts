@@ -54,6 +54,7 @@
  */
 import type { ElementConfig, HTMLElementOrComponentProps, HTMLTagOrComponent } from '@/utils/generator/generator';
 
+// TODO: Generic is not necessary for static stories without state
 // TODO: Create type for generator result and share with ElementConfig children type.
 export type Story<Tag extends HTMLTagOrComponent> = {
   name?: string;

@@ -1,9 +1,8 @@
 'use client';
 
 import type { Story } from '@/models/story';
-import type { HTMLTagOrComponent } from '@/utils/generator/generator';
 
-export const statementStory: Story<HTMLTagOrComponent> = {
+export const statementStory: Story<'p-heading'> = {
   generator: () => [
     {
       tag: 'p-heading',
