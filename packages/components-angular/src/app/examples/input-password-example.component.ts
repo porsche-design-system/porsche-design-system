@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-input-password-example',
@@ -12,7 +13,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <p-text>Last submitted data: {{ lastSubmittedData }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class InputPasswordExampleComponent {
   lastSubmittedData: string = '';

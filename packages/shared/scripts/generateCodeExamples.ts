@@ -293,6 +293,29 @@ const codeExamples: CodeSample[] = [
     ],
   },
   {
+    component: 'p-input-password',
+    examples: [
+      {
+        name: 'InputPasswordExample',
+        paths: {
+          'vanilla-js': '/input-password-example.html',
+          angular: '/input-password-example.component.ts',
+          react: '/InputPasswordExample.tsx',
+          vue: '/InputPasswordExample.vue',
+        },
+      },
+      {
+        name: 'InputPasswordExampleControlled',
+        paths: {
+          'vanilla-js': '/input-password-example-controlled.html',
+          angular: '/input-password-example-controlled.component.ts',
+          react: '/InputPasswordExampleControlled.tsx',
+          vue: '/InputPasswordExampleControlled.vue',
+        },
+      },
+    ],
+  },
+  {
     component: 'p-link-tile',
     examples: [
       {
