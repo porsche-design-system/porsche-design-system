@@ -18,13 +18,23 @@ import {
   PCanvas,
   PHeading,
   PLink,
-  PModal,
 } from '@porsche-design-system/components-react/ssr';
+import { componentsReady } from '@porsche-design-system/components-react/ssr';
 import { breakpointS } from '@porsche-design-system/components-react/styles';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type React from 'react';
 import { type PropsWithChildren, useEffect, useRef, useState } from 'react';
+
+declare global {
+  interface Window {
+    componentsReady: typeof componentsReady;
+  }
+}
+
+if (global?.window) {
+  window.componentsReady = componentsReady; // for testing
+}
 
 export const Canvas = ({ children }: PropsWithChildren) => {
   const { storefrontTheme, setStorefrontTheme } = useStorefrontTheme();
@@ -77,7 +87,15 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         Porsche Design System
       </Link>
 
-      <PButton slot="header-end" icon="search" variant="ghost" compact={true} hideLabel={true} onClick={onOpenSearch}>
+      <PButton
+        slot="header-end"
+        icon="search"
+        variant="ghost"
+        compact={true}
+        hideLabel={true}
+        onClick={onOpenSearch}
+        aria={{ 'aria-label': 'Search' }}
+      >
         Search
       </PButton>
       <PLink

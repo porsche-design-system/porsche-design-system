@@ -35,7 +35,7 @@ export const SearchResults = ({
           <ol className="flex flex-col gap-sm">
             {hits.map((hit) => (
               <Link key={hit.url} href={hit.url} onClick={onResultClick}>
-                <li className="py-sm px-md bg-background-surface rounded-md">
+                <li className="hit py-sm px-md bg-background-surface rounded-md">
                   <p className="text-sm">
                     {hit.page} {hit.tab ? ` - ${hit.tab}` : ''}
                   </p>
