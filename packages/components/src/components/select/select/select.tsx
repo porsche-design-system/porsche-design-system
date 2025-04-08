@@ -7,7 +7,6 @@ import {
   type SelectState,
   type SelectUpdateEventDetail,
   getSelectedOptionString,
-  getSrHighlightedOptionText,
   setSelectedOption,
   syncSelectChildrenProps,
   updateSelectOptions,
@@ -137,12 +136,12 @@ export class Select {
   @Event({ bubbles: false }) public update: EventEmitter<SelectUpdateEventDetail>;
 
   @State() private isOpen = false;
-  @State() private srHighlightedOptionText = '';
 
   @AttachInternals() private internals: ElementInternals;
 
   private defaultValue: string;
   private buttonElement: HTMLButtonElement;
+  private slotElement: HTMLSlotElement;
   private popoverElement: HTMLDivElement;
   private selectOptions: SelectOption[] = [];
   private selectOptgroups: SelectOptgroup[] = [];
@@ -258,8 +257,7 @@ export class Select {
     const popoverId = 'list';
     const descriptionId = this.description ? 'description' : undefined;
     const selectMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
-    const initialStatusId = 'initial-status';
-    const ariaDescribedBy = [descriptionId, selectMessageId, initialStatusId].filter(Boolean).join(' ');
+    const ariaDescribedBy = [descriptionId, selectMessageId].filter(Boolean).join(' ');
     const selectedOption = getSelectedOptionString(this.selectOptions);
 
     return (
@@ -272,9 +270,6 @@ export class Select {
           isRequired={this.required}
           isDisabled={this.disabled}
         />
-        <span class="sr-only" id={initialStatusId}>
-          {`${selectedOption ? '' : 'No option selected. '} ${this.selectOptions.length} options in total.`}
-        </span>
         <button
           aria-invalid={this.state === 'error' ? 'true' : null}
           type="button"
@@ -303,12 +298,9 @@ export class Select {
           {...getListAriaAttributes(this.label, this.required, false, this.isOpen)}
           ref={(el) => (this.popoverElement = el)}
         >
-          <slot />
+          <slot ref={(el: HTMLSlotElement) => (this.slotElement = el)} />
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
-        <span class="sr-only" role="status" aria-live="assertive" aria-relevant="additions text">
-          {this.srHighlightedOptionText}
-        </span>
       </div>
     );
   }
@@ -347,16 +339,14 @@ export class Select {
       case 'PageUp':
       case 'PageDown': {
         event.preventDefault();
-        setNextSelectOptionHighlighted(
-          this.popoverElement,
-          this.selectOptions,
-          getUpdatedIndex(
-            getHighlightedSelectOptionIndex(this.selectOptions),
-            getUsableSelectOptions(this.selectOptions).length - 1,
-            action
-          )
+        const highlightedOptionIndex = getUpdatedIndex(
+          getHighlightedSelectOptionIndex(this.selectOptions),
+          getUsableSelectOptions(this.selectOptions).length - 1,
+          action
         );
-        this.updateSrHighlightedOptionText();
+        setNextSelectOptionHighlighted(this.popoverElement, this.selectOptions, highlightedOptionIndex);
+        // @ts-ignore - HTMLCombobox type is missing
+        this.buttonElement.ariaActiveDescendantElement = this.slotElement.assignedElements()[highlightedOptionIndex];
         break;
       }
       case 'CloseSelect': {
@@ -376,6 +366,12 @@ export class Select {
       case 'Open': {
         event.preventDefault();
         this.updateMenuState(true);
+        const selectedIndex = this.selectOptions.findIndex((item) => item.selected);
+        if (selectedIndex >= 0) {
+          setNextSelectOptionHighlighted(this.popoverElement, this.selectOptions, selectedIndex);
+          // @ts-ignore - HTMLCombobox type is missing
+          this.buttonElement.ariaActiveDescendantElement = this.slotElement.assignedElements()[selectedIndex];
+        }
         break;
       }
     }
@@ -388,7 +384,6 @@ export class Select {
     const matchingIndex = getMatchingSelectOptionIndex(this.selectOptions, this.searchString);
     if (matchingIndex !== -1) {
       setNextSelectOptionHighlighted(this.popoverElement, this.selectOptions, matchingIndex);
-      this.updateSrHighlightedOptionText();
     } else {
       window.clearTimeout(this.searchTimeout);
       this.searchString = '';
@@ -430,7 +425,6 @@ export class Select {
       setSelectedOption(this.selectOptions, selectedOption);
       this.value = selectedOption.value;
       this.emitUpdateEvent();
-      this.updateSrHighlightedOptionText();
     }
     this.updateMenuState(false);
     this.buttonElement.focus();
@@ -449,10 +443,6 @@ export class Select {
 
     // add most recent letter to saved search string
     this.searchString += char;
-  };
-
-  private updateSrHighlightedOptionText = (): void => {
-    this.srHighlightedOptionText = getSrHighlightedOptionText(this.selectOptions);
   };
 
   private emitUpdateEvent = (): void => {

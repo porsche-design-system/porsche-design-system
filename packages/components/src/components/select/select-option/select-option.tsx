@@ -1,11 +1,10 @@
 import type { PropTypes } from '../../../types';
 import { type SelectOptionInternalHTMLProps, validateSelectOption } from './select-option-utils';
 
-import { Component, Element, Host, type JSX, Prop, h } from '@stencil/core';
+import { Component, Element, Host, type JSX, Prop, h, AttachInternals } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
-  getOptionAriaAttributes,
   getPrefixedTagNames,
   throwIfParentIsNotOfKind,
   validateProps,
@@ -23,6 +22,7 @@ const propTypes: PropTypes<typeof SelectOption> = {
 @Component({
   tag: 'p-select-option',
   shadow: true,
+  formAssociated: true,
 })
 export class SelectOption {
   @Element() public host!: HTMLElement & SelectOptionInternalHTMLProps;
@@ -32,6 +32,8 @@ export class SelectOption {
 
   /** Disables the option. */
   @Prop() public disabled?: boolean = false;
+
+  @AttachInternals() private internals: ElementInternals;
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-select', 'p-optgroup']);
@@ -44,17 +46,20 @@ export class SelectOption {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const isDisabled = this.disabled || this.host.disabledParent;
 
+    this.internals.role = 'option';
+    this.internals.ariaSelected = String(selected);
+    this.internals.ariaHidden = String(hidden);
+    this.internals.ariaDisabled = String(this.disabled || this.host.disabledParent);
+
     return (
       <Host onClick={!isDisabled && this.onClick}>
         <div
-          role="option"
           class={{
             option: true,
             'option--selected': selected,
             'option--highlighted': highlighted,
             'option--disabled': isDisabled,
           }}
-          {...getOptionAriaAttributes(selected, isDisabled, hidden, !!this.value)}
         >
           <slot onSlotchange={this.onSlotChange} />
           {selected && (
