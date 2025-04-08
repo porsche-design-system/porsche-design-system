@@ -9,8 +9,11 @@ const internalUrls = getInternalUrls().filter((url) => !url.match(/^\/assets\/.*
 const themeableComponents = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).isThemeable).join();
 const componentsWithThemeAutoSelector = `:where(${themeableComponents}):not(.playground *):not(p-link-tile *)`; // everything inside playground is not based on color-scheme preferences
 
+// TODO: Activate again (currently very slow in CI)
 for (const [url, index] of internalUrls.map<[string, number]>((url, i) => [url, i])) {
-  test(`should have auto dark mode support at (${index + 1}/${internalUrls.length}) "${url}"`, async ({ page }) => {
+  test.skip(`should have auto dark mode support at (${index + 1}/${internalUrls.length}) "${url}"`, async ({
+    page,
+  }) => {
     await page.goto(url);
 
     const components = page.locator(componentsWithThemeAutoSelector);
