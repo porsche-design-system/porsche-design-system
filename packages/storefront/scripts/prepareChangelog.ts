@@ -38,8 +38,12 @@ export const metadata = {
 }\n\n${replacedContent}`;
 
   const targetFileName = 'page.mdx';
-  const targetFolder = '../src/app/news/changelog';
-  const targetFilePath = path.resolve(__dirname, targetFolder, targetFileName);
+  const targetFolder = path.resolve(__dirname, '../src/app/news/changelog');
+
+  // Ensure folder exists
+  fs.mkdirSync(targetFolder, { recursive: true });
+
+  const targetFilePath = path.join(targetFolder, targetFileName);
   fs.writeFileSync(targetFilePath, content);
 
   console.log(`Generated: ${targetFolder}/${targetFileName}`);
