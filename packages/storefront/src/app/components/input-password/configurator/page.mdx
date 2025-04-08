@@ -1,0 +1,27 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from "@/components/playground/Configurator";
+import {
+  inputPasswordStory
+} from "@/app/components/input-password/input-password.stories";
+
+export const metadata = {
+  title: 'Input Password - Porsche Design System',
+  description: 'Some description'
+}
+
+# Input Password <ComponentStatus tagName="p-input-password"></ComponentStatus>
+
+The `p-input-password` component enables secure password entry by obscuring the typed characters. Displayed as a
+one-line plain text editor, it ensures the password remains hidden to protect user privacy. Additionally, the component
+includes a toggle button that allows users to reveal the password in clear text when needed, offering both security and
+convenience.
+
+A `label` is a caption which informs the user what information a particular form field is asking for. The
+`p-input-password` component can be used with or without a label, but it's recommended to keep the label visible for
+better accessibility whenever possible. When used without a label, it's mandatory to provide a descriptive label text
+for screen readers.
+
+While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to
+give the user visual cues to fill out the form.
+
+<Configurator tagName="p-input-password" story={inputPasswordStory} />

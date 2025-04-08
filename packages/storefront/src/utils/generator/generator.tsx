@@ -148,9 +148,10 @@ import {
   type PToastProps,
   PWordmark,
   type PWordmarkProps,
+  PInputPassword,
+  type PInputPasswordProps,
 } from '@porsche-design-system/components-react/ssr';
 import type { TagName } from '@porsche-design-system/shared';
-import { pascalCase } from 'change-case';
 import React, { type ReactNode } from 'react';
 
 type SafePropTypeMapping = {
@@ -268,6 +269,7 @@ export type PropTypeMapping = {
   'p-headline': PHeadlineProps;
   'p-icon': PIconProps;
   'p-inline-notification': PInlineNotificationProps;
+  'p-input-password': PInputPasswordProps;
   'p-link': PLinkProps;
   'p-link-pure': PLinkPureProps;
   'p-link-social': PLinkSocialProps;
@@ -345,6 +347,7 @@ const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
   'p-headline': PHeadline,
   'p-icon': PIcon,
   'p-inline-notification': PInlineNotification,
+  'p-input-password': PInputPassword,
   'p-link': PLink,
   'p-link-pure': PLinkPure,
   'p-link-social': PLinkSocial,
