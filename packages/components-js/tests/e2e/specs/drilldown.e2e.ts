@@ -4,7 +4,7 @@ import {
   addEventListener,
   getActiveElementClassNameInShadowRoot,
   getActiveElementId,
-  getActiveElementProp,
+  getActiveElementParentProp,
   getActiveElementTagName,
   getActiveElementTagNameInShadowRoot,
   getAttribute,
@@ -28,7 +28,7 @@ const getDrilldownDismissButton = (page: Page) => page.locator('p-drilldown p-bu
 const getDrilldownDialogVisibility = async (page: Page) =>
   await getElementStyle(getDrilldownDialog(page), 'visibility');
 const getDrilldownItem = (page: Page, identifier: string) =>
-  page.locator(`p-drilldown-item[identifier="${identifier}"] .button`);
+  page.locator(`p-drilldown-item[identifier="${identifier}"] p-drilldown-button`);
 const getDrilldownItemScroller = (page: Page, identifier: string) =>
   page.locator(`p-drilldown-item[identifier="${identifier}"] .scroller`);
 const getBodyStyle = async (page: Page) => getAttribute(page.locator('body'), 'style');
@@ -52,16 +52,17 @@ const initBasicDrilldown = (
 
   const drilldownItemContent = `
       <h3>Some heading</h3>
-      <a href="#some-anchor">Some anchor</a>
-      <a href="#some-anchor">Some anchor</a>
-      <a href="#some-anchor">Some anchor</a>`;
+      <p-drilldown-link href="#some-anchor">Some anchor</p-drilldown-link>
+      <p-drilldown-link href="#some-anchor">Some anchor</p-drilldown-link>
+      <p-drilldown-link href="#some-anchor">Some anchor</p-drilldown-link>`;
 
   const flyoutMarkup = `
 <p-drilldown ${getHTMLAttributes(drilldownProps)}>
   ${[...Array(amount)]
     .map(
       (_, i) =>
-        `<p-drilldown-item identifier="item-${i + 1}" label="item-${i + 1}">${
+        `<p-drilldown-item identifier="item-${i + 1}" label="item-${i + 1}">
+          <p-drilldown-button slot="button">item-${i + 1}</p-drilldown-button>${
           content[i] ? content[i] : drilldownItemContent
         }</p-drilldown-item>`
     )
@@ -148,8 +149,8 @@ test.describe('update event', () => {
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-ITEM');
-      expect(await getActiveElementProp(page, 'identifier')).toBe('item-2');
+      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-BUTTON');
+      expect(await getActiveElementParentProp(page, 'identifier')).toBe('item-2');
       await page.keyboard.press('Enter');
       await waitForStencilLifecycle(page);
 
@@ -167,8 +168,8 @@ test.describe('update event', () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-ITEM');
-      expect(await getActiveElementProp(page, 'identifier')).toBe('item-3');
+      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-BUTTON');
+      expect(await getActiveElementParentProp(page, 'identifier')).toBe('item-3');
       await page.keyboard.press('Space');
       await waitForStencilLifecycle(page);
 
@@ -283,12 +284,12 @@ test.describe('focus behavior', () => {
     await openDrilldown(page);
 
     await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-ITEM');
-    expect(await getActiveElementProp(page, 'identifier')).toBe('item-1');
+    expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-BUTTON');
+    expect(await getActiveElementParentProp(page, 'identifier')).toBe('item-1');
 
     await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-ITEM');
-    expect(await getActiveElementProp(page, 'identifier')).toBe('item-2');
+    expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-BUTTON');
+    expect(await getActiveElementParentProp(page, 'identifier')).toBe('item-2');
   });
 
   skipInBrowsers(['firefox'], () => {
@@ -297,11 +298,12 @@ test.describe('focus behavior', () => {
       await openDrilldown(page);
 
       await page.keyboard.press('Tab');
-      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-ITEM');
-      expect(await getActiveElementProp(page, 'identifier')).toBe('item-1');
+
+      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-BUTTON');
+      expect(await getActiveElementParentProp(page, 'identifier')).toBe('item-1');
 
       await page.keyboard.press('Tab');
-      expect(await getActiveElementTagName(page)).toBe('A');
+      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-LINK');
     });
   });
 
@@ -313,26 +315,26 @@ test.describe('focus behavior', () => {
       await waitForStencilLifecycle(page);
 
       await page.keyboard.press('Tab');
-      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-ITEM');
-      expect(await getActiveElementProp(page, 'identifier')).toBe('item-1');
+      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-BUTTON');
+      expect(await getActiveElementParentProp(page, 'identifier')).toBe('item-1');
 
       await page.keyboard.press('Tab');
-      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-ITEM');
-      expect(await getActiveElementProp(page, 'identifier')).toBe('item-2');
+      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-BUTTON');
+      expect(await getActiveElementParentProp(page, 'identifier')).toBe('item-2');
 
       await setProperty(host, 'activeIdentifier', 'item-2'); // Open second level
       await waitForStencilLifecycle(page);
 
       await page.keyboard.press('Tab');
-      expect(await getActiveElementTagName(page)).toBe('A');
+      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-LINK');
       await page.keyboard.press('Tab');
-      expect(await getActiveElementTagName(page)).toBe('A');
+      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-LINK');
       await page.keyboard.press('Tab');
-      expect(await getActiveElementTagName(page)).toBe('A');
+      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-LINK');
 
       await page.keyboard.press('Tab');
-      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-ITEM');
-      expect(await getActiveElementProp(page, 'identifier')).toBe('item-3');
+      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-BUTTON');
+      expect(await getActiveElementParentProp(page, 'identifier')).toBe('item-3');
     });
   });
 
@@ -603,10 +605,12 @@ test.describe('lifecycle', () => {
 
     expect(status.componentDidLoad['p-drilldown'], 'componentDidLoad: p-drilldown').toBe(1);
     expect(status.componentDidLoad['p-drilldown-item'], 'componentDidLoad: p-drilldown-item').toBe(3);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(8); // 3 item buttons + 3 item back buttons + 1 root back button + 1 dismiss button
+    expect(status.componentDidLoad['p-drilldown-button'], 'componentDidLoad: p-drilldown-button').toBe(3);
+    expect(status.componentDidLoad['p-drilldown-link'], 'componentDidLoad: p-drilldown-link').toBe(9);
+    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(5); // 3 item back buttons + 1 root back button + 1 dismiss button
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(9);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(22);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(31);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -615,7 +619,7 @@ test.describe('lifecycle', () => {
     const host = getHost(page);
     const statusBefore = await getLifecycleStatus(page);
 
-    expect(statusBefore.componentDidLoad.all, 'componentDidLoad: all').toBe(22);
+    expect(statusBefore.componentDidLoad.all, 'componentDidLoad: all').toBe(31);
     expect(statusBefore.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
 
     await setProperty(host, 'activeIdentifier', 'item-1');
@@ -625,7 +629,8 @@ test.describe('lifecycle', () => {
 
     expect(statusAfter.componentDidUpdate['p-drilldown'], 'componentDidUpdate: p-drilldown').toBe(2);
     expect(statusAfter.componentDidUpdate['p-drilldown-item'], 'componentDidUpdate: p-drilldown-item').toBe(1);
-    expect(statusAfter.componentDidUpdate['p-button-pure'], 'componentDidUpdate: p-button-pure').toBe(1);
+    expect(statusAfter.componentDidUpdate['p-drilldown-button'], 'componentDidUpdate: p-drilldown-button').toBe(1);
+    expect(statusAfter.componentDidUpdate['p-drilldown-link'], 'componentDidUpdate: p-drilldown-link').toBe(0);
     expect(statusAfter.componentDidUpdate.all, 'componentDidUpdate: all').toBe(4);
   });
 
@@ -633,7 +638,7 @@ test.describe('lifecycle', () => {
     await initBasicDrilldown(page, { open: true });
     const statusBefore = await getLifecycleStatus(page);
 
-    expect(statusBefore.componentDidLoad.all, 'componentDidLoad: all').toBe(22);
+    expect(statusBefore.componentDidLoad.all, 'componentDidLoad: all').toBe(31);
     expect(statusBefore.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
 
     await dismissDrilldown(page);
