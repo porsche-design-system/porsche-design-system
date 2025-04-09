@@ -14,6 +14,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Added
+
+- `Input Password`: ([#3763](https://github.com/porsche-design-system/porsche-design-system/pull/3763))
+
 #### Fixed
 
 - Accessibility: fix ARIA live announcements of form components status messages

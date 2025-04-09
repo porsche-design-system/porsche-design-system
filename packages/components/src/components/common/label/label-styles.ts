@@ -1,13 +1,13 @@
+import { fontSizeTextXSmall, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/styles';
 import type { JssStyle, Styles } from 'jss';
-import type { BreakpointCustomizable } from '../../../utils/breakpoint-customizable';
-import { buildResponsiveStyles, type Theme } from '../../../utils';
 import {
   getHiddenTextJssStyle,
   getThemedColors,
   getTransition,
   prefersColorSchemeDarkMediaQuery,
 } from '../../../styles';
-import { fontSizeTextXSmall, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/styles';
+import { type Theme, buildResponsiveStyles } from '../../../utils';
+import type { BreakpointCustomizable } from '../../../utils/breakpoint-customizable';
 import { getFunctionalComponentRequiredStyles } from '../required/required-styles';
 
 export const getFunctionalComponentLabelStyles = (
