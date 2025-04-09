@@ -8,6 +8,7 @@ import {
   type PSelectProps,
   type SelectUpdateEventDetail,
 } from '@porsche-design-system/components-react/ssr';
+import React from 'react';
 
 type ThemeSelectProps = {
   value: PlaygroundTheme;
