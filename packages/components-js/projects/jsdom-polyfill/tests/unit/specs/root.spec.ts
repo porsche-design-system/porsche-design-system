@@ -1,11 +1,11 @@
-import type { TagName } from '@porsche-design-system/shared';
-import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
-import { componentsReady } from '@porsche-design-system/components-js';
 import * as fs from 'fs';
 import * as path from 'path';
+import { componentsReady } from '@porsche-design-system/components-js';
+import type { TagName } from '@porsche-design-system/shared';
+import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 import { globbySync } from 'globby';
-import { tagNameMarkup, WHITELISTED_TAG_NAMES } from '../helper';
 import { vi } from 'vitest';
+import { WHITELISTED_TAG_NAMES, tagNameMarkup } from '../helper';
 
 it('should have one unit test per component', () => {
   const whitelistedComponents: TagName[] = [...INTERNAL_TAG_NAMES, ...WHITELISTED_TAG_NAMES] as TagName[];
