@@ -28,6 +28,36 @@ const config: ElementConfig = {
 };
 ```
 
+Generated output:
+
+```html
+<p-link variant="secondary" compact="true">
+  <a href="https://porsche.com"> Some label </a>
+</p-link>
+```
+
+```jsx
+<PLink variant="secondary" compact={true}>
+  <a href="https://porsche.com">Some label</a>
+</PLink>
+```
+
+```angular181html
+<p-link variant="secondary" [compact]="true">
+  <a href="https://porsche.com">
+    Some label
+  </a>
+</p-link>
+```
+
+```vue
+<PLink variant="secondary" :compact="true">
+  <a href="https://porsche.com">
+    Some label
+  </a>
+</PLink>
+```
+
 ### Story
 
 To use the configurator, you need to create a component "story". A story consists of a **state** and a **generator
@@ -201,6 +231,14 @@ Output (vanilla-js):
   const accordion = document.querySelector('p-accordion');
   accordion.addEventListener('update', (e) => (e.target.open = e.detail.open));
 </script>
+```
+
+### Usage
+
+```mdxjs
+import { flyoutSlotStories, flyoutStory } from "@/app/components/flyout/flyout.stories";
+import { Configurator } from "@/components/playground/Configurator";
+<Configurator tagName="p-flyout" story={flyoutStory} slotStories={flyoutSlotStories} />
 ```
 
 ## Component Examples
