@@ -22,10 +22,14 @@ const scenario = async (
 <div class="playground light ${pseudoState}" title="should render :${pseudoState}" style="height: 10rem;">
   <p-drilldown open="true" active-identifier="id-1-1">
     <p-drilldown-item identifier="id-1" label="Some Label">
+      <p-drilldown-button slot="button">Some Label</p-drilldown-button>
       <p-drilldown-item identifier="id-1-1" label="Some Label">
-        <a href="#some-anchor">Some anchor</a>
+        <p-drilldown-button slot="button">Some Label</p-drilldown-button>
+        <p-drilldown-link href="#some-anchor">Some anchor</p-drilldown-link>
       </p-drilldown-item>
-      <p-drilldown-item identifier="id-1-2" label="Some Label"></p-drilldown-item>
+      <p-drilldown-item identifier="id-1-2" label="Some Label">
+        <p-drilldown-button slot="button">Some Label</p-drilldown-button>
+      </p-drilldown-item>
     </p-drilldown-item>
   </p-drilldown>
 </div>`;
@@ -37,16 +41,19 @@ const scenario = async (
 
   if (pseudoState === 'hover') {
     await forceHoverState(page, 'p-drilldown >>> p-button-pure >>> button'); // Dismiss button
-    await forceHoverState(page, 'p-drilldown-item >>> p-button-pure >>> button'); // Back, Selected, Sibling button
-    await forceHoverState(page, 'p-drilldown-item a');
+    await forceHoverState(page, 'p-drilldown-item >>> p-button-pure >>> button'); // Back button
+    await forceHoverState(page, 'p-drilldown-button >>> button'); // Sibling button
+    await forceHoverState(page, 'p-drilldown-link >>> a');
   } else if (pseudoState === 'focus') {
     await forceFocusVisibleState(page, 'p-drilldown >>> p-button-pure >>> button'); // Dismiss button
-    await forceFocusVisibleState(page, 'p-drilldown-item >>> p-button-pure >>> button'); // Back, Selected, Sibling button
-    await forceFocusVisibleState(page, 'p-drilldown-item a');
+    await forceFocusVisibleState(page, 'p-drilldown-item >>> p-button-pure >>> button'); // Back button
+    await forceFocusVisibleState(page, 'p-drilldown-button >>> button'); // Sibling button
+    await forceFocusVisibleState(page, 'p-drilldown-link >>> a');
   } else if (pseudoState === 'focus-hover') {
     await forceFocusHoverState(page, 'p-drilldown >>> p-button-pure >>> button'); // Dismiss button
-    await forceFocusHoverState(page, 'p-drilldown-item >>> p-button-pure >>> button'); // Back, Selected, Sibling button
-    await forceFocusHoverState(page, 'p-drilldown-item a');
+    await forceFocusHoverState(page, 'p-drilldown-item >>> p-button-pure >>> button'); // Back button
+    await forceFocusHoverState(page, 'p-drilldown-button >>> button'); // Sibling button
+    await forceFocusHoverState(page, 'p-drilldown-link >>> a');
   }
 };
 
