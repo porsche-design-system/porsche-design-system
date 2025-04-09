@@ -2,7 +2,7 @@ import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../../types';
 import {
   AllowedTypes,
-  attachComponentCss,
+  attachComponentCss, hasPropValueChanged,
   LINK_ARIA_ATTRIBUTES,
   parseAndGetAriaAttributes,
   THEMES,
@@ -57,6 +57,10 @@ export class DrilldownLink {
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-drilldown', 'p-drilldown-item']);
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {

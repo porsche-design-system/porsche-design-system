@@ -92,7 +92,7 @@ describe('parseAndGetAriaAttributes()', () => {
     const component = componentFactory(tagName);
     component['aria'] = { 'aria-label': 'Some label' };
 
-    if (['p-link', 'p-link-pure', 'p-marque', 'p-wordmark', 'p-crest'].includes(tagName)) {
+    if (['p-link', 'p-link-pure', 'p-marque', 'p-wordmark', 'p-crest', 'p-drilldown-link'].includes(tagName)) {
       component['href'] = 'https://porsche.com';
     }
 

@@ -4,10 +4,9 @@ import {
   AllowedTypes,
   attachComponentCss,
   BUTTON_ARIA_ATTRIBUTES,
-  getPrefixedTagNames,
+  getPrefixedTagNames, hasPropValueChanged,
   parseAndGetAriaAttributes,
   THEMES,
-  throwIfElementHasNoSlotAttribute,
   throwIfParentIsNotOfKind,
   validateProps,
 } from '../../../utils';
@@ -43,7 +42,10 @@ export class DrilldownButton {
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-drilldown', 'p-drilldown-item']);
-    throwIfElementHasNoSlotAttribute(this.host, 'button');
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {
