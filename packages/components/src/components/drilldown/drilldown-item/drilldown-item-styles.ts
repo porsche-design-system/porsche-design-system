@@ -1,26 +1,21 @@
 import {
-  borderRadiusSmall,
   headingSmallStyle,
   spacingFluidLarge,
   spacingFluidMedium,
   spacingFluidSmall,
   spacingFluidXSmall,
   spacingStaticMedium,
-  textMediumStyle,
 } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
   getAnimation,
-  getFocusJssStyle,
   getThemedColors,
-  getTransition,
   hostHiddenStyles,
-  hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { type Theme, getCss } from '../../../utils';
+import { getCss, type Theme } from '../../../utils';
 import {
   cssVariableGap,
   cssVariableGridTemplate,
@@ -29,41 +24,6 @@ import {
   scrollerBackground,
   scrollerWidthDesktop,
 } from '../drilldown/drilldown-styles';
-import type { JssStyle } from 'jss';
-
-export const getLinkStyle = (theme: Theme): JssStyle => {
-  const { primaryColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark } = getThemedColors('dark');
-
-  return {
-    '&(a)': {
-      all: 'unset',
-      gridColumn: '1/-1',
-      alignSelf: 'flex-start',
-      font: textMediumStyle.font,
-      cursor: 'pointer',
-      borderRadius: borderRadiusSmall,
-      padding: spacingFluidSmall,
-      marginInline: `calc(${spacingFluidSmall} * -1)`,
-      color: primaryColor,
-      textDecoration: 'underline',
-      textDecorationColor: 'transparent',
-      transition: `${getTransition('text-decoration-color')}`,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: primaryColorDark,
-      }),
-    },
-    '&(a[aria-current])': {
-      textDecoration: 'underline',
-    },
-    ...hoverMediaQuery({
-      '&(a:hover)': {
-        textDecorationColor: 'inherit',
-      },
-    }),
-    ...getFocusJssStyle(theme, { slotted: 'a', offset: '-2px' }),
-  };
-};
 
 export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCascade: boolean, theme: Theme): string => {
   const { primaryColor, backgroundColor } = getThemedColors(theme);
@@ -89,6 +49,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       slot: {
         '&[name="header"]': {
           display: 'none',
@@ -192,14 +153,10 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
           },
         },
       }),
-      '::slotted': {
-        ...getLinkStyle(theme),
-        '&(*)': {
-          [cssVariableGridTemplate]: 'auto/auto', // reset css variable to prevent inheritance
-          [cssVariableGap]: spacingFluidXSmall, // reset css variable to prevent inheritance
-        },
+      '::slotted(*)': {
+        [cssVariableGridTemplate]: 'auto/auto', // reset css variable to prevent inheritance
+        [cssVariableGap]: spacingFluidXSmall, // reset css variable to prevent inheritance
       },
-      ...preventFoucOfNestedElementsStyles,
     },
     // drawer subgrid in combination with scroller grid ensures no content squeezing during slide up animation, potentially caused by scrollbar
     drawer: {

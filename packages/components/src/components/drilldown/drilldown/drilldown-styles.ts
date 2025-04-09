@@ -21,8 +21,7 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { type Theme, getCss } from '../../../utils';
-import { getLinkStyle } from '../drilldown-item/drilldown-item-styles';
+import { getCss, type Theme } from '../../../utils';
 
 export const scrollerWidthDesktop = 'clamp(338px, 210px + 18vw, 640px)';
 export const mediaQueryMobile = getMediaQueryMax('s');
@@ -79,12 +78,9 @@ export const getComponentCss = (
         }),
       },
       ...preventFoucOfNestedElementsStyles,
-      '::slotted': {
-        ...getLinkStyle(theme),
-        '&(*)': {
-          [cssVariableGridTemplate]: 'auto/auto', // reset css variable to prevent inheritance
-          [cssVariableGap]: spacingFluidXSmall, // reset css variable to prevent inheritance
-        },
+      '::slotted(*)': {
+        [cssVariableGridTemplate]: 'auto/auto', // reset css variable to prevent inheritance
+        [cssVariableGap]: spacingFluidXSmall, // reset css variable to prevent inheritance
       },
       dialog: {
         all: 'unset',

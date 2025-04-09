@@ -21,6 +21,8 @@ import { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils"
 import { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
 import { DividerColor, DividerDirection, DividerOrientation } from "./components/divider/divider-utils";
 import { DrilldownAriaAttribute, DrilldownUpdateEventDetail } from "./components/drilldown/drilldown/drilldown-utils";
+import { DrilldownButtonAriaAttribute } from "./components/drilldown/drilldown-button/drilldown-button-utils";
+import { DrilldownLinkAriaAttribute, DrilldownLinkTarget } from "./components/drilldown/drilldown-link/drilldown-link-utils";
 import { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
 import { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
@@ -87,6 +89,8 @@ export { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils"
 export { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
 export { DividerColor, DividerDirection, DividerOrientation } from "./components/divider/divider-utils";
 export { DrilldownAriaAttribute, DrilldownUpdateEventDetail } from "./components/drilldown/drilldown/drilldown-utils";
+export { DrilldownButtonAriaAttribute } from "./components/drilldown/drilldown-button/drilldown-button-utils";
+export { DrilldownLinkAriaAttribute, DrilldownLinkTarget } from "./components/drilldown/drilldown-link/drilldown-link-utils";
 export { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
 export { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 export { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
@@ -696,6 +700,23 @@ export namespace Components {
     /**
      * @experimental 
      */
+    interface PDrilldownButton {
+        /**
+          * Display button in active state.
+         */
+        "active"?: boolean;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<DrilldownButtonAriaAttribute>;
+        /**
+          * Adapts the button color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
+    /**
+     * @experimental 
+     */
     interface PDrilldownItem {
         /**
           * Private property set by the component itself.
@@ -706,7 +727,7 @@ export namespace Components {
          */
         "identifier": string;
         /**
-          * Label of the item.
+          * Renders back button and header section on mobile view in case slot="header" is not set.
          */
         "label"?: string;
         /**
@@ -717,6 +738,39 @@ export namespace Components {
           * Private property set by the component itself.
          */
         "secondary"?: boolean;
+    }
+    /**
+     * @experimental 
+     */
+    interface PDrilldownLink {
+        /**
+          * Display link in active state.
+         */
+        "active"?: boolean;
+        /**
+          * Add ARIA attributes (only has effect when `href` is defined and no slotted anchor is used).
+         */
+        "aria"?: SelectedAriaAttributes<DrilldownLinkAriaAttribute>;
+        /**
+          * Special download attribute to open native browser download dialog if target url points to a downloadable file (only has effect when `href` is defined and no slotted anchor is used).
+         */
+        "download"?: string;
+        /**
+          * When providing an url then the component will be rendered as `<a>` otherwise the component expects a slotted anchor.
+         */
+        "href"?: string;
+        /**
+          * Specifies the relationship of the target object to the link object (only has effect when `href` is defined and no slotted anchor is used).
+         */
+        "rel"?: string;
+        /**
+          * Target attribute where the link should be opened (only has effect when `href` is defined and no slotted anchor is used).
+         */
+        "target"?: DrilldownLinkTarget;
+        /**
+          * Adapts the button color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PFieldset {
         /**
@@ -2721,11 +2775,29 @@ declare global {
     /**
      * @experimental 
      */
+    interface HTMLPDrilldownButtonElement extends Components.PDrilldownButton, HTMLStencilElement {
+    }
+    var HTMLPDrilldownButtonElement: {
+        prototype: HTMLPDrilldownButtonElement;
+        new (): HTMLPDrilldownButtonElement;
+    };
+    /**
+     * @experimental 
+     */
     interface HTMLPDrilldownItemElement extends Components.PDrilldownItem, HTMLStencilElement {
     }
     var HTMLPDrilldownItemElement: {
         prototype: HTMLPDrilldownItemElement;
         new (): HTMLPDrilldownItemElement;
+    };
+    /**
+     * @experimental 
+     */
+    interface HTMLPDrilldownLinkElement extends Components.PDrilldownLink, HTMLStencilElement {
+    }
+    var HTMLPDrilldownLinkElement: {
+        prototype: HTMLPDrilldownLinkElement;
+        new (): HTMLPDrilldownLinkElement;
     };
     interface HTMLPFieldsetElement extends Components.PFieldset, HTMLStencilElement {
     }
@@ -3398,7 +3470,9 @@ declare global {
         "p-display": HTMLPDisplayElement;
         "p-divider": HTMLPDividerElement;
         "p-drilldown": HTMLPDrilldownElement;
+        "p-drilldown-button": HTMLPDrilldownButtonElement;
         "p-drilldown-item": HTMLPDrilldownItemElement;
+        "p-drilldown-link": HTMLPDrilldownLinkElement;
         "p-fieldset": HTMLPFieldsetElement;
         "p-fieldset-wrapper": HTMLPFieldsetWrapperElement;
         "p-flex": HTMLPFlexElement;
@@ -4065,6 +4139,23 @@ declare namespace LocalJSX {
     /**
      * @experimental 
      */
+    interface PDrilldownButton {
+        /**
+          * Display button in active state.
+         */
+        "active"?: boolean;
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<DrilldownButtonAriaAttribute>;
+        /**
+          * Adapts the button color depending on the theme.
+         */
+        "theme"?: Theme;
+    }
+    /**
+     * @experimental 
+     */
     interface PDrilldownItem {
         /**
           * Private property set by the component itself.
@@ -4075,7 +4166,7 @@ declare namespace LocalJSX {
          */
         "identifier"?: string;
         /**
-          * Label of the item.
+          * Renders back button and header section on mobile view in case slot="header" is not set.
          */
         "label"?: string;
         /**
@@ -4086,6 +4177,39 @@ declare namespace LocalJSX {
           * Private property set by the component itself.
          */
         "secondary"?: boolean;
+    }
+    /**
+     * @experimental 
+     */
+    interface PDrilldownLink {
+        /**
+          * Display link in active state.
+         */
+        "active"?: boolean;
+        /**
+          * Add ARIA attributes (only has effect when `href` is defined and no slotted anchor is used).
+         */
+        "aria"?: SelectedAriaAttributes<DrilldownLinkAriaAttribute>;
+        /**
+          * Special download attribute to open native browser download dialog if target url points to a downloadable file (only has effect when `href` is defined and no slotted anchor is used).
+         */
+        "download"?: string;
+        /**
+          * When providing an url then the component will be rendered as `<a>` otherwise the component expects a slotted anchor.
+         */
+        "href"?: string;
+        /**
+          * Specifies the relationship of the target object to the link object (only has effect when `href` is defined and no slotted anchor is used).
+         */
+        "rel"?: string;
+        /**
+          * Target attribute where the link should be opened (only has effect when `href` is defined and no slotted anchor is used).
+         */
+        "target"?: DrilldownLinkTarget;
+        /**
+          * Adapts the button color depending on the theme.
+         */
+        "theme"?: Theme;
     }
     interface PFieldset {
         /**
@@ -5971,7 +6095,9 @@ declare namespace LocalJSX {
         "p-display": PDisplay;
         "p-divider": PDivider;
         "p-drilldown": PDrilldown;
+        "p-drilldown-button": PDrilldownButton;
         "p-drilldown-item": PDrilldownItem;
+        "p-drilldown-link": PDrilldownLink;
         "p-fieldset": PFieldset;
         "p-fieldset-wrapper": PFieldsetWrapper;
         "p-flex": PFlex;
@@ -6077,7 +6203,15 @@ declare module "@stencil/core" {
             /**
              * @experimental 
              */
+            "p-drilldown-button": LocalJSX.PDrilldownButton & JSXBase.HTMLAttributes<HTMLPDrilldownButtonElement>;
+            /**
+             * @experimental 
+             */
             "p-drilldown-item": LocalJSX.PDrilldownItem & JSXBase.HTMLAttributes<HTMLPDrilldownItemElement>;
+            /**
+             * @experimental 
+             */
+            "p-drilldown-link": LocalJSX.PDrilldownLink & JSXBase.HTMLAttributes<HTMLPDrilldownLinkElement>;
             "p-fieldset": LocalJSX.PFieldset & JSXBase.HTMLAttributes<HTMLPFieldsetElement>;
             /**
              * @deprecated since v3.0.0, will be removed with next major release. Please use "p-fieldset" instead.

@@ -11,6 +11,7 @@ export * from './throwIfInvalidLinkTileProductUsage';
 export * from './throwIfParentIsNotOfKind';
 export * from './throwIfPropIsUndefined';
 export * from './throwIfRootNodeIsNotOneOfKind';
+export * from './throwIfElementHasNoSlotAttribute';
 export { AllowedTypes, validateProps } from './validateProps';
 export * from './validateVersions';
 export * from '../link-button/align-label';

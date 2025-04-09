@@ -37,7 +37,7 @@ const propTypes: PropTypes<typeof DrilldownItem> = {
 export class DrilldownItem {
   @Element() public host!: HTMLElement & DrilldownItemInternalHTMLProps;
 
-  /** Label of the item. */
+  /** Renders back button and header section on mobile view. */
   @Prop() public label?: string;
 
   /** Unique identifier which controls if this item should be shown when the active-identifier on the drilldown is set to this value. */
@@ -55,7 +55,7 @@ export class DrilldownItem {
   private scroller: HTMLDivElement;
 
   private hasSlottedHeader: boolean;
-  private slottedHTMLButtonElement: HTMLElement;
+  private slottedCustomHTMLButtonElement: HTMLElement & { active: boolean };
 
   private get theme(): Theme {
     return this.host.theme || 'light'; // default as fallback (internal private prop is controlled by drilldown)
@@ -82,15 +82,19 @@ export class DrilldownItem {
   public componentWillRender() {
     this.hasSlottedHeader = hasNamedSlot(this.host, 'header');
 
-    this.slottedHTMLButtonElement = getNamedSlot(this.host, 'button');
-    this.slottedHTMLButtonElement?.removeEventListener('click', this.onClickButton);
+    this.slottedCustomHTMLButtonElement = getNamedSlot(this.host, 'button') as HTMLElement & { active: boolean };
+    this.slottedCustomHTMLButtonElement?.removeEventListener('click', this.onClickButton);
   }
 
   public componentDidRender() {
     this.scroller.scrollTo(0, 0); // Reset scroll position when navigated
 
-    this.slottedHTMLButtonElement?.addEventListener('click', this.onClickButton);
-    this.slottedHTMLButtonElement?.setAttribute('aria-expanded', this.secondary ? 'true' : 'false');
+    // TODO: can be improved by assigning click listener and active state on p-drilldown-button directly
+    if (this.slottedCustomHTMLButtonElement) {
+      this.slottedCustomHTMLButtonElement.addEventListener('click', this.onClickButton);
+      this.slottedCustomHTMLButtonElement.setAttribute('aria-expanded', this.secondary ? 'true' : 'false'); // only relevant for <button slot="button" />
+      this.slottedCustomHTMLButtonElement.active = this.secondary; // only relevant for <p-drilldown-button slot="button" />
+    }
   }
 
   public render(): JSX.Element {
@@ -101,25 +105,7 @@ export class DrilldownItem {
 
     return (
       <Host>
-        {this.slottedHTMLButtonElement ? (
-          <slot name="button" />
-        ) : (
-          <PrefixedTagNames.pButtonPure
-            inert={this.primary || this.cascade}
-            class="button"
-            type="button"
-            size="medium"
-            alignLabel="start"
-            stretch={true}
-            icon="arrow-head-right"
-            active={this.secondary}
-            aria={{ 'aria-expanded': this.secondary }}
-            theme={this.theme}
-            onClick={() => this.onClickButton()}
-          >
-            {this.label}
-          </PrefixedTagNames.pButtonPure>
-        )}
+        <slot name="button" />
         <PrefixedTagNames.pButtonPure
           class="back"
           type="button"
