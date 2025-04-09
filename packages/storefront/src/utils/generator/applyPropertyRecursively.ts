@@ -1,6 +1,7 @@
 import type { StorefrontTheme } from '@/models/theme';
 import type { ElementConfig, HTMLElementOrComponentProps, HTMLTagOrComponent } from '@/utils/generator/generator';
 
+// TODO: Typing does not work correctly. E.g. when trying to use 'open' as propertyKey
 /**
  * Recursively applies a specified property to the properties of multiple ElementConfigs.
  *
