@@ -14639,7 +14639,6 @@ exports[`should render dsr component for PSelect 1`] = `
       />
       <button
         aria-controls="list"
-        aria-describedby="initial-status"
         aria-expanded="false"
         aria-haspopup="listbox"
         aria-labelledby="label"
@@ -14707,106 +14706,10 @@ img {
       >
         <slot />
       </div>
-      <span
-        aria-live="assertive"
-        aria-relevant="additions text"
-        class="sr-only"
-        role="status"
-      />
     </div>
   </template>
   Some child
 </p-select>
-`;
-
-exports[`should render dsr component for PSelectOption 1`] = `
-<p-select-option
-  data-ssr=""
->
-  <template
-    shadowroot="open"
-    shadowrootmode="open"
-  >
-    <style>
-      :host {
-  scroll-margin: 6px !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-::slotted(img) {
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  width: auto !important;
-  height: calc(6px + 2.125ex) !important;
-  border-radius: 4px !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.option {
-  display: flex;
-  gap: max(4px, var(--p-internal-select-option-scaling, 1) * 12px);
-  padding-block: max(2px, var(--p-internal-select-option-scaling, 1) * 8px);
-  padding-inline: max(4px, var(--p-internal-select-option-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-option-scaling, 1) * 12px);
-  min-height: calc(6px + 2.125ex);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #535457;
-  cursor: pointer;
-  text-align: start;
-  word-break: break-word;
-  box-sizing: content-box;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.option[role=status] {
-  cursor: not-allowed;
-}
-.option__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.option--selected {
-  cursor: default;
-  pointer-events: none;
-  background: rgba(148, 149, 152, .18);
-}
-.option--highlighted {
-  background: #D8D8DB;
-}
-.option--highlighted, .option--selected {
-  color: #010205;
-}
-.option--disabled {
-  cursor: not-allowed;
-  color: #949598;
-}
-.option--hidden {
-  display: none;
-}
-.icon {
-  margin-inline-start: auto;
-}
-
-    </style>
-    <div
-      aria-label="Empty value"
-      aria-selected="false"
-      class="[object Object]"
-      role="option"
-    >
-      <slot />
-    </div>
-  </template>
-  Some child
-</p-select-option>
 `;
 
 exports[`should render dsr component for PSelectWrapper 1`] = `
