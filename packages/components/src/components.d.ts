@@ -727,7 +727,7 @@ export namespace Components {
          */
         "identifier": string;
         /**
-          * Renders back button and header section on mobile view in case slot="header" is not set.
+          * Renders back button and header section on mobile view.
          */
         "label"?: string;
         /**
@@ -4166,7 +4166,7 @@ declare namespace LocalJSX {
          */
         "identifier"?: string;
         /**
-          * Renders back button and header section on mobile view in case slot="header" is not set.
+          * Renders back button and header section on mobile view.
          */
         "label"?: string;
         /**

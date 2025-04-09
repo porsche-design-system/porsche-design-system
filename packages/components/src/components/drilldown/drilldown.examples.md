@@ -1,8 +1,8 @@
 <ComponentHeading name="Drilldown"></ComponentHeading>
 
-The `p-drilldown` component is meant for displaying an infinite multilevel structure in a drilldown that overlays the
-page content from the start side of the screen. It is a controlled component that gives you flexible control over its
-behavior.
+The `p-drilldown` component is meant for displaying an infinite multilevel structure in a drilldown menu that overlays
+the page content from the start side of the screen. It is a controlled component that gives you flexible control over
+its behavior.
 
 <TableOfContents></TableOfContents>
 
@@ -38,13 +38,25 @@ can be done by using `<a aria-current="page">…</a>`.
 
 ## Example with custom content
 
-To give further flexibility, e.g. if you only want to provide a direct link to a page on the **1st level**, you can just
-use the `p-link-pure` component.
+To give further flexibility, if you only want to provide a direct link to a page on the **1st level**, you can e.g. just
+use the `p-link` component. By using a custom slot `slot="button"` and/or `slot="header"` it's even possible to
+customize the drilldown structure. In combination with CSS variables (`--p-drilldown-grid-template`,
+`--p-drilldown-gap`) the layout structure for each layer can also be adjusted.
 
 Regarding further individualization, you can use components like e.g. `p-link-tile` and others or create your own custom
 contents and use it as a child.
 
 <Playground :frameworkMarkup="codeExampleCustomContent" :markup="codeExampleCustomContent['vanilla-js']" :config="config"></Playground>
+
+## Custom styling
+
+When the component is used in combination with a custom slot `slot="button"`, it's possible to adjust the layout
+behaviour for each layer individually by a CSS Custom Property (aka CSS Variable):
+
+```scss
+--p-drilldown-grid-template: auto / repeat(2, minmax(0, 1fr));
+--p-drilldown-gap: 8px / 16px;
+```
 
 ## Browser Support
 
