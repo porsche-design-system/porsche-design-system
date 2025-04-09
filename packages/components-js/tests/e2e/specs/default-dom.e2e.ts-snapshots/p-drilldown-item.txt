@@ -1,4 +1,4 @@
-<p-button-pure class="button hydrated"> </p-button-pure>
+<slot name="button"> </slot>
 <p-button-pure class="back hydrated"> </p-button-pure>
 <h2></h2>
 <div class="drawer">
