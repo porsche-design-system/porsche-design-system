@@ -557,7 +557,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
           .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
       } else if (tagName === 'p-select-option') {
-        newFileContent = newFileContent.replace(/this\.theme/, 'this.props.theme');
+        newFileContent = newFileContent
+          .replace(/this\.theme/, 'this.props.theme')
+          .replace(/@AttachInternals\(\)/, '')
+          // transform className objects to string
+          .replace(
+            /className=\{(\{[\S\s]+?})}/g,
+            `className={Object.entries($1).map(([key, value]) => value && key).filter(Boolean).join(' ')}`
+          );
       } else if (tagName === 'p-text-field-wrapper') {
         // make private like isSearch, isPassword and hasUnit work
         const rawPrivateMembers = Array.from(fileContent.matchAll(/this\.(?:is|has)[A-Z][A-Za-z]+ = .*?;/g))
