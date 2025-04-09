@@ -32,6 +32,9 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
   :host([hidden]) {
     display: none !important;
   }
+  :not(:defined,[data-ssr]) {
+    visibility: hidden;
+  }
   slot[name="header"] {
     display: none;
   }
@@ -41,50 +44,14 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
   h2 {
     display: none;
   }
-  ::slotted(a) {
-    all: unset;
-    grid-column: 1/-1;
-    align-self: flex-start;
-    font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: pointer;
-    border-radius: 4px;
-    padding: clamp(8px, 0.5vw + 6px, 16px);
-    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
-    color: #FBFCFF;
-    text-decoration: underline;
-    text-decoration-color: transparent;
-    transition: text-decoration-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  ::slotted(a[aria-current]) {
-    text-decoration: underline;
-  }
-  ::slotted(a::-moz-focus-inner) {
-    border: 0;
-  }
-  ::slotted(a:focus) {
-    outline: 0;
-  }
-  ::slotted(a:focus-visible) {
-    outline: 2px solid #1A44EA;
-    outline-offset: -2px;
-  }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
     --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
-  }
-  :not(:defined,[data-ssr]) {
-    visibility: hidden;
   }
 @media(min-width:760px) {
 }
 
 @media(max-width:759px) {
-}
-
-@media(hover:hover) {
-    ::slotted(a:hover) {
-      text-decoration-color: inherit;
-    }
 }
 
   .scroller {
@@ -146,6 +113,9 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
   :host([hidden]) {
     display: none !important;
   }
+  :not(:defined,[data-ssr]) {
+    visibility: hidden;
+  }
   slot[name="header"] {
     display: none;
   }
@@ -161,39 +131,9 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
   ::slotted(*:not([primary],[cascade])) {
     display: none;
   }
-  ::slotted(a) {
-    all: unset;
-    grid-column: 1/-1;
-    align-self: flex-start;
-    font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: pointer;
-    border-radius: 4px;
-    padding: clamp(8px, 0.5vw + 6px, 16px);
-    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
-    color: #010205;
-    text-decoration: underline;
-    text-decoration-color: transparent;
-    transition: text-decoration-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  ::slotted(a[aria-current]) {
-    text-decoration: underline;
-  }
-  ::slotted(a::-moz-focus-inner) {
-    border: 0;
-  }
-  ::slotted(a:focus) {
-    outline: 0;
-  }
-  ::slotted(a:focus-visible) {
-    outline: 2px solid #1A44EA;
-    outline-offset: -2px;
-  }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
     --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
-  }
-  :not(:defined,[data-ssr]) {
-    visibility: hidden;
   }
 @media(min-width:760px) {
     slot:not([name]) {
@@ -204,21 +144,6 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
 @media(max-width:759px) {
     slot:not([name]) {
       display: contents;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    ::slotted(a:focus-visible) {
-      outline-color: #1A44EA;
-    }
-    ::slotted(a) {
-      color: #FBFCFF;
-    }
-}
-
-@media(hover:hover) {
-    ::slotted(a:hover) {
-      text-decoration-color: inherit;
     }
 }
 
@@ -291,6 +216,9 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
   :host([hidden]) {
     display: none !important;
   }
+  :not(:defined,[data-ssr]) {
+    visibility: hidden;
+  }
   slot[name="header"] {
     display: none;
   }
@@ -300,39 +228,9 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
   h2 {
     display: none;
   }
-  ::slotted(a) {
-    all: unset;
-    grid-column: 1/-1;
-    align-self: flex-start;
-    font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: pointer;
-    border-radius: 4px;
-    padding: clamp(8px, 0.5vw + 6px, 16px);
-    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
-    color: #010205;
-    text-decoration: underline;
-    text-decoration-color: transparent;
-    transition: text-decoration-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  ::slotted(a[aria-current]) {
-    text-decoration: underline;
-  }
-  ::slotted(a::-moz-focus-inner) {
-    border: 0;
-  }
-  ::slotted(a:focus) {
-    outline: 0;
-  }
-  ::slotted(a:focus-visible) {
-    outline: 2px solid #1A44EA;
-    outline-offset: -2px;
-  }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
     --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
-  }
-  :not(:defined,[data-ssr]) {
-    visibility: hidden;
   }
 @media(min-width:760px) {
     slot:not([name]) {
@@ -388,12 +286,6 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
       overflow: hidden;
       text-overflow: ellipsis;
       color: #010205;
-    }
-}
-
-@media(hover:hover) {
-    ::slotted(a:hover) {
-      text-decoration-color: inherit;
     }
 }
 
@@ -483,6 +375,9 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
   :host([hidden]) {
     display: none !important;
   }
+  :not(:defined,[data-ssr]) {
+    visibility: hidden;
+  }
   slot[name="header"] {
     display: none;
   }
@@ -498,39 +393,9 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
   ::slotted(*:not([primary],[cascade])) {
     display: none;
   }
-  ::slotted(a) {
-    all: unset;
-    grid-column: 1/-1;
-    align-self: flex-start;
-    font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: pointer;
-    border-radius: 4px;
-    padding: clamp(8px, 0.5vw + 6px, 16px);
-    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
-    color: #010205;
-    text-decoration: underline;
-    text-decoration-color: transparent;
-    transition: text-decoration-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  ::slotted(a[aria-current]) {
-    text-decoration: underline;
-  }
-  ::slotted(a::-moz-focus-inner) {
-    border: 0;
-  }
-  ::slotted(a:focus) {
-    outline: 0;
-  }
-  ::slotted(a:focus-visible) {
-    outline: 2px solid #1A44EA;
-    outline-offset: -2px;
-  }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
     --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
-  }
-  :not(:defined,[data-ssr]) {
-    visibility: hidden;
   }
 @media(min-width:760px) {
     slot:not([name]) {
@@ -586,12 +451,6 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
       overflow: hidden;
       text-overflow: ellipsis;
       color: #010205;
-    }
-}
-
-@media(hover:hover) {
-    ::slotted(a:hover) {
-      text-decoration-color: inherit;
     }
 }
 
@@ -679,6 +538,9 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
   :host([hidden]) {
     display: none !important;
   }
+  :not(:defined,[data-ssr]) {
+    visibility: hidden;
+  }
   slot[name="header"] {
     display: none;
   }
@@ -691,39 +553,9 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
   h2 {
     display: none;
   }
-  ::slotted(a) {
-    all: unset;
-    grid-column: 1/-1;
-    align-self: flex-start;
-    font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: pointer;
-    border-radius: 4px;
-    padding: clamp(8px, 0.5vw + 6px, 16px);
-    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
-    color: #010205;
-    text-decoration: underline;
-    text-decoration-color: transparent;
-    transition: text-decoration-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  ::slotted(a[aria-current]) {
-    text-decoration: underline;
-  }
-  ::slotted(a::-moz-focus-inner) {
-    border: 0;
-  }
-  ::slotted(a:focus) {
-    outline: 0;
-  }
-  ::slotted(a:focus-visible) {
-    outline: 2px solid #1A44EA;
-    outline-offset: -2px;
-  }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
     --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
-  }
-  :not(:defined,[data-ssr]) {
-    visibility: hidden;
   }
 @media(min-width:760px) {
     slot:not([name]) {
@@ -747,12 +579,6 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
     }
     ::slotted(*:not([secondary])) {
       display: none;
-    }
-}
-
-@media(hover:hover) {
-    ::slotted(a:hover) {
-      text-decoration-color: inherit;
     }
 }
 
@@ -831,6 +657,9 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
   :host([hidden]) {
     display: none !important;
   }
+  :not(:defined,[data-ssr]) {
+    visibility: hidden;
+  }
   slot[name="header"] {
     display: none;
   }
@@ -846,39 +675,9 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
   ::slotted(*:not([primary],[cascade])) {
     display: none;
   }
-  ::slotted(a) {
-    all: unset;
-    grid-column: 1/-1;
-    align-self: flex-start;
-    font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: pointer;
-    border-radius: 4px;
-    padding: clamp(8px, 0.5vw + 6px, 16px);
-    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
-    color: #010205;
-    text-decoration: underline;
-    text-decoration-color: transparent;
-    transition: text-decoration-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  ::slotted(a[aria-current]) {
-    text-decoration: underline;
-  }
-  ::slotted(a::-moz-focus-inner) {
-    border: 0;
-  }
-  ::slotted(a:focus) {
-    outline: 0;
-  }
-  ::slotted(a:focus-visible) {
-    outline: 2px solid #1A44EA;
-    outline-offset: -2px;
-  }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
     --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
-  }
-  :not(:defined,[data-ssr]) {
-    visibility: hidden;
   }
 @media(min-width:760px) {
     slot:not([name]) {
@@ -902,12 +701,6 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
     }
     ::slotted(*:not([secondary])) {
       display: none;
-    }
-}
-
-@media(hover:hover) {
-    ::slotted(a:hover) {
-      text-decoration-color: inherit;
     }
 }
 
@@ -986,6 +779,9 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
   :host([hidden]) {
     display: none !important;
   }
+  :not(:defined,[data-ssr]) {
+    visibility: hidden;
+  }
   slot[name="header"] {
     display: none;
   }
@@ -998,39 +794,9 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
   h2 {
     display: none;
   }
-  ::slotted(a) {
-    all: unset;
-    grid-column: 1/-1;
-    align-self: flex-start;
-    font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: pointer;
-    border-radius: 4px;
-    padding: clamp(8px, 0.5vw + 6px, 16px);
-    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
-    color: #010205;
-    text-decoration: underline;
-    text-decoration-color: transparent;
-    transition: text-decoration-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  ::slotted(a[aria-current]) {
-    text-decoration: underline;
-  }
-  ::slotted(a::-moz-focus-inner) {
-    border: 0;
-  }
-  ::slotted(a:focus) {
-    outline: 0;
-  }
-  ::slotted(a:focus-visible) {
-    outline: 2px solid #1A44EA;
-    outline-offset: -2px;
-  }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
     --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
-  }
-  :not(:defined,[data-ssr]) {
-    visibility: hidden;
   }
 @media(min-width:760px) {
     slot:not([name]) {
@@ -1089,12 +855,6 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
     }
     ::slotted(*:not([secondary])) {
       display: none;
-    }
-}
-
-@media(hover:hover) {
-    ::slotted(a:hover) {
-      text-decoration-color: inherit;
     }
 }
 
@@ -1194,6 +954,9 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
   :host([hidden]) {
     display: none !important;
   }
+  :not(:defined,[data-ssr]) {
+    visibility: hidden;
+  }
   slot[name="header"] {
     display: none;
   }
@@ -1209,39 +972,9 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
   ::slotted(*:not([primary],[cascade])) {
     display: none;
   }
-  ::slotted(a) {
-    all: unset;
-    grid-column: 1/-1;
-    align-self: flex-start;
-    font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: pointer;
-    border-radius: 4px;
-    padding: clamp(8px, 0.5vw + 6px, 16px);
-    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
-    color: #010205;
-    text-decoration: underline;
-    text-decoration-color: transparent;
-    transition: text-decoration-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  ::slotted(a[aria-current]) {
-    text-decoration: underline;
-  }
-  ::slotted(a::-moz-focus-inner) {
-    border: 0;
-  }
-  ::slotted(a:focus) {
-    outline: 0;
-  }
-  ::slotted(a:focus-visible) {
-    outline: 2px solid #1A44EA;
-    outline-offset: -2px;
-  }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
     --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
-  }
-  :not(:defined,[data-ssr]) {
-    visibility: hidden;
   }
 @media(min-width:760px) {
     slot:not([name]) {
@@ -1300,12 +1033,6 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
     }
     ::slotted(*:not([secondary])) {
       display: none;
-    }
-}
-
-@media(hover:hover) {
-    ::slotted(a:hover) {
-      text-decoration-color: inherit;
     }
 }
 

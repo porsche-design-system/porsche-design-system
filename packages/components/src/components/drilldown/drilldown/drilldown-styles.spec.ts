@@ -1,5 +1,6 @@
 // import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';
 import { getComponentCss } from './drilldown-styles';
+import { expect } from '@jest/globals';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
@@ -13,8 +14,8 @@ describe('getComponentCss()', () => {
   ])(
     'should return correct css for isOpen: %s, isPrimary: %s, isSecondaryScrollerVisible: %s and theme: %s',
     (...args) => {
-      // TODO: validateCssAndMatchSnapshot(…)
-      getComponentCss(...args);
+      // validateCssAndMatchSnapshot(getComponentCss(...args));
+      expect(getComponentCss(...args)).toMatchSnapshot();
     }
   );
 });
