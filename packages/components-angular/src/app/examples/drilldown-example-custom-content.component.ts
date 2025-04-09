@@ -35,6 +35,7 @@ import { type DrilldownUpdateEventDetail } from '@porsche-design-system/componen
         (update)="onUpdate($event)"
       >
         <p-drilldown-item identifier="id-1" label="Models">
+          <p-drilldown-button slot="button">Models</p-drilldown-button>
           <p-drilldown-item identifier="id-1-1" label="718">
             <p-model-signature slot="header" model="718"></p-model-signature>
             <p-button-tile
@@ -53,10 +54,10 @@ import { type DrilldownUpdateEventDetail } from '@porsche-design-system/componen
                 alt="Porsche 963"
               />
             </p-button-tile>
-            <a href="#">Some anchor</a>
-            <a href="#">Some anchor</a>
-            <a href="#">Some anchor</a>
-            <a href="#">Some anchor</a>
+            <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+            <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+            <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+            <p-drilldown-link href="#">Some anchor</p-drilldown-link>
           </p-drilldown-item>
           <p-drilldown-item identifier="id-1-2" label="911">
             <p-model-signature slot="header" model="911"></p-model-signature>
@@ -76,50 +77,56 @@ import { type DrilldownUpdateEventDetail } from '@porsche-design-system/componen
                 alt="Porsche 963"
               />
             </p-button-tile>
-            <a href="#">Some anchor</a>
-            <a href="#">Some anchor</a>
+            <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+            <p-drilldown-link href="#">Some anchor</p-drilldown-link>
           </p-drilldown-item>
-          <a href="#">Some anchor</a>
-          <a href="#" aria-current="page">Some anchor</a>
-          <a href="#">Some anchor</a>
-          <a href="#">Some anchor</a>
-          <a href="#">Some anchor</a>
-          <a href="#">Some anchor</a>
-          <a href="#">Some anchor</a>
-          <a href="#">Some anchor</a>
-          <a href="#">Some anchor</a>
+          <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+          <p-drilldown-link href="#" [active]="true">Some anchor</p-drilldown-link>
+          <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+          <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+          <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+          <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+          <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+          <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+          <p-drilldown-link href="#">Some anchor</p-drilldown-link>
         </p-drilldown-item>
         <p-drilldown-item identifier="id-2" label="Some Label">
+          <p-drilldown-button slot="button">Some Label</p-drilldown-button>
           <p-drilldown-item identifier="id-2-1" label="Some Label">
-            <a href="#">Some anchor</a>
-            <a href="#">Some anchor</a>
-            <a href="#">Some anchor</a>
-            <a href="#">Some anchor</a>
+            <p-drilldown-button slot="button">Some Label</p-drilldown-button>
+            <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+            <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+            <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+            <p-drilldown-link href="#">Some anchor</p-drilldown-link>
           </p-drilldown-item>
           <p-drilldown-item identifier="id-2-2" label="Some Label">
-            <a href="#">Some anchor</a>
-            <a href="#">Some anchor</a>
-            <a href="#">Some anchor</a>
+            <p-drilldown-button slot="button">Some Label</p-drilldown-button>
+            <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+            <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+            <p-drilldown-link href="#">Some anchor</p-drilldown-link>
           </p-drilldown-item>
-          <a href="#">Some anchor</a>
-          <a href="#">Some anchor</a>
-          <a href="#">Some anchor</a>
-          <a href="#">Some anchor</a>
+          <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+          <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+          <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+          <p-drilldown-link href="#">Some anchor</p-drilldown-link>
         </p-drilldown-item>
         <p-drilldown-item identifier="id-3" label="Some Label">
-          <a href="#">Some anchor</a>
-          <a href="#">Some anchor</a>
-          <a href="#">Some anchor</a>
-          <a href="#">Some anchor</a>
+          <p-drilldown-button slot="button">Some Label</p-drilldown-button>
+          <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+          <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+          <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+          <p-drilldown-link href="#">Some anchor</p-drilldown-link>
         </p-drilldown-item>
         <p-drilldown-item identifier="id-4" label="Some Label">
-          <a href="#">Some anchor</a>
-          <a href="#">Some anchor</a>
-          <a href="#">Some anchor</a>
+          <p-drilldown-button slot="button">Some Label</p-drilldown-button>
+          <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+          <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+          <p-drilldown-link href="#">Some anchor</p-drilldown-link>
         </p-drilldown-item>
         <p-drilldown-item identifier="id-5" label="Some Label">
-          <a href="#">Some anchor</a>
-          <a href="#">Some anchor</a>
+          <p-drilldown-button slot="button">Some Label</p-drilldown-button>
+          <p-drilldown-link href="#">Some anchor</p-drilldown-link>
+          <p-drilldown-link href="#">Some anchor</p-drilldown-link>
         </p-drilldown-item>
         <p-link href="#" icon="external" variant="secondary">Some external anchor</p-link>
       </p-drilldown>

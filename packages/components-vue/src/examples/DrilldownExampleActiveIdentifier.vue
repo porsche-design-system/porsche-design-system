@@ -4,6 +4,8 @@ import {
   PButton,
   PDrilldown,
   PDrilldownItem,
+  PDrilldownButton,
+  PDrilldownLink
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
@@ -30,37 +32,42 @@ const onUpdate = (e: DrilldownUpdateEventDetail): void => {
       @update="onUpdate"
     >
       <PDrilldownItem identifier="id-1" label="Some Label">
-        <a href="#">Some anchor</a>
-        <a href="#">Some anchor</a>
-        <a href="#">Some anchor</a>
-        <a href="#">Some anchor</a>
-        <a href="#">Some anchor</a>
-        <a href="#">Some anchor</a>
-        <a href="#">Some anchor</a>
-        <a href="#">Some anchor</a>
+        <PDrilldownButton slot="button">Some Label</PDrilldownButton>
+        <PDrilldownLink href="#">Some anchor</PDrilldownLink>
+        <PDrilldownLink href="#">Some anchor</PDrilldownLink>
+        <PDrilldownLink href="#">Some anchor</PDrilldownLink>
+        <PDrilldownLink href="#">Some anchor</PDrilldownLink>
+        <PDrilldownLink href="#">Some anchor</PDrilldownLink>
+        <PDrilldownLink href="#">Some anchor</PDrilldownLink>
+        <PDrilldownLink href="#">Some anchor</PDrilldownLink>
+        <PDrilldownLink href="#">Some anchor</PDrilldownLink>
       </PDrilldownItem>
       <PDrilldownItem identifier="id-2" label="Some Label">
-        <a href="#">Some anchor</a>
-        <a href="#">Some anchor</a>
-        <a href="#">Some anchor</a>
-        <a href="#" aria-current="page">Some anchor</a>
-        <a href="#">Some anchor</a>
-        <a href="#">Some anchor</a>
+        <PDrilldownButton slot="button">Some Label</PDrilldownButton>
+        <PDrilldownLink href="#">Some anchor</PDrilldownLink>
+        <PDrilldownLink href="#">Some anchor</PDrilldownLink>
+        <PDrilldownLink href="#">Some anchor</PDrilldownLink>
+        <PDrilldownLink href="#" :active="true">Some anchor</PDrilldownLink>
+        <PDrilldownLink href="#">Some anchor</PDrilldownLink>
+        <PDrilldownLink href="#">Some anchor</PDrilldownLink>
       </PDrilldownItem>
       <PDrilldownItem identifier="id-3" label="Some Label">
-        <a href="#">Some anchor</a>
-        <a href="#">Some anchor</a>
-        <a href="#">Some anchor</a>
-        <a href="#">Some anchor</a>
+        <PDrilldownButton slot="button">Some Label</PDrilldownButton>
+        <PDrilldownLink href="#">Some anchor</PDrilldownLink>
+        <PDrilldownLink href="#">Some anchor</PDrilldownLink>
+        <PDrilldownLink href="#">Some anchor</PDrilldownLink>
+        <PDrilldownLink href="#">Some anchor</PDrilldownLink>
       </PDrilldownItem>
       <PDrilldownItem identifier="id-4" label="Some Label">
-        <a href="#">Some anchor</a>
-        <a href="#">Some anchor</a>
-        <a href="#">Some anchor</a>
+        <PDrilldownButton slot="button">Some Label</PDrilldownButton>
+        <PDrilldownLink href="#">Some anchor</PDrilldownLink>
+        <PDrilldownLink href="#">Some anchor</PDrilldownLink>
+        <PDrilldownLink href="#">Some anchor</PDrilldownLink>
       </PDrilldownItem>
       <PDrilldownItem identifier="id-5" label="Some Label">
-        <a href="#">Some anchor</a>
-        <a href="#">Some anchor</a>
+        <PDrilldownButton slot="button">Some Label</PDrilldownButton>
+        <PDrilldownLink href="#">Some anchor</PDrilldownLink>
+        <PDrilldownLink href="#">Some anchor</PDrilldownLink>
       </PDrilldownItem>
     </PDrilldown>
   </nav>
