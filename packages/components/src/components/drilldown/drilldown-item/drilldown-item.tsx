@@ -3,7 +3,6 @@ import type {PropTypes, Theme} from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
-  getHTMLElement,
   getPrefixedTagNames,
   hasNamedSlot,
   isElementOfKind,
@@ -15,6 +14,7 @@ import {
 import {type DrilldownUpdateEventDetail, INTERNAL_UPDATE_EVENT_NAME} from '../drilldown/drilldown-utils';
 import {getComponentCss} from './drilldown-item-styles';
 import type {DrilldownItemInternalHTMLProps} from './drilldown-item-utils';
+import {getNamedSlot} from "../../../utils/getNamedSlot";
 
 const propTypes: PropTypes<typeof DrilldownItem> = {
   identifier: AllowedTypes.string,
@@ -55,7 +55,7 @@ export class DrilldownItem {
   private scroller: HTMLDivElement;
 
   private hasSlottedHeader: boolean;
-  private slottedHTMLButtonElement: HTMLButtonElement;
+  private slottedButtonHTMLElement: HTMLElement;
 
   private get theme(): Theme {
     return this.host.theme || 'light'; // default as fallback (internal private prop is controlled by drilldown)
@@ -81,19 +81,19 @@ export class DrilldownItem {
 
   public componentWillRender() {
     this.hasSlottedHeader = hasNamedSlot(this.host, 'header');
-    this.slottedHTMLButtonElement = getHTMLElement(this.host, `:scope>button[slot="button"]`);
+    this.slottedButtonHTMLElement = getNamedSlot(this.host, 'button');
 
-    if (this.slottedHTMLButtonElement) {
-      this.slottedHTMLButtonElement.removeEventListener('click', this.onClickButton);
+    if (this.slottedButtonHTMLElement) {
+      this.slottedButtonHTMLElement.removeEventListener('click', this.onClickButton);
     }
   }
 
   public componentDidRender() {
     this.scroller.scrollTo(0, 0); // Reset scroll position when navigated
 
-    if (this.slottedHTMLButtonElement) {
-      this.slottedHTMLButtonElement.addEventListener('click', this.onClickButton);
-      this.slottedHTMLButtonElement.setAttribute('aria-expanded', this.secondary ? 'true' : 'false');
+    if (this.slottedButtonHTMLElement) {
+      this.slottedButtonHTMLElement.addEventListener('click', this.onClickButton);
+      this.slottedButtonHTMLElement.setAttribute('aria-expanded', this.secondary ? 'true' : 'false');
     }
   }
 
@@ -105,7 +105,7 @@ export class DrilldownItem {
 
     return (
       <Host>
-        {this.slottedHTMLButtonElement ? (
+        {this.slottedButtonHTMLElement ? (
           <slot name="button" />
         ) : (
           <PrefixedTagNames.pButtonPure
