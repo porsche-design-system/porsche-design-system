@@ -4,7 +4,7 @@ import {
   addEventListener,
   getActiveElementClassNameInShadowRoot,
   getActiveElementId,
-  getActiveElementParentProp,
+  getActiveElementProp,
   getActiveElementTagName,
   getActiveElementTagNameInShadowRoot,
   getAttribute,
@@ -28,7 +28,7 @@ const getDrilldownDismissButton = (page: Page) => page.locator('p-drilldown p-bu
 const getDrilldownDialogVisibility = async (page: Page) =>
   await getElementStyle(getDrilldownDialog(page), 'visibility');
 const getDrilldownItem = (page: Page, identifier: string) =>
-  page.locator(`p-drilldown-item[identifier="${identifier}"] p-drilldown-button`);
+  page.locator(`p-drilldown-item[identifier="${identifier}"] p-button-pure >>> button`);
 const getDrilldownItemScroller = (page: Page, identifier: string) =>
   page.locator(`p-drilldown-item[identifier="${identifier}"] .scroller`);
 const getBodyStyle = async (page: Page) => getAttribute(page.locator('body'), 'style');
@@ -149,8 +149,8 @@ test.describe('update event', () => {
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-BUTTON');
-      expect(await getActiveElementParentProp(page, 'identifier')).toBe('item-2');
+      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-ITEM');
+      expect(await getActiveElementProp(page, 'identifier')).toBe('item-2');
       await page.keyboard.press('Enter');
       await waitForStencilLifecycle(page);
 
@@ -168,8 +168,8 @@ test.describe('update event', () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-BUTTON');
-      expect(await getActiveElementParentProp(page, 'identifier')).toBe('item-3');
+      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-ITEM');
+      expect(await getActiveElementProp(page, 'identifier')).toBe('item-3');
       await page.keyboard.press('Space');
       await waitForStencilLifecycle(page);
 
@@ -284,12 +284,12 @@ test.describe('focus behavior', () => {
     await openDrilldown(page);
 
     await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-BUTTON');
-    expect(await getActiveElementParentProp(page, 'identifier')).toBe('item-1');
+    expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-ITEM');
+    expect(await getActiveElementProp(page, 'identifier')).toBe('item-1');
 
     await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-BUTTON');
-    expect(await getActiveElementParentProp(page, 'identifier')).toBe('item-2');
+    expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-ITEM');
+    expect(await getActiveElementProp(page, 'identifier')).toBe('item-2');
   });
 
   skipInBrowsers(['firefox'], () => {
@@ -299,8 +299,8 @@ test.describe('focus behavior', () => {
 
       await page.keyboard.press('Tab');
 
-      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-BUTTON');
-      expect(await getActiveElementParentProp(page, 'identifier')).toBe('item-1');
+      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-ITEM');
+      expect(await getActiveElementProp(page, 'identifier')).toBe('item-1');
 
       await page.keyboard.press('Tab');
       expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-LINK');
@@ -315,12 +315,12 @@ test.describe('focus behavior', () => {
       await waitForStencilLifecycle(page);
 
       await page.keyboard.press('Tab');
-      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-BUTTON');
-      expect(await getActiveElementParentProp(page, 'identifier')).toBe('item-1');
+      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-ITEM');
+      expect(await getActiveElementProp(page, 'identifier')).toBe('item-1');
 
       await page.keyboard.press('Tab');
-      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-BUTTON');
-      expect(await getActiveElementParentProp(page, 'identifier')).toBe('item-2');
+      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-ITEM');
+      expect(await getActiveElementProp(page, 'identifier')).toBe('item-2');
 
       await setProperty(host, 'activeIdentifier', 'item-2'); // Open second level
       await waitForStencilLifecycle(page);
@@ -333,8 +333,8 @@ test.describe('focus behavior', () => {
       expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-LINK');
 
       await page.keyboard.press('Tab');
-      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-BUTTON');
-      expect(await getActiveElementParentProp(page, 'identifier')).toBe('item-3');
+      expect(await getActiveElementTagName(page)).toBe('P-DRILLDOWN-ITEM');
+      expect(await getActiveElementProp(page, 'identifier')).toBe('item-3');
     });
   });
 

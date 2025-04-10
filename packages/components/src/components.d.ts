@@ -21,7 +21,6 @@ import { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils"
 import { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
 import { DividerColor, DividerDirection, DividerOrientation } from "./components/divider/divider-utils";
 import { DrilldownAriaAttribute, DrilldownUpdateEventDetail } from "./components/drilldown/drilldown/drilldown-utils";
-import { DrilldownButtonAriaAttribute } from "./components/drilldown/drilldown-button/drilldown-button-utils";
 import { DrilldownLinkAriaAttribute, DrilldownLinkTarget } from "./components/drilldown/drilldown-link/drilldown-link-utils";
 import { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
 import { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
@@ -89,7 +88,6 @@ export { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils"
 export { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./components/display/display-utils";
 export { DividerColor, DividerDirection, DividerOrientation } from "./components/divider/divider-utils";
 export { DrilldownAriaAttribute, DrilldownUpdateEventDetail } from "./components/drilldown/drilldown/drilldown-utils";
-export { DrilldownButtonAriaAttribute } from "./components/drilldown/drilldown-button/drilldown-button-utils";
 export { DrilldownLinkAriaAttribute, DrilldownLinkTarget } from "./components/drilldown/drilldown-link/drilldown-link-utils";
 export { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
 export { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
@@ -700,23 +698,6 @@ export namespace Components {
     /**
      * @experimental 
      */
-    interface PDrilldownButton {
-        /**
-          * Display button in active state.
-         */
-        "active"?: boolean;
-        /**
-          * Add ARIA attributes.
-         */
-        "aria"?: SelectedAriaAttributes<DrilldownButtonAriaAttribute>;
-        /**
-          * Adapts the button color depending on the theme.
-         */
-        "theme"?: Theme;
-    }
-    /**
-     * @experimental 
-     */
     interface PDrilldownItem {
         /**
           * Private property set by the component itself.
@@ -727,7 +708,7 @@ export namespace Components {
          */
         "identifier": string;
         /**
-          * Renders back button and header section on mobile view.
+          * Renders back button, header section on mobile view and cascade button to reach a deeper level of the navigation structure.
          */
         "label"?: string;
         /**
@@ -2775,15 +2756,6 @@ declare global {
     /**
      * @experimental 
      */
-    interface HTMLPDrilldownButtonElement extends Components.PDrilldownButton, HTMLStencilElement {
-    }
-    var HTMLPDrilldownButtonElement: {
-        prototype: HTMLPDrilldownButtonElement;
-        new (): HTMLPDrilldownButtonElement;
-    };
-    /**
-     * @experimental 
-     */
     interface HTMLPDrilldownItemElement extends Components.PDrilldownItem, HTMLStencilElement {
     }
     var HTMLPDrilldownItemElement: {
@@ -3470,7 +3442,6 @@ declare global {
         "p-display": HTMLPDisplayElement;
         "p-divider": HTMLPDividerElement;
         "p-drilldown": HTMLPDrilldownElement;
-        "p-drilldown-button": HTMLPDrilldownButtonElement;
         "p-drilldown-item": HTMLPDrilldownItemElement;
         "p-drilldown-link": HTMLPDrilldownLinkElement;
         "p-fieldset": HTMLPFieldsetElement;
@@ -4139,23 +4110,6 @@ declare namespace LocalJSX {
     /**
      * @experimental 
      */
-    interface PDrilldownButton {
-        /**
-          * Display button in active state.
-         */
-        "active"?: boolean;
-        /**
-          * Add ARIA attributes.
-         */
-        "aria"?: SelectedAriaAttributes<DrilldownButtonAriaAttribute>;
-        /**
-          * Adapts the button color depending on the theme.
-         */
-        "theme"?: Theme;
-    }
-    /**
-     * @experimental 
-     */
     interface PDrilldownItem {
         /**
           * Private property set by the component itself.
@@ -4166,7 +4120,7 @@ declare namespace LocalJSX {
          */
         "identifier"?: string;
         /**
-          * Renders back button and header section on mobile view.
+          * Renders back button, header section on mobile view and cascade button to reach a deeper level of the navigation structure.
          */
         "label"?: string;
         /**
@@ -6095,7 +6049,6 @@ declare namespace LocalJSX {
         "p-display": PDisplay;
         "p-divider": PDivider;
         "p-drilldown": PDrilldown;
-        "p-drilldown-button": PDrilldownButton;
         "p-drilldown-item": PDrilldownItem;
         "p-drilldown-link": PDrilldownLink;
         "p-fieldset": PFieldset;
@@ -6200,10 +6153,6 @@ declare module "@stencil/core" {
              * @experimental 
              */
             "p-drilldown": LocalJSX.PDrilldown & JSXBase.HTMLAttributes<HTMLPDrilldownElement>;
-            /**
-             * @experimental 
-             */
-            "p-drilldown-button": LocalJSX.PDrilldownButton & JSXBase.HTMLAttributes<HTMLPDrilldownButtonElement>;
             /**
              * @experimental 
              */

@@ -1,8 +1,9 @@
-import { Component, Element, forceUpdate, h, Host, type JSX, Prop } from '@stencil/core';
-import type { PropTypes, Theme } from '../../../types';
+import {Component, Element, forceUpdate, h, Host, type JSX, Prop} from '@stencil/core';
+import type {PropTypes, Theme} from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  getHTMLElement,
   getPrefixedTagNames,
   hasNamedSlot,
   isElementOfKind,
@@ -11,10 +12,9 @@ import {
   unobserveChildren,
   validateProps,
 } from '../../../utils';
-import { type DrilldownUpdateEventDetail, INTERNAL_UPDATE_EVENT_NAME } from '../drilldown/drilldown-utils';
-import { getComponentCss } from './drilldown-item-styles';
-import type { DrilldownItemInternalHTMLProps } from './drilldown-item-utils';
-import { getNamedSlot } from '../../../utils/getNamedSlot';
+import {type DrilldownUpdateEventDetail, INTERNAL_UPDATE_EVENT_NAME} from '../drilldown/drilldown-utils';
+import {getComponentCss} from './drilldown-item-styles';
+import type {DrilldownItemInternalHTMLProps} from './drilldown-item-utils';
 
 const propTypes: PropTypes<typeof DrilldownItem> = {
   identifier: AllowedTypes.string,
@@ -37,7 +37,7 @@ const propTypes: PropTypes<typeof DrilldownItem> = {
 export class DrilldownItem {
   @Element() public host!: HTMLElement & DrilldownItemInternalHTMLProps;
 
-  /** Renders back button and header section on mobile view. */
+  /** Renders back button, header section on mobile view and cascade button to reach a deeper level of the navigation structure. */
   @Prop() public label?: string;
 
   /** Unique identifier which controls if this item should be shown when the active-identifier on the drilldown is set to this value. */
@@ -55,7 +55,7 @@ export class DrilldownItem {
   private scroller: HTMLDivElement;
 
   private hasSlottedHeader: boolean;
-  private slottedCustomHTMLButtonElement: HTMLElement & { active: boolean };
+  private slottedHTMLButtonElement: HTMLButtonElement;
 
   private get theme(): Theme {
     return this.host.theme || 'light'; // default as fallback (internal private prop is controlled by drilldown)
@@ -81,19 +81,19 @@ export class DrilldownItem {
 
   public componentWillRender() {
     this.hasSlottedHeader = hasNamedSlot(this.host, 'header');
+    this.slottedHTMLButtonElement = getHTMLElement(this.host, `:scope>button[slot="button"]`);
 
-    this.slottedCustomHTMLButtonElement = getNamedSlot(this.host, 'button') as HTMLElement & { active: boolean };
-    this.slottedCustomHTMLButtonElement?.removeEventListener('click', this.onClickButton);
+    if (this.slottedHTMLButtonElement) {
+      this.slottedHTMLButtonElement.removeEventListener('click', this.onClickButton);
+    }
   }
 
   public componentDidRender() {
     this.scroller.scrollTo(0, 0); // Reset scroll position when navigated
 
-    // TODO: can be improved by assigning click listener and active state on p-drilldown-button directly
-    if (this.slottedCustomHTMLButtonElement) {
-      this.slottedCustomHTMLButtonElement.addEventListener('click', this.onClickButton);
-      this.slottedCustomHTMLButtonElement.setAttribute('aria-expanded', this.secondary ? 'true' : 'false'); // only relevant for <button slot="button" />
-      this.slottedCustomHTMLButtonElement.active = this.secondary; // only relevant for <p-drilldown-button slot="button" />
+    if (this.slottedHTMLButtonElement) {
+      this.slottedHTMLButtonElement.addEventListener('click', this.onClickButton);
+      this.slottedHTMLButtonElement.setAttribute('aria-expanded', this.secondary ? 'true' : 'false');
     }
   }
 
@@ -105,7 +105,25 @@ export class DrilldownItem {
 
     return (
       <Host>
-        <slot name="button" />
+        {this.slottedHTMLButtonElement ? (
+          <slot name="button" />
+        ) : (
+          <PrefixedTagNames.pButtonPure
+            inert={this.primary || this.cascade}
+            class="button"
+            type="button"
+            size="medium"
+            alignLabel="start"
+            stretch={true}
+            icon="arrow-head-right"
+            active={this.secondary}
+            aria={{ 'aria-expanded': this.secondary }}
+            theme={this.theme}
+            onClick={() => this.onClickButton()}
+          >
+            {this.label}
+          </PrefixedTagNames.pButtonPure>
+        )}
         <PrefixedTagNames.pButtonPure
           class="back"
           type="button"

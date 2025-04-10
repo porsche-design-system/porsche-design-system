@@ -41,18 +41,15 @@ const scenario = async (
 
   if (pseudoState === 'hover') {
     await forceHoverState(page, 'p-drilldown >>> p-button-pure >>> button'); // Dismiss button
-    await forceHoverState(page, 'p-drilldown-item >>> p-button-pure >>> button'); // Back button
-    await forceHoverState(page, 'p-drilldown-button >>> button'); // Sibling button
+    await forceHoverState(page, 'p-drilldown-item >>> p-button-pure >>> button'); // Back, Cascade button
     await forceHoverState(page, 'p-drilldown-link >>> a');
   } else if (pseudoState === 'focus') {
     await forceFocusVisibleState(page, 'p-drilldown >>> p-button-pure >>> button'); // Dismiss button
-    await forceFocusVisibleState(page, 'p-drilldown-item >>> p-button-pure >>> button'); // Back button
-    await forceFocusVisibleState(page, 'p-drilldown-button >>> button'); // Sibling button
+    await forceFocusVisibleState(page, 'p-drilldown-item >>> p-button-pure >>> button'); // Back, Cascade button
     await forceFocusVisibleState(page, 'p-drilldown-link >>> a');
   } else if (pseudoState === 'focus-hover') {
     await forceFocusHoverState(page, 'p-drilldown >>> p-button-pure >>> button'); // Dismiss button
-    await forceFocusHoverState(page, 'p-drilldown-item >>> p-button-pure >>> button'); // Back button
-    await forceFocusHoverState(page, 'p-drilldown-button >>> button'); // Sibling button
+    await forceFocusHoverState(page, 'p-drilldown-item >>> p-button-pure >>> button'); // Back, Cascade button
     await forceFocusHoverState(page, 'p-drilldown-link >>> a');
   }
 };
