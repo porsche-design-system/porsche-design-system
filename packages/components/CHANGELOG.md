@@ -21,15 +21,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#3822](https://github.com/porsche-design-system/porsche-design-system/pull/3822))
 - `Drilldown Item`: named slot `button` and `header` (experimental)
   ([#3822](https://github.com/porsche-design-system/porsche-design-system/pull/3822))
-- `Drilldown Button`: (experimental) ([#3822](https://github.com/porsche-design-system/porsche-design-system/pull/3822))
 - `Drilldown Link`: (experimental) ([#3822](https://github.com/porsche-design-system/porsche-design-system/pull/3822))
 
 #### Changed
 
 - **Breaking Change** `Flyout Multilevel`, `Flyout Multilevel Item`: renamed (experimental) component to `Drilldown` and
   `Drilldown Item` ([#3822](https://github.com/porsche-design-system/porsche-design-system/pull/3822))
-- **Breaking Change** `Drilldown Item` expects a `Drilldown Button` or custom button slotted by named slot
-  `slot="button"` ([#3822](https://github.com/porsche-design-system/porsche-design-system/pull/3822))
 - **Breaking Change** `Drilldown Item` doesn't style slotted `<a>` tags anymore, instead use `Drilldown Link` or a
   custom link ([#3822](https://github.com/porsche-design-system/porsche-design-system/pull/3822))
 
