@@ -199,14 +199,6 @@ exports[`should call validateProps() with correct parameters via render for p-dr
 }
 `;
 
-exports[`should call validateProps() with correct parameters via render for p-drilldown-button: propTypes with ValidatorFunctions 1`] = `
-{
-  "active": "boolean",
-  "aria": "aria",
-  "theme": "oneOf",
-}
-`;
-
 exports[`should call validateProps() with correct parameters via render for p-drilldown-item: propTypes with ValidatorFunctions 1`] = `
 {
   "cascade": "boolean",
