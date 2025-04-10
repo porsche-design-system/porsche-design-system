@@ -22,13 +22,10 @@ const scenario = async (
 <div class="playground light ${pseudoState}" title="should render :${pseudoState}" style="height: 10rem;">
   <p-drilldown open="true" active-identifier="id-1-1">
     <p-drilldown-item identifier="id-1" label="Some Label">
-      <p-drilldown-button slot="button">Some Label</p-drilldown-button>
       <p-drilldown-item identifier="id-1-1" label="Some Label">
-        <p-drilldown-button slot="button">Some Label</p-drilldown-button>
         <p-drilldown-link href="#some-anchor">Some anchor</p-drilldown-link>
       </p-drilldown-item>
       <p-drilldown-item identifier="id-1-2" label="Some Label">
-        <p-drilldown-button slot="button">Some Label</p-drilldown-button>
       </p-drilldown-item>
     </p-drilldown-item>
   </p-drilldown>
