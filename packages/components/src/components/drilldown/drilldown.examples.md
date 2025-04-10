@@ -9,16 +9,22 @@ its behavior.
 ## Basic
 
 The basic concept of the component is to have a button that opens the `p-drilldown` with an infinite multilevel
-structure. The levels are generated out of `p-drilldown-item` which generates a list of toggle buttons to navigate to a
-deeper level. These items can be filled with slotted `<a/>` as children which are styled automatically by the component,
-another `p-drilldown-item` or other components like e.g. `p-link-tile`.
+structure. The levels are generated out of `p-drilldown-item` which generates a list of cascade buttons to navigate to a
+deeper level, back buttons and a header section on mobile view. These items can be filled with e.g. `p-drilldown-link`,
+another `p-drilldown-item` or any HTML element.
 
 The visibility of `p-drilldown` can be controlled by its `open` property.
 
-It's **obligatory** that each `p-drilldown-item` has a unique `identifier` defined.
+It's **obligatory** that each `p-drilldown-item` has a unique `identifier` and `label` defined.
 
 Since it's a controlled component it's necessary to register an event listener for the `dismiss` and `update` event in
 order to get notified when `p-drilldown` needs to be closed or navigated to another hierarchy level.
+
+### Supported named slots:
+
+- `slot`: Default slot for the main content.
+- `slot="header"`: Shows a custom header section on mobile view.
+- `slot="button"`: Shows a custom button to reach a deeper level of the navigation structure.
 
 <Playground :frameworkMarkup="codeExample" :markup="codeExample['vanilla-js']" :config="config"></Playground>
 
@@ -38,20 +44,16 @@ can be done by using `<a aria-current="page">…</a>`.
 
 ## Example with custom content
 
-To give further flexibility, if you only want to provide a direct link to a page on the **1st level**, you can e.g. just
-use the `p-link` component. By using a custom slot `slot="button"` and/or `slot="header"` it's even possible to
-customize the drilldown structure. In combination with CSS variables (`--p-drilldown-grid-template`,
-`--p-drilldown-gap`) the layout structure for each layer can also be adjusted.
-
-Regarding further individualization, you can use components like e.g. `p-link-tile` and others or create your own custom
-contents and use it as a child.
+To give more flexibility, it's possible to use custom slots `slot="button"` (renders a custom cascade button) and/or
+`slot="header"` (renders a custom header on mobile view). It's even possible to customize the layout structure for each
+layer individually with CSS variables (`--p-drilldown-grid-template`, `--p-drilldown-gap`).
 
 <Playground :frameworkMarkup="codeExampleCustomContent" :markup="codeExampleCustomContent['vanilla-js']" :config="config"></Playground>
 
 ## Custom styling
 
 When the component is used in combination with a custom slot `slot="button"`, it's possible to adjust the layout
-behaviour for each layer individually by a CSS Custom Property (aka CSS Variable):
+behaviour for each layer (`p-drilldown-item`) individually by a CSS Custom Property (aka CSS Variable):
 
 ```scss
 --p-drilldown-grid-template: auto / repeat(2, minmax(0, 1fr));
