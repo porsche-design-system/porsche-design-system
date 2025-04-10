@@ -234,16 +234,6 @@ export const getActiveElementProp = (page: Page, prop: string): Promise<string> 
   }, prop);
 };
 
-export const getActiveElementParentProp = (page: Page, prop: string): Promise<string> => {
-  return page.evaluate((prop) => {
-    try {
-      return document.activeElement.parentElement[prop];
-    } catch (e) {
-      throw new Error(`Could not get "${prop}" from document.activeElement (${document.activeElement}) parent node `);
-    }
-  }, prop);
-};
-
 type Pseudo = '::before' | '::after' | '::-webkit-search-decoration';
 type GetElementStyleOptions = {
   waitForTransition?: boolean;

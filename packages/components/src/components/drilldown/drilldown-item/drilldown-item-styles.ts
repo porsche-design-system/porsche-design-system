@@ -224,6 +224,8 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       },
       ...(!isPrimary &&
         !isCascade && {
+          // TODO: not sure if this is ideal, since the consumer won't be able to change it when used with a custom
+          //  grid-template, maybe <p-drilldown-button slot="button" /> would be an option, similar to <p-drilldown-link />
           gridColumn: '1/-1',
           padding: spacingFluidSmall,
           margin: `0 calc(${spacingFluidSmall} * -1)`,

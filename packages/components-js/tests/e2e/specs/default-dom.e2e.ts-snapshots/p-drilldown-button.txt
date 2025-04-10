@@ -1,4 +1,0 @@
-<button type="button" aria-expanded="false">
-  <slot> </slot>
-  <p-icon aria-hidden="true" class="hydrated"> </p-icon>
-</button>
