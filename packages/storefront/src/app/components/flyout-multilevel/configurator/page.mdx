@@ -15,6 +15,10 @@ The `p-flyout-multilevel` component is meant for displaying an infinite multilev
 the page content from the start side of the screen. It is a controlled component that gives you flexible control over
 its behavior.
 
+The `p-flyout-multilevel` can be initialized with an `active-identifier` property. This identifier is used to open the
+flyout with the corresponding deeply nested `p-flyout-multilevel-item` expanded. The `active-identifier` **must** match
+a value of the `identifier` property of the `p-flyout-multilevel-item` component.
+
 <Configurator tagName="p-flyout-multilevel" story={flyoutMultilevelStory} />
 
 ## Browser Support
