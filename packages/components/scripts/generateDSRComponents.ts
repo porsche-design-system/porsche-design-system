@@ -194,7 +194,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             `namedSlotChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
           )
           .replace(
-            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background)'\)/g,
+            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|button|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background)'\)/g,
             `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
           );
       } else if (newFileContent.includes('FunctionalComponent')) {
@@ -636,7 +636,11 @@ $&`
         newFileContent = newFileContent
           .replace(/: Theme/g, ': any')
           .replace(/this\.props\.theme(?! \|\|)/g, 'this.theme')
-          .replace(/this\.props\.open(?! \|\|)/g, 'this.open');
+          .replace(/this\.props\.open(?! \|\|)/g, 'this.open')
+          .replace(/this\.props\.(hasSlottedHeader|hasSlottedButton)/g, '$1')
+          .replace(/hasSlottedHeader =/, 'const $&')
+          .replace(/hasSlottedButton =/, 'const $&')
+          .replace(/if \(hasSlottedButton\).*{[\s\S]*?}/, '');
         // .replace(/(inert=\{this\.open \? null : )true(})/, "$1''$2"); // transform true to empty string '';
       } else if (tagName === 'p-link-tile-model-signature') {
         newFileContent = newFileContent
