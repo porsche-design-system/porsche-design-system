@@ -17,7 +17,7 @@ a {
   margin: -2px calc(clamp(8px, 0.5vw + 6px, 16px) * -1 - 4px);
   border-radius: 4px;
   font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #010205;
+  color: var(--_p-a);
   text-decoration: underline;
   text-decoration-color: transparent;
   cursor: pointer;
@@ -58,7 +58,7 @@ a {
   margin: -2px calc(clamp(8px, 0.5vw + 6px, 16px) * -1 - 4px);
   border-radius: 4px;
   font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #010205;
+  color: var(--_p-a);
   text-decoration: underline;
   text-decoration-color: inherit;
   cursor: default;
@@ -74,15 +74,6 @@ a:focus-visible {
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
 }
-@media (prefers-color-scheme: dark) {
-  a {
-    color: #FBFCFF;
-  }
-  a:focus-visible {
-    outline-color: #1A44EA;
-  }
-}
-
 @media(hover:hover) {
   a:hover {
     text-decoration-color: inherit;
@@ -108,7 +99,7 @@ a {
   margin: -2px calc(clamp(8px, 0.5vw + 6px, 16px) * -1 - 4px);
   border-radius: 4px;
   font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #FBFCFF;
+  color: var(--_p-a);
   text-decoration: underline;
   text-decoration-color: inherit;
   cursor: default;
@@ -149,7 +140,7 @@ a {
   margin: -2px calc(clamp(8px, 0.5vw + 6px, 16px) * -1 - 4px);
   border-radius: 4px;
   font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #010205;
+  color: var(--_p-a);
   text-decoration: underline;
   text-decoration-color: inherit;
   cursor: default;
@@ -190,7 +181,7 @@ exports[`getComponentCss() should return correct css for hasSlottedAnchor: true,
   margin: -2px calc(clamp(8px, 0.5vw + 6px, 16px) * -1 - 4px) !important;
   border-radius: 4px !important;
   font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  color: #010205 !important;
+  color: var(--_p-a) !important;
   text-decoration: underline !important;
   text-decoration-color: transparent !important;
   cursor: pointer !important;
@@ -231,7 +222,7 @@ exports[`getComponentCss() should return correct css for hasSlottedAnchor: true,
   margin: -2px calc(clamp(8px, 0.5vw + 6px, 16px) * -1 - 4px) !important;
   border-radius: 4px !important;
   font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  color: #010205 !important;
+  color: var(--_p-a) !important;
   text-decoration: underline !important;
   text-decoration-color: inherit !important;
   cursor: default !important;
@@ -247,15 +238,6 @@ exports[`getComponentCss() should return correct css for hasSlottedAnchor: true,
   outline: 2px solid #1A44EA !important;
   outline-offset: -2px !important;
 }
-@media (prefers-color-scheme: dark) {
-  ::slotted(a:focus-visible) {
-    outline-color: #1A44EA !important;
-  }
-  ::slotted(a) {
-    color: #FBFCFF !important;
-  }
-}
-
 @media(hover:hover) {
   ::slotted(a:hover) {
     text-decoration-color: inherit !important;
@@ -281,7 +263,7 @@ exports[`getComponentCss() should return correct css for hasSlottedAnchor: true,
   margin: -2px calc(clamp(8px, 0.5vw + 6px, 16px) * -1 - 4px) !important;
   border-radius: 4px !important;
   font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  color: #FBFCFF !important;
+  color: var(--_p-a) !important;
   text-decoration: underline !important;
   text-decoration-color: inherit !important;
   cursor: default !important;
@@ -322,7 +304,7 @@ exports[`getComponentCss() should return correct css for hasSlottedAnchor: true,
   margin: -2px calc(clamp(8px, 0.5vw + 6px, 16px) * -1 - 4px) !important;
   border-radius: 4px !important;
   font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  color: #010205 !important;
+  color: var(--_p-a) !important;
   text-decoration: underline !important;
   text-decoration-color: inherit !important;
   cursor: default !important;

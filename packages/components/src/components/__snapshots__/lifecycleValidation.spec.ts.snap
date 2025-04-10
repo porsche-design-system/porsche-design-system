@@ -217,7 +217,6 @@ exports[`should call validateProps() with correct parameters via render for p-dr
   "href": "string",
   "rel": "string",
   "target": "string",
-  "theme": "oneOf",
 }
 `;
 
