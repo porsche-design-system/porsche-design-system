@@ -31,6 +31,7 @@ const adjustHeadlines = (str: string): string => {
     ...(Object.keys(h1Replacements) as TagName[]),
     'p-flex-item',
     'p-drilldown-item',
+    'p-drilldown-link',
     'p-grid-item',
     'p-multi-select-option',
     'p-segmented-control-item',
