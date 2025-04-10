@@ -6,7 +6,6 @@ import {
   PLink,
   PButtonTile,
   PModelSignature,
-  PDrilldownButton,
   PDrilldownLink
 } from '@porsche-design-system/components-react';
 import { spacingFluidSmall } from '@porsche-design-system/components-react/styles';
@@ -50,7 +49,6 @@ export const DrilldownExampleCustomContentPage = (): JSX.Element => {
               } as React.CSSProperties
             }
           >
-            <PDrilldownButton slot="button">Models</PDrilldownButton>
             <PDrilldownItem identifier="id-1-1" label="718">
               <PModelSignature slot="header" model="718"></PModelSignature>
               <PButtonTile
@@ -110,16 +108,13 @@ export const DrilldownExampleCustomContentPage = (): JSX.Element => {
             <PDrilldownLink href="#">Some anchor</PDrilldownLink>
           </PDrilldownItem>
           <PDrilldownItem identifier="id-2" label="Some Label">
-            <PDrilldownButton slot="button">Some Label</PDrilldownButton>
             <PDrilldownItem identifier="id-2-1" label="Some Label">
-              <PDrilldownButton slot="button">Some Label</PDrilldownButton>
               <PDrilldownLink href="#">Some anchor</PDrilldownLink>
               <PDrilldownLink href="#">Some anchor</PDrilldownLink>
               <PDrilldownLink href="#">Some anchor</PDrilldownLink>
               <PDrilldownLink href="#">Some anchor</PDrilldownLink>
             </PDrilldownItem>
             <PDrilldownItem identifier="id-2-2" label="Some Label">
-              <PDrilldownButton slot="button">Some Label</PDrilldownButton>
               <PDrilldownLink href="#">Some anchor</PDrilldownLink>
               <PDrilldownLink href="#">Some anchor</PDrilldownLink>
               <PDrilldownLink href="#">Some anchor</PDrilldownLink>
@@ -130,20 +125,17 @@ export const DrilldownExampleCustomContentPage = (): JSX.Element => {
             <PDrilldownLink href="#">Some anchor</PDrilldownLink>
           </PDrilldownItem>
           <PDrilldownItem identifier="id-3" label="Some Label">
-            <PDrilldownButton slot="button">Some Label</PDrilldownButton>
             <PDrilldownLink href="#">Some anchor</PDrilldownLink>
             <PDrilldownLink href="#">Some anchor</PDrilldownLink>
             <PDrilldownLink href="#">Some anchor</PDrilldownLink>
             <PDrilldownLink href="#">Some anchor</PDrilldownLink>
           </PDrilldownItem>
           <PDrilldownItem identifier="id-4" label="Some Label">
-            <PDrilldownButton slot="button">Some Label</PDrilldownButton>
             <PDrilldownLink href="#">Some anchor</PDrilldownLink>
             <PDrilldownLink href="#">Some anchor</PDrilldownLink>
             <PDrilldownLink href="#">Some anchor</PDrilldownLink>
           </PDrilldownItem>
           <PDrilldownItem identifier="id-5" label="Some Label">
-            <PDrilldownButton slot="button">Some Label</PDrilldownButton>
             <PDrilldownLink href="#">Some anchor</PDrilldownLink>
             <PDrilldownLink href="#">Some anchor</PDrilldownLink>
           </PDrilldownItem>

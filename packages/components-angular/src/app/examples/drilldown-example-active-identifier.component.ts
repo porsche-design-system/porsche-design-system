@@ -13,7 +13,6 @@ import { type DrilldownUpdateEventDetail } from '@porsche-design-system/componen
         (update)="onUpdate($event)"
       >
         <p-drilldown-item identifier="id-1" label="Some Label">
-          <p-drilldown-button slot="button">Some Label</p-drilldown-button>
           <p-drilldown-link href="#">Some anchor</p-drilldown-link>
           <p-drilldown-link href="#">Some anchor</p-drilldown-link>
           <p-drilldown-link href="#">Some anchor</p-drilldown-link>
@@ -24,7 +23,6 @@ import { type DrilldownUpdateEventDetail } from '@porsche-design-system/componen
           <p-drilldown-link href="#">Some anchor</p-drilldown-link>
         </p-drilldown-item>
         <p-drilldown-item identifier="id-2" label="Some Label">
-          <p-drilldown-button slot="button">Some Label</p-drilldown-button>
           <p-drilldown-link href="#">Some anchor</p-drilldown-link>
           <p-drilldown-link href="#">Some anchor</p-drilldown-link>
           <p-drilldown-link href="#">Some anchor</p-drilldown-link>
@@ -33,20 +31,17 @@ import { type DrilldownUpdateEventDetail } from '@porsche-design-system/componen
           <p-drilldown-link href="#">Some anchor</p-drilldown-link>
         </p-drilldown-item>
         <p-drilldown-item identifier="id-3" label="Some Label">
-          <p-drilldown-button slot="button">Some Label</p-drilldown-button>
           <p-drilldown-link href="#">Some anchor</p-drilldown-link>
           <p-drilldown-link href="#">Some anchor</p-drilldown-link>
           <p-drilldown-link href="#">Some anchor</p-drilldown-link>
           <p-drilldown-link href="#">Some anchor</p-drilldown-link>
         </p-drilldown-item>
         <p-drilldown-item identifier="id-4" label="Some Label">
-          <p-drilldown-button slot="button">Some Label</p-drilldown-button>
           <p-drilldown-link href="#">Some anchor</p-drilldown-link>
           <p-drilldown-link href="#">Some anchor</p-drilldown-link>
           <p-drilldown-link href="#">Some anchor</p-drilldown-link>
         </p-drilldown-item>
         <p-drilldown-item identifier="id-5" label="Some Label">
-          <p-drilldown-button slot="button">Some Label</p-drilldown-button>
           <p-drilldown-link href="#">Some anchor</p-drilldown-link>
           <p-drilldown-link href="#">Some anchor</p-drilldown-link>
         </p-drilldown-item>

@@ -3,10 +3,9 @@ import {
   PButton,
   PDrilldown,
   PDrilldownItem,
-  PDrilldownButton,
   PDrilldownLink
 } from '@porsche-design-system/components-react';
-import { useCallback, useState } from 'react';
+import {useCallback, useState} from 'react';
 
 export const DrilldownExamplePage = (): JSX.Element => {
   const [isDrilldownOpen, setIsDrilldownOpen] = useState<boolean>(false);
@@ -26,7 +25,7 @@ export const DrilldownExamplePage = (): JSX.Element => {
   return (
     <>
       <nav aria-label="Main">
-        <PButton type="button" aria={{ 'aria-haspopup': 'dialog' }} onClick={onOpen}>
+        <PButton type="button" aria={{'aria-haspopup': 'dialog'}} onClick={onOpen}>
           Open Drilldown
         </PButton>
         <PDrilldown
@@ -36,19 +35,15 @@ export const DrilldownExamplePage = (): JSX.Element => {
           onUpdate={onUpdate}
         >
           <PDrilldownItem identifier="id-1" label="Some Label">
-            <PDrilldownButton slot="button">Some Label</PDrilldownButton>
             <PDrilldownItem identifier="id-1-1" label="Some Label">
-              <PDrilldownButton slot="button">Some Label</PDrilldownButton>
               <PDrilldownLink href="#">Some anchor</PDrilldownLink>
               <PDrilldownLink href="#">Some anchor</PDrilldownLink>
             </PDrilldownItem>
             <PDrilldownItem identifier="id-1-2" label="Some Label">
-              <PDrilldownButton slot="button">Some Label</PDrilldownButton>
               <PDrilldownLink href="#">Some anchor</PDrilldownLink>
               <PDrilldownLink href="#">Some anchor</PDrilldownLink>
               <PDrilldownLink href="#">Some anchor</PDrilldownLink>
               <PDrilldownItem identifier="id-1-2-1" label="Some Label">
-                <PDrilldownButton slot="button">Some Label</PDrilldownButton>
                 <PDrilldownLink href="#">Some anchor</PDrilldownLink>
                 <PDrilldownLink href="#">Some anchor</PDrilldownLink>
               </PDrilldownItem>
@@ -59,26 +54,22 @@ export const DrilldownExamplePage = (): JSX.Element => {
             <PDrilldownLink href="#">Some anchor</PDrilldownLink>
           </PDrilldownItem>
           <PDrilldownItem identifier="id-2" label="Some Label">
-            <PDrilldownButton slot="button">Some Label</PDrilldownButton>
             <PDrilldownLink href="#">Some anchor</PDrilldownLink>
             <PDrilldownLink href="#">Some anchor</PDrilldownLink>
             <PDrilldownLink href="#">Some anchor</PDrilldownLink>
             <PDrilldownLink href="#">Some anchor</PDrilldownLink>
           </PDrilldownItem>
           <PDrilldownItem identifier="id-3" label="Some Label">
-            <PDrilldownButton slot="button">Some Label</PDrilldownButton>
             <PDrilldownLink href="#">Some anchor</PDrilldownLink>
             <PDrilldownLink href="#">Some anchor</PDrilldownLink>
             <PDrilldownLink href="#">Some anchor</PDrilldownLink>
           </PDrilldownItem>
           <PDrilldownItem identifier="id-4" label="Some Label">
-            <PDrilldownButton slot="button">Some Label</PDrilldownButton>
             <PDrilldownLink href="#">Some anchor</PDrilldownLink>
             <PDrilldownLink href="#">Some anchor</PDrilldownLink>
             <PDrilldownLink href="#">Some anchor</PDrilldownLink>
           </PDrilldownItem>
           <PDrilldownItem identifier="id-5" label="Some Label">
-            <PDrilldownButton slot="button">Some Label</PDrilldownButton>
             <PDrilldownLink href="#">Some anchor</PDrilldownLink>
             <PDrilldownLink href="#">Some anchor</PDrilldownLink>
           </PDrilldownItem>
