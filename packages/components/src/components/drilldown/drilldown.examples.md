@@ -52,8 +52,8 @@ layer individually with CSS variables (`--p-drilldown-grid-template`, `--p-drill
 
 ## Custom styling
 
-When the component is used in combination with a custom slot `slot="button"`, it's possible to adjust the layout
-behaviour for each layer (`p-drilldown-item`) individually by a CSS Custom Property (aka CSS Variable):
+It's possible to adjust the layout behaviour for each layer (`p-drilldown-item`) individually by a CSS Custom Property
+(aka CSS Variable):
 
 ```scss
 --p-drilldown-grid-template: auto / repeat(2, minmax(0, 1fr));
