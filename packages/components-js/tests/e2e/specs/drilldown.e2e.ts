@@ -28,7 +28,7 @@ const getDrilldownDismissButton = (page: Page) => page.locator('p-drilldown p-bu
 const getDrilldownDialogVisibility = async (page: Page) =>
   await getElementStyle(getDrilldownDialog(page), 'visibility');
 const getDrilldownItem = (page: Page, identifier: string) =>
-  page.locator(`p-drilldown-item[identifier="${identifier}"] p-button-pure >>> button`);
+  page.locator(`p-drilldown-item[identifier="${identifier}"] .button`);
 const getDrilldownItemScroller = (page: Page, identifier: string) =>
   page.locator(`p-drilldown-item[identifier="${identifier}"] .scroller`);
 const getBodyStyle = async (page: Page) => getAttribute(page.locator('body'), 'style');
@@ -61,8 +61,7 @@ const initBasicDrilldown = (
   ${[...Array(amount)]
     .map(
       (_, i) =>
-        `<p-drilldown-item identifier="item-${i + 1}" label="item-${i + 1}">
-          <p-drilldown-button slot="button">item-${i + 1}</p-drilldown-button>${
+        `<p-drilldown-item identifier="item-${i + 1}" label="item-${i + 1}">${
           content[i] ? content[i] : drilldownItemContent
         }</p-drilldown-item>`
     )
@@ -605,9 +604,8 @@ test.describe('lifecycle', () => {
 
     expect(status.componentDidLoad['p-drilldown'], 'componentDidLoad: p-drilldown').toBe(1);
     expect(status.componentDidLoad['p-drilldown-item'], 'componentDidLoad: p-drilldown-item').toBe(3);
-    expect(status.componentDidLoad['p-drilldown-button'], 'componentDidLoad: p-drilldown-button').toBe(3);
     expect(status.componentDidLoad['p-drilldown-link'], 'componentDidLoad: p-drilldown-link').toBe(9);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(5); // 3 item back buttons + 1 root back button + 1 dismiss button
+    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(8); // 3 cascade button + 3 item back buttons + 1 root back button + 1 dismiss button
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(9);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(31);
@@ -629,7 +627,6 @@ test.describe('lifecycle', () => {
 
     expect(statusAfter.componentDidUpdate['p-drilldown'], 'componentDidUpdate: p-drilldown').toBe(2);
     expect(statusAfter.componentDidUpdate['p-drilldown-item'], 'componentDidUpdate: p-drilldown-item').toBe(1);
-    expect(statusAfter.componentDidUpdate['p-drilldown-button'], 'componentDidUpdate: p-drilldown-button').toBe(1);
     expect(statusAfter.componentDidUpdate['p-drilldown-link'], 'componentDidUpdate: p-drilldown-link').toBe(0);
     expect(statusAfter.componentDidUpdate.all, 'componentDidUpdate: all').toBe(4);
   });
