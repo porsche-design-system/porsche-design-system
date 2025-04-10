@@ -10196,6 +10196,11 @@ exports[`should render dsr component for PDrilldown 1`] = `
 }
   :host {
     display: block;
+    --_p-a: #010205 !important;
+    --_p-b: #FFF !important;
+    --_p-c: #EEEFF2 !important;
+    --_p-d: rgba(1, 2, 5, 0.67) !important;
+    --_p-f: rgba(255,255,255,.01) !important;
     color-scheme: light dark !important;
   }
   :host([hidden]) {
@@ -10274,7 +10279,7 @@ exports[`should render dsr component for PDrilldown 1`] = `
   .scroller {
     display: contents;
     overflow: hidden auto;
-    background: rgba(255,255,255,.01);
+    background: var(--_p-f);
   }
   .back {
     display: none;
@@ -10283,15 +10288,15 @@ exports[`should render dsr component for PDrilldown 1`] = `
     .drawer {
       width: clamp(338px, 210px + 18vw, 640px);
       grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0, 1fr)/repeat(1, clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px));
-      background: #FFF;
+      background: var(--_p-b);
     }
     .drawer::after {
       grid-area: 1/4/-1/-1;
-      background: #EEEFF2;
+      background: var(--_p-c);
     }
     .drawer::before {
       grid-area: 1/1/-1/4;
-      background: #FFF;
+      background: var(--_p-b);
     }
     .scroller {
       grid-area: 1/1/-1/4;
@@ -10314,15 +10319,15 @@ exports[`should render dsr component for PDrilldown 1`] = `
 @media(max-width:759px) {
     .drawer {
       grid-template: clamp(16px, 1.25vw + 12px, 36px) auto clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr)/clamp(32px, 2.75vw + 23px, 76px) auto minmax(0, 1fr) auto clamp(32px, 2.75vw + 23px, 76px);
-      background: #FFF;
+      background: var(--_p-b);
     }
     .drawer::after {
       grid-area: 1/1/-1/-1;
-      background: #FFF;
+      background: var(--_p-b);
     }
     .drawer::before {
       grid-area: 1/1/-1/-1;
-      background: #FFF;
+      background: var(--_p-b);
     }
     .scroller {
       grid-area: 1/1/-1/-1;
@@ -10336,7 +10341,7 @@ exports[`should render dsr component for PDrilldown 1`] = `
       top: 0;
       grid-area: 1/1/4/-1;
       z-index: 1;
-      background: linear-gradient(180deg,#FFF 0%,#FFF 65%,transparent 100%);
+      background: linear-gradient(180deg,var(--_p-b) 0%,var(--_p-b) 65%,transparent 100%);
     }
     .dismiss-mobile {
       --p-internal-button-scaling: 0;
@@ -10942,7 +10947,7 @@ exports[`should render dsr component for PDrilldownItem 1`] = `
   .scroller {
     display: none;
     overflow: hidden auto;
-    background: rgba(255,255,255,.01);
+    background: var(--_p-f);
   }
   .button {
     grid-column: 1/-1;
@@ -11366,7 +11371,7 @@ exports[`should render dsr component for PDrilldownLink 1`] = `
   margin: -2px calc(clamp(8px, 0.5vw + 6px, 16px) * -1 - 4px) !important;
   border-radius: 4px !important;
   font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  color: #010205 !important;
+  color: var(--_p-a) !important;
   text-decoration: underline !important;
   text-decoration-color: transparent !important;
   cursor: pointer !important;
