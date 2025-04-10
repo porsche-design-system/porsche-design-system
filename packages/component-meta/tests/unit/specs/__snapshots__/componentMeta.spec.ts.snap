@@ -2451,62 +2451,6 @@ exports[`should match snapshot 1`] = `
     },
     "styling": "jss",
   },
-  "p-drilldown-button": {
-    "hasAriaProp": true,
-    "hasElementInternals": false,
-    "hasEvent": false,
-    "hasObserveAttributes": false,
-    "hasObserveChildren": false,
-    "hasSlot": true,
-    "isChunked": false,
-    "isDelegatingFocus": true,
-    "isExperimental": true,
-    "isInternal": false,
-    "isThemeable": true,
-    "nestedComponents": [
-      "p-icon",
-    ],
-    "propsMeta": {
-      "active": {
-        "allowedValues": "boolean",
-        "defaultValue": false,
-        "description": "Display button in active state.",
-        "type": "boolean",
-      },
-      "aria": {
-        "allowedValues": {
-          "aria-expanded": "string",
-          "aria-haspopup": "string",
-          "aria-label": "string",
-          "aria-pressed": "string",
-        },
-        "defaultValue": null,
-        "description": "Add ARIA attributes.",
-        "isAria": true,
-        "type": "DrilldownButtonAriaAttribute",
-      },
-      "theme": {
-        "allowedValues": [
-          "light",
-          "dark",
-          "auto",
-        ],
-        "defaultValue": "light",
-        "description": "Adapts the button color depending on the theme.",
-        "type": "Theme",
-      },
-    },
-    "requiredParent": [
-      "p-drilldown",
-      "p-drilldown-item",
-    ],
-    "slotsMeta": {
-      "": {
-        "description": "Default slot to render the button label.",
-      },
-    },
-    "styling": "jss",
-  },
   "p-drilldown-item": {
     "hasAriaProp": false,
     "hasElementInternals": false,
@@ -2546,7 +2490,7 @@ exports[`should match snapshot 1`] = `
       "label": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Renders back button and header section on mobile view.",
+        "description": "Renders back button, header section on mobile view and cascade button to reach a deeper level of the navigation structure.",
         "type": "string",
       },
       "primary": {
