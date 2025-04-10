@@ -50,7 +50,7 @@ describe('generateAngularControlledScript()', () => {
     `
     );
   });
-  it('should return correct selector & eventHandler for event value', () => {
+  it('should return correct selector & eventHandler for event value boolean', () => {
     const { states, eventHandler } = generateAngularControlledScript(
       'p-accordion',
       [
@@ -75,6 +75,35 @@ describe('generateAngularControlledScript()', () => {
       `
       "  onUpdate(e: CustomEvent<AccordionUpdateEventDetail>) {
           this.open = e.detail.open;
+        }"
+    `
+    );
+  });
+  it('should return correct selector & eventHandler for event value string', () => {
+    const { states, eventHandler } = generateAngularControlledScript(
+      'p-flyout-multilevel',
+      [
+        [
+          'onUpdate',
+          {
+            target: 'p-flyout-multilevel',
+            prop: 'activeIdentifier',
+            eventValueKey: 'activeIdentifier',
+            eventType: 'FlyoutMultilevelUpdateEventDetail',
+          },
+        ],
+      ],
+      {
+        properties: {
+          activeIdentifier: 'id-1',
+        },
+      }
+    );
+    expect(states).toMatchInlineSnapshot(`"  activeIdentifier = "id-1";"`);
+    expect(eventHandler).toMatchInlineSnapshot(
+      `
+      "  onUpdate(e: CustomEvent<FlyoutMultilevelUpdateEventDetail>) {
+          this.activeIdentifier = e.detail.activeIdentifier;
         }"
     `
     );

@@ -128,7 +128,7 @@ export const generateVueControlledScript = (
   const states = eventEntries
     // Only create state if the current element's tagName is the same as the element the state is applied to e.g. don't create state for p-button onClick open flyout
     .filter(([_, { target }]) => tagName === target)
-    .map(([_, { prop }]) => `  const ${prop} = ref(${(initialState?.properties as any)?.[prop]});`)
+    .map(([_, { prop }]) => `  const ${prop} = ref(${JSON.stringify((initialState?.properties as any)?.[prop])});`)
     .join('\n');
 
   const eventHandler = eventEntries

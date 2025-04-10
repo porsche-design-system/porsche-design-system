@@ -47,7 +47,7 @@ describe('generateVueControlledScript()', () => {
     `
     );
   });
-  it('should return correct selector & eventHandler for event value', () => {
+  it('should return correct selector & eventHandler for event value boolean', () => {
     const { states, eventHandler } = generateVueControlledScript(
       'p-accordion',
       [
@@ -72,6 +72,35 @@ describe('generateVueControlledScript()', () => {
       `
       "  const onUpdate = (e: CustomEvent<AccordionUpdateEventDetail>) => {
           open.value = e.open;
+        }"
+    `
+    );
+  });
+  it('should return correct selector & eventHandler for event value string', () => {
+    const { states, eventHandler } = generateVueControlledScript(
+      'p-flyout-multilevel',
+      [
+        [
+          'onUpdate',
+          {
+            target: 'p-flyout-multilevel',
+            prop: 'activeIdentifier',
+            eventValueKey: 'activeIdentifier',
+            eventType: 'FlyoutMultilevelUpdateEventDetail',
+          },
+        ],
+      ],
+      {
+        properties: {
+          activeIdentifier: 'id-1',
+        },
+      }
+    );
+    expect(states).toMatchInlineSnapshot(`"  const activeIdentifier = ref("id-1");"`);
+    expect(eventHandler).toMatchInlineSnapshot(
+      `
+      "  const onUpdate = (e: CustomEvent<FlyoutMultilevelUpdateEventDetail>) => {
+          activeIdentifier.value = e.activeIdentifier;
         }"
     `
     );

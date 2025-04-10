@@ -120,7 +120,7 @@ export const generateReactControlledScript = (
     .filter(([_, { target }]) => tagName === target)
     .map(
       ([_, { prop }]) =>
-        `  const [${prop}, set${pascalCase(prop)}] = useState(${(initialState?.properties as any)?.[prop]});`
+        `  const [${prop}, set${pascalCase(prop)}] = useState(${JSON.stringify((initialState?.properties as any)?.[prop])});`
     )
     .join('\n');
 

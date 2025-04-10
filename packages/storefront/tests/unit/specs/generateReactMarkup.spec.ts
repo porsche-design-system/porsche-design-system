@@ -44,7 +44,7 @@ describe('generateReactControlledScript()', () => {
   }"`
     );
   });
-  it('should return correct selector & eventHandler for event value', () => {
+  it('should return correct selector & eventHandler for event value boolean', () => {
     const { states, eventHandler } = generateReactControlledScript(
       'p-accordion',
       [
@@ -68,6 +68,33 @@ describe('generateReactControlledScript()', () => {
     expect(eventHandler).toMatchInlineSnapshot(
       `"  const onUpdate = (e: CustomEvent<AccordionUpdateEventDetail>) => {
     setOpen(e.detail.open);
+  }"`
+    );
+  });
+  it('should return correct selector & eventHandler for event value string', () => {
+    const { states, eventHandler } = generateReactControlledScript(
+      'p-flyout-multilevel',
+      [
+        [
+          'onUpdate',
+          {
+            target: 'p-flyout-multilevel',
+            prop: 'activeIdentifier',
+            eventValueKey: 'activeIdentifier',
+            eventType: 'FlyoutMultilevelUpdateEventDetail',
+          },
+        ],
+      ],
+      {
+        properties: {
+          activeIdentifier: 'id-1',
+        },
+      }
+    );
+    expect(states).toMatchInlineSnapshot('"  const [activeIdentifier, setActiveIdentifier] = useState("id-1");"');
+    expect(eventHandler).toMatchInlineSnapshot(
+      `"  const onUpdate = (e: CustomEvent<FlyoutMultilevelUpdateEventDetail>) => {
+    setActiveIdentifier(e.detail.activeIdentifier);
   }"`
     );
   });
