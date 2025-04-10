@@ -8,16 +8,12 @@ import type {
 } from '@/utils/generator/generator';
 import { camelCase, pascalCase } from 'change-case';
 
-export const getVueCode = ({
-  imports,
-  states,
-  eventHandlers,
-  markup,
-}: FrameworkConfiguratorMarkup['vue']) => `<script setup lang="ts">\n${imports ? imports : ''}\n${states ? `\n${states}\n` : ''}${eventHandlers ? `\n${eventHandlers}\n` : ''}</script>
+export const getVueCode = ({ imports, states, eventHandlers, markup, style }: FrameworkConfiguratorMarkup['vue']) =>
+  `<script setup lang="ts">\n${imports ? imports : ''}\n${states ? `\n${states}\n` : ''}${eventHandlers ? `\n${eventHandlers}\n` : ''}</script>
 
 <template>
 ${markup}
-</template>`;
+</template>${style ? `\n${style}` : ''}`;
 
 export const generateVueMarkup = (
   configs: (string | ElementConfig<HTMLTagOrComponent> | undefined)[],
@@ -26,6 +22,7 @@ export const generateVueMarkup = (
 ): FrameworkConfiguratorMarkup['vue'] => {
   const results = configs.map((config) => createVueMarkup(config, initialState, indentLevel));
   const markup = results.map(({ markup }) => markup).join('\n\n');
+  const style = results.map(({ style }) => style).join('\n\n');
   const states = results
     .flatMap(({ states }) => states)
     .filter((state) => state)
@@ -42,21 +39,41 @@ export const generateVueMarkup = (
     allImports.length > 0 ? `  import { ${allImports.join(', ')} } from '@porsche-design-system/components-vue';` : ''
   }`;
 
-  return { imports, states, eventHandlers, markup };
+  return { imports, states, eventHandlers, markup, style };
 };
 
+// TODO: style tags need to be moved out of <template>
 const createVueMarkup = (
   config: string | ElementConfig<HTMLTagOrComponent> | undefined,
   initialState: StoryState<HTMLTagOrComponent>,
   indentLevel = 0
-): { markup: string; states: string[]; eventHandlers: string[]; pdsComponents: string[]; types: string[] } => {
-  if (!config) return { markup: '', states: [], eventHandlers: [], pdsComponents: [], types: [] };
+): {
+  markup: string;
+  states: string[];
+  eventHandlers: string[];
+  pdsComponents: string[];
+  types: string[];
+  style: string;
+} => {
+  if (!config) return { markup: '', states: [], eventHandlers: [], pdsComponents: [], types: [], style: '' };
   const indent = '  '.repeat(indentLevel);
 
   if (typeof config === 'string')
-    return { markup: `${indent}${config}`, states: [], eventHandlers: [], pdsComponents: [], types: [] };
+    return { markup: `${indent}${config}`, states: [], eventHandlers: [], pdsComponents: [], types: [], style: '' };
 
   const { tag, properties = {}, events = {}, children = [] } = config;
+
+  if (tag === 'style') {
+    return {
+      markup: '',
+      states: [],
+      eventHandlers: [],
+      pdsComponents: [],
+      types: [],
+      style: `<style>${indent}${children}</style>`,
+    };
+  }
+
   const isPDSComponent = tag.startsWith('p-');
 
   let transformedTag: string = tag;
@@ -91,7 +108,7 @@ const createVueMarkup = (
   const eventHandlers = scripts ? [scripts.eventHandler, ...childEventHandlers] : childEventHandlers;
   const types = scripts ? [...scripts.types, ...childTypes] : childTypes;
 
-  return { markup, states, eventHandlers, pdsComponents: [...pdsComponents, ...childPDSComponents], types };
+  return { markup, states, eventHandlers, pdsComponents: [...pdsComponents, ...childPDSComponents], types, style: '' };
 };
 
 type VueScripts = { states: string; eventHandler: string; types: string[] };
@@ -125,6 +142,7 @@ export const generateVueControlledScript = (
   return { states, eventHandler, types };
 };
 
+// TODO: Same replacements like in vanilla-js?
 export const generateVueProperties = (
   properties: HTMLElementOrComponentProps<HTMLTagOrComponent>,
   eventEntries: [string, EventConfig][]
@@ -134,7 +152,7 @@ export const generateVueProperties = (
       if (eventEntries.some(([_, { prop }]) => prop === key)) {
         return ` :${key}="${key}"`;
       }
-      if (typeof value === 'string') return ` ${key}="${value}"`;
+      if (typeof value === 'string') return ` ${key === 'className' ? 'class' : key}="${value}"`;
       if (typeof value === 'object') {
         const formattedObject = Object.entries(value ?? {})
           .map(([k, v]) => `'${k}': '${v}'`)

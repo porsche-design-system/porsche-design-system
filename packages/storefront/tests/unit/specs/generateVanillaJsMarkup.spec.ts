@@ -1,3 +1,4 @@
+import { generateAngularProperties } from '@/utils/generator/generateAngularMarkup';
 import type { CSSProperties } from 'react';
 import {
   generateVanillaJSControlledScript,
@@ -109,6 +110,16 @@ describe('generateVanillaJsProperties()', () => {
     );
   });
 
+  it('should generate correct properties for class prop', () => {
+    const props = generateAngularProperties(
+      {
+        className: 'test',
+      },
+      []
+    );
+    expect(props).toMatchInlineSnapshot(`" class="test""`);
+  });
+
   it('should generate correct properties for style prop', () => {
     const props = generateVanillaJsProperties(
       'p-button',
@@ -215,6 +226,8 @@ describe('generateVanillaJsProperties()', () => {
       },
       []
     );
-    expect(propsFalsy).toMatchInlineSnapshot(`" class="" disabled="false" loop="false" muted="false" auto-play="false" default-checked="false" read-only="false" max-length="0" min-length="0" src-set="""`);
+    expect(propsFalsy).toMatchInlineSnapshot(
+      `" class="" disabled="false" loop="false" muted="false" auto-play="false" default-checked="false" read-only="false" max-length="0" min-length="0" src-set="""`
+    );
   });
 });
