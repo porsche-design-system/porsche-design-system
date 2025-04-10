@@ -8,7 +8,7 @@ exports[`generateVanillaJsMarkup() > should generate correct Vanilla JS markup f
   Open Banner
 </p-button>
 
-<p-banner dismiss-button="false" heading="Some heading" heading-tag="h4" state="warning" />",
+<p-banner dismiss-button="false" heading="Some heading" heading-tag="h4" state="warning"></p-banner>",
   "states": "  const button = document.querySelector("p-button");
   const banner = document.querySelector("p-banner");",
 }
@@ -59,7 +59,7 @@ exports[`generateVanillaJsMarkup() > should generate correct Vanilla JS markup f
   <p-text>
     Some Content Begin
   </p-text>
-  <div style="width: 10px; height: 120vh; background: deeppink" />
+  <div style="width: 10px; height: 120vh; background: deeppink"></div>
   <p-text>
     Some Content End
   </p-text>

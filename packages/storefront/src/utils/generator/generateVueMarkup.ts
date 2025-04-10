@@ -1,5 +1,6 @@
 import type { FrameworkConfiguratorMarkup } from '@/models/framework';
 import type { StoryState } from '@/models/story';
+import { isSelfClosingTag } from '@/utils/generator/generateVanillaJsMarkup';
 import type {
   ElementConfig,
   EventConfig,
@@ -22,7 +23,10 @@ export const generateVueMarkup = (
 ): FrameworkConfiguratorMarkup['vue'] => {
   const results = configs.map((config) => createVueMarkup(config, initialState, indentLevel));
   const markup = results.map(({ markup }) => markup).join('\n\n');
-  const style = results.map(({ style }) => style).join('\n\n');
+  const style = results
+    .filter(({ style }) => style !== '')
+    .map(({ style }) => style)
+    .join('\n\n');
   const states = results
     .flatMap(({ states }) => states)
     .filter((state) => state)
@@ -101,7 +105,9 @@ const createVueMarkup = (
   const markup =
     children.length > 0
       ? `${'  '.repeat(indentLevel)}<${transformedTag}${propertiesString}${eventListenersString}>\n${childMarkup}\n${'  '.repeat(indentLevel)}</${transformedTag}>`
-      : `${'  '.repeat(indentLevel)}<${transformedTag}${propertiesString}${eventListenersString} />`;
+      : isSelfClosingTag(tag)
+        ? `${'  '.repeat(indentLevel)}<${transformedTag}${propertiesString}${eventListenersString} />`
+        : `${'  '.repeat(indentLevel)}<${transformedTag}${propertiesString}${eventListenersString}></${transformedTag}>`;
 
   const scripts = eventEntries.length > 0 ? generateVueControlledScript(tag, eventEntries, initialState) : null;
   const states = scripts ? [scripts.states, ...childStates] : childStates;

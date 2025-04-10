@@ -1,5 +1,6 @@
 import type { FrameworkConfiguratorMarkup } from '@/models/framework';
 import type { StoryState } from '@/models/story';
+import { isSelfClosingTag } from '@/utils/generator/generateVanillaJsMarkup';
 import type {
   ElementConfig,
   EventConfig,
@@ -76,7 +77,9 @@ const createAngularMarkup = (
   const markup =
     children.length > 0
       ? `${'  '.repeat(indentLevel)}<${tag}${propertiesString}${eventListenersString}>\n${childMarkup}\n${'  '.repeat(indentLevel)}</${tag}>`
-      : `${'  '.repeat(indentLevel)}<${tag}${propertiesString}${eventListenersString} />`;
+      : isSelfClosingTag(tag)
+        ? `${'  '.repeat(indentLevel)}<${tag}${propertiesString}${eventListenersString} />`
+        : `${'  '.repeat(indentLevel)}<${tag}${propertiesString}${eventListenersString}></${tag}>`;
 
   const scripts = eventEntries.length > 0 ? generateAngularControlledScript(tag, eventEntries, initialState) : null;
   const states = scripts ? [scripts.states, ...childStates] : childStates;

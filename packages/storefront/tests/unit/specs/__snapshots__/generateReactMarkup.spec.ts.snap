@@ -15,7 +15,7 @@ import { PBanner, PButton } from '@porsche-design-system/components-react';",
         Open Banner
       </PButton>
 
-      <PBanner open={open} dismissButton={false} heading="Some heading" headingTag="h4" state="warning" onDismiss={onDismiss} />",
+      <PBanner open={open} dismissButton={false} heading="Some heading" headingTag="h4" state="warning" onDismiss={onDismiss}></PBanner>",
   "states": "  const [open, setOpen] = useState(undefined);",
 }
 `;
@@ -74,7 +74,7 @@ import { PButton, PButtonGroup, PFlyout, PHeading, PText } from '@porsche-design
         <PText>
           Some Content Begin
         </PText>
-        <div style={{'width': '10px', 'height': '120vh', 'background': 'deeppink'}} />
+        <div style={{'width': '10px', 'height': '120vh', 'background': 'deeppink'}}></div>
         <PText>
           Some Content End
         </PText>

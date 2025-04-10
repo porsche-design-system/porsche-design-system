@@ -124,7 +124,7 @@ describe('generateAngularControlledScript()', () => {
     expect(states).toMatchInlineSnapshot('""');
     expect(eventHandler).toMatchInlineSnapshot(
       `
-      "  const onClick = () => {
+      "  onClick() {
           this.open = true;
         }"
     `

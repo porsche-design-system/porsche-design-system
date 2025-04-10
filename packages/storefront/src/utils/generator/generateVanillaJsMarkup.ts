@@ -83,7 +83,9 @@ const createVanillaJSMarkup = (
   const markup =
     children.length > 0
       ? `${indent}<${tag}${propertyString}>\n${childrenMarkup.map(({ markup }) => markup).join('\n')}\n${indent}</${tag}>`
-      : `${indent}<${tag}${propertyString} />`;
+      : isSelfClosingTag(tag)
+        ? `${indent}<${tag}${propertyString} />`
+        : `${indent}<${tag}${propertyString}></${tag}>`;
 
   const scripts = Object.keys(events).length > 0 ? generateVanillaJSControlledScript(tag, eventEntries) : null;
 
@@ -156,4 +158,24 @@ export const generateVanillaJsProperties = (
       return ` ${kebabCase(key)}="${JSON.stringify(value)}"`;
     })
     .join('');
+};
+
+export const isSelfClosingTag = (tag: string): boolean => {
+  const selfClosingTags = new Set([
+    'area',
+    'base',
+    'br',
+    'col',
+    'embed',
+    'hr',
+    'img',
+    'input',
+    'link',
+    'meta',
+    'source',
+    'track',
+    'wbr',
+  ]);
+
+  return selfClosingTags.has(tag);
 };

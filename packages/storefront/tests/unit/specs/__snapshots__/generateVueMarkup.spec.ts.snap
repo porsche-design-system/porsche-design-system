@@ -14,8 +14,9 @@ exports[`generateVueMarkup() > should generate correct Vue markup for button 1`]
     Open Banner
   </PButton>
 
-  <PBanner :open="open" :dismissButton="false" heading="Some heading" headingTag="h4" state="warning" @dismiss="onDismiss" />",
+  <PBanner :open="open" :dismissButton="false" heading="Some heading" headingTag="h4" state="warning" @dismiss="onDismiss"></PBanner>",
   "states": "  const open = ref(undefined);",
+  "style": "",
 }
 `;
 
@@ -24,19 +25,20 @@ exports[`generateVueMarkup() > should generate correct Vue markup for carousel 1
   "eventHandlers": "",
   "imports": "  import { PCarousel } from '@porsche-design-system/components-vue';",
   "markup": "  <PCarousel heading="Some heading" :intl="{'slideLabel': 'Slide %s von %s', 'prev': 'Vorheriger Slide', 'next': 'Nächster Slide', 'first': 'Zum ersten Slide', 'last': 'Zum letzten Slide'}">
-    <div className="slide">
+    <div class="slide">
       Slide 1
     </div>
-    <div className="slide">
+    <div class="slide">
       Slide 2
     </div>
-    <div className="slide">
+    <div class="slide">
       Slide 3
     </div>
   </PCarousel>
 
-  <style>
-    .slide {
+",
+  "states": "",
+  "style": "<style>  .slide {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,9 +46,7 @@ exports[`generateVueMarkup() > should generate correct Vue markup for carousel 1
     background: #00b0f4;
     height: 150px;
     color: #010205;
-  }
-  </style>",
-  "states": "",
+  }</style>",
 }
 `;
 
@@ -71,7 +71,7 @@ exports[`generateVueMarkup() > should generate correct Vue markup for flyout 1`]
     <PText>
       Some Content Begin
     </PText>
-    <div :style="{'width': '10px', 'height': '120vh', 'background': 'deeppink'}" />
+    <div :style="{'width': '10px', 'height': '120vh', 'background': 'deeppink'}"></div>
     <PText>
       Some Content End
     </PText>
@@ -88,5 +88,6 @@ exports[`generateVueMarkup() > should generate correct Vue markup for flyout 1`]
     </PText>
   </PFlyout>",
   "states": "  const open = ref(undefined);",
+  "style": "",
 }
 `;

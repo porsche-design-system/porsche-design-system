@@ -1,5 +1,6 @@
 import type { FrameworkConfiguratorMarkup } from '@/models/framework';
 import type { StoryState } from '@/models/story';
+import { isSelfClosingTag } from '@/utils/generator/generateVanillaJsMarkup';
 import type {
   ConfiguratorTagNames,
   ElementConfig,
@@ -88,7 +89,9 @@ const createReactMarkup = (
   const markup =
     children.length > 0
       ? `${'  '.repeat(indentLevel)}<${transformedTag}${propertiesString}${eventListenersString}>\n${tag === 'style' ? `{\`${childMarkup}\`}` : childMarkup}\n${'  '.repeat(indentLevel)}</${transformedTag}>`
-      : `${'  '.repeat(indentLevel)}<${transformedTag}${propertiesString}${eventListenersString} />`;
+      : isSelfClosingTag(tag)
+        ? `${'  '.repeat(indentLevel)}<${transformedTag}${propertiesString}${eventListenersString} />`
+        : `${'  '.repeat(indentLevel)}<${transformedTag}${propertiesString}${eventListenersString}></${transformedTag}>`;
 
   const scripts = eventEntries.length > 0 ? generateReactControlledScript(tag, eventEntries, initialState) : null;
   const states = scripts ? [scripts.states, ...childStates] : childStates;

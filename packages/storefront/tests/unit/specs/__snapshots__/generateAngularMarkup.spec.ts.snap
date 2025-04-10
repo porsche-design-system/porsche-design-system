@@ -2,10 +2,10 @@
 
 exports[`generateAngularMarkup() > should generate correct Angular markup for button 1`] = `
 {
-  "eventHandlers": "  const onClick = () => {
+  "eventHandlers": "  onClick() {
     this.open = true;
   }
-  const onDismiss = () => {
+  onDismiss() {
     this.open = false;
   }",
   "imports": "",
@@ -13,7 +13,7 @@ exports[`generateAngularMarkup() > should generate correct Angular markup for bu
         Open Banner
       </p-button>
 
-      <p-banner [open]="open" [dismissButton]="false" heading="Some heading" headingTag="h4" state="warning" (dismiss)="onDismiss()" />",
+      <p-banner [open]="open" [dismissButton]="false" heading="Some heading" headingTag="h4" state="warning" (dismiss)="onDismiss()"></p-banner>",
   "states": "  open = false;",
 }
 `;
@@ -23,13 +23,13 @@ exports[`generateAngularMarkup() > should generate correct Angular markup for ca
   "eventHandlers": "",
   "imports": "",
   "markup": "      <p-carousel heading="Some heading" [intl]="{'slideLabel': 'Slide %s von %s', 'prev': 'Vorheriger Slide', 'next': 'Nächster Slide', 'first': 'Zum ersten Slide', 'last': 'Zum letzten Slide'}">
-        <div className="slide">
+        <div class="slide">
           Slide 1
         </div>
-        <div className="slide">
+        <div class="slide">
           Slide 2
         </div>
-        <div className="slide">
+        <div class="slide">
           Slide 3
         </div>
       </p-carousel>
@@ -51,10 +51,10 @@ exports[`generateAngularMarkup() > should generate correct Angular markup for ca
 
 exports[`generateAngularMarkup() > should generate correct Angular markup for flyout 1`] = `
 {
-  "eventHandlers": "  const onClick = () => {
+  "eventHandlers": "  onClick() {
     this.open = true;
   }
-  const onDismiss = () => {
+  onDismiss() {
     this.open = false;
   }",
   "imports": "",
@@ -69,7 +69,7 @@ exports[`generateAngularMarkup() > should generate correct Angular markup for fl
         <p-text>
           Some Content Begin
         </p-text>
-        <div [style]="{'width': '10px', 'height': '120vh', 'background': 'deeppink'}" />
+        <div [style]="{'width': '10px', 'height': '120vh', 'background': 'deeppink'}"></div>
         <p-text>
           Some Content End
         </p-text>
