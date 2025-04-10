@@ -1,7 +1,6 @@
 import type { FrameworkConfiguratorMarkup } from '@/models/framework';
 import type { StoryState } from '@/models/story';
 import type {
-  ConfiguratorTagNames,
   ElementConfig,
   EventConfig,
   HTMLElementOrComponentProps,
@@ -118,6 +117,7 @@ export const generateAngularControlledScript = (
   return { states, eventHandler, types };
 };
 
+// TODO: Same replacements like in vanilla-js?
 export const generateAngularProperties = (
   properties: HTMLElementOrComponentProps<HTMLTagOrComponent>,
   eventEntries: [string, EventConfig][]
@@ -127,7 +127,7 @@ export const generateAngularProperties = (
       if (eventEntries.some(([_, { prop }]) => prop === key)) {
         return ` [${key}]="${key}"`;
       }
-      if (typeof value === 'string') return ` ${key}="${value}"`;
+      if (typeof value === 'string') return ` ${key === 'className' ? 'class' : key}="${value}"`;
       if (typeof value === 'object') {
         const formattedObject = Object.entries(value ?? {})
           .map(([k, v]) => `'${k}': '${v}'`)

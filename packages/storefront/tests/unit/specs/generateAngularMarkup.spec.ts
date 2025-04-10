@@ -1,4 +1,3 @@
-import { generateReactMarkup } from '@/utils/generator/generateReactMarkup';
 import type { CSSProperties } from 'react';
 import {
   generateAngularControlledScript,
@@ -147,6 +146,16 @@ describe('generateAngularProperties()', () => {
     expect(props).toMatchInlineSnapshot(
       `" [aria]="{'aria-haspopup': 'true', 'aria-label': 'Some more descriptive label'}" type="button" [compact]="true" icon="add""`
     );
+  });
+
+  it('should generate correct properties for class prop', () => {
+    const props = generateAngularProperties(
+      {
+        className: 'test',
+      },
+      []
+    );
+    expect(props).toMatchInlineSnapshot(`" class="test""`);
   });
 
   it('should generate correct properties for style prop', () => {
