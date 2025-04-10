@@ -38,11 +38,11 @@ export class SelectOption {
   private isDisabled: boolean = false;
 
   public connectedCallback(): void {
-    this.isDisabled = this.disabled || this.host.disabledParent;
     throwIfParentIsNotOfKind(this.host, ['p-select', 'p-optgroup']);
   }
 
   public componentWillRender(): void {
+    this.isDisabled = this.disabled || this.host.disabledParent;
     this.internals.role = 'option';
     this.internals.ariaSelected = String(this.host.selected);
     this.internals.ariaHidden = String(this.host.hidden);
