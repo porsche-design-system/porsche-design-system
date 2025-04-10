@@ -153,8 +153,6 @@ export const config: StorefrontConfig = {
         // biome-ignore format: should not be formatted, otherwise storefront unit test might not work
         () => import('@/../../components/src/components/drilldown/drilldown-item/drilldown-item.props.md'),
         // biome-ignore format: should not be formatted, otherwise storefront unit test might not work
-        () => import('@/../../components/src/components/drilldown/drilldown-button/drilldown-button.props.md'),
-        // biome-ignore format: should not be formatted, otherwise storefront unit test might not work
         () => import('@/../../components/src/components/drilldown/drilldown-link/drilldown-link.props.md'),
       ],
     },
