@@ -14,6 +14,7 @@ describe('Element Internals', () => {
   });
 
   componentsWithElementInternals
+    // filter out select-option because ElementInternals is used to expose the AOM (ARIA) on the element
     .filter((tagName) => !['p-select-option'].includes(tagName))
     .forEach((tagName) => {
       const componentMeta = getComponentMeta(tagName);
