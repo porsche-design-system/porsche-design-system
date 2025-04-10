@@ -109,7 +109,7 @@ export const generateAngularControlledScript = (
     this.${prop} = ${negateValue ? '!' : ''}e.detail.${eventValueKey};
   }`;
       }
-      return `  const ${eventName} = () => {
+      return `  ${eventName}() {
     this.${prop} = ${negateValue ? '!' : ''}${value};
   }`;
     })

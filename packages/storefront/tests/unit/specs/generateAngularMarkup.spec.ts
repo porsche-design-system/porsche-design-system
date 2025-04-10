@@ -45,7 +45,7 @@ describe('generateAngularControlledScript()', () => {
     expect(states).toMatchInlineSnapshot(`"  open = undefined;"`);
     expect(eventHandler).toMatchInlineSnapshot(
       `
-      "  const onDismiss = () => {
+      "  onDismiss() {
           this.open = false;
         }"
     `
