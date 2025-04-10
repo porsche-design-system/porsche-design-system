@@ -5,6 +5,7 @@ export const WHITELISTED_TAG_NAMES = [
   'p-flex-item',
   'p-drilldown',
   'p-drilldown-item',
+  'p-drilldown-link',
   'p-grid-item',
   'p-multi-select-option',
   'p-optgroup',
@@ -66,16 +67,16 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-flyout': `
     <p-flyout></p-flyout>
   `,
-  //   'p-drilldown': `<p-drilldown>
-  //     <p-drilldown-item identifier="identifier-1" label="Button 1">
-  //       <a href="#some-anchor-1">Some anchor</a>
-  //     </p-drilldown-item>
-  //     <p-drilldown-item identifier="identifier-2" label="Button 2">
-  //       <a href="#some-anchor-2">Some anchor</a>
-  //     </p-drilldown-item>
-  //     <p-drilldown-item identifier="identifier-3" label="Button 3">
-  //       <a href="#some-anchor-3">Some anchor</a>
-  //     </p-drilldown-item>
+  // 'p-drilldown': `<p-drilldown>
+  //   <p-drilldown-item identifier="identifier-1" label="Label 1">
+  //     <p-drilldown-link href="#some-anchor-1">Some anchor</p-drilldown-link>
+  //   </p-drilldown-item>
+  //   <p-drilldown-item identifier="identifier-2" label="Label 2">
+  //     <p-drilldown-link href="#some-anchor-2">Some anchor</p-drilldown-link>
+  //   </p-drilldown-item>
+  //   <p-drilldown-item identifier="identifier-3" label="Label 3">
+  //     <p-drilldown-link href="#some-anchor-3">Some anchor</p-drilldown-link>
+  //   </p-drilldown-item>
   // </p-drilldown>`,
   'p-grid': `<p-grid>
     <p-grid-item size="6"></p-grid-item>
