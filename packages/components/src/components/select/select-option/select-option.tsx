@@ -35,30 +35,34 @@ export class SelectOption {
 
   @AttachInternals() private internals: ElementInternals;
 
+  private isDisabled: boolean = false;
+
   public connectedCallback(): void {
+    this.isDisabled = this.disabled || this.host.disabledParent;
     throwIfParentIsNotOfKind(this.host, ['p-select', 'p-optgroup']);
+  }
+
+  public componentWillRender(): void {
+    this.internals.role = 'option';
+    this.internals.ariaSelected = String(this.host.selected);
+    this.internals.ariaHidden = String(this.host.hidden);
+    this.internals.ariaDisabled = String(this.isDisabled);
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const { theme = 'light', selected, highlighted, hidden } = this.host;
+    const { theme = 'light', selected, highlighted } = this.host;
     attachComponentCss(this.host, getComponentCss, theme);
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const isDisabled = this.disabled || this.host.disabledParent;
-
-    this.internals.role = 'option';
-    this.internals.ariaSelected = String(selected);
-    this.internals.ariaHidden = String(hidden);
-    this.internals.ariaDisabled = String(this.disabled || this.host.disabledParent);
 
     return (
-      <Host onClick={!isDisabled && this.onClick}>
+      <Host onClick={!this.isDisabled && this.onClick}>
         <div
           class={{
             option: true,
             'option--selected': selected,
             'option--highlighted': highlighted,
-            'option--disabled': isDisabled,
+            'option--disabled': this.isDisabled,
           }}
         >
           <slot onSlotchange={this.onSlotChange} />
@@ -67,7 +71,7 @@ export class SelectOption {
               class="icon"
               aria-hidden="true"
               name="check"
-              color={isDisabled ? 'state-disabled' : 'primary'}
+              color={this.isDisabled ? 'state-disabled' : 'primary'}
               theme={theme}
             />
           )}
