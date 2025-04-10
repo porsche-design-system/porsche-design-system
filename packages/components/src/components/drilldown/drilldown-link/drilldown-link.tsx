@@ -1,12 +1,11 @@
 import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
-import type { PropTypes, SelectedAriaAttributes, Theme } from '../../../types';
+import type { PropTypes, SelectedAriaAttributes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   hasPropValueChanged,
   LINK_ARIA_ATTRIBUTES,
   parseAndGetAriaAttributes,
-  THEMES,
   throwIfParentIsNotOfKind,
   validateProps,
 } from '../../../utils';
@@ -20,7 +19,6 @@ const propTypes: PropTypes<typeof DrilldownLink> = {
   download: AllowedTypes.string,
   rel: AllowedTypes.string,
   aria: AllowedTypes.aria<DrilldownLinkAriaAttribute>(LINK_ARIA_ATTRIBUTES),
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -53,9 +51,6 @@ export class DrilldownLink {
   /** Add ARIA attributes (only has effect when `href` is defined and no slotted anchor is used). */
   @Prop() public aria?: SelectedAriaAttributes<DrilldownLinkAriaAttribute>;
 
-  /** Adapts the button color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
-
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-drilldown', 'p-drilldown-item']);
   }
@@ -68,7 +63,7 @@ export class DrilldownLink {
     const hasSlottedAnchor = this.href === undefined;
 
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, hasSlottedAnchor, this.active, this.theme);
+    attachComponentCss(this.host, getComponentCss, hasSlottedAnchor, this.active);
 
     return (
       <Host>

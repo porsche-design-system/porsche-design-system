@@ -23,12 +23,20 @@ import {
 } from '../../../styles';
 import { getCss, type Theme } from '../../../utils';
 
+// public css variables
+export const cssVariableGridTemplate = '--p-drilldown-grid-template';
+export const cssVariableGap = '--p-drilldown-gap';
+
+// private css variables
+export const cssVarColorPrimary = '--_p-a';
+export const cssVarColorBackgroundBase = '--_p-b';
+export const cssVarColorBackgroundSurface = '--_p-c';
+export const cssVarColorBackgroundShading = '--_p-d';
+export const cssVarColorBackgroundScroller = '--_p-f';
+
 export const scrollerWidthDesktop = 'clamp(338px, 210px + 18vw, 640px)';
 export const mediaQueryMobile = getMediaQueryMax('s');
 export const mediaQueryDesktop = getMediaQueryMin('s');
-
-export const cssVariableGridTemplate = '--p-drilldown-grid-template';
-export const cssVariableGap = '--p-drilldown-gap';
 
 const dialogDurationOpen = 'moderate';
 const backdropDurationOpen = 'long';
@@ -37,21 +45,15 @@ const dialogDurationClose = 'short';
 const backdropDurationClose = 'moderate';
 const easingClose = 'out';
 
-// ensures that the scrollbar color is mostly set correctly
-export const scrollerBackground: { [K in Theme]: string } = {
-  light: 'rgba(255,255,255,.01)',
-  dark: 'rgba(0,0,0,.01)',
-  auto: 'rgba(255,255,255,.01)',
-};
-
 export const getComponentCss = (
   isOpen: boolean,
   isPrimary: boolean,
   isSecondaryScrollerVisible: boolean,
   theme: Theme
 ): string => {
-  const { backgroundColor, backgroundSurfaceColor, backgroundShadingColor } = getThemedColors(theme);
+  const { primaryColor, backgroundColor, backgroundSurfaceColor, backgroundShadingColor } = getThemedColors(theme);
   const {
+    primaryColor: primaryColorDark,
     backgroundColor: backgroundColorDark,
     backgroundSurfaceColor: backgroundSurfaceColorDark,
     backgroundShadingColor: backgroundShadingColorDark,
@@ -73,8 +75,20 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
+          [cssVarColorPrimary]: primaryColor,
+          [cssVarColorBackgroundBase]: backgroundColor,
+          [cssVarColorBackgroundSurface]: backgroundSurfaceColor,
+          [cssVarColorBackgroundShading]: backgroundShadingColor,
+          [cssVarColorBackgroundScroller]: theme === 'dark' ? 'rgba(0,0,0,.01)' : 'rgba(255,255,255,.01)', // ensures that the scrollbar color is mostly set correctly
           ...colorSchemeStyles,
           ...hostHiddenStyles,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            [cssVarColorPrimary]: primaryColorDark,
+            [cssVarColorBackgroundBase]: backgroundColorDark,
+            [cssVarColorBackgroundSurface]: backgroundSurfaceColorDark,
+            [cssVarColorBackgroundShading]: backgroundShadingColorDark,
+            [cssVarColorBackgroundScroller]: 'rgba(0,0,0,.01)', // ensures that the scrollbar color is mostly set correctly
+          }),
         }),
       },
       ...preventFoucOfNestedElementsStyles,
@@ -92,11 +106,8 @@ export const getComponentCss = (
           ? {
               visibility: 'inherit',
               ...frostedGlassStyle,
-              background: backgroundShadingColor,
+              background: `var(${cssVarColorBackgroundShading})`,
               transition: `${getTransition('background', backdropDurationOpen, easingOpen)}, ${getTransition('backdrop-filter', backdropDurationOpen, easingOpen)}, ${getTransition('-webkit-backdrop-filter', backdropDurationOpen, easingOpen)}`,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                background: backgroundShadingColorDark,
-              }),
             }
           : {
               visibility: 'hidden',
@@ -177,28 +188,16 @@ export const getComponentCss = (
           }),
       [mediaQueryMobile]: {
         gridTemplate: `${spacingFluidMedium} auto ${spacingFluidLarge} minmax(0, 1fr)/${spacingFluidLarge} auto minmax(0, 1fr) auto ${spacingFluidLarge}`,
-        background: backgroundColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          background: backgroundColorDark,
-        }),
+        background: `var(${cssVarColorBackgroundBase})`,
       },
       [mediaQueryDesktop]: {
         width: isSecondaryScrollerVisible ? `calc(${scrollerWidthDesktop} * 2)` : scrollerWidthDesktop,
         gridTemplate: `${spacingFluidMedium} auto minmax(0, 1fr)/repeat(${isSecondaryScrollerVisible ? 2 : 1}, ${spacingFluidLarge} minmax(0, 1fr) ${spacingFluidLarge})`,
-        background: backgroundColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          background: backgroundColorDark,
-        }),
+        background: `var(${cssVarColorBackgroundBase})`,
         ...(isSecondaryScrollerVisible && {
-          background: `linear-gradient(90deg,${backgroundColor} 0%,${backgroundColor} 50%,${backgroundSurfaceColor} 50%,${backgroundSurfaceColor} 100%)`,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            background: `linear-gradient(90deg,${backgroundColorDark} 0%,${backgroundColorDark} 50%,${backgroundSurfaceColorDark} 50%,${backgroundSurfaceColorDark} 100%)`,
-          }),
+          background: `linear-gradient(90deg,var(${cssVarColorBackgroundBase}) 0%,var(${cssVarColorBackgroundBase}) 50%,var(${cssVarColorBackgroundSurface}) 50%,var(${cssVarColorBackgroundSurface}) 100%)`,
           '&:dir(rtl)': {
-            background: `linear-gradient(90deg,${backgroundSurfaceColor} 0%,${backgroundSurfaceColor} 50%,${backgroundColor} 50%,${backgroundColor} 100%)`,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              background: `linear-gradient(90deg,${backgroundSurfaceColorDark} 0%,${backgroundSurfaceColorDark} 50%,${backgroundColorDark} 50%,${backgroundColorDark} 100%)`,
-            }),
+            background: `linear-gradient(90deg,var(${cssVarColorBackgroundSurface}) 0%,var(${cssVarColorBackgroundSurface}) 50%,var(${cssVarColorBackgroundBase}) 50%,var(${cssVarColorBackgroundBase}) 100%)`,
           },
         }),
       },
@@ -212,33 +211,21 @@ export const getComponentCss = (
       '&::before': {
         [mediaQueryMobile]: {
           gridArea: '1/1/-1/-1',
-          background: backgroundColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            background: backgroundColorDark,
-          }),
+          background: `var(${cssVarColorBackgroundBase})`,
         },
         [mediaQueryDesktop]: {
           gridArea: '1/1/-1/4',
-          background: backgroundColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            background: backgroundColorDark,
-          }),
+          background: `var(${cssVarColorBackgroundBase})`,
         },
       },
       '&::after': {
         [mediaQueryMobile]: {
           gridArea: '1/1/-1/-1',
-          background: backgroundColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            background: backgroundColorDark,
-          }),
+          background: `var(${cssVarColorBackgroundBase})`,
         },
         [mediaQueryDesktop]: {
           gridArea: '1/4/-1/-1',
-          background: backgroundSurfaceColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            background: backgroundSurfaceColorDark,
-          }),
+          background: `var(${cssVarColorBackgroundSurface})`,
         },
       },
     },
@@ -248,10 +235,7 @@ export const getComponentCss = (
       // scrollBehavior: 'smooth', // when defined, `.scrollTo()` isn't applied immediately
       // overscrollBehaviorY: 'none', // when defined, rubber band scroll effect is getting lost on iOS Safari
       // WebkitOverflowScrolling: 'touch', // when defined, secondary scroller might not be show in iOS Safari on iPhone only
-      background: scrollerBackground[theme],
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        background: scrollerBackground.dark,
-      }),
+      background: `var(${cssVarColorBackgroundScroller})`,
       [mediaQueryMobile]: {
         ...(!isSecondaryScrollerVisible && {
           gridArea: '1/1/-1/-1',
@@ -264,10 +248,7 @@ export const getComponentCss = (
             top: 0,
             gridArea: '1/1/4/-1',
             zIndex: 1,
-            background: `linear-gradient(180deg,${backgroundColor} 0%,${backgroundColor} 65%,transparent 100%)`,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              background: `linear-gradient(180deg,${backgroundColorDark} 0%,${backgroundColorDark} 65%,transparent 100%)`,
-            }),
+            background: `linear-gradient(180deg,var(${cssVarColorBackgroundBase}) 0%,var(${cssVarColorBackgroundBase}) 65%,transparent 100%)`,
           },
         }),
       },

@@ -3,30 +3,23 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   getFocusJssStyle,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { getCss, type Theme } from '../../../utils';
+import { getCss } from '../../../utils';
 import type { JssStyle } from 'jss';
+import { cssVarColorPrimary } from '../drilldown/drilldown-styles';
 
-export const getComponentCss = (hasSlottedAnchor: boolean, isActive: boolean, theme: Theme): string => {
-  const { primaryColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark } = getThemedColors('dark');
-
+export const getComponentCss = (hasSlottedAnchor: boolean, isActive: boolean): string => {
   const anchorJssStyle: JssStyle = {
     all: 'unset',
     padding: `calc(${spacingFluidSmall} + 2px) calc(${spacingFluidSmall} + 4px)`, // aligned with link-pure
     margin: `-2px calc(${spacingFluidSmall} * -1 - 4px)`, // aligned with link-pure
     borderRadius: borderRadiusSmall, // needed for focus outline
     font: textMediumStyle.font,
-    color: primaryColor,
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      color: primaryColorDark,
-    }),
+    color: `var(${cssVarColorPrimary})`,
     textDecoration: 'underline',
     textDecorationColor: isActive ? 'inherit' : 'transparent',
     cursor: isActive ? 'default' : 'pointer',
@@ -52,7 +45,8 @@ export const getComponentCss = (hasSlottedAnchor: boolean, isActive: boolean, th
                   textDecorationColor: 'inherit',
                 },
               }),
-              ...getFocusJssStyle(theme, { slotted: 'a', offset: '-2px' }),
+              // TODO: focus color is the same for all themes but could change in the future
+              ...getFocusJssStyle('light', { slotted: 'a', offset: '-2px' }),
             }),
           }
         : {
@@ -63,7 +57,8 @@ export const getComponentCss = (hasSlottedAnchor: boolean, isActive: boolean, th
                   textDecorationColor: 'inherit',
                 },
               }),
-              ...getFocusJssStyle(theme, { offset: '-2px' }),
+              // TODO: focus color is the same for all themes but could change in the future
+              ...getFocusJssStyle('light', { offset: '-2px' }),
             },
           }),
     },

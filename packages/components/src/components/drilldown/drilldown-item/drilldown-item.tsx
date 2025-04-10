@@ -85,7 +85,7 @@ export class DrilldownItem {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.primary, this.secondary, this.cascade, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.primary, this.secondary, this.cascade);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 

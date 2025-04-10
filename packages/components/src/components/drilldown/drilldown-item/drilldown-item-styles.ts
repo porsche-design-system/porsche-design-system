@@ -10,24 +10,22 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   getAnimation,
-  getThemedColors,
   hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { getCss, type Theme } from '../../../utils';
+import { getCss } from '../../../utils';
 import {
+  cssVarColorBackgroundBase,
+  cssVarColorBackgroundScroller,
+  cssVarColorPrimary,
   cssVariableGap,
   cssVariableGridTemplate,
   mediaQueryDesktop,
   mediaQueryMobile,
-  scrollerBackground,
   scrollerWidthDesktop,
 } from '../drilldown/drilldown-styles';
 
-export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCascade: boolean, theme: Theme): string => {
-  const { primaryColor, backgroundColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, backgroundColor: backgroundColorDark } = getThemedColors('dark');
+export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCascade: boolean): string => {
   return getCss({
     '@global': {
       '@keyframes slide-up-mobile': {
@@ -133,10 +131,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
             whiteSpace: 'nowrap',
             overflow: 'hidden',
             textOverflow: 'ellipsis',
-            color: primaryColor, // enables color inheritance for slotted content
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              color: primaryColorDark,
-            }),
+            color: `var(${cssVarColorPrimary})`, // enables color inheritance for slotted content
           }),
         },
       },
@@ -186,10 +181,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       // scrollBehavior: 'smooth', // when defined, `.scrollTo()` isn't applied immediately
       // overscrollBehaviorY: 'none', // when defined, rubber band scroll effect is getting lost on iOS Safari
       // WebkitOverflowScrolling: 'touch', // when defined, secondary scroller might not be show in iOS Safari on iPhone only
-      background: scrollerBackground[theme],
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        background: scrollerBackground.dark,
-      }),
+      background: `var(${cssVarColorBackgroundScroller})`,
       [mediaQueryMobile]: {
         ...(isSecondary && {
           display: 'grid',
@@ -202,10 +194,7 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
             position: 'sticky',
             top: 0,
             gridArea: '1/1/4/-1',
-            background: `linear-gradient(180deg,${backgroundColor} 0%,${backgroundColor} 65%,transparent 100%)`,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              background: `linear-gradient(180deg,${backgroundColorDark} 0%,${backgroundColorDark} 65%,transparent 100%)`,
-            }),
+            background: `linear-gradient(180deg,var(${cssVarColorBackgroundBase}) 0%,var(${cssVarColorBackgroundBase}) 65%,transparent 100%)`,
           },
         }),
         ...((isPrimary || isCascade) && {

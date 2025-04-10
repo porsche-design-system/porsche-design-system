@@ -748,10 +748,6 @@ export namespace Components {
           * Target attribute where the link should be opened (only has effect when `href` is defined and no slotted anchor is used).
          */
         "target"?: DrilldownLinkTarget;
-        /**
-          * Adapts the button color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PFieldset {
         /**
@@ -4160,10 +4156,6 @@ declare namespace LocalJSX {
           * Target attribute where the link should be opened (only has effect when `href` is defined and no slotted anchor is used).
          */
         "target"?: DrilldownLinkTarget;
-        /**
-          * Adapts the button color depending on the theme.
-         */
-        "theme"?: Theme;
     }
     interface PFieldset {
         /**
