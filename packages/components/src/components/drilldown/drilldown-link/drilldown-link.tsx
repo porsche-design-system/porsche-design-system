@@ -1,8 +1,9 @@
-import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../../types';
 import {
   AllowedTypes,
-  attachComponentCss, hasPropValueChanged,
+  attachComponentCss,
+  hasPropValueChanged,
   LINK_ARIA_ATTRIBUTES,
   parseAndGetAriaAttributes,
   THEMES,
@@ -69,19 +70,23 @@ export class DrilldownLink {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, hasSlottedAnchor, this.active, this.theme);
 
-    return hasSlottedAnchor ? (
-      <slot />
-    ) : (
-      <a
-        href={this.href}
-        target={this.target}
-        download={this.download}
-        rel={this.rel}
-        aria-current={this.active ? 'true' : 'false'}
-        {...parseAndGetAriaAttributes(this.aria)}
-      >
-        <slot />
-      </a>
+    return (
+      <Host>
+        {hasSlottedAnchor ? (
+          <slot />
+        ) : (
+          <a
+            href={this.href}
+            target={this.target}
+            download={this.download}
+            rel={this.rel}
+            aria-current={this.active ? 'true' : 'false'}
+            {...parseAndGetAriaAttributes(this.aria)}
+          >
+            <slot />
+          </a>
+        )}
+      </Host>
     );
   }
 }
