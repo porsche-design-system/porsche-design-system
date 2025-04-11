@@ -370,7 +370,7 @@ everything works under real conditions.
 # Bumping version from 1.2.3 is invalid
 
 # Increment the patch version, appending the provided prefix tag (`-alpha.0`).
-./docker.sh run-prepare-release-components -i patch -p alpha
+./docker.sh run-prepare-release-components -i prepatch -p alpha
 # Bumping version from 1.2.3 to 1.2.4-alpha.0
 # Bumping version from 1.2.3-rc.0 to 1.2.4-alpha.0
 ```
