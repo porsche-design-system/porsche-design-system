@@ -7,8 +7,7 @@ NC='\033[0m'
 
 PACKAGE_LOCATION="packages/components"
 PACKAGE_JSON="${PACKAGE_LOCATION}/package.json"
-# PACKAGE_VERSION=$(grep version "${PACKAGE_JSON}" | head -n 1 | sed -E 's/.*"version": "(.*)",/\1/')
-PACKAGE_VERSION=1.2.3-rc.1
+PACKAGE_VERSION=$(grep version "${PACKAGE_JSON}" | head -n 1 | sed -E 's/.*"version": "(.*)",/\1/')
 
 # Allowed bump types and prerelease tags
 INCREMENT_LEVELS=("major" "minor" "patch" "premajor" "preminor" "prepatch" "prerelease" "release")

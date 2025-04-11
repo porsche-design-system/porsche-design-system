@@ -339,7 +339,7 @@ everything works under real conditions.
 ./docker.sh run-prepare-release-components -i minor
 # Bumping version from 1.2.3 to 1.3.0
 
-# Increments the major version.
+# Increment the major version.
 ./docker.sh run-prepare-release-components -i major
 # Bumping version from 1.2.3 to 2.0.0
 
@@ -348,7 +348,7 @@ everything works under real conditions.
 # Bumping version from 1.2.3 to 1.2.4-rc.0
 # Bumping version from 1.2.3-rc.0 to 1.2.4-rc.0
 
-# Increments the minor version, appending a prefix tag (`-rc.0`).
+# Increment the minor version, appending a prefix tag (`-rc.0`).
 ./docker.sh run-prepare-release-components -i preminor
 # Bumping version from 1.2.3 to 1.3.0-rc.0
 # Bumping version from 1.2.3-rc.0 to 1.3.0-rc.0
@@ -362,6 +362,7 @@ everything works under real conditions.
 ./docker.sh run-prepare-release-components -i prerelease
 # Bumping version from 1.2.3 to 1.2.4-rc.0
 # Bumping version from 1.2.3-rc.0 to 1.2.3-rc.1
+# Bumping version from 1.2.3-alpha.0 to 1.2.3-rc.0 (provide `-p alpha` to increment to 1.2.3-alpha.1)
 
 # Remove the prefix tag (invalid if no prefix tag exists).
 ./docker.sh run-prepare-release-components -i release
