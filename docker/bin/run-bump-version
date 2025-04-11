@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+NC='\033[0m'
+
+PACKAGE_LOCATION="packages/components"
+PACKAGE_JSON="${PACKAGE_LOCATION}/package.json"
+PACKAGE_VERSION=$(grep version "${PACKAGE_JSON}" | head -n 1 | sed -E 's/.*"version": "(.*)",/\1/')
+
+# Allowed prerelease tags
+VALID_PRERELEASE_TAGS=("rc" "alpha" "beta")
+
+usage() {
+  echo -e "${YELLOW}Usage: $0 -t [patch|minor|major] [-p rc|alpha|beta]${NC}"
+  exit 1
+}
+
+# Check if the prerelease tag is valid
+is_valid_prerelease_tag() {
+  local tag="$1"
+  for valid_tag in "${VALID_PRERELEASE_TAGS[@]}"; do
+    if [[ "$tag" == "$valid_tag" ]]; then
+      return 0  # Valid
+    fi
+  done
+  return 1  # Invalid
+}
+
+# Parse arguments
+while getopts ":t:p:" opt; do
+  case $opt in
+    t) BUMP_TYPE="$OPTARG"
+    ;;
+    p) PRERELEASE_TAG="$OPTARG"
+    ;;
+    \?) echo -e "${RED}Invalid option: -$OPTARG${NC}" >&2
+        usage
+    ;;
+    :) echo -e "${RED}Option -$OPTARG requires an argument.${NC}" >&2
+       usage
+    ;;
+  esac
+done
+
+# Check if BUMP_TYPE is valid
+if [[ ! "$BUMP_TYPE" =~ ^(patch|minor|major)$ ]]; then
+  echo -e "${RED}Error: Invalid bump type. Choose from patch, minor, or major.${NC}"
+  exit 1
+fi
+
+# If a prerelease tag was provided, validate it
+if [ -n "$PRERELEASE_TAG" ]; then
+  if ! is_valid_prerelease_tag "$PRERELEASE_TAG"; then
+    echo -e "${RED}Error: Invalid prerelease tag. Valid options are: ${VALID_PRERELEASE_TAGS[*]}${NC}"
+    exit 1
+  fi
+fi
+
+
+# Check if version extraction was successful
+if [ -z "$PACKAGE_VERSION" ]; then
+  echo -e "${RED}Error: Could not extract version from $PACKAGE_JSON.${NC}"
+  exit 1
+fi
+
+echo "Current version is: $PACKAGE_VERSION"
+
+# Step 1: Bump version
+NEXT_VERSION=$(npx semver "$PACKAGE_VERSION" -i "$BUMP_TYPE")
+
+# Step 2 (optional): Add prerelease
+if [[ -n "$PRERELEASE_TAG" ]]; then
+  NEW_VERSION=$(npx semver "$NEXT_VERSION" -i prerelease --preid "$PRERELEASE_TAG")
+else
+  NEW_VERSION="$NEXT_VERSION"
+fi
+
+echo -e "${GREEN}Bumping version from ${PACKAGE_VERSION} to ${NEW_VERSION}${NC}"
+
+# Export the new version
+export NEW_VERSION
