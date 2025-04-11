@@ -322,8 +322,57 @@ everything works under real conditions.
 
 - `./packages/components/CHANGELOG.md`
 
-1. Run `./docker.sh run-prepare-release-components ${TARGET_VERSION}` (If something goes wrong, make sure to revert all
-   local changes before executing the task again.)
+1. Run `./docker.sh run-prepare-release-components -i {INCREMENT_LEVEL} -p {PREFIX_TAG}` (If something goes wrong, make
+   sure to revert all local changes before executing the task again.)
+
+- `-i {INCREMENT_LEVEL}`: Increment a version by the specified level (`major`, `minor`, `patch`, `premajor`, `preminor`,
+  `prepatch`, `prerelease`, or `release`). Default level is `patch`.
+- `-p {PREFIX_TAG}`: Identifier to be used to prefix `premajor`, `preminor`, `prepatch` or `prerelease` version
+  increments (`rc`, `alpha`, or `beta`). Default prefix is `rc`.
+
+```bash
+# Increment the patch version.
+./docker.sh run-prepare-release-components -i patch
+# Bumping version from 1.2.3 to 1.2.4
+
+# Increment the minor version.
+./docker.sh run-prepare-release-components -i minor
+# Bumping version from 1.2.3 to 1.3.0
+
+# Increments the major version.
+./docker.sh run-prepare-release-components -i major
+# Bumping version from 1.2.3 to 2.0.0
+
+# Increment the patch version, appending a prefix tag (`-rc.0`).
+./docker.sh run-prepare-release-components -i prepatch
+# Bumping version from 1.2.3 to 1.2.4-rc.0
+# Bumping version from 1.2.3-rc.0 to 1.2.4-rc.0
+
+# Increments the minor version, appending a prefix tag (`-rc.0`).
+./docker.sh run-prepare-release-components -i preminor
+# Bumping version from 1.2.3 to 1.3.0-rc.0
+# Bumping version from 1.2.3-rc.0 to 1.3.0-rc.0
+
+# Increment the major version, appending a prefix tag (`-rc.0`).
+./docker.sh run-prepare-release-components -i premajor
+# Bumping version from 1.2.3 to 2.0.0-rc.0
+# Bumping version from 1.2.3-rc.0 to 2.0.0-rc.0
+
+# Increment the patch version, appending or incrementing a prefix tag (`-rc.0`, `-rc.1`).
+./docker.sh run-prepare-release-components -i prerelease
+# Bumping version from 1.2.3 to 1.2.4-rc.0
+# Bumping version from 1.2.3-rc.0 to 1.2.3-rc.1
+
+# Remove the prefix tag (invalid if no prefix tag exists).
+./docker.sh run-prepare-release-components -i release
+# Bumping version from 1.2.3-rc.0 to 1.2.3
+# Bumping version from 1.2.3 is invalid
+
+# Increment the patch version, appending the provided prefix tag (`-alpha.0`).
+./docker.sh run-prepare-release-components -i patch -p alpha
+# Bumping version from 1.2.3 to 1.2.4-alpha.0
+# Bumping version from 1.2.3-rc.0 to 1.2.4-alpha.0
+```
 
 ### Release
 
