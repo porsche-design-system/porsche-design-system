@@ -29,7 +29,7 @@ usage() {
 }
 
 # Check if the prerelease tag is valid
-is_valid_prefix_tag() {
+is_valid_prerelease_tag() {
   local tag="$1"
   for valid_tag in "${PRERELEASE_TAGS[@]}"; do
     if [[ "$tag" == "$valid_tag" ]]; then
@@ -44,7 +44,7 @@ while getopts ":i:p:" opt; do
   case $opt in
     i) INCREMENT_OPERATION="$OPTARG"
     ;;
-    p) PREFIX_TAG="$OPTARG"
+    p) PRERELEASE_TAG="$OPTARG"
     ;;
     \?) echo -e "${RED}Invalid option: -$OPTARG${NC}" >&2
         usage
@@ -55,23 +55,23 @@ while getopts ":i:p:" opt; do
   esac
 done
 
-# If a prefix tag was provided, validate it
-if [ -n "$PREFIX_TAG" ]; then
-  if ! is_valid_prefix_tag "$PREFIX_TAG"; then
-    echo -e "${RED}Error: Invalid prefix tag. Choose from [${prerelease_tags//|/, }].${NC}"
+# If a prerelease tag was provided, validate it
+if [ -n "$PRERELEASE_TAG" ]; then
+  if ! is_valid_prerelease_tag "$PRERELEASE_TAG"; then
+    echo -e "${RED}Error: Invalid prerelease tag. Choose from [${prerelease_tags//|/, }].${NC}"
     exit 1
   fi
 fi
 
-# Warn that prefix tag is ignored for non-pre* version increments.
-if [[ -n "$PREFIX_TAG" && ! "$INCREMENT_OPERATION" =~ ^premajor$|^preminor$|^prepatch$|^prerelease$ ]]; then
-  echo -e "${YELLOW}Warning: Prerelease tag '$PREFIX_TAG' will be ignored for increment level '$INCREMENT_OPERATION'.${NC}"
+# Warn that prerelease tag is ignored for non-pre* version increments.
+if [[ -n "$PRERELEASE_TAG" && ! "$INCREMENT_OPERATION" =~ ^premajor$|^preminor$|^prepatch$|^prerelease$ ]]; then
+  echo -e "${YELLOW}Warning: Prerelease tag '$PRERELEASE_TAG' will be ignored for increment level '$INCREMENT_OPERATION'.${NC}"
   NEW_VERSION=$(npx semver "$PACKAGE_VERSION" -i "$INCREMENT_OPERATION")
 fi
 
 # Set default values if not provided
 INCREMENT_OPERATION=${INCREMENT_OPERATION:-patch}
-PREFIX_TAG=${PREFIX_TAG:-rc}
+PRERELEASE_TAG=${PRERELEASE_TAG:-rc}
 
 
 if [[ ! "$INCREMENT_OPERATION" =~ ^($increment_operations)$ ]]; then
@@ -87,7 +87,7 @@ fi
 
 echo "Current version is: $PACKAGE_VERSION"
 
-NEW_VERSION=$(npx semver "$PACKAGE_VERSION" -i "$INCREMENT_OPERATION" --preid "$PREFIX_TAG")
+NEW_VERSION=$(npx semver "$PACKAGE_VERSION" -i "$INCREMENT_OPERATION" --preid "$PRERELEASE_TAG")
 
 if [ "$NEW_VERSION" == "null" ]; then
   echo -e "${RED}Error: Version bump for increment operation '$INCREMENT_OPERATION' is not valid for the current version '$PACKAGE_VERSION'. No changes made.${NC}"
