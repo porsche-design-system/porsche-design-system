@@ -9,23 +9,29 @@ PACKAGE_LOCATION="packages/components"
 PACKAGE_JSON="${PACKAGE_LOCATION}/package.json"
 PACKAGE_VERSION=$(grep version "${PACKAGE_JSON}" | head -n 1 | sed -E 's/.*"version": "(.*)",/\1/')
 
-# Allowed bump types and prerelease tags
-INCREMENT_LEVELS=("major" "minor" "patch" "premajor" "preminor" "prepatch" "prerelease" "release")
-PREFIX_TAGS=("rc" "alpha" "beta")
+# Retrieve increment levels from semver (excludes "release" because it is not considered a release type)
+RELEASE_TYPES=$(node -e "const semver = require('semver'); console.log(semver.RELEASE_TYPES.join(' '));")
+SEMVER_SPEC_VERSION=$(node -e "const semver = require('semver'); console.log(semver.SEMVER_SPEC_VERSION);")
+# Append "release" manually to include the finalization step.
+INCREMENT_OPERATIONS=($RELEASE_TYPES release)
 
-increment_levels=$(IFS='|' ; echo "${INCREMENT_LEVELS[*]}")
-prefix_tags=$(IFS='|' ; echo "${PREFIX_TAGS[*]}")
+echo -e "${YELLOW}Using semver specification version: $SEMVER_SPEC_VERSION${NC}"
+
+# Allowed prerelease tags
+PRERELEASE_TAGS=("rc" "alpha" "beta")
+
+increment_operations=$(IFS='|' ; echo "${INCREMENT_OPERATIONS[*]}")
+prerelease_tags=$(IFS='|' ; echo "${PRERELEASE_TAGS[*]}")
 
 usage() {
-
-  echo -e "${YELLOW}Usage: $0 -i [${increment_levels}] [-p ${prefix_tags}]${NC}"
+  echo -e "${YELLOW}Usage: $0 -i [${increment_operations}] [-p ${prerelease_tags}]${NC}"
   exit 1
 }
 
 # Check if the prerelease tag is valid
 is_valid_prefix_tag() {
   local tag="$1"
-  for valid_tag in "${PREFIX_TAGS[@]}"; do
+  for valid_tag in "${PRERELEASE_TAGS[@]}"; do
     if [[ "$tag" == "$valid_tag" ]]; then
       return 0  # Valid
     fi
@@ -36,7 +42,7 @@ is_valid_prefix_tag() {
 # Parse arguments
 while getopts ":i:p:" opt; do
   case $opt in
-    i) INCREMENT_LEVEL="$OPTARG"
+    i) INCREMENT_OPERATION="$OPTARG"
     ;;
     p) PREFIX_TAG="$OPTARG"
     ;;
@@ -52,24 +58,24 @@ done
 # If a prefix tag was provided, validate it
 if [ -n "$PREFIX_TAG" ]; then
   if ! is_valid_prefix_tag "$PREFIX_TAG"; then
-    echo -e "${RED}Error: Invalid prefix tag. Choose from [${prefix_tags//|/, }].${NC}"
+    echo -e "${RED}Error: Invalid prefix tag. Choose from [${prerelease_tags//|/, }].${NC}"
     exit 1
   fi
 fi
 
 # Warn that prefix tag is ignored for non-pre* version increments.
-if [[ -n "$PREFIX_TAG" && ! "$INCREMENT_LEVEL" =~ ^premajor$|^preminor$|^prepatch$|^prerelease$ ]]; then
-  echo -e "${YELLOW}Warning: Prefix tag '$PREFIX_TAG' will be ignored for bump type '$INCREMENT_LEVEL'.${NC}"
-  NEW_VERSION=$(npx semver "$PACKAGE_VERSION" -i "$INCREMENT_LEVEL")
+if [[ -n "$PREFIX_TAG" && ! "$INCREMENT_OPERATION" =~ ^premajor$|^preminor$|^prepatch$|^prerelease$ ]]; then
+  echo -e "${YELLOW}Warning: Prerelease tag '$PREFIX_TAG' will be ignored for increment level '$INCREMENT_OPERATION'.${NC}"
+  NEW_VERSION=$(npx semver "$PACKAGE_VERSION" -i "$INCREMENT_OPERATION")
 fi
 
 # Set default values if not provided
-INCREMENT_LEVEL=${INCREMENT_LEVEL:-patch}
+INCREMENT_OPERATION=${INCREMENT_OPERATION:-patch}
 PREFIX_TAG=${PREFIX_TAG:-rc}
 
 
-if [[ ! "$INCREMENT_LEVEL" =~ ^($increment_levels)$ ]]; then
-  echo -e "${RED}Error: Invalid increment level. Choose from [${increment_levels//|/, }].${NC}"
+if [[ ! "$INCREMENT_OPERATION" =~ ^($increment_operations)$ ]]; then
+  echo -e "${RED}Error: Invalid increment level. Choose from [${increment_operations//|/, }].${NC}"
   exit 1
 fi
 
@@ -81,10 +87,10 @@ fi
 
 echo "Current version is: $PACKAGE_VERSION"
 
-NEW_VERSION=$(npx semver "$PACKAGE_VERSION" -i "$INCREMENT_LEVEL" --preid "$PREFIX_TAG")
+NEW_VERSION=$(npx semver "$PACKAGE_VERSION" -i "$INCREMENT_OPERATION" --preid "$PREFIX_TAG")
 
 if [ "$NEW_VERSION" == "null" ]; then
-  echo -e "${RED}Error: Version bump for increment level '$INCREMENT_LEVEL' is not valid for the current version '$PACKAGE_VERSION'. No changes made.${NC}"
+  echo -e "${RED}Error: Version bump for increment level '$INCREMENT_OPERATION' is not valid for the current version '$PACKAGE_VERSION'. No changes made.${NC}"
   exit 1
 fi
 
