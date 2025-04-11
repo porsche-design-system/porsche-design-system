@@ -49,12 +49,12 @@ export const routes: Route[] = [
     path: '/flyout-prefixed',
   },
   {
-    name: 'FlyoutMultilevelBasic',
-    path: '/flyout-multilevel-basic',
+    name: 'DrilldownBasic',
+    path: '/drilldown-basic',
   },
   {
-    name: 'FlyoutMultilevelPrefixed',
-    path: '/flyout-multilevel-prefixed',
+    name: 'DrilldownPrefixed',
+    path: '/drilldown-prefixed',
   },
   {
     name: 'ModalBasic',
