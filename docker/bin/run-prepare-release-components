@@ -5,7 +5,7 @@ set -o pipefail
 
 SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
 
-source "${SCRIPT_DIR}/run-check-version"
+# source "${SCRIPT_DIR}/run-check-version"
 
 # set new version in components
 pushd "./packages/components"
