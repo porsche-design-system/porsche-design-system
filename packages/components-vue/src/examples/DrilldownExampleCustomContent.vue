@@ -7,7 +7,7 @@ import {
   PLink,
   PButtonTile,
   PModelSignature,
-  PDrilldownLink
+  PDrilldownLink,
 } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
@@ -33,7 +33,7 @@ const onUpdate = (e: DrilldownUpdateEventDetail): void => {
       @dismiss="onDismiss"
       @update="onUpdate"
     >
-      <PDrilldownItem identifier="id-1" label="Models">
+      <PDrilldownItem identifier="id-1" label="Motorsport">
         <PDrilldownItem identifier="id-1-1" label="718">
           <PModelSignature slot="header" model="718"></PModelSignature>
           <PButtonTile

@@ -6,7 +6,7 @@ import {
   PLink,
   PButtonTile,
   PModelSignature,
-  PDrilldownLink
+  PDrilldownLink,
 } from '@porsche-design-system/components-react';
 import { spacingFluidSmall } from '@porsche-design-system/components-react/styles';
 import React, { useCallback, useState } from 'react';
@@ -41,7 +41,7 @@ export const DrilldownExampleCustomContentPage = (): JSX.Element => {
         >
           <PDrilldownItem
             identifier="id-1"
-            label="Models"
+            label="Motorsport"
             style={
               {
                 '--p-drilldown-grid-template': 'auto / repeat(2, minmax(0, 1fr))',

@@ -34,7 +34,7 @@ import { type DrilldownUpdateEventDetail } from '@porsche-design-system/componen
         (dismiss)="onDismiss()"
         (update)="onUpdate($event)"
       >
-        <p-drilldown-item identifier="id-1" label="Models">
+        <p-drilldown-item identifier="id-1" label="Motorsport">
           <p-drilldown-item identifier="id-1-1" label="718">
             <p-model-signature slot="header" model="718"></p-model-signature>
             <p-button-tile
