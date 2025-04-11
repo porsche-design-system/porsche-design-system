@@ -90,7 +90,7 @@ echo "Current version is: $PACKAGE_VERSION"
 NEW_VERSION=$(npx semver "$PACKAGE_VERSION" -i "$INCREMENT_OPERATION" --preid "$PREFIX_TAG")
 
 if [ "$NEW_VERSION" == "null" ]; then
-  echo -e "${RED}Error: Version bump for increment level '$INCREMENT_OPERATION' is not valid for the current version '$PACKAGE_VERSION'. No changes made.${NC}"
+  echo -e "${RED}Error: Version bump for increment operation '$INCREMENT_OPERATION' is not valid for the current version '$PACKAGE_VERSION'. No changes made.${NC}"
   exit 1
 fi
 
