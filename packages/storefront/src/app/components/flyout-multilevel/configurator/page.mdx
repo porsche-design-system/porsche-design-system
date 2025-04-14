@@ -3,6 +3,7 @@ import { TableOfContents } from "@/components/common/TableOfContents";
 import { Configurator } from "@/components/playground/Configurator";
 import { flyoutMultilevelStory } from "@/app/components/flyout-multilevel/flyout-multilevel.stories";
 import {BrowserSupport} from "@/components/common/BrowserSupport";
+import {Notification} from "@/components/common/Notification";
 
 export const metadata = {
   title: 'Flyout Multilevel - Porsche Design System',
@@ -10,6 +11,10 @@ export const metadata = {
 }
 
 # Flyout Multilevel <ComponentStatus tagName="p-flyout-multilevel"></ComponentStatus>
+
+<Notification heading="Experimental Component" heading-tag="h2" state="warning">
+  The <code>p-flyout-multilevel</code> component is experimental and might be changed or removed in a future release.
+</Notification>
 
 The `p-flyout-multilevel` component is meant for displaying an infinite multilevel structure in a flyout that overlays
 the page content from the start side of the screen. It is a controlled component that gives you flexible control over
