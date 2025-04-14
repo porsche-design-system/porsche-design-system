@@ -16,6 +16,7 @@ const exceptions: { component: string; subfolders: string[] }[] = [
   { component: 'marque', subfolders: ['examples'] },
   { component: 'pagination', subfolders: ['examples'] },
   { component: 'popover', subfolders: ['examples'] },
+  { component: 'sheet', subfolders: ['examples'] },
   { component: 'switch', subfolders: ['examples'] },
   { component: 'tag-dismissible', subfolders: ['examples'] },
   { component: 'text-list', subfolders: ['examples'] },
