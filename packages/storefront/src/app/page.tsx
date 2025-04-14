@@ -1,7 +1,7 @@
 'use client';
 
 import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
-import { PCarousel, PDisplay, PLinkPure, PText } from '@porsche-design-system/components-react/ssr';
+import { PDisplay, PLinkPure, PText } from '@porsche-design-system/components-react/ssr';
 import Image from 'next/image';
 import AppearAnimation from './appearAnimation';
 
@@ -278,8 +278,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="bg-background-surface rounded-lg mt-xl mb-xl pb-32 grid grid-cols-subgrid gap-md sm:grid-cols-full col-span-full xs:col-start-1 xs:col-end-13">
-        <article className="col-start-2 col-end-12 mt-2xl mb-xl max-w-prose mx-auto">
+      <div className="bg-background-surface rounded-lg mt-xl mb-xl pb-32 grid gap-md sm:grid-cols-full col-span-full xs:col-start-1 xs:col-end-13 grid-cols-12 gap-4">
+        <article className="col-span-full xs:col-start-4 xs:col-end-10 mt-2xl mb-xl max-w-prose mx-auto">
           <PText size="x-large" align="center">
             Benefits
           </PText>
@@ -289,104 +289,119 @@ export default function Home() {
             integration.
           </PText>
         </article>
-        <PCarousel width="extended" className="col-start-2 col-end-13">
-          <div>
-            <article className="place-items-center min-h-[600px] mt-sm mb-sm grid gap-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12 bg-background-base rounded-lg p-[100px]">
-              <div>
-                <div className="mb-4">
-                  <PText size="small" weight="semi-bold" align="start">
-                    Updated Capability
-                  </PText>
-                </div>
-                <PText size="large" className="" color="contrast-medium" align="start">
-                  The ability to update styles, tokens, and components at any time ensures flexibility, continuous
-                  improvement, and alignment with evolving design trends.
-                </PText>
-              </div>
-              <div className="relative w-full h-full">
-                <Image
-                  src="assets/agnostic.png"
-                  alt="Some wireframes"
-                  fill={true}
-                  className="relative object-contain"
-                  priority={false}
-                />
-              </div>
-            </article>
+        <div className="col-start-3 sm:col-end-7 col-end-11 p-6">
+          <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
+            <Image
+              src="assets/benefits_accessibility.png"
+              fill={true}
+              alt="Accessibility Image"
+              className="p-static-md"
+            />
           </div>
-          <div>
-            <article className="place-items-center min-h-[600px] mt-sm mb-sm grid gap-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12 bg-background-base rounded-lg p-[100px]">
-              <div>
-                <div className="mb-4">
-                  <PText size="small" weight="semi-bold" align="start">
-                    Accessibility
-                  </PText>
-                </div>
-                <PText size="large" className="" color="contrast-medium" align="start">
-                  Ensures an inclusive experience by meeting accessibility standards, enhancing usability, compliance,
-                  and overall satisfaction for people with diverse abilities.
-                </PText>
-              </div>
-              <div className="relative w-full h-full">
-                <Image
-                  src="assets/agnostic.png"
-                  fill={true}
-                  alt="Some wireframes"
-                  className="relative object-contain"
-                  priority={false}
-                />
-              </div>
-            </article>
+          <PText align="center" size="x-small" color="contrast-medium" className="mb-xs mt-md">
+            Accessibility
+          </PText>
+          <PText align="center">
+            It works seamlessly with any framework, offering compatibility, flexibility, and ease of use across
+            different platforms and setups.
+          </PText>
+        </div>
+        <div className="col-start-3 sm:col-start-7 col-end-11 p-6">
+          <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
+            <Image src="assets/benefits_brand_fit.png" fill={true} alt="Brand Fit" className="p-static-md" />
           </div>
-          <div>
-            <article className="place-items-center min-h-[600px] mt-sm mb-sm grid gap-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12 bg-background-base rounded-lg p-[100px]">
-              <div>
-                <div className="mb-4">
-                  <PText size="small" weight="semi-bold" align="start">
-                    Brand Fit
-                  </PText>
-                </div>
-                <PText size="large" className="" color="contrast-medium" align="start">
-                  Built on Porsche's design guidelines, it ensures alignment with the brand’s identity, delivering a
-                  cohesive and premium user experience.
-                </PText>
-              </div>
-              <div className="relative w-full h-full">
-                <Image
-                  src="assets/agnostic.png"
-                  alt="Some wireframes"
-                  fill={true}
-                  className="relative object-contain"
-                  priority={false}
-                />
-              </div>
-            </article>
+          <PText align="center" size="x-small" color="contrast-medium" className="mb-xs mt-md">
+            Brand Fit
+          </PText>
+          <PText align="center">
+            Built on Porsche's design principles, it aligns with the brand identity, delivering a cohesive and premium
+            digital experience.
+          </PText>
+        </div>
+        <div className="col-start-3 sm:col-end-7 col-end-11 p-6">
+          <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
+            <Image
+              src="assets/benefits_framework_agnostic.png"
+              fill={true}
+              alt="Framework Agnostic"
+              className="p-static-md"
+            />
           </div>
-          <div>
-            <article className="place-items-center min-h-[600px] mt-sm mb-sm grid gap-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12 bg-background-base rounded-lg p-[100px]">
-              <div>
-                <div className="mb-4">
-                  <PText size="small" weight="semi-bold" align="start">
-                    Framework Agnostic
-                  </PText>
-                </div>
-                <PText size="large" className="" color="contrast-medium" align="start">
-                  Works seamlessly with any framework, offering flexibility, compatibility, and ease of use across
-                  platforms.
-                </PText>
-              </div>
-              <div className="relative w-full h-full">
-                <Image
-                  src="assets/agnostic.png"
-                  fill={true}
-                  alt="Some wireframes"
-                  className="relative object-contain"
-                  priority={false}
-                />
-              </div>
-            </article>
+          <PText align="center" size="x-small" color="contrast-medium" className="mb-xs mt-md">
+            Framework Agnostic
+          </PText>
+          <PText align="center">
+            Works seamlessly with any framework, offering flexibility, compatibility, and ease of use across platforms.
+          </PText>
+        </div>
+        <div className="col-start-3 sm:col-start-7 col-end-11 p-6">
+          <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
+            <Image
+              src="assets/benefits_fluid_responsive.png"
+              fill={true}
+              alt="Fluid & Responsive"
+              className="p-static-md"
+            />
           </div>
-        </PCarousel>
+          <PText align="center" size="x-small" color="contrast-medium" className="mb-xs mt-md">
+            Fluid & Responsive
+          </PText>
+          <PText align="center">
+            The system is fully responsive and adaptable, ensuring an optimal user experience across all devices and
+            screen sizes.
+          </PText>
+        </div>
+        <div className="col-start-3 sm:col-end-7 col-end-11 p-6">
+          <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
+            <Image
+              src="assets/benefits_compliant_quality.png"
+              fill={true}
+              alt="Compliant Quality"
+              className="p-static-md"
+            />
+          </div>
+          <PText align="center" size="x-small" color="contrast-medium" className="mb-xs mt-md">
+            Compliant Quality
+          </PText>
+          <PText align="center">
+            The system ensures flawless performance with automated tests, security checks, and smooth updates,
+            delivering reliable, high-quality results every time.
+          </PText>
+        </div>
+        <div className="col-start-3 sm:col-start-7 col-end-11 p-6">
+          <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
+            <Image
+              src="assets/benefits_update_capability.png"
+              fill={true}
+              alt="Updated Capability"
+              className="p-static-md"
+            />
+          </div>
+          <PText align="center" size="x-small" color="contrast-medium" className="mb-xs mt-md">
+            Updated Capability
+          </PText>
+          <PText align="center">
+            Styles, tokens, and components can be updated anytime, enabling flexibility, improvement, and alignment with
+            evolving design trends.
+          </PText>
+        </div>
+        <div className="col-start-3 sm:col-end-7 col-end-11 p-6">
+          <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
+            <Image
+              src="assets/benefits_open_source_code.png"
+              fill={true}
+              alt="Open-Source Code"
+              className="p-static-md"
+            />
+          </div>
+          <PText align="center" size="x-small" color="contrast-medium" className="mb-xs mt-md">
+            Open-Source Code
+          </PText>
+          <PText align="center">
+            It fosters collaboration by allowing everyone to use the code, ensuring transparency, innovation, and
+            well-tested, dependable solutions.
+          </PText>
+        </div>
       </div>
 
       <div className="mt-xl grid gap-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12">
