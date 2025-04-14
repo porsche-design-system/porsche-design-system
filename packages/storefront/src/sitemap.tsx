@@ -22,6 +22,7 @@ const getComponents = (): Routes => {
     'p-pagination',
     'p-popover',
     'p-switch',
+    'p-sheet',
     'p-tag-dismissible',
     'p-text-list',
     'p-toast',
