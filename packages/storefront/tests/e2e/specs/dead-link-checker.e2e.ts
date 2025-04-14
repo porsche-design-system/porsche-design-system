@@ -16,7 +16,7 @@ for (const [url, index] of internalUrls.map<[string, number]>((url, i) => [url, 
       expect(response?.status()).toBe(200);
     } else {
       if (url === '/') test.skip();
-      await expect(page.locator('#main-content > p-display')).not.toHaveText('404');
+      await expect(page.locator('#main-content > p-display').first()).not.toHaveText('404');
     }
   });
 }
