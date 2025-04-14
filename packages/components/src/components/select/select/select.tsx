@@ -54,6 +54,8 @@ import {
   setNextSelectOptionHighlighted,
   throwIfElementIsNotOfKind,
   validateProps,
+  getSelectedSelectOptionIndex,
+  getSelectedSelectOption,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
 import { labelId } from '../../common/label/label-utils';
@@ -367,11 +369,11 @@ export class Select {
       case 'Open': {
         event.preventDefault();
         this.updateMenuState(true);
-        const selectedIndex = this.selectOptions.findIndex((item) => item.selected);
+        const selectedIndex = getSelectedSelectOptionIndex(this.selectOptions);
         if (selectedIndex >= 0) {
           setNextSelectOptionHighlighted(this.popoverElement, this.selectOptions, selectedIndex);
           // @ts-ignore - HTMLCombobox type is missing
-          this.buttonElement.ariaActiveDescendantElement = this.slotElement.assignedElements()[selectedIndex];
+          this.buttonElement.ariaActiveDescendantElement = getSelectedSelectOption(this.selectOptions);
         }
         break;
       }
