@@ -5,6 +5,7 @@ import {
   textFieldWrapperSlotStories,
   textFieldWrapperStory
 } from "@/app/components/text-field-wrapper/text-field-wrapper.stories";
+import {Notification} from "@/components/common/Notification";
 
 export const metadata = {
   title: 'Text Field Wrapper - Porsche Design System',
@@ -23,5 +24,10 @@ text for screen readers.
 
 While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to
 give the user visual cues to fill out the form.
+
+<Notification heading="Layout hint" heading-tag="h2" state="warning">
+  This component has limited support for dynamic property changes due to the way it is implemented. <br /><br />
+  If you need to use a specific property dynamically, please open a <a href="help/feature-request/">feature request</a>.
+</Notification>
 
 <Configurator tagName="p-text-field-wrapper" story={textFieldWrapperStory} slotStories={textFieldWrapperSlotStories} />
