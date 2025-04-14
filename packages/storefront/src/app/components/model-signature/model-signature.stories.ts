@@ -99,8 +99,8 @@ export const modelSignatureStoryMaskVideo: Story<'p-model-signature'> = {
           properties: {
             poster: 'assets/ocean.jpg',
             src: 'assets/ocean.mp4',
-            autoplay: true,
-            playsinline: true,
+            autoPlay: true,
+            playsInline: true,
             loop: true,
             muted: true,
           },
