@@ -837,6 +837,19 @@ test.describe('keyboard behavior', () => {
 
       expect(await getHighlightedSelectOptionProperty(page, 'textContent')).toBe(testValues[0]);
     });
+    test('should not set highlight if no option is selected', async ({ page }) => {
+      await buttonElement.press('Space');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex(page)).toBe(-1);
+    });
+    test('should move highlight to the selected option', async ({ page }) => {
+      await initSelect(page, { props: { name: 'selected', value: 'c' } });
+      await buttonElement.press('Space');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex(page)).toBe(2);
+    });
   });
   test('should skip disabled option when pressing ArrowUp/ArrowDown', async ({ page }) => {
     await initSelect(page, {
