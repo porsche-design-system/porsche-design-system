@@ -154,6 +154,7 @@ export const specialProps: Record<string, (value: unknown) => string> = {
   loop: (value: unknown) => (value ? ' loop' : ''),
   muted: (value: unknown) => (value ? ' muted' : ''),
   autoPlay: (value: unknown) => (value ? ' autoplay' : ''),
+  playsInline: (value: unknown) => (value ? ' playsinline' : ''),
   defaultChecked: (value: unknown) => (value ? ' checked' : ''),
   readOnly: (value: unknown) => (value ? ' readonly' : ''),
   maxLength: (value: unknown) => (value !== undefined ? ` maxlength="${value}"` : ''),
