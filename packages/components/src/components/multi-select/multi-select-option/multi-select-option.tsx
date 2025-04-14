@@ -1,9 +1,8 @@
-import { Component, Element, Host, type JSX, Prop, h } from '@stencil/core';
+import { Component, Element, Host, type JSX, Prop, h, AttachInternals } from '@stencil/core';
 import type { PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
-  getOptionAriaAttributes,
   getPrefixedTagNames,
   throwIfParentIsNotOfKind,
   validateProps,
@@ -22,6 +21,7 @@ const propTypes: PropTypes<typeof MultiSelectOption> = {
 @Component({
   tag: 'p-multi-select-option',
   shadow: true,
+  formAssociated: true,
 })
 export class MultiSelectOption {
   @Element() public host!: HTMLElement & MultiSelectOptionInternalHTMLProps;
@@ -32,8 +32,20 @@ export class MultiSelectOption {
   /** Disables the option. */
   @Prop() public disabled?: boolean = false;
 
+  @AttachInternals() private internals: ElementInternals;
+
+  private isDisabled: boolean = false;
+
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-multi-select', 'p-optgroup']);
+  }
+
+  public componentWillRender(): void {
+    this.isDisabled = this.disabled || this.host.disabledParent;
+    this.internals.role = 'option';
+    this.internals.ariaSelected = String(this.host.selected);
+    this.internals.ariaHidden = String(this.host.hidden);
+    this.internals.ariaDisabled = String(this.isDisabled);
   }
 
   public render(): JSX.Element {
@@ -42,19 +54,15 @@ export class MultiSelectOption {
     attachComponentCss(this.host, getComponentCss, theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const isDisabled = this.disabled || this.host.disabledParent;
 
     return (
-      <Host onClick={!isDisabled && this.onClick}>
+      <Host onClick={!this.isDisabled && this.onClick}>
         <div
-          role="option"
-          aria-labelledby="checkbox"
-          {...getOptionAriaAttributes(selected, isDisabled, false, !!this.value)}
           class={{
             option: true,
             'option--selected': selected,
             'option--highlighted': highlighted,
-            'option--disabled': isDisabled,
+            'option--disabled': this.isDisabled,
           }}
         >
           <PrefixedTagNames.pCheckbox
@@ -62,7 +70,7 @@ export class MultiSelectOption {
             class="checkbox"
             theme={theme}
             checked={selected}
-            disabled={isDisabled}
+            disabled={this.isDisabled}
             aria-hidden="true"
           >
             <slot slot="label" />
