@@ -23,14 +23,16 @@ export const removeOnPrefersColorSchemeChange = (cb: () => void): void => {
 };
 
 export const usePreferredColorScheme = (): boolean => {
-  const [isDark, setIsDark] = useState(isPreferredColorSchemeDark());
+  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    const handleChange = () => setIsDark(isPreferredColorSchemeDark());
-    onPrefersColorSchemeChange(handleChange);
+    const update = () => setIsDark(isPreferredColorSchemeDark());
+
+    update(); // run once immediately
+    onPrefersColorSchemeChange(update);
 
     return () => {
-      removeOnPrefersColorSchemeChange(handleChange);
+      removeOnPrefersColorSchemeChange(update);
     };
   }, []);
 

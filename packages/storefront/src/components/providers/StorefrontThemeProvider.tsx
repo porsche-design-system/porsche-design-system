@@ -1,11 +1,13 @@
 'use client';
 
+import { usePreferredColorScheme } from '@/hooks/usePreferredColorScheme';
 import type { StorefrontTheme } from '@/models/theme';
-import React, { createContext, type PropsWithChildren, useEffect, useState } from 'react';
+import React, { createContext, type PropsWithChildren, useEffect, useMemo, useState } from 'react';
 
 interface StorefrontThemeContextProps {
   storefrontTheme: StorefrontTheme;
   setStorefrontTheme: (theme: StorefrontTheme) => void;
+  isDark: boolean; // if storefrontTheme is set to dark or auto and the user prefers dark mode
 }
 
 const storefrontThemeLocalStorageKey = 'storefrontTheme';
@@ -14,6 +16,7 @@ export const StorefrontThemeContext = createContext<StorefrontThemeContextProps 
 
 export const StorefrontThemeProvider = ({ children }: PropsWithChildren) => {
   const [storefrontTheme, setSelectedTheme] = useState<StorefrontTheme>('auto');
+  const prefersDark = usePreferredColorScheme();
 
   // Load initial state from localStorage once component mounts
   useEffect(() => {
@@ -32,8 +35,12 @@ export const StorefrontThemeProvider = ({ children }: PropsWithChildren) => {
     localStorage.setItem(storefrontThemeLocalStorageKey, storefrontTheme);
   };
 
+  const isDark = useMemo(() => {
+    return storefrontTheme === 'dark' || (storefrontTheme === 'auto' && prefersDark);
+  }, [storefrontTheme, prefersDark]);
+
   return (
-    <StorefrontThemeContext.Provider value={{ storefrontTheme, setStorefrontTheme }}>
+    <StorefrontThemeContext.Provider value={{ storefrontTheme, setStorefrontTheme, isDark }}>
       {children}
     </StorefrontThemeContext.Provider>
   );

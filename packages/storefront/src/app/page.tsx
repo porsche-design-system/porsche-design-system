@@ -1,10 +1,12 @@
 'use client';
 
+import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import { PCarousel, PDisplay, PLinkPure, PText } from '@porsche-design-system/components-react/ssr';
 import Image from 'next/image';
 import AppearAnimation from './appearAnimation';
 
 export default function Home() {
+  const { isDark } = useStorefrontTheme();
   return (
     <>
       <div
@@ -12,8 +14,10 @@ export default function Home() {
         style={{ marginBlockStart: '-70px', marginInline: 'calc(clamp(16px, 12px + 1.25vw, 24px) * -1)' }}
       >
         <video
+          key={isDark ? 'dark' : 'light'} // 🔑 this forces remount
           className="row-start-1 col-start-1 w-full h-[90vh] object-cover"
           style={{ filter: 'contrast(0.9) brightness(1.25) saturate(0.8)' }}
+          poster={isDark ? 'assets/hero-dark.jpg' : 'assets/hero-light.jpg'}
           slot="background"
           loop={true}
           muted={true}
@@ -22,15 +26,12 @@ export default function Home() {
           aria-hidden="true"
           tabIndex={-1}
         >
-          <source src="assets/test-video.mp4" type="video/mp4" />
+          <source src={isDark ? 'assets/hero-dark.mp4' : 'assets/hero-light.mp4'} type="video/mp4" />
+          <source src={isDark ? 'assets/hero-dark.webm' : 'assets/hero-light.webm'} type="video/webm" />
           Your browser does not support the video tag.
         </video>
 
-        <PDisplay
-          className="z-20 mt-lg ms-lg row-start-1 col-start-1 max-w-3xl dark:text-primary text-background-base"
-          size="large"
-          color="inherit"
-        >
+        <PDisplay className="z-20 mt-lg ms-lg row-start-1 col-start-1 max-w-3xl" size="large">
           Welcome to the Porsche Design System
         </PDisplay>
         <a href="https://porsche.com" className="block w-full h-full" tabIndex={-1}>
