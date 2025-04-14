@@ -109,7 +109,7 @@ export const generateVanillaJSControlledScript = (
 
   const eventHandler = eventEntries
     .map(([eventName, { target, prop, value, eventValueKey, negateValue }]) => {
-      const element = camelCase(target.replace('p-', ''));
+      const element = camelCase(target);
       const nativeEventName = camelCase(eventName.replace('on', ''));
       return eventValueKey
         ? `  ${constant}.addEventListener('${nativeEventName}', (e) => e.target.${prop} = ${negateValue ? '!' : ''}e.detail.${eventValueKey});`

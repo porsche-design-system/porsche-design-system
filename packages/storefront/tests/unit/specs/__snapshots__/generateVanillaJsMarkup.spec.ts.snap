@@ -2,8 +2,8 @@
 
 exports[`generateVanillaJsMarkup() > should generate correct Vanilla JS markup for button 1`] = `
 {
-  "eventHandlers": "  pButton.addEventListener('click', () => (banner.open = true));
-  pBanner.addEventListener('dismiss', () => (banner.open = false));",
+  "eventHandlers": "  pButton.addEventListener('click', () => (pBanner.open = true));
+  pBanner.addEventListener('dismiss', () => (pBanner.open = false));",
   "markup": "<p-button aria="{'aria-haspopup': 'true', 'aria-label': 'Some more descriptive label'}" type="button" compact="true" icon="add">
   Open Banner
 </p-button>
@@ -46,8 +46,8 @@ exports[`generateVanillaJsMarkup() > should generate correct Vanilla JS markup f
 
 exports[`generateVanillaJsMarkup() > should generate correct Vanilla JS markup for flyout 1`] = `
 {
-  "eventHandlers": "  pButton.addEventListener('click', () => (flyout.open = true));
-  pFlyout.addEventListener('dismiss', () => (flyout.open = false));",
+  "eventHandlers": "  pButton.addEventListener('click', () => (pFlyout.open = true));
+  pFlyout.addEventListener('dismiss', () => (pFlyout.open = false));",
   "markup": "<p-button type="button" aria="{'aria-haspopup': 'dialog'}">
   Open Flyout
 </p-button>

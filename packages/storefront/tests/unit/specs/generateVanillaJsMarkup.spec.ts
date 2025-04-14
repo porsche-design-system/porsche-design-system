@@ -35,7 +35,7 @@ describe('generateVanillaJSControlledScript()', () => {
     ]);
     expect(selector).toMatchInlineSnapshot(`"  const pFlyout = document.querySelector("p-flyout");"`);
     expect(eventHandler).toMatchInlineSnapshot(
-      `"  pFlyout.addEventListener('dismiss', () => (flyout.open = false));"`
+      `"  pFlyout.addEventListener('dismiss', () => (pFlyout.open = false));"`
     );
   });
   it('should return correct selector & eventHandler for event value', () => {
@@ -88,7 +88,7 @@ describe('generateVanillaJSControlledScript()', () => {
       ],
     ]);
     expect(selector).toMatchInlineSnapshot(`"  const pButton = document.querySelector("p-button");"`);
-    expect(eventHandler).toMatchInlineSnapshot(`"  pButton.addEventListener('click', () => (flyout.open = true));"`);
+    expect(eventHandler).toMatchInlineSnapshot(`"  pButton.addEventListener('click', () => (pFlyout.open = true));"`);
   });
 });
 
