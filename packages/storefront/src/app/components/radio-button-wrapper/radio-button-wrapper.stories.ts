@@ -76,6 +76,7 @@ export const radioButtonWrapperStorySlots: Story<'p-radio-button-wrapper'> = {
       tag: 'p-radio-button-wrapper',
       properties: {
         label: 'Some label',
+        state: 'error',
         style: { marginTop: '16px' },
       },
       children: [
