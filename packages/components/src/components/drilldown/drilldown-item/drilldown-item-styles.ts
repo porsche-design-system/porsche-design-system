@@ -137,16 +137,16 @@ export const getComponentCss = (isPrimary: boolean, isSecondary: boolean, isCasc
       },
       // If cascade we need to hide all children which are not primary or another cascade (e.g. all siblings of the primary or cascade item)
       ...(isCascade && {
-        '::slotted(*:not([primary],[cascade]))': {
+        '::slotted(*:not([primary],[cascade]))': addImportantToEachRule({
           display: 'none',
-        },
+        }),
       }),
       ...(isPrimary && {
-        '::slotted(*:not([secondary]))': {
+        '::slotted(*:not([secondary]))': addImportantToEachRule({
           [mediaQueryMobile]: {
             display: 'none',
           },
-        },
+        }),
       }),
       '::slotted(*)': {
         [cssVariableGridTemplate]: 'auto/auto', // reset css variable to prevent inheritance
