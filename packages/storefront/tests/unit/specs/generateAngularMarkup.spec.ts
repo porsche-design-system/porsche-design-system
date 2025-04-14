@@ -164,6 +164,7 @@ describe('generateAngularControlledScript()', () => {
 describe('generateAngularProperties()', () => {
   it('should generate correct properties', () => {
     const props = generateAngularProperties(
+      'p-button',
       {
         aria: { 'aria-haspopup': true, 'aria-label': 'Some more descriptive label' },
         type: 'button',
@@ -179,6 +180,7 @@ describe('generateAngularProperties()', () => {
 
   it('should generate correct properties for class prop', () => {
     const props = generateAngularProperties(
+      'p-button',
       {
         className: 'test',
       },
@@ -189,6 +191,7 @@ describe('generateAngularProperties()', () => {
 
   it('should generate correct properties for style prop', () => {
     const props = generateAngularProperties(
+      'p-button',
       {
         style: { backgroundColor: 'red', '--custom-prop': '1px' } as CSSProperties,
       },
@@ -199,6 +202,7 @@ describe('generateAngularProperties()', () => {
 
   it('should remove props included in events', () => {
     const props = generateAngularProperties(
+      'p-flyout',
       {
         open: true,
         name: 'Some prop',
@@ -214,5 +218,84 @@ describe('generateAngularProperties()', () => {
       ]
     );
     expect(props).toMatchInlineSnapshot(`" [open]="open" name="Some prop""`);
+  });
+  it('should transform react properties correctly for vanilla-js when using html tag', () => {
+    const propsTruthy = generateAngularProperties(
+      'input',
+      {
+        className: 'test',
+        disabled: true,
+        loop: true,
+        muted: true,
+        autoPlay: true,
+        defaultChecked: true,
+        readOnly: true,
+        maxLength: 10,
+        minLength: 10,
+        srcSet: 'test',
+      },
+      []
+    );
+    expect(propsTruthy).toMatchInlineSnapshot(
+      `" class="test" disabled loop muted autoplay checked readonly maxlength="10" minlength="10" srcset="test""`
+    );
+    const propsFalsy = generateAngularProperties(
+      'input',
+      {
+        className: '',
+        disabled: false,
+        loop: false,
+        muted: false,
+        autoPlay: false,
+        defaultChecked: false,
+        readOnly: false,
+        maxLength: 0,
+        minLength: 0,
+        srcSet: '',
+      },
+      []
+    );
+    expect(propsFalsy).toMatchInlineSnapshot(`" class="" maxlength="0" minlength="0" srcset="""`);
+  });
+
+  it('should transform react properties correctly for vanilla-js when using pds tag', () => {
+    const propsTruthy = generateAngularProperties(
+      'p-button',
+      {
+        className: 'test',
+        disabled: true,
+        loop: true,
+        muted: true,
+        autoPlay: true,
+        defaultChecked: true,
+        readOnly: true,
+        maxLength: 10,
+        minLength: 10,
+        srcSet: 'test',
+      },
+      []
+    );
+    expect(propsTruthy).toMatchInlineSnapshot(
+      `" class="test" disabled="true" loop="true" muted="true" auto-play="true" default-checked="true" read-only="true" max-length="10" min-length="10" src-set="test""`
+    );
+    const propsFalsy = generateAngularProperties(
+      'p-button',
+      {
+        className: '',
+        disabled: false,
+        loop: false,
+        muted: false,
+        autoPlay: false,
+        defaultChecked: false,
+        readOnly: false,
+        maxLength: 0,
+        minLength: 0,
+        srcSet: '',
+      },
+      []
+    );
+    expect(propsFalsy).toMatchInlineSnapshot(
+      `" class="" disabled="false" loop="false" muted="false" auto-play="false" default-checked="false" read-only="false" max-length="0" min-length="0" src-set="""`
+    );
   });
 });

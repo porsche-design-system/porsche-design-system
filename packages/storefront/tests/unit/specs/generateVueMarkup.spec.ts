@@ -1,4 +1,3 @@
-import { generateAngularProperties } from '@/utils/generator/generateAngularMarkup';
 import type { CSSProperties } from 'react';
 import {
   generateVueControlledScript,
@@ -175,7 +174,7 @@ describe('generateVueProperties()', () => {
   });
 
   it('should generate correct properties for class prop', () => {
-    const props = generateAngularProperties(
+    const props = generateVueProperties(
       {
         className: 'test',
       },

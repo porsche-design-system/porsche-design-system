@@ -1,4 +1,3 @@
-import { generateAngularProperties } from '@/utils/generator/generateAngularMarkup';
 import type { CSSProperties } from 'react';
 import {
   generateVanillaJSControlledScript,
@@ -111,7 +110,8 @@ describe('generateVanillaJsProperties()', () => {
   });
 
   it('should generate correct properties for class prop', () => {
-    const props = generateAngularProperties(
+    const props = generateVanillaJsProperties(
+      'p-button',
       {
         className: 'test',
       },

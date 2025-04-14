@@ -125,21 +125,10 @@ export const generateVanillaJsProperties = (
   properties: HTMLElementOrComponentProps<HTMLTagOrComponent>,
   eventEntries: [string, EventConfig][]
 ) => {
-  const specialProps: Record<string, (value: unknown) => string> = {
-    disabled: (value: unknown) => (value ? ' disabled' : ''),
-    loop: (value: unknown) => (value ? ' loop' : ''),
-    muted: (value: unknown) => (value ? ' muted' : ''),
-    autoPlay: (value: unknown) => (value ? ' autoplay' : ''),
-    defaultChecked: (value: unknown) => (value ? ' checked' : ''),
-    readOnly: (value: unknown) => (value ? ' readonly' : ''),
-    maxLength: (value: unknown) => (value !== undefined ? ` maxlength="${value}"` : ''),
-    minLength: (value: unknown) => (value !== undefined ? ` minlength="${value}"` : ''),
-    srcSet: (value: unknown) => (value !== undefined ? ` srcset="${value}"` : ''),
-  };
-
   return Object.entries(properties)
     .filter(([key]) => !eventEntries.some(([_, { prop }]) => prop === key))
     .map(([key, value]) => {
+      // TODO: Move this logic to a separate function
       // Some props need to be treated differently for vanilla-js e.g. boolean props without value (loop: true => loop) only for non pds tags
       if (!tag.startsWith('p-') && specialProps[key]) return specialProps[key](value);
       if (typeof value === 'string') return ` ${kebabCase(key === 'className' ? 'class' : key)}="${value}"`;
@@ -158,6 +147,18 @@ export const generateVanillaJsProperties = (
       return ` ${kebabCase(key)}="${JSON.stringify(value)}"`;
     })
     .join('');
+};
+
+export const specialProps: Record<string, (value: unknown) => string> = {
+  disabled: (value: unknown) => (value ? ' disabled' : ''),
+  loop: (value: unknown) => (value ? ' loop' : ''),
+  muted: (value: unknown) => (value ? ' muted' : ''),
+  autoPlay: (value: unknown) => (value ? ' autoplay' : ''),
+  defaultChecked: (value: unknown) => (value ? ' checked' : ''),
+  readOnly: (value: unknown) => (value ? ' readonly' : ''),
+  maxLength: (value: unknown) => (value !== undefined ? ` maxlength="${value}"` : ''),
+  minLength: (value: unknown) => (value !== undefined ? ` minlength="${value}"` : ''),
+  srcSet: (value: unknown) => (value !== undefined ? ` srcset="${value}"` : ''),
 };
 
 export const isSelfClosingTag = (tag: string): boolean => {

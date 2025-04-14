@@ -1,6 +1,6 @@
 import type { FrameworkConfiguratorMarkup } from '@/models/framework';
 import type { StoryState } from '@/models/story';
-import { isSelfClosingTag } from '@/utils/generator/generateVanillaJsMarkup';
+import { isSelfClosingTag, specialProps } from '@/utils/generator/generateVanillaJsMarkup';
 import type {
   ElementConfig,
   EventConfig,
@@ -61,7 +61,7 @@ const createAngularMarkup = (
   const { tag, properties = {}, events = {}, children = [] } = config;
 
   const eventEntries: [string, EventConfig][] = Object.entries(events);
-  const propertiesString = generateAngularProperties(properties, eventEntries);
+  const propertiesString = generateAngularProperties(tag, properties, eventEntries);
 
   const eventListenersString =
     eventEntries.length > 0
@@ -120,13 +120,16 @@ export const generateAngularControlledScript = (
   return { states, eventHandler, types };
 };
 
-// TODO: Same replacements like in vanilla-js?
 export const generateAngularProperties = (
+  tag: string,
   properties: HTMLElementOrComponentProps<HTMLTagOrComponent>,
   eventEntries: [string, EventConfig][]
 ) => {
   return Object.entries(properties)
     .map(([key, value]) => {
+      // TODO: Move this logic to a separate function
+      // Some props need to be treated differently for vanilla-js e.g. boolean props without value (loop: true => loop) only for non pds tags
+      if (!tag.startsWith('p-') && specialProps[key]) return specialProps[key](value);
       if (eventEntries.some(([_, { prop }]) => prop === key)) {
         return ` [${key}]="${key}"`;
       }
