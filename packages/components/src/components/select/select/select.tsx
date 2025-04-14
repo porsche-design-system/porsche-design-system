@@ -144,7 +144,6 @@ export class Select {
 
   private defaultValue: string;
   private buttonElement: HTMLButtonElement;
-  private slotElement: HTMLSlotElement;
   private popoverElement: HTMLDivElement;
   private selectOptions: SelectOption[] = [];
   private selectOptgroups: SelectOptgroup[] = [];
@@ -301,7 +300,7 @@ export class Select {
           {...getListAriaAttributes(this.label, this.required, false, this.isOpen)}
           ref={(el) => (this.popoverElement = el)}
         >
-          <slot ref={(el: HTMLSlotElement) => (this.slotElement = el)} />
+          <slot />
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
       </div>
@@ -349,7 +348,7 @@ export class Select {
         );
         setNextSelectOptionHighlighted(this.popoverElement, this.selectOptions, highlightedOptionIndex);
         // @ts-ignore - HTMLCombobox type is missing
-        this.buttonElement.ariaActiveDescendantElement = this.slotElement.assignedElements()[highlightedOptionIndex];
+        this.buttonElement.ariaActiveDescendantElement = getHighlightedSelectOption(this.selectOptions);
         break;
       }
       case 'CloseSelect': {
