@@ -99,8 +99,8 @@ packages/components-react/projects/remix/app/routes/sheet-basic.tsx
 packages/components-react/projects/remix/app/routes/sheet-prefixed.tsx
 packages/components-react/projects/remix/app/routes/flyout-basic.tsx
 packages/components-react/projects/remix/app/routes/flyout-prefixed.tsx
-packages/components-react/projects/remix/app/routes/flyout-multilevel-basic.tsx
-packages/components-react/projects/remix/app/routes/flyout-multilevel-prefixed.tsx
+packages/components-react/projects/remix/app/routes/drilldown-basic.tsx
+packages/components-react/projects/remix/app/routes/drilldown-prefixed.tsx
 packages/components-react/projects/remix/app/routes/modal-basic.tsx
 packages/components-react/projects/remix/app/routes/modal-prefixed.tsx
 packages/components-react/projects/remix/app/routes/overview.tsx

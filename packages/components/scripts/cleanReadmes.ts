@@ -17,7 +17,7 @@ const adjustHeadlines = (str: string): string => {
   // replacements for multi prop pages where the h1 is not the component but rather the whole multi prop category
   const h1Replacements: { [key in TagName]?: string } = {
     'p-flex': 'Flex',
-    'p-flyout-multilevel': 'Flyout Multilevel',
+    'p-drilldown': 'Drilldown',
     'p-grid': 'Grid',
     'p-multi-select': 'Multi Select',
     'p-segmented-control': 'Segmented Control',
@@ -30,7 +30,8 @@ const adjustHeadlines = (str: string): string => {
   const multiPropReplacements: TagName[] = [
     ...(Object.keys(h1Replacements) as TagName[]),
     'p-flex-item',
-    'p-flyout-multilevel-item',
+    'p-drilldown-item',
+    'p-drilldown-link',
     'p-grid-item',
     'p-multi-select-option',
     'p-segmented-control-item',

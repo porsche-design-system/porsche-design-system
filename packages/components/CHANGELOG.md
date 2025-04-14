@@ -14,15 +14,32 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
-#### Added
-
-- `Input Password`: ([#3763](https://github.com/porsche-design-system/porsche-design-system/pull/3763))
-
 #### Fixed
 
 - Accessibility: fix ARIA live announcements of form components status messages
   ([#3796](https://github.com/porsche-design-system/porsche-design-system/pull/3796))
-- `aria` prop now supports a colon inside of a value, e.g. `aria="{ 'aria-label': 'Always remember: yes you can!' }"`
+
+### [3.28.0-rc.0] - 2025-04-11
+
+#### Added
+
+- `Input Password`: ([#3763](https://github.com/porsche-design-system/porsche-design-system/pull/3763))
+- `Drilldown`, `Drilldown Item`: CSS variable `--p-drilldown-grid-template` and `--p-drilldown-gap` (experimental)
+  ([#3822](https://github.com/porsche-design-system/porsche-design-system/pull/3822))
+- `Drilldown Item`: named slot `button` and `header` (experimental)
+  ([#3822](https://github.com/porsche-design-system/porsche-design-system/pull/3822))
+- `Drilldown Link`: (experimental) ([#3822](https://github.com/porsche-design-system/porsche-design-system/pull/3822))
+
+#### Changed
+
+- **Breaking Change** `Flyout Multilevel`, `Flyout Multilevel Item`: renamed (experimental) component to `Drilldown` and
+  `Drilldown Item` ([#3822](https://github.com/porsche-design-system/porsche-design-system/pull/3822))
+- **Breaking Change** `Drilldown Item` doesn't style slotted `<a>` tags anymore, instead use `Drilldown Link` or a
+  custom link ([#3822](https://github.com/porsche-design-system/porsche-design-system/pull/3822))
+
+#### Fixed
+
+- `aria` prop now supports a colon inside a value, e.g. `aria="{ 'aria-label': 'Always remember: yes you can!' }"`
   ([#3680](https://github.com/porsche-design-system/porsche-design-system/pull/3680))
 
 ### [3.27.3] - 2025-03-21
