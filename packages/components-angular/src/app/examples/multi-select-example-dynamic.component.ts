@@ -1,3 +1,4 @@
+import { NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MultiSelectUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
@@ -27,7 +28,7 @@ import { MultiSelectUpdateEventDetail, PorscheDesignSystemModule } from '@porsch
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [PorscheDesignSystemModule],
+  imports: [PorscheDesignSystemModule, NgFor],
 })
 export class MultiSelectExampleDynamicComponent {
   selectedValues: string[] = [];
