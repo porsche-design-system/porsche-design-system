@@ -33,9 +33,9 @@ describe('generateVanillaJSControlledScript()', () => {
         },
       ],
     ]);
-    expect(selector).toMatchInlineSnapshot('"  const flyout = document.querySelector("p-flyout");"');
+    expect(selector).toMatchInlineSnapshot(`"  const pFlyout = document.querySelector("p-flyout");"`);
     expect(eventHandler).toMatchInlineSnapshot(
-      '"  flyout.addEventListener(\'dismiss\', () => (flyout.open = false));"'
+      `"  pFlyout.addEventListener('dismiss', () => (flyout.open = false));"`
     );
   });
   it('should return correct selector & eventHandler for event value', () => {
@@ -50,9 +50,9 @@ describe('generateVanillaJSControlledScript()', () => {
         },
       ],
     ]);
-    expect(selector).toMatchInlineSnapshot('"  const accordion = document.querySelector("p-accordion");"');
+    expect(selector).toMatchInlineSnapshot(`"  const pAccordion = document.querySelector("p-accordion");"`);
     expect(eventHandler).toMatchInlineSnapshot(
-      '"  accordion.addEventListener(\'update\', (e) => e.target.open = e.detail.open);"'
+      `"  pAccordion.addEventListener('update', (e) => e.target.open = e.detail.open);"`
     );
   });
   it('should return correct selector & eventHandler for event value with negated value', () => {
@@ -69,10 +69,10 @@ describe('generateVanillaJSControlledScript()', () => {
       ],
     ]);
     expect(selector).toMatchInlineSnapshot(
-      '"  const linkTileProduct = document.querySelector("p-link-tile-product");"'
+      `"  const pLinkTileProduct = document.querySelector("p-link-tile-product");"`
     );
     expect(eventHandler).toMatchInlineSnapshot(
-      '"  linkTileProduct.addEventListener(\'like\', (e) => e.target.liked = !e.detail.liked);"'
+      `"  pLinkTileProduct.addEventListener('like', (e) => e.target.liked = !e.detail.liked);"`
     );
   });
 
@@ -87,8 +87,8 @@ describe('generateVanillaJSControlledScript()', () => {
         },
       ],
     ]);
-    expect(selector).toMatchInlineSnapshot('"  const button = document.querySelector("p-button");"');
-    expect(eventHandler).toMatchInlineSnapshot('"  button.addEventListener(\'click\', () => (flyout.open = true));"');
+    expect(selector).toMatchInlineSnapshot(`"  const pButton = document.querySelector("p-button");"`);
+    expect(eventHandler).toMatchInlineSnapshot(`"  pButton.addEventListener('click', () => (flyout.open = true));"`);
   });
 });
 

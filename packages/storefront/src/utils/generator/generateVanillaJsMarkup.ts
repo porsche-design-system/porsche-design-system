@@ -104,7 +104,7 @@ export const generateVanillaJSControlledScript = (
   tagName: HTMLTagOrComponent,
   eventEntries: [string, EventConfig][]
 ) => {
-  const constant = camelCase(tagName.replace('p-', ''));
+  const constant = camelCase(tagName);
   const selector = `  const ${constant} = document.querySelector("${tagName}");`;
 
   const eventHandler = eventEntries
