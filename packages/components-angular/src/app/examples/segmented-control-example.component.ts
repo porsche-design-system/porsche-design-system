@@ -28,6 +28,6 @@ export class SegmentedControlExampleComponent {
   onSubmit(e: Event): void {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
-    this.lastSubmittedData = formData.get('options').toString() || 'none';
+    this.lastSubmittedData = formData.get('options')?.toString() || 'none';
   }
 }
