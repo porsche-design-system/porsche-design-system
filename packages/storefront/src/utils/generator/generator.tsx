@@ -28,6 +28,12 @@ import {
   type PDisplayProps,
   PDivider,
   type PDividerProps,
+  PDrilldown,
+  PDrilldownItem,
+  type PDrilldownItemProps,
+  PDrilldownLink,
+  type PDrilldownLinkProps,
+  type PDrilldownProps,
   PFieldset,
   type PFieldsetProps,
   PFieldsetWrapper,
@@ -37,10 +43,6 @@ import {
   type PFlexItemProps,
   type PFlexProps,
   PFlyout,
-  PFlyoutMultilevel,
-  PFlyoutMultilevelItem,
-  type PFlyoutMultilevelItemProps,
-  type PFlyoutMultilevelProps,
   type PFlyoutProps,
   PGrid,
   PGridItem,
@@ -54,6 +56,8 @@ import {
   type PIconProps,
   PInlineNotification,
   type PInlineNotificationProps,
+  PInputPassword,
+  type PInputPasswordProps,
   PLink,
   type PLinkProps,
   PLinkPure,
@@ -148,8 +152,6 @@ import {
   type PToastProps,
   PWordmark,
   type PWordmarkProps,
-  PInputPassword,
-  type PInputPasswordProps,
 } from '@porsche-design-system/components-react/ssr';
 import type { TagName } from '@porsche-design-system/shared';
 import React, { type ReactNode } from 'react';
@@ -261,8 +263,9 @@ export type PropTypeMapping = {
   'p-flex': PFlexProps;
   'p-flex-item': PFlexItemProps;
   'p-flyout': PFlyoutProps;
-  'p-flyout-multilevel': PFlyoutMultilevelProps;
-  'p-flyout-multilevel-item': PFlyoutMultilevelItemProps;
+  'p-drilldown': PDrilldownProps;
+  'p-drilldown-item': PDrilldownItemProps;
+  'p-drilldown-link': PDrilldownLinkProps;
   'p-grid': PGridProps;
   'p-grid-item': PGridItemProps;
   'p-heading': PHeadingProps;
@@ -339,8 +342,9 @@ const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
   'p-flex': PFlex,
   'p-flex-item': PFlexItem,
   'p-flyout': PFlyout,
-  'p-flyout-multilevel': PFlyoutMultilevel,
-  'p-flyout-multilevel-item': PFlyoutMultilevelItem,
+  'p-drilldown': PDrilldown,
+  'p-drilldown-item': PDrilldownItem,
+  'p-drilldown-link': PDrilldownLink,
   'p-grid': PGrid,
   'p-grid-item': PGridItem,
   'p-heading': PHeading,

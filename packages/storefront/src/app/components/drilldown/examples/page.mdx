@@ -1,0 +1,33 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import {ComponentStory} from "@/components/playground/ComponentStory";
+import {
+  drilldownStoryCustomContent
+} from "@/app/components/drilldown/drilldown.stories";
+
+export const metadata = {
+  title: 'Drilldown - Porsche Design System',
+  description: 'Some description'
+}
+
+# Drilldown <ComponentStatus tagName="p-drilldown"></ComponentStatus>
+
+<TableOfContents headings={["Example with custom content"]} />
+
+## Example with custom content
+
+To give more flexibility, it's possible to use custom slots `slot="button"` (renders a custom cascade button) and/or
+`slot="header"` (renders a custom header on mobile view). It's even possible to customize the layout structure for each
+layer individually with CSS variables (`--p-drilldown-grid-template`, `--p-drilldown-gap`).
+
+It's possible to adjust the layout behaviour for each layer (`p-drilldown-item`) individually by a CSS Custom Property
+(aka CSS Variable):
+
+```scss
+--p-drilldown-grid-template: auto / repeat(2, minmax(0, 1fr));
+--p-drilldown-gap: 8px / 16px;
+```
+
+<ComponentStory story={drilldownStoryCustomContent} />
+

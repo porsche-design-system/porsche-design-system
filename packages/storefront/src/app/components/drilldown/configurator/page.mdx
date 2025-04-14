@@ -1,0 +1,48 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import { drilldownStory } from "@/app/components/drilldown/drilldown.stories";
+import {BrowserSupport} from "@/components/common/BrowserSupport";
+import {Notification} from "@/components/common/Notification";
+
+export const metadata = {
+  title: 'Drilldown - Porsche Design System',
+  description: 'Some description'
+}
+
+# Drilldown <ComponentStatus tagName="p-drilldown"></ComponentStatus>
+
+<Notification heading="Experimental Component" heading-tag="h2" state="warning">
+  The <code>p-drilldown</code> component is experimental and might be changed or removed in a future release.
+</Notification>
+
+The `p-drilldown` component is meant for displaying an infinite multilevel structure in a drilldown menu that overlays
+the page content from the start side of the screen. It is a controlled component that gives you flexible control over
+its behavior.
+
+The basic concept of the component is to have a button that opens the `p-drilldown` with an infinite multilevel
+structure. The levels are generated out of `p-drilldown-item` which generates a list of cascade buttons to navigate to a
+deeper level, back buttons and a header section on mobile view. These items can be filled with e.g. `p-drilldown-link`,
+another `p-drilldown-item` or any HTML element.
+
+The visibility of `p-drilldown` can be controlled by its `open` property.
+
+It's **obligatory** that each `p-drilldown-item` has a unique `identifier` and `label` defined.
+
+Since it's a controlled component it's necessary to register an event listener for the `dismiss` and `update` event in
+order to get notified when `p-drilldown` needs to be closed or navigated to another hierarchy level.
+
+<Configurator tagName="p-drilldown" story={drilldownStory} />
+
+## Browser Support
+
+<BrowserSupport
+support={{
+  chrome: "120",
+  edge: "120",
+  safari: "17.4",
+  firefox: "129",
+  chromeForAndroid: "120",
+  safariForiOS: "17.4"
+}} />
+

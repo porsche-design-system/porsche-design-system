@@ -237,38 +237,38 @@ const codeExamples: CodeSample[] = [
       },
     ],
   },
-  {
-    component: 'p-flyout-multilevel',
-    examples: [
-      {
-        name: 'FlyoutMultilevelExample',
-        paths: {
-          'vanilla-js': '/flyout-multilevel-example.html',
-          angular: '/flyout-multilevel-example.component.ts',
-          react: '/FlyoutMultilevelExample.tsx',
-          vue: '/FlyoutMultilevelExample.vue',
-        },
-      },
-      {
-        name: 'FlyoutMultilevelExampleActiveIdentifier',
-        paths: {
-          'vanilla-js': '/flyout-multilevel-example-active-identifier.html',
-          angular: '/flyout-multilevel-example-active-identifier.component.ts',
-          react: '/FlyoutMultilevelExampleActiveIdentifier.tsx',
-          vue: '/FlyoutMultilevelExampleActiveIdentifier.vue',
-        },
-      },
-      {
-        name: 'FlyoutMultilevelExampleCustomContent',
-        paths: {
-          'vanilla-js': '/flyout-multilevel-example-custom-content.html',
-          angular: '/flyout-multilevel-example-custom-content.component.ts',
-          react: '/FlyoutMultilevelExampleCustomContent.tsx',
-          vue: '/FlyoutMultilevelExampleCustomContent.vue',
-        },
-      },
-    ],
-  },
+  // {
+  //   component: 'p-drilldown',
+  //   examples: [
+  //     {
+  //       name: 'DrilldownExample',
+  //       paths: {
+  //         'vanilla-js': '/drilldown-example.html',
+  //         angular: '/drilldown-example.component.ts',
+  //         react: '/DrilldownExample.tsx',
+  //         vue: '/DrilldownExample.vue',
+  //       },
+  //     },
+  //     {
+  //       name: 'DrilldownExampleActiveIdentifier',
+  //       paths: {
+  //         'vanilla-js': '/drilldown-example-active-identifier.html',
+  //         angular: '/drilldown-example-active-identifier.component.ts',
+  //         react: '/DrilldownExampleActiveIdentifier.tsx',
+  //         vue: '/DrilldownExampleActiveIdentifier.vue',
+  //       },
+  //     },
+  //     {
+  //       name: 'DrilldownExampleCustomContent',
+  //       paths: {
+  //         'vanilla-js': '/drilldown-example-custom-content.html',
+  //         angular: '/drilldown-example-custom-content.component.ts',
+  //         react: '/DrilldownExampleCustomContent.tsx',
+  //         vue: '/DrilldownExampleCustomContent.vue',
+  //       },
+  //     },
+  //   ],
+  // },
   {
     component: 'p-inline-notification',
     examples: [
