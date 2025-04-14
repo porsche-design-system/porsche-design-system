@@ -252,7 +252,7 @@ Certain modern browser APIs are not supported in the jsdom environment.
 
 ### Dialog API
 
-Affected Components: `p-modal`, `p-flyout`, `p-flyout-multilevel`
+Affected Components: `p-modal`, `p-flyout`, `p-drilldown`
 
 Due to the lack of native support in jsdom, the Dialog API needs to be either manually polyfilled or mocked. You can use
 the available [dialog-polyfill package](https://npmjs.com/package/dialog-polyfill) or create a custom mock

@@ -172,19 +172,19 @@ export const routes: RouteType[] = [
     element: <fromExamples.FlyoutExampleConditionalPage />,
   },
   {
-    name: 'Flyout Multilevel Example',
-    path: '/flyout-multilevel-example',
-    element: <fromExamples.FlyoutMultilevelExamplePage />,
+    name: 'Drilldown Example',
+    path: '/drilldown-example',
+    element: <fromExamples.DrilldownExamplePage />,
   },
   {
-    name: 'Flyout Multilevel Example Active Identifier',
-    path: '/flyout-multilevel-example-active-identifier',
-    element: <fromExamples.FlyoutMultilevelExampleActiveIdentifierPage />,
+    name: 'Drilldown Example Active Identifier',
+    path: '/drilldown-example-active-identifier',
+    element: <fromExamples.DrilldownExampleActiveIdentifierPage />,
   },
   {
-    name: 'Flyout Multilevel Example Custom Content',
-    path: '/flyout-multilevel-example-custom-content',
-    element: <fromExamples.FlyoutMultilevelExampleCustomContentPage />,
+    name: 'Drilldown Example Custom Content',
+    path: '/drilldown-example-custom-content',
+    element: <fromExamples.DrilldownExampleCustomContentPage />,
   },
   {
     name: 'Hidden Attribute Example',

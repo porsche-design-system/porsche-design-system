@@ -16,9 +16,9 @@ import { CheckboxExampleControlledComponent } from './checkbox-example-controlle
 import { CheckboxExampleComponent } from './checkbox-example.component';
 import { FlyoutExampleFormComponent } from './flyout-example-form.component';
 import { FlyoutExampleComponent } from './flyout-example.component';
-import { FlyoutMultilevelExampleActiveIdentifierComponent } from './flyout-multilevel-example-active-identifier.component';
-import { FlyoutMultilevelExampleCustomContentComponent } from './flyout-multilevel-example-custom-content.component';
-import { FlyoutMultilevelExampleComponent } from './flyout-multilevel-example.component';
+import { DrilldownExampleActiveIdentifierComponent } from './drilldown-example-active-identifier.component';
+import { DrilldownExampleCustomContentComponent } from './drilldown-example-custom-content.component';
+import { DrilldownExampleComponent } from './drilldown-example.component';
 import { HiddenAttributeExampleComponent } from './hidden-attribute-example.component';
 import { InlineNotificationExampleActionButtonComponent } from './inline-notification-example-action-button.component';
 import { InlineNotificationExampleEventsComponent } from './inline-notification-example-events.component';
@@ -74,9 +74,9 @@ export const examples = [
   CheckboxExampleComponent,
   FlyoutExampleComponent,
   FlyoutExampleFormComponent,
-  FlyoutMultilevelExampleComponent,
-  FlyoutMultilevelExampleActiveIdentifierComponent,
-  FlyoutMultilevelExampleCustomContentComponent,
+  DrilldownExampleComponent,
+  DrilldownExampleActiveIdentifierComponent,
+  DrilldownExampleCustomContentComponent,
   HiddenAttributeExampleComponent,
   InlineNotificationExampleActionButtonComponent,
   InlineNotificationExampleEventsComponent,
@@ -131,9 +131,9 @@ export * from './checkbox-example.component';
 export * from './checkbox-example-controlled.component';
 export * from './flyout-example.component';
 export * from './flyout-example-form.component';
-export * from './flyout-multilevel-example.component';
-export * from './flyout-multilevel-example-active-identifier.component';
-export * from './flyout-multilevel-example-custom-content.component';
+export * from './drilldown-example.component';
+export * from './drilldown-example-active-identifier.component';
+export * from './drilldown-example-custom-content.component';
 export * from './hidden-attribute-example.component';
 export * from './inline-notification-example-action-button.component';
 export * from './inline-notification-example-events.component';

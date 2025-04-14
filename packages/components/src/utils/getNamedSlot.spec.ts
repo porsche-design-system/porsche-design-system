@@ -7,7 +7,7 @@ it('should call getHTMLElement() with correct parameters', () => {
   const el = document.createElement('div');
   getNamedSlot(el, 'someName');
 
-  expect(spy).toHaveBeenCalledWith(el, '[slot="someName"]');
+  expect(spy).toHaveBeenCalledWith(el, ':scope>[slot="someName"]');
 });
 
 it('should return return-value of getHTMLElement()', () => {

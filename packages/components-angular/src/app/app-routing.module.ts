@@ -176,19 +176,19 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.FlyoutExampleFormComponent,
   },
   {
-    name: 'Flyout Multilevel Example',
-    path: 'flyout-multilevel-example',
-    component: fromExamples.FlyoutMultilevelExampleComponent,
+    name: 'Drilldown Example',
+    path: 'drilldown-example',
+    component: fromExamples.DrilldownExampleComponent,
   },
   {
-    name: 'Flyout Multilevel Example Active Identifier',
-    path: 'flyout-multilevel-example-active-identifier',
-    component: fromExamples.FlyoutMultilevelExampleActiveIdentifierComponent,
+    name: 'Drilldown Example Active Identifier',
+    path: 'drilldown-example-active-identifier',
+    component: fromExamples.DrilldownExampleActiveIdentifierComponent,
   },
   {
-    name: 'Flyout Multilevel Example Custom Content',
-    path: 'flyout-multilevel-example-custom-content',
-    component: fromExamples.FlyoutMultilevelExampleCustomContentComponent,
+    name: 'Drilldown Example Custom Content',
+    path: 'drilldown-example-custom-content',
+    component: fromExamples.DrilldownExampleCustomContentComponent,
   },
   {
     name: 'Hidden Attribute Example',

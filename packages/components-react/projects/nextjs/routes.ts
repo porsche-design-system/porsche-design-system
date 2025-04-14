@@ -144,6 +144,74 @@ const generatedRoutes = {
     "path": "/divider",
     "name": "Divider"
   },
+  "drilldown": {
+    "path": "/drilldown",
+    "name": "Drilldown"
+  },
+  "drilldownActiveIdentifier": {
+    "path": "/drilldown-active-identifier",
+    "name": "DrilldownActiveIdentifier"
+  },
+  "drilldownBasic": {
+    "path": "/drilldown-basic",
+    "name": "DrilldownBasic"
+  },
+  "drilldownCssVariables_1": {
+    "path": "/drilldown-css-variables-1",
+    "name": "DrilldownCssVariables_1"
+  },
+  "drilldownCssVariables_2": {
+    "path": "/drilldown-css-variables-2",
+    "name": "DrilldownCssVariables_2"
+  },
+  "drilldownCssVariables_3": {
+    "path": "/drilldown-css-variables-3",
+    "name": "DrilldownCssVariables_3"
+  },
+  "drilldownCssVariables_4": {
+    "path": "/drilldown-css-variables-4",
+    "name": "DrilldownCssVariables_4"
+  },
+  "drilldownCssVariables_5": {
+    "path": "/drilldown-css-variables-5",
+    "name": "DrilldownCssVariables_5"
+  },
+  "drilldownDeeplyNested_1st": {
+    "path": "/drilldown-deeply-nested-1st",
+    "name": "DrilldownDeeplyNested_1st"
+  },
+  "drilldownDeeplyNested_2nd": {
+    "path": "/drilldown-deeply-nested-2nd",
+    "name": "DrilldownDeeplyNested_2nd"
+  },
+  "drilldownDeeplyNested_3rd": {
+    "path": "/drilldown-deeply-nested-3rd",
+    "name": "DrilldownDeeplyNested_3rd"
+  },
+  "drilldownDeeplyNested_4th": {
+    "path": "/drilldown-deeply-nested-4th",
+    "name": "DrilldownDeeplyNested_4th"
+  },
+  "drilldownDeeplyNested_5th": {
+    "path": "/drilldown-deeply-nested-5th",
+    "name": "DrilldownDeeplyNested_5th"
+  },
+  "drilldownLongText": {
+    "path": "/drilldown-long-text",
+    "name": "DrilldownLongText"
+  },
+  "drilldownPrefixed": {
+    "path": "/drilldown-prefixed",
+    "name": "DrilldownPrefixed"
+  },
+  "drilldownScrolled": {
+    "path": "/drilldown-scrolled",
+    "name": "DrilldownScrolled"
+  },
+  "drilldownSlottedButtonHeader": {
+    "path": "/drilldown-slotted-button-header",
+    "name": "DrilldownSlottedButtonHeader"
+  },
   "fieldset": {
     "path": "/fieldset",
     "name": "Fieldset"
@@ -275,50 +343,6 @@ const generatedRoutes = {
   "flyoutHeaderScrollableContent": {
     "path": "/flyout-header-scrollable-content",
     "name": "FlyoutHeaderScrollableContent"
-  },
-  "flyoutMultilevel": {
-    "path": "/flyout-multilevel",
-    "name": "FlyoutMultilevel"
-  },
-  "flyoutMultilevelActiveIdentifier": {
-    "path": "/flyout-multilevel-active-identifier",
-    "name": "FlyoutMultilevelActiveIdentifier"
-  },
-  "flyoutMultilevelBasic": {
-    "path": "/flyout-multilevel-basic",
-    "name": "FlyoutMultilevelBasic"
-  },
-  "flyoutMultilevelDeeplyNested_1st": {
-    "path": "/flyout-multilevel-deeply-nested-1st",
-    "name": "FlyoutMultilevelDeeplyNested_1st"
-  },
-  "flyoutMultilevelDeeplyNested_2nd": {
-    "path": "/flyout-multilevel-deeply-nested-2nd",
-    "name": "FlyoutMultilevelDeeplyNested_2nd"
-  },
-  "flyoutMultilevelDeeplyNested_3rd": {
-    "path": "/flyout-multilevel-deeply-nested-3rd",
-    "name": "FlyoutMultilevelDeeplyNested_3rd"
-  },
-  "flyoutMultilevelDeeplyNested_4th": {
-    "path": "/flyout-multilevel-deeply-nested-4th",
-    "name": "FlyoutMultilevelDeeplyNested_4th"
-  },
-  "flyoutMultilevelDeeplyNested_5th": {
-    "path": "/flyout-multilevel-deeply-nested-5th",
-    "name": "FlyoutMultilevelDeeplyNested_5th"
-  },
-  "flyoutMultilevelLongText": {
-    "path": "/flyout-multilevel-long-text",
-    "name": "FlyoutMultilevelLongText"
-  },
-  "flyoutMultilevelPrefixed": {
-    "path": "/flyout-multilevel-prefixed",
-    "name": "FlyoutMultilevelPrefixed"
-  },
-  "flyoutMultilevelScrolled": {
-    "path": "/flyout-multilevel-scrolled",
-    "name": "FlyoutMultilevelScrolled"
   },
   "flyoutPositionLeft": {
     "path": "/flyout-position-left",
