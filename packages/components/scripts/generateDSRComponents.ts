@@ -98,7 +98,6 @@ const generateDSRComponents = (): void => {
           /^/g,
           `import { Component } from 'react';
 import { minifyCss } from '../../minifyCss';
-import { stripFocusAndHoverStyles } from '../../stripFocusAndHoverStyles';
 import { get${componentName}Css } from '${stylesBundleImportPath}';
 `
         )
@@ -132,7 +131,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           const delegatesFocusProp = isDelegatingFocus ? ' shadowrootdelegatesfocus="true"' : '';
           return match.replace(/\n    return \(?([\s\S]*?(?:\n    )|.*)\)?;/, (_, g1) => {
             return `
-    const style = minifyCss(stripFocusAndHoverStyles(get${componentName}Css(${getComponentCssParams})));
+    const style = minifyCss(get${componentName}Css(${getComponentCssParams}));
 
     return (
       <>
@@ -195,7 +194,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             `namedSlotChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
           )
           .replace(
-            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background)'\)/g,
+            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|button|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background)'\)/g,
             `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
           );
       } else if (newFileContent.includes('FunctionalComponent')) {
@@ -633,18 +632,22 @@ $&`
           .replace(/this\.props\.value = state;/, '')
           .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
           .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
-      } else if (tagName === 'p-flyout-multilevel') {
+      } else if (tagName === 'p-drilldown') {
         newFileContent = newFileContent
           .replace(/validateActiveIdentifier\(.*\);/g, '')
           // .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2") // transform true to empty string '';
           .replace(/this\.props\.primary = !activeItem \|\| activeItem\.parentElement === this\.props;/, '')
           .replace(/this\.props\.primary/, 'this.primary')
           .replace(/this\.props\.isSecondaryDrawerVisible/, 'this.isSecondaryDrawerVisible');
-      } else if (tagName === 'p-flyout-multilevel-item') {
+      } else if (tagName === 'p-drilldown-item') {
         newFileContent = newFileContent
           .replace(/: Theme/g, ': any')
           .replace(/this\.props\.theme(?! \|\|)/g, 'this.theme')
-          .replace(/this\.props\.open(?! \|\|)/g, 'this.open');
+          .replace(/this\.props\.open(?! \|\|)/g, 'this.open')
+          .replace(/this\.props\.(hasSlottedHeader|hasSlottedButton)/g, '$1')
+          .replace(/hasSlottedHeader =/, 'const $&')
+          .replace(/hasSlottedButton =/, 'const $&')
+          .replace(/if \(hasSlottedButton\).*{[\s\S]*?}/, '');
         // .replace(/(inert=\{this\.open \? null : )true(})/, "$1''$2"); // transform true to empty string '';
       } else if (tagName === 'p-link-tile-model-signature') {
         newFileContent = newFileContent

@@ -144,14 +144,16 @@ export const config: StorefrontConfig = {
       Usage: [() => import('@/../../components/src/components/flyout/flyout.usage.md')],
       Props: [() => import('@/../../components/src/components/flyout/flyout.props.md')],
     },
-    'Flyout Multilevel': {
-      Examples: [() => import('@/../../components/src/components/flyout-multilevel/flyout-multilevel.examples.md')],
-      Usage: [() => import('@/../../components/src/components/flyout-multilevel/flyout-multilevel.usage.md')],
+    'Drilldown': {
+      Examples: [() => import('@/../../components/src/components/drilldown/drilldown.examples.md')],
+      Usage: [() => import('@/../../components/src/components/drilldown/drilldown.usage.md')],
       Props: [
         // biome-ignore format: should not be formatted, otherwise storefront unit test might not work
-        () => import('@/../../components/src/components/flyout-multilevel/flyout-multilevel/flyout-multilevel.props.md'),
+        () => import('@/../../components/src/components/drilldown/drilldown/drilldown.props.md'),
         // biome-ignore format: should not be formatted, otherwise storefront unit test might not work
-        () => import('@/../../components/src/components/flyout-multilevel/flyout-multilevel-item/flyout-multilevel-item.props.md'),
+        () => import('@/../../components/src/components/drilldown/drilldown-item/drilldown-item.props.md'),
+        // biome-ignore format: should not be formatted, otherwise storefront unit test might not work
+        () => import('@/../../components/src/components/drilldown/drilldown-link/drilldown-link.props.md'),
       ],
     },
     Grid: {

@@ -44,6 +44,13 @@ exports[`manual test cases > should pass internal props correctly to p-checkbox-
 ::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -286,6 +293,13 @@ exports[`manual test cases > should pass internal props correctly to p-checkbox-
 }
 ::slotted(input::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 .root {
   display: grid;
@@ -758,6 +772,11 @@ h1,h2,h3,h4,h5,h6 {
   }
 }
 
+@media(hover:hover) {
+  .root:hover slot:not([name]) {
+    transform: scale3d(1.05,1.05,1.05);
+  }
+}
 
     </style>
     <div
@@ -900,6 +919,13 @@ img {
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: static;
   width: auto;
@@ -912,6 +938,12 @@ img {
 }
 .icon {
   filter: invert(1);
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: #AFB0B3;
+    border-color: #AFB0B3;
+  }
 }
 
       </style>
@@ -979,6 +1011,13 @@ img {
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: static;
   width: auto;
@@ -988,6 +1027,14 @@ img {
   overflow: visible;
   clip: unset !important;
   white-space: normal;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: rgba(148, 149, 152, .18);
+    border-color: #88898C;
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
       </style>
@@ -1123,6 +1170,11 @@ h1,h2,h3,h4,h5,h6 {
   }
 }
 
+@media(hover:hover) {
+  .root:hover slot:not([name]) {
+    transform: scale3d(1.05,1.05,1.05);
+  }
+}
 
     </style>
     <div
@@ -1257,6 +1309,16 @@ img {
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -1293,6 +1355,12 @@ img {
 }
 .icon {
   filter: invert(1);
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: #AFB0B3;
+    border-color: #AFB0B3;
+  }
 }
 
       </style>
@@ -1354,6 +1422,16 @@ img {
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -1387,6 +1465,14 @@ img {
   overflow: visible;
   clip: unset !important;
   white-space: normal;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: rgba(148, 149, 152, .18);
+    border-color: #88898C;
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
       </style>
@@ -1524,6 +1610,11 @@ h1,h2,h3,h4,h5,h6 {
   }
 }
 
+@media(hover:hover) {
+  .root:hover slot:not([name]) {
+    transform: scale3d(1.05,1.05,1.05);
+  }
+}
 
     </style>
     <div
@@ -1658,6 +1749,16 @@ img {
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -1694,6 +1795,12 @@ img {
 }
 .icon {
   filter: invert(1);
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: #AFB0B3;
+    border-color: #AFB0B3;
+  }
 }
 
       </style>
@@ -1755,6 +1862,16 @@ img {
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -1788,6 +1905,14 @@ img {
   overflow: visible;
   clip: unset !important;
   white-space: normal;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: rgba(148, 149, 152, .18);
+    border-color: #88898C;
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
       </style>
@@ -1925,6 +2050,11 @@ h1,h2,h3,h4,h5,h6 {
   }
 }
 
+@media(hover:hover) {
+  .root:hover slot:not([name]) {
+    transform: scale3d(1.05,1.05,1.05);
+  }
+}
 
     </style>
     <div
@@ -2059,6 +2189,16 @@ img {
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -2095,6 +2235,12 @@ img {
 }
 .icon {
   filter: invert(1);
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: #AFB0B3;
+    border-color: #AFB0B3;
+  }
 }
 
       </style>
@@ -2159,6 +2305,16 @@ img {
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -2192,6 +2348,14 @@ img {
   overflow: visible;
   clip: unset !important;
   white-space: normal;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: rgba(148, 149, 152, .18);
+    border-color: #88898C;
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
       </style>
@@ -2267,6 +2431,52 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
   input:disabled {
     cursor: not-allowed;
   }
+  input:focus {
+    border-color: #FBFCFF;
+  }
+  input:not(:focus)::placeholder {
+    color: #FBFCFF;
+    opacity: 1;
+  }
+  input:not(:focus)::-webkit-input-placeholder {
+    color: #FBFCFF;
+    opacity: 1;
+  }
+  input:not(:focus)::-moz-placeholder {
+    color: #FBFCFF;
+    opacity: 1;
+  }
+  input:not(:focus):-moz-placeholder {
+    color: #FBFCFF;
+    opacity: 1;
+  }
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, 1 * 6px);
+    display: none;
+    flex-direction: column;
+    gap: max(2px, 1 * 8px);
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
+    box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #212225;
+    border: 1px solid #404044;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
+@media(hover:hover) {
+    input:hover:not(:disabled):not(:focus), label:hover~.wrapper input:not(:disabled):not(:focus) {
+      border-color: #FBFCFF;
+    }
+}
 
   .root {
     display: grid;
@@ -2539,11 +2749,19 @@ input:nth-of-type(6) {
 :not(input[type="password"]) {
   text-overflow: ellipsis;
 }
+input:focus {
+  border-color: #010205;
+}
 input:disabled {
   cursor: not-allowed;
   color: #949598;
   border-color: #949598;
   -webkit-text-fill-color: #949598;
+}
+@media(hover:hover) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
+    border-color: #010205;
+  }
 }
 
 .root {
@@ -2706,6 +2924,13 @@ exports[`manual test cases > should pass internal props correctly to p-radio-but
 }
 ::slotted(input::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 .root {
   display: grid;
@@ -2951,6 +3176,28 @@ exports[`manual test cases > should pass internal props correctly to p-radio-but
 ::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
+@media(hover:hover) {
+  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
+    border-color: #010205 !important;
+  }
+  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
+    border-color: #535457 !important;
+    background-color: #535457 !important;
+  }
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+    label:hover~.wrapper ::slotted(input) {
+      transition: unset !important;
+    }
+}
+
+}
 
 .root {
   display: grid;
@@ -3104,6 +3351,13 @@ button {
 button::-moz-focus-inner {
   border: 0;
 }
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 span {
   display: block;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -3160,12 +3414,27 @@ button {
 button::-moz-focus-inner {
   border: 0;
 }
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 span {
   display: block;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: normal;
   hyphens: auto;
   color: #88898C;
+}
+@media(hover:hover) {
+  button {
+    transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  button:hover {
+    border-color: #FBFCFF;
+  }
 }
 
       </style>
@@ -3228,11 +3497,19 @@ exports[`manual test cases > should pass internal props correctly to p-select-wr
 ::slotted(:not(input[type="password"])) {
   text-overflow: ellipsis !important;
 }
+::slotted(select:focus) {
+  border-color: #010205 !important;
+}
 ::slotted(select:disabled) {
   cursor: not-allowed !important;
   color: #949598 !important;
   border-color: #949598 !important;
   -webkit-text-fill-color: #949598 !important;
+}
+@media(hover:hover) {
+  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
+    border-color: #010205 !important;
+  }
 }
 
 .root {
@@ -3412,6 +3689,9 @@ input::-moz-placeholder {
   opacity: 1;
   color: #010205;
 }
+input:not(:disabled):focus {
+  opacity: 1;
+}
 input+span {
   position: absolute;
   inset: 0;
@@ -3420,6 +3700,9 @@ input+span {
   cursor: pointer;
   border: 2px solid #6B6D70;
   border-radius: 4px;
+}
+input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
+  border-color: #010205;
 }
 @keyframes fade-in {
   from {
@@ -3451,6 +3734,14 @@ input+span {
   [popover]:not(:popover-open) {
     display: none;
   }
+@media(hover:hover) {
+    input:not(:disabled)+span:hover {
+      border-color: #010205;
+    }
+    input:not(:disabled):hover+span, input:not(:disabled):hover~ul {
+      border-color: #010205;
+    }
+}
 
   .sr-text {
     display: none;
@@ -3520,6 +3811,12 @@ input+span {
   .optgroup--disabled {
     color: #949598;
   }
+@media(hover:hover) {
+    .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: rgba(148, 149, 152, .18);
+    }
+}
 
             </style>
             <input
@@ -3620,11 +3917,19 @@ exports[`manual test cases > should pass internal props correctly to p-select-wr
 ::slotted(:not(input[type="password"])) {
   text-overflow: ellipsis !important;
 }
+::slotted(select:focus) {
+  border-color: #010205 !important;
+}
 ::slotted(select:disabled) {
   cursor: not-allowed !important;
   color: #949598 !important;
   border-color: #949598 !important;
   -webkit-text-fill-color: #949598 !important;
+}
+@media(hover:hover) {
+  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
+    border-color: #010205 !important;
+  }
 }
 
 .root {
@@ -3864,6 +4169,13 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
 }
+.scroll-wrapper:focus {
+  outline: 0;
+}
+.scroll-wrapper:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .trigger {
   position: absolute;
   top: 0;
@@ -3916,6 +4228,14 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
+}
+@media(hover:hover) {
+  .action-prev .action-button {
+    visibility: hidden;
+  }
+  .action-next .action-button {
+    visibility: hidden;
+  }
 }
 
         </style>
@@ -3998,6 +4318,13 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: static;
   width: auto;
@@ -4024,6 +4351,14 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: hsl(240 3% 41%/35%);
+    border-color: hsl(240 3% 41%/35%);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
                 </style>
@@ -4155,6 +4490,13 @@ img:dir(rtl) {
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: static;
   width: auto;
@@ -4181,6 +4523,14 @@ img:dir(rtl) {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: hsl(240 3% 41%/35%);
+    border-color: hsl(240 3% 41%/35%);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
                 </style>
@@ -4331,6 +4681,13 @@ button::before {
 button::-moz-focus-inner {
   border: 0;
 }
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
+}
 .sr-only {
   position: absolute;
   width: 1px;
@@ -4425,6 +4782,13 @@ button::before {
 button::-moz-focus-inner {
   border: 0;
 }
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
+}
 .sr-only {
   position: absolute;
   width: 1px;
@@ -4471,8 +4835,22 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 1px !important;
+}
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 1px !important;
 }
 ::slotted(a),::slotted(button) {
   margin: 0 0 4px 0 !important;
@@ -4516,6 +4894,21 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-inline-end: 16px !important;
+}
+@media(hover:hover) {
+  ::slotted(a)::before, ::slotted(button)::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: -2px -4px !important;
+    border-radius: 4px !important;
+    z-index: -1 !important;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  }
+  ::slotted(a:hover)::before,::slotted(button:hover)::before {
+    -webkit-backdrop-filter: blur(32px) !important;
+    backdrop-filter: blur(32px) !important;
+    background: rgba(148, 149, 152, .18) !important;
+  }
 }
 
 .scroller {
@@ -4593,6 +4986,13 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
 }
+.scroll-wrapper:focus {
+  outline: 0;
+}
+.scroll-wrapper:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .trigger {
   position: absolute;
   top: 0;
@@ -4646,6 +5046,14 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
+}
+@media(hover:hover) {
+  .action-prev .action-button {
+    visibility: hidden;
+  }
+  .action-next .action-button {
+    visibility: hidden;
+  }
 }
 
         </style>
@@ -4727,6 +5135,13 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: static;
   width: auto;
@@ -4753,6 +5168,14 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: hsl(240 4% 70%/35%);
+    border-color: hsl(240 4% 70%/35%);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
                 </style>
@@ -4884,6 +5307,13 @@ img:dir(rtl) {
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: static;
   width: auto;
@@ -4910,6 +5340,14 @@ img:dir(rtl) {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: hsl(240 4% 70%/35%);
+    border-color: hsl(240 4% 70%/35%);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
                 </style>
@@ -5050,8 +5488,22 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 1px !important;
+}
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 1px !important;
 }
 ::slotted(a),::slotted(button) {
   margin: 0 0 4px 0 !important;
@@ -5095,6 +5547,21 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-inline-end: 16px !important;
+}
+@media(hover:hover) {
+  ::slotted(a)::before, ::slotted(button)::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: -2px -4px !important;
+    border-radius: 4px !important;
+    z-index: -1 !important;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  }
+  ::slotted(a:hover)::before,::slotted(button:hover)::before {
+    -webkit-backdrop-filter: blur(32px) !important;
+    backdrop-filter: blur(32px) !important;
+    background: rgba(148, 149, 152, .18) !important;
+  }
 }
 
 .scroller {
@@ -5172,6 +5639,13 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
 }
+.scroll-wrapper:focus {
+  outline: 0;
+}
+.scroll-wrapper:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .trigger {
   position: absolute;
   top: 0;
@@ -5224,6 +5698,14 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
+}
+@media(hover:hover) {
+  .action-prev .action-button {
+    visibility: hidden;
+  }
+  .action-next .action-button {
+    visibility: hidden;
+  }
 }
 
             </style>
@@ -5305,6 +5787,13 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: static;
   width: auto;
@@ -5331,6 +5820,14 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: hsl(240 3% 41%/35%);
+    border-color: hsl(240 3% 41%/35%);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
                     </style>
@@ -5462,6 +5959,13 @@ img:dir(rtl) {
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: static;
   width: auto;
@@ -5488,6 +5992,14 @@ img:dir(rtl) {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: hsl(240 3% 41%/35%);
+    border-color: hsl(240 3% 41%/35%);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
                     </style>
@@ -5605,6 +6117,13 @@ img:dir(rtl) {
 :host(::-moz-focus-inner) {
   border: 0 !important;
 }
+:host(:focus) {
+  outline: 0 !important;
+}
+:host(:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
       </style>
       <slot />
     </template>
@@ -5628,6 +6147,13 @@ img:dir(rtl) {
 }
 :host(::-moz-focus-inner) {
   border: 0 !important;
+}
+:host(:focus) {
+  outline: 0 !important;
+}
+:host(:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
       </style>
       <slot />
@@ -5680,6 +6206,9 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 ::slotted(:not(input[type="password"])) {
   text-overflow: ellipsis !important;
 }
+::slotted(input:focus) {
+  border-color: #010205 !important;
+}
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
   color: #949598 !important;
@@ -5690,8 +6219,16 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   border-color: #D8D8DB !important;
   background: #D8D8DB !important;
 }
+::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+  -webkit-background-clip: padding-box !important;
+}
 ::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
   direction: ltr !important;
+}
+@media(hover:hover) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+    border-color: #010205 !important;
+  }
 }
 
 .root {
@@ -5821,6 +6358,9 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 ::slotted(:not(input[type="password"])) {
   text-overflow: ellipsis !important;
 }
+::slotted(input:focus) {
+  border-color: #010205 !important;
+}
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
   color: #949598 !important;
@@ -5831,8 +6371,16 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   border-color: #D8D8DB !important;
   background: #D8D8DB !important;
 }
+::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+  -webkit-background-clip: padding-box !important;
+}
 ::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
   direction: ltr !important;
+}
+@media(hover:hover) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+    border-color: #010205 !important;
+  }
 }
 
 .root {
@@ -5962,6 +6510,9 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 ::slotted(:not(input[type="password"])) {
   text-overflow: ellipsis !important;
 }
+::slotted(input:focus) {
+  border-color: #010205 !important;
+}
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
   color: #949598 !important;
@@ -5972,8 +6523,16 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   border-color: #D8D8DB !important;
   background: #D8D8DB !important;
 }
+::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+  -webkit-background-clip: padding-box !important;
+}
 ::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
   direction: ltr !important;
+}
+@media(hover:hover) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+    border-color: #010205 !important;
+  }
 }
 
 .root {
@@ -6114,6 +6673,16 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
+}
 .icon {
   position: relative;
   flex-shrink: 0;
@@ -6144,6 +6713,13 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   }
 }
 
+@media(hover:hover) {
+  .root:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: rgba(148, 149, 152, .18);
+  }
+}
 
             </style>
             <button
@@ -6265,6 +6841,9 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 ::slotted(:not(input[type="password"])) {
   text-overflow: ellipsis !important;
 }
+::slotted(input:focus) {
+  border-color: #010205 !important;
+}
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
   color: #949598 !important;
@@ -6275,8 +6854,16 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   border-color: #D8D8DB !important;
   background: #D8D8DB !important;
 }
+::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+  -webkit-background-clip: padding-box !important;
+}
 ::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
   direction: ltr !important;
+}
+@media(hover:hover) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+    border-color: #010205 !important;
+  }
 }
 
 .root {
@@ -6472,6 +7059,16 @@ img {
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
+}
 .icon {
   position: relative;
   flex-shrink: 0;
@@ -6502,6 +7099,13 @@ img {
   }
 }
 
+@media(hover:hover) {
+  .root:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: rgba(148, 149, 152, .18);
+  }
+}
 
             </style>
             <button
@@ -6747,6 +7351,24 @@ button::before {
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 0;
+}
+button:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
+}
+@media(hover:hover) {
+  button::before {
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  button:hover::before {
+    background: rgba(148, 149, 152, .18);
+  }
 }
 
 .heading {
@@ -7134,6 +7756,13 @@ img {
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: absolute;
   width: 1px;
@@ -7160,6 +7789,14 @@ img {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: hsl(240 4% 70%/35%);
+    border-color: hsl(240 4% 70%/35%);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
             </style>
@@ -7286,6 +7923,13 @@ exports[`should render dsr component for PButton 1`] = `
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: static;
   width: auto;
@@ -7310,6 +7954,12 @@ exports[`should render dsr component for PButton 1`] = `
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: #535457;
+    border-color: #535457;
+  }
 }
 
     </style>
@@ -7431,6 +8081,16 @@ exports[`should render dsr component for PButtonPure 1`] = `
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
+}
 .icon {
   position: relative;
   flex-shrink: 0;
@@ -7461,6 +8121,13 @@ exports[`should render dsr component for PButtonPure 1`] = `
   }
 }
 
+@media(hover:hover) {
+  .root:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: rgba(148, 149, 152, .18);
+  }
+}
 
     </style>
     <button
@@ -7636,6 +8303,11 @@ p {
   }
 }
 
+@media(hover:hover) {
+  .root:hover slot:not([name]) {
+    transform: scale3d(1.05,1.05,1.05);
+  }
+}
 
     </style>
     <div
@@ -7705,6 +8377,13 @@ p {
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: static;
   width: auto;
@@ -7728,6 +8407,14 @@ p {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: rgba(148, 149, 152, .18);
+    border-color: #88898C;
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
             </style>
@@ -7803,6 +8490,13 @@ slot[name="title"]::slotted(a) {
 slot[name="title"]::slotted(a::-moz-focus-inner) {
   border: 0;
 }
+slot[name="title"]::slotted(a:focus) {
+  outline: 0;
+}
+slot[name="title"]::slotted(a:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 slot:not([name])::slotted(.-p-canvas-grid), slot[name="footer"]::slotted(.-p-canvas-grid) {
   display: grid;
   grid-template-columns: repeat(12,minmax(0,1fr));
@@ -7866,6 +8560,9 @@ h2 {
 }
 .header__wordmark {
   height: 10px;
+}
+.header:focus {
+  outline: none;
 }
 .header__area--start {
   justify-content: flex-start;
@@ -8001,6 +8698,9 @@ h2 {
   z-index: 0;
   display: block;
   padding: clamp(16px, 1.25vw + 12px, 24px);
+}
+.sidebar:focus {
+  outline: none;
 }
 .sidebar__header--start {
   justify-content: flex-start;
@@ -8153,6 +8853,13 @@ h2 {
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: static;
   width: auto;
@@ -8179,6 +8886,14 @@ h2 {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: hsl(240 4% 70%/35%);
+    border-color: hsl(240 4% 70%/35%);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
               </style>
@@ -8294,6 +9009,16 @@ a::before {
 a::-moz-focus-inner {
   border: 0;
 }
+a:focus {
+  outline: 0;
+}
+a:focus-visible {
+  outline: 0;
+}
+a:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 picture {
   display: block;
   width: min(30px, 100%);
@@ -8365,6 +9090,16 @@ a::before {
 }
 a::-moz-focus-inner {
   border: 0;
+}
+a:focus {
+  outline: 0;
+}
+a:focus-visible {
+  outline: 0;
+}
+a:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 svg {
   fill: #010205;
@@ -8474,6 +9209,9 @@ dialog::backdrop {
 .scroller:dir(rtl) {
   transform: translateX(100%);
 }
+.scroller:focus-visible {
+  outline: none;
+}
 .flyout {
   display: grid;
   grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
@@ -8563,6 +9301,13 @@ dialog::backdrop {
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: absolute;
   width: 1px;
@@ -8589,6 +9334,14 @@ dialog::backdrop {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: hsl(240 4% 70%/35%);
+    border-color: hsl(240 4% 70%/35%);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
                   </style>
@@ -8706,6 +9459,10 @@ exports[`should render dsr component for PCarousel 1`] = `
 .btn {
   padding: 8px;
 }
+.skip-link:not(:focus) {
+  opacity: 0;
+  pointer-events: none;
+}
 .splide {
   overflow: hidden;
   padding: 4px 0;
@@ -8739,6 +9496,13 @@ exports[`should render dsr component for PCarousel 1`] = `
 }
 .splide__slide::-moz-focus-inner {
   border: 0;
+}
+.splide__slide:focus {
+  outline: 0;
+}
+.splide__slide:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .splide__track--draggable {
   cursor: grab;
@@ -8819,6 +9583,11 @@ exports[`should render dsr component for PCarousel 1`] = `
   }
 }
 
+@media(hover:hover) {
+  .bullet {
+    cursor: pointer;
+  }
+}
 
     </style>
     <div
@@ -8913,6 +9682,33 @@ input:indeterminate {
 }
 input::-moz-focus-inner {
   border: 0;
+}
+input:focus {
+  outline: 0;
+}
+input:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+@media(hover:hover) {
+  input:hover,label:hover~.wrapper input {
+    border-color: #010205;
+  }
+  input:checked:hover,label:hover~.wrapper input:checked {
+    border-color: #535457;
+    background-color: #535457;
+  }
+  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
+    background: transparent 0% 0% / calc(6px + 2.125ex);
+    border-color: #010205;
+    background-image: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path fill="%23010205" d="m20,11v2H4v-2h16Z"/&gt;&lt;/svg&gt;');
+  }
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+    label:hover~.wrapper input {
+      transition: unset;
+    }
+}
+
 }
 
 .root {
@@ -9060,8 +9856,30 @@ exports[`should render dsr component for PCheckboxWrapper 1`] = `
 ::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path fill="%23010205" d="m20,11v2H4v-2h16Z"/&gt;&lt;/svg&gt;') !important;
+}
+@media(hover:hover) {
+  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
+    border-color: #010205 !important;
+  }
+  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
+    border-color: #535457 !important;
+    background-color: #535457 !important;
+  }
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+    label:hover~.wrapper ::slotted(input) {
+      transition: unset !important;
+    }
+}
+
 }
 
 .root {
@@ -9236,6 +10054,16 @@ a::before {
 a::-moz-focus-inner {
   border: 0;
 }
+a:focus {
+  outline: 0;
+}
+a:focus-visible {
+  outline: 0;
+}
+a:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 picture {
   display: block;
   width: min(30px, 100%);
@@ -9339,6 +10167,1237 @@ hr {
     <hr />
   </template>
 </p-divider>
+`;
+
+exports[`should render dsr component for PDrilldown 1`] = `
+<p-drilldown
+  data-ssr=""
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      @keyframes slide-up-mobile {
+  from {
+    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
+  }
+  to {
+    transform: translate3d(0,0,0);
+  }
+}
+@keyframes slide-up-desktop {
+  from {
+    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+  }
+  to {
+    margin-block-start: 0px;
+  }
+}
+  :host {
+    display: block;
+    --_p-a: #010205 !important;
+    --_p-b: #FFF !important;
+    --_p-c: #EEEFF2 !important;
+    --_p-d: rgba(1, 2, 5, 0.67) !important;
+    --_p-f: rgba(255,255,255,.01) !important;
+    color-scheme: light dark !important;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  :not(:defined,[data-ssr]) {
+    visibility: hidden;
+  }
+  ::slotted(*) {
+    --p-drilldown-grid-template: auto/auto;
+    --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
+  }
+  dialog {
+    all: unset;
+    position: fixed;
+    inset: 0;
+    z-index: 999999999;
+    outline: 0;
+    visibility: hidden;
+    transition: visibility 0s linear var(--p-transition-duration, 0.4s), overlay var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1) allow-discrete, background var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1);
+  }
+  dialog::backdrop {
+    display: none;
+  }
+@media(min-width:760px) {
+    slot {
+      grid-area: 3/2/auto/-2;
+      display: grid;
+      grid-template: var(--p-drilldown-grid-template,auto/auto);
+      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      align-content: start;
+      align-items: start;
+      box-sizing: border-box;
+      min-height: 100%;
+      height: fit-content;
+      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
+      animation: slide-up-desktop var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+    }
+}
+
+@media(max-width:759px) {
+    slot {
+      display: grid;
+      grid-area: 4/2/auto/-2;
+      z-index: 0;
+      grid-template: var(--p-drilldown-grid-template,auto/auto);
+      gap: var(--p-drilldown-gap,clamp(4px, 0.25vw + 3px, 8px));
+      align-content: start;
+      align-items: start;
+      box-sizing: border-box;
+      min-height: 100%;
+      height: fit-content;
+      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
+      animation: slide-up-mobile var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+    }
+}
+
+  .drawer {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    opacity: 0;
+    transform: translate3d(-100%,0,0);
+    transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+  }
+  .drawer:dir(rtl) {
+    transform: translate3d(100%,0,0);
+  }
+  .drawer::before, .drawer::after {
+    content: "";
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+  }
+  .scroller {
+    display: contents;
+    overflow: hidden auto;
+    background: var(--_p-f);
+  }
+  .back {
+    display: none;
+  }
+@media(min-width:760px) {
+    .drawer {
+      width: clamp(338px, 210px + 18vw, 640px);
+      grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0, 1fr)/repeat(1, clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px));
+      background: var(--_p-b);
+    }
+    .drawer::after {
+      grid-area: 1/4/-1/-1;
+      background: var(--_p-c);
+    }
+    .drawer::before {
+      grid-area: 1/1/-1/4;
+      background: var(--_p-b);
+    }
+    .scroller {
+      grid-area: 1/1/-1/4;
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-template-columns: subgrid;
+    }
+    .dismiss-mobile {
+      display: none;
+    }
+    .dismiss-desktop {
+      --p-internal-icon-filter: invert(1);
+      position: absolute;
+      inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
+      inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
+      padding: 8px;
+    }
+}
+
+@media(max-width:759px) {
+    .drawer {
+      grid-template: clamp(16px, 1.25vw + 12px, 36px) auto clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr)/clamp(32px, 2.75vw + 23px, 76px) auto minmax(0, 1fr) auto clamp(32px, 2.75vw + 23px, 76px);
+      background: var(--_p-b);
+    }
+    .drawer::after {
+      grid-area: 1/1/-1/-1;
+      background: var(--_p-b);
+    }
+    .drawer::before {
+      grid-area: 1/1/-1/-1;
+      background: var(--_p-b);
+    }
+    .scroller {
+      grid-area: 1/1/-1/-1;
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-template-columns: subgrid;
+    }
+    .scroller::before {
+      content: "";
+      position: sticky;
+      top: 0;
+      grid-area: 1/1/4/-1;
+      z-index: 1;
+      background: linear-gradient(180deg,var(--_p-b) 0%,var(--_p-b) 65%,transparent 100%);
+    }
+    .dismiss-mobile {
+      --p-internal-button-scaling: 0;
+      width: fit-content;
+      height: fit-content;
+      place-self: start end;
+      grid-area: 2/4;
+      z-index: 3;
+      margin-inline-end: -1px;
+    }
+    .dismiss-desktop {
+      display: none;
+    }
+}
+
+    </style>
+    <dialog
+      inert=""
+    >
+      <div
+        class="drawer"
+      >
+        <p-button-pure
+          class="back"
+          data-ssr=""
+        >
+          <template
+            shadowroot="open"
+            shadowrootdelegatesfocus="true"
+            shadowrootmode="open"
+          >
+            <style>
+              :host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  color-scheme: light dark !important;
+  display: block;
+  width: 100%;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  display: flex;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  color: #010205;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  gap: 0;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
+  cursor: pointer;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+.label {
+  z-index: 1;
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media(hover:hover) {
+  .root:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: rgba(148, 149, 152, .18);
+  }
+}
+
+            </style>
+            <button
+              class="root"
+              type="button"
+            >
+              <p-icon
+                aria-hidden="true"
+                class="icon"
+                data-ssr=""
+              >
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
+                >
+                  <style>
+                    :host {
+  display: inline-block;
+  vertical-align: top;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
+  -webkit-animation: rerender-light-primary 1ms;
+  width: inherit;
+  height: inherit;
+}
+img:dir(rtl) {
+  transform: scaleX(-1);
+}
+@keyframes rerender-light-primary {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+                  </style>
+                  <img
+                    alt=""
+                    height="24"
+                    loading="lazy"
+                    src="http://localhost:3001/icons/arrow-left.e03c25b.svg"
+                    width="24"
+                  />
+                </template>
+              </p-icon>
+              <span
+                class="label"
+              >
+                <slot />
+              </span>
+            </button>
+            <span
+              class="loading"
+              id="loading"
+              role="status"
+            />
+          </template>
+          Back
+        </p-button-pure>
+        <p-button
+          class="dismiss-mobile"
+          data-ssr=""
+        >
+          <template
+            shadowroot="open"
+            shadowrootdelegatesfocus="true"
+            shadowrootmode="open"
+          >
+            <style>
+              :host {
+  display: inline-block;
+  vertical-align: top !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  min-width: min-content;
+  box-sizing: border-box;
+  text-align: start;
+  -webkit-appearance: none;
+  appearance: none;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: none;
+  border-radius: 4px;
+  transform: translate3d(0,0,0);
+  background-color: hsl(240 4% 85%/35%);
+  color: #010205;
+  --p-internal-scaling-factor: 1;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px);
+  gap: 0;
+  cursor: pointer;
+  margin: 0;
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+.label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  margin-inline-start: 0;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: hsl(240 4% 70%/35%);
+    border-color: hsl(240 4% 70%/35%);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
+}
+
+            </style>
+            <button
+              class="root"
+              type="button"
+            >
+              <p-icon
+                aria-hidden="true"
+                class="icon"
+                data-ssr=""
+              >
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
+                >
+                  <style>
+                    :host {
+  display: inline-block;
+  vertical-align: top;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
+  -webkit-animation: rerender-light-primary 1ms;
+  width: inherit;
+  height: inherit;
+}
+@keyframes rerender-light-primary {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+                  </style>
+                  <img
+                    alt=""
+                    height="24"
+                    loading="lazy"
+                    src="http://localhost:3001/icons/close.eec3c5d.svg"
+                    width="24"
+                  />
+                </template>
+              </p-icon>
+              <span
+                class="label"
+              >
+                <slot />
+              </span>
+            </button>
+            <span
+              class="loading"
+              id="loading"
+              role="status"
+            />
+          </template>
+          Dismiss drilldown
+        </p-button>
+        <p-button-pure
+          class="dismiss-desktop"
+          data-ssr=""
+        >
+          <template
+            shadowroot="open"
+            shadowrootdelegatesfocus="true"
+            shadowrootmode="open"
+          >
+            <style>
+              :host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  color-scheme: light dark !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  display: flex;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  color: #010205;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  gap: 0;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
+  cursor: pointer;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+.label {
+  z-index: 1;
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media(hover:hover) {
+  .root:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: rgba(148, 149, 152, .18);
+  }
+}
+
+            </style>
+            <button
+              class="root"
+              type="button"
+            >
+              <p-icon
+                aria-hidden="true"
+                class="icon"
+                data-ssr=""
+              >
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
+                >
+                  <style>
+                    :host {
+  display: inline-block;
+  vertical-align: top;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
+  -webkit-animation: rerender-light-primary 1ms;
+  width: inherit;
+  height: inherit;
+}
+@keyframes rerender-light-primary {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+                  </style>
+                  <img
+                    alt=""
+                    height="24"
+                    loading="lazy"
+                    src="http://localhost:3001/icons/close.eec3c5d.svg"
+                    width="24"
+                  />
+                </template>
+              </p-icon>
+              <span
+                class="label"
+              >
+                <slot />
+              </span>
+            </button>
+            <span
+              class="loading"
+              id="loading"
+              role="status"
+            />
+          </template>
+          Dismiss drilldown
+        </p-button-pure>
+        <div
+          class="scroller"
+        >
+          <slot />
+        </div>
+      </div>
+    </dialog>
+  </template>
+  Some child
+</p-drilldown>
+`;
+
+exports[`should render dsr component for PDrilldownItem 1`] = `
+<p-drilldown-item
+  data-ssr=""
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      @keyframes slide-up-mobile {
+  from {
+    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
+  }
+  to {
+    transform: translate3d(0,0,0);
+  }
+}
+@keyframes slide-up-desktop-primary {
+  from {
+    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+  }
+  to {
+    margin-block-start: 0px;
+  }
+}
+@keyframes slide-up-desktop-secondary {
+  from {
+    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
+  }
+  to {
+    margin-block-start: 0px;
+  }
+}
+  :host {
+    display: contents;
+    color-scheme: light dark !important;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  :not(:defined,[data-ssr]) {
+    visibility: hidden;
+  }
+  slot[name="header"] {
+    display: none;
+  }
+  slot:not([name]) {
+    display: none;
+  }
+  h2 {
+    display: none;
+  }
+  ::slotted(*) {
+    --p-drilldown-grid-template: auto/auto;
+    --p-drilldown-gap: clamp(4px, 0.25vw + 3px, 8px);
+  }
+@media(min-width:760px) {
+}
+
+@media(max-width:759px) {
+}
+
+  .scroller {
+    display: none;
+    overflow: hidden auto;
+    background: var(--_p-f);
+  }
+  .button {
+    grid-column: 1/-1;
+    padding: clamp(8px, 0.5vw + 6px, 16px);
+    margin: 0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
+  }
+  .back {
+    display: none;
+  }
+@media(min-width:760px) {
+    .drawer {
+      display: none;
+    }
+}
+
+@media(max-width:759px) {
+    .drawer {
+      display: none;
+    }
+}
+
+    </style>
+    <p-button-pure
+      class="button"
+      data-ssr=""
+    >
+      <template
+        shadowroot="open"
+        shadowrootdelegatesfocus="true"
+        shadowrootmode="open"
+      >
+        <style>
+          :host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  color-scheme: light dark !important;
+  display: block;
+  width: 100%;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  display: flex;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  color: #010205;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  gap: 4px;
+  justify-content: space-between;
+  align-items: center;
+  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
+  cursor: pointer;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -4px;
+  left: -4px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+.label {
+  z-index: 1;
+  white-space: inherit;
+  text-indent: 0;
+  overflow: visible;
+  order: -1;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media(hover:hover) {
+  .root:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: rgba(148, 149, 152, .18);
+  }
+}
+
+        </style>
+        <button
+          aria-expanded="false"
+          class="root"
+          type="button"
+        >
+          <p-icon
+            aria-hidden="true"
+            class="icon"
+            data-ssr=""
+          >
+            <template
+              shadowroot="open"
+              shadowrootmode="open"
+            >
+              <style>
+                :host {
+  display: inline-block;
+  vertical-align: top;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
+  -webkit-animation: rerender-light-primary 1ms;
+  width: inherit;
+  height: inherit;
+}
+img:dir(rtl) {
+  transform: scaleX(-1);
+}
+@keyframes rerender-light-primary {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+              </style>
+              <img
+                alt=""
+                height="24"
+                loading="lazy"
+                src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
+                width="24"
+              />
+            </template>
+          </p-icon>
+          <span
+            class="label"
+          >
+            <slot />
+          </span>
+        </button>
+        <span
+          class="loading"
+          id="loading"
+          role="status"
+        />
+      </template>
+    </p-button-pure>
+    <p-button-pure
+      class="back"
+      data-ssr=""
+    >
+      <template
+        shadowroot="open"
+        shadowrootdelegatesfocus="true"
+        shadowrootmode="open"
+      >
+        <style>
+          :host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  color-scheme: light dark !important;
+  display: block;
+  width: 100%;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  display: flex;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  color: #010205;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  gap: 0;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
+  cursor: pointer;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+.label {
+  z-index: 1;
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+@media(min-width:760px) {
+  .root {
+    gap: 4px;
+  }
+  .root::before {
+    right: -4px;
+    left: -4px;
+  }
+  .label {
+    white-space: inherit;
+    text-indent: 0;
+    overflow: visible;
+  }
+}
+
+@media(hover:hover) {
+  .root:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: rgba(148, 149, 152, .18);
+  }
+}
+
+        </style>
+        <button
+          class="root"
+          type="button"
+        >
+          <p-icon
+            aria-hidden="true"
+            class="icon"
+            data-ssr=""
+          >
+            <template
+              shadowroot="open"
+              shadowrootmode="open"
+            >
+              <style>
+                :host {
+  display: inline-block;
+  vertical-align: top;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
+  -webkit-animation: rerender-light-primary 1ms;
+  width: inherit;
+  height: inherit;
+}
+img:dir(rtl) {
+  transform: scaleX(-1);
+}
+@keyframes rerender-light-primary {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+              </style>
+              <img
+                alt=""
+                height="24"
+                loading="lazy"
+                src="http://localhost:3001/icons/arrow-left.e03c25b.svg"
+                width="24"
+              />
+            </template>
+          </p-icon>
+          <span
+            class="label"
+          >
+            <slot />
+          </span>
+        </button>
+        <span
+          class="loading"
+          id="loading"
+          role="status"
+        />
+      </template>
+    </p-button-pure>
+    <h2 />
+    <div
+      class="drawer"
+    >
+      <div
+        class="scroller"
+      >
+        <slot />
+      </div>
+    </div>
+  </template>
+  Some child
+</p-drilldown-item>
+`;
+
+exports[`should render dsr component for PDrilldownLink 1`] = `
+<p-drilldown-link
+  data-ssr=""
+>
+  <template
+    shadowroot="open"
+    shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: grid;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+::slotted(a) {
+  all: unset !important;
+  padding: calc(clamp(8px, 0.5vw + 6px, 16px) + 2px) calc(clamp(8px, 0.5vw + 6px, 16px) + 4px) !important;
+  margin: -2px calc(clamp(8px, 0.5vw + 6px, 16px) * -1 - 4px) !important;
+  border-radius: 4px !important;
+  font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+  color: var(--_p-a) !important;
+  text-decoration: underline !important;
+  text-decoration-color: transparent !important;
+  cursor: pointer !important;
+  transition: text-decoration-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
+}
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: -2px !important;
+}
+@media(hover:hover) {
+  ::slotted(a:hover) {
+    text-decoration-color: inherit !important;
+  }
+}
+
+    </style>
+    <slot />
+  </template>
+  Some child
+</p-drilldown-link>
 `;
 
 exports[`should render dsr component for PFieldset 1`] = `
@@ -9563,6 +11622,9 @@ dialog::backdrop {
 .scroller:dir(rtl) {
   transform: translateX(-100%);
 }
+.scroller:focus-visible {
+  outline: none;
+}
 .flyout {
   display: grid;
   grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
@@ -9652,6 +11714,13 @@ dialog::backdrop {
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: absolute;
   width: 1px;
@@ -9678,6 +11747,14 @@ dialog::backdrop {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: hsl(240 4% 70%/35%);
+    border-color: hsl(240 4% 70%/35%);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
               </style>
@@ -9752,1089 +11829,6 @@ img {
   </template>
   Some child
 </p-flyout>
-`;
-
-exports[`should render dsr component for PFlyoutMultilevel 1`] = `
-<p-flyout-multilevel
-  data-ssr=""
->
-  <template
-    shadowroot="open"
-    shadowrootmode="open"
-  >
-    <style>
-      @keyframes slide-up-mobile {
-  from {
-    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
-  }
-  to {
-    transform: translate3d(0,0,0);
-  }
-}
-@keyframes slide-up-desktop {
-  from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
-  }
-  to {
-    margin-block-start: 0px;
-  }
-}
-  :host {
-    display: block;
-    color-scheme: light dark !important;
-  }
-  :host([hidden]) {
-    display: none !important;
-  }
-  :not(:defined,[data-ssr]) {
-    visibility: hidden;
-  }
-  dialog {
-    all: unset;
-    position: fixed;
-    inset: 0;
-    z-index: 999999999;
-    outline: 0;
-    visibility: hidden;
-    transition: visibility 0s linear var(--p-transition-duration, 0.4s), overlay var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1) allow-discrete, background var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1);
-  }
-  dialog::backdrop {
-    display: none;
-  }
-@media(min-width:760px) {
-    slot {
-      display: flex;
-      flex-direction: column;
-      gap: clamp(4px, 0.25vw + 3px, 8px);
-      grid-area: 2/2/auto/-2;
-      height: fit-content;
-      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-desktop var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
-    }
-}
-
-@media(max-width:759px) {
-    slot {
-      display: flex;
-      z-index: 0;
-      flex-direction: column;
-      gap: clamp(4px, 0.25vw + 3px, 8px);
-      grid-area: 4/2/auto/-2;
-      height: fit-content;
-      padding-block-end: clamp(32px, 2.75vw + 23px, 76px);
-      animation: slide-up-mobile var(--p-animation-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
-    }
-}
-
-  .drawer {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    opacity: 0;
-    transform: translate3d(-100%,0,0);
-    transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
-  }
-  .drawer:dir(rtl) {
-    transform: translate3d(100%,0,0);
-  }
-  .drawer::before, .drawer::after {
-    content: "";
-    position: relative;
-    z-index: 2;
-    pointer-events: none;
-    opacity: 0;
-  }
-  .scroller {
-    display: contents;
-    overflow: hidden auto;
-    background: rgba(255,255,255,.01);
-  }
-  .back {
-    display: none;
-  }
-@media(min-width:760px) {
-    .drawer {
-      width: clamp(338px, 210px + 18vw, 640px);
-      grid-template: clamp(16px, 1.25vw + 12px, 36px) minmax(0, 1fr)/repeat(1, clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px));
-      background: #FFF;
-    }
-    .drawer::after {
-      grid-area: 1/4/-1/-1;
-      background: #EEEFF2;
-    }
-    .drawer::before {
-      grid-area: 1/1/-1/4;
-      background: #FFF;
-    }
-    .scroller {
-      grid-area: 1/1/-1/4;
-      display: grid;
-      grid-template-rows: subgrid;
-      grid-template-columns: subgrid;
-    }
-    .dismiss-mobile {
-      display: none;
-    }
-    .dismiss-desktop {
-      --p-internal-icon-filter: invert(1);
-      position: absolute;
-      inset-inline-start: calc(100% + clamp(8px, 0.5vw + 6px, 16px));
-      inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
-      padding: 8px;
-    }
-}
-
-@media(max-width:759px) {
-    .drawer {
-      grid-template: clamp(16px, 1.25vw + 12px, 36px) auto clamp(32px, 2.75vw + 23px, 76px) minmax(0, 1fr)/clamp(32px, 2.75vw + 23px, 76px) auto minmax(0, 1fr) auto clamp(32px, 2.75vw + 23px, 76px);
-      background: #FFF;
-    }
-    .drawer::after {
-      grid-area: 1/1/-1/-1;
-      background: #FFF;
-    }
-    .drawer::before {
-      grid-area: 1/1/-1/-1;
-      background: #FFF;
-    }
-    .scroller {
-      grid-area: 1/1/-1/-1;
-      display: grid;
-      grid-template-rows: subgrid;
-      grid-template-columns: subgrid;
-    }
-    .scroller::before {
-      content: "";
-      position: sticky;
-      top: 0;
-      grid-area: 1/1/4/-1;
-      z-index: 1;
-      background: linear-gradient(180deg,#FFF 0%,#FFF 65%,transparent 100%);
-    }
-    .dismiss-mobile {
-      --p-internal-button-scaling: 0;
-      width: fit-content;
-      height: fit-content;
-      place-self: center flex-end;
-      grid-area: 2/4;
-      z-index: 3;
-      margin-inline-end: -1px;
-    }
-    .dismiss-desktop {
-      display: none;
-    }
-}
-
-    </style>
-    <dialog
-      inert=""
-    >
-      <div
-        class="drawer"
-      >
-        <p-button-pure
-          class="back"
-          data-ssr=""
-        >
-          <template
-            shadowroot="open"
-            shadowrootdelegatesfocus="true"
-            shadowrootmode="open"
-          >
-            <style>
-              :host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
-  display: block;
-  width: 100%;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  display: flex;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #010205;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  gap: 0;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1rem;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: pointer;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
-.label {
-  z-index: 1;
-  white-space: nowrap;
-  text-indent: -999999px;
-  overflow: hidden;
-  order: 0;
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-
-            </style>
-            <button
-              class="root"
-              type="button"
-            >
-              <p-icon
-                aria-hidden="true"
-                class="icon"
-                data-ssr=""
-              >
-                <template
-                  shadowroot="open"
-                  shadowrootmode="open"
-                >
-                  <style>
-                    :host {
-  display: inline-block;
-  vertical-align: top;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  display: block;
-  margin: 0;
-  padding: 0;
-  pointer-events: none;
-  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
-  -webkit-animation: rerender-light-primary 1ms;
-  width: inherit;
-  height: inherit;
-}
-img:dir(rtl) {
-  transform: scaleX(-1);
-}
-@keyframes rerender-light-primary {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
-}
-                  </style>
-                  <img
-                    alt=""
-                    height="24"
-                    loading="lazy"
-                    src="http://localhost:3001/icons/arrow-left.e03c25b.svg"
-                    width="24"
-                  />
-                </template>
-              </p-icon>
-              <span
-                class="label"
-              >
-                <slot />
-              </span>
-            </button>
-            <span
-              class="loading"
-              id="loading"
-              role="status"
-            />
-          </template>
-          Back
-        </p-button-pure>
-        <p-button
-          class="dismiss-mobile"
-          data-ssr=""
-        >
-          <template
-            shadowroot="open"
-            shadowrootdelegatesfocus="true"
-            shadowrootmode="open"
-          >
-            <style>
-              :host {
-  display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 4% 85%/35%);
-  color: #010205;
-  --p-internal-scaling-factor: 1;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px);
-  gap: 0;
-  cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: 0;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-
-            </style>
-            <button
-              class="root"
-              type="button"
-            >
-              <p-icon
-                aria-hidden="true"
-                class="icon"
-                data-ssr=""
-              >
-                <template
-                  shadowroot="open"
-                  shadowrootmode="open"
-                >
-                  <style>
-                    :host {
-  display: inline-block;
-  vertical-align: top;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  display: block;
-  margin: 0;
-  padding: 0;
-  pointer-events: none;
-  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
-  -webkit-animation: rerender-light-primary 1ms;
-  width: inherit;
-  height: inherit;
-}
-@keyframes rerender-light-primary {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
-}
-                  </style>
-                  <img
-                    alt=""
-                    height="24"
-                    loading="lazy"
-                    src="http://localhost:3001/icons/close.eec3c5d.svg"
-                    width="24"
-                  />
-                </template>
-              </p-icon>
-              <span
-                class="label"
-              >
-                <slot />
-              </span>
-            </button>
-            <span
-              class="loading"
-              id="loading"
-              role="status"
-            />
-          </template>
-          Dismiss flyout
-        </p-button>
-        <p-button-pure
-          class="dismiss-desktop"
-          data-ssr=""
-        >
-          <template
-            shadowroot="open"
-            shadowrootdelegatesfocus="true"
-            shadowrootmode="open"
-          >
-            <style>
-              :host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
-  display: inline-block;
-  width: auto;
-  vertical-align: top;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  display: flex;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #010205;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  gap: 0;
-  justify-content: flex-start;
-  align-items: flex-start;
-  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: pointer;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
-.label {
-  z-index: 1;
-  white-space: nowrap;
-  text-indent: -999999px;
-  overflow: hidden;
-  order: 0;
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-
-            </style>
-            <button
-              class="root"
-              type="button"
-            >
-              <p-icon
-                aria-hidden="true"
-                class="icon"
-                data-ssr=""
-              >
-                <template
-                  shadowroot="open"
-                  shadowrootmode="open"
-                >
-                  <style>
-                    :host {
-  display: inline-block;
-  vertical-align: top;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  display: block;
-  margin: 0;
-  padding: 0;
-  pointer-events: none;
-  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
-  -webkit-animation: rerender-light-primary 1ms;
-  width: inherit;
-  height: inherit;
-}
-@keyframes rerender-light-primary {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
-}
-                  </style>
-                  <img
-                    alt=""
-                    height="24"
-                    loading="lazy"
-                    src="http://localhost:3001/icons/close.eec3c5d.svg"
-                    width="24"
-                  />
-                </template>
-              </p-icon>
-              <span
-                class="label"
-              >
-                <slot />
-              </span>
-            </button>
-            <span
-              class="loading"
-              id="loading"
-              role="status"
-            />
-          </template>
-          Dismiss flyout
-        </p-button-pure>
-        <div
-          class="scroller"
-        >
-          <slot />
-        </div>
-      </div>
-    </dialog>
-  </template>
-  Some child
-</p-flyout-multilevel>
-`;
-
-exports[`should render dsr component for PFlyoutMultilevelItem 1`] = `
-<p-flyout-multilevel-item
-  data-ssr=""
->
-  <template
-    shadowroot="open"
-    shadowrootmode="open"
-  >
-    <style>
-      @keyframes slide-up-mobile {
-  from {
-    transform: translate3d(0,clamp(16px, 1.25vw + 12px, 36px),0);
-  }
-  to {
-    transform: translate3d(0,0,0);
-  }
-}
-@keyframes slide-up-desktop-primary {
-  from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
-  }
-  to {
-    margin-block-start: 0px;
-  }
-}
-@keyframes slide-up-desktop-secondary {
-  from {
-    margin-block-start: clamp(16px, 1.25vw + 12px, 36px);
-  }
-  to {
-    margin-block-start: 0px;
-  }
-}
-  :host {
-    display: contents;
-    color-scheme: light dark !important;
-  }
-  :host([hidden]) {
-    display: none !important;
-  }
-  slot {
-    display: none;
-  }
-  h2 {
-    display: none;
-  }
-  ::slotted(a) {
-    all: unset;
-    align-self: flex-start;
-    font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-    cursor: pointer;
-    border-radius: 4px;
-    padding: clamp(8px, 0.5vw + 6px, 16px) !important;
-    margin-inline: calc(clamp(8px, 0.5vw + 6px, 16px) * -1) !important;
-    color: #010205;
-    text-decoration: underline;
-    text-decoration-color: transparent;
-    transition: text-decoration-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  ::slotted(a[aria-current]) {
-    text-decoration: underline;
-  }
-  ::slotted(a::-moz-focus-inner) {
-    border: 0;
-  }
-
-@media(max-width:759px) {
-}
-
-
-  .scroller {
-    display: none;
-    overflow: hidden auto;
-    background: rgba(255,255,255,.01);
-  }
-  .button {
-    padding: clamp(8px, 0.5vw + 6px, 16px);
-    margin: 0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
-  }
-  .back {
-    display: none;
-  }
-@media(min-width:760px) {
-    .drawer {
-      display: none;
-    }
-}
-
-@media(max-width:759px) {
-    .drawer {
-      display: none;
-    }
-}
-
-    </style>
-    <p-button-pure
-      class="button"
-      data-ssr=""
-    >
-      <template
-        shadowroot="open"
-        shadowrootdelegatesfocus="true"
-        shadowrootmode="open"
-      >
-        <style>
-          :host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
-  display: block;
-  width: 100%;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  display: flex;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #010205;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  gap: 4px;
-  justify-content: space-between;
-  align-items: center;
-  font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: pointer;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -4px;
-  left: -4px;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
-.label {
-  z-index: 1;
-  white-space: inherit;
-  text-indent: 0;
-  overflow: visible;
-  order: -1;
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-
-        </style>
-        <button
-          aria-expanded="false"
-          class="root"
-          type="button"
-        >
-          <p-icon
-            aria-hidden="true"
-            class="icon"
-            data-ssr=""
-          >
-            <template
-              shadowroot="open"
-              shadowrootmode="open"
-            >
-              <style>
-                :host {
-  display: inline-block;
-  vertical-align: top;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  display: block;
-  margin: 0;
-  padding: 0;
-  pointer-events: none;
-  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
-  -webkit-animation: rerender-light-primary 1ms;
-  width: inherit;
-  height: inherit;
-}
-img:dir(rtl) {
-  transform: scaleX(-1);
-}
-@keyframes rerender-light-primary {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
-}
-              </style>
-              <img
-                alt=""
-                height="24"
-                loading="lazy"
-                src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
-                width="24"
-              />
-            </template>
-          </p-icon>
-          <span
-            class="label"
-          >
-            <slot />
-          </span>
-        </button>
-        <span
-          class="loading"
-          id="loading"
-          role="status"
-        />
-      </template>
-    </p-button-pure>
-    <p-button-pure
-      class="back"
-      data-ssr=""
-    >
-      <template
-        shadowroot="open"
-        shadowrootdelegatesfocus="true"
-        shadowrootmode="open"
-      >
-        <style>
-          :host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
-  display: block;
-  width: 100%;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-.root {
-  display: flex;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #010205;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  gap: 0;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1rem;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: pointer;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
-  border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
-.label {
-  z-index: 1;
-  white-space: nowrap;
-  text-indent: -999999px;
-  overflow: hidden;
-  order: 0;
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
-@media(min-width:760px) {
-  .root {
-    gap: 4px;
-  }
-  .root::before {
-    right: -4px;
-    left: -4px;
-  }
-  .label {
-    white-space: inherit;
-    text-indent: 0;
-    overflow: visible;
-  }
-}
-
-
-        </style>
-        <button
-          class="root"
-          type="button"
-        >
-          <p-icon
-            aria-hidden="true"
-            class="icon"
-            data-ssr=""
-          >
-            <template
-              shadowroot="open"
-              shadowrootmode="open"
-            >
-              <style>
-                :host {
-  display: inline-block;
-  vertical-align: top;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  display: block;
-  margin: 0;
-  padding: 0;
-  pointer-events: none;
-  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
-  -webkit-animation: rerender-light-primary 1ms;
-  width: inherit;
-  height: inherit;
-}
-img:dir(rtl) {
-  transform: scaleX(-1);
-}
-@keyframes rerender-light-primary {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
-}
-              </style>
-              <img
-                alt=""
-                height="24"
-                loading="lazy"
-                src="http://localhost:3001/icons/arrow-left.e03c25b.svg"
-                width="24"
-              />
-            </template>
-          </p-icon>
-          <span
-            class="label"
-          >
-            <slot />
-          </span>
-        </button>
-        <span
-          class="loading"
-          id="loading"
-          role="status"
-        />
-      </template>
-    </p-button-pure>
-    <h2 />
-    <div
-      class="drawer"
-    >
-      <div
-        class="scroller"
-      >
-        <slot />
-      </div>
-    </div>
-  </template>
-  Some child
-</p-flyout-multilevel-item>
 `;
 
 exports[`should render dsr component for PGrid 1`] = `
@@ -11220,6 +12214,13 @@ img {
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: absolute;
   width: 1px;
@@ -11246,6 +12247,14 @@ img {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: hsl(240 4% 70%/35%);
+    border-color: hsl(240 4% 70%/35%);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
         </style>
@@ -11368,6 +12377,9 @@ input[type="text"] {
   border-color: #D8D8DB;
   background: #D8D8DB;
 }
+.wrapper:has(input:focus:not([readonly])) {
+  border-color: #010205;
+}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -11404,6 +12416,8 @@ input[type="text"] {
   overflow-wrap: break-word;
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+@media(hover:hover) {
 }
 
     </style>
@@ -11476,6 +12490,16 @@ exports[`should render dsr component for PLink 1`] = `
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -11512,6 +12536,12 @@ exports[`should render dsr component for PLink 1`] = `
 }
 .icon {
   filter: invert(1);
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: #535457;
+    border-color: #535457;
+  }
 }
 
     </style>
@@ -11573,6 +12603,16 @@ exports[`should render dsr component for PLinkPure 1`] = `
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: -2px !important;
+}
 .root {
   display: flex;
   width: 100%;
@@ -11618,6 +12658,13 @@ exports[`should render dsr component for PLinkPure 1`] = `
   }
 }
 
+@media(hover:hover) {
+  .root:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: rgba(148, 149, 152, .18);
+  }
+}
 
     </style>
     <span
@@ -11725,6 +12772,16 @@ exports[`should render dsr component for PLinkSocial 1`] = `
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -11764,6 +12821,12 @@ exports[`should render dsr component for PLinkSocial 1`] = `
   height: calc(6px + 2.125ex);
   margin-inline-start: clamp(-16px, calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
   filter: invert(1);
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: #535457;
+    border-color: #535457;
+  }
 }
 
     </style>
@@ -11933,6 +12996,11 @@ p {
   }
 }
 
+@media(hover:hover) {
+  .root:hover slot:not([name]) {
+    transform: scale3d(1.05,1.05,1.05);
+  }
+}
 
     </style>
     <div
@@ -11997,6 +13065,16 @@ p {
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -12030,6 +13108,14 @@ p {
   overflow: visible;
   clip: unset !important;
   white-space: normal;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: rgba(148, 149, 152, .18);
+    border-color: #88898C;
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
             </style>
@@ -12166,6 +13252,11 @@ h1,h2,h3,h4,h5,h6 {
   }
 }
 
+@media(hover:hover) {
+  .root:hover slot:not([name]) {
+    transform: scale3d(1.05,1.05,1.05);
+  }
+}
 
     </style>
     <div
@@ -12306,6 +13397,13 @@ img {
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: static;
   width: auto;
@@ -12318,6 +13416,12 @@ img {
 }
 .icon {
   filter: invert(1);
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: #AFB0B3;
+    border-color: #AFB0B3;
+  }
 }
 
       </style>
@@ -12385,6 +13489,13 @@ img {
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: static;
   width: auto;
@@ -12394,6 +13505,14 @@ img {
   overflow: visible;
   clip: unset !important;
   white-space: normal;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: rgba(148, 149, 152, .18);
+    border-color: #88898C;
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
       </style>
@@ -12447,6 +13566,13 @@ slot[name="header"] {
 }
 ::slotted(a[slot='anchor']::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(a[slot='anchor']:focus) {
+  outline: 0 !important;
+}
+::slotted(a[slot='anchor']:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted([slot="header"]) {
   display: flex !important;
@@ -12516,6 +13642,11 @@ slot[name="header"] {
   }
 }
 
+@media(hover:hover) {
+  .root:hover .image {
+    transform: scale3d(1.05,1.05,1.05);
+  }
+}
 
     </style>
     <div
@@ -12589,6 +13720,16 @@ slot[name="header"] {
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
+}
 .icon {
   position: relative;
   flex-shrink: 0;
@@ -12619,6 +13760,13 @@ slot[name="header"] {
   }
 }
 
+@media(hover:hover) {
+  .root:hover::before {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background-color: rgba(148, 149, 152, .18);
+  }
+}
 
             </style>
             <button
@@ -12733,6 +13881,16 @@ a::before {
 }
 a::-moz-focus-inner {
   border: 0;
+}
+a:focus {
+  outline: 0;
+}
+a:focus-visible {
+  outline: 0;
+}
+a:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 picture {
   display: block;
@@ -12963,6 +14121,13 @@ dialog::backdrop {
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: absolute;
   width: 1px;
@@ -12989,6 +14154,14 @@ dialog::backdrop {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: hsl(240 4% 70%/35%);
+    border-color: hsl(240 4% 70%/35%);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
               </style>
@@ -13171,6 +14344,52 @@ exports[`should render dsr component for PMultiSelect 1`] = `
   input:disabled {
     cursor: not-allowed;
   }
+  input:focus {
+    border-color: #010205;
+  }
+  input:not(:focus)::placeholder {
+    color: #010205;
+    opacity: 1;
+  }
+  input:not(:focus)::-webkit-input-placeholder {
+    color: #010205;
+    opacity: 1;
+  }
+  input:not(:focus)::-moz-placeholder {
+    color: #010205;
+    opacity: 1;
+  }
+  input:not(:focus):-moz-placeholder {
+    color: #010205;
+    opacity: 1;
+  }
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, 1 * 6px);
+    display: none;
+    flex-direction: column;
+    gap: max(2px, 1 * 8px);
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
+    box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #FFF;
+    border: 1px solid #D8D8DB;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
+@media(hover:hover) {
+    input:hover:not(:disabled):not(:focus), label:hover~.wrapper input:not(:disabled):not(:focus) {
+      border-color: #010205;
+    }
+}
 
   .root {
     display: grid;
@@ -13482,6 +14701,13 @@ span[aria-disabled] {
 span:not(.ellipsis)::-moz-focus-inner {
   border: 0;
 }
+span:not(.ellipsis):focus {
+  outline: 0;
+}
+span:not(.ellipsis):focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 @media(min-width:760px) {
   ul {
     gap: 8px;
@@ -13497,6 +14723,13 @@ span:not(.ellipsis)::-moz-focus-inner {
   }
 }
 
+@media(hover:hover) {
+  span:not([aria-disabled]):not(.ellipsis):hover {
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+    background: rgba(148, 149, 152, .18);
+  }
+}
 
 .ellipsis {
   cursor: default;
@@ -13708,11 +14941,19 @@ input:nth-of-type(6) {
 :not(input[type="password"]) {
   text-overflow: ellipsis;
 }
+input:focus {
+  border-color: #010205;
+}
 input:disabled {
   cursor: not-allowed;
   color: #949598;
   border-color: #949598;
   -webkit-text-fill-color: #949598;
+}
+@media(hover:hover) {
+  input:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper input:not(:disabled):not(:focus):not([readonly]) {
+    border-color: #010205;
+  }
 }
 
 .root {
@@ -13876,6 +15117,33 @@ exports[`should render dsr component for PPopover 1`] = `
   button::-moz-focus-inner {
     border: 0;
   }
+  button:focus {
+    outline: 0;
+  }
+  button:focus-visible {
+    outline: 2px solid #1A44EA;
+    outline-offset: 0;
+  }
+  [popover] {
+    all: unset;
+    position: absolute;
+    pointer-events: none;
+    filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
+@media(hover:hover) {
+    button {
+      transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    }
+    button:hover {
+      -webkit-backdrop-filter: blur(32px);
+      backdrop-filter: blur(32px);
+      background-color: rgba(148, 149, 152, .18);
+    }
+}
 
   .label {
     position: absolute;
@@ -14016,6 +15284,28 @@ exports[`should render dsr component for PRadioButtonWrapper 1`] = `
 ::slotted(input::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
+@media(hover:hover) {
+  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
+    border-color: #010205 !important;
+  }
+  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
+    border-color: #535457 !important;
+    background-color: #535457 !important;
+  }
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+    label:hover~.wrapper ::slotted(input) {
+      transition: unset !important;
+    }
+}
+
+}
 
 .root {
   display: grid;
@@ -14152,6 +15442,13 @@ exports[`should render dsr component for PScroller 1`] = `
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
 }
+.scroll-wrapper:focus {
+  outline: 0;
+}
+.scroll-wrapper:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .trigger {
   position: absolute;
   top: 0;
@@ -14205,6 +15502,14 @@ exports[`should render dsr component for PScroller 1`] = `
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
+}
+@media(hover:hover) {
+  .action-prev .action-button {
+    visibility: hidden;
+  }
+  .action-next .action-button {
+    visibility: hidden;
+  }
 }
 
     </style>
@@ -14286,6 +15591,13 @@ exports[`should render dsr component for PScroller 1`] = `
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: static;
   width: auto;
@@ -14312,6 +15624,14 @@ exports[`should render dsr component for PScroller 1`] = `
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: hsl(240 4% 70%/35%);
+    border-color: hsl(240 4% 70%/35%);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
             </style>
@@ -14443,6 +15763,13 @@ img:dir(rtl) {
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: static;
   width: auto;
@@ -14469,6 +15796,14 @@ img:dir(rtl) {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: hsl(240 4% 70%/35%);
+    border-color: hsl(240 4% 70%/35%);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
             </style>
@@ -14612,12 +15947,27 @@ button {
 button::-moz-focus-inner {
   border: 0;
 }
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 span {
   display: block;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: normal;
   hyphens: auto;
   color: #6B6D70;
+}
+@media(hover:hover) {
+  button {
+    transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  button:hover {
+    border-color: #010205;
+  }
 }
 
     </style>
@@ -14684,6 +16034,51 @@ exports[`should render dsr component for PSelect 1`] = `
   button::-moz-focus-inner {
     border: 0;
   }
+  button:focus {
+    outline: 0;
+  }
+  button:focus-visible {
+    outline: 2px solid #1A44EA;
+    outline-offset: 2px;
+  }
+  button img {
+    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    width: auto;
+    height: calc(6px + 2.125ex);
+    border-radius: 4px;
+  }
+  button span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
+    display: none;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
+    box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #FFF;
+    border: 1px solid #D8D8DB;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
+@media(hover:hover) {
+    button:hover, label:hover~button {
+      border-color: var(--p-select-border-color, #010205);
+    }
+}
 
   .root {
     display: grid;
@@ -14903,6 +16298,12 @@ exports[`should render dsr component for PSelectOption 1`] = `
 .icon {
   margin-inline-start: auto;
 }
+@media(hover:hover) {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+    color: #010205;
+    background: rgba(148, 149, 152, .18);
+  }
+}
 
     </style>
     <div
@@ -14962,11 +16363,19 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
 ::slotted(:not(input[type="password"])) {
   text-overflow: ellipsis !important;
 }
+::slotted(select:focus) {
+  border-color: #010205 !important;
+}
 ::slotted(select:disabled) {
   cursor: not-allowed !important;
   color: #949598 !important;
   border-color: #949598 !important;
   -webkit-text-fill-color: #949598 !important;
+}
+@media(hover:hover) {
+  ::slotted(select:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(select:not(:disabled):not(:focus):not([readonly])),label:hover~.wrapper ::part(select-wrapper-dropdown) {
+    border-color: #010205 !important;
+  }
 }
 
 .root {
@@ -15128,6 +16537,13 @@ button:disabled {
 button::-moz-focus-inner {
   border: 0;
 }
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -15158,6 +16574,11 @@ button::-moz-focus-inner {
   [popover]:not(:popover-open) {
     display: none;
   }
+@media(hover:hover) {
+    button:not(:disabled):hover {
+      border-color: #010205;
+    }
+}
 
   .sr-text {
     display: none;
@@ -15227,6 +16648,12 @@ button::-moz-focus-inner {
   .optgroup--disabled {
     color: #949598;
   }
+@media(hover:hover) {
+    .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: rgba(148, 149, 152, .18);
+    }
+}
 
             </style>
             <button
@@ -15406,6 +16833,13 @@ dialog::backdrop {
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: absolute;
   width: 1px;
@@ -15432,6 +16866,14 @@ dialog::backdrop {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: hsl(240 4% 70%/35%);
+    border-color: hsl(240 4% 70%/35%);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
               </style>
@@ -15681,6 +17123,13 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
 }
+.scroll-wrapper:focus {
+  outline: 0;
+}
+.scroll-wrapper:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .trigger {
   position: absolute;
   top: 0;
@@ -15734,6 +17183,14 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
+}
+@media(hover:hover) {
+  .action-prev .action-button {
+    visibility: hidden;
+  }
+  .action-next .action-button {
+    visibility: hidden;
+  }
 }
 
         </style>
@@ -15816,6 +17273,13 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: static;
   width: auto;
@@ -15842,6 +17306,14 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: hsl(240 4% 70%/35%);
+    border-color: hsl(240 4% 70%/35%);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
                 </style>
@@ -15973,6 +17445,13 @@ img:dir(rtl) {
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: static;
   width: auto;
@@ -15999,6 +17478,14 @@ img:dir(rtl) {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: hsl(240 4% 70%/35%);
+    border-color: hsl(240 4% 70%/35%);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
                 </style>
@@ -16154,6 +17641,13 @@ button::before {
 button::-moz-focus-inner {
   border: 0;
 }
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
+}
 .sr-only {
   position: absolute;
   width: 1px;
@@ -16225,6 +17719,13 @@ button {
 button::-moz-focus-inner {
   border: 0;
 }
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 button::before {
   content: "";
   position: absolute;
@@ -16248,6 +17749,15 @@ label {
   clip: auto;
   white-space: normal;
   padding-top: max(0px, calc((calc(calc(max(16px * 0.75, var(--p-internal-switch-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2));
+}
+@media(hover:hover) {
+  button:hover {
+    border-color: #010205;
+    background-color: transparent;
+  }
+  button:hover .toggle {
+    background-color: #010205;
+  }
 }
 
 .toggle {
@@ -16383,6 +17893,13 @@ exports[`should render dsr component for PTable 1`] = `
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
 }
+.scroll-wrapper:focus {
+  outline: 0;
+}
+.scroll-wrapper:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .trigger {
   position: absolute;
   top: 0;
@@ -16436,6 +17953,14 @@ exports[`should render dsr component for PTable 1`] = `
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
+}
+@media(hover:hover) {
+  .action-prev .action-button {
+    visibility: hidden;
+  }
+  .action-next .action-button {
+    visibility: hidden;
+  }
 }
 
         </style>
@@ -16517,6 +18042,13 @@ exports[`should render dsr component for PTable 1`] = `
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: static;
   width: auto;
@@ -16543,6 +18075,14 @@ exports[`should render dsr component for PTable 1`] = `
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: hsl(240 4% 70%/35%);
+    border-color: hsl(240 4% 70%/35%);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
                 </style>
@@ -16674,6 +18214,13 @@ img:dir(rtl) {
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: static;
   width: auto;
@@ -16700,6 +18247,14 @@ img:dir(rtl) {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: hsl(240 4% 70%/35%);
+    border-color: hsl(240 4% 70%/35%);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
                 </style>
@@ -16939,6 +18494,11 @@ exports[`should render dsr component for PTableRow 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+@media(hover:hover) {
+  :host(:hover) {
+    background: var(--p-internal-table-hover-color) !important;
+  }
+}
 
     </style>
     <slot />
@@ -16993,8 +18553,22 @@ exports[`should render dsr component for PTabs 1`] = `
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 1px !important;
+}
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 1px !important;
 }
 ::slotted(a),::slotted(button) {
   margin: 0 0 4px 0 !important;
@@ -17038,6 +18612,21 @@ exports[`should render dsr component for PTabs 1`] = `
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-inline-end: 16px !important;
+}
+@media(hover:hover) {
+  ::slotted(a)::before, ::slotted(button)::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: -2px -4px !important;
+    border-radius: 4px !important;
+    z-index: -1 !important;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  }
+  ::slotted(a:hover)::before,::slotted(button:hover)::before {
+    -webkit-backdrop-filter: blur(32px) !important;
+    backdrop-filter: blur(32px) !important;
+    background: rgba(148, 149, 152, .18) !important;
+  }
 }
 
 .scroller {
@@ -17115,6 +18704,13 @@ exports[`should render dsr component for PTabs 1`] = `
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
 }
+.scroll-wrapper:focus {
+  outline: 0;
+}
+.scroll-wrapper:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .trigger {
   position: absolute;
   top: 0;
@@ -17168,6 +18764,14 @@ exports[`should render dsr component for PTabs 1`] = `
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
+}
+@media(hover:hover) {
+  .action-prev .action-button {
+    visibility: hidden;
+  }
+  .action-next .action-button {
+    visibility: hidden;
+  }
 }
 
             </style>
@@ -17249,6 +18853,13 @@ exports[`should render dsr component for PTabs 1`] = `
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: static;
   width: auto;
@@ -17275,6 +18886,14 @@ exports[`should render dsr component for PTabs 1`] = `
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: hsl(240 4% 70%/35%);
+    border-color: hsl(240 4% 70%/35%);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
                     </style>
@@ -17406,6 +19025,13 @@ img:dir(rtl) {
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: static;
   width: auto;
@@ -17432,6 +19058,14 @@ img:dir(rtl) {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: hsl(240 4% 70%/35%);
+    border-color: hsl(240 4% 70%/35%);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
                     </style>
@@ -17552,8 +19186,22 @@ exports[`should render dsr component for PTabsBar 1`] = `
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 1px !important;
+}
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 1px !important;
 }
 ::slotted(a),::slotted(button) {
   margin: 0 0 4px 0 !important;
@@ -17597,6 +19245,21 @@ exports[`should render dsr component for PTabsBar 1`] = `
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-inline-end: 16px !important;
+}
+@media(hover:hover) {
+  ::slotted(a)::before, ::slotted(button)::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: -2px -4px !important;
+    border-radius: 4px !important;
+    z-index: -1 !important;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
+  }
+  ::slotted(a:hover)::before,::slotted(button:hover)::before {
+    -webkit-backdrop-filter: blur(32px) !important;
+    backdrop-filter: blur(32px) !important;
+    background: rgba(148, 149, 152, .18) !important;
+  }
 }
 
 .scroller {
@@ -17674,6 +19337,13 @@ exports[`should render dsr component for PTabsBar 1`] = `
 .scroll-wrapper::-moz-focus-inner {
   border: 0;
 }
+.scroll-wrapper:focus {
+  outline: 0;
+}
+.scroll-wrapper:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .trigger {
   position: absolute;
   top: 0;
@@ -17727,6 +19397,14 @@ exports[`should render dsr component for PTabsBar 1`] = `
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
+}
+@media(hover:hover) {
+  .action-prev .action-button {
+    visibility: hidden;
+  }
+  .action-next .action-button {
+    visibility: hidden;
+  }
 }
 
         </style>
@@ -17808,6 +19486,13 @@ exports[`should render dsr component for PTabsBar 1`] = `
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: static;
   width: auto;
@@ -17834,6 +19519,14 @@ exports[`should render dsr component for PTabsBar 1`] = `
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: hsl(240 4% 70%/35%);
+    border-color: hsl(240 4% 70%/35%);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
                 </style>
@@ -17965,6 +19658,13 @@ img:dir(rtl) {
 .root::-moz-focus-inner {
   border: 0;
 }
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
 .label {
   position: static;
   width: auto;
@@ -17991,6 +19691,14 @@ img:dir(rtl) {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+@media(hover:hover) {
+  .root:hover {
+    background-color: hsl(240 4% 70%/35%);
+    border-color: hsl(240 4% 70%/35%);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+  }
 }
 
                 </style>
@@ -18094,6 +19802,13 @@ exports[`should render dsr component for PTabsItem 1`] = `
 :host(::-moz-focus-inner) {
   border: 0 !important;
 }
+:host(:focus) {
+  outline: 0 !important;
+}
+:host(:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
     </style>
     <slot />
   </template>
@@ -18149,8 +19864,28 @@ span {
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
 ::slotted(button::-moz-focus-inner) {
   border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(br) {
   display: none !important;
@@ -18206,6 +19941,18 @@ button {
 }
 button::-moz-focus-inner {
   border: 0;
+}
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+@media(hover:hover) {
+  button:hover &gt; .icon {
+    background-color: rgba(148, 149, 152, .18);
+  }
 }
 
 .icon {
@@ -18377,6 +20124,9 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
 ::slotted(:not(input[type="password"])) {
   text-overflow: ellipsis !important;
 }
+::slotted(input:focus) {
+  border-color: #010205 !important;
+}
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
   color: #949598 !important;
@@ -18387,8 +20137,16 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
   border-color: #D8D8DB !important;
   background: #D8D8DB !important;
 }
+::slotted(input:-internal-autofill-selected), ::slotted(input:-internal-autofill-previewed), ::slotted(input:-webkit-autofill), ::slotted(input:-webkit-autofill:focus) {
+  -webkit-background-clip: padding-box !important;
+}
 ::slotted(input[type="email"]), ::slotted(input[type="tel"]) {
   direction: ltr !important;
+}
+@media(hover:hover) {
+  ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
+    border-color: #010205 !important;
+  }
 }
 
 .root {
@@ -18592,6 +20350,9 @@ textarea {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   padding: 12px 16px;
 }
+textarea:focus {
+  border-color: #010205;
+}
 textarea:disabled {
   cursor: not-allowed;
   color: #949598;
@@ -18601,6 +20362,11 @@ textarea:disabled {
 textarea[readonly] {
   border-color: #D8D8DB;
   background: #D8D8DB;
+}
+@media(hover:hover) {
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+    border-color: #010205;
+  }
 }
 
 .root {
@@ -18718,6 +20484,9 @@ exports[`should render dsr component for PTextareaWrapper 1`] = `
 ::slotted(:not(input[type="password"])) {
   text-overflow: ellipsis !important;
 }
+::slotted(textarea:focus) {
+  border-color: #010205 !important;
+}
 ::slotted(textarea:disabled) {
   cursor: not-allowed !important;
   color: #949598 !important;
@@ -18727,6 +20496,11 @@ exports[`should render dsr component for PTextareaWrapper 1`] = `
 ::slotted(textarea[readonly]) {
   border-color: #D8D8DB !important;
   background: #D8D8DB !important;
+}
+@media(hover:hover) {
+  ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
+    border-color: #010205 !important;
+  }
 }
 
 .root {
@@ -18858,6 +20632,16 @@ a::before {
 }
 a::-moz-focus-inner {
   border: 0;
+}
+a:focus {
+  outline: 0;
+}
+a:focus-visible {
+  outline: 0;
+}
+a:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 svg {
   fill: #010205;
