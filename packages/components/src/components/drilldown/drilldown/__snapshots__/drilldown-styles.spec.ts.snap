@@ -69,7 +69,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isPrimar
       display: contents;
     }
     ::slotted(*:not([primary],[secondary],[cascade])) {
-      display: none;
+      display: none !important;
     }
 }
 
@@ -393,7 +393,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
   }
 @media(min-width:760px) {
     ::slotted(*:not([primary],[cascade])) {
-      display: none;
+      display: none !important;
     }
 }
 
@@ -402,7 +402,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       display: contents;
     }
     ::slotted(*:not([primary],[secondary],[cascade])) {
-      display: none;
+      display: none !important;
     }
 }
 
@@ -747,7 +747,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       display: contents;
     }
     ::slotted(*:not([primary],[secondary],[cascade])) {
-      display: none;
+      display: none !important;
     }
 }
 
@@ -929,7 +929,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       display: contents;
     }
     ::slotted(*:not([primary],[secondary],[cascade])) {
-      display: none;
+      display: none !important;
     }
 }
 
@@ -1101,7 +1101,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isPrimary
       display: contents;
     }
     ::slotted(*:not([primary],[secondary],[cascade])) {
-      display: none;
+      display: none !important;
     }
 }
 
