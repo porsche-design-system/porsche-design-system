@@ -219,7 +219,7 @@ describe('generateAngularProperties()', () => {
     );
     expect(props).toMatchInlineSnapshot(`" [open]="open" name="Some prop""`);
   });
-  it('should transform react properties correctly for vanilla-js when using html tag', () => {
+  it('should transform react properties correctly for angular when using html tag', () => {
     const propsTruthy = generateAngularProperties(
       'input',
       {
@@ -258,7 +258,7 @@ describe('generateAngularProperties()', () => {
     expect(propsFalsy).toMatchInlineSnapshot(`" class="" maxlength="0" minlength="0" srcset="""`);
   });
 
-  it('should transform react properties correctly for vanilla-js when using pds tag', () => {
+  it('should transform react properties correctly for angular when using pds tag', () => {
     const propsTruthy = generateAngularProperties(
       'p-button',
       {
@@ -276,7 +276,7 @@ describe('generateAngularProperties()', () => {
       []
     );
     expect(propsTruthy).toMatchInlineSnapshot(
-      `" class="test" disabled="true" loop="true" muted="true" auto-play="true" default-checked="true" read-only="true" max-length="10" min-length="10" src-set="test""`
+      `" class="test" [disabled]="true" [loop]="true" [muted]="true" [autoPlay]="true" [defaultChecked]="true" [readOnly]="true" [maxLength]="10" [minLength]="10" srcSet="test""`
     );
     const propsFalsy = generateAngularProperties(
       'p-button',
@@ -295,7 +295,7 @@ describe('generateAngularProperties()', () => {
       []
     );
     expect(propsFalsy).toMatchInlineSnapshot(
-      `" class="" disabled="false" loop="false" muted="false" auto-play="false" default-checked="false" read-only="false" max-length="0" min-length="0" src-set="""`
+      `" class="" [disabled]="false" [loop]="false" [muted]="false" [autoPlay]="false" [defaultChecked]="false" [readOnly]="false" [maxLength]="0" [minLength]="0" srcSet="""`
     );
   });
 });
