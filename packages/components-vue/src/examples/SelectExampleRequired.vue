@@ -21,8 +21,8 @@ const onSubmit = (e: Event) => {
 </script>
 
 <template>
-  <PCheckbox label="Required" name="required" :checked="isRequired" @change="onChangeRequired" />
-  <PCheckbox label="Allow deselection" name="deselection" :checked="hasDeselection" @change="onChangeDeselection" />
+  <PCheckbox label="Required" name="required" :checked="isRequired" @update="onChangeRequired" />
+  <PCheckbox label="Allow deselection" name="deselection" :checked="hasDeselection" @update="onChangeDeselection" />
 
   <form @submit.prevent="onSubmit">
     <p-select name="options" label="Some Label" :required="isRequired">

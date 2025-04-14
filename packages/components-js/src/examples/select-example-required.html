@@ -1,5 +1,5 @@
-<p-checkbox label="Required" id="required" name="required" checked="true" />
-<p-checkbox label="Allow deselection" id="deselection" name="deselection" />
+<p-checkbox label="Required" id="required" name="required" checked="true"></p-checkbox>
+<p-checkbox label="Allow deselection" id="deselection" name="deselection"></p-checkbox>
 
 <form>
   <p-select name="options" label="Some Label" required>
@@ -17,12 +17,12 @@
   const required = document.querySelector('#required');
   const deselection = document.querySelector('#deselection');
 
-  required.addEventListener('change', (e) => {
-    select.toggleAttribute('required', e.target.checked);
+  required.addEventListener('update', (e) => {
+    select.toggleAttribute('required', e.detail.checked);
   });
 
-  deselection.addEventListener('change', (e) => {
-    if (e.target.checked) {
+  deselection.addEventListener('update', (e) => {
+    if (e.detail.checked) {
       select.prepend(document.createElement('p-select-option'));
     } else {
       document.querySelector('p-select-option:not([value])').remove();
