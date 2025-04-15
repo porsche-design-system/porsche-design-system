@@ -60,31 +60,34 @@ test('should add/remove message text if state changes programmatically', async (
     `
     <p-radio-button-wrapper label="Some label">
       <input type="radio" name="some-name" />
-      <input type="radio" name="some-name" />
     </p-radio-button-wrapper>`
   );
 
   const host = getHost(page);
 
-  await expect(getMessage(page), 'initially').toHaveCount(0);
+  await expect(getMessage(page), 'initially').toHaveCount(1);
+  await expect(getMessage(page), 'initially').toBeEmpty();
 
   await setProperty(host, 'state', 'error');
   await setProperty(host, 'message', 'Some error message');
   await waitForStencilLifecycle(page);
 
   expect(getMessage(page), 'when state = error').toBeDefined();
+  await expect(getMessage(page), 'when state = error').toContainText('Some error message');
 
   await setProperty(host, 'state', 'success');
   await setProperty(host, 'message', 'Some success message');
   await waitForStencilLifecycle(page);
 
   expect(getMessage(page), 'when state = success').toBeDefined();
+  await expect(getMessage(page), 'when state = success').toContainText('Some success message');
 
   await setProperty(host, 'state', 'none');
   await setProperty(host, 'message', '');
   await waitForStencilLifecycle(page);
 
-  await expect(getMessage(page), 'when state = none').toHaveCount(0);
+  await expect(getMessage(page), 'when state = none').toHaveCount(1);
+  await expect(getMessage(page), 'when state = none').toBeEmpty();
 });
 
 skipInBrowsers(['firefox', 'webkit'], () => {
