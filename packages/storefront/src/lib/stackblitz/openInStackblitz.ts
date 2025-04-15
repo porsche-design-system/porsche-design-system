@@ -9,13 +9,16 @@ import type { StorefrontTheme } from '@/models/theme';
 import { themeDark, themeLight } from '@porsche-design-system/components-js/styles';
 import type { Framework } from '@porsche-design-system/shared';
 import sdk, { type OpenOptions, type Project } from '@stackblitz/sdk';
-import { devDependencies as devDependenciesRoot } from '../../../../../package.json';
-import { dependencies as angularDependencies } from '../../../../components-angular/package.json';
-import { dependencies } from '../../../../components-js/package.json';
-import {
-  dependencies as vueDependencies,
-  devDependencies as vueDevDependencies,
-} from '../../../../components-vue/package.json';
+import rootPkg from '../../../../../package.json';
+import angularPkg from '../../../../components-angular/package.json';
+import jsPkg from '../../../../components-js/package.json';
+import vuePkg from '../../../../components-vue/package.json';
+
+const devDependenciesRoot = rootPkg.devDependencies;
+const angularDependencies = angularPkg.dependencies;
+const dependencies = jsPkg.dependencies;
+const vueDependencies = vuePkg.dependencies;
+const vueDevDependencies = vuePkg.devDependencies;
 
 /* TODO:
  * - local development not working for angular/vue
