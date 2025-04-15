@@ -129,7 +129,7 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
     display: none;
   }
   ::slotted(*:not([primary],[cascade])) {
-    display: none;
+    display: none !important;
   }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
@@ -385,7 +385,7 @@ exports[`getComponentCss() should return correct css for isPrimary: false, isSec
     display: none;
   }
   ::slotted(*:not([primary],[cascade])) {
-    display: none;
+    display: none !important;
   }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
@@ -572,7 +572,7 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
       display: contents;
     }
     ::slotted(*:not([secondary])) {
-      display: none;
+      display: none !important;
     }
 }
 
@@ -667,7 +667,7 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
     display: none;
   }
   ::slotted(*:not([primary],[cascade])) {
-    display: none;
+    display: none !important;
   }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
@@ -694,7 +694,7 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
       display: contents;
     }
     ::slotted(*:not([secondary])) {
-      display: none;
+      display: none !important;
     }
 }
 
@@ -848,7 +848,7 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
       color: var(--_p-a);
     }
     ::slotted(*:not([secondary])) {
-      display: none;
+      display: none !important;
     }
 }
 
@@ -964,7 +964,7 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
     display: none;
   }
   ::slotted(*:not([primary],[cascade])) {
-    display: none;
+    display: none !important;
   }
   ::slotted(*) {
     --p-drilldown-grid-template: auto/auto;
@@ -1026,7 +1026,7 @@ exports[`getComponentCss() should return correct css for isPrimary: true, isSeco
       color: var(--_p-a);
     }
     ::slotted(*:not([secondary])) {
-      display: none;
+      display: none !important;
     }
 }
 

@@ -155,17 +155,17 @@ export const getComponentCss = (
       },
       ...(isSecondaryScrollerVisible && {
         '::slotted(*:not([primary],[secondary],[cascade]))': {
-          [mediaQueryMobile]: {
+          [mediaQueryMobile]: addImportantToEachRule({
             display: 'none',
-          },
+          }),
         },
-        '::slotted(*:not([primary],[cascade]))': {
+        '::slotted(*:not([primary],[cascade]))': addImportantToEachRule({
           [mediaQueryDesktop]: {
             ...(!isPrimary && {
               display: 'none',
             }),
           },
-        },
+        }),
       }),
     },
     drawer: {
