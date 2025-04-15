@@ -3,8 +3,12 @@
     <ais-search-box :class-names="{ 'ais-SearchBox': 'search' }">
       <debounced-search-box :on-focus="shouldDisplayHits" v-on:query-change="shouldDisplayHits" />
     </ais-search-box>
-    <div v-show="displayHits" class="spacer">
-      <ais-state-results>
+    <div v-if="displayHits" class="spacer">
+      <ais-state-results
+        :class-names="{
+          'ais-StateResults': 'state-results',
+        }"
+      >
         <template v-slot="{ results: { hits } }">
           {{ onHitsChange(hits) }}
           <ais-hits
@@ -32,16 +36,16 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import Component from 'vue-class-component';
-import algoliasearch from 'algoliasearch/lite';
-import { createInMemoryCache } from '@algolia/cache-in-memory';
 import { ALGOLIA_APP_ID, ALGOLIA_SEARCH_ONLY_KEY } from '@/../storefront.config';
 import DebouncedSearchBox from '@/components/DebouncedSearchBox.vue';
-import { Prop } from 'vue-property-decorator';
 import type { AlgoliaRecord, AlgoliaRequest, AlgoliaResult } from '@/models';
-import { SearchClient } from 'algoliasearch/lite';
 import { type StorefrontTheme } from '@/models';
+import { createInMemoryCache } from '@algolia/cache-in-memory';
+import algoliasearch from 'algoliasearch/lite';
+import { SearchClient } from 'algoliasearch/lite';
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { Prop } from 'vue-property-decorator';
 
 @Component({
   components: {
@@ -157,7 +161,7 @@ export default class Search extends Vue {
     text-decoration: none;
   }
 
-  .hits {
+  .state-results > div {
     @include pds-media-query-min('m') {
       position: absolute;
       width: 263px;
@@ -177,7 +181,7 @@ export default class Search extends Vue {
     padding-bottom: $pds-spacing-static-small;
   }
 
-  :deep(.hits__item) {
+  ::v-deep(.hits__item) {
     list-style: none;
 
     @include pds-media-query-max('m') {
