@@ -42,7 +42,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </PDisplay>
     ),
     h2: ({ children }) => (
-      <PHeading tag="h2" size="x-large" className="mt-lg mb-md max-w-prose group" id={kebabCase(children as string)}>
+      <PHeading
+        tag="h2"
+        size="x-large"
+        className="mt-lg mb-md max-w-prose group scroll-mt-14"
+        id={kebabCase(children as string)}
+      >
         {children as React.ReactNode}
         <PLinkPure
           className="ms-static-sm invisible group-hover:visible"

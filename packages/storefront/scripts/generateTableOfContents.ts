@@ -44,6 +44,10 @@ const processAppDirectory = async (appDirectory: string): Promise<void> => {
   try {
     const files = await getMdxFiles(appDirectory);
     for (const file of files) {
+      if (file.includes('news/changelog')) {
+        console.log(`Skipping file: ${file}`);
+        continue;
+      }
       processFile(file);
     }
   } catch (error) {
