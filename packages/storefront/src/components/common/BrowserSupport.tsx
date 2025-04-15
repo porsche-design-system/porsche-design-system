@@ -38,8 +38,8 @@ export const BrowserSupport = ({ support }: BrowserSupportProps) => {
       </PTableHead>
       <PTableBody>
         <PTableRow>
-          {Object.values(support).map((status) => (
-            <PTableCell>
+          {Object.values(support).map((status, index) => (
+            <PTableCell key={index}>
               {' '}
               {typeof status === 'string' ? (
                 <>
