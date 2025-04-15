@@ -6,7 +6,7 @@
       role="combobox"
       autocomplete="off"
       aria-labelledby="label"
-      aria-describedby="description options-selected message"
+      aria-describedby="description message"
       aria-haspopup="listbox"
       aria-expanded="false"
       aria-controls="list"
@@ -25,11 +25,4 @@
       <slot> </slot>
     </div>
   </div>
-  <span
-    class="sr-only"
-    role="status"
-    aria-live="assertive"
-    aria-relevant="additions text"
-  >
-  </span>
 </div>

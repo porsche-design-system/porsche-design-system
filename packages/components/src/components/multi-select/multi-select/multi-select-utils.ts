@@ -183,3 +183,10 @@ export const handleDropdownScroll = (scrollElement: HTMLElement, element: HTMLEl
     });
   }
 };
+
+export const setAriaActiveDescendantElement = (
+  combobox: HTMLInputElement,
+  options: MultiSelectOption[]
+): MultiSelectOption =>
+  // @ts-ignore - HTMLCombobox type is missing
+  (combobox.ariaActiveDescendantElement = getHighlightedOption(options));

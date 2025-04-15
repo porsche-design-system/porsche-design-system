@@ -212,7 +212,8 @@
   </p-select>
 </div>
 
-<div class="playground light" title="should render opened with direction bottom">
+<!-- skip this all axe-core test with opened dropdowns, because axe-cores doesn't recognize ElementInternals atm (https://github.com/dequelabs/axe-core/issues/4259) -->
+<div class="playground light skip-axe-core-test" title="should render opened with direction bottom">
   <iframe
     src="/select-opened-bottom?iframe=true"
     loading="eager"
@@ -220,11 +221,11 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened with direction top">
+<div class="playground light skip-axe-core-test" title="should render opened with direction top">
   <iframe src="/select-opened-top?iframe=true" loading="eager" title="should show select with top direction"></iframe>
 </div>
 
-<div class="playground light" title="should render opened and with disabled, highlighted and selected">
+<div class="playground light skip-axe-core-test" title="should render opened and with disabled, highlighted and selected">
   <iframe
     src="/select-opened-with-disabled-highlighted-selected?iframe=true"
     loading="eager"
@@ -232,7 +233,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened and with selected empty option">
+<div class="playground light skip-axe-core-test" title="should render opened and with selected empty option">
   <iframe
     src="/select-opened-with-selected-empty-option?iframe=true"
     loading="eager"
@@ -240,7 +241,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened and with optgroups">
+<div class="playground light skip-axe-core-test" title="should render opened and with optgroups">
   <iframe
     src="/select-opened-with-optgroups?iframe=true"
     loading="eager"
@@ -248,7 +249,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened and with optgroup in disabled state">
+<div class="playground light skip-axe-core-test" title="should render opened and with optgroup in disabled state">
   <iframe
     src="/select-opened-with-optgroups-disabled?iframe=true"
     loading="eager"
@@ -256,7 +257,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened and with options within and outside optgroup">
+<div class="playground light skip-axe-core-test" title="should render opened and with options within and outside optgroup">
   <iframe
     src="/select-opened-with-and-without-optgroups?iframe=true"
     loading="eager"
@@ -264,7 +265,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened and with slotted images">
+<div class="playground light skip-axe-core-test" title="should render opened and with slotted images">
   <iframe
     src="/select-opened-with-slotted-images?iframe=true"
     loading="eager"
@@ -316,31 +317,31 @@
   </p-select>
 </div>
 
-<div class="playground light" title="should render in compact mode">
+<div class="playground light light skip-axe-core-test" title="should render in compact mode">
   <iframe src="/select-compact?iframe=true" loading="eager" title="should show select compact"></iframe>
 </div>
 
-<div class="playground light auto-layout-block" title="should render with scaling 0">
+<div class="playground light auto-layout-block light skip-axe-core-test" title="should render with scaling 0">
   <iframe src="/select-scaling-0?iframe=true" loading="eager" title="should show select scaling 0"></iframe>
 </div>
 
-<div class="playground light auto-layout-block" title="should render with scaling 0.5">
+<div class="playground light auto-layout-block light skip-axe-core-test" title="should render with scaling 0.5">
   <iframe src="/select-scaling-0-5?iframe=true" loading="eager" title="should show select scaling 0.5"></iframe>
 </div>
 
-<div class="playground light auto-layout-block" title="should render with scaling 0.8">
+<div class="playground light auto-layout-block light skip-axe-core-test" title="should render with scaling 0.8">
   <iframe src="/select-scaling-0-8?iframe=true" loading="eager" title="should show select scaling 0.8"></iframe>
 </div>
 
-<div class="playground light auto-layout-block" title="should render with scaling 1">
+<div class="playground light auto-layout-block light skip-axe-core-test" title="should render with scaling 1">
   <iframe src="/select-scaling-1?iframe=true" loading="eager" title="should show select scaling 1"></iframe>
 </div>
 
-<div class="playground light auto-layout-block" title="should render with scaling 2">
+<div class="playground light auto-layout-block light skip-axe-core-test" title="should render with scaling 2">
   <iframe src="/select-scaling-2?iframe=true" loading="eager" title="should show select scaling 2"></iframe>
 </div>
 
-<div class="playground light" title="should render opened on #top-layer within scroll container">
+<div class="playground light skip-axe-core-test" title="should render opened on #top-layer within scroll container">
   <iframe
     src="/select-opened-scroll-context?iframe=true"
     loading="eager"
@@ -348,7 +349,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened with max-height option list">
+<div class="playground light skip-axe-core-test" title="should render opened with max-height option list">
   <iframe
     class="max-height"
     src="/select-opened-max-height?iframe=true"
@@ -357,7 +358,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened with min-height option list">
+<div class="playground light skip-axe-core-test" title="should render opened with min-height option list">
   <iframe
     class="min-height"
     src="/select-opened-min-height?iframe=true"

@@ -1,11 +1,10 @@
 import type { PropTypes } from '../../../types';
 import { type SelectOptionInternalHTMLProps, validateSelectOption } from './select-option-utils';
 
-import { Component, Element, Host, type JSX, Prop, h } from '@stencil/core';
+import { Component, Element, Host, type JSX, Prop, h, AttachInternals } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
-  getOptionAriaAttributes,
   getPrefixedTagNames,
   throwIfParentIsNotOfKind,
   validateProps,
@@ -23,6 +22,7 @@ const propTypes: PropTypes<typeof SelectOption> = {
 @Component({
   tag: 'p-select-option',
   shadow: true,
+  formAssociated: true,
 })
 export class SelectOption {
   @Element() public host!: HTMLElement & SelectOptionInternalHTMLProps;
@@ -33,28 +33,37 @@ export class SelectOption {
   /** Disables the option. */
   @Prop() public disabled?: boolean = false;
 
+  @AttachInternals() private internals: ElementInternals;
+
+  private isDisabled: boolean = false;
+
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-select', 'p-optgroup']);
   }
 
+  public componentWillRender(): void {
+    this.isDisabled = this.disabled || this.host.disabledParent;
+    this.internals.role = 'option';
+    this.internals.ariaSelected = String(this.host.selected);
+    this.internals.ariaHidden = String(this.host.hidden);
+    this.internals.ariaDisabled = String(this.isDisabled);
+  }
+
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const { theme = 'light', selected, highlighted, hidden } = this.host;
+    const { theme = 'light', selected, highlighted } = this.host;
     attachComponentCss(this.host, getComponentCss, theme);
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const isDisabled = this.disabled || this.host.disabledParent;
 
     return (
-      <Host onClick={!isDisabled && this.onClick}>
+      <Host onClick={!this.isDisabled && this.onClick}>
         <div
-          role="option"
           class={{
             option: true,
             'option--selected': selected,
             'option--highlighted': highlighted,
-            'option--disabled': isDisabled,
+            'option--disabled': this.isDisabled,
           }}
-          {...getOptionAriaAttributes(selected, isDisabled, hidden, !!this.value)}
         >
           <slot onSlotchange={this.onSlotChange} />
           {selected && (
@@ -62,7 +71,7 @@ export class SelectOption {
               class="icon"
               aria-hidden="true"
               name="check"
-              color={isDisabled ? 'state-disabled' : 'primary'}
+              color={this.isDisabled ? 'state-disabled' : 'primary'}
               theme={theme}
             />
           )}

@@ -18,6 +18,7 @@ export type Option = HTMLElement &
   HTMLStencilElement & {
     disabled?: boolean;
     highlighted?: boolean;
+    selected?: boolean;
   };
 
 // The amount of time in ms after the last key press before the searchString will get cleared
@@ -254,3 +255,22 @@ export const getHighlightedSelectOptionIndex = <T extends Option>(options: T[]):
  */
 export const getHighlightedSelectOption = <T extends Option>(options: T[]): T =>
   options.find((option) => option.highlighted);
+
+/**
+ * Gets the index of the currently selected select option.
+ *
+ * @template T - The type of options in the array.
+ * @param {T[]} options - The array of select options.
+ * @returns {number} - The index of the selected select option, or -1 if none is selected.
+ */
+export const getSelectedSelectOptionIndex = <T extends Option>(options: T[]): number =>
+  getUsableSelectOptions(options).indexOf(getSelectedSelectOption(options));
+
+/**
+ * Gets the currently selected select option.
+ *
+ * @template T - The type of options in the array.
+ * @param {T[]} options - The array of select options.
+ * @returns {T} - The currently selected select option, or undefined if none is selected.
+ */
+export const getSelectedSelectOption = <T extends Option>(options: T[]): T => options.find((option) => option.selected);

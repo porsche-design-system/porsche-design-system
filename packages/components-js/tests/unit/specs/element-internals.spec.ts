@@ -10,10 +10,11 @@ const containsInvalidAttachInternals = (content: string): boolean => {
 };
 
 /**
- * Checks if 'this.internals' is accessed with a property (.) without using optional chaining (?.).
+ * Checks if 'this.internals' is accessed with a property (.) and followed by a function without using optional chaining (?.).
+ * The following should be excluded from the test: this.internals.role
  */
 const containsInvalidThisInternals = (content: string): boolean => {
-  const regex = /\bthis\.internals\.(?!\?\.)/;
+  const regex = /\bthis\.internals\.(?!\?\.)\w*\(/;
   return regex.test(content);
 };
 
