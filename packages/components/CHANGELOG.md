@@ -19,6 +19,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Accessibility: fix ARIA live announcements of form components status messages
   ([#3796](https://github.com/porsche-design-system/porsche-design-system/pull/3796))
 
+### [3.28.0-rc.1] - 2025-04-14
+
+#### Fixed
+
+- `Drilldown`, `Drilldown Item`: visibility for slotted content (experimental)
+  ([#3833](https://github.com/porsche-design-system/porsche-design-system/pull/3833))
+
 ### [3.28.0-rc.0] - 2025-04-11
 
 #### Added
