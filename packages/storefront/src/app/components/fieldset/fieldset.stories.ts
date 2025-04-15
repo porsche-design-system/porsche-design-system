@@ -96,3 +96,25 @@ export const fieldsetStorySlottedMessage: Story<'p-fieldset'> = {
     },
   ],
 };
+
+export const fieldsetStoryRequired: Story<'p-fieldset'> = {
+  state: {
+    properties: {
+      label: 'Some legend label',
+      required: true,
+    },
+  },
+  generator: ({ properties } = {}) => [
+    {
+      tag: 'p-fieldset',
+      properties,
+      children: [
+        {
+          tag: 'p-text-field-wrapper',
+          properties: { label: 'Some label' },
+          children: [{ tag: 'input', properties: { type: 'text', name: 'some-name', required: true } }],
+        },
+      ],
+    },
+  ],
+};

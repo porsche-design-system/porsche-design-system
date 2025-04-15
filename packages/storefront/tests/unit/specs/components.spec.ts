@@ -9,7 +9,6 @@ const requiredSubpages = ['accessibility', 'api', 'configurator', 'examples', 'u
 // Exceptions: Following components don't have an example page
 const exceptions: { component: string; subfolders: string[] }[] = [
   { component: 'canvas', subfolders: ['examples'] },
-  { component: 'checkbox-wrapper', subfolders: ['examples'] },
   { component: 'content-wrapper', subfolders: ['examples'] },
   { component: 'flex', subfolders: ['examples'] },
   { component: 'grid', subfolders: ['examples'] },
