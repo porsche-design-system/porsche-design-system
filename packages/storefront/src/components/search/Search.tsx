@@ -35,9 +35,9 @@ export const Search = ({ isSearchOpen, onDismissSearch }: SearchProps) => {
 
   useEffect(() => {
     if (isSearchOpen) {
-      setTimeout(() => {
+      requestAnimationFrame(() => {
         inputRef.current?.focus();
-      }, 10);
+      });
     }
   }, [isSearchOpen]);
 
