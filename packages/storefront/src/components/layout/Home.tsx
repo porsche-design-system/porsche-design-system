@@ -296,12 +296,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
         </article>
         <div className="col-start-3 md:col-end-7 col-end-11 p-6">
           <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
-            <Image
-              src="assets/benefits_accessibility.png"
-              fill={true}
-              alt="Accessibility Image"
-              className="p-static-md"
-            />
+            <Image src="assets/benefits_efficiency.png" fill={true} alt="Accessibility Image" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-xs mt-md">
             Short & Longterm Efficiency
