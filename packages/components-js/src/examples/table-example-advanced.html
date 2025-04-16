@@ -175,26 +175,31 @@
 
     const tableHeadCells = table.querySelectorAll('p-table-head-cell');
 
-    // pass head items via property
-    const passHeadItemsToNodes = (items) => {
-      tableHeadCells.forEach((el, index) => {
-        el.hideLabel = items[index].hideLabel;
-        el.sort = items[index];
-      });
-    };
-
-    passHeadItemsToNodes(headAdvanced); // initial state
+    tableHeadCells.forEach((cell, index) => {
+      cell.sort = { id: index.toString(), active: false, direction: 'asc' };
+    });
 
     table.addEventListener('update', (e) => {
       const { id, direction } = e.detail;
 
-      const sortedHead = headAdvanced.map((item) => ({ ...item, active: false, ...(item.id === id && e.detail) }));
-      const sortedData = [...dataAdvanced].sort((a, b) =>
-        direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])
-      );
+      tableHeadCells.forEach((cell, index) => {
+        cell.sort = {
+          id: index.toString(),
+          active: index === Number(id),
+          direction: index === Number(id) ? direction : 'asc',
+        };
+      });
 
-      passHeadItemsToNodes(sortedHead);
-      tableBody.innerHTML = renderTableBodyRows(sortedData);
+      const rows = Array.from(tableBody.querySelectorAll('p-table-row'));
+
+      const sortedRows = rows.sort((a, b) => {
+        const aText = a.querySelectorAll('p-table-cell')[id].textContent.trim();
+        const bText = b.querySelectorAll('p-table-cell')[id].textContent.trim();
+        const compare = aText.localeCompare(bText);
+        return direction === 'asc' ? compare : -compare;
+      });
+
+      sortedRows.forEach(row => tableBody.appendChild(row));
     });
   })();
 </script>
