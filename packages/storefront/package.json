@@ -4,7 +4,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "dev": "yarn build:generateTableOfContents && concurrently -k -s 'first' -n 'cdn,next' 'serve-cdn' 'next dev'",
+    "dev": "yarn prebuild && concurrently -k -s 'first' -n 'cdn,next' 'serve-cdn' 'next dev'",
     "prebuild": "yarn build:generateTableOfContents && yarn build:preparePartialResults && yarn build:generateComponentsBundleForStackBlitz && yarn build:prepareChangelog && yarn build:copyLicense",
     "build": "next build",
     "build:generateTableOfContents": "tsx --tsconfig tsconfig.node.json scripts/generateTableOfContents.ts",
