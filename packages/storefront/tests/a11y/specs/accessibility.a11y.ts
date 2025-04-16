@@ -40,9 +40,11 @@ const gotoUrl = async (page: Page, url: string): Promise<void> => {
   );
 };
 
-const enableDarkMode = async (page: Page, themeBtn: Locator): Promise<void> => {
-  await themeBtn.click();
-  await page.waitForFunction(() => document.body.className === 'dark-mode');
+const enableDarkMode = async (page: Page, themeSelect: Locator): Promise<void> => {
+  await themeSelect.click();
+  const dark = themeSelect.getByText('Dark');
+  await dark.click();
+  await expect(page.locator('body')).toHaveClass('dark');
 };
 
 test('should have successfully extracted :root styles', () => {
@@ -66,20 +68,8 @@ test.describe('storefront pages', () => {
         await gotoUrl(page, url);
 
         if (scheme === 'dark') {
-          const themeBtn = page.locator('.cycle-platform-theme');
-          test.skip((await themeBtn.count()) === 0, 'No theme switcher found, skipping dark mode test');
-
-          await enableDarkMode(page, themeBtn);
-          const themeSwitch = page.locator('p-select[value="light"]').first();
-
-          // change the theme of component to dark if the option exists
-          if (await themeSwitch.count()) {
-            await themeSwitch.click();
-            const option = themeSwitch.getByText('Dark');
-            await option.click();
-            const example = page.locator('.example--dark').first();
-            await expect(example).toHaveCount(1);
-          }
+          const themeSelect = page.locator('select[name="theme"]').first();
+          await enableDarkMode(page, themeSelect);
         }
 
         const accessibilityScanResults = await makeAxeBuilder().analyze();
