@@ -23,6 +23,27 @@ for (const [name, url] of Object.entries(urls)) {
           colorScheme: scheme,
         });
         await page.goto(url);
+
+        await page.evaluate(() => {
+          const animations = document.querySelectorAll('[data-animation=fade-in-up]');
+          animations.forEach((animation) => {
+            (animation as HTMLElement).style.opacity = '1';
+            (animation as HTMLElement).style.transform = 'none';
+          });
+        });
+
+        // Modify video height if on the homepage
+        if (url === '/') {
+          await page.evaluate(() => {
+            const video = document.querySelector('video');
+            if (video) {
+              (video as HTMLElement).style.height = '600px';
+              // biome-ignore lint/style/noNonNullAssertion: <explanation>
+              video.parentElement!.style.height = '600px';
+            }
+          });
+        }
+
         await page.evaluate(() =>
           (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
         );
@@ -30,6 +51,7 @@ for (const [name, url] of Object.entries(urls)) {
           width: viewportWidthM,
           height: await page.evaluate(() => document.body.clientHeight),
         });
+
         const screenshot = await page.screenshot({ fullPage: true });
         expect(screenshot).toMatchSnapshot(`views-${name}-${viewportWidthM}-scheme-${scheme}.png`);
       });
@@ -45,6 +67,27 @@ for (const [name, url] of Object.entries(urls)) {
     ).forEach((viewportWidth) => {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
         await page.goto(url);
+
+        await page.evaluate(() => {
+          const animations = document.querySelectorAll('[data-animation=fade-in-up]');
+          animations.forEach((animation) => {
+            (animation as HTMLElement).style.opacity = '1';
+            (animation as HTMLElement).style.transform = 'none';
+          });
+        });
+
+        // Modify video height if on the homepage
+        if (url === '/') {
+          await page.evaluate(() => {
+            const video = document.querySelector('video');
+            if (video) {
+              (video as HTMLElement).style.height = '600px';
+              // biome-ignore lint/style/noNonNullAssertion: <explanation>
+              video.parentElement!.style.height = '600px';
+            }
+          });
+        }
+
         await page.evaluate(() =>
           (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
         );
@@ -52,6 +95,7 @@ for (const [name, url] of Object.entries(urls)) {
           width: viewportWidth,
           height: await page.evaluate(() => document.body.clientHeight),
         });
+
         const screenshot = await page.screenshot({ fullPage: true });
         expect(screenshot).toMatchSnapshot(`views-${name}-${viewportWidth}.png`);
       });
