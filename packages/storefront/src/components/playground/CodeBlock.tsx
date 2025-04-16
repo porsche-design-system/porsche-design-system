@@ -49,10 +49,11 @@ export const CodeBlock = ({ frameworkMarkup, children }: PropsWithChildren<CodeB
       </div>
       {/* @ts-expect-error: Suppress type incompatibility */}
       <SyntaxHighlighter
-        className="markup max-h-96 overflow-auto"
+        className="markup"
         language={frameworkLanguageMap[selectedFramework]}
         showLineNumbers={false}
         useInlineStyles={false}
+        codeTagProps={{ tabIndex: 0, className: 'max-h-96 overflow-auto' }}
       >
         {frameworkMarkup[selectedFramework]}
       </SyntaxHighlighter>
