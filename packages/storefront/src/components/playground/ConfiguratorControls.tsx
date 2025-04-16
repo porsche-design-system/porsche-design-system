@@ -171,7 +171,7 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
             controls.filter(Boolean).map((control, index) => (
               <PAccordion
                 key={index}
-                headingTag="h3"
+                headingTag="h2"
                 open={accordionState[index] || false}
                 onUpdate={(e) => handleAccordionUpdate(index, e)}
               >

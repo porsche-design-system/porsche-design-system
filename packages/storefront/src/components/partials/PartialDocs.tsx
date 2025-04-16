@@ -38,7 +38,12 @@ export const PartialDocs = ({ name, location, partialCalls }: PartialDocsProps) 
       <H3>Output</H3>
       <P>The result of this partial looks like this:</P>
       {/* @ts-expect-error: Suppress type incompatibility */}
-      <SyntaxHighlighter className="markup select-none" language="html" useInlineStyles={false}>
+      <SyntaxHighlighter
+        className="markup select-none"
+        language="html"
+        useInlineStyles={false}
+        codeTagProps={{ tabIndex: 0 }}
+      >
         {partialCalls
           .map(({ comment, params }) => {
             const paramObj = Object.fromEntries(params.map(({ key, value }) => [key, value]));

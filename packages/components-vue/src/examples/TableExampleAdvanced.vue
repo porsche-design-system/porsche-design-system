@@ -129,7 +129,7 @@ const onUpdate = (e: TableUpdateEventDetail): void => {
 <template>
   <PTable @update="onUpdate">
     <!-- eslint-disable vue/no-deprecated-slot-attribute -->
-    <PHeading :slot="'caption'" :size="'large'">Some visual caption</PHeading>
+    <PHeading :slot="'caption'" :size="'large'" tag="h3">Some visual caption</PHeading>
     <!-- eslint-enable -->
     <PTableHead>
       <PTableHeadRow>

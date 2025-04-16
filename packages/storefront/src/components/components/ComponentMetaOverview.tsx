@@ -75,7 +75,7 @@ export const ComponentMetaOverview = () => {
     return ['', ...tagNames].map((tagName) => {
       const { isDeprecated, isExperimental } = componentMeta[tagName as TagName] || {};
       return (
-        <PTableHeadCell key={tagName} aria-hidden={tagName ? undefined : true}>
+        <PTableHeadCell key={tagName} aria-hidden={tagName === '' ? 'true' : undefined}>
           {tagName} {isDeprecated ? ' 🚫' : ''} {isExperimental ? ' 🧪' : ''}
         </PTableHeadCell>
       );

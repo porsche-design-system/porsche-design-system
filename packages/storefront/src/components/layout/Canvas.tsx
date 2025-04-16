@@ -131,7 +131,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
       </div>
       <div slot="sidebar-end">
         <div className="flex flex-col gap-sm mb-lg">
-          <PHeading size="small" tag="h3">
+          <PHeading size="small" tag="h2">
             Global settings
           </PHeading>
           <ThemeSelect

@@ -136,6 +136,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
               CodeTag="div"
               showLineNumbers={false}
               useInlineStyles={false}
+              codeTagProps={{ tabIndex: 0 }}
             >
               {children as React.ReactNode}
             </SyntaxHighlighter>

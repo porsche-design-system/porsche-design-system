@@ -106,7 +106,7 @@ const dataAdvanced: DataAdvanced[] = [
   selector: 'page-table-example-advanced',
   template: `
     <p-table (update)="onUpdate($event)">
-      <p-heading slot="caption" size="large">Some visual caption</p-heading>
+      <p-heading slot="caption" size="large" tag="h3">Some visual caption</p-heading>
       <p-table-head>
         <p-table-head-row>
           <p-table-head-cell *ngFor="let item of head" [sort]="item" [hideLabel]="item.hideLabel">

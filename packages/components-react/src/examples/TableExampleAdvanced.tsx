@@ -129,7 +129,7 @@ export const TableExampleAdvancedPage = (): JSX.Element => {
 
   return (
     <PTable onUpdate={onUpdate}>
-      <PHeading slot="caption" size="large">
+      <PHeading slot="caption" size="large" tag="h3">
         Some visual caption
       </PHeading>
       <PTableHead>

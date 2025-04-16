@@ -140,9 +140,10 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
               const number = Number(value);
               onUpdateProps(propName, Number.isNaN(number) ? undefined : number);
             }}
+            aria-labelledby={`${propName}-id`}
           />
           <span slot="label" className="inline-flex gap-static-xs">
-            {capitalCase(propName)}
+            <span id={`${propName}-id`}>{capitalCase(propName)}</span>
             <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
             {getFlags(propMeta)}
             <ResetButton
