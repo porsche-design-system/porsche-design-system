@@ -106,9 +106,10 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
             required={propMeta.isRequired}
             // disabled={propMeta.hasAlternativeSlot ? configuredSlots.default propMeta.hasAlternativeSlot.tag : false}
             onInput={(e) => onUpdateProps(propName, e.currentTarget.value)}
+            aria-labelledby={`${propName}-id`}
           />
           <span slot="label" className="inline-flex gap-static-xs">
-            {capitalCase(propName)}
+            <span id={`${propName}-id`}>{capitalCase(propName)}</span>
             <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
             {getFlags(propMeta)}
             <ResetButton
