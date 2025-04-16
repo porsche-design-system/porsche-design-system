@@ -13,6 +13,10 @@ vi.stubGlobal('localStorage', {
   length: 0,
 });
 
+vi.mock('@/hooks/usePreferredColorScheme', () => ({
+  usePreferredColorScheme: vi.fn(),
+}));
+
 const TestComponent = () => {
   const { storefrontTheme, setStorefrontTheme } = useStorefrontTheme();
 
