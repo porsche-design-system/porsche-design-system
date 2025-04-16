@@ -79,6 +79,62 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
       </article>
 
       <div className="mt-xl grid gap-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12">
+        <div className="relative bg-background-surface rounded-lg overflow-hidden group flex items-center gap-4 p-4">
+          <a href="https://porsche.com" className="flex items-center w-full gap-3" tabIndex={-1}>
+            <div className="relative w-16 h-16 flex-shrink-0 overflow-hidden">
+              <div className="relative w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110 will-change-transform">
+                <Image
+                  src="assets/design.png"
+                  fill={true}
+                  alt="Feedback & Requests Image"
+                  className="block object-contain"
+                  style={{
+                    backfaceVisibility: 'hidden',
+                    transform: 'translateZ(0)',
+                  }}
+                />
+              </div>
+            </div>
+
+            <div className="flex-grow">
+              <PText size="medium">Start Designing</PText>
+            </div>
+
+            <div className="flex-shrink-0">
+              <PLinkPure size="medium" hideLabel={true} href="https://porsche.com" tabIndex={0} />
+            </div>
+          </a>
+        </div>
+
+        <div className="relative bg-background-surface rounded-lg overflow-hidden group flex items-center gap-4 p-4 group-hover:bg-background-hover">
+          <a href="https://porsche.com" className="flex items-center w-full gap-3" tabIndex={-1}>
+            <div className="relative w-16 h-16 flex-shrink-0 overflow-hidden">
+              <div className="relative w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110 will-change-transform">
+                <Image
+                  src="assets/code.png"
+                  fill={true}
+                  alt="Feedback & Requests Image"
+                  className="block object-contain"
+                  style={{
+                    backfaceVisibility: 'hidden',
+                    transform: 'translateZ(0)',
+                  }}
+                />
+              </div>
+            </div>
+
+            <div className="flex-grow">
+              <PText size="medium">Start Coding</PText>
+            </div>
+
+            <div className="flex-shrink-0">
+              <PLinkPure size="medium" hideLabel={true} href="https://porsche.com" tabIndex={0} />
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div className="mt-xl grid gap-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12">
         <AppearAnimation animation="fade-in-up">
           <div className="element-to-animate relative bg-background-surface rounded-lg overflow-hidden group aspect-[4/3]">
             <a href="https://porsche.com" className="block w-full h-full" tabIndex={-1}>
@@ -202,67 +258,11 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
               />
             </div>
 
-            <div className="absolute bottom-0 w-full bg-white/70 px-md py-md flex justify-between box-border text-background-base dark:text-primary">
-              <PText size="medium" color="inherit">
+            <div className="absolute bottom-0 w-full bg-white/70 px-md py-md flex justify-between box-border text-background-base">
+              <PText size="medium" theme="dark">
                 Accessibility
               </PText>
-              <PLinkPure size="medium" hideLabel={true} href="https://porsche.com" tabIndex={0} />
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div className="mt-xl grid gap-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12">
-        <div className="relative bg-background-surface rounded-lg overflow-hidden group flex items-center gap-4 p-4">
-          <a href="https://porsche.com" className="flex items-center w-full gap-3" tabIndex={-1}>
-            <div className="relative w-16 h-16 flex-shrink-0 overflow-hidden">
-              <div className="relative w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110 will-change-transform">
-                <Image
-                  src="assets/design.png"
-                  fill={true}
-                  alt="Feedback & Requests Image"
-                  className="block object-contain"
-                  style={{
-                    backfaceVisibility: 'hidden',
-                    transform: 'translateZ(0)',
-                  }}
-                />
-              </div>
-            </div>
-
-            <div className="flex-grow">
-              <PText size="medium">Start Designing</PText>
-            </div>
-
-            <div className="flex-shrink-0">
-              <PLinkPure size="medium" hideLabel={true} href="https://porsche.com" tabIndex={0} />
-            </div>
-          </a>
-        </div>
-
-        <div className="relative bg-background-surface rounded-lg overflow-hidden group flex items-center gap-4 p-4 group-hover:bg-background-hover">
-          <a href="https://porsche.com" className="flex items-center w-full gap-3" tabIndex={-1}>
-            <div className="relative w-16 h-16 flex-shrink-0 overflow-hidden">
-              <div className="relative w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110 will-change-transform">
-                <Image
-                  src="assets/code.png"
-                  fill={true}
-                  alt="Feedback & Requests Image"
-                  className="block object-contain"
-                  style={{
-                    backfaceVisibility: 'hidden',
-                    transform: 'translateZ(0)',
-                  }}
-                />
-              </div>
-            </div>
-
-            <div className="flex-grow">
-              <PText size="medium">Start Coding</PText>
-            </div>
-
-            <div className="flex-shrink-0">
-              <PLinkPure size="medium" hideLabel={true} href="https://porsche.com" tabIndex={0} />
+              <PLinkPure size="medium" hideLabel={true} href="https://porsche.com" tabIndex={0} theme="dark" />
             </div>
           </a>
         </div>
@@ -304,11 +304,11 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-xs mt-md">
-            Accessibility
+            Short & Longterm Efficiency
           </PText>
           <PText align="center">
-            It works seamlessly with any framework, offering compatibility, flexibility, and ease of use across
-            different platforms and setups.
+            Speeds up design and development by reusing maintained components and patterns. Enables better collaboration
+            and delivers up to 31% faster implementation.
           </PText>
         </div>
         <div className="col-start-3 md:col-start-7 col-end-11 p-6">
@@ -326,6 +326,23 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
         <div className="col-start-3 md:col-end-7 col-end-11 p-6">
           <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
             <Image
+              src="assets/benefits_accessibility.png"
+              fill={true}
+              alt="Accessibility Image"
+              className="p-static-md"
+            />
+          </div>
+          <PText align="center" size="x-small" color="contrast-medium" className="mb-xs mt-md">
+            Accessibility
+          </PText>
+          <PText align="center">
+            It works seamlessly with any framework, offering compatibility, flexibility, and ease of use across
+            different platforms and setups.
+          </PText>
+        </div>
+        <div className="col-start-3 md:col-start-7 col-end-11 p-6">
+          <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
+            <Image
               src="assets/benefits_framework_agnostic.png"
               fill={true}
               alt="Framework Agnostic"
@@ -339,7 +356,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             Works seamlessly with any framework, offering flexibility, compatibility, and ease of use across platforms.
           </PText>
         </div>
-        <div className="col-start-3 md:col-start-7 col-end-11 p-6">
+        <div className="col-start-3 md:col-end-7 col-end-11 p-6">
           <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
             <Image
               src="assets/benefits_fluid_responsive.png"
@@ -356,7 +373,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             screen sizes.
           </PText>
         </div>
-        <div className="col-start-3 md:col-end-7 col-end-11 p-6">
+        <div className="col-start-3 md:col-start-7 col-end-11 p-6">
           <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
             <Image
               src="assets/benefits_compliant_quality.png"
@@ -373,7 +390,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             delivering reliable, high-quality results every time.
           </PText>
         </div>
-        <div className="col-start-3 md:col-start-7 col-end-11 p-6">
+        <div className="col-start-3 md:col-end-7 col-end-11 p-6">
           <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
             <Image
               src="assets/benefits_update_capability.png"
@@ -390,7 +407,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             evolving design trends.
           </PText>
         </div>
-        <div className="col-start-3 md:col-end-7 col-end-11 p-6">
+        <div className="col-start-3 md:col-start-7 col-end-11 p-6">
           <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
             <Image
               src="assets/benefits_open_source_code.png"
