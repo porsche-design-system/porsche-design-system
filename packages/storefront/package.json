@@ -23,7 +23,7 @@
     "test:e2e:3/4": "yarn test:e2e --shard=3/4 --grep-invert 'sitemap.json'",
     "test:e2e:4/4": "yarn test:e2e --shard=4/4 --grep-invert 'sitemap.json'",
     "test:e2e:sitemap": "yarn test:e2e --grep 'sitemap.json'",
-    "test:vrt": "NEXT_PUBLIC_PDS_ENV=development yarn build && playwright test --config=tests/vrt/config/playwright.config.ts --ui",
+    "test:vrt": "NEXT_PUBLIC_PDS_ENV=development yarn build && playwright test --config=tests/vrt/config/playwright.config.ts",
     "clean:build": "rm -rf ./dist && rm -rf ./.next"
   },
   "dependencies": {
