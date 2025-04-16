@@ -36,7 +36,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           Your browser does not support the video tag.
         </video>
 
-        <PDisplay className="z-20 mt-lg ms-lg row-start-1 col-start-1 max-w-3xl" size="medium">
+        <PDisplay className="z-20 mt-lg ms-lg row-start-1 col-start-1 max-w-3xl" size="medium" tag="h1">
           Welcome to the Porsche Design System
         </PDisplay>
         <Link href="news/changelog" className="block w-full h-full" tabIndex={-1}>
@@ -101,7 +101,13 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             </div>
 
             <div className="flex-shrink-0">
-              <PLinkPure size="medium" hideLabel={true} href="https://porsche.com" tabIndex={0} />
+              <PLinkPure
+                size="medium"
+                hideLabel={true}
+                href="https://porsche.com"
+                tabIndex={0}
+                aria={{ 'aria-label': 'Start Designing' }}
+              />
             </div>
           </a>
         </div>
@@ -128,7 +134,13 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             </div>
 
             <div className="flex-shrink-0">
-              <PLinkPure size="medium" hideLabel={true} href="https://porsche.com" tabIndex={0} />
+              <PLinkPure
+                size="medium"
+                hideLabel={true}
+                href="https://porsche.com"
+                tabIndex={0}
+                aria={{ 'aria-label': 'Start Coding' }}
+              />
             </div>
           </a>
         </div>
@@ -149,7 +161,13 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
 
               <div className="absolute bottom-0 w-full bg-white/70 px-md py-md flex justify-between box-border">
                 <PText size="medium">Styles & Tokens</PText>
-                <PLinkPure size="medium" hideLabel={true} href="https://porsche.com" tabIndex={0} />
+                <PLinkPure
+                  size="medium"
+                  hideLabel={true}
+                  href="https://porsche.com"
+                  tabIndex={0}
+                  aria={{ 'aria-label': 'Styles & Tokens' }}
+                />
               </div>
             </a>
           </div>
@@ -167,7 +185,13 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
               </div>
               <div className="absolute bottom-0 w-full bg-white/70 px-md py-md flex justify-between box-border">
                 <PText size="medium">Components</PText>
-                <PLinkPure size="medium" hideLabel={true} href="https://porsche.com" tabIndex={0} />
+                <PLinkPure
+                  size="medium"
+                  hideLabel={true}
+                  href="https://porsche.com"
+                  tabIndex={0}
+                  aria={{ 'aria-label': 'Components' }}
+                />
               </div>
             </a>
           </div>
@@ -185,7 +209,13 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
               </div>
               <div className="absolute bottom-0 w-full bg-white/70 px-md py-md flex justify-between box-border">
                 <PText size="medium">Assets</PText>
-                <PLinkPure size="medium" hideLabel={true} href="https://porsche.com" tabIndex={0} />
+                <PLinkPure
+                  size="medium"
+                  hideLabel={true}
+                  href="https://porsche.com"
+                  tabIndex={0}
+                  aria={{ 'aria-label': 'Assets' }}
+                />
               </div>
             </a>
           </div>
@@ -203,7 +233,13 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
               </div>
               <div className="absolute bottom-0 w-full bg-white/70 px-md py-md flex justify-between box-border">
                 <PText size="medium">Templates</PText>
-                <PLinkPure size="medium" hideLabel={true} href="https://porsche.com" tabIndex={0} />
+                <PLinkPure
+                  size="medium"
+                  hideLabel={true}
+                  href="https://porsche.com"
+                  tabIndex={0}
+                  aria={{ 'aria-label': 'Templates' }}
+                />
               </div>
             </a>
           </div>
@@ -221,7 +257,13 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
               </div>
               <div className="absolute bottom-0 w-full bg-white/70 px-md py-md flex justify-between box-border">
                 <PText size="medium">Release Notes</PText>
-                <PLinkPure size="medium" hideLabel={true} href="https://porsche.com" tabIndex={0} />
+                <PLinkPure
+                  size="medium"
+                  hideLabel={true}
+                  href="https://porsche.com"
+                  tabIndex={0}
+                  aria={{ 'aria-label': 'Release Notes' }}
+                />
               </div>
             </a>
           </div>
@@ -239,7 +281,13 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
               </div>
               <div className="absolute bottom-0 w-full bg-white/70 px-md py-md flex justify-between box-border">
                 <PText size="medium">Feedback & Requests</PText>
-                <PLinkPure size="medium" hideLabel={true} href="https://porsche.com" tabIndex={0} />
+                <PLinkPure
+                  size="medium"
+                  hideLabel={true}
+                  href="https://porsche.com"
+                  tabIndex={0}
+                  aria={{ 'aria-label': 'Feedback & Requests' }}
+                />
               </div>
             </a>
           </div>
@@ -262,7 +310,14 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
               <PText size="medium" theme="dark">
                 Accessibility
               </PText>
-              <PLinkPure size="medium" hideLabel={true} href="https://porsche.com" tabIndex={0} theme="dark" />
+              <PLinkPure
+                size="medium"
+                hideLabel={true}
+                href="https://porsche.com"
+                tabIndex={0}
+                theme="dark"
+                aria={{ 'aria-label': 'Accessibility' }}
+              />
             </div>
           </a>
         </div>
