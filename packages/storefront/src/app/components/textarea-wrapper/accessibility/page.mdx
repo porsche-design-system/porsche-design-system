@@ -8,7 +8,7 @@ export const metadata = {
 
 # Textarea Wrapper <ComponentStatus tagName="p-textarea-wrapper"></ComponentStatus>
 
-<TableOfContents headings={["Accessibility support","Development considerations","Limitations","Tests"]} />
+<TableOfContents headings={["Accessibility support","Development considerations","Tests"]} />
 
 ## Accessibility support
 
@@ -38,15 +38,16 @@ In general, you should prevent using the `disabled` state. Disabled elements are
 can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out why these
 elements are disabled.
 
-## Limitations
+### Slotted contents
 
-Due to the nature of **Web Components** and **shadowDOM**, there are limitations in the usage of some **ARIA**
-attributes if they try to set relationship between elements in different shadowDOM's or shadowDOM/lightDOM combinations.
+If using **slotted contents** to serve form elements, make sure to provide the right **ARIA attributes** to give
+assistive technology users the corresponding information:
 
-| ARIA               | Support |
-| ------------------ | ------- |
-| `aria-labelledby`  | 🚫      |
-| `aria-describedby` | 🚫      |
+1. Add a unique IDREF to the `slot="label"` element
+2. Add a unique IDREF to the `slot="message"` element (if set)
+3. Add corresponding `aria-labelledby="some-label-id"` to the input element which points to the `label` ID
+4. Add corresponding `aria-describedby="some-description-id some-message-id"` to the input element which points to both,
+   the `description` ID (if set) and the `message` ID when the (error/success) message appears
 
 ## Tests
 
