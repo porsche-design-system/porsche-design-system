@@ -19,7 +19,8 @@ test.describe('markdown', async () => {
         width: viewportWidthM,
         height: await page.evaluate(() => document.body.clientHeight),
       });
-      await expect(page.locator('#main-content')).toHaveScreenshot(`markdown-${viewportWidthM}-scheme-${scheme}.png`);
+      const screenshot = await page.screenshot({ fullPage: true });
+      expect(screenshot).toMatchSnapshot(`markdown-${viewportWidthM}-scheme-${scheme}.png`);
     });
   });
 
@@ -39,7 +40,8 @@ test.describe('markdown', async () => {
 
         await closeSidebars(page);
 
-        await expect(page.locator('#main-content')).toHaveScreenshot(`markdown-${viewportWidth}.png`);
+        const screenshot = await page.screenshot({ fullPage: true });
+        expect(screenshot).toMatchSnapshot(`markdown-${viewportWidth}.png`);
       });
     });
 });
