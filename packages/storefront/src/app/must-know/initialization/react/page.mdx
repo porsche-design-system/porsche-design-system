@@ -80,7 +80,7 @@ By default, the network traffic looks something like this.
 
 ### Preloading font-face.css
 
-By applying the [getFontFaceStylesheet()](/partials/font-face-stylesheet) partial we can preload the **font-face.css**
+By applying the [getFontFaceStylesheet()](/partials/font-face-stylesheet/) partial we can preload the **font-face.css**
 asset.
 
 ![Loading Behavior React 02](assets/loading-behavior-react-02.jpg)
@@ -89,7 +89,7 @@ As we can see, this happens in parallel with the `main.js` bundle.
 
 ### Preloading font files
 
-By applying the [getFontLinks()](/partials/font-links) partial we can preload the font assets. As a default, both
+By applying the [getFontLinks()](/partials/font-links/) partial we can preload the font assets. As a default, both
 `regular` and `semi-bold` weights are preloaded since they are most commonly used but this can be customized.
 
 ![Loading Behavior React 03](assets/loading-behavior-react-03.jpg)
@@ -100,7 +100,7 @@ which can lead to a phenomena called **Flash of Unstyled Text (FOUT)**.
 
 ### Preloading component chunks
 
-The loading experience can be improved further by using the [getComponentChunkLinks()](/partials/component-chunk-links)
+The loading experience can be improved further by using the [getComponentChunkLinks()](/partials/component-chunk-links/)
 partial. Without any configuration it simply preloads the **core chunk**.
 
 ![Loading Behavior React 04](assets/loading-behavior-react-04.jpg)

@@ -24,7 +24,9 @@ for (const [name, url] of Object.entries(urls)) {
         });
         await page.goto(url);
 
+        // Reset animations
         await page.evaluate(() => {
+          document.documentElement.style.setProperty('--p-animation-duration', '0s');
           const animations = document.querySelectorAll('[data-animation=fade-in-up]');
           animations.forEach((animation) => {
             (animation as HTMLElement).style.opacity = '1';
@@ -68,7 +70,9 @@ for (const [name, url] of Object.entries(urls)) {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
         await page.goto(url);
 
+        // Reset animations
         await page.evaluate(() => {
+          document.documentElement.style.setProperty('--p-animation-duration', '0s');
           const animations = document.querySelectorAll('[data-animation=fade-in-up]');
           animations.forEach((animation) => {
             (animation as HTMLElement).style.opacity = '1';
@@ -95,6 +99,13 @@ for (const [name, url] of Object.entries(urls)) {
           width: viewportWidth,
           height: await page.evaluate(() => document.body.clientHeight),
         });
+
+        // Close mobile flyout if open
+        const flyoutDismiss = page.getByRole('dialog').getByText('Dismiss flyout');
+        if (await flyoutDismiss.isVisible()) {
+          await flyoutDismiss.click();
+          await expect(flyoutDismiss).toBeHidden();
+        }
 
         const screenshot = await page.screenshot({ fullPage: true });
         expect(screenshot).toMatchSnapshot(`views-${name}-${viewportWidth}.png`);

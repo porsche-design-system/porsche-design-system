@@ -79,7 +79,7 @@ By default, the network traffic looks something like this.
 
 ### Preloading font-face.css
 
-By applying the [getFontFaceStylesheet()](/partials/font-face-stylesheet) partial we can preload the **font-face.css**
+By applying the [getFontFaceStylesheet()](/partials/font-face-stylesheet/) partial we can preload the **font-face.css**
 asset.
 
 ![Loading Behavior Remix 02](assets/loading-behavior-remix-03.jpg)
@@ -88,7 +88,7 @@ As we can see, this happens in parallel with the `*.js` bundles.
 
 ### Preloading font files
 
-By applying the [getFontLinks()](/partials/font-links) partial we can preload the font assets. As a default, both
+By applying the [getFontLinks()](/partials/font-links/) partial we can preload the font assets. As a default, both
 `regular` and `semi-bold` weights are preloaded since they are most commonly used but this can be customized.
 
 ![Loading Behavior Remix 03](assets/loading-behavior-remix-04.jpg)
@@ -99,7 +99,7 @@ which can lead to a phenomena called **Flash of Unstyled Text (FOUT)**.
 
 ### Preloading component chunks
 
-The loading experience can be improved further by using the [getComponentChunkLinks()](/partials/component-chunk-links)
+The loading experience can be improved further by using the [getComponentChunkLinks()](/partials/component-chunk-links/)
 partial. Without any configuration it simply preloads the **core chunk**.
 
 ![Loading Behavior Remix 04](assets/loading-behavior-remix-05.jpg)
@@ -125,7 +125,7 @@ Now, everything is preloaded in parallel while the Remix app chunks takes the lo
 
 ### Early initialization
 
-This is where it may be interesting to apply the [getLoaderScript()](/partials/loader-script) partial.
+This is where it may be interesting to apply the [getLoaderScript()](/partials/loader-script/) partial.
 
 ![Loading Behavior Remix 05](assets/loading-behavior-remix-07.jpg)
 
