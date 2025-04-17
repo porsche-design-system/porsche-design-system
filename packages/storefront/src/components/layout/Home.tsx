@@ -42,7 +42,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             className="backdrop-blur-sm bg-background-surface max-w-lg bottom-0 left-0 m-4 p-6 bg-white rounded-lg shadow-lg flex justify-between items-center gap-4"
             style={{ marginBottom: '5%', marginLeft: '5%' }}
           >
-            <a href="/news/changelog" className="absolute inset-0 rounded-l" tabIndex={-1} aria-hidden="true" />
+            <a href="/news/changelog/" className="absolute inset-0 rounded-l" tabIndex={-1} aria-hidden="true" />
             <div className="flex flex-col">
               <PText size="small" weight="semi-bold">
                 Release Note
