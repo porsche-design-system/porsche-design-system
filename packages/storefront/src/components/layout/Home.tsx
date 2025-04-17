@@ -39,7 +39,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
         <PDisplay className="z-20 mt-lg ms-lg row-start-1 col-start-1 max-w-3xl" size="medium" tag="h1">
           Welcome to the Porsche Design System
         </PDisplay>
-        <Link href="news/changelog" className="block w-full h-full" tabIndex={-1}>
+        <Link href="/news/changelog/" className="block w-full h-full" tabIndex={-1}>
           <div
             className="backdrop-blur-sm bg-background-surface max-w-lg bottom-0 left-0 m-4 p-6 bg-white rounded-lg shadow-lg flex justify-between items-center gap-4"
             style={{ marginBottom: '5%', marginLeft: '5%' }}

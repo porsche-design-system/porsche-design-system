@@ -158,7 +158,7 @@ A classic waterfall like loading behavior that
 
 ### Preloading font-face.css
 
-By applying the [getFontFaceStylesheet()](partials/font-face-stylesheet) partial we can preload the **font-face.css**
+By applying the [getFontFaceStylesheet()](/partials/font-face-stylesheet/) partial we can preload the **font-face.css**
 asset.
 
 ![Loading Behavior Vanilla Js 02](assets/loading-behavior-vanilla-js-02.jpg)
@@ -167,7 +167,7 @@ As we can see, this happens in parallel with the `index.js` file.
 
 ### Preloading font files
 
-By applying the [getFontLinks()](partials/font-links) partial we can preload the font assets. As a default, both
+By applying the [getFontLinks()](/partials/font-links/) partial we can preload the font assets. As a default, both
 `regular` and `semi-bold` weights are preloaded since they are most commonly used but this can be customized.
 
 ![Loading Behavior Vanilla Js 03](assets/loading-behavior-vanilla-js-03.jpg)
@@ -178,7 +178,7 @@ which can lead to a phenomena called **Flash of Unstyled Text (FOUT)**.
 
 ### Preloading component chunks
 
-The loading experience can be improved further by using the [getComponentChunkLinks()](/partials/component-chunk-links)
+The loading experience can be improved further by using the [getComponentChunkLinks()](/partials/component-chunk-links/)
 partial. Without any configuration it simply preloads the **core chunk**.
 
 ![Loading Behavior Vanilla Js 04](assets/loading-behavior-vanilla-js-04.jpg)
@@ -205,14 +205,14 @@ Now, everything is preloaded in parallel.
 ### Early initialization
 
 There is one more improvement we can do, and that is to skip loading the `index.js` file of
-`@porsche-design-system/components-js`. That can be achieved by using the [getLoaderScript()](/partials/loader-script)
+`@porsche-design-system/components-js`. That can be achieved by using the [getLoaderScript()](/partials/loader-script/)
 partial which essentially produces a `script` with the code necessary to load the **core chunk** and it also takes care
 of calling `porscheDesignSystem.load()` so that the manual part from the initial setup is superfluous.
 
 ![Loading Behavior Vanilla Js 06](assets/loading-behavior-vanilla-js-06.jpg)
 
 Therefore, the total amount of data transferred is basically the same but without the additional request and the
-necessary http communication, like request and response headers. Also [componentsReady()](/developing/components-ready)
+necessary http communication, like request and response headers. Also [componentsReady()](/developing/components-ready/)
 isn't part of `getLoaderScript()`.
 
 <Notification heading="Hint" headingTag="h4" state="warning">

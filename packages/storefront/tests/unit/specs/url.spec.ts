@@ -11,9 +11,10 @@ const getSitemap = (): string[] => {
 describe('url', () => {
   for (const url of getSitemap()) {
     describe(`"${url}"`, () => {
-      // test.skipIf(url === '/')('should not end with trailing slash', () => {
-      //   expect(url.endsWith('/')).toBe(false);
-      // });
+      // Since we are using trailingSlash: true in our next.config.js every link should end with a trailing slash
+      test.skipIf(url === '/' || url.startsWith('http'))('should end with trailing slash', () => {
+        expect(url.endsWith('/')).toBe(true);
+      });
 
       describe.runIf(url.startsWith('https://') || url.startsWith('http://'))('external url', () => {
         test('should not use unencrypted http protocol', () => {
