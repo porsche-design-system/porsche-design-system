@@ -15,7 +15,12 @@ export const TextareaExampleControlledPage = (): JSX.Element => {
 
   return (
     <>
-      <PTextarea name="some-name" value={value} onInput={(e) => onInput(e as CustomEvent<TextareaInputEventDetail>)} />
+      <PTextarea
+        name="some-name"
+        label="Some Label"
+        value={value}
+        onInput={(e) => onInput(e as CustomEvent<TextareaInputEventDetail>)}
+      />
       <PText>Value: {value}</PText>
     </>
   );

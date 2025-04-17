@@ -41,7 +41,7 @@ export const textareaWrapperStorySlots: Story<'p-textarea-wrapper'> = {
       children: [
         {
           tag: 'span',
-          properties: { slot: 'label' },
+          properties: { slot: 'label', id: 'some-label-id' },
           children: [
             'Some label with a ',
             { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
@@ -50,7 +50,7 @@ export const textareaWrapperStorySlots: Story<'p-textarea-wrapper'> = {
         },
         {
           tag: 'span',
-          properties: { slot: 'description' },
+          properties: { slot: 'description', id: 'some-description-id' },
           children: [
             'Some description with a ',
             { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
@@ -67,7 +67,7 @@ export const textareaWrapperStorySlots: Story<'p-textarea-wrapper'> = {
         },
         {
           tag: 'span',
-          properties: { slot: 'message' },
+          properties: { slot: 'message', id: 'some-message-id' },
           children: [
             'Some error message with a ',
             { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
