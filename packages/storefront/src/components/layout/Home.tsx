@@ -53,7 +53,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             </div>
             <PLinkPure
               hideLabel={true}
-              href="/news/changelog"
+              href="/news/changelog/"
               aria={{ 'aria-label': `Release Note: Checkout the latest release ${latestPdsVersion}` }}
             />
           </div>
