@@ -7,6 +7,7 @@ import {
   viewportWidthXXL,
   viewportWidths,
 } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { closeSidebars } from '../helpers/helpers';
 
 const urls = {
   home: '/',
@@ -100,12 +101,7 @@ for (const [name, url] of Object.entries(urls)) {
           height: await page.evaluate(() => document.body.clientHeight),
         });
 
-        // Close mobile flyout if open
-        const flyoutDismiss = page.getByRole('dialog').getByText('Dismiss flyout');
-        if (await flyoutDismiss.isVisible()) {
-          await flyoutDismiss.click();
-          await expect(flyoutDismiss).toBeHidden();
-        }
+        await closeSidebars(page);
 
         const screenshot = await page.screenshot({ fullPage: true });
         expect(screenshot).toMatchSnapshot(`views-${name}-${viewportWidth}.png`);

@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { schemes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { closeSidebars } from '../helpers/helpers';
 
 test.describe('markdown', async () => {
   schemes.forEach((scheme) => {
@@ -36,12 +37,7 @@ test.describe('markdown', async () => {
           height: await page.evaluate(() => document.body.clientHeight),
         });
 
-        // Close mobile flyout if open
-        const flyoutDismiss = page.getByRole('dialog').getByText('Dismiss flyout');
-        if (await flyoutDismiss.isVisible()) {
-          await flyoutDismiss.click();
-          await expect(flyoutDismiss).toBeHidden();
-        }
+        await closeSidebars(page);
 
         await expect(page.locator('#main-content')).toHaveScreenshot(`markdown-${viewportWidth}.png`);
       });
