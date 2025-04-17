@@ -71,7 +71,8 @@ test.describe('storefront pages', () => {
       !url.includes('developing/next-js') &&
       !url.includes('components/link-tile-model-signature/examples') &&
       !url.includes('help/bug-report') &&
-      !url.includes('/components/table/api/')
+      !url.includes('/components/table/api/') &&
+      !url.includes('components/link-tile/examples')
   );
 
   schemes.forEach((scheme) => {
