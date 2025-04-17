@@ -10,7 +10,7 @@ import {
 
 const urls = {
   home: '/',
-  page: '/components/pagination/examples',
+  page: '/components/button/configurator',
 } as const;
 
 for (const [name, url] of Object.entries(urls)) {
