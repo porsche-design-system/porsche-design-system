@@ -35,6 +35,14 @@ test.describe('markdown', async () => {
           width: viewportWidth,
           height: await page.evaluate(() => document.body.clientHeight),
         });
+
+        // Close mobile flyout if open
+        const flyoutDismiss = page.getByRole('dialog').getByText('Dismiss flyout');
+        if (await flyoutDismiss.isVisible()) {
+          await flyoutDismiss.click();
+          await expect(flyoutDismiss).toBeHidden();
+        }
+
         await expect(page.locator('#main-content')).toHaveScreenshot(`markdown-${viewportWidth}.png`);
       });
     });
