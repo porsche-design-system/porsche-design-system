@@ -35,7 +35,7 @@ test.describe('markdown', async () => {
           width: viewportWidth,
           height: await page.evaluate(() => document.body.clientHeight),
         });
-        await expect(page.locator('#app > main')).toHaveScreenshot(`markdown-${viewportWidth}.png`);
+        await expect(page.locator('#main-content')).toHaveScreenshot(`markdown-${viewportWidth}.png`);
       });
     });
 });
