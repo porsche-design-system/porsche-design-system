@@ -77,6 +77,11 @@ export const routes: RouteType[] = [
     component: fromExamples.ButtonPureExampleFormAttribute,
   },
   {
+    path: '/button-tile-example-hyphens',
+    name: 'Button Tile Example Hyphens',
+    component: fromExamples.ButtonTileExampleHyphens,
+  },
+  {
     path: '/canvas-example',
     name: 'Canvas Example',
     component: fromExamples.CanvasExample,
@@ -180,6 +185,11 @@ export const routes: RouteType[] = [
     path: '/input-password-example-controlled',
     name: 'Input Password Example Controlled',
     component: fromExamples.InputPasswordExampleControlled,
+  },
+  {
+    path: '/link-tile-example-hyphens',
+    name: 'Link Tile Example Hyphens',
+    component: fromExamples.LinkTileExampleHyphens,
   },
   {
     path: '/link-tile-product-example',

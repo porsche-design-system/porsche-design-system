@@ -1,0 +1,17 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from "@/components/playground/Configurator";
+import { iconStory } from "@/app/components/icon/icon.stories";
+
+export const metadata = {
+  title: 'Icon - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Icon component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Icon <ComponentStatus tagName="p-icon"></ComponentStatus>
+
+Along with other Porsche basic elements - such as colors, typography and the Porsche marque - icons are core components
+of the Porsche design. The clear graphic symbols allow quick orientation and are internationally recognized. The Porsche
+Design System is using an **SVG icon system (integrated by `<img/>`)** to visually present an icon object. Each icon is
+hosted on the Porsche Design System CDN to be served and cached as fast as possible.
+
+<Configurator tagName="p-icon" story={iconStory} />

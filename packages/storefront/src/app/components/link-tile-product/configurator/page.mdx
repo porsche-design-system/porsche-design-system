@@ -1,0 +1,31 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from "@/components/playground/Configurator";
+import { linkTileProductStory } from "@/app/components/link-tile-product/link-tile-product.stories";
+import {Notification} from "@/components/common/Notification";
+
+export const metadata = {
+  title: 'Link Tile Product - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Link Tile Product component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Link Tile Product <ComponentStatus tagName="p-link-tile-product"></ComponentStatus>
+
+<Notification heading="Experimental Component" heading-tag="h2" state="warning">
+  The <code>p-link-tile-product</code> component is experimental and might be changed or removed in a future release.
+</Notification>
+
+The `p-link-tile-product` is a navigational component designed to showcase a featured product within a store. it offers
+the option to "like" the product, allowing you to easily add it to the users wishlist. Additionally, you can place a
+chip at the top to signal special features about the product, such as its novelty or exclusivity.
+
+<Notification heading="Image Aspect Ratio" heading-tag="h2" state="warning">
+  The image within the component has a fixed aspect ratio of 8:9. For optimal presentation, it is recommended that the supplied image adheres to the same aspect ratio of 8:9 and includes
+  a transparent background.
+</Notification>
+
+An `img` or `picture` element has to be available as a child of the `p-link-tile-product` component.
+
+The `heading` and `price` properties are required and a link must be provided, using either the `href` property or a
+[slotted link](/components/link-tile-product/examples/#framework-routing-anchor-nesting).
+
+<Configurator tagName="p-link-tile-product" story={linkTileProductStory} />

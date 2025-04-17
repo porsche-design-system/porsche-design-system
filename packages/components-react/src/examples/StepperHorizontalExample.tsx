@@ -1,11 +1,11 @@
 import {
-  type StepperHorizontalUpdateEventDetail,
-  type StepperHorizontalItemState,
   PButton,
   PButtonGroup,
   PStepperHorizontal,
   PStepperHorizontalItem,
   PText,
+  type StepperHorizontalItemState,
+  type StepperHorizontalUpdateEventDetail,
 } from '@porsche-design-system/components-react';
 import { useState } from 'react';
 
@@ -14,7 +14,7 @@ type StepperHorizontalItemProps = {
   name: string;
 };
 
-export const StepperHorizontalExample = (): JSX.Element => {
+export const StepperHorizontalExamplePage = (): JSX.Element => {
   const [steps, setSteps] = useState<StepperHorizontalItemProps[]>([
     {
       state: 'current',

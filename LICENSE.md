@@ -21,7 +21,7 @@ update this licensing agreement at any time.
 Subject to the terms of this Agreement, Porsche grants you a limited, worldwide, royalty-free, non-assignable,
 non-transferable, non-sublicensable, and non-exclusive license to use the Porsche Design System Assets solely to
 develop, test, and distribute software applications, websites, and interfaces on behalf of Porsche that are available
-via www.porsche.com or any associated websites or other Porsche software (“Applications”).
+via [https://porsche.com](https://porsche.com) or any associated websites or other Porsche software (“Applications”).
 
 ### License Restrictions
 

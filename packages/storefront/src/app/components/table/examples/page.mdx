@@ -1,0 +1,97 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import {
+  tableStoryCaptionProperty,
+  tableStoryCaptionSlot, tableStoryHideLabel,
+  tableStoryLayoutFixed
+} from "@/app/components/table/table.stories";
+import {ComponentStory} from "@/components/playground/ComponentStory";
+import {Notification} from "@/components/common/Notification";
+import {ComponentExample} from "@/components/playground/ComponentExample";
+import {tableExampleAdvanced, tableExampleSorting} from "@porsche-design-system/shared/examples";
+
+export const metadata = {
+  title: 'Table - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Table component.'
+}
+
+# Table <ComponentStatus tagName="p-table"></ComponentStatus>
+
+<TableOfContents headings={["Caption","Layout: fixed","Column Headers","Advanced Table"]} />
+
+## Caption
+
+A caption that describes the content of the table can be set in two ways. It's mandatory to define a descriptive caption
+to fulfill accessibility criteria.
+
+### Via property
+
+Using the `caption` property doesn't display the caption but instead can be used to improve accessibility of the table.
+
+<ComponentStory story={tableStoryCaptionProperty} />
+
+### Via slot
+
+When using the `caption` slot its content will be rendered while offering full control of appearance.
+
+<ComponentStory story={tableStoryCaptionSlot} />
+
+## Layout: fixed
+
+By setting `layout` to `fixed` you can get full control over every column width that are otherwise controlled by their
+content. An identical `width`, `min-width` and/or `max-width` depending on what you want to achieve, has to be specified
+on **every** `p-table-head-cell` and `p-table-cell` within the **same column**.
+
+While it is possible to use relative `width` units likes `50%` or `50vw`, these may lead to unexpected results when the
+table is scrollable especially on smaller screens or when combined with absolute (e.g. `50px`) or default auto values
+(based on content).
+
+If there is more content than available space, it will be overflowing, which you need to take care of, e.g. by using
+`<p-text ellipsis>Some content</p-text>`.
+
+<Notification heading="Note" heading-tag="h3" state="warning">
+  Since truncated content cannot be fully read, it is important to provide an alternative like a <code>title</code> attribute or custom tooltip.
+</Notification>
+
+<ComponentStory story={tableStoryLayoutFixed} />
+
+## Column Headers
+
+The `p-table`'s head can be configured by setting one or more of the following properties on each `p-table-head-cell`.
+
+### Sorting
+
+In order to have a sortable table column you need to provide the `sort` property.
+It has the following structure:
+
+```ts
+type TableHeadCellSort = {
+  id: string; // identifier for the column to be sorted by
+  active: boolean;
+  direction: 'asc' | 'desc';
+};
+```
+
+Upon clicking a sortable `p-table-head-cell` element, the `p-table` emits an `update` event that you should subscribe
+to.
+
+<Notification heading="Deprecation hint" heading-tag="h4" state="warning">
+  The <code>sortingChange</code> event has been deprecated and will be removed with the next major release.<br />
+  Please use the <code>update</code> event instead.
+</Notification>
+
+<ComponentExample codeSample={tableExampleSorting} />
+
+### Hide Label
+
+Sometimes you want to hide the label of a table column for example when the column's content is self-explanatory. This
+can be achieved by setting the `hide-label` property.
+
+<ComponentStory story={tableStoryHideLabel} />
+
+## Advanced Table
+
+The appearance of a table's contents can be customized as illustrated in the following example.
+
+<ComponentExample codeSample={tableExampleAdvanced} />
+

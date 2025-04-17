@@ -6,6 +6,7 @@ import { ButtonExampleFormAttributeComponent } from './button-example-form-attri
 import { ButtonExampleFormComponent } from './button-example-form.component';
 import { ButtonPureExampleFormAttributeComponent } from './button-pure-example-form-attribute.component';
 import { ButtonPureExampleFormComponent } from './button-pure-example-form.component';
+import { ButtonTileExampleHyphensComponent } from './button-tile-example-hyphens.component';
 import { CanvasExampleComponent } from './canvas-example.component';
 import { CarouselExampleDynamicSlidesComponent } from './carousel-example-dynamic-slides.component';
 import { CarouselExampleEventsComponent } from './carousel-example-events.component';
@@ -23,6 +24,7 @@ import { InlineNotificationExampleActionButtonComponent } from './inline-notific
 import { InlineNotificationExampleEventsComponent } from './inline-notification-example-events.component';
 import { InputPasswordExampleControlledComponent } from './input-password-example-controlled.component';
 import { InputPasswordExampleComponent } from './input-password-example.component';
+import { LinkTileExampleHyphensComponent } from './link-tile-example-hyphens.component';
 import { LinkTileProductExampleComponent } from './link-tile-product-example.component';
 import { ModalExampleComponent } from './modal-example.component';
 import { MultiSelectExampleControlledComponent } from './multi-select-example-controlled.component';
@@ -62,6 +64,7 @@ export const examples = [
   ButtonExampleFormAttributeComponent,
   ButtonPureExampleFormComponent,
   ButtonPureExampleFormAttributeComponent,
+  ButtonTileExampleHyphensComponent,
   CanvasExampleComponent,
   CarouselExampleDynamicSlidesComponent,
   CarouselExampleFocusOnCenterSlideComponent,
@@ -79,6 +82,7 @@ export const examples = [
   InlineNotificationExampleEventsComponent,
   InputPasswordExampleControlledComponent,
   InputPasswordExampleComponent,
+  LinkTileExampleHyphensComponent,
   LinkTileProductExampleComponent,
   ModalExampleComponent,
   MultiSelectExampleComponent,
@@ -117,6 +121,7 @@ export * from './button-example-form.component';
 export * from './button-example-form-attribute.component';
 export * from './button-pure-example-form.component';
 export * from './button-pure-example-form-attribute.component';
+export * from './button-tile-example-hyphens.component';
 export * from './canvas-example.component';
 export * from './carousel-example-dynamic-slides.component';
 export * from './carousel-example-focus-on-center-slide.component';
@@ -134,6 +139,7 @@ export * from './inline-notification-example-action-button.component';
 export * from './inline-notification-example-events.component';
 export * from './input-password-example.component';
 export * from './input-password-example-controlled.component';
+export * from './link-tile-example-hyphens.component';
 export * from './link-tile-product-example.component';
 export * from './modal-example.component';
 export * from './multi-select-example.component';

@@ -1,0 +1,28 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import {ComponentStory} from "@/components/playground/ComponentStory";
+import {linkStoryFrameworkRouting, linkStoryIcon} from "@/app/components/link/link.stories";
+
+export const metadata = {
+  title: 'Link - Porsche Design System',
+  description: "Discover detailed examples and insights of the Link component."
+}
+
+# Link <ComponentStatus tagName="p-link"></ComponentStatus>
+
+<TableOfContents headings={["Framework routing (anchor nesting)","Link with specific icon"]} />
+
+## Framework routing (anchor nesting)
+
+To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element** of the
+component.
+
+<ComponentStory story={linkStoryFrameworkRouting} />
+
+## Link with specific icon
+
+If an icon needs to be implemented, just set another predefined icon. Per default, all icons are fetched from the
+Porsche Design System CDN. Just choose an icon name from the `icon` property. If you need to link to another icon hosted
+somewhere else, just set the whole icon path to the `iconSource` prop.
+
+<ComponentStory story={linkStoryIcon} />

@@ -1,0 +1,29 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { ComponentStory } from "@/components/playground/ComponentStory";
+import {
+  accordionStoryExpandedClickArea,
+  accordionStoryStickyHeadline
+} from "@/app/components/accordion/accordion.stories";
+
+export const metadata = {
+  title: 'Accordion - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Accordion component.'
+}
+
+# Accordion <ComponentStatus tagName="p-accordion"></ComponentStatus>
+
+<TableOfContents headings={["Sticky headline","Custom clickable/focusable area"]} />
+
+## Sticky headline
+
+The headline can be made sticky by adding the property `sticky` to the `p-accordion` tag. The position `top` value can be overwritten by using the CSS Custom Property `--p-accordion-position-sticky-top`.
+
+<ComponentStory story={accordionStoryStickyHeadline} />
+
+## Custom clickable/focusable area
+
+Sometimes it might be useful to enlarge the clickable/focusable area to fulfill accessibility guidelines. Therefore, a
+custom padding can be set on the slotted heading element.
+
+<ComponentStory story={accordionStoryExpandedClickArea} />

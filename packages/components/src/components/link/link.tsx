@@ -1,18 +1,4 @@
-import { Component, Element, h, type JSX, Prop } from '@stencil/core';
-import {
-  AllowedTypes,
-  attachComponentCss,
-  getPrefixedTagNames,
-  hasPropValueChanged,
-  hasVisibleIcon,
-  isSsrHydration,
-  LINK_ARIA_ATTRIBUTES,
-  LINK_BUTTON_VARIANTS,
-  parseAndGetAriaAttributes,
-  THEMES,
-  throwIfInvalidLinkUsage,
-  validateProps,
-} from '../../utils';
+import { Component, Element, type JSX, Prop, h } from '@stencil/core';
 import type {
   BreakpointCustomizable,
   LinkAriaAttribute,
@@ -22,6 +8,20 @@ import type {
   SelectedAriaAttributes,
   Theme,
 } from '../../types';
+import {
+  AllowedTypes,
+  LINK_ARIA_ATTRIBUTES,
+  LINK_BUTTON_VARIANTS,
+  THEMES,
+  attachComponentCss,
+  getPrefixedTagNames,
+  hasPropValueChanged,
+  hasVisibleIcon,
+  isSsrHydration,
+  parseAndGetAriaAttributes,
+  throwIfInvalidLinkUsage,
+  validateProps,
+} from '../../utils';
 import { getComponentCss } from './link-styles';
 import type { LinkIcon } from './link-utils';
 
@@ -40,7 +40,7 @@ const propTypes: PropTypes<typeof Link> = {
 };
 
 /**
- * @slot {"name": "", "description": "Default slot to render the link label." }
+ * @slot {"name": "", "description": "Default slot to render the link label. This slot can be used to slot an anchor tag instead of using the href prop." }
  */
 @Component({
   tag: 'p-link',

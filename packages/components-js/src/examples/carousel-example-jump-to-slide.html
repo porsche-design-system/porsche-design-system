@@ -14,13 +14,14 @@
   <div>Slide 3</div>
 </p-carousel>
 
-<button type="button">1</button>
-<button type="button" disabled>2</button>
-<button type="button">3</button>
+<p-button type="button">1</p-button>
+<p-button type="button">2</p-button>
+<p-button type="button">3</p-button>
 
 <script>
   const carousel = document.querySelector('p-carousel');
-  const buttons = document.querySelectorAll('button');
+  const buttons = document.querySelectorAll('p-button');
+  buttons[1].disabled = true; // Initial state
 
   const syncButtonsAndCarousel = (newIndex) => {
     carousel.activeSlideIndex = newIndex;

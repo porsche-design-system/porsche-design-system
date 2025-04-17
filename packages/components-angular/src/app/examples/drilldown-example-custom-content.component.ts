@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { type DrilldownUpdateEventDetail } from '@porsche-design-system/components-angular';
+import { type DrilldownUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-drilldown-example-custom-content',
@@ -126,7 +126,8 @@ import { type DrilldownUpdateEventDetail } from '@porsche-design-system/componen
     </nav>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
 })
 export class DrilldownExampleCustomContentComponent {
   isDrilldownOpen = false;

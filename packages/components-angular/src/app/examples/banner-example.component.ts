@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-banner-example',
@@ -14,7 +15,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </p-banner>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class BannerExampleComponent {
   isBannerOpen = false;

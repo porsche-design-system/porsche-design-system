@@ -1,0 +1,22 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from "@/components/playground/Configurator";
+import { displayStory } from "@/app/components/display/display.stories";
+import {Notification} from "@/components/common/Notification";
+
+export const metadata = {
+  title: 'Display - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Display component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Display <ComponentStatus tagName="p-display"></ComponentStatus>
+
+`p-display` is used to highlight and specify heading styling and hierarchy in documents.
+
+<Notification heading="Recommendation" heading-tag="h2" state="success">
+  Although the component is very sophisticated, it's recommended (if possible) to use the corresponding styles / design tokens of
+  the "@porsche-design-system/components-\{js|angular|react|vue}/styles" sub-package for best performance since way
+  less DOM nodes are required to render. Further information can be found <a href="/styles/typography/">here</a>.
+</Notification>
+
+<Configurator tagName="p-display" story={displayStory} />
+

@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { buildSitemap, getSitemap } from '../helpers';
+import { buildSitemap, getSitemap } from '../helpers/sitemap';
 
 const ONE_MINUTE_IN_MS = 60000;
 

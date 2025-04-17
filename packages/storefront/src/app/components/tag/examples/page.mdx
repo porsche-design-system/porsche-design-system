@@ -1,0 +1,41 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import {
+  tagStory,
+  tagStoryMultiline,
+  tagStorySlottedButton,
+  tagStorySlottedLink
+} from "@/app/components/tag/tag.stories";
+import {ComponentStory} from "@/components/playground/ComponentStory";
+
+export const metadata = {
+  title: 'Tag - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Tag component.'
+}
+
+# Tag <ComponentStatus tagName="p-tag"></ComponentStatus>
+
+<TableOfContents headings={["With slotted button","With slotted link","Multiline"]} />
+
+## With slotted button
+
+It is possible to add a `<button>` tag into the `p-tag` component. If you do this, the entire component becomes
+clickable and no other content outside the button or link is allowed.
+
+<ComponentStory story={tagStorySlottedButton} />
+
+## With slotted link
+
+It is possible to add `<a>` tag into the `p-tag` component. If you do this, the entire component becomes clickable and
+no other content outside the button or link is allowed.
+
+<ComponentStory story={tagStorySlottedLink} />
+
+## Multiline
+
+The contents of the `p-tag` component are rendered with `white-space: nowrap` by default. If multiline rendering is
+needed (e.g. due to less amount of space), the default behaviour can be overwritten with CSS from outside.
+
+<ComponentStory story={tagStoryMultiline} />
+

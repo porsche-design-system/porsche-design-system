@@ -1,0 +1,24 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import {tabsBarStoryGradient, tabsBarStoryLinks} from "@/app/components/tabs-bar/tabs-bar.stories";
+import {ComponentStory} from "@/components/playground/ComponentStory";
+
+export const metadata = {
+  title: 'Tabs Bar - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Tabs Bar component.'
+}
+
+# Tabs Bar <ComponentStatus tagName="p-tabs-bar"></ComponentStatus>
+
+<TableOfContents headings={["Links","Gradient color"]} />
+
+## Links
+
+<ComponentStory story={tabsBarStoryLinks} />
+
+## Gradient color
+
+If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling. The
+background and gradient has to align to your chosen background.
+
+<ComponentStory story={tabsBarStoryGradient} backgroundColor="background-surface" />

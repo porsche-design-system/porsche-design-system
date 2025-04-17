@@ -1,7 +1,7 @@
-import { test, expect } from '@playwright/test';
-import { goto, initConsoleObserver, getConsoleErrorsAmount, getConsoleWarningsAmount } from '../helpers';
 import * as fs from 'fs';
 import * as path from 'path';
+import { expect, test } from '@playwright/test';
+import { getConsoleErrorsAmount, getConsoleWarningsAmount, goto, initConsoleObserver } from '../helpers';
 
 test.beforeEach(async ({ page }) => {
   initConsoleObserver(page);
@@ -36,6 +36,8 @@ for (const exampleUrl of exampleUrls) {
         '/inline-notification-example-action-button',
         '/modal-example-accessibility',
         '/select-example',
+        '/multi-select-example-dynamic', // TODO: Active once text-field-wrapper validation warning bug is fixed (https://github.com/porsche-design-system/porsche-design-system/issues/3821)
+        '/select-example-dynamic', // TODO: Active once text-field-wrapper validation warning bug is fixed (https://github.com/porsche-design-system/porsche-design-system/issues/3821)
         '/text-field-wrapper-example-imask',
         '/text-field-wrapper-example-search',
       ].includes(exampleUrl)

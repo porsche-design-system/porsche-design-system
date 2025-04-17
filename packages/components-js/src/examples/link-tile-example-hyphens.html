@@ -1,0 +1,24 @@
+<p-select label="Select hyphens" name="hyphens">
+  <p-select-option value="auto">style="hyphens: auto;"</p-select-option>
+  <p-select-option value="manual">style="hyphens: manual;"</p-select-option>
+  <p-select-option value="none">style="hyphens: none;"</p-select-option>
+</p-select>
+
+<p-link-tile
+  href="https://porsche.com"
+  label="Some label"
+  description="An extra&shy;ordinarily Porsche"
+  compact="true"
+  size="inherit"
+  style="max-width: 400px; font-size: 45px;"
+>
+  <img src="http://localhost:3002/lights.jpg" alt="Some image description" />
+</p-link-tile>
+
+<script>
+  const select = document.querySelector('p-select');
+  select.addEventListener('update', (event) => {
+    const buttonTile = document.querySelector('p-link-tile');
+    buttonTile.style.hyphens = event.detail.value;
+  });
+</script>

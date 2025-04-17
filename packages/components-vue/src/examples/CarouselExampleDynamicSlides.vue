@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PCarousel } from '@porsche-design-system/components-vue';
+import { PButton, PCarousel } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
 const amountOfSlides = ref(3);
@@ -17,8 +17,8 @@ const onRemoveClick = (): void => {
     <div v-for="(_, i) in Array.from(Array(amountOfSlides))" :key="i">Slide {{ i + 1 }}</div>
   </PCarousel>
 
-  <button type="button" @update="onAddClick">Add slide</button>
-  <button type="button" @update="onRemoveClick">Remove last slide</button>
+  <PButton type="button" @update="onAddClick">Add slide</PButton>
+  <PButton type="button" @update="onRemoveClick">Remove last slide</PButton>
 </template>
 <style scoped>
   p-carousel div {

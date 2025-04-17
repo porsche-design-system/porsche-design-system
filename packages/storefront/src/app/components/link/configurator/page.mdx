@@ -1,0 +1,21 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from "@/components/playground/Configurator";
+import { linkSlotStories, linkStory } from "@/app/components/link/link.stories";
+
+export const metadata = {
+  title: 'Link - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Link component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Link <ComponentStatus tagName="p-link"></ComponentStatus>
+
+The `p-link` component is essential to perform changes in **page routes**. For an optimal user guidance and dedicated
+pursuit of business or sales goals, different types of Links (**Primary** and **Secondary**) are available for usage. A
+Link can be used with or without a label, but it's recommended to keep the **label visible** for better **usability**
+whenever possible. When used without a label, it is mandatory for **accessibility** to provide a descriptive label text
+for screen readers. In case you want the user to execute an action, you should select the [Button](/components/button/)
+component instead.
+
+You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the `p-link`.
+
+<Configurator tagName="p-link" story={linkStory} slotStories={linkSlotStories} />

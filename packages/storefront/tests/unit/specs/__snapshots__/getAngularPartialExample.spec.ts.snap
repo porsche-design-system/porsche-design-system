@@ -1,0 +1,38 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should return correct partial markup for getVanillaJsPartialExample 1`] = `
+"<!-- prerequisite -->
+<!-- docs: https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack#index-transform -->
+yarn add --dev @angular-builders/custom-webpack
+
+<!-- angular.json -->
+...
+"architect": {
+  "build": {
+-   "builder": "@angular-devkit/build-angular:browser",
++   "builder": "@angular-builders/custom-webpack:browser",
+    "options": {
+      "outputPath": "dist/components-angular",
++     "indexTransform": "./scripts/injectPartials.ts",
+    }
+  }
+  "serve": {
+-   "builder": "@angular-devkit/build-angular:dev-server",
++   "builder": "@angular-builders/custom-webpack:dev-server",
+
+<!-- ./scripts/injectPartials.ts -->
+import type { TargetOptions } from '@angular-builders/custom-webpack';
+import { getInitialStyles } from '@porsche-design-system/components-angular/partials';
+
+export default (targetOptions: TargetOptions, indexHtml: string): string => {
+  let partialContent = getInitialStyles();
+
+  // Alternative: With custom prefix to match your prefixed components
+  partialContent = getInitialStyles({ prefix: 'custom-prefix' });
+
+  // Alternative: With multiple prefixes to match prefixed components coming from micro frontends
+  partialContent = getInitialStyles({ prefix: ['', 'custom-prefix', 'another-prefix'] });
+
+  return indexHtml.replace(/<\\/head>/, \`\${partialContent}$&\`);
+};"
+`;

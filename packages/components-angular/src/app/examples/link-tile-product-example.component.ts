@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { LinkTileProductLikeEventDetail } from '@porsche-design-system/components-angular';
+import { LinkTileProductLikeEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-link-tile-product-example',
@@ -17,7 +17,8 @@ import type { LinkTileProductLikeEventDetail } from '@porsche-design-system/comp
     </p-link-tile-product>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
 })
 export class LinkTileProductExampleComponent {
   liked = false;

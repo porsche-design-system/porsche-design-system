@@ -1,0 +1,37 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from "@/components/playground/Configurator";
+import { multiSelectStory } from "@/app/components/multi-select/multi-select.stories";
+import { Notification } from "@/components/common/Notification";
+
+export const metadata = {
+  title: 'Multi Select - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Multi Select component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Multi Select <ComponentStatus tagName="p-multi-select"></ComponentStatus>
+
+The `p-multi-select` component is a versatile custom form element that facilitates the selection of multiple options. It
+can be used [within a form](components/multi-select/examples#form) or in a
+[controlled manner](components/multi-select/examples#controlled).
+
+<Notification heading="Attention" heading-tag="h2" state="warning">
+  When the <code>p-multi-select</code> component is used within a form, it utilizes the
+  <a href="https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals">ElementInternals</a> API, which has limited
+  browser support. For broader browser compatibility, consider using a
+  <a href="components/multi-select/examples#controlled">controlled</a> approach instead.
+</Notification>
+
+Many of the properties closely resemble those found in the [select-wrapper](/components/select-wrapper/examples/) and
+other form components (e.g. `label`, `description`, `state`, `message`, `hideLabel`, `disabled`, `required` &
+`dropdownDirection`). The `p-multi-select` offers a search field by default. When the user types in a search string, the
+options are reduced by matching the options text.
+
+Options are slotted using the `p-multi-select-option` component. Each option needs to have an assigned value, which can
+be passed via an attribute or property and needs to be of type string. Initial selection states can only be achieved
+using the value property on the `p-multi-select` component ([More Info](/components/multi-select/examples/#set-value)).
+Options don't have a selected attribute or property. If an option should be visible but not selectable, it can be
+disabled by using the `disabled` attribute.
+
+**Hint:** The `p-multi-select` utilizes the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) to render its dropdown on the `#top-layer` which enables it to be shown correctly even when used e.g. within a scroll container.
+
+<Configurator tagName="p-multi-select" story={multiSelectStory} />

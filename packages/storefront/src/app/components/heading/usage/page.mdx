@@ -1,0 +1,26 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+
+export const metadata = {
+  title: 'Heading - Porsche Design System',
+  description: 'Learn how to properly use the Heading component with best practices and guidelines for effective design and user experience.'
+}
+
+# Heading <ComponentStatus tagName="p-heading"></ComponentStatus>
+
+<TableOfContents headings={[]} />
+
+## Usage
+
+p-heading is used to highlight and specify heading styling and hierarchy
+
+### Do:
+- Use p-heading styles to clearly mark section titles and subsections.
+- Align headings with the grid to maintain visual rhythm.
+- Use heading-xx-large for primary sections; scale down for subsections.
+- Pair each heading with a text style one or two steps smaller (e.g. heading-large with text-medium).
+
+### Don't:
+- Don’t use p-heading styles for hero or marketing intros—use p-display instead.
+- Don’t mix heading sizes inconsistently within the same view.
+- Don’t center-align headings in content-heavy layouts unless intended for a special moment.

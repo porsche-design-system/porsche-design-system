@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-flyout-example',
@@ -15,7 +16,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </p-flyout>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
 })
 export class FlyoutExampleComponent {
   isFlyoutOpen = false;

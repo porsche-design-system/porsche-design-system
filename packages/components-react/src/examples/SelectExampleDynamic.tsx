@@ -1,12 +1,14 @@
-import { type ChangeEvent, useState } from 'react';
 import {
-  type SelectUpdateEventDetail,
+  PButton,
   PSelect,
   PSelectOption,
   type PSelectProps,
+  PTextFieldWrapper,
+  type SelectUpdateEventDetail,
 } from '@porsche-design-system/components-react';
+import { type ChangeEvent, useState } from 'react';
 
-export const SelectDynamicExamplePage = (): JSX.Element => {
+export const SelectExampleDynamicPage = (): JSX.Element => {
   const [selectedValue, setSelectedValue] = useState<PSelectProps['value']>('1');
   const [inputValue, setInputValue] = useState('');
   const [optionCount, setOptionCount] = useState(3);
@@ -41,16 +43,15 @@ export const SelectDynamicExamplePage = (): JSX.Element => {
 
   return (
     <>
-      <label>
-        Value:{' '}
+      <PTextFieldWrapper label="Value:">
         <input name="input-value" type="text" value={inputValue} onChange={onChangeInput} placeholder="e.g. 1,2" />
-      </label>
-      <button type="button" onClick={onSetValue}>
+      </PTextFieldWrapper>
+      <PButton type="button" onClick={onSetValue} compact={true}>
         Set Value
-      </button>
-      <button type="button" onClick={onResetValue}>
+      </PButton>
+      <PButton type="button" onClick={onResetValue} compact={true}>
         Reset value
-      </button>
+      </PButton>
 
       <PSelect name="options" label="Some Label" value={selectedValue} onUpdate={onUpdate}>
         {[...Array(optionCount).keys()].map((idx) => (
@@ -60,12 +61,12 @@ export const SelectDynamicExamplePage = (): JSX.Element => {
         ))}
       </PSelect>
 
-      <button type="button" onClick={onAddOption}>
+      <PButton type="button" onClick={onAddOption} compact={true}>
         Add option
-      </button>
-      <button type="button" onClick={onRemoveOption}>
+      </PButton>
+      <PButton type="button" onClick={onRemoveOption} compact={true}>
         Remove last option
-      </button>
+      </PButton>
     </>
   );
 };

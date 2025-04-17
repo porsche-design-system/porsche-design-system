@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { type TextareaInputEventDetail } from '@porsche-design-system/components-angular';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-input-password-example-controlled',
@@ -8,7 +9,9 @@ import { type TextareaInputEventDetail } from '@porsche-design-system/components
     <p-text>{{ debugText }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class InputPasswordExampleControlledComponent {
   value: string = '';

@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { schemes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { closeSidebars } from '../helpers/helpers';
 
 test.describe('markdown', async () => {
   schemes.forEach((scheme) => {
@@ -18,7 +19,8 @@ test.describe('markdown', async () => {
         width: viewportWidthM,
         height: await page.evaluate(() => document.body.clientHeight),
       });
-      await expect(page.locator('#app > main')).toHaveScreenshot(`markdown-${viewportWidthM}-scheme-${scheme}.png`);
+      const screenshot = await page.screenshot({ fullPage: true });
+      expect(screenshot).toMatchSnapshot(`markdown-${viewportWidthM}-scheme-${scheme}.png`);
     });
   });
 
@@ -35,7 +37,11 @@ test.describe('markdown', async () => {
           width: viewportWidth,
           height: await page.evaluate(() => document.body.clientHeight),
         });
-        await expect(page.locator('#app > main')).toHaveScreenshot(`markdown-${viewportWidth}.png`);
+
+        await closeSidebars(page);
+
+        const screenshot = await page.screenshot({ fullPage: true });
+        expect(screenshot).toMatchSnapshot(`markdown-${viewportWidth}.png`);
       });
     });
 });

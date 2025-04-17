@@ -1,0 +1,59 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import {Notification} from "@/components/common/Notification";
+import {ComponentExample} from "@/components/playground/ComponentExample";
+import {pinCodeExample, pinCodeExampleControlled} from "@porsche-design-system/shared/examples";
+import {ComponentStory} from "@/components/playground/ComponentStory";
+import {pinCodeStory} from "@/app/components/pin-code/pin-code.stories";
+
+export const metadata = {
+  title: 'Pin Code - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Pin Code component.'
+}
+
+# Pin Code <ComponentStatus tagName="p-pin-code"></ComponentStatus>
+
+<TableOfContents headings={["Form","Controlled","Copy+Paste and autocomplete"]} />
+
+## Form
+
+The `p-pin-code` component is a form-associated custom element that integrates seamlessly with forms. Leveraging the
+[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API, it functions like a native
+input, ensuring compatibility with form behaviors. However, note that browser support for this API is limited.
+
+To ensure proper submission of the form, it's required to provide an individual `name` prop to the `p-pin-code`
+component, enabling the `p-pin-code`'s value to be included in the form's data when it is submitted.
+
+<Notification heading="Attention" heading-tag="h2" state="warning">
+  <code>p-pin-code</code> does not use a native input internally. As a result, it lacks access to native <code>ValidityState</code>
+  properties and <code>validationMessage</code>, and it cannot display the native validation popover. This means validation behavior
+  and error display will need to be implemented separately if required.
+</Notification>
+
+<ComponentExample codeSample={pinCodeExample} />
+
+## Controlled
+
+We do not envision a lot of scenarios where you would need this level of control, however the `p-pin-code` can be used
+as a controlled component. This means it does not contain any internal state, and you got full control over its
+behavior. Any change of the input's values triggers a custom update event and the value is updated immediately. The prop
+`value` is an array of strings synchronized with the input's values.
+
+<ComponentExample codeSample={pinCodeExampleControlled} />
+
+## Copy+Paste and autocomplete
+
+By default, only one input can be changed at a time. The `p-pin-code` component also supports copying and pasting a
+value and OTP auto-suggestion on mobile.
+
+The `p-pin-code` component performs basic validation of the pasted value:
+
+- If the pasted string is too long the `p-pin-code` attempts to fill in the other inputs.
+- If the pasted value contains whitespaces, these will be removed.
+- If the value contains other characters than digits, the value can not be pasted.
+
+Try copy+paste `1234` into any of the inputs in the example below.
+
+<ComponentStory story={pinCodeStory} />
+
+

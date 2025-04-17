@@ -1,0 +1,31 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import {
+  wordmarkStory,
+  wordmarkStoryCustomPadding,
+  wordmarkStorySizeInherit
+} from "@/app/components/wordmark/wordmark.stories";
+import {ComponentStory} from "@/components/playground/ComponentStory";
+
+export const metadata = {
+  title: 'Wordmark - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Wordmark component.'
+}
+
+# Wordmark <ComponentStatus tagName="p-wordmark"></ComponentStatus>
+
+<TableOfContents headings={["Size","Custom clickable/focusable area"]} />
+
+## Size
+
+By default, the sizing is fluid, which can be changed to `inherit` a specified value.
+
+<ComponentStory story={wordmarkStorySizeInherit} />
+
+## Custom clickable/focusable area
+
+Sometimes it might be useful to enlarge the clickable/focusable area of the `p-wordmark`. Therefore a custom padding can
+be set on the host element.
+
+<ComponentStory story={wordmarkStoryCustomPadding} />
