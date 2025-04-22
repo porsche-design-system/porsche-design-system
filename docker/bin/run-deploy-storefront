@@ -83,9 +83,6 @@ deploy_to_gh_pages() {
 
 update_algolia_index(){
   echo "task: [$(date)] \"update_algolia_index\" (${1})"
-  pushd "./packages/storefront"
-    yarn build:prepareChangelog
-  popd
   result=$(P_CURRENT_BRANCH=${1} yarn updateAlgolia)
   echo $result | sed "s/.*updateAlgoliaIndex\\.ts' //g"
 }
