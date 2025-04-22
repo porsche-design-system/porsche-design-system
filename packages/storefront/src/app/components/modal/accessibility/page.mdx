@@ -38,6 +38,11 @@ behavior. As a result, accessibility features may vary across different browsers
 | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | `aria-label="STRING"` | Defines the accessible name if no `aria` property is provided, uses the contents of the header slot and falls back to a fixed name. |
 
+## Development considerations
+
+To inform users that the trigger button opens a `dialog`, the `aria-haspopup` attribute must be set using the `aria`
+property, e.g.: `aria={{ 'aria-haspopup': 'dialog' }}`.
+
 ## Tests
 
 ### Automated

@@ -10,4 +10,43 @@ export const metadata = {
 
 ## Accessibility support
 
-Not yet considered due to experimental state <ComponentStatus tagName="p-drilldown"></ComponentStatus>.
+The `Drilldown` component uses the native `dialog` element to provide a modal dialog which comes with browser-specific
+behavior. As a result, accessibility features may vary across different browsers.
+
+### Keyboard
+
+| Key / state                | Function                                                                                                         |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `Tab`, `Shift-Tab`         | Moves focus to the next (or previous) focusable element inside the dialog. Focus is trapped (browser behaviour). |
+| `ESC`                      | Closes the dialog.                                                                                               |
+| `focus` on trigger element | The focus is returned to the trigger element after closing the dialog (browser behavior).                        |
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA         | Usage                                                  |
+| ------------ | ------------------------------------------------------ |
+| `aria-label` | Defines a string value that labels the dialog element. |
+
+## Development considerations
+
+To inform users that the trigger button opens a `dialog`, the `aria-haspopup` attribute must be set using the `aria`
+property, e.g.: `aria={{ 'aria-haspopup': 'dialog' }}`.
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |
