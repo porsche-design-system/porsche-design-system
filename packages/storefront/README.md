@@ -1,9 +1,54 @@
 # Storefront
 
-TODO:
+## Scripts
 
-- Explain NEXT_PUBLIC_PDS_ENV=development
-- Explain scripts
+### Table of Contents
+
+**Script:** `build:generateTableOfContents`
+
+This script automatically generates a table of contents for any page that includes the
+`<TableOfContents headings={[]} />` component.  
+It scans the file for `##` (H2) markdown headings and populates the `headings` array accordingly.
+
+---
+
+### Prepare Partial Results
+
+**Script:** `build:preparePartialResults`
+
+Since our partials can't be executed at runtime, this step ensures we can show the output of the partials in the
+documentation.
+
+---
+
+### Generate Components Bundle for StackBlitz
+
+**Script:** `build:generateComponentsBundleForStackBlitz`
+
+When developing locally, changes made to the Porsche Design System need to be reflected when opening in Stackblitz.  
+This script creates a local bundle of all Porsche Design System packages—such as `components-js`, `components-react`,
+`components-angular`, and `components-vue`. So it can be sent to StackBlitz as a local folder.
+
+---
+
+### Prepare Changelog
+
+**Script:** `build:prepareChangelog`
+
+This script copy's and adjusts the `CHANGELOG.md` file found at `packages/components/CHANGELOG.md`.  
+It generates a table of contents for recent releases and updates the headings to be linkable.
+
+---
+
+## Environment Variables
+
+Next.js builds (`next build`) don't work with `NODE_ENV=development` in order to create a build for testing purposes.  
+To address this, we use a custom environment variable: `NEXT_PUBLIC_PDS_ENV`.
+
+Set `NEXT_PUBLIC_PDS_ENV=development` to build the app using local resources.
+
+To check this value in your code, use the `isDevEnvironment` utility from:  
+`packages/storefront/src/utils/isDev.ts`.
 
 ## Configurator
 
