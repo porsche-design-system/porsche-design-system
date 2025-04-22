@@ -3,18 +3,25 @@ import { expect } from '@playwright/test';
 
 export const closeSidebars = async (page: Page) => {
   const flyoutStart = page.locator('.flyout-start');
-  const flyoutEnd = page.locator('.flyout-start');
+  const flyoutEnd = page.locator('.flyout-end');
 
-  await flyoutStart.evaluate((el) => {
-    (el as HTMLElement & { open: boolean }).open = false;
-  });
+  // Flyout's only exist and need to be closed on mobile
+  const startCount = await flyoutStart.count();
+  const endCount = await flyoutEnd.count();
 
-  await flyoutEnd.evaluate((el) => {
-    (el as HTMLElement & { open: boolean }).open = false;
-  });
+  if (startCount > 0) {
+    await flyoutStart.evaluate((el) => {
+      (el as HTMLElement & { open: boolean }).open = false;
+    });
+    await expect(flyoutStart).toBeHidden();
+  }
 
-  await expect(flyoutStart).toBeHidden();
-  await expect(flyoutEnd).toBeHidden();
+  if (endCount > 0) {
+    await flyoutEnd.evaluate((el) => {
+      (el as HTMLElement & { open: boolean }).open = false;
+    });
+    await expect(flyoutEnd).toBeHidden();
+  }
 };
 
 export const resetAnimations = async (page: Page) => {
