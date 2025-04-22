@@ -7,7 +7,7 @@ import {
   viewportWidthXXL,
   viewportWidths,
 } from '@porsche-design-system/shared/testing/playwright.vrt';
-import { closeSidebars } from '../helpers/helpers';
+import { closeSidebars, resetAnimations } from '../helpers/helpers';
 
 const urls = {
   home: '/',
@@ -24,16 +24,7 @@ for (const [name, url] of Object.entries(urls)) {
           colorScheme: scheme,
         });
         await page.goto(url);
-
-        // Reset animations
-        await page.evaluate(() => {
-          document.documentElement.style.setProperty('--p-animation-duration', '0s');
-          const animations = document.querySelectorAll('[data-animation=fade-in-up]');
-          animations.forEach((animation) => {
-            (animation as HTMLElement).style.opacity = '1';
-            (animation as HTMLElement).style.transform = 'none';
-          });
-        });
+        await resetAnimations(page);
 
         // Modify video height if on the homepage
         if (url === '/') {
@@ -70,16 +61,7 @@ for (const [name, url] of Object.entries(urls)) {
     ).forEach((viewportWidth) => {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
         await page.goto(url);
-
-        // Reset animations
-        await page.evaluate(() => {
-          document.documentElement.style.setProperty('--p-animation-duration', '0s');
-          const animations = document.querySelectorAll('[data-animation=fade-in-up]');
-          animations.forEach((animation) => {
-            (animation as HTMLElement).style.opacity = '1';
-            (animation as HTMLElement).style.transform = 'none';
-          });
-        });
+        await resetAnimations(page);
 
         // Modify video height if on the homepage
         if (url === '/') {

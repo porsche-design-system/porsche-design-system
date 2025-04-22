@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { schemes, viewportWidthXL } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { resetAnimations } from '../helpers/helpers';
 
 const urls = {
   'tabs-bar': '/components/tabs-bar/api',
@@ -16,6 +17,7 @@ for (const [name, url] of Object.entries(urls)) {
           colorScheme: scheme,
         });
         await page.goto(url);
+        await resetAnimations(page);
         await page.evaluate(() =>
           (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
         );

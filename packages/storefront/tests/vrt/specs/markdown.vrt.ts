@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { schemes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt';
-import { closeSidebars } from '../helpers/helpers';
+import { closeSidebars, resetAnimations } from '../helpers/helpers';
 
 test.describe('markdown', async () => {
   schemes.forEach((scheme) => {
@@ -11,6 +11,7 @@ test.describe('markdown', async () => {
         colorScheme: scheme,
       });
       await page.goto('/markdown');
+      await resetAnimations(page);
       await page.evaluate(() =>
         (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
       );
@@ -29,6 +30,7 @@ test.describe('markdown', async () => {
     .forEach((viewportWidth) => {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
         await page.goto('/markdown');
+        await resetAnimations(page);
         await page.evaluate(() =>
           (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
         );
