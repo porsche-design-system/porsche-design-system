@@ -1,0 +1,36 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+
+export const metadata = {
+  title: 'Canvas - Porsche Design System',
+  description: 'Learn how to properly use the Canvas component with best practices and guidelines for effective design and user experience.'
+}
+
+# Canvas <ComponentStatus tagName="p-canvas"></ComponentStatus>
+
+<TableOfContents headings={[]} />
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of the p-canvas layout component in various application contexts.
+
+### Do:
+
+- Use p-canvas to structure complex application layouts with sidebars, headers, and footers in a consistent, responsive manner.
+- Use named slots (sidebar-start, sidebar-end, header-start, footer, etc.) to separate concerns and improve maintainability.
+- Use the -p-canvas-grid utility class to create a 12-column layout inside the canvas content or footer areas.
+- Combine p-canvas with CSS Grid column helpers (e.g. grid-column: span 4) to align content efficiently.
+- Use the sidebarStartOpen and sidebarEndOpen bindings to dynamically control sidebar behavior based on viewport size or user actions.
+- Customize layout widths via CSS variables like --p-canvas-sidebar-start-width and --p-canvas-sidebar-end-width to match your design needs.
+- Use slot="background" for decorative media like images or videos that sit below the main content, enhancing visual appeal.
+- Consider keyboard and focus management when using dynamic flyouts or sidebars, especially on mobile.
+
+### Don’t:
+
+- Don’t use p-canvas for simple or static content pages where a standard layout is sufficient.
+- Don’t place critical content only inside sidebars or sticky areas without providing access via the main layout.
+- Don’t rely solely on custom styling; instead, use provided slots and layout classes to maintain consistency.
+- Don’t nest p-canvas within another p-canvas; this may lead to unpredictable layout behavior.
+- Don’t overload the p-canvas with too many sticky elements that compete for screen space, especially on smaller viewports.
+- Don’t use -p-canvas-grid outside of canvas slots—it is experimental and might be removed in future releases.
+- Don’t override CSS variables globally without scoping, as this can break other usages in your application.

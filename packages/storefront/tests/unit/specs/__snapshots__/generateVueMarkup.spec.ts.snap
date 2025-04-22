@@ -1,0 +1,93 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`generateVueMarkup() > should generate correct Vue markup for button 1`] = `
+{
+  "eventHandlers": "  const onClick = () => {
+    open.value = true;
+  }
+  const onDismiss = () => {
+    open.value = false;
+  }",
+  "imports": "  import { ref } from 'vue';
+  import { PBanner, PButton } from '@porsche-design-system/components-vue';",
+  "markup": "  <PButton :aria="{'aria-haspopup': 'true', 'aria-label': 'Some more descriptive label'}" type="button" :compact="true" icon="add" @click="onClick">
+    Open Banner
+  </PButton>
+
+  <PBanner :open="open" :dismissButton="false" heading="Some heading" headingTag="h4" state="warning" @dismiss="onDismiss"></PBanner>",
+  "states": "  const open = ref(undefined);",
+  "style": "",
+}
+`;
+
+exports[`generateVueMarkup() > should generate correct Vue markup for carousel 1`] = `
+{
+  "eventHandlers": "",
+  "imports": "  import { PCarousel } from '@porsche-design-system/components-vue';",
+  "markup": "  <PCarousel heading="Some heading" :intl="{'slideLabel': 'Slide %s von %s', 'prev': 'Vorheriger Slide', 'next': 'Nächster Slide', 'first': 'Zum ersten Slide', 'last': 'Zum letzten Slide'}">
+    <div class="slide">
+      Slide 1
+    </div>
+    <div class="slide">
+      Slide 2
+    </div>
+    <div class="slide">
+      Slide 3
+    </div>
+  </PCarousel>
+
+",
+  "states": "",
+  "style": "<style>  .slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #00b0f4;
+    height: 150px;
+    color: #010205;
+  }</style>",
+}
+`;
+
+exports[`generateVueMarkup() > should generate correct Vue markup for flyout 1`] = `
+{
+  "eventHandlers": "  const onClick = () => {
+    open.value = true;
+  }
+  const onDismiss = () => {
+    open.value = false;
+  }",
+  "imports": "  import { ref } from 'vue';
+  import { PButton, PButtonGroup, PFlyout, PHeading, PText } from '@porsche-design-system/components-vue';",
+  "markup": "  <PButton type="button" :aria="{'aria-haspopup': 'dialog'}" @click="onClick">
+    Open Flyout
+  </PButton>
+
+  <PFlyout :open="open" :aria="{'aria-label': 'Some Heading'}" @dismiss="onDismiss">
+    <PHeading slot="header" size="large" tag="h2">
+      Some Heading
+    </PHeading>
+    <PText>
+      Some Content Begin
+    </PText>
+    <div :style="{'width': '10px', 'height': '120vh', 'background': 'deeppink'}"></div>
+    <PText>
+      Some Content End
+    </PText>
+    <PButtonGroup slot="footer">
+      <PButton type="button">
+        Proceed
+      </PButton>
+      <PButton type="button" variant="secondary">
+        Cancel
+      </PButton>
+    </PButtonGroup>
+    <PText slot="sub-footer">
+      Some additional Sub-Footer
+    </PText>
+  </PFlyout>",
+  "states": "  const open = ref(undefined);",
+  "style": "",
+}
+`;

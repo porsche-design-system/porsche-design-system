@@ -1,0 +1,117 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Tabs Bar: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Tabs Bar component',
+};
+
+# Tabs Bar <ComponentStatus tagName="p-tabs-bar"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+
+## Accessibility support
+
+### Keyboard
+
+#### Tabs Bar as a tabbed interface
+
+| Key / state                 | Function                                                                                                                                                            |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Tab`                       | - Moves focus to the active tab.<br/> - When the tab list contains the focus, moves focus to the next element in the tab sequence, which is the `tabpanel` element. |
+| `Right Arrow`, `Left Arrow` | - Moves focus to the next tab.<br/> - Activates the newly focused tab.<br/> - If focus is on the last tab, moves focus to the first tab.                            |
+| `Home`, `End`               | - Moves focus to the first/last tab and activates it.                                                                                                               |
+
+#### Tabs Bar as link list
+
+| Key / state        | Function                                             |
+| ------------------ | ---------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to next (or previous) focusable element. |
+| `Enter`            | Activates the link.                                  |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                      | Usage                                                                                   |
+| ------------------------- | --------------------------------------------------------------------------------------- |
+| `role="tablist"`          | Indicates that the element serves as a container for a set of tabs.                     |
+| `role="tab"`              | Indicates the button serves as a tab control.                                           |
+| `aria-selected="BOOLEAN"` | Indicates the tab is selected/deselected and its associated tabpanel is visible/hidden. |
+
+## Development considerations
+
+### ARIA enhancements if used as a tabbed interface
+
+The `p-tabs-bar` component is detached from the content (`tabpanel`) which belongs to the active tab. To be truly
+accessible you need to provide additional ARIA attributes, because every tab (`button`) needs an `aria-controls`
+attribute which points to the corresponding `id` of the `tabpanel`. The content placeholder needs the `role="tabpanel"`
+and the attribute `aria-labelledby` which points to the unique `id` of the corresponding tab (`button`).
+
+You must also take care of the **focus handling** of the `tabpanel`. Therefor the active tab panel must have an
+`tabindex="0"` to receive keyboard focus and the focus indicator must be styled accordingly. Use the provided focus
+style like this:
+
+```html
+<p-tabs-bar active-tab-index="0">
+  <button type="button" id="tab-item-0" aria-controls="tab-panel-0">Tab One</button>
+  <button type="button" id="tab-item-1" aria-controls="tab-panel-1">Tab Two</button>
+  <button type="button" id="tab-item-2" aria-controls="tab-panel-2">Tab Three</button>
+</p-tabs-bar>
+<div id="tab-panel-0" role="tabpanel" tabindex="0" aria-labelledby="tab-item-0">
+  <p-text>Your content of Tab 1</p-text>
+</div>
+<div id="tab-panel-1" role="tabpanel" hidden tabindex="-1" aria-labelledby="tab-item-1">
+  <p-text>Your content of Tab 2</p-text>
+</div>
+<div id="tab-panel-2" role="tabpanel" hidden tabindex="-1" aria-labelledby="tab-item-2">
+  <p-text>Your content of Tab 3</p-text>
+</div>
+```
+
+```scss
+p-tabs-bar ~ [tabindex='0'][role='tabpanel'] {
+  @include pds-focus;
+}
+```
+
+### ARIA enhancements if used as a link list
+
+#### Route based navigation
+
+If the `p-tabs-bar` is used as a link list, the semantic of that UI component changes completely - from a **tabbed
+interface** where content changes happen **on-site** to a normal **list of links** where content changes are
+**route-based**. Therefor additional ARIA attributes **must not** be provided for tab identification! The `p-tabs-bar`
+component manages this also internally.
+
+To enhance accessibility even further, an `aria-current="page"` attribute should be provided to the active link.
+
+```html
+<p-tabs-bar>
+  <a href="https://porsche.com" target="_blank" aria-current="page">Tab One</a>
+  <a href="https://porsche.com" target="_blank">Tab Two</a>
+  <a href="https://porsche.com" target="_blank">Tab Three</a>
+</p-tabs-bar>
+```
+
+#### In-page jump navigation
+
+If the `p-tabs-bar` is used as an in-page jump navigation, you should follow the same rules as for the route-based
+variant except that `aria-current="page"` should not be used.
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |

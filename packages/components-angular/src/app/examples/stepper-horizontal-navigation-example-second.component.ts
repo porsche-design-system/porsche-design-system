@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 import type { LabelState } from './stepper-horizontal-navigation-example-start.component';
 
 const secondSteps: LabelState[] = [
@@ -17,7 +18,8 @@ const secondSteps: LabelState[] = [
       }}</p-stepper-horizontal-item>
     </p-stepper-horizontal>
   `,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
 })
 export class StepperHorizontalNavigationExampleSecondComponent {
   steps = secondSteps;

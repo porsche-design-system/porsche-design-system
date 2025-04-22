@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { type ScrollerScrollToPosition, PScroller, PTagDismissible } from '@porsche-design-system/components-vue';
+import {
+  PButton,
+  PScroller,
+  PTagDismissible,
+  type ScrollerScrollToPosition,
+} from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
 const scrollToPosition = ref<ScrollerScrollToPosition>({
@@ -12,9 +17,9 @@ const onClick = (scrollPosition: number): void => {
 </script>
 
 <template v-html="style">
-  <button type="button" @click="onClick(0)">Scroll to start</button>
-  <button type="button" @click="onClick(220)">Scroll to middle</button>
-  <button type="button" @click="onClick(720)">Scroll to end</button>
+  <PButton type="button" @click="onClick(0)" :compact="true">Scroll to start</PButton>
+  <PButton type="button" @click="onClick(220)" :compact="true">Scroll to middle</PButton>
+  <PButton type="button" @click="onClick(720)" :compact="true">Scroll to end</PButton>
 
   <div :style="{ maxWidth: '400px', whiteSpace: 'nowrap' }">
     <PScroller :scrollToPosition="scrollToPosition">

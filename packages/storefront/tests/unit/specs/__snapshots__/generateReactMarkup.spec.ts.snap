@@ -1,0 +1,95 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`generateReactMarkup() > should generate correct React markup for button 1`] = `
+{
+  "eventHandlers": "  const onClick = () => {
+    setOpen(true);
+  }
+  const onDismiss = () => {
+    setOpen(false);
+  }",
+  "imports": "
+import { useState } from 'react';
+import { PBanner, PButton } from '@porsche-design-system/components-react';",
+  "markup": "      <PButton aria={{'aria-haspopup': 'true', 'aria-label': 'Some more descriptive label'}} type="button" compact={true} icon="add" onClick={onClick}>
+        Open Banner
+      </PButton>
+
+      <PBanner open={open} dismissButton={false} heading="Some heading" headingTag="h4" state="warning" onDismiss={onDismiss}></PBanner>",
+  "states": "  const [open, setOpen] = useState(undefined);",
+}
+`;
+
+exports[`generateReactMarkup() > should generate correct React markup for carousel 1`] = `
+{
+  "eventHandlers": "",
+  "imports": "
+import { PCarousel } from '@porsche-design-system/components-react';",
+  "markup": "      <PCarousel heading="Some heading" intl={{'slideLabel': 'Slide %s von %s', 'prev': 'Vorheriger Slide', 'next': 'Nächster Slide', 'first': 'Zum ersten Slide', 'last': 'Zum letzten Slide'}}>
+        <div className="slide">
+          Slide 1
+        </div>
+        <div className="slide">
+          Slide 2
+        </div>
+        <div className="slide">
+          Slide 3
+        </div>
+      </PCarousel>
+
+      <style>
+{\`        .slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #00b0f4;
+    height: 150px;
+    color: #010205;
+  }\`}
+      </style>",
+  "states": "",
+}
+`;
+
+exports[`generateReactMarkup() > should generate correct React markup for flyout 1`] = `
+{
+  "eventHandlers": "  const onClick = () => {
+    setOpen(true);
+  }
+  const onDismiss = () => {
+    setOpen(false);
+  }",
+  "imports": "
+import { useState } from 'react';
+import { PButton, PButtonGroup, PFlyout, PHeading, PText } from '@porsche-design-system/components-react';",
+  "markup": "      <PButton type="button" aria={{'aria-haspopup': 'dialog'}} onClick={onClick}>
+        Open Flyout
+      </PButton>
+
+      <PFlyout open={open} aria={{'aria-label': 'Some Heading'}} onDismiss={onDismiss}>
+        <PHeading slot="header" size="large" tag="h2">
+          Some Heading
+        </PHeading>
+        <PText>
+          Some Content Begin
+        </PText>
+        <div style={{'width': '10px', 'height': '120vh', 'background': 'deeppink'}}></div>
+        <PText>
+          Some Content End
+        </PText>
+        <PButtonGroup slot="footer">
+          <PButton type="button">
+            Proceed
+          </PButton>
+          <PButton type="button" variant="secondary">
+            Cancel
+          </PButton>
+        </PButtonGroup>
+        <PText slot="sub-footer">
+          Some additional Sub-Footer
+        </PText>
+      </PFlyout>",
+  "states": "  const [open, setOpen] = useState(undefined);",
+}
+`;

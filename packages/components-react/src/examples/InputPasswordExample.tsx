@@ -1,4 +1,4 @@
-import { PInputPassword, PText } from '@porsche-design-system/components-react';
+import { PButton, PInputPassword, PText } from '@porsche-design-system/components-react';
 import { type FormEvent, useState } from 'react';
 
 export const InputPasswordExamplePage = (): JSX.Element => {
@@ -14,8 +14,8 @@ export const InputPasswordExamplePage = (): JSX.Element => {
     <>
       <form onSubmit={onSubmit}>
         <PInputPassword name="some-name" label="Some Label"></PInputPassword>
-        <button type="submit">Submit</button>
-        <button type="reset">Reset</button>
+        <PButton type="submit">Submit</PButton>
+        <PButton type="reset">Reset</PButton>
       </form>
 
       <PText>Last submitted data: {lastSubmittedData}</PText>

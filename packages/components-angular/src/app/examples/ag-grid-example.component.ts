@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { PorscheDesignSystemModule, THEME_TOKEN } from '@porsche-design-system/components-angular';
 import { pdsTheme } from '@porsche-design-system/components-angular/ag-grid';
 import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
-import { type ICellRendererAngularComp } from 'ag-grid-angular';
+import { AgGridAngular, type ICellRendererAngularComp } from 'ag-grid-angular';
 import {
   AllEnterpriseModule,
   type ColDef,
@@ -114,7 +114,8 @@ class ButtonRenderer implements ICellRendererAngularComp {
     />
   </div>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule, AgGridAngular, AsyncPipe],
 })
 export class AgGridExampleComponent {
   protected readonly theme$ = inject(THEME_TOKEN);

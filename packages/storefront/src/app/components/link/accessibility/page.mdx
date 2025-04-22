@@ -1,0 +1,62 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Link: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Link component',
+};
+
+# Link <ComponentStatus tagName="p-link"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                 |
+| ------------------ | -------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
+| `Enter`            | Activates the link.                                      |
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA            | Usage                                                       |
+| --------------- | ----------------------------------------------------------- |
+| `aria-label`    | Defines a string value that labels the interactive element. |
+| `aria-current`  | Exposes the current state of the link.                      |
+| `aria-haspopup` | Defines that the link opens a popup (e.g. `dialog`).        |
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                 | Usage                                                                   |
+| -------------------- | ----------------------------------------------------------------------- |
+| `aria-hidden="true"` | When the `icon` prop is set, the icon is hidden from the screen reader. |
+
+## Development considerations
+
+### Labelling
+
+If the text of a link does not clearly indicate what the link's target is, add a brief, descriptive label using the
+`aria` property with the `aria-label` value to provide more context for e.g. screen reader users. Phrases like "Detail"
+or "Click" can be unclear when read out of context by a screen reader. In such instances, provide an alternative text
+that offers more detailed information, such as "Details of product XYZ."
+
+## Tests
+
+### Automated
+
+| Technology                            | Support                                              |
+| ------------------------------------- | ---------------------------------------------------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅                                                   |
+| High-Contrast Mode (light/dark)       | 🟠(Currently no outline visible in variant "ghost".) |
+| Text-Zoom (200%)                      | ✅                                                   |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |

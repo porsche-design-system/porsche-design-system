@@ -5,7 +5,7 @@ import type { PropOptions } from '@porsche-design-system/components/dist/types/s
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_CHUNK, type TagName } from '@porsche-design-system/shared';
 import { kebabCase } from 'change-case';
 import { globbySync } from 'globby';
-import type { ComponentMeta, ComponentsMeta, PropMeta, SlotMeta } from '../src/types/component-meta';
+import type { ComponentMeta, ComponentsMeta, CssVariableMeta, PropMeta, SlotMeta } from '../src/types/component-meta';
 import { isDeprecatedComponent } from '../src/utils';
 
 declare namespace NodeJS {
@@ -23,6 +23,7 @@ global.ROLLUP_REPLACE_IS_STAGING = 'staging';
 // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
 const sourceDirectory = path.resolve('../components/src/components');
 const componentFileNames = globbySync(`${sourceDirectory}/**/*.tsx`);
+const componentStylesFileNames = globbySync(`${sourceDirectory}/**/*-styles.ts`);
 
 const parsePropOptions = (propString?: string): PropOptions | undefined =>
   propString ? (JSON.parse(propString.replace(/(\w+):/g, '"$1":').replace(/'/g, '"')) as PropOptions) : undefined;
@@ -65,8 +66,23 @@ const generateComponentMeta = (): void => {
     {} as Record<TagName, string>
   );
 
+  const componentStylesSourceCode: Record<TagName, string> = componentStylesFileNames.reduce(
+    (result, filePath) => {
+      const tagName: TagName = ('p-' + path.basename(filePath).replace('-styles.ts', '')) as TagName;
+
+      // get rid of functional components like StateMessage
+      if (TAG_NAMES.includes(tagName)) {
+        result[tagName] = fs.readFileSync(filePath, 'utf8');
+      }
+
+      return result;
+    },
+    {} as Record<TagName, string>
+  );
+
   const meta: ComponentsMeta = TAG_NAMES.reduce((result, tagName) => {
     const source = componentSourceCode[tagName];
+    const stylesSource = componentStylesSourceCode[tagName];
 
     const [deprecated, rawDeprecationMessage] = isDeprecatedComponent(source);
     const isDeprecated = !!deprecated;
@@ -566,6 +582,8 @@ const generateComponentMeta = (): void => {
 
     const { hasSlot, slotsMeta } = extractSlotInformation(source);
 
+    const cssVariablesMeta = extractCssVariableInformation(stylesSource);
+
     const controlledMeta = extractControlledInformation(source);
 
     result[tagName] = {
@@ -588,6 +606,7 @@ const generateComponentMeta = (): void => {
       ...(Object.keys(eventsMeta).length && { eventsMeta }), // new format
       hasEvent,
       ...(controlledMeta.length && { controlledMeta }),
+      ...(Object.keys(cssVariablesMeta).length && { cssVariablesMeta }),
       hasAriaProp,
       hasObserveAttributes,
       hasElementInternals,
@@ -643,5 +662,22 @@ const extractSlotInformation = (
 
 const extractControlledInformation = (source: string): ComponentMeta['controlledMeta'] =>
   Array.from(source.matchAll(/@controlled\s*({.*})/g)).map(([, controlledInfo]) => JSON.parse(controlledInfo));
+
+const extractCssVariableInformation = (source: string): ComponentMeta['cssVariablesMeta'] => {
+  // Corresponds to the documented type since the name will be the object key in CssVariableMeta
+  type DocumentedCssVariableMeta = {
+    name: string;
+  } & CssVariableMeta;
+  const cssVariables: DocumentedCssVariableMeta[] = Array.from(source.matchAll(/@css-variable\s*({.*})/g)).map(
+    ([, cssVariableInfo]) => JSON.parse(cssVariableInfo)
+  );
+
+  // Convert into cssVariablesMeta format
+  return cssVariables.reduce<ComponentMeta['cssVariablesMeta']>((acc, obj) => {
+    const { name, ...rest } = obj;
+    acc[name] = rest;
+    return acc;
+  }, {});
+};
 
 generateComponentMeta();

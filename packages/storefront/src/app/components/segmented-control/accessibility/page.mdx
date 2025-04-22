@@ -1,0 +1,65 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Segmented Control: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Segmented Control component',
+};
+
+# Segmented Control <ComponentStatus tagName="p-segmented-control"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                 |
+| ------------------ | -------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
+| `Space`, `Enter`   | Activates the control.                                   |
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA         | Usage                                                       |
+| ------------ | ----------------------------------------------------------- |
+| `aria-label` | Defines a string value that labels the control item itself. |
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                     | Usage                                       |
+| ------------------------ | ------------------------------------------- |
+| `role="group"`           | Identifies a set of user interface objects. |
+| `aria-pressed="BOOLEAN"` | Provides the current state of the control.  |
+
+## Development considerations
+
+### Labelling
+
+It's recommended to provide a descriptive label to the wrapper component using `aria-label` to provide more context for
+assistive technologies, e.g.: `<p-segmented-control aria-label="Choose a t-shirt size">`.
+
+If a more detailed label is needed for each **control item**, use the `aria` property on the control item itself, e.g.:
+`<p-segmented-control-item value="xs" aria="{ 'aria-label': 'Size x-small'}">XS</p-segmented-control-item>`.
+
+If an **icon only** is used, it is mandatory to also provide an accessible name (aria-label) through the `aria` property
+of the control item.
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |

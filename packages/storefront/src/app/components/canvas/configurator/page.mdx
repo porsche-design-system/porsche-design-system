@@ -1,0 +1,31 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import {ComponentExample} from "@/components/playground/ComponentExample";
+import {canvasExample} from "@porsche-design-system/shared/examples";
+
+export const metadata = {
+  title: 'Canvas - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Canvas component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Canvas <ComponentStatus tagName="p-canvas"></ComponentStatus>
+
+The `p-canvas` is an experimental layout component for productive web applications.
+
+The canvas component provides a CSS utility class which comes with a basic 12 columns
+[CSS grid](https://css-tricks.com/snippets/css/complete-guide-grid) and
+[CSS container-type](https://css-tricks.com/css-container-queries). The utility class can be used in default or footer
+slot to align its content.
+
+```scss
+.-p-canvas-grid // experimental, might be removed in a future release
+```
+
+The canvas component has some values which can be overwritten by **CSS Variables**.
+
+```scss
+--p-canvas-sidebar-start-width: 220px;
+--p-canvas-sidebar-end-width: 180px;
+```
+
+<ComponentExample codeSample={canvasExample} disableDemo={true} />

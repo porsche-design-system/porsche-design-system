@@ -1,4 +1,9 @@
-import { type ScrollerScrollToPosition, PScroller, PTagDismissible } from '@porsche-design-system/components-react';
+import {
+  PButton,
+  PScroller,
+  PTagDismissible,
+  type ScrollerScrollToPosition,
+} from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
 
 export const ScrollerExamplePage = (): JSX.Element => {
@@ -28,15 +33,15 @@ export const ScrollerExamplePage = (): JSX.Element => {
     <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
 
-      <button type="button" onClick={onClick(0)}>
+      <PButton type="button" onClick={onClick(0)} compact={true}>
         Scroll to start
-      </button>
-      <button type="button" onClick={onClick(220)}>
+      </PButton>
+      <PButton type="button" onClick={onClick(220)} compact={true}>
         Scroll to middle
-      </button>
-      <button type="button" onClick={onClick(720)}>
+      </PButton>
+      <PButton type="button" onClick={onClick(720)} compact={true}>
         Scroll to end
-      </button>
+      </PButton>
 
       <div style={{ maxWidth: '400px', whiteSpace: 'nowrap' }}>
         <PScroller scrollToPosition={scrollToPosition}>

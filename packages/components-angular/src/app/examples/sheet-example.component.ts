@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-sheet-example',
@@ -10,7 +11,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </p-sheet>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
 })
 export class SheetExampleComponent {
   isSheetOpen = false;

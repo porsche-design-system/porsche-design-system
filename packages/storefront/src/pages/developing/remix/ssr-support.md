@@ -1,3 +1,0 @@
-# Remix
-
-## SSR Support

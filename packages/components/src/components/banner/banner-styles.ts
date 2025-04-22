@@ -9,7 +9,6 @@ import {
   motionDurationModerate,
   motionEasingOut,
 } from '@porsche-design-system/styles';
-import { getCss } from '../../utils';
 import { BANNER_Z_INDEX } from '../../constants';
 import {
   addImportantToEachRule,
@@ -20,7 +19,12 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { getBannerPopoverResetStyles } from '../../styles/banner-popover-reset-styles';
+import { getCss } from '../../utils';
 
+/**
+ * @css-variable {"name": "--p-banner-position-top", "description": "Position top of banner", "defaultValue": "56px"}
+ * @css-variable {"name": "--p-banner-position-bottom", "description": "Position bottom of banner. Only has an effect below breakpoint 's'.", "defaultValue": "56px"}
+ */
 const cssVariableTop = '--p-banner-position-top';
 const cssVariableBottom = '--p-banner-position-bottom';
 const cssVariableZIndex = '--p-internal-banner-z-index';

@@ -1,0 +1,46 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Table: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Table component',
+};
+
+# Table <ComponentStatus tagName="p-table"></ComponentStatus>
+
+<TableOfContents headings={['Accessibility support', 'Tests']} />
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                           |
+| ------------------ | -------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) sort button. |
+| `Enter`, `Space`   | Changes sorting direction.                         |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                                             | Usage                                                |
+| ------------------------------------------------ | ---------------------------------------------------- |
+| `aria-label="STRING"`, `aria-labelledby="IDREF"` | Captions are provided by aria labels.                |
+| `aria-sort="VALUE"`                              | Provides the sorting direction of the column header. |
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support                                                                                                                                                                                                                                                                        |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Keyboard                        | ✅                                                                                                                                                                                                                                                                             |
+| Screen reader (VoiceOver, NVDA) | 🟠 (Partially supported, [Safari issues 1](https://adrianroselli.com/2022/07/its-mid-2022-and-browsers-mostly-safari-still-break-accessibility-via-display-properties.html), [Safari issues 2](https://adrianroselli.com/2018/02/tables-css-display-properties-and-aria.html)) |

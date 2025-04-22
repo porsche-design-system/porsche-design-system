@@ -45,6 +45,16 @@ export type ControlledMeta = {
   isInternallyMutated?: boolean; // Flag indicating whether the controlled props are internally mutated. If true, the component can update its controlled props internally without relying on the external event.
 };
 
+/**
+ * @css-variable Annotation specified in `<component>.styles.ts`. Documented type includes a `name: string` field which is transformed into key of `cssVariablesMeta`.
+ * Metadata defining the relevant slot information in a component.
+ */
+export type CssVariableMeta = {
+  description?: string;
+  defaultValue?: string;
+  isDeprecated?: boolean;
+};
+
 export type ComponentMeta = {
   isDeprecated?: boolean;
   deprecationMessage?: string;
@@ -71,6 +81,8 @@ export type ComponentMeta = {
   eventsMeta?: { [eventName: string]: EventMeta }; // new format
   hasEvent: boolean;
   controlledMeta?: ControlledMeta[];
+  /** Each object key corresponds to a cssVariable. */
+  cssVariablesMeta?: { [cssVariableName: string]: CssVariableMeta };
   hasAriaProp: boolean;
   hasObserveAttributes: boolean;
   /** Indicates if a component uses the ElementInternals API */

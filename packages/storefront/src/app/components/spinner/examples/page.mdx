@@ -1,0 +1,38 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import {spinnerStory, spinnerStoryResponsiveSize, spinnerStorySize} from "@/app/components/spinner/spinner.stories";
+import {ComponentStory} from "@/components/playground/ComponentStory";
+
+export const metadata = {
+  title: 'Spinner - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Spinner component.'
+}
+
+# Spinner <ComponentStatus tagName="p-spinner"></ComponentStatus>
+
+<TableOfContents headings={["Size","Technical notes"]} />
+
+## Size
+
+There are predefined sizes for the component available which should cover most use cases. If a specific size is needed,
+the size can be set to `inherit` to specify the text size from outside.
+
+<ComponentStory story={spinnerStorySize} />
+
+### Responsive
+
+The `size` property can also be used on different major breakpoints `xs`, `s`, `m`, `l`, `xl`.
+
+<ComponentStory story={spinnerStoryResponsiveSize} />
+
+## Technical notes
+
+For automated visual regression tests the spinner animation can be disabled by setting a global css variable:
+
+```
+:root {
+  --p-animation-duration: 0s !important;
+}
+```
+
