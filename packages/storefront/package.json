@@ -31,14 +31,18 @@
     "clean:build": "rm -rf ./dist && rm -rf ./.next"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "3.28.0-rc.1",
+    "@porsche-design-system/components-react": "3.28.0-rc.1",
+    "@porsche-design-system/fallbacks": "0.0.0",
+    "@porsche-design-system/shared": "0.0.0",
     "react-syntax-highlighter": "^15.6.1",
     "next": "15.2.4",
     "algoliasearch": "^5.1.1",
+    "@algolia/cache-in-memory": "^4.24.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-instantsearch": "^7.15.4",
-    "react-instantsearch-nextjs": "^0.4.5"
+    "react-instantsearch-nextjs": "^0.4.5",
+    "@stackblitz/sdk": "1.8.2"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
