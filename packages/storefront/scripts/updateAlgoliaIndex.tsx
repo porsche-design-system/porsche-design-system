@@ -17,7 +17,7 @@ const extractContentAndSections = (
     const htmlContent = fs.readFileSync(filePath, 'utf-8');
     const $ = cheerio.load(htmlContent);
 
-    // Extract content from #main-content until first section heading
+    // Extract content from #main-content
     $('#main-content')
       .children()
       .each((_, el) => {
@@ -155,7 +155,7 @@ const attributeForDistinct: keyof AlgoliaRecord = 'page';
 
 const customRanking = ['desc(category)', 'desc(page)', 'desc(name)', 'desc(tab)', 'desc(section)', 'desc(content)'];
 export const ALGOLIA_INDEX_NAME = process.env.P_CURRENT_BRANCH?.replace('/', '_') || 'localhost';
-const _uploadAndOverrideRecords = (records: AlgoliaRecord[]) => {
+const uploadAndOverrideRecords = (records: AlgoliaRecord[]) => {
   const client = algoliasearch(process.env.ALGOLIA_APP_ID as string, process.env.ALGOLIA_API_KEY as string);
   // const index = client.index.initIndex(ALGOLIA_INDEX_NAME);
   client
@@ -186,14 +186,14 @@ const _uploadAndOverrideRecords = (records: AlgoliaRecord[]) => {
 };
 
 const updateAlgoliaIndex = () => {
-  const _records = generateAlgoliaRecords(sitemap);
+  const records = generateAlgoliaRecords(sitemap);
 
   //Uncomment this for easier debugging
-  // fs.writeFileSync(path.resolve(__dirname, 'algoliaRecords.json'), JSON.stringify(records, null, 2), {
+  // fs.writeFileSync(path.resolve(__dirname, 'algoliaRecords.json'), JSON.stringify(_records, null, 2), {
   //   encoding: 'utf8',
   // });
 
-  // uploadAndOverrideRecords(records);
+  uploadAndOverrideRecords(records);
 };
 
 updateAlgoliaIndex();
