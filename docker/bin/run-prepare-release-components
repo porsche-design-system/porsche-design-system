@@ -10,7 +10,7 @@ SCRIPT_DIR="$(cd `dirname ${0}` && pwd)"
 # set new version in components
 pushd "./packages/components"
   yarn version --no-git-tag-version --new-version "${1}"
-  sed -i -e "s/### \[Unreleased\]/### \[Unreleased\]\n\n### \[${1}\] - $(date +'%F')/" "./CHANGELOG.md"
+  sed -i -e "s/## \[Unreleased\]/## \[Unreleased\]\n\n## \[${1}\] - $(date +'%F')/" "./CHANGELOG.md"
 popd
 
 # set new version in components-js
