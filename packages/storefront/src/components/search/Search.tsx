@@ -3,6 +3,7 @@
 import { SearchInput } from '@/components/search/SearchInput';
 import { SearchResults } from '@/components/search/SearchResults';
 import { algoliaClient } from '@/lib/algolia/client';
+import { getBasePath } from '@/utils/getBasePath';
 import { PHeading, PModal } from '@porsche-design-system/components-react/ssr';
 import type { SearchOptions, SearchResponses } from 'algoliasearch-helper/types/algoliasearch';
 import type React from 'react';
@@ -65,13 +66,10 @@ export const Search = ({ isSearchOpen, onDismissSearch }: SearchProps) => {
   };
 
   const getAlgoliaIndexName = () => {
-    const baseHref = process.env.NEXT_PUBLIC_BASE_PATH ? `/${process.env.NEXT_PUBLIC_BASE_PATH}/` : '/';
-    // on localhost baseHref is '/'
-    return baseHref.includes('/issue/')
-      ? 'latest'
-      : baseHref.length > 1
-        ? baseHref.slice(1, -1).replace('/', '_')
-        : 'latest';
+    const path = getBasePath();
+    // For local builds
+    if (!path) return 'nightly';
+    return path;
   };
 
   return (
