@@ -1,0 +1,40 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator} from "@/components/playground/Configurator";
+import { modalSlotStories, modalStory} from "@/app/components/modal/modal.stories";
+import {Notification} from "@/components/common/Notification";
+
+export const metadata = {
+  title: 'Modal - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Modal component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Modal <ComponentStatus tagName="p-modal"></ComponentStatus>
+
+The `p-modal` is a temporary overlay to focus the user's attention on one task while interactions with the underlying
+page are blocked. It is only used as highly disruptive modal notification to present important information until
+dismissed. Or as overlay to confirm critical user actions, such as confirming an irreversible choice. It should be used
+thoughtfully and sparingly.
+
+It is a controlled component. This grants flexible control over the modal's behavior especially whether it should stay
+open after user interaction like submission of a form.
+
+<Notification heading="Scroll-lock" heading-tag="h2" state="warning">
+  This component sets <code>overflow: hidden</code> on the body when opened in order to prevent background scrolling.<br />
+  This doesn't work completely reliable under iOS but is the most stable solution.<br />
+  Feel free to address this issue in an Open Source PR, if you can provide a better solution. <b><a href="https://github.com/porsche-design-system/porsche-design-system/blob/main/packages/components/src/utils/setScrollLock.ts">Current implementation</a></b>
+</Notification>
+
+Following **web standards**, the component uses the native `<dialog />` element internally which ensures proper focus
+handling including a **focus trap**. In addition, it's rendered on the `#top-layer` which ensures the element to be on
+top of the page independent of where `p-modal` is placed in the DOM hierarchy (`z-index` is not relevant anymore and
+won't have any effect).
+
+The most important property of `p-modal` is its `open` property. When it's set to `true` the modal will be visible. In
+order to get notified when the modal gets closed by clicking the `x` button, the backdrop or by pressing the `Escape`
+key you need to register an event listener for the `dismiss` event which is emitted by `p-modal`.
+
+The size of `p-modal` adjusts itself to the content with a predefined **min/max width** which aligns to the
+**[Porsche Grid](/styles/grid/)**.
+
+<Configurator tagName="p-modal" story={modalStory} slotStories={modalSlotStories} />

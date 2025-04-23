@@ -1,17 +1,9 @@
-import { formElementLayeredGap } from '@porsche-design-system/components/src/styles/form-styles';
 import { type Styles, create } from 'jss';
 import jssPluginCamelCase from 'jss-plugin-camel-case';
 import jssPluginGlobal from 'jss-plugin-global';
 import jssPluginNested from 'jss-plugin-nested';
 import jssPluginSortMediaQueries from 'jss-plugin-sort-css-media-queries';
-import {
-  getFocusStyle,
-  getHoverStyle,
-  getMediaQueryMax,
-  getMediaQueryMin,
-  getMediaQueryMinMax,
-  getSkeletonStyle,
-} from '../../../src/js';
+import { getFocusStyle, getHoverStyle, getMediaQueryMax, getMediaQueryMin, getMediaQueryMinMax } from '../../../src/js';
 
 const jss = create({
   plugins: [

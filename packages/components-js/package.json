@@ -109,6 +109,7 @@
     "typescript": "*",
     "webpack": "*",
     "vite": "*",
+    "vitest": "*",
     "gzip-size": "*"
   },
   "volta": {

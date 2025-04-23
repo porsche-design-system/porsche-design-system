@@ -1,5 +1,5 @@
+import { PButton, PCarousel } from '@porsche-design-system/components-react';
 import { useCallback, useState } from 'react';
-import { PCarousel } from '@porsche-design-system/components-react';
 
 export const CarouselExampleDynamicSlidesPage = (): JSX.Element => {
   const [amountOfSlides, setAmountOfSlides] = useState(3);
@@ -22,8 +22,8 @@ export const CarouselExampleDynamicSlidesPage = (): JSX.Element => {
         ))}
       </PCarousel>
 
-      <button type="button" onClick={onAddClick} children="Add slide" />
-      <button type="button" onClick={onRemoveClick} children="Remove last slide" />
+      <PButton type="button" onClick={onAddClick} children="Add slide" />
+      <PButton type="button" onClick={onRemoveClick} children="Remove last slide" />
     </>
   );
 };

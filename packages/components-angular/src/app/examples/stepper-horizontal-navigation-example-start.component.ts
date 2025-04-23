@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 export type LabelState = {
   label: string;
@@ -24,7 +25,8 @@ export const startSteps: LabelState[] = [
       <a routerLink="/stepper-horizontal-navigation-example-second-component">to second page</a>
     </p-link-pure>
   `,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
 })
 export class StepperHorizontalNavigationExampleStartComponent {
   steps = startSteps;

@@ -1,0 +1,69 @@
+import { TableOfContents } from "@/components/common/TableOfContents";
+
+export const metadata = {
+  title: 'FAQ - Porsche Design System',
+  description: 'Frequently asked questions about the Porsche Design System.',
+}
+
+# Faq
+
+<TableOfContents headings={["Who develops the Porsche Design System?","How can I get in contact with the Porsche Design System team?","How can I access the Porsche Design System files?","What is the release strategy and how are the issues prioritized?","What happens with contents marked as deprecated?","How often should I update?","How to handle older versions?","How do I submit bug reports or feature requests and how are they handled?"]} />
+
+To answer the most frequently asked questions the following list is constantly updated. Please read through before using
+the support and communication channels for questions. **Still missing anything? [We are happy to hear from you!](/help/support)**
+
+## Who develops the Porsche Design System?
+
+The Porsche Design System is developed and maintained centrally by a designated team from Porsche Digital GmbH in Germany
+and is under the responsibility of Dr. Ing. h.c. F. Porsche AG. In an open community, everyone is encouraged to participate
+and contribute to the Porsche Design System and give feedback at any time.
+
+## How can I get in contact with the Porsche Design System team?
+
+We want to enable continuous communication within the community. Therefore we offer different use-case-related
+communication channels to get in contact or ask for support or submit support requests. You can find all of them
+[in the support section](/help/support).
+
+## How can I access the Porsche Design System files?
+
+**Developer**
+The source code of the Porsche Design System is stored and developed within a public GitHub repository and distributed
+via npm packages. For further information, have a look at [Start Developing](/developing/introduction).
+
+**Designer**
+There is a Figma and a UXPin library available. For access and more details, have a look at
+[Start Designing](/designing/introduction).
+
+## What is the release strategy and how are the issues prioritized?
+
+All versioned releases of the Porsche Design System combine both design and code. All changes are based on the overall
+business goals and the actual needs of the teams. The upcoming release content is accessible in the
+[quarterly roadmap](/news/roadmap). The roadmap is not a delivery commitment and may be changed based on upcoming needs,
+feedback and associated requirements.
+
+## What happens with contents marked as deprecated?
+
+Please take a look at our [versioning and release strategy](/must-know/versioning).
+
+## How often should I update?
+
+As part of professional software development, it's recommended to update the
+`@porsche-design-system/components-{js|react|angular|vue}` npm package (like any other npm dependency) on a regular
+basis, e.g. every 2 weeks. This is important to get the latest bug fixes, security fixes and performance improvements as
+well as ensuring a harmonic visual appearance and user experience across different Porsche applications.
+
+## How to handle older versions?
+
+If you are still running older versions (e.g. `@porsche/ui-kit-core`–`v0`, `@porsche/ui-kit-react`–`v0`,
+`@porsche-design-system/components-{js|react|angular}@{v1|v2}`), we highly recommend updating to the latest Porsche
+Design System release if possible.
+
+## How do I submit bug reports or feature requests and how are they handled?
+
+Once you find a reproducible bug, you can
+[open an issue](https://github.com/porsche-design-system/porsche-design-system/issues/new/choose) or directly submit a
+fix as a pull request within the
+[public Porsche Design System repository](https://github.com/porsche-design-system/porsche-design-system). We will
+address and respond to new bug reports as soon as possible, usually within a few days. Bugs should be fixed within one
+sprint depending on current capacity planning. The best approach for urgent bugs is to fix them locally within your
+project and submit the fix or create a PR afterwards.

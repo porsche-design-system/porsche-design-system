@@ -1,0 +1,22 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import { scrollerStory } from "@/app/components/scroller/scroller.stories";
+
+export const metadata = {
+  title: 'Scroller - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Scroller component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Scroller <ComponentStatus tagName="p-scroller"></ComponentStatus>
+
+The `p-scroller` component forces its child nodes to be rendered horizontally next to each other. In case not enough
+viewport space is given a clickable scroll indicator is shown and the elements become scrollable.
+
+As soon as the slotted element(s) exceed the viewport / their respective container, scroll indicators are shown.
+
+If the `p-scroller` component is accessed by keyboard navigation and is focused, scrolling via `arrow right` and
+`arrow left` is possible. If `p-scroller` contains focusable element(s) these can be also accessed by keyboard
+navigation.
+
+<Configurator tagName="p-scroller" story={scrollerStory} />

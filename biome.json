@@ -15,7 +15,8 @@
       "./packages/components/src/types/aria-types.d.ts",
       "./packages/components-js/tests/unit/results/stats-raw.json",
       "./packages/components-react/projects/nextjs/routes.ts",
-      "./packages/components-react/projects/remix/app/routes/*"
+      "./packages/components-react/projects/remix/app/routes/*",
+      "./packages/storefront/**/*.css"
     ]
   },
   "formatter": {
@@ -95,7 +96,7 @@
       "**/components-vue/*",
       "**/crawler/*",
       "**/shared/*",
-      "**/storefront/*",
+      "**/storefront-old/*",
       "**/utilities/*"
     ]
   },

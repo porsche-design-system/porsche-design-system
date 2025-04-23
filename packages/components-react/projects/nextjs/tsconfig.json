@@ -4,9 +4,9 @@
     "allowJs": true,
     "noEmit": true,
     "jsx": "preserve",
-    "isolatedModules": true, // added by nextjs cli 🤷‍
-    "incremental": true, // added by nextjs cli 🤷‍
-    "lib": ["dom", "dom.iterable", "esnext"], // added by nextjs cli 🤷‍
+    "isolatedModules": true,
+    "incremental": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
     "plugins": [
       {
         "name": "next"

@@ -1,4 +1,4 @@
-import { type ConsoleMessage, type ElementHandle, type Locator, type Page } from '@playwright/test';
+import type { ConsoleMessage, ElementHandle, Locator, Page } from '@playwright/test';
 
 const consoleMessages: ConsoleMessage[] = [];
 
@@ -14,6 +14,6 @@ export const initConsoleObserver = (page: Page): void => {
 };
 export const getConsoleErrorsAmount = () => consoleMessages.length;
 
-export const getProperty = async <T>(element: Locator | ElementHandle, prop: string): Promise<T> => {
-  return element.evaluate((el, prop: string) => el[prop], prop);
+export const getProperty = async <T>(element: Locator, prop: string): Promise<T> => {
+  return element.evaluate((el, prop) => (el as any)[prop], prop);
 };

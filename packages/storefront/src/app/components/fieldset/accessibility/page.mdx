@@ -1,0 +1,38 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Fieldset: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Fieldset component',
+};
+
+# Fieldset <ComponentStatus tagName="p-fieldset"></ComponentStatus>
+
+<TableOfContents headings={["Accessibility support","Tests"]} />
+
+## Accessibility support
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                       | Usage                                                                                            |
+| -------------------------- | ------------------------------------------------------------------------------------------------ |
+| `role="alert"`             | When content is populated or changed in `state="error"`, the component announces it immediately. |
+| `aria-describedby="IDREF"` | References the accessible description when `state` message is provided.                          |
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Screen reader (VoiceOver, NVDA) | ✅      |

@@ -1,4 +1,4 @@
-import { expect, Page, test } from '@playwright/test';
+import { Page, expect, test } from '@playwright/test';
 import {
   addEventListener,
   getEventSummary,
@@ -14,7 +14,7 @@ const getTextarea = (page: Page) => page.locator('p-textarea textarea');
 test.describe('form', () => {
   test('should reset textarea value to its initial value on form reset', async ({ page }) => {
     await goto(page, 'textarea-example');
-    expect(await waitForComponentsReady(page)).toBe(2); // p-textarea and p-text
+    expect(await waitForComponentsReady(page)).toBe(4); // p-textarea and p-text + two p-buttons
 
     const name = 'name';
     const newValue = 'New value';
@@ -44,7 +44,7 @@ test.describe('form', () => {
 
   test('should include name & value in FormData submit', async ({ page }) => {
     await goto(page, 'textarea-example');
-    expect(await waitForComponentsReady(page)).toBe(2); // p-textarea and p-text
+    expect(await waitForComponentsReady(page)).toBe(4); // p-textarea and p-text + two p-buttons
     const host = getHost(page);
     const form = getForm(page);
     const testValue = 'test';

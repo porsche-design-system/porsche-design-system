@@ -1,0 +1,96 @@
+import { TableOfContents } from "@/components/common/TableOfContents";
+
+export const metadata = {
+  title: 'Vue: Getting started - Porsche Design System',
+  description: 'Start developing in Vue with the Porsche Design System.'
+}
+
+# Vue
+
+<TableOfContents headings={["Quick start","Integration","Plugin","When are Porsche Design System components initialized?"]} />
+
+## Quick start
+
+To build your own **Vue** application with the **Vue** components of the Porsche Design System, follow these steps:
+
+- Create a new application by executing:
+
+```bash
+# install with yarn:
+yarn create vite
+
+# install with npm:
+npm create vite
+```
+
+- Follow the installation wizard to set everything up:
+
+```
+✔ Package name: my-app
+✔ Select a framework: › Vue
+✔ Select a variant: › TypeScript
+```
+
+- Install the Porsche Design System within your project directory (e.g. "my-app"):
+
+```bash
+# install with yarn:
+cd my-app
+yarn add @porsche-design-system/components-vue
+
+# install with npm:
+cd my-app
+npm install @porsche-design-system/components-vue
+```
+
+You are ready to start building your own application.
+
+## Integration
+
+After adding the `@porsche-design-system/components-vue` package to your project, you've to extend your standard vue
+setup by the `PorscheDesignSystemProvider` by adding it to your `App.vue` file
+
+The following setup is a standard Vue setup with the following adaptions:
+
+Extend `App.vue` by the necessary `PorscheDesignSystemProvider`:
+
+```tsx
+// pages/App.vue
+
+<script setup lang="ts">
+  import AppComponent from './components/AppComponent.vue';
+  import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PorscheDesignSystemProvider>
+    <AppComponent />
+  </PorscheDesignSystemProvider>
+</template>
+```
+
+Change your AppComponent to use at least one Porsche Design System component, for example:
+
+```tsx
+// AppComponent.vue
+
+<script setup lang="ts">
+  import { ref } from 'vue';
+  import { PHeading } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PHeading>Heading</PHeading>
+</template>
+```
+
+Run `yarn vite` or `npm start` and check if the components are displayed correctly.
+
+## Plugin
+
+Currently, the plugin approach is in development.
+
+## When are Porsche Design System components initialized?
+
+See [componentsReady()](/developing/components-ready) for further information.
+

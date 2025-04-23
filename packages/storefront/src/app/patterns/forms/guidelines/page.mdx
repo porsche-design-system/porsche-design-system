@@ -1,0 +1,184 @@
+import { TableOfContents } from "@/components/common/TableOfContents";
+
+export const metadata = {
+  title: 'Forms: Guidelines - Porsche Design System',
+  description: 'Learn how to design user-centric forms for Porsche web applications.',
+}
+
+# Forms
+
+<TableOfContents headings={["Tips for Designing User-Centric Forms:","Tips for a Effective Form Layout:","Tips for Effective Form Validation:","Tips for Writing Effective Error Messages:","Writing examples","Accessibility","Related components"]} />
+
+Forms are an essential component for gathering information from users or allowing them to configure options.
+Well-designed forms enhance user experience and are crucial for brand reputation. The perfect combination of structure,
+form elements, labels, help, and feedback are necessary for creating effective forms and increasing conversions. Common
+cases for form use include account login or registration, contact forms, checkout processes, setting configuration, and
+surveys.
+
+Porsche web applications should follow a basic structure consisting of form fields, labels, good feedback, and
+call-to-actions. The labels should be short and descriptive, while the call-to-action buttons should be emphasized and
+have clear labels, informing users about what to expect.
+
+---
+
+## Tips for Designing User-Centric Forms:
+
+- Only ask for relevant information.
+- Start with easy-to-fill fields first.
+- Pre-fill or auto-detect information whenever possible.
+- Keep the form intuitive and logical.
+- Auto-focus the first field by default.
+- Automating actions when possible (e.g. autocorrect, autocomplete).
+- Provide the correct input type.
+- Avoid placeholder text.
+- Explain all options for action to the user.
+- Make the form scannable and avoid visual hurdles.
+- Split long processes into multi-step forms.
+- Provide help only when necessary.
+- Always provide status information.
+- Provide extra information when needed, but hide it in an "information" icon.
+- Ask for as little sensitive and personal information as possible.
+- Give deeper information on a specific input, if necessary.
+
+---
+
+## Tips for a Effective Form Layout:
+
+- **Headline and subline:** Use a clear title to inform the user about the form's purpose and what to expect when
+filling it out.
+- **Sections:** Divide longer forms into content-related sub-areas to improve scannability. Fieldsets with informative
+titles help create a logical order. This decision is based on the Gestalt psychology principle of proximity, which
+suggests that objects that are near each other tend to be grouped together.
+- **Call-to-actions:** Place them left-aligned to ensure consistency and ease of use.
+- **Single-column layout:** Use it for better scanning, especially for mobile or longer forms. This decision is based on
+a research study that found that single-column forms could be completed 15.4 seconds faster than comparable
+multi-column forms, at a 95% confidence level (CXL Institute, 2018). The common reading direction is zigzag ("Z"),
+which makes it harder to perceive a multi-column form.
+- **Form layout spacings:** Cluster the form in logical, coherent parts using our fluid-spacer. This decision is based
+on the Gestalt psychology principle of proximity.
+- **Form field widths:** Set to full form width by default to minimize the fluttering effect. Use estimated form field
+lengths for select or radio button groups, multiple form fields in a row, or very short forms. This decision is based
+on the goal of striking a balance between reflecting the intended content length and visual appeal.
+
+---
+
+## Tips for Effective Form Validation:
+
+- Mark required fields with a red asterisk.
+- Validate input fields directly after losing focus.
+- Display inline validation feedback below input fields.
+- Scroll to the first error field and set focus on it when a user tries to submit a form with an error.
+- Consider including an error summary at the top of the form for required groups of fields.
+- For radio button and checkbox groups, mark the fieldset as required to display a group error message.
+
+---
+
+## Tips for Writing Effective Error Messages:
+
+- Keep error messages clear and simple, avoiding technical terms or abbreviations.
+- Offer a solution that allows users to repeat a step or try another route.
+- Consider the user's frustration and aim to absorb it with humor or clarity, but avoid going too far.
+- Display the message below the form field and remove it after correction.
+- The following questions should be answered to create a good error message: What was the user doing? Why did the error
+occur? How can they proceed?
+- If no immediate solution, offer alternatives like support contact.
+
+**Common reasons for errors:**
+
+- input incorrectly formatting data
+- leaving a mandatory field blank
+- leaving a mandatory field incomplete
+
+---
+
+## Writing examples
+
+### Credit card number is incorrect
+
+**Instead of saying**
+_Invalid input_
+
+**Describe the problem**
+_Numbers are missing in your credit card number._
+
+**Offer a solution**
+_Numbers are missing in your credit card number. Please check your input._
+
+**Add a human touch**
+_Is the card number complete? Please check your input._
+
+---
+
+### Mandatory free text input field is not filled
+
+**Instead of saying**
+_This field is obligatory._
+
+**Describe the problem**
+_Please enter your message._
+
+**Add a human touch**
+_What would you like to tell us?_
+
+---
+
+### Server error on website
+
+**Instead of saying**
+Service not available. The server is temporarily busy. Please try again later.
+
+**Describe the problem**
+_Unfortunately, we can’t load the site because of a problem with our server._
+
+**Offer a solution**
+_Unfortunately, we can’t load the site because of a problem with our server. Try again later or visit another site:_
+
+- Porsche Website
+- My Porsche
+- Porsche Shop
+
+**Add a human touch**
+_Not our claim to performance. Unfortunately, we can’t load the site because of a problem with our server. Try again
+later or visit another site, while we’re working on a solution:_
+
+- Porsche Website
+- My Porsche
+- Porsche Shop
+
+---
+
+### **Prevent errors**
+
+Your microcopy might even help in preventing errors, e.g. by telling a user as clear as possible what format and input
+is required for a certain input field. E.g. List the necessary characters that a password must contain.
+
+---
+
+## Accessibility
+
+Always stick to the defined [Accessibility criteria](/must-know/accessibility) (WCAG level AA) when designing web
+applications for Porsche. For form design you should consider in particular the following aspects:
+
+- Forms should **provide 100% keyboard navigation**, which means: Users should be able to jump through the whole form
+using the tab key.
+- Always **provide focus states** to show the user both the starting and when proceeding the current position. The
+Porsche Design System form components are provided with a focus state on board.
+- **Never use color as a single indicator for a type of use or state**. In form layout, this means that for error or
+success notifications and for highlighting incorrect form fields it's highly recommended to work with further
+formatting, e.g. a larger border width. This is also already predefined in the Porsche Design System form components.
+- **Provide a sufficient click/touch area** for each component.
+[Apple’s Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout)
+suggest providing a tappable area of 44 x 44 px for all controls. As this "safe zone" might result in large spacings
+between components (just think of a stacked checkbox list) or overlapping of the tappable areas, we'd recommend
+defining the tappable area component-based, as the size of the tappable area is also a matter of the general height
+_and_ width of a component. You'll find detailed information in the respective component guidelines.
+
+---
+
+## Related components
+
+- [Text Field](/components/text-field-wrapper)
+- [Textarea](/components/textarea)
+- [Checkbox](/components/checkbox)
+- [Radio Button](/components/radio-button-wrapper)
+- [Select](/components/select)

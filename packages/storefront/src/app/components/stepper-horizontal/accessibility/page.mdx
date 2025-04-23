@@ -1,0 +1,47 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Stepper Horizontal: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Stepper Horizontal component',
+};
+
+# Stepper Horizontal <ComponentStatus tagName="p-stepper-horizontal"></ComponentStatus>
+
+<TableOfContents headings={["Accessibility support","Tests"]} />
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                                        |
+| ------------------ | ------------------------------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the scroll container or to next (or previous) focusable element. |
+| `Enter`, `Space`   | Activates the completed and current step-item.                                  |
+| `disabled`         | Step-item still focusable.                                                      |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA              | Usage                                         |
+| ----------------- | --------------------------------------------- |
+| `role="list"`     | Indicates the stepper as list element.        |
+| `role="listitem"` | Indicates the step-item as list-item element. |
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |

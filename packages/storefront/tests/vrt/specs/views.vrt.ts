@@ -4,16 +4,14 @@ import {
   viewportWidth3XL,
   viewportWidth4XL,
   viewportWidthM,
-  viewportWidths,
   viewportWidthXXL,
+  viewportWidths,
 } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { closeSidebars, resetAnimations } from '../helpers/helpers';
 
 const urls = {
   home: '/',
-  page: '/components/pagination/examples',
-  'not-found': '/404',
-  // pattern: …
-  // custom: …
+  page: '/components/button/configurator',
 } as const;
 
 for (const [name, url] of Object.entries(urls)) {
@@ -26,6 +24,20 @@ for (const [name, url] of Object.entries(urls)) {
           colorScheme: scheme,
         });
         await page.goto(url);
+        await resetAnimations(page);
+
+        // Modify video height if on the homepage
+        if (url === '/') {
+          await page.evaluate(() => {
+            const video = document.querySelector('video');
+            if (video) {
+              (video as HTMLElement).style.height = '600px';
+              // biome-ignore lint/style/noNonNullAssertion: <explanation>
+              video.parentElement!.style.height = '600px';
+            }
+          });
+        }
+
         await page.evaluate(() =>
           (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
         );
@@ -33,7 +45,9 @@ for (const [name, url] of Object.entries(urls)) {
           width: viewportWidthM,
           height: await page.evaluate(() => document.body.clientHeight),
         });
-        await expect(page.locator('#app')).toHaveScreenshot(`views-${name}-${viewportWidthM}-scheme-${scheme}.png`);
+
+        const screenshot = await page.screenshot({ fullPage: true });
+        expect(screenshot).toMatchSnapshot(`views-${name}-${viewportWidthM}-scheme-${scheme}.png`);
       });
     });
 
@@ -47,6 +61,20 @@ for (const [name, url] of Object.entries(urls)) {
     ).forEach((viewportWidth) => {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
         await page.goto(url);
+        await resetAnimations(page);
+
+        // Modify video height if on the homepage
+        if (url === '/') {
+          await page.evaluate(() => {
+            const video = document.querySelector('video');
+            if (video) {
+              (video as HTMLElement).style.height = '600px';
+              // biome-ignore lint/style/noNonNullAssertion: <explanation>
+              video.parentElement!.style.height = '600px';
+            }
+          });
+        }
+
         await page.evaluate(() =>
           (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
         );
@@ -54,7 +82,11 @@ for (const [name, url] of Object.entries(urls)) {
           width: viewportWidth,
           height: await page.evaluate(() => document.body.clientHeight),
         });
-        await expect(page.locator('#app')).toHaveScreenshot(`views-${name}-${viewportWidth}.png`);
+
+        await closeSidebars(page);
+
+        const screenshot = await page.screenshot({ fullPage: true });
+        expect(screenshot).toMatchSnapshot(`views-${name}-${viewportWidth}.png`);
       });
     });
   });
