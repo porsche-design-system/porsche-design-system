@@ -35,7 +35,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           Your browser does not support the video tag.
         </video>
 
-        <PDisplay className="z-20 mt-lg ms-lg row-start-1 col-start-1 max-w-3xl" size="medium" tag="h1">
+        <PDisplay className="z-20 mt-[100px] md:mt-lg mx-lg row-start-1 col-start-1 max-w-3xl" size="medium" tag="h1">
           Welcome to the Porsche Design System
         </PDisplay>
         <div className="block w-full h-full relative">
