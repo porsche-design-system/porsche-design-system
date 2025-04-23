@@ -67,8 +67,9 @@ export const Search = ({ isSearchOpen, onDismissSearch }: SearchProps) => {
 
   const getAlgoliaIndexName = () => {
     const path = getBasePath();
-    // For local builds
-    if (!path) return 'nightly';
+    // For issue branches or local dev use nightly index
+    if (!path || path.includes('/issue/')) return 'nightly';
+    // For v3, use v3 index
     return path;
   };
 
