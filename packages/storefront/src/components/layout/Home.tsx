@@ -169,7 +169,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             background={isDark ? 'dark' : 'light'}
             className="bg-background-surface rounded-lg"
           >
-            <img src="assets/styles-tokens.png" alt="" />
+            <Image src="assets/styles-tokens.png" alt="" width={1024} height={576} />
           </PLinkTile>
         </AppearAnimation>
         <AppearAnimation animation="fade-in-up">
@@ -184,7 +184,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             background={isDark ? 'dark' : 'light'}
             className="bg-background-surface rounded-lg"
           >
-            <img src="assets/components.png" alt="" />
+            <Image src="assets/components.png" alt="" width={1024} height={576} />
           </PLinkTile>
         </AppearAnimation>
         <AppearAnimation animation="fade-in-up">
@@ -199,7 +199,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             background={isDark ? 'dark' : 'light'}
             className="bg-background-surface rounded-lg"
           >
-            <img src="assets/assets.png" alt="" />
+            <Image src="assets/assets.png" alt="" width={1024} height={576} />
           </PLinkTile>
         </AppearAnimation>
         <AppearAnimation animation="fade-in-up">
@@ -214,7 +214,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             background={isDark ? 'dark' : 'light'}
             className="bg-background-surface rounded-lg"
           >
-            <img src="assets/templates.png" alt="" />
+            <Image src="assets/templates.png" alt="" width={1024} height={576} />
           </PLinkTile>
         </AppearAnimation>
         <AppearAnimation animation="fade-in-up">
@@ -229,7 +229,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             background={isDark ? 'dark' : 'light'}
             className="bg-background-surface rounded-lg"
           >
-            <img src="assets/release-notes.png" alt="" />
+            <Image src="assets/release-notes.png" alt="" width={1024} height={576} />
           </PLinkTile>
         </AppearAnimation>
         <AppearAnimation animation="fade-in-up">
@@ -244,7 +244,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             background={isDark ? 'dark' : 'light'}
             className="bg-background-surface rounded-lg"
           >
-            <img src="assets/feedback.png" alt="" />
+            <Image src="assets/feedback.png" alt="" width={1024} height={576} />
           </PLinkTile>
         </AppearAnimation>
       </section>
@@ -265,7 +265,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             aspectRatio="16/9"
             className="bg-background-surface-dark rounded-lg"
           >
-            <img src="assets/accessibility.png" alt="" />
+            <Image src="assets/accessibility.png" alt="" width={2036} height={1144} />
           </PLinkTile>
         </AppearAnimation>
       </section>
