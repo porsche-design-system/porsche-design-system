@@ -33,8 +33,9 @@ export const Playground = ({
       <CodeBlock frameworkMarkup={frameworkMarkup}>
         {!disableOpenInStackblitz && (
           <PButton
+            className="w-fit"
             type="button"
-            icon-source="assets/icon-stackblitz.svg"
+            iconSource="assets/icon-stackblitz.svg"
             variant="ghost"
             compact={true}
             onClick={onOpenInStackblitz}
