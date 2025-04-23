@@ -1220,7 +1220,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `hyphens` CSS property can now be overwritten in `Button Tile`, `Link Tile` and `Link Tile Model Signature` components
   ([#2758](https://github.com/porsche-design-system/porsche-design-system/pull/2758))
 - Partials that produce innerHTML support `{ format: 'sha256' }` option for whitelisting in
-  [Content-Security-Policy (CSP)](must-know/security/content-security-policy)
+  [Content-Security-Policy (CSP)](/must-know/security/content-security-policy/)
   ([#2773](https://github.com/porsche-design-system/porsche-design-system/pull/2773))
 - `Pin Code` ([#2691](https://github.com/porsche-design-system/porsche-design-system/pull/2691))
 
@@ -2267,7 +2267,7 @@ major version.
 
 ##### Content Wrapper:
 
-- Component is deprecated and will be removed with the next major release. Please use **[Porsche Grid](styles/grid)**
+- Component is deprecated and will be removed with the next major release. Please use **[Porsche Grid](/styles/grid/)**
   instead, which is based on [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid) covering the specific
   layout needs for a harmonic appearance across all digital Porsche touch-points.
 
@@ -2281,7 +2281,7 @@ major version.
 
 - Component is deprecated and will be removed with the next major release. In general, please use native
   [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid) in combination with
-  **[Porsche Grid](styles/grid)** instead for better performance and more standardized layout technique.
+  **[Porsche Grid](/styles/grid/)** instead for better performance and more standardized layout technique.
 
 ##### Headline:
 
@@ -2292,7 +2292,7 @@ major version.
 
 ##### Link Social:
 
-- Component is deprecated and will be removed with the next major release. Please use the **[Link](components/link)**
+- Component is deprecated and will be removed with the next major release. Please use the **[Link](/components/link/)**
   component instead.
 
 #### 🤖 Property deprecations 🤖

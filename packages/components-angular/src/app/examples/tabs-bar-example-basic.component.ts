@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { TabsBarUpdateEventDetail } from '@porsche-design-system/components-angular';
+import { PorscheDesignSystemModule, TabsBarUpdateEventDetail } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-tabs-bar-example-basic',
@@ -11,7 +11,8 @@ import type { TabsBarUpdateEventDetail } from '@porsche-design-system/components
     </p-tabs-bar>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
 })
 export class TabsBarExampleBasicComponent {
   tabIndex: number = 0;

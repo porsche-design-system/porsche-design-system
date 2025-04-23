@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-button-example-form-attribute',
@@ -15,7 +16,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <p-text>Last submitted data: {{ lastSubmittedData }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
 })
 export class ButtonExampleFormAttributeComponent {
   lastSubmittedData: string = 'none';

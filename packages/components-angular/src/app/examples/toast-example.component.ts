@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ToastManager } from '@porsche-design-system/components-angular';
+import { PorscheDesignSystemModule, ToastManager } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-toast-example',
@@ -8,7 +8,8 @@ import { ToastManager } from '@porsche-design-system/components-angular';
     <p-toast></p-toast>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
 })
 export class ToastExampleComponent {
   private counter = 1;

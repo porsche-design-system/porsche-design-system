@@ -1,0 +1,51 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Pagination: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Pagination component',
+};
+
+# Pagination <ComponentStatus tagName="p-pagination"></ComponentStatus>
+
+<TableOfContents headings={["Accessibility support","Tests"]} />
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                 |
+| ------------------ | -------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
+| `Enter`, `Space`   | Activates the item.                                      |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA           | Usage                                  |
+| -------------- | -------------------------------------- |
+| `aria-current` | Exposes the current state of the item. |
+
+#### External **ARIA** provided by the `intl` property:
+
+| ARIA         | Usage                                                                       |
+| ------------ | --------------------------------------------------------------------------- |
+| `aria-label` | Defines a string value that labels the navigation and interactive elements. |
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |

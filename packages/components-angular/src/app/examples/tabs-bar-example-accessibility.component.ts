@@ -1,5 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { TabsBarUpdateEventDetail } from '@porsche-design-system/components-angular';
+import { PorscheDesignSystemModule, TabsBarUpdateEventDetail } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-tabs-bar-example-accessibility',
@@ -40,7 +41,8 @@ import type { TabsBarUpdateEventDetail } from '@porsche-design-system/components
     </ng-container>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, PorscheDesignSystemModule],
 })
 export class TabsBarExampleAccessibilityComponent {
   tabIndex: number = 0;

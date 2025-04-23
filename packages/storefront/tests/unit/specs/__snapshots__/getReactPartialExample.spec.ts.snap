@@ -1,0 +1,13 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should return correct partial markup for getVanillaJsPartialExample 1`] = `
+"<head>
+  <%= require('@porsche-design-system/components-react/partials').getInitialStyles() %>
+
+  <!-- Alternative: With custom prefix to match your prefixed components -->
+  <%= require('@porsche-design-system/components-react/partials').getInitialStyles({ prefix: 'custom-prefix' }) %>
+
+  <!-- Alternative: With multiple prefixes to match prefixed components coming from micro frontends -->
+  <%= require('@porsche-design-system/components-react/partials').getInitialStyles({ prefix: ['', 'custom-prefix', 'another-prefix'] }) %>
+</head>"
+`;

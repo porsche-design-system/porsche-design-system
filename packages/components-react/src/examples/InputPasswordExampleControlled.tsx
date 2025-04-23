@@ -17,6 +17,7 @@ export const InputPasswordControlledExamplePage = (): JSX.Element => {
     <>
       <PInputPassword
         name="some-name"
+        label="Some Label"
         value={value}
         onInput={(e) => onInput(e as CustomEvent<InputPasswordInputEventDetail>)}
       />

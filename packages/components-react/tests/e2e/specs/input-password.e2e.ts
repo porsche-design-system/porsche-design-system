@@ -12,9 +12,9 @@ const getForm = (page: Page) => page.locator('form');
 const getInputPassword = (page: Page) => page.locator('p-input-password input');
 
 test.describe('form', () => {
-  test('should reset textarea value to its initial value on form reset', async ({ page }) => {
+  test('should reset input password value to its initial value on form reset', async ({ page }) => {
     await goto(page, 'input-password-example');
-    expect(await waitForComponentsReady(page)).toBe(2); // p-textarea and p-text
+    expect(await waitForComponentsReady(page)).toBe(4); // p-input-password, p-text, 2 p-button
 
     const name = 'name';
     const newValue = 'New value';
@@ -44,7 +44,7 @@ test.describe('form', () => {
 
   test('should include name & value in FormData submit', async ({ page }) => {
     await goto(page, 'input-password-example');
-    expect(await waitForComponentsReady(page)).toBe(2); // p-input-password and p-text
+    expect(await waitForComponentsReady(page)).toBe(4); // p-input-password, p-text, 2 p-button
     const host = getHost(page);
     const form = getForm(page);
     const testValue = 'test';
