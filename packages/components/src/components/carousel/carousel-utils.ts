@@ -83,7 +83,7 @@ export const getSplideBreakpoints = (
 
 export const getSlidesAndAddAttributes = (host: HTMLElement): HTMLElement[] => {
   const slides = Array.from(host.children).filter(
-    ({ slot }) => slot !== 'heading' && slot !== 'description' && slot !== 'controls'
+    ({ slot }) => slot !== 'heading' && slot !== 'description' && slot !== 'controls' && slot !== 'styles'
   ) as HTMLElement[];
   slides.forEach((el, i) => {
     el.setAttribute('slot', `slide-${i}`);
@@ -99,8 +99,13 @@ export const getAmountOfPages = (amountOfSlides: number, slidesPerPage: number):
 export const isFirstPage = (splide: Splide): boolean => splide.index === 0;
 export const isLastPage = (splide: Splide, amountOfPages: number): boolean => splide.index >= amountOfPages - 1; // catch removal of slide
 
-export const slidePrev = (splide: Splide, amountOfPages: number, focusOnCenterSlide?: boolean): void => {
-  if (focusOnCenterSlide) {
+export const slidePrev = (
+  splide: Splide,
+  amountOfPages: number,
+  focusOnCenterSlide?: boolean,
+  type?: CarouselType
+): void => {
+  if (focusOnCenterSlide || type === 'loop') {
     splide.go('<');
   } else {
     // sanitize in case of removal of slide since splide.index seems to be from before splide.refresh()
@@ -109,8 +114,13 @@ export const slidePrev = (splide: Splide, amountOfPages: number, focusOnCenterSl
   }
 };
 
-export const slideNext = (splide: Splide, amountOfPages: number, focusOnCenterSlide?: boolean): void => {
-  if (focusOnCenterSlide) {
+export const slideNext = (
+  splide: Splide,
+  amountOfPages: number,
+  focusOnCenterSlide?: boolean,
+  type?: CarouselType
+): void => {
+  if (focusOnCenterSlide || type === 'loop') {
     splide.go('>');
   } else {
     splide.go(isLastPage(splide, amountOfPages) ? 0 : '>');

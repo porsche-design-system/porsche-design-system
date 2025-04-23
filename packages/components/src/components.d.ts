@@ -13,7 +13,7 @@ import { ButtonGroupDirection } from "./components/button-group/button-group-uti
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
 import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
 import { CanvasSidebarStartUpdateEventDetail } from "./components/canvas/canvas-utils";
-import { CarouselAlignControls, CarouselAlignHeader, CarouselAriaAttribute, CarouselGradientColor, CarouselHeadingSize, CarouselInternationalization, CarouselSlidesPerPage, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
+import { CarouselAlignControls, CarouselAlignHeader, CarouselAriaAttribute, CarouselGradientColor, CarouselHeadingSize, CarouselInternationalization, CarouselSlidesPerPage, CarouselType, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
 import { CheckboxBlurEventDetail, CheckboxState, CheckboxUpdateEventDetail } from "./components/checkbox/checkbox-utils";
 import { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
@@ -80,7 +80,7 @@ export { ButtonGroupDirection } from "./components/button-group/button-group-uti
 export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
 export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
 export { CanvasSidebarStartUpdateEventDetail } from "./components/canvas/canvas-utils";
-export { CarouselAlignControls, CarouselAlignHeader, CarouselAriaAttribute, CarouselGradientColor, CarouselHeadingSize, CarouselInternationalization, CarouselSlidesPerPage, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
+export { CarouselAlignControls, CarouselAlignHeader, CarouselAriaAttribute, CarouselGradientColor, CarouselHeadingSize, CarouselInternationalization, CarouselSlidesPerPage, CarouselType, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
 export { CheckboxBlurEventDetail, CheckboxState, CheckboxUpdateEventDetail } from "./components/checkbox/checkbox-utils";
 export { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 export { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
@@ -430,7 +430,7 @@ export namespace Components {
         "theme"?: Theme;
     }
     /**
-     * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true }
+     * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true}
      */
     interface PCarousel {
         /**
@@ -501,6 +501,10 @@ export namespace Components {
           * Determines whether to trim spaces before/after the carousel if `focusOnCenterSlide` option is true.
          */
         "trimSpace"?: boolean;
+        /**
+          * The type of the slider
+         */
+        "type"?: CarouselType;
         /**
           * Defines the outer spacings between the carousel and the left and right screen sides.
          */
@@ -2659,7 +2663,7 @@ declare global {
         "update": CarouselUpdateEventDetail;
     }
     /**
-     * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true }
+     * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true}
      */
     interface HTMLPCarouselElement extends Components.PCarousel, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPCarouselElementEventMap>(type: K, listener: (this: HTMLPCarouselElement, ev: PCarouselCustomEvent<HTMLPCarouselElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3814,7 +3818,7 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     /**
-     * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true }
+     * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true}
      */
     interface PCarousel {
         /**
@@ -3893,6 +3897,10 @@ declare namespace LocalJSX {
           * Determines whether to trim spaces before/after the carousel if `focusOnCenterSlide` option is true.
          */
         "trimSpace"?: boolean;
+        /**
+          * The type of the slider
+         */
+        "type"?: CarouselType;
         /**
           * Defines the outer spacings between the carousel and the left and right screen sides.
          */
@@ -6127,7 +6135,7 @@ declare module "@stencil/core" {
              */
             "p-canvas": LocalJSX.PCanvas & JSXBase.HTMLAttributes<HTMLPCanvasElement>;
             /**
-             * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true }
+             * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true}
              */
             "p-carousel": LocalJSX.PCarousel & JSXBase.HTMLAttributes<HTMLPCarouselElement>;
             "p-checkbox": LocalJSX.PCheckbox & JSXBase.HTMLAttributes<HTMLPCheckboxElement>;

@@ -313,6 +313,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(
             /this\.props\.hasNavigation/g,
             "(this.props.slidesPerPage === 'auto' || typeof this.props.slidesPerPage === 'object' || this.props.slidesPerPage < otherChildren.length)"
+          )
+          .replace(
+            /<([a-zA-Z0-9]+)([^>]*?)\sinnerHTML=\{(.*?)\}([^>]*)\/>/g,
+            '<$1$2 dangerouslySetInnerHTML={{ __html: $3 }}$4 />'
           );
       } else if (tagName === 'p-banner') {
         // remove warning about deprecated title slot

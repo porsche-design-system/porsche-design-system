@@ -33,6 +33,7 @@ import {
   CAROUSEL_ARIA_ATTRIBUTES,
   CAROUSEL_GRADIENT_COLORS,
   CAROUSEL_SLIDES_PER_PAGE,
+  CAROUSEL_TYPE,
   CAROUSEL_WIDTHS,
   type CarouselAlignControls,
   type CarouselAlignHeader,
@@ -42,6 +43,7 @@ import {
   type CarouselHeadingSize,
   type CarouselInternationalization,
   type CarouselSlidesPerPage,
+  type CarouselType,
   type CarouselUpdateEventDetail,
   type CarouselWidth,
   getAmountOfPages,
@@ -67,6 +69,7 @@ const propTypes: PropTypes<typeof Carousel> = {
   description: AllowedTypes.string,
   alignHeader: AllowedTypes.oneOf<CarouselAlignHeader>(CAROUSEL_ALIGN_HEADERS),
   rewind: AllowedTypes.boolean,
+  type: AllowedTypes.oneOf<CarouselType>(CAROUSEL_TYPE),
   wrapContent: AllowedTypes.boolean,
   width: AllowedTypes.oneOf<CarouselWidth>(CAROUSEL_WIDTHS),
   slidesPerPage: AllowedTypes.oneOf<ValidatorFunction>([
@@ -93,12 +96,13 @@ const propTypes: PropTypes<typeof Carousel> = {
 };
 
 /**
- * @slot {"name": "heading", "description": "Renders a heading above the carousel." }
- * @slot {"name": "description", "description": "Shows a footer section, flowing under the content area when scrollable." }
- * @slot {"name": "controls", "description": "Shows a sidebar area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). On mobile view it transforms into a flyout." }
- * @slot {"name": "", "description": "Default slot for the carousel slides." }
+ * @slot {"name": "heading", "description": "Renders a heading above the carousel."}
+ * @slot {"name": "description", "description": "Shows a footer section, flowing under the content area when scrollable."}
+ * @slot {"name": "controls", "description": "Shows a sidebar area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). On mobile view it transforms into a flyout."}
+ * @slot {"name":" styles", "description": "Inject CSS into the shadow DOM to style loop-mode cloned slides."}
+ * @slot {"name": "", "description": "Default slot for the carousel slides."}
  *
- * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true }
+ * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true}
  */
 @Component({
   tag: 'p-carousel',
@@ -160,6 +164,9 @@ export class Carousel {
   /** Defines target of skip link (to skip carousel entries). */
   @Prop() public skipLinkTarget?: string;
 
+  /** The type of the slider */
+  @Prop() public type?: CarouselType = 'slide';
+
   /**
    * Indicates whether focus should be set on the center slide.
    * If true, the carousel loops by individual slide; otherwise, it loops by page.
@@ -181,6 +188,7 @@ export class Carousel {
   @Event({ bubbles: false }) public update: EventEmitter<CarouselUpdateEventDetail>;
 
   @State() private amountOfPages: number;
+  @State() private slottedStyles: string | null;
 
   private splide: Splide;
   private container: HTMLElement;
@@ -228,6 +236,25 @@ export class Carousel {
   }
 
   public componentWillLoad(): void {
+    /**
+     * Retrieves CSS from a <style> element assigned to the "styles" slot and stores its content
+     * for injection into the component’s shadow root. This is necessary because slotted <style> elements
+     * do not propagate their styles into shadow DOM due to encapsulation boundaries enforced by the browser.
+     *
+     * The extracted CSS is only needed in cases where:
+     * - The component is operating in loop mode and clones slide elements.
+     * - Those slides rely on light DOM class-based styling defined outside the component.
+     *
+     * This mechanism ensures that cloned elements retain expected styles, since styles defined
+     * outside the shadow DOM would otherwise not apply to them.
+     *
+     * If slotted content consists of other web components with scoped styles, this step is not required.
+     */
+    const stylesSlotEl = this.host.querySelector<HTMLStyleElement>('style[slot="styles"]');
+    if (stylesSlotEl) {
+      this.slottedStyles = stylesSlotEl.textContent;
+    }
+
     this.updateSlidesAndPagination();
     this.observeBreakpointChange();
   }
@@ -244,6 +271,7 @@ export class Carousel {
     this.observeSlides(); // initial, adjust aria attributes on slides
     this.splide = new Splide(this.container, {
       start: this.activeSlideIndex,
+      type: this.type,
       arrows: false,
       easing: motionEasingBase,
       focus: this.focusOnCenterSlide ? 'center' : undefined,
@@ -338,6 +366,7 @@ export class Carousel {
 
     return (
       <Host>
+        {this.slottedStyles && <style innerHTML={this.slottedStyles} />}
         <div class="header">
           {hasHeadingPropOrSlot &&
             (this.heading ? (
@@ -371,7 +400,7 @@ export class Carousel {
                 {...btnProps}
                 icon="arrow-left"
                 ref={(ref: HTMLPButtonPureElement) => (this.btnPrev = ref)}
-                onClick={() => slidePrev(this.splide, this.amountOfPages, this.focusOnCenterSlide)}
+                onClick={() => slidePrev(this.splide, this.amountOfPages, this.focusOnCenterSlide, this.type)}
               />
             )}
             {this.hasNavigation && (
@@ -379,7 +408,7 @@ export class Carousel {
                 {...btnProps}
                 icon="arrow-right"
                 ref={(ref: HTMLPButtonPureElement) => (this.btnNext = ref)}
-                onClick={() => slideNext(this.splide, this.amountOfPages, this.focusOnCenterSlide)}
+                onClick={() => slideNext(this.splide, this.amountOfPages, this.focusOnCenterSlide, this.type)}
                 onKeyDown={this.onNextKeyDown}
               />
             )}
@@ -399,11 +428,15 @@ export class Carousel {
         >
           <div class="splide__track">
             <div class="splide__list">
-              {this.slides.map((_, i) => (
-                <div key={i} class="splide__slide" tabIndex={0}>
-                  <slot name={`slide-${i}`} />
-                </div>
-              ))}
+              {this.slides.map((slide, i) =>
+                this.type === 'loop' ? (
+                  <div class="splide__slide" key={i} tabIndex={0} innerHTML={slide.outerHTML} />
+                ) : (
+                  <div key={i} class="splide__slide" tabIndex={0}>
+                    <slot name={`slide-${i}`} />
+                  </div>
+                )
+              )}
             </div>
           </div>
         </div>
