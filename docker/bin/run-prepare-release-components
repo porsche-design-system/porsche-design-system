@@ -18,6 +18,11 @@ pushd "./packages/components-js/projects/components-wrapper"
   yarn version --no-git-tag-version --new-version "${NEW_VERSION}"
 popd
 
+# set new version in storefront
+pushd "./packages/storefront"
+  yarn version --no-git-tag-version --new-version "${NEW_VERSION}"
+popd
+
 # update "components" in "components-js"
 pushd "./packages/components-js"
   sed -i -E -e 's$("@porsche-design-system/components": )(".*")$\1"'${NEW_VERSION}'"$' package.json
