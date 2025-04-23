@@ -2,6 +2,7 @@ import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { Configurator } from "@/components/playground/Configurator";
 import { headlineStory } from "@/app/components/headline/headline.stories";
 import { Notification } from "@/components/common/Notification";
+import Link from "next/link";
 
 export const metadata = {
   title: 'Headline - Porsche Design System',
@@ -14,7 +15,7 @@ export const metadata = {
 
 <Notification heading="Deprecation hint" heading-tag="h2" state="error">
   This component is deprecated and will be removed with the next major release.
-  Please use <a href="/components/heading/">p-heading</a> instead.
+  Please use <Link href="/components/heading/">p-heading</Link> instead.
 </Notification>
 
 <Configurator tagName="p-headline" story={headlineStory} />
