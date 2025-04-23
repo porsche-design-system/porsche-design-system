@@ -1,19 +1,12 @@
-import { isDevEnvironment } from '@/utils/isDev';
+import { getBasePath } from '@/utils/getBasePath';
 import createMDX from '@next/mdx';
 import type { NextConfig } from 'next';
 import remarkGfm from 'remark-gfm';
 
-const getBasePath = () => {
-  if (!isDevEnvironment && process.env.GITHUB_REF_NAME) {
-    // Use branch name as base path expect for main where it needs to be nightly
-    if (process.env.GITHUB_REF_NAME === 'main') return '/nightly';
-    return `/${process.env.GITHUB_REF_NAME}`;
-  }
-  return '';
-};
+const basePath = getBasePath();
 
 const nextConfig: NextConfig = {
-  basePath: getBasePath(),
+  basePath: basePath ? `/${basePath}` : '',
   output: 'export',
   trailingSlash: true, // Change links `/me` -> `/me/` and emit `/me.html` -> `/me/index.html`
   // Optional: Prevent automatic `/me` -> `/me/`, instead preserve `href`
