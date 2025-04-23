@@ -14,10 +14,9 @@ export const messageId = 'message';
 export const StateMessage: FunctionalComponent<StateMessageProps> = ({ state, message, theme, host }) => {
   const PrefixedTagNames = getPrefixedTagNames(host);
   const isErrorState = state === 'error';
-  const isSuccessState = state === 'success';
 
   return (
-    <span id={messageId} class="message" role={isSuccessState ? 'status' : 'alert'}>
+    <span id={messageId} class="message" role={isErrorState ? 'alert' : 'status'}>
       {hasMessage(host, message, state) && [
         <PrefixedTagNames.pIcon
           name={isErrorState ? 'exclamation' : 'check'}
