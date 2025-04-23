@@ -16,7 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Fixed
 
-- `Multi Select`: refactor checkbox and fix A11Y test
+- `Multi Select`: enable full a11y compliance
   ([#3819](https://github.com/porsche-design-system/porsche-design-system/pull/3819))
 
 ### [3.28.0-rc.1] - 2025-04-14
