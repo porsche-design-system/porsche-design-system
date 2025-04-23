@@ -1,5 +1,4 @@
 import { type AccordionUpdateEventDetail, PAccordion, PButton } from '@porsche-design-system/components-react';
-import styled from 'styled-components';
 import {
   borderRadiusLarge,
   borderRadiusSmall,
@@ -38,6 +37,7 @@ import {
   themeLightStateHover,
 } from '@porsche-design-system/components-react/styles';
 import { useCallback, useState } from 'react';
+import styled from 'styled-components';
 
 // VisualizeGrid
 const VisualizeGrid = styled.div({
@@ -335,7 +335,7 @@ export const GridLayout = ({ visualizeGrid = true }: Props): JSX.Element => {
   }, []);
 
   return (
-    <>
+    <div style={{ transform: 'translate3d(0px, 0px, 0px)' }}>
       {visualizeGrid && (
         <VisualizeGrid>
           {[...Array(18)].map((_, i) => (
@@ -530,6 +530,6 @@ export const GridLayout = ({ visualizeGrid = true }: Props): JSX.Element => {
           </Text>
         </NarrowContentHalfRight>
       </NarrowContentGrid>
-    </>
+    </div>
   );
 };

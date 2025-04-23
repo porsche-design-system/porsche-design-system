@@ -1,0 +1,64 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Banner: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Banner component',
+};
+
+# Banner <ComponentStatus tagName="p-banner"></ComponentStatus>
+
+<TableOfContents headings={["Accessibility support","Development considerations","Tests"]} />
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                       |
+| ------------------ | ---------------------------------------------- |
+| `ESC`              | Closes the Banner.                             |
+| `Tab`, `Shift-Tab` | Moves focus to the next focusable element.     |
+| `focus`            | Moves focus automatically to the close button. |
+
+### ARIA enhancements
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                       | Usage                                                                                                    |
+| -------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `role="status"`            | When content is populated or changed in `state="info"`, the component announces it unobtrusively.        |
+| `role="alert"`             | When content is populated or changed in `state="warning/error"`, the component announces it immediately. |
+| `aria-labelledby="IDREF"`  | References the accessible name.                                                                          |
+| `aria-describedby="IDREF"` | References the accessible description.                                                                   |
+| `aria-hidden="true"`       | State `icon` is hidden from the screen reader.                                                           |
+| `aria-controls="IDREF"`    | Exposes relationship of close button.                                                                    |
+
+## Development considerations
+
+### Focus handling
+
+To support **keyboard navigation**, please take care of correct **focus handling** after closing the `Banner` with `ESC`
+or `Enter` key: The trigger element (e.g. a button) which has opened the `Banner` must receive focus state again after
+the `Banner` is closed. This is important to keep focus order consistent.
+
+### ARIA live announcements
+
+The `Banner` component uses `role="status"` and `role="alert"` to announce **content changes** for assistive
+technologies, but only if the component is **pre-rendered** and the content is added dynamically.
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |

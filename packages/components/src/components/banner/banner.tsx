@@ -1,29 +1,29 @@
-import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, Host, type JSX, Prop, Watch, h } from '@stencil/core';
+import { getSlottedAnchorStyles } from '../../styles';
 import type { PropTypes, Theme } from '../../types';
 import {
-  type BannerHeadingTag,
-  type BannerState,
-  type BannerStateDeprecated,
-  type BannerWidth,
-  BANNER_STATES,
-} from './banner-utils';
-import {
   AllowedTypes,
+  HEADING_TAGS,
+  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   consoleWarn,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasNamedSlot,
-  HEADING_TAGS,
-  THEMES,
   validateProps,
   warnIfDeprecatedPropIsUsed,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
-import { getComponentCss } from './banner-styles';
 import { getDeprecatedPropOrSlotWarningMessage } from '../../utils/log/helper';
-import { getSlottedAnchorStyles } from '../../styles';
+import { getComponentCss } from './banner-styles';
+import {
+  BANNER_STATES,
+  type BannerHeadingTag,
+  type BannerState,
+  type BannerStateDeprecated,
+  type BannerWidth,
+} from './banner-utils';
 
 const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
   open: AllowedTypes.boolean,
@@ -38,7 +38,7 @@ const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
 
 /**
  * @slot {"name": "heading", "description": "Defines the heading used in the banner. Can be used alternatively to the heading prop. Can be used for rich content.", "hasAltProp": true }
- * @slot {"name": "title", "description": "Defines the title used in the banner. Can be used alternatively to the heading prop. Can be used for rich content.", "hasAltProp": true }
+ * @slot {"name": "title", "description": "Please use the heading prop or slot=\"heading\" instead.", "hasAltProp": true, "isDeprecated": true }
  * @slot {"name": "description", "description": "Defines the description used in the banner. Can be used alternatively to the description prop. Can be used for rich content.", "hasAltProp": true }
  *
  * @controlled {"props": ["open"], "event": "dismiss"}

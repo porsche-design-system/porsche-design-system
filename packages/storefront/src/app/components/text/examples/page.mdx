@@ -1,0 +1,37 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import {
+  textStory,
+  textStorySemantics,
+  textStorySize,
+  textStorySizeResponsive
+} from "@/app/components/text/text.stories";
+import {ComponentStory} from "@/components/playground/ComponentStory";
+
+export const metadata = {
+  title: 'Text - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Text component.'
+}
+
+# Text <ComponentStatus tagName="p-text"></ComponentStatus>
+
+<TableOfContents headings={["Size","Semantics"]} />
+
+## Size
+
+There are predefined fluid text sizes for the text component which should cover most use cases. If a specific text size
+is needed, the size can be set to `inherit` to specify the text size from outside.
+
+<ComponentStory story={textStorySize} />
+
+### Responsive
+
+<ComponentStory story={textStorySizeResponsive} />
+
+## Semantics
+
+To provide more contextual HTML semantics you can either pass them with the `tag` property or directly inside a slot.
+
+<ComponentStory story={textStorySemantics} />
+

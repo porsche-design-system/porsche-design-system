@@ -1,6 +1,7 @@
-import { type Page } from '@playwright/test';
-import * as fs from 'fs';
-import * as path from 'path';
+import console from 'node:console'; // workaround for nicer logs
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+import type { Page } from '@playwright/test';
 
 // exclude URLS which should not be checked -> include all links which lead to downloads
 const blacklistedUrls: string[] = [
@@ -9,14 +10,14 @@ const blacklistedUrls: string[] = [
   'https://sitepoint.com/introduction-wai-aria/',
   'https://adabook.com/',
   'https://etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf',
+  '/mailto:[e-mail address]',
+  '/mailto:.external@porsche.de',
+  'http://www.porsche.com/softwareinfo',
 ];
-
-const console = require('console'); // workaround for nicer logs
-
 const sitemapFixturePath = path.resolve(__dirname, '../fixtures/sitemap.json');
 const sitemapResultPath = path.resolve(__dirname, '../results/sitemap.json');
 
-function removeDuplicates(array = []) {
+function removeDuplicates(array: string[] = []) {
   return [...new Set(array)];
 }
 
@@ -35,7 +36,7 @@ export const getInternalUrls = (urls = getSitemap()): string[] => {
     urls
       .filter((url) => isInternalUrl(url))
       // drop "base" links that are redirected to first tab
-      .filter((url, _index, filteredUrls) => !filteredUrls.some((link) => link.startsWith(url + '/')))
+      .filter((url, _index, filteredUrls) => !filteredUrls.some((link) => link.startsWith(`${url}/`)))
   );
 };
 
@@ -87,7 +88,7 @@ const scanForUrls = async (page: Page): Promise<string[]> => {
 
     for (const anchor of document.querySelectorAll('body [href]')) {
       // don't collect "toc"-links since anchor links lead to the same page they were found on
-      if (anchor.parentElement?.parentElement?.className === 'toc') {
+      if (anchor.parentElement?.parentElement?.parentElement?.className === 'toc') {
         continue;
       }
 
@@ -99,6 +100,7 @@ const scanForUrls = async (page: Page): Promise<string[]> => {
 
   return (
     urls
+      .filter((url) => url !== null)
       .map((url) => (!url.startsWith('http') && !isInternalUrl(url) ? `/${url}` : url)) // add leading slash for links within markdown
       .filter((url) => !blacklistedUrls.includes(url)) // get rid of blacklisted urls
       // filters out porsche design system pull request urls, otherwise we'd need to re-run CI all the time

@@ -1,5 +1,5 @@
+import { PButton, PCheckbox, PText } from '@porsche-design-system/components-react';
 import { type FormEvent, useState } from 'react';
-import { PCheckbox, PText } from '@porsche-design-system/components-react';
 
 export const CheckboxExamplePage = (): JSX.Element => {
   const [lastSubmittedData, setLastSubmittedData] = useState('');
@@ -14,8 +14,8 @@ export const CheckboxExamplePage = (): JSX.Element => {
     <>
       <form onSubmit={onSubmit}>
         <PCheckbox name="some-name" value="some-value" label="Some Label"></PCheckbox>
-        <button type="submit">Submit</button>
-        <button type="reset">Reset</button>
+        <PButton type="submit">Submit</PButton>
+        <PButton type="reset">Reset</PButton>
       </form>
 
       <PText>Last submitted data: {lastSubmittedData}</PText>

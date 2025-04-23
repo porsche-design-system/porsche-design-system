@@ -1,23 +1,23 @@
+import { Component, Element, type JSX, Prop, h } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
-import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import {
   ALIGN_LABELS,
   AllowedTypes,
+  LINK_ARIA_ATTRIBUTES,
+  TEXT_SIZES,
+  THEMES,
+  TYPOGRAPHY_TEXT_WEIGHTS,
   attachComponentCss,
   getPrefixedTagNames,
-  hasVisibleIcon,
   hasPropValueChanged,
+  hasVisibleIcon,
   isSsrHydration,
-  LINK_ARIA_ATTRIBUTES,
   parseAndGetAriaAttributes,
-  TEXT_SIZES,
-  TYPOGRAPHY_TEXT_WEIGHTS,
-  THEMES,
   throwIfInvalidLinkUsage,
   validateProps,
-  warnIfParentIsPTextAndIconIsNone,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
+import { getComponentCss } from './link-pure-styles';
 import type {
   LinkPureAlignLabel,
   LinkPureAlignLabelDeprecated,
@@ -27,7 +27,6 @@ import type {
   LinkPureTarget,
   LinkPureWeight,
 } from './link-pure-utils';
-import { getComponentCss } from './link-pure-styles';
 
 const propTypes: PropTypes<typeof LinkPure> = {
   alignLabel: AllowedTypes.breakpoint<LinkPureAlignLabel>(ALIGN_LABELS),
@@ -119,7 +118,6 @@ export class LinkPure {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfParentIsPTextAndIconIsNone(this.host, this.icon, this.iconSource);
 
     const alignLabelDeprecationMap: Record<
       LinkPureAlignLabelDeprecated,
