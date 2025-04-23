@@ -52,11 +52,11 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
                 Checkout the latest release {latestPdsVersion}
               </PText>
             </div>
-            <PLinkPure
-              hideLabel={true}
-              aria={{ 'aria-label': `Release Note: Checkout the latest release ${latestPdsVersion}` }}
-            >
-              <Link href="/news/changelog/" />
+            <PLinkPure hideLabel={true}>
+              <Link
+                href="/news/changelog/"
+                aria-label={`Release Note: Checkout the latest release ${latestPdsVersion}`}
+              />
             </PLinkPure>
           </div>
         </div>
@@ -112,8 +112,8 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
               </div>
 
               <div className="flex-shrink-0">
-                <PLinkPure hideLabel={true} aria={{ 'aria-label': 'Start Designing' }} className="relative z-10">
-                  <Link href="/designing/introduction/" />
+                <PLinkPure hideLabel={true} className="relative z-10">
+                  <Link href="/designing/introduction/" aria-label={'Start Designing'} />
                 </PLinkPure>
               </div>
             </div>
@@ -144,8 +144,8 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
               </div>
 
               <div className="flex-shrink-0">
-                <PLinkPure hideLabel={true} aria={{ 'aria-label': 'Start Coding' }} className="relative z-10">
-                  <Link href="/developing/introduction/" />
+                <PLinkPure hideLabel={true} className="relative z-10">
+                  <Link href="/developing/introduction/" aria-label={'Start Coding'} />
                 </PLinkPure>
               </div>
             </div>
