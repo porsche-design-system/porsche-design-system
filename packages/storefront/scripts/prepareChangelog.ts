@@ -27,9 +27,7 @@ const prepareChangelog = (): void => {
     .replace(
       /\n### /,
       `\n<TableOfContents headings={${JSON.stringify(extractVersions(srcContent))}}></TableOfContents>\n$&`
-    )
-    // Replace Version headings with h2 since only h2 will be used as anchor links
-    .replace(/^### (\[.*] - \d{4}-\d{2}-\d{2})/gm, '## $1');
+    );
 
   const content = `import { TableOfContents } from "@/components/common/TableOfContents";
 export const metadata = {
