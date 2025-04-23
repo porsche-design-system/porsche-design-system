@@ -1,0 +1,424 @@
+export const metadata = {
+  title: 'Markdown - Porsche Design System',
+  description: 'Demo page showing Porsche Design System support for MDX components.'
+}
+
+# Markdown (MDX)
+
+## Typography
+
+# Heading h1
+
+## Heading h2
+
+### Heading h3
+
+#### Heading h4
+
+##### Heading h5
+
+###### Heading h6
+
+Paragraph
+
+## Horizontal Rules
+
+---
+
+---
+
+---
+
+## Emphasis
+
+**This is bold text**
+
+**This is bold text**
+
+_This is italic text_
+
+_This is italic text_
+
+~~Strikethrough~~
+
+## Blockquote
+
+> Blockquote can also be nested...
+>
+> > ...by using additional greater-than signs right next to each other...
+> >
+> > > ...or with spaces between arrows.
+## Lists
+
+Unordered
+
+- Create a **list** by starting a line with `+`, `-`, or `*`
+  - Sub-lists are made by indenting 2 spaces:
+  - Marker character change forces new list start:
+- Ac tristique libero volutpat at
+
+Ordered
+
+1. Lorem ipsum dolor sit amet
+1. Consectetur adipiscing elit
+1. Integer molestie lorem at massa
+
+## Heading (H1 - H6) with List
+
+# Heading H1
+
+- Unordered List
+
+## Heading H2
+
+- Unordered List
+
+### Heading H3
+
+- Unordered List
+
+#### Heading H4
+
+- Unordered List
+
+##### Heading H5
+
+- Unordered List
+
+###### Heading H6
+
+- Unordered List
+
+# Heading H1
+
+1. Ordered List
+
+## Heading H2
+
+1. Ordered List
+
+### Heading H3
+
+1. Ordered List
+
+#### Heading H4
+
+1. Ordered List
+
+##### Heading H5
+
+1. Ordered List
+
+###### Heading H6
+
+1. Ordered List
+
+## Code
+
+Inline `code`
+
+Indented code
+
+```
+  // Some comments
+  line 1 of code
+  line 2 of code
+  line 3 of code
+```
+
+Block code "fences"
+
+```
+Sample text here...
+```
+
+Syntax highlighting (HTML)
+
+```html
+<!-- some comment -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Some title</title>
+    <meta name="description" content="Some description">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html>
+```
+
+Syntax highlighting (CSS)
+
+```css
+/* some comment */
+
+h1 {
+  font-size: 150% !important;
+  line-height: 1.2;
+  margin: 0.5em 0;
+}
+
+.some-class {
+  font-size: 1.125em;
+}
+
+#some-id {
+  letter-spacing: 1px;
+}
+
+@media (min-width: 1000px) {
+  body {
+    font-size: 1.5rem;
+
+    & > :is(.some-class, small) {
+      margin-top: 8px;
+
+      &::before {
+        content: '';
+        display: block;
+      }
+    }
+  }
+}
+```
+
+Syntax highlighting (SCSS)
+
+```scss
+// some comment
+
+/*
+Some
+multiline
+comment
+*/
+
+$spacing-v: 1.5em;
+
+.hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.inner-wrap {
+  max-width: 50em;
+  margin: $spacing-v auto;
+  padding-left: emCalc(24);
+  padding-right: emCalc(24);
+}
+
+@include pds-media-query-min("l") {
+  article {
+    ul {
+      list-style: circle;
+    }
+    ol {
+      list-style: decimal;
+    }
+  }
+  .inner-wrap {
+    padding-left: emCalc(48);
+    padding-right: emCalc(48);
+  }
+}
+```
+
+Syntax highlighting (JS)
+
+```js
+// some comment
+
+/*
+Some
+multiline
+comment
+*/
+
+(function( w ){
+  var loadJS = function( src, cb ){
+    "use strict";
+    var ref = w.document.getElementsByTagName( "script" )[ 0 ];
+    var script = w.document.createElement( "script" );
+    script.src = src;
+    script.async = true;
+    ref.parentNode.insertBefore( script, ref );
+    if (cb && typeof(cb) === "function") {
+      script.onload = cb;
+    }
+    return script;
+  };
+  if( typeof module !== "undefined" ){
+    module.exports = loadJS;
+  }
+  else {
+    w.loadJS = loadJS;
+  }
+}( typeof global !== "undefined" ? global : this ));
+```
+
+Syntax highlighting (TS)
+
+```ts
+// some comment
+
+/*
+Some
+multiline
+comment
+*/
+
+interface User {
+  name: string;
+  id: number;
+}
+
+class UserAccount {
+  name: string;
+  id: number;
+
+  constructor(name: string, id: number) {
+    this.name = name;
+    this.id = id;
+  }
+}
+
+const user: User = new UserAccount("Murphy", 1);
+```
+
+Syntax highlighting (JSX)
+
+```tsx
+import { useCallback, useState } from 'react';
+import { PTabsBar } from '@porsche-design-system/components-react/ssr';
+
+export const SingleComponent = () => {
+  const [activeTab, setActiveTab] = useState(0);
+  const onUpdate = useCallback((e) => {
+    setActiveTab(e.detail.activeTabIndex);
+  }, []);
+
+  return (
+    <>
+      <PTabsBar activeTabIndex={activeTab} onUpdate={onUpdate} data-testid="host">
+        <button data-testid="button1">Some label</button>
+        <button data-testid="button2">Some label</button>
+        <button data-testid="button3">Some label</button>
+      </PTabsBar>
+      <div data-testid="debug">{`Active Tab: ${activeTab + 1}`}</div>
+    </>
+  );
+};
+```
+
+Syntax highlighting (TSX)
+
+```tsx
+import { useCallback, useState } from 'react';
+import { PTabsBar, type TabsBarUpdateEventDetail } from '@porsche-design-system/components-react/ssr';
+
+export const SingleComponent = (): JSX.Element => {
+  const [activeTab, setActiveTab] = useState(0);
+  const onUpdate = useCallback((e: CustomEvent<TabsBarUpdateEventDetail>) => {
+    setActiveTab(e.detail.activeTabIndex);
+  }, []);
+
+  return (
+    <>
+      <PTabsBar activeTabIndex={activeTab} onUpdate={onUpdate} data-testid="host">
+        <button data-testid="button1">Some label</button>
+        <button data-testid="button2">Some label</button>
+        <button data-testid="button3">Some label</button>
+      </PTabsBar>
+      <div data-testid="debug">{`Active Tab: ${activeTab + 1}`}</div>
+    </>
+  );
+};
+```
+
+Syntax highlighting (JSON)
+
+```json
+{
+    "glossary": {
+        "title": "example glossary",
+		"GlossDiv": {
+            "title": "S",
+			"GlossList": {
+                "GlossEntry": {
+                    "ID": "SGML",
+					"SortAs": "SGML",
+					"GlossTerm": "Standard Generalized Markup Language",
+					"Acronym": "SGML",
+					"Abbrev": "ISO 8879:1986",
+					"GlossDef": {
+                        "para": "A meta-markup language, used to create markup languages such as DocBook.",
+						"GlossSeeAlso": ["GML", "XML"]
+                    },
+					"GlossSee": "markup"
+                }
+            }
+        }
+    }
+}
+```
+
+Syntax highlighting (Shell)
+
+```bash
+# some comment
+npm install @porsche-design-system/components-js
+```
+
+Syntax highlighting (Bash)
+
+```bash
+# some comment
+npm install @porsche-design-system/components-js
+```
+
+Syntax highlighting (Diff)
+
+```diff
+- <p-banner></p-banner>
++ <p-banner open="true"></p-banner>
+```
+
+## Tables
+
+| Option | Description                                                                        |
+| ------ | ---------------------------------------------------------------------------------- |
+| data   | Lorem ipsum dolor sit amet.                                                        |
+| engine | Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. |
+| ext    | At vero eos et accusam et justo duo dolores et ea rebum.                           |
+
+## Links
+
+[link text](https://designsystem.porsche.com/)
+
+[link with title](https://designsystem.porsche.com/ 'Porsche Design System')
+
+Autoconverted link https://designsystem.porsche.com/
+
+## Images
+
+![Porsche 992 Carrera S](assets/porsche-992-carrera-s.jpg)
+
+![Porsche 718 GTS](assets/porsche-718-gts.jpg 'The Porsche 718 GTS')
+
+Like links, Images also have a footnote style syntax with a reference later in the document defining the URL location.
+
+![Alt text][id]
+
+[id]: /assets/porsche-911-gt2-rs.jpg '911 GT2 RS'

@@ -790,6 +790,11 @@ jobs:
         with:
           name: assets-build
           path: ./packages/assets/dist
+      - name: 'Store Component Meta Build Artifact'
+        uses: actions/upload-artifact@v4
+        with:
+          name: component-meta-build
+          path: ./packages/component-meta/dist
       - name: 'Store Components Build Artifact'
         uses: actions/upload-artifact@v4
         with:
@@ -852,11 +857,6 @@ jobs:
         with:
           entrypoint: run-build
           args: --shared
-      - name: 'Build Assets'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-build
-          args: --assets
       - name: 'Build Utilities'
         uses: ./.github/actions/docker-run-playwright
         with:

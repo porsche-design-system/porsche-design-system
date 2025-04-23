@@ -24,6 +24,8 @@ services:
       - ALGOLIA_API_KEY
       - AWS_ACCESS_KEY_ID
       - AWS_SECRET_ACCESS_KEY
+      - CDN_USER
+      - CDN_SSH_KEY
       - UXPIN_TOKEN_DEV
       - UXPIN_TOKEN_LATEST
       - CI

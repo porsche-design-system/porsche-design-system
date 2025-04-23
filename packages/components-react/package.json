@@ -26,12 +26,12 @@
     "clean:build": "rm -rf ./dist && yarn --cwd projects/nextjs clean:build && yarn --cwd projects/remix clean:build && yarn --cwd projects/uxpin-wrapper clean:build"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "3.28.0-rc.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "@porsche-design-system/components-react": "3.28.0-rc.1",
     "react-imask": "^7.6.1",
     "react-router-dom": "^7.1.1",
-    "styled-components": "^6.1.13"
+    "styled-components": "^6.1.13",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@porsche-design-system/assets": "5.0.2",

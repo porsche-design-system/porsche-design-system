@@ -1,0 +1,18 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from "@/components/playground/Configurator";
+import { textListStory } from "@/app/components/text-list/text-list.stories";
+
+export const metadata = {
+  title: 'Text List - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Text List component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Text List <ComponentStatus tagName="p-text-list"></ComponentStatus>
+
+The `p-text-list` component is used to display listed data in form of an unordered or ordered list. A list depends on
+two parts (like any native HTML list): A list wrapper which defines the type of the list (unordered or ordered) and the
+list items. Nesting is also provided and follows the same nesting rules like native HTML lists. For more complex data
+you should consider the use of a data table.
+
+<Configurator tagName="p-text-list" story={textListStory} />
+

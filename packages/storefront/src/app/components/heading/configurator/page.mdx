@@ -1,0 +1,22 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { headingStory } from "@/app/components/heading/heading.stories";
+import {Configurator} from "@/components/playground/Configurator";
+import {Notification} from "@/components/common/Notification";
+import Link from "next/link";
+
+export const metadata = {
+  title: 'Heading - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Heading component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Heading <ComponentStatus tagName="p-heading"></ComponentStatus>
+
+`p-heading` is used to highlight and specify heading styling and hierarchy in documents.
+
+<Notification heading="Recommendation" heading-tag="h2" state="success">
+  Although the component is very sophisticated, it's recommended (if possible) to use the corresponding styles / design tokens of
+  the "@porsche-design-system/components-\{js|angular|react|vue}/styles" sub-package for best performance since way
+  less DOM nodes are required to render. Further information can be found <Link href="/styles/typography/">here</Link>.
+</Notification>
+
+<Configurator tagName="p-heading" story={headingStory} />

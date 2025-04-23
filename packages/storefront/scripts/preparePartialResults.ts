@@ -1,6 +1,6 @@
+import * as fs from 'node:fs';
+import * as path from 'node:path';
 import { getInitialStyles, getMetaTagsAndIconLinks } from '@porsche-design-system/components-js/partials';
-import * as fs from 'fs';
-import * as path from 'path';
 
 const preparePartialResults = (): void => {
   const metaTagsAndIconLinksDemo = getMetaTagsAndIconLinks({ appTitle: 'TITLE_OF_YOUR_APP' });

@@ -1,4 +1,3 @@
-import type { JssStyle } from 'jss';
 import {
   getMediaQueryMin,
   gridExtendedOffsetBase,
@@ -6,7 +5,8 @@ import {
   motionEasingIn,
   motionEasingOut,
 } from '@porsche-design-system/styles';
-import { getCss } from '../../../utils';
+import type { JssStyle } from 'jss';
+import { TOAST_Z_INDEX } from '../../../constants';
 import {
   addImportantToEachRule,
   addImportantToRule,
@@ -15,8 +15,11 @@ import {
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import { TOAST_Z_INDEX } from '../../../constants';
+import { getCss } from '../../../utils';
 
+/**
+ * @css-variable {"name": "--p-toast-position-bottom", "description": "Defines the spacing between the toast and the bottom edge of its container.", "defaultValue": "56px"}
+ */
 const cssVariablePositionBottom = '--p-toast-position-bottom'; // CSS custom property exposed as public interface
 const cssVariablePositionBottomInternal = '--p-internal-toast-position-bottom';
 

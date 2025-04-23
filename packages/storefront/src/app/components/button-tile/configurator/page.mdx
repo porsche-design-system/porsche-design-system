@@ -1,0 +1,25 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from "@/components/playground/Configurator";
+import { buttonTileStory } from "@/app/components/button-tile/button-tile.stories";
+
+export const metadata = {
+  title: 'Button Tile - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Button Tile component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Button Tile <ComponentStatus tagName="p-button-tile"></ComponentStatus>
+
+The `p-button-tile` is an interactive component that displays a provided image to tease content and performs form or
+**interaction** events within one container. Whenever you want to provide navigational elements, stick to the
+[Link Tile](/components/link-tile/) component instead.
+
+**Note:** The component does not take care of processing and aligning the image.
+
+An `<img/>`, `<picture/>` or `<video/>` tag has to be provided as default slot.
+
+Additionally, the properties `description` and `label` are required. The `description` property is used as a teaser with
+a more detailed description of the button and its action.
+
+The `label` property is used to describe the button.
+
+<Configurator tagName="p-button-tile" story={buttonTileStory} />

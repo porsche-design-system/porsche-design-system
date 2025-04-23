@@ -1,0 +1,80 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Button Pure: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Button Pure component',
+};
+
+# Button Pure <ComponentStatus tagName="p-button-pure"></ComponentStatus>
+
+<TableOfContents headings={["Accessibility support","Limitations","Development considerations","Tests"]} />
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                 |
+| ------------------ | -------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
+| `Enter`, `Space`   | Activates the button.                                    |
+| `disabled`         | Button still focusable.                                  |
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA            | Usage                                                                                                                                         |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `aria-label`    | Defines a string value that labels the interactive element.                                                                                   |
+| `aria-expanded` | Exposes a visual state (e.g. expanded/collapsed) of another element.                                                                          |
+| `aria-pressed`  | Exposes the `pressed` state of a toggle button.                                                                                               |
+| `aria-haspopup` | Defines that the button opens a popup (e.g. `dialog`). It can be used in combination with `aria-expanded` to indicate the state of the popup. |
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                   | Usage                                                                                     |
+| ---------------------- | ----------------------------------------------------------------------------------------- |
+| `aria-disabled="true"` | When `disabled` prop is set, this ARIA attribute is set on the button element.            |
+| `role="status"`        | When `loading` prop is set, the component announces the loading state (start and finish). |
+| `aria-hidden="true"`   | When the `icon` prop is set, the icon is hidden from the screen reader.                   |
+
+## Limitations
+
+Due to the nature of **Web Components** and **shadowDOM**, there are limitations in the usage of some **ARIA**
+attributes if they try to set relationship between elements in different shadowDOM's or shadowDOM/lightDOM combinations.
+
+| ARIA                    | Support |
+| ----------------------- | ------- |
+| `aria-labelledby`       | 🚫      |
+| `aria-describedby`      | 🚫      |
+| `aria-owns`             | 🚫      |
+| `aria-controls`         | 🚫      |
+| `aria-activedescendant` | 🚫      |
+
+## Development considerations
+
+### Labelling
+
+If the text of a button does not clearly indicate what the button's behavior is, add a brief, descriptive label using
+the `aria` property with the `aria-label` value to provide more context for e.g. screen reader users. Phrases like
+"Add," "Detail," or "Show" can be unclear when read out of context by a screen reader. In such instances, provide an
+alternative text that offers more detailed information, such as "Add item XYZ to shopping cart" or "Details of product
+XYZ."
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |

@@ -71,6 +71,11 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.github-token }}
+      - name: 'Restore Component Meta Build Artifact'
+        uses: actions/download-artifact@v4
+        with:
+          name: component-meta-build
+          path: ./packages/component-meta/dist
       - name: 'Restore Components Build Artifact'
         uses: actions/download-artifact@v4
         with:
@@ -81,6 +86,11 @@ jobs:
         with:
           name: storefront-build
           path: ./packages/storefront/dist
+      - name: 'Restore Shared Build Artifact'
+        uses: actions/download-artifact@v4
+        with:
+          name: shared-build
+          path: ./packages/shared/dist
       - name: 'Deploy'
         uses: ./.github/actions/docker-run-playwright
         env:

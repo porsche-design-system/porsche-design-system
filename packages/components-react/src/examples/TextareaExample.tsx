@@ -1,5 +1,5 @@
+import { PButton, PText, PTextarea } from '@porsche-design-system/components-react';
 import { type FormEvent, useState } from 'react';
-import { PTextarea, PText } from '@porsche-design-system/components-react';
 
 export const TextareaExamplePage = (): JSX.Element => {
   const [lastSubmittedData, setLastSubmittedData] = useState('');
@@ -14,8 +14,8 @@ export const TextareaExamplePage = (): JSX.Element => {
     <>
       <form onSubmit={onSubmit}>
         <PTextarea name="some-name" label="Some Label"></PTextarea>
-        <button type="submit">Submit</button>
-        <button type="reset">Reset</button>
+        <PButton type="submit">Submit</PButton>
+        <PButton type="reset">Reset</PButton>
       </form>
 
       <PText>Last submitted data: {lastSubmittedData}</PText>

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { type TextareaInputEventDetail } from '@porsche-design-system/components-angular';
+import { PorscheDesignSystemModule, type TextareaInputEventDetail } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-textarea-example-controlled',
@@ -8,7 +8,8 @@ import { type TextareaInputEventDetail } from '@porsche-design-system/components
     <p-text>{{ debugText }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
 })
 export class TextareaExampleControlledComponent {
   value: string = '';

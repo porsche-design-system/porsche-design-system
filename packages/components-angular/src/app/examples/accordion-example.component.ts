@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { AccordionUpdateEventDetail } from '@porsche-design-system/components-angular';
+import { CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, Component } from '@angular/core';
+import { AccordionUpdateEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-accordion-example',
@@ -12,7 +12,9 @@ import type { AccordionUpdateEventDetail } from '@porsche-design-system/componen
     </p-accordion>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AccordionExampleComponent {
   isOpen1 = false;
