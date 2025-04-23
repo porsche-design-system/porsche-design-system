@@ -1,5 +1,5 @@
 import { breakpointM, breakpointS } from '@porsche-design-system/styles';
-import { Component, Element, Event, type EventEmitter, Host, type JSX, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, Host, type JSX, Prop, State, h } from '@stencil/core';
 import type { PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
@@ -65,28 +65,29 @@ export class Canvas {
   private hasFooter: boolean;
   private hasBackground: boolean;
 
-  private sidebarStart: HTMLElement;
-  private sidebarEnd: HTMLElement;
-  private root: HTMLElement;
-  private header: HTMLHeadElement;
+  // TODO: Produces bug when using text-field-wrapper which looses focus
+  // private sidebarStart: HTMLElement;
+  // private sidebarEnd: HTMLElement;
+  // private root: HTMLElement;
+  // private header: HTMLHeadElement;
 
-  @Watch('sidebarStartOpen')
-  public openChangeHandlerSidebarStart(isOpen: boolean): void {
-    if (this.isMediaQueryS) {
-      this.root.ontransitionend = (): void => {
-        this[isOpen ? 'sidebarStart' : 'header'].focus({ preventScroll: true });
-      };
-    }
-  }
-
-  @Watch('sidebarEndOpen')
-  public openChangeHandlerSidebarEnd(isOpen: boolean): void {
-    if (this.isMediaQueryM) {
-      this.root.ontransitionend = (): void => {
-        this[isOpen ? 'sidebarEnd' : 'header'].focus({ preventScroll: true });
-      };
-    }
-  }
+  // @Watch('sidebarStartOpen')
+  // public openChangeHandlerSidebarStart(isOpen: boolean): void {
+  //   if (this.isMediaQueryS) {
+  //     this.root.ontransitionend = (): void => {
+  //       this[isOpen ? 'sidebarStart' : 'header'].focus({ preventScroll: true });
+  //     };
+  //   }
+  // }
+  //
+  // @Watch('sidebarEndOpen')
+  // public openChangeHandlerSidebarEnd(isOpen: boolean): void {
+  //   if (this.isMediaQueryM) {
+  //     this.root.ontransitionend = (): void => {
+  //       this[isOpen ? 'sidebarEnd' : 'header'].focus({ preventScroll: true });
+  //     };
+  //   }
+  // }
 
   public connectedCallback(): void {
     this.handleMediaQueryS(this.matchMediaQueryS);
@@ -116,8 +117,8 @@ export class Canvas {
 
     return (
       <Host>
-        <div class="root" ref={(el: HTMLElement) => (this.root = el)}>
-          <header class="header" tabIndex={-1} ref={(el: HTMLHeadElement) => (this.header = el)}>
+        <div class="root">
+          <header class="header" tabIndex={-1}>
             <div class="blur">
               <div />
               <div />
@@ -156,7 +157,6 @@ export class Canvas {
               inert={!this.sidebarStartOpen}
               aria-label={`Navigation sidebar ${this.sidebarStartOpen ? 'open' : 'closed'}`}
               tabIndex={-1}
-              ref={(el: HTMLElement) => (this.sidebarStart = el)}
             >
               <div class="sidebar__scroller">
                 <div class="sidebar__header sidebar__header--start">
@@ -192,7 +192,6 @@ export class Canvas {
               inert={!this.sidebarEndOpen}
               aria-label={`Settings sidebar ${this.sidebarEndOpen ? 'open' : 'closed'}`}
               tabIndex={-1}
-              ref={(el: HTMLElement) => (this.sidebarEnd = el)}
             >
               <div class="sidebar__scroller">
                 <div class="sidebar__header sidebar__header--end">

@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
 import { Notification } from "@/components/common/Notification";
+import Link from "next/link";
 
 export const metadata = {
   title: 'Marque - Porsche Design System',
@@ -13,7 +14,7 @@ export const metadata = {
 
 <Notification heading="Deprecation hint" heading-tag="h2" state="error">
   This component is deprecated and will be removed with the next major release.
-  Please use <a href="/components/wordmark/">p-wordmark</a> instead.
+  Please use <Link href="/components/wordmark/">p-wordmark</Link> instead.
 </Notification>
 
 ## Sizes

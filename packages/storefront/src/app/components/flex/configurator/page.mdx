@@ -2,6 +2,7 @@ import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { Configurator } from "@/components/playground/Configurator";
 import { flexStory } from "@/app/components/flex/flex.stories";
 import {Notification} from "@/components/common/Notification";
+import Link from "next/link";
 
 export const metadata = {
   title: 'Flex - Porsche Design System',
@@ -16,7 +17,7 @@ components.
 
 <Notification heading="Deprecation hint" heading-tag="h2" state="error">
   This component is deprecated and will be removed with the next major release.
-  In general, please use native <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox">CSS Flex</a> instead for better performance and more standardized layout technique.
+  In general, please use native <Link href="https://css-tricks.com/snippets/css/a-guide-to-flexbox">CSS Flex</Link> instead for better performance and more standardized layout technique.
 </Notification>
 
 <Configurator tagName="p-flex" story={flexStory} />

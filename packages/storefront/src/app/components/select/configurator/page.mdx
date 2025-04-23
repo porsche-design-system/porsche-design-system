@@ -3,6 +3,7 @@ import { TableOfContents } from "@/components/common/TableOfContents";
 import { Configurator } from "@/components/playground/Configurator";
 import { selectStory } from "@/app/components/select/select.stories";
 import {Notification} from "@/components/common/Notification";
+import Link from "next/link";
 
 export const metadata = {
   title: 'Select - Porsche Design System',
@@ -17,9 +18,9 @@ used [within a form](components/select/examples#form) or in a
 
 <Notification heading="Attention" heading-tag="h2" state="warning">
   When the <code>p-select</code> component is used within a form, it utilizes the
-  <a href="https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals">ElementInternals</a> API, which has limited
+  <Link href="https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals">ElementInternals</Link> API, which has limited
   browser support. For broader browser compatibility, consider using a
-  <a href="components/select/examples#controlled">controlled</a> approach instead.
+  <Link href="components/select/examples#controlled">controlled</Link> approach instead.
 </Notification>
 
 Many of the properties closely resemble those found in the [select-wrapper](/components/select-wrapper/examples/) and

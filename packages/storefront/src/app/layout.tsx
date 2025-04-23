@@ -4,6 +4,7 @@ import { Canvas } from '@/components/layout/Canvas';
 import { Providers } from '@/components/providers/Providers';
 import { StorefrontThemeProvider } from '@/components/providers/StorefrontThemeProvider';
 import { HeaderPartials } from '@/partials/HeaderPartials';
+import { getBasePath } from '@/utils/getBasePath';
 import { isDevEnvironment } from '@/utils/isDev';
 import { getMetaTagsAndIconLinks } from '@porsche-design-system/components-react/partials';
 import Script from 'next/script';
@@ -35,10 +36,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const basePath = getBasePath();
   return (
     <html lang="en">
       <head>
-        <base href={process.env.NEXT_PUBLIC_BASE_PATH ? `/${process.env.NEXT_PUBLIC_BASE_PATH}/` : '/'} />
+        <base href={basePath ? `/${basePath}/` : '/'} />
         <meta property="og:image" content="/assets/og-image.png" />
         <meta property="og:image:alt" content="Porsche Wordmark" />
         <meta property="og:type" content="website" />
