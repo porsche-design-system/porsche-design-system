@@ -3,7 +3,7 @@ import * as path from 'node:path';
 
 const extractVersions = (content: string): string[] => {
   const headings: string[] = [];
-  const headingRegex = /^### (\[.*] - \d{4}-\d{2}-\d{2})/gm;
+  const headingRegex = /^## (\[.*] - \d{4}-\d{2}-\d{2})/gm;
   let match: RegExpExecArray | null;
 
   while ((match = headingRegex.exec(content)) !== null) {
@@ -25,7 +25,7 @@ const prepareChangelog = (): void => {
   const replacedContent = srcContent
     // Add TableOfContents with extracted versions
     .replace(
-      /\n### /,
+      /\n## \[/,
       `\n<TableOfContents headings={${JSON.stringify(extractVersions(srcContent))}}></TableOfContents>\n$&`
     );
 
