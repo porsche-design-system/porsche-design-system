@@ -226,6 +226,7 @@ export class Checkbox {
           <input
             type="checkbox"
             id={id}
+            class="checkbox"
             aria-describedby={`${descriptionId} ${messageId}`}
             aria-invalid={this.state === 'error' ? 'true' : null}
             aria-disabled={this.loading || this.disabled ? 'true' : null}
