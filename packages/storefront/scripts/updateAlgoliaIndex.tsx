@@ -186,10 +186,11 @@ const uploadAndOverrideRecords = (records: AlgoliaRecord[]) => {
 };
 
 const updateAlgoliaIndex = () => {
-  const records = generateAlgoliaRecords(sitemap);
+  // Filter changelog since it's too big, the sections of the changelog page will still be included in the index
+  const records = generateAlgoliaRecords(sitemap).filter((record) => record.objectID !== '/news/changelog');
 
   //Uncomment this for easier debugging
-  // fs.writeFileSync(path.resolve(__dirname, 'algoliaRecords.json'), JSON.stringify(_records, null, 2), {
+  // fs.writeFileSync(path.resolve(__dirname, 'algoliaRecords.json'), JSON.stringify(records, null, 2), {
   //   encoding: 'utf8',
   // });
 
