@@ -31,6 +31,7 @@ export const getComponentCss = (theme: Theme, isDisabled: boolean, selected: boo
       columnGap: '8px',
     },
     checkbox: {
+      flexShrink: 0,
       ...getCheckboxBaseStyles(theme, isDisabled),
       ...(selected && {
         ...getCheckboxCheckedBaseStyles(theme, isDisabled),

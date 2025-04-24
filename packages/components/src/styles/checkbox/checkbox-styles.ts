@@ -1,4 +1,4 @@
-import type { Styles } from 'jss';
+import type { JssStyle } from 'jss';
 import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
 import type { FormState } from '../../utils/form/form-state';
 import { isDisabledOrLoading, isHighContrastMode, supportsChromiumMediaQuery, type Theme } from '../../utils';
@@ -8,7 +8,6 @@ import { borderWidthBase, fontLineHeight } from '@porsche-design-system/styles';
 import { prefersColorSchemeDarkMediaQuery } from '../prefers-color-scheme-dark-media-query';
 import { getSchemedHighContrastMediaQuery } from '../schemed-high-contrast-media-query';
 import { hoverMediaQuery } from '../hover-media-query';
-import { getCheckboxBaseStyles } from './checkbox-base-styles';
 import { getCheckboxCheckedBaseStyles } from './checkbox-checked-base-styles';
 import { getHighContrastColors, getThemedColors } from '../colors';
 
@@ -22,9 +21,8 @@ export const getCheckboxStyles = (
   theme: Theme,
   isDisabled: boolean,
   isLoading?: boolean,
-  state?: FormState,
-  compact?: boolean
-): Styles<'checkbox'> => {
+  state?: FormState
+): JssStyle => {
   const { primaryColor, contrastMediumColor, contrastHighColor, disabledColor, focusColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
@@ -69,91 +67,88 @@ export const getCheckboxStyles = (
   const background = `transparent 0% 0% / ${fontLineHeight}`;
 
   return {
-    checkbox: {
-      ...getCheckboxBaseStyles(theme, isDisabled, isLoading, state, compact),
-      ...(isLoading
-        ? {
-            '&:checked': {
-              // background-image is merged in later
-              borderColor: checkedColor,
-              backgroundColor: checkedColor,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                borderColor: checkedColorDark,
-                backgroundColor: checkedColorDark,
-              }),
-            },
-          }
-        : {
-            '&:checked': getCheckboxCheckedBaseStyles(theme, isDisabled, isLoading, state),
-            '&:indeterminate': {
-              background, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
-              borderColor: uncheckedColor, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
-              backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColor),
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                backgroundImage: getIndeterminateSVGBackgroundImage(
-                  disabledOrLoading ? indeterminateIconColor : indeterminateIconColorDark
-                ),
-                borderColor: uncheckedColorDark, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
-                backgroundColor: 'transparent', // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
-              }),
-              // This is a workaround for Blink based browsers, which do not reflect the high contrast system colors (e.g.: "Canvas" and "CanvasText") when added to background SVG's.
-              ...(isHighContrastMode &&
-                getSchemedHighContrastMediaQuery(
-                  {
-                    backgroundImage: getIndeterminateSVGBackgroundImage('black'),
-                  },
-                  {
-                    backgroundImage: getIndeterminateSVGBackgroundImage('white'),
-                  }
-                )),
-            },
-          }),
-      ...(!disabledOrLoading &&
-        !isHighContrastMode &&
-        hoverMediaQuery({
-          '&:hover,label:hover~.wrapper .checkbox': {
-            borderColor: uncheckedHoverColor,
+    ...(isLoading
+      ? {
+          'input:checked': {
+            // background-image is merged in later
+            borderColor: checkedColor,
+            backgroundColor: checkedColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: uncheckedHoverColorDark,
+              borderColor: checkedColorDark,
+              backgroundColor: checkedColorDark,
             }),
           },
-          '&:checked:hover,label:hover~.wrapper .checkbox:checked': {
-            borderColor: checkedHoverColor,
-            backgroundColor: checkedHoverColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: checkedHoverColorDark,
-              backgroundColor: checkedHoverColorDark,
-            }),
-          },
-          '&:indeterminate:hover,label:hover~.wrapper .checkbox:indeterminate': {
+        }
+      : {
+          'input:checked': getCheckboxCheckedBaseStyles(theme, isDisabled, isLoading, state),
+          'input:indeterminate': {
             background, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
-            borderColor: uncheckedHoverColor, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
-            backgroundImage: getIndeterminateSVGBackgroundImage(escapeHashCharacter(indeterminateIconHoverColor)),
+            borderColor: uncheckedColor, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
+            backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColor),
             ...prefersColorSchemeDarkMediaQuery(theme, {
-              backgroundImage: getIndeterminateSVGBackgroundImage(escapeHashCharacter(indeterminateIconHoverColorDark)),
-              borderColor: uncheckedHoverColorDark, // Safari fix: ensures proper rendering of 'indeterminate' mode
-              backgroundColor: 'transparent',
+              backgroundImage: getIndeterminateSVGBackgroundImage(
+                disabledOrLoading ? indeterminateIconColor : indeterminateIconColorDark
+              ),
+              borderColor: uncheckedColorDark, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
+              backgroundColor: 'transparent', // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
             }),
+            // This is a workaround for Blink based browsers, which do not reflect the high contrast system colors (e.g.: "Canvas" and "CanvasText") when added to background SVG's.
+            ...(isHighContrastMode &&
+              getSchemedHighContrastMediaQuery(
+                {
+                  backgroundImage: getIndeterminateSVGBackgroundImage('black'),
+                },
+                {
+                  backgroundImage: getIndeterminateSVGBackgroundImage('white'),
+                }
+              )),
           },
-          'label:hover~.wrapper .checkbox': supportsChromiumMediaQuery({
-            transition: 'unset', // Fixes chrome bug where transition properties are stuck on hover
-          }),
-        })),
-      ...(!isDisabled && {
-        '&::-moz-focus-inner': {
-          border: 0, // reset ua-style (for FF)
-        },
-        '&:focus': {
-          outline: 0, // reset ua-style (for older browsers)
-        },
-        '&:focus-visible': {
-          outline: `${borderWidthBase} solid ${focusColor}`,
-          outlineOffset: '2px',
+        }),
+    ...(!disabledOrLoading &&
+      !isHighContrastMode &&
+      hoverMediaQuery({
+        'input:hover,label:hover~.wrapper input': {
+          borderColor: uncheckedHoverColor,
           ...prefersColorSchemeDarkMediaQuery(theme, {
-            outlineColor: focusColorDark,
+            borderColor: uncheckedHoverColorDark,
           }),
         },
-      }),
-    },
+        'input:checked:hover,label:hover~.wrapper input:checked': {
+          borderColor: checkedHoverColor,
+          backgroundColor: checkedHoverColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: checkedHoverColorDark,
+            backgroundColor: checkedHoverColorDark,
+          }),
+        },
+        'input:indeterminate:hover,label:hover~.wrapper input:indeterminate': {
+          background, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
+          borderColor: uncheckedHoverColor, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
+          backgroundImage: getIndeterminateSVGBackgroundImage(escapeHashCharacter(indeterminateIconHoverColor)),
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            backgroundImage: getIndeterminateSVGBackgroundImage(escapeHashCharacter(indeterminateIconHoverColorDark)),
+            borderColor: uncheckedHoverColorDark, // Safari fix: ensures proper rendering of 'indeterminate' mode
+            backgroundColor: 'transparent',
+          }),
+        },
+        'label:hover~.wrapper input': supportsChromiumMediaQuery({
+          transition: 'unset', // Fixes chrome bug where transition properties are stuck on hover
+        }),
+      })),
+    ...(!isDisabled && {
+      '&::-moz-focus-inner': {
+        border: 0, // reset ua-style (for FF)
+      },
+      '&:focus': {
+        outline: 0, // reset ua-style (for older browsers)
+      },
+      '&:focus-visible': {
+        outline: `${borderWidthBase} solid ${focusColor}`,
+        outlineOffset: '2px',
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          outlineColor: focusColorDark,
+        }),
+      },
+    }),
   };
 };

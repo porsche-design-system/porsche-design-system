@@ -21,6 +21,7 @@ import { getFunctionalComponentLabelStyles } from '../common/label/label-styles'
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 import { getCheckboxStyles, cssVarInternalCheckboxScaling } from '../../styles/checkbox/checkbox-styles';
+import { getCheckboxBaseStyles } from '../../styles/checkbox/checkbox-base-styles';
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
@@ -50,6 +51,10 @@ export const getComponentCss = (
         }),
       },
       ...preventFoucOfNestedElementsStyles,
+      input: {
+        ...getCheckboxBaseStyles(theme, isDisabled, isLoading, state, compact),
+      },
+      ...getCheckboxStyles(theme, isDisabled, isLoading, state),
     },
     root: {
       display: 'grid',
@@ -101,7 +106,5 @@ export const getComponentCss = (
     }),
     // .loading
     ...getFunctionalComponentLoadingMessageStyles(),
-    // .checkbox
-    ...getCheckboxStyles(theme, isDisabled, isLoading, state, compact),
   });
 };
