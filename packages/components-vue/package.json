@@ -20,7 +20,7 @@
     "build-app": "vue-tsc --noEmit --project tsconfig.app.json && vite build -c vite.config.app.mts",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt && yarn test:smoke",
     "test:unit": "yarn test:unit:vue-wrapper",
-    "test:unit:vue-wrapper": "jest --colors -c projects/vue-wrapper/tests/unit/config/jest.config.js",
+    "test:unit:vue-wrapper": "vitest --config projects/vue-wrapper/tests/unit/config/vitest.config.ts",
     "test:e2e": "yarn build-app && playwright test --config=tests/e2e/config/playwright.config.ts",
     "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
     "test:smoke": "yarn test:smoke:vue-wrapper",
@@ -28,7 +28,7 @@
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/components-vue": "3.27.3",
+    "@porsche-design-system/components-vue": "3.28.0-rc.2",
     "vue": "^3.5.13",
     "vue-imask": "^7.6.1",
     "vue-router": "^4.5.0"

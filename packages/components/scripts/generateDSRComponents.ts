@@ -98,7 +98,6 @@ const generateDSRComponents = (): void => {
           /^/g,
           `import { Component } from 'react';
 import { minifyCss } from '../../minifyCss';
-import { stripFocusAndHoverStyles } from '../../stripFocusAndHoverStyles';
 import { get${componentName}Css } from '${stylesBundleImportPath}';
 `
         )
@@ -132,7 +131,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           const delegatesFocusProp = isDelegatingFocus ? ' shadowrootdelegatesfocus="true"' : '';
           return match.replace(/\n    return \(?([\s\S]*?(?:\n    )|.*)\)?;/, (_, g1) => {
             return `
-    const style = minifyCss(stripFocusAndHoverStyles(get${componentName}Css(${getComponentCssParams})));
+    const style = minifyCss(get${componentName}Css(${getComponentCssParams}));
 
     return (
       <>
@@ -195,7 +194,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             `namedSlotChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
           )
           .replace(
-            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background)'\)/g,
+            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|button|header|header-start|header-end|controls|footer|sub-footer|sidebar-start|sidebar-end|sidebar-end-header|background)'\)/g,
             `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
           );
       } else if (newFileContent.includes('FunctionalComponent')) {
@@ -206,7 +205,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/: Theme/g, ': any')
           .replace(new RegExp(`\n.*${stylesBundleImportPath}.*`), '')
           .replace(/&& !isParentFieldsetRequired\(.*?\)/, '/* $& */') // let's disable it for now
-          .replace(/\|\|\s.*\(.*isRequiredAndParentNotRequired\(.*?\)\)/, '/* $& */') // let's disable it for now
+          // .replace(/\|\|\s.*\(.*isRequiredAndParentNotRequired\(.*?\)\)/, '/* $& */') // let's disable it for now
           .replace(/host,|formElement,/g, '// $&'); // don't destructure unused const
 
         if (newFileContent.includes('export const Label:')) {
@@ -215,6 +214,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             .replace(/(hasDescription)\(.*\)/, '$1') // replace function call with boolean const
             .replace(/(type LabelProps = {)/, '$1 hasLabel: boolean; hasDescription: boolean; ') // add types for LabelProps
             .replace(/(Label: FC<LabelProps> = \({)/, '$1 hasLabel, hasDescription, '); // destructure newly introduced hasLabel and hasDescription
+        }
+        if (newFileContent.includes('export const LegacyLabel:')) {
+          newFileContent = newFileContent
+            .replace(/(hasLabel)\(.*\)/, '$1') // replace function call with boolean const
+            .replace(/(hasDescription)\(.*\)/, '$1') // replace function call with boolean const
+            .replace(/(type LegacyLabelProps = {)/, '$1 hasLabel: boolean; hasDescription: boolean; ') // add types for LabelProps
+            .replace(/(LegacyLabel: FC<LegacyLabelProps> = \({)/, '$1 hasLabel, hasDescription, ') // destructure newly introduced hasLabel and hasDescription
+            .replace(/{formElement && isRequiredAndParentNotRequired.*}/, ''); // let's disable it for now
         }
 
         if (newFileContent.includes('export const StateMessage:')) {
@@ -230,6 +237,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       newFileContent = newFileContent
         .replace(
           /(<Label(?!Props))([\s\S]*?\/>)/,
+          "$1 hasLabel={this.props.label || namedSlotChildren.filter(({ props: { slot } }) => slot === 'label').length > 0} hasDescription={this.props.description || namedSlotChildren.filter(({ props: { slot } }) => slot === 'description').length > 0}$2"
+        )
+        .replace(
+          /(<LegacyLabel(?!Props))([\s\S]*?\/>)/,
           "$1 hasLabel={this.props.label || namedSlotChildren.filter(({ props: { slot } }) => slot === 'label').length > 0} hasDescription={this.props.description || namedSlotChildren.filter(({ props: { slot } }) => slot === 'description').length > 0}$2"
         )
         .replace(
@@ -614,18 +625,22 @@ $&`
           .replace(/this\.props\.value = state;/, '')
           .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
           .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
-      } else if (tagName === 'p-flyout-multilevel') {
+      } else if (tagName === 'p-drilldown') {
         newFileContent = newFileContent
           .replace(/validateActiveIdentifier\(.*\);/g, '')
           // .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2") // transform true to empty string '';
           .replace(/this\.props\.primary = !activeItem \|\| activeItem\.parentElement === this\.props;/, '')
           .replace(/this\.props\.primary/, 'this.primary')
           .replace(/this\.props\.isSecondaryDrawerVisible/, 'this.isSecondaryDrawerVisible');
-      } else if (tagName === 'p-flyout-multilevel-item') {
+      } else if (tagName === 'p-drilldown-item') {
         newFileContent = newFileContent
           .replace(/: Theme/g, ': any')
           .replace(/this\.props\.theme(?! \|\|)/g, 'this.theme')
-          .replace(/this\.props\.open(?! \|\|)/g, 'this.open');
+          .replace(/this\.props\.open(?! \|\|)/g, 'this.open')
+          .replace(/this\.props\.(hasSlottedHeader|hasSlottedButton)/g, '$1')
+          .replace(/hasSlottedHeader =/, 'const $&')
+          .replace(/hasSlottedButton =/, 'const $&')
+          .replace(/if \(hasSlottedButton\).*{[\s\S]*?}/, '');
         // .replace(/(inert=\{this\.open \? null : )true(})/, "$1''$2"); // transform true to empty string '';
       } else if (tagName === 'p-link-tile-model-signature') {
         newFileContent = newFileContent
@@ -666,6 +681,20 @@ $&`
           .replace(/minlength/, 'minLength')
           .replace(/readonly/, 'readOnly')
           .replace(/autofocus/, 'autoFocus')
+          .replace(/spellcheck/, 'spellCheck')
+          .replace(/autocomplete/, 'autoComplete')
+          // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
+          .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
+          .replace(/this\.props\.disabled = disabled;/, '')
+          .replace(/this\.props\.value = state;/, '')
+          .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
+          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
+      } else if (tagName === 'p-input-password') {
+        newFileContent = newFileContent
+          .replace(/@AttachInternals\(\)/, '')
+          .replace(/maxlength/, 'maxLength')
+          .replace(/minlength/, 'minLength')
+          .replace(/readonly/, 'readOnly')
           .replace(/spellcheck/, 'spellCheck')
           .replace(/autocomplete/, 'autoComplete')
           // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely

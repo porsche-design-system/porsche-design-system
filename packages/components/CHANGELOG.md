@@ -12,40 +12,77 @@ All notable changes to this project will be documented in this file and publishe
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-### [Unreleased]
+## [Unreleased]
 
-### [3.27.3] - 2025-03-21
+## [3.28.0-rc.2] - 2025-04-23
 
-### [3.27.2] - 2025-03-20
+### Fixed
 
-### [3.27.2-rc.0] - 2025-03-18
+- `Canvas`: stealing focus from `Text Field Wrapper`
+  ([#3843](https://github.com/porsche-design-system/porsche-design-system/pull/3843))
 
-#### Changed
+## [3.28.0-rc.1] - 2025-04-14
+
+### Fixed
+
+- `Drilldown`, `Drilldown Item`: visibility for slotted content (experimental)
+  ([#3833](https://github.com/porsche-design-system/porsche-design-system/pull/3833))
+
+## [3.28.0-rc.0] - 2025-04-11
+
+### Added
+
+- `Input Password`: ([#3763](https://github.com/porsche-design-system/porsche-design-system/pull/3763))
+- `Drilldown`, `Drilldown Item`: CSS variable `--p-drilldown-grid-template` and `--p-drilldown-gap` (experimental)
+  ([#3822](https://github.com/porsche-design-system/porsche-design-system/pull/3822))
+- `Drilldown Item`: named slot `button` and `header` (experimental)
+  ([#3822](https://github.com/porsche-design-system/porsche-design-system/pull/3822))
+- `Drilldown Link`: (experimental) ([#3822](https://github.com/porsche-design-system/porsche-design-system/pull/3822))
+
+### Changed
+
+- **Breaking Change** `Flyout Multilevel`, `Flyout Multilevel Item`: renamed (experimental) component to `Drilldown` and
+  `Drilldown Item` ([#3822](https://github.com/porsche-design-system/porsche-design-system/pull/3822))
+- **Breaking Change** `Drilldown Item` doesn't style slotted `<a>` tags anymore, instead use `Drilldown Link` or a
+  custom link ([#3822](https://github.com/porsche-design-system/porsche-design-system/pull/3822))
+
+### Fixed
+
+- `aria` prop now supports a colon inside a value, e.g. `aria="{ 'aria-label': 'Always remember: yes you can!' }"`
+  ([#3680](https://github.com/porsche-design-system/porsche-design-system/pull/3680))
+
+## [3.27.3] - 2025-03-21
+
+## [3.27.2] - 2025-03-20
+
+## [3.27.2-rc.0] - 2025-03-18
+
+### Changed
 
 - `Table`: add border-bottom styles to `Table Head` to support both, empty and missing `Table Body`
   ([#3788](https://github.com/porsche-design-system/porsche-design-system/pull/3788))
 
-#### Fixed
+### Fixed
 
 - `Styles`: change `Gradient` color values from `rgba` to `hsla` to fix Chrome rendering bug
   ([#3793](https://github.com/porsche-design-system/porsche-design-system/pull/3793))
 
-### [3.27.1] - 2025-03-05
+## [3.27.1] - 2025-03-05
 
-### [3.27.1-rc.0] - 2025-03-05
+## [3.27.1-rc.0] - 2025-03-05
 
-#### Fixed
+### Fixed
 
 - `Carousel`: `auto` value of `slides-per-page` prop is breakpoint customizable
   ([#3783](https://github.com/porsche-design-system/porsche-design-system/pull/3783))
 - `Select`, `Multi Select`, `Select Wrapper`: remove positioning with native anchor positioning due to a Chrome bug
   ([#3780](https://github.com/porsche-design-system/porsche-design-system/pull/3780))
 
-### [3.27.0] - 2025-02-28
+## [3.27.0] - 2025-02-28
 
-### [3.27.0-rc.6] - 2025-02-28
+## [3.27.0-rc.6] - 2025-02-28
 
-#### Added
+### Added
 
 - `Table`: `compact` prop to enable a smaller, space-saving version for compact layouts
   ([#3758](https://github.com/porsche-design-system/porsche-design-system/pull/3758))
@@ -54,7 +91,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Carousel`: `align-controls` prop to align the controls slot to the left or center (overwrites auto-alignment)
   ([#3766](https://github.com/porsche-design-system/porsche-design-system/pull/3766))
 
-#### Changed
+### Changed
 
 - `Select`, `Multi Select`, `Select Wrapper`:
   - gets rendered on `#top-layer` which enables it to be shown correctly even when used e.g. within a scroll container
@@ -72,57 +109,57 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Carousel`: `auto` value of `slides-per-page` prop is breakpoint customizable
   ([#3771](https://github.com/porsche-design-system/porsche-design-system/pull/3771))
 
-### [3.27.0-rc.5] - 2025-02-20
+## [3.27.0-rc.5] - 2025-02-20
 
-#### Fixed
+### Fixed
 
 - `AG Grid`: error on reload in next.js.
   ([#3759](https://github.com/porsche-design-system/porsche-design-system/pull/3759))
 
-### [3.27.0-rc.4] - 2025-02-20
+## [3.27.0-rc.4] - 2025-02-20
 
-#### Fixed
+### Fixed
 
 - `AG Grid`: not accessing cdn base url correctly.
   ([#3759](https://github.com/porsche-design-system/porsche-design-system/pull/3759))
 
-### [3.27.0-rc.3] - 2025-02-18
+## [3.27.0-rc.3] - 2025-02-18
 
-#### Fixed
+### Fixed
 
 - `AG Grid`: not resolving dependencies correctly.
   ([#3757](https://github.com/porsche-design-system/porsche-design-system/pull/3757))
 
-### [3.27.0-rc.2] - 2025-02-18
+## [3.27.0-rc.2] - 2025-02-18
 
-#### Fixed
+### Fixed
 
 - `AG Grid`: not resolving dependencies correctly.
   ([#3756](https://github.com/porsche-design-system/porsche-design-system/pull/3756))
 
-### [3.27.0-rc.1] - 2025-02-17
+## [3.27.0-rc.1] - 2025-02-17
 
-#### Changed
+### Changed
 
 - **Breaking Change** `AG Grid`: Updated from v32 to v33, which introduced a new Theming API. AG Grid migrated from a
   CSS-based theming approach to a JavaScript object-based theming system. As a result, our custom theme also had to be
   adjusted accordingly. ([#3740](https://github.com/porsche-design-system/porsche-design-system/pull/3740))
 
-#### Fixed
+### Fixed
 
 - Styles: `vanilla-extract` returns `getMediaQueryMax`, `getMediaQueryMin`, `getMediaQueryMinMax` & `getSkeletonStyle`
   in wrong format ([#3753](https://github.com/porsche-design-system/porsche-design-system/pull/3753))
 
-### [3.27.0-rc.0] - 2025-02-13
+## [3.27.0-rc.0] - 2025-02-13
 
-#### Added
+### Added
 
 - `@font-face` supports Thai language
   ([#3750](https://github.com/porsche-design-system/porsche-design-system/pull/3750))
 - Partials: `getFontLinks` supports preloading `thai` subset
   ([#3750](https://github.com/porsche-design-system/porsche-design-system/pull/3750))
 
-#### Changed
+### Changed
 
 - `Popover`: gets rendered on `#top-layer` which enables it to be shown correctly even when used e.g. within a scroll
   container ([#3732](https://github.com/porsche-design-system/porsche-design-system/pull/3732))
@@ -132,11 +169,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Popover`: default styling for slotted anchors
   ([#3732](https://github.com/porsche-design-system/porsche-design-system/pull/3732))
 
-### [3.26.0] - 2025-02-07
+## [3.26.0] - 2025-02-07
 
-### [3.26.0-rc.0] - 2025-02-06
+## [3.26.0-rc.0] - 2025-02-06
 
-#### Added
+### Added
 
 - `Switch`: `compact` prop to enable a smaller, space-saving version for compact layouts
   ([#3728](https://github.com/porsche-design-system/porsche-design-system/pull/3728))
@@ -154,92 +191,92 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   `seat`, `service-technician`, `skip-backward`, `skip-forward`, `stop`, `suv`, `theme`, `turismo`, `trigger-finger`,
   `unlinked` and `weather` ([#3737](https://github.com/porsche-design-system/porsche-design-system/pull/3737))
 
-### [3.25.1] - 2025-01-23
+## [3.25.1] - 2025-01-23
 
-### [3.25.1-rc.0] - 2025-01-23
+## [3.25.1-rc.0] - 2025-01-23
 
-#### Fixed
+### Fixed
 
 - `Carousel`: throws error when object-like string is passed by `pagination`
   ([#3715](https://github.com/porsche-design-system/porsche-design-system/pull/3715))
 
-### [3.25.0] - 2025-01-23
+## [3.25.0] - 2025-01-23
 
-### [3.25.0-rc.1] - 2025-01-22
+## [3.25.0-rc.1] - 2025-01-22
 
-#### Fixed
+### Fixed
 
 - `Carousel`: throws error when object-like string is passed by `slides-per-page`
   ([#3710](https://github.com/porsche-design-system/porsche-design-system/pull/3710))
 
-### [3.25.0-rc.0] - 2025-01-21
+## [3.25.0-rc.0] - 2025-01-21
 
-#### Added
+### Added
 
 - `Sheet` ([#3704](https://github.com/porsche-design-system/porsche-design-system/pull/3704))
 - `Button`, `Button-Pure`: Add `form` prop to explicitly associate the component with a form, even when it's not
   directly nested within it. ([#3648](https://github.com/porsche-design-system/porsche-design-system/pull/3648))
 
-#### Changed
+### Changed
 
 - `Table`: Enable `Table Head Cell` to be used within `Table Row` in addition to `Table Head Row` to further align with
   table structure defined by W3C ([#3701](https://github.com/porsche-design-system/porsche-design-system/pull/3701))
 
-#### Fixed
+### Fixed
 
 - `Textarea`, `Textarea Wrapper`, `Textfield Wrapper`: color contrast of `unit` prop and counter in `readonly` mode
   meets WCAG 2.2 AA standard ([#3693](https://github.com/porsche-design-system/porsche-design-system/pull/3693))
 
-### [3.24.0] - 2025-01-08
+## [3.24.0] - 2025-01-08
 
-### [3.24.0-rc.1] - 2025-01-08
+## [3.24.0-rc.1] - 2025-01-08
 
-### [3.24.0-rc.0] - 2025-01-07
+## [3.24.0-rc.0] - 2025-01-07
 
-#### Added
+### Added
 
 - Styles: support for `vanilla-extract` available under
   `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles/vanilla-extract';`
   ([#3666](https://github.com/porsche-design-system/porsche-design-system/pull/3666))
 
-#### Changed
+### Changed
 
 - React: updated peer dependency to `>=19.0.0 <20.0.0`
 
-### [3.23.0] - 2024-12-12
+## [3.23.0] - 2024-12-12
 
-### [3.23.0-rc.0] - 2024-12-12
+## [3.23.0-rc.0] - 2024-12-12
 
-#### Changed
+### Changed
 
 - `Select`: Slotted image of selected option now visible in combobox
   ([#3651](https://github.com/porsche-design-system/porsche-design-system/pull/3651))
 
-#### Fixed
+### Fixed
 
 - `Flyout`: transition bug in Safari ([3674](https://github.com/porsche-design-system/porsche-design-system/pull/3674))
 - `Styles`: dart sass deprecation warnings in `SCSS` variant
   ([3664](https://github.com/porsche-design-system/porsche-design-system/pull/3664))
 
-### [3.22.1] - 2024-12-09
+## [3.22.1] - 2024-12-09
 
-### [3.22.1-rc.0] - 2024-12-09
+## [3.22.1-rc.0] - 2024-12-09
 
-#### Fixed
+### Fixed
 
 - `Flyout Multilevel`: Secondary scroll area not shown in iOS Safari (iPhone only)
   ([3663](https://github.com/porsche-design-system/porsche-design-system/pull/3663))
 
-### [3.22.0] - 2024-12-06
+## [3.22.0] - 2024-12-06
 
-### [3.22.0-rc.1] - 2024-12-06
+## [3.22.0-rc.1] - 2024-12-06
 
-#### Added
+### Added
 
 - `Flyout Multilevel`: Supports infinite layers
   ([3647](https://github.com/porsche-design-system/porsche-design-system/pull/3647))
 
-#### Fixed
+### Fixed
 
 - Partials: error when using in projects without `react/jsx-runtime` as dependency
   ([#3660](https://github.com/porsche-design-system/porsche-design-system/pull/3660))
@@ -251,9 +288,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - Positioning in RTL mode if rendered inside a table (in #top-layer)
     ([3658](https://github.com/porsche-design-system/porsche-design-system/pull/3658))
 
-### [3.22.0-rc.0] - 2024-11-19
+## [3.22.0-rc.0] - 2024-11-19
 
-#### Added
+### Added
 
 - `Modal`, `Flyout`:
   - `aria-label` is generated from slotted header contents if `aria` prop is not provided
@@ -265,7 +302,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   even when it's not directly nested within it.
   ([#3614](https://github.com/porsche-design-system/porsche-design-system/pull/3614))
 
-#### Changed
+### Changed
 
 - Angular: updated peer dependency to `>=19.0.0 <20.0.0`
 - `Pin-Code`:
@@ -275,7 +312,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Styles`: `SCSS` variant uses `@forward/@use` internally to replace deprecated `@import`
   ([#3623](https://github.com/porsche-design-system/porsche-design-system/pull/3623))
 
-#### Fixed
+### Fixed
 
 - Partials: removed bundled `react/jsx-runtime` due to React 18/19 incompatibilities. When using `jsx` in the `format`
   option, it is necessary to have `react/jsx-runtime` as a dependency in the project included.
@@ -284,11 +321,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   `disabled` state for individual options within the group.
   ([#3614](https://github.com/porsche-design-system/porsche-design-system/pull/3614))
 
-### [3.21.0] - 2024-11-12
+## [3.21.0] - 2024-11-12
 
-### [3.21.0-rc.0] - 2024-11-11
+## [3.21.0-rc.0] - 2024-11-11
 
-#### Added
+### Added
 
 - `Flyout`: Prop `footerBehavior` to always make footer fixed
   ([3590](https://github.com/porsche-design-system/porsche-design-system/pull/3590))
@@ -301,7 +338,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Select`, `Multi-Select`: Add `form` prop to explicitly associate these components with a specific form when they are
   not directly nested within it. ([#3542](https://github.com/porsche-design-system/porsche-design-system/pull/3542))
 
-#### Changed
+### Changed
 
 - `Select`, `Multi-Select`:
   - Remove native select and use ElementInternals API
@@ -309,7 +346,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - **Breaking Change**: `Select` and `Multi-Select` components no longer support native validation due to the removal
     of the underlying native `<select>` element.
 
-#### Fixed
+### Fixed
 
 - `Flyout`: overlapping of scrollbar in iOS/iPadOS Safari when sticky header/footer is used
   ([#3607](https://github.com/porsche-design-system/porsche-design-system/pull/3607))
@@ -327,45 +364,45 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - React: global `hidden` attribute with value `false` not working
   ([#3555](https://github.com/porsche-design-system/porsche-design-system/pull/3555))
 
-### [3.20.0] - 2024-10-24
+## [3.20.0] - 2024-10-24
 
-### [3.20.0-rc.1] - 2024-10-24
+## [3.20.0-rc.1] - 2024-10-24
 
-#### Added
+### Added
 
 - React: better tree-shaking for `@porsche-design-system/components-react`
   ([#3554](https://github.com/porsche-design-system/porsche-design-system/pull/3554))
 - `Icon`: `sidebar` ([#3556](https://github.com/porsche-design-system/porsche-design-system/pull/3556))
 
-#### Changed
+### Changed
 
 - `Canvas`: Improve UI and UX behaviour in Safari
   ([#3556](https://github.com/porsche-design-system/porsche-design-system/pull/3556))
 
-#### Fixed
+### Fixed
 
 - `Flyout`: transition animation in Chrome Browser if `Flyout` has scrollable content
   ([#3550](https://github.com/porsche-design-system/porsche-design-system/pull/3550))
 
-### [3.20.0-rc.0] - 2024-10-18
+## [3.20.0-rc.0] - 2024-10-18
 
-#### Added
+### Added
 
 - `Icon`: `attachment`, `dislike`, `dislike-filled`, `like`, `like-filled`, `new-chat`
   ([#3515](https://github.com/porsche-design-system/porsche-design-system/pull/3515))
 
-#### Changed
+### Changed
 
 - `Canvas`: Improve UI and UX behaviour
   ([#3515](https://github.com/porsche-design-system/porsche-design-system/pull/3515))
 - `Flyout`, `Modal`: Removed default styling for slotted anchors
   ([#3515](https://github.com/porsche-design-system/porsche-design-system/pull/3515))
 
-### [3.19.0] - 2024-10-14
+## [3.19.0] - 2024-10-14
 
-### [3.19.0-rc.4] - 2024-10-14
+## [3.19.0-rc.4] - 2024-10-14
 
-#### Added
+### Added
 
 - `AG Grid`: custom theme ([#3517](https://github.com/porsche-design-system/porsche-design-system/pull/3517))
 - `Checkbox`: Added a `compact` prop to enable a smaller, space-saving version of the checkbox for compact layouts.
@@ -373,7 +410,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Text`, `Display`, `Heading` and `Headline`: introduce new option `inherit` to prop `align`
   ([#3520](https://github.com/porsche-design-system/porsche-design-system/pull/3520))
 
-#### Fixed
+### Fixed
 
 - `Pin Code`, `Select Wrapper`: programmatic focus
   ([#3527](https://github.com/porsche-design-system/porsche-design-system/pull/3527))
@@ -386,56 +423,56 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Partials: Replace meta tag `apple-mobile-web-app-capable` with `mobile-web-app-capable` in `getMetaTagsAndIconLinks`
   partial. ([#3519](https://github.com/porsche-design-system/porsche-design-system/pull/3519))
 
-### [3.19.0-rc.3] - 2024-10-02
+## [3.19.0-rc.3] - 2024-10-02
 
-#### Fixed
+### Fixed
 
 - `Carousel`: remove gradient styles for carousel if `gradientColor` is not defined
   ([#3518](https://github.com/porsche-design-system/porsche-design-system/pull/3518))
 
-### [3.19.0-rc.2] - 2024-10-01
+## [3.19.0-rc.2] - 2024-10-01
 
-#### Added
+### Added
 
 - `Carousel`: introduce `trimSpace` prop
   ([#3496](https://github.com/porsche-design-system/porsche-design-system/pull/3496))
 - `Checkbox`: ([#3498](https://github.com/porsche-design-system/porsche-design-system/pull/3498))
 
-#### Fixed
+### Fixed
 
 - `Checkbox Wrapper`, `Radio Button Wrapper`: rendering of `checked` state in Blink based Browsers when component is
   rendered in high contrast mode ([#3488](https://github.com/porsche-design-system/porsche-design-system/pull/3488))
 
-### [3.19.0-rc.1] - 2024-09-06
+## [3.19.0-rc.1] - 2024-09-06
 
-#### Changed
+### Changed
 
 - `Canvas`: Improve UX ([#3494](https://github.com/porsche-design-system/porsche-design-system/pull/3494))
 
-### [3.19.0-rc.0] - 2024-09-03
+## [3.19.0-rc.0] - 2024-09-03
 
-#### Added
+### Added
 
 - `componentsReady()`: Introduce optional `readyState` parameter
   ([#3460](https://github.com/porsche-design-system/porsche-design-system/pull/3460))
 - `Carousel`: introduce `focusOnCenterSlide` & `gradientColor` props
   ([#3488](https://github.com/porsche-design-system/porsche-design-system/pull/3488))
 
-#### Changed
+### Changed
 
 - `Text Field Wrapper`: width calculation of counter and unit element are now CSS based in relation to the number of
   characters ([#3472](https://github.com/porsche-design-system/porsche-design-system/pull/3472))
 
-#### Fixed
+### Fixed
 
 - `jsdom-polyfill`: errors from included polyfill packages
   ([3481](https://github.com/porsche-design-system/porsche-design-system/pull/3481))
 
-### [3.18.0] - 2024-08-21
+## [3.18.0] - 2024-08-21
 
-### [3.18.0-rc.0] - 2024-08-21
+## [3.18.0-rc.0] - 2024-08-21
 
-#### Added
+### Added
 
 - `Button Tile`, `Link Tile`, `Link Tile Model Signature`: supports `<video/>` (the tile components automatically check
   for OS reduced motion setting to decide weather the video autoplay should be prevented or not to improve accessibility
@@ -444,7 +481,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#3439](https://github.com/porsche-design-system/porsche-design-system/pull/3439))
 - `Textarea`: ([#3443](https://github.com/porsche-design-system/porsche-design-system/pull/3443))
 
-#### Changed
+### Changed
 
 - Partials: `getInitialStyles` uses CSS `:defined` to determine the visibility of web components, as well as
   `[data-ssr]` attribute instead of `.ssr` class for Next JS and Remix
@@ -457,7 +494,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Select`: added `display: block` to host in order to be consistent with other form components
   ([#3462](https://github.com/porsche-design-system/porsche-design-system/pull/3462))
 
-#### Fixed
+### Fixed
 
 - `Select`, `Multi-Select`: programmatic focus
   ([#3462](https://github.com/porsche-design-system/porsche-design-system/pull/3462))
@@ -469,34 +506,34 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   `min-width` is added to prevent text overlapping
   ([#3465](https://github.com/porsche-design-system/porsche-design-system/pull/3465))
 
-### [3.17.0] - 2024-08-01
+## [3.17.0] - 2024-08-01
 
-### [3.17.0-rc.2] - 2024-08-01
+## [3.17.0-rc.2] - 2024-08-01
 
-#### Fixed
+### Fixed
 
 - `Optgoup`: hydration error in Next.js SSR context
   ([#3432](https://github.com/porsche-design-system/porsche-design-system/pull/3432))
 - `Select`: ensure slotted image width
   ([#3432](https://github.com/porsche-design-system/porsche-design-system/pull/3432))
 
-### [3.17.0-rc.1] - 2024-07-31
+## [3.17.0-rc.1] - 2024-07-31
 
-#### Added
+### Added
 
 - `Button`, `Link`:
   - Prop `variant` extended by value `ghost`
     ([#3423](https://github.com/porsche-design-system/porsche-design-system/pull/3423))
   - Prop `compact` ([#3423](https://github.com/porsche-design-system/porsche-design-system/pull/3423))
 
-#### Fixed
+### Fixed
 
 - `Tabs Bar`: fixed tabindex issue when `Tabs Bar` is rendered with the `Scroller` component
   ([#3421](https://github.com/porsche-design-system/porsche-design-system/pull/3421))
 
-### [3.17.0-rc.0] - 2024-07-29
+## [3.17.0-rc.0] - 2024-07-29
 
-#### Added
+### Added
 
 - `Link Tile`, `Link Tile Model Signature`, `Button Tile`:
   - Named slot `header` ([#3419](https://github.com/porsche-design-system/porsche-design-system/pull/3419))
@@ -513,7 +550,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Flyout`, `Modal`: Add custom events `motionVisibleEnd` and `motionHiddenEnd` to notify when opening and closing
   transitions are complete ([#3418](https://github.com/porsche-design-system/porsche-design-system/pull/3418))
 
-#### Changed
+### Changed
 
 - `Link Tile`, `Link Tile Model Signature`, `Button Tile`:
   - Layout behaviour is able to break out of its aspect ratio in case content overflows to be a11y compliant and/or to
@@ -551,7 +588,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Carousel`: Slides and `controls` slot are centered if `alignHeader` prop is set to `center` and amount of slides is
   less than `slidesPerPage` ([#3372](https://github.com/porsche-design-system/porsche-design-system/pull/3372))
 
-#### Fixed
+### Fixed
 
 - `Link Pure`: Broken with `alignLabel="start"`, hidden label & nested anchor
   ([#3379](https://github.com/porsche-design-system/porsche-design-system/pull/3379))
@@ -563,17 +600,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Select Wrapper`: `optgroup` styling and behavior
   ([#3410](https://github.com/porsche-design-system/porsche-design-system/pull/3410))
 
-### [3.16.0] - 2024-07-02
+## [3.16.0] - 2024-07-02
 
-### [3.16.0-rc.2] - 2024-07-02
+## [3.16.0-rc.2] - 2024-07-02
 
-#### Added
+### Added
 
 - Partials: Added default `og:image` and related meta tags to the `getMetaTagsAndIconLinks` partial. Can be disabled by
   setting the `ogImage` option to `false`.
   ([#3357](https://github.com/porsche-design-system/porsche-design-system/pull/3357))
 
-#### Changed
+### Changed
 
 - `Flyout Navigation`, `Flyout Navigation Item`: Renamed (experimental) component to `Flyout Multilevel` and
   `Flyout Multilevel Item` ([#3351](https://github.com/porsche-design-system/porsche-design-system/pull/3351))
@@ -587,30 +624,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 + <p-flyout-multilevel><p-flyout-multilevel-item></p-flyout-multilevel-item></p-flyout-multilevel>
 ```
 
-#### Fixed
+### Fixed
 
 - Types: `@porsche-design-system/components-vue` typings are not exposed
   ([#3355](https://github.com/porsche-design-system/porsche-design-system/pull/3355))
 
-### [3.16.0-rc.1] - 2024-06-18
+## [3.16.0-rc.1] - 2024-06-18
 
-#### Added
+### Added
 
 - `jsdom-polyfill` Added polyfills for `Popover API` and `ResizeObserver`
   ([#3334](https://github.com/porsche-design-system/porsche-design-system/pull/3334))
 - `Segmented Control`: Prop `aria` added to `Segmented Control Item` to support ARIA attributes
   ([#3327](https://github.com/porsche-design-system/porsche-design-system/pull/3327))
 
-#### Changed
+### Changed
 
 - Angular: updated peer dependency to `>=17.0.0 <19.0.0`
   ([#3346](https://github.com/porsche-design-system/porsche-design-system/pull/3346))
 - React: Improve prop typings for all wrappers of `@porsche-design-system/components-react`
   ([#3336](https://github.com/porsche-design-system/porsche-design-system/pull/3336))
 
-### [3.16.0-rc.0] - 2024-06-05
+## [3.16.0-rc.0] - 2024-06-05
 
-#### Added
+### Added
 
 - `Flyout`:
   - CSS variable `--p-flyout-sticky-top` (experimental)
@@ -621,7 +658,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
   - Named slot `header` ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
 
-#### Changed
+### Changed
 
 - `Modal`, `Flyout`:
   - Sticky dismiss button ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
@@ -633,7 +670,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
 - `Modal`: `heading` prop and `slot="heading"` are deprecated. Use `slot="header"` instead.
 
-#### Fixed
+### Fixed
 
 - Types: Fixed incorrectly allowed type `string` in types `BreakpointCustomizable`, `SelectedAriaAttributes`,
   `CarouselInternationalization`, `PaginationInternationalization` and `ScrollToPosition`
@@ -642,31 +679,31 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Modal`: Uses native `<dialog />` element to resolve focus issues, focus trap
   ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
 
-### [3.15.2] - 2024-05-29
+## [3.15.2] - 2024-05-29
 
-#### Fixed
+### Fixed
 
 - `aria`: Refactor `parseJSONAttribute` to support Safari < 16.4  
   ([#3314](https://github.com/porsche-design-system/porsche-design-system/pull/3314))
 
-### [3.15.1] - 2024-05-23
+## [3.15.1] - 2024-05-23
 
-#### Fixed
+### Fixed
 
 - `Banner`: Fixed position on mobile ([#3307](https://github.com/porsche-design-system/porsche-design-system/pull/3307))
 
-### [3.15.0] - 2024-05-16
+## [3.15.0] - 2024-05-16
 
-### [3.15.0-rc.5] - 2024-05-16
+## [3.15.0-rc.5] - 2024-05-16
 
-#### Added
+### Added
 
 - `Button Pure`: Prop `underline` to show an underline for the label
   ([#3212](https://github.com/porsche-design-system/porsche-design-system/pull/3212))
 - Partials: Added new option `globalStyles` to `getInitialStyles` to disable global reset styles.  
   ([#3213](https://github.com/porsche-design-system/porsche-design-system/pull/3213))
 
-#### Changed
+### Changed
 
 - `Banner`: Refactor Banner to use native `popover`
   ([#3196](https://github.com/porsche-design-system/porsche-design-system/pull/3196))
@@ -678,7 +715,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Tabs Bar`: Removed sibling tabpanel focus style from initialStyles
   ([#3213](https://github.com/porsche-design-system/porsche-design-system/pull/3213))
 
-#### Fixed
+### Fixed
 
 - `Carousel`: Accessible name of carousel region wrapper
   ([#3220](https://github.com/porsche-design-system/porsche-design-system/pull/3220))
@@ -686,14 +723,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   `aria="{ 'aria-label': 'You can\'t do that? yes you can!' }"`
   ([#3217](https://github.com/porsche-design-system/porsche-design-system/pull/3217))
 
-### [3.15.0-rc.4] - 2024-05-06
+## [3.15.0-rc.4] - 2024-05-06
 
-#### Added
+### Added
 
 - Partials: Added new partial `getFontFaceStyles` which returns an inline style containing all font-face definitions.  
   ([#3188](https://github.com/porsche-design-system/porsche-design-system/pull/3188))
 
-#### Changed
+### Changed
 
 - Partials: Partial `getFontFaceStylesheet` is deprecated and will be removed with the next major release. Use the
   `getFontFaceStyles` partial instead, which directly returns a `<style>` tag containing all font-face definitions and
@@ -704,23 +741,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 + getFontFaceStyles()
 ```
 
-### [3.15.0-rc.3] - 2024-04-23
+## [3.15.0-rc.3] - 2024-04-23
 
-#### Fixed
+### Fixed
 
 - `Pin Code`: Fixed several problems with IME keyboards
   ([#3197](https://github.com/porsche-design-system/porsche-design-system/pull/3197))
 
-### [3.15.0-rc.2] - 2024-04-22
+## [3.15.0-rc.2] - 2024-04-22
 
-#### Added
+### Added
 
 - `Accordion`: Add experimental property `sticky` for a fixed heading
   ([#3181](https://github.com/porsche-design-system/porsche-design-system/pull/3181))
 - `Inline Notification`, `Banner`: heading hierarchy can now be customized with `headingTag` prop
   ([#3168](https://github.com/porsche-design-system/porsche-design-system/pull/3168))
 
-#### Changed
+### Changed
 
 - `Accordion`: `tag` property is deprecated. Use `headingTag` property instead to specify heading hierarchy level.
   ([#3168](https://github.com/porsche-design-system/porsche-design-system/pull/3168))
@@ -730,26 +767,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 + <p-accordion heading-tag="h3"></p-accordion>
 ```
 
-#### Fixed
+### Fixed
 
 - `Pin Code`: Input is entered twice in iOS
   ([#3192](https://github.com/porsche-design-system/porsche-design-system/pull/3192))
 
-### [3.15.0-rc.1] - 2024-04-17
+## [3.15.0-rc.1] - 2024-04-17
 
-#### Added
+### Added
 
 - Partials: `getMetaTagsAndIconLinks`, `getComponentChunkLinks`, `getIconLinks` and `getFontLinks` support new format
   option `js` ([#3179](https://github.com/porsche-design-system/porsche-design-system/pull/3179))
 
-### [3.15.0-rc.0] - 2024-04-05
+## [3.15.0-rc.0] - 2024-04-05
 
-#### Changed
+### Changed
 
 - `Model Signature`: Enabling the use of hex colors, CSS gradients, CSS image and video masks. In addition, the size was
   slightly adjusted. ([#3153](https://github.com/porsche-design-system/porsche-design-system/pull/3153))
 
-#### Fixed
+### Fixed
 
 - `Modal`: Missing box-shadow on sticky footer when slotted content changes
   ([#3154](https://github.com/porsche-design-system/porsche-design-system/pull/3154))
@@ -759,15 +796,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   element dynamically adjusts to changes in the input value accurately.
   ([#3084](https://github.com/porsche-design-system/porsche-design-system/pull/3084))
 
-### [3.14.0] - 2024-03-25
+## [3.14.0] - 2024-03-25
 
-### [3.14.0-rc.0] - 2024-03-25
+## [3.14.0-rc.0] - 2024-03-25
 
-#### Added
+### Added
 
 - `Icon`: `battery-empty-fuel` ([#3148](https://github.com/porsche-design-system/porsche-design-system/pull/3148))
 
-#### Changed
+### Changed
 
 - `Icon`: `battery-empty-co2` and `co2-class`
   ([#3148](https://github.com/porsche-design-system/porsche-design-system/pull/3148))
@@ -776,9 +813,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - React: updated peer dependency to `>=18.0.0 <19.0.0`
   ([#3125](https://github.com/porsche-design-system/porsche-design-system/pull/3125))
 
-### [3.13.1] - 2024-03-20
+## [3.13.1] - 2024-03-20
 
-#### Fixed
+### Fixed
 
 - `Modal`: Unexpected scrolling behavior on iOS >= 17.4
   ([#3128](https://github.com/porsche-design-system/porsche-design-system/pull/3128))
@@ -787,25 +824,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Flyout`, `Flyout Navigation`: iOS Safari URL bar overlaying
   ([#3131](https://github.com/porsche-design-system/porsche-design-system/pull/3131))
 
-### [3.13.0] - 2024-03-11
+## [3.13.0] - 2024-03-11
 
-### [3.13.0-rc.2] - 2024-03-11
+## [3.13.0-rc.2] - 2024-03-11
 
-#### Added
+### Added
 
 - `Icon`: `battery-empty-co2` and `co2-class`
   ([#3103](https://github.com/porsche-design-system/porsche-design-system/pull/3103))
 
-### [3.13.0-rc.1] - 2024-03-08
+## [3.13.0-rc.1] - 2024-03-08
 
-#### Added
+### Added
 
 - `Select` ([#3008](https://github.com/porsche-design-system/porsche-design-system/pull/3008))
 - `Modal`: Prop `backdrop` ([#3082](https://github.com/porsche-design-system/porsche-design-system/pull/3082))
 - `Modal`: CSS variables `--p-modal-spacing-top` and `--p-modal-spacing-bottom`
   ([#3082](https://github.com/porsche-design-system/porsche-design-system/pull/3082))
 
-#### Fixed
+### Fixed
 
 - `Flyout`: Refactor Flyout to use native Dialog element to resolve focus issues
   ([#2998](https://github.com/porsche-design-system/porsche-design-system/pull/2998))
@@ -818,41 +855,41 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Counter overlap with long initial value in `Text Field Wrapper` for `input type="text"` with `maxlength`
   ([#3079](https://github.com/porsche-design-system/porsche-design-system/pull/3079))
 
-#### Changed
+### Changed
 
 - Updated favicons output via `getMetaTagsAndIconLinks()` partial
   ([#3081](https://github.com/porsche-design-system/porsche-design-system/pull/3081))
 
-### [3.13.0-rc.0] - 2024-02-19
+## [3.13.0-rc.0] - 2024-02-19
 
-#### Added
+### Added
 
 - `Link Tile Product`: Prop `price-original` to be able to visualize sale and original price
   ([#3040](https://github.com/porsche-design-system/porsche-design-system/pull/3040))
 
-#### Changed
+### Changed
 
 - Validation of `getInitialStyles()` partial is temporarily disabled
   ([#3049](https://github.com/porsche-design-system/porsche-design-system/pull/3049))
 
-### [3.12.0] - 2024-02-12
+## [3.12.0] - 2024-02-12
 
-### [3.12.0-rc.1] - 2024-02-08
+## [3.12.0-rc.1] - 2024-02-08
 
-#### Fixed
+### Fixed
 
 - `Checkbox Wrapper`, `Radio Button Wrapper`: Safari visually reflects input status (checked/unchecked) when used in
   another Shadow DOM or changed programmatically
   ([#3028](https://github.com/porsche-design-system/porsche-design-system/pull/3028))
 
-### [3.12.0-rc.0] - 2024-02-05
+## [3.12.0-rc.0] - 2024-02-05
 
-#### Added
+### Added
 
 - `Icon`: `logo-x`, `bookmark-filled` and `star-filled`
   ([#3025](https://github.com/porsche-design-system/porsche-design-system/pull/3025))
 
-#### Changed
+### Changed
 
 - `Icon`: Visual appearance of `information-filled`, `information`, `success-filled`, `success`, `bookmark`, `compare`,
   `configurate`, `heart-filled`, `heart`, `menu-lines`, `success`, `search`, `locate`, `star`, `shopping-bag-filled`,
@@ -868,23 +905,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   loading state for assistive technologies
   ([#3009](https://github.com/porsche-design-system/porsche-design-system/pull/3009))
 
-#### Fixed
+### Fixed
 
 - All components are supporting focus style in High Contrast Mode correctly
   ([#3011](https://github.com/porsche-design-system/porsche-design-system/pull/3011))
 
-### [3.11.0] - 2024-01-30
+## [3.11.0] - 2024-01-30
 
-### [3.11.0-rc.0] - 2024-01-30
+## [3.11.0-rc.0] - 2024-01-30
 
-#### Fixed
+### Fixed
 
 - `Carousel`: Carousel does not work with single pointer event on smaller touch devices
   ([#3003](https://github.com/porsche-design-system/porsche-design-system/pull/3003))
 - `Carousel`: `Each child in a list should have a unique "key" prop` warning in Next.js SSR context
   ([#3001](https://github.com/porsche-design-system/porsche-design-system/pull/3001))
 
-#### Changed
+### Changed
 
 - Scroll-lock used in `Flyout`, `Flyout Navigation` and `Modal` is based on `body { overflow: hidden; }` for all devices
   ([#3013](https://github.com/porsche-design-system/porsche-design-system/pull/3013))
@@ -893,20 +930,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Carousel`: Pagination can be used for navigation & pagination has more spacing on touch devices
   ([#3003](https://github.com/porsche-design-system/porsche-design-system/pull/3003))
 
-### [3.10.0] - 2024-01-17
+## [3.10.0] - 2024-01-17
 
-### [3.10.0-rc.5] - 2024-01-16
+## [3.10.0-rc.5] - 2024-01-16
 
-#### Changed
+### Changed
 
 - `visibility` css property can be overridden on all components, e.g. to make use of `visibility: hidden;`  
   ([#2988](https://github.com/porsche-design-system/porsche-design-system/pull/2988))
 - `Carousel`: Named slot `header` renamed to `controls`
   ([#2992](https://github.com/porsche-design-system/porsche-design-system/pull/2992))
 
-### [3.10.0-rc.4] - 2024-01-15
+## [3.10.0-rc.4] - 2024-01-15
 
-#### Added
+### Added
 
 - `Icon`: Auto-flipping icons (certain ones only) in RTL (right-to-left) mode
   ([#2957](https://github.com/porsche-design-system/porsche-design-system/pull/2957))
@@ -919,7 +956,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Partials: `getFontLinks` supports preloading `arabic`, `pashto` and `urdu` subsets
   ([#2946](https://github.com/porsche-design-system/porsche-design-system/pull/2946))
 
-#### Changed
+### Changed
 
 - `Flyout Navigation`: Improved validation and `activeIdentifier` isn't automatically updated anymore
   ([#2935](https://github.com/porsche-design-system/porsche-design-system/pull/2935))
@@ -958,7 +995,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 + TabsBarUpdateEventDetail
 ```
 
-#### Fixed
+### Fixed
 
 - `Pin Code`: Focus correct input when clicking on label
   ([#2985](https://github.com/porsche-design-system/porsche-design-system/pull/2985))
@@ -970,32 +1007,32 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Toast`: `max-width` when used in scale mode
   ([#2960](https://github.com/porsche-design-system/porsche-design-system/pull/2960))
 
-### [3.10.0-rc.3] - 2023-12-12
+## [3.10.0-rc.3] - 2023-12-12
 
-### [3.10.0-rc.2] - 2023-12-12
+## [3.10.0-rc.2] - 2023-12-12
 
-### [3.10.0-rc.1] - 2023-12-11
+## [3.10.0-rc.1] - 2023-12-11
 
-#### Added
+### Added
 
 - **[EXPERIMENTAL]** `Link Tile Product`
   ([#2909](https://github.com/porsche-design-system/porsche-design-system/pull/2909))
 
-#### Fixed
+### Fixed
 
 - `Wordmark`, `Crest` and `Marque`: custom clickable area
   ([#2930](https://github.com/porsche-design-system/porsche-design-system/pull/2930))
 
-### [3.10.0-rc.0] - 2023-12-07
+## [3.10.0-rc.0] - 2023-12-07
 
-#### Added
+### Added
 
 - **[EXPERIMENTAL]** `Flyout Navigation`
   ([#2906](https://github.com/porsche-design-system/porsche-design-system/pull/2906))
 - Prop `submit-button` to show/hide a submit button for `Text Field Wrapper` `type="search"` if wrapped inside a form
   ([#2908](https://github.com/porsche-design-system/porsche-design-system/pull/2908))
 
-#### Changed
+### Changed
 
 - `Accordion`: removed `border-bottom` if used standalone
   ([#2911](https://github.com/porsche-design-system/porsche-design-system/pull/2911))
@@ -1006,11 +1043,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   behavior out of the box with full SSR support
   ([#2898](https://github.com/porsche-design-system/porsche-design-system/pull/2898))
 
-### [3.9.0] - 2023-11-24
+## [3.9.0] - 2023-11-24
 
-### [3.9.0-rc.0] - 2023-11-23
+## [3.9.0-rc.0] - 2023-11-23
 
-#### Added
+### Added
 
 - Angular: `theme: 'light' | 'dark' | 'auto'` option to `PorscheDesignSystemModule.load()` to set `theme` on all child
   components  
@@ -1023,7 +1060,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Validation for usage of different PDS versions
   ([#2867](https://github.com/porsche-design-system/porsche-design-system/pull/2867))
 
-#### Changed
+### Changed
 
 - `Text Field Wrapper`, `Textarea Wrapper`, `Select Wrapper`, `Multi Select`, `Pin Code`, `Checkbox Wrapper` and
   `Radio Button Wrapper` have improved visual alignment
@@ -1037,7 +1074,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Use motion tokens in all components
   ([#2834](https://github.com/porsche-design-system/porsche-design-system/pull/2834))
 
-#### Fixed
+### Fixed
 
 - `Select Wrapper`: Select dropdown is now visible if it overflows the `Table` component
   ([#2885](https://github.com/porsche-design-system/porsche-design-system/pull/2885))
@@ -1052,11 +1089,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Modal` and `Flyout` body jumping in the background and scrolling back to the top in Next Js and Remix
   ([#2890](https://github.com/porsche-design-system/porsche-design-system/pull/2890))
 
-### [3.8.0] - 2023-10-24
+## [3.8.0] - 2023-10-24
 
-### [3.8.0-rc.0] - 2023-10-23
+## [3.8.0-rc.0] - 2023-10-23
 
-#### Added
+### Added
 
 - RTL (right-to-left) support for all components
   ([#2819](https://github.com/porsche-design-system/porsche-design-system/pull/2819))
@@ -1068,7 +1105,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   `$pds-motion-duration-{short|moderate|long|very-long}`, `$pds-motion-easing-{base|in|out}`
   ([#2791](https://github.com/porsche-design-system/porsche-design-system/pull/2791))
 
-#### Changed
+### Changed
 
 - Styles: `themeDarkBackgroundShading` and `$pds-theme-dark-background-shading` color
   ([#2789](https://github.com/porsche-design-system/porsche-design-system/pull/2789))
@@ -1149,7 +1186,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 + <p-carousel-pure align-header="start"></p-carousel>
 ```
 
-#### Fixed
+### Fixed
 
 - `Popover` doesn't get cut off when used within the `Table` component
   ([#2814](https://github.com/porsche-design-system/porsche-design-system/pull/2814))
@@ -1160,23 +1197,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Tabs Bar` works with translated page content
   ([#2847](https://github.com/porsche-design-system/porsche-design-system/pull/2847))
 
-### [3.7.0] - 2023-10-04
+## [3.7.0] - 2023-10-04
 
-### [3.7.0-rc.2] - 2023-10-04
+## [3.7.0-rc.2] - 2023-10-04
 
-#### Added
+### Added
 
 - Styles: `gridStyles` and `pds-grid()` support basic usage inside `Flyout` component
   ([#2756](https://github.com/porsche-design-system/porsche-design-system/pull/2756))
 
-#### Fixed
+### Fixed
 
 - Overlay issues of header/footer in `Flyout` component
   ([#2786](https://github.com/porsche-design-system/porsche-design-system/pull/2786))
 
-### [3.7.0-rc.1] - 2023-09-20
+## [3.7.0-rc.1] - 2023-09-20
 
-#### Added
+### Added
 
 - **[EXPERIMENTAL]** Prop `loading` for `Radio Button Wrapper`
   ([#2774](https://github.com/porsche-design-system/porsche-design-system/pull/2774))
@@ -1185,63 +1222,63 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `hyphens` CSS property can now be overwritten in `Button Tile`, `Link Tile` and `Link Tile Model Signature` components
   ([#2758](https://github.com/porsche-design-system/porsche-design-system/pull/2758))
 - Partials that produce innerHTML support `{ format: 'sha256' }` option for whitelisting in
-  [Content-Security-Policy (CSP)](must-know/security/content-security-policy)
+  [Content-Security-Policy (CSP)](/must-know/security/content-security-policy/)
   ([#2773](https://github.com/porsche-design-system/porsche-design-system/pull/2773))
 - `Pin Code` ([#2691](https://github.com/porsche-design-system/porsche-design-system/pull/2691))
 
-#### Fixed
+### Fixed
 
 - Dragging of `Carousel` can become stucked
   ([#2768](https://github.com/porsche-design-system/porsche-design-system/pull/2768))
 - Color of `message` for `Fieldset`, `Fieldset Wrapper`, `Text Field Wrapper` and `Textarea Wrapper` in dark theme
   ([#2769](https://github.com/porsche-design-system/porsche-design-system/pull/2769))
 
-#### Changed
+### Changed
 
 - Usage of `getInitialStyles()` partial is required and validated with an exception
   ([#2749](https://github.com/porsche-design-system/porsche-design-system/pull/2749))
 
-### [3.7.0-rc.0] - 2023-09-05
+## [3.7.0-rc.0] - 2023-09-05
 
-#### Added
+### Added
 
 - `Multi Select` ([#2658](https://github.com/porsche-design-system/porsche-design-system/pull/2658))
 
-#### Changed
+### Changed
 
 - Partials: `Cdn` and `Format` types are exposed
   ([#2760](https://github.com/porsche-design-system/porsche-design-system/pull/2760))
 
-### [3.6.1] - 2023-08-29
+## [3.6.1] - 2023-08-29
 
-### [3.6.1-rc.0] - 2023-08-29
+## [3.6.1-rc.0] - 2023-08-29
 
-#### Fixed
+### Fixed
 
 - Overlapping issues of `Accordion` contents when positioned outside of content area
   ([#2746](https://github.com/porsche-design-system/porsche-design-system/pull/2746))
 - Backwards compatibility with previous versions of Porsche Design System
   ([#2752](https://github.com/porsche-design-system/porsche-design-system/pull/2752))
 
-### [3.6.0] - 2023-08-28
+## [3.6.0] - 2023-08-28
 
-### [3.6.0-rc.2] - 2023-08-28
+## [3.6.0-rc.2] - 2023-08-28
 
-#### Fixed
+### Fixed
 
 - `Tabs Bar` losing `activeTabIndex` and underline
   ([#2748](https://github.com/porsche-design-system/porsche-design-system/pull/2748))
 
-### [3.6.0-rc.1] - 2023-08-24
+## [3.6.0-rc.1] - 2023-08-24
 
-#### Fixed
+### Fixed
 
 - Bundling format and name of `components-js` entrypoint for Vanilla JS integration
   ([#2745](https://github.com/porsche-design-system/porsche-design-system/pull/2745))
 
-### [3.6.0-rc.0] - 2023-08-23
+## [3.6.0-rc.0] - 2023-08-23
 
-#### Added
+### Added
 
 - New value `aria-current` for `aria` property for linked components (`Link`, `Link Pure`, `Link Tile`, `Crest`,
   `Marque`) ([#2696](https://github.com/porsche-design-system/porsche-design-system/pull/2696))
@@ -1255,14 +1292,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Support for sticky footer to `Modal`
   ([#2723](https://github.com/porsche-design-system/porsche-design-system/pull/2723))
 
-#### Changed
+### Changed
 
 - Update of Twitter icon ([#2731](https://github.com/porsche-design-system/porsche-design-system/pull/2731))
 - Use China CDN and set `window.PORSCHE_DESIGN_SYSTEM_CDN` for backwards compatibility based on .cn top level domain
   before design system initialization
   ([#2676](https://github.com/porsche-design-system/porsche-design-system/pull/2676))
 
-#### Fixed
+### Fixed
 
 - `Flyout`: Overlapping of sticky header/footer if slotted content has different z-index
   ([#2736](https://github.com/porsche-design-system/porsche-design-system/pull/2736))
@@ -1274,45 +1311,45 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   `components-{js|angular|react|vue}`
   ([#2739](https://github.com/porsche-design-system/porsche-design-system/pull/2739))
 
-### [3.5.0] - 2023-07-25
+## [3.5.0] - 2023-07-25
 
-### [3.5.0-rc.0] - 2023-07-21
+## [3.5.0-rc.0] - 2023-07-21
 
-#### Added
+### Added
 
 - `background` property to `Button Tile` and `Link Tile` component to adapt the description and link/button theme when
   used on light background image ([#2669](https://github.com/porsche-design-system/porsche-design-system/pull/2669))
 - Breakpoint customizable property `columns` to `Segmented Control` to set the amount of columns
   ([#2652](https://github.com/porsche-design-system/porsche-design-system/pull/2652))
 
-#### Fixed
+### Fixed
 
 - Alignment of `Icon` inside `Accordion` header
   ([#2673](https://github.com/porsche-design-system/porsche-design-system/pull/2673))
 - Direction of `Select Wrapper` dropdown if `direction` property is set to `auto`
   ([#2677](https://github.com/porsche-design-system/porsche-design-system/pull/2677))
 
-### [3.4.0] - 2023-07-14
+## [3.4.0] - 2023-07-14
 
-### [3.4.0-rc.0] - 2023-07-13
+## [3.4.0-rc.0] - 2023-07-13
 
-#### Added
+### Added
 
 - React: `'use client';` directive is applied on all components for main and `ssr` sub-package
   ([#2654](https://github.com/porsche-design-system/porsche-design-system/pull/2654))
 
-#### Fixed
+### Fixed
 
 - Regression in `observeChildren` that affected nested components (e.g. incorrect rendering of nested `Tabs`).
   ([#2649](https://github.com/porsche-design-system/porsche-design-system/pull/2649))
 - Click behaviour of slotted interactive elements of `Carousel`
   ([#2663](https://github.com/porsche-design-system/porsche-design-system/pull/2663))
 
-### [3.3.0] - 2023-07-07
+## [3.3.0] - 2023-07-07
 
-### [3.3.0-rc.0] - 2023-07-06
+## [3.3.0-rc.0] - 2023-07-06
 
-#### Added
+### Added
 
 - `Tabs` and `Tabs Bar` support SSR ([#2611](https://github.com/porsche-design-system/porsche-design-system/pull/2611))
 - Contents of `Tag` component can now be wrapped in multiple lines
@@ -1322,7 +1359,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - native lazy loading attribute to `img` tag of `Icon`
   ([#2644](https://github.com/porsche-design-system/porsche-design-system/pull/2644))
 
-#### Fixed
+### Fixed
 
 - `Stepper Horizontal` navigation between 2 pages is not working as expected in angular
   ([#2641](https://github.com/porsche-design-system/porsche-design-system/pull/2641))
@@ -1339,30 +1376,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Carousel`: Removed `overflow:hidden` of slide items
   ([#2645](https://github.com/porsche-design-system/porsche-design-system/pull/2645))
 
-#### Changed
+### Changed
 
 - Improved bootstrapping behaviour of `Icon`
   ([#2644](https://github.com/porsche-design-system/porsche-design-system/pull/2644))
 
-### [3.2.0] - 2023-06-19
+## [3.2.0] - 2023-06-19
 
-### [3.2.0-rc.0] - 2023-06-19
+## [3.2.0-rc.0] - 2023-06-19
 
-#### Added
+### Added
 
 - `skipLinkTarget` property to `Carousel` component to enhance keyboard functionality
   ([#2557](https://github.com/porsche-design-system/porsche-design-system/pull/2557))
 - `showLastPage` property to `Pagination` component
   ([#2606](https://github.com/porsche-design-system/porsche-design-system/pull/2606))
 
-#### Fixed
+### Fixed
 
 - Partials: `getInitialStyles` supports `Flyout` component
   ([#2598](https://github.com/porsche-design-system/porsche-design-system/pull/2598))
 - `Popover` content can be selected/highlighted
   ([#2599](https://github.com/porsche-design-system/porsche-design-system/pull/2599))
 
-#### Changed
+### Changed
 
 - `Carousel` pagination now shows 5 "infinite bullets" when using more than 5 slides
   ([#2600](https://github.com/porsche-design-system/porsche-design-system/pull/2600))
@@ -1377,21 +1414,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Toast` shows always the latest toast message and clears its queue immediately if a new message is added
   ([#2584](https://github.com/porsche-design-system/porsche-design-system/pull/2584))
 
-### [3.1.0] - 2023-06-09
+## [3.1.0] - 2023-06-09
 
-### [3.1.0-rc.2] - 2023-06-09
+## [3.1.0-rc.2] - 2023-06-09
 
-#### Changed
+### Changed
 
 - `Crest` updated assets ([#2595](https://github.com/porsche-design-system/porsche-design-system/pull/2595))
 - Partials: `getMetaTagsAndIconLinks` updated assets
   ([#2595](https://github.com/porsche-design-system/porsche-design-system/pull/2595))
 
-#### Added
+### Added
 
 - `Flyout` ([#2547](https://github.com/porsche-design-system/porsche-design-system/pull/2547))
 
-#### Fixed
+### Fixed
 
 - Wrong validation during SSR hydration of `Link Tile` and `Select Wrapper`
   ([#2588](https://github.com/porsche-design-system/porsche-design-system/pull/2588))
@@ -1400,34 +1437,34 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Unnecessary lifecycles are prevented when prop values do not change for complex values
   ([#2574](https://github.com/porsche-design-system/porsche-design-system/pull/2574))
 
-### [3.1.0-rc.1] - 2023-06-02
+## [3.1.0-rc.1] - 2023-06-02
 
-#### Added
+### Added
 
 - **[EXPERIMENTAL]** Prop `showPasswordToggle` for `Text Field Wrapper` with `input type="password"`
   ([#2586](https://github.com/porsche-design-system/porsche-design-system/pull/2586))
 - Prop `name` for `Icon` supports `heart`, `heart-filled`, `copy`, `fingerprint`, `tire`, `roof-open` and `roof-closed`
   ([#2589](https://github.com/porsche-design-system/porsche-design-system/pull/2589))
 
-#### Fixed
+### Fixed
 
 - `Select Wrapper` missing border on touch devices
   ([#2579](https://github.com/porsche-design-system/porsche-design-system/pull/2579))
 - `Tabs Item` text content can be selected/highlighted
   ([#2582](https://github.com/porsche-design-system/porsche-design-system/pull/2582))
 
-### [3.1.0-rc.0] - 2023-05-24
+## [3.1.0-rc.0] - 2023-05-24
 
-#### Added
+### Added
 
 - `Marque` now has a `variant` property, including 75 years variant
   ([#2575](https://github.com/porsche-design-system/porsche-design-system/pull/2575))
 
-### [3.0.0] - 2023-05-11
+## [3.0.0] - 2023-05-11
 
-### [3.0.0-rc.3] - 2023-05-10
+## [3.0.0-rc.3] - 2023-05-10
 
-#### Fixed
+### Fixed
 
 - `Tabs Bar` focus behavior via keyboard navigation
   ([#2546](https://github.com/porsche-design-system/porsche-design-system/pull/2546))
@@ -1435,7 +1472,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Disabled dragging/ghosting of icons
   ([#2536](https://github.com/porsche-design-system/porsche-design-system/pull/2536))
 
-#### Changed
+### Changed
 
 - Styles: `dropShadow{Low|Medium|High}Style`s use `box-shadow` instead of `filter: drop-shadow()` to fix glitches
   together with `frostedGlassStyle` in Firefox
@@ -1443,9 +1480,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Size of icon and height of `Accordion`
   ([#2536](https://github.com/porsche-design-system/porsche-design-system/pull/2536))
 
-### [3.0.0-rc.2] - 2023-05-09
+## [3.0.0-rc.2] - 2023-05-09
 
-#### Fixed
+### Fixed
 
 - `Checkbox Wrapper` Safari visual state change while hovering
   ([#2508](https://github.com/porsche-design-system/porsche-design-system/pull/2508))
@@ -1468,20 +1505,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Angular: added optional modifier to optional properties for better type checking in strict mode
   ([#2544](https://github.com/porsche-design-system/porsche-design-system/pull/2544))
 
-#### Added
+### Added
 
 - Deprecation warning to `Icon` component if `lazy` prop is used
   ([#2521](https://github.com/porsche-design-system/porsche-design-system/pull/2521))
 - `aria` prop to `Scroller` component
   ([#2530](https://github.com/porsche-design-system/porsche-design-system/pull/2530))
 
-#### Changed
+### Changed
 
 - Model signature asset of 718 model ([#2532](https://github.com/porsche-design-system/porsche-design-system/pull/2532))
 
-### [3.0.0-rc.1] - 2023-04-19
+## [3.0.0-rc.1] - 2023-04-19
 
-#### Added
+### Added
 
 - Prop `name` for `Icon` supports `push-pin`, `push-pin-off`, `qr`, `pin-filled`, `shopping-cart-filled`,
   `shopping-bag-filled`, `logo-apple-podcast`, `logo-spotify` and `user-filled`
@@ -1489,7 +1526,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - **[EXPERIMENTAL]** Prop `loading` for `Checkbox Wrapper`
   ([#2483](https://github.com/porsche-design-system/porsche-design-system/pull/2483))
 
-#### Fixed
+### Fixed
 
 - `Wordmark`, `Crest` and `Model Signature` respect parent width/height
   ([#2479](https://github.com/porsche-design-system/porsche-design-system/pull/2479))
@@ -1502,27 +1539,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Color Contrast issues and rendering in Windows High Contrast Mode
   ([#2420](https://github.com/porsche-design-system/porsche-design-system/pull/2420))
 
-### [3.0.0-rc.0] - 2023-04-11
+## [3.0.0-rc.0] - 2023-04-11
 
-#### Fixed
+### Fixed
 
 - Styles: `borderRadiusLarge` and `$pds-border-radius-large` are exposing correct value
   ([#2463](https://github.com/porsche-design-system/porsche-design-system/pull/2463))
 
-### [3.0.0-alpha.6] - 2023-04-06
+## [3.0.0-alpha.6] - 2023-04-06
 
-#### Added
+### Added
 
 - `xxl` breakpoint for all breakpoint customizable component values
   ([#2454](https://github.com/porsche-design-system/porsche-design-system/pull/2454))
 
-#### Fixed
+### Fixed
 
 - Disabled color of `Icon` component ([#2446](https://github.com/porsche-design-system/porsche-design-system/pull/2446))
 - Support of `Radio Button Wrapper` for name value with non-alphanumeric characters
   ([#2443](https://github.com/porsche-design-system/porsche-design-system/pull/2443))
 
-#### Changed
+### Changed
 
 - `Banner` is a controlled component now and its visibility has to be controlled via the `open` prop
   ([#2447](https://github.com/porsche-design-system/porsche-design-system/pull/2447))
@@ -1636,26 +1673,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 + <PTabsBar onUpdate={(e: CustomEvent<TabsUpdateEvent>) => {}} />
 ```
 
-### [3.0.0-alpha.5] - 2023-03-30
+## [3.0.0-alpha.5] - 2023-03-30
 
-#### Added
+### Added
 
 - `Wordmark` ([#2418](https://github.com/porsche-design-system/porsche-design-system/pull/2418))
 - `Crest` ([#2437](https://github.com/porsche-design-system/porsche-design-system/pull/2437))
 
-#### Changed
+### Changed
 
 - Styles: changed color values of `theme[Light|Dark]ContrastMedium` and `theme[Light|Dark]Notification[*]` color tokens
   of `Styles` subpackage ([#2436](https://github.com/porsche-design-system/porsche-design-system/pull/2436))
 
-### [3.0.0-alpha.4] - 2023-03-28
+## [3.0.0-alpha.4] - 2023-03-28
 
-#### Changed
+### Changed
 
 - `Table` matches new design language
   ([#2364](https://github.com/porsche-design-system/porsche-design-system/pull/2364/))
 
-#### Added
+### Added
 
 - Styles: ([#2422](https://github.com/porsche-design-system/porsche-design-system/pull/2422))
   - `gridWide`
@@ -1680,11 +1717,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Prop `scrollbar` for `Scroller` ([#2364](https://github.com/porsche-design-system/porsche-design-system/pull/2364/))
 - Prop `theme` for `Table` ([#2364](https://github.com/porsche-design-system/porsche-design-system/pull/2364/))
 
-#### Fixed
+### Fixed
 
 - React: missing animation of `Carousel` in certain scenarios
 
-#### Changed
+### Changed
 
 - Styles: `gridStyles` and `pds-grid()` are supporting an additional column range called `wide`
   ([#2422](https://github.com/porsche-design-system/porsche-design-system/pull/2422))
@@ -1729,7 +1766,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 + </p-fieldset>
 ```
 
-### [3.0.0-alpha.3] - 2023-03-17
+## [3.0.0-alpha.3] - 2023-03-17
 
 #### 🤖 Property deprecations 🤖
 
@@ -1962,7 +1999,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 + <p-text-list type="alphabetically"></p-text-list>
 ```
 
-#### Added
+### Added
 
 - `Text`, `Icon`, `Button Pure` and `Link Pure` support value `xx-small` for prop `size`
 - `Display` supports value `small` for prop `size`
@@ -2004,7 +2041,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   - `Tag` prop `color` got values `notification-info-soft`, `notification-warning-soft`, `notification-success-soft`,
     `notification-error-soft` and deprecated `notification-warning`, `notification-success`, `notification-error` values
 
-#### Changed
+### Changed
 
 - `Display` uses font-weight regular and font-style normal
 - Partials: `getInitialStyles` matches new design language
@@ -2018,7 +2055,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Icon` prop `color` value `disabled` is renamed to `state-disabled`
 - `Tag` prop `color` value `notification-info` is renamed to `notification-info-soft`
 
-#### Fixed
+### Fixed
 
 - `Text Field Wrapper` calendar and time indicator icons respect color definition in dark theme
 - `Text Field Wrapper` has correct height when type date or time is used
@@ -2031,7 +2068,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Styles: `headingXXXLargeStyle` and `$pds-heading-xxx-large`
 - Styles: `fontSizeHeadingXXLarge` and `$pds-font-size-heading-xx-large`
 
-### [3.0.0-alpha.2] - 2023-02-27
+## [3.0.0-alpha.2] - 2023-02-27
 
 #### 🤖 Property deprecations 🤖
 
@@ -2059,33 +2096,33 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 + <p-divider color="contrast-high"></p-divider>
 ```
 
-#### Changed
+### Changed
 
 - `Divider`, `Button Group`, `Carousel` and `Text List` match new design language
 - Background color of `Scroller`'s `prev` and `next` buttons in dark theme
 - Partials: Removed deprecated `withoutTags` option for all partials, please use `format: 'jsx'` instead
 - `Content Wrapper` default value of prop `width` has changed from `basic` to `extended`
 
-#### Added
+### Added
 
 - `Model Signature`
 - Props `align-header` and `width` for `Carousel`
 - Vue: plugin functions `createPorscheDesignSystem` and `usePorscheDesignSystemPlugin`
 
-#### Fixed
+### Fixed
 
 - `Radio Button Wrapper` keyboard arrow navigation
 - `Button Pure` and `Link Pure` lagging active state background when scrolling on iOS
 
-### [3.0.0-alpha.1] - 2023-02-16
+## [3.0.0-alpha.1] - 2023-02-16
 
-#### Added
+### Added
 
 - Porsche Next font supports Vietnamese charset
 - Prop `color` of `Icon` supports `disabled`
 - React: `patchRemixRunProcessBrowserGlobalIdentifier` binary to support SSR components with Remix
 
-#### Changed
+### Changed
 
 - `Stepper Horizontal` matches new design language
 - Styles: Optimize design tokens "spacing", "typography" and "theme" provided by styles sub-package
@@ -2093,7 +2130,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Styles: Use calc() instead of max() to calculate padding for `gridStyle` (JS) and `pds-grid()` (SCSS)
 - Styles: `gridStyle` (JS) and `pds-grid()` (SCSS) uses optimized grid gap
 
-### [3.0.0-alpha.0] - 2023-02-08
+## [3.0.0-alpha.0] - 2023-02-08
 
 #### Note to the new `v3` major release of the Porsche Design System
 
@@ -2232,7 +2269,7 @@ major version.
 
 ##### Content Wrapper:
 
-- Component is deprecated and will be removed with the next major release. Please use **[Porsche Grid](styles/grid)**
+- Component is deprecated and will be removed with the next major release. Please use **[Porsche Grid](/styles/grid/)**
   instead, which is based on [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid) covering the specific
   layout needs for a harmonic appearance across all digital Porsche touch-points.
 
@@ -2246,7 +2283,7 @@ major version.
 
 - Component is deprecated and will be removed with the next major release. In general, please use native
   [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid) in combination with
-  **[Porsche Grid](styles/grid)** instead for better performance and more standardized layout technique.
+  **[Porsche Grid](/styles/grid/)** instead for better performance and more standardized layout technique.
 
 ##### Headline:
 
@@ -2257,7 +2294,7 @@ major version.
 
 ##### Link Social:
 
-- Component is deprecated and will be removed with the next major release. Please use the **[Link](components/link)**
+- Component is deprecated and will be removed with the next major release. Please use the **[Link](/components/link/)**
   component instead.
 
 #### 🤖 Property deprecations 🤖
@@ -2474,7 +2511,7 @@ to the new values since those ones will be removed with next major version.
 + …addMessage({ text: `Some message`, state: 'info' })
 ```
 
-#### Added
+### Added
 
 - `Display` component
 - `Heading` component
@@ -2484,7 +2521,7 @@ to the new values since those ones will be removed with next major version.
 - Prop `size` for `Icon` supports `x-small` and `x-large`
 - Prop `size` for `Accordion` `compact="true"` supports `medium`
 
-#### Changed
+### Changed
 
 - `Spinner`, `Icon`, `Link Pure`, `Button Pure`, `Link`, `Link Social`, `Button`, `Checkbox Wrapper`,
   `Radio Button Wrapper`, `Popover`, `Modal`, `Select Wrapper`, `Tag`, `Tag Dismissible`, `Textarea Wrapper`,
@@ -2505,19 +2542,19 @@ to the new values since those ones will be removed with next major version.
   instead.
 - `applyNormalizeStyles` option from `getInitialStyles()` partial which is applied by default now.
 
-### [2.20.0] - 2023-02-06
+## [2.20.0] - 2023-02-06
 
-### [2.20.0-rc.1] - 2023-02-06
+## [2.20.0-rc.1] - 2023-02-06
 
-### [2.20.0-rc.0] - 2023-01-30
+## [2.20.0-rc.0] - 2023-01-30
 
-#### Added
+### Added
 
 - `applyNormalizeStyles` option for `getInitialStyles()` partial which includes basic css styles for Light DOM
 
-### [2.19.1-rc.1] - 2023-01-18
+## [2.19.1-rc.1] - 2023-01-18
 
-#### Added
+### Added
 
 - `jsdom-polyfill` subpackage is available at `@porsche-design-system/components-{js|angular|react|vue}/jsdom-polyfill`
   and can be used to have working web components in jsdom based tests (e.g. jest)
@@ -2526,50 +2563,50 @@ to the new values since those ones will be removed with next major version.
   queries internally to support Shadow DOM
 - Validation if `prefix` is already reserved by a different version upon initialization of the Porsche Design System
 
-#### Fixed
+### Fixed
 
 - `componentsReady()` waits for Porsche Design System being initialized before checking components which can happen in
   certain test scenarios without partials
 
-### [2.19.1-rc.0] - 2023-01-18
+## [2.19.1-rc.0] - 2023-01-18
 
-#### Fixed
+### Fixed
 
 - Bug in `@porsche-design-system/components-react/ssr` where in some cases during SSG an error was thrown when
   components render their children conditionally
 
-### [2.19.0] - 2022-12-22
+## [2.19.0] - 2022-12-22
 
-### [2.19.0-rc.2] - 2022-12-22
+## [2.19.0-rc.2] - 2022-12-22
 
-### [2.19.0-rc.1] - 2022-12-22
+## [2.19.0-rc.1] - 2022-12-22
 
-#### Fixed
+### Fixed
 
 - `Stepper Horizontal` calculation of scroll position when used within any parent that has a margin or padding
 
-### [2.19.0-rc.0] - 2022-12-21
+## [2.19.0-rc.0] - 2022-12-21
 
-#### Added
+### Added
 
 - Vue: typed components are available via the `@porsche-design-system/components-vue` package
 
-#### Fixed
+### Fixed
 
 - `Modal` focus cycle when pressing Shift Tab right after it was opened
 
-### [2.18.0] - 2022-12-15
+## [2.18.0] - 2022-12-15
 
-### [2.18.0-rc.2] - 2022-12-14
+## [2.18.0-rc.2] - 2022-12-14
 
-#### Added
+### Added
 
 - Validation to ensure crucial partials are used.  
   **Disclaimer:** The Porsche Design System will **not** inject its initial styles anymore. Please use the
   `getInitialStyles()` partial to reduce flash of unstyled content (FOUC) as described here:
   [getInitialStyles() documentation](https://designsystem.porsche.com/v2/partials/initial-styles)
 
-#### Changed
+### Changed
 
 - `line-height` calculation for all components is handled CSS only now by using `ex`-unit in combination with `calc()`
   which gives the best performance, the easiest possible integration and respects UI best practices in having **larger**
@@ -2577,25 +2614,25 @@ to the new values since those ones will be removed with next major version.
   `font-size` definitions. The calculated values by CSS slightly differ compared to the ones calculated by JavaScript,
   which might result in minor visual changes.
 
-#### Fixed
+### Fixed
 
 - Screen reader announcements of `Textfield` and `Textarea` in `counter` mode
 - Screen reader announcements in `Select Wrapper`
 
-### [2.18.0-rc.1] - 2022-11-24
+## [2.18.0-rc.1] - 2022-11-24
 
-#### Added
+### Added
 
 - `Carousel` now has a `rewind` property, better prev/next icons, a `max-width` for `heading` and `description` and
   support for slotted `description`
 
-#### Fixed
+### Fixed
 
 - `Select Wrapper` height if text is zoomed up to 200%
 
-### [2.18.0-rc.0] - 2022-11-17
+## [2.18.0-rc.0] - 2022-11-17
 
-#### Added
+### Added
 
 - SSR/SSG ready components using Declarative Shadow DOM for Next JS are shipped via
   `@porsche-design-system/components-react/ssr`. To use it simply change your imports.
@@ -2610,46 +2647,46 @@ information can be found here:
 + import { getDSRPonyfill } from '@porsche-design-system/components-react/partials';
 ```
 
-#### Changed
+### Changed
 
 - Improve height calculation for `Accordion`
 - Slotted anchor support for `Link Pure` is stricter (In case slotted `<a>` is used it must be a direct child of
   `Link Pure`)
 - `getFontLinks()` partial now has `{ weights: ['regular', 'semi-bold'] }` for a default
 
-### [2.17.0] - 2022-10-31
+## [2.17.0] - 2022-10-31
 
-### [2.17.0-rc.0] - 2022-10-31
+## [2.17.0-rc.0] - 2022-10-31
 
-#### Added
+### Added
 
 - `Link Tile`
 
-#### Fixed
+### Fixed
 
 - `Scroller` bug where scrollable content was not fully hidden by the gradient, when zoomed into the page.
 
-#### Changed
+### Changed
 
 - Removed `!important` keyword from css property `display` of `Link Pure` and `Button Pure`
 
-### [2.16.3] - 2022-10-21
+## [2.16.3] - 2022-10-21
 
-### [2.16.3-rc.0] - 2022-10-21
+## [2.16.3-rc.0] - 2022-10-21
 
-#### Fixed
+### Fixed
 
 - `Button Pure` and `Link Pure` error when using `size="inherit"` and `icon="none"`
 
-#### Changed
+### Changed
 
 - Replaced all internal usage of `Text` and `Headline` components
 
-### [2.16.2] - 2022-09-15
+## [2.16.2] - 2022-09-15
 
-### [2.16.2-rc.0] - 2022-09-15
+## [2.16.2-rc.0] - 2022-09-15
 
-#### Fixed
+### Fixed
 
 - Issue with `Popover` where drop-shadow is not shown correctly in Chrome >= 105
 - Issue with `Carousel` and `wrap-content="true"` where the layout was out of sync with `Content Wrapper` for
@@ -2657,195 +2694,195 @@ information can be found here:
 - `Select Wrapper` with custom dropdown keeps attribute changes of native select options in sync if changed
   programmatically
 
-### [2.16.1] - 2022-09-09
+## [2.16.1] - 2022-09-09
 
-#### Fixed
+### Fixed
 
 - Issue with `Options` typing import for `Carousel`
 
-### [2.16.0] - 2022-09-08
+## [2.16.0] - 2022-09-08
 
-### [2.15.1-rc.1] - 2022-09-08
+## [2.15.1-rc.1] - 2022-09-08
 
-#### Added
+### Added
 
 - `Carousel`
 - `Scroller`
 
-#### Changed
+### Changed
 
 - `Stepper Horizontal` now has `size` property
 - `Stepper Horizontal` uses improved focus behavior in case it becomes scrollable and scroll indicators are centered
   correctly.
 - `Tabs Bar` uses improved focus behavior in case it becomes scrollable and scroll indicators are centered correctly.
 
-### [2.15.1-rc.0] - 2022-08-24
+## [2.15.1-rc.0] - 2022-08-24
 
-#### Fixed
+### Fixed
 
 - `Radio Button Wrapper` visual selection change bug in Safari >= 15.5
 
-### [2.15.0] - 2022-08-22
+## [2.15.0] - 2022-08-22
 
-### [2.15.0-rc.1] - 2022-08-18
+## [2.15.0-rc.1] - 2022-08-18
 
-#### Changed
+### Changed
 
 - Downgraded `@angular` to `v13` to ensure backwards compatibility of `@porsche-design-system/components-angular`
 
-### [2.15.0-rc.0] - 2022-08-16
+## [2.15.0-rc.0] - 2022-08-16
 
-#### Fixed
+### Fixed
 
 - `Popover` visual shadow bug in Safari
 - `Stepper Horizontal Item` bug where pseudo styles of the counter element were overridable
 
-### [2.15.0-beta.0] - 2022-08-05
+## [2.15.0-beta.0] - 2022-08-05
 
-#### Fixed
+### Fixed
 
 - `Tabs` & `Tabs Bar` `size` property when using `BreakpointCustomizable`
 
-#### Changed
+### Changed
 
 - `Modal` uses poly fluid sizing for outer spacing
 - `Banner` uses poly fluid sizing for outer spacing
 - `Content Wrapper` uses poly fluid sizing for inner spacing
 - `Modal` min-width is slightly updated to perfectly fit into content area of `Content Wrapper` at 320px viewport width
 
-#### Added
+### Added
 
 - Validation of properties for all components
 - `Text Field Wrapper` with `input type="search"` is clearable via Escape key and custom clear button across browsers
 - `Text Field Wrapper` with `input type="search"` shows a "Locate me" button when `actionIcon="locate"` is set, emits
   the `action` event on click and can be put into a loading state via `actionLoading="true"`
 
-### [2.14.0] - 2022-07-11
+## [2.14.0] - 2022-07-11
 
-### [2.14.0-rc.1] - 2022-07-11
+## [2.14.0-rc.1] - 2022-07-11
 
-### [2.14.0-rc.0] - 2022-07-11
+## [2.14.0-rc.0] - 2022-07-11
 
-#### Added
+### Added
 
 - `getBrowserSupportFallbackScript()` partial supporting `cdn` and `format` options as replacement for
   `includeOverlay()` of `@porsche-design-system/browser-notification` npm package
 - `getCookiesFallbackScript()` partial supporting `cdn` and `format` options as replacement for `includeCookieOverlay()`
   of `@porsche-design-system/browser-notification` npm package
 
-#### Changed
+### Changed
 
 - `getMetaTagsAndIconLinks()` partial to return `theme-color` meta tags with `prefers-color-scheme: {light|dark}` media
   query
 
-### [2.13.0] - 2022-06-23
+## [2.13.0] - 2022-06-23
 
-### [2.13.0-rc.5] - 2022-06-23
+## [2.13.0-rc.5] - 2022-06-23
 
-#### Fixed
+### Fixed
 
 - `Stepper Horizontal Item` `state` validation
 - `Button` and `Link` with `theme="dark" variant="tertiary"` and `Tag Dismissible` bug on Safari < v15.5 where wrong
   colors on hover were shown
 
-### [2.13.0-rc.4] - 2022-06-22
+## [2.13.0-rc.4] - 2022-06-22
 
-#### Added
+### Added
 
 - `Stepper Horizontal`
 
-### [2.13.0-rc.3] - 2022-06-22
+## [2.13.0-rc.3] - 2022-06-22
 
-#### Added
+### Added
 
 - `Segmented Control`
 
-### [2.13.0-rc.2] - 2022-06-21
+## [2.13.0-rc.2] - 2022-06-21
 
-### [2.13.0-rc.1] - 2022-06-21
+## [2.13.0-rc.1] - 2022-06-21
 
-### [2.13.0-rc.0] - 2022-06-21
+## [2.13.0-rc.0] - 2022-06-21
 
-#### Changed
+### Changed
 
 - `Button`, `Button Pure` and `Switch` apply `aria-disabled="true"` instead of `disabled` attribute to native button
   internally in case `disabled` and/or `loading` property is set
 
-### [2.12.1] - 2022-05-25
+## [2.12.1] - 2022-05-25
 
-### [2.12.1-rc.0] - 2022-05-25
+## [2.12.1-rc.0] - 2022-05-25
 
-#### Fixed
+### Fixed
 
 - Issue with `JssStyle` typing import
 
-### [2.12.0] - 2022-05-19
+## [2.12.0] - 2022-05-19
 
-#### Changed
+### Changed
 
 - npm package is prepared for public release on [npmjs.org](https://npmjs.com)
 
-### [2.12.0-rc.2] - 2022-05-12
+## [2.12.0-rc.2] - 2022-05-12
 
-### [2.12.0-rc.1] - 2022-05-11
+## [2.12.0-rc.1] - 2022-05-11
 
-### [2.12.0-rc.0] - 2022-05-04
+## [2.12.0-rc.0] - 2022-05-04
 
-#### Added
+### Added
 
 - `Table Head Cell` now has a `multiline` property
 
-#### Changed
+### Changed
 
 - `Headline` has no `hypens` / `overflow-wrap` style by default
 - Partials now throw an exception if they are executed in browser
 
-#### Fixed
+### Fixed
 
 - Exception in `Headline`, `Select Wrapper`, `Text` and `Text List` when changing `theme` prop from `dark` to `light`
 - `getInitialStyles()` partial now returns `.hydrated` styles, too
 
-### [2.11.0-skeletons] - 2022-04-21
+## [2.11.0-skeletons] - 2022-04-21
 
-### [2.11.0] - 2022-04-21
+## [2.11.0] - 2022-04-21
 
-### [2.11.0-rc.0] - 2022-04-20
+## [2.11.0-rc.0] - 2022-04-20
 
-#### Added
+### Added
 
 - `Tag`
 - `Tag Dismissible`
 
-### [2.10.0-skeletons] - 2022-04-13
+## [2.10.0-skeletons] - 2022-04-13
 
-### [2.10.0] - 2022-04-13
+## [2.10.0] - 2022-04-13
 
-### [2.9.3-rc.1] - 2022-04-06
+## [2.9.3-rc.1] - 2022-04-06
 
-#### Added
+### Added
 
 - `Text Field Wrapper` now has a `showCharacterCount` property which can be used to hide the character count when a
   `maxLength` attribute is set on the wrapped `input`.
 - `Textarea Wrapper` now has a `showCharacterCount` property which can be used to hide the character count when a
   `maxLength` attribute is set on the wrapped `textarea`.
 
-### [2.9.3-rc.0-skeletons] - 2022-03-29
+## [2.9.3-rc.0-skeletons] - 2022-03-29
 
-### [2.9.3-rc.0] - 2022-03-28
+## [2.9.3-rc.0] - 2022-03-28
 
-#### Added
+### Added
 
 - `Text Field Wrapper` supports `unit` property on `input type="text"`
 - `Marque` optional configurable clickable/focusable area by defining padding on host element
 
-#### Fixed
+### Fixed
 
 - `Tabs Item` improved accessibility
 - Angular: circular dependency in development mode in `2.9.2-skeletons`
 
-### [2.9.2-skeletons] - 2022-03-24
+## [2.9.2-skeletons] - 2022-03-24
 
-#### Added
+### Added
 
 - **[EXPERIMENTAL]** `getInitialStyles` partial now accepts a `skeletonTagNames` array of component names that will
   initially have skeleton styles while the Porsche Design System is loading
@@ -2853,55 +2890,55 @@ information can be found here:
   `Link Social`, `Radio Button Wrapper`, `Select Wrapper`, `Text Field Wrapper`, `Textarea Wrapper` can now have initial
   skeleton styles when passed as `skeletonTagNames` to the `getInitialStyles` partial
 
-### [2.9.2] - 2022-03-24
+## [2.9.2] - 2022-03-24
 
-### [2.9.2-rc.1] - 2022-03-23
+## [2.9.2-rc.1] - 2022-03-23
 
-#### Fixed
+### Fixed
 
 - Bug caused by Chrome where hover styles of `Link Pure` are not displayed correctly
 
-### [2.9.2-rc.0] - 2022-03-22
+## [2.9.2-rc.0] - 2022-03-22
 
-#### Added
+### Added
 
 - Normalized font behavior (`hyphen`, `overflow-wrap` and `text-size-adjust`) across components
 
-#### Fixed
+### Fixed
 
 - `Modal` scrolling and pinch to zoom on iOS
 - `Modal` initial position if scrollable
 - `Table Head Cell` sort icon `asc` + `desc`
 
-### [2.9.1] - 2022-03-10
+## [2.9.1] - 2022-03-10
 
-### [2.9.1-rc.0] - 2022-03-09
+## [2.9.1-rc.0] - 2022-03-09
 
-#### Added
+### Added
 
 - Styles for slotted `<button>` in `Text`
 
-#### Changed
+### Changed
 
 - `Modal` heading and aria validation happens only when open
 
-#### Fixed
+### Fixed
 
 - React: bundling format of partials
 
-### [2.9.0] - 2022-02-28
+## [2.9.0] - 2022-02-28
 
-### [2.9.0-rc.1] - 2022-02-25
+## [2.9.0-rc.1] - 2022-02-25
 
-#### Fixed
+### Fixed
 
 - `Modal` focus trap respecting elements in shadow DOM and dynamically added/removed elements on first level
 - `Tabs Item` focus outline on click in Safari
 - Error while using partials in Vanilla JS and Angular
 
-### [2.9.0-rc.0] - 2022-02-16
+## [2.9.0-rc.0] - 2022-02-16
 
-#### Added
+### Added
 
 - `getFontFaceStylesheet` returns additional `<link>` tags with `rel="preconnect"` and `rel="dns-prefetch"`
 - Option `format` to partials `getFontFaceStylesheet`, `getComponentChunkLinks()`, `getFontLinks()`, `getIconLinks()`,
@@ -2918,48 +2955,48 @@ information can be found here:
 + {getFontFaceStylesheet({ format: 'jsx' })}
 ```
 
-### [2.9.0-beta.1] - 2022-01-27
+## [2.9.0-beta.1] - 2022-01-27
 
-#### Added
+### Added
 
 - `:focus-visible` content of selected Tab in `Tabs` component gets focus styling
 - Improved accessibility of `Text Field Wrapper` and `Textarea Wrapper` when `maxlength` attribute is set
 - `Modal` aria property
 - `Modal` class for slotted elements to make content full-width
 
-#### Changed
+### Changed
 
 - `Button Pure` and `Link Pure` removed `position: relative` imposition, make sure to **not** override it with
   `position: static`
 
-#### Fixed
+### Fixed
 
 - `Modal` close button styles when no heading is passed
 
-### [2.9.0-beta.0] - 2022-01-18
+## [2.9.0-beta.0] - 2022-01-18
 
-#### Added
+### Added
 
 - React: `getByRoleShadowed`, `getByLabelTextShadowed` and `getByTextShadowed` utilities which uses
   `@testing-library/dom` queries internally to support Shadow DOM
 
-#### Fixed
+### Fixed
 
 - React: `UnhandledPromiseRejectionWarning` when using `skipPorscheDesignSystemCDNRequestsDuringTests()`
 
-### [2.8.0] - 2022-01-17
+## [2.8.0] - 2022-01-17
 
-#### Fixed
+### Fixed
 
 - Accessibility issue of `Icon` component in Windows High Contrast Mode in Chromium Browser
 
-### [2.8.0-rc.0] - 2022-01-14
+## [2.8.0-rc.0] - 2022-01-14
 
-#### Added
+### Added
 
 - Support for `tabindex` attribute on `Button`, `Button Pure`, `Switch`, `Link`, `Link Pure` and `Link Social`
 
-#### Changed
+### Changed
 
 - `:focus-visible` style matches outline color of `Button` while hovered
 
@@ -2973,9 +3010,9 @@ information can be found here:
 + <p-button tabindex="-1">Some button</p-button>
 ```
 
-### [2.8.0-beta.3] - 2021-12-22
+## [2.8.0-beta.3] - 2021-12-22
 
-#### Added
+### Added
 
 **Disclaimer:** The provided themes `light-electric` and `dark-electric` are just a proof of concept, it's **not**
 accessible regarding its color contrast and might even be removed in an upcoming major release again.
@@ -2985,190 +3022,190 @@ accessible regarding its color contrast and might even be removed in an upcoming
 - Character counter to `Text Field Wrapper` and `Textarea Wrapper` if `maxlength` is present on `input type="text"` and
   `textarea`
 
-#### Changed
+### Changed
 
 - `:focus-visible` style matches outline color of `Switch` while hovered
 
-#### Fixed
+### Fixed
 
 - Box model of `Button Pure`
 
-### [2.8.0-beta.2] - 2021-12-22
+## [2.8.0-beta.2] - 2021-12-22
 
-#### Fixed
+### Fixed
 
 - `Content Wrapper` regression for `!important` style
 
-#### Added
+### Added
 
 - Usage validation for `Link`, `Link Pure` and `Link Social`
 
-### [2.8.0-beta.1] - 2021-12-16
+## [2.8.0-beta.1] - 2021-12-16
 
-#### Fixed
+### Fixed
 
 - `Select Wrapper` validation of select element
 
-### [2.8.0-beta.0] - 2021-12-15
+## [2.8.0-beta.0] - 2021-12-15
 
-#### Changed
+### Changed
 
 - Angular: increased peer dependency to `>=12.0.0 <14.0.0`
 
-### [2.7.0] - 2021-12-14
+## [2.7.0] - 2021-12-14
 
-### [2.7.0-rc.0] - 2021-12-14
+## [2.7.0-rc.0] - 2021-12-14
 
 #### Removed
 
 - `offset-bottom` prop of `Toast` (use `--p-toast-position-bottom` CSS variable instead)
 
-### [2.7.0-beta.6] - 2021-12-08
+## [2.7.0-beta.6] - 2021-12-08
 
-#### Added
+### Added
 
 - `Popover`
 
-### [2.7.0-beta.5] - 2021-12-07
+## [2.7.0-beta.5] - 2021-12-07
 
-#### Added
+### Added
 
 **Disclaimer:** The provided theme `light-electric` is just a proof of concept, it's **not** accessible regarding its
 color contrast and might even be removed in an upcoming major release again.
 
 - `light-electric` theme for `Accordion`, `Link`, `Link Pure`, `Button`, `Button Pure`, `Tabs`, `Tabs Bar`
 
-### [2.7.0-beta.4] - 2021-12-02
+## [2.7.0-beta.4] - 2021-12-02
 
-### [2.7.0-beta.3] - 2021-11-30
+## [2.7.0-beta.3] - 2021-11-30
 
-#### Added
+### Added
 
 - `Accordion` uses `MutationObserver` fallback when no `ResizeObserver` is available in older browsers
 
-#### Fixed
+### Fixed
 
 - `Link` and `Link Social` not adapting slotted anchor to the width of the element
 
-### [2.7.0-beta.2] - 2021-11-24
+## [2.7.0-beta.2] - 2021-11-24
 
-#### Added
+### Added
 
 - `Toast`
 
-#### Fixed
+### Fixed
 
 - `Banner` animations respect offset correctly
 
-### [2.7.0-beta.1] - 2021-11-16
+## [2.7.0-beta.1] - 2021-11-16
 
-#### Fixed
+### Fixed
 
 - `Headline` applies `align` and `ellipsis` prop correctly
 
-### [2.7.0-beta.0] - 2021-11-11
+## [2.7.0-beta.0] - 2021-11-11
 
-#### Added
+### Added
 
 - New `aria` property for `ARIA` attribute handling for: `Button`, `Button Pure`, `Icon`, `Link`, `Link Pure`, `Marque`,
   `Spinner`
 
-#### Fixed
+### Fixed
 
 - React: warnings about `useLayoutEffect` in SSR context
 
-### [2.6.1] - 2021-11-05
+## [2.6.1] - 2021-11-05
 
-#### Fixed
+### Fixed
 
 - Prevent breaking entire Porsche Design System due to lacking support of `ResizeObserver`, however `Accordion` still
   requires it
 
-### [2.6.0] - 2021-11-04
+## [2.6.0] - 2021-11-04
 
-#### Added
+### Added
 
 - `unit` and `unitPosition` properties to `Text Field Wrapper`
 
-### [2.6.0-beta.0] - 2021-10-29
+## [2.6.0-beta.0] - 2021-10-29
 
-#### Changed
+### Changed
 
 - Use `Heiti SC` (pre-installed on iOS/macOS) and `SimHei` (pre-installed on Windows) as Chinese fallback font
 
-#### Added
+### Added
 
 - `Marque` uses `webp` images for browsers that support it
 - `Inline Notification`
 - `Icon` now supports `success` for `name` property
 
-#### Fixed
+### Fixed
 
 - Colors of `Banner` for dark theme
 - Replaced CSS `inset` property with `top`, `left`, `right` and `bottom` for browser compatibility
 - Opening and closing transition of `Modal`
 
-### [2.5.1-beta.0] - 2021-10-11
+## [2.5.1-beta.0] - 2021-10-11
 
-#### Fixed
+### Fixed
 
 - Possible exceptions when components get unmounted directly
 
-### [2.5.0] - 2021-10-04
+## [2.5.0] - 2021-10-04
 
-#### Added
+### Added
 
 - `SimHei` and `黑体` as fallback for all components' `font-family`
 
-### [2.5.0-beta.1] - 2021-09-28
+## [2.5.0-beta.1] - 2021-09-28
 
-#### Changed
+### Changed
 
 - React: improved render behavior of components
 
-### [2.5.0-beta.0] - 2021-09-22
+## [2.5.0-beta.0] - 2021-09-22
 
-#### Added
+### Added
 
 - React: utility function `skipPorscheDesignSystemCDNRequestsDuringTests`
 
-### [2.4.0] - 2021-09-21
+## [2.4.0] - 2021-09-21
 
-### [2.4.0-beta.2] - 2021-09-21
+## [2.4.0-beta.2] - 2021-09-21
 
-#### Added
+### Added
 
 - `Link Social` and `Icon` now support `kakaotalk`, `naver`, `reddit` and `tiktok`
 - JSS caching mechanism to improve style performance
 
-#### Changed
+### Changed
 
 - Alignment of `linkedin` icon
 - Improved accessibility of `Select Wrapper`
 - `Icon` loading behaviour to non-blocking, components using the `Icon` will no longer wait for it to load
 - Validation messages of `Fieldset Wrapper` have now an additional icon representing the validation state
 
-#### Fixed
+### Fixed
 
 - Box model of `Link Pure`
 - Focus of `Link Pure` with slotted anchor and hidden label
 - Focus cycling of `Modal` without focusable children
 - Suppress CORS error
 
-### [2.4.0-beta.1] - 2021-08-26
+## [2.4.0-beta.1] - 2021-08-26
 
-#### Added
+### Added
 
 - `active` property to `Button Pure`
 
-### [2.4.0-beta.0] - 2021-08-26
+## [2.4.0-beta.0] - 2021-08-26
 
-#### Added
+### Added
 
 - `icon` property of `Button Pure` and `Link Pure` was extended by `none` value
 - `alignLabel` and `stretch` property to `Button Pure` and `Link Pure`
 
-#### Changed
+### Changed
 
 - Improved `:focus-visible` and `:hover:focus-visible` colors for `Link Social` and `Link`
 - Improved slotted `<a>` coloring in dark theme for `Link Social` and `Link`
@@ -3176,124 +3213,124 @@ color contrast and might even be removed in an upcoming major release again.
   `Text Field Wrapper` have now an additional icon representing the validation state
 - `Modal` backdrop behavior to close modal on mouse-down
 
-#### Fixed
+### Fixed
 
 - Slotted `<a>` coloring in dark theme for `Text`, `Headline`, `Text List`, `Banner`, `Select Wrapper` and `Link Pure`
 - Wrong background color of scrollable `Modal`'s backdrop in Safari
 
-### [2.3.0] - 2021-07-28
+## [2.3.0] - 2021-07-28
 
-### [2.3.0-beta.3] - 2021-07-28
+## [2.3.0-beta.3] - 2021-07-28
 
-#### Changed
+### Changed
 
 - `Accordion` reduce paddings, vertically align carets to the first heading row, adjust border color and hover styles
 
-#### Fixed
+### Fixed
 
 - `Text Field Wrapper` accessibility of type password and search
 
-### [2.3.0-beta.2] - 2021-07-15
+## [2.3.0-beta.2] - 2021-07-15
 
-#### Added
+### Added
 
 - `Checkbox Wrapper`, `Radio Button Wrapper`, `Select Wrapper`, `Textarea Wrapper` and `Text Field Wrapper` now reflect
   changes of the `required` attribute on their child component
 - `multiline` property to `Table Cell`
 - Partial function `getLoaderScript()` to initialize Porsche Design System as early as possible
 
-#### Fixed
+### Fixed
 
 - `Table Head Cell` uses semi bold instead of bold as font weight
 - Transition of `Modal`
 
-### [2.3.0-beta.1] - 2021-07-08
+## [2.3.0-beta.1] - 2021-07-08
 
-#### Added
+### Added
 
 - `Accordion`
 
-#### Changed
+### Changed
 
 - Removed initial delay of `Banner`
 
-### [2.3.0-beta.0] - 2021-07-01
+## [2.3.0-beta.0] - 2021-07-01
 
-#### Added
+### Added
 
 - `Table`
 - Angular: export types from package root
 - Accessibility icon
 
-#### Changed
+### Changed
 
 - `Button`, `Button Pure` and `Switch` are now focusable while in `loading` state
 - `Text` and `Headline` inherits white-space CSS property
 - React: sync component props via property instead of attribute
 
-#### Fixed
+### Fixed
 
 - Angular: support `"strictTemplates": true` option in `tsconfig.json`
 - Use correct icon for `arrow-last` and `arrow-first` in `Icon`, `Button` and `Link` components
 
-### [2.2.1] - 2021-06-08
+## [2.2.1] - 2021-06-08
 
-#### Changed
+### Changed
 
 - Optimize vertical alignment of `Modal`
 
-#### Fixed
+### Fixed
 
 - URL in inject global style warning
 
-### [2.2.1-beta.1] - 2021-06-02
+## [2.2.1-beta.1] - 2021-06-02
 
-#### Fixed
+### Fixed
 
 - Margin of `Tabs Bar` within `Tabs` for Firefox and Safari
 - SVG of `Icon` is not removed after prop change, e.g. on color change
 - Fullscreen behavior of `Modal` on screens larger than 1760px
 
-### [2.2.0] - 2021-05-19
+## [2.2.0] - 2021-05-19
 
-#### Fixed
+### Fixed
 
 - `Text` inside `Button` now has the proper size on iOS Safari when changing to and from landscape mode
 - `Banner` can now be re-opened after closing
 - Closing one `Banner` will not close other `Banners` on the site
 
-### [2.2.0-beta.2] - 2021-05-12
+## [2.2.0-beta.2] - 2021-05-12
 
-#### Fixed
+### Fixed
 
 - `Select Wrapper` value changes are now reflected correctly
 - `Select Wrapper` dark theme background color if used with `filter` prop
 
-### [2.2.0-beta.1] - 2021-05-05
+## [2.2.0-beta.1] - 2021-05-05
 
-#### Added
+### Added
 
 - Partial function `getIconLinks()` to preload Porsche Design System Icons
 
-#### Fixed
+### Fixed
 
 - `Text Field Wrapper` spacing in Safari
 
-### [2.2.0-beta.0] - 2021-05-05
+## [2.2.0-beta.0] - 2021-05-05
 
-#### Added
+### Added
 
 - Partial function `getMetaTagsAndIconLinks()` to simplify cross device fav and meta icons
 
-### [2.1.0] - 2021-05-03
+## [2.1.0] - 2021-05-03
 
-### [2.1.0-beta.0] - 2021-05-03
+## [2.1.0-beta.0] - 2021-05-03
 
-#### Added
+### Added
 
 - `Switch`
 
-#### Changed
+### Changed
 
 - `Text` automatically breaks words/strings into new line being too long to fit inside their container
 - `Headline` automatically breaks words/strings into new line being too long to fit inside their container
@@ -3301,36 +3338,36 @@ color contrast and might even be removed in an upcoming major release again.
   is set to required only the label of the **Fieldset Wrapper** gets an asterisk. It is removed from all wrapped child
   components, as long as they are Porsche Design System form elements.
 
-### [2.0.3] - 2021-04-28
+## [2.0.3] - 2021-04-28
 
-### [2.0.3-beta] - 2021-04-28
+## [2.0.3-beta] - 2021-04-28
 
-#### Fixed
+### Fixed
 
 - Angular: events firing twice in `Pagination`, `Modal`, `Tabs`, `Tabs Bar` and `Banner` component
 
-### [2.0.2] - 2021-04-21
+## [2.0.2] - 2021-04-21
 
-### [2.0.2-beta.0] - 2021-04-20
+## [2.0.2-beta.0] - 2021-04-20
 
-#### Fixed
+### Fixed
 
 - TypeScript build errors due to duplicate declarations in `types.d.ts`
 
-### [2.0.1] - 2021-04-16
+## [2.0.1] - 2021-04-16
 
-#### Fixed
+### Fixed
 
 - Visual appearance of `Checkbox Wrapper` in iOS Safari
 - A bug where `Text Field Wrapper` would throw an error when reattaching to DOM too quickly
 - Visual bug in Firefox when zooming out `Text Field Wrapper`, `Checkbox Wrapper` and `Textarea Wrapper`
 - Angular: streamline component styles in dark theme
 
-#### Changed
+### Changed
 
 - Aligned focus states of `Checkbox Wrapper` and `Radio Button Wrapper` across browsers
 
-### [2.0.0] - 2021-04-13
+## [2.0.0] - 2021-04-13
 
 In keeping with [Semver](https://semver.org), Porsche Design System v2.0.0 was released due to changes in the API,
 fundamental changes in loading behavior and others. With our new major version `v2.0.0` there are some important changes
@@ -3576,137 +3613,137 @@ For advanced usage please [read further](https://designsystem.porsche.com/v2/sta
 
 ---
 
-### [2.0.0-rc.10] - 2021-04-12
+## [2.0.0-rc.10] - 2021-04-12
 
-#### Changed
+### Changed
 
 - `Tabs` and `Tabs Bar` now respect dynamic additions / removals of `p-tabs-item`, `a` and `button` elements. Make sure
   to update the `activeTabIndex` when mutating elements
 - Improved performance of `Text`, `Button Pure` and `Link Pure` when `size` is not `inherit`
 
-#### Added
+### Added
 
 - `Grid` now has a `wrap` and `gutter` property
 - Components (`Grid Item`, `Flex Item`, `Tabs Item` and `Text List Item`) that require a specific parent (`Grid`,
   `Flex`, `Tabs` and `Text List`) will now throw an error if used without that parent
 
-#### Fixed
+### Fixed
 
 - Visual appearance of `Checkbox Wrapper` and `Radio Button Wrapper` reflect the state of the wrapped `input` element
 
-### [2.0.0-rc.9] - 2021-03-26
+## [2.0.0-rc.9] - 2021-03-26
 
-#### Added
+### Added
 
 - `Button Group` component
 - Fullscreen property for `Modal` on mobile
 
-#### Changed
+### Changed
 
 - Spacings, heading and sizes of `Modal`
 
-#### Fixed
+### Fixed
 
 - Prevent duplicate loading of `porsche-design-system.v2.x.HASH.js` chunk when using `getComponentChunkLinks()` partial
 
-### [2.0.0-rc.8] - 2021-03-17
+## [2.0.0-rc.8] - 2021-03-17
 
-#### Added
+### Added
 
 - Support for full height `Content Wrapper` with flex
 - `Tabs Bar` now supports `undefined` as `activeTabIndex`
 
-#### Changed
+### Changed
 
 - `Tabs Bar` has a new default `activeTabIndex`, which is `undefined`
 - `Tabs Bar` does not work by itself anymore. The `activeTabIndex` needs to be controlled from the outside
   ([read more](https://designsystem.porsche.com/v2/components/tabs-bar/examples))
 - Background Color of `Select Wrapper` in `dark` theme to meet accessibility criteria
 
-### [2.0.0-rc.7] - 2021-03-15
+## [2.0.0-rc.7] - 2021-03-15
 
-#### Fixed
+### Fixed
 
 - Make shadowed `Flex` and `Grid` work in Firefox + Safari
 
-### [2.0.0-rc.6] - 2021-03-11
+## [2.0.0-rc.6] - 2021-03-11
 
-#### Changed
+### Changed
 
 - Make `Grid` and `Grid Item` use Shadow DOM
 - Make `Flex` and `Flex Item` use Shadow DOM
 
-### [2.0.0-rc.5] - 2021-03-09
+## [2.0.0-rc.5] - 2021-03-09
 
-#### Added
+### Added
 
 - Configurable background color of `Content Wrapper`
 - `italic` font-style in `Text` is now overridden with `normal`
 
-#### Fixed
+### Fixed
 
 - Usage of `Select Wrapper` within custom elements
 - A bug that caused `Spinner` to be displayed in a wrong size
 
-### [2.0.0-rc.4] - 2021-03-01
+## [2.0.0-rc.4] - 2021-03-01
 
-#### Changed
+### Changed
 
 - Filter of `Select Wrapper` supports substring search
 
-#### Fixed
+### Fixed
 
 - Build error in SSR
 
-### [2.0.0-rc.3] - 2021-02-17
+## [2.0.0-rc.3] - 2021-02-17
 
-#### Added
+### Added
 
 - React: utility function `skipCheckForPorscheDesignSystemProviderDuringTests`
 - React: tree shaking for component wrappers
 
-#### Fixed
+### Fixed
 
 - Angular: error in `Checkbox Wrapper`, `Radio Button Wrapper` and `Text Field Wrapper` when `input[type]` is bound
 
-### [2.0.0-rc.2] - 2021-02-12
+## [2.0.0-rc.2] - 2021-02-12
 
-#### Added
+### Added
 
 - Validate usage of `Checkbox Wrapper`, `Radio Button Wrapper`, `Select Wrapper`, `Text Field Wrapper` and
   `Textarea Wrapper`
 
-### [2.0.0-rc.1] - 2021-02-04
+## [2.0.0-rc.1] - 2021-02-04
 
-#### Added
+### Added
 
 - Partial function `getComponentChunkLinks()` to preload Porsche Design System Components
 
-#### Changed
+### Changed
 
 - Added a space before asterisk (`*`) when `input`, `textarea` or `select` have `required` attribute within form wrapper
   components
 - Renamed partial `getFontLinks()` option from `weight` to `weights`
 
-#### Fixed
+### Fixed
 
 - A bug in `Tabs Bar` where the nextButton was mistakenly rendered.
 - A bug where `Icon` was not rendered when using `lazy` property.
 - A bug in `Text Field Wrapper` with input type password where characters would overlap the icon.
 
-### [2.0.0-rc.0] - 2021-01-29
+## [2.0.0-rc.0] - 2021-01-29
 
-#### Added
+### Added
 
 - Link support for `Marque`
 - Sizing options `'responsive' | 'small' | 'medium'` for `Marque`
 
-#### Changed
+### Changed
 
 - Angular: added static `load()` function `PorscheDesignSystemModule` for custom prefix
 - Hide up/down spin button when using **Text Field** with `type="number"` in Firefox
 
-#### Fixed
+### Fixed
 
 - Angular: typings
 - React: correct handling of `ref` property
@@ -3714,30 +3751,30 @@ For advanced usage please [read further](https://designsystem.porsche.com/v2/sta
 - A bug in `Tabs Bar` where scrolling was broken when a tab was selected
 - A bug in `Tabs Bar` where the `nextButton` was always rendered
 
-### [2.0.0-alpha.13] - 2021-01-26
+## [2.0.0-alpha.13] - 2021-01-26
 
-#### Added
+### Added
 
 - Partial function `getFontLinks()` to prevent **Flash of Unstyled Text** (FOUT)
 
-#### Fixed
+### Fixed
 
 - React: correct handling of `className` property
 
-### [2.0.0-alpha.12] - 2021-01-20
+## [2.0.0-alpha.12] - 2021-01-20
 
-#### Added
+### Added
 
 - Partial function `getInitialStyles()` to prevent **Flash of Unstyled Content** (FOUC)
 - Partial function `getFontFaceStylesheet()` to prevent **Flash of Unstyled Text** (FOUT)
 
-#### Changed
+### Changed
 
 - React: `PorscheDesignSystemProvider` needs to wrap application
 - React: component props have to be camelCase
 - React: `PorscheDesignSystemProvider` is needed while testing components
 
-#### Fixed
+### Fixed
 
 - React: typings
 - React: support of objects for property values
@@ -3746,47 +3783,47 @@ For advanced usage please [read further](https://designsystem.porsche.com/v2/sta
 
 - React: `getPrefixedComponents`, prefixing is handled by `PorscheDesignSystemProvider`
 
-### [2.0.0-alpha.11] - 2021-01-08
+## [2.0.0-alpha.11] - 2021-01-08
 
-#### Changed
+### Changed
 
 - Precision of relative line height
 - Changed color of `neutral contrast low`
 
-### [2.0.0-alpha.10] - 2020-12-14
+## [2.0.0-alpha.10] - 2020-12-14
 
-#### Added
+### Added
 
 - `native` property to `Select Wrapper` to force rendering of native Browser select dropdown
 - Extended flexibility of `Headline`
 
-#### Changed
+### Changed
 
 - Some styling improvements of `Select Wrapper`
 
-#### Fixed
+### Fixed
 
 - Jsdom Polyfill `fetch` error
 
-### [2.0.0-alpha.9] - 2020-12-09
+## [2.0.0-alpha.9] - 2020-12-09
 
 ### Fixed
 
 - Improved reliability of `componentsReady()`
 
-#### Changed
+### Changed
 
 - Jsdom Polyfill `console.warn` behaviour
 
-### [2.0.0-alpha.8] - 2020-12-03
+## [2.0.0-alpha.8] - 2020-12-03
 
 ### Fixed
 
 - A bug where `Modal` did not remove `overflow=hidden` on document body.
 
-### [2.0.0-alpha.7] - 2020-11-26
+## [2.0.0-alpha.7] - 2020-11-26
 
-#### Added
+### Added
 
 - Jsdom Polyfill
 
@@ -3795,14 +3832,14 @@ For advanced usage please [read further](https://designsystem.porsche.com/v2/sta
 - Jsdom Mocks
 - Global "blur on focus" script
 
-#### Changed
+### Changed
 
 - Default dropdown direction of `SelectWrapper` from `down` to `auto`
 - Made API of `Tabs` consistent with `Tabs Bar`
 - Removed transition for focus styling
 - Use `:focus-visible` as default and `:focus` as fallback for focusable elements
 
-#### Fixed
+### Fixed
 
 - The Selected element of `SelectWrapper` dropdown keeps now in sync with native selection if changed programmatically
 - Invalid search results get cleared if `SelectWrapper` becomes focus state
@@ -3810,34 +3847,34 @@ For advanced usage please [read further](https://designsystem.porsche.com/v2/sta
 - Minification of dynamic slotted content styles
 - An issue where `Pagination` throws console errors if disconnected from dom.
 
-### [2.0.0-alpha.6] - 2020-10-28
+## [2.0.0-alpha.6] - 2020-10-28
 
-#### Changed
+### Changed
 
 - default `type` of `Button` and `Button Pure` to `submit`
 
-#### Fixed
+### Fixed
 
 - Typings
 
-### [2.0.0-alpha.5] - 2020-10-26
+## [2.0.0-alpha.5] - 2020-10-26
 
-#### Added
+### Added
 
 - `Modal` component
 
-#### Fixed
+### Fixed
 
 - Typing for `pageChange` event of `Pagination` component
 - Typings
 
-#### Changed
+### Changed
 
 - Focus styling
 
-### [2.0.0-alpha.4] - 2020-10-14
+## [2.0.0-alpha.4] - 2020-10-14
 
-#### Added
+### Added
 
 - Custom filter to `Select Wrapper` component
 - DropDown direction property to `Select Wrapper` component
@@ -3850,13 +3887,13 @@ For advanced usage please [read further](https://designsystem.porsche.com/v2/sta
 
 - Default `position: relative;` style of `Link Pure` and `Button Pure`
 
-#### Fixed
+### Fixed
 
 - `Spinner` zooming bug on Safari
 
-### [2.0.0-alpha.3] - 2020-09-11
+## [2.0.0-alpha.3] - 2020-09-11
 
-#### Added
+### Added
 
 - Support to load assets from China CDN directly via browser flag: `PORSCHE_DESIGN_SYSTEM_CDN = 'cn';`
 
@@ -3864,57 +3901,57 @@ For advanced usage please [read further](https://designsystem.porsche.com/v2/sta
 
 - Support for `<a>` wrapped `Link` and `Link Pure`
 
-### [2.0.0-alpha.2] - 2020-08-20
+## [2.0.0-alpha.2] - 2020-08-20
 
-### [2.0.0-alpha.1] - 2020-08-17
+## [2.0.0-alpha.1] - 2020-08-17
 
-#### Changed
+### Changed
 
 - Removed classnames dependency
 - Stencil Core `taskQueue` from `congestionAsync` to `async` for more performant component rendering
 
-#### Fixed
+### Fixed
 
 - Focus input on label click of `Checkbox Wrapper` and `Radio Button Wrapper`
 
-### [1.5.6] - 2020-10-15
+## [1.5.6] - 2020-10-15
 
-### [1.5.6-rc.0] - 2020-10-13
+## [1.5.6-rc.0] - 2020-10-13
 
 ### Fixed
 
 - `Spinner` zooming bug on Safari
 
-### [1.5.5] - 2020-09-11
+## [1.5.5] - 2020-09-11
 
-### [1.5.5-rc.0] - 2020-09-07
+## [1.5.5-rc.0] - 2020-09-07
 
 ### Changed
 
 - Deprecated stencil lifecycle-method `componentDidUnload` to `disconnectedCallback` to fix "`selectObserver` is
   undefined" bug in `Select Wrapper` and `Pagination`
 
-### [1.5.4] - 2020-08-25
+## [1.5.4] - 2020-08-25
 
-### [1.5.4-rc.0] - 2020-08-17
+## [1.5.4-rc.0] - 2020-08-17
 
-#### Changed
+### Changed
 
 - Removed classnames dependency
 - Stencil Core `taskQueue` from `congestionAsync` to `async` for more performant component rendering
 
-#### Fixed
+### Fixed
 
 - Focus input on label click of `Checkbox Wrapper` and `Radio Button Wrapper`
 - Fix typings for `orientation` of `Divider` component
 
-### [2.0.0-alpha.0] - 2020-08-06
+## [2.0.0-alpha.0] - 2020-08-06
 
-#### Added
+### Added
 
 - **Experimental:** Optional web component scoping mechanism during runtime to enable micro service architecture
 
-#### Changed
+### Changed
 
 - Web components get lazy loaded from central CDN to improve caching strategy across Porsche's digital eco system
 
@@ -3922,60 +3959,60 @@ For advanced usage please [read further](https://designsystem.porsche.com/v2/sta
 
 - Stop browser support for **IE11** and **EdgeHTML**
 
-#### Fixed
+### Fixed
 
 - Mix of `Optgroups` and `Options` on same level in `Select Wrapper` component
 - Fix typings for `orientation` of `Divider` component
 
-### [1.5.3] - 2020-08-10
+## [1.5.3] - 2020-08-10
 
-### [1.5.3-rc.0] - 2020-08-10
+## [1.5.3-rc.0] - 2020-08-10
 
-#### Fixed
+### Fixed
 
 - Mix of `Optgroups` and `Options` on same level in `Select Wrapper` component
 
-### [1.5.2] - 2020-07-22
+## [1.5.2] - 2020-07-22
 
-#### Fixed
+### Fixed
 
 - Dispatch change event in `Select Wrapper`
 - Stencil react-output-target SSR Bug
 
-### [1.5.1] - 2020-07-20
+## [1.5.1] - 2020-07-20
 
-#### Fixed
+### Fixed
 
 - SVGO settings for icons
 - Angular bug which causes `ngcc` to fail
 
-### [1.5.0] - 2020-07-16
+## [1.5.0] - 2020-07-16
 
-#### Added
+### Added
 
 - Icons (active-cabin-ventilation, battery-full, bell, bookmark, car-battery, charging-active, charging-state, climate,
   climate-control, garage, horn, key, map, parking-brake, parking-light, preheating, send, shopping-bag, sidelights,
   user-manual, wrenches)
 
-#### Changed
+### Changed
 
 - Icons (arrow-first, arrow-last, battery-empty, car, card, charging-station, question)
 
-#### Fixed
+### Fixed
 
 - Porsche Marque images
 
-### [1.5.0-rc.2] - 2020-07-06
+## [1.5.0-rc.2] - 2020-07-06
 
-### [1.5.0-rc.1] - 2020-07-06
+## [1.5.0-rc.1] - 2020-07-06
 
-#### Added
+### Added
 
 - **Notification Neutral** color to `color` property of `p-text` and `p-icon`
 
-### [1.5.0-rc.0] - 2020-06-25
+## [1.5.0-rc.0] - 2020-06-25
 
-#### Added
+### Added
 
 - `Fieldset Wrapper` component
 - Improved SEO of `p-headline` and `p-text`: Added possibility to write semantic HTML tags (e.g. `<h1>-<h6>` or `<p>`,
@@ -3985,48 +4022,48 @@ For advanced usage please [read further](https://designsystem.porsche.com/v2/sta
 - `Button Pure` label with subline pattern as slot
 - `Link Pure` label with subline pattern as slot
 
-#### Changed
+### Changed
 
 - `Select Wrapper` is now ready for the catwalk. It is dressed now with a custom drop down list box and gets naked by
   default on touch devices.
 
-#### Fixed
+### Fixed
 
 - Minor accessibility improvements of `icons` and `Text Field`
 - Remove native number spinner buttons of `Text Field` with type text for Firefox
 - An issue with `Button` and `Button Pure` and their `disabled` attribute
 
-### [1.4.0] - 2020-05-14
+## [1.4.0] - 2020-05-14
 
-### [1.4.0-rc.3] - 2020-05-08
+## [1.4.0-rc.3] - 2020-05-08
 
-#### Added
+### Added
 
 - `Text List`
 
-#### Changed
+### Changed
 
 - Improve caching strategy for fonts by content-based hash
 - Improve caching strategy for marque by content-based hash
 - Dimensions and sharpness of marque
 - Props for `Content Wrapper`
 
-### [1.4.0-rc.2] - 2020-05-06
+## [1.4.0-rc.2] - 2020-05-06
 
-#### Added
+### Added
 
 - `Content Wrapper`
 - Description property to `p-text-field-wrapper`, `p-textarea-wrapper` and `p-select-wrapper`
 - `Link Social`
 
-#### Changed
+### Changed
 
 - Improve accessibility of error and success states of form elements
 - Aria-invalid attribute of form elements if they are in error state is now managed by component
 - Rename icon name `configure` to `configurate` (prevents breaking change compared to stable v1.3.0)
 - Improve `p-icon` loading behavior
 
-#### Fixed
+### Fixed
 
 - Display of wrong icons
 
@@ -4034,14 +4071,14 @@ For advanced usage please [read further](https://designsystem.porsche.com/v2/sta
 
 - `safe-zone` property of `p-grid` (`Content Wrapper` should be used instead)
 
-### [1.4.0-rc.1] - 2020-04-27
+## [1.4.0-rc.1] - 2020-04-27
 
-#### Added
+### Added
 
 - Add `safe-zone` property to `p-grid` for outer grid margin, max-width and centering
 - Submit button with search icon to `p-textfield-wrapper` type search
 
-#### Changed
+### Changed
 
 - Background color of readonly state in components `p-textfield-wrapper` and `p-textarea-wrapper`
 - Visual appearance of icons
@@ -4049,121 +4086,121 @@ For advanced usage please [read further](https://designsystem.porsche.com/v2/sta
 - Cursor of Radio, Checkbox and Select
 - Fixed naming of Mock from `p-textfield-wrapper` to `p-text-field-wrapper`
 
-#### Fixed
+### Fixed
 
 - Icon loading mechanism
 
-### [1.4.0-rc.0] - 2020-04-09
+## [1.4.0-rc.0] - 2020-04-09
 
-#### Added
+### Added
 
 - SSR support
 
-### [1.3.0] - 2020-04-08
+## [1.3.0] - 2020-04-08
 
-#### Added
+### Added
 
 - New headline size `headline-5` to `p-headline`
 - Test Mocks
 
-#### Fixed
+### Fixed
 
 - Text styling of Select component on focus in IE11 and Chrome on Windows 10
 
-### [1.3.0-rc.0] - 2020-04-03
+## [1.3.0-rc.0] - 2020-04-03
 
-#### Fixed
+### Fixed
 
 - Improve form elements
 
-### [1.2.0] - 2020-03-25
+## [1.2.0] - 2020-03-25
 
-#### Added
+### Added
 
 - `Divider`
 - Hover state for form elements
 
-#### Fixed
+### Fixed
 
 - Support label text of form elements for Screen readers
 
-### [1.1.2] - 2020-03-17
+## [1.1.2] - 2020-03-17
 
-#### Changed
+### Changed
 
 - Notification colors
 
-### [1.1.1] - 2020-03-13
+## [1.1.1] - 2020-03-13
 
-#### Changed
+### Changed
 
 - Icon of `Checkbox` indeterminate state
 
-### [1.1.0] - 2020-03-11
+## [1.1.0] - 2020-03-11
 
-#### Fixed
+### Fixed
 
 - Minor improvements
 
-### [1.1.0-rc.0] - 2020-03-02
+## [1.1.0-rc.0] - 2020-03-02
 
-#### Added
+### Added
 
 - `Select Wrapper`
 - `Checkbox Wrapper`
 - `Radio Button Wrapper`
 - `Textarea Wrapper`
 
-#### Fixed
+### Fixed
 
 - `Text Field Wrapper` toggle password visibility
 
-### [1.0.3] - 2020-02-13
+## [1.0.3] - 2020-02-13
 
-#### Fixed
+### Fixed
 
 - JS framework compatibility
 
-### [1.1.0-0] - 2020-02-06
+## [1.1.0-0] - 2020-02-06
 
-#### Added
+### Added
 
 - `Text Field Wrapper`
 
-#### Changed
+### Changed
 
 - Add proper cursor for disabled state for `Button` and `Button Pure`
 
-### [1.0.2] - 2020-02-04
+## [1.0.2] - 2020-02-04
 
-#### Fixed
+### Fixed
 
 - Inheritable styling of slotted content
 
-### [1.0.1] - 2020-01-30
+## [1.0.1] - 2020-01-30
 
-#### Added
+### Added
 
 - Clickable area of `Link Pure` and `Button Pure` is optionally configurable by defining padding on host element
 
-### [1.0.0] - 2020-01-28
+## [1.0.0] - 2020-01-28
 
-#### Added
+### Added
 
 - Cursor pointer on hover for `Button` and `Button Pure`
 - Line-height gets calculated based on Porsche type-scaling formula automatically for `Text`, `Link Pure` and
   `Button Pure`
 - Test helper function `componentsReady()` which indicates when lazy loaded components fully have loaded
 
-#### Changed
+### Changed
 
 - Update CDN asset paths
 - Improve font-weight definitions
 - Rename and optimize neutral colors for `Icon` and `Text`
 
-### [1.0.0-rc.1] - 2019-12-13
+## [1.0.0-rc.1] - 2019-12-13
 
-#### Added
+### Added
 
 - `Headline`
 - `Text`

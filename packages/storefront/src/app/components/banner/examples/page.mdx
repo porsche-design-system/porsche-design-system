@@ -1,0 +1,20 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import {ComponentStory} from "@/components/playground/ComponentStory";
+import {bannerStory, bannerStoryCustomStyling} from "@/app/components/banner/banner.stories";
+
+export const metadata = {
+  title: 'Banner - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Banner component.'
+}
+
+# Banner <ComponentStatus tagName="p-banner"></ComponentStatus>
+
+<TableOfContents headings={["Basic Example","Customization"]} />
+
+## Customization
+
+Rich content for `heading` and `description` can be provided via named slots.
+Additionally, some values which can be overwritten by CSS Custom Properties (aka CSS Variables):
+
+<ComponentStory story={bannerStoryCustomStyling} />

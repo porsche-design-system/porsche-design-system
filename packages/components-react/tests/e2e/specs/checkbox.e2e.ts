@@ -1,4 +1,4 @@
-import { expect, Page, test } from '@playwright/test';
+import { Page, expect, test } from '@playwright/test';
 import {
   addEventListener,
   getEventSummary,
@@ -13,7 +13,7 @@ const getForm = (page: Page) => page.locator('form');
 test.describe('form', () => {
   test('should include name & value in FormData submit', async ({ page }) => {
     await goto(page, 'checkbox-example');
-    expect(await waitForComponentsReady(page)).toBe(2); // p-checkbox and p-text
+    expect(await waitForComponentsReady(page)).toBe(4); // p-checkbox and p-text + two p-buttons
     const host = getHost(page);
     const form = getForm(page);
     const testValue = 'test';
@@ -32,7 +32,7 @@ test.describe('form', () => {
 
   test('should reset checkbox to its initial state on form reset', async ({ page }) => {
     await goto(page, 'checkbox-example');
-    expect(await waitForComponentsReady(page)).toBe(2); // p-checkbox and p-text
+    expect(await waitForComponentsReady(page)).toBe(4); // p-checkbox and p-text + two p-buttons
     const host = getHost(page);
     const form = getForm(page);
     const testValue = 'test';

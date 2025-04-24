@@ -1,5 +1,7 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type {
+import {
+  PorscheDesignSystemModule,
   StepperHorizontalItemState,
   StepperHorizontalUpdateEventDetail,
 } from '@porsche-design-system/components-angular';
@@ -41,7 +43,8 @@ import type {
     </p-button-group>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, PorscheDesignSystemModule],
 })
 export class StepperHorizontalExampleComponent {
   steps: StepperHorizontalItemProps[] = [

@@ -1,27 +1,27 @@
-import { Component, Element, forceUpdate, h, type JSX, Listen, Prop } from '@stencil/core';
+import { Component, Element, type JSX, Listen, Prop, forceUpdate, h } from '@stencil/core';
+import { getSlottedAnchorStyles } from '../../styles';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
+  FORM_STATES,
+  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
-  FORM_STATES,
   getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   hasPropValueChanged,
   isDisabledOrLoading,
   observeAttributes,
   setAriaAttributes,
-  THEMES,
   unobserveAttributes,
   validateProps,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import { getCheckboxRadioButtonSafariRenderingFix } from '../../utils/form/applyCheckboxRadioButtonSafariRenderingFix';
+import { LegacyLabel } from '../common/label/legacy-label';
+import { LoadingMessage } from '../common/loading-message/loading-message';
+import { StateMessage } from '../common/state-message/state-message';
 import { getComponentCss } from './checkbox-wrapper-styles';
 import type { CheckboxWrapperState } from './checkbox-wrapper-utils';
-import { StateMessage } from '../common/state-message/state-message';
-import { Label } from '../common/label/label';
-import { LoadingMessage } from '../common/loading-message/loading-message';
-import { getCheckboxRadioButtonSafariRenderingFix } from '../../utils/form/applyCheckboxRadioButtonSafariRenderingFix';
-import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof CheckboxWrapper> = {
   label: AllowedTypes.string,
@@ -123,7 +123,7 @@ export class CheckboxWrapper {
 
     return (
       <div class="root">
-        <Label
+        <LegacyLabel
           host={this.host}
           label={this.label}
           isLoading={this.loading}

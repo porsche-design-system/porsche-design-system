@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PCheckbox, PText } from '@porsche-design-system/components-vue';
+import { PButton, PCheckbox, PText } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
 const lastSubmittedData = ref('');
@@ -12,8 +12,8 @@ const onSubmit = (e: Event) => {
 <template>
   <form @submit.prevent="onSubmit">
     <PCheckbox :name="'some-name'" :label="'Some Label'" :value="'some-value'" />
-    <button type="submit">Submit</button>
-    <button type="reset">Reset</button>
+    <PButton type="submit">Submit</PButton>
+    <PButton type="reset">Reset</PButton>
   </form>
 
   <PText>Last submitted data: {{ lastSubmittedData }}</PText>

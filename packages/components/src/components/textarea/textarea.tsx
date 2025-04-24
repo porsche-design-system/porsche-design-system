@@ -11,7 +11,8 @@ import {
   hasPropValueChanged,
   validateProps,
 } from '../../utils';
-import { Label, descriptionId } from '../common/label/label';
+import { Label } from '../common/label/label';
+import { descriptionId } from '../common/label/label-utils';
 import { StateMessage, messageId } from '../common/state-message/state-message';
 import { getComponentCss } from './textarea-styles';
 import {
@@ -285,6 +286,8 @@ export class Textarea {
   };
 
   private setCounterAriaText = (): void => {
-    this.counterElement.innerText = `You have ${this.maxLength - this.value.length} out of ${this.maxLength} characters left`;
+    if (this.counterElement) {
+      this.counterElement.innerText = `You have ${this.maxLength - this.value.length} out of ${this.maxLength} characters left`;
+    }
   };
 }

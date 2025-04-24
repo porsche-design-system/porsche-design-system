@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { SelectUpdateEventDetail } from '@porsche-design-system/components-angular';
+import { PorscheDesignSystemModule, SelectUpdateEventDetail } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-select-example-controlled',
@@ -16,7 +16,8 @@ import type { SelectUpdateEventDetail } from '@porsche-design-system/components-
     <p-text>{{ debugText }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  standalone: true,
+  imports: [PorscheDesignSystemModule],
 })
 export class SelectExampleControlledComponent {
   selectedValue: string = 'a';

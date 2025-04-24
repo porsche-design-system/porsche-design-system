@@ -1,0 +1,43 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import {scrollerStory, scrollerStoryHeight, scrollerStorySize} from "@/app/components/scroller/scroller.stories";
+import {ComponentStory} from "@/components/playground/ComponentStory";
+import {ComponentExample} from "@/components/playground/ComponentExample";
+import {scrollerExample} from "@porsche-design-system/shared/examples";
+
+export const metadata = {
+  title: 'Scroller - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Scroller component.'
+}
+
+# Scroller <ComponentStatus tagName="p-scroller"></ComponentStatus>
+
+<TableOfContents headings={["Height","Scroll indicator size","Scroll to position"]} />
+
+## Height
+
+The height of `p-scroller` depends on its content height.
+
+Keep in mind that the content passed to the `p-scroller` should be within the size definition of the design system and
+thus have a minimum height of 24px to ensure visual alignment of the scroll indicators.
+
+The `p-scroller` only takes care of the horizontal alignment. Spacing and custom css properties must be handled by the
+consumer e.g. `white-space: nowrap` to avoid line breaks inside the elements.
+
+<ComponentStory story={scrollerStoryHeight} />
+
+## Scroll indicator size
+
+The size of the scroll indicator arrows depends on the `font-size` set onto the `p-scroller` component.
+
+<ComponentStory story={scrollerStorySize} />
+
+## Scroll to position
+
+The `p-scroller` component provides the `scrollToPosition` property. It accepts
+`{ scrollPosition: number, isSmooth?: boolean }`.
+
+If `scrollToPosition` is set with `isSmooth: true` the scrolling is animated.
+
+<ComponentExample codeSample={scrollerExample} />

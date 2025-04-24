@@ -1,0 +1,58 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Tag Dismissible: Accessibility - Porsche Design System',
+  description: 'Accessibility information and best practices for the Tag Dismissible component',
+};
+
+# Tag Dismissible <ComponentStatus tagName="p-tag-dismissible"></ComponentStatus>
+
+<TableOfContents headings={["Accessibility support","Development considerations","Tests"]} />
+
+## Accessibility support
+
+### Keyboard
+
+| Key / state        | Function                                                 |
+| ------------------ | -------------------------------------------------------- |
+| `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
+| `Enter`, `Space`   | Removes the element.                                     |
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA         | Usage                                                       |
+| ------------ | ----------------------------------------------------------- |
+| `aria-label` | Defines a string value that labels the interactive element. |
+
+#### Internal **ARIA** that is managed by the component:
+
+| ARIA                 | Usage                                                   |
+| -------------------- | ------------------------------------------------------- |
+| `aria-hidden="true"` | The "close" icon is hidden from assistive technologies. |
+
+## Development considerations
+
+### Focus handling
+
+Ensure that when a `p-tag-dismissible` is removed, the focus is set to the previous or next `p-tag-dismissible` or to
+another focusable element. This prevents losing the focus order.
+
+## Tests
+
+### Automated
+
+| Technology                            | Support |
+| ------------------------------------- | ------- |
+| AXE-Core (WCAG 2.2 AA, Best-Practice) | ✅      |
+| High-Contrast Mode (light/dark)       | ✅      |
+| Text-Zoom (200%)                      | ✅      |
+
+### Manual
+
+| Technology                      | Support |
+| ------------------------------- | ------- |
+| Keyboard                        | ✅      |
+| Screen reader (VoiceOver, NVDA) | ✅      |

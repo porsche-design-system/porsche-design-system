@@ -136,6 +136,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.ButtonPureExampleFormAttributeComponent,
   },
   {
+    name: 'Button Tile Example Hyphens',
+    path: 'button-tile-example-hyphens',
+    component: fromExamples.ButtonTileExampleHyphensComponent,
+  },
+  {
     name: 'Canvas Example',
     path: 'canvas-example',
     component: fromExamples.CanvasExampleComponent,
@@ -171,19 +176,19 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.FlyoutExampleFormComponent,
   },
   {
-    name: 'Flyout Multilevel Example',
-    path: 'flyout-multilevel-example',
-    component: fromExamples.FlyoutMultilevelExampleComponent,
+    name: 'Drilldown Example',
+    path: 'drilldown-example',
+    component: fromExamples.DrilldownExampleComponent,
   },
   {
-    name: 'Flyout Multilevel Example Active Identifier',
-    path: 'flyout-multilevel-example-active-identifier',
-    component: fromExamples.FlyoutMultilevelExampleActiveIdentifierComponent,
+    name: 'Drilldown Example Active Identifier',
+    path: 'drilldown-example-active-identifier',
+    component: fromExamples.DrilldownExampleActiveIdentifierComponent,
   },
   {
-    name: 'Flyout Multilevel Example Custom Content',
-    path: 'flyout-multilevel-example-custom-content',
-    component: fromExamples.FlyoutMultilevelExampleCustomContentComponent,
+    name: 'Drilldown Example Custom Content',
+    path: 'drilldown-example-custom-content',
+    component: fromExamples.DrilldownExampleCustomContentComponent,
   },
   {
     name: 'Hidden Attribute Example',
@@ -199,6 +204,21 @@ export const routes: ExtendedRoute[] = [
     name: 'Inline Notification Example Events',
     path: 'inline-notification-example-events',
     component: fromExamples.InlineNotificationExampleEventsComponent,
+  },
+  {
+    name: 'Input Password Example',
+    path: 'input-password-example',
+    component: fromExamples.InputPasswordExampleComponent,
+  },
+  {
+    name: 'Input Password Example Controlled',
+    path: 'input-password-controlled-example',
+    component: fromExamples.InputPasswordExampleControlledComponent,
+  },
+  {
+    name: 'Link Tile Example Hyphens',
+    path: 'link-tile-example-hyphens',
+    component: fromExamples.LinkTileExampleHyphensComponent,
   },
   {
     name: 'Link Tile Product Example',

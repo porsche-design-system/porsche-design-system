@@ -1,0 +1,3 @@
+<a href="value" target="_self" aria-current="false">
+  <slot> </slot>
+</a>

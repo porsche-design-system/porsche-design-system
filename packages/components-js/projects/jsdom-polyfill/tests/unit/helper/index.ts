@@ -3,8 +3,9 @@ import type { TagName } from '@porsche-design-system/shared';
 export const WHITELISTED_TAG_NAMES = [
   'p-canvas',
   'p-flex-item',
-  'p-flyout-multilevel',
-  'p-flyout-multilevel-item',
+  'p-drilldown',
+  'p-drilldown-item',
+  'p-drilldown-link',
   'p-grid-item',
   'p-multi-select-option',
   'p-optgroup',
@@ -66,17 +67,17 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-flyout': `
     <p-flyout></p-flyout>
   `,
-  //   'p-flyout-multilevel': `<p-flyout-multilevel>
-  //     <p-flyout-multilevel-item identifier="identifier-1" label="Button 1">
-  //       <a href="#some-anchor-1">Some anchor</a>
-  //     </p-flyout-multilevel-item>
-  //     <p-flyout-multilevel-item identifier="identifier-2" label="Button 2">
-  //       <a href="#some-anchor-2">Some anchor</a>
-  //     </p-flyout-multilevel-item>
-  //     <p-flyout-multilevel-item identifier="identifier-3" label="Button 3">
-  //       <a href="#some-anchor-3">Some anchor</a>
-  //     </p-flyout-multilevel-item>
-  // </p-flyout-multilevel>`,
+  // 'p-drilldown': `<p-drilldown>
+  //   <p-drilldown-item identifier="identifier-1" label="Label 1">
+  //     <p-drilldown-link href="#some-anchor-1">Some anchor</p-drilldown-link>
+  //   </p-drilldown-item>
+  //   <p-drilldown-item identifier="identifier-2" label="Label 2">
+  //     <p-drilldown-link href="#some-anchor-2">Some anchor</p-drilldown-link>
+  //   </p-drilldown-item>
+  //   <p-drilldown-item identifier="identifier-3" label="Label 3">
+  //     <p-drilldown-link href="#some-anchor-3">Some anchor</p-drilldown-link>
+  //   </p-drilldown-item>
+  // </p-drilldown>`,
   'p-grid': `<p-grid>
     <p-grid-item size="6"></p-grid-item>
     <p-grid-item size="6"></p-grid-item>
@@ -87,6 +88,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-inline-notification': `<p-inline-notification heading="Some banner title" action-label="Retry">
     Some banner description.
   </p-inline-notification>`,
+  'p-input-password': `<p-input-password name="Some Name" label="Some label"></p-input-password>`,
   'p-link': `<p-link href="#">Some label</p-link>`,
   'p-link-pure': `<p-link-pure href="#">Some label</p-link-pure>`,
   'p-link-social': `<p-link-social href="#" icon="logo-facebook">Some label</p-link-social>`,

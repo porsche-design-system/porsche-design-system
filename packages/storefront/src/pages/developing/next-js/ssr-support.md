@@ -1,3 +1,0 @@
-# Next Js
-
-## SSR Support

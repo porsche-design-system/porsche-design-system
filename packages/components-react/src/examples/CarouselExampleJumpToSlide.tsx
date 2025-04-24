@@ -1,5 +1,5 @@
+import { type CarouselUpdateEventDetail, PButton, PCarousel } from '@porsche-design-system/components-react';
 import { type MouseEvent, useCallback, useState } from 'react';
-import { type CarouselUpdateEventDetail, PCarousel } from '@porsche-design-system/components-react';
 
 export const CarouselExampleJumpToSlidePage = (): JSX.Element => {
   const [activeSlideIndex, setActiveSlideIndex] = useState(1);
@@ -30,9 +30,9 @@ export const CarouselExampleJumpToSlidePage = (): JSX.Element => {
       </PCarousel>
 
       {Array.from(Array(3)).map((_, i) => (
-        <button key={i} type="button" onClick={onButtonClick} disabled={activeSlideIndex === i}>
+        <PButton key={i} type="button" onClick={onButtonClick} disabled={activeSlideIndex === i}>
           {i + 1}
-        </button>
+        </PButton>
       ))}
     </>
   );

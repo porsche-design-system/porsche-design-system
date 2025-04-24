@@ -6,6 +6,7 @@ import { ButtonExampleFormAttributeComponent } from './button-example-form-attri
 import { ButtonExampleFormComponent } from './button-example-form.component';
 import { ButtonPureExampleFormAttributeComponent } from './button-pure-example-form-attribute.component';
 import { ButtonPureExampleFormComponent } from './button-pure-example-form.component';
+import { ButtonTileExampleHyphensComponent } from './button-tile-example-hyphens.component';
 import { CanvasExampleComponent } from './canvas-example.component';
 import { CarouselExampleDynamicSlidesComponent } from './carousel-example-dynamic-slides.component';
 import { CarouselExampleEventsComponent } from './carousel-example-events.component';
@@ -15,12 +16,15 @@ import { CheckboxExampleControlledComponent } from './checkbox-example-controlle
 import { CheckboxExampleComponent } from './checkbox-example.component';
 import { FlyoutExampleFormComponent } from './flyout-example-form.component';
 import { FlyoutExampleComponent } from './flyout-example.component';
-import { FlyoutMultilevelExampleActiveIdentifierComponent } from './flyout-multilevel-example-active-identifier.component';
-import { FlyoutMultilevelExampleCustomContentComponent } from './flyout-multilevel-example-custom-content.component';
-import { FlyoutMultilevelExampleComponent } from './flyout-multilevel-example.component';
+import { DrilldownExampleActiveIdentifierComponent } from './drilldown-example-active-identifier.component';
+import { DrilldownExampleCustomContentComponent } from './drilldown-example-custom-content.component';
+import { DrilldownExampleComponent } from './drilldown-example.component';
 import { HiddenAttributeExampleComponent } from './hidden-attribute-example.component';
 import { InlineNotificationExampleActionButtonComponent } from './inline-notification-example-action-button.component';
 import { InlineNotificationExampleEventsComponent } from './inline-notification-example-events.component';
+import { InputPasswordExampleControlledComponent } from './input-password-example-controlled.component';
+import { InputPasswordExampleComponent } from './input-password-example.component';
+import { LinkTileExampleHyphensComponent } from './link-tile-example-hyphens.component';
 import { LinkTileProductExampleComponent } from './link-tile-product-example.component';
 import { ModalExampleComponent } from './modal-example.component';
 import { MultiSelectExampleControlledComponent } from './multi-select-example-controlled.component';
@@ -60,6 +64,7 @@ export const examples = [
   ButtonExampleFormAttributeComponent,
   ButtonPureExampleFormComponent,
   ButtonPureExampleFormAttributeComponent,
+  ButtonTileExampleHyphensComponent,
   CanvasExampleComponent,
   CarouselExampleDynamicSlidesComponent,
   CarouselExampleFocusOnCenterSlideComponent,
@@ -69,12 +74,15 @@ export const examples = [
   CheckboxExampleComponent,
   FlyoutExampleComponent,
   FlyoutExampleFormComponent,
-  FlyoutMultilevelExampleComponent,
-  FlyoutMultilevelExampleActiveIdentifierComponent,
-  FlyoutMultilevelExampleCustomContentComponent,
+  DrilldownExampleComponent,
+  DrilldownExampleActiveIdentifierComponent,
+  DrilldownExampleCustomContentComponent,
   HiddenAttributeExampleComponent,
   InlineNotificationExampleActionButtonComponent,
   InlineNotificationExampleEventsComponent,
+  InputPasswordExampleControlledComponent,
+  InputPasswordExampleComponent,
+  LinkTileExampleHyphensComponent,
   LinkTileProductExampleComponent,
   ModalExampleComponent,
   MultiSelectExampleComponent,
@@ -113,6 +121,7 @@ export * from './button-example-form.component';
 export * from './button-example-form-attribute.component';
 export * from './button-pure-example-form.component';
 export * from './button-pure-example-form-attribute.component';
+export * from './button-tile-example-hyphens.component';
 export * from './canvas-example.component';
 export * from './carousel-example-dynamic-slides.component';
 export * from './carousel-example-focus-on-center-slide.component';
@@ -122,12 +131,15 @@ export * from './checkbox-example.component';
 export * from './checkbox-example-controlled.component';
 export * from './flyout-example.component';
 export * from './flyout-example-form.component';
-export * from './flyout-multilevel-example.component';
-export * from './flyout-multilevel-example-active-identifier.component';
-export * from './flyout-multilevel-example-custom-content.component';
+export * from './drilldown-example.component';
+export * from './drilldown-example-active-identifier.component';
+export * from './drilldown-example-custom-content.component';
 export * from './hidden-attribute-example.component';
 export * from './inline-notification-example-action-button.component';
 export * from './inline-notification-example-events.component';
+export * from './input-password-example.component';
+export * from './input-password-example-controlled.component';
+export * from './link-tile-example-hyphens.component';
 export * from './link-tile-product-example.component';
 export * from './modal-example.component';
 export * from './multi-select-example.component';

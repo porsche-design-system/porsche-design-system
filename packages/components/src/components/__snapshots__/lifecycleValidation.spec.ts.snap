@@ -190,6 +190,36 @@ exports[`should call validateProps() with correct parameters via render for p-di
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-drilldown: propTypes with ValidatorFunctions 1`] = `
+{
+  "activeIdentifier": "string",
+  "aria": "aria",
+  "open": "boolean",
+  "theme": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via render for p-drilldown-item: propTypes with ValidatorFunctions 1`] = `
+{
+  "cascade": "boolean",
+  "identifier": "string",
+  "label": "string",
+  "primary": "boolean",
+  "secondary": "boolean",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via render for p-drilldown-link: propTypes with ValidatorFunctions 1`] = `
+{
+  "active": "boolean",
+  "aria": "aria",
+  "download": "string",
+  "href": "string",
+  "rel": "string",
+  "target": "string",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-fieldset: propTypes with ValidatorFunctions 1`] = `
 {
   "label": "string",
@@ -242,25 +272,6 @@ exports[`should call validateProps() with correct parameters via render for p-fl
   "open": "boolean",
   "position": "oneOf",
   "theme": "oneOf",
-}
-`;
-
-exports[`should call validateProps() with correct parameters via render for p-flyout-multilevel: propTypes with ValidatorFunctions 1`] = `
-{
-  "activeIdentifier": "string",
-  "aria": "aria",
-  "open": "boolean",
-  "theme": "oneOf",
-}
-`;
-
-exports[`should call validateProps() with correct parameters via render for p-flyout-multilevel-item: propTypes with ValidatorFunctions 1`] = `
-{
-  "cascade": "boolean",
-  "identifier": "string",
-  "label": "string",
-  "primary": "boolean",
-  "secondary": "boolean",
 }
 `;
 
@@ -324,6 +335,29 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "persistent": "boolean",
   "state": "oneOf",
   "theme": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via render for p-input-password: propTypes with ValidatorFunctions 1`] = `
+{
+  "autoComplete": "oneOf",
+  "compact": "boolean",
+  "description": "string",
+  "disabled": "boolean",
+  "form": "string",
+  "hideLabel": "breakpoint",
+  "label": "string",
+  "maxLength": "number",
+  "message": "string",
+  "minLength": "number",
+  "name": "string",
+  "placeholder": "string",
+  "readOnly": "boolean",
+  "required": "boolean",
+  "state": "oneOf",
+  "theme": "oneOf",
+  "toggle": "boolean",
+  "value": "string",
 }
 `;
 
@@ -682,7 +716,7 @@ exports[`should call validateProps() with correct parameters via render for p-ta
 
 exports[`should call validateProps() with correct parameters via render for p-table-head-cell: propTypes with ValidatorFunctions 1`] = `
 {
-  "hideLabel": "breakpoint",
+  "hideLabel": "boolean",
   "multiline": "boolean",
   "sort": "shape",
 }

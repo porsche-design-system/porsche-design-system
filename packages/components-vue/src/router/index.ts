@@ -77,6 +77,11 @@ export const routes: RouteType[] = [
     component: fromExamples.ButtonPureExampleFormAttribute,
   },
   {
+    path: '/button-tile-example-hyphens',
+    name: 'Button Tile Example Hyphens',
+    component: fromExamples.ButtonTileExampleHyphens,
+  },
+  {
     path: '/canvas-example',
     name: 'Canvas Example',
     component: fromExamples.CanvasExample,
@@ -132,29 +137,29 @@ export const routes: RouteType[] = [
     component: fromExamples.FlyoutExampleForm,
   },
   {
-    path: '/flyout-multilevel-example',
-    name: 'Flyout Multilevel Example',
-    component: fromExamples.FlyoutMultilevelExample,
+    path: '/drilldown-example',
+    name: 'Drilldown Example',
+    component: fromExamples.DrilldownExample,
   },
   {
-    path: '/flyout-multilevel-example-active-identifier',
-    name: 'Flyout Multilevel Example Active Identifier',
-    component: fromExamples.FlyoutMultilevelExampleActiveIdentifier,
+    path: '/drilldown-example-active-identifier',
+    name: 'Drilldown Example Active Identifier',
+    component: fromExamples.DrilldownExampleActiveIdentifier,
   },
   {
-    path: '/flyout-multilevel-example-custom-content',
-    name: 'Flyout Multilevel Example Custom Content',
-    component: fromExamples.FlyoutMultilevelExampleCustomContent,
+    path: '/drilldown-example-custom-content',
+    name: 'Drilldown Example Custom Content',
+    component: fromExamples.DrilldownExampleCustomContent,
   },
   {
-    path: '/flyout-multilevel-basic',
-    name: 'FlyoutMultilevelBasic',
-    component: fromPages.FlyoutMultilevelBasicPage,
+    path: '/drilldown-basic',
+    name: 'DrilldownBasic',
+    component: fromPages.DrilldownBasicPage,
   },
   {
-    path: '/flyout-multilevel-prefixed',
-    name: 'FlyoutMultilevelPrefixed',
-    component: fromPages.FlyoutMultilevelPrefixedPage,
+    path: '/drilldown-prefixed',
+    name: 'DrilldownPrefixed',
+    component: fromPages.DrilldownPrefixedPage,
   },
   {
     path: '/hidden-attribute-example',
@@ -170,6 +175,21 @@ export const routes: RouteType[] = [
     path: '/inline-notification-example-events',
     name: 'Inline Notification Example Events',
     component: fromExamples.InlineNotificationExampleEvents,
+  },
+  {
+    path: '/input-password-example',
+    name: 'Input Password Example',
+    component: fromExamples.InputPasswordExample,
+  },
+  {
+    path: '/input-password-example-controlled',
+    name: 'Input Password Example Controlled',
+    component: fromExamples.InputPasswordExampleControlled,
+  },
+  {
+    path: '/link-tile-example-hyphens',
+    name: 'Link Tile Example Hyphens',
+    component: fromExamples.LinkTileExampleHyphens,
   },
   {
     path: '/link-tile-product-example',
@@ -238,7 +258,7 @@ export const routes: RouteType[] = [
   },
   {
     path: '/segmented-control-example-controlled',
-    name: 'Segmented Control Example COntrolled',
+    name: 'Segmented Control Example Controlled',
     component: fromExamples.SegmentedControlExampleControlled,
   },
   {

@@ -117,6 +117,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.ButtonPureExampleFormAttributePage />,
   },
   {
+    name: 'Button Tile Example Hyphens',
+    path: '/button-tile-example-hyphens',
+    element: <fromExamples.ButtonTileExampleHyphensPage />,
+  },
+  {
     name: 'Canvas Example',
     path: '/canvas-example',
     element: <fromExamples.CanvasExamplePage />,
@@ -149,7 +154,7 @@ export const routes: RouteType[] = [
   {
     name: 'Checkbox Example Controlled',
     path: '/checkbox-example-controlled',
-    element: <fromExamples.CheckboxControlledExamplePage />,
+    element: <fromExamples.CheckboxExampleControlledPage />,
   },
   {
     name: 'Flyout Example',
@@ -167,19 +172,19 @@ export const routes: RouteType[] = [
     element: <fromExamples.FlyoutExampleConditionalPage />,
   },
   {
-    name: 'Flyout Multilevel Example',
-    path: '/flyout-multilevel-example',
-    element: <fromExamples.FlyoutMultilevelExamplePage />,
+    name: 'Drilldown Example',
+    path: '/drilldown-example',
+    element: <fromExamples.DrilldownExamplePage />,
   },
   {
-    name: 'Flyout Multilevel Example Active Identifier',
-    path: '/flyout-multilevel-example-active-identifier',
-    element: <fromExamples.FlyoutMultilevelExampleActiveIdentifierPage />,
+    name: 'Drilldown Example Active Identifier',
+    path: '/drilldown-example-active-identifier',
+    element: <fromExamples.DrilldownExampleActiveIdentifierPage />,
   },
   {
-    name: 'Flyout Multilevel Example Custom Content',
-    path: '/flyout-multilevel-example-custom-content',
-    element: <fromExamples.FlyoutMultilevelExampleCustomContentPage />,
+    name: 'Drilldown Example Custom Content',
+    path: '/drilldown-example-custom-content',
+    element: <fromExamples.DrilldownExampleCustomContentPage />,
   },
   {
     name: 'Hidden Attribute Example',
@@ -195,6 +200,26 @@ export const routes: RouteType[] = [
     name: 'Inline Notification Example Events',
     path: '/inline-notification-example-events',
     element: <fromExamples.InlineNotificationExampleEventsPage />,
+  },
+  {
+    name: 'Input Password Example',
+    path: '/input-password-example',
+    element: <fromExamples.InputPasswordExamplePage />,
+  },
+  {
+    name: 'Input Password Example Controlled',
+    path: '/input-password-example-controlled',
+    element: <fromExamples.InputPasswordControlledExamplePage />,
+  },
+  {
+    name: 'Link Tile Example Hyphens',
+    path: '/link-tile-example-hyphens',
+    element: <fromExamples.LinkTileExampleHyphensPage />,
+  },
+  {
+    name: 'Link Tile Product',
+    path: '/link-tile-product-example',
+    element: <fromExamples.LinkTileProductExamplePage />,
   },
   {
     name: 'Modal Example Accessibility',
@@ -214,12 +239,12 @@ export const routes: RouteType[] = [
   {
     name: 'Multi-Select Example Controlled',
     path: '/multi-select-example-controlled',
-    element: <fromExamples.MultiSelectControlledExamplePage />,
+    element: <fromExamples.MultiSelectExampleControlledPage />,
   },
   {
     name: 'Multi-Select Example Dynamic',
     path: '/multi-select-example-dynamic',
-    element: <fromExamples.MultiSelectDynamicExamplePage />,
+    element: <fromExamples.MultiSelectExampleDynamicPage />,
   },
   {
     name: 'Pin Code Example',
@@ -254,22 +279,22 @@ export const routes: RouteType[] = [
   {
     name: 'Select Example Controlled',
     path: '/select-example-controlled',
-    element: <fromExamples.SelectControlledExamplePage />,
+    element: <fromExamples.SelectExampleControlledPage />,
   },
   {
     name: 'Select Example Dynamic',
     path: '/select-example-dynamic',
-    element: <fromExamples.SelectDynamicExamplePage />,
+    element: <fromExamples.SelectExampleDynamicPage />,
   },
   {
     name: 'Select Example Required',
     path: '/select-example-required',
-    element: <fromExamples.SelectRequiredExamplePage />,
+    element: <fromExamples.SelectExampleRequiredPage />,
   },
   {
     name: 'Stepper Horizontal Example',
     path: '/stepper-horizontal-example',
-    element: <fromExamples.StepperHorizontalExample />,
+    element: <fromExamples.StepperHorizontalExamplePage />,
   },
   {
     name: 'Table Example Basic',
@@ -304,7 +329,7 @@ export const routes: RouteType[] = [
   {
     name: 'Textarea Example Controlled',
     path: '/textarea-example-controlled',
-    element: <fromExamples.TextareaControlledExamplePage />,
+    element: <fromExamples.TextareaExampleControlledPage />,
   },
   {
     name: 'Text Field Wrapper Example IMask',

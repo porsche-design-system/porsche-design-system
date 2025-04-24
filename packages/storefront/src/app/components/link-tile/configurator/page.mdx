@@ -1,0 +1,25 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from "@/components/playground/Configurator";
+import { linkTileStory } from "@/app/components/link-tile/link-tile.stories";
+
+export const metadata = {
+  title: 'Link Tile - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Link Tile component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Link Tile <ComponentStatus tagName="p-link-tile"></ComponentStatus>
+
+The `p-link-tile` is a navigational component that displays a provided image to tease content and navigate to further
+information within one container. In case you want the user to execute an action, you should select the
+[Button Tile](/components/button-tile/) component instead.
+
+**Note:** The component does not take care of processing and aligning the image.
+
+An `<img/>`, `<picture/>` or `<video/>` tag has to be provided as default slot.
+
+Additionally, the properties `href`, `description` and `label` are required. The `description` property is used as a
+teaser with a more detailed description of the link and where it leads to.
+
+The `label` property is used to describe the anchor.
+
+<Configurator tagName="p-link-tile" story={linkTileStory} />

@@ -77,8 +77,8 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "@porsche-design-system/components": "3.27.3",
-    "@porsche-design-system/components-js": "3.27.3",
+    "@porsche-design-system/components": "3.28.0-rc.2",
+    "@porsche-design-system/components-js": "3.28.0-rc.2",
     "@porsche-design-system/components-manager-cli": "0.0.0",
     "@porsche-design-system/partials": "0.0.0",
     "imask": "^7.6.1"
@@ -109,6 +109,7 @@
     "typescript": "*",
     "webpack": "*",
     "vite": "*",
+    "vitest": "*",
     "gzip-size": "*"
   },
   "volta": {

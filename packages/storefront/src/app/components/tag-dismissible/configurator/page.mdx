@@ -1,0 +1,15 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import { Configurator } from "@/components/playground/Configurator";
+import { tagDismissibleStory } from "@/app/components/tag-dismissible/tag-dismissible.stories";
+
+export const metadata = {
+  title: 'Tag Dismissible - Porsche Design System',
+  description: 'Learn how to use the Porsche Design System\'s Tag Dismissible component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
+}
+
+# Tag Dismissible <ComponentStatus tagName="p-tag-dismissible"></ComponentStatus>
+
+`p-tag-dismissible` is used in contexts where the user can actively remove a tag. It is often seen in filtering.
+
+<Configurator tagName="p-tag-dismissible" story={tagDismissibleStory} />
