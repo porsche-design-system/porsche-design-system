@@ -4,6 +4,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  hasPropValueChanged,
   LINK_ARIA_ATTRIBUTES,
   THEMES,
   validateProps,
@@ -42,6 +43,10 @@ export class Topbar {
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<TopbarAriaAttribute>;
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
+  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);

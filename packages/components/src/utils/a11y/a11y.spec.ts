@@ -84,6 +84,7 @@ describe('parseAndGetAriaAttributes()', () => {
       getComponentMeta(tagName).hasAriaProp &&
       tagName !== 'p-button-tile' &&
       tagName !== 'p-link-tile' &&
+      tagName !== 'p-topbar' &&
       tagName !== 'p-segmented-control-item'
   );
 

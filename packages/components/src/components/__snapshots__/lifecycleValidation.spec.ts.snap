@@ -854,6 +854,15 @@ exports[`should call validateProps() with correct parameters via render for p-to
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-topbar: propTypes with ValidatorFunctions 1`] = `
+{
+  "aria": "aria",
+  "gradient": "boolean",
+  "href": "string",
+  "theme": "oneOf",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-wordmark: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
