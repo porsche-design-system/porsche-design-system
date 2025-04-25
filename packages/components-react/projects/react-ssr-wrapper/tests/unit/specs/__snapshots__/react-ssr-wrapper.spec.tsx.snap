@@ -723,7 +723,7 @@ h1,h2,h3,h4,h5,h6 {
   content: "";
   z-index: 2;
   grid-area: 4/1/6/-1;
-  background: linear-gradient(to top, hsla(0, 0%, 0%, 0.80) 0%,hsla(0, 0%, 0%, 0.80) 8.1%,hsla(0, 0%, 0%, 0.80) 15.5%,hsla(0, 0%, 0%, 0.80) 22.5%,hsla(0, 0%, 0%, 0.78) 29%,hsla(0, 0%, 0%, 0.73) 35.3%,hsla(0, 0%, 0%, 0.67) 41.2%,hsla(0, 0%, 0%, 0.60) 47.1%,hsla(0, 0%, 0%, 0.52) 52.9%,hsla(0, 0%, 0%, 0.44) 58.8%,hsla(0, 0%, 0%, 0.33) 64.7%,hsla(0, 0%, 0%, 0.22) 71%,hsla(0, 0%, 0%, 0.12) 77.5%,hsla(0, 0%, 0%, 0.05) 84.5%,hsla(0, 0%, 0%, 0.011) 91.9%,hsla(0, 0%, 0%, 0) 100%);;
+  background: linear-gradient(to top, hsla(0, 0%, 0%, 0.80) 0%,hsla(0, 0%, 0%, 0.80) 8.1%,hsla(0, 0%, 0%, 0.80) 15.5%,hsla(0, 0%, 0%, 0.80) 22.5%,hsla(0, 0%, 0%, 0.78) 29%,hsla(0, 0%, 0%, 0.73) 35.3%,hsla(0, 0%, 0%, 0.67) 41.2%,hsla(0, 0%, 0%, 0.60) 47.1%,hsla(0, 0%, 0%, 0.52) 52.9%,hsla(0, 0%, 0%, 0.44) 58.8%,hsla(0, 0%, 0%, 0.33) 64.7%,hsla(0, 0%, 0%, 0.22) 71%,hsla(0, 0%, 0%, 0.12) 77.5%,hsla(0, 0%, 0%, 0.05) 84.5%,hsla(0, 0%, 0%, 0.011) 91.9%,hsla(0, 0%, 0%, 0) 100%);
   margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
   border-end-start-radius: 12px;
   border-end-end-radius: 12px;
@@ -1121,7 +1121,7 @@ h1,h2,h3,h4,h5,h6 {
   content: "";
   z-index: 2;
   grid-area: 4/1/6/-1;
-  background: linear-gradient(to top, hsla(0, 0%, 0%, 0.80) 0%,hsla(0, 0%, 0%, 0.80) 8.1%,hsla(0, 0%, 0%, 0.80) 15.5%,hsla(0, 0%, 0%, 0.80) 22.5%,hsla(0, 0%, 0%, 0.78) 29%,hsla(0, 0%, 0%, 0.73) 35.3%,hsla(0, 0%, 0%, 0.67) 41.2%,hsla(0, 0%, 0%, 0.60) 47.1%,hsla(0, 0%, 0%, 0.52) 52.9%,hsla(0, 0%, 0%, 0.44) 58.8%,hsla(0, 0%, 0%, 0.33) 64.7%,hsla(0, 0%, 0%, 0.22) 71%,hsla(0, 0%, 0%, 0.12) 77.5%,hsla(0, 0%, 0%, 0.05) 84.5%,hsla(0, 0%, 0%, 0.011) 91.9%,hsla(0, 0%, 0%, 0) 100%);;
+  background: linear-gradient(to top, hsla(0, 0%, 0%, 0.80) 0%,hsla(0, 0%, 0%, 0.80) 8.1%,hsla(0, 0%, 0%, 0.80) 15.5%,hsla(0, 0%, 0%, 0.80) 22.5%,hsla(0, 0%, 0%, 0.78) 29%,hsla(0, 0%, 0%, 0.73) 35.3%,hsla(0, 0%, 0%, 0.67) 41.2%,hsla(0, 0%, 0%, 0.60) 47.1%,hsla(0, 0%, 0%, 0.52) 52.9%,hsla(0, 0%, 0%, 0.44) 58.8%,hsla(0, 0%, 0%, 0.33) 64.7%,hsla(0, 0%, 0%, 0.22) 71%,hsla(0, 0%, 0%, 0.12) 77.5%,hsla(0, 0%, 0%, 0.05) 84.5%,hsla(0, 0%, 0%, 0.011) 91.9%,hsla(0, 0%, 0%, 0) 100%);
   margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
   border-end-start-radius: 12px;
   border-end-end-radius: 12px;
@@ -1561,7 +1561,7 @@ h1,h2,h3,h4,h5,h6 {
   content: "";
   z-index: 2;
   grid-area: 4/1/6/-1;
-  background: linear-gradient(to top, hsla(0, 0%, 0%, 0.80) 0%,hsla(0, 0%, 0%, 0.80) 8.1%,hsla(0, 0%, 0%, 0.80) 15.5%,hsla(0, 0%, 0%, 0.80) 22.5%,hsla(0, 0%, 0%, 0.78) 29%,hsla(0, 0%, 0%, 0.73) 35.3%,hsla(0, 0%, 0%, 0.67) 41.2%,hsla(0, 0%, 0%, 0.60) 47.1%,hsla(0, 0%, 0%, 0.52) 52.9%,hsla(0, 0%, 0%, 0.44) 58.8%,hsla(0, 0%, 0%, 0.33) 64.7%,hsla(0, 0%, 0%, 0.22) 71%,hsla(0, 0%, 0%, 0.12) 77.5%,hsla(0, 0%, 0%, 0.05) 84.5%,hsla(0, 0%, 0%, 0.011) 91.9%,hsla(0, 0%, 0%, 0) 100%);;
+  background: linear-gradient(to top, hsla(0, 0%, 0%, 0.80) 0%,hsla(0, 0%, 0%, 0.80) 8.1%,hsla(0, 0%, 0%, 0.80) 15.5%,hsla(0, 0%, 0%, 0.80) 22.5%,hsla(0, 0%, 0%, 0.78) 29%,hsla(0, 0%, 0%, 0.73) 35.3%,hsla(0, 0%, 0%, 0.67) 41.2%,hsla(0, 0%, 0%, 0.60) 47.1%,hsla(0, 0%, 0%, 0.52) 52.9%,hsla(0, 0%, 0%, 0.44) 58.8%,hsla(0, 0%, 0%, 0.33) 64.7%,hsla(0, 0%, 0%, 0.22) 71%,hsla(0, 0%, 0%, 0.12) 77.5%,hsla(0, 0%, 0%, 0.05) 84.5%,hsla(0, 0%, 0%, 0.011) 91.9%,hsla(0, 0%, 0%, 0) 100%);
   margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
   border-end-start-radius: 12px;
   border-end-end-radius: 12px;
@@ -2001,7 +2001,7 @@ h1,h2,h3,h4,h5,h6 {
   content: "";
   z-index: 2;
   grid-area: 4/1/6/-1;
-  background: linear-gradient(to top, hsla(0, 0%, 0%, 0.80) 0%,hsla(0, 0%, 0%, 0.80) 8.1%,hsla(0, 0%, 0%, 0.80) 15.5%,hsla(0, 0%, 0%, 0.80) 22.5%,hsla(0, 0%, 0%, 0.78) 29%,hsla(0, 0%, 0%, 0.73) 35.3%,hsla(0, 0%, 0%, 0.67) 41.2%,hsla(0, 0%, 0%, 0.60) 47.1%,hsla(0, 0%, 0%, 0.52) 52.9%,hsla(0, 0%, 0%, 0.44) 58.8%,hsla(0, 0%, 0%, 0.33) 64.7%,hsla(0, 0%, 0%, 0.22) 71%,hsla(0, 0%, 0%, 0.12) 77.5%,hsla(0, 0%, 0%, 0.05) 84.5%,hsla(0, 0%, 0%, 0.011) 91.9%,hsla(0, 0%, 0%, 0) 100%);;
+  background: linear-gradient(to top, hsla(0, 0%, 0%, 0.80) 0%,hsla(0, 0%, 0%, 0.80) 8.1%,hsla(0, 0%, 0%, 0.80) 15.5%,hsla(0, 0%, 0%, 0.80) 22.5%,hsla(0, 0%, 0%, 0.78) 29%,hsla(0, 0%, 0%, 0.73) 35.3%,hsla(0, 0%, 0%, 0.67) 41.2%,hsla(0, 0%, 0%, 0.60) 47.1%,hsla(0, 0%, 0%, 0.52) 52.9%,hsla(0, 0%, 0%, 0.44) 58.8%,hsla(0, 0%, 0%, 0.33) 64.7%,hsla(0, 0%, 0%, 0.22) 71%,hsla(0, 0%, 0%, 0.12) 77.5%,hsla(0, 0%, 0%, 0.05) 84.5%,hsla(0, 0%, 0%, 0.011) 91.9%,hsla(0, 0%, 0%, 0) 100%);
   margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
   border-end-start-radius: 12px;
   border-end-end-radius: 12px;
@@ -8268,7 +8268,7 @@ p {
   content: "";
   z-index: 2;
   grid-area: 4/1/6/-1;
-  background: linear-gradient(to top, hsla(0, 0%, 0%, 0.80) 0%,hsla(0, 0%, 0%, 0.80) 8.1%,hsla(0, 0%, 0%, 0.80) 15.5%,hsla(0, 0%, 0%, 0.80) 22.5%,hsla(0, 0%, 0%, 0.78) 29%,hsla(0, 0%, 0%, 0.73) 35.3%,hsla(0, 0%, 0%, 0.67) 41.2%,hsla(0, 0%, 0%, 0.60) 47.1%,hsla(0, 0%, 0%, 0.52) 52.9%,hsla(0, 0%, 0%, 0.44) 58.8%,hsla(0, 0%, 0%, 0.33) 64.7%,hsla(0, 0%, 0%, 0.22) 71%,hsla(0, 0%, 0%, 0.12) 77.5%,hsla(0, 0%, 0%, 0.05) 84.5%,hsla(0, 0%, 0%, 0.011) 91.9%,hsla(0, 0%, 0%, 0) 100%);;
+  background: linear-gradient(to top, hsla(0, 0%, 0%, 0.80) 0%,hsla(0, 0%, 0%, 0.80) 8.1%,hsla(0, 0%, 0%, 0.80) 15.5%,hsla(0, 0%, 0%, 0.80) 22.5%,hsla(0, 0%, 0%, 0.78) 29%,hsla(0, 0%, 0%, 0.73) 35.3%,hsla(0, 0%, 0%, 0.67) 41.2%,hsla(0, 0%, 0%, 0.60) 47.1%,hsla(0, 0%, 0%, 0.52) 52.9%,hsla(0, 0%, 0%, 0.44) 58.8%,hsla(0, 0%, 0%, 0.33) 64.7%,hsla(0, 0%, 0%, 0.22) 71%,hsla(0, 0%, 0%, 0.12) 77.5%,hsla(0, 0%, 0%, 0.05) 84.5%,hsla(0, 0%, 0%, 0.011) 91.9%,hsla(0, 0%, 0%, 0) 100%);
   margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
   border-end-start-radius: 12px;
   border-end-end-radius: 12px;
@@ -12961,7 +12961,7 @@ p {
   content: "";
   z-index: 2;
   grid-area: 4/1/6/-1;
-  background: linear-gradient(to top, hsla(0, 0%, 0%, 0.80) 0%,hsla(0, 0%, 0%, 0.80) 8.1%,hsla(0, 0%, 0%, 0.80) 15.5%,hsla(0, 0%, 0%, 0.80) 22.5%,hsla(0, 0%, 0%, 0.78) 29%,hsla(0, 0%, 0%, 0.73) 35.3%,hsla(0, 0%, 0%, 0.67) 41.2%,hsla(0, 0%, 0%, 0.60) 47.1%,hsla(0, 0%, 0%, 0.52) 52.9%,hsla(0, 0%, 0%, 0.44) 58.8%,hsla(0, 0%, 0%, 0.33) 64.7%,hsla(0, 0%, 0%, 0.22) 71%,hsla(0, 0%, 0%, 0.12) 77.5%,hsla(0, 0%, 0%, 0.05) 84.5%,hsla(0, 0%, 0%, 0.011) 91.9%,hsla(0, 0%, 0%, 0) 100%);;
+  background: linear-gradient(to top, hsla(0, 0%, 0%, 0.80) 0%,hsla(0, 0%, 0%, 0.80) 8.1%,hsla(0, 0%, 0%, 0.80) 15.5%,hsla(0, 0%, 0%, 0.80) 22.5%,hsla(0, 0%, 0%, 0.78) 29%,hsla(0, 0%, 0%, 0.73) 35.3%,hsla(0, 0%, 0%, 0.67) 41.2%,hsla(0, 0%, 0%, 0.60) 47.1%,hsla(0, 0%, 0%, 0.52) 52.9%,hsla(0, 0%, 0%, 0.44) 58.8%,hsla(0, 0%, 0%, 0.33) 64.7%,hsla(0, 0%, 0%, 0.22) 71%,hsla(0, 0%, 0%, 0.12) 77.5%,hsla(0, 0%, 0%, 0.05) 84.5%,hsla(0, 0%, 0%, 0.011) 91.9%,hsla(0, 0%, 0%, 0) 100%);
   margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
   border-end-start-radius: 12px;
   border-end-end-radius: 12px;
@@ -13203,7 +13203,7 @@ h1,h2,h3,h4,h5,h6 {
   content: "";
   z-index: 2;
   grid-area: 4/1/6/-1;
-  background: linear-gradient(to top, hsla(0, 0%, 0%, 0.80) 0%,hsla(0, 0%, 0%, 0.80) 8.1%,hsla(0, 0%, 0%, 0.80) 15.5%,hsla(0, 0%, 0%, 0.80) 22.5%,hsla(0, 0%, 0%, 0.78) 29%,hsla(0, 0%, 0%, 0.73) 35.3%,hsla(0, 0%, 0%, 0.67) 41.2%,hsla(0, 0%, 0%, 0.60) 47.1%,hsla(0, 0%, 0%, 0.52) 52.9%,hsla(0, 0%, 0%, 0.44) 58.8%,hsla(0, 0%, 0%, 0.33) 64.7%,hsla(0, 0%, 0%, 0.22) 71%,hsla(0, 0%, 0%, 0.12) 77.5%,hsla(0, 0%, 0%, 0.05) 84.5%,hsla(0, 0%, 0%, 0.011) 91.9%,hsla(0, 0%, 0%, 0) 100%);;
+  background: linear-gradient(to top, hsla(0, 0%, 0%, 0.80) 0%,hsla(0, 0%, 0%, 0.80) 8.1%,hsla(0, 0%, 0%, 0.80) 15.5%,hsla(0, 0%, 0%, 0.80) 22.5%,hsla(0, 0%, 0%, 0.78) 29%,hsla(0, 0%, 0%, 0.73) 35.3%,hsla(0, 0%, 0%, 0.67) 41.2%,hsla(0, 0%, 0%, 0.60) 47.1%,hsla(0, 0%, 0%, 0.52) 52.9%,hsla(0, 0%, 0%, 0.44) 58.8%,hsla(0, 0%, 0%, 0.33) 64.7%,hsla(0, 0%, 0%, 0.22) 71%,hsla(0, 0%, 0%, 0.12) 77.5%,hsla(0, 0%, 0%, 0.05) 84.5%,hsla(0, 0%, 0%, 0.011) 91.9%,hsla(0, 0%, 0%, 0) 100%);
   margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
   border-end-start-radius: 12px;
   border-end-end-radius: 12px;
@@ -20599,6 +20599,267 @@ exports[`should render dsr component for PToast 1`] = `
     </style>
   </template>
 </p-toast>
+`;
+
+exports[`should render dsr component for PTopbar 1`] = `
+<p-topbar
+  data-ssr=""
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: block;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot[name="top"], slot[name="bottom"] {
+  display: grid;
+  grid-template-columns: subgrid;
+}
+slot[name="top"] {
+  grid-area: 1/1/2/-1;
+  background: var(--p-topbar-top-background, #212225);
+}
+slot[name="bottom"] {
+  grid-area: 3/1/4/-1;
+}
+slot[name="start"], slot[name="end"] {
+  display: flex;
+  gap: 8px 16px;
+  flex-flow: wrap;
+  align-items: center;
+}
+slot[name="start"] {
+  grid-area: 2/2;
+  justify-content: start;
+}
+slot[name="end"] {
+  grid-area: 2/4;
+  justify-content: end;
+}
+header {
+  --_p-a: calc(max(22px, 10.625vw - 12px) - 16px);
+  position: relative;
+  z-index: 0;
+  display: grid;
+  grid-template: auto minmax(48px,auto) auto / var(--_p-a) minmax(0,1fr) auto minmax(0,1fr) var(--_p-a);
+  gap: 16px;
+  align-items: center;
+}
+@media(min-width:760px) {
+  header {
+    --_p-a: calc(calc(5vw - 16px) - 16px);
+  }
+}
+
+@media(min-width:1920px) {
+  header {
+    --_p-a: calc(calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px)) - 16px);
+  }
+}
+
+.crest {
+  grid-area: 2/3;
+}
+.wordmark {
+  grid-area: 2/3;
+}
+@media(min-width:760px) {
+  .crest {
+    display: none;
+  }
+}
+
+@media(max-width:759px) {
+  .wordmark {
+    display: none;
+  }
+}
+
+    </style>
+    <header>
+      <slot
+        name="top"
+      />
+      <slot
+        name="start"
+      />
+      <p-crest
+        class="crest"
+        data-ssr=""
+      >
+        <template
+          shadowroot="open"
+          shadowrootdelegatesfocus="true"
+          shadowrootmode="open"
+        >
+          <style>
+            :host {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  outline: 0 !important;
+  box-sizing: content-box !important;
+  max-width: 30px !important;
+  max-height: 40px !important;
+  width: inherit !important;
+  height: inherit !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+a {
+  display: block;
+  text-decoration: none;
+  max-width: 30px;
+  max-height: 40px;
+  width: inherit;
+  height: inherit;
+}
+a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1px;
+}
+a::-moz-focus-inner {
+  border: 0;
+}
+a:focus {
+  outline: 0;
+}
+a:focus-visible {
+  outline: 0;
+}
+a:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+picture {
+  display: block;
+  width: min(30px, 100%);
+  height: min(40px, 100%);
+}
+img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+          </style>
+          <picture>
+            <source
+              srcset="http://localhost:3001/crest/porsche-crest.0d0cc89@1x.webp 1x,http://localhost:3001/crest/porsche-crest.2245c45@2x.webp 2x,http://localhost:3001/crest/porsche-crest.19b4292@3x.webp 3x"
+              type="image/webp"
+            />
+            <source
+              srcset="http://localhost:3001/crest/porsche-crest.d76137c@1x.png 1x,http://localhost:3001/crest/porsche-crest.8a292fb@2x.png 2x,http://localhost:3001/crest/porsche-crest.18d6f02@3x.png 3x"
+              type="image/png"
+            />
+            <img
+              alt="Porsche"
+              height="40"
+              src="http://localhost:3001/crest/porsche-crest.8a292fb@2x.png"
+              width="30"
+            />
+          </picture>
+        </template>
+      </p-crest>
+      <p-wordmark
+        class="wordmark"
+        data-ssr=""
+      >
+        <template
+          shadowroot="open"
+          shadowrootdelegatesfocus="true"
+          shadowrootmode="open"
+        >
+          <style>
+            :host {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  outline: 0 !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  box-sizing: content-box !important;
+  height: clamp(0.63rem, 0.42vw + 0.5rem, 1rem) !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+a, svg {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  height: inherit;
+}
+a {
+  text-decoration: none;
+}
+a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1px;
+}
+a::-moz-focus-inner {
+  border: 0;
+}
+a:focus {
+  outline: 0;
+}
+a:focus-visible {
+  outline: 0;
+}
+a:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
+}
+svg {
+  fill: #010205;
+}
+@supports (height: round(down, 1px, 1px)) {
+  :host {
+    height: round(down, clamp(0.63rem, 0.42vw + 0.5rem, 1rem), 1px) !important;
+  }
+}
+
+          </style>
+          <svg
+            viewBox="0 0 4500 300"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>
+              Porsche
+            </title>
+            <path
+              d="M502 221c48.1 0 74-25.9 74-74V74c0-48.1-25.9-74-74-74H0v300h68v-79h434zm6-143v65c0 7.8-4.2 12-12 12H68V66h428c7.8 0 12 4.2 12 12zm228 222c-48.1 0-74-25.9-74-74V74c0-48.1 25.9-74 74-74h417c48.1 0 74 25.9 74 74v152c0 48.1-25.9 74-74 74H736zm411-66c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12H742c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h405zm675-36c39.844 16.757 67.853 56.1 68 102h-68c0-54-25-79-79-79h-361v79h-68V0h502c48.1 0 74 25.9 74 74v50.14c0 46.06-23.75 71.76-68 73.86zm-12-43c7.8 0 12-4.2 12-12V78c0-7.8-4.2-12-12-12h-428v89h428zm162-81c0-48.1 25.9-74 74-74h492v56h-486c-7.8 0-12 4.2-12 12v42c0 7.8 4.2 12 12 12h422c48.1 0 74 25.9 74 74v30c0 48.1-25.9 74-74 74h-492v-56h486c7.8 0 12-4.2 12-12v-42c0-7.8-4.2-12-12-12h-422c-48.1 0-74-25.9-74-74V74zm661 0c0-48.1 25.9-74 74-74h480v66h-474c-7.8 0-12 4.2-12 12v144c0 7.8 4.2 12 12 12h474v66h-480c-48.1 0-74-25.9-74-74V74zM3817 0v300h-68V183h-407v117h-68V0h68v117h407V0h68zm156 56v66h527v56h-527v66h527v56h-595V0h595v56h-527z"
+            />
+          </svg>
+        </template>
+      </p-wordmark>
+      <slot
+        name="end"
+      />
+      <slot
+        name="bottom"
+      />
+    </header>
+  </template>
+  Some child
+</p-topbar>
 `;
 
 exports[`should render dsr component for PWordmark 1`] = `
