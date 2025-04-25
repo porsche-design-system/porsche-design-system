@@ -226,6 +226,7 @@ import { ToastOffsetComponent } from './generated/toast-offset.component';
 import { ToastPrefixedComponent } from './generated/toast-prefixed.component';
 import { ToastStateNeutralComponent } from './generated/toast-state-neutral.component';
 import { ToastStateSuccessComponent } from './generated/toast-state-success.component';
+import { TopbarComponent } from './generated/topbar.component';
 import { TypographyCyrilComponent } from './generated/typography-cyril.component';
 import { TypographyFallbackComponent } from './generated/typography-fallback.component';
 import { TypographyGreekCopticComponent } from './generated/typography-greek-coptic.component';
@@ -430,6 +431,7 @@ export const generatedPages = [
   ToastPrefixedComponent,
   ToastStateNeutralComponent,
   ToastStateSuccessComponent,
+  TopbarComponent,
   TypographyCyrilComponent,
   TypographyFallbackComponent,
   TypographyGreekCopticComponent,
@@ -1404,6 +1406,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Toast State Success',
     path: 'toast-state-success',
     component: ToastStateSuccessComponent,
+  },
+  {
+    name: 'Topbar',
+    path: 'topbar',
+    component: TopbarComponent,
   },
   {
     name: 'Typography Cyril',

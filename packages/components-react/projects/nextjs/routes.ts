@@ -780,6 +780,10 @@ const generatedRoutes = {
     "path": "/toast-state-success",
     "name": "ToastStateSuccess"
   },
+  "topbar": {
+    "path": "/topbar",
+    "name": "Topbar"
+  },
   "typographyCyril": {
     "path": "/typography-cyril",
     "name": "TypographyCyril"

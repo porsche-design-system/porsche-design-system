@@ -206,6 +206,7 @@ import { ToastOffsetPage } from './generated/ToastOffset';
 import { ToastPrefixedPage } from './generated/ToastPrefixed';
 import { ToastStateNeutralPage } from './generated/ToastStateNeutral';
 import { ToastStateSuccessPage } from './generated/ToastStateSuccess';
+import { TopbarPage } from './generated/Topbar';
 import { TypographyCyrilPage } from './generated/TypographyCyril';
 import { TypographyFallbackPage } from './generated/TypographyFallback';
 import { TypographyGreekCopticPage } from './generated/TypographyGreekCoptic';
@@ -1179,6 +1180,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Toast State Success',
     path: '/toast-state-success',
     element: <ToastStateSuccessPage />,
+  },
+  {
+    name: 'Topbar',
+    path: '/topbar',
+    element: <TopbarPage />,
   },
   {
     name: 'Typography Cyril',
