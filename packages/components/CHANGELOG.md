@@ -14,6 +14,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Topbar`: ([#3848](https://github.com/porsche-design-system/porsche-design-system/pull/3848))
+
 ## [3.28.0-rc.2] - 2025-04-23
 
 ### Fixed
