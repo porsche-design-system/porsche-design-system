@@ -12,6 +12,10 @@
     margin-inline: -4px;
     padding: 4px;
   }
+
+  .custom-top-background {
+    --p-topbar-top-background: deeppink;
+  }
 </style>
 
 <div class="visualize-grid">
@@ -105,7 +109,7 @@
 </div>
 
 <div class="playground light" title="should render with custom css variables">
-  <p-topbar style="--p-topbar-top-background: deeppink">
+  <p-topbar class="custom-top-background">
     <p-text slot="top" align="center">Some text</p-text>
   </p-topbar>
 </div>
