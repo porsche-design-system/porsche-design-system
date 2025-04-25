@@ -71,6 +71,7 @@ import { TextareaAutoComplete, TextareaBlurEventDetail, TextareaChangeEventDetai
 import { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wrapper-utils";
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
+import { TopbarAriaAttribute } from "./components/topbar/topbar-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
 export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, TextSize, Theme } from "./types";
 export { AccordionHeadingTag, AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
@@ -138,6 +139,7 @@ export { TextareaAutoComplete, TextareaBlurEventDetail, TextareaChangeEventDetai
 export { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wrapper-utils";
 export { ToastMessage } from "./components/toast/toast/toast-manager";
 export { ToastState } from "./components/toast/toast/toast-utils";
+export { TopbarAriaAttribute } from "./components/topbar/topbar-utils";
 export { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
 export namespace Components {
     /**
@@ -2444,6 +2446,24 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    interface PTopbar {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<TopbarAriaAttribute>;
+        /**
+          * Shows a gradient, useful when the component is used on top of an image or video. When gradient is enabled, then the component will be forced to be rendered with dark theme.
+         */
+        "gradient"?: boolean;
+        /**
+          * When providing an url then the crest/wordmark will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Adapts the coloring depending on the theme.
+         */
+        "theme"?: Theme;
+    }
     interface PWordmark {
         /**
           * Add ARIA attributes.
@@ -3416,6 +3436,12 @@ declare global {
         prototype: HTMLPToastItemElement;
         new (): HTMLPToastItemElement;
     };
+    interface HTMLPTopbarElement extends Components.PTopbar, HTMLStencilElement {
+    }
+    var HTMLPTopbarElement: {
+        prototype: HTMLPTopbarElement;
+        new (): HTMLPTopbarElement;
+    };
     interface HTMLPWordmarkElement extends Components.PWordmark, HTMLStencilElement {
     }
     var HTMLPWordmarkElement: {
@@ -3500,6 +3526,7 @@ declare global {
         "p-textarea-wrapper": HTMLPTextareaWrapperElement;
         "p-toast": HTMLPToastElement;
         "p-toast-item": HTMLPToastItemElement;
+        "p-topbar": HTMLPTopbarElement;
         "p-wordmark": HTMLPWordmarkElement;
     }
 }
@@ -6003,6 +6030,24 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    interface PTopbar {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<TopbarAriaAttribute>;
+        /**
+          * Shows a gradient, useful when the component is used on top of an image or video. When gradient is enabled, then the component will be forced to be rendered with dark theme.
+         */
+        "gradient"?: boolean;
+        /**
+          * When providing an url then the crest/wordmark will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
+          * Adapts the coloring depending on the theme.
+         */
+        "theme"?: Theme;
+    }
     interface PWordmark {
         /**
           * Add ARIA attributes.
@@ -6103,6 +6148,7 @@ declare namespace LocalJSX {
         "p-textarea-wrapper": PTextareaWrapper;
         "p-toast": PToast;
         "p-toast-item": PToastItem;
+        "p-topbar": PTopbar;
         "p-wordmark": PWordmark;
     }
 }
@@ -6274,6 +6320,7 @@ declare module "@stencil/core" {
             "p-textarea-wrapper": LocalJSX.PTextareaWrapper & JSXBase.HTMLAttributes<HTMLPTextareaWrapperElement>;
             "p-toast": LocalJSX.PToast & JSXBase.HTMLAttributes<HTMLPToastElement>;
             "p-toast-item": LocalJSX.PToastItem & JSXBase.HTMLAttributes<HTMLPToastItemElement>;
+            "p-topbar": LocalJSX.PTopbar & JSXBase.HTMLAttributes<HTMLPTopbarElement>;
             "p-wordmark": LocalJSX.PWordmark & JSXBase.HTMLAttributes<HTMLPWordmarkElement>;
         }
     }
