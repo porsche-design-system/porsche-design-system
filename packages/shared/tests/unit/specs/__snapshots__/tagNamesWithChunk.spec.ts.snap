@@ -61,6 +61,7 @@ exports[`should match snapshot 1`] = `
   "p-textarea",
   "p-textarea-wrapper",
   "p-toast",
+  "p-topbar",
   "p-wordmark",
 ]
 `;
