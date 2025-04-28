@@ -16,7 +16,7 @@ export const StateMessage: FunctionalComponent<StateMessageProps> = ({ state, me
   const isErrorState = state === 'error';
 
   return (
-    <span id={messageId} class="message" role={isErrorState || state === 'none' ? 'alert' : 'status'}>
+    <span id={messageId} class="message" role={state === 'success' ? 'status' : 'alert'}>
       {hasMessage(host, message, state) && [
         <PrefixedTagNames.pIcon
           name={isErrorState ? 'exclamation' : 'check'}
