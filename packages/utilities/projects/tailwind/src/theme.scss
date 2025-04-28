@@ -1,0 +1,220 @@
+@use '@porsche-design-system/components-js/styles' as *;
+
+@theme {
+  --breakpoint-xs: #{$pds-breakpoint-xs}px;
+  --breakpoint-sm: #{$pds-breakpoint-s}px;
+  --breakpoint-md: #{$pds-breakpoint-m}px;
+  --breakpoint-lg: #{$pds-breakpoint-l}px;
+  --breakpoint-xl: #{$pds-breakpoint-xl}px;
+  --breakpoint-2xl: #{$pds-breakpoint-xxl}px;
+
+  --color-primary: #{$pds-theme-light-primary};
+  --color-background-base: #{$pds-theme-light-background-base};
+  --color-background-surface: #{$pds-theme-light-background-surface};
+  --color-background-shading: #{$pds-theme-light-background-shading};
+  --color-background-frosted: #{$pds-theme-light-background-frosted};
+  --color-contrast-low: #{$pds-theme-light-contrast-low};
+  --color-contrast-medium: #{$pds-theme-light-contrast-medium};
+  --color-contrast-high: #{$pds-theme-light-contrast-high};
+  --color-notification-success: #{$pds-theme-light-notification-success};
+  --color-notification-success-soft: #{$pds-theme-light-notification-success-soft};
+  --color-notification-warning: #{$pds-theme-light-notification-warning};
+  --color-notification-warning-soft: #{$pds-theme-light-notification-warning-soft};
+  --color-notification-error: #{$pds-theme-light-notification-error};
+  --color-notification-error-soft: #{$pds-theme-light-notification-error-soft};
+  --color-notification-info: #{$pds-theme-light-notification-info};
+  --color-notification-info-soft: #{$pds-theme-light-notification-info-soft};
+  --color-state-hover: #{$pds-theme-light-state-hover};
+  --color-state-active: #{$pds-theme-light-state-active};
+  --color-state-focus: #{$pds-theme-light-state-focus};
+  --color-state-disabled: #{$pds-theme-light-state-disabled};
+
+  --font-porsche-next: #{$pds-font-family};
+
+  --font-weight-regular: #{$pds-font-weight-regular};
+  --font-weight-semi-bold: #{$pds-font-weight-semi-bold};
+  --font-weight-bold: #{$pds-font-weight-bold};
+
+  --leading-normal: #{$pds-font-line-height};
+
+  --text-2xs: #{$pds-font-size-text-xx-small};
+  --text-2xs--line-height: #{$pds-font-line-height};
+  --text-xs: #{$pds-font-size-text-x-small};
+  --text-xs--line-height: #{$pds-font-line-height};
+  --text-base: #{$pds-font-size-text-small};
+  --text-base--line-height: #{$pds-font-line-height};
+  --text-sm: #{$pds-font-size-text-small};
+  --text-sm--line-height: #{$pds-font-line-height};
+  --text-md: #{$pds-font-size-text-medium};
+  --text-md--line-height: #{$pds-font-line-height};
+  --text-lg: #{$pds-font-size-text-large};
+  --text-lg--line-height: #{$pds-font-line-height};
+  --text-xl: #{$pds-font-size-text-x-large};
+  --text-xl--line-height: #{$pds-font-line-height};
+
+  --spacing-xs: #{$pds-spacing-fluid-x-small};
+  --spacing-sm: #{$pds-spacing-fluid-small};
+  --spacing-md: #{$pds-spacing-fluid-medium};
+  --spacing-lg: #{$pds-spacing-fluid-large};
+  --spacing-xl: #{$pds-spacing-fluid-x-large};
+  --spacing-2xl: #{$pds-spacing-fluid-xx-large};
+
+  --spacing-fluid-xs: #{$pds-spacing-fluid-x-small};
+  --spacing-fluid-sm: #{$pds-spacing-fluid-small};
+  --spacing-fluid-md: #{$pds-spacing-fluid-medium};
+  --spacing-fluid-lg: #{$pds-spacing-fluid-large};
+  --spacing-fluid-xl: #{$pds-spacing-fluid-x-large};
+  --spacing-fluid-2xl: #{$pds-spacing-fluid-xx-large};
+
+  --spacing-static-xs: #{$pds-spacing-static-x-small};
+  --spacing-static-sm: #{$pds-spacing-static-small};
+  --spacing-static-md: #{$pds-spacing-static-medium};
+  --spacing-static-lg: #{$pds-spacing-static-large};
+  --spacing-static-xl: #{$pds-spacing-static-x-large};
+  --spacing-static-2xl: #{$pds-spacing-static-xx-large};
+
+  --max-width-prose: 85ch;
+
+  --radius-sm: #{$pds-border-radius-small};
+  --radius-md: #{$pds-border-radius-medium};
+  --radius-lg: #{$pds-border-radius-large};
+
+  --default-border-width: #{$pds-border-width-base};
+  --border-width-thin: #{$pds-border-width-thin};
+  --border-width-base: #{$pds-border-width-base};
+
+  --default-outline-width: #{$pds-border-width-base};
+
+  --default-transition-timing-function: #{$pds-motion-easing-base};
+  --default-transition-duration: #{$pds-motion-duration-short};
+
+  --animate-fade-in: #{$pds-motion-duration-short} fade-in #{$pds-motion-easing-base} forwards;
+
+  --pds-grid-narrow-column-start: #{$pds-grid-narrow-column-start};
+  --pds-grid-narrow-column-end: #{$pds-grid-narrow-column-end};
+  --pds-grid-narrow-span-one-half: #{$pds-grid-narrow-span-one-half};
+  --pds-grid-narrow-offset: #{$pds-grid-narrow-offset-base};
+  --pds-grid-narrow-offset-sm: #{$pds-grid-narrow-offset-s};
+  --pds-grid-narrow-offset-2xl: #{$pds-grid-narrow-offset-xxl};
+
+  --pds-grid-basic-column-start: #{$pds-grid-basic-column-start};
+  --pds-grid-basic-column-end: #{$pds-grid-basic-column-end};
+  --pds-grid-basic-span-one-half: #{$pds-grid-basic-span-one-half};
+  --pds-grid-basic-span-one-third: #{$pds-grid-basic-span-one-third};
+  --pds-grid-basic-span-two-thirds: #{$pds-grid-basic-span-two-thirds};
+  --pds-grid-basic-offset: #{$pds-grid-basic-offset-base};
+  --pds-grid-basic-offset-sm: #{$pds-grid-basic-offset-s};
+  --pds-grid-basic-offset-2xl: #{$pds-grid-basic-offset-xxl};
+
+  --pds-grid-extended-column-start: #{$pds-grid-extended-column-start};
+  --pds-grid-extended-column-end: #{$pds-grid-extended-column-end};
+  --pds-grid-extended-span-one-half: #{$pds-grid-extended-span-one-half};
+  --pds-grid-extended-offset: #{$pds-grid-extended-offset-base};
+  --pds-grid-extended-offset-sm: #{$pds-grid-extended-offset-s};
+  --pds-grid-extended-offset-2xl: #{$pds-grid-extended-offset-xxl};
+
+  --pds-grid-wide-column-start: #{$pds-grid-wide-column-start};
+  --pds-grid-wide-column-end: #{$pds-grid-wide-column-end};
+  --pds-grid-wide-offset: #{$pds-grid-wide-offset-base};
+  --pds-grid-wide-offset-sm: #{$pds-grid-wide-offset-s};
+  --pds-grid-wide-offset-2xl: #{$pds-grid-wide-offset-xxl};
+
+  --pds-grid-full-column-start: #{$pds-grid-full-column-start};
+  --pds-grid-full-column-end: #{$pds-grid-full-column-end};
+  --pds-grid-full-offset: #{$pds-grid-full-offset};
+
+  --pds-gradient-to-bottom: linear-gradient(
+      to bottom,
+      hsla(0, 0%, 0%, 0.8) 0%,
+      hsla(0, 0%, 0%, 0.8) 8.1%,
+      hsla(0, 0%, 0%, 0.8) 15.5%,
+      hsla(0, 0%, 0%, 0.8) 22.5%,
+      hsla(0, 0%, 0%, 0.78) 29%,
+      hsla(0, 0%, 0%, 0.73) 35.3%,
+      hsla(0, 0%, 0%, 0.67) 41.2%,
+      hsla(0, 0%, 0%, 0.6) 47.1%,
+      hsla(0, 0%, 0%, 0.52) 52.9%,
+      hsla(0, 0%, 0%, 0.44) 58.8%,
+      hsla(0, 0%, 0%, 0.33) 64.7%,
+      hsla(0, 0%, 0%, 0.22) 71%,
+      hsla(0, 0%, 0%, 0.12) 77.5%,
+      hsla(0, 0%, 0%, 0.05) 84.5%,
+      hsla(0, 0%, 0%, 0.011) 91.9%,
+      hsla(0, 0%, 0%, 0) 100%
+  );
+
+  --pds-gradient-to-top: linear-gradient(
+      to top,
+      hsla(0, 0%, 0%, 0.8) 0%,
+      hsla(0, 0%, 0%, 0.8) 8.1%,
+      hsla(0, 0%, 0%, 0.8) 15.5%,
+      hsla(0, 0%, 0%, 0.8) 22.5%,
+      hsla(0, 0%, 0%, 0.78) 29%,
+      hsla(0, 0%, 0%, 0.73) 35.3%,
+      hsla(0, 0%, 0%, 0.67) 41.2%,
+      hsla(0, 0%, 0%, 0.6) 47.1%,
+      hsla(0, 0%, 0%, 0.52) 52.9%,
+      hsla(0, 0%, 0%, 0.44) 58.8%,
+      hsla(0, 0%, 0%, 0.33) 64.7%,
+      hsla(0, 0%, 0%, 0.22) 71%,
+      hsla(0, 0%, 0%, 0.12) 77.5%,
+      hsla(0, 0%, 0%, 0.05) 84.5%,
+      hsla(0, 0%, 0%, 0.011) 91.9%,
+      hsla(0, 0%, 0%, 0) 100%
+  );
+
+  --pds-gradient-to-left: linear-gradient(
+      to left,
+      hsla(0, 0%, 0%, 0.8) 0%,
+      hsla(0, 0%, 0%, 0.8) 8.1%,
+      hsla(0, 0%, 0%, 0.8) 15.5%,
+      hsla(0, 0%, 0%, 0.8) 22.5%,
+      hsla(0, 0%, 0%, 0.78) 29%,
+      hsla(0, 0%, 0%, 0.73) 35.3%,
+      hsla(0, 0%, 0%, 0.67) 41.2%,
+      hsla(0, 0%, 0%, 0.6) 47.1%,
+      hsla(0, 0%, 0%, 0.52) 52.9%,
+      hsla(0, 0%, 0%, 0.44) 58.8%,
+      hsla(0, 0%, 0%, 0.33) 64.7%,
+      hsla(0, 0%, 0%, 0.22) 71%,
+      hsla(0, 0%, 0%, 0.12) 77.5%,
+      hsla(0, 0%, 0%, 0.05) 84.5%,
+      hsla(0, 0%, 0%, 0.011) 91.9%,
+      hsla(0, 0%, 0%, 0) 100%
+  );
+
+  --pds-gradient-to-right: linear-gradient(
+      to right,
+      hsla(0, 0%, 0%, 0.8) 0%,
+      hsla(0, 0%, 0%, 0.8) 8.1%,
+      hsla(0, 0%, 0%, 0.8) 15.5%,
+      hsla(0, 0%, 0%, 0.8) 22.5%,
+      hsla(0, 0%, 0%, 0.78) 29%,
+      hsla(0, 0%, 0%, 0.73) 35.3%,
+      hsla(0, 0%, 0%, 0.67) 41.2%,
+      hsla(0, 0%, 0%, 0.6) 47.1%,
+      hsla(0, 0%, 0%, 0.52) 52.9%,
+      hsla(0, 0%, 0%, 0.44) 58.8%,
+      hsla(0, 0%, 0%, 0.33) 64.7%,
+      hsla(0, 0%, 0%, 0.22) 71%,
+      hsla(0, 0%, 0%, 0.12) 77.5%,
+      hsla(0, 0%, 0%, 0.05) 84.5%,
+      hsla(0, 0%, 0%, 0.011) 91.9%,
+      hsla(0, 0%, 0%, 0) 100%
+  );
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+@layer components {
+  .pds-grid {
+    @include pds-grid;
+  }
+}
