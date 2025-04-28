@@ -31,7 +31,7 @@ export const CodeBlock = ({ frameworkMarkup, children }: PropsWithChildren<CodeB
 
   return (
     <>
-      <div className="m-static-md flex justify-between">
+      <div className="m-static-md flex gap-sm justify-between flex-col md:flex-row">
         <PTabsBar className="framework-select" activeTabIndex={tabIndex} onUpdate={onUpdate}>
           {frameworks.map((framework, index) => (
             <button
@@ -49,6 +49,7 @@ export const CodeBlock = ({ frameworkMarkup, children }: PropsWithChildren<CodeB
       </div>
       {/* @ts-expect-error: Suppress type incompatibility */}
       <SyntaxHighlighter
+        dir="ltr"
         className="markup"
         language={frameworkLanguageMap[selectedFramework]}
         showLineNumbers={false}

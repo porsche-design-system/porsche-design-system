@@ -3,6 +3,7 @@
 import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import { PDisplay, PHeading, PLinkPure, PLinkTile, PText } from '@porsche-design-system/components-react/ssr';
 import Image from 'next/image';
+import Link from 'next/link';
 import AppearAnimation from './appearAnimation';
 
 type HomeProps = {
@@ -34,7 +35,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           Your browser does not support the video tag.
         </video>
 
-        <PDisplay className="z-20 mt-lg ms-lg row-start-1 col-start-1 max-w-3xl" size="medium" tag="h1">
+        <PDisplay className="z-20 mt-[100px] md:mt-lg mx-lg row-start-1 col-start-1 max-w-3xl" size="medium" tag="h1">
           Welcome to the Porsche Design System
         </PDisplay>
         <div className="block w-full h-full relative">
@@ -42,7 +43,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             className="backdrop-blur-sm bg-background-surface max-w-lg bottom-0 left-0 m-4 p-6 bg-white rounded-lg shadow-lg flex justify-between items-center gap-4"
             style={{ marginBottom: '5%', marginLeft: '5%' }}
           >
-            <a href="/news/changelog/" className="absolute inset-0 rounded-l" tabIndex={-1} aria-hidden="true" />
+            <Link href="/news/changelog/" className="absolute inset-0 rounded-l" tabIndex={-1} aria-hidden="true" />
             <div className="flex flex-col">
               <PText size="small" weight="semi-bold">
                 Release Note
@@ -51,11 +52,12 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
                 Checkout the latest release {latestPdsVersion}
               </PText>
             </div>
-            <PLinkPure
-              hideLabel={true}
-              href="/news/changelog/"
-              aria={{ 'aria-label': `Release Note: Checkout the latest release ${latestPdsVersion}` }}
-            />
+            <PLinkPure hideLabel={true}>
+              <Link
+                href="/news/changelog/"
+                aria-label={`Release Note: Checkout the latest release ${latestPdsVersion}`}
+              />
+            </PLinkPure>
           </div>
         </div>
       </div>
@@ -68,14 +70,16 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
         </PText>
         <PText className="mt-md" color="contrast-high" align="center">
           We provide protected {''}
-          <a href="https://figma.com/file/EkdP468u4ZVuIRwalKCscb/Design-System-v3?type=design&node-id=105-146">Figma</a>
+          <Link href="https://figma.com/file/EkdP468u4ZVuIRwalKCscb/Design-System-v3?type=design&node-id=105-146">
+            Figma
+          </Link>
           {''} and UX Pin libraries, as well as public accessible {''}
-          <a href="https://npmjs.com/org/porsche-design-system">npm releases</a> for Vanilla JS, {''}
-          <a href="https://angular.io">Angular</a>, <a href="https://react.dev">React</a>, {''}
-          <a href="https://nextjs.org">Next.js</a>, <a href="https://remix.run">Remix</a> and {''}
-          <a href="https://vuejs.org">Vue</a> based on Web Components with TypeScript and SSR support and appreciate any
-          feedback, feature requests or suggestions on our public accessible {''}
-          <a href="https://github.com/porsche-design-system/porsche-design-system/issues">issue board</a>.
+          <Link href="https://npmjs.com/org/porsche-design-system">npm releases</Link> for Vanilla JS, {''}
+          <Link href="https://angular.io">Angular</Link>, <a href="https://react.dev">React</a>, {''}
+          <Link href="https://nextjs.org">Next.js</Link>, <a href="https://remix.run">Remix</a> and {''}
+          <Link href="https://vuejs.org">Vue</Link> based on Web Components with TypeScript and SSR support and
+          appreciate any feedback, feature requests or suggestions on our public accessible {''}
+          <Link href="https://github.com/porsche-design-system/porsche-design-system/issues">issue board</Link>.
         </PText>
       </article>
 
@@ -85,7 +89,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
       >
         <AppearAnimation animation="fade-in-up">
           <div className="relative bg-background-surface rounded-lg overflow-hidden group flex items-center gap-4 p-4">
-            <a
+            <Link
               href="/designing/introduction/"
               className="absolute z-10 inset-0 rounded-l"
               tabIndex={-1}
@@ -108,19 +112,16 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
               </div>
 
               <div className="flex-shrink-0">
-                <PLinkPure
-                  hideLabel={true}
-                  href="/designing/introduction/"
-                  aria={{ 'aria-label': 'Start Designing' }}
-                  className="relative z-10"
-                />
+                <PLinkPure hideLabel={true} className="relative z-10">
+                  <Link href="/designing/introduction/" aria-label={'Start Designing'} />
+                </PLinkPure>
               </div>
             </div>
           </div>
         </AppearAnimation>
         <AppearAnimation animation="fade-in-up">
           <div className="relative bg-background-surface rounded-lg overflow-hidden group flex items-center gap-4 p-4 group-hover:bg-background-hover">
-            <a
+            <Link
               href="/developing/introduction/"
               className="absolute z-10 inset-0 rounded-l"
               tabIndex={-1}
@@ -143,12 +144,9 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
               </div>
 
               <div className="flex-shrink-0">
-                <PLinkPure
-                  hideLabel={true}
-                  href="/developing/introduction/"
-                  aria={{ 'aria-label': 'Start Coding' }}
-                  className="relative z-10"
-                />
+                <PLinkPure hideLabel={true} className="relative z-10">
+                  <Link href="/developing/introduction/" aria-label={'Start Coding'} />
+                </PLinkPure>
               </div>
             </div>
           </div>
@@ -161,7 +159,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
       >
         <AppearAnimation animation="fade-in-up">
           <PLinkTile
-            href="/styles/introduction/"
+            href="styles/introduction/"
             label="Overview of styles and tokens"
             description="Styles & Tokens"
             size="medium"
@@ -171,12 +169,12 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             background={isDark ? 'dark' : 'light'}
             className="bg-background-surface rounded-lg"
           >
-            <img src="assets/styles-tokens.png" alt="" />
+            <Image src="assets/styles-tokens.png" alt="" width={1024} height={576} />
           </PLinkTile>
         </AppearAnimation>
         <AppearAnimation animation="fade-in-up">
           <PLinkTile
-            href="/components/introduction/"
+            href="components/introduction/"
             label="Coded component library"
             description="Components"
             size="medium"
@@ -186,12 +184,12 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             background={isDark ? 'dark' : 'light'}
             className="bg-background-surface rounded-lg"
           >
-            <img src="assets/components.png" alt="" />
+            <Image src="assets/components.png" alt="" width={1024} height={576} />
           </PLinkTile>
         </AppearAnimation>
         <AppearAnimation animation="fade-in-up">
           <PLinkTile
-            href="/partials/introduction/"
+            href="partials/introduction/"
             label="Overview of partials and assets"
             description="Assets"
             size="medium"
@@ -201,7 +199,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             background={isDark ? 'dark' : 'light'}
             className="bg-background-surface rounded-lg"
           >
-            <img src="assets/assets.png" alt="" />
+            <Image src="assets/assets.png" alt="" width={1024} height={576} />
           </PLinkTile>
         </AppearAnimation>
         <AppearAnimation animation="fade-in-up">
@@ -216,12 +214,12 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             background={isDark ? 'dark' : 'light'}
             className="bg-background-surface rounded-lg"
           >
-            <img src="assets/templates.png" alt="" />
+            <Image src="assets/templates.png" alt="" width={1024} height={576} />
           </PLinkTile>
         </AppearAnimation>
         <AppearAnimation animation="fade-in-up">
           <PLinkTile
-            href="/news/changelog/"
+            href="news/changelog/"
             label="Find latest release notes"
             description="Release Notes"
             size="medium"
@@ -231,12 +229,12 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             background={isDark ? 'dark' : 'light'}
             className="bg-background-surface rounded-lg"
           >
-            <img src="assets/release-notes.png" alt="" />
+            <Image src="assets/release-notes.png" alt="" width={1024} height={576} />
           </PLinkTile>
         </AppearAnimation>
         <AppearAnimation animation="fade-in-up">
           <PLinkTile
-            href="/help/support/"
+            href="help/support/"
             label="How to provide feedback and make requests"
             description="Feedback & Requests"
             size="medium"
@@ -246,7 +244,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             background={isDark ? 'dark' : 'light'}
             className="bg-background-surface rounded-lg"
           >
-            <img src="assets/feedback.png" alt="" />
+            <Image src="assets/feedback.png" alt="" width={1024} height={576} />
           </PLinkTile>
         </AppearAnimation>
       </section>
@@ -257,7 +255,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
       >
         <AppearAnimation animation="fade-in-up">
           <PLinkTile
-            href="/must-know/accessibility/introduction/"
+            href="must-know/accessibility/introduction/"
             label="How the Porsche Design system respects accessibility"
             description="Accessibility"
             size="large"
@@ -267,7 +265,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             aspectRatio="16/9"
             className="bg-background-surface-dark rounded-lg"
           >
-            <img src="assets/accessibility.png" alt="" />
+            <Image src="assets/accessibility.png" alt="" width={2036} height={1144} />
           </PLinkTile>
         </AppearAnimation>
       </section>
@@ -284,8 +282,8 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             We value your feedback, ideas, and contributions to help create the best possible experience with the
             Porsche Design System. Ready to get involved? Start by exploring our contributing guidelines!
           </PText>
-          <PLinkPure className="mt-md" size="small" href="/help/feature-request/">
-            Create feature Request
+          <PLinkPure className="mt-md" size="small">
+            <Link href="/help/feature-request/">Create feature Request</Link>
           </PLinkPure>
         </div>
       </section>
