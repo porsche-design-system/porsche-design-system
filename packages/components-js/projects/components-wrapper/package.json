@@ -2,16 +2,7 @@
   "name": "@porsche-design-system/components-js",
   "version": "3.28.0-rc.2",
   "description": "Porsche Design System is a component library designed to help developers create the best experience for software or services distributed by Dr. Ing. h.c. F. Porsche AG.",
-  "keywords": [
-    "porsche",
-    "design",
-    "system",
-    "web",
-    "component",
-    "library",
-    "vanilla",
-    "js"
-  ],
+  "keywords": ["porsche", "design", "system", "web", "component", "library", "vanilla", "js"],
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "SEE LICENSE IN LICENSE",
@@ -63,6 +54,7 @@
       "import": "./ag-grid/esm/index.mjs",
       "default": "./ag-grid/cjs/index.cjs"
     },
+    "./tailwind/*.css": "./tailwind/*.css",
     "./testing": {
       "types": "./testing/index.d.ts",
       "default": "./testing/index.cjs"
