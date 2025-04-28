@@ -2,6 +2,7 @@ import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { Configurator } from "@/components/playground/Configurator";
 import { crestStory } from "@/app/components/crest/crest.stories";
 import { Notification } from "@/components/common/Notification";
+import Link from "next/link";
 
 export const metadata = {
   title: 'Crest - Porsche Design System',
@@ -14,7 +15,7 @@ The `p-crest` gives the Porsche brand a distinctive look, sets it apart from oth
 and represents the quality of the product.
 
 <Notification heading="Usage hint" heading-tag="h2" state="error">
-  This component shall only be used on viewports below 480px (breakpoint "S"). Otherwise, <a href="/components/wordmark/">p-wordmark</a> has to be used.
+  This component shall only be used on viewports below 480px (breakpoint "S"). Otherwise, <Link href="/components/wordmark/">p-wordmark</Link> has to be used.
 </Notification>
 
 You can use native `click`, `focus`, `focusin`, `blur` and `focusout` events on the `p-crest`.

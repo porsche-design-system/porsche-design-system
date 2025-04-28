@@ -36,6 +36,10 @@ for (const [name, url] of Object.entries(urls)) {
               video.parentElement!.style.height = '600px';
             }
           });
+
+          // Remove version number from release banner, otherwise VRT will fail after releasing a new version
+          const releaseText = page.getByText('Checkout the latest release ');
+          releaseText.evaluate((el) => (el.innerHTML = 'Checkout the latest release '));
         }
 
         await page.evaluate(() =>
@@ -73,6 +77,10 @@ for (const [name, url] of Object.entries(urls)) {
               video.parentElement!.style.height = '600px';
             }
           });
+
+          // Remove version number from release banner, otherwise VRT will fail after releasing a new version
+          const releaseText = page.getByText('Checkout the latest release ');
+          releaseText.evaluate((el) => (el.innerHTML = 'Checkout the latest release '));
         }
 
         await page.evaluate(() =>

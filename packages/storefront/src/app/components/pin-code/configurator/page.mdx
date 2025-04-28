@@ -2,6 +2,7 @@ import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { Configurator } from "@/components/playground/Configurator";
 import { pinCodeStory } from "@/app/components/pin-code/pin-code.stories";
 import {Notification} from "@/components/common/Notification";
+import Link from "next/link";
 
 export const metadata = {
   title: 'Pin Code - Porsche Design System',
@@ -24,9 +25,9 @@ to explicitly `Shift+Tab & Delete`/ `Tab & Backspace`.
 
 <Notification heading="Attention" heading-tag="h2" state="warning">
   When the <code>p-pin-code</code> component is used within a form, it utilizes the
-  <a href="https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals">ElementInternals</a> API, which has limited
+  <Link href="https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals">ElementInternals</Link> API, which has limited
   browser support. For broader browser compatibility, consider using a
-  <a href="components/textarea/examples#controlled">controlled</a> approach instead.
+  <Link href="components/textarea/examples#controlled">controlled</Link> approach instead.
 </Notification>
 
 A `label` is a caption which informs the user what information a particular form field is asking for. The `p-pin-code`
