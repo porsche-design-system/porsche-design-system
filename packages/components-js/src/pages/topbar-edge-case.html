@@ -1,0 +1,71 @@
+<style>
+  :is([slot='top'], [slot='bottom']) {
+    grid-column: 2/-2;
+    padding-block: 8px;
+  }
+
+  :is(p-link-pure, p-button-pure):is([slot='start'], [slot='end']) {
+    margin-inline: -4px;
+    padding: 4px;
+  }
+</style>
+
+<div class="visualize-grid">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<p-topbar>
+  <p-text slot="top" align="center" theme="dark"
+    >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-text
+  >
+  <div slot="top" style="grid-column: 1/-1; background: rgba(0, 0, 255, 0.2)"></div>
+  <div slot="top" style="grid-column: 2/-2; background: rgba(0, 0, 255, 0.4)"></div>
+  <div slot="top" style="grid-column: 3/-3; background: rgba(0, 0, 255, 0.6)"></div>
+  <div slot="bottom" style="grid-column: 3/-3; background: rgba(0, 0, 255, 0.6)"></div>
+  <div slot="bottom" style="grid-column: 2/-2; background: rgba(0, 0, 255, 0.4)"></div>
+  <div slot="bottom" style="grid-column: 1/-1; background: rgba(0, 0, 255, 0.2)"></div>
+  <p-text slot="bottom" align="center"
+    >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p-text
+  >
+  <p-button-pure slot="start" type="button" icon="heart" hide-label="true">Favorites</p-button-pure>
+  <p-button-pure slot="start" type="button" icon="heart" hide-label="true" size="x-large">Favorites</p-button-pure>
+  <p-button-pure slot="start" type="button" icon="heart" hide-label="true">Favorites</p-button-pure>
+  <p-button-pure slot="start" type="button" icon="heart" hide-label="true">Favorites</p-button-pure>
+  <p-button-pure slot="start" type="button" icon="heart" hide-label="true">Favorites</p-button-pure>
+  <p-button-pure slot="start" type="button" icon="heart" hide-label="true">Favorites</p-button-pure>
+  <p-button-pure slot="start" type="button" icon="heart" hide-label="true">Favorites</p-button-pure>
+  <p-button-pure slot="start" type="button" icon="heart" hide-label="true">Favorites</p-button-pure>
+  <p-button-pure slot="start" type="button" icon="heart" hide-label="true">Favorites</p-button-pure>
+  <p-button-pure slot="start" type="button" icon="heart" hide-label="true">Favorites</p-button-pure>
+  <p-button-pure slot="end" type="button" icon="heart" hide-label="true">Favorites</p-button-pure>
+  <p-button-pure slot="end" type="button" icon="heart" hide-label="true">Favorites</p-button-pure>
+  <p-button-pure slot="end" type="button" icon="heart" hide-label="true">Favorites</p-button-pure>
+  <p-button-pure slot="end" type="button" icon="heart" hide-label="true">Favorites</p-button-pure>
+  <p-button-pure slot="end" type="button" icon="heart" hide-label="true">Favorites</p-button-pure>
+  <p-button-pure slot="end" type="button" icon="heart" hide-label="true">Favorites</p-button-pure>
+  <p-button-pure slot="end" type="button" icon="heart" hide-label="true">Favorites</p-button-pure>
+  <p-button-pure slot="end" type="button" icon="heart" hide-label="true">Favorites</p-button-pure>
+  <p-button-pure slot="end" type="button" icon="heart" hide-label="true" size="x-large">Favorites</p-button-pure>
+  <p-button-pure slot="end" type="button" icon="heart" hide-label="true">Favorites</p-button-pure>
+</p-topbar>

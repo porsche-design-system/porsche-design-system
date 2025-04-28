@@ -1,0 +1,18 @@
+<style>
+  :is([slot='top'], [slot='bottom']) {
+    grid-column: 2/-2;
+    padding-block: 8px;
+  }
+
+  :is(p-link-pure, p-button-pure):is([slot='start'], [slot='end']) {
+    margin-inline: -4px;
+    padding: 4px;
+  }
+</style>
+
+<p-topbar>
+  <p-text slot="top" align="center" theme="dark">Some text</p-text>
+  <p-text slot="bottom" align="center">Some text</p-text>
+  <p-button-pure slot="start" type="button" icon="menu-lines" hide-label="true">Menu</p-button-pure>
+  <p-button slot="end" type="button" variant="secondary" compact="true">Sign in</p-button>
+</p-topbar>
