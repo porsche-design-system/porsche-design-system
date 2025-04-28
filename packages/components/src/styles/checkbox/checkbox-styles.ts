@@ -136,13 +136,13 @@ export const getCheckboxStyles = (
         }),
       })),
     ...(!isDisabled && {
-      '&::-moz-focus-inner': {
+      'input::-moz-focus-inner': {
         border: 0, // reset ua-style (for FF)
       },
-      '&:focus': {
+      'input:focus': {
         outline: 0, // reset ua-style (for older browsers)
       },
-      '&:focus-visible': {
+      'input:focus-visible': {
         outline: `${borderWidthBase} solid ${focusColor}`,
         outlineOffset: '2px',
         ...prefersColorSchemeDarkMediaQuery(theme, {
