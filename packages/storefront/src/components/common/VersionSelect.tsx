@@ -32,7 +32,6 @@ export const VersionSelect = () => {
       value={versions[0].path}
       onUpdate={onVersionChange}
       label="Switch version"
-      aria-label="Switch Porsche Design System version"
       compact={true}
       style={{ '--p-select-background-color': 'theme(colors.backgroundSurface)' } as CSSProperties}
     >
