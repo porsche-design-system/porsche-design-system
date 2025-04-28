@@ -20620,6 +20620,9 @@ exports[`should render dsr component for PTopbar 1`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+::slotted(:is([slot="top"],[slot="bottom"])) {
+  grid-column: 1/-1;
+}
 slot[name="top"], slot[name="bottom"] {
   display: grid;
   grid-template-columns: subgrid;
