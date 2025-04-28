@@ -5,9 +5,10 @@
   "license": "UNLICENSED",
   "scripts": {
     "start-app": "react-scripts start",
-    "build": "yarn build:utilities && yarn build:ag-grid",
+    "build": "yarn build:utilities && yarn build:ag-grid && yarn build:tailwind",
     "build:utilities": "yarn --cwd ./projects/utilities build",
     "build:ag-grid": "yarn --cwd ./projects/ag-grid build",
+    "build:tailwind": "yarn --cwd ./projects/tailwind build",
     "build-app": "react-scripts build",
     "test": "yarn test:unit",
     "test:unit": "yarn --cwd ./projects/utilities test:unit",
