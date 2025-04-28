@@ -36,6 +36,9 @@ export const getComponentCss = (hasGradient: boolean): string => {
         }),
       },
       ...preventFoucOfNestedElementsStyles,
+      '::slotted(:is([slot="top"],[slot="bottom"]))': {
+        gridColumn: '1/-1',
+      },
       slot: {
         '&[name="top"],&[name="bottom"]': {
           display: 'grid',

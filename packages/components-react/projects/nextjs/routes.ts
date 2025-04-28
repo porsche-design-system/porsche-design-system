@@ -784,6 +784,30 @@ const generatedRoutes = {
     "path": "/topbar",
     "name": "Topbar"
   },
+  "topbarBasic": {
+    "path": "/topbar-basic",
+    "name": "TopbarBasic"
+  },
+  "topbarCssVariables": {
+    "path": "/topbar-css-variables",
+    "name": "TopbarCssVariables"
+  },
+  "topbarEdgeCase": {
+    "path": "/topbar-edge-case",
+    "name": "TopbarEdgeCase"
+  },
+  "topbarGradient": {
+    "path": "/topbar-gradient",
+    "name": "TopbarGradient"
+  },
+  "topbarSlotStartEnd": {
+    "path": "/topbar-slot-start-end",
+    "name": "TopbarSlotStartEnd"
+  },
+  "topbarSlotStartEndTopBottom": {
+    "path": "/topbar-slot-start-end-top-bottom",
+    "name": "TopbarSlotStartEndTopBottom"
+  },
   "typographyCyril": {
     "path": "/typography-cyril",
     "name": "TypographyCyril"

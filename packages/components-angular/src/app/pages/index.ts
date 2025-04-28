@@ -227,6 +227,12 @@ import { ToastPrefixedComponent } from './generated/toast-prefixed.component';
 import { ToastStateNeutralComponent } from './generated/toast-state-neutral.component';
 import { ToastStateSuccessComponent } from './generated/toast-state-success.component';
 import { TopbarComponent } from './generated/topbar.component';
+import { TopbarBasicComponent } from './generated/topbar-basic.component';
+import { TopbarCssVariablesComponent } from './generated/topbar-css-variables.component';
+import { TopbarEdgeCaseComponent } from './generated/topbar-edge-case.component';
+import { TopbarGradientComponent } from './generated/topbar-gradient.component';
+import { TopbarSlotStartEndComponent } from './generated/topbar-slot-start-end.component';
+import { TopbarSlotStartEndTopBottomComponent } from './generated/topbar-slot-start-end-top-bottom.component';
 import { TypographyCyrilComponent } from './generated/typography-cyril.component';
 import { TypographyFallbackComponent } from './generated/typography-fallback.component';
 import { TypographyGreekCopticComponent } from './generated/typography-greek-coptic.component';
@@ -432,6 +438,12 @@ export const generatedPages = [
   ToastStateNeutralComponent,
   ToastStateSuccessComponent,
   TopbarComponent,
+  TopbarBasicComponent,
+  TopbarCssVariablesComponent,
+  TopbarEdgeCaseComponent,
+  TopbarGradientComponent,
+  TopbarSlotStartEndComponent,
+  TopbarSlotStartEndTopBottomComponent,
   TypographyCyrilComponent,
   TypographyFallbackComponent,
   TypographyGreekCopticComponent,
@@ -1411,6 +1423,36 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Topbar',
     path: 'topbar',
     component: TopbarComponent,
+  },
+  {
+    name: 'Topbar Basic',
+    path: 'topbar-basic',
+    component: TopbarBasicComponent,
+  },
+  {
+    name: 'Topbar Css Variables',
+    path: 'topbar-css-variables',
+    component: TopbarCssVariablesComponent,
+  },
+  {
+    name: 'Topbar Edge Case',
+    path: 'topbar-edge-case',
+    component: TopbarEdgeCaseComponent,
+  },
+  {
+    name: 'Topbar Gradient',
+    path: 'topbar-gradient',
+    component: TopbarGradientComponent,
+  },
+  {
+    name: 'Topbar Slot Start End',
+    path: 'topbar-slot-start-end',
+    component: TopbarSlotStartEndComponent,
+  },
+  {
+    name: 'Topbar Slot Start End Top Bottom',
+    path: 'topbar-slot-start-end-top-bottom',
+    component: TopbarSlotStartEndTopBottomComponent,
   },
   {
     name: 'Typography Cyril',

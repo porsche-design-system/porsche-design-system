@@ -207,6 +207,12 @@ import { ToastPrefixedPage } from './generated/ToastPrefixed';
 import { ToastStateNeutralPage } from './generated/ToastStateNeutral';
 import { ToastStateSuccessPage } from './generated/ToastStateSuccess';
 import { TopbarPage } from './generated/Topbar';
+import { TopbarBasicPage } from './generated/TopbarBasic';
+import { TopbarCssVariablesPage } from './generated/TopbarCssVariables';
+import { TopbarEdgeCasePage } from './generated/TopbarEdgeCase';
+import { TopbarGradientPage } from './generated/TopbarGradient';
+import { TopbarSlotStartEndPage } from './generated/TopbarSlotStartEnd';
+import { TopbarSlotStartEndTopBottomPage } from './generated/TopbarSlotStartEndTopBottom';
 import { TypographyCyrilPage } from './generated/TypographyCyril';
 import { TypographyFallbackPage } from './generated/TypographyFallback';
 import { TypographyGreekCopticPage } from './generated/TypographyGreekCoptic';
@@ -1185,6 +1191,36 @@ export const generatedRoutes: RouteType[] = [
     name: 'Topbar',
     path: '/topbar',
     element: <TopbarPage />,
+  },
+  {
+    name: 'Topbar Basic',
+    path: '/topbar-basic',
+    element: <TopbarBasicPage />,
+  },
+  {
+    name: 'Topbar Css Variables',
+    path: '/topbar-css-variables',
+    element: <TopbarCssVariablesPage />,
+  },
+  {
+    name: 'Topbar Edge Case',
+    path: '/topbar-edge-case',
+    element: <TopbarEdgeCasePage />,
+  },
+  {
+    name: 'Topbar Gradient',
+    path: '/topbar-gradient',
+    element: <TopbarGradientPage />,
+  },
+  {
+    name: 'Topbar Slot Start End',
+    path: '/topbar-slot-start-end',
+    element: <TopbarSlotStartEndPage />,
+  },
+  {
+    name: 'Topbar Slot Start End Top Bottom',
+    path: '/topbar-slot-start-end-top-bottom',
+    element: <TopbarSlotStartEndTopBottomPage />,
   },
   {
     name: 'Typography Cyril',
