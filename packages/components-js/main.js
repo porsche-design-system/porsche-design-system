@@ -83,8 +83,7 @@ const updateRoute = async (opts) => {
         )
         .replace(
           /(<(?:my-prefix-)?p-[a-z-]+[\S\s]*?)>/g, // tweak components
-          (m, g1) =>
-            g1.includes('theme') ? g1.replace(/theme="[a-z]+"/, `theme="${theme}"`) : `${g1} theme="${theme}">`
+          (m, g1) => (g1.includes('theme') ? `${g1}>` : `${g1} theme="${theme}">`)
         )
         .replace(/(?<!\.)(playground)(?!--)(?: light| dark)?/g, `$1 ${theme}`); // tweak playgrounds, some pages include a "." before or a "--" after the "playground" thus we exclude them
 

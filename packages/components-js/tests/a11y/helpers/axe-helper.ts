@@ -28,7 +28,14 @@ export const test = base.extend<AxeFixture>({
           })})`
         )
         // disable some "best-practice" rules referring to general page compliance which is not needed because only components itself are tested
-        .disableRules(['region', 'landmark-one-main', 'page-has-heading-one', 'landmark-unique', 'heading-order']);
+        .disableRules([
+          'region',
+          'landmark-one-main',
+          'page-has-heading-one',
+          'landmark-unique',
+          'heading-order',
+          'landmark-no-duplicate-banner',
+        ]);
 
     await use(makeAxeBuilder);
   },

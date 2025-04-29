@@ -9871,6 +9871,72 @@ exports[`should match snapshot 1`] = `
     ],
     "styling": "jss",
   },
+  "p-topbar": {
+    "hasAriaProp": true,
+    "hasElementInternals": false,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": true,
+    "nestedComponents": [
+      "p-crest",
+      "p-wordmark",
+    ],
+    "propsMeta": {
+      "aria": {
+        "allowedValues": {
+          "aria-current": "string",
+          "aria-haspopup": "string",
+          "aria-label": "string",
+        },
+        "defaultValue": null,
+        "description": "Add ARIA attributes.",
+        "isAria": true,
+        "type": "TopbarAriaAttribute",
+      },
+      "gradient": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Shows a gradient, useful when the component is used on top of an image or video. When gradient is enabled, then the component will be forced to be rendered with dark theme.",
+        "type": "boolean",
+      },
+      "href": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "When providing an url then the crest/wordmark will be rendered as \`<a>\`.",
+        "type": "string",
+      },
+      "theme": {
+        "allowedValues": [
+          "light",
+          "dark",
+          "auto",
+        ],
+        "defaultValue": "light",
+        "description": "Adapts the coloring depending on the theme.",
+        "type": "Theme",
+      },
+    },
+    "slotsMeta": {
+      "bottom": {
+        "description": "Renders an area underneath the topbar.",
+      },
+      "end": {
+        "description": "Renders an area on the **end** side (dir=ltr: right, dir=rtl: left).",
+      },
+      "start": {
+        "description": "Renders an area on the **start** side (dir=ltr: left, dir=rtl: right).",
+      },
+      "top": {
+        "description": "Renders an area above the topbar.",
+      },
+    },
+    "styling": "jss",
+  },
   "p-wordmark": {
     "hasAriaProp": true,
     "hasElementInternals": false,

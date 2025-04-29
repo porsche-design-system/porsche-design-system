@@ -45,6 +45,7 @@ import {
   PStepperHorizontal,
   PStepperHorizontalItem,
   PSwitch,
+  PTopbar,
   PTable,
   PTableBody,
   PTableCell,
@@ -80,6 +81,10 @@ import {
 
       <div class="playground light" title="should render default display">
         <PDisplay>Some Display</PDisplay>
+      </div>
+
+      <div class="playground light" title="should render default topbar">
+        <PTopbar></PTopbar>
       </div>
 
       <div class="playground light" title="should render default sheet">
@@ -423,6 +428,10 @@ import {
 
         <div class="playground light" title="should render default display with custom prefix">
           <PDisplay>Some Display</PDisplay>
+        </div>
+
+        <div class="playground light" title="should render default topbar with custom prefix">
+          <PTopbar></PTopbar>
         </div>
 
         <div class="playground light" title="should render default sheet with custom prefix">

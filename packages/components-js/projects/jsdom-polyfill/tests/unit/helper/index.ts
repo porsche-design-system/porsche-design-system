@@ -185,6 +185,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-textarea-wrapper': `<p-textarea-wrapper label="Some label">
     <textarea />
   </p-textarea-wrapper>`,
+  'p-topbar': '<p-topbar></p-topbar>',
   'p-toast': '<p-toast></p-toast>',
   'p-wordmark': '<p-wordmark></p-wordmark>',
 };
