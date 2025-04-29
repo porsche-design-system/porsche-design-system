@@ -1,5 +1,7 @@
 @use '@porsche-design-system/components-js/styles' as *;
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --breakpoint-xs: #{$pds-breakpoint-xs}px;
   --breakpoint-sm: #{$pds-breakpoint-s}px;
@@ -123,86 +125,6 @@
   --pds-grid-full-column-end: #{$pds-grid-full-column-end};
   --pds-grid-full-offset: #{$pds-grid-full-offset};
 
-  --pds-gradient-to-bottom: linear-gradient(
-      to bottom,
-      hsla(0, 0%, 0%, 0.8) 0%,
-      hsla(0, 0%, 0%, 0.8) 8.1%,
-      hsla(0, 0%, 0%, 0.8) 15.5%,
-      hsla(0, 0%, 0%, 0.8) 22.5%,
-      hsla(0, 0%, 0%, 0.78) 29%,
-      hsla(0, 0%, 0%, 0.73) 35.3%,
-      hsla(0, 0%, 0%, 0.67) 41.2%,
-      hsla(0, 0%, 0%, 0.6) 47.1%,
-      hsla(0, 0%, 0%, 0.52) 52.9%,
-      hsla(0, 0%, 0%, 0.44) 58.8%,
-      hsla(0, 0%, 0%, 0.33) 64.7%,
-      hsla(0, 0%, 0%, 0.22) 71%,
-      hsla(0, 0%, 0%, 0.12) 77.5%,
-      hsla(0, 0%, 0%, 0.05) 84.5%,
-      hsla(0, 0%, 0%, 0.011) 91.9%,
-      hsla(0, 0%, 0%, 0) 100%
-  );
-
-  --pds-gradient-to-top: linear-gradient(
-      to top,
-      hsla(0, 0%, 0%, 0.8) 0%,
-      hsla(0, 0%, 0%, 0.8) 8.1%,
-      hsla(0, 0%, 0%, 0.8) 15.5%,
-      hsla(0, 0%, 0%, 0.8) 22.5%,
-      hsla(0, 0%, 0%, 0.78) 29%,
-      hsla(0, 0%, 0%, 0.73) 35.3%,
-      hsla(0, 0%, 0%, 0.67) 41.2%,
-      hsla(0, 0%, 0%, 0.6) 47.1%,
-      hsla(0, 0%, 0%, 0.52) 52.9%,
-      hsla(0, 0%, 0%, 0.44) 58.8%,
-      hsla(0, 0%, 0%, 0.33) 64.7%,
-      hsla(0, 0%, 0%, 0.22) 71%,
-      hsla(0, 0%, 0%, 0.12) 77.5%,
-      hsla(0, 0%, 0%, 0.05) 84.5%,
-      hsla(0, 0%, 0%, 0.011) 91.9%,
-      hsla(0, 0%, 0%, 0) 100%
-  );
-
-  --pds-gradient-to-left: linear-gradient(
-      to left,
-      hsla(0, 0%, 0%, 0.8) 0%,
-      hsla(0, 0%, 0%, 0.8) 8.1%,
-      hsla(0, 0%, 0%, 0.8) 15.5%,
-      hsla(0, 0%, 0%, 0.8) 22.5%,
-      hsla(0, 0%, 0%, 0.78) 29%,
-      hsla(0, 0%, 0%, 0.73) 35.3%,
-      hsla(0, 0%, 0%, 0.67) 41.2%,
-      hsla(0, 0%, 0%, 0.6) 47.1%,
-      hsla(0, 0%, 0%, 0.52) 52.9%,
-      hsla(0, 0%, 0%, 0.44) 58.8%,
-      hsla(0, 0%, 0%, 0.33) 64.7%,
-      hsla(0, 0%, 0%, 0.22) 71%,
-      hsla(0, 0%, 0%, 0.12) 77.5%,
-      hsla(0, 0%, 0%, 0.05) 84.5%,
-      hsla(0, 0%, 0%, 0.011) 91.9%,
-      hsla(0, 0%, 0%, 0) 100%
-  );
-
-  --pds-gradient-to-right: linear-gradient(
-      to right,
-      hsla(0, 0%, 0%, 0.8) 0%,
-      hsla(0, 0%, 0%, 0.8) 8.1%,
-      hsla(0, 0%, 0%, 0.8) 15.5%,
-      hsla(0, 0%, 0%, 0.8) 22.5%,
-      hsla(0, 0%, 0%, 0.78) 29%,
-      hsla(0, 0%, 0%, 0.73) 35.3%,
-      hsla(0, 0%, 0%, 0.67) 41.2%,
-      hsla(0, 0%, 0%, 0.6) 47.1%,
-      hsla(0, 0%, 0%, 0.52) 52.9%,
-      hsla(0, 0%, 0%, 0.44) 58.8%,
-      hsla(0, 0%, 0%, 0.33) 64.7%,
-      hsla(0, 0%, 0%, 0.22) 71%,
-      hsla(0, 0%, 0%, 0.12) 77.5%,
-      hsla(0, 0%, 0%, 0.05) 84.5%,
-      hsla(0, 0%, 0%, 0.011) 91.9%,
-      hsla(0, 0%, 0%, 0) 100%
-  );
-
   @keyframes fade-in {
     from {
       opacity: 0;
@@ -213,8 +135,65 @@
   }
 }
 
+@layer theme {
+  .dark {
+    --color-primary: #{$pds-theme-dark-primary};
+    --color-background-base: #{$pds-theme-dark-background-base};
+    --color-background-surface: #{$pds-theme-dark-background-surface};
+    --color-background-shading: #{$pds-theme-dark-background-shading};
+    --color-background-frosted: #{$pds-theme-dark-background-frosted};
+    --color-contrast-low: #{$pds-theme-dark-contrast-low};
+    --color-contrast-medium: #{$pds-theme-dark-contrast-medium};
+    --color-contrast-high: #{$pds-theme-dark-contrast-high};
+    --color-notification-success: #{$pds-theme-dark-notification-success};
+    --color-notification-success-soft: #{$pds-theme-dark-notification-success-soft};
+    --color-notification-warning: #{$pds-theme-dark-notification-warning};
+    --color-notification-warning-soft: #{$pds-theme-dark-notification-warning-soft};
+    --color-notification-error: #{$pds-theme-dark-notification-error};
+    --color-notification-error-soft: #{$pds-theme-dark-notification-error-soft};
+    --color-notification-info: #{$pds-theme-dark-notification-info};
+    --color-notification-info-soft: #{$pds-theme-dark-notification-info-soft};
+    --color-state-hover: #{$pds-theme-dark-state-hover};
+    --color-state-active: #{$pds-theme-dark-state-active};
+    --color-state-focus: #{$pds-theme-dark-state-focus};
+    --color-state-disabled: #{$pds-theme-dark-state-disabled};
+  }
+}
+
 @layer components {
   .pds-grid {
     @include pds-grid;
   }
+}
+
+@utility pds-drop-shadow-low {
+  @include pds-drop-shadow-low;
+}
+
+@utility pds-drop-shadow-medium {
+  @include pds-drop-shadow-medium;
+}
+
+@utility pds-drop-shadow-high {
+  @include pds-drop-shadow-high;
+}
+
+@utility pds-frosted-glass {
+  @include pds-frosted-glass;
+}
+
+@utility pds-gradient-to-bottom {
+  @include pds-gradient-to-bottom;
+}
+
+@utility pds-gradient-to-left {
+  @include pds-gradient-to-left;
+}
+
+@utility pds-gradient-to-right {
+  @include pds-gradient-to-right;
+}
+
+@utility pds-gradient-to-top {
+  @include pds-gradient-to-top;
 }
