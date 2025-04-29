@@ -96,7 +96,10 @@
     "terser-webpack-plugin": "^5.3.11",
     "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^6.0.1",
-    "globby-legacy": "npm:globby@^11.0.4"
+    "globby-legacy": "npm:globby@^11.0.4",
+    "postcss": "^8.5.3",
+    "@tailwindcss/vite": "^4.1.4",
+    "@tailwindcss/postcss": "^4.1.4"
   },
   "peerDependencies": {
     "@playwright/test": "*",
@@ -106,6 +109,7 @@
     "concurrently": "*",
     "globby": "*",
     "sass": "*",
+    "tailwindcss": "*",
     "tsx": "*",
     "typescript": "*",
     "webpack": "*",
