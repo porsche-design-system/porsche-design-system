@@ -16,6 +16,7 @@ export const StateMessage: FunctionalComponent<StateMessageProps> = ({ state, me
   const isErrorState = state === 'error';
 
   return (
+    {/* needs to be rendered always to have correct behaviour for screen readers */}
     <span id={messageId} class="message" role={state === 'success' ? 'status' : 'alert'}>
       {hasMessage(host, message, state) && [
         <PrefixedTagNames.pIcon
