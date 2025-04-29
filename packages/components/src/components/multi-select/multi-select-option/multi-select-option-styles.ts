@@ -33,9 +33,7 @@ export const getComponentCss = (theme: Theme, isDisabled: boolean, selected: boo
     checkbox: {
       flexShrink: 0,
       ...getCheckboxBaseStyles(theme, isDisabled),
-      ...(selected && {
-        ...getCheckboxCheckedBaseStyles(theme, isDisabled),
-      }),
+      ...(selected && getCheckboxCheckedBaseStyles(theme, isDisabled)),
     },
   });
 };
