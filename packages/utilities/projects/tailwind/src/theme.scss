@@ -3,13 +3,6 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --breakpoint-xs: #{$pds-breakpoint-xs}px;
-  --breakpoint-sm: #{$pds-breakpoint-s}px;
-  --breakpoint-md: #{$pds-breakpoint-m}px;
-  --breakpoint-lg: #{$pds-breakpoint-l}px;
-  --breakpoint-xl: #{$pds-breakpoint-xl}px;
-  --breakpoint-2xl: #{$pds-breakpoint-xxl}px;
-
   --color-primary: #{$pds-theme-light-primary};
   --color-background-base: #{$pds-theme-light-background-base};
   --color-background-surface: #{$pds-theme-light-background-surface};
@@ -54,12 +47,15 @@
   --text-xl: #{$pds-font-size-text-x-large};
   --text-xl--line-height: #{$pds-font-line-height};
 
-  --spacing-xs: #{$pds-spacing-fluid-x-small};
-  --spacing-sm: #{$pds-spacing-fluid-small};
-  --spacing-md: #{$pds-spacing-fluid-medium};
-  --spacing-lg: #{$pds-spacing-fluid-large};
-  --spacing-xl: #{$pds-spacing-fluid-x-large};
-  --spacing-2xl: #{$pds-spacing-fluid-xx-large};
+  --breakpoint-xs: #{$pds-breakpoint-xs}px;
+  --breakpoint-sm: #{$pds-breakpoint-s}px;
+  --breakpoint-md: #{$pds-breakpoint-m}px;
+  --breakpoint-lg: #{$pds-breakpoint-l}px;
+  --breakpoint-xl: #{$pds-breakpoint-xl}px;
+  --breakpoint-2xl: #{$pds-breakpoint-xxl}px;
+
+  // Default spacing
+  --spacing: 0.25rem;
 
   --spacing-fluid-xs: #{$pds-spacing-fluid-x-small};
   --spacing-fluid-sm: #{$pds-spacing-fluid-small};
@@ -75,22 +71,42 @@
   --spacing-static-xl: #{$pds-spacing-static-x-large};
   --spacing-static-2xl: #{$pds-spacing-static-xx-large};
 
-  --max-width-prose: 85ch;
-
   --radius-sm: #{$pds-border-radius-small};
   --radius-md: #{$pds-border-radius-medium};
   --radius-lg: #{$pds-border-radius-large};
 
+  --animate-fade-in: #{$pds-motion-duration-short} fade-in #{$pds-motion-easing-base} forwards;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  --ease-base: #{$pds-motion-easing-base};
+  --ease-in: #{$pds-motion-easing-in};
+  --ease-out: #{$pds-motion-easing-out};
+
+  // Undocumented but used by tailwind
   --default-border-width: #{$pds-border-width-base};
+  // TODO: Outline offset
+  --default-outline-width: #{$pds-border-width-base};
+
+  // Custom none namespace variables (https://tailwindcss.com/docs/theme#theme-variable-namespaces)
+
   --border-width-thin: #{$pds-border-width-thin};
   --border-width-base: #{$pds-border-width-base};
 
-  --default-outline-width: #{$pds-border-width-base};
+  --duration-short: #{$pds-motion-duration-short};
+  --duration-moderate: #{$pds-motion-duration-moderate};
+  --duration-long: #{$pds-motion-duration-long};
+  --duration-very-long: #{$pds-motion-duration-very-long};
 
   --default-transition-timing-function: #{$pds-motion-easing-base};
   --default-transition-duration: #{$pds-motion-duration-short};
-
-  --animate-fade-in: #{$pds-motion-duration-short} fade-in #{$pds-motion-easing-base} forwards;
 
   --pds-grid-narrow-column-start: #{$pds-grid-narrow-column-start};
   --pds-grid-narrow-column-end: #{$pds-grid-narrow-column-end};
@@ -124,18 +140,31 @@
   --pds-grid-full-column-start: #{$pds-grid-full-column-start};
   --pds-grid-full-column-end: #{$pds-grid-full-column-end};
   --pds-grid-full-offset: #{$pds-grid-full-offset};
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
 }
 
 @layer theme {
+  .light {
+    --color-primary: #{$pds-theme-light-primary};
+    --color-background-base: #{$pds-theme-light-background-base};
+    --color-background-surface: #{$pds-theme-light-background-surface};
+    --color-background-shading: #{$pds-theme-light-background-shading};
+    --color-background-frosted: #{$pds-theme-light-background-frosted};
+    --color-contrast-low: #{$pds-theme-light-contrast-low};
+    --color-contrast-medium: #{$pds-theme-light-contrast-medium};
+    --color-contrast-high: #{$pds-theme-light-contrast-high};
+    --color-notification-success: #{$pds-theme-light-notification-success};
+    --color-notification-success-soft: #{$pds-theme-light-notification-success-soft};
+    --color-notification-warning: #{$pds-theme-light-notification-warning};
+    --color-notification-warning-soft: #{$pds-theme-light-notification-warning-soft};
+    --color-notification-error: #{$pds-theme-light-notification-error};
+    --color-notification-error-soft: #{$pds-theme-light-notification-error-soft};
+    --color-notification-info: #{$pds-theme-light-notification-info};
+    --color-notification-info-soft: #{$pds-theme-light-notification-info-soft};
+    --color-state-hover: #{$pds-theme-light-state-hover};
+    --color-state-active: #{$pds-theme-light-state-active};
+    --color-state-focus: #{$pds-theme-light-state-focus};
+    --color-state-disabled: #{$pds-theme-light-state-disabled};
+  }
   .dark {
     --color-primary: #{$pds-theme-dark-primary};
     --color-background-base: #{$pds-theme-dark-background-base};
@@ -158,6 +187,30 @@
     --color-state-focus: #{$pds-theme-dark-state-focus};
     --color-state-disabled: #{$pds-theme-dark-state-disabled};
   }
+  .auto {
+    @media (prefers-color-scheme: dark) {
+      --color-primary: #{$pds-theme-dark-primary};
+      --color-background-base: #{$pds-theme-dark-background-base};
+      --color-background-surface: #{$pds-theme-dark-background-surface};
+      --color-background-shading: #{$pds-theme-dark-background-shading};
+      --color-background-frosted: #{$pds-theme-dark-background-frosted};
+      --color-contrast-low: #{$pds-theme-dark-contrast-low};
+      --color-contrast-medium: #{$pds-theme-dark-contrast-medium};
+      --color-contrast-high: #{$pds-theme-dark-contrast-high};
+      --color-notification-success: #{$pds-theme-dark-notification-success};
+      --color-notification-success-soft: #{$pds-theme-dark-notification-success-soft};
+      --color-notification-warning: #{$pds-theme-dark-notification-warning};
+      --color-notification-warning-soft: #{$pds-theme-dark-notification-warning-soft};
+      --color-notification-error: #{$pds-theme-dark-notification-error};
+      --color-notification-error-soft: #{$pds-theme-dark-notification-error-soft};
+      --color-notification-info: #{$pds-theme-dark-notification-info};
+      --color-notification-info-soft: #{$pds-theme-dark-notification-info-soft};
+      --color-state-hover: #{$pds-theme-dark-state-hover};
+      --color-state-active: #{$pds-theme-dark-state-active};
+      --color-state-focus: #{$pds-theme-dark-state-focus};
+      --color-state-disabled: #{$pds-theme-dark-state-disabled};
+    }
+  }
 }
 
 @layer components {
@@ -166,6 +219,7 @@
   }
 }
 
+// Use hardcoded values for tailwind
 @utility pds-drop-shadow-low {
   @include pds-drop-shadow-low;
 }
@@ -178,10 +232,12 @@
   @include pds-drop-shadow-high;
 }
 
+// Use hardcoded values for tailwind
 @utility pds-frosted-glass {
   @include pds-frosted-glass;
 }
 
+// Use CSS variable bg-linear-(--my-gradient), check stops & color values
 @utility pds-gradient-to-bottom {
   @include pds-gradient-to-bottom;
 }
@@ -197,3 +253,11 @@
 @utility pds-gradient-to-top {
   @include pds-gradient-to-top;
 }
+
+// TODO: Add typography utilities, display, heading, text (Use @apply color)
+@utility pds-text-sm {
+  @apply font-porsche-next font-weight-regular leading-normal text-sm;
+}
+
+// TODO: Add skeleton
+
