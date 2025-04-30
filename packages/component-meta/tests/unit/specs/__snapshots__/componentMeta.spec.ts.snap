@@ -6421,9 +6421,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
-    "nestedComponents": [
-      "p-checkbox",
-    ],
     "propsMeta": {
       "disabled": {
         "allowedValues": "boolean",

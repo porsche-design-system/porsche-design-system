@@ -11,4 +11,5 @@
       wrap="soft"
     ></textarea>
   </div>
+  <span id="message" class="message" role="alert"> </span>
 </div>

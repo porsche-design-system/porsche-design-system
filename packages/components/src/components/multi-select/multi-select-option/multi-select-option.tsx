@@ -3,7 +3,6 @@ import type { PropTypes } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
-  getPrefixedTagNames,
   throwIfParentIsNotOfKind,
   validateProps,
 } from '../../../utils';
@@ -50,31 +49,22 @@ export class MultiSelectOption {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const { theme = 'light', selected, highlighted } = this.host;
-    attachComponentCss(this.host, getComponentCss, theme);
+    const { theme = 'light', selected: isSelected, highlighted } = this.host;
 
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
+    attachComponentCss(this.host, getComponentCss, theme, isDisabled, isSelected);
 
     return (
       <Host onClick={!this.isDisabled && this.onClick}>
         <div
           class={{
             option: true,
-            'option--selected': selected,
+            'option--selected': isSelected,
             'option--highlighted': highlighted,
             'option--disabled': this.isDisabled,
           }}
         >
-          <PrefixedTagNames.pCheckbox
-            id="checkbox"
-            class="checkbox"
-            theme={theme}
-            checked={selected}
-            disabled={this.isDisabled}
-            aria-hidden="true"
-          >
-            <slot slot="label" />
-          </PrefixedTagNames.pCheckbox>
+          <span class="checkbox" aria-hidden="true" />
+          <slot slot="label" />
         </div>
       </Host>
     );
