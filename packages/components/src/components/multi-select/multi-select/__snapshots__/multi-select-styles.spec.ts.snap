@@ -180,7 +180,11 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
   }"
 `;
 
@@ -365,7 +369,11 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     overflow-wrap: break-word;
     hyphens: auto;
     color: #09D087;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
   }"
 `;
 
@@ -550,7 +558,11 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     overflow-wrap: break-word;
     hyphens: auto;
     color: #FC4040;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
   }"
 `;
 
@@ -735,7 +747,11 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     overflow-wrap: break-word;
     hyphens: auto;
     color: #197E10;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
   }"
 `;
 
@@ -931,7 +947,11 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     overflow-wrap: break-word;
     hyphens: auto;
     color: #FC4040;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
   }"
 `;
 
@@ -1126,7 +1146,11 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
   }"
 `;
 
@@ -1321,7 +1345,11 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
   }"
 `;
 
@@ -1517,7 +1545,11 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     overflow-wrap: break-word;
     hyphens: auto;
     color: #197E10;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
   }"
 `;
 
@@ -1713,7 +1745,11 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     overflow-wrap: break-word;
     hyphens: auto;
     color: #FC4040;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
   }"
 `;
 
@@ -1908,7 +1944,11 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
   }"
 `;
 
@@ -2104,7 +2144,11 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     overflow-wrap: break-word;
     hyphens: auto;
     color: #09D087;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
   }"
 `;
 
@@ -2289,7 +2333,11 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     overflow-wrap: break-word;
     hyphens: auto;
     color: #FC4040;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
   }"
 `;
 
@@ -2473,7 +2521,11 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
   }"
 `;
 
@@ -2658,7 +2710,11 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     overflow-wrap: break-word;
     hyphens: auto;
     color: #FC4040;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
   }"
 `;
 
@@ -2842,7 +2898,11 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
   }"
 `;
 
@@ -3027,7 +3087,11 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     overflow-wrap: break-word;
     hyphens: auto;
     color: #09D087;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
   }"
 `;
 
@@ -3212,7 +3276,11 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     overflow-wrap: break-word;
     hyphens: auto;
     color: #197E10;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
   }"
 `;
 
@@ -3408,7 +3476,11 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     overflow-wrap: break-word;
     hyphens: auto;
     color: #FC4040;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
   }"
 `;
 
@@ -3603,7 +3675,11 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
   }"
 `;
 
@@ -3799,7 +3875,11 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     overflow-wrap: break-word;
     hyphens: auto;
     color: #09D087;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
   }"
 `;
 
@@ -3995,7 +4075,11 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     overflow-wrap: break-word;
     hyphens: auto;
     color: #FC4040;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
   }"
 `;
 
@@ -4190,6 +4274,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
   }"
 `;
