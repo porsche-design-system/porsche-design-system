@@ -3,5 +3,6 @@
   <div class="wrapper">
     <slot> </slot>
   </div>
+  <span id="message" class="message" role="alert"> </span>
   <span id="loading" class="loading" role="status"> </span>
 </div>
