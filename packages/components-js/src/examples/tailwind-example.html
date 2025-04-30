@@ -69,26 +69,6 @@
   <div class="p-static-2xl bg-red-100"><div class="bg-background-surface">.p-static-2xl</div></div>
 </div>
 
-<div class="flex flex-wrap items-start justify-center gap-4 p-4">
-  <h3 class="text-primary text-center w-full m-0 text-xl font-semibold leading-snug">Drop Shadow</h3>
-  <div class="pds-drop-shadow-low rounded-lg text-sm text-primary bg-background-surface p-fluid-md">.pds-drop-shadow-low</div>
-  <div class="pds-drop-shadow-medium rounded-lg text-sm text-primary bg-background-surface p-fluid-md">.pds-drop-shadow-medium</div>
-  <div class="pds-drop-shadow-high rounded-lg text-sm text-primary bg-background-surface p-fluid-md">.pds-drop-shadow-high</div>
-</div>
-
-<div class="flex flex-wrap justify-center p-fluid-md [background:radial-gradient(circle,_rgba(238,174,202,1)_0%,_rgba(148,187,233,1)_100%)]">
-  <h3 class="text-primary text-center w-full m-0 text-xl font-semibold leading-snug">Frosted Glass</h3>
-  <div class="pds-frosted-glass bg-background-frosted rounded-lg text-sm text-white p-fluid-md">.pds-frosted-glass</div>
-</div>
-
-<div class="flex flex-wrap gap-4 justify-center p-fluid-md [background:radial-gradient(circle,_rgba(238,174,202,1)_0%,_rgba(148,187,233,1)_100%)]">
-  <h3 class="text-primary text-center w-full m-0 text-xl font-semibold leading-snug">Gradient</h3>
-  <div class="pds-gradient-to-top rounded-lg text-sm text-white bg-background-surface p-fluid-md">.pds-gradient-to-top</div>
-  <div class="pds-gradient-to-bottom rounded-lg text-sm text-white bg-background-surface p-fluid-md">.pds-gradient-to-bottom</div>
-  <div class="pds-gradient-to-left rounded-lg text-sm text-white bg-background-surface p-fluid-md">.pds-gradient-to-left</div>
-  <div class="pds-gradient-to-right rounded-lg text-sm text-white bg-background-surface p-fluid-md">.pds-gradient-to-right</div>
-</div>
-
 <div style="transform: translate3d(0px, 0px, 0px)">
   <div class="pds-grid fixed inset-0 pointer-events-none">
     <span class="bg-[rgba(0,0,255,0.1)] col-start-1"></span>
@@ -242,10 +222,22 @@
 <div class="flex flex-col flex-wrap items-center justify-center gap-4 p-4">
   <h3 class="text-primary text-center w-full m-0 text-xl font-semibold leading-snug">Transition Duration</h3>
   <p>Hover to see duration</p>
-  <div class="transition duration-(--duration-short) transform hover:scale-150 rounded-lg text-sm text-white bg-background-surface p-fluid-md">.duration-(--duration-short)</div>
-  <div class="transition duration-(--duration-moderate) transform hover:scale-150 rounded-lg text-sm text-white bg-background-surface p-fluid-md">.duration-(--duration-moderate)</div>
-  <div class="transition duration-(--duration-long) transform hover:scale-150 rounded-lg text-sm text-white bg-background-surface p-fluid-md">.duration-(--duration-long)</div>
-  <div class="transition duration-(--duration-very-long) transform hover:scale-150 rounded-lg text-sm text-white bg-background-surface p-fluid-md">.duration-(--duration-very-long)</div>
+  <div class="transition duration-(--duration-short) transform hover:scale-120 rounded-lg text-sm text-primary bg-background-surface p-fluid-md">.duration-(--duration-short)</div>
+  <div class="transition duration-(--duration-moderate) transform hover:scale-120 rounded-lg text-sm text-primary bg-background-surface p-fluid-md">.duration-(--duration-moderate)</div>
+  <div class="transition duration-(--duration-long) transform hover:scale-120 rounded-lg text-sm text-primary bg-background-surface p-fluid-md">.duration-(--duration-long)</div>
+  <div class="transition duration-(--duration-very-long) transform hover:scale-120 rounded-lg text-sm text-primary bg-background-surface p-fluid-md">.duration-(--duration-very-long)</div>
+</div>
+
+<div class="flex flex-wrap items-start justify-center gap-4 p-4">
+  <h3 class="text-primary text-center w-full m-0 text-xl font-semibold leading-snug">Drop Shadow</h3>
+  <div class="shadow-(--drop-shadow-low) rounded-lg text-sm text-primary bg-background-surface p-fluid-md">.shadow-(--drop-shadow-low)</div>
+  <div class="shadow-(--drop-shadow-medium) rounded-lg text-sm text-primary bg-background-surface p-fluid-md">.shadow-(--drop-shadow-medium)</div>
+  <div class="shadow-(--drop-shadow-high) rounded-lg text-sm text-primary bg-background-surface p-fluid-md">.shadow-(--drop-shadow-high)</div>
+</div>
+
+<div class="flex flex-wrap justify-center p-fluid-md [background:radial-gradient(circle,_rgba(238,174,202,1)_0%,_rgba(148,187,233,1)_100%)]">
+  <h3 class="text-primary text-center w-full m-0 text-xl font-semibold leading-snug">Frosted Glass</h3>
+  <div class="backdrop-blur-(--frosted-glass) bg-background-frosted rounded-lg text-sm text-white p-fluid-md">.backdrop-blur-(--frosted-glass)</div>
 </div>
 
 <div class="flex flex-wrap items-start justify-center gap-4 p-4">
@@ -255,5 +247,30 @@
   <div class="border-b-(length:--border-width-base) before:content-['.border-(length:--border-width-base)']"></div>
 </div>
 
+<div class="flex flex-wrap gap-4 justify-center p-fluid-md [background:radial-gradient(circle,_rgba(238,174,202,1)_0%,_rgba(148,187,233,1)_100%)]">
+  <h3 class="text-primary text-center w-full m-0 text-xl font-semibold leading-snug">Gradient</h3>
+  <div class="bg-linear-(--gradient-to-top) rounded-lg text-sm text-white p-fluid-md">.bg-linear-(--gradient-to-top)</div>
+  <div class="bg-linear-(--gradient-to-bottom) rounded-lg text-sm text-white p-fluid-md">.bg-linear-(--gradient-to-bottom)</div>
+  <div class="bg-linear-(--gradient-to-left) rounded-lg text-sm text-white p-fluid-md">.bg-linear-(--gradient-to-left)</div>
+  <div class="bg-linear-(--gradient-to-right) rounded-lg text-sm text-white p-fluid-md">.bg-linear-(--gradient-to-right)</div>
+</div>
+
 <div class="focus-visible:outline outline-state-focus"></div>
 <div class="hover:bg-state-hover transition-colors"></div>
+
+<p class="pds-text-2xs">.pds-text-2xs</p>
+<p class="pds-text-xs">.pds-text-xs</p>
+<p class="pds-text-sm">.pds-text-sm</p>
+<p class="pds-text-md">.pds-text-md</p>
+<p class="pds-text-lg">.pds-text-lg</p>
+<p class="pds-text-xl">.pds-text-xl</p>
+
+<h6 class="pds-heading-2xl">.pds-heading-2xl</h6>
+<h6 class="pds-heading-xl">.pds-heading-xl</h6>
+<h6 class="pds-heading-lg">.pds-heading-lg</h6>
+<h6 class="pds-heading-md">.pds-heading-md</h6>
+<h6 class="pds-heading-sm">.pds-heading-sm</h6>
+
+<h3 class="pds-display-lg">.pds-display-lg</h3>
+<h3 class="pds-display-md">.pds-display-md</h3>
+<h3 class="pds-display-sm">.pds-display-sm</h3>

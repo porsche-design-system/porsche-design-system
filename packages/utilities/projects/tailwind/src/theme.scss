@@ -26,8 +26,8 @@
 
   --font-porsche-next: #{$pds-font-family};
 
-  --font-weight-regular: #{$pds-font-weight-regular};
-  --font-weight-semi-bold: #{$pds-font-weight-semi-bold};
+  --font-weight-normal: #{$pds-font-weight-regular};
+  --font-weight-semibold: #{$pds-font-weight-semi-bold};
   --font-weight-bold: #{$pds-font-weight-bold};
 
   --leading-normal: #{$pds-font-line-height};
@@ -75,17 +75,6 @@
   --radius-md: #{$pds-border-radius-medium};
   --radius-lg: #{$pds-border-radius-large};
 
-  --animate-fade-in: #{$pds-motion-duration-short} fade-in #{$pds-motion-easing-base} forwards;
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
   --ease-base: #{$pds-motion-easing-base};
   --ease-in: #{$pds-motion-easing-in};
   --ease-out: #{$pds-motion-easing-out};
@@ -94,9 +83,10 @@
   --default-border-width: #{$pds-border-width-base};
   // TODO: Outline offset
   --default-outline-width: #{$pds-border-width-base};
+  --default-transition-timing-function: #{$pds-motion-easing-base};
+  --default-transition-duration: #{$pds-motion-duration-short};
 
-  // Custom none namespace variables (https://tailwindcss.com/docs/theme#theme-variable-namespaces)
-
+  /** Custom none namespace variables (https://tailwindcss.com/docs/theme#theme-variable-namespaces) */
   --border-width-thin: #{$pds-border-width-thin};
   --border-width-base: #{$pds-border-width-base};
 
@@ -105,8 +95,82 @@
   --duration-long: #{$pds-motion-duration-long};
   --duration-very-long: #{$pds-motion-duration-very-long};
 
-  --default-transition-timing-function: #{$pds-motion-easing-base};
-  --default-transition-duration: #{$pds-motion-duration-short};
+  // Only --drop-shadow-xs|md.. available in tailwind variable namespace
+  --drop-shadow-high: 0px 8px 40px rgba(0, 0, 0, 0.16);
+  --drop-shadow-medium: 0px 4px 16px rgba(0, 0, 0, 0.16);
+  --drop-shadow-low: 0px 3px 8px rgba(0, 0, 0, 0.16);
+
+  // --blur-xs|md... would be available to customize
+  --frosted-glass: 32px;
+
+  --gradient-to-bottom: to bottom,
+  hsla(0, 0%, 0%, 0.8) 0%,
+  hsla(0, 0%, 0%, 0.8) 8.1%,
+  hsla(0, 0%, 0%, 0.8) 15.5%,
+  hsla(0, 0%, 0%, 0.8) 22.5%,
+  hsla(0, 0%, 0%, 0.78) 29%,
+  hsla(0, 0%, 0%, 0.73) 35.3%,
+  hsla(0, 0%, 0%, 0.67) 41.2%,
+  hsla(0, 0%, 0%, 0.6) 47.1%,
+  hsla(0, 0%, 0%, 0.52) 52.9%,
+  hsla(0, 0%, 0%, 0.44) 58.8%,
+  hsla(0, 0%, 0%, 0.33) 64.7%,
+  hsla(0, 0%, 0%, 0.22) 71%,
+  hsla(0, 0%, 0%, 0.12) 77.5%,
+  hsla(0, 0%, 0%, 0.05) 84.5%,
+  hsla(0, 0%, 0%, 0.011) 91.9%,
+  hsla(0, 0%, 0%, 0) 100%;
+  --gradient-to-left: to left,
+  hsla(0, 0%, 0%, 0.8) 0%,
+  hsla(0, 0%, 0%, 0.8) 8.1%,
+  hsla(0, 0%, 0%, 0.8) 15.5%,
+  hsla(0, 0%, 0%, 0.8) 22.5%,
+  hsla(0, 0%, 0%, 0.78) 29%,
+  hsla(0, 0%, 0%, 0.73) 35.3%,
+  hsla(0, 0%, 0%, 0.67) 41.2%,
+  hsla(0, 0%, 0%, 0.6) 47.1%,
+  hsla(0, 0%, 0%, 0.52) 52.9%,
+  hsla(0, 0%, 0%, 0.44) 58.8%,
+  hsla(0, 0%, 0%, 0.33) 64.7%,
+  hsla(0, 0%, 0%, 0.22) 71%,
+  hsla(0, 0%, 0%, 0.12) 77.5%,
+  hsla(0, 0%, 0%, 0.05) 84.5%,
+  hsla(0, 0%, 0%, 0.011) 91.9%,
+  hsla(0, 0%, 0%, 0) 100%;
+  --gradient-to-right: to right,
+  hsla(0, 0%, 0%, 0.8) 0%,
+  hsla(0, 0%, 0%, 0.8) 8.1%,
+  hsla(0, 0%, 0%, 0.8) 15.5%,
+  hsla(0, 0%, 0%, 0.8) 22.5%,
+  hsla(0, 0%, 0%, 0.78) 29%,
+  hsla(0, 0%, 0%, 0.73) 35.3%,
+  hsla(0, 0%, 0%, 0.67) 41.2%,
+  hsla(0, 0%, 0%, 0.6) 47.1%,
+  hsla(0, 0%, 0%, 0.52) 52.9%,
+  hsla(0, 0%, 0%, 0.44) 58.8%,
+  hsla(0, 0%, 0%, 0.33) 64.7%,
+  hsla(0, 0%, 0%, 0.22) 71%,
+  hsla(0, 0%, 0%, 0.12) 77.5%,
+  hsla(0, 0%, 0%, 0.05) 84.5%,
+  hsla(0, 0%, 0%, 0.011) 91.9%,
+  hsla(0, 0%, 0%, 0) 100%;
+  --gradient-to-top: to top,
+  hsla(0, 0%, 0%, 0.8) 0%,
+  hsla(0, 0%, 0%, 0.8) 8.1%,
+  hsla(0, 0%, 0%, 0.8) 15.5%,
+  hsla(0, 0%, 0%, 0.8) 22.5%,
+  hsla(0, 0%, 0%, 0.78) 29%,
+  hsla(0, 0%, 0%, 0.73) 35.3%,
+  hsla(0, 0%, 0%, 0.67) 41.2%,
+  hsla(0, 0%, 0%, 0.6) 47.1%,
+  hsla(0, 0%, 0%, 0.52) 52.9%,
+  hsla(0, 0%, 0%, 0.44) 58.8%,
+  hsla(0, 0%, 0%, 0.33) 64.7%,
+  hsla(0, 0%, 0%, 0.22) 71%,
+  hsla(0, 0%, 0%, 0.12) 77.5%,
+  hsla(0, 0%, 0%, 0.05) 84.5%,
+  hsla(0, 0%, 0%, 0.011) 91.9%,
+  hsla(0, 0%, 0%, 0) 100%;
 
   --pds-grid-narrow-column-start: #{$pds-grid-narrow-column-start};
   --pds-grid-narrow-column-end: #{$pds-grid-narrow-column-end};
@@ -219,44 +283,61 @@
   }
 }
 
-// Use hardcoded values for tailwind
-@utility pds-drop-shadow-low {
-  @include pds-drop-shadow-low;
-}
-
-@utility pds-drop-shadow-medium {
-  @include pds-drop-shadow-medium;
-}
-
-@utility pds-drop-shadow-high {
-  @include pds-drop-shadow-high;
-}
-
-// Use hardcoded values for tailwind
-@utility pds-frosted-glass {
-  @include pds-frosted-glass;
-}
-
-// Use CSS variable bg-linear-(--my-gradient), check stops & color values
-@utility pds-gradient-to-bottom {
-  @include pds-gradient-to-bottom;
-}
-
-@utility pds-gradient-to-left {
-  @include pds-gradient-to-left;
-}
-
-@utility pds-gradient-to-right {
-  @include pds-gradient-to-right;
-}
-
-@utility pds-gradient-to-top {
-  @include pds-gradient-to-top;
-}
-
 // TODO: Add typography utilities, display, heading, text (Use @apply color)
+@utility pds-text-2xs {
+  @apply font-porsche-next font-normal leading-normal text-2xs text-primary;
+}
+@utility pds-text-xs {
+  @apply font-porsche-next font-normal text-xs text-primary;
+}
 @utility pds-text-sm {
-  @apply font-porsche-next font-weight-regular leading-normal text-sm;
+  @apply font-porsche-next font-normal text-sm text-primary;
+}
+@utility pds-text-md {
+  @apply font-porsche-next font-normal text-md text-primary;
+}
+@utility pds-text-lg {
+  @apply font-porsche-next font-normal text-lg text-primary;
+}
+@utility pds-text-xl {
+  @apply font-porsche-next font-normal text-xl text-primary;
+}
+@utility pds-text-2xl {
+  @apply font-porsche-next font-normal text-2xl text-primary;
+}
+
+@utility pds-heading-sm {
+  @apply font-porsche-next font-normal text-primary;
+  font-size: #{$pds-font-size-heading-small};
+}
+@utility pds-heading-md {
+  @apply font-porsche-next font-normal text-primary;
+  font-size: #{$pds-font-size-heading-medium};
+}
+@utility pds-heading-lg {
+  @apply font-porsche-next font-normal text-primary;
+  font-size: #{$pds-font-size-heading-large};
+}
+@utility pds-heading-xl {
+  @apply font-porsche-next font-normal text-primary;
+  font-size: #{$pds-font-size-heading-x-large};
+}
+@utility pds-heading-2xl {
+  @apply font-porsche-next font-normal text-primary;
+  font-size: #{$pds-font-size-heading-xx-large};
+}
+
+@utility pds-display-sm {
+  @apply font-porsche-next font-normal text-primary;
+  font-size: #{$pds-font-size-display-small};
+}
+@utility pds-display-md {
+  @apply font-porsche-next font-normal text-primary;
+  font-size: #{$pds-font-size-display-medium};
+}
+@utility pds-display-lg {
+  @apply font-porsche-next font-normal text-primary;
+  font-size: #{$pds-font-size-display-large};
 }
 
 // TODO: Add skeleton
