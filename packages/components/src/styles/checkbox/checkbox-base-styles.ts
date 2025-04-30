@@ -12,7 +12,8 @@ import {
 } from '@porsche-design-system/styles';
 import { addImportantToEachRule, getTransition, SCALING_BASE_VALUE } from '../common-styles';
 import { prefersColorSchemeDarkMediaQuery } from '../prefers-color-scheme-dark-media-query';
-import { cssVarInternalCheckboxScaling } from './checkbox-styles';
+
+export const cssVarInternalCheckboxScaling = '--p-internal-checkbox-scaling';
 
 export const getCheckboxBaseStyles = (
   theme: Theme,
