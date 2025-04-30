@@ -83,8 +83,12 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -281,8 +285,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FC4040;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -408,8 +416,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   overflow-wrap: break-word;
   hyphens: auto;
   color: #CC1922;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -509,8 +521,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FC4040;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -610,8 +626,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   overflow-wrap: break-word;
   hyphens: auto;
   color: #CC1922;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -736,8 +756,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -862,8 +886,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -962,8 +990,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -1062,8 +1094,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -1189,8 +1225,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   overflow-wrap: break-word;
   hyphens: auto;
   color: #09D087;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -1316,8 +1356,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   overflow-wrap: break-word;
   hyphens: auto;
   color: #197E10;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -1417,8 +1461,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   overflow-wrap: break-word;
   hyphens: auto;
   color: #09D087;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -1518,8 +1566,12 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   overflow-wrap: break-word;
   hyphens: auto;
   color: #197E10;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -1643,8 +1695,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FC4040;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -1768,8 +1824,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   overflow-wrap: break-word;
   hyphens: auto;
   color: #CC1922;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -1867,8 +1927,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   overflow-wrap: break-word;
   hyphens: auto;
   color: #FC4040;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -1966,8 +2030,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   overflow-wrap: break-word;
   hyphens: auto;
   color: #CC1922;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -2090,8 +2158,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -2214,8 +2286,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -2327,8 +2403,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -2440,8 +2520,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -2538,8 +2622,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -2636,8 +2724,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -2739,8 +2831,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -2842,8 +2938,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -2967,8 +3067,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   overflow-wrap: break-word;
   hyphens: auto;
   color: #09D087;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -3092,8 +3196,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   overflow-wrap: break-word;
   hyphens: auto;
   color: #197E10;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -3191,8 +3299,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   overflow-wrap: break-word;
   hyphens: auto;
   color: #09D087;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -3290,8 +3402,12 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   overflow-wrap: break-word;
   hyphens: auto;
   color: #197E10;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
