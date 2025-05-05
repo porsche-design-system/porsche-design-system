@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Styles`: theme for `tailwind` including utilities for `grid`, `typography` and `skeleton` styles available under
+  `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/tailwind/theme.css';`
+  ([#3849](https://github.com/porsche-design-system/porsche-design-system/pull/3849))
+
 ### Changed
 
 - `Styles`: removed default styles for `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p`, `b` and `strong`
