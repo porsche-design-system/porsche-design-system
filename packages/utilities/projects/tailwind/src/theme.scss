@@ -206,6 +206,15 @@
   --pds-grid-full-column-start: #{$pds-grid-full-column-start};
   --pds-grid-full-column-end: #{$pds-grid-full-column-end};
   --pds-grid-full-offset: #{$pds-grid-full-offset};
+
+  @keyframes skeletonAnimation {
+    from {
+      background-position-x: 100%;
+    }
+    to {
+      background-position-x: -100%;
+    }
+  }
 }
 
 @layer theme {
@@ -336,5 +345,15 @@
   font-size: #{$pds-font-size-display-large};
 }
 
-// TODO: Add skeleton
+@utility pds-skeleton {
+  @include pds-skeleton('light');
+  .dark {
+    @include pds-skeleton('dark');
+  }
+  .auto {
+    @media (prefers-color-scheme: dark) {
+      @include pds-skeleton('dark');
+    }
+  }
+}
 
