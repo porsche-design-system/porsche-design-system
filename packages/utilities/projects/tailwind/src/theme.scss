@@ -1,4 +1,4 @@
-@use '@porsche-design-system/components-js/styles' as *;
+@use '../../utilities/src/index' as *;
 
 @custom-variant dark (&:where(.dark, .dark *));
 
