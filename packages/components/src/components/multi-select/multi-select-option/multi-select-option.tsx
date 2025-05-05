@@ -1,11 +1,6 @@
 import { Component, Element, Host, type JSX, Prop, h, AttachInternals } from '@stencil/core';
 import type { PropTypes } from '../../../types';
-import {
-  AllowedTypes,
-  attachComponentCss,
-  throwIfParentIsNotOfKind,
-  validateProps,
-} from '../../../utils';
+import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../../utils';
 import { getComponentCss } from './multi-select-option-styles';
 import type { MultiSelectOptionInternalHTMLProps } from './multi-select-option-utils';
 
@@ -51,7 +46,7 @@ export class MultiSelectOption {
     validateProps(this, propTypes);
     const { theme = 'light', selected: isSelected, highlighted } = this.host;
 
-    attachComponentCss(this.host, getComponentCss, theme, isDisabled, isSelected);
+    attachComponentCss(this.host, getComponentCss, theme, this.isDisabled, isSelected);
 
     return (
       <Host onClick={!this.isDisabled && this.onClick}>
