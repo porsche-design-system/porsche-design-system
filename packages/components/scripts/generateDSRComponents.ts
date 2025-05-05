@@ -533,6 +533,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         newFileContent = newFileContent
           // remove any jsx since options are not visible in closed multi-select
           .replace(/<>\s*([\s\S]*)\s*<\/>/, '<></>')
+          .replace(/@AttachInternals\(\)/, '')
           .replace(/this\.theme/, 'this.props.theme');
       } else if (tagName === 'p-optgroup') {
         // transform className objects to string
