@@ -2,7 +2,7 @@
 @import '@porsche-design-system/components-js/tailwind/theme.css';
 
 @theme {
-  --font-code: "Menlo, Monaco, Consolas, 'Courier New', monospace";
+  --font-code: Menlo, Monaco, Consolas, 'Courier New', monospace;
 
   --hljs-color: #383a42;
   --hljs-background: #EEEFF266;
