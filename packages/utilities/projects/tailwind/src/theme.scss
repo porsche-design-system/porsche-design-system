@@ -283,60 +283,67 @@
   }
 }
 
-// TODO: Add typography utilities, display, heading, text (Use @apply color)
+// TODO: Do we need this?
+// font-variant normal
+// hyphens: auto;
+// overflow-wrap: break-word;
 @utility pds-text-2xs {
-  @apply font-porsche-next font-normal leading-normal text-2xs text-primary;
+  @apply font-porsche-next not-italic font-normal leading-normal text-2xs text-primary;
 }
 @utility pds-text-xs {
-  @apply font-porsche-next font-normal text-xs text-primary;
+  @apply font-porsche-next not-italic font-normal leading-normal text-xs text-primary;
 }
 @utility pds-text-sm {
-  @apply font-porsche-next font-normal text-sm text-primary;
+  @apply font-porsche-next not-italic font-normal leading-normal text-sm text-primary;
 }
 @utility pds-text-md {
-  @apply font-porsche-next font-normal text-md text-primary;
+  @apply font-porsche-next not-italic font-normal leading-normal text-md text-primary;
 }
 @utility pds-text-lg {
-  @apply font-porsche-next font-normal text-lg text-primary;
+  @apply font-porsche-next not-italic font-normal leading-normal text-lg text-primary;
 }
 @utility pds-text-xl {
-  @apply font-porsche-next font-normal text-xl text-primary;
+  @apply font-porsche-next not-italic font-normal leading-normal text-xl text-primary;
 }
 @utility pds-text-2xl {
-  @apply font-porsche-next font-normal text-2xl text-primary;
+  @apply font-porsche-next not-italic font-normal leading-normal text-2xl text-primary;
 }
 
+// TODO: Do we need this?
+// font-variant normal
 @utility pds-heading-sm {
-  @apply font-porsche-next font-normal text-primary;
+  @apply font-porsche-next not-italic font-semibold leading-normal text-primary;
   font-size: #{$pds-font-size-heading-small};
 }
 @utility pds-heading-md {
-  @apply font-porsche-next font-normal text-primary;
+  @apply font-porsche-next not-italic font-semibold leading-normal text-primary;
   font-size: #{$pds-font-size-heading-medium};
 }
 @utility pds-heading-lg {
-  @apply font-porsche-next font-normal text-primary;
+  @apply font-porsche-next not-italic font-semibold leading-normal text-primary;
   font-size: #{$pds-font-size-heading-large};
 }
 @utility pds-heading-xl {
-  @apply font-porsche-next font-normal text-primary;
+  @apply font-porsche-next not-italic font-semibold leading-normal text-primary;
   font-size: #{$pds-font-size-heading-x-large};
 }
 @utility pds-heading-2xl {
-  @apply font-porsche-next font-normal text-primary;
+  @apply font-porsche-next not-italic font-semibold leading-normal text-primary;
   font-size: #{$pds-font-size-heading-xx-large};
 }
 
+// TODO: Do we need this?
+// font-variant normal
 @utility pds-display-sm {
-  @apply font-porsche-next font-normal text-primary;
+  @apply font-porsche-next not-italic font-normal leading-normal text-primary;
   font-size: #{$pds-font-size-display-small};
 }
 @utility pds-display-md {
-  @apply font-porsche-next font-normal text-primary;
+  @apply font-porsche-next not-italic font-normal leading-normal text-primary;
   font-size: #{$pds-font-size-display-medium};
 }
 @utility pds-display-lg {
-  @apply font-porsche-next font-normal text-primary;
+  @apply font-porsche-next not-italic font-normal leading-normal text-primary;
   font-size: #{$pds-font-size-display-large};
 }
 
