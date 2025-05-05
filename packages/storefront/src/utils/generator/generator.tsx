@@ -152,6 +152,8 @@ import {
   type PToastProps,
   PWordmark,
   type PWordmarkProps,
+  type PTopbarProps,
+  PTopbar,
 } from '@porsche-design-system/components-react/ssr';
 import type { TagName } from '@porsche-design-system/shared';
 import React, { type ReactNode } from 'react';
@@ -318,6 +320,7 @@ export type PropTypeMapping = {
   'p-text-list-item': PTextListItemProps;
   'p-textarea': PTextareaProps;
   'p-textarea-wrapper': PTextareaWrapperProps;
+  'p-topbar': PTopbarProps;
   'p-toast': PToastProps;
   'p-wordmark': PWordmarkProps;
 };
@@ -397,6 +400,7 @@ const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
   'p-text-list-item': PTextListItem,
   'p-textarea': PTextarea,
   'p-textarea-wrapper': PTextareaWrapper,
+  'p-topbar': PTopbar,
   'p-toast': PToast,
   'p-wordmark': PWordmark,
 };
