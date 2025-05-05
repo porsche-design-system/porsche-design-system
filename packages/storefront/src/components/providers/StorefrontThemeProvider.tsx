@@ -29,9 +29,7 @@ export const StorefrontThemeProvider = ({ children }: PropsWithChildren) => {
   const setStorefrontTheme = (storefrontTheme: StorefrontTheme) => {
     setSelectedTheme(storefrontTheme);
     document.body.classList.remove('light', 'dark', 'auto');
-    if (storefrontTheme !== 'auto') {
-      document.body.classList.add(storefrontTheme);
-    }
+    document.body.classList.add(storefrontTheme);
     localStorage.setItem(storefrontThemeLocalStorageKey, storefrontTheme);
   };
 

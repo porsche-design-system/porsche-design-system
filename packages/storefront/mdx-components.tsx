@@ -22,12 +22,12 @@ import type { PropsWithChildren } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 
 export const H3 = ({ children }: PropsWithChildren) => (
-  <PHeading tag="h3" size="large" className="mt-lg mb-md max-w-prose">
+  <PHeading tag="h3" size="large" className="mt-fluid-lg mb-fluid-md max-w-prose">
     {children}
   </PHeading>
 );
 
-export const P = ({ children }: PropsWithChildren) => <PText className="my-sm max-w-prose">{children}</PText>;
+export const P = ({ children }: PropsWithChildren) => <PText className="my-fluid-sm max-w-prose">{children}</PText>;
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -37,7 +37,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </article>
     ),
     h1: ({ children }) => (
-      <PDisplay tag="h1" size="small" className="mt-lg mb-md max-w-prose">
+      <PDisplay tag="h1" size="small" className="mt-fluid-lg mb-fluid-md max-w-prose">
         {children as React.ReactNode}
       </PDisplay>
     ),
@@ -45,7 +45,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <PHeading
         tag="h2"
         size="x-large"
-        className="mt-lg mb-md max-w-prose group scroll-mt-14"
+        className="mt-fluid-lg mb-fluid-md max-w-prose group scroll-mt-14"
         id={kebabCase(children as string)}
       >
         {children as React.ReactNode}
@@ -61,33 +61,33 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     h3: ({ children }) => <H3>{children as React.ReactNode}</H3>,
     h4: ({ children }) => (
-      <PHeading tag="h4" size="medium" className="my-md max-w-prose">
+      <PHeading tag="h4" size="medium" className="my-fluid-md max-w-prose">
         {children as React.ReactNode}
       </PHeading>
     ),
     h5: ({ children }) => (
-      <PHeading tag="h5" size="small" className="my-md max-w-prose">
+      <PHeading tag="h5" size="small" className="my-fluid-md max-w-prose">
         {children as React.ReactNode}
       </PHeading>
     ),
     h6: ({ children }) => (
-      <PHeading tag="h6" size="small" className="my-md max-w-prose">
+      <PHeading tag="h6" size="small" className="my-fluid-md max-w-prose">
         {children as React.ReactNode}
       </PHeading>
     ),
     p: ({ children }) => <P>{children as React.ReactNode}</P>,
-    hr: ({ children }) => <PDivider className="my-lg">{children as React.ReactNode}</PDivider>,
+    hr: ({ children }) => <PDivider className="my-fluid-lg">{children as React.ReactNode}</PDivider>,
     ul: ({ children }) => (
-      <PTextList className="my-sm ms-static-lg max-w-prose">{children as React.ReactNode}</PTextList>
+      <PTextList className="my-fluid-sm ms-static-lg max-w-prose">{children as React.ReactNode}</PTextList>
     ),
     ol: ({ children }) => (
-      <PTextList className="my-sm ms-static-lg max-w-prose" type="numbered">
+      <PTextList className="my-fluid-sm ms-static-lg max-w-prose" type="numbered">
         {children as React.ReactNode}
       </PTextList>
     ),
     li: ({ children }) => <PTextListItem>{children as React.ReactNode}</PTextListItem>,
     table: ({ children }) => (
-      <PTable className="my-md" caption="table">
+      <PTable className="my-fluid-md" caption="table">
         {children as React.ReactNode}
       </PTable>
     ),
@@ -102,16 +102,16 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </PLinkPure>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="my-sm ps-static-md border-s-4 border-solid border-contrast-low">
+      <blockquote className="my-fluid-sm ps-static-md border-s-4 border-solid border-contrast-low">
         {children as React.ReactNode}
       </blockquote>
     ),
-    pre: ({ children }) => <pre className="my-sm">{children as React.ReactNode}</pre>,
+    pre: ({ children }) => <pre className="my-fluid-sm">{children as React.ReactNode}</pre>,
     code: ({ children, className }) => {
       const hasLang = /language-(\w+)/.exec(className || '');
 
       return (
-        <code className="my-md">
+        <code className="my-fluid-md">
           {hasLang ? (
             // @ts-expect-error
             <SyntaxHighlighter

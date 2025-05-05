@@ -58,7 +58,7 @@ export default function RootLayout({
         <meta name="twitter:image" content="/assets/og-image.png" />
         <HeaderPartials />
       </head>
-      <body>
+      <body className="auto">
         <StorefrontThemeProvider>
           <Providers>
             <Canvas>{children}</Canvas>
