@@ -265,7 +265,7 @@ export class SelectWrapperDropdown {
                       'option--indent': !!title,
                     }}
                     onClick={!selected && !disabled ? () => this.setOptionSelected(index) : undefined}
-                    {...getOptionAriaAttributes(selected, disabled, hidden)}
+                    {...getOptionAriaAttributes(selected, disabled, hidden, !!value)}
                   >
                     {value}
                     {selected && !disabled && (

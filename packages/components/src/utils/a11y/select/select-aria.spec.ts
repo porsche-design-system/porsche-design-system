@@ -50,11 +50,14 @@ describe('getListAriaAttributes()', () => {
 
 describe('getOptionAriaAttributes()', () => {
   it.each<Parameters<typeof getOptionAriaAttributes>>([
-    [true, true, false],
-    [true, false, true],
-    [true, false, false],
-    [true, true, true],
-  ])('should return correct aria attributes for isSelected: %s, isDisabled: %s and isHidden: %s', (...args) => {
-    expect(getOptionAriaAttributes(...args)).toMatchSnapshot();
-  });
+    [true, true, false, false],
+    [true, false, true, false],
+    [true, false, false, false],
+    [true, true, true, true],
+  ])(
+    'should return correct aria attributes for isSelected: %s, isDisabled: %s, isHidden: %s and hasValue: %s',
+    (...args) => {
+      expect(getOptionAriaAttributes(...args)).toMatchSnapshot();
+    }
+  );
 });
