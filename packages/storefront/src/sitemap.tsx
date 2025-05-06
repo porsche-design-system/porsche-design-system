@@ -482,6 +482,62 @@ export const sitemap: Routes = {
       },
     },
   },
+  tailwind: {
+    name: 'Tailwind',
+    path: '/tailwind',
+    type: 'CATEGORY',
+    subPaths: {
+      introduction: {
+        name: 'Introduction',
+        path: '/tailwind/introduction',
+        type: 'PAGE',
+      },
+      grid: {
+        name: 'Grid',
+        path: '/tailwind/grid',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/tailwind/grid/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/tailwind/grid/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/tailwind/grid/api',
+            type: 'TAB',
+          },
+        },
+      },
+      theme: {
+        name: 'Theme',
+        path: '/tailwind/theme',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/tailwind/theme/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/tailwind/theme/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/tailwind/theme/api',
+            type: 'TAB',
+          },
+        },
+      },
+    },
+  },
   'must-know': {
     name: 'Must Know',
     path: '/must-know',
