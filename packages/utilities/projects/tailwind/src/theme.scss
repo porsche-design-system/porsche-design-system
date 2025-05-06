@@ -24,6 +24,50 @@
   --color-state-focus: #{$pds-theme-light-state-focus};
   --color-state-disabled: #{$pds-theme-light-state-disabled};
 
+  // Forced light colors
+  --color-primary-light: #{$pds-theme-light-primary};
+  --color-background-base-light: #{$pds-theme-light-background-base};
+  --color-background-surface-light: #{$pds-theme-light-background-surface};
+  --color-background-shading-light: #{$pds-theme-light-background-shading};
+  --color-background-frosted-light: #{$pds-theme-light-background-frosted};
+  --color-contrast-low-light: #{$pds-theme-light-contrast-low};
+  --color-contrast-medium-light: #{$pds-theme-light-contrast-medium};
+  --color-contrast-high-light: #{$pds-theme-light-contrast-high};
+  --color-notification-success-light: #{$pds-theme-light-notification-success};
+  --color-notification-success-soft-light: #{$pds-theme-light-notification-success-soft};
+  --color-notification-warning-light: #{$pds-theme-light-notification-warning};
+  --color-notification-warning-soft-light: #{$pds-theme-light-notification-warning-soft};
+  --color-notification-error-light: #{$pds-theme-light-notification-error};
+  --color-notification-error-soft-light: #{$pds-theme-light-notification-error-soft};
+  --color-notification-info-light: #{$pds-theme-light-notification-info};
+  --color-notification-info-soft-light: #{$pds-theme-light-notification-info-soft};
+  --color-state-hover-light: #{$pds-theme-light-state-hover};
+  --color-state-active-light: #{$pds-theme-light-state-active};
+  --color-state-focus-light: #{$pds-theme-light-state-focus};
+  --color-state-disabled-light: #{$pds-theme-light-state-disabled};
+
+  // Forced dark colors
+  --color-primary-dark: #{$pds-theme-dark-primary};
+  --color-background-base-dark: #{$pds-theme-dark-background-base};
+  --color-background-surface-dark: #{$pds-theme-dark-background-surface};
+  --color-background-shading-dark: #{$pds-theme-dark-background-shading};
+  --color-background-frosted-dark: #{$pds-theme-dark-background-frosted};
+  --color-contrast-low-dark: #{$pds-theme-dark-contrast-low};
+  --color-contrast-medium-dark: #{$pds-theme-dark-contrast-medium};
+  --color-contrast-high-dark: #{$pds-theme-dark-contrast-high};
+  --color-notification-success-dark: #{$pds-theme-dark-notification-success};
+  --color-notification-success-soft-dark: #{$pds-theme-dark-notification-success-soft};
+  --color-notification-warning-dark: #{$pds-theme-dark-notification-warning};
+  --color-notification-warning-soft-dark: #{$pds-theme-dark-notification-warning-soft};
+  --color-notification-error-dark: #{$pds-theme-dark-notification-error};
+  --color-notification-error-soft-dark: #{$pds-theme-dark-notification-error-soft};
+  --color-notification-info-dark: #{$pds-theme-dark-notification-info};
+  --color-notification-info-soft-dark: #{$pds-theme-dark-notification-info-soft};
+  --color-state-hover-dark: #{$pds-theme-dark-state-hover};
+  --color-state-active-dark: #{$pds-theme-dark-state-active};
+  --color-state-focus-dark: #{$pds-theme-dark-state-focus};
+  --color-state-disabled-dark: #{$pds-theme-dark-state-disabled};
+
   --font-porsche-next: #{$pds-font-family};
 
   --font-weight-normal: #{$pds-font-weight-regular};
