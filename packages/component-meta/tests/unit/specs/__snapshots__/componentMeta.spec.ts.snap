@@ -7652,7 +7652,7 @@ exports[`should match snapshot 1`] = `
   },
   "p-select-option": {
     "hasAriaProp": false,
-    "hasElementInternals": true,
+    "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
