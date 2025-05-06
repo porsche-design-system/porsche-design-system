@@ -25,7 +25,8 @@
   --hljs-addition-background: #dafbe1;
   --hljs-attribute-color: #028500;
   --hljs-meta-string-color: #028500;
-  --hljs-built-in-color: #c18401;
+  /*// TODO: Check color contrast*/
+  /*--hljs-built-in-color: #c18401;*/
   --hljs-attr-color: #986801;
   --hljs-variable-color: #986801;
   --hljs-template-variable-color: #986801;
@@ -64,7 +65,7 @@
     --hljs-addition-background: #dafbe1;
     --hljs-attribute-color: #028500;
     --hljs-meta-string-color: #028500;
-    --hljs-built-in-color: #c18401;
+    /*--hljs-built-in-color: #c18401;*/
     --hljs-attr-color: #986801;
     --hljs-variable-color: #986801;
     --hljs-template-variable-color: #986801;
@@ -101,7 +102,7 @@
     --hljs-addition-background: #033a16;
     --hljs-attribute-color: #98c379;
     --hljs-meta-string-color: #98c379;
-    --hljs-built-in-color: #e6c07b;
+    /*--hljs-built-in-color: #e6c07b;*/
     --hljs-attr-color: #d19a66;
     --hljs-variable-color: #d19a66;
     --hljs-template-variable-color: #d19a66;
@@ -139,7 +140,7 @@
       --hljs-addition-background: #033a16;
       --hljs-attribute-color: #98c379;
       --hljs-meta-string-color: #98c379;
-      --hljs-built-in-color: #e6c07b;
+      /*--hljs-built-in-color: #e6c07b;*/
       --hljs-attr-color: #d19a66;
       --hljs-variable-color: #d19a66;
       --hljs-template-variable-color: #d19a66;
