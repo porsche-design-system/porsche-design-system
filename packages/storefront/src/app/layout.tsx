@@ -38,7 +38,7 @@ export default function RootLayout({
 }>) {
   const basePath = getBasePath();
   return (
-    <html lang="en">
+    <html lang="en" className="auto">
       <head>
         <base href={basePath ? `/${basePath}/` : '/'} />
         <meta property="og:image" content="/assets/og-image.png" />
@@ -58,7 +58,7 @@ export default function RootLayout({
         <meta name="twitter:image" content="/assets/og-image.png" />
         <HeaderPartials />
       </head>
-      <body className="auto">
+      <body>
         <StorefrontThemeProvider>
           <Providers>
             <Canvas>{children}</Canvas>
