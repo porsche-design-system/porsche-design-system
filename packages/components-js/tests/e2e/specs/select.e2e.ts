@@ -1111,7 +1111,7 @@ test.describe('selection', () => {
     await waitForStencilLifecycle(page);
 
     const option = getSelectOption(page, 1);
-    await option.click();
+    await option.click({ force: true });
     await waitForStencilLifecycle(page);
 
     expect(await getSelectValue(page), 'after first option selected').toBeUndefined();
