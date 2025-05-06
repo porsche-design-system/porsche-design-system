@@ -35,12 +35,16 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           Your browser does not support the video tag.
         </video>
 
-        <PDisplay className="z-20 mt-[100px] md:mt-lg mx-lg row-start-1 col-start-1 max-w-3xl" size="medium" tag="h1">
+        <PDisplay
+          className="z-20 mt-[100px] md:mt-fluid-lg mx-fluid-lg row-start-1 col-start-1 max-w-3xl"
+          size="medium"
+          tag="h1"
+        >
           Welcome to the Porsche Design System
         </PDisplay>
         <div className="block w-full h-full relative">
           <div
-            className="backdrop-blur-sm bg-background-surface max-w-lg bottom-0 left-0 m-4 p-6 bg-white rounded-lg shadow-lg flex justify-between items-center gap-4"
+            className="bg-background-surface max-w-lg bottom-0 left-0 m-4 p-6 rounded-lg shadow-lg flex justify-between items-center gap-4"
             style={{ marginBottom: '5%', marginLeft: '5%' }}
           >
             <Link href="/news/changelog/" className="absolute inset-0 rounded-l" tabIndex={-1} aria-hidden="true" />
@@ -62,13 +66,13 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
         </div>
       </div>
 
-      <article className="mt-2xl col-span-full xs:col-start-4 xs:col-end-10" aria-label="Introduction">
+      <article className="mt-fluid-2xl col-span-full xs:col-start-4 xs:col-end-10" aria-label="Introduction">
         <PText size="large" align="center">
           This is your all-in-one toolkit for creating high-quality, visually stunning web applications. With intuitive
           Figma libraries, robust Web Components, and comprehensive guidelines, it’s built and tested to embody
           Porsche’s signature quality and design principles.
         </PText>
-        <PText className="mt-md" color="contrast-high" align="center">
+        <PText className="mt-fluid-md" color="contrast-high" align="center">
           We provide protected {''}
           <Link href="https://figma.com/file/EkdP468u4ZVuIRwalKCscb/Design-System-v3?type=design&node-id=105-146">
             Figma
@@ -84,7 +88,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
       </article>
 
       <section
-        className="mt-xl grid gap-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12"
+        className="mt-fluid-xl grid gap-fluid-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12"
         aria-label="Getting started"
       >
         <AppearAnimation animation="fade-in-up">
@@ -96,7 +100,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
               aria-hidden="true"
             />
             <div className="flex items-center w-full gap-3">
-              <div className="relative z-0 w-16 h-16 flex-shrink-0 overflow-hidden">
+              <div className="relative z-0 w-16 h-16 shrink-0 overflow-hidden">
                 <div className="relative w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110 will-change-transform">
                   <Image
                     src="assets/design.png"
@@ -107,11 +111,11 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
                 </div>
               </div>
 
-              <div className="flex-grow">
+              <div className="grow">
                 <PText size="medium">Start Designing</PText>
               </div>
 
-              <div className="flex-shrink-0">
+              <div className="shrink-0">
                 <PLinkPure hideLabel={true} className="relative z-10">
                   <Link href="/designing/introduction/" aria-label={'Start Designing'} />
                 </PLinkPure>
@@ -128,7 +132,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
               aria-hidden="true"
             />
             <div className="flex items-center w-full gap-3">
-              <div className="relative z-0 w-16 h-16 flex-shrink-0 overflow-hidden">
+              <div className="relative z-0 w-16 h-16 shrink-0 overflow-hidden">
                 <div className="relative w-full h-full transition-transform duration-300 ease-in-out transform group-hover:scale-110 will-change-transform">
                   <Image
                     src="assets/code.png"
@@ -139,11 +143,11 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
                 </div>
               </div>
 
-              <div className="flex-grow">
+              <div className="grow">
                 <PText size="medium">Start Coding</PText>
               </div>
 
-              <div className="flex-shrink-0">
+              <div className="shrink-0">
                 <PLinkPure hideLabel={true} className="relative z-10">
                   <Link href="/developing/introduction/" aria-label={'Start Coding'} />
                 </PLinkPure>
@@ -154,7 +158,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
       </section>
 
       <section
-        className="mt-xl grid gap-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12"
+        className="mt-fluid-xl grid gap-fluid-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12"
         aria-label="Important links"
       >
         <AppearAnimation animation="fade-in-up">
@@ -250,7 +254,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
       </section>
 
       <section
-        className="mt-lg grid gap-md sm:grid-cols-1 col-span-full xs:col-start-2 xs:col-end-12"
+        className="mt-fluid-lg grid gap-fluid-md sm:grid-cols-1 col-span-full xs:col-start-2 xs:col-end-12"
         aria-label="Accessibility"
       >
         <AppearAnimation animation="fade-in-up">
@@ -271,7 +275,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
       </section>
 
       <section
-        className="mt-2xl mb-2xl grid gap-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12"
+        className="mt-fluid-2xl mb-fluid-2xl grid gap-fluid-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12"
         aria-label="How to create a feature Request"
       >
         <PHeading tag="h2" size="x-large">
@@ -282,21 +286,21 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             We value your feedback, ideas, and contributions to help create the best possible experience with the
             Porsche Design System. Ready to get involved? Start by exploring our contributing guidelines!
           </PText>
-          <PLinkPure className="mt-md" size="small">
+          <PLinkPure className="mt-fluid-md" size="small">
             <Link href="/help/feature-request/">Create feature Request</Link>
           </PLinkPure>
         </div>
       </section>
 
       <section
-        className="bg-background-surface rounded-lg mt-xl mb-xl pb-32 grid gap-md sm:grid-cols-full col-span-full xs:col-start-1 xs:col-end-13 grid-cols-12 gap-4"
+        className="bg-background-surface rounded-lg mt-fluid-xl mb-fluid-xl pb-32 grid gap-fluid-md sm:grid-cols-full col-span-full xs:col-start-1 xs:col-end-13 grid-cols-12 gap-4"
         aria-label="Benefits"
       >
-        <div className="col-span-full xs:col-start-4 xs:col-end-10 mt-2xl mb-xl max-w-prose mx-auto">
+        <div className="col-span-full xs:col-start-4 xs:col-end-10 mt-fluid-2xl mb-fluid-xl max-w-(--max-width-prose) mx-auto">
           <PHeading size="x-large" align="center">
             Benefits
           </PHeading>
-          <PText size="medium" className="mt-md" color="contrast-medium" align="center">
+          <PText size="medium" className="mt-fluid-md" color="contrast-medium" align="center">
             The design system offers a variety of benefits compared individual solutions: Saving time and effort while
             accelerating the development process through reusable components, consistent guidelines, and seamless
             integration.
@@ -306,7 +310,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
             <Image src="assets/benefits_efficiency.png" fill={true} alt="" className="p-static-md" />
           </div>
-          <PText align="center" size="x-small" color="contrast-medium" className="mb-xs mt-md">
+          <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
             Short & Longterm Efficiency
           </PText>
           <PText align="center">
@@ -318,7 +322,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
             <Image src="assets/benefits_brand_fit.png" fill={true} alt="" className="p-static-md" />
           </div>
-          <PText align="center" size="x-small" color="contrast-medium" className="mb-xs mt-md">
+          <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
             Brand Fit
           </PText>
           <PText align="center">
@@ -330,7 +334,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
             <Image src="assets/benefits_accessibility.png" fill={true} alt="" className="p-static-md" />
           </div>
-          <PText align="center" size="x-small" color="contrast-medium" className="mb-xs mt-md">
+          <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
             Accessibility Compliant
           </PText>
           <PText align="center">
@@ -342,7 +346,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
             <Image src="assets/benefits_framework_agnostic.png" fill={true} alt="" className="p-static-md" />
           </div>
-          <PText align="center" size="x-small" color="contrast-medium" className="mb-xs mt-md">
+          <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
             Framework Agnostic
           </PText>
           <PText align="center">
@@ -353,7 +357,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
             <Image src="assets/benefits_fluid_responsive.png" fill={true} alt="" className="p-static-md" />
           </div>
-          <PText align="center" size="x-small" color="contrast-medium" className="mb-xs mt-md">
+          <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
             Fluid & Responsive
           </PText>
           <PText align="center">
@@ -365,7 +369,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
             <Image src="assets/benefits_compliant_quality.png" fill={true} alt="" className="p-static-md" />
           </div>
-          <PText align="center" size="x-small" color="contrast-medium" className="mb-xs mt-md">
+          <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
             Compliant Quality
           </PText>
           <PText align="center">
@@ -377,7 +381,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
             <Image src="assets/benefits_update_capability.png" fill={true} alt="" className="p-static-md" />
           </div>
-          <PText align="center" size="x-small" color="contrast-medium" className="mb-xs mt-md">
+          <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
             Updated Capability
           </PText>
           <PText align="center">
@@ -389,7 +393,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
             <Image src="assets/benefits_open_source_code.png" fill={true} alt="" className="p-static-md" />
           </div>
-          <PText align="center" size="x-small" color="contrast-medium" className="mb-xs mt-md">
+          <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
             Open-Source Code
           </PText>
           <PText align="center">
@@ -400,14 +404,14 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
       </section>
 
       <section
-        className="mt-xl grid gap-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12"
+        className="mt-fluid-xl grid gap-fluid-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12"
         aria-label="Resources"
       >
         <div>
           <PHeading size="x-large">Resources</PHeading>
         </div>
 
-        <div className="mt-md mb-xl flex flex-col gap-md items-start">
+        <div className="mt-fluid-md mb-fluid-xl flex flex-col gap-fluid-md items-start">
           <PLinkPure
             icon="external"
             size="medium"

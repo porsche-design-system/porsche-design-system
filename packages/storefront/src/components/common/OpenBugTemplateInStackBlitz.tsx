@@ -62,7 +62,7 @@ export const OpenBugTemplateInStackBlitz = ({ pdsVersions }: OpenBugTemplateInSt
   };
 
   return (
-    <div className="flex flex-col gap-sm">
+    <div className="flex flex-col gap-fluid-sm">
       <PSegmentedControl value={selectedFramework} onUpdate={onUpdateFramework} aria-label="Choose your Framework:">
         {Object.entries(frameworkNameMap)
           .filter(([framework]) => framework !== 'next')
@@ -72,7 +72,7 @@ export const OpenBugTemplateInStackBlitz = ({ pdsVersions }: OpenBugTemplateInSt
             </PSegmentedControlItem>
           ))}
       </PSegmentedControl>
-      <div className="flex gap-xs">
+      <div className="flex gap-fluid-xs">
         <PSelect
           className="w-[13rem]"
           name="pds-versions"
@@ -88,7 +88,12 @@ export const OpenBugTemplateInStackBlitz = ({ pdsVersions }: OpenBugTemplateInSt
         </PSelect>
         <ThemeSelect className="w-[13rem]" value={selectedTheme} onUpdate={onUpdateTheme} />
       </div>
-      <PButton className="w-fit mt-sm" type="button" icon-source="stackBlitzIcon" onClick={() => onOpenInStackblitz()}>
+      <PButton
+        className="w-fit mt-fluid-sm"
+        type="button"
+        icon-source="stackBlitzIcon"
+        onClick={() => onOpenInStackblitz()}
+      >
         Open template in StackBlitz
       </PButton>
     </div>

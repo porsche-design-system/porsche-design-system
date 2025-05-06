@@ -23,7 +23,7 @@ export const SearchRecommendations = ({ onRecommendationClick }: SearchRecommend
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-sm">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-fluid-sm">
       {recommendations.map(({ name, href }, index) => (
         <Link
           key={index}
