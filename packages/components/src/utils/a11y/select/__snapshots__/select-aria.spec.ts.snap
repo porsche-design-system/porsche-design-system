@@ -67,37 +67,33 @@ exports[`getListAriaAttributes() should return correct aria attributes for label
 }
 `;
 
-exports[`getOptionAriaAttributes() should return correct aria attributes for isSelected: true, isDisabled: false, isHidden: false and hasValue: false 1`] = `
+exports[`getOptionAriaAttributes() should return correct aria attributes for isSelected: true, isDisabled: false and isHidden: false 1`] = `
 {
   "aria-disabled": null,
   "aria-hidden": null,
-  "aria-label": "Empty value",
   "aria-selected": "true",
 }
 `;
 
-exports[`getOptionAriaAttributes() should return correct aria attributes for isSelected: true, isDisabled: false, isHidden: true and hasValue: false 1`] = `
+exports[`getOptionAriaAttributes() should return correct aria attributes for isSelected: true, isDisabled: false and isHidden: true 1`] = `
 {
   "aria-disabled": null,
   "aria-hidden": "true",
-  "aria-label": "Empty value",
 }
 `;
 
-exports[`getOptionAriaAttributes() should return correct aria attributes for isSelected: true, isDisabled: true, isHidden: false and hasValue: false 1`] = `
+exports[`getOptionAriaAttributes() should return correct aria attributes for isSelected: true, isDisabled: true and isHidden: false 1`] = `
 {
   "aria-disabled": "true",
   "aria-hidden": null,
-  "aria-label": "Empty value",
   "aria-selected": "true",
 }
 `;
 
-exports[`getOptionAriaAttributes() should return correct aria attributes for isSelected: true, isDisabled: true, isHidden: true and hasValue: true 1`] = `
+exports[`getOptionAriaAttributes() should return correct aria attributes for isSelected: true, isDisabled: true and isHidden: true 1`] = `
 {
   "aria-disabled": "true",
   "aria-hidden": "true",
-  "aria-label": null,
 }
 `;
 
