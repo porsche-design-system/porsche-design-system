@@ -1,6 +1,12 @@
-import { Component, Element, Host, type JSX, Prop, h, AttachInternals } from '@stencil/core';
+import { Component, Element, Host, type JSX, Prop, h } from '@stencil/core';
 import type { PropTypes } from '../../../types';
-import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../../utils';
+import {
+  AllowedTypes,
+  attachComponentCss,
+  getOptionAriaAttributes,
+  throwIfParentIsNotOfKind,
+  validateProps,
+} from '../../../utils';
 import { getComponentCss } from './multi-select-option-styles';
 import type { MultiSelectOptionInternalHTMLProps } from './multi-select-option-utils';
 
@@ -15,7 +21,6 @@ const propTypes: PropTypes<typeof MultiSelectOption> = {
 @Component({
   tag: 'p-multi-select-option',
   shadow: true,
-  formAssociated: true,
 })
 export class MultiSelectOption {
   @Element() public host!: HTMLElement & MultiSelectOptionInternalHTMLProps;
@@ -26,36 +31,30 @@ export class MultiSelectOption {
   /** Disables the option. */
   @Prop() public disabled?: boolean = false;
 
-  @AttachInternals() private internals: ElementInternals;
-
-  private isDisabled: boolean = false;
-
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-multi-select', 'p-optgroup']);
   }
 
-  public componentWillRender(): void {
-    this.isDisabled = this.disabled || this.host.disabledParent;
-    this.internals.role = 'option';
-    this.internals.ariaSelected = String(this.host.selected);
-    this.internals.ariaHidden = String(this.host.hidden);
-    this.internals.ariaDisabled = String(this.isDisabled);
-  }
-
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const { theme = 'light', selected: isSelected, highlighted } = this.host;
+    const { theme = 'light', selected: isSelected, highlighted, hidden } = this.host;
+    const isDisabled = this.disabled || this.host.disabledParent;
 
-    attachComponentCss(this.host, getComponentCss, theme, this.isDisabled, isSelected);
+    attachComponentCss(this.host, getComponentCss, theme, isDisabled, isSelected);
 
     return (
-      <Host onClick={!this.isDisabled && this.onClick}>
+      // TODO: get rid of ARIA sprouting and use `elementInternals` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
+      <Host
+        onClick={!isDisabled && this.onClick}
+        role="option"
+        {...getOptionAriaAttributes(isSelected, isDisabled, hidden)}
+      >
         <div
           class={{
             option: true,
             'option--selected': isSelected,
             'option--highlighted': highlighted,
-            'option--disabled': this.isDisabled,
+            'option--disabled': isDisabled,
           }}
         >
           <span class="checkbox" aria-hidden="true" />

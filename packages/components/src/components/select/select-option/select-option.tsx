@@ -1,10 +1,11 @@
 import type { PropTypes } from '../../../types';
 import { type SelectOptionInternalHTMLProps, validateSelectOption } from './select-option-utils';
 
-import { Component, Element, Host, type JSX, Prop, h, AttachInternals } from '@stencil/core';
+import { Component, Element, Host, type JSX, Prop, h } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
+  getOptionAriaAttributes,
   getPrefixedTagNames,
   throwIfParentIsNotOfKind,
   validateProps,
@@ -22,7 +23,6 @@ const propTypes: PropTypes<typeof SelectOption> = {
 @Component({
   tag: 'p-select-option',
   shadow: true,
-  formAssociated: true,
 })
 export class SelectOption {
   @Element() public host!: HTMLElement & SelectOptionInternalHTMLProps;
@@ -33,45 +33,39 @@ export class SelectOption {
   /** Disables the option. */
   @Prop() public disabled?: boolean = false;
 
-  @AttachInternals() private internals: ElementInternals;
-
-  private isDisabled: boolean = false;
-
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-select', 'p-optgroup']);
   }
 
-  public componentWillRender(): void {
-    this.isDisabled = this.disabled || this.host.disabledParent;
-    this.internals.role = 'option';
-    this.internals.ariaSelected = String(this.host.selected);
-    this.internals.ariaHidden = String(this.host.hidden);
-    this.internals.ariaDisabled = String(this.isDisabled);
-  }
-
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const { theme = 'light', selected, highlighted } = this.host;
+    const { theme = 'light', selected: isSelected, highlighted, hidden } = this.host;
+    const isDisabled = this.disabled || this.host.disabledParent;
     attachComponentCss(this.host, getComponentCss, theme);
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host onClick={!this.isDisabled && this.onClick}>
+      // TODO: get rid of ARIA sprouting and use `elementInternals` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
+      <Host
+        onClick={!isDisabled && this.onClick}
+        role="option"
+        {...getOptionAriaAttributes(isSelected, isDisabled, hidden)}
+      >
         <div
           class={{
             option: true,
-            'option--selected': selected,
+            'option--selected': isSelected,
             'option--highlighted': highlighted,
-            'option--disabled': this.isDisabled,
+            'option--disabled': isDisabled,
           }}
         >
           <slot onSlotchange={this.onSlotChange} />
-          {selected && (
+          {isSelected && (
             <PrefixedTagNames.pIcon
               class="icon"
               aria-hidden="true"
               name="check"
-              color={this.isDisabled ? 'state-disabled' : 'primary'}
+              color={isDisabled ? 'state-disabled' : 'primary'}
               theme={theme}
             />
           )}

@@ -533,7 +533,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         newFileContent = newFileContent
           // remove any jsx since options are not visible in closed multi-select
           .replace(/<>\s*([\s\S]*)\s*<\/>/, '<></>')
-          .replace(/@AttachInternals\(\)/, '')
           .replace(/this\.theme/, 'this.props.theme');
       } else if (tagName === 'p-optgroup') {
         // transform className objects to string
@@ -570,13 +569,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
       } else if (tagName === 'p-select-option') {
         newFileContent = newFileContent
-          .replace(/this\.theme/, 'this.props.theme')
-          .replace(/@AttachInternals\(\)/, '')
-          // transform className objects to string
-          .replace(
-            /className=\{(\{[\S\s]+?})}/g,
-            `className={Object.entries($1).map(([key, value]) => value && key).filter(Boolean).join(' ')}`
-          );
+          // remove any jsx since options are not visible in closed select
+          .replace(/<>\s*([\s\S]*)\s*<\/>/, '<></>')
+          .replace(/this\.theme/, 'this.props.theme');
       } else if (tagName === 'p-text-field-wrapper') {
         // make private like isSearch, isPassword and hasUnit work
         const rawPrivateMembers = Array.from(fileContent.matchAll(/this\.(?:is|has)[A-Z][A-Za-z]+ = .*?;/g))
