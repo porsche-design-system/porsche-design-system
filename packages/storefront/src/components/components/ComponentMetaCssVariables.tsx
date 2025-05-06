@@ -18,7 +18,12 @@ type ComponentMetaCssVariablesProps = {
 export const ComponentMetaCssVariables = ({ cssVariablesMeta }: ComponentMetaCssVariablesProps) => {
   return (
     <>
-      <PHeading tag="h2" size="x-large" className="mt-fluid-lg mb-fluid-md max-w-prose" id="css-variables">
+      <PHeading
+        tag="h2"
+        size="x-large"
+        className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)"
+        id="css-variables"
+      >
         CSS Variables
       </PHeading>
       <PTable caption="Props" className="mt-static-md">

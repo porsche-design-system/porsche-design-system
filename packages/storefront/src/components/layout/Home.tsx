@@ -296,7 +296,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
         className="bg-background-surface rounded-lg mt-fluid-xl mb-fluid-xl pb-32 grid gap-fluid-md sm:grid-cols-full col-span-full xs:col-start-1 xs:col-end-13 grid-cols-12 gap-4"
         aria-label="Benefits"
       >
-        <div className="col-span-full xs:col-start-4 xs:col-end-10 mt-fluid-2xl mb-fluid-xl max-w-prose mx-auto">
+        <div className="col-span-full xs:col-start-4 xs:col-end-10 mt-fluid-2xl mb-fluid-xl max-w-(--max-width-prose) mx-auto">
           <PHeading size="x-large" align="center">
             Benefits
           </PHeading>

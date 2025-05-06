@@ -18,7 +18,7 @@ type ComponentMetaSlotsProps = {
 export const ComponentMetaSlots = ({ slotsMeta }: ComponentMetaSlotsProps) => {
   return (
     <>
-      <PHeading tag="h2" size="x-large" className="mt-fluid-lg mb-fluid-md max-w-prose" id="slots">
+      <PHeading tag="h2" size="x-large" className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)" id="slots">
         Slots
       </PHeading>
       <PTable caption="Props" className="mt-static-md">

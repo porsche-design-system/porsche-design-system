@@ -3,6 +3,7 @@
 
 @theme {
   --font-code: Menlo, Monaco, Consolas, 'Courier New', monospace;
+  --max-width-prose: 85ch;
 
   --hljs-color: #383a42;
   --hljs-background: #EEEFF266;
