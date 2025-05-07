@@ -514,6 +514,28 @@ export const sitemap: Routes = {
           },
         },
       },
+      color: {
+        name: 'Color',
+        path: '/tailwind/color',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/tailwind/color/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/tailwind/color/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/tailwind/color/api',
+            type: 'TAB',
+          },
+        },
+      },
       'drop-shadow': {
         name: 'Drop Shadow',
         path: '/tailwind/drop-shadow',
@@ -576,28 +598,6 @@ export const sitemap: Routes = {
           api: {
             name: 'API',
             path: '/tailwind/grid/api',
-            type: 'TAB',
-          },
-        },
-      },
-      theme: {
-        name: 'Theme',
-        path: '/tailwind/theme',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/tailwind/theme/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/tailwind/theme/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/tailwind/theme/api',
             type: 'TAB',
           },
         },

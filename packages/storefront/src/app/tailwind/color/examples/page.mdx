@@ -1,0 +1,23 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { colorStoryBackgroundColor, colorStoryTextColor } from '@/app/tailwind/color/examples/color.stories';
+
+export const metadata = {
+  title: 'Tailwind: Color - Porsche Design System',
+  description: 'Learn about the Tailwind theme of our design language and how to use it.',
+};
+
+# Color
+
+<TableOfContents headings={["Background Color","Text Color"]} />
+
+The Porsche Design System Tailwind theme customizes Tailwind variables such as `--color-*`, which affect multiple
+Tailwind classes including `bg-*`, `text-*`, `border-*` and others.
+
+## Background Color
+
+<ComponentStory story={colorStoryBackgroundColor} />
+
+## Text Color
+
+<ComponentStory story={colorStoryTextColor} />

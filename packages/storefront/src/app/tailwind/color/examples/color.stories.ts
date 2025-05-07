@@ -2,12 +2,12 @@
 
 import type { Story } from '@/models/story';
 
-export const themeStoryBackground: Story<'div'> = {
+export const colorStoryBackgroundColor: Story<'div'> = {
   generator: () => [
     {
       tag: 'ul',
       properties: {
-        className: 'flex flex-col flex-wrap items-start justify-center gap-static-sm p-fluid-sm',
+        className: 'grid gap-fluid-sm text-sm text-primary',
       },
       children: [
         {
@@ -114,56 +114,17 @@ export const themeStoryBackground: Story<'div'> = {
             '.bg-notification-info-soft',
           ],
         },
-        {
-          tag: 'li',
-          properties: {
-            className: 'flex items-center gap-static-md',
-          },
-          children: [
-            {
-              tag: 'div',
-              properties: { className: 'bg-state-hover w-10 h-10 rounded-md border border-contrast-low' },
-            },
-            '.bg-state-hover',
-          ],
-        },
-        {
-          tag: 'li',
-          properties: {
-            className: 'flex items-center gap-static-md',
-          },
-          children: [
-            {
-              tag: 'div',
-              properties: { className: 'bg-state-active w-10 h-10 rounded-md border border-contrast-low' },
-            },
-            '.bg-state-active',
-          ],
-        },
-        {
-          tag: 'li',
-          properties: {
-            className: 'flex items-center gap-static-md',
-          },
-          children: [
-            {
-              tag: 'div',
-              properties: { className: 'bg-state-disabled w-10 h-10 rounded-md border border-contrast-low' },
-            },
-            '.bg-state-disabled',
-          ],
-        },
       ],
     },
   ],
 };
 
-export const themeStoryText: Story<'div'> = {
+export const colorStoryTextColor: Story<'div'> = {
   generator: () => [
     {
       tag: 'ul',
       properties: {
-        className: 'flex flex-col flex-wrap items-start justify-center gap-static-sm p-fluid-sm',
+        className: 'grid gap-fluid-sm text-sm',
       },
       children: [
         {
