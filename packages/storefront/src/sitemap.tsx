@@ -492,6 +492,72 @@ export const sitemap: Routes = {
         path: '/tailwind/introduction',
         type: 'PAGE',
       },
+      border: {
+        name: 'Border',
+        path: '/tailwind/border',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/tailwind/border/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/tailwind/border/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/tailwind/border/api',
+            type: 'TAB',
+          },
+        },
+      },
+      'drop-shadow': {
+        name: 'Drop Shadow',
+        path: '/tailwind/drop-shadow',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/tailwind/drop-shadow/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/tailwind/drop-shadow/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/tailwind/drop-shadow/api',
+            type: 'TAB',
+          },
+        },
+      },
+      'frosted-glass': {
+        name: 'Frosted Glass',
+        path: '/tailwind/frosted-glass',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/tailwind/frosted-glass/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/tailwind/frosted-glass/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/tailwind/frosted-glass/api',
+            type: 'TAB',
+          },
+        },
+      },
       grid: {
         name: 'Grid',
         path: '/tailwind/grid',
