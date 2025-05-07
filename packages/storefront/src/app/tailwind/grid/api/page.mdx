@@ -2,27 +2,35 @@ import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
   title: 'Tailwind: Grid - Porsche Design System',
-  description: 'Detailed API reference for the Grid style.'
+  description: 'Detailed API reference for the Grid style.',
 };
 
 # Grid
 
-<TableOfContents headings={[]} />
+<TableOfContents headings={["Classes","Variables"]} />
 
-| CSS Variable                        | Description                                                   |
-| ----------------------------------- | ------------------------------------------------------------- |
-| `--pds-grid-narrow-column-start`    | The start position of the `narrow` Porsche Grid column.       |
-| `--pds-grid-narrow-column-end`      | The end position of the `narrow` Porsche Grid column.         |
-| `--pds-grid-narrow-span-one-half`   | The span of one half within the `narrow` Porsche Grid area.   |
-| `--pds-grid-basic-column-start`     | The start position of the `basic` Porsche Grid column.        |
-| `--pds-grid-basic-column-end`       | The start position of the `basic` Porsche Grid column.        |
-| `--pds-grid-basic-span-one-half`    | The span of one half within the `basic` Porsche Grid area.    |
-| `--pds-grid-basic-span-one-third`   | The span of one third within the `basic` Porsche Grid area.   |
-| `--pds-grid-basic-span-two-thirds`  | The span of two half within the `basic` Porsche Grid area.    |
-| `--pds-grid-extended-column-start`  | The start position of the `extended` Porsche Grid column.     |
-| `--pds-grid-extended-column-end`    | The end position of the `extended` Porsche Grid column.       |
-| `--pds-grid-extended-span-one-half` | The span of one half within the `extended` Porsche Grid area. |
-| `--pds-grid-wide-column-start`      | The start position of the `wide` Porsche Grid column.         |
-| `--pds-grid-wide-column-end`        | The end position of the `wide` Porsche Grid column.           |
-| `--pds-grid-full-column-start`      | The start position of the `full` Porsche Grid column.         |
-| `--pds-grid-full-column-end`        | The end position of the `full` Porsche Grid column.           |
+## Classes
+
+| Tailwind `@utility` CSS class | Description                                                                                                                         |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `.pds-grid`                   | Applies the Porsche Grid layout system (must be applied once at the top level, span the full viewport width, and cannot be nested). |
+
+## Variables
+
+| Tailwind CSS variable               | Tailwind CSS class                              | Description                                                              |
+| ----------------------------------- | ----------------------------------------------- | ------------------------------------------------------------------------ |
+| `--pds-grid-full-column-start`      | `.col-start-(--pds-grid-full-column-start)`     | Applies the start position of the `full` column in the Porsche Grid.     |
+| `--pds-grid-full-column-end`        | `.col-end-(--pds-grid-full-column-end)`         | Applies the end position of the `full` column in the Porsche Grid.       |
+| `--pds-grid-wide-column-start`      | `.col-start-(--pds-grid-wide-column-start)`     | Applies the start position of the `wide` column in the Porsche Grid.     |
+| `--pds-grid-wide-column-end`        | `.col-end-(--pds-grid-wide-column-end)`         | Applies the end position of the `wide` column in the Porsche Grid.       |
+| `--pds-grid-extended-column-start`  | `.col-start-(--pds-grid-extended-column-start)` | Applies the start position of the `extended` column in the Porsche Grid. |
+| `--pds-grid-extended-column-end`    | `.col-end-(--pds-grid-extended-column-end)`     | Applies the end position of the `extended` column in the Porsche Grid.   |
+| `--pds-grid-extended-span-one-half` | `.col-(pds-grid-extended-span-one-half)`        | Applies a half span within the `extended` area of the Porsche Grid.      |
+| `--pds-grid-basic-column-start`     | `.col-start-(--pds-grid-basic-column-start)`    | Applies the start position of the `basic` column in the Porsche Grid.    |
+| `--pds-grid-basic-column-end`       | `.col-end-(--pds-grid-basic-column-end)`        | Applies the end position of the `basic` column in the Porsche Grid.      |
+| `--pds-grid-basic-span-one-half`    | `.col-(pds-grid-basic-span-one-half)`           | Applies a half span within the `basic` area of the Porsche Grid.         |
+| `--pds-grid-basic-span-one-third`   | `.col-(pds-grid-basic-span-one-third)`          | Applies a one third span within the `basic` area of the Porsche Grid.    |
+| `--pds-grid-basic-span-two-thirds`  | `.col-(pds-grid-basic-span-two-thirds)`         | Applies a two thirds span within the `basic` area of the Porsche Grid.   |
+| `--pds-grid-narrow-column-start`    | `.col-start-(--pds-grid-narrow-column-start)`   | Applies the start position of the `narrow` column in the Porsche Grid.   |
+| `--pds-grid-narrow-column-end`      | `.col-end-(--pds-grid-narrow-column-end)`       | Applies the end position of the `narrow` column in the Porsche Grid.     |
+| `--pds-grid-narrow-span-one-half`   | `.col-(pds-grid-narrow-span-one-half)`          | Applies a half span within the `narrow` area of the Porsche Grid.        |
