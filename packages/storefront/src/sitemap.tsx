@@ -624,28 +624,6 @@ export const sitemap: Routes = {
           },
         },
       },
-      typography: {
-        name: 'Typography',
-        path: '/tailwind/typography',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/tailwind/typography/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/tailwind/typography/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/tailwind/typography/api',
-            type: 'TAB',
-          },
-        },
-      },
       theme: {
         name: 'Theme',
         path: '/tailwind/theme',
@@ -664,6 +642,28 @@ export const sitemap: Routes = {
           api: {
             name: 'API',
             path: '/tailwind/theme/api',
+            type: 'TAB',
+          },
+        },
+      },
+      typography: {
+        name: 'Typography',
+        path: '/tailwind/typography',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/tailwind/typography/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/tailwind/typography/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/tailwind/typography/api',
             type: 'TAB',
           },
         },
