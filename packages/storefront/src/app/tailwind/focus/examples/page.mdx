@@ -1,0 +1,24 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import {
+  typographyStoryDisplay,
+  typographyStoryHeading,
+  typographyStoryText,
+} from '@/app/tailwind/typography/examples/typography.stories';
+import { focusStory } from '@/app/tailwind/focus/examples/focus.stories';
+
+export const metadata = {
+  title: 'Tailwind: Focus - Porsche Design System',
+  description: 'Learn about the Tailwind focus of our design language and how to use it.',
+};
+
+# Focus
+
+<TableOfContents headings={[]} />
+
+The Porsche Design System Tailwind theme customizes the Tailwind default outline width `--default-outline-width`, which
+affects the Tailwind class `.outline`.
+
+## Focus (only visible by keyboard navigation)
+
+<ComponentStory story={focusStory} />

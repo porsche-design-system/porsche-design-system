@@ -127,7 +127,6 @@
 
   // Undocumented but used by tailwind
   --default-border-width: #{$pds-border-width-base};
-  // TODO: Outline offset
   --default-outline-width: #{$pds-border-width-base};
   --default-transition-timing-function: #{$pds-motion-easing-base};
   --default-transition-duration: #{$pds-motion-duration-short};
