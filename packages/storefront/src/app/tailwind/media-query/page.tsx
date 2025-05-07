@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
 
 export default function Page() {
-  redirect('/tailwind/grid/examples');
+  redirect('/tailwind/media-query/examples');
 }
