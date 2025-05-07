@@ -12,18 +12,12 @@ export const borderStory: Story<'div'> = {
       children: [
         {
           tag: 'div',
-          properties: { className: "border-b before:content-['.border']" },
+          properties: { className: "border-b before:content-['.border-b']" },
         },
         {
           tag: 'div',
           properties: {
-            className: "border-b-(length:--border-width-thin) before:content-['.border-(length:--border-width-thin)']",
-          },
-        },
-        {
-          tag: 'div',
-          properties: {
-            className: "border-b-(length:--border-width-base) before:content-['.border-(length:--border-width-base)']",
+            className: "border-b-thin before:content-['.border-b-thin']",
           },
         },
       ],

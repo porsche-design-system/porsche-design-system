@@ -7,17 +7,31 @@ export const frostedGlassStory: Story<'div'> = {
     {
       tag: 'div',
       properties: {
-        className:
-          'flex p-fluid-md [background:radial-gradient(circle,_rgba(238,174,202,1)_0%,_rgba(148,187,233,1)_100%)]',
+        className: 'relative h-30',
       },
       children: [
+        {
+          tag: 'video',
+          properties: {
+            className: 'absolute inset-0 w-full h-full object-cover',
+            loop: true,
+            autoPlay: true,
+            muted: true,
+          },
+          children: [
+            {
+              tag: 'source',
+              properties: { src: 'assets/mood-porsche-gts.mp4', type: 'video/mp4' },
+            },
+          ],
+        },
         {
           tag: 'div',
           properties: {
             className:
-              'backdrop-blur-(--frosted-glass) bg-background-frosted rounded-lg text-sm text-primary-dark p-fluid-md',
+              'backdrop-blur-frosted-glass bg-background-frosted absolute inset-0 flex items-center justify-center text-primary-dark rounded-lg m-static-md',
           },
-          children: ['.backdrop-blur-(--frosted-glass)'],
+          children: ['.backdrop-blur-frosted-glass'],
         },
       ],
     },

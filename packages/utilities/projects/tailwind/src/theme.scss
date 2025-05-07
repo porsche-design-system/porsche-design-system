@@ -127,27 +127,23 @@
 
   // Undocumented but used by tailwind
   --default-border-width: #{$pds-border-width-base};
-  // TODO: Outline offset
   --default-outline-width: #{$pds-border-width-base};
   --default-transition-timing-function: #{$pds-motion-easing-base};
   --default-transition-duration: #{$pds-motion-duration-short};
 
   /** Custom none namespace variables (https://tailwindcss.com/docs/theme#theme-variable-namespaces) */
   --border-width-thin: #{$pds-border-width-thin};
-  --border-width-base: #{$pds-border-width-base};
 
   --duration-short: #{$pds-motion-duration-short};
   --duration-moderate: #{$pds-motion-duration-moderate};
   --duration-long: #{$pds-motion-duration-long};
   --duration-very-long: #{$pds-motion-duration-very-long};
 
-  // Only --drop-shadow-xs|md.. available in tailwind variable namespace
-  --drop-shadow-high: 0px 8px 40px rgba(0, 0, 0, 0.16);
-  --drop-shadow-medium: 0px 4px 16px rgba(0, 0, 0, 0.16);
-  --drop-shadow-low: 0px 3px 8px rgba(0, 0, 0, 0.16);
+  --shadow-high: 0px 8px 40px rgba(0, 0, 0, 0.16); // Corresponds to drop-shadow-high style
+  --shadow-medium: 0px 4px 16px rgba(0, 0, 0, 0.16); // Corresponds to drop-shadow-medium style
+  --shadow-low: 0px 3px 8px rgba(0, 0, 0, 0.16); // Corresponds to drop-shadow-low style
 
-  // --blur-xs|md... would be available to customize
-  --frosted-glass: 32px;
+  --blur-frosted-glass: 32px;
 
   --gradient-to-bottom: to bottom,
   hsla(0, 0%, 0%, 0.8) 0%,

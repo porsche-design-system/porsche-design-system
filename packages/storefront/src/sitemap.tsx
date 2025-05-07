@@ -536,24 +536,24 @@ export const sitemap: Routes = {
           },
         },
       },
-      'drop-shadow': {
-        name: 'Drop Shadow',
-        path: '/tailwind/drop-shadow',
+      shadow: {
+        name: 'Shadow',
+        path: '/tailwind/shadow',
         type: 'PAGE',
         subPaths: {
           examples: {
             name: 'Examples',
-            path: '/tailwind/drop-shadow/examples',
+            path: '/tailwind/shadow/examples',
             type: 'TAB',
           },
           usage: {
             name: 'Usage',
-            path: '/tailwind/drop-shadow/usage',
+            path: '/tailwind/shadow/usage',
             type: 'TAB',
           },
           api: {
             name: 'API',
-            path: '/tailwind/drop-shadow/api',
+            path: '/tailwind/shadow/api',
             type: 'TAB',
           },
         },
@@ -576,6 +576,72 @@ export const sitemap: Routes = {
           api: {
             name: 'API',
             path: '/tailwind/frosted-glass/api',
+            type: 'TAB',
+          },
+        },
+      },
+      focus: {
+        name: 'Focus',
+        path: '/tailwind/focus',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/tailwind/focus/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/tailwind/focus/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/tailwind/focus/api',
+            type: 'TAB',
+          },
+        },
+      },
+      gradient: {
+        name: 'Gradient',
+        path: '/tailwind/gradient',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/tailwind/gradient/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/tailwind/gradient/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/tailwind/gradient/api',
+            type: 'TAB',
+          },
+        },
+      },
+      'media-query': {
+        name: 'Media Query',
+        path: '/tailwind/media-query',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/tailwind/media-query/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/tailwind/media-query/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/tailwind/media-query/api',
             type: 'TAB',
           },
         },
