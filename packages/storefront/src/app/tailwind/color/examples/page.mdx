@@ -9,10 +9,18 @@ export const metadata = {
 
 # Color
 
-<TableOfContents headings={["Background Color","Text Color"]} />
+<TableOfContents headings={['Background Color', 'Text Color']} />
 
 The Porsche Design System Tailwind theme customizes Tailwind variables such as `--color-*`, which affect multiple
 Tailwind classes including `bg-*`, `text-*`, `border-*` and others.
+
+By default, color tokens use the light theme. To enable the dark theme or automatic theme switching based on system
+settings, add the `.dark` or `.auto` CSS class to the `<html>` element or any HTML element. This applies the selected
+theme to all child elements.
+
+Instead of dynamic colors like `.text-primary` or `.bg-background-base`, you can also use fixed theme variants such as
+`.text-primary-light`, `.bg-background-surface-light`, `.text-primary-dark`, or .`bg-background-surface-dark`, which
+remain constant regardless of theme.
 
 ## Background Color
 
