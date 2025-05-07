@@ -492,6 +492,28 @@ export const sitemap: Routes = {
         path: '/tailwind/introduction',
         type: 'PAGE',
       },
+      border: {
+        name: 'Border',
+        path: '/tailwind/border',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/tailwind/border/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/tailwind/border/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/tailwind/border/api',
+            type: 'TAB',
+          },
+        },
+      },
       grid: {
         name: 'Grid',
         path: '/tailwind/grid',
