@@ -1,0 +1,34 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import {
+  typographyStoryDisplay,
+  typographyStoryHeading,
+  typographyStoryText,
+} from '@/app/tailwind/typography/examples/typography.stories';
+
+export const metadata = {
+  title: 'Tailwind: Typography - Porsche Design System',
+  description: 'Learn about the Tailwind typography of our design language and how to use it.',
+};
+
+# Typography
+
+<TableOfContents headings={["Display","Heading","Text"]} />
+
+The Porsche Design System Tailwind theme exposes custom Tailwind `@utility` CSS classes, `.pds-display-*`,
+`.pds-heading-*` and `.pds-text-*` to properly style headings and paragraphs.
+
+In addition, Tailwind theme variables `--font-*`, `--leading-*` and `--text-*` are customized. This will affect multiple
+utility classes like `.font-*`, `.leading-*`, `.text-*`, etc.
+
+## Display
+
+<ComponentStory story={typographyStoryDisplay} />
+
+## Heading
+
+<ComponentStory story={typographyStoryHeading} />
+
+## Text
+
+<ComponentStory story={typographyStoryText} />
