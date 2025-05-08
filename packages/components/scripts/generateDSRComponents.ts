@@ -531,8 +531,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/formStateRestoreCallback\(state: FormData\)/, 'formStateRestoreCallback()');
       } else if (tagName === 'p-multi-select-option') {
         newFileContent = newFileContent
-          // remove any jsx since options are not visible in closed multi-select
-          // .replace(/<>\s*([\s\S]*)\s*<\/>/, '<></>')
           .replace(/this\.theme/, 'this.props.theme')
           // transform className objects to string
           .replace(
