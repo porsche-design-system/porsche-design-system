@@ -40,7 +40,7 @@ export const getFunctionalComponentInputBaseStyles = (
   compact: boolean,
   readOnly: boolean,
   theme: Theme,
-  additionalDefaultJssStyle?: JssStyle
+  additionalInputJssStyle?: JssStyle
 ): Styles => {
   const scalingVar = getScalingVar(compact);
 
@@ -93,7 +93,7 @@ export const getFunctionalComponentInputBaseStyles = (
         }),
         width: '100%',
         minWidth: '2rem',
-        ...additionalDefaultJssStyle,
+        ...additionalInputJssStyle,
       },
     },
     root: {

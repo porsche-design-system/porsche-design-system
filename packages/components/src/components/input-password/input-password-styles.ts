@@ -16,7 +16,11 @@ export const getComponentCss = (
   const scalingVar = getScalingVar(compact);
   const paddingButton = compact ? '0px' : `calc(${formButtonOrIconPadding} * ${scalingVar})`;
   return getCss({
-    ...getFunctionalComponentInputBaseStyles(disabled, hideLabel, state, toggle, compact, readOnly, theme),
+    ...getFunctionalComponentInputBaseStyles(disabled, hideLabel, state, toggle, compact, readOnly, theme, {
+      '&[type="text"]': {
+        textOverflow: 'ellipsis',
+      },
+    }),
     ...(toggle && {
       button: {
         placeSelf: 'center',

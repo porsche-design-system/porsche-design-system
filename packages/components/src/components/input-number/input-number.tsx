@@ -216,7 +216,7 @@ export class InputNumber {
             class="button"
             type="button"
             icon="minus"
-            disabled={this.disabled || !canDecrement}
+            disabled={this.disabled || this.readOnly || !canDecrement}
             onClick={() => this.updateValue('decrement')}
           >
             Decrement value by {this.step}
@@ -227,7 +227,7 @@ export class InputNumber {
             class="button"
             type="button"
             icon="plus"
-            disabled={this.disabled || !canIncrement}
+            disabled={this.disabled || this.readOnly || !canIncrement}
             onClick={() => this.updateValue('increment')}
           >
             Increment value by {this.step}
