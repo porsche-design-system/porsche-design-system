@@ -23,6 +23,7 @@
   --color-state-active: #{$pds-theme-light-state-active};
   --color-state-focus: #{$pds-theme-light-state-focus};
   --color-state-disabled: #{$pds-theme-light-state-disabled};
+  --color-skeleton: #f7f7f7;
 
   // Forced light colors
   --color-primary-light: #{$pds-theme-light-primary};
@@ -247,6 +248,8 @@
   --pds-grid-full-column-end: #{$pds-grid-full-column-end};
   --pds-grid-full-offset: #{$pds-grid-full-offset};
 
+  --animate-skeleton: skeletonAnimation var(--pds-duration-long) var(--ease-base) infinite;
+
   @keyframes skeletonAnimation {
     from {
       background-position-x: 100%;
@@ -279,6 +282,7 @@
     --color-state-active: #{$pds-theme-light-state-active};
     --color-state-focus: #{$pds-theme-light-state-focus};
     --color-state-disabled: #{$pds-theme-light-state-disabled};
+    --color-skeleton: #f7f7f7;
   }
   .dark {
     --color-primary: #{$pds-theme-dark-primary};
@@ -301,6 +305,7 @@
     --color-state-active: #{$pds-theme-dark-state-active};
     --color-state-focus: #{$pds-theme-dark-state-focus};
     --color-state-disabled: #{$pds-theme-dark-state-disabled};
+    --color-skeleton: #1a1b1e;
   }
   .auto {
     @media (prefers-color-scheme: dark) {
@@ -324,6 +329,7 @@
       --color-state-active: #{$pds-theme-dark-state-active};
       --color-state-focus: #{$pds-theme-dark-state-focus};
       --color-state-disabled: #{$pds-theme-dark-state-disabled};
+      --color-skeleton: #1a1b1e;
     }
   }
 }
@@ -383,14 +389,8 @@
 }
 
 @utility pds-skeleton {
-  @include pds-skeleton('light');
-  .dark {
-    @include pds-skeleton('dark');
-  }
-  .auto {
-    @media (prefers-color-scheme: dark) {
-      @include pds-skeleton('dark');
-    }
-  }
+  @apply animate-skeleton;
+  @apply block rounded-sm;
+  @apply bg-background-surface bg-[linear-gradient(to_right,transparent_0%,var(--color-skeleton)_20%,transparent_50%)] bg-position-[0_0] bg-size-[200%_100%];
 }
 

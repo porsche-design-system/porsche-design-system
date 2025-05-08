@@ -1,4 +1,6 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { spacingStoryFluid, spacingStoryStatic } from '@/app/tailwind/spacing/examples/spacing.stories';
 
 export const metadata = {
   title: 'Tailwind: Spacing - Porsche Design System',
@@ -8,3 +10,17 @@ export const metadata = {
 # Spacing
 
 <TableOfContents headings={[]} />
+
+The Porsche Design System Tailwind theme customizes the Tailwind `--spacing-*` CSS variables. These variables are used
+by various Tailwind utility classes, such as `.p-fluid-*`, `.m-static-*`, and others.
+
+Standard Tailwind spacing utilities like `.p-2` will continue to work as expected. Additionally, we also provide custom
+spacing values available in fluid or static and various sizes.
+
+## Fluid
+
+<ComponentStory story={spacingStoryFluid} />
+
+## Static
+
+<ComponentStory story={spacingStoryStatic} />
