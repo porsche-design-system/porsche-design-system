@@ -1134,7 +1134,7 @@ export namespace Components {
          */
         "unitPosition"?: InputNumberUnitPosition;
         /**
-          * The password input value.
+          * The number input value.
          */
         "value"?: string;
     }
@@ -4684,7 +4684,7 @@ declare namespace LocalJSX {
          */
         "unitPosition"?: InputNumberUnitPosition;
         /**
-          * The password input value.
+          * The number input value.
          */
         "value"?: string;
     }
