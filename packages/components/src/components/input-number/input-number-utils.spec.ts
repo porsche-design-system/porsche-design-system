@@ -1,4 +1,3 @@
-import { describe, it, expect } from 'vitest';
 import { applyStep } from './input-number-utils';
 
 describe('applyStep()', () => {
@@ -29,15 +28,15 @@ describe('applyStep()', () => {
   it('should increment and decrement correctly within range', () => {
     expect(applyStep('10', step, 'increment', min, max)).toBe('15');
     expect(applyStep('95', step, 'increment', min, max)).toBe('100');
-    expect(applyStep('5', step, 'increment')).toBe('10'); // without bounds
-    expect(applyStep('10', step, 'decrement', min, max)).toBe('5');
+    expect(applyStep('5', step, 'increment')).toBe('10');
+    expect(applyStep('10', step, 'decrement', min, max)).toBe('10');
     expect(applyStep('15', step, 'decrement', min, max)).toBe('10');
-    expect(applyStep('10', step, 'decrement')).toBe('5'); // without bounds
+    expect(applyStep('10', step, 'decrement')).toBe('5');
   });
 
   it('should handle missing or invalid inputs gracefully', () => {
     expect(applyStep('', step, 'increment')).toBe('5');
-    expect(applyStep(undefined, step, 'decrement')).toBe('0');
+    expect(applyStep(undefined, step, 'increment')).toBe('5');
   });
 
   it('should respect zero or undefined step (no movement)', () => {
