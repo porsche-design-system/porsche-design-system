@@ -134,18 +134,18 @@
   /** Custom none namespace variables (https://tailwindcss.com/docs/theme#theme-variable-namespaces) */
   --border-width-thin: #{$pds-border-width-thin};
 
-  --duration-short: #{$pds-motion-duration-short};
-  --duration-moderate: #{$pds-motion-duration-moderate};
-  --duration-long: #{$pds-motion-duration-long};
-  --duration-very-long: #{$pds-motion-duration-very-long};
-
   --shadow-high: 0px 8px 40px rgba(0, 0, 0, 0.16); // Corresponds to drop-shadow-high style
   --shadow-medium: 0px 4px 16px rgba(0, 0, 0, 0.16); // Corresponds to drop-shadow-medium style
   --shadow-low: 0px 3px 8px rgba(0, 0, 0, 0.16); // Corresponds to drop-shadow-low style
 
   --blur-frosted-glass: 32px;
 
-  --gradient-to-bottom: to bottom,
+  --pds-duration-short: #{$pds-motion-duration-short};
+  --pds-duration-moderate: #{$pds-motion-duration-moderate};
+  --pds-duration-long: #{$pds-motion-duration-long};
+  --pds-duration-very-long: #{$pds-motion-duration-very-long};
+
+  --pds-gradient-to-bottom: to bottom,
   hsla(0, 0%, 0%, 0.8) 0%,
   hsla(0, 0%, 0%, 0.8) 8.1%,
   hsla(0, 0%, 0%, 0.8) 15.5%,
@@ -162,7 +162,7 @@
   hsla(0, 0%, 0%, 0.05) 84.5%,
   hsla(0, 0%, 0%, 0.011) 91.9%,
   hsla(0, 0%, 0%, 0) 100%;
-  --gradient-to-left: to left,
+  --pds-gradient-to-left: to left,
   hsla(0, 0%, 0%, 0.8) 0%,
   hsla(0, 0%, 0%, 0.8) 8.1%,
   hsla(0, 0%, 0%, 0.8) 15.5%,
@@ -179,7 +179,7 @@
   hsla(0, 0%, 0%, 0.05) 84.5%,
   hsla(0, 0%, 0%, 0.011) 91.9%,
   hsla(0, 0%, 0%, 0) 100%;
-  --gradient-to-right: to right,
+  --pds-gradient-to-right: to right,
   hsla(0, 0%, 0%, 0.8) 0%,
   hsla(0, 0%, 0%, 0.8) 8.1%,
   hsla(0, 0%, 0%, 0.8) 15.5%,
@@ -196,7 +196,7 @@
   hsla(0, 0%, 0%, 0.05) 84.5%,
   hsla(0, 0%, 0%, 0.011) 91.9%,
   hsla(0, 0%, 0%, 0) 100%;
-  --gradient-to-top: to top,
+  --pds-gradient-to-top: to top,
   hsla(0, 0%, 0%, 0.8) 0%,
   hsla(0, 0%, 0%, 0.8) 8.1%,
   hsla(0, 0%, 0%, 0.8) 15.5%,

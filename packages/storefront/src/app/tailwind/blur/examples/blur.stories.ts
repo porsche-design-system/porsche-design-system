@@ -2,7 +2,7 @@
 
 import type { Story } from '@/models/story';
 
-export const frostedGlassStory: Story<'div'> = {
+export const blurStory: Story<'div'> = {
   generator: () => [
     {
       tag: 'div',

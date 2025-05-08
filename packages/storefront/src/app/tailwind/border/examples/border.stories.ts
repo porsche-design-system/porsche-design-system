@@ -12,13 +12,15 @@ export const borderStory: Story<'div'> = {
       children: [
         {
           tag: 'div',
-          properties: { className: "border-b before:content-['.border-b']" },
+          properties: { className: 'border p-fluid-sm' },
+          children: ['.border'],
         },
         {
           tag: 'div',
           properties: {
-            className: "border-b-thin before:content-['.border-b-thin']",
+            className: 'border-thin p-fluid-sm',
           },
+          children: ['.border-thin'],
         },
       ],
     },

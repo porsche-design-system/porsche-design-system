@@ -1,0 +1,27 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Tailwind: Motion - Porsche Design System',
+  description: 'Detailed API reference for the motion style.',
+};
+
+# Motion
+
+<TableOfContents headings={["Duration","Easing"]} />
+
+## Duration
+
+| CSS variable               | Tailwind CSS class                     | Description                                |
+| -------------------------- | -------------------------------------- | ------------------------------------------ |
+| `--pds-duration-short`     | `.duration-(--pds-duration-short)`     | Applies a short `transition-duration`.     |
+| `--pds-duration-moderate`  | `.duration-(--pds-duration-moderate)`  | Applies a moderate `transition-duration`.  |
+| `--pds-duration-long`      | `.duration-(--pds-duration-long)`      | Applies a long `transition-duration`.      |
+| `--pds-duration-very-long` | `.duration-(--pds-duration-very-long)` | Applies a very long `transition-duration`. |
+
+## Easing
+
+| Tailwind CSS variable | Tailwind CSS class | Description                               |
+| --------------------- | ------------------ | ----------------------------------------- |
+| `--ease-base`         | `.ease-base`       | Applies a short `transition-duration`.    |
+| `--ease-in`           | `.ease-in`         | Applies a moderate `transition-duration`. |
+| `--ease-out`          | `.ease-out`        | Applies a long `transition-duration`.     |

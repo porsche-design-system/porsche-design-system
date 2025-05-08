@@ -61,6 +61,13 @@ const getComponents = (): Routes => {
           path: `/components/${component}/usage`,
           type: 'TAB',
         },
+        ...(key === 'p-icon' && {
+          guideline: {
+            name: 'Guideline',
+            path: `/components/${component}/guideline`,
+            type: 'TAB',
+          },
+        }),
         accessibility: {
           name: 'Accessibility',
           path: `/components/${component}/accessibility`,
@@ -558,24 +565,24 @@ export const sitemap: Routes = {
           },
         },
       },
-      'frosted-glass': {
-        name: 'Frosted Glass',
-        path: '/tailwind/frosted-glass',
+      blur: {
+        name: 'Blur',
+        path: '/tailwind/blur',
         type: 'PAGE',
         subPaths: {
           examples: {
             name: 'Examples',
-            path: '/tailwind/frosted-glass/examples',
+            path: '/tailwind/blur/examples',
             type: 'TAB',
           },
           usage: {
             name: 'Usage',
-            path: '/tailwind/frosted-glass/usage',
+            path: '/tailwind/blur/usage',
             type: 'TAB',
           },
           api: {
             name: 'API',
-            path: '/tailwind/frosted-glass/api',
+            path: '/tailwind/blur/api',
             type: 'TAB',
           },
         },
@@ -642,6 +649,28 @@ export const sitemap: Routes = {
           api: {
             name: 'API',
             path: '/tailwind/media-query/api',
+            type: 'TAB',
+          },
+        },
+      },
+      motion: {
+        name: 'Motion',
+        path: '/tailwind/motion',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/tailwind/motion/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/tailwind/motion/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/tailwind/motion/api',
             type: 'TAB',
           },
         },
