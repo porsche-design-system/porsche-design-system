@@ -9,10 +9,10 @@ const containsInvalidAttachInternals = (content: string): boolean => {
   return regex.test(content);
 };
 
+/**
+ * Checks if 'this.internals' is accessed with a property (.) without using optional chaining (?.).
+ */
 const containsInvalidThisInternals = (content: string): boolean => {
-  /**
-   * Checks if 'this.internals' is accessed with a property (.) and followed by a function without using optional chaining (?.).
-   */
   const regex = /\bthis\.internals\.(?!\?\.)/;
   return regex.test(content);
 };
