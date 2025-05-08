@@ -8,7 +8,7 @@ export const metadata = {
 
 # Toast <ComponentStatus tagName="p-toast"></ComponentStatus>
 
-<TableOfContents headings={["Accessibility support","Development considerations","Tests"]} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Tests']} />
 
 ## Accessibility support
 
@@ -32,8 +32,8 @@ export const metadata = {
 
 ### ARIA live announcements
 
-The `Toast` component uses `role="status"` to announce **content changes** for assistive technologies, but only if the
-component is **pre-rendered** and the content is added dynamically.
+The `Toast` component uses `role="status"` to announce **content changes** for assistive technologies. Therefor it is
+**mandatory** that the component is **pre-rendered** and the content (`Toast Item`) is added dynamically.
 
 ## Tests
 
