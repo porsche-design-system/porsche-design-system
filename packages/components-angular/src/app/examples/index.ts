@@ -24,6 +24,8 @@ import { InlineNotificationExampleActionButtonComponent } from './inline-notific
 import { InlineNotificationExampleEventsComponent } from './inline-notification-example-events.component';
 import { InputPasswordExampleControlledComponent } from './input-password-example-controlled.component';
 import { InputPasswordExampleComponent } from './input-password-example.component';
+import { InputNumberExampleControlledComponent } from './input-number-example-controlled.component';
+import { InputNumberExampleComponent } from './input-number-example.component';
 import { LinkTileExampleHyphensComponent } from './link-tile-example-hyphens.component';
 import { LinkTileProductExampleComponent } from './link-tile-product-example.component';
 import { ModalExampleComponent } from './modal-example.component';
@@ -82,6 +84,8 @@ export const examples = [
   InlineNotificationExampleEventsComponent,
   InputPasswordExampleControlledComponent,
   InputPasswordExampleComponent,
+  InputNumberExampleControlledComponent,
+  InputNumberExampleComponent,
   LinkTileExampleHyphensComponent,
   LinkTileProductExampleComponent,
   ModalExampleComponent,
