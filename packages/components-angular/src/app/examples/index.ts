@@ -143,6 +143,8 @@ export * from './inline-notification-example-action-button.component';
 export * from './inline-notification-example-events.component';
 export * from './input-password-example.component';
 export * from './input-password-example-controlled.component';
+export * from './input-number-example.component';
+export * from './input-number-example-controlled.component';
 export * from './link-tile-example-hyphens.component';
 export * from './link-tile-product-example.component';
 export * from './modal-example.component';
