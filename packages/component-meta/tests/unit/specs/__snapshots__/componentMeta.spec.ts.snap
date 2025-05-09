@@ -4342,7 +4342,7 @@ exports[`should match snapshot 1`] = `
       "value": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The password input value.",
+        "description": "The number input value.",
         "propOptions": {
           "mutable": true,
         },
