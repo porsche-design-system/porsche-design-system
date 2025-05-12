@@ -59,6 +59,9 @@
     "tsx": "*",
     "typescript": "*",
     "vite": "*",
+    "tailwindcss": "*",
+    "postcss": "*",
+    "@tailwindcss/postcss": "*",
     "@vanilla-extract/css": "*",
     "@vanilla-extract/vite-plugin": "*"
   },
