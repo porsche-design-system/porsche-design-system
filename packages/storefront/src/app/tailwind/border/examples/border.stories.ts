@@ -2,53 +2,53 @@
 
 import type { Story } from '@/models/story';
 
-export const borderStory: Story<'div'> = {
+export const borderRadiusStory: Story<'div'> = {
   generator: () => [
     {
       tag: 'div',
       properties: {
-        className: 'flex flex-col gap-fluid-sm',
+        className: 'grid gap-fluid-md',
       },
       children: [
         {
           tag: 'div',
-          properties: { className: 'border p-fluid-sm' },
-          children: ['.border'],
+          properties: { className: 'rounded-sm border p-static-md' },
+          children: ['.rounded-sm'],
         },
         {
           tag: 'div',
-          properties: {
-            className: 'border-thin p-fluid-sm',
-          },
-          children: ['.border-thin'],
+          properties: { className: 'rounded-md border p-static-md' },
+          children: ['.rounded-md'],
+        },
+        {
+          tag: 'div',
+          properties: { className: 'rounded-lg border p-static-md' },
+          children: ['.rounded-lg'],
         },
       ],
     },
   ],
 };
 
-export const borderRadiusStory: Story<'div'> = {
+export const borderWidthStory: Story<'div'> = {
   generator: () => [
     {
       tag: 'div',
       properties: {
-        className: 'flex flex-wrap gap-fluid-sm',
+        className: 'grid gap-fluid-md',
       },
       children: [
         {
           tag: 'div',
-          properties: { className: 'rounded-sm text-sm text-primary bg-background-surface p-fluid-md' },
-          children: ['.rounded-sm'],
+          properties: { className: 'border p-static-md' },
+          children: ['.border'],
         },
         {
           tag: 'div',
-          properties: { className: 'rounded-md text-sm text-primary bg-background-surface p-fluid-md' },
-          children: ['.rounded-md'],
-        },
-        {
-          tag: 'div',
-          properties: { className: 'rounded-lg text-sm text-primary bg-background-surface p-fluid-md' },
-          children: ['.rounded-lg'],
+          properties: {
+            className: 'border-thin p-static-md',
+          },
+          children: ['.border-thin'],
         },
       ],
     },
