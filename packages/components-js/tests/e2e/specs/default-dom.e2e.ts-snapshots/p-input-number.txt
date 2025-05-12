@@ -1,0 +1,17 @@
+<div class="root">
+  <label class="label" id="label" for="input-number"> </label>
+  <div class="wrapper">
+    <slot name="start"> </slot>
+    <input
+      aria-describedby="description message"
+      id="input-number"
+      name="value"
+      type="number"
+      placeholder=""
+      step="1"
+      autocomplete=""
+    />
+    <slot name="end"> </slot>
+  </div>
+  <span id="message" class="message" role="alert"> </span>
+</div>

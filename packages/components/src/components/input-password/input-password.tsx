@@ -23,9 +23,6 @@ import {
   hasPropValueChanged,
   validateProps,
 } from '../../utils';
-import { Label } from '../common/label/label';
-import { descriptionId } from '../common/label/label-utils';
-import { StateMessage, messageId } from '../common/state-message/state-message';
 import { getComponentCss } from './input-password-styles';
 import {
   INPUT_PASSWORD_AUTO_COMPLETE,
@@ -35,6 +32,7 @@ import {
   type InputPasswordInputEventDetail,
   type InputPasswordState,
 } from './input-password-utils';
+import { InputBase } from '../common/input-base/input-base';
 
 const propTypes: PropTypes<typeof InputPassword> = {
   label: AllowedTypes.string,
@@ -58,9 +56,11 @@ const propTypes: PropTypes<typeof InputPassword> = {
 };
 
 /**
- * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
- * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
- * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
+ * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
+ * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
+ * @slot {"name": "start", "description": "Shows content at the start of the input (e.g. unit prefix). Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
+ * @slot {"name": "end", "description": "Shows content at the end of the input (e.g. toggle button, unit suffix). Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  */
 @Component({
   tag: 'p-input-password',
@@ -197,39 +197,32 @@ export class InputPassword {
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
-    const id = 'input-password';
     return (
-      <div class="root">
-        <Label
-          host={this.host}
-          label={this.label}
-          description={this.description}
-          htmlFor={id}
-          isRequired={this.required}
-          isDisabled={this.disabled}
-        />
-        <div class="wrapper">
-          <input
-            aria-describedby={`${descriptionId} ${messageId}`}
-            aria-invalid={this.state === 'error' ? 'true' : null}
-            id={id}
-            ref={(el: HTMLInputElement) => (this.inputElement = el)}
-            onInput={this.onInput}
-            onChange={this.onChange}
-            onBlur={this.onBlur}
-            name={this.name}
-            form={this.form}
-            type={this.showPassword ? 'text' : 'password'}
-            required={this.required}
-            placeholder={this.placeholder}
-            maxlength={this.maxLength}
-            minlength={this.minLength}
-            value={this.value}
-            readonly={this.readOnly}
-            autocomplete={this.autoComplete}
-            disabled={this.disabled}
-          />
-          {this.toggle && (
+      <InputBase
+        host={this.host}
+        label={this.label}
+        description={this.description}
+        id="input-password"
+        refElement={(el: HTMLInputElement) => (this.inputElement = el)}
+        onInput={this.onInput}
+        onChange={this.onChange}
+        onBlur={this.onBlur}
+        name={this.name}
+        form={this.form}
+        type={this.showPassword ? 'text' : 'password'}
+        required={this.required}
+        placeholder={this.placeholder}
+        maxLength={this.maxLength}
+        minLength={this.minLength}
+        value={this.value}
+        readOnly={this.readOnly}
+        autoComplete={this.autoComplete}
+        disabled={this.disabled}
+        state={this.state}
+        message={this.message}
+        theme={this.theme}
+        end={
+          this.toggle && (
             <PrefixedTagNames.pButtonPure
               hideLabel={true}
               theme={this.theme}
@@ -242,10 +235,9 @@ export class InputPassword {
             >
               Toggle password visibility
             </PrefixedTagNames.pButtonPure>
-          )}
-        </div>
-        <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
-      </div>
+          )
+        }
+      />
     );
   }
 

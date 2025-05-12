@@ -1,0 +1,56 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from "@/components/common/TableOfContents";
+import {
+  inputNumberStoryUnit,
+  inputNumberStoryControls,
+  inputNumberStorySlots,
+} from "@/app/components/input-number/input-number.stories";
+import {ComponentStory} from "@/components/playground/ComponentStory";
+import {ComponentExample} from "@/components/playground/ComponentExample";
+import {inputNumberExample, inputNumberExampleControlled} from "@porsche-design-system/shared/examples";
+
+export const metadata = {
+  title: 'Input Number - Porsche Design System',
+  description: "Discover detailed examples and insights of the Input Number component."
+}
+
+# Input Number <ComponentStatus tagName="p-input-number"></ComponentStatus>
+
+<TableOfContents headings={["Show Controls","Show Unit","Form","Controlled","Slots"]} />
+
+## Show Controls
+
+If you want to show the controls, you can pass `controls="true"`.
+
+<ComponentStory story={inputNumberStoryControls} />
+
+## Show Unit
+
+If you want to show the unit indicator, you can pass the unit e.g. `unit="EUR"` and optionally position it with `unitPosition="suffix"`.
+
+<ComponentStory story={inputNumberStoryUnit} />
+
+## Form
+
+The `p-input-number` component is a form-associated custom element that integrates seamlessly with forms. Leveraging
+the [ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API, it functions like a
+native input, ensuring compatibility with form behaviors. However, note that browser support for this API is limited.
+
+<ComponentExample codeSample={inputNumberExample} />
+
+## Controlled
+
+In the controlled approach, the `p-input-number` value is externally managed. While the internal value will be updated
+automatically, you can use the `input`, `change` or `blur` event to update the external state.
+
+<ComponentExample codeSample={inputNumberExampleControlled} />
+
+## Slots
+
+Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label`, `description` or `message`.
+Therefore, a named slot can be used. Make sure **not** to define the corresponding property on the host element when a
+named slot is used (because a property definition is preferred over a named slot). For named slots only
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
+allowed.
+
+<ComponentStory story={inputNumberStorySlots} />

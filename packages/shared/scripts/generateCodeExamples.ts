@@ -316,6 +316,29 @@ const codeExamples: CodeSample[] = [
     ],
   },
   {
+    component: 'p-input-number',
+    examples: [
+      {
+        name: 'InputNumberExample',
+        paths: {
+          'vanilla-js': '/input-number-example.html',
+          angular: '/input-number-example.component.ts',
+          react: '/InputNumberExample.tsx',
+          vue: '/InputNumberExample.vue',
+        },
+      },
+      {
+        name: 'InputNumberExampleControlled',
+        paths: {
+          'vanilla-js': '/input-number-example-controlled.html',
+          angular: '/input-number-example-controlled.component.ts',
+          react: '/InputNumberExampleControlled.tsx',
+          vue: '/InputNumberExampleControlled.vue',
+        },
+      },
+    ],
+  },
+  {
     component: 'p-link-tile',
     examples: [
       {
