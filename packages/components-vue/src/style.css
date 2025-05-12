@@ -1,0 +1,4 @@
+@import "tailwindcss";
+@import "@porsche-design-system/components-vue/tailwind/theme.css";
+
+@source not './styles';

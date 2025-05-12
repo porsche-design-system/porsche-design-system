@@ -54,11 +54,9 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "postcss": "^8",
     "autoprefixer": "^10.4.20",
     "remark-gfm": "^4.0.0",
-    "cheerio": "^1.0.0",
-    "@tailwindcss/postcss": "^4.1.4"
+    "cheerio": "^1.0.0"
   },
   "peerDependencies": {
     "@axe-core/playwright": "*",
@@ -70,7 +68,9 @@
     "vitest": "*",
     "react": "*",
     "react-dom": "*",
-    "tailwindcss": "*"
+    "tailwindcss": "*",
+    "postcss": "*",
+    "@tailwindcss/postcss": "*"
   },
   "scope": "@porsche-design-system",
   "volta": {

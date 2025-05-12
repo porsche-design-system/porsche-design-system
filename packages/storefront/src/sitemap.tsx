@@ -499,6 +499,28 @@ export const sitemap: Routes = {
         path: '/tailwind/introduction',
         type: 'PAGE',
       },
+      blur: {
+        name: 'Blur',
+        path: '/tailwind/blur',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/tailwind/blur/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/tailwind/blur/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/tailwind/blur/api',
+            type: 'TAB',
+          },
+        },
+      },
       border: {
         name: 'Border',
         path: '/tailwind/border',
@@ -539,50 +561,6 @@ export const sitemap: Routes = {
           api: {
             name: 'API',
             path: '/tailwind/color/api',
-            type: 'TAB',
-          },
-        },
-      },
-      shadow: {
-        name: 'Shadow',
-        path: '/tailwind/shadow',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/tailwind/shadow/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/tailwind/shadow/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/tailwind/shadow/api',
-            type: 'TAB',
-          },
-        },
-      },
-      blur: {
-        name: 'Blur',
-        path: '/tailwind/blur',
-        type: 'PAGE',
-        subPaths: {
-          examples: {
-            name: 'Examples',
-            path: '/tailwind/blur/examples',
-            type: 'TAB',
-          },
-          usage: {
-            name: 'Usage',
-            path: '/tailwind/blur/usage',
-            type: 'TAB',
-          },
-          api: {
-            name: 'API',
-            path: '/tailwind/blur/api',
             type: 'TAB',
           },
         },
@@ -631,6 +609,28 @@ export const sitemap: Routes = {
           },
         },
       },
+      grid: {
+        name: 'Grid',
+        path: '/tailwind/grid',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/tailwind/grid/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/tailwind/grid/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/tailwind/grid/api',
+            type: 'TAB',
+          },
+        },
+      },
       'media-query': {
         name: 'Media Query',
         path: '/tailwind/media-query',
@@ -675,24 +675,68 @@ export const sitemap: Routes = {
           },
         },
       },
-      grid: {
-        name: 'Grid',
-        path: '/tailwind/grid',
+      shadow: {
+        name: 'Shadow',
+        path: '/tailwind/shadow',
         type: 'PAGE',
         subPaths: {
           examples: {
             name: 'Examples',
-            path: '/tailwind/grid/examples',
+            path: '/tailwind/shadow/examples',
             type: 'TAB',
           },
           usage: {
             name: 'Usage',
-            path: '/tailwind/grid/usage',
+            path: '/tailwind/shadow/usage',
             type: 'TAB',
           },
           api: {
             name: 'API',
-            path: '/tailwind/grid/api',
+            path: '/tailwind/shadow/api',
+            type: 'TAB',
+          },
+        },
+      },
+      skeleton: {
+        name: 'Skeleton',
+        path: '/tailwind/skeleton',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/tailwind/skeleton/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/tailwind/skeleton/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/tailwind/skeleton/api',
+            type: 'TAB',
+          },
+        },
+      },
+      spacing: {
+        name: 'Spacing',
+        path: '/tailwind/spacing',
+        type: 'PAGE',
+        subPaths: {
+          examples: {
+            name: 'Examples',
+            path: '/tailwind/spacing/examples',
+            type: 'TAB',
+          },
+          usage: {
+            name: 'Usage',
+            path: '/tailwind/spacing/usage',
+            type: 'TAB',
+          },
+          api: {
+            name: 'API',
+            path: '/tailwind/spacing/api',
             type: 'TAB',
           },
         },
