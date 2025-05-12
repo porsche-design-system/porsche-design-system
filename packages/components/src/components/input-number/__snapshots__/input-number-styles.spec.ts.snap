@@ -1668,10 +1668,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 .button {
   place-self: center;
   padding: 0px;
-}
-@media(hover:hover) {
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: success, compact: true, readOnly: true, theme: light, unitPosition: prefix, controls: true 2`] = `
@@ -1778,10 +1775,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 .button {
   place-self: center;
   padding: 0px;
-}
-@media(hover:hover) {
-}
-"
+}"
 `;
 
 exports[`getComponentCss() should return correct css for disabled: true, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, unitPosition: prefix, controls: false 1`] = `
@@ -1884,8 +1878,5 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   color: #949598;
   grid-area: 1/1/1/3;
   place-self: center;
-}
-@media(hover:hover) {
-}
-"
+}"
 `;
