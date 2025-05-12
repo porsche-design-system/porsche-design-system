@@ -1,8 +1,10 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { Configurator } from "@/components/playground/Configurator";
+import { Notification } from "@/components/common/Notification";
 import {
   inputNumberStory
 } from "@/app/components/input-number/input-number.stories";
+import Link from "next/link";
 
 export const metadata = {
   title: 'Input Number - Porsche Design System',
@@ -15,6 +17,13 @@ The `p-input-number` component provides a versatile, user‑friendly interface f
 direct keyboard input, increment/decrement controls for precise adjustments, and can optionally display a unit indicator
 (e.g., `EUR`, `%`, `€`) alongside the value for clearer context in your UI.
 
+<Notification heading="Attention" heading-tag="h2" state="warning">
+  <code>p-input-number</code> is intended for true numeric input scenarios, especially when spinbutton increment and
+  decrement controls enhance the user experience. It should not be used for values that merely happen to consist of
+  digits — such as postal codes or credit card numbers. For those cases, consider using another input with an
+  appropriate input mode. For further guidance, see the <Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number#using_number_inputs">MDN documentation on number inputs</Link>.
+</Notification>
+
 A `label` is a caption which informs the user what information a particular form field is asking for. The
 `p-input-number` component can be used with or without a label, but it's recommended to keep the label visible for
 better accessibility whenever possible. When used without a label, it's mandatory to provide a descriptive label text
@@ -22,5 +31,12 @@ for screen readers.
 
 While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to
 give the user visual cues to fill out the form.
+
+**Note:** Native `<input type="number">` elements are intended for true numeric input scenarios, especially when
+spinbutton increment and decrement controls enhance the user experience. They should not be used for values that merely
+happen to consist of digits—such as postal codes or credit card numbers. For those cases, consider using
+`<input type="tel">` or another `<input>` type with an appropriate `inputmode` attribute.
+For further guidance, see the [MDN documentation on number inputs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number#using_number_inputs).
+
 
 <Configurator tagName="p-input-number" story={inputNumberStory} />
