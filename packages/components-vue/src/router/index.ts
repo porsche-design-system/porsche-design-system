@@ -3,8 +3,8 @@ import type { RouteComponent, RouteRecordRaw } from 'vue-router';
 import { createRouter, createWebHistory } from 'vue-router';
 import * as fromExamples from '../examples';
 import * as fromPages from '../pages';
-import * as fromStyles from '../styles';
 import * as fromTailwindStyles from '../tailwind';
+import * as fromVanillaExtractStyles from '../vanilla-extract';
 
 export type RouteType = RouteRecordRaw & {
   isDisabled?: boolean;
@@ -344,74 +344,74 @@ export const routes: RouteType[] = [
     children: [],
   },
   {
-    name: 'Styles Border',
-    path: '/styles-border',
-    component: fromStyles.StylesBorderExample,
+    name: 'Vanilla Extract Styles Border',
+    path: '/vanilla-extract-styles-border',
+    component: fromVanillaExtractStyles.StylesBorderExample,
   },
   {
-    name: 'Styles Drop Shadow',
-    path: '/styles-drop-shadow',
-    component: fromStyles.StylesDropShadowExample,
+    name: 'Vanilla Extract Styles Drop Shadow',
+    path: '/vanilla-extract-styles-drop-shadow',
+    component: fromVanillaExtractStyles.StylesDropShadowExample,
   },
   {
-    name: 'Styles Flyout Grid',
-    path: '/styles-flyout-grid',
-    component: fromStyles.StylesFlyoutGridExample,
+    name: 'Vanilla Extract Styles Flyout Grid',
+    path: '/vanilla-extract-styles-flyout-grid',
+    component: fromVanillaExtractStyles.StylesFlyoutGridExample,
   },
   {
-    name: 'Styles Focus',
-    path: '/styles-focus',
-    component: fromStyles.StylesFocusExample,
+    name: 'Vanilla Extract Styles Focus',
+    path: '/vanilla-extract-styles-focus',
+    component: fromVanillaExtractStyles.StylesFocusExample,
   },
   {
-    name: 'Styles Frosted Glass',
-    path: '/styles-frosted-glass',
-    component: fromStyles.StylesFrostedGlassExample,
+    name: 'Vanilla Extract Styles Frosted Glass',
+    path: '/vanilla-extract-styles-frosted-glass',
+    component: fromVanillaExtractStyles.StylesFrostedGlassExample,
   },
   {
-    name: 'Styles Gradient',
-    path: '/styles-gradient',
-    component: fromStyles.StylesGradientExample,
+    name: 'Vanilla Extract Styles Gradient',
+    path: '/vanilla-extract-styles-gradient',
+    component: fromVanillaExtractStyles.StylesGradientExample,
   },
   {
-    name: 'Styles Grid',
-    path: '/styles-grid',
-    component: fromStyles.StylesGridExample,
+    name: 'Vanilla Extract Styles Grid',
+    path: '/vanilla-extract-styles-grid',
+    component: fromVanillaExtractStyles.StylesGridExample,
   },
   {
-    name: 'Styles Hover',
-    path: '/styles-hover',
-    component: fromStyles.StylesHoverExample,
+    name: 'Vanilla Extract Styles Hover',
+    path: '/vanilla-extract-styles-hover',
+    component: fromVanillaExtractStyles.StylesHoverExample,
   },
   {
-    name: 'Styles Media Query',
-    path: '/styles-media-query',
-    component: fromStyles.StylesMediaQueryExample,
+    name: 'Vanilla Extract Styles Media Query',
+    path: '/vanilla-extract-styles-media-query',
+    component: fromVanillaExtractStyles.StylesMediaQueryExample,
   },
   {
-    name: 'Styles Motion',
-    path: '/styles-motion',
-    component: fromStyles.StylesMotionExample,
+    name: 'Vanilla Extract Styles Motion',
+    path: '/vanilla-extract-styles-motion',
+    component: fromVanillaExtractStyles.StylesMotionExample,
   },
   {
-    name: 'Styles Skeleton',
-    path: '/styles-skeleton',
-    component: fromStyles.StylesSkeletonExample,
+    name: 'Vanilla Extract Styles Skeleton',
+    path: '/vanilla-extract-styles-skeleton',
+    component: fromVanillaExtractStyles.StylesSkeletonExample,
   },
   {
-    name: 'Styles Spacing',
-    path: '/styles-spacing',
-    component: fromStyles.StylesSpacingExample,
+    name: 'Vanilla Extract Styles Spacing',
+    path: '/vanilla-extract-styles-spacing',
+    component: fromVanillaExtractStyles.StylesSpacingExample,
   },
   {
-    name: 'Styles Theme',
-    path: '/styles-theme',
-    component: fromStyles.StylesThemeExample,
+    name: 'Vanilla Extract Styles Theme',
+    path: '/vanilla-extract-styles-theme',
+    component: fromVanillaExtractStyles.StylesThemeExample,
   },
   {
-    name: 'Styles Typography',
-    path: '/styles-typography',
-    component: fromStyles.StylesTypographyExample,
+    name: 'Vanilla Extract Styles Typography',
+    path: '/vanilla-extract-styles-typography',
+    component: fromVanillaExtractStyles.StylesTypographyExample,
   },
   {
     path: '/---',
