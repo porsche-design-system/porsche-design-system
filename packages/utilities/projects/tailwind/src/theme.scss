@@ -214,37 +214,22 @@
   hsla(0, 0%, 0%, 0.011) 91.9%,
   hsla(0, 0%, 0%, 0) 100%;
 
-  --pds-grid-narrow-column-start: #{$pds-grid-narrow-column-start};
-  --pds-grid-narrow-column-end: #{$pds-grid-narrow-column-end};
-  --pds-grid-narrow-span-one-half: #{$pds-grid-narrow-span-one-half};
   --pds-grid-narrow-offset: #{$pds-grid-narrow-offset-base};
   --pds-grid-narrow-offset-sm: #{$pds-grid-narrow-offset-s};
   --pds-grid-narrow-offset-2xl: #{$pds-grid-narrow-offset-xxl};
 
-  --pds-grid-basic-column-start: #{$pds-grid-basic-column-start};
-  --pds-grid-basic-column-end: #{$pds-grid-basic-column-end};
-  --pds-grid-basic-span-one-half: #{$pds-grid-basic-span-one-half};
-  --pds-grid-basic-span-one-third: #{$pds-grid-basic-span-one-third};
-  --pds-grid-basic-span-two-thirds: #{$pds-grid-basic-span-two-thirds};
   --pds-grid-basic-offset: #{$pds-grid-basic-offset-base};
   --pds-grid-basic-offset-sm: #{$pds-grid-basic-offset-s};
   --pds-grid-basic-offset-2xl: #{$pds-grid-basic-offset-xxl};
 
-  --pds-grid-extended-column-start: #{$pds-grid-extended-column-start};
-  --pds-grid-extended-column-end: #{$pds-grid-extended-column-end};
-  --pds-grid-extended-span-one-half: #{$pds-grid-extended-span-one-half};
   --pds-grid-extended-offset: #{$pds-grid-extended-offset-base};
   --pds-grid-extended-offset-sm: #{$pds-grid-extended-offset-s};
   --pds-grid-extended-offset-2xl: #{$pds-grid-extended-offset-xxl};
 
-  --pds-grid-wide-column-start: #{$pds-grid-wide-column-start};
-  --pds-grid-wide-column-end: #{$pds-grid-wide-column-end};
   --pds-grid-wide-offset: #{$pds-grid-wide-offset-base};
   --pds-grid-wide-offset-sm: #{$pds-grid-wide-offset-s};
   --pds-grid-wide-offset-2xl: #{$pds-grid-wide-offset-xxl};
 
-  --pds-grid-full-column-start: #{$pds-grid-full-column-start};
-  --pds-grid-full-column-end: #{$pds-grid-full-column-end};
   --pds-grid-full-offset: #{$pds-grid-full-offset};
 
   @keyframes skeletonAnimation {
@@ -328,10 +313,49 @@
   }
 }
 
-@layer components {
-  .pds-grid {
-    @include pds-grid;
-  }
+@utility pds-grid {
+  @apply
+    [--pds-grid-narrow:narrow]
+    [--pds-grid-narrow-start:#{$pds-grid-narrow-column-start}]
+    [--pds-grid-narrow-end:#{$pds-grid-narrow-column-end}]
+    [--pds-grid-narrow-one-half:3]
+    [--pds-grid-basic:basic]
+    [--pds-grid-basic-start:#{$pds-grid-basic-column-start}]
+    [--pds-grid-basic-end:#{$pds-grid-basic-column-end}]
+    [--pds-grid-basic-one-half:3]
+    [--pds-grid-basic-one-third:2]
+    [--pds-grid-basic-two-thirds:4]
+    [--pds-grid-extended:extended]
+    [--pds-grid-extended-start:#{$pds-grid-extended-column-start}]
+    [--pds-grid-extended-end:#{$pds-grid-extended-column-end}]
+    [--pds-grid-extended-one-half:3]
+    [--pds-grid-wide:wide]
+    [--pds-grid-wide-start:#{$pds-grid-wide-column-start}]
+    [--pds-grid-wide-end:#{$pds-grid-wide-column-end}]
+    [--pds-grid-wide-one-half:3]
+    [--pds-grid-full:full]
+    [--pds-grid-full-start:#{$pds-grid-full-column-start}]
+    [--pds-grid-full-end:#{$pds-grid-full-column-end}]
+    [--pds-grid-gap:clamp(16px,1.25vw+12px,36px)]
+    [--pds-internal-grid-safe-zone:max(22px,10.625vw-12px)]
+    [--_pds-grid-col:minmax(0,var(--pds-internal-grid-outer-column,calc(var(--pds-internal-grid-safe-zone)-var(--pds-grid-gap))))]
+    grid
+    grid-cols-[[full-start]_var(--_pds-grid-col)_[wide-start_extended-start_basic-start_narrow-start]_repeat(6,minmax(0,1fr))_[narrow-end_basic-end_extended-end_wide-end]_var(--_pds-grid-col)_[full-end]]
+    gap-(--pds-grid-gap)
+    min-w-[var(--pds-internal-grid-width-min,320px)]
+    max-w-[var(--pds-internal-grid-width-max,2560px)]
+    box-content
+    mx-(--pds-internal-grid-margin,0)
+    px-[calc(50%-var(--pds-internal-grid-margin,0px)-2560px/2)]
+    sm:[--pds-grid-narrow-one-half:4]
+    sm:[--pds-grid-basic-one-half:6]
+    sm:[--pds-grid-basic-one-third:4]
+    sm:[--pds-grid-basic-two-thirds:8]
+    sm:[--pds-grid-extended-one-half:7]
+    sm:[--pds-grid-wide-one-half:8]
+    sm:[--pds-internal-grid-safe-zone:calc(5vw-16px)]
+    sm:grid-cols-[[full-start]_var(--_pds-grid-col)_[wide-start]_minmax(0,1fr)_[extended-start]_minmax(0,1fr)_[basic-start]_repeat(2,minmax(0,1fr))_[narrow-start]_repeat(8,minmax(0,1fr))_[narrow-end]_repeat(2,minmax(0,1fr))_[basic-end]_minmax(0,1fr)_[extended-end]_minmax(0,1fr)_[wide-end]_var(--_pds-grid-col)[full-end]]
+    2xl:[--pds-internal-grid-safe-zone:min(50vw-880px,400px)];
 }
 
 @utility pds-text-2xs {

@@ -11,49 +11,44 @@ export const gridStoryArea: Story<'div'> = {
         {
           tag: 'div',
           properties: {
-            className:
-              'col-start-(--pds-grid-full-column-start) col-end-(--pds-grid-full-column-end) p-fluid-sm bg-[rgba(0,0,255,.25)]',
+            className: 'col-[full] p-fluid-sm bg-[rgba(0,0,255,.25)]',
           },
-          children: ['.col-start-(--pds-grid-full-column-start) / .col-end-(--pds-grid-full-column-end)'],
+          children: ['.col-[full]'],
         },
         {
           tag: 'div',
           properties: {
-            className:
-              'col-start-(--pds-grid-wide-column-start) col-end-(--pds-grid-wide-column-end) p-fluid-sm bg-[rgba(0,255,255,.25)]',
+            className: 'col-[wide] p-fluid-sm bg-[rgba(0,255,255,.25)]',
           },
-          children: ['.col-start-(--pds-grid-wide-column-start) / .col-end-(--pds-grid-wide-column-end)'],
+          children: ['.col-[wide]'],
         },
         {
           tag: 'div',
           properties: {
-            className:
-              'col-start-(--pds-grid-extended-column-start) col-end-(--pds-grid-extended-column-end) p-fluid-sm bg-[rgba(0,255,0,.25)]',
+            className: 'col-[extended] p-fluid-sm bg-[rgba(0,255,0,.25)]',
           },
-          children: ['.col-start-(--pds-grid-extended-column-start) / .col-end-(--pds-grid-extended-column-end)'],
+          children: ['.col-[extended]'],
         },
         {
           tag: 'div',
           properties: {
-            className:
-              'col-start-(--pds-grid-basic-column-start) col-end-(--pds-grid-basic-column-end) p-fluid-sm bg-[rgba(255,0,255,.25)]',
+            className: 'col-[basic] p-fluid-sm bg-[rgba(255,0,255,.25)]',
           },
-          children: ['.col-start-(--pds-grid-basic-column-start) / .col-end-(--pds-grid-basic-column-end)'],
+          children: ['.col-[basic]'],
         },
         {
           tag: 'div',
           properties: {
-            className:
-              'col-start-(--pds-grid-narrow-column-start) col-end-(--pds-grid-narrow-column-end) p-fluid-sm bg-[rgba(255,255,0,.25)]',
+            className: 'col-[narrow] p-fluid-sm bg-[rgba(255,255,0,.25)]',
           },
-          children: ['.col-start-(--pds-grid-narrow-column-start) / .col-end-(--pds-grid-narrow-column-end)'],
+          children: ['.col-[narrow]'],
         },
       ],
     },
   ],
 };
 
-export const gridStoryTiles: Story<'div'> = {
+export const gridStoryDivision: Story<'div'> = {
   generator: () => [
     {
       tag: 'div',
@@ -64,118 +59,137 @@ export const gridStoryTiles: Story<'div'> = {
         {
           tag: 'div',
           properties: {
-            className:
-              'col-start-(--pds-grid-extended-column-start) col-end-(--pds-grid-extended-column-end) grid grid-cols-subgrid gap-y-fluid-md',
+            className: 'col-[wide] grid grid-cols-subgrid gap-y-(--pds-grid-gap)',
           },
           children: [
             {
               tag: 'div',
               properties: {
-                className: 'col-(--pds-grid-extended-span-one-half) p-fluid-sm rounded-lg bg-[rgba(0,255,0,.25)]',
+                className: 'col-span-(--pds-grid-wide-one-half) p-fluid-sm rounded-lg bg-[rgba(0,255,255,.25)]',
               },
-              children: ['.col-(--pds-grid-extended-span-one-half)'],
+              children: ['.col-span-(--pds-grid-wide-one-half)'],
             },
             {
               tag: 'div',
               properties: {
-                className: 'col-(--pds-grid-extended-span-one-half) p-fluid-sm rounded-lg bg-[rgba(0,255,0,.25)]',
+                className: 'col-span-(--pds-grid-wide-one-half) p-fluid-sm rounded-lg bg-[rgba(0,255,255,.25)]',
               },
-              children: ['.col-(--pds-grid-extended-span-one-half)'],
+              children: ['.col-span-(--pds-grid-wide-one-half)'],
             },
           ],
         },
         {
           tag: 'div',
           properties: {
-            className:
-              'col-start-(--pds-grid-basic-column-start) col-end-(--pds-grid-basic-column-end) grid grid-cols-subgrid gap-y-fluid-md',
+            className: 'col-[extended] grid grid-cols-subgrid gap-y-(--pds-grid-gap)',
           },
           children: [
             {
               tag: 'div',
               properties: {
-                className: 'col-(--pds-grid-basic-span-one-half) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
+                className: 'col-span-(--pds-grid-extended-one-half) p-fluid-sm rounded-lg bg-[rgba(0,255,0,.25)]',
               },
-              children: ['.col-(--pds-grid-basic-span-one-half)'],
+              children: ['.col-span-(--pds-grid-extended-one-half)'],
             },
             {
               tag: 'div',
               properties: {
-                className: 'col-(--pds-grid-basic-span-one-half) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
+                className: 'col-span-(--pds-grid-extended-one-half) p-fluid-sm rounded-lg bg-[rgba(0,255,0,.25)]',
               },
-              children: ['.col-(--pds-grid-basic-span-one-half)'],
-            },
-            {
-              tag: 'div',
-              properties: {
-                className: 'col-(--pds-grid-basic-span-one-third) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
-              },
-              children: ['.col-(--pds-grid-basic-span-one-third)'],
-            },
-            {
-              tag: 'div',
-              properties: {
-                className: 'col-(--pds-grid-basic-span-one-third) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
-              },
-              children: ['.col-(--pds-grid-basic-span-one-third)'],
-            },
-            {
-              tag: 'div',
-              properties: {
-                className: 'col-(--pds-grid-basic-span-one-third) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
-              },
-              children: ['.col-(--pds-grid-basic-span-one-third)'],
-            },
-            {
-              tag: 'div',
-              properties: {
-                className: 'col-(--pds-grid-basic-span-two-thirds) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
-              },
-              children: ['.col-(--pds-grid-basic-span-two-thirds)'],
-            },
-            {
-              tag: 'div',
-              properties: {
-                className: 'col-(--pds-grid-basic-span-one-third) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
-              },
-              children: ['.col-(--pds-grid-basic-span-one-third)'],
-            },
-            {
-              tag: 'div',
-              properties: {
-                className: 'col-(--pds-grid-basic-span-one-third) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
-              },
-              children: ['.col-(--pds-grid-basic-span-one-third)'],
-            },
-            {
-              tag: 'div',
-              properties: {
-                className: 'col-(--pds-grid-basic-span-two-thirds) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
-              },
-              children: ['.col-(--pds-grid-basic-span-two-thirds)'],
+              children: ['.col-span-(--pds-grid-extended-one-half)'],
             },
           ],
         },
         {
           tag: 'div',
           properties: {
-            className:
-              'col-start-(--pds-grid-narrow-column-start) col-end-(--pds-grid-narrow-column-end) grid grid-cols-subgrid gap-y-fluid-md',
+            className: 'col-[basic] grid grid-cols-subgrid gap-y-(--pds-grid-gap)',
           },
           children: [
             {
               tag: 'div',
               properties: {
-                className: 'col-(--pds-grid-narrow-span-one-half) p-fluid-sm rounded-lg bg-[rgba(255,255,0,.25)]',
+                className: 'col-span-(--pds-grid-basic-one-half) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
               },
-              children: ['.col-(--pds-grid-narrow-span-one-half)'],
+              children: ['.col-span-(--pds-grid-basic-one-half)'],
             },
             {
               tag: 'div',
               properties: {
-                className: 'col-(--pds-grid-narrow-span-one-half) p-fluid-sm rounded-lg bg-[rgba(255,255,0,.25)]',
+                className: 'col-span-(--pds-grid-basic-one-half) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
               },
-              children: ['.col-(--pds-grid-narrow-span-one-half)'],
+              children: ['.col-span-(--pds-grid-basic-one-half)'],
+            },
+            {
+              tag: 'div',
+              properties: {
+                className: 'col-span-(--pds-grid-basic-one-third) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
+              },
+              children: ['.col-span-(--pds-grid-basic-one-third)'],
+            },
+            {
+              tag: 'div',
+              properties: {
+                className: 'col-span-(--pds-grid-basic-one-third) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
+              },
+              children: ['.col-span-(--pds-grid-basic-one-third)'],
+            },
+            {
+              tag: 'div',
+              properties: {
+                className: 'col-span-(--pds-grid-basic-one-third) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
+              },
+              children: ['.col-span-(--pds-grid-basic-one-third)'],
+            },
+            {
+              tag: 'div',
+              properties: {
+                className: 'col-span-(--pds-grid-basic-two-thirds) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
+              },
+              children: ['.col-span-(--pds-grid-basic-two-thirds)'],
+            },
+            {
+              tag: 'div',
+              properties: {
+                className: 'col-span-(--pds-grid-basic-one-third) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
+              },
+              children: ['.col-span-(--pds-grid-basic-one-third)'],
+            },
+            {
+              tag: 'div',
+              properties: {
+                className: 'col-span-(--pds-grid-basic-one-third) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
+              },
+              children: ['.col-span-(--pds-grid-basic-one-third)'],
+            },
+            {
+              tag: 'div',
+              properties: {
+                className: 'col-span-(--pds-grid-basic-two-thirds) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
+              },
+              children: ['.col-span-(--pds-grid-basic-two-thirds)'],
+            },
+          ],
+        },
+        {
+          tag: 'div',
+          properties: {
+            className: 'col-[narrow] grid grid-cols-subgrid gap-y-(--pds-grid-gap)',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: {
+                className: 'col-span-(--pds-grid-narrow-one-half) p-fluid-sm rounded-lg bg-[rgba(255,255,0,.25)]',
+              },
+              children: ['.col-span-(--pds-grid-narrow-one-half)'],
+            },
+            {
+              tag: 'div',
+              properties: {
+                className: 'col-span-(--pds-grid-narrow-one-half) p-fluid-sm rounded-lg bg-[rgba(255,255,0,.25)]',
+              },
+              children: ['.col-span-(--pds-grid-narrow-one-half)'],
             },
           ],
         },
