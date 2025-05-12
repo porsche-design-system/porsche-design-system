@@ -211,6 +211,7 @@ export class InputNumber {
     const stepperElements = this.controls
       ? [
           <PrefixedTagNames.pButtonPure
+            tabIndex={-1}
             hideLabel={true}
             theme={this.theme}
             class="button"
@@ -222,6 +223,7 @@ export class InputNumber {
             Decrement value by {this.step}
           </PrefixedTagNames.pButtonPure>,
           <PrefixedTagNames.pButtonPure
+            tabIndex={-1}
             hideLabel={true}
             theme={this.theme}
             class="button"
