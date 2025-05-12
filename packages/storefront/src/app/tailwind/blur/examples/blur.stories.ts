@@ -7,16 +7,17 @@ export const blurStory: Story<'div'> = {
     {
       tag: 'div',
       properties: {
-        className: 'relative h-30',
+        className: 'grid',
       },
       children: [
         {
           tag: 'video',
           properties: {
-            className: 'absolute inset-0 w-full h-full object-cover',
+            className: 'col-1 row-1 w-full h-full object-cover',
             loop: true,
             autoPlay: true,
             muted: true,
+            playsInline: true,
           },
           children: [
             {
@@ -29,9 +30,9 @@ export const blurStory: Story<'div'> = {
           tag: 'div',
           properties: {
             className:
-              'backdrop-blur-frosted-glass bg-background-frosted absolute inset-0 flex items-center justify-center text-primary-dark rounded-lg m-static-md',
+              'backdrop-blur-frosted bg-background-frosted col-1 row-1 rounded-lg m-fluid-lg p-fluid-md text-primary-dark grid place-items-center',
           },
-          children: ['.backdrop-blur-frosted-glass'],
+          children: ['.backdrop-blur-frosted .bg-background-frosted'],
         },
       ],
     },
