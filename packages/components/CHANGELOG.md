@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Fixed
 
+- `Select Wrapper`: update of scroll position if dropdown is navigated with keyboard
+  ([#3858](https://github.com/porsche-design-system/porsche-design-system/pull/3858))
 - `Multi Select`: enable full a11y compliance
   ([#3819](https://github.com/porsche-design-system/porsche-design-system/pull/3819))
 - Accessibility: fix ARIA live announcements of form components status messages
@@ -27,7 +29,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Canvas`: stealing focus from `Text Field Wrapper`
   ([#3843](https://github.com/porsche-design-system/porsche-design-system/pull/3843))
-
 
 ### [3.28.0-rc.1] - 2025-04-14
 
