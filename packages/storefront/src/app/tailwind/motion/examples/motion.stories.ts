@@ -14,7 +14,7 @@ export const motionStoryDuration: Story<'div'> = {
           tag: 'div',
           properties: {
             className:
-              'transition duration-(--pds-duration-short) transform hover:scale-120 rounded-lg text-sm text-primary bg-background-surface p-fluid-md',
+              'transition duration-(--pds-duration-short) transform hover:scale-120 rounded-lg text-sm text-primary bg-surface p-fluid-md',
           },
           children: ['.duration-(--pds-duration-short)'],
         },
@@ -22,7 +22,7 @@ export const motionStoryDuration: Story<'div'> = {
           tag: 'div',
           properties: {
             className:
-              'transition duration-(--pds-duration-moderate) transform hover:scale-120 rounded-lg text-sm text-primary bg-background-surface p-fluid-md',
+              'transition duration-(--pds-duration-moderate) transform hover:scale-120 rounded-lg text-sm text-primary bg-surface p-fluid-md',
           },
           children: ['.duration-(--pds-duration-moderate)'],
         },
@@ -30,7 +30,7 @@ export const motionStoryDuration: Story<'div'> = {
           tag: 'div',
           properties: {
             className:
-              'transition duration-(--pds-duration-long) transform hover:scale-120 rounded-lg text-sm text-primary bg-background-surface p-fluid-md',
+              'transition duration-(--pds-duration-long) transform hover:scale-120 rounded-lg text-sm text-primary bg-surface p-fluid-md',
           },
           children: ['.duration-(--pds-duration-long)'],
         },
@@ -38,7 +38,7 @@ export const motionStoryDuration: Story<'div'> = {
           tag: 'div',
           properties: {
             className:
-              'transition duration-(--pds-duration-very-long) transform hover:scale-120 rounded-lg text-sm text-primary bg-background-surface p-fluid-md',
+              'transition duration-(--pds-duration-very-long) transform hover:scale-120 rounded-lg text-sm text-primary bg-surface p-fluid-md',
           },
           children: ['.duration-(--pds-duration-very-long)'],
         },
@@ -59,7 +59,7 @@ export const motionStoryEasing: Story<'div'> = {
           tag: 'div',
           properties: {
             className:
-              'ease-base transition duration-(--pds-duration-very-long) transform hover:scale-120 rounded-lg text-sm text-primary bg-background-surface p-fluid-md',
+              'ease-base transition duration-(--pds-duration-very-long) transform hover:scale-120 rounded-lg text-sm text-primary bg-surface p-fluid-md',
           },
           children: ['.ease-base'],
         },
@@ -67,7 +67,7 @@ export const motionStoryEasing: Story<'div'> = {
           tag: 'div',
           properties: {
             className:
-              'ease-in transition duration-(--pds-duration-very-long) transform hover:scale-120 rounded-lg text-sm text-primary bg-background-surface p-fluid-md',
+              'ease-in transition duration-(--pds-duration-very-long) transform hover:scale-120 rounded-lg text-sm text-primary bg-surface p-fluid-md',
           },
           children: ['.ease-in'],
         },
@@ -75,7 +75,7 @@ export const motionStoryEasing: Story<'div'> = {
           tag: 'div',
           properties: {
             className:
-              'ease-out transition duration-(--pds-duration-very-long) transform hover:scale-120 rounded-lg text-sm text-primary bg-background-surface p-fluid-md',
+              'ease-out transition duration-(--pds-duration-very-long) transform hover:scale-120 rounded-lg text-sm text-primary bg-surface p-fluid-md',
           },
           children: ['.ease-out'],
         },

@@ -14,7 +14,7 @@ export const spacingStoryFluid: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-background-surface' },
+              properties: { className: 'bg-surface' },
               children: ['.p-fluid-xs'],
             },
           ],
@@ -25,7 +25,7 @@ export const spacingStoryFluid: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-background-surface' },
+              properties: { className: 'bg-surface' },
               children: ['.p-fluid-sm'],
             },
           ],
@@ -36,7 +36,7 @@ export const spacingStoryFluid: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-background-surface' },
+              properties: { className: 'bg-surface' },
               children: ['.p-fluid-md'],
             },
           ],
@@ -47,7 +47,7 @@ export const spacingStoryFluid: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-background-surface' },
+              properties: { className: 'bg-surface' },
               children: ['.p-fluid-lg'],
             },
           ],
@@ -58,7 +58,7 @@ export const spacingStoryFluid: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-background-surface' },
+              properties: { className: 'bg-surface' },
               children: ['.p-fluid-xl'],
             },
           ],
@@ -69,7 +69,7 @@ export const spacingStoryFluid: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-background-surface' },
+              properties: { className: 'bg-surface' },
               children: ['.p-fluid-2xl'],
             },
           ],
@@ -91,7 +91,7 @@ export const spacingStoryStatic: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-background-surface' },
+              properties: { className: 'bg-surface' },
               children: ['.p-static-xs'],
             },
           ],
@@ -102,7 +102,7 @@ export const spacingStoryStatic: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-background-surface' },
+              properties: { className: 'bg-surface' },
               children: ['.p-static-sm'],
             },
           ],
@@ -113,7 +113,7 @@ export const spacingStoryStatic: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-background-surface' },
+              properties: { className: 'bg-surface' },
               children: ['.p-static-md'],
             },
           ],
@@ -124,7 +124,7 @@ export const spacingStoryStatic: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-background-surface' },
+              properties: { className: 'bg-surface' },
               children: ['.p-static-lg'],
             },
           ],
@@ -135,7 +135,7 @@ export const spacingStoryStatic: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-background-surface' },
+              properties: { className: 'bg-surface' },
               children: ['.p-static-xl'],
             },
           ],
@@ -146,7 +146,7 @@ export const spacingStoryStatic: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-background-surface' },
+              properties: { className: 'bg-surface' },
               children: ['.p-static-2xl'],
             },
           ],

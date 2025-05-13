@@ -18,9 +18,9 @@ export const colorStoryBackgroundColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-background-base w-10 h-10 rounded-md border border-contrast-low' },
+              properties: { className: 'bg-base w-10 h-10 rounded-md border border-contrast-low' },
             },
-            '.bg-background-base',
+            '.bg-base',
           ],
         },
         {
@@ -31,9 +31,9 @@ export const colorStoryBackgroundColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-background-surface w-10 h-10 rounded-md border border-contrast-low' },
+              properties: { className: 'bg-surface w-10 h-10 rounded-md border border-contrast-low' },
             },
-            '.bg-background-surface',
+            '.bg-surface',
           ],
         },
         {
@@ -44,9 +44,9 @@ export const colorStoryBackgroundColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-background-shading w-10 h-10 rounded-md border border-contrast-low' },
+              properties: { className: 'bg-shading w-10 h-10 rounded-md border border-contrast-low' },
             },
-            '.bg-background-shading',
+            '.bg-shading',
           ],
         },
         {
@@ -57,9 +57,9 @@ export const colorStoryBackgroundColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-background-frosted w-10 h-10 rounded-md border border-contrast-low' },
+              properties: { className: 'bg-frosted w-10 h-10 rounded-md border border-contrast-low' },
             },
-            '.bg-background-frosted',
+            '.bg-frosted',
           ],
         },
         {
@@ -70,9 +70,9 @@ export const colorStoryBackgroundColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-notification-success-soft w-10 h-10 rounded-md border border-contrast-low' },
+              properties: { className: 'bg-success-soft w-10 h-10 rounded-md border border-contrast-low' },
             },
-            '.bg-notification-success-soft',
+            '.bg-success-soft',
           ],
         },
         {
@@ -83,9 +83,9 @@ export const colorStoryBackgroundColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-notification-warning-soft w-10 h-10 rounded-md border border-contrast-low' },
+              properties: { className: 'bg-warning-soft w-10 h-10 rounded-md border border-contrast-low' },
             },
-            '.bg-notification-warning-soft',
+            '.bg-warning-soft',
           ],
         },
         {
@@ -96,9 +96,9 @@ export const colorStoryBackgroundColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-notification-error-soft w-10 h-10 rounded-md border border-contrast-low' },
+              properties: { className: 'bg-error-soft w-10 h-10 rounded-md border border-contrast-low' },
             },
-            '.bg-notification-error-soft',
+            '.bg-error-soft',
           ],
         },
         {
@@ -109,9 +109,9 @@ export const colorStoryBackgroundColor: Story<'div'> = {
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-notification-info-soft w-10 h-10 rounded-md border border-contrast-low' },
+              properties: { className: 'bg-info-soft w-10 h-10 rounded-md border border-contrast-low' },
             },
-            '.bg-notification-info-soft',
+            '.bg-info-soft',
           ],
         },
       ],
@@ -144,23 +144,23 @@ export const colorStoryTextColor: Story<'div'> = {
         },
         {
           tag: 'li',
-          properties: { className: 'text-notification-success' },
-          children: ['.text-notification-success'],
+          properties: { className: 'text-success' },
+          children: ['.text-success'],
         },
         {
           tag: 'li',
-          properties: { className: 'text-notification-warning' },
-          children: ['.text-notification-warning'],
+          properties: { className: 'text-warning' },
+          children: ['.text-warning'],
         },
         {
           tag: 'li',
-          properties: { className: 'text-notification-error' },
-          children: ['.text-notification-error'],
+          properties: { className: 'text-error' },
+          children: ['.text-error'],
         },
         {
           tag: 'li',
-          properties: { className: 'text-notification-info' },
-          children: ['.text-notification-info'],
+          properties: { className: 'text-info' },
+          children: ['.text-info'],
         },
       ],
     },
