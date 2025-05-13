@@ -282,11 +282,11 @@
 }
 
 @utility col-start-narrow {
-  @apply col-start-[narrow-start];
+  @apply [--_pds-grid-one-half:3] sm:[--_pds-grid-one-half:4] col-start-[narrow-start];
 }
 
 @utility col-end-narrow {
-  @apply col-end-[narrow-end];
+  @apply [--_pds-grid-one-half:3] sm:[--_pds-grid-one-half:4] col-end-[narrow-end];
 }
 
 // Grid: Area Basic
@@ -295,11 +295,11 @@
 }
 
 @utility col-start-basic {
-  @apply col-start-[basic-start];
+  @apply [--_pds-grid-one-half:3] [--_pds-grid-one-third:2] [--_pds-grid-two-thirds:4] sm:[--_pds-grid-one-half:6] sm:[--_pds-grid-one-third:4] sm:[--_pds-grid-two-thirds:8] col-start-[basic-start];
 }
 
 @utility col-end-basic {
-  @apply col-end-[basic-end];
+  @apply [--_pds-grid-one-half:3] [--_pds-grid-one-third:2] [--_pds-grid-two-thirds:4] sm:[--_pds-grid-one-half:6] sm:[--_pds-grid-one-third:4] sm:[--_pds-grid-two-thirds:8] col-end-[basic-end];
 }
 
 // Grid: Area Extended
@@ -308,11 +308,11 @@
 }
 
 @utility col-start-extended {
-  @apply col-start-[extended-start];
+  @apply [--_pds-grid-one-half:3] sm:[--_pds-grid-one-half:7] col-start-[extended-start];
 }
 
 @utility col-end-extended {
-  @apply col-end-[extended-end];
+  @apply [--_pds-grid-one-half:3] sm:[--_pds-grid-one-half:7] col-end-[extended-end];
 }
 
 // Grid: Area Wide
@@ -321,11 +321,11 @@
 }
 
 @utility col-start-wide {
-  @apply col-start-[wide-start];
+  @apply [--_pds-grid-one-half:3] sm:[--_pds-grid-one-half:8] col-start-[wide-start];
 }
 
 @utility col-end-wide {
-  @apply col-end-[wide-end];
+  @apply [--_pds-grid-one-half:3] sm:[--_pds-grid-one-half:8] col-end-[wide-end];
 }
 
 // Grid: Area Full
