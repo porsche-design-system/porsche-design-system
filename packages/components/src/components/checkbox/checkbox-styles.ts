@@ -103,9 +103,7 @@ export const getComponentCss = (
         }),
       },
       ...preventFoucOfNestedElementsStyles,
-      input: {
-        ...getCheckboxBaseStyles(theme, isDisabled, isLoading, state, compact),
-      },
+      input: getCheckboxBaseStyles(theme, isDisabled, isLoading, state, compact),
       ...(isLoading
         ? {
             'input:checked': {
