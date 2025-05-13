@@ -6,7 +6,9 @@ export const gridStoryArea: Story<'div'> = {
   generator: () => [
     {
       tag: 'div',
-      properties: { className: 'pds-grid _pds-grid-visualization text-primary text-center' },
+      properties: {
+        className: 'grid-template prose-text-sm text-center _pds-grid-visualization',
+      },
       children: [
         {
           tag: 'div',
@@ -53,7 +55,7 @@ export const gridStoryDivision: Story<'div'> = {
     {
       tag: 'div',
       properties: {
-        className: 'pds-grid _pds-grid-visualization text-primary text-center',
+        className: 'grid-template prose-text-sm text-center _pds-grid-visualization',
       },
       children: [
         {

@@ -11,9 +11,10 @@ export const metadata = {
 
 <TableOfContents headings={["Area","Division"]} />
 
-The Porsche Design System Tailwind theme includes the custom `@utility` CSS class `.pds-grid` and CSS variables
-`--pds-grid-*`, which together form a generic layout system called the "Porsche Grid". This system ensures consistent
-content placement and alignment across multiple Porsche applications.
+The Porsche Design System Tailwind theme includes the custom `@utility` CSS classes `.grid-template`,
+`.col-{narrow|basic|extended|wide|full}` and `.col-span-{one-half|one-third|two-thirds}`, which together form a generic
+layout system called the "Porsche Grid". This system ensures consistent content placement and alignment across multiple
+Porsche applications.
 
 The Porsche Grid is based on native [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid), changing its
 available columns on mobile (6 content columns + 2 safe zone columns) and desktop view >= 760px viewport width
@@ -24,7 +25,7 @@ The Porsche Grid must be applied once at the top level, **span the full viewport
 
 ## Area
 
-`.pds-grid` defines a new instance of the Porsche Grid. Although content placement is flexible across any CSS grid
+`.grid-template` defines a new instance of the Porsche Grid. Although content placement is flexible across any CSS grid
 column, predefined areas `full`, `wide`, `extended`, `basic` and `narrow` are provided for consistency.
 
 <ComponentStory story={gridStoryArea} />
