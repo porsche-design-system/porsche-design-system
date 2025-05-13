@@ -11,37 +11,37 @@ export const gridStoryArea: Story<'div'> = {
         {
           tag: 'div',
           properties: {
-            className: 'col-[full] p-fluid-sm bg-[rgba(0,0,255,.25)]',
+            className: 'col-full p-fluid-sm bg-[rgba(0,0,255,.25)]',
           },
-          children: ['.col-[full]'],
+          children: ['.col-full'],
         },
         {
           tag: 'div',
           properties: {
-            className: 'col-[wide] p-fluid-sm bg-[rgba(0,255,255,.25)]',
+            className: 'col-wide p-fluid-sm bg-[rgba(0,255,255,.25)]',
           },
-          children: ['.col-[wide]'],
+          children: ['.col-wide'],
         },
         {
           tag: 'div',
           properties: {
-            className: 'col-[extended] p-fluid-sm bg-[rgba(0,255,0,.25)]',
+            className: 'col-extended p-fluid-sm bg-[rgba(0,255,0,.25)]',
           },
-          children: ['.col-[extended]'],
+          children: ['.col-extended'],
         },
         {
           tag: 'div',
           properties: {
-            className: 'col-[basic] p-fluid-sm bg-[rgba(255,0,255,.25)]',
+            className: 'col-basic p-fluid-sm bg-[rgba(255,0,255,.25)]',
           },
-          children: ['.col-[basic]'],
+          children: ['.col-basic'],
         },
         {
           tag: 'div',
           properties: {
-            className: 'col-[narrow] p-fluid-sm bg-[rgba(255,255,0,.25)]',
+            className: 'col-narrow p-fluid-sm bg-[rgba(255,255,0,.25)]',
           },
-          children: ['.col-[narrow]'],
+          children: ['.col-narrow'],
         },
       ],
     },
@@ -59,137 +59,137 @@ export const gridStoryDivision: Story<'div'> = {
         {
           tag: 'div',
           properties: {
-            className: 'col-[wide] grid grid-cols-subgrid gap-y-(--pds-grid-gap)',
+            className: 'col-wide grid grid-cols-subgrid gap-y-fluid-md',
           },
           children: [
             {
               tag: 'div',
               properties: {
-                className: 'col-span-(--pds-grid-wide-one-half) p-fluid-sm rounded-lg bg-[rgba(0,255,255,.25)]',
+                className: 'col-span-one-half p-fluid-sm rounded-lg bg-[rgba(0,255,255,.25)]',
               },
-              children: ['.col-span-(--pds-grid-wide-one-half)'],
+              children: ['.col-span-one-half'],
             },
             {
               tag: 'div',
               properties: {
-                className: 'col-span-(--pds-grid-wide-one-half) p-fluid-sm rounded-lg bg-[rgba(0,255,255,.25)]',
+                className: 'col-span-one-half p-fluid-sm rounded-lg bg-[rgba(0,255,255,.25)]',
               },
-              children: ['.col-span-(--pds-grid-wide-one-half)'],
+              children: ['.col-span-one-half'],
             },
           ],
         },
         {
           tag: 'div',
           properties: {
-            className: 'col-[extended] grid grid-cols-subgrid gap-y-(--pds-grid-gap)',
+            className: 'col-extended grid grid-cols-subgrid gap-y-fluid-md',
           },
           children: [
             {
               tag: 'div',
               properties: {
-                className: 'col-span-(--pds-grid-extended-one-half) p-fluid-sm rounded-lg bg-[rgba(0,255,0,.25)]',
+                className: 'col-span-one-half p-fluid-sm rounded-lg bg-[rgba(0,255,0,.25)]',
               },
-              children: ['.col-span-(--pds-grid-extended-one-half)'],
+              children: ['.col-span-one-half'],
             },
             {
               tag: 'div',
               properties: {
-                className: 'col-span-(--pds-grid-extended-one-half) p-fluid-sm rounded-lg bg-[rgba(0,255,0,.25)]',
+                className: 'col-span-one-half p-fluid-sm rounded-lg bg-[rgba(0,255,0,.25)]',
               },
-              children: ['.col-span-(--pds-grid-extended-one-half)'],
+              children: ['.col-span-one-half'],
             },
           ],
         },
         {
           tag: 'div',
           properties: {
-            className: 'col-[basic] grid grid-cols-subgrid gap-y-(--pds-grid-gap)',
+            className: 'col-basic grid grid-cols-subgrid gap-y-fluid-md',
           },
           children: [
             {
               tag: 'div',
               properties: {
-                className: 'col-span-(--pds-grid-basic-one-half) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
+                className: 'col-span-one-half p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
               },
-              children: ['.col-span-(--pds-grid-basic-one-half)'],
+              children: ['.col-span-one-half'],
             },
             {
               tag: 'div',
               properties: {
-                className: 'col-span-(--pds-grid-basic-one-half) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
+                className: 'col-span-one-half p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
               },
-              children: ['.col-span-(--pds-grid-basic-one-half)'],
+              children: ['.col-span-one-half'],
             },
             {
               tag: 'div',
               properties: {
-                className: 'col-span-(--pds-grid-basic-one-third) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
+                className: 'col-span-one-third p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
               },
-              children: ['.col-span-(--pds-grid-basic-one-third)'],
+              children: ['.col-span-one-third'],
             },
             {
               tag: 'div',
               properties: {
-                className: 'col-span-(--pds-grid-basic-one-third) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
+                className: 'col-span-one-third p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
               },
-              children: ['.col-span-(--pds-grid-basic-one-third)'],
+              children: ['.col-span-one-third'],
             },
             {
               tag: 'div',
               properties: {
-                className: 'col-span-(--pds-grid-basic-one-third) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
+                className: 'col-span-one-third p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
               },
-              children: ['.col-span-(--pds-grid-basic-one-third)'],
+              children: ['.col-span-one-third'],
             },
             {
               tag: 'div',
               properties: {
-                className: 'col-span-(--pds-grid-basic-two-thirds) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
+                className: 'col-span-two-thirds p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
               },
-              children: ['.col-span-(--pds-grid-basic-two-thirds)'],
+              children: ['.col-span-two-thirds'],
             },
             {
               tag: 'div',
               properties: {
-                className: 'col-span-(--pds-grid-basic-one-third) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
+                className: 'col-span-one-third p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
               },
-              children: ['.col-span-(--pds-grid-basic-one-third)'],
+              children: ['.col-span-one-third'],
             },
             {
               tag: 'div',
               properties: {
-                className: 'col-span-(--pds-grid-basic-one-third) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
+                className: 'col-span-one-third p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
               },
-              children: ['.col-span-(--pds-grid-basic-one-third)'],
+              children: ['.col-span-one-third'],
             },
             {
               tag: 'div',
               properties: {
-                className: 'col-span-(--pds-grid-basic-two-thirds) p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
+                className: 'col-span-two-thirds p-fluid-sm rounded-lg bg-[rgba(255,0,255,.25)]',
               },
-              children: ['.col-span-(--pds-grid-basic-two-thirds)'],
+              children: ['.col-span-two-thirds'],
             },
           ],
         },
         {
           tag: 'div',
           properties: {
-            className: 'col-[narrow] grid grid-cols-subgrid gap-y-(--pds-grid-gap)',
+            className: 'col-narrow grid grid-cols-subgrid gap-y-fluid-md',
           },
           children: [
             {
               tag: 'div',
               properties: {
-                className: 'col-span-(--pds-grid-narrow-one-half) p-fluid-sm rounded-lg bg-[rgba(255,255,0,.25)]',
+                className: 'col-span-one-half p-fluid-sm rounded-lg bg-[rgba(255,255,0,.25)]',
               },
-              children: ['.col-span-(--pds-grid-narrow-one-half)'],
+              children: ['.col-span-one-half'],
             },
             {
               tag: 'div',
               properties: {
-                className: 'col-span-(--pds-grid-narrow-one-half) p-fluid-sm rounded-lg bg-[rgba(255,255,0,.25)]',
+                className: 'col-span-one-half p-fluid-sm rounded-lg bg-[rgba(255,255,0,.25)]',
               },
-              children: ['.col-span-(--pds-grid-narrow-one-half)'],
+              children: ['.col-span-one-half'],
             },
           ],
         },

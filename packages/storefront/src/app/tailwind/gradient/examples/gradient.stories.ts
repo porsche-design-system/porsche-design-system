@@ -14,30 +14,30 @@ export const gradientStory: Story<'div'> = {
         {
           tag: 'div',
           properties: {
-            className: 'bg-linear-(--pds-gradient-to-top) rounded-lg text-sm text-primary-dark p-fluid-md',
+            className: 'pds-gradient-to-t rounded-lg text-sm text-primary-dark p-fluid-md',
           },
-          children: ['.bg-linear-(--pds-gradient-to-top)'],
+          children: ['.pds-gradient-to-t'],
         },
         {
           tag: 'div',
           properties: {
-            className: 'bg-linear-(--pds-gradient-to-bottom) rounded-lg text-sm text-primary-dark p-fluid-md',
+            className: 'pds-gradient-to-b rounded-lg text-sm text-primary-dark p-fluid-md',
           },
-          children: ['.bg-linear-(--pds-gradient-to-bottom)'],
+          children: ['.pds-gradient-to-b'],
         },
         {
           tag: 'div',
           properties: {
-            className: 'bg-linear-(--pds-gradient-to-left) rounded-lg text-sm text-primary-dark p-fluid-md',
+            className: 'pds-gradient-to-l rounded-lg text-sm text-primary-dark p-fluid-md',
           },
-          children: ['.bg-linear-(--pds-gradient-to-left)'],
+          children: ['.pds-gradient-to-l'],
         },
         {
           tag: 'div',
           properties: {
-            className: 'bg-linear-(--pds-gradient-to-right) rounded-lg text-sm text-primary-dark p-fluid-md',
+            className: 'pds-gradient-to-r rounded-lg text-sm text-primary-dark p-fluid-md',
           },
-          children: ['.bg-linear-(--pds-gradient-to-right)'],
+          children: ['.pds-gradient-to-r'],
         },
       ],
     },

@@ -44,7 +44,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
         </PDisplay>
         <div className="block w-full h-full relative">
           <div
-            className="bg-background-surface max-w-lg bottom-0 left-0 m-4 p-6 rounded-lg shadow-lg flex justify-between items-center gap-4"
+            className="bg-surface max-w-lg bottom-0 left-0 m-4 p-6 rounded-lg shadow-lg flex justify-between items-center gap-4"
             style={{ marginBottom: '5%', marginLeft: '5%' }}
           >
             <Link href="/news/changelog/" className="absolute inset-0 rounded-l" tabIndex={-1} aria-hidden="true" />
@@ -92,7 +92,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
         aria-label="Getting started"
       >
         <AppearAnimation animation="fade-in-up">
-          <div className="relative bg-background-surface rounded-lg overflow-hidden group flex items-center gap-4 p-4">
+          <div className="relative bg-surface rounded-lg overflow-hidden group flex items-center gap-4 p-4">
             <Link
               href="/designing/introduction/"
               className="absolute z-10 inset-0 rounded-l"
@@ -124,7 +124,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </div>
         </AppearAnimation>
         <AppearAnimation animation="fade-in-up">
-          <div className="relative bg-background-surface rounded-lg overflow-hidden group flex items-center gap-4 p-4 group-hover:bg-background-hover">
+          <div className="relative bg-surface rounded-lg overflow-hidden group flex items-center gap-4 p-4 group-hover:bg-hover">
             <Link
               href="/developing/introduction/"
               className="absolute z-10 inset-0 rounded-l"
@@ -171,7 +171,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             compact={true}
             gradient={false}
             background={isDark ? 'dark' : 'light'}
-            className="bg-background-surface rounded-lg"
+            className="bg-surface rounded-lg"
           >
             <Image src="assets/styles-tokens.png" alt="" width={1024} height={576} />
           </PLinkTile>
@@ -186,7 +186,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             compact={true}
             gradient={false}
             background={isDark ? 'dark' : 'light'}
-            className="bg-background-surface rounded-lg"
+            className="bg-surface rounded-lg"
           >
             <Image src="assets/components.png" alt="" width={1024} height={576} />
           </PLinkTile>
@@ -201,7 +201,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             compact={true}
             gradient={false}
             background={isDark ? 'dark' : 'light'}
-            className="bg-background-surface rounded-lg"
+            className="bg-surface rounded-lg"
           >
             <Image src="assets/assets.png" alt="" width={1024} height={576} />
           </PLinkTile>
@@ -216,7 +216,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             compact={true}
             gradient={false}
             background={isDark ? 'dark' : 'light'}
-            className="bg-background-surface rounded-lg"
+            className="bg-surface rounded-lg"
           >
             <Image src="assets/templates.png" alt="" width={1024} height={576} />
           </PLinkTile>
@@ -231,7 +231,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             compact={true}
             gradient={false}
             background={isDark ? 'dark' : 'light'}
-            className="bg-background-surface rounded-lg"
+            className="bg-surface rounded-lg"
           >
             <Image src="assets/release-notes.png" alt="" width={1024} height={576} />
           </PLinkTile>
@@ -246,7 +246,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             compact={true}
             gradient={false}
             background={isDark ? 'dark' : 'light'}
-            className="bg-background-surface rounded-lg"
+            className="bg-surface rounded-lg"
           >
             <Image src="assets/feedback.png" alt="" width={1024} height={576} />
           </PLinkTile>
@@ -267,7 +267,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
             compact={true}
             gradient={false}
             aspectRatio="16/9"
-            className="bg-background-surface-dark rounded-lg"
+            className="bg-surface-dark rounded-lg"
           >
             <Image src="assets/accessibility.png" alt="" width={2036} height={1144} />
           </PLinkTile>
@@ -293,7 +293,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
       </section>
 
       <section
-        className="bg-background-surface rounded-lg mt-fluid-xl mb-fluid-xl pb-32 grid gap-fluid-md sm:grid-cols-full col-span-full xs:col-start-1 xs:col-end-13 grid-cols-12 gap-4"
+        className="bg-surface rounded-lg mt-fluid-xl mb-fluid-xl pb-32 grid gap-fluid-md sm:grid-cols-full col-span-full xs:col-start-1 xs:col-end-13 grid-cols-12 gap-4"
         aria-label="Benefits"
       >
         <div className="col-span-full xs:col-start-4 xs:col-end-10 mt-fluid-2xl mb-fluid-xl max-w-(--max-width-prose) mx-auto">
@@ -307,7 +307,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </div>
         <article className="col-start-3 md:col-end-7 col-end-11 p-6" aria-label="Short & Longterm Efficiency">
-          <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
+          <div className="relative rounded-3xl bg-base w-20 h-20 justify-self-center">
             <Image src="assets/benefits_efficiency.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -319,7 +319,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-start-7 col-end-11 p-6" aria-label="Brand Fit">
-          <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
+          <div className="relative rounded-3xl bg-base w-20 h-20 justify-self-center">
             <Image src="assets/benefits_brand_fit.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -331,7 +331,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-end-7 col-end-11 p-6" aria-label="Accessibility">
-          <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
+          <div className="relative rounded-3xl bg-base w-20 h-20 justify-self-center">
             <Image src="assets/benefits_accessibility.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -343,7 +343,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-start-7 col-end-11 p-6" aria-label="Framework Agnostic">
-          <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
+          <div className="relative rounded-3xl bg-base w-20 h-20 justify-self-center">
             <Image src="assets/benefits_framework_agnostic.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -354,7 +354,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-end-7 col-end-11 p-6" aria-label="Fluid & Responsive">
-          <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
+          <div className="relative rounded-3xl bg-base w-20 h-20 justify-self-center">
             <Image src="assets/benefits_fluid_responsive.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -366,7 +366,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-start-7 col-end-11 p-6" aria-label="Compliant Quality">
-          <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
+          <div className="relative rounded-3xl bg-base w-20 h-20 justify-self-center">
             <Image src="assets/benefits_compliant_quality.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -378,7 +378,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-end-7 col-end-11 p-6" aria-label="Updated Capability">
-          <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
+          <div className="relative rounded-3xl bg-base w-20 h-20 justify-self-center">
             <Image src="assets/benefits_update_capability.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -390,7 +390,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-start-7 col-end-11 p-6" aria-label="Open-Source Code">
-          <div className="relative rounded-3xl bg-background-base w-20 h-20 justify-self-center">
+          <div className="relative rounded-3xl bg-base w-20 h-20 justify-self-center">
             <Image src="assets/benefits_open_source_code.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">

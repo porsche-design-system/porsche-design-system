@@ -28,7 +28,7 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
       <div className="flex flex-col gap-fluid-sm">
         {Object.entries(slotStories ?? {}).map(([slotName, slotExamples]) => {
           return (
-            <div key={slotName} className="flex flex-col gap-fluid-sm bg-background-surface p-fluid-sm rounded-md">
+            <div key={slotName} className="flex flex-col gap-fluid-sm bg-surface p-fluid-sm rounded-md">
               <div className="w-full flex justify-between">
                 <div className="w-full flex gap-static-xs">
                   {capitalCase(slotName)}
@@ -51,7 +51,7 @@ export const ConfigureSlots = <T extends HTMLTagOrComponent>({
               </div>
               {Object.keys(slotExamples).length > 1 && (
                 <PSelect
-                  className="[--p-select-background-color:bg-background-shading]"
+                  className="[--p-select-background-color:bg-shading]"
                   name={slotName}
                   // @ts-ignore
                   value={configuredSlots?.slots?.[slotName]?.name}
