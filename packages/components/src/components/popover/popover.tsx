@@ -80,7 +80,7 @@ export class Popover {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host onKeydown={(e: KeyboardEvent) => e.key === 'Escape' && this.button.focus()}>
+      <Host onKeydown={this.onHostKeyDown}>
         <button
           type="button"
           onClick={() => (this.isOpen = !this.isOpen)}
@@ -138,6 +138,10 @@ export class Popover {
     if (this.isOpen && isClickOutside(e, this.button) && isClickOutside(e, this.popover)) {
       this.isOpen = false;
     }
+  };
+
+  private onHostKeyDown = (e: KeyboardEvent): void => {
+    e.key === 'Escape' && this.button.focus();
   };
 
   private updatePosition = async (): Promise<void> => {

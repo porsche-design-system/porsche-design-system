@@ -47,9 +47,7 @@ import {
   type MultiSelectState,
   type MultiSelectUpdateEventDetail,
   getHighlightedOption,
-  getHighlightedOptionIndex,
   getSelectedOptionValues,
-  getSelectedOptions,
   getSelectedOptionsString,
   hasFilterOptionResults,
   resetFilteredOptions,
@@ -61,6 +59,7 @@ import {
   syncMultiSelectChildrenProps,
   updateHighlightedOption,
   updateOptionsFilterState,
+  setAriaActiveDescendantElement,
 } from './multi-select-utils';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
@@ -136,7 +135,6 @@ export class MultiSelect {
   @Event({ bubbles: false }) public update: EventEmitter<MultiSelectUpdateEventDetail>;
 
   @State() private isOpen = false;
-  @State() private srHighlightedOptionText = '';
   @State() private hasFilterResults = true;
 
   @AttachInternals() private internals: ElementInternals;
@@ -259,7 +257,6 @@ export class MultiSelect {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const inputId = 'filter';
     const popoverId = 'list';
-    const optionsSelectedId = 'options-selected';
 
     return (
       <div class="root">
@@ -271,12 +268,6 @@ export class MultiSelect {
           isRequired={this.required}
           isDisabled={this.disabled}
         />
-        {/* in case, sr-only text is not placed here then the clear button is not able to focus the input for unknown reasons */}
-        {this.currentValue.length > 0 && (
-          <span id={optionsSelectedId} class="sr-only">
-            {getSelectedOptions(this.multiSelectOptions).length} options selected
-          </span>
-        )}
         <div class={{ wrapper: true, disabled: this.disabled }}>
           <input
             id={inputId}
@@ -294,7 +285,7 @@ export class MultiSelect {
               this.isOpen,
               this.required,
               labelId,
-              `${descriptionId} ${optionsSelectedId} ${messageId}`,
+              `${descriptionId} ${messageId}`,
               popoverId
             )}
           />
@@ -337,9 +328,6 @@ export class MultiSelect {
           </div>
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
-        <span class="sr-only" role="status" aria-live="assertive" aria-relevant="additions text">
-          {this.hasFilterResults ? this.srHighlightedOptionText : 'No results found'}
-        </span>
       </div>
     );
   }
@@ -465,12 +453,14 @@ export class MultiSelect {
         if (this.isOpen) {
           e.preventDefault();
           setFirstOptionHighlighted(this.popoverElement, this.multiSelectOptions);
+          setAriaActiveDescendantElement(this.inputElement, this.multiSelectOptions);
         }
         break;
       case 'PageDown':
         if (this.isOpen) {
           e.preventDefault();
           setLastOptionHighlighted(this.popoverElement, this.multiSelectOptions);
+          setAriaActiveDescendantElement(this.inputElement, this.multiSelectOptions);
         }
         break;
       default:
@@ -481,19 +471,8 @@ export class MultiSelect {
   private cycleDropdown(direction: SelectDropdownDirectionInternal): void {
     this.isOpen = true;
     updateHighlightedOption(this.popoverElement, this.multiSelectOptions, direction);
-    this.updateSrHighlightedOptionText();
+    setAriaActiveDescendantElement(this.inputElement, this.multiSelectOptions);
   }
-
-  private updateSrHighlightedOptionText = (): void => {
-    const highlightedOptionIndex = getHighlightedOptionIndex(this.multiSelectOptions);
-    // TODO: Does this consider hidden/disabled options?
-    const highlightedOption = this.multiSelectOptions[highlightedOptionIndex];
-    this.srHighlightedOptionText =
-      highlightedOption &&
-      `${highlightedOption.textContent}${highlightedOption.selected ? ', selected' : ' not selected'} (${
-        highlightedOptionIndex + 1
-      } of ${this.multiSelectOptions.length})`;
-  };
 
   private emitUpdateEvent = (): void => {
     this.update.emit({

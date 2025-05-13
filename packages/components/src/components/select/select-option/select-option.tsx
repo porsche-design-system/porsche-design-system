@@ -39,25 +39,28 @@ export class SelectOption {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const { theme = 'light', selected, highlighted, hidden } = this.host;
+    const { theme = 'light', selected: isSelected, highlighted, hidden } = this.host;
+    const isDisabled = this.disabled || this.host.disabledParent;
     attachComponentCss(this.host, getComponentCss, theme);
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const isDisabled = this.disabled || this.host.disabledParent;
 
     return (
-      <Host onClick={!isDisabled && this.onClick}>
+      // TODO: get rid of ARIA sprouting and use `elementInternals` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
+      <Host
+        onClick={!isDisabled && this.onClick}
+        role="option"
+        {...getOptionAriaAttributes(isSelected, isDisabled, hidden, !!this.value)}
+      >
         <div
-          role="option"
           class={{
             option: true,
-            'option--selected': selected,
+            'option--selected': isSelected,
             'option--highlighted': highlighted,
             'option--disabled': isDisabled,
           }}
-          {...getOptionAriaAttributes(selected, isDisabled, hidden, !!this.value)}
         >
           <slot onSlotchange={this.onSlotChange} />
-          {selected && (
+          {isSelected && (
             <PrefixedTagNames.pIcon
               class="icon"
               aria-hidden="true"
