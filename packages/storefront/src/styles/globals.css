@@ -2,9 +2,22 @@
 @import '@porsche-design-system/components-react/tailwind/theme.css';
 
 @theme {
+  --_pds-grid-narrow-offset: max(22px, 10.625vw - 12px);
+  --_pds-grid-narrow-offset-sm: calc(5vw - 16px + (clamp(16px, 1.25vw + 12px, 36px) + (100vw - (5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16) * 4);
+  --_pds-grid-narrow-offset-2xl: calc(max(0px, 50vw - 1280px) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + (min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16) * 4);
+  --_pds-grid-basic-offset: max(22px, 10.625vw - 12px);
+  --_pds-grid-basic-offset-sm: calc(5vw - 16px + (clamp(16px, 1.25vw + 12px, 36px) + (100vw - (5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16) * 2);
+  --_pds-grid-basic-offset-2xl: calc(max(0px, 50vw - 1280px) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + (min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16) * 2);
+  --_pds-grid-extended-offset: max(22px, 10.625vw - 12px);
+  --_pds-grid-extended-offset-sm: calc(5vw - 16px + (clamp(16px, 1.25vw + 12px, 36px) + (100vw - (5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16) * 1);
+  --_pds-grid-extended-offset-2xl: calc(max(0px, 50vw - 1280px) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + (min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16) * 1);
+  --_pds-grid-wide-offset: max(22px, 10.625vw - 12px);
+  --_pds-grid-wide-offset-sm: calc(5vw - 16px);
+  --_pds-grid-wide-offset-2xl: calc(max(0px, 50vw - 1280px) + min(50vw - 880px, 400px));
+  --_pds-grid-full-offset: max(0px, 50vw - 1280px);
   --_pds-grid-visualization-color: rgba(0,0,255,.1);
   --_pds-grid-visualization-grid-gap: var(--spacing-fluid-md);
-  --_pds-grid-visualization-safe-zone-base: var(--pds-grid-wide-offset);
+  --_pds-grid-visualization-safe-zone-base: var(--_pds-grid-wide-offset);
   --_pds-grid-visualization-column-width-base: calc((100% - var(--_pds-grid-visualization-safe-zone-base) * 2 - var(--_pds-grid-visualization-grid-gap) * 5) / 6);
   --_pds-grid-visualization-base: to right,
   var(--_pds-grid-visualization-color) 0%,
@@ -37,7 +50,7 @@
   transparent calc(100% - var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-grid-gap)),
   var(--_pds-grid-visualization-color) calc(100% - var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-grid-gap)),
   var(--_pds-grid-visualization-color) 100%;
-  --_pds-grid-visualization-safe-zone-sm: var(--pds-grid-wide-offset-sm);
+  --_pds-grid-visualization-safe-zone-sm: var(--_pds-grid-wide-offset-sm);
   --_pds-grid-visualization-column-width-sm: calc((100% - var(--_pds-grid-visualization-safe-zone-sm) * 2 - var(--_pds-grid-visualization-grid-gap) * 15) / 16);
   --_pds-grid-visualization-sm: to right,
   var(--_pds-grid-visualization-color) 0%,
@@ -110,7 +123,7 @@
   transparent calc(100% - var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-grid-gap)),
   var(--_pds-grid-visualization-color) calc(100% - var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-grid-gap)),
   var(--_pds-grid-visualization-color) 100%;
-  --_pds-grid-visualization-safe-zone-2xl: var(--pds-grid-wide-offset-2xl);
+  --_pds-grid-visualization-safe-zone-2xl: var(--_pds-grid-wide-offset-2xl);
   --_pds-grid-visualization-column-width-2xl: calc((100% - var(--_pds-grid-visualization-safe-zone-2xl) * 2 - var(--_pds-grid-visualization-grid-gap) * 15) / 16);
   --_pds-grid-visualization-2xl: to right,
   var(--_pds-grid-visualization-color) 0%,
