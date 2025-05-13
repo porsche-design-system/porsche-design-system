@@ -133,47 +133,29 @@
   --blur-frosted: 32px;
 
   // Shadow
-  --shadow-high: 0px 8px 40px rgba(0,0,0,.16);
-  --shadow-medium: 0px 4px 16px rgba(0,0,0,.16);
   --shadow-low: 0px 3px 8px rgba(0,0,0,.16);
+  --shadow-medium: 0px 4px 16px rgba(0,0,0,.16);
+  --shadow-high: 0px 8px 40px rgba(0,0,0,.16);
 
   // Outline
   --default-outline-width: #{$pds-border-width-base};
 
-  // Gradient
-  --pds-gradient: hsla(0,0%,0%,.8) 0%, hsla(0,0%,0%,.8) 8.1%, hsla(0,0%,0%,.8) 15.5%, hsla(0,0%,0%,.8) 22.5%, hsla(0,0%,0%,.78) 29%, hsla(0,0%,0%,.73) 35.3%, hsla(0,0%,0%,.67) 41.2%, hsla(0,0%,0%,.6) 47.1%, hsla(0,0%,0%,.52) 52.9%, hsla(0,0%,0%,.44) 58.8%, hsla(0,0%,0%,.33) 64.7%, hsla(0,0%,0%,.22) 71%, hsla(0,0%,0%,.12) 77.5%, hsla(0,0%,0%,.05) 84.5%, hsla(0,0%,0%,.011) 91.9%, hsla(0,0%,0%,0) 100%;
-
   // Motion
   --default-transition-timing-function: #{$pds-motion-easing-base};
-  --ease-base: #{$pds-motion-easing-base};
+  --ease-in-out: #{$pds-motion-easing-base};
   --ease-in: #{$pds-motion-easing-in};
   --ease-out: #{$pds-motion-easing-out};
 
   --default-transition-duration: #{$pds-motion-duration-short};
-  --pds-duration-short: #{$pds-motion-duration-short};
-  --pds-duration-moderate: #{$pds-motion-duration-moderate};
-  --pds-duration-long: #{$pds-motion-duration-long};
-  --pds-duration-very-long: #{$pds-motion-duration-very-long};
-
-  // TODO: move to global.scss in Storefront
-  --pds-grid-narrow-offset: #{$pds-grid-narrow-offset-base};
-  --pds-grid-narrow-offset-sm: #{$pds-grid-narrow-offset-s};
-  --pds-grid-narrow-offset-2xl: #{$pds-grid-narrow-offset-xxl};
-  --pds-grid-basic-offset: #{$pds-grid-basic-offset-base};
-  --pds-grid-basic-offset-sm: #{$pds-grid-basic-offset-s};
-  --pds-grid-basic-offset-2xl: #{$pds-grid-basic-offset-xxl};
-  --pds-grid-extended-offset: #{$pds-grid-extended-offset-base};
-  --pds-grid-extended-offset-sm: #{$pds-grid-extended-offset-s};
-  --pds-grid-extended-offset-2xl: #{$pds-grid-extended-offset-xxl};
-  --pds-grid-wide-offset: #{$pds-grid-wide-offset-base};
-  --pds-grid-wide-offset-sm: #{$pds-grid-wide-offset-s};
-  --pds-grid-wide-offset-2xl: #{$pds-grid-wide-offset-xxl};
-  --pds-grid-full-offset: #{$pds-grid-full-offset};
+  --transition-duration-short: #{$pds-motion-duration-short};
+  --transition-duration-moderate: #{$pds-motion-duration-moderate};
+  --transition-duration-long: #{$pds-motion-duration-long};
+  --transition-duration-very-long: #{$pds-motion-duration-very-long};
 
   // Animation
-  --animate-skeleton: skeletonAnimation var(--pds-duration-long) var(--ease-base) infinite;
+  --animate-skeleton: skeleton var(--transition-duration-long) var(--ease-in-out) infinite;
 
-  @keyframes skeletonAnimation {
+  @keyframes skeleton {
     from {
       background-position-x: 100%;
     }
@@ -261,19 +243,19 @@
 
 // Gradient
 @utility pds-gradient-to-t {
-  @apply bg-linear-[to_top,var(--pds-gradient)];
+  @apply bg-linear-[to_top,hsla(0,0%,0%,.8)_0%,hsla(0,0%,0%,.8)_8.1%,hsla(0,0%,0%,.8)_15.5%,hsla(0,0%,0%,.8)_22.5%,hsla(0,0%,0%,.78)_29%,hsla(0,0%,0%,.73)_35.3%,hsla(0,0%,0%,.67)_41.2%,hsla(0,0%,0%,.6)_47.1%,hsla(0,0%,0%,.52)_52.9%,hsla(0,0%,0%,.44)_58.8%,hsla(0,0%,0%,.33)_64.7%,hsla(0,0%,0%,.22)_71%,hsla(0,0%,0%,.12)_77.5%,hsla(0,0%,0%,.05)_84.5%,hsla(0,0%,0%,.011)_91.9%,hsla(0,0%,0%,0)_100%];
 }
 
 @utility pds-gradient-to-r {
-  @apply bg-linear-[to_right,var(--pds-gradient)];
+  @apply bg-linear-[to_right,hsla(0,0%,0%,.8)_0%,hsla(0,0%,0%,.8)_8.1%,hsla(0,0%,0%,.8)_15.5%,hsla(0,0%,0%,.8)_22.5%,hsla(0,0%,0%,.78)_29%,hsla(0,0%,0%,.73)_35.3%,hsla(0,0%,0%,.67)_41.2%,hsla(0,0%,0%,.6)_47.1%,hsla(0,0%,0%,.52)_52.9%,hsla(0,0%,0%,.44)_58.8%,hsla(0,0%,0%,.33)_64.7%,hsla(0,0%,0%,.22)_71%,hsla(0,0%,0%,.12)_77.5%,hsla(0,0%,0%,.05)_84.5%,hsla(0,0%,0%,.011)_91.9%,hsla(0,0%,0%,0)_100%];
 }
 
 @utility pds-gradient-to-b {
-  @apply bg-linear-[to_bottom,var(--pds-gradient)];
+  @apply bg-linear-[to_bottom,hsla(0,0%,0%,.8)_0%,hsla(0,0%,0%,.8)_8.1%,hsla(0,0%,0%,.8)_15.5%,hsla(0,0%,0%,.8)_22.5%,hsla(0,0%,0%,.78)_29%,hsla(0,0%,0%,.73)_35.3%,hsla(0,0%,0%,.67)_41.2%,hsla(0,0%,0%,.6)_47.1%,hsla(0,0%,0%,.52)_52.9%,hsla(0,0%,0%,.44)_58.8%,hsla(0,0%,0%,.33)_64.7%,hsla(0,0%,0%,.22)_71%,hsla(0,0%,0%,.12)_77.5%,hsla(0,0%,0%,.05)_84.5%,hsla(0,0%,0%,.011)_91.9%,hsla(0,0%,0%,0)_100%];
 }
 
 @utility pds-gradient-to-l {
-  @apply bg-linear-[to_left,var(--pds-gradient)];
+  @apply bg-linear-[to_left,hsla(0,0%,0%,.8)_0%,hsla(0,0%,0%,.8)_8.1%,hsla(0,0%,0%,.8)_15.5%,hsla(0,0%,0%,.8)_22.5%,hsla(0,0%,0%,.78)_29%,hsla(0,0%,0%,.73)_35.3%,hsla(0,0%,0%,.67)_41.2%,hsla(0,0%,0%,.6)_47.1%,hsla(0,0%,0%,.52)_52.9%,hsla(0,0%,0%,.44)_58.8%,hsla(0,0%,0%,.33)_64.7%,hsla(0,0%,0%,.22)_71%,hsla(0,0%,0%,.12)_77.5%,hsla(0,0%,0%,.05)_84.5%,hsla(0,0%,0%,.011)_91.9%,hsla(0,0%,0%,0)_100%];
 }
 
 // Grid
