@@ -242,24 +242,24 @@
 }
 
 // Gradient
-@utility pds-gradient-to-t {
+@utility bg-fade-to-t {
   @apply bg-linear-[to_top,hsla(0,0%,0%,.8)_0%,hsla(0,0%,0%,.8)_8.1%,hsla(0,0%,0%,.8)_15.5%,hsla(0,0%,0%,.8)_22.5%,hsla(0,0%,0%,.78)_29%,hsla(0,0%,0%,.73)_35.3%,hsla(0,0%,0%,.67)_41.2%,hsla(0,0%,0%,.6)_47.1%,hsla(0,0%,0%,.52)_52.9%,hsla(0,0%,0%,.44)_58.8%,hsla(0,0%,0%,.33)_64.7%,hsla(0,0%,0%,.22)_71%,hsla(0,0%,0%,.12)_77.5%,hsla(0,0%,0%,.05)_84.5%,hsla(0,0%,0%,.011)_91.9%,hsla(0,0%,0%,0)_100%];
 }
 
-@utility pds-gradient-to-r {
+@utility bg-fade-to-r {
   @apply bg-linear-[to_right,hsla(0,0%,0%,.8)_0%,hsla(0,0%,0%,.8)_8.1%,hsla(0,0%,0%,.8)_15.5%,hsla(0,0%,0%,.8)_22.5%,hsla(0,0%,0%,.78)_29%,hsla(0,0%,0%,.73)_35.3%,hsla(0,0%,0%,.67)_41.2%,hsla(0,0%,0%,.6)_47.1%,hsla(0,0%,0%,.52)_52.9%,hsla(0,0%,0%,.44)_58.8%,hsla(0,0%,0%,.33)_64.7%,hsla(0,0%,0%,.22)_71%,hsla(0,0%,0%,.12)_77.5%,hsla(0,0%,0%,.05)_84.5%,hsla(0,0%,0%,.011)_91.9%,hsla(0,0%,0%,0)_100%];
 }
 
-@utility pds-gradient-to-b {
+@utility bg-fade-to-b {
   @apply bg-linear-[to_bottom,hsla(0,0%,0%,.8)_0%,hsla(0,0%,0%,.8)_8.1%,hsla(0,0%,0%,.8)_15.5%,hsla(0,0%,0%,.8)_22.5%,hsla(0,0%,0%,.78)_29%,hsla(0,0%,0%,.73)_35.3%,hsla(0,0%,0%,.67)_41.2%,hsla(0,0%,0%,.6)_47.1%,hsla(0,0%,0%,.52)_52.9%,hsla(0,0%,0%,.44)_58.8%,hsla(0,0%,0%,.33)_64.7%,hsla(0,0%,0%,.22)_71%,hsla(0,0%,0%,.12)_77.5%,hsla(0,0%,0%,.05)_84.5%,hsla(0,0%,0%,.011)_91.9%,hsla(0,0%,0%,0)_100%];
 }
 
-@utility pds-gradient-to-l {
+@utility bg-fade-to-l {
   @apply bg-linear-[to_left,hsla(0,0%,0%,.8)_0%,hsla(0,0%,0%,.8)_8.1%,hsla(0,0%,0%,.8)_15.5%,hsla(0,0%,0%,.8)_22.5%,hsla(0,0%,0%,.78)_29%,hsla(0,0%,0%,.73)_35.3%,hsla(0,0%,0%,.67)_41.2%,hsla(0,0%,0%,.6)_47.1%,hsla(0,0%,0%,.52)_52.9%,hsla(0,0%,0%,.44)_58.8%,hsla(0,0%,0%,.33)_64.7%,hsla(0,0%,0%,.22)_71%,hsla(0,0%,0%,.12)_77.5%,hsla(0,0%,0%,.05)_84.5%,hsla(0,0%,0%,.011)_91.9%,hsla(0,0%,0%,0)_100%];
 }
 
 // Grid
-@utility pds-grid {
+@utility grid-template {
   @apply
     [--pds-internal-grid-safe-zone:max(22px,10.625vw-12px)]
     [--_pds-grid-col:minmax(0,var(--pds-internal-grid-outer-column,calc(var(--pds-internal-grid-safe-zone)-var(--spacing-fluid-md))))]
@@ -355,71 +355,71 @@
 }
 
 // Skeleton
-@utility pds-skeleton {
+@utility skeleton {
   @apply animate-skeleton;
   @apply block rounded-sm;
   @apply bg-surface bg-[linear-gradient(to_right,transparent_0%,var(--color-skeleton)_20%,transparent_50%)] bg-position-[0_0] bg-size-[200%_100%];
 }
 
-@utility pds-skeleton-light {
+@utility skeleton-light {
   @apply animate-skeleton;
   @apply block rounded-sm;
   @apply bg-surface-light bg-[linear-gradient(to_right,transparent_0%,var(--color-skeleton-light)_20%,transparent_50%)] bg-position-[0_0] bg-size-[200%_100%];
 }
 
-@utility pds-skeleton-dark {
+@utility skeleton-dark {
   @apply animate-skeleton;
   @apply block rounded-sm;
   @apply bg-surface-dark bg-[linear-gradient(to_right,transparent_0%,var(--color-skeleton-dark)_20%,transparent_50%)] bg-position-[0_0] bg-size-[200%_100%];
 }
 
 // Typography: Text
-@utility pds-text-2xs {
+@utility prose-text-2xs {
   @apply font-porsche-next not-italic font-normal text-2xs text-primary;
 }
-@utility pds-text-xs {
+@utility prose-text-xs {
   @apply font-porsche-next not-italic font-normal text-xs text-primary;
 }
-@utility pds-text-sm {
+@utility prose-text-sm {
   @apply font-porsche-next not-italic font-normal text-sm text-primary;
 }
-@utility pds-text-md {
+@utility prose-text-md {
   @apply font-porsche-next not-italic font-normal text-md text-primary;
 }
-@utility pds-text-lg {
+@utility prose-text-lg {
   @apply font-porsche-next not-italic font-normal text-lg text-primary;
 }
-@utility pds-text-xl {
+@utility prose-text-xl {
   @apply font-porsche-next not-italic font-normal text-xl text-primary;
 }
 
 // Typography: Heading
-@utility pds-heading-sm {
+@utility prose-heading-sm {
   @apply font-porsche-next not-italic font-semibold text-sm text-primary;
 }
-@utility pds-heading-md {
+@utility prose-heading-md {
   @apply font-porsche-next not-italic font-semibold text-md text-primary;
 }
-@utility pds-heading-lg {
+@utility prose-heading-lg {
   @apply font-porsche-next not-italic font-semibold text-lg text-primary;
 }
-@utility pds-heading-xl {
+@utility prose-heading-xl {
   @apply font-porsche-next not-italic font-semibold text-xl text-primary;
 }
-@utility pds-heading-2xl {
+@utility prose-heading-2xl {
   @apply font-porsche-next not-italic font-semibold text-2xl text-primary;
 }
 
 // Typography: Display
-@utility pds-display-sm {
+@utility prose-display-sm {
   @apply font-porsche-next not-italic font-normal leading-normal text-primary;
   font-size: #{$pds-font-size-display-small};
 }
-@utility pds-display-md {
+@utility prose-display-md {
   @apply font-porsche-next not-italic font-normal leading-normal text-primary;
   font-size: #{$pds-font-size-display-medium};
 }
-@utility pds-display-lg {
+@utility prose-display-lg {
   @apply font-porsche-next not-italic font-normal leading-normal text-primary;
   font-size: #{$pds-font-size-display-large};
 }
