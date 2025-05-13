@@ -3,6 +3,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
+  // Color
   --color-primary: #{$pds-theme-light-primary};
   --color-base: #{$pds-theme-light-background-base};
   --color-surface: #{$pds-theme-light-background-surface};
@@ -25,7 +26,6 @@
   --color-disabled: #{$pds-theme-light-state-disabled};
   --color-skeleton: #f7f7f7;
 
-  // Forced light colors
   --color-primary-light: #{$pds-theme-light-primary};
   --color-base-light: #{$pds-theme-light-background-base};
   --color-surface-light: #{$pds-theme-light-background-surface};
@@ -46,8 +46,8 @@
   --color-active-light: #{$pds-theme-light-state-active};
   --color-focus-light: #{$pds-theme-light-state-focus};
   --color-disabled-light: #{$pds-theme-light-state-disabled};
+  --color-skeleton-light: #f7f7f7;
 
-  // Forced dark colors
   --color-primary-dark: #{$pds-theme-dark-primary};
   --color-base-dark: #{$pds-theme-dark-background-base};
   --color-surface-dark: #{$pds-theme-dark-background-surface};
@@ -68,7 +68,9 @@
   --color-active-dark: #{$pds-theme-dark-state-active};
   --color-focus-dark: #{$pds-theme-dark-state-focus};
   --color-disabled-dark: #{$pds-theme-dark-state-disabled};
+  --color-skeleton-dark: #1a1b1e;
 
+  // Typography
   --font-porsche-next: #{$pds-font-family};
 
   --font-weight-normal: #{$pds-font-weight-regular};
@@ -94,6 +96,7 @@
   --text-2xl: #{$pds-font-size-heading-xx-large};
   --text-2xl--line-height: #{$pds-font-line-height};
 
+  // Breakpoint
   --breakpoint-xs: #{$pds-breakpoint-xs}px;
   --breakpoint-sm: #{$pds-breakpoint-s}px;
   --breakpoint-md: #{$pds-breakpoint-m}px;
@@ -101,7 +104,7 @@
   --breakpoint-xl: #{$pds-breakpoint-xl}px;
   --breakpoint-2xl: #{$pds-breakpoint-xxl}px;
 
-  // Default spacing
+  // Spacing
   --spacing: 0.25rem;
 
   --spacing-fluid-xs: #{$pds-spacing-fluid-x-small};
@@ -118,103 +121,39 @@
   --spacing-static-xl: #{$pds-spacing-static-x-large};
   --spacing-static-2xl: #{$pds-spacing-static-xx-large};
 
+  // Border
   --radius-sm: #{$pds-border-radius-small};
   --radius-md: #{$pds-border-radius-medium};
   --radius-lg: #{$pds-border-radius-large};
 
+  --default-border-width: #{$pds-border-width-base};
+  --border-width-thin: #{$pds-border-width-thin};
+
+  // Blur
+  --blur-frosted: 32px;
+
+  // Shadow
+  --shadow-high: 0px 8px 40px rgba(0,0,0,.16);
+  --shadow-medium: 0px 4px 16px rgba(0,0,0,.16);
+  --shadow-low: 0px 3px 8px rgba(0,0,0,.16);
+
+  // Outline
+  --default-outline-width: #{$pds-border-width-base};
+
+  // Gradient
+  --pds-gradient: hsla(0,0%,0%,.8) 0%, hsla(0,0%,0%,.8) 8.1%, hsla(0,0%,0%,.8) 15.5%, hsla(0,0%,0%,.8) 22.5%, hsla(0,0%,0%,.78) 29%, hsla(0,0%,0%,.73) 35.3%, hsla(0,0%,0%,.67) 41.2%, hsla(0,0%,0%,.6) 47.1%, hsla(0,0%,0%,.52) 52.9%, hsla(0,0%,0%,.44) 58.8%, hsla(0,0%,0%,.33) 64.7%, hsla(0,0%,0%,.22) 71%, hsla(0,0%,0%,.12) 77.5%, hsla(0,0%,0%,.05) 84.5%, hsla(0,0%,0%,.011) 91.9%, hsla(0,0%,0%,0) 100%;
+
+  // Motion
+  --default-transition-timing-function: #{$pds-motion-easing-base};
   --ease-base: #{$pds-motion-easing-base};
   --ease-in: #{$pds-motion-easing-in};
   --ease-out: #{$pds-motion-easing-out};
 
-  // Undocumented but used by tailwind
-  --default-border-width: #{$pds-border-width-base};
-  --default-outline-width: #{$pds-border-width-base};
-  --default-transition-timing-function: #{$pds-motion-easing-base};
   --default-transition-duration: #{$pds-motion-duration-short};
-
-  /** Custom none namespace variables (https://tailwindcss.com/docs/theme#theme-variable-namespaces) */
-  --border-width-thin: #{$pds-border-width-thin};
-
-  --shadow-high: 0px 8px 40px rgba(0, 0, 0, 0.16); // Corresponds to drop-shadow-high style
-  --shadow-medium: 0px 4px 16px rgba(0, 0, 0, 0.16); // Corresponds to drop-shadow-medium style
-  --shadow-low: 0px 3px 8px rgba(0, 0, 0, 0.16); // Corresponds to drop-shadow-low style
-
-  --blur-frosted: 32px;
-
-  // Custom PDS variables
   --pds-duration-short: #{$pds-motion-duration-short};
   --pds-duration-moderate: #{$pds-motion-duration-moderate};
   --pds-duration-long: #{$pds-motion-duration-long};
   --pds-duration-very-long: #{$pds-motion-duration-very-long};
-
-  --pds-gradient-to-bottom: to bottom,
-  hsla(0, 0%, 0%, 0.8) 0%,
-  hsla(0, 0%, 0%, 0.8) 8.1%,
-  hsla(0, 0%, 0%, 0.8) 15.5%,
-  hsla(0, 0%, 0%, 0.8) 22.5%,
-  hsla(0, 0%, 0%, 0.78) 29%,
-  hsla(0, 0%, 0%, 0.73) 35.3%,
-  hsla(0, 0%, 0%, 0.67) 41.2%,
-  hsla(0, 0%, 0%, 0.6) 47.1%,
-  hsla(0, 0%, 0%, 0.52) 52.9%,
-  hsla(0, 0%, 0%, 0.44) 58.8%,
-  hsla(0, 0%, 0%, 0.33) 64.7%,
-  hsla(0, 0%, 0%, 0.22) 71%,
-  hsla(0, 0%, 0%, 0.12) 77.5%,
-  hsla(0, 0%, 0%, 0.05) 84.5%,
-  hsla(0, 0%, 0%, 0.011) 91.9%,
-  hsla(0, 0%, 0%, 0) 100%;
-  --pds-gradient-to-left: to left,
-  hsla(0, 0%, 0%, 0.8) 0%,
-  hsla(0, 0%, 0%, 0.8) 8.1%,
-  hsla(0, 0%, 0%, 0.8) 15.5%,
-  hsla(0, 0%, 0%, 0.8) 22.5%,
-  hsla(0, 0%, 0%, 0.78) 29%,
-  hsla(0, 0%, 0%, 0.73) 35.3%,
-  hsla(0, 0%, 0%, 0.67) 41.2%,
-  hsla(0, 0%, 0%, 0.6) 47.1%,
-  hsla(0, 0%, 0%, 0.52) 52.9%,
-  hsla(0, 0%, 0%, 0.44) 58.8%,
-  hsla(0, 0%, 0%, 0.33) 64.7%,
-  hsla(0, 0%, 0%, 0.22) 71%,
-  hsla(0, 0%, 0%, 0.12) 77.5%,
-  hsla(0, 0%, 0%, 0.05) 84.5%,
-  hsla(0, 0%, 0%, 0.011) 91.9%,
-  hsla(0, 0%, 0%, 0) 100%;
-  --pds-gradient-to-right: to right,
-  hsla(0, 0%, 0%, 0.8) 0%,
-  hsla(0, 0%, 0%, 0.8) 8.1%,
-  hsla(0, 0%, 0%, 0.8) 15.5%,
-  hsla(0, 0%, 0%, 0.8) 22.5%,
-  hsla(0, 0%, 0%, 0.78) 29%,
-  hsla(0, 0%, 0%, 0.73) 35.3%,
-  hsla(0, 0%, 0%, 0.67) 41.2%,
-  hsla(0, 0%, 0%, 0.6) 47.1%,
-  hsla(0, 0%, 0%, 0.52) 52.9%,
-  hsla(0, 0%, 0%, 0.44) 58.8%,
-  hsla(0, 0%, 0%, 0.33) 64.7%,
-  hsla(0, 0%, 0%, 0.22) 71%,
-  hsla(0, 0%, 0%, 0.12) 77.5%,
-  hsla(0, 0%, 0%, 0.05) 84.5%,
-  hsla(0, 0%, 0%, 0.011) 91.9%,
-  hsla(0, 0%, 0%, 0) 100%;
-  --pds-gradient-to-top: to top,
-  hsla(0, 0%, 0%, 0.8) 0%,
-  hsla(0, 0%, 0%, 0.8) 8.1%,
-  hsla(0, 0%, 0%, 0.8) 15.5%,
-  hsla(0, 0%, 0%, 0.8) 22.5%,
-  hsla(0, 0%, 0%, 0.78) 29%,
-  hsla(0, 0%, 0%, 0.73) 35.3%,
-  hsla(0, 0%, 0%, 0.67) 41.2%,
-  hsla(0, 0%, 0%, 0.6) 47.1%,
-  hsla(0, 0%, 0%, 0.52) 52.9%,
-  hsla(0, 0%, 0%, 0.44) 58.8%,
-  hsla(0, 0%, 0%, 0.33) 64.7%,
-  hsla(0, 0%, 0%, 0.22) 71%,
-  hsla(0, 0%, 0%, 0.12) 77.5%,
-  hsla(0, 0%, 0%, 0.05) 84.5%,
-  hsla(0, 0%, 0%, 0.011) 91.9%,
-  hsla(0, 0%, 0%, 0) 100%;
 
   // TODO: move to global.scss in Storefront
   --pds-grid-narrow-offset: #{$pds-grid-narrow-offset-base};
@@ -268,6 +207,7 @@
     --color-disabled: #{$pds-theme-light-state-disabled};
     --color-skeleton: #f7f7f7;
   }
+
   .dark {
     --color-primary: #{$pds-theme-dark-primary};
     --color-base: #{$pds-theme-dark-background-base};
@@ -291,6 +231,7 @@
     --color-disabled: #{$pds-theme-dark-state-disabled};
     --color-skeleton: #1a1b1e;
   }
+
   .auto {
     @media (prefers-color-scheme: dark) {
       --color-primary: #{$pds-theme-dark-primary};
@@ -318,16 +259,31 @@
   }
 }
 
-// TODO: Do we want to expose grid gap?
+// Gradient
+@utility pds-gradient-to-t {
+  @apply bg-linear-[to_top,var(--pds-gradient)];
+}
+
+@utility pds-gradient-to-r {
+  @apply bg-linear-[to_right,var(--pds-gradient)];
+}
+
+@utility pds-gradient-to-b {
+  @apply bg-linear-[to_bottom,var(--pds-gradient)];
+}
+
+@utility pds-gradient-to-l {
+  @apply bg-linear-[to_left,var(--pds-gradient)];
+}
+
 // Grid
 @utility pds-grid {
   @apply
-    [--pds-grid-gap:clamp(16px,1.25vw+12px,36px)]
     [--pds-internal-grid-safe-zone:max(22px,10.625vw-12px)]
-    [--_pds-grid-col:minmax(0,var(--pds-internal-grid-outer-column,calc(var(--pds-internal-grid-safe-zone)-var(--pds-grid-gap))))]
+    [--_pds-grid-col:minmax(0,var(--pds-internal-grid-outer-column,calc(var(--pds-internal-grid-safe-zone)-var(--spacing-fluid-md))))]
     grid
     grid-cols-[[full-start]_var(--_pds-grid-col)_[wide-start_extended-start_basic-start_narrow-start]_repeat(6,minmax(0,1fr))_[narrow-end_basic-end_extended-end_wide-end]_var(--_pds-grid-col)_[full-end]]
-    gap-(--pds-grid-gap)
+    gap-(--spacing-fluid-md)
     min-w-[var(--pds-internal-grid-width-min,320px)]
     max-w-[var(--pds-internal-grid-width-max,2560px)]
     box-content
@@ -416,6 +372,25 @@
   @apply col-span-(--_pds-grid-two-thirds,1);
 }
 
+// Skeleton
+@utility pds-skeleton {
+  @apply animate-skeleton;
+  @apply block rounded-sm;
+  @apply bg-surface bg-[linear-gradient(to_right,transparent_0%,var(--color-skeleton)_20%,transparent_50%)] bg-position-[0_0] bg-size-[200%_100%];
+}
+
+@utility pds-skeleton-light {
+  @apply animate-skeleton;
+  @apply block rounded-sm;
+  @apply bg-surface bg-[linear-gradient(to_right,transparent_0%,var(--color-skeleton-light)_20%,transparent_50%)] bg-position-[0_0] bg-size-[200%_100%];
+}
+
+@utility pds-skeleton-dark {
+  @apply animate-skeleton;
+  @apply block rounded-sm;
+  @apply bg-surface bg-[linear-gradient(to_right,transparent_0%,var(--color-skeleton-dark)_20%,transparent_50%)] bg-position-[0_0] bg-size-[200%_100%];
+}
+
 // Typography: Text
 @utility pds-text-2xs {
   @apply font-porsche-next not-italic font-normal text-2xs text-primary;
@@ -465,11 +440,4 @@
 @utility pds-display-lg {
   @apply font-porsche-next not-italic font-normal leading-normal text-primary;
   font-size: #{$pds-font-size-display-large};
-}
-
-// Skeleton
-@utility pds-skeleton {
-  @apply animate-skeleton;
-  @apply block rounded-sm;
-  @apply bg-surface bg-[linear-gradient(to_right,transparent_0%,var(--color-skeleton)_20%,transparent_50%)] bg-position-[0_0] bg-size-[200%_100%];
 }

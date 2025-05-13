@@ -59,7 +59,7 @@ export const gridStoryDivision: Story<'div'> = {
         {
           tag: 'div',
           properties: {
-            className: 'col-wide grid grid-cols-subgrid gap-y-(--pds-grid-gap)',
+            className: 'col-wide grid grid-cols-subgrid gap-y-fluid-md',
           },
           children: [
             {
@@ -81,7 +81,7 @@ export const gridStoryDivision: Story<'div'> = {
         {
           tag: 'div',
           properties: {
-            className: 'col-extended grid grid-cols-subgrid gap-y-(--pds-grid-gap)',
+            className: 'col-extended grid grid-cols-subgrid gap-y-fluid-md',
           },
           children: [
             {
@@ -103,7 +103,7 @@ export const gridStoryDivision: Story<'div'> = {
         {
           tag: 'div',
           properties: {
-            className: 'col-basic grid grid-cols-subgrid gap-y-(--pds-grid-gap)',
+            className: 'col-basic grid grid-cols-subgrid gap-y-fluid-md',
           },
           children: [
             {
@@ -174,7 +174,7 @@ export const gridStoryDivision: Story<'div'> = {
         {
           tag: 'div',
           properties: {
-            className: 'col-narrow grid grid-cols-subgrid gap-y-(--pds-grid-gap)',
+            className: 'col-narrow grid grid-cols-subgrid gap-y-fluid-md',
           },
           children: [
             {
