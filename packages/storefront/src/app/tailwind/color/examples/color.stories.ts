@@ -7,7 +7,7 @@ export const colorStoryBackgroundColor: Story<'div'> = {
     {
       tag: 'ul',
       properties: {
-        className: 'grid gap-fluid-sm text-sm text-primary',
+        className: 'grid gap-fluid-sm prose-text-sm',
       },
       children: [
         {
@@ -124,7 +124,7 @@ export const colorStoryTextColor: Story<'div'> = {
     {
       tag: 'ul',
       properties: {
-        className: 'grid gap-fluid-sm text-sm',
+        className: 'grid gap-fluid-sm prose-text-sm',
       },
       children: [
         {
