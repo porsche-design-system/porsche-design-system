@@ -120,12 +120,11 @@ export const getComponentCss = (
           borderColor: primaryColorDark,
         }),
       },
-      ...hoverMediaQuery({
-        ...(!disabled &&
-          !readOnly && {
-            '&:hover:not(:has(.button:hover, input:focus ))': hoverStyles,
-          }),
-      }),
+      ...(!disabled &&
+        !readOnly &&
+        hoverMediaQuery({
+          '&:hover:not(:has(.button:hover, input:focus ))': hoverStyles,
+        })),
       ...(disabled && {
         cursor: 'not-allowed',
         color: disabledColor,
@@ -154,14 +153,16 @@ export const getComponentCss = (
       },
     }),
     // .label / .required
-    ...getFunctionalComponentLabelStyles(disabled, hideLabel, theme, {
-      ...hoverMediaQuery({
-        ...(!disabled &&
-          !readOnly && {
-            '&:hover~.wrapper': hoverStyles,
-          }),
-      }),
-    }),
+    ...getFunctionalComponentLabelStyles(
+      disabled,
+      hideLabel,
+      theme,
+      !disabled &&
+        !readOnly &&
+        hoverMediaQuery({
+          '&:hover~.wrapper': hoverStyles,
+        })
+    ),
     // .message
     ...getFunctionalComponentStateMessageStyles(theme, state),
   });
