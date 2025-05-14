@@ -6,27 +6,24 @@ export const skeletonStory: Story<'div'> = {
   generator: () => [
     {
       tag: 'div',
-      properties: { className: 'flex flex-col items-center justify-center gap-fluid-sm p-static-sm' },
+      properties: { className: 'grid gap-fluid-sm prose-text-sm' },
       children: [
         {
-          tag: 'div',
-          properties: { className: 'pds-skeleton h-[200px] w-full' },
-          children: ['.pds-skeleton'],
+          tag: 'span',
+          properties: { className: 'skeleton p-fluid-sm' },
+          children: ['.skeleton'],
         },
         {
-          tag: 'div',
-          properties: { className: 'pds-skeleton text-sm w-fit' },
-          children: ['.pds-skeleton .text-sm'],
+          tag: 'span',
+          properties: { className: 'skeleton w-4/5 h-fluid-sm rounded-sm' },
         },
         {
-          tag: 'div',
-          properties: { className: 'pds-skeleton text-md w-fit' },
-          children: ['.pds-skeleton .text-md'],
+          tag: 'span',
+          properties: { className: 'skeleton w-4/5 h-fluid-sm rounded-sm' },
         },
         {
-          tag: 'div',
-          properties: { className: 'pds-skeleton text-lg w-fit' },
-          children: ['.pds-skeleton .text-lg'],
+          tag: 'span',
+          properties: { className: 'skeleton w-3/5 h-fluid-sm rounded-sm' },
         },
       ],
     },
