@@ -13,13 +13,13 @@
   </div>
   <div class="flex flex-col gap-fluid-md p-fluid-md">
     <h3 class="prose-heading-md text-primary-light m-0">Breakpoint</h3>
-    <p class="after:content-['_0px']">Breakpoint Base:</p>
-    <p class="after:content-['_480px']">Breakpoint XS:</p>
-    <p class="after:content-['_760px']">Breakpoint S:</p>
-    <p class="after:content-['_1000px']">Breakpoint M:</p>
-    <p class="after:content-['_1300px']">Breakpoint L:</p>
-    <p class="after:content-['_1760px']">Breakpoint XL:</p>
-    <p class="after:content-['_1920px']">Breakpoint XXL:</p>
+    <p class="after:content-['_0px']  m-0">Breakpoint Base:</p>
+    <p class="after:content-['_480px']  m-0">Breakpoint XS:</p>
+    <p class="after:content-['_760px']  m-0">Breakpoint S:</p>
+    <p class="after:content-['_1000px']  m-0">Breakpoint M:</p>
+    <p class="after:content-['_1300px']  m-0">Breakpoint L:</p>
+    <p class="after:content-['_1760px']  m-0">Breakpoint XL:</p>
+    <p class="after:content-['_1920px']  m-0">Breakpoint XXL:</p>
   </div>
 </template>
 
