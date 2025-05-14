@@ -1,4 +1,7 @@
-@import "tailwindcss";
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
 @import "@porsche-design-system/components-vue/tailwind/theme.css";
 
-@source not './styles';
+@source not './vanilla-extract';
