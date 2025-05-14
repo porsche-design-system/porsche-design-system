@@ -20,6 +20,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/tailwind/theme.css';`
   ([#3849](https://github.com/porsche-design-system/porsche-design-system/pull/3849))
 
+### Changed
+
+- `Styles`: removed default styles for `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p`, `b` and `strong`
+  ([#3849](https://github.com/porsche-design-system/porsche-design-system/pull/3849))
+
 ## [3.28.0-rc.2] - 2025-04-23
 
 ### Fixed
