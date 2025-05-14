@@ -46,18 +46,3 @@
     <div class="bg-disabled rounded-sm p-fluid-md border-thin border-gray-500" />
   </div>
 </template>
-
-// Tile
-export const getTileStyle = {
-borderRadius: borderRadiusSmall,
-padding: spacingFluidMedium,
-border: '1px solid grey',
-} as const;
-
-// Theme Light
-export const ThemeLightPrimary = style({
-...getTileStyle,
-background: themeLightPrimary,
-});
-<script setup lang="ts">
-</script>
