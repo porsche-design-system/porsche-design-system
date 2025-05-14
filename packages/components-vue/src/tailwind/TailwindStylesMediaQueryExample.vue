@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col gap-fluid-md p-fluid-md">
-    <h3 class="pds-heading-md text-primary-light m-0">Media Query (change viewport to see effect)</h3>
+    <h3 class="prose-heading-md text-primary-light m-0">Media Query (change viewport to see effect)</h3>
     <p class="text-sm text-primary m-0 relative after:content-['Base'] xs:after:content-['XS'] sm:after:content-['S'] md:after:content-['M'] lg:after:content-['L'] xl:after:content-['XL'] 2xl:after:content-['XXL']">
     Media Query Min:
     </p>
@@ -12,7 +12,7 @@
     </p>
   </div>
   <div class="flex flex-col gap-fluid-md p-fluid-md">
-    <h3 class="pds-heading-md text-primary-light m-0">Breakpoint</h3>
+    <h3 class="prose-heading-md text-primary-light m-0">Breakpoint</h3>
     <p class="after:content-['_0px']">Breakpoint Base:</p>
     <p class="after:content-['_480px']">Breakpoint XS:</p>
     <p class="after:content-['_760px']">Breakpoint S:</p>

@@ -9,7 +9,7 @@ const isExpandActive = ref(false);
 
 <template>
   <div class="flex flex-wrap justify-center gap-fluid-md p-fluid-md">
-    <h3 class="pds-heading-md text-primary-light text-center w-full">Moving</h3>
+    <h3 class="prose-heading-md text-primary-light text-center w-full">Moving</h3>
     <div
       class="[transition:transform_var(--transition-duration-short)] w-[200px] h-[100px] leading-[100px] text-center text-primary-light bg-surface-light rounded-lg cursor-pointer"
       :class="[isMovingActive ? 'transform-[translateX(200px)]' : 'transform-[translateX(-200px)]']"
@@ -18,7 +18,7 @@ const isExpandActive = ref(false);
       play
     </div>
 
-    <h3 class="pds-heading-md text-primary-light text-center w-full">Enter / Exit</h3>
+    <h3 class="prose-heading-md text-primary-light text-center w-full">Enter / Exit</h3>
     <div
       class="w-[200px] h-[100px] leading-[100px] text-center text-primary-light bg-surface-light rounded-lg cursor-pointer"
       :class="[isEnterExitActive ?
@@ -30,7 +30,7 @@ const isExpandActive = ref(false);
       play
     </div>
 
-    <h3 class="pds-heading-md text-primary-light text-center w-full">Show / Hide</h3>
+    <h3 class="prose-heading-md text-primary-light text-center w-full">Show / Hide</h3>
     <div
       class="[transition:opacity_var(--transition-duration-long)] w-[200px] h-[100px] leading-[100px] text-center text-primary-light bg-surface-light rounded-lg cursor-pointer"
       :class="[isShowHideActive ?
@@ -42,7 +42,7 @@ const isExpandActive = ref(false);
       play
     </div>
 
-    <h3 class="pds-heading-md text-primary-light text-center w-full">Expand</h3>
+    <h3 class="prose-heading-md text-primary-light text-center w-full">Expand</h3>
     <div
       class="w-[200px] h-[100px] leading-[100px] text-center text-primary-light bg-surface-light rounded-lg cursor-pointer"
       :class="[isExpandActive ?
