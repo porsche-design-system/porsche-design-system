@@ -15,7 +15,7 @@ test.describe('markdown', async () => {
       await page.evaluate(() =>
         (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
       );
-      const link = page.locator('a[href="https://designsystem.porsche.com/"]:not([title])');
+      const link = page.getByRole('link', { name: 'link text' });
       await link.focus();
       await expect(link).toBeFocused();
       await waitForImagesToBeLoaded(page);
@@ -38,7 +38,7 @@ test.describe('markdown', async () => {
         await page.evaluate(() =>
           (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
         );
-        const link = page.locator('a[href="https://designsystem.porsche.com/"]:not([title])');
+        const link = page.getByRole('link', { name: 'link text' });
         await link.focus();
         await expect(link).toBeFocused();
         await page.setViewportSize({
