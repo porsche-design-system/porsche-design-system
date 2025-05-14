@@ -36,3 +36,10 @@ export const resetAnimations = async (page: Page) => {
     });
   });
 };
+
+export const waitForImagesToBeLoaded = async (page: Page) => {
+  for (const img of await page.getByRole('img').all()) {
+    await expect(img).toHaveJSProperty('complete', true);
+    await expect(img).not.toHaveJSProperty('naturalWidth', 0);
+  }
+};
