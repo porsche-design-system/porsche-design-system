@@ -18,7 +18,7 @@ export const Playground = ({
   frameworkMarkup,
   onOpenInStackblitz,
   disableOpenInStackblitz = false,
-  backgroundColor = 'background-base',
+  backgroundColor = 'base',
   fixedBackgroundColor,
   children,
 }: PropsWithChildren<PlaygroundProps>) => {
