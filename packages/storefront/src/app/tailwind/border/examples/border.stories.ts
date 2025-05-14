@@ -7,22 +7,22 @@ export const borderRadiusStory: Story<'div'> = {
     {
       tag: 'div',
       properties: {
-        className: 'grid gap-fluid-md',
+        className: 'grid gap-fluid-md prose-text-sm',
       },
       children: [
         {
           tag: 'div',
-          properties: { className: 'rounded-sm border p-static-md' },
+          properties: { className: 'rounded-sm border p-fluid-sm' },
           children: ['.rounded-sm'],
         },
         {
           tag: 'div',
-          properties: { className: 'rounded-md border p-static-md' },
+          properties: { className: 'rounded-md border p-fluid-sm' },
           children: ['.rounded-md'],
         },
         {
           tag: 'div',
-          properties: { className: 'rounded-lg border p-static-md' },
+          properties: { className: 'rounded-lg border p-fluid-sm' },
           children: ['.rounded-lg'],
         },
       ],
@@ -35,18 +35,18 @@ export const borderWidthStory: Story<'div'> = {
     {
       tag: 'div',
       properties: {
-        className: 'grid gap-fluid-md',
+        className: 'grid gap-fluid-md prose-text-sm',
       },
       children: [
         {
           tag: 'div',
-          properties: { className: 'border p-static-md' },
+          properties: { className: 'border p-fluid-sm' },
           children: ['.border'],
         },
         {
           tag: 'div',
           properties: {
-            className: 'border-thin p-static-md',
+            className: 'border-thin p-fluid-sm',
           },
           children: ['.border-thin'],
         },
