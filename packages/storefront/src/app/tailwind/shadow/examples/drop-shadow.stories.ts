@@ -7,27 +7,27 @@ export const shadowStory: Story<'div'> = {
     {
       tag: 'div',
       properties: {
-        className: 'flex flex-col gap-fluid-md',
+        className: 'grid gap-fluid-md prose-text-sm',
       },
       children: [
         {
           tag: 'div',
           properties: {
-            className: 'shadow-low rounded-lg text-sm text-primary p-fluid-md',
+            className: 'shadow-low rounded-lg p-fluid-sm',
           },
           children: ['.shadow-low'],
         },
         {
           tag: 'div',
           properties: {
-            className: 'shadow-medium rounded-lg text-sm text-primary p-fluid-md',
+            className: 'shadow-medium rounded-lg p-fluid-sm',
           },
           children: ['.shadow-medium'],
         },
         {
           tag: 'div',
           properties: {
-            className: 'shadow-high rounded-lg text-sm text-primary p-fluid-md',
+            className: 'shadow-high rounded-lg p-fluid-sm',
           },
           children: ['.shadow-high'],
         },
