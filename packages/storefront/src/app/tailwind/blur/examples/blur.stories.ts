@@ -7,7 +7,7 @@ export const blurStory: Story<'div'> = {
     {
       tag: 'div',
       properties: {
-        className: 'grid',
+        className: 'grid prose-text-sm text-primary-dark',
       },
       children: [
         {
@@ -30,7 +30,7 @@ export const blurStory: Story<'div'> = {
           tag: 'div',
           properties: {
             className:
-              'backdrop-blur-frosted bg-frosted col-1 row-1 rounded-lg m-fluid-lg p-static-md text-primary-dark grid place-items-center',
+              'backdrop-blur-frosted bg-frosted col-1 row-1 rounded-lg m-fluid-lg p-fluid-sm grid place-items-center',
           },
           children: ['.backdrop-blur-frosted .bg-frosted'],
         },
