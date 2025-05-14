@@ -5,7 +5,7 @@
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
   "files": ["dist/"],
-  "style": "dist/theme.css",
+  "style": "dist/index.css",
   "sideEffects": false,
   "scripts": {
     "build": "yarn clean:build && mkdir -p dist && sass --load-path=node_modules --no-source-map src/index.scss dist/index.css",
