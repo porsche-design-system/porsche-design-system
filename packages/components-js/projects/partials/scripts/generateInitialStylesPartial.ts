@@ -1,7 +1,7 @@
-import { INTERNAL_TAG_NAMES, TAG_NAMES, getMinifiedCss } from '@porsche-design-system/shared';
-import { fontFamily, fontLineHeight } from '@porsche-design-system/styles';
 import type { Styles } from 'jss';
+import { getMinifiedCss, INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 import { joinArrayElementsToString } from './utils';
+import { fontFamily, fontHyphenationStyle, fontLineHeight, fontWeight } from '@porsche-design-system/styles';
 
 const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)));
 
@@ -15,6 +15,19 @@ const normalizeStyles: Styles = {
       letterSpacing: 'normal',
       textSizeAdjust: 'none',
       WebkitTextSizeAdjust: 'none', // stop iOS safari from adjusting font size when screen rotation is changing
+    },
+
+    'h1, h2, h3, h4, h5, h6': {
+      fontWeight: fontWeight.semiBold,
+    },
+
+    p: {
+      fontWeight: fontWeight.regular,
+      ...fontHyphenationStyle,
+    },
+
+    'b, strong': {
+      fontWeight: fontWeight.bold,
     },
   },
 };
