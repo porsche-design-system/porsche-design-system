@@ -10,7 +10,7 @@ test.describe('markdown', async () => {
       await page.emulateMedia({
         colorScheme: scheme,
       });
-      await page.goto('/markdown');
+      await page.goto('/-/markdown');
       await resetAnimations(page);
       await page.evaluate(() =>
         (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
@@ -32,7 +32,7 @@ test.describe('markdown', async () => {
     .filter((x) => x !== viewportWidthM)
     .forEach((viewportWidth) => {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
-        await page.goto('/markdown');
+        await page.goto('/-/markdown');
         await resetAnimations(page);
         await page.evaluate(() =>
           (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
