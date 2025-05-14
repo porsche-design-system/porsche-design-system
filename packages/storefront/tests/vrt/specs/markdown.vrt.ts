@@ -18,7 +18,6 @@ test.describe('markdown', async () => {
       const link = page.getByRole('link', { name: 'link text' });
       await link.focus();
       await expect(link).toBeFocused();
-      await waitForImagesToBeLoaded(page);
 
       await page.setViewportSize({
         width: viewportWidthM,
@@ -47,7 +46,6 @@ test.describe('markdown', async () => {
         });
 
         await closeSidebars(page);
-        await waitForImagesToBeLoaded(page);
 
         const screenshot = await page.screenshot({ fullPage: true });
         expect(screenshot).toMatchSnapshot(`markdown-${viewportWidth}.png`);
