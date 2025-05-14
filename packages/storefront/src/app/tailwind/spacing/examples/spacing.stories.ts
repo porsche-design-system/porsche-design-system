@@ -2,76 +2,88 @@
 
 import type { Story } from '@/models/story';
 
-export const spacingStoryFluid: Story<'div'> = {
+export const spacingFluidStory: Story<'div'> = {
   generator: () => [
     {
-      tag: 'div',
-      properties: { className: 'flex flex-col items-start justify-center gap-4 p-4' },
+      tag: 'ul',
+      properties: { className: 'grid gap-fluid-md prose-text-sm' },
       children: [
         {
-          tag: 'div',
-          properties: { className: 'p-fluid-xs bg-red-100' },
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-surface' },
-              children: ['.p-fluid-xs'],
+              properties: { className: 'w-fluid-xs h-fluid-xs bg-red-100' },
             },
+            '.w-fluid-xs .h-fluid-xs',
           ],
         },
         {
-          tag: 'div',
-          properties: { className: 'p-fluid-sm bg-red-100' },
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-surface' },
-              children: ['.p-fluid-sm'],
+              properties: { className: 'w-fluid-sm h-fluid-sm bg-red-100' },
             },
+            '.w-fluid-sm .h-fluid-sm',
           ],
         },
         {
-          tag: 'div',
-          properties: { className: 'p-fluid-md bg-red-100' },
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-surface' },
-              children: ['.p-fluid-md'],
+              properties: { className: 'w-fluid-md h-fluid-md bg-red-100' },
             },
+            '.w-fluid-md .h-fluid-md',
           ],
         },
         {
-          tag: 'div',
-          properties: { className: 'p-fluid-lg bg-red-100' },
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-surface' },
-              children: ['.p-fluid-lg'],
+              properties: { className: 'w-fluid-lg h-fluid-lg bg-red-100' },
             },
+            '.w-fluid-lg .h-fluid-lg',
           ],
         },
         {
-          tag: 'div',
-          properties: { className: 'p-fluid-xl bg-red-100' },
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-surface' },
-              children: ['.p-fluid-xl'],
+              properties: { className: 'w-fluid-xl h-fluid-xl bg-red-100' },
             },
+            '.w-fluid-xl .h-fluid-xl',
           ],
         },
         {
-          tag: 'div',
-          properties: { className: 'p-fluid-2xl bg-red-100' },
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-surface' },
-              children: ['.p-fluid-2xl'],
+              properties: { className: 'w-fluid-2xl h-fluid-2xl bg-red-100' },
             },
+            '.w-fluid-2xl .h-fluid-2xl',
           ],
         },
       ],
@@ -79,76 +91,88 @@ export const spacingStoryFluid: Story<'div'> = {
   ],
 };
 
-export const spacingStoryStatic: Story<'div'> = {
+export const spacingStaticStory: Story<'div'> = {
   generator: () => [
     {
-      tag: 'div',
-      properties: { className: 'flex flex-col items-start justify-center gap-4 p-4' },
+      tag: 'ul',
+      properties: { className: 'grid gap-fluid-md prose-text-sm' },
       children: [
         {
-          tag: 'div',
-          properties: { className: 'p-static-xs bg-red-100' },
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-surface' },
-              children: ['.p-static-xs'],
+              properties: { className: 'w-static-xs h-static-xs bg-red-100' },
             },
+            '.w-static-xs .h-static-xs',
           ],
         },
         {
-          tag: 'div',
-          properties: { className: 'p-static-sm bg-red-100' },
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-surface' },
-              children: ['.p-static-sm'],
+              properties: { className: 'w-static-sm h-static-sm bg-red-100' },
             },
+            '.w-static-sm .h-static-sm',
           ],
         },
         {
-          tag: 'div',
-          properties: { className: 'p-static-md bg-red-100' },
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-surface' },
-              children: ['.p-static-md'],
+              properties: { className: 'w-static-md h-static-md bg-red-100' },
             },
+            '.w-static-md .h-static-md',
           ],
         },
         {
-          tag: 'div',
-          properties: { className: 'p-static-lg bg-red-100' },
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-surface' },
-              children: ['.p-static-lg'],
+              properties: { className: 'w-static-lg h-static-lg bg-red-100' },
             },
+            '.w-static-lg .h-static-lg',
           ],
         },
         {
-          tag: 'div',
-          properties: { className: 'p-static-xl bg-red-100' },
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-surface' },
-              children: ['.p-static-xl'],
+              properties: { className: 'w-static-xl h-static-xl bg-red-100' },
             },
+            '.w-static-xl .h-static-xl',
           ],
         },
         {
-          tag: 'div',
-          properties: { className: 'p-static-2xl bg-red-100' },
+          tag: 'li',
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
           children: [
             {
               tag: 'div',
-              properties: { className: 'bg-surface' },
-              children: ['.p-static-2xl'],
+              properties: { className: 'w-static-2xl h-static-2xl bg-red-100' },
             },
+            '.w-static-2xl .h-static-2xl',
           ],
         },
       ],

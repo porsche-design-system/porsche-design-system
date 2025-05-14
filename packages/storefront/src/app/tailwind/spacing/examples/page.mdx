@@ -1,6 +1,6 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { ComponentStory } from '@/components/playground/ComponentStory';
-import { spacingStoryFluid, spacingStoryStatic } from '@/app/tailwind/spacing/examples/spacing.stories';
+import { spacingFluidStory, spacingStaticStory } from '@/app/tailwind/spacing/examples/spacing.stories';
 
 export const metadata = {
   title: 'Tailwind: Spacing - Porsche Design System',
@@ -9,18 +9,21 @@ export const metadata = {
 
 # Spacing
 
-<TableOfContents headings={["Fluid","Static"]} />
+<TableOfContents headings={['Fluid', 'Static']} />
 
-The Porsche Design System Tailwind theme customizes the Tailwind `--spacing-*` CSS variables. These variables are used
-by various Tailwind utility classes, such as `.p-fluid-*`, `.m-static-*`, and others.
-
-Standard Tailwind spacing utilities like `.p-2` will continue to work as expected. Additionally, we also provide custom
-spacing values available in fluid or static and various sizes.
+The Porsche Design System Tailwind theme customizes the Tailwind variable `--spacing-*`, which affect multiple Tailwind
+classes including `.m-fluid-*`, `.m-static-*`, `.p-fluid-*`, `.p-static-*`, `.w-fluid-*`, `.w-static-*`, `.h-fluid-*`,
+`.h-static-*` and others.
 
 ## Fluid
 
-<ComponentStory story={spacingStoryFluid} />
+Spacing scales dynamically based on the viewport width, within defined minimum and maximum limits. Mainly intended for
+**vertical** spacing between elements.
+
+<ComponentStory story={spacingFluidStory} />
 
 ## Static
 
-<ComponentStory story={spacingStoryStatic} />
+Spacing uses static, pixel-based values. Primarily used for **horizontal** spacing between elements.
+
+<ComponentStory story={spacingStaticStory} />
