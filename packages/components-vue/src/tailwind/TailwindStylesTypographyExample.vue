@@ -4,27 +4,27 @@ const content = 'The quick brown fox jumps over the lazy dog';
 
 <template>
   <div class="flex flex-col items-start gap-fluid-md p-fluid-md">
-    <h3 class="pds-heading-md">Display</h3>
-    <h1 class="pds-display-lg">{{content}}</h1>
-    <h2 class="pds-display-md">{{content}}</h2>
-    <h2 class="pds-display-sm">{{content}}</h2>
+    <h3 class="prose-heading-md m-0">Display</h3>
+    <h1 class="prose-display-lg m-0">{{content}}</h1>
+    <h2 class="prose-display-md m-0">{{content}}</h2>
+    <h2 class="prose-display-sm m-0">{{content}}</h2>
   </div>
   <div class="flex flex-col items-start gap-fluid-md p-fluid-md">
-    <h3 class="pds-heading-md">Heading</h3>
-    <h2 class="pds-heading-2xl">{{content}}</h2>
-    <h3 class="pds-heading-xl">{{content}}</h3>
-    <h4 class="pds-heading-lg">{{content}}</h4>
-    <h5 class="pds-heading-md">{{content}}</h5>
-    <h6 class="pds-heading-sm">{{content}}</h6>
+    <h3 class="prose-heading-md m-0">Heading</h3>
+    <h2 class="prose-heading-2xl m-0">{{content}}</h2>
+    <h3 class="prose-heading-xl m-0">{{content}}</h3>
+    <h4 class="prose-heading-lg m-0">{{content}}</h4>
+    <h5 class="prose-heading-md m-0">{{content}}</h5>
+    <h6 class="prose-heading-sm m-0">{{content}}</h6>
   </div>
   <div class="flex flex-col items-start gap-fluid-md p-fluid-md">
-    <h3 class="pds-heading-md">Text</h3>
-    <p class="pds-text-xl">{{content}}</p>
-    <p class="pds-text-lg">{{content}}</p>
-    <p class="pds-text-md">{{content}}</p>
-    <p class="pds-text-sm">{{content}}</p>
-    <p class="pds-text-xs">{{content}}</p>
-    <p class="pds-text-2xs">{{content}}</p>
+    <h3 class="prose-heading-md m-0">Text</h3>
+    <p class="prose-text-xl m-0">{{content}}</p>
+    <p class="prose-text-lg m-0">{{content}}</p>
+    <p class="prose-text-md m-0">{{content}}</p>
+    <p class="prose-text-sm m-0">{{content}}</p>
+    <p class="prose-text-xs m-0">{{content}}</p>
+    <p class="prose-text-2xs m-0">{{content}}</p>
   </div>
 </template>
 

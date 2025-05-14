@@ -364,7 +364,7 @@
 
 @layer base {
   body {
-    background: var(--color-background-surface);
+    background: var(--color-surface);
     color: var(--color-primary);
   }
 
@@ -400,7 +400,7 @@
   }
 
   .deprecated {
-    color: var(--color-notification-error);
+    color: var(--color-error);
     text-transform: uppercase;
   }
 

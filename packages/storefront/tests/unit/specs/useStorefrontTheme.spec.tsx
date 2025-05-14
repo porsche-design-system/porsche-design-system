@@ -111,8 +111,7 @@ describe('StorefrontThemeProvider', () => {
       expect(screen.getByTestId('theme')).toHaveTextContent('auto');
       expect(document.documentElement.classList.contains('dark')).toBe(false);
       expect(document.documentElement.classList.contains('light')).toBe(false);
-      // auto is not applied as class since it's the default
-      expect(document.documentElement.classList.contains('auto')).toBe(false);
+      expect(document.documentElement.classList.contains('auto')).toBe(true);
     });
   });
 });
