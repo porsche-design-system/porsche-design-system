@@ -20,6 +20,13 @@ export const gradientStory: Story<'div'> = {
         {
           tag: 'div',
           properties: {
+            className: 'bg-fade-to-r rounded-lg p-fluid-md',
+          },
+          children: ['.bg-fade-to-r'],
+        },
+        {
+          tag: 'div',
+          properties: {
             className: 'bg-fade-to-b rounded-lg p-fluid-md',
           },
           children: ['.bg-fade-to-b'],
@@ -30,13 +37,6 @@ export const gradientStory: Story<'div'> = {
             className: 'bg-fade-to-l rounded-lg p-fluid-md',
           },
           children: ['.bg-fade-to-l'],
-        },
-        {
-          tag: 'div',
-          properties: {
-            className: 'bg-fade-to-r rounded-lg p-fluid-md',
-          },
-          children: ['.bg-fade-to-r'],
         },
       ],
     },
