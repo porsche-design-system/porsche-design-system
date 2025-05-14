@@ -25,6 +25,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Partials: `getInitialStyles` removed default styles for `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p`, `b` and `strong`
   ([#3849](https://github.com/porsche-design-system/porsche-design-system/pull/3849))
 
+#### Fixed
+
+- `Multi Select`: enable full a11y compliance
+  ([#3819](https://github.com/porsche-design-system/porsche-design-system/pull/3819))
+- Accessibility: fix ARIA live announcements of form components status messages
+  ([#3796](https://github.com/porsche-design-system/porsche-design-system/pull/3796))
+
 ## [3.28.0-rc.2] - 2025-04-23
 
 ### Fixed

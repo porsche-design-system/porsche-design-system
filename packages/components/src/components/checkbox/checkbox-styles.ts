@@ -1,16 +1,12 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
 import type { FormState } from '../../utils/form/form-state';
 import { getCss, isDisabledOrLoading, isHighContrastMode, supportsChromiumMediaQuery } from '../../utils';
-import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
-import { escapeHashCharacter } from '../../utils/svg/escapeHashCharacter';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
   getHighContrastColors,
-  getInvertedThemedColors,
   getSchemedHighContrastMediaQuery,
   getThemedColors,
-  getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
@@ -18,7 +14,6 @@ import {
   SCALING_BASE_VALUE,
 } from '../../styles';
 import {
-  borderRadiusSmall,
   borderWidthBase,
   fontFamily,
   fontLineHeight,
@@ -30,19 +25,15 @@ import {
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
+import { cssVarInternalCheckboxScaling, getCheckboxBaseStyles } from '../../styles/checkbox/checkbox-base-styles';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
-
-const getCheckedSVGBackgroundImage = (fill: string): string => {
-  return getInlineSVGBackgroundImage(
-    `<path fill="${fill}" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/>`
-  );
-};
+import { escapeHashCharacter } from '../../utils/svg/escapeHashCharacter';
+import { getCheckboxCheckedBaseStyles } from '../../styles/checkbox/checkbox-checked-base-styles';
+import { getInlineSVGBackgroundImage } from '../../utils/svg/getInlineSVGBackgroundImage';
 
 const getIndeterminateSVGBackgroundImage = (fill: string): string => {
   return getInlineSVGBackgroundImage(`<path fill="${fill}" d="m20,11v2H4v-2h16Z"/>`);
 };
-
-const cssVarInternalCheckboxScaling = '--p-internal-checkbox-scaling';
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
@@ -86,37 +77,20 @@ export const getComponentCss = (
   const checkedHoverColor = formStateHoverColor || contrastHighColor;
   const checkedHoverColorDark = formStateHoverColorDark || contrastHighColorDark;
 
-  const checkedIconColor = escapeHashCharacter(getInvertedThemedColors(theme).primaryColor);
-  const checkedIconColorDark = escapeHashCharacter(getInvertedThemedColors('dark').primaryColor);
-
   const indeterminateIconColor = escapeHashCharacter(
     disabledOrLoading ? disabledColorDark : formStateColor || primaryColor
   );
   const indeterminateIconColorDark = escapeHashCharacter(formStateColorDark || primaryColorDark);
-
   const indeterminateIconHoverColor = escapeHashCharacter(formStateHoverColor || primaryColor);
   const indeterminateIconHoverColorDark = escapeHashCharacter(formStateHoverColorDark || primaryColorDark);
   const background = `transparent 0% 0% / ${fontLineHeight}`;
-
   const minimumTouchTargetSize = '24px'; // Minimum touch target size to comply with accessibility guidelines.
-
   const scalingVar = `var(${cssVarInternalCheckboxScaling}, ${compact ? 0.6668 : 1})`;
-  // Determines the scaling factor for the checkbox size. In "compact" mode, it uses 0.6668 to achieve a 20px checkbox (compact size).
-  // Defaults to 1 for the standard size and can be overridden by the CSS variable `cssVarInternalCheckboxScaling`.
-
   const dimension = `calc(max(${SCALING_BASE_VALUE} * 0.75, ${scalingVar} * ${fontLineHeight}))`;
-  // Calculates the checkbox size and ensures a minimum size of 12px (0.75 * SCALING_BASE_VALUE).
-  // Scales proportionally with the line height and the scaling factor.
-
   const dimensionFull = `calc(${dimension} + ${borderWidthBase} * 2)`; // Calculates the total size of the checkbox including its borders.
   const touchTargetSizeDiff = `calc(${minimumTouchTargetSize} - ${dimensionFull})`; // Difference between the minimum touch target size and the checkbox full size.
-
   const paddingInlineStart = `calc(${spacingStaticSmall} - (max(0px, ${touchTargetSizeDiff})))`;
-  // Adjusts padding to maintain consistent spacing when the checkbox is smaller than the minimum touch target size.
-  // Uses asymmetric padding instead of `gap` to ensure there is no non-clickable area between the label and the input.
-
   const paddingTop = `calc((${dimensionFull} - ${fontLineHeight}) / 2)`; // Vertically centers the checkbox label relative to the checkbox size.
-  const inset = `calc(-${borderWidthBase} - max(0px, ${touchTargetSizeDiff} / 2))`; // Positions the checkbox ::before pseudo-element with a negative offset to align it with the touch target.
   const height = `calc(max(${fontLineHeight}, ${dimensionFull}))`; // Ensures the wrapper height matches either the font's line height or the full size of the checkbox, whichever is larger.
 
   return getCss({
@@ -129,44 +103,7 @@ export const getComponentCss = (
         }),
       },
       ...preventFoucOfNestedElementsStyles,
-      input: {
-        position: 'relative',
-        '&::before': {
-          // Ensures the touch target is at least 24px, even if the checkbox is smaller than the minimum touch target size.
-          // This pseudo-element expands the clickable area without affecting the visual size of the checkbox itself.
-          content: '""',
-          position: 'absolute',
-          inset,
-        },
-        width: dimension,
-        height: dimension,
-        font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
-        display: 'block',
-        margin: 0,
-        padding: 0,
-        WebkitAppearance: 'none', // iOS safari
-        appearance: 'none',
-        boxSizing: 'content-box',
-        background,
-        transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
-        border: `${borderWidthBase} solid ${uncheckedColor}`,
-        outline: 0, // TODO: only relevant for VRT testing with forced states - prevents :focus style (in case getFocusJssStyle() condition is not matching)
-        ...(disabledOrLoading
-          ? {
-              pointerEvents: 'none', // to prevent form element becomes clickable/toggleable
-            }
-          : {
-              cursor: 'pointer',
-            }),
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: uncheckedColorDark,
-        }),
-        gridArea: '1/1',
-        borderRadius: borderRadiusSmall,
-        ...addImportantToEachRule({
-          backgroundSize: 'cover',
-        }),
-      },
+      input: getCheckboxBaseStyles(theme, isDisabled, isLoading, state, compact),
       ...(isLoading
         ? {
             'input:checked': {
@@ -180,26 +117,7 @@ export const getComponentCss = (
             },
           }
         : {
-            'input:checked': {
-              borderColor: checkedColor,
-              backgroundColor: checkedColor,
-              backgroundImage: getCheckedSVGBackgroundImage(checkedIconColor),
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                backgroundImage: getCheckedSVGBackgroundImage(checkedIconColorDark),
-                borderColor: checkedColorDark,
-                backgroundColor: checkedColorDark,
-              }),
-              // This is a workaround for Blink based browsers, which do not reflect the high contrast system colors (e.g.: "Canvas" and "CanvasText") when added to background SVG's.
-              ...(isHighContrastMode &&
-                getSchemedHighContrastMediaQuery(
-                  {
-                    backgroundImage: getCheckedSVGBackgroundImage('white'),
-                  },
-                  {
-                    backgroundImage: getCheckedSVGBackgroundImage('black'),
-                  }
-                )),
-            },
+            'input:checked': getCheckboxCheckedBaseStyles(theme, isDisabled, isLoading, state),
             'input:indeterminate': {
               background, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
               borderColor: uncheckedColor, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.

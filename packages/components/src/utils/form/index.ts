@@ -1,6 +1,5 @@
 export { FORM_STATES } from './form-state';
 export { inputEventListenerCurry, updateCounter, hasCounter, setAriaElementInnerHtml, debounce } from './form-utils';
-export { getRole } from './getRole';
 export { hasDescription } from './hasDescription';
 export { hasHeading } from './hasHeading';
 export { hasLabel } from './hasLabel';
