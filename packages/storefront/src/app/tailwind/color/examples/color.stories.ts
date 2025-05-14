@@ -2,12 +2,60 @@
 
 import type { Story } from '@/models/story';
 
+export const colorStoryTextColor: Story<'div'> = {
+  generator: () => [
+    {
+      tag: 'ul',
+      properties: {
+        className: 'grid gap-fluid-sm prose-text-sm',
+      },
+      children: [
+        {
+          tag: 'li',
+          properties: { className: 'text-primary' },
+          children: ['.text-primary'],
+        },
+        {
+          tag: 'li',
+          properties: { className: 'text-contrast-medium' },
+          children: ['.text-contrast-medium'],
+        },
+        {
+          tag: 'li',
+          properties: { className: 'text-contrast-high' },
+          children: ['.text-contrast-high'],
+        },
+        {
+          tag: 'li',
+          properties: { className: 'text-success' },
+          children: ['.text-success'],
+        },
+        {
+          tag: 'li',
+          properties: { className: 'text-warning' },
+          children: ['.text-warning'],
+        },
+        {
+          tag: 'li',
+          properties: { className: 'text-error' },
+          children: ['.text-error'],
+        },
+        {
+          tag: 'li',
+          properties: { className: 'text-info' },
+          children: ['.text-info'],
+        },
+      ],
+    },
+  ],
+};
+
 export const colorStoryBackgroundColor: Story<'div'> = {
   generator: () => [
     {
       tag: 'ul',
       properties: {
-        className: 'grid gap-fluid-sm text-sm text-primary',
+        className: 'grid gap-fluid-sm prose-text-sm',
       },
       children: [
         {
@@ -119,48 +167,52 @@ export const colorStoryBackgroundColor: Story<'div'> = {
   ],
 };
 
-export const colorStoryTextColor: Story<'div'> = {
+export const colorStoryBorderColor: Story<'div'> = {
   generator: () => [
     {
       tag: 'ul',
       properties: {
-        className: 'grid gap-fluid-sm text-sm',
+        className: 'grid gap-fluid-sm prose-text-sm',
       },
       children: [
         {
           tag: 'li',
-          properties: { className: 'text-primary' },
-          children: ['.text-primary'],
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'border-contrast-low w-10 h-10 rounded-md border' },
+            },
+            '.border-contrast-low',
+          ],
         },
         {
           tag: 'li',
-          properties: { className: 'text-contrast-medium' },
-          children: ['.text-contrast-medium'],
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'border-contrast-medium w-10 h-10 rounded-md border' },
+            },
+            '.border-contrast-medium',
+          ],
         },
         {
           tag: 'li',
-          properties: { className: 'text-contrast-high' },
-          children: ['.text-contrast-high'],
-        },
-        {
-          tag: 'li',
-          properties: { className: 'text-success' },
-          children: ['.text-success'],
-        },
-        {
-          tag: 'li',
-          properties: { className: 'text-warning' },
-          children: ['.text-warning'],
-        },
-        {
-          tag: 'li',
-          properties: { className: 'text-error' },
-          children: ['.text-error'],
-        },
-        {
-          tag: 'li',
-          properties: { className: 'text-info' },
-          children: ['.text-info'],
+          properties: {
+            className: 'flex items-center gap-static-md',
+          },
+          children: [
+            {
+              tag: 'div',
+              properties: { className: 'border-contrast-high w-10 h-10 rounded-md border' },
+            },
+            '.border-contrast-high',
+          ],
         },
       ],
     },
