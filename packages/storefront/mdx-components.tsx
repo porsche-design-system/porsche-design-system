@@ -145,9 +145,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
               {children as React.ReactNode}
             </SyntaxHighlighter>
           ) : (
-            <div tabIndex={0} className="max-h-96 overflow-auto">
-              {children as React.ReactNode}
-            </div>
+            (children as React.ReactNode)
           )}
         </code>
       );

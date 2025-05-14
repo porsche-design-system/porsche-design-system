@@ -7,7 +7,7 @@ export const metadata = {
 
 # Introduction
 
-<TableOfContents headings={["Setup","Theme"]} />
+<TableOfContents headings={['Setup', 'Theme']} />
 
 ## Setup
 
@@ -33,7 +33,7 @@ settings) themes, you need to add the corresponding class `.dark` or `.auto` to 
 apply the selected theme to all child elements. To implement a three-way theme toggle (`light`, `dark`, `auto`),
 dynamically update the `<html>` element’s class using JavaScript:
 
-```
+```javascript
 document.documentElement.classList.remove('light', 'dark', 'auto');
 document.documentElement.classList.add(theme); // theme is the selected theme here ('light', 'dark' or 'auto')
 ```
