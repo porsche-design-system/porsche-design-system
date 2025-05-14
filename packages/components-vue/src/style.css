@@ -2,6 +2,6 @@
 
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
-@import "@porsche-design-system/components-vue/tailwind";
+@import "@porsche-design-system/components-vue/tailwindcss";
 
 @source not './vanilla-extract';

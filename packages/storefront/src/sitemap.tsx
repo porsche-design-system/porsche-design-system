@@ -489,254 +489,254 @@ export const sitemap: Routes = {
       },
     },
   },
-  tailwind: {
-    name: 'Tailwind',
-    path: '/tailwind',
+  tailwindcss: {
+    name: 'Tailwind CSS',
+    path: '/tailwindcss',
     type: 'CATEGORY',
     subPaths: {
       introduction: {
         name: 'Introduction',
-        path: '/tailwind/introduction',
+        path: '/tailwindcss/introduction',
         type: 'PAGE',
       },
       blur: {
         name: 'Blur',
-        path: '/tailwind/blur',
+        path: '/tailwindcss/blur',
         type: 'PAGE',
         subPaths: {
           examples: {
             name: 'Examples',
-            path: '/tailwind/blur/examples',
+            path: '/tailwindcss/blur/examples',
             type: 'TAB',
           },
           usage: {
             name: 'Usage',
-            path: '/tailwind/blur/usage',
+            path: '/tailwindcss/blur/usage',
             type: 'TAB',
           },
           api: {
             name: 'API',
-            path: '/tailwind/blur/api',
+            path: '/tailwindcss/blur/api',
             type: 'TAB',
           },
         },
       },
       border: {
         name: 'Border',
-        path: '/tailwind/border',
+        path: '/tailwindcss/border',
         type: 'PAGE',
         subPaths: {
           examples: {
             name: 'Examples',
-            path: '/tailwind/border/examples',
+            path: '/tailwindcss/border/examples',
             type: 'TAB',
           },
           usage: {
             name: 'Usage',
-            path: '/tailwind/border/usage',
+            path: '/tailwindcss/border/usage',
             type: 'TAB',
           },
           api: {
             name: 'API',
-            path: '/tailwind/border/api',
+            path: '/tailwindcss/border/api',
             type: 'TAB',
           },
         },
       },
       color: {
         name: 'Color',
-        path: '/tailwind/color',
+        path: '/tailwindcss/color',
         type: 'PAGE',
         subPaths: {
           examples: {
             name: 'Examples',
-            path: '/tailwind/color/examples',
+            path: '/tailwindcss/color/examples',
             type: 'TAB',
           },
           usage: {
             name: 'Usage',
-            path: '/tailwind/color/usage',
+            path: '/tailwindcss/color/usage',
             type: 'TAB',
           },
           api: {
             name: 'API',
-            path: '/tailwind/color/api',
+            path: '/tailwindcss/color/api',
             type: 'TAB',
           },
         },
       },
       gradient: {
         name: 'Gradient',
-        path: '/tailwind/gradient',
+        path: '/tailwindcss/gradient',
         type: 'PAGE',
         subPaths: {
           examples: {
             name: 'Examples',
-            path: '/tailwind/gradient/examples',
+            path: '/tailwindcss/gradient/examples',
             type: 'TAB',
           },
           usage: {
             name: 'Usage',
-            path: '/tailwind/gradient/usage',
+            path: '/tailwindcss/gradient/usage',
             type: 'TAB',
           },
           api: {
             name: 'API',
-            path: '/tailwind/gradient/api',
+            path: '/tailwindcss/gradient/api',
             type: 'TAB',
           },
         },
       },
       grid: {
         name: 'Grid',
-        path: '/tailwind/grid',
+        path: '/tailwindcss/grid',
         type: 'PAGE',
         subPaths: {
           examples: {
             name: 'Examples',
-            path: '/tailwind/grid/examples',
+            path: '/tailwindcss/grid/examples',
             type: 'TAB',
           },
           usage: {
             name: 'Usage',
-            path: '/tailwind/grid/usage',
+            path: '/tailwindcss/grid/usage',
             type: 'TAB',
           },
           api: {
             name: 'API',
-            path: '/tailwind/grid/api',
+            path: '/tailwindcss/grid/api',
             type: 'TAB',
           },
         },
       },
       'media-query': {
         name: 'Media Query',
-        path: '/tailwind/media-query',
+        path: '/tailwindcss/media-query',
         type: 'PAGE',
         subPaths: {
           examples: {
             name: 'Examples',
-            path: '/tailwind/media-query/examples',
+            path: '/tailwindcss/media-query/examples',
             type: 'TAB',
           },
           usage: {
             name: 'Usage',
-            path: '/tailwind/media-query/usage',
+            path: '/tailwindcss/media-query/usage',
             type: 'TAB',
           },
           api: {
             name: 'API',
-            path: '/tailwind/media-query/api',
+            path: '/tailwindcss/media-query/api',
             type: 'TAB',
           },
         },
       },
       motion: {
         name: 'Motion',
-        path: '/tailwind/motion',
+        path: '/tailwindcss/motion',
         type: 'PAGE',
         subPaths: {
           examples: {
             name: 'Examples',
-            path: '/tailwind/motion/examples',
+            path: '/tailwindcss/motion/examples',
             type: 'TAB',
           },
           usage: {
             name: 'Usage',
-            path: '/tailwind/motion/usage',
+            path: '/tailwindcss/motion/usage',
             type: 'TAB',
           },
           api: {
             name: 'API',
-            path: '/tailwind/motion/api',
+            path: '/tailwindcss/motion/api',
             type: 'TAB',
           },
         },
       },
       shadow: {
         name: 'Shadow',
-        path: '/tailwind/shadow',
+        path: '/tailwindcss/shadow',
         type: 'PAGE',
         subPaths: {
           examples: {
             name: 'Examples',
-            path: '/tailwind/shadow/examples',
+            path: '/tailwindcss/shadow/examples',
             type: 'TAB',
           },
           usage: {
             name: 'Usage',
-            path: '/tailwind/shadow/usage',
+            path: '/tailwindcss/shadow/usage',
             type: 'TAB',
           },
           api: {
             name: 'API',
-            path: '/tailwind/shadow/api',
+            path: '/tailwindcss/shadow/api',
             type: 'TAB',
           },
         },
       },
       skeleton: {
         name: 'Skeleton',
-        path: '/tailwind/skeleton',
+        path: '/tailwindcss/skeleton',
         type: 'PAGE',
         subPaths: {
           examples: {
             name: 'Examples',
-            path: '/tailwind/skeleton/examples',
+            path: '/tailwindcss/skeleton/examples',
             type: 'TAB',
           },
           usage: {
             name: 'Usage',
-            path: '/tailwind/skeleton/usage',
+            path: '/tailwindcss/skeleton/usage',
             type: 'TAB',
           },
           api: {
             name: 'API',
-            path: '/tailwind/skeleton/api',
+            path: '/tailwindcss/skeleton/api',
             type: 'TAB',
           },
         },
       },
       spacing: {
         name: 'Spacing',
-        path: '/tailwind/spacing',
+        path: '/tailwindcss/spacing',
         type: 'PAGE',
         subPaths: {
           examples: {
             name: 'Examples',
-            path: '/tailwind/spacing/examples',
+            path: '/tailwindcss/spacing/examples',
             type: 'TAB',
           },
           usage: {
             name: 'Usage',
-            path: '/tailwind/spacing/usage',
+            path: '/tailwindcss/spacing/usage',
             type: 'TAB',
           },
           api: {
             name: 'API',
-            path: '/tailwind/spacing/api',
+            path: '/tailwindcss/spacing/api',
             type: 'TAB',
           },
         },
       },
       typography: {
         name: 'Typography',
-        path: '/tailwind/typography',
+        path: '/tailwindcss/typography',
         type: 'PAGE',
         subPaths: {
           examples: {
             name: 'Examples',
-            path: '/tailwind/typography/examples',
+            path: '/tailwindcss/typography/examples',
             type: 'TAB',
           },
           usage: {
             name: 'Usage',
-            path: '/tailwind/typography/usage',
+            path: '/tailwindcss/typography/usage',
             type: 'TAB',
           },
           api: {
             name: 'API',
-            path: '/tailwind/typography/api',
+            path: '/tailwindcss/typography/api',
             type: 'TAB',
           },
         },

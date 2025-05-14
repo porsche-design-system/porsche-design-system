@@ -16,8 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
-- `Styles`: theme for `tailwind` including utilities for `grid`, `typography` and `skeleton` styles available under
-  `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/tailwind';`
+- `Styles`: theme for `tailwindcss` including utilities available under
+  `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/tailwindcss';`
   ([#3849](https://github.com/porsche-design-system/porsche-design-system/pull/3849))
 
 ### Changed

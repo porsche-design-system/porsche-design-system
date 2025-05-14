@@ -120,7 +120,7 @@ export default [
               import: './styles/vanilla-extract/esm/vanilla-extract/index.mjs',
               default: './styles/vanilla-extract/cjs/vanilla-extract/index.cjs',
             },
-            './tailwind': {
+            './tailwindcss': {
               style: './tailwind/index.css',
             },
             './ag-grid': {
