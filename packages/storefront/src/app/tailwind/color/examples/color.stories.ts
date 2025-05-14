@@ -32,18 +32,8 @@ export const colorStoryTextColor: Story<'div'> = {
         },
         {
           tag: 'li',
-          properties: { className: 'text-warning' },
-          children: ['.text-warning'],
-        },
-        {
-          tag: 'li',
           properties: { className: 'text-error' },
           children: ['.text-error'],
-        },
-        {
-          tag: 'li',
-          properties: { className: 'text-info' },
-          children: ['.text-info'],
         },
       ],
     },
