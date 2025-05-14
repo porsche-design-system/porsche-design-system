@@ -10,23 +10,23 @@ export const skeletonStory: Story<'div'> = {
       children: [
         {
           tag: 'div',
-          properties: { className: 'pds-skeleton h-[200px] w-full' },
-          children: ['.pds-skeleton'],
+          properties: { className: 'skeleton h-[200px] w-full' },
+          children: ['.skeleton'],
         },
         {
           tag: 'div',
-          properties: { className: 'pds-skeleton text-sm w-fit' },
-          children: ['.pds-skeleton .text-sm'],
+          properties: { className: 'skeleton text-sm w-fit' },
+          children: ['.skeleton .text-sm'],
         },
         {
           tag: 'div',
-          properties: { className: 'pds-skeleton text-md w-fit' },
-          children: ['.pds-skeleton .text-md'],
+          properties: { className: 'skeleton text-md w-fit' },
+          children: ['.skeleton .text-md'],
         },
         {
           tag: 'div',
-          properties: { className: 'pds-skeleton text-lg w-fit' },
-          children: ['.pds-skeleton .text-lg'],
+          properties: { className: 'skeleton text-lg w-fit' },
+          children: ['.skeleton .text-lg'],
         },
       ],
     },

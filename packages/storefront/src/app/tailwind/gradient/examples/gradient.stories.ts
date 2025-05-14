@@ -14,30 +14,30 @@ export const gradientStory: Story<'div'> = {
         {
           tag: 'div',
           properties: {
-            className: 'pds-gradient-to-t rounded-lg text-sm text-primary-dark p-fluid-md',
+            className: 'bg-fade-to-t rounded-lg text-sm text-primary-dark p-fluid-md',
           },
-          children: ['.pds-gradient-to-t'],
+          children: ['.bg-fade-to-t'],
         },
         {
           tag: 'div',
           properties: {
-            className: 'pds-gradient-to-b rounded-lg text-sm text-primary-dark p-fluid-md',
+            className: 'bg-fade-to-b rounded-lg text-sm text-primary-dark p-fluid-md',
           },
-          children: ['.pds-gradient-to-b'],
+          children: ['.bg-fade-to-b'],
         },
         {
           tag: 'div',
           properties: {
-            className: 'pds-gradient-to-l rounded-lg text-sm text-primary-dark p-fluid-md',
+            className: 'bg-fade-to-l rounded-lg text-sm text-primary-dark p-fluid-md',
           },
-          children: ['.pds-gradient-to-l'],
+          children: ['.bg-fade-to-l'],
         },
         {
           tag: 'div',
           properties: {
-            className: 'pds-gradient-to-r rounded-lg text-sm text-primary-dark p-fluid-md',
+            className: 'bg-fade-to-r rounded-lg text-sm text-primary-dark p-fluid-md',
           },
-          children: ['.pds-gradient-to-r'],
+          children: ['.bg-fade-to-r'],
         },
       ],
     },
