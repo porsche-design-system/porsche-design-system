@@ -140,7 +140,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
               CodeTag="div"
               showLineNumbers={false}
               useInlineStyles={false}
-              codeTagProps={{ tabIndex: 0 }}
+              codeTagProps={{ tabIndex: 0, className: 'max-h-96 overflow-auto' }}
             >
               {children as React.ReactNode}
             </SyntaxHighlighter>
