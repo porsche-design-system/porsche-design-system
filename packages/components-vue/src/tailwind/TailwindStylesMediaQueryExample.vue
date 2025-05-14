@@ -4,7 +4,7 @@
     <p class="text-sm text-primary m-0 relative after:content-['Base'] xs:after:content-['XS'] sm:after:content-['S'] md:after:content-['M'] lg:after:content-['L'] xl:after:content-['XL'] 2xl:after:content-['XXL']">
     Media Query Min:
     </p>
-    <p class="text-sm text-primary m-0 relative max-xs:after:content-['XS'] max-sm:after:content-['S'] max-md:after:content-['M'] max-lg:after:content-['L'] max-xl:after:content-['XL'] max–2xl:after:content-['XXL']">
+    <p class="text-sm text-primary m-0 relative max-xs:after:content-['XS'] max-sm:after:content-['S'] max-md:after:content-['M'] max-lg:after:content-['L'] max-xl:after:content-['XL'] max-2xl:after:content-['XXL']">
     Media Query Max:
     </p>
     <p class="text-sm text-primary m-0 relative max-xs:after:content-['Base_-_XS'] xs:max-sm:after:content-['XS_-_S'] sm:max-md:after:content-['S_-_M'] md:max-lg:after:content-['M_-_L'] lg:max-xl:after:content-['L_-_XL'] xl:max-2xl:after:content-['XL_-_XXL']">
