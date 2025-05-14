@@ -8,7 +8,7 @@
   "style": "dist/theme.css",
   "sideEffects": false,
   "scripts": {
-    "build": "yarn clean:build && mkdir -p dist && sass --load-path=node_modules --no-source-map src/theme.scss dist/theme.css",
+    "build": "yarn clean:build && mkdir -p dist && sass --load-path=node_modules --no-source-map src/index.scss dist/index.css",
     "clean:build": "rm -rf ./dist",
     "test": "yarn test:unit",
     "test:unit": "yarn build && vitest --config tests/unit/config/vitest.config.ts"

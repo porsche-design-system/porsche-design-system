@@ -54,7 +54,9 @@
       "import": "./ag-grid/esm/index.mjs",
       "default": "./ag-grid/cjs/index.cjs"
     },
-    "./tailwind/*.css": "./tailwind/*.css",
+    "./tailwind": {
+      "style": "./tailwind/index.css"
+    },
     "./testing": {
       "types": "./testing/index.d.ts",
       "default": "./testing/index.cjs"
