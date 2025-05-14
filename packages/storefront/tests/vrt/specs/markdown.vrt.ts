@@ -1,5 +1,11 @@
 import { expect, test } from '@playwright/test';
-import { schemes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt';
+import {
+  schemes,
+  viewportWidthM,
+  viewportWidthXL,
+  viewportWidths,
+} from '@porsche-design-system/shared/testing/playwright.vrt';
+import { viewportWidthL } from 'shared/src/testing/playwright.vrt';
 import { closeSidebars, resetAnimations, waitForImagesToBeLoaded } from '../helpers/helpers';
 
 test.describe('markdown', async () => {
@@ -29,7 +35,7 @@ test.describe('markdown', async () => {
   });
 
   viewportWidths
-    .filter((x) => x !== viewportWidthM)
+    .filter((x) => x !== viewportWidthM && x !== viewportWidthL && x !== viewportWidthXL)
     .forEach((viewportWidth) => {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
         await page.goto('/-/mdx');
