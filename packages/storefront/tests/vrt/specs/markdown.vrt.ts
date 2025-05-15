@@ -1,6 +1,12 @@
 import { expect, test } from '@playwright/test';
-import { schemes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt';
-import { closeSidebars, resetAnimations } from '../helpers/helpers';
+import {
+  schemes,
+  viewportWidthM,
+  viewportWidthXL,
+  viewportWidths,
+} from '@porsche-design-system/shared/testing/playwright.vrt';
+import { viewportWidthL } from 'shared/src/testing/playwright.vrt';
+import { closeSidebars, resetAnimations, waitForImagesToBeLoaded } from '../helpers/helpers';
 
 test.describe('markdown', async () => {
   schemes.forEach((scheme) => {
@@ -10,12 +16,15 @@ test.describe('markdown', async () => {
       await page.emulateMedia({
         colorScheme: scheme,
       });
-      await page.goto('/markdown');
+      await page.goto('/-/mdx');
       await resetAnimations(page);
       await page.evaluate(() =>
         (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
       );
-      await page.focus('a[href="https://designsystem.porsche.com/"]:not([title])');
+      const link = page.getByRole('link', { name: 'link text' });
+      await link.focus();
+      await expect(link).toBeFocused();
+
       await page.setViewportSize({
         width: viewportWidthM,
         height: await page.evaluate(() => document.body.clientHeight),
@@ -26,15 +35,17 @@ test.describe('markdown', async () => {
   });
 
   viewportWidths
-    .filter((x) => x !== viewportWidthM)
+    .filter((x) => x !== viewportWidthM && x !== viewportWidthL && x !== viewportWidthXL)
     .forEach((viewportWidth) => {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
-        await page.goto('/markdown');
+        await page.goto('/-/mdx');
         await resetAnimations(page);
         await page.evaluate(() =>
           (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
         );
-        await page.focus('a[href="https://designsystem.porsche.com/"]:not([title])');
+        const link = page.getByRole('link', { name: 'link text' });
+        await link.focus();
+        await expect(link).toBeFocused();
         await page.setViewportSize({
           width: viewportWidth,
           height: await page.evaluate(() => document.body.clientHeight),

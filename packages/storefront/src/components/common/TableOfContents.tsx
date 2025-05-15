@@ -13,10 +13,10 @@ export const TableOfContents = ({ headings }: TableOfContentsProps) => {
 
   return (
     <>
-      <PHeading className="mt-lg" size="medium" tag="h2">
+      <PHeading className="mt-fluid-lg" size="medium" tag="h2">
         Table of Contents
       </PHeading>
-      <ul className="toc mt-sm mb-lg">
+      <ul className="toc mt-fluid-sm mb-fluid-lg">
         {headings.map((heading) => (
           <li key={heading}>
             <PLinkPure iconSource="assets/icon-return.svg">

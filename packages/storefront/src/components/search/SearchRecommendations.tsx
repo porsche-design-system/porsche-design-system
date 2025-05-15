@@ -23,12 +23,12 @@ export const SearchRecommendations = ({ onRecommendationClick }: SearchRecommend
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-sm">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-fluid-sm">
       {recommendations.map(({ name, href }, index) => (
         <Link
           key={index}
           href={href}
-          className="py-4 px-6 bg-background-surface rounded-md flex items-center gap-4"
+          className="py-4 px-6 bg-surface rounded-md flex items-center gap-4"
           onClick={onRecommendationClick}
         >
           {/*<div className="relative w-18 h-18">*/}

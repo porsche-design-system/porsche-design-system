@@ -23,7 +23,7 @@ export const FrameworkSelect = ({
 }: ThemeSelectProps) => {
   return (
     <PSelect
-      className="xs:w-[min(calc(50%-theme(spacing.xs)/2),12.5rem)]"
+      className="xs:w-[min(calc(50%-(var(--spacing-fluid-xs))/2),12.5rem)]"
       name="theme"
       value={framework}
       label={label}

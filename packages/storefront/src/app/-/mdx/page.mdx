@@ -1,7 +1,7 @@
 export const metadata = {
   title: 'Markdown - Porsche Design System',
-  description: 'Demo page showing Porsche Design System support for MDX components.'
-}
+  description: 'Demo page showing Porsche Design System support for MDX components.',
+};
 
 # Markdown (MDX)
 
@@ -48,6 +48,7 @@ _This is italic text_
 > > ...by using additional greater-than signs right next to each other...
 > >
 > > > ...or with spaces between arrows.
+
 ## Lists
 
 Unordered
@@ -140,12 +141,12 @@ Syntax highlighting (HTML)
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Some title</title>
-    <meta name="description" content="Some description">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Some description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <div id="app"></div>
@@ -219,7 +220,7 @@ $spacing-v: 1.5em;
   padding-right: emCalc(24);
 }
 
-@include pds-media-query-min("l") {
+@include pds-media-query-min('l') {
   article {
     ul {
       list-style: circle;
@@ -246,26 +247,25 @@ multiline
 comment
 */
 
-(function( w ){
-  var loadJS = function( src, cb ){
-    "use strict";
-    var ref = w.document.getElementsByTagName( "script" )[ 0 ];
-    var script = w.document.createElement( "script" );
+(function (w) {
+  var loadJS = function (src, cb) {
+    'use strict';
+    var ref = w.document.getElementsByTagName('script')[0];
+    var script = w.document.createElement('script');
     script.src = src;
     script.async = true;
-    ref.parentNode.insertBefore( script, ref );
-    if (cb && typeof(cb) === "function") {
+    ref.parentNode.insertBefore(script, ref);
+    if (cb && typeof cb === 'function') {
       script.onload = cb;
     }
     return script;
   };
-  if( typeof module !== "undefined" ){
+  if (typeof module !== 'undefined') {
     module.exports = loadJS;
-  }
-  else {
+  } else {
     w.loadJS = loadJS;
   }
-}( typeof global !== "undefined" ? global : this ));
+})(typeof global !== 'undefined' ? global : this);
 ```
 
 Syntax highlighting (TS)
@@ -294,7 +294,7 @@ class UserAccount {
   }
 }
 
-const user: User = new UserAccount("Murphy", 1);
+const user: User = new UserAccount('Murphy', 1);
 ```
 
 Syntax highlighting (JSX)
@@ -351,26 +351,26 @@ Syntax highlighting (JSON)
 
 ```json
 {
-    "glossary": {
-        "title": "example glossary",
-		"GlossDiv": {
-            "title": "S",
-			"GlossList": {
-                "GlossEntry": {
-                    "ID": "SGML",
-					"SortAs": "SGML",
-					"GlossTerm": "Standard Generalized Markup Language",
-					"Acronym": "SGML",
-					"Abbrev": "ISO 8879:1986",
-					"GlossDef": {
-                        "para": "A meta-markup language, used to create markup languages such as DocBook.",
-						"GlossSeeAlso": ["GML", "XML"]
-                    },
-					"GlossSee": "markup"
-                }
-            }
+  "glossary": {
+    "title": "example glossary",
+    "GlossDiv": {
+      "title": "S",
+      "GlossList": {
+        "GlossEntry": {
+          "ID": "SGML",
+          "SortAs": "SGML",
+          "GlossTerm": "Standard Generalized Markup Language",
+          "Acronym": "SGML",
+          "Abbrev": "ISO 8879:1986",
+          "GlossDef": {
+            "para": "A meta-markup language, used to create markup languages such as DocBook.",
+            "GlossSeeAlso": ["GML", "XML"]
+          },
+          "GlossSee": "markup"
         }
+      }
     }
+  }
 }
 ```
 
@@ -414,11 +414,3 @@ Autoconverted link https://designsystem.porsche.com/
 ## Images
 
 ![Porsche 992 Carrera S](assets/porsche-992-carrera-s.jpg)
-
-![Porsche 718 GTS](assets/porsche-718-gts.jpg 'The Porsche 718 GTS')
-
-Like links, Images also have a footnote style syntax with a reference later in the document defining the URL location.
-
-![Alt text][id]
-
-[id]: /assets/porsche-911-gt2-rs.jpg '911 GT2 RS'
