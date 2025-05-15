@@ -58,11 +58,7 @@ export const linkTileStoryLayout: Story<'p-link-tile'> = {
     {
       tag: 'div',
       properties: {
-        style: {
-          display: 'grid',
-          gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-          gap: '16px',
-        },
+        className: 'grid grid-cols-2 gap-static-md',
       },
       children: [
         {

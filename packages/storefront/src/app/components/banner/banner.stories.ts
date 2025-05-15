@@ -48,7 +48,7 @@ export const bannerStoryCustomStyling: Story<'p-banner'> = {
       heading: 'Some Heading',
       headingTag: 'h3',
       description: 'Some Description',
-      style: { '--p-banner-position-top': '200px' } as CSSProperties,
+      className: '[--p-banner-position-top:200px]',
     },
   },
   generator: ({ properties } = {}) => [
