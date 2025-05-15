@@ -93,6 +93,9 @@ describe('package.json files', () => {
           import: './styles/vanilla-extract/esm/vanilla-extract/index.mjs',
           default: './styles/vanilla-extract/cjs/vanilla-extract/index.cjs',
         },
+        './tailwindcss': {
+          style: './tailwind/index.css',
+        },
         './testing': {
           types: './testing/index.d.ts',
           default: './testing/index.cjs',
