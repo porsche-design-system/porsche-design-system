@@ -7,10 +7,7 @@ import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import { createStackblitzMarkupFromStory } from '@/lib/stackblitz/createStackblitzMarkupFromStory';
 import { openInStackblitz } from '@/lib/stackblitz/openInStackblitz';
 import type { SlotStories, Story, StoryState } from '@/models/story';
-import { generateAngularMarkup, getAngularCode } from '@/utils/generator/generateAngularMarkup';
-import { generateReactMarkup, getReactCode } from '@/utils/generator/generateReactMarkup';
-import { generateVanillaJsMarkup, getVanillaJsCode } from '@/utils/generator/generateVanillaJsMarkup';
-import { generateVueMarkup, getVueCode } from '@/utils/generator/generateVueMarkup';
+import { createFrameworkMarkup } from '@/utils/generator/createFrameworkMarkup';
 import { type ConfiguratorTagNames, type HTMLTagOrComponent, createElements } from '@/utils/generator/generator';
 import type { Framework, FrameworkMarkup } from '@porsche-design-system/shared';
 import React, { type ReactNode, useEffect, useState } from 'react';
@@ -32,18 +29,15 @@ export const Configurator = <T extends HTMLTagOrComponent>({
   const [exampleElement, setExampleElement] = useState<ReactNode>(
     createElements(story.generator(story.state), setExampleState)
   );
-  const [exampleMarkup, setExampleMarkup] = useState<FrameworkMarkup>({});
+  const [exampleMarkup, setExampleMarkup] = useState<FrameworkMarkup>(
+    createFrameworkMarkup(story.generator(story.state), story.state)
+  );
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: only thing that will change is the state
   useEffect(() => {
     const generatedStory = story.generator(exampleState);
     setExampleElement(createElements(generatedStory, setExampleState));
-    setExampleMarkup({
-      'vanilla-js': getVanillaJsCode(generateVanillaJsMarkup(generatedStory)),
-      react: getReactCode(generateReactMarkup(generatedStory, story.state ?? {})),
-      angular: getAngularCode(generateAngularMarkup(generatedStory, story.state ?? {})),
-      vue: getVueCode(generateVueMarkup(generatedStory, story.state ?? {})),
-    });
+    setExampleMarkup(createFrameworkMarkup(generatedStory, exampleState));
   }, [exampleState]);
 
   const onOpenInStackblitz = async () => {
