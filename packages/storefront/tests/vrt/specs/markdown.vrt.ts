@@ -17,6 +17,10 @@ test.describe('markdown', async () => {
         colorScheme: scheme,
       });
       await page.goto('/-/mdx');
+      await page.setViewportSize({
+        width: viewportWidthM,
+        height: await page.evaluate(() => document.body.clientHeight),
+      });
       await resetAnimations(page);
       await page.evaluate(() =>
         (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
