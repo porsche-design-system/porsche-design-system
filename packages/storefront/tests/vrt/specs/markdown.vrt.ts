@@ -35,7 +35,7 @@ test.describe('markdown', async () => {
   });
 
   viewportWidths
-    .filter((x) => x !== viewportWidthM && x !== viewportWidthL && x !== viewportWidthXL)
+    .filter((x) => x !== viewportWidthM)
     .forEach((viewportWidth) => {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
         await page.goto('/-/mdx');
