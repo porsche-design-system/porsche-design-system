@@ -128,6 +128,7 @@ describe('package.json files', () => {
               (prob.entrypoint === '.' ||
                 prob.entrypoint === './styles' ||
                 prob.entrypoint === './styles/vanilla-extract' ||
+                prob.entrypoint === './tailwindcss' ||
                 prob.entrypoint === './ssr'))
           )
       );
