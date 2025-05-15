@@ -21,7 +21,8 @@ test.describe('markdown', async () => {
       await page.evaluate(() =>
         (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
       );
-      await waitForImagesToBeLoaded(page);
+      // Fix flaky image
+      await expect(page.locator('img[alt="Porsche 992 Carrera S"]')).toBeVisible();
       const screenshot = await page.screenshot({ fullPage: true });
       expect(screenshot).toMatchSnapshot(`markdown-${viewportWidthM}-scheme-${scheme}.png`);
     });
@@ -41,7 +42,8 @@ test.describe('markdown', async () => {
           (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
         );
         await closeSidebars(page);
-        await waitForImagesToBeLoaded(page);
+        // Fix flaky image
+        await expect(page.locator('img[alt="Porsche 992 Carrera S"]')).toBeVisible();
 
         const screenshot = await page.screenshot({ fullPage: true });
         expect(screenshot).toMatchSnapshot(`markdown-${viewportWidth}.png`);
