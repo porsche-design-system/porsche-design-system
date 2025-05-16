@@ -38,8 +38,18 @@ export const resetAnimations = async (page: Page) => {
 };
 
 export const waitForImagesToBeLoaded = async (page: Page) => {
-  for (const img of await page.getByRole('img').all()) {
-    await expect(img).toHaveJSProperty('complete', true);
-    await expect(img).not.toHaveJSProperty('naturalWidth', 0);
-  }
+  await page.waitForLoadState('load');
+  await page.evaluate(() => {
+    return Promise.all(
+      Array.from(document.images)
+        .filter((img) => !img.complete || img.naturalWidth === 0)
+        .map(
+          (img) =>
+            new Promise((resolve, reject) => {
+              img.addEventListener('load', resolve);
+              img.addEventListener('error', reject);
+            })
+        )
+    );
+  });
 };

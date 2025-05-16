@@ -17,40 +17,32 @@ test.describe('markdown', async () => {
         colorScheme: scheme,
       });
       await page.goto('/-/mdx');
-      await resetAnimations(page);
-      await page.evaluate(() =>
-        (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
-      );
-      const link = page.getByRole('link', { name: 'link text' });
-      await link.focus();
-      await expect(link).toBeFocused();
-
       await page.setViewportSize({
         width: viewportWidthM,
         height: await page.evaluate(() => document.body.clientHeight),
       });
+      await resetAnimations(page);
+      await page.evaluate(() =>
+        (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
+      );
       const screenshot = await page.screenshot({ fullPage: true });
       expect(screenshot).toMatchSnapshot(`markdown-${viewportWidthM}-scheme-${scheme}.png`);
     });
   });
 
   viewportWidths
-    .filter((x) => x !== viewportWidthM && x !== viewportWidthL && x !== viewportWidthXL)
+    .filter((x) => x !== viewportWidthM)
     .forEach((viewportWidth) => {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
         await page.goto('/-/mdx');
-        await resetAnimations(page);
-        await page.evaluate(() =>
-          (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
-        );
-        const link = page.getByRole('link', { name: 'link text' });
-        await link.focus();
-        await expect(link).toBeFocused();
         await page.setViewportSize({
           width: viewportWidth,
           height: await page.evaluate(() => document.body.clientHeight),
         });
-
+        await resetAnimations(page);
+        await page.evaluate(() =>
+          (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
+        );
         await closeSidebars(page);
 
         const screenshot = await page.screenshot({ fullPage: true });

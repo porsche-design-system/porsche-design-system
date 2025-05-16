@@ -88,7 +88,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
       </article>
 
       <section
-        className="mt-fluid-xl grid gap-fluid-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12"
+        className="mt-fluid-xl grid gap-fluid-md md:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12"
         aria-label="Getting started"
       >
         <AppearAnimation animation="fade-in-up">
@@ -158,7 +158,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
       </section>
 
       <section
-        className="mt-fluid-xl grid gap-fluid-md sm:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12"
+        className="mt-fluid-xl grid gap-fluid-md md:grid-cols-2 col-span-full xs:col-start-2 xs:col-end-12"
         aria-label="Important links"
       >
         <AppearAnimation animation="fade-in-up">
@@ -307,7 +307,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </div>
         <article className="col-start-3 md:col-end-7 col-end-11 p-6" aria-label="Short & Longterm Efficiency">
-          <div className="relative rounded-3xl bg-base w-20 h-20 justify-self-center">
+          <div className="relative rounded-3xl bg-base w-20 h-20 m-auto">
             <Image src="assets/benefits_efficiency.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -319,7 +319,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-start-7 col-end-11 p-6" aria-label="Brand Fit">
-          <div className="relative rounded-3xl bg-base w-20 h-20 justify-self-center">
+          <div className="relative rounded-3xl bg-base w-20 h-20 m-auto">
             <Image src="assets/benefits_brand_fit.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -331,7 +331,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-end-7 col-end-11 p-6" aria-label="Accessibility">
-          <div className="relative rounded-3xl bg-base w-20 h-20 justify-self-center">
+          <div className="relative rounded-3xl bg-base w-20 h-20 m-auto">
             <Image src="assets/benefits_accessibility.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -343,7 +343,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-start-7 col-end-11 p-6" aria-label="Framework Agnostic">
-          <div className="relative rounded-3xl bg-base w-20 h-20 justify-self-center">
+          <div className="relative rounded-3xl bg-base w-20 h-20 m-auto">
             <Image src="assets/benefits_framework_agnostic.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -354,7 +354,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-end-7 col-end-11 p-6" aria-label="Fluid & Responsive">
-          <div className="relative rounded-3xl bg-base w-20 h-20 justify-self-center">
+          <div className="relative rounded-3xl bg-base w-20 h-20 m-auto">
             <Image src="assets/benefits_fluid_responsive.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -366,7 +366,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-start-7 col-end-11 p-6" aria-label="Compliant Quality">
-          <div className="relative rounded-3xl bg-base w-20 h-20 justify-self-center">
+          <div className="relative rounded-3xl bg-base w-20 h-20 m-auto">
             <Image src="assets/benefits_compliant_quality.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -378,7 +378,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-end-7 col-end-11 p-6" aria-label="Updated Capability">
-          <div className="relative rounded-3xl bg-base w-20 h-20 justify-self-center">
+          <div className="relative rounded-3xl bg-base w-20 h-20 m-auto">
             <Image src="assets/benefits_update_capability.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
@@ -390,7 +390,7 @@ export const Home = ({ latestPdsVersion }: HomeProps) => {
           </PText>
         </article>
         <article className="col-start-3 md:col-start-7 col-end-11 p-6" aria-label="Open-Source Code">
-          <div className="relative rounded-3xl bg-base w-20 h-20 justify-self-center">
+          <div className="relative rounded-3xl bg-base w-20 h-20 m-auto">
             <Image src="assets/benefits_open_source_code.png" fill={true} alt="" className="p-static-md" />
           </div>
           <PText align="center" size="x-small" color="contrast-medium" className="mb-fluid-xs mt-fluid-md">
