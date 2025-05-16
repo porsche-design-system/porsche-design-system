@@ -12,24 +12,26 @@ export const carouselStory: Story<'p-carousel'> = {
       tag: 'p-carousel',
       properties,
       children: [
-        { tag: 'div', properties: { className: 'slide' }, children: ['Slide 1'] },
-        { tag: 'div', properties: { className: 'slide' }, children: ['Slide 2'] },
-        { tag: 'div', properties: { className: 'slide' }, children: ['Slide 3'] },
-        { tag: 'div', properties: { className: 'slide' }, children: ['Slide 4'] },
-      ],
-    },
-    {
-      tag: 'style',
-      children: [
-        `.slide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background: #00b0f4;
-    height: 150px;
-    color: #010205;
-  }`,
+        {
+          tag: 'div',
+          properties: { className: 'grid place-content-center h-[150px] bg-surface prose-text-sm' },
+          children: ['Slide 1'],
+        },
+        {
+          tag: 'div',
+          properties: { className: 'grid place-content-center h-[150px] bg-surface prose-text-sm' },
+          children: ['Slide 2'],
+        },
+        {
+          tag: 'div',
+          properties: { className: 'grid place-content-center h-[150px] bg-surface prose-text-sm' },
+          children: ['Slide 3'],
+        },
+        {
+          tag: 'div',
+          properties: { className: 'grid place-content-center h-[150px] bg-surface prose-text-sm' },
+          children: ['Slide 4'],
+        },
       ],
     },
   ],
@@ -44,25 +46,36 @@ export const carouselStoryFlexibleWidths: Story<'p-carousel'> = {
       tag: 'p-carousel',
       properties,
       children: [
-        ...['10vw', '200px', '100px', '40vw', '150px', '50vw'].map((width, index) => ({
+        {
           tag: 'div',
-          properties: { className: 'slide', style: { width } },
-          children: [`Slide ${index + 1}`, { tag: 'p', children: [`(${width})`] }],
-        })),
-      ] as (string | ElementConfig<HTMLTagOrComponent> | undefined)[],
-    },
-    {
-      tag: 'style',
-      children: [
-        `.slide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background: #00b0f4;
-    height: 150px;
-    color: #010205;
-  }`,
+          properties: { className: 'grid place-content-center w-[10vw] h-[150px] bg-surface prose-text-sm' },
+          children: ['10vw'],
+        },
+        {
+          tag: 'div',
+          properties: { className: 'grid place-content-center w-[200px] h-[150px] bg-surface prose-text-sm' },
+          children: ['200px'],
+        },
+        {
+          tag: 'div',
+          properties: { className: 'grid place-content-center w-[100px] h-[150px] bg-surface prose-text-sm' },
+          children: ['100px'],
+        },
+        {
+          tag: 'div',
+          properties: { className: 'grid place-content-center w-[40vw] h-[150px] bg-surface prose-text-sm' },
+          children: ['40vw'],
+        },
+        {
+          tag: 'div',
+          properties: { className: 'grid place-content-center w-[150px] h-[150px] bg-surface prose-text-sm' },
+          children: ['150px'],
+        },
+        {
+          tag: 'div',
+          properties: { className: 'grid place-content-center w-[50vw] h-[150px] bg-surface prose-text-sm' },
+          children: ['50vw'],
+        },
       ],
     },
   ],
@@ -86,23 +99,21 @@ export const carouselStoryIntl: Story<'p-carousel'> = {
       tag: 'p-carousel',
       properties,
       children: [
-        { tag: 'div', properties: { className: 'slide' }, children: ['Slide 1'] },
-        { tag: 'div', properties: { className: 'slide' }, children: ['Slide 2'] },
-        { tag: 'div', properties: { className: 'slide' }, children: ['Slide 3'] },
-      ],
-    },
-    {
-      tag: 'style',
-      children: [
-        `.slide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background: #00b0f4;
-    height: 150px;
-    color: #010205;
-  }`,
+        {
+          tag: 'div',
+          properties: { className: 'grid place-content-center h-[150px] bg-surface prose-text-sm' },
+          children: ['Slide 1'],
+        },
+        {
+          tag: 'div',
+          properties: { className: 'grid place-content-center h-[150px] bg-surface prose-text-sm' },
+          children: ['Slide 2'],
+        },
+        {
+          tag: 'div',
+          properties: { className: 'grid place-content-center h-[150px] bg-surface prose-text-sm' },
+          children: ['Slide 3'],
+        },
       ],
     },
   ],

@@ -15,8 +15,8 @@ export const textStory: Story<'p-text'> = {
 export const textStorySize: Story<'p-text'> = {
   state: {
     properties: {
+      className: 'text-[3rem]',
       size: 'inherit',
-      style: { fontSize: '3rem' },
     },
   },
   generator: ({ properties } = {}) => [

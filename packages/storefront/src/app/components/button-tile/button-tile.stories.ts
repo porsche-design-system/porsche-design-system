@@ -27,7 +27,9 @@ export const buttonTileStoryGrid: Story<'p-button-tile'> = {
   generator: () => [
     {
       tag: 'div',
-      properties: { style: { display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '16px' } },
+      properties: {
+        className: 'grid grid-cols-2 gap-static-md',
+      },
       children: [
         ...['4/3', '4/3', '1/1', '9/16', '1/1'].map((aspectRatio, index) => ({
           tag: 'p-button-tile',
