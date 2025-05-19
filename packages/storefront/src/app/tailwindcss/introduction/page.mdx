@@ -1,0 +1,49 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Tailwind: Introduction - Porsche Design System',
+  description: 'Learn about the Tailwind theme of our design language and how to use it.',
+};
+
+# Introduction
+
+<TableOfContents headings={['Setup','Theme']} />
+
+## Setup
+
+### 1. Install Tailwind
+
+https://tailwindcss.com/docs/installation
+
+### 2. Import the Porsche Design System Tailwind Theme
+
+Below the `@import "tailwindcss";` line in your global css file, import the Porsche Design System Tailwind theme:
+
+```css
+@import 'tailwindcss';
+@import '@porsche-design-system/components-{js|angular|react|vue}/tailwindcss';
+```
+
+## Theme
+
+### Configure a Theme switch
+
+By default, the color tokens use the **light** theme. To enable the **dark** or **auto** (automatic dark mode based on
+system settings) theme, you need to add the corresponding class `.dark` or `.auto` to the `<html>` element. This change
+will apply the selected theme to all child elements. To implement a three-way theme toggle (`light`, `dark`, `auto`),
+dynamically update the `<html>` element’s class using JavaScript:
+
+```javascript
+document.documentElement.classList.remove('light', 'dark', 'auto');
+document.documentElement.classList.add(theme); // theme is the selected theme here ('light', 'dark' or 'auto')
+```
+
+### Using the Tailwind Theme
+
+To apply a fixed color, you can use any color token with a `-light` or `-dark` suffix.
+
+**Examples:**
+
+- `.bg-surface` — Automatically adapts to the closest `.light`, `.dark`, or `.auto` class on a parent HTML element.
+- `.bg-surface-light` — Forces the **light** theme color.
+- `.bg-surface-dark` — Forces the **dark** theme color.

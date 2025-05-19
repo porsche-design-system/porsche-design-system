@@ -1,6 +1,6 @@
 {
   "name": "@porsche-design-system/components-angular",
-  "version": "3.28.0-rc.2",
+  "version": "3.28.0-rc.3",
   "description": "Porsche Design System is a component library designed to help developers create the best experience for software or services distributed by Dr. Ing. h.c. F. Porsche AG.",
   "keywords": [
     "porsche",
@@ -17,7 +17,7 @@
   "license": "SEE LICENSE IN LICENSE",
   "homepage": "https://designsystem.porsche.com",
   "dependencies": {
-    "@porsche-design-system/components-js": "3.28.0-rc.2",
+    "@porsche-design-system/components-js": "3.28.0-rc.3",
     "tslib": "^2.8.1"
   },
   "peerDependencies": {
@@ -55,6 +55,9 @@
       "types": "./styles/vanilla-extract/esm/vanilla-extract/index.d.ts",
       "import": "./styles/vanilla-extract/esm/vanilla-extract/index.mjs",
       "default": "./styles/vanilla-extract/cjs/vanilla-extract/index.cjs"
+    },
+    "./tailwindcss": {
+      "style": "./tailwind/index.css"
     },
     "./ag-grid": {
       "types": "./ag-grid/esm/index.d.ts",

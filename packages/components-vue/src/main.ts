@@ -1,7 +1,8 @@
-import { createApp } from 'vue';
+import './style.css';
 import { componentsReady } from '@porsche-design-system/components-vue';
-import router from './router';
+import { createApp } from 'vue';
 import App from './App.vue';
+import router from './router';
 
 const app = createApp(App);
 

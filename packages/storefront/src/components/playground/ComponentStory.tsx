@@ -7,10 +7,7 @@ import { createStackblitzMarkupFromStory } from '@/lib/stackblitz/createStackbli
 import { openInStackblitz } from '@/lib/stackblitz/openInStackblitz';
 import type { BackgroundColor } from '@/models/backgroundColor';
 import type { Story } from '@/models/story';
-import { generateAngularMarkup, getAngularCode } from '@/utils/generator/generateAngularMarkup';
-import { generateReactMarkup, getReactCode } from '@/utils/generator/generateReactMarkup';
-import { generateVanillaJsMarkup, getVanillaJsCode } from '@/utils/generator/generateVanillaJsMarkup';
-import { generateVueMarkup, getVueCode } from '@/utils/generator/generateVueMarkup';
+import { createFrameworkMarkup } from '@/utils/generator/createFrameworkMarkup';
 import { type HTMLTagOrComponent, createElements } from '@/utils/generator/generator';
 import type { Framework } from '@porsche-design-system/shared';
 import React, { type ReactNode, useEffect, useMemo, useState } from 'react';
@@ -33,12 +30,7 @@ export const ComponentStory = ({ story, backgroundColor }: ComponentExampleProps
   const exampleMarkup = useMemo(() => {
     const state = story.state ?? {};
     const generatedStory = story.generator(state);
-    return {
-      'vanilla-js': getVanillaJsCode(generateVanillaJsMarkup(generatedStory)),
-      react: getReactCode(generateReactMarkup(generatedStory, state)),
-      angular: getAngularCode(generateAngularMarkup(generatedStory, state)),
-      vue: getVueCode(generateVueMarkup(generatedStory, state)),
-    };
+    return createFrameworkMarkup(generatedStory, state);
   }, [story]);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: only thing that will change is the state
