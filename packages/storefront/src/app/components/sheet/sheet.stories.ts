@@ -25,7 +25,7 @@ export const sheetSlotStories: SlotStories<'p-sheet'> = {
       name: 'Scrollable Content',
       generator: () => [
         { tag: 'p-text', children: ['Some Content Begin'] },
-        { tag: 'div', properties: { style: { width: '10px', height: '120vh', background: 'deeppink' } } },
+        { tag: 'div', properties: { className: 'w-[10px] h-[120vh] bg-[deeppink]' } },
         { tag: 'p-text', children: ['Some Content End'] },
       ],
     },

@@ -16,9 +16,7 @@ export const buttonPureStory: Story<'p-button-pure'> = {
 export const buttonPureStoryCustomPadding: Story<'p-button-pure'> = {
   state: {
     properties: {
-      style: {
-        padding: '1rem',
-      } as CSSProperties,
+      className: 'p-static-md',
     },
   },
   generator: ({ properties } = {}) => [

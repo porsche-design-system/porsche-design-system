@@ -21,7 +21,7 @@ export const modelSignatureStorySafeZone: Story<'p-model-signature'> = {
         ({
           tag: 'div',
           properties: {
-            style: { background: '#ff000033', display: 'inline-block', marginInlineEnd: '16px', marginTop: '16px' },
+            className: 'bg-[#ff000033] inline-block me-static-md mt-static-md',
           },
           children: [
             {
@@ -39,25 +39,102 @@ export const modelSignatureStorySafeZone: Story<'p-model-signature'> = {
 
 export const modelSignatureStoryMaskBlendMode: Story<'p-model-signature'> = {
   generator: () => [
-    ...['#00aa3680', '#f2f2f280', '#1f1f1f80', '#c5004280', '#e1d4a480', '#0099e080'].map(
-      (background) =>
-        ({
-          tag: 'div',
+    {
+      tag: 'div',
+      properties: {
+        className: 'isolate bg-[#00aa3680] inline-block p-static-lg',
+      },
+      children: [
+        {
+          tag: 'p-model-signature',
           properties: {
-            style: { background, display: 'inline-block', padding: '32px', isolation: 'isolate' },
+            color: 'contrast-medium',
+            safeZone: false,
+            className: 'mix-blend-overlay',
           },
-          children: [
-            {
-              tag: 'p-model-signature',
-              properties: {
-                color: 'contrast-medium',
-                safeZone: false,
-                style: { mixBlendMode: 'overlay' },
-              },
-            },
-          ],
-        }) as string | ElementConfig<HTMLTagOrComponent> | undefined
-    ),
+        },
+      ],
+    },
+    {
+      tag: 'div',
+      properties: {
+        className: 'isolate bg-[#f2f2f280] inline-block p-static-lg',
+      },
+      children: [
+        {
+          tag: 'p-model-signature',
+          properties: {
+            color: 'contrast-medium',
+            safeZone: false,
+            className: 'mix-blend-overlay',
+          },
+        },
+      ],
+    },
+    {
+      tag: 'div',
+      properties: {
+        className: 'isolate bg-[#1f1f1f80] inline-block p-static-lg',
+      },
+      children: [
+        {
+          tag: 'p-model-signature',
+          properties: {
+            color: 'contrast-medium',
+            safeZone: false,
+            className: 'mix-blend-overlay',
+          },
+        },
+      ],
+    },
+    {
+      tag: 'div',
+      properties: {
+        className: 'isolate bg-[#c5004280] inline-block p-static-lg',
+      },
+      children: [
+        {
+          tag: 'p-model-signature',
+          properties: {
+            color: 'contrast-medium',
+            safeZone: false,
+            className: 'mix-blend-overlay',
+          },
+        },
+      ],
+    },
+    {
+      tag: 'div',
+      properties: {
+        className: 'isolate bg-[#e1d4a480] inline-block p-static-lg',
+      },
+      children: [
+        {
+          tag: 'p-model-signature',
+          properties: {
+            color: 'contrast-medium',
+            safeZone: false,
+            className: 'mix-blend-overlay',
+          },
+        },
+      ],
+    },
+    {
+      tag: 'div',
+      properties: {
+        className: 'isolate bg-[#0099e080] inline-block p-static-lg',
+      },
+      children: [
+        {
+          tag: 'p-model-signature',
+          properties: {
+            color: 'contrast-medium',
+            safeZone: false,
+            className: 'mix-blend-overlay',
+          },
+        },
+      ],
+    },
   ],
 };
 
@@ -65,7 +142,7 @@ export const modelSignatureStoryMaskImage: Story<'p-model-signature'> = {
   state: {
     properties: {
       safeZone: false,
-      style: { '--p-model-signature-width': 'auto' } as CSSProperties,
+      className: '[--p-model-signature-width:auto]',
     },
   },
   generator: ({ properties } = {}) => [
@@ -86,7 +163,7 @@ export const modelSignatureStoryMaskVideo: Story<'p-model-signature'> = {
   state: {
     properties: {
       safeZone: false,
-      style: { '--p-model-signature-width': 'auto' } as CSSProperties,
+      className: '[--p-model-signature-width:auto]',
     },
   },
   generator: ({ properties } = {}) => [
@@ -115,19 +192,19 @@ export const modelSignatureStoryCustomStyling: Story<'p-model-signature'> = {
     {
       tag: 'p-model-signature',
       properties: {
-        style: { '--p-model-signature-color': 'deeppink' } as CSSProperties,
+        className: '[--p-model-signature-color:deeppink] block',
       },
     },
     {
       tag: 'p-model-signature',
       properties: {
-        style: { '--p-model-signature-width': 'auto', '--p-model-signature-height': '50px' } as CSSProperties,
+        className: '[--p-model-signature-width:auto] [--p-model-signature-height:50px] block',
       },
     },
     {
       tag: 'p-model-signature',
       properties: {
-        style: { '--p-model-signature-width': '50px', '--p-model-signature-height': 'auto' } as CSSProperties,
+        className: '[--p-model-signature-width:50px] [--p-model-signature-height:auto] block',
       },
     },
   ],

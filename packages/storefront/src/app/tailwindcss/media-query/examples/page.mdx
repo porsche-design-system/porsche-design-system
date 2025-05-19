@@ -1,0 +1,15 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { mediaQueryStory } from '@/app/tailwindcss/media-query/examples/media-query.stories';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+
+export const metadata = {
+  title: 'Tailwind: Media Query - Porsche Design System',
+  description: 'Learn about the Tailwind theme of our design language and how to use it.',
+};
+
+# Media Query
+
+The Porsche Design System Tailwind theme customizes the Tailwind variable `--breakpoint-*`, which affect multiple
+Tailwind classes including `.sm:*`, `.max-sm:*`, `.sm:max-md:*` and others.
+
+<ComponentStory story={mediaQueryStory} />
