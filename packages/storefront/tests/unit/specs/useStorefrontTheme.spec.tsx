@@ -39,7 +39,7 @@ const TestComponent = () => {
 describe('StorefrontThemeProvider', () => {
   beforeEach(() => {
     vi.resetAllMocks();
-    document.body.className = ''; // reset classes
+    document.documentElement.className = ''; // reset classes
   });
 
   it('should provide default theme if no localStorage is set', () => {
@@ -79,9 +79,9 @@ describe('StorefrontThemeProvider', () => {
 
     await waitFor(() => {
       expect(screen.getByTestId('theme')).toHaveTextContent('dark');
-      expect(document.body.classList.contains('dark')).toBe(true);
-      expect(document.body.classList.contains('light')).toBe(false);
-      expect(document.body.classList.contains('auto')).toBe(false);
+      expect(document.documentElement.classList.contains('dark')).toBe(true);
+      expect(document.documentElement.classList.contains('light')).toBe(false);
+      expect(document.documentElement.classList.contains('auto')).toBe(false);
     });
   });
 
@@ -98,9 +98,9 @@ describe('StorefrontThemeProvider', () => {
 
     await waitFor(() => {
       expect(screen.getByTestId('theme')).toHaveTextContent('light');
-      expect(document.body.classList.contains('dark')).toBe(false);
-      expect(document.body.classList.contains('light')).toBe(true);
-      expect(document.body.classList.contains('auto')).toBe(false);
+      expect(document.documentElement.classList.contains('dark')).toBe(false);
+      expect(document.documentElement.classList.contains('light')).toBe(true);
+      expect(document.documentElement.classList.contains('auto')).toBe(false);
     });
 
     screen.getByText('Set Auto').click();
@@ -109,10 +109,9 @@ describe('StorefrontThemeProvider', () => {
 
     await waitFor(() => {
       expect(screen.getByTestId('theme')).toHaveTextContent('auto');
-      expect(document.body.classList.contains('dark')).toBe(false);
-      expect(document.body.classList.contains('light')).toBe(false);
-      // auto is not applied as class since it's the default
-      expect(document.body.classList.contains('auto')).toBe(false);
+      expect(document.documentElement.classList.contains('dark')).toBe(false);
+      expect(document.documentElement.classList.contains('light')).toBe(false);
+      expect(document.documentElement.classList.contains('auto')).toBe(true);
     });
   });
 });

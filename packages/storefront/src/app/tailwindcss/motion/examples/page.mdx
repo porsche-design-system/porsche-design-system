@@ -1,0 +1,23 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { motionStoryDuration, motionStoryEase } from '@/app/tailwindcss/motion/examples/motion.stories';
+
+export const metadata = {
+  title: 'Tailwind: Motion - Porsche Design System',
+  description: 'Learn about the Tailwind motion of our design language and how to use it.',
+};
+
+# Motion
+
+<TableOfContents headings={['Duration','Ease']} />
+
+The Porsche Design System Tailwind theme customizes the Tailwind variables `--transition-duration-*` and `--ease-*`,
+which affect multiple Tailwind classes including `.duration-*`, `.ease-*` and others.
+
+## Duration
+
+<ComponentStory story={motionStoryDuration} />
+
+## Ease
+
+<ComponentStory story={motionStoryEase} />

@@ -1,0 +1,14 @@
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { gradientStory } from '@/app/tailwindcss/gradient/examples/gradient.stories';
+
+export const metadata = {
+  title: 'Tailwind: Gradient - Porsche Design System',
+  description: 'Learn about the Tailwind theme of our design language and how to use it.',
+};
+
+# Gradient
+
+The Porsche Design System Tailwind theme includes the custom `@utility` CSS classes `.bg-fade-to-*`, which apply
+directional faded gradients as `background-image`.
+
+<ComponentStory story={gradientStory} backgroundColor="surface" />

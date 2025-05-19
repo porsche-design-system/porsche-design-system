@@ -18,7 +18,7 @@ export const radioButtonWrapperStory: Story<'p-radio-button-wrapper'> = {
       tag: 'p-radio-button-wrapper',
       properties: {
         label: 'Some label',
-        style: { marginTop: '16px' },
+        className: 'mt-fluid-sm',
       },
       children: [{ tag: 'input', properties: { type: 'radio', name: 'some-name' } }],
     },
@@ -42,7 +42,7 @@ export const radioButtonWrapperStoryLoading: Story<'p-radio-button-wrapper'> = {
       tag: 'p-radio-button-wrapper',
       properties: {
         label: 'Some label',
-        style: { marginTop: '16px' },
+        className: 'mt-fluid-sm',
       },
       children: [{ tag: 'input', properties: { type: 'radio', name: 'some-name', defaultChecked: true } }],
     },
@@ -77,7 +77,7 @@ export const radioButtonWrapperStorySlots: Story<'p-radio-button-wrapper'> = {
       properties: {
         label: 'Some label',
         state: 'error',
-        style: { marginTop: '16px' },
+        className: 'mt-fluid-sm',
       },
       children: [
         {
