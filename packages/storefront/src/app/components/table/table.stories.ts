@@ -178,12 +178,12 @@ export const tableStoryLayoutFixed: Story<'p-table'> = {
               children: [
                 {
                   tag: 'p-table-head-cell',
-                  properties: { style: { width: '50%', maxWidth: '50%' } },
+                  properties: { className: 'w-[50%] max-w-[50%]' },
                   children: ['Column 1 (50%)'],
                 },
                 {
                   tag: 'p-table-head-cell',
-                  properties: { style: { width: '150px', maxWidth: '150px' } },
+                  properties: { className: 'w-[150px] max-w-[150px]' },
                   children: ['Column 2 (150px)'],
                 },
                 { tag: 'p-table-head-cell', children: ['Column 3 (auto)'] },
@@ -197,10 +197,10 @@ export const tableStoryLayoutFixed: Story<'p-table'> = {
             {
               tag: 'p-table-row',
               children: [
-                { tag: 'p-table-cell', properties: { style: { width: '50%', maxWidth: '50%' } }, children: ['Cell 1'] },
+                { tag: 'p-table-cell', properties: { className: 'w-[50%] max-w-[50%]' }, children: ['Cell 1'] },
                 {
                   tag: 'p-table-cell',
-                  properties: { style: { width: '150px', maxWidth: '150px' } },
+                  properties: { className: 'w-[150px] max-w-[150px]' },
                   children: ['Cell 2'],
                 },
                 { tag: 'p-table-cell', children: ['Cell 3'] },
@@ -209,10 +209,10 @@ export const tableStoryLayoutFixed: Story<'p-table'> = {
             {
               tag: 'p-table-row',
               children: [
-                { tag: 'p-table-cell', properties: { style: { width: '50%', maxWidth: '50%' } }, children: ['Cell 1'] },
+                { tag: 'p-table-cell', properties: { className: 'w-[50%] max-w-[50%]' }, children: ['Cell 1'] },
                 {
                   tag: 'p-table-cell',
-                  properties: { style: { width: '150px', maxWidth: '150px' } },
+                  properties: { className: 'w-[150px] max-w-[150px]' },
                   children: [
                     {
                       tag: 'p-text',

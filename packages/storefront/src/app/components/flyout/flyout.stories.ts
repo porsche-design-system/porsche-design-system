@@ -25,7 +25,7 @@ export const flyoutSlotStories: SlotStories<'p-flyout'> = {
       name: 'Scrollable Content',
       generator: () => [
         { tag: 'p-text', children: ['Some Content Begin'] },
-        { tag: 'div', properties: { style: { width: '10px', height: '120vh', background: 'deeppink' } } },
+        { tag: 'div', properties: { className: 'w-[10px] h-[120vh] bg-[deeppink]' } },
         { tag: 'p-text', children: ['Some Content End'] },
       ],
     },
@@ -146,23 +146,13 @@ export const flyoutStoryStickyTop: Story<'p-flyout'> = {
         {
           tag: 'div',
           properties: {
-            style: {
-              display: 'grid',
-              gridTemplateColumns: '2fr 1fr',
-              gap: '16px',
-              alignItems: 'flex-start',
-            },
+            className: 'grid grid-cols-[2fr_1fr] gap-static-md items-start',
           },
           children: [
             {
               tag: 'div',
               properties: {
-                style: {
-                  position: 'sticky',
-                  top: 'calc(var(--p-flyout-sticky-top, 0) + 16px)',
-                  padding: '16px',
-                  background: 'rgba(255, 0, 0, 0.1)',
-                },
+                className: 'sticky top-[calc(var(--p-flyout-sticky-top,0)+16px)] p-static-md bg-surface',
               },
               children: ['Some sticky element within content relying on --p-flyout-sticky-top'],
             },
@@ -170,7 +160,7 @@ export const flyoutStoryStickyTop: Story<'p-flyout'> = {
               tag: 'div',
               children: [
                 { tag: 'p-text', children: ['Some Content Begin'] },
-                { tag: 'div', properties: { style: { width: '10px', height: '120vh', background: 'deeppink' } } },
+                { tag: 'div', properties: { className: 'w-[10px] h-[120vh] bg-[deeppink]' } },
                 { tag: 'p-text', children: ['Some Content End'] },
               ],
             },

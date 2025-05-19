@@ -1,16 +1,14 @@
-import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import {
-  getInitialStyles,
-  getMetaTagsAndIconLinks,
   getComponentChunkLinks,
   getFontFaceStyles,
   getFontLinks,
-  getIconLinks,
+  getInitialStyles,
   getLoaderScript,
+  getMetaTagsAndIconLinks,
 } from '@porsche-design-system/components-js/partials';
+import { defineConfig } from 'vite';
 import { COMPONENT_CHUNK_NAMES } from './projects/components-wrapper';
-import { ICON_NAMES } from '@porsche-design-system/assets';
 
 const localhost = 'http://localhost:3001';
 

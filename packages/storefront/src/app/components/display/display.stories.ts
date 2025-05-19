@@ -17,7 +17,7 @@ export const displayStorySizeInherit: Story<'p-display'> = {
     properties: {
       tag: 'h3',
       size: 'inherit',
-      style: { fontSize: '5rem' },
+      className: 'text-[5rem]',
     },
   },
   generator: ({ properties } = {}) => [
@@ -66,7 +66,7 @@ export const displayStoryColorInherit: Story<'p-display'> = {
     properties: {
       tag: 'h3',
       color: 'inherit',
-      style: { color: 'deeppink' },
+      className: 'text-[deeppink]',
     },
   },
   generator: ({ properties } = {}) => [

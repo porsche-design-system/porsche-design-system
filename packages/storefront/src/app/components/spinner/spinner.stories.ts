@@ -17,8 +17,8 @@ export const spinnerStory: Story<'p-spinner'> = {
 export const spinnerStorySize: Story<'p-spinner'> = {
   state: {
     properties: {
+      className: 'w-[96px] h-[96px]',
       size: 'inherit',
-      style: { width: '96px', height: '96px' },
       aria: { 'aria-label': 'Loading page content' },
     },
   },

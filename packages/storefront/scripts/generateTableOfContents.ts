@@ -32,7 +32,7 @@ const processFile = (filePath: string): void => {
     if (headings.length > 1) {
       const updatedContent = content.replace(
         tableOfContentsRegex,
-        `<TableOfContents headings={${JSON.stringify(headings)}} />`
+        `<TableOfContents headings={${JSON.stringify(headings).replace(/'/g, "\\'").replace(/"/g, "'")}} />`
       );
       fs.writeFileSync(filePath, updatedContent, 'utf-8');
       console.log(`Updated TableOfContents in: ${filePath}`);

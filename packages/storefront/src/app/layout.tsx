@@ -38,7 +38,7 @@ export default function RootLayout({
 }>) {
   const basePath = getBasePath();
   return (
-    <html lang="en">
+    <html lang="en" className="auto">
       <head>
         <base href={basePath ? `/${basePath}/` : '/'} />
         <meta property="og:image" content="/assets/og-image.png" />
