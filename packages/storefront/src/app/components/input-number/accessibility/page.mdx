@@ -8,7 +8,7 @@ export const metadata = {
 
 # Input Number <ComponentStatus tagName="p-input-number"></ComponentStatus>
 
-<TableOfContents headings={["Accessibility support","Development considerations","Limitations","Tests"]} />
+<TableOfContents headings={['Accessibility support', 'Development considerations', 'Limitations', 'Tests']} />
 
 ## Accessibility support
 
@@ -17,6 +17,7 @@ export const metadata = {
 | Key / state        | Function                                                 |
 | ------------------ | -------------------------------------------------------- |
 | `Tab`, `Shift-Tab` | Moves focus to the next (or previous) focusable element. |
+| `Arrow Up/Down`    | Sets increments/decrements in regards of the steps       |
 
 ### ARIA enhancements
 
@@ -24,14 +25,19 @@ export const metadata = {
 
 | ARIA                            | Usage                                                                                                 |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `aria-label="STRING"`           | Defines the accessible name combined with the description and status message.                         |
+| `aria-describedby="STRING"`     | Defines the accessible description combined with the status message.                                  |
 | `role="status"`, `role="alert"` | When `message` and `state` or `loading` prop change, the status message is announced.                 |
 | `aria-hidden="true"`            | If `required` attribute is set, the visible asterisk indicator is hidden from assistive technologies. |
 | `aria-invalid="true"`           | If `error` state is set.                                                                              |
 | `aria-live="polite"`            | If the `maxlength` attribute is present, the counter is announced via ARIA live region.               |
-| `aria-pressed="BOOLEAN"`        | Defines the state of the visibility for the toggle button.                                            |
 
 ## Development considerations
+
+### Exposing the `unit` prop
+
+The `unit` prop is not exposed to assistive technologies by default. If you provide a `unit` abbreviation, you need to
+dissolve it in real text through the `description` prop. For example, if you use `kmh`, you can set the `description`
+prop to `kilometers per hour`. This way, the screen reader will read out the full text.
 
 ### Disabled state
 
