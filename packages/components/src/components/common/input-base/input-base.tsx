@@ -3,7 +3,7 @@ import type { Theme } from '../../../types';
 import { Label } from '../label/label';
 import { descriptionId } from '../label/label-utils';
 import { StateMessage, messageId } from '../state-message/state-message';
-import {
+import type {
   InputBaseBlurEventDetail,
   InputBaseChangeEventDetail,
   InputBaseInputEventDetail,
