@@ -32,6 +32,7 @@ const propTypes: PropTypes<typeof Popover> = {
 
 /**
  * @slot {"name": "", "description": "Default slot for the popover content." }
+ * @slot {"name": "button", "description": "Slot for custom button." }
  */
 @Component({
   tag: 'p-popover',
