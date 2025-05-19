@@ -259,6 +259,7 @@ export class InputNumber {
         description={this.description}
         id="input-number"
         refElement={(el: HTMLInputElement) => (this.inputElement = el)}
+        onWheel={(e) => (e.target as HTMLInputElement).blur()} // prevent React default scroll-to-[increment|decrement] on number inputs
         onInput={this.onInput}
         onChange={this.onChange}
         onBlur={this.onBlur}
