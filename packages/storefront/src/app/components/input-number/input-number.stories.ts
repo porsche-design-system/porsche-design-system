@@ -4,7 +4,7 @@ import type { Story } from '@/models/story';
 
 export const inputNumberStory: Story<'p-input-number'> = {
   state: {
-    properties: { label: 'Some label', name: 'Some name' },
+    properties: { label: 'Some label', name: 'Some name', controls: true },
   },
   generator: ({ properties } = {}) => [
     {
