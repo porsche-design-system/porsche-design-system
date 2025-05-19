@@ -25,7 +25,7 @@ type BrowserSupportProps = {
 
 export const BrowserSupport = ({ support }: BrowserSupportProps) => {
   return (
-    <PTable className="mt-md" caption="Browser support">
+    <PTable className="mt-fluid-md" caption="Browser support">
       <PTableHead>
         <PTableHeadRow>
           <PTableHeadCell>Chrome</PTableHeadCell>

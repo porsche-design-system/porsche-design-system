@@ -1,1 +1,1 @@
-export type BackgroundColor = 'background-base' | 'background-surface';
+export type BackgroundColor = 'base' | 'surface';

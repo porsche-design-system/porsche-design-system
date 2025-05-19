@@ -14,10 +14,8 @@ export const wordmarkStory: Story<'p-wordmark'> = {
 export const wordmarkStorySizeInherit: Story<'p-wordmark'> = {
   state: {
     properties: {
+      className: 'h-[20px]',
       size: 'inherit',
-      style: {
-        height: '20px',
-      },
     },
   },
   generator: ({ properties } = {}) => [
@@ -31,12 +29,10 @@ export const wordmarkStorySizeInherit: Story<'p-wordmark'> = {
 export const wordmarkStoryCustomPadding: Story<'p-wordmark'> = {
   state: {
     properties: {
+      className: 'p-static-md',
       href: 'https://porsche.com',
       aria: {
         'aria-label': 'Porsche Homepage',
-      },
-      style: {
-        padding: '1.5rem',
       },
     },
   },

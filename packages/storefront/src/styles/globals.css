@@ -1,34 +1,394 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@import '@porsche-design-system/components-react/tailwindcss';
+
+@theme {
+  --_pds-grid-narrow-offset: max(22px, 10.625vw - 12px);
+  --_pds-grid-narrow-offset-sm: calc(5vw - 16px + (clamp(16px, 1.25vw + 12px, 36px) + (100vw - (5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16) * 4);
+  --_pds-grid-narrow-offset-2xl: calc(max(0px, 50vw - 1280px) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + (min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16) * 4);
+  --_pds-grid-basic-offset: max(22px, 10.625vw - 12px);
+  --_pds-grid-basic-offset-sm: calc(5vw - 16px + (clamp(16px, 1.25vw + 12px, 36px) + (100vw - (5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16) * 2);
+  --_pds-grid-basic-offset-2xl: calc(max(0px, 50vw - 1280px) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + (min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16) * 2);
+  --_pds-grid-extended-offset: max(22px, 10.625vw - 12px);
+  --_pds-grid-extended-offset-sm: calc(5vw - 16px + (clamp(16px, 1.25vw + 12px, 36px) + (100vw - (5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16) * 1);
+  --_pds-grid-extended-offset-2xl: calc(max(0px, 50vw - 1280px) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + (min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16) * 1);
+  --_pds-grid-wide-offset: max(22px, 10.625vw - 12px);
+  --_pds-grid-wide-offset-sm: calc(5vw - 16px);
+  --_pds-grid-wide-offset-2xl: calc(max(0px, 50vw - 1280px) + min(50vw - 880px, 400px));
+  --_pds-grid-full-offset: max(0px, 50vw - 1280px);
+  --_pds-grid-visualization-color: rgba(0,0,255,.1);
+  --_pds-grid-visualization-grid-gap: var(--spacing-fluid-md);
+  --_pds-grid-visualization-safe-zone-base: var(--_pds-grid-wide-offset);
+  --_pds-grid-visualization-column-width-base: calc((100% - var(--_pds-grid-visualization-safe-zone-base) * 2 - var(--_pds-grid-visualization-grid-gap) * 5) / 6);
+  --_pds-grid-visualization-base: to right,
+  var(--_pds-grid-visualization-color) 0%,
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-base) - var(--_pds-grid-visualization-grid-gap)),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-base) - var(--_pds-grid-visualization-grid-gap)),
+  transparent var(--_pds-grid-visualization-safe-zone-base),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-column-width-base) * 0 + var(--_pds-grid-visualization-grid-gap) * 0),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-column-width-base) * 1 + var(--_pds-grid-visualization-grid-gap) * 0),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-column-width-base) * 1 + var(--_pds-grid-visualization-grid-gap) * 0),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-column-width-base) * 1 + var(--_pds-grid-visualization-grid-gap) * 1),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-column-width-base) * 1 + var(--_pds-grid-visualization-grid-gap) * 1),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-column-width-base) * 2 + var(--_pds-grid-visualization-grid-gap) * 1),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-column-width-base) * 2 + var(--_pds-grid-visualization-grid-gap) * 1),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-column-width-base) * 2 + var(--_pds-grid-visualization-grid-gap) * 2),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-column-width-base) * 2 + var(--_pds-grid-visualization-grid-gap) * 2),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-column-width-base) * 3 + var(--_pds-grid-visualization-grid-gap) * 2),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-column-width-base) * 3 + var(--_pds-grid-visualization-grid-gap) * 2),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-column-width-base) * 3 + var(--_pds-grid-visualization-grid-gap) * 3),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-column-width-base) * 3 + var(--_pds-grid-visualization-grid-gap) * 3),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-column-width-base) * 4 + var(--_pds-grid-visualization-grid-gap) * 3),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-column-width-base) * 4 + var(--_pds-grid-visualization-grid-gap) * 3),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-column-width-base) * 4 + var(--_pds-grid-visualization-grid-gap) * 4),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-column-width-base) * 4 + var(--_pds-grid-visualization-grid-gap) * 4),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-column-width-base) * 5 + var(--_pds-grid-visualization-grid-gap) * 4),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-column-width-base) * 5 + var(--_pds-grid-visualization-grid-gap) * 4),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-column-width-base) * 5 + var(--_pds-grid-visualization-grid-gap) * 5),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-column-width-base) * 5 + var(--_pds-grid-visualization-grid-gap) * 5),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-column-width-base) * 6 + var(--_pds-grid-visualization-grid-gap) * 5),
+  transparent calc(100% - var(--_pds-grid-visualization-safe-zone-base)),
+  transparent calc(100% - var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-grid-gap)),
+  var(--_pds-grid-visualization-color) calc(100% - var(--_pds-grid-visualization-safe-zone-base) + var(--_pds-grid-visualization-grid-gap)),
+  var(--_pds-grid-visualization-color) 100%;
+  --_pds-grid-visualization-safe-zone-sm: var(--_pds-grid-wide-offset-sm);
+  --_pds-grid-visualization-column-width-sm: calc((100% - var(--_pds-grid-visualization-safe-zone-sm) * 2 - var(--_pds-grid-visualization-grid-gap) * 15) / 16);
+  --_pds-grid-visualization-sm: to right,
+  var(--_pds-grid-visualization-color) 0%,
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) - var(--_pds-grid-visualization-grid-gap)),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) - var(--_pds-grid-visualization-grid-gap)),
+  transparent var(--_pds-grid-visualization-safe-zone-sm),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 0 + var(--_pds-grid-visualization-grid-gap) * 0),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 1 + var(--_pds-grid-visualization-grid-gap) * 0),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 1 + var(--_pds-grid-visualization-grid-gap) * 0),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 1 + var(--_pds-grid-visualization-grid-gap) * 1),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 1 + var(--_pds-grid-visualization-grid-gap) * 1),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 2 + var(--_pds-grid-visualization-grid-gap) * 1),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 2 + var(--_pds-grid-visualization-grid-gap) * 1),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 2 + var(--_pds-grid-visualization-grid-gap) * 2),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 2 + var(--_pds-grid-visualization-grid-gap) * 2),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 3 + var(--_pds-grid-visualization-grid-gap) * 2),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 3 + var(--_pds-grid-visualization-grid-gap) * 2),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 3 + var(--_pds-grid-visualization-grid-gap) * 3),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 3 + var(--_pds-grid-visualization-grid-gap) * 3),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 4 + var(--_pds-grid-visualization-grid-gap) * 3),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 4 + var(--_pds-grid-visualization-grid-gap) * 3),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 4 + var(--_pds-grid-visualization-grid-gap) * 4),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 4 + var(--_pds-grid-visualization-grid-gap) * 4),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 5 + var(--_pds-grid-visualization-grid-gap) * 4),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 5 + var(--_pds-grid-visualization-grid-gap) * 4),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 5 + var(--_pds-grid-visualization-grid-gap) * 5),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 5 + var(--_pds-grid-visualization-grid-gap) * 5),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 6 + var(--_pds-grid-visualization-grid-gap) * 5),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 6 + var(--_pds-grid-visualization-grid-gap) * 5),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 6 + var(--_pds-grid-visualization-grid-gap) * 6),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 6 + var(--_pds-grid-visualization-grid-gap) * 6),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 7 + var(--_pds-grid-visualization-grid-gap) * 6),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 7 + var(--_pds-grid-visualization-grid-gap) * 6),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 7 + var(--_pds-grid-visualization-grid-gap) * 7),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 7 + var(--_pds-grid-visualization-grid-gap) * 7),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 8 + var(--_pds-grid-visualization-grid-gap) * 7),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 8 + var(--_pds-grid-visualization-grid-gap) * 7),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 8 + var(--_pds-grid-visualization-grid-gap) * 8),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 8 + var(--_pds-grid-visualization-grid-gap) * 8),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 9 + var(--_pds-grid-visualization-grid-gap) * 8),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 9 + var(--_pds-grid-visualization-grid-gap) * 8),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 9 + var(--_pds-grid-visualization-grid-gap) * 9),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 9 + var(--_pds-grid-visualization-grid-gap) * 9),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 10 + var(--_pds-grid-visualization-grid-gap) * 9),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 10 + var(--_pds-grid-visualization-grid-gap) * 9),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 10 + var(--_pds-grid-visualization-grid-gap) * 10),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 10 + var(--_pds-grid-visualization-grid-gap) * 10),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 11 + var(--_pds-grid-visualization-grid-gap) * 10),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 11 + var(--_pds-grid-visualization-grid-gap) * 10),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 11 + var(--_pds-grid-visualization-grid-gap) * 11),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 11 + var(--_pds-grid-visualization-grid-gap) * 11),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 12 + var(--_pds-grid-visualization-grid-gap) * 11),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 12 + var(--_pds-grid-visualization-grid-gap) * 11),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 12 + var(--_pds-grid-visualization-grid-gap) * 12),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 12 + var(--_pds-grid-visualization-grid-gap) * 12),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 13 + var(--_pds-grid-visualization-grid-gap) * 12),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 13 + var(--_pds-grid-visualization-grid-gap) * 12),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 13 + var(--_pds-grid-visualization-grid-gap) * 13),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 13 + var(--_pds-grid-visualization-grid-gap) * 13),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 14 + var(--_pds-grid-visualization-grid-gap) * 13),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 14 + var(--_pds-grid-visualization-grid-gap) * 13),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 14 + var(--_pds-grid-visualization-grid-gap) * 14),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 14 + var(--_pds-grid-visualization-grid-gap) * 14),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 15 + var(--_pds-grid-visualization-grid-gap) * 14),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 15 + var(--_pds-grid-visualization-grid-gap) * 14),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 15 + var(--_pds-grid-visualization-grid-gap) * 15),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 15 + var(--_pds-grid-visualization-grid-gap) * 15),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-column-width-sm) * 16 + var(--_pds-grid-visualization-grid-gap) * 15),
+  transparent calc(100% - var(--_pds-grid-visualization-safe-zone-sm)),
+  transparent calc(100% - var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-grid-gap)),
+  var(--_pds-grid-visualization-color) calc(100% - var(--_pds-grid-visualization-safe-zone-sm) + var(--_pds-grid-visualization-grid-gap)),
+  var(--_pds-grid-visualization-color) 100%;
+  --_pds-grid-visualization-safe-zone-2xl: var(--_pds-grid-wide-offset-2xl);
+  --_pds-grid-visualization-column-width-2xl: calc((100% - var(--_pds-grid-visualization-safe-zone-2xl) * 2 - var(--_pds-grid-visualization-grid-gap) * 15) / 16);
+  --_pds-grid-visualization-2xl: to right,
+  var(--_pds-grid-visualization-color) 0%,
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) - var(--_pds-grid-visualization-grid-gap)),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) - var(--_pds-grid-visualization-grid-gap)),
+  transparent var(--_pds-grid-visualization-safe-zone-2xl),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 0 + var(--_pds-grid-visualization-grid-gap) * 0),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 1 + var(--_pds-grid-visualization-grid-gap) * 0),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 1 + var(--_pds-grid-visualization-grid-gap) * 0),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 1 + var(--_pds-grid-visualization-grid-gap) * 1),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 1 + var(--_pds-grid-visualization-grid-gap) * 1),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 2 + var(--_pds-grid-visualization-grid-gap) * 1),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 2 + var(--_pds-grid-visualization-grid-gap) * 1),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 2 + var(--_pds-grid-visualization-grid-gap) * 2),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 2 + var(--_pds-grid-visualization-grid-gap) * 2),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 3 + var(--_pds-grid-visualization-grid-gap) * 2),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 3 + var(--_pds-grid-visualization-grid-gap) * 2),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 3 + var(--_pds-grid-visualization-grid-gap) * 3),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 3 + var(--_pds-grid-visualization-grid-gap) * 3),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 4 + var(--_pds-grid-visualization-grid-gap) * 3),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 4 + var(--_pds-grid-visualization-grid-gap) * 3),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 4 + var(--_pds-grid-visualization-grid-gap) * 4),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 4 + var(--_pds-grid-visualization-grid-gap) * 4),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 5 + var(--_pds-grid-visualization-grid-gap) * 4),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 5 + var(--_pds-grid-visualization-grid-gap) * 4),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 5 + var(--_pds-grid-visualization-grid-gap) * 5),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 5 + var(--_pds-grid-visualization-grid-gap) * 5),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 6 + var(--_pds-grid-visualization-grid-gap) * 5),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 6 + var(--_pds-grid-visualization-grid-gap) * 5),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 6 + var(--_pds-grid-visualization-grid-gap) * 6),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 6 + var(--_pds-grid-visualization-grid-gap) * 6),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 7 + var(--_pds-grid-visualization-grid-gap) * 6),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 7 + var(--_pds-grid-visualization-grid-gap) * 6),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 7 + var(--_pds-grid-visualization-grid-gap) * 7),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 7 + var(--_pds-grid-visualization-grid-gap) * 7),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 8 + var(--_pds-grid-visualization-grid-gap) * 7),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 8 + var(--_pds-grid-visualization-grid-gap) * 7),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 8 + var(--_pds-grid-visualization-grid-gap) * 8),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 8 + var(--_pds-grid-visualization-grid-gap) * 8),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 9 + var(--_pds-grid-visualization-grid-gap) * 8),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 9 + var(--_pds-grid-visualization-grid-gap) * 8),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 9 + var(--_pds-grid-visualization-grid-gap) * 9),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 9 + var(--_pds-grid-visualization-grid-gap) * 9),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 10 + var(--_pds-grid-visualization-grid-gap) * 9),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 10 + var(--_pds-grid-visualization-grid-gap) * 9),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 10 + var(--_pds-grid-visualization-grid-gap) * 10),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 10 + var(--_pds-grid-visualization-grid-gap) * 10),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 11 + var(--_pds-grid-visualization-grid-gap) * 10),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 11 + var(--_pds-grid-visualization-grid-gap) * 10),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 11 + var(--_pds-grid-visualization-grid-gap) * 11),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 11 + var(--_pds-grid-visualization-grid-gap) * 11),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 12 + var(--_pds-grid-visualization-grid-gap) * 11),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 12 + var(--_pds-grid-visualization-grid-gap) * 11),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 12 + var(--_pds-grid-visualization-grid-gap) * 12),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 12 + var(--_pds-grid-visualization-grid-gap) * 12),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 13 + var(--_pds-grid-visualization-grid-gap) * 12),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 13 + var(--_pds-grid-visualization-grid-gap) * 12),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 13 + var(--_pds-grid-visualization-grid-gap) * 13),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 13 + var(--_pds-grid-visualization-grid-gap) * 13),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 14 + var(--_pds-grid-visualization-grid-gap) * 13),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 14 + var(--_pds-grid-visualization-grid-gap) * 13),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 14 + var(--_pds-grid-visualization-grid-gap) * 14),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 14 + var(--_pds-grid-visualization-grid-gap) * 14),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 15 + var(--_pds-grid-visualization-grid-gap) * 14),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 15 + var(--_pds-grid-visualization-grid-gap) * 14),
+  transparent calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 15 + var(--_pds-grid-visualization-grid-gap) * 15),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 15 + var(--_pds-grid-visualization-grid-gap) * 15),
+  var(--_pds-grid-visualization-color) calc(var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-column-width-2xl) * 16 + var(--_pds-grid-visualization-grid-gap) * 15),
+  transparent calc(100% - var(--_pds-grid-visualization-safe-zone-2xl)),
+  transparent calc(100% - var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-grid-gap)),
+  var(--_pds-grid-visualization-color) calc(100% - var(--_pds-grid-visualization-safe-zone-2xl) + var(--_pds-grid-visualization-grid-gap)),
+  var(--_pds-grid-visualization-color) 100%;
+}
+
+@layer components {
+  ._pds-grid-visualization {
+    @apply bg-linear-(--_pds-grid-visualization-base) sm:bg-linear-(--_pds-grid-visualization-sm) 2xl:bg-linear-(--_pds-grid-visualization-2xl);
+  }
+}
+
+@theme {
+  --font-code: Menlo, Monaco, Consolas, 'Courier New', monospace;
+  --max-width-prose: 85ch;
+
+  --hljs-color: #383a42;
+  --hljs-background: #EEEFF266;
+  --hljs-comment-color: #717277;
+  --hljs-quote-color: #717277;
+  --hljs-doctag-color: #a626a4;
+  --hljs-keyword-color: #a626a4;
+  --hljs-formula-color: #a626a4;
+  --hljs-section-color: #e41300;
+  --hljs-name-color: #e41300;
+  --hljs-selector-tag-color: #e41300;
+  --hljs-deletion-color: #82071e;
+  --hljs-deletion-background: #ffebe9;
+  --hljs-subst-color: #e41300;
+  --hljs-literal-color: #007aad;
+  --hljs-string-color: #028500;
+  --hljs-regexp-color: #028500;
+  --hljs-addition-color: #116329;
+  --hljs-addition-background: #dafbe1;
+  --hljs-attribute-color: #028500;
+  --hljs-meta-string-color: #028500;
+  /*// TODO: Check color contrast*/
+  /*--hljs-built-in-color: #c18401;*/
+  --hljs-attr-color: #986801;
+  --hljs-variable-color: #986801;
+  --hljs-template-variable-color: #986801;
+  --hljs-type-color: #986801;
+  --hljs-selector-class-color: #986801;
+  --hljs-selector-attr-color: #986801;
+  --hljs-selector-pseudo-color: #986801;
+  --hljs-number-color: #986801;
+  --hljs-symbol-color: #1f66ff;
+  --hljs-bullet-color: #1f66ff;
+  --hljs-link-color: #1f66ff;
+  --hljs-meta-color: #1f66ff;
+  --hljs-selector-id-color: #1f66ff;
+  --hljs-title-color: #1f66ff;
+}
+
+@layer theme {
+  .light {
+    --hljs-color: #383a42;
+    --hljs-background: #EEEFF266;
+    --hljs-comment-color: #717277;
+    --hljs-quote-color: #717277;
+    --hljs-doctag-color: #a626a4;
+    --hljs-keyword-color: #a626a4;
+    --hljs-formula-color: #a626a4;
+    --hljs-section-color: #e41300;
+    --hljs-name-color: #e41300;
+    --hljs-selector-tag-color: #e41300;
+    --hljs-deletion-color: #82071e;
+    --hljs-deletion-background: #ffebe9;
+    --hljs-subst-color: #e41300;
+    --hljs-literal-color: #007aad;
+    --hljs-string-color: #028500;
+    --hljs-regexp-color: #028500;
+    --hljs-addition-color: #116329;
+    --hljs-addition-background: #dafbe1;
+    --hljs-attribute-color: #028500;
+    --hljs-meta-string-color: #028500;
+    /*--hljs-built-in-color: #c18401;*/
+    --hljs-attr-color: #986801;
+    --hljs-variable-color: #986801;
+    --hljs-template-variable-color: #986801;
+    --hljs-type-color: #986801;
+    --hljs-selector-class-color: #986801;
+    --hljs-selector-attr-color: #986801;
+    --hljs-selector-pseudo-color: #986801;
+    --hljs-number-color: #986801;
+    --hljs-symbol-color: #1f66ff;
+    --hljs-bullet-color: #1f66ff;
+    --hljs-link-color: #1f66ff;
+    --hljs-meta-color: #1f66ff;
+    --hljs-selector-id-color: #1f66ff;
+    --hljs-title-color: #1f66ff;
+  }
+  .dark {
+    --hljs-color: #abb2bf;
+    --hljs-background: #21222599;
+    --hljs-comment-color: #7b8495;
+    --hljs-quote-color: #7b8495;
+    --hljs-doctag-color: #c678dd;
+    --hljs-keyword-color: #c678dd;
+    --hljs-formula-color: #c678dd;
+    --hljs-section-color: #e06c75;
+    --hljs-name-color: #e06c75;
+    --hljs-selector-tag-color: #e06c75;
+    --hljs-deletion-color: #ffdcd7;
+    --hljs-deletion-background: #67060c;
+    --hljs-subst-color: #e06c75;
+    --hljs-literal-color: #56b6c2;
+    --hljs-string-color: #98c379;
+    --hljs-regexp-color: #98c379;
+    --hljs-addition-color: #aff5b4;
+    --hljs-addition-background: #033a16;
+    --hljs-attribute-color: #98c379;
+    --hljs-meta-string-color: #98c379;
+    /*--hljs-built-in-color: #e6c07b;*/
+    --hljs-attr-color: #d19a66;
+    --hljs-variable-color: #d19a66;
+    --hljs-template-variable-color: #d19a66;
+    --hljs-type-color: #d19a66;
+    --hljs-selector-class-color: #d19a66;
+    --hljs-selector-attr-color: #d19a66;
+    --hljs-selector-pseudo-color: #d19a66;
+    --hljs-number-color: #d19a66;
+    --hljs-symbol-color: #61aeee;
+    --hljs-bullet-color: #61aeee;
+    --hljs-link-color: #61aeee;
+    --hljs-meta-color: #61aeee;
+    --hljs-selector-id-color: #61aeee;
+    --hljs-title-color: #61aeee;
+  }
+  .auto {
+    @media (prefers-color-scheme: dark) {
+      --hljs-color: #abb2bf;
+      --hljs-background: #21222599;
+      --hljs-comment-color: #7b8495;
+      --hljs-quote-color: #7b8495;
+      --hljs-doctag-color: #c678dd;
+      --hljs-keyword-color: #c678dd;
+      --hljs-formula-color: #c678dd;
+      --hljs-section-color: #e06c75;
+      --hljs-name-color: #e06c75;
+      --hljs-selector-tag-color: #e06c75;
+      --hljs-deletion-color: #ffdcd7;
+      --hljs-deletion-background: #67060c;
+      --hljs-subst-color: #e06c75;
+      --hljs-literal-color: #56b6c2;
+      --hljs-string-color: #98c379;
+      --hljs-regexp-color: #98c379;
+      --hljs-addition-color: #aff5b4;
+      --hljs-addition-background: #033a16;
+      --hljs-attribute-color: #98c379;
+      --hljs-meta-string-color: #98c379;
+      /*--hljs-built-in-color: #e6c07b;*/
+      --hljs-attr-color: #d19a66;
+      --hljs-variable-color: #d19a66;
+      --hljs-template-variable-color: #d19a66;
+      --hljs-type-color: #d19a66;
+      --hljs-selector-class-color: #d19a66;
+      --hljs-selector-attr-color: #d19a66;
+      --hljs-selector-pseudo-color: #d19a66;
+      --hljs-number-color: #d19a66;
+      --hljs-symbol-color: #61aeee;
+      --hljs-bullet-color: #61aeee;
+      --hljs-link-color: #61aeee;
+      --hljs-meta-color: #61aeee;
+      --hljs-selector-id-color: #61aeee;
+      --hljs-title-color: #61aeee;
+    }
+  }
+}
 
 @layer base {
   body {
-    background: theme(colors.background-surface.DEFAULT);
-    color: theme(colors.primary.DEFAULT);
+    background: var(--color-surface);
+    color: var(--color-primary);
   }
 
   code {
     display: block;
-    padding: theme(spacing.static-md);
-    border-radius: theme(borderRadius.md);
+    padding: var(--spacing-static-md);
+    border-radius: var(--radius-md);
     overflow-x: auto;
-    background-color: theme(colors.hljsBackground.DEFAULT);
-    font-family: theme(fontFamily.code);
-    font-weight: theme(fontWeight.regular);
-    font-size: theme(fontSize.xs);
+    background-color: var(--hljs-background);
+    font-family: var(--font-code);
+    font-weight: var(--font-weight-normal);
+    font-size: var(--text-xs);
     line-height: 1.5;
-    color: theme(colors.hljsColor.DEFAULT);
+    color: var(--hljs-color);
     hyphens: none;
   }
 
   :not(pre) > code {
     display: inline;
     padding: 2px 6px;
-    border-radius: theme(borderRadius.sm);
+    border-radius: var(--radius-sm);
     overflow-x: visible;
-    font-weight: theme(fontWeight.bold);
-    color: theme(colors.contrast-high.DEFAULT);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-contrast-high);
   }
 
   p-text-list :is(p-text-list, p-text) {
@@ -36,145 +396,145 @@
   }
 
   p-inline-notification {
-    margin-block: theme(spacing.md);
+    margin-block: var(--spacing-fluid-md);
   }
 
   .deprecated {
-    color: theme(colors.notification-error.DEFAULT);
+    color: var(--color-error);
     text-transform: uppercase;
   }
 
   .hljs {
     /* color: theme(colors.hljsColor.DEFAULT);
     background: theme(colors.hljsBackground.DEFAULT); */
-    border-radius: theme(borderRadius.md);
+    border-radius: var(--radius-md);
   }
 
   .hljs-comment {
-    color: theme(colors.hljsComment.DEFAULT);
+    color: var(--hljs-comment-color);
   }
 
   .hljs-quote {
-    color: theme(colors.hljsQuote.DEFAULT);
+    color: var(--hljs-quote-color);
   }
 
   .hljs-doctag {
-    color: theme(colors.hljsDoctag.DEFAULT);
+    color: var(--hljs-doctag-color);
   }
 
   .hljs-keyword {
-    color: theme(colors.hljsKeyword.DEFAULT);
+    color: var(--hljs-keyword-color);
   }
 
   .hljs-formula {
-    color: theme(colors.hljsFormula.DEFAULT);
+    color: var(--hljs-formula-color);
   }
 
   .hljs-section {
-    color: theme(colors.hljsSection.DEFAULT);
+    color: var(--hljs-section-color);
   }
 
   .hljs-name {
-    color: theme(colors.hljsName.DEFAULT);
+    color: var(--hljs-name-color);
   }
 
   .hljs-selector-tag {
-    color: theme(colors.hljsSelectorTag.DEFAULT);
+    color: var(--hljs-selector-tag-color);
   }
 
   .hljs-deletion {
-    color: theme(colors.hljsDeletionColor.DEFAULT);
-    background: theme(colors.hljsDeletionBackground.DEFAULT);
+    color: var(--hljs-deletion-color);
+    background: var(--hljs-deletion-background);
   }
 
   .hljs-subst {
-    color: theme(colors.hljsSubst.DEFAULT);
+    color: var(--hljs-subst-color);
   }
 
   .hljs-literal {
-    color: theme(colors.hljsLiteral.DEFAULT);
+    color: var(--hljs-literal-color);
   }
 
   .hljs-string {
-    color: theme(colors.hljsString.DEFAULT);
+    color: var(--hljs-string-color);
   }
 
   .hljs-regexp {
-    color: theme(colors.hljsRegexp.DEFAULT);
+    color: var(--hljs-regexp-color);
   }
 
   .hljs-addition {
-    color: theme(colors.hljsAdditionColor.DEFAULT);
-    background: theme(colors.hljsAdditionBackground.DEFAULT);
+    color: var(--hljs-addition-color);
+    background: var(--hljs-addition-background);
   }
 
   .hljs-attribute {
-    color: theme(colors.hljsAttribute.DEFAULT);
+    color: var(--hljs-attribute-color);
   }
 
   .hljs-meta-string {
-    color: theme(colors.hljsMetaString.DEFAULT);
+    color: var(--hljs-meta-string-color);
   }
 
   .hljs-built_in {
-    color: theme(colors.hljsBuiltIn.DEFAULT);
+    color: var(--hljs-built-in-color);
   }
 
   .hljs-attr {
-    color: theme(colors.hljsAttr.DEFAULT);
+    color: var(--hljs-attr-color);
   }
 
   .hljs-variable {
-    color: theme(colors.hljsVariable.DEFAULT);
+    color: var(--hljs-variable-color);
   }
 
   .hljs-template-variable {
-    color: theme(colors.hljsTemplateVariable.DEFAULT);
+    color: var(--hljs-template-variable-color);
   }
 
   .hljs-type {
-    color: theme(colors.hljsType.DEFAULT);
+    color: var(--hljs-type-color);
   }
 
   .hljs-selector-class {
-    color: theme(colors.hljsSelectorClass.DEFAULT);
+    color: var(--hljs-selector-class-color);
   }
 
   .hljs-selector-attr {
-    color: theme(colors.hljsSelectorAttr.DEFAULT);
+    color: var(--hljs-selector-attr-color);
   }
 
   .hljs-selector-pseudo {
-    color: theme(colors.hljsSelectorPseudo.DEFAULT);
+    color: var(--hljs-selector-pseudo-color);
   }
 
   .hljs-number {
-    color: theme(colors.hljsNumber.DEFAULT);
+    color: var(--hljs-number-color);
   }
 
   .hljs-symbol {
-    color: theme(colors.hljsSymbol.DEFAULT);
+    color: var(--hljs-symbol-color);
   }
 
   .hljs-bullet {
-    color: theme(colors.hljsBullet.DEFAULT);
+    color: var(--hljs-bullet-color);
   }
 
   .hljs-link {
-    color: theme(colors.hljsLink.DEFAULT);
+    color: var(--hljs-link-color);
     text-decoration: underline;
   }
 
   .hljs-meta {
-    color: theme(colors.hljsMeta.DEFAULT);
+    color: var(--hljs-meta-color);
   }
 
   .hljs-selector-id {
-    color: theme(colors.hljsSelectorId.DEFAULT);
+    color: var(--hljs-selector-id-color);
   }
 
   .hljs-title {
-    color: theme(colors.hljsTitle.DEFAULT);
+    color: var(--hljs-title-color);
   }
 
   .hljs-emphasis {
@@ -182,7 +542,7 @@
   }
 
   .hljs-strong {
-    font-weight: theme(fontWeight.bold);
+    font-weight: var(--font-weight-bold);
   }
 }
 
