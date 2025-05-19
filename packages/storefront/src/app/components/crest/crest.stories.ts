@@ -25,7 +25,7 @@ export const crestStoryLink: Story<'p-crest'> = {
 
 export const crestStoryCustomPadding: Story<'p-crest'> = {
   state: {
-    properties: { href: 'https://porsche.com', style: { padding: '16px' }, aria: { 'aria-label': 'Porsche Homepage' } },
+    properties: { href: 'https://porsche.com', className: 'p-static-md', aria: { 'aria-label': 'Porsche Homepage' } },
   },
   generator: ({ properties } = {}) => [
     {

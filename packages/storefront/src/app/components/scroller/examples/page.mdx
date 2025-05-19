@@ -1,19 +1,19 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from "@/components/common/TableOfContents";
-import { Configurator } from "@/components/playground/Configurator";
-import {scrollerStory, scrollerStoryHeight, scrollerStorySize} from "@/app/components/scroller/scroller.stories";
-import {ComponentStory} from "@/components/playground/ComponentStory";
-import {ComponentExample} from "@/components/playground/ComponentExample";
-import {scrollerExample} from "@porsche-design-system/shared/examples";
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { Configurator } from '@/components/playground/Configurator';
+import { scrollerStory, scrollerStoryHeight } from '@/app/components/scroller/scroller.stories';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { scrollerExample } from '@porsche-design-system/shared/examples';
 
 export const metadata = {
   title: 'Scroller - Porsche Design System',
-  description: 'Discover detailed examples and insights of the Scroller component.'
-}
+  description: 'Discover detailed examples and insights of the Scroller component.',
+};
 
 # Scroller <ComponentStatus tagName="p-scroller"></ComponentStatus>
 
-<TableOfContents headings={['Height','Scroll indicator size','Scroll to position']} />
+<TableOfContents headings={['Height', 'Scroll indicator size', 'Scroll to position']} />
 
 ## Height
 
@@ -26,12 +26,6 @@ The `p-scroller` only takes care of the horizontal alignment. Spacing and custom
 consumer e.g. `white-space: nowrap` to avoid line breaks inside the elements.
 
 <ComponentStory story={scrollerStoryHeight} />
-
-## Scroll indicator size
-
-The size of the scroll indicator arrows depends on the `font-size` set onto the `p-scroller` component.
-
-<ComponentStory story={scrollerStorySize} />
 
 ## Scroll to position
 
