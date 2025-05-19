@@ -44,7 +44,7 @@ const enableDarkMode = async (page: Page, themeSelect: Locator): Promise<void> =
   await themeSelect.click();
   const dark = themeSelect.getByText('Dark', { exact: true });
   await dark.click();
-  await expect(page.locator('body')).toHaveClass('dark');
+  await expect(page.locator('html')).toHaveClass(/dark/);
 };
 
 test('should have successfully extracted :root styles', () => {

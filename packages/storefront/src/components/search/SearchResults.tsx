@@ -26,16 +26,16 @@ export const SearchResults = ({
   const { items } = useHits<AlgoliaRecord>({ ...props, transformItems } as any);
 
   return (
-    <div className="h-full overflow-auto flex flex-col gap-sm">
+    <div className="h-full overflow-auto flex flex-col gap-fluid-sm">
       {(items as unknown as AlgoliaResult[]).map(({ category, hits }) => (
         <section key={category}>
-          <PHeading size="small" tag="h2" className="mb-xs">
+          <PHeading size="small" tag="h2" className="mb-fluid-xs">
             {category}
           </PHeading>
-          <ol className="flex flex-col gap-sm">
+          <ol className="flex flex-col gap-fluid-sm">
             {hits.map((hit) => (
               <Link key={hit.url} href={hit.url} onClick={onResultClick}>
-                <li className="hit py-sm px-md bg-background-surface rounded-md">
+                <li className="hit py-fluid-sm px-fluid-md bg-surface rounded-md">
                   <p className="text-sm">
                     {hit.page} {hit.tab ? ` - ${hit.tab}` : ''}
                   </p>

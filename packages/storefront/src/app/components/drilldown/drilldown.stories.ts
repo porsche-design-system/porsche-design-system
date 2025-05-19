@@ -219,7 +219,7 @@ export const drilldownStoryCustomContent: Story<'p-drilldown'> = {
     properties: {
       open: false,
       activeIdentifier: 'id-1',
-      style: { '--p-drilldown-grid-template': 'repeat(5, auto) minmax(0, 1fr) / auto' } as CSSProperties,
+      className: '[--p-drilldown-grid-template:repeat(5,auto)_minmax(0,1fr)/auto]',
     },
   },
   generator: ({ properties } = {}) => [
@@ -261,10 +261,7 @@ export const drilldownStoryCustomContent: Story<'p-drilldown'> = {
               properties: {
                 identifier: 'id-1',
                 label: 'Motorsport',
-                style: {
-                  '--p-drilldown-grid-template': 'auto / repeat(2, minmax(0, 1fr))',
-                  '--p-drilldown-gap': '0px 16px',
-                } as CSSProperties,
+                className: '[--p-drilldown-grid-template:auto/repeat(2,minmax(0,1fr))] [--p-drilldown-gap:0px_16px]',
               },
               children: [
                 {
@@ -284,7 +281,7 @@ export const drilldownStoryCustomContent: Story<'p-drilldown'> = {
                         weight: 'semi-bold',
                         compact: true,
                         aspectRatio: { base: '1/1', s: '9/16' },
-                        style: { marginBottom: 'clamp(8px, 0.5vw + 6px, 16px)' } as CSSProperties,
+                        className: 'mb-fluid-sm',
                       },
                       children: [
                         {
@@ -338,7 +335,7 @@ export const drilldownStoryCustomContent: Story<'p-drilldown'> = {
                         weight: 'semi-bold',
                         compact: true,
                         aspectRatio: { base: '1/1', s: '9/16' },
-                        style: { marginBottom: 'clamp(8px, 0.5vw + 6px, 16px)' } as CSSProperties,
+                        className: 'mb-fluid-sm',
                       },
                       children: [
                         {
@@ -444,7 +441,7 @@ export const drilldownStoryCustomContent: Story<'p-drilldown'> = {
                 href: '#',
                 variant: 'secondary',
                 icon: 'external',
-                style: { alignSelf: 'end' } as CSSProperties,
+                className: 'self-end',
               },
               children: ['Some external anchor'],
             },

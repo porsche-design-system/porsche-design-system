@@ -1,0 +1,17 @@
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { shadowStory } from '@/app/tailwindcss/shadow/examples/drop-shadow.stories';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Tailwind: Shadow - Porsche Design System',
+  description: 'Learn about the Tailwind theme of our design language and how to use it.',
+};
+
+# Shadow
+
+<TableOfContents headings={[]} />
+
+The Porsche Design System Tailwind theme customizes the Tailwind variable `--shadow-*`, which affect multiple Tailwind
+classes including `.shadow-*` and others.
+
+<ComponentStory story={shadowStory} backgroundColor={'surface'} />

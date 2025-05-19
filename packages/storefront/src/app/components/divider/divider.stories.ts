@@ -21,10 +21,7 @@ export const dividerStoryVertical: Story<'p-divider'> = {
     {
       tag: 'div',
       properties: {
-        style: {
-          display: 'flex',
-          height: '100px',
-        },
+        className: 'flex h-[100px]',
       },
       children: [
         {
@@ -46,24 +43,13 @@ export const dividerStoryResponsive: Story<'p-divider'> = {
     {
       tag: 'div',
       properties: {
-        className: 'divider-vertical-responsive-container-example',
+        className: 'lg:flex lg:h-[150px]',
       },
       children: [
         {
           tag: 'p-divider',
           properties,
         },
-      ],
-    },
-    {
-      tag: 'style',
-      children: [
-        `@media (min-width: 1300px) {
-    .divider-vertical-responsive-container-example {
-        display: flex;
-        height: 100px;
-    }
-  }`,
       ],
     },
   ],

@@ -6,99 +6,187 @@ import type { ElementConfig, HTMLTagOrComponent } from '@/utils/generator/genera
 export const gridStory: Story<'p-grid'> = {
   generator: ({ properties } = {}) => [
     {
-      tag: 'p-grid',
-      properties,
-      children: [{ tag: 'p-grid-item', properties: { size: 12 }, children: ['12'] }],
-    },
-    {
-      tag: 'p-grid',
+      tag: 'div',
+      properties: {
+        className: 'grid gap-static-md',
+      },
       children: [
-        { tag: 'p-grid-item', properties: { size: 1 }, children: ['1'] },
-        { tag: 'p-grid-item', properties: { size: 11 }, children: ['11'] },
-      ],
-    },
-    {
-      tag: 'p-grid',
-      children: [
-        { tag: 'p-grid-item', properties: { size: 2 }, children: ['2'] },
-        { tag: 'p-grid-item', properties: { size: 10 }, children: ['10'] },
-      ],
-    },
-    {
-      tag: 'p-grid',
-      children: [
-        { tag: 'p-grid-item', properties: { size: 3 }, children: ['3'] },
-        { tag: 'p-grid-item', properties: { size: 9 }, children: ['9'] },
-      ],
-    },
-    {
-      tag: 'p-grid',
-      children: [
-        { tag: 'p-grid-item', properties: { size: 4 }, children: ['4'] },
-        { tag: 'p-grid-item', properties: { size: 8 }, children: ['8'] },
-      ],
-    },
-    {
-      tag: 'p-grid',
-      children: [
-        { tag: 'p-grid-item', properties: { size: 5 }, children: ['5'] },
-        { tag: 'p-grid-item', properties: { size: 7 }, children: ['7'] },
-      ],
-    },
-    {
-      tag: 'p-grid',
-      children: [
-        { tag: 'p-grid-item', properties: { size: 6 }, children: ['6'] },
-        { tag: 'p-grid-item', properties: { size: 6 }, children: ['6'] },
-      ],
-    },
-    {
-      tag: 'p-grid',
-      children: [
-        { tag: 'p-grid-item', properties: { size: 7 }, children: ['7'] },
-        { tag: 'p-grid-item', properties: { size: 5 }, children: ['5'] },
-      ],
-    },
-    {
-      tag: 'p-grid',
-      children: [
-        { tag: 'p-grid-item', properties: { size: 8 }, children: ['8'] },
-        { tag: 'p-grid-item', properties: { size: 4 }, children: ['4'] },
-      ],
-    },
-    {
-      tag: 'p-grid',
-      children: [
-        { tag: 'p-grid-item', properties: { size: 9 }, children: ['9'] },
-        { tag: 'p-grid-item', properties: { size: 3 }, children: ['3'] },
-      ],
-    },
-    {
-      tag: 'p-grid',
-      children: [
-        { tag: 'p-grid-item', properties: { size: 10 }, children: ['10'] },
-        { tag: 'p-grid-item', properties: { size: 2 }, children: ['2'] },
-      ],
-    },
-    {
-      tag: 'p-grid',
-      children: [
-        { tag: 'p-grid-item', properties: { size: 11 }, children: ['11'] },
-        { tag: 'p-grid-item', properties: { size: 1 }, children: ['1'] },
-      ],
-    },
-    {
-      tag: 'style',
-      children: [
-        `p-grid {
-    margin-top: 8px;
-  }
-        p-grid-item {
-    color: #010205;
-    text-align: center;
-    background: #87cefa;
-    background-clip: content-box;
-  }`,
+        {
+          tag: 'p-grid',
+          properties,
+          children: [
+            {
+              tag: 'p-grid-item',
+              properties: { className: 'bg-info-soft text-center prose-text-sm bg-clip-content', size: 12 },
+              children: ['12'],
+            },
+          ],
+        },
+        {
+          tag: 'p-grid',
+          children: [
+            {
+              tag: 'p-grid-item',
+              properties: { className: 'bg-info-soft text-center prose-text-sm bg-clip-content', size: 1 },
+              children: ['1'],
+            },
+            {
+              tag: 'p-grid-item',
+              properties: { className: 'bg-info-soft text-center prose-text-sm bg-clip-content', size: 11 },
+              children: ['11'],
+            },
+          ],
+        },
+        {
+          tag: 'p-grid',
+          children: [
+            {
+              tag: 'p-grid-item',
+              properties: { className: 'bg-info-soft text-center prose-text-sm bg-clip-content', size: 2 },
+              children: ['2'],
+            },
+            {
+              tag: 'p-grid-item',
+              properties: { className: 'bg-info-soft text-center prose-text-sm bg-clip-content', size: 10 },
+              children: ['10'],
+            },
+          ],
+        },
+        {
+          tag: 'p-grid',
+          children: [
+            {
+              tag: 'p-grid-item',
+              properties: { className: 'bg-info-soft text-center prose-text-sm bg-clip-content', size: 3 },
+              children: ['3'],
+            },
+            {
+              tag: 'p-grid-item',
+              properties: { className: 'bg-info-soft text-center prose-text-sm bg-clip-content', size: 9 },
+              children: ['9'],
+            },
+          ],
+        },
+        {
+          tag: 'p-grid',
+          children: [
+            {
+              tag: 'p-grid-item',
+              properties: { className: 'bg-info-soft text-center prose-text-sm bg-clip-content', size: 4 },
+              children: ['4'],
+            },
+            {
+              tag: 'p-grid-item',
+              properties: { className: 'bg-info-soft text-center prose-text-sm bg-clip-content', size: 8 },
+              children: ['8'],
+            },
+          ],
+        },
+        {
+          tag: 'p-grid',
+          children: [
+            {
+              tag: 'p-grid-item',
+              properties: { className: 'bg-info-soft text-center prose-text-sm bg-clip-content', size: 5 },
+              children: ['5'],
+            },
+            {
+              tag: 'p-grid-item',
+              properties: { className: 'bg-info-soft text-center prose-text-sm bg-clip-content', size: 7 },
+              children: ['7'],
+            },
+          ],
+        },
+        {
+          tag: 'p-grid',
+          children: [
+            {
+              tag: 'p-grid-item',
+              properties: { className: 'bg-info-soft text-center prose-text-sm bg-clip-content', size: 6 },
+              children: ['6'],
+            },
+            {
+              tag: 'p-grid-item',
+              properties: { className: 'bg-info-soft text-center prose-text-sm bg-clip-content', size: 6 },
+              children: ['6'],
+            },
+          ],
+        },
+        {
+          tag: 'p-grid',
+          children: [
+            {
+              tag: 'p-grid-item',
+              properties: { className: 'bg-info-soft text-center prose-text-sm bg-clip-content', size: 7 },
+              children: ['7'],
+            },
+            {
+              tag: 'p-grid-item',
+              properties: { className: 'bg-info-soft text-center prose-text-sm bg-clip-content', size: 5 },
+              children: ['5'],
+            },
+          ],
+        },
+        {
+          tag: 'p-grid',
+          children: [
+            {
+              tag: 'p-grid-item',
+              properties: { className: 'bg-info-soft text-center prose-text-sm bg-clip-content', size: 8 },
+              children: ['8'],
+            },
+            {
+              tag: 'p-grid-item',
+              properties: { className: 'bg-info-soft text-center prose-text-sm bg-clip-content', size: 4 },
+              children: ['4'],
+            },
+          ],
+        },
+        {
+          tag: 'p-grid',
+          children: [
+            {
+              tag: 'p-grid-item',
+              properties: { className: 'bg-info-soft text-center prose-text-sm bg-clip-content', size: 9 },
+              children: ['9'],
+            },
+            {
+              tag: 'p-grid-item',
+              properties: { className: 'bg-info-soft text-center prose-text-sm bg-clip-content', size: 3 },
+              children: ['3'],
+            },
+          ],
+        },
+        {
+          tag: 'p-grid',
+          children: [
+            {
+              tag: 'p-grid-item',
+              properties: { className: 'bg-info-soft text-center prose-text-sm bg-clip-content', size: 10 },
+              children: ['10'],
+            },
+            {
+              tag: 'p-grid-item',
+              properties: { className: 'bg-info-soft text-center prose-text-sm bg-clip-content', size: 2 },
+              children: ['2'],
+            },
+          ],
+        },
+        {
+          tag: 'p-grid',
+          children: [
+            {
+              tag: 'p-grid-item',
+              properties: { className: 'bg-info-soft text-center prose-text-sm bg-clip-content', size: 11 },
+              children: ['11'],
+            },
+            {
+              tag: 'p-grid-item',
+              properties: { className: 'bg-info-soft text-center prose-text-sm bg-clip-content', size: 1 },
+              children: ['1'],
+            },
+          ],
+        },
       ],
     },
   ],
@@ -106,7 +194,7 @@ export const gridStory: Story<'p-grid'> = {
 
 export const visualizeGridConfig: ElementConfig<HTMLTagOrComponent> = {
   tag: 'div',
-  properties: { style: { transform: 'translate3d(0, 0, 0)' } },
+  properties: { className: 'transform-[translate3d(0,0,0)]' },
   children: [
     {
       tag: 'div',

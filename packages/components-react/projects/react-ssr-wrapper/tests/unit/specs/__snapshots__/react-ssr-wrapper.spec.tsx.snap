@@ -12565,9 +12565,6 @@ input[type="text"] {
   opacity: 0;
   position: absolute;
 }
-@media(hover:hover) {
-}
-
     </style>
     <div
       class="root"

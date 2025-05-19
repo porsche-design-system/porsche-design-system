@@ -26,7 +26,7 @@ export const modalSlotStories: SlotStories<'p-modal'> = {
       name: 'Scrollable Content',
       generator: () => [
         { tag: 'p-text', children: ['Some Content Begin'] },
-        { tag: 'div', properties: { style: { width: '10px', height: '120vh', background: 'deeppink' } } },
+        { tag: 'div', properties: { className: 'w-[10px] h-[120vh] bg-[deeppink]' } },
         { tag: 'p-text', children: ['Some Content End'] },
       ],
     },
@@ -258,11 +258,8 @@ export const modalStoryCustomStyling: Story<'p-modal'> = {
       open: false,
       backdrop: 'shading',
       aria: { 'aria-label': 'Some Label' },
-      style: {
-        '--p-modal-width': 'clamp(276px, 45.25vw + 131px, 1000px)',
-        '--p-modal-spacing-top': '200px',
-        '--p-modal-spacing-bottom': '50px',
-      } as CSSProperties,
+      className:
+        '[--p-modal-width:clamp(276px,45.25vw+131px,1000px)] [--p-modal-spacing-top:200px] [--p-modal-spacing-bottom:50px]',
     },
   },
   generator: ({ properties } = {}) => [
@@ -296,8 +293,7 @@ export const modalStoryCustomStyling: Story<'p-modal'> = {
           tag: 'img',
           properties: {
             src: 'assets/porsche-992-carrera-s.jpg',
-            class: 'stretch-to-full-modal-width',
-            style: { maxWidth: 'none' },
+            className: 'stretch-to-full-modal-width max-w-none',
           },
         },
       ],
