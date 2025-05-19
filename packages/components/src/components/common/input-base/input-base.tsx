@@ -3,11 +3,12 @@ import type { Theme } from '../../../types';
 import { Label } from '../label/label';
 import { descriptionId } from '../label/label-utils';
 import { StateMessage, messageId } from '../state-message/state-message';
-import type {
+import {
   InputBaseBlurEventDetail,
   InputBaseChangeEventDetail,
   InputBaseInputEventDetail,
   InputBaseState,
+  InputBaseWheelEventDetail,
 } from './input-base-utils';
 
 // TODO refine in #3852
@@ -33,6 +34,7 @@ type InputBaseProps = {
   type: string;
   value?: string;
   step?: number;
+  onWheel?: (e: InputBaseWheelEventDetail) => void;
   onInput?: (e: InputBaseInputEventDetail) => void;
   onChange?: (e: InputBaseChangeEventDetail) => void;
   onBlur?: (e: InputBaseBlurEventDetail) => void;
@@ -64,6 +66,7 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
   autoComplete,
   name,
   onInput,
+  onWheel,
   onChange,
   onBlur,
   refElement,
@@ -90,6 +93,7 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
           onInput={onInput}
           onChange={onChange}
           onBlur={onBlur}
+          onWheel={onWheel}
           name={name}
           form={form}
           type={type}
