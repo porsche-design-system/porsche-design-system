@@ -22,7 +22,7 @@ function getNewVersion(): string {
     const out = execSync(`node ${scriptPath}`, { encoding: 'utf-8' });
     const match = out.match(/export NEW_VERSION=(\S+)/);
     if (match) return match[1];
-  } catch (err) {
+  } catch {
     console.error(chalk.red('Error: Unable to determine NEW_VERSION.'));
     process.exit(1);
   }
@@ -65,8 +65,7 @@ fs.writeFileSync(pkgJsJson, pkgJsText);
 console.log(chalk.yellow('Updated components dep in components-js/package.json'));
 
 // 4. Framework wrappers
-// biome-ignore lint/complexity/noForEach: <explanation>
-frameworks.forEach((framework) => {
+for (const framework of frameworks) {
   const wrapperDir = path.join(root, 'packages', `components-${framework}`, 'projects', `${framework}-wrapper`);
   run(`yarn version --no-git-tag-version --new-version "${NEW_VERSION}"`, wrapperDir);
   const pkgJson = path.join(wrapperDir, 'package.json');
@@ -74,7 +73,7 @@ frameworks.forEach((framework) => {
   text = text.replace(/("@porsche-design-system\/components-js": )(".*")/, `$1"${NEW_VERSION}"`);
   fs.writeFileSync(pkgJson, text);
   console.log(chalk.yellow(`Updated components-js dep in ${framework}-wrapper package.json`));
-});
+}
 
 // 5. UXPin wrapper
 const uxpinDir = path.join(root, 'packages', 'components-react', 'projects', 'uxpin-wrapper');
@@ -84,41 +83,38 @@ uxpinText = uxpinText.replace(/("@porsche-design-system\/components-js": )(".*")
 fs.writeFileSync(uxpinPkg, uxpinText);
 console.log(chalk.yellow('Updated components-js dep in uxpin-wrapper'));
 
-// 6. Nextjs and Remix and Storefront updates
-const sites = [
+// 6. Nextjs, Remix and Storefront updates
+const sites: [string, string][] = [
   ['nextjs', path.join(root, 'packages', 'components-react', 'projects', 'nextjs')],
   ['remix', path.join(root, 'packages', 'components-react', 'projects', 'remix')],
   ['storefront', path.join(root, 'packages', 'storefront')],
 ];
-// biome-ignore lint/complexity/noForEach: <explanation>
-sites.forEach(([name, dir]) => {
+for (const [name, dir] of sites) {
   const pkgJson = path.join(dir, 'package.json');
   let txt = fs.readFileSync(pkgJson, 'utf-8');
   txt = txt.replace(/("@porsche-design-system\/components-react": )(".*")/, `$1"${NEW_VERSION}"`);
   fs.writeFileSync(pkgJson, txt);
   console.log(chalk.yellow(`Updated components-react dep in ${name}`));
-});
+}
 
 // 7. Base project wrappers
-// biome-ignore lint/complexity/noForEach: <explanation>
-basePackages.forEach((pkgName) => {
+for (const pkgName of basePackages) {
   const dir = path.join(root, 'packages', pkgName);
   const pkgJson = path.join(dir, 'package.json');
   let txt = fs.readFileSync(pkgJson, 'utf-8');
   txt = txt.replace(new RegExp(`("@porsche-design-system\/${pkgName}": )(".*")`), `$1"${NEW_VERSION}"`);
   fs.writeFileSync(pkgJson, txt);
   console.log(chalk.yellow(`Updated ${pkgName} version`));
-});
+}
 
 // 8. JS base projects
-// biome-ignore lint/complexity/noForEach: <explanation>
-jsBase.forEach((pkgName) => {
+for (const pkgName of jsBase) {
   const dir = path.join(root, 'packages', pkgName);
   const pkgJson = path.join(dir, 'package.json');
   let txt = fs.readFileSync(pkgJson, 'utf-8');
   txt = txt.replace(/("@porsche-design-system\/components-js": )(".*")/, `$1"${NEW_VERSION}"`);
   fs.writeFileSync(pkgJson, txt);
   console.log(chalk.yellow(`Updated components-js in ${pkgName}`));
-});
+}
 
 console.log(chalk.green('All version updates complete.'));
