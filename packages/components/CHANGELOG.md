@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [3.28.0-rc.3] - 2025-05-19
+
 ### Added
 
 - `Styles`: theme for `tailwindcss` including utilities available under
