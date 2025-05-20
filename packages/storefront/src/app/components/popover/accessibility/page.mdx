@@ -8,7 +8,7 @@ export const metadata = {
 
 # Popover <ComponentStatus tagName="p-popover"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support','Tests']} />
+<TableOfContents headings={['Accessibility support', 'Tests']} />
 
 ## Accessibility support
 
@@ -32,6 +32,29 @@ export const metadata = {
 | ARIA                      | Usage                                                   |
 | ------------------------- | ------------------------------------------------------- |
 | `aria-expanded="BOOLEAN"` | Indicates that the popover element is displayed/hidden. |
+
+## Development considerations
+
+### Custom slotted button
+
+If `popover` is used with a custom slotted button, the `aria-expanded` attribute must be set and changed manually to its
+corresponding state `true | false`.
+
+#### Example:
+
+```html
+<p-popover>
+  <p-button-pure hide-label="true" slot="button" aria="{'aria-expanded': 'false'}">More information</p-button-pure>
+  Some additional content with some <a href="#">link</a>.
+</p-popover>
+
+<p-popover>
+  <p-tag slot="button">
+    <button type="button" aria-expanded="false">More information</button>
+  </p-tag>
+  Some additional content with some <a href="#">link</a>.
+</p-popover>
+```
 
 ## Tests
 
