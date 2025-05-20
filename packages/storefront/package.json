@@ -42,7 +42,6 @@
     "react-dom": "^19.0.0",
     "react-instantsearch": "^7.15.4",
     "react-instantsearch-nextjs": "^0.4.5",
-    "@stackblitz/sdk": "1.8.2"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",

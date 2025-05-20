@@ -21,25 +21,18 @@ export const getVanillaJsCode = (
   const metaTags = isFullConfig
     ? `  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Porsche Design System</title>\n`
+  <title>Porsche Design System</title>`
     : '  <title></title>';
 
-  const basePath = isReleasedPds(pdsVersion) ? 'node_modules' : '.';
-  const porscheDesignSystemScript = `<script src="${basePath}/@porsche-design-system/components-js/index.js"></script>`;
-  const scripts = isFullConfig ? `  ${porscheDesignSystemScript}\n` : '';
-
-  const globalStyle = isFullConfig ? getStackblitzGlobalStyle(theme) : '';
-
   return `<!doctype html>
-<html lang="en">
+<html lang="en" class="${theme}">
 <head>
-${metaTags}${scripts}${globalStyle}
+${metaTags}
 </head>
-<body>
+<body class="bg-base">
 
 ${markup ?? ''}
-
-<script>${isFullConfig ? '\n  porscheDesignSystem.load();\n\n' : ''}
+<script>
 ${[states, eventHandlers].filter(Boolean).join('\n')}
 </script>
 </body>

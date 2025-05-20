@@ -13,6 +13,7 @@ import rootPkg from '../../../../../package.json';
 import angularPkg from '../../../../components-angular/package.json';
 import jsPkg from '../../../../components-js/package.json';
 import vuePkg from '../../../../components-vue/package.json';
+import { openInStackblitz2 } from '../../../../stackblitz/scripts/openInStackblitz';
 
 const devDependenciesRoot = rootPkg.devDependencies;
 const angularDependencies = angularPkg.dependencies;
@@ -33,19 +34,7 @@ export const openInStackblitz = async (
   theme: StorefrontTheme,
   pdsVersion?: string
 ) => {
-  if (pdsVersion || isReleasedPds()) {
-    sdk.openProject(...stackblitzOptions[framework](markup, theme, undefined, pdsVersion));
-  } else {
-    // Use local bundle for non-released PDS versions
-    const porscheDesignSystemBundle = await getPorscheDesignSystemBundle(framework);
-    // Seems to be too many files for stackblitz to handle all styles thus we filter out vanilla-extract styles
-    const minifiedBundle = Object.fromEntries(
-      Object.entries(porscheDesignSystemBundle ?? {}).filter(([path]) => {
-        return !path.includes('styles/vanilla-extract');
-      })
-    );
-    sdk.openProject(...stackblitzOptions[framework](markup, theme, minifiedBundle, ''));
-  }
+  openInStackblitz2(markup);
 };
 
 const stackblitzOptions: Record<
@@ -107,30 +96,234 @@ window.porscheDesignSystem = porscheDesignSystem;`,
     {
       files: {
         ...porscheDesignSystemBundle,
-        'src/app/app.component.ts': porscheDesignSystemBundle ? convertImportPaths(markup, 'angular') : markup,
+        'src/app/app.component.ts': `import { ChangeDetectionStrategy, Component } from '@angular/core';
+
+@Component({
+  selector: 'porsche-design-system-app',
+  template: \`
+<h1 class="text-red-500">Test</h1>
+  \`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+})
+export class ExampleComponent {}`,
         'src/index.html': getAngularIndexHtml(theme),
         'src/main.ts': getAngularMainTs(theme, !!porscheDesignSystemBundle),
+        'src/styles.css': `@import "tailwindcss";
+@import "@porsche-design-system/components-angular/tailwindcss";`,
+        '.postcssrc.json': `{
+  "plugins": {
+    "@tailwindcss/postcss": {}
+  }
+}`,
+        'package.json': JSON.stringify(
+          {
+            name: 'porsche-design-system-angular-example',
+            private: true,
+            version: '0.0.0',
+            type: 'module',
+            scripts: {
+              ng: 'ng',
+              start: 'ng serve',
+              build: 'ng build',
+              watch: 'ng build --watch --configuration development',
+              test: 'ng test',
+            },
+            dependencies: {
+              '@angular/common': '^19.2.0',
+              '@angular/compiler': '^19.2.0',
+              '@angular/core': '^19.2.0',
+              '@angular/forms': '^19.2.0',
+              '@angular/platform-browser': '^19.2.0',
+              '@angular/platform-browser-dynamic': '^19.2.0',
+              '@angular/router': '^19.2.0',
+              '@porsche-design-system/components-angular': '^3.28.0-rc.3',
+              '@tailwindcss/postcss': '^4.1.7',
+              postcss: '^8.5.3',
+              rxjs: '~7.8.0',
+              tailwindcss: '^4.1.7',
+              tslib: '^2.3.0',
+              'zone.js': '~0.15.0',
+            },
+            devDependencies: {
+              '@angular-devkit/build-angular': '^19.2.12',
+              '@angular/cli': '^19.2.12',
+              '@angular/compiler-cli': '^19.2.0',
+              '@types/jasmine': '~5.1.0',
+              'jasmine-core': '~5.6.0',
+              karma: '~6.4.0',
+              'karma-chrome-launcher': '~3.2.0',
+              'karma-coverage': '~2.2.0',
+              'karma-jasmine': '~5.1.0',
+              'karma-jasmine-html-reporter': '~2.1.0',
+              typescript: '~5.7.2',
+            },
+          },
+          null,
+          2
+        ),
+        'angular.json': `{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "demo": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/demo",
+            "index": "src/index.html",
+            "browser": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "demo:build:production"
+            },
+            "development": {
+              "buildTarget": "demo:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  }
+}`,
+        'tsconfig.app.json': `/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "types": []
+  },
+  "files": [
+    "src/main.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ]
+}`,
+        'tsconfig.json': `/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "bundler",
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022"
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}`,
       },
-      template: 'angular-cli',
+      template: 'node',
       title: 'Porsche Design System angular sandbox',
       description: 'Porsche Design System component example',
-      dependencies: {
-        ...(isReleasedPds(pdsVersion) && {
-          '@porsche-design-system/components-angular':
-            pdsVersion || dependencies['@porsche-design-system/components-js'],
-        }),
-        '@angular/animations': angularDependencies['@angular/animations'],
-        '@angular/common': angularDependencies['@angular/common'],
-        '@angular/compiler': angularDependencies['@angular/compiler'],
-        '@angular/core': angularDependencies['@angular/core'],
-        '@angular/forms': angularDependencies['@angular/forms'],
-        '@angular/platform-browser': angularDependencies['@angular/platform-browser'],
-        '@angular/platform-browser-dynamic': angularDependencies['@angular/platform-browser-dynamic'],
-        '@angular/router': angularDependencies['@angular/router'],
-        rxjs: angularDependencies.rxjs,
-        tslib: angularDependencies.tslib,
-        'zone.js': angularDependencies['zone.js'],
-      },
+      // dependencies: {
+      //   ...(isReleasedPds(pdsVersion) && {
+      //     '@porsche-design-system/components-angular':
+      //       pdsVersion || dependencies['@porsche-design-system/components-js'],
+      //   }),
+      //   '@angular/animations': angularDependencies['@angular/animations'],
+      //   '@angular/common': angularDependencies['@angular/common'],
+      //   '@angular/compiler': angularDependencies['@angular/compiler'],
+      //   '@angular/core': angularDependencies['@angular/core'],
+      //   '@angular/forms': angularDependencies['@angular/forms'],
+      //   '@angular/platform-browser': angularDependencies['@angular/platform-browser'],
+      //   '@angular/platform-browser-dynamic': angularDependencies['@angular/platform-browser-dynamic'],
+      //   '@angular/router': angularDependencies['@angular/router'],
+      //   rxjs: angularDependencies.rxjs,
+      //   tslib: angularDependencies.tslib,
+      //   'zone.js': angularDependencies['zone.js'],
+      //   tailwindcss: devDependenciesRoot.tailwindcss,
+      //   '@tailwindcss/postcss': devDependenciesRoot['@tailwindcss/postcss'],
+      //   postcss: devDependenciesRoot.postcss,
+      // },
     },
     {
       openFile: 'app.component.html',
@@ -239,13 +432,10 @@ export const getVueIndexHTML = (theme: StorefrontTheme) => {
 export const getAngularMainTs = (theme: StorefrontTheme, isLocalPdsBundle: boolean = false): string => {
   return `import { bootstrapApplication } from '@angular/platform-browser';
 import { importProvidersFrom } from '@angular/core';
-import { PorscheDesignSystemModule } from '${isLocalPdsBundle ? './../' : ''}@porsche-design-system/components-angular';
 import { ExampleComponent } from './app/app.component';
 import 'zone.js';
 
-bootstrapApplication(ExampleComponent, {
-  providers: [importProvidersFrom(PorscheDesignSystemModule${theme !== 'light' ? `.load({ theme: '${theme}' })` : ''})],
-}).catch((err) => console.error(err));`;
+bootstrapApplication(ExampleComponent).catch((err) => console.error(err));`;
 };
 
 export const getAngularIndexHtml = (theme: StorefrontTheme): string => {

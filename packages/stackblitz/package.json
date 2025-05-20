@@ -1,0 +1,16 @@
+{
+  "name": "@porsche-design-system/stackblitz",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "scripts": {
+    "build:generateStackblitzBundle": "tsx --tsconfig tsconfig.node.json scripts/generateStackblitzBundle.ts"
+  },
+  "dependencies": {
+    "@stackblitz/sdk": "1.8.2"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}
