@@ -90,11 +90,7 @@ export class Popover {
     this.hasSlottedButton = hasNamedSlot(this.host, 'button');
 
     return (
-      <Host
-        onKeydown={(e: KeyboardEvent) =>
-          e.key === 'Escape' && this.open && (this.hasSlottedButton ? this.dismiss.emit() : this.button.focus())
-        }
-      >
+      <Host onKeyDown={this.onHostKeydown}>
         {this.hasSlottedButton ? (
           <div ref={(el) => (this.slottedButton = el)}>
             <slot name="button" />
@@ -158,6 +154,10 @@ export class Popover {
     if (this.open && isClickOutside(e, this.button || this.slottedButton) && isClickOutside(e, this.popover)) {
       this.open = false;
     }
+  };
+
+  private onHostKeydown = (e: KeyboardEvent): void => {
+    e.key === 'Escape' && this.open && (this.hasSlottedButton ? this.dismiss.emit() : this.button.focus());
   };
 
   private updatePosition = async (): Promise<void> => {

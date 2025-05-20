@@ -386,10 +386,13 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/(deprecationMap\[this\.props\.gradientColorScheme)/, '$1 as ScrollerGradientColorScheme');
       } else if (tagName === 'p-popover') {
         // only keep :host , button, .icon & .label styles
-        newFileContent = newFileContent.replace(
-          /getPopoverCss\(.+?\)/,
-          `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.icon {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '\$1\\n\$2\\n$3\\n$4')`
-        );
+        newFileContent = newFileContent
+          .replace(
+            /getPopoverCss\(.+?\)/,
+            `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.icon {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '\$1\\n\$2\\n$3\\n$4')`
+          )
+          .replace(/this\.props\.(hasSlottedButton)/g, '$1')
+          .replace(/(?:hasSlottedButton) =/g, 'const $&');
       } else if (tagName === 'p-tabs-bar') {
         newFileContent = newFileContent
           // get rid of left over
