@@ -15348,6 +15348,7 @@ exports[`should render dsr component for PPopover 1`] = `
   }
     </style>
     <button
+      aria-expanded="false"
       type="button"
     >
       <p-icon
