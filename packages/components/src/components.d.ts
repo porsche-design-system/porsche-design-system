@@ -1709,7 +1709,7 @@ export namespace Components {
         /**
           * If true, the popover is open.
          */
-        "open": boolean;
+        "open"?: boolean;
         /**
           * Adapts the popover color depending on the theme.
          */
