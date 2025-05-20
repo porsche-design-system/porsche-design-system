@@ -55,7 +55,7 @@ export class Popover {
   @Prop() public theme?: Theme = 'light';
 
   /** If true, the popover is open. */
-  @Prop({ mutable: true }) public open: boolean = false;
+  @Prop({ mutable: true }) public open?: boolean = false;
 
   /** Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
