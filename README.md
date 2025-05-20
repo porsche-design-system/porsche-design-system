@@ -426,8 +426,8 @@ yarn run-prepare-release-components -i prepatch -p alpha
 
 - `./packages/assets/CHANGELOG.md`
 
-1. Run `./docker.sh run-prepare-release-assets ${TARGET_VERSION}` (If something goes wrong, make sure to revert all
-   local changes before executing the task again.)
+1. Run `yarn run-prepare-release-assets ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local
+   changes before executing the task again.)
 
 ### Release
 
