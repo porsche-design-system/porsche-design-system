@@ -1,19 +1,11 @@
 #!/usr/bin/env node
-import * as chalk from 'chalk';
-import { execSync } from 'node:child_process';
-import { opts, PATHS, prepareRelease } from './prepare-release';
-
-const { log } = console;
-
-function run(cmd: string, cwd: string) {
-  log(chalk.blue(`$ ${cmd}`));
-  if (!opts.dryRun) execSync(cmd, { cwd, stdio: 'inherit' });
-}
+import { PATHS, prepareRelease, run } from './prepare-release';
 
 (function main() {
-  const NEW_VERSION = prepareRelease('prepare-release-components', PATHS.components);
-  // Update components version
-  run(`yarn version --no-git-tag-version --new-version "${NEW_VERSION}"`, PATHS.components);
-  // Update components-js wrapper version
-  run(`yarn version --no-git-tag-version --new-version "${NEW_VERSION}"`, PATHS.componentsJsWrapper);
+  prepareRelease('prepare-release-components', PATHS.components, (NEW_VERSION) => {
+    // Update components version
+    run(`yarn version --no-git-tag-version --new-version "${NEW_VERSION}"`, PATHS.components);
+    // Update components-js wrapper version
+    run(`yarn version --no-git-tag-version --new-version "${NEW_VERSION}"`, PATHS.componentsJsWrapper);
+  });
 })();

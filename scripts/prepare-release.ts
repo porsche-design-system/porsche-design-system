@@ -4,6 +4,7 @@ import * as path from 'node:path';
 import * as semver from 'semver';
 import * as chalk from 'chalk';
 import * as fg from 'fast-glob';
+import { execSync } from 'node:child_process';
 
 const { log, warn } = console;
 
@@ -36,12 +37,12 @@ const program = new Command()
   .showHelpAfterError();
 
 program.parse(process.argv);
-export const opts = program.opts<CLIOptions>();
+const opts = program.opts<CLIOptions>();
 
 /** --- Version Computation --- */
 export function getNewVersionFromArgs(path: string): VersionPair {
   const filePath = `${path}/package.json`;
-  // read current version
+
   let currentVersion: string;
   try {
     const pkg = JSON.parse(fs.readFileSync(filePath, 'utf8')) as { version?: string };
@@ -88,16 +89,15 @@ function writeJson(file: string, data: any, dryRun: boolean) {
   log(chalk.yellow(`Updated ${path.relative(PROJECT_ROOT, file)}`));
 }
 
+export function run(cmd: string, cwd: string) {
+  log(chalk.blue(`$ ${cmd}`));
+  if (!opts.dryRun) execSync(cmd, { cwd, stdio: 'inherit' });
+}
+
 export function updatePkgJson(currentVersion: string, newVersion: string, relPath: string, suffix: string = '') {
   const fullPath = path.join(PROJECT_ROOT, relPath);
   const json = JSON.parse(fs.readFileSync(fullPath, 'utf-8')) as Record<string, any>;
   let updated = false;
-
-  // ensure "@porsche-design-system/*": "0.0.0", are ignored
-  if (json.version === currentVersion) {
-    json.version = newVersion;
-    updated = true;
-  }
 
   for (const field of ['dependencies', 'devDependencies', 'peerDependencies'] as const) {
     const deps = json[field] as Record<string, string> | undefined;
@@ -105,7 +105,7 @@ export function updatePkgJson(currentVersion: string, newVersion: string, relPat
     for (const [name, ver] of Object.entries(deps)) {
       if (
         name.startsWith(`@porsche-design-system/${suffix}`) &&
-        (ver === currentVersion || ver.startsWith(`${currentVersion}-`))
+        (ver === currentVersion || ver.startsWith(`${currentVersion}-`)) // ensure "@porsche-design-system/*": "0.0.0", are ignored
       ) {
         deps[name] = newVersion;
         updated = true;
@@ -135,7 +135,6 @@ export function updateChangelog(pkgDir: string, version: string) {
  * Glob through workspace package.json files and apply version updates.
  */
 export function updateWorkspacePackages(currentVersion: string, newVersion: string) {
-  // Read workspace patterns or fallback
   const rootPkg = JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, 'package.json'), 'utf-8'));
   const workspaces: string[] = Array.isArray(rootPkg.workspaces)
     ? rootPkg.workspaces
@@ -152,7 +151,7 @@ export function updateWorkspacePackages(currentVersion: string, newVersion: stri
   }
 }
 
-export function prepareRelease(label: string, pkgDir: string): string {
+export function prepareRelease(label: string, pkgDir: string, callback: (version: string) => void): void {
   const DRY_RUN = Boolean(opts.dryRun);
   if (DRY_RUN) log(chalk.magenta(`*** DRY RUN: no changes for ${label} ***`));
   const { currentVersion: OLD_VERSION, newVersion: NEW_VERSION } = getNewVersionFromArgs(pkgDir);
@@ -161,6 +160,6 @@ export function prepareRelease(label: string, pkgDir: string): string {
   updateChangelog(pkgDir, NEW_VERSION);
   updateWorkspacePackages(OLD_VERSION, NEW_VERSION);
 
+  callback(NEW_VERSION);
   log(chalk.green(`[${label}]: All package.json files updated.`));
-  return NEW_VERSION;
 }
