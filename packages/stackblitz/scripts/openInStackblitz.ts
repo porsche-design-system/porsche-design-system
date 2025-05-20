@@ -13,7 +13,7 @@ const frameworkBundleMap: Record<Framework, ProjectFiles> = {
 };
 
 const frameworkComponentMap: Record<Framework, string> = {
-  'vanilla-js': 'index.js',
+  'vanilla-js': 'index.html',
   angular: 'src/app/app.component.ts',
   vue: 'main.js',
   react: 'index.js',
