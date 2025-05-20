@@ -135,12 +135,7 @@ function updateChangelog(pkgDir: string, version: string) {
 
 ### [${version}] - ${new Date().toISOString().split('T')[0]}`
   );
-  if (!DRY_RUN)
-    fs.writeFileSync(
-      changelogPath,
-      `${content}
-`
-    );
+  if (!DRY_RUN) fs.writeFileSync(changelogPath, `${content}`);
   log(chalk.yellow(`Updated CHANGELOG.md in ${path.relative(PROJECT_ROOT, pkgDir)}`));
 }
 
