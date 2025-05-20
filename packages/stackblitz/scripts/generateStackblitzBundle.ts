@@ -1,8 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-export const readSetup = () => {
-  const rootDir = path.resolve(__dirname, '../projects/vanilla-js');
+export const readSetup = (dir: string) => {
+  const rootDir = path.resolve(__dirname, dir);
   const files: Record<string, string> = {};
 
   const readDirectory = (dir: string, relativePath = '') => {
@@ -13,7 +13,12 @@ export const readSetup = () => {
       const entryRelativePath = path.join(relativePath, entry.name);
 
       // Skip anything inside node_modules
-      if (entry.name === 'node_modules' || entry.name === 'yarn.lock') {
+      if (
+        entry.name === './node_modules' ||
+        entry.name === 'node_modules' ||
+        entry.name === 'yarn.lock' ||
+        entry.name === '.angular'
+      ) {
         continue;
       }
 
@@ -31,7 +36,8 @@ export const readSetup = () => {
 };
 
 export const generateStackblitzBundle = (outputFilePath: string) => {
-  const bundle = readSetup();
+  const bundleVanillaJs = readSetup('../projects/vanilla-js');
+  const bundleAngular = readSetup('../projects/angular');
 
   const outputDir = path.dirname(outputFilePath);
   if (!fs.existsSync(outputDir)) {
@@ -39,7 +45,8 @@ export const generateStackblitzBundle = (outputFilePath: string) => {
   }
 
   // Generate valid TypeScript object file
-  const tsContent = 'export const vanillaJsBundle: Record<string, string> = ' + JSON.stringify(bundle, null, 2) + ';\n';
+  const tsContent = `export const vanillaJsBundle: Record<string, string> = ${JSON.stringify(bundleVanillaJs, null, 2)};
+export const angularBundle: Record<string, string> = ${JSON.stringify(bundleAngular, null, 2)};\n`;
 
   fs.writeFileSync(outputFilePath, tsContent, 'utf-8');
   console.log(`Bundle written to ${outputFilePath}`);

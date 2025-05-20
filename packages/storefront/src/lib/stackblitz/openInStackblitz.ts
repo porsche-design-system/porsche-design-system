@@ -28,7 +28,7 @@ export const openInStackblitz = async (
   theme: StorefrontTheme,
   pdsVersion?: string
 ) => {
-  openInStackblitz2(markup);
+  openInStackblitz2(framework, markup, theme);
 };
 
 // const stackblitzOptions: Record<
