@@ -37,8 +37,10 @@ export const metadata = {
 
 ### Custom slotted button
 
-If `popover` is used with a custom slotted button, the `aria-expanded` attribute must be set and changed manually to its
-corresponding state `true | false`.
+If `popover` is used with a custom slotted button, the following considerations must be taken into account:
+
+1. The `aria-expanded` attribute must be set and changed manually to its corresponding state `true | false`.
+2. The `focus` must be set to the slotted button element when the popover is closed and the `dsimissed`event is fired.
 
 #### Example:
 
@@ -54,6 +56,10 @@ corresponding state `true | false`.
   </p-tag>
   Some additional content with some <a href="#">link</a>.
 </p-popover>
+
+<script>
+  document.querySelector('p-popover').addEventListener('dismiss', () => document.querySelector('button').focus());
+</script>
 ```
 
 ## Tests
