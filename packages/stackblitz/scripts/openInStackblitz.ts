@@ -3,19 +3,19 @@ import type { StorefrontTheme } from '@porsche-design-system/storefront/src/mode
 import sdk from '@stackblitz/sdk';
 import type { ProjectFiles } from '@stackblitz/sdk/typings/interfaces';
 import type { Framework } from 'shared/src';
-import { angularBundle, reactBundle, vanillaJsBundle } from '../generated/bundle';
+import { angularBundle, reactBundle, vanillaJsBundle, vueBundle } from '../generated/bundle';
 
 const frameworkBundleMap: Record<Framework, ProjectFiles> = {
   'vanilla-js': vanillaJsBundle,
   angular: angularBundle,
-  vue: { file: '' },
+  vue: vueBundle,
   react: reactBundle,
 };
 
 const frameworkComponentMap: Record<Framework, string> = {
   'vanilla-js': 'index.html',
   angular: 'src/app/app.component.ts',
-  vue: 'main.js',
+  vue: 'src/components/Example.vue',
   react: 'src/Example.tsx',
 };
 
@@ -43,6 +43,18 @@ export const openInStackblitz2 = (framework: Framework, markup: string, theme: S
           ),
           'src/main.tsx': frameworkBundleMap[framework]['src/main.tsx'].replace(
             /(<PorscheDesignSystemProvider theme=\{')auto('}>)/,
+            `$1${theme}$2`
+          ),
+        };
+      case 'vue':
+        return {
+          ...frameworkBundleMap[framework],
+          'index.html': frameworkBundleMap[framework]['index.html'].replace(
+            '<html lang="en">',
+            `<html lang="en" class="${theme}">`
+          ),
+          'src/App.vue': frameworkBundleMap[framework]['src/App.vue'].replace(
+            /(<PorscheDesignSystemProvider :theme="')auto('">)/,
             `$1${theme}$2`
           ),
         };

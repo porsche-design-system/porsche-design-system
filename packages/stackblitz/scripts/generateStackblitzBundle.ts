@@ -39,6 +39,7 @@ export const generateStackblitzBundle = (outputFilePath: string) => {
   const bundleVanillaJs = readSetup('../projects/vanilla-js');
   const bundleAngular = readSetup('../projects/angular');
   const bundleReact = readSetup('../projects/react');
+  const bundleVue = readSetup('../projects/vue');
 
   const outputDir = path.dirname(outputFilePath);
   if (!fs.existsSync(outputDir)) {
@@ -48,7 +49,8 @@ export const generateStackblitzBundle = (outputFilePath: string) => {
   // Generate valid TypeScript object file
   const tsContent = `export const vanillaJsBundle: Record<string, string> = ${JSON.stringify(bundleVanillaJs, null, 2)};
 export const angularBundle: Record<string, string> = ${JSON.stringify(bundleAngular, null, 2)};
-export const reactBundle: Record<string, string> = ${JSON.stringify(bundleReact, null, 2)};\n`;
+export const reactBundle: Record<string, string> = ${JSON.stringify(bundleReact, null, 2)};
+export const vueBundle: Record<string, string> = ${JSON.stringify(bundleVue, null, 2)};`;
 
   fs.writeFileSync(outputFilePath, tsContent, 'utf-8');
   console.log(`Bundle written to ${outputFilePath}`);

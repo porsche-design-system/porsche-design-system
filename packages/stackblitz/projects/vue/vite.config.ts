@@ -6,8 +6,8 @@ import {
   getInitialStyles,
   getLoaderScript,
   getMetaTagsAndIconLinks,
-} from '@porsche-design-system/components-react/partials';
-import react from '@vitejs/plugin-react';
+} from '@porsche-design-system/components-vue/partials';
+import vue from '@vitejs/plugin-vue';
 import { defineConfig } from 'vite';
 
 const REGEX_HEAD = /<\/head>/;
@@ -35,5 +35,5 @@ const transformIndexHtmlPlugin = () => {
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [transformIndexHtmlPlugin(), react()],
+  plugins: [transformIndexHtmlPlugin(), vue()],
 });
