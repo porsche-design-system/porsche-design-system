@@ -1,22 +1,19 @@
-#!/usr/bin/env node
-
 import { Command, Option } from 'commander';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as semver from 'semver';
 import * as chalk from 'chalk';
 import * as fg from 'fast-glob';
-import { execSync } from 'node:child_process';
 
 const { log, warn } = console;
 
 const PROJECT_ROOT = process.cwd();
-const PACKAGE_JSON_PATH = path.join(PROJECT_ROOT, 'packages', 'components', 'package.json');
 const PRERELEASE_TAGS = ['rc', 'alpha', 'beta'] as const;
 const INCREMENT_OPERATIONS = [...semver.RELEASE_TYPES, 'release'] as const;
 const PRE_RELEASE_TYPES = ['premajor', 'preminor', 'prepatch', 'prerelease'] as const;
 const DEFAULT_PRE_RELEASE_TAG: PrereleaseTag = 'rc';
-const PATHS = {
+export const PATHS = {
+  assets: path.join(PROJECT_ROOT, 'packages', 'assets'),
   components: path.join(PROJECT_ROOT, 'packages', 'components'),
   componentsJsWrapper: path.join(PROJECT_ROOT, 'packages', 'components-js', 'projects', 'components-wrapper'),
 };
@@ -25,6 +22,11 @@ type PrereleaseTag = (typeof PRERELEASE_TAGS)[number];
 type IncrementOp = (typeof INCREMENT_OPERATIONS)[number];
 type PreOps = (typeof PRE_RELEASE_TYPES)[number];
 type VersionPair = { currentVersion: string; newVersion: string };
+export type CLIOptions = {
+  increment: IncrementOp;
+  prerelease: PrereleaseTag;
+  dryRun?: boolean;
+};
 
 /** --- CLI Setup --- */
 const program = new Command()
@@ -34,24 +36,18 @@ const program = new Command()
   .showHelpAfterError();
 
 program.parse(process.argv);
-const opts = program.opts<{
-  increment: IncrementOp;
-  prerelease: PrereleaseTag;
-  dryRun?: boolean;
-}>();
+export const opts = program.opts<CLIOptions>();
 
-const DRY_RUN = Boolean(opts.dryRun);
-if (DRY_RUN) log(chalk.magenta('*** DRY RUN: no changes will be made ***'));
-
-// --- Version Computation ---
-function getNewVersionFromArgs(): VersionPair {
+/** --- Version Computation --- */
+export function getNewVersionFromArgs(path: string): VersionPair {
+  const filePath = `${path}/package.json`;
   // read current version
   let currentVersion: string;
   try {
-    const pkg = JSON.parse(fs.readFileSync(PACKAGE_JSON_PATH, 'utf8')) as { version?: string };
+    const pkg = JSON.parse(fs.readFileSync(filePath, 'utf8')) as { version?: string };
     currentVersion = pkg.version ?? '';
   } catch (err) {
-    throw new Error(`Failed to read package.json at ${PACKAGE_JSON_PATH}: ${err}`);
+    throw new Error(`Failed to read package.json at ${filePath}: ${err}`);
   }
   if (!semver.valid(currentVersion)) {
     throw new Error(`Invalid current version: ${currentVersion}`);
@@ -81,13 +77,8 @@ function getNewVersionFromArgs(): VersionPair {
   return { currentVersion, newVersion };
 }
 
-function run(cmd: string, cwd: string) {
-  log(chalk.blue(`$ ${cmd}`));
-  if (!DRY_RUN) execSync(cmd, { cwd, stdio: 'inherit' });
-}
-
-function writeJson(file: string, data: any) {
-  if (!DRY_RUN) {
+function writeJson(file: string, data: any, dryRun: boolean) {
+  if (!dryRun) {
     fs.writeFileSync(
       file,
       `${JSON.stringify(data, null, 2)}
@@ -97,11 +88,12 @@ function writeJson(file: string, data: any) {
   log(chalk.yellow(`Updated ${path.relative(PROJECT_ROOT, file)}`));
 }
 
-function updatePkgJson(currentVersion: string, newVersion: string, relPath: string) {
+export function updatePkgJson(currentVersion: string, newVersion: string, relPath: string, suffix: string = '') {
   const fullPath = path.join(PROJECT_ROOT, relPath);
   const json = JSON.parse(fs.readFileSync(fullPath, 'utf-8')) as Record<string, any>;
   let updated = false;
 
+  // ensure "@porsche-design-system/*": "0.0.0", are ignored
   if (json.version === currentVersion) {
     json.version = newVersion;
     updated = true;
@@ -112,7 +104,7 @@ function updatePkgJson(currentVersion: string, newVersion: string, relPath: stri
     if (!deps) continue;
     for (const [name, ver] of Object.entries(deps)) {
       if (
-        name.startsWith('@porsche-design-system/') &&
+        name.startsWith(`@porsche-design-system/${suffix}`) &&
         (ver === currentVersion || ver.startsWith(`${currentVersion}-`))
       ) {
         deps[name] = newVersion;
@@ -122,11 +114,11 @@ function updatePkgJson(currentVersion: string, newVersion: string, relPath: stri
   }
 
   if (updated) {
-    writeJson(fullPath, json);
+    writeJson(fullPath, json, opts.dryRun);
   }
 }
 
-function updateChangelog(pkgDir: string, version: string) {
+export function updateChangelog(pkgDir: string, version: string) {
   const changelogPath = path.join(pkgDir, 'CHANGELOG.md');
   let content = fs.readFileSync(changelogPath, 'utf-8');
   content = content.replace(
@@ -135,35 +127,40 @@ function updateChangelog(pkgDir: string, version: string) {
 
 ### [${version}] - ${new Date().toISOString().split('T')[0]}`
   );
-  if (!DRY_RUN) fs.writeFileSync(changelogPath, `${content}`);
+  if (!opts.dryRun) fs.writeFileSync(changelogPath, `${content}`);
   log(chalk.yellow(`Updated CHANGELOG.md in ${path.relative(PROJECT_ROOT, pkgDir)}`));
 }
 
-(async function main() {
-  const { currentVersion: OLD_VERSION, newVersion: NEW_VERSION } = getNewVersionFromArgs();
-
-  log(chalk.green(`Bumping from ${OLD_VERSION} to ${NEW_VERSION}`));
-  // 1. Update components version
-  run(`yarn version --no-git-tag-version --new-version "${NEW_VERSION}"`, PATHS.components);
-  // 2. Update components-js wrapper version
-  run(`yarn version --no-git-tag-version --new-version "${NEW_VERSION}"`, PATHS.componentsJsWrapper);
-  // 3. Update changelog
-  updateChangelog(PATHS.components, NEW_VERSION);
-
-  // 4. Glob and update all workspace package.json files
+/**
+ * Glob through workspace package.json files and apply version updates.
+ */
+export function updateWorkspacePackages(currentVersion: string, newVersion: string) {
+  // Read workspace patterns or fallback
   const rootPkg = JSON.parse(fs.readFileSync(path.join(PROJECT_ROOT, 'package.json'), 'utf-8'));
   const workspaces: string[] = Array.isArray(rootPkg.workspaces)
     ? rootPkg.workspaces
     : Array.isArray(rootPkg.workspaces?.packages)
       ? rootPkg.workspaces.packages
       : ['packages/*'];
+
   const includeGlobs = workspaces.map((ws) => `${ws.replace(/\*$/, '')}/**/package.json`);
   const ignoreGlobs = ['**/node_modules/**'];
   const entries = fg.sync(includeGlobs, { cwd: PROJECT_ROOT, ignore: ignoreGlobs });
 
   for (const rel of entries) {
-    updatePkgJson(OLD_VERSION, NEW_VERSION, rel);
+    updatePkgJson(currentVersion, newVersion, rel);
   }
+}
 
-  log(chalk.green('All package.json files updated.'));
-})();
+export function prepareRelease(label: string, pkgDir: string): string {
+  const DRY_RUN = Boolean(opts.dryRun);
+  if (DRY_RUN) log(chalk.magenta(`*** DRY RUN: no changes for ${label} ***`));
+  const { currentVersion: OLD_VERSION, newVersion: NEW_VERSION } = getNewVersionFromArgs(pkgDir);
+  log(chalk.green(`[${label}]: Bumping from ${OLD_VERSION} to ${NEW_VERSION}`));
+
+  updateChangelog(pkgDir, NEW_VERSION);
+  updateWorkspacePackages(OLD_VERSION, NEW_VERSION);
+
+  log(chalk.green(`[${label}]: All package.json files updated.`));
+  return NEW_VERSION;
+}

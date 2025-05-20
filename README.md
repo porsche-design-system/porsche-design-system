@@ -322,13 +322,14 @@ everything works under real conditions.
 
 - `./packages/components/CHANGELOG.md`
 
-1. Run `./docker.sh run-prepare-release-components -i {INCREMENT_LEVEL} -p {PREFIX_TAG}` (If something goes wrong, make
-   sure to revert all local changes before executing the task again.)
+1. Run `yarn run-prepare-release-components -i {INCREMENT_LEVEL} -p {PREFIX_TAG}` (If something goes wrong, make sure to
+   revert all local changes before executing the task again.)
 
 - `-i {INCREMENT_LEVEL}`: Increment a version by the specified level (`major`, `minor`, `patch`, `premajor`, `preminor`,
   `prepatch`, `prerelease`, or `release`). Default level is `patch`.
 - `-p {PREFIX_TAG}`: Identifier to be used to prefix `premajor`, `preminor`, `prepatch` or `prerelease` version
   increments (`rc`, `alpha`, or `beta`). Default prefix is `rc`.
+- `--dry-run`: Perform a dry run without making changes.
 
 ```bash
 # Increment the patch version.
@@ -425,8 +426,8 @@ yarn run-prepare-release-components -i prepatch -p alpha
 
 - `./packages/assets/CHANGELOG.md`
 
-1. Run `yarn run-prepare-release-assets ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local
-   changes before executing the task again.)
+1. Run `./docker.sh run-prepare-release-assets ${TARGET_VERSION}` (If something goes wrong, make sure to revert all
+   local changes before executing the task again.)
 
 ### Release
 
