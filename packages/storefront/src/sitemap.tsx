@@ -19,7 +19,6 @@ const getComponents = (): Routes => {
     'p-grid',
     'p-marque',
     'p-pagination',
-    'p-popover',
     'p-switch',
     'p-sheet',
     'p-tag-dismissible',
