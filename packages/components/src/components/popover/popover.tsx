@@ -168,7 +168,8 @@ export class Popover {
         shift({
           padding: POPOVER_SAFE_ZONE,
           limiter: limitShift({
-            offset: ({ rects }) => (this.slottedButton ? 0 : rects.reference.width),
+            // ensures that the popover is placed to the right if the button is smaller than 34px. This fixes correct placement of arrow.
+            offset: ({ rects }) => (rects.reference.width > 33 ? 0 : rects.reference.width),
           }),
         }),
         flip({
