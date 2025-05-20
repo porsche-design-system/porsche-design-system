@@ -332,45 +332,45 @@ everything works under real conditions.
 
 ```bash
 # Increment the patch version.
-./docker.sh run-prepare-release-components -i patch
+yarn run-prepare-release-components -i patch
 # Bumping version from 1.2.3 to 1.2.4
 
 # Increment the minor version.
-./docker.sh run-prepare-release-components -i minor
+yarn run-prepare-release-components -i minor
 # Bumping version from 1.2.3 to 1.3.0
 
 # Increment the major version.
-./docker.sh run-prepare-release-components -i major
+yarn run-prepare-release-components -i major
 # Bumping version from 1.2.3 to 2.0.0
 
 # Increment the patch version, appending a prefix tag (`-rc.0`).
-./docker.sh run-prepare-release-components -i prepatch
+yarn run-prepare-release-components -i prepatch
 # Bumping version from 1.2.3 to 1.2.4-rc.0
 # Bumping version from 1.2.3-rc.0 to 1.2.4-rc.0
 
 # Increment the minor version, appending a prefix tag (`-rc.0`).
-./docker.sh run-prepare-release-components -i preminor
+yarn run-prepare-release-components -i preminor
 # Bumping version from 1.2.3 to 1.3.0-rc.0
 # Bumping version from 1.2.3-rc.0 to 1.3.0-rc.0
 
 # Increment the major version, appending a prefix tag (`-rc.0`).
-./docker.sh run-prepare-release-components -i premajor
+yarn run-prepare-release-components -i premajor
 # Bumping version from 1.2.3 to 2.0.0-rc.0
 # Bumping version from 1.2.3-rc.0 to 2.0.0-rc.0
 
 # Increment the patch version, appending or incrementing a prefix tag (`-rc.0`, `-rc.1`).
-./docker.sh run-prepare-release-components -i prerelease
+yarn run-prepare-release-components -i prerelease
 # Bumping version from 1.2.3 to 1.2.4-rc.0
 # Bumping version from 1.2.3-rc.0 to 1.2.3-rc.1
 # Bumping version from 1.2.3-alpha.0 to 1.2.3-rc.0 (provide `-p alpha` to increment to 1.2.3-alpha.1)
 
 # Remove the prefix tag (invalid if no prefix tag exists).
-./docker.sh run-prepare-release-components -i release
+yarn run-prepare-release-components -i release
 # Bumping version from 1.2.3-rc.0 to 1.2.3
 # Bumping version from 1.2.3 is invalid
 
 # Increment the patch version, appending the provided prefix tag (`-alpha.0`).
-./docker.sh run-prepare-release-components -i prepatch -p alpha
+yarn run-prepare-release-components -i prepatch -p alpha
 # Bumping version from 1.2.3 to 1.2.4-alpha.0
 # Bumping version from 1.2.3-rc.0 to 1.2.4-alpha.0
 ```
@@ -425,8 +425,8 @@ everything works under real conditions.
 
 - `./packages/assets/CHANGELOG.md`
 
-1. Run `./docker.sh run-prepare-release-assets ${TARGET_VERSION}` (If something goes wrong, make sure to revert all
-   local changes before executing the task again.)
+1. Run `yarn run-prepare-release-assets ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local
+   changes before executing the task again.)
 
 ### Release
 
