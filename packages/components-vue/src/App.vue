@@ -7,7 +7,7 @@ import { routes } from './router';
 
 const router = useRouter();
 const route = ref<string>('');
-const theme = ref<Theme>('dark');
+const theme = ref<Theme>('light');
 const themes: Theme[] = ['light', 'dark', 'auto'];
 const isWithinIFrame: boolean = window.location !== window.parent.location;
 
