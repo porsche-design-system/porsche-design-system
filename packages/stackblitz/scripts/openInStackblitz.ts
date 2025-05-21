@@ -65,13 +65,18 @@ export const openInStackblitz = (framework: Framework, markup: string, theme: St
     }
   };
 
-  sdk.openProject({
-    files: {
-      ...getFrameworkFiles(framework),
-      [frameworkComponentMap[framework]]: markup,
+  sdk.openProject(
+    {
+      files: {
+        ...getFrameworkFiles(framework),
+        [frameworkComponentMap[framework]]: markup,
+      },
+      template: 'node',
+      title: 'Porsche Design System sandbox',
+      description: 'Porsche Design System component example',
     },
-    template: 'node',
-    title: 'Porsche Design System sandbox',
-    description: 'Porsche Design System component example',
-  });
+    {
+      openFile: frameworkComponentMap[framework],
+    }
+  );
 };
