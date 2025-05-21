@@ -13,6 +13,7 @@ const frameworks: Framework[] = ['vanilla-js', 'react'];
 
 for (const framework of frameworks) {
   test(`should have working stackBlitz button for framework: ${framework}`, async ({ browser }) => {
+    test.setTimeout(120000);
     const context = await browser.newContext({
       // bypass captcha in headless chrome
       userAgent:
@@ -39,7 +40,7 @@ for (const framework of frameworks) {
     // Wait for the iframe to appear on the parent page
     await stackBlitzPage.waitForSelector('#PreviewContentWrapper iframe', {
       state: 'attached', // Ensures the iframe is attached to the DOM
-      timeout: 90000, // Adjust timeout as needed
+      timeout: 120000, // Adjust timeout as needed
     });
 
     const iframeElement = stackBlitzPage.locator('#PreviewContentWrapper iframe');
