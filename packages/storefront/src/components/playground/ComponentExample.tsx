@@ -37,11 +37,14 @@ export const ComponentExample = ({
       const { markup, script } = splitVanillaJsCode(codeSample.frameworkMarkup['vanilla-js']);
       return {
         ...codeSample.frameworkMarkup,
-        'vanilla-js': getVanillaJsCode({ markup, eventHandlers: script }),
+        'vanilla-js': getVanillaJsCode(
+          { markup, eventHandlers: script },
+          { isFullConfig: false, theme: storefrontTheme }
+        ),
       };
     }
     return codeSample.frameworkMarkup;
-  }, [codeSample]);
+  }, [codeSample, storefrontTheme]);
 
   const onOpenInStackblitz = () => {
     const markup = createStackblitzMarkupFromSample(codeSample.frameworkMarkup, storefrontFramework, storefrontTheme);

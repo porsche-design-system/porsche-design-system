@@ -30,15 +30,15 @@ export const Configurator = <T extends HTMLTagOrComponent>({
     createElements(story.generator(story.state), setExampleState)
   );
   const [exampleMarkup, setExampleMarkup] = useState<FrameworkMarkup>(
-    createFrameworkMarkup(story.generator(story.state), story.state)
+    createFrameworkMarkup(story.generator(story.state), story.state, storefrontTheme)
   );
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: only thing that will change is the state
   useEffect(() => {
     const generatedStory = story.generator(exampleState);
     setExampleElement(createElements(generatedStory, setExampleState));
-    setExampleMarkup(createFrameworkMarkup(generatedStory, exampleState));
-  }, [exampleState]);
+    setExampleMarkup(createFrameworkMarkup(generatedStory, exampleState, storefrontTheme));
+  }, [exampleState, storefrontTheme]);
 
   const onOpenInStackblitz = () => {
     const markup = createStackblitzMarkupFromStory(story, exampleState, storefrontFramework, storefrontTheme);

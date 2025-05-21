@@ -30,8 +30,8 @@ export const ComponentStory = ({ story, backgroundColor }: ComponentExampleProps
   const exampleMarkup = useMemo(() => {
     const state = story.state ?? {};
     const generatedStory = story.generator(state);
-    return createFrameworkMarkup(generatedStory, state);
-  }, [story]);
+    return createFrameworkMarkup(generatedStory, state, storefrontTheme);
+  }, [story, storefrontTheme]);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: only thing that will change is the state
   useEffect(() => {
