@@ -12,7 +12,7 @@ const frameworks: Framework[] = ['vanilla-js', 'react', 'angular', 'vue'];
 
 for (const framework of frameworks) {
   test(`should have working stackBlitz button for framework: ${framework}`, async ({ browser }) => {
-    test.setTimeout(120000);
+    test.setTimeout(180000);
     const context = await browser.newContext({
       // bypass captcha in headless chrome
       userAgent:
@@ -39,7 +39,7 @@ for (const framework of frameworks) {
     // Wait for the iframe to appear on the parent page
     await stackBlitzPage.waitForSelector('iframe[title="Preview page"]', {
       state: 'attached', // Ensures the iframe is attached to the DOM
-      timeout: 120000, // Adjust timeout as needed
+      timeout: 180000, // Adjust timeout as needed
     });
 
     const iframeElement = stackBlitzPage.locator('iframe[title="Preview page"]');
@@ -47,7 +47,9 @@ for (const framework of frameworks) {
 
     if (iframe) {
       const button = iframe.locator('p-button');
-      await expect(button).toBeVisible();
+      await expect(button).toBeVisible({
+        timeout: 180000,
+      });
     } else {
       throw new Error('Unable to access the iframe content, possibly due to cross-origin restrictions');
     }
