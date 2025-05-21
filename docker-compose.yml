@@ -59,7 +59,7 @@ services:
       - crawler-node-modules:/opt/porsche-design-system-app/packages/crawler/node_modules
       - shared-node-modules:/opt/porsche-design-system-app/packages/shared/node_modules
       - storefront-node-modules:/opt/porsche-design-system-app/packages/storefront/node_modules
-      - stackblitz-node-modules:/opt/porsche-design-system-app/packages/stackblitz/node_modules
+      - storefront-stackblitz-node-modules:/opt/porsche-design-system-app/packages/storefront/projects/stackblitz/node_modules
       - utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/node_modules
       - utilities-ag-grid-node-modules:/opt/porsche-design-system-app/packages/utilities/projects/ag-grid/node_modules
       - utilities-tailwind-node-modules:/opt/porsche-design-system-app/packages/utilities/projects/tailwind/node_modules
@@ -95,7 +95,7 @@ services:
       - crawler-node-modules:/opt/porsche-design-system-volumes/crawler-node_modules
       - shared-node-modules:/opt/porsche-design-system-volumes/shared-node_modules
       - storefront-node-modules:/opt/porsche-design-system-volumes/storefront-node_modules
-      - stackblitz-node-modules:/opt/porsche-design-system-volumes/stackblitz-node_modules
+      - storefront-stackblitz-node-modules:/opt/porsche-design-system-volumes/storefront-stackblitz-node_modules
       - utilities-node-modules:/opt/porsche-design-system-volumes/utilities-node_modules
       - utilities-ag-grid-node-modules:/opt/porsche-design-system-volumes/utilities-ag-grid-node_modules
       - utilities-tailwind-node-modules:/opt/porsche-design-system-volumes/utilities-tailwind-node_modules
@@ -131,7 +131,7 @@ volumes:
   crawler-node-modules:
   shared-node-modules:
   storefront-node-modules:
-  stackblitz-node-modules:
+  storefront-stackblitz-node-modules:
   utilities-node-modules:
   utilities-ag-grid-node-modules:
   utilities-tailwind-node-modules:

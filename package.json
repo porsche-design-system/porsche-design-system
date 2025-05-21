@@ -29,6 +29,7 @@
       "packages/utilities/projects/ag-grid",
       "packages/utilities/projects/tailwind",
       "packages/utilities/projects/utilities",
+      "packages/storefront/projects/stackblitz",
       "packages/shared/dist"
     ],
     "nohoist": [
@@ -168,7 +169,7 @@
     "updateAlgolia": "yarn --cwd ./packages/storefront updateAlgolia",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' \\;",
-    "clean:build": "yarn clean:assets:build && yarn clean:component-meta:build && yarn clean:components:build && yarn clean:components-angular:build && yarn clean:components-js:build && yarn clean:components-react:build && yarn clean:components-vue:build && yarn clean:shared:build && yarn clean:storefront:build && yarn clean:stackblitz:build && yarn clean:utilities:build",
+    "clean:build": "yarn clean:assets:build && yarn clean:component-meta:build && yarn clean:components:build && yarn clean:components-angular:build && yarn clean:components-js:build && yarn clean:components-react:build && yarn clean:components-vue:build && yarn clean:shared:build && yarn clean:storefront:build && yarn clean:utilities:build",
     "clean:assets:build": "yarn --cwd ./packages/assets clean:build",
     "clean:component-meta:build": "yarn --cwd ./packages/component-meta clean:build",
     "clean:components:build": "yarn --cwd ./packages/components clean:build",
@@ -178,7 +179,6 @@
     "clean:components-vue:build": "yarn --cwd ./packages/components-vue clean:build",
     "clean:shared:build": "yarn --cwd ./packages/shared clean:build",
     "clean:storefront:build": "yarn --cwd packages/storefront clean:build",
-    "clean:stackblitz:build": "yarn --cwd packages/stackblitz clean:build",
     "clean:utilities:build": "yarn --cwd ./packages/utilities clean:build"
   },
   "dependencies": {

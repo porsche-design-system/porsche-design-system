@@ -7,7 +7,7 @@
     "dev": "yarn prebuild && concurrently -k -s 'first' -n 'cdn,next' 'serve-cdn' 'next dev'",
     "prebuild": "yarn build:stackblitz && yarn build:generateTableOfContents && yarn build:preparePartialResults && yarn build:prepareChangelog && yarn build:copyLicense",
     "build": "next build",
-    "build:stackblitz": "yarn --cwd ../stackblitz build",
+    "build:stackblitz": "yarn --cwd projects/stackblitz build",
     "build:generateTableOfContents": "tsx --tsconfig tsconfig.node.json scripts/generateTableOfContents.ts",
     "build:preparePartialResults": "tsx --tsconfig tsconfig.node.json scripts/preparePartialResults.ts",
     "build:prepareChangelog": "tsx --tsconfig tsconfig.node.json scripts/prepareChangelog.ts",
@@ -28,7 +28,8 @@
     "test:a11y:2/3": "yarn test:a11y --shard=2/3",
     "test:a11y:3/3": "yarn test:a11y --shard=3/3",
     "test:vrt": "NEXT_PUBLIC_PDS_ENV=development yarn build && playwright test --config=tests/vrt/config/playwright.config.ts",
-    "clean:build": "rm -rf ./dist && rm -rf ./.next"
+    "clean:build": "rm -rf ./dist && rm -rf ./.next && yarn clean:stackblitz:build",
+    "clean:stackblitz:build": "yarn --cwd projects/stackblitz clean:build"
   },
   "dependencies": {
     "@porsche-design-system/components-react": "3.28.0-rc.3",
