@@ -1,7 +1,6 @@
 import { expect, test } from '@playwright/test';
 import type { Framework } from '@porsche-design-system/shared';
 
-// TODO: Vue and Angular currently only work for released version
 const buttonFrameworkMap: Record<Framework, string> = {
   'vanilla-js': 'Vanilla JS',
   react: 'React',
@@ -9,7 +8,7 @@ const buttonFrameworkMap: Record<Framework, string> = {
   vue: 'Vue',
 };
 
-const frameworks: Framework[] = ['vanilla-js', 'react'];
+const frameworks: Framework[] = ['vanilla-js', 'react', 'angular', 'vue'];
 
 for (const framework of frameworks) {
   test(`should have working stackBlitz button for framework: ${framework}`, async ({ browser }) => {
