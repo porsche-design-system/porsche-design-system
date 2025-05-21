@@ -39,9 +39,9 @@ export const ComponentStory = ({ story, backgroundColor }: ComponentExampleProps
     setExampleElement(createElements(generatedStory, setExampleState));
   }, [exampleState]);
 
-  const onOpenInStackblitz = async () => {
+  const onOpenInStackblitz = () => {
     const markup = createStackblitzMarkupFromStory(story, exampleState, storefrontFramework, storefrontTheme);
-    await openInStackblitz(storefrontFramework as Framework, markup, storefrontTheme);
+    openInStackblitz(storefrontFramework as Framework, markup, storefrontTheme);
   };
 
   return (
