@@ -38,12 +38,12 @@ for (const framework of frameworks) {
     await stackBlitzPage.waitForLoadState();
 
     // Wait for the iframe to appear on the parent page
-    await stackBlitzPage.waitForSelector('#PreviewContentWrapper iframe', {
+    await stackBlitzPage.waitForSelector('iframe[title="Preview page"]', {
       state: 'attached', // Ensures the iframe is attached to the DOM
       timeout: 120000, // Adjust timeout as needed
     });
 
-    const iframeElement = stackBlitzPage.locator('#PreviewContentWrapper iframe');
+    const iframeElement = stackBlitzPage.locator('iframe[title="Preview page"]');
     const iframe = iframeElement.contentFrame();
 
     if (iframe) {
