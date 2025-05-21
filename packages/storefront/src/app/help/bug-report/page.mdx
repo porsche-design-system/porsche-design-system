@@ -1,11 +1,10 @@
-import { TableOfContents } from "@/components/common/TableOfContents";
-import {OpenBugTemplateInStackBlitz} from "@/components/common/OpenBugTemplateInStackBlitz";
-import {fetchPdsVersions} from "@/utils/fetchPdsVersions";
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { OpenBugTemplateInStackBlitz } from '@/components/common/OpenBugTemplateInStackBlitz';
 
 export const metadata = {
   title: 'Bug Report - Porsche Design System',
   description: 'If you encounter a bug by using the Porsche Design System, please report it to us and help us improve.',
-}
+};
 
 # Bug Report
 
@@ -26,15 +25,14 @@ Before reporting a bug:
 Please provide a minimal reproduction example of the issue using **StackBlitz**. You can choose the **JS framework** and
 **Porsche Design System** version below and open a working default template with our setup on **StackBlitz**.
 
-<OpenBugTemplateInStackBlitz pdsVersions={await fetchPdsVersions()} />
+<OpenBugTemplateInStackBlitz />
 
 StackBlitz Workflow:
 
 1. Before making any changes in StackBlitz, please fork the setup:
    ![fork stackblitz reproduction example](assets/stackblitz-fork.png)
 2. Add your minimal reproduction example.
-3. Make sure to save your changes:
-   ![save stackblitz reproduction example](assets/stackblitz-save.png)
+3. Make sure to save your changes: ![save stackblitz reproduction example](assets/stackblitz-save.png)
 4. Once your reproduction example is set and saved, copy the **Editor URL**:
    ![share stackblitz reproduction example](assets/stackblitz-share.png)
 5. Please share the **Editor URL** with us in a

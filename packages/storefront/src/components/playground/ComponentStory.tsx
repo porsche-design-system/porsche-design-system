@@ -4,12 +4,12 @@ import { Playground } from '@/components/playground/Playground';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
 import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import { createStackblitzMarkupFromStory } from '@/lib/stackblitz/createStackblitzMarkupFromStory';
-import { openInStackblitz } from '@/lib/stackblitz/openInStackblitz';
 import type { BackgroundColor } from '@/models/backgroundColor';
 import type { Story } from '@/models/story';
 import { createFrameworkMarkup } from '@/utils/generator/createFrameworkMarkup';
 import { type HTMLTagOrComponent, createElements } from '@/utils/generator/generator';
 import type { Framework } from '@porsche-design-system/shared';
+import { openInStackblitz } from '@porsche-design-system/stackblitz';
 import React, { type ReactNode, useEffect, useMemo, useState } from 'react';
 
 type ComponentExampleProps = {
@@ -41,7 +41,7 @@ export const ComponentStory = ({ story, backgroundColor }: ComponentExampleProps
 
   const onOpenInStackblitz = async () => {
     const markup = createStackblitzMarkupFromStory(story, exampleState, storefrontFramework, storefrontTheme);
-    await openInStackblitz(markup, storefrontFramework as Framework, storefrontTheme);
+    await openInStackblitz(storefrontFramework as Framework, markup, storefrontTheme);
   };
 
   return (

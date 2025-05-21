@@ -1,5 +1,3 @@
-import { isReleasedPds } from '@/lib/stackblitz/helper';
-import { getStackblitzGlobalStyle } from '@/lib/stackblitz/openInStackblitz';
 import type { FrameworkConfiguratorMarkup } from '@/models/framework';
 import type { StorefrontTheme } from '@/models/theme';
 import type {
@@ -13,7 +11,7 @@ import type { CSSProperties } from 'react';
 
 export const getVanillaJsCode = (
   { markup, states, eventHandlers }: FrameworkConfiguratorMarkup['vanilla-js'],
-  { isFullConfig, theme, pdsVersion }: { isFullConfig: boolean; theme: StorefrontTheme; pdsVersion?: string } = {
+  { isFullConfig, theme }: { isFullConfig: boolean; theme: StorefrontTheme } = {
     isFullConfig: false,
     theme: 'light',
   }

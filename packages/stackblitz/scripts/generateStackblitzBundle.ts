@@ -36,10 +36,10 @@ export const readSetup = (dir: string) => {
 };
 
 export const generateStackblitzBundle = (outputFilePath: string) => {
-  const bundleVanillaJs = readSetup('../projects/vanilla-js');
-  const bundleAngular = readSetup('../projects/angular');
-  const bundleReact = readSetup('../projects/react');
-  const bundleVue = readSetup('../projects/vue');
+  const bundleVanillaJs = readSetup('../src/vanilla-js');
+  const bundleAngular = readSetup('../src/angular');
+  const bundleReact = readSetup('../src/react');
+  const bundleVue = readSetup('../src/vue');
 
   const outputDir = path.dirname(outputFilePath);
   if (!fs.existsSync(outputDir)) {

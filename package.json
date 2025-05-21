@@ -26,8 +26,13 @@
       "packages/components-react/projects/remix",
       "packages/components-react/projects/uxpin-wrapper",
       "packages/components-vue/dist/vue-wrapper",
+      "packages/stackblitz/src/angular",
+      "packages/stackblitz/src/react",
+      "packages/stackblitz/src/vanilla-js",
+      "packages/stackblitz/src/vue",
       "packages/utilities/projects/utilities",
       "packages/utilities/projects/ag-grid",
+      "packages/utilities/projects/tailwind",
       "packages/shared/dist"
     ],
     "nohoist": [
