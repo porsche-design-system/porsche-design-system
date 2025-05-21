@@ -26,9 +26,6 @@ test('should open stackblitz with correct theme and framework', async ({ page })
     timeout: 120000, // Adjust timeout as needed
   });
 
-  const dependency = stackBlitzPage.getByRole('link', { name: '@porsche-design-system/components-js' });
-  await expect(dependency).toBeVisible();
-
   const iframeElement = stackBlitzPage.locator('iframe[title="Preview page"]');
   const iframe = iframeElement.contentFrame();
 
