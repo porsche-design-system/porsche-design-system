@@ -358,8 +358,6 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "state": "oneOf",
   "step": "number",
   "theme": "oneOf",
-  "unit": "string",
-  "unitPosition": "oneOf",
   "value": "string",
 }
 `;
