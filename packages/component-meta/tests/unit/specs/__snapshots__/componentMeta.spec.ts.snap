@@ -4215,7 +4215,7 @@ exports[`should match snapshot 1`] = `
       "controls": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Show or hide the increment/decrement stepper controls for \`input type="number"\`.",
+        "description": "Show or hide the increment/decrement stepper controls.",
         "type": "boolean",
       },
       "description": {
@@ -4324,21 +4324,6 @@ exports[`should match snapshot 1`] = `
         "description": "Adapts the color depending on the theme.",
         "type": "Theme",
       },
-      "unit": {
-        "allowedValues": "string",
-        "defaultValue": "",
-        "description": "The unit text.",
-        "type": "string",
-      },
-      "unitPosition": {
-        "allowedValues": [
-          "prefix",
-          "suffix",
-        ],
-        "defaultValue": "prefix",
-        "description": "The unit position.",
-        "type": "InputNumberUnitPosition",
-      },
       "value": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -4354,7 +4339,7 @@ exports[`should match snapshot 1`] = `
         "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
       "end": {
-        "description": "Shows content at the end of the input (e.g. toggle button, unit suffix). Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+        "description": "Shows content at the end of the input (e.g. toggle button, unit suffix).",
       },
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
@@ -4363,7 +4348,7 @@ exports[`should match snapshot 1`] = `
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
       "start": {
-        "description": "Shows content at the start of the input (e.g. unit prefix). Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+        "description": "Shows content at the start of the input (e.g. unit prefix).",
       },
     },
     "styling": "jss",
