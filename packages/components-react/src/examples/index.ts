@@ -35,6 +35,8 @@ export * from './MultiSelectExampleControlled';
 export * from './MultiSelectExampleDynamic';
 export * from './PinCodeExample';
 export * from './PinCodeExampleControlled';
+export * from './PopoverExampleControlled';
+export * from './PopoverExampleControlledAiTag';
 export * from './ScrollerExample';
 export * from './SegmentedControlExampleControlled';
 export * from './SegmentedControlExample';

@@ -16,7 +16,7 @@ export const PopoverControlledExamplePage = (): JSX.Element => {
         <PButtonPure
           slot="button"
           hideLabel={true}
-          aria={{ 'aria-expanded': 'false' }}
+          aria={{ 'aria-expanded': isPopoverOpen }}
           onClick={onOpen}
           icon="information"
         >

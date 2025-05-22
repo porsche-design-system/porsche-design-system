@@ -8,7 +8,7 @@
   const pPopover = document.querySelector("p-popover");
   pButton.addEventListener('click', () => {
     pPopover.open = !pPopover.open;
-    pButton.aria =  {'aria-expanded' : pPopover.open}
+    pButton.setAttribute('aria-expanded', pPopover.open)
   });
   pPopover.addEventListener('dismiss', () => (pButton.focus()));
 </script>

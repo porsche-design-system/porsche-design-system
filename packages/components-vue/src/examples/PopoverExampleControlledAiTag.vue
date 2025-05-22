@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PButtonPure, PPopover, PTag } from '@porsche-design-system/components-vue';
+import { PButtonPure, PPopover } from '@porsche-design-system/components-vue';
 import { ref } from 'vue';
 
 const isPopoverOpen = ref(false);
@@ -16,11 +16,6 @@ const onDismiss = (): void => {
     <PButtonPure slot="button" :hideLabel="true" :aria="{ 'aria-expanded': 'false' }" @click="onOpen" icon="information">
     More information
     </PButtonPure>
-    <PTag color="background-frosted" icon="brain" slot="button">
-      <button type="button" :aria-expanded="isPopoverOpen" @click="onOpen">
-        AI-generated
-      </button>
-    </PTag>
     Some additional content with some <a href="#">link</a>.
   </PPopover>
 </template>
