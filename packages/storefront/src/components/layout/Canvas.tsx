@@ -75,7 +75,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     setIsSidebarEndOpen(
-      window.matchMedia(`(min-width: ${breakpointM}px)`).matches && pathname?.includes('configurator')
+      (window.matchMedia(`(min-width: ${breakpointM}px)`).matches && pathname?.includes('configurator')) ?? false
     );
   }, [pathname]);
 
