@@ -3,7 +3,7 @@ import * as path from 'node:path';
 
 const injectPartials = require('./injectPartials.js');
 
-const indexHtmlPath = path.join(__dirname, '../dist/demo-app/index.html');
+const indexHtmlPath = path.join(__dirname, '../dist/demo-app/browser/index.html');
 
 fs.readFile(indexHtmlPath, 'utf-8', (err, indexHtml) => {
   if (err) {
