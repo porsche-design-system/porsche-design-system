@@ -12491,6 +12491,9 @@ exports[`should render dsr component for PInputNumber 1`] = `
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
+::slotted([slot="start"]), ::slotted([slot="end"]) {
+  place-self: center !important;
+}
 input {
   all: unset;
   appearance: none;
@@ -12568,18 +12571,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   opacity: 0;
   position: absolute;
 }
-.unit-counter {
-  pointer-events: none;
-  max-width: 100%;
-  box-sizing: border-box;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  color: #535457;
-  grid-area: 1/1/1/3;
-  place-self: center;
-}
     </style>
     <div
       class="root"
@@ -12639,6 +12630,9 @@ exports[`should render dsr component for PInputPassword 1`] = `
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
+}
+::slotted([slot="start"]), ::slotted([slot="end"]) {
+  place-self: center !important;
 }
 input {
   all: unset;
