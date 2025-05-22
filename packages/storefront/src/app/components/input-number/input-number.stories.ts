@@ -1,15 +1,51 @@
 'use client';
 
-import type { Story } from '@/models/story';
+import type { SlotStories, Story } from '@/models/story';
+
+export const inputNumberSlotStories: SlotStories<'p-input-number'> = {
+  start: {
+    basic: {
+      name: 'Basic',
+      generator: () => [
+        {
+          tag: 'p-text',
+          properties: { slot: 'start', color: 'contrast-medium', 'aria-hidden': true },
+          children: ['EUR'],
+        },
+      ],
+    },
+    icon: {
+      name: 'Icon',
+      generator: () => [
+        {
+          tag: 'p-icon',
+          properties: { slot: 'start', name: 'check', 'aria-hidden': true },
+        },
+      ],
+    },
+  },
+  end: {
+    basic: {
+      name: 'Basic',
+      generator: () => [
+        {
+          tag: 'p-button-pure',
+          properties: { slot: 'end', icon: 'user', hideLabel: true, style: { padding: '4px' } },
+        },
+      ],
+    },
+  },
+};
 
 export const inputNumberStory: Story<'p-input-number'> = {
   state: {
     properties: { label: 'Some label', name: 'Some name', controls: true },
   },
-  generator: ({ properties } = {}) => [
+  generator: ({ properties, slots } = {}) => [
     {
       tag: 'p-input-number',
       properties,
+      children: [...(slots?.start?.generator() ?? []), ...(slots?.end?.generator() ?? [])],
     },
   ],
 };
@@ -27,7 +63,8 @@ export const inputNumberStoryUnit: Story<'p-input-number'> = {
   generator: () => [
     {
       tag: 'p-input-number',
-      properties: { label: 'Some label', name: 'Some name', unit: 'EUR', unitPosition: 'suffix' },
+      properties: { label: 'Some label', name: 'Some name' },
+      children: [...inputNumberSlotStories.start.basic.generator()],
     },
   ],
 };

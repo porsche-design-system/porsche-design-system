@@ -5,7 +5,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
   selector: 'page-input-number-example',
   template: `
     <form (submit)="onSubmit($event)">
-      <p-input-password name="some-name" label="Some Label"></p-input-password>
+      <p-input-number name="some-name" label="Some Label"></p-input-number>
       <p-button type="submit">Submit</p-button>
       <p-button type="reset">Reset</p-button>
     </form>

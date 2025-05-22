@@ -56,12 +56,16 @@
   ></p-input-number>
 </div>
 
-<div class="playground light" title="should render with unit prefix">
-  <p-input-number name="some-name" label="Label" value="1234" controls="true" unit="EUR"></p-input-number>
+<div class="playground light" title="should render with slot start">
+  <p-input-number name="some-name" label="Label" value="1234" controls="true">
+    <div slot="start"><p-text color="contrast-medium" aria-hidden="true">EUR</p-text></div>
+  </p-input-number>
 </div>
 
-<div class="playground light" title="should render with unit suffix">
-  <p-input-number name="some-name" label="Label" value="1234" controls="true" unit="EUR" unit-position="suffix"></p-input-number>
+<div class="playground light" title="should render with slot end">
+  <p-input-number name="some-name" label="Label" value="1234">
+    <p-button-pure slot="end" hide-label="true" icon="close" class="p-1"></p-button-pure>
+  </p-input-number>
 </div>
 
 <div class="playground light" title="should render in required state">

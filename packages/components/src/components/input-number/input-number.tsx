@@ -16,20 +16,16 @@ import { getComponentCss } from './input-number-styles';
 import {
   applyStep,
   INPUT_NUMBER_AUTO_COMPLETE,
-  INPUT_NUMBER_UNIT_POSITIONS,
   type InputNumberAutoComplete,
   type InputNumberBlurEventDetail,
   type InputNumberChangeEventDetail,
   type InputNumberInputEventDetail,
   type InputNumberState,
-  type InputNumberUnitPosition,
 } from './input-number-utils';
 import { InputBase } from '../common/input-base/input-base';
 
 const propTypes: PropTypes<typeof InputNumber> = {
   label: AllowedTypes.string,
-  unit: AllowedTypes.string,
-  unitPosition: AllowedTypes.oneOf<InputNumberUnitPosition>(INPUT_NUMBER_UNIT_POSITIONS),
   description: AllowedTypes.string,
   placeholder: AllowedTypes.string,
   name: AllowedTypes.string,
@@ -54,8 +50,8 @@ const propTypes: PropTypes<typeof InputNumber> = {
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
- * @slot {"name": "start", "description": "Shows content at the start of the input (e.g. unit prefix). Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
- * @slot {"name": "end", "description": "Shows content at the end of the input (e.g. toggle button, unit suffix). Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
+ * @slot {"name": "start", "description": "Shows content at the start of the input (e.g. unit prefix)."}
+ * @slot {"name": "end", "description": "Shows content at the end of the input (e.g. toggle button, unit suffix)."}
  */
 @Component({
   tag: 'p-input-number',
@@ -67,12 +63,6 @@ export class InputNumber {
 
   /** The label text. */
   @Prop() public label?: string = '';
-
-  /** The unit text. */
-  @Prop() public unit?: string = '';
-
-  /** The unit position. */
-  @Prop() public unitPosition?: InputNumberUnitPosition = 'prefix';
 
   /** The granularity that the value must adhere to. */
   @Prop() public step?: number = 1;
@@ -127,7 +117,7 @@ export class InputNumber {
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  /** Show or hide the increment/decrement stepper controls for `input type="number"`. */
+  /** Show or hide the increment/decrement stepper controls. */
   @Prop() public controls?: boolean = false;
 
   /** Emitted when the number input loses focus after its value was changed. */
@@ -194,63 +184,12 @@ export class InputNumber {
       this.compact,
       this.readOnly,
       this.theme,
-      this.unitPosition,
       this.controls
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
-    const unitElement = this.unit ? (
-      <span class="unit-counter" aria-hidden="true">
-        {this.unit}
-      </span>
-    ) : null;
-
     const { canIncrement, canDecrement } = this.nextStepValues;
-
-    const stepperElements = this.controls
-      ? [
-          <PrefixedTagNames.pButtonPure
-            tabIndex={-1}
-            hideLabel={true}
-            theme={this.theme}
-            class="button"
-            type="button"
-            icon="minus"
-            disabled={this.disabled || this.readOnly || !canDecrement}
-            onClick={() => this.updateValue('decrement')}
-          >
-            Decrement value by {this.step}
-          </PrefixedTagNames.pButtonPure>,
-          <PrefixedTagNames.pButtonPure
-            tabIndex={-1}
-            hideLabel={true}
-            theme={this.theme}
-            class="button"
-            type="button"
-            icon="plus"
-            disabled={this.disabled || this.readOnly || !canIncrement}
-            onClick={() => this.updateValue('increment')}
-          >
-            Increment value by {this.step}
-          </PrefixedTagNames.pButtonPure>,
-        ]
-      : null;
-
-    const slotProps: Record<string, JSX.Element | JSX.Element[]> = {};
-
-    if (unitElement && this.unitPosition === 'prefix') {
-      slotProps.start = unitElement;
-    }
-
-    if (unitElement && this.unitPosition === 'suffix') {
-      slotProps.end = [unitElement];
-    }
-    if (stepperElements) {
-      const endItems: JSX.Element[] = Array.isArray(slotProps.end) ? [...slotProps.end] : [];
-      endItems.push(...stepperElements);
-      slotProps.end = endItems;
-    }
 
     return (
       <InputBase
@@ -278,7 +217,36 @@ export class InputNumber {
         message={this.message}
         theme={this.theme}
         step={this.step}
-        {...slotProps}
+        end={
+          this.controls
+            ? [
+                <PrefixedTagNames.pButtonPure
+                  tabIndex={-1}
+                  hideLabel={true}
+                  theme={this.theme}
+                  class="button"
+                  type="button"
+                  icon="minus"
+                  disabled={this.disabled || this.readOnly || !canDecrement}
+                  onClick={() => this.updateValue('decrement')}
+                >
+                  Decrement value by {this.step}
+                </PrefixedTagNames.pButtonPure>,
+                <PrefixedTagNames.pButtonPure
+                  tabIndex={-1}
+                  hideLabel={true}
+                  theme={this.theme}
+                  class="button"
+                  type="button"
+                  icon="plus"
+                  disabled={this.disabled || this.readOnly || !canIncrement}
+                  onClick={() => this.updateValue('increment')}
+                >
+                  Increment value by {this.step}
+                </PrefixedTagNames.pButtonPure>,
+              ]
+            : null
+        }
       />
     );
   }
