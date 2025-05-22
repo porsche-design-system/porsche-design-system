@@ -33,7 +33,7 @@ import { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
 import { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 import { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
-import { InputNumberAutoComplete, InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState, InputNumberUnitPosition } from "./components/input-number/input-number-utils";
+import { InputNumberAutoComplete, InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
 import { InputPasswordAutoComplete, InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
 import { LinkIcon } from "./components/link/link-utils";
 import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
@@ -101,7 +101,7 @@ export { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
 export { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 export { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 export { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
-export { InputNumberAutoComplete, InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState, InputNumberUnitPosition } from "./components/input-number/input-number-utils";
+export { InputNumberAutoComplete, InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
 export { InputPasswordAutoComplete, InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
 export { LinkIcon } from "./components/link/link-utils";
 export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
@@ -1062,7 +1062,7 @@ export namespace Components {
          */
         "compact"?: boolean;
         /**
-          * Show or hide the increment/decrement stepper controls for `input type="number"`.
+          * Show or hide the increment/decrement stepper controls.
          */
         "controls"?: boolean;
         /**
@@ -1125,14 +1125,6 @@ export namespace Components {
           * Adapts the color depending on the theme.
          */
         "theme"?: Theme;
-        /**
-          * The unit text.
-         */
-        "unit"?: string;
-        /**
-          * The unit position.
-         */
-        "unitPosition"?: InputNumberUnitPosition;
         /**
           * The number input value.
          */
@@ -4600,7 +4592,7 @@ declare namespace LocalJSX {
          */
         "compact"?: boolean;
         /**
-          * Show or hide the increment/decrement stepper controls for `input type="number"`.
+          * Show or hide the increment/decrement stepper controls.
          */
         "controls"?: boolean;
         /**
@@ -4675,14 +4667,6 @@ declare namespace LocalJSX {
           * Adapts the color depending on the theme.
          */
         "theme"?: Theme;
-        /**
-          * The unit text.
-         */
-        "unit"?: string;
-        /**
-          * The unit position.
-         */
-        "unitPosition"?: InputNumberUnitPosition;
         /**
           * The number input value.
          */
