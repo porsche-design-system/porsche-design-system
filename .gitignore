@@ -119,12 +119,6 @@ packages/storefront-old/src/pages/changelog.md
 packages/storefront-old/public/porsche-design-system
 packages/storefront/public/porsche-design-system
 
-# Stackblitz
-packages/stackblitz/src/angular/yarn.lock
-packages/stackblitz/src/react/yarn.lock
-packages/stackblitz/src/vanilla-js/yarn.lock
-packages/stackblitz/src/vue/yarn.lock
-
 # Lib
 packages/shared/src/lib/*
 packages/components-js/projects/jsdom-polyfill/src/lib/*
