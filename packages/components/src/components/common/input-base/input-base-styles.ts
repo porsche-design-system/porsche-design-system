@@ -79,9 +79,11 @@ export const getFunctionalComponentInputBaseStyles = (
         }),
       },
       ...preventFoucOfNestedElementsStyles,
-      '::slotted([slot="start"]), ::slotted([slot="end"])': {
-        placeSelf: 'center',
-      },
+      ...addImportantToEachRule({
+        '::slotted([slot="start"]), ::slotted([slot="end"])': {
+          placeSelf: 'center',
+        },
+      }),
       input: {
         all: 'unset',
         appearance: 'none',
