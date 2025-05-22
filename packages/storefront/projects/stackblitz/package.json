@@ -27,7 +27,9 @@
     "clean:build": "rm -rf ./generated && rm -rf ./dist"
   },
   "dependencies": {
-    "@stackblitz/sdk": "1.8.2",
+    "@stackblitz/sdk": "1.8.2"
+  },
+  "devDependencies": {
     "@porsche-design-system/shared": "0.0.0"
   },
   "volta": {
