@@ -1,0 +1,566 @@
+import { type Page, expect, test } from '@playwright/test';
+import { Components } from '@porsche-design-system/components';
+import {
+  addEventListener,
+  getEventSummary,
+  getFormDataValue,
+  getHTMLAttributes,
+  getLifecycleStatus,
+  setContentWithDesignSystem,
+  setProperty,
+  skipInBrowsers,
+  waitForStencilLifecycle,
+} from '../helpers';
+
+const getHost = (page: Page) => page.locator('p-input-number');
+const getFieldset = (page: Page) => page.locator('fieldset');
+const getInputNumber = (page: Page) => page.locator('p-input-number input');
+const getInputNumberDecrement = (page: Page) => page.locator('p-input-number p-button-pure').nth(0);
+const getInputNumberIncrement = (page: Page) => page.locator('p-input-number p-button-pure').nth(1);
+const getInputNumberWrapper = (page: Page) => page.locator('p-input-number .wrapper');
+const getLabel = (page: Page) => page.locator('p-input-number label');
+const getForm = (page: Page) => page.locator('form');
+
+type InitOptions = {
+  props?: Components.PInputNumber;
+  useSlottedLabel?: boolean;
+  useSlottedDescription?: boolean;
+  useSlottedMessage?: boolean;
+  isWithinForm?: boolean;
+  markupBefore?: string;
+  markupAfter?: string;
+};
+
+const initInputNumber = (page: Page, opts?: InitOptions): Promise<void> => {
+  const {
+    props = {},
+    useSlottedLabel = false,
+    useSlottedDescription = false,
+    useSlottedMessage = false,
+    isWithinForm = false,
+    markupBefore = '',
+    markupAfter = '',
+  } = opts || {};
+
+  const link = '<a href="#" onclick="return false;">link</a>';
+  const slottedLabel = useSlottedLabel ? `<span slot="label">Label with a ${link}</span>` : '';
+  const slottedDescription = useSlottedDescription ? `<span slot="description">Description with a ${link}</span>` : '';
+  const slottedMessage = useSlottedMessage ? `<span slot="message">Message with a ${link}</span>` : '';
+
+  const markup = `${markupBefore}<p-input-number ${getHTMLAttributes(props)}>
+      ${slottedLabel}
+      ${slottedDescription}
+      ${slottedMessage}
+    </p-input-number>${markupAfter}`;
+
+  return setContentWithDesignSystem(page, isWithinForm ? `<form onsubmit="return false;">${markup}</form>` : markup);
+};
+
+test.describe('value', () => {
+  test('should have value as slotted content when set initially', async ({ page }) => {
+    const testValue = '10';
+    await initInputNumber(page, { props: { name: 'Some name', value: testValue } });
+    const host = getHost(page);
+    const inputNumber = getInputNumber(page);
+
+    await expect(host).toHaveJSProperty('value', testValue);
+    await expect(inputNumber).toHaveJSProperty('value', testValue);
+    await expect(inputNumber).toHaveValue(testValue);
+  });
+
+  test('should sync value with slotted content when typing', async ({ page }) => {
+    await initInputNumber(page);
+    const host = getHost(page);
+    const inputNumber = getInputNumber(page);
+    await expect(host).toHaveJSProperty('value', '');
+    await expect(inputNumber).toHaveJSProperty('value', '');
+
+    const testInput = '10';
+
+    await inputNumber.fill(testInput);
+    await waitForStencilLifecycle(page);
+
+    await expect(host).toHaveJSProperty('value', testInput);
+    await expect(inputNumber).toHaveJSProperty('value', testInput);
+  });
+
+  test('should sync slotted content with value when changed programmatically', async ({ page }) => {
+    await initInputNumber(page);
+    const host = getHost(page);
+    const inputNumber = getInputNumber(page);
+    await expect(host).toHaveJSProperty('value', '');
+    await expect(inputNumber).toHaveJSProperty('value', '');
+
+    const testInput = '10';
+
+    await setProperty(host, 'value', testInput);
+    await waitForStencilLifecycle(page);
+
+    await expect(host).toHaveJSProperty('value', testInput);
+    await expect(inputNumber).toHaveJSProperty('value', testInput);
+    await expect(inputNumber).toHaveValue(testInput);
+  });
+});
+
+test.describe('form', () => {
+  test('should include name & value in FormData submit', async ({ page }) => {
+    const name = 'name';
+    const value = '10';
+    await initInputNumber(page, {
+      props: { name, value },
+      isWithinForm: true,
+      markupAfter: '<button type="submit">Submit</button>',
+    });
+    const form = getForm(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValue(form, name)).toBe(value);
+  });
+
+  test('should include name & value in FormData submit if outside of form', async ({ page }) => {
+    const name = 'name';
+    const value = '10';
+    const formId = 'myForm';
+    await initInputNumber(page, {
+      props: { name, value, form: formId },
+      markupBefore: `<form id="myForm" onsubmit="return false;"><button type="submit">Submit</button></form>`,
+    });
+    const form = getForm(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValue(form, name)).toBe(value);
+  });
+
+  test('should prevent form submission if the required field is empty', async ({ page }) => {
+    const name = 'name';
+    const value = '';
+    const required = true;
+    await initInputNumber(page, {
+      props: { name, value, required },
+      isWithinForm: true,
+      markupAfter: '<button type="submit">Submit</button>',
+    });
+    const form = getForm(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await page.locator('button[type="submit"]').click();
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+  });
+
+  test('should submit form after dynamically setting `required` to false on an initially required, empty textarea', async ({
+    page,
+  }) => {
+    const name = 'name';
+    const value = '';
+    const required = true;
+    await initInputNumber(page, {
+      props: { name, value, required },
+      isWithinForm: true,
+      markupAfter: '<button type="submit">Submit</button>',
+    });
+    const form = getForm(page);
+    const host = getHost(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await setProperty(host, 'required', false);
+    await waitForStencilLifecycle(page);
+
+    await page.locator('button[type="submit"]').click();
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+  });
+
+  test('should submit form after reset if the required textarea was initially not empty', async ({ page }) => {
+    const name = 'name';
+    const value = '10';
+    const required = true;
+    await initInputNumber(page, {
+      props: { name, value, required },
+      isWithinForm: true,
+      markupAfter: `
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      `,
+    });
+    const form = getForm(page);
+    const inputNumber = getInputNumber(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await inputNumber.fill('');
+    await waitForStencilLifecycle(page);
+
+    await page.locator('button[type="reset"]').click();
+    await page.locator('button[type="submit"]').click();
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+  });
+
+  test('should prevent form submission after reset if the input-number is required and was initially empty', async ({
+    page,
+  }) => {
+    const name = 'name';
+    const value = '';
+    const required = true;
+    await initInputNumber(page, {
+      props: { name, value, required },
+      isWithinForm: true,
+      markupAfter: `
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      `,
+    });
+    const form = getForm(page);
+    const inputNumber = getInputNumber(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await inputNumber.fill('20');
+    await waitForStencilLifecycle(page);
+
+    await page.locator('button[type="reset"]').click();
+    await page.locator('button[type="submit"]').click();
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+  });
+
+  test('should reset input-number value to its initial value on form reset', async ({ page }) => {
+    const name = 'name';
+    const value = '10';
+    const newValue = '20';
+    const host = getHost(page);
+    const inputNumber = getInputNumber(page);
+    await initInputNumber(page, {
+      props: { name, value },
+      isWithinForm: true,
+      markupAfter: `
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      `,
+    });
+    const form = getForm(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await inputNumber.fill(newValue);
+    await inputNumber.press('Tab');
+    await waitForStencilLifecycle(page);
+
+    await expect(host).toHaveJSProperty('value', newValue);
+    await expect(inputNumber).toHaveValue(newValue);
+
+    await page.locator('button[type="reset"]').click();
+
+    await expect(host).toHaveJSProperty('value', value);
+    await expect(inputNumber).toHaveValue(value);
+
+    await page.locator('button[type="submit"]').click(); // Check if ElementInternal value was reset as well
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValue(form, name)).toBe(value);
+  });
+
+  test('should disable input-number if within disabled fieldset', async ({ page }) => {
+    const name = 'name';
+    const value = '10';
+    const host = getHost(page);
+    await initInputNumber(page, {
+      props: { name, value },
+      isWithinForm: true,
+      markupBefore: `<fieldset disabled>`,
+      markupAfter: `</fieldset>`,
+    });
+
+    await expect(host).toHaveJSProperty('disabled', true);
+  });
+
+  test('should sync disabled state with fieldset when updated programmatically', async ({ page }) => {
+    await initInputNumber(page, {
+      isWithinForm: true,
+      markupBefore: `<fieldset disabled>`,
+      markupAfter: `</fieldset>`,
+    });
+    const host = getHost(page);
+    const inputNumber = getInputNumber(page);
+    const fieldset = getFieldset(page);
+    await expect(fieldset).toHaveJSProperty('disabled', true);
+    await expect(host).toHaveJSProperty('disabled', true);
+    await expect(inputNumber).toHaveJSProperty('disabled', true);
+
+    await setProperty(fieldset, 'disabled', false);
+    await waitForStencilLifecycle(page);
+
+    await expect(fieldset).toHaveJSProperty('disabled', false);
+    await expect(host).toHaveJSProperty('disabled', false);
+    await expect(inputNumber).toHaveJSProperty('disabled', false);
+  });
+});
+
+test.describe('focus state', () => {
+  test('should focus input-number when label is clicked', async ({ page }) => {
+    await initInputNumber(page, { props: { name: 'Some name', label: 'Some label' } });
+    const label = getLabel(page);
+    const inputNumber = getInputNumber(page);
+
+    await addEventListener(inputNumber, 'focus');
+    expect((await getEventSummary(inputNumber, 'focus')).counter).toBe(0);
+
+    await label.click();
+    await waitForStencilLifecycle(page);
+    expect((await getEventSummary(inputNumber, 'focus')).counter).toBe(1);
+  });
+
+  test('should focus input-number when host is focused', async ({ page }) => {
+    await initInputNumber(page);
+    const host = getHost(page);
+    const inputNumber = getInputNumber(page);
+    const inputNumberWrapper = getInputNumberWrapper(page);
+
+    await addEventListener(inputNumber, 'focus');
+    expect((await getEventSummary(inputNumber, 'focus')).counter).toBe(0);
+    await expect(inputNumberWrapper).toHaveCSS('border-color', 'rgb(107, 109, 112)');
+
+    await host.focus();
+    await waitForStencilLifecycle(page);
+    expect((await getEventSummary(inputNumber, 'focus')).counter).toBe(1);
+    await expect(inputNumberWrapper).toHaveCSS('border-color', 'rgb(1, 2, 5)');
+  });
+});
+
+test.describe('Event', () => {
+  skipInBrowsers(['firefox', 'webkit'], () => {
+    test('should trigger a change event when input-number value is modified and focus is lost', async ({ page }) => {
+      await initInputNumber(page);
+      const host = getHost(page);
+      const inputNumber = getInputNumber(page);
+
+      await addEventListener(host, 'change');
+      expect((await getEventSummary(host, 'change')).counter).toBe(0);
+
+      await inputNumber.fill('20');
+      await inputNumber.press('Tab');
+      await waitForStencilLifecycle(page);
+
+      expect((await getEventSummary(host, 'change')).counter).toBe(1);
+    });
+    test('should trigger a blur event when the input-number loses focus', async ({ page }) => {
+      await initInputNumber(page);
+      const inputNumber = getInputNumber(page);
+      const host = getHost(page);
+
+      await addEventListener(host, 'blur');
+      expect((await getEventSummary(host, 'blur')).counter).toBe(0);
+
+      await inputNumber.click();
+      await inputNumber.press('Tab');
+      await waitForStencilLifecycle(page);
+
+      expect((await getEventSummary(host, 'blur')).counter).toBe(1);
+    });
+  });
+  test('should trigger an input event each time the input-number value is changed', async ({ page }) => {
+    await initInputNumber(page);
+    const inputNumber = getInputNumber(page);
+    const host = getHost(page);
+
+    await addEventListener(host, 'input');
+    expect((await getEventSummary(host, 'input')).counter).toBe(0);
+
+    await inputNumber.fill('1');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(host, 'input')).counter).toBe(1);
+  });
+});
+
+test.describe('hover state', () => {
+  skipInBrowsers(['firefox', 'webkit']);
+  const defaultBorderColor = 'rgb(107, 109, 112)';
+  const hoverBorderColor = 'rgb(1, 2, 5)';
+
+  test('should show hover state on input-number when label is hovered', async ({ page }) => {
+    await initInputNumber(page, { props: { name: 'Some name', label: 'Some label' } });
+    await page.mouse.move(0, 300); // avoid potential hover initially
+    const label = getLabel(page);
+    const inputNumber = getInputNumber(page);
+    const inputNumberWrapper = getInputNumberWrapper(page);
+
+    await expect(inputNumberWrapper).toHaveCSS('border-color', defaultBorderColor);
+    await inputNumber.hover();
+
+    await expect(inputNumberWrapper).toHaveCSS('border-color', hoverBorderColor);
+
+    await page.mouse.move(0, 300); // undo hover
+    await expect(inputNumberWrapper).toHaveCSS('border-color', defaultBorderColor);
+
+    await label.hover();
+    await expect(inputNumberWrapper).toHaveCSS('border-color', hoverBorderColor);
+  });
+});
+
+test.describe('lifecycle', () => {
+  test('should work without unnecessary round trips on init', async ({ page }) => {
+    await initInputNumber(page, {
+      props: { name: 'Some name', state: 'error', controls: true },
+      useSlottedLabel: true,
+      useSlottedMessage: true,
+      useSlottedDescription: true,
+    });
+    const status = await getLifecycleStatus(page);
+
+    expect(status.componentDidLoad['p-input-number'], 'componentDidLoad: p-input-number').toBe(1);
+    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(3);
+    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
+
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
+  });
+
+  test('should work without unnecessary round trips after state change', async ({ page }) => {
+    await initInputNumber(page, {
+      props: { name: 'Some name', state: 'error', controls: true },
+      useSlottedLabel: true,
+      useSlottedMessage: true,
+      useSlottedDescription: true,
+    });
+    const host = getHost(page);
+    await setProperty(host, 'state', 'none');
+    await waitForStencilLifecycle(page);
+    const status = await getLifecycleStatus(page);
+
+    expect(status.componentDidUpdate['p-input-number'], 'componentDidUpdate: input-number').toBe(1);
+
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+  });
+
+  test('should work without unnecessary round trips after value change', async ({ page }) => {
+    await initInputNumber(page, { props: { name: 'Some name', state: 'error', controls: true } });
+    const host = getHost(page);
+    const status = await getLifecycleStatus(page);
+
+    expect(status.componentDidLoad['p-input-number'], 'componentDidLoad: input-number').toBe(1);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+
+    await setProperty(host, 'value', 10);
+    await waitForStencilLifecycle(page);
+    const statusAfterChange = await getLifecycleStatus(page);
+
+    expect(statusAfterChange.componentDidUpdate['p-input-number'], 'componentDidUpdate: input-number').toBe(1);
+    expect(statusAfterChange.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+  });
+});
+
+test.describe('Controls', () => {
+  test('should increment value by step', async ({ page }) => {
+    await initInputNumber(page, { props: { name: 'Some name', label: 'Some label', controls: true, step: 5 } });
+    const host = getHost(page);
+    const inputNumber = getInputNumber(page);
+    const inputNumberIncrement = getInputNumberIncrement(page);
+
+    await setProperty(host, 'value', 10);
+    await waitForStencilLifecycle(page);
+    expect(await inputNumber.inputValue()).toBe('10');
+    await inputNumberIncrement.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await inputNumber.inputValue()).toBe('15');
+  });
+
+  test('should decrement value by step', async ({ page }) => {
+    await initInputNumber(page, { props: { name: 'Some name', label: 'Some label', controls: true, step: 5 } });
+    const host = getHost(page);
+    const inputNumber = getInputNumber(page);
+    const inputNumberDecrement = getInputNumberDecrement(page);
+
+    await setProperty(host, 'value', 10);
+    await waitForStencilLifecycle(page);
+    expect(await inputNumber.inputValue()).toBe('10');
+    await inputNumberDecrement.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await inputNumber.inputValue()).toBe('5');
+  });
+
+  test('should reset to max if current value exceeds max on decrement', async ({ page }) => {
+    await initInputNumber(page, {
+      props: { name: 'Some name', label: 'Some label', controls: true, max: 100, step: 5 },
+    });
+    const host = getHost(page);
+    const inputNumber = getInputNumber(page);
+    const inputNumberDecrement = getInputNumberDecrement(page);
+
+    await setProperty(host, 'value', 102);
+    await waitForStencilLifecycle(page);
+    expect(await inputNumber.inputValue()).toBe('102');
+    await inputNumberDecrement.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await inputNumber.inputValue()).toBe('100');
+  });
+
+  test('should reset to max if next value exceeds max on increment', async ({ page }) => {
+    await initInputNumber(page, {
+      props: { name: 'Some name', label: 'Some label', controls: true, max: 100, step: 5 },
+    });
+    const host = getHost(page);
+    const inputNumber = getInputNumber(page);
+    const inputNumberIncrement = getInputNumberIncrement(page);
+
+    await setProperty(host, 'value', 99);
+    await waitForStencilLifecycle(page);
+    expect(await inputNumber.inputValue()).toBe('99');
+    await inputNumberIncrement.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await inputNumber.inputValue()).toBe('100');
+  });
+
+  test('should reset to min when incrementing a value under the min limit', async ({ page }) => {
+    await initInputNumber(page, {
+      props: { name: 'Some name', label: 'Some label', controls: true, min: 10, step: 5 },
+    });
+    const host = getHost(page);
+    const inputNumber = getInputNumber(page);
+    const inputNumberIncrement = getInputNumberIncrement(page);
+
+    await setProperty(host, 'value', 3);
+    await waitForStencilLifecycle(page);
+    expect(await inputNumber.inputValue()).toBe('3');
+    await inputNumberIncrement.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await inputNumber.inputValue()).toBe('10');
+  });
+
+  test('should set value to min when decrement would go below the min limit', async ({ page }) => {
+    await initInputNumber(page, {
+      props: { name: 'Some name', label: 'Some label', controls: true, min: 10, step: 5 },
+    });
+    const host = getHost(page);
+    const inputNumber = getInputNumber(page);
+    const inputNumberDecrement = getInputNumberDecrement(page);
+
+    await setProperty(host, 'value', 11);
+    await waitForStencilLifecycle(page);
+    expect(await inputNumber.inputValue()).toBe('11');
+    await inputNumberDecrement.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await inputNumber.inputValue()).toBe('10');
+  });
+});

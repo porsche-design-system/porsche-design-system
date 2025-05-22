@@ -1,0 +1,17 @@
+<p-input-number name="some-name" label="Some Label"></p-input-number>
+
+<p-text>Value: ''</p-text>
+
+<script>
+  const debugElement = document.querySelector('p-text');
+  const textarea = document.querySelector('p-input-number');
+
+  textarea.addEventListener('input', (e) => {
+    e.target.value = e.detail.target.value;
+    setDebugText(e.detail.target.value);
+  });
+
+  function setDebugText(value) {
+    debugElement.innerText = `Value: ${value}`;
+  }
+</script>

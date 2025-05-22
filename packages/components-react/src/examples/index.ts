@@ -26,6 +26,8 @@ export * from './InlineNotificationExampleActionButton';
 export * from './InlineNotificationExampleEvents';
 export * from './InputPasswordExample';
 export * from './InputPasswordExampleControlled';
+export * from './InputNumberExample';
+export * from './InputNumberExampleControlled';
 export * from './LinkTileExampleHyphens';
 export * from './LinkTileProductExample';
 export * from './ModalExample';
