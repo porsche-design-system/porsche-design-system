@@ -78,25 +78,6 @@ export const inputNumberStory: Story<'p-input-number'> = {
   ],
 };
 
-export const inputNumberStoryControls: Story<'p-input-number'> = {
-  generator: () => [
-    {
-      tag: 'p-input-number',
-      properties: { label: 'Some label', name: 'Some name', controls: true },
-    },
-  ],
-};
-
-export const inputNumberStoryUnit: Story<'p-input-number'> = {
-  generator: () => [
-    {
-      tag: 'p-input-number',
-      properties: { label: 'Some label', name: 'Some name' },
-      children: [...inputNumberSlotStories.start.basic.generator()],
-    },
-  ],
-};
-
 export const inputNumberStorySlots: Story<'p-input-number'> = {
   generator: () => [
     {
@@ -120,6 +101,14 @@ export const inputNumberStorySlots: Story<'p-input-number'> = {
             { tag: 'a', properties: { href: 'https://designsystem.porsche.com' }, children: ['link'] },
             '.',
           ],
+        },
+        {
+          tag: 'p-icon',
+          properties: { slot: 'start', name: 'shopping-cart', color: 'contrast-medium', 'aria-hidden': true },
+        },
+        {
+          tag: 'p-button-pure',
+          properties: { slot: 'end', icon: 'delete', hideLabel: true, className: 'p-[4px]' },
         },
         {
           tag: 'span',
