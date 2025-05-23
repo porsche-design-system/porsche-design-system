@@ -4,8 +4,8 @@ import type { SlotStories, Story } from '@/models/story';
 
 export const inputNumberSlotStories: SlotStories<'p-input-number'> = {
   start: {
-    basic: {
-      name: 'Basic',
+    unit: {
+      name: 'Unit',
       generator: () => [
         {
           tag: 'p-text',
@@ -14,23 +14,51 @@ export const inputNumberSlotStories: SlotStories<'p-input-number'> = {
         },
       ],
     },
+    button: {
+      name: 'Button',
+      generator: () => [
+        {
+          tag: 'p-button-pure',
+          properties: { slot: 'start', icon: 'information', hideLabel: true, className: 'p-[4px]' },
+        },
+      ],
+    },
     icon: {
       name: 'Icon',
       generator: () => [
         {
           tag: 'p-icon',
-          properties: { slot: 'start', name: 'check', 'aria-hidden': true },
+          properties: { slot: 'start', name: 'shopping-cart', color: 'contrast-medium', 'aria-hidden': true },
         },
       ],
     },
   },
   end: {
-    basic: {
-      name: 'Basic',
+    unit: {
+      name: 'Unit',
+      generator: () => [
+        {
+          tag: 'p-text',
+          properties: { slot: 'end', color: 'contrast-medium', 'aria-hidden': true },
+          children: ['EUR'],
+        },
+      ],
+    },
+    button: {
+      name: 'Button',
       generator: () => [
         {
           tag: 'p-button-pure',
-          properties: { slot: 'end', icon: 'user', hideLabel: true, style: { padding: '4px' } },
+          properties: { slot: 'end', icon: 'information', hideLabel: true, className: 'p-[4px]' },
+        },
+      ],
+    },
+    icon: {
+      name: 'Icon',
+      generator: () => [
+        {
+          tag: 'p-icon',
+          properties: { slot: 'end', name: 'shopping-cart', color: 'contrast-medium', 'aria-hidden': true },
         },
       ],
     },
