@@ -1,11 +1,5 @@
 import { forceUpdate } from '@stencil/core';
-import {
-  type SelectComponentsDropdownDirection,
-  type Theme,
-  consoleWarn,
-  getHighlightedSelectOptionIndex,
-  getUsableSelectOptions,
-} from '../../../utils';
+import { type SelectComponentsDropdownDirection, type Theme, consoleWarn } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import type { OptgroupInternalHTMLProps } from '../../optgroup/optgroup-utils';
 import type { SelectOptionInternalHTMLProps } from '../select-option/select-option-utils';
@@ -65,15 +59,4 @@ export const setSelectedOption = (options: SelectOption[], selectedOption: Selec
   resetSelectedOption(options);
   selectedOption.selected = true;
   forceUpdate(selectedOption);
-};
-
-export const getSrHighlightedOptionText = (options: SelectOption[]): string => {
-  const highlightedOptionIndex = getHighlightedSelectOptionIndex(options);
-  const highlightedOption = getUsableSelectOptions(options)[highlightedOptionIndex];
-  return (
-    highlightedOption &&
-    `${highlightedOption.textContent || 'Empty option'}${
-      highlightedOption.selected ? ', selected' : ' not selected'
-    } (${highlightedOptionIndex + 1} of ${options.length})`
-  );
 };

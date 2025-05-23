@@ -837,6 +837,19 @@ test.describe('keyboard behavior', () => {
 
       expect(await getHighlightedSelectOptionProperty(page, 'textContent')).toBe(testValues[0]);
     });
+    test('should not set highlight if no option is selected', async ({ page }) => {
+      await buttonElement.press('Space');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex(page)).toBe(-1);
+    });
+    test('should move highlight to the selected option', async ({ page }) => {
+      await initSelect(page, { props: { name: 'selected', value: 'c' } });
+      await buttonElement.press('Space');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex(page)).toBe(2);
+    });
   });
   test('should skip disabled option when pressing ArrowUp/ArrowDown', async ({ page }) => {
     await initSelect(page, {
@@ -1098,7 +1111,7 @@ test.describe('selection', () => {
     await waitForStencilLifecycle(page);
 
     const option = getSelectOption(page, 1);
-    await option.click();
+    await option.click({ force: true });
     await waitForStencilLifecycle(page);
 
     expect(await getSelectValue(page), 'after first option selected').toBeUndefined();
@@ -1326,16 +1339,16 @@ test.describe('lifecycle', () => {
       expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // arrow down and checkmark icon
 
       expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
-      expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+      expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
 
       await buttonElement.press('ArrowDown');
       await buttonElement.press('Enter');
       await waitForStencilLifecycle(page);
 
       const status2 = await getLifecycleStatus(page);
-      expect(status2.componentDidUpdate['p-select-option'], 'componentDidUpdate: p-select-option').toBe(2);
-      expect(status2.componentDidUpdate['p-select'], 'componentDidUpdate: p-select').toBe(3); // Keyboard actions cause update in order to update sr highlighted option text
-      expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(5);
+      expect(status2.componentDidUpdate['p-select-option'], 'componentDidUpdate: p-select-option').toBe(5);
+      expect(status2.componentDidUpdate['p-select'], 'componentDidUpdate: p-select').toBe(2); // Keyboard actions cause update in order to update sr highlighted option text
+      expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(7);
     });
   });
 });
