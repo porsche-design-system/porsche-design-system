@@ -121,7 +121,7 @@ export default [
               default: './styles/vanilla-extract/cjs/vanilla-extract/index.cjs',
             },
             './tailwindcss': {
-              style: './tailwind/index.css',
+              style: './tailwindcss/index.css',
             },
             './ag-grid': {
               types: './ag-grid/esm/index.d.ts',

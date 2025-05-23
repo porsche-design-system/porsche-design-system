@@ -1,0 +1,3 @@
+{
+  "extends": "@porsche-design-system/shared/tsconfig.json"
+}

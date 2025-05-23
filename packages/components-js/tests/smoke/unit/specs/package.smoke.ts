@@ -94,7 +94,7 @@ describe('package.json files', () => {
           default: './styles/vanilla-extract/cjs/vanilla-extract/index.cjs',
         },
         './tailwindcss': {
-          style: './tailwind/index.css',
+          style: './tailwindcss/index.css',
         },
         './testing': {
           types: './testing/index.d.ts',

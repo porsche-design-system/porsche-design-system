@@ -1,0 +1,20 @@
+{
+  "name": "@porsche-design-system/styles-2",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
+  "scripts": {
+    "build": "yarn clean:build && yarn build:tailwindcss",
+    "build:tailwindcss": "yarn --cwd projects/tailwindcss build",
+    "clean:build": "yarn clean:build:tailwindcss",
+    "clean:build:tailwindcss": "yarn --cwd projects/tailwindcss clean:build",
+    "test:unit": "yarn test:unit:tailwindcss",
+    "test:unit:tailwindcss": "yarn --cwd projects/tailwindcss test:unit"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

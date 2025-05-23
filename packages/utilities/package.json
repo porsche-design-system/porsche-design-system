@@ -5,16 +5,14 @@
   "license": "UNLICENSED",
   "scripts": {
     "start-app": "react-scripts start",
-    "build": "yarn build:utilities && yarn build:ag-grid && yarn build:tailwind",
+    "build": "yarn build:utilities && yarn build:ag-grid",
     "build:utilities": "yarn --cwd ./projects/utilities build",
     "build:ag-grid": "yarn --cwd ./projects/ag-grid build",
-    "build:tailwind": "yarn --cwd ./projects/tailwind build",
     "build-app": "react-scripts build",
     "test": "yarn test:unit",
-    "test:unit": "yarn test:unit:utilities && yarn test:unit:ag-grid && yarn test:unit:tailwind",
+    "test:unit": "yarn test:unit:utilities && yarn test:unit:ag-grid",
     "test:unit:utilities": "yarn --cwd ./projects/utilities test",
     "test:unit:ag-grid": "yarn --cwd ./projects/ag-grid test",
-    "test:unit:tailwind": "yarn --cwd ./projects/tailwind test",
     "clean:build": "yarn --cwd ./projects/utilities clean:build"
   },
   "devDependencies": {

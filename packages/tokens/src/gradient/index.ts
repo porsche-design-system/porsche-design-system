@@ -1,0 +1,1 @@
+export { gradientFade } from './gradientFade';
