@@ -37,6 +37,7 @@ const getDropdownOption1 = (page: Page) => page.locator(`${dropdownSelector} .op
 const getDropdownOption2 = (page: Page) => page.locator(`${dropdownSelector} .option:nth-child(2)`);
 const getDropdownOption4 = (page: Page) => page.locator(`${dropdownSelector} .option:nth-child(4)`);
 const getDisabledDropdownOption = (page: Page) => page.locator(`${dropdownSelector} .${disabledClass}`);
+const getHighlightedDropdownOption = (page: Page) => page.locator(`${dropdownSelector} .${highlightedClass}`);
 const getDropdownOptgroup = (page: Page) => page.locator(`${dropdownSelector} .optgroup`);
 const getDropdownCheckmarkIcon = (page: Page) => page.locator(`${dropdownSelector} .icon`);
 
@@ -73,7 +74,7 @@ const openSelect = async (page: Page) => {
 };
 
 type InitOptions = {
-  amount?: 3 | 5;
+  amount?: 3 | 5 | 12;
   isNative?: boolean;
   dropdownDirection?: 'up' | 'down';
   markupBefore?: string;
@@ -97,7 +98,7 @@ const initSelect = (page: Page, opts?: InitOptions): Promise<void> => {
     includeOptgroups = false,
   } = opts || {};
 
-  const options = [...'abc', ...(amount === 5 ? 'de' : '')].map((x, idx) => {
+  const options = [...'abc', ...(amount === 5 ? 'de' : amount === 12 ? 'defeghijk' : '')].map((x, idx) => {
     const attrs = [
       disabledIndex === idx ? 'disabled' : '',
       selectedIndex === idx ? 'selected' : '',
@@ -697,6 +698,21 @@ test.describe('keyboard and click events', () => {
     await waitForStencilLifecycle(page);
     expect(await getSelectedIndex(page), 'for selected index').toBe(1);
     expect((await getEventSummary(select, 'change')).counter, 'for calls').toBe(1);
+  });
+
+  test('should scroll to highlighted option on PageDown', async ({ page }) => {
+    await initSelect(page, { amount: 12 });
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Space');
+    await waitForStencilLifecycle(page);
+    await page.keyboard.press('PageDown');
+    await waitForStencilLifecycle(page);
+
+    expect(await getAmountOfDropdownOptions(page)).toBe(12);
+    expect(await getHighlightedDropdownOptionIndex(page), 'for highlighted custom option').toBe(11);
+
+    await expect(getHighlightedDropdownOption(page), 'for highlighted option').toBeInViewport();
   });
 
   test.describe('when dropdown is not open', () => {
