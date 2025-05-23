@@ -21,7 +21,12 @@
 </div>
 
 <div class="playground light" title="should render with label and placeholder">
-  <p-input-number name="some-name" label="Label with placeholder" placeholder="Some placeholder" controls="true"></p-input-number>
+  <p-input-number
+    name="some-name"
+    label="Label with placeholder"
+    placeholder="Some placeholder"
+    controls="true"
+  ></p-input-number>
 </div>
 
 <div class="playground light" title="should render with label, description and placeholder">
@@ -64,33 +69,60 @@
 
 <div class="playground light" title="should render with slot end">
   <p-input-number name="some-name" label="Label" value="1234">
-    <p-button-pure slot="end" hide-label="true" icon="close" class="p-1">Some label</p-button-pure>
+    <p-button-pure slot="end" hide-label="true" icon="close" class="p-static-xs">Some label</p-button-pure>
+  </p-input-number>
+</div>
+
+<div class="playground light" title="should render with slot end and controls">
+  <p-input-number name="some-name" label="Label" value="1234" controls="true">
+    <p-button-pure slot="end" hide-label="true" icon="close" class="p-static-xs">Some label</p-button-pure>
   </p-input-number>
 </div>
 
 <div class="playground light" title="should render in required state">
   <p-input-number name="some-name" label="Required" required="true" controls="true"></p-input-number>
-  <p-input-number name="some-name" label="Required and insanely super long label across multiple lines" required="true" controls="true"></p-input-number>
+  <p-input-number
+    name="some-name"
+    label="Required and insanely super long label across multiple lines"
+    required="true"
+    controls="true"
+  ></p-input-number>
 </div>
 
 <div class="playground light" title="should render in disabled state">
-  <p-input-number name="some-name" label="Disabled" description="Some description" value="1234" disabled="true" controls="true"></p-input-number>
+  <p-input-number
+    name="some-name"
+    label="Disabled"
+    description="Some description"
+    value="1234"
+    disabled="true"
+    controls="true"
+  ></p-input-number>
 </div>
 
 <div class="playground light" title="should render with placeholder in disabled state">
-  <p-input-number name="some-name" label="Disabled placeholder" disabled="true" placeholder="Some placeholder" controls="true"></p-input-number>
+  <p-input-number
+    name="some-name"
+    label="Disabled placeholder"
+    disabled="true"
+    placeholder="Some placeholder"
+    controls="true"
+  ></p-input-number>
 </div>
 
 <div class="playground light" title="should render with readonly state">
-  <p-input-number name="some-name" label="Readonly" description="Some description" value="1234" read-only="true" controls="true"></p-input-number>
+  <p-input-number
+    name="some-name"
+    label="Readonly"
+    description="Some description"
+    value="1234"
+    read-only="true"
+    controls="true"
+  ></p-input-number>
 </div>
 
 <div class="playground light" title="should render without controls">
-  <p-input-number
-    name="some-name"
-    label="Type controls=false"
-    value="1234"
-  ></p-input-number>
+  <p-input-number name="some-name" label="Type controls=false" value="1234"></p-input-number>
 </div>
 
 <div class="playground light" title="should render with disabled increment control">
@@ -114,7 +146,13 @@
 </div>
 
 <div class="playground light" title="should render with error state and error message">
-  <p-input-number name="some-name" label="Error with message" state="error" message="Error message" controls="true"></p-input-number>
+  <p-input-number
+    name="some-name"
+    label="Error with message"
+    state="error"
+    message="Error message"
+    controls="true"
+  ></p-input-number>
 </div>
 
 <div class="playground light" title="should render with error state and no error message">
@@ -122,7 +160,13 @@
 </div>
 
 <div class="playground light" title="should render with success state and success message">
-  <p-input-number name="some-name" label="Success with message" state="success" message="Success message" controls="true"></p-input-number>
+  <p-input-number
+    name="some-name"
+    label="Success with message"
+    state="success"
+    message="Success message"
+    controls="true"
+  ></p-input-number>
 </div>
 
 <div class="playground light" title="should render with success state and no success message">
@@ -210,7 +254,14 @@
 
 <div class="playground light auto-layout-inline" title="should render in compact mode">
   <p-input-number label="Some label" compact="true" name="some-name" value="1234" controls="true"></p-input-number>
-  <p-input-number label="Some label" compact="true" name="some-name" value="1234" disabled="true" controls="true"></p-input-number>
+  <p-input-number
+    label="Some label"
+    compact="true"
+    name="some-name"
+    value="1234"
+    disabled="true"
+    controls="true"
+  ></p-input-number>
   <p-input-number
     compact="true"
     label="Lorem ipsum dolor sit amet, consetetur sadipscing"
