@@ -145,6 +145,21 @@ export class InputNumber {
   private inputElement: HTMLInputElement;
   private defaultValue: string;
 
+  private get nextStepValues() {
+    const current = Number.parseFloat(this.value ?? '') || 0;
+
+    const nextUp = applyStep(this.value, this.step, 'increment', this.min, this.max);
+    const nextDown = applyStep(this.value, this.step, 'decrement', this.min, this.max);
+
+    return {
+      current,
+      nextUp,
+      nextDown,
+      canIncrement: nextUp !== String(current),
+      canDecrement: nextDown !== String(current),
+    };
+  }
+
   @Watch('value')
   public onValueChange(newValue: string): void {
     this.internals?.setFormValue(newValue);
@@ -279,21 +294,6 @@ export class InputNumber {
     const target = e.target as HTMLInputElement;
     this.value = target.value; // triggers @Watch('value')
   };
-
-  private get nextStepValues() {
-    const current = Number.parseFloat(this.value ?? '') || 0;
-
-    const nextUp = applyStep(this.value, this.step, 'increment', this.min, this.max);
-    const nextDown = applyStep(this.value, this.step, 'decrement', this.min, this.max);
-
-    return {
-      current,
-      nextUp,
-      nextDown,
-      canIncrement: nextUp !== String(current),
-      canDecrement: nextDown !== String(current),
-    };
-  }
 
   private updateValue(direction: 'increment' | 'decrement'): void {
     const { nextUp, nextDown } = this.nextStepValues;
