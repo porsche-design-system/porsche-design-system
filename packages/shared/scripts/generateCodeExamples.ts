@@ -399,6 +399,20 @@ const codeExamples: CodeSample[] = [
     ],
   },
   {
+    component: 'p-popover',
+    examples: [
+      {
+        name: 'PopoverExampleControlled',
+        paths: {
+          'vanilla-js': '/popover-example-controlled.html',
+          angular: '/popover-example-controlled.component.ts',
+          react: '/PopoverExampleControlled.tsx',
+          vue: '/PopoverExampleControlled.vue',
+        },
+      },
+    ],
+  },
+  {
     component: 'p-scroller',
     examples: [
       {

@@ -1,0 +1,24 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { popoverExampleControlled } from '@porsche-design-system/shared/examples';
+
+export const metadata = {
+  title: 'Popover - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Popover component.',
+};
+
+# Popover <ComponentStatus tagName="p-popover"></ComponentStatus>
+
+<TableOfContents headings={['Controlled','AI Legal Example']} />
+
+## Controlled
+
+By default the `p-popover`component has a fully managed internal state and manages its own open/close state. But the
+component can also be used with a **slotted button** as a controlled component. This means that the behavior must be
+controlled from outside by using the `open` prop. Don't forget to also set the `aria-expanded` and focus state by your
+own.
+
+<ComponentExample codeSample={popoverExampleControlled} />
+
+## AI Legal Example
