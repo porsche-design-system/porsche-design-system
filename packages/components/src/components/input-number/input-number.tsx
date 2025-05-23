@@ -1,4 +1,15 @@
-import { AttachInternals, Component, Element, Event, type EventEmitter, type JSX, Prop, Watch, h } from '@stencil/core';
+import {
+  AttachInternals,
+  Component,
+  Element,
+  Event,
+  type EventEmitter,
+  Fragment,
+  type JSX,
+  Prop,
+  Watch,
+  h,
+} from '@stencil/core';
 import { getSlottedAnchorStyles } from '../../styles';
 import { getSlottedInputIndicatorStyles } from '../../styles/global/slotted-input-indicator-styles';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
@@ -8,21 +19,21 @@ import {
   THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
+  getPrefixedTagNames,
   hasPropValueChanged,
   validateProps,
-  getPrefixedTagNames,
 } from '../../utils';
+import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-number-styles';
 import {
-  applyStep,
   INPUT_NUMBER_AUTO_COMPLETE,
   type InputNumberAutoComplete,
   type InputNumberBlurEventDetail,
   type InputNumberChangeEventDetail,
   type InputNumberInputEventDetail,
   type InputNumberState,
+  applyStep,
 } from './input-number-utils';
-import { InputBase } from '../common/input-base/input-base';
 
 const propTypes: PropTypes<typeof InputNumber> = {
   label: AllowedTypes.string,
@@ -217,36 +228,36 @@ export class InputNumber {
         message={this.message}
         theme={this.theme}
         step={this.step}
-        end={
-          this.controls
-            ? [
-                <PrefixedTagNames.pButtonPure
-                  tabIndex={-1}
-                  hideLabel={true}
-                  theme={this.theme}
-                  class="button"
-                  type="button"
-                  icon="minus"
-                  disabled={this.disabled || this.readOnly || !canDecrement}
-                  onClick={() => this.updateValue('decrement')}
-                >
-                  Decrement value by {this.step}
-                </PrefixedTagNames.pButtonPure>,
-                <PrefixedTagNames.pButtonPure
-                  tabIndex={-1}
-                  hideLabel={true}
-                  theme={this.theme}
-                  class="button"
-                  type="button"
-                  icon="plus"
-                  disabled={this.disabled || this.readOnly || !canIncrement}
-                  onClick={() => this.updateValue('increment')}
-                >
-                  Increment value by {this.step}
-                </PrefixedTagNames.pButtonPure>,
-              ]
-            : null
-        }
+        {...(this.controls && {
+          end: (
+            <Fragment>
+              <PrefixedTagNames.pButtonPure
+                tabIndex={-1}
+                hideLabel={true}
+                theme={this.theme}
+                class="button"
+                type="button"
+                icon="minus"
+                disabled={this.disabled || this.readOnly || !canDecrement}
+                onClick={() => this.updateValue('decrement')}
+              >
+                Decrement value by {this.step}
+              </PrefixedTagNames.pButtonPure>
+              <PrefixedTagNames.pButtonPure
+                tabIndex={-1}
+                hideLabel={true}
+                theme={this.theme}
+                class="button"
+                type="button"
+                icon="plus"
+                disabled={this.disabled || this.readOnly || !canIncrement}
+                onClick={() => this.updateValue('increment')}
+              >
+                Increment value by {this.step}
+              </PrefixedTagNames.pButtonPure>
+            </Fragment>
+          ),
+        })}
       />
     );
   }
