@@ -61,9 +61,10 @@ services:
       - storefront-node-modules:/opt/porsche-design-system-app/packages/storefront/node_modules
       - storefront-stackblitz-node-modules:/opt/porsche-design-system-app/packages/storefront/projects/stackblitz/node_modules
       - tokens-node-modules:/opt/porsche-design-system-app/packages/tokens/node_modules
+      - styles-node-modules:/opt/porsche-design-system-app/packages/styles/node_modules
+      - styles-tailwindcss-node-modules:/opt/porsche-design-system-app/packages/styles/projects/tailwindcss/node_modules
       - utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/node_modules
       - utilities-ag-grid-node-modules:/opt/porsche-design-system-app/packages/utilities/projects/ag-grid/node_modules
-      - utilities-tailwind-node-modules:/opt/porsche-design-system-app/packages/utilities/projects/tailwind/node_modules
       - utilities-utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/projects/utilities/node_modules
   change-volume-owner:
     image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.49.1-jammy-test-3
@@ -98,9 +99,10 @@ services:
       - storefront-node-modules:/opt/porsche-design-system-volumes/storefront-node_modules
       - storefront-stackblitz-node-modules:/opt/porsche-design-system-volumes/storefront-stackblitz-node_modules
       - tokens-node-modules:/opt/porsche-design-system-volumes/tokens-node_modules
+      - styles-node-modules:/opt/porsche-design-system-volumes/styles-node_modules
+      - styles-tailwindcss-node-modules:/opt/porsche-design-system-volumes/styles-tailwindcss-node_modules
       - utilities-node-modules:/opt/porsche-design-system-volumes/utilities-node_modules
       - utilities-ag-grid-node-modules:/opt/porsche-design-system-volumes/utilities-ag-grid-node_modules
-      - utilities-tailwind-node-modules:/opt/porsche-design-system-volumes/utilities-tailwind-node_modules
       - utilities-utilities-node-modules:/opt/porsche-design-system-volumes/utilities-utilities-node_modules
     command: |
       sh -c "chown ${RUN_UID}:${RUN_GID} /opt/porsche-design-system-volumes/*"
@@ -135,7 +137,8 @@ volumes:
   storefront-node-modules:
   storefront-stackblitz-node-modules:
   tokens-node-modules:
+  styles-node-modules:
+  styles-tailwindcss-node-modules:
   utilities-node-modules:
   utilities-ag-grid-node-modules:
-  utilities-tailwind-node-modules:
   utilities-utilities-node-modules:

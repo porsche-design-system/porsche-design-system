@@ -1,1 +1,1 @@
-export const colorActiveLight = 'rgba(148,149,152,.20)';
+export const colorActiveLight = 'rgba(148,149,152,.2)';
