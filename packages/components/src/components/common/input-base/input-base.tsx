@@ -1,4 +1,4 @@
-import { type FunctionalComponent, h, type JSX } from '@stencil/core';
+import { type FunctionalComponent, type JSX, h } from '@stencil/core';
 import type { Theme } from '../../../types';
 import { Label } from '../label/label';
 import { descriptionId } from '../label/label-utils';
@@ -84,7 +84,8 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
         isDisabled={disabled}
       />
       <div class="wrapper">
-        <slot name="start">{start}</slot>
+        <slot name="start" />
+        {start}
         <input
           aria-describedby={`${descriptionId} ${messageId}`}
           aria-invalid={state === 'error' ? 'true' : null}
@@ -109,7 +110,8 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
           autocomplete={autoComplete}
           disabled={disabled}
         />
-        <slot name="end">{end}</slot>
+        {end}
+        <slot name="end" />
       </div>
       <StateMessage state={state} message={message} theme={theme} host={host} />
     </div>
