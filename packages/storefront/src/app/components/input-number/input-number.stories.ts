@@ -19,7 +19,12 @@ export const inputNumberSlotStories: SlotStories<'p-input-number'> = {
       generator: () => [
         {
           tag: 'p-button-pure',
-          properties: { slot: 'start', icon: 'information', hideLabel: true, className: 'p-[4px]' },
+          properties: {
+            slot: 'start',
+            icon: 'information',
+            hideLabel: true,
+            className: 'p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)',
+          },
         },
       ],
     },
@@ -49,7 +54,12 @@ export const inputNumberSlotStories: SlotStories<'p-input-number'> = {
       generator: () => [
         {
           tag: 'p-button-pure',
-          properties: { slot: 'end', icon: 'information', hideLabel: true, className: 'p-[4px]' },
+          properties: {
+            slot: 'end',
+            icon: 'information',
+            hideLabel: true,
+            className: 'p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)',
+          },
         },
       ],
     },
@@ -108,7 +118,12 @@ export const inputNumberStorySlots: Story<'p-input-number'> = {
         },
         {
           tag: 'p-button-pure',
-          properties: { slot: 'end', icon: 'delete', hideLabel: true, className: 'p-[4px]' },
+          properties: {
+            slot: 'end',
+            icon: 'delete',
+            hideLabel: true,
+            className: 'p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)',
+          },
         },
         {
           tag: 'span',
