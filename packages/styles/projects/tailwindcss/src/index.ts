@@ -219,7 +219,7 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
   --border-width-thin: ${borderWidthThin};
 
   /* Blur */
-  --blur-frosted: ${blurFrosted};
+  --blur-frosted: ${blurFrosted.replace(/blur\((.*)\)/, '$1')};
 
   /* Shadow */
   --shadow-low: ${shadowLow};

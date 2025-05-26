@@ -132,7 +132,7 @@ exports[`tailwind package content > should match content 1`] = `
   --border-width-thin: 1px;
 
   /* Blur */
-  --blur-frosted: blur(32px);
+  --blur-frosted: 32px;
 
   /* Shadow */
   --shadow-low: 0px 3px 8px rgba(0,0,0,.16);
