@@ -29,7 +29,13 @@ export const cssVarInternalInputBaseScaling = '--p-internal-input-base-scaling';
 // Defaults to 1 for the standard size and can be overridden by the CSS variable `cssVarInternalInputBaseScaling`.
 export const getScalingVar = (compact: boolean) => `var(${cssVarInternalInputBaseScaling}, ${compact ? 0.5 : 1})`;
 
+/**
+ * @css-variable {"name": "--ref-p-input-slotted-padding", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `padding` in oder to adjust the spacings correctly.", "defaultValue": "4px"}
+ */
 export const cssVarButtonPurePadding = '--ref-p-input-slotted-padding';
+/**
+ * @css-variable {"name": "--ref-p-input-slotted-margin", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `margin` in oder to adjust the spacings correctly.", "defaultValue": "-4px"}
+ */
 export const cssVarButtonPureMargin = '--ref-p-input-slotted-margin';
 
 export const getFunctionalComponentInputBaseStyles = (
