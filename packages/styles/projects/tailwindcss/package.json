@@ -22,10 +22,10 @@
     "clean:build": "rm -rf ./dist"
   },
   "devDependencies": {
-    "@porsche-design-system/shared": "0.0.0",
-    "tailwindcss": "^4.1.4"
+    "@porsche-design-system/shared": "0.0.0"
   },
   "peerDependencies": {
+    "tailwindcss": "*",
     "vitest": "*",
     "tsx": "*",
     "typescript": "*"
