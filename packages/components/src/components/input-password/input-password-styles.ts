@@ -1,8 +1,11 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { getCss } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
-import { getScalingVar, getFunctionalComponentInputBaseStyles } from '../common/input-base/input-base-styles';
-import { formButtonOrIconPadding } from '../../styles/form-styles';
+import {
+  cssVarButtonPureMargin,
+  cssVarButtonPurePadding,
+  getFunctionalComponentInputBaseStyles,
+} from '../common/input-base/input-base-styles';
 
 export const getComponentCss = (
   disabled: boolean,
@@ -13,10 +16,8 @@ export const getComponentCss = (
   readOnly: boolean,
   theme: Theme
 ): string => {
-  const scalingVar = getScalingVar(compact);
-  const paddingButton = compact ? '0px' : `calc(${formButtonOrIconPadding} * ${scalingVar})`;
   return getCss({
-    ...getFunctionalComponentInputBaseStyles(disabled, hideLabel, state, toggle, compact, readOnly, theme, {
+    ...getFunctionalComponentInputBaseStyles(disabled, hideLabel, state, compact, readOnly, theme, {
       '&[type="text"]': {
         textOverflow: 'ellipsis',
       },
@@ -24,7 +25,8 @@ export const getComponentCss = (
     ...(toggle && {
       button: {
         placeSelf: 'center',
-        padding: paddingButton, // TODO resolve inconsistency in Figma
+        padding: `var(${cssVarButtonPurePadding})`, // TODO resolve inconsistency in Figma
+        marginInline: `var(${cssVarButtonPureMargin})`,
       },
     }),
   });

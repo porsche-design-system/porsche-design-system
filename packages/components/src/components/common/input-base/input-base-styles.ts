@@ -2,9 +2,11 @@ import {
   borderRadiusSmall,
   borderWidthBase,
   fontLineHeight,
+  spacingStaticMedium,
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/styles';
+import type { JssStyle, Styles } from 'jss';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -16,27 +18,24 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
-import {
-  formElementLayeredGap,
-  formElementPaddingHorizontal,
-  formElementPaddingVertical,
-} from '../../../styles/form-styles';
+import { formElementPaddingHorizontal, formElementPaddingVertical } from '../../../styles/form-styles';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../state-message/state-message-styles';
-import type { JssStyle, Styles } from 'jss';
 
 export const cssVarInternalInputBaseScaling = '--p-internal-input-base-scaling';
 // Determines the scaling factor for the input-number size. In "compact" mode, it uses 0.5 to achieve a 36px input-number (compact size).
 // Defaults to 1 for the standard size and can be overridden by the CSS variable `cssVarInternalInputBaseScaling`.
 export const getScalingVar = (compact: boolean) => `var(${cssVarInternalInputBaseScaling}, ${compact ? 0.5 : 1})`;
 
+export const cssVarButtonPurePadding = '--ref-p-input-slotted-padding';
+export const cssVarButtonPureMargin = '--ref-p-input-slotted-margin';
+
 export const getFunctionalComponentInputBaseStyles = (
   disabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
-  button: boolean,
   compact: boolean,
   readOnly: boolean,
   theme: Theme,
@@ -48,6 +47,15 @@ export const getFunctionalComponentInputBaseStyles = (
   const paddingInline = `max(2px, ${formElementPaddingHorizontal} * ${scalingVar})`;
 
   const height = `max(${fontLineHeight}, ${scalingVar} * (${fontLineHeight} + 10px))`;
+
+  const gap = `max(4px, calc(${spacingStaticMedium} * ${scalingVar}))`;
+
+  // This will return 0 for <= 0.5, ~4 for 1 and ~8 for 2 scaling...
+  const buttonCompensation = `clamp(
+      0,
+      6.42 * pow(calc(${scalingVar} - 0.5), 0.6826),
+      12
+    )`;
 
   const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
   const {
@@ -76,6 +84,8 @@ export const getFunctionalComponentInputBaseStyles = (
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
+          [`${cssVarButtonPurePadding}`]: `calc(1px * ${buttonCompensation})`,
+          [`${cssVarButtonPureMargin}`]: `calc(-1px * ${buttonCompensation})`,
         }),
       },
       ...preventFoucOfNestedElementsStyles,
@@ -109,9 +119,9 @@ export const getFunctionalComponentInputBaseStyles = (
       border: `${borderWidthBase} solid ${formStateColor || contrastMediumColor}`,
       borderRadius: borderRadiusSmall,
       paddingInlineStart: paddingInline,
-      paddingInlineEnd: button ? paddingBlock : paddingInline, // TODO resolve inconsistency in Figma
+      paddingInlineEnd: paddingInline, // TODO resolve inconsistency in Figma
       display: 'flex',
-      gap: formElementLayeredGap,
+      gap,
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         borderColor: formStateColorDark || contrastMediumColorDark,
