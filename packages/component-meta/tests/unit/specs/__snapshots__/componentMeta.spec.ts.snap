@@ -4165,6 +4165,16 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-input-number": {
+    "cssVariablesMeta": {
+      "--ref-p-input-slotted-margin": {
+        "defaultValue": "-4px",
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
+      },
+      "--ref-p-input-slotted-padding": {
+        "defaultValue": "4px",
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`padding\` in oder to adjust the spacings correctly.",
+      },
+    },
     "eventsMeta": {
       "blur": {
         "description": "Emitted when the number input has lost focus.",
@@ -4354,6 +4364,16 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-input-password": {
+    "cssVariablesMeta": {
+      "--ref-p-input-slotted-margin": {
+        "defaultValue": "-4px",
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
+      },
+      "--ref-p-input-slotted-padding": {
+        "defaultValue": "4px",
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`padding\` in oder to adjust the spacings correctly.",
+      },
+    },
     "eventsMeta": {
       "blur": {
         "description": "Emitted when the password input has lost focus.",
@@ -4524,7 +4544,7 @@ exports[`should match snapshot 1`] = `
         "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
       "end": {
-        "description": "Shows content at the end of the input (e.g. toggle button, unit suffix). Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+        "description": "Shows content at the end of the input (e.g. toggle button, unit suffix).",
       },
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
@@ -4533,7 +4553,7 @@ exports[`should match snapshot 1`] = `
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
       "start": {
-        "description": "Shows content at the start of the input (e.g. unit prefix). Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+        "description": "Shows content at the start of the input (e.g. unit prefix).",
       },
     },
     "styling": "jss",
