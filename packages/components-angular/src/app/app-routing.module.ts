@@ -256,16 +256,6 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.PinCodeExampleControlledComponent,
   },
   {
-    name: 'Popover Example Controlled',
-    path: 'popover-example-controlled',
-    component: fromExamples.PopoverExampleControlledComponent,
-  },
-  {
-    name: 'Popover Example Controlled AI Tag',
-    path: 'popover-example-controlled-ai-tag',
-    component: fromExamples.PopoverExampleControlledAiTagComponent,
-  },
-  {
     name: 'Scroller Example',
     path: 'scroller-example',
     component: fromExamples.ScrollerExampleComponent,

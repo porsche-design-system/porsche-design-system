@@ -32,8 +32,6 @@ import { MultiSelectExampleDynamicComponent } from './multi-select-example-dynam
 import { MultiSelectExampleComponent } from './multi-select-example.component';
 import { PinCodeExampleControlledComponent } from './pin-code-example-controlled.component';
 import { PinCodeExampleComponent } from './pin-code-example.component';
-import { PopoverExampleControlledComponent } from './popover-example-controlled.component';
-import { PopoverExampleControlledAiTagComponent } from './popover-example-controlled-ai-tag.component';
 import { ScrollerExampleComponent } from './scroller-example.component';
 import { SegmentedControlExampleControlledComponent } from './segmented-control-example-controlled.component';
 import { SegmentedControlExampleComponent } from './segmented-control-example.component';
@@ -92,8 +90,6 @@ export const examples = [
   MultiSelectExampleDynamicComponent,
   PinCodeExampleComponent,
   PinCodeExampleControlledComponent,
-  PopoverExampleControlledComponent,
-  PopoverExampleControlledAiTagComponent,
   ScrollerExampleComponent,
   SegmentedControlExampleControlledComponent,
   SegmentedControlExampleComponent,
@@ -151,8 +147,6 @@ export * from './multi-select-example-controlled.component';
 export * from './multi-select-example-dynamic.component';
 export * from './pin-code-example.component';
 export * from './pin-code-example-controlled.component';
-export * from './popover-example-controlled.component';
-export * from './popover-example-controlled-ai-tag.component';
 export * from './scroller-example.component';
 export * from './segmented-control-example-controlled.component';
 export * from './segmented-control-example.component';

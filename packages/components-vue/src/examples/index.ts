@@ -32,8 +32,6 @@ export { default as MultiSelectExampleControlled } from './MultiSelectExampleCon
 export { default as MultiSelectExampleDynamic } from './MultiSelectExampleDynamic.vue';
 export { default as PinCodeExample } from './PinCodeExample.vue';
 export { default as PinCodeExampleControlled } from './PinCodeExampleControlled.vue';
-export { default as PopoverExampleControlled } from './PopoverExampleControlled.vue';
-export { default as PopoverExampleControlledAiTag } from './PopoverExampleControlledAiTag.vue';
 export { default as ScrollerExample } from './ScrollerExample.vue';
 export { default as SegmentedControlExampleControlled } from './SegmentedControlExampleControlled.vue';
 export { default as SegmentedControlExample } from './SegmentedControlExample.vue';

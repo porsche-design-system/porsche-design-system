@@ -257,16 +257,6 @@ export const routes: RouteType[] = [
     element: <fromExamples.PinCodeExampleControlledPage />,
   },
   {
-    name: 'Popover Example Controlled',
-    path: '/popover-example-controlled',
-    element: <fromExamples.PopoverControlledExamplePage />,
-  },
-  {
-    name: 'Popover Example Controlled AI Tag',
-    path: '/popover-example-controlled-ai-tag',
-    element: <fromExamples.PopoverControlledAiTagExamplePage />,
-  },
-  {
     name: 'Scroller Example',
     path: '/scroller-example',
     element: <fromExamples.ScrollerExamplePage />,
