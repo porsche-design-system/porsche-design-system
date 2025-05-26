@@ -215,6 +215,7 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
   --radius-lg: ${borderRadiusLg};
 
   --default-border-width: ${borderWidthRegular};
+  --border-width-regular: ${borderWidthRegular};
   --border-width-thin: ${borderWidthThin};
 
   /* Blur */
@@ -447,18 +448,6 @@ export const tailwindcssTheme = `@custom-variant dark (&:where(.dark, .dark *));
   @apply animate-skeleton;
   @apply block rounded-sm;
   @apply bg-surface bg-[linear-gradient(to_right,transparent_0%,var(--color-skeleton)_20%,transparent_50%)] bg-position-[0_0] bg-size-[200%_100%];
-}
-
-@utility skeleton-light {
-  @apply animate-skeleton;
-  @apply block rounded-sm;
-  @apply bg-surface-light bg-[linear-gradient(to_right,transparent_0%,var(--color-skeleton-light)_20%,transparent_50%)] bg-position-[0_0] bg-size-[200%_100%];
-}
-
-@utility skeleton-dark {
-  @apply animate-skeleton;
-  @apply block rounded-sm;
-  @apply bg-surface-dark bg-[linear-gradient(to_right,transparent_0%,var(--color-skeleton-dark)_20%,transparent_50%)] bg-position-[0_0] bg-size-[200%_100%];
 }
 
 /* Typography: Text */

@@ -128,6 +128,7 @@ exports[`should match compiled tailwindcss theme 1`] = `
   --radius-lg: 12px;
 
   --default-border-width: 2px;
+  --border-width-regular: 2px;
   --border-width-thin: 1px;
 
   /* Blur */
@@ -360,18 +361,6 @@ exports[`should match compiled tailwindcss theme 1`] = `
   @apply animate-skeleton;
   @apply block rounded-sm;
   @apply bg-surface bg-[linear-gradient(to_right,transparent_0%,var(--color-skeleton)_20%,transparent_50%)] bg-position-[0_0] bg-size-[200%_100%];
-}
-
-@utility skeleton-light {
-  @apply animate-skeleton;
-  @apply block rounded-sm;
-  @apply bg-surface-light bg-[linear-gradient(to_right,transparent_0%,var(--color-skeleton-light)_20%,transparent_50%)] bg-position-[0_0] bg-size-[200%_100%];
-}
-
-@utility skeleton-dark {
-  @apply animate-skeleton;
-  @apply block rounded-sm;
-  @apply bg-surface-dark bg-[linear-gradient(to_right,transparent_0%,var(--color-skeleton-dark)_20%,transparent_50%)] bg-position-[0_0] bg-size-[200%_100%];
 }
 
 /* Typography: Text */
