@@ -99,6 +99,7 @@
     "lint:components": "biome lint",
     "lint:components-vue": "biome lint",
     "lint:storefront": "biome lint",
+    "test:unit:tokens": "yarn --cwd ./packages/tokens test:unit",
     "test:unit:styles": "yarn --cwd ./packages/styles test:unit",
     "test:unit:styles:tailwindcss": "yarn --cwd ./packages/styles test:unit:tailwindcss",
     "test:unit:assets": "yarn --cwd ./packages/assets test:unit",

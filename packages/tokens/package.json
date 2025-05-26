@@ -25,6 +25,8 @@
   "scripts": {
     "build": "yarn clean:build && yarn build:package",
     "build:package": "tsup",
+    "test": "yarn test:unit",
+    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },
   "devDependencies": {
@@ -32,7 +34,8 @@
   },
   "peerDependencies": {
     "tsup": "*",
-    "typescript": "*"
+    "typescript": "*",
+    "vitest": "*"
   },
   "volta": {
     "extends": "../../package.json"
