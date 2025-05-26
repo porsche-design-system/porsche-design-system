@@ -7,11 +7,11 @@ import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper
  * @param {number} highlightedIndex - The index of the currently highlighted item within the element.
  * @returns {void}
  */
-export const handleScroll = (ul: HTMLElement, highlightedIndex: number): void => {
-  const { maxHeight } = getComputedStyle(ul);
+export const handleScroll = (scrollElement: HTMLElement, highlightedIndex: number): void => {
+  const { maxHeight } = getComputedStyle(scrollElement);
   const hostElementHeight = Number.parseInt(maxHeight, 10);
-  if (ul.scrollHeight > hostElementHeight) {
-    const highlightedNode = getHTMLElements(ul, 'li')[highlightedIndex];
+  if (scrollElement.scrollHeight > hostElementHeight) {
+    const highlightedNode = getHTMLElements(scrollElement, '[role="option"]')[highlightedIndex];
 
     if (highlightedNode) {
       highlightedNode.scrollIntoView({ block: 'nearest' });

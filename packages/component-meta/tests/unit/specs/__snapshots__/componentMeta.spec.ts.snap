@@ -9816,7 +9816,6 @@ exports[`should match snapshot 1`] = `
     "hasObserveChildren": false,
     "hasSlot": false,
     "hostAttributes": {
-      "aria-live": "polite",
       "role": "status",
     },
     "isChunked": true,
