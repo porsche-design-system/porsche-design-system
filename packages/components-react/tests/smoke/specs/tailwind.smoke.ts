@@ -8,7 +8,7 @@ const nodeRequire = createRequire(import.meta.url);
 describe('tailwind package content', () => {
   test('should match content', () => {
     const pkgPath = nodeRequire.resolve('@porsche-design-system/components-react');
-    const themeCssPath = path.join(pkgPath, '../../tailwind/index.css');
+    const themeCssPath = path.join(pkgPath, '../../tailwindcss/index.css');
     const content = fs.readFileSync(themeCssPath, 'utf8');
 
     expect(content).toMatchSnapshot();
