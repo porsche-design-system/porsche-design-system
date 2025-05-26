@@ -1,0 +1,20 @@
+{
+  "name": "vanilla-js",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@porsche-design-system/components-js": "3.28.0-rc.3"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5",
+    "postcss": "^8",
+    "tailwindcss": "^4.1.4",
+    "@tailwindcss/postcss": "^4.1.4"
+  }
+}

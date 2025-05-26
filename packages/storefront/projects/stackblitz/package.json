@@ -1,0 +1,38 @@
+{
+  "name": "@porsche-design-system/stackblitz",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "main": "./dist/openInStackblitz.js",
+  "module": "./dist/openInStackblitz.mjs",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/openInStackblitz.d.mts",
+        "default": "./dist/openInStackblitz.mjs"
+      },
+      "require": {
+        "types": "./dist/openInStackblitz.d.ts",
+        "default": "./dist/openInStackblitz.js"
+      }
+    }
+  },
+  "types": "./dist/openInStackblitz.d.ts",
+  "files": ["./dist/"],
+  "scripts": {
+    "build": "yarn clean:build && yarn build:generateStackblitzBundle && yarn build:lib",
+    "build:generateStackblitzBundle": "tsx --tsconfig tsconfig.node.json scripts/generateStackblitzBundle.ts",
+    "build:lib": "tsup scripts/openInStackblitz.ts --format esm,cjs --dts",
+    "clean:build": "rm -rf ./generated && rm -rf ./dist"
+  },
+  "dependencies": {
+    "@stackblitz/sdk": "1.8.2"
+  },
+  "devDependencies": {
+    "@porsche-design-system/shared": "0.0.0"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}
