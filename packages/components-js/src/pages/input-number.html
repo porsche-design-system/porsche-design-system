@@ -14,6 +14,10 @@
   .scaling-2 {
     --p-internal-input-base-scaling: 2;
   }
+  .input-button {
+    padding: var(--ref-p-input-slotted-padding);
+    margin: var(--ref-p-input-slotted-margin);
+  }
 </style>
 
 <div class="playground light" title="should render with label">
@@ -59,24 +63,6 @@
     value="Responsive label and description"
     controls="true"
   ></p-input-number>
-</div>
-
-<div class="playground light" title="should render with slot start">
-  <p-input-number name="some-name" label="Label" value="1234" controls="true">
-    <div slot="start"><p-text color="contrast-medium" aria-hidden="true">EUR</p-text></div>
-  </p-input-number>
-</div>
-
-<div class="playground light" title="should render with slot end">
-  <p-input-number name="some-name" label="Label" value="1234">
-    <p-button-pure slot="end" hide-label="true" icon="close" class="p-static-xs">Some label</p-button-pure>
-  </p-input-number>
-</div>
-
-<div class="playground light" title="should render with slot end and controls">
-  <p-input-number name="some-name" label="Label" value="1234" controls="true">
-    <p-button-pure slot="end" hide-label="true" icon="close" class="p-static-xs">Some label</p-button-pure>
-  </p-input-number>
 </div>
 
 <div class="playground light" title="should render in required state">
@@ -277,6 +263,10 @@
     name="some-name"
     controls="true"
   ></p-input-number>
+  <p-input-number compact="true" label="Some label" name="some-name" controls="true">
+    <p-button-pure slot="start" hide-label="true" icon="information" class="input-button">Some label</p-button-pure>
+    <p-button-pure slot="end" hide-label="true" icon="close" class="input-button">Some label</p-button-pure>
+  </p-input-number>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with scaling 0">
@@ -332,4 +322,22 @@
     name="some-name"
     controls="true"
   ></p-input-number>
+</div>
+
+<div class="playground light" title="should render with slot start">
+  <p-input-number name="some-name" label="Label" value="1234" controls="true">
+    <div slot="start"><p-text color="contrast-medium" aria-hidden="true">EUR</p-text></div>
+  </p-input-number>
+</div>
+
+<div class="playground light" title="should render with slot end">
+  <p-input-number name="some-name" label="Label" value="1234">
+    <p-button-pure slot="end" hide-label="true" icon="close" class="input-button">Some label</p-button-pure>
+  </p-input-number>
+</div>
+
+<div class="playground light" title="should render with slot end and controls">
+  <p-input-number name="some-name" label="Label" value="1234" controls="true">
+    <p-button-pure slot="end" hide-label="true" icon="close" class="input-button">Some label</p-button-pure>
+  </p-input-number>
 </div>
