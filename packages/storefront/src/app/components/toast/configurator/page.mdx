@@ -1,26 +1,27 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from "@/components/common/TableOfContents";
-import {ComponentExample} from "@/components/playground/ComponentExample";
-import {toastExample} from "@porsche-design-system/shared/examples";
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { toastExample } from '@porsche-design-system/shared/examples';
 
 export const metadata = {
   title: 'Toast - Porsche Design System',
-  description: 'Learn how to use the Porsche Design System\'s Toast component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
-}
+  description:
+    "Learn how to use the Porsche Design System's Toast component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
 
 # Toast <ComponentStatus tagName="p-toast"></ComponentStatus>
 
-The `p-toast` component manages both the queue and display of toast messages.
-Therefore, you can only have a single instance of this component within in your application and its messages are
-rendered on the `#top-layer` which ensures the element to be on top of the page, independent of where `p-toast` is
-placed in the DOM hierarchy (z-index is not relevant anymore and won't have any effect).
+The `p-toast` component manages both, the queue and display of toast messages. Therefore, you can only have a single
+instance of this component within your application. Its messages are rendered on the `#top-layer` which ensures the
+element to be on top of the page, independent of where `p-toast` is placed in the DOM hierarchy (z-index is not relevant
+anymore and won't have any effect).
 
-Review the [notification decision tree](/patterns/notifications/decision-tree/) to determine which notification component
-is best for a particular scenario.
+Review the [notification decision tree](/patterns/notifications/decision-tree/) to determine which notification
+component is best for a particular scenario.
 
-Queuing messages on `p-toast` component happens via its `addMessage()` method.
-For Angular users, we offer the injectable `ToastManager` service, for React, there is the `useToastManager()` hook.
-Both expose the `addMessage()` method, which needs to be called with a parameter that has the following structure:
+Queuing messages on `p-toast` component happens via its `addMessage()` method. For Angular users, we offer the
+injectable `ToastManager` service, for React, there is the `useToastManager()` hook. Both expose the `addMessage()`
+method, which needs to be called with a parameter that has the following structure:
 
 ```ts
 type ToastMessage = {
@@ -32,4 +33,3 @@ type ToastMessage = {
 The bottom position of the `p-toast` can be adjusted via the `--p-toast-position-bottom` CSS variable.
 
 <ComponentExample codeSample={toastExample} />
-
