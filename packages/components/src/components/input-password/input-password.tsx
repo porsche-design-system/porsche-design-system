@@ -23,6 +23,7 @@ import {
   hasPropValueChanged,
   validateProps,
 } from '../../utils';
+import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-password-styles';
 import {
   INPUT_PASSWORD_AUTO_COMPLETE,
@@ -32,7 +33,6 @@ import {
   type InputPasswordInputEventDetail,
   type InputPasswordState,
 } from './input-password-utils';
-import { InputBase } from '../common/input-base/input-base';
 
 const propTypes: PropTypes<typeof InputPassword> = {
   label: AllowedTypes.string,
@@ -59,8 +59,8 @@ const propTypes: PropTypes<typeof InputPassword> = {
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
- * @slot {"name": "start", "description": "Shows content at the start of the input (e.g. unit prefix). Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
- * @slot {"name": "end", "description": "Shows content at the end of the input (e.g. toggle button, unit suffix). Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
+ * @slot {"name": "start", "description": "Shows content at the start of the input (e.g. unit prefix)."}
+ * @slot {"name": "end", "description": "Shows content at the end of the input (e.g. toggle button, unit suffix)."}
  */
 @Component({
   tag: 'p-input-password',
