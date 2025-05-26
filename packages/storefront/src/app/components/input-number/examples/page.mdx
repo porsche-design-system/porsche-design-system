@@ -12,7 +12,7 @@ export const metadata = {
 
 # Input Number <ComponentStatus tagName="p-input-number"></ComponentStatus>
 
-<TableOfContents headings={['Show Controls', 'Show Unit', 'Form', 'Controlled', 'Slots']} />
+<TableOfContents headings={['Form','Controlled','Slots']} />
 
 ## Form
 
@@ -38,7 +38,10 @@ named slot is used (because a property definition is preferred over a named slot
 allowed.
 
 If you need to provide additional information or actions to the user, you can use the `start` and `end` slots. For
-example, you might include an icon, a unit, or an action button. If you use a `p-button-pure`, make sure to set the
-correct padding. Icons and text should use the `contrast-medium` color to avoid being mistaken for a button.
+example, you might include an icon, a unit, or an action button. Icons and text should use the `contrast-medium` color
+to avoid being mistaken for a button.
+
+If you use a `p-button-pure` or a `p-link-pure`, a `padding` and `margin` have to be set with the exposed
+`--ref-p-input-slotted-padding` and `--ref-p-input-slotted-margin` CSS Variables.
 
 <ComponentStory story={inputNumberStorySlots} />
