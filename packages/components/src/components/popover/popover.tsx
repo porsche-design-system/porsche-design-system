@@ -153,7 +153,12 @@ export class Popover {
   private onClickOutside = (e: MouseEvent): void => {
     if (this.open && isClickOutside(e, this.button || this.slottedButton) && isClickOutside(e, this.popover)) {
       this.open = false;
+      this.dismissPopover();
     }
+  };
+
+  private dismissPopover = (): void => {
+    this.dismiss.emit();
   };
 
   private onHostKeydown = (e: KeyboardEvent): void => {

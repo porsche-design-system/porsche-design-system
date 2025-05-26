@@ -1,7 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
-import { ComponentExample } from '@/components/playground/ComponentExample';
-import { popoverExampleControlled } from '@porsche-design-system/shared/examples';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { popoverControlled, popoverControlledAiTag } from '@/app/components/popover/popover.stories';
 
 export const metadata = {
   title: 'Popover - Porsche Design System',
@@ -10,15 +10,24 @@ export const metadata = {
 
 # Popover <ComponentStatus tagName="p-popover"></ComponentStatus>
 
-<TableOfContents headings={['Controlled','AI Legal Example']} />
+<TableOfContents headings={['Controlled', 'AI Tag Example']} />
 
 ## Controlled
 
-By default the `p-popover`component has a fully managed internal state and manages its own open/close state. But the
-component can also be used with a **slotted button** as a controlled component. This means that the behavior must be
-controlled from outside by using the `open` prop. Don't forget to also set the `aria-expanded` and focus state by your
-own.
+By default, the `p-popover`component has a fully managed internal state to open/close the popover. But the component can
+also be used with a **slotted button** as a controlled component. This means that the behavior must be controlled from
+**outside** by using the `open` prop.
 
-<ComponentExample codeSample={popoverExampleControlled} />
+**The following considerations must be also taken into account:**
 
-## AI Legal Example
+1. The `aria-expanded` attribute must be set and changed manually to its corresponding state `true | false`.
+2. The `focus` must be set to the slotted button element when the popover is closed and the `dismissed`event is fired.
+
+<ComponentStory story={popoverControlled} />
+
+## AI Tag Example
+
+This example shows how to use the `p-popover` component with an AI tag to mark contents as "AI-generated" to provide
+additional information, such as its source or context.
+
+<ComponentStory story={popoverControlledAiTag} />
