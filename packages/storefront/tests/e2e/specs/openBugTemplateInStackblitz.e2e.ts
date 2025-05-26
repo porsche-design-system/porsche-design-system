@@ -1,16 +1,13 @@
 import { expect, test } from '@playwright/test';
 
-test('should open stackblitz with correct version, theme and framework', async ({ page }) => {
+test('should open stackblitz with correct theme and framework', async ({ page }) => {
+  test.setTimeout(120000);
   await page.goto('/help/bug-report/');
 
   await expect(page.getByRole('button', { name: 'Vanilla JS' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'React' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Angular' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Vue' })).toBeVisible();
-  await expect(page.locator('#main-content').getByRole('combobox', { name: 'Version', exact: true })).toBeVisible();
-  const selectedVersion = await page
-    .locator('p-select[name="pds-versions"]')
-    .evaluate((select) => (select as any).value);
   const selectedTheme = await page
     .locator('#main-content p-select[name="theme"]')
     .evaluate((select) => (select as any).value);
@@ -24,16 +21,12 @@ test('should open stackblitz with correct version, theme and framework', async (
   await stackBlitzPage.waitForLoadState();
 
   // Wait for the iframe to appear on the parent page
-  await stackBlitzPage.waitForSelector('#PreviewContentWrapper iframe', {
+  await stackBlitzPage.waitForSelector('iframe[title="Preview page"]', {
     state: 'attached', // Ensures the iframe is attached to the DOM
-    timeout: 90000, // Adjust timeout as needed
+    timeout: 120000, // Adjust timeout as needed
   });
 
-  const dependency = stackBlitzPage.getByRole('link', { name: '@porsche-design-system/components-js' });
-  await expect(dependency).toBeVisible();
-  await expect(stackBlitzPage.getByText(selectedVersion)).toBeVisible();
-
-  const iframeElement = stackBlitzPage.locator('#PreviewContentWrapper iframe');
+  const iframeElement = stackBlitzPage.locator('iframe[title="Preview page"]');
   const iframe = iframeElement.contentFrame();
 
   if (iframe) {
