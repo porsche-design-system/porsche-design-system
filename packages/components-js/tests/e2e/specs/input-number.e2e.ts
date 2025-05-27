@@ -308,6 +308,66 @@ test.describe('form', () => {
     await expect(host).toHaveJSProperty('disabled', false);
     await expect(inputNumber).toHaveJSProperty('disabled', false);
   });
+
+  test('should update form value correctly when value is changed via controls (stepUp)', async ({ page }) => {
+    const name = 'name';
+    await initInputNumber(page, {
+      props: { name, label: 'Some label', controls: true, step: 5 },
+      isWithinForm: true,
+      markupAfter: `
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      `,
+    });
+    const form = getForm(page);
+    await addEventListener(form, 'submit');
+    const host = getHost(page);
+    const inputNumber = getInputNumber(page);
+    const inputNumberIncrement = getInputNumberIncrement(page);
+
+    await expect(host).toHaveJSProperty('value', '');
+    await expect(inputNumber).toHaveValue('');
+
+    await inputNumberIncrement.click();
+
+    await expect(host).toHaveJSProperty('value', '5');
+    await expect(inputNumber).toHaveValue('5');
+
+    await page.locator('button[type="submit"]').click(); // Check if ElementInternal value was reset as well
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValue(form, name)).toBe('5');
+  });
+
+  test('should update form value correctly when value is changed via controls (stepDown)', async ({ page }) => {
+    const name = 'name';
+    await initInputNumber(page, {
+      props: { name, label: 'Some label', controls: true, step: 5 },
+      isWithinForm: true,
+      markupAfter: `
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      `,
+    });
+    const form = getForm(page);
+    await addEventListener(form, 'submit');
+    const host = getHost(page);
+    const inputNumber = getInputNumber(page);
+    const inputNumberDecrement = getInputNumberDecrement(page);
+
+    await expect(host).toHaveJSProperty('value', '');
+    await expect(inputNumber).toHaveValue('');
+
+    await inputNumberDecrement.click();
+
+    await expect(host).toHaveJSProperty('value', '-5');
+    await expect(inputNumber).toHaveValue('-5');
+
+    await page.locator('button[type="submit"]').click(); // Check if ElementInternal value was reset as well
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValue(form, name)).toBe('-5');
+  });
 });
 
 test.describe('focus state', () => {
@@ -474,11 +534,11 @@ test.describe('Controls', () => {
 
     await setProperty(host, 'value', 10);
     await waitForStencilLifecycle(page);
-    expect(await inputNumber.inputValue()).toBe('10');
+    await expect(inputNumber).toHaveValue('10');
     await inputNumberIncrement.click();
     await waitForStencilLifecycle(page);
 
-    expect(await inputNumber.inputValue()).toBe('15');
+    await expect(inputNumber).toHaveValue('15');
   });
 
   test('should decrement value by step', async ({ page }) => {
@@ -489,11 +549,11 @@ test.describe('Controls', () => {
 
     await setProperty(host, 'value', 10);
     await waitForStencilLifecycle(page);
-    expect(await inputNumber.inputValue()).toBe('10');
+    await expect(inputNumber).toHaveValue('10');
     await inputNumberDecrement.click();
     await waitForStencilLifecycle(page);
 
-    expect(await inputNumber.inputValue()).toBe('5');
+    await expect(inputNumber).toHaveValue('5');
   });
 
   test('should reset to max if current value exceeds max on decrement', async ({ page }) => {
@@ -503,14 +563,22 @@ test.describe('Controls', () => {
     const host = getHost(page);
     const inputNumber = getInputNumber(page);
     const inputNumberDecrement = getInputNumberDecrement(page);
+    const inputNumberIncrement = getInputNumberIncrement(page);
 
     await setProperty(host, 'value', 102);
-    await waitForStencilLifecycle(page);
-    expect(await inputNumber.inputValue()).toBe('102');
-    await inputNumberDecrement.click();
-    await waitForStencilLifecycle(page);
 
-    expect(await inputNumber.inputValue()).toBe('100');
+    await expect(inputNumber).toHaveValue('102');
+    await expect(inputNumberIncrement).toHaveJSProperty('disabled', true);
+
+    await inputNumberDecrement.click();
+
+    await expect(inputNumber).toHaveValue('100');
+    await expect(inputNumberIncrement).toHaveJSProperty('disabled', true);
+
+    await inputNumberDecrement.click();
+
+    await expect(inputNumber).toHaveValue('95');
+    await expect(inputNumberIncrement).toHaveJSProperty('disabled', false);
   });
 
   test('should reset to max if next value exceeds max on increment', async ({ page }) => {
@@ -522,12 +590,12 @@ test.describe('Controls', () => {
     const inputNumberIncrement = getInputNumberIncrement(page);
 
     await setProperty(host, 'value', 99);
-    await waitForStencilLifecycle(page);
-    expect(await inputNumber.inputValue()).toBe('99');
-    await inputNumberIncrement.click();
-    await waitForStencilLifecycle(page);
 
-    expect(await inputNumber.inputValue()).toBe('100');
+    await expect(inputNumber).toHaveValue('99');
+    await inputNumberIncrement.click();
+
+    await expect(inputNumber).toHaveValue('100');
+    await expect(inputNumberIncrement).toHaveJSProperty('disabled', true);
   });
 
   test('should reset to min when incrementing a value under the min limit', async ({ page }) => {
@@ -537,14 +605,17 @@ test.describe('Controls', () => {
     const host = getHost(page);
     const inputNumber = getInputNumber(page);
     const inputNumberIncrement = getInputNumberIncrement(page);
+    const inputNumberDecrement = getInputNumberDecrement(page);
 
     await setProperty(host, 'value', 3);
-    await waitForStencilLifecycle(page);
-    expect(await inputNumber.inputValue()).toBe('3');
-    await inputNumberIncrement.click();
-    await waitForStencilLifecycle(page);
 
-    expect(await inputNumber.inputValue()).toBe('10');
+    await expect(inputNumber).toHaveValue('3');
+    await expect(inputNumberDecrement).toHaveJSProperty('disabled', true);
+
+    await inputNumberIncrement.click();
+
+    await expect(inputNumber).toHaveValue('10');
+    await expect(inputNumberDecrement).toHaveJSProperty('disabled', true);
   });
 
   test('should set value to min when decrement would go below the min limit', async ({ page }) => {
@@ -556,11 +627,12 @@ test.describe('Controls', () => {
     const inputNumberDecrement = getInputNumberDecrement(page);
 
     await setProperty(host, 'value', 11);
-    await waitForStencilLifecycle(page);
-    expect(await inputNumber.inputValue()).toBe('11');
-    await inputNumberDecrement.click();
-    await waitForStencilLifecycle(page);
 
-    expect(await inputNumber.inputValue()).toBe('10');
+    await expect(inputNumber).toHaveValue('11');
+
+    await inputNumberDecrement.click();
+
+    await expect(inputNumber).toHaveValue('10');
+    await expect(inputNumberDecrement).toHaveJSProperty('disabled', true);
   });
 });

@@ -29,7 +29,6 @@ import {
   type InputNumberChangeEventDetail,
   type InputNumberInputEventDetail,
   type InputNumberState,
-  applyStep,
 } from './input-number-utils';
 
 const propTypes: PropTypes<typeof InputNumber> = {
@@ -193,7 +192,8 @@ export class InputNumber {
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
-    const { canIncrement, canDecrement } = this.nextStepValues;
+    const canStepUp = this.max ? Number(this.value) < this.max : true;
+    const canStepDown = this.min ? Number(this.value) > this.min : true;
 
     return (
       <InputBase
@@ -231,8 +231,8 @@ export class InputNumber {
                 class="button"
                 type="button"
                 icon="minus"
-                disabled={this.disabled || this.readOnly || !canDecrement}
-                onClick={() => this.updateValue('decrement')}
+                disabled={this.disabled || this.readOnly || !canStepDown}
+                onClick={() => this.onStep('down')}
               >
                 Decrement value by {this.step}
               </PrefixedTagNames.pButtonPure>
@@ -243,8 +243,8 @@ export class InputNumber {
                 class="button"
                 type="button"
                 icon="plus"
-                disabled={this.disabled || this.readOnly || !canIncrement}
-                onClick={() => this.updateValue('increment')}
+                disabled={this.disabled || this.readOnly || !canStepUp}
+                onClick={() => this.onStep('up')}
               >
                 Increment value by {this.step}
               </PrefixedTagNames.pButtonPure>
@@ -273,24 +273,8 @@ export class InputNumber {
     this.value = target.value; // triggers @Watch('value')
   };
 
-  private get nextStepValues() {
-    const current = Number.parseFloat(this.value ?? '') || 0;
-
-    const nextUp = applyStep(this.value, this.step, 'increment', this.min, this.max);
-    const nextDown = applyStep(this.value, this.step, 'decrement', this.min, this.max);
-
-    return {
-      current,
-      nextUp,
-      nextDown,
-      canIncrement: nextUp !== String(current),
-      canDecrement: nextDown !== String(current),
-    };
-  }
-
-  private updateValue(direction: 'increment' | 'decrement'): void {
-    const { nextUp, nextDown } = this.nextStepValues;
-    this.value = direction === 'increment' ? nextUp : nextDown;
-    this.inputElement.focus();
-  }
+  private onStep = (step: 'up' | 'down'): void => {
+    this.inputElement[step === 'up' ? 'stepUp' : 'stepDown']();
+    this.value = this.inputElement.value; // triggers @Watch('value')
+  };
 }
