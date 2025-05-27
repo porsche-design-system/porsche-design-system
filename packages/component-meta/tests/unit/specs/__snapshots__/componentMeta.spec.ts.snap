@@ -4167,12 +4167,10 @@ exports[`should match snapshot 1`] = `
   "p-input-number": {
     "cssVariablesMeta": {
       "--ref-p-input-slotted-margin": {
-        "defaultValue": "-4px",
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
       "--ref-p-input-slotted-padding": {
-        "defaultValue": "4px",
-        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`padding\` in oder to adjust the spacings correctly.",
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`padding\` in oder to adjust the alignment correctly.",
       },
     },
     "eventsMeta": {
@@ -4366,12 +4364,10 @@ exports[`should match snapshot 1`] = `
   "p-input-password": {
     "cssVariablesMeta": {
       "--ref-p-input-slotted-margin": {
-        "defaultValue": "-4px",
         "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
       },
       "--ref-p-input-slotted-padding": {
-        "defaultValue": "4px",
-        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`padding\` in oder to adjust the spacings correctly.",
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`padding\` in oder to adjust the alignment correctly.",
       },
     },
     "eventsMeta": {
