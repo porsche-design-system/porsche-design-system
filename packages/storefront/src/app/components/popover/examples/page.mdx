@@ -18,10 +18,10 @@ By default, the `p-popover`component has a fully managed internal state to open/
 also be used with a **slotted button** as a controlled component. This means that the behavior must be controlled from
 **outside** by using the `open` prop.
 
-**The following considerations must be also taken into account:**
+**The following considerations must be taken into account:**
 
 1. The `aria-expanded` attribute must be set and changed manually to its corresponding state `true | false`.
-2. The `focus` must be set to the slotted button element when the popover is closed and the `dismissed`event is fired.
+2. The `focus` must be set to the slotted button element when the popover is closed and the `dismissed` event is fired.
 
 <ComponentStory story={popoverControlled} />
 
@@ -29,5 +29,10 @@ also be used with a **slotted button** as a controlled component. This means tha
 
 This example shows how to use the `p-popover` component with an AI tag to mark contents as "AI-generated" to provide
 additional information, such as its source or context.
+
+**The following considerations must be taken into account:**
+
+1. The `aria-expanded` attribute must be set and changed manually to its corresponding state `true | false`.
+2. The `focus` must be set to the slotted button element when the popover is closed and the `dismissed` event is fired.
 
 <ComponentStory story={popoverControlledAiTag} />

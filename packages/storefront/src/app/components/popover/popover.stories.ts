@@ -60,7 +60,7 @@ export const popoverControlledAiTag: Story<'p-popover'> = {
       children: [
         {
           tag: 'p-tag',
-          properties: { color: 'background-frosted', icon: 'brain', slot: 'button' },
+          properties: { color: 'background-frosted', icon: 'ai-filled', slot: 'button' },
           children: [
             {
               tag: 'button',
@@ -72,8 +72,8 @@ export const popoverControlledAiTag: Story<'p-popover'> = {
                   value: true,
                 },
               },
+              children: ['AI-generated'],
             },
-            'AI-generated',
           ],
         },
         {
