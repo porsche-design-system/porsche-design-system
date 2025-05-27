@@ -34,9 +34,8 @@ export const getComponentCss = (
     }),
     ...(controls && {
       button: {
-        placeSelf: 'center',
-        padding: `var(${cssVarButtonPurePadding})`, // TODO resolve inconsistency in Figma
-        marginInline: `var(${cssVarButtonPureMargin})`,
+        padding: `var(${cssVarButtonPurePadding})`,
+        margin: `var(${cssVarButtonPureMargin})`,
       },
     }),
   });

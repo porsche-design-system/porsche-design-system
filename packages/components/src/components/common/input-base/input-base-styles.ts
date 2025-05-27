@@ -113,8 +113,7 @@ export const getFunctionalComponentInputBaseStyles = (
     wrapper: {
       border: `${borderWidthBase} solid ${formStateColor || contrastMediumColor}`,
       borderRadius: borderRadiusSmall,
-      paddingInlineStart: paddingInline,
-      paddingInlineEnd: paddingInline, // TODO resolve inconsistency in Figma
+      paddingInline,
       display: 'flex',
       alignItems: 'center',
       gap,
