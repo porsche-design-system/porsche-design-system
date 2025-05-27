@@ -1,0 +1,43 @@
+{
+  "name": "@porsche-design-system/tokens",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "files": ["./dist/"],
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
+  "scripts": {
+    "build": "yarn clean:build && yarn build:package",
+    "build:package": "tsup",
+    "test": "yarn test:unit",
+    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
+    "clean:build": "rm -rf ./dist"
+  },
+  "devDependencies": {
+    "@porsche-design-system/shared": "0.0.0"
+  },
+  "peerDependencies": {
+    "tsup": "*",
+    "typescript": "*",
+    "vitest": "*"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

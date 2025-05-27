@@ -1,0 +1,32 @@
+{
+  "name": "@porsche-design-system/styles-2",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
+  "scripts": {
+    "dev": "vite",
+    "preview": "vite preview",
+    "build": "yarn clean:build && yarn build:tailwindcss && yarn build:app",
+    "build:app": "vite build",
+    "build:tailwindcss": "yarn --cwd projects/tailwindcss build",
+    "test:unit": "yarn test:unit:tailwindcss",
+    "test:unit:tailwindcss": "yarn --cwd projects/tailwindcss test:unit",
+    "clean:build": "yarn clean:build:app && yarn clean:build:tailwindcss",
+    "clean:build:app": "rm -rf ./dist",
+    "clean:build:tailwindcss": "yarn --cwd projects/tailwindcss clean:build"
+  },
+  "devDependencies": {
+    "@porsche-design-system/shared": "0.0.0"
+  },
+  "peerDependencies": {
+    "typescript": "*",
+    "@tailwindcss/vite": "*",
+    "vite": "*"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}
