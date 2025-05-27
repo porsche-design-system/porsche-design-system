@@ -111,8 +111,8 @@
   },
   {
     "chunkShortName": "icon",
-    "size": 15218,
-    "gzipSize": 6206
+    "size": 15274,
+    "gzipSize": 6228
   },
   {
     "chunkShortName": "inline-notification",
@@ -157,7 +157,7 @@
   {
     "chunkShortName": "main",
     "size": 83103,
-    "gzipSize": 27316
+    "gzipSize": 27317
   },
   {
     "chunkShortName": "marque",
@@ -196,8 +196,8 @@
   },
   {
     "chunkShortName": "popover",
-    "size": 24401,
-    "gzipSize": 9545
+    "size": 24469,
+    "gzipSize": 9560
   },
   {
     "chunkShortName": "radio-button-wrapper",
@@ -221,8 +221,8 @@
   },
   {
     "chunkShortName": "select-wrapper",
-    "size": 45076,
-    "gzipSize": 16000
+    "size": 45089,
+    "gzipSize": 16007
   },
   {
     "chunkShortName": "sheet",
@@ -296,8 +296,8 @@
   },
   {
     "chunkShortName": "toast",
-    "size": 7588,
-    "gzipSize": 3333
+    "size": 7534,
+    "gzipSize": 3307
   },
   {
     "chunkShortName": "wordmark",
