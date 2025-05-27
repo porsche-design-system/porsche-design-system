@@ -37,7 +37,7 @@ export const ComponentMetaProps = ({ propsMeta }: ComponentMetaPropsProps) => {
 
   return (
     <>
-      <PHeading tag="h2" size="x-large" className="mt-lg mb-md max-w-prose" id="properties">
+      <PHeading tag="h2" size="x-large" className="mt-fluid-lg mb-fluid-md max-w-(--max-width-prose)" id="properties">
         Properties
       </PHeading>
       {hasBreakpointCustomizable && <code>{breakpointCustomizableType}</code>}

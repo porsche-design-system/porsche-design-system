@@ -6,30 +6,23 @@ export const flexStory: Story<'p-flex'> = {
   generator: ({ properties } = {}) => [
     {
       tag: 'p-flex',
-      properties: { ...properties, className: 'example-flex' },
+      properties: { ...properties },
       children: [
-        { tag: 'p-flex-item', children: ['1'] },
-        { tag: 'p-flex-item', children: ['2'] },
-        { tag: 'p-flex-item', children: ['3'] },
-      ],
-    },
-    {
-      tag: 'style',
-      children: [
-        `.example-flex > :nth-child(1n) {
-    background-color: #87cefa;
-  }
-  .example-flex > :nth-child(2n) {
-    background-color: #00bfff;
-  }
-  .example-flex > :nth-child(3n) {
-    background-color: #1e90ff;
-  }
-  .example-flex > * {
-    padding: 0 6vw;
-    color: #010205;
-    text-align: center;
-  }`,
+        {
+          tag: 'p-flex-item',
+          properties: { className: 'bg-sky-100 p-fluid-sm prose-text-sm text-center text-primary-light' },
+          children: ['1'],
+        },
+        {
+          tag: 'p-flex-item',
+          properties: { className: 'bg-sky-200 p-fluid-sm prose-text-sm text-center text-primary-light' },
+          children: ['2'],
+        },
+        {
+          tag: 'p-flex-item',
+          properties: { className: 'bg-sky-300 p-fluid-sm prose-text-sm text-center text-primary-light' },
+          children: ['3'],
+        },
       ],
     },
   ],

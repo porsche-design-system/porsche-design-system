@@ -1,7 +1,6 @@
 'use client';
 
 import { ThemeSelect } from '@/components/common/ThemeSelect';
-import { openInStackblitz } from '@/lib/stackblitz/openInStackblitz';
 import { frameworkNameMap } from '@/models/framework';
 import type { StorefrontTheme } from '@/models/theme';
 import { getAngularCode } from '@/utils/generator/generateAngularMarkup';
@@ -12,20 +11,14 @@ import {
   PButton,
   PSegmentedControl,
   PSegmentedControlItem,
-  PSelect,
-  PSelectOption,
   type SegmentedControlUpdateEventDetail,
   type SelectUpdateEventDetail,
 } from '@porsche-design-system/components-react/ssr';
 import type { Framework } from '@porsche-design-system/shared';
+import { openInStackblitz } from '@porsche-design-system/stackblitz';
 import React, { useState } from 'react';
 
-type OpenBugTemplateInStackBlitzProps = {
-  pdsVersions: string[];
-};
-
-export const OpenBugTemplateInStackBlitz = ({ pdsVersions }: OpenBugTemplateInStackBlitzProps) => {
-  const [selectedPdsVersion, setSelectedPdsVersion] = useState<string>(pdsVersions[0]);
+export const OpenBugTemplateInStackBlitz = () => {
   const [selectedFramework, setSelectedFramework] = useState<Framework>('vanilla-js');
   const [selectedTheme, setSelectedTheme] = useState<StorefrontTheme>('light');
 
@@ -33,15 +26,11 @@ export const OpenBugTemplateInStackBlitz = ({ pdsVersions }: OpenBugTemplateInSt
     setSelectedFramework(e.detail.value as Framework);
   };
 
-  const onUpdatePdsVersion = (e: CustomEvent<SelectUpdateEventDetail>) => {
-    setSelectedPdsVersion(e.detail.value);
-  };
-
   const onUpdateTheme = (e: CustomEvent<SelectUpdateEventDetail>) => {
     setSelectedTheme(e.detail.value as StorefrontTheme);
   };
 
-  const onOpenInStackblitz = async () => {
+  const onOpenInStackblitz = () => {
     const markup = '<p-text>Place your reproduction code here</p-text>';
     const frameworkMarkup: Record<Framework, string> = {
       'vanilla-js': getVanillaJsCode(
@@ -51,18 +40,17 @@ export const OpenBugTemplateInStackBlitz = ({ pdsVersions }: OpenBugTemplateInSt
         {
           isFullConfig: true,
           theme: selectedTheme,
-          pdsVersion: selectedPdsVersion,
         }
       ),
       react: getReactCode({ markup }),
       angular: getAngularCode({ markup }),
       vue: getVueCode({ markup }),
     };
-    await openInStackblitz(frameworkMarkup[selectedFramework], selectedFramework, selectedTheme, selectedPdsVersion);
+    openInStackblitz(selectedFramework, frameworkMarkup[selectedFramework], selectedTheme);
   };
 
   return (
-    <div className="flex flex-col gap-sm">
+    <div className="flex flex-col gap-fluid-sm">
       <PSegmentedControl value={selectedFramework} onUpdate={onUpdateFramework} aria-label="Choose your Framework:">
         {Object.entries(frameworkNameMap)
           .filter(([framework]) => framework !== 'next')
@@ -72,23 +60,15 @@ export const OpenBugTemplateInStackBlitz = ({ pdsVersions }: OpenBugTemplateInSt
             </PSegmentedControlItem>
           ))}
       </PSegmentedControl>
-      <div className="flex gap-xs">
-        <PSelect
-          className="w-[13rem]"
-          name="pds-versions"
-          label="Version"
-          value={selectedPdsVersion}
-          onUpdate={onUpdatePdsVersion}
-        >
-          {pdsVersions.map((pdsVersion, index) => (
-            <PSelectOption key={index} value={pdsVersion}>
-              {pdsVersion}
-            </PSelectOption>
-          ))}
-        </PSelect>
+      <div className="flex gap-fluid-xs">
         <ThemeSelect className="w-[13rem]" value={selectedTheme} onUpdate={onUpdateTheme} />
       </div>
-      <PButton className="w-fit mt-sm" type="button" icon-source="stackBlitzIcon" onClick={() => onOpenInStackblitz()}>
+      <PButton
+        className="w-fit mt-fluid-sm"
+        type="button"
+        icon-source="stackBlitzIcon"
+        onClick={() => onOpenInStackblitz()}
+      >
         Open template in StackBlitz
       </PButton>
     </div>

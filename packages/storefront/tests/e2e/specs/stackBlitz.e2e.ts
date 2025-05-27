@@ -1,7 +1,6 @@
 import { expect, test } from '@playwright/test';
 import type { Framework } from '@porsche-design-system/shared';
 
-// TODO: Vue and Angular currently only work for released version
 const buttonFrameworkMap: Record<Framework, string> = {
   'vanilla-js': 'Vanilla JS',
   react: 'React',
@@ -9,10 +8,11 @@ const buttonFrameworkMap: Record<Framework, string> = {
   vue: 'Vue',
 };
 
-const frameworks: Framework[] = ['vanilla-js', 'react'];
+const frameworks: Framework[] = ['vanilla-js', 'react', 'angular', 'vue'];
 
 for (const framework of frameworks) {
   test(`should have working stackBlitz button for framework: ${framework}`, async ({ browser }) => {
+    test.setTimeout(180000);
     const context = await browser.newContext({
       // bypass captcha in headless chrome
       userAgent:
@@ -37,17 +37,19 @@ for (const framework of frameworks) {
     await stackBlitzPage.waitForLoadState();
 
     // Wait for the iframe to appear on the parent page
-    await stackBlitzPage.waitForSelector('#PreviewContentWrapper iframe', {
+    await stackBlitzPage.waitForSelector('iframe[title="Preview page"]', {
       state: 'attached', // Ensures the iframe is attached to the DOM
-      timeout: 90000, // Adjust timeout as needed
+      timeout: 180000, // Adjust timeout as needed
     });
 
-    const iframeElement = stackBlitzPage.locator('#PreviewContentWrapper iframe');
+    const iframeElement = stackBlitzPage.locator('iframe[title="Preview page"]');
     const iframe = iframeElement.contentFrame();
 
     if (iframe) {
       const button = iframe.locator('p-button');
-      await expect(button).toBeVisible();
+      await expect(button).toBeVisible({
+        timeout: 180000,
+      });
     } else {
       throw new Error('Unable to access the iframe content, possibly due to cross-origin restrictions');
     }

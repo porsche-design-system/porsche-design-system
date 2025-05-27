@@ -228,7 +228,7 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
 
   return (
     <>
-      <span slot="heading" className="flex gap-xs">
+      <span slot="heading" className="flex gap-fluid-xs">
         Properties{' '}
         {amountOfConfiguredProps > 0 && (
           <>
@@ -246,7 +246,7 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
           </>
         )}
       </span>
-      <div className="flex flex-col gap-sm">
+      <div className="flex flex-col gap-fluid-sm">
         {filteredComponentProps.map(([propName, propMeta]) =>
           renderInput(propName as keyof ElementConfig<T>['properties'], propMeta)
         )}

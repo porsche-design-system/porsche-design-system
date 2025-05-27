@@ -18,12 +18,12 @@ export const Playground = ({
   frameworkMarkup,
   onOpenInStackblitz,
   disableOpenInStackblitz = false,
-  backgroundColor = 'background-base',
+  backgroundColor = 'base',
   fixedBackgroundColor,
   children,
 }: PropsWithChildren<PlaygroundProps>) => {
   return (
-    <div className="playground mt-md border-thin border-contrast-low rounded-lg">
+    <div className="playground mt-fluid-md border-thin border-contrast-low rounded-lg">
       <div
         className={`demo p-static-lg border-b-thin border-contrast-low bg-${backgroundColor} rounded-t-lg`}
         style={{ ...(fixedBackgroundColor && { backgroundColor: fixedBackgroundColor }) }}

@@ -9,8 +9,9 @@
     "build:vue-wrapper": "yarn build:vue-wrapper:lib && yarn build:vue-wrapper:typings",
     "build:vue-wrapper:lib": "vite build -c vite.config.package.mts",
     "build:vue-wrapper:typings": "vue-tsc --emitDeclarationOnly && tsx scripts/addDeprecatedAnnotations.ts",
-    "build:subPackages": "yarn build:subPackages:lib && yarn build:subPackages:typings",
+    "build:subPackages": "yarn build:subPackages:lib && yarn build:subPackages:tailwindcss && yarn build:subPackages:typings",
     "build:subPackages:lib": "yarn rollup -c ./projects/vue-wrapper/rollup.config.js --bundleConfigAsCjs",
+    "build:subPackages:tailwindcss": "TARGET=./dist/vue-wrapper/tailwindcss && rm -rf $TARGET && cp -r ../styles/projects/tailwindcss/dist $TARGET",
     "build:subPackages:typings": "yarn build:subPackages:typings:jsdom-polyfill && yarn build:subPackages:typings:partials && yarn build:subPackages:typings:testing && yarn build:subPackages:typings:styles && yarn build:subPackages:typings:ag-grid",
     "build:subPackages:typings:jsdom-polyfill": "tsc projects/vue-wrapper/src/jsdom-polyfill/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/jsdom-polyfill --types node",
     "build:subPackages:typings:partials": "tsc projects/vue-wrapper/src/partials/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/partials --types node --skipLibCheck true",
@@ -23,12 +24,13 @@
     "test:unit:vue-wrapper": "vitest --config projects/vue-wrapper/tests/unit/config/vitest.config.ts",
     "test:e2e": "yarn build-app && playwright test --config=tests/e2e/config/playwright.config.ts",
     "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
-    "test:smoke": "yarn test:smoke:vue-wrapper",
+    "test:smoke": "yarn test:smoke:unit && yarn test:smoke:vue-wrapper",
+    "test:smoke:unit": "vitest --config tests/smoke/unit/config/vitest.config.ts",
     "test:smoke:vue-wrapper": "vitest --config projects/vue-wrapper/tests/smoke/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/components-vue": "3.28.0-rc.2",
+    "@porsche-design-system/components-vue": "3.28.0-rc.3",
     "vue": "^3.5.13",
     "vue-imask": "^7.6.1",
     "vue-router": "^4.5.0"
@@ -58,6 +60,9 @@
     "tsx": "*",
     "typescript": "*",
     "vite": "*",
+    "tailwindcss": "*",
+    "postcss": "*",
+    "@tailwindcss/postcss": "*",
     "@vanilla-extract/css": "*",
     "@vanilla-extract/vite-plugin": "*"
   },

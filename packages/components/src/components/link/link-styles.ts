@@ -41,12 +41,12 @@ export const getComponentCss = (
         label: {
           clip: addImportantToRule('unset'), // to overrule breakpoint customizable hide-label style
         },
-        icon: {
-          ...(isPrimary &&
-            !isHighContrastMode && {
+        ...(isPrimary &&
+          !isHighContrastMode && {
+            icon: {
               filter: 'invert(1)',
-            }),
-        },
+            },
+          }),
       },
       hasSlottedAnchor && {
         ...(isHighContrastMode && {

@@ -50,7 +50,7 @@ export const Navigation = () => {
             heading={category.name as string}
             headingTag="h3"
             compact={true}
-            className={['Components', 'Must Know'].includes(category.name as string) ? 'mt-sm' : ''}
+            className={['Components', 'Must Know'].includes(category.name as string) ? 'mt-fluid-sm' : ''}
             open={openSections[path]}
             onUpdate={handleAccordionUpdate(path)}
           >
@@ -73,15 +73,15 @@ export const Navigation = () => {
           </PAccordion>
         ))}
       </nav>
-      <PDivider className="my-lg" />
-      <footer className="flex flex-col gap-md">
+      <PDivider className="my-fluid-lg" />
+      <footer className="flex flex-col gap-fluid-md">
         <VersionSelect />
         <PLinkPure className="self-start" href="https://brand.porsche.com" target="_blank" icon="external">
           brand.porsche.com
         </PLinkPure>
         <PText size="xx-small" color="contrast-medium">
           © 2025 Dr. Ing. h.c. F. Porsche AG.
-          <ul className="flex flex-col gap-xs mt-xs">
+          <ul className="flex flex-col gap-fluid-xs mt-fluid-xs">
             <li>
               <Link href="https://brand.porsche.com/d/aXCSDnXaTiSY">Privacy Policy</Link>
             </li>

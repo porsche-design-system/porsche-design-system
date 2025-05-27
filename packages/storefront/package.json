@@ -5,11 +5,11 @@
   "license": "UNLICENSED",
   "scripts": {
     "dev": "yarn prebuild && concurrently -k -s 'first' -n 'cdn,next' 'serve-cdn' 'next dev'",
-    "prebuild": "yarn build:generateTableOfContents && yarn build:preparePartialResults && yarn build:generateComponentsBundleForStackBlitz && yarn build:prepareChangelog && yarn build:copyLicense",
+    "prebuild": "yarn build:stackblitz && yarn build:generateTableOfContents && yarn build:preparePartialResults && yarn build:prepareChangelog && yarn build:copyLicense",
     "build": "next build",
+    "build:stackblitz": "yarn --cwd projects/stackblitz build",
     "build:generateTableOfContents": "tsx --tsconfig tsconfig.node.json scripts/generateTableOfContents.ts",
     "build:preparePartialResults": "tsx --tsconfig tsconfig.node.json scripts/preparePartialResults.ts",
-    "build:generateComponentsBundleForStackBlitz": "tsx --tsconfig tsconfig.node.json scripts/generateComponentsBundleForStackBlitz.ts",
     "build:prepareChangelog": "tsx --tsconfig tsconfig.node.json scripts/prepareChangelog.ts",
     "build:copyLicense": "cp ../../LICENSE.md ./src/app/license/license.mdx",
     "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws -p 8080 -d ./dist'",
@@ -28,12 +28,12 @@
     "test:a11y:2/3": "yarn test:a11y --shard=2/3",
     "test:a11y:3/3": "yarn test:a11y --shard=3/3",
     "test:vrt": "NEXT_PUBLIC_PDS_ENV=development yarn build && playwright test --config=tests/vrt/config/playwright.config.ts",
-    "clean:build": "rm -rf ./dist && rm -rf ./.next"
+    "clean:build": "rm -rf ./dist && rm -rf ./.next && yarn clean:stackblitz:build",
+    "clean:stackblitz:build": "yarn --cwd projects/stackblitz clean:build"
   },
   "dependencies": {
-    "@porsche-design-system/components-react": "3.28.0-rc.2",
+    "@porsche-design-system/components-react": "3.28.0-rc.3",
     "@porsche-design-system/fallbacks": "0.0.0",
-    "@porsche-design-system/shared": "0.0.0",
     "react-syntax-highlighter": "^15.6.1",
     "next": "15.2.4",
     "algoliasearch": "^5.1.1",
@@ -41,11 +41,11 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-instantsearch": "^7.15.4",
-    "react-instantsearch-nextjs": "^0.4.5",
-    "@stackblitz/sdk": "1.8.2"
+    "react-instantsearch-nextjs": "^0.4.5"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
+    "@porsche-design-system/stackblitz": "0.0.0",
     "@next/mdx": "^15.2.4",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
@@ -54,8 +54,6 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
     "autoprefixer": "^10.4.20",
     "remark-gfm": "^4.0.0",
     "cheerio": "^1.0.0"
@@ -69,7 +67,10 @@
     "change-case": "*",
     "vitest": "*",
     "react": "*",
-    "react-dom": "*"
+    "react-dom": "*",
+    "tailwindcss": "*",
+    "postcss": "*",
+    "@tailwindcss/postcss": "*"
   },
   "scope": "@porsche-design-system",
   "volta": {

@@ -58,7 +58,6 @@ export class ToastItem {
     });
     attachComponentCss(this.host, getComponentCss, this.state, this.theme);
 
-    const toastId = 'toast';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
@@ -70,7 +69,7 @@ export class ToastItem {
           theme={this.theme}
           aria-hidden="true"
         />
-        <p id={toastId} innerHTML={this.text} />
+        <p innerHTML={this.text} />
         <PrefixedTagNames.pButton
           variant="ghost"
           theme={this.theme}
@@ -78,7 +77,6 @@ export class ToastItem {
           type="button"
           icon="close"
           hideLabel={true}
-          aria-controls={toastId}
           onClick={this.dismiss.emit}
         >
           Close notification message

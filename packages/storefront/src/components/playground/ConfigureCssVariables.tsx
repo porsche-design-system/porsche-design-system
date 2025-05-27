@@ -29,7 +29,7 @@ export const ConfigureCssVariables = <T extends ConfiguratorTagNames>({
 
   return (
     <>
-      <span slot="heading" className="flex gap-xs">
+      <span slot="heading" className="flex gap-fluid-xs">
         CSS Variables
         {amountOfConfiguredCssVariables > 0 && (
           <>
@@ -41,7 +41,7 @@ export const ConfigureCssVariables = <T extends ConfiguratorTagNames>({
           </>
         )}
       </span>
-      <div className="flex flex-col gap-sm">
+      <div className="flex flex-col gap-fluid-sm">
         {Object.entries(componentCssVariables ?? {}).map(([cssVariableName, cssVariableMeta]) => (
           <PTextFieldWrapper key={cssVariableName}>
             <input

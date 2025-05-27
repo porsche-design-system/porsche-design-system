@@ -54,7 +54,7 @@ export class Toast {
     const toast = toastManager.getToast();
 
     return (
-      <Host role="status" aria-live="polite">
+      <Host role="status">
         {toast && (
           <PrefixedTagNames.pToastItem
             {...toast}
