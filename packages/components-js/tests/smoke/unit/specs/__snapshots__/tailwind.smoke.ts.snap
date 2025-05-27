@@ -2,76 +2,85 @@
 
 exports[`tailwind package content > should match content 1`] = `
 "@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
+  /* Color */
   --color-primary: #010205;
-  --color-base: #fff;
-  --color-surface: #eeeff2;
-  --color-shading: rgba(1, 2, 5, 0.67);
-  --color-frosted: hsla(240, 4%, 85%, 0.35);
-  --color-contrast-low: #d8d8db;
-  --color-contrast-medium: #6b6d70;
+  --color-base: #FFF;
+  --color-surface: #EEEFF2;
+  --color-shading: rgba(1,2,5,.67);
+  --color-frosted: hsl(240 4% 85%/35%);
+  --color-contrast-low: #D8D8DB;
+  --color-contrast-medium: #6B6D70;
   --color-contrast-high: #535457;
-  --color-success: #197e10;
-  --color-success-soft: #e4ffec;
-  --color-warning: #f3be00;
-  --color-warning-soft: #fff4d2;
-  --color-error: #cc1922;
-  --color-error-soft: #ffe2e4;
-  --color-info: #2762ec;
-  --color-info-soft: #d3e1ff;
-  --color-hover: rgba(148, 149, 152, 0.18);
-  --color-active: rgba(148, 149, 152, 0.2);
-  --color-focus: #1a44ea;
+  --color-success: #197E10;
+  --color-success-soft: #E4FFEC;
+  --color-warning: #F3BE00;
+  --color-warning-soft: #FFF4D2;
+  --color-error: #CC1922;
+  --color-error-soft: #FFE2E4;
+  --color-info: #2762EC;
+  --color-info-soft: #D3E1FF;
+  --color-hover: rgba(148,149,152,.18);
+  --color-active: rgba(148,149,152,.2);
+  --color-focus: #1A44EA;
   --color-disabled: #949598;
   --color-skeleton: #f7f7f7;
+
   --color-primary-light: #010205;
-  --color-base-light: #fff;
-  --color-surface-light: #eeeff2;
-  --color-shading-light: rgba(1, 2, 5, 0.67);
-  --color-frosted-light: hsla(240, 4%, 85%, 0.35);
-  --color-contrast-low-light: #d8d8db;
-  --color-contrast-medium-light: #6b6d70;
+  --color-base-light: #FFF;
+  --color-surface-light: #EEEFF2;
+  --color-shading-light: rgba(1,2,5,.67);
+  --color-frosted-light: hsl(240 4% 85%/35%);
+  --color-contrast-low-light: #D8D8DB;
+  --color-contrast-medium-light: #6B6D70;
   --color-contrast-high-light: #535457;
-  --color-success-light: #197e10;
-  --color-success-soft-light: #e4ffec;
-  --color-warning-light: #f3be00;
-  --color-warning-soft-light: #fff4d2;
-  --color-error-light: #cc1922;
-  --color-error-soft-light: #ffe2e4;
-  --color-info-light: #2762ec;
-  --color-info-soft-light: #d3e1ff;
-  --color-hover-light: rgba(148, 149, 152, 0.18);
-  --color-active-light: rgba(148, 149, 152, 0.2);
-  --color-focus-light: #1a44ea;
+  --color-success-light: #197E10;
+  --color-success-soft-light: #E4FFEC;
+  --color-warning-light: #F3BE00;
+  --color-warning-soft-light: #FFF4D2;
+  --color-error-light: #CC1922;
+  --color-error-soft-light: #FFE2E4;
+  --color-info-light: #2762EC;
+  --color-info-soft-light: #D3E1FF;
+  --color-hover-light: rgba(148,149,152,.18);
+  --color-active-light: rgba(148,149,152,.2);
+  --color-focus-light: #1A44EA;
   --color-disabled-light: #949598;
   --color-skeleton-light: #f7f7f7;
-  --color-primary-dark: #fbfcff;
-  --color-base-dark: #0e0e12;
+
+  --color-primary-dark: #FBFCFF;
+  --color-base-dark: #0E0E12;
   --color-surface-dark: #212225;
-  --color-shading-dark: rgba(38, 38, 41, 0.67);
-  --color-frosted-dark: hsla(240, 3%, 26%, 0.35);
+  --color-shading-dark: rgba(38,38,41,.67);
+  --color-frosted-dark: hsl(240 3% 26%/35%);
   --color-contrast-low-dark: #404044;
-  --color-contrast-medium-dark: #88898c;
-  --color-contrast-high-dark: #afb0b3;
-  --color-success-dark: #09d087;
+  --color-contrast-medium-dark: #88898C;
+  --color-contrast-high-dark: #AFB0B3;
+  --color-success-dark: #09D087;
   --color-success-soft-dark: #003320;
-  --color-warning-dark: #f7cb47;
-  --color-warning-soft-dark: #362b0a;
-  --color-error-dark: #fc4040;
-  --color-error-soft-dark: #3a0f0f;
-  --color-info-dark: #178bff;
-  --color-info-soft-dark: #04294e;
-  --color-hover-dark: rgba(148, 149, 152, 0.18);
-  --color-active-dark: rgba(126, 127, 130, 0.2);
-  --color-focus-dark: #1a44ea;
-  --color-disabled-dark: #7e7f82;
+  --color-warning-dark: #F7CB47;
+  --color-warning-soft-dark: #362B0A;
+  --color-error-dark: #FC4040;
+  --color-error-soft-dark: #3A0F0F;
+  --color-info-dark: #178BFF;
+  --color-info-soft-dark: #04294E;
+  --color-hover-dark: rgba(148,149,152,.18);
+  --color-active-dark: rgba(126,127,130,.2);
+  --color-focus-dark: #1A44EA;
+  --color-disabled-dark: #7E7F82;
   --color-skeleton-dark: #1a1b1e;
-  --font-porsche-next: Porsche Next, Arial Narrow, Arial, Heiti SC, SimHei, sans-serif;
+
+  /* Typography */
+  --font-porsche-next: 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+
   --font-weight-normal: 400;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
+
   --leading-normal: calc(6px + 2.125ex);
-  --text-2xs: 0.75rem;
+
+  --text-2xs: .75rem;
   --text-2xs--line-height: calc(6px + 2.125ex);
   --text-xs: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   --text-xs--line-height: calc(6px + 2.125ex);
@@ -87,45 +96,67 @@ exports[`tailwind package content > should match content 1`] = `
   --text-xl--line-height: calc(6px + 2.125ex);
   --text-2xl: clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem);
   --text-2xl--line-height: calc(6px + 2.125ex);
+
+  /* Breakpoint */
   --breakpoint-xs: 480px;
   --breakpoint-sm: 760px;
   --breakpoint-md: 1000px;
   --breakpoint-lg: 1300px;
   --breakpoint-xl: 1760px;
   --breakpoint-2xl: 1920px;
-  --spacing: 0.25rem;
+
+  /* Spacing */
+  --spacing: .25rem;
+
   --spacing-fluid-xs: clamp(4px, 0.25vw + 3px, 8px);
   --spacing-fluid-sm: clamp(8px, 0.5vw + 6px, 16px);
   --spacing-fluid-md: clamp(16px, 1.25vw + 12px, 36px);
   --spacing-fluid-lg: clamp(32px, 2.75vw + 23px, 76px);
   --spacing-fluid-xl: clamp(48px, 3vw + 38px, 96px);
   --spacing-fluid-2xl: clamp(80px, 7.5vw + 56px, 200px);
+
   --spacing-static-xs: 4px;
   --spacing-static-sm: 8px;
   --spacing-static-md: 16px;
   --spacing-static-lg: 32px;
   --spacing-static-xl: 48px;
   --spacing-static-2xl: 80px;
+
+  /* Border */
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
+
   --default-border-width: 2px;
+  --border-width-regular: 2px;
   --border-width-thin: 1px;
+
+  /* Blur */
   --blur-frosted: 32px;
+
+  /* Shadow */
   --shadow-low: 0px 3px 8px rgba(0,0,0,.16);
   --shadow-medium: 0px 4px 16px rgba(0,0,0,.16);
   --shadow-high: 0px 8px 40px rgba(0,0,0,.16);
+
+  /* Outline */
   --default-outline-width: 2px;
-  --default-transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
-  --ease-in-out: cubic-bezier(0.25, 0.1, 0.25, 1);
-  --ease-in: cubic-bezier(0, 0, 0.2, 1);
-  --ease-out: cubic-bezier(0.4, 0, 0.5, 1);
-  --default-transition-duration: 0.25s;
-  --transition-duration-short: 0.25s;
-  --transition-duration-moderate: 0.4s;
-  --transition-duration-long: 0.6s;
+
+  /* Motion */
+  --default-transition-timing-function: cubic-bezier(.25,.1,.25,1);
+  --ease-in-out: cubic-bezier(.25,.1,.25,1);
+  --ease-in: cubic-bezier(0,0,.2,1);
+  --ease-out: cubic-bezier(.4,0,.5,1);
+
+  --default-transition-duration: .25s;
+  --transition-duration-short: .25s;
+  --transition-duration-moderate: .4s;
+  --transition-duration-long: .6s;
   --transition-duration-very-long: 1.2s;
+
+  /* Animation */
   --animate-skeleton: skeleton var(--transition-duration-long) var(--ease-in-out) infinite;
+
   @keyframes skeleton {
     from {
       background-position-x: 100%;
@@ -135,93 +166,104 @@ exports[`tailwind package content > should match content 1`] = `
     }
   }
 }
+
 @layer theme {
   .light {
     --color-primary: #010205;
-    --color-base: #fff;
-    --color-surface: #eeeff2;
-    --color-shading: rgba(1, 2, 5, 0.67);
-    --color-frosted: hsla(240, 4%, 85%, 0.35);
-    --color-contrast-low: #d8d8db;
-    --color-contrast-medium: #6b6d70;
+    --color-base: #FFF;
+    --color-surface: #EEEFF2;
+    --color-shading: rgba(1,2,5,.67);
+    --color-frosted: hsl(240 4% 85%/35%);
+    --color-contrast-low: #D8D8DB;
+    --color-contrast-medium: #6B6D70;
     --color-contrast-high: #535457;
-    --color-success: #197e10;
-    --color-success-soft: #e4ffec;
-    --color-warning: #f3be00;
-    --color-warning-soft: #fff4d2;
-    --color-error: #cc1922;
-    --color-error-soft: #ffe2e4;
-    --color-info: #2762ec;
-    --color-info-soft: #d3e1ff;
-    --color-hover: rgba(148, 149, 152, 0.18);
-    --color-active: rgba(148, 149, 152, 0.2);
-    --color-focus: #1a44ea;
+    --color-success: #197E10;
+    --color-success-soft: #E4FFEC;
+    --color-warning: #F3BE00;
+    --color-warning-soft: #FFF4D2;
+    --color-error: #CC1922;
+    --color-error-soft: #FFE2E4;
+    --color-info: #2762EC;
+    --color-info-soft: #D3E1FF;
+    --color-hover: rgba(148,149,152,.18);
+    --color-active: rgba(148,149,152,.2);
+    --color-focus: #1A44EA;
     --color-disabled: #949598;
     --color-skeleton: #f7f7f7;
   }
+
   .dark {
-    --color-primary: #fbfcff;
-    --color-base: #0e0e12;
+    --color-primary: #FBFCFF;
+    --color-base: #0E0E12;
     --color-surface: #212225;
-    --color-shading: rgba(38, 38, 41, 0.67);
-    --color-frosted: hsla(240, 3%, 26%, 0.35);
+    --color-shading: rgba(38,38,41,.67);
+    --color-frosted: hsl(240 3% 26%/35%);
     --color-contrast-low: #404044;
-    --color-contrast-medium: #88898c;
-    --color-contrast-high: #afb0b3;
-    --color-success: #09d087;
+    --color-contrast-medium: #88898C;
+    --color-contrast-high: #AFB0B3;
+    --color-success: #09D087;
     --color-success-soft: #003320;
-    --color-warning: #f7cb47;
-    --color-warning-soft: #362b0a;
-    --color-error: #fc4040;
-    --color-error-soft: #3a0f0f;
-    --color-info: #178bff;
-    --color-info-soft: #04294e;
-    --color-hover: rgba(148, 149, 152, 0.18);
-    --color-active: rgba(126, 127, 130, 0.2);
-    --color-focus: #1a44ea;
-    --color-disabled: #7e7f82;
+    --color-warning: #F7CB47;
+    --color-warning-soft: #362B0A;
+    --color-error: #FC4040;
+    --color-error-soft: #3A0F0F;
+    --color-info: #178BFF;
+    --color-info-soft: #04294E;
+    --color-hover: rgba(148,149,152,.18);
+    --color-active: rgba(126,127,130,.2);
+    --color-focus: #1A44EA;
+    --color-disabled: #7E7F82;
     --color-skeleton: #1a1b1e;
   }
-  @media (prefers-color-scheme: dark) {
-    .auto {
-      --color-primary: #fbfcff;
-      --color-base: #0e0e12;
+
+  .auto {
+    @media (prefers-color-scheme: dark) {
+      --color-primary: #FBFCFF;
+      --color-base: #0E0E12;
       --color-surface: #212225;
-      --color-shading: rgba(38, 38, 41, 0.67);
-      --color-frosted: hsla(240, 3%, 26%, 0.35);
+      --color-shading: rgba(38,38,41,.67);
+      --color-frosted: hsl(240 3% 26%/35%);
       --color-contrast-low: #404044;
-      --color-contrast-medium: #88898c;
-      --color-contrast-high: #afb0b3;
-      --color-success: #09d087;
+      --color-contrast-medium: #88898C;
+      --color-contrast-high: #AFB0B3;
+      --color-success: #09D087;
       --color-success-soft: #003320;
-      --color-warning: #f7cb47;
-      --color-warning-soft: #362b0a;
-      --color-error: #fc4040;
-      --color-error-soft: #3a0f0f;
-      --color-info: #178bff;
-      --color-info-soft: #04294e;
-      --color-hover: rgba(148, 149, 152, 0.18);
-      --color-active: rgba(126, 127, 130, 0.2);
-      --color-focus: #1a44ea;
-      --color-disabled: #7e7f82;
+      --color-warning: #F7CB47;
+      --color-warning-soft: #362B0A;
+      --color-error: #FC4040;
+      --color-error-soft: #3A0F0F;
+      --color-info: #178BFF;
+      --color-info-soft: #04294E;
+      --color-hover: rgba(148,149,152,.18);
+      --color-active: rgba(126,127,130,.2);
+      --color-focus: #1A44EA;
+      --color-disabled: #7E7F82;
       --color-skeleton: #1a1b1e;
     }
   }
 }
+
+/* Gradient */
 @utility bg-fade-to-t {
   @apply bg-linear-[to_top,hsla(0,0%,0%,.8)_0%,hsla(0,0%,0%,.8)_8.1%,hsla(0,0%,0%,.8)_15.5%,hsla(0,0%,0%,.8)_22.5%,hsla(0,0%,0%,.78)_29%,hsla(0,0%,0%,.73)_35.3%,hsla(0,0%,0%,.67)_41.2%,hsla(0,0%,0%,.6)_47.1%,hsla(0,0%,0%,.52)_52.9%,hsla(0,0%,0%,.44)_58.8%,hsla(0,0%,0%,.33)_64.7%,hsla(0,0%,0%,.22)_71%,hsla(0,0%,0%,.12)_77.5%,hsla(0,0%,0%,.05)_84.5%,hsla(0,0%,0%,.011)_91.9%,hsla(0,0%,0%,0)_100%];
 }
+
 @utility bg-fade-to-r {
   @apply bg-linear-[to_right,hsla(0,0%,0%,.8)_0%,hsla(0,0%,0%,.8)_8.1%,hsla(0,0%,0%,.8)_15.5%,hsla(0,0%,0%,.8)_22.5%,hsla(0,0%,0%,.78)_29%,hsla(0,0%,0%,.73)_35.3%,hsla(0,0%,0%,.67)_41.2%,hsla(0,0%,0%,.6)_47.1%,hsla(0,0%,0%,.52)_52.9%,hsla(0,0%,0%,.44)_58.8%,hsla(0,0%,0%,.33)_64.7%,hsla(0,0%,0%,.22)_71%,hsla(0,0%,0%,.12)_77.5%,hsla(0,0%,0%,.05)_84.5%,hsla(0,0%,0%,.011)_91.9%,hsla(0,0%,0%,0)_100%];
 }
+
 @utility bg-fade-to-b {
   @apply bg-linear-[to_bottom,hsla(0,0%,0%,.8)_0%,hsla(0,0%,0%,.8)_8.1%,hsla(0,0%,0%,.8)_15.5%,hsla(0,0%,0%,.8)_22.5%,hsla(0,0%,0%,.78)_29%,hsla(0,0%,0%,.73)_35.3%,hsla(0,0%,0%,.67)_41.2%,hsla(0,0%,0%,.6)_47.1%,hsla(0,0%,0%,.52)_52.9%,hsla(0,0%,0%,.44)_58.8%,hsla(0,0%,0%,.33)_64.7%,hsla(0,0%,0%,.22)_71%,hsla(0,0%,0%,.12)_77.5%,hsla(0,0%,0%,.05)_84.5%,hsla(0,0%,0%,.011)_91.9%,hsla(0,0%,0%,0)_100%];
 }
+
 @utility bg-fade-to-l {
   @apply bg-linear-[to_left,hsla(0,0%,0%,.8)_0%,hsla(0,0%,0%,.8)_8.1%,hsla(0,0%,0%,.8)_15.5%,hsla(0,0%,0%,.8)_22.5%,hsla(0,0%,0%,.78)_29%,hsla(0,0%,0%,.73)_35.3%,hsla(0,0%,0%,.67)_41.2%,hsla(0,0%,0%,.6)_47.1%,hsla(0,0%,0%,.52)_52.9%,hsla(0,0%,0%,.44)_58.8%,hsla(0,0%,0%,.33)_64.7%,hsla(0,0%,0%,.22)_71%,hsla(0,0%,0%,.12)_77.5%,hsla(0,0%,0%,.05)_84.5%,hsla(0,0%,0%,.011)_91.9%,hsla(0,0%,0%,0)_100%];
 }
+
+/* Grid */
 @utility grid-template {
-  @apply [--pds-internal-grid-safe-zone:max(22px,10.625vw-12px)]
+  @apply
+    [--pds-internal-grid-safe-zone:max(22px,10.625vw-12px)]
     [--_pds-grid-col:minmax(0,var(--pds-internal-grid-outer-column,calc(var(--pds-internal-grid-safe-zone)-var(--spacing-fluid-md))))]
     grid
     grid-cols-[[full-start]_var(--_pds-grid-col)_[wide-start_extended-start_basic-start_narrow-start]_repeat(6,minmax(0,1fr))_[narrow-end_basic-end_extended-end_wide-end]_var(--_pds-grid-col)_[full-end]]
@@ -235,75 +277,93 @@ exports[`tailwind package content > should match content 1`] = `
     sm:grid-cols-[[full-start]_var(--_pds-grid-col)_[wide-start]_minmax(0,1fr)_[extended-start]_minmax(0,1fr)_[basic-start]_repeat(2,minmax(0,1fr))_[narrow-start]_repeat(8,minmax(0,1fr))_[narrow-end]_repeat(2,minmax(0,1fr))_[basic-end]_minmax(0,1fr)_[extended-end]_minmax(0,1fr)_[wide-end]_var(--_pds-grid-col)[full-end]]
     2xl:[--pds-internal-grid-safe-zone:min(50vw-880px,400px)];
 }
+
+/* Grid: Area Narrow */
 @utility col-narrow {
   @apply [--_pds-grid-one-half:3] sm:[--_pds-grid-one-half:4] col-[narrow];
 }
+
 @utility col-start-narrow {
   @apply [--_pds-grid-one-half:3] sm:[--_pds-grid-one-half:4] col-start-[narrow-start];
 }
+
 @utility col-end-narrow {
   @apply [--_pds-grid-one-half:3] sm:[--_pds-grid-one-half:4] col-end-[narrow-end];
 }
+
+/* Grid: Area Basic */
 @utility col-basic {
   @apply [--_pds-grid-one-half:3] [--_pds-grid-one-third:2] [--_pds-grid-two-thirds:4] sm:[--_pds-grid-one-half:6] sm:[--_pds-grid-one-third:4] sm:[--_pds-grid-two-thirds:8] col-[basic];
 }
+
 @utility col-start-basic {
   @apply [--_pds-grid-one-half:3] [--_pds-grid-one-third:2] [--_pds-grid-two-thirds:4] sm:[--_pds-grid-one-half:6] sm:[--_pds-grid-one-third:4] sm:[--_pds-grid-two-thirds:8] col-start-[basic-start];
 }
+
 @utility col-end-basic {
   @apply [--_pds-grid-one-half:3] [--_pds-grid-one-third:2] [--_pds-grid-two-thirds:4] sm:[--_pds-grid-one-half:6] sm:[--_pds-grid-one-third:4] sm:[--_pds-grid-two-thirds:8] col-end-[basic-end];
 }
+
+/* Grid: Area Extended */
 @utility col-extended {
   @apply [--_pds-grid-one-half:3] sm:[--_pds-grid-one-half:7] col-[extended];
 }
+
 @utility col-start-extended {
   @apply [--_pds-grid-one-half:3] sm:[--_pds-grid-one-half:7] col-start-[extended-start];
 }
+
 @utility col-end-extended {
   @apply [--_pds-grid-one-half:3] sm:[--_pds-grid-one-half:7] col-end-[extended-end];
 }
+
+/* Grid: Area Wide */
 @utility col-wide {
   @apply [--_pds-grid-one-half:3] sm:[--_pds-grid-one-half:8] col-[wide];
 }
+
 @utility col-start-wide {
   @apply [--_pds-grid-one-half:3] sm:[--_pds-grid-one-half:8] col-start-[wide-start];
 }
+
 @utility col-end-wide {
   @apply [--_pds-grid-one-half:3] sm:[--_pds-grid-one-half:8] col-end-[wide-end];
 }
+
+/* Grid: Area Full */
 @utility col-full {
   @apply col-[full];
 }
+
 @utility col-start-full {
   @apply col-start-[full-start];
 }
+
 @utility col-end-full {
   @apply col-end-[full-end];
 }
+
+/* Grid: Division */
 @utility col-span-one-half {
   @apply col-span-(--_pds-grid-one-half,1);
 }
+
 @utility col-span-one-third {
   @apply col-span-(--_pds-grid-one-third,1);
 }
+
 @utility col-span-two-thirds {
   @apply col-span-(--_pds-grid-two-thirds,1);
 }
+
+/* Skeleton */
 @utility skeleton {
   @apply animate-skeleton;
   @apply block rounded-sm;
   @apply bg-surface bg-[linear-gradient(to_right,transparent_0%,var(--color-skeleton)_20%,transparent_50%)] bg-position-[0_0] bg-size-[200%_100%];
 }
-@utility skeleton-light {
-  @apply animate-skeleton;
-  @apply block rounded-sm;
-  @apply bg-surface-light bg-[linear-gradient(to_right,transparent_0%,var(--color-skeleton-light)_20%,transparent_50%)] bg-position-[0_0] bg-size-[200%_100%];
-}
-@utility skeleton-dark {
-  @apply animate-skeleton;
-  @apply block rounded-sm;
-  @apply bg-surface-dark bg-[linear-gradient(to_right,transparent_0%,var(--color-skeleton-dark)_20%,transparent_50%)] bg-position-[0_0] bg-size-[200%_100%];
-}
+
+/* Typography: Text */
 @utility prose-text-2xs {
   @apply font-porsche-next not-italic font-normal text-2xs text-primary;
 }
@@ -322,6 +382,8 @@ exports[`tailwind package content > should match content 1`] = `
 @utility prose-text-xl {
   @apply font-porsche-next not-italic font-normal text-xl text-primary;
 }
+
+/* Typography: Heading */
 @utility prose-heading-sm {
   @apply font-porsche-next not-italic font-semibold text-sm text-primary;
 }
@@ -337,17 +399,15 @@ exports[`tailwind package content > should match content 1`] = `
 @utility prose-heading-2xl {
   @apply font-porsche-next not-italic font-semibold text-2xl text-primary;
 }
+
+/* Typography: Display */
 @utility prose-display-sm {
-  @apply font-porsche-next not-italic font-normal leading-normal text-primary;
-  font-size: clamp(1.8rem, 2.41vw + 1.32rem, 4.21rem);
+  @apply font-porsche-next not-italic font-normal leading-normal text-primary text-[clamp(1.8rem,2.41vw+1.32rem,4.21rem)];
 }
 @utility prose-display-md {
-  @apply font-porsche-next not-italic font-normal leading-normal text-primary;
-  font-size: clamp(2.03rem, 3.58vw + 1.31rem, 5.61rem);
+  @apply font-porsche-next not-italic font-normal leading-normal text-primary text-[clamp(2.03rem,3.58vw+1.31rem,5.61rem)];
 }
 @utility prose-display-lg {
-  @apply font-porsche-next not-italic font-normal leading-normal text-primary;
-  font-size: clamp(2.28rem, 5.2vw + 1.24rem, 7.48rem);
-}
-"
+  @apply font-porsche-next not-italic font-normal leading-normal text-primary text-[clamp(2.28rem,5.2vw+1.24rem,7.48rem)];
+}"
 `;
