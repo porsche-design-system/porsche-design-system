@@ -10,14 +10,11 @@ import {
   Watch,
   h,
 } from '@stencil/core';
-import { getSlottedAnchorStyles } from '../../styles';
-import { getSlottedInputIndicatorStyles } from '../../styles/global/slotted-input-indicator-styles';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
   FORM_STATES,
   THEMES,
-  applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
@@ -145,10 +142,6 @@ export class InputPassword {
   @Watch('value')
   public onValueChange(newValue: string): void {
     this.internals?.setFormValue(newValue);
-  }
-
-  public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles, getSlottedInputIndicatorStyles);
   }
 
   public componentWillLoad(): void {
