@@ -30,11 +30,11 @@ export const cssVarInternalInputBaseScaling = '--p-internal-input-base-scaling';
 export const getScalingVar = (compact: boolean) => `var(${cssVarInternalInputBaseScaling}, ${compact ? 0.5 : 1})`;
 
 /**
- * @css-variable {"name": "--ref-p-input-slotted-padding", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `padding` in oder to adjust the spacings correctly.", "defaultValue": "4px"}
+ * @css-variable {"name": "--ref-p-input-slotted-padding", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `padding` in oder to adjust the alignment correctly."}
  */
 export const cssVarButtonPurePadding = '--ref-p-input-slotted-padding';
 /**
- * @css-variable {"name": "--ref-p-input-slotted-margin", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `margin` in oder to adjust the spacings correctly.", "defaultValue": "-4px"}
+ * @css-variable {"name": "--ref-p-input-slotted-margin", "description": "When slotting a `p-button-pure` or `p-link-pure` this variable needs to be set as `margin` in oder to adjust the spacings correctly."}
  */
 export const cssVarButtonPureMargin = '--ref-p-input-slotted-margin';
 
@@ -91,11 +91,6 @@ export const getFunctionalComponentInputBaseStyles = (
         }),
       },
       ...preventFoucOfNestedElementsStyles,
-      ...addImportantToEachRule({
-        '::slotted([slot="start"]), ::slotted([slot="end"])': {
-          placeSelf: 'center',
-        },
-      }),
       input: {
         all: 'unset',
         appearance: 'none',
@@ -123,6 +118,7 @@ export const getFunctionalComponentInputBaseStyles = (
       paddingInlineStart: paddingInline,
       paddingInlineEnd: paddingInline, // TODO resolve inconsistency in Figma
       display: 'flex',
+      alignItems: 'center',
       gap,
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
       ...prefersColorSchemeDarkMediaQuery(theme, {
