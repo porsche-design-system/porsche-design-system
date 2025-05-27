@@ -121,13 +121,13 @@
   },
   {
     "chunkShortName": "input-number",
-    "size": 14574,
-    "gzipSize": 5223
+    "size": 12728,
+    "gzipSize": 4581
   },
   {
     "chunkShortName": "input-password",
-    "size": 13634,
-    "gzipSize": 4937
+    "size": 12412,
+    "gzipSize": 4491
   },
   {
     "chunkShortName": "link",
@@ -162,7 +162,7 @@
   {
     "chunkShortName": "main",
     "size": 83595,
-    "gzipSize": 27400
+    "gzipSize": 27395
   },
   {
     "chunkShortName": "marque",
@@ -226,8 +226,8 @@
   },
   {
     "chunkShortName": "select-wrapper",
-    "size": 45067,
-    "gzipSize": 15995
+    "size": 45080,
+    "gzipSize": 16002
   },
   {
     "chunkShortName": "sheet",
@@ -281,8 +281,8 @@
   },
   {
     "chunkShortName": "text-field-wrapper",
-    "size": 18763,
-    "gzipSize": 7128
+    "size": 18698,
+    "gzipSize": 7116
   },
   {
     "chunkShortName": "text-list",
@@ -301,8 +301,8 @@
   },
   {
     "chunkShortName": "toast",
-    "size": 7585,
-    "gzipSize": 3328
+    "size": 7531,
+    "gzipSize": 3309
   },
   {
     "chunkShortName": "wordmark",
