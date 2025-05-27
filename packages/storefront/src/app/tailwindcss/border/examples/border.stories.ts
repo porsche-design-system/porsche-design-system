@@ -50,6 +50,13 @@ export const borderWidthStory: Story<'div'> = {
           },
           children: ['.border-thin'],
         },
+        {
+          tag: 'div',
+          properties: {
+            className: 'border-regular p-fluid-sm',
+          },
+          children: ['.border-regular'],
+        },
       ],
     },
   ],

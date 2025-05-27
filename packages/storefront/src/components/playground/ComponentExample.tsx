@@ -4,11 +4,11 @@ import { Playground } from '@/components/playground/Playground';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
 import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import { createStackblitzMarkupFromSample } from '@/lib/stackblitz/createStackblitzMarkupFromSample';
-import { openInStackblitz } from '@/lib/stackblitz/openInStackblitz';
 import type { BackgroundColor } from '@/models/backgroundColor';
 import { getVanillaJsCode } from '@/utils/generator/generateVanillaJsMarkup';
 import { splitVanillaJsCode } from '@/utils/splitVanillaJsCode';
 import type { CodeSample, Framework } from '@porsche-design-system/shared';
+import { openInStackblitz } from '@porsche-design-system/stackblitz';
 import { useMemo } from 'react';
 
 type ComponentSampleProps = {
@@ -37,15 +37,18 @@ export const ComponentExample = ({
       const { markup, script } = splitVanillaJsCode(codeSample.frameworkMarkup['vanilla-js']);
       return {
         ...codeSample.frameworkMarkup,
-        'vanilla-js': getVanillaJsCode({ markup, eventHandlers: script }),
+        'vanilla-js': getVanillaJsCode(
+          { markup, eventHandlers: script },
+          { isFullConfig: false, theme: storefrontTheme }
+        ),
       };
     }
     return codeSample.frameworkMarkup;
-  }, [codeSample]);
+  }, [codeSample, storefrontTheme]);
 
-  const onOpenInStackblitz = async () => {
+  const onOpenInStackblitz = () => {
     const markup = createStackblitzMarkupFromSample(codeSample.frameworkMarkup, storefrontFramework, storefrontTheme);
-    await openInStackblitz(markup, storefrontFramework as Framework, storefrontTheme);
+    openInStackblitz(storefrontFramework as Framework, markup, storefrontTheme);
   };
 
   return (
