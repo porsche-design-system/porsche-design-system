@@ -36,7 +36,7 @@ on:
         required: true
 name: 'Deploy and Release'
 env:
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.49.1-jammy-test-4
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.49.1-jammy-test-5
 jobs:
   deploy-assets:
     name: 'Deploy Assets'
@@ -152,6 +152,11 @@ jobs:
         with:
           entrypoint: run-test-smoke
           args: --components-js
+      - name: 'Smoke Test Components Angular'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-smoke
+          args: --components-angular
       - name: 'Smoke Test Components React'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -162,37 +167,6 @@ jobs:
         with:
           entrypoint: run-test-smoke
           args: --components-vue
-#  release-components-uxpin:
-#    name: 'Release Components UXPin'
-#    needs:
-#      - deploy-assets
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: 'Checkout'
-#        uses: actions/checkout@v4
-#        with:
-#          fetch-depth: 0 # important for uxpin since it uses the commit history
-#      - name: 'Setup and install'
-#        uses: ./.github/actions/setup-and-install
-#        with:
-#          github-token: ${{ secrets.github-token }}
-#      - name: 'Restore Components JS Build Artifact'
-#        uses: actions/download-artifact@v4
-#        with:
-#          name: components-js-prod-build
-#          path: ./packages/components-js/dist
-#      - name: 'Restore Components UXPin Source Artifact'
-#        uses: actions/download-artifact@v4
-#        with:
-#          name: components-uxpin-source
-#          path: ./packages/components-react/projects/uxpin-wrapper
-#      - name: 'Publish UXPin Library'
-#        uses: ./.github/actions/docker-run-playwright
-#        env:
-#          UXPIN_TOKEN_DEV: ${{ secrets.uxpin-token-dev }}
-#          UXPIN_TOKEN_LATEST: ${{ secrets.uxpin-token-latest }}
-#        with:
-#          entrypoint: run-release-uxpin
   release-components-js:
     name: 'Release Components JS'
     needs:

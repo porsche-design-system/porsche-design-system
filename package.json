@@ -170,6 +170,7 @@
     "test:vrt:components-vue": "yarn --cwd ./packages/components-vue test:vrt",
     "test:vrt:storefront": "yarn --cwd packages/storefront test:vrt",
     "test:smoke:components-js": "yarn --cwd ./packages/components-js test:smoke",
+    "test:smoke:components-angular": "yarn --cwd ./packages/components-angular test:smoke",
     "test:smoke:components-react": "yarn --cwd ./packages/components-react test:smoke",
     "test:smoke:components-vue": "yarn --cwd ./packages/components-vue test:smoke",
     "updateAlgolia": "yarn --cwd ./packages/storefront updateAlgolia",
