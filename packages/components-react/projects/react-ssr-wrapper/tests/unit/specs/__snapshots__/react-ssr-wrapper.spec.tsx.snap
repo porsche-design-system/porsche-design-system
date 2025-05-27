@@ -12484,6 +12484,8 @@ exports[`should render dsr component for PInputNumber 1`] = `
       :host {
   display: block;
   color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -12521,7 +12523,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   display: flex;
-  gap: 9px;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: text;
   border-color: #D8D8DB;
@@ -12624,6 +12626,8 @@ exports[`should render dsr component for PInputPassword 1`] = `
       :host {
   display: block;
   color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -12659,7 +12663,7 @@ input[type="text"] {
   padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   display: flex;
-  gap: 9px;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: text;
   border-color: #D8D8DB;
