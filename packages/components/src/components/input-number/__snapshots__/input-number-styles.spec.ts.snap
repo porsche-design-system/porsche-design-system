@@ -4,6 +4,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hideLa
 ":host {
   display: block;
   color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -41,7 +43,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   display: flex;
-  gap: 9px;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .wrapper:has(input:focus:not([readonly])) {
@@ -168,6 +170,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hideLa
 ":host {
   display: block;
   color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -205,7 +209,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   display: flex;
-  gap: 9px;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .wrapper:has(input:focus:not([readonly])) {
@@ -332,6 +336,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hideLa
 ":host {
   display: block;
   color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -369,7 +375,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   display: flex;
-  gap: 9px;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .wrapper:has(input:focus:not([readonly])) {
@@ -432,6 +438,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hideLa
 ":host {
   display: block;
   color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -467,9 +475,9 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   border: 2px solid #CC1922;
   border-radius: 4px;
   padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
-  padding-inline-end: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
+  padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   display: flex;
-  gap: 9px;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .wrapper:has(input:focus:not([readonly])) {
@@ -519,7 +527,8 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 .button {
   place-self: center;
-  padding: calc(4px * var(--p-internal-input-base-scaling, 1));
+  padding: var(--ref-p-input-slotted-padding);
+  margin-inline: var(--ref-p-input-slotted-margin);
 }
 @media(hover:hover) {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
@@ -536,6 +545,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hideLa
 ":host {
   display: block;
   color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -573,7 +584,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   display: flex;
-  gap: 9px;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .wrapper:has(input:focus:not([readonly])) {
@@ -635,6 +646,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hideLa
 ":host {
   display: block;
   color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -672,7 +685,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   display: flex;
-  gap: 9px;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .wrapper:has(input:focus:not([readonly])) {
@@ -734,6 +747,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hideLa
 ":host {
   display: block;
   color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -769,9 +784,9 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   border: 2px solid #6B6D70;
   border-radius: 4px;
   padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
-  padding-inline-end: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
+  padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   display: flex;
-  gap: 9px;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .wrapper:has(input:focus:not([readonly])) {
@@ -820,7 +835,8 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 .button {
   place-self: center;
-  padding: calc(4px * var(--p-internal-input-base-scaling, 1));
+  padding: var(--ref-p-input-slotted-padding);
+  margin-inline: var(--ref-p-input-slotted-margin);
 }
 @media(hover:hover) {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
@@ -837,6 +853,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hideLa
 ":host {
   display: block;
   color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -872,9 +890,9 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   border: 2px solid #197E10;
   border-radius: 4px;
   padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
-  padding-inline-end: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
+  padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   display: flex;
-  gap: 9px;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .wrapper:has(input:focus:not([readonly])) {
@@ -924,7 +942,8 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 .button {
   place-self: center;
-  padding: calc(4px * var(--p-internal-input-base-scaling, 1));
+  padding: var(--ref-p-input-slotted-padding);
+  margin-inline: var(--ref-p-input-slotted-margin);
 }
 @media(hover:hover) {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
@@ -941,6 +960,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hideLa
 ":host {
   display: block;
   color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -976,9 +997,9 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   border: 2px solid #197E10;
   border-radius: 4px;
   padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
-  padding-inline-end: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
+  padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   display: flex;
-  gap: 9px;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .wrapper:has(input:focus:not([readonly])) {
@@ -1028,7 +1049,8 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 .button {
   place-self: center;
-  padding: calc(4px * var(--p-internal-input-base-scaling, 1));
+  padding: var(--ref-p-input-slotted-padding);
+  margin-inline: var(--ref-p-input-slotted-margin);
 }
 @media(hover:hover) {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
@@ -1045,6 +1067,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hideLa
 ":host {
   display: block;
   color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1082,7 +1106,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   display: flex;
-  gap: 9px;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .wrapper:has(input:focus:not([readonly])) {
@@ -1145,6 +1169,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hideLa
 ":host {
   display: block;
   color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1182,7 +1208,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   display: flex;
-  gap: 9px;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .wrapper:has(input:focus:not([readonly])) {
@@ -1245,6 +1271,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hideLa
 ":host {
   display: block;
   color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1280,9 +1308,9 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   border: 2px solid #6B6D70;
   border-radius: 4px;
   padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
-  padding-inline-end: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
+  padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   display: flex;
-  gap: 9px;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .wrapper:has(input:focus:not([readonly])) {
@@ -1331,7 +1359,8 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 .button {
   place-self: center;
-  padding: calc(4px * var(--p-internal-input-base-scaling, 1));
+  padding: var(--ref-p-input-slotted-padding);
+  margin-inline: var(--ref-p-input-slotted-margin);
 }
 @media(hover:hover) {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
@@ -1348,6 +1377,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hideLa
 ":host {
   display: block;
   color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1383,9 +1414,9 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   border: 2px solid #6B6D70;
   border-radius: 4px;
   padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
-  padding-inline-end: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
+  padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   display: flex;
-  gap: 9px;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .wrapper:has(input:focus:not([readonly])) {
@@ -1434,7 +1465,8 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 .button {
   place-self: center;
-  padding: calc(4px * var(--p-internal-input-base-scaling, 1));
+  padding: var(--ref-p-input-slotted-padding);
+  margin-inline: var(--ref-p-input-slotted-margin);
 }
 @media(hover:hover) {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
@@ -1451,6 +1483,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hideLa
 ":host {
   display: block;
   color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 0.5) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 0.5) - 0.5), 0.6826), 12)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1486,9 +1520,9 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   border: 2px solid #197E10;
   border-radius: 4px;
   padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
-  padding-inline-end: max(2px, 8px * var(--p-internal-input-base-scaling, 0.5));
+  padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
   display: flex;
-  gap: 9px;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 0.5)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: text;
   border-color: #D8D8DB;
@@ -1541,7 +1575,8 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 .button {
   place-self: center;
-  padding: 0px;
+  padding: var(--ref-p-input-slotted-padding);
+  margin-inline: var(--ref-p-input-slotted-margin);
 }"
 `;
 
@@ -1549,6 +1584,8 @@ exports[`getComponentCss() should return correct css for disabled: false, hideLa
 ":host {
   display: block;
   color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 0.5) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 0.5) - 0.5), 0.6826), 12)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1584,9 +1621,9 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   border: 2px solid #197E10;
   border-radius: 4px;
   padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
-  padding-inline-end: max(2px, 8px * var(--p-internal-input-base-scaling, 0.5));
+  padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
   display: flex;
-  gap: 9px;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 0.5)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: text;
   border-color: #D8D8DB;
@@ -1639,7 +1676,8 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 .button {
   place-self: center;
-  padding: 0px;
+  padding: var(--ref-p-input-slotted-padding);
+  margin-inline: var(--ref-p-input-slotted-margin);
 }"
 `;
 
@@ -1647,6 +1685,8 @@ exports[`getComponentCss() should return correct css for disabled: true, hideLab
 ":host {
   display: block;
   color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -1684,7 +1724,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   display: flex;
-  gap: 9px;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: not-allowed;
   color: #949598;

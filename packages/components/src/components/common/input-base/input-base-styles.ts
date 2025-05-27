@@ -57,11 +57,7 @@ export const getFunctionalComponentInputBaseStyles = (
   const gap = `max(4px, calc(${spacingStaticMedium} * ${scalingVar}))`;
 
   // This will return 0 for <= 0.5, ~4 for 1 and ~8 for 2 scaling...
-  const buttonCompensation = `clamp(
-      0,
-      6.42 * pow(calc(${scalingVar} - 0.5), 0.6826),
-      12
-    )`;
+  const buttonCompensation = `clamp(0, 6.42 * pow(calc(${scalingVar} - 0.5), 0.6826), 12)`;
 
   const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
   const {
