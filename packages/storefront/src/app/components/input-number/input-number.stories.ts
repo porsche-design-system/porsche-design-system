@@ -123,6 +123,7 @@ export const inputNumberStorySlots: Story<'p-input-number'> = {
             icon: 'delete',
             hideLabel: true,
             className: 'p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)',
+            aria: { 'aria-label': 'Delete' },
           },
         },
         {
