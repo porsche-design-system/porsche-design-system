@@ -93,12 +93,10 @@ export const getFunctionalComponentInputBaseStyles = (
       ...preventFoucOfNestedElementsStyles,
       input: {
         all: 'unset',
-        appearance: 'none',
         flex: 1,
         font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
         height,
         paddingBlock,
-        textIndent: 0,
         color: primaryColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
           color: primaryColorDark,
