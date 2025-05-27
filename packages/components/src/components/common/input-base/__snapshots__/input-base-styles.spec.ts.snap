@@ -13,17 +13,12 @@ exports[`getFunctionalComponentInputBaseStyles() should return correct css for d
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted([slot="start"]), ::slotted([slot="end"]) {
-  place-self: center !important;
-}
 input {
   all: unset;
-  appearance: none;
   flex: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 0.5) * (calc(6px + 2.125ex) + 10px));
   padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 0.5));
-  text-indent: 0;
   color: #FBFCFF;
   width: 100%;
   min-width: 2rem;
@@ -35,9 +30,9 @@ input {
 .wrapper {
   border: 2px solid #88898C;
   border-radius: 4px;
-  padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
-  padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
   display: flex;
+  align-items: center;
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 0.5)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -174,17 +169,12 @@ exports[`getFunctionalComponentInputBaseStyles() should return correct css for d
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted([slot="start"]), ::slotted([slot="end"]) {
-  place-self: center !important;
-}
 input {
   all: unset;
-  appearance: none;
   flex: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 0.5) * (calc(6px + 2.125ex) + 10px));
   padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 0.5));
-  text-indent: 0;
   color: #010205;
   width: 100%;
   min-width: 2rem;
@@ -196,9 +186,9 @@ input {
 .wrapper {
   border: 2px solid #6B6D70;
   border-radius: 4px;
-  padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
-  padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
   display: flex;
+  align-items: center;
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 0.5)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -335,17 +325,12 @@ exports[`getFunctionalComponentInputBaseStyles() should return correct css for d
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted([slot="start"]), ::slotted([slot="end"]) {
-  place-self: center !important;
-}
 input {
   all: unset;
-  appearance: none;
   flex: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
-  text-indent: 0;
   color: #010205;
   width: 100%;
   min-width: 2rem;
@@ -357,9 +342,9 @@ input {
 .wrapper {
   border: 2px solid #CC1922;
   border-radius: 4px;
-  padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
-  padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   display: flex;
+  align-items: center;
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -432,17 +417,12 @@ exports[`getFunctionalComponentInputBaseStyles() should return correct css for d
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted([slot="start"]), ::slotted([slot="end"]) {
-  place-self: center !important;
-}
 input {
   all: unset;
-  appearance: none;
   flex: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 0.5) * (calc(6px + 2.125ex) + 10px));
   padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 0.5));
-  text-indent: 0;
   color: #010205;
   width: 100%;
   min-width: 2rem;
@@ -454,9 +434,9 @@ input {
 .wrapper {
   border: 2px solid #CC1922;
   border-radius: 4px;
-  padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
-  padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
   display: flex;
+  align-items: center;
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 0.5)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -529,17 +509,12 @@ exports[`getFunctionalComponentInputBaseStyles() should return correct css for d
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted([slot="start"]), ::slotted([slot="end"]) {
-  place-self: center !important;
-}
 input {
   all: unset;
-  appearance: none;
   flex: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
-  text-indent: 0;
   color: #010205;
   width: 100%;
   min-width: 2rem;
@@ -551,9 +526,9 @@ input {
 .wrapper {
   border: 2px solid #6B6D70;
   border-radius: 4px;
-  padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
-  padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   display: flex;
+  align-items: center;
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -625,17 +600,12 @@ exports[`getFunctionalComponentInputBaseStyles() should return correct css for d
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted([slot="start"]), ::slotted([slot="end"]) {
-  place-self: center !important;
-}
 input {
   all: unset;
-  appearance: none;
   flex: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 0.5) * (calc(6px + 2.125ex) + 10px));
   padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 0.5));
-  text-indent: 0;
   color: #010205;
   width: 100%;
   min-width: 2rem;
@@ -647,9 +617,9 @@ input {
 .wrapper {
   border: 2px solid #6B6D70;
   border-radius: 4px;
-  padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
-  padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
   display: flex;
+  align-items: center;
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 0.5)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -721,17 +691,12 @@ exports[`getFunctionalComponentInputBaseStyles() should return correct css for d
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted([slot="start"]), ::slotted([slot="end"]) {
-  place-self: center !important;
-}
 input {
   all: unset;
-  appearance: none;
   flex: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 0.5) * (calc(6px + 2.125ex) + 10px));
   padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 0.5));
-  text-indent: 0;
   color: #010205;
   width: 100%;
   min-width: 2rem;
@@ -743,9 +708,9 @@ input {
 .wrapper {
   border: 2px solid #6B6D70;
   border-radius: 4px;
-  padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
-  padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
   display: flex;
+  align-items: center;
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 0.5)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -817,17 +782,12 @@ exports[`getFunctionalComponentInputBaseStyles() should return correct css for d
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted([slot="start"]), ::slotted([slot="end"]) {
-  place-self: center !important;
-}
 input {
   all: unset;
-  appearance: none;
   flex: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
-  text-indent: 0;
   color: #010205;
   width: 100%;
   min-width: 2rem;
@@ -839,9 +799,9 @@ input {
 .wrapper {
   border: 2px solid #197E10;
   border-radius: 4px;
-  padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
-  padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   display: flex;
+  align-items: center;
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -914,17 +874,12 @@ exports[`getFunctionalComponentInputBaseStyles() should return correct css for d
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted([slot="start"]), ::slotted([slot="end"]) {
-  place-self: center !important;
-}
 input {
   all: unset;
-  appearance: none;
   flex: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 0.5) * (calc(6px + 2.125ex) + 10px));
   padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 0.5));
-  text-indent: 0;
   color: #010205;
   width: 100%;
   min-width: 2rem;
@@ -936,9 +891,9 @@ input {
 .wrapper {
   border: 2px solid #197E10;
   border-radius: 4px;
-  padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
-  padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
   display: flex;
+  align-items: center;
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 0.5)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -1011,17 +966,12 @@ exports[`getFunctionalComponentInputBaseStyles() should return correct css for d
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted([slot="start"]), ::slotted([slot="end"]) {
-  place-self: center !important;
-}
 input {
   all: unset;
-  appearance: none;
   flex: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
-  text-indent: 0;
   color: #010205;
   width: 100%;
   min-width: 2rem;
@@ -1034,9 +984,9 @@ input {
 .wrapper {
   border: 2px solid #CC1922;
   border-radius: 4px;
-  padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
-  padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   display: flex;
+  align-items: center;
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -1109,17 +1059,12 @@ exports[`getFunctionalComponentInputBaseStyles() should return correct css for d
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted([slot="start"]), ::slotted([slot="end"]) {
-  place-self: center !important;
-}
 input {
   all: unset;
-  appearance: none;
   flex: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 0.5) * (calc(6px + 2.125ex) + 10px));
   padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 0.5));
-  text-indent: 0;
   color: #010205;
   width: 100%;
   min-width: 2rem;
@@ -1131,9 +1076,9 @@ input {
 .wrapper {
   border: 2px solid #CC1922;
   border-radius: 4px;
-  padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
-  padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
   display: flex;
+  align-items: center;
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 0.5)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -1206,17 +1151,12 @@ exports[`getFunctionalComponentInputBaseStyles() should return correct css for d
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted([slot="start"]), ::slotted([slot="end"]) {
-  place-self: center !important;
-}
 input {
   all: unset;
-  appearance: none;
   flex: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
-  text-indent: 0;
   color: #010205;
   width: 100%;
   min-width: 2rem;
@@ -1228,9 +1168,9 @@ input {
 .wrapper {
   border: 2px solid #6B6D70;
   border-radius: 4px;
-  padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
-  padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   display: flex;
+  align-items: center;
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -1302,17 +1242,12 @@ exports[`getFunctionalComponentInputBaseStyles() should return correct css for d
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted([slot="start"]), ::slotted([slot="end"]) {
-  place-self: center !important;
-}
 input {
   all: unset;
-  appearance: none;
   flex: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 0.5) * (calc(6px + 2.125ex) + 10px));
   padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 0.5));
-  text-indent: 0;
   color: #010205;
   width: 100%;
   min-width: 2rem;
@@ -1324,9 +1259,9 @@ input {
 .wrapper {
   border: 2px solid #6B6D70;
   border-radius: 4px;
-  padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
-  padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
   display: flex;
+  align-items: center;
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 0.5)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -1398,17 +1333,12 @@ exports[`getFunctionalComponentInputBaseStyles() should return correct css for d
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted([slot="start"]), ::slotted([slot="end"]) {
-  place-self: center !important;
-}
 input {
   all: unset;
-  appearance: none;
   flex: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
-  text-indent: 0;
   color: #010205;
   width: 100%;
   min-width: 2rem;
@@ -1421,9 +1351,9 @@ input {
 .wrapper {
   border: 2px solid #197E10;
   border-radius: 4px;
-  padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
-  padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   display: flex;
+  align-items: center;
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: text;
@@ -1490,17 +1420,12 @@ exports[`getFunctionalComponentInputBaseStyles() should return correct css for d
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted([slot="start"]), ::slotted([slot="end"]) {
-  place-self: center !important;
-}
 input {
   all: unset;
-  appearance: none;
   flex: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 0.5) * (calc(6px + 2.125ex) + 10px));
   padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 0.5));
-  text-indent: 0;
   color: #010205;
   width: 100%;
   min-width: 2rem;
@@ -1512,9 +1437,9 @@ input {
 .wrapper {
   border: 2px solid #197E10;
   border-radius: 4px;
-  padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
-  padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
   display: flex;
+  align-items: center;
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 0.5)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: text;
@@ -1581,17 +1506,12 @@ exports[`getFunctionalComponentInputBaseStyles() should return correct css for d
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted([slot="start"]), ::slotted([slot="end"]) {
-  place-self: center !important;
-}
 input {
   all: unset;
-  appearance: none;
   flex: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
-  text-indent: 0;
   color: #010205;
   width: 100%;
   min-width: 2rem;
@@ -1603,9 +1523,9 @@ input {
 .wrapper {
   border: 2px solid #CC1922;
   border-radius: 4px;
-  padding-inline-start: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
-  padding-inline-end: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   display: flex;
+  align-items: center;
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: not-allowed;
