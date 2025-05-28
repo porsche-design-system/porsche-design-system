@@ -22,6 +22,7 @@ import {
   syncMultiSelectChildrenProps,
   updateHighlightedOption,
   updateOptionsFilterState,
+  setAriaActiveDescendantElement,
 } from './multi-select-utils';
 
 type GenerateMultiSelectOptionsParams = {
@@ -394,5 +395,29 @@ describe('updateHighlightedOption()', () => {
 
     expect(getNewOptionIndexSpy).toHaveBeenCalledTimes(1);
     expect(setNextOptionHighlightedSpy).toHaveBeenCalledWith(host, options, 1);
+  });
+});
+
+describe('setAriaActiveDescendantElement()', () => {
+  it('should set ariaActiveDescendantElement to the highlighted option', () => {
+    const combobox = document.createElement('input');
+    const options = generateMultiSelectOptions({ amount: 3, highlightedIndex: 1 });
+
+    const result = setAriaActiveDescendantElement(combobox, options);
+
+    // @ts-ignore - HTMLCombobox type is missing
+    expect(combobox.ariaActiveDescendantElement).toBe(options[1]);
+    expect(result).toBe(options[1]);
+  });
+
+  it('should set ariaActiveDescendantElement to undefined if no option is highlighted', () => {
+    const combobox = document.createElement('input');
+    const options = generateMultiSelectOptions({ amount: 3 });
+
+    const result = setAriaActiveDescendantElement(combobox, options);
+
+    // @ts-ignore - HTMLCombobox type is missing
+    expect(combobox.ariaActiveDescendantElement).toBeUndefined();
+    expect(result).toBeUndefined();
   });
 });

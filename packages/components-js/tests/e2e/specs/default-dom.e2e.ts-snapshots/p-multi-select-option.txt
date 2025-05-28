@@ -1,4 +1,4 @@
-<div role="option" aria-selected="false" class="option">
+<div class="option">
   <span class="checkbox" aria-hidden="true"> </span>
   <slot slot="label"> </slot>
 </div>
