@@ -1,0 +1,27 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from '@/components/playground/Configurator';
+import { Notification } from '@/components/common/Notification';
+import { inputNumberStory, inputNumberSlotStories } from '@/app/components/input-number/input-number.stories';
+import Link from 'next/link';
+
+export const metadata = {
+  title: 'Input Number - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Input Number component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Input Number <ComponentStatus tagName="p-input-number"></ComponentStatus>
+
+The `p-input-number` component provides a versatile, user‑friendly interface for entering numeric values. It supports
+direct keyboard input and increment/decrement controls for precise adjustments. It has a `start` and `end` slot in order
+to support flexible slotted content.
+
+A `label` is a caption which informs the user what information a particular form field is asking for. The
+`p-input-number` component can be used with or without a label, but it's recommended to keep the label visible for
+better accessibility whenever possible. When used without a label, it's mandatory to provide a descriptive label text
+for screen readers.
+
+While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to
+give the user visual cues to fill out the form.
+
+<Configurator tagName="p-input-number" story={inputNumberStory} slotStories={inputNumberSlotStories} />
