@@ -1,5 +1,5 @@
-import { test, expect } from '../../../helpers';
-import { setupScenario } from '../../../../vrt/helpers';
+import { test, expect } from '../../helpers';
+import { setupScenario } from '../../../vrt/helpers';
 import { viewportWidthXXL, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 // executed in Chrome only
