@@ -581,4 +581,48 @@ test.describe('Controls', () => {
     await expect(host).toHaveJSProperty('value', '5');
     await expect(inputNumber).toHaveValue('5');
   });
+
+  test('should not decrement value below min', async ({ page }) => {
+    await initInputNumber(page, { props: { name: 'Some name', label: 'Some label', controls: true, step: 3, min: 2 } });
+    const host = getHost(page);
+    const inputNumber = getInputNumber(page);
+    const inputNumberDecrement = getInputNumberDecrement(page);
+
+    await setProperty(host, 'value', 6);
+    await expect(inputNumber).toHaveValue('6');
+
+    await inputNumberDecrement.click();
+
+    await expect(inputNumber).toBeFocused();
+    await expect(host).toHaveJSProperty('value', '3');
+    await expect(inputNumber).toHaveValue('3');
+
+    await inputNumberDecrement.click();
+
+    await expect(inputNumber).toBeFocused();
+    await expect(host).toHaveJSProperty('value', '3');
+    await expect(inputNumber).toHaveValue('3');
+  });
+
+  test('should not increment value above max', async ({ page }) => {
+    await initInputNumber(page, { props: { name: 'Some name', label: 'Some label', controls: true, step: 3, max: 8 } });
+    const host = getHost(page);
+    const inputNumber = getInputNumber(page);
+    const inputNumberIncrement = getInputNumberIncrement(page);
+
+    await setProperty(host, 'value', 3);
+    await expect(inputNumber).toHaveValue('3');
+
+    await inputNumberIncrement.click();
+
+    await expect(inputNumber).toBeFocused();
+    await expect(host).toHaveJSProperty('value', '6');
+    await expect(inputNumber).toHaveValue('6');
+
+    await inputNumberIncrement.click();
+
+    await expect(inputNumber).toBeFocused();
+    await expect(host).toHaveJSProperty('value', '6');
+    await expect(inputNumber).toHaveValue('6');
+  });
 });
