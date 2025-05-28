@@ -14,10 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
-### Added
+#### Added
 
 - `Popover`: support for custom slotted button
   ([#3861](https://github.com/porsche-design-system/porsche-design-system/pull/3861))
+- `Input Number`: ([#3855](https://github.com/porsche-design-system/porsche-design-system/pull/3855))
 
 #### Fixed
 

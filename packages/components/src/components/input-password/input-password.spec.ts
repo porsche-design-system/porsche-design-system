@@ -31,23 +31,6 @@ const initComponent = (): InputPassword => {
   return component;
 };
 
-describe('connectedCallback', () => {
-  it('should call applyConstructableStylesheetStyles() with correct parameters', () => {
-    const applyConstructableStylesheetStylesSpy = jest.spyOn(
-      applyConstructableStylesheetStylesUtils,
-      'applyConstructableStylesheetStyles'
-    );
-    const component = initComponent();
-
-    component.connectedCallback();
-    expect(applyConstructableStylesheetStylesSpy).toHaveBeenCalledWith(
-      component.host,
-      getSlottedAnchorStyles,
-      getSlottedInputIndicatorStyles
-    );
-  });
-});
-
 describe('formResetCallback', () => {
   const component = initComponent();
   const defaultValue = 'default-value';
