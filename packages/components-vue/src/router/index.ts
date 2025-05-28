@@ -188,6 +188,16 @@ export const routes: RouteType[] = [
     component: fromExamples.InputPasswordExampleControlled,
   },
   {
+    path: '/input-number-example',
+    name: 'Input Number Example',
+    component: fromExamples.InputNumberExample,
+  },
+  {
+    path: '/input-number-example-controlled',
+    name: 'Input Number Example Controlled',
+    component: fromExamples.InputNumberExampleControlled,
+  },
+  {
     path: '/link-tile-example-hyphens',
     name: 'Link Tile Example Hyphens',
     component: fromExamples.LinkTileExampleHyphens,

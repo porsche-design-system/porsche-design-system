@@ -212,6 +212,16 @@ export const routes: RouteType[] = [
     element: <fromExamples.InputPasswordControlledExamplePage />,
   },
   {
+    name: 'Input Number Example',
+    path: '/input-number-example',
+    element: <fromExamples.InputNumberExamplePage />,
+  },
+  {
+    name: 'Input Number Example Controlled',
+    path: '/input-number-example-controlled',
+    element: <fromExamples.InputNumberControlledExamplePage />,
+  },
+  {
     name: 'Link Tile Example Hyphens',
     path: '/link-tile-example-hyphens',
     element: <fromExamples.LinkTileExampleHyphensPage />,
