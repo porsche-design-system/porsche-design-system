@@ -136,7 +136,6 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
             const value = ((e as CustomEvent<InputNumberInputEventDetail>).detail.target as HTMLInputElement).value;
             onUpdateProps(propName, value === '' ? undefined : Number(value));
           }}
-          onChange={(e) => console.log(e)}
           compact={true}
           controls={true}
         >
