@@ -133,7 +133,6 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
           value={getCurrentValue(propName, propMeta) ?? ''}
           required={propMeta.isRequired}
           onInput={(e) => {
-            console.log(e);
             const value = ((e as CustomEvent<InputNumberInputEventDetail>).detail.target as HTMLInputElement).value;
             onUpdateProps(propName, value === '' ? undefined : Number(value));
           }}
