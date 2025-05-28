@@ -2,7 +2,7 @@
 
 REGISTRY=ghcr.io/porsche-design-system/porsche-design-system
 IMAGE=playwright
-TAG=v1.52.0-jammy-test-6
+TAG=v1.52.0-jammy
 
 docker pull $REGISTRY/$IMAGE:latest
 docker build -f Dockerfile -t $REGISTRY/$IMAGE:$TAG -t $REGISTRY/$IMAGE:latest .
