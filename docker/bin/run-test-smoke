@@ -5,6 +5,7 @@ set -o pipefail
 
 if
   [[ "--components-js" == "${1}" ]] ||
+  [[ "--components-angular" == "${1}" ]] ||
   [[ "--components-react" == "${1}" ]] ||
   [[ "--components-vue" == "${1}" ]];
 then
