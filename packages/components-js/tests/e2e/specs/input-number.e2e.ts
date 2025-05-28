@@ -594,14 +594,21 @@ test.describe('Controls', () => {
     await inputNumberDecrement.click();
 
     await expect(inputNumber).toBeFocused();
-    await expect(host).toHaveJSProperty('value', '3');
-    await expect(inputNumber).toHaveValue('3');
+    // stepDown from native input chooses next value starting from min + step
+    await expect(host).toHaveJSProperty('value', '5');
+    await expect(inputNumber).toHaveValue('5');
 
     await inputNumberDecrement.click();
 
     await expect(inputNumber).toBeFocused();
-    await expect(host).toHaveJSProperty('value', '3');
-    await expect(inputNumber).toHaveValue('3');
+    await expect(host).toHaveJSProperty('value', '2');
+    await expect(inputNumber).toHaveValue('2');
+
+    await inputNumberDecrement.click();
+
+    await expect(inputNumber).toBeFocused();
+    await expect(host).toHaveJSProperty('value', '2');
+    await expect(inputNumber).toHaveValue('2');
   });
 
   test('should not increment value above max', async ({ page }) => {
