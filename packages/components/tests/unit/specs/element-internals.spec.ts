@@ -7,20 +7,21 @@ import { TAG_NAMES } from '@porsche-design-system/shared';
  */
 describe('Element Internals', () => {
   const amountOfComponentsUsingElementInternalsApi = 10;
+  const componentsWithElementInternals = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasElementInternals);
 
   it('should have certain amount of components', () => {
-    const componentsWithElementInternals = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasElementInternals);
     expect(componentsWithElementInternals.length).toBe(amountOfComponentsUsingElementInternalsApi);
   });
 
-  TAG_NAMES.forEach((tagName) => {
-    const componentMeta = getComponentMeta(tagName);
-
-    if (componentMeta.hasElementInternals) {
+  componentsWithElementInternals
+    // filter out select/multiselect-option because ElementInternals is used to expose the AOM (ARIA) on the element
+    .filter((tagName) => !['p-select-option', 'p-multi-select-option'].includes(tagName))
+    .forEach((tagName) => {
+      const componentMeta = getComponentMeta(tagName);
+      console.log(tagName);
       it(`should reflect 'name' and 'form' props for component ${tagName} using ElementInternals API`, () => {
         expect(componentMeta.propsMeta['form'].propOptions['reflect']).toBe(true);
         expect(componentMeta.propsMeta['name'].propOptions['reflect']).toBe(true);
       });
-    }
-  });
+    });
 });

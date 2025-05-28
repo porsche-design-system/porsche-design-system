@@ -1,14 +1,10 @@
 <div class="root">
   <label class="label" id="label" for="value"> </label>
-  <span class="sr-only" id="initial-status">
-    No option selected. 0 options in total.</span
-  >
   <button
     type="button"
     role="combobox"
     id="value"
     aria-labelledby="label"
-    aria-describedby="initial-status"
     aria-haspopup="listbox"
     aria-expanded="false"
     aria-required="false"
@@ -28,11 +24,4 @@
     <slot> </slot>
   </div>
   <span id="message" class="message" role="alert"> </span>
-  <span
-    class="sr-only"
-    role="status"
-    aria-live="assertive"
-    aria-relevant="additions text"
-  >
-  </span>
 </div>
