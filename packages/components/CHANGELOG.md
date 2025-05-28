@@ -14,6 +14,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+#### Added
+
+- `Input Number`: ([#3855](https://github.com/porsche-design-system/porsche-design-system/pull/3855))
+
 #### Fixed
 
 - `Select Wrapper`: update of scroll position if dropdown is navigated with keyboard

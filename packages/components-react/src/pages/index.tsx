@@ -106,6 +106,7 @@ import { HeadingPage } from './generated/Heading';
 import { HeadlinePage } from './generated/Headline';
 import { IconPage } from './generated/Icon';
 import { InlineNotificationPage } from './generated/InlineNotification';
+import { InputNumberPage } from './generated/InputNumber';
 import { InputPasswordPage } from './generated/InputPassword';
 import { LinkPage } from './generated/Link';
 import { LinkPurePage } from './generated/LinkPure';
@@ -679,6 +680,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Inline Notification',
     path: '/inline-notification',
     element: <InlineNotificationPage />,
+  },
+  {
+    name: 'Input Number',
+    path: '/input-number',
+    element: <InputNumberPage />,
   },
   {
     name: 'Input Password',

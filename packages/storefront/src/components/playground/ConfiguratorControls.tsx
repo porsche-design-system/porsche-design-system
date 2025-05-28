@@ -150,7 +150,7 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
         onUpdateSlots={handleUpdateSlots}
       />
     ),
-    meta.cssVariablesMeta && (
+    Object.keys(meta.cssVariablesMeta ?? {}).filter((name) => !name.startsWith('--ref')).length > 0 && (
       <ConfigureCssVariables
         tagName={tagName}
         componentCssVariables={meta.cssVariablesMeta}

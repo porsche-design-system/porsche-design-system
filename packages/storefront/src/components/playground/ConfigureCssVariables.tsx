@@ -42,28 +42,30 @@ export const ConfigureCssVariables = <T extends ConfiguratorTagNames>({
         )}
       </span>
       <div className="flex flex-col gap-fluid-sm">
-        {Object.entries(componentCssVariables ?? {}).map(([cssVariableName, cssVariableMeta]) => (
-          <PTextFieldWrapper key={cssVariableName}>
-            <input
-              type="text"
-              value={cssVariables[cssVariableName] ?? ''}
-              onInput={(e) => onUpdateCssVariables(cssVariableName, e.currentTarget.value)}
-            />
-            <span slot="label" className="inline-flex gap-static-xs">
-              {cssVariableName}
-              <PPopover onClick={(e) => e.preventDefault()}>{cssVariableMeta.description}</PPopover>
-              {getFlags(cssVariableMeta)}
-              {/* TODO: Fix typing */}
-              {cssVariables[cssVariableName] !== (defaultCssVariables as any)?.[cssVariableName] && (
-                <PTag compact={true}>
-                  <button type="button" onClick={() => onUpdateCssVariables(cssVariableName, undefined)}>
-                    Reset
-                  </button>
-                </PTag>
-              )}
-            </span>
-          </PTextFieldWrapper>
-        ))}
+        {Object.entries(componentCssVariables ?? {})
+          .filter(([cssVariableName]) => !cssVariableName.startsWith('--ref'))
+          .map(([cssVariableName, cssVariableMeta]) => (
+            <PTextFieldWrapper key={cssVariableName}>
+              <input
+                type="text"
+                value={cssVariables[cssVariableName] ?? ''}
+                onInput={(e) => onUpdateCssVariables(cssVariableName, e.currentTarget.value)}
+              />
+              <span slot="label" className="inline-flex gap-static-xs">
+                {cssVariableName}
+                <PPopover onClick={(e) => e.preventDefault()}>{cssVariableMeta.description}</PPopover>
+                {getFlags(cssVariableMeta)}
+                {/* TODO: Fix typing */}
+                {cssVariables[cssVariableName] !== (defaultCssVariables as any)?.[cssVariableName] && (
+                  <PTag compact={true}>
+                    <button type="button" onClick={() => onUpdateCssVariables(cssVariableName, undefined)}>
+                      Reset
+                    </button>
+                  </PTag>
+                )}
+              </span>
+            </PTextFieldWrapper>
+          ))}
       </div>
     </>
   );

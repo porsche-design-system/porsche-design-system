@@ -24,9 +24,10 @@
     "test:e2e:4/4": "yarn test:e2e --shard=4/4 --grep-invert 'sitemap.json'",
     "test:e2e:sitemap": "yarn test:e2e --grep 'sitemap.json'",
     "test:a11y": "NEXT_PUBLIC_PDS_ENV=development yarn build && playwright test --config=tests/a11y/config/playwright.config.ts",
-    "test:a11y:1/3": "yarn test:a11y --shard=1/3",
-    "test:a11y:2/3": "yarn test:a11y --shard=2/3",
-    "test:a11y:3/3": "yarn test:a11y --shard=3/3",
+    "test:a11y:1/4": "yarn test:a11y --shard=1/4",
+    "test:a11y:2/4": "yarn test:a11y --shard=2/4",
+    "test:a11y:3/4": "yarn test:a11y --shard=3/4",
+    "test:a11y:4/4": "yarn test:a11y --shard=4/4",
     "test:vrt": "NEXT_PUBLIC_PDS_ENV=development yarn build && playwright test --config=tests/vrt/config/playwright.config.ts",
     "clean:build": "rm -rf ./dist && rm -rf ./.next && yarn clean:stackblitz:build",
     "clean:stackblitz:build": "yarn --cwd projects/stackblitz clean:build"
