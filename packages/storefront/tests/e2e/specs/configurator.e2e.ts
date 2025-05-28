@@ -229,9 +229,8 @@ test.describe('properties > text-field', () => {
   });
 });
 
-// TODO: Should be improved as soon as p-input-number is available
-// Tests text input of type number and checks if default is handled
-test.describe('properties > text-field number', () => {
+// Tests input of type number and checks if default is handled
+test.describe('properties > input number', () => {
   const getTag = (framework: Framework, tag: string) => {
     switch (framework) {
       case 'vanilla-js':
@@ -291,16 +290,16 @@ test.describe('properties > text-field number', () => {
         await expect(markup).toContainText(getProp(framework as Framework, 'active-page', '1'));
 
         await textField.press('Backspace');
-        // Input should not be changed since we prevent empty string
+
         await expect(pagination).toHaveJSProperty('activePage', 1);
-        await expect(textField).toHaveJSProperty('value', '1');
+        await expect(textField).toHaveJSProperty('value', '');
         await expect(markup).toContainText(getProp(framework as Framework, 'active-page', '1'));
 
         await textField.fill('2');
         await expect(pagination).toHaveJSProperty('activePage', 2);
         await expect(markup).toContainText(getProp(framework as Framework, 'active-page', '2'));
 
-        await page.locator('p-text-field-wrapper').filter({ hasText: 'Active Page' }).getByText('Reset').click();
+        await page.locator('p-input-number').filter({ hasText: 'Active Page' }).getByText('Reset').click();
 
         await expect(pagination).toHaveJSProperty('activePage', 1);
         await expect(textField).toHaveJSProperty('value', '1');
@@ -329,7 +328,7 @@ test.describe('properties > text-field number', () => {
         await expect(markup).not.toContainText(getProp(framework as Framework, 'max-length'));
 
         await textField.fill('1');
-        // Input should not be changed since we prevent empty string
+
         await expect(textarea).toHaveJSProperty('maxLength', 1);
         await expect(textField).toHaveJSProperty('value', '1');
         await expect(markup).toContainText(getProp(framework as Framework, 'max-length', '1'));
@@ -340,12 +339,12 @@ test.describe('properties > text-field number', () => {
         await expect(markup).not.toContainText(getProp(framework as Framework, 'max-length'));
 
         await textField.fill('2');
-        // Input should not be changed since we prevent empty string
+
         await expect(textarea).toHaveJSProperty('maxLength', 2);
         await expect(textField).toHaveJSProperty('value', '2');
         await expect(markup).toContainText(getProp(framework as Framework, 'max-length', '2'));
 
-        await page.locator('p-text-field-wrapper').filter({ hasText: 'Max Length' }).getByText('Reset').click();
+        await page.locator('p-input-number').filter({ hasText: 'Max Length' }).getByText('Reset').click();
 
         await expect(textarea).toHaveJSProperty('maxLength', undefined);
         await expect(textField).toHaveJSProperty('value', '');
@@ -378,9 +377,8 @@ test.describe('properties > text-field number', () => {
         }
 
         await textField.press('Backspace');
-        // Input should not be changed since we prevent empty string
         await expect(tabsBar).toHaveJSProperty('activeTabIndex', 0);
-        await expect(textField).toHaveJSProperty('value', '0');
+        await expect(textField).toHaveJSProperty('value', '');
         if (framework === 'vanilla-js') {
           await expect(markup).not.toContainText(getProp(framework as Framework, 'active-tab-index', 'activeTabIndex'));
         } else {
@@ -395,7 +393,7 @@ test.describe('properties > text-field number', () => {
           await expect(markup).toContainText(getProp(framework as Framework, 'active-tab-index', 'activeTabIndex'));
         }
 
-        await page.locator('p-text-field-wrapper').filter({ hasText: 'Active Tab Index' }).getByText('Reset').click();
+        await page.locator('p-input-number').filter({ hasText: 'Active Tab Index' }).getByText('Reset').click();
 
         await expect(tabsBar).toHaveJSProperty('activeTabIndex', 0);
         await expect(textField).toHaveJSProperty('value', '0');
