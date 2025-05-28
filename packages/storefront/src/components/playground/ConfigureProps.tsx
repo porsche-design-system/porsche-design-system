@@ -2,7 +2,9 @@ import { isDefaultValue } from '@/components/playground/configuratorUtils';
 import type { ConfiguratorTagNames, ElementConfig, HTMLTagOrComponent } from '@/utils/generator/generator';
 import { getFlags } from '@/utils/getFlags';
 import type { ComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
+import type { InputNumberInputEventDetail } from '@porsche-design-system/components-react';
 import {
+  PInputNumber,
   PPopover,
   PSelect,
   PSelectOption,
@@ -125,25 +127,22 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
 
     if (propMeta.allowedValues === 'number') {
       return (
-        <PTextFieldWrapper key={propName} style={{ '--p-internal-text-field-scaling': 0.5 } as React.CSSProperties}>
-          <input
-            name={propName}
-            type="number"
-            value={getCurrentValue(propName, propMeta) ?? ''}
-            required={propMeta.isRequired}
-            onInput={(e) => {
-              const value = e.currentTarget.value.trim();
-              if (value === '') {
-                onUpdateProps(propName, undefined);
-                return;
-              }
-              const number = Number(value);
-              onUpdateProps(propName, Number.isNaN(number) ? undefined : number);
-            }}
-            aria-labelledby={`${propName}-id`}
-          />
+        <PInputNumber
+          key={propName}
+          name={propName}
+          value={getCurrentValue(propName, propMeta) ?? ''}
+          required={propMeta.isRequired}
+          onInput={(e) => {
+            console.log(e);
+            const value = ((e as CustomEvent<InputNumberInputEventDetail>).detail.target as HTMLInputElement).value;
+            onUpdateProps(propName, value === '' ? undefined : Number(value));
+          }}
+          onChange={(e) => console.log(e)}
+          compact={true}
+          controls={true}
+        >
           <span slot="label" className="inline-flex gap-static-xs">
-            <span id={`${propName}-id`}>{capitalCase(propName)}</span>
+            <span>{capitalCase(propName)}</span>
             <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
             {getFlags(propMeta)}
             <ResetButton
@@ -153,7 +152,7 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
               onReset={() => onUpdateProps(propName, defaultProps?.[propName])}
             />
           </span>
-        </PTextFieldWrapper>
+        </PInputNumber>
       );
     }
 
