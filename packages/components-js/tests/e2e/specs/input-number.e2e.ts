@@ -159,7 +159,7 @@ test.describe('form', () => {
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
   });
 
-  test('should submit form after dynamically setting `required` to false on an initially required, empty textarea', async ({
+  test('should submit form after dynamically setting `required` to false on an initially required, empty input', async ({
     page,
   }) => {
     const name = 'name';
@@ -183,7 +183,7 @@ test.describe('form', () => {
     expect((await getEventSummary(form, 'submit')).counter).toBe(1);
   });
 
-  test('should submit form after reset if the required textarea was initially not empty', async ({ page }) => {
+  test('should submit form after reset if the required input was initially not empty', async ({ page }) => {
     const name = 'name';
     const value = '10';
     const required = true;

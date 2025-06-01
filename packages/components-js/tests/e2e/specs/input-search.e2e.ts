@@ -15,8 +15,7 @@ import {
 const getHost = (page: Page) => page.locator('p-input-search');
 const getFieldset = (page: Page) => page.locator('fieldset');
 const getInputSearch = (page: Page) => page.locator('p-input-search input');
-const getInputSearchDecrement = (page: Page) => page.locator('p-input-search p-button-pure').nth(0);
-const getInputSearchIncrement = (page: Page) => page.locator('p-input-search p-button-pure').nth(1);
+const getInputSearchClearButton = (page: Page) => page.locator('p-input-search p-button-pure');
 const getInputSearchWrapper = (page: Page) => page.locator('p-input-search .wrapper');
 const getLabel = (page: Page) => page.locator('p-input-search label');
 const getForm = (page: Page) => page.locator('form');
@@ -58,7 +57,7 @@ const initInputSearch = (page: Page, opts?: InitOptions): Promise<void> => {
 
 test.describe('value', () => {
   test('should have value as slotted content when set initially', async ({ page }) => {
-    const testValue = '10';
+    const testValue = 'some value';
     await initInputSearch(page, { props: { name: 'Some name', value: testValue } });
     const host = getHost(page);
     const inputSearch = getInputSearch(page);
@@ -105,7 +104,7 @@ test.describe('value', () => {
 test.describe('form', () => {
   test('should include name & value in FormData submit', async ({ page }) => {
     const name = 'name';
-    const value = '10';
+    const value = 'some value';
     await initInputSearch(page, {
       props: { name, value },
       isWithinForm: true,
@@ -124,7 +123,7 @@ test.describe('form', () => {
 
   test('should include name & value in FormData submit if outside of form', async ({ page }) => {
     const name = 'name';
-    const value = '10';
+    const value = 'some value';
     const formId = 'myForm';
     await initInputSearch(page, {
       props: { name, value, form: formId },
@@ -183,9 +182,9 @@ test.describe('form', () => {
     expect((await getEventSummary(form, 'submit')).counter).toBe(1);
   });
 
-  test('should submit form after reset if the required textarea was initially not empty', async ({ page }) => {
+  test('should submit form after reset if the required input was initially not empty', async ({ page }) => {
     const name = 'name';
-    const value = '10';
+    const value = 'some value';
     const required = true;
     await initInputSearch(page, {
       props: { name, value, required },
@@ -239,7 +238,7 @@ test.describe('form', () => {
 
   test('should reset input-search value to its initial value on form reset', async ({ page }) => {
     const name = 'name';
-    const value = '10';
+    const value = 'some value';
     const newValue = '20';
     const host = getHost(page);
     const inputSearch = getInputSearch(page);
@@ -276,7 +275,7 @@ test.describe('form', () => {
 
   test('should disable input-search if within disabled fieldset', async ({ page }) => {
     const name = 'name';
-    const value = '10';
+    const value = 'some value';
     const host = getHost(page);
     await initInputSearch(page, {
       props: { name, value },
@@ -309,10 +308,11 @@ test.describe('form', () => {
     await expect(inputSearch).toHaveJSProperty('disabled', false);
   });
 
-  test('should update form value correctly when value is changed via controls (stepUp)', async ({ page }) => {
+  test('should update form value correctly when value is changed via clear button', async ({ page }) => {
     const name = 'name';
+    const value = 'some value';
     await initInputSearch(page, {
-      props: { name, label: 'Some label', clear: true },
+      props: { name, label: 'Some label', clear: true, value },
       isWithinForm: true,
       markupAfter: `
         <button type="submit">Submit</button>
@@ -323,50 +323,20 @@ test.describe('form', () => {
     await addEventListener(form, 'submit');
     const host = getHost(page);
     const inputSearch = getInputSearch(page);
-    const inputSearchIncrement = getInputSearchIncrement(page);
+    const inputSearchClearButton = getInputSearchClearButton(page);
+
+    await expect(host).toHaveJSProperty('value', value);
+    await expect(inputSearch).toHaveValue(value);
+
+    await inputSearchClearButton.click();
 
     await expect(host).toHaveJSProperty('value', '');
     await expect(inputSearch).toHaveValue('');
 
-    await inputSearchIncrement.click();
-
-    await expect(host).toHaveJSProperty('value', '5');
-    await expect(inputSearch).toHaveValue('5');
-
     await page.locator('button[type="submit"]').click(); // Check if ElementInternal value was reset as well
 
     expect((await getEventSummary(form, 'submit')).counter).toBe(1);
-    expect(await getFormDataValue(form, name)).toBe('5');
-  });
-
-  test('should update form value correctly when value is changed via controls (stepDown)', async ({ page }) => {
-    const name = 'name';
-    await initInputSearch(page, {
-      props: { name, label: 'Some label', clear: true },
-      isWithinForm: true,
-      markupAfter: `
-        <button type="submit">Submit</button>
-        <button type="reset">Reset</button>
-      `,
-    });
-    const form = getForm(page);
-    await addEventListener(form, 'submit');
-    const host = getHost(page);
-    const inputSearch = getInputSearch(page);
-    const inputSearchDecrement = getInputSearchDecrement(page);
-
-    await expect(host).toHaveJSProperty('value', '');
-    await expect(inputSearch).toHaveValue('');
-
-    await inputSearchDecrement.click();
-
-    await expect(host).toHaveJSProperty('value', '-5');
-    await expect(inputSearch).toHaveValue('-5');
-
-    await page.locator('button[type="submit"]').click(); // Check if ElementInternal value was reset as well
-
-    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
-    expect(await getFormDataValue(form, name)).toBe('-5');
+    expect(await getFormDataValue(form, name)).toBe('');
   });
 });
 
@@ -445,28 +415,23 @@ test.describe('Event', () => {
 
     expect((await getEventSummary(host, 'input')).counter).toBe(1);
   });
-  test('should trigger an input and change event when the controls are clicked', async ({ page }) => {
-    await initInputSearch(page, { props: { name: 'Some name', clear: true } });
+  test('should trigger an change event when the clear button is clicked', async ({ page }) => {
+    await initInputSearch(page, { props: { name: 'Some name', clear: true, value: 'some-value' } });
     const inputSearch = getInputSearch(page);
     const host = getHost(page);
-    const inputSearchIncrement = getInputSearchIncrement(page);
-    const inputSearchDecrement = getInputSearchDecrement(page);
+    const inputSearchClearButton = getInputSearchClearButton(page);
 
-    await addEventListener(host, 'input');
     await addEventListener(host, 'change');
-    expect((await getEventSummary(host, 'input')).counter).toBe(0);
     expect((await getEventSummary(host, 'change')).counter).toBe(0);
 
-    await inputSearchIncrement.click();
+    await inputSearchClearButton.click();
 
-    await expect(inputSearch).toHaveValue('1');
-    expect((await getEventSummary(host, 'input')).counter).toBe(1);
+    await expect(inputSearch).toHaveValue('');
     expect((await getEventSummary(host, 'change')).counter).toBe(1);
 
-    await inputSearchDecrement.click();
+    await inputSearchClearButton.click();
 
-    await expect(inputSearch).toHaveValue('0');
-    expect((await getEventSummary(host, 'input')).counter).toBe(2);
+    await expect(inputSearch).toHaveValue('');
     expect((await getEventSummary(host, 'change')).counter).toBe(2);
   });
 });
@@ -508,10 +473,10 @@ test.describe('lifecycle', () => {
 
     expect(status.componentDidLoad['p-input-search'], 'componentDidLoad: p-input-search').toBe(1);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(3);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
+    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1);
 
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
   });
 
   test('should work without unnecessary round trips after state change', async ({ page }) => {
@@ -528,7 +493,7 @@ test.describe('lifecycle', () => {
 
     expect(status.componentDidUpdate['p-input-search'], 'componentDidUpdate: input-search').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 
@@ -538,98 +503,13 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-input-search'], 'componentDidLoad: input-search').toBe(1);
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
 
     await setProperty(host, 'value', 10);
     await waitForStencilLifecycle(page);
     const statusAfterChange = await getLifecycleStatus(page);
 
-    expect(statusAfterChange.componentDidUpdate['p-input-search'], 'componentDidUpdate: input-search').toBe(1);
-    expect(statusAfterChange.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
-  });
-});
-
-test.describe('Controls', () => {
-  test('should increment value by step', async ({ page }) => {
-    await initInputSearch(page, { props: { name: 'Some name', label: 'Some label', clear: true } });
-    const host = getHost(page);
-    const inputSearch = getInputSearch(page);
-    const inputSearchIncrement = getInputSearchIncrement(page);
-
-    await setProperty(host, 'value', 10);
-    await expect(inputSearch).toHaveValue('10');
-
-    await inputSearchIncrement.click();
-
-    await expect(inputSearch).toBeFocused();
-    await expect(host).toHaveJSProperty('value', '15');
-    await expect(inputSearch).toHaveValue('15');
-  });
-
-  test('should decrement value by step', async ({ page }) => {
-    await initInputSearch(page, { props: { name: 'Some name', label: 'Some label', clear: true } });
-    const host = getHost(page);
-    const inputSearch = getInputSearch(page);
-    const inputSearchDecrement = getInputSearchDecrement(page);
-
-    await setProperty(host, 'value', 10);
-    await expect(inputSearch).toHaveValue('10');
-
-    await inputSearchDecrement.click();
-
-    await expect(inputSearch).toBeFocused();
-    await expect(host).toHaveJSProperty('value', '5');
-    await expect(inputSearch).toHaveValue('5');
-  });
-
-  test('should not decrement value below min', async ({ page }) => {
-    await initInputSearch(page, { props: { name: 'Some name', label: 'Some label', clear: true } });
-    const host = getHost(page);
-    const inputSearch = getInputSearch(page);
-    const inputSearchDecrement = getInputSearchDecrement(page);
-
-    await setProperty(host, 'value', 6);
-    await expect(inputSearch).toHaveValue('6');
-
-    await inputSearchDecrement.click();
-
-    await expect(inputSearch).toBeFocused();
-    // stepDown from native input chooses next value starting from min + step
-    await expect(host).toHaveJSProperty('value', '5');
-    await expect(inputSearch).toHaveValue('5');
-
-    await inputSearchDecrement.click();
-
-    await expect(inputSearch).toBeFocused();
-    await expect(host).toHaveJSProperty('value', '2');
-    await expect(inputSearch).toHaveValue('2');
-
-    await inputSearchDecrement.click();
-
-    await expect(inputSearch).toBeFocused();
-    await expect(host).toHaveJSProperty('value', '2');
-    await expect(inputSearch).toHaveValue('2');
-  });
-
-  test('should not increment value above max', async ({ page }) => {
-    await initInputSearch(page, { props: { name: 'Some name', label: 'Some label', clear: true } });
-    const host = getHost(page);
-    const inputSearch = getInputSearch(page);
-    const inputSearchIncrement = getInputSearchIncrement(page);
-
-    await setProperty(host, 'value', 3);
-    await expect(inputSearch).toHaveValue('3');
-
-    await inputSearchIncrement.click();
-
-    await expect(inputSearch).toBeFocused();
-    await expect(host).toHaveJSProperty('value', '6');
-    await expect(inputSearch).toHaveValue('6');
-
-    await inputSearchIncrement.click();
-
-    await expect(inputSearch).toBeFocused();
-    await expect(host).toHaveJSProperty('value', '6');
-    await expect(inputSearch).toHaveValue('6');
+    expect(statusAfterChange.componentDidUpdate['p-input-search'], 'componentDidUpdate: input-search').toBe(2);
+    expect(statusAfterChange.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
   });
 });
