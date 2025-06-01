@@ -7,34 +7,34 @@ import {
 } from '../../../../components-js/tests/e2e/helpers';
 import { goto, waitForComponentsReady } from '../helpers';
 
-const getHost = (page: Page) => page.locator('p-input-number');
+const getHost = (page: Page) => page.locator('p-input-search');
 const getForm = (page: Page) => page.locator('form');
-const getInputNumber = (page: Page) => page.locator('p-input-number input');
+const getInputSearch = (page: Page) => page.locator('p-input-search input');
 
 test.describe('form', () => {
   test('should reset input number value to its initial value on form reset', async ({ page }) => {
-    await goto(page, 'input-number-example');
-    expect(await waitForComponentsReady(page)).toBe(4); // p-input-number, p-text, 2 p-button
+    await goto(page, 'input-search-example');
+    expect(await waitForComponentsReady(page)).toBe(4); // p-input-search, p-text, 2 p-button
 
     const name = 'name';
     const newValue = '10';
     const host = getHost(page);
-    const inputNumber = getInputNumber(page);
+    const inputSearch = getInputSearch(page);
     const form = getForm(page);
 
     await addEventListener(form, 'submit');
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
 
-    await inputNumber.fill(newValue);
-    await inputNumber.press('Tab');
+    await inputSearch.fill(newValue);
+    await inputSearch.press('Tab');
 
     await expect(host).toHaveJSProperty('value', newValue);
-    await expect(inputNumber).toHaveValue(newValue);
+    await expect(inputSearch).toHaveValue(newValue);
 
     await page.locator('button[type="reset"]').click();
 
     await expect(host).toHaveJSProperty('value', '');
-    await expect(inputNumber).toHaveValue('');
+    await expect(inputSearch).toHaveValue('');
 
     await page.locator('button[type="submit"]').click(); // Check if ElementInternal value was reset as well
 
@@ -43,8 +43,8 @@ test.describe('form', () => {
   });
 
   test('should include name & value in FormData submit', async ({ page }) => {
-    await goto(page, 'input-number-example');
-    expect(await waitForComponentsReady(page)).toBe(4); // p-input-number, p-text, 2 p-button
+    await goto(page, 'input-search-example');
+    expect(await waitForComponentsReady(page)).toBe(4); // p-input-search, p-text, 2 p-button
     const host = getHost(page);
     const form = getForm(page);
     const testValue = '10';
@@ -61,11 +61,11 @@ test.describe('form', () => {
   });
 
   test('should not decrement value on wheel down', async ({ page }) => {
-    await goto(page, 'input-number-example');
+    await goto(page, 'input-search-example');
     await waitForComponentsReady(page);
     const value = '42';
 
-    const input = getInputNumber(page);
+    const input = getInputSearch(page);
     await input.fill(value);
     await input.focus();
 
