@@ -12,12 +12,12 @@ const getForm = (page: Page) => page.locator('form');
 const getInputSearch = (page: Page) => page.locator('p-input-search input');
 
 test.describe('form', () => {
-  test('should reset input number value to its initial value on form reset', async ({ page }) => {
+  test('should reset input search value to its initial value on form reset', async ({ page }) => {
     await goto(page, 'input-search-example');
     expect(await waitForComponentsReady(page)).toBe(4); // p-input-search, p-text, 2 p-button
 
     const name = 'name';
-    const newValue = '10';
+    const newValue = 'some value';
     const host = getHost(page);
     const inputSearch = getInputSearch(page);
     const form = getForm(page);
@@ -47,7 +47,7 @@ test.describe('form', () => {
     expect(await waitForComponentsReady(page)).toBe(4); // p-input-search, p-text, 2 p-button
     const host = getHost(page);
     const form = getForm(page);
-    const testValue = '10';
+    const testValue = 'some value';
     await setProperty(host, 'value', testValue);
     await expect(host).toHaveJSProperty('value', testValue);
 
@@ -58,24 +58,5 @@ test.describe('form', () => {
 
     expect((await getEventSummary(form, 'submit')).counter).toBe(1);
     expect(await getFormDataValue(form, 'some-name')).toBe(testValue);
-  });
-
-  test('should not decrement value on wheel down', async ({ page }) => {
-    await goto(page, 'input-search-example');
-    await waitForComponentsReady(page);
-    const value = '42';
-
-    const input = getInputSearch(page);
-    await input.fill(value);
-    await input.focus();
-
-    const rect = await input.boundingBox();
-    if (!rect) throw new Error('could not read input bounding box');
-    await page.mouse.move(rect.x + rect.width / 2, rect.y + rect.height / 2);
-
-    await page.mouse.wheel(0, 100);
-    await page.waitForTimeout(40);
-
-    await expect(input).toHaveValue(value);
   });
 });
