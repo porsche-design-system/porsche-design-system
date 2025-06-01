@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: dark, controls: false, loading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: dark, controls: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -41,7 +41,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.wrapper:has(input:focus:not([readonly])) {
+.wrapper:has(input:focus) {
   border-color: #FBFCFF;
 }
 .label {
@@ -85,6 +85,16 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   opacity: 0;
   position: absolute;
 }
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(min-width:480px) {
   .label {
     position: static;
@@ -161,7 +171,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: light, controls: false, loading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: light, controls: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -202,7 +212,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.wrapper:has(input:focus:not([readonly])) {
+.wrapper:has(input:focus) {
   border-color: #010205;
 }
 .label {
@@ -245,6 +255,16 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 .message:empty {
   opacity: 0;
   position: absolute;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(min-width:480px) {
   .label {
@@ -322,7 +342,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: error, compact: false, readOnly: false, theme: light, controls: false, loading: true 1`] = `
+exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, hideLabel: false, state: error, compact: false, readOnly: false, theme: light, controls: true 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -363,13 +383,8 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.wrapper:has(input:focus:not([readonly])) {
+.wrapper:has(input:focus) {
   border-color: #010205;
-}
-.icon {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -413,6 +428,20 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   opacity: 0;
   position: absolute;
 }
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.button {
+  padding: var(--ref-p-input-slotted-padding);
+  margin: var(--ref-p-input-slotted-margin);
+}
 @media(hover:hover) {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #951219;
@@ -424,7 +453,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: error, compact: false, readOnly: false, theme: light, controls: true, loading: true 1`] = `
+exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, hideLabel: false, state: error, compact: false, readOnly: false, theme: light, controls: true 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -465,13 +494,8 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.wrapper:has(input:focus:not([readonly])) {
+.wrapper:has(input:focus) {
   border-color: #010205;
-}
-.icon {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -515,6 +539,16 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   opacity: 0;
   position: absolute;
 }
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 .button {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
@@ -530,7 +564,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, controls: false, loading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, controls: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -571,7 +605,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.wrapper:has(input:focus:not([readonly])) {
+.wrapper:has(input:focus) {
   border-color: #010205;
 }
 .label {
@@ -615,6 +649,16 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   opacity: 0;
   position: absolute;
 }
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(hover:hover) {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #010205;
@@ -626,7 +670,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, controls: false, loading: false 2`] = `
+exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, controls: false 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -667,7 +711,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.wrapper:has(input:focus:not([readonly])) {
+.wrapper:has(input:focus) {
   border-color: #010205;
 }
 .label {
@@ -711,6 +755,16 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   opacity: 0;
   position: absolute;
 }
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(hover:hover) {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #010205;
@@ -722,7 +776,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, controls: true, loading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, controls: false 3`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -763,7 +817,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.wrapper:has(input:focus:not([readonly])) {
+.wrapper:has(input:focus) {
   border-color: #010205;
 }
 .label {
@@ -807,9 +861,15 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   opacity: 0;
   position: absolute;
 }
-.button {
-  padding: var(--ref-p-input-slotted-padding);
-  margin: var(--ref-p-input-slotted-margin);
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(hover:hover) {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
@@ -822,7 +882,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: success, compact: false, readOnly: false, theme: light, controls: true, loading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, hideLabel: false, state: success, compact: false, readOnly: false, theme: light, controls: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -863,7 +923,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.wrapper:has(input:focus:not([readonly])) {
+.wrapper:has(input:focus) {
   border-color: #010205;
 }
 .label {
@@ -908,9 +968,15 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   opacity: 0;
   position: absolute;
 }
-.button {
-  padding: var(--ref-p-input-slotted-padding);
-  margin: var(--ref-p-input-slotted-margin);
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(hover:hover) {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
@@ -923,7 +989,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: success, compact: false, readOnly: false, theme: light, controls: true, loading: false 2`] = `
+exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, hideLabel: false, state: success, compact: false, readOnly: false, theme: light, controls: false 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -964,7 +1030,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.wrapper:has(input:focus:not([readonly])) {
+.wrapper:has(input:focus) {
   border-color: #010205;
 }
 .label {
@@ -1009,9 +1075,15 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   opacity: 0;
   position: absolute;
 }
-.button {
-  padding: var(--ref-p-input-slotted-padding);
-  margin: var(--ref-p-input-slotted-margin);
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(hover:hover) {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
@@ -1024,7 +1096,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, controls: false, loading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, controls: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1065,7 +1137,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.wrapper:has(input:focus:not([readonly])) {
+.wrapper:has(input:focus) {
   border-color: #010205;
 }
 .label {
@@ -1110,6 +1182,16 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   opacity: 0;
   position: absolute;
 }
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 @media(hover:hover) {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #951219;
@@ -1121,7 +1203,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, controls: false, loading: true 1`] = `
+exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, controls: true 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1162,13 +1244,8 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.wrapper:has(input:focus:not([readonly])) {
+.wrapper:has(input:focus) {
   border-color: #010205;
-}
-.icon {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1212,6 +1289,20 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   opacity: 0;
   position: absolute;
 }
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.button {
+  padding: var(--ref-p-input-slotted-padding);
+  margin: var(--ref-p-input-slotted-margin);
+}
 @media(hover:hover) {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
     border-color: #951219;
@@ -1223,7 +1314,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: none, compact: false, readOnly: false, theme: light, controls: true, loading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, hideLabel: true, state: none, compact: false, readOnly: false, theme: light, controls: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1264,7 +1355,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.wrapper:has(input:focus:not([readonly])) {
+.wrapper:has(input:focus) {
   border-color: #010205;
 }
 .label {
@@ -1308,9 +1399,15 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   opacity: 0;
   position: absolute;
 }
-.button {
-  padding: var(--ref-p-input-slotted-padding);
-  margin: var(--ref-p-input-slotted-margin);
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(hover:hover) {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
@@ -1323,7 +1420,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: none, compact: false, readOnly: false, theme: light, controls: true, loading: false 2`] = `
+exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, hideLabel: true, state: none, compact: false, readOnly: false, theme: light, controls: false 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1364,7 +1461,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.wrapper:has(input:focus:not([readonly])) {
+.wrapper:has(input:focus) {
   border-color: #010205;
 }
 .label {
@@ -1408,9 +1505,15 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   opacity: 0;
   position: absolute;
 }
-.button {
-  padding: var(--ref-p-input-slotted-padding);
-  margin: var(--ref-p-input-slotted-margin);
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(hover:hover) {
   .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
@@ -1423,7 +1526,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: success, compact: true, readOnly: true, theme: light, controls: true, loading: true 1`] = `
+exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, hideLabel: true, state: success, compact: true, readOnly: true, theme: light, controls: true 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1467,14 +1570,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   border-color: #D8D8DB;
   background: #D8D8DB;
 }
-.wrapper:has(input:focus:not([readonly])) {
-  border-color: #010205;
-}
-.icon {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1517,13 +1612,23 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   opacity: 0;
   position: absolute;
 }
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 .button {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }"
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: success, compact: true, readOnly: true, theme: light, controls: true, loading: true 2`] = `
+exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, hideLabel: true, state: success, compact: true, readOnly: true, theme: light, controls: true 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1567,14 +1672,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   border-color: #D8D8DB;
   background: #D8D8DB;
 }
-.wrapper:has(input:focus:not([readonly])) {
-  border-color: #010205;
-}
-.icon {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1617,13 +1714,23 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   opacity: 0;
   position: absolute;
 }
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 .button {
   padding: var(--ref-p-input-slotted-padding);
   margin: var(--ref-p-input-slotted-margin);
 }"
 `;
 
-exports[`getComponentCss() should return correct css for disabled: true, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, controls: false, loading: false 1`] = `
+exports[`getComponentCss() should return correct css for isDisabledOrLoading: true, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, controls: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1642,34 +1749,35 @@ input {
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 1) * (calc(6px + 2.125ex) + 10px));
   padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
-  color: #010205;
-  width: 100%;
-  min-width: 2rem;
-  text-overflow: ellipsis;
-  -moz-appearance: textfield;
-}
-input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-}
-.root {
-  display: grid;
-  gap: 4px;
-}
-.wrapper {
-  border: 2px solid #CC1922;
-  border-radius: 4px;
-  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
-  display: flex;
-  align-items: center;
-  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  cursor: not-allowed;
   color: #949598;
-  border-color: #949598;
+  width: 100%;
+  min-width: 2rem;
   -webkit-text-fill-color: #949598;
+  text-overflow: ellipsis;
+  -moz-appearance: textfield;
 }
-.wrapper:has(input:focus:not([readonly])) {
-  border-color: #010205;
+input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.root {
+  display: grid;
+  gap: 4px;
+}
+.wrapper {
+  border: 2px solid #CC1922;
+  border-radius: 4px;
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
+  display: flex;
+  align-items: center;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  cursor: not-allowed;
+  border-color: #949598;
+}
+.icon {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1711,5 +1819,15 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 .message:empty {
   opacity: 0;
   position: absolute;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
