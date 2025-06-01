@@ -280,7 +280,6 @@ export class InputNumber {
 
   private onStep = (step: 'up' | 'down'): void => {
     this.inputElement[step === 'up' ? 'stepUp' : 'stepDown']();
-    this.inputElement.stepUp();
     // Triggers onInput/onChange functions
     this.inputElement.dispatchEvent(new window.InputEvent('input', { bubbles: true, composed: true }));
     this.inputElement.dispatchEvent(new window.Event('change', { bubbles: true, composed: true }));

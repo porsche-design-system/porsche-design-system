@@ -269,7 +269,7 @@ export class InputSearch {
   };
   private onClear = (): void => {
     this.value = '';
-    this.internals.setFormValue('');
+    this.internals?.setFormValue('');
     this.inputElement.dispatchEvent(new window.Event('change', { bubbles: true, composed: true }));
     this.inputElement.focus();
   };
