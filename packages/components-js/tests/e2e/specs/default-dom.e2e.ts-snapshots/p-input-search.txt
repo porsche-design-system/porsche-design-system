@@ -1,14 +1,14 @@
 <div class="root">
-  <label class="label" id="label" for="input-number"> </label>
+  <label class="label" id="label" for="input-search"> </label>
   <div class="wrapper">
     <slot name="start"> </slot>
+    <p-icon class="icon hydrated" aria-hidden="true"> </p-icon>
     <input
       aria-describedby="label description message"
-      id="input-number"
+      id="input-search"
       name="value"
-      type="number"
+      type="search"
       placeholder=""
-      step="1"
       autocomplete=""
     />
     <slot name="end"> </slot>
