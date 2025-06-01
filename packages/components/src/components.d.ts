@@ -35,6 +35,7 @@ import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-u
 import { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 import { InputNumberAutoComplete, InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
 import { InputPasswordAutoComplete, InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
+import { InputSearchAutoComplete, InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
 import { LinkIcon } from "./components/link/link-utils";
 import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 import { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
@@ -103,6 +104,7 @@ export { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-u
 export { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 export { InputNumberAutoComplete, InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
 export { InputPasswordAutoComplete, InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
+export { InputSearchAutoComplete, InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
 export { LinkIcon } from "./components/link/link-utils";
 export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 export { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
@@ -1086,6 +1088,10 @@ export namespace Components {
          */
         "label"?: string;
         /**
+          * Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
           * The max value of the number input.
          */
         "max"?: number;
@@ -1160,6 +1166,10 @@ export namespace Components {
          */
         "label"?: string;
         /**
+          * Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
           * The max length of the password input.
          */
         "maxLength"?: number;
@@ -1201,6 +1211,80 @@ export namespace Components {
         "toggle"?: boolean;
         /**
           * The password input value.
+         */
+        "value"?: string;
+    }
+    interface PInputSearch {
+        /**
+          * Specifies whether the input can be autofilled by the browser
+         */
+        "autoComplete"?: InputSearchAutoComplete;
+        /**
+          * Show clear input value button
+         */
+        "clear"?: boolean;
+        /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Marks the search input as disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * The id of a form element the search input should be associated with.
+         */
+        "form"?: string;
+        /**
+          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Show search indicator icon
+         */
+        "indicator"?: boolean;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The name of the search input.
+         */
+        "name": string;
+        /**
+          * The placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * Specifies whether the search input should be read-only.
+         */
+        "readOnly"?: boolean;
+        /**
+          * Marks the search input as required.
+         */
+        "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: InputSearchState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * The search input value.
          */
         "value"?: string;
     }
@@ -2587,6 +2671,10 @@ export interface PInputPasswordCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPInputPasswordElement;
 }
+export interface PInputSearchCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPInputSearchElement;
+}
 export interface PLinkTileProductCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPLinkTileProductElement;
@@ -3000,6 +3088,25 @@ declare global {
     var HTMLPInputPasswordElement: {
         prototype: HTMLPInputPasswordElement;
         new (): HTMLPInputPasswordElement;
+    };
+    interface HTMLPInputSearchElementEventMap {
+        "change": InputSearchChangeEventDetail;
+        "blur": InputSearchBlurEventDetail;
+        "input": InputSearchInputEventDetail;
+    }
+    interface HTMLPInputSearchElement extends Components.PInputSearch, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPInputSearchElementEventMap>(type: K, listener: (this: HTMLPInputSearchElement, ev: PInputSearchCustomEvent<HTMLPInputSearchElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPInputSearchElementEventMap>(type: K, listener: (this: HTMLPInputSearchElement, ev: PInputSearchCustomEvent<HTMLPInputSearchElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPInputSearchElement: {
+        prototype: HTMLPInputSearchElement;
+        new (): HTMLPInputSearchElement;
     };
     interface HTMLPLinkElement extends Components.PLink, HTMLStencilElement {
     }
@@ -3556,6 +3663,7 @@ declare global {
         "p-inline-notification": HTMLPInlineNotificationElement;
         "p-input-number": HTMLPInputNumberElement;
         "p-input-password": HTMLPInputPasswordElement;
+        "p-input-search": HTMLPInputSearchElement;
         "p-link": HTMLPLinkElement;
         "p-link-pure": HTMLPLinkPureElement;
         "p-link-social": HTMLPLinkSocialElement;
@@ -4616,6 +4724,10 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
+          * Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
           * The max value of the number input.
          */
         "max"?: number;
@@ -4702,6 +4814,10 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
+          * Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
           * The max length of the password input.
          */
         "maxLength"?: number;
@@ -4755,6 +4871,92 @@ declare namespace LocalJSX {
         "toggle"?: boolean;
         /**
           * The password input value.
+         */
+        "value"?: string;
+    }
+    interface PInputSearch {
+        /**
+          * Specifies whether the input can be autofilled by the browser
+         */
+        "autoComplete"?: InputSearchAutoComplete;
+        /**
+          * Show clear input value button
+         */
+        "clear"?: boolean;
+        /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Marks the search input as disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * The id of a form element the search input should be associated with.
+         */
+        "form"?: string;
+        /**
+          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Show search indicator icon
+         */
+        "indicator"?: boolean;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The name of the search input.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the search input has lost focus.
+         */
+        "onBlur"?: (event: PInputSearchCustomEvent<InputSearchBlurEventDetail>) => void;
+        /**
+          * Emitted when the search input loses focus after its value was changed.
+         */
+        "onChange"?: (event: PInputSearchCustomEvent<InputSearchChangeEventDetail>) => void;
+        /**
+          * Emitted when the value has been changed as a direct result of a user action.
+         */
+        "onInput"?: (event: PInputSearchCustomEvent<InputSearchInputEventDetail>) => void;
+        /**
+          * The placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * Specifies whether the search input should be read-only.
+         */
+        "readOnly"?: boolean;
+        /**
+          * Marks the search input as required.
+         */
+        "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: InputSearchState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * The search input value.
          */
         "value"?: string;
     }
@@ -6250,6 +6452,7 @@ declare namespace LocalJSX {
         "p-inline-notification": PInlineNotification;
         "p-input-number": PInputNumber;
         "p-input-password": PInputPassword;
+        "p-input-search": PInputSearch;
         "p-link": PLink;
         "p-link-pure": PLinkPure;
         "p-link-social": PLinkSocial;
@@ -6382,6 +6585,7 @@ declare module "@stencil/core" {
             "p-inline-notification": LocalJSX.PInlineNotification & JSXBase.HTMLAttributes<HTMLPInlineNotificationElement>;
             "p-input-number": LocalJSX.PInputNumber & JSXBase.HTMLAttributes<HTMLPInputNumberElement>;
             "p-input-password": LocalJSX.PInputPassword & JSXBase.HTMLAttributes<HTMLPInputPasswordElement>;
+            "p-input-search": LocalJSX.PInputSearch & JSXBase.HTMLAttributes<HTMLPInputSearchElement>;
             "p-link": LocalJSX.PLink & JSXBase.HTMLAttributes<HTMLPLinkElement>;
             "p-link-pure": LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
             /**

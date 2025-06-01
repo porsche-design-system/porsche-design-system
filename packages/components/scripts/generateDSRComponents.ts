@@ -755,7 +755,7 @@ $&`
           .replace(/this\.props\.value = state;/, '')
           .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
           .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
-      } else if (tagName === 'p-input-number') {
+      } else if (tagName === 'p-input-number' || tagName === 'p-input-search') {
         newFileContent = newFileContent
           .replace(/@AttachInternals\(\)/, '')
           .replace(

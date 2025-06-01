@@ -40,6 +40,7 @@ const propTypes: PropTypes<typeof InputNumber> = {
   step: AllowedTypes.number,
   controls: AllowedTypes.boolean,
   required: AllowedTypes.boolean,
+  loading: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
   max: AllowedTypes.number,
   min: AllowedTypes.number,
@@ -111,6 +112,9 @@ export class InputNumber {
 
   /** Marks the number input as required. */
   @Prop() public required?: boolean = false;
+
+  /** Shows a loading indicator. */
+  @Prop() public loading?: boolean = false;
 
   /** The validation state. */
   @Prop() public state?: InputNumberState = 'none';
@@ -187,7 +191,8 @@ export class InputNumber {
       this.compact,
       this.readOnly,
       this.theme,
-      this.controls
+      this.controls,
+      this.loading
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -218,6 +223,7 @@ export class InputNumber {
         message={this.message}
         theme={this.theme}
         step={this.step}
+        loading={this.loading}
         {...(this.controls && {
           end: (
             <Fragment>
@@ -274,6 +280,7 @@ export class InputNumber {
 
   private onStep = (step: 'up' | 'down'): void => {
     this.inputElement[step === 'up' ? 'stepUp' : 'stepDown']();
+    this.inputElement.stepUp();
     // Triggers onInput/onChange functions
     this.inputElement.dispatchEvent(new window.InputEvent('input', { bubbles: true, composed: true }));
     this.inputElement.dispatchEvent(new window.Event('change', { bubbles: true, composed: true }));

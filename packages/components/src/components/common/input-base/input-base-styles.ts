@@ -44,6 +44,7 @@ export const getFunctionalComponentInputBaseStyles = (
   state: FormState,
   compact: boolean,
   readOnly: boolean,
+  loading: boolean,
   theme: Theme,
   additionalInputJssStyle?: JssStyle
 ): Styles => {
@@ -153,6 +154,13 @@ export const getFunctionalComponentInputBaseStyles = (
         }),
       }),
     },
+    ...(loading && {
+      icon: {
+        font: textSmallStyle.font,
+        width: fontLineHeight,
+        height: fontLineHeight,
+      },
+    }),
     // .label / .required
     ...getFunctionalComponentLabelStyles(
       disabled,

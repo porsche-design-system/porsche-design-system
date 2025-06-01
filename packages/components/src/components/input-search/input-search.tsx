@@ -6,9 +6,9 @@ import {
   type EventEmitter,
   type JSX,
   Prop,
-  State,
   Watch,
   h,
+  State,
 } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
@@ -21,17 +21,17 @@ import {
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
-import { getComponentCss } from './input-password-styles';
+import { getComponentCss } from './input-search-styles';
 import {
-  INPUT_PASSWORD_AUTO_COMPLETE,
-  type InputPasswordAutoComplete,
-  type InputPasswordBlurEventDetail,
-  type InputPasswordChangeEventDetail,
-  type InputPasswordInputEventDetail,
-  type InputPasswordState,
-} from './input-password-utils';
+  INPUT_SEARCH_AUTO_COMPLETE,
+  type InputSearchAutoComplete,
+  type InputSearchBlurEventDetail,
+  type InputSearchChangeEventDetail,
+  type InputSearchInputEventDetail,
+  type InputSearchState,
+} from './input-search-utils';
 
-const propTypes: PropTypes<typeof InputPassword> = {
+const propTypes: PropTypes<typeof InputSearch> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
   placeholder: AllowedTypes.string,
@@ -40,14 +40,13 @@ const propTypes: PropTypes<typeof InputPassword> = {
   required: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
-  maxLength: AllowedTypes.number,
-  minLength: AllowedTypes.number,
   form: AllowedTypes.string,
-  autoComplete: AllowedTypes.oneOf<InputPasswordAutoComplete>(INPUT_PASSWORD_AUTO_COMPLETE),
-  state: AllowedTypes.oneOf<InputPasswordState>(FORM_STATES),
+  autoComplete: AllowedTypes.oneOf<InputSearchAutoComplete>(INPUT_SEARCH_AUTO_COMPLETE),
+  state: AllowedTypes.oneOf<InputSearchState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
-  toggle: AllowedTypes.boolean,
+  clear: AllowedTypes.boolean,
+  indicator: AllowedTypes.boolean,
   readOnly: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
@@ -61,11 +60,11 @@ const propTypes: PropTypes<typeof InputPassword> = {
  * @slot {"name": "end", "description": "Shows content at the end of the input (e.g. toggle button, unit suffix)."}
  */
 @Component({
-  tag: 'p-input-password',
+  tag: 'p-input-search',
   shadow: { delegatesFocus: true },
   formAssociated: true,
 })
-export class InputPassword {
+export class InputSearch {
   @Element() public host!: HTMLElement;
 
   /** The label text. */
@@ -77,43 +76,43 @@ export class InputPassword {
   /** Displays as compact version. */
   @Prop() public compact?: boolean = false;
 
-  /** The name of the password input. */
+  /** The name of the search input. */
   @Prop({ reflect: true }) public name: string;
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** The password input value. */
+  /** The search input value. */
   @Prop({ mutable: true }) public value?: string = '';
 
   /** Specifies whether the input can be autofilled by the browser */
-  @Prop() public autoComplete?: InputPasswordAutoComplete = '';
+  @Prop() public autoComplete?: InputSearchAutoComplete = '';
 
-  /** Specifies whether the password input should be read-only. */
+  /** Show clear input value button */
+  @Prop() public clear?: boolean = false;
+
+  /** Show search indicator icon */
+  @Prop() public indicator?: boolean = true;
+
+  /** Specifies whether the search input should be read-only. */
   @Prop() public readOnly?: boolean = false;
 
-  /** The id of a form element the password input should be associated with. */
+  /** The id of a form element the search input should be associated with. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
-
-  /** The max length of the password input. */
-  @Prop() public maxLength?: number;
-
-  /** The min length of the password input. */
-  @Prop() public minLength?: number;
 
   /** The placeholder text. */
   @Prop() public placeholder?: string = '';
 
-  /** Marks the password input as disabled. */
+  /** Marks the search input as disabled. */
   @Prop() public disabled?: boolean = false;
 
-  /** Marks the password input as required. */
+  /** Marks the search input as required. */
   @Prop() public required?: boolean = false;
 
   /** Shows a loading indicator. */
   @Prop() public loading?: boolean = false;
 
   /** The validation state. */
-  @Prop() public state?: InputPasswordState = 'none';
+  @Prop() public state?: InputSearchState = 'none';
 
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
@@ -121,24 +120,21 @@ export class InputPassword {
   /** Show or hide label and description text. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Show or hide password toggle for `input type="password"`. */
-  @Prop() public toggle?: boolean = false;
-
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  /** Emitted when the password input loses focus after its value was changed. */
-  @Event({ bubbles: true }) public change: EventEmitter<InputPasswordChangeEventDetail>;
+  /** Emitted when the search input loses focus after its value was changed. */
+  @Event({ bubbles: true }) public change: EventEmitter<InputSearchChangeEventDetail>;
 
-  /** Emitted when the password input has lost focus. */
-  @Event({ bubbles: false }) public blur: EventEmitter<InputPasswordBlurEventDetail>;
+  /** Emitted when the search input has lost focus. */
+  @Event({ bubbles: false }) public blur: EventEmitter<InputSearchBlurEventDetail>;
 
   /** Emitted when the value has been changed as a direct result of a user action. */
-  @Event({ bubbles: true }) public input: EventEmitter<InputPasswordInputEventDetail>;
+  @Event({ bubbles: true }) public input: EventEmitter<InputSearchInputEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;
 
-  @State() private showPassword = false;
+  @State() private isClearable = false;
 
   private inputElement: HTMLInputElement;
   private defaultValue: string;
@@ -146,10 +142,12 @@ export class InputPassword {
   @Watch('value')
   public onValueChange(newValue: string): void {
     this.internals?.setFormValue(newValue);
+    this.isClearable = !!newValue;
   }
 
   public componentWillLoad(): void {
     this.defaultValue = this.value;
+    this.isClearable = !!this.value;
   }
 
   public formResetCallback(): void {
@@ -186,11 +184,11 @@ export class InputPassword {
       this.disabled,
       this.hideLabel,
       this.state,
-      this.toggle,
       this.compact,
       this.readOnly,
-      this.loading,
-      this.theme
+      this.theme,
+      this.clear,
+      this.loading
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -200,18 +198,16 @@ export class InputPassword {
         host={this.host}
         label={this.label}
         description={this.description}
-        id="input-password"
+        id="input-search"
         refElement={(el: HTMLInputElement) => (this.inputElement = el)}
         onInput={this.onInput}
         onChange={this.onChange}
         onBlur={this.onBlur}
         name={this.name}
         form={this.form}
-        type={this.showPassword ? 'text' : 'password'}
+        type="search"
         required={this.required}
         placeholder={this.placeholder}
-        maxLength={this.maxLength}
-        minLength={this.minLength}
         value={this.value}
         readOnly={this.readOnly}
         autoComplete={this.autoComplete}
@@ -220,27 +216,41 @@ export class InputPassword {
         message={this.message}
         theme={this.theme}
         loading={this.loading}
-        end={
-          this.toggle && (
+        {...(this.indicator && {
+          start: (
+            <PrefixedTagNames.pIcon
+              class="icon"
+              aria-hidden="true"
+              name="search"
+              color="state-disabled"
+              theme={this.theme}
+            />
+          ),
+        })}
+        {...(this.clear && {
+          end: (
             <PrefixedTagNames.pButtonPure
+              tabIndex={-1}
               hideLabel={true}
               theme={this.theme}
               class="button"
               type="button"
-              icon={this.showPassword ? 'view-off' : 'view'}
-              disabled={this.disabled}
-              onClick={this.togglePassword}
-              aria={{ 'aria-pressed': this.showPassword ? 'true' : 'false' }}
+              icon="close"
+              hidden={!this.isClearable}
+              disabled={this.disabled || this.readOnly}
+              onClick={() => this.onClear()}
             >
-              Toggle password visibility
+              Clear field
             </PrefixedTagNames.pButtonPure>
-          )
-        }
+          ),
+        })}
       />
     );
   }
 
   private onChange = (e: Event): void => {
+    e.stopPropagation();
+    e.stopImmediatePropagation();
     this.change.emit(e);
   };
 
@@ -253,13 +263,14 @@ export class InputPassword {
   private onInput = (e: InputEvent): void => {
     e.stopPropagation();
     e.stopImmediatePropagation();
-    this.input.emit(e);
     const target = e.target as HTMLInputElement;
     this.value = target.value; // triggers @Watch('value')
+    this.input.emit(e);
   };
-
-  private togglePassword = (): void => {
-    this.showPassword = !this.showPassword;
+  private onClear = (): void => {
+    this.value = '';
+    this.internals.setFormValue('');
+    this.inputElement.dispatchEvent(new window.Event('change', { bubbles: true, composed: true }));
     this.inputElement.focus();
   };
 }

@@ -10,6 +10,7 @@ import type {
   InputBaseState,
   InputBaseWheelEventDetail,
 } from './input-base-utils';
+import { getPrefixedTagNames } from '../../../utils';
 
 // TODO refine in #3852
 type InputBaseProps = {
@@ -17,6 +18,7 @@ type InputBaseProps = {
   id: string;
   label?: string;
   description?: string;
+  loading?: boolean;
   required?: boolean;
   disabled?: boolean;
   state?: InputBaseState;
@@ -48,6 +50,7 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
   id,
   label,
   description,
+  loading,
   required,
   disabled,
   state,
@@ -73,6 +76,8 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
   start,
   end,
 }) => {
+  const PrefixedTagNames = getPrefixedTagNames(host);
+
   return (
     <div class="root">
       <Label
@@ -112,6 +117,7 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
         />
         {end}
         <slot name="end" />
+        {loading && <PrefixedTagNames.pSpinner class="icon" size="inherit" theme={theme} aria-hidden="true" />}
       </div>
       <StateMessage state={state} message={message} theme={theme} host={host} />
     </div>

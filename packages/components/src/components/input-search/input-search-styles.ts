@@ -19,19 +19,20 @@ export const getComponentCss = (
   disabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
-  toggle: boolean,
   compact: boolean,
   readOnly: boolean,
-  loading: boolean,
-  theme: Theme
+  theme: Theme,
+  clear: boolean,
+  loading: boolean
 ): string => {
   return getCss({
     ...getFunctionalComponentInputBaseStyles(disabled, hideLabel, state, compact, readOnly, loading, theme, {
-      '&[type="text"]': {
-        textOverflow: 'ellipsis',
+      textOverflow: 'ellipsis',
+      '&[type="search"]::-webkit-search-cancel-button': {
+        display: 'none',
       },
     }),
-    ...(toggle && {
+    ...(clear && {
       button: {
         padding: `var(${cssVarButtonPurePadding})`,
         margin: `var(${cssVarButtonPureMargin})`,

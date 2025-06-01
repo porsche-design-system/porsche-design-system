@@ -22,10 +22,11 @@ export const getComponentCss = (
   compact: boolean,
   readOnly: boolean,
   theme: Theme,
-  controls: boolean
+  controls: boolean,
+  loading: boolean
 ): string => {
   return getCss({
-    ...getFunctionalComponentInputBaseStyles(disabled, hideLabel, state, compact, readOnly, theme, {
+    ...getFunctionalComponentInputBaseStyles(disabled, hideLabel, state, compact, readOnly, loading, theme, {
       textOverflow: 'ellipsis',
       MozAppearance: 'textfield',
       '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
