@@ -19,6 +19,7 @@ import {
   getPrefixedTagNames,
   hasPropValueChanged,
   validateProps,
+  isDisabledOrLoading,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-search-styles';
@@ -30,6 +31,7 @@ import {
   type InputSearchInputEventDetail,
   type InputSearchState,
 } from './input-search-utils';
+import type { HTMLInputElementEventTarget } from '../pin-code/pin-code-utils';
 
 const propTypes: PropTypes<typeof InputSearch> = {
   label: AllowedTypes.string,
@@ -136,6 +138,7 @@ export class InputSearch {
 
   @State() private isClearable = false;
 
+  private initialLoading: boolean = false;
   private inputElement: HTMLInputElement;
   private defaultValue: string;
 
@@ -148,6 +151,13 @@ export class InputSearch {
   public componentWillLoad(): void {
     this.defaultValue = this.value;
     this.isClearable = !!this.value;
+    this.initialLoading = this.loading;
+  }
+
+  public componentWillUpdate(): void {
+    if (this.loading) {
+      this.initialLoading = true;
+    }
   }
 
   public formResetCallback(): void {
@@ -169,10 +179,20 @@ export class InputSearch {
 
   public componentDidLoad(): void {
     this.internals?.setFormValue(this.value);
+
+    this.inputElement.addEventListener('beforeinput', (event: InputEvent & HTMLInputElementEventTarget) => {
+      if (this.loading) {
+        event.preventDefault();
+      }
+    });
   }
 
   public componentDidRender(): void {
     this.internals?.setValidity(this.inputElement.validity, this.inputElement.validationMessage, this.inputElement);
+  }
+
+  public connectedCallback(): void {
+    this.initialLoading = this.loading;
   }
 
   public render(): JSX.Element {
@@ -181,14 +201,13 @@ export class InputSearch {
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.disabled,
+      isDisabledOrLoading(this.disabled, this.loading),
       this.hideLabel,
       this.state,
       this.compact,
       this.readOnly,
       this.theme,
-      this.clear,
-      this.loading
+      this.clear
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -216,6 +235,7 @@ export class InputSearch {
         message={this.message}
         theme={this.theme}
         loading={this.loading}
+        initialLoading={this.initialLoading}
         {...(this.indicator && {
           start: (
             <PrefixedTagNames.pIcon
@@ -237,7 +257,7 @@ export class InputSearch {
               type="button"
               icon="close"
               hidden={!this.isClearable}
-              disabled={this.disabled || this.readOnly}
+              disabled={this.loading || this.readOnly || this.disabled}
               onClick={() => this.onClear()}
             >
               Clear field
@@ -270,7 +290,8 @@ export class InputSearch {
   private onClear = (): void => {
     this.value = '';
     this.internals?.setFormValue('');
-    this.inputElement.dispatchEvent(new window.Event('change', { bubbles: true, composed: true }));
+    this.input.emit(new window.InputEvent('input', { bubbles: true, composed: true }));
+    this.change.emit(new window.Event('change', { bubbles: true, composed: true }));
     this.inputElement.focus();
   };
 }

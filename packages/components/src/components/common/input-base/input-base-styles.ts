@@ -23,6 +23,7 @@ import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../state-message/state-message-styles';
+import { getFunctionalComponentLoadingMessageStyles } from '../loading-message/loading-message-styles';
 
 export const cssVarInternalInputBaseScaling = '--p-internal-input-base-scaling';
 // Determines the scaling factor for the input-number size. In "compact" mode, it uses 0.5 to achieve a 36px input-number (compact size).
@@ -39,12 +40,11 @@ export const cssVarButtonPurePadding = '--ref-p-input-slotted-padding';
 export const cssVarButtonPureMargin = '--ref-p-input-slotted-margin';
 
 export const getFunctionalComponentInputBaseStyles = (
-  disabled: boolean,
+  isDisabledOrLoading: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   compact: boolean,
   readOnly: boolean,
-  loading: boolean,
   theme: Theme,
   additionalInputJssStyle?: JssStyle
 ): Styles => {
@@ -104,6 +104,14 @@ export const getFunctionalComponentInputBaseStyles = (
         }),
         width: '100%',
         minWidth: '2rem',
+        ...(isDisabledOrLoading && {
+          color: disabledColor,
+          WebkitTextFillColor: disabledColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            color: disabledColorDark,
+            WebkitTextFillColor: disabledColorDark,
+          }),
+        }),
         ...additionalInputJssStyle,
       },
     },
@@ -122,26 +130,25 @@ export const getFunctionalComponentInputBaseStyles = (
       ...prefersColorSchemeDarkMediaQuery(theme, {
         borderColor: formStateColorDark || contrastMediumColorDark,
       }),
-      '&:has(input:focus:not([readonly]))': {
-        borderColor: primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: primaryColorDark,
+      ...(!readOnly &&
+        !isDisabledOrLoading && {
+          '&:has(input:focus)': {
+            borderColor: primaryColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              borderColor: primaryColorDark,
+            }),
+          },
         }),
-      },
-      ...(!disabled &&
+      ...(!isDisabledOrLoading &&
         !readOnly &&
         hoverMediaQuery({
           '&:hover:not(:has(.button:hover, input:focus ))': hoverStyles,
         })),
-      ...(disabled && {
+      ...(isDisabledOrLoading && {
         cursor: 'not-allowed',
-        color: disabledColor,
         borderColor: disabledColor,
-        WebkitTextFillColor: disabledColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: disabledColorDark,
           borderColor: disabledColorDark,
-          WebkitTextFillColor: disabledColorDark,
         }),
       }),
       ...(readOnly && {
@@ -154,7 +161,7 @@ export const getFunctionalComponentInputBaseStyles = (
         }),
       }),
     },
-    ...(loading && {
+    ...(isDisabledOrLoading && {
       icon: {
         font: textSmallStyle.font,
         width: fontLineHeight,
@@ -163,10 +170,10 @@ export const getFunctionalComponentInputBaseStyles = (
     }),
     // .label / .required
     ...getFunctionalComponentLabelStyles(
-      disabled,
+      isDisabledOrLoading,
       hideLabel,
       theme,
-      !disabled &&
+      !isDisabledOrLoading &&
         !readOnly &&
         hoverMediaQuery({
           '&:hover~.wrapper': hoverStyles,
@@ -174,5 +181,7 @@ export const getFunctionalComponentInputBaseStyles = (
     ),
     // .message
     ...getFunctionalComponentStateMessageStyles(theme, state),
+    // .loading
+    ...getFunctionalComponentLoadingMessageStyles(),
   };
 };

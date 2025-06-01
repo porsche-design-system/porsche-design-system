@@ -19,6 +19,7 @@ import {
   getPrefixedTagNames,
   hasPropValueChanged,
   validateProps,
+  isDisabledOrLoading,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-password-styles';
@@ -140,6 +141,7 @@ export class InputPassword {
 
   @State() private showPassword = false;
 
+  private initialLoading: boolean = false;
   private inputElement: HTMLInputElement;
   private defaultValue: string;
 
@@ -150,6 +152,7 @@ export class InputPassword {
 
   public componentWillLoad(): void {
     this.defaultValue = this.value;
+    this.initialLoading = this.loading;
   }
 
   public formResetCallback(): void {
@@ -177,19 +180,28 @@ export class InputPassword {
     this.internals?.setValidity(this.inputElement.validity, this.inputElement.validationMessage, this.inputElement);
   }
 
+  public connectedCallback(): void {
+    this.initialLoading = this.loading;
+  }
+
+  public componentWillUpdate(): void {
+    if (this.loading) {
+      this.initialLoading = true;
+    }
+  }
+
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.disabled,
+      isDisabledOrLoading(this.disabled, this.loading),
       this.hideLabel,
       this.state,
       this.toggle,
       this.compact,
       this.readOnly,
-      this.loading,
       this.theme
     );
 
@@ -220,6 +232,7 @@ export class InputPassword {
         message={this.message}
         theme={this.theme}
         loading={this.loading}
+        initialLoading={this.initialLoading}
         end={
           this.toggle && (
             <PrefixedTagNames.pButtonPure
