@@ -90,6 +90,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   </p-inline-notification>`,
   'p-input-number': `<p-input-number name="Some Name" label="Some label"></p-input-number>`,
   'p-input-password': `<p-input-password name="Some Name" label="Some label"></p-input-password>`,
+  'p-input-search': `<p-input-search name="Some Name" label="Some label"></p-input-search>`,
   'p-link': `<p-link href="#">Some label</p-link>`,
   'p-link-pure': `<p-link-pure href="#">Some label</p-link-pure>`,
   'p-link-social': `<p-link-social href="#" icon="logo-facebook">Some label</p-link-social>`,
