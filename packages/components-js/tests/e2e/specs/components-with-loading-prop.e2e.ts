@@ -14,9 +14,13 @@ const tagNamesWithLoadingProp: TagName[] = TAG_NAMES.filter((tagName) => getComp
 for (const tagName of tagNamesWithLoadingProp) {
   test.describe(tagName, () => {
     const getLoadingStatus = async (page: Page): Promise<Locator> => {
-      const [nestedComponentWithLoadingProp] = tagNamesWithLoadingProp.filter((tagNameWithLoadingProp) =>
-        getComponentMeta(tagName).nestedComponents?.includes(tagNameWithLoadingProp)
+      const [nestedComponentWithLoadingProp] = tagNamesWithLoadingProp.filter(
+        (tagNameWithLoadingProp) =>
+          getComponentMeta(tagName).nestedComponents?.includes(tagNameWithLoadingProp) &&
+          !['p-input-search', 'p-input-number', 'p-input-password'].includes(tagName)
       );
+
+      console.log('nestedComponentWithLoadingProp', nestedComponentWithLoadingProp);
 
       return page.locator(
         nestedComponentWithLoadingProp
