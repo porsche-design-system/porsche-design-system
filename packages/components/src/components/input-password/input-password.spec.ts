@@ -1,7 +1,4 @@
 import { expect } from '@jest/globals';
-import { getSlottedAnchorStyles } from '../../styles';
-import { getSlottedInputIndicatorStyles } from '../../styles/global/slotted-input-indicator-styles';
-import * as applyConstructableStylesheetStylesUtils from '../../utils/applyConstructableStylesheetStyle';
 import { InputPassword } from './input-password';
 
 jest.mock('../../utils/dom');

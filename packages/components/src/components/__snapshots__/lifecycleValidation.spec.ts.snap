@@ -348,6 +348,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "form": "string",
   "hideLabel": "breakpoint",
   "label": "string",
+  "loading": "boolean",
   "max": "number",
   "message": "string",
   "min": "number",
@@ -371,6 +372,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "form": "string",
   "hideLabel": "breakpoint",
   "label": "string",
+  "loading": "boolean",
   "maxLength": "number",
   "message": "string",
   "minLength": "number",
@@ -381,6 +383,29 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "state": "oneOf",
   "theme": "oneOf",
   "toggle": "boolean",
+  "value": "string",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via render for p-input-search: propTypes with ValidatorFunctions 1`] = `
+{
+  "autoComplete": "oneOf",
+  "clear": "boolean",
+  "compact": "boolean",
+  "description": "string",
+  "disabled": "boolean",
+  "form": "string",
+  "hideLabel": "breakpoint",
+  "indicator": "boolean",
+  "label": "string",
+  "loading": "boolean",
+  "message": "string",
+  "name": "string",
+  "placeholder": "string",
+  "readOnly": "boolean",
+  "required": "boolean",
+  "state": "oneOf",
+  "theme": "oneOf",
   "value": "string",
 }
 `;

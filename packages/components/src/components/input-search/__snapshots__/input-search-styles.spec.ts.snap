@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: dark, controls: false 1`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: dark, clear: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -23,10 +23,9 @@ input {
   width: 100%;
   min-width: 2rem;
   text-overflow: ellipsis;
-  -moz-appearance: textfield;
 }
-input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
 }
 .root {
   display: grid;
@@ -161,7 +160,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: light, controls: false 1`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: light, clear: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -184,10 +183,9 @@ input {
   width: 100%;
   min-width: 2rem;
   text-overflow: ellipsis;
-  -moz-appearance: textfield;
 }
-input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
 }
 .root {
   display: grid;
@@ -322,7 +320,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: error, compact: false, readOnly: false, theme: light, controls: false 1`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: error, compact: false, readOnly: false, theme: light, clear: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -345,10 +343,9 @@ input {
   width: 100%;
   min-width: 2rem;
   text-overflow: ellipsis;
-  -moz-appearance: textfield;
 }
-input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
 }
 .root {
   display: grid;
@@ -365,6 +362,11 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 .wrapper:has(input:focus:not([readonly])) {
   border-color: #010205;
+}
+.icon {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -419,7 +421,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: error, compact: false, readOnly: false, theme: light, controls: true 1`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: error, compact: false, readOnly: false, theme: light, clear: true 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -442,10 +444,9 @@ input {
   width: 100%;
   min-width: 2rem;
   text-overflow: ellipsis;
-  -moz-appearance: textfield;
 }
-input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
 }
 .root {
   display: grid;
@@ -462,6 +463,11 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 .wrapper:has(input:focus:not([readonly])) {
   border-color: #010205;
+}
+.icon {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -520,7 +526,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, controls: false 1`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, clear: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -543,10 +549,9 @@ input {
   width: 100%;
   min-width: 2rem;
   text-overflow: ellipsis;
-  -moz-appearance: textfield;
 }
-input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
 }
 .root {
   display: grid;
@@ -616,7 +621,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, controls: false 2`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, clear: false 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -639,10 +644,9 @@ input {
   width: 100%;
   min-width: 2rem;
   text-overflow: ellipsis;
-  -moz-appearance: textfield;
 }
-input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
 }
 .root {
   display: grid;
@@ -712,7 +716,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, controls: true 1`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, clear: true 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -735,10 +739,9 @@ input {
   width: 100%;
   min-width: 2rem;
   text-overflow: ellipsis;
-  -moz-appearance: textfield;
 }
-input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
 }
 .root {
   display: grid;
@@ -812,7 +815,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: success, compact: false, readOnly: false, theme: light, controls: true 1`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: success, compact: false, readOnly: false, theme: light, clear: true 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -835,10 +838,9 @@ input {
   width: 100%;
   min-width: 2rem;
   text-overflow: ellipsis;
-  -moz-appearance: textfield;
 }
-input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
 }
 .root {
   display: grid;
@@ -913,7 +915,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: success, compact: false, readOnly: false, theme: light, controls: true 2`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: success, compact: false, readOnly: false, theme: light, clear: true 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -936,10 +938,9 @@ input {
   width: 100%;
   min-width: 2rem;
   text-overflow: ellipsis;
-  -moz-appearance: textfield;
 }
-input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
 }
 .root {
   display: grid;
@@ -1014,7 +1015,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, controls: false 1`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, clear: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1037,10 +1038,9 @@ input {
   width: 100%;
   min-width: 2rem;
   text-overflow: ellipsis;
-  -moz-appearance: textfield;
 }
-input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
 }
 .root {
   display: grid;
@@ -1057,6 +1057,11 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 .wrapper:has(input:focus:not([readonly])) {
   border-color: #010205;
+}
+.icon {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1111,7 +1116,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, controls: false 2`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, clear: false 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1134,10 +1139,9 @@ input {
   width: 100%;
   min-width: 2rem;
   text-overflow: ellipsis;
-  -moz-appearance: textfield;
 }
-input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
 }
 .root {
   display: grid;
@@ -1154,6 +1158,11 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 .wrapper:has(input:focus:not([readonly])) {
   border-color: #010205;
+}
+.icon {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1208,7 +1217,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: none, compact: false, readOnly: false, theme: light, controls: true 1`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: none, compact: false, readOnly: false, theme: light, clear: true 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1231,10 +1240,9 @@ input {
   width: 100%;
   min-width: 2rem;
   text-overflow: ellipsis;
-  -moz-appearance: textfield;
 }
-input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
 }
 .root {
   display: grid;
@@ -1308,7 +1316,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: none, compact: false, readOnly: false, theme: light, controls: true 2`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: none, compact: false, readOnly: false, theme: light, clear: true 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1331,10 +1339,9 @@ input {
   width: 100%;
   min-width: 2rem;
   text-overflow: ellipsis;
-  -moz-appearance: textfield;
 }
-input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
 }
 .root {
   display: grid;
@@ -1408,7 +1415,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: success, compact: true, readOnly: true, theme: light, controls: true 1`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: success, compact: true, readOnly: true, theme: light, clear: true 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1431,10 +1438,9 @@ input {
   width: 100%;
   min-width: 2rem;
   text-overflow: ellipsis;
-  -moz-appearance: textfield;
 }
-input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
 }
 .root {
   display: grid;
@@ -1454,6 +1460,11 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 .wrapper:has(input:focus:not([readonly])) {
   border-color: #010205;
+}
+.icon {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1503,7 +1514,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: success, compact: true, readOnly: true, theme: light, controls: true 2`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: success, compact: true, readOnly: true, theme: light, clear: true 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1526,10 +1537,9 @@ input {
   width: 100%;
   min-width: 2rem;
   text-overflow: ellipsis;
-  -moz-appearance: textfield;
 }
-input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
 }
 .root {
   display: grid;
@@ -1549,6 +1559,11 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 .wrapper:has(input:focus:not([readonly])) {
   border-color: #010205;
+}
+.icon {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1598,7 +1613,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for disabled: true, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, controls: false 1`] = `
+exports[`getComponentCss() should return correct css for disabled: true, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, clear: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1621,10 +1636,9 @@ input {
   width: 100%;
   min-width: 2rem;
   text-overflow: ellipsis;
-  -moz-appearance: textfield;
 }
-input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
 }
 .root {
   display: grid;

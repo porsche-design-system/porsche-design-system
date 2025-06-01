@@ -1,8 +1,5 @@
 import { expect } from '@jest/globals';
-import { getSlottedAnchorStyles } from '../../styles';
-import { getSlottedInputIndicatorStyles } from '../../styles/global/slotted-input-indicator-styles';
-import * as applyConstructableStylesheetStylesUtils from '../../utils/applyConstructableStylesheetStyle';
-import { InputNumber } from './input-search';
+import { InputSearch } from './input-search';
 
 jest.mock('../../utils/dom');
 
@@ -13,8 +10,8 @@ class MockElementInternals {
 
 let mockEmit: jest.SpyInstance;
 
-const initComponent = (): InputNumber => {
-  const component = new InputNumber();
+const initComponent = (): InputSearch => {
+  const component = new InputSearch();
   component.host = document.createElement('p-input-number');
   component.host.attachShadow({ mode: 'open' });
   const input = document.createElement('input');

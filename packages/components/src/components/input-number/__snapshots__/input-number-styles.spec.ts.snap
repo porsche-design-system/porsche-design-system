@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: dark, controls: false 1`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: dark, controls: false, loading: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -161,7 +161,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: light, controls: false 1`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, compact: false, readOnly: false, theme: light, controls: false, loading: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -322,7 +322,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: error, compact: false, readOnly: false, theme: light, controls: false 1`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: error, compact: false, readOnly: false, theme: light, controls: false, loading: true 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -365,6 +365,11 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 .wrapper:has(input:focus:not([readonly])) {
   border-color: #010205;
+}
+.icon {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -419,7 +424,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: error, compact: false, readOnly: false, theme: light, controls: true 1`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: error, compact: false, readOnly: false, theme: light, controls: true, loading: true 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -462,6 +467,11 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 .wrapper:has(input:focus:not([readonly])) {
   border-color: #010205;
+}
+.icon {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -520,7 +530,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, controls: false 1`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, controls: false, loading: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -616,7 +626,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, controls: false 2`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, controls: false, loading: false 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -712,7 +722,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, controls: true 1`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: none, compact: false, readOnly: false, theme: light, controls: true, loading: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -812,7 +822,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: success, compact: false, readOnly: false, theme: light, controls: true 1`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: success, compact: false, readOnly: false, theme: light, controls: true, loading: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -913,7 +923,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: success, compact: false, readOnly: false, theme: light, controls: true 2`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: false, state: success, compact: false, readOnly: false, theme: light, controls: true, loading: false 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1014,7 +1024,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, controls: false 1`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, controls: false, loading: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1111,7 +1121,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, controls: false 2`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, controls: false, loading: true 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1154,6 +1164,11 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 .wrapper:has(input:focus:not([readonly])) {
   border-color: #010205;
+}
+.icon {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1208,7 +1223,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: none, compact: false, readOnly: false, theme: light, controls: true 1`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: none, compact: false, readOnly: false, theme: light, controls: true, loading: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1308,7 +1323,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: none, compact: false, readOnly: false, theme: light, controls: true 2`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: none, compact: false, readOnly: false, theme: light, controls: true, loading: false 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1408,7 +1423,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 "
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: success, compact: true, readOnly: true, theme: light, controls: true 1`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: success, compact: true, readOnly: true, theme: light, controls: true, loading: true 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1454,6 +1469,11 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 .wrapper:has(input:focus:not([readonly])) {
   border-color: #010205;
+}
+.icon {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1503,7 +1523,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: success, compact: true, readOnly: true, theme: light, controls: true 2`] = `
+exports[`getComponentCss() should return correct css for disabled: false, hideLabel: true, state: success, compact: true, readOnly: true, theme: light, controls: true, loading: true 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1549,6 +1569,11 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }
 .wrapper:has(input:focus:not([readonly])) {
   border-color: #010205;
+}
+.icon {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1598,7 +1623,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for disabled: true, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, controls: false 1`] = `
+exports[`getComponentCss() should return correct css for disabled: true, hideLabel: true, state: error, compact: false, readOnly: false, theme: light, controls: false, loading: false 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;

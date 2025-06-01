@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, button: true, compact: false, readOnly: 'dark', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, button: true, compact: false, readOnly: false, loading: 'dark', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -156,7 +156,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, button: true, compact: false, readOnly: false, loading: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -312,7 +312,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: false, state: error, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: false, state: error, button: false, compact: false, readOnly: true, loading: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -350,6 +350,11 @@ input {
 }
 .wrapper:has(input:focus:not([readonly])) {
   border-color: #010205;
+}
+.icon {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -404,7 +409,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: false, state: error, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: false, state: error, button: true, compact: false, readOnly: true, loading: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -442,6 +447,11 @@ input {
 }
 .wrapper:has(input:focus:not([readonly])) {
   border-color: #010205;
+}
+.icon {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -496,7 +506,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: false, state: none, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: false, state: none, button: false, compact: false, readOnly: false, loading: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -587,7 +597,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: false, state: none, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: false, state: none, button: true, compact: false, readOnly: false, loading: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -678,7 +688,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: false, state: none, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 2`] = `
+exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: false, state: none, button: true, compact: false, readOnly: false, loading: 'light', theme: %s, additionalInputJssStyle: %s 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -769,7 +779,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: false, state: success, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: false, state: success, button: false, compact: false, readOnly: true, loading: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -803,6 +813,103 @@ input {
   display: flex;
   align-items: center;
   gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.wrapper:has(input:focus:not([readonly])) {
+  border-color: #010205;
+}
+.icon {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
+  color: #010205;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #197E10;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
+}
+@media(hover:hover) {
+  .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
+    border-color: #0E4809;
+  }
+  .label:hover~.wrapper {
+    border-color: #0E4809;
+  }
+}
+"
+`;
+
+exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: false, state: success, button: true, compact: false, readOnly: false, loading: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+":host {
+  display: block;
+  color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 0.5) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 0.5) - 0.5), 0.6826), 12)) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+input {
+  all: unset;
+  flex: 1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 0.5) * (calc(6px + 2.125ex) + 10px));
+  padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 0.5));
+  color: #010205;
+  width: 100%;
+  min-width: 2rem;
+}
+.root {
+  display: grid;
+  gap: 4px;
+}
+.wrapper {
+  border: 2px solid #197E10;
+  border-radius: 4px;
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
+  display: flex;
+  align-items: center;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 0.5)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .wrapper:has(input:focus:not([readonly])) {
@@ -861,99 +968,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: false, state: success, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
-":host {
-  display: block;
-  color-scheme: light dark !important;
-  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 0.5) - 0.5), 0.6826), 12)) !important;
-  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 0.5) - 0.5), 0.6826), 12)) !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-input {
-  all: unset;
-  flex: 1;
-  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 0.5) * (calc(6px + 2.125ex) + 10px));
-  padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 0.5));
-  color: #010205;
-  width: 100%;
-  min-width: 2rem;
-}
-.root {
-  display: grid;
-  gap: 4px;
-}
-.wrapper {
-  border: 2px solid #197E10;
-  border-radius: 4px;
-  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 0.5));
-  display: flex;
-  align-items: center;
-  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 0.5)));
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.wrapper:has(input:focus:not([readonly])) {
-  border-color: #010205;
-}
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  cursor: pointer;
-  justify-self: flex-start;
-  color: #010205;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-}
-.label:empty {
-  display: none;
-}
-.label+.label {
-  cursor: unset;
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-  color: #535457;
-}
-.required {
-  user-select: none;
-}
-.message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #197E10;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.message:empty {
-  opacity: 0;
-  position: absolute;
-}
-@media(hover:hover) {
-  .wrapper:hover:not(:has(.button:hover, .wrapper input:focus )) {
-    border-color: #0E4809;
-  }
-  .label:hover~.wrapper {
-    border-color: #0E4809;
-  }
-}
-"
-`;
-
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: true, state: error, button: false, compact: false, readOnly: 'light', theme: { padding: 0 }, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: true, state: error, button: false, compact: false, readOnly: true, loading: 'light', theme: { padding: 0 }, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -993,6 +1008,11 @@ input {
 .wrapper:has(input:focus:not([readonly])) {
   border-color: #010205;
 }
+.icon {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1046,7 +1066,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: true, state: error, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: true, state: error, button: true, compact: false, readOnly: true, loading: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1085,6 +1105,11 @@ input {
 .wrapper:has(input:focus:not([readonly])) {
   border-color: #010205;
 }
+.icon {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1138,7 +1163,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: true, state: none, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: true, state: none, button: false, compact: false, readOnly: false, loading: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1229,7 +1254,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: true, state: none, button: true, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: true, state: none, button: true, compact: false, readOnly: false, loading: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1320,7 +1345,7 @@ input {
 "
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: true, state: success, button: false, compact: true, readOnly: 'light', theme: { padding: 0 }, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: true, state: success, button: false, compact: true, readOnly: true, loading: 'light', theme: { padding: 0 }, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1362,6 +1387,11 @@ input {
 }
 .wrapper:has(input:focus:not([readonly])) {
   border-color: #010205;
+}
+.icon {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1407,7 +1437,7 @@ input {
 }"
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: true, state: success, button: true, compact: true, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: false, hideLabel: true, state: success, button: true, compact: true, readOnly: true, loading: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1448,6 +1478,11 @@ input {
 }
 .wrapper:has(input:focus:not([readonly])) {
   border-color: #010205;
+}
+.icon {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1493,7 +1528,7 @@ input {
 }"
 `;
 
-exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: true, hideLabel: true, state: error, button: false, compact: false, readOnly: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
+exports[`getFunctionalComponentInputBaseStyles() should return correct css for disabled: true, hideLabel: true, state: error, button: false, compact: false, readOnly: false, loading: 'light', theme: %s, additionalInputJssStyle: %s 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
