@@ -108,8 +108,12 @@ exports[`manual test cases > should pass internal props correctly to p-checkbox-
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -236,6 +240,11 @@ circle:last-child {
         </p-spinner>
       </div>
       <span
+        class="message"
+        id="message"
+        role="alert"
+      />
+      <span
         class="loading"
         id="loading"
         role="status"
@@ -358,8 +367,12 @@ exports[`manual test cases > should pass internal props correctly to p-checkbox-
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -485,6 +498,11 @@ circle:last-child {
           </template>
         </p-spinner>
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
       <span
         class="loading"
         id="loading"
@@ -2567,7 +2585,11 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
   }
     </style>
     <div
@@ -2657,33 +2679,702 @@ img {
         </div>
       </div>
       <span
-        aria-live="assertive"
-        aria-relevant="additions text"
-        class="sr-only"
-        role="status"
-      >
-        No results found
-      </span>
+        class="message"
+        id="message"
+        role="alert"
+      />
     </div>
   </template>
   <p-multi-select-option
     data-ssr=""
-  />
+  >
+    <template
+      shadowroot="open"
+      shadowrootmode="open"
+    >
+      <style>
+        :host {
+  display: block;
+  scroll-margin: 6px !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+slot {
+  display: block;
+  padding-top: calc((calc(calc(max(16px * 0.75, calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+}
+.option {
+  display: flex;
+  gap: max(4px, 1 * 12px);
+  padding-block: max(2px, 1 * 8px);
+  padding-inline: max(4px, 1 * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, 1 * 12px);
+  min-height: calc(6px + 2.125ex);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #535457;
+  cursor: pointer;
+  text-align: start;
+  word-break: break-word;
+  box-sizing: content-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  column-gap: 8px;
+}
+.option[role=status] {
+  cursor: not-allowed;
+}
+.option__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.option--selected {
+  background: rgba(148, 149, 152, .18);
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
+}
+.option--disabled {
+  cursor: not-allowed;
+  color: #949598;
+}
+.option--hidden {
+  display: none;
+}
+.checkbox {
+  flex-shrink: 0;
+  position: relative;
+  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #6B6D70;
+  outline: 0;
+  cursor: pointer;
+  grid-area: 1/1;
+  border-radius: 4px;
+  background-size: cover !important;
+}
+.checkbox::before {
+  content: "";
+  position: absolute;
+  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+}
+@media(hover:hover) {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+    color: #010205;
+    background: rgba(148, 149, 152, .18);
+  }
+}
+
+      </style>
+      // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
+      <div
+        class="option"
+      >
+        <span
+          aria-hidden="true"
+          class="checkbox"
+        />
+        <slot
+          slot="label"
+        />
+      </div>
+    </template>
+    Option A
+  </p-multi-select-option>
   <p-multi-select-option
     data-ssr=""
-  />
+  >
+    <template
+      shadowroot="open"
+      shadowrootmode="open"
+    >
+      <style>
+        :host {
+  display: block;
+  scroll-margin: 6px !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+slot {
+  display: block;
+  padding-top: calc((calc(calc(max(16px * 0.75, calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+}
+.option {
+  display: flex;
+  gap: max(4px, 1 * 12px);
+  padding-block: max(2px, 1 * 8px);
+  padding-inline: max(4px, 1 * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, 1 * 12px);
+  min-height: calc(6px + 2.125ex);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #535457;
+  cursor: pointer;
+  text-align: start;
+  word-break: break-word;
+  box-sizing: content-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  column-gap: 8px;
+}
+.option[role=status] {
+  cursor: not-allowed;
+}
+.option__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.option--selected {
+  background: rgba(148, 149, 152, .18);
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
+}
+.option--disabled {
+  cursor: not-allowed;
+  color: #949598;
+}
+.option--hidden {
+  display: none;
+}
+.checkbox {
+  flex-shrink: 0;
+  position: relative;
+  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #6B6D70;
+  outline: 0;
+  cursor: pointer;
+  grid-area: 1/1;
+  border-radius: 4px;
+  background-size: cover !important;
+}
+.checkbox::before {
+  content: "";
+  position: absolute;
+  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+}
+@media(hover:hover) {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+    color: #010205;
+    background: rgba(148, 149, 152, .18);
+  }
+}
+
+      </style>
+      // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
+      <div
+        class="option"
+      >
+        <span
+          aria-hidden="true"
+          class="checkbox"
+        />
+        <slot
+          slot="label"
+        />
+      </div>
+    </template>
+    Option B
+  </p-multi-select-option>
   <p-multi-select-option
     data-ssr=""
-  />
+  >
+    <template
+      shadowroot="open"
+      shadowrootmode="open"
+    >
+      <style>
+        :host {
+  display: block;
+  scroll-margin: 6px !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+slot {
+  display: block;
+  padding-top: calc((calc(calc(max(16px * 0.75, calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+}
+.option {
+  display: flex;
+  gap: max(4px, 1 * 12px);
+  padding-block: max(2px, 1 * 8px);
+  padding-inline: max(4px, 1 * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, 1 * 12px);
+  min-height: calc(6px + 2.125ex);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #535457;
+  cursor: pointer;
+  text-align: start;
+  word-break: break-word;
+  box-sizing: content-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  column-gap: 8px;
+}
+.option[role=status] {
+  cursor: not-allowed;
+}
+.option__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.option--selected {
+  background: rgba(148, 149, 152, .18);
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
+}
+.option--disabled {
+  cursor: not-allowed;
+  color: #949598;
+}
+.option--hidden {
+  display: none;
+}
+.checkbox {
+  flex-shrink: 0;
+  position: relative;
+  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #6B6D70;
+  outline: 0;
+  cursor: pointer;
+  grid-area: 1/1;
+  border-radius: 4px;
+  background-size: cover !important;
+}
+.checkbox::before {
+  content: "";
+  position: absolute;
+  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+}
+@media(hover:hover) {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+    color: #010205;
+    background: rgba(148, 149, 152, .18);
+  }
+}
+
+      </style>
+      // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
+      <div
+        class="option"
+      >
+        <span
+          aria-hidden="true"
+          class="checkbox"
+        />
+        <slot
+          slot="label"
+        />
+      </div>
+    </template>
+    Option C
+  </p-multi-select-option>
   <p-multi-select-option
     data-ssr=""
-  />
+  >
+    <template
+      shadowroot="open"
+      shadowrootmode="open"
+    >
+      <style>
+        :host {
+  display: block;
+  scroll-margin: 6px !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+slot {
+  display: block;
+  padding-top: calc((calc(calc(max(16px * 0.75, calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+}
+.option {
+  display: flex;
+  gap: max(4px, 1 * 12px);
+  padding-block: max(2px, 1 * 8px);
+  padding-inline: max(4px, 1 * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, 1 * 12px);
+  min-height: calc(6px + 2.125ex);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #535457;
+  cursor: pointer;
+  text-align: start;
+  word-break: break-word;
+  box-sizing: content-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  column-gap: 8px;
+}
+.option[role=status] {
+  cursor: not-allowed;
+}
+.option__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.option--selected {
+  background: rgba(148, 149, 152, .18);
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
+}
+.option--disabled {
+  cursor: not-allowed;
+  color: #949598;
+}
+.option--hidden {
+  display: none;
+}
+.checkbox {
+  flex-shrink: 0;
+  position: relative;
+  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #6B6D70;
+  outline: 0;
+  cursor: pointer;
+  grid-area: 1/1;
+  border-radius: 4px;
+  background-size: cover !important;
+}
+.checkbox::before {
+  content: "";
+  position: absolute;
+  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+}
+@media(hover:hover) {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+    color: #010205;
+    background: rgba(148, 149, 152, .18);
+  }
+}
+
+      </style>
+      // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
+      <div
+        class="option"
+      >
+        <span
+          aria-hidden="true"
+          class="checkbox"
+        />
+        <slot
+          slot="label"
+        />
+      </div>
+    </template>
+    Option D
+  </p-multi-select-option>
   <p-multi-select-option
     data-ssr=""
-  />
+  >
+    <template
+      shadowroot="open"
+      shadowrootmode="open"
+    >
+      <style>
+        :host {
+  display: block;
+  scroll-margin: 6px !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+slot {
+  display: block;
+  padding-top: calc((calc(calc(max(16px * 0.75, calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+}
+.option {
+  display: flex;
+  gap: max(4px, 1 * 12px);
+  padding-block: max(2px, 1 * 8px);
+  padding-inline: max(4px, 1 * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, 1 * 12px);
+  min-height: calc(6px + 2.125ex);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #535457;
+  cursor: pointer;
+  text-align: start;
+  word-break: break-word;
+  box-sizing: content-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  column-gap: 8px;
+}
+.option[role=status] {
+  cursor: not-allowed;
+}
+.option__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.option--selected {
+  background: rgba(148, 149, 152, .18);
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
+}
+.option--disabled {
+  cursor: not-allowed;
+  color: #949598;
+}
+.option--hidden {
+  display: none;
+}
+.checkbox {
+  flex-shrink: 0;
+  position: relative;
+  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #6B6D70;
+  outline: 0;
+  cursor: pointer;
+  grid-area: 1/1;
+  border-radius: 4px;
+  background-size: cover !important;
+}
+.checkbox::before {
+  content: "";
+  position: absolute;
+  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+}
+@media(hover:hover) {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+    color: #010205;
+    background: rgba(148, 149, 152, .18);
+  }
+}
+
+      </style>
+      // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
+      <div
+        class="option"
+      >
+        <span
+          aria-hidden="true"
+          class="checkbox"
+        />
+        <slot
+          slot="label"
+        />
+      </div>
+    </template>
+    Option E
+  </p-multi-select-option>
   <p-multi-select-option
     data-ssr=""
-  />
+  >
+    <template
+      shadowroot="open"
+      shadowrootmode="open"
+    >
+      <style>
+        :host {
+  display: block;
+  scroll-margin: 6px !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+slot {
+  display: block;
+  padding-top: calc((calc(calc(max(16px * 0.75, calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+}
+.option {
+  display: flex;
+  gap: max(4px, 1 * 12px);
+  padding-block: max(2px, 1 * 8px);
+  padding-inline: max(4px, 1 * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, 1 * 12px);
+  min-height: calc(6px + 2.125ex);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #535457;
+  cursor: pointer;
+  text-align: start;
+  word-break: break-word;
+  box-sizing: content-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  column-gap: 8px;
+}
+.option[role=status] {
+  cursor: not-allowed;
+}
+.option__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.option--selected {
+  background: rgba(148, 149, 152, .18);
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
+}
+.option--disabled {
+  cursor: not-allowed;
+  color: #949598;
+}
+.option--hidden {
+  display: none;
+}
+.checkbox {
+  flex-shrink: 0;
+  position: relative;
+  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #6B6D70;
+  outline: 0;
+  cursor: pointer;
+  grid-area: 1/1;
+  border-radius: 4px;
+  background-size: cover !important;
+}
+.checkbox::before {
+  content: "";
+  position: absolute;
+  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+}
+@media(hover:hover) {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+    color: #010205;
+    background: rgba(148, 149, 152, .18);
+  }
+}
+
+      </style>
+      // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
+      <div
+        class="option"
+      >
+        <span
+          aria-hidden="true"
+          class="checkbox"
+        />
+        <slot
+          slot="label"
+        />
+      </div>
+    </template>
+    Option F
+  </p-multi-select-option>
 </p-multi-select>
 `;
 
@@ -2809,7 +3500,11 @@ input:disabled {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -2871,6 +3566,11 @@ input:disabled {
           value="4"
         />
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
       <span
         class="loading"
         id="loading"
@@ -2989,8 +3689,12 @@ exports[`manual test cases > should pass internal props correctly to p-radio-but
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -3116,6 +3820,11 @@ circle:last-child {
           </template>
         </p-spinner>
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
       <span
         class="loading"
         id="loading"
@@ -3247,8 +3956,12 @@ exports[`manual test cases > should pass internal props correctly to p-radio-but
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -3275,6 +3988,11 @@ exports[`manual test cases > should pass internal props correctly to p-radio-but
       >
         <slot />
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
       <span
         class="loading"
         id="loading"
@@ -3572,7 +4290,11 @@ exports[`manual test cases > should pass internal props correctly to p-select-wr
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
     </style>
     <div
@@ -3832,6 +4554,11 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
           </template>
         </p-select-wrapper-dropdown>
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
     </div>
   </template>
   <select
@@ -3992,7 +4719,11 @@ exports[`manual test cases > should pass internal props correctly to p-select-wr
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
     </style>
     <div
@@ -4056,6 +4787,11 @@ img {
           </template>
         </p-icon>
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
     </div>
   </template>
   <select
@@ -6287,7 +7023,11 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
     </style>
     <div
@@ -6304,6 +7044,11 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
       >
         <slot />
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
     </div>
   </template>
   <input
@@ -6439,7 +7184,11 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
     </style>
     <div
@@ -6456,6 +7205,11 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
       >
         <slot />
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
     </div>
   </template>
   <input
@@ -6599,7 +7353,11 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
     </style>
     <div
@@ -6788,6 +7546,11 @@ img {
           Toggle password visibility
         </p-button-pure>
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
     </div>
   </template>
   <input
@@ -6936,7 +7699,11 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
     </style>
     <div
@@ -7173,6 +7940,11 @@ img {
           Clear field
         </p-button-pure>
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
     </div>
   </template>
   <input
@@ -9767,8 +10539,12 @@ input:focus-visible {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -9800,6 +10576,11 @@ input:focus-visible {
           value="on"
         />
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
       <span
         class="loading"
         id="loading"
@@ -9930,8 +10711,12 @@ exports[`should render dsr component for PCheckboxWrapper 1`] = `
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -9956,6 +10741,11 @@ exports[`should render dsr component for PCheckboxWrapper 1`] = `
       >
         <slot />
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
       <span
         class="loading"
         id="loading"
@@ -11433,12 +12223,21 @@ fieldset {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   margin-top: 16px;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
     </style>
     <fieldset>
       <slot />
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
     </fieldset>
   </template>
   Some child
@@ -11478,12 +12277,21 @@ fieldset {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   margin-top: 16px;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
     </style>
     <fieldset>
       <slot />
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
     </fieldset>
   </template>
   Some child
@@ -12327,8 +13135,8 @@ img {
 </p-inline-notification>
 `;
 
-exports[`should render dsr component for PInputPassword 1`] = `
-<p-input-password
+exports[`should render dsr component for PInputNumber 1`] = `
+<p-input-number
   data-ssr=""
 >
   <template
@@ -12340,6 +13148,8 @@ exports[`should render dsr component for PInputPassword 1`] = `
       :host {
   display: block;
   color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -12351,15 +13161,16 @@ input {
   all: unset;
   flex: 1;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  height: max(calc(6px + 2.125ex), var(--p-internal-input-password-scaling, 1) * (calc(6px + 2.125ex) + 10px));
-  padding-block: max(2px, 8px * var(--p-internal-input-password-scaling, 1));
-  text-indent: 0;
+  height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+  padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
   color: #010205;
   width: 100%;
   min-width: 2rem;
-}
-input[type="text"] {
   text-overflow: ellipsis;
+  -moz-appearance: textfield;
+}
+input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
 }
 .root {
   display: grid;
@@ -12368,10 +13179,10 @@ input[type="text"] {
 .wrapper {
   border: 2px solid #6B6D70;
   border-radius: 4px;
-  padding-inline-start: max(2px, 16px * var(--p-internal-input-password-scaling, 1));
-  padding-inline-end: max(2px, 16px * var(--p-internal-input-password-scaling, 1));
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
   display: flex;
-  gap: 9px;
+  align-items: center;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   cursor: text;
   border-color: #D8D8DB;
@@ -12415,11 +13226,147 @@ input[type="text"] {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-@media(hover:hover) {
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
+    </style>
+    <div
+      class="root"
+    >
+      <label
+        class="label"
+        for="input-number"
+        id="label"
+      />
+      <div
+        class="wrapper"
+      >
+        <slot
+          name="start"
+        />
+        <input
+          aria-describedby="description message"
+          autocomplete=""
+          id="input-number"
+          placeholder=""
+          readonly=""
+          step="1"
+          type="number"
+          value=""
+        />
+        <slot
+          name="end"
+        />
+      </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
+    </div>
+  </template>
+  Some child
+</p-input-number>
+`;
 
+exports[`should render dsr component for PInputPassword 1`] = `
+<p-input-password
+  data-ssr=""
+>
+  <template
+    shadowroot="open"
+    shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: block;
+  color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+input {
+  all: unset;
+  flex: 1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+  padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
+  color: #010205;
+  width: 100%;
+  min-width: 2rem;
+}
+input[type="text"] {
+  text-overflow: ellipsis;
+}
+.root {
+  display: grid;
+  gap: 4px;
+}
+.wrapper {
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
+  display: flex;
+  align-items: center;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  cursor: text;
+  border-color: #D8D8DB;
+  background: #D8D8DB;
+}
+.wrapper:has(input:focus:not([readonly])) {
+  border-color: #010205;
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
+  color: #010205;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
+}
     </style>
     <div
       class="root"
@@ -12432,6 +13379,9 @@ input[type="text"] {
       <div
         class="wrapper"
       >
+        <slot
+          name="start"
+        />
         <input
           aria-describedby="description message"
           autocomplete=""
@@ -12441,7 +13391,15 @@ input[type="text"] {
           type="password"
           value=""
         />
+        <slot
+          name="end"
+        />
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
     </div>
   </template>
   Some child
@@ -14480,7 +15438,11 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
   }
     </style>
     <div
@@ -14570,13 +15532,10 @@ img {
         </div>
       </div>
       <span
-        aria-live="assertive"
-        aria-relevant="additions text"
-        class="sr-only"
-        role="status"
-      >
-        No results found
-      </span>
+        class="message"
+        id="message"
+        role="alert"
+      />
     </div>
   </template>
   Some child
@@ -14586,7 +15545,119 @@ img {
 exports[`should render dsr component for PMultiSelectOption 1`] = `
 <p-multi-select-option
   data-ssr=""
-/>
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: block;
+  scroll-margin: 6px !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+slot {
+  display: block;
+  padding-top: calc((calc(calc(max(16px * 0.75, calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+}
+.option {
+  display: flex;
+  gap: max(4px, 1 * 12px);
+  padding-block: max(2px, 1 * 8px);
+  padding-inline: max(4px, 1 * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, 1 * 12px);
+  min-height: calc(6px + 2.125ex);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #535457;
+  cursor: pointer;
+  text-align: start;
+  word-break: break-word;
+  box-sizing: content-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  column-gap: 8px;
+}
+.option[role=status] {
+  cursor: not-allowed;
+}
+.option__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.option--selected {
+  background: rgba(148, 149, 152, .18);
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
+}
+.option--disabled {
+  cursor: not-allowed;
+  color: #949598;
+}
+.option--hidden {
+  display: none;
+}
+.checkbox {
+  flex-shrink: 0;
+  position: relative;
+  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #6B6D70;
+  outline: 0;
+  cursor: pointer;
+  grid-area: 1/1;
+  border-radius: 4px;
+  background-size: cover !important;
+}
+.checkbox::before {
+  content: "";
+  position: absolute;
+  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+}
+@media(hover:hover) {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+    color: #010205;
+    background: rgba(148, 149, 152, .18);
+  }
+}
+
+    </style>
+    // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
+    <div
+      class="option"
+    >
+      <span
+        aria-hidden="true"
+        class="checkbox"
+      />
+      <slot
+        slot="label"
+      />
+    </div>
+  </template>
+  Some child
+</p-multi-select-option>
 `;
 
 exports[`should render dsr component for POptgroup 1`] = `
@@ -15001,7 +16072,11 @@ input:disabled {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -15059,6 +16134,11 @@ input:disabled {
           type="text"
         />
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
       <span
         class="loading"
         id="loading"
@@ -15355,8 +16435,12 @@ exports[`should render dsr component for PRadioButtonWrapper 1`] = `
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
 .loading {
   position: absolute;
@@ -15381,6 +16465,11 @@ exports[`should render dsr component for PRadioButtonWrapper 1`] = `
       >
         <slot />
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
       <span
         class="loading"
         id="loading"
@@ -16137,7 +17226,11 @@ exports[`should render dsr component for PSelect 1`] = `
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
     hyphens: auto;
-    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
   }
     </style>
     <div
@@ -16150,7 +17243,6 @@ exports[`should render dsr component for PSelect 1`] = `
       />
       <button
         aria-controls="list"
-        aria-describedby="initial-status"
         aria-expanded="false"
         aria-haspopup="listbox"
         aria-labelledby="label"
@@ -16219,10 +17311,9 @@ img {
         <slot />
       </div>
       <span
-        aria-live="assertive"
-        aria-relevant="additions text"
-        class="sr-only"
-        role="status"
+        class="message"
+        id="message"
+        role="alert"
       />
     </div>
   </template>
@@ -16313,11 +17404,9 @@ exports[`should render dsr component for PSelectOption 1`] = `
 }
 
     </style>
+    // TODO: get rid of ARIA sprouting and use \`elementInternals\` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
     <div
-      aria-label="Empty value"
-      aria-selected="false"
-      class="[object Object]"
-      role="option"
+      class="option"
     >
       <slot />
     </div>
@@ -16448,7 +17537,11 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
     </style>
     <div
@@ -16675,6 +17768,11 @@ button:focus-visible {
           </template>
         </p-select-wrapper-dropdown>
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
     </div>
   </template>
   <select />
@@ -20215,7 +21313,11 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
     </style>
     <div
@@ -20230,6 +21332,11 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
       >
         <slot />
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
     </div>
   </template>
   <input
@@ -20421,7 +21528,11 @@ textarea[readonly] {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
     </style>
     <div
@@ -20445,6 +21556,11 @@ textarea[readonly] {
           wrap="soft"
         />
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
     </div>
   </template>
   Some child
@@ -20556,7 +21672,11 @@ exports[`should render dsr component for PTextareaWrapper 1`] = `
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
 }
     </style>
     <div
@@ -20571,6 +21691,11 @@ exports[`should render dsr component for PTextareaWrapper 1`] = `
       >
         <slot />
       </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
     </div>
   </template>
   <textarea />
@@ -20579,7 +21704,6 @@ exports[`should render dsr component for PTextareaWrapper 1`] = `
 
 exports[`should render dsr component for PToast 1`] = `
 <p-toast
-  aria-live="polite"
   data-ssr=""
   role="status"
 >

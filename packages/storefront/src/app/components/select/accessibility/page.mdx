@@ -8,7 +8,7 @@ export const metadata = {
 
 # Select <ComponentStatus tagName="p-select"></ComponentStatus>
 
-<TableOfContents headings={["Accessibility support","Development considerations","Limitations","Tests"]} />
+<TableOfContents headings={['Accessibility support','Development considerations','Tests']} />
 
 ## Accessibility support
 
@@ -54,15 +54,6 @@ In general, you should prevent using the `disabled` state. Disabled elements are
 can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out why these
 elements are disabled.
 
-## Limitations
-
-Due to the nature of **Web Components** and **shadowDOM**, there are limitations in the usage of some **ARIA**
-attributes if they try to set relationship between elements in different shadowDOM's or shadowDOM/lightDOM combinations.
-
-| ARIA                    | Support |
-| ----------------------- | ------- |
-| `aria-activedescendant` | 🚫      |
-
 ## Tests
 
 ### Automated
@@ -75,7 +66,7 @@ attributes if they try to set relationship between elements in different shadowD
 
 ### Manual
 
-| Technology                      | Support |
-| ------------------------------- | ------- |
-| Keyboard                        | ✅      |
-| Screen reader (VoiceOver, NVDA) | ✅      |
+| Technology                      | Support                                                                                                                |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Keyboard                        | ✅                                                                                                                     |
+| Screen reader (VoiceOver, NVDA) | ✅ (Note: Though Safari supports `ariaActiveDescendantElement` the active `option` doesn't get announced in VoiceOver) |

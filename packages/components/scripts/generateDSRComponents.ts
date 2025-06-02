@@ -87,6 +87,7 @@ const generateDSRComponents = (): void => {
             ? m.replace(group, utilsBundleImportPath)
             : group.endsWith('state-message') ||
                 group.endsWith('loading-message') ||
+                group.endsWith('input-base') ||
                 group.endsWith('required') ||
                 group.endsWith('label')
               ? m.replace(group, './' + group.split('/').pop())
@@ -102,7 +103,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 `
         )
         .replace(/(export class) ([A-Za-z]+)/, '$1 DSR$2 extends Component<any>') // make it a real React.Component
-        .replace(/(<\/?)Host.*(>)/g, '$1$2') // replace Host fragment, TODO: could be removed completely with template tag
+        .replace(/(<\/?)Host[^>]*(>)/g, '$1$2') // replace Host fragment, TODO: could be removed completely with template tag
         .replace(/(public state)\?(: any)/, '$1$2') // make state required to fix linting issue with React
         .replace(/\bbreakpoint\.l\b/, `'${breakpoint.l}'`) // inline breakpoint value from utilities-v2 for marque
         .replace(/{(isRequiredAndParentNotRequired\(.*)}/, '{/* $1 */}') // comment out isRequiredAndParentNotRequired for now
@@ -215,6 +216,28 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             .replace(/(type LabelProps = {)/, '$1 hasLabel: boolean; hasDescription: boolean; ') // add types for LabelProps
             .replace(/(Label: FC<LabelProps> = \({)/, '$1 hasLabel, hasDescription, '); // destructure newly introduced hasLabel and hasDescription
         }
+        if (newFileContent.includes('export const InputBase:')) {
+          newFileContent = newFileContent
+            .replace(/(type InputBaseProps = {)/, '$1 children?: JSX.Element; ')
+            .replace(/(InputBase: FC<InputBaseProps> = \({)/, '$1 children, ')
+            .replace(/(host={)host(})/g, '$1null$2')
+            .replace(/onBlur=\{onBlur}/g, '')
+            .replace(/maxlength/, 'maxLength')
+            .replace(/minlength/, 'minLength')
+            .replace(/readonly/, 'readOnly')
+            .replace(/autocomplete/, 'autoComplete')
+            .replace(/\b(onInput|onChange|onBlur|refElement\s*,?)/g, '// $1')
+            .replace(
+              /}\) => \{/,
+              `$&
+    const { namedSlotChildren } = splitChildren(children);\n`
+            )
+            .replace(
+              /^/,
+              `import { splitChildren } from '../../splitChildren';
+`
+            );
+        }
         if (newFileContent.includes('export const LegacyLabel:')) {
           newFileContent = newFileContent
             .replace(/(hasLabel)\(.*\)/, '$1') // replace function call with boolean const
@@ -233,19 +256,33 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         }
       }
 
+      if (!newFileContent.includes('export const InputBase:')) {
+        newFileContent = newFileContent
+          .replace(
+            /(<Label(?!Props))([\s\S]*?\/>)/,
+            "$1 hasLabel={this.props.label || namedSlotChildren.filter(({ props: { slot } }) => slot === 'label').length > 0} hasDescription={this.props.description || namedSlotChildren.filter(({ props: { slot } }) => slot === 'description').length > 0}$2"
+          )
+          .replace(
+            /(<StateMessage(?!Props))([\s\S]*?\/>)/,
+            "$1 hasMessage={(this.props.message || namedSlotChildren.filter(({ props: { slot } }) => slot === 'message').length > 0) && ['success', 'error'].includes(this.props.state)}$2"
+          );
+      } else {
+        newFileContent = newFileContent
+          .replace(
+            /(<Label(?!Props))([\s\S]*?\/>)/,
+            "$1 hasLabel={!!label || namedSlotChildren.filter(({ props: { slot } }) => slot === 'label').length > 0} hasDescription={!!description || namedSlotChildren.filter(({ props: { slot } }) => slot === 'description').length > 0}$2"
+          )
+          .replace(
+            /(<StateMessage(?!Props))([\s\S]*?\/>)/,
+            "$1 hasMessage={(message || namedSlotChildren.filter(({ props: { slot } }) => slot === 'message').length > 0) && ['success', 'error'].includes(state)}$2"
+          );
+      }
+
       // fix various issues
       newFileContent = newFileContent
         .replace(
-          /(<Label(?!Props))([\s\S]*?\/>)/,
-          "$1 hasLabel={this.props.label || namedSlotChildren.filter(({ props: { slot } }) => slot === 'label').length > 0} hasDescription={this.props.description || namedSlotChildren.filter(({ props: { slot } }) => slot === 'description').length > 0}$2"
-        )
-        .replace(
           /(<LegacyLabel(?!Props))([\s\S]*?\/>)/,
           "$1 hasLabel={this.props.label || namedSlotChildren.filter(({ props: { slot } }) => slot === 'label').length > 0} hasDescription={this.props.description || namedSlotChildren.filter(({ props: { slot } }) => slot === 'description').length > 0}$2"
-        )
-        .replace(
-          /(<StateMessage(?!Props))([\s\S]*?\/>)/,
-          "$1 hasMessage={(this.props.message || namedSlotChildren.filter(({ props: { slot } }) => slot === 'message').length > 0) && ['success', 'error'].includes(this.props.state)}$2"
         )
         .replace(/(this\.props)\.host/g, '$1') // general
         .replace(/(getSegmentedControlCss)\(getItemMaxWidth\(this\.props\)/, '$1(100') // segmented-control
@@ -531,9 +568,12 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/formStateRestoreCallback\(state: FormData\)/, 'formStateRestoreCallback()');
       } else if (tagName === 'p-multi-select-option') {
         newFileContent = newFileContent
-          // remove any jsx since options are not visible in closed multi-select
-          .replace(/<>\s*([\s\S]*)\s*<\/>/, '<></>')
-          .replace(/this\.theme/, 'this.props.theme');
+          .replace(/this\.theme/, 'this.props.theme')
+          // transform className objects to string
+          .replace(
+            /className=\{(\{[\S\s]+?})}/g,
+            `className={Object.entries($1).map(([key, value]) => value && key).filter(Boolean).join(' ')}`
+          );
       } else if (tagName === 'p-optgroup') {
         // transform className objects to string
         newFileContent = newFileContent.replace(
@@ -568,7 +608,13 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
           .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
       } else if (tagName === 'p-select-option') {
-        newFileContent = newFileContent.replace(/this\.theme/, 'this.props.theme');
+        newFileContent = newFileContent
+          .replace(/this\.theme/, 'this.props.theme')
+          // transform className objects to string
+          .replace(
+            /className=\{(\{[\S\s]+?})}/g,
+            `className={Object.entries($1).map(([key, value]) => value && key).filter(Boolean).join(' ')}`
+          );
       } else if (tagName === 'p-text-field-wrapper') {
         // make private like isSearch, isPassword and hasUnit work
         const rawPrivateMembers = Array.from(fileContent.matchAll(/this\.(?:is|has)[A-Z][A-Za-z]+ = .*?;/g))
@@ -692,11 +738,37 @@ $&`
       } else if (tagName === 'p-input-password') {
         newFileContent = newFileContent
           .replace(/@AttachInternals\(\)/, '')
+          .replace(
+            /<InputBase/,
+            `$&
+            children={this.props.children}`
+          )
           .replace(/maxlength/, 'maxLength')
           .replace(/minlength/, 'minLength')
           .replace(/readonly/, 'readOnly')
-          .replace(/spellcheck/, 'spellCheck')
           .replace(/autocomplete/, 'autoComplete')
+          .replace(/\s*refElement=\{[^}]*}/g, '')
+          .replace(/onBlur=\{this\.props\.onBlur}/g, '')
+          // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
+          .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
+          .replace(/this\.props\.disabled = disabled;/, '')
+          .replace(/this\.props\.value = state;/, '')
+          .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
+          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
+      } else if (tagName === 'p-input-number') {
+        newFileContent = newFileContent
+          .replace(/@AttachInternals\(\)/, '')
+          .replace(
+            /<InputBase/,
+            `$&
+            children={this.props.children}`
+          )
+          .replace(/maxlength/, 'maxLength')
+          .replace(/minlength/, 'minLength')
+          .replace(/readonly/, 'readOnly')
+          .replace(/autocomplete/, 'autoComplete')
+          .replace(/\s*refElement=\{[^}]*}/g, '')
+          .replace(/onBlur=\{this\.props\.onBlur}/g, '')
           // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
           .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
           .replace(/this\.props\.disabled = disabled;/, '')

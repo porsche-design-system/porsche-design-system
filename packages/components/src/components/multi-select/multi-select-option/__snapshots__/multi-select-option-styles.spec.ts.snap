@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for theme: dark, isDisabled: false and selected: false 1`] = `
 ":host {
   display: block;
   scroll-margin: 6px !important;
@@ -8,8 +8,9 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
+slot {
+  display: block;
+  padding-top: calc((calc(calc(max(16px * 0.75, calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .option {
   display: flex;
@@ -27,6 +28,7 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
   box-sizing: content-box;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  column-gap: 8px;
 }
 .option[role=status] {
   cursor: not-allowed;
@@ -58,7 +60,30 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
   display: none;
 }
 .checkbox {
-  pointer-events: none;
+  flex-shrink: 0;
+  position: relative;
+  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #88898C;
+  outline: 0;
+  cursor: pointer;
+  grid-area: 1/1;
+  border-radius: 4px;
+  background-size: cover !important;
+}
+.checkbox::before {
+  content: "";
+  position: absolute;
+  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -69,7 +94,7 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 "
 `;
 
-exports[`getComponentCss() should return correct css for theme: light 1`] = `
+exports[`getComponentCss() should return correct css for theme: dark, isDisabled: false and selected: true 1`] = `
 ":host {
   display: block;
   scroll-margin: 6px !important;
@@ -77,8 +102,297 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
+slot {
+  display: block;
+  padding-top: calc((calc(calc(max(16px * 0.75, calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+}
+.option {
+  display: flex;
+  gap: max(4px, 1 * 12px);
+  padding-block: max(2px, 1 * 8px);
+  padding-inline: max(4px, 1 * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, 1 * 12px);
+  min-height: calc(6px + 2.125ex);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #AFB0B3;
+  cursor: pointer;
+  text-align: start;
+  word-break: break-word;
+  box-sizing: content-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  column-gap: 8px;
+}
+.option[role=status] {
+  cursor: not-allowed;
+}
+.option__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.option--selected {
+  background: rgba(148, 149, 152, .18);
+}
+.option--highlighted {
+  background: #404044;
+}
+.option--highlighted, .option--selected {
+  color: #FBFCFF;
+}
+.option--disabled {
+  cursor: not-allowed;
+  color: #7E7F82;
+}
+.option--hidden {
+  display: none;
+}
+.checkbox {
+  flex-shrink: 0;
+  position: relative;
+  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #88898C;
+  outline: 0;
+  cursor: pointer;
+  grid-area: 1/1;
+  border-radius: 4px;
+  background-size: cover !important;
+  border-color: #FBFCFF;
+  background-color: #FBFCFF;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
+}
+.checkbox::before {
+  content: "";
+  position: absolute;
+  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+}
+@media(hover:hover) {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+    color: #FBFCFF;
+    background: rgba(148, 149, 152, .18);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for theme: dark, isDisabled: true and selected: false 1`] = `
+":host {
+  display: block;
+  scroll-margin: 6px !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+slot {
+  display: block;
+  padding-top: calc((calc(calc(max(16px * 0.75, calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+}
+.option {
+  display: flex;
+  gap: max(4px, 1 * 12px);
+  padding-block: max(2px, 1 * 8px);
+  padding-inline: max(4px, 1 * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, 1 * 12px);
+  min-height: calc(6px + 2.125ex);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #AFB0B3;
+  cursor: pointer;
+  text-align: start;
+  word-break: break-word;
+  box-sizing: content-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  column-gap: 8px;
+}
+.option[role=status] {
+  cursor: not-allowed;
+}
+.option__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.option--selected {
+  background: rgba(148, 149, 152, .18);
+}
+.option--highlighted {
+  background: #404044;
+}
+.option--highlighted, .option--selected {
+  color: #FBFCFF;
+}
+.option--disabled {
+  cursor: not-allowed;
+  color: #7E7F82;
+}
+.option--hidden {
+  display: none;
+}
+.checkbox {
+  flex-shrink: 0;
+  position: relative;
+  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #7E7F82;
+  outline: 0;
+  pointer-events: none;
+  grid-area: 1/1;
+  border-radius: 4px;
+  background-size: cover !important;
+}
+.checkbox::before {
+  content: "";
+  position: absolute;
+  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+}
+@media(hover:hover) {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+    color: #FBFCFF;
+    background: rgba(148, 149, 152, .18);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for theme: dark, isDisabled: true and selected: true 1`] = `
+":host {
+  display: block;
+  scroll-margin: 6px !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+slot {
+  display: block;
+  padding-top: calc((calc(calc(max(16px * 0.75, calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+}
+.option {
+  display: flex;
+  gap: max(4px, 1 * 12px);
+  padding-block: max(2px, 1 * 8px);
+  padding-inline: max(4px, 1 * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, 1 * 12px);
+  min-height: calc(6px + 2.125ex);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #AFB0B3;
+  cursor: pointer;
+  text-align: start;
+  word-break: break-word;
+  box-sizing: content-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  column-gap: 8px;
+}
+.option[role=status] {
+  cursor: not-allowed;
+}
+.option__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.option--selected {
+  background: rgba(148, 149, 152, .18);
+}
+.option--highlighted {
+  background: #404044;
+}
+.option--highlighted, .option--selected {
+  color: #FBFCFF;
+}
+.option--disabled {
+  cursor: not-allowed;
+  color: #7E7F82;
+}
+.option--hidden {
+  display: none;
+}
+.checkbox {
+  flex-shrink: 0;
+  position: relative;
+  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #7E7F82;
+  outline: 0;
+  pointer-events: none;
+  grid-area: 1/1;
+  border-radius: 4px;
+  background-size: cover !important;
+  border-color: #7E7F82;
+  background-color: #7E7F82;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
+}
+.checkbox::before {
+  content: "";
+  position: absolute;
+  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+}
+@media(hover:hover) {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+    color: #FBFCFF;
+    background: rgba(148, 149, 152, .18);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for theme: light, isDisabled: false and selected: false 1`] = `
+":host {
+  display: block;
+  scroll-margin: 6px !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+slot {
+  display: block;
+  padding-top: calc((calc(calc(max(16px * 0.75, calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
 }
 .option {
   display: flex;
@@ -96,6 +410,7 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
   box-sizing: content-box;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  column-gap: 8px;
 }
 .option[role=status] {
   cursor: not-allowed;
@@ -127,7 +442,318 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
   display: none;
 }
 .checkbox {
+  flex-shrink: 0;
+  position: relative;
+  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #6B6D70;
+  outline: 0;
+  cursor: pointer;
+  grid-area: 1/1;
+  border-radius: 4px;
+  background-size: cover !important;
+}
+.checkbox::before {
+  content: "";
+  position: absolute;
+  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+}
+@media(hover:hover) {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+    color: #010205;
+    background: rgba(148, 149, 152, .18);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for theme: light, isDisabled: false and selected: true 1`] = `
+":host {
+  display: block;
+  scroll-margin: 6px !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+slot {
+  display: block;
+  padding-top: calc((calc(calc(max(16px * 0.75, calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+}
+.option {
+  display: flex;
+  gap: max(4px, 1 * 12px);
+  padding-block: max(2px, 1 * 8px);
+  padding-inline: max(4px, 1 * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, 1 * 12px);
+  min-height: calc(6px + 2.125ex);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #535457;
+  cursor: pointer;
+  text-align: start;
+  word-break: break-word;
+  box-sizing: content-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  column-gap: 8px;
+}
+.option[role=status] {
+  cursor: not-allowed;
+}
+.option__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.option--selected {
+  background: rgba(148, 149, 152, .18);
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
+}
+.option--disabled {
+  cursor: not-allowed;
+  color: #949598;
+}
+.option--hidden {
+  display: none;
+}
+.checkbox {
+  flex-shrink: 0;
+  position: relative;
+  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #6B6D70;
+  outline: 0;
+  cursor: pointer;
+  grid-area: 1/1;
+  border-radius: 4px;
+  background-size: cover !important;
+  border-color: #010205;
+  background-color: #010205;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
+}
+.checkbox::before {
+  content: "";
+  position: absolute;
+  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+}
+@media(hover:hover) {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+    color: #010205;
+    background: rgba(148, 149, 152, .18);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for theme: light, isDisabled: true and selected: false 1`] = `
+":host {
+  display: block;
+  scroll-margin: 6px !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+slot {
+  display: block;
+  padding-top: calc((calc(calc(max(16px * 0.75, calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+}
+.option {
+  display: flex;
+  gap: max(4px, 1 * 12px);
+  padding-block: max(2px, 1 * 8px);
+  padding-inline: max(4px, 1 * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, 1 * 12px);
+  min-height: calc(6px + 2.125ex);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #535457;
+  cursor: pointer;
+  text-align: start;
+  word-break: break-word;
+  box-sizing: content-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  column-gap: 8px;
+}
+.option[role=status] {
+  cursor: not-allowed;
+}
+.option__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.option--selected {
+  background: rgba(148, 149, 152, .18);
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
+}
+.option--disabled {
+  cursor: not-allowed;
+  color: #949598;
+}
+.option--hidden {
+  display: none;
+}
+.checkbox {
+  flex-shrink: 0;
+  position: relative;
+  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #949598;
+  outline: 0;
   pointer-events: none;
+  grid-area: 1/1;
+  border-radius: 4px;
+  background-size: cover !important;
+}
+.checkbox::before {
+  content: "";
+  position: absolute;
+  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+}
+@media(hover:hover) {
+  .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+    color: #010205;
+    background: rgba(148, 149, 152, .18);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for theme: light, isDisabled: true and selected: true 1`] = `
+":host {
+  display: block;
+  scroll-margin: 6px !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+slot {
+  display: block;
+  padding-top: calc((calc(calc(max(16px * 0.75, calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
+}
+.option {
+  display: flex;
+  gap: max(4px, 1 * 12px);
+  padding-block: max(2px, 1 * 8px);
+  padding-inline: max(4px, 1 * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, 1 * 12px);
+  min-height: calc(6px + 2.125ex);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #535457;
+  cursor: pointer;
+  text-align: start;
+  word-break: break-word;
+  box-sizing: content-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  column-gap: 8px;
+}
+.option[role=status] {
+  cursor: not-allowed;
+}
+.option__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.option--selected {
+  background: rgba(148, 149, 152, .18);
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
+}
+.option--disabled {
+  cursor: not-allowed;
+  color: #949598;
+}
+.option--hidden {
+  display: none;
+}
+.checkbox {
+  flex-shrink: 0;
+  position: relative;
+  width: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  height: calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex)));
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #949598;
+  outline: 0;
+  pointer-events: none;
+  grid-area: 1/1;
+  border-radius: 4px;
+  background-size: cover !important;
+  border-color: #949598;
+  background-color: #949598;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
+}
+.checkbox::before {
+  content: "";
+  position: absolute;
+  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {

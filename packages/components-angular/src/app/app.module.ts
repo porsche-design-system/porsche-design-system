@@ -2,7 +2,6 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
-import { IMaskModule } from 'angular-imask';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent, SafePipe } from './app.component';
 import * as fromComponents from './components';
@@ -21,7 +20,6 @@ import * as fromStyles from './styles';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    IMaskModule,
     PorscheDesignSystemModule.load({ prefix: '', cdn: 'auto' }), // first configured theme wins or fallback 'light'
     PorscheDesignSystemModule.load({ prefix: 'my-prefix', cdn: 'auto', theme: 'dark' }),
     SafePipe,

@@ -14,16 +14,18 @@ import { CarouselExampleFocusOnCenterSlideComponent } from './carousel-example-f
 import { CarouselExampleJumpToSlideComponent } from './carousel-example-jump-to-slide.component';
 import { CheckboxExampleControlledComponent } from './checkbox-example-controlled.component';
 import { CheckboxExampleComponent } from './checkbox-example.component';
-import { FlyoutExampleFormComponent } from './flyout-example-form.component';
-import { FlyoutExampleComponent } from './flyout-example.component';
 import { DrilldownExampleActiveIdentifierComponent } from './drilldown-example-active-identifier.component';
 import { DrilldownExampleCustomContentComponent } from './drilldown-example-custom-content.component';
 import { DrilldownExampleComponent } from './drilldown-example.component';
+import { FlyoutExampleFormComponent } from './flyout-example-form.component';
+import { FlyoutExampleComponent } from './flyout-example.component';
 import { HiddenAttributeExampleComponent } from './hidden-attribute-example.component';
 import { InlineNotificationExampleActionButtonComponent } from './inline-notification-example-action-button.component';
 import { InlineNotificationExampleEventsComponent } from './inline-notification-example-events.component';
 import { InputPasswordExampleControlledComponent } from './input-password-example-controlled.component';
 import { InputPasswordExampleComponent } from './input-password-example.component';
+import { InputNumberExampleControlledComponent } from './input-number-example-controlled.component';
+import { InputNumberExampleComponent } from './input-number-example.component';
 import { LinkTileExampleHyphensComponent } from './link-tile-example-hyphens.component';
 import { LinkTileProductExampleComponent } from './link-tile-product-example.component';
 import { ModalExampleComponent } from './modal-example.component';
@@ -48,7 +50,6 @@ import { TableExampleBasicComponent } from './table-example-basic.component';
 import { TableExampleSortingComponent } from './table-example-sorting.component';
 import { TabsBarExampleAccessibilityComponent } from './tabs-bar-example-accessibility.component';
 import { TabsBarExampleBasicComponent } from './tabs-bar-example-basic.component';
-import { TextFieldWrapperExampleImaskComponent } from './text-field-wrapper-example-imask.component';
 import { TextFieldWrapperExampleSearchComponent } from './text-field-wrapper-example-search.component';
 import { TextareaExampleControlledComponent } from './textarea-example-controlled.component';
 import { TextareaExampleComponent } from './textarea-example.component';
@@ -82,6 +83,8 @@ export const examples = [
   InlineNotificationExampleEventsComponent,
   InputPasswordExampleControlledComponent,
   InputPasswordExampleComponent,
+  InputNumberExampleControlledComponent,
+  InputNumberExampleComponent,
   LinkTileExampleHyphensComponent,
   LinkTileProductExampleComponent,
   ModalExampleComponent,
@@ -107,7 +110,6 @@ export const examples = [
   TabsBarExampleBasicComponent,
   TextareaExampleComponent,
   TextareaExampleControlledComponent,
-  TextFieldWrapperExampleImaskComponent,
   TextFieldWrapperExampleSearchComponent,
   ToastExampleComponent,
 ];
@@ -139,6 +141,8 @@ export * from './inline-notification-example-action-button.component';
 export * from './inline-notification-example-events.component';
 export * from './input-password-example.component';
 export * from './input-password-example-controlled.component';
+export * from './input-number-example.component';
+export * from './input-number-example-controlled.component';
 export * from './link-tile-example-hyphens.component';
 export * from './link-tile-product-example.component';
 export * from './modal-example.component';
@@ -164,6 +168,5 @@ export * from './tabs-bar-example-accessibility.component';
 export * from './tabs-bar-example-basic.component';
 export * from './textarea-example.component';
 export * from './textarea-example-controlled.component';
-export * from './text-field-wrapper-example-imask.component';
 export * from './text-field-wrapper-example-search.component';
 export * from './toast-example.component';

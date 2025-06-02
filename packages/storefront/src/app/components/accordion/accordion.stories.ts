@@ -23,7 +23,7 @@ export const accordionSlotStories: SlotStories<'p-accordion'> = {
           tag: 'span',
           properties: {
             slot: 'heading',
-            style: { padding: '1rem' },
+            className: 'p-static-md',
           },
           children: [properties?.heading ?? 'Some slotted heading'],
         },
@@ -101,7 +101,7 @@ export const accordionStoryStickyHeadline: Story<'p-accordion'> = {
       open: true,
       heading: 'Some Heading',
       sticky: true,
-      style: { '--p-accordion-position-sticky-top': '56px' } as CSSProperties,
+      className: '[--p-accordion-position-sticky-top:56px]',
     },
   },
   generator: ({ properties } = {}) => [

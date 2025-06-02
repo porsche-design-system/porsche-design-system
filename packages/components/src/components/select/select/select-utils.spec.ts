@@ -1,11 +1,9 @@
 import * as stencilUtils from '@stencil/core';
 import * as loggerUtils from '../../../utils/log/logger';
-import * as keyboardBehaviorUtils from '../../../utils/select/keyboard-behavior';
 import * as selectUtils from './select-utils';
 import {
   type SelectOption,
   getSelectedOptionString,
-  getSrHighlightedOptionText,
   resetSelectedOption,
   setSelectedOption,
   syncSelectChildrenProps,
@@ -153,52 +151,5 @@ describe('setSelectedOption', () => {
     expect(options[2].selected).toBe(false);
     expect(resetSelectedOptionSpy).toHaveBeenCalledWith(options);
     expect(forceUpdateSpy).toHaveBeenCalledWith(options[1]);
-  });
-});
-
-describe('getSrHighlightedOptionText()', () => {
-  it('should return undefined when no option is highlighted', () => {
-    const getHighlightedSelectOptionIndexSpy = jest.spyOn(keyboardBehaviorUtils, 'getHighlightedSelectOptionIndex');
-    const getUsableSelectOptionsSpy = jest.spyOn(keyboardBehaviorUtils, 'getUsableSelectOptions');
-    const options = generateOptions();
-    const text = getSrHighlightedOptionText(options);
-
-    expect(getHighlightedSelectOptionIndexSpy).toHaveBeenCalledWith(options);
-    expect(getUsableSelectOptionsSpy).toHaveBeenCalledWith(options);
-    expect(text).toBeUndefined();
-  });
-  it('should return correct string when option is highlighted, selected and has textContent', () => {
-    const getHighlightedSelectOptionIndexSpy = jest.spyOn(keyboardBehaviorUtils, 'getHighlightedSelectOptionIndex');
-    const getUsableSelectOptionsSpy = jest.spyOn(keyboardBehaviorUtils, 'getUsableSelectOptions');
-    const options = generateOptions({ textContents: ['a'], selectedIndices: [0], highlightedIndex: 0 });
-    const text = getSrHighlightedOptionText(options);
-
-    expect(getHighlightedSelectOptionIndexSpy).toHaveBeenCalledWith(options);
-    expect(getUsableSelectOptionsSpy).toHaveBeenCalledWith(options);
-    expect(text).toBe('a, selected (1 of 3)');
-  });
-  it('should return correct string when option is highlighted, selected and has no textContent', () => {
-    const getHighlightedSelectOptionIndexSpy = jest.spyOn(keyboardBehaviorUtils, 'getHighlightedSelectOptionIndex');
-    const getUsableSelectOptionsSpy = jest.spyOn(keyboardBehaviorUtils, 'getUsableSelectOptions');
-    const options = [
-      { value: undefined, selected: true, textContent: '', highlighted: true },
-      { value: 'a', selected: false, textContent: 'a', highlighted: false },
-      { value: 'b', selected: false, textContent: 'b', highlighted: false },
-    ] as SelectOption[];
-    const text = getSrHighlightedOptionText(options);
-
-    expect(getHighlightedSelectOptionIndexSpy).toHaveBeenCalledWith(options);
-    expect(getUsableSelectOptionsSpy).toHaveBeenCalledWith(options);
-    expect(text).toBe('Empty option, selected (1 of 3)');
-  });
-  it('should return correct string when option is highlighted, not selected and has textContent', () => {
-    const getHighlightedSelectOptionIndexSpy = jest.spyOn(keyboardBehaviorUtils, 'getHighlightedSelectOptionIndex');
-    const getUsableSelectOptionsSpy = jest.spyOn(keyboardBehaviorUtils, 'getUsableSelectOptions');
-    const options = generateOptions({ textContents: ['a'], highlightedIndex: 0 });
-    const text = getSrHighlightedOptionText(options);
-
-    expect(getHighlightedSelectOptionIndexSpy).toHaveBeenCalledWith(options);
-    expect(getUsableSelectOptionsSpy).toHaveBeenCalledWith(options);
-    expect(text).toBe('a not selected (1 of 3)');
   });
 });

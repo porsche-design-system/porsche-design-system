@@ -5,14 +5,11 @@ import { Playground } from '@/components/playground/Playground';
 import { useStorefrontFramework } from '@/hooks/useStorefrontFramework';
 import { useStorefrontTheme } from '@/hooks/useStorefrontTheme';
 import { createStackblitzMarkupFromStory } from '@/lib/stackblitz/createStackblitzMarkupFromStory';
-import { openInStackblitz } from '@/lib/stackblitz/openInStackblitz';
 import type { SlotStories, Story, StoryState } from '@/models/story';
-import { generateAngularMarkup, getAngularCode } from '@/utils/generator/generateAngularMarkup';
-import { generateReactMarkup, getReactCode } from '@/utils/generator/generateReactMarkup';
-import { generateVanillaJsMarkup, getVanillaJsCode } from '@/utils/generator/generateVanillaJsMarkup';
-import { generateVueMarkup, getVueCode } from '@/utils/generator/generateVueMarkup';
+import { createFrameworkMarkup } from '@/utils/generator/createFrameworkMarkup';
 import { type ConfiguratorTagNames, type HTMLTagOrComponent, createElements } from '@/utils/generator/generator';
 import type { Framework, FrameworkMarkup } from '@porsche-design-system/shared';
+import { openInStackblitz } from '@porsche-design-system/stackblitz';
 import React, { type ReactNode, useEffect, useState } from 'react';
 
 type ConfiguratorTestProps<T extends HTMLTagOrComponent> = {
@@ -32,23 +29,20 @@ export const Configurator = <T extends HTMLTagOrComponent>({
   const [exampleElement, setExampleElement] = useState<ReactNode>(
     createElements(story.generator(story.state), setExampleState)
   );
-  const [exampleMarkup, setExampleMarkup] = useState<FrameworkMarkup>({});
+  const [exampleMarkup, setExampleMarkup] = useState<FrameworkMarkup>(
+    createFrameworkMarkup(story.generator(story.state), story.state, storefrontTheme)
+  );
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: only thing that will change is the state
   useEffect(() => {
     const generatedStory = story.generator(exampleState);
     setExampleElement(createElements(generatedStory, setExampleState));
-    setExampleMarkup({
-      'vanilla-js': getVanillaJsCode(generateVanillaJsMarkup(generatedStory)),
-      react: getReactCode(generateReactMarkup(generatedStory, story.state ?? {})),
-      angular: getAngularCode(generateAngularMarkup(generatedStory, story.state ?? {})),
-      vue: getVueCode(generateVueMarkup(generatedStory, story.state ?? {})),
-    });
-  }, [exampleState]);
+    setExampleMarkup(createFrameworkMarkup(generatedStory, exampleState, storefrontTheme));
+  }, [exampleState, storefrontTheme]);
 
-  const onOpenInStackblitz = async () => {
+  const onOpenInStackblitz = () => {
     const markup = createStackblitzMarkupFromStory(story, exampleState, storefrontFramework, storefrontTheme);
-    await openInStackblitz(markup, storefrontFramework as Framework, storefrontTheme);
+    openInStackblitz(storefrontFramework as Framework, markup, storefrontTheme);
   };
 
   return (

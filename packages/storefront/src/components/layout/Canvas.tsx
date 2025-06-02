@@ -21,6 +21,7 @@ import {
 } from '@porsche-design-system/components-react/ssr';
 import { componentsReady } from '@porsche-design-system/components-react/ssr';
 import { breakpointS } from '@porsche-design-system/components-react/styles';
+import { breakpointM } from '@porsche-design-system/styles/src/js';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type React from 'react';
@@ -73,7 +74,9 @@ export const Canvas = ({ children }: PropsWithChildren) => {
   }, []);
 
   useEffect(() => {
-    setIsSidebarEndOpen(pathname?.includes('configurator') || false);
+    setIsSidebarEndOpen(
+      (window.matchMedia(`(min-width: ${breakpointM}px)`).matches && pathname?.includes('configurator')) ?? false
+    );
   }, [pathname]);
 
   return (
@@ -130,7 +133,7 @@ export const Canvas = ({ children }: PropsWithChildren) => {
         <Navigation />
       </div>
       <div slot="sidebar-end">
-        <div className="flex flex-col gap-sm mb-lg">
+        <div className="flex flex-col gap-fluid-sm mb-fluid-lg">
           <PHeading size="small" tag="h2">
             Global settings
           </PHeading>

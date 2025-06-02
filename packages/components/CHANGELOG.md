@@ -14,6 +14,40 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [3.28.0] - 2025-06-02
+
+#### Added
+
+- `Input Number`: ([#3855](https://github.com/porsche-design-system/porsche-design-system/pull/3855))
+
+#### Fixed
+
+- `Select Wrapper`: update of scroll position if dropdown is navigated with keyboard
+  ([#3858](https://github.com/porsche-design-system/porsche-design-system/pull/3858))
+- `Select`, `Multi Select`: replacement of static (english) a11y announcement of active `option` with dynamic
+  announcement through `ariaActiveDescendantElement`
+  ([#3826](https://github.com/porsche-design-system/porsche-design-system/pull/3826))
+
+## [3.28.0-rc.3] - 2025-05-19
+
+### Added
+
+- `Styles`: theme for `tailwindcss` including utilities available under
+  `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/tailwindcss';`
+  ([#3849](https://github.com/porsche-design-system/porsche-design-system/pull/3849))
+
+### Changed
+
+- Partials: `getInitialStyles` removed default styles for `h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p`, `b` and `strong`
+  ([#3849](https://github.com/porsche-design-system/porsche-design-system/pull/3849))
+
+#### Fixed
+
+- `Multi Select`: enable full a11y compliance
+  ([#3819](https://github.com/porsche-design-system/porsche-design-system/pull/3819))
+- Accessibility: fix ARIA live announcements of form components status messages
+  ([#3796](https://github.com/porsche-design-system/porsche-design-system/pull/3796))
+
 ## [3.28.0-rc.2] - 2025-04-23
 
 ### Fixed

@@ -87,8 +87,8 @@ export const Search = ({ isSearchOpen, onDismissSearch }: SearchProps) => {
       }
     >
       <InstantSearch searchClient={searchClient} indexName={getAlgoliaIndexName()} routing={true}>
-        <div className="stretch-to-full-modal-width h-[80vh] p-lg">
-          <div className="flex flex-col gap-sm h-full">
+        <div className="stretch-to-full-modal-width h-[80vh] p-fluid-lg">
+          <div className="flex flex-col gap-fluid-sm h-full">
             <PHeading size="medium" tag="h2">
               Search
             </PHeading>

@@ -216,6 +216,16 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.InputPasswordExampleControlledComponent,
   },
   {
+    name: 'Input Number Example',
+    path: 'input-number-example',
+    component: fromExamples.InputNumberExampleComponent,
+  },
+  {
+    name: 'Input Number Example Controlled',
+    path: 'input-number-controlled-example',
+    component: fromExamples.InputNumberExampleControlledComponent,
+  },
+  {
     name: 'Link Tile Example Hyphens',
     path: 'link-tile-example-hyphens',
     component: fromExamples.LinkTileExampleHyphensComponent,
@@ -349,11 +359,6 @@ export const routes: ExtendedRoute[] = [
     name: 'Checkbox Example Controlled',
     path: 'checkbox-controlled-example',
     component: fromExamples.CheckboxExampleControlledComponent,
-  },
-  {
-    name: 'Text Field Wrapper Example IMask',
-    path: 'text-field-wrapper-example-imask',
-    component: fromExamples.TextFieldWrapperExampleImaskComponent,
   },
   {
     name: 'Text Field Wrapper Example Search',

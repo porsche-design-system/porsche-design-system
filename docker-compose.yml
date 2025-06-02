@@ -1,6 +1,6 @@
 services:
   design-system:
-    image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.49.1-jammy-test-3
+    image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.49.1-jammy-test-6
     working_dir: /opt/porsche-design-system-app
     user: "${RUN_UID}:${RUN_GID}"
     ports:
@@ -59,10 +59,15 @@ services:
       - crawler-node-modules:/opt/porsche-design-system-app/packages/crawler/node_modules
       - shared-node-modules:/opt/porsche-design-system-app/packages/shared/node_modules
       - storefront-node-modules:/opt/porsche-design-system-app/packages/storefront/node_modules
+      - storefront-stackblitz-node-modules:/opt/porsche-design-system-app/packages/storefront/projects/stackblitz/node_modules
+      - tokens-node-modules:/opt/porsche-design-system-app/packages/tokens/node_modules
+      - styles-node-modules:/opt/porsche-design-system-app/packages/styles/node_modules
+      - styles-tailwindcss-node-modules:/opt/porsche-design-system-app/packages/styles/projects/tailwindcss/node_modules
       - utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/node_modules
+      - utilities-ag-grid-node-modules:/opt/porsche-design-system-app/packages/utilities/projects/ag-grid/node_modules
       - utilities-utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/projects/utilities/node_modules
   change-volume-owner:
-    image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.49.1-jammy-test-3
+    image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.49.1-jammy-test-6
     volumes:
       - home:/opt/porsche-design-system-volumes/home
       - monorepo-node-modules:/opt/porsche-design-system-volumes/root-node_modules
@@ -92,7 +97,12 @@ services:
       - crawler-node-modules:/opt/porsche-design-system-volumes/crawler-node_modules
       - shared-node-modules:/opt/porsche-design-system-volumes/shared-node_modules
       - storefront-node-modules:/opt/porsche-design-system-volumes/storefront-node_modules
+      - storefront-stackblitz-node-modules:/opt/porsche-design-system-volumes/storefront-stackblitz-node_modules
+      - tokens-node-modules:/opt/porsche-design-system-volumes/tokens-node_modules
+      - styles-node-modules:/opt/porsche-design-system-volumes/styles-node_modules
+      - styles-tailwindcss-node-modules:/opt/porsche-design-system-volumes/styles-tailwindcss-node_modules
       - utilities-node-modules:/opt/porsche-design-system-volumes/utilities-node_modules
+      - utilities-ag-grid-node-modules:/opt/porsche-design-system-volumes/utilities-ag-grid-node_modules
       - utilities-utilities-node-modules:/opt/porsche-design-system-volumes/utilities-utilities-node_modules
     command: |
       sh -c "chown ${RUN_UID}:${RUN_GID} /opt/porsche-design-system-volumes/*"
@@ -125,5 +135,10 @@ volumes:
   crawler-node-modules:
   shared-node-modules:
   storefront-node-modules:
+  storefront-stackblitz-node-modules:
+  tokens-node-modules:
+  styles-node-modules:
+  styles-tailwindcss-node-modules:
   utilities-node-modules:
+  utilities-ag-grid-node-modules:
   utilities-utilities-node-modules:

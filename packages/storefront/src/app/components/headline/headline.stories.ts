@@ -35,7 +35,7 @@ export const headlineStoryCustomColor: Story<'p-headline'> = {
   generator: () => [
     {
       tag: 'p-headline',
-      properties: { tag: 'h3', color: 'inherit', style: { color: 'deeppink' } },
+      properties: { tag: 'h3', color: 'inherit', className: 'text-[deeppink]' },
       children: ['The quick brown fox jumps over the lazy dog'],
     },
   ],
