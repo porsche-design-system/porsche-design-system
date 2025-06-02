@@ -103,7 +103,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
 `
         )
         .replace(/(export class) ([A-Za-z]+)/, '$1 DSR$2 extends Component<any>') // make it a real React.Component
-        .replace(/(<\/?)Host.*(>)/g, '$1$2') // replace Host fragment, TODO: could be removed completely with template tag
+        .replace(/(<\/?)Host[^>]*(>)/g, '$1$2') // replace Host fragment, TODO: could be removed completely with template tag
         .replace(/(public state)\?(: any)/, '$1$2') // make state required to fix linting issue with React
         .replace(/\bbreakpoint\.l\b/, `'${breakpoint.l}'`) // inline breakpoint value from utilities-v2 for marque
         .replace(/{(isRequiredAndParentNotRequired\(.*)}/, '{/* $1 */}') // comment out isRequiredAndParentNotRequired for now
@@ -571,9 +571,12 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/formStateRestoreCallback\(state: FormData\)/, 'formStateRestoreCallback()');
       } else if (tagName === 'p-multi-select-option') {
         newFileContent = newFileContent
-          // remove any jsx since options are not visible in closed multi-select
-          .replace(/<>\s*([\s\S]*)\s*<\/>/, '<></>')
-          .replace(/this\.theme/, 'this.props.theme');
+          .replace(/this\.theme/, 'this.props.theme')
+          // transform className objects to string
+          .replace(
+            /className=\{(\{[\S\s]+?})}/g,
+            `className={Object.entries($1).map(([key, value]) => value && key).filter(Boolean).join(' ')}`
+          );
       } else if (tagName === 'p-optgroup') {
         // transform className objects to string
         newFileContent = newFileContent.replace(
@@ -608,7 +611,13 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
           .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
       } else if (tagName === 'p-select-option') {
-        newFileContent = newFileContent.replace(/this\.theme/, 'this.props.theme');
+        newFileContent = newFileContent
+          .replace(/this\.theme/, 'this.props.theme')
+          // transform className objects to string
+          .replace(
+            /className=\{(\{[\S\s]+?})}/g,
+            `className={Object.entries($1).map(([key, value]) => value && key).filter(Boolean).join(' ')}`
+          );
       } else if (tagName === 'p-text-field-wrapper') {
         // make private like isSearch, isPassword and hasUnit work
         const rawPrivateMembers = Array.from(fileContent.matchAll(/this\.(?:is|has)[A-Z][A-Za-z]+ = .*?;/g))

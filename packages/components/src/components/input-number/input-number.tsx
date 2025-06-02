@@ -192,9 +192,6 @@ export class InputNumber {
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
-    const canStepUp = this.max ? Number(this.value) < this.max : true;
-    const canStepDown = this.min ? Number(this.value) > this.min : true;
-
     return (
       <InputBase
         host={this.host}
@@ -231,7 +228,7 @@ export class InputNumber {
                 class="button"
                 type="button"
                 icon="minus"
-                disabled={this.disabled || this.readOnly || !canStepDown}
+                disabled={this.disabled || this.readOnly}
                 onClick={() => this.onStep('down')}
               >
                 Decrement value by {this.step}
@@ -243,7 +240,7 @@ export class InputNumber {
                 class="button"
                 type="button"
                 icon="plus"
-                disabled={this.disabled || this.readOnly || !canStepUp}
+                disabled={this.disabled || this.readOnly}
                 onClick={() => this.onStep('up')}
               >
                 Increment value by {this.step}
@@ -256,6 +253,8 @@ export class InputNumber {
   }
 
   private onChange = (e: Event): void => {
+    e.stopPropagation();
+    e.stopImmediatePropagation();
     this.change.emit(e);
   };
 
@@ -268,13 +267,16 @@ export class InputNumber {
   private onInput = (e: InputEvent): void => {
     e.stopPropagation();
     e.stopImmediatePropagation();
-    this.input.emit(e);
     const target = e.target as HTMLInputElement;
     this.value = target.value; // triggers @Watch('value')
+    this.input.emit(e);
   };
 
   private onStep = (step: 'up' | 'down'): void => {
     this.inputElement[step === 'up' ? 'stepUp' : 'stepDown']();
-    this.value = this.inputElement.value; // triggers @Watch('value')
+    // Triggers onInput/onChange functions
+    this.inputElement.dispatchEvent(new window.InputEvent('input', { bubbles: true, composed: true }));
+    this.inputElement.dispatchEvent(new window.Event('change', { bubbles: true, composed: true }));
+    this.inputElement.focus();
   };
 }
