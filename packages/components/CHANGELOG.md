@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [3.28.0] - 2025-06-02
+
 #### Added
 
 - `Popover`: support for custom slotted button
