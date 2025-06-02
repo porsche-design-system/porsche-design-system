@@ -105,7 +105,57 @@
       </select>
     </header>
 
-    <main></main>
+    <main>
+      <p-topbar href="#" gradient>
+        <p-text slot="top" theme="dark">Hello</p-text>
+        <p-button-pure slot="top" icon="heart" hide-label="true"></p-button-pure>
+        <p-button-pure
+          slot="start"
+          icon="menu-lines"
+          hide-label="true"
+          style="margin: var(--ref-p-topbar-slotted-margin); padding: var(--ref-p-topbar-slotted-padding)"
+        ></p-button-pure>
+        <p-button-pure
+          slot="start"
+          icon="heart"
+          hide-label="true"
+          style="margin: var(--ref-p-topbar-slotted-margin); padding: var(--ref-p-topbar-slotted-padding)"
+        ></p-button-pure>
+        <p-button-pure
+          slot="start"
+          icon="shopping-cart"
+          hide-label="true"
+          style="margin: var(--ref-p-topbar-slotted-margin); padding: var(--ref-p-topbar-slotted-padding)"
+        ></p-button-pure>
+        <p-button-pure
+          slot="end"
+          icon="search"
+          hide-label="true"
+          style="margin: var(--ref-p-topbar-slotted-margin); padding: var(--ref-p-topbar-slotted-padding)"
+        ></p-button-pure>
+        <p-button slot="end" variant="secondary" compact="true">Sign in</p-button>
+        <p-input-password slot="end" compact="true" toggle value="Value"></p-input-password>
+        <!--<p-tabs-bar slot="bottom" style="margin-inline: 16px">
+          <button type="button">Women</button>
+          <button type="button">Men</button>
+          <button type="button">Kids</button>
+          <button type="button">Accessories</button>
+          <button type="button">Model Cars</button>
+          <button type="button">Porsche Originals</button>
+          <button type="button">Porsche Design</button>
+        </p-tabs-bar>-->
+
+        <p-button-pure slot="bottom" icon="none">Women</p-button-pure>
+        <p-button-pure slot="bottom" icon="none">Men</p-button-pure>
+        <p-button-pure slot="bottom" icon="none">Kids</p-button-pure>
+        <p-button-pure slot="bottom" icon="none">Accessories</p-button-pure>
+        <p-button-pure slot="bottom" icon="none">Model Cars</p-button-pure>
+        <p-button-pure slot="bottom" icon="none">Porsche Originals</p-button-pure>
+        <p-button-pure slot="bottom" icon="none">Porsche Design</p-button-pure>
+
+        <p-text slot="bottom" theme="dark">Hello</p-text>
+      </p-topbar>
+    </main>
 
     <script>
       <!-- START: keep this snippet to log component lifecycle events -->
@@ -115,7 +165,6 @@
           console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
         })
       );
-
 
       const getTheme = () => new URL(document.location).searchParams.get('theme') || 'light';
       const getDir = () => new URL(document.location).searchParams.get('dir') || 'ltr';

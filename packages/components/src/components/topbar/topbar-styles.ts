@@ -10,15 +10,20 @@ import {
   getMediaQueryMax,
   getMediaQueryMin,
   gradientToBottomStyle,
+  gridGap,
   gridWideOffsetBase,
   gridWideOffsetS,
   gridWideOffsetXXL,
+  spacingFluidMedium,
   spacingStaticMedium,
   spacingStaticSmall,
+  spacingStaticXSmall,
 } from '@porsche-design-system/styles';
 
 // public css variables
 const cssVarTopBackground = '--p-topbar-top-background';
+const cssVarSlottedMargin = '--ref-p-topbar-slotted-margin';
+const cssVarSlottedPadding = '--ref-p-topbar-slotted-padding';
 
 // private css variables
 const cssVarGridWideOffset = '--_p-a';
@@ -31,31 +36,20 @@ export const getComponentCss = (hasGradient: boolean): string => {
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
+          [cssVarSlottedMargin]: `calc(-1 * ${spacingStaticXSmall})`, // keeps the alignment of e.g. a slotted p-button-pure in sync with the Porsche Grid
+          [cssVarSlottedPadding]: spacingStaticXSmall, // keeps the sizing of e.g. a slotted p-button-pure in sync with e.g. a compact p-button or p-input-search
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
       ...preventFoucOfNestedElementsStyles,
-      '::slotted(:is([slot="top"],[slot="bottom"]))': {
-        gridColumn: '1/-1',
-      },
       slot: {
-        '&[name="top"],&[name="bottom"]': {
-          display: 'grid',
-          gridTemplateColumns: 'subgrid',
-        },
         '&[name="top"]': {
           gridArea: '1/1/2/-1',
           background: `var(${cssVarTopBackground}, ${backgroundSurfaceColorDark})`,
         },
         '&[name="bottom"]': {
           gridArea: '3/1/4/-1',
-        },
-        '&[name="start"],&[name="end"]': {
-          display: 'flex',
-          gap: `${spacingStaticSmall} ${spacingStaticMedium}`,
-          flexFlow: 'wrap',
-          alignItems: 'center',
         },
         '&[name="start"]': {
           gridArea: '2/2',
@@ -65,20 +59,33 @@ export const getComponentCss = (hasGradient: boolean): string => {
           gridArea: '2/4',
           justifyContent: 'end',
         },
+        '&[name="top"],&[name="bottom"]': {
+          display: 'flex',
+          gap: `${spacingStaticSmall} ${spacingStaticMedium}`,
+          flexFlow: 'wrap',
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
+        '&[name="start"],&[name="end"]': {
+          display: 'flex',
+          gap: `${spacingStaticSmall} ${spacingStaticMedium}`,
+          flexFlow: 'wrap',
+          alignItems: 'center',
+        },
       },
       header: {
-        [cssVarGridWideOffset]: `calc(${gridWideOffsetBase} - ${spacingStaticMedium})`,
+        [cssVarGridWideOffset]: `calc(${gridWideOffsetBase} - ${gridGap})`,
         position: 'relative',
-        zIndex: 0,
+        zIndex: 0, // ensures gradient is above content behind the topbar
         display: 'grid',
         gridTemplate: `auto minmax(48px,auto) auto / var(${cssVarGridWideOffset}) minmax(0,1fr) auto minmax(0,1fr) var(${cssVarGridWideOffset})`,
-        gap: spacingStaticMedium,
+        gap: `${spacingStaticMedium} ${gridGap}`,
         alignItems: 'center',
         [getMediaQueryMin('s')]: {
-          [cssVarGridWideOffset]: `calc(${gridWideOffsetS} - ${spacingStaticMedium})`,
+          [cssVarGridWideOffset]: `calc(${gridWideOffsetS} - ${gridGap})`,
         },
         [getMediaQueryMin('xxl')]: {
-          [cssVarGridWideOffset]: `calc(${gridWideOffsetXXL} - ${spacingStaticMedium})`,
+          [cssVarGridWideOffset]: `calc(${gridWideOffsetXXL} - ${gridGap})`,
         },
         ...(hasGradient && {
           '&::before': {
@@ -86,7 +93,7 @@ export const getComponentCss = (hasGradient: boolean): string => {
             gridArea: '2/1/-1/-1',
             alignSelf: 'stretch',
             marginBlock: `-${spacingStaticMedium} calc(-60px - ${spacingStaticMedium})`,
-            zIndex: -1,
+            zIndex: -1, // ensures gradient is below slotted content
             pointerEvents: 'none',
             ...gradientToBottomStyle,
           },
