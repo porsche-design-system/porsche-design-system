@@ -130,23 +130,13 @@ export class Popover {
 
   private handlePopover = (open: boolean): void => {
     if (open) {
-      if (this.hasNativePopoverSupport) {
-        this.popover.showPopover();
-      }
-      if (typeof this.cleanUpAutoUpdate === 'undefined') {
-        // ensures floating ui event listeners are added when popover is opened
+      this.hasNativePopoverSupport && this.popover.showPopover();
+      if (!this.cleanUpAutoUpdate) {
         this.cleanUpAutoUpdate = autoUpdate(this.button || this.slottedButton, this.popover, this.updatePosition);
       }
     } else {
-      // we can't call hidePopover() because the popover element itself is rendered conditionally
-      // if (this.hasNativePopoverSupport) {
-      //   this.popover.hidePopover();
-      // }
-      if (typeof this.cleanUpAutoUpdate === 'function') {
-        // ensures floating ui event listeners are removed when popover is closed
-        this.cleanUpAutoUpdate();
-        this.cleanUpAutoUpdate = undefined;
-      }
+      this.cleanUpAutoUpdate?.();
+      this.cleanUpAutoUpdate = undefined;
     }
   };
 
