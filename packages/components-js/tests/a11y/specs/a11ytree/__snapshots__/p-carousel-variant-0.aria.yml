@@ -1,0 +1,10 @@
+- heading "Heading" [level=2]
+- paragraph: Description
+- button "Go to last slide"
+- status
+- button "Next slide"
+- status
+- region "Heading":
+  - group "1 of 3": Slide 1
+  - group "2 of 3": Slide 2
+  - group "3 of 3": Slide 3
