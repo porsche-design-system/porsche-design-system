@@ -9,6 +9,10 @@ export default defineConfig({
       use: {
         ...devices['Desktop Chrome'],
         deviceScaleFactor: 1,
+        launchOptions: {
+          // force GPU hardware acceleration (even in headless mode)
+          args: ['--use-gl=egl', '--ignore-gpu-blocklist', '--use-gl=angle'],
+        }
       },
     },
     {
@@ -17,6 +21,7 @@ export default defineConfig({
         ...devices['Desktop Safari'],
         deviceScaleFactor: 1,
       },
+      workers: process.env.CI ? 1 : undefined,
     },
   ],
   webServer: {
