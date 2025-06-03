@@ -67,6 +67,7 @@ const generateDSRComponents = (): void => {
         .replace(/\s+onKeyDown={.*?}/g, '') // onKeyDown props
         .replace(/\s+onPaste={.*?}/g, '') // onPaste props
         .replace(/\s+onInput={.*?}/g, '') // onInput props
+        .replace(/\s+onWheel={.*?}/g, '') // onWheel props
         .replace(/\s+on(?:Tab)?Change={.*?}/g, '') // onChange and onTabChange props
         .replace(/\s+onUpdate={.*?}/g, '') // onUpdate props
         .replace(/ +ref: [\s\S]*?,\n/g, '') // ref props
@@ -226,7 +227,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             .replace(/minlength/, 'minLength')
             .replace(/readonly/, 'readOnly')
             .replace(/autocomplete/, 'autoComplete')
-            .replace(/\b(onInput|onChange|onBlur|refElement\s*,?)/g, '// $1')
+            .replace(/\b(onInput|onWheel|onChange|onBlur|refElement\s*,?)/g, '// $1')
             .replace(
               /}\) => \{/,
               `$&
