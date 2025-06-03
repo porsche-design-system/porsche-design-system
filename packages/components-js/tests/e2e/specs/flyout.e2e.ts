@@ -172,8 +172,7 @@ test('should not be visible when not open', async ({ page }) => {
 
 test('should be visible after opened', async ({ page }) => {
   await initBasicFlyout(page, { open: false });
-  const host = getHost(page);
-  await setProperty(host, 'open', true);
+  await openFlyout(page);
 
   await waitForFlyoutTransition();
 
@@ -602,8 +601,7 @@ test.describe('scroll lock', () => {
     await openFlyout(page);
     expect(await getBodyStyle(page)).toBe(bodyLockedStyle);
 
-    await setProperty(getHost(page), 'open', false);
-    await waitForStencilLifecycle(page);
+    await dismissFlyout(page);
     expect(await getBodyStyle(page)).toBe('');
   });
 
@@ -639,10 +637,8 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips after state change', async ({ page }) => {
     await initBasicFlyout(page);
-    const host = getHost(page);
 
-    await setProperty(host, 'open', false);
-    await waitForStencilLifecycle(page);
+    await dismissFlyout(page);
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidUpdate['p-flyout'], 'componentDidUpdate: p-flyout').toBe(1);
