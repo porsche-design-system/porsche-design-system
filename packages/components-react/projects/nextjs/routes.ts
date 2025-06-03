@@ -556,6 +556,10 @@ const generatedRoutes = {
     "path": "/popover-basic",
     "name": "PopoverBasic"
   },
+  "popoverBasicSlotted": {
+    "path": "/popover-basic-slotted",
+    "name": "PopoverBasicSlotted"
+  },
   "popoverBottom": {
     "path": "/popover-bottom",
     "name": "PopoverBottom"
