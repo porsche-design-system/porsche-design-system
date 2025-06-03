@@ -19,6 +19,7 @@ import {
   getPrefixedTagNames,
   hasPropValueChanged,
   validateProps,
+  isDisabledOrLoading,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-number-styles';
@@ -40,6 +41,7 @@ const propTypes: PropTypes<typeof InputNumber> = {
   step: AllowedTypes.number,
   controls: AllowedTypes.boolean,
   required: AllowedTypes.boolean,
+  loading: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
   max: AllowedTypes.number,
   min: AllowedTypes.number,
@@ -112,6 +114,9 @@ export class InputNumber {
   /** Marks the number input as required. */
   @Prop() public required?: boolean = false;
 
+  /** Shows a loading indicator. */
+  @Prop() public loading?: boolean = false;
+
   /** The validation state. */
   @Prop() public state?: InputNumberState = 'none';
 
@@ -138,6 +143,7 @@ export class InputNumber {
 
   @AttachInternals() private internals: ElementInternals;
 
+  private initialLoading: boolean = false;
   private inputElement: HTMLInputElement;
   private defaultValue: string;
 
@@ -148,6 +154,13 @@ export class InputNumber {
 
   public componentWillLoad(): void {
     this.defaultValue = this.value;
+    this.initialLoading = this.loading;
+  }
+
+  public componentWillUpdate(): void {
+    if (this.loading) {
+      this.initialLoading = true;
+    }
   }
 
   public formResetCallback(): void {
@@ -175,13 +188,17 @@ export class InputNumber {
     this.internals?.setValidity(this.inputElement.validity, this.inputElement.validationMessage, this.inputElement);
   }
 
+  public connectedCallback(): void {
+    this.initialLoading = this.loading;
+  }
+
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.disabled,
+      isDisabledOrLoading(this.disabled, this.loading),
       this.hideLabel,
       this.state,
       this.compact,
@@ -218,6 +235,8 @@ export class InputNumber {
         message={this.message}
         theme={this.theme}
         step={this.step}
+        loading={this.loading}
+        initialLoading={this.initialLoading}
         {...(this.controls && {
           end: (
             <Fragment>

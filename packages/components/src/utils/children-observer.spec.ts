@@ -70,7 +70,7 @@ describe('observeChildren()', () => {
     it('should run callback once when multiple attributes are changed', async () => {
       const input = document.createElement('input');
       const cb = jest.fn();
-      const name = 'Some name';
+      const name = 'some-name';
 
       observeChildren(input, cb, ['disabled', 'checked', 'name']);
 

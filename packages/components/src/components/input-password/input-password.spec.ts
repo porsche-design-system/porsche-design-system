@@ -1,7 +1,4 @@
 import { expect } from '@jest/globals';
-import { getSlottedAnchorStyles } from '../../styles';
-import { getSlottedInputIndicatorStyles } from '../../styles/global/slotted-input-indicator-styles';
-import * as applyConstructableStylesheetStylesUtils from '../../utils/applyConstructableStylesheetStyle';
 import { InputPassword } from './input-password';
 
 jest.mock('../../utils/dom');
@@ -118,5 +115,43 @@ describe('componentDidRender', () => {
       component['inputElement'].validationMessage,
       component['inputElement']
     );
+  });
+});
+describe('connectedCallback', () => {
+  it('should assign this.initialLoading to value of this.loading', () => {
+    const component = initComponent();
+    component.loading = true;
+
+    expect(component['initialLoading']).toBe(false);
+    component.connectedCallback();
+    expect(component['initialLoading']).toBe(true);
+
+    component.loading = false;
+    component.connectedCallback();
+    expect(component['initialLoading']).toBe(false);
+  });
+});
+describe('componentWillUpdate', () => {
+  it('should assign this.initialLoading to true for this.loading = true', () => {
+    const component = initComponent();
+    component.loading = true;
+
+    expect(component['initialLoading']).toBe(false);
+    component.componentWillUpdate();
+    expect(component['initialLoading']).toBe(true);
+  });
+});
+describe('componentWillLoad', () => {
+  it('should assign this.initialLoading to value of this.loading', () => {
+    const component = initComponent();
+    component.loading = true;
+
+    expect(component['initialLoading']).toBe(false);
+    component.componentWillLoad();
+    expect(component['initialLoading']).toBe(true);
+
+    component.loading = false;
+    component.componentWillLoad();
+    expect(component['initialLoading']).toBe(false);
   });
 });

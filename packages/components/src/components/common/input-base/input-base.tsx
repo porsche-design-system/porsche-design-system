@@ -1,7 +1,7 @@
 import { type FunctionalComponent, type JSX, h } from '@stencil/core';
 import type { Theme } from '../../../types';
 import { Label } from '../label/label';
-import { descriptionId } from '../label/label-utils';
+import { descriptionId, labelId } from '../label/label-utils';
 import { StateMessage, messageId } from '../state-message/state-message';
 import type {
   InputBaseBlurEventDetail,
@@ -10,6 +10,8 @@ import type {
   InputBaseState,
   InputBaseWheelEventDetail,
 } from './input-base-utils';
+import { getPrefixedTagNames } from '../../../utils';
+import { loadingId, LoadingMessage } from '../loading-message/loading-message';
 
 // TODO refine in #3852
 type InputBaseProps = {
@@ -17,6 +19,8 @@ type InputBaseProps = {
   id: string;
   label?: string;
   description?: string;
+  loading?: boolean;
+  initialLoading?: boolean;
   required?: boolean;
   disabled?: boolean;
   state?: InputBaseState;
@@ -48,6 +52,8 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
   id,
   label,
   description,
+  loading,
+  initialLoading,
   required,
   disabled,
   state,
@@ -73,6 +79,8 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
   start,
   end,
 }) => {
+  const PrefixedTagNames = getPrefixedTagNames(host);
+
   return (
     <div class="root">
       <Label
@@ -81,14 +89,16 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
         description={description}
         htmlFor={id}
         isRequired={required}
+        isLoading={loading}
         isDisabled={disabled}
       />
       <div class="wrapper">
         <slot name="start" />
         {start}
         <input
-          aria-describedby={`${descriptionId} ${messageId}`}
+          aria-describedby={loading ? loadingId : `${labelId} ${descriptionId} ${messageId}`}
           aria-invalid={state === 'error' ? 'true' : null}
+          aria-disabled={loading || disabled ? 'true' : null}
           id={id}
           ref={refElement}
           onInput={onInput}
@@ -112,8 +122,10 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
         />
         {end}
         <slot name="end" />
+        {loading && <PrefixedTagNames.pSpinner class="icon" size="inherit" theme={theme} aria-hidden="true" />}
       </div>
       <StateMessage state={state} message={message} theme={theme} host={host} />
+      <LoadingMessage loading={loading} initialLoading={initialLoading} />
     </div>
   );
 };

@@ -26,6 +26,8 @@ import { InputPasswordExampleControlledComponent } from './input-password-exampl
 import { InputPasswordExampleComponent } from './input-password-example.component';
 import { InputNumberExampleControlledComponent } from './input-number-example-controlled.component';
 import { InputNumberExampleComponent } from './input-number-example.component';
+import { InputSearchExampleControlledComponent } from './input-search-example-controlled.component';
+import { InputSearchExampleComponent } from './input-search-example.component';
 import { LinkTileExampleHyphensComponent } from './link-tile-example-hyphens.component';
 import { LinkTileProductExampleComponent } from './link-tile-product-example.component';
 import { ModalExampleComponent } from './modal-example.component';
@@ -85,6 +87,8 @@ export const examples = [
   InputPasswordExampleComponent,
   InputNumberExampleControlledComponent,
   InputNumberExampleComponent,
+  InputSearchExampleControlledComponent,
+  InputSearchExampleComponent,
   LinkTileExampleHyphensComponent,
   LinkTileProductExampleComponent,
   ModalExampleComponent,
@@ -143,6 +147,8 @@ export * from './input-password-example.component';
 export * from './input-password-example-controlled.component';
 export * from './input-number-example.component';
 export * from './input-number-example-controlled.component';
+export * from './input-search-example.component';
+export * from './input-search-example-controlled.component';
 export * from './link-tile-example-hyphens.component';
 export * from './link-tile-product-example.component';
 export * from './modal-example.component';
