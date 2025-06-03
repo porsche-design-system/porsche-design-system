@@ -59,7 +59,7 @@ const initInputNumber = (page: Page, opts?: InitOptions): Promise<void> => {
 test.describe('value', () => {
   test('should have value as slotted content when set initially', async ({ page }) => {
     const testValue = '10';
-    await initInputNumber(page, { props: { name: 'Some name', value: testValue } });
+    await initInputNumber(page, { props: { name: 'some-name', value: testValue } });
     const host = getHost(page);
     const inputNumber = getInputNumber(page);
 
@@ -372,7 +372,7 @@ test.describe('form', () => {
 
 test.describe('focus state', () => {
   test('should focus input-number when label is clicked', async ({ page }) => {
-    await initInputNumber(page, { props: { name: 'Some name', label: 'Some label' } });
+    await initInputNumber(page, { props: { name: 'some-name', label: 'Some label' } });
     const label = getLabel(page);
     const inputNumber = getInputNumber(page);
 
@@ -446,7 +446,7 @@ test.describe('Event', () => {
     expect((await getEventSummary(host, 'input')).counter).toBe(1);
   });
   test('should trigger an input and change event when the controls are clicked', async ({ page }) => {
-    await initInputNumber(page, { props: { name: 'Some name', controls: true } });
+    await initInputNumber(page, { props: { name: 'some-name', controls: true } });
     const inputNumber = getInputNumber(page);
     const host = getHost(page);
     const inputNumberIncrement = getInputNumberIncrement(page);
@@ -477,7 +477,7 @@ test.describe('hover state', () => {
   const hoverBorderColor = 'rgb(1, 2, 5)';
 
   test('should show hover state on input-number when label is hovered', async ({ page }) => {
-    await initInputNumber(page, { props: { name: 'Some name', label: 'Some label' } });
+    await initInputNumber(page, { props: { name: 'some-name', label: 'Some label' } });
     await page.mouse.move(0, 300); // avoid potential hover initially
     const label = getLabel(page);
     const inputNumber = getInputNumber(page);
@@ -499,7 +499,7 @@ test.describe('hover state', () => {
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {
     await initInputNumber(page, {
-      props: { name: 'Some name', state: 'error', controls: true },
+      props: { name: 'some-name', state: 'error', controls: true },
       useSlottedLabel: true,
       useSlottedMessage: true,
       useSlottedDescription: true,
@@ -516,7 +516,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips after state change', async ({ page }) => {
     await initInputNumber(page, {
-      props: { name: 'Some name', state: 'error', controls: true },
+      props: { name: 'some-name', state: 'error', controls: true },
       useSlottedLabel: true,
       useSlottedMessage: true,
       useSlottedDescription: true,
@@ -533,7 +533,7 @@ test.describe('lifecycle', () => {
   });
 
   test('should work without unnecessary round trips after value change', async ({ page }) => {
-    await initInputNumber(page, { props: { name: 'Some name', state: 'error', controls: true } });
+    await initInputNumber(page, { props: { name: 'some-name', state: 'error', controls: true } });
     const host = getHost(page);
     const status = await getLifecycleStatus(page);
 
@@ -551,7 +551,7 @@ test.describe('lifecycle', () => {
 
 test.describe('Controls', () => {
   test('should increment value by step', async ({ page }) => {
-    await initInputNumber(page, { props: { name: 'Some name', label: 'Some label', controls: true, step: 5 } });
+    await initInputNumber(page, { props: { name: 'some-name', label: 'Some label', controls: true, step: 5 } });
     const host = getHost(page);
     const inputNumber = getInputNumber(page);
     const inputNumberIncrement = getInputNumberIncrement(page);
@@ -567,7 +567,7 @@ test.describe('Controls', () => {
   });
 
   test('should decrement value by step', async ({ page }) => {
-    await initInputNumber(page, { props: { name: 'Some name', label: 'Some label', controls: true, step: 5 } });
+    await initInputNumber(page, { props: { name: 'some-name', label: 'Some label', controls: true, step: 5 } });
     const host = getHost(page);
     const inputNumber = getInputNumber(page);
     const inputNumberDecrement = getInputNumberDecrement(page);
@@ -583,7 +583,7 @@ test.describe('Controls', () => {
   });
 
   test('should not decrement value below min', async ({ page }) => {
-    await initInputNumber(page, { props: { name: 'Some name', label: 'Some label', controls: true, step: 3, min: 2 } });
+    await initInputNumber(page, { props: { name: 'some-name', label: 'Some label', controls: true, step: 3, min: 2 } });
     const host = getHost(page);
     const inputNumber = getInputNumber(page);
     const inputNumberDecrement = getInputNumberDecrement(page);
@@ -612,7 +612,7 @@ test.describe('Controls', () => {
   });
 
   test('should not increment value above max', async ({ page }) => {
-    await initInputNumber(page, { props: { name: 'Some name', label: 'Some label', controls: true, step: 3, max: 8 } });
+    await initInputNumber(page, { props: { name: 'some-name', label: 'Some label', controls: true, step: 3, max: 8 } });
     const host = getHost(page);
     const inputNumber = getInputNumber(page);
     const inputNumberIncrement = getInputNumberIncrement(page);

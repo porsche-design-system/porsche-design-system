@@ -88,9 +88,9 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-inline-notification': `<p-inline-notification heading="Some banner title" action-label="Retry">
     Some banner description.
   </p-inline-notification>`,
-  'p-input-number': `<p-input-number name="Some Name" label="Some label"></p-input-number>`,
-  'p-input-password': `<p-input-password name="Some Name" label="Some label"></p-input-password>`,
-  'p-input-search': `<p-input-search name="Some Name" label="Some label"></p-input-search>`,
+  'p-input-number': `<p-input-number name="some-name" label="Some label"></p-input-number>`,
+  'p-input-password': `<p-input-password name="some-name" label="Some label"></p-input-password>`,
+  'p-input-search': `<p-input-search name="some-name" label="Some label"></p-input-search>`,
   'p-link': `<p-link href="#">Some label</p-link>`,
   'p-link-pure': `<p-link-pure href="#">Some label</p-link-pure>`,
   'p-link-social': `<p-link-social href="#" icon="logo-facebook">Some label</p-link-social>`,
@@ -183,7 +183,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-text-list': `<p-text-list>
     <p-text-list-item>Some text</p-text-list-item>
   </p-text-list>`,
-  'p-textarea': `<p-textarea name="Some Name" label="Some label"></p-textarea>`,
+  'p-textarea': `<p-textarea name="some-name" label="Some label"></p-textarea>`,
   'p-textarea-wrapper': `<p-textarea-wrapper label="Some label">
     <textarea />
   </p-textarea-wrapper>`,
