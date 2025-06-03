@@ -1,0 +1,50 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { PIcon, PLink, PLinkPure } from '@porsche-design-system/components-react/ssr';
+import Link from 'next/link';
+
+export const metadata = {
+  title: 'Patterns: Header - Porsche Design System',
+  description: 'Learn how to design user-centric header for Porsche web applications.',
+};
+
+# Header
+
+<TableOfContents headings={['Variant 1', 'Variant 2']} />
+
+The header serves as the primary navigation and identification element at the top of each page. It provides users with
+consistent access to key functionalities, site-wide navigation, and brand recognition. This section outlines the
+structure, variations, and usage guidelines for the header component, ensuring a unified and intuitive experience across
+all digital touchpoints. Understanding and implementing the header correctly is crucial for establishing a clear and
+efficient user journey.
+
+## Variant 1
+
+<div className="flex flex-wrap gap-static-md">
+  <PLinkPure icon="external">
+    <Link href="https://github.com/porsche-design-system/patterns/tree/main/src/header/1">Source Code</Link>
+  </PLinkPure>
+  <PLinkPure icon="external">
+    <Link href="https://porsche-design-system.github.io/patterns/header/1">View Pattern</Link>
+  </PLinkPure>
+</div>
+
+<iframe
+  className="my-fluid-md w-full aspect-3/2 rounded-lg shadow-high"
+  src="https://porsche-design-system.github.io/patterns/header/1"
+/>
+
+## Variant 2
+
+<div className="flex flex-wrap gap-static-md">
+  <PLinkPure icon="external">
+    <Link href="https://github.com/porsche-design-system/patterns/tree/main/src/header/2">Source Code</Link>
+  </PLinkPure>
+  <PLinkPure icon="external">
+    <Link href="https://porsche-design-system.github.io/patterns/header/2">View Pattern</Link>
+  </PLinkPure>
+</div>
+
+<iframe
+  className="my-fluid-md w-full aspect-3/2  rounded-lg shadow-high"
+  src="https://porsche-design-system.github.io/patterns/header/2"
+/>

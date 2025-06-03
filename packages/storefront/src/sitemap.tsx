@@ -436,6 +436,11 @@ export const sitemap: Routes = {
     path: '/patterns',
     type: 'CATEGORY',
     subPaths: {
+      header: {
+        name: 'Header',
+        path: '/patterns/header',
+        type: 'PAGE',
+      },
       forms: {
         name: 'Forms',
         path: '/patterns/forms',
