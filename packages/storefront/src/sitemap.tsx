@@ -487,6 +487,18 @@ export const sitemap: Routes = {
       },
     },
   },
+  templates: {
+    name: 'Templates',
+    path: '/templates',
+    type: 'CATEGORY',
+    subPaths: {
+      'landing-page': {
+        name: 'Landing Page',
+        path: '/templates/landing-page',
+        type: 'PAGE',
+      },
+    },
+  },
   'ag-grid': {
     name: 'AG Grid',
     path: '/ag-grid',
