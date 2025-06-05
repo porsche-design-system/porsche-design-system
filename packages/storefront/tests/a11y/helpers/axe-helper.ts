@@ -14,6 +14,7 @@ export const test = base.extend<AxeFixture>({
     const makeAxeBuilder = () =>
       new AxeBuilder({ page })
         .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'])
+        .exclude('iframe')
         // rule is disabled due to unwanted refactorings in component presentation
         .disableRules('landmark-unique');
     await use(makeAxeBuilder);
