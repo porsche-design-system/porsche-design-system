@@ -435,6 +435,16 @@ export const sitemap: Routes = {
     path: '/patterns',
     type: 'CATEGORY',
     subPaths: {
+      header: {
+        name: 'Header',
+        path: '/patterns/header',
+        type: 'PAGE',
+      },
+      footer: {
+        name: 'Footer',
+        path: '/patterns/footer',
+        type: 'PAGE',
+      },
       forms: {
         name: 'Forms',
         path: '/patterns/forms',
@@ -473,6 +483,18 @@ export const sitemap: Routes = {
             type: 'PAGE',
           },
         },
+      },
+    },
+  },
+  templates: {
+    name: 'Templates',
+    path: '/templates',
+    type: 'CATEGORY',
+    subPaths: {
+      'landing-page': {
+        name: 'Landing Page',
+        path: '/templates/landing-page',
+        type: 'PAGE',
       },
     },
   },

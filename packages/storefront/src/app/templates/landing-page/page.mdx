@@ -1,0 +1,34 @@
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { PLinkPure } from '@porsche-design-system/components-react/ssr';
+import Link from 'next/link';
+
+export const metadata = {
+  title: 'Templates: Landing Page - Porsche Design System',
+  description: 'Learn how to design a user-centric landing page for Porsche web applications.',
+};
+
+# Landing Page
+
+<TableOfContents headings={[]} />
+
+The template is designed for campaigns that require a high-impact, conversion-focused experience. It's built to capture
+user attention and guide them toward a singular goal, whether that's signing up for a newsletter, exploring a new model,
+or registering for an event.
+
+## Variant 1
+
+<div className="flex flex-wrap gap-static-md mt-fluid-lg">
+  <PLinkPure icon="external">
+    {/* prettier-ignore */}
+    <Link href="https://github.com/porsche-design-system/examples/tree/main/src/templates/landing-page/1">Source Code</Link>
+  </PLinkPure>
+  <PLinkPure icon="external">
+    <Link href="https://porsche-design-system.github.io/examples/templates/landing-page/1">View Fullscreen</Link>
+  </PLinkPure>
+</div>
+
+<iframe
+  className="my-fluid-md w-full aspect-3/2 rounded-lg shadow-high"
+  title="Template: Landing Page - Variant 1"
+  src="https://porsche-design-system.github.io/examples/templates/landing-page/1"
+/>
