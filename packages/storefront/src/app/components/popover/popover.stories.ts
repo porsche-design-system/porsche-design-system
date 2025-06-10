@@ -78,7 +78,7 @@ export const popoverControlledAiTag: Story<'p-popover'> = {
         },
         {
           tag: 'div',
-          properties: { className: 'xs:max-w-[220px] flex flex-col gap-fluid-sm py-[8px]' },
+          properties: { className: 'xs:max-w-[220px] flex flex-col gap-fluid-sm py-static-sm' },
           children: [
             {
               tag: 'p-heading',
