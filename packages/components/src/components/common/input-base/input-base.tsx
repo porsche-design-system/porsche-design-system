@@ -1,7 +1,9 @@
 import { type FunctionalComponent, type JSX, h } from '@stencil/core';
 import type { Theme } from '../../../types';
+import { getPrefixedTagNames } from '../../../utils';
 import { Label } from '../label/label';
-import { descriptionId, labelId } from '../label/label-utils';
+import { descriptionId } from '../label/label-utils';
+import { LoadingMessage, loadingId } from '../loading-message/loading-message';
 import { StateMessage, messageId } from '../state-message/state-message';
 import type {
   InputBaseBlurEventDetail,
@@ -10,8 +12,6 @@ import type {
   InputBaseState,
   InputBaseWheelEventDetail,
 } from './input-base-utils';
-import { getPrefixedTagNames } from '../../../utils';
-import { loadingId, LoadingMessage } from '../loading-message/loading-message';
 
 // TODO refine in #3852
 type InputBaseProps = {
@@ -96,7 +96,7 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
         <slot name="start" />
         {start}
         <input
-          aria-describedby={loading ? loadingId : `${labelId} ${descriptionId} ${messageId}`}
+          aria-describedby={loading ? loadingId : `${descriptionId} ${messageId}`}
           aria-invalid={state === 'error' ? 'true' : null}
           aria-disabled={loading || disabled ? 'true' : null}
           id={id}
