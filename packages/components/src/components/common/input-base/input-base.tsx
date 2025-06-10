@@ -99,6 +99,7 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
           aria-describedby={loading ? loadingId : `${descriptionId} ${messageId}`}
           aria-invalid={state === 'error' ? 'true' : null}
           aria-disabled={loading || disabled ? 'true' : null}
+          aria-readonly={readOnly ? 'true' : null}
           id={id}
           ref={refElement}
           onInput={onInput}
