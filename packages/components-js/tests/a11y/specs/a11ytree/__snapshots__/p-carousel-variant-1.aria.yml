@@ -1,0 +1,15 @@
+- text: should render carousel with heading, description and slotted controls
+- heading "Heading" [level=2]
+- paragraph: Description
+- tablist:
+  - tab "Tab One" [selected]
+  - tab "Tab Two"
+  - tab "Tab Three"
+- button "Go to last slide"
+- status
+- button "Next slide"
+- status
+- region "Heading":
+  - group "1 of 3": Slide 1
+  - group "2 of 3": Slide 2
+  - group "3 of 3": Slide 3

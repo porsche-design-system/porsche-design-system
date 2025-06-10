@@ -1,0 +1,17 @@
+- banner:
+  - text: A B
+  - img "Porsche"
+  - text: C D
+- complementary "Navigation sidebar open":
+  - button "Close navigation sidebar" [expanded]
+  - status
+  - heading "Title" [level=2]:
+    - link "Title":
+      - /url: "#"
+  - text: Sidebar Start Sidebar Start
+- main: Content Content
+- complementary "Settings sidebar open":
+  - button "Close settings sidebar" [expanded]
+  - status
+  - text: Sidebar End Sidebar End
+- contentinfo: Footer

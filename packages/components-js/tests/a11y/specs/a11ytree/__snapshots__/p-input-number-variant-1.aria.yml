@@ -1,0 +1,7 @@
+- text: Required
+- spinbutton "Required"
+- button "Decrement value by 1"
+- status
+- button "Increment value by 1"
+- status
+- alert

@@ -3,6 +3,11 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   ...config,
+  expect: {
+    toMatchAriaSnapshot: {
+      pathTemplate: '{testDir}/a11ytree/__snapshots__/{arg}{ext}',
+    },
+  },
   projects: [
     {
       name: 'chrome',

@@ -1,0 +1,3 @@
+- dialog:
+  - button "Dismiss drilldown"
+  - status
