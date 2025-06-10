@@ -16209,6 +16209,7 @@ exports[`should render dsr component for PPopover 1`] = `
     position: absolute;
     pointer-events: none;
     filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
+    backdrop-filter: drop-shadow(0 0 transparent);
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
   }
   [popover]:not(:popover-open) {
