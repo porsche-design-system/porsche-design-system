@@ -6,9 +6,9 @@ import {
   type EventEmitter,
   type JSX,
   Prop,
+  State,
   Watch,
   h,
-  State,
 } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
@@ -18,10 +18,11 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
-  validateProps,
   isDisabledOrLoading,
+  validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
+import type { HTMLInputElementEventTarget } from '../pin-code/pin-code-utils';
 import { getComponentCss } from './input-search-styles';
 import {
   INPUT_SEARCH_AUTO_COMPLETE,
@@ -31,7 +32,6 @@ import {
   type InputSearchInputEventDetail,
   type InputSearchState,
 } from './input-search-utils';
-import type { HTMLInputElementEventTarget } from '../pin-code/pin-code-utils';
 
 const propTypes: PropTypes<typeof InputSearch> = {
   label: AllowedTypes.string,
@@ -58,8 +58,8 @@ const propTypes: PropTypes<typeof InputSearch> = {
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed."}
- * @slot {"name": "start", "description": "Shows content at the start of the input (e.g. unit prefix)."}
- * @slot {"name": "end", "description": "Shows content at the end of the input (e.g. toggle button, unit suffix)."}
+ * @slot {"name": "start", "description": "Shows content at the start of the input (e.g. icon)."}
+ * @slot {"name": "end", "description": "Shows content at the end of the input (e.g. search button)."}
  */
 @Component({
   tag: 'p-input-search',
