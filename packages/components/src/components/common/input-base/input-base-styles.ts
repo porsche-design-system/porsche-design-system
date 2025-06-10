@@ -22,8 +22,8 @@ import { formElementPaddingHorizontal, formElementPaddingVertical } from '../../
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../label/label-styles';
-import { getFunctionalComponentStateMessageStyles } from '../state-message/state-message-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../loading-message/loading-message-styles';
+import { getFunctionalComponentStateMessageStyles } from '../state-message/state-message-styles';
 
 export const cssVarInternalInputBaseScaling = '--p-internal-input-base-scaling';
 // Determines the scaling factor for the input-number size. In "compact" mode, it uses 0.5 to achieve a 36px input-number (compact size).
@@ -130,15 +130,14 @@ export const getFunctionalComponentInputBaseStyles = (
       ...prefersColorSchemeDarkMediaQuery(theme, {
         borderColor: formStateColorDark || contrastMediumColorDark,
       }),
-      ...(!readOnly &&
-        !isDisabledOrLoading && {
-          '&:has(input:focus)': {
-            borderColor: primaryColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: primaryColorDark,
-            }),
-          },
-        }),
+      ...(!isDisabledOrLoading && {
+        '&:has(input:focus)': {
+          borderColor: primaryColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: primaryColorDark,
+          }),
+        },
+      }),
       ...(!isDisabledOrLoading &&
         !readOnly &&
         hoverMediaQuery({
