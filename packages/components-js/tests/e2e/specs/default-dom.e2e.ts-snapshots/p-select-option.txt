@@ -1,9 +1,4 @@
-<div
-  role="option"
-  class="option option--selected"
-  aria-selected="true"
-  aria-label="Empty value"
->
+<div class="option option--selected">
   <slot> </slot>
   <p-icon class="icon hydrated" aria-hidden="true"> </p-icon>
 </div>

@@ -37,16 +37,19 @@ export class MultiSelectOption {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const { theme = 'light', selected: isSelected, highlighted } = this.host;
+    const { theme = 'light', selected: isSelected, highlighted, hidden } = this.host;
     const isDisabled = this.disabled || this.host.disabledParent;
 
     attachComponentCss(this.host, getComponentCss, theme, isDisabled, isSelected);
 
     return (
-      <Host onClick={!isDisabled && this.onClick}>
+      // TODO: get rid of ARIA sprouting and use `elementInternals` API when AXE-CORE supports it: https://github.com/dequelabs/axe-core/issues/4259
+      <Host
+        onClick={!isDisabled && this.onClick}
+        role="option"
+        {...getOptionAriaAttributes(isSelected, isDisabled, hidden, !!this.value)}
+      >
         <div
-          role="option"
-          {...getOptionAriaAttributes(isSelected, isDisabled, false, !!this.value)}
           class={{
             option: true,
             'option--selected': isSelected,
