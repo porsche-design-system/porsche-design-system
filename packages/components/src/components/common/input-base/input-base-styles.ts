@@ -40,7 +40,8 @@ export const cssVarButtonPurePadding = '--ref-p-input-slotted-padding';
 export const cssVarButtonPureMargin = '--ref-p-input-slotted-margin';
 
 export const getFunctionalComponentInputBaseStyles = (
-  isDisabledOrLoading: boolean,
+  disabled: boolean,
+  loading: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   compact: boolean,
@@ -48,6 +49,7 @@ export const getFunctionalComponentInputBaseStyles = (
   theme: Theme,
   additionalInputJssStyle?: JssStyle
 ): Styles => {
+  const isDisabledOrLoading = disabled || loading;
   const scalingVar = getScalingVar(compact);
 
   const paddingBlock = `max(2px, ${formElementPaddingVertical} * ${scalingVar})`;
@@ -160,10 +162,9 @@ export const getFunctionalComponentInputBaseStyles = (
         }),
       }),
     },
-    ...(isDisabledOrLoading && {
-      icon: {
+    ...(loading && {
+      spinner: {
         font: textSmallStyle.font,
-        width: fontLineHeight,
         height: fontLineHeight,
       },
     }),

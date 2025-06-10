@@ -18,7 +18,6 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
-  isDisabledOrLoading,
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
@@ -201,7 +200,8 @@ export class InputSearch {
     attachComponentCss(
       this.host,
       getComponentCss,
-      isDisabledOrLoading(this.disabled, this.loading),
+      this.disabled,
+      this.loading,
       this.hideLabel,
       this.state,
       this.compact,
@@ -237,15 +237,7 @@ export class InputSearch {
         loading={this.loading}
         initialLoading={this.initialLoading}
         {...(this.indicator && {
-          start: (
-            <PrefixedTagNames.pIcon
-              class="icon"
-              aria-hidden="true"
-              name="search"
-              color="state-disabled"
-              theme={this.theme}
-            />
-          ),
+          start: <PrefixedTagNames.pIcon aria-hidden="true" name="search" color="state-disabled" theme={this.theme} />,
         })}
         {...(this.clear && {
           end: (

@@ -19,7 +19,6 @@ import {
   getPrefixedTagNames,
   hasPropValueChanged,
   validateProps,
-  isDisabledOrLoading,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-number-styles';
@@ -198,7 +197,8 @@ export class InputNumber {
     attachComponentCss(
       this.host,
       getComponentCss,
-      isDisabledOrLoading(this.disabled, this.loading),
+      this.disabled,
+      this.loading,
       this.hideLabel,
       this.state,
       this.compact,

@@ -16,7 +16,8 @@ import {
  */
 
 export const getComponentCss = (
-  isDisabledOrLoading: boolean,
+  disabled: boolean,
+  loading: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   compact: boolean,
@@ -25,7 +26,7 @@ export const getComponentCss = (
   clear: boolean
 ): string => {
   return getCss({
-    ...getFunctionalComponentInputBaseStyles(isDisabledOrLoading, hideLabel, state, compact, readOnly, theme, {
+    ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, theme, {
       textOverflow: 'ellipsis',
       '&[type="search"]::-webkit-search-cancel-button': {
         display: 'none',
