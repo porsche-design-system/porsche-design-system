@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { type TextareaInputEventDetail } from '@porsche-design-system/components-angular';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+import { CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, Component } from '@angular/core';
+import { InputSearchInputEventDetail, PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-input-search-example-controlled',
@@ -19,7 +18,7 @@ export class InputSearchExampleControlledComponent {
     return `Value: ${this.value}`;
   }
 
-  onInput(e: CustomEvent<TextareaInputEventDetail>) {
-    this.value = (e.detail.target as HTMLTextAreaElement).value;
+  onInput(e: CustomEvent<InputSearchInputEventDetail>) {
+    this.value = (e.detail.target as HTMLInputElement).value;
   }
 }
