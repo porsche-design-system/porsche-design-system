@@ -56,7 +56,7 @@ const initInputSearch = (page: Page, opts?: InitOptions): Promise<void> => {
 };
 
 test.describe('value', () => {
-  test('should have value as slotted content when set initially', async ({ page }) => {
+  test('should have correct value when set initially', async ({ page }) => {
     const testValue = 'some value';
     await initInputSearch(page, { props: { name: 'Some name', value: testValue } });
     const host = getHost(page);
@@ -67,7 +67,7 @@ test.describe('value', () => {
     await expect(inputSearch).toHaveValue(testValue);
   });
 
-  test('should sync value with slotted content when typing', async ({ page }) => {
+  test('should sync value when typing', async ({ page }) => {
     await initInputSearch(page);
     const host = getHost(page);
     const inputSearch = getInputSearch(page);
@@ -83,7 +83,7 @@ test.describe('value', () => {
     await expect(inputSearch).toHaveJSProperty('value', testInput);
   });
 
-  test('should sync slotted content with value when changed programmatically', async ({ page }) => {
+  test('should sync value when changed programmatically', async ({ page }) => {
     await initInputSearch(page);
     const host = getHost(page);
     const inputSearch = getInputSearch(page);
@@ -158,7 +158,7 @@ test.describe('form', () => {
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
   });
 
-  test('should submit form after dynamically setting `required` to false on an initially required, empty textarea', async ({
+  test('should submit form after dynamically setting `required` to false on an initially required, empty input-search', async ({
     page,
   }) => {
     const name = 'name';
@@ -340,6 +340,51 @@ test.describe('form', () => {
   });
 });
 
+test.describe('clear button', () => {
+  test('should not show clear button initially when no value is set', async ({ page }) => {
+    await initInputSearch(page, { props: { name: 'Some name', label: 'Some label', clear: true } });
+    const clearButton = getInputSearchClearButton(page);
+    await expect(clearButton).toBeHidden();
+  });
+
+  test('should show clear button after input', async ({ page }) => {
+    await initInputSearch(page, { props: { name: 'Some name', label: 'Some label', clear: true } });
+    const inputSearch = getInputSearch(page);
+    await expect(getInputSearchClearButton(page)).toBeHidden();
+
+    await inputSearch.fill('test');
+
+    await expect(getInputSearchClearButton(page)).toBeVisible();
+  });
+
+  test('should show clear button after programmatic value change', async ({ page }) => {
+    await initInputSearch(page, { props: { name: 'Some name', label: 'Some label', clear: true } });
+    const host = getHost(page);
+    await expect(getInputSearchClearButton(page)).toBeHidden();
+
+    await setProperty(host, 'value', 'test');
+
+    await expect(getInputSearchClearButton(page)).toBeVisible();
+  });
+
+  test('should clear value after clear button is clicked', async ({ page }) => {
+    await initInputSearch(page, { props: { name: 'Some name', label: 'Some label', clear: true, value: 'test' } });
+    const host = getHost(page);
+    const inputSearch = getInputSearch(page);
+    const clearButton = getInputSearchClearButton(page);
+
+    await expect(getInputSearchClearButton(page)).toBeVisible();
+    await expect(host).toHaveJSProperty('value', 'test');
+    await expect(inputSearch).toHaveValue('test');
+
+    await clearButton.click();
+
+    await expect(host).toHaveJSProperty('value', '');
+    await expect(inputSearch).toHaveValue('');
+    await expect(getInputSearchClearButton(page)).toBeHidden();
+  });
+});
+
 test.describe('focus state', () => {
   test('should focus input-search when label is clicked', async ({ page }) => {
     await initInputSearch(page, { props: { name: 'Some name', label: 'Some label' } });
@@ -368,6 +413,19 @@ test.describe('focus state', () => {
     await waitForStencilLifecycle(page);
     expect((await getEventSummary(inputSearch, 'focus')).counter).toBe(1);
     await expect(inputSearchWrapper).toHaveCSS('border-color', 'rgb(1, 2, 5)');
+  });
+
+  test('should focus input-search when clear is clicked', async ({ page }) => {
+    await initInputSearch(page, { props: { name: 'Some name', label: 'Some label', clear: true, value: 'test' } });
+    const inputSearch = getInputSearch(page);
+    const clearButton = getInputSearchClearButton(page);
+
+    await addEventListener(inputSearch, 'focus');
+    expect((await getEventSummary(inputSearch, 'focus')).counter).toBe(0);
+
+    await clearButton.click();
+    await waitForStencilLifecycle(page);
+    expect((await getEventSummary(inputSearch, 'focus')).counter).toBe(1);
   });
 });
 
