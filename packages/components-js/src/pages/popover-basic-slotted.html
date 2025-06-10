@@ -8,16 +8,18 @@
 </style>
 
 <p-popover description="Some description">
-  <p-button-pure slot="button" hide-label="true" aria="{'aria-expanded': 'true'}" icon="information">More information</p-button-pure>
+  <p-button-pure slot="button" hide-label="true" aria="{'aria-expanded': 'true'}" icon="information"
+    >More information</p-button-pure
+  >
 </p-popover>
 
 <script>
   porscheDesignSystem.componentsReady().then(() => {
-    const pButton = document.querySelector("p-button-pure");
-    const pPopover = document.querySelector("p-popover");
+    const pButton = document.querySelector('p-button-pure');
+    const pPopover = document.querySelector('p-popover');
     pButton.addEventListener('click', () => {
       pPopover.open = !pPopover.open;
-      pButton.aria =  {'aria-expanded' : pPopover.open}
+      pButton.aria = { 'aria-expanded': pPopover.open };
     });
     document.querySelector('p-popover').querySelector('p-button-pure').click();
   });

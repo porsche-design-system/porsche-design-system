@@ -11,7 +11,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Added
 
-- Icons `ai` and `ai-filled` ([#3861](https://github.com/porsche-design-system/porsche-design-system/pull/3861))
+- Icons `ai-spark` and `ai-spark-filled`
+  ([#3861](https://github.com/porsche-design-system/porsche-design-system/pull/3861))
 - Fonts for Middle East languages: Arabic, Pashto and Urdu
   ([#2946](https://github.com/porsche-design-system/porsche-design-system/pull/2946))
 
