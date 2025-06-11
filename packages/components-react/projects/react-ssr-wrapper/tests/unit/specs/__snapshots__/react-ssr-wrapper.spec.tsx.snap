@@ -13263,6 +13263,7 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
           autocomplete=""
           id="input-number"
           placeholder=""
+          readonly=""
           step="1"
           type="number"
           value=""
@@ -13413,6 +13414,7 @@ input[type="text"] {
           autocomplete=""
           id="input-password"
           placeholder=""
+          readonly=""
           type="password"
           value=""
         />
@@ -13609,6 +13611,7 @@ img {
           autocomplete=""
           id="input-search"
           placeholder=""
+          readonly=""
           type="search"
           value=""
         />
