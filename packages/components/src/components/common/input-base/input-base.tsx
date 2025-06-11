@@ -98,7 +98,7 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
         <input
           aria-describedby={loading ? loadingId : `${descriptionId} ${messageId}`}
           aria-invalid={state === 'error' ? 'true' : null}
-          aria-disabled={loading || disabled ? 'true' : null}
+          aria-disabled={disabled || loading ? 'true' : null}
           aria-readonly={readOnly ? 'true' : null}
           id={id}
           ref={refElement}
@@ -119,7 +119,7 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
           value={value}
           readonly={readOnly}
           autocomplete={autoComplete}
-          disabled={disabled}
+          disabled={disabled || loading}
         />
         {end}
         <slot name="end" />

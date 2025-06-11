@@ -1088,7 +1088,7 @@ export namespace Components {
          */
         "label"?: string;
         /**
-          * Shows a loading indicator.
+          * @experimental Shows a loading indicator.
          */
         "loading"?: boolean;
         /**
@@ -1166,7 +1166,7 @@ export namespace Components {
          */
         "label"?: string;
         /**
-          * Shows a loading indicator.
+          * @experimental Shows a loading indicator.
          */
         "loading"?: boolean;
         /**
@@ -1252,7 +1252,7 @@ export namespace Components {
          */
         "label"?: string;
         /**
-          * Shows a loading indicator.
+          * @experimental Shows a loading indicator.
          */
         "loading"?: boolean;
         /**
@@ -4724,7 +4724,7 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * Shows a loading indicator.
+          * @experimental Shows a loading indicator.
          */
         "loading"?: boolean;
         /**
@@ -4814,7 +4814,7 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * Shows a loading indicator.
+          * @experimental Shows a loading indicator.
          */
         "loading"?: boolean;
         /**
@@ -4912,7 +4912,7 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * Shows a loading indicator.
+          * @experimental Shows a loading indicator.
          */
         "loading"?: boolean;
         /**

@@ -177,12 +177,6 @@ export class InputSearch {
 
   public componentDidLoad(): void {
     this.internals?.setFormValue(this.value);
-
-    this.inputElement.addEventListener('beforeinput', (event: InputEvent & HTMLInputElementEventTarget) => {
-      if (this.loading) {
-        event.preventDefault();
-      }
-    });
   }
 
   public componentDidRender(): void {

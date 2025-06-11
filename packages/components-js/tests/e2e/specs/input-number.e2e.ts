@@ -370,6 +370,27 @@ test.describe('form', () => {
   });
 });
 
+test.describe('loading', () => {
+  test('should be disabled when in loading state', async ({ page }) => {
+    await initInputNumber(page, { props: { name: 'Some name', label: 'Some label', loading: true } });
+    const inputNumber = getInputNumber(page);
+
+    await expect(inputNumber).toBeDisabled();
+  });
+
+  test('should be disabled when switching to loading state', async ({ page }) => {
+    await initInputNumber(page, { props: { name: 'Some name', label: 'Some label' } });
+    const host = getHost(page);
+    const inputNumber = getInputNumber(page);
+
+    await expect(inputNumber).toBeEnabled();
+
+    await setProperty(host, 'loading', true);
+
+    await expect(inputNumber).toBeDisabled();
+  });
+});
+
 test.describe('focus state', () => {
   test('should focus input-number when label is clicked', async ({ page }) => {
     await initInputNumber(page, { props: { name: 'some-name', label: 'Some label' } });
@@ -398,6 +419,25 @@ test.describe('focus state', () => {
     await waitForStencilLifecycle(page);
     expect((await getEventSummary(inputNumber, 'focus')).counter).toBe(1);
     await expect(inputNumberWrapper).toHaveCSS('border-color', 'rgb(1, 2, 5)');
+  });
+
+  test('should keep focus when switching to loading state', async ({ page }) => {
+    await initInputNumber(page, { props: { name: 'Some name', label: 'Some label' } });
+    const host = getHost(page);
+    const inputNumber = getInputNumber(page);
+
+    await expect(host).not.toBeFocused();
+    await expect(inputNumber).not.toBeFocused();
+
+    await page.keyboard.press('Tab');
+
+    await expect(host).toBeFocused();
+    await expect(inputNumber).toBeFocused();
+
+    await setProperty(host, 'loading', true);
+
+    await expect(host).toBeFocused();
+    await expect(inputNumber).toBeFocused();
   });
 });
 

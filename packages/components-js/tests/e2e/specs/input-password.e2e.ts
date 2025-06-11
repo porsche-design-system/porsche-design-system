@@ -309,6 +309,27 @@ test.describe('form', () => {
   });
 });
 
+test.describe('loading', () => {
+  test('should be disabled when in loading state', async ({ page }) => {
+    await initInputPassword(page, { props: { name: 'Some name', label: 'Some label', loading: true } });
+    const inputPassword = getInputPassword(page);
+
+    await expect(inputPassword).toBeDisabled();
+  });
+
+  test('should be disabled when switching to loading state', async ({ page }) => {
+    await initInputPassword(page, { props: { name: 'Some name', label: 'Some label' } });
+    const host = getHost(page);
+    const inputPassword = getInputPassword(page);
+
+    await expect(inputPassword).toBeEnabled();
+
+    await setProperty(host, 'loading', true);
+
+    await expect(inputPassword).toBeDisabled();
+  });
+});
+
 test.describe('focus state', () => {
   test('should focus input-password when label is clicked', async ({ page }) => {
     await initInputPassword(page, { props: { name: 'some-name', label: 'Some label' } });
@@ -337,6 +358,25 @@ test.describe('focus state', () => {
     await waitForStencilLifecycle(page);
     expect((await getEventSummary(inputPassword, 'focus')).counter).toBe(1);
     await expect(inputPasswordWrapper).toHaveCSS('border-color', 'rgb(1, 2, 5)');
+  });
+
+  test('should keep focus when switching to loading state', async ({ page }) => {
+    await initInputPassword(page, { props: { name: 'Some name', label: 'Some label' } });
+    const host = getHost(page);
+    const inputPassword = getInputPassword(page);
+
+    await expect(host).not.toBeFocused();
+    await expect(inputPassword).not.toBeFocused();
+
+    await page.keyboard.press('Tab');
+
+    await expect(host).toBeFocused();
+    await expect(inputPassword).toBeFocused();
+
+    await setProperty(host, 'loading', true);
+
+    await expect(host).toBeFocused();
+    await expect(inputPassword).toBeFocused();
   });
 });
 

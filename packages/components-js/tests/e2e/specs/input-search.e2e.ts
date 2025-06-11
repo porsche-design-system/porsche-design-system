@@ -385,6 +385,27 @@ test.describe('clear button', () => {
   });
 });
 
+test.describe('loading', () => {
+  test('should be disabled when in loading state', async ({ page }) => {
+    await initInputSearch(page, { props: { name: 'Some name', label: 'Some label', loading: true } });
+    const inputSearch = getInputSearch(page);
+
+    await expect(inputSearch).toBeDisabled();
+  });
+
+  test('should be disabled when switching to loading state', async ({ page }) => {
+    await initInputSearch(page, { props: { name: 'Some name', label: 'Some label' } });
+    const host = getHost(page);
+    const inputSearch = getInputSearch(page);
+
+    await expect(inputSearch).toBeEnabled();
+
+    await setProperty(host, 'loading', true);
+
+    await expect(inputSearch).toBeDisabled();
+  });
+});
+
 test.describe('focus state', () => {
   test('should focus input-search when label is clicked', async ({ page }) => {
     await initInputSearch(page, { props: { name: 'Some name', label: 'Some label' } });
@@ -426,6 +447,25 @@ test.describe('focus state', () => {
     await clearButton.click();
     await waitForStencilLifecycle(page);
     expect((await getEventSummary(inputSearch, 'focus')).counter).toBe(1);
+  });
+
+  test('should keep focus when switching to loading state', async ({ page }) => {
+    await initInputSearch(page, { props: { name: 'Some name', label: 'Some label' } });
+    const host = getHost(page);
+    const inputSearch = getInputSearch(page);
+
+    await expect(host).not.toBeFocused();
+    await expect(inputSearch).not.toBeFocused();
+
+    await page.keyboard.press('Tab');
+
+    await expect(host).toBeFocused();
+    await expect(inputSearch).toBeFocused();
+
+    await setProperty(host, 'loading', true);
+
+    await expect(host).toBeFocused();
+    await expect(inputSearch).toBeFocused();
   });
 });
 
