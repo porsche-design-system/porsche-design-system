@@ -155,8 +155,7 @@ export class InputPassword {
   }
 
   public formResetCallback(): void {
-    this.internals?.setFormValue(this.defaultValue);
-    this.value = this.defaultValue;
+    this.value = this.defaultValue; // triggers @Watch('value')
   }
 
   public formDisabledCallback(disabled: boolean): void {

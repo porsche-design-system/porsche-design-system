@@ -160,8 +160,7 @@ export class InputSearch {
   }
 
   public formResetCallback(): void {
-    this.internals?.setFormValue(this.defaultValue);
-    this.value = this.defaultValue;
+    this.value = this.defaultValue; // triggers @Watch('value')
   }
 
   public formDisabledCallback(disabled: boolean): void {
@@ -280,8 +279,7 @@ export class InputSearch {
     this.input.emit(e);
   };
   private onClear = (): void => {
-    this.value = '';
-    this.internals?.setFormValue('');
+    this.value = ''; // triggers @Watch('value')
     this.input.emit(new window.InputEvent('input', { bubbles: true, composed: true }));
     this.change.emit(new window.Event('change', { bubbles: true, composed: true }));
     this.inputElement.focus();
