@@ -149,6 +149,10 @@ export class InputPassword {
     this.internals?.setFormValue(newValue);
   }
 
+  public connectedCallback(): void {
+    this.initialLoading = this.loading;
+  }
+
   public componentWillLoad(): void {
     this.defaultValue = this.value;
     this.initialLoading = this.loading;
@@ -176,10 +180,6 @@ export class InputPassword {
 
   public componentDidRender(): void {
     this.internals?.setValidity(this.inputElement.validity, this.inputElement.validationMessage, this.inputElement);
-  }
-
-  public connectedCallback(): void {
-    this.initialLoading = this.loading;
   }
 
   public componentWillUpdate(): void {

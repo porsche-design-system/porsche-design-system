@@ -309,27 +309,6 @@ test.describe('form', () => {
   });
 });
 
-test.describe('loading', () => {
-  test('should be disabled when in loading state', async ({ page }) => {
-    await initInputPassword(page, { props: { name: 'Some name', label: 'Some label', loading: true } });
-    const inputPassword = getInputPassword(page);
-
-    await expect(inputPassword).toBeDisabled();
-  });
-
-  test('should be disabled when switching to loading state', async ({ page }) => {
-    await initInputPassword(page, { props: { name: 'Some name', label: 'Some label' } });
-    const host = getHost(page);
-    const inputPassword = getInputPassword(page);
-
-    await expect(inputPassword).toBeEnabled();
-
-    await setProperty(host, 'loading', true);
-
-    await expect(inputPassword).toBeDisabled();
-  });
-});
-
 test.describe('focus state', () => {
   test('should focus input-password when label is clicked', async ({ page }) => {
     await initInputPassword(page, { props: { name: 'some-name', label: 'Some label' } });

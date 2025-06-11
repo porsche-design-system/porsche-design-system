@@ -21,7 +21,6 @@ import {
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
-import type { HTMLInputElementEventTarget } from '../pin-code/pin-code-utils';
 import { getComponentCss } from './input-search-styles';
 import {
   INPUT_SEARCH_AUTO_COMPLETE,
@@ -147,6 +146,10 @@ export class InputSearch {
     this.isClearable = !!newValue;
   }
 
+  public connectedCallback(): void {
+    this.initialLoading = this.loading;
+  }
+
   public componentWillLoad(): void {
     this.defaultValue = this.value;
     this.isClearable = !!this.value;
@@ -181,10 +184,6 @@ export class InputSearch {
 
   public componentDidRender(): void {
     this.internals?.setValidity(this.inputElement.validity, this.inputElement.validationMessage, this.inputElement);
-  }
-
-  public connectedCallback(): void {
-    this.initialLoading = this.loading;
   }
 
   public render(): JSX.Element {
@@ -242,7 +241,7 @@ export class InputSearch {
               type="button"
               icon="close"
               hidden={!this.isClearable}
-              disabled={this.loading || this.readOnly || this.disabled}
+              disabled={this.readOnly || this.disabled}
               onClick={() => this.onClear()}
             >
               Clear field

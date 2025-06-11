@@ -119,7 +119,7 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
           value={value}
           readonly={readOnly}
           autocomplete={autoComplete}
-          disabled={disabled || loading}
+          disabled={disabled}
         />
         {end}
         <slot name="end" />

@@ -385,27 +385,6 @@ test.describe('clear button', () => {
   });
 });
 
-test.describe('loading', () => {
-  test('should be disabled when in loading state', async ({ page }) => {
-    await initInputSearch(page, { props: { name: 'Some name', label: 'Some label', loading: true } });
-    const inputSearch = getInputSearch(page);
-
-    await expect(inputSearch).toBeDisabled();
-  });
-
-  test('should be disabled when switching to loading state', async ({ page }) => {
-    await initInputSearch(page, { props: { name: 'Some name', label: 'Some label' } });
-    const host = getHost(page);
-    const inputSearch = getInputSearch(page);
-
-    await expect(inputSearch).toBeEnabled();
-
-    await setProperty(host, 'loading', true);
-
-    await expect(inputSearch).toBeDisabled();
-  });
-});
-
 test.describe('focus state', () => {
   test('should focus input-search when label is clicked', async ({ page }) => {
     await initInputSearch(page, { props: { name: 'Some name', label: 'Some label' } });

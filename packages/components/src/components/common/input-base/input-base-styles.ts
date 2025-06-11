@@ -49,7 +49,6 @@ export const getFunctionalComponentInputBaseStyles = (
   theme: Theme,
   additionalInputJssStyle?: JssStyle
 ): Styles => {
-  const isDisabledOrLoading = disabled || loading;
   const scalingVar = getScalingVar(compact);
 
   const paddingBlock = `max(2px, ${formElementPaddingVertical} * ${scalingVar})`;
@@ -106,7 +105,7 @@ export const getFunctionalComponentInputBaseStyles = (
         }),
         width: '100%',
         minWidth: '2rem',
-        ...(isDisabledOrLoading && {
+        ...(disabled && {
           color: disabledColor,
           WebkitTextFillColor: disabledColor,
           ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -132,7 +131,7 @@ export const getFunctionalComponentInputBaseStyles = (
       ...prefersColorSchemeDarkMediaQuery(theme, {
         borderColor: formStateColorDark || contrastMediumColorDark,
       }),
-      ...(!isDisabledOrLoading && {
+      ...(!disabled && {
         '&:has(input:focus)': {
           borderColor: primaryColor,
           ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -140,12 +139,12 @@ export const getFunctionalComponentInputBaseStyles = (
           }),
         },
       }),
-      ...(!isDisabledOrLoading &&
+      ...(!disabled &&
         !readOnly &&
         hoverMediaQuery({
           '&:hover:not(:has(.button:hover, input:focus ))': hoverStyles,
         })),
-      ...(isDisabledOrLoading && {
+      ...(disabled && {
         cursor: 'not-allowed',
         borderColor: disabledColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -170,10 +169,10 @@ export const getFunctionalComponentInputBaseStyles = (
     }),
     // .label / .required
     ...getFunctionalComponentLabelStyles(
-      isDisabledOrLoading,
+      disabled,
       hideLabel,
       theme,
-      !isDisabledOrLoading &&
+      !disabled &&
         !readOnly &&
         hoverMediaQuery({
           '&:hover~.wrapper': hoverStyles,
