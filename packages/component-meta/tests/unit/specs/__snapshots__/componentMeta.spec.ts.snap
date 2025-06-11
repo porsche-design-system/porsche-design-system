@@ -4263,7 +4263,8 @@ exports[`should match snapshot 1`] = `
       "loading": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Shows a loading indicator.",
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
         "type": "boolean",
       },
       "max": {
@@ -4462,7 +4463,8 @@ exports[`should match snapshot 1`] = `
       "loading": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Shows a loading indicator.",
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
         "type": "boolean",
       },
       "maxLength": {
@@ -4672,7 +4674,8 @@ exports[`should match snapshot 1`] = `
       "loading": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Shows a loading indicator.",
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
         "type": "boolean",
       },
       "message": {
@@ -4744,7 +4747,7 @@ exports[`should match snapshot 1`] = `
         "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
       "end": {
-        "description": "Shows content at the end of the input (e.g. toggle button, unit suffix).",
+        "description": "Shows content at the end of the input (e.g. search button).",
       },
       "label": {
         "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
@@ -4753,7 +4756,7 @@ exports[`should match snapshot 1`] = `
         "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
       "start": {
-        "description": "Shows content at the start of the input (e.g. unit prefix).",
+        "description": "Shows content at the start of the input (e.g. icon).",
       },
     },
     "styling": "jss",
