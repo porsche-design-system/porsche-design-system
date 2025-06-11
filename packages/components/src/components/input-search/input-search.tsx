@@ -281,7 +281,6 @@ export class InputSearch {
   private onClear = (): void => {
     this.value = ''; // triggers @Watch('value')
     this.input.emit(new window.InputEvent('input', { bubbles: true, composed: true }));
-    this.change.emit(new window.Event('change', { bubbles: true, composed: true }));
     this.inputElement.focus();
   };
 }

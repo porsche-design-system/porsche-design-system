@@ -473,7 +473,7 @@ test.describe('Event', () => {
 
     expect((await getEventSummary(host, 'input')).counter).toBe(1);
   });
-  test('should trigger an input and change event when the clear button is clicked', async ({ page }) => {
+  test('should trigger an input event when the clear button is clicked', async ({ page }) => {
     await initInputSearch(page, { props: { name: 'Some name', clear: true, value: 'some-value' } });
     const inputSearch = getInputSearch(page);
     const host = getHost(page);
@@ -482,13 +482,12 @@ test.describe('Event', () => {
     await addEventListener(host, 'input');
     await addEventListener(host, 'change');
     expect((await getEventSummary(host, 'input')).counter).toBe(0);
-    expect((await getEventSummary(host, 'change')).counter).toBe(0);
 
     await inputSearchClearButton.click();
 
     await expect(inputSearch).toHaveValue('');
+    await expect(inputSearch).toBeFocused();
     expect((await getEventSummary(host, 'input')).counter).toBe(1);
-    expect((await getEventSummary(host, 'change')).counter).toBe(1);
   });
 });
 
