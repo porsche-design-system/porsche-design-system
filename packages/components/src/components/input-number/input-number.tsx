@@ -113,7 +113,7 @@ export class InputNumber {
   /** Marks the number input as required. */
   @Prop() public required?: boolean = false;
 
-  /** Shows a loading indicator. */
+  /** @experimental Shows a loading indicator. */
   @Prop() public loading?: boolean = false;
 
   /** The validation state. */
