@@ -164,6 +164,7 @@ export const getFunctionalComponentInputBaseStyles = (
     ...(loading && {
       spinner: {
         font: textSmallStyle.font,
+        width: fontLineHeight,
         height: fontLineHeight,
       },
     }),
