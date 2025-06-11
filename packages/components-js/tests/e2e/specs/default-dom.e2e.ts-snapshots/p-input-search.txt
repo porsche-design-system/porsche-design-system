@@ -4,7 +4,7 @@
     <slot name="start"> </slot>
     <p-icon class="icon hydrated" aria-hidden="true"> </p-icon>
     <input
-      aria-describedby="label description message"
+      aria-describedby="description message"
       id="input-search"
       name="value"
       type="search"
