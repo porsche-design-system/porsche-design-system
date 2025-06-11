@@ -225,7 +225,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             .replace(/onBlur=\{onBlur}/g, '')
             .replace(/maxlength/, 'maxLength')
             .replace(/minlength/, 'minLength')
-            .replace(/readonly/, 'readOnly')
+            .replace(/\sreadonly/, 'readOnly')
             .replace(/autocomplete/, 'autoComplete')
             .replace(/\b(onInput|onWheel|onChange|onBlur|refElement\s*,?)/g, '// $1')
             .replace(
