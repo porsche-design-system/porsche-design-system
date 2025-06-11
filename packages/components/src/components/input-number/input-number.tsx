@@ -167,7 +167,7 @@ export class InputNumber {
   }
 
   public formResetCallback(): void {
-    this.value = this.defaultValue; // triggers @Watch('value')
+    this.value = this.defaultValue; // triggers value watcher
   }
 
   public formDisabledCallback(disabled: boolean): void {
@@ -286,7 +286,7 @@ export class InputNumber {
     e.stopPropagation();
     e.stopImmediatePropagation();
     const target = e.target as HTMLInputElement;
-    this.value = target.value; // triggers @Watch('value')
+    this.value = target.value; // triggers value watcher
     this.input.emit(e);
   };
 

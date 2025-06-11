@@ -163,7 +163,7 @@ export class InputSearch {
   }
 
   public formResetCallback(): void {
-    this.value = this.defaultValue; // triggers @Watch('value')
+    this.value = this.defaultValue; // triggers value watcher
   }
 
   public formDisabledCallback(disabled: boolean): void {
