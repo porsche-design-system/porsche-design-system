@@ -13188,6 +13188,9 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
   border-color: #D8D8DB;
   background: #D8D8DB;
 }
+.wrapper:has(input:focus) {
+  border-color: #010205;
+}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -13255,11 +13258,11 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
           name="start"
         />
         <input
-          aria-describedby="label description message"
+          aria-describedby="description message"
+          aria-readonly="true"
           autocomplete=""
           id="input-number"
           placeholder=""
-          readonly=""
           step="1"
           type="number"
           value=""
@@ -13335,6 +13338,9 @@ input[type="text"] {
   border-color: #D8D8DB;
   background: #D8D8DB;
 }
+.wrapper:has(input:focus) {
+  border-color: #010205;
+}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -13402,11 +13408,11 @@ input[type="text"] {
           name="start"
         />
         <input
-          aria-describedby="label description message"
+          aria-describedby="description message"
+          aria-readonly="true"
           autocomplete=""
           id="input-password"
           placeholder=""
-          readonly=""
           type="password"
           value=""
         />
@@ -13482,6 +13488,9 @@ input[type="search"]::-webkit-search-cancel-button {
   border-color: #D8D8DB;
   background: #D8D8DB;
 }
+.wrapper:has(input:focus) {
+  border-color: #010205;
+}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -13550,7 +13559,6 @@ input[type="search"]::-webkit-search-cancel-button {
         />
         <p-icon
           aria-hidden="true"
-          class="icon"
           data-ssr=""
         >
           <template
@@ -13596,11 +13604,11 @@ img {
           </template>
         </p-icon>
         <input
-          aria-describedby="label description message"
+          aria-describedby="description message"
+          aria-readonly="true"
           autocomplete=""
           id="input-search"
           placeholder=""
-          readonly=""
           type="search"
           value=""
         />
