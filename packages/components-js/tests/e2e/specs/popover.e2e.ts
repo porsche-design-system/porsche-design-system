@@ -326,6 +326,36 @@ test.describe('keyboard behavior', () => {
     });
   });
 
+  test.describe('dismiss event', () => {
+    test('should not fire on a controlled component if closed with ESC key', async ({ page }) => {
+      await initPopover(page);
+      const host = getHost(page);
+
+      await addEventListener(host, 'dismiss');
+      expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+
+      await openPopover(page);
+      expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+
+      await page.keyboard.press('Escape');
+      expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+    });
+
+    test('should fire on a non controlled component if closed with ESC key', async ({ page }) => {
+      await initPopover(page, { withSlottedButton: true });
+      const host = getHost(page);
+
+      await addEventListener(host, 'dismiss');
+      expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+
+      await openPopover(page);
+      expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+
+      await page.keyboard.press('Escape');
+      expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
+    });
+  });
+
   test.describe('enter', () => {
     test('should open / close popover', async ({ page }) => {
       await initPopover(page);
