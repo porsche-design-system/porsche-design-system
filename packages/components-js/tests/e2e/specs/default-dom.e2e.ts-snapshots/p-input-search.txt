@@ -2,7 +2,7 @@
   <label class="label" id="label" for="input-search"> </label>
   <div class="wrapper">
     <slot name="start"> </slot>
-    <p-icon class="icon hydrated" aria-hidden="true"> </p-icon>
+    <p-icon aria-hidden="true" class="hydrated"> </p-icon>
     <input
       aria-describedby="description message"
       id="input-search"
