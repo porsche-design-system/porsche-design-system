@@ -89,6 +89,7 @@ export const getComponentCss = (theme: Theme): string => {
         position: 'absolute',
         pointerEvents: 'none',
         filter: `drop-shadow(0 0 16px ${shadowColor})`,
+        backdropFilter: 'drop-shadow(0 0 transparent)', // workaround for Firefox bug not rendering PDS frosted glass correctly when nested inside CSS filter: https://bugzilla.mozilla.org/show_bug.cgi?id=1797051
         animation: `var(${cssVariableAnimationDuration}, ${motionDurationShort}) fade-in ${motionEasingBase} forwards`,
         '&:not(:popover-open)': {
           display: 'none', // ensures popover is not flickering when closed in some situations
