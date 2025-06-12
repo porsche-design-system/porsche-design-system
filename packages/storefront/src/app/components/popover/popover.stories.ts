@@ -13,6 +13,11 @@ export const popoverStory: Story<'p-popover'> = {
 };
 
 export const popoverControlled: Story<'p-popover'> = {
+  state: {
+    properties: {
+      open: false,
+    } as any,
+  },
   generator: ({ properties } = {}) => [
     {
       tag: 'p-popover',
@@ -45,6 +50,11 @@ export const popoverControlled: Story<'p-popover'> = {
 };
 
 export const popoverControlledAiTag: Story<'p-popover'> = {
+  state: {
+    properties: {
+      open: false,
+    } as any,
+  },
   generator: ({ properties } = {}) => [
     {
       tag: 'p-popover',
