@@ -40,6 +40,7 @@ const propTypes: PropTypes<typeof InputNumber> = {
   step: AllowedTypes.number,
   controls: AllowedTypes.boolean,
   required: AllowedTypes.boolean,
+  loading: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
   max: AllowedTypes.number,
   min: AllowedTypes.number,
@@ -112,6 +113,9 @@ export class InputNumber {
   /** Marks the number input as required. */
   @Prop() public required?: boolean = false;
 
+  /** @experimental Shows a loading indicator. */
+  @Prop() public loading?: boolean = false;
+
   /** The validation state. */
   @Prop() public state?: InputNumberState = 'none';
 
@@ -138,6 +142,7 @@ export class InputNumber {
 
   @AttachInternals() private internals: ElementInternals;
 
+  private initialLoading: boolean = false;
   private inputElement: HTMLInputElement;
   private defaultValue: string;
 
@@ -146,13 +151,23 @@ export class InputNumber {
     this.internals?.setFormValue(newValue);
   }
 
+  public connectedCallback(): void {
+    this.initialLoading = this.loading;
+  }
+
   public componentWillLoad(): void {
     this.defaultValue = this.value;
+    this.initialLoading = this.loading;
+  }
+
+  public componentWillUpdate(): void {
+    if (this.loading) {
+      this.initialLoading = true;
+    }
   }
 
   public formResetCallback(): void {
-    this.internals?.setFormValue(this.defaultValue);
-    this.value = this.defaultValue;
+    this.value = this.defaultValue; // triggers value watcher
   }
 
   public formDisabledCallback(disabled: boolean): void {
@@ -182,6 +197,7 @@ export class InputNumber {
       this.host,
       getComponentCss,
       this.disabled,
+      this.loading,
       this.hideLabel,
       this.state,
       this.compact,
@@ -218,6 +234,8 @@ export class InputNumber {
         message={this.message}
         theme={this.theme}
         step={this.step}
+        loading={this.loading}
+        initialLoading={this.initialLoading}
         {...(this.controls && {
           end: (
             <Fragment>
@@ -268,7 +286,7 @@ export class InputNumber {
     e.stopPropagation();
     e.stopImmediatePropagation();
     const target = e.target as HTMLInputElement;
-    this.value = target.value; // triggers @Watch('value')
+    this.value = target.value; // triggers value watcher
     this.input.emit(e);
   };
 

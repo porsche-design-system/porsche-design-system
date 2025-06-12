@@ -19,22 +19,22 @@ test.describe('form', () => {
     const name = 'name';
     const newValue = '10';
     const host = getHost(page);
-    const inputPassword = getInputNumber(page);
+    const inputNumber = getInputNumber(page);
     const form = getForm(page);
 
     await addEventListener(form, 'submit');
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
 
-    await inputPassword.fill(newValue);
-    await inputPassword.press('Tab');
+    await inputNumber.fill(newValue);
+    await inputNumber.press('Tab');
 
     await expect(host).toHaveJSProperty('value', newValue);
-    await expect(inputPassword).toHaveValue(newValue);
+    await expect(inputNumber).toHaveValue(newValue);
 
     await page.locator('button[type="reset"]').click();
 
     await expect(host).toHaveJSProperty('value', '');
-    await expect(inputPassword).toHaveValue('');
+    await expect(inputNumber).toHaveValue('');
 
     await page.locator('button[type="submit"]').click(); // Check if ElementInternal value was reset as well
 
@@ -78,6 +78,4 @@ test.describe('form', () => {
 
     await expect(input).toHaveValue(value);
   });
-
-
 });

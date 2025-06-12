@@ -384,6 +384,10 @@ const generatedRoutes = {
     "path": "/input-password",
     "name": "InputPassword"
   },
+  "inputSearch": {
+    "path": "/input-search",
+    "name": "InputSearch"
+  },
   "link": {
     "path": "/link",
     "name": "Link"

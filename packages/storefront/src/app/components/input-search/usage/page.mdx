@@ -1,0 +1,41 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Input Search - Porsche Design System',
+  description:
+    'Learn how to properly use the Input Search component with best practices and guidelines for effective design and user experience.',
+};
+
+# Input Search <ComponentStatus tagName="p-input-search"></ComponentStatus>
+
+<TableOfContents headings={['Usage','Related Components']} />
+
+## Usage
+
+The following segment provides instructions for designers and developers regarding the appropriate utilization of this
+component in various situations.
+
+### Do:
+
+- Use when a keyword or key value for a search request is necessary.
+- Use without a label only when the context is clear.
+- Use with a slotted locate button when a locate action can be performed.
+- Use a loading state to indicate a search is being performed.
+- Use an asterisk to indicate required fields.
+- Use success or error messages if the user input was inappropriate.
+- Use search suggestions or recent history when it adds contextual value.
+
+### Don't:
+
+- Don’t use labels with more than two words whenever possible (keep them short and descriptive).
+- Don’t use instructional or descriptive text as the label.
+- Don’t use p-input-search for purposes other than search.
+- Don’t use compact variants in marketing applications.
+- Don’t manipulate or replace the default search icon.
+
+---
+
+## Related Components
+
+- [Text Field Wrapper](/components/text-field-wrapper)

@@ -43,6 +43,14 @@
   ></p-input-number>
 </div>
 
+<div class="playground light" title="should render with loading indicator">
+  <p-input-number
+    name="some-name"
+    label="Some label"
+    loading="true"
+  ></p-input-number>
+</div>
+
 <div class="playground light" title="should render without label and without description">
   <p-input-number
     name="some-name"
@@ -247,6 +255,12 @@
     <p-button-pure slot="start" hide-label="true" icon="information" class="input-button">Some label</p-button-pure>
     <p-button-pure slot="end" hide-label="true" icon="close" class="input-button">Some label</p-button-pure>
   </p-input-number>
+  <p-input-number
+    label="Some label"
+    compact="true"
+    name="some-name"
+    loading="true"
+  ></p-input-number>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with scaling 0">
@@ -257,6 +271,12 @@
     style="width: 15rem"
     name="some-name"
     controls="true"
+  ></p-input-number>
+  <p-input-number
+    class="scaling-0"
+    label="Some label"
+    name="some-name"
+    loading="true"
   ></p-input-number>
 </div>
 
@@ -269,6 +289,12 @@
     name="some-name"
     controls="true"
   ></p-input-number>
+  <p-input-number
+    class="scaling-0-5"
+    label="Some label"
+    name="some-name"
+    loading="true"
+  ></p-input-number>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with scaling 0.8">
@@ -279,6 +305,12 @@
     style="width: 15rem"
     name="some-name"
     controls="true"
+  ></p-input-number>
+  <p-input-number
+    class="scaling-0-8"
+    label="Some label"
+    name="some-name"
+    loading="true"
   ></p-input-number>
 </div>
 
@@ -291,6 +323,12 @@
     name="some-name"
     controls="true"
   ></p-input-number>
+  <p-input-number
+    class="scaling-1"
+    label="Some label"
+    name="some-name"
+    loading="true"
+  ></p-input-number>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with scaling 2">
@@ -301,6 +339,12 @@
     style="width: 15rem"
     name="some-name"
     controls="true"
+  ></p-input-number>
+  <p-input-number
+    class="scaling-2"
+    label="Some label"
+    name="some-name"
+    loading="true"
   ></p-input-number>
 </div>
 
@@ -316,8 +360,8 @@
   </p-input-number>
 </div>
 
-<div class="playground light" title="should render with slot end and controls">
-  <p-input-number name="some-name" label="Label" value="1234" controls="true">
+<div class="playground light" title="should render with slot end, controls and loading indicator">
+  <p-input-number name="some-name" label="Label" value="1234" controls="true" loading="true">
     <p-button-pure slot="end" hide-label="true" icon="close" class="input-button">Some label</p-button-pure>
   </p-input-number>
 </div>
