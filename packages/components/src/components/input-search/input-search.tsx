@@ -271,9 +271,10 @@ export class InputSearch {
     this.value = target.value; // triggers @Watch('value')
     this.input.emit(e);
   };
+
   private onClear = (): void => {
-    this.value = ''; // triggers @Watch('value')
-    this.input.emit(new window.InputEvent('input', { bubbles: true, composed: true }));
+    this.inputElement.value = ''; // Clear value of native input and send an input event
+    this.inputElement.dispatchEvent(new window.InputEvent('input', { bubbles: true, composed: true })); // triggers onInput
     this.inputElement.focus();
   };
 }
