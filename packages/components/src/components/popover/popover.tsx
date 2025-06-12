@@ -112,7 +112,9 @@ export class Popover {
         {this.open && (
           <div
             popover="auto"
-            onToggle={(e: ToggleEvent) => (this.open = e.newState === 'open')}
+            onToggle={(e: ToggleEvent) => {
+              this.onTogglePopover(e);
+            }}
             ref={(el) => (this.popover = el)}
           >
             <div class="arrow" ref={(el) => (this.arrow = el)} />
@@ -142,17 +144,28 @@ export class Popover {
 
   private onClickOutside = (e: MouseEvent): void => {
     if (this.open && isClickOutside(e, this.button || this.slottedButton) && isClickOutside(e, this.popover)) {
-      this.dismissPopover();
+      this.hasSlottedButton ? this.dismissPopover() : (this.open = false);
     }
   };
 
-  private dismissPopover = (): void => {
-    this.open = false;
-    this.hasSlottedButton && this.dismiss.emit();
+  private onHostKeydown = (e: KeyboardEvent): void => {
+    if (e.key === 'Escape' && this.open) {
+      e.preventDefault();
+      if (this.hasSlottedButton) {
+        this.dismissPopover();
+      } else {
+        this.button.focus();
+        this.open = false;
+      }
+    }
   };
 
-  private onHostKeydown = (e: KeyboardEvent): void => {
-    e.key === 'Escape' && this.open && (this.hasSlottedButton ? this.dismissPopover() : this.button.focus());
+  private onTogglePopover = (e: ToggleEvent): void => {
+    this.hasSlottedButton && !this.open ? this.dismissPopover() : (this.open = e.newState === 'open');
+  };
+
+  private dismissPopover = (): void => {
+    this.dismiss.emit();
   };
 
   private updatePosition = async (): Promise<void> => {
