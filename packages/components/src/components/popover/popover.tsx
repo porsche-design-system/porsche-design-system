@@ -161,7 +161,7 @@ export class Popover {
   };
 
   private onTogglePopover = (e: ToggleEvent): void => {
-    this.hasSlottedButton && !this.open ? this.dismissPopover() : (this.open = e.newState === 'open');
+    !this.hasSlottedButton && (this.open = e.newState === 'open');
   };
 
   private dismissPopover = (): void => {
