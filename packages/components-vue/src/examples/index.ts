@@ -26,6 +26,8 @@ export { default as InputPasswordExample } from './InputPasswordExample.vue';
 export { default as InputPasswordExampleControlled } from './InputPasswordExampleControlled.vue';
 export { default as InputNumberExample } from './InputNumberExample.vue';
 export { default as InputNumberExampleControlled } from './InputNumberExampleControlled.vue';
+export { default as InputSearchExample } from './InputSearchExample.vue';
+export { default as InputSearchExampleControlled } from './InputSearchExampleControlled.vue';
 export { default as LinkTileExampleHyphens } from './LinkTileExampleHyphens.vue';
 export { default as LinkTileProductExample } from './LinkTileProductExample.vue';
 export { default as ModalExampleAccessibility } from './ModalExample.vue';

@@ -4,7 +4,7 @@ import type { Story } from '@/models/story';
 
 export const inputPasswordStory: Story<'p-input-password'> = {
   state: {
-    properties: { label: 'Some label', name: 'Some name', toggle: true },
+    properties: { label: 'Some label', name: 'some-name', toggle: true },
   },
   generator: ({ properties } = {}) => [
     {
@@ -18,7 +18,7 @@ export const inputPasswordStoryToggle: Story<'p-input-password'> = {
   generator: () => [
     {
       tag: 'p-input-password',
-      properties: { label: 'Some label', name: 'Some name', toggle: true },
+      properties: { label: 'Some label', name: 'some-name', toggle: true },
     },
   ],
 };

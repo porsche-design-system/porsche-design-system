@@ -17,6 +17,7 @@ import {
 
 export const getComponentCss = (
   disabled: boolean,
+  loading: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   compact: boolean,
@@ -25,7 +26,7 @@ export const getComponentCss = (
   controls: boolean
 ): string => {
   return getCss({
-    ...getFunctionalComponentInputBaseStyles(disabled, hideLabel, state, compact, readOnly, theme, {
+    ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, theme, {
       textOverflow: 'ellipsis',
       MozAppearance: 'textfield',
       '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
