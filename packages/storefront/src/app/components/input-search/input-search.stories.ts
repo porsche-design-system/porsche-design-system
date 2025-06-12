@@ -92,7 +92,7 @@ export const inputSearchStorySlots: Story<'p-input-search'> = {
   generator: () => [
     {
       tag: 'p-input-search',
-      properties: { state: 'error' },
+      properties: { indicator: false, state: 'error' },
       children: [
         {
           tag: 'span',
@@ -114,16 +114,16 @@ export const inputSearchStorySlots: Story<'p-input-search'> = {
         },
         {
           tag: 'p-icon',
-          properties: { slot: 'start', name: 'shopping-cart', color: 'contrast-medium', 'aria-hidden': true },
+          properties: { slot: 'start', name: 'pin', color: 'contrast-medium', 'aria-hidden': true },
         },
         {
           tag: 'p-button-pure',
           properties: {
             slot: 'end',
-            icon: 'delete',
+            icon: 'locate',
             hideLabel: true,
             className: 'p-(--ref-p-input-slotted-padding) m-(--ref-p-input-slotted-margin)',
-            aria: { 'aria-label': 'Delete' },
+            aria: { 'aria-label': 'Locate' },
           },
         },
         {
