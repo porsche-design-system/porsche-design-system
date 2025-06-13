@@ -43,6 +43,8 @@ import {
   getListAriaAttributes,
   getMatchingSelectOptionIndex,
   getPrefixedTagNames,
+  getSelectedSelectOption,
+  getSelectedSelectOptionIndex,
   getShadowRootHTMLElement,
   getUpdatedIndex,
   getUsableSelectOptions,
@@ -54,12 +56,11 @@ import {
   setNextSelectOptionHighlighted,
   throwIfElementIsNotOfKind,
   validateProps,
-  getSelectedSelectOptionIndex,
-  getSelectedSelectOption,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
 import { labelId } from '../../common/label/label-utils';
 import { StateMessage, messageId } from '../../common/state-message/state-message';
+import type { InputSearchInputEventDetail } from '../../input-search/input-search-utils';
 import { getComponentCss } from './select-styles';
 
 const propTypes: PropTypes<typeof Select> = {
@@ -74,6 +75,7 @@ const propTypes: PropTypes<typeof Select> = {
   required: AllowedTypes.boolean,
   form: AllowedTypes.string,
   dropdownDirection: AllowedTypes.oneOf<SelectDropdownDirection>(SELECT_DROPDOWN_DIRECTIONS),
+  filter: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
@@ -126,6 +128,9 @@ export class Select {
   /** Changes the direction to which the dropdown list appears. */
   @Prop() public dropdownDirection?: SelectDropdownDirection = 'auto';
 
+  /** Shows an input in the dropdown allowing options to be filtered. */
+  @Prop() public filter?: boolean = false;
+
   /** Displays as compact version. */
   @Prop() public compact?: boolean = false;
 
@@ -145,6 +150,7 @@ export class Select {
   private defaultValue: string;
   private buttonElement: HTMLButtonElement;
   private popoverElement: HTMLDivElement;
+  private filterInputElement: HTMLPInputSearchElement;
   private selectOptions: SelectOption[] = [];
   private selectOptgroups: SelectOptgroup[] = [];
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
@@ -296,10 +302,18 @@ export class Select {
         <div
           id={popoverId}
           popover="manual"
-          tabIndex={-1}
           {...getListAriaAttributes(this.label, this.required, false, this.isOpen)}
           ref={(el) => (this.popoverElement = el)}
         >
+          {this.filter && (
+            <PrefixedTagNames.pInputSearch
+              name="filter"
+              autoComplete="off"
+              clear={true}
+              onInput={this.onFilterInput}
+              ref={(el: HTMLPInputSearchElement) => (this.filterInputElement = el)}
+            />
+          )}
           <slot />
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
@@ -461,5 +475,13 @@ export class Select {
         ?.querySelector('img')
         ?.getAttribute('src') ?? ''
     );
+  };
+
+  private onFilterInput = (e: CustomEvent<InputSearchInputEventDetail>): void => {
+    for (const option of this.selectOptions) {
+      option.hidden = !option.textContent
+        .toLowerCase()
+        .includes((e.detail.target as HTMLInputElement).value.toLowerCase());
+    }
   };
 }
