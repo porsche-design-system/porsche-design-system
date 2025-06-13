@@ -2015,6 +2015,10 @@ export namespace Components {
          */
         "dropdownDirection"?: SelectDropdownDirection;
         /**
+          * Shows an input in the dropdown allowing options to be filtered.
+         */
+        "filter"?: boolean;
+        /**
           * The id of a form element the select should be associated with.
          */
         "form"?: string;
@@ -5730,6 +5734,10 @@ declare namespace LocalJSX {
           * Changes the direction to which the dropdown list appears.
          */
         "dropdownDirection"?: SelectDropdownDirection;
+        /**
+          * Shows an input in the dropdown allowing options to be filtered.
+         */
+        "filter"?: boolean;
         /**
           * The id of a form element the select should be associated with.
          */
