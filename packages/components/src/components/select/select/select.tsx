@@ -191,6 +191,11 @@ export class Select {
           await optionListUpdatePosition(this.dropdownDirection, this.buttonElement, this.popoverElement);
         });
       }
+      if (this.filter) {
+        setTimeout(() => {
+          this.filterInputElement.focus();
+        });
+      }
     } else {
       if (this.hasNativePopoverSupport) {
         this.popoverElement.hidePopover();
@@ -302,6 +307,7 @@ export class Select {
         <div
           id={popoverId}
           popover="manual"
+          tabIndex={-1}
           {...getListAriaAttributes(this.label, this.required, false, this.isOpen)}
           ref={(el) => (this.popoverElement = el)}
         >
@@ -311,6 +317,7 @@ export class Select {
               autoComplete="off"
               clear={true}
               onInput={this.onFilterInput}
+              onKeyDown={this.onComboKeyDown}
               ref={(el: HTMLPInputSearchElement) => (this.filterInputElement = el)}
             />
           )}
