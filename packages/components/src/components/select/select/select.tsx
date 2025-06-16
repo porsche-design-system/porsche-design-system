@@ -384,7 +384,7 @@ export class Select {
           getUsableSelectOptions(this.selectOptions).length - 1,
           action
         );
-        setNextSelectOptionHighlighted(this.popoverElement, this.selectOptions, highlightedOptionIndex);
+        setNextSelectOptionHighlighted(this.selectOptions, highlightedOptionIndex);
         // @ts-ignore - HTMLCombobox type is missing
         this.buttonElement.ariaActiveDescendantElement = getHighlightedSelectOption(this.selectOptions);
         break;
@@ -398,17 +398,23 @@ export class Select {
       case 'Close': {
         event.preventDefault();
         this.updateMenuState(false);
+        if (this.filter) {
+          this.buttonElement.focus();
+        }
         break;
       }
       case 'Type':
-        this.onComboType(key);
+        // Filter uses onInput
+        if (!this.filter) {
+          this.onComboType(key);
+        }
         break;
       case 'Open': {
         event.preventDefault();
         this.updateMenuState(true);
         const selectedIndex = getSelectedSelectOptionIndex(this.selectOptions);
         if (selectedIndex >= 0) {
-          setNextSelectOptionHighlighted(this.popoverElement, this.selectOptions, selectedIndex);
+          setNextSelectOptionHighlighted(this.selectOptions, selectedIndex);
           // @ts-ignore - HTMLCombobox type is missing
           this.buttonElement.ariaActiveDescendantElement = getSelectedSelectOption(this.selectOptions);
         }
@@ -423,7 +429,7 @@ export class Select {
     this.updateSearchString(letter);
     const matchingIndex = getMatchingSelectOptionIndex(this.selectOptions, this.searchString);
     if (matchingIndex !== -1) {
-      setNextSelectOptionHighlighted(this.popoverElement, this.selectOptions, matchingIndex);
+      setNextSelectOptionHighlighted(this.selectOptions, matchingIndex);
     } else {
       window.clearTimeout(this.searchTimeout);
       this.searchString = '';
@@ -506,6 +512,11 @@ export class Select {
       option.hidden = !option.textContent
         .toLowerCase()
         .includes((e.detail.target as HTMLInputElement).value.toLowerCase());
+    }
+    const highlightedOption = getHighlightedSelectOption(this.selectOptions);
+    if (highlightedOption) {
+      highlightedOption.highlighted = false;
+      forceUpdate(highlightedOption);
     }
   };
 }
