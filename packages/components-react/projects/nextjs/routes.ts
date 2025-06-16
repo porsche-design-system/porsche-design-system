@@ -608,6 +608,10 @@ const generatedRoutes = {
     "path": "/select-opened-bottom",
     "name": "SelectOpenedBottom"
   },
+  "selectOpenedFilter": {
+    "path": "/select-opened-filter",
+    "name": "SelectOpenedFilter"
+  },
   "selectOpenedMaxHeight": {
     "path": "/select-opened-max-height",
     "name": "SelectOpenedMaxHeight"
