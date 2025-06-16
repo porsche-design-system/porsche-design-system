@@ -151,6 +151,7 @@ export class Select {
   private buttonElement: HTMLButtonElement;
   private popoverElement: HTMLDivElement;
   private filterInputElement: HTMLPInputSearchElement;
+  private shouldFocusFilterInput = false;
   private selectOptions: SelectOption[] = [];
   private selectOptgroups: SelectOptgroup[] = [];
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
@@ -192,9 +193,7 @@ export class Select {
         });
       }
       if (this.filter) {
-        setTimeout(() => {
-          this.filterInputElement.focus();
-        });
+        this.shouldFocusFilterInput = true;
       }
     } else {
       if (this.hasNativePopoverSupport) {
@@ -254,6 +253,13 @@ export class Select {
   public formResetCallback(): void {
     this.internals?.setFormValue(this.defaultValue);
     this.value = this.defaultValue;
+  }
+
+  public componentDidRender(): void {
+    if (this.shouldFocusFilterInput) {
+      this.filterInputElement?.focus();
+      this.shouldFocusFilterInput = false;
+    }
   }
 
   public render(): JSX.Element {
