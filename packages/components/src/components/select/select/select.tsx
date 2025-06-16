@@ -205,6 +205,12 @@ export class Select {
         this.cleanUpAutoUpdate();
         this.cleanUpAutoUpdate = undefined;
       }
+      if (this.filter) {
+        this.filterInputElement.value = '';
+        for (const option of this.selectOptions) {
+          option.hidden = false;
+        }
+      }
     }
   }
 
@@ -260,6 +266,7 @@ export class Select {
       this.hideLabel,
       this.state,
       this.compact,
+      this.filter,
       this.theme,
       !!this.slottedImagePath
     );
@@ -314,6 +321,8 @@ export class Select {
           {this.filter && (
             <PrefixedTagNames.pInputSearch
               name="filter"
+              label="Filter options"
+              hideLabel={true}
               autoComplete="off"
               clear={true}
               onInput={this.onFilterInput}
@@ -321,7 +330,9 @@ export class Select {
               ref={(el: HTMLPInputSearchElement) => (this.filterInputElement = el)}
             />
           )}
-          <slot />
+          <div class="options">
+            <slot />
+          </div>
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
       </div>

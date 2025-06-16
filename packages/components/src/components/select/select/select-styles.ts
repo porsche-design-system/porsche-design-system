@@ -12,8 +12,9 @@ import {
   getButtonJssStyle,
   getButtonLabelJssStyle,
   getIconJssStyle,
-  getPopoverJssStyle,
-  getPopoverKeyframesStyles,
+  getOptionListJssStyle,
+  getSelectDropdownJssStyle,
+  getSelectDropdownKeyframesStyles,
 } from '../../../styles/select';
 import type { BreakpointCustomizable, Theme } from '../../../types';
 import { getCss } from '../../../utils';
@@ -29,6 +30,7 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   compact: boolean,
+  hasFilter: boolean,
   theme: Theme,
   hasSlottedImage: boolean
 ): string => {
@@ -37,7 +39,7 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       // @keyframes fade-in
-      ...getPopoverKeyframesStyles,
+      ...getSelectDropdownKeyframesStyles,
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
@@ -55,7 +57,7 @@ export const getComponentCss = (
         '& img': getButtonImageJssStyle,
         '& span': getButtonLabelJssStyle,
       },
-      '[popover]': getPopoverJssStyle(isOpen, scalingVar, 40, theme),
+      '[popover]': getSelectDropdownJssStyle(isOpen, scalingVar, 40, hasFilter, theme),
     },
     root: {
       display: 'grid',
@@ -63,6 +65,7 @@ export const getComponentCss = (
       // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character plus the ellipsis dots.
       minWidth: `calc(1rem + ${formElementPaddingHorizontal} + ${borderWidthBase} * 2 + ${getCalculatedFormElementPaddingHorizontal(1)})`,
     },
+    options: getOptionListJssStyle(scalingVar),
     icon: getIconJssStyle('select', isOpen),
     'sr-only': getHiddenTextJssStyle(),
     // .label / .required
