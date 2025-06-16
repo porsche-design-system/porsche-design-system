@@ -570,24 +570,23 @@ test.describe('selection', () => {
     await dropdownOption2.click();
     await waitForStencilLifecycle(page);
 
-    const value = await getMultiSelectValue(page);
-    const filterPlaceholder = await getInputPlaceholder(page);
     const selectedMultiSelectOptions = await getSelectedMultiSelectOptionProperty(page, 'textContent');
 
-    expect(value).toStrictEqual(['b']);
-    expect(filterPlaceholder, 'after first selection').toBe('Option B');
-    expect(filterPlaceholder, 'after first selection').toEqual(selectedMultiSelectOptions.join(', '));
+    await expect(getHost(page)).toHaveJSProperty('value', ['b']);
+    await expect(getInput(page), 'after first selection').toHaveAttribute('placeholder', 'Option B');
+    await expect(getInput(page), 'after first selection').toHaveAttribute(
+      'placeholder',
+      selectedMultiSelectOptions.join(', ')
+    );
 
     const dropdownOption3 = getMultiSelectOption(page, 3);
     await dropdownOption3.click();
     await waitForStencilLifecycle(page);
 
-    const valueAfter = await getMultiSelectValue(page);
-    const filterPlaceholderSecond = await getInputPlaceholder(page);
     const selectedMultiSelectOptionsSecond = await getSelectedMultiSelectOptionProperty(page, 'textContent');
 
-    expect(valueAfter).toStrictEqual(['b', 'c']);
-    expect(filterPlaceholderSecond, 'after second selection').toBe('Option B, Option C');
+    await expect(getHost(page)).toHaveJSProperty('value', ['b', 'c']);
+    await expect(getInput(page), 'after second selection').toHaveAttribute('placeholder', 'Option B, Option C');
     await expect(getInput(page), 'after second selection').toHaveAttribute(
       'placeholder',
       selectedMultiSelectOptionsSecond.join(', ')
