@@ -914,23 +914,6 @@ test.describe('keyboard behavior', () => {
 
     expect(await getHighlightedOptionIndex(page)).toBe(2);
   });
-  test('should have correct keyboard behavior with filter enabled', async ({ page }) => {
-    await initSelect(page, { props: { name: 'Some name', filter: true } });
-    const host = getHost(page);
-    const filterElement = getFilter(page);
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Space');
-
-    await expect(filterElement).toBeFocused();
-    await filterElement.press('ArrowDown');
-
-    await expect(page.locator('p-select p-select-option').first()).toHaveJSProperty('highlighted', true);
-
-    await filterElement.press('Enter');
-
-    await expect(host).toHaveJSProperty('value', 'a');
-  });
 });
 
 test.describe('selection', () => {
@@ -1209,13 +1192,15 @@ test.describe('selection', () => {
 test.describe('filter', () => {
   test('should show matching options when typing into filter', async ({ page }) => {
     await initSelect(page, { props: { name: 'Some name', filter: true } });
+    const buttonElement = getButton(page);
     const filterElement = getFilter(page);
     const filterInputElement = getFilterInput(page);
     const options = getSelectOptions(page);
+    const dropdown = getDropdown(page);
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Space');
+    await buttonElement.click();
 
+    await expect(dropdown).toBeVisible();
     await expect(filterElement).toBeFocused();
     await expect(filterInputElement).toHaveValue('');
 
@@ -1239,13 +1224,15 @@ test.describe('filter', () => {
   });
   test('should reset filter when pressing clear button on filter input', async ({ page }) => {
     await initSelect(page, { props: { name: 'Some name', filter: true } });
+    const buttonElement = getButton(page);
     const filterElement = getFilter(page);
     const filterInputElement = getFilterInput(page);
     const options = getSelectOptions(page);
+    const dropdown = getDropdown(page);
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Space');
+    await buttonElement.click();
 
+    await expect(dropdown).toBeVisible();
     await expect(filterElement).toBeFocused();
     await expect(filterInputElement).toHaveValue('');
     await filterInputElement.fill('b');
@@ -1273,9 +1260,9 @@ test.describe('filter', () => {
     const options = getSelectOptions(page);
     const dropdown = getDropdown(page);
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Space');
+    await buttonElement.click();
 
+    await expect(dropdown).toBeVisible();
     await expect(filterElement).toBeFocused();
     await expect(filterInputElement).toHaveValue('');
     await filterInputElement.fill('b');
@@ -1310,9 +1297,9 @@ test.describe('filter', () => {
     const options = getSelectOptions(page);
     const dropdown = getDropdown(page);
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Space');
+    await buttonElement.click();
 
+    await expect(dropdown).toBeVisible();
     await expect(filterElement).toBeFocused();
     await expect(filterInputElement).toHaveValue('');
     await filterInputElement.fill('b');
@@ -1322,13 +1309,104 @@ test.describe('filter', () => {
     await expect(host).toHaveJSProperty('value', undefined);
     await expect(buttonElement).toBeFocused();
 
-    await page.keyboard.press('Space');
+    await waitForStencilLifecycle(page);
+    await buttonElement.click();
     await expect(filterElement).toBeFocused();
     await expect(filterInputElement).toHaveValue('');
 
     await expect(options.nth(0)).toBeVisible();
     await expect(options.nth(1)).toBeVisible();
     await expect(options.nth(2)).toBeVisible();
+  });
+  test('should only show optgroups of matching options when filtering', async ({ page }) => {
+    await initSelect(page, { props: { name: 'Some name', filter: true } });
+    const host = getHost(page);
+    const buttonElement = getButton(page);
+    const filterElement = getFilter(page);
+    const filterInputElement = getFilterInput(page);
+    const options = getSelectOptions(page);
+    const dropdown = getDropdown(page);
+
+    await buttonElement.click();
+
+    await expect(dropdown).toBeVisible();
+
+    // TODO: Implement
+  });
+
+  test('should have correct keyboard behavior with filter enabled', async ({ page }) => {
+    await initSelect(page, { props: { name: 'Some name', filter: true } });
+    const host = getHost(page);
+    const filterElement = getFilter(page);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Space');
+
+    await expect(filterElement).toBeFocused();
+    await filterElement.press('ArrowDown');
+
+    await expect(page.locator('p-select p-select-option').first()).toHaveJSProperty('highlighted', true);
+
+    await filterElement.press('Enter');
+
+    await expect(host).toHaveJSProperty('value', 'a');
+  });
+  test('should reset highlighted option on filter input when highlighted option is not matching', async ({ page }) => {
+    await initSelect(page, { props: { name: 'Some name', filter: true } });
+    const filterElement = getFilter(page);
+    const filterInputElement = getFilterInput(page);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Space');
+
+    await expect(filterElement).toBeFocused();
+    await filterElement.press('ArrowDown');
+
+    await expect(page.locator('p-select p-select-option').first()).toHaveJSProperty('highlighted', true);
+
+    await filterInputElement.fill('b');
+
+    const options1 = page.locator('p-select p-select-option');
+    for (const option of await options1.all()) {
+      await expect(option).toHaveJSProperty('highlighted', false);
+    }
+
+    await filterElement.press('ArrowDown');
+    await expect(page.locator('p-select p-select-option').first()).toHaveJSProperty('highlighted', true);
+
+    await filterInputElement.fill('a');
+
+    const options2 = page.locator('p-select p-select-option');
+    for (const option of await options2.all()) {
+      await expect(option).toHaveJSProperty('highlighted', false);
+    }
+
+    await filterElement.press('ArrowDown');
+    await expect(page.locator('p-select p-select-option').first()).toHaveJSProperty('highlighted', true);
+
+    await filterInputElement.fill('');
+
+    const options3 = page.locator('p-select p-select-option');
+    for (const option of await options3.all()) {
+      await expect(option).toHaveJSProperty('highlighted', false);
+    }
+  });
+  test('should keep highlighted option on filter input when highlighted option is matching', async ({ page }) => {
+    await initSelect(page, { props: { name: 'Some name', filter: true } });
+    const filterElement = getFilter(page);
+    const filterInputElement = getFilterInput(page);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Space');
+
+    await expect(filterElement).toBeFocused();
+    await filterElement.press('ArrowDown');
+
+    await expect(page.locator('p-select p-select-option').first()).toHaveJSProperty('highlighted', true);
+
+    await filterInputElement.fill('b');
+
+    // TODO: Implement
   });
 });
 
