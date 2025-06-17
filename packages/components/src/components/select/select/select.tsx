@@ -207,7 +207,7 @@ export class Select {
       if (this.filter) {
         this.filterInputElement.value = '';
         for (const option of this.selectOptions) {
-          option.hidden = false;
+          option.style.display = 'block';
         }
       }
     }
@@ -257,7 +257,10 @@ export class Select {
 
   public componentDidRender(): void {
     if (this.shouldFocusFilterInput) {
-      this.filterInputElement?.focus();
+      // Safari focus does not work without additional time
+      requestAnimationFrame(() => {
+        this.filterInputElement.focus();
+      });
       this.shouldFocusFilterInput = false;
     }
   }
@@ -508,15 +511,16 @@ export class Select {
   };
 
   private onFilterInput = (e: CustomEvent<InputSearchInputEventDetail>): void => {
+    const value = (e.detail.target as HTMLInputElement).value.toLowerCase();
     for (const option of this.selectOptions) {
-      option.hidden = !option.textContent
-        .toLowerCase()
-        .includes((e.detail.target as HTMLInputElement).value.toLowerCase());
-    }
-    const highlightedOption = getHighlightedSelectOption(this.selectOptions);
-    if (highlightedOption) {
-      highlightedOption.highlighted = false;
-      forceUpdate(highlightedOption);
+      const matches = option.textContent.toLowerCase().includes(value);
+      // Highlighted state is only kept if highlighted option matches the filter, otherwise reset
+      if (option.highlighted && !matches) {
+        option.highlighted = false;
+        forceUpdate(option);
+      }
+      // Use display none to preserve hidden state
+      option.style.display = matches ? '' : 'none';
     }
   };
 }
