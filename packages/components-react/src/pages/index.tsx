@@ -164,6 +164,7 @@ import { SelectPage } from './generated/Select';
 import { SelectCompactPage } from './generated/SelectCompact';
 import { SelectOpenedBottomPage } from './generated/SelectOpenedBottom';
 import { SelectOpenedFilterPage } from './generated/SelectOpenedFilter';
+import { SelectOpenedFilterNoResultsPage } from './generated/SelectOpenedFilterNoResults';
 import { SelectOpenedFilterScrolledPage } from './generated/SelectOpenedFilterScrolled';
 import { SelectOpenedMaxHeightPage } from './generated/SelectOpenedMaxHeight';
 import { SelectOpenedMinHeightPage } from './generated/SelectOpenedMinHeight';
@@ -973,6 +974,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Select Opened Filter',
     path: '/select-opened-filter',
     element: <SelectOpenedFilterPage />,
+  },
+  {
+    name: 'Select Opened Filter No Results',
+    path: '/select-opened-filter-no-results',
+    element: <SelectOpenedFilterNoResultsPage />,
   },
   {
     name: 'Select Opened Filter Scrolled',

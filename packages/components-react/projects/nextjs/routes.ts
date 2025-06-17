@@ -612,6 +612,10 @@ const generatedRoutes = {
     "path": "/select-opened-filter",
     "name": "SelectOpenedFilter"
   },
+  "selectOpenedFilterNoResults": {
+    "path": "/select-opened-filter-no-results",
+    "name": "SelectOpenedFilterNoResults"
+  },
   "selectOpenedFilterScrolled": {
     "path": "/select-opened-filter-scrolled",
     "name": "SelectOpenedFilterScrolled"
