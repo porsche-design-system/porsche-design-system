@@ -12,6 +12,7 @@ import {
   getButtonJssStyle,
   getButtonLabelJssStyle,
   getIconJssStyle,
+  getOptionJssStyle,
   getOptionListJssStyle,
   getSelectDropdownJssStyle,
   getSelectDropdownKeyframesStyles,
@@ -66,6 +67,7 @@ export const getComponentCss = (
       minWidth: `calc(1rem + ${formElementPaddingHorizontal} + ${borderWidthBase} * 2 + ${getCalculatedFormElementPaddingHorizontal(1)})`,
     },
     options: getOptionListJssStyle(scalingVar),
+    'no-results': getOptionJssStyle('select-option', scalingVar, theme),
     icon: getIconJssStyle('select', isOpen),
     'sr-only': getHiddenTextJssStyle(),
     // .label / .required
