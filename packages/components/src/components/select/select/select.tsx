@@ -204,10 +204,14 @@ export class Select {
         this.cleanUpAutoUpdate();
         this.cleanUpAutoUpdate = undefined;
       }
+      // Reset filter on close
       if (this.filter) {
         this.filterInputElement.value = '';
         for (const option of this.selectOptions) {
           option.style.display = 'block';
+        }
+        for (const optgroup of this.selectOptgroups) {
+          optgroup.style.display = 'block';
         }
       }
     }
@@ -517,6 +521,7 @@ export class Select {
 
   private onFilterInput = (e: CustomEvent<InputSearchInputEventDetail>): void => {
     const value = (e.detail.target as HTMLInputElement).value.toLowerCase();
+
     for (const option of this.selectOptions) {
       const matches = option.textContent.toLowerCase().includes(value);
       // Highlighted state is only kept if highlighted option matches the filter, otherwise reset
@@ -526,6 +531,13 @@ export class Select {
       }
       // Use display none to preserve hidden state
       option.style.display = matches ? '' : 'none';
+    }
+
+    for (const optgroup of this.selectOptgroups) {
+      const visibleOptions = Array.from(optgroup.children).some(
+        (child) => (child as HTMLPSelectOptionElement).style.display !== 'none'
+      );
+      (optgroup as HTMLOptGroupElement).style.display = visibleOptions ? '' : 'none';
     }
   };
 }
