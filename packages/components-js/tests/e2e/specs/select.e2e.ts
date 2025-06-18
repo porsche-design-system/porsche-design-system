@@ -1343,8 +1343,10 @@ test.describe('filter', () => {
       }
 
       // TODO: Add check for --- indicator
+      // TODO: Add check that indicator is not shown anymore after closing and reopning
     });
   });
+
   test.describe('with optgroups', () => {
     test('should only show optgroups of matching options when filtering', async ({ page }) => {
       await initSelect(page, { props: { name: 'Some name', filter: true } });
@@ -1435,6 +1437,22 @@ test.describe('filter', () => {
       await expect(options.nth(0)).toBeVisible();
       await expect(options.nth(1)).toBeVisible();
       await expect(options.nth(2)).toBeVisible();
+    });
+  });
+
+  test.describe('click', () => {
+    test('should not close dropdown if input is clicked', async ({ page }) => {
+      await initSelect(page, { props: { name: 'Some name', filter: true } });
+      const host = getHost(page);
+      const buttonElement = getButton(page);
+      const dropdown = getDropdown(page);
+      const filterElement = getFilter(page);
+
+      await buttonElement.click();
+      await expect(dropdown).toBeVisible();
+
+      await filterElement.click();
+      await expect(dropdown).toBeVisible();
     });
   });
 

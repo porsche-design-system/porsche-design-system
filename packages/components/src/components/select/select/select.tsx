@@ -360,7 +360,14 @@ export class Select {
     forceUpdate(this.host);
   };
 
-  private onComboClick = (): void => {
+  private onComboClick = (e: MouseEvent): void => {
+    const target = e.target as HTMLElement;
+
+    // Prevent closing if the filter input was clicked
+    if (this.filter && this.filterInputElement?.contains(target)) {
+      return;
+    }
+
     this.updateMenuState(!this.isOpen);
   };
 
