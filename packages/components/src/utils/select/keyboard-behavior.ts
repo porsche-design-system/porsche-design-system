@@ -90,6 +90,9 @@ export const getActionFromKeyboardEvent = (event: KeyboardEvent, menuOpen: boole
  * @returns {number} - The updated index after applying the specified action.
  */
 export const getUpdatedIndex = (currentIndex: number, maxIndex: number, action: SelectAction): number => {
+  // No options available, return -1
+  if (maxIndex === -1) return -1;
+
   switch (action) {
     case 'First':
       return 0;
@@ -122,11 +125,13 @@ export const setNextSelectOptionHighlighted = <T extends Option>(options: T[], n
   if (oldIndex !== -1) {
     setHighlightedSelectOption(usableOptions[oldIndex], false);
   }
-  setHighlightedSelectOption(usableOptions[newIndex], true);
-  usableOptions[newIndex].scrollIntoView({
-    block: 'nearest',
-    // behavior: 'smooth' // Intentionally not smooth since highlighted options can quickly change when searching
-  });
+  if (newIndex !== -1) {
+    setHighlightedSelectOption(usableOptions[newIndex], true);
+    usableOptions[newIndex].scrollIntoView({
+      block: 'nearest',
+      // behavior: 'smooth' // Intentionally not smooth since highlighted options can quickly change when searching
+    });
+  }
 };
 
 /**
