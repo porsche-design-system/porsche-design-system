@@ -21,6 +21,11 @@
 <script>
   porscheDesignSystem.componentsReady().then(() => {
     document.querySelector('p-select').shadowRoot.querySelector('label').click();
-    document.querySelector('p-select').shadowRoot.querySelector('p-input-search').value = 'no results';
+    const inputElement = document
+      .querySelector('p-select')
+      .shadowRoot.querySelector('p-input-search')
+      .shadowRoot.querySelector('input');
+    inputElement.value = 'no results';
+    inputElement.dispatchEvent(new Event('input', { bubbles: true }));
   });
 </script>
