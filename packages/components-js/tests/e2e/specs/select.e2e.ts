@@ -1492,7 +1492,10 @@ test.describe('filter', () => {
     });
 
     test('should not close select when Space character is typed into filter', async ({ page }) => {
-      await initSelect(page, { props: { name: 'Some name', filter: true } });
+      await initSelect(page, {
+        props: { name: 'Some name', filter: true },
+        options: { values: [{ value: 'option a' }, { value: 'option b' }, { value: 'option c' }] },
+      });
       const filterElement = getFilter(page);
       const filterInputElement = getFilterInput(page);
       const dropdown = getDropdown(page);
@@ -1503,8 +1506,9 @@ test.describe('filter', () => {
 
       await expect(dropdown).toBeVisible();
       await expect(filterElement).toBeFocused();
-      await filterElement.pressSequentially('a ');
+      await filterElement.pressSequentially('option');
       await filterInputElement.press('Space');
+      await filterInputElement.press('a');
 
       // Dropdown should stay open
       await expect(dropdown).toBeVisible();
