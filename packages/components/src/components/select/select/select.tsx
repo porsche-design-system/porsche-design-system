@@ -9,6 +9,7 @@ import {
   getSelectedOptionString,
   setSelectedOption,
   syncSelectChildrenProps,
+  updateFilterResults,
   updateSelectOptions,
 } from './select-utils';
 
@@ -144,6 +145,7 @@ export class Select {
   @Event({ bubbles: false }) public update: EventEmitter<SelectUpdateEventDetail>;
 
   @State() private isOpen = false;
+  @State() private hasFilterResults = true;
 
   @AttachInternals() private internals: ElementInternals;
 
@@ -207,6 +209,7 @@ export class Select {
       // Reset filter on close
       if (this.filter) {
         this.filterInputElement.value = '';
+        this.hasFilterResults = true;
         for (const option of this.selectOptions) {
           option.style.display = 'block';
         }
@@ -344,6 +347,12 @@ export class Select {
             />
           )}
           <div class="options">
+            {this.filter && !this.hasFilterResults && (
+              <div class="no-results" aria-live="polite">
+                <span aria-hidden="true">---</span>
+                <span class="sr-only">No results found</span>
+              </div>
+            )}
             <slot />
           </div>
         </div>
@@ -527,24 +536,11 @@ export class Select {
   };
 
   private onFilterInput = (e: CustomEvent<InputSearchInputEventDetail>): void => {
-    const value = (e.detail.target as HTMLInputElement).value.toLowerCase();
-
-    for (const option of this.selectOptions) {
-      const matches = option.textContent.toLowerCase().includes(value);
-      // Highlighted state is only kept if highlighted option matches the filter, otherwise reset
-      if (option.highlighted && !matches) {
-        option.highlighted = false;
-        forceUpdate(option);
-      }
-      // Use display none to preserve hidden state
-      option.style.display = matches ? '' : 'none';
-    }
-
-    for (const optgroup of this.selectOptgroups) {
-      const visibleOptions = Array.from(optgroup.children).some(
-        (child) => (child as HTMLPSelectOptionElement).style.display !== 'none'
-      );
-      (optgroup as HTMLOptGroupElement).style.display = visibleOptions ? '' : 'none';
-    }
+    const { hasFilterResults } = updateFilterResults(
+      this.selectOptions,
+      this.selectOptgroups,
+      (e.detail.target as HTMLInputElement).value
+    );
+    this.hasFilterResults = hasFilterResults;
   };
 }
