@@ -183,6 +183,9 @@ import { SegmentedControlComponent } from './generated/segmented-control.compone
 import { SelectComponent } from './generated/select.component';
 import { SelectCompactComponent } from './generated/select-compact.component';
 import { SelectOpenedBottomComponent } from './generated/select-opened-bottom.component';
+import { SelectOpenedFilterComponent } from './generated/select-opened-filter.component';
+import { SelectOpenedFilterNoResultsComponent } from './generated/select-opened-filter-no-results.component';
+import { SelectOpenedFilterScrolledComponent } from './generated/select-opened-filter-scrolled.component';
 import { SelectOpenedMaxHeightComponent } from './generated/select-opened-max-height.component';
 import { SelectOpenedMinHeightComponent } from './generated/select-opened-min-height.component';
 import { SelectOpenedScrollContextComponent } from './generated/select-opened-scroll-context.component';
@@ -389,6 +392,9 @@ export const generatedPages = [
   SelectComponent,
   SelectCompactComponent,
   SelectOpenedBottomComponent,
+  SelectOpenedFilterComponent,
+  SelectOpenedFilterNoResultsComponent,
+  SelectOpenedFilterScrolledComponent,
   SelectOpenedMaxHeightComponent,
   SelectOpenedMinHeightComponent,
   SelectOpenedScrollContextComponent,
@@ -1193,6 +1199,21 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Select Opened Bottom',
     path: 'select-opened-bottom',
     component: SelectOpenedBottomComponent,
+  },
+  {
+    name: 'Select Opened Filter',
+    path: 'select-opened-filter',
+    component: SelectOpenedFilterComponent,
+  },
+  {
+    name: 'Select Opened Filter No Results',
+    path: 'select-opened-filter-no-results',
+    component: SelectOpenedFilterNoResultsComponent,
+  },
+  {
+    name: 'Select Opened Filter Scrolled',
+    path: 'select-opened-filter-scrolled',
+    component: SelectOpenedFilterScrolledComponent,
   },
   {
     name: 'Select Opened Max Height',

@@ -27,24 +27,6 @@ export const SELECT_SEARCH_TIMEOUT: number = 500;
 const PAGE_UP_DOWN_STEP_AMOUNT: number = 10;
 
 /**
- * Handles scrolling within the list to ensure that the highlighted item is always visible.
- * @param {HTMLElement} scrollElement - The HTML element to be scrolled.
- * @param {HTMLElement} element - The element to scroll to.
- * @returns {void}
- */
-export const handleSelectDropdownScroll = (scrollElement: HTMLElement, element: HTMLElement): void => {
-  const { maxHeight } = getComputedStyle(scrollElement);
-  const hostElementHeight = Number.parseInt(maxHeight, 10);
-  // TODO: If dropdown was closed this might get called too early before the list is opened which causes the scrollHeight to be 0
-  if (scrollElement.scrollHeight > hostElementHeight) {
-    element.scrollIntoView({
-      block: 'nearest',
-      // behavior: 'smooth' // Intentionally not smooth since highlighted options can quickly change when searching
-    });
-  }
-};
-
-/**
  * Determines the action to be taken based on a keyboard event and the state of the select menu.
  *
  * @param {KeyboardEvent} event - The keyboard event triggering the action.
@@ -108,6 +90,9 @@ export const getActionFromKeyboardEvent = (event: KeyboardEvent, menuOpen: boole
  * @returns {number} - The updated index after applying the specified action.
  */
 export const getUpdatedIndex = (currentIndex: number, maxIndex: number, action: SelectAction): number => {
+  // No options available, return -1
+  if (maxIndex === -1) return -1;
+
   switch (action) {
     case 'First':
       return 0;
@@ -130,23 +115,23 @@ export const getUpdatedIndex = (currentIndex: number, maxIndex: number, action: 
  * Sets the next option in a select dropdown as highlighted, updating the visual state and handling scrolling.
  *
  * @template T - The type of options in the dropdown.
- * @param {HTMLElement} listElement - The parent element containing the dropdown options.
  * @param {T[]} options - The array of options in the dropdown.
  * @param {number} newIndex - The index of the option to be highlighted.
  * @returns {void}
  */
-export const setNextSelectOptionHighlighted = <T extends Option>(
-  listElement: HTMLElement,
-  options: T[],
-  newIndex: number
-): void => {
+export const setNextSelectOptionHighlighted = <T extends Option>(options: T[], newIndex: number): void => {
   const oldIndex = getHighlightedSelectOptionIndex(options);
   const usableOptions = getUsableSelectOptions(options);
   if (oldIndex !== -1) {
     setHighlightedSelectOption(usableOptions[oldIndex], false);
   }
-  setHighlightedSelectOption(usableOptions[newIndex], true);
-  handleSelectDropdownScroll(listElement, usableOptions[newIndex]);
+  if (newIndex !== -1) {
+    setHighlightedSelectOption(usableOptions[newIndex], true);
+    usableOptions[newIndex].scrollIntoView({
+      block: 'nearest',
+      // behavior: 'smooth' // Intentionally not smooth since highlighted options can quickly change when searching
+    });
+  }
 };
 
 /**
@@ -157,7 +142,7 @@ export const setNextSelectOptionHighlighted = <T extends Option>(
  * @returns {T[]} - An array of usable select options.
  */
 export const getUsableSelectOptions = <T extends Option>(options: T[]): T[] =>
-  options.filter((option) => !option.hidden && !option.disabled);
+  options.filter((option) => !option.hidden && !option.disabled && option.style.display !== 'none');
 
 /**
  * Filters an array of select options based on a filter string, considering visibility and usability.
@@ -201,26 +186,6 @@ export const getMatchingSelectOptionIndex = <T extends Option>(options: T[], fil
   // No matching option found
 
   return -1;
-};
-
-/**
- * Sets the next matching select option as highlighted based on a filter string.
- *
- * @template T - The type of options in the array.
- * @param {HTMLElement} listElement - The parent element containing the dropdown options.
- * @param {T[]} options - The array of select options to search.
- * @param {string} filter - The filter string to match against option text content.
- * @returns {void}
- */
-export const setMatchingSelectOptionHighlighted = <T extends Option>(
-  listElement: HTMLElement,
-  options: T[],
-  filter: string
-): void => {
-  const matchingIndex = getMatchingSelectOptionIndex(options, filter);
-  if (matchingIndex !== -1) {
-    setNextSelectOptionHighlighted(listElement, options, matchingIndex);
-  }
 };
 
 /**

@@ -1,0 +1,31 @@
+<style>
+  p-select {
+    margin: 16px;
+  }
+</style>
+
+<p-select name="options" value="a" label="Filter" filter="true">
+  <p-select-option value="a">Option A</p-select-option>
+  <p-select-option value="b">Option B</p-select-option>
+  <p-select-option value="c">Option C</p-select-option>
+  <p-select-option value="d">Option D</p-select-option>
+  <p-select-option value="e">Option E</p-select-option>
+  <p-select-option value="f">Option F</p-select-option>
+  <p-select-option value="g">Option G</p-select-option>
+  <p-select-option value="h">Option H</p-select-option>
+  <p-select-option value="i">Option I</p-select-option>
+  <p-select-option value="j">Option J</p-select-option>
+  <p-select-option value="k">Option K</p-select-option>
+</p-select>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    document.querySelector('p-select').shadowRoot.querySelector('label').click();
+    const inputElement = document
+      .querySelector('p-select')
+      .shadowRoot.querySelector('p-input-search')
+      .shadowRoot.querySelector('input');
+    inputElement.value = 'no results';
+    inputElement.dispatchEvent(new Event('input', { bubbles: true }));
+  });
+</script>

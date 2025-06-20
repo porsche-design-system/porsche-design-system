@@ -12,10 +12,7 @@ export const getComponentCss = (theme: Theme): string => {
         display: 'block',
       },
       ...addImportantToEachRule({
-        ':host': {
-          scrollMargin: '6px', // Aligns option when list is scrolled by navigating with keyboard
-          ...hostHiddenStyles,
-        },
+        ':host': hostHiddenStyles,
         '::slotted(img)': getButtonImageJssStyle,
       }),
       ...preventFoucOfNestedElementsStyles,

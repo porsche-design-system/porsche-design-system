@@ -60,3 +60,31 @@ export const setSelectedOption = (options: SelectOption[], selectedOption: Selec
   selectedOption.selected = true;
   forceUpdate(selectedOption);
 };
+
+export const updateFilterResults = (
+  options: SelectOption[],
+  optgroups: SelectOptgroup[],
+  filterValue: string
+): { hasFilterResults: boolean } => {
+  const value = filterValue.toLowerCase();
+
+  for (const option of options) {
+    const matches = option.textContent.toLowerCase().includes(value);
+    // Highlighted state is only kept if highlighted option matches the filter, otherwise reset
+    if (option.highlighted && !matches) {
+      option.highlighted = false;
+      forceUpdate(option);
+    }
+    // Use display none to preserve hidden state
+    option.style.display = matches ? '' : 'none';
+  }
+
+  for (const optgroup of optgroups) {
+    const visibleOptions = Array.from(optgroup.children).some(
+      (child) => (child as HTMLPSelectOptionElement).style.display !== 'none'
+    );
+    (optgroup as HTMLOptGroupElement).style.display = visibleOptions ? '' : 'none';
+  }
+
+  return { hasFilterResults: options.some((option) => option.style.display !== 'none' && !option.hidden) };
+};
