@@ -36,6 +36,7 @@ import { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotif
 import { InputNumberAutoComplete, InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
 import { InputPasswordAutoComplete, InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
 import { InputSearchAutoComplete, InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
+import { InputTextAutoComplete, InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEventDetail, InputTextState } from "./components/input-text/input-text-utils";
 import { LinkIcon } from "./components/link/link-utils";
 import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 import { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
@@ -105,6 +106,7 @@ export { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotif
 export { InputNumberAutoComplete, InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
 export { InputPasswordAutoComplete, InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
 export { InputSearchAutoComplete, InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
+export { InputTextAutoComplete, InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEventDetail, InputTextState } from "./components/input-text/input-text-utils";
 export { LinkIcon } from "./components/link/link-utils";
 export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 export { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
@@ -1285,6 +1287,88 @@ export namespace Components {
         "theme"?: Theme;
         /**
           * The search input value.
+         */
+        "value"?: string;
+    }
+    interface PInputText {
+        /**
+          * Specifies whether the input can be autofilled by the browser
+         */
+        "autoComplete"?: InputTextAutoComplete;
+        /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Show or hide the increment/decrement stepper controls.
+         */
+        "controls"?: boolean;
+        /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Marks the number input as disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * The id of a form element the number input should be associated with.
+         */
+        "form"?: string;
+        /**
+          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * The max value of the number input.
+         */
+        "max"?: number;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The min value of the number input.
+         */
+        "min"?: number;
+        /**
+          * The name of the number input.
+         */
+        "name": string;
+        /**
+          * The placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * Specifies whether the number input should be read-only.
+         */
+        "readOnly"?: boolean;
+        /**
+          * Marks the number input as required.
+         */
+        "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: InputTextState;
+        /**
+          * The granularity that the value must adhere to.
+         */
+        "step"?: number;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * The number input value.
          */
         "value"?: string;
     }
@@ -2675,6 +2759,10 @@ export interface PInputSearchCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPInputSearchElement;
 }
+export interface PInputTextCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPInputTextElement;
+}
 export interface PLinkTileProductCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPLinkTileProductElement;
@@ -3107,6 +3195,25 @@ declare global {
     var HTMLPInputSearchElement: {
         prototype: HTMLPInputSearchElement;
         new (): HTMLPInputSearchElement;
+    };
+    interface HTMLPInputTextElementEventMap {
+        "change": InputTextChangeEventDetail;
+        "blur": InputTextBlurEventDetail;
+        "input": InputTextInputEventDetail;
+    }
+    interface HTMLPInputTextElement extends Components.PInputText, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPInputTextElementEventMap>(type: K, listener: (this: HTMLPInputTextElement, ev: PInputTextCustomEvent<HTMLPInputTextElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPInputTextElementEventMap>(type: K, listener: (this: HTMLPInputTextElement, ev: PInputTextCustomEvent<HTMLPInputTextElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPInputTextElement: {
+        prototype: HTMLPInputTextElement;
+        new (): HTMLPInputTextElement;
     };
     interface HTMLPLinkElement extends Components.PLink, HTMLStencilElement {
     }
@@ -3664,6 +3771,7 @@ declare global {
         "p-input-number": HTMLPInputNumberElement;
         "p-input-password": HTMLPInputPasswordElement;
         "p-input-search": HTMLPInputSearchElement;
+        "p-input-text": HTMLPInputTextElement;
         "p-link": HTMLPLinkElement;
         "p-link-pure": HTMLPLinkPureElement;
         "p-link-social": HTMLPLinkSocialElement;
@@ -4957,6 +5065,100 @@ declare namespace LocalJSX {
         "theme"?: Theme;
         /**
           * The search input value.
+         */
+        "value"?: string;
+    }
+    interface PInputText {
+        /**
+          * Specifies whether the input can be autofilled by the browser
+         */
+        "autoComplete"?: InputTextAutoComplete;
+        /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Show or hide the increment/decrement stepper controls.
+         */
+        "controls"?: boolean;
+        /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Marks the number input as disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * The id of a form element the number input should be associated with.
+         */
+        "form"?: string;
+        /**
+          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * The max value of the number input.
+         */
+        "max"?: number;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The min value of the number input.
+         */
+        "min"?: number;
+        /**
+          * The name of the number input.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the number input has lost focus.
+         */
+        "onBlur"?: (event: PInputTextCustomEvent<InputTextBlurEventDetail>) => void;
+        /**
+          * Emitted when the number input loses focus after its value was changed.
+         */
+        "onChange"?: (event: PInputTextCustomEvent<InputTextChangeEventDetail>) => void;
+        /**
+          * Emitted when the value has been changed as a direct result of a user action.
+         */
+        "onInput"?: (event: PInputTextCustomEvent<InputTextInputEventDetail>) => void;
+        /**
+          * The placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * Specifies whether the number input should be read-only.
+         */
+        "readOnly"?: boolean;
+        /**
+          * Marks the number input as required.
+         */
+        "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: InputTextState;
+        /**
+          * The granularity that the value must adhere to.
+         */
+        "step"?: number;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * The number input value.
          */
         "value"?: string;
     }
@@ -6453,6 +6655,7 @@ declare namespace LocalJSX {
         "p-input-number": PInputNumber;
         "p-input-password": PInputPassword;
         "p-input-search": PInputSearch;
+        "p-input-text": PInputText;
         "p-link": PLink;
         "p-link-pure": PLinkPure;
         "p-link-social": PLinkSocial;
@@ -6586,6 +6789,7 @@ declare module "@stencil/core" {
             "p-input-number": LocalJSX.PInputNumber & JSXBase.HTMLAttributes<HTMLPInputNumberElement>;
             "p-input-password": LocalJSX.PInputPassword & JSXBase.HTMLAttributes<HTMLPInputPasswordElement>;
             "p-input-search": LocalJSX.PInputSearch & JSXBase.HTMLAttributes<HTMLPInputSearchElement>;
+            "p-input-text": LocalJSX.PInputText & JSXBase.HTMLAttributes<HTMLPInputTextElement>;
             "p-link": LocalJSX.PLink & JSXBase.HTMLAttributes<HTMLPLinkElement>;
             "p-link-pure": LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
             /**

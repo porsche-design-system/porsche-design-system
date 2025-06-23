@@ -89,6 +89,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
     Some banner description.
   </p-inline-notification>`,
   'p-input-number': `<p-input-number name="some-name" label="Some label"></p-input-number>`,
+  'p-input-text': `<p-input-text name="some-name" label="Some label"></p-input-text>`,
   'p-input-password': `<p-input-password name="some-name" label="Some label"></p-input-password>`,
   'p-input-search': `<p-input-search name="some-name" label="Some label"></p-input-search>`,
   'p-link': `<p-link href="#">Some label</p-link>`,
