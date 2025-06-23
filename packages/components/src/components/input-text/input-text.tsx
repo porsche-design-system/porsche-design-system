@@ -74,7 +74,7 @@ export class InputText {
   @Prop() public label?: string = '';
 
   /** Indicate whether to enable spell-checking. */
-  @Prop() public spellCheck?: boolean = false;
+  @Prop() public spellCheck?: boolean;
 
   /** The description text. */
   @Prop() public description?: string = '';
