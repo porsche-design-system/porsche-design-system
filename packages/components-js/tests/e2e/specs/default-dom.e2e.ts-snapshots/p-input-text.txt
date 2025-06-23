@@ -1,0 +1,17 @@
+<div class="root">
+  <label class="label" id="label" for="input-text"> </label>
+  <div class="wrapper">
+    <slot name="start"> </slot>
+    <input
+      aria-describedby="description message"
+      id="input-text"
+      name="value"
+      type="text"
+      placeholder=""
+      spellcheck="false"
+    />
+    <slot name="end"> </slot>
+  </div>
+  <span id="message" class="message" role="alert"> </span>
+  <span id="loading" class="loading" role="status"> </span>
+</div>
