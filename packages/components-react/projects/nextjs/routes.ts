@@ -616,9 +616,9 @@ const generatedRoutes = {
     "path": "/select-opened-filter-no-results",
     "name": "SelectOpenedFilterNoResults"
   },
-  "selectOpenedFilterScrolled": {
-    "path": "/select-opened-filter-scrolled",
-    "name": "SelectOpenedFilterScrolled"
+  "selectOpenedFilterNoResultsCompact": {
+    "path": "/select-opened-filter-no-results-compact",
+    "name": "SelectOpenedFilterNoResultsCompact"
   },
   "selectOpenedMaxHeight": {
     "path": "/select-opened-max-height",
