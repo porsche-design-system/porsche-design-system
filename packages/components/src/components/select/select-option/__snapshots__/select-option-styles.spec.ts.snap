@@ -2,7 +2,7 @@
 
 exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 ":host {
-  scroll-margin: 6px !important;
+  display: block;
 }
 :host([hidden]) {
   display: none !important;
@@ -78,7 +78,7 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 
 exports[`getComponentCss() should return correct css for theme: light 1`] = `
 ":host {
-  scroll-margin: 6px !important;
+  display: block;
 }
 :host([hidden]) {
   display: none !important;

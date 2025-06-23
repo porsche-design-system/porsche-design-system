@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: false, state: none, compact: false, theme: light and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: false, state: none, compact: false, hasFilter: false, theme: light and hasSlottedImage: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -72,9 +72,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
-    overflow: hidden auto;
-    scrollbar-width: thin;
-    scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: #FFF;
@@ -94,6 +91,62 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     display: grid;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #6B6D70;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #D8D8DB;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #010205;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .no-results--hidden {
+    display: none;
   }
   .icon {
     margin-inline-end: -3px;
@@ -152,10 +205,17 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: false, state: success, compact: false, theme: dark and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: false, state: success, compact: false, hasFilter: false, theme: dark and hasSlottedImage: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -227,9 +287,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
-    overflow: hidden auto;
-    scrollbar-width: thin;
-    scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: #212225;
@@ -249,6 +306,62 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     display: grid;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #88898C;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #404044;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #FBFCFF;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #7E7F82;
+  }
+  .no-results--hidden {
+    display: none;
   }
   .icon {
     margin-inline-end: -3px;
@@ -308,10 +421,17 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #FBFCFF;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: error, compact: false, theme: dark and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: error, compact: false, hasFilter: false, theme: dark and hasSlottedImage: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -383,9 +503,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
-    overflow: hidden auto;
-    scrollbar-width: thin;
-    scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: #212225;
@@ -405,6 +522,62 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     display: grid;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #88898C;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #404044;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #FBFCFF;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #7E7F82;
+  }
+  .no-results--hidden {
+    display: none;
   }
   .icon {
     margin-inline-end: -3px;
@@ -464,10 +637,17 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #FBFCFF;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: success, compact: false, theme: light and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: success, compact: false, hasFilter: false, theme: light and hasSlottedImage: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -539,9 +719,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
-    overflow: hidden auto;
-    scrollbar-width: thin;
-    scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: #FFF;
@@ -561,6 +738,62 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     display: grid;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #6B6D70;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #D8D8DB;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #010205;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .no-results--hidden {
+    display: none;
   }
   .icon {
     margin-inline-end: -3px;
@@ -620,10 +853,17 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: error, compact: false, theme: dark and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: error, compact: false, hasFilter: false, theme: dark and hasSlottedImage: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -686,9 +926,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
-    overflow: hidden auto;
-    scrollbar-width: thin;
-    scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: #212225;
@@ -702,6 +939,62 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     display: grid;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #88898C;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #404044;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #FBFCFF;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #7E7F82;
+  }
+  .no-results--hidden {
+    display: none;
   }
   .icon {
     margin-inline-end: -3px;
@@ -760,10 +1053,17 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #FBFCFF;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: false, theme: light and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: false, hasFilter: false, theme: light and hasSlottedImage: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -826,9 +1126,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
-    overflow: hidden auto;
-    scrollbar-width: thin;
-    scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: #FFF;
@@ -842,6 +1139,62 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     display: grid;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #6B6D70;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #D8D8DB;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #010205;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .no-results--hidden {
+    display: none;
   }
   .icon {
     margin-inline-end: -3px;
@@ -899,10 +1252,17 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: false, theme: light and hasSlottedImage: true 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: false, hasFilter: false, theme: light and hasSlottedImage: true 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -965,9 +1325,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
-    overflow: hidden auto;
-    scrollbar-width: thin;
-    scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: #FFF;
@@ -981,6 +1338,62 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     display: grid;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #6B6D70;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #D8D8DB;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #010205;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .no-results--hidden {
+    display: none;
   }
   .icon {
     margin-inline-end: -3px;
@@ -1038,10 +1451,17 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: true, theme: light and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: true, hasFilter: false, theme: light and hasSlottedImage: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1104,9 +1524,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     gap: max(2px, var(--p-internal-select-scaling, 0.5) * 8px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
-    overflow: hidden auto;
-    scrollbar-width: thin;
-    scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: #FFF;
@@ -1120,6 +1537,62 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     display: grid;
     gap: max(2px, var(--p-internal-select-scaling, 0.5) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 0.5) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 0.5) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 0.5) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 0.5) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 0.5) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #6B6D70;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #D8D8DB;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #010205;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .no-results--hidden {
+    display: none;
   }
   .icon {
     margin-inline-end: -3px;
@@ -1177,10 +1650,17 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: success, compact: false, theme: light and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: success, compact: false, hasFilter: false, theme: light and hasSlottedImage: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1243,9 +1723,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
-    overflow: hidden auto;
-    scrollbar-width: thin;
-    scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: #FFF;
@@ -1259,6 +1736,62 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     display: grid;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #6B6D70;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #D8D8DB;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #010205;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .no-results--hidden {
+    display: none;
   }
   .icon {
     margin-inline-end: -3px;
@@ -1317,10 +1850,17 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: error, compact: false, theme: dark and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: error, compact: false, hasFilter: false, theme: dark and hasSlottedImage: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1383,9 +1923,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
-    overflow: hidden auto;
-    scrollbar-width: thin;
-    scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: #212225;
@@ -1399,6 +1936,62 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     display: grid;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #88898C;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #404044;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #FBFCFF;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #7E7F82;
+  }
+  .no-results--hidden {
+    display: none;
   }
   .icon {
     margin-inline-end: -3px;
@@ -1457,10 +2050,17 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #FBFCFF;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: none, compact: false, theme: light and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: none, compact: false, hasFilter: false, theme: light and hasSlottedImage: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1523,9 +2123,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
-    overflow: hidden auto;
-    scrollbar-width: thin;
-    scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: #FFF;
@@ -1539,6 +2136,62 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     display: grid;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #6B6D70;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #D8D8DB;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #010205;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .no-results--hidden {
+    display: none;
   }
   .icon {
     margin-inline-end: -3px;
@@ -1596,10 +2249,17 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: success, compact: false, theme: dark and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: success, compact: false, hasFilter: false, theme: dark and hasSlottedImage: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1662,9 +2322,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
-    overflow: hidden auto;
-    scrollbar-width: thin;
-    scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: #212225;
@@ -1678,6 +2335,62 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     display: grid;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #88898C;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #404044;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #FBFCFF;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #7E7F82;
+  }
+  .no-results--hidden {
+    display: none;
   }
   .icon {
     margin-inline-end: -3px;
@@ -1736,10 +2449,17 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #FBFCFF;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: error, compact: false, theme: dark and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: error, compact: false, hasFilter: false, theme: dark and hasSlottedImage: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1811,9 +2531,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
-    overflow: hidden auto;
-    scrollbar-width: thin;
-    scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: #212225;
@@ -1833,6 +2550,62 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     display: grid;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #88898C;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #404044;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #FBFCFF;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #7E7F82;
+  }
+  .no-results--hidden {
+    display: none;
   }
   .icon {
     margin-inline-end: -3px;
@@ -1892,10 +2665,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #FBFCFF;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none, compact: false, theme: light and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none, compact: false, hasFilter: false, theme: light and hasSlottedImage: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1967,9 +2747,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
-    overflow: hidden auto;
-    scrollbar-width: thin;
-    scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: #FFF;
@@ -1989,6 +2766,62 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     display: grid;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #6B6D70;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #D8D8DB;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #010205;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .no-results--hidden {
+    display: none;
   }
   .icon {
     margin-inline-end: -3px;
@@ -2047,10 +2880,447 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: error, compact: false, theme: dark and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none, compact: false, hasFilter: true, theme: dark and hasSlottedImage: false 1`] = `
+"@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+  :host {
+    display: block;
+    color-scheme: light dark !important;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  ::slotted(*) {
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
+  }
+  :not(:defined,[data-ssr]) {
+    visibility: hidden;
+  }
+  button {
+    all: unset;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
+    min-width: 0;
+    height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    box-sizing: content-box;
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    cursor: pointer;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    color: var(--p-select-text-color, #FBFCFF);
+    background: var(--p-select-background-color, #0E0E12);
+    border: 2px solid var(--p-select-border-color, #FBFCFF);
+    border-radius: 4px;
+  }
+  button::-moz-focus-inner {
+    border: 0;
+  }
+  button:focus {
+    outline: 0;
+  }
+  button:focus-visible {
+    outline: 2px solid #1A44EA;
+    outline-offset: 2px;
+  }
+  button img {
+    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    width: auto;
+    height: calc(6px + 2.125ex);
+    border-radius: 4px;
+  }
+  button span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    max-height: max(calc(278px), calc(50vh - 54px / 2 - 6px * 2));
+    box-sizing: border-box;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #212225;
+    border: 1px solid #404044;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
+@media(hover:hover) {
+    button:hover, label:hover~button {
+      border-color: var(--p-select-border-color, #FBFCFF);
+    }
+}
+
+  .root {
+    display: grid;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
+    min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #88898C;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #404044;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #FBFCFF;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #7E7F82;
+  }
+  .no-results--hidden {
+    display: none;
+  }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .label {
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    cursor: pointer;
+    justify-self: flex-start;
+    color: #FBFCFF;
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+  .label:empty {
+    display: none;
+  }
+  .label+.label {
+    cursor: unset;
+    margin-top: -4px;
+    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+    color: #AFB0B3;
+  }
+  .required {
+    user-select: none;
+  }
+  .message {
+    display: flex;
+    gap: 4px;
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #FBFCFF;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none, compact: false, hasFilter: true, theme: light and hasSlottedImage: false 1`] = `
+"@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+  :host {
+    display: block;
+    color-scheme: light dark !important;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  ::slotted(*) {
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
+  }
+  :not(:defined,[data-ssr]) {
+    visibility: hidden;
+  }
+  button {
+    all: unset;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
+    min-width: 0;
+    height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    box-sizing: content-box;
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    cursor: pointer;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    color: var(--p-select-text-color, #010205);
+    background: var(--p-select-background-color, #FFF);
+    border: 2px solid var(--p-select-border-color, #010205);
+    border-radius: 4px;
+  }
+  button::-moz-focus-inner {
+    border: 0;
+  }
+  button:focus {
+    outline: 0;
+  }
+  button:focus-visible {
+    outline: 2px solid #1A44EA;
+    outline-offset: 2px;
+  }
+  button img {
+    font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    width: auto;
+    height: calc(6px + 2.125ex);
+    border-radius: 4px;
+  }
+  button span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    max-height: max(calc(278px), calc(50vh - 54px / 2 - 6px * 2));
+    box-sizing: border-box;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #FFF;
+    border: 1px solid #D8D8DB;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
+@media(hover:hover) {
+    button:hover, label:hover~button {
+      border-color: var(--p-select-border-color, #010205);
+    }
+}
+
+  .root {
+    display: grid;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
+    min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #6B6D70;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #D8D8DB;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #010205;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .no-results--hidden {
+    display: none;
+  }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .label {
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    cursor: pointer;
+    justify-self: flex-start;
+    color: #010205;
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+  .label:empty {
+    display: none;
+  }
+  .label+.label {
+    cursor: unset;
+    margin-top: -4px;
+    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+    color: #535457;
+  }
+  .required {
+    user-select: none;
+  }
+  .message {
+    display: flex;
+    gap: 4px;
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: error, compact: false, hasFilter: false, theme: dark and hasSlottedImage: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -2122,9 +3392,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
-    overflow: hidden auto;
-    scrollbar-width: thin;
-    scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: #212225;
@@ -2144,6 +3411,62 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     display: grid;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #88898C;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #404044;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #FBFCFF;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #7E7F82;
+  }
+  .no-results--hidden {
+    display: none;
   }
   .icon {
     margin-inline-end: -3px;
@@ -2203,10 +3526,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #FBFCFF;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: none, compact: false, theme: light and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: none, compact: false, hasFilter: false, theme: light and hasSlottedImage: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -2278,9 +3608,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
-    overflow: hidden auto;
-    scrollbar-width: thin;
-    scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: #FFF;
@@ -2300,6 +3627,62 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     display: grid;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #6B6D70;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #D8D8DB;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #010205;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .no-results--hidden {
+    display: none;
   }
   .icon {
     margin-inline-end: -3px;
@@ -2358,10 +3741,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success, compact: false, theme: dark and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success, compact: false, hasFilter: false, theme: dark and hasSlottedImage: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -2433,9 +3823,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
-    overflow: hidden auto;
-    scrollbar-width: thin;
-    scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: #212225;
@@ -2455,6 +3842,62 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     display: grid;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #88898C;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #404044;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #FBFCFF;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #7E7F82;
+  }
+  .no-results--hidden {
+    display: none;
   }
   .icon {
     margin-inline-end: -3px;
@@ -2514,10 +3957,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #FBFCFF;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success, compact: false, theme: light and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success, compact: false, hasFilter: false, theme: light and hasSlottedImage: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -2589,9 +4039,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
-    overflow: hidden auto;
-    scrollbar-width: thin;
-    scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: #FFF;
@@ -2611,6 +4058,62 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     display: grid;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #6B6D70;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #D8D8DB;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #010205;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .no-results--hidden {
+    display: none;
   }
   .icon {
     margin-inline-end: -3px;
@@ -2670,10 +4173,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: error, compact: false, theme: dark and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: error, compact: false, hasFilter: false, theme: dark and hasSlottedImage: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -2736,9 +4246,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
-    overflow: hidden auto;
-    scrollbar-width: thin;
-    scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: #212225;
@@ -2752,6 +4259,62 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     display: grid;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #88898C;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #404044;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #FBFCFF;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #7E7F82;
+  }
+  .no-results--hidden {
+    display: none;
   }
   .icon {
     margin-inline-end: -3px;
@@ -2810,10 +4373,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #FBFCFF;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: none, compact: false, theme: light and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: none, compact: false, hasFilter: false, theme: light and hasSlottedImage: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -2876,9 +4446,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
-    overflow: hidden auto;
-    scrollbar-width: thin;
-    scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: #FFF;
@@ -2892,6 +4459,62 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     display: grid;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #6B6D70;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #D8D8DB;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #010205;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .no-results--hidden {
+    display: none;
   }
   .icon {
     margin-inline-end: -3px;
@@ -2949,10 +4572,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success, compact: false, theme: dark and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success, compact: false, hasFilter: false, theme: dark and hasSlottedImage: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -3015,9 +4645,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
-    overflow: hidden auto;
-    scrollbar-width: thin;
-    scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: #212225;
@@ -3031,6 +4658,62 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     display: grid;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #88898C;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #404044;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #FBFCFF;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #7E7F82;
+  }
+  .no-results--hidden {
+    display: none;
   }
   .icon {
     margin-inline-end: -3px;
@@ -3089,10 +4772,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #FBFCFF;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success, compact: true, theme: dark and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success, compact: true, hasFilter: false, theme: dark and hasSlottedImage: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -3155,9 +4845,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     gap: max(2px, var(--p-internal-select-scaling, 0.5) * 8px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
-    overflow: hidden auto;
-    scrollbar-width: thin;
-    scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: #212225;
@@ -3171,6 +4858,62 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     display: grid;
     gap: max(2px, var(--p-internal-select-scaling, 0.5) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 0.5) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 0.5) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 0.5) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 0.5) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 0.5) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #88898C;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #404044;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #FBFCFF;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #7E7F82;
+  }
+  .no-results--hidden {
+    display: none;
   }
   .icon {
     margin-inline-end: -3px;
@@ -3229,10 +4972,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #FBFCFF;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: error, compact: false, theme: dark and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: error, compact: false, hasFilter: false, theme: dark and hasSlottedImage: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -3295,9 +5045,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
-    overflow: hidden auto;
-    scrollbar-width: thin;
-    scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: #212225;
@@ -3311,6 +5058,62 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     display: grid;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #88898C;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #404044;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #FBFCFF;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #7E7F82;
+  }
+  .no-results--hidden {
+    display: none;
   }
   .icon {
     margin-inline-end: -3px;
@@ -3369,10 +5172,17 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #FBFCFF;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: none, compact: false, theme: light and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: none, compact: false, hasFilter: false, theme: light and hasSlottedImage: false 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -3435,9 +5245,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
-    overflow: hidden auto;
-    scrollbar-width: thin;
-    scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: #FFF;
@@ -3451,6 +5258,62 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     display: grid;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #6B6D70;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #D8D8DB;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #010205;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .no-results--hidden {
+    display: none;
   }
   .icon {
     margin-inline-end: -3px;
@@ -3508,5 +5371,12 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }"
+  }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+"
 `;
