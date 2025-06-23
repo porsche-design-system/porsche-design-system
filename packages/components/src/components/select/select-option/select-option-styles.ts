@@ -12,7 +12,7 @@ export const getComponentCss = (theme: Theme): string => {
         display: 'block',
       },
       ...addImportantToEachRule({
-        ':host': hostHiddenStyles,
+        ':host': { ...hostHiddenStyles },
         '::slotted(img)': getButtonImageJssStyle,
       }),
       ...preventFoucOfNestedElementsStyles,
