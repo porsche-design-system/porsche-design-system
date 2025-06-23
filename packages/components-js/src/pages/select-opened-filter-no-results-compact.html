@@ -27,5 +27,6 @@
       .shadowRoot.querySelector('input');
     inputElement.value = 'no results';
     inputElement.dispatchEvent(new Event('input', { bubbles: true }));
+    inputElement.click();
   });
 </script>
