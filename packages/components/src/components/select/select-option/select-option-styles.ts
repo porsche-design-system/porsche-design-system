@@ -10,9 +10,11 @@ export const getComponentCss = (theme: Theme): string => {
     '@global': {
       ':host': {
         display: 'block',
+        ...addImportantToEachRule({
+          ...hostHiddenStyles,
+        }),
       },
       ...addImportantToEachRule({
-        ':host': { ...hostHiddenStyles },
         '::slotted(img)': getButtonImageJssStyle,
       }),
       ...preventFoucOfNestedElementsStyles,
