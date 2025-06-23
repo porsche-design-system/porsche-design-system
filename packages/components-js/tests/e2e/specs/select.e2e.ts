@@ -1761,10 +1761,40 @@ test.describe('lifecycle', () => {
     await option1.click();
     await waitForStencilLifecycle(page);
 
-    const status2 = await getLifecycleStatus(page);
-    expect(status2.componentDidUpdate['p-select-option'], 'componentDidUpdate: p-select-option').toBe(2);
-    expect(status2.componentDidUpdate['p-select'], 'componentDidUpdate: p-select').toBe(2);
-    expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(4);
+    // Use polling to fix flakiness
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate['p-select-option'];
+        },
+        {
+          message: 'componentDidUpdate: p-select-option',
+        }
+      )
+      .toBe(2);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate['p-select'];
+        },
+        {
+          message: 'componentDidUpdate: p-select',
+        }
+      )
+      .toBe(2);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate.all;
+        },
+        {
+          message: 'componentDidUpdate: all',
+        }
+      )
+      .toBe(4);
   });
 
   skipInBrowsers(['webkit'], () => {
