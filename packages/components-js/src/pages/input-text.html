@@ -21,7 +21,7 @@
 </style>
 
 <div class="playground light" title="should render with label">
-  <p-input-text name="some-name" label="Label" value="some-value" counter="true"></p-input-text>
+  <p-input-text name="some-name" label="Label" value="some-value" counter="true" max-length="20"></p-input-text>
 </div>
 
 <div class="playground light" title="should render with label and placeholder">
@@ -30,6 +30,7 @@
     label="Label with placeholder"
     placeholder="Some placeholder"
     counter="true"
+    max-length="20"
   ></p-input-text>
 </div>
 
@@ -40,6 +41,7 @@
     description="Some description"
     placeholder="Some placeholder"
     counter="true"
+    max-length="20"
   ></p-input-text>
 </div>
 
@@ -59,6 +61,7 @@
     hide-label="true"
     value="Without label and description"
     counter="true"
+    max-length="20"
   ></p-input-text>
 </div>
 
@@ -70,16 +73,18 @@
     hide-label="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
     value="Responsive label and description"
     counter="true"
+    max-length="20"
   ></p-input-text>
 </div>
 
 <div class="playground light" title="should render in required state">
-  <p-input-text name="some-name" label="Required" required="true" counter="true"></p-input-text>
+  <p-input-text name="some-name" label="Required" required="true" counter="true" max-length="20"></p-input-text>
   <p-input-text
     name="some-name"
     label="Required and insanely super long label across multiple lines"
     required="true"
     counter="true"
+    max-length="20"
   ></p-input-text>
 </div>
 
@@ -91,6 +96,7 @@
     value="some-value"
     disabled="true"
     counter="true"
+    max-length="20"
   ></p-input-text>
 </div>
 
@@ -101,6 +107,7 @@
     disabled="true"
     placeholder="Some placeholder"
     counter="true"
+    max-length="20"
   ></p-input-text>
 </div>
 
@@ -112,11 +119,12 @@
     value="some-value"
     read-only="true"
     counter="true"
+    max-length="20"
   ></p-input-text>
 </div>
 
 <div class="playground light" title="should render without counter">
-  <p-input-text name="some-name" label="Type counter=false" value="some-value"></p-input-text>
+  <p-input-text name="some-name" label="Type counter=false" max-length="20" value="some-value"></p-input-text>
 </div>
 
 <div class="playground light" title="should render with error state and error message">
@@ -126,11 +134,12 @@
     state="error"
     message="Error message"
     counter="true"
+    max-length="20"
   ></p-input-text>
 </div>
 
 <div class="playground light" title="should render with error state and no error message">
-  <p-input-text name="some-name" label="Error without message" state="error" counter="true"></p-input-text>
+  <p-input-text name="some-name" label="Error without message" state="error" counter="true" max-length="20"></p-input-text>
 </div>
 
 <div class="playground light" title="should render with success state and success message">
@@ -140,11 +149,12 @@
     state="success"
     message="Success message"
     counter="true"
+    max-length="20"
   ></p-input-text>
 </div>
 
 <div class="playground light" title="should render with success state and no success message">
-  <p-input-text name="some-name" label="Success without message" state="success" counter="true"></p-input-text>
+  <p-input-text name="some-name" label="Success without message" state="success" counter="true" max-length="20"></p-input-text>
 </div>
 
 <div class="playground light" title="should render with default state and no message">
@@ -154,11 +164,12 @@
     state="none"
     message="this message should be hidden"
     counter="true"
+    max-length="20"
   ></p-input-text>
 </div>
 
 <div class="playground light" title="should render label, description and message by slotted content with error state">
-  <p-input-text name="some-name" state="error" placeholder="Some placeholder" counter="true">
+  <p-input-text name="some-name" state="error" placeholder="Some placeholder" counter="true" max-length="20">
     <span slot="label">
       <span>
         Slotted label. And some slotted and deeply nested <a class="text-primary" href="#">anchor</a>, <b>bold</b>,
@@ -184,7 +195,7 @@
   class="playground light"
   title="should render label, description and message by slotted content with success state"
 >
-  <p-input-text name="some-name" state="success" placeholder="Some placeholder" counter="true">
+  <p-input-text name="some-name" state="success" placeholder="Some placeholder" counter="true" max-length="20">
     <span slot="label">
       <span>
         Slotted label. And some slotted and deeply nested <a class="text-primary" href="#">anchor</a>, <b>bold</b>,
@@ -216,18 +227,19 @@
     style="max-width: 15rem"
     value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr,"
     counter="true"
+    max-length="20"
   ></p-input-text>
 </div>
 
 <div class="playground light" title="should render with ellipsis and min-width in a smaller container">
   <div style="width: 0">
-    <p-input-text label="Some label" name="some-name" value="some-value" counter="true"></p-input-text>
-    <p-input-text label="Some label" name="some-name" value="some-value" counter="true"></p-input-text>
+    <p-input-text label="Some label" name="some-name" value="some-value" counter="true" max-length="20"></p-input-text>
+    <p-input-text label="Some label" name="some-name" value="some-value" counter="true" max-length="20"></p-input-text>
   </div>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render in compact mode">
-  <p-input-text label="Some label" compact="true" name="some-name" value="some-value" counter="true"></p-input-text>
+  <p-input-text label="Some label" compact="true" name="some-name" value="some-value" counter="true" max-length="20"></p-input-text>
   <p-input-text
     label="Some label"
     compact="true"
@@ -235,6 +247,7 @@
     value="some-value"
     disabled="true"
     counter="true"
+    max-length="20"
   ></p-input-text>
   <p-input-text
     compact="true"
@@ -242,6 +255,7 @@
     style="width: 15rem"
     name="some-name"
     counter="true"
+    max-length="20"
   ></p-input-text>
   <p-input-text
     compact="true"
@@ -250,8 +264,9 @@
     message="Some success message."
     name="some-name"
     counter="true"
+    max-length="20"
   ></p-input-text>
-  <p-input-text compact="true" label="Some label" name="some-name" counter="true">
+  <p-input-text compact="true" label="Some label" name="some-name" counter="true" max-length="20">
     <p-button-pure slot="start" hide-label="true" icon="information" class="input-button">Some label</p-button-pure>
     <p-button-pure slot="end" hide-label="true" icon="close" class="input-button">Some label</p-button-pure>
   </p-input-text>
@@ -264,13 +279,14 @@
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with scaling 0">
-  <p-input-text class="scaling-0" label="Some label" name="some-name" counter="true"></p-input-text>
+  <p-input-text class="scaling-0" label="Some label" name="some-name" counter="true" max-length="20"></p-input-text>
   <p-input-text
     class="scaling-0"
     label="Lorem ipsum dolor sit amet, consetetur sadipscing"
     style="width: 15rem"
     name="some-name"
     counter="true"
+    max-length="20"
   ></p-input-text>
   <p-input-text
     class="scaling-0"
@@ -281,13 +297,14 @@
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with scaling 0.5">
-  <p-input-text class="scaling-0-5" label="Some label" name="some-name" counter="true"></p-input-text>
+  <p-input-text class="scaling-0-5" label="Some label" name="some-name" counter="true" max-length="20"></p-input-text>
   <p-input-text
     class="scaling-0-5"
     label="Lorem ipsum dolor sit amet, consetetur sadipscing"
     style="width: 15rem"
     name="some-name"
     counter="true"
+    max-length="20"
   ></p-input-text>
   <p-input-text
     class="scaling-0-5"
@@ -298,13 +315,14 @@
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with scaling 0.8">
-  <p-input-text class="scaling-0-8" label="Some label" name="some-name" counter="true"></p-input-text>
+  <p-input-text class="scaling-0-8" label="Some label" name="some-name" counter="true" max-length="20"></p-input-text>
   <p-input-text
     class="scaling-0-8"
     label="Lorem ipsum dolor sit amet, consetetur sadipscing"
     style="width: 15rem"
     name="some-name"
     counter="true"
+    max-length="20"
   ></p-input-text>
   <p-input-text
     class="scaling-0-8"
@@ -315,13 +333,14 @@
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with scaling 1">
-  <p-input-text class="scaling-1" label="Some label" name="some-name" counter="true"></p-input-text>
+  <p-input-text class="scaling-1" label="Some label" name="some-name" counter="true" max-length="20"></p-input-text>
   <p-input-text
     class="scaling-1"
     label="Lorem ipsum dolor sit amet, consetetur sadipscing"
     style="width: 15rem"
     name="some-name"
     counter="true"
+    max-length="20"
   ></p-input-text>
   <p-input-text
     class="scaling-1"
@@ -332,13 +351,14 @@
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with scaling 2">
-  <p-input-text class="scaling-2" label="Some label" name="some-name" counter="true"></p-input-text>
+  <p-input-text class="scaling-2" label="Some label" name="some-name" counter="true" max-length="20"></p-input-text>
   <p-input-text
     class="scaling-2"
     label="Lorem ipsum dolor sit amet, consetetur sadipscing"
     style="width: 15rem"
     name="some-name"
     counter="true"
+    max-length="20"
   ></p-input-text>
   <p-input-text
     class="scaling-2"
@@ -349,7 +369,7 @@
 </div>
 
 <div class="playground light" title="should render with slot start">
-  <p-input-text name="some-name" label="Label" value="some-value" counter="true">
+  <p-input-text name="some-name" label="Label" value="some-value" counter="true" max-length="20">
     <p-text slot="start" color="contrast-medium" aria-hidden="true">EUR</p-text>
   </p-input-text>
 </div>
@@ -361,7 +381,7 @@
 </div>
 
 <div class="playground light" title="should render with slot end, controls and loading indicator">
-  <p-input-text name="some-name" label="Label" value="some-value" counter="true" loading="true">
+  <p-input-text name="some-name" label="Label" value="some-value" counter="true" max-length="20" loading="true">
     <p-button-pure slot="end" hide-label="true" icon="close" class="input-button">Some label</p-button-pure>
   </p-input-text>
 </div>
