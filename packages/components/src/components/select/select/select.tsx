@@ -38,6 +38,7 @@ import {
   attachComponentCss,
   getActionFromKeyboardEvent,
   getComboboxAriaAttributes,
+  getComboboxFilterAriaAttributes,
   getHasNativePopoverSupport,
   getHighlightedSelectOption,
   getHighlightedSelectOptionIndex,
@@ -342,6 +343,7 @@ export class Select {
               autoComplete="off"
               clear={true}
               compact={true}
+              {...getComboboxFilterAriaAttributes(popoverId)}
               onInput={this.onFilterInput}
               onKeyDown={this.onComboKeyDown}
               ref={(el: HTMLPInputSearchElement) => (this.filterInputElement = el)}
@@ -415,7 +417,8 @@ export class Select {
         );
         setNextSelectOptionHighlighted(this.selectOptions, highlightedOptionIndex);
         // @ts-ignore - HTMLCombobox type is missing
-        this.buttonElement.ariaActiveDescendantElement = getHighlightedSelectOption(this.selectOptions);
+        (this.filter ? this.filterInputElement : this.buttonElement).ariaActiveDescendantElement =
+          getHighlightedSelectOption(this.selectOptions);
         break;
       }
       case 'CloseSelect': {

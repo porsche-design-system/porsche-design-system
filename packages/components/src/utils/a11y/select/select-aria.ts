@@ -55,6 +55,15 @@ export const getComboboxAriaAttributes = (
   };
 };
 
+export const getComboboxFilterAriaAttributes = (dropdownId: string): AriaAttributes => {
+  return {
+    role: 'combobox',
+    'aria-autocomplete': 'list',
+    'aria-expanded': true,
+    'aria-controls': dropdownId,
+  };
+};
+
 // TODO: Change to aria-labelledby
 export const getListAriaAttributes = (
   label: string,
