@@ -341,7 +341,7 @@ export class Select {
               hideLabel={true}
               autoComplete="off"
               clear={true}
-              compact={this.compact}
+              compact={true}
               onInput={this.onFilterInput}
               onKeyDown={this.onComboKeyDown}
               ref={(el: HTMLPInputSearchElement) => (this.filterInputElement = el)}
