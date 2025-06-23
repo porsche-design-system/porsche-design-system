@@ -2,10 +2,13 @@ import { type Page, expect, test } from '@playwright/test';
 import { Components } from '@porsche-design-system/components';
 import {
   addEventListener,
+  clickElementPosition,
   getEventSummary,
   getFormDataValue,
   getHTMLAttributes,
   getLifecycleStatus,
+  removeAttribute,
+  setAttribute,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -18,6 +21,8 @@ const getInputText = (page: Page) => page.locator('p-input-text input');
 const getInputTextWrapper = (page: Page) => page.locator('p-input-text .wrapper');
 const getLabel = (page: Page) => page.locator('p-input-text label');
 const getForm = (page: Page) => page.locator('form');
+const getCounter = (page: Page) => page.locator('p-input-text .counter');
+const getLabelSrText = (page: Page) => page.locator('p-input-text label .sr-only');
 
 type InitOptions = {
   props?: Components.PInputText;
@@ -440,11 +445,10 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-input-text'], 'componentDidLoad: p-input-text').toBe(1);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(3);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
+    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
   });
 
   test('should work without unnecessary round trips after state change', async ({ page }) => {
@@ -461,7 +465,7 @@ test.describe('lifecycle', () => {
 
     expect(status.componentDidUpdate['p-input-text'], 'componentDidUpdate: input-text').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 
@@ -471,7 +475,7 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-input-text'], 'componentDidLoad: input-text').toBe(1);
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
 
     await setProperty(host, 'value', 10);
     await waitForStencilLifecycle(page);
@@ -483,5 +487,88 @@ test.describe('lifecycle', () => {
 });
 
 test.describe('Counter', () => {
-  // TODO
+  test('should focus input when counter text is clicked', async ({ page }) => {
+    await initInputText(page, { props: { name: 'some-name', counter: true, maxLength: 20 } });
+    const counter = getCounter(page);
+    const inputText = getInputText(page);
+
+    await addEventListener(inputText, 'focus');
+    expect((await getEventSummary(inputText, 'focus')).counter).toBe(0);
+
+    await clickElementPosition(page, counter);
+
+    expect((await getEventSummary(inputText, 'focus')).counter).toBe(1);
+  });
+
+  test('should display correct counter when typing', async ({ page }) => {
+    await initInputText(page, { props: { name: 'some-name', counter: true, maxLength: 20 } });
+    const counter = getCounter(page);
+    const inputText = getInputText(page);
+
+    expect(await counter.textContent()).toBe('0/20');
+    await inputText.fill('h');
+    await waitForStencilLifecycle(page);
+    expect(await counter.textContent()).toBe('1/20');
+    await inputText.fill('hello');
+    await waitForStencilLifecycle(page);
+    expect(await counter.textContent()).toBe('5/20');
+    await inputText.press('Backspace');
+    await waitForStencilLifecycle(page);
+    expect(await counter.textContent()).toBe('4/20');
+    await inputText.press('Backspace');
+    await inputText.press('Backspace');
+    await inputText.press('Backspace');
+    await inputText.press('Backspace');
+    await waitForStencilLifecycle(page);
+    expect(await counter.textContent()).toBe('0/20');
+  });
+
+  test('should display correct counter when dynamically changing input value', async ({ page }) => {
+    const maxLength = 20;
+    await initInputText(page, { props: { name: 'some-name', counter: true, maxLength } });
+    const counter = getCounter(page);
+    const inputText = getInputText(page);
+    const text1 = 'test string';
+    const text2 = 'test test string';
+
+    await setProperty(inputText, 'value', text1);
+    await waitForStencilLifecycle(page);
+
+    expect(await counter.textContent()).toBe(`${text1.length}/${maxLength}`);
+
+    await setProperty(inputText, 'value', text2);
+    await waitForStencilLifecycle(page);
+
+    expect(await counter.textContent()).toBe(`${text2.length}/${maxLength}`);
+  });
+
+  test('should render counter when counter is dynamically changed', async ({ page }) => {
+    await initInputText(page, { props: { name: 'some-name', counter: true, maxLength: 20 } });
+    const host = getHost(page);
+    await expect(page.getByText('0/20')).toBeVisible();
+
+    await setProperty(host, 'counter', false);
+    await waitForStencilLifecycle(page);
+
+    await expect(getCounter(page)).toHaveCount(0);
+
+    await setProperty(host, 'counter', true);
+    await waitForStencilLifecycle(page);
+
+    await expect(page.getByText('0/20')).toBeVisible();
+  });
+
+  test('should update counter label when maxlength is changed dynamically', async ({ page }) => {
+    await initInputText(page, { props: { name: 'some-name', counter: true, maxLength: 20 } });
+    const host = getHost(page);
+
+    await expect(page.getByText('0/20')).toBeVisible();
+    expect(getLabelSrText(page)).toBeDefined();
+
+    await setProperty(host, 'maxLength', '30');
+    await waitForStencilLifecycle(page);
+
+    await expect(page.getByText('0/30')).toBeVisible();
+    expect(getLabelSrText(page)).toBeDefined();
+  });
 });
