@@ -343,6 +343,7 @@ export class Select {
               autoComplete="off"
               clear={true}
               compact={true}
+              theme={this.theme}
               {...getComboboxFilterAriaAttributes(popoverId)}
               onInput={this.onFilterInput}
               onKeyDown={this.onComboKeyDown}
@@ -352,7 +353,7 @@ export class Select {
           <div class="options">
             {this.filter && !this.hasFilterResults && (
               <div class="no-results" aria-live="polite">
-                <span aria-hidden="true">---</span>
+                <span aria-hidden="true">–</span>
                 <span class="sr-only">No results found</span>
               </div>
             )}

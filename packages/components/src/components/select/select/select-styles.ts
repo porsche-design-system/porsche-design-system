@@ -3,7 +3,9 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   getHiddenTextJssStyle,
+  getThemedColors,
   hostHiddenStyles,
+  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import { formElementPaddingHorizontal, getCalculatedFormElementPaddingHorizontal } from '../../../styles/form-styles';
@@ -36,6 +38,8 @@ export const getComponentCss = (
   hasSlottedImage: boolean
 ): string => {
   const scalingVar = `var(${cssVarInternalSelectScaling}, ${compact ? 0.5 : 1})`;
+  const { contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
+  const { contrastMediumColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
@@ -67,7 +71,13 @@ export const getComponentCss = (
       minWidth: `calc(1rem + ${formElementPaddingHorizontal} + ${borderWidthBase} * 2 + ${getCalculatedFormElementPaddingHorizontal(1)})`,
     },
     options: getOptionListJssStyle(scalingVar),
-    'no-results': getOptionJssStyle('select-option', scalingVar, theme),
+    'no-results': {
+      ...getOptionJssStyle('select-option', scalingVar, theme),
+      color: contrastMediumColor,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: contrastMediumColorDark,
+      }),
+    },
     icon: getIconJssStyle('select', isOpen),
     'sr-only': getHiddenTextJssStyle(),
     // .label / .required
