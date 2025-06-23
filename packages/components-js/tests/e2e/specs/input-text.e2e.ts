@@ -15,8 +15,6 @@ import {
 const getHost = (page: Page) => page.locator('p-input-text');
 const getFieldset = (page: Page) => page.locator('fieldset');
 const getInputText = (page: Page) => page.locator('p-input-text input');
-const getInputTextDecrement = (page: Page) => page.locator('p-input-text p-button-pure').nth(0);
-const getInputTextIncrement = (page: Page) => page.locator('p-input-text p-button-pure').nth(1);
 const getInputTextWrapper = (page: Page) => page.locator('p-input-text .wrapper');
 const getLabel = (page: Page) => page.locator('p-input-text label');
 const getForm = (page: Page) => page.locator('form');
@@ -308,66 +306,6 @@ test.describe('form', () => {
     await expect(host).toHaveJSProperty('disabled', false);
     await expect(inputText).toHaveJSProperty('disabled', false);
   });
-
-  test('should update form value correctly when value is changed via controls (stepUp)', async ({ page }) => {
-    const name = 'name';
-    await initInputText(page, {
-      props: { name, label: 'Some label', controls: true, step: 5 },
-      isWithinForm: true,
-      markupAfter: `
-        <button type="submit">Submit</button>
-        <button type="reset">Reset</button>
-      `,
-    });
-    const form = getForm(page);
-    await addEventListener(form, 'submit');
-    const host = getHost(page);
-    const inputText = getInputText(page);
-    const inputTextIncrement = getInputTextIncrement(page);
-
-    await expect(host).toHaveJSProperty('value', '');
-    await expect(inputText).toHaveValue('');
-
-    await inputTextIncrement.click();
-
-    await expect(host).toHaveJSProperty('value', '5');
-    await expect(inputText).toHaveValue('5');
-
-    await page.locator('button[type="submit"]').click(); // Check if ElementInternal value was reset as well
-
-    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
-    expect(await getFormDataValue(form, name)).toBe('5');
-  });
-
-  test('should update form value correctly when value is changed via controls (stepDown)', async ({ page }) => {
-    const name = 'name';
-    await initInputText(page, {
-      props: { name, label: 'Some label', controls: true, step: 5 },
-      isWithinForm: true,
-      markupAfter: `
-        <button type="submit">Submit</button>
-        <button type="reset">Reset</button>
-      `,
-    });
-    const form = getForm(page);
-    await addEventListener(form, 'submit');
-    const host = getHost(page);
-    const inputText = getInputText(page);
-    const inputTextDecrement = getInputTextDecrement(page);
-
-    await expect(host).toHaveJSProperty('value', '');
-    await expect(inputText).toHaveValue('');
-
-    await inputTextDecrement.click();
-
-    await expect(host).toHaveJSProperty('value', '-5');
-    await expect(inputText).toHaveValue('-5');
-
-    await page.locator('button[type="submit"]').click(); // Check if ElementInternal value was reset as well
-
-    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
-    expect(await getFormDataValue(form, name)).toBe('-5');
-  });
 });
 
 test.describe('focus state', () => {
@@ -464,30 +402,6 @@ test.describe('Event', () => {
 
     expect((await getEventSummary(host, 'input')).counter).toBe(1);
   });
-  test('should trigger an input and change event when the controls are clicked', async ({ page }) => {
-    await initInputText(page, { props: { name: 'some-name', controls: true } });
-    const inputText = getInputText(page);
-    const host = getHost(page);
-    const inputTextIncrement = getInputTextIncrement(page);
-    const inputTextDecrement = getInputTextDecrement(page);
-
-    await addEventListener(host, 'input');
-    await addEventListener(host, 'change');
-    expect((await getEventSummary(host, 'input')).counter).toBe(0);
-    expect((await getEventSummary(host, 'change')).counter).toBe(0);
-
-    await inputTextIncrement.click();
-
-    await expect(inputText).toHaveValue('1');
-    expect((await getEventSummary(host, 'input')).counter).toBe(1);
-    expect((await getEventSummary(host, 'change')).counter).toBe(1);
-
-    await inputTextDecrement.click();
-
-    await expect(inputText).toHaveValue('0');
-    expect((await getEventSummary(host, 'input')).counter).toBe(2);
-    expect((await getEventSummary(host, 'change')).counter).toBe(2);
-  });
 });
 
 test.describe('hover state', () => {
@@ -518,7 +432,7 @@ test.describe('hover state', () => {
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {
     await initInputText(page, {
-      props: { name: 'some-name', state: 'error', controls: true },
+      props: { name: 'some-name', state: 'error', counter: true },
       useSlottedLabel: true,
       useSlottedMessage: true,
       useSlottedDescription: true,
@@ -535,7 +449,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips after state change', async ({ page }) => {
     await initInputText(page, {
-      props: { name: 'some-name', state: 'error', controls: true },
+      props: { name: 'some-name', state: 'error', counter: true },
       useSlottedLabel: true,
       useSlottedMessage: true,
       useSlottedDescription: true,
@@ -552,7 +466,7 @@ test.describe('lifecycle', () => {
   });
 
   test('should work without unnecessary round trips after value change', async ({ page }) => {
-    await initInputText(page, { props: { name: 'some-name', state: 'error', controls: true } });
+    await initInputText(page, { props: { name: 'some-name', state: 'error', counter: true } });
     const host = getHost(page);
     const status = await getLifecycleStatus(page);
 
@@ -568,87 +482,6 @@ test.describe('lifecycle', () => {
   });
 });
 
-test.describe('Controls', () => {
-  test('should increment value by step', async ({ page }) => {
-    await initInputText(page, { props: { name: 'some-name', label: 'Some label', controls: true, step: 5 } });
-    const host = getHost(page);
-    const inputText = getInputText(page);
-    const inputTextIncrement = getInputTextIncrement(page);
-
-    await setProperty(host, 'value', 10);
-    await expect(inputText).toHaveValue('10');
-
-    await inputTextIncrement.click();
-
-    await expect(inputText).toBeFocused();
-    await expect(host).toHaveJSProperty('value', '15');
-    await expect(inputText).toHaveValue('15');
-  });
-
-  test('should decrement value by step', async ({ page }) => {
-    await initInputText(page, { props: { name: 'some-name', label: 'Some label', controls: true, step: 5 } });
-    const host = getHost(page);
-    const inputText = getInputText(page);
-    const inputTextDecrement = getInputTextDecrement(page);
-
-    await setProperty(host, 'value', 10);
-    await expect(inputText).toHaveValue('10');
-
-    await inputTextDecrement.click();
-
-    await expect(inputText).toBeFocused();
-    await expect(host).toHaveJSProperty('value', '5');
-    await expect(inputText).toHaveValue('5');
-  });
-
-  test('should not decrement value below min', async ({ page }) => {
-    await initInputText(page, { props: { name: 'some-name', label: 'Some label', controls: true, step: 3, min: 2 } });
-    const host = getHost(page);
-    const inputText = getInputText(page);
-    const inputTextDecrement = getInputTextDecrement(page);
-
-    await setProperty(host, 'value', 6);
-    await expect(inputText).toHaveValue('6');
-
-    await inputTextDecrement.click();
-
-    await expect(inputText).toBeFocused();
-    // stepDown from native input chooses next value starting from min + step
-    await expect(host).toHaveJSProperty('value', '5');
-    await expect(inputText).toHaveValue('5');
-
-    await inputTextDecrement.click();
-
-    await expect(inputText).toBeFocused();
-    await expect(host).toHaveJSProperty('value', '2');
-    await expect(inputText).toHaveValue('2');
-
-    await inputTextDecrement.click();
-
-    await expect(inputText).toBeFocused();
-    await expect(host).toHaveJSProperty('value', '2');
-    await expect(inputText).toHaveValue('2');
-  });
-
-  test('should not increment value above max', async ({ page }) => {
-    await initInputText(page, { props: { name: 'some-name', label: 'Some label', controls: true, step: 3, max: 8 } });
-    const host = getHost(page);
-    const inputText = getInputText(page);
-    const inputTextIncrement = getInputTextIncrement(page);
-
-    await setProperty(host, 'value', 3);
-    await expect(inputText).toHaveValue('3');
-
-    await inputTextIncrement.click();
-
-    await expect(inputText).toBeFocused();
-    await expect(host).toHaveJSProperty('value', '6');
-    await expect(inputText).toHaveValue('6');
-
-    await inputTextIncrement.click();
-
-    await expect(inputText).toBeFocused();
-    await expect(host).toHaveJSProperty('value', '6');
-    await expect(inputText).toHaveValue('6');
-  });
+test.describe('Counter', () => {
+  // TODO
 });
