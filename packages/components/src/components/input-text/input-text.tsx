@@ -11,15 +11,7 @@ import {
   h,
 } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import {
-  AllowedTypes,
-  FORM_STATES,
-  THEMES,
-  attachComponentCss,
-  getPrefixedTagNames,
-  hasPropValueChanged,
-  validateProps,
-} from '../../utils';
+import { AllowedTypes, FORM_STATES, THEMES, attachComponentCss, hasPropValueChanged, validateProps } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-text-styles';
 import {
@@ -37,15 +29,15 @@ const propTypes: PropTypes<typeof InputText> = {
   placeholder: AllowedTypes.string,
   name: AllowedTypes.string,
   value: AllowedTypes.string,
-  step: AllowedTypes.number,
-  controls: AllowedTypes.boolean,
+  spellCheck: AllowedTypes.boolean,
+  counter: AllowedTypes.boolean,
   required: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
-  max: AllowedTypes.number,
-  min: AllowedTypes.number,
+  maxLength: AllowedTypes.number,
+  minLength: AllowedTypes.number,
   form: AllowedTypes.string,
-  autoComplete: AllowedTypes.oneOf<InputTextAutoComplete>(INPUT_TEXT_AUTO_COMPLETE),
+  autoComplete: AllowedTypes.oneOf<InputTextAutoComplete>([...INPUT_TEXT_AUTO_COMPLETE, undefined]),
   state: AllowedTypes.oneOf<InputTextState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
@@ -72,45 +64,45 @@ export class InputText {
   /** The label text. */
   @Prop() public label?: string = '';
 
-  /** The granularity that the value must adhere to. */
-  @Prop() public step?: number = 1;
+  /** Indicate whether to enable spell-checking. */
+  @Prop() public spellCheck?: boolean = false;
 
   /** The description text. */
   @Prop() public description?: string = '';
 
-  /** Displays as compact version. */
+  /** Displays as a compact version. */
   @Prop() public compact?: boolean = false;
 
-  /** The name of the number input. */
+  /** The name of the text input. */
   @Prop({ reflect: true }) public name: string;
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** The number input value. */
+  /** The text input value. */
   @Prop({ mutable: true }) public value?: string = '';
 
   /** Specifies whether the input can be autofilled by the browser */
-  @Prop() public autoComplete?: InputTextAutoComplete = '';
+  @Prop() public autoComplete?: InputTextAutoComplete;
 
-  /** Specifies whether the number input should be read-only. */
+  /** Specifies whether the text input should be read-only. */
   @Prop() public readOnly?: boolean = false;
 
-  /** The id of a form element the number input should be associated with. */
+  /** The id of a form element the text input should be associated with. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** The max value of the number input. */
-  @Prop() public max?: number;
+  /** The max length of the text input. */
+  @Prop() public maxLength?: number;
 
-  /** The min value of the number input. */
-  @Prop() public min?: number;
+  /** The min length of the text input. */
+  @Prop() public minLength?: number;
 
   /** The placeholder text. */
   @Prop() public placeholder?: string = '';
 
-  /** Marks the number input as disabled. */
+  /** Marks the text input as disabled. */
   @Prop() public disabled?: boolean = false;
 
-  /** Marks the number input as required. */
+  /** Marks the text input as required. */
   @Prop() public required?: boolean = false;
 
   /** @experimental Shows a loading indicator. */
@@ -122,19 +114,19 @@ export class InputText {
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
 
-  /** Show or hide label and description text. For better accessibility it is recommended to show the label. */
+  /** Show or hide label and description text. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  /** Show or hide the increment/decrement stepper controls. */
-  @Prop() public controls?: boolean = false;
+  /** Show or hide the character counter. */
+  @Prop() public counter?: boolean = false;
 
-  /** Emitted when the number input loses focus after its value was changed. */
+  /** Emitted when the text input loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<InputTextChangeEventDetail>;
 
-  /** Emitted when the number input has lost focus. */
+  /** Emitted when the text input has lost focus. */
   @Event({ bubbles: false }) public blur: EventEmitter<InputTextBlurEventDetail>;
 
   /** Emitted when the value has been changed as a direct result of a user action. */
@@ -203,29 +195,27 @@ export class InputText {
       this.compact,
       this.readOnly,
       this.theme,
-      this.controls
+      this.counter
     );
-
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <InputBase
         host={this.host}
         label={this.label}
         description={this.description}
-        id="input-number"
+        id="input-text"
         refElement={(el: HTMLInputElement) => (this.inputElement = el)}
-        onWheel={(e) => (e.target as HTMLInputElement).blur()} // prevent React default scroll-to-[increment|decrement] on number inputs
+        onWheel={(e) => (e.target as HTMLInputElement).blur()} // prevent React default scroll-to-[increment|decrement] on text inputs
         onInput={this.onInput}
         onChange={this.onChange}
         onBlur={this.onBlur}
         name={this.name}
         form={this.form}
-        type="number"
+        type="text"
         required={this.required}
         placeholder={this.placeholder}
-        max={this.max}
-        min={this.min}
+        maxLength={this.maxLength}
+        minLength={this.minLength}
         value={this.value}
         readOnly={this.readOnly}
         autoComplete={this.autoComplete}
@@ -233,39 +223,22 @@ export class InputText {
         state={this.state}
         message={this.message}
         theme={this.theme}
-        step={this.step}
+        spellCheck={this.spellCheck}
         loading={this.loading}
         initialLoading={this.initialLoading}
-        {...(this.controls && {
-          end: (
-            <Fragment>
-              <PrefixedTagNames.pButtonPure
-                tabIndex={-1}
-                hideLabel={true}
-                theme={this.theme}
-                class="button"
-                type="button"
-                icon="minus"
-                disabled={this.disabled || this.readOnly}
-                onClick={() => this.onStep('down')}
-              >
-                Decrement value by {this.step}
-              </PrefixedTagNames.pButtonPure>
-              <PrefixedTagNames.pButtonPure
-                tabIndex={-1}
-                hideLabel={true}
-                theme={this.theme}
-                class="button"
-                type="button"
-                icon="plus"
-                disabled={this.disabled || this.readOnly}
-                onClick={() => this.onStep('up')}
-              >
-                Increment value by {this.step}
-              </PrefixedTagNames.pButtonPure>
-            </Fragment>
-          ),
-        })}
+        {...(this.counter &&
+          this.maxLength && {
+            end: (
+              <Fragment>
+                <span class="sr-only" aria-live="polite">
+                  {`You have ${this.maxLength - this.value.length} out of ${this.maxLength} characters left`}
+                </span>
+                <span class="counter" aria-hidden="true" onClick={() => this.inputElement.focus()}>
+                  {this.value.length}/{this.maxLength}
+                </span>
+              </Fragment>
+            ),
+          })}
       />
     );
   }
@@ -288,13 +261,5 @@ export class InputText {
     const target = e.target as HTMLInputElement;
     this.value = target.value; // triggers value watcher
     this.input.emit(e);
-  };
-
-  private onStep = (step: 'up' | 'down'): void => {
-    this.inputElement[step === 'up' ? 'stepUp' : 'stepDown']();
-    // Triggers onInput/onChange functions
-    this.inputElement.dispatchEvent(new window.InputEvent('input', { bubbles: true, composed: true }));
-    this.inputElement.dispatchEvent(new window.Event('change', { bubbles: true, composed: true }));
-    this.inputElement.focus();
   };
 }

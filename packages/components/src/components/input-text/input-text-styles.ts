@@ -1,11 +1,9 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
 import { getCss } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
-import {
-  cssVarButtonPureMargin,
-  cssVarButtonPurePadding,
-  getFunctionalComponentInputBaseStyles,
-} from '../common/input-base/input-base-styles';
+import { getFunctionalComponentInputBaseStyles } from '../common/input-base/input-base-styles';
+import { getUnitCounterJssStyle } from '../../styles/form-styles';
+import { getHiddenTextJssStyle } from '../../styles';
 
 // CSS Variables defined in base input
 /**
@@ -23,7 +21,7 @@ export const getComponentCss = (
   compact: boolean,
   readOnly: boolean,
   theme: Theme,
-  controls: boolean
+  counter: boolean
 ): string => {
   return getCss({
     ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, theme, {
@@ -33,11 +31,12 @@ export const getComponentCss = (
         WebkitAppearance: 'none',
       },
     }),
-    ...(controls && {
-      button: {
-        padding: `var(${cssVarButtonPurePadding})`,
-        margin: `var(${cssVarButtonPureMargin})`,
+    ...(counter && {
+      counter: {
+        ...getUnitCounterJssStyle(disabled, readOnly, theme),
+        cursor: 'text',
       },
     }),
+    'sr-only': getHiddenTextJssStyle(),
   });
 };
