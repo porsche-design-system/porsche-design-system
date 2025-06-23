@@ -1062,7 +1062,7 @@ export namespace Components {
          */
         "autoComplete"?: InputNumberAutoComplete;
         /**
-          * Displays as compact version.
+          * Displays as a compact version.
          */
         "compact"?: boolean;
         /**
@@ -1082,7 +1082,7 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * Show or hide label and description text. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -1144,7 +1144,7 @@ export namespace Components {
          */
         "autoComplete"?: InputPasswordAutoComplete;
         /**
-          * Displays as compact version.
+          * Displays as a compact version.
          */
         "compact"?: boolean;
         /**
@@ -1226,7 +1226,7 @@ export namespace Components {
          */
         "clear"?: boolean;
         /**
-          * Displays as compact version.
+          * Displays as a compact version.
          */
         "compact"?: boolean;
         /**
@@ -1296,27 +1296,27 @@ export namespace Components {
          */
         "autoComplete"?: InputTextAutoComplete;
         /**
-          * Displays as compact version.
+          * Displays as a compact version.
          */
         "compact"?: boolean;
         /**
-          * Show or hide the increment/decrement stepper controls.
+          * Show or hide the character counter.
          */
-        "controls"?: boolean;
+        "counter"?: boolean;
         /**
           * The description text.
          */
         "description"?: string;
         /**
-          * Marks the number input as disabled.
+          * Marks the text input as disabled.
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the number input should be associated with.
+          * The id of a form element the text input should be associated with.
          */
         "form"?: string;
         /**
-          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * Show or hide label and description text. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -1328,19 +1328,19 @@ export namespace Components {
          */
         "loading"?: boolean;
         /**
-          * The max value of the number input.
+          * The max length of the text input.
          */
-        "max"?: number;
+        "maxLength"?: number;
         /**
           * The message styled depending on validation state.
          */
         "message"?: string;
         /**
-          * The min value of the number input.
+          * The min length of the text input.
          */
-        "min"?: number;
+        "minLength"?: number;
         /**
-          * The name of the number input.
+          * The name of the text input.
          */
         "name": string;
         /**
@@ -1348,27 +1348,27 @@ export namespace Components {
          */
         "placeholder"?: string;
         /**
-          * Specifies whether the number input should be read-only.
+          * Specifies whether the text input should be read-only.
          */
         "readOnly"?: boolean;
         /**
-          * Marks the number input as required.
+          * Marks the text input as required.
          */
         "required"?: boolean;
+        /**
+          * Indicate whether to enable spell-checking.
+         */
+        "spellCheck"?: boolean;
         /**
           * The validation state.
          */
         "state"?: InputTextState;
         /**
-          * The granularity that the value must adhere to.
-         */
-        "step"?: number;
-        /**
           * Adapts the color depending on the theme.
          */
         "theme"?: Theme;
         /**
-          * The number input value.
+          * The text input value.
          */
         "value"?: string;
     }
@@ -2569,7 +2569,7 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * Show or hide label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -2609,7 +2609,7 @@ export namespace Components {
          */
         "resize"?: TextareaResize;
         /**
-          * The amount of rows of the textarea.
+          * The number of rows of the textarea.
          */
         "rows"?: number;
         /**
@@ -4804,7 +4804,7 @@ declare namespace LocalJSX {
          */
         "autoComplete"?: InputNumberAutoComplete;
         /**
-          * Displays as compact version.
+          * Displays as a compact version.
          */
         "compact"?: boolean;
         /**
@@ -4824,7 +4824,7 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * Show or hide label and description text. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -4898,7 +4898,7 @@ declare namespace LocalJSX {
          */
         "autoComplete"?: InputPasswordAutoComplete;
         /**
-          * Displays as compact version.
+          * Displays as a compact version.
          */
         "compact"?: boolean;
         /**
@@ -4992,7 +4992,7 @@ declare namespace LocalJSX {
          */
         "clear"?: boolean;
         /**
-          * Displays as compact version.
+          * Displays as a compact version.
          */
         "compact"?: boolean;
         /**
@@ -5074,27 +5074,27 @@ declare namespace LocalJSX {
          */
         "autoComplete"?: InputTextAutoComplete;
         /**
-          * Displays as compact version.
+          * Displays as a compact version.
          */
         "compact"?: boolean;
         /**
-          * Show or hide the increment/decrement stepper controls.
+          * Show or hide the character counter.
          */
-        "controls"?: boolean;
+        "counter"?: boolean;
         /**
           * The description text.
          */
         "description"?: string;
         /**
-          * Marks the number input as disabled.
+          * Marks the text input as disabled.
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the number input should be associated with.
+          * The id of a form element the text input should be associated with.
          */
         "form"?: string;
         /**
-          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * Show or hide label and description text. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -5106,27 +5106,27 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
-          * The max value of the number input.
+          * The max length of the text input.
          */
-        "max"?: number;
+        "maxLength"?: number;
         /**
           * The message styled depending on validation state.
          */
         "message"?: string;
         /**
-          * The min value of the number input.
+          * The min length of the text input.
          */
-        "min"?: number;
+        "minLength"?: number;
         /**
-          * The name of the number input.
+          * The name of the text input.
          */
         "name"?: string;
         /**
-          * Emitted when the number input has lost focus.
+          * Emitted when the text input has lost focus.
          */
         "onBlur"?: (event: PInputTextCustomEvent<InputTextBlurEventDetail>) => void;
         /**
-          * Emitted when the number input loses focus after its value was changed.
+          * Emitted when the text input loses focus after its value was changed.
          */
         "onChange"?: (event: PInputTextCustomEvent<InputTextChangeEventDetail>) => void;
         /**
@@ -5138,27 +5138,27 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
         /**
-          * Specifies whether the number input should be read-only.
+          * Specifies whether the text input should be read-only.
          */
         "readOnly"?: boolean;
         /**
-          * Marks the number input as required.
+          * Marks the text input as required.
          */
         "required"?: boolean;
+        /**
+          * Indicate whether to enable spell-checking.
+         */
+        "spellCheck"?: boolean;
         /**
           * The validation state.
          */
         "state"?: InputTextState;
         /**
-          * The granularity that the value must adhere to.
-         */
-        "step"?: number;
-        /**
           * Adapts the color depending on the theme.
          */
         "theme"?: Theme;
         /**
-          * The number input value.
+          * The text input value.
          */
         "value"?: string;
     }
@@ -6463,7 +6463,7 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * Show or hide label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -6515,7 +6515,7 @@ declare namespace LocalJSX {
          */
         "resize"?: TextareaResize;
         /**
-          * The amount of rows of the textarea.
+          * The number of rows of the textarea.
          */
         "rows"?: number;
         /**
