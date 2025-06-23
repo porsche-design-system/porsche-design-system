@@ -13260,7 +13260,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
         <input
           aria-describedby="description message"
           aria-readonly="true"
-          autocomplete=""
           id="input-number"
           placeholder=""
           readonly=""
@@ -13411,7 +13410,6 @@ input[type="text"] {
         <input
           aria-describedby="description message"
           aria-readonly="true"
-          autocomplete=""
           id="input-password"
           placeholder=""
           readonly=""
@@ -13608,7 +13606,6 @@ img {
         <input
           aria-describedby="description message"
           aria-readonly="true"
-          autocomplete=""
           id="input-search"
           placeholder=""
           readonly=""
@@ -21777,7 +21774,6 @@ textarea[readonly] {
       >
         <textarea
           aria-describedby="description message"
-          autocomplete=""
           id="textarea"
           placeholder=""
           readonly=""
