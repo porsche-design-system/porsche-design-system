@@ -395,7 +395,7 @@ export class Select {
     const { key, code } = event;
 
     // When pressing space in filter input, we want to allow typing space
-    if ((this.filter && key === ' ') || code === 'Space') {
+    if (this.filter && (key === ' ' || code === 'Space')) {
       return;
     }
 
