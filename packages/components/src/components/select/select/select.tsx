@@ -350,7 +350,7 @@ export class Select {
               ref={(el: HTMLPInputSearchElement) => (this.filterInputElement = el)}
             />
           )}
-          <div class="options">
+          <div class="options" tabIndex={-1}>
             {this.filter && !this.hasFilterResults && (
               <div class="no-results" aria-live="polite">
                 <span aria-hidden="true">–</span>
