@@ -13,15 +13,16 @@
     <span> </span>
     <p-icon class="icon hydrated" aria-hidden="true"> </p-icon>
   </button>
-  <div
-    id="list"
-    popover="manual"
-    tabindex="-1"
-    role="listbox"
-    aria-label=""
-    aria-hidden="true"
-  >
-    <slot> </slot>
+  <div id="list" popover="manual" tabindex="-1" role="dialog" aria-label="">
+    <div
+      class="options"
+      tabindex="-1"
+      role="listbox"
+      aria-label=""
+      aria-hidden="true"
+    >
+      <slot> </slot>
+    </div>
   </div>
   <span id="message" class="message" role="alert"> </span>
 </div>
