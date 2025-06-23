@@ -767,6 +767,7 @@ $&`
           .replace(/maxlength/, 'maxLength')
           .replace(/minlength/, 'minLength')
           .replace(/readonly/, 'readOnly')
+          .replace(/spellcheck/, 'spellCheck')
           .replace(/autocomplete/, 'autoComplete')
           .replace(/\s*refElement=\{[^}]*}/g, '')
           .replace(/onBlur=\{this\.props\.onBlur}/g, '')
