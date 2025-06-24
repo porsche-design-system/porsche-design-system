@@ -18,8 +18,6 @@ import {
   attachComponentCss,
   hasPropValueChanged,
   validateProps,
-  observeProperties,
-  updateCounter,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-text-styles';
@@ -145,8 +143,6 @@ export class InputText {
 
   private initialLoading: boolean = false;
   private inputElement: HTMLInputElement;
-  private counterElement: HTMLElement;
-  private ariaElement: HTMLSpanElement;
   private defaultValue: string;
 
   @Watch('value')
@@ -191,14 +187,6 @@ export class InputText {
 
   public componentDidRender(): void {
     this.internals?.setValidity(this.inputElement.validity, this.inputElement.validationMessage, this.inputElement);
-    if (this.counter) {
-      updateCounter(this.inputElement, this.ariaElement, this.counterElement);
-
-      // When value changes programmatically
-      observeProperties(this.inputElement, ['value', 'maxLength'], () => {
-        updateCounter(this.inputElement, this.ariaElement, this.counterElement);
-      });
-    }
   }
 
   public render(): JSX.Element {
@@ -249,13 +237,12 @@ export class InputText {
           this.maxLength && {
             end: (
               <Fragment>
-                <span class="sr-only" ref={(el) => (this.ariaElement = el)} aria-live="polite" />
-                <span
-                  class="counter"
-                  aria-hidden="true"
-                  ref={(el) => (this.counterElement = el)}
-                  onClick={() => this.inputElement.focus()}
-                />
+                <span class="sr-only" aria-live="polite">
+                  {`You have ${this.maxLength - this.value.length} out of ${this.maxLength} characters left`}
+                </span>
+                <span class="counter" aria-hidden="true" onClick={() => this.inputElement.focus()}>
+                  {this.value.length}/{this.maxLength}
+                </span>
               </Fragment>
             ),
           })}
