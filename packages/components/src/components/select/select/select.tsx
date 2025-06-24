@@ -291,7 +291,8 @@ export class Select {
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const buttonId = 'value';
-    const popoverId = 'list';
+    const popoverId = 'popover';
+    const listId = 'list';
     const descriptionId = this.description ? 'description' : undefined;
     const selectMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
     const ariaDescribedBy = [descriptionId, selectMessageId].filter(Boolean).join(' ');
@@ -345,13 +346,13 @@ export class Select {
               clear={true}
               compact={true}
               theme={this.theme}
-              {...getComboboxFilterAriaAttributes(popoverId)}
+              {...getComboboxFilterAriaAttributes(listId)}
               onInput={this.onFilterInput}
               onKeyDown={this.onComboKeyDown}
               ref={(el: HTMLPInputSearchElement) => (this.filterInputElement = el)}
             />
           )}
-          <div class="options" tabIndex={-1} {...getListAriaAttributes(this.label, this.required, false, this.isOpen)}>
+          <div class="options" id={listId} {...getListAriaAttributes(this.label, this.required, false, this.isOpen)}>
             {this.filter && !this.hasFilterResults && (
               <div class="no-results" aria-live="polite" role="option">
                 <span aria-hidden="true">–</span>
