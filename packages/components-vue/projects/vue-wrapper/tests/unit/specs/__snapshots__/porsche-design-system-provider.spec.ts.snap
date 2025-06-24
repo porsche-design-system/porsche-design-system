@@ -1,5 +1,31 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`PorscheDesignSystemProvider > should render components wrapped with nested provider and prefix 1`] = `
+<div>
+  
+  <my-prefix-p-button>
+    
+    Some label
+    
+  </my-prefix-p-button>
+  
+  <another-prefix-p-button>
+    
+    Some label
+    
+  </another-prefix-p-button>
+  
+  <p-button>
+    
+    Some label
+    
+  </p-button>
+  
+  
+  
+</div>
+`;
+
 exports[`should render components wrapped with nested provider and prefix 1`] = `
 <div>
   
