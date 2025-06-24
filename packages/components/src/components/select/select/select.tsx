@@ -355,7 +355,7 @@ export class Select {
           <div
             class="options"
             id={listId}
-            tabindex="0"
+            tabIndex={0}
             {...getListAriaAttributes(this.label, this.required, false, this.isOpen)}
           >
             {this.filter && !this.hasFilterResults && (
