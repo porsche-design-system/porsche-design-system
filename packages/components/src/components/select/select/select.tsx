@@ -352,7 +352,12 @@ export class Select {
               ref={(el: HTMLPInputSearchElement) => (this.filterInputElement = el)}
             />
           )}
-          <div class="options" id={listId} {...getListAriaAttributes(this.label, this.required, false, this.isOpen)}>
+          <div
+            class="options"
+            id={listId}
+            tabindex="0"
+            {...getListAriaAttributes(this.label, this.required, false, this.isOpen)}
+          >
             {this.filter && !this.hasFilterResults && (
               <div class="no-results" aria-live="polite" role="option">
                 <span aria-hidden="true">–</span>
