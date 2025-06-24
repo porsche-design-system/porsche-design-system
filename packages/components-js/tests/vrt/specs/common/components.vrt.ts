@@ -40,13 +40,17 @@ const revertAutoFocus = async (page: Page, component: string): Promise<void> => 
     )
   ) {
     await page.mouse.click(0, 0); // click top left corner of the page to remove focus
-    await page.waitForFunction(() => document.activeElement?.tagName === 'BODY');
-    for (const frame of page.frames()) {
-      await frame.evaluate(() => {
-        if (document.activeElement instanceof HTMLElement) {
-          document.activeElement.blur();
+
+    // Select focused input after opening with delay
+    if (component === 'select') {
+      for (const frame of page.frames()) {
+        const filterInputs = frame.locator('p-input-search');
+        if ((await filterInputs.count()) > 0) {
+          const input = filterInputs.first().locator('input');
+          await input.blur();
+          await expect(input).not.toBeFocused();
         }
-      });
+      }
     }
   }
 };
