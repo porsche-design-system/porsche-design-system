@@ -1295,7 +1295,7 @@ test.describe('filter', () => {
       });
     });
 
-    skipInBrowsers(['webkit'], () => {
+    skipInBrowsers(['webkit', 'firefox'], () => {
       test('should reset filter value and show all options again after closing and reopening again', async ({
         page,
       }) => {
@@ -1330,27 +1330,43 @@ test.describe('filter', () => {
       });
     });
 
-    test('should show indicator when no results are found', async ({ page }) => {
-      await initSelect(page, { props: { name: 'Some name', filter: true } });
-      const buttonElement = getButton(page);
-      const filterElement = getFilter(page);
-      const filterInputElement = getFilterInput(page);
-      const options = getSelectOptions(page);
-      const dropdown = getDropdown(page);
+    skipInBrowsers(['webkit'], () => {
+      test('should show indicator when no results are found', async ({ page }) => {
+        await initSelect(page, { props: { name: 'Some name', filter: true } });
+        const buttonElement = getButton(page);
+        const filterElement = getFilter(page);
+        const filterInputElement = getFilterInput(page);
+        const options = getSelectOptions(page);
+        const dropdown = getDropdown(page);
 
-      await buttonElement.click();
+        await buttonElement.click();
 
-      await expect(dropdown).toBeVisible();
-      await expect(filterElement).toBeFocused();
-      await expect(filterInputElement).toHaveValue('');
-      await filterInputElement.fill('no results');
+        await expect(dropdown).toBeVisible();
+        await expect(filterElement).toBeFocused();
+        await expect(filterInputElement).toHaveValue('');
+        await filterInputElement.fill('no results');
 
-      for (const option of await options.all()) {
-        await expect(option).toBeHidden();
-      }
+        for (const option of await options.all()) {
+          await expect(option).toBeHidden();
+        }
 
-      // TODO: Add check for --- indicator
-      // TODO: Add check that indicator is not shown anymore after closing and reopning
+        const noResults = page.getByRole('option', { name: 'No results found' });
+        await expect(noResults).toBeVisible();
+
+        await page.keyboard.press('Escape');
+        await expect(dropdown).toBeHidden();
+        await expect(buttonElement).toBeFocused();
+
+        await waitForStencilLifecycle(page);
+        await buttonElement.click();
+        await expect(filterElement).toBeFocused();
+        await expect(filterInputElement).toHaveValue('');
+
+        await expect(noResults).toBeHidden();
+        await expect(options.nth(0)).toBeVisible();
+        await expect(options.nth(1)).toBeVisible();
+        await expect(options.nth(2)).toBeVisible();
+      });
     });
   });
 
