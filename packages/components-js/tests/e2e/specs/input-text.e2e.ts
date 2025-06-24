@@ -527,16 +527,16 @@ test.describe('Counter', () => {
     const maxLength = 20;
     await initInputText(page, { props: { name: 'some-name', counter: true, maxLength } });
     const counter = getCounter(page);
-    const inputText = getInputText(page);
+    const host = getHost(page);
     const text1 = 'test string';
     const text2 = 'test test string';
 
-    await setProperty(inputText, 'value', text1);
+    await setProperty(host, 'value', text1);
     await waitForStencilLifecycle(page);
 
     expect(await counter.textContent()).toBe(`${text1.length}/${maxLength}`);
 
-    await setProperty(inputText, 'value', text2);
+    await setProperty(host, 'value', text2);
     await waitForStencilLifecycle(page);
 
     expect(await counter.textContent()).toBe(`${text2.length}/${maxLength}`);
