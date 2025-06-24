@@ -8,15 +8,16 @@
     aria-haspopup="listbox"
     aria-expanded="false"
     aria-required="false"
-    aria-controls="list"
+    aria-controls="popover"
   >
     <span> </span>
     <p-icon class="icon hydrated" aria-hidden="true"> </p-icon>
   </button>
-  <div id="list" popover="manual" tabindex="-1" role="dialog" aria-label="">
+  <div id="popover" popover="manual" tabindex="-1" role="dialog" aria-label="">
     <div
       class="options"
-      tabindex="-1"
+      id="list"
+      tabindex="0"
       role="listbox"
       aria-label=""
       aria-hidden="true"
