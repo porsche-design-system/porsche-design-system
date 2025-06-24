@@ -17531,7 +17531,7 @@ exports[`should render dsr component for PSelect 1`] = `
         id="label"
       />
       <button
-        aria-controls="list"
+        aria-controls="popover"
         aria-expanded="false"
         aria-haspopup="listbox"
         aria-labelledby="label"
@@ -17591,7 +17591,7 @@ img {
       </button>
       <div
         aria-label=""
-        id="list"
+        id="popover"
         popover="manual"
         role="dialog"
         tabindex="-1"
@@ -17600,8 +17600,9 @@ img {
           aria-hidden="true"
           aria-label=""
           class="options"
+          id="list"
           role="listbox"
-          tabindex="-1"
+          tabindex="0"
         >
           <slot />
         </div>
