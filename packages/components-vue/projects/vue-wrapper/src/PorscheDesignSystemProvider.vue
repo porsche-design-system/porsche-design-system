@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onUpdated, provide, ref } from 'vue';
+import {onMounted, provide, ref, watch} from 'vue';
 import { load } from '@porsche-design-system/components-js';
 import { prefixInjectionKey, themeInjectionKey } from './utils';
 import type { Theme } from './lib/types';
@@ -12,19 +12,21 @@ type Props = {
   // property similar to https://mui.com/material-ui/customization/theme-components/
 };
 
-const themeRef = ref<Theme>('light');
-
 const props = withDefaults(defineProps<Props>(), {
   prefix: '',
   theme: 'light',
 });
 
-onUpdated(() => {
-  themeRef.value = props.theme;
+const themeRef = ref<Theme>(props.theme);
+
+onMounted(() => {
+  load(props); // runtime prefix or cdn change is not supported
 });
 
-// no need for reactivity to be in sync with Angular and React
-load(props); // runtime prefix or cdn change is not supported
+watch(() => props.theme, (newTheme) => {
+  themeRef.value = newTheme;
+});
+
 provide(prefixInjectionKey, props.prefix);
 provide(themeInjectionKey, themeRef);
 </script>
