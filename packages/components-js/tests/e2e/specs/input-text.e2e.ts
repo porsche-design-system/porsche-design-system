@@ -7,8 +7,6 @@ import {
   getFormDataValue,
   getHTMLAttributes,
   getLifecycleStatus,
-  removeAttribute,
-  setAttribute,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -319,11 +317,11 @@ test.describe('focus state', () => {
     const inputText = getInputText(page);
 
     await addEventListener(inputText, 'focus');
-    expect((await getEventSummary(inputText, 'focus')).counter).toBe(0);
+    await expect(inputText).not.toBeFocused();
 
     await label.click();
     await waitForStencilLifecycle(page);
-    expect((await getEventSummary(inputText, 'focus')).counter).toBe(1);
+    await expect(inputText).toBeFocused();
   });
 
   test('should focus input-text when host is focused', async ({ page }) => {
@@ -333,12 +331,12 @@ test.describe('focus state', () => {
     const inputTextWrapper = getInputTextWrapper(page);
 
     await addEventListener(inputText, 'focus');
-    expect((await getEventSummary(inputText, 'focus')).counter).toBe(0);
+    await expect(inputText).not.toBeFocused();
     await expect(inputTextWrapper).toHaveCSS('border-color', 'rgb(107, 109, 112)');
 
     await host.focus();
     await waitForStencilLifecycle(page);
-    expect((await getEventSummary(inputText, 'focus')).counter).toBe(1);
+    await expect(inputText).toBeFocused();
     await expect(inputTextWrapper).toHaveCSS('border-color', 'rgb(1, 2, 5)');
   });
 
@@ -492,11 +490,12 @@ test.describe('Counter', () => {
     const inputText = getInputText(page);
 
     await addEventListener(inputText, 'focus');
-    expect((await getEventSummary(inputText, 'focus')).counter).toBe(0);
+    await expect(inputText).not.toBeFocused();
 
     await clickElementPosition(page, counter);
 
-    expect((await getEventSummary(inputText, 'focus')).counter).toBe(1);
+    await expect(inputText).toBeFocused();
+
   });
 
   test('should display correct counter when typing', async ({ page }) => {
