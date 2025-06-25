@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Input Search`: ([#3874](https://github.com/porsche-design-system/porsche-design-system/pull/3874))
 - `Input Number`, `Input Password`: added loading state
   ([#3874](https://github.com/porsche-design-system/porsche-design-system/pull/3874))
+- `Input Text`: ([#3897](https://github.com/porsche-design-system/porsche-design-system/pull/3897))
 
 ## [3.28.0] - 2025-06-02
 
