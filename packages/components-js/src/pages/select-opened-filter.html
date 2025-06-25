@@ -21,10 +21,5 @@
 <script>
   porscheDesignSystem.componentsReady().then(() => {
     document.querySelector('p-select').shadowRoot.querySelector('label').click();
-    const inputElement = document
-      .querySelector('p-select')
-      .shadowRoot.querySelector('p-input-search')
-      .shadowRoot.querySelector('input');
-    inputElement.blur();
   });
 </script>
