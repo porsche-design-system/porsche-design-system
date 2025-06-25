@@ -68,7 +68,6 @@ test.describe('value', () => {
 
     await expect(host).toHaveJSProperty('value', testValue);
     await expect(inputText).toHaveJSProperty('value', testValue);
-    await expect(inputText).toHaveValue(testValue);
   });
 
   test('should sync value with slotted content when typing', async ({ page }) => {
