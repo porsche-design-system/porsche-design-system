@@ -154,7 +154,6 @@ export class Select {
   private buttonElement: HTMLButtonElement;
   private popoverElement: HTMLDivElement;
   private filterInputElement: HTMLPInputSearchElement;
-  private shouldFocusFilterInput = false;
   private selectOptions: SelectOption[] = [];
   private selectOptgroups: SelectOptgroup[] = [];
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
@@ -194,9 +193,6 @@ export class Select {
         this.cleanUpAutoUpdate = autoUpdate(this.buttonElement, this.popoverElement, async (): Promise<void> => {
           await optionListUpdatePosition(this.dropdownDirection, this.buttonElement, this.popoverElement);
         });
-      }
-      if (this.filter) {
-        this.shouldFocusFilterInput = true;
       }
     } else {
       if (this.hasNativePopoverSupport) {
@@ -263,16 +259,6 @@ export class Select {
     this.value = this.defaultValue;
   }
 
-  public componentDidRender(): void {
-    if (this.shouldFocusFilterInput) {
-      // Safari focus does not work without additional time
-      requestAnimationFrame(() => {
-        this.filterInputElement.focus();
-      });
-      this.shouldFocusFilterInput = false;
-    }
-  }
-
   public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(
@@ -335,6 +321,7 @@ export class Select {
           tabIndex={-1}
           role="dialog"
           aria-label={this.label}
+          onToggle={() => this.onToggle()}
           ref={(el) => (this.popoverElement = el)}
         >
           {this.filter && (
@@ -554,5 +541,16 @@ export class Select {
       (e.detail.target as HTMLInputElement).value
     );
     this.hasFilterResults = hasFilterResults;
+  };
+
+  private onToggle = (): void => {
+    if (this.isOpen && this.filter) {
+      // Double requestAnimationFrame as Safari fix to make sure the input will receive focus
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          this.filterInputElement.focus();
+        });
+      });
+    }
   };
 }
