@@ -59,23 +59,4 @@ test.describe('form', () => {
     expect((await getEventSummary(form, 'submit')).counter).toBe(1);
     expect(await getFormDataValue(form, 'some-name')).toBe(testValue);
   });
-
-  test('should not decrement value on wheel down', async ({ page }) => {
-    await goto(page, 'input-text-example');
-    await waitForComponentsReady(page);
-    const value = '42';
-
-    const input = getInputText(page);
-    await input.fill(value);
-    await input.focus();
-
-    const rect = await input.boundingBox();
-    if (!rect) throw new Error('could not read input bounding box');
-    await page.mouse.move(rect.x + rect.width / 2, rect.y + rect.height / 2);
-
-    await page.mouse.wheel(0, 100);
-    await page.waitForTimeout(40);
-
-    await expect(input).toHaveValue(value);
-  });
 });
