@@ -22,6 +22,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Input Text`: ([#3897](https://github.com/porsche-design-system/porsche-design-system/pull/3897))
 - `Select`: `filter` prop to enable an input in the dropdown to filter options
   ([#3893](https://github.com/porsche-design-system/porsche-design-system/pull/3893))
+- `Input Text`: `counter` prop functions independently of `max-length`, allowing character count display even when no
+  limit is set ([#3901](https://github.com/porsche-design-system/porsche-design-system/pull/3901))
 
 ## [3.28.0] - 2025-06-02
 
