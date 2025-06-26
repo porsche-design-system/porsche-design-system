@@ -1,6 +1,7 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { Configurator } from "@/components/playground/Configurator";
 import {
+  inputPasswordSlotStories,
   inputPasswordStory
 } from "@/app/components/input-password/input-password.stories";
 
@@ -24,4 +25,4 @@ for screen readers.
 While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to
 give the user visual cues to fill out the form.
 
-<Configurator tagName="p-input-password" story={inputPasswordStory} />
+<Configurator tagName="p-input-password" story={inputPasswordStory}  slotStories={inputPasswordSlotStories} />
