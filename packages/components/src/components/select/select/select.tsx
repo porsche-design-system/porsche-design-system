@@ -42,7 +42,6 @@ import {
   getHasNativePopoverSupport,
   getHighlightedSelectOption,
   getHighlightedSelectOptionIndex,
-  getListAriaAttributes,
   getMatchingSelectOptionIndex,
   getPrefixedTagNames,
   getSelectedSelectOption,
@@ -318,7 +317,9 @@ export class Select {
           popover="manual"
           tabIndex={-1}
           onToggle={() => this.onToggle()}
-          {...getListAriaAttributes(this.label, this.required, false, this.isOpen)}
+          role="dialog"
+          aria-label={this.label}
+          aria-hidden={this.isOpen ? null : 'true'}
           ref={(el) => (this.popoverElement = el)}
         >
           {this.filter && (
@@ -337,13 +338,15 @@ export class Select {
               ref={(el: HTMLPInputSearchElement) => (this.filterInputElement = el)}
             />
           )}
-          {this.filter && !this.hasFilterResults && (
-            <div class="no-results" aria-live="polite" role="option">
-              <span aria-hidden="true">–</span>
-              <span class="sr-only">No results found</span>
-            </div>
-          )}
-          <slot />
+          <div class="options" role="listbox" aria-label={this.label}>
+            {this.filter && !this.hasFilterResults && (
+              <div class="no-results" aria-live="polite" role="option">
+                <span aria-hidden="true">–</span>
+                <span class="sr-only">No results found</span>
+              </div>
+            )}
+            <slot />
+          </div>
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
       </div>

@@ -1,4 +1,4 @@
-import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/styles';
+import { borderWidthBase, spacingStaticSmall, spacingStaticXSmall } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -79,6 +79,11 @@ export const getComponentCss = (
         background: backgroundSurfaceColorDark,
       }),
       zIndex: 1,
+    },
+    options: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: `max(2px, ${scalingVar} * ${spacingStaticSmall})`,
     },
     'no-results': {
       ...getOptionJssStyle('select-option', scalingVar, theme),
