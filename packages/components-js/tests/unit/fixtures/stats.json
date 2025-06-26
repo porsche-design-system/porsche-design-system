@@ -131,8 +131,8 @@
   },
   {
     "chunkShortName": "input-search",
-    "size": 13359,
-    "gzipSize": 4811
+    "size": 13388,
+    "gzipSize": 4820
   },
   {
     "chunkShortName": "input-text",
@@ -171,8 +171,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 84574,
-    "gzipSize": 27498
+    "size": 84611,
+    "gzipSize": 27495
   },
   {
     "chunkShortName": "marque",
@@ -191,8 +191,8 @@
   },
   {
     "chunkShortName": "multi-select",
-    "size": 44638,
-    "gzipSize": 16248
+    "size": 44739,
+    "gzipSize": 16270
   },
   {
     "chunkShortName": "optgroup",
@@ -231,38 +231,38 @@
   },
   {
     "chunkShortName": "select",
-    "size": 41829,
-    "gzipSize": 15239
+    "size": 44175,
+    "gzipSize": 15959
   },
   {
     "chunkShortName": "select-wrapper",
-    "size": 45070,
-    "gzipSize": 16004
+    "size": 45171,
+    "gzipSize": 16026
   },
   {
     "chunkShortName": "sheet",
     "size": 7371,
-    "gzipSize": 3095
+    "gzipSize": 3094
   },
   {
     "chunkShortName": "spinner",
     "size": 2392,
-    "gzipSize": 1225
+    "gzipSize": 1222
   },
   {
     "chunkShortName": "stepper-horizontal",
     "size": 11957,
-    "gzipSize": 4983
+    "gzipSize": 4979
   },
   {
     "chunkShortName": "switch",
     "size": 7956,
-    "gzipSize": 3284
+    "gzipSize": 3283
   },
   {
     "chunkShortName": "table",
     "size": 10465,
-    "gzipSize": 4138
+    "gzipSize": 4137
   },
   {
     "chunkShortName": "tabs",
@@ -277,7 +277,7 @@
   {
     "chunkShortName": "tag",
     "size": 5906,
-    "gzipSize": 2442
+    "gzipSize": 2443
   },
   {
     "chunkShortName": "tag-dismissible",
@@ -287,7 +287,7 @@
   {
     "chunkShortName": "text",
     "size": 5921,
-    "gzipSize": 2510
+    "gzipSize": 2511
   },
   {
     "chunkShortName": "text-field-wrapper",
@@ -312,11 +312,11 @@
   {
     "chunkShortName": "toast",
     "size": 7521,
-    "gzipSize": 3307
+    "gzipSize": 3304
   },
   {
     "chunkShortName": "wordmark",
     "size": 3040,
-    "gzipSize": 1534
+    "gzipSize": 1536
   }
 ]
