@@ -695,6 +695,7 @@ exports[`should call validateProps() with correct parameters via render for p-se
   "description": "string",
   "disabled": "boolean",
   "dropdownDirection": "oneOf",
+  "filter": "boolean",
   "form": "string",
   "hideLabel": "breakpoint",
   "label": "string",

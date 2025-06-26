@@ -8145,6 +8145,7 @@ exports[`should match snapshot 1`] = `
     "isThemeable": true,
     "nestedComponents": [
       "p-icon",
+      "p-input-search",
     ],
     "propsMeta": {
       "compact": {
@@ -8177,6 +8178,12 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "auto",
         "description": "Changes the direction to which the dropdown list appears.",
         "type": "SelectDropdownDirection",
+      },
+      "filter": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Shows an input in the dropdown allowing options to be filtered.",
+        "type": "boolean",
       },
       "form": {
         "allowedValues": "string",
