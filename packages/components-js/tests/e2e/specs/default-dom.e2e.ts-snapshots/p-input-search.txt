@@ -9,7 +9,6 @@
       name="value"
       type="search"
       placeholder=""
-      autocomplete=""
     />
     <slot name="end"> </slot>
   </div>

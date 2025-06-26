@@ -22,7 +22,7 @@ export const validateCssAndMatchSnapshot = (css: string) => {
   validatePreventFoucOfNestedElementsStyle(
     cssObject,
     (componentMeta && Array.isArray(componentMeta.nestedComponents) && componentMeta.nestedComponents.length > 0) ||
-      ['input-base'].includes(componentName)
+      ['input-base', 'input-text'].includes(componentName)
   );
 
   // Validations for components only

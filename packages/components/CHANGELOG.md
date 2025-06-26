@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Input Search`: ([#3874](https://github.com/porsche-design-system/porsche-design-system/pull/3874))
 - `Input Number`, `Input Password`: added loading state
   ([#3874](https://github.com/porsche-design-system/porsche-design-system/pull/3874))
+- `Input Text`: ([#3897](https://github.com/porsche-design-system/porsche-design-system/pull/3897))
 - `Select`: `filter` prop to enable an input in the dropdown to filter options
   ([#3893](https://github.com/porsche-design-system/porsche-design-system/pull/3893))
 

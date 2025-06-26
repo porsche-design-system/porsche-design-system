@@ -41,7 +41,7 @@ const propTypes: PropTypes<typeof InputSearch> = {
   loading: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
   form: AllowedTypes.string,
-  autoComplete: AllowedTypes.oneOf<InputSearchAutoComplete>(INPUT_SEARCH_AUTO_COMPLETE),
+  autoComplete: AllowedTypes.oneOf<InputSearchAutoComplete>([...INPUT_SEARCH_AUTO_COMPLETE, undefined]),
   state: AllowedTypes.oneOf<InputSearchState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
@@ -73,7 +73,7 @@ export class InputSearch {
   /** The description text. */
   @Prop() public description?: string = '';
 
-  /** Displays as compact version. */
+  /** Displays as a compact version. */
   @Prop() public compact?: boolean = false;
 
   /** The name of the search input. */
@@ -85,7 +85,7 @@ export class InputSearch {
   @Prop({ mutable: true }) public value?: string = '';
 
   /** Specifies whether the input can be autofilled by the browser */
-  @Prop() public autoComplete?: InputSearchAutoComplete = '';
+  @Prop() public autoComplete?: InputSearchAutoComplete;
 
   /** Show clear input value button */
   @Prop() public clear?: boolean = false;
