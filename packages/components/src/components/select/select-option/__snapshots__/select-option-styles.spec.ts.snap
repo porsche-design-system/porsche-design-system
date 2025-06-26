@@ -2,7 +2,8 @@
 
 exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 ":host {
-  display: block;
+  scroll-margin-block-start: calc(max(2px, var(--p-internal-select-option-scaling, 1) * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, var(--p-internal-select-option-scaling, 1) * 6px) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -78,7 +79,8 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 
 exports[`getComponentCss() should return correct css for theme: light 1`] = `
 ":host {
-  display: block;
+  scroll-margin-block-start: calc(max(2px, var(--p-internal-select-option-scaling, 1) * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, var(--p-internal-select-option-scaling, 1) * 6px) !important;
 }
 :host([hidden]) {
   display: none !important;
