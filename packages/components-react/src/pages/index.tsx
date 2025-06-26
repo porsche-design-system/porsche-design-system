@@ -109,6 +109,7 @@ import { InlineNotificationPage } from './generated/InlineNotification';
 import { InputNumberPage } from './generated/InputNumber';
 import { InputPasswordPage } from './generated/InputPassword';
 import { InputSearchPage } from './generated/InputSearch';
+import { InputTextPage } from './generated/InputText';
 import { LinkPage } from './generated/Link';
 import { LinkPurePage } from './generated/LinkPure';
 import { LinkSocialPage } from './generated/LinkSocial';
@@ -696,6 +697,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Input Search',
     path: '/input-search',
     element: <InputSearchPage />,
+  },
+  {
+    name: 'Input Text',
+    path: '/input-text',
+    element: <InputTextPage />,
   },
   {
     name: 'Link',

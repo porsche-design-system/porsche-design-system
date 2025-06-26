@@ -44,7 +44,7 @@ const propTypes: PropTypes<typeof Textarea> = {
   minLength: AllowedTypes.number,
   form: AllowedTypes.string,
   rows: AllowedTypes.number,
-  autoComplete: AllowedTypes.oneOf<TextareaAutoComplete>(AUTO_COMPLETE),
+  autoComplete: AllowedTypes.oneOf<TextareaAutoComplete>([...AUTO_COMPLETE, undefined]),
   spellCheck: AllowedTypes.boolean,
   wrap: AllowedTypes.oneOf<TextareaWrap>(TEXTAREA_WRAPS),
   resize: AllowedTypes.oneOf<TextareaResize>(TEXTAREA_RESIZE),
@@ -85,7 +85,7 @@ export class Textarea {
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
 
-  /** Show or hide label. For better accessibility it is recommended to show the label. */
+  /** Show or hide label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Show or hide max character count. */
@@ -109,11 +109,11 @@ export class Textarea {
   /** The id of a form element the textarea should be associated with. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** The amount of rows of the textarea. */
+  /** The number of rows of the textarea. */
   @Prop() public rows?: number = 7;
 
   /** Specifies whether the input can be autofilled by the browser */
-  @Prop() public autoComplete?: TextareaAutoComplete = '';
+  @Prop() public autoComplete?: TextareaAutoComplete;
 
   /** Specifies whether the input should have its spelling and grammar checked */
   @Prop() public spellCheck?: boolean;

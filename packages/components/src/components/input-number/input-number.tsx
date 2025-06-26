@@ -45,7 +45,7 @@ const propTypes: PropTypes<typeof InputNumber> = {
   max: AllowedTypes.number,
   min: AllowedTypes.number,
   form: AllowedTypes.string,
-  autoComplete: AllowedTypes.oneOf<InputNumberAutoComplete>(INPUT_NUMBER_AUTO_COMPLETE),
+  autoComplete: AllowedTypes.oneOf<InputNumberAutoComplete>([...INPUT_NUMBER_AUTO_COMPLETE, undefined]),
   state: AllowedTypes.oneOf<InputNumberState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
@@ -78,7 +78,7 @@ export class InputNumber {
   /** The description text. */
   @Prop() public description?: string = '';
 
-  /** Displays as compact version. */
+  /** Displays as a compact version. */
   @Prop() public compact?: boolean = false;
 
   /** The name of the number input. */
@@ -90,7 +90,7 @@ export class InputNumber {
   @Prop({ mutable: true }) public value?: string = '';
 
   /** Specifies whether the input can be autofilled by the browser */
-  @Prop() public autoComplete?: InputNumberAutoComplete = '';
+  @Prop() public autoComplete?: InputNumberAutoComplete;
 
   /** Specifies whether the number input should be read-only. */
   @Prop() public readOnly?: boolean = false;
@@ -122,7 +122,7 @@ export class InputNumber {
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
 
-  /** Show or hide label and description text. For better accessibility it is recommended to show the label. */
+  /** Show or hide label and description text. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the color depending on the theme. */
