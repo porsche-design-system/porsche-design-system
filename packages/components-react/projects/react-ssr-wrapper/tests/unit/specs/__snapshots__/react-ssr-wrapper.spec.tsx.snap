@@ -17538,6 +17538,9 @@ exports[`should render dsr component for PSelect 1`] = `
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
     max-height: max(calc(224px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
     animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
     filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
     background: #FFF;
@@ -17558,13 +17561,18 @@ exports[`should render dsr component for PSelect 1`] = `
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
   }
+  .filter {
+    position: sticky;
+    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    background: #FFF;
+    z-index: 1;
+  }
   .options {
     display: flex;
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
-    overflow: hidden auto;
-    scrollbar-width: thin;
-    scrollbar-color: auto;
   }
   .no-results {
     display: flex;
@@ -17689,7 +17697,7 @@ exports[`should render dsr component for PSelect 1`] = `
         id="label"
       />
       <button
-        aria-controls="popover"
+        aria-controls="list"
         aria-expanded="false"
         aria-haspopup="listbox"
         aria-labelledby="label"
@@ -17748,19 +17756,17 @@ img {
         </p-icon>
       </button>
       <div
+        aria-hidden="true"
         aria-label=""
-        id="popover"
+        id="list"
         popover="manual"
         role="dialog"
         tabindex="-1"
       >
         <div
-          aria-hidden="true"
           aria-label=""
           class="options"
-          id="list"
           role="listbox"
-          tabindex="0"
         >
           <slot />
         </div>
@@ -17786,7 +17792,8 @@ exports[`should render dsr component for PSelectOption 1`] = `
   >
     <style>
       :host {
-  display: block;
+  scroll-margin-block-start: calc(max(2px, var(--p-internal-select-option-scaling, 1) * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, var(--p-internal-select-option-scaling, 1) * 6px) !important;
 }
 :host([hidden]) {
   display: none !important;
