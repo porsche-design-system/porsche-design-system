@@ -55,12 +55,10 @@ export const getComboboxAriaAttributes = (
   };
 };
 
-export const getComboboxFilterAriaAttributes = (listboxId: string): AriaAttributes => {
+export const getComboboxFilterAriaAttributes = (): AriaAttributes => {
   return {
-    role: 'combobox',
     'aria-autocomplete': 'list',
     'aria-expanded': 'true',
-    'aria-controls': listboxId,
   };
 };
 

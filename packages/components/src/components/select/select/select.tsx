@@ -276,7 +276,7 @@ export class Select {
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const buttonId = 'value';
-    const popoverId = 'popover';
+    const popoverId = 'list';
     const descriptionId = this.description ? 'description' : undefined;
     const selectMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
     const ariaDescribedBy = [descriptionId, selectMessageId].filter(Boolean).join(' ');
@@ -331,7 +331,7 @@ export class Select {
               clear={true}
               compact={true}
               theme={this.theme}
-              {...getComboboxFilterAriaAttributes(popoverId)}
+              {...getComboboxFilterAriaAttributes()}
               onInput={this.onFilterInput}
               onKeyDown={this.onComboKeyDown}
               ref={(el: HTMLPInputSearchElement) => (this.filterInputElement = el)}
