@@ -269,7 +269,6 @@ export class Select {
       this.hideLabel,
       this.state,
       this.compact,
-      this.filter,
       this.theme,
       !!this.slottedImagePath
     );
@@ -278,7 +277,6 @@ export class Select {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const buttonId = 'value';
     const popoverId = 'popover';
-    const listId = 'list';
     const descriptionId = this.description ? 'description' : undefined;
     const selectMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
     const ariaDescribedBy = [descriptionId, selectMessageId].filter(Boolean).join(' ');
@@ -319,13 +317,13 @@ export class Select {
           id={popoverId}
           popover="manual"
           tabIndex={-1}
-          role="dialog"
-          aria-label={this.label}
           onToggle={() => this.onToggle()}
+          {...getListAriaAttributes(this.label, this.required, false, this.isOpen)}
           ref={(el) => (this.popoverElement = el)}
         >
           {this.filter && (
             <PrefixedTagNames.pInputSearch
+              class="filter"
               name="filter"
               label="Filter options"
               hideLabel={true}
@@ -333,26 +331,19 @@ export class Select {
               clear={true}
               compact={true}
               theme={this.theme}
-              {...getComboboxFilterAriaAttributes(listId)}
+              {...getComboboxFilterAriaAttributes(popoverId)}
               onInput={this.onFilterInput}
               onKeyDown={this.onComboKeyDown}
               ref={(el: HTMLPInputSearchElement) => (this.filterInputElement = el)}
             />
           )}
-          <div
-            class="options"
-            id={listId}
-            tabIndex={0}
-            {...getListAriaAttributes(this.label, this.required, false, this.isOpen)}
-          >
-            {this.filter && !this.hasFilterResults && (
-              <div class="no-results" aria-live="polite" role="option">
-                <span aria-hidden="true">–</span>
-                <span class="sr-only">No results found</span>
-              </div>
-            )}
-            <slot />
-          </div>
+          {this.filter && !this.hasFilterResults && (
+            <div class="no-results" aria-live="polite" role="option">
+              <span aria-hidden="true">–</span>
+              <span class="sr-only">No results found</span>
+            </div>
+          )}
+          <slot />
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
       </div>

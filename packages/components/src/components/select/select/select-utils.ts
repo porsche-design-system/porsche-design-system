@@ -76,14 +76,14 @@ export const updateFilterResults = (
       forceUpdate(option);
     }
     // Use display none to preserve hidden state
-    option.style.display = matches ? '' : 'none';
+    option.style.display = matches ? 'block' : 'none';
   }
 
   for (const optgroup of optgroups) {
     const visibleOptions = Array.from(optgroup.children).some(
       (child) => (child as HTMLPSelectOptionElement).style.display !== 'none'
     );
-    (optgroup as HTMLOptGroupElement).style.display = visibleOptions ? '' : 'none';
+    (optgroup as HTMLOptGroupElement).style.display = visibleOptions ? 'block' : 'none';
   }
 
   return { hasFilterResults: options.some((option) => option.style.display !== 'none' && !option.hidden) };
