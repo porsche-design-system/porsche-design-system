@@ -11,14 +11,7 @@ import {
   h,
 } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import {
-  AllowedTypes,
-  FORM_STATES,
-  THEMES,
-  attachComponentCss,
-  hasPropValueChanged,
-  validateProps,
-} from '../../utils';
+import { AllowedTypes, FORM_STATES, THEMES, attachComponentCss, hasPropValueChanged, validateProps } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-text-styles';
 import {
@@ -233,19 +226,20 @@ export class InputText {
         spellCheck={this.spellCheck}
         loading={this.loading}
         initialLoading={this.initialLoading}
-        {...(this.counter &&
-          this.maxLength && {
-            end: (
-              <Fragment>
-                <span class="sr-only" aria-live="polite">
-                  {`You have ${this.maxLength - this.value.length} out of ${this.maxLength} characters left`}
-                </span>
-                <span class="counter" aria-hidden="true" onClick={() => this.inputElement.focus()}>
-                  {this.value.length}/{this.maxLength}
-                </span>
-              </Fragment>
-            ),
-          })}
+        {...(this.counter && {
+          end: (
+            <Fragment>
+              <span class="sr-only" aria-live="polite">
+                {this.maxLength
+                  ? `You have ${this.maxLength - this.value.length} out of ${this.maxLength} characters left`
+                  : `${this.value.length} characters entered`}
+              </span>
+              <span class="counter" aria-hidden="true" onClick={() => this.inputElement.focus()}>
+                {this.maxLength ? `${this.value.length}/${this.maxLength}` : `${this.value.length}`}
+              </span>
+            </Fragment>
+          ),
+        })}
       />
     );
   }
@@ -270,3 +264,4 @@ export class InputText {
     this.input.emit(e);
   };
 }
+
