@@ -17561,6 +17561,67 @@ exports[`should render dsr component for PSelect 1`] = `
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
   }
+  .filter {
+    position: sticky;
+    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    background: #FFF;
+    z-index: 1;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #6B6D70;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #D8D8DB;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #010205;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .no-results--hidden {
+    display: none;
+  }
   .icon {
     margin-inline-end: -3px;
     pointer-events: none;
@@ -17619,6 +17680,13 @@ exports[`should render dsr component for PSelect 1`] = `
     opacity: 0;
     position: absolute;
   }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+
     </style>
     <div
       class="root"
@@ -17692,10 +17760,16 @@ img {
         aria-label=""
         id="list"
         popover="manual"
-        role="listbox"
+        role="dialog"
         tabindex="-1"
       >
-        <slot />
+        <div
+          aria-label=""
+          class="options"
+          role="listbox"
+        >
+          <slot />
+        </div>
       </div>
       <span
         class="message"
@@ -17718,7 +17792,8 @@ exports[`should render dsr component for PSelectOption 1`] = `
   >
     <style>
       :host {
-  scroll-margin: 6px !important;
+  scroll-margin-block-start: calc(max(2px, var(--p-internal-select-option-scaling, 1) * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, var(--p-internal-select-option-scaling, 1) * 6px) !important;
 }
 :host([hidden]) {
   display: none !important;

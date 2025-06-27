@@ -9,6 +9,7 @@ import {
   getSelectedOptionString,
   setSelectedOption,
   syncSelectChildrenProps,
+  updateFilterResults,
   updateSelectOptions,
 } from './select-utils';
 
@@ -37,12 +38,14 @@ import {
   attachComponentCss,
   getActionFromKeyboardEvent,
   getComboboxAriaAttributes,
+  getComboboxFilterAriaAttributes,
   getHasNativePopoverSupport,
   getHighlightedSelectOption,
   getHighlightedSelectOptionIndex,
-  getListAriaAttributes,
   getMatchingSelectOptionIndex,
   getPrefixedTagNames,
+  getSelectedSelectOption,
+  getSelectedSelectOptionIndex,
   getShadowRootHTMLElement,
   getUpdatedIndex,
   getUsableSelectOptions,
@@ -54,12 +57,11 @@ import {
   setNextSelectOptionHighlighted,
   throwIfElementIsNotOfKind,
   validateProps,
-  getSelectedSelectOptionIndex,
-  getSelectedSelectOption,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
 import { labelId } from '../../common/label/label-utils';
 import { StateMessage, messageId } from '../../common/state-message/state-message';
+import type { InputSearchInputEventDetail } from '../../input-search/input-search-utils';
 import { getComponentCss } from './select-styles';
 
 const propTypes: PropTypes<typeof Select> = {
@@ -74,6 +76,7 @@ const propTypes: PropTypes<typeof Select> = {
   required: AllowedTypes.boolean,
   form: AllowedTypes.string,
   dropdownDirection: AllowedTypes.oneOf<SelectDropdownDirection>(SELECT_DROPDOWN_DIRECTIONS),
+  filter: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
@@ -126,6 +129,9 @@ export class Select {
   /** Changes the direction to which the dropdown list appears. */
   @Prop() public dropdownDirection?: SelectDropdownDirection = 'auto';
 
+  /** Shows an input in the dropdown allowing options to be filtered. */
+  @Prop() public filter?: boolean = false;
+
   /** Displays as compact version. */
   @Prop() public compact?: boolean = false;
 
@@ -139,12 +145,14 @@ export class Select {
   @Event({ bubbles: false }) public update: EventEmitter<SelectUpdateEventDetail>;
 
   @State() private isOpen = false;
+  @State() private hasFilterResults = true;
 
   @AttachInternals() private internals: ElementInternals;
 
   private defaultValue: string;
   private buttonElement: HTMLButtonElement;
   private popoverElement: HTMLDivElement;
+  private filterInputElement: HTMLPInputSearchElement;
   private selectOptions: SelectOption[] = [];
   private selectOptgroups: SelectOptgroup[] = [];
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
@@ -193,6 +201,17 @@ export class Select {
         // ensures floating ui event listeners are removed when options list is closed
         this.cleanUpAutoUpdate();
         this.cleanUpAutoUpdate = undefined;
+      }
+      // Reset filter on close
+      if (this.filter) {
+        this.filterInputElement.value = '';
+        this.hasFilterResults = true;
+        for (const option of this.selectOptions) {
+          option.style.display = 'block';
+        }
+        for (const optgroup of this.selectOptgroups) {
+          optgroup.style.display = 'block';
+        }
       }
     }
   }
@@ -297,10 +316,37 @@ export class Select {
           id={popoverId}
           popover="manual"
           tabIndex={-1}
-          {...getListAriaAttributes(this.label, this.required, false, this.isOpen)}
+          onToggle={() => this.onToggle()}
+          role="dialog"
+          aria-label={this.label}
+          aria-hidden={this.isOpen ? null : 'true'}
           ref={(el) => (this.popoverElement = el)}
         >
-          <slot />
+          {this.filter && (
+            <PrefixedTagNames.pInputSearch
+              class="filter"
+              name="filter"
+              label="Filter options"
+              hideLabel={true}
+              autoComplete="off"
+              clear={true}
+              compact={true}
+              theme={this.theme}
+              {...getComboboxFilterAriaAttributes()}
+              onInput={this.onFilterInput}
+              onKeyDown={this.onComboKeyDown}
+              ref={(el: HTMLPInputSearchElement) => (this.filterInputElement = el)}
+            />
+          )}
+          <div class="options" role="listbox" aria-label={this.label}>
+            {this.filter && !this.hasFilterResults && (
+              <div class="no-results" aria-live="polite" role="option">
+                <span aria-hidden="true">–</span>
+                <span class="sr-only">No results found</span>
+              </div>
+            )}
+            <slot />
+          </div>
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
       </div>
@@ -315,7 +361,14 @@ export class Select {
     forceUpdate(this.host);
   };
 
-  private onComboClick = (): void => {
+  private onComboClick = (e: MouseEvent): void => {
+    const target = e.target as HTMLElement;
+
+    // Prevent closing if the filter input was clicked
+    if (this.filter && this.filterInputElement?.contains(target)) {
+      return;
+    }
+
     this.updateMenuState(!this.isOpen);
   };
 
@@ -326,7 +379,12 @@ export class Select {
   };
 
   private onComboKeyDown = (event: KeyboardEvent): void => {
-    const { key } = event;
+    const { key, code } = event;
+
+    // When pressing space in filter input, we want to allow typing space
+    if (this.filter && (key === ' ' || code === 'Space')) {
+      return;
+    }
 
     const action = getActionFromKeyboardEvent(event, this.isOpen);
 
@@ -346,9 +404,10 @@ export class Select {
           getUsableSelectOptions(this.selectOptions).length - 1,
           action
         );
-        setNextSelectOptionHighlighted(this.popoverElement, this.selectOptions, highlightedOptionIndex);
+        setNextSelectOptionHighlighted(this.selectOptions, highlightedOptionIndex);
         // @ts-ignore - HTMLCombobox type is missing
-        this.buttonElement.ariaActiveDescendantElement = getHighlightedSelectOption(this.selectOptions);
+        (this.filter ? this.filterInputElement : this.buttonElement).ariaActiveDescendantElement =
+          getHighlightedSelectOption(this.selectOptions);
         break;
       }
       case 'CloseSelect': {
@@ -360,17 +419,23 @@ export class Select {
       case 'Close': {
         event.preventDefault();
         this.updateMenuState(false);
+        if (this.filter) {
+          this.buttonElement.focus();
+        }
         break;
       }
       case 'Type':
-        this.onComboType(key);
+        // Filter uses onInput
+        if (!this.filter) {
+          this.onComboType(key);
+        }
         break;
       case 'Open': {
         event.preventDefault();
         this.updateMenuState(true);
         const selectedIndex = getSelectedSelectOptionIndex(this.selectOptions);
         if (selectedIndex >= 0) {
-          setNextSelectOptionHighlighted(this.popoverElement, this.selectOptions, selectedIndex);
+          setNextSelectOptionHighlighted(this.selectOptions, selectedIndex);
           // @ts-ignore - HTMLCombobox type is missing
           this.buttonElement.ariaActiveDescendantElement = getSelectedSelectOption(this.selectOptions);
         }
@@ -385,7 +450,7 @@ export class Select {
     this.updateSearchString(letter);
     const matchingIndex = getMatchingSelectOptionIndex(this.selectOptions, this.searchString);
     if (matchingIndex !== -1) {
-      setNextSelectOptionHighlighted(this.popoverElement, this.selectOptions, matchingIndex);
+      setNextSelectOptionHighlighted(this.selectOptions, matchingIndex);
     } else {
       window.clearTimeout(this.searchTimeout);
       this.searchString = '';
@@ -461,5 +526,25 @@ export class Select {
         ?.querySelector('img')
         ?.getAttribute('src') ?? ''
     );
+  };
+
+  private onFilterInput = (e: CustomEvent<InputSearchInputEventDetail>): void => {
+    const { hasFilterResults } = updateFilterResults(
+      this.selectOptions,
+      this.selectOptgroups,
+      (e.detail.target as HTMLInputElement).value
+    );
+    this.hasFilterResults = hasFilterResults;
+  };
+
+  private onToggle = (): void => {
+    if (this.isOpen && this.filter) {
+      // Double requestAnimationFrame as Safari fix to make sure the input will receive focus
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          this.filterInputElement.focus();
+        });
+      });
+    }
   };
 }

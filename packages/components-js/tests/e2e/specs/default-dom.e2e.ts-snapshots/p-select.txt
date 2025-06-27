@@ -17,11 +17,13 @@
     id="list"
     popover="manual"
     tabindex="-1"
-    role="listbox"
+    role="dialog"
     aria-label=""
     aria-hidden="true"
   >
-    <slot> </slot>
+    <div class="options" role="listbox" aria-label="">
+      <slot> </slot>
+    </div>
   </div>
   <span id="message" class="message" role="alert"> </span>
 </div>

@@ -1,9 +1,11 @@
-import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/styles';
+import { borderWidthBase, spacingStaticSmall, spacingStaticXSmall } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
   getHiddenTextJssStyle,
+  getThemedColors,
   hostHiddenStyles,
+  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import { formElementPaddingHorizontal, getCalculatedFormElementPaddingHorizontal } from '../../../styles/form-styles';
@@ -12,11 +14,12 @@ import {
   getButtonJssStyle,
   getButtonLabelJssStyle,
   getIconJssStyle,
+  getOptionJssStyle,
   getPopoverJssStyle,
   getPopoverKeyframesStyles,
 } from '../../../styles/select';
 import type { BreakpointCustomizable, Theme } from '../../../types';
-import { getCss } from '../../../utils';
+import { getCss, isThemeDark } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
@@ -33,6 +36,9 @@ export const getComponentCss = (
   hasSlottedImage: boolean
 ): string => {
   const scalingVar = `var(${cssVarInternalSelectScaling}, ${compact ? 0.5 : 1})`;
+  const { contrastMediumColor: contrastMediumColorDark, backgroundSurfaceColor: backgroundSurfaceColorDark } =
+    getThemedColors('dark');
+  const { contrastMediumColor, backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
@@ -62,6 +68,29 @@ export const getComponentCss = (
       gap: `max(2px, ${scalingVar} * ${spacingStaticXSmall})`,
       // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character plus the ellipsis dots.
       minWidth: `calc(1rem + ${formElementPaddingHorizontal} + ${borderWidthBase} * 2 + ${getCalculatedFormElementPaddingHorizontal(1)})`,
+    },
+    filter: {
+      position: 'sticky',
+      top: `calc(max(2px, ${scalingVar} * 6px) * -1)`,
+      padding: `max(2px, ${scalingVar} * 6px)`,
+      margin: `calc(max(2px, ${scalingVar} * 6px) * -1)`,
+      background: isThemeDark(theme) ? backgroundSurfaceColor : backgroundColor,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        background: backgroundSurfaceColorDark,
+      }),
+      zIndex: 1,
+    },
+    options: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: `max(2px, ${scalingVar} * ${spacingStaticSmall})`,
+    },
+    'no-results': {
+      ...getOptionJssStyle('select-option', scalingVar, theme),
+      color: contrastMediumColor,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: contrastMediumColorDark,
+      }),
     },
     icon: getIconJssStyle('select', isOpen),
     'sr-only': getHiddenTextJssStyle(),
