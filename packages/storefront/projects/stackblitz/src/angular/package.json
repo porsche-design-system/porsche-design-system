@@ -10,7 +10,7 @@
   },
   "private": true,
   "dependencies": {
-    "@porsche-design-system/components-angular": "3.28.0",
+    "@porsche-design-system/components-angular": "3.29.0-rc.0",
     "@angular/animations": "^19.2.11",
     "@angular/common": "^19.2.11",
     "@angular/compiler": "^19.2.11",
