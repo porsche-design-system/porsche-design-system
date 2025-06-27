@@ -1,18 +1,22 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { TableOfContents } from "@/components/common/TableOfContents";
-import {ComponentStory} from "@/components/playground/ComponentStory";
-import {flyoutStoryGrid, flyoutStoryStickyTop} from "@/app/components/flyout/flyout.stories";
-import {ComponentExample} from "@/components/playground/ComponentExample";
-import {flyoutExampleForm} from "@porsche-design-system/shared/examples";
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import {
+  flyoutStoryGrid,
+  flyoutStoryStickyTop,
+  flyoutStoryCustomStyling,
+} from '@/app/components/flyout/flyout.stories';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { flyoutExampleForm } from '@porsche-design-system/shared/examples';
 
 export const metadata = {
   title: 'Flyout - Porsche Design System',
-  description: 'Discover detailed examples and insights of the Flyout component.'
-}
+  description: 'Discover detailed examples and insights of the Flyout component.',
+};
 
 # Flyout <ComponentStatus tagName="p-flyout"></ComponentStatus>
 
-<TableOfContents headings={['Sticky content with Custom CSS Property (Experimental)','Flyout Form']} />
+<TableOfContents headings={['Sticky content with Custom CSS Property (Experimental)','Flyout Form','Custom Styling']} />
 
 ## Sticky content with Custom CSS Property (Experimental)
 
@@ -21,20 +25,16 @@ CSS custom property to account for the height of the header.
 
 <ComponentStory story={flyoutStoryStickyTop} />
 
-[//]: # (## TODO: add example, currently left out because of complex sytling)
-[//]: # (## Flyout with Porsche Grid)
-
-[//]: # ()
-[//]: # (The `p-flyout` component makes decent changes to the Porsche Grid to give support if used as slotted content. The)
-
-[//]: # (following example shows the visualization of the Porsche Grid when used inside the flyout component:)
-
-[//]: # ()
-[//]: # (<ComponentStory story={flyoutStoryGrid} />)
-
 ## Flyout Form
 
 The following example demonstrates how a form can be used within a flyout component:
 
 <ComponentExample codeSample={flyoutExampleForm} />
 
+## Custom Styling
+
+The Flyout exposes read-only CSS Variables (prefixed with `--ref-`). Additionally, some predefined CSS variables can be
+overwritten. This can be useful for positioning a media element to the edge of the Flyout, or for fully controlling the
+Flyout's width.
+
+<ComponentStory story={flyoutStoryCustomStyling} />
