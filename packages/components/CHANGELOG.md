@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [3.29.0-rc.0] - 2025-06-27
+
 #### Added
 
 - `Popover`: support for custom slotted button
@@ -21,6 +23,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Input Search`: ([#3874](https://github.com/porsche-design-system/porsche-design-system/pull/3874))
 - `Input Number`, `Input Password`: added loading state
   ([#3874](https://github.com/porsche-design-system/porsche-design-system/pull/3874))
+- `Input Text`: ([#3897](https://github.com/porsche-design-system/porsche-design-system/pull/3897))
+- `Select`: `filter` prop to enable an input in the dropdown to filter options
+  ([#3893](https://github.com/porsche-design-system/porsche-design-system/pull/3893))
+- `Flyout`: expose `--ref-p-flyout-pt` and `--ref-p-flyout-px` read only CSS variable
+  ([#3902](https://github.com/porsche-design-system/porsche-design-system/pull/3902))
 
 ## [3.28.0] - 2025-06-02
 

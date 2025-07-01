@@ -43,7 +43,7 @@ const propTypes: PropTypes<typeof InputPassword> = {
   maxLength: AllowedTypes.number,
   minLength: AllowedTypes.number,
   form: AllowedTypes.string,
-  autoComplete: AllowedTypes.oneOf<InputPasswordAutoComplete>(INPUT_PASSWORD_AUTO_COMPLETE),
+  autoComplete: AllowedTypes.oneOf<InputPasswordAutoComplete>([...INPUT_PASSWORD_AUTO_COMPLETE, undefined]),
   state: AllowedTypes.oneOf<InputPasswordState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
@@ -74,7 +74,7 @@ export class InputPassword {
   /** The description text. */
   @Prop() public description?: string = '';
 
-  /** Displays as compact version. */
+  /** Displays as a compact version. */
   @Prop() public compact?: boolean = false;
 
   /** The name of the password input. */
@@ -86,7 +86,7 @@ export class InputPassword {
   @Prop({ mutable: true }) public value?: string = '';
 
   /** Specifies whether the input can be autofilled by the browser */
-  @Prop() public autoComplete?: InputPasswordAutoComplete = '';
+  @Prop() public autoComplete?: InputPasswordAutoComplete;
 
   /** Specifies whether the password input should be read-only. */
   @Prop() public readOnly?: boolean = false;

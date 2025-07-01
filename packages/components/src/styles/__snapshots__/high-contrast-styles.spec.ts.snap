@@ -105,6 +105,21 @@ exports[`should have only high contrast styles for p-popover 1`] = `
 ]
 `;
 
+exports[`should have only high contrast styles for p-select 1`] = `
+[
+  {
+    ".no-results--highlighted, .no-results--selected": {
+      "color": "Highlight",
+    },
+    "@media(hover:hover)": {
+      ".no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover": {
+        "color": "Highlight",
+      },
+    },
+  },
+]
+`;
+
 exports[`should have only high contrast styles for p-select-option 1`] = `
 [
   {

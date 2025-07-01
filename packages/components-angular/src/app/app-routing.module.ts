@@ -226,6 +226,16 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.InputNumberExampleControlledComponent,
   },
   {
+    name: 'Input Text Example',
+    path: 'input-text-example',
+    component: fromExamples.InputTextExampleComponent,
+  },
+  {
+    name: 'Input Text Example Controlled',
+    path: 'input-text-controlled-example',
+    component: fromExamples.InputTextExampleControlledComponent,
+  },
+  {
     name: 'Link Tile Example Hyphens',
     path: 'link-tile-example-hyphens',
     component: fromExamples.LinkTileExampleHyphensComponent,

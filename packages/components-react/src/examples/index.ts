@@ -28,6 +28,8 @@ export * from './InputPasswordExample';
 export * from './InputPasswordExampleControlled';
 export * from './InputNumberExample';
 export * from './InputNumberExampleControlled';
+export * from './InputTextExample';
+export * from './InputTextExampleControlled';
 export * from './InputSearchExample';
 export * from './InputSearchExampleControlled';
 export * from './LinkTileExampleHyphens';

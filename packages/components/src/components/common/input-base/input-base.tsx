@@ -38,6 +38,7 @@ type InputBaseProps = {
   type: string;
   value?: string;
   step?: number;
+  spellCheck?: boolean;
   onWheel?: (e: InputBaseWheelEventDetail) => void;
   onInput?: (e: InputBaseInputEventDetail) => void;
   onChange?: (e: InputBaseChangeEventDetail) => void;
@@ -69,6 +70,7 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
   min,
   value,
   step,
+  spellCheck,
   autoComplete,
   name,
   onInput,
@@ -113,6 +115,7 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
           placeholder={placeholder}
           maxlength={maxLength}
           minlength={minLength}
+          spellcheck={spellCheck}
           max={max}
           min={min}
           step={step}

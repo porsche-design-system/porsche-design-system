@@ -9920,6 +9920,8 @@ svg {
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
+  --ref-p-flyout-pt: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --ref-p-flyout-px: clamp(32px, 2.75vw + 23px, 76px) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -9986,10 +9988,9 @@ dialog::backdrop {
 }
 .flyout {
   display: grid;
-  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) minmax(0,1fr) clamp(8px, 0.5vw + 6px, 16px);
+  gap: clamp(16px, 1.25vw + 12px, 36px) calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
   padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
-  row-gap: clamp(16px, 1.25vw + 12px, 36px);
-  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
   align-content: flex-start;
   color: #010205;
   background: #FFF;
@@ -12369,6 +12370,8 @@ exports[`should render dsr component for PFlyout 1`] = `
   --pds-internal-grid-width-min: auto !important;
   --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
+  --ref-p-flyout-pt: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --ref-p-flyout-px: clamp(32px, 2.75vw + 23px, 76px) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -12435,10 +12438,9 @@ dialog::backdrop {
 }
 .flyout {
   display: grid;
-  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) minmax(0,1fr) clamp(8px, 0.5vw + 6px, 16px);
+  gap: clamp(16px, 1.25vw + 12px, 36px) calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
   padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
-  row-gap: clamp(16px, 1.25vw + 12px, 36px);
-  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
   align-content: flex-start;
   color: #010205;
   background: #FFF;
@@ -13260,7 +13262,6 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
         <input
           aria-describedby="description message"
           aria-readonly="true"
-          autocomplete=""
           id="input-number"
           placeholder=""
           readonly=""
@@ -13411,7 +13412,6 @@ input[type="text"] {
         <input
           aria-describedby="description message"
           aria-readonly="true"
-          autocomplete=""
           id="input-password"
           placeholder=""
           readonly=""
@@ -13608,7 +13608,6 @@ img {
         <input
           aria-describedby="description message"
           aria-readonly="true"
-          autocomplete=""
           id="input-search"
           placeholder=""
           readonly=""
@@ -13633,6 +13632,167 @@ img {
   </template>
   Some child
 </p-input-search>
+`;
+
+exports[`should render dsr component for PInputText 1`] = `
+<p-input-text
+  data-ssr=""
+>
+  <template
+    shadowroot="open"
+    shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: block;
+  color-scheme: light dark !important;
+  --ref-p-input-slotted-padding: calc(1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+  --ref-p-input-slotted-margin: calc(-1px * clamp(0, 6.42 * pow(calc(var(--p-internal-input-base-scaling, 1) - 0.5), 0.6826), 12)) !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+input {
+  all: unset;
+  flex: 1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  height: max(calc(6px + 2.125ex), var(--p-internal-input-base-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+  padding-block: max(2px, 8px * var(--p-internal-input-base-scaling, 1));
+  color: #010205;
+  width: 100%;
+  min-width: 2rem;
+  text-overflow: ellipsis;
+  -moz-appearance: textfield;
+}
+input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+.root {
+  display: grid;
+  gap: 4px;
+}
+.wrapper {
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  padding-inline: max(2px, 16px * var(--p-internal-input-base-scaling, 1));
+  display: flex;
+  align-items: center;
+  gap: max(4px, calc(16px * var(--p-internal-input-base-scaling, 1)));
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  cursor: text;
+  border-color: #D8D8DB;
+  background: #D8D8DB;
+}
+.wrapper:has(input:focus) {
+  border-color: #010205;
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
+  color: #010205;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.message:empty {
+  opacity: 0;
+  position: absolute;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+    </style>
+    <div
+      class="root"
+    >
+      <label
+        class="label"
+        for="input-text"
+        id="label"
+      />
+      <div
+        class="wrapper"
+      >
+        <slot
+          name="start"
+        />
+        <input
+          aria-describedby="description message"
+          aria-readonly="true"
+          id="input-text"
+          placeholder=""
+          readonly=""
+          type="text"
+          value=""
+        />
+        <slot
+          name="end"
+        />
+      </div>
+      <span
+        class="message"
+        id="message"
+        role="alert"
+      />
+      <span
+        class="loading"
+        id="loading"
+        role="status"
+      />
+    </div>
+  </template>
+  Some child
+</p-input-text>
 `;
 
 exports[`should render dsr component for PLink 1`] = `
@@ -15212,10 +15372,9 @@ dialog::backdrop {
 }
 .modal {
   display: grid;
-  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) minmax(0,1fr) clamp(8px, 0.5vw + 6px, 16px);
+  gap: clamp(16px, 1.25vw + 12px, 36px) calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
   padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
-  row-gap: clamp(16px, 1.25vw + 12px, 36px);
-  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
   align-content: flex-start;
   color: #010205;
   background: #FFF;
@@ -17405,6 +17564,67 @@ exports[`should render dsr component for PSelect 1`] = `
     gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
   }
+  .filter {
+    position: sticky;
+    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    background: #FFF;
+    z-index: 1;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #6B6D70;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results[role=status] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .no-results--selected {
+    cursor: default;
+    pointer-events: none;
+    background: rgba(148, 149, 152, .18);
+  }
+  .no-results--highlighted {
+    background: #D8D8DB;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #010205;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .no-results--hidden {
+    display: none;
+  }
   .icon {
     margin-inline-end: -3px;
     pointer-events: none;
@@ -17463,6 +17683,13 @@ exports[`should render dsr component for PSelect 1`] = `
     opacity: 0;
     position: absolute;
   }
+@media(hover:hover) {
+    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
+      color: #010205;
+      background: rgba(148, 149, 152, .18);
+    }
+}
+
     </style>
     <div
       class="root"
@@ -17536,10 +17763,16 @@ img {
         aria-label=""
         id="list"
         popover="manual"
-        role="listbox"
+        role="dialog"
         tabindex="-1"
       >
-        <slot />
+        <div
+          aria-label=""
+          class="options"
+          role="listbox"
+        >
+          <slot />
+        </div>
       </div>
       <span
         class="message"
@@ -17562,7 +17795,8 @@ exports[`should render dsr component for PSelectOption 1`] = `
   >
     <style>
       :host {
-  scroll-margin: 6px !important;
+  scroll-margin-block-start: calc(max(2px, var(--p-internal-select-option-scaling, 1) * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, var(--p-internal-select-option-scaling, 1) * 6px) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -18077,10 +18311,9 @@ dialog::backdrop {
 }
 .sheet {
   display: grid;
-  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) minmax(0,1fr) clamp(8px, 0.5vw + 6px, 16px);
+  gap: clamp(16px, 1.25vw + 12px, 36px) calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
   padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
-  row-gap: clamp(16px, 1.25vw + 12px, 36px);
-  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
   align-content: flex-start;
   color: #010205;
   background: #FFF;
@@ -21779,7 +22012,6 @@ textarea[readonly] {
       >
         <textarea
           aria-describedby="description message"
-          autocomplete=""
           id="textarea"
           placeholder=""
           readonly=""

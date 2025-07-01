@@ -109,6 +109,7 @@ import { InlineNotificationPage } from './generated/InlineNotification';
 import { InputNumberPage } from './generated/InputNumber';
 import { InputPasswordPage } from './generated/InputPassword';
 import { InputSearchPage } from './generated/InputSearch';
+import { InputTextPage } from './generated/InputText';
 import { LinkPage } from './generated/Link';
 import { LinkPurePage } from './generated/LinkPure';
 import { LinkSocialPage } from './generated/LinkSocial';
@@ -164,6 +165,9 @@ import { SegmentedControlPage } from './generated/SegmentedControl';
 import { SelectPage } from './generated/Select';
 import { SelectCompactPage } from './generated/SelectCompact';
 import { SelectOpenedBottomPage } from './generated/SelectOpenedBottom';
+import { SelectOpenedFilterPage } from './generated/SelectOpenedFilter';
+import { SelectOpenedFilterNoResultsPage } from './generated/SelectOpenedFilterNoResults';
+import { SelectOpenedFilterNoResultsCompactPage } from './generated/SelectOpenedFilterNoResultsCompact';
 import { SelectOpenedMaxHeightPage } from './generated/SelectOpenedMaxHeight';
 import { SelectOpenedMinHeightPage } from './generated/SelectOpenedMinHeight';
 import { SelectOpenedScrollContextPage } from './generated/SelectOpenedScrollContext';
@@ -699,6 +703,11 @@ export const generatedRoutes: RouteType[] = [
     element: <InputSearchPage />,
   },
   {
+    name: 'Input Text',
+    path: '/input-text',
+    element: <InputTextPage />,
+  },
+  {
     name: 'Link',
     path: '/link',
     element: <LinkPage />,
@@ -972,6 +981,21 @@ export const generatedRoutes: RouteType[] = [
     name: 'Select Opened Bottom',
     path: '/select-opened-bottom',
     element: <SelectOpenedBottomPage />,
+  },
+  {
+    name: 'Select Opened Filter',
+    path: '/select-opened-filter',
+    element: <SelectOpenedFilterPage />,
+  },
+  {
+    name: 'Select Opened Filter No Results',
+    path: '/select-opened-filter-no-results',
+    element: <SelectOpenedFilterNoResultsPage />,
+  },
+  {
+    name: 'Select Opened Filter No Results Compact',
+    path: '/select-opened-filter-no-results-compact',
+    element: <SelectOpenedFilterNoResultsCompactPage />,
   },
   {
     name: 'Select Opened Max Height',

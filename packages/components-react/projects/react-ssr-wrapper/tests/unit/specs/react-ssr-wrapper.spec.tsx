@@ -58,13 +58,13 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
     }
   };
 
-  // dangerouslySetInnerHTML would obviously be easier than converting to jsx
-  // but this does not work since our wrappers internally set children on the server side.
+  // dangerouslySetInnerHTML would be easier than converting to jsx,
+  // but this has not worked since our wrappers internally set children on the server side.
   // together with `...rest` which would contain dangerouslySetInnerHTML, we would have both
-  // and this is not allowed and throws an exception
+  // and these are not allowed and throw an exception
   let props: any = hasSlot ? { children: renderChildren() } : null;
 
-  if (['p-textarea', 'p-input-password', 'p-input-number', 'p-input-search'].includes(tagName)) {
+  if (['p-textarea', 'p-input-password', 'p-input-number', 'p-input-text', 'p-input-search'].includes(tagName)) {
     props = {
       ...props,
       readOnly: true,

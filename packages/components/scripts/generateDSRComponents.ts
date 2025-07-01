@@ -225,6 +225,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             .replace(/onBlur=\{onBlur}/g, '')
             .replace(/maxlength/, 'maxLength')
             .replace(/minlength/, 'minLength')
+            .replace(/spellcheck/, 'spellCheck')
             .replace(/\sreadonly/, 'readOnly')
             .replace(/autocomplete/, 'autoComplete')
             .replace(/\b(onInput|onWheel|onChange|onBlur|refElement\s*,?)/g, '// $1')
@@ -759,7 +760,7 @@ $&`
           .replace(/this\.props\.value = state;/, '')
           .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
           .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
-      } else if (tagName === 'p-input-number' || tagName === 'p-input-search') {
+      } else if (tagName === 'p-input-number' || tagName === 'p-input-search' || tagName === 'p-input-text') {
         newFileContent = newFileContent
           .replace(/@AttachInternals\(\)/, '')
           .replace(

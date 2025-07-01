@@ -128,6 +128,7 @@ import { InlineNotificationComponent } from './generated/inline-notification.com
 import { InputNumberComponent } from './generated/input-number.component';
 import { InputPasswordComponent } from './generated/input-password.component';
 import { InputSearchComponent } from './generated/input-search.component';
+import { InputTextComponent } from './generated/input-text.component';
 import { LinkComponent } from './generated/link.component';
 import { LinkPureComponent } from './generated/link-pure.component';
 import { LinkSocialComponent } from './generated/link-social.component';
@@ -184,6 +185,9 @@ import { SegmentedControlComponent } from './generated/segmented-control.compone
 import { SelectComponent } from './generated/select.component';
 import { SelectCompactComponent } from './generated/select-compact.component';
 import { SelectOpenedBottomComponent } from './generated/select-opened-bottom.component';
+import { SelectOpenedFilterComponent } from './generated/select-opened-filter.component';
+import { SelectOpenedFilterNoResultsComponent } from './generated/select-opened-filter-no-results.component';
+import { SelectOpenedFilterNoResultsCompactComponent } from './generated/select-opened-filter-no-results-compact.component';
 import { SelectOpenedMaxHeightComponent } from './generated/select-opened-max-height.component';
 import { SelectOpenedMinHeightComponent } from './generated/select-opened-min-height.component';
 import { SelectOpenedScrollContextComponent } from './generated/select-opened-scroll-context.component';
@@ -335,6 +339,7 @@ export const generatedPages = [
   InputNumberComponent,
   InputPasswordComponent,
   InputSearchComponent,
+  InputTextComponent,
   LinkComponent,
   LinkPureComponent,
   LinkSocialComponent,
@@ -391,6 +396,9 @@ export const generatedPages = [
   SelectComponent,
   SelectCompactComponent,
   SelectOpenedBottomComponent,
+  SelectOpenedFilterComponent,
+  SelectOpenedFilterNoResultsComponent,
+  SelectOpenedFilterNoResultsCompactComponent,
   SelectOpenedMaxHeightComponent,
   SelectOpenedMinHeightComponent,
   SelectOpenedScrollContextComponent,
@@ -927,6 +935,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: InputSearchComponent,
   },
   {
+    name: 'Input Text',
+    path: 'input-text',
+    component: InputTextComponent,
+  },
+  {
     name: 'Link',
     path: 'link',
     component: LinkComponent,
@@ -1200,6 +1213,21 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Select Opened Bottom',
     path: 'select-opened-bottom',
     component: SelectOpenedBottomComponent,
+  },
+  {
+    name: 'Select Opened Filter',
+    path: 'select-opened-filter',
+    component: SelectOpenedFilterComponent,
+  },
+  {
+    name: 'Select Opened Filter No Results',
+    path: 'select-opened-filter-no-results',
+    component: SelectOpenedFilterNoResultsComponent,
+  },
+  {
+    name: 'Select Opened Filter No Results Compact',
+    path: 'select-opened-filter-no-results-compact',
+    component: SelectOpenedFilterNoResultsCompactComponent,
   },
   {
     name: 'Select Opened Max Height',

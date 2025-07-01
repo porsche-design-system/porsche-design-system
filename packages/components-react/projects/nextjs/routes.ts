@@ -388,6 +388,10 @@ const generatedRoutes = {
     "path": "/input-search",
     "name": "InputSearch"
   },
+  "inputText": {
+    "path": "/input-text",
+    "name": "InputText"
+  },
   "link": {
     "path": "/link",
     "name": "Link"
@@ -611,6 +615,18 @@ const generatedRoutes = {
   "selectOpenedBottom": {
     "path": "/select-opened-bottom",
     "name": "SelectOpenedBottom"
+  },
+  "selectOpenedFilter": {
+    "path": "/select-opened-filter",
+    "name": "SelectOpenedFilter"
+  },
+  "selectOpenedFilterNoResults": {
+    "path": "/select-opened-filter-no-results",
+    "name": "SelectOpenedFilterNoResults"
+  },
+  "selectOpenedFilterNoResultsCompact": {
+    "path": "/select-opened-filter-no-results-compact",
+    "name": "SelectOpenedFilterNoResultsCompact"
   },
   "selectOpenedMaxHeight": {
     "path": "/select-opened-max-height",
