@@ -143,7 +143,7 @@ export const popoverControlledAiTagModified: Story<'p-popover'> = {
                   value: true,
                 },
               },
-              children: ['AI-generated'],
+              children: ['AI-modified'],
             },
           ],
         },
