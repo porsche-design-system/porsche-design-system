@@ -26,23 +26,42 @@ const togglePopover = async (page: Page): Promise<void> => {
   await waitForStencilLifecycle(page);
 };
 
+const openPopover = async (page: Page) => {
+  await setProperty(getHost(page), 'open', true);
+  await waitForStencilLifecycle(page);
+};
+
+const dismissPopover = async (page: Page) => {
+  await setProperty(getHost(page), 'open', false);
+  await waitForStencilLifecycle(page);
+};
+
 type InitOptions = {
   direction?: PopoverDirection;
   withLink?: boolean;
   withStrong?: boolean;
   withButtonOutside?: boolean;
+  withSlottedButton?: boolean;
 };
 const initPopover = (page: Page, opts?: InitOptions): Promise<void> => {
-  const { direction = 'bottom', withLink = false, withStrong = false, withButtonOutside = false } = opts || {};
+  const {
+    direction = 'bottom',
+    withLink = false,
+    withStrong = false,
+    withButtonOutside = false,
+    withSlottedButton = false,
+  } = opts || {};
 
   const linkMarkup = withLink ? '<a href="#">Some Link</a>' : '';
   const strongMarkup = withStrong ? '<strong>strong</strong>' : '';
   const buttonMarkup = withButtonOutside ? '<button>Some Button</button>' : '';
+  const slottedButtonMarkup = withSlottedButton ? '<button slot="button">Some Button</button>' : '';
 
   return setContentWithDesignSystem(
     page,
     `
 <p-popover direction="${direction}">
+  ${slottedButtonMarkup}
   ${linkMarkup}
   ${strongMarkup}
   Some Popover Content
@@ -156,9 +175,15 @@ test.describe('mouse behavior', () => {
     await initPopover(page);
 
     await expect(getPopover(page)).toHaveCount(0);
-
     await togglePopover(page);
+    await expect(getPopover(page)).not.toHaveCount(0);
+  });
 
+  test('should open popover with slotted button on click', async ({ page }) => {
+    await initPopover(page, { withSlottedButton: true });
+
+    await expect(getPopover(page)).toHaveCount(0);
+    await openPopover(page);
     await expect(getPopover(page)).not.toHaveCount(0);
   });
 
@@ -168,6 +193,15 @@ test.describe('mouse behavior', () => {
     await togglePopover(page);
     await expect(getPopover(page)).not.toHaveCount(0);
     await togglePopover(page);
+    await expect(getPopover(page)).toHaveCount(0);
+  });
+
+  test('should close popover with slotted button on second click', async ({ page }) => {
+    await initPopover(page, { withSlottedButton: true });
+
+    await openPopover(page);
+    await expect(getPopover(page)).not.toHaveCount(0);
+    await dismissPopover(page);
     await expect(getPopover(page)).toHaveCount(0);
   });
 
@@ -328,6 +362,73 @@ test.describe('keyboard behavior', () => {
       await expect(page.locator('p-popover.first [popover]'), 'first popover, second enter').toBeHidden();
       await expect(page.locator('p-popover.second [popover]'), 'second popover, second enter').toBeVisible();
     });
+  });
+});
+
+test.describe('dismiss event', () => {
+  test('should not fire on a non controlled component if closed with ESC key', async ({ page }) => {
+    await initPopover(page);
+    const host = getHost(page);
+
+    await addEventListener(host, 'dismiss');
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+
+    await togglePopover(page);
+    await waitForStencilLifecycle(page);
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+
+    await page.keyboard.press('Escape');
+    await waitForStencilLifecycle(page);
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+  });
+
+  test('should not fire on a non controlled component if closed with click outside', async ({ page }) => {
+    await initPopover(page);
+    const host = getHost(page);
+
+    await addEventListener(host, 'dismiss');
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+
+    await openPopover(page);
+    await waitForStencilLifecycle(page);
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+
+    page.locator('body').click();
+    await waitForStencilLifecycle(page);
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+  });
+
+  test('should fire on a controlled component if closed with ESC key', async ({ page }) => {
+    await initPopover(page, { withSlottedButton: true });
+    const host = getHost(page);
+
+    await addEventListener(host, 'dismiss');
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+
+    await getButton(page).focus();
+    await openPopover(page);
+    await waitForStencilLifecycle(page);
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+
+    await page.keyboard.press('Escape');
+    await waitForStencilLifecycle(page);
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
+  });
+
+  test('should fire on a controlled component if closed with click outside', async ({ page }) => {
+    await initPopover(page, { withSlottedButton: true });
+    const host = getHost(page);
+
+    await addEventListener(host, 'dismiss');
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+
+    await openPopover(page);
+    await waitForStencilLifecycle(page);
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+
+    page.locator('body').click();
+    await waitForStencilLifecycle(page);
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
   });
 });
 
