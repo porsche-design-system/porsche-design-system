@@ -236,9 +236,13 @@ const generatedRoutes = {
     "path": "/flyout-basic",
     "name": "FlyoutBasic"
   },
-  "flyoutCssVariables": {
-    "path": "/flyout-css-variables",
-    "name": "FlyoutCssVariables"
+  "flyoutCssVariables_1": {
+    "path": "/flyout-css-variables-1",
+    "name": "FlyoutCssVariables_1"
+  },
+  "flyoutCssVariables_2": {
+    "path": "/flyout-css-variables-2",
+    "name": "FlyoutCssVariables_2"
   },
   "flyoutFixedFooter": {
     "path": "/flyout-fixed-footer",
