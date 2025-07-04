@@ -90,7 +90,8 @@ import { FlexComponent } from './generated/flex.component';
 import { Flyout_1Component } from './generated/flyout-1.component';
 import { Flyout_2Component } from './generated/flyout-2.component';
 import { FlyoutBasicComponent } from './generated/flyout-basic.component';
-import { FlyoutCssVariablesComponent } from './generated/flyout-css-variables.component';
+import { FlyoutCssVariables_1Component } from './generated/flyout-css-variables-1.component';
+import { FlyoutCssVariables_2Component } from './generated/flyout-css-variables-2.component';
 import { FlyoutFixedFooterComponent } from './generated/flyout-fixed-footer.component';
 import { FlyoutFixedFooterHeaderComponent } from './generated/flyout-fixed-footer-header.component';
 import { FlyoutFixedFooterHeaderScrollableContentComponent } from './generated/flyout-fixed-footer-header-scrollable-content.component';
@@ -300,7 +301,8 @@ export const generatedPages = [
   Flyout_1Component,
   Flyout_2Component,
   FlyoutBasicComponent,
-  FlyoutCssVariablesComponent,
+  FlyoutCssVariables_1Component,
+  FlyoutCssVariables_2Component,
   FlyoutFixedFooterComponent,
   FlyoutFixedFooterHeaderComponent,
   FlyoutFixedFooterHeaderScrollableContentComponent,
@@ -743,9 +745,14 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: FlyoutBasicComponent,
   },
   {
-    name: 'Flyout Css Variables',
-    path: 'flyout-css-variables',
-    component: FlyoutCssVariablesComponent,
+    name: 'Flyout Css Variables 1',
+    path: 'flyout-css-variables-1',
+    component: FlyoutCssVariables_1Component,
+  },
+  {
+    name: 'Flyout Css Variables 2',
+    path: 'flyout-css-variables-2',
+    component: FlyoutCssVariables_2Component,
   },
   {
     name: 'Flyout Fixed Footer',
