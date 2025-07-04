@@ -11,7 +11,7 @@ const onSubmit = (e: Event) => {
 
 <template>
   <form @submit.prevent="onSubmit">
-    <PInputSearch :name="'some-name'" :label="'Some Label'" />
+    <PInputSearch :name="'some-name'" :label="'Some Label'" :indicator="true" :clear="true" />
     <PButton type="submit">Submit</PButton>
     <PButton type="reset">Reset</PButton>
   </form>

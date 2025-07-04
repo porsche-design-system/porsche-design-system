@@ -13,7 +13,7 @@ export const InputSearchExamplePage = (): JSX.Element => {
   return (
     <>
       <form onSubmit={onSubmit}>
-        <PInputSearch name="some-name" label="Some Label"></PInputSearch>
+        <PInputSearch name="some-name" label="Some Label" indicator={true} clear={true}></PInputSearch>
         <PButton type="submit">Submit</PButton>
         <PButton type="reset">Reset</PButton>
       </form>

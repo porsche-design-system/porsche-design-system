@@ -14,14 +14,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
-#### Added
+### Added
 
 - `Icon`: `ai-spark` and `ai-spark-filled`
   ([#3916](https://github.com/porsche-design-system/porsche-design-system/pull/3916))
 
+### Changed
+
+- `Input Search`: `indicator` prop now defaults to `false`
+  ([#3917](https://github.com/porsche-design-system/porsche-design-system/pull/3917))
+
 ## [3.29.0-rc.0] - 2025-06-27
 
-#### Added
+### Added
 
 - `Input Search`: ([#3874](https://github.com/porsche-design-system/porsche-design-system/pull/3874))
 - `Input Number`, `Input Password`: added loading state
@@ -34,11 +39,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [3.28.0] - 2025-06-02
 
-#### Added
+### Added
 
 - `Input Number`: ([#3855](https://github.com/porsche-design-system/porsche-design-system/pull/3855))
 
-#### Fixed
+### Fixed
 
 - `Select Wrapper`: update of scroll position if dropdown is navigated with keyboard
   ([#3858](https://github.com/porsche-design-system/porsche-design-system/pull/3858))

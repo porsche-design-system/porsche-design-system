@@ -91,7 +91,7 @@ export class InputSearch {
   @Prop() public clear?: boolean = false;
 
   /** Show search indicator icon */
-  @Prop() public indicator?: boolean = true;
+  @Prop() public indicator?: boolean = false;
 
   /** Specifies whether the search input should be read-only. */
   @Prop() public readOnly?: boolean = false;
