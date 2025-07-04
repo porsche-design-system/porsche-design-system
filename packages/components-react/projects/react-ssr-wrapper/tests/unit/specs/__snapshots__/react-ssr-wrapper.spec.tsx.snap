@@ -13559,52 +13559,6 @@ input[type="search"]::-webkit-search-cancel-button {
         <slot
           name="start"
         />
-        <p-icon
-          aria-hidden="true"
-          data-ssr=""
-        >
-          <template
-            shadowroot="open"
-            shadowrootmode="open"
-          >
-            <style>
-              :host {
-  display: inline-block;
-  vertical-align: top;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-img {
-  display: block;
-  margin: 0;
-  padding: 0;
-  pointer-events: none;
-  filter: var(--p-internal-icon-filter,invert(63%) sepia(8%) saturate(108%) hue-rotate(188deg) brightness(94%) contrast(86%));
-  -webkit-animation: rerender-light-state-disabled 1ms;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-@keyframes rerender-light-state-disabled {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
-}
-            </style>
-            <img
-              alt=""
-              height="24"
-              loading="lazy"
-              src="http://localhost:3001/icons/search.3f0f1ce.svg"
-              width="24"
-            />
-          </template>
-        </p-icon>
         <input
           aria-describedby="description message"
           aria-readonly="true"
