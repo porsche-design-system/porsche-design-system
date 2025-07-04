@@ -20,8 +20,12 @@
   }
 </style>
 
-<div class="playground light" title="should render with label">
+<div class="playground light" title="should render with label, default value, indicator and clear button">
   <p-input-search name="some-name" label="Label" value="Some value" clear="true" indicator="true"></p-input-search>
+</div>
+
+<div class="playground light" title="should render with label and default value but without indicator and clear button">
+  <p-input-search name="some-name" label="Label" value="Some value"></p-input-search>
 </div>
 
 <div class="playground light" title="should render with label and placeholder">
@@ -421,7 +425,7 @@
 
 <div class="playground light" title="should render with slot end">
   <p-input-search name="some-name" label="Label" value="Some value" indicator="true">
-    <p-button-pure slot="end" hide-label="true" icon="close" class="input-button">Some label</p-button-pure>
+    <p-button-pure slot="end" hide-label="true" icon="locate" class="input-button">Some label</p-button-pure>
   </p-input-search>
 </div>
 
