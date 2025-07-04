@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+#### Added
+
+- `Icon`: `ai-spark` and `ai-spark-filled`
+  ([#3916](https://github.com/porsche-design-system/porsche-design-system/pull/3916))
+
 ## [3.29.0-rc.0] - 2025-06-27
 
 #### Added
