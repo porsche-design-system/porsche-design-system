@@ -5,7 +5,7 @@ import { PorscheDesignSystemModule } from '@porsche-design-system/components-ang
   selector: 'page-input-search-example',
   template: `
     <form (submit)="onSubmit($event)">
-      <p-input-search name="some-name" label="Some Label"></p-input-search>
+      <p-input-search name="some-name" label="Some Label" [indicator]="true" [clear]="true"></p-input-search>
       <p-button type="submit">Submit</p-button>
       <p-button type="reset">Reset</p-button>
     </form>

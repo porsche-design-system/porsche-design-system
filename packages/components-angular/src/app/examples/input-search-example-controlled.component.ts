@@ -4,7 +4,7 @@ import { InputSearchInputEventDetail, PorscheDesignSystemModule } from '@porsche
 @Component({
   selector: 'page-input-search-example-controlled',
   template: `
-    <p-input-search name="some-name" label="Some Label" [value]="value" (input)="onInput($event)" />
+    <p-input-search name="some-name" label="Some Label" [value]="value" [indicator]="true" [clear]="true" (input)="onInput($event)" />
     <p-text>{{ debugText }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
