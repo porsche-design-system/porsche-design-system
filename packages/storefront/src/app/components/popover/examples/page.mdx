@@ -2,11 +2,7 @@ import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { ComponentStory } from '@/components/playground/ComponentStory';
 import { Notification } from '@/components/common/Notification';
-import {
-  popoverControlled,
-  popoverControlledAiTagGenerated,
-  popoverControlledAiTagModified,
-} from '@/app/components/popover/popover.stories';
+import { popoverControlled } from '@/app/components/popover/popover.stories';
 
 export const metadata = {
   title: 'Popover - Porsche Design System',
@@ -15,7 +11,7 @@ export const metadata = {
 
 # Popover <ComponentStatus tagName="p-popover"></ComponentStatus>
 
-<TableOfContents headings={['Controlled', 'AI Tag Examples']} />
+<TableOfContents headings={['Controlled']} />
 
 ## Controlled
 
@@ -29,24 +25,9 @@ also be used with a **slotted button** as a controlled component. This means tha
   **controlled examples** must be set by the user which can't be mapped by the component generator.
 </Notification>
 
-### Basic example
-
 <ComponentStory story={popoverControlled} />
 
-#### The following development considerations must be taken into account
+### The following development considerations must be taken into account
 
 1. The `aria-expanded` attribute must be set and changed manually to its corresponding state `true | false`.
 2. The `focus` must be set to the slotted button element when the popover is closed by `Escape` key.
-
-## AI Tag Examples
-
-This example shows how to use the `p-popover` component with an AI tag to mark contents as "AI-generated" to provide
-additional information, such as its source or context.
-
-### For content generated entirely with AI
-
-<ComponentStory story={popoverControlledAiTagGenerated} />
-
-### For content that has been modified with AI
-
-<ComponentStory story={popoverControlledAiTagModified} />
