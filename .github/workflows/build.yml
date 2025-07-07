@@ -4,8 +4,8 @@ on:
   workflow_call:
 
 jobs:
-  build-dev:
-    name: 'Build (Development)'
+  build-development:
+    name: 'Development'
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.49.1
@@ -42,8 +42,8 @@ jobs:
       - name: 'Upload artifact'
         uses: actions/upload-artifact@v4
         with:
-          name: build-dev
-          path:
+          name: build-development
+          path: |
             ./packages/storefront/dist
             ./packages/storefront/projects/stackblitz/dist
             ./packages/components-react/dist
@@ -73,3 +73,4 @@ jobs:
             ./packages/assets/cdn
             ./packages/shared/bin
             ./packages/assets/bin
+          if-no-files-found: error
