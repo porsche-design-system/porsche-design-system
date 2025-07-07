@@ -1,8 +1,8 @@
+import type { ToastMessage } from '../../../projects/angular-wrapper/src/public-api';
 /**
  * @jest-environment jsdom
  */
 import { ToastManager } from '../../../projects/angular-wrapper/src/toast-manager';
-import type { ToastMessage } from '../../../projects/angular-wrapper/src/public-api';
 
 it('should instantiate a new ToastManager', () => {
   const toastManager = new ToastManager();

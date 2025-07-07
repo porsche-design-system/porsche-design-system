@@ -106,24 +106,6 @@ export default [
         targets: [{ src: `${outputDir}/partials/index.cjs`, dest: `${outputDir}/partials`, rename: () => 'index.js' }],
         hook: 'writeBundle',
       }),
-      // ugly workaround to align package structure with other packages
-      // unfortunately ng-packagr doesn't support any configuration and we have to postprocess
-      generatePackageJson({
-        inputFolder: outputDir, // defaults to current working directory, which is the wrong one
-        outputFolder: outputDir,
-        baseContents: (pkg) => ({
-          ...pkg,
-          typings: 'esm/index.d.ts',
-          exports: {
-            ...pkg.exports,
-            './package.json': './package.json',
-            '.': {
-              ...pkg.exports['.'],
-              types: './esm/index.d.ts',
-            },
-          },
-        }),
-      }),
     ],
   },
   {
