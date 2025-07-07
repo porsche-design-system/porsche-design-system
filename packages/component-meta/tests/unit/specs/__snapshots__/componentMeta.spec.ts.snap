@@ -4677,7 +4677,7 @@ exports[`should match snapshot 1`] = `
       },
       "indicator": {
         "allowedValues": "boolean",
-        "defaultValue": true,
+        "defaultValue": false,
         "description": "Show search indicator icon",
         "type": "boolean",
       },
