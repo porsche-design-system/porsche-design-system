@@ -164,4 +164,5 @@ jobs:
             ./packages/shared/bin/
             ./packages/assets/bin/
             ./packages/components-js/projects/components-wrapper/lib/
+            ./packages/components-js/tests/unit/results/stats-raw.json
           if-no-files-found: error

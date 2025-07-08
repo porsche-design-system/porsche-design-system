@@ -148,14 +148,14 @@ jobs:
   components-js-e2e-chrome:
     name: 'Components JS E2E (Chrome)'
     runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
     strategy:
       fail-fast: false
       matrix:
         shardIndex: [ 1, 2 ]
         shardTotal: [ 2 ]
-    container:
-      image: ${{ inputs.image }}
-      options: --user 1001
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -171,14 +171,14 @@ jobs:
   components-js-e2e-firefox:
     name: 'Components JS E2E (Firefox)'
     runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
     strategy:
       fail-fast: false
       matrix:
         shardIndex: [ 1, 2 ]
         shardTotal: [ 2 ]
-    container:
-      image: ${{ inputs.image }}
-      options: --user 1001
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -194,14 +194,14 @@ jobs:
   components-js-e2e-safari:
     name: 'Components JS E2E (Safari)'
     runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
     strategy:
       fail-fast: false
       matrix:
         shardIndex: [ 1, 2 ]
         shardTotal: [ 2 ]
-    container:
-      image: ${{ inputs.image }}
-      options: --user 1001
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -217,14 +217,14 @@ jobs:
   components-js-vrt-chrome:
     name: 'Components JS VRT (Chrome)'
     runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
     strategy:
       fail-fast: false
       matrix:
         shardIndex: [ 1, 2, 3, 4 ]
         shardTotal: [ 4 ]
-    container:
-      image: ${{ inputs.image }}
-      options: --user 1001
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -267,3 +267,61 @@ jobs:
         with:
           name: regression-components-js-vrt-playwright-safari
           path: ./packages/components-js/tests/vrt/results
+  components-angular:
+    name: 'Components Angular'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Download artifact'
+        uses: actions/download-artifact@v4
+        with:
+          name: build-development
+          path: ./packages
+      - name: 'Unit (Jest)'
+        run: yarn test:unit:components-angular:jest
+      - name: 'Unit (Karma)'
+        run: yarn test:unit:components-angular:karma-ci
+      - name: 'E2E'
+        run: yarn test:e2e:components-angular
+      - name: 'VRT'
+        run: yarn test:vrt:components-angular
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: components-angular-vrt-regression
+          path: ./packages/components-angular/tests/vrt/results
+  components-react:
+    name: 'Components React'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Download artifact'
+        uses: actions/download-artifact@v4
+        with:
+          name: build-development
+          path: ./packages
+      - name: 'Unit'
+        run: yarn test:unit:components-react:react-wrapper
+      - name: 'E2E'
+        run: yarn test:e2e:components-react
+      - name: 'VRT'
+        run: yarn test:vrt:components-react
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: components-react-vrt-regression
+          path: ./packages/components-react/tests/vrt/results
