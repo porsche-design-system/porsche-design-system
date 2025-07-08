@@ -2,13 +2,18 @@ name: 'Test'
 
 on:
   workflow_call:
+    inputs:
+      image:
+        description: 'Docker image to be used in workflow.'
+        required: true
+        type: string
 
 jobs:
   assets:
     name: 'Assets'
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.49.1
+      image: ${{ inputs.image }}
       options: --user 1001
     steps:
       - name: 'Checkout'
@@ -19,7 +24,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-development
-          path: ./
+      - name: 'Display structure of downloaded files'
+        run: ls -R
       - name: 'Unit'
         run: yarn test:unit:assets:assets
       - name: 'Fallbacks Unit'

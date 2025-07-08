@@ -2,13 +2,18 @@ name: 'Build'
 
 on:
   workflow_call:
+    inputs:
+      image:
+        description: 'Docker image to be used in workflow.'
+        required: true
+        type: string
 
 jobs:
   lint:
     name: 'Lint'
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.49.1
+      image: ${{ inputs.image }}
       options: --user 1001
     steps:
       - name: 'Checkout'
@@ -21,7 +26,7 @@ jobs:
     name: 'Development'
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.49.1
+      image: ${{ inputs.image }}
       options: --user 1001
     steps:
       - name: 'Checkout'
@@ -91,7 +96,7 @@ jobs:
     name: 'Production'
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.49.1
+      image: ${{ inputs.image }}
       options: --user 1001
     steps:
       - name: 'Checkout'

@@ -6,12 +6,19 @@ on:
       - '**'
       - '!main'
 
+env:
+  DOCKER_IMAGE_PLAYWRIGHT: mcr.microsoft.com/playwright:v1.49.1
+
 jobs:
   build:
     name: 'Build'
     uses: ./.github/workflows/build.yml
+    with:
+      image: ${{ env.DOCKER_IMAGE_PLAYWRIGHT }}
   test:
     name: 'Test'
     uses: ./.github/workflows/test.yml
+    with:
+      image: ${{ env.DOCKER_IMAGE_PLAYWRIGHT }}
     needs:
       - build
