@@ -93,7 +93,7 @@ jobs:
         with:
           name: build-development
           path: ./packages
-      - name: 'Tailwind CSS Unit'
+      - name: 'Unit'
         run: yarn test:unit:components
   components-js-unit:
     name: 'Components JS Unit'
