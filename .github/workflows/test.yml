@@ -39,5 +39,91 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: fallbacks-vrt-regression
+          name: regression-fallbacks-vrt
           path: ./packages/assets/projects/fallbacks/tests/vrt/results
+  tokens:
+    name: 'Tokens'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Download artifact'
+        uses: actions/download-artifact@v4
+        with:
+          name: build-development
+          path: ./packages
+      - name: 'Unit'
+        run: yarn test:unit:tokens
+  styles:
+    name: 'Styles'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Download artifact'
+        uses: actions/download-artifact@v4
+        with:
+          name: build-development
+          path: ./packages
+      - name: 'Tailwind CSS Unit'
+        run: yarn test:unit:styles:tailwindcss
+  components-unit:
+    name: 'Components Unit'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Download artifact'
+        uses: actions/download-artifact@v4
+        with:
+          name: build-development
+          path: ./packages
+      - name: 'Tailwind CSS Unit'
+        run: yarn test:unit:components
+  components-js-unit:
+    name: 'Components JS Unit'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Download artifact'
+        uses: actions/download-artifact@v4
+        with:
+          name: build-production
+          path: ./packages
+      - name: 'Components Manager Core'
+        run: yarn test:unit:components-js:components-manager-core
+      - name: 'Components Manager CLI'
+        run: yarn test:unit:components-js:components-manager-cli
+      - name: 'Components Wrapper'
+        run: yarn test:unit:components-js:components-wrapper
+      - name: 'jsdom Polyfill'
+        run: yarn test:unit:components-js:jsdom-polyfill
+      - name: 'Partials'
+        run: yarn test:unit:components-js:partials
+      - name: 'Unit Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-components-js-unit
+          path: ./packages/components-js/tests/unit/results
