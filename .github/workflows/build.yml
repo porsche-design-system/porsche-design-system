@@ -91,6 +91,7 @@ jobs:
             ./packages/assets/cdn/
             ./packages/shared/bin/
             ./packages/assets/bin/
+            ./packages/assets/projects/icons/tests/unit/results/stats.json
           if-no-files-found: error
   build-production:
     name: 'Production'
