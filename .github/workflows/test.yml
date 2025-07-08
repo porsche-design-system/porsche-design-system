@@ -1,0 +1,38 @@
+name: 'Test'
+
+on:
+  workflow_call:
+
+jobs:
+  assets:
+    name: 'Assets'
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.49.1
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Download artifact'
+        uses: actions/download-artifact@v4
+        with:
+          name: build-development
+          path: ./
+      - name: 'Unit'
+        run: yarn test:unit:assets:assets
+      - name: 'Fallbacks Unit'
+        run: yarn test:unit:assets:fallbacks
+      - name: 'Icons Unit'
+        run: yarn test:unit:assets:icons
+      - name: 'Font Face Unit'
+        run: yarn test:unit:assets:font-face
+      - name: 'Fallbacks VRT'
+        run: yarn test:vrt:assets:fallbacks
+      - name: 'Fallbacks VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fallbacks-vrt-regression
+          path: ./packages/assets/projects/fallbacks/tests/vrt/results

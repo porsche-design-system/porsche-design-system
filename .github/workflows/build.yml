@@ -4,6 +4,19 @@ on:
   workflow_call:
 
 jobs:
+  lint:
+    name: 'Lint'
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.49.1
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Lint'
+        run: yarn lint
   build-development:
     name: 'Development'
     runs-on: ubuntu-latest

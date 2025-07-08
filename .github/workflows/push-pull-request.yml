@@ -10,8 +10,8 @@ jobs:
   build:
     name: 'Build'
     uses: ./.github/workflows/build.yml
-  # test:
-  #   name: 'Test'
-  #   uses: ./.github/workflows/test.yml
-  #   needs:
-  #     - build
+  test:
+    name: 'Test'
+    uses: ./.github/workflows/test.yml
+    needs:
+      - build
