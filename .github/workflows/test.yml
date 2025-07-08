@@ -117,7 +117,7 @@ jobs:
         run: yarn test:unit:components-js:components-manager-cli
       - name: 'Components Wrapper'
         run: yarn test:unit:components-js:components-wrapper
-      - name: 'jsdom Polyfill'
+      - name: 'JSDom Polyfill'
         run: yarn test:unit:components-js:jsdom-polyfill
       - name: 'Partials'
         run: yarn test:unit:components-js:partials
@@ -127,3 +127,143 @@ jobs:
         with:
           name: regression-components-js-unit
           path: ./packages/components-js/tests/unit/results
+  components-js-a11y:
+    name: 'Components JS A11y'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Download artifact'
+        uses: actions/download-artifact@v4
+        with:
+          name: build-development
+          path: ./packages
+      - name: 'A11y'
+        run: yarn test:a11y:components-js
+  components-js-e2e-chrome:
+    name: 'Components JS E2E (Chrome)'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2 ]
+        shardTotal: [ 2 ]
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Download artifact'
+        uses: actions/download-artifact@v4
+        with:
+          name: build-development
+          path: ./packages
+      - name: 'E2E'
+        run: yarn test:e2e:components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+  components-js-e2e-firefox:
+    name: 'Components JS E2E (Firefox)'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2 ]
+        shardTotal: [ 2 ]
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Download artifact'
+        uses: actions/download-artifact@v4
+        with:
+          name: build-development
+          path: ./packages
+      - name: 'E2E'
+        run: yarn test:e2e:components-js:firefox:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+  components-js-e2e-safari:
+    name: 'Components JS E2E (Safari)'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2 ]
+        shardTotal: [ 2 ]
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Download artifact'
+        uses: actions/download-artifact@v4
+        with:
+          name: build-development
+          path: ./packages
+      - name: 'E2E'
+        run: yarn test:e2e:components-js:safari:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+  components-js-vrt-chrome:
+    name: 'Components JS VRT (Chrome)'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2, 3, 4 ]
+        shardTotal: [ 4 ]
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Download artifact'
+        uses: actions/download-artifact@v4
+        with:
+          name: build-development
+          path: ./packages
+      - name: 'VRT'
+        run: yarn test:vrt:components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-components-js-vrt-chrome-${{ matrix.shardIndex }}
+          path: ./packages/components-js/tests/vrt/results
+  components-js-vrt-safari:
+    name: 'Components JS VRT (Safari)'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Download artifact'
+        uses: actions/download-artifact@v4
+        with:
+          name: build-development
+          path: ./packages
+      - name: 'VRT'
+        run: yarn test:vrt:components-js:safari
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-components-js-vrt-playwright-safari
+          path: ./packages/components-js/tests/vrt/results
