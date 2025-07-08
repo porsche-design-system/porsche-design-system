@@ -107,7 +107,7 @@ jobs:
       - name: 'Styles'
         run: yarn build:styles
       - name: 'Utilities'
-        run: yarn build:utilities-prod
+        run: yarn build:utilities
       - name: 'Component Meta'
         run: yarn build:component-meta
       - name: 'Components'
