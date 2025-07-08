@@ -24,6 +24,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-development
+          path: ./packages
       - name: 'Display structure of downloaded files'
         run: ls -R
       - name: 'Unit'
