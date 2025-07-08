@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
+- `Popover`: support for custom slotted button
+  ([#3861](https://github.com/porsche-design-system/porsche-design-system/pull/3861))
 - `Icon`: `ai-spark` and `ai-spark-filled`
   ([#3916](https://github.com/porsche-design-system/porsche-design-system/pull/3916))
 
