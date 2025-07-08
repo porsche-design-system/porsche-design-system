@@ -1,16 +1,14 @@
 {
-  // TODO: enable once on TypeScript 5
-  // "extends": "@porsche-design-system/shared/tsconfig.json",
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
     "sourceMap": true,
     "declaration": false,
-    "downlevelIteration": true,
+    "esModuleInterop": true,
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "target": "ESNext",
     "paths": {
       "@porsche-design-system/components-angular": ["dist/angular-wrapper"],

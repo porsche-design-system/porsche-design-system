@@ -1,9 +1,9 @@
 import {
-  componentsReady,
-  PorscheDesignSystemModule,
-  ToastManager,
   IconName,
+  PorscheDesignSystemModule,
   TabsUpdateEvent,
+  ToastManager,
+  componentsReady,
 } from '../../../projects/angular-wrapper/src/public-api';
 
 it('should expose componentsReady()', () => {
