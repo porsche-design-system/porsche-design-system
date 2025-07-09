@@ -216,9 +216,5 @@ export const updatePagination = (paginationEl: HTMLElement, amountOfPages: numbe
 };
 
 export const getLangDirection = (el: HTMLElement): CarouselLanguageDirection => {
-  const dirAttribute = el.closest('[dir]')?.getAttribute('dir');
-  if (dirAttribute) {
-    return dirAttribute as CarouselLanguageDirection;
-  }
-  return 'ltr';
+  return (el.closest('[dir]')?.getAttribute('dir') as CarouselLanguageDirection) || 'ltr';
 };
