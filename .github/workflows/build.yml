@@ -98,6 +98,7 @@ jobs:
             ./packages/components-angular/src/app/pages/generated/
             ./packages/components-react/projects/react-wrapper/src/lib/
             ./packages/components-react/src/pages/generated/
+            ./packages/components-react/projects/nextjs/app/
             ./packages/components-vue/projects/vue-wrapper/src/lib/
             ./packages/component-meta/src/lib/componentMeta.ts
             ./packages/shared/src/lib/
@@ -180,6 +181,7 @@ jobs:
             ./packages/components-angular/src/app/pages/generated/
             ./packages/components-react/projects/react-wrapper/src/lib/
             ./packages/components-react/src/pages/generated/
+            ./packages/components-react/projects/nextjs/app/
             ./packages/components-vue/projects/vue-wrapper/src/lib/
             ./packages/component-meta/src/lib/componentMeta.ts
             ./packages/shared/src/lib/
