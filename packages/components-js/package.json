@@ -38,7 +38,7 @@
     "test:unit:components-js": "vitest --config tests/unit/config/vitest.config.ts",
     "test:unit:jsdom-polyfill": "yarn --cwd ./projects/jsdom-polyfill test:unit",
     "test:unit:partials": "yarn --cwd ./projects/partials test:unit",
-    "test:e2e": "playwright test --config=tests/e2e/config/playwright.config.ts",
+    "test:e2e": "DEBUG=pw:webserver playwright test --config=tests/e2e/config/playwright.config.ts",
     "test:e2e:chrome": "yarn test:e2e --project=chrome",
     "test:e2e:chrome:1/2": "yarn test:e2e:chrome --shard=1/2",
     "test:e2e:chrome:2/2": "yarn test:e2e:chrome --shard=2/2",
