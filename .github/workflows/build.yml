@@ -93,6 +93,12 @@ jobs:
             ./packages/assets/bin/
             ./packages/components-js/projects/components-wrapper/lib/
             ./packages/assets/projects/icons/tests/unit/results/stats.json
+            ./packages/components-js/projects/partials/src/lib/partials.tsx
+            ./packages/components-angular/projects/angular-wrapper/src/lib/types.ts
+            ./packages/components-react/projects/react-wrapper/src/lib/types.ts
+            ./packages/components-vue/projects/vue-wrapper/src/lib/types.ts
+            ./packages/component-meta/src/lib/componentMeta.ts
+            ./packages/shared/src/lib/partialNames.ts
           if-no-files-found: error
   build-production:
     name: 'Production'
@@ -165,4 +171,10 @@ jobs:
             ./packages/assets/bin/
             ./packages/components-js/projects/components-wrapper/lib/
             ./packages/components-js/tests/unit/results/stats-raw.json
+            ./packages/components-js/projects/partials/src/lib/partials.tsx
+            ./packages/components-angular/projects/angular-wrapper/src/lib/types.ts
+            ./packages/components-react/projects/react-wrapper/src/lib/types.ts
+            ./packages/components-vue/projects/vue-wrapper/src/lib/types.ts
+            ./packages/component-meta/src/lib/componentMeta.ts
+            ./packages/shared/src/lib/partialNames.ts
           if-no-files-found: error
