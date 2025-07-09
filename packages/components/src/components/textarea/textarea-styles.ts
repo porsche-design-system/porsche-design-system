@@ -31,7 +31,7 @@ export const getComponentCss = (
   isReadonly: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
-  hasCounter: boolean,
+  counter: boolean,
   resize: TextareaResize,
   theme: Theme
 ): string => {
@@ -81,7 +81,7 @@ export const getComponentCss = (
         }),
         gridArea: '1/1',
         font: textSmallStyle.font, // to override line-height
-        padding: hasCounter
+        padding: counter
           ? `12px ${formElementPaddingHorizontal} ${spacingStaticLarge}`
           : `12px ${formElementPaddingHorizontal}`,
         // TODO: getFocusJssStyle() can't be re-used because focus style differs for form elements
@@ -129,7 +129,7 @@ export const getComponentCss = (
     wrapper: {
       display: 'grid',
     },
-    ...(hasCounter && {
+    ...(counter && {
       counter: {
         ...getUnitCounterJssStyle(isDisabled, isReadonly, theme),
         gridArea: '1/1',
