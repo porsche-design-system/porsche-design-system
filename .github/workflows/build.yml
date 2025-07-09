@@ -95,7 +95,9 @@ jobs:
             ./packages/assets/projects/icons/tests/unit/results/stats.json
             ./packages/components-js/projects/partials/src/lib/partials.tsx
             ./packages/components-angular/projects/angular-wrapper/src/lib/
+            ./packages/components-angular/src/app/pages/generated/
             ./packages/components-react/projects/react-wrapper/src/lib/
+            ./packages/components-react/src/pages/generated/
             ./packages/components-vue/projects/vue-wrapper/src/lib/
             ./packages/component-meta/src/lib/componentMeta.ts
             ./packages/shared/src/lib/
@@ -175,7 +177,9 @@ jobs:
             ./packages/components-js/tests/unit/results/stats-raw.json
             ./packages/components-js/projects/partials/src/lib/partials.tsx
             ./packages/components-angular/projects/angular-wrapper/src/lib/
+            ./packages/components-angular/src/app/pages/generated/
             ./packages/components-react/projects/react-wrapper/src/lib/
+            ./packages/components-react/src/pages/generated/
             ./packages/components-vue/projects/vue-wrapper/src/lib/
             ./packages/component-meta/src/lib/componentMeta.ts
             ./packages/shared/src/lib/
