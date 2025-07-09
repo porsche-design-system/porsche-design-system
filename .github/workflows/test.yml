@@ -18,8 +18,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Setup'
-        uses: ./.github/actions/setup
+      - name: 'Install'
+        uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - name: 'Unit'
@@ -47,8 +47,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Setup'
-        uses: ./.github/actions/setup
+      - name: 'Install'
+        uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - name: 'Unit'
@@ -62,8 +62,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Setup'
-        uses: ./.github/actions/setup
+      - name: 'Install'
+        uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - name: 'Tailwind CSS Unit'
@@ -77,8 +77,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Setup'
-        uses: ./.github/actions/setup
+      - name: 'Install'
+        uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - name: 'Unit'
@@ -92,8 +92,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Setup'
-        uses: ./.github/actions/setup
+      - name: 'Install'
+        uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
@@ -123,8 +123,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Setup'
-        uses: ./.github/actions/setup
+      - name: 'Install'
+        uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - name: 'A11y'
@@ -143,8 +143,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Setup'
-        uses: ./.github/actions/setup
+      - name: 'Install'
+        uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - name: 'E2E'
@@ -163,8 +163,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Setup'
-        uses: ./.github/actions/setup
+      - name: 'Install'
+        uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - name: 'E2E'
@@ -183,8 +183,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Setup'
-        uses: ./.github/actions/setup
+      - name: 'Install'
+        uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - name: 'E2E'
@@ -203,8 +203,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Setup'
-        uses: ./.github/actions/setup
+      - name: 'Install'
+        uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - name: 'VRT'
@@ -224,8 +224,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Setup'
-        uses: ./.github/actions/setup
+      - name: 'Install'
+        uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - name: 'VRT'
@@ -245,8 +245,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Setup'
-        uses: ./.github/actions/setup
+      - name: 'Install'
+        uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - name: 'Unit (Jest)'
@@ -272,8 +272,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Setup'
-        uses: ./.github/actions/setup
+      - name: 'Install'
+        uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - name: 'Unit'
@@ -297,8 +297,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Setup'
-        uses: ./.github/actions/setup
+      - name: 'Install'
+        uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - name: 'E2E'
@@ -320,8 +320,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Setup'
-        uses: ./.github/actions/setup
+      - name: 'Install'
+        uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - name: 'E2E'
@@ -345,8 +345,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Setup'
-        uses: ./.github/actions/setup
+      - name: 'Install'
+        uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - name: 'Unit'
@@ -370,8 +370,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Setup'
-        uses: ./.github/actions/setup
+      - name: 'Install'
+        uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - name: 'Unit'
@@ -385,8 +385,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Setup'
-        uses: ./.github/actions/setup
+      - name: 'Install'
+        uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - name: 'Unit'
@@ -400,8 +400,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Setup'
-        uses: ./.github/actions/setup
+      - name: 'Install'
+        uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - name: 'Unit'
@@ -420,8 +420,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Setup'
-        uses: ./.github/actions/setup
+      - name: 'Install'
+        uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - name: 'E2E'
@@ -441,8 +441,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Setup'
-        uses: ./.github/actions/setup
+      - name: 'Install'
+        uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - name: 'E2E'
@@ -467,8 +467,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Setup'
-        uses: ./.github/actions/setup
+      - name: 'Install'
+        uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - name: 'A11y'
@@ -488,8 +488,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Setup'
-        uses: ./.github/actions/setup
+      - name: 'Install'
+        uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - name: 'VRT'
@@ -509,8 +509,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Setup'
-        uses: ./.github/actions/setup
+      - name: 'Install'
+        uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
       - name: 'Unit'
