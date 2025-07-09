@@ -94,11 +94,13 @@ jobs:
             ./packages/components-js/projects/components-wrapper/lib/
             ./packages/assets/projects/icons/tests/unit/results/stats.json
             ./packages/components-js/projects/partials/src/lib/partials.tsx
-            ./packages/components-angular/projects/angular-wrapper/src/lib/types.ts
-            ./packages/components-react/projects/react-wrapper/src/lib/types.ts
-            ./packages/components-vue/projects/vue-wrapper/src/lib/types.ts
+            ./packages/components-angular/projects/angular-wrapper/src/lib/
+            ./packages/components-react/projects/react-wrapper/src/lib/
+            ./packages/components-vue/projects/vue-wrapper/src/lib/
             ./packages/component-meta/src/lib/componentMeta.ts
-            ./packages/shared/src/lib/partialNames.ts
+            ./packages/shared/src/lib/
+            ./packages/components-js/projects/partials/dist-tmp/dsr-ponyfill.min.js
+            ./packages/utilities/projects/utilities/src/scss/lib/
           if-no-files-found: error
   build-production:
     name: 'Production'
@@ -172,9 +174,11 @@ jobs:
             ./packages/components-js/projects/components-wrapper/lib/
             ./packages/components-js/tests/unit/results/stats-raw.json
             ./packages/components-js/projects/partials/src/lib/partials.tsx
-            ./packages/components-angular/projects/angular-wrapper/src/lib/types.ts
-            ./packages/components-react/projects/react-wrapper/src/lib/types.ts
-            ./packages/components-vue/projects/vue-wrapper/src/lib/types.ts
+            ./packages/components-angular/projects/angular-wrapper/src/lib/
+            ./packages/components-react/projects/react-wrapper/src/lib/
+            ./packages/components-vue/projects/vue-wrapper/src/lib/
             ./packages/component-meta/src/lib/componentMeta.ts
-            ./packages/shared/src/lib/partialNames.ts
+            ./packages/shared/src/lib/
+            ./packages/components-js/projects/partials/dist-tmp/dsr-ponyfill.min.js
+            ./packages/utilities/projects/utilities/src/scss/lib/
           if-no-files-found: error
