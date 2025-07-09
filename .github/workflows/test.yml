@@ -16,8 +16,12 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
       - name: 'Setup'
         uses: ./.github/actions/setup
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'Unit'
         run: yarn test:unit:assets:assets
       - name: 'Fallbacks Unit'
@@ -41,8 +45,12 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
       - name: 'Setup'
         uses: ./.github/actions/setup
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'Unit'
         run: yarn test:unit:tokens
   styles:
@@ -52,8 +60,12 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
       - name: 'Setup'
         uses: ./.github/actions/setup
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'Tailwind CSS Unit'
         run: yarn test:unit:styles:tailwindcss
   components-unit:
@@ -65,17 +77,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Setup'
+        uses: ./.github/actions/setup
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'Unit'
         run: yarn test:unit:components
   components-js-unit:
@@ -87,17 +92,12 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
+      - name: 'Setup'
+        uses: ./.github/actions/setup
+      - name: 'Restore'
+        uses: ./.github/actions/restore
         with:
-          name: build-production
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+          artifact: 'build-production'
       - name: 'Components Manager Core'
         run: yarn test:unit:components-js:components-manager-core
       - name: 'Components Manager CLI'
@@ -123,17 +123,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Setup'
+        uses: ./.github/actions/setup
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'A11y'
         run: yarn test:a11y:components-js
   components-js-e2e-chrome:
@@ -150,17 +143,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Setup'
+        uses: ./.github/actions/setup
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'E2E'
         run: yarn test:e2e:components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-e2e-firefox:
@@ -177,17 +163,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Setup'
+        uses: ./.github/actions/setup
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'E2E'
         run: yarn test:e2e:components-js:firefox:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-e2e-safari:
@@ -204,17 +183,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Setup'
+        uses: ./.github/actions/setup
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'E2E'
         run: yarn test:e2e:components-js:safari:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-vrt-chrome:
@@ -231,17 +203,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Setup'
+        uses: ./.github/actions/setup
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'VRT'
         run: yarn test:vrt:components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'VRT Regression'
@@ -259,17 +224,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Setup'
+        uses: ./.github/actions/setup
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'VRT'
         run: yarn test:vrt:components-js:safari
       - name: 'VRT Regression'
@@ -287,17 +245,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Setup'
+        uses: ./.github/actions/setup
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'Unit (Jest)'
         run: yarn test:unit:components-angular:jest
       - name: 'Unit (Karma)'
@@ -321,17 +272,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Setup'
+        uses: ./.github/actions/setup
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'Unit'
         run: yarn test:unit:components-react:react-wrapper
       - name: 'E2E'
@@ -353,17 +297,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Setup'
+        uses: ./.github/actions/setup
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'E2E'
         run: yarn test:e2e:components-react/remix
       - name: 'VRT'
@@ -383,17 +320,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Setup'
+        uses: ./.github/actions/setup
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'E2E'
         run: yarn test:e2e:components-react/nextjs
       - name: 'VRT'
@@ -415,17 +345,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Setup'
+        uses: ./.github/actions/setup
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'Unit'
         run: yarn test:unit:components-vue
       - name: 'E2E'
@@ -447,17 +370,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Setup'
+        uses: ./.github/actions/setup
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'Unit'
         run: yarn test:unit:component-meta
   shared:
@@ -469,17 +385,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Setup'
+        uses: ./.github/actions/setup
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'Unit'
         run: yarn test:unit:shared
   storefront-unit:
@@ -491,17 +400,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Setup'
+        uses: ./.github/actions/setup
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'Unit'
         run: yarn test:unit:storefront
   storefront-e2e:
@@ -518,17 +420,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Setup'
+        uses: ./.github/actions/setup
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'E2E'
         run: yarn test:e2e:storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'E2E Regression'
@@ -546,17 +441,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Setup'
+        uses: ./.github/actions/setup
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'E2E'
         run: yarn test:e2e:storefront:sitemap
       - name: 'E2E Regression'
@@ -579,17 +467,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Setup'
+        uses: ./.github/actions/setup
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'A11y'
         run: yarn test:a11y:storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'A11y Regression'
@@ -607,17 +488,10 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Setup'
+        uses: ./.github/actions/setup
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'VRT'
         run: yarn test:vrt:storefront
       - name: 'VRT Regression'
@@ -635,16 +509,9 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Setup'
+        uses: ./.github/actions/setup
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'Unit'
         run: yarn test:unit:utilities
