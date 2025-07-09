@@ -58,12 +58,11 @@
 </div>
 
 <div class="playground light" title="should render with counter">
-  <p-textarea name="some-name" label="Counter" max-length="200" value="Some value"></p-textarea>
+  <p-textarea name="some-name" label="Counter" max-length="200" counter="true" value="Some value"></p-textarea>
 </div>
 
-<div class="playground light" title="should render without counter">
-  <p-textarea name="some-name" label="showCounter=false" show-counter="false" max-length="200" value="Some value">
-  </p-textarea>
+<div class="playground light" title="should render with counter and without max-length">
+  <p-textarea name="some-name" label="Type counter=true & max-length=false" counter="true" value="Some Value"></p-textarea>
 </div>
 
 <div class="playground light" title="should render with error state and error message">
@@ -182,5 +181,5 @@
 </div>
 
 <div class="playground light" title="should render with counter readonly">
-  <p-textarea name="some-name" label="Counter" max-length="200" value="Some value" read-only="true"></p-textarea>
+  <p-textarea name="some-name" label="Counter" max-length="200" value="Some value" read-only="true" counter="true"></p-textarea>
 </div>
