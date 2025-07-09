@@ -16,8 +16,8 @@ on:
         required: true
 
 jobs:
-  components-js:
-    name: 'Components JS'
+  npm-components-js:
+    name: 'NPM (Components JS)'
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
@@ -41,10 +41,10 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
-  components-angular:
+  npm-components-angular:
     needs:
-      - components-js
-    name: 'Components Angular'
+      - npm-components-js
+    name: 'NPM (Components Angular)'
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
@@ -68,10 +68,10 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
-  components-react:
+  npm-components-react:
     needs:
-      - components-js
-    name: 'Components React'
+      - npm-components-js
+    name: 'NPM (Components React)'
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
@@ -95,10 +95,10 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
-  components-vue:
+  npm-components-vue:
     needs:
-      - components-js
-    name: 'Components Vue'
+      - npm-components-js
+    name: 'NPM (Components Vue)'
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
