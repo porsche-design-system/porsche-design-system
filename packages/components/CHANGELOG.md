@@ -27,6 +27,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#3917](https://github.com/porsche-design-system/porsche-design-system/pull/3917))
 - Angular: updated peer dependency to `>=20.0.0 <21.0.0`
 
+### Fixed
+
+- `Carousel`: component does not work correctly if an invalid `lang` value is provided
+  ([#3924](https://github.com/porsche-design-system/porsche-design-system/pull/3924))
+
 ## [3.29.0-rc.0] - 2025-06-27
 
 ### Added
