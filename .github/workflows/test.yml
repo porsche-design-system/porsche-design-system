@@ -25,6 +25,10 @@ jobs:
         with:
           name: build-development
           path: ./packages
+      - name: 'Setup executable files'
+        run: |
+          chmod +x ./packages/assets/bin/serve-cdn.js
+          chmod +x ./packages/shared/bin/serve-dummyassets.js
       - name: 'Unit'
         run: yarn test:unit:assets:assets
       - name: 'Fallbacks Unit'
@@ -57,6 +61,10 @@ jobs:
         with:
           name: build-development
           path: ./packages
+      - name: 'Setup executable files'
+        run: |
+          chmod +x ./packages/assets/bin/serve-cdn.js
+          chmod +x ./packages/shared/bin/serve-dummyassets.js
       - name: 'Unit'
         run: yarn test:unit:tokens
   styles:
@@ -75,6 +83,10 @@ jobs:
         with:
           name: build-development
           path: ./packages
+      - name: 'Setup executable files'
+        run: |
+          chmod +x ./packages/assets/bin/serve-cdn.js
+          chmod +x ./packages/shared/bin/serve-dummyassets.js
       - name: 'Tailwind CSS Unit'
         run: yarn test:unit:styles:tailwindcss
   components-unit:
@@ -93,6 +105,10 @@ jobs:
         with:
           name: build-development
           path: ./packages
+      - name: 'Setup executable files'
+        run: |
+          chmod +x ./packages/assets/bin/serve-cdn.js
+          chmod +x ./packages/shared/bin/serve-dummyassets.js
       - name: 'Unit'
         run: yarn test:unit:components
   components-js-unit:
@@ -111,6 +127,10 @@ jobs:
         with:
           name: build-production
           path: ./packages
+      - name: 'Setup executable files'
+        run: |
+          chmod +x ./packages/assets/bin/serve-cdn.js
+          chmod +x ./packages/shared/bin/serve-dummyassets.js
       - name: 'Components Manager Core'
         run: yarn test:unit:components-js:components-manager-core
       - name: 'Components Manager CLI'
@@ -143,6 +163,10 @@ jobs:
         with:
           name: build-development
           path: ./packages
+      - name: 'Setup executable files'
+        run: |
+          chmod +x ./packages/assets/bin/serve-cdn.js
+          chmod +x ./packages/shared/bin/serve-dummyassets.js
       - name: 'A11y'
         run: yarn test:a11y:components-js
   components-js-e2e-chrome:
@@ -166,6 +190,10 @@ jobs:
         with:
           name: build-development
           path: ./packages
+      - name: 'Setup executable files'
+        run: |
+          chmod +x ./packages/assets/bin/serve-cdn.js
+          chmod +x ./packages/shared/bin/serve-dummyassets.js
       - name: 'E2E'
         run: yarn test:e2e:components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-e2e-firefox:
@@ -189,6 +217,10 @@ jobs:
         with:
           name: build-development
           path: ./packages
+      - name: 'Setup executable files'
+        run: |
+          chmod +x ./packages/assets/bin/serve-cdn.js
+          chmod +x ./packages/shared/bin/serve-dummyassets.js
       - name: 'E2E'
         run: yarn test:e2e:components-js:firefox:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-e2e-safari:
@@ -212,6 +244,10 @@ jobs:
         with:
           name: build-development
           path: ./packages
+      - name: 'Setup executable files'
+        run: |
+          chmod +x ./packages/assets/bin/serve-cdn.js
+          chmod +x ./packages/shared/bin/serve-dummyassets.js
       - name: 'E2E'
         run: yarn test:e2e:components-js:safari:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-vrt-chrome:
@@ -235,6 +271,10 @@ jobs:
         with:
           name: build-development
           path: ./packages
+      - name: 'Setup executable files'
+        run: |
+          chmod +x ./packages/assets/bin/serve-cdn.js
+          chmod +x ./packages/shared/bin/serve-dummyassets.js
       - name: 'VRT'
         run: yarn test:vrt:components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'VRT Regression'
@@ -259,6 +299,10 @@ jobs:
         with:
           name: build-development
           path: ./packages
+      - name: 'Setup executable files'
+        run: |
+          chmod +x ./packages/assets/bin/serve-cdn.js
+          chmod +x ./packages/shared/bin/serve-dummyassets.js
       - name: 'VRT'
         run: yarn test:vrt:components-js:safari
       - name: 'VRT Regression'
@@ -283,6 +327,10 @@ jobs:
         with:
           name: build-development
           path: ./packages
+      - name: 'Setup executable files'
+        run: |
+          chmod +x ./packages/assets/bin/serve-cdn.js
+          chmod +x ./packages/shared/bin/serve-dummyassets.js
       - name: 'Unit (Jest)'
         run: yarn test:unit:components-angular:jest
       - name: 'Unit (Karma)'
@@ -313,6 +361,10 @@ jobs:
         with:
           name: build-development
           path: ./packages
+      - name: 'Setup executable files'
+        run: |
+          chmod +x ./packages/assets/bin/serve-cdn.js
+          chmod +x ./packages/shared/bin/serve-dummyassets.js
       - name: 'Unit'
         run: yarn test:unit:components-react:react-wrapper
       - name: 'E2E'
