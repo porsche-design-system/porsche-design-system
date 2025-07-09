@@ -20,15 +20,8 @@ jobs:
         uses: actions/checkout@v4
       - name: 'Install'
         uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'Unit'
         run: yarn test:unit:assets:assets
       - name: 'Fallbacks Unit'
@@ -56,15 +49,8 @@ jobs:
         uses: actions/checkout@v4
       - name: 'Install'
         uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'Unit'
         run: yarn test:unit:tokens
   styles:
@@ -78,15 +64,8 @@ jobs:
         uses: actions/checkout@v4
       - name: 'Install'
         uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'Tailwind CSS Unit'
         run: yarn test:unit:styles:tailwindcss
   components-unit:
@@ -100,15 +79,8 @@ jobs:
         uses: actions/checkout@v4
       - name: 'Install'
         uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'Unit'
         run: yarn test:unit:components
   components-js-unit:
@@ -122,15 +94,10 @@ jobs:
         uses: actions/checkout@v4
       - name: 'Install'
         uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
+      - name: 'Restore'
+        uses: ./.github/actions/restore
         with:
-          name: build-production
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+          artifact: 'build-production'
       - name: 'Components Manager Core'
         run: yarn test:unit:components-js:components-manager-core
       - name: 'Components Manager CLI'
@@ -158,15 +125,8 @@ jobs:
         uses: actions/checkout@v4
       - name: 'Install'
         uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'A11y'
         run: yarn test:a11y:components-js
   components-js-e2e-chrome:
@@ -185,15 +145,8 @@ jobs:
         uses: actions/checkout@v4
       - name: 'Install'
         uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'E2E'
         run: yarn test:e2e:components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-e2e-firefox:
@@ -212,15 +165,8 @@ jobs:
         uses: actions/checkout@v4
       - name: 'Install'
         uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'E2E'
         run: yarn test:e2e:components-js:firefox:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-e2e-safari:
@@ -239,15 +185,8 @@ jobs:
         uses: actions/checkout@v4
       - name: 'Install'
         uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'E2E'
         run: yarn test:e2e:components-js:safari:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-vrt-chrome:
@@ -266,15 +205,8 @@ jobs:
         uses: actions/checkout@v4
       - name: 'Install'
         uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'VRT'
         run: yarn test:vrt:components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'VRT Regression'
@@ -294,15 +226,8 @@ jobs:
         uses: actions/checkout@v4
       - name: 'Install'
         uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'VRT'
         run: yarn test:vrt:components-js:safari
       - name: 'VRT Regression'
@@ -322,15 +247,8 @@ jobs:
         uses: actions/checkout@v4
       - name: 'Install'
         uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'Unit (Jest)'
         run: yarn test:unit:components-angular:jest
       - name: 'Unit (Karma)'
@@ -356,15 +274,8 @@ jobs:
         uses: actions/checkout@v4
       - name: 'Install'
         uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Restore'
+        uses: ./.github/actions/restore
       - name: 'Unit'
         run: yarn test:unit:components-react:react-wrapper
       - name: 'E2E'
@@ -377,3 +288,230 @@ jobs:
         with:
           name: components-react-vrt-regression
           path: ./packages/components-react/tests/vrt/results
+  components-react-remix:
+    name: 'Components React/Remix'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'E2E'
+        run: yarn test:e2e:components-react/remix
+      - name: 'VRT'
+        run: yarn test:vrt:components-react/remix
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-components-react-remix-vrt
+          path: ./packages/components-react/projects/remix/tests/vrt/results
+  components-react-nextjs:
+    name: 'Components React/NextJS'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'E2E'
+        run: yarn test:e2e:components-react/nextjs
+      - name: 'VRT'
+        run: yarn test:vrt:components-react/nextjs
+      - name: 'Unit Test react-ssr-wrapper'
+        run: yarn test:unit:components-react:react-ssr-wrapper
+      - name: 'VRT Regression components-react/nextjs'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-components-react-nextjs-vrt
+          path: ./packages/components-react/projects/nextjs/tests/vrt/results
+  components-vue:
+    name: 'Components Vue'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'Unit'
+        run: yarn test:unit:components-vue
+      - name: 'E2E'
+        run: yarn test:e2e:components-vue
+      - name: 'VRT'
+        run: yarn test:vrt:components-vue
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-components-vue-vrt
+          path: ./packages/components-vue/tests/vrt/results
+  component-meta:
+    name: 'Component Meta'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'Unit'
+        run: yarn test:unit:component-meta
+  shared:
+    name: 'Shared'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'Unit'
+        run: yarn test:unit:shared
+  storefront-unit:
+    name: 'Storefront Unit'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'Unit'
+        run: yarn test:unit:storefront
+  storefront-e2e:
+    name: 'Storefront E2E'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2, 3, 4 ]
+        shardTotal: [ 4 ]
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'E2E'
+        run: yarn test:e2e:storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - name: 'E2E Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-storefront-e2e-${{ matrix.shardIndex }}
+          path: ./packages/storefront/tests/e2e/results
+  storefront-sitemap:
+    name: 'Storefront Sitemap'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'E2E'
+        run: yarn test:e2e:storefront:sitemap
+      - name: 'E2E Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-storefront-e2e-sitemap
+          path: ./packages/storefront/tests/e2e/results
+  storefront-a11y:
+    name: 'Storefront A11y'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2, 3, 4 ]
+        shardTotal: [ 4 ]
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'A11y'
+        run: yarn test:a11y:storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - name: 'A11y Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-storefront-a11y-${{ matrix.shardIndex }}
+          path: ./packages/storefront/tests/a11y/results
+  storefront-vrt:
+    name: 'Storefront VRT'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'VRT'
+        run: yarn test:vrt:storefront
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-storefront-vrt
+          path: ./packages/storefront/tests/vrt/results
+  utilities:
+    name: 'Utilities'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'Unit'
+        run: yarn test:unit:utilities
