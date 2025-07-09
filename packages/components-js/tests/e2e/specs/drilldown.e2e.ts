@@ -615,20 +615,77 @@ test.describe('lifecycle', () => {
   test('should work without unnecessary round trips after setting an activeIdentifier', async ({ page }) => {
     await initBasicDrilldown(page, { open: true });
     const host = getHost(page);
-    const statusBefore = await getLifecycleStatus(page);
 
-    expect(statusBefore.componentDidLoad.all, 'componentDidLoad: all').toBe(31);
-    expect(statusBefore.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidLoad.all;
+        },
+        {
+          message: 'componentDidLoad: all',
+        }
+      )
+      .toBe(31);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate.all;
+        },
+        {
+          message: 'componentDidUpdate: all',
+        }
+      )
+      .toBe(0);
 
     await setProperty(host, 'activeIdentifier', 'item-1');
     await waitForStencilLifecycle(page);
 
-    const statusAfter = await getLifecycleStatus(page);
-
-    expect(statusAfter.componentDidUpdate['p-drilldown'], 'componentDidUpdate: p-drilldown').toBe(2);
-    expect(statusAfter.componentDidUpdate['p-drilldown-item'], 'componentDidUpdate: p-drilldown-item').toBe(1);
-    expect(statusAfter.componentDidUpdate['p-drilldown-link'], 'componentDidUpdate: p-drilldown-link').toBe(0);
-    expect(statusAfter.componentDidUpdate.all, 'componentDidUpdate: all').toBe(4);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate['p-drilldown'];
+        },
+        {
+          message: 'componentDidUpdate: p-drilldown',
+        }
+      )
+      .toBe(2);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate['p-drilldown-item'];
+        },
+        {
+          message: 'componentDidUpdate: p-drilldown-item',
+        }
+      )
+      .toBe(1);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate['p-drilldown-link'];
+        },
+        {
+          message: 'componentDidUpdate: p-drilldown-link',
+        }
+      )
+      .toBe(0);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate.all;
+        },
+        {
+          message: 'componentDidUpdate: all',
+        }
+      )
+      .toBe(4);
   });
 
   test('should work without unnecessary round trips after closing flyout', async ({ page }) => {
