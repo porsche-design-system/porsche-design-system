@@ -515,3 +515,169 @@ jobs:
           chmod +x ./packages/shared/bin/serve-dummyassets.js
       - name: 'Unit'
         run: yarn test:unit:shared
+  storefront-unit:
+    name: 'Storefront Unit'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Download artifact'
+        uses: actions/download-artifact@v4
+        with:
+          name: build-development
+          path: ./packages
+      - name: 'Setup executable files'
+        run: |
+          chmod +x ./packages/assets/bin/serve-cdn.js
+          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Unit'
+        run: yarn test:unit:storefront
+  storefront-e2e:
+    name: 'Storefront E2E'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2, 3, 4 ]
+        shardTotal: [ 4 ]
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Download artifact'
+        uses: actions/download-artifact@v4
+        with:
+          name: build-development
+          path: ./packages
+      - name: 'Setup executable files'
+        run: |
+          chmod +x ./packages/assets/bin/serve-cdn.js
+          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'E2E'
+        run: yarn test:e2e:storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - name: 'E2E Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-storefront-e2e-${{ matrix.shardIndex }}
+          path: ./packages/storefront/tests/e2e/results
+  storefront-sitemap:
+    name: 'Storefront Sitemap'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Download artifact'
+        uses: actions/download-artifact@v4
+        with:
+          name: build-development
+          path: ./packages
+      - name: 'Setup executable files'
+        run: |
+          chmod +x ./packages/assets/bin/serve-cdn.js
+          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'E2E'
+        run: yarn test:e2e:storefront:sitemap
+      - name: 'E2E Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-storefront-e2e-sitemap
+          path: ./packages/storefront/tests/e2e/results
+  storefront-a11y:
+    name: 'Storefront A11y'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2, 3, 4 ]
+        shardTotal: [ 4 ]
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Download artifact'
+        uses: actions/download-artifact@v4
+        with:
+          name: build-development
+          path: ./packages
+      - name: 'Setup executable files'
+        run: |
+          chmod +x ./packages/assets/bin/serve-cdn.js
+          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'A11y'
+        run: yarn test:a11y:storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - name: 'A11y Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-storefront-a11y-${{ matrix.shardIndex }}
+          path: ./packages/storefront/tests/a11y/results
+  storefront-vrt:
+    name: 'Storefront VRT'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Download artifact'
+        uses: actions/download-artifact@v4
+        with:
+          name: build-development
+          path: ./packages
+      - name: 'Setup executable files'
+        run: |
+          chmod +x ./packages/assets/bin/serve-cdn.js
+          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'VRT'
+        run: yarn test:vrt:storefront
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-storefront-vrt
+          path: ./packages/storefront/tests/vrt/results
+  utilities:
+    name: 'Utilities'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Download artifact'
+        uses: actions/download-artifact@v4
+        with:
+          name: build-development
+          path: ./packages
+      - name: 'Setup executable files'
+        run: |
+          chmod +x ./packages/assets/bin/serve-cdn.js
+          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Unit'
+        run: yarn test:unit:utilities
