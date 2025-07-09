@@ -31,25 +31,18 @@ jobs:
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
+      - run: chmod +x ./.github/workflows/deploy-akamai-cdn.sh
       - name: 'Deploy'
         run: |
-          function upload_to_akamai {
-            if [ -d "${1}" ]; then
-              rclone copy "${1}" "linode:porsche-design-system/porsche-design-system/${2}" --config=./rclone.conf --ignore-existing -v --exclude=font-face.css
-              echo "matching files in directory '${1}' have been uploaded to cdn ✅"
-            else
-              echo "directory '${1}' does not exist, skipping upload ❌️️"
-            fi
-          }
-          upload_to_akamai packages/assets/cdn/components/ components/
-          upload_to_akamai packages/assets/cdn/crest/ crest/
-          upload_to_akamai packages/assets/cdn/fallbacks/ fallbacks/
-          upload_to_akamai packages/assets/cdn/fonts/ fonts/
-          upload_to_akamai packages/assets/cdn/icons/ icons/
-          upload_to_akamai packages/assets/cdn/marque/ marque/
-          upload_to_akamai packages/assets/cdn/meta-icons/ meta-icons/
-          upload_to_akamai packages/assets/cdn/model-signatures/ model-signatures/
-          upload_to_akamai packages/assets/cdn/styles/ styles/
+          ./deploy-akamai-cdn.sh packages/assets/cdn/components/ components/
+          ./deploy-akamai-cdn.sh packages/assets/cdn/crest/ crest/
+          ./deploy-akamai-cdn.sh packages/assets/cdn/fallbacks/ fallbacks/
+          ./deploy-akamai-cdn.sh packages/assets/cdn/fonts/ fonts/
+          ./deploy-akamai-cdn.sh packages/assets/cdn/icons/ icons/
+          ./deploy-akamai-cdn.sh packages/assets/cdn/marque/ marque/
+          ./deploy-akamai-cdn.sh packages/assets/cdn/meta-icons/ meta-icons/
+          ./deploy-akamai-cdn.sh packages/assets/cdn/model-signatures/ model-signatures/
+          ./deploy-akamai-cdn.sh packages/assets/cdn/styles/ styles/
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}

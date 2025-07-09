@@ -3,16 +3,6 @@
 set -o errexit
 set -o pipefail
 
-if [[ -z "${GITHUB_SHA}" ]]; then
-  echo "Please provide the \$GITHUB_SHA environment variable."
-  exit 1
-fi
-
-if [[ -z "${GITHUB_TOKEN}" ]]; then
-  echo "Please provide the \$GITHUB_TOKEN environment variable."
-  exit 1
-fi
-
 SCRIPT_DIR="$(cd $(dirname ${0}) && pwd)"
 PACKAGE_LOCATION="${1}"
 PACKAGE_JSON="${PACKAGE_LOCATION}/package.json"
