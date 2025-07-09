@@ -143,14 +143,8 @@ test.describe('counter', () => {
     await expect(counter).toHaveText('5/160');
   });
 
-  test('should not render counter when showCounter is set to false', async ({ page }) => {
-    await initTextarea(page, { props: { name: 'some-name', value: 'hello', maxLength: 160, showCounter: false } });
-    const host = getHost(page);
-
-    await expect(getCounter(page)).toHaveCount(0);
-
-    await setProperty(host, 'showCounter', true);
-
+  test('should render counter when set to true', async ({ page }) => {
+    await initTextarea(page, { props: { name: 'some-name', value: 'hello', maxLength: 160, counter: true } });
     const counter = getCounter(page);
     const counterAria = getCounterAria(page);
     await expect(counter).toHaveCount(1);
@@ -504,7 +498,7 @@ test.describe('hover state', () => {
   });
 
   test('should show hover state on textarea when counter is hovered', async ({ page }) => {
-    await initTextarea(page, { props: { name: 'some-name', maxLength: 160 } });
+    await initTextarea(page, { props: { name: 'some-name', maxLength: 160, counter: true } });
     await page.mouse.move(0, 300); // avoid potential hover initially
     const counter = getCounter(page);
     const textarea = getTextarea(page);
