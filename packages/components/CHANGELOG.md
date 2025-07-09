@@ -48,6 +48,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ⚠️ This is a breaking change — you must update all instances using `showCounter`.
   ([#3901](https://github.com/porsche-design-system/porsche-design-system/pull/3901))
 
+### Fixed
+
+- `Carousel`: component does not work correctly if an invalid `lang` value is provided
+  ([#3924](https://github.com/porsche-design-system/porsche-design-system/pull/3924))
+
 ## [3.29.0-rc.0] - 2025-06-27
 
 ### Added
