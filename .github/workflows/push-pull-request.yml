@@ -2,9 +2,6 @@ name: 'Pull Request'
 
 on:
   push:
-    branches:
-      - '**'
-      - '!main'
 
 jobs:
   build:
@@ -29,3 +26,14 @@ jobs:
     secrets:
       linode-aws-access-key-id: ${{ secrets.LINODE_AWS_ACCESS_KEY_ID }}
       linode-aws-secret-access-key: ${{ secrets.LINODE_AWS_SECRET_ACCESS_KEY }}
+  release:
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
+    name: 'Release'
+    uses: ./.github/workflows/release.yml
+    with:
+      image: mcr.microsoft.com/playwright:v1.49.1-jammy
+    needs:
+      - deploy
+    secrets:
+      github-token: ${{ secrets.GITHUB_TOKEN }}
+      npmjs-registry-token: ${{ secrets.NPMJS_REGISTRY_TOKEN }}
