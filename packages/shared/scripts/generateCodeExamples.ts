@@ -339,6 +339,29 @@ const codeExamples: CodeSample[] = [
     ],
   },
   {
+    component: 'p-input-text',
+    examples: [
+      {
+        name: 'InputTextExample',
+        paths: {
+          'vanilla-js': '/input-text-example.html',
+          angular: '/input-text-example.component.ts',
+          react: '/InputTextExample.tsx',
+          vue: '/InputTextExample.vue',
+        },
+      },
+      {
+        name: 'InputTextExampleControlled',
+        paths: {
+          'vanilla-js': '/input-text-example-controlled.html',
+          angular: '/input-text-example-controlled.component.ts',
+          react: '/InputTextExampleControlled.tsx',
+          vue: '/InputTextExampleControlled.vue',
+        },
+      },
+    ],
+  },
+  {
     component: 'p-input-search',
     examples: [
       {

@@ -57,7 +57,7 @@ const initInputNumber = (page: Page, opts?: InitOptions): Promise<void> => {
 };
 
 test.describe('value', () => {
-  test('should have value as slotted content when set initially', async ({ page }) => {
+  test('should sync value with input value', async ({ page }) => {
     const testValue = '10';
     await initInputNumber(page, { props: { name: 'some-name', value: testValue } });
     const host = getHost(page);

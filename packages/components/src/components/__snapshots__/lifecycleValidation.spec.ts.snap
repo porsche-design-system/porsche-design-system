@@ -410,6 +410,31 @@ exports[`should call validateProps() with correct parameters via render for p-in
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-input-text: propTypes with ValidatorFunctions 1`] = `
+{
+  "autoComplete": "oneOf",
+  "compact": "boolean",
+  "counter": "boolean",
+  "description": "string",
+  "disabled": "boolean",
+  "form": "string",
+  "hideLabel": "breakpoint",
+  "label": "string",
+  "loading": "boolean",
+  "maxLength": "number",
+  "message": "string",
+  "minLength": "number",
+  "name": "string",
+  "placeholder": "string",
+  "readOnly": "boolean",
+  "required": "boolean",
+  "spellCheck": "boolean",
+  "state": "oneOf",
+  "theme": "oneOf",
+  "value": "string",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-link: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
@@ -613,6 +638,7 @@ exports[`should call validateProps() with correct parameters via render for p-po
   "aria": "aria",
   "description": "string",
   "direction": "oneOf",
+  "open": "boolean",
   "theme": "oneOf",
 }
 `;
@@ -670,6 +696,7 @@ exports[`should call validateProps() with correct parameters via render for p-se
   "description": "string",
   "disabled": "boolean",
   "dropdownDirection": "oneOf",
+  "filter": "boolean",
   "form": "string",
   "hideLabel": "breakpoint",
   "label": "string",

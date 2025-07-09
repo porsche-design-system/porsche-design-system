@@ -90,7 +90,8 @@ import { FlexComponent } from './generated/flex.component';
 import { Flyout_1Component } from './generated/flyout-1.component';
 import { Flyout_2Component } from './generated/flyout-2.component';
 import { FlyoutBasicComponent } from './generated/flyout-basic.component';
-import { FlyoutCssVariablesComponent } from './generated/flyout-css-variables.component';
+import { FlyoutCssVariables_1Component } from './generated/flyout-css-variables-1.component';
+import { FlyoutCssVariables_2Component } from './generated/flyout-css-variables-2.component';
 import { FlyoutFixedFooterComponent } from './generated/flyout-fixed-footer.component';
 import { FlyoutFixedFooterHeaderComponent } from './generated/flyout-fixed-footer-header.component';
 import { FlyoutFixedFooterHeaderScrollableContentComponent } from './generated/flyout-fixed-footer-header-scrollable-content.component';
@@ -128,6 +129,7 @@ import { InlineNotificationComponent } from './generated/inline-notification.com
 import { InputNumberComponent } from './generated/input-number.component';
 import { InputPasswordComponent } from './generated/input-password.component';
 import { InputSearchComponent } from './generated/input-search.component';
+import { InputTextComponent } from './generated/input-text.component';
 import { LinkComponent } from './generated/link.component';
 import { LinkPureComponent } from './generated/link-pure.component';
 import { LinkSocialComponent } from './generated/link-social.component';
@@ -171,6 +173,7 @@ import { PaginationComponent } from './generated/pagination.component';
 import { PinCodeComponent } from './generated/pin-code.component';
 import { PopoverComponent } from './generated/popover.component';
 import { PopoverBasicComponent } from './generated/popover-basic.component';
+import { PopoverBasicSlottedComponent } from './generated/popover-basic-slotted.component';
 import { PopoverBottomComponent } from './generated/popover-bottom.component';
 import { PopoverEdgeCaseComponent } from './generated/popover-edge-case.component';
 import { PopoverLeftComponent } from './generated/popover-left.component';
@@ -183,6 +186,9 @@ import { SegmentedControlComponent } from './generated/segmented-control.compone
 import { SelectComponent } from './generated/select.component';
 import { SelectCompactComponent } from './generated/select-compact.component';
 import { SelectOpenedBottomComponent } from './generated/select-opened-bottom.component';
+import { SelectOpenedFilterComponent } from './generated/select-opened-filter.component';
+import { SelectOpenedFilterNoResultsComponent } from './generated/select-opened-filter-no-results.component';
+import { SelectOpenedFilterNoResultsCompactComponent } from './generated/select-opened-filter-no-results-compact.component';
 import { SelectOpenedMaxHeightComponent } from './generated/select-opened-max-height.component';
 import { SelectOpenedMinHeightComponent } from './generated/select-opened-min-height.component';
 import { SelectOpenedScrollContextComponent } from './generated/select-opened-scroll-context.component';
@@ -296,7 +302,8 @@ export const generatedPages = [
   Flyout_1Component,
   Flyout_2Component,
   FlyoutBasicComponent,
-  FlyoutCssVariablesComponent,
+  FlyoutCssVariables_1Component,
+  FlyoutCssVariables_2Component,
   FlyoutFixedFooterComponent,
   FlyoutFixedFooterHeaderComponent,
   FlyoutFixedFooterHeaderScrollableContentComponent,
@@ -334,6 +341,7 @@ export const generatedPages = [
   InputNumberComponent,
   InputPasswordComponent,
   InputSearchComponent,
+  InputTextComponent,
   LinkComponent,
   LinkPureComponent,
   LinkSocialComponent,
@@ -377,6 +385,7 @@ export const generatedPages = [
   PinCodeComponent,
   PopoverComponent,
   PopoverBasicComponent,
+  PopoverBasicSlottedComponent,
   PopoverBottomComponent,
   PopoverEdgeCaseComponent,
   PopoverLeftComponent,
@@ -389,6 +398,9 @@ export const generatedPages = [
   SelectComponent,
   SelectCompactComponent,
   SelectOpenedBottomComponent,
+  SelectOpenedFilterComponent,
+  SelectOpenedFilterNoResultsComponent,
+  SelectOpenedFilterNoResultsCompactComponent,
   SelectOpenedMaxHeightComponent,
   SelectOpenedMinHeightComponent,
   SelectOpenedScrollContextComponent,
@@ -735,9 +747,14 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: FlyoutBasicComponent,
   },
   {
-    name: 'Flyout Css Variables',
-    path: 'flyout-css-variables',
-    component: FlyoutCssVariablesComponent,
+    name: 'Flyout Css Variables 1',
+    path: 'flyout-css-variables-1',
+    component: FlyoutCssVariables_1Component,
+  },
+  {
+    name: 'Flyout Css Variables 2',
+    path: 'flyout-css-variables-2',
+    component: FlyoutCssVariables_2Component,
   },
   {
     name: 'Flyout Fixed Footer',
@@ -923,6 +940,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Input Search',
     path: 'input-search',
     component: InputSearchComponent,
+  },
+  {
+    name: 'Input Text',
+    path: 'input-text',
+    component: InputTextComponent,
   },
   {
     name: 'Link',
@@ -1135,6 +1157,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: PopoverBasicComponent,
   },
   {
+    name: 'Popover Basic Slotted',
+    path: 'popover-basic-slotted',
+    component: PopoverBasicSlottedComponent,
+  },
+  {
     name: 'Popover Bottom',
     path: 'popover-bottom',
     component: PopoverBottomComponent,
@@ -1193,6 +1220,21 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Select Opened Bottom',
     path: 'select-opened-bottom',
     component: SelectOpenedBottomComponent,
+  },
+  {
+    name: 'Select Opened Filter',
+    path: 'select-opened-filter',
+    component: SelectOpenedFilterComponent,
+  },
+  {
+    name: 'Select Opened Filter No Results',
+    path: 'select-opened-filter-no-results',
+    component: SelectOpenedFilterNoResultsComponent,
+  },
+  {
+    name: 'Select Opened Filter No Results Compact',
+    path: 'select-opened-filter-no-results-compact',
+    component: SelectOpenedFilterNoResultsCompactComponent,
   },
   {
     name: 'Select Opened Max Height',

@@ -1,4 +1,4 @@
-import { spacingFluidMedium, spacingFluidSmall } from '@porsche-design-system/styles';
+import { spacingFluidLarge, spacingFluidMedium, spacingFluidSmall } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -23,6 +23,15 @@ import type { FlyoutFooterBehavior, FlyoutPosition } from './flyout-utils';
  * @css-variable {"name": "--p-flyout-width", "description": "Width of the flyout.", "defaultValue": "auto"}
  */
 const cssVariableWidth = '--p-flyout-width';
+/**
+ * @css-variable {"name": "--ref-p-flyout-pt", "description": "Exposes the internally used padding-top of the Flyout as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the top of the Flyout."}
+ */
+export const cssVarRefPaddingTop = '--ref-p-flyout-pt';
+/**
+ * @css-variable {"name": "--ref-p-flyout-px", "description": "Exposes the internally used padding-inline of the Flyout as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the full horizontal size of the Flyout."}
+ */
+export const cssVarRefPaddingInline = '--ref-p-flyout-px';
+
 // TODO: we shouldn't expose --p-flyout-max-width
 const cssVariableMaxWidth = '--p-flyout-max-width';
 
@@ -46,6 +55,8 @@ export const getComponentCss = (
           ...dialogHostJssStyle,
           ...colorSchemeStyles,
           ...hostHiddenStyles,
+          [`${cssVarRefPaddingTop}`]: dialogPaddingBlock,
+          [`${cssVarRefPaddingInline}`]: spacingFluidLarge,
         }),
       },
       ...preventFoucOfNestedElementsStyles,

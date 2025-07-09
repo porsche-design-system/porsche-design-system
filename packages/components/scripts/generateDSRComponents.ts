@@ -225,6 +225,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             .replace(/onBlur=\{onBlur}/g, '')
             .replace(/maxlength/, 'maxLength')
             .replace(/minlength/, 'minLength')
+            .replace(/spellcheck/, 'spellCheck')
             .replace(/\sreadonly/, 'readOnly')
             .replace(/autocomplete/, 'autoComplete')
             .replace(/\b(onInput|onWheel|onChange|onBlur|refElement\s*,?)/g, '// $1')
@@ -424,10 +425,13 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/(deprecationMap\[this\.props\.gradientColorScheme)/, '$1 as ScrollerGradientColorScheme');
       } else if (tagName === 'p-popover') {
         // only keep :host , button, .icon & .label styles
-        newFileContent = newFileContent.replace(
-          /getPopoverCss\(.+?\)/,
-          `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.icon {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '\$1\\n\$2\\n$3\\n$4')`
-        );
+        newFileContent = newFileContent
+          .replace(
+            /getPopoverCss\(.+?\)/,
+            `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.icon {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '\$1\\n\$2\\n$3\\n$4')`
+          )
+          .replace(/this\.props\.(hasSlottedButton)/g, '$1')
+          .replace(/(?:hasSlottedButton) =/g, 'const $&');
       } else if (tagName === 'p-tabs-bar') {
         newFileContent = newFileContent
           // get rid of left over
@@ -756,7 +760,7 @@ $&`
           .replace(/this\.props\.value = state;/, '')
           .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
           .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
-      } else if (tagName === 'p-input-number' || tagName === 'p-input-search') {
+      } else if (tagName === 'p-input-number' || tagName === 'p-input-search' || tagName === 'p-input-text') {
         newFileContent = newFileContent
           .replace(/@AttachInternals\(\)/, '')
           .replace(

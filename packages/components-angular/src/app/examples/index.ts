@@ -26,6 +26,8 @@ import { InputPasswordExampleControlledComponent } from './input-password-exampl
 import { InputPasswordExampleComponent } from './input-password-example.component';
 import { InputNumberExampleControlledComponent } from './input-number-example-controlled.component';
 import { InputNumberExampleComponent } from './input-number-example.component';
+import { InputTextExampleControlledComponent } from './input-text-example-controlled.component';
+import { InputTextExampleComponent } from './input-text-example.component';
 import { InputSearchExampleControlledComponent } from './input-search-example-controlled.component';
 import { InputSearchExampleComponent } from './input-search-example.component';
 import { LinkTileExampleHyphensComponent } from './link-tile-example-hyphens.component';
@@ -87,6 +89,8 @@ export const examples = [
   InputPasswordExampleComponent,
   InputNumberExampleControlledComponent,
   InputNumberExampleComponent,
+  InputTextExampleControlledComponent,
+  InputTextExampleComponent,
   InputSearchExampleControlledComponent,
   InputSearchExampleComponent,
   LinkTileExampleHyphensComponent,
@@ -147,6 +151,8 @@ export * from './input-password-example.component';
 export * from './input-password-example-controlled.component';
 export * from './input-number-example.component';
 export * from './input-number-example-controlled.component';
+export * from './input-text-example.component';
+export * from './input-text-example-controlled.component';
 export * from './input-search-example.component';
 export * from './input-search-example-controlled.component';
 export * from './link-tile-example-hyphens.component';

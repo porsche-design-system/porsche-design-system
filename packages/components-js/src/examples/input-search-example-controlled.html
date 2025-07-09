@@ -1,12 +1,12 @@
-<p-input-search name="some-name" label="Some Label"></p-input-search>
+<p-input-search name="some-name" label="Some Label" indicator clear></p-input-search>
 
 <p-text>Value: ''</p-text>
 
 <script>
   const debugElement = document.querySelector('p-text');
-  const textarea = document.querySelector('p-input-search');
+  const inputSearch = document.querySelector('p-input-search');
 
-  textarea.addEventListener('input', (e) => {
+  inputSearch.addEventListener('input', (e) => {
     e.target.value = e.detail.target.value;
     setDebugText(e.detail.target.value);
   });

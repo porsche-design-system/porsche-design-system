@@ -2,14 +2,12 @@
   <label class="label" id="label" for="input-search"> </label>
   <div class="wrapper">
     <slot name="start"> </slot>
-    <p-icon aria-hidden="true" class="hydrated"> </p-icon>
     <input
       aria-describedby="description message"
       id="input-search"
       name="value"
       type="search"
       placeholder=""
-      autocomplete=""
     />
     <slot name="end"> </slot>
   </div>
