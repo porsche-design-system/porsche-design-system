@@ -7,8 +7,8 @@
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
-    "prestart": "patchRemixRunProcessBrowserGlobalIdentifier && yarn --cwd ../nextjs prestartAndBuild",
-    "prebuild-app": "patchRemixRunProcessBrowserGlobalIdentifier && yarn --cwd ../nextjs prestartAndBuild",
+    "prestart": "yarn patchRemixRunProcessBrowserGlobalIdentifier && yarn --cwd ../nextjs prestartAndBuild",
+    "prebuild-app": "yarn patchRemixRunProcessBrowserGlobalIdentifier && yarn --cwd ../nextjs prestartAndBuild",
     "start": "concurrently -k -s 'first' -n 'cdn,dummyassets,app' 'serve-cdn' 'serve-dummyassets' 'cross-env NODE_ENV=development binode -- @remix-run/dev:remix dev'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,dummyassets,app' 'serve-cdn' 'serve-dummyassets' 'remix-serve ./build/index.js'",
     "build-app": "remix build",
