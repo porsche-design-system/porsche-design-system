@@ -28,8 +28,8 @@ on:
         required: true
 
 jobs:
-  cdn:
-    name: 'CDN'
+  akamai-cdn:
+    name: 'Akamai CDN'
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
@@ -58,10 +58,10 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
-  cdn-smoke:
-    name: 'CDN Smoke'
+  akamai-cdn-smoke:
+    name: 'Akamai CDN Smoke'
     needs:
-     - cdn
+     - akamai-cdn
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
@@ -83,8 +83,8 @@ jobs:
         run: yarn test:smoke:components-react
       - name: 'Components Vue'
         run: yarn test:smoke:components-vue
-  gh-pages:
-    name: 'GH Pages'
+  github-pages:
+    name: 'GitHub Pages'
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
