@@ -11,9 +11,10 @@
     "prebuild-app": "yarn patchRemixRunProcessBrowserGlobalIdentifier && yarn --cwd ../nextjs prestartAndBuild",
     "start": "concurrently -k -s 'first' -n 'cdn,dummyassets,app' 'serve-cdn' 'serve-dummyassets' 'cross-env NODE_ENV=development binode -- @remix-run/dev:remix dev'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,dummyassets,app' 'serve-cdn' 'serve-dummyassets' 'remix-serve ./build/index.js'",
+    "build": "yarn build-app",
     "build-app": "remix build",
     "test": "yarn test:e2e && yarn test:vrt",
-    "test:e2e": "yarn build-app && playwright test --config=tests/e2e/config/playwright.config.ts",
+    "test:e2e": "playwright test --config=tests/e2e/config/playwright.config.ts",
     "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
     "clean:build": "rm -rf ./build && rm -rf ./public/build",
     "patchRemixRunProcessBrowserGlobalIdentifier": "tsx ../react-wrapper/bin/patchRemixRunProcessBrowserGlobalIdentifier.ts"
