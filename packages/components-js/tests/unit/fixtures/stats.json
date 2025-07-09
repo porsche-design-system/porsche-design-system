@@ -132,12 +132,12 @@
   {
     "chunkShortName": "input-search",
     "size": 13411,
-    "gzipSize": 4827
+    "gzipSize": 4824
   },
   {
     "chunkShortName": "input-text",
-    "size": 13381,
-    "gzipSize": 4779
+    "size": 13464,
+    "gzipSize": 4791
   },
   {
     "chunkShortName": "link",
@@ -171,8 +171,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 84651,
-    "gzipSize": 27503
+    "size": 84560,
+    "gzipSize": 27493
   },
   {
     "chunkShortName": "marque",
@@ -231,8 +231,8 @@
   },
   {
     "chunkShortName": "select",
-    "size": 44388,
-    "gzipSize": 16017
+    "size": 44401,
+    "gzipSize": 16031
   },
   {
     "chunkShortName": "select-wrapper",
@@ -291,8 +291,8 @@
   },
   {
     "chunkShortName": "text-field-wrapper",
-    "size": 18707,
-    "gzipSize": 7111
+    "size": 18696,
+    "gzipSize": 7106
   },
   {
     "chunkShortName": "text-list",
@@ -301,13 +301,13 @@
   },
   {
     "chunkShortName": "textarea",
-    "size": 13432,
-    "gzipSize": 4868
+    "size": 12509,
+    "gzipSize": 4559
   },
   {
     "chunkShortName": "textarea-wrapper",
-    "size": 12468,
-    "gzipSize": 4916
+    "size": 12457,
+    "gzipSize": 4909
   },
   {
     "chunkShortName": "toast",
