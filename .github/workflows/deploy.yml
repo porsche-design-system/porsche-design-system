@@ -14,6 +14,18 @@ on:
       linode-aws-secret-access-key:
         description: 'AWS Secret Access Key for Linode'
         required: true
+      gh-repository-storefront:
+        description: 'github repository for github pages (storefront)'
+        required: true
+      gh-deploy-key-storefront:
+        description: 'github deploy key for github pages (storefront)'
+        required: true
+      algolia-app-id:
+        description: 'algolia app id'
+        required: true
+      algolia-api-key:
+        description: 'algolia api key'
+        required: true
 
 jobs:
   cdn:
@@ -31,7 +43,7 @@ jobs:
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - run: chmod +x ./.github/workflows/deploy-akamai-cdn.sh
+      - run: chmod +x ./deploy-akamai-cdn.sh
       - name: 'Deploy'
         run: |
           ./deploy-akamai-cdn.sh packages/assets/cdn/components/ components/
@@ -71,3 +83,26 @@ jobs:
         run: yarn test:smoke:components-react
       - name: 'Components Vue'
         run: yarn test:smoke:components-vue
+  gh-pages:
+    name: 'GH Pages'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - run: chmod +x ./deploy-github-pages.sh
+      - name: 'Deploy'
+        run: ./deploy-github-pages.sh
+        env:
+          ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
+          ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}
+          GH_DEPLOY_KEY_STOREFRONT: ${{ secrets.gh-deploy-key-storefront }}
+          GH_REPOSITORY_STOREFRONT: ${{ secrets.gh-repository-storefront }}
