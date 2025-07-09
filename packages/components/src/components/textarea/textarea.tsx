@@ -1,4 +1,15 @@
-import { AttachInternals, Component, Element, Event, type EventEmitter, type JSX, Prop, Watch, h } from '@stencil/core';
+import {
+  AttachInternals,
+  Component,
+  Element,
+  Event,
+  type EventEmitter,
+  type JSX,
+  Prop,
+  Watch,
+  h,
+  Fragment
+} from '@stencil/core';
 import { getSlottedAnchorStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
@@ -233,14 +244,18 @@ export class Textarea {
             autocomplete={this.autoComplete}
             wrap={this.wrap}
           />
-          <span class="sr-only" aria-live="polite">
-            {this.maxLength
-              ? `You have ${this.maxLength - this.value.length} out of ${this.maxLength} characters left`
-              : `${this.value.length} characters entered`}
-          </span>
-          <span class="counter" aria-hidden="true">
-            {this.maxLength ? `${this.value.length}/${this.maxLength}` : `${this.value.length}`}
-          </span>
+          {this.counter && (
+            <Fragment>
+              <span class="sr-only" aria-live="polite">
+                {this.maxLength
+                  ? `You have ${this.maxLength - this.value.length} out of ${this.maxLength} characters left`
+                  : `${this.value.length} characters entered`}
+              </span>
+              <span class="counter" aria-hidden="true">
+                {this.maxLength ? `${this.value.length}/${this.maxLength}` : `${this.value.length}`}
+              </span>
+            </Fragment>
+          )}
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
       </div>
