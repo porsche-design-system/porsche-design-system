@@ -16,19 +16,8 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Setup'
+        uses: ./.github/actions/setup
       - name: 'Unit'
         run: yarn test:unit:assets:assets
       - name: 'Fallbacks Unit'
@@ -52,19 +41,8 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Setup'
+        uses: ./.github/actions/setup
       - name: 'Unit'
         run: yarn test:unit:tokens
   styles:
@@ -74,19 +52,8 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: build-development
-          path: ./packages
-      - name: 'Setup executable files'
-        run: |
-          chmod +x ./packages/assets/bin/serve-cdn.js
-          chmod +x ./packages/shared/bin/serve-dummyassets.js
+      - name: 'Setup'
+        uses: ./.github/actions/setup
       - name: 'Tailwind CSS Unit'
         run: yarn test:unit:styles:tailwindcss
   components-unit:
