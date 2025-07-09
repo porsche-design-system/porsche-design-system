@@ -77,7 +77,7 @@ export const inputSearchSlotStories: SlotStories<'p-input-search'> = {
 
 export const inputSearchStory: Story<'p-input-search'> = {
   state: {
-    properties: { label: 'Some label', name: 'Some name', clear: true },
+    properties: { label: 'Some label', name: 'Some name', clear: true, indicator: true },
   },
   generator: ({ properties, slots } = {}) => [
     {
@@ -92,7 +92,7 @@ export const inputSearchStorySlots: Story<'p-input-search'> = {
   generator: () => [
     {
       tag: 'p-input-search',
-      properties: { indicator: false, state: 'error' },
+      properties: { state: 'error' },
       children: [
         {
           tag: 'span',

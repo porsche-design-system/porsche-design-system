@@ -538,7 +538,7 @@ test.describe('hover state', () => {
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {
     await initInputSearch(page, {
-      props: { name: 'Some name', state: 'error', clear: true },
+      props: { name: 'Some name', state: 'error', clear: true, indicator: true },
       useSlottedLabel: true,
       useSlottedMessage: true,
       useSlottedDescription: true,
@@ -555,7 +555,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips after state change', async ({ page }) => {
     await initInputSearch(page, {
-      props: { name: 'Some name', state: 'error', clear: true },
+      props: { name: 'Some name', state: 'error', clear: true, indicator: true },
       useSlottedLabel: true,
       useSlottedMessage: true,
       useSlottedDescription: true,
@@ -572,7 +572,7 @@ test.describe('lifecycle', () => {
   });
 
   test('should work without unnecessary round trips after value change', async ({ page }) => {
-    await initInputSearch(page, { props: { name: 'Some name', state: 'error', clear: true } });
+    await initInputSearch(page, { props: { name: 'Some name', state: 'error', clear: true, indicator: true } });
     const host = getHost(page);
     const status = await getLifecycleStatus(page);
 

@@ -90,7 +90,8 @@ import { FlexComponent } from './generated/flex.component';
 import { Flyout_1Component } from './generated/flyout-1.component';
 import { Flyout_2Component } from './generated/flyout-2.component';
 import { FlyoutBasicComponent } from './generated/flyout-basic.component';
-import { FlyoutCssVariablesComponent } from './generated/flyout-css-variables.component';
+import { FlyoutCssVariables_1Component } from './generated/flyout-css-variables-1.component';
+import { FlyoutCssVariables_2Component } from './generated/flyout-css-variables-2.component';
 import { FlyoutFixedFooterComponent } from './generated/flyout-fixed-footer.component';
 import { FlyoutFixedFooterHeaderComponent } from './generated/flyout-fixed-footer-header.component';
 import { FlyoutFixedFooterHeaderScrollableContentComponent } from './generated/flyout-fixed-footer-header-scrollable-content.component';
@@ -172,6 +173,7 @@ import { PaginationComponent } from './generated/pagination.component';
 import { PinCodeComponent } from './generated/pin-code.component';
 import { PopoverComponent } from './generated/popover.component';
 import { PopoverBasicComponent } from './generated/popover-basic.component';
+import { PopoverBasicSlottedComponent } from './generated/popover-basic-slotted.component';
 import { PopoverBottomComponent } from './generated/popover-bottom.component';
 import { PopoverEdgeCaseComponent } from './generated/popover-edge-case.component';
 import { PopoverLeftComponent } from './generated/popover-left.component';
@@ -300,7 +302,8 @@ export const generatedPages = [
   Flyout_1Component,
   Flyout_2Component,
   FlyoutBasicComponent,
-  FlyoutCssVariablesComponent,
+  FlyoutCssVariables_1Component,
+  FlyoutCssVariables_2Component,
   FlyoutFixedFooterComponent,
   FlyoutFixedFooterHeaderComponent,
   FlyoutFixedFooterHeaderScrollableContentComponent,
@@ -382,6 +385,7 @@ export const generatedPages = [
   PinCodeComponent,
   PopoverComponent,
   PopoverBasicComponent,
+  PopoverBasicSlottedComponent,
   PopoverBottomComponent,
   PopoverEdgeCaseComponent,
   PopoverLeftComponent,
@@ -743,9 +747,14 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: FlyoutBasicComponent,
   },
   {
-    name: 'Flyout Css Variables',
-    path: 'flyout-css-variables',
-    component: FlyoutCssVariablesComponent,
+    name: 'Flyout Css Variables 1',
+    path: 'flyout-css-variables-1',
+    component: FlyoutCssVariables_1Component,
+  },
+  {
+    name: 'Flyout Css Variables 2',
+    path: 'flyout-css-variables-2',
+    component: FlyoutCssVariables_2Component,
   },
   {
     name: 'Flyout Fixed Footer',
@@ -1146,6 +1155,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Popover Basic',
     path: 'popover-basic',
     component: PopoverBasicComponent,
+  },
+  {
+    name: 'Popover Basic Slotted',
+    path: 'popover-basic-slotted',
+    component: PopoverBasicSlottedComponent,
   },
   {
     name: 'Popover Bottom',

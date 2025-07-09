@@ -330,6 +330,7 @@ export class Select {
               hideLabel={true}
               autoComplete="off"
               clear={true}
+              indicator={true}
               compact={true}
               theme={this.theme}
               {...getComboboxFilterAriaAttributes()}

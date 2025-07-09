@@ -14,6 +14,6 @@ const debugText = computed(() => {
 </script>
 
 <template>
-  <PInputSearch :name="'some-name'" :label="'Some Label'" :value="value" @input="onInput" />
+  <PInputSearch :name="'some-name'" :label="'Some Label'" :value="value" :indicator="true" :clear="true" @input="onInput" />
   <PText>{{ debugText }}</PText>
 </template>

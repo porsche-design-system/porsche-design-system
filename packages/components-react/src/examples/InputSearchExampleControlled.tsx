@@ -19,6 +19,8 @@ export const InputSearchControlledExamplePage = (): JSX.Element => {
         name="some-name"
         label="Some Label"
         value={value}
+        indicator={true}
+        clear={true}
         onInput={(e) => onInput(e as CustomEvent<InputSearchInputEventDetail>)}
       />
       <PText>Value: {value}</PText>
