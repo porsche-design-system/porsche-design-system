@@ -1,4 +1,5 @@
-import { expect, type Locator, test, Page } from '@playwright/test';
+import { type Locator, Page, expect, test } from '@playwright/test';
+import type { BannerState } from '@porsche-design-system/components';
 import {
   addEventListener,
   getCssClasses,
@@ -11,7 +12,6 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { BannerState } from '@porsche-design-system/components';
 
 type InitOptions = {
   open: boolean;
@@ -80,8 +80,8 @@ test('should not show banner by setting open prop false', async ({ page }) => {
   const banner = getHost(page);
   await setProperty(banner, 'open', false);
   await waitForStencilLifecycle(page);
-  expect(await getElementStyle(banner, 'opacity')).toBe('0');
-  expect(await getElementStyle(banner, 'visibility')).toBe('hidden');
+  await expect(banner).toHaveCSS('opacity', '0');
+  await expect(banner).toBeHidden();
 });
 
 test.describe('close', () => {
