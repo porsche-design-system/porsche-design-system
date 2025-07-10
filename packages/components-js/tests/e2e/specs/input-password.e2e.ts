@@ -56,9 +56,9 @@ const initInputPassword = (page: Page, opts?: InitOptions): Promise<void> => {
 };
 
 test.describe('value', () => {
-  test('should have value as slotted content when set initially', async ({ page }) => {
+  test('should sync value with input value', async ({ page }) => {
     const testValue = 'hello123';
-    await initInputPassword(page, { props: { name: 'Some name', value: testValue } });
+    await initInputPassword(page, { props: { name: 'some-name', value: testValue } });
     const host = getHost(page);
     const inputPassword = getInputPassword(page);
 
@@ -158,7 +158,7 @@ test.describe('form', () => {
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
   });
 
-  test('should submit form after dynamically setting `required` to false on an initially required, empty textarea', async ({
+  test('should submit form after dynamically setting `required` to false on an initially required, empty input', async ({
     page,
   }) => {
     const name = 'name';
@@ -182,7 +182,7 @@ test.describe('form', () => {
     expect((await getEventSummary(form, 'submit')).counter).toBe(1);
   });
 
-  test('should submit form after reset if the required textarea was initially not empty', async ({ page }) => {
+  test('should submit form after reset if the required input was initially not empty', async ({ page }) => {
     const name = 'name';
     const value = 'some-value';
     const required = true;
@@ -311,7 +311,7 @@ test.describe('form', () => {
 
 test.describe('focus state', () => {
   test('should focus input-password when label is clicked', async ({ page }) => {
-    await initInputPassword(page, { props: { name: 'Some name', label: 'Some label' } });
+    await initInputPassword(page, { props: { name: 'some-name', label: 'Some label' } });
     const label = getLabel(page);
     const inputPassword = getInputPassword(page);
 
@@ -337,6 +337,25 @@ test.describe('focus state', () => {
     await waitForStencilLifecycle(page);
     expect((await getEventSummary(inputPassword, 'focus')).counter).toBe(1);
     await expect(inputPasswordWrapper).toHaveCSS('border-color', 'rgb(1, 2, 5)');
+  });
+
+  test('should keep focus when switching to loading state', async ({ page }) => {
+    await initInputPassword(page, { props: { name: 'Some name', label: 'Some label' } });
+    const host = getHost(page);
+    const inputPassword = getInputPassword(page);
+
+    await expect(host).not.toBeFocused();
+    await expect(inputPassword).not.toBeFocused();
+
+    await page.keyboard.press('Tab');
+
+    await expect(host).toBeFocused();
+    await expect(inputPassword).toBeFocused();
+
+    await setProperty(host, 'loading', true);
+
+    await expect(host).toBeFocused();
+    await expect(inputPassword).toBeFocused();
   });
 });
 
@@ -392,7 +411,7 @@ test.describe('hover state', () => {
   const hoverBorderColor = 'rgb(1, 2, 5)';
 
   test('should show hover state on input-password when label is hovered', async ({ page }) => {
-    await initInputPassword(page, { props: { name: 'Some name', label: 'Some label' } });
+    await initInputPassword(page, { props: { name: 'some-name', label: 'Some label' } });
     await page.mouse.move(0, 300); // avoid potential hover initially
     const label = getLabel(page);
     const inputPassword = getInputPassword(page);
@@ -414,7 +433,7 @@ test.describe('hover state', () => {
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {
     await initInputPassword(page, {
-      props: { name: 'Some name', state: 'error', toggle: true },
+      props: { name: 'some-name', state: 'error', toggle: true },
       useSlottedLabel: true,
       useSlottedMessage: true,
       useSlottedDescription: true,
@@ -431,7 +450,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips after state change', async ({ page }) => {
     await initInputPassword(page, {
-      props: { name: 'Some name', state: 'error', toggle: true },
+      props: { name: 'some-name', state: 'error', toggle: true },
       useSlottedLabel: true,
       useSlottedMessage: true,
       useSlottedDescription: true,
@@ -448,7 +467,7 @@ test.describe('lifecycle', () => {
   });
 
   test('should work without unnecessary round trips after value change', async ({ page }) => {
-    await initInputPassword(page, { props: { name: 'Some name', state: 'error', toggle: true } });
+    await initInputPassword(page, { props: { name: 'some-name', state: 'error', toggle: true } });
     const host = getHost(page);
     const status = await getLifecycleStatus(page);
 
@@ -466,7 +485,7 @@ test.describe('lifecycle', () => {
 
 test.describe('Password Visibility', () => {
   test('should change input type to `text` if password toggle is clicked', async ({ page }) => {
-    await initInputPassword(page, { props: { name: 'Some name', label: 'Some label', toggle: true } });
+    await initInputPassword(page, { props: { name: 'some-name', label: 'Some label', toggle: true } });
     const host = getHost(page);
     const inputPassword = getInputPassword(page);
     const inputPasswordToggle = getInputPasswordToggle(page);

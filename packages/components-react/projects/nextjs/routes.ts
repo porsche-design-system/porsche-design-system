@@ -236,9 +236,13 @@ const generatedRoutes = {
     "path": "/flyout-basic",
     "name": "FlyoutBasic"
   },
-  "flyoutCssVariables": {
-    "path": "/flyout-css-variables",
-    "name": "FlyoutCssVariables"
+  "flyoutCssVariables_1": {
+    "path": "/flyout-css-variables-1",
+    "name": "FlyoutCssVariables_1"
+  },
+  "flyoutCssVariables_2": {
+    "path": "/flyout-css-variables-2",
+    "name": "FlyoutCssVariables_2"
   },
   "flyoutFixedFooter": {
     "path": "/flyout-fixed-footer",
@@ -383,6 +387,14 @@ const generatedRoutes = {
   "inputPassword": {
     "path": "/input-password",
     "name": "InputPassword"
+  },
+  "inputSearch": {
+    "path": "/input-search",
+    "name": "InputSearch"
+  },
+  "inputText": {
+    "path": "/input-text",
+    "name": "InputText"
   },
   "link": {
     "path": "/link",
@@ -556,6 +568,10 @@ const generatedRoutes = {
     "path": "/popover-basic",
     "name": "PopoverBasic"
   },
+  "popoverBasicSlotted": {
+    "path": "/popover-basic-slotted",
+    "name": "PopoverBasicSlotted"
+  },
   "popoverBottom": {
     "path": "/popover-bottom",
     "name": "PopoverBottom"
@@ -603,6 +619,18 @@ const generatedRoutes = {
   "selectOpenedBottom": {
     "path": "/select-opened-bottom",
     "name": "SelectOpenedBottom"
+  },
+  "selectOpenedFilter": {
+    "path": "/select-opened-filter",
+    "name": "SelectOpenedFilter"
+  },
+  "selectOpenedFilterNoResults": {
+    "path": "/select-opened-filter-no-results",
+    "name": "SelectOpenedFilterNoResults"
+  },
+  "selectOpenedFilterNoResultsCompact": {
+    "path": "/select-opened-filter-no-results-compact",
+    "name": "SelectOpenedFilterNoResultsCompact"
   },
   "selectOpenedMaxHeight": {
     "path": "/select-opened-max-height",

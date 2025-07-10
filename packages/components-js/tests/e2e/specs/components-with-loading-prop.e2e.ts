@@ -1,7 +1,7 @@
-import type { Page } from 'playwright';
-import { expect, Locator, test } from '@playwright/test';
-import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
+import { Locator, expect, test } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
+import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
+import type { Page } from 'playwright';
 import {
   buildDefaultComponentMarkup,
   setContentWithDesignSystem,
@@ -14,8 +14,10 @@ const tagNamesWithLoadingProp: TagName[] = TAG_NAMES.filter((tagName) => getComp
 for (const tagName of tagNamesWithLoadingProp) {
   test.describe(tagName, () => {
     const getLoadingStatus = async (page: Page): Promise<Locator> => {
-      const [nestedComponentWithLoadingProp] = tagNamesWithLoadingProp.filter((tagNameWithLoadingProp) =>
-        getComponentMeta(tagName).nestedComponents?.includes(tagNameWithLoadingProp)
+      const [nestedComponentWithLoadingProp] = tagNamesWithLoadingProp.filter(
+        (tagNameWithLoadingProp) =>
+          getComponentMeta(tagName).nestedComponents?.includes(tagNameWithLoadingProp) &&
+          !['p-input-search', 'p-input-number', 'p-input-text', 'p-input-password'].includes(tagName)
       );
 
       return page.locator(

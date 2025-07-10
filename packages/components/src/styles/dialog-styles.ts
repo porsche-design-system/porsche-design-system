@@ -133,10 +133,9 @@ export const dialogPaddingBlock = `calc(${spacingFluidSmall} + ${spacingFluidMed
 
 export const dialogGridJssStyle: JssStyle = {
   display: 'grid',
-  gridTemplate: `auto/${spacingFluidSmall} auto ${spacingFluidSmall}`,
+  gridTemplate: `auto/${spacingFluidSmall} minmax(0,1fr) ${spacingFluidSmall}`,
+  gap: `${spacingFluidMedium} calc(${spacingFluidLarge} - ${spacingFluidSmall})`,
   paddingBlock: dialogPaddingBlock,
-  rowGap: spacingFluidMedium,
-  columnGap: `calc(${spacingFluidLarge} - ${spacingFluidSmall})`,
   alignContent: 'flex-start',
 };
 

@@ -71,7 +71,8 @@ import { FlexPage } from './generated/Flex';
 import { Flyout_1Page } from './generated/Flyout_1';
 import { Flyout_2Page } from './generated/Flyout_2';
 import { FlyoutBasicPage } from './generated/FlyoutBasic';
-import { FlyoutCssVariablesPage } from './generated/FlyoutCssVariables';
+import { FlyoutCssVariables_1Page } from './generated/FlyoutCssVariables_1';
+import { FlyoutCssVariables_2Page } from './generated/FlyoutCssVariables_2';
 import { FlyoutFixedFooterPage } from './generated/FlyoutFixedFooter';
 import { FlyoutFixedFooterHeaderPage } from './generated/FlyoutFixedFooterHeader';
 import { FlyoutFixedFooterHeaderScrollableContentPage } from './generated/FlyoutFixedFooterHeaderScrollableContent';
@@ -108,6 +109,8 @@ import { IconPage } from './generated/Icon';
 import { InlineNotificationPage } from './generated/InlineNotification';
 import { InputNumberPage } from './generated/InputNumber';
 import { InputPasswordPage } from './generated/InputPassword';
+import { InputSearchPage } from './generated/InputSearch';
+import { InputTextPage } from './generated/InputText';
 import { LinkPage } from './generated/Link';
 import { LinkPurePage } from './generated/LinkPure';
 import { LinkSocialPage } from './generated/LinkSocial';
@@ -150,6 +153,7 @@ import { PaginationPage } from './generated/Pagination';
 import { PinCodePage } from './generated/PinCode';
 import { PopoverPage } from './generated/Popover';
 import { PopoverBasicPage } from './generated/PopoverBasic';
+import { PopoverBasicSlottedPage } from './generated/PopoverBasicSlotted';
 import { PopoverBottomPage } from './generated/PopoverBottom';
 import { PopoverEdgeCasePage } from './generated/PopoverEdgeCase';
 import { PopoverLeftPage } from './generated/PopoverLeft';
@@ -162,6 +166,9 @@ import { SegmentedControlPage } from './generated/SegmentedControl';
 import { SelectPage } from './generated/Select';
 import { SelectCompactPage } from './generated/SelectCompact';
 import { SelectOpenedBottomPage } from './generated/SelectOpenedBottom';
+import { SelectOpenedFilterPage } from './generated/SelectOpenedFilter';
+import { SelectOpenedFilterNoResultsPage } from './generated/SelectOpenedFilterNoResults';
+import { SelectOpenedFilterNoResultsCompactPage } from './generated/SelectOpenedFilterNoResultsCompact';
 import { SelectOpenedMaxHeightPage } from './generated/SelectOpenedMaxHeight';
 import { SelectOpenedMinHeightPage } from './generated/SelectOpenedMinHeight';
 import { SelectOpenedScrollContextPage } from './generated/SelectOpenedScrollContext';
@@ -507,9 +514,14 @@ export const generatedRoutes: RouteType[] = [
     element: <FlyoutBasicPage />,
   },
   {
-    name: 'Flyout Css Variables',
-    path: '/flyout-css-variables',
-    element: <FlyoutCssVariablesPage />,
+    name: 'Flyout Css Variables 1',
+    path: '/flyout-css-variables-1',
+    element: <FlyoutCssVariables_1Page />,
+  },
+  {
+    name: 'Flyout Css Variables 2',
+    path: '/flyout-css-variables-2',
+    element: <FlyoutCssVariables_2Page />,
   },
   {
     name: 'Flyout Fixed Footer',
@@ -690,6 +702,16 @@ export const generatedRoutes: RouteType[] = [
     name: 'Input Password',
     path: '/input-password',
     element: <InputPasswordPage />,
+  },
+  {
+    name: 'Input Search',
+    path: '/input-search',
+    element: <InputSearchPage />,
+  },
+  {
+    name: 'Input Text',
+    path: '/input-text',
+    element: <InputTextPage />,
   },
   {
     name: 'Link',
@@ -902,6 +924,11 @@ export const generatedRoutes: RouteType[] = [
     element: <PopoverBasicPage />,
   },
   {
+    name: 'Popover Basic Slotted',
+    path: '/popover-basic-slotted',
+    element: <PopoverBasicSlottedPage />,
+  },
+  {
     name: 'Popover Bottom',
     path: '/popover-bottom',
     element: <PopoverBottomPage />,
@@ -960,6 +987,21 @@ export const generatedRoutes: RouteType[] = [
     name: 'Select Opened Bottom',
     path: '/select-opened-bottom',
     element: <SelectOpenedBottomPage />,
+  },
+  {
+    name: 'Select Opened Filter',
+    path: '/select-opened-filter',
+    element: <SelectOpenedFilterPage />,
+  },
+  {
+    name: 'Select Opened Filter No Results',
+    path: '/select-opened-filter-no-results',
+    element: <SelectOpenedFilterNoResultsPage />,
+  },
+  {
+    name: 'Select Opened Filter No Results Compact',
+    path: '/select-opened-filter-no-results-compact',
+    element: <SelectOpenedFilterNoResultsCompactPage />,
   },
   {
     name: 'Select Opened Max Height',

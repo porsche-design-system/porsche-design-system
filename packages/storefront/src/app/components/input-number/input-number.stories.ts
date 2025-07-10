@@ -77,7 +77,7 @@ export const inputNumberSlotStories: SlotStories<'p-input-number'> = {
 
 export const inputNumberStory: Story<'p-input-number'> = {
   state: {
-    properties: { label: 'Some label', name: 'Some name', controls: true },
+    properties: { label: 'Some label', name: 'some-name', controls: true },
   },
   generator: ({ properties, slots } = {}) => [
     {

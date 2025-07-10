@@ -339,6 +339,52 @@ const codeExamples: CodeSample[] = [
     ],
   },
   {
+    component: 'p-input-text',
+    examples: [
+      {
+        name: 'InputTextExample',
+        paths: {
+          'vanilla-js': '/input-text-example.html',
+          angular: '/input-text-example.component.ts',
+          react: '/InputTextExample.tsx',
+          vue: '/InputTextExample.vue',
+        },
+      },
+      {
+        name: 'InputTextExampleControlled',
+        paths: {
+          'vanilla-js': '/input-text-example-controlled.html',
+          angular: '/input-text-example-controlled.component.ts',
+          react: '/InputTextExampleControlled.tsx',
+          vue: '/InputTextExampleControlled.vue',
+        },
+      },
+    ],
+  },
+  {
+    component: 'p-input-search',
+    examples: [
+      {
+        name: 'InputSearchExample',
+        paths: {
+          'vanilla-js': '/input-search-example.html',
+          angular: '/input-search-example.component.ts',
+          react: '/InputSearchExample.tsx',
+          vue: '/InputSearchExample.vue',
+        },
+      },
+      {
+        name: 'InputSearchExampleControlled',
+        paths: {
+          'vanilla-js': '/input-search-example-controlled.html',
+          angular: '/input-search-example-controlled.component.ts',
+          react: '/InputSearchExampleControlled.tsx',
+          vue: '/InputSearchExampleControlled.vue',
+        },
+      },
+    ],
+  },
+  {
     component: 'p-link-tile',
     examples: [
       {

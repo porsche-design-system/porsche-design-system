@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { type TextareaInputEventDetail } from '@porsche-design-system/components-angular';
+import { type InputPasswordInputEventDetail } from '@porsche-design-system/components-angular';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
 
 @Component({
@@ -19,7 +19,7 @@ export class InputPasswordExampleControlledComponent {
     return `Value: ${this.value}`;
   }
 
-  onInput(e: CustomEvent<TextareaInputEventDetail>) {
-    this.value = (e.detail.target as HTMLTextAreaElement).value;
+  onInput(e: CustomEvent<InputPasswordInputEventDetail>) {
+    this.value = (e.detail.target as HTMLInputElement).value;
   }
 }

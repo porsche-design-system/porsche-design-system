@@ -38,11 +38,12 @@ const propTypes: PropTypes<typeof InputPassword> = {
   name: AllowedTypes.string,
   value: AllowedTypes.string,
   required: AllowedTypes.boolean,
+  loading: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
   maxLength: AllowedTypes.number,
   minLength: AllowedTypes.number,
   form: AllowedTypes.string,
-  autoComplete: AllowedTypes.oneOf<InputPasswordAutoComplete>(INPUT_PASSWORD_AUTO_COMPLETE),
+  autoComplete: AllowedTypes.oneOf<InputPasswordAutoComplete>([...INPUT_PASSWORD_AUTO_COMPLETE, undefined]),
   state: AllowedTypes.oneOf<InputPasswordState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
@@ -73,7 +74,7 @@ export class InputPassword {
   /** The description text. */
   @Prop() public description?: string = '';
 
-  /** Displays as compact version. */
+  /** Displays as a compact version. */
   @Prop() public compact?: boolean = false;
 
   /** The name of the password input. */
@@ -85,7 +86,7 @@ export class InputPassword {
   @Prop({ mutable: true }) public value?: string = '';
 
   /** Specifies whether the input can be autofilled by the browser */
-  @Prop() public autoComplete?: InputPasswordAutoComplete = '';
+  @Prop() public autoComplete?: InputPasswordAutoComplete;
 
   /** Specifies whether the password input should be read-only. */
   @Prop() public readOnly?: boolean = false;
@@ -107,6 +108,9 @@ export class InputPassword {
 
   /** Marks the password input as required. */
   @Prop() public required?: boolean = false;
+
+  /** @experimental Shows a loading indicator. */
+  @Prop() public loading?: boolean = false;
 
   /** The validation state. */
   @Prop() public state?: InputPasswordState = 'none';
@@ -136,6 +140,7 @@ export class InputPassword {
 
   @State() private showPassword = false;
 
+  private initialLoading: boolean = false;
   private inputElement: HTMLInputElement;
   private defaultValue: string;
 
@@ -144,13 +149,17 @@ export class InputPassword {
     this.internals?.setFormValue(newValue);
   }
 
+  public connectedCallback(): void {
+    this.initialLoading = this.loading;
+  }
+
   public componentWillLoad(): void {
     this.defaultValue = this.value;
+    this.initialLoading = this.loading;
   }
 
   public formResetCallback(): void {
-    this.internals?.setFormValue(this.defaultValue);
-    this.value = this.defaultValue;
+    this.value = this.defaultValue; // triggers value watcher
   }
 
   public formDisabledCallback(disabled: boolean): void {
@@ -173,6 +182,12 @@ export class InputPassword {
     this.internals?.setValidity(this.inputElement.validity, this.inputElement.validationMessage, this.inputElement);
   }
 
+  public componentWillUpdate(): void {
+    if (this.loading) {
+      this.initialLoading = true;
+    }
+  }
+
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
@@ -180,6 +195,7 @@ export class InputPassword {
       this.host,
       getComponentCss,
       this.disabled,
+      this.loading,
       this.hideLabel,
       this.state,
       this.toggle,
@@ -214,6 +230,8 @@ export class InputPassword {
         state={this.state}
         message={this.message}
         theme={this.theme}
+        loading={this.loading}
+        initialLoading={this.initialLoading}
         end={
           this.toggle && (
             <PrefixedTagNames.pButtonPure

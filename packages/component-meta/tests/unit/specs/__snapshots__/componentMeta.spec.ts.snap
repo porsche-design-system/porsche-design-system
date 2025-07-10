@@ -323,6 +323,8 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-spark",
+          "ai-spark-filled",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -781,6 +783,8 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-spark",
+          "ai-spark-filled",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -1261,6 +1265,8 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-spark",
+          "ai-spark-filled",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -2980,6 +2986,12 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "auto",
         "description": "Width of the flyout.",
       },
+      "--ref-p-flyout-pt": {
+        "description": "Exposes the internally used padding-top of the Flyout as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the top of the Flyout.",
+      },
+      "--ref-p-flyout-px": {
+        "description": "Exposes the internally used padding-inline of the Flyout as read only CSS variable. When slotting e.g. a media container, this variable can be used to stretch the element to the full horizontal size of the Flyout.",
+      },
     },
     "eventsMeta": {
       "dismiss": {
@@ -3465,6 +3477,8 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-spark",
+          "ai-spark-filled",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -3808,6 +3822,8 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-spark",
+          "ai-spark-filled",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -4206,18 +4222,18 @@ exports[`should match snapshot 1`] = `
     "propsMeta": {
       "autoComplete": {
         "allowedValues": [
+          null,
           "off",
           "on",
-          "",
         ],
-        "defaultValue": "",
+        "defaultValue": null,
         "description": "Specifies whether the input can be autofilled by the browser",
         "type": "InputNumberAutoComplete",
       },
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Displays as compact version.",
+        "description": "Displays as a compact version.",
         "type": "boolean",
       },
       "controls": {
@@ -4250,7 +4266,7 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Show or hide label and description text. For better accessibility it is recommended to show the label.",
+        "description": "Show or hide label and description text. For better accessibility, it is recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
@@ -4259,6 +4275,13 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "",
         "description": "The label text.",
         "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
       },
       "max": {
         "allowedValues": "number",
@@ -4403,20 +4426,20 @@ exports[`should match snapshot 1`] = `
     "propsMeta": {
       "autoComplete": {
         "allowedValues": [
+          null,
           "off",
           "on",
-          "",
           "current-password",
           "new-password",
         ],
-        "defaultValue": "",
+        "defaultValue": null,
         "description": "Specifies whether the input can be autofilled by the browser",
         "type": "InputPasswordAutoComplete",
       },
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Displays as compact version.",
+        "description": "Displays as a compact version.",
         "type": "boolean",
       },
       "description": {
@@ -4452,6 +4475,13 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "",
         "description": "The label text.",
         "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
       },
       "maxLength": {
         "allowedValues": "number",
@@ -4554,6 +4584,400 @@ exports[`should match snapshot 1`] = `
     },
     "styling": "jss",
   },
+  "p-input-search": {
+    "cssVariablesMeta": {
+      "--ref-p-input-slotted-margin": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
+      },
+      "--ref-p-input-slotted-padding": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`padding\` in oder to adjust the alignment correctly.",
+      },
+    },
+    "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the search input has lost focus.",
+        "type": "InputSearchBlurEventDetail",
+        "typeDetail": "Event",
+      },
+      "change": {
+        "description": "Emitted when the search input loses focus after its value was changed.",
+        "type": "InputSearchChangeEventDetail",
+        "typeDetail": "Event",
+      },
+      "input": {
+        "description": "Emitted when the value has been changed as a direct result of a user action.",
+        "type": "InputSearchInputEventDetail",
+        "typeDetail": "InputEvent",
+      },
+    },
+    "hasAriaProp": false,
+    "hasElementInternals": true,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "nestedComponents": [
+      "p-icon",
+      "p-button-pure",
+    ],
+    "propsMeta": {
+      "autoComplete": {
+        "allowedValues": [
+          null,
+          "off",
+          "on",
+        ],
+        "defaultValue": null,
+        "description": "Specifies whether the input can be autofilled by the browser",
+        "type": "InputSearchAutoComplete",
+      },
+      "clear": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Show clear input value button",
+        "type": "boolean",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Displays as a compact version.",
+        "type": "boolean",
+      },
+      "description": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The description text.",
+        "type": "string",
+      },
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Marks the search input as disabled.",
+        "type": "boolean",
+      },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The id of a form element the search input should be associated with.",
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "hideLabel": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Show or hide label and description text. For better accessibility it is recommended to show the label.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
+      "indicator": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Show search indicator icon",
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The label text.",
+        "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
+      },
+      "message": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The message styled depending on validation state.",
+        "type": "string",
+      },
+      "name": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The name of the search input.",
+        "isRequired": true,
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "placeholder": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The placeholder text.",
+        "type": "string",
+      },
+      "readOnly": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Specifies whether the search input should be read-only.",
+        "type": "boolean",
+      },
+      "required": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Marks the search input as required.",
+        "type": "boolean",
+      },
+      "state": {
+        "allowedValues": [
+          "none",
+          "error",
+          "success",
+        ],
+        "defaultValue": "none",
+        "description": "The validation state.",
+        "type": "InputSearchState",
+      },
+      "theme": {
+        "allowedValues": [
+          "light",
+          "dark",
+          "auto",
+        ],
+        "defaultValue": "light",
+        "description": "Adapts the color depending on the theme.",
+        "type": "Theme",
+      },
+      "value": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The search input value.",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "string",
+      },
+    },
+    "slotsMeta": {
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "end": {
+        "description": "Shows content at the end of the input (e.g. search button).",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "start": {
+        "description": "Shows content at the start of the input (e.g. icon).",
+      },
+    },
+    "styling": "jss",
+  },
+  "p-input-text": {
+    "cssVariablesMeta": {
+      "--ref-p-input-slotted-margin": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
+      },
+      "--ref-p-input-slotted-padding": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`padding\` in oder to adjust the alignment correctly.",
+      },
+    },
+    "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the text input has lost focus.",
+        "type": "InputTextBlurEventDetail",
+        "typeDetail": "Event",
+      },
+      "change": {
+        "description": "Emitted when the text input loses focus after its value was changed.",
+        "type": "InputTextChangeEventDetail",
+        "typeDetail": "Event",
+      },
+      "input": {
+        "description": "Emitted when the value has been changed as a direct result of a user action.",
+        "type": "InputTextInputEventDetail",
+        "typeDetail": "InputEvent",
+      },
+    },
+    "hasAriaProp": false,
+    "hasElementInternals": true,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "propsMeta": {
+      "autoComplete": {
+        "allowedValues": [
+          null,
+          "off",
+          "on",
+        ],
+        "defaultValue": null,
+        "description": "Specifies whether the input can be autofilled by the browser",
+        "type": "InputTextAutoComplete",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Displays as a compact version.",
+        "type": "boolean",
+      },
+      "counter": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Show or hide the character counter.",
+        "type": "boolean",
+      },
+      "description": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The description text.",
+        "type": "string",
+      },
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Marks the text input as disabled.",
+        "type": "boolean",
+      },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The id of a form element the text input should be associated with.",
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "hideLabel": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Show or hide label and description text. For better accessibility, it is recommended to show the label.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The label text.",
+        "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
+      },
+      "maxLength": {
+        "allowedValues": "number",
+        "defaultValue": null,
+        "description": "The max length of the text input.",
+        "type": "number",
+      },
+      "message": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The message styled depending on validation state.",
+        "type": "string",
+      },
+      "minLength": {
+        "allowedValues": "number",
+        "defaultValue": null,
+        "description": "The min length of the text input.",
+        "type": "number",
+      },
+      "name": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The name of the text input.",
+        "isRequired": true,
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "placeholder": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The placeholder text.",
+        "type": "string",
+      },
+      "readOnly": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Specifies whether the text input should be read-only.",
+        "type": "boolean",
+      },
+      "required": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Marks the text input as required.",
+        "type": "boolean",
+      },
+      "spellCheck": {
+        "allowedValues": "boolean",
+        "defaultValue": null,
+        "description": "Indicate whether to enable spell-checking.",
+        "type": "boolean",
+      },
+      "state": {
+        "allowedValues": [
+          "none",
+          "error",
+          "success",
+        ],
+        "defaultValue": "none",
+        "description": "The validation state.",
+        "type": "InputTextState",
+      },
+      "theme": {
+        "allowedValues": [
+          "light",
+          "dark",
+          "auto",
+        ],
+        "defaultValue": "light",
+        "description": "Adapts the color depending on the theme.",
+        "type": "Theme",
+      },
+      "value": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The text input value.",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "string",
+      },
+    },
+    "slotsMeta": {
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "end": {
+        "description": "Shows content at the end of the input (e.g. toggle button, unit suffix).",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "start": {
+        "description": "Shows content at the start of the input (e.g. unit prefix).",
+      },
+    },
+    "styling": "jss",
+  },
   "p-link": {
     "hasAriaProp": true,
     "hasElementInternals": false,
@@ -4615,6 +5039,8 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-spark",
+          "ai-spark-filled",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -5022,6 +5448,8 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-spark",
+          "ai-spark-filled",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -5428,6 +5856,8 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-spark",
+          "ai-spark-filled",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -6981,9 +7411,15 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-popover": {
+    "eventsMeta": {
+      "dismiss": {
+        "description": "Emitted when the component requests to be dismissed.",
+        "type": "void",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
-    "hasEvent": false,
+    "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -7021,6 +7457,15 @@ exports[`should match snapshot 1`] = `
         "description": "Preferred direction in which popover should open, given there is enough space in viewport. Otherwise, it will be opened in the direction with most available space.",
         "type": "PopoverDirection",
       },
+      "open": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "If true, the popover is open.",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "boolean",
+      },
       "theme": {
         "allowedValues": [
           "light",
@@ -7035,6 +7480,9 @@ exports[`should match snapshot 1`] = `
     "slotsMeta": {
       "": {
         "description": "Default slot for the popover content.",
+      },
+      "button": {
+        "description": "Slot for custom button.",
       },
     },
     "styling": "jss",
@@ -7404,6 +7852,8 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-spark",
+          "ai-spark-filled",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -7737,6 +8187,7 @@ exports[`should match snapshot 1`] = `
     "isThemeable": true,
     "nestedComponents": [
       "p-icon",
+      "p-input-search",
     ],
     "propsMeta": {
       "compact": {
@@ -7769,6 +8220,12 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "auto",
         "description": "Changes the direction to which the dropdown list appears.",
         "type": "SelectDropdownDirection",
+      },
+      "filter": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Shows an input in the dropdown allowing options to be filtered.",
+        "type": "boolean",
       },
       "form": {
         "allowedValues": "string",
@@ -8970,6 +9427,8 @@ exports[`should match snapshot 1`] = `
           "add",
           "adjust",
           "aggregation",
+          "ai-spark",
+          "ai-spark-filled",
           "arrow-compact-down",
           "arrow-compact-left",
           "arrow-compact-right",
@@ -9724,13 +10183,19 @@ exports[`should match snapshot 1`] = `
     "propsMeta": {
       "autoComplete": {
         "allowedValues": [
+          null,
           "off",
           "on",
-          "",
         ],
-        "defaultValue": "",
+        "defaultValue": null,
         "description": "Specifies whether the input can be autofilled by the browser",
         "type": "TextareaAutoComplete",
+      },
+      "counter": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Show or hide the character counter.",
+        "type": "boolean",
       },
       "description": {
         "allowedValues": "string",
@@ -9756,7 +10221,7 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Show or hide label. For better accessibility it is recommended to show the label.",
+        "description": "Show or hide label. For better accessibility, it is recommended to show the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
@@ -9828,14 +10293,8 @@ exports[`should match snapshot 1`] = `
       "rows": {
         "allowedValues": "number",
         "defaultValue": 7,
-        "description": "The amount of rows of the textarea.",
+        "description": "The number of rows of the textarea.",
         "type": "number",
-      },
-      "showCounter": {
-        "allowedValues": "boolean",
-        "defaultValue": true,
-        "description": "Show or hide max character count.",
-        "type": "boolean",
       },
       "spellCheck": {
         "allowedValues": "boolean",

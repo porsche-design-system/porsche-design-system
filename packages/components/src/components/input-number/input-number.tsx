@@ -40,11 +40,12 @@ const propTypes: PropTypes<typeof InputNumber> = {
   step: AllowedTypes.number,
   controls: AllowedTypes.boolean,
   required: AllowedTypes.boolean,
+  loading: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
   max: AllowedTypes.number,
   min: AllowedTypes.number,
   form: AllowedTypes.string,
-  autoComplete: AllowedTypes.oneOf<InputNumberAutoComplete>(INPUT_NUMBER_AUTO_COMPLETE),
+  autoComplete: AllowedTypes.oneOf<InputNumberAutoComplete>([...INPUT_NUMBER_AUTO_COMPLETE, undefined]),
   state: AllowedTypes.oneOf<InputNumberState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
@@ -77,7 +78,7 @@ export class InputNumber {
   /** The description text. */
   @Prop() public description?: string = '';
 
-  /** Displays as compact version. */
+  /** Displays as a compact version. */
   @Prop() public compact?: boolean = false;
 
   /** The name of the number input. */
@@ -89,7 +90,7 @@ export class InputNumber {
   @Prop({ mutable: true }) public value?: string = '';
 
   /** Specifies whether the input can be autofilled by the browser */
-  @Prop() public autoComplete?: InputNumberAutoComplete = '';
+  @Prop() public autoComplete?: InputNumberAutoComplete;
 
   /** Specifies whether the number input should be read-only. */
   @Prop() public readOnly?: boolean = false;
@@ -112,13 +113,16 @@ export class InputNumber {
   /** Marks the number input as required. */
   @Prop() public required?: boolean = false;
 
+  /** @experimental Shows a loading indicator. */
+  @Prop() public loading?: boolean = false;
+
   /** The validation state. */
   @Prop() public state?: InputNumberState = 'none';
 
   /** The message styled depending on validation state. */
   @Prop() public message?: string = '';
 
-  /** Show or hide label and description text. For better accessibility it is recommended to show the label. */
+  /** Show or hide label and description text. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the color depending on the theme. */
@@ -138,6 +142,7 @@ export class InputNumber {
 
   @AttachInternals() private internals: ElementInternals;
 
+  private initialLoading: boolean = false;
   private inputElement: HTMLInputElement;
   private defaultValue: string;
 
@@ -146,13 +151,23 @@ export class InputNumber {
     this.internals?.setFormValue(newValue);
   }
 
+  public connectedCallback(): void {
+    this.initialLoading = this.loading;
+  }
+
   public componentWillLoad(): void {
     this.defaultValue = this.value;
+    this.initialLoading = this.loading;
+  }
+
+  public componentWillUpdate(): void {
+    if (this.loading) {
+      this.initialLoading = true;
+    }
   }
 
   public formResetCallback(): void {
-    this.internals?.setFormValue(this.defaultValue);
-    this.value = this.defaultValue;
+    this.value = this.defaultValue; // triggers value watcher
   }
 
   public formDisabledCallback(disabled: boolean): void {
@@ -182,6 +197,7 @@ export class InputNumber {
       this.host,
       getComponentCss,
       this.disabled,
+      this.loading,
       this.hideLabel,
       this.state,
       this.compact,
@@ -218,6 +234,8 @@ export class InputNumber {
         message={this.message}
         theme={this.theme}
         step={this.step}
+        loading={this.loading}
+        initialLoading={this.initialLoading}
         {...(this.controls && {
           end: (
             <Fragment>
@@ -268,7 +286,7 @@ export class InputNumber {
     e.stopPropagation();
     e.stopImmediatePropagation();
     const target = e.target as HTMLInputElement;
-    this.value = target.value; // triggers @Watch('value')
+    this.value = target.value; // triggers value watcher
     this.input.emit(e);
   };
 

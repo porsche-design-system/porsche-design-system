@@ -1,0 +1,25 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from '@/components/playground/Configurator';
+import { inputSearchStory, inputSearchSlotStories } from '@/app/components/input-search/input-search.stories';
+
+export const metadata = {
+  title: 'Input Search - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Input Search component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Input Search <ComponentStatus tagName="p-input-search"></ComponentStatus>
+
+The `p-input-search` component offers a versatile, user-friendly interface for entering and submitting search queries.
+It supports direct keyboard input and includes a clear button for convenience. The `start` and `end` slots enable
+flexible insertion of custom content.
+
+A `label` is a caption which informs the user what information a particular form field is asking for. The
+`p-input-search` component can be used with or without a label, but it's recommended to keep the label visible for
+better accessibility whenever possible. When used without a label, it's mandatory to provide a descriptive label text
+for screen readers.
+
+While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to
+give the user visual cues to fill out the form.
+
+<Configurator tagName="p-input-search" story={inputSearchStory} slotStories={inputSearchSlotStories} />

@@ -198,6 +198,26 @@ export const routes: RouteType[] = [
     component: fromExamples.InputNumberExampleControlled,
   },
   {
+    path: '/input-text-example',
+    name: 'Input Text Example',
+    component: fromExamples.InputTextExample,
+  },
+  {
+    path: '/input-text-example-controlled',
+    name: 'Input Text Example Controlled',
+    component: fromExamples.InputTextExampleControlled,
+  },
+  {
+    path: '/input-search-example',
+    name: 'Input Search Example',
+    component: fromExamples.InputSearchExample,
+  },
+  {
+    path: '/input-search-example-controlled',
+    name: 'Input Search Example Controlled',
+    component: fromExamples.InputSearchExampleControlled,
+  },
+  {
     path: '/link-tile-example-hyphens',
     name: 'Link Tile Example Hyphens',
     component: fromExamples.LinkTileExampleHyphens,

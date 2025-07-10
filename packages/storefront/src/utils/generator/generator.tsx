@@ -60,6 +60,10 @@ import {
   type PInputPasswordProps,
   PInputNumber,
   type PInputNumberProps,
+  PInputSearch,
+  type PInputSearchProps,
+  PInputText,
+  type PInputTextProps,
   PLink,
   type PLinkProps,
   PLinkPure,
@@ -276,6 +280,8 @@ export type PropTypeMapping = {
   'p-inline-notification': PInlineNotificationProps;
   'p-input-password': PInputPasswordProps;
   'p-input-number': PInputNumberProps;
+  'p-input-search': PInputSearchProps;
+  'p-input-text': PInputTextProps;
   'p-link': PLinkProps;
   'p-link-pure': PLinkPureProps;
   'p-link-social': PLinkSocialProps;
@@ -356,6 +362,8 @@ const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
   'p-inline-notification': PInlineNotification,
   'p-input-password': PInputPassword,
   'p-input-number': PInputNumber,
+  'p-input-search': PInputSearch,
+  'p-input-text': PInputText,
   'p-link': PLink,
   'p-link-pure': PLinkPure,
   'p-link-social': PLinkSocial,

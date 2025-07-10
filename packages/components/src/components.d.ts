@@ -35,6 +35,8 @@ import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-u
 import { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 import { InputNumberAutoComplete, InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
 import { InputPasswordAutoComplete, InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
+import { InputSearchAutoComplete, InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
+import { InputTextAutoComplete, InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEventDetail, InputTextState } from "./components/input-text/input-text-utils";
 import { LinkIcon } from "./components/link/link-utils";
 import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 import { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
@@ -103,6 +105,8 @@ export { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-u
 export { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 export { InputNumberAutoComplete, InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
 export { InputPasswordAutoComplete, InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
+export { InputSearchAutoComplete, InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
+export { InputTextAutoComplete, InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEventDetail, InputTextState } from "./components/input-text/input-text-utils";
 export { LinkIcon } from "./components/link/link-utils";
 export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 export { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
@@ -1058,7 +1062,7 @@ export namespace Components {
          */
         "autoComplete"?: InputNumberAutoComplete;
         /**
-          * Displays as compact version.
+          * Displays as a compact version.
          */
         "compact"?: boolean;
         /**
@@ -1078,13 +1082,17 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * Show or hide label and description text. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
          */
         "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
         /**
           * The max value of the number input.
          */
@@ -1136,7 +1144,7 @@ export namespace Components {
          */
         "autoComplete"?: InputPasswordAutoComplete;
         /**
-          * Displays as compact version.
+          * Displays as a compact version.
          */
         "compact"?: boolean;
         /**
@@ -1159,6 +1167,10 @@ export namespace Components {
           * The label text.
          */
         "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
         /**
           * The max length of the password input.
          */
@@ -1201,6 +1213,162 @@ export namespace Components {
         "toggle"?: boolean;
         /**
           * The password input value.
+         */
+        "value"?: string;
+    }
+    interface PInputSearch {
+        /**
+          * Specifies whether the input can be autofilled by the browser
+         */
+        "autoComplete"?: InputSearchAutoComplete;
+        /**
+          * Show clear input value button
+         */
+        "clear"?: boolean;
+        /**
+          * Displays as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Marks the search input as disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * The id of a form element the search input should be associated with.
+         */
+        "form"?: string;
+        /**
+          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Show search indicator icon
+         */
+        "indicator"?: boolean;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The name of the search input.
+         */
+        "name": string;
+        /**
+          * The placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * Specifies whether the search input should be read-only.
+         */
+        "readOnly"?: boolean;
+        /**
+          * Marks the search input as required.
+         */
+        "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: InputSearchState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * The search input value.
+         */
+        "value"?: string;
+    }
+    interface PInputText {
+        /**
+          * Specifies whether the input can be autofilled by the browser
+         */
+        "autoComplete"?: InputTextAutoComplete;
+        /**
+          * Displays as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Show or hide the character counter.
+         */
+        "counter"?: boolean;
+        /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Marks the text input as disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * The id of a form element the text input should be associated with.
+         */
+        "form"?: string;
+        /**
+          * Show or hide label and description text. For better accessibility, it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * The max length of the text input.
+         */
+        "maxLength"?: number;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The min length of the text input.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the text input.
+         */
+        "name": string;
+        /**
+          * The placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * Specifies whether the text input should be read-only.
+         */
+        "readOnly"?: boolean;
+        /**
+          * Marks the text input as required.
+         */
+        "required"?: boolean;
+        /**
+          * Indicate whether to enable spell-checking.
+         */
+        "spellCheck"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: InputTextState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * The text input value.
          */
         "value"?: string;
     }
@@ -1787,6 +1955,10 @@ export namespace Components {
          */
         "direction"?: PopoverDirection;
         /**
+          * If true, the popover is open.
+         */
+        "open"?: boolean;
+        /**
           * Adapts the popover color depending on the theme.
          */
         "theme"?: Theme;
@@ -1930,6 +2102,10 @@ export namespace Components {
           * Changes the direction to which the dropdown list appears.
          */
         "dropdownDirection"?: SelectDropdownDirection;
+        /**
+          * Shows an input in the dropdown allowing options to be filtered.
+         */
+        "filter"?: boolean;
         /**
           * The id of a form element the select should be associated with.
          */
@@ -2389,6 +2565,10 @@ export namespace Components {
          */
         "autoComplete"?: TextareaAutoComplete;
         /**
+          * Show or hide the character counter.
+         */
+        "counter"?: boolean;
+        /**
           * The description text.
          */
         "description"?: string;
@@ -2401,7 +2581,7 @@ export namespace Components {
          */
         "form"?: string;
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * Show or hide label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -2441,13 +2621,9 @@ export namespace Components {
          */
         "resize"?: TextareaResize;
         /**
-          * The amount of rows of the textarea.
+          * The number of rows of the textarea.
          */
         "rows"?: number;
-        /**
-          * Show or hide max character count.
-         */
-        "showCounter"?: boolean;
         /**
           * Specifies whether the input should have its spelling and grammar checked
          */
@@ -2587,6 +2763,14 @@ export interface PInputPasswordCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPInputPasswordElement;
 }
+export interface PInputSearchCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPInputSearchElement;
+}
+export interface PInputTextCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPInputTextElement;
+}
 export interface PLinkTileProductCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPLinkTileProductElement;
@@ -2606,6 +2790,10 @@ export interface PPaginationCustomEvent<T> extends CustomEvent<T> {
 export interface PPinCodeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPPinCodeElement;
+}
+export interface PPopoverCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPPopoverElement;
 }
 export interface PSegmentedControlCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3001,6 +3189,44 @@ declare global {
         prototype: HTMLPInputPasswordElement;
         new (): HTMLPInputPasswordElement;
     };
+    interface HTMLPInputSearchElementEventMap {
+        "change": InputSearchChangeEventDetail;
+        "blur": InputSearchBlurEventDetail;
+        "input": InputSearchInputEventDetail;
+    }
+    interface HTMLPInputSearchElement extends Components.PInputSearch, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPInputSearchElementEventMap>(type: K, listener: (this: HTMLPInputSearchElement, ev: PInputSearchCustomEvent<HTMLPInputSearchElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPInputSearchElementEventMap>(type: K, listener: (this: HTMLPInputSearchElement, ev: PInputSearchCustomEvent<HTMLPInputSearchElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPInputSearchElement: {
+        prototype: HTMLPInputSearchElement;
+        new (): HTMLPInputSearchElement;
+    };
+    interface HTMLPInputTextElementEventMap {
+        "change": InputTextChangeEventDetail;
+        "blur": InputTextBlurEventDetail;
+        "input": InputTextInputEventDetail;
+    }
+    interface HTMLPInputTextElement extends Components.PInputText, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPInputTextElementEventMap>(type: K, listener: (this: HTMLPInputTextElement, ev: PInputTextCustomEvent<HTMLPInputTextElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPInputTextElementEventMap>(type: K, listener: (this: HTMLPInputTextElement, ev: PInputTextCustomEvent<HTMLPInputTextElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPInputTextElement: {
+        prototype: HTMLPInputTextElement;
+        new (): HTMLPInputTextElement;
+    };
     interface HTMLPLinkElement extends Components.PLink, HTMLStencilElement {
     }
     var HTMLPLinkElement: {
@@ -3166,7 +3392,18 @@ declare global {
         prototype: HTMLPPinCodeElement;
         new (): HTMLPPinCodeElement;
     };
+    interface HTMLPPopoverElementEventMap {
+        "dismiss": void;
+    }
     interface HTMLPPopoverElement extends Components.PPopover, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPPopoverElementEventMap>(type: K, listener: (this: HTMLPPopoverElement, ev: PPopoverCustomEvent<HTMLPPopoverElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPPopoverElementEventMap>(type: K, listener: (this: HTMLPPopoverElement, ev: PPopoverCustomEvent<HTMLPPopoverElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLPPopoverElement: {
         prototype: HTMLPPopoverElement;
@@ -3556,6 +3793,8 @@ declare global {
         "p-inline-notification": HTMLPInlineNotificationElement;
         "p-input-number": HTMLPInputNumberElement;
         "p-input-password": HTMLPInputPasswordElement;
+        "p-input-search": HTMLPInputSearchElement;
+        "p-input-text": HTMLPInputTextElement;
         "p-link": HTMLPLinkElement;
         "p-link-pure": HTMLPLinkPureElement;
         "p-link-social": HTMLPLinkSocialElement;
@@ -4588,7 +4827,7 @@ declare namespace LocalJSX {
          */
         "autoComplete"?: InputNumberAutoComplete;
         /**
-          * Displays as compact version.
+          * Displays as a compact version.
          */
         "compact"?: boolean;
         /**
@@ -4608,13 +4847,17 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * Show or hide label and description text. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
          */
         "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
         /**
           * The max value of the number input.
          */
@@ -4678,7 +4921,7 @@ declare namespace LocalJSX {
          */
         "autoComplete"?: InputPasswordAutoComplete;
         /**
-          * Displays as compact version.
+          * Displays as a compact version.
          */
         "compact"?: boolean;
         /**
@@ -4701,6 +4944,10 @@ declare namespace LocalJSX {
           * The label text.
          */
         "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
         /**
           * The max length of the password input.
          */
@@ -4755,6 +5002,186 @@ declare namespace LocalJSX {
         "toggle"?: boolean;
         /**
           * The password input value.
+         */
+        "value"?: string;
+    }
+    interface PInputSearch {
+        /**
+          * Specifies whether the input can be autofilled by the browser
+         */
+        "autoComplete"?: InputSearchAutoComplete;
+        /**
+          * Show clear input value button
+         */
+        "clear"?: boolean;
+        /**
+          * Displays as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Marks the search input as disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * The id of a form element the search input should be associated with.
+         */
+        "form"?: string;
+        /**
+          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Show search indicator icon
+         */
+        "indicator"?: boolean;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The name of the search input.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the search input has lost focus.
+         */
+        "onBlur"?: (event: PInputSearchCustomEvent<InputSearchBlurEventDetail>) => void;
+        /**
+          * Emitted when the search input loses focus after its value was changed.
+         */
+        "onChange"?: (event: PInputSearchCustomEvent<InputSearchChangeEventDetail>) => void;
+        /**
+          * Emitted when the value has been changed as a direct result of a user action.
+         */
+        "onInput"?: (event: PInputSearchCustomEvent<InputSearchInputEventDetail>) => void;
+        /**
+          * The placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * Specifies whether the search input should be read-only.
+         */
+        "readOnly"?: boolean;
+        /**
+          * Marks the search input as required.
+         */
+        "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: InputSearchState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * The search input value.
+         */
+        "value"?: string;
+    }
+    interface PInputText {
+        /**
+          * Specifies whether the input can be autofilled by the browser
+         */
+        "autoComplete"?: InputTextAutoComplete;
+        /**
+          * Displays as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Show or hide the character counter.
+         */
+        "counter"?: boolean;
+        /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Marks the text input as disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * The id of a form element the text input should be associated with.
+         */
+        "form"?: string;
+        /**
+          * Show or hide label and description text. For better accessibility, it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * The max length of the text input.
+         */
+        "maxLength"?: number;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The min length of the text input.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the text input.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the text input has lost focus.
+         */
+        "onBlur"?: (event: PInputTextCustomEvent<InputTextBlurEventDetail>) => void;
+        /**
+          * Emitted when the text input loses focus after its value was changed.
+         */
+        "onChange"?: (event: PInputTextCustomEvent<InputTextChangeEventDetail>) => void;
+        /**
+          * Emitted when the value has been changed as a direct result of a user action.
+         */
+        "onInput"?: (event: PInputTextCustomEvent<InputTextInputEventDetail>) => void;
+        /**
+          * The placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * Specifies whether the text input should be read-only.
+         */
+        "readOnly"?: boolean;
+        /**
+          * Marks the text input as required.
+         */
+        "required"?: boolean;
+        /**
+          * Indicate whether to enable spell-checking.
+         */
+        "spellCheck"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: InputTextState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * The text input value.
          */
         "value"?: string;
     }
@@ -5377,6 +5804,14 @@ declare namespace LocalJSX {
          */
         "direction"?: PopoverDirection;
         /**
+          * Emitted when the component requests to be dismissed.
+         */
+        "onDismiss"?: (event: PPopoverCustomEvent<void>) => void;
+        /**
+          * If true, the popover is open.
+         */
+        "open"?: boolean;
+        /**
           * Adapts the popover color depending on the theme.
          */
         "theme"?: Theme;
@@ -5528,6 +5963,10 @@ declare namespace LocalJSX {
           * Changes the direction to which the dropdown list appears.
          */
         "dropdownDirection"?: SelectDropdownDirection;
+        /**
+          * Shows an input in the dropdown allowing options to be filtered.
+         */
+        "filter"?: boolean;
         /**
           * The id of a form element the select should be associated with.
          */
@@ -6047,6 +6486,10 @@ declare namespace LocalJSX {
          */
         "autoComplete"?: TextareaAutoComplete;
         /**
+          * Show or hide the character counter.
+         */
+        "counter"?: boolean;
+        /**
           * The description text.
          */
         "description"?: string;
@@ -6059,7 +6502,7 @@ declare namespace LocalJSX {
          */
         "form"?: string;
         /**
-          * Show or hide label. For better accessibility it is recommended to show the label.
+          * Show or hide label. For better accessibility, it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -6111,13 +6554,9 @@ declare namespace LocalJSX {
          */
         "resize"?: TextareaResize;
         /**
-          * The amount of rows of the textarea.
+          * The number of rows of the textarea.
          */
         "rows"?: number;
-        /**
-          * Show or hide max character count.
-         */
-        "showCounter"?: boolean;
         /**
           * Specifies whether the input should have its spelling and grammar checked
          */
@@ -6250,6 +6689,8 @@ declare namespace LocalJSX {
         "p-inline-notification": PInlineNotification;
         "p-input-number": PInputNumber;
         "p-input-password": PInputPassword;
+        "p-input-search": PInputSearch;
+        "p-input-text": PInputText;
         "p-link": PLink;
         "p-link-pure": PLinkPure;
         "p-link-social": PLinkSocial;
@@ -6382,6 +6823,8 @@ declare module "@stencil/core" {
             "p-inline-notification": LocalJSX.PInlineNotification & JSXBase.HTMLAttributes<HTMLPInlineNotificationElement>;
             "p-input-number": LocalJSX.PInputNumber & JSXBase.HTMLAttributes<HTMLPInputNumberElement>;
             "p-input-password": LocalJSX.PInputPassword & JSXBase.HTMLAttributes<HTMLPInputPasswordElement>;
+            "p-input-search": LocalJSX.PInputSearch & JSXBase.HTMLAttributes<HTMLPInputSearchElement>;
+            "p-input-text": LocalJSX.PInputText & JSXBase.HTMLAttributes<HTMLPInputTextElement>;
             "p-link": LocalJSX.PLink & JSXBase.HTMLAttributes<HTMLPLinkElement>;
             "p-link-pure": LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
             /**
