@@ -655,7 +655,7 @@ test.describe('sticky footer', () => {
     await footer.evaluate((el) => (el.style.visibility = 'hidden'));
 
     await expect(footer).toBeHidden();
-    await expect(footer).toHaveCSS('boxShadow', '');
+    await expect(footer).toHaveCSS('box-shadow', '');
 
     await host.evaluate((el) => {
       const content = document.createElement('div');
@@ -667,7 +667,7 @@ test.describe('sticky footer', () => {
     await waitForStencilLifecycle(page);
 
     await expect(footer).toBeVisible();
-    await expect(footer).toHaveCSS('boxShadow', expectedBoxShadow);
+    await expect(footer).toHaveCSS('box-shadow', expectedBoxShadow);
   });
 });
 
