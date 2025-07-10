@@ -10191,6 +10191,12 @@ exports[`should match snapshot 1`] = `
         "description": "Specifies whether the input can be autofilled by the browser",
         "type": "TextareaAutoComplete",
       },
+      "counter": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Show or hide the character counter.",
+        "type": "boolean",
+      },
       "description": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -10289,12 +10295,6 @@ exports[`should match snapshot 1`] = `
         "defaultValue": 7,
         "description": "The number of rows of the textarea.",
         "type": "number",
-      },
-      "showCounter": {
-        "allowedValues": "boolean",
-        "defaultValue": true,
-        "description": "Show or hide max character count.",
-        "type": "boolean",
       },
       "spellCheck": {
         "allowedValues": "boolean",

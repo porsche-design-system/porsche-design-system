@@ -2565,6 +2565,10 @@ export namespace Components {
          */
         "autoComplete"?: TextareaAutoComplete;
         /**
+          * Show or hide the character counter.
+         */
+        "counter"?: boolean;
+        /**
           * The description text.
          */
         "description"?: string;
@@ -2620,10 +2624,6 @@ export namespace Components {
           * The number of rows of the textarea.
          */
         "rows"?: number;
-        /**
-          * Show or hide max character count.
-         */
-        "showCounter"?: boolean;
         /**
           * Specifies whether the input should have its spelling and grammar checked
          */
@@ -6486,6 +6486,10 @@ declare namespace LocalJSX {
          */
         "autoComplete"?: TextareaAutoComplete;
         /**
+          * Show or hide the character counter.
+         */
+        "counter"?: boolean;
+        /**
           * The description text.
          */
         "description"?: string;
@@ -6553,10 +6557,6 @@ declare namespace LocalJSX {
           * The number of rows of the textarea.
          */
         "rows"?: number;
-        /**
-          * Show or hide max character count.
-         */
-        "showCounter"?: boolean;
         /**
           * Specifies whether the input should have its spelling and grammar checked
          */
