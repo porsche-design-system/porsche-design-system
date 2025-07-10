@@ -31,8 +31,8 @@
     "react-imask": "^7.6.1",
     "react-router-dom": "^7.1.1",
     "styled-components": "^6.1.13",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@porsche-design-system/assets": "5.0.2",
