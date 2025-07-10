@@ -102,6 +102,7 @@ jobs:
             ./packages/components-react/src/pages/generated/
             ./packages/components-react/projects/nextjs/.next/
             ./packages/components-react/projects/remix/build/
+            ./packages/components-react/projects/remix/public/build/
             ./packages/components-vue/projects/vue-wrapper/src/lib/
             ./packages/component-meta/src/lib/componentMeta.ts
             ./packages/shared/src/lib/
@@ -188,6 +189,7 @@ jobs:
             ./packages/components-react/src/pages/generated/
             ./packages/components-react/projects/nextjs/.next/
             ./packages/components-react/projects/remix/build/
+            ./packages/components-react/projects/remix/public/build/
             ./packages/components-vue/projects/vue-wrapper/src/lib/
             ./packages/component-meta/src/lib/componentMeta.ts
             ./packages/shared/src/lib/
