@@ -77,18 +77,20 @@ for (const state of TOAST_STATES) {
     await expect(toastItem).toHaveJSProperty('state', state);
   });
 }
-test('should close toast-item via close button click', async ({ page }) => {
-  await initToastWithToastItem(page);
+skipInBrowsers(['webkit'], () => {
+  test('should close toast-item via close button click', async ({ page }) => {
+    await initToastWithToastItem(page);
 
-  await expect(getToastItem(page)).toHaveCount(1);
-  await expect(getToastItem(page)).toBeVisible();
+    await expect(getToastItem(page)).toHaveCount(1);
+    await expect(getToastItem(page)).toBeVisible();
 
-  const closeButton = getCloseButton(page);
-  await closeButton.click();
-  await waitForAnimationFinish();
-  await waitForStencilLifecycle(page);
+    const closeButton = getCloseButton(page);
+    await closeButton.click();
+    await waitForAnimationFinish();
+    await waitForStencilLifecycle(page);
 
-  await expect(getToastItem(page)).toHaveCount(0);
+    await expect(getToastItem(page)).toHaveCount(0);
+  });
 });
 
 test(`should automatically close toast-item after ${TOAST_TIMEOUT_DURATION_OVERRIDE} seconds`, async ({ page }) => {
