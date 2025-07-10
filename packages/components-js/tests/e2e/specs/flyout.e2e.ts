@@ -182,21 +182,17 @@ test('should be visible after opened', async ({ page }) => {
 
 test('should have correct transform when opened and dismissed', async ({ page }) => {
   await initBasicFlyout(page, { open: false });
-  const getFlyoutTransform = async (page: Page) =>
-    getElementStyle(getFlyoutScroller(page), 'transform', { waitForTransition: true });
+  const initialFlyoutTransform = `matrix(1, 0, 0, 1, ${flyoutMinWidth}, 0)`;
 
-  const initialFlyoutTransform = await getFlyoutTransform(page);
-  expect(initialFlyoutTransform).toBe(`matrix(1, 0, 0, 1, ${flyoutMinWidth}, 0)`);
+  await expect(getFlyoutScroller(page)).toHaveCSS('transform', initialFlyoutTransform);
 
   await openFlyout(page);
 
-  const openFlyoutTransform = await getFlyoutTransform(page);
-  expect(openFlyoutTransform).toBe('none');
-  expect(initialFlyoutTransform).not.toBe(openFlyoutTransform);
+  await expect(getFlyoutScroller(page)).toHaveCSS('transform', 'none');
 
   await dismissFlyout(page);
-  const finalFlyoutTransform = await getFlyoutTransform(page);
-  expect(finalFlyoutTransform).toBe(initialFlyoutTransform);
+
+  await expect(getFlyoutScroller(page)).toHaveCSS('transform', initialFlyoutTransform);
 });
 
 test.describe('scroll shadows', () => {
