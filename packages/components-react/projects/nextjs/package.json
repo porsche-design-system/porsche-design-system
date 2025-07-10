@@ -26,8 +26,8 @@
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@types/react": "^19.0.2",
-    "@types/react-dom": "^19.0.2",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
     "globby-legacy": "npm:globby@^11.0.4"
   },
   "peerDependencies": {

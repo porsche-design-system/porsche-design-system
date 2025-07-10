@@ -50,7 +50,7 @@
     "@stencil/core": "~4.23.0"
   },
   "devDependencies": {
-    "@types/react": "^19.0.2",
+    "@types/react": "^19.1.8",
     "change-case": "^5.4.4",
     "change-case-legacy": "npm:change-case@^4.1.2",
     "construct-style-sheets-polyfill": "^3.1.0",
