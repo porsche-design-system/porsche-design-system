@@ -6,8 +6,7 @@
   - button "Close navigation sidebar" [expanded]
   - status
   - heading "Title" [level=2]:
-    - link "Title":
-      - /url: "#"
+    - link "Title"
   - text: Sidebar Start Sidebar Start
 - main: Content Content
 - complementary "Settings sidebar open":

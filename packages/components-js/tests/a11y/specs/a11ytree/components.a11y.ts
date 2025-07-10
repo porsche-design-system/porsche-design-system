@@ -1,26 +1,14 @@
-import type { Page } from '@playwright/test';
 import { componentsValid, expect, test } from '../../helpers';
 import { setupScenario } from '../../../vrt/helpers';
 import { viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt';
 
-const components = componentsValid;
-
-// VRT pages making use of iFrames can't reliably ensure which iframe is loaded last
-// and therefore can't be sure which autofocus gets triggered
-const revertAutoFocus = async (page: Page, component: string): Promise<void> => {
-  if (['drilldown', 'flyout'].includes(component)) {
-    await page.mouse.click(0, 0); // click top left corner of the page to remove focus
-  }
-};
-
-const amountOfTestableComponents = 54;
-
-test('should have certain amount of components', () => {
-  expect(components.length).toBe(amountOfTestableComponents);
+const pagesToTest = componentsValid.filter((item) => {
+  return item !== 'flyout'; // removes 'flyout' as it is not available as a page
 });
+const additionalPages = ['flyout-1', 'multi-select-opened-bottom', 'select-opened-bottom']; // add additional pages that are not in componentsValid
+const advancedPagesToTest = [...pagesToTest, ...additionalPages];
 
-// TODO: remove filter once the height issue is fixed (issue/#3687)
-for (const component of components) {
+for (const component of advancedPagesToTest) {
   // executed in Chrome only
   test.describe(component, async () => {
     test.skip(({ browserName }) => browserName !== 'chromium');
@@ -28,9 +16,14 @@ for (const component of components) {
     // A11Y Tree Snapshot Tests
     test('should match a11y tree', async ({ page }) => {
       await setupScenario(page, `/${component}`, viewportWidthM);
-      await revertAutoFocus(page, component);
 
-      const getComponentTagName = `p-${component}`;
+      let selector = component;
+
+      // maps pages which aren't equal with component names
+      if (!componentsValid.includes(component)) {
+        selector = componentsValid.find((item) => component.includes(item));
+      }
+      const getComponentTagName = `p-${selector}`;
 
       let index = 0;
       for (const element of await page.locator('.a11ytree-snapshot-test').all()) {
@@ -38,7 +31,7 @@ for (const component of components) {
         const locator = isIframe ? element.frameLocator('iframe').locator(getComponentTagName) : element;
 
         await expect(locator).toMatchAriaSnapshot({
-          name: `p-${component}-variant-${index++}.aria.yml`,
+          name: `p-${component}-${index++}.aria.yml`,
         });
       }
     });
