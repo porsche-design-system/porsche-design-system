@@ -81,6 +81,7 @@ test('should close toast-item via close button click', async ({ page }) => {
   await initToastWithToastItem(page);
 
   await expect(getToastItem(page)).toHaveCount(1);
+  await expect(getToastItem(page)).toBeVisible();
 
   const closeButton = getCloseButton(page);
   await closeButton.click();
@@ -94,6 +95,7 @@ test(`should automatically close toast-item after ${TOAST_TIMEOUT_DURATION_OVERR
   await initToastWithToastItem(page);
 
   await expect(getToastItem(page)).toHaveCount(1);
+  await expect(getToastItem(page)).toBeVisible();
 
   await waitForToastTimeout(page);
 
