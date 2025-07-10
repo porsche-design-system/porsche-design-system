@@ -61,6 +61,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-development
+          include-hidden-files: true
           path: |
             ./packages/storefront/dist/
             ./packages/storefront/projects/stackblitz/dist/
