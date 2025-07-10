@@ -810,8 +810,6 @@ test.describe('lifecycle', () => {
     await addHeaderSlot(host);
     await waitForStencilLifecycle(page);
 
-    const statusAfter = await getLifecycleStatus(page);
-
     await expect
       .poll(
         async () => {
