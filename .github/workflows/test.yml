@@ -324,6 +324,8 @@ jobs:
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
+      - name: 'Log restored artifact contents'
+        run: ls -la
       - name: 'E2E'
         run: yarn test:e2e:components-react/nextjs
       - name: 'VRT'
