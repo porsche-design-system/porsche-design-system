@@ -1,5 +1,7 @@
-import type { Page } from 'playwright';
 import { expect, test } from '@playwright/test';
+import type { ToastMessage } from '@porsche-design-system/components';
+import { TOAST_STATES } from '@porsche-design-system/components/src/components/toast/toast/toast-utils';
+import type { Page } from 'playwright';
 import {
   getAttribute,
   getElementStyle,
@@ -11,8 +13,6 @@ import {
   sleep,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { ToastMessage } from '@porsche-design-system/components';
-import { TOAST_STATES } from '@porsche-design-system/components/src/components/toast/toast/toast-utils';
 
 const TOAST_TIMEOUT_DURATION_OVERRIDE = 1000;
 const ANIMATION_DURATION = 600;
@@ -74,13 +74,13 @@ for (const state of TOAST_STATES) {
     await initToastWithToastItem(page, { state });
 
     const toastItem = getToastItem(page);
-    expect(await getProperty(toastItem, 'state')).toBe(state);
+    await expect(toastItem).toHaveJSProperty('state', state);
   });
 }
 test('should close toast-item via close button click', async ({ page }) => {
   await initToastWithToastItem(page);
 
-  expect(getToastItem(page)).toBeDefined();
+  await expect(getToastItem(page)).toHaveCount(1);
 
   const closeButton = getCloseButton(page);
   await closeButton.click();
@@ -93,7 +93,7 @@ test('should close toast-item via close button click', async ({ page }) => {
 test(`should automatically close toast-item after ${TOAST_TIMEOUT_DURATION_OVERRIDE} seconds`, async ({ page }) => {
   await initToastWithToastItem(page);
 
-  expect(getToastItem(page)).toBeDefined();
+  await expect(getToastItem(page)).toHaveCount(1);
 
   await waitForToastTimeout(page);
 
@@ -107,11 +107,11 @@ test('should always show the latest toast message and clear queue immediately if
   await addMessage(page, { text: '2' });
   await waitForAnimationFinish();
 
-  expect(await getProperty(getToastItem(page), 'text')).toBe('2');
+  await expect(getToastItem(page)).toHaveJSProperty('text', '2');
 
   await addMessage(page, { text: '3' });
   await waitForAnimationFinish();
-  expect(await getProperty(getToastItem(page), 'text')).toBe('3');
+  await expect(getToastItem(page)).toHaveJSProperty('text', '3');
 });
 
 test.describe('lifecycle', () => {

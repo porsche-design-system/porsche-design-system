@@ -753,7 +753,6 @@ test.describe('lifecycle', () => {
   test('should update when adding named slot', async ({ page }) => {
     await initBasicModal(page);
     const host = getHost(page);
-    const status = await getLifecycleStatus(page);
 
     await expect
       .poll(
@@ -808,8 +807,6 @@ test.describe('lifecycle', () => {
       el.appendChild(header);
     });
     await waitForStencilLifecycle(page);
-
-    const statusAfter = await getLifecycleStatus(page);
 
     await expect
       .poll(
