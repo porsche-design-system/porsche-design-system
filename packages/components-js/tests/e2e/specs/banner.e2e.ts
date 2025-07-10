@@ -199,11 +199,61 @@ test.describe('lifecycle', () => {
 
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidUpdate['p-banner'], 'componentDidUpdate: p-banner').toBe(1);
-    expect(status.componentDidUpdate['p-inline-notification'], 'componentDidUpdate: p-inline-notification').toBe(1);
-    expect(status.componentDidUpdate['p-icon'], 'componentDidUpdate: p-icon').toBe(1);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate['p-banner'];
+        },
+        {
+          message: 'componentDidUpdate: p-banner',
+        }
+      )
+      .toBe(1);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate['p-inline-notification'];
+        },
+        {
+          message: 'componentDidUpdate: p-inline-notification',
+        }
+      )
+      .toBe(1);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate['p-icon'];
+        },
+        {
+          message: 'componentDidUpdate: p-icon',
+        }
+      )
+      .toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidLoad.all;
+        },
+        {
+          message: 'componentDidLoad: all',
+        }
+      )
+      .toBe(5);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate.all;
+        },
+        {
+          message: 'componentDidUpdate: all',
+        }
+      )
+      .toBe(3);
   });
 });
