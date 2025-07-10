@@ -655,7 +655,7 @@ test.describe('sticky footer', () => {
     await footer.evaluate((el) => (el.style.visibility = 'hidden'));
 
     await expect(footer).toBeHidden();
-    await expect(footer).toHaveCSS('box-shadow', '');
+    await expect(footer).toHaveCSS('box-shadow', 'none');
 
     await host.evaluate((el) => {
       const content = document.createElement('div');
