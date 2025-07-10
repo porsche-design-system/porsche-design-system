@@ -29,7 +29,7 @@ const getHeader = (page: Page) => page.locator('p-flyout slot[name="header"]');
 const getFooter = (page: Page) => page.locator('p-flyout slot[name="footer"]');
 const getFlyoutDismissButton = (page: Page) => page.locator('p-flyout .dismiss');
 const getFlyoutDismissButtonReal = (page: Page) => page.locator('p-flyout .dismiss button');
-const getBodyStyle = async (page: Page) => getAttribute(page.locator('body'), 'style');
+const getBody = (page: Page) => page.locator('body');
 const getFlyoutVisibility = async (page: Page) => await getElementStyle(getFlyout(page), 'visibility');
 const waitForFlyoutTransition = async () => sleep(CSS_TRANSITION_DURATION);
 const waitForSlotChange = () => sleep();
@@ -589,35 +589,37 @@ test('should open flyout at scroll top position zero when its content is scrolla
 });
 
 test.describe('scroll lock', () => {
-  const bodyLockedStyle = 'overflow: hidden;';
-
   test('should prevent page from scrolling when open', async ({ page }) => {
     await initBasicFlyout(page, { open: false });
-    expect(await getBodyStyle(page)).toBe(null);
+    const body = getBody(page);
+
+    await expect(body).toHaveCSS('overflow', 'visible');
 
     await openFlyout(page);
-    expect(await getBodyStyle(page)).toBe(bodyLockedStyle);
+    await expect(body).toHaveCSS('overflow', 'hidden');
 
     await setProperty(getHost(page), 'open', false);
-    await waitForStencilLifecycle(page);
-    expect(await getBodyStyle(page)).toBe('');
+
+    await expect(body).toHaveCSS('overflow', 'visible');
   });
 
   test('should prevent page from scrolling when initially open', async ({ page }) => {
     await initBasicFlyout(page, { open: true });
-    expect(await getBodyStyle(page)).toBe(bodyLockedStyle);
+    const body = getBody(page);
+    await expect(body).toHaveCSS('overflow', 'hidden');
   });
 
   test('should remove overflow hidden from body if unmounted', async ({ page }) => {
     await initBasicFlyout(page, { open: true });
-    expect(await getBodyStyle(page)).toBe(bodyLockedStyle);
+    const body = getBody(page);
+    await expect(body).toHaveCSS('overflow', 'hidden');
 
     await page.evaluate(() => {
       document.querySelector('p-flyout').remove();
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getBodyStyle(page)).toBe('');
+    await expect(body).toHaveCSS('overflow', 'visible');
   });
 });
 
@@ -639,24 +641,91 @@ test.describe('lifecycle', () => {
 
     await setProperty(host, 'open', false);
     await waitForStencilLifecycle(page);
-    const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidUpdate['p-flyout'], 'componentDidUpdate: p-flyout').toBe(1);
-
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate['p-flyout'];
+        },
+        {
+          message: 'componentDidUpdate: p-flyout',
+        }
+      )
+      .toBe(1);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidLoad.all;
+        },
+        {
+          message: 'componentDidLoad: all',
+        }
+      )
+      .toBe(3);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate.all;
+        },
+        {
+          message: 'componentDidUpdate: all',
+        }
+      )
+      .toBe(1);
   });
 
   test('should work without unnecessary round trips after deeply nested slot content change', async ({ page }) => {
     await initBasicFlyout(page, { open: true }, { header: '<div slot="header">Some content</div>' });
     const host = getHost(page);
-    const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidLoad['p-flyout'], 'componentDidLoad: p-flyout').toBe(1);
-    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1); // includes p-icon
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidLoad['p-flyout'];
+        },
+        {
+          message: 'componentDidLoad: p-flyout',
+        }
+      )
+      .toBe(1);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidLoad['p-button'];
+        },
+        {
+          message: 'componentDidLoad: p-button',
+        }
+      )
+      .toBe(1); // includes p-icon
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidLoad.all;
+        },
+        {
+          message: 'componentDidLoad: all',
+        }
+      )
+      .toBe(3);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate.all;
+        },
+        {
+          message: 'componentDidUpdate: all',
+        }
+      )
+      .toBe(0);
 
     await host.evaluate((el) => {
       const header = el.querySelector('[slot="header"]');
@@ -664,30 +733,107 @@ test.describe('lifecycle', () => {
     });
     await waitForStencilLifecycle(page);
 
-    const statusAfter = await getLifecycleStatus(page);
-
-    expect(statusAfter.componentDidUpdate['p-flyout'], 'componentDidUpdate: p-flyout').toBe(0);
-    expect(statusAfter.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate['p-flyout'];
+        },
+        {
+          message: 'componentDidUpdate: p-flyout',
+        }
+      )
+      .toBe(0);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate.all;
+        },
+        {
+          message: 'componentDidUpdate: all',
+        }
+      )
+      .toBe(0);
   });
 
   test('should update when adding named slot', async ({ page }) => {
     await initBasicFlyout(page);
     const host = getHost(page);
-    const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidLoad['p-flyout'], 'componentDidLoad: p-flyout').toBe(1);
-    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1); // includes p-icon
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidLoad['p-flyout'];
+        },
+        {
+          message: 'componentDidLoad: p-flyout',
+        }
+      )
+      .toBe(1);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidLoad['p-button'];
+        },
+        {
+          message: 'componentDidLoad: p-button',
+        }
+      )
+      .toBe(1); // includes p-icon
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidLoad.all;
+        },
+        {
+          message: 'componentDidLoad: all',
+        }
+      )
+      .toBe(3);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate.all;
+        },
+        {
+          message: 'componentDidUpdate: all',
+        }
+      )
+      .toBe(0);
 
     await addHeaderSlot(host);
     await waitForStencilLifecycle(page);
 
     const statusAfter = await getLifecycleStatus(page);
 
-    expect(statusAfter.componentDidUpdate['p-flyout'], 'componentDidUpdate: p-flyout').toBe(1);
-    expect(statusAfter.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate['p-flyout'];
+        },
+        {
+          message: 'componentDidUpdate: p-flyout',
+        }
+      )
+      .toBe(1);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate.all;
+        },
+        {
+          message: 'componentDidUpdate: all',
+        }
+      )
+      .toBe(1);
   });
 });
 
