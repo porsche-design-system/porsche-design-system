@@ -172,6 +172,8 @@
     "test:vrt:components-js:chrome:3/4": "yarn --cwd ./packages/components-js test:vrt:chrome:3/4",
     "test:vrt:components-js:chrome:4/4": "yarn --cwd ./packages/components-js test:vrt:chrome:4/4",
     "test:vrt:components-js:safari": "yarn --cwd ./packages/components-js test:vrt:safari",
+    "test:vrt:components-js:safari:1/2": "yarn --cwd ./packages/components-js test:vrt:safari:1/2",
+    "test:vrt:components-js:safari:2/2": "yarn --cwd ./packages/components-js test:vrt:safari:2/2",
     "test:vrt:components-angular": "yarn --cwd ./packages/components-angular test:vrt",
     "test:vrt:components-react": "yarn --cwd ./packages/components-react test:vrt",
     "test:vrt:components-react/nextjs": "yarn --cwd ./packages/components-react/projects/nextjs test:vrt",

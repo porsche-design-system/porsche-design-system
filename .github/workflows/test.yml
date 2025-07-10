@@ -221,6 +221,11 @@ jobs:
     container:
       image: ${{ inputs.image }}
       options: --user 1001
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2 ]
+        shardTotal: [ 2 ]
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -229,12 +234,12 @@ jobs:
       - name: 'Restore'
         uses: ./.github/actions/restore
       - name: 'VRT'
-        run: yarn test:vrt:components-js:safari
+        run: yarn test:vrt:components-js:safari:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: regression-components-js-vrt-playwright-safari
+          name: regression-components-js-vrt-playwright-safari-${{ matrix.shardIndex }}
           path: ./packages/components-js/tests/vrt/results
   components-angular:
     name: 'Components Angular'

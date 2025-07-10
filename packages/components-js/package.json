@@ -62,6 +62,8 @@
     "test:vrt:chrome:3/4": "yarn test:vrt:chrome --shard=3/4",
     "test:vrt:chrome:4/4": "yarn test:vrt:chrome --shard=4/4",
     "test:vrt:safari": "yarn test:vrt --project=safari",
+    "test:vrt:safari:1/2": "yarn test:vrt:safari --shard=1/2",
+    "test:vrt:safari:2/2": "yarn test:vrt:safari --shard=2/2",
     "posttest:vrt": "yarn test:vrt:prepare-regression-snapshots",
     "posttest:vrt:chrome": "yarn test:vrt:prepare-regression-snapshots",
     "posttest:vrt:chrome:1/4": "yarn test:vrt:prepare-regression-snapshots",
