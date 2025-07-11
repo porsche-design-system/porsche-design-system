@@ -1,15 +1,4 @@
-import {
-  AttachInternals,
-  Component,
-  Element,
-  Event,
-  type EventEmitter,
-  Fragment,
-  type JSX,
-  Prop,
-  Watch,
-  h,
-} from '@stencil/core';
+import { AttachInternals, Component, Element, Event, type EventEmitter, type JSX, Prop, Watch, h } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
@@ -37,11 +26,11 @@ const propTypes: PropTypes<typeof InputEmail> = {
   placeholder: AllowedTypes.string,
   name: AllowedTypes.string,
   value: AllowedTypes.string,
-  spellCheck: AllowedTypes.boolean,
-  counter: AllowedTypes.boolean,
+  multiple: AllowedTypes.boolean,
   required: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
+  pattern: AllowedTypes.string,
   maxLength: AllowedTypes.number,
   minLength: AllowedTypes.number,
   form: AllowedTypes.string,
@@ -72,9 +61,6 @@ export class InputEmail {
 
   /** The label text. */
   @Prop() public label?: string = '';
-
-  /** Indicate whether to enable spell-checking. */
-  @Prop() public spellCheck?: boolean;
 
   /** The description text. */
   @Prop() public description?: string = '';
@@ -132,8 +118,11 @@ export class InputEmail {
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  /** Show or hide the character counter. */
-  @Prop() public counter?: boolean = false;
+  /** A boolean value that, if present, it allows the user to enter a list of multiple email addresses, separated by commas (and optional whitespace). The browser will validate each email address in the list. */
+  @Prop() public multiple?: boolean = false;
+
+  /** Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific email validation rules than the browser's default (e.g., restricting to a specific domain). If provided, it overrides the browser's default email validation. */
+  @Prop() public pattern?: string;
 
   /** Emitted when the text input loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<InputEmailChangeEventDetail>;
@@ -206,8 +195,7 @@ export class InputEmail {
       this.state,
       this.compact,
       this.readOnly,
-      this.theme,
-      this.counter
+      this.theme
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -237,25 +225,12 @@ export class InputEmail {
         state={this.state}
         message={this.message}
         theme={this.theme}
-        spellCheck={this.spellCheck}
         loading={this.loading}
+        pattern={this.pattern}
+        multiple={this.multiple}
         initialLoading={this.initialLoading}
         {...(this.indicator && {
           start: <PrefixedTagNames.pIcon aria-hidden="true" name="email" color="state-disabled" theme={this.theme} />,
-        })}
-        {...(this.counter && {
-          end: (
-            <Fragment>
-              <span class="sr-only" aria-live="polite">
-                {this.maxLength
-                  ? `You have ${this.maxLength - this.value.length} out of ${this.maxLength} characters left`
-                  : `${this.value.length} characters entered`}
-              </span>
-              <span class="counter" aria-hidden="true" onClick={() => this.inputElement.focus()}>
-                {this.maxLength ? `${this.value.length}/${this.maxLength}` : `${this.value.length}`}
-              </span>
-            </Fragment>
-          ),
         })}
       />
     );

@@ -35,6 +35,8 @@ type InputBaseProps = {
   max?: number;
   min?: number;
   autoComplete?: string;
+  pattern?: string;
+  multiple?: boolean;
   type: string;
   value?: string;
   step?: number;
@@ -72,6 +74,8 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
   step,
   spellCheck,
   autoComplete,
+  pattern,
+  multiple,
   name,
   onInput,
   onWheel,
@@ -123,6 +127,8 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
           readonly={readOnly}
           autocomplete={autoComplete}
           disabled={disabled}
+          pattern={pattern}
+          multiple={multiple}
         />
         {end}
         <slot name="end" />

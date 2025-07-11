@@ -2,7 +2,6 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import { getCss } from '../../utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getFunctionalComponentInputBaseStyles } from '../common/input-base/input-base-styles';
-import { getUnitCounterJssStyle } from '../../styles/form-styles';
 import { getHiddenTextJssStyle } from '../../styles';
 
 // CSS Variables defined in base input
@@ -20,8 +19,7 @@ export const getComponentCss = (
   state: FormState,
   compact: boolean,
   readOnly: boolean,
-  theme: Theme,
-  counter: boolean
+  theme: Theme
 ): string => {
   return getCss({
     ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, theme, {
@@ -29,12 +27,6 @@ export const getComponentCss = (
       MozAppearance: 'textfield',
       '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
         WebkitAppearance: 'none',
-      },
-    }),
-    ...(counter && {
-      counter: {
-        ...getUnitCounterJssStyle(disabled, readOnly, theme),
-        cursor: 'text',
       },
     }),
     'sr-only': getHiddenTextJssStyle(),

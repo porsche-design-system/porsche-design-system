@@ -1068,10 +1068,6 @@ export namespace Components {
          */
         "compact"?: boolean;
         /**
-          * Show or hide the character counter.
-         */
-        "counter"?: boolean;
-        /**
           * The description text.
          */
         "description"?: string;
@@ -1112,9 +1108,17 @@ export namespace Components {
          */
         "minLength"?: number;
         /**
+          * A boolean value that, if present, it allows the user to enter a list of multiple email addresses, separated by commas (and optional whitespace). The browser will validate each email address in the list.
+         */
+        "multiple"?: boolean;
+        /**
           * The name of the text input.
          */
         "name": string;
+        /**
+          * Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific email validation rules than the browser's default (e.g., restricting to a specific domain). If provided, it overrides the browser's default email validation.
+         */
+        "pattern"?: string;
         /**
           * The placeholder text.
          */
@@ -1127,10 +1131,6 @@ export namespace Components {
           * Marks the text input as required.
          */
         "required"?: boolean;
-        /**
-          * Indicate whether to enable spell-checking.
-         */
-        "spellCheck"?: boolean;
         /**
           * The validation state.
          */
@@ -4943,10 +4943,6 @@ declare namespace LocalJSX {
          */
         "compact"?: boolean;
         /**
-          * Show or hide the character counter.
-         */
-        "counter"?: boolean;
-        /**
           * The description text.
          */
         "description"?: string;
@@ -4987,6 +4983,10 @@ declare namespace LocalJSX {
          */
         "minLength"?: number;
         /**
+          * A boolean value that, if present, it allows the user to enter a list of multiple email addresses, separated by commas (and optional whitespace). The browser will validate each email address in the list.
+         */
+        "multiple"?: boolean;
+        /**
           * The name of the text input.
          */
         "name"?: string;
@@ -5003,6 +5003,10 @@ declare namespace LocalJSX {
          */
         "onInput"?: (event: PInputEmailCustomEvent<InputEmailInputEventDetail>) => void;
         /**
+          * Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific email validation rules than the browser's default (e.g., restricting to a specific domain). If provided, it overrides the browser's default email validation.
+         */
+        "pattern"?: string;
+        /**
           * The placeholder text.
          */
         "placeholder"?: string;
@@ -5014,10 +5018,6 @@ declare namespace LocalJSX {
           * Marks the text input as required.
          */
         "required"?: boolean;
-        /**
-          * Indicate whether to enable spell-checking.
-         */
-        "spellCheck"?: boolean;
         /**
           * The validation state.
          */
