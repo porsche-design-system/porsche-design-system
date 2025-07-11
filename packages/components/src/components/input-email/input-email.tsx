@@ -207,7 +207,6 @@ export class InputEmail {
         description={this.description}
         id="input-email"
         refElement={(el: HTMLInputElement) => (this.inputElement = el)}
-        onWheel={(e) => (e.target as HTMLInputElement).blur()} // prevent React default scroll-to-[increment|decrement] on text inputs
         onInput={this.onInput}
         onChange={this.onChange}
         onBlur={this.onBlur}

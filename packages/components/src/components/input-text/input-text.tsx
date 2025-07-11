@@ -205,7 +205,6 @@ export class InputText {
         description={this.description}
         id="input-text"
         refElement={(el: HTMLInputElement) => (this.inputElement = el)}
-        onWheel={(e) => (e.target as HTMLInputElement).blur()} // prevent React default scroll-to-[increment|decrement] on text inputs
         onInput={this.onInput}
         onChange={this.onChange}
         onBlur={this.onBlur}
@@ -264,4 +263,3 @@ export class InputText {
     this.input.emit(e);
   };
 }
-
