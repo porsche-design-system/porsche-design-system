@@ -126,6 +126,7 @@ import { HeadingComponent } from './generated/heading.component';
 import { HeadlineComponent } from './generated/headline.component';
 import { IconComponent } from './generated/icon.component';
 import { InlineNotificationComponent } from './generated/inline-notification.component';
+import { InputEmailComponent } from './generated/input-email.component';
 import { InputNumberComponent } from './generated/input-number.component';
 import { InputPasswordComponent } from './generated/input-password.component';
 import { InputSearchComponent } from './generated/input-search.component';
@@ -338,6 +339,7 @@ export const generatedPages = [
   HeadlineComponent,
   IconComponent,
   InlineNotificationComponent,
+  InputEmailComponent,
   InputNumberComponent,
   InputPasswordComponent,
   InputSearchComponent,
@@ -925,6 +927,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Inline Notification',
     path: 'inline-notification',
     component: InlineNotificationComponent,
+  },
+  {
+    name: 'Input Email',
+    path: 'input-email',
+    component: InputEmailComponent,
   },
   {
     name: 'Input Number',
