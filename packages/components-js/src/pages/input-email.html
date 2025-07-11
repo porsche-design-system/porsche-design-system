@@ -20,8 +20,8 @@
   }
 </style>
 
-<div class="playground light" title="should render with label">
-  <p-input-email name="some-name" label="Label" value="some-value" counter="true" max-length="20"></p-input-email>
+<div class="playground light" title="should render with label, default value and indicator">
+  <p-input-email name="some-name" label="Label" value="example@porsche.de" indicator="true" max-length="20"></p-input-email>
 </div>
 
 <div class="playground light" title="should render with label and placeholder">
@@ -29,7 +29,7 @@
     name="some-name"
     label="Label with placeholder"
     placeholder="Some placeholder"
-    counter="true"
+    indicator="true"
     max-length="20"
   ></p-input-email>
 </div>
@@ -40,17 +40,13 @@
     label="Label with description and placeholder"
     description="Some description"
     placeholder="Some placeholder"
-    counter="true"
+    indicator="true"
     max-length="20"
   ></p-input-email>
 </div>
 
 <div class="playground light" title="should render with loading indicator">
-  <p-input-email
-    name="some-name"
-    label="Some label"
-    loading="true"
-  ></p-input-email>
+  <p-input-email name="some-name" label="Some label" loading="true"></p-input-email>
 </div>
 
 <div class="playground light" title="should render without label and without description">
@@ -60,7 +56,7 @@
     description="Some description"
     hide-label="true"
     value="Without label and description"
-    counter="true"
+    indicator="true"
     max-length="20"
   ></p-input-email>
 </div>
@@ -72,18 +68,18 @@
     description="Some description"
     hide-label="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
     value="Responsive label and description"
-    counter="true"
+    indicator="true"
     max-length="20"
   ></p-input-email>
 </div>
 
 <div class="playground light" title="should render in required state">
-  <p-input-email name="some-name" label="Required" required="true" counter="true" max-length="20"></p-input-email>
+  <p-input-email name="some-name" label="Required" required="true" indicator="true" max-length="20"></p-input-email>
   <p-input-email
     name="some-name"
     label="Required and insanely super long label across multiple lines"
     required="true"
-    counter="true"
+    indicator="true"
     max-length="20"
   ></p-input-email>
 </div>
@@ -93,9 +89,9 @@
     name="some-name"
     label="Disabled"
     description="Some description"
-    value="some-value"
+    value="example@porsche.de"
     disabled="true"
-    counter="true"
+    indicator="true"
     max-length="20"
   ></p-input-email>
 </div>
@@ -106,7 +102,7 @@
     label="Disabled placeholder"
     disabled="true"
     placeholder="Some placeholder"
-    counter="true"
+    indicator="true"
     max-length="20"
   ></p-input-email>
 </div>
@@ -116,19 +112,11 @@
     name="some-name"
     label="Readonly"
     description="Some description"
-    value="some-value"
+    value="example@porsche.de"
     read-only="true"
-    counter="true"
+    indicator="true"
     max-length="20"
   ></p-input-email>
-</div>
-
-<div class="playground light" title="should render with counter and without max-length">
-  <p-input-email name="some-name" label="Type counter=true & max-length=false" counter="true" value="some-value"></p-input-email>
-</div>
-
-<div class="playground light" title="should render without counter">
-  <p-input-email name="some-name" label="Type counter=false" max-length="20" value="some-value"></p-input-email>
 </div>
 
 <div class="playground light" title="should render with error state and error message">
@@ -137,13 +125,19 @@
     label="Error with message"
     state="error"
     message="Error message"
-    counter="true"
+    indicator="true"
     max-length="20"
   ></p-input-email>
 </div>
 
 <div class="playground light" title="should render with error state and no error message">
-  <p-input-email name="some-name" label="Error without message" state="error" counter="true" max-length="20"></p-input-email>
+  <p-input-email
+    name="some-name"
+    label="Error without message"
+    state="error"
+    indicator="true"
+    max-length="20"
+  ></p-input-email>
 </div>
 
 <div class="playground light" title="should render with success state and success message">
@@ -152,13 +146,19 @@
     label="Success with message"
     state="success"
     message="Success message"
-    counter="true"
+    indicator="true"
     max-length="20"
   ></p-input-email>
 </div>
 
 <div class="playground light" title="should render with success state and no success message">
-  <p-input-email name="some-name" label="Success without message" state="success" counter="true" max-length="20"></p-input-email>
+  <p-input-email
+    name="some-name"
+    label="Success without message"
+    state="success"
+    indicator="true"
+    max-length="20"
+  ></p-input-email>
 </div>
 
 <div class="playground light" title="should render with default state and no message">
@@ -167,13 +167,13 @@
     label="Default without message"
     state="none"
     message="this message should be hidden"
-    counter="true"
+    indicator="true"
     max-length="20"
   ></p-input-email>
 </div>
 
 <div class="playground light" title="should render label, description and message by slotted content with error state">
-  <p-input-email name="some-name" state="error" placeholder="Some placeholder" counter="true" max-length="20">
+  <p-input-email name="some-name" state="error" placeholder="Some placeholder" indicator="true" max-length="20">
     <span slot="label">
       <span>
         Slotted label. And some slotted and deeply nested <a class="text-primary" href="#">anchor</a>, <b>bold</b>,
@@ -199,7 +199,7 @@
   class="playground light"
   title="should render label, description and message by slotted content with success state"
 >
-  <p-input-email name="some-name" state="success" placeholder="Some placeholder" counter="true" max-length="20">
+  <p-input-email name="some-name" state="success" placeholder="Some placeholder" indicator="true" max-length="20">
     <span slot="label">
       <span>
         Slotted label. And some slotted and deeply nested <a class="text-primary" href="#">anchor</a>, <b>bold</b>,
@@ -230,27 +230,46 @@
     message="Multiline message at vero eos et accusam et justo duo dolores et ea rebum."
     style="max-width: 15rem"
     value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr,"
-    counter="true"
+    indicator="true"
     max-length="20"
   ></p-input-email>
 </div>
 
 <div class="playground light" title="should render with ellipsis and min-width in a smaller container">
   <div style="width: 0">
-    <p-input-email label="Some label" name="some-name" value="some-value" counter="true" max-length="20"></p-input-email>
-    <p-input-email label="Some label" name="some-name" value="some-value" counter="true" max-length="20"></p-input-email>
+    <p-input-email
+      label="Some label"
+      name="some-name"
+      value="example@porsche.de"
+      indicator="true"
+      max-length="20"
+    ></p-input-email>
+    <p-input-email
+      label="Some label"
+      name="some-name"
+      value="example@porsche.de"
+      indicator="true"
+      max-length="20"
+    ></p-input-email>
   </div>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render in compact mode">
-  <p-input-email label="Some label" compact="true" name="some-name" value="some-value" counter="true" max-length="20"></p-input-email>
   <p-input-email
     label="Some label"
     compact="true"
     name="some-name"
-    value="some-value"
+    value="example@porsche.de"
+    indicator="true"
+    max-length="20"
+  ></p-input-email>
+  <p-input-email
+    label="Some label"
+    compact="true"
+    name="some-name"
+    value="example@porsche.de"
     disabled="true"
-    counter="true"
+    indicator="true"
     max-length="20"
   ></p-input-email>
   <p-input-email
@@ -258,7 +277,7 @@
     label="Lorem ipsum dolor sit amet, consetetur sadipscing"
     style="width: 15rem"
     name="some-name"
-    counter="true"
+    indicator="true"
     max-length="20"
   ></p-input-email>
   <p-input-email
@@ -267,126 +286,107 @@
     state="success"
     message="Some success message."
     name="some-name"
-    counter="true"
+    indicator="true"
     max-length="20"
   ></p-input-email>
-  <p-input-email compact="true" label="Some label" name="some-name" counter="true" max-length="20">
+  <p-input-email compact="true" label="Some label" name="some-name" indicator="true" max-length="20">
     <p-button-pure slot="start" hide-label="true" icon="information" class="input-button">Some label</p-button-pure>
     <p-button-pure slot="end" hide-label="true" icon="close" class="input-button">Some label</p-button-pure>
   </p-input-email>
-  <p-input-email
-    label="Some label"
-    compact="true"
-    name="some-name"
-    loading="true"
-  ></p-input-email>
+  <p-input-email label="Some label" compact="true" name="some-name" loading="true"></p-input-email>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with scaling 0">
-  <p-input-email class="scaling-0" label="Some label" name="some-name" counter="true" max-length="20"></p-input-email>
+  <p-input-email class="scaling-0" label="Some label" name="some-name" indicator="true" max-length="20"></p-input-email>
   <p-input-email
     class="scaling-0"
     label="Lorem ipsum dolor sit amet, consetetur sadipscing"
     style="width: 15rem"
     name="some-name"
-    counter="true"
+    indicator="true"
     max-length="20"
   ></p-input-email>
-  <p-input-email
-    class="scaling-0"
-    label="Some label"
-    name="some-name"
-    loading="true"
-  ></p-input-email>
+  <p-input-email class="scaling-0" label="Some label" name="some-name" loading="true"></p-input-email>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with scaling 0.5">
-  <p-input-email class="scaling-0-5" label="Some label" name="some-name" counter="true" max-length="20"></p-input-email>
+  <p-input-email
+    class="scaling-0-5"
+    label="Some label"
+    name="some-name"
+    indicator="true"
+    max-length="20"
+  ></p-input-email>
   <p-input-email
     class="scaling-0-5"
     label="Lorem ipsum dolor sit amet, consetetur sadipscing"
     style="width: 15rem"
     name="some-name"
-    counter="true"
+    indicator="true"
     max-length="20"
   ></p-input-email>
-  <p-input-email
-    class="scaling-0-5"
-    label="Some label"
-    name="some-name"
-    loading="true"
-  ></p-input-email>
+  <p-input-email class="scaling-0-5" label="Some label" name="some-name" loading="true"></p-input-email>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with scaling 0.8">
-  <p-input-email class="scaling-0-8" label="Some label" name="some-name" counter="true" max-length="20"></p-input-email>
+  <p-input-email
+    class="scaling-0-8"
+    label="Some label"
+    name="some-name"
+    indicator="true"
+    max-length="20"
+  ></p-input-email>
   <p-input-email
     class="scaling-0-8"
     label="Lorem ipsum dolor sit amet, consetetur sadipscing"
     style="width: 15rem"
     name="some-name"
-    counter="true"
+    indicator="true"
     max-length="20"
   ></p-input-email>
-  <p-input-email
-    class="scaling-0-8"
-    label="Some label"
-    name="some-name"
-    loading="true"
-  ></p-input-email>
+  <p-input-email class="scaling-0-8" label="Some label" name="some-name" loading="true"></p-input-email>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with scaling 1">
-  <p-input-email class="scaling-1" label="Some label" name="some-name" counter="true" max-length="20"></p-input-email>
+  <p-input-email class="scaling-1" label="Some label" name="some-name" indicator="true" max-length="20"></p-input-email>
   <p-input-email
     class="scaling-1"
     label="Lorem ipsum dolor sit amet, consetetur sadipscing"
     style="width: 15rem"
     name="some-name"
-    counter="true"
+    indicator="true"
     max-length="20"
   ></p-input-email>
-  <p-input-email
-    class="scaling-1"
-    label="Some label"
-    name="some-name"
-    loading="true"
-  ></p-input-email>
+  <p-input-email class="scaling-1" label="Some label" name="some-name" loading="true"></p-input-email>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with scaling 2">
-  <p-input-email class="scaling-2" label="Some label" name="some-name" counter="true" max-length="20"></p-input-email>
+  <p-input-email class="scaling-2" label="Some label" name="some-name" indicator="true" max-length="20"></p-input-email>
   <p-input-email
     class="scaling-2"
     label="Lorem ipsum dolor sit amet, consetetur sadipscing"
     style="width: 15rem"
     name="some-name"
-    counter="true"
+    indicator="true"
     max-length="20"
   ></p-input-email>
-  <p-input-email
-    class="scaling-2"
-    label="Some label"
-    name="some-name"
-    loading="true"
-  ></p-input-email>
+  <p-input-email class="scaling-2" label="Some label" name="some-name" loading="true"></p-input-email>
 </div>
 
 <div class="playground light" title="should render with slot start">
-  <p-input-email name="some-name" label="Label" value="some-value" counter="true" max-length="20">
-    <p-text slot="start" color="contrast-medium" aria-hidden="true">EUR</p-text>
+  <p-input-email name="some-name" label="Label" value="example@porsche.de" indicator="true" max-length="20">
+    <p-text slot="start" color="contrast-medium" aria-hidden="true">Email</p-text>
   </p-input-email>
 </div>
 
 <div class="playground light" title="should render with slot end">
-  <p-input-email name="some-name" label="Label" value="some-value">
+  <p-input-email name="some-name" label="Label" value="example@porsche.de">
     <p-button-pure slot="end" hide-label="true" icon="close" class="input-button">Some label</p-button-pure>
   </p-input-email>
 </div>
 
 <div class="playground light" title="should render with slot end, controls and loading indicator">
-  <p-input-email name="some-name" label="Label" value="some-value" counter="true" max-length="20" loading="true">
+  <p-input-email name="some-name" label="Label" value="example@porsche.de" indicator="true" max-length="20" loading="true">
     <p-button-pure slot="end" hide-label="true" icon="close" class="input-button">Some label</p-button-pure>
   </p-input-email>
 </div>
-

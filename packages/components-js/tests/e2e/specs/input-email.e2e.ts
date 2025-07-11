@@ -2,7 +2,6 @@ import { type Page, expect, test } from '@playwright/test';
 import { Components } from '@porsche-design-system/components';
 import {
   addEventListener,
-  clickElementPosition,
   getEventSummary,
   getFormDataValue,
   getHTMLAttributes,
@@ -19,8 +18,6 @@ const getInputEmail = (page: Page) => page.locator('p-input-email input');
 const getInputEmailWrapper = (page: Page) => page.locator('p-input-email .wrapper');
 const getLabel = (page: Page) => page.locator('p-input-email label');
 const getForm = (page: Page) => page.locator('form');
-const getCounter = (page: Page) => page.locator('p-input-email .counter');
-const getLabelSrText = (page: Page) => page.locator('p-input-email label .sr-only');
 
 type InitOptions = {
   props?: Components.PInputEmail;
@@ -75,7 +72,7 @@ test.describe('value', () => {
     await expect(host).toHaveJSProperty('value', '');
     await expect(inputEmail).toHaveJSProperty('value', '');
 
-    const testInput = '10';
+    const testInput = 'example@porsche.de';
 
     await inputEmail.fill(testInput);
     await waitForStencilLifecycle(page);
@@ -91,7 +88,7 @@ test.describe('value', () => {
     await expect(host).toHaveJSProperty('value', '');
     await expect(inputEmail).toHaveJSProperty('value', '');
 
-    const testInput = '10';
+    const testInput = 'example@porsche.de';
 
     await setProperty(host, 'value', testInput);
     await waitForStencilLifecycle(page);
@@ -105,7 +102,7 @@ test.describe('value', () => {
 test.describe('form', () => {
   test('should include name & value in FormData submit', async ({ page }) => {
     const name = 'name';
-    const value = '10';
+    const value = 'example@porsche.de';
     await initInputEmail(page, {
       props: { name, value },
       isWithinForm: true,
@@ -124,7 +121,7 @@ test.describe('form', () => {
 
   test('should include name & value in FormData submit if outside of form', async ({ page }) => {
     const name = 'name';
-    const value = '10';
+    const value = 'example@porsche.de';
     const formId = 'myForm';
     await initInputEmail(page, {
       props: { name, value, form: formId },
@@ -185,7 +182,7 @@ test.describe('form', () => {
 
   test('should submit form after reset if the required input was initially not empty', async ({ page }) => {
     const name = 'name';
-    const value = '10';
+    const value = 'example@porsche.de';
     const required = true;
     await initInputEmail(page, {
       props: { name, value, required },
@@ -229,7 +226,7 @@ test.describe('form', () => {
     await addEventListener(form, 'submit');
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
 
-    await inputEmail.fill('20');
+    await inputEmail.fill('example@porsche.de');
     await waitForStencilLifecycle(page);
 
     await page.locator('button[type="reset"]').click();
@@ -239,8 +236,8 @@ test.describe('form', () => {
 
   test('should reset input-email value to its initial value on form reset', async ({ page }) => {
     const name = 'name';
-    const value = '10';
-    const newValue = '20';
+    const value = 'example@porsche.de';
+    const newValue = 'hello@porsche.de';
     const host = getHost(page);
     const inputEmail = getInputEmail(page);
     await initInputEmail(page, {
@@ -276,7 +273,7 @@ test.describe('form', () => {
 
   test('should disable input-email if within disabled fieldset', async ({ page }) => {
     const name = 'name';
-    const value = '10';
+    const value = 'example@porsche.de';
     const host = getHost(page);
     await initInputEmail(page, {
       props: { name, value },
@@ -370,7 +367,7 @@ test.describe('Event', () => {
       await addEventListener(host, 'change');
       expect((await getEventSummary(host, 'change')).counter).toBe(0);
 
-      await inputEmail.fill('20');
+      await inputEmail.fill('example@porsche.de');
       await inputEmail.press('Tab');
       await waitForStencilLifecycle(page);
 
@@ -434,7 +431,7 @@ test.describe('hover state', () => {
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {
     await initInputEmail(page, {
-      props: { name: 'some-name', state: 'error', counter: true },
+      props: { name: 'some-name', state: 'error' },
       useSlottedLabel: true,
       useSlottedMessage: true,
       useSlottedDescription: true,
@@ -450,7 +447,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips after state change', async ({ page }) => {
     await initInputEmail(page, {
-      props: { name: 'some-name', state: 'error', counter: true },
+      props: { name: 'some-name', state: 'error' },
       useSlottedLabel: true,
       useSlottedMessage: true,
       useSlottedDescription: true,
@@ -467,14 +464,14 @@ test.describe('lifecycle', () => {
   });
 
   test('should work without unnecessary round trips after value change', async ({ page }) => {
-    await initInputEmail(page, { props: { name: 'some-name', state: 'error', counter: true } });
+    await initInputEmail(page, { props: { name: 'some-name', state: 'error' } });
     const host = getHost(page);
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-input-email'], 'componentDidLoad: input-email').toBe(1);
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
 
-    await setProperty(host, 'value', 10);
+    await setProperty(host, 'value', 'example@porsche.de');
     await waitForStencilLifecycle(page);
     const statusAfterChange = await getLifecycleStatus(page);
 
@@ -483,89 +480,82 @@ test.describe('lifecycle', () => {
   });
 });
 
-test.describe('Counter', () => {
-  test('should focus input when counter text is clicked', async ({ page }) => {
-    await initInputEmail(page, { props: { name: 'some-name', counter: true, maxLength: 20 } });
-    const counter = getCounter(page);
-    const inputEmail = getInputEmail(page);
+test.describe('pattern', () => {
+  test('should prevent form submission if pattern does not match', async ({ page }) => {
+    const name = 'email';
+    const pattern = '^[a-z]+@example\\.com$';
+    const value = 'wrong@example.net';
 
-    await addEventListener(inputEmail, 'focus');
-    await expect(inputEmail).not.toBeFocused();
+    await initInputEmail(page, {
+      props: { name, value, pattern },
+      isWithinForm: true,
+      markupAfter: '<button type="submit">Submit</button>',
+    });
 
-    await clickElementPosition(page, counter);
+    const form = getForm(page);
+    await addEventListener(form, 'submit');
 
-    await expect(inputEmail).toBeFocused();
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
   });
 
-  test('should display correct counter when typing', async ({ page }) => {
-    await initInputEmail(page, { props: { name: 'some-name', counter: true, maxLength: 20 } });
-    const counter = getCounter(page);
-    const inputEmail = getInputEmail(page);
+  test('should allow form submission if pattern matches', async ({ page }) => {
+    const name = 'email';
+    const pattern = '^[a-z]+@example\\.com$';
+    const value = 'test@example.com';
 
-    expect(await counter.textContent()).toBe('0/20');
-    await inputEmail.fill('h');
-    await waitForStencilLifecycle(page);
-    expect(await counter.textContent()).toBe('1/20');
-    await inputEmail.fill('hello');
-    await waitForStencilLifecycle(page);
-    expect(await counter.textContent()).toBe('5/20');
-    await inputEmail.press('Backspace');
-    await waitForStencilLifecycle(page);
-    expect(await counter.textContent()).toBe('4/20');
-    await inputEmail.press('Backspace');
-    await inputEmail.press('Backspace');
-    await inputEmail.press('Backspace');
-    await inputEmail.press('Backspace');
-    await waitForStencilLifecycle(page);
-    expect(await counter.textContent()).toBe('0/20');
+    await initInputEmail(page, {
+      props: { name, value, pattern },
+      isWithinForm: true,
+      markupAfter: '<button type="submit">Submit</button>',
+    });
+
+    const form = getForm(page);
+    await addEventListener(form, 'submit');
+
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValue(form, name)).toBe(value);
+  });
+});
+
+test.describe('multiple', () => {
+  test('should allow multiple valid email addresses when `multiple` is set', async ({ page }) => {
+    const name = 'email';
+    const value = 'test1@example.com, test2@example.com';
+
+    await initInputEmail(page, {
+      props: { name, value, multiple: true },
+      isWithinForm: true,
+      markupAfter: '<button type="submit">Submit</button>',
+    });
+
+    const form = getForm(page);
+    await addEventListener(form, 'submit');
+
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValue(form, name)).toBe(value);
   });
 
-  test('should display correct counter when dynamically changing input value', async ({ page }) => {
-    const maxLength = 20;
-    await initInputEmail(page, { props: { name: 'some-name', counter: true, maxLength } });
-    const counter = getCounter(page);
-    const host = getHost(page);
-    const text1 = 'test string';
-    const text2 = 'test test string';
+  test('should prevent submission with invalid email in multiple list', async ({ page }) => {
+    const name = 'email';
+    const value = 'test1@example.com, invalid-email';
 
-    await setProperty(host, 'value', text1);
-    await waitForStencilLifecycle(page);
+    await initInputEmail(page, {
+      props: { name, value, multiple: true },
+      isWithinForm: true,
+      markupAfter: '<button type="submit">Submit</button>',
+    });
 
-    expect(await counter.textContent()).toBe(`${text1.length}/${maxLength}`);
+    const form = getForm(page);
+    await addEventListener(form, 'submit');
 
-    await setProperty(host, 'value', text2);
-    await waitForStencilLifecycle(page);
+    await page.locator('button[type="submit"]').click();
 
-    expect(await counter.textContent()).toBe(`${text2.length}/${maxLength}`);
-  });
-
-  test('should render counter when counter is dynamically changed', async ({ page }) => {
-    await initInputEmail(page, { props: { name: 'some-name', counter: true, maxLength: 20 } });
-    const host = getHost(page);
-    await expect(page.getByText('0/20')).toBeVisible();
-
-    await setProperty(host, 'counter', false);
-    await waitForStencilLifecycle(page);
-
-    await expect(getCounter(page)).toHaveCount(0);
-
-    await setProperty(host, 'counter', true);
-    await waitForStencilLifecycle(page);
-
-    await expect(page.getByText('0/20')).toBeVisible();
-  });
-
-  test('should update counter label when maxlength is changed dynamically', async ({ page }) => {
-    await initInputEmail(page, { props: { name: 'some-name', counter: true, maxLength: 20 } });
-    const host = getHost(page);
-
-    await expect(page.getByText('0/20')).toBeVisible();
-    expect(getLabelSrText(page)).toBeDefined();
-
-    await setProperty(host, 'maxLength', '30');
-    await waitForStencilLifecycle(page);
-
-    await expect(page.getByText('0/30')).toBeVisible();
-    expect(getLabelSrText(page)).toBeDefined();
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
   });
 });
