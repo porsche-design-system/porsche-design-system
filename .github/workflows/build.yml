@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: 'porsche-design-system/porsche-design-system-storefront'
-          ssh-key: ${{ secrets.GH_DEPLOY_KEY_STOREFRONT }}
+          ssh-key: 'test'
           ref: 'main'
       - run: ls -R
   lint:
