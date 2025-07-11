@@ -68,36 +68,36 @@ export class InputEmail {
   /** Displays as a compact version. */
   @Prop() public compact?: boolean = false;
 
-  /** The name of the text input. */
+  /** The name of the email input. */
   @Prop({ reflect: true }) public name: string;
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** The text input value. */
+  /** The email input value. */
   @Prop({ mutable: true }) public value?: string = '';
 
   /** Specifies whether the input can be autofilled by the browser */
   @Prop() public autoComplete?: InputEmailAutoComplete;
 
-  /** Specifies whether the text input should be read-only. */
+  /** Specifies whether the email input should be read-only. */
   @Prop() public readOnly?: boolean = false;
 
-  /** The id of a form element the text input should be associated with. */
+  /** The id of a form element the email input should be associated with. */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** The max length of the text input. */
+  /** The max length of the email input. */
   @Prop() public maxLength?: number;
 
-  /** The min length of the text input. */
+  /** The min length of the email input. */
   @Prop() public minLength?: number;
 
   /** The placeholder text. */
   @Prop() public placeholder?: string = '';
 
-  /** Marks the text input as disabled. */
+  /** Marks the email input as disabled. */
   @Prop() public disabled?: boolean = false;
 
-  /** Marks the text input as required. */
+  /** Marks the email input as required. */
   @Prop() public required?: boolean = false;
 
   /** @experimental Shows a loading indicator. */
@@ -124,10 +124,10 @@ export class InputEmail {
   /** Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific email validation rules than the browser's default (e.g., restricting to a specific domain). If provided, it overrides the browser's default email validation. */
   @Prop() public pattern?: string;
 
-  /** Emitted when the text input loses focus after its value was changed. */
+  /** Emitted when the email input loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<InputEmailChangeEventDetail>;
 
-  /** Emitted when the text input has lost focus. */
+  /** Emitted when the email input has lost focus. */
   @Event({ bubbles: false }) public blur: EventEmitter<InputEmailBlurEventDetail>;
 
   /** Emitted when the value has been changed as a direct result of a user action. */
