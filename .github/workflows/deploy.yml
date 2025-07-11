@@ -91,21 +91,46 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
-      options: --user 1001
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Restore'
-        uses: ./.github/actions/restore
         with:
-          artifact: 'build-production'
+          repository: 'porsche-design-system/porsche-design-system-storefront'
+          ssh-key: ${{ secrets.gh-deploy-key-storefront }}
+          ref: 'main'
+          path: 'gh-pages'
+      - name: 'Download artifact'
+        uses: actions/download-artifact@v4
+        with:
+          name: 'build-production'
+          path: 'artifact'
+      - run: ls -R
       - run: chmod +x ./.github/workflows/deploy-github-pages.sh
       - name: 'Deploy'
         run: ./.github/workflows/deploy-github-pages.sh
         env:
           ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
           ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}
-          GH_DEPLOY_KEY_STOREFRONT: ${{ secrets.gh-deploy-key-storefront }}
-          GH_REPOSITORY_STOREFRONT: ${{ secrets.gh-repository-storefront }}
+  # github-pages-storefront:
+  #   name: 'GitHub Pages (Storefront)'
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: ${{ inputs.image }}
+  #     options: --user 1001
+  #   steps:
+  #     - name: 'Checkout'
+  #       uses: actions/checkout@v4
+  #     - name: 'Install'
+  #       uses: ./.github/actions/install
+  #     - name: 'Restore'
+  #       uses: ./.github/actions/restore
+  #       with:
+  #         artifact: 'build-production'
+  #     - run: chmod +x ./.github/workflows/deploy-github-pages.sh
+  #     - name: 'Deploy'
+  #       run: ./.github/workflows/deploy-github-pages.sh
+  #       env:
+  #         ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
+  #         ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}
+  #         GH_DEPLOY_KEY_STOREFRONT: ${{ secrets.gh-deploy-key-storefront }}
+  #         GH_REPOSITORY_STOREFRONT: ${{ secrets.gh-repository-storefront }}

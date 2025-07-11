@@ -3,79 +3,9 @@
 set -o errexit
 set -o pipefail
 
-cleanup_github_credentials() {
-  local exit_code=$?
-  echo "task: [$(date)] \"cleanup_github_credentials\""
-  rm ~/.ssh/id_rsa
-  exit ${exit_code}
-}
-
-trap cleanup_github_credentials EXIT
-
-if [[ -z "${GH_REPOSITORY_STOREFRONT}" ]]; then
-  echo "Please provide the \$GH_REPOSITORY_STOREFRONT environment variable."
-  exit 1
-fi
-
-if [[ -z "${GITHUB_ACTOR}" ]]; then
-  echo "Please provide the \$GITHUB_ACTOR environment variable."
-  exit 1
-fi
-
-if [[ -z "${GITHUB_REF_TYPE}" ]]; then
-  echo "Please provide the \$GITHUB_REF_TYPE environment variable."
-  exit 1
-fi
-
-if [[ -z "${GITHUB_REF_NAME}" ]]; then
-  echo "Please provide the \$GITHUB_REF_NAME environment variable."
-  exit 1
-fi
-
-if [[ -z "${GITHUB_SHA}" ]]; then
-  echo "Please provide the \$GITHUB_SHA environment variable."
-  exit 1
-fi
-
-if [[ -z "$(ls -A ./packages/storefront/dist)" ]]; then
-  echo "Please provide the build artifact."
-  exit 1
-fi
-
-if [[ -z "${ALGOLIA_APP_ID}" ]]; then
-  echo "Please provide the \$ALGOLIA_APP_ID environment variable."
-  exit 1
-fi
-
-if [[ -z "${ALGOLIA_API_KEY}" ]]; then
-  echo "Please provide the \$ALGOLIA_API_KEY environment variable."
-  exit 1
-fi
-
-setup_github_credentials() {
-  echo "task: [$(date)] \"setup_github_credentials\""
-  mkdir -p ~/.ssh
-  ssh-keyscan -t rsa github.com > ~/.ssh/known_hosts
-  printf -- "${GH_DEPLOY_KEY_STOREFRONT}\n" > ~/.ssh/id_rsa
-  chmod 600 ~/.ssh/id_rsa
-}
-
-setup_github_repository() {
-  echo "task: [$(date)] \"setup_github_repository\""
-  git config --global --add safe.directory /github/workspace # fix detected dubious ownership in repository at '/github/workspace'
-  git config --global user.name "${GITHUB_ACTOR}"
-  git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-  git remote set-url origin "${GH_REPOSITORY_STOREFRONT}"
-}
-
-checkout_gh_pages() {
-  echo "task: [$(date)] \"checkout_gh_pages\""
-  git clone --single-branch -b main "${GH_REPOSITORY_STOREFRONT}" "./gh-pages"
-}
-
 add_deployment_version() {
   echo "task: [$(date)] \"add_deployment_version\""
-  echo "${GITHUB_SHA}" > "./packages/storefront/dist/version.md"
+  echo "${GITHUB_SHA}" > "./artifact/storefront/dist/version.md"
 }
 
 prepare_deployment() {
@@ -86,7 +16,7 @@ prepare_deployment() {
 copy_storefront() {
   echo "task: [$(date)] \"copy_storefront\" (${1})"
   mkdir -p "./gh-pages/${1}"
-  cp -r "./packages/storefront/dist/." "./gh-pages/${1}"
+  cp -r "./artifact/storefront/dist/." "./gh-pages/${1}"
 }
 
 deploy_to_gh_pages() {
@@ -105,21 +35,18 @@ update_algolia_index(){
 }
 
 if [[ "${GITHUB_REF_TYPE}" == "branch" ]]; then
-  setup_github_credentials
-  setup_github_repository
-  checkout_gh_pages
   add_deployment_version
   if [[ "${GITHUB_REF_NAME}" == "main" ]]; then
     prepare_deployment "nightly"
     copy_storefront "nightly"
     deploy_to_gh_pages "nightly"
-    update_algolia_index "nightly"
+    # update_algolia_index "nightly"
   else
     prepare_deployment "${GITHUB_REF_NAME}"
     copy_storefront "${GITHUB_REF_NAME}"
     deploy_to_gh_pages "${GITHUB_REF_NAME}"
-    if [[ "${GITHUB_REF_NAME}" == v* ]]; then
-      update_algolia_index "${GITHUB_REF_NAME}"
-    fi
+    # if [[ "${GITHUB_REF_NAME}" == v* ]]; then
+    #   update_algolia_index "${GITHUB_REF_NAME}"
+    # fi
   fi
 fi
