@@ -4191,12 +4191,12 @@ exports[`should match snapshot 1`] = `
     },
     "eventsMeta": {
       "blur": {
-        "description": "Emitted when the text input has lost focus.",
+        "description": "Emitted when the email input has lost focus.",
         "type": "InputEmailBlurEventDetail",
         "typeDetail": "Event",
       },
       "change": {
-        "description": "Emitted when the text input loses focus after its value was changed.",
+        "description": "Emitted when the email input loses focus after its value was changed.",
         "type": "InputEmailChangeEventDetail",
         "typeDetail": "Event",
       },
@@ -4245,13 +4245,13 @@ exports[`should match snapshot 1`] = `
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Marks the text input as disabled.",
+        "description": "Marks the email input as disabled.",
         "type": "boolean",
       },
       "form": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "The id of a form element the text input should be associated with.",
+        "description": "The id of a form element the email input should be associated with.",
         "propOptions": {
           "reflect": true,
         },
@@ -4286,7 +4286,7 @@ exports[`should match snapshot 1`] = `
       "maxLength": {
         "allowedValues": "number",
         "defaultValue": null,
-        "description": "The max length of the text input.",
+        "description": "The max length of the email input.",
         "type": "number",
       },
       "message": {
@@ -4298,7 +4298,7 @@ exports[`should match snapshot 1`] = `
       "minLength": {
         "allowedValues": "number",
         "defaultValue": null,
-        "description": "The min length of the text input.",
+        "description": "The min length of the email input.",
         "type": "number",
       },
       "multiple": {
@@ -4310,7 +4310,7 @@ exports[`should match snapshot 1`] = `
       "name": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "The name of the text input.",
+        "description": "The name of the email input.",
         "isRequired": true,
         "propOptions": {
           "reflect": true,
@@ -4332,13 +4332,13 @@ exports[`should match snapshot 1`] = `
       "readOnly": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Specifies whether the text input should be read-only.",
+        "description": "Specifies whether the email input should be read-only.",
         "type": "boolean",
       },
       "required": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Marks the text input as required.",
+        "description": "Marks the email input as required.",
         "type": "boolean",
       },
       "state": {
@@ -4364,7 +4364,7 @@ exports[`should match snapshot 1`] = `
       "value": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The text input value.",
+        "description": "The email input value.",
         "propOptions": {
           "mutable": true,
         },
