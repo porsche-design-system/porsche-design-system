@@ -9,6 +9,19 @@ on:
         type: string
 
 jobs:
+  github-pages-storefront:
+    name: 'GitHub Pages (Storefront)'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+        with:
+          repository: 'porsche-design-system/porsche-design-system-storefront'
+          ssh-key: ${{ secrets.GH_DEPLOY_KEY_STOREFRONT }}
+      - run: ls -R
   lint:
     name: 'Lint'
     runs-on: ubuntu-latest
