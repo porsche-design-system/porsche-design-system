@@ -17,7 +17,7 @@ for (const tagName of tagNamesWithLoadingProp) {
       const [nestedComponentWithLoadingProp] = tagNamesWithLoadingProp.filter(
         (tagNameWithLoadingProp) =>
           getComponentMeta(tagName).nestedComponents?.includes(tagNameWithLoadingProp) &&
-          !['p-input-search', 'p-input-number', 'p-input-text', 'p-input-password'].includes(tagName)
+          !['p-input-search', 'p-input-number', 'p-input-text', 'p-input-email', 'p-input-password'].includes(tagName)
       );
 
       return page.locator(
