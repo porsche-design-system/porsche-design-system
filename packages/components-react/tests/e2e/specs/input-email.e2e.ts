@@ -47,7 +47,7 @@ test.describe('form', () => {
     expect(await waitForComponentsReady(page)).toBe(4); // p-input-email, p-text, 2 p-button
     const host = getHost(page);
     const form = getForm(page);
-    const testValue = '10';
+    const testValue = 'example@porsche.de';
     await setProperty(host, 'value', testValue);
     await expect(host).toHaveJSProperty('value', testValue);
 
