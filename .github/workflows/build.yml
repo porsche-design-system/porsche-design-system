@@ -21,6 +21,7 @@ jobs:
         with:
           repository: 'porsche-design-system/porsche-design-system-storefront'
           ssh-key: ${{ secrets.GH_DEPLOY_KEY_STOREFRONT }}
+          ref: 'main'
       - run: ls -R
   lint:
     name: 'Lint'
