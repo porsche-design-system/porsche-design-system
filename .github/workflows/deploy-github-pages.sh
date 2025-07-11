@@ -70,7 +70,7 @@ setup_github_repository() {
 
 checkout_gh_pages() {
   echo "task: [$(date)] \"checkout_gh_pages\""
-  git clone --single-branch -b main "${GH_REPOSITORY_STOREFRONT}" "/opt/porsche-design-system-gh-pages"
+  git clone --single-branch -b main "${GH_REPOSITORY_STOREFRONT}" "./gh-pages"
 }
 
 add_deployment_version() {
@@ -80,18 +80,18 @@ add_deployment_version() {
 
 prepare_deployment() {
   echo "task: [$(date)] \"prepare_deployment\" (${1})"
-  rm -rf "/opt/porsche-design-system-gh-pages/${1}"
+  rm -rf "./gh-pages/${1}"
 }
 
 copy_storefront() {
   echo "task: [$(date)] \"copy_storefront\" (${1})"
-  mkdir -p "/opt/porsche-design-system-gh-pages/${1}"
-  cp -r "./packages/storefront/dist/." "/opt/porsche-design-system-gh-pages/${1}"
+  mkdir -p "./gh-pages/${1}"
+  cp -r "./packages/storefront/dist/." "./gh-pages/${1}"
 }
 
 deploy_to_gh_pages() {
   echo "task: [$(date)] \"deploy_to_gh_pages\""
-  pushd "/opt/porsche-design-system-gh-pages"
+  pushd "./gh-pages"
     git add -A
     git commit -m "Automated deployment to GitHub Pages (${1}): ${GITHUB_SHA}" --allow-empty
     git push origin main --force
