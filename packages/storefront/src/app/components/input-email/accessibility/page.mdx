@@ -32,12 +32,6 @@ export const metadata = {
 
 ## Development considerations
 
-### Exposing the `unit` prop
-
-The `unit` prop is not exposed to assistive technologies by default. If you provide a `unit` abbreviation, you need to
-dissolve it in real text through the `description` prop. For example, if you use `kmh`, you can set the `description`
-prop to `kilometers per hour`. This way, the screen reader will read out the full text.
-
 ### Disabled state
 
 In general, you should prevent using the `disabled` state. Disabled elements are not reachable (focusable) anymore and

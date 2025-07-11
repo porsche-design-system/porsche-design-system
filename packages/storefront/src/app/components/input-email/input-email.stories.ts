@@ -4,13 +4,13 @@ import type { SlotStories, Story } from '@/models/story';
 
 export const inputEmailSlotStories: SlotStories<'p-input-email'> = {
   start: {
-    unit: {
-      name: 'Unit',
+    text: {
+      name: 'Text',
       generator: () => [
         {
           tag: 'p-text',
           properties: { slot: 'start', color: 'contrast-medium', 'aria-hidden': true },
-          children: ['EUR'],
+          children: ['Email'],
         },
       ],
     },
@@ -39,13 +39,13 @@ export const inputEmailSlotStories: SlotStories<'p-input-email'> = {
     },
   },
   end: {
-    unit: {
-      name: 'Unit',
+    text: {
+      name: 'Text',
       generator: () => [
         {
           tag: 'p-text',
           properties: { slot: 'end', color: 'contrast-medium', 'aria-hidden': true },
-          children: ['EUR'],
+          children: ['Email'],
         },
       ],
     },
