@@ -5,7 +5,7 @@ set -o pipefail
 
 add_deployment_version() {
   echo "task: [$(date)] \"add_deployment_version\""
-  echo "${GITHUB_SHA}" > "./artifact/storefront/dist/version.md"
+  echo "${GITHUB_SHA}" > "./packages/storefront/dist/version.md"
 }
 
 prepare_deployment() {
@@ -16,7 +16,7 @@ prepare_deployment() {
 copy_storefront() {
   echo "task: [$(date)] \"copy_storefront\" (${1})"
   mkdir -p "./gh-pages/${1}"
-  cp -r "./artifact/storefront/dist/." "./gh-pages/${1}"
+  cp -r "./packages/storefront/dist/." "./gh-pages/${1}"
 }
 
 deploy_to_gh_pages() {
@@ -40,13 +40,13 @@ if [[ "${GITHUB_REF_TYPE}" == "branch" ]]; then
     prepare_deployment "nightly"
     copy_storefront "nightly"
     deploy_to_gh_pages "nightly"
-    # update_algolia_index "nightly"
+    update_algolia_index "nightly"
   else
     prepare_deployment "${GITHUB_REF_NAME}"
     copy_storefront "${GITHUB_REF_NAME}"
     deploy_to_gh_pages "${GITHUB_REF_NAME}"
-    # if [[ "${GITHUB_REF_NAME}" == v* ]]; then
-    #   update_algolia_index "${GITHUB_REF_NAME}"
-    # fi
+    if [[ "${GITHUB_REF_NAME}" == v* ]]; then
+      update_algolia_index "${GITHUB_REF_NAME}"
+    fi
   fi
 fi

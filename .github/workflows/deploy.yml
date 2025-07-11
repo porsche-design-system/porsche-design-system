@@ -14,9 +14,6 @@ on:
       linode-aws-secret-access-key:
         description: 'AWS Secret Access Key for Linode'
         required: true
-      gh-repository-storefront:
-        description: 'github repository for github pages (storefront)'
-        required: true
       gh-deploy-key-storefront:
         description: 'github deploy key for github pages (storefront)'
         required: true
@@ -94,16 +91,19 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
+      - name: 'Checkout (GH Pages)'
+        uses: actions/checkout@v4
         with:
           repository: 'porsche-design-system/porsche-design-system-storefront'
           ssh-key: ${{ secrets.gh-deploy-key-storefront }}
           ref: 'main'
           path: 'gh-pages'
-      - name: 'Download artifact'
-        uses: actions/download-artifact@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
         with:
-          name: 'build-production'
-          path: 'artifact'
+          artifact: 'build-production'
       - run: ls -R
       - run: chmod +x ./.github/workflows/deploy-github-pages.sh
       - name: 'Deploy'
