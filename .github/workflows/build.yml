@@ -17,10 +17,9 @@ jobs:
       options: --user 1001
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
         with:
-          # repository: 'porsche-design-system/porsche-design-system-storefront'
-          repository: 'git@github.com:porsche-design-system/porsche-design-system-storefront.git'
+          repository: 'porsche-design-system/porsche-design-system-storefront'
           ssh-key: ${{ secrets.GH_DEPLOY_KEY_STOREFRONT }}
           ref: 'main'
       - run: ls -R
