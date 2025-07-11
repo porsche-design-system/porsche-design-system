@@ -43,18 +43,18 @@ jobs:
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - run: chmod +x ./deploy-akamai-cdn.sh
+      - run: chmod +x ./.github/workflows/deploy-akamai-cdn.sh
       - name: 'Deploy'
         run: |
-          ./deploy-akamai-cdn.sh packages/assets/cdn/components/ components/
-          ./deploy-akamai-cdn.sh packages/assets/cdn/crest/ crest/
-          ./deploy-akamai-cdn.sh packages/assets/cdn/fallbacks/ fallbacks/
-          ./deploy-akamai-cdn.sh packages/assets/cdn/fonts/ fonts/
-          ./deploy-akamai-cdn.sh packages/assets/cdn/icons/ icons/
-          ./deploy-akamai-cdn.sh packages/assets/cdn/marque/ marque/
-          ./deploy-akamai-cdn.sh packages/assets/cdn/meta-icons/ meta-icons/
-          ./deploy-akamai-cdn.sh packages/assets/cdn/model-signatures/ model-signatures/
-          ./deploy-akamai-cdn.sh packages/assets/cdn/styles/ styles/
+          ./.github/workflows/deploy-akamai-cdn.sh packages/assets/cdn/components/ components/
+          ./.github/workflows/deploy-akamai-cdn.sh packages/assets/cdn/crest/ crest/
+          ./.github/workflows/deploy-akamai-cdn.sh packages/assets/cdn/fallbacks/ fallbacks/
+          ./.github/workflows/deploy-akamai-cdn.sh packages/assets/cdn/fonts/ fonts/
+          ./.github/workflows/deploy-akamai-cdn.sh packages/assets/cdn/icons/ icons/
+          ./.github/workflows/deploy-akamai-cdn.sh packages/assets/cdn/marque/ marque/
+          ./.github/workflows/deploy-akamai-cdn.sh packages/assets/cdn/meta-icons/ meta-icons/
+          ./.github/workflows/deploy-akamai-cdn.sh packages/assets/cdn/model-signatures/ model-signatures/
+          ./.github/workflows/deploy-akamai-cdn.sh packages/assets/cdn/styles/ styles/
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
@@ -98,9 +98,9 @@ jobs:
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - run: chmod +x ./deploy-github-pages.sh
+      - run: chmod +x ./.github/workflows/deploy-github-pages.sh
       - name: 'Deploy'
-        run: ./deploy-github-pages.sh
+        run: ./.github/workflows/deploy-github-pages.sh
         env:
           ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
           ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}
