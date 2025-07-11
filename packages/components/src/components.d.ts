@@ -1072,11 +1072,11 @@ export namespace Components {
          */
         "description"?: string;
         /**
-          * Marks the text input as disabled.
+          * Marks the email input as disabled.
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the text input should be associated with.
+          * The id of a form element the email input should be associated with.
          */
         "form"?: string;
         /**
@@ -1096,7 +1096,7 @@ export namespace Components {
          */
         "loading"?: boolean;
         /**
-          * The max length of the text input.
+          * The max length of the email input.
          */
         "maxLength"?: number;
         /**
@@ -1104,7 +1104,7 @@ export namespace Components {
          */
         "message"?: string;
         /**
-          * The min length of the text input.
+          * The min length of the email input.
          */
         "minLength"?: number;
         /**
@@ -1112,7 +1112,7 @@ export namespace Components {
          */
         "multiple"?: boolean;
         /**
-          * The name of the text input.
+          * The name of the email input.
          */
         "name": string;
         /**
@@ -1124,11 +1124,11 @@ export namespace Components {
          */
         "placeholder"?: string;
         /**
-          * Specifies whether the text input should be read-only.
+          * Specifies whether the email input should be read-only.
          */
         "readOnly"?: boolean;
         /**
-          * Marks the text input as required.
+          * Marks the email input as required.
          */
         "required"?: boolean;
         /**
@@ -1140,7 +1140,7 @@ export namespace Components {
          */
         "theme"?: Theme;
         /**
-          * The text input value.
+          * The email input value.
          */
         "value"?: string;
     }
@@ -4947,11 +4947,11 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
-          * Marks the text input as disabled.
+          * Marks the email input as disabled.
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the text input should be associated with.
+          * The id of a form element the email input should be associated with.
          */
         "form"?: string;
         /**
@@ -4971,7 +4971,7 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
-          * The max length of the text input.
+          * The max length of the email input.
          */
         "maxLength"?: number;
         /**
@@ -4979,7 +4979,7 @@ declare namespace LocalJSX {
          */
         "message"?: string;
         /**
-          * The min length of the text input.
+          * The min length of the email input.
          */
         "minLength"?: number;
         /**
@@ -4987,15 +4987,15 @@ declare namespace LocalJSX {
          */
         "multiple"?: boolean;
         /**
-          * The name of the text input.
+          * The name of the email input.
          */
         "name"?: string;
         /**
-          * Emitted when the text input has lost focus.
+          * Emitted when the email input has lost focus.
          */
         "onBlur"?: (event: PInputEmailCustomEvent<InputEmailBlurEventDetail>) => void;
         /**
-          * Emitted when the text input loses focus after its value was changed.
+          * Emitted when the email input loses focus after its value was changed.
          */
         "onChange"?: (event: PInputEmailCustomEvent<InputEmailChangeEventDetail>) => void;
         /**
@@ -5011,11 +5011,11 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
         /**
-          * Specifies whether the text input should be read-only.
+          * Specifies whether the email input should be read-only.
          */
         "readOnly"?: boolean;
         /**
-          * Marks the text input as required.
+          * Marks the email input as required.
          */
         "required"?: boolean;
         /**
@@ -5027,7 +5027,7 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
         /**
-          * The text input value.
+          * The email input value.
          */
         "value"?: string;
     }
