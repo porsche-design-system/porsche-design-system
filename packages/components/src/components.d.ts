@@ -33,6 +33,7 @@ import { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
 import { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 import { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
+import { InputEmailAutoComplete, InputEmailBlurEventDetail, InputEmailChangeEventDetail, InputEmailInputEventDetail, InputEmailState } from "./components/input-email/input-email-utils";
 import { InputNumberAutoComplete, InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
 import { InputPasswordAutoComplete, InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
 import { InputSearchAutoComplete, InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
@@ -103,6 +104,7 @@ export { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
 export { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 export { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 export { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
+export { InputEmailAutoComplete, InputEmailBlurEventDetail, InputEmailChangeEventDetail, InputEmailInputEventDetail, InputEmailState } from "./components/input-email/input-email-utils";
 export { InputNumberAutoComplete, InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
 export { InputPasswordAutoComplete, InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
 export { InputSearchAutoComplete, InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
@@ -1055,6 +1057,92 @@ export namespace Components {
           * Adapts the inline-notification color depending on the theme.
          */
         "theme"?: Theme;
+    }
+    interface PInputEmail {
+        /**
+          * Specifies whether the input can be autofilled by the browser
+         */
+        "autoComplete"?: InputEmailAutoComplete;
+        /**
+          * Displays as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Show or hide the character counter.
+         */
+        "counter"?: boolean;
+        /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Marks the text input as disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * The id of a form element the text input should be associated with.
+         */
+        "form"?: string;
+        /**
+          * Show or hide label and description text. For better accessibility, it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Show email indicator icon
+         */
+        "indicator"?: boolean;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * The max length of the text input.
+         */
+        "maxLength"?: number;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The min length of the text input.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the text input.
+         */
+        "name": string;
+        /**
+          * The placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * Specifies whether the text input should be read-only.
+         */
+        "readOnly"?: boolean;
+        /**
+          * Marks the text input as required.
+         */
+        "required"?: boolean;
+        /**
+          * Indicate whether to enable spell-checking.
+         */
+        "spellCheck"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: InputEmailState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * The text input value.
+         */
+        "value"?: string;
     }
     interface PInputNumber {
         /**
@@ -2755,6 +2843,10 @@ export interface PInlineNotificationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPInlineNotificationElement;
 }
+export interface PInputEmailCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPInputEmailElement;
+}
 export interface PInputNumberCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPInputNumberElement;
@@ -3150,6 +3242,25 @@ declare global {
     var HTMLPInlineNotificationElement: {
         prototype: HTMLPInlineNotificationElement;
         new (): HTMLPInlineNotificationElement;
+    };
+    interface HTMLPInputEmailElementEventMap {
+        "change": InputEmailChangeEventDetail;
+        "blur": InputEmailBlurEventDetail;
+        "input": InputEmailInputEventDetail;
+    }
+    interface HTMLPInputEmailElement extends Components.PInputEmail, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPInputEmailElementEventMap>(type: K, listener: (this: HTMLPInputEmailElement, ev: PInputEmailCustomEvent<HTMLPInputEmailElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPInputEmailElementEventMap>(type: K, listener: (this: HTMLPInputEmailElement, ev: PInputEmailCustomEvent<HTMLPInputEmailElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPInputEmailElement: {
+        prototype: HTMLPInputEmailElement;
+        new (): HTMLPInputEmailElement;
     };
     interface HTMLPInputNumberElementEventMap {
         "change": InputNumberChangeEventDetail;
@@ -3791,6 +3902,7 @@ declare global {
         "p-headline": HTMLPHeadlineElement;
         "p-icon": HTMLPIconElement;
         "p-inline-notification": HTMLPInlineNotificationElement;
+        "p-input-email": HTMLPInputEmailElement;
         "p-input-number": HTMLPInputNumberElement;
         "p-input-password": HTMLPInputPasswordElement;
         "p-input-search": HTMLPInputSearchElement;
@@ -4820,6 +4932,104 @@ declare namespace LocalJSX {
           * Adapts the inline-notification color depending on the theme.
          */
         "theme"?: Theme;
+    }
+    interface PInputEmail {
+        /**
+          * Specifies whether the input can be autofilled by the browser
+         */
+        "autoComplete"?: InputEmailAutoComplete;
+        /**
+          * Displays as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Show or hide the character counter.
+         */
+        "counter"?: boolean;
+        /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Marks the text input as disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * The id of a form element the text input should be associated with.
+         */
+        "form"?: string;
+        /**
+          * Show or hide label and description text. For better accessibility, it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Show email indicator icon
+         */
+        "indicator"?: boolean;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * The max length of the text input.
+         */
+        "maxLength"?: number;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The min length of the text input.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the text input.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the text input has lost focus.
+         */
+        "onBlur"?: (event: PInputEmailCustomEvent<InputEmailBlurEventDetail>) => void;
+        /**
+          * Emitted when the text input loses focus after its value was changed.
+         */
+        "onChange"?: (event: PInputEmailCustomEvent<InputEmailChangeEventDetail>) => void;
+        /**
+          * Emitted when the value has been changed as a direct result of a user action.
+         */
+        "onInput"?: (event: PInputEmailCustomEvent<InputEmailInputEventDetail>) => void;
+        /**
+          * The placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * Specifies whether the text input should be read-only.
+         */
+        "readOnly"?: boolean;
+        /**
+          * Marks the text input as required.
+         */
+        "required"?: boolean;
+        /**
+          * Indicate whether to enable spell-checking.
+         */
+        "spellCheck"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: InputEmailState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * The text input value.
+         */
+        "value"?: string;
     }
     interface PInputNumber {
         /**
@@ -6687,6 +6897,7 @@ declare namespace LocalJSX {
         "p-headline": PHeadline;
         "p-icon": PIcon;
         "p-inline-notification": PInlineNotification;
+        "p-input-email": PInputEmail;
         "p-input-number": PInputNumber;
         "p-input-password": PInputPassword;
         "p-input-search": PInputSearch;
@@ -6821,6 +7032,7 @@ declare module "@stencil/core" {
             "p-headline": LocalJSX.PHeadline & JSXBase.HTMLAttributes<HTMLPHeadlineElement>;
             "p-icon": LocalJSX.PIcon & JSXBase.HTMLAttributes<HTMLPIconElement>;
             "p-inline-notification": LocalJSX.PInlineNotification & JSXBase.HTMLAttributes<HTMLPInlineNotificationElement>;
+            "p-input-email": LocalJSX.PInputEmail & JSXBase.HTMLAttributes<HTMLPInputEmailElement>;
             "p-input-number": LocalJSX.PInputNumber & JSXBase.HTMLAttributes<HTMLPInputNumberElement>;
             "p-input-password": LocalJSX.PInputPassword & JSXBase.HTMLAttributes<HTMLPInputPasswordElement>;
             "p-input-search": LocalJSX.PInputSearch & JSXBase.HTMLAttributes<HTMLPInputSearchElement>;
