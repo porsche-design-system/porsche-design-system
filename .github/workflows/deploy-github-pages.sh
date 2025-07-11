@@ -6,7 +6,7 @@ set -o pipefail
 cleanup_github_credentials() {
   local exit_code=$?
   echo "task: [$(date)] \"cleanup_github_credentials\""
-  rm "/root/.ssh/id_rsa"
+  rm ~/.ssh/id_rsa
   exit ${exit_code}
 }
 
@@ -54,10 +54,10 @@ fi
 
 setup_github_credentials() {
   echo "task: [$(date)] \"setup_github_credentials\""
-  mkdir -p "/root/.ssh"
-  ssh-keyscan -t rsa github.com > "/root/.ssh/known_hosts"
-  printf -- "${GH_DEPLOY_KEY_STOREFRONT}\n" > "/root/.ssh/id_rsa"
-  chmod 600 "/root/.ssh/id_rsa"
+  mkdir -p ~/.ssh
+  ssh-keyscan -t rsa github.com > ~/.ssh/known_hosts
+  printf -- "${GH_DEPLOY_KEY_STOREFRONT}\n" > ~/.ssh/id_rsa
+  chmod 600 ~/.ssh/id_rsa
 }
 
 setup_github_repository() {
