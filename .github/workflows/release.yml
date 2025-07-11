@@ -35,9 +35,9 @@ jobs:
         with:
           registry-url: 'https://registry.npmjs.org'
           scope: '@porsche-design-system'
-      - run: chmod +x ./release-npm.sh
+      - run: chmod +x ./.github/workflows/release-npm.sh
       - name: 'Publish'
-        run: ./release-npm.sh packages/components-js/dist/components-wrapper
+        run: ./.github/workflows/release-npm.sh packages/components-js/dist/components-wrapper
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
@@ -62,9 +62,9 @@ jobs:
         with:
           registry-url: 'https://registry.npmjs.org'
           scope: '@porsche-design-system'
-      - run: chmod +x ./release-npm.sh
+      - run: chmod +x ./.github/workflows/release-npm.sh
       - name: 'Publish'
-        run: ./release-npm.sh packages/components-angular/dist/angular-wrapper
+        run: ./.github/workflows/release-npm.sh packages/components-angular/dist/angular-wrapper
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
@@ -89,9 +89,9 @@ jobs:
         with:
           registry-url: 'https://registry.npmjs.org'
           scope: '@porsche-design-system'
-      - run: chmod +x ./release-npm.sh
+      - run: chmod +x ./.github/workflows/release-npm.sh
       - name: 'Publish'
-        run: ./release-npm.sh packages/components-react/dist/react-wrapper
+        run: ./.github/workflows/release-npm.sh packages/components-react/dist/react-wrapper
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
@@ -116,9 +116,9 @@ jobs:
         with:
           registry-url: 'https://registry.npmjs.org'
           scope: '@porsche-design-system'
-      - run: chmod +x ./release-npm.sh
+      - run: chmod +x ./.github/workflows/release-npm.sh
       - name: 'Publish'
-        run: ./release-npm.sh packages/components-vue/dist/vue-wrapper
+        run: ./.github/workflows/release-npm.sh packages/components-vue/dist/vue-wrapper
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
