@@ -9,19 +9,19 @@ on:
         type: string
     secrets:
       linode-aws-access-key-id:
-        description: 'AWS Access Key ID for Linode'
+        description: 'AWS Access Key ID for Linode / Akamai CDN.'
         required: true
       linode-aws-secret-access-key:
-        description: 'AWS Secret Access Key for Linode'
+        description: 'AWS Secret Access Key for Linode / Akamai CDN.'
         required: true
       gh-deploy-key-storefront:
-        description: 'github deploy key for github pages (storefront)'
+        description: 'GitHub Deploy Key for GitHub Pages (Storefront).'
         required: true
       algolia-app-id:
-        description: 'algolia app id'
+        description: 'Algolia App ID (Storefront).'
         required: true
       algolia-api-key:
-        description: 'algolia api key'
+        description: 'Algolia API Key (Storefront).'
         required: true
 
 jobs:
@@ -104,33 +104,9 @@ jobs:
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - run: ls -R
       - run: chmod +x ./.github/workflows/deploy-github-pages.sh
       - name: 'Deploy'
         run: ./.github/workflows/deploy-github-pages.sh
         env:
           ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
           ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}
-  # github-pages-storefront:
-  #   name: 'GitHub Pages (Storefront)'
-  #   runs-on: ubuntu-latest
-  #   container:
-  #     image: ${{ inputs.image }}
-  #     options: --user 1001
-  #   steps:
-  #     - name: 'Checkout'
-  #       uses: actions/checkout@v4
-  #     - name: 'Install'
-  #       uses: ./.github/actions/install
-  #     - name: 'Restore'
-  #       uses: ./.github/actions/restore
-  #       with:
-  #         artifact: 'build-production'
-  #     - run: chmod +x ./.github/workflows/deploy-github-pages.sh
-  #     - name: 'Deploy'
-  #       run: ./.github/workflows/deploy-github-pages.sh
-  #       env:
-  #         ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
-  #         ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}
-  #         GH_DEPLOY_KEY_STOREFRONT: ${{ secrets.gh-deploy-key-storefront }}
-  #         GH_REPOSITORY_STOREFRONT: ${{ secrets.gh-repository-storefront }}
