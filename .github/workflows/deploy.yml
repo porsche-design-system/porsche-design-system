@@ -38,7 +38,7 @@ jobs:
         uses: ./.github/actions/install
       - name: 'Install rclone'
         run: |
-          apt-get -yq --no-install-suggests --no-install-recommends install rclone
+          sudo apt-get -yq --no-install-suggests --no-install-recommends install rclone
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
