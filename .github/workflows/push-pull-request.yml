@@ -9,6 +9,8 @@ jobs:
     uses: ./.github/workflows/build.yml
     with:
       image: mcr.microsoft.com/playwright:v1.49.1-jammy
+    secrets:
+      gh-deploy-key-storefront: ${{ secrets.GH_DEPLOY_KEY_STOREFRONT }}
   # test:
   #   name: 'Test'
   #   uses: ./.github/workflows/test.yml
