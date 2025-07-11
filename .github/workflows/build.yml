@@ -19,7 +19,8 @@ jobs:
       - name: 'Checkout'
         uses: actions/checkout@v4
         with:
-          repository: 'porsche-design-system/porsche-design-system-storefront'
+          # repository: 'porsche-design-system/porsche-design-system-storefront'
+          repository: 'git@github.com:porsche-design-system/porsche-design-system-storefront.git'
           ssh-key: ${{ secrets.GH_DEPLOY_KEY_STOREFRONT }}
           ref: 'main'
       - run: ls -R
