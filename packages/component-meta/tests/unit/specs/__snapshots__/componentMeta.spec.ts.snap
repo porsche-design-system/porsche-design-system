@@ -4180,6 +4180,216 @@ exports[`should match snapshot 1`] = `
     },
     "styling": "jss",
   },
+  "p-input-email": {
+    "cssVariablesMeta": {
+      "--ref-p-input-slotted-margin": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`margin\` in oder to adjust the spacings correctly.",
+      },
+      "--ref-p-input-slotted-padding": {
+        "description": "When slotting a \`p-button-pure\` or \`p-link-pure\` this variable needs to be set as \`padding\` in oder to adjust the alignment correctly.",
+      },
+    },
+    "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the text input has lost focus.",
+        "type": "InputEmailBlurEventDetail",
+        "typeDetail": "Event",
+      },
+      "change": {
+        "description": "Emitted when the text input loses focus after its value was changed.",
+        "type": "InputEmailChangeEventDetail",
+        "typeDetail": "Event",
+      },
+      "input": {
+        "description": "Emitted when the value has been changed as a direct result of a user action.",
+        "type": "InputEmailInputEventDetail",
+        "typeDetail": "InputEvent",
+      },
+    },
+    "hasAriaProp": false,
+    "hasElementInternals": true,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "nestedComponents": [
+      "p-icon",
+    ],
+    "propsMeta": {
+      "autoComplete": {
+        "allowedValues": [
+          null,
+          "off",
+          "on",
+        ],
+        "defaultValue": null,
+        "description": "Specifies whether the input can be autofilled by the browser",
+        "type": "InputEmailAutoComplete",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Displays as a compact version.",
+        "type": "boolean",
+      },
+      "description": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The description text.",
+        "type": "string",
+      },
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Marks the text input as disabled.",
+        "type": "boolean",
+      },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The id of a form element the text input should be associated with.",
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "hideLabel": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Show or hide label and description text. For better accessibility, it is recommended to show the label.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
+      "indicator": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Show email indicator icon",
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The label text.",
+        "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
+      },
+      "maxLength": {
+        "allowedValues": "number",
+        "defaultValue": null,
+        "description": "The max length of the text input.",
+        "type": "number",
+      },
+      "message": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The message styled depending on validation state.",
+        "type": "string",
+      },
+      "minLength": {
+        "allowedValues": "number",
+        "defaultValue": null,
+        "description": "The min length of the text input.",
+        "type": "number",
+      },
+      "multiple": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "A boolean value that, if present, it allows the user to enter a list of multiple email addresses, separated by commas (and optional whitespace). The browser will validate each email address in the list.",
+        "type": "boolean",
+      },
+      "name": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The name of the text input.",
+        "isRequired": true,
+        "propOptions": {
+          "reflect": true,
+        },
+        "type": "string",
+      },
+      "pattern": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific email validation rules than the browser's default (e.g., restricting to a specific domain). If provided, it overrides the browser's default email validation.",
+        "type": "string",
+      },
+      "placeholder": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The placeholder text.",
+        "type": "string",
+      },
+      "readOnly": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Specifies whether the text input should be read-only.",
+        "type": "boolean",
+      },
+      "required": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Marks the text input as required.",
+        "type": "boolean",
+      },
+      "state": {
+        "allowedValues": [
+          "none",
+          "error",
+          "success",
+        ],
+        "defaultValue": "none",
+        "description": "The validation state.",
+        "type": "InputEmailState",
+      },
+      "theme": {
+        "allowedValues": [
+          "light",
+          "dark",
+          "auto",
+        ],
+        "defaultValue": "light",
+        "description": "Adapts the color depending on the theme.",
+        "type": "Theme",
+      },
+      "value": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The text input value.",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "string",
+      },
+    },
+    "slotsMeta": {
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "end": {
+        "description": "Shows content at the end of the input (e.g. toggle button, unit suffix).",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "start": {
+        "description": "Shows content at the start of the input (e.g. unit prefix).",
+      },
+    },
+    "styling": "jss",
+  },
   "p-input-number": {
     "cssVariablesMeta": {
       "--ref-p-input-slotted-margin": {
