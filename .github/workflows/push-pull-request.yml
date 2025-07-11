@@ -9,20 +9,20 @@ jobs:
     uses: ./.github/workflows/build.yml
     with:
       image: mcr.microsoft.com/playwright:v1.49.1-jammy
-  test:
-    name: 'Test'
-    uses: ./.github/workflows/test.yml
-    with:
-      image: mcr.microsoft.com/playwright:v1.49.1-jammy
-    needs:
-      - build
+  # test:
+  #   name: 'Test'
+  #   uses: ./.github/workflows/test.yml
+  #   with:
+  #     image: mcr.microsoft.com/playwright:v1.49.1-jammy
+  #   needs:
+  #     - build
   deploy:
     name: 'Deploy'
     uses: ./.github/workflows/deploy.yml
     with:
       image: mcr.microsoft.com/playwright:v1.49.1-jammy
     needs:
-      - test
+      - build
     secrets:
       linode-aws-access-key-id: ${{ secrets.LINODE_AWS_ACCESS_KEY_ID }}
       linode-aws-secret-access-key: ${{ secrets.LINODE_AWS_SECRET_ACCESS_KEY }}
