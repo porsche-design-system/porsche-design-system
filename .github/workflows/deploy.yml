@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
-      # options: --user 1001
+      options: --user root
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -38,7 +38,7 @@ jobs:
         uses: ./.github/actions/install
       - name: 'Install rclone'
         run: |
-          sudo apt-get -yq --no-install-suggests --no-install-recommends install rclone
+          apt-get -yq --no-install-suggests --no-install-recommends install rclone
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:

@@ -22,6 +22,8 @@ copy_storefront() {
 deploy_to_gh_pages() {
   echo "task: [$(date)] \"deploy_to_gh_pages\""
   pushd "./gh-pages"
+    git config --global user.name "${GITHUB_ACTOR}"
+    git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
     git add -A
     git commit -m "Automated deployment to GitHub Pages (${1}): ${GITHUB_SHA}" --allow-empty
     git push origin main --force
