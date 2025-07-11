@@ -1,0 +1,124 @@
+name: 'Release'
+
+on:
+  workflow_call:
+    inputs:
+      image:
+        description: 'Docker image to be used in workflow.'
+        required: true
+        type: string
+    secrets:
+      github-token:
+        description: 'github token for container registry'
+        required: true
+      npmjs-registry-token:
+        description: 'npm registry token for npmjs'
+        required: true
+
+jobs:
+  npm-components-js:
+    name: 'NPM (Components JS)'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - uses: actions/setup-node@v4
+        with:
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@porsche-design-system'
+      - run: chmod +x ./.github/workflows/release-npm.sh
+      - name: 'Publish'
+        run: ./.github/workflows/release-npm.sh packages/components-js/dist/components-wrapper
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
+          GITHUB_TOKEN: ${{ secrets.github-token }}
+  npm-components-angular:
+    needs:
+      - npm-components-js
+    name: 'NPM (Components Angular)'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - uses: actions/setup-node@v4
+        with:
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@porsche-design-system'
+      - run: chmod +x ./.github/workflows/release-npm.sh
+      - name: 'Publish'
+        run: ./.github/workflows/release-npm.sh packages/components-angular/dist/angular-wrapper
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
+          GITHUB_TOKEN: ${{ secrets.github-token }}
+  npm-components-react:
+    needs:
+      - npm-components-js
+    name: 'NPM (Components React)'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - uses: actions/setup-node@v4
+        with:
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@porsche-design-system'
+      - run: chmod +x ./.github/workflows/release-npm.sh
+      - name: 'Publish'
+        run: ./.github/workflows/release-npm.sh packages/components-react/dist/react-wrapper
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
+          GITHUB_TOKEN: ${{ secrets.github-token }}
+  npm-components-vue:
+    needs:
+      - npm-components-js
+    name: 'NPM (Components Vue)'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - uses: actions/setup-node@v4
+        with:
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@porsche-design-system'
+      - run: chmod +x ./.github/workflows/release-npm.sh
+      - name: 'Publish'
+        run: ./.github/workflows/release-npm.sh packages/components-vue/dist/vue-wrapper
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
+          GITHUB_TOKEN: ${{ secrets.github-token }}

@@ -654,8 +654,8 @@ test.describe('sticky footer', () => {
     const footer = getFooter(page);
     await footer.evaluate((el) => (el.style.visibility = 'hidden'));
 
-    expect(await getElementStyle(footer, 'visibility')).toBe('hidden');
-    expect(await getFooterBoxShadow(page)).toBe('none');
+    await expect(footer).toBeHidden();
+    await expect(footer).toHaveCSS('box-shadow', 'none');
 
     await host.evaluate((el) => {
       const content = document.createElement('div');
@@ -666,8 +666,8 @@ test.describe('sticky footer', () => {
 
     await waitForStencilLifecycle(page);
 
-    expect(await getElementStyle(footer, 'visibility')).toBe('visible');
-    expect(await getFooterBoxShadow(page)).toBe(expectedBoxShadow);
+    await expect(footer).toBeVisible();
+    await expect(footer).toHaveCSS('box-shadow', expectedBoxShadow);
   });
 });
 
@@ -689,12 +689,41 @@ test.describe('lifecycle', () => {
 
     await setProperty(host, 'open', false);
     await waitForStencilLifecycle(page);
-    const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidUpdate['p-modal'], 'componentDidUpdate: p-modal').toBe(1);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate['p-modal'];
+        },
+        {
+          message: 'componentDidUpdate: p-modal',
+        }
+      )
+      .toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidLoad.all;
+        },
+        {
+          message: 'componentDidLoad: all',
+        }
+      )
+      .toBe(3);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate.all;
+        },
+        {
+          message: 'componentDidUpdate: all',
+        }
+      )
+      .toBe(1);
   });
 
   test('should work without unnecessary round trips after deeply nested slot content change', async ({ page }) => {
@@ -724,13 +753,52 @@ test.describe('lifecycle', () => {
   test('should update when adding named slot', async ({ page }) => {
     await initBasicModal(page);
     const host = getHost(page);
-    const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidLoad['p-modal'], 'componentDidLoad: p-modal').toBe(1);
-    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1); // includes p-icon
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidLoad['p-modal'];
+        },
+        {
+          message: 'componentDidLoad: p-modal',
+        }
+      )
+      .toBe(1);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidLoad['p-button'];
+        },
+        {
+          message: 'componentDidLoad: p-button',
+        }
+      )
+      .toBe(1); // includes p-icon
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidLoad.all;
+        },
+        {
+          message: 'componentDidLoad: all',
+        }
+      )
+      .toBe(3);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate.all;
+        },
+        {
+          message: 'componentDidUpdate: all',
+        }
+      )
+      .toBe(0);
 
     await host.evaluate((el) => {
       const header = document.createElement('div');
@@ -740,10 +808,28 @@ test.describe('lifecycle', () => {
     });
     await waitForStencilLifecycle(page);
 
-    const statusAfter = await getLifecycleStatus(page);
-
-    expect(statusAfter.componentDidUpdate['p-modal'], 'componentDidUpdate: p-modal').toBe(1);
-    expect(statusAfter.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate['p-modal'];
+        },
+        {
+          message: 'componentDidUpdate: p-modal',
+        }
+      )
+      .toBe(1);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate.all;
+        },
+        {
+          message: 'componentDidUpdate: all',
+        }
+      )
+      .toBe(1);
   });
 });
 
