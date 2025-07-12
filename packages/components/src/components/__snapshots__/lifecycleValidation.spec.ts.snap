@@ -436,6 +436,31 @@ exports[`should call validateProps() with correct parameters via render for p-in
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-input-tel: propTypes with ValidatorFunctions 1`] = `
+{
+  "autoComplete": "oneOf",
+  "compact": "boolean",
+  "description": "string",
+  "disabled": "boolean",
+  "form": "string",
+  "hideLabel": "breakpoint",
+  "indicator": "boolean",
+  "label": "string",
+  "loading": "boolean",
+  "maxLength": "number",
+  "message": "string",
+  "minLength": "number",
+  "name": "string",
+  "pattern": "string",
+  "placeholder": "string",
+  "readOnly": "boolean",
+  "required": "boolean",
+  "state": "oneOf",
+  "theme": "oneOf",
+  "value": "string",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-input-text: propTypes with ValidatorFunctions 1`] = `
 {
   "autoComplete": "oneOf",
