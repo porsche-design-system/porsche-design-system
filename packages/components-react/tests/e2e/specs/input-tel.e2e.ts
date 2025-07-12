@@ -47,7 +47,7 @@ test.describe('form', () => {
     expect(await waitForComponentsReady(page)).toBe(4); // p-input-tel, p-text, 2 p-button
     const host = getHost(page);
     const form = getForm(page);
-    const testValue = '0123456789';
+    const testValue = '123-456-7890';
     await setProperty(host, 'value', testValue);
     await expect(host).toHaveJSProperty('value', testValue);
 
