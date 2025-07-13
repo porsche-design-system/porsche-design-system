@@ -37,6 +37,7 @@ import { InputEmailAutoComplete, InputEmailBlurEventDetail, InputEmailChangeEven
 import { InputNumberAutoComplete, InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
 import { InputPasswordAutoComplete, InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
 import { InputSearchAutoComplete, InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
+import { InputTelAutoComplete, InputTelBlurEventDetail, InputTelChangeEventDetail, InputTelInputEventDetail, InputTelState } from "./components/input-tel/input-tel-utils";
 import { InputTextAutoComplete, InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEventDetail, InputTextState } from "./components/input-text/input-text-utils";
 import { LinkIcon } from "./components/link/link-utils";
 import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
@@ -108,6 +109,7 @@ export { InputEmailAutoComplete, InputEmailBlurEventDetail, InputEmailChangeEven
 export { InputNumberAutoComplete, InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
 export { InputPasswordAutoComplete, InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
 export { InputSearchAutoComplete, InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
+export { InputTelAutoComplete, InputTelBlurEventDetail, InputTelChangeEventDetail, InputTelInputEventDetail, InputTelState } from "./components/input-tel/input-tel-utils";
 export { InputTextAutoComplete, InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEventDetail, InputTextState } from "./components/input-text/input-text-utils";
 export { LinkIcon } from "./components/link/link-utils";
 export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
@@ -1375,6 +1377,88 @@ export namespace Components {
         "theme"?: Theme;
         /**
           * The search input value.
+         */
+        "value"?: string;
+    }
+    interface PInputTel {
+        /**
+          * Specifies whether the input can be autofilled by the browser
+         */
+        "autoComplete"?: InputTelAutoComplete;
+        /**
+          * Displays as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Marks the tel input as disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * The id of a form element the tel input should be associated with.
+         */
+        "form"?: string;
+        /**
+          * Show or hide label and description text. For better accessibility, it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Show tel indicator icon
+         */
+        "indicator"?: boolean;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * The max length of the tel input.
+         */
+        "maxLength"?: number;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The min length of the tel input.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the tel input.
+         */
+        "name": string;
+        /**
+          * Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific tel validation rules than the browser's default. If provided, it overrides the browser's default tel validation.
+         */
+        "pattern"?: string;
+        /**
+          * The placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * Specifies whether the tel input should be read-only.
+         */
+        "readOnly"?: boolean;
+        /**
+          * Marks the tel input as required.
+         */
+        "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: InputTelState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * The tel input value.
          */
         "value"?: string;
     }
@@ -2859,6 +2943,10 @@ export interface PInputSearchCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPInputSearchElement;
 }
+export interface PInputTelCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPInputTelElement;
+}
 export interface PInputTextCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPInputTextElement;
@@ -3318,6 +3406,25 @@ declare global {
     var HTMLPInputSearchElement: {
         prototype: HTMLPInputSearchElement;
         new (): HTMLPInputSearchElement;
+    };
+    interface HTMLPInputTelElementEventMap {
+        "change": InputTelChangeEventDetail;
+        "blur": InputTelBlurEventDetail;
+        "input": InputTelInputEventDetail;
+    }
+    interface HTMLPInputTelElement extends Components.PInputTel, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPInputTelElementEventMap>(type: K, listener: (this: HTMLPInputTelElement, ev: PInputTelCustomEvent<HTMLPInputTelElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPInputTelElementEventMap>(type: K, listener: (this: HTMLPInputTelElement, ev: PInputTelCustomEvent<HTMLPInputTelElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPInputTelElement: {
+        prototype: HTMLPInputTelElement;
+        new (): HTMLPInputTelElement;
     };
     interface HTMLPInputTextElementEventMap {
         "change": InputTextChangeEventDetail;
@@ -3906,6 +4013,7 @@ declare global {
         "p-input-number": HTMLPInputNumberElement;
         "p-input-password": HTMLPInputPasswordElement;
         "p-input-search": HTMLPInputSearchElement;
+        "p-input-tel": HTMLPInputTelElement;
         "p-input-text": HTMLPInputTextElement;
         "p-link": HTMLPLinkElement;
         "p-link-pure": HTMLPLinkPureElement;
@@ -5298,6 +5406,100 @@ declare namespace LocalJSX {
         "theme"?: Theme;
         /**
           * The search input value.
+         */
+        "value"?: string;
+    }
+    interface PInputTel {
+        /**
+          * Specifies whether the input can be autofilled by the browser
+         */
+        "autoComplete"?: InputTelAutoComplete;
+        /**
+          * Displays as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Marks the tel input as disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * The id of a form element the tel input should be associated with.
+         */
+        "form"?: string;
+        /**
+          * Show or hide label and description text. For better accessibility, it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Show tel indicator icon
+         */
+        "indicator"?: boolean;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * The max length of the tel input.
+         */
+        "maxLength"?: number;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The min length of the tel input.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the tel input.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the tel input has lost focus.
+         */
+        "onBlur"?: (event: PInputTelCustomEvent<InputTelBlurEventDetail>) => void;
+        /**
+          * Emitted when the tel input loses focus after its value was changed.
+         */
+        "onChange"?: (event: PInputTelCustomEvent<InputTelChangeEventDetail>) => void;
+        /**
+          * Emitted when the value has been changed as a direct result of a user action.
+         */
+        "onInput"?: (event: PInputTelCustomEvent<InputTelInputEventDetail>) => void;
+        /**
+          * Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific tel validation rules than the browser's default. If provided, it overrides the browser's default tel validation.
+         */
+        "pattern"?: string;
+        /**
+          * The placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * Specifies whether the tel input should be read-only.
+         */
+        "readOnly"?: boolean;
+        /**
+          * Marks the tel input as required.
+         */
+        "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: InputTelState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * The tel input value.
          */
         "value"?: string;
     }
@@ -6901,6 +7103,7 @@ declare namespace LocalJSX {
         "p-input-number": PInputNumber;
         "p-input-password": PInputPassword;
         "p-input-search": PInputSearch;
+        "p-input-tel": PInputTel;
         "p-input-text": PInputText;
         "p-link": PLink;
         "p-link-pure": PLinkPure;
@@ -7036,6 +7239,7 @@ declare module "@stencil/core" {
             "p-input-number": LocalJSX.PInputNumber & JSXBase.HTMLAttributes<HTMLPInputNumberElement>;
             "p-input-password": LocalJSX.PInputPassword & JSXBase.HTMLAttributes<HTMLPInputPasswordElement>;
             "p-input-search": LocalJSX.PInputSearch & JSXBase.HTMLAttributes<HTMLPInputSearchElement>;
+            "p-input-tel": LocalJSX.PInputTel & JSXBase.HTMLAttributes<HTMLPInputTelElement>;
             "p-input-text": LocalJSX.PInputText & JSXBase.HTMLAttributes<HTMLPInputTextElement>;
             "p-link": LocalJSX.PLink & JSXBase.HTMLAttributes<HTMLPLinkElement>;
             "p-link-pure": LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;

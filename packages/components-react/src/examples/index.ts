@@ -32,6 +32,8 @@ export * from './InputTextExample';
 export * from './InputTextExampleControlled';
 export * from './InputEmailExample';
 export * from './InputEmailExampleControlled';
+export * from './InputTelExample';
+export * from './InputTelExampleControlled';
 export * from './InputSearchExample';
 export * from './InputSearchExampleControlled';
 export * from './LinkTileExampleHyphens';
