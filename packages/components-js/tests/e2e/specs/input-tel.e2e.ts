@@ -14,8 +14,8 @@ import {
 
 const getHost = (page: Page) => page.locator('p-input-tel');
 const getFieldset = (page: Page) => page.locator('fieldset');
-const getInputEmail = (page: Page) => page.locator('p-input-tel input');
-const getInputEmailWrapper = (page: Page) => page.locator('p-input-tel .wrapper');
+const getInputTel = (page: Page) => page.locator('p-input-tel input');
+const getInputTelWrapper = (page: Page) => page.locator('p-input-tel .wrapper');
 const getLabel = (page: Page) => page.locator('p-input-tel label');
 const getForm = (page: Page) => page.locator('form');
 
@@ -29,7 +29,7 @@ type InitOptions = {
   markupAfter?: string;
 };
 
-const initInputEmail = (page: Page, opts?: InitOptions): Promise<void> => {
+const initInputTel = (page: Page, opts?: InitOptions): Promise<void> => {
   const {
     props = {},
     useSlottedLabel = false,
@@ -57,18 +57,18 @@ const initInputEmail = (page: Page, opts?: InitOptions): Promise<void> => {
 test.describe('value', () => {
   test('should sync value with input value', async ({ page }) => {
     const testValue = '10';
-    await initInputEmail(page, { props: { name: 'some-name', value: testValue } });
+    await initInputTel(page, { props: { name: 'some-name', value: testValue } });
     const host = getHost(page);
-    const inputEmail = getInputEmail(page);
+    const inputEmail = getInputTel(page);
 
     await expect(host).toHaveJSProperty('value', testValue);
     await expect(inputEmail).toHaveJSProperty('value', testValue);
   });
 
   test('should sync value with slotted content when typing', async ({ page }) => {
-    await initInputEmail(page);
+    await initInputTel(page);
     const host = getHost(page);
-    const inputEmail = getInputEmail(page);
+    const inputEmail = getInputTel(page);
     await expect(host).toHaveJSProperty('value', '');
     await expect(inputEmail).toHaveJSProperty('value', '');
 
@@ -82,9 +82,9 @@ test.describe('value', () => {
   });
 
   test('should sync slotted content with value when changed programmatically', async ({ page }) => {
-    await initInputEmail(page);
+    await initInputTel(page);
     const host = getHost(page);
-    const inputEmail = getInputEmail(page);
+    const inputEmail = getInputTel(page);
     await expect(host).toHaveJSProperty('value', '');
     await expect(inputEmail).toHaveJSProperty('value', '');
 
@@ -103,7 +103,7 @@ test.describe('form', () => {
   test('should include name & value in FormData submit', async ({ page }) => {
     const name = 'name';
     const value = 'example@porsche.de';
-    await initInputEmail(page, {
+    await initInputTel(page, {
       props: { name, value },
       isWithinForm: true,
       markupAfter: '<button type="submit">Submit</button>',
@@ -123,7 +123,7 @@ test.describe('form', () => {
     const name = 'name';
     const value = 'example@porsche.de';
     const formId = 'myForm';
-    await initInputEmail(page, {
+    await initInputTel(page, {
       props: { name, value, form: formId },
       markupBefore: `<form id="myForm" onsubmit="return false;"><button type="submit">Submit</button></form>`,
     });
@@ -142,7 +142,7 @@ test.describe('form', () => {
     const name = 'name';
     const value = '';
     const required = true;
-    await initInputEmail(page, {
+    await initInputTel(page, {
       props: { name, value, required },
       isWithinForm: true,
       markupAfter: '<button type="submit">Submit</button>',
@@ -162,7 +162,7 @@ test.describe('form', () => {
     const name = 'name';
     const value = '';
     const required = true;
-    await initInputEmail(page, {
+    await initInputTel(page, {
       props: { name, value, required },
       isWithinForm: true,
       markupAfter: '<button type="submit">Submit</button>',
@@ -184,7 +184,7 @@ test.describe('form', () => {
     const name = 'name';
     const value = 'example@porsche.de';
     const required = true;
-    await initInputEmail(page, {
+    await initInputTel(page, {
       props: { name, value, required },
       isWithinForm: true,
       markupAfter: `
@@ -193,7 +193,7 @@ test.describe('form', () => {
       `,
     });
     const form = getForm(page);
-    const inputEmail = getInputEmail(page);
+    const inputEmail = getInputTel(page);
 
     await addEventListener(form, 'submit');
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
@@ -212,7 +212,7 @@ test.describe('form', () => {
     const name = 'name';
     const value = '';
     const required = true;
-    await initInputEmail(page, {
+    await initInputTel(page, {
       props: { name, value, required },
       isWithinForm: true,
       markupAfter: `
@@ -221,7 +221,7 @@ test.describe('form', () => {
       `,
     });
     const form = getForm(page);
-    const inputEmail = getInputEmail(page);
+    const inputEmail = getInputTel(page);
 
     await addEventListener(form, 'submit');
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
@@ -239,8 +239,8 @@ test.describe('form', () => {
     const value = 'example@porsche.de';
     const newValue = 'hello@porsche.de';
     const host = getHost(page);
-    const inputEmail = getInputEmail(page);
-    await initInputEmail(page, {
+    const inputEmail = getInputTel(page);
+    await initInputTel(page, {
       props: { name, value },
       isWithinForm: true,
       markupAfter: `
@@ -275,7 +275,7 @@ test.describe('form', () => {
     const name = 'name';
     const value = 'example@porsche.de';
     const host = getHost(page);
-    await initInputEmail(page, {
+    await initInputTel(page, {
       props: { name, value },
       isWithinForm: true,
       markupBefore: `<fieldset disabled>`,
@@ -286,13 +286,13 @@ test.describe('form', () => {
   });
 
   test('should sync disabled state with fieldset when updated programmatically', async ({ page }) => {
-    await initInputEmail(page, {
+    await initInputTel(page, {
       isWithinForm: true,
       markupBefore: `<fieldset disabled>`,
       markupAfter: `</fieldset>`,
     });
     const host = getHost(page);
-    const inputEmail = getInputEmail(page);
+    const inputEmail = getInputTel(page);
     const fieldset = getFieldset(page);
     await expect(fieldset).toHaveJSProperty('disabled', true);
     await expect(host).toHaveJSProperty('disabled', true);
@@ -309,9 +309,9 @@ test.describe('form', () => {
 
 test.describe('focus state', () => {
   test('should focus input-tel when label is clicked', async ({ page }) => {
-    await initInputEmail(page, { props: { name: 'some-name', label: 'Some label' } });
+    await initInputTel(page, { props: { name: 'some-name', label: 'Some label' } });
     const label = getLabel(page);
-    const inputEmail = getInputEmail(page);
+    const inputEmail = getInputTel(page);
 
     await addEventListener(inputEmail, 'focus');
     await expect(inputEmail).not.toBeFocused();
@@ -322,10 +322,10 @@ test.describe('focus state', () => {
   });
 
   test('should focus input-tel when host is focused', async ({ page }) => {
-    await initInputEmail(page);
+    await initInputTel(page);
     const host = getHost(page);
-    const inputEmail = getInputEmail(page);
-    const inputEmailWrapper = getInputEmailWrapper(page);
+    const inputEmail = getInputTel(page);
+    const inputEmailWrapper = getInputTelWrapper(page);
 
     await addEventListener(inputEmail, 'focus');
     await expect(inputEmail).not.toBeFocused();
@@ -338,9 +338,9 @@ test.describe('focus state', () => {
   });
 
   test('should keep focus when switching to loading state', async ({ page }) => {
-    await initInputEmail(page, { props: { name: 'Some name', label: 'Some label' } });
+    await initInputTel(page, { props: { name: 'Some name', label: 'Some label' } });
     const host = getHost(page);
-    const inputEmail = getInputEmail(page);
+    const inputEmail = getInputTel(page);
 
     await expect(host).not.toBeFocused();
     await expect(inputEmail).not.toBeFocused();
@@ -360,9 +360,9 @@ test.describe('focus state', () => {
 test.describe('Event', () => {
   skipInBrowsers(['firefox', 'webkit'], () => {
     test('should trigger a change event when input-tel value is modified and focus is lost', async ({ page }) => {
-      await initInputEmail(page);
+      await initInputTel(page);
       const host = getHost(page);
-      const inputEmail = getInputEmail(page);
+      const inputEmail = getInputTel(page);
 
       await addEventListener(host, 'change');
       expect((await getEventSummary(host, 'change')).counter).toBe(0);
@@ -374,8 +374,8 @@ test.describe('Event', () => {
       expect((await getEventSummary(host, 'change')).counter).toBe(1);
     });
     test('should trigger a blur event when the input-tel loses focus', async ({ page }) => {
-      await initInputEmail(page);
-      const inputEmail = getInputEmail(page);
+      await initInputTel(page);
+      const inputEmail = getInputTel(page);
       const host = getHost(page);
 
       await addEventListener(host, 'blur');
@@ -389,8 +389,8 @@ test.describe('Event', () => {
     });
   });
   test('should trigger an input event each time the input-tel value is changed', async ({ page }) => {
-    await initInputEmail(page);
-    const inputEmail = getInputEmail(page);
+    await initInputTel(page);
+    const inputEmail = getInputTel(page);
     const host = getHost(page);
 
     await addEventListener(host, 'input');
@@ -409,11 +409,11 @@ test.describe('hover state', () => {
   const hoverBorderColor = 'rgb(1, 2, 5)';
 
   test('should show hover state on input-tel when label is hovered', async ({ page }) => {
-    await initInputEmail(page, { props: { name: 'some-name', label: 'Some label' } });
+    await initInputTel(page, { props: { name: 'some-name', label: 'Some label' } });
     await page.mouse.move(0, 300); // avoid potential hover initially
     const label = getLabel(page);
-    const inputEmail = getInputEmail(page);
-    const inputEmailWrapper = getInputEmailWrapper(page);
+    const inputEmail = getInputTel(page);
+    const inputEmailWrapper = getInputTelWrapper(page);
 
     await expect(inputEmailWrapper).toHaveCSS('border-color', defaultBorderColor);
     await inputEmail.hover();
@@ -430,7 +430,7 @@ test.describe('hover state', () => {
 
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {
-    await initInputEmail(page, {
+    await initInputTel(page, {
       props: { name: 'some-name', state: 'error' },
       useSlottedLabel: true,
       useSlottedMessage: true,
@@ -446,7 +446,7 @@ test.describe('lifecycle', () => {
   });
 
   test('should work without unnecessary round trips after state change', async ({ page }) => {
-    await initInputEmail(page, {
+    await initInputTel(page, {
       props: { name: 'some-name', state: 'error' },
       useSlottedLabel: true,
       useSlottedMessage: true,
@@ -464,7 +464,7 @@ test.describe('lifecycle', () => {
   });
 
   test('should work without unnecessary round trips after value change', async ({ page }) => {
-    await initInputEmail(page, { props: { name: 'some-name', state: 'error' } });
+    await initInputTel(page, { props: { name: 'some-name', state: 'error' } });
     const host = getHost(page);
     const status = await getLifecycleStatus(page);
 
