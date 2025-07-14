@@ -36,9 +36,11 @@ const patchStencilSSRHydration = (fileContent: string): string => {
      */
     const applySnippetPart1 = `
                 ${PDS_PATCH_START}
-                if ($2.shadowDelegatesFocus && (!self.hasDSR || HTMLTemplateElement.prototype.hasOwnProperty('shadowRoot'))) {
-                  $5
-                  self.shadowRoot.innerHTML = ssrInnerHTML;
+                if ($2.shadowDelegatesFocus) {
+                  if (!self.hasDSR || HTMLTemplateElement.prototype.hasOwnProperty('shadowRoot')) {
+                    $5
+                    self.shadowRoot.innerHTML = ssrInnerHTML;
+                  }
                 } else {
                   $5
                 }
