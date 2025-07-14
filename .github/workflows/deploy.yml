@@ -115,9 +115,9 @@ jobs:
         with:
           source: 'packages/assets/cdn/styles/'
           target: 'styles/'
-        # env:
-        #   AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
-        #   AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
   akamai-cdn-assets-smoke:
     name: 'Akamai CDN (Assets) Smoke'
     needs:

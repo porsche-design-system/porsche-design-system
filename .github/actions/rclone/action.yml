@@ -13,5 +13,5 @@ runs:
   steps:
     - name: 'Copy'
       run: |
-        rclone copy "${{ inputs.source }}" "linode:porsche-design-system/porsche-design-system/${{ inputs.target }}" --config=./rclone.conf --ignore-existing -v --exclude=font-face.css
+        rclone copy "${{ inputs.source }}" "linode:porsche-design-system/porsche-design-system/${{ inputs.target }}" --config=./../../../rclone.conf --ignore-existing -v --exclude=font-face.css
       shell: bash
