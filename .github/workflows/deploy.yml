@@ -36,32 +36,88 @@ jobs:
         uses: actions/checkout@v4
       - name: 'Install'
         uses: ./.github/actions/install
+        with:
+          rclone: 'true'
       - name: 'Setup Node'
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - name: 'Install rclone'
-        run: |
-          sudo apt-get -yq --no-install-suggests --no-install-recommends install rclone
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - run: chmod +x ./.github/workflows/deploy-akamai-cdn.sh
-      - name: 'Deploy'
-        run: |
-          ./.github/workflows/deploy-akamai-cdn.sh packages/assets/cdn/components/ components/
-          ./.github/workflows/deploy-akamai-cdn.sh packages/assets/cdn/crest/ crest/
-          ./.github/workflows/deploy-akamai-cdn.sh packages/assets/cdn/fallbacks/ fallbacks/
-          ./.github/workflows/deploy-akamai-cdn.sh packages/assets/cdn/fonts/ fonts/
-          ./.github/workflows/deploy-akamai-cdn.sh packages/assets/cdn/icons/ icons/
-          ./.github/workflows/deploy-akamai-cdn.sh packages/assets/cdn/marque/ marque/
-          ./.github/workflows/deploy-akamai-cdn.sh packages/assets/cdn/meta-icons/ meta-icons/
-          ./.github/workflows/deploy-akamai-cdn.sh packages/assets/cdn/model-signatures/ model-signatures/
-          ./.github/workflows/deploy-akamai-cdn.sh packages/assets/cdn/styles/ styles/
+      - name: 'Rclone (Components)'
+        uses: ./.github/actions/rclone
+        with:
+          source: 'packages/assets/cdn/components/'
+          target: 'components/'
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
+      - name: 'Rclone (Crest)'
+        uses: ./.github/actions/rclone
+        with:
+          source: 'packages/assets/cdn/crest/'
+          target: 'crest/'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
+      - name: 'Rclone (Fallbacks)'
+        uses: ./.github/actions/rclone
+        with:
+          source: 'packages/assets/cdn/fallbacks/'
+          target: 'fallbacks/'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
+      - name: 'Rclone (Fonts)'
+        uses: ./.github/actions/rclone
+        with:
+          source: 'packages/assets/cdn/fonts/'
+          target: 'fonts/'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
+      - name: 'Rclone (Icons)'
+        uses: ./.github/actions/rclone
+        with:
+          source: 'packages/assets/cdn/icons/'
+          target: 'icons/'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
+      - name: 'Rclone (Marque)'
+        uses: ./.github/actions/rclone
+        with:
+          source: 'packages/assets/cdn/marque/'
+          target: 'marque/'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
+      - name: 'Rclone (Meta Icons)'
+        uses: ./.github/actions/rclone
+        with:
+          source: 'packages/assets/cdn/meta-icons/'
+          target: 'meta-icons/'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
+      - name: 'Rclone (Model Signatures)'
+        uses: ./.github/actions/rclone
+        with:
+          source: 'packages/assets/cdn/model-signatures/'
+          target: 'model-signatures/'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
+      - name: 'Rclone (Styles)'
+        uses: ./.github/actions/rclone
+        with:
+          source: 'packages/assets/cdn/styles/'
+          target: 'styles/'
+        # env:
+        #   AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
+        #   AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
   akamai-cdn-assets-smoke:
     name: 'Akamai CDN (Assets) Smoke'
     needs:

@@ -1,5 +1,11 @@
 name: 'Install'
 
+inputs:
+  rclone:
+    description: 'Install rclone'
+    required: false
+    default: 'false'
+
 runs:
   using: 'composite'
   steps:
@@ -12,4 +18,9 @@ runs:
     - name: 'Install node_modules'
       if: steps.cache-node_modules.outputs.cache-hit != 'true'
       run: yarn install --frozen-lockfile
+      shell: bash
+    - name: 'Install rclone'
+      if: inputs.rclone == 'true'
+      run: |
+        sudo apt-get -yq --no-install-suggests --no-install-recommends install rclone
       shell: bash
