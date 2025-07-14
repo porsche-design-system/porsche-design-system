@@ -13,7 +13,7 @@ type LegacyLabelProps = {
   isDisabled?: boolean;
 };
 
-type LabelClickEvent = MouseEvent & { target: HTMLElement };
+type LabelClickEvent = PointerEvent & { target: HTMLElement };
 
 export const LegacyLabel: FunctionalComponent<LegacyLabelProps> = ({
   host,

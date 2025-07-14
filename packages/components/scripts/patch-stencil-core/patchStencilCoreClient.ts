@@ -18,27 +18,31 @@ const patchStencilSSRHydration = (fileContent: string): string => {
   if (getPatchMarkerCount(fileContent, pdsPatchStartRegEx) === 0) {
     // no markers found, patch stencil core
     const extractSnippet = `
-                            ${PDS_PATCH_START}
-                            let ssrInnerHTML = '';
-                            if (self.shadowRoot) {
-                              ssrInnerHTML = self.shadowRoot.innerHTML;
-                              self.hasDSR = true;
-                            }
-                            ${PDS_PATCH_END}\n`;
+              ${PDS_PATCH_START}
+              let ssrInnerHTML = '';
+              if (self.shadowRoot) {
+                ssrInnerHTML = self.shadowRoot.innerHTML;
+                self.hasDSR = true;
+              }
+              ${PDS_PATCH_END}`;
 
+    /**
+     * In DSR ponyfilled browsers (e.g. Safari), the shadowRoot is already attached
+     * and a second attempt fails. Therefore, this needs to always run without SSR,
+     * and only with SSR for browsers that are not ponyfilled.
+     *
+     * The `shadowDelegatesFocus` condition is duplicated in order to avoid
+     * complicating the ternary expression in `createShadowRoot.call`.
+     */
     const applySnippetPart1 = `
-                                ${PDS_PATCH_START}
-                                // in dsr ponyfilled browsers (e.g. Safari), the shadowRoot is already attached
-                                // and a 2nd attempt fails, therefore this needs to always run without SSR
-                                // and only with SSR for browsers that are not ponyfilled
-                                if (!self.hasDSR || HTMLTemplateElement.prototype.hasOwnProperty('shadowRoot')) {
-                                ${PDS_PATCH_END}\n`;
-
-    const applySnippetPart2 = `
-                                ${PDS_PATCH_START}
-                                    self.shadowRoot.innerHTML = ssrInnerHTML;
-                                }
-                                ${PDS_PATCH_END}\n\n`;
+                ${PDS_PATCH_START}
+                if ($2.shadowDelegatesFocus && (!self.hasDSR || HTMLTemplateElement.prototype.hasOwnProperty('shadowRoot'))) {
+                  $5
+                  self.shadowRoot.innerHTML = ssrInnerHTML;
+                } else {
+                  $5
+                }
+                ${PDS_PATCH_END}`;
 
     const cleanupSnippet = `
 
@@ -52,8 +56,8 @@ const patchStencilSSRHydration = (fileContent: string): string => {
     const newFileContent = fileContent
       // inject applying snippets
       .replace(
-        /(if \(supportsShadow\) {)(\s+if \(!self\.shadowRoot\) {\s+if \(BUILD[0-9]{2}\.shadowDelegatesFocus\) {)([\s\S]+?;\n)/,
-        `$1${extractSnippet}$2${applySnippetPart1}$3${applySnippetPart2}`
+        /(if \((BUILD28)[\S\s]*?)(if \(supportsShadow\) {)(\s+if \(!self\.shadowRoot\) {)\s+(createShadowRoot\.call\(self, cmpMeta\);)/,
+        `$1$3${extractSnippet}$4${applySnippetPart1}`
       )
       // inject cleanup snippet
       .replace(
@@ -61,7 +65,7 @@ const patchStencilSSRHydration = (fileContent: string): string => {
         `${cleanupSnippet}$&`
       );
 
-    if (getPatchMarkerCount(newFileContent, pdsPatchStartRegEx) !== 4) {
+    if (getPatchMarkerCount(newFileContent, pdsPatchStartRegEx) !== 3) {
       throw new Error('Failed patching @stencil/core client. Position for snippets not found.\n');
     }
     return newFileContent;

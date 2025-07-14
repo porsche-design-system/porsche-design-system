@@ -1,8 +1,8 @@
-import type { TagName } from '@porsche-design-system/shared';
-import * as path from 'path';
 import * as fs from 'fs';
-import { globbySync } from 'globby';
+import * as path from 'path';
 import { isDeprecatedComponent } from '@porsche-design-system/component-meta/src/utils';
+import type { TagName } from '@porsche-design-system/shared';
+import { globbySync } from 'globby';
 
 const ROOT_DIR = path.normalize(__dirname + '/../../');
 const DIST_DIR = path.resolve(ROOT_DIR, 'dist');
@@ -37,9 +37,10 @@ export class InputParser {
   }
 
   public getRawComponentInterface(component: TagName): string {
+    const localJSXWithoutComments = this.rawLocalJSX.replace(/\n\s*\/\*\*(?:.|\s)*?\*\/\n/g, '\n'); // remove all comments from LocalJSX
     // We need semicolon and double newline to ensure comments are ignored
     const regex = new RegExp(`interface ${this.intrinsicElements[component]} ({(?:\\s|.)*?;?\\s\\s})`);
-    let [, rawLocalJSXInterface] = regex.exec(this.rawLocalJSX) || [];
+    let [, rawLocalJSXInterface] = regex.exec(localJSXWithoutComments) || [];
 
     const cleanInterface = (input: string): string =>
       input

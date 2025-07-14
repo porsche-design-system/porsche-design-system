@@ -160,6 +160,7 @@ export namespace Components {
         "heading"?: string;
         /**
           * Sets a heading tag, so it fits correctly within the outline of the page.
+          * @default 'h2'
          */
         "headingTag"?: AccordionHeadingTag;
         /**
@@ -168,6 +169,7 @@ export namespace Components {
         "open"?: boolean;
         /**
           * The text size.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<AccordionSize>;
         /**
@@ -180,6 +182,7 @@ export namespace Components {
         "tag"?: AccordionTag;
         /**
           * Adapts the color when used on dark background.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -189,22 +192,27 @@ export namespace Components {
     interface PBanner {
         /**
           * Description of the banner.
+          * @default ''
          */
         "description"?: string;
         /**
           * If false, the banner will not have a dismiss button.
+          * @default true
          */
         "dismissButton"?: boolean;
         /**
           * Heading of the banner.
+          * @default ''
          */
         "heading"?: string;
         /**
           * Sets a heading tag, so it fits correctly within the outline of the page.
+          * @default 'h5'
          */
         "headingTag"?: BannerHeadingTag;
         /**
           * If true, the banner is open.
+          * @default false
          */
         "open": boolean;
         /**
@@ -213,10 +221,12 @@ export namespace Components {
         "persistent"?: boolean;
         /**
           * State of the banner.
+          * @default 'info'
          */
         "state"?: BannerState;
         /**
           * Adapts the banner color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
@@ -232,10 +242,12 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<ButtonAriaAttribute>;
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -244,10 +256,12 @@ export namespace Components {
         "form"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The icon shown. By choosing 'none', no icon is displayed.
+          * @default 'none'
          */
         "icon"?: ButtonIcon;
         /**
@@ -256,6 +270,7 @@ export namespace Components {
         "iconSource"?: string;
         /**
           * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -264,10 +279,12 @@ export namespace Components {
         "name"?: string;
         /**
           * Adapts the button color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * Specifies the type of the button.
+          * @default 'submit'
          */
         "type"?: ButtonType;
         /**
@@ -276,22 +293,26 @@ export namespace Components {
         "value"?: string;
         /**
           * The style variant of the button.
+          * @default 'primary'
          */
         "variant"?: ButtonVariant;
     }
     interface PButtonGroup {
         /**
           * Defines the direction of the main and cross axis. The default is ’{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint ‘xs’. You always need to provide a base value when using breakpoints.
+          * @default { base: 'column', xs: 'row' }
          */
         "direction"?: BreakpointCustomizable<ButtonGroupDirection>;
     }
     interface PButtonPure {
         /**
           * Display button in active state.
+          * @default false
          */
         "active"?: boolean;
         /**
           * Aligns the label.
+          * @default 'end'
          */
         "alignLabel"?: BreakpointCustomizable<ButtonPureAlignLabel>;
         /**
@@ -300,6 +321,7 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<ButtonPureAriaAttribute>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -308,10 +330,12 @@ export namespace Components {
         "form"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The icon shown.
+          * @default 'arrow-right'
          */
         "icon"?: ButtonPureIcon;
         /**
@@ -320,6 +344,7 @@ export namespace Components {
         "iconSource"?: string;
         /**
           * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -328,22 +353,27 @@ export namespace Components {
         "name"?: string;
         /**
           * Size of the button.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<ButtonPureSize>;
         /**
           * Stretches the area between icon and label to max available space.
+          * @default false
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * Adapts the button color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * Specifies the type of the button.
+          * @default 'submit'
          */
         "type"?: ButtonPureType;
         /**
           * Shows an underline under the label.
+          * @default false
          */
         "underline"?: boolean;
         /**
@@ -353,12 +383,14 @@ export namespace Components {
         /**
           * The weight of the text (only has effect with visible label).
           * @deprecated since v3.0.0, will be removed with next major release
+          * @default 'regular'
          */
         "weight"?: ButtonPureWeight;
     }
     interface PButtonTile {
         /**
           * Alignment of button and description.
+          * @default 'bottom'
          */
         "align"?: ButtonTileAlign;
         /**
@@ -367,14 +399,17 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<ButtonTileAriaAttribute>;
         /**
           * Aspect ratio of the button-tile.
+          * @default '4/3'
          */
         "aspectRatio"?: BreakpointCustomizable<ButtonTileAspectRatio>;
         /**
           * Adapts the description and button theme when used on light background image.
+          * @default 'dark'
          */
         "background"?: ButtonTileBackground;
         /**
           * Displays the button-tile as compact version with description and button icon only.
+          * @default false
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
@@ -383,14 +418,17 @@ export namespace Components {
         "description": string;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Show gradient.
+          * @default true
          */
         "gradient"?: boolean;
         /**
           * The icon shown. By choosing 'none', no icon is displayed.
+          * @default 'none'
          */
         "icon"?: ButtonTileIcon;
         /**
@@ -403,18 +441,22 @@ export namespace Components {
         "label": string;
         /**
           * Disables the button-tile and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "loading"?: boolean;
         /**
           * Font size of the description.
+          * @default 'medium'
          */
         "size"?: BreakpointCustomizable<ButtonTileSize>;
         /**
           * Specifies the type of the button.
+          * @default 'submit'
          */
         "type"?: ButtonTileType;
         /**
           * Font weight of the description.
+          * @default 'semi-bold'
          */
         "weight"?: BreakpointCustomizable<ButtonTileWeight>;
     }
@@ -424,14 +466,17 @@ export namespace Components {
     interface PCanvas {
         /**
           * Open the sidebar on the end side
+          * @default false
          */
         "sidebarEndOpen"?: boolean;
         /**
           * Open the sidebar on the start side
+          * @default false
          */
         "sidebarStartOpen"?: boolean;
         /**
           * Adapts the color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -441,14 +486,17 @@ export namespace Components {
     interface PCarousel {
         /**
           * Defines which slide to be active (zero-based numbering).
+          * @default 0
          */
         "activeSlideIndex"?: number;
         /**
           * Alignment of slotted controls
+          * @default 'auto'
          */
         "alignControls"?: CarouselAlignControls;
         /**
           * Alignment of heading and description
+          * @default 'start'
          */
         "alignHeader"?: CarouselAlignHeader;
         /**
@@ -465,10 +513,12 @@ export namespace Components {
         "disablePagination"?: BreakpointCustomizable<boolean>;
         /**
           * Indicates whether focus should be set on the center slide. If true, the carousel loops by individual slide; otherwise, it loops by page.
+          * @default false
          */
         "focusOnCenterSlide"?: boolean;
         /**
           * Adapts the background gradient for the left and right edge.
+          * @default 'none'
          */
         "gradientColor"?: CarouselGradientColor;
         /**
@@ -477,6 +527,7 @@ export namespace Components {
         "heading"?: string;
         /**
           * Defines the heading size used in the carousel.
+          * @default 'x-large'
          */
         "headingSize"?: CarouselHeadingSize;
         /**
@@ -485,10 +536,12 @@ export namespace Components {
         "intl"?: CarouselInternationalization;
         /**
           * If false, the carousel will not show pagination bullets at the bottom.
+          * @default true
          */
         "pagination"?: BreakpointCustomizable<boolean>;
         /**
           * Whether the slides should rewind from last to first slide and vice versa.
+          * @default true
          */
         "rewind"?: boolean;
         /**
@@ -497,18 +550,22 @@ export namespace Components {
         "skipLinkTarget"?: string;
         /**
           * Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS.
+          * @default 1
          */
         "slidesPerPage"?: BreakpointCustomizable<CarouselSlidesPerPage>;
         /**
           * Adapts the color when used on dark background.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * Determines whether to trim spaces before/after the carousel if `focusOnCenterSlide` option is true.
+          * @default true
          */
         "trimSpace"?: boolean;
         /**
           * Defines the outer spacings between the carousel and the left and right screen sides.
+          * @default 'basic'
          */
         "width"?: CarouselWidth;
         /**
@@ -520,14 +577,17 @@ export namespace Components {
     interface PCheckbox {
         /**
           * Reflects the checkbox current checked state and allows setting the initial checked state.
+          * @default false
          */
         "checked"?: boolean;
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Marks the checkbox as disabled.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -536,68 +596,84 @@ export namespace Components {
         "form"?: string;
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Marks the checkbox as indeterminate.
+          * @default false
          */
         "indeterminate"?: boolean;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Disables the checkbox and shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
           * The name of the checkbox.
+          * @default ''
          */
         "name"?: string;
         /**
           * Marks the checkbox as required.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: CheckboxState;
         /**
           * Adapts the color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The checkbox value. When a form is submitted, only a checkbox which is currently checked is included in the submission.
+          * @default 'on'
          */
         "value"?: string;
     }
     interface PCheckboxWrapper {
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Disables the checkbox and shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: CheckboxWrapperState;
         /**
           * Adapts the color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -608,15 +684,18 @@ export namespace Components {
         /**
           * Has no effect anymore
           * @deprecated since v3.0.0, will be removed with next major release
+          * @default 'transparent'
          */
         "backgroundColor"?: ContentWrapperBackgroundColor;
         /**
           * Has no effect anymore
           * @deprecated since v3.0.0, will be removed with next major release
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
+          * @default 'extended'
          */
         "width"?: ContentWrapperWidth;
     }
@@ -631,24 +710,29 @@ export namespace Components {
         "href"?: string;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: CrestTarget;
     }
     interface PDisplay {
         /**
           * Text alignment of the component.
+          * @default 'start'
          */
         "align"?: DisplayAlign;
         /**
           * Basic text color variations depending on theme property.
+          * @default 'primary'
          */
         "color"?: DisplayColor;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
+          * @default false
          */
         "ellipsis"?: boolean;
         /**
           * Size of the component. Also defines the size for specific breakpoints, like {base: "medium", l: "large"}. You always need to provide a base value when doing this.
+          * @default 'large'
          */
         "size"?: BreakpointCustomizable<DisplaySize>;
         /**
@@ -657,16 +741,19 @@ export namespace Components {
         "tag"?: DisplayTag;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
     interface PDivider {
         /**
           * Defines color depending on theme.
+          * @default 'contrast-low'
          */
         "color"?: DividerColor;
         /**
           * Defines direction.
+          * @default 'horizontal'
          */
         "direction"?: BreakpointCustomizable<DividerDirection>;
         /**
@@ -675,6 +762,7 @@ export namespace Components {
         "orientation"?: BreakpointCustomizable<DividerOrientation>;
         /**
           * Adapts color depending on theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -694,10 +782,12 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<DrilldownAriaAttribute>;
         /**
           * If true, the drilldown is visualized as opened.
+          * @default false
          */
         "open"?: boolean;
         /**
           * Adapts the drilldown color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -707,6 +797,7 @@ export namespace Components {
     interface PDrilldownItem {
         /**
           * Private property set by the component itself.
+          * @default false
          */
         "cascade"?: boolean;
         /**
@@ -719,10 +810,12 @@ export namespace Components {
         "label"?: string;
         /**
           * Private property set by the component itself.
+          * @default false
          */
         "primary"?: boolean;
         /**
           * Private property set by the component itself.
+          * @default false
          */
         "secondary"?: boolean;
     }
@@ -732,6 +825,7 @@ export namespace Components {
     interface PDrilldownLink {
         /**
           * Display link in active state.
+          * @default false
          */
         "active"?: boolean;
         /**
@@ -752,32 +846,39 @@ export namespace Components {
         "rel"?: string;
         /**
           * Target attribute where the link should be opened (only has effect when `href` is defined and no slotted anchor is used).
+          * @default '_self'
          */
         "target"?: DrilldownLinkTarget;
     }
     interface PFieldset {
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * The size of the label text.
+          * @default 'medium'
          */
         "labelSize"?: FieldsetLabelSize;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
           * Marks the Fieldset as required.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: FieldsetState;
         /**
           * Adapts color depending on theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -787,26 +888,32 @@ export namespace Components {
     interface PFieldsetWrapper {
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * The size of the label text.
+          * @default 'medium'
          */
         "labelSize"?: FieldsetWrapperLabelSize;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
           * Marks the Fieldset as required.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: FieldsetWrapperState;
         /**
           * Adapts color depending on theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -816,26 +923,32 @@ export namespace Components {
     interface PFlex {
         /**
           * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
+          * @default 'stretch'
          */
         "alignContent"?: BreakpointCustomizable<FlexAlignContent>;
         /**
           * Defines how the flex items are aligned along the cross axis.
+          * @default 'stretch'
          */
         "alignItems"?: BreakpointCustomizable<FlexAlignItems>;
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right.
+          * @default 'row'
          */
         "direction"?: BreakpointCustomizable<FlexDirection>;
         /**
           * Defines the flex containers content flow if 2 or more containers are siblings of each other.
+          * @default false
          */
         "inline"?: BreakpointCustomizable<FlexInline>;
         /**
           * Defines how the flex items are aligned along the main axis.
+          * @default 'flex-start'
          */
         "justifyContent"?: BreakpointCustomizable<FlexJustifyContent>;
         /**
           * Handles wrapping behaviour of elements.
+          * @default 'nowrap'
          */
         "wrap"?: BreakpointCustomizable<FlexWrap>;
     }
@@ -845,26 +958,32 @@ export namespace Components {
     interface PFlexItem {
         /**
           * Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.
+          * @default 'auto'
          */
         "alignSelf"?: BreakpointCustomizable<FlexItemAlignSelf>;
         /**
           * The shorthand property for the combined definition of "shrink", "grow" and "basis"
+          * @default 'initial'
          */
         "flex"?: BreakpointCustomizable<FlexItemFlex>;
         /**
           * The ability to allow/disallow the flex child to grow.
+          * @default 0
          */
         "grow"?: BreakpointCustomizable<FlexItemGrow>;
         /**
           * The offset of the column. You can also supply values for specific breakpoints, like {base: "none", l: "one-quarter"}. You always need to provide a base value when doing this.
+          * @default 'none'
          */
         "offset"?: BreakpointCustomizable<FlexItemOffset>;
         /**
           * The ability to allow/disallow the flex child to shrink.
+          * @default 1
          */
         "shrink"?: BreakpointCustomizable<FlexItemShrink>;
         /**
           * The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this.
+          * @default 'auto'
          */
         "width"?: BreakpointCustomizable<FlexItemWidth>;
     }
@@ -878,22 +997,27 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<FlyoutAriaAttribute>;
         /**
           * If true, the flyout will not be closable via backdrop click.
+          * @default false
          */
         "disableBackdropClick"?: boolean;
         /**
           * Determines the footer's position behavior. When set to "fixed," the flyout content stretches to fill the full height, keeping the footer permanently at the bottom. When set to "sticky," the footer flows beneath the content and only becomes fixed if the content overflows.
+          * @default 'sticky'
          */
         "footerBehavior"?: FlyoutFooterBehavior;
         /**
           * If true, the flyout is open.
+          * @default false
          */
         "open": boolean;
         /**
           * The position of the flyout
+          * @default 'end'
          */
         "position"?: FlyoutPosition;
         /**
           * Adapts the flyout color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -903,15 +1027,18 @@ export namespace Components {
     interface PGrid {
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
+          * @default 'row'
          */
         "direction"?: BreakpointCustomizable<GridDirection>;
         /**
           * Has no effect anymore
           * @deprecated since v3.0.0, will be removed with next major release
+          * @default { base: 16, s: 24, m: 36 }
          */
         "gutter"?: BreakpointCustomizable<GridGutter>;
         /**
           * Handles wrapping behaviour of elements.
+          * @default 'wrap'
          */
         "wrap"?: BreakpointCustomizable<GridWrap>;
     }
@@ -921,28 +1048,34 @@ export namespace Components {
     interface PGridItem {
         /**
           * The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
+          * @default 0
          */
         "offset"?: BreakpointCustomizable<GridItemOffset>;
         /**
           * The size of the column. Can be between 1 and 12. Also defines the size of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
+          * @default 1
          */
         "size"?: BreakpointCustomizable<GridItemSize>;
     }
     interface PHeading {
         /**
           * Text alignment of the component.
+          * @default 'start'
          */
         "align"?: HeadingAlign;
         /**
           * Basic text color variations depending on theme property.
+          * @default 'primary'
          */
         "color"?: HeadingColor;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
+          * @default false
          */
         "ellipsis"?: boolean;
         /**
           * Size of the component. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+          * @default 'xx-large'
          */
         "size"?: BreakpointCustomizable<HeadingSize>;
         /**
@@ -951,6 +1084,7 @@ export namespace Components {
         "tag"?: HeadingTag;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -960,14 +1094,17 @@ export namespace Components {
     interface PHeadline {
         /**
           * Text alignment of the component.
+          * @default 'start'
          */
         "align"?: HeadlineAlign;
         /**
           * Basic text color variations depending on theme property.
+          * @default 'primary'
          */
         "color"?: HeadlineColor;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
+          * @default false
          */
         "ellipsis"?: boolean;
         /**
@@ -976,10 +1113,12 @@ export namespace Components {
         "tag"?: HeadlineTag;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * Predefined style of the headline.
+          * @default 'headline-1'
          */
         "variant"?: HeadlineVariant;
     }
@@ -990,6 +1129,7 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<IconAriaAttribute>;
         /**
           * Basic color variations depending on theme property.
+          * @default 'primary'
          */
         "color"?: IconColor;
         /**
@@ -999,10 +1139,12 @@ export namespace Components {
         "lazy"?: boolean;
         /**
           * Specifies which icon to use.
+          * @default 'arrow-right'
          */
         "name"?: IconName;
         /**
           * The size of the icon.
+          * @default 'small'
          */
         "size"?: IconSize;
         /**
@@ -1011,12 +1153,14 @@ export namespace Components {
         "source"?: string;
         /**
           * Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
     interface PInlineNotification {
         /**
           * Action icon of the inline-notification.
+          * @default 'arrow-right'
          */
         "actionIcon"?: InlineNotificationActionIcon;
         /**
@@ -1025,22 +1169,27 @@ export namespace Components {
         "actionLabel"?: string;
         /**
           * Disables the action button and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "actionLoading"?: boolean;
         /**
           * Description of the inline-notification.
+          * @default ''
          */
         "description"?: string;
         /**
           * If false, the inline-notification will not have a dismiss button.
+          * @default true
          */
         "dismissButton"?: boolean;
         /**
           * Heading of the inline-notification.
+          * @default ''
          */
         "heading"?: string;
         /**
           * Sets a heading tag, so it fits correctly within the outline of the page.
+          * @default 'h5'
          */
         "headingTag"?: InlineNotificationHeadingTag;
         /**
@@ -1049,10 +1198,12 @@ export namespace Components {
         "persistent"?: boolean;
         /**
           * State of the inline-notification.
+          * @default 'info'
          */
         "state"?: InlineNotificationState;
         /**
           * Adapts the inline-notification color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -1063,18 +1214,22 @@ export namespace Components {
         "autoComplete"?: InputNumberAutoComplete;
         /**
           * Displays as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Show or hide the increment/decrement stepper controls.
+          * @default false
          */
         "controls"?: boolean;
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Marks the number input as disabled.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -1083,14 +1238,17 @@ export namespace Components {
         "form"?: string;
         /**
           * Show or hide label and description text. For better accessibility, it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -1099,6 +1257,7 @@ export namespace Components {
         "max"?: number;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -1111,30 +1270,37 @@ export namespace Components {
         "name": string;
         /**
           * The placeholder text.
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * Specifies whether the number input should be read-only.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * Marks the number input as required.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: InputNumberState;
         /**
           * The granularity that the value must adhere to.
+          * @default 1
          */
         "step"?: number;
         /**
           * Adapts the color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The number input value.
+          * @default ''
          */
         "value"?: string;
     }
@@ -1145,14 +1311,17 @@ export namespace Components {
         "autoComplete"?: InputPasswordAutoComplete;
         /**
           * Displays as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Marks the password input as disabled.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -1161,14 +1330,17 @@ export namespace Components {
         "form"?: string;
         /**
           * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -1177,6 +1349,7 @@ export namespace Components {
         "maxLength"?: number;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -1189,30 +1362,37 @@ export namespace Components {
         "name": string;
         /**
           * The placeholder text.
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * Specifies whether the password input should be read-only.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * Marks the password input as required.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: InputPasswordState;
         /**
           * Adapts the color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * Show or hide password toggle for `input type="password"`.
+          * @default false
          */
         "toggle"?: boolean;
         /**
           * The password input value.
+          * @default ''
          */
         "value"?: string;
     }
@@ -1223,18 +1403,22 @@ export namespace Components {
         "autoComplete"?: InputSearchAutoComplete;
         /**
           * Show clear input value button
+          * @default false
          */
         "clear"?: boolean;
         /**
           * Displays as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Marks the search input as disabled.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -1243,22 +1427,27 @@ export namespace Components {
         "form"?: string;
         /**
           * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Show search indicator icon
+          * @default false
          */
         "indicator"?: boolean;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -1267,26 +1456,32 @@ export namespace Components {
         "name": string;
         /**
           * The placeholder text.
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * Specifies whether the search input should be read-only.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * Marks the search input as required.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: InputSearchState;
         /**
           * Adapts the color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The search input value.
+          * @default ''
          */
         "value"?: string;
     }
@@ -1297,18 +1492,22 @@ export namespace Components {
         "autoComplete"?: InputTextAutoComplete;
         /**
           * Displays as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Show or hide the character counter.
+          * @default false
          */
         "counter"?: boolean;
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Marks the text input as disabled.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -1317,14 +1516,17 @@ export namespace Components {
         "form"?: string;
         /**
           * Show or hide label and description text. For better accessibility, it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -1333,6 +1535,7 @@ export namespace Components {
         "maxLength"?: number;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -1345,14 +1548,17 @@ export namespace Components {
         "name": string;
         /**
           * The placeholder text.
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * Specifies whether the text input should be read-only.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * Marks the text input as required.
+          * @default false
          */
         "required"?: boolean;
         /**
@@ -1361,14 +1567,17 @@ export namespace Components {
         "spellCheck"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: InputTextState;
         /**
           * Adapts the color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The text input value.
+          * @default ''
          */
         "value"?: string;
     }
@@ -1379,6 +1588,7 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
@@ -1387,6 +1597,7 @@ export namespace Components {
         "download"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -1395,6 +1606,7 @@ export namespace Components {
         "href"?: string;
         /**
           * The icon shown. By choosing 'none', no icon is displayed.
+          * @default 'none'
          */
         "icon"?: LinkIcon;
         /**
@@ -1407,24 +1619,29 @@ export namespace Components {
         "rel"?: string;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: LinkTarget;
         /**
           * Adapts the link color when used on dark background.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The style variant of the link.
+          * @default 'primary'
          */
         "variant"?: LinkVariant;
     }
     interface PLinkPure {
         /**
           * Display link in active state.
+          * @default false
          */
         "active"?: boolean;
         /**
           * Aligns the label.
+          * @default 'end'
          */
         "alignLabel"?: BreakpointCustomizable<LinkPureAlignLabel>;
         /**
@@ -1437,6 +1654,7 @@ export namespace Components {
         "download"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -1445,6 +1663,7 @@ export namespace Components {
         "href"?: string;
         /**
           * The icon shown. By choosing 'none', no icon is displayed
+          * @default 'arrow-right'
          */
         "icon"?: LinkPureIcon;
         /**
@@ -1457,27 +1676,33 @@ export namespace Components {
         "rel"?: string;
         /**
           * Size of the link.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<LinkPureSize>;
         /**
           * Stretches the area between icon and label to max available space.
+          * @default false
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: LinkPureTarget;
         /**
           * Adapts the button color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * Shows an underline under the label.
+          * @default false
          */
         "underline"?: boolean;
         /**
           * The weight of the text (only has effect with visible label).
           * @deprecated since v3.0.0, will be removed with next major release
+          * @default 'regular'
          */
         "weight"?: LinkPureWeight;
     }
@@ -1487,10 +1712,12 @@ export namespace Components {
     interface PLinkSocial {
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Show or hide label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -1511,16 +1738,19 @@ export namespace Components {
         "rel"?: string;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: LinkSocialTarget;
         /**
           * Adapts the link color when used on dark background.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
     interface PLinkTile {
         /**
           * Alignment of link and description.
+          * @default 'bottom'
          */
         "align"?: LinkTileAlign;
         /**
@@ -1529,14 +1759,17 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<LinkTileAriaAttribute>;
         /**
           * Aspect ratio of the link-tile.
+          * @default '4/3'
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
         /**
           * Adapts the description and link theme when used on light background image.
+          * @default 'dark'
          */
         "background"?: LinkTileBackground;
         /**
           * Displays the link-tile as compact version with description and link icon only.
+          * @default false
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
@@ -1549,6 +1782,7 @@ export namespace Components {
         "download"?: string;
         /**
           * Show gradient.
+          * @default true
          */
         "gradient"?: boolean;
         /**
@@ -1565,20 +1799,24 @@ export namespace Components {
         "rel"?: string;
         /**
           * Font size of the description.
+          * @default 'medium'
          */
         "size"?: BreakpointCustomizable<LinkTileSize>;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: LinkTileTarget;
         /**
           * Font weight of the description.
+          * @default 'semi-bold'
          */
         "weight"?: BreakpointCustomizable<LinkTileWeight>;
     }
     interface PLinkTileModelSignature {
         /**
           * Aspect ratio of the link-tile-model-signature.
+          * @default '3/4'
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileModelSignatureAspectRatio>;
         /**
@@ -1591,18 +1829,22 @@ export namespace Components {
         "heading": string;
         /**
           * Sets a heading tag, so it fits correctly within the outline of the page.
+          * @default 'h2'
          */
         "headingTag"?: LinkTileModelSignatureHeadingTag;
         /**
           * Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.
+          * @default {     base: 'column',     xs: 'row',   }
          */
         "linkDirection"?: BreakpointCustomizable<LinkTileModelSignatureLinkDirection>;
         /**
           * Adapts the model of the component.
+          * @default '911'
          */
         "model"?: LinkTileModelSignatureModel;
         /**
           * Adapts the font weight of the heading.
+          * @default 'semi-bold'
          */
         "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
     }
@@ -1613,6 +1855,7 @@ export namespace Components {
     interface PLinkTileProduct {
         /**
           * Aspect ratio of the link-tile-product.
+          * @default '3:4'
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileProductAspectRatio>;
         /**
@@ -1629,10 +1872,12 @@ export namespace Components {
         "href"?: string;
         /**
           * A Boolean attribute indicating that a like button should be shown.
+          * @default true
          */
         "likeButton"?: boolean;
         /**
           * A Boolean attribute indicating that a product is liked.
+          * @default false
          */
         "liked"?: boolean;
         /**
@@ -1649,10 +1894,12 @@ export namespace Components {
         "rel"?: string;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: LinkTileProductTarget;
         /**
           * Adapts the link-tile-product color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -1670,18 +1917,22 @@ export namespace Components {
         "href"?: string;
         /**
           * Adapts sizing of marque.
+          * @default 'responsive'
          */
         "size"?: MarqueSize;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: MarqueTarget;
         /**
           * Show/hide trademark sign (only has effect when variant is set to default).
+          * @default true
          */
         "trademark"?: boolean;
         /**
           * Shows marque in special editions
+          * @default 'default'
          */
         "variant"?: MarqueVariant;
     }
@@ -1695,10 +1946,12 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<ModalAriaAttribute>;
         /**
           * Defines the backdrop, 'blur' (should be used when Modal is opened by user interaction, e.g. after a click on a button) and 'shading' (should be used when Modal gets opened automatically, e.g. Cookie Consent).
+          * @default 'blur'
          */
         "backdrop"?: ModalBackdrop;
         /**
           * If true, the modal will not be closable via backdrop click.
+          * @default false
          */
         "disableBackdropClick"?: boolean;
         /**
@@ -1708,10 +1961,12 @@ export namespace Components {
         "disableCloseButton"?: boolean;
         /**
           * If false, the modal will not have a dismiss button.
+          * @default true
          */
         "dismissButton"?: boolean;
         /**
           * If true the modal uses max viewport height and width. Should only be used for mobile.
+          * @default false
          */
         "fullscreen"?: BreakpointCustomizable<boolean>;
         /**
@@ -1720,40 +1975,49 @@ export namespace Components {
         "heading"?: string;
         /**
           * If true, the modal is open.
+          * @default false
          */
         "open": boolean;
         /**
           * Adapts the modal color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
     interface PModelSignature {
         /**
           * Adapts the color of the component.
+          * @default 'primary'
          */
         "color"?: ModelSignatureColor;
         /**
           * Defines the fetch priority of the model signature. In the end it is just a recommendation to the browser, but it defines the priority on its own.
+          * @default 'auto'
          */
         "fetchPriority"?: ModelSignatureFetchPriority;
         /**
           * Defines whether the model signature is always loaded or only loaded when it is in the viewport (this feature may not work reliably).
+          * @default false
          */
         "lazy"?: boolean;
         /**
           * Adapts the model of the component.
+          * @default '911'
          */
         "model"?: ModelSignatureModel;
         /**
           * When set to `true`, then all model signatures are visually aligned with each other. When set to `false` the model signature comes without any safe zone.
+          * @default true
          */
         "safeZone"?: boolean;
         /**
           * Adapts the size of the component. When set to `inherit` a CSS `width` or `height` needs to be defined on the host but not both.
+          * @default 'small'
          */
         "size"?: ModelSignatureSize;
         /**
           * Adapts color depending on theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -1763,14 +2027,17 @@ export namespace Components {
     interface PMultiSelect {
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Disables the multi-select
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Changes the direction to which the dropdown list appears.
+          * @default 'auto'
          */
         "dropdownDirection"?: MultiSelectDropdownDirection;
         /**
@@ -1779,14 +2046,17 @@ export namespace Components {
         "form"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -1795,24 +2065,29 @@ export namespace Components {
         "name": string;
         /**
           * A Boolean attribute indicating that an option with a non-empty string value must be selected.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: MultiSelectState;
         /**
           * Adapts the multi-select color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The selected values.
+          * @default []
          */
         "value"?: string[];
     }
     interface PMultiSelectOption {
         /**
           * Disables the option.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -1823,6 +2098,7 @@ export namespace Components {
     interface POptgroup {
         /**
           * Disables the optgroup.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -1836,6 +2112,7 @@ export namespace Components {
     interface PPagination {
         /**
           * Index of the currently active page.
+          * @default 1
          */
         "activePage"?: number;
         /**
@@ -1856,10 +2133,12 @@ export namespace Components {
         "allyLabelPrev"?: string;
         /**
           * Override the default wordings that are used for aria-labels on the next/prev and page buttons.
+          * @default {     root: 'Pagination',     prev: 'Previous page',     next: 'Next page',     page: 'Page',   }
          */
         "intl"?: PaginationInternationalization;
         /**
           * The total count of items which should be shown per page.
+          * @default 1
          */
         "itemsPerPage": number;
         /**
@@ -1869,14 +2148,17 @@ export namespace Components {
         "maxNumberOfPageLinks"?: BreakpointCustomizable<PaginationMaxNumberOfPageLinks>;
         /**
           * Show or hide the button to jump to the last page.
+          * @default true
          */
         "showLastPage"?: boolean;
         /**
           * Adapts the color when used on dark background.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The total count of items.
+          * @default 1
          */
         "totalItemsCount": number;
     }
@@ -1886,10 +2168,12 @@ export namespace Components {
     interface PPinCode {
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Disables the Pin Code. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -1898,22 +2182,27 @@ export namespace Components {
         "form"?: string;
         /**
           * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * Number of characters of the Pin Code.
+          * @default 4
          */
         "length"?: PinCodeLength;
         /**
           * Disables the Pin Code and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "loading"?: boolean;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -1922,22 +2211,27 @@ export namespace Components {
         "name"?: string;
         /**
           * Marks the Pin Code as required.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: PinCodeState;
         /**
           * Adapts the color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * Pin Code type.
+          * @default 'number'
          */
         "type"?: PinCodeType;
         /**
           * Sets the initial value of the Pin Code.
+          * @default ''
          */
         "value"?: string;
     }
@@ -1952,46 +2246,56 @@ export namespace Components {
         "description"?: string;
         /**
           * Preferred direction in which popover should open, given there is enough space in viewport. Otherwise, it will be opened in the direction with most available space.
+          * @default 'bottom'
          */
         "direction"?: PopoverDirection;
         /**
           * If true, the popover is open.
+          * @default false
          */
         "open"?: boolean;
         /**
           * Adapts the popover color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
     interface PRadioButtonWrapper {
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Disables the radio button and shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: RadioButtonWrapperState;
         /**
           * Adapts the color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
     interface PScroller {
         /**
           * Sets the vertical position of scroll indicator.
+          * @default 'center'
          */
         "alignScrollIndicator"?: ScrollerAlignScrollIndicator;
         /**
@@ -2000,6 +2304,7 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
         /**
           * Adapts the background gradient color of prev and next button.
+          * @default 'background-base'
          */
         "gradientColor"?: ScrollerGradientColor;
         /**
@@ -2016,10 +2321,12 @@ export namespace Components {
         "scrollToPosition"?: ScrollerScrollToPosition;
         /**
           * Specifies if scrollbar should be shown.
+          * @default false
          */
         "scrollbar"?: boolean;
         /**
           * Adapts the color when used on dark background.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -2033,10 +2340,12 @@ export namespace Components {
         "backgroundColor"?: SegmentedControlBackgroundColor;
         /**
           * Sets the amount of columns.
+          * @default 'auto'
          */
         "columns"?: BreakpointCustomizable<SegmentedControlColumns>;
         /**
           * Disables the segmented-control.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -2049,6 +2358,7 @@ export namespace Components {
         "name"?: string;
         /**
           * Adapts the segmented-control color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
@@ -2063,6 +2373,7 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<SegmentedControlItemAriaAttribute>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -2088,22 +2399,27 @@ export namespace Components {
     interface PSelect {
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Disables the select.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Changes the direction to which the dropdown list appears.
+          * @default 'auto'
          */
         "dropdownDirection"?: SelectDropdownDirection;
         /**
           * Shows an input in the dropdown allowing options to be filtered.
+          * @default false
          */
         "filter"?: boolean;
         /**
@@ -2112,14 +2428,17 @@ export namespace Components {
         "form"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -2128,14 +2447,17 @@ export namespace Components {
         "name": string;
         /**
           * A Boolean attribute indicating that an option with a non-empty string value must be selected.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: SelectState;
         /**
           * Adapts the select color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
@@ -2146,6 +2468,7 @@ export namespace Components {
     interface PSelectOption {
         /**
           * Disables the option.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -2156,53 +2479,80 @@ export namespace Components {
     interface PSelectWrapper {
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Changes the direction to which the dropdown list appears.
+          * @default 'auto'
          */
         "dropdownDirection"?: SelectWrapperDropdownDirection;
         /**
           * Filters select options by typing a character
+          * @default false
          */
         "filter"?: boolean;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
           * Forces rendering of native browser select dropdown
+          * @default false
          */
         "native"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: SelectWrapperState;
         /**
           * Adapts the select color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
     interface PSelectWrapperDropdown {
         "description"?: string;
+        /**
+          * @default 'auto'
+         */
         "direction"?: SelectWrapperDropdownDirection;
+        /**
+          * @default false
+         */
         "disabled"?: boolean;
+        /**
+          * @default false
+         */
         "filter"?: boolean;
+        /**
+          * @default false
+         */
         "isOpenOverride"?: boolean;
         "label"?: string;
         "message"?: string;
         "onOpenChange": (isOpen: boolean) => void;
+        /**
+          * @default false
+         */
         "required"?: boolean;
         "selectRef"?: HTMLSelectElement;
         "state"?: SelectWrapperState;
+        /**
+          * @default 'light'
+         */
         "theme"?: Theme;
     }
     /**
@@ -2215,18 +2565,22 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<SheetAriaAttribute>;
         /**
           * If true, the sheet will not be closable via backdrop click.
+          * @default false
          */
         "disableBackdropClick"?: boolean;
         /**
           * If false, the sheet will not have a dismiss button.
+          * @default true
          */
         "dismissButton"?: boolean;
         /**
           * If true, the sheet is open.
+          * @default false
          */
         "open": boolean;
         /**
           * Adapts the sheet color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -2237,26 +2591,31 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<SpinnerAriaAttribute>;
         /**
           * Size of the spinner.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<SpinnerSize>;
         /**
           * Adapts the spinner color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
     interface PStepperHorizontal {
         /**
           * The text size.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<StepperHorizontalSize>;
         /**
           * Adapts the tag color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
     interface PStepperHorizontalItem {
         /**
           * Disables the stepper-horizontal-item. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -2270,34 +2629,42 @@ export namespace Components {
     interface PSwitch {
         /**
           * Aligns the label.
+          * @default 'end'
          */
         "alignLabel"?: BreakpointCustomizable<SwitchAlignLabel>;
         /**
           * Visualize the switch with on/off status.
+          * @default false
          */
         "checked"?: boolean;
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Disables the switch. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Disables the switch and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "loading"?: boolean;
         /**
           * Stretches the contents to max available space.
+          * @default false
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * Adapts the switch color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -2308,14 +2675,17 @@ export namespace Components {
         "caption"?: string;
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Controls the layout behavior of the table.
+          * @default 'auto'
          */
         "layout"?: TableLayout;
         /**
           * Adapts the color when used on dark background.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -2324,6 +2694,7 @@ export namespace Components {
     interface PTableCell {
         /**
           * Displays slotted text multiline or forced into a single line.
+          * @default false
          */
         "multiline"?: boolean;
     }
@@ -2332,10 +2703,12 @@ export namespace Components {
     interface PTableHeadCell {
         /**
           * Hides the label but stays accessible for screen readers. This property only takes effect when sort property is not defined.
+          * @default false
          */
         "hideLabel"?: boolean;
         /**
           * Displays slotted text multiline or forced into a single line.
+          * @default false
          */
         "multiline"?: boolean;
         /**
@@ -2353,10 +2726,12 @@ export namespace Components {
     interface PTabs {
         /**
           * Defines which tab to be visualized as selected (zero-based numbering).
+          * @default 0
          */
         "activeTabIndex"?: number;
         /**
           * Adapts the background gradient color of prev and next button.
+          * @default 'background-base'
          */
         "gradientColor"?: TabsGradientColor;
         /**
@@ -2365,14 +2740,17 @@ export namespace Components {
         "gradientColorScheme"?: TabsGradientColorScheme;
         /**
           * The text size.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<TabsSize>;
         /**
           * Adapts the color when used on dark background.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The text weight.
+          * @default 'regular'
          */
         "weight"?: TabsWeight;
     }
@@ -2386,6 +2764,7 @@ export namespace Components {
         "activeTabIndex"?: number | undefined;
         /**
           * Adapts the background gradient color of prev and next button.
+          * @default 'background-base'
          */
         "gradientColor"?: TabsBarGradientColor;
         /**
@@ -2394,14 +2773,17 @@ export namespace Components {
         "gradientColorScheme"?: TabsBarGradientColorScheme;
         /**
           * The text size.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<TabsBarSize>;
         /**
           * Adapts the color when used on dark background.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The text weight.
+          * @default 'regular'
          */
         "weight"?: TabsBarWeight;
     }
@@ -2414,10 +2796,12 @@ export namespace Components {
     interface PTag {
         /**
           * Background color variations depending on theme property.
+          * @default 'background-surface'
          */
         "color"?: TagColor;
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
@@ -2430,6 +2814,7 @@ export namespace Components {
         "iconSource"?: string;
         /**
           * Adapts the tag color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -2440,6 +2825,7 @@ export namespace Components {
         "aria"?: SelectedAriaAttributes<TagDismissibleAriaAttribute>;
         /**
           * Background color variations
+          * @default 'background-surface'
          */
         "color"?: TagDismissibleColor;
         /**
@@ -2448,36 +2834,44 @@ export namespace Components {
         "label"?: string;
         /**
           * Adapts the color when used on dark background.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
     interface PText {
         /**
           * Text alignment of the component.
+          * @default 'start'
          */
         "align"?: TextAlign;
         /**
           * Basic text color variations depending on theme property.
+          * @default 'primary'
          */
         "color"?: TextColor;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
+          * @default false
          */
         "ellipsis"?: boolean;
         /**
           * Size of the text. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<TextSize>;
         /**
           * Sets a custom HTML tag depending on the usage of the text component.
+          * @default 'p'
          */
         "tag"?: TextTag;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The weight of the text.
+          * @default 'regular'
          */
         "weight"?: TextWeight;
     }
@@ -2488,22 +2882,27 @@ export namespace Components {
         "actionIcon"?: TextFieldWrapperActionIcon;
         /**
           * Disables the action button and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "actionLoading"?: boolean;
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -2512,30 +2911,37 @@ export namespace Components {
         "showCharacterCount"?: boolean;
         /**
           * Show or hide max character count.
+          * @default true
          */
         "showCounter"?: boolean;
         /**
           * @experimental Show or hide password toggle for `input type="password"`.
+          * @default true
          */
         "showPasswordToggle"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: TextFieldWrapperState;
         /**
           * Show search button if wrapped inside a form.
+          * @default true
          */
         "submitButton"?: boolean;
         /**
           * Adapts the color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The unit text.
+          * @default ''
          */
         "unit"?: string;
         /**
           * The unit position.
+          * @default 'prefix'
          */
         "unitPosition"?: TextFieldWrapperUnitPosition;
     }
@@ -2550,10 +2956,12 @@ export namespace Components {
         "orderType"?: TextListOrderType;
         /**
           * Adapts the text color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The list style type.
+          * @default 'unordered'
          */
         "type"?: TextListType;
     }
@@ -2566,14 +2974,17 @@ export namespace Components {
         "autoComplete"?: TextareaAutoComplete;
         /**
           * Show or hide the character counter.
+          * @default false
          */
         "counter"?: boolean;
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Marks the textarea as disabled.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -2582,10 +2993,12 @@ export namespace Components {
         "form"?: string;
         /**
           * Show or hide label. For better accessibility, it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
@@ -2594,6 +3007,7 @@ export namespace Components {
         "maxLength"?: number;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -2606,22 +3020,27 @@ export namespace Components {
         "name": string;
         /**
           * The placeholder text.
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * Specifies whether the textarea should be read-only.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * Marks the textarea as required.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Controls whether the textarea is resizable and in which direction.
+          * @default 'vertical'
          */
         "resize"?: TextareaResize;
         /**
           * The number of rows of the textarea.
+          * @default 7
          */
         "rows"?: number;
         /**
@@ -2630,36 +3049,44 @@ export namespace Components {
         "spellCheck"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: TextareaState;
         /**
           * Adapts the color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The textarea value.
+          * @default ''
          */
         "value"?: string;
         /**
           * Handles wrapping behaviour of elements.
+          * @default 'soft'
          */
         "wrap"?: TextareaWrap;
     }
     interface PTextareaWrapper {
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -2668,14 +3095,17 @@ export namespace Components {
         "showCharacterCount"?: boolean;
         /**
           * Show or hide max character count.
+          * @default true
          */
         "showCounter"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: TextareaWrapperState;
         /**
           * Adapts the color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -2683,20 +3113,24 @@ export namespace Components {
         "addMessage": (message: ToastMessage) => Promise<void>;
         /**
           * Adapts the toast color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
     interface PToastItem {
         /**
           * State of the toast-item.
+          * @default 'info'
          */
         "state"?: ToastState;
         /**
           * Text of the toast-item.
+          * @default ''
          */
         "text"?: string;
         /**
           * Adapts the toast-item color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -2711,14 +3145,17 @@ export namespace Components {
         "href"?: string;
         /**
           * Adapts sizing of wordmark.
+          * @default 'small'
          */
         "size"?: WordmarkSize;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: WordmarkTarget;
         /**
           * Adapts color depending on theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -3861,6 +4298,7 @@ declare namespace LocalJSX {
         "heading"?: string;
         /**
           * Sets a heading tag, so it fits correctly within the outline of the page.
+          * @default 'h2'
          */
         "headingTag"?: AccordionHeadingTag;
         /**
@@ -3877,6 +4315,7 @@ declare namespace LocalJSX {
         "open"?: boolean;
         /**
           * The text size.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<AccordionSize>;
         /**
@@ -3889,6 +4328,7 @@ declare namespace LocalJSX {
         "tag"?: AccordionTag;
         /**
           * Adapts the color when used on dark background.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -3898,18 +4338,22 @@ declare namespace LocalJSX {
     interface PBanner {
         /**
           * Description of the banner.
+          * @default ''
          */
         "description"?: string;
         /**
           * If false, the banner will not have a dismiss button.
+          * @default true
          */
         "dismissButton"?: boolean;
         /**
           * Heading of the banner.
+          * @default ''
          */
         "heading"?: string;
         /**
           * Sets a heading tag, so it fits correctly within the outline of the page.
+          * @default 'h5'
          */
         "headingTag"?: BannerHeadingTag;
         /**
@@ -3918,6 +4362,7 @@ declare namespace LocalJSX {
         "onDismiss"?: (event: PBannerCustomEvent<void>) => void;
         /**
           * If true, the banner is open.
+          * @default false
          */
         "open"?: boolean;
         /**
@@ -3926,10 +4371,12 @@ declare namespace LocalJSX {
         "persistent"?: boolean;
         /**
           * State of the banner.
+          * @default 'info'
          */
         "state"?: BannerState;
         /**
           * Adapts the banner color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
@@ -3945,10 +4392,12 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<ButtonAriaAttribute>;
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -3957,10 +4406,12 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The icon shown. By choosing 'none', no icon is displayed.
+          * @default 'none'
          */
         "icon"?: ButtonIcon;
         /**
@@ -3969,6 +4420,7 @@ declare namespace LocalJSX {
         "iconSource"?: string;
         /**
           * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -3977,10 +4429,12 @@ declare namespace LocalJSX {
         "name"?: string;
         /**
           * Adapts the button color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * Specifies the type of the button.
+          * @default 'submit'
          */
         "type"?: ButtonType;
         /**
@@ -3989,22 +4443,26 @@ declare namespace LocalJSX {
         "value"?: string;
         /**
           * The style variant of the button.
+          * @default 'primary'
          */
         "variant"?: ButtonVariant;
     }
     interface PButtonGroup {
         /**
           * Defines the direction of the main and cross axis. The default is ’{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint ‘xs’. You always need to provide a base value when using breakpoints.
+          * @default { base: 'column', xs: 'row' }
          */
         "direction"?: BreakpointCustomizable<ButtonGroupDirection>;
     }
     interface PButtonPure {
         /**
           * Display button in active state.
+          * @default false
          */
         "active"?: boolean;
         /**
           * Aligns the label.
+          * @default 'end'
          */
         "alignLabel"?: BreakpointCustomizable<ButtonPureAlignLabel>;
         /**
@@ -4013,6 +4471,7 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<ButtonPureAriaAttribute>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -4021,10 +4480,12 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The icon shown.
+          * @default 'arrow-right'
          */
         "icon"?: ButtonPureIcon;
         /**
@@ -4033,6 +4494,7 @@ declare namespace LocalJSX {
         "iconSource"?: string;
         /**
           * Disables the button and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -4041,22 +4503,27 @@ declare namespace LocalJSX {
         "name"?: string;
         /**
           * Size of the button.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<ButtonPureSize>;
         /**
           * Stretches the area between icon and label to max available space.
+          * @default false
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * Adapts the button color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * Specifies the type of the button.
+          * @default 'submit'
          */
         "type"?: ButtonPureType;
         /**
           * Shows an underline under the label.
+          * @default false
          */
         "underline"?: boolean;
         /**
@@ -4066,12 +4533,14 @@ declare namespace LocalJSX {
         /**
           * The weight of the text (only has effect with visible label).
           * @deprecated since v3.0.0, will be removed with next major release
+          * @default 'regular'
          */
         "weight"?: ButtonPureWeight;
     }
     interface PButtonTile {
         /**
           * Alignment of button and description.
+          * @default 'bottom'
          */
         "align"?: ButtonTileAlign;
         /**
@@ -4080,14 +4549,17 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<ButtonTileAriaAttribute>;
         /**
           * Aspect ratio of the button-tile.
+          * @default '4/3'
          */
         "aspectRatio"?: BreakpointCustomizable<ButtonTileAspectRatio>;
         /**
           * Adapts the description and button theme when used on light background image.
+          * @default 'dark'
          */
         "background"?: ButtonTileBackground;
         /**
           * Displays the button-tile as compact version with description and button icon only.
+          * @default false
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
@@ -4096,14 +4568,17 @@ declare namespace LocalJSX {
         "description"?: string;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Show gradient.
+          * @default true
          */
         "gradient"?: boolean;
         /**
           * The icon shown. By choosing 'none', no icon is displayed.
+          * @default 'none'
          */
         "icon"?: ButtonTileIcon;
         /**
@@ -4116,18 +4591,22 @@ declare namespace LocalJSX {
         "label"?: string;
         /**
           * Disables the button-tile and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "loading"?: boolean;
         /**
           * Font size of the description.
+          * @default 'medium'
          */
         "size"?: BreakpointCustomizable<ButtonTileSize>;
         /**
           * Specifies the type of the button.
+          * @default 'submit'
          */
         "type"?: ButtonTileType;
         /**
           * Font weight of the description.
+          * @default 'semi-bold'
          */
         "weight"?: BreakpointCustomizable<ButtonTileWeight>;
     }
@@ -4145,14 +4624,17 @@ declare namespace LocalJSX {
         "onSidebarStartUpdate"?: (event: PCanvasCustomEvent<CanvasSidebarStartUpdateEventDetail>) => void;
         /**
           * Open the sidebar on the end side
+          * @default false
          */
         "sidebarEndOpen"?: boolean;
         /**
           * Open the sidebar on the start side
+          * @default false
          */
         "sidebarStartOpen"?: boolean;
         /**
           * Adapts the color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -4162,14 +4644,17 @@ declare namespace LocalJSX {
     interface PCarousel {
         /**
           * Defines which slide to be active (zero-based numbering).
+          * @default 0
          */
         "activeSlideIndex"?: number;
         /**
           * Alignment of slotted controls
+          * @default 'auto'
          */
         "alignControls"?: CarouselAlignControls;
         /**
           * Alignment of heading and description
+          * @default 'start'
          */
         "alignHeader"?: CarouselAlignHeader;
         /**
@@ -4186,10 +4671,12 @@ declare namespace LocalJSX {
         "disablePagination"?: BreakpointCustomizable<boolean>;
         /**
           * Indicates whether focus should be set on the center slide. If true, the carousel loops by individual slide; otherwise, it loops by page.
+          * @default false
          */
         "focusOnCenterSlide"?: boolean;
         /**
           * Adapts the background gradient for the left and right edge.
+          * @default 'none'
          */
         "gradientColor"?: CarouselGradientColor;
         /**
@@ -4198,6 +4685,7 @@ declare namespace LocalJSX {
         "heading"?: string;
         /**
           * Defines the heading size used in the carousel.
+          * @default 'x-large'
          */
         "headingSize"?: CarouselHeadingSize;
         /**
@@ -4214,10 +4702,12 @@ declare namespace LocalJSX {
         "onUpdate"?: (event: PCarouselCustomEvent<CarouselUpdateEventDetail>) => void;
         /**
           * If false, the carousel will not show pagination bullets at the bottom.
+          * @default true
          */
         "pagination"?: BreakpointCustomizable<boolean>;
         /**
           * Whether the slides should rewind from last to first slide and vice versa.
+          * @default true
          */
         "rewind"?: boolean;
         /**
@@ -4226,18 +4716,22 @@ declare namespace LocalJSX {
         "skipLinkTarget"?: string;
         /**
           * Sets the amount of slides visible at the same time. Can be set to `auto` if you want to define different widths per slide via CSS.
+          * @default 1
          */
         "slidesPerPage"?: BreakpointCustomizable<CarouselSlidesPerPage>;
         /**
           * Adapts the color when used on dark background.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * Determines whether to trim spaces before/after the carousel if `focusOnCenterSlide` option is true.
+          * @default true
          */
         "trimSpace"?: boolean;
         /**
           * Defines the outer spacings between the carousel and the left and right screen sides.
+          * @default 'basic'
          */
         "width"?: CarouselWidth;
         /**
@@ -4249,14 +4743,17 @@ declare namespace LocalJSX {
     interface PCheckbox {
         /**
           * Reflects the checkbox current checked state and allows setting the initial checked state.
+          * @default false
          */
         "checked"?: boolean;
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Marks the checkbox as disabled.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -4265,26 +4762,32 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Marks the checkbox as indeterminate.
+          * @default false
          */
         "indeterminate"?: boolean;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Disables the checkbox and shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
           * The name of the checkbox.
+          * @default ''
          */
         "name"?: string;
         /**
@@ -4297,44 +4800,54 @@ declare namespace LocalJSX {
         "onUpdate"?: (event: PCheckboxCustomEvent<CheckboxUpdateEventDetail>) => void;
         /**
           * Marks the checkbox as required.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: CheckboxState;
         /**
           * Adapts the color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The checkbox value. When a form is submitted, only a checkbox which is currently checked is included in the submission.
+          * @default 'on'
          */
         "value"?: string;
     }
     interface PCheckboxWrapper {
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Disables the checkbox and shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: CheckboxWrapperState;
         /**
           * Adapts the color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -4345,15 +4858,18 @@ declare namespace LocalJSX {
         /**
           * Has no effect anymore
           * @deprecated since v3.0.0, will be removed with next major release
+          * @default 'transparent'
          */
         "backgroundColor"?: ContentWrapperBackgroundColor;
         /**
           * Has no effect anymore
           * @deprecated since v3.0.0, will be removed with next major release
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.
+          * @default 'extended'
          */
         "width"?: ContentWrapperWidth;
     }
@@ -4368,24 +4884,29 @@ declare namespace LocalJSX {
         "href"?: string;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: CrestTarget;
     }
     interface PDisplay {
         /**
           * Text alignment of the component.
+          * @default 'start'
          */
         "align"?: DisplayAlign;
         /**
           * Basic text color variations depending on theme property.
+          * @default 'primary'
          */
         "color"?: DisplayColor;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
+          * @default false
          */
         "ellipsis"?: boolean;
         /**
           * Size of the component. Also defines the size for specific breakpoints, like {base: "medium", l: "large"}. You always need to provide a base value when doing this.
+          * @default 'large'
          */
         "size"?: BreakpointCustomizable<DisplaySize>;
         /**
@@ -4394,16 +4915,19 @@ declare namespace LocalJSX {
         "tag"?: DisplayTag;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
     interface PDivider {
         /**
           * Defines color depending on theme.
+          * @default 'contrast-low'
          */
         "color"?: DividerColor;
         /**
           * Defines direction.
+          * @default 'horizontal'
          */
         "direction"?: BreakpointCustomizable<DividerDirection>;
         /**
@@ -4412,6 +4936,7 @@ declare namespace LocalJSX {
         "orientation"?: BreakpointCustomizable<DividerOrientation>;
         /**
           * Adapts color depending on theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -4439,10 +4964,12 @@ declare namespace LocalJSX {
         "onUpdate"?: (event: PDrilldownCustomEvent<DrilldownUpdateEventDetail>) => void;
         /**
           * If true, the drilldown is visualized as opened.
+          * @default false
          */
         "open"?: boolean;
         /**
           * Adapts the drilldown color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -4452,6 +4979,7 @@ declare namespace LocalJSX {
     interface PDrilldownItem {
         /**
           * Private property set by the component itself.
+          * @default false
          */
         "cascade"?: boolean;
         /**
@@ -4464,10 +4992,12 @@ declare namespace LocalJSX {
         "label"?: string;
         /**
           * Private property set by the component itself.
+          * @default false
          */
         "primary"?: boolean;
         /**
           * Private property set by the component itself.
+          * @default false
          */
         "secondary"?: boolean;
     }
@@ -4477,6 +5007,7 @@ declare namespace LocalJSX {
     interface PDrilldownLink {
         /**
           * Display link in active state.
+          * @default false
          */
         "active"?: boolean;
         /**
@@ -4497,32 +5028,39 @@ declare namespace LocalJSX {
         "rel"?: string;
         /**
           * Target attribute where the link should be opened (only has effect when `href` is defined and no slotted anchor is used).
+          * @default '_self'
          */
         "target"?: DrilldownLinkTarget;
     }
     interface PFieldset {
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * The size of the label text.
+          * @default 'medium'
          */
         "labelSize"?: FieldsetLabelSize;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
           * Marks the Fieldset as required.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: FieldsetState;
         /**
           * Adapts color depending on theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -4532,26 +5070,32 @@ declare namespace LocalJSX {
     interface PFieldsetWrapper {
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * The size of the label text.
+          * @default 'medium'
          */
         "labelSize"?: FieldsetWrapperLabelSize;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
           * Marks the Fieldset as required.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: FieldsetWrapperState;
         /**
           * Adapts color depending on theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -4561,26 +5105,32 @@ declare namespace LocalJSX {
     interface PFlex {
         /**
           * This aligns a flex container's individual lines when there is extra space in the cross-axis, similar to how "justifyContent" aligns individual items along the main axis.
+          * @default 'stretch'
          */
         "alignContent"?: BreakpointCustomizable<FlexAlignContent>;
         /**
           * Defines how the flex items are aligned along the cross axis.
+          * @default 'stretch'
          */
         "alignItems"?: BreakpointCustomizable<FlexAlignItems>;
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right.
+          * @default 'row'
          */
         "direction"?: BreakpointCustomizable<FlexDirection>;
         /**
           * Defines the flex containers content flow if 2 or more containers are siblings of each other.
+          * @default false
          */
         "inline"?: BreakpointCustomizable<FlexInline>;
         /**
           * Defines how the flex items are aligned along the main axis.
+          * @default 'flex-start'
          */
         "justifyContent"?: BreakpointCustomizable<FlexJustifyContent>;
         /**
           * Handles wrapping behaviour of elements.
+          * @default 'nowrap'
          */
         "wrap"?: BreakpointCustomizable<FlexWrap>;
     }
@@ -4590,26 +5140,32 @@ declare namespace LocalJSX {
     interface PFlexItem {
         /**
           * Defines how this flex item is aligned along the cross axis. This overwrites the cross axis alignment set by the container. Corresponds to the "alignSelf" css property.
+          * @default 'auto'
          */
         "alignSelf"?: BreakpointCustomizable<FlexItemAlignSelf>;
         /**
           * The shorthand property for the combined definition of "shrink", "grow" and "basis"
+          * @default 'initial'
          */
         "flex"?: BreakpointCustomizable<FlexItemFlex>;
         /**
           * The ability to allow/disallow the flex child to grow.
+          * @default 0
          */
         "grow"?: BreakpointCustomizable<FlexItemGrow>;
         /**
           * The offset of the column. You can also supply values for specific breakpoints, like {base: "none", l: "one-quarter"}. You always need to provide a base value when doing this.
+          * @default 'none'
          */
         "offset"?: BreakpointCustomizable<FlexItemOffset>;
         /**
           * The ability to allow/disallow the flex child to shrink.
+          * @default 1
          */
         "shrink"?: BreakpointCustomizable<FlexItemShrink>;
         /**
           * The width of the flex item. You can also supply values for specific breakpoints, like {base: "full", l: "one-quarter"}. You always need to provide a base value when doing this.
+          * @default 'auto'
          */
         "width"?: BreakpointCustomizable<FlexItemWidth>;
     }
@@ -4623,10 +5179,12 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<FlyoutAriaAttribute>;
         /**
           * If true, the flyout will not be closable via backdrop click.
+          * @default false
          */
         "disableBackdropClick"?: boolean;
         /**
           * Determines the footer's position behavior. When set to "fixed," the flyout content stretches to fill the full height, keeping the footer permanently at the bottom. When set to "sticky," the footer flows beneath the content and only becomes fixed if the content overflows.
+          * @default 'sticky'
          */
         "footerBehavior"?: FlyoutFooterBehavior;
         /**
@@ -4643,14 +5201,17 @@ declare namespace LocalJSX {
         "onMotionVisibleEnd"?: (event: PFlyoutCustomEvent<FlyoutMotionVisibleEndEventDetail>) => void;
         /**
           * If true, the flyout is open.
+          * @default false
          */
         "open"?: boolean;
         /**
           * The position of the flyout
+          * @default 'end'
          */
         "position"?: FlyoutPosition;
         /**
           * Adapts the flyout color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -4660,15 +5221,18 @@ declare namespace LocalJSX {
     interface PGrid {
         /**
           * Defines the direction of the main and cross axis. The default "row" defines the main axis as horizontal left to right. Also defines the direction for specific breakpoints, like {base: "column", l: "row"}. You always need to provide a base value when doing this.
+          * @default 'row'
          */
         "direction"?: BreakpointCustomizable<GridDirection>;
         /**
           * Has no effect anymore
           * @deprecated since v3.0.0, will be removed with next major release
+          * @default { base: 16, s: 24, m: 36 }
          */
         "gutter"?: BreakpointCustomizable<GridGutter>;
         /**
           * Handles wrapping behaviour of elements.
+          * @default 'wrap'
          */
         "wrap"?: BreakpointCustomizable<GridWrap>;
     }
@@ -4678,28 +5242,34 @@ declare namespace LocalJSX {
     interface PGridItem {
         /**
           * The offset of the column. Can be between 0 and 11. Also defines the offset of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
+          * @default 0
          */
         "offset"?: BreakpointCustomizable<GridItemOffset>;
         /**
           * The size of the column. Can be between 1 and 12. Also defines the size of the column for specific breakpoints, like {base: 6, l: 3}. You always need to provide a base value when doing this.
+          * @default 1
          */
         "size"?: BreakpointCustomizable<GridItemSize>;
     }
     interface PHeading {
         /**
           * Text alignment of the component.
+          * @default 'start'
          */
         "align"?: HeadingAlign;
         /**
           * Basic text color variations depending on theme property.
+          * @default 'primary'
          */
         "color"?: HeadingColor;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
+          * @default false
          */
         "ellipsis"?: boolean;
         /**
           * Size of the component. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+          * @default 'xx-large'
          */
         "size"?: BreakpointCustomizable<HeadingSize>;
         /**
@@ -4708,6 +5278,7 @@ declare namespace LocalJSX {
         "tag"?: HeadingTag;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -4717,14 +5288,17 @@ declare namespace LocalJSX {
     interface PHeadline {
         /**
           * Text alignment of the component.
+          * @default 'start'
          */
         "align"?: HeadlineAlign;
         /**
           * Basic text color variations depending on theme property.
+          * @default 'primary'
          */
         "color"?: HeadlineColor;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
+          * @default false
          */
         "ellipsis"?: boolean;
         /**
@@ -4733,10 +5307,12 @@ declare namespace LocalJSX {
         "tag"?: HeadlineTag;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * Predefined style of the headline.
+          * @default 'headline-1'
          */
         "variant"?: HeadlineVariant;
     }
@@ -4747,6 +5323,7 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<IconAriaAttribute>;
         /**
           * Basic color variations depending on theme property.
+          * @default 'primary'
          */
         "color"?: IconColor;
         /**
@@ -4756,10 +5333,12 @@ declare namespace LocalJSX {
         "lazy"?: boolean;
         /**
           * Specifies which icon to use.
+          * @default 'arrow-right'
          */
         "name"?: IconName;
         /**
           * The size of the icon.
+          * @default 'small'
          */
         "size"?: IconSize;
         /**
@@ -4768,12 +5347,14 @@ declare namespace LocalJSX {
         "source"?: string;
         /**
           * Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
     interface PInlineNotification {
         /**
           * Action icon of the inline-notification.
+          * @default 'arrow-right'
          */
         "actionIcon"?: InlineNotificationActionIcon;
         /**
@@ -4782,22 +5363,27 @@ declare namespace LocalJSX {
         "actionLabel"?: string;
         /**
           * Disables the action button and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "actionLoading"?: boolean;
         /**
           * Description of the inline-notification.
+          * @default ''
          */
         "description"?: string;
         /**
           * If false, the inline-notification will not have a dismiss button.
+          * @default true
          */
         "dismissButton"?: boolean;
         /**
           * Heading of the inline-notification.
+          * @default ''
          */
         "heading"?: string;
         /**
           * Sets a heading tag, so it fits correctly within the outline of the page.
+          * @default 'h5'
          */
         "headingTag"?: InlineNotificationHeadingTag;
         /**
@@ -4814,10 +5400,12 @@ declare namespace LocalJSX {
         "persistent"?: boolean;
         /**
           * State of the inline-notification.
+          * @default 'info'
          */
         "state"?: InlineNotificationState;
         /**
           * Adapts the inline-notification color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -4828,18 +5416,22 @@ declare namespace LocalJSX {
         "autoComplete"?: InputNumberAutoComplete;
         /**
           * Displays as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Show or hide the increment/decrement stepper controls.
+          * @default false
          */
         "controls"?: boolean;
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Marks the number input as disabled.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -4848,14 +5440,17 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Show or hide label and description text. For better accessibility, it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -4864,6 +5459,7 @@ declare namespace LocalJSX {
         "max"?: number;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -4888,30 +5484,37 @@ declare namespace LocalJSX {
         "onInput"?: (event: PInputNumberCustomEvent<InputNumberInputEventDetail>) => void;
         /**
           * The placeholder text.
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * Specifies whether the number input should be read-only.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * Marks the number input as required.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: InputNumberState;
         /**
           * The granularity that the value must adhere to.
+          * @default 1
          */
         "step"?: number;
         /**
           * Adapts the color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The number input value.
+          * @default ''
          */
         "value"?: string;
     }
@@ -4922,14 +5525,17 @@ declare namespace LocalJSX {
         "autoComplete"?: InputPasswordAutoComplete;
         /**
           * Displays as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Marks the password input as disabled.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -4938,14 +5544,17 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -4954,6 +5563,7 @@ declare namespace LocalJSX {
         "maxLength"?: number;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -4978,30 +5588,37 @@ declare namespace LocalJSX {
         "onInput"?: (event: PInputPasswordCustomEvent<InputPasswordInputEventDetail>) => void;
         /**
           * The placeholder text.
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * Specifies whether the password input should be read-only.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * Marks the password input as required.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: InputPasswordState;
         /**
           * Adapts the color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * Show or hide password toggle for `input type="password"`.
+          * @default false
          */
         "toggle"?: boolean;
         /**
           * The password input value.
+          * @default ''
          */
         "value"?: string;
     }
@@ -5012,18 +5629,22 @@ declare namespace LocalJSX {
         "autoComplete"?: InputSearchAutoComplete;
         /**
           * Show clear input value button
+          * @default false
          */
         "clear"?: boolean;
         /**
           * Displays as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Marks the search input as disabled.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -5032,22 +5653,27 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Show search indicator icon
+          * @default false
          */
         "indicator"?: boolean;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -5068,26 +5694,32 @@ declare namespace LocalJSX {
         "onInput"?: (event: PInputSearchCustomEvent<InputSearchInputEventDetail>) => void;
         /**
           * The placeholder text.
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * Specifies whether the search input should be read-only.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * Marks the search input as required.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: InputSearchState;
         /**
           * Adapts the color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The search input value.
+          * @default ''
          */
         "value"?: string;
     }
@@ -5098,18 +5730,22 @@ declare namespace LocalJSX {
         "autoComplete"?: InputTextAutoComplete;
         /**
           * Displays as a compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Show or hide the character counter.
+          * @default false
          */
         "counter"?: boolean;
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Marks the text input as disabled.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -5118,14 +5754,17 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Show or hide label and description text. For better accessibility, it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -5134,6 +5773,7 @@ declare namespace LocalJSX {
         "maxLength"?: number;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -5158,14 +5798,17 @@ declare namespace LocalJSX {
         "onInput"?: (event: PInputTextCustomEvent<InputTextInputEventDetail>) => void;
         /**
           * The placeholder text.
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * Specifies whether the text input should be read-only.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * Marks the text input as required.
+          * @default false
          */
         "required"?: boolean;
         /**
@@ -5174,14 +5817,17 @@ declare namespace LocalJSX {
         "spellCheck"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: InputTextState;
         /**
           * Adapts the color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The text input value.
+          * @default ''
          */
         "value"?: string;
     }
@@ -5192,6 +5838,7 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
@@ -5200,6 +5847,7 @@ declare namespace LocalJSX {
         "download"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -5208,6 +5856,7 @@ declare namespace LocalJSX {
         "href"?: string;
         /**
           * The icon shown. By choosing 'none', no icon is displayed.
+          * @default 'none'
          */
         "icon"?: LinkIcon;
         /**
@@ -5220,24 +5869,29 @@ declare namespace LocalJSX {
         "rel"?: string;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: LinkTarget;
         /**
           * Adapts the link color when used on dark background.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The style variant of the link.
+          * @default 'primary'
          */
         "variant"?: LinkVariant;
     }
     interface PLinkPure {
         /**
           * Display link in active state.
+          * @default false
          */
         "active"?: boolean;
         /**
           * Aligns the label.
+          * @default 'end'
          */
         "alignLabel"?: BreakpointCustomizable<LinkPureAlignLabel>;
         /**
@@ -5250,6 +5904,7 @@ declare namespace LocalJSX {
         "download"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -5258,6 +5913,7 @@ declare namespace LocalJSX {
         "href"?: string;
         /**
           * The icon shown. By choosing 'none', no icon is displayed
+          * @default 'arrow-right'
          */
         "icon"?: LinkPureIcon;
         /**
@@ -5270,27 +5926,33 @@ declare namespace LocalJSX {
         "rel"?: string;
         /**
           * Size of the link.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<LinkPureSize>;
         /**
           * Stretches the area between icon and label to max available space.
+          * @default false
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: LinkPureTarget;
         /**
           * Adapts the button color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * Shows an underline under the label.
+          * @default false
          */
         "underline"?: boolean;
         /**
           * The weight of the text (only has effect with visible label).
           * @deprecated since v3.0.0, will be removed with next major release
+          * @default 'regular'
          */
         "weight"?: LinkPureWeight;
     }
@@ -5300,10 +5962,12 @@ declare namespace LocalJSX {
     interface PLinkSocial {
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Show or hide label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -5324,16 +5988,19 @@ declare namespace LocalJSX {
         "rel"?: string;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: LinkSocialTarget;
         /**
           * Adapts the link color when used on dark background.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
     interface PLinkTile {
         /**
           * Alignment of link and description.
+          * @default 'bottom'
          */
         "align"?: LinkTileAlign;
         /**
@@ -5342,14 +6009,17 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<LinkTileAriaAttribute>;
         /**
           * Aspect ratio of the link-tile.
+          * @default '4/3'
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileAspectRatio>;
         /**
           * Adapts the description and link theme when used on light background image.
+          * @default 'dark'
          */
         "background"?: LinkTileBackground;
         /**
           * Displays the link-tile as compact version with description and link icon only.
+          * @default false
          */
         "compact"?: BreakpointCustomizable<boolean>;
         /**
@@ -5362,6 +6032,7 @@ declare namespace LocalJSX {
         "download"?: string;
         /**
           * Show gradient.
+          * @default true
          */
         "gradient"?: boolean;
         /**
@@ -5378,20 +6049,24 @@ declare namespace LocalJSX {
         "rel"?: string;
         /**
           * Font size of the description.
+          * @default 'medium'
          */
         "size"?: BreakpointCustomizable<LinkTileSize>;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: LinkTileTarget;
         /**
           * Font weight of the description.
+          * @default 'semi-bold'
          */
         "weight"?: BreakpointCustomizable<LinkTileWeight>;
     }
     interface PLinkTileModelSignature {
         /**
           * Aspect ratio of the link-tile-model-signature.
+          * @default '3/4'
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileModelSignatureAspectRatio>;
         /**
@@ -5404,18 +6079,22 @@ declare namespace LocalJSX {
         "heading"?: string;
         /**
           * Sets a heading tag, so it fits correctly within the outline of the page.
+          * @default 'h2'
          */
         "headingTag"?: LinkTileModelSignatureHeadingTag;
         /**
           * Defines the direction of the main and cross axis of the links. The default is '{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint 'xs'.
+          * @default {     base: 'column',     xs: 'row',   }
          */
         "linkDirection"?: BreakpointCustomizable<LinkTileModelSignatureLinkDirection>;
         /**
           * Adapts the model of the component.
+          * @default '911'
          */
         "model"?: LinkTileModelSignatureModel;
         /**
           * Adapts the font weight of the heading.
+          * @default 'semi-bold'
          */
         "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
     }
@@ -5426,6 +6105,7 @@ declare namespace LocalJSX {
     interface PLinkTileProduct {
         /**
           * Aspect ratio of the link-tile-product.
+          * @default '3:4'
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileProductAspectRatio>;
         /**
@@ -5442,10 +6122,12 @@ declare namespace LocalJSX {
         "href"?: string;
         /**
           * A Boolean attribute indicating that a like button should be shown.
+          * @default true
          */
         "likeButton"?: boolean;
         /**
           * A Boolean attribute indicating that a product is liked.
+          * @default false
          */
         "liked"?: boolean;
         /**
@@ -5466,10 +6148,12 @@ declare namespace LocalJSX {
         "rel"?: string;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: LinkTileProductTarget;
         /**
           * Adapts the link-tile-product color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -5487,18 +6171,22 @@ declare namespace LocalJSX {
         "href"?: string;
         /**
           * Adapts sizing of marque.
+          * @default 'responsive'
          */
         "size"?: MarqueSize;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: MarqueTarget;
         /**
           * Show/hide trademark sign (only has effect when variant is set to default).
+          * @default true
          */
         "trademark"?: boolean;
         /**
           * Shows marque in special editions
+          * @default 'default'
          */
         "variant"?: MarqueVariant;
     }
@@ -5512,10 +6200,12 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<ModalAriaAttribute>;
         /**
           * Defines the backdrop, 'blur' (should be used when Modal is opened by user interaction, e.g. after a click on a button) and 'shading' (should be used when Modal gets opened automatically, e.g. Cookie Consent).
+          * @default 'blur'
          */
         "backdrop"?: ModalBackdrop;
         /**
           * If true, the modal will not be closable via backdrop click.
+          * @default false
          */
         "disableBackdropClick"?: boolean;
         /**
@@ -5525,10 +6215,12 @@ declare namespace LocalJSX {
         "disableCloseButton"?: boolean;
         /**
           * If false, the modal will not have a dismiss button.
+          * @default true
          */
         "dismissButton"?: boolean;
         /**
           * If true the modal uses max viewport height and width. Should only be used for mobile.
+          * @default false
          */
         "fullscreen"?: BreakpointCustomizable<boolean>;
         /**
@@ -5553,40 +6245,49 @@ declare namespace LocalJSX {
         "onMotionVisibleEnd"?: (event: PModalCustomEvent<ModalMotionVisibleEndEventDetail>) => void;
         /**
           * If true, the modal is open.
+          * @default false
          */
         "open"?: boolean;
         /**
           * Adapts the modal color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
     interface PModelSignature {
         /**
           * Adapts the color of the component.
+          * @default 'primary'
          */
         "color"?: ModelSignatureColor;
         /**
           * Defines the fetch priority of the model signature. In the end it is just a recommendation to the browser, but it defines the priority on its own.
+          * @default 'auto'
          */
         "fetchPriority"?: ModelSignatureFetchPriority;
         /**
           * Defines whether the model signature is always loaded or only loaded when it is in the viewport (this feature may not work reliably).
+          * @default false
          */
         "lazy"?: boolean;
         /**
           * Adapts the model of the component.
+          * @default '911'
          */
         "model"?: ModelSignatureModel;
         /**
           * When set to `true`, then all model signatures are visually aligned with each other. When set to `false` the model signature comes without any safe zone.
+          * @default true
          */
         "safeZone"?: boolean;
         /**
           * Adapts the size of the component. When set to `inherit` a CSS `width` or `height` needs to be defined on the host but not both.
+          * @default 'small'
          */
         "size"?: ModelSignatureSize;
         /**
           * Adapts color depending on theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -5596,14 +6297,17 @@ declare namespace LocalJSX {
     interface PMultiSelect {
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Disables the multi-select
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Changes the direction to which the dropdown list appears.
+          * @default 'auto'
          */
         "dropdownDirection"?: MultiSelectDropdownDirection;
         /**
@@ -5612,14 +6316,17 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -5632,24 +6339,29 @@ declare namespace LocalJSX {
         "onUpdate"?: (event: PMultiSelectCustomEvent<MultiSelectUpdateEventDetail>) => void;
         /**
           * A Boolean attribute indicating that an option with a non-empty string value must be selected.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: MultiSelectState;
         /**
           * Adapts the multi-select color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The selected values.
+          * @default []
          */
         "value"?: string[];
     }
     interface PMultiSelectOption {
         /**
           * Disables the option.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -5660,6 +6372,7 @@ declare namespace LocalJSX {
     interface POptgroup {
         /**
           * Disables the optgroup.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -5673,6 +6386,7 @@ declare namespace LocalJSX {
     interface PPagination {
         /**
           * Index of the currently active page.
+          * @default 1
          */
         "activePage"?: number;
         /**
@@ -5693,10 +6407,12 @@ declare namespace LocalJSX {
         "allyLabelPrev"?: string;
         /**
           * Override the default wordings that are used for aria-labels on the next/prev and page buttons.
+          * @default {     root: 'Pagination',     prev: 'Previous page',     next: 'Next page',     page: 'Page',   }
          */
         "intl"?: PaginationInternationalization;
         /**
           * The total count of items which should be shown per page.
+          * @default 1
          */
         "itemsPerPage"?: number;
         /**
@@ -5714,14 +6430,17 @@ declare namespace LocalJSX {
         "onUpdate"?: (event: PPaginationCustomEvent<PaginationUpdateEventDetail>) => void;
         /**
           * Show or hide the button to jump to the last page.
+          * @default true
          */
         "showLastPage"?: boolean;
         /**
           * Adapts the color when used on dark background.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The total count of items.
+          * @default 1
          */
         "totalItemsCount"?: number;
     }
@@ -5731,10 +6450,12 @@ declare namespace LocalJSX {
     interface PPinCode {
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Disables the Pin Code. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -5743,22 +6464,27 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * Number of characters of the Pin Code.
+          * @default 4
          */
         "length"?: PinCodeLength;
         /**
           * Disables the Pin Code and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "loading"?: boolean;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -5771,22 +6497,27 @@ declare namespace LocalJSX {
         "onUpdate"?: (event: PPinCodeCustomEvent<PinCodeUpdateEventDetail>) => void;
         /**
           * Marks the Pin Code as required.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: PinCodeState;
         /**
           * Adapts the color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * Pin Code type.
+          * @default 'number'
          */
         "type"?: PinCodeType;
         /**
           * Sets the initial value of the Pin Code.
+          * @default ''
          */
         "value"?: string;
     }
@@ -5801,6 +6532,7 @@ declare namespace LocalJSX {
         "description"?: string;
         /**
           * Preferred direction in which popover should open, given there is enough space in viewport. Otherwise, it will be opened in the direction with most available space.
+          * @default 'bottom'
          */
         "direction"?: PopoverDirection;
         /**
@@ -5809,42 +6541,51 @@ declare namespace LocalJSX {
         "onDismiss"?: (event: PPopoverCustomEvent<void>) => void;
         /**
           * If true, the popover is open.
+          * @default false
          */
         "open"?: boolean;
         /**
           * Adapts the popover color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
     interface PRadioButtonWrapper {
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * @experimental Disables the radio button and shows a loading indicator.
+          * @default false
          */
         "loading"?: boolean;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: RadioButtonWrapperState;
         /**
           * Adapts the color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
     interface PScroller {
         /**
           * Sets the vertical position of scroll indicator.
+          * @default 'center'
          */
         "alignScrollIndicator"?: ScrollerAlignScrollIndicator;
         /**
@@ -5853,6 +6594,7 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
         /**
           * Adapts the background gradient color of prev and next button.
+          * @default 'background-base'
          */
         "gradientColor"?: ScrollerGradientColor;
         /**
@@ -5869,10 +6611,12 @@ declare namespace LocalJSX {
         "scrollToPosition"?: ScrollerScrollToPosition;
         /**
           * Specifies if scrollbar should be shown.
+          * @default false
          */
         "scrollbar"?: boolean;
         /**
           * Adapts the color when used on dark background.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -5886,10 +6630,12 @@ declare namespace LocalJSX {
         "backgroundColor"?: SegmentedControlBackgroundColor;
         /**
           * Sets the amount of columns.
+          * @default 'auto'
          */
         "columns"?: BreakpointCustomizable<SegmentedControlColumns>;
         /**
           * Disables the segmented-control.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -5910,6 +6656,7 @@ declare namespace LocalJSX {
         "onUpdate"?: (event: PSegmentedControlCustomEvent<SegmentedControlUpdateEventDetail>) => void;
         /**
           * Adapts the segmented-control color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
@@ -5924,6 +6671,7 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<SegmentedControlItemAriaAttribute>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -5949,22 +6697,27 @@ declare namespace LocalJSX {
     interface PSelect {
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Disables the select.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Changes the direction to which the dropdown list appears.
+          * @default 'auto'
          */
         "dropdownDirection"?: SelectDropdownDirection;
         /**
           * Shows an input in the dropdown allowing options to be filtered.
+          * @default false
          */
         "filter"?: boolean;
         /**
@@ -5973,14 +6726,17 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -5993,14 +6749,17 @@ declare namespace LocalJSX {
         "onUpdate"?: (event: PSelectCustomEvent<SelectUpdateEventDetail>) => void;
         /**
           * A Boolean attribute indicating that an option with a non-empty string value must be selected.
+          * @default false
          */
         "required"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: SelectState;
         /**
           * Adapts the select color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
@@ -6011,6 +6770,7 @@ declare namespace LocalJSX {
     interface PSelectOption {
         /**
           * Disables the option.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -6021,53 +6781,80 @@ declare namespace LocalJSX {
     interface PSelectWrapper {
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Changes the direction to which the dropdown list appears.
+          * @default 'auto'
          */
         "dropdownDirection"?: SelectWrapperDropdownDirection;
         /**
           * Filters select options by typing a character
+          * @default false
          */
         "filter"?: boolean;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
           * Forces rendering of native browser select dropdown
+          * @default false
          */
         "native"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: SelectWrapperState;
         /**
           * Adapts the select color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
     interface PSelectWrapperDropdown {
         "description"?: string;
+        /**
+          * @default 'auto'
+         */
         "direction"?: SelectWrapperDropdownDirection;
+        /**
+          * @default false
+         */
         "disabled"?: boolean;
+        /**
+          * @default false
+         */
         "filter"?: boolean;
+        /**
+          * @default false
+         */
         "isOpenOverride"?: boolean;
         "label"?: string;
         "message"?: string;
         "onOpenChange"?: (isOpen: boolean) => void;
+        /**
+          * @default false
+         */
         "required"?: boolean;
         "selectRef"?: HTMLSelectElement;
         "state"?: SelectWrapperState;
+        /**
+          * @default 'light'
+         */
         "theme"?: Theme;
     }
     /**
@@ -6080,10 +6867,12 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<SheetAriaAttribute>;
         /**
           * If true, the sheet will not be closable via backdrop click.
+          * @default false
          */
         "disableBackdropClick"?: boolean;
         /**
           * If false, the sheet will not have a dismiss button.
+          * @default true
          */
         "dismissButton"?: boolean;
         /**
@@ -6100,10 +6889,12 @@ declare namespace LocalJSX {
         "onMotionVisibleEnd"?: (event: PSheetCustomEvent<SheetMotionVisibleEndEventDetail>) => void;
         /**
           * If true, the sheet is open.
+          * @default false
          */
         "open"?: boolean;
         /**
           * Adapts the sheet color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -6114,10 +6905,12 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<SpinnerAriaAttribute>;
         /**
           * Size of the spinner.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<SpinnerSize>;
         /**
           * Adapts the spinner color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -6132,16 +6925,19 @@ declare namespace LocalJSX {
         "onUpdate"?: (event: PStepperHorizontalCustomEvent<StepperHorizontalUpdateEventDetail>) => void;
         /**
           * The text size.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<StepperHorizontalSize>;
         /**
           * Adapts the tag color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
     interface PStepperHorizontalItem {
         /**
           * Disables the stepper-horizontal-item. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -6155,26 +6951,32 @@ declare namespace LocalJSX {
     interface PSwitch {
         /**
           * Aligns the label.
+          * @default 'end'
          */
         "alignLabel"?: BreakpointCustomizable<SwitchAlignLabel>;
         /**
           * Visualize the switch with on/off status.
+          * @default false
          */
         "checked"?: boolean;
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Disables the switch. No events will be triggered while disabled state is active.
+          * @default false
          */
         "disabled"?: boolean;
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * Disables the switch and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "loading"?: boolean;
         /**
@@ -6187,10 +6989,12 @@ declare namespace LocalJSX {
         "onUpdate"?: (event: PSwitchCustomEvent<SwitchUpdateEventDetail>) => void;
         /**
           * Stretches the contents to max available space.
+          * @default false
          */
         "stretch"?: BreakpointCustomizable<boolean>;
         /**
           * Adapts the switch color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -6201,10 +7005,12 @@ declare namespace LocalJSX {
         "caption"?: string;
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
           * Controls the layout behavior of the table.
+          * @default 'auto'
          */
         "layout"?: TableLayout;
         /**
@@ -6217,6 +7023,7 @@ declare namespace LocalJSX {
         "onUpdate"?: (event: PTableCustomEvent<TableUpdateEventDetail>) => void;
         /**
           * Adapts the color when used on dark background.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -6225,6 +7032,7 @@ declare namespace LocalJSX {
     interface PTableCell {
         /**
           * Displays slotted text multiline or forced into a single line.
+          * @default false
          */
         "multiline"?: boolean;
     }
@@ -6233,10 +7041,12 @@ declare namespace LocalJSX {
     interface PTableHeadCell {
         /**
           * Hides the label but stays accessible for screen readers. This property only takes effect when sort property is not defined.
+          * @default false
          */
         "hideLabel"?: boolean;
         /**
           * Displays slotted text multiline or forced into a single line.
+          * @default false
          */
         "multiline"?: boolean;
         /**
@@ -6254,10 +7064,12 @@ declare namespace LocalJSX {
     interface PTabs {
         /**
           * Defines which tab to be visualized as selected (zero-based numbering).
+          * @default 0
          */
         "activeTabIndex"?: number;
         /**
           * Adapts the background gradient color of prev and next button.
+          * @default 'background-base'
          */
         "gradientColor"?: TabsGradientColor;
         /**
@@ -6274,14 +7086,17 @@ declare namespace LocalJSX {
         "onUpdate"?: (event: PTabsCustomEvent<TabsUpdateEventDetail>) => void;
         /**
           * The text size.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<TabsSize>;
         /**
           * Adapts the color when used on dark background.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The text weight.
+          * @default 'regular'
          */
         "weight"?: TabsWeight;
     }
@@ -6295,6 +7110,7 @@ declare namespace LocalJSX {
         "activeTabIndex"?: number | undefined;
         /**
           * Adapts the background gradient color of prev and next button.
+          * @default 'background-base'
          */
         "gradientColor"?: TabsBarGradientColor;
         /**
@@ -6311,14 +7127,17 @@ declare namespace LocalJSX {
         "onUpdate"?: (event: PTabsBarCustomEvent<TabsBarUpdateEventDetail>) => void;
         /**
           * The text size.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<TabsBarSize>;
         /**
           * Adapts the color when used on dark background.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The text weight.
+          * @default 'regular'
          */
         "weight"?: TabsBarWeight;
     }
@@ -6331,10 +7150,12 @@ declare namespace LocalJSX {
     interface PTag {
         /**
           * Background color variations depending on theme property.
+          * @default 'background-surface'
          */
         "color"?: TagColor;
         /**
           * Displays as compact version.
+          * @default false
          */
         "compact"?: boolean;
         /**
@@ -6347,6 +7168,7 @@ declare namespace LocalJSX {
         "iconSource"?: string;
         /**
           * Adapts the tag color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -6357,6 +7179,7 @@ declare namespace LocalJSX {
         "aria"?: SelectedAriaAttributes<TagDismissibleAriaAttribute>;
         /**
           * Background color variations
+          * @default 'background-surface'
          */
         "color"?: TagDismissibleColor;
         /**
@@ -6365,36 +7188,44 @@ declare namespace LocalJSX {
         "label"?: string;
         /**
           * Adapts the color when used on dark background.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
     interface PText {
         /**
           * Text alignment of the component.
+          * @default 'start'
          */
         "align"?: TextAlign;
         /**
           * Basic text color variations depending on theme property.
+          * @default 'primary'
          */
         "color"?: TextColor;
         /**
           * Adds an ellipsis to a single line of text if it overflows.
+          * @default false
          */
         "ellipsis"?: boolean;
         /**
           * Size of the text. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this.
+          * @default 'small'
          */
         "size"?: BreakpointCustomizable<TextSize>;
         /**
           * Sets a custom HTML tag depending on the usage of the text component.
+          * @default 'p'
          */
         "tag"?: TextTag;
         /**
           * Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The weight of the text.
+          * @default 'regular'
          */
         "weight"?: TextWeight;
     }
@@ -6405,22 +7236,27 @@ declare namespace LocalJSX {
         "actionIcon"?: TextFieldWrapperActionIcon;
         /**
           * Disables the action button and shows a loading indicator. No events will be triggered while loading state is active.
+          * @default false
          */
         "actionLoading"?: boolean;
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -6433,30 +7269,37 @@ declare namespace LocalJSX {
         "showCharacterCount"?: boolean;
         /**
           * Show or hide max character count.
+          * @default true
          */
         "showCounter"?: boolean;
         /**
           * @experimental Show or hide password toggle for `input type="password"`.
+          * @default true
          */
         "showPasswordToggle"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: TextFieldWrapperState;
         /**
           * Show search button if wrapped inside a form.
+          * @default true
          */
         "submitButton"?: boolean;
         /**
           * Adapts the color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The unit text.
+          * @default ''
          */
         "unit"?: string;
         /**
           * The unit position.
+          * @default 'prefix'
          */
         "unitPosition"?: TextFieldWrapperUnitPosition;
     }
@@ -6471,10 +7314,12 @@ declare namespace LocalJSX {
         "orderType"?: TextListOrderType;
         /**
           * Adapts the text color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The list style type.
+          * @default 'unordered'
          */
         "type"?: TextListType;
     }
@@ -6487,14 +7332,17 @@ declare namespace LocalJSX {
         "autoComplete"?: TextareaAutoComplete;
         /**
           * Show or hide the character counter.
+          * @default false
          */
         "counter"?: boolean;
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Marks the textarea as disabled.
+          * @default false
          */
         "disabled"?: boolean;
         /**
@@ -6503,10 +7351,12 @@ declare namespace LocalJSX {
         "form"?: string;
         /**
           * Show or hide label. For better accessibility, it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
@@ -6515,6 +7365,7 @@ declare namespace LocalJSX {
         "maxLength"?: number;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -6539,22 +7390,27 @@ declare namespace LocalJSX {
         "onInput"?: (event: PTextareaCustomEvent<TextareaInputEventDetail>) => void;
         /**
           * The placeholder text.
+          * @default ''
          */
         "placeholder"?: string;
         /**
           * Specifies whether the textarea should be read-only.
+          * @default false
          */
         "readOnly"?: boolean;
         /**
           * Marks the textarea as required.
+          * @default false
          */
         "required"?: boolean;
         /**
           * Controls whether the textarea is resizable and in which direction.
+          * @default 'vertical'
          */
         "resize"?: TextareaResize;
         /**
           * The number of rows of the textarea.
+          * @default 7
          */
         "rows"?: number;
         /**
@@ -6563,36 +7419,44 @@ declare namespace LocalJSX {
         "spellCheck"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: TextareaState;
         /**
           * Adapts the color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
         /**
           * The textarea value.
+          * @default ''
          */
         "value"?: string;
         /**
           * Handles wrapping behaviour of elements.
+          * @default 'soft'
          */
         "wrap"?: TextareaWrap;
     }
     interface PTextareaWrapper {
         /**
           * The description text.
+          * @default ''
          */
         "description"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
+          * @default false
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
           * The label text.
+          * @default ''
          */
         "label"?: string;
         /**
           * The message styled depending on validation state.
+          * @default ''
          */
         "message"?: string;
         /**
@@ -6601,20 +7465,24 @@ declare namespace LocalJSX {
         "showCharacterCount"?: boolean;
         /**
           * Show or hide max character count.
+          * @default true
          */
         "showCounter"?: boolean;
         /**
           * The validation state.
+          * @default 'none'
          */
         "state"?: TextareaWrapperState;
         /**
           * Adapts the color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
     interface PToast {
         /**
           * Adapts the toast color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -6625,14 +7493,17 @@ declare namespace LocalJSX {
         "onDismiss"?: (event: PToastItemCustomEvent<void>) => void;
         /**
           * State of the toast-item.
+          * @default 'info'
          */
         "state"?: ToastState;
         /**
           * Text of the toast-item.
+          * @default ''
          */
         "text"?: string;
         /**
           * Adapts the toast-item color depending on the theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }
@@ -6647,14 +7518,17 @@ declare namespace LocalJSX {
         "href"?: string;
         /**
           * Adapts sizing of wordmark.
+          * @default 'small'
          */
         "size"?: WordmarkSize;
         /**
           * Target attribute where the link should be opened.
+          * @default '_self'
          */
         "target"?: WordmarkTarget;
         /**
           * Adapts color depending on theme.
+          * @default 'light'
          */
         "theme"?: Theme;
     }

@@ -194,7 +194,7 @@ export class Drilldown {
     this.drilldownItemElements = getHTMLElementOfKind(this.host, 'p-drilldown-item') as Item[];
   };
 
-  private onClickDialog = (e: MouseEvent & { target: HTMLElement }): void => {
+  private onClickDialog = (e: PointerEvent & { target: HTMLElement }): void => {
     if (e.target.tagName === 'DIALOG') {
       // dismiss dialog when clicked on backdrop
       this.dismissDialog();
