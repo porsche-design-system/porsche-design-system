@@ -1,4 +1,4 @@
-name: Code Scanning
+name: 'Code Scanning'
 
 on:
   push:
@@ -10,15 +10,15 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    name: CodeQL Code Scanning
+  code-ql:
+    name: 'CodeQL'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Source
+      - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: Initialize CodeQL Scanning
+      - name: 'Initialize'
         uses: github/codeql-action/init@v2
         with:
           languages: javascript
-      - name: Perform CodeQL Analysis
+      - name: 'Analyze'
         uses: github/codeql-action/analyze@v2

@@ -1,33 +1,42 @@
+name: 'Contribution'
+
 on:
   push:
-    branches:
-      - main
-      - v*
-      - issue/*
-      - housekeeping/*
-      - release/*
-      - dependabot/**/*
-name: 'Porsche Design System'
+
 jobs:
-  build-and-test:
-    name: 'Build and Test'
-    uses: ./.github/workflows/build-and-test.yml
-    secrets:
-      github-token: ${{ secrets.GITHUB_TOKEN }}
-  deploy-and-release:
-    name: 'Deploy and Release'
-    uses: ./.github/workflows/deploy-and-release.yml
+  build:
+    name: 'Build'
+    uses: ./.github/workflows/build.yml
+    with:
+      image: mcr.microsoft.com/playwright:v1.49.1-jammy
+  test:
+    name: 'Test'
+    uses: ./.github/workflows/test.yml
+    with:
+      image: mcr.microsoft.com/playwright:v1.49.1-jammy
     needs:
-      - build-and-test
+      - build
+  deploy:
+    name: 'Deploy'
+    uses: ./.github/workflows/deploy.yml
+    with:
+      image: mcr.microsoft.com/playwright:v1.49.1-jammy
+    needs:
+      - test
     secrets:
       linode-aws-access-key-id: ${{ secrets.LINODE_AWS_ACCESS_KEY_ID }}
       linode-aws-secret-access-key: ${{ secrets.LINODE_AWS_SECRET_ACCESS_KEY }}
-      github-token: ${{ secrets.GITHUB_TOKEN }}
-      gh-repository-storefront: ${{ secrets.GH_REPOSITORY_STOREFRONT }}
       gh-deploy-key-storefront: ${{ secrets.GH_DEPLOY_KEY_STOREFRONT }}
-      porsche-npm-registry-token: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
-      npmjs-registry-token: ${{ secrets.NPMJS_REGISTRY_TOKEN }}
       algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
       algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
-      uxpin-token-dev: ${{ secrets.UXPIN_TOKEN_DEV }}
-      uxpin-token-latest: ${{ secrets.UXPIN_TOKEN_LATEST }}
+  release:
+    if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
+    name: 'Release'
+    uses: ./.github/workflows/release.yml
+    with:
+      image: mcr.microsoft.com/playwright:v1.49.1-jammy
+    needs:
+      - deploy
+    secrets:
+      github-token: ${{ secrets.GITHUB_TOKEN }}
+      npmjs-registry-token: ${{ secrets.NPMJS_REGISTRY_TOKEN }}

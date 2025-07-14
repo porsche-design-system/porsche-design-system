@@ -3,7 +3,6 @@
 set -o errexit
 set -o pipefail
 
-SCRIPT_DIR="$(cd $(dirname ${0}) && pwd)"
 PACKAGE_LOCATION="${1}"
 PACKAGE_JSON="${PACKAGE_LOCATION}/package.json"
 PACKAGE_NAME=$(grep name "${PACKAGE_JSON}" | head -1 | awk -F= "{ print ${2} }" | sed 's/[:,\",]//g;s/name//' | tr -d '[[:space:]]')
@@ -54,7 +53,6 @@ EOF
 }
 
 if ! is_version_published; then
-  source "${SCRIPT_DIR}/../shared/ensure-npmjs-credentials.sh"
   if publish_npmjs; then
     add_git_tag
     echo "Version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" published 🎉"
