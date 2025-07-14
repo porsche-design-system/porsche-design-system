@@ -28,17 +28,21 @@ jobs:
   akamai-cdn-assets:
     name: 'Akamai CDN (Assets)'
     runs-on: ubuntu-latest
-    container:
-      image: ${{ inputs.image }}
-      options: --user root
+    # container:
+    #   image: ${{ inputs.image }}
+    #   options: --user root
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
       - name: 'Install'
         uses: ./.github/actions/install
+      - name: 'Setup Node'
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
       - name: 'Install rclone'
         run: |
-          apt-get -yq --no-install-suggests --no-install-recommends install rclone
+          sudo apt-get -yq --no-install-suggests --no-install-recommends install rclone
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
