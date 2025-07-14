@@ -37,6 +37,7 @@ jobs:
       - name: 'Install'
         uses: ./.github/actions/install
         with:
+          node_modules: 'false'
           rclone: 'true'
       - name: 'Setup Node'
         uses: actions/setup-node@v4
