@@ -5,7 +5,7 @@ import { viewportWidthM } from '@porsche-design-system/shared/testing/playwright
 const pagesToTest = componentsValid.filter((item) => {
   return item !== 'flyout'; // removes 'flyout' as it is not available as a page
 });
-const additionalPages = ['flyout-1', 'multi-select-opened-bottom', 'select-opened-bottom']; // add additional pages that are not in componentsValid
+const additionalPages = ['flyout-1']; // add additional pages that are not in componentsValid
 const advancedPagesToTest = [...pagesToTest, ...additionalPages];
 
 for (const component of advancedPagesToTest) {
