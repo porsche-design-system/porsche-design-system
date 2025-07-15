@@ -17,8 +17,6 @@ export default [
       exports: 'auto', // fixes rollup warning
     },
     plugins: [
-      commonjs({ dynamicRequireTargets: ['src/**/*.js'] }),
-      resolve(),
       // patch client-load-module.ts to make bundling of components work
       modify({
         find: /return import\(\s*\/\* @vite-ignore \*\/[^)]*\)/,
@@ -27,6 +25,8 @@ export default [
       return /*#__PURE__*/_interopNamespace(require('./' + bundleId + '.entry.js'));
     })`,
       }),
+      commonjs({ dynamicRequireTargets: ['src/**/*.js'] }),
+      resolve(),
       /* Fixes flaky problem with https://github.com/GoogleChromeLabs/intersection-observer polyfill where window is not defined:
        * ReferenceError: window is not defined
        */
