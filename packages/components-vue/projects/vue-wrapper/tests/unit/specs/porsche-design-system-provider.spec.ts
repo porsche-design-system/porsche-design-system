@@ -1,10 +1,10 @@
 import * as fromComponentsJs from '@porsche-design-system/components-js';
 import { render } from '@testing-library/vue';
-import {beforeEach, describe, expect, test, vi} from 'vitest';
-import {defineComponent, h, inject, type InjectionKey, nextTick, type Ref} from 'vue';
-import {PButton, PorscheDesignSystemProvider, type Theme, themeInjectionKey} from '../../../src/public-api';
-import {mount} from "@vue/test-utils";
-import {load} from "@porsche-design-system/components-js";
+import { beforeEach, describe, expect, test, vi } from 'vitest';
+import { defineComponent, h, inject, type InjectionKey, nextTick, type Ref } from 'vue';
+import { PButton, PorscheDesignSystemProvider, type Theme, themeInjectionKey } from '../../../src/public-api';
+import { mount } from '@vue/test-utils';
+import { load } from '@porsche-design-system/components-js';
 
 vi.mock('@porsche-design-system/components-js', () => ({
   load: vi.fn(),
@@ -125,5 +125,47 @@ describe('PorscheDesignSystemProvider', () => {
     await nextTick();
 
     expect(load).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('theme injection via themeInjectionKey', () => {
+  const ThemeConsumer = defineComponent({
+    setup() {
+      const themeRef = inject(themeInjectionKey)! as Ref<Theme>;
+      return () => h('div', { 'data-test': 'theme' }, themeRef.value);
+    },
+  });
+
+  test.each(['light', 'dark', 'auto'])('provider(theme="%s") injects correct theme', async (theme) => {
+    const wrapper = mount(
+      defineComponent({
+        components: { PorscheDesignSystemProvider, ThemeConsumer },
+        template: `
+            <PorscheDesignSystemProvider theme="${theme}">
+              <ThemeConsumer />
+            </PorscheDesignSystemProvider>
+          `,
+      })
+    );
+
+    const text = wrapper.find('[data-test="theme"]').text();
+    expect(text).toBe(theme);
+  });
+
+  test('nested providers override parent theme', () => {
+    const wrapper = mount(
+      defineComponent({
+        components: { PorscheDesignSystemProvider, ThemeConsumer },
+        template: `
+          <PorscheDesignSystemProvider cdn="auto" theme="light">
+            <PorscheDesignSystemProvider cdn="auto" theme="dark">
+              <ThemeConsumer />
+            </PorscheDesignSystemProvider>
+          </PorscheDesignSystemProvider>
+        `,
+      })
+    );
+
+    expect(wrapper.find('[data-test="theme"]').text()).toBe('dark');
   });
 });
