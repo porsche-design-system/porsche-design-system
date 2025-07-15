@@ -299,7 +299,7 @@ Actions to OSO automatically.
 
 # Release management
 
-## Porsche Design System - Components (JS/Angular/React)
+## Porsche Design System - Components (JS/Angular/React/Vue)
 
 ### Note
 
@@ -322,8 +322,8 @@ everything works under real conditions.
 
 - `./packages/components/CHANGELOG.md`
 
-1. Run `./docker.sh run-prepare-release-components ${TARGET_VERSION}` (If something goes wrong, make sure to revert all
-   local changes before executing the task again.)
+1. Run `yarn prepare-release ${TARGET_VERSION}` (If something goes wrong, make sure to revert all local changes before
+   executing the task again.)
 
 ### Release
 
@@ -375,8 +375,8 @@ everything works under real conditions.
 
 - `./packages/assets/CHANGELOG.md`
 
-1. Run `./docker.sh run-prepare-release-assets ${TARGET_VERSION}` (If something goes wrong, make sure to revert all
-   local changes before executing the task again.)
+1. ~~Run `./docker.sh run-prepare-release-assets ${TARGET_VERSION}` (If something goes wrong, make sure to revert all
+   local changes before executing the task again.)~~
 
 ### Release
 

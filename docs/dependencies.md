@@ -11,30 +11,6 @@ reflected in the configuration file under `.github/dependabot.yml` and must be k
 | React   | 18.3.1   | 18.3.1                |
 | Next.js | 14.2.5   | 14.2.5 (React 18.3.1) |
 
-## Playwright
-
-In case it gets updated, the Porsche Design System / Playwright Docker image needs to be updated too (this might affect
-all running workflows even outside the changed branch, so this must be aligned with the other developers).
-
-1. Open `./docker/Dockerfile` and adjust the Playwright docker image with the updated npm `@playwright/test` version,
-   e.g. from `FROM mcr.microsoft.com/playwright:v7.1.8-focal` to `FROM mcr.microsoft.com/playwright:v9.1.1-focal`.
-2. Open `./docker/build-and-push-docker-image.sh` and adjust the `TAG` with the updated Playwright docker image version,
-   e.g. from `TAG=v7.1.8-focal` to `TAG=v9.1.1-focal`.
-3. Adjust all files within repository using the docker image by search & replace all, e.g.
-   `ghcr.io/porsche-design-system/porsche-design-system/playwright:v7.1.8-focal` with
-   `ghcr.io/porsche-design-system/porsche-design-system/playwright:v9.1.1-focal`
-4. Commit and push the changes to a Git branch
-5. Navigate to
-   [CI/CD workflow "Build and Push Docker Image"](https://github.com/porsche-design-system/porsche-design-system/actions/workflows/build-and-push-docker-image.yml)
-6. Select the Git branch to which the changes have been pushed by "Run workflow > Use workflow from"
-7. Manually execute "Run workflow"
-8. After docker image has been built by CI/CD, execute `./docker.sh bash` in the root directory of the repository
-9. Execute within Docker container `node --version` and update the Volta section of `./package.json` in the root
-   directory of the repository accordingly
-10. Execute within Docker container `yarn --version` and update the Volta section of `./package.json` in the root
-    directory of the repository accordingly
-11. Commit and push the changes to a Git branch
-
 ## Vue (storefront)
 
 All Vue related dependencies can't be updated at the moment because `vue-property-decorator` and `vue-class-component`
