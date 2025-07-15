@@ -36,15 +36,14 @@ const patchStencilSSRHydration = (fileContent: string): string => {
      */
     const applySnippetPart1 = `
                 ${PDS_PATCH_START}
-                if ($2.shadowDelegatesFocus) {
-                  if (!self.hasDSR || HTMLTemplateElement.prototype.hasOwnProperty('shadowRoot')) {
-                    $5
-                    self.shadowRoot.innerHTML = ssrInnerHTML;
-                  }
-                } else {
-                  $5
+                if (!self.hasDSR || HTMLTemplateElement.prototype.hasOwnProperty('shadowRoot')) {
+                ${PDS_PATCH_END}\n`;
+
+    const applySnippetPart2 = `
+                ${PDS_PATCH_START}
+                  self.shadowRoot.innerHTML = ssrInnerHTML;
                 }
-                ${PDS_PATCH_END}`;
+                ${PDS_PATCH_END}\n`;
 
     const cleanupSnippet = `
 
@@ -58,8 +57,8 @@ const patchStencilSSRHydration = (fileContent: string): string => {
     const newFileContent = fileContent
       // inject applying snippets
       .replace(
-        /(if \((BUILD28)[\S\s]*?)(if \(supportsShadow\) {)(\s+if \(!self\.shadowRoot\) {)\s+(createShadowRoot\.call\(self, cmpMeta\);)/,
-        `$1$3${extractSnippet}$4${applySnippetPart1}`
+        /(if \(supportsShadow\) {)(\s+if \(!self\.shadowRoot\) {)\s+(createShadowRoot\.call\(self, cmpMeta\);)/,
+        `$1${extractSnippet}$2${applySnippetPart1}$3${applySnippetPart2}`
       )
       // inject cleanup snippet
       .replace(
@@ -67,7 +66,7 @@ const patchStencilSSRHydration = (fileContent: string): string => {
         `${cleanupSnippet}$&`
       );
 
-    if (getPatchMarkerCount(newFileContent, pdsPatchStartRegEx) !== 3) {
+    if (getPatchMarkerCount(newFileContent, pdsPatchStartRegEx) !== 4) {
       throw new Error('Failed patching @stencil/core client. Position for snippets not found.\n');
     }
     return newFileContent;

@@ -1,10 +1,10 @@
-import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import modify from 'rollup-plugin-modify';
-import { version } from '../components-wrapper/package.json';
+import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
+import modify from 'rollup-plugin-modify';
+import { version } from '../components-wrapper/package.json';
 
 const outputDir = '../../dist/components-wrapper';
 
@@ -19,6 +19,14 @@ export default [
     plugins: [
       commonjs({ dynamicRequireTargets: ['src/**/*.js'] }),
       resolve(),
+      // patch client-load-module.ts to make bundling of components work
+      modify({
+        find: /return import\(\s*\/\* @vite-ignore \*\/[^)]*\)/,
+        replace: () => `
+    return Promise.resolve().then(function () {
+      return /*#__PURE__*/_interopNamespace(require('./' + bundleId + '.entry.js'));
+    })`,
+      }),
       /* Fixes flaky problem with https://github.com/GoogleChromeLabs/intersection-observer polyfill where window is not defined:
        * ReferenceError: window is not defined
        */
