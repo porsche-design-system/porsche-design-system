@@ -1,0 +1,14 @@
+- text: Opened with slotted images
+- combobox "Opened with slotted images" [expanded]
+- listbox "Opened with slotted images":
+  - option "Some alt text Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is displaying correctly. Also, the slotted image should be aligned correctly to the top-left and preserve the space even for multiple lines.":
+    - img "Some alt text"
+  - option "Some alt text Option B":
+    - img "Some alt text"
+  - option "Some alt text Option C":
+    - img "Some alt text"
+  - option "Some alt text Option D":
+    - img "Some alt text"
+  - option "Option E"
+  - option "Option F"
+- alert
