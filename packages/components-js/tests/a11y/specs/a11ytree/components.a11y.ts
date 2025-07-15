@@ -3,7 +3,7 @@ import { setupScenario } from '../../../vrt/helpers';
 import { viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 const pagesToTest = componentsValid.filter((item) => {
-  return item !== 'flyout'; // removes 'flyout' as it is not available as a page
+  return item !== 'flyout' && item !== 'optgroup'; // removes 'flyout' and 'optgroup' as they are not available as a test-page
 });
 const additionalPages = ['flyout-1']; // add additional pages that are not in componentsValid
 const advancedPagesToTest = [...pagesToTest, ...additionalPages];
