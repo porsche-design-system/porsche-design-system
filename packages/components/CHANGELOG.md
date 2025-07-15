@@ -16,14 +16,42 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
+- `Popover`: support for custom slotted button
+  ([#3861](https://github.com/porsche-design-system/porsche-design-system/pull/3861))
 - `Icon`: `ai-spark` and `ai-spark-filled`
   ([#3916](https://github.com/porsche-design-system/porsche-design-system/pull/3916))
+- `Input Text`: `counter` prop functions independently of `max-length`, allowing character count display even when no
+  limit is set ([#3901](https://github.com/porsche-design-system/porsche-design-system/pull/3901))
 
 ### Changed
 
 - `Input Search`: `indicator` prop now defaults to `false`
   ([#3917](https://github.com/porsche-design-system/porsche-design-system/pull/3917))
 - Angular: updated peer dependency to `>=20.0.0 <21.0.0`
+- **Breaking Change** `Textarea`:
+
+  - Renamed the `showCounter` prop to `counter`.
+  - Changed default behavior: the `counter` is now disabled by default (`false` instead of `true`).
+
+  ```diff
+  - <p-textarea name="some-name" showCounter="false"></p-textarea>
+  + <p-textarea name="some-name"></p-textarea>
+  ```
+
+  To enable the counter explicitly:
+
+  ```diff
+  - <p-textarea name="some-name"></p-textarea>
+  + <p-textarea name="some-name" counter="true"></p-textarea>
+  ```
+
+  ⚠️ This is a breaking change — you must update all instances using `showCounter`.
+  ([#3901](https://github.com/porsche-design-system/porsche-design-system/pull/3901))
+
+### Fixed
+
+- `Carousel`: component does not work correctly if an invalid `lang` value is provided
+  ([#3924](https://github.com/porsche-design-system/porsche-design-system/pull/3924))
 
 ## [3.29.0-rc.0] - 2025-06-27
 

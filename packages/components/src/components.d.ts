@@ -1955,6 +1955,10 @@ export namespace Components {
          */
         "direction"?: PopoverDirection;
         /**
+          * If true, the popover is open.
+         */
+        "open"?: boolean;
+        /**
           * Adapts the popover color depending on the theme.
          */
         "theme"?: Theme;
@@ -2561,6 +2565,10 @@ export namespace Components {
          */
         "autoComplete"?: TextareaAutoComplete;
         /**
+          * Show or hide the character counter.
+         */
+        "counter"?: boolean;
+        /**
           * The description text.
          */
         "description"?: string;
@@ -2616,10 +2624,6 @@ export namespace Components {
           * The number of rows of the textarea.
          */
         "rows"?: number;
-        /**
-          * Show or hide max character count.
-         */
-        "showCounter"?: boolean;
         /**
           * Specifies whether the input should have its spelling and grammar checked
          */
@@ -2786,6 +2790,10 @@ export interface PPaginationCustomEvent<T> extends CustomEvent<T> {
 export interface PPinCodeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPPinCodeElement;
+}
+export interface PPopoverCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPPopoverElement;
 }
 export interface PSegmentedControlCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -3384,7 +3392,18 @@ declare global {
         prototype: HTMLPPinCodeElement;
         new (): HTMLPPinCodeElement;
     };
+    interface HTMLPPopoverElementEventMap {
+        "dismiss": void;
+    }
     interface HTMLPPopoverElement extends Components.PPopover, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPPopoverElementEventMap>(type: K, listener: (this: HTMLPPopoverElement, ev: PPopoverCustomEvent<HTMLPPopoverElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPPopoverElementEventMap>(type: K, listener: (this: HTMLPPopoverElement, ev: PPopoverCustomEvent<HTMLPPopoverElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLPPopoverElement: {
         prototype: HTMLPPopoverElement;
@@ -5785,6 +5804,14 @@ declare namespace LocalJSX {
          */
         "direction"?: PopoverDirection;
         /**
+          * Emitted when the component requests to be dismissed.
+         */
+        "onDismiss"?: (event: PPopoverCustomEvent<void>) => void;
+        /**
+          * If true, the popover is open.
+         */
+        "open"?: boolean;
+        /**
           * Adapts the popover color depending on the theme.
          */
         "theme"?: Theme;
@@ -6459,6 +6486,10 @@ declare namespace LocalJSX {
          */
         "autoComplete"?: TextareaAutoComplete;
         /**
+          * Show or hide the character counter.
+         */
+        "counter"?: boolean;
+        /**
           * The description text.
          */
         "description"?: string;
@@ -6526,10 +6557,6 @@ declare namespace LocalJSX {
           * The number of rows of the textarea.
          */
         "rows"?: number;
-        /**
-          * Show or hide max character count.
-         */
-        "showCounter"?: boolean;
         /**
           * Specifies whether the input should have its spelling and grammar checked
          */

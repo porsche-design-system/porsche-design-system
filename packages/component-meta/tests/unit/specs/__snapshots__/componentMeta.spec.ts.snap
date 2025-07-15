@@ -7411,9 +7411,15 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-popover": {
+    "eventsMeta": {
+      "dismiss": {
+        "description": "Emitted when the component requests to be dismissed.",
+        "type": "void",
+      },
+    },
     "hasAriaProp": true,
     "hasElementInternals": false,
-    "hasEvent": false,
+    "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -7451,6 +7457,15 @@ exports[`should match snapshot 1`] = `
         "description": "Preferred direction in which popover should open, given there is enough space in viewport. Otherwise, it will be opened in the direction with most available space.",
         "type": "PopoverDirection",
       },
+      "open": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "If true, the popover is open.",
+        "propOptions": {
+          "mutable": true,
+        },
+        "type": "boolean",
+      },
       "theme": {
         "allowedValues": [
           "light",
@@ -7465,6 +7480,9 @@ exports[`should match snapshot 1`] = `
     "slotsMeta": {
       "": {
         "description": "Default slot for the popover content.",
+      },
+      "button": {
+        "description": "Slot for custom button.",
       },
     },
     "styling": "jss",
@@ -10173,6 +10191,12 @@ exports[`should match snapshot 1`] = `
         "description": "Specifies whether the input can be autofilled by the browser",
         "type": "TextareaAutoComplete",
       },
+      "counter": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Show or hide the character counter.",
+        "type": "boolean",
+      },
       "description": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -10271,12 +10295,6 @@ exports[`should match snapshot 1`] = `
         "defaultValue": 7,
         "description": "The number of rows of the textarea.",
         "type": "number",
-      },
-      "showCounter": {
-        "allowedValues": "boolean",
-        "defaultValue": true,
-        "description": "Show or hide max character count.",
-        "type": "boolean",
       },
       "spellCheck": {
         "allowedValues": "boolean",

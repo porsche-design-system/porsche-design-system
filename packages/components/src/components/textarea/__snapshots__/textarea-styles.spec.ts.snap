@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, hasCounter: true, theme: vertical 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, counter: true, theme: vertical 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -189,7 +189,7 @@ textarea[readonly] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, hasCounter: true, theme: vertical 2`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: { base: true, xs: false, s: true, m: false, l: true, xl: false }, state: none, counter: true, theme: vertical 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -378,7 +378,7 @@ textarea[readonly] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: error, hasCounter: false, theme: vertical 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: error, counter: false, theme: vertical 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -480,7 +480,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: error, hasCounter: true, theme: vertical 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: error, counter: true, theme: vertical 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -605,7 +605,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: none, hasCounter: false, theme: vertical 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: none, counter: false, theme: vertical 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -706,7 +706,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: none, hasCounter: true, theme: vertical 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: none, counter: true, theme: vertical 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -830,7 +830,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: success, hasCounter: false, theme: vertical 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: success, counter: false, theme: vertical 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -932,7 +932,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: success, hasCounter: true, theme: vertical 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: false, state: success, counter: true, theme: vertical 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1057,7 +1057,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: error, hasCounter: false, theme: vertical 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: error, counter: false, theme: vertical 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1159,7 +1159,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: error, hasCounter: true, theme: vertical 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: error, counter: true, theme: vertical 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1284,7 +1284,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: none, hasCounter: false, theme: vertical 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: none, counter: false, theme: vertical 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1385,7 +1385,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: none, hasCounter: true, theme: vertical 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: none, counter: true, theme: vertical 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1509,7 +1509,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: success, hasCounter: false, theme: vertical 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: success, counter: false, theme: vertical 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1611,7 +1611,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: success, hasCounter: true, theme: vertical 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: false, hideLabel: true, state: success, counter: true, theme: vertical 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1736,7 +1736,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: true, hideLabel: false, state: none, hasCounter: true, theme: vertical 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: false, isReadonly: true, hideLabel: false, state: none, counter: true, theme: vertical 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1860,7 +1860,7 @@ textarea[readonly] {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isDisabled: true, isReadonly: false, hideLabel: true, state: error, hasCounter: false, theme: vertical 1`] = `
+exports[`getComponentCss() should return correct css for isDisabled: true, isReadonly: false, hideLabel: true, state: error, counter: false, theme: vertical 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;

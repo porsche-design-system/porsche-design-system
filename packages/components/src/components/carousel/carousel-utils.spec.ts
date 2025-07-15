@@ -484,13 +484,4 @@ describe('getLangDirection()', () => {
     wrapper.setAttribute('dir', 'rtl');
     expect(getLangDirection(host)).toBe('rtl');
   });
-
-  it('should return correct language direction if document has rtl lang attribute', () => {
-    const wrapper = document.createElement('div');
-    const host = document.createElement('p-carousel');
-    wrapper.append(host);
-
-    document.documentElement.lang = 'ar';
-    expect(getLangDirection(host)).toBe('rtl');
-  });
 });

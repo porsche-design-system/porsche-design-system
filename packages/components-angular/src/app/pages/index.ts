@@ -173,6 +173,7 @@ import { PaginationComponent } from './generated/pagination.component';
 import { PinCodeComponent } from './generated/pin-code.component';
 import { PopoverComponent } from './generated/popover.component';
 import { PopoverBasicComponent } from './generated/popover-basic.component';
+import { PopoverBasicSlottedComponent } from './generated/popover-basic-slotted.component';
 import { PopoverBottomComponent } from './generated/popover-bottom.component';
 import { PopoverEdgeCaseComponent } from './generated/popover-edge-case.component';
 import { PopoverLeftComponent } from './generated/popover-left.component';
@@ -384,6 +385,7 @@ export const generatedPages = [
   PinCodeComponent,
   PopoverComponent,
   PopoverBasicComponent,
+  PopoverBasicSlottedComponent,
   PopoverBottomComponent,
   PopoverEdgeCaseComponent,
   PopoverLeftComponent,
@@ -1153,6 +1155,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Popover Basic',
     path: 'popover-basic',
     component: PopoverBasicComponent,
+  },
+  {
+    name: 'Popover Basic Slotted',
+    path: 'popover-basic-slotted',
+    component: PopoverBasicSlottedComponent,
   },
   {
     name: 'Popover Bottom',

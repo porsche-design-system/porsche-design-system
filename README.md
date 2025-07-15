@@ -358,8 +358,7 @@ everything works under real conditions.
 
 ## Porsche Design System - New Icons
 
-1. Copy new Icon-file (eg. `newIcon.svg`) to the correct category **"./packages/icons/src/CHOOSE_RIGHT_CATEGORY"**
-2. Release Assets `@porsche-design-system/assets` (see below)
+1. Copy new Icon-file (eg. `newIcon.svg`) to the correct category **"./packages/assets/projects/icons/"**
 
 ---
 

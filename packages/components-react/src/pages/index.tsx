@@ -153,6 +153,7 @@ import { PaginationPage } from './generated/Pagination';
 import { PinCodePage } from './generated/PinCode';
 import { PopoverPage } from './generated/Popover';
 import { PopoverBasicPage } from './generated/PopoverBasic';
+import { PopoverBasicSlottedPage } from './generated/PopoverBasicSlotted';
 import { PopoverBottomPage } from './generated/PopoverBottom';
 import { PopoverEdgeCasePage } from './generated/PopoverEdgeCase';
 import { PopoverLeftPage } from './generated/PopoverLeft';
@@ -921,6 +922,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Popover Basic',
     path: '/popover-basic',
     element: <PopoverBasicPage />,
+  },
+  {
+    name: 'Popover Basic Slotted',
+    path: '/popover-basic-slotted',
+    element: <PopoverBasicSlottedPage />,
   },
   {
     name: 'Popover Bottom',
