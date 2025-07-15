@@ -1,4 +1,15 @@
-import { AttachInternals, Component, Element, Event, type EventEmitter, type JSX, Prop, Watch, h } from '@stencil/core';
+import {
+  AttachInternals,
+  Component,
+  Element,
+  Event,
+  type EventEmitter,
+  type JSX,
+  Prop,
+  Watch,
+  h,
+  Fragment
+} from '@stencil/core';
 import { getSlottedAnchorStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
@@ -7,7 +18,6 @@ import {
   THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
-  debounce,
   hasPropValueChanged,
   validateProps,
 } from '../../utils';
@@ -36,7 +46,7 @@ const propTypes: PropTypes<typeof Textarea> = {
   state: AllowedTypes.oneOf<TextareaState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
-  showCounter: AllowedTypes.boolean,
+  counter: AllowedTypes.boolean,
   placeholder: AllowedTypes.string,
   required: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
@@ -88,8 +98,8 @@ export class Textarea {
   /** Show or hide label. For better accessibility, it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Show or hide max character count. */
-  @Prop() public showCounter?: boolean = true;
+  /** Show or hide the character counter. */
+  @Prop() public counter?: boolean = false;
 
   /** The placeholder text. */
   @Prop() public placeholder?: string = '';
@@ -143,23 +153,10 @@ export class Textarea {
 
   private defaultValue: string;
   private textAreaElement: HTMLTextAreaElement;
-  private counterElement: HTMLSpanElement;
-  private hasCounter: boolean;
-  private setCounterAriaTextDebounced = debounce(() => this.setCounterAriaText());
 
   @Watch('value')
   public onValueChange(newValue: string): void {
     this.internals?.setFormValue(newValue);
-  }
-
-  @Watch('maxLength')
-  public onMaxLengthChange(): void {
-    this.updateCounterVisibility();
-  }
-
-  @Watch('showCounter')
-  public onShowCounterChange(): void {
-    this.updateCounterVisibility();
   }
 
   public connectedCallback(): void {
@@ -168,7 +165,6 @@ export class Textarea {
 
   public componentWillLoad(): void {
     this.defaultValue = this.value;
-    this.updateCounterVisibility();
   }
 
   public formResetCallback(): void {
@@ -192,9 +188,6 @@ export class Textarea {
   }
 
   public componentDidRender(): void {
-    if (this.hasCounter) {
-      this.setCounterAriaTextDebounced();
-    }
     this.internals?.setValidity(
       this.textAreaElement.validity,
       this.textAreaElement.validationMessage,
@@ -212,7 +205,7 @@ export class Textarea {
       this.readOnly,
       this.hideLabel,
       this.state,
-      this.hasCounter,
+      this.counter,
       this.resize,
       this.theme
     );
@@ -251,12 +244,18 @@ export class Textarea {
             autocomplete={this.autoComplete}
             wrap={this.wrap}
           />
-          {this.hasCounter && (
-            <span class="counter" aria-hidden="true">
-              {`${this.value.length}/${this.maxLength}`}
-            </span>
+          {this.counter && (
+            <Fragment>
+              <span class="sr-only" aria-live="polite">
+                {this.maxLength
+                  ? `You have ${this.maxLength - this.value.length} out of ${this.maxLength} characters left`
+                  : `${this.value.length} characters entered`}
+              </span>
+              <span class="counter" aria-hidden="true">
+                {this.maxLength ? `${this.value.length}/${this.maxLength}` : `${this.value.length}`}
+              </span>
+            </Fragment>
           )}
-          {this.hasCounter && <span class="sr-only" aria-live="polite" ref={(el) => (this.counterElement = el)} />}
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
       </div>
@@ -279,15 +278,5 @@ export class Textarea {
     this.input.emit(e);
     const target = e.target as HTMLTextAreaElement;
     this.value = target.value; // triggers @Watch('value')
-  };
-
-  private updateCounterVisibility = (): void => {
-    this.hasCounter = this.maxLength >= 0 && this.showCounter;
-  };
-
-  private setCounterAriaText = (): void => {
-    if (this.counterElement) {
-      this.counterElement.innerText = `You have ${this.maxLength - this.value.length} out of ${this.maxLength} characters left`;
-    }
   };
 }
