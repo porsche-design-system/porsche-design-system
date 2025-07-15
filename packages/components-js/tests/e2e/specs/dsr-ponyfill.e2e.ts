@@ -69,7 +69,6 @@ const applyPonyfill = async (page: Page): Promise<void> => {
 const initPorscheDesignSystem = async (page: Page): Promise<void> => {
   await page.addScriptTag({ content: 'porscheDesignSystem.load();' });
 
-  await page.waitForSelector('html.hydrated');
   const amount = await waitForComponentsReady(page); // very unreliable with lazy loading
   expect(amount).toBe(2);
 };

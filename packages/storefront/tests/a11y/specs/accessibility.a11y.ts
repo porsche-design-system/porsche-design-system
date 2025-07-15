@@ -34,7 +34,6 @@ const gotoUrl = async (page: Page, url: string): Promise<void> => {
     document.head.append(styleEl);
   }, rootStyles);
 
-  await page.waitForSelector('html.hydrated');
   await page.evaluate(() =>
     (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
   );
