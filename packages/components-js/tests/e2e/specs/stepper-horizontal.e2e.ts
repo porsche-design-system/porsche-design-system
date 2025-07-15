@@ -1,16 +1,15 @@
-import type { Page } from 'playwright';
 import { expect, test } from '@playwright/test';
+import type { Page } from 'playwright';
 import {
-  addEventListener,
   CSS_ANIMATION_DURATION,
   FOCUS_PADDING,
+  addEventListener,
   getConsoleErrorsAmount,
   getEventSummary,
   getLifecycleStatus,
   getOffsetLeft,
   getOffsetWidth,
   getPageThrownErrorsAmount,
-  getScrollLeft,
   initConsoleObserver,
   initPageErrorObserver,
   reattachElement,
@@ -133,8 +132,7 @@ test.describe('scrolling', () => {
     const gradientWidth = await getOffsetWidth(getGradientNext(page));
     const scrollArea = getScrollArea(page);
     const scrollDistance = step4Offset - gradientWidth + FOCUS_PADDING;
-
-    expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
+    await expect(scrollArea).toHaveJSProperty('scrollLeft', scrollDistance);
   });
 
   test('should scroll to correct position on step click', async ({ page }) => {
@@ -161,7 +159,7 @@ test.describe('scrolling', () => {
     const scrollArea = getScrollArea(page);
     const scrollAreaWidth = await getOffsetWidth(scrollArea);
 
-    expect(await getScrollLeft(scrollArea)).toEqual(0);
+    await expect(scrollArea).toHaveJSProperty('scrollLeft', 0);
 
     await item5.click();
     await waitForStencilLifecycle(page);
@@ -169,7 +167,7 @@ test.describe('scrolling', () => {
 
     const item5Offset = await getOffsetLeft(item5);
     const scrollDistanceRight = item5Offset - gradientWidth + FOCUS_PADDING;
-    expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceRight);
+    await expect(scrollArea).toHaveJSProperty('scrollLeft', scrollDistanceRight);
 
     await item4.click();
     await waitForStencilLifecycle(page);
@@ -178,7 +176,7 @@ test.describe('scrolling', () => {
     const item4Offset = await getOffsetLeft(item4);
     const item4Width = await getOffsetWidth(item4);
     const scrollDistanceLeft = item4Offset + item4Width + gradientWidth - scrollAreaWidth;
-    expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
+    await expect(scrollArea).toHaveJSProperty('scrollLeft', scrollDistanceLeft);
   });
 
   test('should scroll to correct position when current step item changes', async ({ page }) => {
@@ -197,7 +195,7 @@ test.describe('scrolling', () => {
 
     const item5Offset = await getOffsetLeft(item5);
     const scrollDistanceRight = item5Offset - gradientWidth + FOCUS_PADDING;
-    expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceRight);
+    await expect(scrollArea).toHaveJSProperty('scrollLeft', scrollDistanceRight);
 
     await setProperty(item5, 'state', 'complete');
     await setProperty(item4, 'state', 'current');
@@ -207,7 +205,7 @@ test.describe('scrolling', () => {
     const item4Offset = await getOffsetLeft(item4);
     const item4Width = await getOffsetWidth(item4);
     const scrollDistanceLeft = item4Offset + item4Width + gradientWidth - scrollAreaWidth;
-    expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
+    await expect(scrollArea).toHaveJSProperty('scrollLeft', scrollDistanceLeft);
   });
 
   test('should scroll to correct position if one item is removed', async ({ page }) => {
@@ -229,7 +227,7 @@ test.describe('scrolling', () => {
     const item5Offset = await getOffsetLeft(item5);
     const item5Width = await getOffsetWidth(item5);
     const scrollDistanceLeft = item5Offset + item5Width + gradientWidth - scrollAreaWidth;
-    expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
+    await expect(scrollArea).toHaveJSProperty('scrollLeft', scrollDistanceLeft);
   });
 
   // TODO: Different values in pipeline than locally
@@ -259,7 +257,7 @@ test.describe('scrolling', () => {
       const item6Offset = await getOffsetLeft(item6);
       const item6Width = await getOffsetWidth(item6);
       const scrollDistanceLeft = item6Offset + item6Width + FOCUS_PADDING - scrollAreaWidth;
-      expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
+      await expect(scrollArea).toHaveJSProperty('scrollLeft', scrollDistanceLeft);
     });
   });
 });

@@ -78,7 +78,8 @@ const initCarousel = (page: Page, opts?: InitOptions) => {
 const getHost = (page: Page) => page.locator('p-carousel');
 const getSplide = (page: Page) => page.locator('#splide');
 const getSplideTrack = (page: Page) => page.locator('p-carousel .splide__track');
-const getSlides = async (page: Page) => page.getByRole('group').all();
+const getSlides = (page: Page) => page.getByRole('group');
+const getSlideElements = async (page: Page) => page.getByRole('group').all();
 const getButtonPrev = (page: Page) => page.locator('p-carousel p-button-pure:first-of-type button');
 const getButtonNext = (page: Page) => page.locator('p-carousel p-button-pure:last-of-type button');
 const getPagination = (page: Page) => page.locator('p-carousel .pagination');
@@ -91,7 +92,7 @@ const waitForSlideToBeActive = (slide: Locator) => expect(slide).toHaveClass(/is
 test('should move slides on prev button clicks', async ({ page }) => {
   await initCarousel(page);
   const buttonPrev = getButtonPrev(page);
-  const [slide1, slide2, slide3] = await getSlides(page);
+  const [slide1, slide2, slide3] = await getSlideElements(page);
 
   await isElementCompletelyInViewport(slide1);
   await isElementNotInViewport(slide2);
@@ -119,7 +120,7 @@ test('should move slides on prev button clicks', async ({ page }) => {
 test('should move slides on next button clicks', async ({ page }) => {
   await initCarousel(page);
   const buttonNext = getButtonNext(page);
-  const [slide1, slide2, slide3] = await getSlides(page);
+  const [slide1, slide2, slide3] = await getSlideElements(page);
 
   await isElementCompletelyInViewport(slide1);
   await isElementNotInViewport(slide2);
@@ -311,7 +312,7 @@ test('should have working pagination and prev/next buttons after reconnect', asy
   const host = getHost(page);
   const buttonPrev = getButtonPrev(page);
   const buttonNext = getButtonNext(page);
-  const [slide1, slide2, slide3] = await getSlides(page);
+  const [slide1, slide2, slide3] = await getSlideElements(page);
 
   await reattachElement(host);
   // different refs after reconnect, so we have to select them here
@@ -347,7 +348,7 @@ test('should disable prev/next buttons on first/last slide when rewind=false', a
   await initCarousel(page, { rewind: false });
   const buttonPrev = getButtonPrev(page);
   const buttonNext = getButtonNext(page);
-  const [slide1, slide2, slide3] = await getSlides(page);
+  const [slide1, slide2, slide3] = await getSlideElements(page);
 
   expect(await getAttribute(buttonPrev, 'aria-disabled')).toBe('true');
   expect(await getAttribute(buttonNext, 'aria-disabled')).toBe(null);
@@ -401,7 +402,7 @@ test('should have grab cursor when there is only more than one page', async ({ p
 test('should navigate to slide when pagination is clicked', async ({ page }) => {
   await initCarousel(page);
   const [bullet1, bullet2, bullet3] = await getPaginationBullets(page);
-  const [slide1, slide2, slide3] = await getSlides(page);
+  const [slide1, slide2, slide3] = await getSlideElements(page);
 
   await bullet2.click();
   await waitForSlideToBeActive(slide2);
@@ -417,7 +418,7 @@ test('should navigate to slide when infinite pagination is clicked', async ({ pa
   await initCarousel(page);
   await initCarousel(page, { amountOfSlides: 6 });
   const bullets = await getPaginationBullets(page);
-  const slides = await getSlides(page);
+  const slides = await getSlideElements(page);
 
   await bullets[1].click();
   await waitForSlideToBeActive(slides[1]);
@@ -456,7 +457,7 @@ test.describe('adding/removing slides', () => {
   test('should update tabindex attribute of slide', async ({ page }) => {
     await initCarousel(page, { amountOfSlides: 2 });
     const host = getHost(page);
-    const [slide1, slide2] = await getSlides(page);
+    const [slide1, slide2] = await getSlideElements(page);
     await waitForStencilLifecycle(page);
 
     expect(await getAttribute(slide1, 'tabindex')).toBe('0');
@@ -464,7 +465,7 @@ test.describe('adding/removing slides', () => {
 
     await addSlide(host);
     await waitForStencilLifecycle(page);
-    const [slide1Added, slide2Added, slide3Added] = await getSlides(page);
+    const [slide1Added, slide2Added, slide3Added] = await getSlideElements(page);
 
     expect(await getAttribute(slide1Added, 'tabindex')).toBe('0');
     expect(await getAttribute(slide2Added, 'tabindex')).toBe('0');
@@ -472,7 +473,7 @@ test.describe('adding/removing slides', () => {
 
     await removeSlide(host);
     await waitForStencilLifecycle(page);
-    const [slide1Removed, slide2Removed] = await getSlides(page);
+    const [slide1Removed, slide2Removed] = await getSlideElements(page);
 
     expect(await getAttribute(slide1Removed, 'tabindex')).toBe('0');
     expect(await getAttribute(slide2Removed, 'tabindex')).toBe('0');
@@ -491,14 +492,14 @@ test.describe('adding/removing slides', () => {
     await addSlide(host);
     await waitForStencilLifecycle(page);
 
-    expect((await getSlides(page)).length).toBe(3);
+    await expect(getSlides(page)).toHaveCount(3);
     expect(await pagination.evaluate((el) => el.children.length)).toBe(3);
     const [, , bullet3] = await getPaginationBullets(page);
     expect(await getCssClasses(bullet3)).toBe('bullet');
 
     await removeSlide(host);
     await waitForStencilLifecycle(page);
-    expect((await getSlides(page)).length).toBe(2);
+    await expect(getSlides(page)).toHaveCount(2);
     expect(await pagination.evaluate((el) => el.children.length)).toBe(2);
   });
 
@@ -515,14 +516,14 @@ test.describe('adding/removing slides', () => {
     await addSlide(host);
     await waitForStencilLifecycle(page);
 
-    expect((await getSlides(page)).length).toBe(7);
+    await expect(getSlides(page)).toHaveCount(7);
     expect(await pagination.evaluate((el) => el.children.length)).toBe(7);
     const [, , bullet3] = await getPaginationBullets(page);
     expect(await getCssClasses(bullet3)).toBe('bullet');
 
     await removeSlide(host);
     await waitForStencilLifecycle(page);
-    expect((await getSlides(page)).length).toBe(6);
+    await expect(getSlides(page)).toHaveCount(6);
     expect(await pagination.evaluate((el) => el.children.length)).toBe(6);
   });
 
@@ -543,14 +544,14 @@ test.describe('adding/removing slides', () => {
     await addSlide(host);
     await waitForStencilLifecycle(page);
 
-    expect((await getSlides(page)).length).toBe(7);
+    await expect(getSlides(page)).toHaveCount(7);
     expect(await pagination.evaluate((el) => el.children.length)).toBe(7);
     const afterSlideBullets = await getPaginationBullets(page);
     expect(await getCssClasses(afterSlideBullets[6])).toBe('bullet');
 
     await removeSlide(host);
     await waitForStencilLifecycle(page);
-    expect((await getSlides(page)).length).toBe(6);
+    await expect(getSlides(page)).toHaveCount(6);
     expect(await pagination.evaluate((el) => el.children.length)).toBe(6);
   });
 
@@ -562,25 +563,25 @@ test.describe('adding/removing slides', () => {
 
     await buttonNext.click();
     await waitForStencilLifecycle(page);
-    expect((await getSlides(page)).length).toBe(2);
-    expect(await getAttribute(buttonPrev, 'aria-label')).toBe('Previous slide');
-    expect(await getAttribute(buttonNext, 'aria-label')).toBe('Go to first slide');
+    await expect(getSlides(page)).toHaveCount(2);
+    await expect(buttonPrev).toHaveAttribute('aria-label', 'Previous slide');
+    await expect(buttonNext).toHaveAttribute('aria-label', 'Go to first slide');
 
     await addSlide(host);
     await waitForStencilLifecycle(page);
-    expect((await getSlides(page)).length).toBe(3);
-    expect(await getAttribute(buttonPrev, 'aria-label')).toBe('Previous slide');
-    expect(await getAttribute(buttonNext, 'aria-label')).toBe('Next slide');
+    await expect(getSlides(page)).toHaveCount(3);
+    await expect(buttonPrev).toHaveAttribute('aria-label', 'Previous slide');
+    await expect(buttonNext).toHaveAttribute('aria-label', 'Next slide');
 
     await removeSlide(host);
     await waitForStencilLifecycle(page);
-    expect((await getSlides(page)).length).toBe(2);
-    expect(await getAttribute(buttonPrev, 'aria-label')).toBe('Previous slide');
-    expect(await getAttribute(buttonNext, 'aria-label')).toBe('Go to first slide');
+    await expect(getSlides(page)).toHaveCount(2);
+    await expect(buttonPrev).toHaveAttribute('aria-label', 'Previous slide');
+    await expect(buttonNext).toHaveAttribute('aria-label', 'Go to first slide');
 
     await removeSlide(host);
     await waitForStencilLifecycle(page);
-    expect((await getSlides(page)).length).toBe(1);
+    await expect(getSlides(page)).toHaveCount(1);
 
     const buttonPrev2 = page.locator('p-carousel p-button-pure:first-of-type');
     const buttonNext2 = page.locator('p-carousel p-button-pure:last-of-type');
@@ -592,7 +593,7 @@ test.describe('adding/removing slides', () => {
     await initCarousel(page, { slidesPerPage: 2 });
     const host = getHost(page);
 
-    expect((await getSlides(page)).length).toBe(3);
+    await expect(getSlides(page)).toHaveCount(3);
 
     const buttonPrev1 = getButtonPrev(page);
     const buttonNext1 = getButtonNext(page);
@@ -604,7 +605,7 @@ test.describe('adding/removing slides', () => {
 
     await removeSlide(host);
     await waitForStencilLifecycle(page);
-    expect((await getSlides(page)).length).toBe(2);
+    await expect(getSlides(page)).toHaveCount(2);
 
     const buttonPrev2 = page.locator('p-carousel p-button-pure:first-of-type');
     const buttonNext2 = page.locator('p-carousel p-button-pure:last-of-type');
@@ -616,7 +617,7 @@ test.describe('adding/removing slides', () => {
 
     await addSlide(host);
     await waitForStencilLifecycle(page);
-    expect((await getSlides(page)).length).toBe(3);
+    await expect(getSlides(page)).toHaveCount(3);
 
     const buttonPrev3 = getButtonPrev(page);
     const buttonNext3 = getButtonNext(page);
@@ -631,7 +632,7 @@ test.describe('adding/removing slides', () => {
 test.describe('viewport change', () => {
   test('should update visible amount of slides for BreakpointCustomizable slidesPerPage', async ({ page }) => {
     await initCarousel(page, { slidesPerPage: '{ base: 1, s: 2, m: 3}', amountOfSlides: 6 });
-    const [slide1, slide2, slide3, slide4, slide5, slide6] = await getSlides(page);
+    const [slide1, slide2, slide3, slide4, slide5, slide6] = await getSlideElements(page);
 
     await page.setViewportSize({ height: 1000, width: 350 });
     await isElementCompletelyInViewport(slide1);
@@ -746,7 +747,7 @@ test.describe('focus behavior', () => {
   test('should have correct focus cycle if next button is clicked and then tabbed', async ({ page }) => {
     await initCarousel(page, { slidesPerPage: 1, withFocusableElements: false });
     const host = getHost(page);
-    const [slide1, slide2, slide3] = await getSlides(page);
+    const [slide1, slide2, slide3] = await getSlideElements(page);
     const btnNext = getButtonNext(page);
 
     await btnNext.focus();
@@ -853,7 +854,7 @@ test.describe('activeSlideIndex', () => {
 
   test('should set active slide correctly on initialization', async ({ page }) => {
     await initCarousel(page, { activeSlideIndex: 2 });
-    const [slide1, slide2, slide3] = await getSlides(page);
+    const [slide1, slide2, slide3] = await getSlideElements(page);
 
     await isElementNotInViewport(slide1);
     await isElementNotInViewport(slide2);
@@ -863,7 +864,7 @@ test.describe('activeSlideIndex', () => {
   test('should slide correctly when changed', async ({ page }) => {
     await initCarousel(page);
     const host = getHost(page);
-    const [slide1, slide2, slide3] = await getSlides(page);
+    const [slide1, slide2, slide3] = await getSlideElements(page);
 
     await isElementCompletelyInViewport(slide1);
     await isElementNotInViewport(slide2);
@@ -921,7 +922,7 @@ test.describe('activeSlideIndex', () => {
     page,
   }) => {
     await initCarousel(page, { slidesPerPage: 1, withFocusableElements: false });
-    const [slide1, slide2, slide3] = await getSlides(page);
+    const [slide1, slide2, slide3] = await getSlideElements(page);
 
     await slide1.focus();
     await isElementCompletelyInViewport(slide1);
@@ -955,7 +956,7 @@ test.describe('activeSlideIndex', () => {
     page,
   }) => {
     await initCarousel(page, { amountOfSlides: 6, slidesPerPage: 2, withFocusableElements: false });
-    const [slide1, slide2, slide3, slide4] = await getSlides(page);
+    const [slide1, slide2, slide3, slide4] = await getSlideElements(page);
 
     await slide1.focus();
     await isElementCompletelyInViewport(slide1);
@@ -1002,7 +1003,7 @@ test.describe('activeSlideIndex', () => {
 
   test('should slide correctly if slides with focusable elements are tabbed', async ({ page }) => {
     await initCarousel(page, { slidesPerPage: 1, withFocusableElements: true });
-    const [slide1, slide2, slide3] = await getSlides(page);
+    const [slide1, slide2, slide3] = await getSlideElements(page);
 
     await slide1.focus();
     await page.keyboard.press('Tab');
@@ -1024,7 +1025,7 @@ test.describe('activeSlideIndex', () => {
 
   test('should slide correctly if slides with focusable elements are tabbed for slidesPerPage=2', async ({ page }) => {
     await initCarousel(page, { amountOfSlides: 4, slidesPerPage: 2, withFocusableElements: true });
-    const [slide1, slide2, slide3, slide4] = await getSlides(page);
+    const [slide1, slide2, slide3, slide4] = await getSlideElements(page);
 
     await slide1.focus();
     await isElementCompletelyInViewport(slide1);
@@ -1128,7 +1129,7 @@ test.describe('rtl mode', () => {
   test('should move slides on prev button clicks', async ({ page }) => {
     await initCarousel(page, { dir: 'rtl' });
     const buttonPrev = getButtonPrev(page);
-    const [slide1, slide2, slide3] = await getSlides(page);
+    const [slide1, slide2, slide3] = await getSlideElements(page);
 
     await isElementCompletelyInViewport(slide1);
     await isElementNotInViewport(slide2);
@@ -1156,7 +1157,7 @@ test.describe('rtl mode', () => {
   test('should move slides on next button clicks', async ({ page }) => {
     await initCarousel(page, { dir: 'rtl' });
     const buttonNext = getButtonNext(page);
-    const [slide1, slide2, slide3] = await getSlides(page);
+    const [slide1, slide2, slide3] = await getSlideElements(page);
 
     await isElementCompletelyInViewport(slide1);
     await isElementNotInViewport(slide2);
@@ -1186,7 +1187,7 @@ test.describe('focusOnCenterSlide', () => {
   test('should loop by individual slide and focus last one', async ({ page }) => {
     await initCarousel(page, { amountOfSlides: 6, slidesPerPage: 3, activeSlideIndex: 0, focusOnCenterSlide: true });
     const buttonNext = getButtonNext(page);
-    const [slide1, slide2, slide3, slide4, slide5, slide6] = await getSlides(page);
+    const [slide1, slide2, slide3, slide4, slide5, slide6] = await getSlideElements(page);
 
     await isElementCompletelyInViewport(slide1);
     await isElementCompletelyInViewport(slide2);
@@ -1230,7 +1231,7 @@ test.describe('focusOnCenterSlide', () => {
       withFocusableElements: false,
       focusOnCenterSlide: true,
     });
-    const [slide1, slide2, slide3, slide4, slide5, slide6] = await getSlides(page);
+    const [slide1, slide2, slide3, slide4, slide5, slide6] = await getSlideElements(page);
 
     await slide1.focus();
     await isElementCompletelyInViewport(slide1);
