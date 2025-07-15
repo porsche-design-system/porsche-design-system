@@ -8,6 +8,7 @@ if (semver.valid(pkgVersion) === null) {
   throw new Error(`Invalid package version "${pkgVersion}" passed.`);
 }
 
+const changelog = 'packages/components/CHANGELOG.md';
 const pkgFiles = globbySync([
   './**/package.json',
   '!./**/node_modules/**',
@@ -61,3 +62,19 @@ for (const pkgFile of pkgFiles) {
     }
   }
 }
+
+function formatDate(date: Date): string {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+
+  return `${year}-${month}-${day}`;
+}
+
+console.log(`Updating ${changelog}.`);
+fs.writeFileSync(
+  changelog,
+  fs
+    .readFileSync(changelog, 'utf8')
+    .replace('## [Unreleased]', `## [Unreleased]\n\n## [${pkgVersion}] - ${formatDate(new Date())}`)
+);
