@@ -20,7 +20,7 @@ runs:
     - name: 'Check NPM Registry'
       id: check
       run: |
-        http_status_code="$(curl -s -o /dev/null -w "%{http_code}" "https://registry.npmjs.org/${{ inputs.package-name }}}/${{ inputs.package-version }}")"
+        http_status_code="$(curl -s -o /dev/null -w "%{http_code}" "https://registry.npmjs.org/${{ inputs.package-name }}/${{ inputs.package-version }}")"
 
         if [[ ${http_status_code} == 200 ]]; then
           echo "Package version is published."
