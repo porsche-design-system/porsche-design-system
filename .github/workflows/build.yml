@@ -143,7 +143,7 @@ jobs:
       - name: 'Components Vue'
         run: yarn build:components-vue
       - name: 'Storefront'
-        run: yarn build:storefront
+        run: NEXT_PUBLIC_BASE_PATH="${GITHUB_REF_NAME}" yarn build:storefront
       - name: 'Upload artifact'
         uses: actions/upload-artifact@v4
         with:
