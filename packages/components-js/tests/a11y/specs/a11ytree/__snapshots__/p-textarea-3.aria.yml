@@ -1,0 +1,3 @@
+- text: Readonly
+- textbox "Readonly": Some value
+- alert

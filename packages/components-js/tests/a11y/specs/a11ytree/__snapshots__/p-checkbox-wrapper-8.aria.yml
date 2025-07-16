@@ -1,0 +1,4 @@
+- text: Some label
+- checkbox "Some label. Some error validation message."
+- alert: Some error validation message.
+- status

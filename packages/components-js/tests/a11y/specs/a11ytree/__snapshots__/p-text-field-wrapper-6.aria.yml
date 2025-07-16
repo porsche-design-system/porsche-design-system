@@ -1,0 +1,25 @@
+- text: Slotted label. And some slotted and deeply nested
+- link "anchor":
+  - /url: "#"
+- text: ", bold,"
+- strong: strong
+- text: ","
+- emphasis: emphasized
+- text: and italic text. Slotted description. And some slotted and deeply nested
+- link "anchor":
+  - /url: "#"
+- text: ", bold,"
+- strong: strong
+- text: ","
+- emphasis: emphasized
+- text: and italic text.
+- textbox "Some placeholder"
+- status:
+  - text: Slotted success message. And some slotted and deeply nested
+  - link "anchor":
+    - /url: "#"
+  - text: ", bold,"
+  - strong: strong
+  - text: ","
+  - emphasis: emphasized
+  - text: and italic text.

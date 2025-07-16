@@ -1,0 +1,5 @@
+- text: Success with message
+- textbox "Success with message"
+- text: /You have \d+ out of \d+ characters left/
+- status: Success message
+- status

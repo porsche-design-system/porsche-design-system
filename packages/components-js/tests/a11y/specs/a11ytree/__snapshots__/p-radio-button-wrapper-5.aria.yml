@@ -1,0 +1,4 @@
+- text: Some label
+- radio "Some label. Some success validation message." [checked]
+- status: Some success validation message.
+- status

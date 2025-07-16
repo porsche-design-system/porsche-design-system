@@ -12,6 +12,7 @@
     label="Label with description and placeholder"
     description="Some description"
     placeholder="Some placeholder"
+    class="a11ytree-snapshot-test"
   ></p-textarea>
 </div>
 
@@ -37,7 +38,7 @@
 </div>
 
 <div class="playground light" title="should render in required state">
-  <p-textarea name="some-name" label="Required" required="true"></p-textarea>
+  <p-textarea name="some-name" label="Required" required="true" class="a11ytree-snapshot-test"></p-textarea>
   <p-textarea
     name="some-name"
     label="Required and insanely super long label across multiple lines"
@@ -46,7 +47,13 @@
 </div>
 
 <div class="playground light" title="should render in disabled state">
-  <p-textarea name="some-name" label="Disabled" description="Some description" disabled="true"></p-textarea>
+  <p-textarea
+    name="some-name"
+    label="Disabled"
+    description="Some description"
+    disabled="true"
+    class="a11ytree-snapshot-test"
+  ></p-textarea>
 </div>
 
 <div class="playground light" title="should render with placeholder in disabled state">
@@ -54,15 +61,33 @@
 </div>
 
 <div class="playground light" title="should render in readonly state">
-  <p-textarea name="some-name" label="Readonly" value="Some value" read-only="true"></p-textarea>
+  <p-textarea
+    name="some-name"
+    label="Readonly"
+    value="Some value"
+    read-only="true"
+    class="a11ytree-snapshot-test"
+  ></p-textarea>
 </div>
 
 <div class="playground light" title="should render with counter">
-  <p-textarea name="some-name" label="Counter" max-length="200" counter="true" value="Some value"></p-textarea>
+  <p-textarea
+    name="some-name"
+    label="Counter"
+    max-length="200"
+    counter="true"
+    value="Some value"
+    class="a11ytree-snapshot-test"
+  ></p-textarea>
 </div>
 
 <div class="playground light" title="should render with counter and without max-length">
-  <p-textarea name="some-name" label="Type counter=true & max-length=false" counter="true" value="Some Value"></p-textarea>
+  <p-textarea
+    name="some-name"
+    label="Type counter=true & max-length=false"
+    counter="true"
+    value="Some Value"
+  ></p-textarea>
 </div>
 
 <div class="playground light" title="should render with error state and error message">
@@ -72,6 +97,7 @@
     state="error"
     message="Error message"
     value="Some value"
+    class="a11ytree-snapshot-test"
   ></p-textarea>
 </div>
 
@@ -86,6 +112,7 @@
     state="success"
     message="Success message"
     value="Some value"
+    class="a11ytree-snapshot-test"
   ></p-textarea>
 </div>
 
@@ -104,8 +131,8 @@
 </div>
 
 <div class="playground light" title="should render label, description and message by slotted content with error state">
-  <p-textarea name="some-name" state="error" aria-labelledby="slotted-label-1" value="Some value">
-    <span slot="label" id="slotted-label-1">
+  <p-textarea name="some-name" state="error" value="Some value" class="a11ytree-snapshot-test">
+    <span slot="label">
       <span>
         Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
         <em>emphasized</em> and <i>italic</i> text.
@@ -130,8 +157,8 @@
   class="playground light"
   title="should render label, description and message by slotted content with success state"
 >
-  <p-textarea name="some-name" state="success" aria-labelledby="slotted-label-2" value="Some value">
-    <span slot="label" id="slotted-label-2">
+  <p-textarea name="some-name" state="success" value="Some value" class="a11ytree-snapshot-test">
+    <span slot="label">
       <span>
         Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
         <em>emphasized</em> and <i>italic</i> text.
@@ -181,5 +208,12 @@
 </div>
 
 <div class="playground light" title="should render with counter readonly">
-  <p-textarea name="some-name" label="Counter" max-length="200" value="Some value" read-only="true" counter="true"></p-textarea>
+  <p-textarea
+    name="some-name"
+    label="Counter"
+    max-length="200"
+    value="Some value"
+    read-only="true"
+    counter="true"
+  ></p-textarea>
 </div>

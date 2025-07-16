@@ -1,0 +1,14 @@
+- text: Opened with disabled (Option A), highlighted (Option B) and selected (Option C) inside optgroup + optgroup in disabled state
+- combobox "Opened with disabled (Option A), highlighted (Option B) and selected (Option C) inside optgroup + optgroup in disabled state" [expanded]
+- button "Reset selection"
+- status
+- listbox "Opened with disabled (Option A), highlighted (Option B) and selected (Option C) inside optgroup + optgroup in disabled state":
+  - group "Some optgroup label 1":
+    - option "Option A" [disabled]
+    - option "Option B"
+    - option "Option C" [selected]
+  - group "Some optgroup label 2" [disabled]:
+    - option "Option D" [disabled]
+    - option "Option E" [disabled]
+    - option "Option F" [disabled]
+- alert

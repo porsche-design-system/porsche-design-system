@@ -8,19 +8,19 @@ jobs:
     name: 'Build'
     uses: ./.github/workflows/build.yml
     with:
-      image: mcr.microsoft.com/playwright:v1.49.1-jammy
+      image: mcr.microsoft.com/playwright:v1.54.0-jammy
   test:
     name: 'Test'
     uses: ./.github/workflows/test.yml
     with:
-      image: mcr.microsoft.com/playwright:v1.49.1-jammy
+      image: mcr.microsoft.com/playwright:v1.54.0-jammy
     needs:
       - build
   deploy:
     name: 'Deploy'
     uses: ./.github/workflows/deploy.yml
     with:
-      image: mcr.microsoft.com/playwright:v1.49.1-jammy
+      image: mcr.microsoft.com/playwright:v1.54.0-jammy
     needs:
       - test
     secrets:
@@ -34,7 +34,7 @@ jobs:
     name: 'Release'
     uses: ./.github/workflows/release.yml
     with:
-      image: mcr.microsoft.com/playwright:v1.49.1-jammy
+      image: mcr.microsoft.com/playwright:v1.54.0-jammy
     needs:
       - deploy
     secrets:

@@ -1,0 +1,9 @@
+- tablist:
+  - tab "Tab 1"
+  - tab "Tab 2"
+  - tab "Tab 3"
+  - tab "Tab 4"
+  - tab "Tab 5"
+  - tab "Tab 6"
+  - tab "Tab 7" [selected]
+- tabpanel "Tab 7": Tab Content 7

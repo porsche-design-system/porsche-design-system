@@ -1,0 +1,3 @@
+- text: Error state
+- combobox "Error state"
+- alert: Some error message.

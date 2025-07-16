@@ -1,6 +1,6 @@
 services:
   design-system:
-    image: mcr.microsoft.com/playwright:v1.49.1-jammy
+    image: mcr.microsoft.com/playwright:v1.54.0-jammy
     working_dir: /opt/porsche-design-system-app
     user: "${RUN_UID}:${RUN_GID}"
     ports:
@@ -67,7 +67,7 @@ services:
       - utilities-ag-grid-node-modules:/opt/porsche-design-system-app/packages/utilities/projects/ag-grid/node_modules
       - utilities-utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/projects/utilities/node_modules
   change-volume-owner:
-    image: mcr.microsoft.com/playwright:v1.49.1-jammy
+    image: mcr.microsoft.com/playwright:v1.54.0-jammy
     volumes:
       - home:/opt/porsche-design-system-volumes/home
       - monorepo-node-modules:/opt/porsche-design-system-volumes/root-node_modules

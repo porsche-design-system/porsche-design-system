@@ -15,7 +15,7 @@
 </div>
 
 <div class="playground light" title="should render with label and description and length=4 (default)">
-  <p-pin-code label="Some Label" description="Some Description"></p-pin-code>
+  <p-pin-code label="Some Label" description="Some Description" class="a11ytree-snapshot-test"></p-pin-code>
 </div>
 
 <div class="playground light" title="should render with label, description and length=5">
@@ -52,7 +52,12 @@
 </div>
 
 <div class="playground light" title="should render with success state and success message">
-  <p-pin-code label="Success with message" state="success" message="Success message"></p-pin-code>
+  <p-pin-code
+    label="Success with message"
+    state="success"
+    message="Success message"
+    class="a11ytree-snapshot-test"
+  ></p-pin-code>
 </div>
 
 <div class="playground light" title="should render with success state, success message and length=1">
@@ -64,7 +69,12 @@
 </div>
 
 <div class="playground light" title="should render with error state and error message">
-  <p-pin-code label="Error with message" state="error" message="Error message"></p-pin-code>
+  <p-pin-code
+    label="Error with message"
+    state="error"
+    message="Error message"
+    class="a11ytree-snapshot-test"
+  ></p-pin-code>
 </div>
 
 <div class="playground light" title="should render with required state">
@@ -72,11 +82,15 @@
 </div>
 
 <div class="playground light" title="should render with required state">
-  <p-pin-code label="Required and insanely super long label across multiple lines" required="true"></p-pin-code>
+  <p-pin-code
+    label="Required and insanely super long label across multiple lines"
+    required="true"
+    class="a11ytree-snapshot-test"
+  ></p-pin-code>
 </div>
 
 <div class="playground light" title="should render with loading state">
-  <p-pin-code label="Loading" loading="true"></p-pin-code>
+  <p-pin-code label="Loading" loading="true" class="a11ytree-snapshot-test"></p-pin-code>
 </div>
 
 <div class="playground light" title="should render with loading state with length=1">
@@ -92,7 +106,7 @@
 </div>
 
 <div class="playground light" title="should render with disabled state">
-  <p-pin-code label="Disabled" disabled="true"></p-pin-code>
+  <p-pin-code label="Disabled" disabled="true" class="a11ytree-snapshot-test"></p-pin-code>
 </div>
 
 <div class="playground light" title="should render with disabled state and value">
@@ -112,7 +126,7 @@
 </div>
 
 <div class="playground light" title="should render label, description and message by slotted content with error state">
-  <p-pin-code state="error">
+  <p-pin-code state="error" class="a11ytree-snapshot-test">
     <span slot="label">
       <span>
         Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
@@ -138,7 +152,7 @@
   class="playground light"
   title="should render label, description and message by slotted content with success state"
 >
-  <p-pin-code state="success">
+  <p-pin-code state="success" class="a11ytree-snapshot-test">
     <span slot="label">
       <span>
         Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,

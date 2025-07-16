@@ -1,0 +1,5 @@
+- text: Label with description and placeholder Some description
+- textbox "Label with description and placeholder"
+- text: /You have \d+ out of \d+ characters left/
+- alert
+- status
