@@ -29,6 +29,8 @@ jobs:
       is-components-react-published: ${{ steps.is_components_react_published_check.outputs.is-published }}
       is-components-vue-published: ${{ steps.is_components_vue_published_check.outputs.is-published }}
     steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
       - name: 'Get Package Version'
         id: get_version
         uses: ./.github/actions/get-local-package-version
