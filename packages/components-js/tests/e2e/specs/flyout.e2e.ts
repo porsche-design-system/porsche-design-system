@@ -1,5 +1,5 @@
 import { type Locator, type Page, expect, test } from '@playwright/test';
-import { Components } from '@porsche-design-system/components';
+import type { Components } from '@porsche-design-system/components';
 import {
   type Options,
   addEventListener,
@@ -636,6 +636,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips after state change', async ({ page }) => {
     await initBasicFlyout(page);
+    const host = getHost(page);
 
     await setProperty(host, 'open', false);
     await waitForStencilLifecycle(page);
