@@ -84,22 +84,27 @@ jobs:
             package_name: '@porsche-design-system/components-vue'
             package_path: 'packages/components-vue/dist/vue-wrapper'
             is_published: ${{ needs.check-publication-status.outputs.is-components-vue-published }}
-    if: ${{ matrix.is_published == 'false' }}
     steps:
       - name: 'Checkout'
+        if: ${{ matrix.is_published == 'false' }}
         uses: actions/checkout@v4
       - name: 'Install'
+        if: ${{ matrix.is_published == 'false' }}
         uses: ./.github/actions/install
       - name: 'Restore'
+        if: ${{ matrix.is_published == 'false' }}
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
       - uses: actions/setup-node@v4
+        if: ${{ matrix.is_published == 'false' }}
         with:
           registry-url: 'https://registry.npmjs.org'
           scope: '@porsche-design-system'
       - run: chmod +x ./.github/workflows/release-npm.sh
+        if: ${{ matrix.is_published == 'false' }}
       - name: 'Publish ${{ matrix.name }}'
+        if: ${{ matrix.is_published == 'false' }}
         run: ./.github/workflows/release-npm.sh ${{ matrix.package_path }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
