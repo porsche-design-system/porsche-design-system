@@ -20,7 +20,7 @@ runs:
         rm -rf "./gh-pages/${{ inputs.target }}"
         mkdir -p "./gh-pages/${{ inputs.target }}"
         cp -r "${{ inputs.source }}/." "./gh-pages/${{ inputs.target }}"
-        echo "${GITHUB_SHA}" > "./gh-pages/version.md"
+        echo "${GITHUB_SHA}" > "./gh-pages/${{ inputs.target }}/version.md"
       shell: bash
     - name: 'Deploy'
       run: |
