@@ -19,7 +19,7 @@
     "vite": "^6.3.5",
     "vue-tsc": "^2.2.8",
     "postcss": "^8",
-    "tailwindcss": "^4.1.4",
+    "tailwindcss": "^4.1.11",
     "@tailwindcss/postcss": "^4.1.4"
   }
 }
