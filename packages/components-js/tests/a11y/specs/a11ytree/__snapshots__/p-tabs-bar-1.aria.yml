@@ -1,0 +1,25 @@
+- tablist:
+  - tab "Tab One"
+  - tab "Tab Two"
+  - tab "Tab Three"
+  - tab "Tab Four"
+  - tab "Tab Five"
+  - tab "Tab Six"
+  - tab "Tab Seven"
+  - tab "Tab Eight"
+  - tab "Tab Nine"
+  - tab "Tab Ten" [selected]
+  - tab "Tab Eleven"
+  - tab "Tab Twelve"
+  - tab "Tab Thirteen"
+  - tab "Tab Fourteen"
+  - tab "Tab Fifteen"
+  - tab "Tab Sixteen"
+  - tab "Tab Seventeen"
+  - tab "Tab Eighteen"
+  - tab "Tab Nineteen"
+  - tab "Tab Twenty"
+- button "prev"
+- status
+- button "next"
+- status

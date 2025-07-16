@@ -1,0 +1,15 @@
+- list:
+  - listitem:
+    - 'button "current: Current small"'
+  - listitem:
+    - 'button "warning: Warning small"'
+  - listitem:
+    - 'button "complete: Complete small"'
+  - listitem:
+    - 'button "warning: Warning Disabled small" [disabled]'
+  - listitem:
+    - 'button "complete: Complete Disabled small" [disabled]'
+  - listitem:
+    - button "Default small" [disabled]
+- button "next"
+- status
