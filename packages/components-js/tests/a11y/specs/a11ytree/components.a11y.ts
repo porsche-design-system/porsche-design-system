@@ -26,6 +26,9 @@ for (const component of advancedPagesToTest) {
       const getComponentTagName = `p-${selector}`;
 
       let index = 0;
+
+      expect(await page.locator('.a11ytree-snapshot-test').count()).toBeGreaterThan(0);
+
       for (const element of await page.locator('.a11ytree-snapshot-test').all()) {
         const isIframe = await element.evaluate((el) => el.children[0]?.tagName.toLowerCase() === 'iframe');
         const locator = isIframe ? element.frameLocator('iframe').locator(getComponentTagName) : element;
