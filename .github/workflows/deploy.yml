@@ -168,6 +168,7 @@ jobs:
       - name: 'Deploy (GH Pages)'
         uses: ./.github/actions/gh-pages
         with:
+          source: ./packages/storefront/dist
           target: ${{ github.ref_name == 'main' && 'nightly' || github.ref_name }}
           algolia: ${{ (github.ref_name == 'main' || startsWith(github.ref_name, 'v')) && 'true' || 'false' }}
         env:

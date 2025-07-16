@@ -132,6 +132,7 @@ jobs:
       - name: 'Deploy (GH Pages)'
         uses: ./.github/actions/gh-pages
         with:
+          source: ./packages/storefront/dist
           target: ${{ needs.check-publication-status.outputs.components-version }}
           algolia: 'true'
         env:

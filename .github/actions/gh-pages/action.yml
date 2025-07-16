@@ -1,6 +1,9 @@
 name: 'GH Pages'
 
 inputs:
+  source:
+    description: 'The source path.'
+    required: true
   target:
     description: 'The target path.'
     required: true
@@ -16,7 +19,7 @@ runs:
       run: |
         rm -rf "./gh-pages/${{ inputs.target }}"
         mkdir -p "./gh-pages/${{ inputs.target }}"
-        cp -r "./packages/storefront/dist/." "./gh-pages/${{ inputs.target }}"
+        cp -r "${{ inputs.source }}/." "./gh-pages/${{ inputs.target }}"
         echo "${GITHUB_SHA}" > "./gh-pages/version.md"
       shell: bash
     - name: 'Deploy'
