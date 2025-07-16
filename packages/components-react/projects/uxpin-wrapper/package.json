@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@porsche-design-system/components-js": "3.29.0-rc.1",
-    "react": "^19.0.0"
+    "react": "^19.1.0"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.26.0",
