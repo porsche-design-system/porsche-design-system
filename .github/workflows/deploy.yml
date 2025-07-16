@@ -165,9 +165,11 @@ jobs:
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - run: chmod +x ./.github/workflows/deploy-github-pages.sh
-      - name: 'Deploy'
-        run: ./.github/workflows/deploy-github-pages.sh
+      - name: 'Deploy (GH Pages)'
+        uses: ./.github/actions/gh-pages
+        with:
+          target: ${{ github.ref_name == 'main' && 'nightly' || github.ref_name }}
+          algolia: ${{ (github.ref_name == 'main' || startsWith(github.ref_name, 'v')) && 'true' || 'false' }}
         env:
           ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
           ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}

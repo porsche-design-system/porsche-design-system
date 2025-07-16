@@ -1,0 +1,37 @@
+name: 'GH Pages'
+
+inputs:
+  target:
+    description: 'The target path.'
+    required: true
+  algolia:
+    description: 'Whether to update Algolia search index or not.'
+    required: false
+    default: 'false'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: 'Prepare'
+      run: |
+        rm -rf "./gh-pages/${{ inputs.target }}"
+        mkdir -p "./gh-pages/${{ inputs.target }}"
+        cp -r "./packages/storefront/dist/." "./gh-pages/${{ inputs.target }}"
+        echo "${GITHUB_SHA}" > "./gh-pages/version.md"
+      shell: bash
+    - name: 'Deploy'
+      run: |
+        pushd "./gh-pages"
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git add -A
+          git commit -m "Automated deployment to GitHub Pages (${{ inputs.target }}): ${GITHUB_SHA}" --allow-empty
+          git push origin main --force
+        popd
+      shell: bash
+    - name: 'Algolia'
+      if: inputs.algolia == 'true'
+      run: |
+        result=$(P_CURRENT_BRANCH=${{ inputs.target }} yarn updateAlgolia)
+        echo $result | sed "s/.*updateAlgoliaIndex\\.ts' //g"
+      shell: bash
