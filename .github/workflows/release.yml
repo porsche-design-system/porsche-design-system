@@ -16,12 +16,76 @@ on:
         required: true
 
 jobs:
-  npm-components-js:
-    name: 'NPM (Components JS)'
+  check-publication-status:
+    name: 'Check Publication Status'
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
       options: --user 1001
+    outputs:
+      components-version: ${{ steps.get_version.outputs.version }}
+      is-components-js-published: ${{ steps.is_components_js_published_check.outputs.is-published }}
+      is-components-angular-published: ${{ steps.is_components_angular_published_check.outputs.is-published }}
+      is-components-react-published: ${{ steps.is_components_react_published_check.outputs.is-published }}
+      is-components-vue-published: ${{ steps.is_components_vue_published_check.outputs.is-published }}
+    steps:
+      - name: 'Get Package Version'
+        id: get_version
+        uses: ./.github/actions/get-local-package-version
+        with:
+          path: 'packages/components'
+      - name: 'Check if "@porsche-design-system/components-js" version is published'
+        id: is_components_js_published_check
+        uses: ./.github/actions/is-version-published
+        with:
+          package-name: '@porsche-design-system/components-js'
+          package-version: ${{ steps.get_version.outputs.version }}
+      - name: 'Check if "@porsche-design-system/components-angular" version is published'
+        id: is_components_angular_published_check
+        uses: ./.github/actions/is-version-published
+        with:
+          package-name: '@porsche-design-system/components-angular'
+          package-version: ${{ steps.get_version.outputs.version }}
+      - name: 'Check if "@porsche-design-system/components-react" version is published'
+        id: is_components_react_published_check
+        uses: ./.github/actions/is-version-published
+        with:
+          package-name: '@porsche-design-system/components-react'
+          package-version: ${{ steps.get_version.outputs.version }}
+      - name: 'Check if "@porsche-design-system/components-vue" version is published'
+        id: is_components_vue_published_check
+        uses: ./.github/actions/is-version-published
+        with:
+          package-name: '@porsche-design-system/components-vue'
+          package-version: ${{ steps.get_version.outputs.version }}
+  npm-publish:
+    name: 'NPM Publish (${{ matrix.name }})'
+    needs: check-publication-status
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    strategy:
+      matrix:
+        include:
+          - name: 'Components JS'
+            package_name: '@porsche-design-system/components-js'
+            package_path: 'packages/components-js/dist/components-wrapper'
+            is_published: ${{ needs.check-publication-status.outputs.is-components-js-published }}
+          - name: 'Components Angular'
+            package_name: '@porsche-design-system/components-angular'
+            package_path: 'packages/components-angular/dist/angular-wrapper'
+            is_published: ${{ needs.check-publication-status.outputs.is-components-angular-published }}
+          - name: 'Components React'
+            package_name: '@porsche-design-system/components-react'
+            package_path: 'packages/components-react/dist/react-wrapper'
+            is_published: ${{ needs.check-publication-status.outputs.is-components-react-published }}
+          - name: 'Components Vue'
+            package_name: '@porsche-design-system/components-vue'
+            package_path: 'packages/components-vue/dist/vue-wrapper'
+            is_published: ${{ needs.check-publication-status.outputs.is-components-vue-published }}
+        exclude:
+          - is_published: 'true'
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -36,89 +100,44 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           scope: '@porsche-design-system'
       - run: chmod +x ./.github/workflows/release-npm.sh
-      - name: 'Publish'
-        run: ./.github/workflows/release-npm.sh packages/components-js/dist/components-wrapper
+      - name: 'Publish ${{ matrix.name }}'
+        run: ./.github/workflows/release-npm.sh ${{ matrix.package_path }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
-  npm-components-angular:
+  github-pages-storefront:
+    name: 'GitHub Pages (Storefront)'
     needs:
-      - npm-components-js
-    name: 'NPM (Components Angular)'
+      - check-publication-status
+      - npm-publish
+    if: ${{ needs.npm-publish.result == 'success' }}
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
-      options: --user 1001
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
+      - name: 'Checkout (GH Pages)'
+        uses: actions/checkout@v4
+        with:
+          repository: 'porsche-design-system/porsche-design-system-storefront'
+          ssh-key: ${{ secrets.gh-deploy-key-storefront }}
+          ref: 'main'
+          path: 'gh-pages'
       - name: 'Install'
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
         with:
           artifact: 'build-production'
-      - uses: actions/setup-node@v4
+      - name: 'Build Storefront'
+        run: NEXT_PUBLIC_BASE_PATH="v${{ needs.check-publication-status.outputs.components-version }}" yarn build:storefront
+      - name: 'Deploy (GH Pages)'
+        uses: ./.github/actions/gh-pages
         with:
-          registry-url: 'https://registry.npmjs.org'
-          scope: '@porsche-design-system'
-      - run: chmod +x ./.github/workflows/release-npm.sh
-      - name: 'Publish'
-        run: ./.github/workflows/release-npm.sh packages/components-angular/dist/angular-wrapper
+          source: ./packages/storefront/dist
+          target: 'v${{ needs.check-publication-status.outputs.components-version }}'
+          algolia: 'true'
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
-          GITHUB_TOKEN: ${{ secrets.github-token }}
-  npm-components-react:
-    needs:
-      - npm-components-js
-    name: 'NPM (Components React)'
-    runs-on: ubuntu-latest
-    container:
-      image: ${{ inputs.image }}
-      options: --user 1001
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Restore'
-        uses: ./.github/actions/restore
-        with:
-          artifact: 'build-production'
-      - uses: actions/setup-node@v4
-        with:
-          registry-url: 'https://registry.npmjs.org'
-          scope: '@porsche-design-system'
-      - run: chmod +x ./.github/workflows/release-npm.sh
-      - name: 'Publish'
-        run: ./.github/workflows/release-npm.sh packages/components-react/dist/react-wrapper
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
-          GITHUB_TOKEN: ${{ secrets.github-token }}
-  npm-components-vue:
-    needs:
-      - npm-components-js
-    name: 'NPM (Components Vue)'
-    runs-on: ubuntu-latest
-    container:
-      image: ${{ inputs.image }}
-      options: --user 1001
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Install'
-        uses: ./.github/actions/install
-      - name: 'Restore'
-        uses: ./.github/actions/restore
-        with:
-          artifact: 'build-production'
-      - uses: actions/setup-node@v4
-        with:
-          registry-url: 'https://registry.npmjs.org'
-          scope: '@porsche-design-system'
-      - run: chmod +x ./.github/workflows/release-npm.sh
-      - name: 'Publish'
-        run: ./.github/workflows/release-npm.sh packages/components-vue/dist/vue-wrapper
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
-          GITHUB_TOKEN: ${{ secrets.github-token }}
+          ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
+          ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}
