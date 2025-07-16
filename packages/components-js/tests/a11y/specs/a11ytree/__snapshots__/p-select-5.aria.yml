@@ -1,15 +1,16 @@
 - text: Opened
 - combobox "Opened" [expanded]: Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the top.
-- listbox "Opened":
-  - option "Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the top." [selected]
-  - option "Option B"
-  - option "Option C"
-  - option "Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the top."
-  - option "Option E"
-  - option "Option F"
-  - option "Option G"
-  - option "Option H"
-  - option "Option I"
-  - option "Option J"
-  - option "Option K"
+- dialog "Opened":
+  - listbox "Opened":
+    - option "Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the top." [selected]
+    - option "Option B"
+    - option "Option C"
+    - option "Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the top."
+    - option "Option E"
+    - option "Option F"
+    - option "Option G"
+    - option "Option H"
+    - option "Option I"
+    - option "Option J"
+    - option "Option K"
 - alert

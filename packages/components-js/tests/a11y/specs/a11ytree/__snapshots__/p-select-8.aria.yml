@@ -1,15 +1,12 @@
 - text: Filter
 - combobox "Filter" [expanded]: Option A
-- listbox "Filter":
-  - option "Option A" [selected]
-  - option "Option B"
-  - option "Option C"
-  - option "Option D"
-  - option "Option E"
-  - option "Option F"
-  - option "Option G"
-  - option "Option H"
-  - option "Option I"
-  - option "Option J"
-  - option "Option K"
+- dialog "Filter":
+  - text: Filter options
+  - searchbox "Filter options"
+  - button "Clear field"
+  - status
+  - alert
+  - status
+  - listbox "Filter":
+    - option "No results found"
 - alert
