@@ -48,7 +48,7 @@
     "ag-grid-enterprise": "33.0.4",
     "ag-grid-react": "33.0.4",
     "local-web-server": "^5.4.0",
-    "@vitejs/plugin-react": "^4.3.4",
+    "@vitejs/plugin-react": "^4.6.0",
     "vite-plugin-html": "^3.2.2"
   },
   "peerDependencies": {
