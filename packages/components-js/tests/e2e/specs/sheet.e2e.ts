@@ -569,12 +569,41 @@ test.describe('lifecycle', () => {
 
     await setProperty(host, 'open', false);
     await waitForStencilLifecycle(page);
-    const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidUpdate['p-sheet'], 'componentDidUpdate: p-sheet').toBe(1);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate['p-sheet'];
+        },
+        {
+          message: 'componentDidUpdate: p-sheet',
+        }
+      )
+      .toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidLoad.all;
+        },
+        {
+          message: 'componentDidLoad: all',
+        }
+      )
+      .toBe(3);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate.all;
+        },
+        {
+          message: 'componentDidUpdate: all',
+        }
+      )
+      .toBe(1);
   });
 });
 

@@ -3,17 +3,6 @@
 set -o errexit
 set -o pipefail
 
-if [[ -z "${GITHUB_SHA}" ]]; then
-  echo "Please provide the \$GITHUB_SHA environment variable."
-  exit 1
-fi
-
-if [[ -z "${GITHUB_TOKEN}" ]]; then
-  echo "Please provide the \$GITHUB_TOKEN environment variable."
-  exit 1
-fi
-
-SCRIPT_DIR="$(cd $(dirname ${0}) && pwd)"
 PACKAGE_LOCATION="${1}"
 PACKAGE_JSON="${PACKAGE_LOCATION}/package.json"
 PACKAGE_NAME=$(grep name "${PACKAGE_JSON}" | head -1 | awk -F= "{ print ${2} }" | sed 's/[:,\",]//g;s/name//' | tr -d '[[:space:]]')
@@ -64,7 +53,6 @@ EOF
 }
 
 if ! is_version_published; then
-  source "${SCRIPT_DIR}/../shared/ensure-npmjs-credentials.sh"
   if publish_npmjs; then
     add_git_tag
     echo "Version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" published 🎉"

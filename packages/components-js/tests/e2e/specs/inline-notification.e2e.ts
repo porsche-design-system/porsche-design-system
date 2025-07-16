@@ -1,5 +1,6 @@
-import type { Page } from 'playwright';
 import { expect, test } from '@playwright/test';
+import type { InlineNotificationState } from '@porsche-design-system/components';
+import type { Page } from 'playwright';
 import {
   addEventListener,
   getAttribute,
@@ -11,7 +12,6 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { InlineNotificationState } from '@porsche-design-system/components';
 
 const initInlineNotification = (
   page: Page,
@@ -125,12 +125,51 @@ test.describe('lifecycle', () => {
 
     await setProperty(host, 'state', 'warning');
     await waitForStencilLifecycle(page);
-    const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidUpdate['p-inline-notification'], 'componentDidUpdate: p-inline-notification').toBe(1);
-    expect(status.componentDidUpdate['p-icon'], 'componentDidUpdate: p-icon').toBe(1);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate['p-inline-notification'];
+        },
+        {
+          message: 'componentDidUpdate: p-inline-notification',
+        }
+      )
+      .toBe(1);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate['p-icon'];
+        },
+        {
+          message: 'componentDidUpdate: p-icon',
+        }
+      )
+      .toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidLoad.all;
+        },
+        {
+          message: 'componentDidLoad: all',
+        }
+      )
+      .toBe(4);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate.all;
+        },
+        {
+          message: 'componentDidUpdate: all',
+        }
+      )
+      .toBe(2);
   });
 });

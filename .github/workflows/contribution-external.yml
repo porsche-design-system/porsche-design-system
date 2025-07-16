@@ -1,0 +1,22 @@
+name: 'Contribution (external)'
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: 'Build'
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != 'porsche-design-system/porsche-design-system' }}
+    uses: ./.github/workflows/build.yml
+    with:
+      image: mcr.microsoft.com/playwright:v1.49.1-jammy
+  test:
+    name: 'Test'
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != 'porsche-design-system/porsche-design-system' }}
+    uses: ./.github/workflows/test.yml
+    with:
+      image: mcr.microsoft.com/playwright:v1.49.1-jammy
+    needs:
+      - build
