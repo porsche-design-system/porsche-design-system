@@ -1,6 +1,12 @@
 import { expect, test } from '@playwright/test';
 import type { Page } from 'playwright';
-import { getLifecycleStatus, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../helpers';
+import {
+  getLifecycleStatus,
+  setContentWithDesignSystem,
+  setProperty,
+  skipInBrowsers,
+  waitForStencilLifecycle,
+} from '../helpers';
 
 const getHost = (page: Page) => page.locator('p-button-tile');
 const getVideo = (page: Page) => page.locator('p-button-tile video');
@@ -97,7 +103,7 @@ test.describe('lifecycle', () => {
 test.describe('slotted video', () => {
   // test against branded Chromium, Google Chrome would work (https://playwright.dev/docs/browsers#google-chrome--microsoft-edge)
   // but it's not shipped with the default Microsoft Playwright docker image
-  test.skip(({ browserName }) => browserName === 'chromium');
+  skipInBrowsers(['chromium', 'webkit']);
 
   test('should work with autoplay', async ({ page }) => {
     await initButtonTile(page, { video: true });
