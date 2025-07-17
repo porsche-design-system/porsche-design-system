@@ -1,7 +1,7 @@
 import * as fromComponentsJs from '@porsche-design-system/components-js';
 import { render } from '@testing-library/vue';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
-import { defineComponent, h, inject, type InjectionKey, nextTick, type Ref } from 'vue';
+import { defineComponent, h, inject, nextTick, type Ref } from 'vue';
 import { PButton, PorscheDesignSystemProvider, type Theme, themeInjectionKey } from '../../../src/public-api';
 import { mount } from '@vue/test-utils';
 import { load } from '@porsche-design-system/components-js';
@@ -139,16 +139,19 @@ describe('theme injection via themeInjectionKey', () => {
   test.each(['light', 'dark', 'auto'])('provider(theme="%s") injects correct theme', async (theme) => {
     const wrapper = mount(
       defineComponent({
-        components: { PorscheDesignSystemProvider, ThemeConsumer },
+        components: { PorscheDesignSystemProvider, ThemeConsumer, PButton },
         template: `
             <PorscheDesignSystemProvider theme="${theme}">
               <ThemeConsumer />
+              <PButton />
             </PorscheDesignSystemProvider>
           `,
       })
     );
 
     const text = wrapper.find('[data-test="theme"]').text();
+    const button = wrapper.find('p-button');
+    expect(button.element['theme']).toBe(theme);
     expect(text).toBe(theme);
   });
 

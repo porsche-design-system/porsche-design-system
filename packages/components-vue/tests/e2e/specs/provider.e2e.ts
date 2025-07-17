@@ -39,18 +39,3 @@ test('should provide global theme correctly to 4th p-button', async ({ page }) =
   expect(await getTheme(button3)).toBe('light');
   expect(await getTheme(button4Render2)).toBe('light');
 });
-
-test('should initialize components with correct global theme', async ({ page }) => {
-  await goto(page, 'theme-injection?theme=dark');
-
-  const buttons = await page.locator('p-button').all();
-  const getTheme = (locator: Locator): Promise<Theme> => locator.evaluate((el) => (el as any).theme);
-
-  // Initial expectations assuming light is the default global theme
-  // 1st button: explicit light → always 'light'
-  expect(await getTheme(buttons[0])).toBe('light');
-  // 2nd button: explicit dark → always 'dark'
-  expect(await getTheme(buttons[1])).toBe('dark');
-  // 3rd button: Show/Hide, no explicit theme → should inherit 'dark'
-  expect(await getTheme(buttons[2])).toBe('dark');
-});
