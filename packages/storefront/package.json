@@ -43,8 +43,8 @@
     "@algolia/cache-in-memory": "^4.25.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-instantsearch": "^7.15.4",
-    "react-instantsearch-nextjs": "^0.4.5"
+    "react-instantsearch": "^7.16.1",
+    "react-instantsearch-nextjs": "^1.0.0"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
