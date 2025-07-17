@@ -53,7 +53,7 @@
     "@angular/language-service": "^20.1.0",
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
-    "@testing-library/angular": "^17.3.5",
+    "@testing-library/angular": "^17.4.0",
     "@types/jasmine": "^5.1.5",
     "ag-grid-angular": "34.0.2",
     "ag-grid-community": "34.0.2",
