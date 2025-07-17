@@ -2,529 +2,687 @@
 
 exports[`pdsTheme > should match the snapshot for CSS Chunk 1`] = `
 ":where(.some-class-name) {
-	--ag-background-color: var(--ag-inherited-background-color, #FFF);
-	--ag-foreground-color: var(--ag-inherited-foreground-color, #010205);
-	--ag-border-color: var(--ag-inherited-border-color, #D8D8DB);
-	--ag-chrome-background-color: var(--ag-inherited-chrome-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 2%));
-	--ag-browser-color-scheme: var(--ag-inherited-browser-color-scheme, light);
-	--ag-text-color: var(--ag-inherited-text-color, var(--ag-foreground-color));
 	--ag-accent-color: var(--ag-inherited-accent-color, #2762EC);
-	--ag-invalid-color: var(--ag-inherited-invalid-color, #CC1922);
-	--ag-wrapper-border: var(--ag-inherited-wrapper-border, solid 1px var(--ag-border-color));
-	--ag-row-border: var(--ag-inherited-row-border, solid 1px var(--ag-border-color));
-	--ag-header-row-border: var(--ag-inherited-header-row-border, solid 1px var(--ag-border-color));
-	--ag-footer-row-border: var(--ag-inherited-footer-row-border, var(--ag-row-border));
-	--ag-column-border: var(--ag-inherited-column-border, solid 1px transparent);
-	--ag-header-column-border: var(--ag-inherited-header-column-border, none);
-	--ag-header-column-border-height: var(--ag-inherited-header-column-border-height, 100%);
-	--ag-pinned-column-border: var(--ag-inherited-pinned-column-border, solid 1px var(--ag-border-color));
-	--ag-pinned-row-border: var(--ag-inherited-pinned-row-border, solid 1px var(--ag-border-color));
-	--ag-side-panel-border: var(--ag-inherited-side-panel-border, solid 1px var(--ag-border-color));
-	--ag-side-bar-panel-width: var(--ag-inherited-side-bar-panel-width, 250px);
-	--ag-side-bar-background-color: var(--ag-inherited-side-bar-background-color, var(--ag-chrome-background-color));
-	--ag-side-button-bar-background-color: var(--ag-inherited-side-button-bar-background-color, var(--ag-side-bar-background-color));
-	--ag-side-button-bar-top-padding: var(--ag-inherited-side-button-bar-top-padding, 0px);
-	--ag-side-button-selected-underline-width: var(--ag-inherited-side-button-selected-underline-width, 2px);
-	--ag-side-button-selected-underline-color: var(--ag-inherited-side-button-selected-underline-color, transparent);
-	--ag-side-button-selected-underline-transition-duration: var(--ag-inherited-side-button-selected-underline-transition-duration, 0s);
-	--ag-side-button-background-color: var(--ag-inherited-side-button-background-color, transparent);
-	--ag-side-button-text-color: var(--ag-inherited-side-button-text-color, var(--ag-text-color));
-	--ag-side-button-hover-background-color: var(--ag-inherited-side-button-hover-background-color, var(--ag-side-button-background-color));
-	--ag-side-button-hover-text-color: var(--ag-inherited-side-button-hover-text-color, var(--ag-side-button-text-color));
-	--ag-side-button-selected-background-color: var(--ag-inherited-side-button-selected-background-color, var(--ag-background-color));
-	--ag-side-button-selected-text-color: var(--ag-inherited-side-button-selected-text-color, var(--ag-side-button-text-color));
-	--ag-side-button-selected-border: var(--ag-inherited-side-button-selected-border, solid 1px var(--ag-border-color));
-	--ag-side-button-left-padding: var(--ag-inherited-side-button-left-padding, var(--ag-spacing));
-	--ag-side-button-right-padding: var(--ag-inherited-side-button-right-padding, var(--ag-spacing));
-	--ag-side-button-vertical-padding: var(--ag-inherited-side-button-vertical-padding, calc( var(--ag-spacing)   *  3));
-	--ag-font-family: var(--ag-inherited-font-family, 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif);
-	--ag-header-background-color: var(--ag-inherited-header-background-color, #EEEFF2);
-	--ag-header-font-family: var(--ag-inherited-header-font-family, var(--ag-font-family));
-	--ag-cell-font-family: var(--ag-inherited-cell-font-family, var(--ag-font-family));
-	--ag-header-font-weight: var(--ag-inherited-header-font-weight, 600);
-	--ag-header-font-size: var(--ag-inherited-header-font-size, clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem));
-	--ag-data-font-size: var(--ag-inherited-data-font-size, var(--ag-font-size));
-	--ag-header-text-color: var(--ag-inherited-header-text-color, var(--ag-text-color));
-	--ag-header-cell-hover-background-color: var(--ag-inherited-header-cell-hover-background-color, transparent);
-	--ag-header-cell-moving-background-color: var(--ag-inherited-header-cell-moving-background-color, var(--ag-header-cell-hover-background-color));
-	--ag-header-cell-background-transition-duration: var(--ag-inherited-header-cell-background-transition-duration, 0.2s);
-	--ag-cell-text-color: var(--ag-inherited-cell-text-color, var(--ag-text-color));
-	--ag-subtle-text-color: var(--ag-inherited-subtle-text-color, color-mix(in srgb, transparent, var(--ag-text-color) 50%));
-	--ag-range-selection-border-style: var(--ag-inherited-range-selection-border-style, solid);
-	--ag-range-selection-border-color: var(--ag-inherited-range-selection-border-color, #1A44EA);
-	--ag-range-selection-background-color: var(--ag-inherited-range-selection-background-color, color-mix(in srgb, transparent, var(--ag-accent-color) 20%));
-	--ag-range-selection-chart-background-color: var(--ag-inherited-range-selection-chart-background-color, #0058FF1A);
-	--ag-range-selection-chart-category-background-color: var(--ag-inherited-range-selection-chart-category-background-color, #00FF841A);
-	--ag-range-selection-highlight-color: var(--ag-inherited-range-selection-highlight-color, color-mix(in srgb, transparent, var(--ag-accent-color) 50%));
-	--ag-row-hover-color: var(--ag-inherited-row-hover-color, rgba(148, 149, 152, .18));
-	--ag-column-hover-color: var(--ag-inherited-column-hover-color, rgba(148, 149, 152, .18));
-	--ag-selected-row-background-color: var(--ag-inherited-selected-row-background-color, #CBCED7);
-	--ag-modal-overlay-background-color: var(--ag-inherited-modal-overlay-background-color, hsl(240 4% 85%/35%));
-	--ag-odd-row-background-color: var(--ag-inherited-odd-row-background-color, #EEEFF2);
-	--ag-border-radius: var(--ag-inherited-border-radius, 4px);
-	--ag-wrapper-border-radius: var(--ag-inherited-wrapper-border-radius, 8px);
-	--ag-cell-horizontal-padding: var(--ag-inherited-cell-horizontal-padding, calc( var(--ag-spacing)   *  2  *   var(--ag-cell-horizontal-padding-scale) ));
-	--ag-cell-widget-spacing: var(--ag-inherited-cell-widget-spacing, calc( var(--ag-spacing)   *  1.5));
-	--ag-cell-horizontal-padding-scale: var(--ag-inherited-cell-horizontal-padding-scale, 1);
-	--ag-row-group-indent-size: var(--ag-inherited-row-group-indent-size, calc( var(--ag-cell-widget-spacing)   +   var(--ag-icon-size) ));
-	--ag-value-change-delta-up-color: var(--ag-inherited-value-change-delta-up-color, #43a047);
-	--ag-value-change-delta-down-color: var(--ag-inherited-value-change-delta-down-color, #e53935);
-	--ag-value-change-value-highlight-background-color: var(--ag-inherited-value-change-value-highlight-background-color, #16a08580);
-	--ag-spacing: var(--ag-inherited-spacing, 10px);
-	--ag-font-size: var(--ag-inherited-font-size, 1rem);
-	--ag-row-height: var(--ag-inherited-row-height, calc(var(--ag-font-size) + var(--ag-spacing) * 4));
-	--ag-row-vertical-padding-scale: var(--ag-inherited-row-vertical-padding-scale, 1);
-	--ag-header-height: var(--ag-inherited-header-height, calc(var(--ag-font-size) + var(--ag-spacing) * 2.9));
-	--ag-header-vertical-padding-scale: var(--ag-inherited-header-vertical-padding-scale, 1);
-	--ag-popup-shadow: var(--ag-inherited-popup-shadow, 0 0 16px #00000026);
-	--ag-card-shadow: var(--ag-inherited-card-shadow, 0 1px 4px 1px #00000018);
-	--ag-dropdown-shadow: var(--ag-inherited-dropdown-shadow, var(--ag-card-shadow));
-	--ag-drag-and-drop-image-background-color: var(--ag-inherited-drag-and-drop-image-background-color, var(--ag-background-color));
-	--ag-drag-and-drop-image-border: var(--ag-inherited-drag-and-drop-image-border, solid 1px var(--ag-border-color));
-	--ag-drag-and-drop-image-shadow: var(--ag-inherited-drag-and-drop-image-shadow, var(--ag-popup-shadow));
-	--ag-drag-handle-color: var(--ag-inherited-drag-handle-color, color-mix(in srgb, transparent, var(--ag-foreground-color) 70%));
-	--ag-focus-shadow: var(--ag-inherited-focus-shadow, none);
-	--ag-header-column-resize-handle-height: var(--ag-inherited-header-column-resize-handle-height, 30%);
-	--ag-header-column-resize-handle-width: var(--ag-inherited-header-column-resize-handle-width, 2px);
-	--ag-header-column-resize-handle-color: var(--ag-inherited-header-column-resize-handle-color, var(--ag-border-color));
-	--ag-widget-container-horizontal-padding: var(--ag-inherited-widget-container-horizontal-padding, calc( var(--ag-spacing)   *  1.5));
-	--ag-widget-container-vertical-padding: var(--ag-inherited-widget-container-vertical-padding, calc( var(--ag-spacing)   *  1.5));
-	--ag-widget-horizontal-spacing: var(--ag-inherited-widget-horizontal-spacing, calc( var(--ag-spacing)   *  1.5));
-	--ag-widget-vertical-spacing: var(--ag-inherited-widget-vertical-spacing, var(--ag-spacing));
-	--ag-list-item-height: var(--ag-inherited-list-item-height, calc( var(--ag-icon-size)   +   var(--ag-widget-vertical-spacing) ));
-	--ag-icon-size: var(--ag-inherited-icon-size, 24px);
-	--ag-toggle-button-width: var(--ag-inherited-toggle-button-width, 48px);
-	--ag-toggle-button-height: var(--ag-inherited-toggle-button-height, 28px);
-	--ag-toggle-button-on-background-color: var(--ag-inherited-toggle-button-on-background-color, #197E10);
-	--ag-toggle-button-off-background-color: var(--ag-inherited-toggle-button-off-background-color, #FFF);
-	--ag-toggle-button-switch-background-color: var(--ag-inherited-toggle-button-switch-background-color, #010205);
-	--ag-toggle-button-switch-inset: var(--ag-inherited-toggle-button-switch-inset, 3px);
-	--ag-menu-border: var(--ag-inherited-menu-border, solid 1px color-mix(in srgb, transparent, var(--ag-foreground-color) 20%));
-	--ag-menu-background-color: var(--ag-inherited-menu-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 3%));
-	--ag-menu-text-color: var(--ag-inherited-menu-text-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 95%));
-	--ag-menu-shadow: var(--ag-inherited-menu-shadow, var(--ag-popup-shadow));
-	--ag-menu-separator-color: var(--ag-inherited-menu-separator-color, var(--ag-border-color));
-	--ag-set-filter-indent-size: var(--ag-inherited-set-filter-indent-size, var(--ag-icon-size));
-	--ag-chart-menu-panel-width: var(--ag-inherited-chart-menu-panel-width, 260px);
-	--ag-chart-menu-label-color: var(--ag-inherited-chart-menu-label-color, color-mix(in srgb, transparent, var(--ag-foreground-color) 80%));
-	--ag-icon-button-hover-color: var(--ag-inherited-icon-button-hover-color, color-mix(in srgb, transparent, var(--ag-foreground-color) 10%));
-	--ag-dialog-shadow: var(--ag-inherited-dialog-shadow, var(--ag-popup-shadow));
-	--ag-cell-editing-border: var(--ag-inherited-cell-editing-border, solid 1px var(--ag-accent-color));
-	--ag-cell-editing-shadow: var(--ag-inherited-cell-editing-shadow, var(--ag-card-shadow));
-	--ag-dialog-border: var(--ag-inherited-dialog-border, solid 1px color-mix(in srgb, transparent, var(--ag-foreground-color) 20%));
-	--ag-panel-background-color: var(--ag-inherited-panel-background-color, var(--ag-background-color));
-	--ag-panel-title-bar-background-color: var(--ag-inherited-panel-title-bar-background-color, var(--ag-header-background-color));
-	--ag-panel-title-bar-border: var(--ag-inherited-panel-title-bar-border, solid 1px var(--ag-border-color));
-	--ag-column-select-indent-size: var(--ag-inherited-column-select-indent-size, var(--ag-icon-size));
-	--ag-tool-panel-separator-border: var(--ag-inherited-tool-panel-separator-border, solid 1px var(--ag-border-color));
-	--ag-tooltip-background-color: var(--ag-inherited-tooltip-background-color, var(--ag-chrome-background-color));
-	--ag-tooltip-text-color: var(--ag-inherited-tooltip-text-color, var(--ag-text-color));
-	--ag-tooltip-border: var(--ag-inherited-tooltip-border, solid 1px var(--ag-border-color));
-	--ag-column-drop-cell-background-color: var(--ag-inherited-column-drop-cell-background-color, color-mix(in srgb, transparent, var(--ag-foreground-color) 7.000000000000001%));
-	--ag-column-drop-cell-text-color: var(--ag-inherited-column-drop-cell-text-color, var(--ag-text-color));
-	--ag-column-drop-cell-drag-handle-color: var(--ag-inherited-column-drop-cell-drag-handle-color, var(--ag-text-color));
-	--ag-column-drop-cell-border: var(--ag-inherited-column-drop-cell-border, solid 1px color-mix(in srgb, transparent, var(--ag-foreground-color) 13%));
-	--ag-select-cell-background-color: var(--ag-inherited-select-cell-background-color, color-mix(in srgb, transparent, var(--ag-foreground-color) 7.000000000000001%));
-	--ag-select-cell-border: var(--ag-inherited-select-cell-border, solid 1px color-mix(in srgb, transparent, var(--ag-foreground-color) 13%));
-	--ag-advanced-filter-builder-button-bar-border: var(--ag-inherited-advanced-filter-builder-button-bar-border, solid 1px var(--ag-border-color));
+	--ag-advanced-filter-builder-button-bar-border: var(--ag-inherited-advanced-filter-builder-button-bar-border, solid var(--ag-border-width) var(--ag-border-color));
+	--ag-advanced-filter-builder-column-pill-color: var(--ag-inherited-advanced-filter-builder-column-pill-color, #a6e194);
 	--ag-advanced-filter-builder-indent-size: var(--ag-inherited-advanced-filter-builder-indent-size, calc( var(--ag-spacing)   *  2  +   var(--ag-icon-size) ));
 	--ag-advanced-filter-builder-join-pill-color: var(--ag-inherited-advanced-filter-builder-join-pill-color, #f08e8d);
-	--ag-advanced-filter-builder-column-pill-color: var(--ag-inherited-advanced-filter-builder-column-pill-color, #a6e194);
 	--ag-advanced-filter-builder-option-pill-color: var(--ag-inherited-advanced-filter-builder-option-pill-color, #f3c08b);
 	--ag-advanced-filter-builder-value-pill-color: var(--ag-inherited-advanced-filter-builder-value-pill-color, #85c0e4);
+	--ag-background-color: var(--ag-inherited-background-color, #FFF);
+	--ag-border-color: var(--ag-inherited-border-color, #D8D8DB);
+	--ag-border-radius: var(--ag-inherited-border-radius, 4px);
+	--ag-border-width: var(--ag-inherited-border-width, 1px);
+	--ag-browser-color-scheme: var(--ag-inherited-browser-color-scheme, light);
+	--ag-button-active-background-color: var(--ag-inherited-button-active-background-color, var(--ag-button-hover-background-color));
+	--ag-button-active-border: var(--ag-inherited-button-active-border, solid var(--ag-border-width) var(--ag-accent-color));
+	--ag-button-active-text-color: var(--ag-inherited-button-active-text-color, var(--ag-button-hover-text-color));
+	--ag-button-background-color: var(--ag-inherited-button-background-color, var(--ag-background-color));
+	--ag-button-border: var(--ag-inherited-button-border, solid var(--ag-border-width) var(--ag-border-color));
+	--ag-button-border-radius: var(--ag-inherited-button-border-radius, var(--ag-border-radius));
+	--ag-button-disabled-background-color: var(--ag-inherited-button-disabled-background-color, var(--ag-input-disabled-background-color));
+	--ag-button-disabled-border: var(--ag-inherited-button-disabled-border, var(--ag-input-disabled-border));
+	--ag-button-disabled-text-color: var(--ag-inherited-button-disabled-text-color, var(--ag-input-disabled-text-color));
+	--ag-button-font-weight: var(--ag-inherited-button-font-weight, normal);
+	--ag-button-horizontal-padding: var(--ag-inherited-button-horizontal-padding, calc( var(--ag-spacing)   *  2));
+	--ag-button-hover-background-color: var(--ag-inherited-button-hover-background-color, var(--ag-row-hover-color));
+	--ag-button-hover-border: var(--ag-inherited-button-hover-border, var(--ag-button-border));
+	--ag-button-hover-text-color: var(--ag-inherited-button-hover-text-color, var(--ag-button-text-color));
+	--ag-button-text-color: var(--ag-inherited-button-text-color, inherit);
+	--ag-button-vertical-padding: var(--ag-inherited-button-vertical-padding, var(--ag-spacing));
+	--ag-card-shadow: var(--ag-inherited-card-shadow, 0 1px 4px 1px #00000018);
+	--ag-cell-batch-edit-background-color: var(--ag-inherited-cell-batch-edit-background-color, rgba(220 181 139 / 16%));
+	--ag-cell-batch-edit-text-color: var(--ag-inherited-cell-batch-edit-text-color, #422f00);
+	--ag-cell-editing-border: var(--ag-inherited-cell-editing-border, solid var(--ag-border-width) var(--ag-accent-color));
+	--ag-cell-editing-shadow: var(--ag-inherited-cell-editing-shadow, var(--ag-card-shadow));
+	--ag-cell-font-family: var(--ag-inherited-cell-font-family, var(--ag-font-family));
+	--ag-cell-horizontal-padding: var(--ag-inherited-cell-horizontal-padding, calc( var(--ag-spacing)   *  2  *   var(--ag-cell-horizontal-padding-scale) ));
+	--ag-cell-horizontal-padding-scale: var(--ag-inherited-cell-horizontal-padding-scale, 1);
+	--ag-cell-text-color: var(--ag-inherited-cell-text-color, var(--ag-text-color));
+	--ag-cell-widget-spacing: var(--ag-inherited-cell-widget-spacing, calc( var(--ag-spacing)   *  1.5));
+	--ag-chart-menu-label-color: var(--ag-inherited-chart-menu-label-color, color-mix(in srgb, transparent, var(--ag-foreground-color) 80%));
+	--ag-chart-menu-panel-width: var(--ag-inherited-chart-menu-panel-width, 260px);
+	--ag-checkbox-border-radius: var(--ag-inherited-checkbox-border-radius, 4px);
+	--ag-checkbox-border-width: var(--ag-inherited-checkbox-border-width, 2px);
+	--ag-checkbox-checked-background-color: var(--ag-inherited-checkbox-checked-background-color, #010205);
+	--ag-checkbox-checked-border-color: var(--ag-inherited-checkbox-checked-border-color, #010205);
+	--ag-checkbox-checked-hover-background-color: var(--ag-inherited-checkbox-checked-hover-background-color, #535457);
+	--ag-checkbox-checked-hover-border-color: var(--ag-inherited-checkbox-checked-hover-border-color, #535457);
+	--ag-checkbox-checked-shape-color: var(--ag-inherited-checkbox-checked-shape-color, var(--ag-background-color));
+	--ag-checkbox-checked-shape-image: var(--ag-inherited-checkbox-checked-shape-image, url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22m20.22%2C7.47l-1.47-1.42-9.26%2C9.02-4.24-4.15-1.47%2C1.42%2C5.71%2C5.6%2C10.73-10.47Z%22%2F%3E%3C%2Fsvg%3E"));
+	--ag-checkbox-disabled-color: var(--ag-inherited-checkbox-disabled-color, #949598);
+	--ag-checkbox-indeterminate-background-color: var(--ag-inherited-checkbox-indeterminate-background-color, #FFF);
+	--ag-checkbox-indeterminate-border-color: var(--ag-inherited-checkbox-indeterminate-border-color, #6B6D70);
+	--ag-checkbox-indeterminate-shape-color: var(--ag-inherited-checkbox-indeterminate-shape-color, #010205);
+	--ag-checkbox-indeterminate-shape-image: var(--ag-inherited-checkbox-indeterminate-shape-image, url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22m20%2C11v2H4v-2h16Z%22%2F%3E%3C%2Fsvg%3E"));
+	--ag-checkbox-unchecked-background-color: var(--ag-inherited-checkbox-unchecked-background-color, var(--ag-background-color));
+	--ag-checkbox-unchecked-border-color: var(--ag-inherited-checkbox-unchecked-border-color, #6B6D70);
+	--ag-checkbox-unchecked-hover-border-color: var(--ag-inherited-checkbox-unchecked-hover-border-color, #010205);
+	--ag-chrome-background-color: var(--ag-inherited-chrome-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 2%));
+	--ag-column-border: var(--ag-inherited-column-border, solid 1px transparent);
+	--ag-column-drop-cell-background-color: var(--ag-inherited-column-drop-cell-background-color, color-mix(in srgb, transparent, var(--ag-foreground-color) 7.000000000000001%));
+	--ag-column-drop-cell-border: var(--ag-inherited-column-drop-cell-border, solid var(--ag-border-width) color-mix(in srgb, transparent, var(--ag-foreground-color) 13%));
+	--ag-column-drop-cell-drag-handle-color: var(--ag-inherited-column-drop-cell-drag-handle-color, var(--ag-text-color));
+	--ag-column-drop-cell-text-color: var(--ag-inherited-column-drop-cell-text-color, var(--ag-text-color));
+	--ag-column-hover-color: var(--ag-inherited-column-hover-color, rgba(148, 149, 152, .18));
+	--ag-column-select-indent-size: var(--ag-inherited-column-select-indent-size, var(--ag-icon-size));
+	--ag-data-font-size: var(--ag-inherited-data-font-size, var(--ag-font-size));
+	--ag-dialog-border: var(--ag-inherited-dialog-border, solid var(--ag-border-width) color-mix(in srgb, transparent, var(--ag-foreground-color) 20%));
+	--ag-dialog-shadow: var(--ag-inherited-dialog-shadow, var(--ag-popup-shadow));
+	--ag-drag-and-drop-image-background-color: var(--ag-inherited-drag-and-drop-image-background-color, var(--ag-background-color));
+	--ag-drag-and-drop-image-border: var(--ag-inherited-drag-and-drop-image-border, solid var(--ag-border-width) var(--ag-border-color));
+	--ag-drag-and-drop-image-shadow: var(--ag-inherited-drag-and-drop-image-shadow, var(--ag-popup-shadow));
+	--ag-drag-handle-color: var(--ag-inherited-drag-handle-color, color-mix(in srgb, transparent, var(--ag-foreground-color) 70%));
+	--ag-dropdown-shadow: var(--ag-inherited-dropdown-shadow, var(--ag-card-shadow));
+	--ag-filter-panel-apply-button-background-color: var(--ag-inherited-filter-panel-apply-button-background-color, var(--ag-accent-color));
+	--ag-filter-panel-apply-button-color: var(--ag-inherited-filter-panel-apply-button-color, var(--ag-background-color));
+	--ag-filter-panel-card-subtle-color: var(--ag-inherited-filter-panel-card-subtle-color, color-mix(in srgb, transparent, var(--ag-text-color) 70%));
+	--ag-filter-panel-card-subtle-hover-color: var(--ag-inherited-filter-panel-card-subtle-hover-color, var(--ag-text-color));
 	--ag-filter-tool-panel-group-indent: var(--ag-inherited-filter-tool-panel-group-indent, var(--ag-spacing));
+	--ag-find-active-match-background-color: var(--ag-inherited-find-active-match-background-color, #ffa500);
+	--ag-find-active-match-color: var(--ag-inherited-find-active-match-color, var(--ag-foreground-color));
+	--ag-find-match-background-color: var(--ag-inherited-find-match-background-color, #ffff00);
+	--ag-find-match-color: var(--ag-inherited-find-match-color, var(--ag-foreground-color));
+	--ag-focus-error-shadow: var(--ag-inherited-focus-error-shadow, 0px 0px 0px 3px color-mix(in srgb, var(--ag-background-color), var(--ag-invalid-color) 50%));
+	--ag-focus-shadow: var(--ag-inherited-focus-shadow, none);
+	--ag-font-family: var(--ag-inherited-font-family, 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif);
+	--ag-font-size: var(--ag-inherited-font-size, 1rem);
+	--ag-footer-row-border: var(--ag-inherited-footer-row-border, var(--ag-row-border));
+	--ag-foreground-color: var(--ag-inherited-foreground-color, #010205);
+	--ag-full-row-edit-invalid-background-color: var(--ag-inherited-full-row-edit-invalid-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-invalid-color) 25%));
+	--ag-header-background-color: var(--ag-inherited-header-background-color, #EEEFF2);
+	--ag-header-cell-background-transition-duration: var(--ag-inherited-header-cell-background-transition-duration, 0.2s);
+	--ag-header-cell-hover-background-color: var(--ag-inherited-header-cell-hover-background-color, transparent);
+	--ag-header-cell-moving-background-color: var(--ag-inherited-header-cell-moving-background-color, var(--ag-header-cell-hover-background-color));
+	--ag-header-column-border: var(--ag-inherited-header-column-border, none);
+	--ag-header-column-border-height: var(--ag-inherited-header-column-border-height, 100%);
+	--ag-header-column-resize-handle-color: var(--ag-inherited-header-column-resize-handle-color, var(--ag-border-color));
+	--ag-header-column-resize-handle-height: var(--ag-inherited-header-column-resize-handle-height, 30%);
+	--ag-header-column-resize-handle-width: var(--ag-inherited-header-column-resize-handle-width, 2px);
+	--ag-header-font-family: var(--ag-inherited-header-font-family, var(--ag-font-family));
+	--ag-header-font-size: var(--ag-inherited-header-font-size, clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem));
+	--ag-header-font-weight: var(--ag-inherited-header-font-weight, 600);
+	--ag-header-height: var(--ag-inherited-header-height, calc(var(--ag-font-size) + var(--ag-spacing) * 2.9));
+	--ag-header-row-border: var(--ag-inherited-header-row-border, solid var(--ag-border-width) var(--ag-border-color));
+	--ag-header-text-color: var(--ag-inherited-header-text-color, var(--ag-text-color));
+	--ag-header-vertical-padding-scale: var(--ag-inherited-header-vertical-padding-scale, 1);
+	--ag-icon-button-active-background-color: var(--ag-inherited-icon-button-active-background-color, color-mix(in srgb, transparent, var(--ag-accent-color) 28.000000000000004%));
+	--ag-icon-button-active-color: var(--ag-inherited-icon-button-active-color, var(--ag-accent-color));
+	--ag-icon-button-active-indicator-color: var(--ag-inherited-icon-button-active-indicator-color, var(--ag-accent-color));
+	--ag-icon-button-background-color: var(--ag-inherited-icon-button-background-color, transparent);
+	--ag-icon-button-background-spread: var(--ag-inherited-icon-button-background-spread, 4px);
+	--ag-icon-button-border-radius: var(--ag-inherited-icon-button-border-radius, 1px);
+	--ag-icon-button-color: var(--ag-inherited-icon-button-color, var(--ag-icon-color));
 	--ag-icon-button-hover-background-color: var(--ag-inherited-icon-button-hover-background-color, color-mix(in srgb, transparent, var(--ag-foreground-color) 10%));
-	--ag-row-loading-skeleton-effect-color: var(--ag-inherited-row-loading-skeleton-effect-color, color-mix(in srgb, transparent, var(--ag-foreground-color) 15%));
-	--ag-tab-bar-background-color: var(--ag-inherited-tab-bar-background-color, color-mix(in srgb, transparent, var(--ag-foreground-color) 5%));
-	--ag-tab-bar-horizontal-padding: var(--ag-inherited-tab-bar-horizontal-padding, 0px);
-	--ag-tab-bar-top-padding: var(--ag-inherited-tab-bar-top-padding, 0px);
-	--ag-tab-background-color: var(--ag-inherited-tab-background-color, transparent);
-	--ag-tab-text-color: var(--ag-inherited-tab-text-color, color-mix(in srgb, transparent, var(--ag-text-color) 70%));
-	--ag-tab-horizontal-padding: var(--ag-inherited-tab-horizontal-padding, var(--ag-spacing));
-	--ag-tab-top-padding: var(--ag-inherited-tab-top-padding, var(--ag-spacing));
-	--ag-tab-bottom-padding: var(--ag-inherited-tab-bottom-padding, var(--ag-spacing));
-	--ag-tab-spacing: var(--ag-inherited-tab-spacing, 0);
-	--ag-tab-hover-background-color: var(--ag-inherited-tab-hover-background-color, var(--ag-tab-background-color));
-	--ag-tab-hover-text-color: var(--ag-inherited-tab-hover-text-color, var(--ag-text-color));
-	--ag-tab-selected-background-color: var(--ag-inherited-tab-selected-background-color, var(--ag-background-color));
-	--ag-tab-selected-text-color: var(--ag-inherited-tab-selected-text-color, var(--ag-text-color));
-	--ag-tab-selected-border-width: var(--ag-inherited-tab-selected-border-width, 1px);
-	--ag-tab-selected-border-color: var(--ag-inherited-tab-selected-border-color, var(--ag-border-color));
-	--ag-tab-selected-underline-color: var(--ag-inherited-tab-selected-underline-color, transparent);
-	--ag-tab-selected-underline-width: var(--ag-inherited-tab-selected-underline-width, 0px);
-	--ag-tab-selected-underline-transition-duration: var(--ag-inherited-tab-selected-underline-transition-duration, 0s);
-	--ag-tab-bar-border: var(--ag-inherited-tab-bar-border, solid 1px var(--ag-border-color));
+	--ag-icon-button-hover-color: var(--ag-inherited-icon-button-hover-color, var(--ag-icon-button-color));
+	--ag-icon-color: var(--ag-inherited-icon-color, inherit);
+	--ag-icon-size: var(--ag-inherited-icon-size, 24px);
 	--ag-input-background-color: var(--ag-inherited-input-background-color, var(--ag-background-color));
 	--ag-input-border: var(--ag-inherited-input-border, 1px solid #6B6D70);
 	--ag-input-border-radius: var(--ag-inherited-input-border-radius, var(--ag-border-radius));
-	--ag-input-text-color: var(--ag-inherited-input-text-color, var(--ag-text-color));
-	--ag-input-placeholder-text-color: var(--ag-inherited-input-placeholder-text-color, color-mix(in srgb, transparent, var(--ag-input-text-color) 50%));
-	--ag-input-padding-start: var(--ag-inherited-input-padding-start, var(--ag-spacing));
-	--ag-input-height: var(--ag-inherited-input-height, calc(max( var(--ag-icon-size) ,  var(--ag-font-size) )  +   var(--ag-spacing)   *  2));
+	--ag-input-disabled-background-color: var(--ag-inherited-input-disabled-background-color, #FFF);
+	--ag-input-disabled-border: var(--ag-inherited-input-disabled-border, 1px solid #949598);
+	--ag-input-disabled-text-color: var(--ag-inherited-input-disabled-text-color, color-mix(in srgb, transparent, var(--ag-text-color) 50%));
 	--ag-input-focus-background-color: var(--ag-inherited-input-focus-background-color, var(--ag-input-background-color));
 	--ag-input-focus-border: var(--ag-inherited-input-focus-border, 1px solid #010205);
 	--ag-input-focus-shadow: var(--ag-inherited-input-focus-shadow, none);
 	--ag-input-focus-text-color: var(--ag-inherited-input-focus-text-color, var(--ag-input-text-color));
-	--ag-input-disabled-background-color: var(--ag-inherited-input-disabled-background-color, #FFF);
-	--ag-input-disabled-border: var(--ag-inherited-input-disabled-border, 1px solid #949598);
-	--ag-input-disabled-text-color: var(--ag-inherited-input-disabled-text-color, color-mix(in srgb, transparent, var(--ag-text-color) 50%));
+	--ag-input-height: var(--ag-inherited-input-height, calc(max( var(--ag-icon-size) ,  var(--ag-font-size) )  +   var(--ag-spacing)   *  2));
+	--ag-input-icon-color: var(--ag-inherited-input-icon-color, var(--ag-input-text-color));
 	--ag-input-invalid-background-color: var(--ag-inherited-input-invalid-background-color, var(--ag-input-background-color));
 	--ag-input-invalid-border: var(--ag-inherited-input-invalid-border, 1px solid #CC1922);
 	--ag-input-invalid-text-color: var(--ag-inherited-input-invalid-text-color, var(--ag-input-text-color));
-	--ag-input-icon-color: var(--ag-inherited-input-icon-color, var(--ag-input-text-color));
-	--ag-checkbox-border-width: var(--ag-inherited-checkbox-border-width, 2px);
-	--ag-checkbox-border-radius: var(--ag-inherited-checkbox-border-radius, 4px);
-	--ag-toggle-button-on-hover-background-color: var(--ag-inherited-toggle-button-on-hover-background-color, #0E4809);
-	--ag-toggle-button-on-border-color: var(--ag-inherited-toggle-button-on-border-color, #197E10);
-	--ag-toggle-button-on-hover-border-color: var(--ag-inherited-toggle-button-on-hover-border-color, #0E4809);
-	--ag-toggle-button-off-hover-border-color: var(--ag-inherited-toggle-button-off-hover-border-color, #010205);
-	--ag-toggle-button-off-border-color: var(--ag-inherited-toggle-button-off-border-color, #6B6D70);
-	--ag-toggle-button-disabled-color: var(--ag-inherited-toggle-button-disabled-color, #949598);
-	--ag-checkbox-unchecked-background-color: var(--ag-inherited-checkbox-unchecked-background-color, var(--ag-background-color));
-	--ag-checkbox-checked-shape-color: var(--ag-inherited-checkbox-checked-shape-color, var(--ag-background-color));
-	--ag-checkbox-checked-shape-image: var(--ag-inherited-checkbox-checked-shape-image, url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22m20.22%2C7.47l-1.47-1.42-9.26%2C9.02-4.24-4.15-1.47%2C1.42%2C5.71%2C5.6%2C10.73-10.47Z%22%2F%3E%3C%2Fsvg%3E"));
-	--ag-checkbox-indeterminate-shape-image: var(--ag-inherited-checkbox-indeterminate-shape-image, url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22m20%2C11v2H4v-2h16Z%22%2F%3E%3C%2Fsvg%3E"));
+	--ag-input-padding-start: var(--ag-inherited-input-padding-start, var(--ag-spacing));
+	--ag-input-placeholder-text-color: var(--ag-inherited-input-placeholder-text-color, color-mix(in srgb, transparent, var(--ag-input-text-color) 50%));
+	--ag-input-text-color: var(--ag-inherited-input-text-color, var(--ag-text-color));
+	--ag-invalid-color: var(--ag-inherited-invalid-color, #CC1922);
+	--ag-list-item-height: var(--ag-inherited-list-item-height, calc(max( var(--ag-icon-size) ,  var(--ag-data-font-size) )  +   var(--ag-widget-vertical-spacing) ));
+	--ag-menu-background-color: var(--ag-inherited-menu-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 3%));
+	--ag-menu-border: var(--ag-inherited-menu-border, solid var(--ag-border-width) color-mix(in srgb, transparent, var(--ag-foreground-color) 20%));
+	--ag-menu-separator-color: var(--ag-inherited-menu-separator-color, var(--ag-border-color));
+	--ag-menu-shadow: var(--ag-inherited-menu-shadow, var(--ag-popup-shadow));
+	--ag-menu-text-color: var(--ag-inherited-menu-text-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 95%));
+	--ag-modal-overlay-background-color: var(--ag-inherited-modal-overlay-background-color, hsl(240 4% 85%/35%));
+	--ag-odd-row-background-color: var(--ag-inherited-odd-row-background-color, #EEEFF2);
+	--ag-pagination-panel-height: var(--ag-inherited-pagination-panel-height, calc(max( var(--ag-row-height) , 22px)));
+	--ag-panel-background-color: var(--ag-inherited-panel-background-color, var(--ag-background-color));
+	--ag-panel-title-bar-background-color: var(--ag-inherited-panel-title-bar-background-color, var(--ag-header-background-color));
+	--ag-panel-title-bar-border: var(--ag-inherited-panel-title-bar-border, solid var(--ag-border-width) var(--ag-border-color));
+	--ag-panel-title-bar-font-weight: var(--ag-inherited-panel-title-bar-font-weight, var(--ag-header-font-weight));
+	--ag-panel-title-bar-icon-color: var(--ag-inherited-panel-title-bar-icon-color, var(--ag-header-text-color));
+	--ag-panel-title-bar-text-color: var(--ag-inherited-panel-title-bar-text-color, var(--ag-header-text-color));
+	--ag-picker-button-background-color: var(--ag-inherited-picker-button-background-color, var(--ag-background-color));
+	--ag-picker-button-border: var(--ag-inherited-picker-button-border, solid var(--ag-border-width) var(--ag-border-color));
+	--ag-picker-button-focus-background-color: var(--ag-inherited-picker-button-focus-background-color, var(--ag-background-color));
+	--ag-picker-button-focus-border: var(--ag-inherited-picker-button-focus-border, var(--ag-input-focus-border));
+	--ag-picker-list-background-color: var(--ag-inherited-picker-list-background-color, var(--ag-background-color));
+	--ag-picker-list-border: var(--ag-inherited-picker-list-border, solid var(--ag-border-width) var(--ag-border-color));
+	--ag-pinned-column-border: var(--ag-inherited-pinned-column-border, solid var(--ag-border-width) var(--ag-border-color));
+	--ag-pinned-row-background-color: var(--ag-inherited-pinned-row-background-color, var(--ag-background-color));
+	--ag-pinned-row-border: var(--ag-inherited-pinned-row-border, solid var(--ag-border-width) var(--ag-border-color));
+	--ag-pinned-row-font-weight: var(--ag-inherited-pinned-row-font-weight, 600);
+	--ag-pinned-row-text-color: var(--ag-inherited-pinned-row-text-color, var(--ag-text-color));
+	--ag-pinned-source-row-background-color: var(--ag-inherited-pinned-source-row-background-color, var(--ag-background-color));
+	--ag-pinned-source-row-font-weight: var(--ag-inherited-pinned-source-row-font-weight, 600);
+	--ag-pinned-source-row-text-color: var(--ag-inherited-pinned-source-row-text-color, var(--ag-text-color));
+	--ag-popup-shadow: var(--ag-inherited-popup-shadow, 0 0 16px #00000026);
 	--ag-radio-checked-shape-image: var(--ag-inherited-radio-checked-shape-image, url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%226%22%2F%3E%3C%2Fsvg%3E"));
-	--ag-checkbox-checked-background-color: var(--ag-inherited-checkbox-checked-background-color, #010205);
-	--ag-checkbox-checked-border-color: var(--ag-inherited-checkbox-checked-border-color, #010205);
-	--ag-checkbox-unchecked-border-color: var(--ag-inherited-checkbox-unchecked-border-color, #6B6D70);
-	--ag-checkbox-indeterminate-border-color: var(--ag-inherited-checkbox-indeterminate-border-color, #6B6D70);
-	--ag-checkbox-indeterminate-background-color: var(--ag-inherited-checkbox-indeterminate-background-color, #FFF);
-	--ag-checkbox-indeterminate-shape-color: var(--ag-inherited-checkbox-indeterminate-shape-color, #010205);
-	--ag-checkbox-unchecked-hover-border-color: var(--ag-inherited-checkbox-unchecked-hover-border-color, #010205);
-	--ag-checkbox-checked-hover-border-color: var(--ag-inherited-checkbox-checked-hover-border-color, #535457);
-	--ag-checkbox-checked-hover-background-color: var(--ag-inherited-checkbox-checked-hover-background-color, #535457);
-	--ag-checkbox-disabled-color: var(--ag-inherited-checkbox-disabled-color, #949598);
+	--ag-range-header-highlight-color: var(--ag-inherited-range-header-highlight-color, color-mix(in srgb, var(--ag-header-background-color), var(--ag-foreground-color) 8%));
+	--ag-range-selection-background-color: var(--ag-inherited-range-selection-background-color, color-mix(in srgb, transparent, var(--ag-accent-color) 20%));
+	--ag-range-selection-border-color: var(--ag-inherited-range-selection-border-color, #1A44EA);
+	--ag-range-selection-border-style: var(--ag-inherited-range-selection-border-style, solid);
+	--ag-range-selection-chart-background-color: var(--ag-inherited-range-selection-chart-background-color, #0058FF1A);
+	--ag-range-selection-chart-category-background-color: var(--ag-inherited-range-selection-chart-category-background-color, #00FF841A);
+	--ag-range-selection-highlight-color: var(--ag-inherited-range-selection-highlight-color, color-mix(in srgb, transparent, var(--ag-accent-color) 50%));
+	--ag-row-batch-edit-background-color: var(--ag-inherited-row-batch-edit-background-color, var(--ag-cell-batch-edit-background-color));
+	--ag-row-batch-edit-text-color: var(--ag-inherited-row-batch-edit-text-color, var(--ag-cell-batch-edit-text-color));
+	--ag-row-border: var(--ag-inherited-row-border, solid var(--ag-border-width) var(--ag-border-color));
+	--ag-row-group-indent-size: var(--ag-inherited-row-group-indent-size, calc( var(--ag-cell-widget-spacing)   +   var(--ag-icon-size) ));
+	--ag-row-height: var(--ag-inherited-row-height, calc(var(--ag-font-size) + var(--ag-spacing) * 4));
+	--ag-row-hover-color: var(--ag-inherited-row-hover-color, rgba(148, 149, 152, .18));
+	--ag-row-loading-skeleton-effect-color: var(--ag-inherited-row-loading-skeleton-effect-color, color-mix(in srgb, transparent, var(--ag-foreground-color) 15%));
+	--ag-row-numbers-selected-color: var(--ag-inherited-row-numbers-selected-color, color-mix(in srgb, transparent, var(--ag-accent-color) 50%));
+	--ag-row-vertical-padding-scale: var(--ag-inherited-row-vertical-padding-scale, 1);
+	--ag-select-cell-background-color: var(--ag-inherited-select-cell-background-color, color-mix(in srgb, transparent, var(--ag-foreground-color) 7.000000000000001%));
+	--ag-select-cell-border: var(--ag-inherited-select-cell-border, solid var(--ag-border-width) color-mix(in srgb, transparent, var(--ag-foreground-color) 13%));
+	--ag-selected-row-background-color: var(--ag-inherited-selected-row-background-color, #CBCED7);
+	--ag-set-filter-indent-size: var(--ag-inherited-set-filter-indent-size, var(--ag-icon-size));
+	--ag-side-bar-background-color: var(--ag-inherited-side-bar-background-color, var(--ag-chrome-background-color));
+	--ag-side-bar-panel-width: var(--ag-inherited-side-bar-panel-width, 250px);
+	--ag-side-button-background-color: var(--ag-inherited-side-button-background-color, transparent);
+	--ag-side-button-bar-background-color: var(--ag-inherited-side-button-bar-background-color, var(--ag-side-bar-background-color));
+	--ag-side-button-bar-top-padding: var(--ag-inherited-side-button-bar-top-padding, 0px);
+	--ag-side-button-border: var(--ag-inherited-side-button-border, solid 1px transparent);
+	--ag-side-button-hover-background-color: var(--ag-inherited-side-button-hover-background-color, var(--ag-side-button-background-color));
+	--ag-side-button-hover-text-color: var(--ag-inherited-side-button-hover-text-color, var(--ag-side-button-text-color));
+	--ag-side-button-left-padding: var(--ag-inherited-side-button-left-padding, var(--ag-spacing));
+	--ag-side-button-right-padding: var(--ag-inherited-side-button-right-padding, var(--ag-spacing));
+	--ag-side-button-selected-background-color: var(--ag-inherited-side-button-selected-background-color, var(--ag-background-color));
+	--ag-side-button-selected-border: var(--ag-inherited-side-button-selected-border, solid var(--ag-border-width) var(--ag-border-color));
+	--ag-side-button-selected-text-color: var(--ag-inherited-side-button-selected-text-color, var(--ag-side-button-text-color));
+	--ag-side-button-selected-underline-color: var(--ag-inherited-side-button-selected-underline-color, transparent);
+	--ag-side-button-selected-underline-transition-duration: var(--ag-inherited-side-button-selected-underline-transition-duration, 0s);
+	--ag-side-button-selected-underline-width: var(--ag-inherited-side-button-selected-underline-width, 2px);
+	--ag-side-button-text-color: var(--ag-inherited-side-button-text-color, var(--ag-text-color));
+	--ag-side-button-vertical-padding: var(--ag-inherited-side-button-vertical-padding, calc( var(--ag-spacing)   *  3));
+	--ag-side-panel-border: var(--ag-inherited-side-panel-border, solid var(--ag-border-width) var(--ag-border-color));
+	--ag-spacing: var(--ag-inherited-spacing, 10px);
+	--ag-status-bar-label-color: var(--ag-inherited-status-bar-label-color, var(--ag-foreground-color));
+	--ag-status-bar-label-font-weight: var(--ag-inherited-status-bar-label-font-weight, 500);
+	--ag-status-bar-value-color: var(--ag-inherited-status-bar-value-color, var(--ag-foreground-color));
+	--ag-status-bar-value-font-weight: var(--ag-inherited-status-bar-value-font-weight, 500);
+	--ag-subtle-text-color: var(--ag-inherited-subtle-text-color, color-mix(in srgb, transparent, var(--ag-text-color) 50%));
+	--ag-tab-background-color: var(--ag-inherited-tab-background-color, transparent);
+	--ag-tab-bar-background-color: var(--ag-inherited-tab-bar-background-color, color-mix(in srgb, transparent, var(--ag-foreground-color) 5%));
+	--ag-tab-bar-border: var(--ag-inherited-tab-bar-border, solid var(--ag-border-width) var(--ag-border-color));
+	--ag-tab-bar-horizontal-padding: var(--ag-inherited-tab-bar-horizontal-padding, 0px);
+	--ag-tab-bar-top-padding: var(--ag-inherited-tab-bar-top-padding, 0px);
+	--ag-tab-bottom-padding: var(--ag-inherited-tab-bottom-padding, var(--ag-spacing));
+	--ag-tab-horizontal-padding: var(--ag-inherited-tab-horizontal-padding, var(--ag-spacing));
+	--ag-tab-hover-background-color: var(--ag-inherited-tab-hover-background-color, var(--ag-tab-background-color));
+	--ag-tab-hover-text-color: var(--ag-inherited-tab-hover-text-color, var(--ag-text-color));
+	--ag-tab-selected-background-color: var(--ag-inherited-tab-selected-background-color, var(--ag-background-color));
+	--ag-tab-selected-border-color: var(--ag-inherited-tab-selected-border-color, var(--ag-border-color));
+	--ag-tab-selected-border-width: var(--ag-inherited-tab-selected-border-width, var(--ag-border-width));
+	--ag-tab-selected-text-color: var(--ag-inherited-tab-selected-text-color, var(--ag-text-color));
+	--ag-tab-selected-underline-color: var(--ag-inherited-tab-selected-underline-color, transparent);
+	--ag-tab-selected-underline-transition-duration: var(--ag-inherited-tab-selected-underline-transition-duration, 0s);
+	--ag-tab-selected-underline-width: var(--ag-inherited-tab-selected-underline-width, 0px);
+	--ag-tab-spacing: var(--ag-inherited-tab-spacing, 0);
+	--ag-tab-text-color: var(--ag-inherited-tab-text-color, color-mix(in srgb, transparent, var(--ag-text-color) 70%));
+	--ag-tab-top-padding: var(--ag-inherited-tab-top-padding, var(--ag-spacing));
+	--ag-text-color: var(--ag-inherited-text-color, var(--ag-foreground-color));
+	--ag-toggle-button-disabled-color: var(--ag-inherited-toggle-button-disabled-color, #949598);
+	--ag-toggle-button-height: var(--ag-inherited-toggle-button-height, 28px);
+	--ag-toggle-button-off-background-color: var(--ag-inherited-toggle-button-off-background-color, #FFF);
+	--ag-toggle-button-off-border-color: var(--ag-inherited-toggle-button-off-border-color, #6B6D70);
+	--ag-toggle-button-off-hover-border-color: var(--ag-inherited-toggle-button-off-hover-border-color, #010205);
+	--ag-toggle-button-on-background-color: var(--ag-inherited-toggle-button-on-background-color, #197E10);
+	--ag-toggle-button-on-border-color: var(--ag-inherited-toggle-button-on-border-color, #197E10);
+	--ag-toggle-button-on-hover-background-color: var(--ag-inherited-toggle-button-on-hover-background-color, #0E4809);
+	--ag-toggle-button-on-hover-border-color: var(--ag-inherited-toggle-button-on-hover-border-color, #0E4809);
+	--ag-toggle-button-switch-background-color: var(--ag-inherited-toggle-button-switch-background-color, #010205);
+	--ag-toggle-button-switch-inset: var(--ag-inherited-toggle-button-switch-inset, 3px);
+	--ag-toggle-button-width: var(--ag-inherited-toggle-button-width, 48px);
+	--ag-tool-panel-separator-border: var(--ag-inherited-tool-panel-separator-border, solid var(--ag-border-width) var(--ag-border-color));
+	--ag-tooltip-background-color: var(--ag-inherited-tooltip-background-color, var(--ag-chrome-background-color));
+	--ag-tooltip-border: var(--ag-inherited-tooltip-border, solid var(--ag-border-width) var(--ag-border-color));
+	--ag-tooltip-error-background-color: var(--ag-inherited-tooltip-error-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-invalid-color) 10%));
+	--ag-tooltip-error-border: var(--ag-inherited-tooltip-error-border, solid var(--ag-border-width) color-mix(in srgb, var(--ag-background-color), var(--ag-invalid-color) 25%));
+	--ag-tooltip-error-text-color: var(--ag-inherited-tooltip-error-text-color, var(--ag-invalid-color));
+	--ag-tooltip-text-color: var(--ag-inherited-tooltip-text-color, var(--ag-text-color));
+	--ag-value-change-delta-down-color: var(--ag-inherited-value-change-delta-down-color, #e53935);
+	--ag-value-change-delta-up-color: var(--ag-inherited-value-change-delta-up-color, #43a047);
+	--ag-value-change-value-highlight-background-color: var(--ag-inherited-value-change-value-highlight-background-color, #16a08580);
+	--ag-widget-container-horizontal-padding: var(--ag-inherited-widget-container-horizontal-padding, calc( var(--ag-spacing)   *  1.5));
+	--ag-widget-container-vertical-padding: var(--ag-inherited-widget-container-vertical-padding, calc( var(--ag-spacing)   *  1.5));
+	--ag-widget-horizontal-spacing: var(--ag-inherited-widget-horizontal-spacing, calc( var(--ag-spacing)   *  1.5));
+	--ag-widget-vertical-spacing: var(--ag-inherited-widget-vertical-spacing, var(--ag-spacing));
+	--ag-wrapper-border: var(--ag-inherited-wrapper-border, solid var(--ag-border-width) var(--ag-border-color));
+	--ag-wrapper-border-radius: var(--ag-inherited-wrapper-border-radius, 8px);
 :where([data-ag-theme-mode="light"]) & {
 	--ag-chrome-background-color: var(--ag-inherited-chrome-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 2%));
 }
 :where([data-ag-theme-mode="dark"]) & {
-	--ag-chrome-background-color: var(--ag-inherited-chrome-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 5%));
-	--ag-menu-background-color: var(--ag-inherited-menu-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 10%));
-	--ag-popup-shadow: var(--ag-inherited-popup-shadow, 0 0px 20px #000A);
-	--ag-card-shadow: var(--ag-inherited-card-shadow, 0 1px 4px 1px #000A);
-	--ag-advanced-filter-builder-join-pill-color: var(--ag-inherited-advanced-filter-builder-join-pill-color, #7a3a37);
+	--ag-accent-color: var(--ag-inherited-accent-color, #178BFF);
 	--ag-advanced-filter-builder-column-pill-color: var(--ag-inherited-advanced-filter-builder-column-pill-color, #355f2d);
+	--ag-advanced-filter-builder-join-pill-color: var(--ag-inherited-advanced-filter-builder-join-pill-color, #7a3a37);
 	--ag-advanced-filter-builder-option-pill-color: var(--ag-inherited-advanced-filter-builder-option-pill-color, #5a3168);
 	--ag-advanced-filter-builder-value-pill-color: var(--ag-inherited-advanced-filter-builder-value-pill-color, #374c86);
-	--ag-browser-color-scheme: var(--ag-inherited-browser-color-scheme, dark);
-	--ag-accent-color: var(--ag-inherited-accent-color, #178BFF);
 	--ag-background-color: var(--ag-inherited-background-color, #0E0E12);
-	--ag-foreground-color: var(--ag-inherited-foreground-color, #FBFCFF);
-	--ag-header-background-color: var(--ag-inherited-header-background-color, #212225);
-	--ag-selected-row-background-color: var(--ag-inherited-selected-row-background-color, #040405);
-	--ag-odd-row-background-color: var(--ag-inherited-odd-row-background-color, #212225);
-	--ag-modal-overlay-background-color: var(--ag-inherited-modal-overlay-background-color, hsl(240 3% 26%/35%));
-	--ag-row-hover-color: var(--ag-inherited-row-hover-color, rgba(148, 149, 152, .18));
-	--ag-column-hover-color: var(--ag-inherited-column-hover-color, rgba(148, 149, 152, .18));
-	--ag-range-selection-border-color: var(--ag-inherited-range-selection-border-color, #1A44EA);
 	--ag-border-color: var(--ag-inherited-border-color, #404044);
-	--ag-input-border: var(--ag-inherited-input-border, 1px solid #88898C);
-	--ag-input-invalid-border: var(--ag-inherited-input-invalid-border, 1px solid #FC4040);
-	--ag-input-disabled-border: var(--ag-inherited-input-disabled-border, 1px solid #7E7F82);
-	--ag-input-disabled-background-color: var(--ag-inherited-input-disabled-background-color, #0E0E12);
-	--ag-invalid-color: var(--ag-inherited-invalid-color, #FC4040);
-	--ag-input-focus-border: var(--ag-inherited-input-focus-border, 1px solid #FBFCFF);
-	--ag-toggle-button-on-background-color: var(--ag-inherited-toggle-button-on-background-color, #09D087);
-	--ag-toggle-button-off-background-color: var(--ag-inherited-toggle-button-off-background-color, #0E0E12);
-	--ag-toggle-button-switch-background-color: var(--ag-inherited-toggle-button-switch-background-color, #FBFCFF);
-	--ag-toggle-button-on-hover-background-color: var(--ag-inherited-toggle-button-on-hover-background-color, #069561);
-	--ag-toggle-button-on-border-color: var(--ag-inherited-toggle-button-on-border-color, #09D087);
-	--ag-toggle-button-on-hover-border-color: var(--ag-inherited-toggle-button-on-hover-border-color, #069561);
-	--ag-toggle-button-off-hover-border-color: var(--ag-inherited-toggle-button-off-hover-border-color, #FBFCFF);
-	--ag-toggle-button-off-border-color: var(--ag-inherited-toggle-button-off-border-color, #88898C);
-	--ag-toggle-button-disabled-color: var(--ag-inherited-toggle-button-disabled-color, #7E7F82);
-	--ag-checkbox-unchecked-background-color: var(--ag-inherited-checkbox-unchecked-background-color, var(--ag-background-color));
-	--ag-checkbox-checked-shape-color: var(--ag-inherited-checkbox-checked-shape-color, var(--ag-background-color));
-	--ag-checkbox-checked-shape-image: var(--ag-inherited-checkbox-checked-shape-image, url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22m20.22%2C7.47l-1.47-1.42-9.26%2C9.02-4.24-4.15-1.47%2C1.42%2C5.71%2C5.6%2C10.73-10.47Z%22%2F%3E%3C%2Fsvg%3E"));
-	--ag-checkbox-indeterminate-shape-image: var(--ag-inherited-checkbox-indeterminate-shape-image, url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22m20%2C11v2H4v-2h16Z%22%2F%3E%3C%2Fsvg%3E"));
-	--ag-radio-checked-shape-image: var(--ag-inherited-radio-checked-shape-image, url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%226%22%2F%3E%3C%2Fsvg%3E"));
+	--ag-browser-color-scheme: var(--ag-inherited-browser-color-scheme, dark);
+	--ag-card-shadow: var(--ag-inherited-card-shadow, 0 1px 4px 1px #000A);
+	--ag-cell-batch-edit-background-color: var(--ag-inherited-cell-batch-edit-background-color, rgba(220 181 139 / 16%));
+	--ag-cell-batch-edit-text-color: var(--ag-inherited-cell-batch-edit-text-color, #f3d0b3);
 	--ag-checkbox-checked-background-color: var(--ag-inherited-checkbox-checked-background-color, #FBFCFF);
 	--ag-checkbox-checked-border-color: var(--ag-inherited-checkbox-checked-border-color, #FBFCFF);
-	--ag-checkbox-unchecked-border-color: var(--ag-inherited-checkbox-unchecked-border-color, #88898C);
-	--ag-checkbox-indeterminate-border-color: var(--ag-inherited-checkbox-indeterminate-border-color, #88898C);
-	--ag-checkbox-indeterminate-background-color: var(--ag-inherited-checkbox-indeterminate-background-color, #0E0E12);
-	--ag-checkbox-indeterminate-shape-color: var(--ag-inherited-checkbox-indeterminate-shape-color, #FBFCFF);
-	--ag-checkbox-unchecked-hover-border-color: var(--ag-inherited-checkbox-unchecked-hover-border-color, #FBFCFF);
-	--ag-checkbox-checked-hover-border-color: var(--ag-inherited-checkbox-checked-hover-border-color, #AFB0B3);
 	--ag-checkbox-checked-hover-background-color: var(--ag-inherited-checkbox-checked-hover-background-color, #AFB0B3);
+	--ag-checkbox-checked-hover-border-color: var(--ag-inherited-checkbox-checked-hover-border-color, #AFB0B3);
+	--ag-checkbox-checked-shape-color: var(--ag-inherited-checkbox-checked-shape-color, var(--ag-background-color));
+	--ag-checkbox-checked-shape-image: var(--ag-inherited-checkbox-checked-shape-image, url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22m20.22%2C7.47l-1.47-1.42-9.26%2C9.02-4.24-4.15-1.47%2C1.42%2C5.71%2C5.6%2C10.73-10.47Z%22%2F%3E%3C%2Fsvg%3E"));
 	--ag-checkbox-disabled-color: var(--ag-inherited-checkbox-disabled-color, #7E7F82);
+	--ag-checkbox-indeterminate-background-color: var(--ag-inherited-checkbox-indeterminate-background-color, #0E0E12);
+	--ag-checkbox-indeterminate-border-color: var(--ag-inherited-checkbox-indeterminate-border-color, #88898C);
+	--ag-checkbox-indeterminate-shape-color: var(--ag-inherited-checkbox-indeterminate-shape-color, #FBFCFF);
+	--ag-checkbox-indeterminate-shape-image: var(--ag-inherited-checkbox-indeterminate-shape-image, url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22m20%2C11v2H4v-2h16Z%22%2F%3E%3C%2Fsvg%3E"));
+	--ag-checkbox-unchecked-background-color: var(--ag-inherited-checkbox-unchecked-background-color, var(--ag-background-color));
+	--ag-checkbox-unchecked-border-color: var(--ag-inherited-checkbox-unchecked-border-color, #88898C);
+	--ag-checkbox-unchecked-hover-border-color: var(--ag-inherited-checkbox-unchecked-hover-border-color, #FBFCFF);
+	--ag-chrome-background-color: var(--ag-inherited-chrome-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 5%));
+	--ag-column-hover-color: var(--ag-inherited-column-hover-color, rgba(148, 149, 152, .18));
+	--ag-filter-panel-apply-button-color: var(--ag-inherited-filter-panel-apply-button-color, var(--ag-foreground-color));
+	--ag-find-active-match-color: var(--ag-inherited-find-active-match-color, var(--ag-background-color));
+	--ag-find-match-color: var(--ag-inherited-find-match-color, var(--ag-background-color));
+	--ag-foreground-color: var(--ag-inherited-foreground-color, #FBFCFF);
+	--ag-header-background-color: var(--ag-inherited-header-background-color, #212225);
+	--ag-input-border: var(--ag-inherited-input-border, 1px solid #88898C);
+	--ag-input-disabled-background-color: var(--ag-inherited-input-disabled-background-color, #0E0E12);
+	--ag-input-disabled-border: var(--ag-inherited-input-disabled-border, 1px solid #7E7F82);
+	--ag-input-focus-border: var(--ag-inherited-input-focus-border, 1px solid #FBFCFF);
+	--ag-input-invalid-border: var(--ag-inherited-input-invalid-border, 1px solid #FC4040);
+	--ag-invalid-color: var(--ag-inherited-invalid-color, #FC4040);
+	--ag-menu-background-color: var(--ag-inherited-menu-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 10%));
+	--ag-modal-overlay-background-color: var(--ag-inherited-modal-overlay-background-color, hsl(240 3% 26%/35%));
+	--ag-odd-row-background-color: var(--ag-inherited-odd-row-background-color, #212225);
+	--ag-popup-shadow: var(--ag-inherited-popup-shadow, 0 0px 20px #000A);
+	--ag-radio-checked-shape-image: var(--ag-inherited-radio-checked-shape-image, url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%226%22%2F%3E%3C%2Fsvg%3E"));
+	--ag-range-selection-border-color: var(--ag-inherited-range-selection-border-color, #1A44EA);
+	--ag-row-batch-edit-background-color: var(--ag-inherited-row-batch-edit-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 10%));
+	--ag-row-batch-edit-text-color: var(--ag-inherited-row-batch-edit-text-color, var(--ag-cell-batch-edit-text-color));
+	--ag-row-hover-color: var(--ag-inherited-row-hover-color, rgba(148, 149, 152, .18));
+	--ag-selected-row-background-color: var(--ag-inherited-selected-row-background-color, #040405);
+	--ag-toggle-button-disabled-color: var(--ag-inherited-toggle-button-disabled-color, #7E7F82);
+	--ag-toggle-button-off-background-color: var(--ag-inherited-toggle-button-off-background-color, #0E0E12);
+	--ag-toggle-button-off-border-color: var(--ag-inherited-toggle-button-off-border-color, #88898C);
+	--ag-toggle-button-off-hover-border-color: var(--ag-inherited-toggle-button-off-hover-border-color, #FBFCFF);
+	--ag-toggle-button-on-background-color: var(--ag-inherited-toggle-button-on-background-color, #09D087);
+	--ag-toggle-button-on-border-color: var(--ag-inherited-toggle-button-on-border-color, #09D087);
+	--ag-toggle-button-on-hover-background-color: var(--ag-inherited-toggle-button-on-hover-background-color, #069561);
+	--ag-toggle-button-on-hover-border-color: var(--ag-inherited-toggle-button-on-hover-border-color, #069561);
+	--ag-toggle-button-switch-background-color: var(--ag-inherited-toggle-button-switch-background-color, #FBFCFF);
 }
 :where([data-ag-theme-mode="dark-blue"]) & {
-	--ag-chrome-background-color: var(--ag-inherited-chrome-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 5%));
-	--ag-menu-background-color: var(--ag-inherited-menu-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 10%));
-	--ag-popup-shadow: var(--ag-inherited-popup-shadow, 0 0px 20px #000A);
-	--ag-card-shadow: var(--ag-inherited-card-shadow, 0 1px 4px 1px #000A);
-	--ag-advanced-filter-builder-join-pill-color: var(--ag-inherited-advanced-filter-builder-join-pill-color, #7a3a37);
 	--ag-advanced-filter-builder-column-pill-color: var(--ag-inherited-advanced-filter-builder-column-pill-color, #355f2d);
+	--ag-advanced-filter-builder-join-pill-color: var(--ag-inherited-advanced-filter-builder-join-pill-color, #7a3a37);
 	--ag-advanced-filter-builder-option-pill-color: var(--ag-inherited-advanced-filter-builder-option-pill-color, #5a3168);
 	--ag-advanced-filter-builder-value-pill-color: var(--ag-inherited-advanced-filter-builder-value-pill-color, #374c86);
+	--ag-card-shadow: var(--ag-inherited-card-shadow, 0 1px 4px 1px #000A);
+	--ag-cell-batch-edit-background-color: var(--ag-inherited-cell-batch-edit-background-color, rgba(220 181 139 / 16%));
+	--ag-cell-batch-edit-text-color: var(--ag-inherited-cell-batch-edit-text-color, #f3d0b3);
+	--ag-chrome-background-color: var(--ag-inherited-chrome-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 5%));
+	--ag-filter-panel-apply-button-color: var(--ag-inherited-filter-panel-apply-button-color, var(--ag-foreground-color));
+	--ag-find-active-match-color: var(--ag-inherited-find-active-match-color, var(--ag-background-color));
+	--ag-find-match-color: var(--ag-inherited-find-match-color, var(--ag-background-color));
+	--ag-menu-background-color: var(--ag-inherited-menu-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 10%));
+	--ag-popup-shadow: var(--ag-inherited-popup-shadow, 0 0px 20px #000A);
+	--ag-row-batch-edit-background-color: var(--ag-inherited-row-batch-edit-background-color, color-mix(in srgb, var(--ag-background-color), var(--ag-foreground-color) 10%));
+	--ag-row-batch-edit-text-color: var(--ag-inherited-row-batch-edit-text-color, var(--ag-cell-batch-edit-text-color));
 }
 }
 :has(> :where(.some-class-name)):not(:where(.some-class-name)) {
-	--ag-inherited-background-color: var(--ag-background-color);
-	--ag-inherited-foreground-color: var(--ag-foreground-color);
-	--ag-inherited-border-color: var(--ag-border-color);
-	--ag-inherited-chrome-background-color: var(--ag-chrome-background-color);
-	--ag-inherited-browser-color-scheme: var(--ag-browser-color-scheme);
-	--ag-inherited-text-color: var(--ag-text-color);
 	--ag-inherited-accent-color: var(--ag-accent-color);
-	--ag-inherited-invalid-color: var(--ag-invalid-color);
-	--ag-inherited-wrapper-border: var(--ag-wrapper-border);
-	--ag-inherited-row-border: var(--ag-row-border);
-	--ag-inherited-header-row-border: var(--ag-header-row-border);
-	--ag-inherited-footer-row-border: var(--ag-footer-row-border);
-	--ag-inherited-column-border: var(--ag-column-border);
-	--ag-inherited-header-column-border: var(--ag-header-column-border);
-	--ag-inherited-header-column-border-height: var(--ag-header-column-border-height);
-	--ag-inherited-pinned-column-border: var(--ag-pinned-column-border);
-	--ag-inherited-pinned-row-border: var(--ag-pinned-row-border);
-	--ag-inherited-side-panel-border: var(--ag-side-panel-border);
-	--ag-inherited-side-bar-panel-width: var(--ag-side-bar-panel-width);
-	--ag-inherited-side-bar-background-color: var(--ag-side-bar-background-color);
-	--ag-inherited-side-button-bar-background-color: var(--ag-side-button-bar-background-color);
-	--ag-inherited-side-button-bar-top-padding: var(--ag-side-button-bar-top-padding);
-	--ag-inherited-side-button-selected-underline-width: var(--ag-side-button-selected-underline-width);
-	--ag-inherited-side-button-selected-underline-color: var(--ag-side-button-selected-underline-color);
-	--ag-inherited-side-button-selected-underline-transition-duration: var(--ag-side-button-selected-underline-transition-duration);
-	--ag-inherited-side-button-background-color: var(--ag-side-button-background-color);
-	--ag-inherited-side-button-text-color: var(--ag-side-button-text-color);
-	--ag-inherited-side-button-hover-background-color: var(--ag-side-button-hover-background-color);
-	--ag-inherited-side-button-hover-text-color: var(--ag-side-button-hover-text-color);
-	--ag-inherited-side-button-selected-background-color: var(--ag-side-button-selected-background-color);
-	--ag-inherited-side-button-selected-text-color: var(--ag-side-button-selected-text-color);
-	--ag-inherited-side-button-selected-border: var(--ag-side-button-selected-border);
-	--ag-inherited-side-button-left-padding: var(--ag-side-button-left-padding);
-	--ag-inherited-side-button-right-padding: var(--ag-side-button-right-padding);
-	--ag-inherited-side-button-vertical-padding: var(--ag-side-button-vertical-padding);
-	--ag-inherited-font-family: var(--ag-font-family);
-	--ag-inherited-header-background-color: var(--ag-header-background-color);
-	--ag-inherited-header-font-family: var(--ag-header-font-family);
-	--ag-inherited-cell-font-family: var(--ag-cell-font-family);
-	--ag-inherited-header-font-weight: var(--ag-header-font-weight);
-	--ag-inherited-header-font-size: var(--ag-header-font-size);
-	--ag-inherited-data-font-size: var(--ag-data-font-size);
-	--ag-inherited-header-text-color: var(--ag-header-text-color);
-	--ag-inherited-header-cell-hover-background-color: var(--ag-header-cell-hover-background-color);
-	--ag-inherited-header-cell-moving-background-color: var(--ag-header-cell-moving-background-color);
-	--ag-inherited-header-cell-background-transition-duration: var(--ag-header-cell-background-transition-duration);
-	--ag-inherited-cell-text-color: var(--ag-cell-text-color);
-	--ag-inherited-subtle-text-color: var(--ag-subtle-text-color);
-	--ag-inherited-range-selection-border-style: var(--ag-range-selection-border-style);
-	--ag-inherited-range-selection-border-color: var(--ag-range-selection-border-color);
-	--ag-inherited-range-selection-background-color: var(--ag-range-selection-background-color);
-	--ag-inherited-range-selection-chart-background-color: var(--ag-range-selection-chart-background-color);
-	--ag-inherited-range-selection-chart-category-background-color: var(--ag-range-selection-chart-category-background-color);
-	--ag-inherited-range-selection-highlight-color: var(--ag-range-selection-highlight-color);
-	--ag-inherited-row-hover-color: var(--ag-row-hover-color);
-	--ag-inherited-column-hover-color: var(--ag-column-hover-color);
-	--ag-inherited-selected-row-background-color: var(--ag-selected-row-background-color);
-	--ag-inherited-modal-overlay-background-color: var(--ag-modal-overlay-background-color);
-	--ag-inherited-odd-row-background-color: var(--ag-odd-row-background-color);
+	--ag-inherited-advanced-filter-builder-button-bar-border: var(--ag-advanced-filter-builder-button-bar-border);
+	--ag-inherited-advanced-filter-builder-column-pill-color: var(--ag-advanced-filter-builder-column-pill-color);
+	--ag-inherited-advanced-filter-builder-indent-size: var(--ag-advanced-filter-builder-indent-size);
+	--ag-inherited-advanced-filter-builder-join-pill-color: var(--ag-advanced-filter-builder-join-pill-color);
+	--ag-inherited-advanced-filter-builder-option-pill-color: var(--ag-advanced-filter-builder-option-pill-color);
+	--ag-inherited-advanced-filter-builder-value-pill-color: var(--ag-advanced-filter-builder-value-pill-color);
+	--ag-inherited-background-color: var(--ag-background-color);
+	--ag-inherited-border-color: var(--ag-border-color);
 	--ag-inherited-border-radius: var(--ag-border-radius);
-	--ag-inherited-wrapper-border-radius: var(--ag-wrapper-border-radius);
-	--ag-inherited-cell-horizontal-padding: var(--ag-cell-horizontal-padding);
-	--ag-inherited-cell-widget-spacing: var(--ag-cell-widget-spacing);
-	--ag-inherited-cell-horizontal-padding-scale: var(--ag-cell-horizontal-padding-scale);
-	--ag-inherited-row-group-indent-size: var(--ag-row-group-indent-size);
-	--ag-inherited-value-change-delta-up-color: var(--ag-value-change-delta-up-color);
-	--ag-inherited-value-change-delta-down-color: var(--ag-value-change-delta-down-color);
-	--ag-inherited-value-change-value-highlight-background-color: var(--ag-value-change-value-highlight-background-color);
-	--ag-inherited-spacing: var(--ag-spacing);
-	--ag-inherited-font-size: var(--ag-font-size);
-	--ag-inherited-row-height: var(--ag-row-height);
-	--ag-inherited-row-vertical-padding-scale: var(--ag-row-vertical-padding-scale);
-	--ag-inherited-header-height: var(--ag-header-height);
-	--ag-inherited-header-vertical-padding-scale: var(--ag-header-vertical-padding-scale);
-	--ag-inherited-popup-shadow: var(--ag-popup-shadow);
+	--ag-inherited-border-width: var(--ag-border-width);
+	--ag-inherited-browser-color-scheme: var(--ag-browser-color-scheme);
+	--ag-inherited-button-active-background-color: var(--ag-button-active-background-color);
+	--ag-inherited-button-active-border: var(--ag-button-active-border);
+	--ag-inherited-button-active-text-color: var(--ag-button-active-text-color);
+	--ag-inherited-button-background-color: var(--ag-button-background-color);
+	--ag-inherited-button-border: var(--ag-button-border);
+	--ag-inherited-button-border-radius: var(--ag-button-border-radius);
+	--ag-inherited-button-disabled-background-color: var(--ag-button-disabled-background-color);
+	--ag-inherited-button-disabled-border: var(--ag-button-disabled-border);
+	--ag-inherited-button-disabled-text-color: var(--ag-button-disabled-text-color);
+	--ag-inherited-button-font-weight: var(--ag-button-font-weight);
+	--ag-inherited-button-horizontal-padding: var(--ag-button-horizontal-padding);
+	--ag-inherited-button-hover-background-color: var(--ag-button-hover-background-color);
+	--ag-inherited-button-hover-border: var(--ag-button-hover-border);
+	--ag-inherited-button-hover-text-color: var(--ag-button-hover-text-color);
+	--ag-inherited-button-text-color: var(--ag-button-text-color);
+	--ag-inherited-button-vertical-padding: var(--ag-button-vertical-padding);
 	--ag-inherited-card-shadow: var(--ag-card-shadow);
-	--ag-inherited-dropdown-shadow: var(--ag-dropdown-shadow);
+	--ag-inherited-cell-batch-edit-background-color: var(--ag-cell-batch-edit-background-color);
+	--ag-inherited-cell-batch-edit-text-color: var(--ag-cell-batch-edit-text-color);
+	--ag-inherited-cell-editing-border: var(--ag-cell-editing-border);
+	--ag-inherited-cell-editing-shadow: var(--ag-cell-editing-shadow);
+	--ag-inherited-cell-font-family: var(--ag-cell-font-family);
+	--ag-inherited-cell-horizontal-padding: var(--ag-cell-horizontal-padding);
+	--ag-inherited-cell-horizontal-padding-scale: var(--ag-cell-horizontal-padding-scale);
+	--ag-inherited-cell-text-color: var(--ag-cell-text-color);
+	--ag-inherited-cell-widget-spacing: var(--ag-cell-widget-spacing);
+	--ag-inherited-chart-menu-label-color: var(--ag-chart-menu-label-color);
+	--ag-inherited-chart-menu-panel-width: var(--ag-chart-menu-panel-width);
+	--ag-inherited-checkbox-border-radius: var(--ag-checkbox-border-radius);
+	--ag-inherited-checkbox-border-width: var(--ag-checkbox-border-width);
+	--ag-inherited-checkbox-checked-background-color: var(--ag-checkbox-checked-background-color);
+	--ag-inherited-checkbox-checked-border-color: var(--ag-checkbox-checked-border-color);
+	--ag-inherited-checkbox-checked-hover-background-color: var(--ag-checkbox-checked-hover-background-color);
+	--ag-inherited-checkbox-checked-hover-border-color: var(--ag-checkbox-checked-hover-border-color);
+	--ag-inherited-checkbox-checked-shape-color: var(--ag-checkbox-checked-shape-color);
+	--ag-inherited-checkbox-checked-shape-image: var(--ag-checkbox-checked-shape-image);
+	--ag-inherited-checkbox-disabled-color: var(--ag-checkbox-disabled-color);
+	--ag-inherited-checkbox-indeterminate-background-color: var(--ag-checkbox-indeterminate-background-color);
+	--ag-inherited-checkbox-indeterminate-border-color: var(--ag-checkbox-indeterminate-border-color);
+	--ag-inherited-checkbox-indeterminate-shape-color: var(--ag-checkbox-indeterminate-shape-color);
+	--ag-inherited-checkbox-indeterminate-shape-image: var(--ag-checkbox-indeterminate-shape-image);
+	--ag-inherited-checkbox-unchecked-background-color: var(--ag-checkbox-unchecked-background-color);
+	--ag-inherited-checkbox-unchecked-border-color: var(--ag-checkbox-unchecked-border-color);
+	--ag-inherited-checkbox-unchecked-hover-border-color: var(--ag-checkbox-unchecked-hover-border-color);
+	--ag-inherited-chrome-background-color: var(--ag-chrome-background-color);
+	--ag-inherited-column-border: var(--ag-column-border);
+	--ag-inherited-column-drop-cell-background-color: var(--ag-column-drop-cell-background-color);
+	--ag-inherited-column-drop-cell-border: var(--ag-column-drop-cell-border);
+	--ag-inherited-column-drop-cell-drag-handle-color: var(--ag-column-drop-cell-drag-handle-color);
+	--ag-inherited-column-drop-cell-text-color: var(--ag-column-drop-cell-text-color);
+	--ag-inherited-column-hover-color: var(--ag-column-hover-color);
+	--ag-inherited-column-select-indent-size: var(--ag-column-select-indent-size);
+	--ag-inherited-data-font-size: var(--ag-data-font-size);
+	--ag-inherited-dialog-border: var(--ag-dialog-border);
+	--ag-inherited-dialog-shadow: var(--ag-dialog-shadow);
 	--ag-inherited-drag-and-drop-image-background-color: var(--ag-drag-and-drop-image-background-color);
 	--ag-inherited-drag-and-drop-image-border: var(--ag-drag-and-drop-image-border);
 	--ag-inherited-drag-and-drop-image-shadow: var(--ag-drag-and-drop-image-shadow);
 	--ag-inherited-drag-handle-color: var(--ag-drag-handle-color);
+	--ag-inherited-dropdown-shadow: var(--ag-dropdown-shadow);
+	--ag-inherited-filter-panel-apply-button-background-color: var(--ag-filter-panel-apply-button-background-color);
+	--ag-inherited-filter-panel-apply-button-color: var(--ag-filter-panel-apply-button-color);
+	--ag-inherited-filter-panel-card-subtle-color: var(--ag-filter-panel-card-subtle-color);
+	--ag-inherited-filter-panel-card-subtle-hover-color: var(--ag-filter-panel-card-subtle-hover-color);
+	--ag-inherited-filter-tool-panel-group-indent: var(--ag-filter-tool-panel-group-indent);
+	--ag-inherited-find-active-match-background-color: var(--ag-find-active-match-background-color);
+	--ag-inherited-find-active-match-color: var(--ag-find-active-match-color);
+	--ag-inherited-find-match-background-color: var(--ag-find-match-background-color);
+	--ag-inherited-find-match-color: var(--ag-find-match-color);
+	--ag-inherited-focus-error-shadow: var(--ag-focus-error-shadow);
 	--ag-inherited-focus-shadow: var(--ag-focus-shadow);
+	--ag-inherited-font-family: var(--ag-font-family);
+	--ag-inherited-font-size: var(--ag-font-size);
+	--ag-inherited-footer-row-border: var(--ag-footer-row-border);
+	--ag-inherited-foreground-color: var(--ag-foreground-color);
+	--ag-inherited-full-row-edit-invalid-background-color: var(--ag-full-row-edit-invalid-background-color);
+	--ag-inherited-header-background-color: var(--ag-header-background-color);
+	--ag-inherited-header-cell-background-transition-duration: var(--ag-header-cell-background-transition-duration);
+	--ag-inherited-header-cell-hover-background-color: var(--ag-header-cell-hover-background-color);
+	--ag-inherited-header-cell-moving-background-color: var(--ag-header-cell-moving-background-color);
+	--ag-inherited-header-column-border: var(--ag-header-column-border);
+	--ag-inherited-header-column-border-height: var(--ag-header-column-border-height);
+	--ag-inherited-header-column-resize-handle-color: var(--ag-header-column-resize-handle-color);
 	--ag-inherited-header-column-resize-handle-height: var(--ag-header-column-resize-handle-height);
 	--ag-inherited-header-column-resize-handle-width: var(--ag-header-column-resize-handle-width);
-	--ag-inherited-header-column-resize-handle-color: var(--ag-header-column-resize-handle-color);
-	--ag-inherited-widget-container-horizontal-padding: var(--ag-widget-container-horizontal-padding);
-	--ag-inherited-widget-container-vertical-padding: var(--ag-widget-container-vertical-padding);
-	--ag-inherited-widget-horizontal-spacing: var(--ag-widget-horizontal-spacing);
-	--ag-inherited-widget-vertical-spacing: var(--ag-widget-vertical-spacing);
-	--ag-inherited-list-item-height: var(--ag-list-item-height);
-	--ag-inherited-icon-size: var(--ag-icon-size);
-	--ag-inherited-toggle-button-width: var(--ag-toggle-button-width);
-	--ag-inherited-toggle-button-height: var(--ag-toggle-button-height);
-	--ag-inherited-toggle-button-on-background-color: var(--ag-toggle-button-on-background-color);
-	--ag-inherited-toggle-button-off-background-color: var(--ag-toggle-button-off-background-color);
-	--ag-inherited-toggle-button-switch-background-color: var(--ag-toggle-button-switch-background-color);
-	--ag-inherited-toggle-button-switch-inset: var(--ag-toggle-button-switch-inset);
-	--ag-inherited-menu-border: var(--ag-menu-border);
-	--ag-inherited-menu-background-color: var(--ag-menu-background-color);
-	--ag-inherited-menu-text-color: var(--ag-menu-text-color);
-	--ag-inherited-menu-shadow: var(--ag-menu-shadow);
-	--ag-inherited-menu-separator-color: var(--ag-menu-separator-color);
-	--ag-inherited-set-filter-indent-size: var(--ag-set-filter-indent-size);
-	--ag-inherited-chart-menu-panel-width: var(--ag-chart-menu-panel-width);
-	--ag-inherited-chart-menu-label-color: var(--ag-chart-menu-label-color);
-	--ag-inherited-icon-button-hover-color: var(--ag-icon-button-hover-color);
-	--ag-inherited-dialog-shadow: var(--ag-dialog-shadow);
-	--ag-inherited-cell-editing-border: var(--ag-cell-editing-border);
-	--ag-inherited-cell-editing-shadow: var(--ag-cell-editing-shadow);
-	--ag-inherited-dialog-border: var(--ag-dialog-border);
-	--ag-inherited-panel-background-color: var(--ag-panel-background-color);
-	--ag-inherited-panel-title-bar-background-color: var(--ag-panel-title-bar-background-color);
-	--ag-inherited-panel-title-bar-border: var(--ag-panel-title-bar-border);
-	--ag-inherited-column-select-indent-size: var(--ag-column-select-indent-size);
-	--ag-inherited-tool-panel-separator-border: var(--ag-tool-panel-separator-border);
-	--ag-inherited-tooltip-background-color: var(--ag-tooltip-background-color);
-	--ag-inherited-tooltip-text-color: var(--ag-tooltip-text-color);
-	--ag-inherited-tooltip-border: var(--ag-tooltip-border);
-	--ag-inherited-column-drop-cell-background-color: var(--ag-column-drop-cell-background-color);
-	--ag-inherited-column-drop-cell-text-color: var(--ag-column-drop-cell-text-color);
-	--ag-inherited-column-drop-cell-drag-handle-color: var(--ag-column-drop-cell-drag-handle-color);
-	--ag-inherited-column-drop-cell-border: var(--ag-column-drop-cell-border);
-	--ag-inherited-select-cell-background-color: var(--ag-select-cell-background-color);
-	--ag-inherited-select-cell-border: var(--ag-select-cell-border);
-	--ag-inherited-advanced-filter-builder-button-bar-border: var(--ag-advanced-filter-builder-button-bar-border);
-	--ag-inherited-advanced-filter-builder-indent-size: var(--ag-advanced-filter-builder-indent-size);
-	--ag-inherited-advanced-filter-builder-join-pill-color: var(--ag-advanced-filter-builder-join-pill-color);
-	--ag-inherited-advanced-filter-builder-column-pill-color: var(--ag-advanced-filter-builder-column-pill-color);
-	--ag-inherited-advanced-filter-builder-option-pill-color: var(--ag-advanced-filter-builder-option-pill-color);
-	--ag-inherited-advanced-filter-builder-value-pill-color: var(--ag-advanced-filter-builder-value-pill-color);
-	--ag-inherited-filter-tool-panel-group-indent: var(--ag-filter-tool-panel-group-indent);
+	--ag-inherited-header-font-family: var(--ag-header-font-family);
+	--ag-inherited-header-font-size: var(--ag-header-font-size);
+	--ag-inherited-header-font-weight: var(--ag-header-font-weight);
+	--ag-inherited-header-height: var(--ag-header-height);
+	--ag-inherited-header-row-border: var(--ag-header-row-border);
+	--ag-inherited-header-text-color: var(--ag-header-text-color);
+	--ag-inherited-header-vertical-padding-scale: var(--ag-header-vertical-padding-scale);
+	--ag-inherited-icon-button-active-background-color: var(--ag-icon-button-active-background-color);
+	--ag-inherited-icon-button-active-color: var(--ag-icon-button-active-color);
+	--ag-inherited-icon-button-active-indicator-color: var(--ag-icon-button-active-indicator-color);
+	--ag-inherited-icon-button-background-color: var(--ag-icon-button-background-color);
+	--ag-inherited-icon-button-background-spread: var(--ag-icon-button-background-spread);
+	--ag-inherited-icon-button-border-radius: var(--ag-icon-button-border-radius);
+	--ag-inherited-icon-button-color: var(--ag-icon-button-color);
 	--ag-inherited-icon-button-hover-background-color: var(--ag-icon-button-hover-background-color);
-	--ag-inherited-row-loading-skeleton-effect-color: var(--ag-row-loading-skeleton-effect-color);
-	--ag-inherited-tab-bar-background-color: var(--ag-tab-bar-background-color);
-	--ag-inherited-tab-bar-horizontal-padding: var(--ag-tab-bar-horizontal-padding);
-	--ag-inherited-tab-bar-top-padding: var(--ag-tab-bar-top-padding);
-	--ag-inherited-tab-background-color: var(--ag-tab-background-color);
-	--ag-inherited-tab-text-color: var(--ag-tab-text-color);
-	--ag-inherited-tab-horizontal-padding: var(--ag-tab-horizontal-padding);
-	--ag-inherited-tab-top-padding: var(--ag-tab-top-padding);
-	--ag-inherited-tab-bottom-padding: var(--ag-tab-bottom-padding);
-	--ag-inherited-tab-spacing: var(--ag-tab-spacing);
-	--ag-inherited-tab-hover-background-color: var(--ag-tab-hover-background-color);
-	--ag-inherited-tab-hover-text-color: var(--ag-tab-hover-text-color);
-	--ag-inherited-tab-selected-background-color: var(--ag-tab-selected-background-color);
-	--ag-inherited-tab-selected-text-color: var(--ag-tab-selected-text-color);
-	--ag-inherited-tab-selected-border-width: var(--ag-tab-selected-border-width);
-	--ag-inherited-tab-selected-border-color: var(--ag-tab-selected-border-color);
-	--ag-inherited-tab-selected-underline-color: var(--ag-tab-selected-underline-color);
-	--ag-inherited-tab-selected-underline-width: var(--ag-tab-selected-underline-width);
-	--ag-inherited-tab-selected-underline-transition-duration: var(--ag-tab-selected-underline-transition-duration);
-	--ag-inherited-tab-bar-border: var(--ag-tab-bar-border);
+	--ag-inherited-icon-button-hover-color: var(--ag-icon-button-hover-color);
+	--ag-inherited-icon-color: var(--ag-icon-color);
+	--ag-inherited-icon-size: var(--ag-icon-size);
 	--ag-inherited-input-background-color: var(--ag-input-background-color);
 	--ag-inherited-input-border: var(--ag-input-border);
 	--ag-inherited-input-border-radius: var(--ag-input-border-radius);
-	--ag-inherited-input-text-color: var(--ag-input-text-color);
-	--ag-inherited-input-placeholder-text-color: var(--ag-input-placeholder-text-color);
-	--ag-inherited-input-padding-start: var(--ag-input-padding-start);
-	--ag-inherited-input-height: var(--ag-input-height);
+	--ag-inherited-input-disabled-background-color: var(--ag-input-disabled-background-color);
+	--ag-inherited-input-disabled-border: var(--ag-input-disabled-border);
+	--ag-inherited-input-disabled-text-color: var(--ag-input-disabled-text-color);
 	--ag-inherited-input-focus-background-color: var(--ag-input-focus-background-color);
 	--ag-inherited-input-focus-border: var(--ag-input-focus-border);
 	--ag-inherited-input-focus-shadow: var(--ag-input-focus-shadow);
 	--ag-inherited-input-focus-text-color: var(--ag-input-focus-text-color);
-	--ag-inherited-input-disabled-background-color: var(--ag-input-disabled-background-color);
-	--ag-inherited-input-disabled-border: var(--ag-input-disabled-border);
-	--ag-inherited-input-disabled-text-color: var(--ag-input-disabled-text-color);
+	--ag-inherited-input-height: var(--ag-input-height);
+	--ag-inherited-input-icon-color: var(--ag-input-icon-color);
 	--ag-inherited-input-invalid-background-color: var(--ag-input-invalid-background-color);
 	--ag-inherited-input-invalid-border: var(--ag-input-invalid-border);
 	--ag-inherited-input-invalid-text-color: var(--ag-input-invalid-text-color);
-	--ag-inherited-input-icon-color: var(--ag-input-icon-color);
-	--ag-inherited-checkbox-border-width: var(--ag-checkbox-border-width);
-	--ag-inherited-checkbox-border-radius: var(--ag-checkbox-border-radius);
-	--ag-inherited-toggle-button-on-hover-background-color: var(--ag-toggle-button-on-hover-background-color);
-	--ag-inherited-toggle-button-on-border-color: var(--ag-toggle-button-on-border-color);
-	--ag-inherited-toggle-button-on-hover-border-color: var(--ag-toggle-button-on-hover-border-color);
-	--ag-inherited-toggle-button-off-hover-border-color: var(--ag-toggle-button-off-hover-border-color);
-	--ag-inherited-toggle-button-off-border-color: var(--ag-toggle-button-off-border-color);
-	--ag-inherited-toggle-button-disabled-color: var(--ag-toggle-button-disabled-color);
-	--ag-inherited-checkbox-unchecked-background-color: var(--ag-checkbox-unchecked-background-color);
-	--ag-inherited-checkbox-checked-shape-color: var(--ag-checkbox-checked-shape-color);
-	--ag-inherited-checkbox-checked-shape-image: var(--ag-checkbox-checked-shape-image);
-	--ag-inherited-checkbox-indeterminate-shape-image: var(--ag-checkbox-indeterminate-shape-image);
+	--ag-inherited-input-padding-start: var(--ag-input-padding-start);
+	--ag-inherited-input-placeholder-text-color: var(--ag-input-placeholder-text-color);
+	--ag-inherited-input-text-color: var(--ag-input-text-color);
+	--ag-inherited-invalid-color: var(--ag-invalid-color);
+	--ag-inherited-list-item-height: var(--ag-list-item-height);
+	--ag-inherited-menu-background-color: var(--ag-menu-background-color);
+	--ag-inherited-menu-border: var(--ag-menu-border);
+	--ag-inherited-menu-separator-color: var(--ag-menu-separator-color);
+	--ag-inherited-menu-shadow: var(--ag-menu-shadow);
+	--ag-inherited-menu-text-color: var(--ag-menu-text-color);
+	--ag-inherited-modal-overlay-background-color: var(--ag-modal-overlay-background-color);
+	--ag-inherited-odd-row-background-color: var(--ag-odd-row-background-color);
+	--ag-inherited-pagination-panel-height: var(--ag-pagination-panel-height);
+	--ag-inherited-panel-background-color: var(--ag-panel-background-color);
+	--ag-inherited-panel-title-bar-background-color: var(--ag-panel-title-bar-background-color);
+	--ag-inherited-panel-title-bar-border: var(--ag-panel-title-bar-border);
+	--ag-inherited-panel-title-bar-font-weight: var(--ag-panel-title-bar-font-weight);
+	--ag-inherited-panel-title-bar-icon-color: var(--ag-panel-title-bar-icon-color);
+	--ag-inherited-panel-title-bar-text-color: var(--ag-panel-title-bar-text-color);
+	--ag-inherited-picker-button-background-color: var(--ag-picker-button-background-color);
+	--ag-inherited-picker-button-border: var(--ag-picker-button-border);
+	--ag-inherited-picker-button-focus-background-color: var(--ag-picker-button-focus-background-color);
+	--ag-inherited-picker-button-focus-border: var(--ag-picker-button-focus-border);
+	--ag-inherited-picker-list-background-color: var(--ag-picker-list-background-color);
+	--ag-inherited-picker-list-border: var(--ag-picker-list-border);
+	--ag-inherited-pinned-column-border: var(--ag-pinned-column-border);
+	--ag-inherited-pinned-row-background-color: var(--ag-pinned-row-background-color);
+	--ag-inherited-pinned-row-border: var(--ag-pinned-row-border);
+	--ag-inherited-pinned-row-font-weight: var(--ag-pinned-row-font-weight);
+	--ag-inherited-pinned-row-text-color: var(--ag-pinned-row-text-color);
+	--ag-inherited-pinned-source-row-background-color: var(--ag-pinned-source-row-background-color);
+	--ag-inherited-pinned-source-row-font-weight: var(--ag-pinned-source-row-font-weight);
+	--ag-inherited-pinned-source-row-text-color: var(--ag-pinned-source-row-text-color);
+	--ag-inherited-popup-shadow: var(--ag-popup-shadow);
 	--ag-inherited-radio-checked-shape-image: var(--ag-radio-checked-shape-image);
-	--ag-inherited-checkbox-checked-background-color: var(--ag-checkbox-checked-background-color);
-	--ag-inherited-checkbox-checked-border-color: var(--ag-checkbox-checked-border-color);
-	--ag-inherited-checkbox-unchecked-border-color: var(--ag-checkbox-unchecked-border-color);
-	--ag-inherited-checkbox-indeterminate-border-color: var(--ag-checkbox-indeterminate-border-color);
-	--ag-inherited-checkbox-indeterminate-background-color: var(--ag-checkbox-indeterminate-background-color);
-	--ag-inherited-checkbox-indeterminate-shape-color: var(--ag-checkbox-indeterminate-shape-color);
-	--ag-inherited-checkbox-unchecked-hover-border-color: var(--ag-checkbox-unchecked-hover-border-color);
-	--ag-inherited-checkbox-checked-hover-border-color: var(--ag-checkbox-checked-hover-border-color);
-	--ag-inherited-checkbox-checked-hover-background-color: var(--ag-checkbox-checked-hover-background-color);
-	--ag-inherited-checkbox-disabled-color: var(--ag-checkbox-disabled-color);
+	--ag-inherited-range-header-highlight-color: var(--ag-range-header-highlight-color);
+	--ag-inherited-range-selection-background-color: var(--ag-range-selection-background-color);
+	--ag-inherited-range-selection-border-color: var(--ag-range-selection-border-color);
+	--ag-inherited-range-selection-border-style: var(--ag-range-selection-border-style);
+	--ag-inherited-range-selection-chart-background-color: var(--ag-range-selection-chart-background-color);
+	--ag-inherited-range-selection-chart-category-background-color: var(--ag-range-selection-chart-category-background-color);
+	--ag-inherited-range-selection-highlight-color: var(--ag-range-selection-highlight-color);
+	--ag-inherited-row-batch-edit-background-color: var(--ag-row-batch-edit-background-color);
+	--ag-inherited-row-batch-edit-text-color: var(--ag-row-batch-edit-text-color);
+	--ag-inherited-row-border: var(--ag-row-border);
+	--ag-inherited-row-group-indent-size: var(--ag-row-group-indent-size);
+	--ag-inherited-row-height: var(--ag-row-height);
+	--ag-inherited-row-hover-color: var(--ag-row-hover-color);
+	--ag-inherited-row-loading-skeleton-effect-color: var(--ag-row-loading-skeleton-effect-color);
+	--ag-inherited-row-numbers-selected-color: var(--ag-row-numbers-selected-color);
+	--ag-inherited-row-vertical-padding-scale: var(--ag-row-vertical-padding-scale);
+	--ag-inherited-select-cell-background-color: var(--ag-select-cell-background-color);
+	--ag-inherited-select-cell-border: var(--ag-select-cell-border);
+	--ag-inherited-selected-row-background-color: var(--ag-selected-row-background-color);
+	--ag-inherited-set-filter-indent-size: var(--ag-set-filter-indent-size);
+	--ag-inherited-side-bar-background-color: var(--ag-side-bar-background-color);
+	--ag-inherited-side-bar-panel-width: var(--ag-side-bar-panel-width);
+	--ag-inherited-side-button-background-color: var(--ag-side-button-background-color);
+	--ag-inherited-side-button-bar-background-color: var(--ag-side-button-bar-background-color);
+	--ag-inherited-side-button-bar-top-padding: var(--ag-side-button-bar-top-padding);
+	--ag-inherited-side-button-border: var(--ag-side-button-border);
+	--ag-inherited-side-button-hover-background-color: var(--ag-side-button-hover-background-color);
+	--ag-inherited-side-button-hover-text-color: var(--ag-side-button-hover-text-color);
+	--ag-inherited-side-button-left-padding: var(--ag-side-button-left-padding);
+	--ag-inherited-side-button-right-padding: var(--ag-side-button-right-padding);
+	--ag-inherited-side-button-selected-background-color: var(--ag-side-button-selected-background-color);
+	--ag-inherited-side-button-selected-border: var(--ag-side-button-selected-border);
+	--ag-inherited-side-button-selected-text-color: var(--ag-side-button-selected-text-color);
+	--ag-inherited-side-button-selected-underline-color: var(--ag-side-button-selected-underline-color);
+	--ag-inherited-side-button-selected-underline-transition-duration: var(--ag-side-button-selected-underline-transition-duration);
+	--ag-inherited-side-button-selected-underline-width: var(--ag-side-button-selected-underline-width);
+	--ag-inherited-side-button-text-color: var(--ag-side-button-text-color);
+	--ag-inherited-side-button-vertical-padding: var(--ag-side-button-vertical-padding);
+	--ag-inherited-side-panel-border: var(--ag-side-panel-border);
+	--ag-inherited-spacing: var(--ag-spacing);
+	--ag-inherited-status-bar-label-color: var(--ag-status-bar-label-color);
+	--ag-inherited-status-bar-label-font-weight: var(--ag-status-bar-label-font-weight);
+	--ag-inherited-status-bar-value-color: var(--ag-status-bar-value-color);
+	--ag-inherited-status-bar-value-font-weight: var(--ag-status-bar-value-font-weight);
+	--ag-inherited-subtle-text-color: var(--ag-subtle-text-color);
+	--ag-inherited-tab-background-color: var(--ag-tab-background-color);
+	--ag-inherited-tab-bar-background-color: var(--ag-tab-bar-background-color);
+	--ag-inherited-tab-bar-border: var(--ag-tab-bar-border);
+	--ag-inherited-tab-bar-horizontal-padding: var(--ag-tab-bar-horizontal-padding);
+	--ag-inherited-tab-bar-top-padding: var(--ag-tab-bar-top-padding);
+	--ag-inherited-tab-bottom-padding: var(--ag-tab-bottom-padding);
+	--ag-inherited-tab-horizontal-padding: var(--ag-tab-horizontal-padding);
+	--ag-inherited-tab-hover-background-color: var(--ag-tab-hover-background-color);
+	--ag-inherited-tab-hover-text-color: var(--ag-tab-hover-text-color);
+	--ag-inherited-tab-selected-background-color: var(--ag-tab-selected-background-color);
+	--ag-inherited-tab-selected-border-color: var(--ag-tab-selected-border-color);
+	--ag-inherited-tab-selected-border-width: var(--ag-tab-selected-border-width);
+	--ag-inherited-tab-selected-text-color: var(--ag-tab-selected-text-color);
+	--ag-inherited-tab-selected-underline-color: var(--ag-tab-selected-underline-color);
+	--ag-inherited-tab-selected-underline-transition-duration: var(--ag-tab-selected-underline-transition-duration);
+	--ag-inherited-tab-selected-underline-width: var(--ag-tab-selected-underline-width);
+	--ag-inherited-tab-spacing: var(--ag-tab-spacing);
+	--ag-inherited-tab-text-color: var(--ag-tab-text-color);
+	--ag-inherited-tab-top-padding: var(--ag-tab-top-padding);
+	--ag-inherited-text-color: var(--ag-text-color);
+	--ag-inherited-toggle-button-disabled-color: var(--ag-toggle-button-disabled-color);
+	--ag-inherited-toggle-button-height: var(--ag-toggle-button-height);
+	--ag-inherited-toggle-button-off-background-color: var(--ag-toggle-button-off-background-color);
+	--ag-inherited-toggle-button-off-border-color: var(--ag-toggle-button-off-border-color);
+	--ag-inherited-toggle-button-off-hover-border-color: var(--ag-toggle-button-off-hover-border-color);
+	--ag-inherited-toggle-button-on-background-color: var(--ag-toggle-button-on-background-color);
+	--ag-inherited-toggle-button-on-border-color: var(--ag-toggle-button-on-border-color);
+	--ag-inherited-toggle-button-on-hover-background-color: var(--ag-toggle-button-on-hover-background-color);
+	--ag-inherited-toggle-button-on-hover-border-color: var(--ag-toggle-button-on-hover-border-color);
+	--ag-inherited-toggle-button-switch-background-color: var(--ag-toggle-button-switch-background-color);
+	--ag-inherited-toggle-button-switch-inset: var(--ag-toggle-button-switch-inset);
+	--ag-inherited-toggle-button-width: var(--ag-toggle-button-width);
+	--ag-inherited-tool-panel-separator-border: var(--ag-tool-panel-separator-border);
+	--ag-inherited-tooltip-background-color: var(--ag-tooltip-background-color);
+	--ag-inherited-tooltip-border: var(--ag-tooltip-border);
+	--ag-inherited-tooltip-error-background-color: var(--ag-tooltip-error-background-color);
+	--ag-inherited-tooltip-error-border: var(--ag-tooltip-error-border);
+	--ag-inherited-tooltip-error-text-color: var(--ag-tooltip-error-text-color);
+	--ag-inherited-tooltip-text-color: var(--ag-tooltip-text-color);
+	--ag-inherited-value-change-delta-down-color: var(--ag-value-change-delta-down-color);
+	--ag-inherited-value-change-delta-up-color: var(--ag-value-change-delta-up-color);
+	--ag-inherited-value-change-value-highlight-background-color: var(--ag-value-change-value-highlight-background-color);
+	--ag-inherited-widget-container-horizontal-padding: var(--ag-widget-container-horizontal-padding);
+	--ag-inherited-widget-container-vertical-padding: var(--ag-widget-container-vertical-padding);
+	--ag-inherited-widget-horizontal-spacing: var(--ag-widget-horizontal-spacing);
+	--ag-inherited-widget-vertical-spacing: var(--ag-widget-vertical-spacing);
+	--ag-inherited-wrapper-border: var(--ag-wrapper-border);
+	--ag-inherited-wrapper-border-radius: var(--ag-wrapper-border-radius);
 :where([data-ag-theme-mode="light"]) & {
 	--ag-inherited-chrome-background-color: var(--ag-chrome-background-color);
 }
 :where([data-ag-theme-mode="dark"]) & {
-	--ag-inherited-chrome-background-color: var(--ag-chrome-background-color);
-	--ag-inherited-menu-background-color: var(--ag-menu-background-color);
-	--ag-inherited-popup-shadow: var(--ag-popup-shadow);
-	--ag-inherited-card-shadow: var(--ag-card-shadow);
-	--ag-inherited-advanced-filter-builder-join-pill-color: var(--ag-advanced-filter-builder-join-pill-color);
+	--ag-inherited-accent-color: var(--ag-accent-color);
 	--ag-inherited-advanced-filter-builder-column-pill-color: var(--ag-advanced-filter-builder-column-pill-color);
+	--ag-inherited-advanced-filter-builder-join-pill-color: var(--ag-advanced-filter-builder-join-pill-color);
 	--ag-inherited-advanced-filter-builder-option-pill-color: var(--ag-advanced-filter-builder-option-pill-color);
 	--ag-inherited-advanced-filter-builder-value-pill-color: var(--ag-advanced-filter-builder-value-pill-color);
-	--ag-inherited-browser-color-scheme: var(--ag-browser-color-scheme);
-	--ag-inherited-accent-color: var(--ag-accent-color);
 	--ag-inherited-background-color: var(--ag-background-color);
-	--ag-inherited-foreground-color: var(--ag-foreground-color);
-	--ag-inherited-header-background-color: var(--ag-header-background-color);
-	--ag-inherited-selected-row-background-color: var(--ag-selected-row-background-color);
-	--ag-inherited-odd-row-background-color: var(--ag-odd-row-background-color);
-	--ag-inherited-modal-overlay-background-color: var(--ag-modal-overlay-background-color);
-	--ag-inherited-row-hover-color: var(--ag-row-hover-color);
-	--ag-inherited-column-hover-color: var(--ag-column-hover-color);
-	--ag-inherited-range-selection-border-color: var(--ag-range-selection-border-color);
 	--ag-inherited-border-color: var(--ag-border-color);
-	--ag-inherited-input-border: var(--ag-input-border);
-	--ag-inherited-input-invalid-border: var(--ag-input-invalid-border);
-	--ag-inherited-input-disabled-border: var(--ag-input-disabled-border);
-	--ag-inherited-input-disabled-background-color: var(--ag-input-disabled-background-color);
-	--ag-inherited-invalid-color: var(--ag-invalid-color);
-	--ag-inherited-input-focus-border: var(--ag-input-focus-border);
-	--ag-inherited-toggle-button-on-background-color: var(--ag-toggle-button-on-background-color);
-	--ag-inherited-toggle-button-off-background-color: var(--ag-toggle-button-off-background-color);
-	--ag-inherited-toggle-button-switch-background-color: var(--ag-toggle-button-switch-background-color);
-	--ag-inherited-toggle-button-on-hover-background-color: var(--ag-toggle-button-on-hover-background-color);
-	--ag-inherited-toggle-button-on-border-color: var(--ag-toggle-button-on-border-color);
-	--ag-inherited-toggle-button-on-hover-border-color: var(--ag-toggle-button-on-hover-border-color);
-	--ag-inherited-toggle-button-off-hover-border-color: var(--ag-toggle-button-off-hover-border-color);
-	--ag-inherited-toggle-button-off-border-color: var(--ag-toggle-button-off-border-color);
-	--ag-inherited-toggle-button-disabled-color: var(--ag-toggle-button-disabled-color);
-	--ag-inherited-checkbox-unchecked-background-color: var(--ag-checkbox-unchecked-background-color);
-	--ag-inherited-checkbox-checked-shape-color: var(--ag-checkbox-checked-shape-color);
-	--ag-inherited-checkbox-checked-shape-image: var(--ag-checkbox-checked-shape-image);
-	--ag-inherited-checkbox-indeterminate-shape-image: var(--ag-checkbox-indeterminate-shape-image);
-	--ag-inherited-radio-checked-shape-image: var(--ag-radio-checked-shape-image);
+	--ag-inherited-browser-color-scheme: var(--ag-browser-color-scheme);
+	--ag-inherited-card-shadow: var(--ag-card-shadow);
+	--ag-inherited-cell-batch-edit-background-color: var(--ag-cell-batch-edit-background-color);
+	--ag-inherited-cell-batch-edit-text-color: var(--ag-cell-batch-edit-text-color);
 	--ag-inherited-checkbox-checked-background-color: var(--ag-checkbox-checked-background-color);
 	--ag-inherited-checkbox-checked-border-color: var(--ag-checkbox-checked-border-color);
-	--ag-inherited-checkbox-unchecked-border-color: var(--ag-checkbox-unchecked-border-color);
-	--ag-inherited-checkbox-indeterminate-border-color: var(--ag-checkbox-indeterminate-border-color);
-	--ag-inherited-checkbox-indeterminate-background-color: var(--ag-checkbox-indeterminate-background-color);
-	--ag-inherited-checkbox-indeterminate-shape-color: var(--ag-checkbox-indeterminate-shape-color);
-	--ag-inherited-checkbox-unchecked-hover-border-color: var(--ag-checkbox-unchecked-hover-border-color);
-	--ag-inherited-checkbox-checked-hover-border-color: var(--ag-checkbox-checked-hover-border-color);
 	--ag-inherited-checkbox-checked-hover-background-color: var(--ag-checkbox-checked-hover-background-color);
+	--ag-inherited-checkbox-checked-hover-border-color: var(--ag-checkbox-checked-hover-border-color);
+	--ag-inherited-checkbox-checked-shape-color: var(--ag-checkbox-checked-shape-color);
+	--ag-inherited-checkbox-checked-shape-image: var(--ag-checkbox-checked-shape-image);
 	--ag-inherited-checkbox-disabled-color: var(--ag-checkbox-disabled-color);
+	--ag-inherited-checkbox-indeterminate-background-color: var(--ag-checkbox-indeterminate-background-color);
+	--ag-inherited-checkbox-indeterminate-border-color: var(--ag-checkbox-indeterminate-border-color);
+	--ag-inherited-checkbox-indeterminate-shape-color: var(--ag-checkbox-indeterminate-shape-color);
+	--ag-inherited-checkbox-indeterminate-shape-image: var(--ag-checkbox-indeterminate-shape-image);
+	--ag-inherited-checkbox-unchecked-background-color: var(--ag-checkbox-unchecked-background-color);
+	--ag-inherited-checkbox-unchecked-border-color: var(--ag-checkbox-unchecked-border-color);
+	--ag-inherited-checkbox-unchecked-hover-border-color: var(--ag-checkbox-unchecked-hover-border-color);
+	--ag-inherited-chrome-background-color: var(--ag-chrome-background-color);
+	--ag-inherited-column-hover-color: var(--ag-column-hover-color);
+	--ag-inherited-filter-panel-apply-button-color: var(--ag-filter-panel-apply-button-color);
+	--ag-inherited-find-active-match-color: var(--ag-find-active-match-color);
+	--ag-inherited-find-match-color: var(--ag-find-match-color);
+	--ag-inherited-foreground-color: var(--ag-foreground-color);
+	--ag-inherited-header-background-color: var(--ag-header-background-color);
+	--ag-inherited-input-border: var(--ag-input-border);
+	--ag-inherited-input-disabled-background-color: var(--ag-input-disabled-background-color);
+	--ag-inherited-input-disabled-border: var(--ag-input-disabled-border);
+	--ag-inherited-input-focus-border: var(--ag-input-focus-border);
+	--ag-inherited-input-invalid-border: var(--ag-input-invalid-border);
+	--ag-inherited-invalid-color: var(--ag-invalid-color);
+	--ag-inherited-menu-background-color: var(--ag-menu-background-color);
+	--ag-inherited-modal-overlay-background-color: var(--ag-modal-overlay-background-color);
+	--ag-inherited-odd-row-background-color: var(--ag-odd-row-background-color);
+	--ag-inherited-popup-shadow: var(--ag-popup-shadow);
+	--ag-inherited-radio-checked-shape-image: var(--ag-radio-checked-shape-image);
+	--ag-inherited-range-selection-border-color: var(--ag-range-selection-border-color);
+	--ag-inherited-row-batch-edit-background-color: var(--ag-row-batch-edit-background-color);
+	--ag-inherited-row-batch-edit-text-color: var(--ag-row-batch-edit-text-color);
+	--ag-inherited-row-hover-color: var(--ag-row-hover-color);
+	--ag-inherited-selected-row-background-color: var(--ag-selected-row-background-color);
+	--ag-inherited-toggle-button-disabled-color: var(--ag-toggle-button-disabled-color);
+	--ag-inherited-toggle-button-off-background-color: var(--ag-toggle-button-off-background-color);
+	--ag-inherited-toggle-button-off-border-color: var(--ag-toggle-button-off-border-color);
+	--ag-inherited-toggle-button-off-hover-border-color: var(--ag-toggle-button-off-hover-border-color);
+	--ag-inherited-toggle-button-on-background-color: var(--ag-toggle-button-on-background-color);
+	--ag-inherited-toggle-button-on-border-color: var(--ag-toggle-button-on-border-color);
+	--ag-inherited-toggle-button-on-hover-background-color: var(--ag-toggle-button-on-hover-background-color);
+	--ag-inherited-toggle-button-on-hover-border-color: var(--ag-toggle-button-on-hover-border-color);
+	--ag-inherited-toggle-button-switch-background-color: var(--ag-toggle-button-switch-background-color);
 }
 :where([data-ag-theme-mode="dark-blue"]) & {
-	--ag-inherited-chrome-background-color: var(--ag-chrome-background-color);
-	--ag-inherited-menu-background-color: var(--ag-menu-background-color);
-	--ag-inherited-popup-shadow: var(--ag-popup-shadow);
-	--ag-inherited-card-shadow: var(--ag-card-shadow);
-	--ag-inherited-advanced-filter-builder-join-pill-color: var(--ag-advanced-filter-builder-join-pill-color);
 	--ag-inherited-advanced-filter-builder-column-pill-color: var(--ag-advanced-filter-builder-column-pill-color);
+	--ag-inherited-advanced-filter-builder-join-pill-color: var(--ag-advanced-filter-builder-join-pill-color);
 	--ag-inherited-advanced-filter-builder-option-pill-color: var(--ag-advanced-filter-builder-option-pill-color);
 	--ag-inherited-advanced-filter-builder-value-pill-color: var(--ag-advanced-filter-builder-value-pill-color);
+	--ag-inherited-card-shadow: var(--ag-card-shadow);
+	--ag-inherited-cell-batch-edit-background-color: var(--ag-cell-batch-edit-background-color);
+	--ag-inherited-cell-batch-edit-text-color: var(--ag-cell-batch-edit-text-color);
+	--ag-inherited-chrome-background-color: var(--ag-chrome-background-color);
+	--ag-inherited-filter-panel-apply-button-color: var(--ag-filter-panel-apply-button-color);
+	--ag-inherited-find-active-match-color: var(--ag-find-active-match-color);
+	--ag-inherited-find-match-color: var(--ag-find-match-color);
+	--ag-inherited-menu-background-color: var(--ag-menu-background-color);
+	--ag-inherited-popup-shadow: var(--ag-popup-shadow);
+	--ag-inherited-row-batch-edit-background-color: var(--ag-row-batch-edit-background-color);
+	--ag-inherited-row-batch-edit-text-color: var(--ag-row-batch-edit-text-color);
 }
 }
 "
 `;
 
-exports[`pdsTheme > should match the snapshot for CSS Class Names 1`] = `"ag-theme-iconSet-1 ag-theme-tabStyle-2 ag-theme-inputStyle-3 ag-theme-part-4 ag-theme-toggleButtonStyle-5 ag-theme-checkboxStyle-6"`;
+exports[`pdsTheme > should match the snapshot for CSS Class Names 1`] = `"ag-theme-buttonStyle-1 ag-theme-columnDropStyle-2 ag-theme-batchEditStyle-3 ag-theme-iconSet-4 ag-theme-tabStyle-5 ag-theme-inputStyle-6 ag-theme-columnDropStyle-2 ag-theme-part-7 ag-theme-toggleButtonStyle-8 ag-theme-checkboxStyle-9"`;
 
 exports[`pdsTheme > should match the snapshot for checkboxStyle CSS 1`] = `
 "
@@ -638,8 +796,55 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "backgroundColor": "#FFF",
     "borderColor": "#D8D8DB",
     "borderRadius": "4px",
+    "borderWidth": 1,
     "browserColorScheme": "light",
+    "buttonActiveBackgroundColor": {
+      "ref": "buttonHoverBackgroundColor",
+    },
+    "buttonActiveBorder": {
+      "color": {
+        "ref": "accentColor",
+      },
+    },
+    "buttonActiveTextColor": {
+      "ref": "buttonHoverTextColor",
+    },
+    "buttonBackgroundColor": {
+      "ref": "backgroundColor",
+    },
+    "buttonBorder": true,
+    "buttonBorderRadius": {
+      "ref": "borderRadius",
+    },
+    "buttonDisabledBackgroundColor": {
+      "ref": "inputDisabledBackgroundColor",
+    },
+    "buttonDisabledBorder": {
+      "ref": "inputDisabledBorder",
+    },
+    "buttonDisabledTextColor": {
+      "ref": "inputDisabledTextColor",
+    },
+    "buttonFontWeight": "normal",
+    "buttonHorizontalPadding": {
+      "calc": "spacing * 2",
+    },
+    "buttonHoverBackgroundColor": {
+      "ref": "rowHoverColor",
+    },
+    "buttonHoverBorder": {
+      "ref": "buttonBorder",
+    },
+    "buttonHoverTextColor": {
+      "ref": "buttonTextColor",
+    },
+    "buttonTextColor": "inherit",
+    "buttonVerticalPadding": {
+      "ref": "spacing",
+    },
     "cardShadow": "0 1px 4px 1px #00000018",
+    "cellBatchEditBackgroundColor": "rgba(220 181 139 / 16%)",
+    "cellBatchEditTextColor": "#422f00",
     "cellEditingBorder": {
       "color": {
         "ref": "accentColor",
@@ -746,8 +951,37 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "dropdownShadow": {
       "ref": "cardShadow",
     },
+    "filterPanelApplyButtonBackgroundColor": {
+      "ref": "accentColor",
+    },
+    "filterPanelApplyButtonColor": {
+      "ref": "backgroundColor",
+    },
+    "filterPanelCardSubtleColor": {
+      "mix": 0.7,
+      "ref": "textColor",
+    },
+    "filterPanelCardSubtleHoverColor": {
+      "ref": "textColor",
+    },
     "filterToolPanelGroupIndent": {
       "ref": "spacing",
+    },
+    "findActiveMatchBackgroundColor": "#ffa500",
+    "findActiveMatchColor": {
+      "ref": "foregroundColor",
+    },
+    "findMatchBackgroundColor": "#ffff00",
+    "findMatchColor": {
+      "ref": "foregroundColor",
+    },
+    "focusErrorShadow": {
+      "color": {
+        "mix": 0.5,
+        "onto": "backgroundColor",
+        "ref": "invalidColor",
+      },
+      "spread": 3,
     },
     "focusShadow": "none",
     "fontFamily": "'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
@@ -756,6 +990,11 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "ref": "rowBorder",
     },
     "foregroundColor": "#010205",
+    "fullRowEditInvalidBackgroundColor": {
+      "mix": 0.25,
+      "onto": "backgroundColor",
+      "ref": "invalidColor",
+    },
     "headerBackgroundColor": "#EEEFF2",
     "headerCellBackgroundTransitionDuration": "0.2s",
     "headerCellHoverBackgroundColor": "transparent",
@@ -780,14 +1019,30 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "ref": "textColor",
     },
     "headerVerticalPaddingScale": 1,
+    "iconButtonActiveBackgroundColor": {
+      "mix": 0.28,
+      "ref": "accentColor",
+    },
+    "iconButtonActiveColor": {
+      "ref": "accentColor",
+    },
+    "iconButtonActiveIndicatorColor": {
+      "ref": "accentColor",
+    },
+    "iconButtonBackgroundColor": "transparent",
+    "iconButtonBackgroundSpread": 4,
+    "iconButtonBorderRadius": 1,
+    "iconButtonColor": {
+      "ref": "iconColor",
+    },
     "iconButtonHoverBackgroundColor": {
       "mix": 0.1,
       "ref": "foregroundColor",
     },
     "iconButtonHoverColor": {
-      "mix": 0.1,
-      "ref": "foregroundColor",
+      "ref": "iconButtonColor",
     },
+    "iconColor": "inherit",
     "iconSize": 24,
     "inputBackgroundColor": {
       "ref": "backgroundColor",
@@ -835,7 +1090,7 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     },
     "invalidColor": "#CC1922",
     "listItemHeight": {
-      "calc": "iconSize + widgetVerticalSpacing",
+      "calc": "max(iconSize, dataFontSize) + widgetVerticalSpacing",
     },
     "menuBackgroundColor": {
       "mix": 0.03,
@@ -861,6 +1116,10 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     },
     "modalOverlayBackgroundColor": "hsl(240 4% 85%/35%)",
     "oddRowBackgroundColor": "#EEEFF2",
+    "paginationPanelHeight": {
+      "calc": "max(rowHeight, 22px)",
+      "ref": "rowHeight",
+    },
     "panelBackgroundColor": {
       "ref": "backgroundColor",
     },
@@ -868,11 +1127,53 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "ref": "headerBackgroundColor",
     },
     "panelTitleBarBorder": true,
+    "panelTitleBarFontWeight": {
+      "ref": "headerFontWeight",
+    },
+    "panelTitleBarIconColor": {
+      "ref": "headerTextColor",
+    },
+    "panelTitleBarTextColor": {
+      "ref": "headerTextColor",
+    },
+    "pickerButtonBackgroundColor": {
+      "ref": "backgroundColor",
+    },
+    "pickerButtonBorder": true,
+    "pickerButtonFocusBackgroundColor": {
+      "ref": "backgroundColor",
+    },
+    "pickerButtonFocusBorder": {
+      "ref": "inputFocusBorder",
+    },
+    "pickerListBackgroundColor": {
+      "ref": "backgroundColor",
+    },
+    "pickerListBorder": true,
     "pinnedColumnBorder": true,
+    "pinnedRowBackgroundColor": {
+      "ref": "backgroundColor",
+    },
     "pinnedRowBorder": true,
+    "pinnedRowFontWeight": 600,
+    "pinnedRowTextColor": {
+      "ref": "textColor",
+    },
+    "pinnedSourceRowBackgroundColor": {
+      "ref": "backgroundColor",
+    },
+    "pinnedSourceRowFontWeight": 600,
+    "pinnedSourceRowTextColor": {
+      "ref": "textColor",
+    },
     "popupShadow": "0 0 16px #00000026",
     "radioCheckedShapeImage": {
       "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>",
+    },
+    "rangeHeaderHighlightColor": {
+      "mix": 0.08,
+      "onto": "headerBackgroundColor",
+      "ref": "foregroundColor",
     },
     "rangeSelectionBackgroundColor": {
       "mix": 0.2,
@@ -886,6 +1187,12 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "mix": 0.5,
       "ref": "accentColor",
     },
+    "rowBatchEditBackgroundColor": {
+      "ref": "cellBatchEditBackgroundColor",
+    },
+    "rowBatchEditTextColor": {
+      "ref": "cellBatchEditTextColor",
+    },
     "rowBorder": true,
     "rowGroupIndentSize": {
       "calc": "cellWidgetSpacing + iconSize",
@@ -895,6 +1202,10 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "rowLoadingSkeletonEffectColor": {
       "mix": 0.15,
       "ref": "foregroundColor",
+    },
+    "rowNumbersSelectedColor": {
+      "mix": 0.5,
+      "ref": "accentColor",
     },
     "rowVerticalPaddingScale": 1,
     "selectCellBackgroundColor": {
@@ -920,6 +1231,7 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "ref": "sideBarBackgroundColor",
     },
     "sideButtonBarTopPadding": 0,
+    "sideButtonBorder": "solid 1px transparent",
     "sideButtonHoverBackgroundColor": {
       "ref": "sideButtonBackgroundColor",
     },
@@ -950,6 +1262,14 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     },
     "sidePanelBorder": true,
     "spacing": 10,
+    "statusBarLabelColor": {
+      "ref": "foregroundColor",
+    },
+    "statusBarLabelFontWeight": 500,
+    "statusBarValueColor": {
+      "ref": "foregroundColor",
+    },
+    "statusBarValueFontWeight": 500,
     "subtleTextColor": {
       "mix": 0.5,
       "ref": "textColor",
@@ -980,7 +1300,9 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "tabSelectedBorderColor": {
       "ref": "borderColor",
     },
-    "tabSelectedBorderWidth": 1,
+    "tabSelectedBorderWidth": {
+      "ref": "borderWidth",
+    },
     "tabSelectedTextColor": {
       "ref": "textColor",
     },
@@ -1015,6 +1337,21 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "ref": "chromeBackgroundColor",
     },
     "tooltipBorder": true,
+    "tooltipErrorBackgroundColor": {
+      "mix": 0.1,
+      "onto": "backgroundColor",
+      "ref": "invalidColor",
+    },
+    "tooltipErrorBorder": {
+      "color": {
+        "mix": 0.25,
+        "onto": "backgroundColor",
+        "ref": "invalidColor",
+      },
+    },
+    "tooltipErrorTextColor": {
+      "ref": "invalidColor",
+    },
     "tooltipTextColor": {
       "ref": "textColor",
     },
@@ -1046,6 +1383,8 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "borderColor": "#404044",
     "browserColorScheme": "dark",
     "cardShadow": "0 1px 4px 1px #000A",
+    "cellBatchEditBackgroundColor": "rgba(220 181 139 / 16%)",
+    "cellBatchEditTextColor": "#f3d0b3",
     "checkboxCheckedBackgroundColor": "#FBFCFF",
     "checkboxCheckedBorderColor": "#FBFCFF",
     "checkboxCheckedHoverBackgroundColor": "#AFB0B3",
@@ -1074,6 +1413,15 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "ref": "foregroundColor",
     },
     "columnHoverColor": "rgba(148, 149, 152, .18)",
+    "filterPanelApplyButtonColor": {
+      "ref": "foregroundColor",
+    },
+    "findActiveMatchColor": {
+      "ref": "backgroundColor",
+    },
+    "findMatchColor": {
+      "ref": "backgroundColor",
+    },
     "foregroundColor": "#FBFCFF",
     "headerBackgroundColor": "#212225",
     "inputBorder": "1px solid #88898C",
@@ -1094,6 +1442,14 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "svg": "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/></svg>",
     },
     "rangeSelectionBorderColor": "#1A44EA",
+    "rowBatchEditBackgroundColor": {
+      "mix": 0.1,
+      "onto": "backgroundColor",
+      "ref": "foregroundColor",
+    },
+    "rowBatchEditTextColor": {
+      "ref": "cellBatchEditTextColor",
+    },
     "rowHoverColor": "rgba(148, 149, 152, .18)",
     "selectedRowBackgroundColor": "#040405",
     "toggleButtonDisabledColor": "#7E7F82",
@@ -1112,10 +1468,21 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
     "advancedFilterBuilderOptionPillColor": "#5a3168",
     "advancedFilterBuilderValuePillColor": "#374c86",
     "cardShadow": "0 1px 4px 1px #000A",
+    "cellBatchEditBackgroundColor": "rgba(220 181 139 / 16%)",
+    "cellBatchEditTextColor": "#f3d0b3",
     "chromeBackgroundColor": {
       "mix": 0.05,
       "onto": "backgroundColor",
       "ref": "foregroundColor",
+    },
+    "filterPanelApplyButtonColor": {
+      "ref": "foregroundColor",
+    },
+    "findActiveMatchColor": {
+      "ref": "backgroundColor",
+    },
+    "findMatchColor": {
+      "ref": "backgroundColor",
     },
     "menuBackgroundColor": {
       "mix": 0.1,
@@ -1123,6 +1490,14 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
       "ref": "foregroundColor",
     },
     "popupShadow": "0 0px 20px #000A",
+    "rowBatchEditBackgroundColor": {
+      "mix": 0.1,
+      "onto": "backgroundColor",
+      "ref": "foregroundColor",
+    },
+    "rowBatchEditTextColor": {
+      "ref": "cellBatchEditTextColor",
+    },
   },
   "light": {
     "chromeBackgroundColor": {
@@ -1135,8 +1510,7 @@ exports[`pdsTheme > should match the snapshot for mode params 1`] = `
 `;
 
 exports[`pdsTheme > should match the snapshot for pdsSvgIcons CSS 1`] = `
-":where(.ag-icon):before{align-items:center;background-color:currentcolor;color:inherit;content:"";display:flex;font-family:inherit;font-size:var(--ag-icon-size);font-style:normal;font-variant:normal;height:var(--ag-icon-size);justify-content:center;line-height:var(--ag-icon-size);-webkit-mask-size:contain;mask-size:contain;text-transform:none;width:var(--ag-icon-size)}.ag-icon{background-position:50%;background-repeat:no-repeat;background-size:contain;display:block;height:var(--ag-icon-size);position:relative;-webkit-user-select:none;-moz-user-select:none;user-select:none;width:var(--ag-icon-size)};
-.ag-icon-aggregation::before { mask-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="enable-background:new 0 0 24 24" viewBox="0 0 24 24"><path d="M17.2 19.3H5.7l6.5-7.6-6.5-7h11.5v1H7.9l5.7 6-5.7 6.6h9.3z" style="fill:%23020202"/></svg>'); };
+".ag-icon-aggregation::before { mask-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="enable-background:new 0 0 24 24" viewBox="0 0 24 24"><path d="M17.2 19.3H5.7l6.5-7.6-6.5-7h11.5v1H7.9l5.7 6-5.7 6.6h9.3z" style="fill:%23020202"/></svg>'); };
 .ag-icon-arrows::before { mask-image: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="enable-background:new 0 0 24 24" viewBox="0 0 24 24"><path d="m22 12-2-3h-1.4l1.7 2.5H15v1h5.3L18.6 15H20l2-3zM12 2 9 4v1.4l2.5-1.7V9h1V3.7L15 5.4V4zM12.5 20.3V15h-1v5.3L9 18.6V20l3 2 3-2v-1.4zM9 11.5H3.7L5.4 9H4l-2 3 2 3h1.4l-1.7-2.5H9z"/></svg>'); };
 .ag-icon-asc::before { mask-image: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m5.5 9.48.642.77L11.5 5.732V20h1V5.732l5.358 4.518.642-.768-6.494-5.476L12.001 4h-.002l-.002.003z" style="fill:%23000"/></svg>'); };
 .ag-icon-cancel::before { mask-image: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 6.706 12.706 12 18 17.294l-.706.706L12 12.706 6.706 18 6 17.294 11.294 12 6 6.706 6.706 6 12 11.294 17.294 6z" style="fill:%23000"/></svg>'); };
