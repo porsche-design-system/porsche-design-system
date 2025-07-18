@@ -1127,19 +1127,26 @@ test.describe('theme', () => {
 
     const inputElement = getInput(page);
     await inputElement.click();
-    await waitForStencilLifecycle(page);
 
-    const optgroups = await page.locator('p-optgroup').all();
-    const options = await page.locator('p-multi-select-option').all();
+    const optgroups = page.locator('p-optgroup');
+    const options = page.locator('p-multi-select-option');
 
-    for (const child of [...optgroups, ...options]) {
-      expect(await getProperty<Theme>(child, 'theme')).toBe('light');
+    for (let i = 0; i < (await optgroups.count()); i++) {
+      await expect(optgroups.nth(i)).toHaveJSProperty('theme', 'light');
     }
-    await setProperty(multiSelect, 'theme', 'dark');
-    await waitForStencilLifecycle(page);
 
-    for (const child of [...optgroups, ...options]) {
-      expect(await getProperty<Theme>(child, 'theme')).toBe('dark');
+    for (let i = 0; i < (await options.count()); i++) {
+      await expect(options.nth(i)).toHaveJSProperty('theme', 'light');
+    }
+
+    await setProperty(multiSelect, 'theme', 'dark');
+
+    for (let i = 0; i < (await optgroups.count()); i++) {
+      await expect(optgroups.nth(i)).toHaveJSProperty('theme', 'dark');
+    }
+
+    for (let i = 0; i < (await options.count()); i++) {
+      await expect(options.nth(i)).toHaveJSProperty('theme', 'dark');
     }
   });
 });

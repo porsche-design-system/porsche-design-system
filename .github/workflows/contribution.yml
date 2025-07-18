@@ -1,0 +1,48 @@
+name: 'Contribution'
+
+on:
+  push:
+    branches:
+      - main
+      - v[0-9]
+      - issue/*
+      - housekeeping/*
+      - release/*
+
+jobs:
+  build:
+    name: 'Build'
+    uses: ./.github/workflows/build.yml
+    with:
+      image: mcr.microsoft.com/playwright:v1.49.1-jammy
+  test:
+    name: 'Test'
+    uses: ./.github/workflows/test.yml
+    with:
+      image: mcr.microsoft.com/playwright:v1.49.1-jammy
+    needs:
+      - build
+  deploy:
+    name: 'Deploy'
+    uses: ./.github/workflows/deploy.yml
+    with:
+      image: mcr.microsoft.com/playwright:v1.49.1-jammy
+    needs:
+      - test
+    secrets:
+      linode-aws-access-key-id: ${{ secrets.LINODE_AWS_ACCESS_KEY_ID }}
+      linode-aws-secret-access-key: ${{ secrets.LINODE_AWS_SECRET_ACCESS_KEY }}
+      gh-deploy-key-storefront: ${{ secrets.GH_DEPLOY_KEY_STOREFRONT }}
+      algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
+      algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
+  release:
+    if: github.ref == 'refs/heads/main'
+    name: 'Release'
+    uses: ./.github/workflows/release.yml
+    with:
+      image: mcr.microsoft.com/playwright:v1.49.1-jammy
+    needs:
+      - deploy
+    secrets:
+      github-token: ${{ secrets.GITHUB_TOKEN }}
+      npmjs-registry-token: ${{ secrets.NPMJS_REGISTRY_TOKEN }}

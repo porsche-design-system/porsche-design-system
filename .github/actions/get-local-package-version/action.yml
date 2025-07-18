@@ -1,0 +1,24 @@
+name: 'Get Package Version'
+description: 'Reads the "version" field from a local package.json file.'
+
+inputs:
+  path:
+    description: 'The path to the directory containing package.json (default: current directory).'
+    required: false
+    default: '.'
+
+outputs:
+  version:
+    description: 'The extracted version string from package.json.'
+    value: ${{ steps.read_version.outputs.package_version }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: 'Read package.json Version'
+      id: read_version
+      run: |
+        PACKAGE_VERSION=$(grep version "${{ inputs.path }}/package.json" | head -1 | awk -F= "{ print ${2} }" | sed 's/[:,\",]//g;s/version//' | tr -d '[[:space:]]')
+        echo "Found package version: ${PACKAGE_VERSION}"
+        echo "package_version=$PACKAGE_VERSION" >> "$GITHUB_OUTPUT"
+      shell: bash
