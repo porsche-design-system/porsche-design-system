@@ -30,6 +30,8 @@ export * from './InputNumberExample';
 export * from './InputNumberExampleControlled';
 export * from './InputTextExample';
 export * from './InputTextExampleControlled';
+export * from './InputEmailExample';
+export * from './InputEmailExampleControlled';
 export * from './InputSearchExample';
 export * from './InputSearchExampleControlled';
 export * from './LinkTileExampleHyphens';

@@ -1,0 +1,16 @@
+<div class="root">
+  <label class="label" id="label" for="input-email"> </label>
+  <div class="wrapper">
+    <slot name="start"> </slot>
+    <input
+      aria-describedby="description message"
+      id="input-email"
+      name="value"
+      type="email"
+      placeholder=""
+    />
+    <slot name="end"> </slot>
+  </div>
+  <span id="message" class="message" role="alert"> </span>
+  <span id="loading" class="loading" role="status"> </span>
+</div>

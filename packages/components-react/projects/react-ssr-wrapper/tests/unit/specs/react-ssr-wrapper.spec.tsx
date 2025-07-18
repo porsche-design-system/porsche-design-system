@@ -64,7 +64,11 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
   // and these are not allowed and throw an exception
   let props: any = hasSlot ? { children: renderChildren() } : null;
 
-  if (['p-textarea', 'p-input-password', 'p-input-number', 'p-input-text', 'p-input-search'].includes(tagName)) {
+  if (
+    ['p-textarea', 'p-input-password', 'p-input-number', 'p-input-text', 'p-input-email', 'p-input-search'].includes(
+      tagName
+    )
+  ) {
     props = {
       ...props,
       readOnly: true,
