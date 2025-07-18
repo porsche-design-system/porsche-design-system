@@ -17,7 +17,7 @@ test('clicking table of contents link scrolls to the correct section', async ({ 
 
   const href = await firstLink.getAttribute('href');
   expect(href).not.toBeNull();
-  // biome-ignore lint/style/noNonNullAssertion: <explanation>
+  // biome-ignore lint/style/noNonNullAssertion: ok
   const sectionId = href!.replace(/^#/, '');
 
   const headingAnchor = page.locator(`p-heading a[href="${href}"]`);

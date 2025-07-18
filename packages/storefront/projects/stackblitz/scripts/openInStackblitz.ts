@@ -1,8 +1,7 @@
 import type { Framework } from '@porsche-design-system/shared';
 // TODO: Move to shared
 import type { StorefrontTheme } from '@porsche-design-system/storefront/src/models/theme';
-import sdk from '@stackblitz/sdk';
-import type { ProjectFiles } from '@stackblitz/sdk/typings/interfaces';
+import sdk, { type ProjectFiles } from '@stackblitz/sdk';
 import { angularBundle, reactBundle, vanillaJsBundle, vueBundle } from '../generated/bundle';
 
 const frameworkBundleMap: Record<Framework, ProjectFiles> = {

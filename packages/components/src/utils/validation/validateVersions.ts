@@ -20,7 +20,7 @@ export const validateVersions = (): void => {
     // Uses a timeout to increase the chances that all used versions are loaded and initialized
     setTimeout(() => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { cdn, ...versions } = document.porscheDesignSystem;
+      const { cdn: _, ...versions } = document.porscheDesignSystem;
       if (Object.keys(versions).length > 1) {
         consoleWarn(
           // eslint-disable-next-line @typescript-eslint/quotes

@@ -58,7 +58,7 @@ const isDesignSystemReady = (): Promise<void> => {
         value.isReady().then(promiseResolve);
       }
       // @ts-expect-error ...
-      // biome-ignore lint/style/noArguments: ok
+      // biome-ignore lint/complexity/noArguments: ok
       return Reflect.set(...arguments);
     },
   };

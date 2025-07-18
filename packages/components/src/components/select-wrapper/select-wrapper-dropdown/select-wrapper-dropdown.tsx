@@ -179,6 +179,7 @@ export class SelectWrapperDropdown {
               onClick={() => this.setDropdownVisibility('show')}
               ref={(el) => (this.inputOrButtonElement = el)}
             />,
+            /* biome-ignore lint/a11y/noStaticElementInteractions: ok */
             <span
               part={part}
               key="span"

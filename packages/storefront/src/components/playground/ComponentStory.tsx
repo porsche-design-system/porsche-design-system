@@ -45,7 +45,6 @@ export const ComponentStory = ({ story, backgroundColor }: ComponentExampleProps
   };
 
   return (
-    <>
       <Playground
         frameworkMarkup={exampleMarkup}
         backgroundColor={backgroundColor}
@@ -53,6 +52,5 @@ export const ComponentStory = ({ story, backgroundColor }: ComponentExampleProps
       >
         {exampleElement}
       </Playground>
-    </>
   );
 };

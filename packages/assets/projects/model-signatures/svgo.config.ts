@@ -21,5 +21,7 @@ export const config: Config = {
         attrs: '(stroke|fill|xml:space)', // ensures coloring is applicable by CSS
       },
     },
+    'removeViewBox',
+    'removeTitle',
   ],
 };

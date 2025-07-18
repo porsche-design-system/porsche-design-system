@@ -21,7 +21,7 @@
     "@porsche-design-system/shared": "0.0.0",
     "@types/styled-components": "^5.1.34",
     "react-jss": "^10.10.0",
-    "styled-components": "^6.1.13"
+    "styled-components": "^6.1.19"
   },
   "peerDependencies": {
     "@types/madge": "*",

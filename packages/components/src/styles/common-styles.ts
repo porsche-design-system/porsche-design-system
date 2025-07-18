@@ -85,7 +85,7 @@ export const addImportantToEachRule = (input: JssStyle): JssStyle => {
         ? result
         : // @ts-expect-error: Type string can't be used to index type JssStyle
           ((result[key] =
-            // biome-ignore lint/style/noCommaOperator: to be refactored
+            // biome-ignore lint/complexity/noCommaOperator: to be refactored
             typeof value === 'object' ? addImportantToEachRule(value as JssStyle) : addImportantToRule(value)),
           result),
     {} as JssStyle

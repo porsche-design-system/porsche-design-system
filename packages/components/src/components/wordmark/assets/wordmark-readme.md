@@ -23,6 +23,8 @@ module.exports = {
         attrs: '(stroke|fill|xml:space)', // ensures coloring is applicable by CSS
       },
     },
+    'removeViewBox',
+    'removeTitle',
   ],
 };
 ```

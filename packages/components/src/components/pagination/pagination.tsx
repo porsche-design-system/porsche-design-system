@@ -175,6 +175,7 @@ export class Pagination {
               case ItemType.PREVIOUS:
                 return (
                   <li key="prev" class="prev">
+                    {/* biome-ignore lint/a11y/useAriaPropsSupportedByRole: ok */}
                     <span
                       {...spanProps}
                       aria-label={this.allyLabelPrev || parsedIntl.prev}
@@ -204,6 +205,7 @@ export class Pagination {
                       'current+2': isAfterAfterCurrent,
                     }}
                   >
+                    {/* biome-ignore lint/a11y/useAriaPropsSupportedByRole: ok */}
                     <span
                       {...spanProps}
                       tabIndex={0}
@@ -218,6 +220,7 @@ export class Pagination {
               case ItemType.NEXT:
                 return (
                   <li key="next" class="next">
+                    {/* biome-ignore lint/a11y/useAriaPropsSupportedByRole: ok */}
                     <span
                       {...spanProps}
                       aria-label={this.allyLabelNext || parsedIntl.next}

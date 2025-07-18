@@ -201,6 +201,7 @@ export class PinCode {
           isLoading={this.loading}
           isDisabled={this.disabled}
         />
+        {/* biome-ignore lint/a11y/noStaticElementInteractions: ok */}
         <div class="wrapper" onKeyDown={this.onKeyDown} onPaste={this.onPaste} onInput={this.onInput}>
           {Array.from(new Array(this.length), (_, index) => (
             <input
