@@ -4,7 +4,7 @@ import './index.css';
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
 import { Example } from './Example.tsx';
 
-// biome-ignore lint/style/noNonNullAssertion: <explanation>
+// biome-ignore lint/style/noNonNullAssertion: ok
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <PorscheDesignSystemProvider theme={'auto'}>

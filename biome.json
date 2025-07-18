@@ -7,16 +7,17 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": [
-      "./yarn.lock",
-      "*.snap",
-      "./packages/components/src/components.d.ts",
-      "./packages/components/src/styles/colors.ts",
-      "./packages/components/src/types/aria-types.d.ts",
-      "./packages/components-js/tests/unit/results/stats-raw.json",
-      "./packages/components-react/projects/nextjs/routes.ts",
-      "./packages/components-react/projects/remix/app/routes/*",
-      "./packages/storefront/**/*.css"
+    "includes": [
+      "**",
+      "!yarn.lock",
+      "!**/*.snap",
+      "!packages/components/src/components.d.ts",
+      "!packages/components/src/styles/colors.ts",
+      "!packages/components/src/types/aria-types.d.ts",
+      "!packages/components-js/tests/unit/results/stats-raw.json",
+      "!packages/components-react/projects/nextjs/routes.ts",
+      "!packages/components-react/projects/remix/app/routes/**/*",
+      "!packages/storefront/**/*.css"
     ]
   },
   "formatter": {
@@ -30,13 +31,10 @@
     "attributePosition": "auto",
     "bracketSpacing": true
   },
-  "organizeImports": {
-    "enabled": true
-  },
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
   "linter": {
     "enabled": true,
     "rules": {
-      "all": true,
       "a11y": {
         "useKeyWithClickEvents": "off",
         "useAnchorContent": "off",
@@ -51,7 +49,6 @@
         "useSimplifiedLogicExpression": "off"
       },
       "correctness": {
-        "useArrayLiterals": "off",
         "useJsxKeyInIterable": "off",
         "useImportExtensions": "off",
         "noUndeclaredDependencies": "off",
@@ -63,16 +60,17 @@
         "noAccumulatingSpread": "off",
         "useTopLevelRegex": "off",
         "noReExportAll": "off",
-        "noBarrelFile": "off"
+        "noBarrelFile": "off",
+        "noNamespaceImport": "off"
       },
       "style": {
         "useBlockStatements": "off",
         "noInferrableTypes": "off",
         "useNamingConvention": "off",
         "noDefaultExport": "off",
-        "noNamespaceImport": "off",
         "useDefaultSwitchClause": "off",
-        "useFilenamingConvention": "off"
+        "useFilenamingConvention": "off",
+        "useArrayLiterals": "off"
       },
       "suspicious": {
         "noConsole": { "level": "error", "options": { "allow": ["warn", "error"] } },
@@ -82,22 +80,22 @@
         "noReactSpecificProps": "off",
         "noEvolvingTypes": "off",
         "noSkippedTests": "off",
-        "noConsoleLog": "off",
         "noExplicitAny": "off"
       }
     },
-    "ignore": [
-      "**/assets/*",
-      "**/component-meta/*",
-      "**/components/scripts/*",
-      "**/components-angular/*",
-      "**/components-js/*",
-      "**/components-react/*",
-      "**/components-vue/*",
-      "**/crawler/*",
-      "**/shared/*",
-      "**/storefront-old/*",
-      "**/utilities/*"
+    "includes": [
+      "**",
+      "!**/assets/**/*",
+      "!**/component-meta/**/*",
+      "!**/components/scripts/**/*",
+      "!**/components-angular/**/*",
+      "!**/components-js/**/*",
+      "!**/components-react/**/*",
+      "!**/components-vue/**/*",
+      "!**/crawler/**/*",
+      "!**/shared/**/*",
+      "!**/storefront-old/**/*",
+      "!**/utilities/**/*"
     ]
   },
   "javascript": {
@@ -118,7 +116,7 @@
   },
   "overrides": [
     {
-      "include": ["*.css", "*.scss"],
+      "includes": ["**/*.css", "**/*.scss"],
       "javascript": {
         "formatter": {
           "quoteStyle": "double"
@@ -126,11 +124,11 @@
       }
     },
     {
-      "include": [
-        "**/scripts/*",
-        "**/bin/*",
-        "./packages/crawler/*",
-        "./packages/components-js/projects/components-manager-cli/*",
+      "includes": [
+        "**/scripts/**/*",
+        "**/bin/**/*",
+        "packages/crawler/**/*",
+        "packages/components-js/projects/components-manager-cli/**/*",
         "**/rollup*",
         "**/webpack*",
         "**/build*"
@@ -144,7 +142,7 @@
       }
     },
     {
-      "include": ["**/tests/*", "*.spec.*", "*.e2e.*", "*.a11y.*", "*.vrt.*", "*.smoke.*"],
+      "includes": ["**/tests/**/*", "**/*.spec.*", "**/*.e2e.*", "**/*.a11y.*", "**/*.vrt.*", "**/*.smoke.*"],
       "linter": {
         "rules": {
           "complexity": {
@@ -162,7 +160,7 @@
       }
     },
     {
-      "include": ["*.svelte", "*.astro", "*.vue"],
+      "includes": ["**/*.svelte", "**/*.astro", "**/*.vue"],
       "linter": {
         "rules": {
           "style": {

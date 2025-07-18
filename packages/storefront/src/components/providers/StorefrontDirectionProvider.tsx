@@ -16,6 +16,7 @@ export const StorefrontDirectionProvider = ({ children }: PropsWithChildren) => 
   const [storefrontDirection, setSelectedDirection] = useState<StorefrontDirection>('ltr');
 
   // Load initial state from localStorage once component mounts
+  // biome-ignore lint/correctness/useExhaustiveDependencies: only used for mount
   useEffect(() => {
     const storedDirection = localStorage.getItem(storefrontDirectionLocalStorageKey) as StorefrontDirection | null;
     if (storedDirection) {
