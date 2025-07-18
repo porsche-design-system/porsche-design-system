@@ -23,71 +23,57 @@ jobs:
       image: ${{ inputs.image }}
       options: --user 1001
     outputs:
-      components-version: ${{ steps.get_version.outputs.version }}
+      components-version: ${{ steps.get_npm_version.outputs.version }}
       is-components-js-published: ${{ steps.is_components_js_published_check.outputs.is-published }}
       is-components-angular-published: ${{ steps.is_components_angular_published_check.outputs.is-published }}
       is-components-react-published: ${{ steps.is_components_react_published_check.outputs.is-published }}
       is-components-vue-published: ${{ steps.is_components_vue_published_check.outputs.is-published }}
+      is-storefront-published: ${{ steps.is_storefront_published_check.outputs.is-published }}
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
       - name: 'Get Package Version'
-        id: get_version
+        id: get_npm_version
         uses: ./.github/actions/get-local-package-version
         with:
           path: 'packages/components'
       - name: 'Check if "@porsche-design-system/components-js" version is published'
         id: is_components_js_published_check
-        uses: ./.github/actions/is-version-published
+        uses: ./.github/actions/is-npm-package-published
         with:
           package-name: '@porsche-design-system/components-js'
-          package-version: ${{ steps.get_version.outputs.version }}
+          package-version: ${{ steps.get_npm_version.outputs.version }}
       - name: 'Check if "@porsche-design-system/components-angular" version is published'
         id: is_components_angular_published_check
-        uses: ./.github/actions/is-version-published
+        uses: ./.github/actions/is-npm-package-published
         with:
           package-name: '@porsche-design-system/components-angular'
-          package-version: ${{ steps.get_version.outputs.version }}
+          package-version: ${{ steps.get_npm_version.outputs.version }}
       - name: 'Check if "@porsche-design-system/components-react" version is published'
         id: is_components_react_published_check
-        uses: ./.github/actions/is-version-published
+        uses: ./.github/actions/is-npm-package-published
         with:
           package-name: '@porsche-design-system/components-react'
-          package-version: ${{ steps.get_version.outputs.version }}
+          package-version: ${{ steps.get_npm_version.outputs.version }}
       - name: 'Check if "@porsche-design-system/components-vue" version is published'
         id: is_components_vue_published_check
-        uses: ./.github/actions/is-version-published
+        uses: ./.github/actions/is-npm-package-published
         with:
           package-name: '@porsche-design-system/components-vue'
-          package-version: ${{ steps.get_version.outputs.version }}
-  npm-publish:
-    name: 'NPM Publish (${{ matrix.name }})'
+          package-version: ${{ steps.get_npm_version.outputs.version }}
+      - name: 'Check if Storefront version is published'
+        id: is_storefront_published_check
+        uses: ./.github/actions/is-storefront-version-published
+        with:
+          version: ${{ steps.get_npm_version.outputs.version }}
+  npm-components-js:
+    name: 'NPM (Components JS)'
     needs: check-publication-status
+    if: ${{ needs.check-publication-status.outputs.is-components-js-published == 'false' }}
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
       options: --user 1001
-    strategy:
-      matrix:
-        include:
-          - name: 'Components JS'
-            package_name: '@porsche-design-system/components-js'
-            package_path: 'packages/components-js/dist/components-wrapper'
-            is_published: ${{ needs.check-publication-status.outputs.is-components-js-published }}
-          - name: 'Components Angular'
-            package_name: '@porsche-design-system/components-angular'
-            package_path: 'packages/components-angular/dist/angular-wrapper'
-            is_published: ${{ needs.check-publication-status.outputs.is-components-angular-published }}
-          - name: 'Components React'
-            package_name: '@porsche-design-system/components-react'
-            package_path: 'packages/components-react/dist/react-wrapper'
-            is_published: ${{ needs.check-publication-status.outputs.is-components-react-published }}
-          - name: 'Components Vue'
-            package_name: '@porsche-design-system/components-vue'
-            package_path: 'packages/components-vue/dist/vue-wrapper'
-            is_published: ${{ needs.check-publication-status.outputs.is-components-vue-published }}
-        exclude:
-          - is_published: 'true'
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -102,17 +88,102 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           scope: '@porsche-design-system'
       - run: chmod +x ./.github/workflows/release-npm.sh
-      - name: 'Publish ${{ matrix.name }}'
-        run: ./.github/workflows/release-npm.sh ${{ matrix.package_path }}
+      - name: 'Publish'
+        run: ./.github/workflows/release-npm.sh packages/components-js/dist/components-wrapper
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
+          GITHUB_TOKEN: ${{ secrets.github-token }}
+  npm-components-angular:
+    name: 'NPM (Components Angular)'
+    needs:
+      - check-publication-status
+      - npm-components-js
+    if: ${{ needs.check-publication-status.outputs.is-components-angular-published == 'false' }}
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - uses: actions/setup-node@v4
+        with:
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@porsche-design-system'
+      - run: chmod +x ./.github/workflows/release-npm.sh
+      - name: 'Publish'
+        run: ./.github/workflows/release-npm.sh packages/components-angular/dist/angular-wrapper
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
+          GITHUB_TOKEN: ${{ secrets.github-token }}
+  npm-components-react:
+    name: 'NPM (Components React)'
+    needs:
+      - check-publication-status
+      - npm-components-js
+    if: ${{ needs.check-publication-status.outputs.is-components-react-published == 'false' }}
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - uses: actions/setup-node@v4
+        with:
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@porsche-design-system'
+      - run: chmod +x ./.github/workflows/release-npm.sh
+      - name: 'Publish'
+        run: ./.github/workflows/release-npm.sh packages/components-react/dist/react-wrapper
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
+          GITHUB_TOKEN: ${{ secrets.github-token }}
+  npm-components-vue:
+    name: 'NPM (Components Vue)'
+    needs:
+      - check-publication-status
+      - npm-components-js
+    if: ${{ needs.check-publication-status.outputs.is-components-vue-published == 'false' }}
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - uses: actions/setup-node@v4
+        with:
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@porsche-design-system'
+      - run: chmod +x ./.github/workflows/release-npm.sh
+      - name: 'Publish'
+        run: ./.github/workflows/release-npm.sh packages/components-vue/dist/vue-wrapper
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
   github-pages-storefront:
     name: 'GitHub Pages (Storefront)'
-    needs:
-      - check-publication-status
-      - npm-publish
-    if: ${{ needs.npm-publish.result == 'success' }}
+    needs: check-publication-status
+    if: ${{ needs.check-publication-status.outputs.is-storefront-published == 'false' }}
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
