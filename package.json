@@ -222,7 +222,7 @@
     "@types/node": "^24.0.14",
     "@vitest/ui": "^3.2.4",
     "concurrently": "^9.2.0",
-    "globby": "^14.0.2",
+    "globby": "^14.1.0",
     "gzip-size": "^7.0.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
