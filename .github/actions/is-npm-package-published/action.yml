@@ -1,4 +1,4 @@
-name: 'Is Version Published'
+name: 'Is npm package published'
 description: 'Checks if a specific npm package version is already published on npmjs.org.'
 
 inputs:

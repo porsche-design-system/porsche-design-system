@@ -46,3 +46,6 @@ jobs:
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
       npmjs-registry-token: ${{ secrets.NPMJS_REGISTRY_TOKEN }}
+      gh-deploy-key-storefront: ${{ secrets.GH_DEPLOY_KEY_STOREFRONT }}
+      algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
+      algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
