@@ -30,5 +30,7 @@ export const config: Config = {
         ],
       },
     },
+    'removeViewBox',
+    'removeTitle',
   ],
 };
