@@ -55,10 +55,10 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   visibility: hidden;
 }
 .trigger:first-of-type {
-  left: 0;
+  left: -4px;
 }
 .trigger:last-of-type {
-  right: 0;
+  right: -4px;
 }
 .action-prev {
   position: absolute;
@@ -166,10 +166,10 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   visibility: hidden;
 }
 .trigger:first-of-type {
-  left: 0;
+  left: -4px;
 }
 .trigger:last-of-type {
-  right: 0;
+  right: -4px;
 }
 .action-prev {
   position: absolute;
@@ -273,10 +273,10 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   visibility: hidden;
 }
 .trigger:first-of-type {
-  left: 0;
+  left: -4px;
 }
 .trigger:last-of-type {
-  right: 0;
+  right: -4px;
 }
 .action-prev {
   position: absolute;
@@ -380,10 +380,10 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   visibility: hidden;
 }
 .trigger:first-of-type {
-  left: 0;
+  left: -4px;
 }
 .trigger:last-of-type {
-  right: 0;
+  right: -4px;
 }
 .action-prev {
   position: absolute;
@@ -486,10 +486,10 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   visibility: hidden;
 }
 .trigger:first-of-type {
-  left: 0;
+  left: -4px;
 }
 .trigger:last-of-type {
-  right: 0;
+  right: -4px;
 }
 .action-prev {
   position: absolute;
@@ -593,10 +593,10 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   visibility: hidden;
 }
 .trigger:first-of-type {
-  left: 0;
+  left: -4px;
 }
 .trigger:last-of-type {
-  right: 0;
+  right: -4px;
 }
 .action-prev {
   position: absolute;
@@ -705,10 +705,10 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   visibility: hidden;
 }
 .trigger:first-of-type {
-  left: 0;
+  left: -4px;
 }
 .trigger:last-of-type {
-  right: 0;
+  right: -4px;
 }
 .action-prev {
   position: absolute;
@@ -816,10 +816,10 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   visibility: hidden;
 }
 .trigger:first-of-type {
-  left: 0;
+  left: -4px;
 }
 .trigger:last-of-type {
-  right: 0;
+  right: -4px;
 }
 .action-prev {
   position: absolute;
