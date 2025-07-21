@@ -100,8 +100,8 @@
     "devtools-protocol": "^0.0.1400418",
     "jsdom": "^24.1.0",
     "local-web-server": "^5.4.0",
-    "mime": "^4.0.6",
-    "terser-webpack-plugin": "^5.3.11",
+    "mime": "^4.0.7",
+    "terser-webpack-plugin": "^5.3.14",
     "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^6.0.1",
     "globby-legacy": "npm:globby@^11.0.4"
