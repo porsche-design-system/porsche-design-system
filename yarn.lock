@@ -14966,7 +14966,7 @@ jest-environment-jsdom@^27.5.1:
     jest-util "^27.5.1"
     jsdom "^16.6.0"
 
-jest-environment-jsdom@^29.0.0, jest-environment-jsdom@^29.7.0:
+jest-environment-jsdom@^29.7.0:
   version "29.7.0"
   resolved "https://registry.yarnpkg.com/jest-environment-jsdom/-/jest-environment-jsdom-29.7.0.tgz#d206fa3551933c3fd519e5dfdb58a0f5139a837f"
   integrity sha512-k9iQbsf9OyOfdzWH8HDmrRT0gSIcX+FLNW7IQq94tFX0gynPwqDTW0Ho6iMVNjGz/nb+l/vW3dWM2bbLLpkbXA==
@@ -15184,17 +15184,17 @@ jest-pnp-resolver@^1.2.2:
   resolved "https://registry.yarnpkg.com/jest-pnp-resolver/-/jest-pnp-resolver-1.2.3.tgz#930b1546164d4ad5937d5540e711d4d38d4cad2e"
   integrity sha512-+3NpwQEnRoIBtx4fyhblQDPgJI0H1IEIkX7ShLUjPGA7TtUTvI1oiKi3SR4oBR0hQhQR80l4WAe5RrXBwWMA8w==
 
-jest-preset-angular@^14.4.2:
-  version "14.4.2"
-  resolved "https://registry.yarnpkg.com/jest-preset-angular/-/jest-preset-angular-14.4.2.tgz#c2c0e1581cebed863b86efa52a14b1cb8b3cae30"
-  integrity sha512-BYYv0FaTDfBNh8WyA9mpOV3krfw20kurBGK8INZUnv7KZDAWZuQtCET4TwTWxSNQ9jS1OX1+a5weCm/bTDDM1A==
+jest-preset-angular@^14.6.0:
+  version "14.6.0"
+  resolved "https://registry.yarnpkg.com/jest-preset-angular/-/jest-preset-angular-14.6.0.tgz#837431accdfae146f6d0ce5bfebc187d97d5b362"
+  integrity sha512-LGSKLCsUhtrs2dw6f7ega/HOS8/Ni/1gV+oXmxPHmJDLHFpM6cI78Monmz8Z1P87a/A4OwnKilxgPRr+6Pzmgg==
   dependencies:
     bs-logger "^0.2.6"
     esbuild-wasm ">=0.15.13"
-    jest-environment-jsdom "^29.0.0"
-    jest-util "^29.0.0"
-    pretty-format "^29.0.0"
-    ts-jest "^29.0.0"
+    jest-environment-jsdom "^29.7.0"
+    jest-util "^29.7.0"
+    pretty-format "^29.7.0"
+    ts-jest "^29.3.0"
   optionalDependencies:
     esbuild ">=0.15.13"
 
@@ -23273,7 +23273,7 @@ ts-interface-checker@^0.1.9:
   resolved "https://registry.yarnpkg.com/ts-interface-checker/-/ts-interface-checker-0.1.13.tgz#784fd3d679722bc103b1b4b8030bcddb5db2a699"
   integrity sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==
 
-"ts-jest@>=29 <30", ts-jest@^29.0.0:
+"ts-jest@>=29 <30":
   version "29.1.2"
   resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-29.1.2.tgz#7613d8c81c43c8cb312c6904027257e814c40e09"
   integrity sha512-br6GJoH/WUX4pu7FbZXuWGKGNDuU7b8Uj77g/Sp7puZV6EXzuByl6JrECvm0MzVzSTkSHWTihsXt+5XYER5b+g==
@@ -23287,7 +23287,7 @@ ts-interface-checker@^0.1.9:
     semver "^7.5.3"
     yargs-parser "^21.0.1"
 
-ts-jest@^29.4.0:
+ts-jest@^29.3.0, ts-jest@^29.4.0:
   version "29.4.0"
   resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-29.4.0.tgz#bef0ee98d94c83670af7462a1617bf2367a83740"
   integrity sha512-d423TJMnJGu80/eSgfQ5w/R+0zFJvdtTxwtF9KzFFunOpSeD+79lHJQIiAhluJoyGRbvj9NZJsl9WjCUo0ND7Q==
