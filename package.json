@@ -246,7 +246,7 @@
     "ts-jest": "^29.2.5",
     "tsup": "^8.3.5",
     "tsx": "^4.19.2",
-    "typescript": "~5.6.3",
+    "typescript": "~5.8.3",
     "vite": "^7.0.4",
     "vitest": "^3.2.4",
     "@vanilla-extract/css": "^1.17.4",
