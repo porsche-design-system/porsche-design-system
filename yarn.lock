@@ -11106,10 +11106,10 @@ devlop@^1.0.0, devlop@^1.1.0:
   dependencies:
     dequal "^2.0.0"
 
-devtools-protocol@^0.0.1400418:
-  version "0.0.1400418"
-  resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1400418.tgz#55481b6f68410eb3efac033e19de1f5dbec1b68a"
-  integrity sha512-U8j75zDOXF8IP3o0Cgb7K4tFA9uUHEOru2Wx64+EUqL4LNOh9dRe1i8WKR1k3mSpjcCe3aIkTDvEwq0YkI4hfw==
+devtools-protocol@^0.0.1488636:
+  version "0.0.1488636"
+  resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1488636.tgz#525af584def87a0d5da3aacb82fc8f8614b6870f"
+  integrity sha512-NEZMhAX/QUWO+/q0DPLDmV2z0BpymIUQwV/b82hGFMuhUEc/KxHPheONti8nJmrAk/6X7AHOvXjfCMCsDu71og==
 
 di@^0.0.1:
   version "0.0.1"
