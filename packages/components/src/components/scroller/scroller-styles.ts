@@ -77,12 +77,11 @@ export const getComponentCss = (
       position: 'relative',
       display: 'grid',
       gridTemplateColumns: `${prevNextWrapperWidth} minmax(0, 1fr) ${prevNextWrapperWidth}`,
-      margin: '0 -4px',
       height: 'inherit',
     },
     'scroll-area': {
       gridArea: '1 / 1 / 1 / -1',
-      padding: '4px',
+      padding: '4px 0',
       overflow: 'auto hidden',
       ...(!hasScrollbar && {
         // If scrollbar is disabled - hide scrollbar
@@ -111,15 +110,15 @@ export const getComponentCss = (
       width: '1px',
       visibility: 'hidden',
       '&:first-of-type': {
-        left: '-4px',
+        left: 0,
       },
       '&:last-of-type': {
-        right: '-4px',
+        right: 0,
       },
     },
     'action-prev': {
       ...actionPrevNextStyles,
-      left: '-1px', // ensures that the gradient always overlays the content (e.g. when zoomed)
+      left: '-0.5px', // ensures that the gradient always overlays the content (e.g. when zoomed)
       justifyContent: 'flex-start',
       background: `linear-gradient(to right, ${getGradient(theme, gradientColor)} 100%)`,
       ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -127,7 +126,7 @@ export const getComponentCss = (
       }),
       visibility: isPrevHidden ? 'hidden' : 'inherit',
       '& .action-button': {
-        marginLeft: '8px',
+        marginLeft: '4px',
         // hide buttons on mobile (actually devices not supporting hover)
         ...hoverMediaQuery({
           visibility: isPrevHidden ? 'hidden' : 'inherit',
@@ -136,7 +135,7 @@ export const getComponentCss = (
     },
     'action-next': {
       ...actionPrevNextStyles,
-      right: '-1px', // ensures that the gradient always overlays the content (e.g. when zoomed)
+      right: '-0.5px', // ensures that the gradient always overlays the content (e.g. when zoomed)
       justifyContent: 'flex-end',
       background: `linear-gradient(to left, ${getGradient(theme, gradientColor)} 100%)`,
       ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -144,7 +143,7 @@ export const getComponentCss = (
       }),
       visibility: isNextHidden ? 'hidden' : 'inherit',
       '& .action-button': {
-        marginRight: '8px',
+        marginRight: '4px',
         // hide buttons on mobile (actually devices not supporting hover)
         ...hoverMediaQuery({
           visibility: isNextHidden ? 'hidden' : 'inherit',
