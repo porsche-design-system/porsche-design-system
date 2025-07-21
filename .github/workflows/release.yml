@@ -14,10 +14,71 @@ on:
       npmjs-registry-token:
         description: 'npm registry token for npmjs'
         required: true
+      gh-deploy-key-storefront:
+        description: 'GitHub Deploy Key for GitHub Pages (Storefront).'
+        required: true
+      algolia-app-id:
+        description: 'Algolia App ID (Storefront).'
+        required: true
+      algolia-api-key:
+        description: 'Algolia API Key (Storefront).'
+        required: true
 
 jobs:
+  check-publication-status:
+    name: 'Check Publication Status'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    outputs:
+      components-version: ${{ steps.get_npm_version.outputs.version }}
+      is-components-js-published: ${{ steps.is_components_js_published_check.outputs.is-published }}
+      is-components-angular-published: ${{ steps.is_components_angular_published_check.outputs.is-published }}
+      is-components-react-published: ${{ steps.is_components_react_published_check.outputs.is-published }}
+      is-components-vue-published: ${{ steps.is_components_vue_published_check.outputs.is-published }}
+      is-storefront-published: ${{ steps.is_storefront_published_check.outputs.is-published }}
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Get Package Version'
+        id: get_npm_version
+        uses: ./.github/actions/get-local-package-version
+        with:
+          path: 'packages/components'
+      - name: 'Check if "@porsche-design-system/components-js" version is published'
+        id: is_components_js_published_check
+        uses: ./.github/actions/is-npm-package-published
+        with:
+          package-name: '@porsche-design-system/components-js'
+          package-version: ${{ steps.get_npm_version.outputs.version }}
+      - name: 'Check if "@porsche-design-system/components-angular" version is published'
+        id: is_components_angular_published_check
+        uses: ./.github/actions/is-npm-package-published
+        with:
+          package-name: '@porsche-design-system/components-angular'
+          package-version: ${{ steps.get_npm_version.outputs.version }}
+      - name: 'Check if "@porsche-design-system/components-react" version is published'
+        id: is_components_react_published_check
+        uses: ./.github/actions/is-npm-package-published
+        with:
+          package-name: '@porsche-design-system/components-react'
+          package-version: ${{ steps.get_npm_version.outputs.version }}
+      - name: 'Check if "@porsche-design-system/components-vue" version is published'
+        id: is_components_vue_published_check
+        uses: ./.github/actions/is-npm-package-published
+        with:
+          package-name: '@porsche-design-system/components-vue'
+          package-version: ${{ steps.get_npm_version.outputs.version }}
+      - name: 'Check if Storefront version is published'
+        id: is_storefront_published_check
+        uses: ./.github/actions/is-storefront-version-published
+        with:
+          version: ${{ steps.get_npm_version.outputs.version }}
   npm-components-js:
     name: 'NPM (Components JS)'
+    needs: check-publication-status
+    if: ${{ needs.check-publication-status.outputs.is-components-js-published == 'false' }}
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
@@ -42,9 +103,11 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
   npm-components-angular:
-    needs:
-      - npm-components-js
     name: 'NPM (Components Angular)'
+    needs:
+      - check-publication-status
+      - npm-components-js
+    if: ${{ needs.check-publication-status.outputs.is-components-angular-published == 'false' }}
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
@@ -69,9 +132,11 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
   npm-components-react:
-    needs:
-      - npm-components-js
     name: 'NPM (Components React)'
+    needs:
+      - check-publication-status
+      - npm-components-js
+    if: ${{ needs.check-publication-status.outputs.is-components-react-published == 'false' }}
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
@@ -96,9 +161,11 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
   npm-components-vue:
-    needs:
-      - npm-components-js
     name: 'NPM (Components Vue)'
+    needs:
+      - check-publication-status
+      - npm-components-js
+    if: ${{ needs.check-publication-status.outputs.is-components-vue-published == 'false' }}
     runs-on: ubuntu-latest
     container:
       image: ${{ inputs.image }}
@@ -122,3 +189,37 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npmjs-registry-token }}
           GITHUB_TOKEN: ${{ secrets.github-token }}
+  github-pages-storefront:
+    name: 'GitHub Pages (Storefront)'
+    needs: check-publication-status
+    if: ${{ needs.check-publication-status.outputs.is-storefront-published == 'false' }}
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Checkout (GH Pages)'
+        uses: actions/checkout@v4
+        with:
+          repository: 'porsche-design-system/porsche-design-system-storefront'
+          ssh-key: ${{ secrets.gh-deploy-key-storefront }}
+          ref: 'main'
+          path: 'gh-pages'
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+        with:
+          artifact: 'build-production'
+      - name: 'Build Storefront'
+        run: NEXT_PUBLIC_BASE_PATH="v${{ needs.check-publication-status.outputs.components-version }}" yarn build:storefront
+      - name: 'Deploy (GH Pages)'
+        uses: ./.github/actions/gh-pages
+        with:
+          source: ./packages/storefront/dist
+          target: 'v${{ needs.check-publication-status.outputs.components-version }}'
+          algolia: 'true'
+        env:
+          ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
+          ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}
