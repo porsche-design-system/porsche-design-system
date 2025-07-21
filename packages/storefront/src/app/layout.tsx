@@ -8,6 +8,7 @@ import { getBasePath } from '@/utils/getBasePath';
 import { isDevEnvironment } from '@/utils/isDev';
 import { getMetaTagsAndIconLinks } from '@porsche-design-system/components-react/partials';
 import Script from 'next/script';
+import type { ReactNode } from 'react';
 
 const title = 'Porsche Design System';
 
@@ -31,6 +32,29 @@ export const metadata: Metadata = {
   icons: isDevEnvironment ? undefined : icons,
 };
 
+const getCSPMetaTag = (): ReactNode => {
+  const cdnUrl = isDevEnvironment ? 'http://localhost:3000 http://localhost:3001' : 'https://cdn.ui.porsche.com';
+
+  const connectUrls = [
+    'https://*.algolia.net',
+    'https://*.algolianet.com',
+    'https://registry.npmjs.org/@porsche-design-system/components-js',
+  ].join(' ');
+
+  return (
+    <meta
+      httpEquiv="Content-Security-Policy"
+      content={`
+      default-src 'self' ${cdnUrl};
+      style-src 'self' 'unsafe-inline' ${cdnUrl};
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' ${cdnUrl};
+      img-src 'self' ${cdnUrl} data:;
+      media-src 'self' https://porsche-design-system.github.io;
+      connect-src 'self' ${connectUrls}`}
+    />
+  );
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -41,6 +65,7 @@ export default function RootLayout({
     <html lang="en" className="auto">
       <head>
         <base href={basePath ? `/${basePath}/` : '/'} />
+        {getCSPMetaTag()}
         <meta property="og:image" content="/assets/og-image.png" />
         <meta property="og:image:alt" content="Porsche Wordmark" />
         <meta property="og:type" content="website" />
