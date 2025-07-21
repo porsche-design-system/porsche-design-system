@@ -77,12 +77,11 @@ export const getComponentCss = (
       position: 'relative',
       display: 'grid',
       gridTemplateColumns: `${prevNextWrapperWidth} minmax(0, 1fr) ${prevNextWrapperWidth}`,
-      margin: '0 -4px',
       height: 'inherit',
     },
     'scroll-area': {
       gridArea: '1 / 1 / 1 / -1',
-      padding: '4px',
+      padding: '4px 0',
       overflow: 'auto hidden',
       ...(!hasScrollbar && {
         // If scrollbar is disabled - hide scrollbar
@@ -111,10 +110,10 @@ export const getComponentCss = (
       width: '1px',
       visibility: 'hidden',
       '&:first-of-type': {
-        left: '-4px',
+        left: 0,
       },
       '&:last-of-type': {
-        right: '-4px',
+        right: 0,
       },
     },
     'action-prev': {
