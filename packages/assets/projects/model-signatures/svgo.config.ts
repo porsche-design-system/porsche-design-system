@@ -6,12 +6,8 @@ export const config: Config = {
   plugins: [
     {
       name: 'preset-default',
-      params: {
-        overrides: {
-          removeViewBox: false, // ensures view box is not changed
-        },
-      },
     },
+    'removeTitle',
     'sortAttrs', // sort element attributes for epic readability
     'convertStyleToAttrs', // convert styles into attributes
     {
@@ -21,7 +17,5 @@ export const config: Config = {
         attrs: '(stroke|fill|xml:space)', // ensures coloring is applicable by CSS
       },
     },
-    'removeViewBox',
-    'removeTitle',
   ],
 };
