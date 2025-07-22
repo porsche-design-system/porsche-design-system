@@ -114,7 +114,6 @@ export const ConfiguratorControls = <T extends ConfiguratorTagNames>({
         delete (updatedProps.style as Record<string, string>)[name];
         if (Object.keys(updatedProps.style).length === 0) {
           // @ts-ignore TODO: Fix typing
-          // biome-ignore lint/performance/noDelete: <explanation>
           delete updatedProps.style;
         }
       }

@@ -10,18 +10,15 @@ export const HeaderPartials = (): JSX.Element => {
       : href;
   };
   /* preloads Porsche Next font (=> minimize FOUT) */
-  // biome-ignore lint/complexity/noForEach: <explanation>
   getFontLinks({ format: 'js', weights: ['regular', 'semi-bold', 'bold'] }).forEach(({ href, options }) =>
     preload(getHref(href), options)
   );
   /* preloads PDS component core chunk from CDN for PDS component hydration (=> improve loading performance) */
-  // biome-ignore lint/complexity/noForEach: <explanation>
   getComponentChunkLinks({
     components: ['accordion', 'button', 'canvas', 'icon', 'select'],
     format: 'js',
   }).forEach(({ href, options }) => preload(getHref(href), options));
   /* preloads Porsche icons (=> minimize FOUC) */
-  // biome-ignore lint/complexity/noForEach: <explanation>
   getIconLinks({ format: 'js', icons: ['search', 'configurate', 'sidebar', 'external'] }).forEach(({ href }) =>
     prefetchDNS(getHref(href))
   );

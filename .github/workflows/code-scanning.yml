@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  code-ql:
+  build:
     name: 'CodeQL'
     runs-on: ubuntu-latest
     # container:
