@@ -53,13 +53,12 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   bottom: 0;
   width: 1px;
   visibility: hidden;
-  background: red;
 }
 .trigger:first-of-type {
-  left: -4px;
+  left: 0;
 }
 .trigger:last-of-type {
-  right: -4px;
+  right: 0;
 }
 .action-prev {
   position: absolute;
@@ -165,13 +164,12 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   bottom: 0;
   width: 1px;
   visibility: hidden;
-  background: red;
 }
 .trigger:first-of-type {
-  left: -4px;
+  left: 0;
 }
 .trigger:last-of-type {
-  right: -4px;
+  right: 0;
 }
 .action-prev {
   position: absolute;
@@ -273,13 +271,12 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   bottom: 0;
   width: 1px;
   visibility: hidden;
-  background: red;
 }
 .trigger:first-of-type {
-  left: -4px;
+  left: 0;
 }
 .trigger:last-of-type {
-  right: -4px;
+  right: 0;
 }
 .action-prev {
   position: absolute;
@@ -381,13 +378,12 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   bottom: 0;
   width: 1px;
   visibility: hidden;
-  background: red;
 }
 .trigger:first-of-type {
-  left: -4px;
+  left: 0;
 }
 .trigger:last-of-type {
-  right: -4px;
+  right: 0;
 }
 .action-prev {
   position: absolute;
@@ -488,13 +484,12 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   bottom: 0;
   width: 1px;
   visibility: hidden;
-  background: red;
 }
 .trigger:first-of-type {
-  left: -4px;
+  left: 0;
 }
 .trigger:last-of-type {
-  right: -4px;
+  right: 0;
 }
 .action-prev {
   position: absolute;
@@ -596,13 +591,12 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   bottom: 0;
   width: 1px;
   visibility: hidden;
-  background: red;
 }
 .trigger:first-of-type {
-  left: -4px;
+  left: 0;
 }
 .trigger:last-of-type {
-  right: -4px;
+  right: 0;
 }
 .action-prev {
   position: absolute;
@@ -709,13 +703,12 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   bottom: 0;
   width: 1px;
   visibility: hidden;
-  background: red;
 }
 .trigger:first-of-type {
-  left: -4px;
+  left: 0;
 }
 .trigger:last-of-type {
-  right: -4px;
+  right: 0;
 }
 .action-prev {
   position: absolute;
@@ -821,13 +814,12 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   bottom: 0;
   width: 1px;
   visibility: hidden;
-  background: red;
 }
 .trigger:first-of-type {
-  left: -4px;
+  left: 0;
 }
 .trigger:last-of-type {
-  right: -4px;
+  right: 0;
 }
 .action-prev {
   position: absolute;
