@@ -19,20 +19,26 @@ import {
   AllowedTypes,
   FORM_STATES,
   SELECT_DROPDOWN_DIRECTIONS,
-  type SelectDropdownDirectionInternal,
   THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getComboboxFilterAriaAttributes,
   getHasNativePopoverSupport,
+  getHighlightedSelectOption,
+  getHighlightedSelectOptionIndex,
+  getMultiSelectActionFromKeyboardEvent,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
+  getUpdatedIndex,
+  getUsableSelectOptions,
   handleButtonEvent,
   hasPropValueChanged,
   isClickOutside,
   isElementOfKind,
   optionListUpdatePosition,
+  setNextSelectOptionHighlighted,
   throwIfElementIsNotOfKind,
+  updateFilterResults,
   validateProps,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
@@ -45,19 +51,11 @@ import {
   type MultiSelectOption,
   type MultiSelectState,
   type MultiSelectUpdateEventDetail,
-  getHighlightedOption,
   getSelectedOptionValues,
   getSelectedOptionsString,
-  hasFilterOptionResults,
-  resetFilteredOptions,
-  resetHighlightedOptions,
   resetSelectedOptions,
-  setFirstOptionHighlighted,
-  setLastOptionHighlighted,
   setSelectedOptions,
   syncMultiSelectChildrenProps,
-  updateHighlightedOption,
-  updateOptionsFilterState,
 } from './multi-select-utils';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
@@ -195,6 +193,7 @@ export class MultiSelect {
         this.cleanUpAutoUpdate();
         this.cleanUpAutoUpdate = undefined;
       }
+      this.resetFilter();
     }
   }
 
@@ -386,18 +385,16 @@ export class MultiSelect {
       isClickOutside(e, this.popoverElement)
     ) {
       this.isOpen = false;
-      this.resetFilter();
     }
   };
 
   private onFilterInput = (e: CustomEvent<InputSearchInputEventDetail>): void => {
-    // TODO: Refactor & Align with select
-    updateOptionsFilterState(
-      (e.detail.target as HTMLInputElement).value,
+    const { hasFilterResults } = updateFilterResults(
       this.multiSelectOptions,
-      this.multiSelectOptgroups
+      this.multiSelectOptgroups,
+      (e.detail.target as HTMLInputElement).value
     );
-    this.hasFilterResults = hasFilterOptionResults(this.multiSelectOptions);
+    this.hasFilterResults = hasFilterResults;
   };
 
   private onComboClick = (_: MouseEvent): void => {
@@ -415,25 +412,55 @@ export class MultiSelect {
 
   private resetFilter = (): void => {
     this.filterInputElement.value = '';
-    resetFilteredOptions(this.multiSelectOptions, this.multiSelectOptgroups);
+    this.hasFilterResults = true;
+    for (const option of this.multiSelectOptions) {
+      option.style.display = 'block';
+    }
+    for (const optgroup of this.multiSelectOptgroups) {
+      optgroup.style.display = 'block';
+    }
   };
 
-  private onComboKeyDown = (e: KeyboardEvent): void => {
-    switch (e.key) {
-      case 'ArrowUp':
-      case 'Up': {
-        e.preventDefault();
-        this.cycleDropdown('up');
+  private onComboKeyDown = (event: KeyboardEvent): void => {
+    const { key, code } = event;
+
+    // Prevent closing the menu when pressing key on reset button
+    if (event.composedPath()[0] === this.resetButtonElement?.shadowRoot?.firstElementChild) {
+      return;
+    }
+
+    // When pressing space in filter input, we want to allow typing space, opening by Space is handled with onComboClick
+    if (key === ' ' || code === 'Space') {
+      return;
+    }
+
+    const action = getMultiSelectActionFromKeyboardEvent(event, this.isOpen);
+
+    switch (action) {
+      case 'Last':
+      case 'First':
+        // biome-ignore lint/suspicious/noFallthroughSwitchClause: intentional fallthrough
+        this.updateMenuState(true);
+      // intentional fallthrough
+      case 'Next':
+      case 'Previous':
+      case 'PageUp':
+      case 'PageDown': {
+        event.preventDefault();
+        const highlightedOptionIndex = getUpdatedIndex(
+          getHighlightedSelectOptionIndex(this.multiSelectOptions),
+          getUsableSelectOptions(this.multiSelectOptions).length - 1,
+          action
+        );
+        setNextSelectOptionHighlighted(this.multiSelectOptions, highlightedOptionIndex);
+        // @ts-ignore - HTMLCombobox type is missing
+        (this.filter ? this.filterInputElement : this.buttonElement).ariaActiveDescendantElement =
+          getHighlightedSelectOption(this.multiSelectOptions);
         break;
       }
-      case 'ArrowDown':
-      case 'Down': {
-        e.preventDefault();
-        this.cycleDropdown('down');
-        break;
-      }
-      case 'Enter': {
-        const highlightedOption = getHighlightedOption(this.multiSelectOptions);
+      case 'CloseSelect': {
+        event.preventDefault();
+        const highlightedOption = getHighlightedSelectOption(this.multiSelectOptions);
         if (highlightedOption) {
           highlightedOption.selected = !highlightedOption.selected;
           this.value = this.currentValue;
@@ -441,7 +468,7 @@ export class MultiSelect {
           forceUpdate(highlightedOption);
         } else if (this.internals?.form) {
           handleButtonEvent(
-            e,
+            event,
             this.host,
             () => 'submit',
             () => this.disabled
@@ -449,43 +476,27 @@ export class MultiSelect {
         }
         break;
       }
-      case 'Escape': {
-        this.isOpen = false;
-        resetHighlightedOptions(this.multiSelectOptions);
+      // intentional fallthrough
+      case 'Close': {
+        event.preventDefault();
+        this.updateMenuState(false);
+        this.buttonElement.focus();
         break;
       }
-      case 'Tab': {
-        // If there is a value the reset button will be focused and the dropdown stays open
-        if (this.currentValue.length === 0) {
-          this.isOpen = false;
-        }
-        resetHighlightedOptions(this.multiSelectOptions);
+      case 'Open': {
+        event.preventDefault();
+        this.updateMenuState(true);
+        // TODO: Do we need this when the highlight stays on the last highlighted option?
+        //const selectedIndex = getSelectedSelectOptionIndex(this.multiSelectOptions);
+        // if (selectedIndex >= 0) {
+        //   setNextSelectOptionHighlighted(this.multiSelectOptions, selectedIndex);
+        //   // @ts-ignore - HTMLCombobox type is missing
+        //   this.buttonElement.ariaActiveDescendantElement = getSelectedSelectOption(this.selectOptions);
+        // }
         break;
       }
-      case 'PageUp':
-        if (this.isOpen) {
-          e.preventDefault();
-          setFirstOptionHighlighted(this.popoverElement, this.multiSelectOptions);
-          //setAriaActiveDescendantElement(this.filterInputElement, this.multiSelectOptions);
-        }
-        break;
-      case 'PageDown':
-        if (this.isOpen) {
-          e.preventDefault();
-          setLastOptionHighlighted(this.popoverElement, this.multiSelectOptions);
-          //setAriaActiveDescendantElement(this.filterInputElement, this.multiSelectOptions);
-        }
-        break;
-      default:
-      // TODO: seems to be difficult to combine multiple keys as native select does
     }
   };
-
-  private cycleDropdown(direction: SelectDropdownDirectionInternal): void {
-    this.isOpen = true;
-    updateHighlightedOption(this.popoverElement, this.multiSelectOptions, direction);
-    //setAriaActiveDescendantElement(this.filterInputElement, this.multiSelectOptions);
-  }
 
   private emitUpdateEvent = (): void => {
     this.update.emit({

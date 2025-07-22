@@ -157,10 +157,13 @@ const initMultiSelect = (page: Page, opt?: InitOptions): Promise<void> => {
 };
 
 /* TODO:
+ * - Add test to check if filter is reset when closing by keyboard or outside click
+ * - Add test to check if filter is reset on close (options & optgroups are visible again)
  * - Add test for clicking on combobox again should toggle open
  * - Add test that when resetFilter is clicked combobox does not change open state
  * - Add input into filter with no results, then close, then reopen and check that no results indicator is gone
  * - Add test for initially hidden options, should not show up when searching for it
+ * - Add test to check Enter, Space press on reset button and check that dropdown is not opening and value is cleared
  */
 
 test('should render', async ({ page }) => {

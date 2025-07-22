@@ -17,7 +17,8 @@ export const getComponentCss = (theme: Theme, isDisabled: boolean, selected: boo
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          scrollMargin: '6px', // Aligns option when list is scrolled by navigating with keyboard
+          scrollMarginBlockStart: 'calc(max(2px, 1 * 6px) + 36px)', // 36px input height + 6px padding
+          scrollMarginBlockEnd: 'max(2px, 1 * 6px)', // Aligns option when list is scrolled by navigating with keyboard
           ...hostHiddenStyles,
         }),
       },

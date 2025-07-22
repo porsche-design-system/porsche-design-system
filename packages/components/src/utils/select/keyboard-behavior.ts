@@ -33,6 +33,59 @@ const PAGE_UP_DOWN_STEP_AMOUNT: number = 10;
  * @param {boolean} menuOpen - A boolean indicating whether the select menu is open or closed.
  * @returns {SelectAction} - The corresponding action to be performed.
  */
+export const getMultiSelectActionFromKeyboardEvent = (
+  event: KeyboardEvent,
+  menuOpen: boolean
+): SelectAction | undefined => {
+  const { key, altKey } = event;
+  const openKeys = ['ArrowDown', 'ArrowUp', 'Enter', ' ']; // all keys that will do the default open action
+  // handle opening when closed
+  if (!menuOpen && openKeys.includes(key)) {
+    return 'Open';
+  }
+
+  // home and end move the selected option when open or closed
+  if (key === 'Home') {
+    return 'First';
+  }
+  if (key === 'End') {
+    return 'Last';
+  }
+
+  // handle keys when open
+  if (menuOpen) {
+    if (key === 'ArrowUp' && altKey) {
+      return 'CloseSelect';
+    }
+    if (key === 'ArrowDown' && !altKey) {
+      return 'Next';
+    }
+    if (key === 'ArrowUp') {
+      return 'Previous';
+    }
+    if (key === 'PageUp') {
+      return 'PageUp';
+    }
+    if (key === 'PageDown') {
+      return 'PageDown';
+    }
+    if (key === 'Escape' || key === 'Tab') {
+      return 'Close';
+    }
+    if (key === 'Enter' || key === ' ') {
+      return 'CloseSelect';
+    }
+  }
+  return undefined;
+};
+
+/**
+ * Determines the action to be taken based on a keyboard event and the state of the select menu.
+ *
+ * @param {KeyboardEvent} event - The keyboard event triggering the action.
+ * @param {boolean} menuOpen - A boolean indicating whether the select menu is open or closed.
+ * @returns {SelectAction} - The corresponding action to be performed.
+ */
 export const getActionFromKeyboardEvent = (event: KeyboardEvent, menuOpen: boolean): SelectAction | undefined => {
   const { key, altKey, ctrlKey, metaKey } = event;
   const openKeys = ['ArrowDown', 'ArrowUp', 'Enter', ' ']; // all keys that will do the default open action

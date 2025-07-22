@@ -32,33 +32,6 @@ export const syncMultiSelectChildrenProps = (
   }
 };
 
-export const updateOptionsFilterState = (
-  searchString: string,
-  options: MultiSelectOption[],
-  optGroups: MultiSelectOptgroup[]
-): void => {
-  for (const option of options) {
-    option.hidden = !option.textContent.toLowerCase().includes(searchString.toLowerCase());
-  }
-
-  for (const optgroup of optGroups) {
-    optgroup.hidden = !Array.from(optgroup.children).some((child) => !(child as HTMLPMultiSelectOptionElement).hidden);
-  }
-};
-
-export const hasFilterOptionResults = (options: MultiSelectOption[]): boolean =>
-  options.some((option) => !option.hidden);
-
-export const resetFilteredOptions = (options: MultiSelectOption[], optGroups: MultiSelectOptgroup[]): void => {
-  for (const option of options) {
-    option.hidden = false;
-  }
-
-  for (const optgroup of optGroups) {
-    optgroup.hidden = false;
-  }
-};
-
 export const getSelectedOptions = (options: MultiSelectOption[]): MultiSelectOption[] =>
   options.filter((option) => option.selected);
 

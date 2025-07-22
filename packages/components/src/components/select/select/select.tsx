@@ -9,7 +9,6 @@ import {
   getSelectedOptionString,
   setSelectedOption,
   syncSelectChildrenProps,
-  updateFilterResults,
   updateSelectOptions,
 } from './select-utils';
 
@@ -44,8 +43,6 @@ import {
   getHighlightedSelectOptionIndex,
   getMatchingSelectOptionIndex,
   getPrefixedTagNames,
-  getSelectedSelectOption,
-  getSelectedSelectOptionIndex,
   getShadowRootHTMLElement,
   getUpdatedIndex,
   getUsableSelectOptions,
@@ -56,6 +53,7 @@ import {
   optionListUpdatePosition,
   setNextSelectOptionHighlighted,
   throwIfElementIsNotOfKind,
+  updateFilterResults,
   validateProps,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
@@ -204,14 +202,7 @@ export class Select {
       }
       // Reset filter on close
       if (this.filter) {
-        this.filterInputElement.value = '';
-        this.hasFilterResults = true;
-        for (const option of this.selectOptions) {
-          option.style.display = 'block';
-        }
-        for (const optgroup of this.selectOptgroups) {
-          optgroup.style.display = 'block';
-        }
+        this.resetFilter();
       }
     }
   }
@@ -377,7 +368,18 @@ export class Select {
   private onClickOutside = (e: MouseEvent): void => {
     if (this.isOpen && isClickOutside(e, this.buttonElement) && isClickOutside(e, this.popoverElement)) {
       this.isOpen = false;
-      // TODO: Reset filter here?
+    }
+  };
+
+  // TODO: Share?
+  private resetFilter = (): void => {
+    this.filterInputElement.value = '';
+    this.hasFilterResults = true;
+    for (const option of this.selectOptions) {
+      option.style.display = 'block';
+    }
+    for (const optgroup of this.selectOptgroups) {
+      optgroup.style.display = 'block';
     }
   };
 
@@ -436,12 +438,13 @@ export class Select {
       case 'Open': {
         event.preventDefault();
         this.updateMenuState(true);
-        const selectedIndex = getSelectedSelectOptionIndex(this.selectOptions);
-        if (selectedIndex >= 0) {
-          setNextSelectOptionHighlighted(this.selectOptions, selectedIndex);
-          // @ts-ignore - HTMLCombobox type is missing
-          this.buttonElement.ariaActiveDescendantElement = getSelectedSelectOption(this.selectOptions);
-        }
+        // TODO: Do we need this when the highlight stays on the last highlighted option? Highlight will be gone if not in filter results
+        // const selectedIndex = getSelectedSelectOptionIndex(this.selectOptions);
+        // if (selectedIndex >= 0) {
+        //   setNextSelectOptionHighlighted(this.selectOptions, selectedIndex);
+        //   // @ts-ignore - HTMLCombobox type is missing
+        //   this.buttonElement.ariaActiveDescendantElement = getSelectedSelectOption(this.selectOptions);
+        // }
         break;
       }
     }
