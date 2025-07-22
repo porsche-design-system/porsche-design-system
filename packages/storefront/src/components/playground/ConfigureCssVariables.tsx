@@ -9,7 +9,7 @@ type ConfigureCssVariablesProps<T extends ConfiguratorTagNames> = {
   tagName: TagName;
   componentCssVariables: ComponentMeta['cssVariablesMeta'];
   configuredCssVariables: ElementConfig<T>['properties'];
-  // biome-ignore lint/complexity/noBannedTypes: <explanation>
+  // biome-ignore lint/complexity/noBannedTypes: ok
   defaultCssVariables: ElementConfig<T>['properties'] | {};
   onUpdateCssVariables: (cssVariableName: string, selectedValue: string | undefined) => void;
   onResetAllCssVariables: () => void;

@@ -9,7 +9,6 @@ const handlersSet: Set<() => void> = new Set();
 
 if (typeof window !== 'undefined') {
   const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-  // biome-ignore lint/complexity/noForEach: <explanation>
   const handleChange = () => handlersSet.forEach((cb) => cb());
   mediaQuery.addEventListener('change', handleChange);
 }
