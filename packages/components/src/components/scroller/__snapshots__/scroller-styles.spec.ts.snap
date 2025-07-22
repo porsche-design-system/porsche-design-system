@@ -16,12 +16,11 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   position: relative;
   display: grid;
   grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
-  margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
   grid-area: 1 / 1 / 1 / -1;
-  padding: 4px;
+  padding: 4px 0;
   overflow: auto hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -55,10 +54,10 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   visibility: hidden;
 }
 .trigger:first-of-type {
-  left: -4px;
+  left: 0;
 }
 .trigger:last-of-type {
-  right: -4px;
+  right: 0;
 }
 .action-prev {
   position: absolute;
@@ -69,13 +68,13 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   padding: 4px 0;
   display: flex;
   align-items: center;
-  left: -1px;
+  left: -0.5px;
   justify-content: flex-start;
   background: linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: inherit;
 }
 .action-prev .action-button {
-  margin-left: 8px;
+  margin-left: 4px;
 }
 .action-next {
   position: absolute;
@@ -86,13 +85,13 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   padding: 4px 0;
   display: flex;
   align-items: center;
-  right: -1px;
+  right: -0.5px;
   justify-content: flex-end;
   background: linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: inherit;
 }
 .action-next .action-button {
-  margin-right: 8px;
+  margin-right: 4px;
 }
 .action-button {
   --p-internal-button-scaling: 0;
@@ -127,12 +126,11 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   position: relative;
   display: grid;
   grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
-  margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
   grid-area: 1 / 1 / 1 / -1;
-  padding: 4px;
+  padding: 4px 0;
   overflow: auto hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -166,10 +164,10 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   visibility: hidden;
 }
 .trigger:first-of-type {
-  left: -4px;
+  left: 0;
 }
 .trigger:last-of-type {
-  right: -4px;
+  right: 0;
 }
 .action-prev {
   position: absolute;
@@ -180,13 +178,13 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   padding: 4px 0;
   display: flex;
   align-items: center;
-  left: -1px;
+  left: -0.5px;
   justify-content: flex-start;
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: inherit;
 }
 .action-prev .action-button {
-  margin-left: 8px;
+  margin-left: 4px;
 }
 .action-next {
   position: absolute;
@@ -197,13 +195,13 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   padding: 4px 0;
   display: flex;
   align-items: center;
-  right: -1px;
+  right: -0.5px;
   justify-content: flex-end;
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: inherit;
 }
 .action-next .action-button {
-  margin-right: 8px;
+  margin-right: 4px;
 }
 .action-button {
   --p-internal-button-scaling: 0;
@@ -239,12 +237,11 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   position: relative;
   display: grid;
   grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
-  margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
   grid-area: 1 / 1 / 1 / -1;
-  padding: 4px;
+  padding: 4px 0;
   overflow: auto hidden;
 }
 .scroll-wrapper {
@@ -273,10 +270,10 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   visibility: hidden;
 }
 .trigger:first-of-type {
-  left: -4px;
+  left: 0;
 }
 .trigger:last-of-type {
-  right: -4px;
+  right: 0;
 }
 .action-prev {
   position: absolute;
@@ -287,13 +284,13 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   padding: 4px 0;
   display: flex;
   align-items: flex-start;
-  left: -1px;
+  left: -0.5px;
   justify-content: flex-start;
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: inherit;
 }
 .action-prev .action-button {
-  margin-left: 8px;
+  margin-left: 4px;
 }
 .action-next {
   position: absolute;
@@ -304,13 +301,13 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   padding: 4px 0;
   display: flex;
   align-items: flex-start;
-  right: -1px;
+  right: -0.5px;
   justify-content: flex-end;
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: inherit;
 }
 .action-next .action-button {
-  margin-right: 8px;
+  margin-right: 4px;
 }
 .action-button {
   --p-internal-button-scaling: 0;
@@ -346,12 +343,11 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   position: relative;
   display: grid;
   grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
-  margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
   grid-area: 1 / 1 / 1 / -1;
-  padding: 4px;
+  padding: 4px 0;
   overflow: auto hidden;
 }
 .scroll-wrapper {
@@ -380,10 +376,10 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   visibility: hidden;
 }
 .trigger:first-of-type {
-  left: -4px;
+  left: 0;
 }
 .trigger:last-of-type {
-  right: -4px;
+  right: 0;
 }
 .action-prev {
   position: absolute;
@@ -394,13 +390,13 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   padding: 4px 0;
   display: flex;
   align-items: flex-start;
-  left: -1px;
+  left: -0.5px;
   justify-content: flex-start;
   background: linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: hidden;
 }
 .action-prev .action-button {
-  margin-left: 8px;
+  margin-left: 4px;
 }
 .action-next {
   position: absolute;
@@ -411,13 +407,13 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   padding: 4px 0;
   display: flex;
   align-items: flex-start;
-  right: -1px;
+  right: -0.5px;
   justify-content: flex-end;
   background: linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: inherit;
 }
 .action-next .action-button {
-  margin-right: 8px;
+  margin-right: 4px;
 }
 .action-button {
   --p-internal-button-scaling: 0;
@@ -452,12 +448,11 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   position: relative;
   display: grid;
   grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
-  margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
   grid-area: 1 / 1 / 1 / -1;
-  padding: 4px;
+  padding: 4px 0;
   overflow: auto hidden;
 }
 .scroll-wrapper {
@@ -486,10 +481,10 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   visibility: hidden;
 }
 .trigger:first-of-type {
-  left: -4px;
+  left: 0;
 }
 .trigger:last-of-type {
-  right: -4px;
+  right: 0;
 }
 .action-prev {
   position: absolute;
@@ -500,13 +495,13 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   padding: 4px 0;
   display: flex;
   align-items: flex-start;
-  left: -1px;
+  left: -0.5px;
   justify-content: flex-start;
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: inherit;
 }
 .action-prev .action-button {
-  margin-left: 8px;
+  margin-left: 4px;
 }
 .action-next {
   position: absolute;
@@ -517,13 +512,13 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   padding: 4px 0;
   display: flex;
   align-items: flex-start;
-  right: -1px;
+  right: -0.5px;
   justify-content: flex-end;
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-next .action-button {
-  margin-right: 8px;
+  margin-right: 4px;
 }
 .action-button {
   --p-internal-button-scaling: 0;
@@ -559,12 +554,11 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   position: relative;
   display: grid;
   grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
-  margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
   grid-area: 1 / 1 / 1 / -1;
-  padding: 4px;
+  padding: 4px 0;
   overflow: auto hidden;
 }
 .scroll-wrapper {
@@ -593,10 +587,10 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   visibility: hidden;
 }
 .trigger:first-of-type {
-  left: -4px;
+  left: 0;
 }
 .trigger:last-of-type {
-  right: -4px;
+  right: 0;
 }
 .action-prev {
   position: absolute;
@@ -607,13 +601,13 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   padding: 4px 0;
   display: flex;
   align-items: flex-start;
-  left: -1px;
+  left: -0.5px;
   justify-content: flex-start;
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-prev .action-button {
-  margin-left: 8px;
+  margin-left: 4px;
 }
 .action-next {
   position: absolute;
@@ -624,13 +618,13 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   padding: 4px 0;
   display: flex;
   align-items: flex-start;
-  right: -1px;
+  right: -0.5px;
   justify-content: flex-end;
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-next .action-button {
-  margin-right: 8px;
+  margin-right: 4px;
 }
 .action-button {
   --p-internal-button-scaling: 0;
@@ -666,12 +660,11 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   position: relative;
   display: grid;
   grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
-  margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
   grid-area: 1 / 1 / 1 / -1;
-  padding: 4px;
+  padding: 4px 0;
   overflow: auto hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -705,10 +698,10 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   visibility: hidden;
 }
 .trigger:first-of-type {
-  left: -4px;
+  left: 0;
 }
 .trigger:last-of-type {
-  right: -4px;
+  right: 0;
 }
 .action-prev {
   position: absolute;
@@ -719,13 +712,13 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   padding: 4px 0;
   display: flex;
   align-items: center;
-  left: -1px;
+  left: -0.5px;
   justify-content: flex-start;
   background: linear-gradient(to right, rgba(33,34,37,1) 20%,rgba(33,34,37,0.6) 48%,rgba(33,34,37,0.3) 68%,rgba(33,34,37,0) 100%);
   visibility: inherit;
 }
 .action-prev .action-button {
-  margin-left: 8px;
+  margin-left: 4px;
 }
 .action-next {
   position: absolute;
@@ -736,13 +729,13 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   padding: 4px 0;
   display: flex;
   align-items: center;
-  right: -1px;
+  right: -0.5px;
   justify-content: flex-end;
   background: linear-gradient(to left, rgba(33,34,37,1) 20%,rgba(33,34,37,0.6) 48%,rgba(33,34,37,0.3) 68%,rgba(33,34,37,0) 100%);
   visibility: inherit;
 }
 .action-next .action-button {
-  margin-right: 8px;
+  margin-right: 4px;
 }
 .action-button {
   --p-internal-button-scaling: 0;
@@ -777,12 +770,11 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   position: relative;
   display: grid;
   grid-template-columns: calc(calc(6px + 2.125ex) + 24px) minmax(0, 1fr) calc(calc(6px + 2.125ex) + 24px);
-  margin: 0 -4px;
   height: inherit;
 }
 .scroll-area {
   grid-area: 1 / 1 / 1 / -1;
-  padding: 4px;
+  padding: 4px 0;
   overflow: auto hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -816,10 +808,10 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   visibility: hidden;
 }
 .trigger:first-of-type {
-  left: -4px;
+  left: 0;
 }
 .trigger:last-of-type {
-  right: -4px;
+  right: 0;
 }
 .action-prev {
   position: absolute;
@@ -830,13 +822,13 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   padding: 4px 0;
   display: flex;
   align-items: center;
-  left: -1px;
+  left: -0.5px;
   justify-content: flex-start;
   background: linear-gradient(to right, rgba(238,239,242,1) 20%,rgba(238,239,242,0.6) 48%,rgba(238,239,242,0.3) 68%,rgba(238,239,242,0) 100%);
   visibility: inherit;
 }
 .action-prev .action-button {
-  margin-left: 8px;
+  margin-left: 4px;
 }
 .action-next {
   position: absolute;
@@ -847,13 +839,13 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
   padding: 4px 0;
   display: flex;
   align-items: center;
-  right: -1px;
+  right: -0.5px;
   justify-content: flex-end;
   background: linear-gradient(to left, rgba(238,239,242,1) 20%,rgba(238,239,242,0.6) 48%,rgba(238,239,242,0.3) 68%,rgba(238,239,242,0) 100%);
   visibility: inherit;
 }
 .action-next .action-button {
-  margin-right: 8px;
+  margin-right: 4px;
 }
 .action-button {
   --p-internal-button-scaling: 0;
