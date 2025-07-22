@@ -16,12 +16,12 @@
   },
   "dependencies": {
     "@porsche-design-system/components-js": "3.29.0-rc.1",
-    "react": "^19.0.0"
+    "react": "^19.1.0"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.26.0",
     "@porsche-design-system/assets": "5.0.2",
-    "@types/react": "^19.0.2",
+    "@types/react": "^19.1.8",
     "babel-loader": "^9.2.1"
   },
   "peerDependencies": {

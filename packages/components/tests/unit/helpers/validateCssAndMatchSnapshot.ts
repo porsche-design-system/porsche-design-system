@@ -5,7 +5,7 @@ import { getCssObject } from '../../../src/test-utils';
 
 export const validateCssAndMatchSnapshot = (css: string) => {
   const cssObject: any = getCssObject(css);
-  const componentName = expect.getState().testPath.match(/\/([^\/]+)\/[^\/]+\.spec\.ts/)[1];
+  const componentName = expect.getState().testPath.match(/\/([^/]+)\/[^/]+\.spec\.ts/)[1];
   const componentTagName = `p-${componentName}` as TagName;
   // Extract componentMeta from testPath, if it's a functional component this will be undefined
   const componentMeta = getComponentMeta(componentTagName);

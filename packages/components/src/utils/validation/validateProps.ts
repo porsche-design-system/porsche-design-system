@@ -61,7 +61,6 @@ export const printErrorMessage = ({
 };
 
 export const isValueNotOfType = (propValue: any, propType: string): boolean => {
-  // biome-ignore lint/suspicious/useValidTypeof: the comparison works because propValue has primitive values only
   return propValue !== undefined && typeof propValue !== propType;
 };
 
