@@ -77,11 +77,12 @@ export const getComponentCss = (
       position: 'relative',
       display: 'grid',
       gridTemplateColumns: `${prevNextWrapperWidth} minmax(0, 1fr) ${prevNextWrapperWidth}`,
+      margin: '0 -4px',
       height: 'inherit',
     },
     'scroll-area': {
       gridArea: '1 / 1 / 1 / -1',
-      padding: '4px 0',
+      padding: '4px',
       overflow: 'auto hidden',
       ...(!hasScrollbar && {
         // If scrollbar is disabled - hide scrollbar
@@ -109,16 +110,17 @@ export const getComponentCss = (
       bottom: 0,
       width: '1px',
       visibility: 'hidden',
+      background: 'red',
       '&:first-of-type': {
-        left: 0,
+        left: '-4px',
       },
       '&:last-of-type': {
-        right: 0,
+        right: '-4px',
       },
     },
     'action-prev': {
       ...actionPrevNextStyles,
-      left: '-0.5px', // ensures that the gradient always overlays the content (e.g. when zoomed)
+      left: '-1px', // ensures that the gradient always overlays the content (e.g. when zoomed)
       justifyContent: 'flex-start',
       background: `linear-gradient(to right, ${getGradient(theme, gradientColor)} 100%)`,
       ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -126,7 +128,7 @@ export const getComponentCss = (
       }),
       visibility: isPrevHidden ? 'hidden' : 'inherit',
       '& .action-button': {
-        marginLeft: '4px',
+        marginLeft: '8px',
         // hide buttons on mobile (actually devices not supporting hover)
         ...hoverMediaQuery({
           visibility: isPrevHidden ? 'hidden' : 'inherit',
@@ -135,7 +137,7 @@ export const getComponentCss = (
     },
     'action-next': {
       ...actionPrevNextStyles,
-      right: '-0.5px', // ensures that the gradient always overlays the content (e.g. when zoomed)
+      right: '-1px', // ensures that the gradient always overlays the content (e.g. when zoomed)
       justifyContent: 'flex-end',
       background: `linear-gradient(to left, ${getGradient(theme, gradientColor)} 100%)`,
       ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -143,7 +145,7 @@ export const getComponentCss = (
       }),
       visibility: isNextHidden ? 'hidden' : 'inherit',
       '& .action-button': {
-        marginRight: '4px',
+        marginRight: '8px',
         // hide buttons on mobile (actually devices not supporting hover)
         ...hoverMediaQuery({
           visibility: isNextHidden ? 'hidden' : 'inherit',
