@@ -365,6 +365,7 @@ export class Select {
   private onComboClick = (e: MouseEvent): void => {
     const target = e.target as HTMLElement;
 
+    // TODO: Check why this is necessary
     // Prevent closing if the filter input was clicked
     if (this.filter && this.filterInputElement?.contains(target)) {
       return;
@@ -376,6 +377,7 @@ export class Select {
   private onClickOutside = (e: MouseEvent): void => {
     if (this.isOpen && isClickOutside(e, this.buttonElement) && isClickOutside(e, this.popoverElement)) {
       this.isOpen = false;
+      // TODO: Reset filter here?
     }
   };
 

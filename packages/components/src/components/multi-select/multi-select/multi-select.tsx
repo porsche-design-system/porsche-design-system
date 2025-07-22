@@ -23,9 +23,8 @@ import {
   THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
-  getFilterInputAriaAttributes,
+  getComboboxFilterAriaAttributes,
   getHasNativePopoverSupport,
-  getListAriaAttributes,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   handleButtonEvent,
@@ -37,8 +36,8 @@ import {
   validateProps,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
-import { descriptionId, labelId } from '../../common/label/label-utils';
-import { StateMessage, messageId } from '../../common/state-message/state-message';
+import { StateMessage } from '../../common/state-message/state-message';
+import type { InputSearchInputEventDetail } from '../../input-search/input-search-utils';
 import { getComponentCss } from './multi-select-styles';
 import {
   type MultiSelectDropdownDirection,
@@ -59,7 +58,6 @@ import {
   syncMultiSelectChildrenProps,
   updateHighlightedOption,
   updateOptionsFilterState,
-  setAriaActiveDescendantElement,
 } from './multi-select-utils';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
@@ -142,7 +140,8 @@ export class MultiSelect {
   private defaultValue: string[];
   private multiSelectOptions: MultiSelectOption[] = [];
   private multiSelectOptgroups: MultiSelectOptgroup[] = [];
-  private inputElement: HTMLInputElement;
+  private buttonElement: HTMLButtonElement;
+  private filterInputElement: HTMLPInputSearchElement;
   private resetButtonElement: HTMLElement;
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
   private popoverElement: HTMLDivElement;
@@ -183,8 +182,8 @@ export class MultiSelect {
       }
       if (typeof this.cleanUpAutoUpdate === 'undefined') {
         // ensures floating ui event listeners are added when options list is opened
-        this.cleanUpAutoUpdate = autoUpdate(this.inputElement, this.popoverElement, async (): Promise<void> => {
-          await optionListUpdatePosition(this.dropdownDirection, this.inputElement, this.popoverElement);
+        this.cleanUpAutoUpdate = autoUpdate(this.buttonElement, this.popoverElement, async (): Promise<void> => {
+          await optionListUpdatePosition(this.dropdownDirection, this.buttonElement, this.popoverElement);
         });
       }
     } else {
@@ -268,34 +267,17 @@ export class MultiSelect {
           isRequired={this.required}
           isDisabled={this.disabled}
         />
-        <div class={{ wrapper: true, disabled: this.disabled }}>
-          <input
-            id={inputId}
-            role="combobox"
-            placeholder={getSelectedOptionsString(this.multiSelectOptions) || null}
-            autoComplete="off"
-            disabled={this.disabled}
-            required={this.required}
-            onInput={this.onInputChange}
-            onClick={this.onInputClick}
-            onKeyDown={this.onInputKeyDown}
-            ref={(el) => (this.inputElement = el)}
-            aria-invalid={this.state === 'error' ? 'true' : null}
-            {...getFilterInputAriaAttributes(
-              this.isOpen,
-              this.required,
-              labelId,
-              `${descriptionId} ${messageId}`,
-              popoverId
-            )}
-          />
-          <PrefixedTagNames.pIcon
-            class={{ icon: true, 'icon--rotate': this.isOpen }}
-            name="arrow-head-down"
-            theme={this.theme}
-            color={this.disabled ? 'state-disabled' : 'primary'}
-            aria-hidden="true"
-          />
+        <button
+          aria-invalid={this.state === 'error' ? 'true' : null}
+          type="button"
+          role="combobox"
+          id={inputId}
+          disabled={this.disabled}
+          onClick={this.onComboClick}
+          onKeyDown={this.onComboKeyDown}
+          ref={(el) => (this.buttonElement = el)}
+        >
+          <span>{getSelectedOptionsString(this.multiSelectOptions)}</span>
           {this.currentValue.length > 0 && (
             <PrefixedTagNames.pButtonPure
               type="button"
@@ -311,13 +293,41 @@ export class MultiSelect {
               Reset selection
             </PrefixedTagNames.pButtonPure>
           )}
-          <div
-            id={popoverId}
-            popover="manual"
-            tabIndex={-1}
-            {...getListAriaAttributes(this.label, this.required, true, this.isOpen, true)}
-            ref={(el) => (this.popoverElement = el)}
-          >
+          <PrefixedTagNames.pIcon
+            class="icon"
+            name="arrow-head-down"
+            theme={this.theme}
+            color={this.disabled ? 'state-disabled' : 'primary'}
+            aria-hidden="true"
+          />
+        </button>
+        <div
+          id={popoverId}
+          popover="manual"
+          tabIndex={-1}
+          onToggle={() => this.onToggle()}
+          role="dialog"
+          aria-label={this.label}
+          aria-hidden={this.isOpen ? null : 'true'}
+          aria-multiselectable="true"
+          ref={(el) => (this.popoverElement = el)}
+        >
+          <PrefixedTagNames.pInputSearch
+            class="filter"
+            name="filter"
+            label="Filter options"
+            hideLabel={true}
+            autoComplete="off"
+            clear={true}
+            indicator={true}
+            compact={true}
+            theme={this.theme}
+            {...getComboboxFilterAriaAttributes()}
+            onInput={this.onFilterInput}
+            onKeyDown={this.onComboKeyDown}
+            ref={(el: HTMLPInputSearchElement) => (this.filterInputElement = el)}
+          />
+          <div class="options" role="listbox" aria-label={this.label}>
             {!this.hasFilterResults && (
               <div class="no-results" role="option">
                 <span aria-hidden="true">---</span>
@@ -361,10 +371,17 @@ export class MultiSelect {
     }
   };
 
+  private updateMenuState = (open: boolean): void => {
+    if (this.isOpen === open) {
+      return;
+    }
+    this.isOpen = open;
+  };
+
   private onClickOutside = (e: MouseEvent): void => {
     if (
       this.isOpen &&
-      isClickOutside(e, this.inputElement) &&
+      isClickOutside(e, this.buttonElement) &&
       isClickOutside(e, this.resetButtonElement) &&
       isClickOutside(e, this.popoverElement)
     ) {
@@ -373,39 +390,35 @@ export class MultiSelect {
     }
   };
 
-  private onInputChange = (e: InputEvent & { target: HTMLInputElement }): void => {
-    if (e.target.value.startsWith(' ')) {
-      this.resetFilter();
-    } else {
-      updateOptionsFilterState(
-        (e.target as HTMLInputElement).value,
-        this.multiSelectOptions,
-        this.multiSelectOptgroups
-      );
-      this.hasFilterResults = hasFilterOptionResults(this.multiSelectOptions);
-    }
-    // in case input is focused via tab instead of click
-    this.isOpen = true;
+  private onFilterInput = (e: CustomEvent<InputSearchInputEventDetail>): void => {
+    // TODO: Refactor & Align with select
+    updateOptionsFilterState(
+      (e.detail.target as HTMLInputElement).value,
+      this.multiSelectOptions,
+      this.multiSelectOptgroups
+    );
+    this.hasFilterResults = hasFilterOptionResults(this.multiSelectOptions);
   };
 
-  private onInputClick = (): void => {
-    this.isOpen = true;
+  private onComboClick = (_: MouseEvent): void => {
+    this.updateMenuState(!this.isOpen);
   };
 
-  private onResetClick = (): void => {
+  private onResetClick = (e: MouseEvent): void => {
+    e.stopPropagation(); // Prevent parent click event from closing the dropdown
     resetSelectedOptions(this.multiSelectOptions);
     this.value = this.currentValue;
-    this.inputElement.focus();
+    this.buttonElement.focus();
     this.emitUpdateEvent();
     forceUpdate(this.host);
   };
 
   private resetFilter = (): void => {
-    this.inputElement.value = '';
+    this.filterInputElement.value = '';
     resetFilteredOptions(this.multiSelectOptions, this.multiSelectOptgroups);
   };
 
-  private onInputKeyDown = (e: KeyboardEvent): void => {
+  private onComboKeyDown = (e: KeyboardEvent): void => {
     switch (e.key) {
       case 'ArrowUp':
       case 'Up': {
@@ -453,14 +466,14 @@ export class MultiSelect {
         if (this.isOpen) {
           e.preventDefault();
           setFirstOptionHighlighted(this.popoverElement, this.multiSelectOptions);
-          setAriaActiveDescendantElement(this.inputElement, this.multiSelectOptions);
+          //setAriaActiveDescendantElement(this.filterInputElement, this.multiSelectOptions);
         }
         break;
       case 'PageDown':
         if (this.isOpen) {
           e.preventDefault();
           setLastOptionHighlighted(this.popoverElement, this.multiSelectOptions);
-          setAriaActiveDescendantElement(this.inputElement, this.multiSelectOptions);
+          //setAriaActiveDescendantElement(this.filterInputElement, this.multiSelectOptions);
         }
         break;
       default:
@@ -471,7 +484,7 @@ export class MultiSelect {
   private cycleDropdown(direction: SelectDropdownDirectionInternal): void {
     this.isOpen = true;
     updateHighlightedOption(this.popoverElement, this.multiSelectOptions, direction);
-    setAriaActiveDescendantElement(this.inputElement, this.multiSelectOptions);
+    //setAriaActiveDescendantElement(this.filterInputElement, this.multiSelectOptions);
   }
 
   private emitUpdateEvent = (): void => {
@@ -479,5 +492,16 @@ export class MultiSelect {
       value: this.currentValue,
       name: this.name,
     });
+  };
+
+  private onToggle = (): void => {
+    if (this.isOpen) {
+      // Double requestAnimationFrame as Safari fix to make sure the input will receive focus
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          this.filterInputElement.focus();
+        });
+      });
+    }
   };
 }

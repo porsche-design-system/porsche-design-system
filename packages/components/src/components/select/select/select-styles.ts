@@ -36,9 +36,9 @@ export const getComponentCss = (
   hasSlottedImage: boolean
 ): string => {
   const scalingVar = `var(${cssVarInternalSelectScaling}, ${compact ? 0.5 : 1})`;
+  const { contrastMediumColor, backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
   const { contrastMediumColor: contrastMediumColorDark, backgroundSurfaceColor: backgroundSurfaceColorDark } =
     getThemedColors('dark');
-  const { contrastMediumColor, backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {

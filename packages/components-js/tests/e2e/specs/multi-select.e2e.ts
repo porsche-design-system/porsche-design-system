@@ -156,6 +156,13 @@ const initMultiSelect = (page: Page, opt?: InitOptions): Promise<void> => {
   return setContentWithDesignSystem(page, isWithinForm ? `<form onsubmit="return false;">${markup}</form>` : markup);
 };
 
+/* TODO:
+ * - Add test for clicking on combobox again should toggle open
+ * - Add test that when resetFilter is clicked combobox does not change open state
+ * - Add input into filter with no results, then close, then reopen and check that no results indicator is gone
+ * - Add test for initially hidden options, should not show up when searching for it
+ */
+
 test('should render', async ({ page }) => {
   await initMultiSelect(page);
   const inputElement = getInput(page);
