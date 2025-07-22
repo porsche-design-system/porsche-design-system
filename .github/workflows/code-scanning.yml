@@ -20,8 +20,8 @@ jobs:
       - name: 'Checkout'
         uses: actions/checkout@v4
       - name: 'Initialize'
-        uses: github/codeql-action/init@v2
+        uses: github/codeql-action/init@v3
         with:
           languages: javascript
       - name: 'Analyze'
-        uses: github/codeql-action/analyze@v2
+        uses: github/codeql-action/analyze@v3
