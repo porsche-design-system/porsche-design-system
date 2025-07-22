@@ -65,9 +65,15 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
   let props: any = hasSlot ? { children: renderChildren() } : null;
 
   if (
-    ['p-textarea', 'p-input-password', 'p-input-number', 'p-input-text', 'p-input-email', 'p-input-search'].includes(
-      tagName
-    )
+    [
+      'p-textarea',
+      'p-input-password',
+      'p-input-number',
+      'p-input-text',
+      'p-input-email',
+      'p-input-tel',
+      'p-input-search',
+    ].includes(tagName)
   ) {
     props = {
       ...props,
