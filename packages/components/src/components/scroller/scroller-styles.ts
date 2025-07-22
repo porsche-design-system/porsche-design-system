@@ -110,12 +110,11 @@ export const getComponentCss = (
       bottom: 0,
       width: '1px',
       visibility: 'hidden',
-      background: 'red',
       '&:first-of-type': {
-        left: '-4px',
+        left: 0,
       },
       '&:last-of-type': {
-        right: '-4px',
+        right: 0,
       },
     },
     'action-prev': {
