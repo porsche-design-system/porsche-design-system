@@ -551,19 +551,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.hasCustomDropdown/g, 'hasCustomDropdown');
       } else if (tagName === 'p-multi-select') {
         newFileContent = newFileContent
-          // remove aria functions
-          .replace(/\{\.\.\.getFilterInputAriaAttributes\([\s\S]+?\)}\s*/, '')
-          .replace(/\{\.\.\.getListAriaAttributes\([\s\S]+?\)}\s*/, '')
-          // replace wrapper className
-          .replace(/\{\{ wrapper: true, disabled: (this\.props\.disabled) }}/, `{\`wrapper\${$1 ? ' disabled' : ''}\`}`)
-          // remove color prop
-          .replace(/\s*color=\{this\.props\.disabled \? 'state-disabled' : 'primary'}\s*/, '')
-          // remove placeholder
-          .replace(/\s*placeholder=\{.+/, '')
-          // replace toggle icon className
-          .replace(/className=\{\{ icon: true, 'icon--rotate': this\.props\.isOpen }}/, 'className="icon"')
-          .replace(/this\.props\.currentValue\.length > 0/g, 'this.props.currentValue')
-          .replace(/getSelectedOptions\(this\.props\.multiSelectOptions\)\.length > 0/, 'false')
           // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
           .replace(/@AttachInternals\(\)/, '')
           .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
@@ -587,12 +574,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         );
       } else if (tagName === 'p-select') {
         newFileContent = newFileContent
-          // replace wrapper className
-          .replace(/\{\{ wrapper: true, disabled: (this\.props\.disabled) }}/, `{\`wrapper\${$1 ? ' disabled' : ''}\`}`)
-          // replace toggle icon className
-          .replace(/className=\{\{ icon: true, 'icon--rotate': this\.props\.isOpen }}/, 'className="icon"')
-          .replace(/tabindex="-1"/, '')
-          // replace getSelectedOptionString
           .replace(
             /getSelectedOptionString\(typeof otherChildren\[0] === 'object' && 'props' in otherChildren\[0] && otherChildren\[0]\?\.propsOptions\)/g,
             'getSelectedOptionString(otherChildren)'
