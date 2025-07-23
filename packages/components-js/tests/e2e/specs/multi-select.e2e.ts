@@ -24,16 +24,20 @@ import {
 const getHost = (page: Page) => page.locator('p-multi-select');
 const getFieldset = (page: Page) => page.locator('fieldset');
 const getMultiSelectValue = async (page: Page): Promise<string[]> => await getProperty(getHost(page), 'value');
-const getInput = (page: Page) => page.locator('p-multi-select input').first();
-const getInputValue = async (page: Page): Promise<string | number> => getProperty(getInput(page), 'value');
-const getInputPlaceholder = async (page: Page): Promise<string> => getAttribute(getInput(page), 'placeholder');
+const getButton = (page: Page) => page.locator('p-multi-select button[role="combobox"]');
+const getInputValue = async (page: Page): Promise<string | number> => getProperty(getButton(page), 'value');
+const getInputPlaceholder = async (page: Page): Promise<string> => getAttribute(getButton(page), 'placeholder');
 const getDropdown = (page: Page) => page.locator('p-multi-select [popover]');
 const getDropdownDisplay = async (page: Page): Promise<string> => await getElementStyle(getDropdown(page), 'display');
-const getShadowDropdownOption = (page: Page, n: number) => page.locator(`p-multi-select [popover] div:nth-child(${n})`);
+
+const getFilter = (page: Page) => page.locator('p-multi-select p-input-search');
+const getFilterInput = (page: Page) => page.locator('p-multi-select p-input-search input');
+
 const getMultiSelectOption = (page: Page, n: number) =>
   page.locator(`p-multi-select p-multi-select-option:nth-child(${n})`);
-const getMultiSelectOptions = (page: Page): Promise<Locator[]> =>
-  page.locator('p-multi-select p-multi-select-option').all();
+const getMultiSelectOptions = (page: Page): Locator =>
+  page.locator('p-multi-select p-multi-select-option');
+const getMultiSelectOptgroups = (page: Page) => page.locator('p-multi-select p-optgroup');
 const getAmountOfVisibleMultiSelectOptions = async (page: Page): Promise<(SVGElement | HTMLElement)[]> =>
   page
     .locator('p-multi-select-option')
@@ -70,7 +74,7 @@ const getSelectedOptionIndicies = async (page: Page): Promise<number[]> =>
       options.filter((option: any) => option.selected).map((option) => options.indexOf(option))
     );
 const getLabel = (page: Page) => page.locator('p-multi-select label').first();
-const getResetButton = (page: Page) => page.locator('p-multi-select .button').first();
+const getResetButton = (page: Page) => getHost(page).getByText("Reset selection");
 const getForm = (page: Page) => page.locator('form');
 
 const setValue = async (page: Page, value: string[]) => {
@@ -168,7 +172,7 @@ const initMultiSelect = (page: Page, opt?: InitOptions): Promise<void> => {
 
 test('should render', async ({ page }) => {
   await initMultiSelect(page);
-  const inputElement = getInput(page);
+  const inputElement = getButton(page);
   expect(inputElement).not.toBeNull();
 
   expect(await getDropdownDisplay(page)).toBe('none');
@@ -185,8 +189,8 @@ test.describe('Update Event', () => {
     const host = getHost(page);
     await addEventListener(host, 'update');
 
-    const inputElement = getInput(page);
-    await inputElement.click();
+    const buttonElement = getButton(page);
+    await buttonElement.click();
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'update')).counter, 'before option select').toBe(0);
@@ -287,11 +291,11 @@ test.describe('outside click', () => {
   test('should show dropdown if input is clicked and hide via outside click', async ({ page }) => {
     await initMultiSelect(page, { options: { markupBefore: '<p-text>Some Text</p-text>' } });
 
-    const inputElement = getInput(page);
+    const buttonElement = getButton(page);
     const text = page.locator('p-text');
     expect(await getDropdownDisplay(page)).toBe('none');
 
-    await inputElement.click();
+    await buttonElement.click();
     await waitForStencilLifecycle(page);
 
     expect(await getDropdownDisplay(page)).toBe('flex');
@@ -301,12 +305,12 @@ test.describe('outside click', () => {
 
     expect(await getDropdownDisplay(page), 'after 1st text click').toBe('none');
 
-    await inputElement.click();
+    await buttonElement.click();
     await waitForStencilLifecycle(page);
 
     expect(await getDropdownDisplay(page), 'after 2nd input click').toBe('flex');
 
-    await inputElement.click();
+    await buttonElement.click();
     await waitForStencilLifecycle(page);
 
     expect(await getDropdownDisplay(page), 'after 3nd input click').toBe('flex'); // dropdown should stay open
@@ -315,16 +319,16 @@ test.describe('outside click', () => {
   test('should clear input value and reset dropdown on click outside', async ({ page }) => {
     await initMultiSelect(page, { options: { markupBefore: '<p-text>Some text</p-text>' } });
 
-    const inputElement = getInput(page);
+    const buttonElement = getButton(page);
     const text = page.locator('p-text');
 
-    await inputElement.click();
+    await buttonElement.click();
     await waitForStencilLifecycle(page);
 
-    expect((await getMultiSelectOptions(page)).length, 'initial').toBe(3);
+    await expect(getMultiSelectOptions(page), 'initial').toHaveCount(3);
     expect((await getAmountOfVisibleMultiSelectOptions(page)).length).toBe(3);
 
-    await inputElement.fill('A');
+    await buttonElement.fill('A');
     await waitForStencilLifecycle(page);
 
     expect(await getInputValue(page)).toBe('A');
@@ -335,10 +339,10 @@ test.describe('outside click', () => {
 
     expect(await getInputValue(page)).toBe('');
 
-    await inputElement.click();
+    await buttonElement.click();
     await waitForStencilLifecycle(page);
 
-    expect((await getMultiSelectOptions(page)).length, 'after outside click').toBe(3);
+    await expect(getMultiSelectOptions(page), 'after outside click').toHaveCount(3);
     expect((await getAmountOfVisibleMultiSelectOptions(page)).length, 'after outside click').toBe(3);
   });
 });
@@ -360,170 +364,626 @@ test.describe('hover', () => {
 
 skipInBrowsers(['firefox', 'webkit'], () => {
   test.describe('focus', () => {
-    test('should focus input when label text is clicked', async ({ page }) => {
+    test('should focus button when label text is clicked', async ({ page }) => {
       await initMultiSelect(page, { props: { name: 'options', label: 'Some Label' } });
-
       const labelText = getLabel(page);
-      const filterInput = getInput(page);
-      await addEventListener(filterInput, 'focus');
+      const buttonElement = getButton(page);
 
-      expect((await getEventSummary(filterInput, 'focus')).counter, 'before focus').toBe(0);
-
+      await expect(buttonElement).not.toBeFocused();
       await labelText.click();
-      expect((await getEventSummary(filterInput, 'focus')).counter, 'after focus').toBe(1);
+      await expect(buttonElement).toBeFocused();
     });
 
-    test('should focus filter when tab key is pressed', async ({ page }) => {
+    test('should focus button when tab key is pressed', async ({ page }) => {
       await initMultiSelect(page);
+      const buttonElement = getButton(page);
 
-      const inputElement = getInput(page);
-      await addEventListener(inputElement, 'focus');
-
-      expect((await getEventSummary(inputElement, 'focus')).counter).toBe(0);
-
+      await expect(buttonElement).not.toBeFocused();
       await page.keyboard.press('Tab');
-      expect((await getEventSummary(inputElement, 'focus')).counter).toBe(1);
+      await expect(buttonElement).toBeFocused();
     });
 
     test('should focus correct elements when selection is made', async ({ page }) => {
       await initMultiSelect(page, { options: { markupAfter: '<p-button>Some button</p-button>' } });
-      const button = page.locator('p-button');
-      await addEventListener(button, 'focus');
+      const buttonAfter = page.locator('p-button');
 
       await expect(getResetButton(page)).toHaveCount(0);
       await setValue(page, ['a']);
-      await waitForStencilLifecycle(page);
 
-      const inputElement = getInput(page);
+      const buttonElement = getButton(page);
+      const filterElement = getFilter(page);
       const resetButton = getResetButton(page);
-      await expect(resetButton).not.toHaveCount(0);
-      await addEventListener(inputElement, 'focus');
-      await addEventListener(resetButton, 'focus');
+      const dropdown = getDropdown(page);
+      await expect(resetButton).toHaveCount(1);
 
       await page.keyboard.press('Tab');
       await waitForStencilLifecycle(page);
-      expect((await getEventSummary(inputElement, 'focus')).counter).toBe(1);
-      expect(await getDropdownDisplay(page), 'dropdown display after first tab').toBe('none');
+      await expect(buttonElement).toBeFocused();
+      await expect(dropdown).toBeHidden();
 
       await page.keyboard.press('Space');
-      await waitForStencilLifecycle(page);
-      expect(await getDropdownDisplay(page), 'dropdown display after Space').toBe('flex');
+      await expect(dropdown).toBeVisible();
+      await expect(filterElement).toBeFocused();
 
       await page.keyboard.press('Tab');
-      await waitForStencilLifecycle(page);
-      expect((await getEventSummary(resetButton, 'focus')).counter).toBe(1);
-      expect(await getDropdownDisplay(page), 'dropdown display after second tab').toBe('flex');
+      await expect(dropdown).toBeHidden();
+      await expect(buttonElement).toBeFocused();
 
       await page.keyboard.press('Tab');
-      await waitForStencilLifecycle(page);
-      expect(await getDropdownDisplay(page), 'dropdown display after third tab').toBe('none');
-      expect((await getEventSummary(button, 'focus')).counter, 'button focus after second tab').toBe(1);
+      await expect(resetButton).toBeFocused();
+
+      await page.keyboard.press('Tab');
+      await expect(buttonAfter).toBeFocused();
     });
 
     test('should focus next element when dropdown is open and no selection is made', async ({ page }) => {
       await initMultiSelect(page, { options: { markupAfter: '<p-button>Some button</p-button>' } });
-      const button = page.locator('p-button');
-      await addEventListener(button, 'focus');
+      const buttonAfter = page.locator('p-button');
 
       await expect(getResetButton(page), 'initial reset button').toHaveCount(0);
 
-      const inputElement = getInput(page);
-      await addEventListener(inputElement, 'focus');
+      const buttonElement = getButton(page);
+      const dropdown = getDropdown(page);
 
       await page.keyboard.press('Tab');
-      expect((await getEventSummary(inputElement, 'focus')).counter, 'input focus after first tab').toBe(1);
-      expect(await getDropdownDisplay(page), 'dropdown display after first tab').toBe('none');
+      await expect(buttonElement).toBeFocused();
+      await expect(dropdown).toBeHidden();
 
       await page.keyboard.press('Space');
-      await waitForStencilLifecycle(page);
-      expect(await getDropdownDisplay(page), 'dropdown display after Space').toBe('flex');
+      await expect(dropdown).toBeVisible();
 
       await page.keyboard.press('Tab');
-      await waitForStencilLifecycle(page);
-      expect((await getEventSummary(inputElement, 'focus')).counter, 'input focus after second tab').toBe(1);
+      await expect(buttonElement).toBeFocused();
+      await expect(dropdown).toBeHidden();
 
-      expect(await getDropdownDisplay(page), 'dropdown display after second tab').toBe('none');
-      expect((await getEventSummary(button, 'focus')).counter, 'button focus after second tab').toBe(1);
+      await page.keyboard.press('Tab');
+      await expect(getResetButton(page), 'initial reset button').toHaveCount(0);
+      await expect(buttonAfter).toBeFocused();
     });
 
-    test('should focus input after reset button click', async ({ page }) => {
+    test('should focus button after reset button click', async ({ page }) => {
       await initMultiSelect(page);
       await setValue(page, ['a']);
       await waitForStencilLifecycle(page);
 
       const host = getHost(page);
 
-      const inputElement = getInput(page);
+      const buttonElement = getButton(page);
       const resetButton = getResetButton(page);
-      await addEventListener(inputElement, 'focus');
-      await addEventListener(resetButton, 'focus');
 
       await page.keyboard.press('Tab');
-      expect((await getEventSummary(inputElement, 'focus')).counter).toBe(1);
+      await expect(buttonElement).toBeFocused();
+
       await page.keyboard.press('Tab');
-      expect((await getEventSummary(resetButton, 'focus')).counter).toBe(1);
+      await expect(resetButton).toBeFocused();
 
       await page.keyboard.press('Enter');
-      await waitForStencilLifecycle(page);
-
       await expect(getResetButton(page)).toHaveCount(0);
-      expect((await getEventSummary(inputElement, 'focus')).counter).toBe(2);
-      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('INPUT');
-      expect(await getMultiSelectValue(page)).toStrictEqual([]);
+      await expect(buttonElement).toBeFocused();
+
+      await expect(host).toHaveJSProperty('value', []);
     });
 
     test('should receive focus when focus is set programmatically', async ({ page }) => {
       await initMultiSelect(page);
-      const host = await getHost(page);
+      const host = getHost(page);
 
-      const inputElement = getInput(page);
-      await addEventListener(inputElement, 'focus');
+      const buttonElement = getButton(page);
 
-      expect((await getEventSummary(inputElement, 'focus')).counter).toBe(0);
-      await expect(inputElement).toHaveCSS('border-color', 'rgb(107, 109, 112)');
+      await expect(buttonElement).not.toBeFocused();
+      await expect(buttonElement).toHaveCSS('outline', 'rgb(1, 2, 5) none 0px');
 
       await host.focus();
       await waitForStencilLifecycle(page);
 
-      expect((await getEventSummary(inputElement, 'focus')).counter).toBe(1);
-      await expect(inputElement).toHaveCSS('border-color', 'rgb(1, 2, 5)');
+      await expect(buttonElement).toBeFocused();
+      await expect(buttonElement).toHaveCSS('outline', 'rgb(26, 68, 234) solid 2px');
     });
   });
 });
 
+// TODO: Check if we need some special cases for multiple select
 test.describe('filter', () => {
-  test('should open dropdown, filter results to "B" if "b" is entered and select it on ArrowDown', async ({ page }) => {
-    await initMultiSelect(page);
+  test.describe('input', () => {
+    test('should show matching options when typing into filter', async ({ page }) => {
+      await initMultiSelect(page, { props: { name: 'Some name' } });
+      const buttonElement = getButton(page);
+      const filterElement = getFilter(page);
+      const filterInputElement = getFilterInput(page);
+      const options = getMultiSelectOptions(page);
+      const dropdown = getDropdown(page);
 
-    const inputElement = getInput(page);
-    await inputElement.fill('b');
-    await waitForStencilLifecycle(page);
+      await buttonElement.click();
 
-    expect(await getDropdownDisplay(page), 'after typing').toBe('flex');
-    expect((await getAmountOfVisibleMultiSelectOptions(page)).length, 'amount of shown options').toBe(1);
+      await expect(dropdown).toBeVisible();
+      await expect(filterElement).toBeFocused();
+      await expect(filterInputElement).toHaveValue('');
 
-    await page.keyboard.press('ArrowDown');
-    await waitForStencilLifecycle(page);
-    expect(await getHighlightedOptionIndex(page)).toBe(0);
+      await expect(options).toHaveCount(3);
+      await expect(options.nth(0)).toBeVisible();
+      await expect(options.nth(1)).toBeVisible();
+      await expect(options.nth(2)).toBeVisible();
 
-    await inputElement.press('Enter');
-    await waitForStencilLifecycle(page);
+      await filterInputElement.fill('b');
 
-    expect(await getMultiSelectValue(page)).toStrictEqual(['b']);
+      await expect(options.nth(0)).toBeHidden();
+      await expect(options.nth(1)).toBeVisible();
+      await expect(options.nth(1)).toHaveText('Option B');
+      await expect(options.nth(2)).toBeHidden();
+
+      await filterInputElement.fill('');
+
+      await expect(options.nth(0)).toBeVisible();
+      await expect(options.nth(1)).toBeVisible();
+      await expect(options.nth(2)).toBeVisible();
+    });
+
+    test('should reset filter when pressing clear button on filter input', async ({ page }) => {
+      await initMultiSelect(page, { props: { name: 'Some name' } });
+      const buttonElement = getButton(page);
+      const filterElement = getFilter(page);
+      const filterInputElement = getFilterInput(page);
+      const options = getMultiSelectOptions(page);
+      const dropdown = getDropdown(page);
+
+      await buttonElement.click();
+
+      await expect(dropdown).toBeVisible();
+      await expect(filterElement).toBeFocused();
+      await expect(filterInputElement).toHaveValue('');
+      await filterInputElement.fill('b');
+
+      await expect(options.nth(0)).toBeHidden();
+      await expect(options.nth(1)).toBeVisible();
+      await expect(options.nth(1)).toHaveText('Option B');
+      await expect(options.nth(2)).toBeHidden();
+
+      await filterElement.locator('p-button-pure').click();
+      await expect(filterInputElement).toHaveValue('');
+
+      await expect(options.nth(0)).toBeVisible();
+      await expect(options.nth(1)).toBeVisible();
+      await expect(options.nth(2)).toBeVisible();
+    });
+
+    // TODO: Check other closing methods are also tested that filter is reset
+    skipInBrowsers(['webkit'], () => {
+      test('should reset filter value and show all options again after filtering, selecting an option and closing dropdown', async ({
+                                                                                                                    page,
+                                                                                                                  }) => {
+        await initMultiSelect(page, { props: { name: 'Some name' } });
+        const host = getHost(page);
+        const buttonElement = getButton(page);
+        const filterElement = getFilter(page);
+        const filterInputElement = getFilterInput(page);
+        const options = getMultiSelectOptions(page);
+        const dropdown = getDropdown(page);
+
+        await buttonElement.click();
+
+        await expect(dropdown).toBeVisible();
+        await expect(filterElement).toBeFocused();
+        await expect(filterInputElement).toHaveValue('');
+        await filterInputElement.fill('b');
+
+        await expect(options.nth(0)).toBeHidden();
+        await expect(options.nth(1)).toBeVisible();
+        await expect(options.nth(1)).toHaveText('Option B');
+        await expect(options.nth(2)).toBeHidden();
+
+        await page.keyboard.press('ArrowDown');
+        await expect(options.nth(1)).toHaveJSProperty('highlighted', true);
+        await page.keyboard.press('Enter');
+        await expect(host).toHaveJSProperty('value', ['b']);
+        await page.keyboard.press('Escape');
+
+        await expect(dropdown).toBeHidden();
+        await expect(buttonElement).toBeFocused();
+
+        await page.keyboard.press('Space');
+        await expect(filterElement).toBeFocused();
+        await expect(filterInputElement).toHaveValue('');
+
+        await expect(options.nth(0)).toBeVisible();
+        await expect(options.nth(1)).toBeVisible();
+        await expect(options.nth(2)).toBeVisible();
+      });
+    });
+
+    skipInBrowsers(['webkit', 'firefox'], () => {
+      test('should reset filter value and show all options again after closing and reopening again', async ({
+                                                                                                              page,
+                                                                                                            }) => {
+        await initMultiSelect(page, { props: { name: 'Some name' } });
+        const host = getHost(page);
+        const buttonElement = getButton(page);
+        const filterElement = getFilter(page);
+        const filterInputElement = getFilterInput(page);
+        const options = getMultiSelectOptions(page);
+        const dropdown = getDropdown(page);
+
+        await buttonElement.click();
+
+        await expect(dropdown).toBeVisible();
+        await expect(filterElement).toBeFocused();
+        await expect(filterInputElement).toHaveValue('');
+        await filterInputElement.fill('b');
+
+        await page.keyboard.press('Escape');
+        await expect(dropdown).toBeHidden();
+        await expect(host).toHaveJSProperty('value', []);
+        await expect(buttonElement).toBeFocused();
+
+        await waitForStencilLifecycle(page);
+        await buttonElement.click();
+        await expect(filterElement).toBeFocused();
+        await expect(filterInputElement).toHaveValue('');
+
+        await expect(options.nth(0)).toBeVisible();
+        await expect(options.nth(1)).toBeVisible();
+        await expect(options.nth(2)).toBeVisible();
+      });
+    });
+
+    skipInBrowsers(['webkit'], () => {
+      test('should show indicator when no results are found', async ({ page }) => {
+        await initMultiSelect(page, { props: { name: 'Some name', filter: true } });
+        const buttonElement = getButton(page);
+        const filterElement = getFilter(page);
+        const filterInputElement = getFilterInput(page);
+        const options = getMultiSelectOptions(page);
+        const dropdown = getDropdown(page);
+
+        await buttonElement.click();
+
+        await expect(dropdown).toBeVisible();
+        await expect(filterElement).toBeFocused();
+        await expect(filterInputElement).toHaveValue('');
+        await filterInputElement.fill('no results');
+
+        for (const option of await options.all()) {
+          await expect(option).toBeHidden();
+        }
+
+        const noResults = page.getByRole('option', { name: 'No results found' });
+        await expect(noResults).toBeVisible();
+
+        await page.keyboard.press('Escape');
+        await expect(dropdown).toBeHidden();
+        await expect(buttonElement).toBeFocused();
+
+        await waitForStencilLifecycle(page);
+        await buttonElement.click();
+        await expect(filterElement).toBeFocused();
+        await expect(filterInputElement).toHaveValue('');
+
+        await expect(noResults).toBeHidden();
+        await expect(options.nth(0)).toBeVisible();
+        await expect(options.nth(1)).toBeVisible();
+        await expect(options.nth(2)).toBeVisible();
+      });
+    });
   });
 
-  test('should show "---" if filter value has no match', async ({ page }) => {
-    await initMultiSelect(page);
+  test.describe('with optgroups', () => {
+    test('should only show optgroups of matching options when filtering', async ({ page }) => {
+      await initMultiSelect(page, {
+        props: {
+          name: 'Some name',
+        },
+        options: {
+          includeOptgroups: true,
+          values: [[{ value: '1a' }], [{ value: '2a' }]],
+        },
+      });
+      const buttonElement = getButton(page);
+      const filterElement = getFilter(page);
+      const filterInputElement = getFilterInput(page);
+      const options = getMultiSelectOptions(page);
+      const optgroups = getMultiSelectOptgroups(page);
+      const dropdown = getDropdown(page);
 
-    const inputElement = getInput(page);
-    await inputElement.fill('d');
-    await waitForStencilLifecycle(page);
+      await buttonElement.click();
 
-    const dropdownOption1 = getShadowDropdownOption(page, 1);
-    const dropdownOption1Value = await getProperty<string>(dropdownOption1, 'textContent');
+      await expect(dropdown).toBeVisible();
+      await expect(filterElement).toBeFocused();
+      await expect(filterInputElement).toHaveValue('');
 
-    expect((await getAmountOfVisibleMultiSelectOptions(page)).length).toBe(0);
-    expect(dropdownOption1Value).toBe('---No results found');
+      await expect(optgroups).toHaveCount(2);
+      await expect(options).toHaveCount(2);
+      await expect(optgroups.nth(0)).toBeVisible();
+      await expect(options.nth(0)).toBeVisible();
+      await expect(optgroups.nth(1)).toBeVisible();
+      await expect(options.nth(1)).toBeVisible();
+
+      await filterInputElement.fill('2');
+
+      await expect(optgroups).toHaveCount(2);
+      await expect(options).toHaveCount(2);
+      await expect(optgroups.nth(0)).toBeHidden();
+      await expect(options.nth(0)).toBeHidden();
+      await expect(optgroups.nth(1)).toBeVisible();
+      await expect(options.nth(1)).toBeVisible();
+
+      await filterInputElement.fill('a');
+
+      await expect(optgroups).toHaveCount(2);
+      await expect(options).toHaveCount(2);
+      await expect(optgroups.nth(0)).toBeVisible();
+      await expect(options.nth(0)).toBeVisible();
+      await expect(optgroups.nth(1)).toBeVisible();
+      await expect(options.nth(1)).toBeVisible();
+    });
+
+    test('should reset filter value and show all optgroups and options again after filtering and selecting an option', async ({
+                                                                                                                                page,
+                                                                                                                              }) => {
+      await initMultiSelect(page, {
+        props: {
+          name: 'Some name',
+        },
+        options: {
+          includeOptgroups: true,
+          values: [[{ value: '1a' }], [{ value: '2a' }]],
+        },
+      });
+      const host = getHost(page);
+      const buttonElement = getButton(page);
+      const filterElement = getFilter(page);
+      const filterInputElement = getFilterInput(page);
+      const options = getMultiSelectOptions(page);
+      const optgroups = getMultiSelectOptgroups(page);
+      const dropdown = getDropdown(page);
+
+      await buttonElement.click();
+
+      await expect(dropdown).toBeVisible();
+      await expect(filterElement).toBeFocused();
+      await filterInputElement.fill('2');
+
+      await expect(optgroups).toHaveCount(2);
+      await expect(options).toHaveCount(2);
+      await expect(optgroups.nth(0)).toBeHidden();
+      await expect(options.nth(0)).toBeHidden();
+      await expect(optgroups.nth(1)).toBeVisible();
+      await expect(options.nth(1)).toBeVisible();
+
+      await options.nth(1).click();
+      await expect(host).toHaveJSProperty('value', ['2a']);
+
+      await page.mouse.click(0, 0);
+      await expect(dropdown).toBeHidden();
+
+      await buttonElement.click();
+
+      await expect(optgroups).toHaveCount(2);
+      await expect(options).toHaveCount(2);
+      await expect(optgroups.nth(0)).toBeVisible();
+      await expect(options.nth(0)).toBeVisible();
+      await expect(optgroups.nth(1)).toBeVisible();
+      await expect(options.nth(1)).toBeVisible();
+    });
+
+    test('should reset filter value and show all optgroups and options again after closing and reopening again', async ({
+                                                                                                                          page,
+                                                                                                                        }) => {
+      await initMultiSelect(page, {
+        props: {
+          name: 'Some name',
+        },
+        options: {
+          includeOptgroups: true,
+          values: [[{ value: '1a' }], [{ value: '2a' }]],
+        },
+      });
+      const host = getHost(page);
+      const buttonElement = getButton(page);
+      const filterElement = getFilter(page);
+      const filterInputElement = getFilterInput(page);
+      const options = getMultiSelectOptions(page);
+      const optgroups = getMultiSelectOptgroups(page);
+      const dropdown = getDropdown(page);
+
+      await buttonElement.click();
+
+      await expect(dropdown).toBeVisible();
+      await expect(filterElement).toBeFocused();
+      await filterInputElement.fill('2');
+
+      await expect(optgroups).toHaveCount(2);
+      await expect(options).toHaveCount(2);
+      await expect(optgroups.nth(0)).toBeHidden();
+      await expect(options.nth(0)).toBeHidden();
+      await expect(optgroups.nth(1)).toBeVisible();
+      await expect(options.nth(1)).toBeVisible();
+
+      await page.keyboard.press('Escape');
+      await expect(dropdown).toBeHidden();
+      await expect(host).toHaveJSProperty('value', []);
+      await expect(buttonElement).toBeFocused();
+
+      await buttonElement.click();
+
+      await expect(optgroups).toHaveCount(2);
+      await expect(options).toHaveCount(2);
+      await expect(optgroups.nth(0)).toBeVisible();
+      await expect(options.nth(0)).toBeVisible();
+      await expect(optgroups.nth(1)).toBeVisible();
+      await expect(options.nth(1)).toBeVisible();
+    });
+  });
+
+  test.describe('click', () => {
+    test('should not close dropdown if input is clicked', async ({ page }) => {
+      await initMultiSelect(page, { props: { name: 'Some name' } });
+      const buttonElement = getButton(page);
+      const dropdown = getDropdown(page);
+      const filterElement = getFilter(page);
+
+      await buttonElement.click();
+      await expect(dropdown).toBeVisible();
+
+      await filterElement.click();
+      await expect(dropdown).toBeVisible();
+    });
+  });
+
+  test.describe('keyboard behavior', () => {
+    skipInBrowsers(['webkit']); // Safari focus management does not work correctly in Playwright
+
+    test('should focus filter input on Space key', async ({ page }) => {
+      await initMultiSelect(page, { props: { name: 'Some name' } });
+      const host = getHost(page);
+      const filterElement = getFilter(page);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+
+      await expect(filterElement).toBeFocused();
+      await expect(host).toHaveJSProperty('value', []);
+    });
+
+    test('should focus filter input on Enter key', async ({ page }) => {
+      await initMultiSelect(page, { props: { name: 'Some name' } });
+      const host = getHost(page);
+      const filterElement = getFilter(page);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+
+      await expect(filterElement).toBeFocused();
+      await expect(host).toHaveJSProperty('value', []);
+    });
+
+    test('should focus filter input on ArrowDown key', async ({ page }) => {
+      await initMultiSelect(page, { props: { name: 'Some name' } });
+      const host = getHost(page);
+      const filterElement = getFilter(page);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowDown');
+
+      await expect(filterElement).toBeFocused();
+      await expect(host).toHaveJSProperty('value', []);
+    });
+
+    test('should cycle through options while having filter input focused', async ({ page }) => {
+      await initMultiSelect(page, { props: { name: 'Some name' } });
+      const host = getHost(page);
+      const filterElement = getFilter(page);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+
+      await expect(filterElement).toBeFocused();
+      await filterElement.press('ArrowDown');
+
+      await expect(page.locator('p-multi-select p-multi-select-option').first()).toHaveJSProperty('highlighted', true);
+
+      await filterElement.press('Enter');
+
+      await expect(host).toHaveJSProperty('value', ['a']);
+    });
+
+    test('should reset/keep highlighted option on filter input', async ({ page }) => {
+      await initMultiSelect(page, { props: { name: 'Some name' } });
+      const filterElement = getFilter(page);
+      const filterInputElement = getFilterInput(page);
+      const options = getMultiSelectOptions(page);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+
+      await expect(filterElement).toBeFocused();
+
+      await expect(options.nth(0)).toHaveJSProperty('highlighted', undefined); // undefined since never was highlighted
+      await expect(options.nth(0)).toBeVisible();
+      await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined); // undefined since never was highlighted
+      await expect(options.nth(1)).toBeVisible();
+      await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined); // undefined since never was highlighted
+      await expect(options.nth(2)).toBeVisible();
+
+      await filterElement.press('ArrowDown');
+
+      await expect(options.nth(0)).toHaveJSProperty('highlighted', true);
+      await expect(options.nth(0)).toBeVisible();
+      await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined); // undefined since never was highlighted
+      await expect(options.nth(1)).toBeVisible();
+      await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined); // undefined since never was highlighted
+      await expect(options.nth(2)).toBeVisible();
+
+      await filterInputElement.fill('b');
+
+      // Highlight of option a will be reset since it doesn't match the filter
+      await expect(options.nth(0)).toHaveJSProperty('highlighted', false);
+      await expect(options.nth(0)).toBeHidden();
+      await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined); // undefined since never was highlighted
+      await expect(options.nth(1)).toBeVisible();
+      await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined); // undefined since never was highlighted
+      await expect(options.nth(2)).toBeHidden();
+
+      await filterElement.press('ArrowDown');
+
+      await expect(options.nth(0)).toHaveJSProperty('highlighted', false);
+      await expect(options.nth(0)).toBeHidden();
+      await expect(options.nth(1)).toHaveJSProperty('highlighted', true); // undefined since never was highlighted
+      await expect(options.nth(1)).toBeVisible();
+      await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined); // undefined since never was highlighted
+      await expect(options.nth(2)).toBeHidden();
+
+      await filterInputElement.fill('');
+
+      await expect(options.nth(0)).toHaveJSProperty('highlighted', false);
+      await expect(options.nth(1)).toBeVisible();
+      await expect(options.nth(1)).toHaveJSProperty('highlighted', true);
+      await expect(options.nth(1)).toBeVisible();
+      await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined); // undefined since never was highlighted
+      await expect(options.nth(1)).toBeVisible();
+
+      await filterElement.press('ArrowDown');
+
+      await expect(options.nth(0)).toHaveJSProperty('highlighted', false);
+      await expect(options.nth(1)).toHaveJSProperty('highlighted', false);
+      await expect(options.nth(2)).toHaveJSProperty('highlighted', true);
+
+      await filterInputElement.fill('c');
+
+      await expect(options.nth(0)).toHaveJSProperty('highlighted', false);
+      await expect(options.nth(0)).toBeHidden();
+      await expect(options.nth(1)).toHaveJSProperty('highlighted', false);
+      await expect(options.nth(1)).toBeHidden();
+      await expect(options.nth(2)).toHaveJSProperty('highlighted', true);
+      await expect(options.nth(2)).toBeVisible();
+    });
+
+    test('should not close select when Space character is typed into filter', async ({ page }) => {
+      await initMultiSelect(page, {
+        props: { name: 'Some name' },
+        options: { values: [{ value: 'option a' }, { value: 'option b' }, { value: 'option c' }] },
+      });
+      const filterElement = getFilter(page);
+      const filterInputElement = getFilterInput(page);
+      const dropdown = getDropdown(page);
+      const options = getMultiSelectOptions(page);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+
+      await expect(dropdown).toBeVisible();
+      await expect(filterElement).toBeFocused();
+      await filterElement.pressSequentially('option');
+      await filterInputElement.press('Space');
+      await filterInputElement.press('a');
+
+      // Dropdown should stay open
+      await expect(dropdown).toBeVisible();
+      await filterElement.press('ArrowDown');
+
+      await expect(options.nth(0)).toHaveJSProperty('highlighted', true);
+      await expect(options.nth(0)).toBeVisible();
+      await expect(options.nth(1)).toBeHidden();
+      await expect(options.nth(2)).toBeHidden();
+    });
   });
 });
 
@@ -531,15 +991,15 @@ test.describe('selection', () => {
   test('should add valid selection on enter', async ({ page }) => {
     await initMultiSelect(page);
 
-    const inputElement = getInput(page);
+    const buttonElement = getButton(page);
 
-    await inputElement.fill('B');
+    await buttonElement.fill('B');
     await waitForStencilLifecycle(page);
 
     await page.keyboard.press('ArrowDown');
     await waitForStencilLifecycle(page);
 
-    await inputElement.press('Enter');
+    await buttonElement.press('Enter');
     await waitForStencilLifecycle(page);
 
     const value = await getMultiSelectValue(page);
@@ -547,15 +1007,15 @@ test.describe('selection', () => {
 
     expect(value).toStrictEqual(['b']);
     expect(selectedMultiSelectOptions, 'after first option selected').toEqual(['Option B']);
-    await expect(getInput(page), 'after first option selected').toHaveAttribute(
+    await expect(getButton(page), 'after first option selected').toHaveAttribute(
       'placeholder',
       selectedMultiSelectOptions.join(', ')
     );
 
-    await inputElement.press('Backspace');
+    await buttonElement.press('Backspace');
     await page.keyboard.press('ArrowDown');
     await waitForStencilLifecycle(page);
-    await inputElement.press('Enter');
+    await buttonElement.press('Enter');
     await waitForStencilLifecycle(page);
 
     const valueAfter = await getMultiSelectValue(page);
@@ -563,7 +1023,7 @@ test.describe('selection', () => {
 
     expect(valueAfter).toStrictEqual(['b', 'c']);
     expect(selectedMultiSelectOptionsSecond, 'after second option selected').toEqual(['Option B', 'Option C']);
-    await expect(getInput(page), 'after second option selected').toHaveAttribute(
+    await expect(getButton(page), 'after second option selected').toHaveAttribute(
       'placeholder',
       selectedMultiSelectOptionsSecond.join(', ')
     );
@@ -572,8 +1032,8 @@ test.describe('selection', () => {
   test('should add valid selection on click', async ({ page }) => {
     await initMultiSelect(page);
 
-    const inputElement = getInput(page);
-    await inputElement.click();
+    const buttonElement = getButton(page);
+    await buttonElement.click();
     await waitForStencilLifecycle(page);
 
     const dropdownOption2 = getMultiSelectOption(page, 2);
@@ -583,8 +1043,8 @@ test.describe('selection', () => {
     const selectedMultiSelectOptions = await getSelectedMultiSelectOptionProperty(page, 'textContent');
 
     await expect(getHost(page)).toHaveJSProperty('value', ['b']);
-    await expect(getInput(page), 'after first selection').toHaveAttribute('placeholder', 'Option B');
-    await expect(getInput(page), 'after first selection').toHaveAttribute(
+    await expect(getButton(page), 'after first selection').toHaveAttribute('placeholder', 'Option B');
+    await expect(getButton(page), 'after first selection').toHaveAttribute(
       'placeholder',
       selectedMultiSelectOptions.join(', ')
     );
@@ -596,8 +1056,8 @@ test.describe('selection', () => {
     const selectedMultiSelectOptionsSecond = await getSelectedMultiSelectOptionProperty(page, 'textContent');
 
     await expect(getHost(page)).toHaveJSProperty('value', ['b', 'c']);
-    await expect(getInput(page), 'after second selection').toHaveAttribute('placeholder', 'Option B, Option C');
-    await expect(getInput(page), 'after second selection').toHaveAttribute(
+    await expect(getButton(page), 'after second selection').toHaveAttribute('placeholder', 'Option B, Option C');
+    await expect(getButton(page), 'after second selection').toHaveAttribute(
       'placeholder',
       selectedMultiSelectOptionsSecond.join(', ')
     );
@@ -606,12 +1066,12 @@ test.describe('selection', () => {
   skipInBrowsers(['webkit'], () => {
     test('should reset selection on reset button enter', async ({ page }) => {
       await initMultiSelect(page);
-      const inputElement = getInput(page);
-      await inputElement.press('Space');
+      const buttonElement = getButton(page);
+      await buttonElement.press('Space');
       await waitForStencilLifecycle(page);
       await page.keyboard.press('ArrowDown');
       await waitForStencilLifecycle(page);
-      await inputElement.press('Enter');
+      await buttonElement.press('Enter');
       await waitForStencilLifecycle(page);
 
       expect(await getMultiSelectValue(page)).toEqual(['a']);
@@ -620,7 +1080,7 @@ test.describe('selection', () => {
       const resetButton = getResetButton(page);
       await addEventListener(resetButton, 'focus');
 
-      await inputElement.press('Tab');
+      await buttonElement.press('Tab');
       await waitForStencilLifecycle(page);
       expect((await getEventSummary(resetButton, 'focus')).counter).toBe(1);
 
@@ -634,8 +1094,8 @@ test.describe('selection', () => {
 
   test('should reset selection on reset button click', async ({ page }) => {
     await initMultiSelect(page);
-    const inputElement = getInput(page);
-    await inputElement.click();
+    const buttonElement = getButton(page);
+    await buttonElement.click();
     await waitForStencilLifecycle(page);
 
     const option1 = getMultiSelectOption(page, 1);
@@ -812,15 +1272,15 @@ test.describe('keyboard and click events', () => {
 
   test('should open dropdown on mouseclick and stay open on 2nd click', async ({ page }) => {
     await initMultiSelect(page);
-    const inputElement = getInput(page);
+    const buttonElement = getButton(page);
 
-    await inputElement.click();
+    await buttonElement.click();
     await waitForStencilLifecycle(page);
 
     expect(await getDropdownDisplay(page), 'after click').toBe('flex');
     expect(await getHighlightedOptionIndex(page), 'for highlighted option').toBe(-1);
 
-    await inputElement.click();
+    await buttonElement.click();
     await waitForStencilLifecycle(page);
 
     expect(await getDropdownDisplay(page), 'after second click').toBe('flex');
@@ -829,9 +1289,9 @@ test.describe('keyboard and click events', () => {
 
   test('should select second option on mouseclick', async ({ page }) => {
     await initMultiSelect(page);
-    const inputElement = getInput(page);
+    const buttonElement = getButton(page);
 
-    await inputElement.click();
+    await buttonElement.click();
     await waitForStencilLifecycle(page);
 
     const dropdownOption = getMultiSelectOption(page, 2);
@@ -869,15 +1329,15 @@ test.describe('keyboard and click events', () => {
       await waitForStencilLifecycle(page);
 
       const resetButton = getResetButton(page);
-      const inputElement = getInput(page);
+      const buttonElement = getButton(page);
 
       await addEventListener(button, 'focus');
       await addEventListener(resetButton, 'focus');
-      await addEventListener(inputElement, 'focus');
+      await addEventListener(buttonElement, 'focus');
       await expect(resetButton).not.toHaveCount(0);
       expect((await getEventSummary(button, 'focus')).counter, 'initial').toBe(0);
       expect((await getEventSummary(resetButton, 'focus')).counter, 'initial').toBe(0);
-      expect((await getEventSummary(inputElement, 'focus')).counter, 'initial').toBe(0);
+      expect((await getEventSummary(buttonElement, 'focus')).counter, 'initial').toBe(0);
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
@@ -885,7 +1345,7 @@ test.describe('keyboard and click events', () => {
 
       expect((await getEventSummary(button, 'focus')).counter, 'initial').toBe(0);
       expect((await getEventSummary(resetButton, 'focus')).counter, 'initial').toBe(0);
-      expect((await getEventSummary(inputElement, 'focus')).counter, 'after open').toBe(1);
+      expect((await getEventSummary(buttonElement, 'focus')).counter, 'after open').toBe(1);
       expect(await getDropdownDisplay(page), 'after open').toBe('flex');
 
       await page.keyboard.press('Tab');
@@ -893,7 +1353,7 @@ test.describe('keyboard and click events', () => {
 
       expect((await getEventSummary(button, 'focus')).counter, 'initial').toBe(0);
       expect((await getEventSummary(resetButton, 'focus')).counter, 'initial').toBe(1);
-      expect((await getEventSummary(inputElement, 'focus')).counter, 'after open').toBe(1);
+      expect((await getEventSummary(buttonElement, 'focus')).counter, 'after open').toBe(1);
       expect(await getDropdownDisplay(page), 'after tab').toBe('flex');
 
       await page.keyboard.press('Tab');
@@ -901,7 +1361,7 @@ test.describe('keyboard and click events', () => {
 
       expect((await getEventSummary(button, 'focus')).counter, 'initial').toBe(1);
       expect((await getEventSummary(resetButton, 'focus')).counter, 'initial').toBe(1);
-      expect((await getEventSummary(inputElement, 'focus')).counter, 'after open').toBe(1);
+      expect((await getEventSummary(buttonElement, 'focus')).counter, 'after open').toBe(1);
       expect(await getDropdownDisplay(page), 'after tab').toBe('none');
     });
   });
@@ -909,16 +1369,16 @@ test.describe('keyboard and click events', () => {
   test('should close dropdown on Esc', async ({ page }) => {
     await initMultiSelect(page);
 
-    const inputElement = getInput(page);
+    const buttonElement = getButton(page);
 
-    await addEventListener(inputElement, 'focus');
-    expect((await getEventSummary(inputElement, 'focus')).counter, 'initial').toBe(0);
+    await addEventListener(buttonElement, 'focus');
+    expect((await getEventSummary(buttonElement, 'focus')).counter, 'initial').toBe(0);
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Space');
     await waitForStencilLifecycle(page);
 
-    expect((await getEventSummary(inputElement, 'focus')).counter, 'after open').toBe(1);
+    expect((await getEventSummary(buttonElement, 'focus')).counter, 'after open').toBe(1);
     expect(await getDropdownDisplay(page), 'after open').toBe('flex');
 
     await page.keyboard.press('Escape');
@@ -941,12 +1401,12 @@ test.describe('keyboard and click events', () => {
   test('should submit form with correct values when is wrapped by form on Enter', async ({ page }) => {
     await initMultiSelect(page);
     const form = page.locator('form');
-    const inputElement = getInput(page);
+    const buttonElement = getButton(page);
 
     await addEventListener(form, 'submit');
-    await addEventListener(inputElement, 'focus');
+    await addEventListener(buttonElement, 'focus');
     expect((await getEventSummary(form, 'submit')).counter, 'initial').toBe(0);
-    expect((await getEventSummary(inputElement, 'focus')).counter, 'initial').toBe(0);
+    expect((await getEventSummary(buttonElement, 'focus')).counter, 'initial').toBe(0);
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Space');
@@ -958,7 +1418,7 @@ test.describe('keyboard and click events', () => {
     expect(await getMultiSelectValue(page)).toEqual(['a']);
 
     await page.keyboard.press('Escape');
-    expect((await getEventSummary(inputElement, 'focus')).counter, 'after escape').toBe(1);
+    expect((await getEventSummary(buttonElement, 'focus')).counter, 'after escape').toBe(1);
     expect(await getHighlightedOptionIndex(page), 'after escape').toBe(-1);
 
     await page.keyboard.press('Enter');
@@ -975,10 +1435,10 @@ test.describe('keyboard and click events', () => {
     initConsoleObserver(page);
     await initMultiSelect(page, { options: { isWithinForm: false } });
     expect(getConsoleErrorsAmount()).toBe(0);
-    const inputElement = getInput(page);
+    const buttonElement = getButton(page);
 
-    await addEventListener(inputElement, 'focus');
-    expect((await getEventSummary(inputElement, 'focus')).counter, 'initial').toBe(0);
+    await addEventListener(buttonElement, 'focus');
+    expect((await getEventSummary(buttonElement, 'focus')).counter, 'initial').toBe(0);
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Space');
@@ -989,7 +1449,7 @@ test.describe('keyboard and click events', () => {
     expect(await getMultiSelectValue(page)).toEqual(['a']);
 
     await page.keyboard.press('Escape');
-    expect((await getEventSummary(inputElement, 'focus')).counter, 'after escape').toBe(1);
+    expect((await getEventSummary(buttonElement, 'focus')).counter, 'after escape').toBe(1);
     expect(await getHighlightedOptionIndex(page), 'after escape').toBe(-1);
 
     await page.keyboard.press('Enter');
@@ -1002,7 +1462,7 @@ test.describe('keyboard and click events', () => {
 test.describe('disabled', () => {
   test('should have not-allowed cursor', async ({ page }) => {
     await initMultiSelect(page, { props: { name: 'options', disabled: true } });
-    expect(await getElementStyle(getInput(page), 'cursor')).toBe('not-allowed');
+    expect(await getElementStyle(getButton(page), 'cursor')).toBe('not-allowed');
   });
 
   skipInBrowsers(['webkit'], () => {
@@ -1061,7 +1521,7 @@ test.describe('slots', () => {
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {
     await initMultiSelect(page);
-    const inputElement = getInput(page);
+    const buttonElement = getButton(page);
     const status1 = await getLifecycleStatus(page);
 
     expect(status1.componentDidLoad['p-multi-select'], 'componentDidLoad: p-multi-select').toBe(1);
@@ -1071,7 +1531,7 @@ test.describe('lifecycle', () => {
     expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
     expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
 
-    await inputElement.click();
+    await buttonElement.click();
     await waitForStencilLifecycle(page);
     const status2 = await getLifecycleStatus(page);
     expect(status2.componentDidUpdate['p-multi-select'], 'componentDidUpdate: p-multi-select').toBe(1);
@@ -1080,9 +1540,9 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips when selecting option', async ({ page }) => {
     await initMultiSelect(page);
-    const inputElement = getInput(page);
+    const buttonElement = getButton(page);
 
-    await inputElement.click();
+    await buttonElement.click();
     await waitForStencilLifecycle(page);
     const status1 = await getLifecycleStatus(page);
 
@@ -1106,9 +1566,9 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips on filter input change', async ({ page }) => {
     await initMultiSelect(page);
-    const inputElement = getInput(page);
+    const buttonElement = getButton(page);
 
-    await inputElement.click();
+    await buttonElement.click();
     await waitForStencilLifecycle(page);
 
     const status1 = await getLifecycleStatus(page);
@@ -1135,8 +1595,8 @@ test.describe('theme', () => {
 
     const multiSelect = getHost(page);
 
-    const inputElement = getInput(page);
-    await inputElement.click();
+    const buttonElement = getButton(page);
+    await buttonElement.click();
 
     const optgroups = page.locator('p-optgroup');
     const options = page.locator('p-multi-select-option');
@@ -1169,8 +1629,8 @@ test.describe('optgroups', () => {
       options: { includeOptgroups: true, values: [{ value: 'a' }, group, { value: 'e' }] },
     });
 
-    const inputElement = getInput(page);
-    await inputElement.click();
+    const buttonElement = getButton(page);
+    await buttonElement.click();
     await waitForStencilLifecycle(page);
 
     const optgroup = page.locator('p-optgroup[label="1"]');
@@ -1212,12 +1672,12 @@ test.describe('optgroups', () => {
   test('should only display optgroups of filtered options', async ({ page }) => {
     await initMultiSelect(page, { options: { includeOptgroups: true } });
 
-    const inputElement = getInput(page);
-    await inputElement.click();
+    const buttonElement = getButton(page);
+    await buttonElement.click();
     await waitForStencilLifecycle(page);
     expect((await getAmountOfVisibleMultiSelectOptgroups(page)).length, 'amount of shown optgroups').toBe(3);
 
-    await inputElement.fill('b');
+    await buttonElement.fill('b');
     await waitForStencilLifecycle(page);
 
     expect((await getAmountOfVisibleMultiSelectOptgroups(page)).length, 'amount of shown optgroups').toBe(1);
@@ -1233,8 +1693,8 @@ test.describe('optgroups', () => {
   test('should disable all options inside disabled optgroup', async ({ page }) => {
     await initMultiSelect(page, { options: { includeOptgroups: true } });
 
-    const inputElement = getInput(page);
-    await inputElement.click();
+    const buttonElement = getButton(page);
+    await buttonElement.click();
     await waitForStencilLifecycle(page);
 
     const optgroup = page.locator('p-optgroup[label="1"]');
@@ -1258,8 +1718,8 @@ test.describe('optgroups', () => {
   test('should hide all options inside hidden optgroup', async ({ page }) => {
     await initMultiSelect(page, { options: { includeOptgroups: true } });
 
-    const inputElement = getInput(page);
-    await inputElement.click();
+    const buttonElement = getButton(page);
+    await buttonElement.click();
     await waitForStencilLifecycle(page);
 
     const optgroup = page.locator('p-optgroup[label="1"]');
@@ -1343,13 +1803,13 @@ test.describe('form', () => {
         markupAfter: '<button type="submit">Submit</button>',
       },
     });
-    const inputElement = getInput(page);
+    const buttonElement = getButton(page);
     const form = getForm(page);
     const text = page.locator('p-text');
     await addEventListener(form, 'submit');
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
 
-    await inputElement.click();
+    await buttonElement.click();
     await waitForStencilLifecycle(page);
 
     const dropdownOption = getMultiSelectOption(page, 2);
