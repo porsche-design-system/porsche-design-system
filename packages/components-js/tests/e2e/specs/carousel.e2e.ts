@@ -61,7 +61,7 @@ const initCarousel = (page: Page, opts?: InitOptions) => {
   const attrs = [
     aria && `aria="${aria}"`,
     slidesPerPage ? `slides-per-page="${slidesPerPage}"` : '',
-    !rewind ? 'rewind="false"' : '',
+    rewind ? '' : 'rewind="false"',
     activeSlideIndex ? `active-slide-index="${activeSlideIndex}"` : '',
     focusOnCenterSlide ? `focus-on-center-slide="${focusOnCenterSlide}"` : '',
     skipLinkTarget ? `skip-link-target="${skipLinkTarget}"` : '',
@@ -1100,7 +1100,17 @@ test.describe('lifecycle', () => {
     expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
 
-    expect(status.componentDidUpdate['p-button-pure'], 'componentDidUpdate: p-button-pure').toBe(2);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate['p-button-pure'];
+        },
+        {
+          message: 'componentDidUpdate: p-button-pure',
+        }
+      )
+      .toBe(2);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
   });
