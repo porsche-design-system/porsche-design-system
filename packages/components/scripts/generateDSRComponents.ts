@@ -551,6 +551,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.hasCustomDropdown/g, 'hasCustomDropdown');
       } else if (tagName === 'p-multi-select') {
         newFileContent = newFileContent
+          .replace(/this\.props\.currentValue\.length > 0/g, 'this.props.currentValue')
           .replace(/this\.props\.multiSelectOptions/g, 'otherChildren')
           // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
           .replace(/@AttachInternals\(\)/, '')
