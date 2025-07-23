@@ -1,4 +1,4 @@
-import { expect, Locator, test, type Page } from '@playwright/test';
+import { expect, type Locator, test, type Page } from '@playwright/test';
 import {
   addEventListener,
   getAttribute,

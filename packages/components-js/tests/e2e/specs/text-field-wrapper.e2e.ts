@@ -291,17 +291,17 @@ test.describe('input type="search"', () => {
       const input = getInput(page);
       const buttonHost = getSubmitButtonHost(page);
 
-      expect(await isButtonDisabled(buttonHost)).toBe(false);
+      await expect.poll(async () => await isButtonDisabled(buttonHost)).toBe(false);
 
       await setProperty(input, 'disabled', true);
       await waitForStencilLifecycle(page);
 
-      expect(await isButtonDisabled(buttonHost)).toBe(true);
+      await expect.poll(async () => await isButtonDisabled(buttonHost)).toBe(true);
 
       await setProperty(input, 'disabled', false);
       await waitForStencilLifecycle(page);
 
-      expect(await isButtonDisabled(buttonHost)).toBe(false);
+      await expect.poll(async () => await isButtonDisabled(buttonHost)).toBe(false);
     });
 
     test('should disable submit button when input is set to readonly programmatically', async ({ page }) => {
@@ -309,17 +309,17 @@ test.describe('input type="search"', () => {
       const input = getInput(page);
       const buttonHost = getSubmitButtonHost(page);
 
-      expect(await isButtonDisabled(buttonHost)).toBe(false);
+      await expect.poll(async () => await isButtonDisabled(buttonHost)).toBe(false);
 
       await setProperty(input, 'readOnly', true);
       await waitForStencilLifecycle(page);
 
-      expect(await isButtonDisabled(buttonHost)).toBe(true);
+      await expect.poll(async () => await isButtonDisabled(buttonHost)).toBe(true);
 
       await setProperty(input, 'readOnly', false);
       await waitForStencilLifecycle(page);
 
-      expect(await isButtonDisabled(buttonHost)).toBe(false);
+      await expect.poll(async () => await isButtonDisabled(buttonHost)).toBe(false);
     });
 
     test('should submit parent form on search button click', async ({ page }) => {

@@ -1,4 +1,4 @@
-import { Page, expect, test } from '@playwright/test';
+import { type Page, expect, test } from '@playwright/test';
 import {
   addEventListener,
   getEventSummary,
@@ -22,11 +22,11 @@ test.describe('form', () => {
     await expect(host).toHaveJSProperty('value', testValue);
 
     await addEventListener(form, 'submit');
-    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+    await expect.poll(async () => (await getEventSummary(form, 'submit')).counter).toBe(0);
 
     await page.locator('button[type="submit"]').click();
 
-    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    await expect.poll(async () => (await getEventSummary(form, 'submit')).counter).toBe(1);
     expect(await getFormDataValue(form, 'some-name')).toBe(testValue);
   });
 
@@ -45,11 +45,11 @@ test.describe('form', () => {
     await expect(host).toHaveJSProperty('checked', true);
 
     await addEventListener(form, 'reset');
-    expect((await getEventSummary(form, 'reset')).counter).toBe(0);
+    await expect.poll(async () => (await getEventSummary(form, 'reset')).counter).toBe(0);
 
     await page.locator('button[type="reset"]').click();
 
-    expect((await getEventSummary(form, 'reset')).counter).toBe(1);
+    await expect.poll(async () => (await getEventSummary(form, 'reset')).counter).toBe(1);
     await expect(host).toHaveJSProperty('checked', false);
   });
 });

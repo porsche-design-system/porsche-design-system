@@ -1,4 +1,4 @@
-import { expect, Page, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 import { addEventListener, getEventSummary, setProperty } from '../../../../components-js/tests/e2e/helpers';
 import { goto, waitForComponentsReady } from '../helpers';
 
@@ -29,12 +29,12 @@ test.describe('form', () => {
     await setProperty(host, 'value', value);
 
     await addEventListener(form, 'submit');
-    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+    await expect.poll(async () => (await getEventSummary(form, 'submit')).counter).toBe(0);
 
     await page.locator('button[type="submit"]').click();
     const lastSubmittedData = await page.locator('p-text').innerText();
 
-    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    await expect.poll(async () => (await getEventSummary(form, 'submit')).counter).toBe(1);
     expect(lastSubmittedData.includes('a, b')).toBe(true);
   });
 });

@@ -87,7 +87,7 @@ test.describe('slotted content changes', () => {
     await initScroller(page, { amount: 3, isWrapped: true });
     const { actionNext } = await getActionContainers(page);
 
-    expect(await getElementStyle(actionNext, 'visibility')).toBe('hidden');
+    await expect.poll(async () => await getElementStyle(actionNext, 'visibility')).toBe('hidden');
 
     await addNewButton(page);
     await waitForStencilLifecycle(page);
@@ -238,7 +238,7 @@ test.describe('next/prev buttons', () => {
     // There seems to be a rounding issue that causes the element inside scroller to exceed the scroll container,
     // therefore the trigger gets pushed outside and the gradient is always shown.
     // To ensure the element exceeds the width of the wrapping div we need to assign static width values.
-    const steps = Array.from(Array(10)).map((_, index) => parseFloat(`150.${index}`));
+    const steps = Array.from(Array(10)).map((_, index) => Number.parseFloat(`150.${index}`));
 
     for (const width of steps) {
       test(`should not show actionNext for element with a width of ${width}`, async ({ page }) => {
