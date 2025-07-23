@@ -14,6 +14,7 @@ import {
   getButtonJssStyle,
   getButtonLabelJssStyle,
   getIconJssStyle,
+  getOptionJssStyle,
   getPopoverJssStyle,
   getPopoverKeyframesStyles,
 } from '../../../styles/select';
@@ -35,8 +36,8 @@ export const getComponentCss = (
 ): string => {
   // TODO: Implement compact scaling & compact mode
   const scalingVar = `var(${cssVarInternalMultiSelectScaling}, ${1})`;
-  const { contrastHighColor, backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
-  const { contrastHighColor: contrastHighColorDark, backgroundSurfaceColor: backgroundSurfaceColorDark } =
+  const { contrastMediumColor, backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
+  const { contrastMediumColor: contrastMediumColorDark, backgroundSurfaceColor: backgroundSurfaceColorDark } =
     getThemedColors('dark');
 
   return getCss({
@@ -83,13 +84,12 @@ export const getComponentCss = (
     // TODO: extract (maybe even as functional component) and re-use in multi-select and select-wrapper
     // TODO: Align with select
     'no-results': {
-      padding: `${spacingStaticSmall} 12px`,
-      boxSizing: 'border-box',
-      color: contrastHighColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: contrastHighColorDark,
-      }),
+      ...getOptionJssStyle('multi-select-option', scalingVar, theme),
       ...getNoResultsOptionJssStyle(),
+      color: contrastMediumColor,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: contrastMediumColorDark,
+      }),
     },
     icon: getIconJssStyle('select', isOpen),
     // TODO: maybe we should extract it as functional component too

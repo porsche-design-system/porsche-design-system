@@ -265,12 +265,11 @@ export class Select {
     syncSelectChildrenProps([...this.selectOptions, ...this.selectOptgroups], this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const buttonId = 'value';
+    const buttonId = 'button';
     const popoverId = 'list';
     const descriptionId = this.description ? 'description' : undefined;
     const selectMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
     const ariaDescribedBy = [descriptionId, selectMessageId].filter(Boolean).join(' ');
-    const selectedOption = getSelectedOptionString(this.selectOptions);
 
     return (
       <div class="root">
@@ -294,7 +293,7 @@ export class Select {
           ref={(el) => (this.buttonElement = el)}
         >
           {this.slottedImagePath && <img src={this.slottedImagePath} alt="" />}
-          <span>{selectedOption}</span>
+          <span>{getSelectedOptionString(this.selectOptions)}</span>
           <PrefixedTagNames.pIcon
             class="icon"
             name="arrow-head-down"

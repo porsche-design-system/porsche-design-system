@@ -22,6 +22,7 @@ import {
   THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
+  getComboboxAriaAttributes,
   getComboboxFilterAriaAttributes,
   getHasNativePopoverSupport,
   getHighlightedSelectOption,
@@ -32,6 +33,7 @@ import {
   getUpdatedIndex,
   getUsableSelectOptions,
   handleButtonEvent,
+  hasMessage,
   hasPropValueChanged,
   isClickOutside,
   isElementOfKind,
@@ -42,7 +44,8 @@ import {
   validateProps,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
-import { StateMessage } from '../../common/state-message/state-message';
+import { labelId } from '../../common/label/label-utils';
+import { StateMessage, messageId } from '../../common/state-message/state-message';
 import type { InputSearchInputEventDetail } from '../../input-search/input-search-utils';
 import { getComponentCss } from './multi-select-styles';
 import {
@@ -253,8 +256,11 @@ export class MultiSelect {
     syncMultiSelectChildrenProps([...this.multiSelectOptions, ...this.multiSelectOptgroups], this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const inputId = 'filter';
+    const buttonId = 'button';
     const popoverId = 'list';
+    const descriptionId = this.description ? 'description' : undefined;
+    const selectMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
+    const ariaDescribedBy = [descriptionId, selectMessageId].filter(Boolean).join(' ');
 
     return (
       <div class="root">
@@ -262,7 +268,7 @@ export class MultiSelect {
           host={this.host}
           label={this.label}
           description={this.description}
-          htmlFor={inputId}
+          htmlFor={buttonId}
           isRequired={this.required}
           isDisabled={this.disabled}
         />
@@ -270,7 +276,8 @@ export class MultiSelect {
           aria-invalid={this.state === 'error' ? 'true' : null}
           type="button"
           role="combobox"
-          id={inputId}
+          id={buttonId}
+          {...getComboboxAriaAttributes(this.isOpen, this.required, labelId, ariaDescribedBy, popoverId)}
           disabled={this.disabled}
           onClick={this.onComboClick}
           onKeyDown={this.onComboKeyDown}
@@ -328,8 +335,8 @@ export class MultiSelect {
           />
           <div class="options" role="listbox" aria-label={this.label}>
             {!this.hasFilterResults && (
-              <div class="no-results" role="option">
-                <span aria-hidden="true">---</span>
+              <div class="no-results" aria-live="polite" role="option">
+                <span aria-hidden="true">–</span>
                 <span class="sr-only">No results found</span>
               </div>
             )}
