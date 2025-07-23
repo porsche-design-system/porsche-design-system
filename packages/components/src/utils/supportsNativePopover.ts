@@ -9,7 +9,7 @@ export const supportsNativePopover = (): boolean => {
   if (!hasWindow) {
     return false;
   }
-  return Object.prototype.hasOwnProperty.call(HTMLElement.prototype, 'popover');
+  return  Object.hasOwn(HTMLElement.prototype, 'popover');
 };
 
 // determine it once

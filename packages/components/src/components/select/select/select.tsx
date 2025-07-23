@@ -394,8 +394,8 @@ export class Select {
 
     switch (action) {
       case 'Last':
+      // biome-ignore lint/suspicious/noFallthroughSwitchClause: intentional fallthrough
       case 'First':
-        // biome-ignore lint/suspicious/noFallthroughSwitchClause: intentional fallthrough
         this.updateMenuState(true);
       // intentional fallthrough
       case 'Next':
@@ -414,8 +414,8 @@ export class Select {
           getHighlightedSelectOption(this.selectOptions);
         break;
       }
+      // biome-ignore lint/suspicious/noFallthroughSwitchClause: intentional fallthrough
       case 'CloseSelect': {
-        // biome-ignore lint/suspicious/noFallthroughSwitchClause: intentional fallthrough
         event.preventDefault();
         this.updateSelectedOption(getHighlightedSelectOption(this.selectOptions));
       }

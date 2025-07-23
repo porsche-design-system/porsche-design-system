@@ -241,7 +241,6 @@ export class TextFieldWrapper {
       this.isWithinForm,
       this.submitButton,
       this.theme,
-      // biome-ignore lint/style/useExplicitLengthCheck: to be refactored
       !!this.hasUnit && this.unit.length
     );
 
