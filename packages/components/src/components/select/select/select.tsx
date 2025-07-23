@@ -9,7 +9,6 @@ import {
   getSelectedOptionString,
   setSelectedOption,
   syncSelectChildrenProps,
-  updateFilterResults,
   updateSelectOptions,
 } from './select-utils';
 
@@ -44,8 +43,6 @@ import {
   getHighlightedSelectOptionIndex,
   getMatchingSelectOptionIndex,
   getPrefixedTagNames,
-  getSelectedSelectOption,
-  getSelectedSelectOptionIndex,
   getShadowRootHTMLElement,
   getUpdatedIndex,
   getUsableSelectOptions,
@@ -56,7 +53,8 @@ import {
   optionListUpdatePosition,
   setNextSelectOptionHighlighted,
   throwIfElementIsNotOfKind,
-  validateProps,
+  updateFilterResults,
+  validateProps, getSelectedSelectOptionIndex,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
 import { labelId } from '../../common/label/label-utils';
@@ -204,14 +202,7 @@ export class Select {
       }
       // Reset filter on close
       if (this.filter) {
-        this.filterInputElement.value = '';
-        this.hasFilterResults = true;
-        for (const option of this.selectOptions) {
-          option.style.display = 'block';
-        }
-        for (const optgroup of this.selectOptgroups) {
-          optgroup.style.display = 'block';
-        }
+        this.resetFilter();
       }
     }
   }
@@ -274,12 +265,11 @@ export class Select {
     syncSelectChildrenProps([...this.selectOptions, ...this.selectOptgroups], this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const buttonId = 'value';
+    const buttonId = 'button';
     const popoverId = 'list';
     const descriptionId = this.description ? 'description' : undefined;
     const selectMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
     const ariaDescribedBy = [descriptionId, selectMessageId].filter(Boolean).join(' ');
-    const selectedOption = getSelectedOptionString(this.selectOptions);
 
     return (
       <div class="root">
@@ -303,7 +293,7 @@ export class Select {
           ref={(el) => (this.buttonElement = el)}
         >
           {this.slottedImagePath && <img src={this.slottedImagePath} alt="" />}
-          <span>{selectedOption}</span>
+          <span>{getSelectedOptionString(this.selectOptions)}</span>
           <PrefixedTagNames.pIcon
             class="icon"
             name="arrow-head-down"
@@ -365,6 +355,7 @@ export class Select {
   private onComboClick = (e: MouseEvent): void => {
     const target = e.target as HTMLElement;
 
+    // TODO: Check why this is necessary
     // Prevent closing if the filter input was clicked
     if (this.filter && this.filterInputElement?.contains(target)) {
       return;
@@ -376,6 +367,18 @@ export class Select {
   private onClickOutside = (e: MouseEvent): void => {
     if (this.isOpen && isClickOutside(e, this.buttonElement) && isClickOutside(e, this.popoverElement)) {
       this.isOpen = false;
+    }
+  };
+
+  // TODO: Share?
+  private resetFilter = (): void => {
+    this.filterInputElement.value = '';
+    this.hasFilterResults = true;
+    for (const option of this.selectOptions) {
+      option.style.display = 'block';
+    }
+    for (const optgroup of this.selectOptgroups) {
+      optgroup.style.display = 'block';
     }
   };
 

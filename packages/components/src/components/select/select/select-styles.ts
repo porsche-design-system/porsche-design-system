@@ -9,6 +9,7 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import { formElementPaddingHorizontal, getCalculatedFormElementPaddingHorizontal } from '../../../styles/form-styles';
+import { getNoResultsOptionJssStyle } from '../../../styles/option-styles';
 import {
   getButtonImageJssStyle,
   getButtonJssStyle,
@@ -36,9 +37,9 @@ export const getComponentCss = (
   hasSlottedImage: boolean
 ): string => {
   const scalingVar = `var(${cssVarInternalSelectScaling}, ${compact ? 0.5 : 1})`;
+  const { contrastMediumColor, backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
   const { contrastMediumColor: contrastMediumColorDark, backgroundSurfaceColor: backgroundSurfaceColorDark } =
     getThemedColors('dark');
-  const { contrastMediumColor, backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
@@ -87,6 +88,7 @@ export const getComponentCss = (
     },
     'no-results': {
       ...getOptionJssStyle('select-option', scalingVar, theme),
+      ...getNoResultsOptionJssStyle(),
       color: contrastMediumColor,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: contrastMediumColorDark,
