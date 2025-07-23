@@ -41,7 +41,7 @@ import {
   setNextSelectOptionHighlighted,
   throwIfElementIsNotOfKind,
   updateFilterResults,
-  validateProps,
+  validateProps, getSelectedSelectOptionIndex, getSelectedSelectOption,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
 import { labelId } from '../../common/label/label-utils';
@@ -492,13 +492,13 @@ export class MultiSelect {
       case 'Open': {
         event.preventDefault();
         this.updateMenuState(true);
-        // TODO: Do we need this when the highlight stays on the last highlighted option?
-        //const selectedIndex = getSelectedSelectOptionIndex(this.multiSelectOptions);
-        // if (selectedIndex >= 0) {
-        //   setNextSelectOptionHighlighted(this.multiSelectOptions, selectedIndex);
-        //   // @ts-ignore - HTMLCombobox type is missing
-        //   this.buttonElement.ariaActiveDescendantElement = getSelectedSelectOption(this.selectOptions);
-        // }
+        // TODO: Do we need this when the highlight stays on the last highlighted option and there are multiple options highlighted?
+        const selectedIndex = getSelectedSelectOptionIndex(this.multiSelectOptions);
+        if (selectedIndex >= 0) {
+          setNextSelectOptionHighlighted(this.multiSelectOptions, selectedIndex);
+          // @ts-ignore - HTMLCombobox type is missing
+          this.buttonElement.ariaActiveDescendantElement = getSelectedSelectOption(this.multiSelectOptions);
+        }
         break;
       }
     }

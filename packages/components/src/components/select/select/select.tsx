@@ -54,7 +54,7 @@ import {
   setNextSelectOptionHighlighted,
   throwIfElementIsNotOfKind,
   updateFilterResults,
-  validateProps,
+  validateProps, getSelectedSelectOptionIndex,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
 import { labelId } from '../../common/label/label-utils';
@@ -437,13 +437,12 @@ export class Select {
       case 'Open': {
         event.preventDefault();
         this.updateMenuState(true);
-        // TODO: Do we need this when the highlight stays on the last highlighted option? Highlight will be gone if not in filter results
-        // const selectedIndex = getSelectedSelectOptionIndex(this.selectOptions);
-        // if (selectedIndex >= 0) {
-        //   setNextSelectOptionHighlighted(this.selectOptions, selectedIndex);
-        //   // @ts-ignore - HTMLCombobox type is missing
-        //   this.buttonElement.ariaActiveDescendantElement = getSelectedSelectOption(this.selectOptions);
-        // }
+        const selectedIndex = getSelectedSelectOptionIndex(this.selectOptions);
+        if (selectedIndex >= 0) {
+          setNextSelectOptionHighlighted(this.selectOptions, selectedIndex);
+          // @ts-ignore - HTMLCombobox type is missing
+          this.buttonElement.ariaActiveDescendantElement = getSelectedSelectOption(this.selectOptions);
+        }
         break;
       }
     }
