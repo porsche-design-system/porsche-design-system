@@ -315,7 +315,6 @@ export class MultiSelect {
           role="dialog"
           aria-label={this.label}
           aria-hidden={this.isOpen ? null : 'true'}
-          aria-multiselectable="true"
           ref={(el) => (this.popoverElement = el)}
         >
           <PrefixedTagNames.pInputSearch
@@ -333,7 +332,7 @@ export class MultiSelect {
             onKeyDown={this.onComboKeyDown}
             ref={(el: HTMLPInputSearchElement) => (this.filterInputElement = el)}
           />
-          <div class="options" role="listbox" aria-label={this.label}>
+          <div class="options" role="listbox" aria-label={this.label} aria-multiselectable="true">
             {!this.hasFilterResults && (
               <div class="no-results" aria-live="polite" role="option">
                 <span aria-hidden="true">–</span>
@@ -445,8 +444,8 @@ export class MultiSelect {
 
     switch (action) {
       case 'Last':
+      // biome-ignore lint/suspicious/noFallthroughSwitchClause: intentional fallthrough
       case 'First':
-        // biome-ignore lint/suspicious/noFallthroughSwitchClause: intentional fallthrough
         this.updateMenuState(true);
       // intentional fallthrough
       case 'Next':
