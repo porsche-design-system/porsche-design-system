@@ -2,7 +2,7 @@ import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration }
 
 import type { Route } from './+types/root';
 import './app.css';
-import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
+import {componentsReady, PorscheDesignSystemProvider} from '@porsche-design-system/components-react/ssr';
 
 export const links: Route.LinksFunction = () => [];
 
@@ -58,4 +58,8 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
       )}
     </main>
   );
+}
+
+if (typeof window !== 'undefined') {
+  (window as any).componentsReady = componentsReady; // for vrt
 }
