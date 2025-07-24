@@ -92,7 +92,7 @@ test.describe('slotted content changes', () => {
     await addNewButton(page);
     await waitForStencilLifecycle(page);
 
-    expect(await getElementStyle(actionNext, 'visibility')).toBe('visible');
+    await expect.poll(async () => await getElementStyle(actionNext, 'visibility')).toBe('visible');
   });
 });
 

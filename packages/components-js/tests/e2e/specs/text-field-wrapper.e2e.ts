@@ -229,24 +229,24 @@ test.describe('input type="search"', () => {
       await initTextField(page, { type: 'search' });
       const input = getInput(page);
 
-      expect(await isClearButtonVisible(page)).toBe(false);
+      await expect.poll(async () => await isClearButtonVisible(page)).toBe(false);
 
       await input.focus();
       await page.keyboard.type('search-term');
       await waitForStencilLifecycle(page);
 
-      expect(await isClearButtonVisible(page)).toBe(true);
+      await expect.poll(async () => await isClearButtonVisible(page)).toBe(true);
     });
 
     test('should show clear button on programmatically set input.value', async ({ page }) => {
       await initTextField(page, { type: 'search' });
       const input = getInput(page);
 
-      expect(await isClearButtonVisible(page)).toBe(false);
+      await expect.poll(async () => await isClearButtonVisible(page)).toBe(false);
       await setProperty(input, 'value', 'value');
       await waitForStencilLifecycle(page);
 
-      expect(await isClearButtonVisible(page)).toBe(true);
+      await expect.poll(async () => await isClearButtonVisible(page)).toBe(true);
     });
 
     test('should reset input value on keydown Escape', async ({ page }) => {
@@ -256,13 +256,13 @@ test.describe('input type="search"', () => {
       await page.keyboard.type('search-term');
       await waitForStencilLifecycle(page);
 
-      expect(await isClearButtonVisible(page)).toBe(true);
+      await expect.poll(async () => await isClearButtonVisible(page)).toBe(true);
 
       await page.keyboard.press('Escape');
       await waitForStencilLifecycle(page);
 
       expect(await getProperty(input, 'value')).toBe('');
-      expect(await isClearButtonVisible(page)).toBe(false);
+      await expect.poll(async () => await isClearButtonVisible(page)).toBe(false);
     });
 
     test('should reset input value on clear-button click', async ({ page }) => {
@@ -273,13 +273,13 @@ test.describe('input type="search"', () => {
       await page.keyboard.type('search-term');
       await waitForStencilLifecycle(page);
 
-      expect(await isClearButtonVisible(page)).toBe(true);
+      await expect.poll(async () => await isClearButtonVisible(page)).toBe(true);
 
       await clearButton.click();
       await waitForStencilLifecycle(page);
 
       expect(await getProperty(input, 'value')).toBe('');
-      expect(await isClearButtonVisible(page)).toBe(false);
+      await expect.poll(async () => await isClearButtonVisible(page)).toBe(false);
     });
   });
 

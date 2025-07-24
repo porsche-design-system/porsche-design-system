@@ -35,6 +35,6 @@ test.describe('form', () => {
     const lastSubmittedData = await page.locator('p-text').innerText();
 
     await expect.poll(async () => (await getEventSummary(form, 'submit')).counter).toBe(1);
-    expect(lastSubmittedData.includes('a, b')).toBe(true);
+    await expect.poll(() => lastSubmittedData.includes('a, b')).toBe(true);
   });
 });
