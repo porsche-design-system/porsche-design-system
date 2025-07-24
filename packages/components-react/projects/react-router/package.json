@@ -1,0 +1,39 @@
+{
+  "name": "@porsche-design-system/react-router",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "type": "module",
+  "scripts": {
+    "build": "react-router build",
+    "dev": "react-router dev",
+    "start": "react-router-serve ./build/server/index.js",
+    "typecheck": "react-router typegen && tsc"
+  },
+  "dependencies": {
+    "@react-router/node": "^7.7.0",
+    "@react-router/serve": "^7.7.0",
+    "isbot": "^5.1.27",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router": "^7.7.0"
+  },
+  "devDependencies": {
+    "@react-router/dev": "^7.7.0",
+    "@tailwindcss/vite": "^4.1.4",
+    "@types/node": "^20",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "typescript": "^5.8.3",
+    "vite-tsconfig-paths": "^5.1.4"
+  },
+  "peerDependencies": {
+    "vite": "*",
+    "tailwindcss": "*"
+  },
+  "volta": {
+    "extends": "../../../../package.json"
+  }
+}
