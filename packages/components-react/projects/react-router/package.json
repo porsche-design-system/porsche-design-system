@@ -21,6 +21,7 @@
     "react-router": "^7.7.0"
   },
   "devDependencies": {
+    "@porsche-design-system/shared": "0.0.0",
     "@react-router/dev": "^7.7.0",
     "@tailwindcss/vite": "^4.1.4",
     "@types/node": "^20",
