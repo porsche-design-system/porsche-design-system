@@ -1,0 +1,4 @@
+- text: Some label
+- radio "Some label"
+- alert
+- status

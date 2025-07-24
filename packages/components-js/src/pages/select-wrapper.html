@@ -27,7 +27,7 @@
 </div>
 
 <div class="playground light" title="should render native dropdown with label">
-  <p-select-wrapper label="Native" native="true">
+  <p-select-wrapper label="Native" native="true" class="a11ytree-snapshot-test">
     <select>
       <option></option>
       <option value="a" selected>Option A</option>
@@ -49,7 +49,7 @@
 </div>
 
 <div class="playground light" title="should render with label and description">
-  <p-select-wrapper label="Some label" description="Some description">
+  <p-select-wrapper label="Some label" description="Some description" class="a11ytree-snapshot-test">
     <select>
       <option value="a">Option A</option>
       <option value="b">Option B</option>
@@ -93,7 +93,7 @@
 </div>
 
 <div class="playground light" title="should render in disabled state with filter">
-  <p-select-wrapper label="Some label disabled with filter" filter="true">
+  <p-select-wrapper label="Some label disabled with filter" filter="true" class="a11ytree-snapshot-test">
     <select disabled>
       <option value="a">Option A</option>
       <option value="b">Option B</option>
@@ -103,7 +103,7 @@
 </div>
 
 <div class="playground light" title="should render in required state">
-  <p-select-wrapper label="Some label">
+  <p-select-wrapper label="Some label" class="a11ytree-snapshot-test">
     <select required>
       <option value="a">Option A</option>
       <option value="b">Option B</option>
@@ -120,7 +120,7 @@
 </div>
 
 <div class="playground light" title="should render in disabled state">
-  <p-select-wrapper label="Some label disabled" description="Some description">
+  <p-select-wrapper label="Some label disabled" description="Some description" class="a11ytree-snapshot-test">
     <select disabled>
       <option value="a">Option A</option>
       <option value="b">Option B</option>
@@ -130,7 +130,7 @@
 </div>
 
 <div class="playground light" title="should render with error state and error message">
-  <p-select-wrapper label="Some label" state="error" message="Some error message.">
+  <p-select-wrapper label="Some label" state="error" message="Some error message." class="a11ytree-snapshot-test">
     <select>
       <option value="a">Option A</option>
       <option value="b">Option B</option>
@@ -140,7 +140,13 @@
 </div>
 
 <div class="playground light" title="should render with error state and error message with filter">
-  <p-select-wrapper label="Some label with filter" filter="true" state="error" message="Some error message.">
+  <p-select-wrapper
+    label="Some label with filter"
+    filter="true"
+    state="error"
+    message="Some error message."
+    class="a11ytree-snapshot-test"
+  >
     <select>
       <option value="a">Option A</option>
       <option value="b">Option B</option>
@@ -160,7 +166,7 @@
 </div>
 
 <div class="playground light" title="should render with success state and success message">
-  <p-select-wrapper label="Some label" state="success" message="Some success message.">
+  <p-select-wrapper label="Some label" state="success" message="Some success message." class="a11ytree-snapshot-test">
     <select>
       <option value="a">Option A</option>
       <option value="b">Option B</option>
@@ -170,7 +176,13 @@
 </div>
 
 <div class="playground light" title="should render with success state and success message with filter">
-  <p-select-wrapper label="Some label with filter" filter="true" state="success" message="Some success message.">
+  <p-select-wrapper
+    label="Some label with filter"
+    filter="true"
+    state="success"
+    message="Some success message."
+    class="a11ytree-snapshot-test"
+  >
     <select>
       <option value="a">Option A</option>
       <option value="b">Option B</option>
@@ -200,7 +212,7 @@
 </div>
 
 <div class="playground light" title="should render label, description and message by slotted content with error state">
-  <p-select-wrapper state="error">
+  <p-select-wrapper state="error" class="a11ytree-snapshot-test">
     <span slot="label">
       <span>
         Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
@@ -231,7 +243,7 @@
   class="playground light"
   title="should render label, description and message by slotted content with success state"
 >
-  <p-select-wrapper state="success">
+  <p-select-wrapper state="success" class="a11ytree-snapshot-test">
     <span slot="label">
       <span>
         Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
@@ -289,7 +301,7 @@
   </div>
 </div>
 
-<div class="playground light" title="should render opened on #top-layer within scroll container">
+<div class="playground light a11ytree-snapshot-test" title="should render opened on #top-layer within scroll container">
   <iframe
     src="/select-wrapper-opened-scroll-context?iframe=true"
     loading="eager"

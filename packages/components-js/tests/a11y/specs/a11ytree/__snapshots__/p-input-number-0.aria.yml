@@ -1,0 +1,7 @@
+- text: Some label Some description
+- spinbutton "Some label"
+- button "Decrement value by 1"
+- status
+- button "Increment value by 1"
+- status
+- alert

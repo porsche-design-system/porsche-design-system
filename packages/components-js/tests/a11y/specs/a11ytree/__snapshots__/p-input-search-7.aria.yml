@@ -1,0 +1,26 @@
+- text: Slotted label. And some slotted and deeply nested
+- link "anchor":
+  - /url: "#"
+- text: ", bold,"
+- strong: strong
+- text: ","
+- emphasis: emphasized
+- text: and italic text. Slotted description. And some slotted and deeply nested
+- link "anchor":
+  - /url: "#"
+- text: ", bold,"
+- strong: strong
+- text: ","
+- emphasis: emphasized
+- text: and italic text.
+- searchbox "Slotted label. And some slotted and deeply nested anchor, bold, strong, emphasized and italic text."
+- alert:
+  - text: Slotted error message. And some slotted and deeply nested
+  - link "anchor":
+    - /url: "#"
+  - text: ", bold,"
+  - strong: strong
+  - text: ","
+  - emphasis: emphasized
+  - text: and italic text.
+- status

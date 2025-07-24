@@ -1,4 +1,4 @@
-import { expect, Page, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 import {
   addEventListener,
   getEventSummary,
@@ -33,11 +33,11 @@ test.describe('form', () => {
     await setProperty(host, 'value', newValue);
 
     await addEventListener(form, 'submit');
-    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+    await expect.poll(async () => (await getEventSummary(form, 'submit')).counter).toBe(0);
 
     await page.locator('button[type="submit"]').click();
 
-    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    await expect.poll(async () => (await getEventSummary(form, 'submit')).counter).toBe(1);
     expect(await getFormDataValue(form, 'options')).toBe(newValue);
   });
 });

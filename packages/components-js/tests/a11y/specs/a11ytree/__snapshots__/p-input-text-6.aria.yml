@@ -1,0 +1,5 @@
+- text: Error with message
+- textbox "Error with message"
+- text: /You have \d+ out of \d+ characters left/
+- alert: Error message
+- status

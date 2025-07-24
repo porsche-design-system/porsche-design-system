@@ -1,0 +1,7 @@
+- dialog "Sticky HeadingSticky header text":
+  - button "Dismiss flyout"
+  - status
+  - heading "Sticky Heading" [level=1]
+  - paragraph: Sticky header text
+  - button "Sticky Footer Button"
+  - paragraph: Some Sub Footer Content

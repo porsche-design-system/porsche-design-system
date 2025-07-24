@@ -1,0 +1,12 @@
+- text: Filter
+- combobox "Filter" [expanded]: Option A
+- dialog "Filter":
+  - text: Filter options
+  - searchbox "Filter options"
+  - button "Clear field"
+  - status
+  - alert
+  - status
+  - listbox "Filter":
+    - option "No results found"
+- alert

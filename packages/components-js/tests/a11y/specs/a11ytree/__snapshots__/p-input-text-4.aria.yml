@@ -1,0 +1,5 @@
+- text: Readonly Some description
+- textbox "Readonly": some-value
+- text: /You have \d+ out of \d+ characters left/
+- alert
+- status

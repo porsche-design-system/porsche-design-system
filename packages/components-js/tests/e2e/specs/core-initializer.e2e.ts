@@ -1,4 +1,4 @@
-import { expect, Locator, test } from '@playwright/test';
+import { expect, type Locator, test } from '@playwright/test';
 import { goto } from '../helpers';
 
 test.describe('core-initializer', () => {
@@ -12,7 +12,7 @@ test.describe('core-initializer', () => {
     const component1HTML = await getOuterHTML(component1);
     const component2HTML = await getOuterHTML(component2);
 
-    expect(component1HTML).toBe(component2HTML);
+    await expect.poll(async () => component1HTML).toBe(component2HTML);
 
     if (component1HTML !== component2HTML) {
       console.log('component1HTML', component1HTML);

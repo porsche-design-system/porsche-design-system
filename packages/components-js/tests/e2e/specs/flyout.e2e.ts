@@ -1,5 +1,5 @@
 import { type Locator, type Page, expect, test } from '@playwright/test';
-import { Components } from '@porsche-design-system/components';
+import type { Components } from '@porsche-design-system/components';
 import {
   type Options,
   addEventListener,
@@ -172,8 +172,7 @@ test('should not be visible when not open', async ({ page }) => {
 
 test('should be visible after opened', async ({ page }) => {
   await initBasicFlyout(page, { open: false });
-  const host = getHost(page);
-  await setProperty(host, 'open', true);
+  await openFlyout(page);
 
   await waitForFlyoutTransition();
 

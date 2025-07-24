@@ -17,13 +17,13 @@ test.describe('pagination', () => {
     const [, secondBtn, thirdBtn, fourthBtn] = (await nav.locator('span:not(.ellipsis)').all()).slice(1, -1); // without prev and next;
 
     await secondBtn.click();
-    expect(await getCounterValue(paginationUpdateEventCounter)).toBe('1');
+    await expect.poll(async () => await getCounterValue(paginationUpdateEventCounter)).toBe('1');
 
     await thirdBtn.click();
-    expect(await getCounterValue(paginationUpdateEventCounter)).toBe('2');
+    await expect.poll(async () => await getCounterValue(paginationUpdateEventCounter)).toBe('2');
 
     await fourthBtn.click();
-    expect(await getCounterValue(paginationUpdateEventCounter)).toBe('3');
+    await expect.poll(async () => await getCounterValue(paginationUpdateEventCounter)).toBe('3');
   });
 });
 
@@ -36,13 +36,13 @@ test.describe('tabs-bar', () => {
     const [firstBtn, secondBtn, thirdBtn] = await tabsBar.locator('button').all();
 
     await secondBtn.click();
-    expect(await getCounterValue(tabsBarUpdateEventCounter)).toBe('1');
+    await expect.poll(async () => await getCounterValue(tabsBarUpdateEventCounter)).toBe('1');
 
     await thirdBtn.click();
-    expect(await getCounterValue(tabsBarUpdateEventCounter)).toBe('2');
+    await expect.poll(async () => await getCounterValue(tabsBarUpdateEventCounter)).toBe('2');
 
     await firstBtn.click();
-    expect(await getCounterValue(tabsBarUpdateEventCounter)).toBe('3');
+    await expect.poll(async () => await getCounterValue(tabsBarUpdateEventCounter)).toBe('3');
   });
 
   test('should not throw error when used with router', async ({ page }) => {
@@ -70,13 +70,13 @@ test.describe('tabs', () => {
     const [firstBtn, secondBtn, thirdBtn] = await tabsBar.locator('button').all();
 
     await secondBtn.click();
-    expect(await getCounterValue(tabsUpdateEventCounter)).toBe('1');
+    await expect.poll(async () => await getCounterValue(tabsUpdateEventCounter)).toBe('1');
 
     await thirdBtn.click();
-    expect(await getCounterValue(tabsUpdateEventCounter)).toBe('2');
+    await expect.poll(async () => await getCounterValue(tabsUpdateEventCounter)).toBe('2');
 
     await firstBtn.click();
-    expect(await getCounterValue(tabsUpdateEventCounter)).toBe('3');
+    await expect.poll(async () => await getCounterValue(tabsUpdateEventCounter)).toBe('3');
   });
 });
 
@@ -89,13 +89,13 @@ test.describe('text-field-wrapper type="search"', () => {
 
     await input.focus();
     await page.keyboard.type('hello');
-    expect(await getCounterValue(inputValue)).toBe('Value: hello');
+    await expect.poll(async () => await getCounterValue(inputValue)).toBe('Value: hello');
 
     await page.keyboard.press('Backspace');
-    expect(await getCounterValue(inputValue)).toBe('Value: hell');
+    await expect.poll(async () => await getCounterValue(inputValue)).toBe('Value: hell');
 
     await page.keyboard.press('Escape');
-    expect(await getCounterValue(inputValue)).toBe('Value: ');
+    await expect.poll(async () => await getCounterValue(inputValue)).toBe('Value: ');
   });
 });
 
@@ -107,13 +107,13 @@ test.describe('switch', () => {
     const switchUpdateEventCounter = page.locator('p-switch + p');
 
     await switchBtn.click();
-    expect(await getCounterValue(switchUpdateEventCounter)).toBe('1');
+    await expect.poll(async () => await getCounterValue(switchUpdateEventCounter)).toBe('1');
 
     await switchBtn.click();
-    expect(await getCounterValue(switchUpdateEventCounter)).toBe('2');
+    await expect.poll(async () => await getCounterValue(switchUpdateEventCounter)).toBe('2');
 
     await switchBtn.click();
-    expect(await getCounterValue(switchUpdateEventCounter)).toBe('3');
+    await expect.poll(async () => await getCounterValue(switchUpdateEventCounter)).toBe('3');
   });
 });
 
@@ -130,19 +130,19 @@ test.describe('banner', () => {
     await expect(banner).toBeVisible();
     await bannerCloseBtn.click();
     await expect(banner).toBeHidden();
-    expect(await getCounterValue(bannerDismissEventCounter)).toBe('1');
+    await expect.poll(async () => await getCounterValue(bannerDismissEventCounter)).toBe('1');
 
     await bannerOpenBtn.click();
     await expect(banner).toBeVisible();
     await bannerCloseBtn.click();
     await expect(banner).toBeHidden();
-    expect(await getCounterValue(bannerDismissEventCounter)).toBe('2');
+    await expect.poll(async () => await getCounterValue(bannerDismissEventCounter)).toBe('2');
 
     await bannerOpenBtn.click();
     await expect(banner).toBeVisible();
     await bannerCloseBtn.click();
     await expect(banner).toBeHidden();
-    expect(await getCounterValue(bannerDismissEventCounter)).toBe('3');
+    await expect.poll(async () => await getCounterValue(bannerDismissEventCounter)).toBe('3');
   });
 });
 
@@ -160,7 +160,7 @@ test.describe('modal', () => {
     await modalCloseBtn.click();
     await waitForComponentsReady(page);
     await new Promise((resolve) => setTimeout(resolve, 200)); // fade-out transition
-    expect(await getCounterValue(modalDismissEventCounter)).toBe('1');
+    await expect.poll(async () => await getCounterValue(modalDismissEventCounter)).toBe('1');
 
     await modalOpenBtn.click();
     await waitForComponentsReady(page);
@@ -168,7 +168,7 @@ test.describe('modal', () => {
     await modalCloseBtn.click();
     await waitForComponentsReady(page);
     await new Promise((resolve) => setTimeout(resolve, 200)); // fade-out transition
-    expect(await getCounterValue(modalDismissEventCounter)).toBe('2');
+    await expect.poll(async () => await getCounterValue(modalDismissEventCounter)).toBe('2');
 
     await modalOpenBtn.click();
     await waitForComponentsReady(page);
@@ -176,7 +176,7 @@ test.describe('modal', () => {
     await modalCloseBtn.click();
     await waitForComponentsReady(page);
     await new Promise((resolve) => setTimeout(resolve, 200)); // fade-out transition
-    expect(await getCounterValue(modalDismissEventCounter)).toBe('3');
+    await expect.poll(async () => await getCounterValue(modalDismissEventCounter)).toBe('3');
   });
 });
 
@@ -188,13 +188,13 @@ test.describe('table', () => {
     const tableUpdateEventCounter = page.locator('p-table + p');
 
     await tableHeadBtn.click();
-    expect(await getCounterValue(tableUpdateEventCounter)).toBe('1');
+    await expect.poll(async () => await getCounterValue(tableUpdateEventCounter)).toBe('1');
 
     await tableHeadBtn.click();
-    expect(await getCounterValue(tableUpdateEventCounter)).toBe('2');
+    await expect.poll(async () => await getCounterValue(tableUpdateEventCounter)).toBe('2');
 
     await tableHeadBtn.click();
-    expect(await getCounterValue(tableUpdateEventCounter)).toBe('3');
+    await expect.poll(async () => await getCounterValue(tableUpdateEventCounter)).toBe('3');
   });
 });
 
@@ -206,13 +206,13 @@ test.describe('accordion', () => {
     const accordionUpdateEventCounter = page.locator('p-accordion + p');
 
     await accordionButton.click();
-    expect(await getCounterValue(accordionUpdateEventCounter)).toBe('1');
+    await expect.poll(async () => await getCounterValue(accordionUpdateEventCounter)).toBe('1');
 
     await accordionButton.click();
-    expect(await getCounterValue(accordionUpdateEventCounter)).toBe('2');
+    await expect.poll(async () => await getCounterValue(accordionUpdateEventCounter)).toBe('2');
 
     await accordionButton.click();
-    expect(await getCounterValue(accordionUpdateEventCounter)).toBe('3');
+    await expect.poll(async () => await getCounterValue(accordionUpdateEventCounter)).toBe('3');
   });
 });
 
@@ -225,12 +225,12 @@ test.describe('carousel', () => {
     const carouselUpdateEventCounter = page.locator('p-carousel + p');
 
     await goToLastSlideButton.click();
-    expect(await getCounterValue(carouselUpdateEventCounter)).toBe('1');
+    await expect.poll(async () => await getCounterValue(carouselUpdateEventCounter)).toBe('1');
 
     await prevSlideButton.click();
-    expect(await getCounterValue(carouselUpdateEventCounter)).toBe('2');
+    await expect.poll(async () => await getCounterValue(carouselUpdateEventCounter)).toBe('2');
 
     await prevSlideButton.click();
-    expect(await getCounterValue(carouselUpdateEventCounter)).toBe('3');
+    await expect.poll(async () => await getCounterValue(carouselUpdateEventCounter)).toBe('3');
   });
 });

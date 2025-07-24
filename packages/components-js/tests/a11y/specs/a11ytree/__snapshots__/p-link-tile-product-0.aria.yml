@@ -1,0 +1,4 @@
+- link /Some product sale price \d+,\d+ € original price \d+,\d+ €/
+- img "Some alt text"
+- heading "Some product" [level=3]
+- paragraph: /sale price \d+,\d+ € original price \d+,\d+ €/
