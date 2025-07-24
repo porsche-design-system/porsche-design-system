@@ -24,6 +24,7 @@
       "packages/components-react/projects/nextjs",
       "packages/components-react/projects/react-ssr-wrapper",
       "packages/components-react/projects/remix",
+      "packages/components-react/projects/react-router",
       "packages/components-react/projects/uxpin-wrapper",
       "packages/components-vue/dist/vue-wrapper",
       "packages/styles/projects/tailwindcss",
