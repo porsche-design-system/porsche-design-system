@@ -109,6 +109,20 @@ packages/components-react/projects/remix/app/routes/toast-basic.tsx
 packages/components-react/projects/remix/app/routes/toast-prefixed.tsx
 packages/components-react/projects/remix/styles/getSharedStyles.tsx
 
+packages/components-react/projects/react-router/app/routes/banner-basic.tsx
+packages/components-react/projects/react-router/app/routes/banner-prefixed.tsx
+packages/components-react/projects/react-router/app/routes/sheet-basic.tsx
+packages/components-react/projects/react-router/app/routes/sheet-prefixed.tsx
+packages/components-react/projects/react-router/app/routes/flyout-basic.tsx
+packages/components-react/projects/react-router/app/routes/flyout-prefixed.tsx
+packages/components-react/projects/react-router/app/routes/drilldown-basic.tsx
+packages/components-react/projects/react-router/app/routes/drilldown-prefixed.tsx
+packages/components-react/projects/react-router/app/routes/modal-basic.tsx
+packages/components-react/projects/react-router/app/routes/modal-prefixed.tsx
+packages/components-react/projects/react-router/app/routes/overview.tsx
+packages/components-react/projects/react-router/app/routes/toast-basic.tsx
+packages/components-react/projects/react-router/app/routes/toast-prefixed.tsx
+
 packages/components-react/projects/nextjs/app/*/
 packages/components-react/projects/nextjs/styles/getSharedStyles.tsx
 
