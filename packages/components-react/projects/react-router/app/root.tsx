@@ -26,9 +26,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return (
-    <PorscheDesignSystemProvider>
-      <Outlet />
-    </PorscheDesignSystemProvider>
+    <div id="app">
+      <PorscheDesignSystemProvider>
+        <Outlet />
+      </PorscheDesignSystemProvider>
+    </div>
   );
 }
 

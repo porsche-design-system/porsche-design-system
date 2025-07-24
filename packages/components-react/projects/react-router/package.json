@@ -37,6 +37,7 @@
   },
   "peerDependencies": {
     "concurrently": "*",
+    "@playwright/test": "*",
     "tailwindcss": "*",
     "vite": "*"
   },
