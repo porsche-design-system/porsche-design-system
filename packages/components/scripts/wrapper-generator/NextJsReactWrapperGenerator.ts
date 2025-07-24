@@ -55,7 +55,7 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
     tweakedComponent = tweakedComponent.replace(
       /\.\.\.rest,\n/,
       `$&      // @ts-ignore
-      ...(!process.browser
+      ...(typeof window === 'undefined'
         ? {
             ${hostAttributes}children: (
               <${this.getSsrComponentName(component)}
