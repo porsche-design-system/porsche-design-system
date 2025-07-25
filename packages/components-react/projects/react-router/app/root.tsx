@@ -1,12 +1,41 @@
-import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
+import {isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData} from 'react-router';
 
-import type { Route } from './+types/root';
+import type {Route} from './+types/root';
 import './app.css';
 import {componentsReady, PorscheDesignSystemProvider} from '@porsche-design-system/components-react/ssr';
+import {
+  getBrowserSupportFallbackScript,
+  getCookiesFallbackScript,
+  getFontFaceStyles,
+  getFontLinks,
+  getIconLinks,
+  getInitialStyles,
+  getMetaTagsAndIconLinks
+} from '@porsche-design-system/components-js/partials';
 
-export const links: Route.LinksFunction = () => [];
+export async function loader() {
+  return {
+    headPartials: (
+      <>
+        {getMetaTagsAndIconLinks({ format: 'jsx', appTitle: 'React Router' })}
+        {getInitialStyles({ format: 'jsx' })}
+        {getFontFaceStyles({ format: 'jsx' })}
+        {getFontLinks({ format: 'jsx', weights: ['regular', 'semi-bold', 'bold'] })}
+        {getIconLinks({ format: 'jsx', icons: ['arrow-head-right', 'arrow-head-left'] })}
+      </>
+    ),
+    bodyPartials: (
+      <>
+        {getBrowserSupportFallbackScript({ format: 'jsx' })}
+        {getCookiesFallbackScript({ format: 'jsx' })}
+      </>
+    ),
+  };
+}
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const partials = useLoaderData<typeof loader>();
+
   return (
     <html lang="en">
       <head>
@@ -14,11 +43,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        {partials?.headPartials}
       </head>
       <body>
         {children}
         <ScrollRestoration />
         <Scripts />
+        {partials?.bodyPartials}
       </body>
     </html>
   );
