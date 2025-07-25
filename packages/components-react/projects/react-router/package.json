@@ -13,7 +13,7 @@
     "build-app": "react-router build",
     "typecheck": "react-router typegen && tsc",
     "test": "yarn test:e2e && yarn test:vrt",
-    "test:e2e": "DEBUG=pw:* playwright test --config=tests/e2e/config/playwright.config.ts",
+    "test:e2e": "playwright test --config=tests/e2e/config/playwright.config.ts",
     "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
     "clean:build": "rm -rf ./.react-router && rm -rf ./build"
   },
