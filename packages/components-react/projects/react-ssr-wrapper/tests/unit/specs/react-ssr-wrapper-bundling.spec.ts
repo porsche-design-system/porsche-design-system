@@ -83,3 +83,45 @@ describe('remix', () => {
     );
   });
 });
+
+describe('react-router', () => {
+  const serverBuildDirectory = path.resolve(__dirname, '../../../../react-router/build/server');
+  const clientBuildDirectory = path.resolve(__dirname, '../../../../react-router/build/client');
+
+  beforeAll(() => {
+    if (!fs.existsSync(serverBuildDirectory) || !fs.existsSync(clientBuildDirectory)) {
+      throw new Error('Build for React Router is missing. Make sure to build it first via `yarn build-app`.');
+    }
+  });
+
+  describe('client build', () => {
+    const clientJsFilePaths = globbySync(`${clientBuildDirectory}/**/*.js`);
+
+    it.each(clientJsFilePaths.map((filePath) => [filePath.split('/projects/react-router').pop(), filePath]))(
+      'should not contain dsr components in %s',
+      (_, jsFilePath) => {
+        const fileContent = fs.readFileSync(jsFilePath, 'utf8');
+
+        expect(fileContent).not.toContain('shadowrootmode');
+        expect(fileContent).not.toContain('shadowrootdelegatesfocus');
+        expect(fileContent).not.toContain('process.browser');
+        expect(fileContent).not.toContain('"ssr"'); // added className from server build
+        expect(fileContent).not.toContain("'ssr'"); // added className from server build
+      }
+    );
+  });
+
+  // server build does not bundle dependencies and imports them from node_modules instead
+  describe.skip('server build', () => {
+    const serverJsFilePaths = globbySync(`${serverBuildDirectory}/**/*.js`);
+
+    it.each(serverJsFilePaths.map((filePath) => [filePath.split('/projects/react-router').pop(), filePath]))(
+      'should not contain process.browser in %s',
+      (_, jsFilePath) => {
+        const fileContent = fs.readFileSync(jsFilePath, 'utf8');
+
+        expect(fileContent).not.toContain('process.browser');
+      }
+    );
+  });
+});

@@ -249,6 +249,18 @@ export const sitemap: Routes = {
           },
         },
       },
+      "react-router": {
+        name: 'React Router',
+        path: '/developing/react-router',
+        type: 'PAGE',
+        subPaths: {
+          'getting-started': {
+            name: 'Getting Started',
+            path: '/developing/react-router/getting-started',
+            type: 'TAB',
+          },
+        },
+      },
       vue: {
         name: 'Vue',
         path: '/developing/vue',
