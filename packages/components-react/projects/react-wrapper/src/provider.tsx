@@ -26,7 +26,7 @@ export const PorscheDesignSystemProvider = ({
   ...props
 }: PropsWithChildren<Props>): JSX.Element => {
   // @ts-ignore
-  if (typeof window === 'undefined') {
+  if (!process.browser) {
     // for ssr we set the global PORSCHE_DESIGN_SYSTEM_CDN_URL variable that is used in our getCDNBaseURL() util to respect the cdn
     const tld = cdn === 'cn' ? 'cn' : 'com';
     // @ts-ignore
