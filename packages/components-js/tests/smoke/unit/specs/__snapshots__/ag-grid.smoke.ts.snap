@@ -5,7 +5,85 @@ exports[`ag-grid package content > should match content 1`] = `
   "pdsTheme": _ThemeImpl {
     "parts": [
       PartImpl {
-        "css": ".ag-checkbox-input-wrapper,.ag-radio-button-input-wrapper{background-color:var(--ag-checkbox-unchecked-background-color);border:solid var(--ag-checkbox-border-width) var(--ag-checkbox-unchecked-border-color);flex:none;height:var(--ag-icon-size);position:relative;width:var(--ag-icon-size);:where(input){-webkit-appearance:none;-moz-appearance:none;appearance:none;cursor:pointer;display:block;height:var(--ag-icon-size);margin:0;opacity:0;width:var(--ag-icon-size)}&:after{content:"";display:block;inset:0;-webkit-mask-position:center;mask-position:center;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;pointer-events:none;position:absolute}&:where(.ag-checked){background-color:var(--ag-checkbox-checked-background-color);border-color:var(--ag-checkbox-checked-border-color);&:after{background-color:var(--ag-checkbox-checked-shape-color)}}&:where(:focus-within,:active){box-shadow:var(--ag-focus-shadow)}&:where(.ag-disabled){filter:grayscale();opacity:.5}}.ag-checkbox-input-wrapper{border-radius:var(--ag-checkbox-border-radius);&:where(.ag-checked):after{-webkit-mask-image:var(--ag-checkbox-checked-shape-image);mask-image:var(--ag-checkbox-checked-shape-image)}&:where(.ag-indeterminate){background-color:var(--ag-checkbox-indeterminate-background-color);border-color:var(--ag-checkbox-indeterminate-border-color);&:after{background-color:var(--ag-checkbox-indeterminate-shape-color);-webkit-mask-image:var(--ag-checkbox-indeterminate-shape-image);mask-image:var(--ag-checkbox-indeterminate-shape-image)}}}.ag-radio-button-input-wrapper{border-radius:100%;&:where(.ag-checked):after{-webkit-mask-image:var(--ag-radio-checked-shape-image);mask-image:var(--ag-radio-checked-shape-image)}}",
+        "css": ":where(.ag-button){background:none;border:none;color:inherit;cursor:pointer;font-family:inherit;font-size:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;margin:0;padding:0;text-indent:inherit;text-shadow:inherit;text-transform:inherit;word-spacing:inherit;&:disabled{cursor:default}&:focus-visible{box-shadow:var(--ag-focus-shadow);outline:none}}.ag-standard-button{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:var(--ag-button-background-color);border:var(--ag-button-border);border-radius:var(--ag-button-border-radius);color:var(--ag-button-text-color);cursor:pointer;font-weight:var(--ag-button-font-weight);padding:var(--ag-button-vertical-padding) var(--ag-button-horizontal-padding);&:hover{background-color:var(--ag-button-hover-background-color);border:var(--ag-button-hover-border);color:var(--ag-button-hover-text-color)}&:active{background-color:var(--ag-button-active-background-color);border:var(--ag-button-active-border);color:var(--ag-button-active-text-color)}&:disabled{background-color:var(--ag-button-disabled-background-color);border:var(--ag-button-disabled-border);color:var(--ag-button-disabled-text-color)}}",
+        "cssImports": undefined,
+        "feature": "buttonStyle",
+        "modeParams": {
+          "$default": {
+            "buttonActiveBackgroundColor": {
+              "ref": "buttonHoverBackgroundColor",
+            },
+            "buttonActiveBorder": {
+              "color": {
+                "ref": "accentColor",
+              },
+            },
+            "buttonActiveTextColor": {
+              "ref": "buttonHoverTextColor",
+            },
+            "buttonBackgroundColor": {
+              "ref": "backgroundColor",
+            },
+            "buttonBorder": true,
+            "buttonBorderRadius": {
+              "ref": "borderRadius",
+            },
+            "buttonDisabledBackgroundColor": {
+              "ref": "inputDisabledBackgroundColor",
+            },
+            "buttonDisabledBorder": {
+              "ref": "inputDisabledBorder",
+            },
+            "buttonDisabledTextColor": {
+              "ref": "inputDisabledTextColor",
+            },
+            "buttonFontWeight": "normal",
+            "buttonHorizontalPadding": {
+              "calc": "spacing * 2",
+            },
+            "buttonHoverBackgroundColor": {
+              "ref": "rowHoverColor",
+            },
+            "buttonHoverBorder": {
+              "ref": "buttonBorder",
+            },
+            "buttonHoverTextColor": {
+              "ref": "buttonTextColor",
+            },
+            "buttonTextColor": "inherit",
+            "buttonVerticalPadding": {
+              "ref": "spacing",
+            },
+          },
+        },
+      },
+      PartImpl {
+        "css": ".ag-column-drop-vertical-empty-message{align-items:center;border:dashed var(--ag-border-width);border-color:var(--ag-border-color);display:flex;inset:0;justify-content:center;margin:calc(var(--ag-spacing)*1.5) calc(var(--ag-spacing)*2);overflow:hidden;padding:calc(var(--ag-spacing)*2);position:absolute}",
+        "cssImports": undefined,
+        "feature": "columnDropStyle",
+        "modeParams": {
+          "$default": {},
+        },
+      },
+      PartImpl {
+        "css": ".ag-cell-batch-edit{background-color:var(--ag-cell-batch-edit-background-color);color:var(--ag-cell-batch-edit-text-color);display:inherit}.ag-row-batch-edit{background-color:var(--ag-row-batch-edit-background-color);color:var(--ag-row-batch-edit-text-color)}",
+        "cssImports": undefined,
+        "feature": "batchEditStyle",
+        "modeParams": {
+          "$default": {
+            "cellBatchEditBackgroundColor": "rgba(220 181 139 / 16%)",
+            "cellBatchEditTextColor": "#422f00",
+            "rowBatchEditBackgroundColor": {
+              "ref": "cellBatchEditBackgroundColor",
+            },
+            "rowBatchEditTextColor": {
+              "ref": "cellBatchEditTextColor",
+            },
+          },
+        },
+      },
+      PartImpl {
+        "css": ".ag-checkbox-input-wrapper,.ag-radio-button-input-wrapper{background-color:var(--ag-checkbox-unchecked-background-color);border:solid var(--ag-checkbox-border-width) var(--ag-checkbox-unchecked-border-color);flex:none;height:var(--ag-icon-size);position:relative;width:var(--ag-icon-size);:where(input){-webkit-appearance:none;-moz-appearance:none;appearance:none;cursor:pointer;display:block;height:var(--ag-icon-size);margin:0;opacity:0;width:var(--ag-icon-size)}&:after{content:"";display:block;inset:0;-webkit-mask-position:center;mask-position:center;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;pointer-events:none;position:absolute}&:where(.ag-checked){background-color:var(--ag-checkbox-checked-background-color);border-color:var(--ag-checkbox-checked-border-color);&:after{background-color:var(--ag-checkbox-checked-shape-color)}}&:where(:focus-within,:active){box-shadow:var(--ag-focus-shadow)}&:where(.ag-disabled){filter:grayscale();opacity:.5}}.ag-checkbox-input-wrapper{border-radius:var(--ag-checkbox-border-radius);&:where(.ag-checked):after{-webkit-mask-image:var(--ag-checkbox-checked-shape-image);mask-image:var(--ag-checkbox-checked-shape-image)}&:where(.ag-indeterminate){background-color:var(--ag-checkbox-indeterminate-background-color);border-color:var(--ag-checkbox-indeterminate-border-color);&:after{background-color:var(--ag-checkbox-indeterminate-shape-color);-webkit-mask-image:var(--ag-checkbox-indeterminate-shape-image);mask-image:var(--ag-checkbox-indeterminate-shape-image)}}}.ag-cell-editing-error .ag-checkbox-input-wrapper:focus-within{box-shadow:var(--ag-focus-error-shadow)}.ag-radio-button-input-wrapper{border-radius:100%;&:where(.ag-checked):after{-webkit-mask-image:var(--ag-radio-checked-shape-image);mask-image:var(--ag-radio-checked-shape-image)}}",
         "cssImports": undefined,
         "feature": "checkboxStyle",
         "modeParams": {
@@ -18,7 +96,7 @@ exports[`ag-grid package content > should match content 1`] = `
               "ref": "accentColor",
             },
             "checkboxCheckedBorderColor": {
-              "ref": "accentColor",
+              "ref": "checkboxCheckedBackgroundColor",
             },
             "checkboxCheckedShapeColor": {
               "ref": "backgroundColor",
@@ -32,9 +110,7 @@ exports[`ag-grid package content > should match content 1`] = `
               "ref": "foregroundColor",
             },
             "checkboxIndeterminateBorderColor": {
-              "mix": 0.3,
-              "onto": "backgroundColor",
-              "ref": "foregroundColor",
+              "ref": "checkboxIndeterminateBackgroundColor",
             },
             "checkboxIndeterminateShapeColor": {
               "ref": "backgroundColor",
@@ -87,6 +163,8 @@ exports[`ag-grid package content > should match content 1`] = `
             },
             "browserColorScheme": "dark",
             "cardShadow": "0 1px 4px 1px #000A",
+            "cellBatchEditBackgroundColor": "rgba(220 181 139 / 16%)",
+            "cellBatchEditTextColor": "#f3d0b3",
             "checkboxUncheckedBorderColor": {
               "mix": 0.4,
               "onto": "backgroundColor",
@@ -97,6 +175,15 @@ exports[`ag-grid package content > should match content 1`] = `
               "onto": "backgroundColor",
               "ref": "foregroundColor",
             },
+            "filterPanelApplyButtonColor": {
+              "ref": "foregroundColor",
+            },
+            "findActiveMatchColor": {
+              "ref": "backgroundColor",
+            },
+            "findMatchColor": {
+              "ref": "backgroundColor",
+            },
             "foregroundColor": "#FFF",
             "menuBackgroundColor": {
               "mix": 0.1,
@@ -104,6 +191,14 @@ exports[`ag-grid package content > should match content 1`] = `
               "ref": "foregroundColor",
             },
             "popupShadow": "0 0px 20px #000A",
+            "rowBatchEditBackgroundColor": {
+              "mix": 0.1,
+              "onto": "backgroundColor",
+              "ref": "foregroundColor",
+            },
+            "rowBatchEditTextColor": {
+              "ref": "cellBatchEditTextColor",
+            },
             "rowHoverColor": {
               "mix": 0.15,
               "ref": "accentColor",
@@ -130,6 +225,8 @@ exports[`ag-grid package content > should match content 1`] = `
             },
             "browserColorScheme": "dark",
             "cardShadow": "0 1px 4px 1px #000A",
+            "cellBatchEditBackgroundColor": "rgba(220 181 139 / 16%)",
+            "cellBatchEditTextColor": "#f3d0b3",
             "checkboxUncheckedBorderColor": {
               "mix": 0.4,
               "onto": "backgroundColor",
@@ -140,6 +237,15 @@ exports[`ag-grid package content > should match content 1`] = `
               "onto": "backgroundColor",
               "ref": "foregroundColor",
             },
+            "filterPanelApplyButtonColor": {
+              "ref": "foregroundColor",
+            },
+            "findActiveMatchColor": {
+              "ref": "backgroundColor",
+            },
+            "findMatchColor": {
+              "ref": "backgroundColor",
+            },
             "foregroundColor": "#FFF",
             "menuBackgroundColor": {
               "mix": 0.1,
@@ -147,6 +253,14 @@ exports[`ag-grid package content > should match content 1`] = `
               "ref": "foregroundColor",
             },
             "popupShadow": "0 0px 20px #000A",
+            "rowBatchEditBackgroundColor": {
+              "mix": 0.1,
+              "onto": "backgroundColor",
+              "ref": "foregroundColor",
+            },
+            "rowBatchEditTextColor": {
+              "ref": "cellBatchEditTextColor",
+            },
             "rowHoverColor": {
               "mix": 0.15,
               "ref": "accentColor",
@@ -186,7 +300,7 @@ exports[`ag-grid package content > should match content 1`] = `
         },
       },
       PartImpl {
-        "css": ".ag-tabs-header{background-color:var(--ag-tab-bar-background-color);border-bottom:var(--ag-tab-bar-border);display:flex;flex:1;gap:var(--ag-tab-spacing);padding:var(--ag-tab-bar-top-padding) var(--ag-tab-bar-horizontal-padding) 0}.ag-tabs-header-wrapper{display:flex}.ag-tabs-close-button-wrapper{align-items:center;border:0;display:flex;padding:var(--ag-spacing)}:where(.ag-ltr) .ag-tabs-close-button-wrapper{border-right:1px solid var(--ag-border-color)}:where(.ag-rtl) .ag-tabs-close-button-wrapper{border-left:1px solid var(--ag-border-color)}.ag-tabs-close-button{background-color:unset;border:0;cursor:pointer;padding:0}.ag-tab{align-items:center;background-color:var(--ag-tab-background-color);border-left:var(--ag-tab-selected-border-width) solid transparent;border-right:var(--ag-tab-selected-border-width) solid transparent;color:var(--ag-tab-text-color);cursor:pointer;display:flex;flex:1;justify-content:center;padding:var(--ag-tab-top-padding) var(--ag-tab-horizontal-padding) var(--ag-tab-bottom-padding);position:relative;&:hover{background-color:var(--ag-tab-hover-background-color);color:var(--ag-tab-hover-text-color)}&.ag-tab-selected{background-color:var(--ag-tab-selected-background-color);color:var(--ag-tab-selected-text-color)}&:after{background-color:var(--ag-tab-selected-underline-color);bottom:0;content:"";display:block;height:var(--ag-tab-selected-underline-width);left:0;opacity:0;position:absolute;right:0;transition:opacity var(--ag-tab-selected-underline-transition-duration)}&.ag-tab-selected:after{opacity:1}}:where(.ag-ltr) .ag-tab{&.ag-tab-selected{&:where(:not(:first-of-type)){border-left-color:var(--ag-tab-selected-border-color)}&:where(:not(:last-of-type)){border-right-color:var(--ag-tab-selected-border-color)}}}:where(.ag-rtl) .ag-tab{&.ag-tab-selected{&:where(:not(:first-of-type)){border-right-color:var(--ag-tab-selected-border-color)}&:where(:not(:last-of-type)){border-left-color:var(--ag-tab-selected-border-color)}}}",
+        "css": ".ag-tabs-header{background-color:var(--ag-tab-bar-background-color);border-bottom:var(--ag-tab-bar-border);display:flex;flex:1;gap:var(--ag-tab-spacing);padding:var(--ag-tab-bar-top-padding) var(--ag-tab-bar-horizontal-padding) 0}.ag-tabs-header-wrapper{display:flex}.ag-tabs-close-button-wrapper{align-items:center;border:0;display:flex;padding:var(--ag-spacing)}:where(.ag-ltr) .ag-tabs-close-button-wrapper{border-right:solid var(--ag-border-width) var(--ag-border-color)}:where(.ag-rtl) .ag-tabs-close-button-wrapper{border-left:solid var(--ag-border-width) var(--ag-border-color)}.ag-tabs-close-button{background-color:unset;border:0;cursor:pointer;padding:0}.ag-tab{align-items:center;background-color:var(--ag-tab-background-color);border-left:var(--ag-tab-selected-border-width) solid transparent;border-right:var(--ag-tab-selected-border-width) solid transparent;color:var(--ag-tab-text-color);cursor:pointer;display:flex;flex:1;justify-content:center;padding:var(--ag-tab-top-padding) var(--ag-tab-horizontal-padding) var(--ag-tab-bottom-padding);position:relative;&:hover{background-color:var(--ag-tab-hover-background-color);color:var(--ag-tab-hover-text-color)}&.ag-tab-selected{background-color:var(--ag-tab-selected-background-color);color:var(--ag-tab-selected-text-color)}&:after{background-color:var(--ag-tab-selected-underline-color);bottom:0;content:"";display:block;height:var(--ag-tab-selected-underline-width);left:0;opacity:0;position:absolute;right:0;transition:opacity var(--ag-tab-selected-underline-transition-duration)}&.ag-tab-selected:after{opacity:1}}:where(.ag-ltr) .ag-tab{&.ag-tab-selected{&:where(:not(:first-of-type)){border-left-color:var(--ag-tab-selected-border-color)}&:where(:not(:last-of-type)){border-right-color:var(--ag-tab-selected-border-color)}}}:where(.ag-rtl) .ag-tab{&.ag-tab-selected{&:where(:not(:first-of-type)){border-right-color:var(--ag-tab-selected-border-color)}&:where(:not(:last-of-type)){border-left-color:var(--ag-tab-selected-border-color)}}}",
         "cssImports": undefined,
         "feature": "tabStyle",
         "modeParams": {
@@ -217,7 +331,9 @@ exports[`ag-grid package content > should match content 1`] = `
             "tabSelectedBorderColor": {
               "ref": "borderColor",
             },
-            "tabSelectedBorderWidth": 1,
+            "tabSelectedBorderWidth": {
+              "ref": "borderWidth",
+            },
             "tabSelectedTextColor": {
               "ref": "textColor",
             },
@@ -301,7 +417,29 @@ exports[`ag-grid package content > should match content 1`] = `
             "inputTextColor": {
               "ref": "textColor",
             },
+            "pickerButtonBackgroundColor": {
+              "ref": "backgroundColor",
+            },
+            "pickerButtonBorder": true,
+            "pickerButtonFocusBackgroundColor": {
+              "ref": "backgroundColor",
+            },
+            "pickerButtonFocusBorder": {
+              "ref": "inputFocusBorder",
+            },
+            "pickerListBackgroundColor": {
+              "ref": "backgroundColor",
+            },
+            "pickerListBorder": true,
           },
+        },
+      },
+      PartImpl {
+        "css": ".ag-column-drop-vertical-empty-message{align-items:center;border:dashed var(--ag-border-width);border-color:var(--ag-border-color);display:flex;inset:0;justify-content:center;margin:calc(var(--ag-spacing)*1.5) calc(var(--ag-spacing)*2);overflow:hidden;padding:calc(var(--ag-spacing)*2);position:absolute}",
+        "cssImports": undefined,
+        "feature": "columnDropStyle",
+        "modeParams": {
+          "$default": {},
         },
       },
       PartImpl {
@@ -397,8 +535,7 @@ exports[`ag-grid package content > should match content 1`] = `
         },
       },
       PartImpl {
-        "css": ":where(.ag-icon):before{align-items:center;background-color:currentcolor;color:inherit;content:"";display:flex;font-family:inherit;font-size:var(--ag-icon-size);font-style:normal;font-variant:normal;height:var(--ag-icon-size);justify-content:center;line-height:var(--ag-icon-size);-webkit-mask-size:contain;mask-size:contain;text-transform:none;width:var(--ag-icon-size)}.ag-icon{background-position:50%;background-repeat:no-repeat;background-size:contain;display:block;height:var(--ag-icon-size);position:relative;-webkit-user-select:none;-moz-user-select:none;user-select:none;width:var(--ag-icon-size)};
-.ag-icon-aggregation::before { mask-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="enable-background:new 0 0 24 24" viewBox="0 0 24 24"><path d="M17.2 19.3H5.7l6.5-7.6-6.5-7h11.5v1H7.9l5.7 6-5.7 6.6h9.3z" style="fill:%23020202"/></svg>'); };
+        "css": ".ag-icon-aggregation::before { mask-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="enable-background:new 0 0 24 24" viewBox="0 0 24 24"><path d="M17.2 19.3H5.7l6.5-7.6-6.5-7h11.5v1H7.9l5.7 6-5.7 6.6h9.3z" style="fill:%23020202"/></svg>'); };
 .ag-icon-arrows::before { mask-image: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="enable-background:new 0 0 24 24" viewBox="0 0 24 24"><path d="m22 12-2-3h-1.4l1.7 2.5H15v1h5.3L18.6 15H20l2-3zM12 2 9 4v1.4l2.5-1.7V9h1V3.7L15 5.4V4zM12.5 20.3V15h-1v5.3L9 18.6V20l3 2 3-2v-1.4zM9 11.5H3.7L5.4 9H4l-2 3 2 3h1.4l-1.7-2.5H9z"/></svg>'); };
 .ag-icon-asc::before { mask-image: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m5.5 9.48.642.77L11.5 5.732V20h1V5.732l5.358 4.518.642-.768-6.494-5.476L12.001 4h-.002l-.002.003z" style="fill:%23000"/></svg>'); };
 .ag-icon-cancel::before { mask-image: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 6.706 12.706 12 18 17.294l-.706.706L12 12.706 6.706 18 6 17.294 11.294 12 6 6.706 6.706 6 12 11.294 17.294 6z" style="fill:%23000"/></svg>'); };

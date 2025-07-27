@@ -17,6 +17,7 @@ export const StorefrontTextZoomProvider = ({ children }: PropsWithChildren) => {
   const [storefrontTextZoom, setSelectedTextZoom] = useState<StorefrontTextZoom>('100%');
 
   // Load initial state from localStorage once component mounts
+  // biome-ignore lint/correctness/useExhaustiveDependencies: only used for mount
   useEffect(() => {
     const storedTextZoom = localStorage.getItem(storefrontTextZoomLocalStorageKey) as StorefrontTextZoom | null;
     if (storedTextZoom) {

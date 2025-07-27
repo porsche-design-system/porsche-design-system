@@ -55,6 +55,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Carousel`: component does not work correctly if an invalid `lang` value is provided
   ([#3924](https://github.com/porsche-design-system/porsche-design-system/pull/3924))
+- Vue: fixed initial render for `dark` and `auto` themes in `PorscheDesignSystemProvider`
+  ([#3898](https://github.com/porsche-design-system/porsche-design-system/pull/3898))
 
 ## [3.29.0-rc.0] - 2025-06-27
 

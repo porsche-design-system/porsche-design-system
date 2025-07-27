@@ -19,6 +19,7 @@ export const StorefrontThemeProvider = ({ children }: PropsWithChildren) => {
   const prefersDark = usePreferredColorScheme();
 
   // Load initial state from localStorage once component mounts
+  // biome-ignore lint/correctness/useExhaustiveDependencies: only used for mount
   useEffect(() => {
     const storedTheme = localStorage.getItem(storefrontThemeLocalStorageKey) as StorefrontTheme | null;
     if (storedTheme) {
