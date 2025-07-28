@@ -1,0 +1,186 @@
+import { Notification } from '@/components/common/Notification';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'React Router: Getting started - Porsche Design System',
+  description: 'Start developing in React Router with the Porsche Design System.',
+};
+
+# React Router
+
+<TableOfContents headings={['Quick start','Integration','When are Porsche Design System components (re-)hydrated?','How do Porsche Design System components work in detail?']} />
+
+## Quick start
+
+To build your own **React Router** application with the **React** components of the Porsche Design System, follow these
+steps after the setup of your React Router app:
+
+- Install the Porsche Design System within your project directory:
+
+```bash
+# install with yarn:
+yarn add @porsche-design-system/components-react
+
+# install with npm:
+npm install @porsche-design-system/components-react
+```
+
+You are ready to start building your own application.
+
+## Integration
+
+<Notification heading="Attention" headingTag="h3" state="warning">
+  The following examples use the **SSR** sub-package of **@porsche-design-system/components-react/ssr**.
+
+This sub-package is a special build of the Porsche Design System Components that renders different markup on the server
+than in the browser. While this breaks the rule of SSR/SSG where browser markup should always be identical to server
+markup, this is the only way to achieve SSR/SSG with web components and Shadow DOM.
+
+The two environments are detected by the **process.browser** flag which is replaced with a boolean value at build time.
+In the browser the components are essentially the "regular" React components of
+**@porsche-design-system/components-react**.
+
+On the server the behavior is different. Here the relevant markup and styles (e.g. no hover or focus styles) are
+rendered into a [Declarative Shadow DOM](https://web.dev/declarative-shadow-dom) which is converted into a real Shadow
+DOM by modern browsers without any JavaScript. This is all we need for the initial render. Once the client code is
+loaded and executed, the Porsche Design System Components initialize just like normal.
+
+**It is crucial that dead code elimination is active for the client build or otherwise the server code might sneak into
+the browser.**
+
+</Notification>
+
+The following project is a standard React Router setup with the following adaptions.
+
+### Step 1
+
+Extend `vite.config.ts` to define the `process.browser` variable in order to ensure the correct Porsche Design System
+components will be bundled into client & server.
+
+```typescript
+import { reactRouter } from '@react-router/dev/vite';
+import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from 'vite';
+import tsconfigPaths from 'vite-tsconfig-paths';
+
+export default defineConfig(({ isSsrBuild }) => {
+  return {
+    define: {
+      'process.browser': JSON.stringify(!isSsrBuild),
+    },
+    plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
+  };
+});
+```
+
+### Step 2
+
+Add a loader to your `app/root.tsx` that includes the required Porsche Design System partials. Then, use the
+`useRouteLoaderData` hook to access and inject these partials into your app.
+
+```jsx
+// app/root.tsx
+import {
+  Links,
+  Meta,
+  Scripts,
+  ScrollRestoration,
+  useRouteLoaderData,
+} from 'react-router';
+import {
+  getComponentChunkLinks,
+  getFontFaceStyles,
+  getFontLinks,
+  getIconLinks,
+  getInitialStyles,
+  getMetaTagsAndIconLinks,
+} from '@porsche-design-system/components-react/partials';
+
+export async function loader() {
+  return {
+    headPartials: (
+      <>
+        {/* necessary for SSR support, injects stylesheet which defines visibility of pre-hydrated PDS components */}
+        {getInitialStyles({ format: 'jsx' })}
+        {/* injects stylesheet which defines Porsche Next CSS font-face definition (=> minimize FOUT) */}
+        {getFontFaceStyles({ format: 'jsx' })}
+        {/* preloads Porsche Next font (=> minimize FOUT) */}
+        {getFontLinks({ format: 'jsx' })}
+        {/* preloads PDS component core chunk from CDN for PDS component hydration (=> improve loading performance) */}
+        {getComponentChunkLinks({ format: 'jsx' })}
+        {/* preloads Porsche icons (=> minimize FOUC) */}
+        {getIconLinks({ format: 'jsx' })}
+        {/* injects favicon, apple touch icons, android touch icons, etc. */}
+        {getMetaTagsAndIconLinks({ appTitle: 'Sample Project React Router', format: 'jsx' })}
+      </>
+    ),
+  };
+}
+
+export function Layout({ children }: { children: React.ReactNode }) {
+  const partials = useRouteLoaderData<typeof loader>('root');
+
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <Meta />
+        <Links />
+        {partials?.headPartials}
+      </head>
+      <body>
+        {children}
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```
+
+### Step 3
+
+Wrap your app with the necessary `PorscheDesignSystemProvider`:
+
+```tsx
+// app/root.tsx
+import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
+
+export default function App() {
+  return (
+    <div id="app">
+      <PorscheDesignSystemProvider>
+        <Outlet />
+      </PorscheDesignSystemProvider>
+    </div>
+  );
+}
+```
+
+### Step 4
+
+Add a Porsche Design System component, e.g. `PHeading`:
+
+```tsx
+// routes/home.tsx
+import { PHeading } from '@porsche-design-system/components-react/ssr';
+
+export default function Home() {
+  return (
+    <main>
+      <PHeading>Welcome to React Router</PHeading>
+    </main>
+  );
+}
+```
+
+- Execute `yarn dev` or `npm dev` and check if the components are displayed correctly.
+
+## When are Porsche Design System components (re-)hydrated?
+
+See [componentsReady()](/developing/components-ready) for further information.
+
+## How do Porsche Design System components work in detail?
+
+See [Initialization](/must-know/initialization/introduction) for further information.
