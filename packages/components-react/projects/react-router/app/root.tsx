@@ -1,8 +1,15 @@
-import {isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData} from 'react-router';
+import {
+  isRouteErrorResponse,
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useRouteLoaderData,
+} from 'react-router';
 
-import type {Route} from './+types/root';
+import type { Route } from './+types/root';
 import './app.css';
-import {componentsReady, PorscheDesignSystemProvider} from '@porsche-design-system/components-react/ssr';
 import {
   getBrowserSupportFallbackScript,
   getCookiesFallbackScript,
@@ -10,8 +17,9 @@ import {
   getFontLinks,
   getIconLinks,
   getInitialStyles,
-  getMetaTagsAndIconLinks
-} from '@porsche-design-system/components-js/partials';
+  getMetaTagsAndIconLinks,
+} from '@porsche-design-system/components-react/partials';
+import { componentsReady, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 
 export async function loader() {
   return {
@@ -22,6 +30,7 @@ export async function loader() {
         {getFontFaceStyles({ format: 'jsx' })}
         {getFontLinks({ format: 'jsx', weights: ['regular', 'semi-bold', 'bold'] })}
         {getIconLinks({ format: 'jsx', icons: ['arrow-head-right', 'arrow-head-left'] })}
+        {/*{getComponentChunkLinks({ format: 'jsx', components: ['button', 'link'] })}*/}
       </>
     ),
     bodyPartials: (
@@ -34,7 +43,7 @@ export async function loader() {
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const partials = useLoaderData<typeof loader>();
+  const partials = useRouteLoaderData<typeof loader>('root');
 
   return (
     <html lang="en">
