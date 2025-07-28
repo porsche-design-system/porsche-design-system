@@ -14,6 +14,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Changed
+
+- Partials: provide CJS & ESM build ([#3945](https://github.com/porsche-design-system/porsche-design-system/pull/3945))
+
 ## [3.29.0-rc.1] - 2025-07-15
 
 ### Added
@@ -31,7 +35,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#3917](https://github.com/porsche-design-system/porsche-design-system/pull/3917))
 - Angular: updated peer dependency to `>=20.0.0 <21.0.0`
 - **Breaking Change** `Textarea`:
-
   - Renamed the `showCounter` prop to `counter`.
   - Changed default behavior: the `counter` is now disabled by default (`false` instead of `true`).
 
