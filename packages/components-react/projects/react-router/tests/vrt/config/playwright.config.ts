@@ -1,5 +1,5 @@
-import { defineConfig, devices } from '@playwright/test';
 import { config } from '@porsche-design-system/shared';
+import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   ...config,
@@ -8,6 +8,7 @@ export default defineConfig({
     // disable JavaScript to simulate SSR behaviour
     javaScriptEnabled: false,
   },
+  snapshotPathTemplate: '{testDir}/../../../../nextjs/tests/vrt/specs/__screenshots__/{arg}-{projectName}{ext}',
   projects: [
     {
       name: 'chrome',
