@@ -1,4 +1,4 @@
-import { type RouteConfig, index, route } from '@react-router/dev/routes';
+import { index, type RouteConfig, route } from '@react-router/dev/routes';
 
 type Route = {
   name: string;
@@ -6,6 +6,10 @@ type Route = {
 };
 
 export const routes: Route[] = [
+  {
+    name: 'Home',
+    path: '/',
+  },
   {
     name: 'Overview',
     path: '/overview',
@@ -66,5 +70,5 @@ export const routes: Route[] = [
 
 export default [
   index('routes/home.tsx'),
-  ...routes.map((r) => route(r.path, `routes${r.path}.tsx`)),
+  ...routes.filter((r) => r.path !== '/').map((r) => route(r.path, `routes${r.path}.tsx`)),
 ] satisfies RouteConfig;

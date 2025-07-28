@@ -5,6 +5,8 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
+  useNavigate,
   useRouteLoaderData,
 } from 'react-router';
 
@@ -19,7 +21,9 @@ import {
   getInitialStyles,
   getMetaTagsAndIconLinks,
 } from '@porsche-design-system/components-react/partials';
-import { componentsReady, PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
+import { componentsReady, PorscheDesignSystemProvider, type Theme } from '@porsche-design-system/components-react/ssr';
+import { useState } from 'react';
+import { routes } from '~/routes';
 
 export async function loader() {
   return {
@@ -65,12 +69,33 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  const navigate = useNavigate();
+  const [theme, setTheme] = useState<Theme>('light');
+  const themes: Theme[] = ['light', 'dark', 'auto'];
+
   return (
-    <div id="app">
-      <PorscheDesignSystemProvider>
-        <Outlet />
+    <>
+      <select value={useLocation().pathname} onChange={(e) => navigate(e.target.value)} style={{ width: '200px' }}>
+        <option disabled value="">
+          Select a page
+        </option>
+        {routes.map((route, i) => (
+          <option key={i} value={route.path} children={route.name} />
+        ))}
+      </select>
+
+      <select value={theme} onChange={(e) => setTheme(e.target.value as Theme)}>
+        {themes.map((item) => (
+          <option key={item} value={item} children={item} />
+        ))}
+      </select>
+
+      <PorscheDesignSystemProvider theme={theme}>
+        <div id="app">
+          <Outlet />
+        </div>
       </PorscheDesignSystemProvider>
-    </div>
+    </>
   );
 }
 
