@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [3.29.0-rc.2] - 2025-07-28
+
 ### Changed
 
 - Partials: provide CJS & ESM build ([#3945](https://github.com/porsche-design-system/porsche-design-system/pull/3945))
