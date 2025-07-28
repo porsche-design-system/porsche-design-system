@@ -9,8 +9,5 @@ export default defineConfig(({ isSsrBuild }) => {
       'process.browser': JSON.stringify(!isSsrBuild),
     },
     plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
-    build: {
-      commonjsOptions: { transformMixedEsModules: true }, // Change
-    },
   };
 });
