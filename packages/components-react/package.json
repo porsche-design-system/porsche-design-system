@@ -16,7 +16,7 @@
     "build:remix": "yarn --cwd ./projects/remix build",
     "build:react-router": "yarn --cwd ./projects/react-router build",
     "build:subPackages:tailwindcss": "TARGET=./dist/react-wrapper/tailwindcss && rm -rf $TARGET && cp -r ../styles/projects/tailwindcss/dist $TARGET",
-    "build:typings": "DEST=./dist/react-wrapper && SRC=$DEST/esm && mv $SRC/jsdom-polyfill/index.d.ts $DEST/jsdom-polyfill/index.d.ts && rm -rf $SRC/jsdom-polyfill && mv $SRC/partials/index.d.ts $DEST/partials/index.d.ts && rm -rf $SRC/partials && mv $SRC/styles/index.d.ts $DEST/styles/esm/index.d.ts && mv $SRC/styles/vanilla-extract/index.d.ts $DEST/styles/vanilla-extract/esm/vanilla-extract/index.d.ts && rm -rf $SRC/styles && mv $SRC/testing/index.d.ts $DEST/testing/index.d.ts && rm -rf $SRC/testing && yarn build:typings:ag-grid",
+    "build:typings": "DEST=./dist/react-wrapper && SRC=$DEST/esm && mv $SRC/jsdom-polyfill/index.d.ts $DEST/jsdom-polyfill/index.d.ts && rm -rf $SRC/jsdom-polyfill && mv $SRC/partials/index.d.ts $DEST/partials/esm/index.d.ts && rm -rf $SRC/partials && mv $SRC/styles/index.d.ts $DEST/styles/esm/index.d.ts && mv $SRC/styles/vanilla-extract/index.d.ts $DEST/styles/vanilla-extract/esm/vanilla-extract/index.d.ts && rm -rf $SRC/styles && mv $SRC/testing/index.d.ts $DEST/testing/index.d.ts && rm -rf $SRC/testing && yarn build:typings:ag-grid",
     "build:typings:ag-grid": "DEST=./dist/react-wrapper && SRC=$DEST/esm && mv $SRC/ag-grid/index.d.ts $DEST/ag-grid/esm/index.d.ts && rm -rf $SRC/ag-grid",
     "build:uxpin-wrapper": "yarn --cwd ./projects/uxpin-wrapper build",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",

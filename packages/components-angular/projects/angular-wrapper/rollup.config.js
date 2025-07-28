@@ -87,24 +87,26 @@ export default [
   {
     input: `${projectDir}/src/partials/index.ts`,
     external,
-    output: {
-      file: `${outputDir}/partials/index.cjs`,
-      format: 'cjs',
-    },
+    output: [
+      {
+        file: `${outputDir}/partials/cjs/index.cjs`,
+        format: 'cjs',
+      },
+      {
+        file: `${outputDir}/partials/esm/index.mjs`,
+        format: 'esm',
+      },
+    ],
     plugins: [
       typescript(typescriptOpts),
       generatePackageJson({
+        outputFolder: `${outputDir}/partials`,
         baseContents: {
           main: 'index.cjs',
-          module: 'index.js', // support Webpack 4 by pointing `"module"` to a file with a `.js` extension
+          module: 'index.mjs',
           types: 'index.d.ts',
           sideEffects: false,
         },
-      }),
-      copy({
-        // support Webpack 4 by pointing `"module"` to a file with a `.js` extension
-        targets: [{ src: `${outputDir}/partials/index.cjs`, dest: `${outputDir}/partials`, rename: () => 'index.js' }],
-        hook: 'writeBundle',
       }),
     ],
   },

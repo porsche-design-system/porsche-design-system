@@ -2,7 +2,16 @@
   "name": "@porsche-design-system/components-angular",
   "version": "3.29.0-rc.1",
   "description": "Porsche Design System is a component library designed to help developers create the best experience for software or services distributed by Dr. Ing. h.c. F. Porsche AG.",
-  "keywords": ["porsche", "design", "system", "web", "component", "library", "angular", "js"],
+  "keywords": [
+    "porsche",
+    "design",
+    "system",
+    "web",
+    "component",
+    "library",
+    "angular",
+    "js"
+  ],
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "SEE LICENSE IN LICENSE",
@@ -32,9 +41,9 @@
       "default": "./jsdom-polyfill/index.cjs"
     },
     "./partials": {
-      "types": "./partials/index.d.ts",
-      "module": "./partials/index.js",
-      "default": "./partials/index.cjs"
+      "types": "./partials/esm/index.d.ts",
+      "module": "./partials/esm/index.mjs",
+      "default": "./partials/cjs/index.cjs"
     },
     "./styles": {
       "sass": "./styles/_index.scss",
