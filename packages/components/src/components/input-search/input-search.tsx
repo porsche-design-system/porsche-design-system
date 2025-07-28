@@ -4,30 +4,29 @@ import {
   Element,
   Event,
   type EventEmitter,
+  h,
   type JSX,
   Prop,
   State,
   Watch,
-  h,
 } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
-  FORM_STATES,
-  THEMES,
   attachComponentCss,
+  FORM_STATES,
   getPrefixedTagNames,
   hasPropValueChanged,
+  THEMES,
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-search-styles';
-import {
-  type InputSearchAutoComplete,
-  type InputSearchBlurEventDetail,
-  type InputSearchChangeEventDetail,
-  type InputSearchInputEventDetail,
-  type InputSearchState,
+import type {
+  InputSearchBlurEventDetail,
+  InputSearchChangeEventDetail,
+  InputSearchInputEventDetail,
+  InputSearchState,
 } from './input-search-utils';
 
 const propTypes: PropTypes<typeof InputSearch> = {
@@ -84,7 +83,7 @@ export class InputSearch {
   @Prop({ mutable: true }) public value?: string = '';
 
   /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on"). */
-  @Prop() public autoComplete?: InputSearchAutoComplete;
+  @Prop() public autoComplete?: string;
 
   /** Show clear input value button */
   @Prop() public clear?: boolean = false;

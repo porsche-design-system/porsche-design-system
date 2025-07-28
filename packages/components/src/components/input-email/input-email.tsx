@@ -12,7 +12,6 @@ import {
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-email-styles';
 import {
-  type InputEmailAutoComplete,
   type InputEmailBlurEventDetail,
   type InputEmailChangeEventDetail,
   type InputEmailInputEventDetail,
@@ -76,7 +75,7 @@ export class InputEmail {
   @Prop({ mutable: true }) public value?: string = '';
 
   /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="email"). */
-  @Prop() public autoComplete?: InputEmailAutoComplete;
+  @Prop() public autoComplete?: string;
 
   /** A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form. */
   @Prop() public readOnly?: boolean = false;

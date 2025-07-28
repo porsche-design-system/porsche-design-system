@@ -1,8 +1,6 @@
 import type { FormState } from '../../../utils/form/form-state';
 export type InputBaseState = FormState;
 
-export type InputBaseAutoComplete = AutoFill;
-
 export type InputBaseChangeEventDetail = Event;
 export type InputBaseBlurEventDetail = Event;
 export type InputBaseInputEventDetail = InputEvent;

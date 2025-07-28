@@ -23,7 +23,6 @@ import {
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-number-styles';
 import {
-  type InputNumberAutoComplete,
   type InputNumberBlurEventDetail,
   type InputNumberChangeEventDetail,
   type InputNumberInputEventDetail,
@@ -89,7 +88,7 @@ export class InputNumber {
   @Prop({ mutable: true }) public value?: string = '';
 
   /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on"). */
-  @Prop() public autoComplete?: InputNumberAutoComplete;
+  @Prop() public autoComplete?: string;
 
   /** A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form. */
   @Prop() public readOnly?: boolean = false;

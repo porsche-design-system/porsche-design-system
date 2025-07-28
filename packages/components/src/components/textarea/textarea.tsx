@@ -4,32 +4,30 @@ import {
   Element,
   Event,
   type EventEmitter,
+  Fragment,
+  h,
   type JSX,
   Prop,
   Watch,
-  h,
-  Fragment
 } from '@stencil/core';
 import { getSlottedAnchorStyles } from '../../styles';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
-  FORM_STATES,
-  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
+  FORM_STATES,
   hasPropValueChanged,
+  THEMES,
   validateProps,
 } from '../../utils';
 import { Label } from '../common/label/label';
 import { descriptionId } from '../common/label/label-utils';
-import { StateMessage, messageId } from '../common/state-message/state-message';
+import { messageId, StateMessage } from '../common/state-message/state-message';
 import { getComponentCss } from './textarea-styles';
 import {
-  AUTO_COMPLETE,
   TEXTAREA_RESIZE,
   TEXTAREA_WRAPS,
-  type TextareaAutoComplete,
   type TextareaBlurEventDetail,
   type TextareaChangeEventDetail,
   type TextareaInputEventDetail,
@@ -54,7 +52,7 @@ const propTypes: PropTypes<typeof Textarea> = {
   minLength: AllowedTypes.number,
   form: AllowedTypes.string,
   rows: AllowedTypes.number,
-  autoComplete: AllowedTypes.oneOf<TextareaAutoComplete>([...AUTO_COMPLETE, undefined]),
+  autoComplete: AllowedTypes.string,
   spellCheck: AllowedTypes.boolean,
   wrap: AllowedTypes.oneOf<TextareaWrap>(TEXTAREA_WRAPS),
   resize: AllowedTypes.oneOf<TextareaResize>(TEXTAREA_RESIZE),
@@ -123,7 +121,7 @@ export class Textarea {
   @Prop() public rows?: number = 7;
 
   /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on"). */
-  @Prop() public autoComplete?: TextareaAutoComplete;
+  @Prop() public autoComplete?: string;
 
   /** Specifies whether the textarea should have its spelling and grammar checked */
   @Prop() public spellCheck?: boolean;

@@ -33,11 +33,11 @@ import { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
 import { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 import { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
-import { InputEmailAutoComplete, InputEmailBlurEventDetail, InputEmailChangeEventDetail, InputEmailInputEventDetail, InputEmailState } from "./components/input-email/input-email-utils";
-import { InputNumberAutoComplete, InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
-import { InputPasswordAutoComplete, InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
-import { InputSearchAutoComplete, InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
-import { InputTextAutoComplete, InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEventDetail, InputTextState } from "./components/input-text/input-text-utils";
+import { InputEmailBlurEventDetail, InputEmailChangeEventDetail, InputEmailInputEventDetail, InputEmailState } from "./components/input-email/input-email-utils";
+import { InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
+import { InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
+import { InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
+import { InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEventDetail, InputTextState } from "./components/input-text/input-text-utils";
 import { LinkIcon } from "./components/link/link-utils";
 import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 import { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
@@ -71,7 +71,7 @@ import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/t
 import { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
 import { TextFieldWrapperActionIcon, TextFieldWrapperState, TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
 import { TextListListType, TextListOrderType, TextListType } from "./components/text-list/text-list/text-list-utils";
-import { TextareaAutoComplete, TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
+import { TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
 import { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wrapper-utils";
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
@@ -104,11 +104,11 @@ export { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
 export { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 export { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 export { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
-export { InputEmailAutoComplete, InputEmailBlurEventDetail, InputEmailChangeEventDetail, InputEmailInputEventDetail, InputEmailState } from "./components/input-email/input-email-utils";
-export { InputNumberAutoComplete, InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
-export { InputPasswordAutoComplete, InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
-export { InputSearchAutoComplete, InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
-export { InputTextAutoComplete, InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEventDetail, InputTextState } from "./components/input-text/input-text-utils";
+export { InputEmailBlurEventDetail, InputEmailChangeEventDetail, InputEmailInputEventDetail, InputEmailState } from "./components/input-email/input-email-utils";
+export { InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
+export { InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
+export { InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
+export { InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEventDetail, InputTextState } from "./components/input-text/input-text-utils";
 export { LinkIcon } from "./components/link/link-utils";
 export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 export { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
@@ -142,7 +142,7 @@ export { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/t
 export { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
 export { TextFieldWrapperActionIcon, TextFieldWrapperState, TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
 export { TextListListType, TextListOrderType, TextListType } from "./components/text-list/text-list/text-list-utils";
-export { TextareaAutoComplete, TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
+export { TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
 export { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wrapper-utils";
 export { ToastMessage } from "./components/toast/toast/toast-manager";
 export { ToastState } from "./components/toast/toast/toast-utils";
@@ -1060,35 +1060,35 @@ export namespace Components {
     }
     interface PInputEmail {
         /**
-          * Specifies whether the input can be autofilled by the browser
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="email").
          */
-        "autoComplete"?: InputEmailAutoComplete;
+        "autoComplete"?: string;
         /**
-          * Displays as a compact version.
+          * A boolean value that, if present, renders the input field as a compact version.
          */
         "compact"?: boolean;
         /**
-          * The description text.
+          * Supplementary text providing more context or explanation for the input.
          */
         "description"?: string;
         /**
-          * Marks the email input as disabled.
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the email input should be associated with.
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
          */
         "form"?: string;
         /**
-          * Show or hide label and description text. For better accessibility, it is recommended to show the label.
+          * Controls the visibility of the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Show email indicator icon
+          * Controls the visibility of an email icon.
          */
         "indicator"?: boolean;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
@@ -1096,15 +1096,15 @@ export namespace Components {
          */
         "loading"?: boolean;
         /**
-          * The max length of the email input.
+          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
          */
         "maxLength"?: number;
         /**
-          * The message styled depending on validation state.
+          * Dynamic feedback text for validation or status.
          */
         "message"?: string;
         /**
-          * The min length of the email input.
+          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
          */
         "minLength"?: number;
         /**
@@ -1112,7 +1112,7 @@ export namespace Components {
          */
         "multiple"?: boolean;
         /**
-          * The name of the email input.
+          * The name of the input field, used when submitting the form data.
          */
         "name": string;
         /**
@@ -1120,37 +1120,37 @@ export namespace Components {
          */
         "pattern"?: string;
         /**
-          * The placeholder text.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="you@example.com"). This text is displayed when the input field is empty.
          */
         "placeholder"?: string;
         /**
-          * Specifies whether the email input should be read-only.
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
          */
         "readOnly"?: boolean;
         /**
-          * Marks the email input as required.
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Indicates the validation or overall status of the input component.
          */
         "state"?: InputEmailState;
         /**
-          * Adapts the color depending on the theme.
+          * Controls the visual appearance of the component.
          */
         "theme"?: Theme;
         /**
-          * The email input value.
+          * The default email address (or comma-separated list of addresses) for the input.
          */
         "value"?: string;
     }
     interface PInputNumber {
         /**
-          * Specifies whether the input can be autofilled by the browser
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on").
          */
-        "autoComplete"?: InputNumberAutoComplete;
+        "autoComplete"?: string;
         /**
-          * Displays as a compact version.
+          * A boolean value that, if present, renders the input field as a compact version.
          */
         "compact"?: boolean;
         /**
@@ -1158,23 +1158,23 @@ export namespace Components {
          */
         "controls"?: boolean;
         /**
-          * The description text.
+          * Supplementary text providing more context or explanation for the input.
          */
         "description"?: string;
         /**
-          * Marks the number input as disabled.
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the number input should be associated with.
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
          */
         "form"?: string;
         /**
-          * Show or hide label and description text. For better accessibility, it is recommended to show the label.
+          * Controls the visibility of the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
@@ -1186,7 +1186,7 @@ export namespace Components {
          */
         "max"?: number;
         /**
-          * The message styled depending on validation state.
+          * Dynamic feedback text for validation or status.
          */
         "message"?: string;
         /**
@@ -1194,23 +1194,23 @@ export namespace Components {
          */
         "min"?: number;
         /**
-          * The name of the number input.
+          * The name of the input field, used when submitting the form data.
          */
         "name": string;
         /**
-          * The placeholder text.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Enter a number"). This text is displayed when the input field is empty.
          */
         "placeholder"?: string;
         /**
-          * Specifies whether the number input should be read-only.
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
          */
         "readOnly"?: boolean;
         /**
-          * Marks the number input as required.
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Indicates the validation or overall status of the input component.
          */
         "state"?: InputNumberState;
         /**
@@ -1218,7 +1218,7 @@ export namespace Components {
          */
         "step"?: number;
         /**
-          * Adapts the color depending on the theme.
+          * Controls the visual appearance of the component.
          */
         "theme"?: Theme;
         /**
@@ -1228,31 +1228,31 @@ export namespace Components {
     }
     interface PInputPassword {
         /**
-          * Specifies whether the input can be autofilled by the browser
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="current-password").
          */
-        "autoComplete"?: InputPasswordAutoComplete;
+        "autoComplete"?: string;
         /**
-          * Displays as a compact version.
+          * A boolean value that, if present, renders the input field as a compact version.
          */
         "compact"?: boolean;
         /**
-          * The description text.
+          * Supplementary text providing more context or explanation for the input.
          */
         "description"?: string;
         /**
-          * Marks the password input as disabled.
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the password input should be associated with.
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
          */
         "form"?: string;
         /**
-          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * Controls the visibility of the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
@@ -1260,39 +1260,39 @@ export namespace Components {
          */
         "loading"?: boolean;
         /**
-          * The max length of the password input.
+          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
          */
         "maxLength"?: number;
         /**
-          * The message styled depending on validation state.
+          * Dynamic feedback text for validation or status.
          */
         "message"?: string;
         /**
-          * The min length of the password input.
+          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the password input.
+          * The name of the input field, used when submitting the form data.
          */
         "name": string;
         /**
-          * The placeholder text.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Enter your password"). This text is displayed when the input field is empty.
          */
         "placeholder"?: string;
         /**
-          * Specifies whether the password input should be read-only.
+          * SA boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
          */
         "readOnly"?: boolean;
         /**
-          * Marks the password input as required.
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Indicates the validation or overall status of the input component.
          */
         "state"?: InputPasswordState;
         /**
-          * Adapts the color depending on the theme.
+          * Controls the visual appearance of the component.
          */
         "theme"?: Theme;
         /**
@@ -1306,31 +1306,31 @@ export namespace Components {
     }
     interface PInputSearch {
         /**
-          * Specifies whether the input can be autofilled by the browser
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on").
          */
-        "autoComplete"?: InputSearchAutoComplete;
+        "autoComplete"?: string;
         /**
           * Show clear input value button
          */
         "clear"?: boolean;
         /**
-          * Displays as a compact version.
+          * A boolean value that, if present, renders the input field as a compact version.
          */
         "compact"?: boolean;
         /**
-          * The description text.
+          * Supplementary text providing more context or explanation for the input.
          */
         "description"?: string;
         /**
-          * Marks the search input as disabled.
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the search input should be associated with.
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
          */
         "form"?: string;
         /**
-          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * Controls the visibility of the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -1338,7 +1338,7 @@ export namespace Components {
          */
         "indicator"?: boolean;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
@@ -1346,31 +1346,31 @@ export namespace Components {
          */
         "loading"?: boolean;
         /**
-          * The message styled depending on validation state.
+          * Dynamic feedback text for validation or status.
          */
         "message"?: string;
         /**
-          * The name of the search input.
+          * The name of the input field, used when submitting the form data.
          */
         "name": string;
         /**
-          * The placeholder text.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Search..."). This text is displayed when the input field is empty.
          */
         "placeholder"?: string;
         /**
-          * Specifies whether the search input should be read-only.
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
          */
         "readOnly"?: boolean;
         /**
-          * Marks the search input as required.
+          * MA boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Indicates the validation or overall status of the input component.
          */
         "state"?: InputSearchState;
         /**
-          * Adapts the color depending on the theme.
+          * Controls the visual appearance of the component.
          */
         "theme"?: Theme;
         /**
@@ -1380,11 +1380,11 @@ export namespace Components {
     }
     interface PInputText {
         /**
-          * Specifies whether the input can be autofilled by the browser
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="name").
          */
-        "autoComplete"?: InputTextAutoComplete;
+        "autoComplete"?: string;
         /**
-          * Displays as a compact version.
+          * A boolean value that, if present, renders the input field as a compact version.
          */
         "compact"?: boolean;
         /**
@@ -1392,23 +1392,23 @@ export namespace Components {
          */
         "counter"?: boolean;
         /**
-          * The description text.
+          * Supplementary text providing more context or explanation for the input.
          */
         "description"?: string;
         /**
-          * Marks the text input as disabled.
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the text input should be associated with.
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
          */
         "form"?: string;
         /**
-          * Show or hide label and description text. For better accessibility, it is recommended to show the label.
+          * Controls the visibility of the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
@@ -1416,31 +1416,31 @@ export namespace Components {
          */
         "loading"?: boolean;
         /**
-          * The max length of the text input.
+          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
          */
         "maxLength"?: number;
         /**
-          * The message styled depending on validation state.
+          * Dynamic feedback text for validation or status.
          */
         "message"?: string;
         /**
-          * The min length of the text input.
+          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the text input.
+          * The name of the input field, used when submitting the form data.
          */
         "name": string;
         /**
-          * The placeholder text.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Enter your full name"). This text is displayed when the input field is empty.
          */
         "placeholder"?: string;
         /**
-          * Specifies whether the text input should be read-only.
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
          */
         "readOnly"?: boolean;
         /**
-          * Marks the text input as required.
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
          */
         "required"?: boolean;
         /**
@@ -1448,11 +1448,11 @@ export namespace Components {
          */
         "spellCheck"?: boolean;
         /**
-          * The validation state.
+          * Indicates the validation or overall status of the input component.
          */
         "state"?: InputTextState;
         /**
-          * Adapts the color depending on the theme.
+          * Controls the visual appearance of the component.
          */
         "theme"?: Theme;
         /**
@@ -2649,59 +2649,59 @@ export namespace Components {
     }
     interface PTextarea {
         /**
-          * Specifies whether the input can be autofilled by the browser
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on").
          */
-        "autoComplete"?: TextareaAutoComplete;
+        "autoComplete"?: string;
         /**
           * Show or hide the character counter.
          */
         "counter"?: boolean;
         /**
-          * The description text.
+          * Supplementary text providing more context or explanation for the textarea.
          */
         "description"?: string;
         /**
-          * Marks the textarea as disabled.
+          * A boolean value that, if present, makes the textarea unusable and unclickable. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the textarea should be associated with.
+          * Specifies the id of the <form> element that the textarea belongs to (useful if the textarea is not a direct descendant of the form).
          */
         "form"?: string;
         /**
-          * Show or hide label. For better accessibility, it is recommended to show the label.
+          * Controls the visibility of the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
-          * The max length of the textarea.
+          * A non-negative integer specifying the maximum number of characters the user can enter into the textarea.
          */
         "maxLength"?: number;
         /**
-          * The message styled depending on validation state.
+          * Dynamic feedback text for validation or status.
          */
         "message"?: string;
         /**
-          * The min length of the textarea.
+          * A non-negative integer specifying the minimum number of characters required for the textarea's value to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the textarea.
+          * The name of the textarea, used when submitting the form data.
          */
         "name": string;
         /**
-          * The placeholder text.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Write your message here..."). This text is displayed when the textarea is empty.
          */
         "placeholder"?: string;
         /**
-          * Specifies whether the textarea should be read-only.
+          * A boolean value that, if present, makes the textarea uneditable by the user, but its value will still be submitted with the form.
          */
         "readOnly"?: boolean;
         /**
-          * Marks the textarea as required.
+          * A boolean value that, if present, indicates that the textarea must be filled out before the form can be submitted.
          */
         "required"?: boolean;
         /**
@@ -2713,15 +2713,15 @@ export namespace Components {
          */
         "rows"?: number;
         /**
-          * Specifies whether the input should have its spelling and grammar checked
+          * Specifies whether the textarea should have its spelling and grammar checked
          */
         "spellCheck"?: boolean;
         /**
-          * The validation state.
+          * Indicates the validation or overall status of the textarea component.
          */
         "state"?: TextareaState;
         /**
-          * Adapts the color depending on the theme.
+          * Controls the visual appearance of the component.
          */
         "theme"?: Theme;
         /**
@@ -2729,7 +2729,7 @@ export namespace Components {
          */
         "value"?: string;
         /**
-          * Handles wrapping behaviour of elements.
+          * Handles wrapping behavior of elements.
          */
         "wrap"?: TextareaWrap;
     }
@@ -4935,35 +4935,35 @@ declare namespace LocalJSX {
     }
     interface PInputEmail {
         /**
-          * Specifies whether the input can be autofilled by the browser
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="email").
          */
-        "autoComplete"?: InputEmailAutoComplete;
+        "autoComplete"?: string;
         /**
-          * Displays as a compact version.
+          * A boolean value that, if present, renders the input field as a compact version.
          */
         "compact"?: boolean;
         /**
-          * The description text.
+          * Supplementary text providing more context or explanation for the input.
          */
         "description"?: string;
         /**
-          * Marks the email input as disabled.
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the email input should be associated with.
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
          */
         "form"?: string;
         /**
-          * Show or hide label and description text. For better accessibility, it is recommended to show the label.
+          * Controls the visibility of the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Show email indicator icon
+          * Controls the visibility of an email icon.
          */
         "indicator"?: boolean;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
@@ -4971,15 +4971,15 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
-          * The max length of the email input.
+          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
          */
         "maxLength"?: number;
         /**
-          * The message styled depending on validation state.
+          * Dynamic feedback text for validation or status.
          */
         "message"?: string;
         /**
-          * The min length of the email input.
+          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
          */
         "minLength"?: number;
         /**
@@ -4987,7 +4987,7 @@ declare namespace LocalJSX {
          */
         "multiple"?: boolean;
         /**
-          * The name of the email input.
+          * The name of the input field, used when submitting the form data.
          */
         "name"?: string;
         /**
@@ -5007,37 +5007,37 @@ declare namespace LocalJSX {
          */
         "pattern"?: string;
         /**
-          * The placeholder text.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="you@example.com"). This text is displayed when the input field is empty.
          */
         "placeholder"?: string;
         /**
-          * Specifies whether the email input should be read-only.
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
          */
         "readOnly"?: boolean;
         /**
-          * Marks the email input as required.
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Indicates the validation or overall status of the input component.
          */
         "state"?: InputEmailState;
         /**
-          * Adapts the color depending on the theme.
+          * Controls the visual appearance of the component.
          */
         "theme"?: Theme;
         /**
-          * The email input value.
+          * The default email address (or comma-separated list of addresses) for the input.
          */
         "value"?: string;
     }
     interface PInputNumber {
         /**
-          * Specifies whether the input can be autofilled by the browser
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on").
          */
-        "autoComplete"?: InputNumberAutoComplete;
+        "autoComplete"?: string;
         /**
-          * Displays as a compact version.
+          * A boolean value that, if present, renders the input field as a compact version.
          */
         "compact"?: boolean;
         /**
@@ -5045,23 +5045,23 @@ declare namespace LocalJSX {
          */
         "controls"?: boolean;
         /**
-          * The description text.
+          * Supplementary text providing more context or explanation for the input.
          */
         "description"?: string;
         /**
-          * Marks the number input as disabled.
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the number input should be associated with.
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
          */
         "form"?: string;
         /**
-          * Show or hide label and description text. For better accessibility, it is recommended to show the label.
+          * Controls the visibility of the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
@@ -5073,7 +5073,7 @@ declare namespace LocalJSX {
          */
         "max"?: number;
         /**
-          * The message styled depending on validation state.
+          * Dynamic feedback text for validation or status.
          */
         "message"?: string;
         /**
@@ -5081,7 +5081,7 @@ declare namespace LocalJSX {
          */
         "min"?: number;
         /**
-          * The name of the number input.
+          * The name of the input field, used when submitting the form data.
          */
         "name"?: string;
         /**
@@ -5097,19 +5097,19 @@ declare namespace LocalJSX {
          */
         "onInput"?: (event: PInputNumberCustomEvent<InputNumberInputEventDetail>) => void;
         /**
-          * The placeholder text.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Enter a number"). This text is displayed when the input field is empty.
          */
         "placeholder"?: string;
         /**
-          * Specifies whether the number input should be read-only.
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
          */
         "readOnly"?: boolean;
         /**
-          * Marks the number input as required.
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Indicates the validation or overall status of the input component.
          */
         "state"?: InputNumberState;
         /**
@@ -5117,7 +5117,7 @@ declare namespace LocalJSX {
          */
         "step"?: number;
         /**
-          * Adapts the color depending on the theme.
+          * Controls the visual appearance of the component.
          */
         "theme"?: Theme;
         /**
@@ -5127,31 +5127,31 @@ declare namespace LocalJSX {
     }
     interface PInputPassword {
         /**
-          * Specifies whether the input can be autofilled by the browser
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="current-password").
          */
-        "autoComplete"?: InputPasswordAutoComplete;
+        "autoComplete"?: string;
         /**
-          * Displays as a compact version.
+          * A boolean value that, if present, renders the input field as a compact version.
          */
         "compact"?: boolean;
         /**
-          * The description text.
+          * Supplementary text providing more context or explanation for the input.
          */
         "description"?: string;
         /**
-          * Marks the password input as disabled.
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the password input should be associated with.
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
          */
         "form"?: string;
         /**
-          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * Controls the visibility of the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
@@ -5159,19 +5159,19 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
-          * The max length of the password input.
+          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
          */
         "maxLength"?: number;
         /**
-          * The message styled depending on validation state.
+          * Dynamic feedback text for validation or status.
          */
         "message"?: string;
         /**
-          * The min length of the password input.
+          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the password input.
+          * The name of the input field, used when submitting the form data.
          */
         "name"?: string;
         /**
@@ -5187,23 +5187,23 @@ declare namespace LocalJSX {
          */
         "onInput"?: (event: PInputPasswordCustomEvent<InputPasswordInputEventDetail>) => void;
         /**
-          * The placeholder text.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Enter your password"). This text is displayed when the input field is empty.
          */
         "placeholder"?: string;
         /**
-          * Specifies whether the password input should be read-only.
+          * SA boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
          */
         "readOnly"?: boolean;
         /**
-          * Marks the password input as required.
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Indicates the validation or overall status of the input component.
          */
         "state"?: InputPasswordState;
         /**
-          * Adapts the color depending on the theme.
+          * Controls the visual appearance of the component.
          */
         "theme"?: Theme;
         /**
@@ -5217,31 +5217,31 @@ declare namespace LocalJSX {
     }
     interface PInputSearch {
         /**
-          * Specifies whether the input can be autofilled by the browser
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on").
          */
-        "autoComplete"?: InputSearchAutoComplete;
+        "autoComplete"?: string;
         /**
           * Show clear input value button
          */
         "clear"?: boolean;
         /**
-          * Displays as a compact version.
+          * A boolean value that, if present, renders the input field as a compact version.
          */
         "compact"?: boolean;
         /**
-          * The description text.
+          * Supplementary text providing more context or explanation for the input.
          */
         "description"?: string;
         /**
-          * Marks the search input as disabled.
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the search input should be associated with.
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
          */
         "form"?: string;
         /**
-          * Show or hide label and description text. For better accessibility it is recommended to show the label.
+          * Controls the visibility of the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
@@ -5249,7 +5249,7 @@ declare namespace LocalJSX {
          */
         "indicator"?: boolean;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
@@ -5257,11 +5257,11 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
-          * The message styled depending on validation state.
+          * Dynamic feedback text for validation or status.
          */
         "message"?: string;
         /**
-          * The name of the search input.
+          * The name of the input field, used when submitting the form data.
          */
         "name"?: string;
         /**
@@ -5277,23 +5277,23 @@ declare namespace LocalJSX {
          */
         "onInput"?: (event: PInputSearchCustomEvent<InputSearchInputEventDetail>) => void;
         /**
-          * The placeholder text.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Search..."). This text is displayed when the input field is empty.
          */
         "placeholder"?: string;
         /**
-          * Specifies whether the search input should be read-only.
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
          */
         "readOnly"?: boolean;
         /**
-          * Marks the search input as required.
+          * MA boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
          */
         "required"?: boolean;
         /**
-          * The validation state.
+          * Indicates the validation or overall status of the input component.
          */
         "state"?: InputSearchState;
         /**
-          * Adapts the color depending on the theme.
+          * Controls the visual appearance of the component.
          */
         "theme"?: Theme;
         /**
@@ -5303,11 +5303,11 @@ declare namespace LocalJSX {
     }
     interface PInputText {
         /**
-          * Specifies whether the input can be autofilled by the browser
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="name").
          */
-        "autoComplete"?: InputTextAutoComplete;
+        "autoComplete"?: string;
         /**
-          * Displays as a compact version.
+          * A boolean value that, if present, renders the input field as a compact version.
          */
         "compact"?: boolean;
         /**
@@ -5315,23 +5315,23 @@ declare namespace LocalJSX {
          */
         "counter"?: boolean;
         /**
-          * The description text.
+          * Supplementary text providing more context or explanation for the input.
          */
         "description"?: string;
         /**
-          * Marks the text input as disabled.
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the text input should be associated with.
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
          */
         "form"?: string;
         /**
-          * Show or hide label and description text. For better accessibility, it is recommended to show the label.
+          * Controls the visibility of the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
@@ -5339,19 +5339,19 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
-          * The max length of the text input.
+          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
          */
         "maxLength"?: number;
         /**
-          * The message styled depending on validation state.
+          * Dynamic feedback text for validation or status.
          */
         "message"?: string;
         /**
-          * The min length of the text input.
+          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the text input.
+          * The name of the input field, used when submitting the form data.
          */
         "name"?: string;
         /**
@@ -5367,15 +5367,15 @@ declare namespace LocalJSX {
          */
         "onInput"?: (event: PInputTextCustomEvent<InputTextInputEventDetail>) => void;
         /**
-          * The placeholder text.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Enter your full name"). This text is displayed when the input field is empty.
          */
         "placeholder"?: string;
         /**
-          * Specifies whether the text input should be read-only.
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
          */
         "readOnly"?: boolean;
         /**
-          * Marks the text input as required.
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
          */
         "required"?: boolean;
         /**
@@ -5383,11 +5383,11 @@ declare namespace LocalJSX {
          */
         "spellCheck"?: boolean;
         /**
-          * The validation state.
+          * Indicates the validation or overall status of the input component.
          */
         "state"?: InputTextState;
         /**
-          * Adapts the color depending on the theme.
+          * Controls the visual appearance of the component.
          */
         "theme"?: Theme;
         /**
@@ -6692,47 +6692,47 @@ declare namespace LocalJSX {
     }
     interface PTextarea {
         /**
-          * Specifies whether the input can be autofilled by the browser
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on").
          */
-        "autoComplete"?: TextareaAutoComplete;
+        "autoComplete"?: string;
         /**
           * Show or hide the character counter.
          */
         "counter"?: boolean;
         /**
-          * The description text.
+          * Supplementary text providing more context or explanation for the textarea.
          */
         "description"?: string;
         /**
-          * Marks the textarea as disabled.
+          * A boolean value that, if present, makes the textarea unusable and unclickable. The value will not be submitted with the form.
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the textarea should be associated with.
+          * Specifies the id of the <form> element that the textarea belongs to (useful if the textarea is not a direct descendant of the form).
          */
         "form"?: string;
         /**
-          * Show or hide label. For better accessibility, it is recommended to show the label.
+          * Controls the visibility of the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * The label text.
+          * Text content for a user-facing label.
          */
         "label"?: string;
         /**
-          * The max length of the textarea.
+          * A non-negative integer specifying the maximum number of characters the user can enter into the textarea.
          */
         "maxLength"?: number;
         /**
-          * The message styled depending on validation state.
+          * Dynamic feedback text for validation or status.
          */
         "message"?: string;
         /**
-          * The min length of the textarea.
+          * A non-negative integer specifying the minimum number of characters required for the textarea's value to be considered valid.
          */
         "minLength"?: number;
         /**
-          * The name of the textarea.
+          * The name of the textarea, used when submitting the form data.
          */
         "name"?: string;
         /**
@@ -6748,15 +6748,15 @@ declare namespace LocalJSX {
          */
         "onInput"?: (event: PTextareaCustomEvent<TextareaInputEventDetail>) => void;
         /**
-          * The placeholder text.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Write your message here..."). This text is displayed when the textarea is empty.
          */
         "placeholder"?: string;
         /**
-          * Specifies whether the textarea should be read-only.
+          * A boolean value that, if present, makes the textarea uneditable by the user, but its value will still be submitted with the form.
          */
         "readOnly"?: boolean;
         /**
-          * Marks the textarea as required.
+          * A boolean value that, if present, indicates that the textarea must be filled out before the form can be submitted.
          */
         "required"?: boolean;
         /**
@@ -6768,15 +6768,15 @@ declare namespace LocalJSX {
          */
         "rows"?: number;
         /**
-          * Specifies whether the input should have its spelling and grammar checked
+          * Specifies whether the textarea should have its spelling and grammar checked
          */
         "spellCheck"?: boolean;
         /**
-          * The validation state.
+          * Indicates the validation or overall status of the textarea component.
          */
         "state"?: TextareaState;
         /**
-          * Adapts the color depending on the theme.
+          * Controls the visual appearance of the component.
          */
         "theme"?: Theme;
         /**
@@ -6784,7 +6784,7 @@ declare namespace LocalJSX {
          */
         "value"?: string;
         /**
-          * Handles wrapping behaviour of elements.
+          * Handles wrapping behavior of elements.
          */
         "wrap"?: TextareaWrap;
     }

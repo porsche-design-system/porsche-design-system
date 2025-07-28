@@ -6,7 +6,6 @@ import { descriptionId } from '../label/label-utils';
 import { LoadingMessage, loadingId } from '../loading-message/loading-message';
 import { StateMessage, messageId } from '../state-message/state-message';
 import {
-  InputBaseAutoComplete,
   InputBaseBlurEventDetail,
   InputBaseChangeEventDetail,
   InputBaseInputEventDetail,
@@ -35,7 +34,7 @@ type InputBaseProps = {
   minLength?: number;
   max?: number;
   min?: number;
-  autoComplete?: InputBaseAutoComplete;
+  autoComplete?: string;
   pattern?: string;
   multiple?: boolean;
   type: string;

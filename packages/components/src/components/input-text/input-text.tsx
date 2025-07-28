@@ -15,7 +15,6 @@ import { AllowedTypes, FORM_STATES, THEMES, attachComponentCss, hasPropValueChan
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-text-styles';
 import {
-  type InputTextAutoComplete,
   type InputTextBlurEventDetail,
   type InputTextChangeEventDetail,
   type InputTextInputEventDetail,
@@ -81,7 +80,7 @@ export class InputText {
   @Prop({ mutable: true }) public value?: string = '';
 
   /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="name"). */
-  @Prop() public autoComplete?: InputTextAutoComplete;
+  @Prop() public autoComplete?: string;
 
   /** A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form. */
   @Prop() public readOnly?: boolean = false;
