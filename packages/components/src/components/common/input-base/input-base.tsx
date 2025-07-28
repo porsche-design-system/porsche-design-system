@@ -1,11 +1,11 @@
-import { type FunctionalComponent, type JSX, h } from '@stencil/core';
+import { type FunctionalComponent, h, type JSX } from '@stencil/core';
 import type { Theme } from '../../../types';
 import { getPrefixedTagNames } from '../../../utils';
 import { Label } from '../label/label';
 import { descriptionId } from '../label/label-utils';
 import { LoadingMessage, loadingId } from '../loading-message/loading-message';
-import { StateMessage, messageId } from '../state-message/state-message';
-import {
+import { messageId, StateMessage } from '../state-message/state-message';
+import type {
   InputBaseBlurEventDetail,
   InputBaseChangeEventDetail,
   InputBaseInputEventDetail,

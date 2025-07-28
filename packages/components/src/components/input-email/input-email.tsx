@@ -1,21 +1,21 @@
-import { AttachInternals, Component, Element, Event, type EventEmitter, type JSX, Prop, Watch, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
-  FORM_STATES,
-  THEMES,
   attachComponentCss,
-  hasPropValueChanged,
-  validateProps,
+  FORM_STATES,
   getPrefixedTagNames,
+  hasPropValueChanged,
+  THEMES,
+  validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-email-styles';
-import {
-  type InputEmailBlurEventDetail,
-  type InputEmailChangeEventDetail,
-  type InputEmailInputEventDetail,
-  type InputEmailState,
+import type {
+  InputEmailBlurEventDetail,
+  InputEmailChangeEventDetail,
+  InputEmailInputEventDetail,
+  InputEmailState,
 } from './input-email-utils';
 
 const propTypes: PropTypes<typeof InputEmail> = {

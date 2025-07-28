@@ -4,29 +4,29 @@ import {
   Element,
   Event,
   type EventEmitter,
+  h,
   type JSX,
   Prop,
   State,
   Watch,
-  h,
 } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
-  FORM_STATES,
-  THEMES,
   attachComponentCss,
+  FORM_STATES,
   getPrefixedTagNames,
   hasPropValueChanged,
+  THEMES,
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-password-styles';
-import {
-  type InputPasswordBlurEventDetail,
-  type InputPasswordChangeEventDetail,
-  type InputPasswordInputEventDetail,
-  type InputPasswordState,
+import type {
+  InputPasswordBlurEventDetail,
+  InputPasswordChangeEventDetail,
+  InputPasswordInputEventDetail,
+  InputPasswordState,
 } from './input-password-utils';
 
 const propTypes: PropTypes<typeof InputPassword> = {

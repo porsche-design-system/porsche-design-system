@@ -5,28 +5,28 @@ import {
   Event,
   type EventEmitter,
   Fragment,
+  h,
   type JSX,
   Prop,
   Watch,
-  h,
 } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
-  FORM_STATES,
-  THEMES,
   attachComponentCss,
+  FORM_STATES,
   getPrefixedTagNames,
   hasPropValueChanged,
+  THEMES,
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-number-styles';
-import {
-  type InputNumberBlurEventDetail,
-  type InputNumberChangeEventDetail,
-  type InputNumberInputEventDetail,
-  type InputNumberState,
+import type {
+  InputNumberBlurEventDetail,
+  InputNumberChangeEventDetail,
+  InputNumberInputEventDetail,
+  InputNumberState,
 } from './input-number-utils';
 
 const propTypes: PropTypes<typeof InputNumber> = {
