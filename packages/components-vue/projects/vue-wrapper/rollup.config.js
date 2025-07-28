@@ -98,9 +98,9 @@ export default [
       generatePackageJson({
         outputFolder: `${outputDir}/partials`,
         baseContents: {
-          main: 'index.cjs',
-          module: 'index.mjs',
-          types: 'index.d.ts',
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
           sideEffects: false,
         },
       }),
