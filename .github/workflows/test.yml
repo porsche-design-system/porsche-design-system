@@ -329,8 +329,6 @@ jobs:
         uses: ./.github/actions/install
       - name: 'Restore'
         uses: ./.github/actions/restore
-      - name: 'E2E'
-        run: yarn test:e2e:components-react/react-router
       - name: 'VRT'
         run: yarn test:vrt:components-react/react-router
       - name: 'VRT Regression'

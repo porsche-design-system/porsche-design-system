@@ -23,10 +23,6 @@ export const routes: Route[] = [
     path: '/sheet-prefixed',
   },
   {
-    name: 'ModalPage',
-    path: '/modal-standalone',
-  },
-  {
     name: 'BannerBasic',
     path: '/banner-basic',
   },
