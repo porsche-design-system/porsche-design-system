@@ -114,13 +114,12 @@ test.describe('slotted content changes', () => {
     });
     await waitForStencilLifecycle(page);
 
-    const [, secondButton] = await getAllTabs(page);
     const [firstTabsItem, secondTabsItem] = await getAllTabsItems(page);
 
     await expect.poll(() => isHidden(firstTabsItem)).toBe(false);
     await expect.poll(() => isHidden(secondTabsItem)).toBe(true);
 
-    await secondButton.click();
+    await page.getByRole('tab').nth(1).click();
     await waitForStencilLifecycle(page);
 
     await expect.poll(() => isHidden(secondTabsItem)).toBe(false);

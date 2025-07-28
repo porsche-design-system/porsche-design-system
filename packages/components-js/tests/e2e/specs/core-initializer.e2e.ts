@@ -7,7 +7,7 @@ test.describe('core-initializer', () => {
     await page.waitForFunction(() => document.querySelectorAll('p-text-field-wrapper').length === 2);
 
     const [component1, component2] = await page.locator('p-text-field-wrapper').all();
-    const getOuterHTML = (locator: Locator) => locator.evaluate((el) => el.outerHTML);
+    const getOuterHTML = async (locator: Locator) => await locator.evaluate((el) => el.outerHTML);
 
     const component1HTML = await getOuterHTML(component1);
     const component2HTML = await getOuterHTML(component2);
