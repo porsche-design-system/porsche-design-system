@@ -32,9 +32,13 @@ test.describe('form', () => {
     await expect.poll(async () => (await getEventSummary(form, 'submit')).counter).toBe(0);
 
     await page.locator('button[type="submit"]').click();
-    const lastSubmittedData = await page.locator('p-text').innerText();
 
     await expect.poll(async () => (await getEventSummary(form, 'submit')).counter).toBe(1);
-    await expect.poll(() => lastSubmittedData.includes('a, b')).toBe(true);
+    await expect
+      .poll(async () => {
+        const lastSubmittedData = await page.locator('p-text').innerText();
+        lastSubmittedData.includes('a, b');
+      })
+      .toBe(true);
   });
 });
