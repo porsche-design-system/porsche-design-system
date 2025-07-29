@@ -338,9 +338,35 @@ exports[`should call validateProps() with correct parameters via render for p-in
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-input-email: propTypes with ValidatorFunctions 1`] = `
+{
+  "autoComplete": "string",
+  "compact": "boolean",
+  "description": "string",
+  "disabled": "boolean",
+  "form": "string",
+  "hideLabel": "breakpoint",
+  "indicator": "boolean",
+  "label": "string",
+  "loading": "boolean",
+  "maxLength": "number",
+  "message": "string",
+  "minLength": "number",
+  "multiple": "boolean",
+  "name": "string",
+  "pattern": "string",
+  "placeholder": "string",
+  "readOnly": "boolean",
+  "required": "boolean",
+  "state": "oneOf",
+  "theme": "oneOf",
+  "value": "string",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-input-number: propTypes with ValidatorFunctions 1`] = `
 {
-  "autoComplete": "oneOf",
+  "autoComplete": "string",
   "compact": "boolean",
   "controls": "boolean",
   "description": "string",
@@ -365,7 +391,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
 
 exports[`should call validateProps() with correct parameters via render for p-input-password: propTypes with ValidatorFunctions 1`] = `
 {
-  "autoComplete": "oneOf",
+  "autoComplete": "string",
   "compact": "boolean",
   "description": "string",
   "disabled": "boolean",
@@ -389,7 +415,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
 
 exports[`should call validateProps() with correct parameters via render for p-input-search: propTypes with ValidatorFunctions 1`] = `
 {
-  "autoComplete": "oneOf",
+  "autoComplete": "string",
   "clear": "boolean",
   "compact": "boolean",
   "description": "string",
@@ -412,7 +438,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
 
 exports[`should call validateProps() with correct parameters via render for p-input-text: propTypes with ValidatorFunctions 1`] = `
 {
-  "autoComplete": "oneOf",
+  "autoComplete": "string",
   "compact": "boolean",
   "counter": "boolean",
   "description": "string",
@@ -887,7 +913,7 @@ exports[`should call validateProps() with correct parameters via render for p-te
 
 exports[`should call validateProps() with correct parameters via render for p-textarea: propTypes with ValidatorFunctions 1`] = `
 {
-  "autoComplete": "oneOf",
+  "autoComplete": "string",
   "counter": "boolean",
   "description": "string",
   "disabled": "boolean",
