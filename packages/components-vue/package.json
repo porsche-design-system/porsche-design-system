@@ -14,7 +14,7 @@
     "build:subPackages:tailwindcss": "TARGET=./dist/vue-wrapper/tailwindcss && rm -rf $TARGET && cp -r ../styles/projects/tailwindcss/dist $TARGET",
     "build:subPackages:typings": "yarn build:subPackages:typings:jsdom-polyfill && yarn build:subPackages:typings:partials && yarn build:subPackages:typings:testing && yarn build:subPackages:typings:styles && yarn build:subPackages:typings:ag-grid",
     "build:subPackages:typings:jsdom-polyfill": "tsc projects/vue-wrapper/src/jsdom-polyfill/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/jsdom-polyfill --types node",
-    "build:subPackages:typings:partials": "tsc projects/vue-wrapper/src/partials/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/partials --types node --skipLibCheck true",
+    "build:subPackages:typings:partials": "tsc projects/vue-wrapper/src/partials/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/partials/esm --types node --skipLibCheck true",
     "build:subPackages:typings:testing": "tsc projects/vue-wrapper/src/testing/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/testing --types node",
     "build:subPackages:typings:styles": "tsc projects/vue-wrapper/src/styles/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/styles/esm --types node && tsc projects/vue-wrapper/src/styles/vanilla-extract/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/styles/vanilla-extract/esm/vanilla-extract --types node",
     "build:subPackages:typings:ag-grid": "tsc projects/vue-wrapper/src/ag-grid/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/ag-grid/esm --types node",
@@ -30,7 +30,7 @@
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/components-vue": "3.29.0-rc.1",
+    "@porsche-design-system/components-vue": "3.29.0-rc.2",
     "vue": "^3.5.17",
     "vue-imask": "^7.6.1",
     "vue-router": "^4.5.1"
