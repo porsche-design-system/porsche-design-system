@@ -1,23 +1,21 @@
-import { AttachInternals, Component, Element, Event, type EventEmitter, type JSX, Prop, Watch, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
-  FORM_STATES,
-  THEMES,
   attachComponentCss,
-  hasPropValueChanged,
-  validateProps,
+  FORM_STATES,
   getPrefixedTagNames,
+  hasPropValueChanged,
+  THEMES,
+  validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-tel-styles';
-import {
-  INPUT_TEL_AUTO_COMPLETE,
-  type InputTelAutoComplete,
-  type InputTelBlurEventDetail,
-  type InputTelChangeEventDetail,
-  type InputTelInputEventDetail,
-  type InputTelState,
+import type {
+  InputTelBlurEventDetail,
+  InputTelChangeEventDetail,
+  InputTelInputEventDetail,
+  InputTelState,
 } from './input-tel-utils';
 
 const propTypes: PropTypes<typeof InputTel> = {
@@ -33,7 +31,7 @@ const propTypes: PropTypes<typeof InputTel> = {
   maxLength: AllowedTypes.number,
   minLength: AllowedTypes.number,
   form: AllowedTypes.string,
-  autoComplete: AllowedTypes.oneOf<InputTelAutoComplete>([...INPUT_TEL_AUTO_COMPLETE, undefined]),
+  autoComplete: AllowedTypes.string,
   state: AllowedTypes.oneOf<InputTelState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
@@ -58,16 +56,16 @@ const propTypes: PropTypes<typeof InputTel> = {
 export class InputTel {
   @Element() public host!: HTMLElement;
 
-  /** The label text. */
+  /** Text content for a user-facing label. */
   @Prop() public label?: string = '';
 
-  /** The description text. */
+  /** Supplementary text providing more context or explanation for the input. */
   @Prop() public description?: string = '';
 
-  /** Displays as a compact version. */
+  /** A boolean value that, if present, renders the input field as a compact version. */
   @Prop() public compact?: boolean = false;
 
-  /** The name of the tel input. */
+  /** The name of the input field, used when submitting the form data. */
   @Prop({ reflect: true }) public name: string;
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
@@ -75,46 +73,46 @@ export class InputTel {
   /** The tel input value. */
   @Prop({ mutable: true }) public value?: string = '';
 
-  /** Specifies whether the input can be autofilled by the browser */
-  @Prop() public autoComplete?: InputTelAutoComplete;
+  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on"). */
+  @Prop() public autoComplete?: string;
 
-  /** Specifies whether the tel input should be read-only. */
+  /** A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form. */
   @Prop() public readOnly?: boolean = false;
 
-  /** The id of a form element the tel input should be associated with. */
+  /** Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form). */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** The max length of the tel input. */
+  /** A non-negative integer specifying the maximum number of characters the user can enter into the input. */
   @Prop() public maxLength?: number;
 
-  /** The min length of the tel input. */
+  /** A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid. */
   @Prop() public minLength?: number;
 
-  /** The placeholder text. */
+  /** A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="(123) 456-7890") */
   @Prop() public placeholder?: string = '';
 
-  /** Marks the tel input as disabled. */
+  /** A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form. */
   @Prop() public disabled?: boolean = false;
 
-  /** Marks the tel input as required. */
+  /** A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted. */
   @Prop() public required?: boolean = false;
 
   /** @experimental Shows a loading indicator. */
   @Prop() public loading?: boolean = false;
 
-  /** The validation state. */
+  /** Indicates the validation or overall status of the input component. */
   @Prop() public state?: InputTelState = 'none';
 
-  /** Show tel indicator icon */
+  /** Controls the visibility of an phone icon. */
   @Prop() public indicator?: boolean = false;
 
-  /** The message styled depending on validation state. */
+  /** Dynamic feedback text for validation or status. */
   @Prop() public message?: string = '';
 
-  /** Show or hide label and description text. For better accessibility, it is recommended to show the label. */
+  /** Controls the visibility of the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Adapts the color depending on the theme. */
+  /** Controls the visual appearance of the component. */
   @Prop() public theme?: Theme = 'light';
 
   /** Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific tel validation rules than the browser's default. If provided, it overrides the browser's default tel validation. */
