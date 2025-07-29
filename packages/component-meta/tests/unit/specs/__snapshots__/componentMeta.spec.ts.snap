@@ -5012,7 +5012,7 @@ exports[`should match snapshot 1`] = `
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on").",
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').",
         "type": "string",
       },
       "compact": {
@@ -5105,7 +5105,7 @@ exports[`should match snapshot 1`] = `
       "placeholder": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="(123) 456-7890")",
+        "description": "A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='(123) 456-7890')",
         "type": "string",
       },
       "readOnly": {

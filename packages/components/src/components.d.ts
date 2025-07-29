@@ -1382,7 +1382,7 @@ export namespace Components {
     }
     interface PInputTel {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on").
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
          */
         "autoComplete"?: string;
         /**
@@ -1438,7 +1438,7 @@ export namespace Components {
          */
         "pattern"?: string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="(123) 456-7890")
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='(123) 456-7890')
          */
         "placeholder"?: string;
         /**
@@ -5411,7 +5411,7 @@ declare namespace LocalJSX {
     }
     interface PInputTel {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on").
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
          */
         "autoComplete"?: string;
         /**
@@ -5479,7 +5479,7 @@ declare namespace LocalJSX {
          */
         "pattern"?: string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="(123) 456-7890")
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='(123) 456-7890')
          */
         "placeholder"?: string;
         /**
