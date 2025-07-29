@@ -1,12 +1,12 @@
-<p-input-tel name="some-name" label="Some Label"></p-input-tel>
+<p-input-url name="some-name" label="Some Label"></p-input-url>
 
 <p-text>Value: ''</p-text>
 
 <script>
   const debugElement = document.querySelector('p-text');
-  const inputTel = document.querySelector('p-input-tel');
+  const inputUrl = document.querySelector('p-input-url');
 
-  inputTel.addEventListener('input', (e) => {
+  inputUrl.addEventListener('input', (e) => {
     e.target.value = e.detail.target.value;
     setDebugText(e.detail.target.value);
   });

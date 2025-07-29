@@ -10,21 +10,20 @@ import {
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
-import { getComponentCss } from './input-email-styles';
+import { getComponentCss } from './input-url-styles';
 import type {
-  InputEmailBlurEventDetail,
-  InputEmailChangeEventDetail,
-  InputEmailInputEventDetail,
-  InputEmailState,
-} from './input-email-utils';
+  InputUrlBlurEventDetail,
+  InputUrlChangeEventDetail,
+  InputUrlInputEventDetail,
+  InputUrlState,
+} from './input-url-utils';
 
-const propTypes: PropTypes<typeof InputEmail> = {
+const propTypes: PropTypes<typeof InputUrl> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
   placeholder: AllowedTypes.string,
   name: AllowedTypes.string,
   value: AllowedTypes.string,
-  multiple: AllowedTypes.boolean,
   required: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
@@ -33,7 +32,7 @@ const propTypes: PropTypes<typeof InputEmail> = {
   minLength: AllowedTypes.number,
   form: AllowedTypes.string,
   autoComplete: AllowedTypes.string,
-  state: AllowedTypes.oneOf<InputEmailState>(FORM_STATES),
+  state: AllowedTypes.oneOf<InputUrlState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   indicator: AllowedTypes.boolean,
@@ -50,11 +49,11 @@ const propTypes: PropTypes<typeof InputEmail> = {
  * @slot {"name": "end", "description": "Shows content at the end of the input (e.g. toggle button, unit suffix)."}
  */
 @Component({
-  tag: 'p-input-email',
+  tag: 'p-input-url',
   shadow: { delegatesFocus: true },
   formAssociated: true,
 })
-export class InputEmail {
+export class InputUrl {
   @Element() public host!: HTMLElement;
 
   /** Text content for a user-facing label. */
@@ -71,10 +70,10 @@ export class InputEmail {
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** The default email address (or comma-separated list of addresses) for the input. */
+  /** The url input value. */
   @Prop({ mutable: true }) public value?: string = '';
 
-  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='email'). */
+  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on'). */
   @Prop() public autoComplete?: string;
 
   /** A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form. */
@@ -89,7 +88,7 @@ export class InputEmail {
   /** A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid. */
   @Prop() public minLength?: number;
 
-  /** A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='you@example.com'). This text is displayed when the input field is empty. */
+  /** A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='https://porsche.com/') */
   @Prop() public placeholder?: string = '';
 
   /** A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form. */
@@ -102,9 +101,9 @@ export class InputEmail {
   @Prop() public loading?: boolean = false;
 
   /** Indicates the validation or overall status of the input component. */
-  @Prop() public state?: InputEmailState = 'none';
+  @Prop() public state?: InputUrlState = 'none';
 
-  /** Controls the visibility of the email icon. */
+  /** Controls the visibility of the url icon. */
   @Prop() public indicator?: boolean = false;
 
   /** Dynamic feedback text for validation or status. */
@@ -116,20 +115,17 @@ export class InputEmail {
   /** Controls the visual appearance of the component. */
   @Prop() public theme?: Theme = 'light';
 
-  /** A boolean value that, if present, it allows the user to enter a list of multiple email addresses, separated by commas (and optional whitespace). The browser will validate each email address in the list. */
-  @Prop() public multiple?: boolean = false;
-
-  /** Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific email validation rules than the browser's default (e.g., restricting to a specific domain). If provided, it overrides the browser's default email validation. */
+  /** Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific url validation rules than the browser's default. If provided, it overrides the browser's default tel validation. */
   @Prop() public pattern?: string;
 
-  /** Emitted when the email input loses focus after its value was changed. */
-  @Event({ bubbles: true }) public change: EventEmitter<InputEmailChangeEventDetail>;
+  /** Emitted when the url input loses focus after its value was changed. */
+  @Event({ bubbles: true }) public change: EventEmitter<InputUrlChangeEventDetail>;
 
-  /** Emitted when the email input has lost focus. */
-  @Event({ bubbles: false }) public blur: EventEmitter<InputEmailBlurEventDetail>;
+  /** Emitted when the url input has lost focus. */
+  @Event({ bubbles: false }) public blur: EventEmitter<InputUrlBlurEventDetail>;
 
   /** Emitted when the value has been changed as a direct result of a user action. */
-  @Event({ bubbles: true }) public input: EventEmitter<InputEmailInputEventDetail>;
+  @Event({ bubbles: true }) public input: EventEmitter<InputUrlInputEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;
 
@@ -203,14 +199,14 @@ export class InputEmail {
         host={this.host}
         label={this.label}
         description={this.description}
-        id="input-email"
+        id="input-url"
         refElement={(el: HTMLInputElement) => (this.inputElement = el)}
         onInput={this.onInput}
         onChange={this.onChange}
         onBlur={this.onBlur}
         name={this.name}
         form={this.form}
-        type="email"
+        type="url"
         required={this.required}
         placeholder={this.placeholder}
         maxLength={this.maxLength}
@@ -224,10 +220,9 @@ export class InputEmail {
         theme={this.theme}
         loading={this.loading}
         pattern={this.pattern}
-        multiple={this.multiple}
         initialLoading={this.initialLoading}
         {...(this.indicator && {
-          start: <PrefixedTagNames.pIcon aria-hidden="true" name="email" color="state-disabled" theme={this.theme} />,
+          start: <PrefixedTagNames.pIcon aria-hidden="true" name="linked" color="state-disabled" theme={this.theme} />,
         })}
       />
     );

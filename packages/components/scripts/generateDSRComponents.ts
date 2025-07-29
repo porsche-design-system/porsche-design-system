@@ -765,7 +765,8 @@ $&`
         tagName === 'p-input-search' ||
         tagName === 'p-input-text' ||
         tagName === 'p-input-email' ||
-        tagName === 'p-input-tel'
+        tagName === 'p-input-tel' ||
+        tagName === 'p-input-url'
       ) {
         newFileContent = newFileContent
           .replace(/@AttachInternals\(\)/, '')

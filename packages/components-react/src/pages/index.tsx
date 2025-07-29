@@ -2,6 +2,10 @@ import type { RouteType } from '../routes';
 
 export * from './CoreClassNames';
 export * from './Events';
+/* Auto Generated Below */
+/* eslint-disable import/first */
+export * from './generated/CoreInitializer';
+export * from './generated/Overview';
 export * from './LifecycleOverlapping';
 export * from './ModalFocusCycle';
 export * from './StencilLifecycles';
@@ -9,10 +13,6 @@ export * from './Table';
 export * from './ThemeInjection';
 export * from './Utilities';
 
-/* Auto Generated Below */
-/* eslint-disable import/first */
-export * from './generated/CoreInitializer';
-export * from './generated/Overview';
 import { AccordionPage } from './generated/Accordion';
 import { BannerPage } from './generated/Banner';
 import { BannerBasicPage } from './generated/BannerBasic';
@@ -113,6 +113,7 @@ import { InputPasswordPage } from './generated/InputPassword';
 import { InputSearchPage } from './generated/InputSearch';
 import { InputTelPage } from './generated/InputTel';
 import { InputTextPage } from './generated/InputText';
+import { InputUrlPage } from './generated/InputUrl';
 import { LinkPage } from './generated/Link';
 import { LinkPurePage } from './generated/LinkPure';
 import { LinkSocialPage } from './generated/LinkSocial';
@@ -719,6 +720,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Input Tel',
     path: '/input-tel',
     element: <InputTelPage />,
+  },
+  {
+    name: 'Input Url',
+    path: '/input-url',
+    element: <InputUrlPage />,
   },
   {
     name: 'Input Text',
