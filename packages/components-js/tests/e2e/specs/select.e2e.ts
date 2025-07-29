@@ -1,4 +1,4 @@
-import { Locator, expect, test } from '@playwright/test';
+import { expect, Locator, test } from '@playwright/test';
 import { Theme } from '@porsche-design-system/components';
 import type { Components } from '@porsche-design-system/components/src/components';
 import type { SelectOption } from '@porsche-design-system/components/src/components/select/select/select-utils';
@@ -24,7 +24,7 @@ import {
 const getHost = (page: Page) => page.locator('p-select');
 const getFieldset = (page: Page) => page.locator('fieldset');
 const getSelectValue = async (page: Page): Promise<string | number> => await getProperty(getHost(page), 'value');
-const getButton = (page: Page) => page.locator('p-select button').first();
+const getButton = (page: Page) => page.locator('p-select button[role="combobox"]');
 const getButtonImage = (page: Page) => page.locator('p-select button img').first().getAttribute('src');
 const getDropdown = (page: Page) => page.locator('p-select [popover]');
 const getDropdownDisplay = async (page: Page): Promise<string> => await getElementStyle(getDropdown(page), 'display');
@@ -382,29 +382,42 @@ test.describe('outside click', () => {
   test('should show dropdown if input is clicked and hide via outside click', async ({ page }) => {
     await initSelect(page, { options: { markupBefore: '<p-text>Some Text</p-text>' } });
 
+    const dropdown = getDropdown(page);
     const buttonElement = getButton(page);
     const text = page.locator('p-text');
-    expect(await getDropdownDisplay(page)).toBe('none');
+
+    await expect(dropdown).toBeHidden();
 
     await buttonElement.click();
-    await waitForStencilLifecycle(page);
-
-    expect(await getDropdownDisplay(page)).toBe('flex');
+    await expect(dropdown).toBeVisible();
 
     await text.click();
-    await waitForStencilLifecycle(page);
-
-    expect(await getDropdownDisplay(page), 'after 1st text click').toBe('none');
+    await expect(dropdown, 'after 1st text click').toBeHidden();
 
     await buttonElement.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownDisplay(page), 'after 2nd button click').toBe('flex');
+    await expect(dropdown, 'after 2nd input click').toBeVisible();
 
     await buttonElement.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownDisplay(page), 'after 3nd button click').toBe('none');
+    await expect(dropdown, 'after 3nd input click').toBeHidden();
+  });
+});
+
+test.describe('hover', () => {
+  skipInBrowsers(['firefox', 'webkit']);
+  test('should change border-color when input is hovered', async ({ page }) => {
+    await initSelect(page);
+    await page.mouse.move(0, 300); // avoid potential hover initially
+
+    const buttonElement = getButton(page);
+
+    await expect(buttonElement).toHaveCSS('border-color', 'rgb(107, 109, 112)');
+
+    await buttonElement.hover();
+    await expect(buttonElement).toHaveCSS('border-color', 'rgb(1, 2, 5)');
   });
 });
 
@@ -1296,7 +1309,7 @@ test.describe('filter', () => {
     });
 
     skipInBrowsers(['webkit', 'firefox'], () => {
-      test('should reset filter value and show all options again after closing and reopening again', async ({
+      test('should reset filter value and show all options again after closing and reopening again by Escape Press', async ({
         page,
       }) => {
         await initSelect(page, { props: { name: 'Some name', filter: true } });
@@ -1315,6 +1328,49 @@ test.describe('filter', () => {
         await filterInputElement.fill('b');
 
         await page.keyboard.press('Escape');
+        await expect(dropdown).toBeHidden();
+        await expect(host).toHaveJSProperty('value', undefined);
+        await expect(buttonElement).toBeFocused();
+
+        await waitForStencilLifecycle(page);
+        await buttonElement.click();
+        await expect(filterElement).toBeFocused();
+        await expect(filterInputElement).toHaveValue('');
+
+        await expect(options.nth(0)).toBeVisible();
+        await expect(options.nth(1)).toBeVisible();
+        await expect(options.nth(2)).toBeVisible();
+      });
+
+      test('should reset filter value and show all options again after closing and reopening again by outside click', async ({
+        page,
+      }) => {
+        await initSelect(page, {
+          props: { name: 'Some name', filter: true },
+          options: { markupBefore: '<p-text>Some text</p-text>' },
+        });
+
+        const text = page.locator('p-text');
+        const host = getHost(page);
+        const buttonElement = getButton(page);
+        const filterElement = getFilter(page);
+        const filterInputElement = getFilterInput(page);
+        const options = getSelectOptions(page);
+        const dropdown = getDropdown(page);
+
+        await buttonElement.click();
+
+        await expect(dropdown).toBeVisible();
+        await expect(filterElement).toBeFocused();
+        await expect(filterInputElement).toHaveValue('');
+        await filterInputElement.fill('b');
+
+        await expect(options.nth(0)).toBeHidden();
+        await expect(options.nth(1)).toBeVisible();
+        await expect(options.nth(1)).toHaveText('Option B');
+        await expect(options.nth(2)).toBeHidden();
+
+        await text.click();
         await expect(dropdown).toBeHidden();
         await expect(host).toHaveJSProperty('value', undefined);
         await expect(buttonElement).toBeFocused();
