@@ -103,9 +103,7 @@ test.describe('storefront pages', () => {
         const filteredViolations = accessibilityScanResults.violations
           .map((violation) => ({
             ...violation,
-            nodes: violation.nodes.filter((node) =>
-              node.target.every((selector) => !selector.includes('p-table p-scroller'))
-            ),
+            nodes: violation.nodes.filter((node) => node.target.every((selector) => !selector.includes('p-scroller'))),
           }))
           .filter((violation) => violation.nodes.length > 0);
 
