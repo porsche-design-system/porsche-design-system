@@ -380,6 +380,10 @@ const generatedRoutes = {
     "path": "/inline-notification",
     "name": "InlineNotification"
   },
+  "inputEmail": {
+    "path": "/input-email",
+    "name": "InputEmail"
+  },
   "inputNumber": {
     "path": "/input-number",
     "name": "InputNumber"
