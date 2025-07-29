@@ -73,7 +73,7 @@ export class InputTel {
   /** The tel input value. */
   @Prop({ mutable: true }) public value?: string = '';
 
-  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on"). */
+  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on'). */
   @Prop() public autoComplete?: string;
 
   /** A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form. */
@@ -88,7 +88,7 @@ export class InputTel {
   /** A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid. */
   @Prop() public minLength?: number;
 
-  /** A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="(123) 456-7890") */
+  /** A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='(123) 456-7890') */
   @Prop() public placeholder?: string = '';
 
   /** A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form. */
