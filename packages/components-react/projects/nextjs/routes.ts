@@ -400,13 +400,13 @@ const generatedRoutes = {
     "path": "/input-tel",
     "name": "InputTel"
   },
-  "inputUrl": {
-    "path": "/input-url",
-    "name": "InputUrl"
-  },
   "inputText": {
     "path": "/input-text",
     "name": "InputText"
+  },
+  "inputUrl": {
+    "path": "/input-url",
+    "name": "InputUrl"
   },
   "link": {
     "path": "/link",

@@ -2,17 +2,11 @@ import type { RouteType } from '../routes';
 
 export * from './CoreClassNames';
 export * from './Events';
+
 /* Auto Generated Below */
 /* eslint-disable import/first */
 export * from './generated/CoreInitializer';
 export * from './generated/Overview';
-export * from './LifecycleOverlapping';
-export * from './ModalFocusCycle';
-export * from './StencilLifecycles';
-export * from './Table';
-export * from './ThemeInjection';
-export * from './Utilities';
-
 import { AccordionPage } from './generated/Accordion';
 import { BannerPage } from './generated/Banner';
 import { BannerBasicPage } from './generated/BannerBasic';
@@ -722,14 +716,14 @@ export const generatedRoutes: RouteType[] = [
     element: <InputTelPage />,
   },
   {
-    name: 'Input Url',
-    path: '/input-url',
-    element: <InputUrlPage />,
-  },
-  {
     name: 'Input Text',
     path: '/input-text',
     element: <InputTextPage />,
+  },
+  {
+    name: 'Input Url',
+    path: '/input-url',
+    element: <InputUrlPage />,
   },
   {
     name: 'Link',
