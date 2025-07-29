@@ -14,6 +14,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [3.29.0-rc.3] - 2025-07-29
+
+### Fixed
+
+- Partials: `topLevelAwait` issue in ESM build
+  ([#3947](https://github.com/porsche-design-system/porsche-design-system/pull/3947))
+
 ## [3.29.0-rc.2] - 2025-07-28
 
 ### Changed
