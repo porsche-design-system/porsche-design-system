@@ -7,34 +7,34 @@ import {
 } from '../../../../components-js/tests/e2e/helpers';
 import { goto, waitForComponentsReady } from '../helpers';
 
-const getHost = (page: Page) => page.locator('p-input-tel');
+const getHost = (page: Page) => page.locator('p-input-url');
 const getForm = (page: Page) => page.locator('form');
-const getInputTel = (page: Page) => page.locator('p-input-tel input');
+const getInputUrl = (page: Page) => page.locator('p-input-url input');
 
 test.describe('form', () => {
   test('should reset input text value to its initial value on form reset', async ({ page }) => {
-    await goto(page, 'input-tel-example');
-    expect(await waitForComponentsReady(page)).toBe(4); // p-input-tel, p-text, 2 p-button
+    await goto(page, 'input-url-example');
+    expect(await waitForComponentsReady(page)).toBe(4); // p-input-url, p-text, 2 p-button
 
     const name = 'name';
-    const newValue = '10';
+    const newValue = 'https://example.com';
     const host = getHost(page);
-    const inputTel = getInputTel(page);
+    const inputUrl = getInputUrl(page);
     const form = getForm(page);
 
     await addEventListener(form, 'submit');
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
 
-    await inputTel.fill(newValue);
-    await inputTel.press('Tab');
+    await inputUrl.fill(newValue);
+    await inputUrl.press('Tab');
 
     await expect(host).toHaveJSProperty('value', newValue);
-    await expect(inputTel).toHaveValue(newValue);
+    await expect(inputUrl).toHaveValue(newValue);
 
     await page.locator('button[type="reset"]').click();
 
     await expect(host).toHaveJSProperty('value', '');
-    await expect(inputTel).toHaveValue('');
+    await expect(inputUrl).toHaveValue('');
 
     await page.locator('button[type="submit"]').click(); // Check if ElementInternal value was reset as well
 
@@ -43,11 +43,11 @@ test.describe('form', () => {
   });
 
   test('should include name & value in FormData submit', async ({ page }) => {
-    await goto(page, 'input-tel-example');
-    expect(await waitForComponentsReady(page)).toBe(4); // p-input-tel, p-text, 2 p-button
+    await goto(page, 'input-url-example');
+    expect(await waitForComponentsReady(page)).toBe(4); // p-input-url, p-text, 2 p-button
     const host = getHost(page);
     const form = getForm(page);
-    const testValue = '123-456-7890';
+    const testValue = 'https://example.com';
     await setProperty(host, 'value', testValue);
     await expect(host).toHaveJSProperty('value', testValue);
 

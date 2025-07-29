@@ -1,4 +1,4 @@
-import { Locator, expect, test } from '@playwright/test';
+import { expect, Locator, test } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import type { Page } from 'playwright';
@@ -23,6 +23,7 @@ for (const tagName of tagNamesWithLoadingProp) {
             'p-input-text',
             'p-input-email',
             'p-input-tel',
+            'p-input-url',
             'p-input-password',
           ].includes(tagName)
       );
