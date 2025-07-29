@@ -316,6 +316,27 @@ jobs:
         with:
           name: regression-components-react-remix-vrt
           path: ./packages/components-react/projects/remix/tests/vrt/results
+  components-react-react-router:
+    name: 'Components React/React Router'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Restore'
+        uses: ./.github/actions/restore
+      - name: 'VRT'
+        run: yarn test:vrt:components-react/react-router
+      - name: 'VRT Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-components-react-react-router-vrt
+          path: ./packages/components-react/projects/react-router/tests/vrt/results
   components-react-nextjs:
     name: 'Components React/NextJS'
     runs-on: ubuntu-latest

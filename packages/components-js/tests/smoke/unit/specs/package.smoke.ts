@@ -1,9 +1,9 @@
+import { createRequire } from 'node:module';
+import { type Analysis, checkPackage, createPackageFromTarballData, type Problem } from '@arethetypeswrong/core';
 import { execSync } from 'child_process';
 import * as fs from 'fs';
-import { createRequire } from 'node:module';
-import * as path from 'path';
-import { type Analysis, type Problem, checkPackage, createPackageFromTarballData } from '@arethetypeswrong/core';
 import { globbySync } from 'globby';
+import * as path from 'path';
 import { describe, expect, test } from 'vitest';
 import componentsJsPackageJson from '../../../../dist/components-wrapper/package.json';
 
@@ -20,9 +20,9 @@ const packageJsonExports = {
     default: './jsdom-polyfill/index.cjs',
   },
   './partials': {
-    types: './partials/index.d.ts',
-    module: './partials/index.js',
-    default: './partials/index.cjs',
+    types: './partials/esm/index.d.ts',
+    module: './partials/esm/index.mjs',
+    default: './partials/cjs/index.cjs',
   },
   './styles': {
     sass: './styles/_index.scss',
@@ -129,6 +129,7 @@ describe('package.json files', () => {
         (prob: Problem) =>
           !(
             prob.kind === 'FalseCJS' ||
+            prob.resolutionKind === 'node10' ||
             ('entrypoint' in prob &&
               (prob.entrypoint === './ag-grid' ||
                 prob.entrypoint === '.' ||
