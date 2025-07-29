@@ -100,9 +100,9 @@ export default [
               default: './jsdom-polyfill/index.cjs',
             },
             './partials': {
-              types: './partials/index.d.ts',
-              module: './partials/index.js', // support Webpack 4 by pointing `"module"` to a file with a `.js` extension
-              default: './partials/index.cjs',
+              types: './partials/esm/index.d.ts',
+              module: './partials/esm/index.mjs',
+              default: './partials/cjs/index.cjs',
             },
             './ssr': {
               types: './ssr/esm/public-api.d.ts',
@@ -179,25 +179,27 @@ export default [
   {
     input: `${projectDir}/src/partials/index.ts`,
     external,
-    output: {
-      file: `${outputDir}/partials/index.cjs`,
-      format: 'cjs',
-    },
+    output: [
+      {
+        file: `${outputDir}/partials/cjs/index.cjs`,
+        format: 'cjs',
+      },
+      {
+        file: `${outputDir}/partials/esm/index.mjs`,
+        format: 'esm',
+      },
+    ],
     plugins: [
       // typings are produced by main build
       typescript(typescriptOpts),
       generatePackageJson({
+        outputFolder: `${outputDir}/partials`,
         baseContents: {
-          main: 'index.cjs',
-          module: 'index.js', // support Webpack 4 by pointing `"module"` to a file with a `.js` extension
-          types: 'index.d.ts',
+          main: 'cjs/index.cjs',
+          module: 'esm/index.mjs',
+          types: 'esm/index.d.ts',
           sideEffects: false,
         },
-      }),
-      copy({
-        // support Webpack 4 by pointing `"module"` to a file with a `.js` extension
-        targets: [{ src: `${outputDir}/partials/index.cjs`, dest: `${outputDir}/partials`, rename: () => 'index.js' }],
-        hook: 'writeBundle',
       }),
     ],
   },
