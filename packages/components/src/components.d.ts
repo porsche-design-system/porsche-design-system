@@ -1060,7 +1060,7 @@ export namespace Components {
     }
     interface PInputEmail {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="email").
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete=\"email\").
          */
         "autoComplete"?: string;
         /**
@@ -1120,7 +1120,7 @@ export namespace Components {
          */
         "pattern"?: string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="you@example.com"). This text is displayed when the input field is empty.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder=\"you@example.com\"). This text is displayed when the input field is empty.
          */
         "placeholder"?: string;
         /**
@@ -1146,7 +1146,7 @@ export namespace Components {
     }
     interface PInputNumber {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on").
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete=\"on\").
          */
         "autoComplete"?: string;
         /**
@@ -1198,7 +1198,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Enter a number"). This text is displayed when the input field is empty.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder=\"Enter a number\"). This text is displayed when the input field is empty.
          */
         "placeholder"?: string;
         /**
@@ -1228,7 +1228,7 @@ export namespace Components {
     }
     interface PInputPassword {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="current-password").
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete=\"current-password\").
          */
         "autoComplete"?: string;
         /**
@@ -1276,11 +1276,11 @@ export namespace Components {
          */
         "name": string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Enter your password"). This text is displayed when the input field is empty.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder=\"Enter your password\"). This text is displayed when the input field is empty.
          */
         "placeholder"?: string;
         /**
-          * SA boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
          */
         "readOnly"?: boolean;
         /**
@@ -1306,7 +1306,7 @@ export namespace Components {
     }
     interface PInputSearch {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on").
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete=\"on\").
          */
         "autoComplete"?: string;
         /**
@@ -1354,7 +1354,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Search..."). This text is displayed when the input field is empty.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder=\"Search...\"). This text is displayed when the input field is empty.
          */
         "placeholder"?: string;
         /**
@@ -1362,7 +1362,7 @@ export namespace Components {
          */
         "readOnly"?: boolean;
         /**
-          * MA boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
          */
         "required"?: boolean;
         /**
@@ -1380,7 +1380,7 @@ export namespace Components {
     }
     interface PInputText {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="name").
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete=\"name\").
          */
         "autoComplete"?: string;
         /**
@@ -1432,7 +1432,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Enter your full name"). This text is displayed when the input field is empty.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder=\"Enter your full name\"). This text is displayed when the input field is empty.
          */
         "placeholder"?: string;
         /**
@@ -2649,7 +2649,7 @@ export namespace Components {
     }
     interface PTextarea {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on").
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete=\"on\").
          */
         "autoComplete"?: string;
         /**
@@ -2693,7 +2693,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Write your message here..."). This text is displayed when the textarea is empty.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder=\"Write your message here...\"). This text is displayed when the textarea is empty.
          */
         "placeholder"?: string;
         /**
@@ -4935,7 +4935,7 @@ declare namespace LocalJSX {
     }
     interface PInputEmail {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="email").
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete=\"email\").
          */
         "autoComplete"?: string;
         /**
@@ -5007,7 +5007,7 @@ declare namespace LocalJSX {
          */
         "pattern"?: string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="you@example.com"). This text is displayed when the input field is empty.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder=\"you@example.com\"). This text is displayed when the input field is empty.
          */
         "placeholder"?: string;
         /**
@@ -5033,7 +5033,7 @@ declare namespace LocalJSX {
     }
     interface PInputNumber {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on").
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete=\"on\").
          */
         "autoComplete"?: string;
         /**
@@ -5097,7 +5097,7 @@ declare namespace LocalJSX {
          */
         "onInput"?: (event: PInputNumberCustomEvent<InputNumberInputEventDetail>) => void;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Enter a number"). This text is displayed when the input field is empty.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder=\"Enter a number\"). This text is displayed when the input field is empty.
          */
         "placeholder"?: string;
         /**
@@ -5127,7 +5127,7 @@ declare namespace LocalJSX {
     }
     interface PInputPassword {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="current-password").
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete=\"current-password\").
          */
         "autoComplete"?: string;
         /**
@@ -5187,11 +5187,11 @@ declare namespace LocalJSX {
          */
         "onInput"?: (event: PInputPasswordCustomEvent<InputPasswordInputEventDetail>) => void;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Enter your password"). This text is displayed when the input field is empty.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder=\"Enter your password\"). This text is displayed when the input field is empty.
          */
         "placeholder"?: string;
         /**
-          * SA boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
          */
         "readOnly"?: boolean;
         /**
@@ -5217,7 +5217,7 @@ declare namespace LocalJSX {
     }
     interface PInputSearch {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on").
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete=\"on\").
          */
         "autoComplete"?: string;
         /**
@@ -5277,7 +5277,7 @@ declare namespace LocalJSX {
          */
         "onInput"?: (event: PInputSearchCustomEvent<InputSearchInputEventDetail>) => void;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Search..."). This text is displayed when the input field is empty.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder=\"Search...\"). This text is displayed when the input field is empty.
          */
         "placeholder"?: string;
         /**
@@ -5285,7 +5285,7 @@ declare namespace LocalJSX {
          */
         "readOnly"?: boolean;
         /**
-          * MA boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
          */
         "required"?: boolean;
         /**
@@ -5303,7 +5303,7 @@ declare namespace LocalJSX {
     }
     interface PInputText {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="name").
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete=\"name\").
          */
         "autoComplete"?: string;
         /**
@@ -5367,7 +5367,7 @@ declare namespace LocalJSX {
          */
         "onInput"?: (event: PInputTextCustomEvent<InputTextInputEventDetail>) => void;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Enter your full name"). This text is displayed when the input field is empty.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder=\"Enter your full name\"). This text is displayed when the input field is empty.
          */
         "placeholder"?: string;
         /**
@@ -6692,7 +6692,7 @@ declare namespace LocalJSX {
     }
     interface PTextarea {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on").
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete=\"on\").
          */
         "autoComplete"?: string;
         /**
@@ -6748,7 +6748,7 @@ declare namespace LocalJSX {
          */
         "onInput"?: (event: PTextareaCustomEvent<TextareaInputEventDetail>) => void;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Write your message here..."). This text is displayed when the textarea is empty.
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder=\"Write your message here...\"). This text is displayed when the textarea is empty.
          */
         "placeholder"?: string;
         /**
