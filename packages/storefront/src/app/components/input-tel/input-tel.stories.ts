@@ -33,7 +33,7 @@ export const inputTelSlotStories: SlotStories<'p-input-tel'> = {
       generator: () => [
         {
           tag: 'p-icon',
-          properties: { slot: 'start', name: 'shopping-cart', color: 'contrast-medium', 'aria-hidden': true },
+          properties: { slot: 'start', name: 'home', color: 'contrast-medium', 'aria-hidden': true },
         },
       ],
     },
