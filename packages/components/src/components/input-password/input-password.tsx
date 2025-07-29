@@ -83,10 +83,10 @@ export class InputPassword {
   /** The password input value. */
   @Prop({ mutable: true }) public value?: string = '';
 
-  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="current-password"). */
+  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete=\"current-password\"). */
   @Prop() public autoComplete?: string;
 
-  /** SA boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form. */
+  /** A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form. */
   @Prop() public readOnly?: boolean = false;
 
   /** Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form). */
@@ -98,7 +98,7 @@ export class InputPassword {
   /** A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid. */
   @Prop() public minLength?: number;
 
-  /** A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Enter your password"). This text is displayed when the input field is empty. */
+  /** A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder=\"Enter your password\"). This text is displayed when the input field is empty. */
   @Prop() public placeholder?: string = '';
 
   /** A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form. */
