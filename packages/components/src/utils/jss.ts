@@ -129,7 +129,6 @@ export const isObject = <T extends Record<string, any>>(obj: T): boolean =>
 // NOTE: taken from https://stackoverflow.com/a/48218209
 export const mergeDeep = <T extends Record<string, any>>(...objects: T[]): T => {
   return objects.reduce((prev, obj) => {
-    // biome-ignore lint/complexity/noForEach: to be refactored
     Object.keys(obj).forEach((key: keyof T) => {
       const pVal = prev[key];
       const oVal = obj[key];

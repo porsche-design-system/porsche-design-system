@@ -120,6 +120,7 @@ export const ComponentMetaOverview = () => {
             {getProps(tagName, filterProps).map(([propName, propMeta]) => (
               <Fragment key={propName}>
                 <code className="inline-block my-static-xs">
+                  {/* biome-ignore lint/a11y/noStaticElementInteractions: ok */}
                   <span
                     className="hover:text-contrast-medium cursor-pointer"
                     onClick={(e) => (e.currentTarget.nextElementSibling as HTMLElement).classList.toggle('hidden')}

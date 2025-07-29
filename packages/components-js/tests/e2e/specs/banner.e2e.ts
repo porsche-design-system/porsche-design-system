@@ -1,4 +1,5 @@
-import { expect, type Locator, test, Page } from '@playwright/test';
+import { type Locator, Page, expect, test } from '@playwright/test';
+import type { BannerState } from '@porsche-design-system/components';
 import {
   addEventListener,
   getCssClasses,
@@ -11,7 +12,6 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { BannerState } from '@porsche-design-system/components';
 
 type InitOptions = {
   open: boolean;
@@ -80,8 +80,8 @@ test('should not show banner by setting open prop false', async ({ page }) => {
   const banner = getHost(page);
   await setProperty(banner, 'open', false);
   await waitForStencilLifecycle(page);
-  expect(await getElementStyle(banner, 'opacity')).toBe('0');
-  expect(await getElementStyle(banner, 'visibility')).toBe('hidden');
+  await expect(banner).toHaveCSS('opacity', '0');
+  await expect(banner).toBeHidden();
 });
 
 test.describe('close', () => {
@@ -199,11 +199,61 @@ test.describe('lifecycle', () => {
 
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidUpdate['p-banner'], 'componentDidUpdate: p-banner').toBe(1);
-    expect(status.componentDidUpdate['p-inline-notification'], 'componentDidUpdate: p-inline-notification').toBe(1);
-    expect(status.componentDidUpdate['p-icon'], 'componentDidUpdate: p-icon').toBe(1);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate['p-banner'];
+        },
+        {
+          message: 'componentDidUpdate: p-banner',
+        }
+      )
+      .toBe(1);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate['p-inline-notification'];
+        },
+        {
+          message: 'componentDidUpdate: p-inline-notification',
+        }
+      )
+      .toBe(1);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate['p-icon'];
+        },
+        {
+          message: 'componentDidUpdate: p-icon',
+        }
+      )
+      .toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidLoad.all;
+        },
+        {
+          message: 'componentDidLoad: all',
+        }
+      )
+      .toBe(5);
+    await expect
+      .poll(
+        async () => {
+          const status = await getLifecycleStatus(page);
+          return status.componentDidUpdate.all;
+        },
+        {
+          message: 'componentDidUpdate: all',
+        }
+      )
+      .toBe(3);
   });
 });

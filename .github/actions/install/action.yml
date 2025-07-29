@@ -1,0 +1,31 @@
+name: 'Install'
+
+inputs:
+  node_modules:
+    description: 'Whether to install node_modules or not.'
+    required: false
+    default: 'true'
+  rclone:
+    description: 'Whether to install rclone or not.'
+    required: false
+    default: 'false'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: 'Cache node_modules'
+      if: inputs.node_modules == 'true'
+      uses: actions/cache@v4
+      id: cache-node_modules
+      with:
+        path: '**/node_modules'
+        key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+    - name: 'Install node_modules'
+      if: inputs.node_modules == 'true' && steps.cache-node_modules.outputs.cache-hit != 'true'
+      run: yarn install --frozen-lockfile
+      shell: bash
+    - name: 'Install rclone'
+      if: inputs.rclone == 'true'
+      run: |
+        sudo apt-get -yq --no-install-suggests --no-install-recommends install rclone
+      shell: bash

@@ -385,7 +385,7 @@ export class Carousel {
             )}
           </div>
         </div>
-
+        {/* biome-ignore lint/a11y/noStaticElementInteractions: ok */}
         <div
           id="splide"
           class="splide"

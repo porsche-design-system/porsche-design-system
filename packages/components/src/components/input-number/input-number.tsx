@@ -5,30 +5,28 @@ import {
   Event,
   type EventEmitter,
   Fragment,
+  h,
   type JSX,
   Prop,
   Watch,
-  h,
 } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
-  FORM_STATES,
-  THEMES,
   attachComponentCss,
+  FORM_STATES,
   getPrefixedTagNames,
   hasPropValueChanged,
+  THEMES,
   validateProps,
 } from '../../utils';
 import { InputBase } from '../common/input-base/input-base';
 import { getComponentCss } from './input-number-styles';
-import {
-  INPUT_NUMBER_AUTO_COMPLETE,
-  type InputNumberAutoComplete,
-  type InputNumberBlurEventDetail,
-  type InputNumberChangeEventDetail,
-  type InputNumberInputEventDetail,
-  type InputNumberState,
+import type {
+  InputNumberBlurEventDetail,
+  InputNumberChangeEventDetail,
+  InputNumberInputEventDetail,
+  InputNumberState,
 } from './input-number-utils';
 
 const propTypes: PropTypes<typeof InputNumber> = {
@@ -45,7 +43,7 @@ const propTypes: PropTypes<typeof InputNumber> = {
   max: AllowedTypes.number,
   min: AllowedTypes.number,
   form: AllowedTypes.string,
-  autoComplete: AllowedTypes.oneOf<InputNumberAutoComplete>([...INPUT_NUMBER_AUTO_COMPLETE, undefined]),
+  autoComplete: AllowedTypes.string,
   state: AllowedTypes.oneOf<InputNumberState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
@@ -69,19 +67,19 @@ const propTypes: PropTypes<typeof InputNumber> = {
 export class InputNumber {
   @Element() public host!: HTMLElement;
 
-  /** The label text. */
+  /** Text content for a user-facing label. */
   @Prop() public label?: string = '';
 
   /** The granularity that the value must adhere to. */
   @Prop() public step?: number = 1;
 
-  /** The description text. */
+  /** Supplementary text providing more context or explanation for the input. */
   @Prop() public description?: string = '';
 
-  /** Displays as a compact version. */
+  /** A boolean value that, if present, renders the input field as a compact version. */
   @Prop() public compact?: boolean = false;
 
-  /** The name of the number input. */
+  /** The name of the input field, used when submitting the form data. */
   @Prop({ reflect: true }) public name: string;
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
@@ -89,13 +87,13 @@ export class InputNumber {
   /** The number input value. */
   @Prop({ mutable: true }) public value?: string = '';
 
-  /** Specifies whether the input can be autofilled by the browser */
-  @Prop() public autoComplete?: InputNumberAutoComplete;
+  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on"). */
+  @Prop() public autoComplete?: string;
 
-  /** Specifies whether the number input should be read-only. */
+  /** A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form. */
   @Prop() public readOnly?: boolean = false;
 
-  /** The id of a form element the number input should be associated with. */
+  /** Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form). */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
   /** The max value of the number input. */
@@ -104,28 +102,28 @@ export class InputNumber {
   /** The min value of the number input. */
   @Prop() public min?: number;
 
-  /** The placeholder text. */
+  /** A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Enter a number"). This text is displayed when the input field is empty. */
   @Prop() public placeholder?: string = '';
 
-  /** Marks the number input as disabled. */
+  /** A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form. */
   @Prop() public disabled?: boolean = false;
 
-  /** Marks the number input as required. */
+  /** A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted. */
   @Prop() public required?: boolean = false;
 
   /** @experimental Shows a loading indicator. */
   @Prop() public loading?: boolean = false;
 
-  /** The validation state. */
+  /** Indicates the validation or overall status of the input component. */
   @Prop() public state?: InputNumberState = 'none';
 
-  /** The message styled depending on validation state. */
+  /** Dynamic feedback text for validation or status. */
   @Prop() public message?: string = '';
 
-  /** Show or hide label and description text. For better accessibility, it is recommended to show the label. */
+  /** Controls the visibility of the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
-  /** Adapts the color depending on the theme. */
+  /** Controls the visual appearance of the component. */
   @Prop() public theme?: Theme = 'light';
 
   /** Show or hide the increment/decrement stepper controls. */

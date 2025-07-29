@@ -1,0 +1,17 @@
+name: 'Rclone'
+
+inputs:
+  source:
+    description: 'The source path.'
+    required: true
+  target:
+    description: 'The target path.'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: 'Copy'
+      run: |
+        rclone copy "${{ inputs.source }}" "linode:porsche-design-system/porsche-design-system/${{ inputs.target }}" --config=./rclone.conf --ignore-existing -v --exclude=font-face.css
+      shell: bash

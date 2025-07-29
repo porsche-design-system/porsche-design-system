@@ -1,0 +1,198 @@
+name: 'Build'
+
+on:
+  workflow_call:
+    inputs:
+      image:
+        description: 'Docker image to be used in workflow.'
+        required: true
+        type: string
+
+jobs:
+  lint:
+    name: 'Lint'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Lint'
+        run: yarn lint
+  build-development:
+    name: 'Development'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Shared'
+        run: yarn build:shared
+      - name: 'Assets'
+        run: yarn build:assets
+      - name: 'Tokens'
+        run: yarn build:tokens
+      - name: 'Styles'
+        run: yarn build:styles
+      - name: 'Utilities'
+        run: yarn build:utilities
+      - name: 'Component Meta'
+        run: yarn build:component-meta
+      - name: 'Components'
+        run: yarn build:components
+      - name: 'Components JS'
+        run: yarn build:components-js
+      - name: 'Components Angular'
+        run: yarn build:components-angular
+      - name: 'Components React'
+        run: yarn build:components-react
+      - name: 'Components Vue'
+        run: yarn build:components-vue
+      - name: 'Storefront'
+        run: yarn build:storefront
+      - name: 'Upload artifact'
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-development
+          include-hidden-files: true
+          path: |
+            ./packages/storefront/dist/
+            ./packages/storefront/projects/stackblitz/dist/
+            ./packages/components-react/dist/
+            ./packages/components-vue/dist/
+            ./packages/component-meta/dist/
+            ./packages/shared/dist/
+            ./packages/utilities/projects/utilities/dist/
+            ./packages/utilities/projects/ag-grid/dist/
+            ./packages/styles/dist/
+            ./packages/styles/projects/tailwindcss/dist/
+            ./packages/components/dist/
+            ./packages/components-js/dist/
+            ./packages/components-js/projects/components-manager-cli/dist/
+            ./packages/components-js/projects/components-manager-core/dist/
+            ./packages/components-js/projects/partials/dist/
+            ./packages/assets/dist/
+            ./packages/assets/projects/font-face/dist/
+            ./packages/assets/projects/marque/dist/
+            ./packages/assets/projects/crest/dist/
+            ./packages/assets/projects/meta-icons/dist/
+            ./packages/assets/projects/icons/dist/
+            ./packages/assets/projects/fallbacks/dist/
+            ./packages/assets/projects/fonts/dist/
+            ./packages/assets/projects/model-signatures/dist/
+            ./packages/tokens/dist/
+            ./packages/components-angular/dist/
+            ./packages/assets/cdn/
+            ./packages/shared/bin/
+            ./packages/assets/bin/
+            ./packages/components-js/projects/components-wrapper/lib/
+            ./packages/assets/projects/icons/tests/unit/results/stats.json
+            ./packages/components-js/projects/partials/src/lib/partials.tsx
+            ./packages/components-angular/projects/angular-wrapper/src/lib/
+            ./packages/components-angular/src/app/pages/generated/
+            ./packages/components-react/projects/react-wrapper/src/lib/
+            ./packages/components-react/projects/react-ssr-wrapper/src/
+            ./packages/components-react/src/pages/generated/
+            ./packages/components-react/projects/nextjs/.next/
+            ./packages/components-react/projects/remix/build/
+            ./packages/components-react/projects/remix/public/build/
+            ./packages/components-vue/projects/vue-wrapper/src/lib/
+            ./packages/component-meta/src/lib/componentMeta.ts
+            ./packages/shared/src/lib/
+            ./packages/components-js/projects/partials/dist-tmp/dsr-ponyfill.min.js
+            ./packages/utilities/projects/utilities/src/scss/lib/
+          if-no-files-found: error
+  build-production:
+    name: 'Production'
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ inputs.image }}
+      options: --user 1001
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Install'
+        uses: ./.github/actions/install
+      - name: 'Shared'
+        run: yarn build:shared
+      - name: 'Assets'
+        run: yarn build:assets
+      - name: 'Tokens'
+        run: yarn build:tokens
+      - name: 'Styles'
+        run: yarn build:styles
+      - name: 'Utilities'
+        run: yarn build:utilities
+      - name: 'Component Meta'
+        run: yarn build:component-meta
+      - name: 'Components'
+        run: yarn build:components-prod
+      - name: 'Components JS'
+        run: yarn build:components-js-prod
+      - name: 'Components Angular'
+        run: yarn build:components-angular
+      - name: 'Components React'
+        run: yarn build:components-react
+      - name: 'Components Vue'
+        run: yarn build:components-vue
+      - name: 'Storefront'
+        run: NEXT_PUBLIC_BASE_PATH="${GITHUB_REF_NAME}" yarn build:storefront
+      - name: 'Upload artifact'
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-production
+          include-hidden-files: true
+          path: |
+            ./packages/storefront/dist/
+            ./packages/storefront/projects/stackblitz/dist/
+            ./packages/components-react/dist/
+            ./packages/components-vue/dist/
+            ./packages/component-meta/dist/
+            ./packages/shared/dist/
+            ./packages/utilities/projects/utilities/dist/
+            ./packages/utilities/projects/ag-grid/dist/
+            ./packages/styles/dist/
+            ./packages/styles/projects/tailwindcss/dist/
+            ./packages/components/dist/
+            ./packages/components-js/dist/
+            ./packages/components-js/projects/components-manager-cli/dist/
+            ./packages/components-js/projects/components-manager-core/dist/
+            ./packages/components-js/projects/partials/dist/
+            ./packages/assets/dist/
+            ./packages/assets/projects/font-face/dist/
+            ./packages/assets/projects/marque/dist/
+            ./packages/assets/projects/crest/dist/
+            ./packages/assets/projects/meta-icons/dist/
+            ./packages/assets/projects/icons/dist/
+            ./packages/assets/projects/fallbacks/dist/
+            ./packages/assets/projects/fonts/dist/
+            ./packages/assets/projects/model-signatures/dist/
+            ./packages/tokens/dist/
+            ./packages/components-angular/dist/
+            ./packages/assets/cdn/
+            ./packages/shared/bin/
+            ./packages/assets/bin/
+            ./packages/components-js/projects/components-wrapper/lib/
+            ./packages/components-js/tests/unit/results/stats-raw.json
+            ./packages/components-js/projects/partials/src/lib/partials.tsx
+            ./packages/components-angular/projects/angular-wrapper/src/lib/
+            ./packages/components-angular/src/app/pages/generated/
+            ./packages/components-react/projects/react-wrapper/src/lib/
+            ./packages/components-react/projects/react-ssr-wrapper/src/
+            ./packages/components-react/src/pages/generated/
+            ./packages/components-react/projects/nextjs/.next/
+            ./packages/components-react/projects/remix/build/
+            ./packages/components-react/projects/remix/public/build/
+            ./packages/components-vue/projects/vue-wrapper/src/lib/
+            ./packages/component-meta/src/lib/componentMeta.ts
+            ./packages/shared/src/lib/
+            ./packages/components-js/projects/partials/dist-tmp/dsr-ponyfill.min.js
+            ./packages/utilities/projects/utilities/src/scss/lib/
+          if-no-files-found: error

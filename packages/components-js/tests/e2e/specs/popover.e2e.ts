@@ -6,10 +6,8 @@ import {
   getActiveElementId,
   getActiveElementTagName,
   getActiveElementTagNameInShadowRoot,
-  getAttribute,
   getEventSummary,
   getLifecycleStatus,
-  getProperty,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -67,24 +65,6 @@ const initPopover = (page: Page, opts?: InitOptions): Promise<void> => {
   Some Popover Content
 </p-popover>
 ${buttonMarkup}`
-  );
-};
-
-const initPopoverWithinTable = (page: Page, opts?: { direction: PopoverDirection }): Promise<void> => {
-  const { direction = 'bottom' } = opts || {};
-  return setContentWithDesignSystem(
-    page,
-    `
-<p-table style="position: absolute; top: 80%; left: 50vw; transform: translate(-50%); background: deeppink">
-  <p-table-head>
-    <p-table-head-row>
-      <p-table-head-cell
-        >Within table <p-popover direction="${direction}">Some Popover Content</p-popover>
-      </p-table-head-cell>
-      ${[...Array(10)].map((e, i) => `<p-table-head-cell>Column ${i}</p-table-head-cell>`)}
-    </p-table-head-row>
-  </p-table-head>
-</p-table>`
   );
 };
 
@@ -211,7 +191,7 @@ test.describe('mouse behavior', () => {
     await togglePopover(page);
     await expect(getPopover(page)).not.toHaveCount(0);
 
-    page.locator('body').click();
+    await page.locator('body').click();
     await waitForStencilLifecycle(page);
 
     await expect(getPopover(page)).toHaveCount(0);
@@ -393,7 +373,7 @@ test.describe('dismiss event', () => {
     await waitForStencilLifecycle(page);
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
 
-    page.locator('body').click();
+    await page.locator('body').click();
     await waitForStencilLifecycle(page);
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
   });
@@ -426,7 +406,7 @@ test.describe('dismiss event', () => {
     await waitForStencilLifecycle(page);
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
 
-    page.locator('body').click();
+    await page.locator('body').click();
     await waitForStencilLifecycle(page);
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
   });

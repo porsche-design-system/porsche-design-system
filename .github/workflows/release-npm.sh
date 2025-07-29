@@ -3,17 +3,6 @@
 set -o errexit
 set -o pipefail
 
-if [[ -z "${GITHUB_SHA}" ]]; then
-  echo "Please provide the \$GITHUB_SHA environment variable."
-  exit 1
-fi
-
-if [[ -z "${GITHUB_TOKEN}" ]]; then
-  echo "Please provide the \$GITHUB_TOKEN environment variable."
-  exit 1
-fi
-
-SCRIPT_DIR="$(cd $(dirname ${0}) && pwd)"
 PACKAGE_LOCATION="${1}"
 PACKAGE_JSON="${PACKAGE_LOCATION}/package.json"
 PACKAGE_NAME=$(grep name "${PACKAGE_JSON}" | head -1 | awk -F= "{ print ${2} }" | sed 's/[:,\",]//g;s/name//' | tr -d '[[:space:]]')
@@ -40,17 +29,6 @@ publish_npmjs() {
   fi
 }
 
-is_version_published() {
-  echo "task: [$(date)] \"is_version_published\" ${PACKAGE_NAME}@${PACKAGE_VERSION}"
-  http_status_code="$(curl -s -o /dev/null -w "%{http_code}" "https://registry.npmjs.org/${PACKAGE_NAME}/${PACKAGE_VERSION}")"
-
-  if [[ ${http_status_code} == 200 ]]; then
-    return 0 # true
-  else
-    return 1 # false
-  fi
-}
-
 add_git_tag() {
   echo "task: [$(date)] \"add_git_tag\" ${GIT_TAG_NAME}, ${GITHUB_SHA}"
   curl -s -X POST "https://api.github.com/repos/porsche-design-system/porsche-design-system/git/refs" \
@@ -63,15 +41,10 @@ add_git_tag() {
 EOF
 }
 
-if ! is_version_published; then
-  source "${SCRIPT_DIR}/../shared/ensure-npmjs-credentials.sh"
-  if publish_npmjs; then
-    add_git_tag
-    echo "Version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" published 🎉"
-  else
-    echo "Publishing version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" failed 😢"
-    exit 1
-  fi
+if publish_npmjs; then
+  add_git_tag
+  echo "Version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" published 🎉"
 else
-  echo "Version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" is already published 🤷‍♂️"
+  echo "Publishing version \"${PACKAGE_VERSION}\" of \"${PACKAGE_NAME}\" failed 😢"
+  exit 1
 fi
