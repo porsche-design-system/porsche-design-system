@@ -5010,37 +5010,33 @@ exports[`should match snapshot 1`] = `
     ],
     "propsMeta": {
       "autoComplete": {
-        "allowedValues": [
-          null,
-          "off",
-          "on",
-        ],
+        "allowedValues": "string",
         "defaultValue": null,
-        "description": "Specifies whether the input can be autofilled by the browser",
-        "type": "InputTelAutoComplete",
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on").",
+        "type": "string",
       },
       "compact": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Displays as a compact version.",
+        "description": "A boolean value that, if present, renders the input field as a compact version.",
         "type": "boolean",
       },
       "description": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The description text.",
+        "description": "Supplementary text providing more context or explanation for the input.",
         "type": "string",
       },
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Marks the tel input as disabled.",
+        "description": "A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.",
         "type": "boolean",
       },
       "form": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "The id of a form element the tel input should be associated with.",
+        "description": "Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).",
         "propOptions": {
           "reflect": true,
         },
@@ -5049,20 +5045,20 @@ exports[`should match snapshot 1`] = `
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Show or hide label and description text. For better accessibility, it is recommended to show the label.",
+        "description": "Controls the visibility of the label.",
         "isBreakpointCustomizable": true,
         "type": "boolean",
       },
       "indicator": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Show tel indicator icon",
+        "description": "Controls the visibility of an phone icon.",
         "type": "boolean",
       },
       "label": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The label text.",
+        "description": "Text content for a user-facing label.",
         "type": "string",
       },
       "loading": {
@@ -5075,25 +5071,25 @@ exports[`should match snapshot 1`] = `
       "maxLength": {
         "allowedValues": "number",
         "defaultValue": null,
-        "description": "The max length of the tel input.",
+        "description": "A non-negative integer specifying the maximum number of characters the user can enter into the input.",
         "type": "number",
       },
       "message": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The message styled depending on validation state.",
+        "description": "Dynamic feedback text for validation or status.",
         "type": "string",
       },
       "minLength": {
         "allowedValues": "number",
         "defaultValue": null,
-        "description": "The min length of the tel input.",
+        "description": "A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.",
         "type": "number",
       },
       "name": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "The name of the tel input.",
+        "description": "The name of the input field, used when submitting the form data.",
         "isRequired": true,
         "propOptions": {
           "reflect": true,
@@ -5109,19 +5105,19 @@ exports[`should match snapshot 1`] = `
       "placeholder": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The placeholder text.",
+        "description": "A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="(123) 456-7890")",
         "type": "string",
       },
       "readOnly": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Specifies whether the tel input should be read-only.",
+        "description": "A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.",
         "type": "boolean",
       },
       "required": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Marks the tel input as required.",
+        "description": "A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.",
         "type": "boolean",
       },
       "state": {
@@ -5131,7 +5127,7 @@ exports[`should match snapshot 1`] = `
           "success",
         ],
         "defaultValue": "none",
-        "description": "The validation state.",
+        "description": "Indicates the validation or overall status of the input component.",
         "type": "InputTelState",
       },
       "theme": {
@@ -5141,7 +5137,7 @@ exports[`should match snapshot 1`] = `
           "auto",
         ],
         "defaultValue": "light",
-        "description": "Adapts the color depending on the theme.",
+        "description": "Controls the visual appearance of the component.",
         "type": "Theme",
       },
       "value": {

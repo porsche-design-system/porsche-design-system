@@ -438,7 +438,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
 
 exports[`should call validateProps() with correct parameters via render for p-input-tel: propTypes with ValidatorFunctions 1`] = `
 {
-  "autoComplete": "oneOf",
+  "autoComplete": "string",
   "compact": "boolean",
   "description": "string",
   "disabled": "boolean",
