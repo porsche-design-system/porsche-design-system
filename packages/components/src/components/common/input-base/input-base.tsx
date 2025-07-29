@@ -1,10 +1,10 @@
-import { type FunctionalComponent, type JSX, h } from '@stencil/core';
+import { type FunctionalComponent, h, type JSX } from '@stencil/core';
 import type { Theme } from '../../../types';
 import { getPrefixedTagNames } from '../../../utils';
 import { Label } from '../label/label';
 import { descriptionId } from '../label/label-utils';
 import { LoadingMessage, loadingId } from '../loading-message/loading-message';
-import { StateMessage, messageId } from '../state-message/state-message';
+import { messageId, StateMessage } from '../state-message/state-message';
 import type {
   InputBaseBlurEventDetail,
   InputBaseChangeEventDetail,
@@ -35,6 +35,8 @@ type InputBaseProps = {
   max?: number;
   min?: number;
   autoComplete?: string;
+  pattern?: string;
+  multiple?: boolean;
   type: string;
   value?: string;
   step?: number;
@@ -72,6 +74,8 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
   step,
   spellCheck,
   autoComplete,
+  pattern,
+  multiple,
   name,
   onInput,
   onWheel,
@@ -123,6 +127,8 @@ export const InputBase: FunctionalComponent<InputBaseProps> = ({
           readonly={readOnly}
           autocomplete={autoComplete}
           disabled={disabled}
+          pattern={pattern}
+          multiple={multiple}
         />
         {end}
         <slot name="end" />

@@ -30,6 +30,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#3916](https://github.com/porsche-design-system/porsche-design-system/pull/3916))
 - `Input Text`: `counter` prop functions independently of `max-length`, allowing character count display even when no
   limit is set ([#3901](https://github.com/porsche-design-system/porsche-design-system/pull/3901))
+- `Input Email`: ([#3927](https://github.com/porsche-design-system/porsche-design-system/pull/3927))
 
 ### Changed
 
