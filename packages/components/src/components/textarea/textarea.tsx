@@ -99,7 +99,7 @@ export class Textarea {
   /** Show or hide the character counter. */
   @Prop() public counter?: boolean = false;
 
-  /** A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Write your message here..."). This text is displayed when the textarea is empty. */
+  /** A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Write your message here...'). This text is displayed when the textarea is empty. */
   @Prop() public placeholder?: string = '';
 
   /** A boolean value that, if present, indicates that the textarea must be filled out before the form can be submitted. */
@@ -120,7 +120,7 @@ export class Textarea {
   /** The number of rows of the textarea. */
   @Prop() public rows?: number = 7;
 
-  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on"). */
+  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on'). */
   @Prop() public autoComplete?: string;
 
   /** Specifies whether the textarea should have its spelling and grammar checked */

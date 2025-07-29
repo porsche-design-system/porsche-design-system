@@ -16,6 +16,7 @@ tmp/
 www/
 build/
 .next/
+.react-router/
 out/
 reports/
 generated/

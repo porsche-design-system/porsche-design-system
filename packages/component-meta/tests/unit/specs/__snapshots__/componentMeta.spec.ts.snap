@@ -4223,7 +4223,7 @@ exports[`should match snapshot 1`] = `
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="email").",
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='email').",
         "type": "string",
       },
       "compact": {
@@ -4322,7 +4322,7 @@ exports[`should match snapshot 1`] = `
       "placeholder": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="you@example.com"). This text is displayed when the input field is empty.",
+        "description": "A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='you@example.com'). This text is displayed when the input field is empty.",
         "type": "string",
       },
       "readOnly": {
@@ -4429,7 +4429,7 @@ exports[`should match snapshot 1`] = `
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on").",
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').",
         "type": "string",
       },
       "compact": {
@@ -4516,7 +4516,7 @@ exports[`should match snapshot 1`] = `
       "placeholder": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Enter a number"). This text is displayed when the input field is empty.",
+        "description": "A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter a number'). This text is displayed when the input field is empty.",
         "type": "string",
       },
       "readOnly": {
@@ -4629,7 +4629,7 @@ exports[`should match snapshot 1`] = `
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="current-password").",
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='current-password').",
         "type": "string",
       },
       "compact": {
@@ -4710,13 +4710,13 @@ exports[`should match snapshot 1`] = `
       "placeholder": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Enter your password"). This text is displayed when the input field is empty.",
+        "description": "A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter your password'). This text is displayed when the input field is empty.",
         "type": "string",
       },
       "readOnly": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "SA boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.",
+        "description": "A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.",
         "type": "boolean",
       },
       "required": {
@@ -4824,7 +4824,7 @@ exports[`should match snapshot 1`] = `
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on").",
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').",
         "type": "string",
       },
       "clear": {
@@ -4905,7 +4905,7 @@ exports[`should match snapshot 1`] = `
       "placeholder": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Search..."). This text is displayed when the input field is empty.",
+        "description": "A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Search...'). This text is displayed when the input field is empty.",
         "type": "string",
       },
       "readOnly": {
@@ -4917,7 +4917,7 @@ exports[`should match snapshot 1`] = `
       "required": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "MA boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.",
+        "description": "A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.",
         "type": "boolean",
       },
       "state": {
@@ -5209,7 +5209,7 @@ exports[`should match snapshot 1`] = `
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="name").",
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='name').",
         "type": "string",
       },
       "compact": {
@@ -5296,7 +5296,7 @@ exports[`should match snapshot 1`] = `
       "placeholder": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Enter your full name"). This text is displayed when the input field is empty.",
+        "description": "A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter your full name'). This text is displayed when the input field is empty.",
         "type": "string",
       },
       "readOnly": {
@@ -10572,7 +10572,7 @@ exports[`should match snapshot 1`] = `
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on").",
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').",
         "type": "string",
       },
       "counter": {
@@ -10646,7 +10646,7 @@ exports[`should match snapshot 1`] = `
       "placeholder": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Write your message here..."). This text is displayed when the textarea is empty.",
+        "description": "A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Write your message here...'). This text is displayed when the textarea is empty.",
         "type": "string",
       },
       "readOnly": {

@@ -1,0 +1,47 @@
+{
+  "name": "@porsche-design-system/react-router",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "type": "module",
+  "scripts": {
+    "start": "concurrently -k -s 'first' -n 'cdn,dummyassets,app' 'serve-cdn' 'serve-dummyassets' 'react-router dev'",
+    "start-app": "concurrently -k -s 'first' -n 'cdn,dummyassets,app' 'serve-cdn' 'serve-dummyassets' 'react-router-serve ./build/server/index.js'",
+    "build": "yarn build-app",
+    "build-app": "react-router build",
+    "typecheck": "react-router typegen && tsc",
+    "test": "yarn test:vrt",
+    "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
+    "clean:build": "rm -rf ./.react-router && rm -rf ./build"
+  },
+  "dependencies": {
+    "@porsche-design-system/components-react": "3.29.0-rc.2",
+    "@react-router/node": "^7.7.0",
+    "@react-router/serve": "^7.7.0",
+    "isbot": "^5.1.27",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router": "^7.7.0"
+  },
+  "devDependencies": {
+    "@porsche-design-system/shared": "0.0.0",
+    "@react-router/dev": "^7.7.0",
+    "@tailwindcss/vite": "^4.1.4",
+    "@types/node": "^20",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "typescript": "^5.8.3",
+    "vite-tsconfig-paths": "^5.1.4"
+  },
+  "peerDependencies": {
+    "concurrently": "*",
+    "@playwright/test": "*",
+    "tailwindcss": "*",
+    "vite": "*"
+  },
+  "volta": {
+    "extends": "../../../../package.json"
+  }
+}

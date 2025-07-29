@@ -82,7 +82,7 @@ export class InputSearch {
   /** The search input value. */
   @Prop({ mutable: true }) public value?: string = '';
 
-  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete="on"). */
+  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on'). */
   @Prop() public autoComplete?: string;
 
   /** Show clear input value button */
@@ -97,13 +97,13 @@ export class InputSearch {
   /** Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form). */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder="Search..."). This text is displayed when the input field is empty. */
+  /** A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Search...'). This text is displayed when the input field is empty. */
   @Prop() public placeholder?: string = '';
 
   /** A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form. */
   @Prop() public disabled?: boolean = false;
 
-  /** MA boolean value that, if present, indicates that the input field must be filled out before the form can be submitted. */
+  /** A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted. */
   @Prop() public required?: boolean = false;
 
   /** @experimental Shows a loading indicator. */
