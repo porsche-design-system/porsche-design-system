@@ -1,0 +1,4 @@
+- status:
+  - paragraph: Some message
+  - button "Close notification message"
+  - status

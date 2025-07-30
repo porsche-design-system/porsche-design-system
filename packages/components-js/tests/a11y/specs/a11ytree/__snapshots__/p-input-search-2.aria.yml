@@ -1,0 +1,6 @@
+- text: Disabled Some description
+- searchbox "Disabled" [disabled]: Some value
+- button "Clear field" [disabled]
+- status
+- alert
+- status

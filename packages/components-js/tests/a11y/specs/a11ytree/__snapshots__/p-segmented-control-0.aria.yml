@@ -1,0 +1,5 @@
+- group:
+  - button "S" [pressed]
+  - button "M"
+  - button "L"
+  - button "XL" [disabled]

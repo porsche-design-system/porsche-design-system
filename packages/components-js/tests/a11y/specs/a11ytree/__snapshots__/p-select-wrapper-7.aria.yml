@@ -1,0 +1,3 @@
+- text: Some label
+- combobox "Option A, Some label. Some success message."
+- status: Some success message.

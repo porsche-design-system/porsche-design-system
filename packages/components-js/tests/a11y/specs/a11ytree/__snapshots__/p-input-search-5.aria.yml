@@ -1,0 +1,4 @@
+- text: Error with message
+- searchbox "Error with message"
+- alert: Error message
+- status

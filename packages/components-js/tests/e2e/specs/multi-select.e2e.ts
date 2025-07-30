@@ -1,4 +1,4 @@
-import { type Locator, expect, test } from '@playwright/test';
+import { expect, type Locator, test } from '@playwright/test';
 import { Theme } from '@porsche-design-system/components';
 import type { MultiSelectOption } from '@porsche-design-system/components/dist/types/components/multi-select/multi-select/multi-select-utils';
 import type { Components } from '@porsche-design-system/components/src/components';
@@ -721,12 +721,12 @@ test.describe('keyboard and click events', () => {
 
     await page.keyboard.press('Tab');
 
-    expect(await getDropdownDisplay(page)).toBe('none');
+    await expect.poll(async () => await getDropdownDisplay(page)).toBe('none');
 
     await page.keyboard.press('Space');
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownDisplay(page)).toBe('flex');
+    await expect.poll(async () => await getDropdownDisplay(page)).toBe('flex');
   });
 
   test('should toggle selected with enter', async ({ page }) => {

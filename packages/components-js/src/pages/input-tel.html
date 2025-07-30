@@ -62,6 +62,7 @@
     value="Without label and description"
     indicator="true"
     max-length="20"
+    class="a11ytree-snapshot-test"
   ></p-input-tel>
 </div>
 
@@ -78,7 +79,14 @@
 </div>
 
 <div class="playground light" title="should render in required state">
-  <p-input-tel name="some-name" label="Required" required="true" indicator="true" max-length="20"></p-input-tel>
+  <p-input-tel
+    name="some-name"
+    label="Required"
+    required="true"
+    indicator="true"
+    max-length="20"
+    class="a11ytree-snapshot-test"
+  ></p-input-tel>
   <p-input-tel
     name="some-name"
     label="Required and insanely super long label across multiple lines"
@@ -97,6 +105,7 @@
     disabled="true"
     indicator="true"
     max-length="20"
+    class="a11ytree-snapshot-test"
   ></p-input-tel>
 </div>
 
@@ -120,6 +129,7 @@
     read-only="true"
     indicator="true"
     max-length="20"
+    class="a11ytree-snapshot-test"
   ></p-input-tel>
 </div>
 
@@ -131,6 +141,7 @@
     message="Error message"
     indicator="true"
     max-length="20"
+    class="a11ytree-snapshot-test"
   ></p-input-tel>
 </div>
 
@@ -152,6 +163,7 @@
     message="Success message"
     indicator="true"
     max-length="20"
+    class="a11ytree-snapshot-test"
   ></p-input-tel>
 </div>
 
@@ -314,13 +326,7 @@
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with scaling 0.5">
-  <p-input-tel
-    class="scaling-0-5"
-    label="Some label"
-    name="some-name"
-    indicator="true"
-    max-length="20"
-  ></p-input-tel>
+  <p-input-tel class="scaling-0-5" label="Some label" name="some-name" indicator="true" max-length="20"></p-input-tel>
   <p-input-tel
     class="scaling-0-5"
     label="Lorem ipsum dolor sit amet, consetetur sadipscing"
@@ -333,13 +339,7 @@
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with scaling 0.8">
-  <p-input-tel
-    class="scaling-0-8"
-    label="Some label"
-    name="some-name"
-    indicator="true"
-    max-length="20"
-  ></p-input-tel>
+  <p-input-tel class="scaling-0-8" label="Some label" name="some-name" indicator="true" max-length="20"></p-input-tel>
   <p-input-tel
     class="scaling-0-8"
     label="Lorem ipsum dolor sit amet, consetetur sadipscing"

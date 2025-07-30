@@ -46,6 +46,7 @@
     placeholder="Some placeholder"
     clear="true"
     indicator="true"
+    class="a11ytree-snapshot-test"
   ></p-input-search>
 </div>
 
@@ -85,6 +86,7 @@
     required="true"
     clear="true"
     indicator="true"
+    class="a11ytree-snapshot-test"
   ></p-input-search>
 </div>
 
@@ -97,6 +99,7 @@
     disabled="true"
     clear="true"
     indicator="true"
+    class="a11ytree-snapshot-test"
   ></p-input-search>
 </div>
 
@@ -120,6 +123,7 @@
     read-only="true"
     clear="true"
     indicator="true"
+    class="a11ytree-snapshot-test"
   ></p-input-search>
 </div>
 
@@ -130,6 +134,7 @@
     value="Some value"
     clear="true"
     indicator="true"
+    class="a11ytree-snapshot-test"
   ></p-input-search>
 </div>
 
@@ -141,6 +146,7 @@
     message="Error message"
     clear="true"
     indicator="true"
+    class="a11ytree-snapshot-test"
   ></p-input-search>
 </div>
 
@@ -162,6 +168,7 @@
     message="Success message"
     clear="true"
     indicator="true"
+    class="a11ytree-snapshot-test"
   ></p-input-search>
 </div>
 
@@ -187,7 +194,14 @@
 </div>
 
 <div class="playground light" title="should render label, description and message by slotted content with error state">
-  <p-input-search name="some-name" state="error" placeholder="Some placeholder" clear="true" indicator="true">
+  <p-input-search
+    name="some-name"
+    state="error"
+    placeholder="Some placeholder"
+    clear="true"
+    indicator="true"
+    class="a11ytree-snapshot-test"
+  >
     <span slot="label">
       <span>
         Slotted label. And some slotted and deeply nested <a class="text-primary" href="#">anchor</a>, <b>bold</b>,
@@ -213,7 +227,14 @@
   class="playground light"
   title="should render label, description and message by slotted content with success state"
 >
-  <p-input-search name="some-name" state="success" placeholder="Some placeholder" clear="true" indicator="true">
+  <p-input-search
+    name="some-name"
+    state="success"
+    placeholder="Some placeholder"
+    clear="true"
+    indicator="true"
+    class="a11ytree-snapshot-test"
+  >
     <span slot="label">
       <span>
         Slotted label. And some slotted and deeply nested <a class="text-primary" href="#">anchor</a>, <b>bold</b>,

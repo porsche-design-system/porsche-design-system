@@ -1,0 +1,8 @@
+- list:
+  - listitem: • Unordered root list item
+  - listitem:
+    - text: • Unordered root list item
+    - list:
+      - listitem: – Unordered nested list item
+      - listitem: – Unordered nested list item
+  - listitem: • Unordered root list item

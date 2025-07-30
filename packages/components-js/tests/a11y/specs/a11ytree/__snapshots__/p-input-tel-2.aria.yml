@@ -1,0 +1,4 @@
+- text: Disabled Some description
+- textbox "Disabled" [disabled]: /\d+-\d+-\d+/
+- alert
+- status

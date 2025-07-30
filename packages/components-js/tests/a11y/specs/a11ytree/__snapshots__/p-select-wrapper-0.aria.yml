@@ -1,0 +1,7 @@
+- text: Native
+- combobox "Native":
+  - option
+  - option "Option A" [selected]
+  - option "Option B" [disabled]
+  - option "Option C"
+- alert

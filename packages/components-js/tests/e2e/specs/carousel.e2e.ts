@@ -61,7 +61,7 @@ const initCarousel = (page: Page, opts?: InitOptions) => {
   const attrs = [
     aria && `aria="${aria}"`,
     slidesPerPage ? `slides-per-page="${slidesPerPage}"` : '',
-    !rewind ? 'rewind="false"' : '',
+    rewind ? '' : 'rewind="false"',
     activeSlideIndex ? `active-slide-index="${activeSlideIndex}"` : '',
     focusOnCenterSlide ? `focus-on-center-slide="${focusOnCenterSlide}"` : '',
     skipLinkTarget ? `skip-link-target="${skipLinkTarget}"` : '',
@@ -1096,13 +1096,41 @@ test.describe('lifecycle', () => {
     await initCarousel(page);
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidLoad['p-carousel'], 'componentDidLoad: p-carousel').toBe(1);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
+    await expect
+      .poll(async () => (await getLifecycleStatus(page)).componentDidLoad['p-carousel'], {
+        message: 'componentDidLoad: p-carousel',
+      })
+      .toBe(1);
 
-    expect(status.componentDidUpdate['p-button-pure'], 'componentDidUpdate: p-button-pure').toBe(2);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+    await expect
+      .poll(async () => (await getLifecycleStatus(page)).componentDidLoad['p-button-pure'], {
+        message: 'componentDidLoad: p-button-pure',
+      })
+      .toBe(2);
+
+    await expect
+      .poll(async () => (await getLifecycleStatus(page)).componentDidLoad['p-icon'], {
+        message: 'componentDidLoad: p-icon',
+      })
+      .toBe(2);
+
+    await expect
+      .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-button-pure'], {
+        message: 'componentDidUpdate: p-button-pure',
+      })
+      .toBe(2);
+
+    await expect
+      .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate.all, {
+        message: 'componentDidUpdate: all',
+      })
+      .toBe(2);
+
+    await expect
+      .poll(async () => (await getLifecycleStatus(page)).componentDidLoad.all, {
+        message: 'componentDidLoad: all',
+      })
+      .toBe(5);
   });
 
   test('should work without unnecessary round trips on btn next click', async ({ page }) => {

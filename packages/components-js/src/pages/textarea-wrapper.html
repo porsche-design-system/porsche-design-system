@@ -11,7 +11,11 @@
 </div>
 
 <div class="playground light" title="should render with label, description and placeholder">
-  <p-textarea-wrapper label="Label with description and placeholder" description="Some description">
+  <p-textarea-wrapper
+    label="Label with description and placeholder"
+    description="Some description"
+    class="a11ytree-snapshot-test"
+  >
     <textarea placeholder="Some placeholder"></textarea>
   </p-textarea-wrapper>
 </div>
@@ -60,7 +64,7 @@
 </div>
 
 <div class="playground light" title="should render with counter">
-  <p-textarea-wrapper label="Counter">
+  <p-textarea-wrapper label="Counter" class="a11ytree-snapshot-test">
     <textarea maxlength="200">Some value</textarea>
   </p-textarea-wrapper>
 </div>
@@ -78,7 +82,7 @@
 </div>
 
 <div class="playground light" title="should render with error state and error message">
-  <p-textarea-wrapper label="Error with message" state="error" message="Error message">
+  <p-textarea-wrapper label="Error with message" state="error" message="Error message" class="a11ytree-snapshot-test">
     <textarea>Some value</textarea>
   </p-textarea-wrapper>
 </div>
@@ -90,7 +94,12 @@
 </div>
 
 <div class="playground light" title="should render with success state and success message">
-  <p-textarea-wrapper label="Success with message" state="success" message="Success message">
+  <p-textarea-wrapper
+    label="Success with message"
+    state="success"
+    message="Success message"
+    class="a11ytree-snapshot-test"
+  >
     <textarea>Some value</textarea>
   </p-textarea-wrapper>
 </div>
@@ -108,7 +117,7 @@
 </div>
 
 <div class="playground light" title="should render label, description and message by slotted content with error state">
-  <p-textarea-wrapper state="error">
+  <p-textarea-wrapper state="error" class="a11ytree-snapshot-test">
     <span slot="label" id="slotted-label-1">
       <span>
         Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
@@ -135,7 +144,7 @@
   class="playground light"
   title="should render label, description and message by slotted content with success state"
 >
-  <p-textarea-wrapper state="success">
+  <p-textarea-wrapper state="success" class="a11ytree-snapshot-test">
     <span slot="label" id="slotted-label-2">
       <span>
         Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,

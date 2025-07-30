@@ -1,0 +1,4 @@
+- text: Label with description and placeholder Some description
+- searchbox "Label with description and placeholder"
+- alert
+- status

@@ -1,0 +1,4 @@
+- text: Readonly Some description
+- textbox "Readonly": /\d+-\d+-\d+/
+- alert
+- status

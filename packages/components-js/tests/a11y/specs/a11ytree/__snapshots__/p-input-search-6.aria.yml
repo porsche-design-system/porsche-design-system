@@ -1,0 +1,4 @@
+- text: Success with message
+- searchbox "Success with message"
+- status: Success message
+- status

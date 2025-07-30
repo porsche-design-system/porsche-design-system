@@ -1,0 +1,7 @@
+- text: Disabled
+- textbox "1-4" [disabled]
+- textbox "2-4" [disabled]
+- textbox "3-4" [disabled]
+- textbox "4-4" [disabled]
+- alert
+- status
