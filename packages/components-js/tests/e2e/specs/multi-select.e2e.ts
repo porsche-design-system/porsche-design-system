@@ -1,22 +1,14 @@
 import {expect, type Locator, test} from '@playwright/test';
-import {Theme} from '@porsche-design-system/components';
-import type {
-  MultiSelectOption
-} from '@porsche-design-system/components/dist/types/components/multi-select/multi-select/multi-select-utils';
 import type {Components} from '@porsche-design-system/components/src/components';
 import type {Page} from 'playwright';
 import {
   addEventListener,
-  getActiveElementTagNameInShadowRoot,
-  getAttribute,
-  getConsoleErrorsAmount,
   getElementStyle,
   getEventSummary,
   getFormDataValues,
   getHTMLAttributes,
   getLifecycleStatus,
   getProperty,
-  initConsoleObserver,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -25,10 +17,7 @@ import {
 
 const getHost = (page: Page) => page.locator('p-multi-select');
 const getFieldset = (page: Page) => page.locator('fieldset');
-const getMultiSelectValue = async (page: Page): Promise<string[]> => await getProperty(getHost(page), 'value');
 const getButton = (page: Page) => page.locator('p-multi-select button[role="combobox"]');
-const getInputValue = async (page: Page): Promise<string | number> => getProperty(getButton(page), 'value');
-const getInputPlaceholder = async (page: Page): Promise<string> => getAttribute(getButton(page), 'placeholder');
 const getDropdown = (page: Page) => page.locator('p-multi-select [popover]');
 const getDropdownDisplay = async (page: Page): Promise<string> => await getElementStyle(getDropdown(page), 'display');
 
@@ -39,41 +28,6 @@ const getMultiSelectOption = (page: Page, n: number) =>
   page.locator(`p-multi-select p-multi-select-option:nth-child(${n})`);
 const getMultiSelectOptions = (page: Page): Locator => page.locator('p-multi-select p-multi-select-option');
 const getMultiSelectOptgroups = (page: Page) => page.locator('p-multi-select p-optgroup');
-const getAmountOfVisibleMultiSelectOptions = async (page: Page): Promise<(SVGElement | HTMLElement)[]> =>
-  page
-    .locator('p-multi-select-option')
-    .evaluateAll((elements) => elements.filter((element: HTMLElement) => !element.hidden));
-
-const getAmountOfVisibleMultiSelectOptgroups = async (page: Page): Promise<(SVGElement | HTMLElement)[]> =>
-  page.locator('p-optgroup').evaluateAll((elements) => elements.filter((element: HTMLElement) => !element.hidden));
-
-const getSelectedMultiSelectOptionProperty = async <K extends keyof MultiSelectOption>(
-  page: Page,
-  property: K
-): Promise<MultiSelectOption[K][]> =>
-  await page
-    .locator('p-multi-select p-multi-select-option')
-    .evaluateAll(
-      (options, property) =>
-        options
-          .filter((option: MultiSelectOption) => option.selected)
-          .map((option: MultiSelectOption) => option[property]) as MultiSelectOption[K][],
-      property
-    );
-const getHighlightedOptionIndex = async (page: Page): Promise<number> =>
-  await page
-    .locator('p-multi-select p-multi-select-option')
-    .evaluateAll((options: MultiSelectOption[]) =>
-      options
-        .filter((option) => !option.hidden)
-        .indexOf(options.find((option: MultiSelectOption) => option.highlighted))
-    );
-const getSelectedOptionIndicies = async (page: Page): Promise<number[]> =>
-  await page
-    .locator('p-multi-select p-multi-select-option')
-    .evaluateAll((options) =>
-      options.filter((option: any) => option.selected).map((option) => options.indexOf(option))
-    );
 const getLabel = (page: Page) => page.locator('p-multi-select label').first();
 const getResetButton = (page: Page) => getHost(page).getByText('Reset selection');
 const getForm = (page: Page) => page.locator('form');
@@ -104,6 +58,7 @@ const addOption = async (page: Page, value: string, textContent?: string) => {
 type Option = {
   value: string;
   disabled?: boolean;
+  hidden?: boolean;
 };
 
 type InitOptions = {
@@ -134,7 +89,7 @@ const initMultiSelect = (page: Page, opt?: InitOptions): Promise<void> => {
   const {label = '', description = '', message = ''} = slots || {};
 
   const getOption = (opt: Option) => {
-    const attrs = [opt.disabled ? 'disabled' : ''].join(' ');
+    const attrs = [opt.disabled ? 'disabled' : '', opt.hidden ? 'hidden' : ''].join(' ');
     return `<p-multi-select-option value="${opt.value}" ${attrs}>Option ${opt.value.toUpperCase()}</p-multi-select-option>`;
   };
 
@@ -160,16 +115,6 @@ const initMultiSelect = (page: Page, opt?: InitOptions): Promise<void> => {
 
   return setContentWithDesignSystem(page, isWithinForm ? `<form onsubmit="return false;">${markup}</form>` : markup);
 };
-
-/* TODO:
- * - Add test to check if filter is reset when closing by keyboard or outside click
- * - Add test to check if filter is reset on close (options & optgroups are visible again)
- * - Add test for clicking on combobox again should toggle open
- * - Add test that when resetFilter is clicked combobox does not change open state
- * - Add input into filter with no results, then close, then reopen and check that no results indicator is gone
- * - Add test for initially hidden options, should not show up when searching for it
- * - Add test to check Enter, Space press on reset button and check that dropdown is not opening and value is cleared
- */
 
 test('should render', async ({page}) => {
   await initMultiSelect(page);
@@ -490,6 +435,38 @@ test.describe('filter', () => {
       await expect(options.nth(2)).toBeVisible();
     });
 
+    test('should not show options which are initially hidden when typing into filter', async ({page}) => {
+      await initMultiSelect(page, {props: {name: 'Some name'}, options: {values: [{value: 'a', hidden: true}, {value: 'b'}, {value: 'c'}]}});
+      const buttonElement = getButton(page);
+      const filterElement = getFilter(page);
+      const filterInputElement = getFilterInput(page);
+      const options = getMultiSelectOptions(page);
+      const dropdown = getDropdown(page);
+
+      await buttonElement.click();
+
+      await expect(dropdown).toBeVisible();
+      await expect(filterElement).toBeFocused();
+      await expect(filterInputElement).toHaveValue('');
+
+      await expect(options).toHaveCount(3);
+      await expect(options.nth(0)).toBeHidden();
+      await expect(options.nth(1)).toBeVisible();
+      await expect(options.nth(2)).toBeVisible();
+
+      await filterInputElement.fill('a');
+
+      await expect(options.nth(0)).toBeHidden();
+      await expect(options.nth(1)).toBeHidden();
+      await expect(options.nth(2)).toBeHidden();
+
+      await filterInputElement.fill('');
+
+      await expect(options.nth(0)).toBeHidden();
+      await expect(options.nth(1)).toBeVisible();
+      await expect(options.nth(2)).toBeVisible();
+    });
+
     test('should reset filter when pressing clear button on filter input', async ({page}) => {
       await initMultiSelect(page, {props: {name: 'Some name'}});
       const buttonElement = getButton(page);
@@ -509,10 +486,12 @@ test.describe('filter', () => {
       await expect(options.nth(1)).toBeVisible();
       await expect(options.nth(1)).toHaveText('Option B');
       await expect(options.nth(2)).toBeHidden();
-
+      await expect(dropdown).toBeVisible();
+      
       await filterElement.locator('p-button-pure').click();
-      await expect(filterInputElement).toHaveValue('');
 
+      await expect(dropdown).toBeVisible();
+      await expect(filterInputElement).toHaveValue('');
       await expect(options.nth(0)).toBeVisible();
       await expect(options.nth(1)).toBeVisible();
       await expect(options.nth(2)).toBeVisible();
@@ -606,7 +585,7 @@ test.describe('filter', () => {
 
     skipInBrowsers(['webkit'], () => {
       test('should show indicator when no results are found', async ({page}) => {
-        await initMultiSelect(page, {props: {name: 'Some name', filter: true}});
+        await initMultiSelect(page, {props: {name: 'Some name'}});
         const buttonElement = getButton(page);
         const filterElement = getFilter(page);
         const filterInputElement = getFilterInput(page);
@@ -1052,6 +1031,7 @@ test.describe('selection', () => {
       await expect(options.nth(2)).toHaveJSProperty('selected', undefined);
 
       await page.keyboard.press('Tab');
+      await expect(dropdown).toBeHidden();
       await expect(buttonElement).toBeFocused();
 
       const resetButton = getResetButton(page);
@@ -1062,6 +1042,7 @@ test.describe('selection', () => {
 
       await page.keyboard.press('Enter');
 
+      await expect(dropdown).toBeHidden();
       await expect(host).toHaveJSProperty('value', []);
       await expect(options.nth(0)).toHaveJSProperty('selected', false);
       await expect(options.nth(1)).toHaveJSProperty('selected', undefined);
@@ -1088,10 +1069,12 @@ test.describe('selection', () => {
     await expect(options.nth(0)).toHaveJSProperty('selected', true);
     await expect(options.nth(1)).toHaveJSProperty('selected', true);
     await expect(options.nth(2)).toHaveJSProperty('selected', undefined);
+    await expect(dropdown).toBeVisible();
 
     const resetButton = getResetButton(page);
     await resetButton.click();
 
+    await expect(dropdown).toBeVisible();
     await expect(host).toHaveJSProperty('value', []);
     await expect(options.nth(0)).toHaveJSProperty('selected', false);
     await expect(options.nth(1)).toHaveJSProperty('selected', false);
