@@ -362,6 +362,52 @@ const codeExamples: CodeSample[] = [
     ],
   },
   {
+    component: 'p-input-email',
+    examples: [
+      {
+        name: 'InputEmailExample',
+        paths: {
+          'vanilla-js': '/input-email-example.html',
+          angular: '/input-email-example.component.ts',
+          react: '/InputEmailExample.tsx',
+          vue: '/InputEmailExample.vue',
+        },
+      },
+      {
+        name: 'InputEmailExampleControlled',
+        paths: {
+          'vanilla-js': '/input-email-example-controlled.html',
+          angular: '/input-email-example-controlled.component.ts',
+          react: '/InputEmailExampleControlled.tsx',
+          vue: '/InputEmailExampleControlled.vue',
+        },
+      },
+    ],
+  },
+  {
+    component: 'p-input-tel',
+    examples: [
+      {
+        name: 'InputTelExample',
+        paths: {
+          'vanilla-js': '/input-tel-example.html',
+          angular: '/input-tel-example.component.ts',
+          react: '/InputTelExample.tsx',
+          vue: '/InputTelExample.vue',
+        },
+      },
+      {
+        name: 'InputTelExampleControlled',
+        paths: {
+          'vanilla-js': '/input-tel-example-controlled.html',
+          angular: '/input-tel-example-controlled.component.ts',
+          react: '/InputTelExampleControlled.tsx',
+          vue: '/InputTelExampleControlled.vue',
+        },
+      },
+    ],
+  },
+  {
     component: 'p-input-search',
     examples: [
       {

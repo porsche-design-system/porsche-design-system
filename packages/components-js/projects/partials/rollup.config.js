@@ -44,15 +44,19 @@ const modifyFinalOutputEsm = () => ({
         if (!file.code.match(replacementRegex)) {
           throw new Error(`Partial build failed! Could not replace react/jsx-runtime require with try/catch block`);
         }
-        // Wrap require of react/jsx-runtime in try/catch to avoid errors when not included as dependency
+        // Wrap import of react/jsx-runtime in try/catch to avoid errors when not included as dependency. Function is necessary to avoid issues with topLevelAwait
         file.code = file.code.replace(
           replacementRegex,
           (_, $1) => `let jsxs;
 let Fragment;
 let jsx;
-try {
+async function maybeImportJSXRuntime() {
+  try {
     ({ jsxs, Fragment, jsx } = await import('react/jsx-runtime'));
-} catch (error) {}`
+  } catch (error) {}
+}
+
+maybeImportJSXRuntime();`
         );
       }
     }

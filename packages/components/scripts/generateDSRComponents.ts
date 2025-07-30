@@ -760,7 +760,13 @@ $&`
           .replace(/this\.props\.value = state;/, '')
           .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
           .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
-      } else if (tagName === 'p-input-number' || tagName === 'p-input-search' || tagName === 'p-input-text') {
+      } else if (
+        tagName === 'p-input-number' ||
+        tagName === 'p-input-search' ||
+        tagName === 'p-input-text' ||
+        tagName === 'p-input-email' ||
+        tagName === 'p-input-tel'
+      ) {
         newFileContent = newFileContent
           .replace(/@AttachInternals\(\)/, '')
           .replace(

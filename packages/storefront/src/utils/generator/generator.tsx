@@ -64,6 +64,10 @@ import {
   type PInputSearchProps,
   PInputText,
   type PInputTextProps,
+  PInputEmail,
+  type PInputEmailProps,
+  PInputTel,
+  type PInputTelProps,
   PLink,
   type PLinkProps,
   PLinkPure,
@@ -282,6 +286,8 @@ export type PropTypeMapping = {
   'p-input-number': PInputNumberProps;
   'p-input-search': PInputSearchProps;
   'p-input-text': PInputTextProps;
+  'p-input-email': PInputEmailProps;
+  'p-input-tel': PInputTelProps;
   'p-link': PLinkProps;
   'p-link-pure': PLinkPureProps;
   'p-link-social': PLinkSocialProps;
@@ -364,6 +370,8 @@ const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
   'p-input-number': PInputNumber,
   'p-input-search': PInputSearch,
   'p-input-text': PInputText,
+  'p-input-email': PInputEmail,
+  'p-input-tel': PInputTel,
   'p-link': PLink,
   'p-link-pure': PLinkPure,
   'p-link-social': PLinkSocial,

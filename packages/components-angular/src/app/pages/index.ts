@@ -126,9 +126,11 @@ import { HeadingComponent } from './generated/heading.component';
 import { HeadlineComponent } from './generated/headline.component';
 import { IconComponent } from './generated/icon.component';
 import { InlineNotificationComponent } from './generated/inline-notification.component';
+import { InputEmailComponent } from './generated/input-email.component';
 import { InputNumberComponent } from './generated/input-number.component';
 import { InputPasswordComponent } from './generated/input-password.component';
 import { InputSearchComponent } from './generated/input-search.component';
+import { InputTelComponent } from './generated/input-tel.component';
 import { InputTextComponent } from './generated/input-text.component';
 import { LinkComponent } from './generated/link.component';
 import { LinkPureComponent } from './generated/link-pure.component';
@@ -338,9 +340,11 @@ export const generatedPages = [
   HeadlineComponent,
   IconComponent,
   InlineNotificationComponent,
+  InputEmailComponent,
   InputNumberComponent,
   InputPasswordComponent,
   InputSearchComponent,
+  InputTelComponent,
   InputTextComponent,
   LinkComponent,
   LinkPureComponent,
@@ -927,6 +931,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: InlineNotificationComponent,
   },
   {
+    name: 'Input Email',
+    path: 'input-email',
+    component: InputEmailComponent,
+  },
+  {
     name: 'Input Number',
     path: 'input-number',
     component: InputNumberComponent,
@@ -940,6 +949,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Input Search',
     path: 'input-search',
     component: InputSearchComponent,
+  },
+  {
+    name: 'Input Tel',
+    path: 'input-tel',
+    component: InputTelComponent,
   },
   {
     name: 'Input Text',

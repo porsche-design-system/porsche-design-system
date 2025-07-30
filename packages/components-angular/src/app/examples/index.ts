@@ -28,6 +28,10 @@ import { InputNumberExampleControlledComponent } from './input-number-example-co
 import { InputNumberExampleComponent } from './input-number-example.component';
 import { InputTextExampleControlledComponent } from './input-text-example-controlled.component';
 import { InputTextExampleComponent } from './input-text-example.component';
+import { InputEmailExampleControlledComponent } from './input-email-example-controlled.component';
+import { InputEmailExampleComponent } from './input-email-example.component';
+import { InputTelExampleControlledComponent } from './input-tel-example-controlled.component';
+import { InputTelExampleComponent } from './input-tel-example.component';
 import { InputSearchExampleControlledComponent } from './input-search-example-controlled.component';
 import { InputSearchExampleComponent } from './input-search-example.component';
 import { LinkTileExampleHyphensComponent } from './link-tile-example-hyphens.component';
@@ -91,6 +95,10 @@ export const examples = [
   InputNumberExampleComponent,
   InputTextExampleControlledComponent,
   InputTextExampleComponent,
+  InputEmailExampleControlledComponent,
+  InputEmailExampleComponent,
+  InputTelExampleControlledComponent,
+  InputTelExampleComponent,
   InputSearchExampleControlledComponent,
   InputSearchExampleComponent,
   LinkTileExampleHyphensComponent,
@@ -153,6 +161,10 @@ export * from './input-number-example.component';
 export * from './input-number-example-controlled.component';
 export * from './input-text-example.component';
 export * from './input-text-example-controlled.component';
+export * from './input-email-example.component';
+export * from './input-email-example-controlled.component';
+export * from './input-tel-example.component';
+export * from './input-tel-example-controlled.component';
 export * from './input-search-example.component';
 export * from './input-search-example-controlled.component';
 export * from './link-tile-example-hyphens.component';

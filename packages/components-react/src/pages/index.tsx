@@ -107,9 +107,11 @@ import { HeadingPage } from './generated/Heading';
 import { HeadlinePage } from './generated/Headline';
 import { IconPage } from './generated/Icon';
 import { InlineNotificationPage } from './generated/InlineNotification';
+import { InputEmailPage } from './generated/InputEmail';
 import { InputNumberPage } from './generated/InputNumber';
 import { InputPasswordPage } from './generated/InputPassword';
 import { InputSearchPage } from './generated/InputSearch';
+import { InputTelPage } from './generated/InputTel';
 import { InputTextPage } from './generated/InputText';
 import { LinkPage } from './generated/Link';
 import { LinkPurePage } from './generated/LinkPure';
@@ -694,6 +696,11 @@ export const generatedRoutes: RouteType[] = [
     element: <InlineNotificationPage />,
   },
   {
+    name: 'Input Email',
+    path: '/input-email',
+    element: <InputEmailPage />,
+  },
+  {
     name: 'Input Number',
     path: '/input-number',
     element: <InputNumberPage />,
@@ -707,6 +714,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Input Search',
     path: '/input-search',
     element: <InputSearchPage />,
+  },
+  {
+    name: 'Input Tel',
+    path: '/input-tel',
+    element: <InputTelPage />,
   },
   {
     name: 'Input Text',
