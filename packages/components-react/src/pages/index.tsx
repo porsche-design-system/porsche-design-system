@@ -111,6 +111,7 @@ import { InputEmailPage } from './generated/InputEmail';
 import { InputNumberPage } from './generated/InputNumber';
 import { InputPasswordPage } from './generated/InputPassword';
 import { InputSearchPage } from './generated/InputSearch';
+import { InputTelPage } from './generated/InputTel';
 import { InputTextPage } from './generated/InputText';
 import { LinkPage } from './generated/Link';
 import { LinkPurePage } from './generated/LinkPure';
@@ -713,6 +714,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Input Search',
     path: '/input-search',
     element: <InputSearchPage />,
+  },
+  {
+    name: 'Input Tel',
+    path: '/input-tel',
+    element: <InputTelPage />,
   },
   {
     name: 'Input Text',

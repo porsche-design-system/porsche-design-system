@@ -30,6 +30,8 @@ export { default as InputTextExample } from './InputTextExample.vue';
 export { default as InputTextExampleControlled } from './InputTextExampleControlled.vue';
 export { default as InputEmailExample } from './InputEmailExample.vue';
 export { default as InputEmailExampleControlled } from './InputEmailExampleControlled.vue';
+export { default as InputTelExample } from './InputTelExample.vue';
+export { default as InputTelExampleControlled } from './InputTelExampleControlled.vue';
 export { default as InputSearchExample } from './InputSearchExample.vue';
 export { default as InputSearchExampleControlled } from './InputSearchExampleControlled.vue';
 export { default as LinkTileExampleHyphens } from './LinkTileExampleHyphens.vue';

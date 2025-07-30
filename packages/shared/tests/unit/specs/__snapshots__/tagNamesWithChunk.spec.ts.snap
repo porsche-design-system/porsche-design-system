@@ -30,6 +30,7 @@ exports[`should match snapshot 1`] = `
   "p-input-number",
   "p-input-password",
   "p-input-search",
+  "p-input-tel",
   "p-input-text",
   "p-link",
   "p-link-pure",
