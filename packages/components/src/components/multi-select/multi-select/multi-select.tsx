@@ -352,43 +352,9 @@ export class MultiSelect {
     forceUpdate(this.host);
   };
 
-  private updateOptions = (): void => {
-    this.multiSelectOptions = [];
-    this.multiSelectOptgroups = [];
 
-    for (const child of Array.from(this.host.children).filter(
-      (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
-    )) {
-      throwIfElementIsNotOfKind(this.host, child as HTMLElement, ['p-multi-select-option', 'p-optgroup']);
-
-      if (isElementOfKind(child as HTMLElement, 'p-multi-select-option')) {
-        this.multiSelectOptions.push(child as MultiSelectOption);
-      } else if (isElementOfKind(child as HTMLElement, 'p-optgroup')) {
-        this.multiSelectOptgroups.push(child as MultiSelectOptgroup);
-
-        for (const optGroupChild of Array.from(child.children)) {
-          throwIfElementIsNotOfKind(child as HTMLElement, optGroupChild as HTMLElement, 'p-multi-select-option');
-          this.multiSelectOptions.push(optGroupChild as MultiSelectOption);
-        }
-      }
-    }
-  };
-
-  private updateMenuState = (open: boolean): void => {
-    if (this.isOpen === open) {
-      return;
-    }
-    this.isOpen = open;
-  };
-
-  private updateSelectedOption = (selectedOption: MultiSelectOption): void => {
-    // option can be undefined when no option is highlighted and keyboard action calls this
-    if (selectedOption) {
-      this.preventOptionUpdate = true; // Avoid unnecessary updating of options in value watcher
-      setSelectedMultiSelectOption(selectedOption);
-      this.value = this.currentValue;
-      this.emitUpdateEvent();
-    }
+  private onComboClick = (_: MouseEvent): void => {
+    this.updateMenuState(!this.isOpen);
   };
 
   private onClickOutside = (e: MouseEvent): void => {
@@ -400,28 +366,6 @@ export class MultiSelect {
     ) {
       this.isOpen = false;
     }
-  };
-
-  private onFilterInput = (e: CustomEvent<InputSearchInputEventDetail>): void => {
-    const { hasFilterResults } = updateFilterResults(
-      this.multiSelectOptions,
-      this.multiSelectOptgroups,
-      (e.detail.target as HTMLInputElement).value
-    );
-    this.hasFilterResults = hasFilterResults;
-  };
-
-  private onComboClick = (_: MouseEvent): void => {
-    this.updateMenuState(!this.isOpen);
-  };
-
-  private onResetClick = (e: MouseEvent): void => {
-    e.stopPropagation(); // Prevent parent click event from closing the dropdown
-    resetSelectedOptions(this.multiSelectOptions);
-    this.value = this.currentValue;
-    this.buttonElement.focus();
-    this.emitUpdateEvent();
-    forceUpdate(this.host);
   };
 
   private resetFilter = (): void => {
@@ -468,8 +412,7 @@ export class MultiSelect {
         );
         setNextSelectOptionHighlighted(this.multiSelectOptions, highlightedOptionIndex);
         // @ts-ignore - HTMLCombobox type is missing
-        (this.filter ? this.filterInputElement : this.buttonElement).ariaActiveDescendantElement =
-          getHighlightedSelectOption(this.multiSelectOptions);
+        this.filterInputElement.ariaActiveDescendantElement = getHighlightedSelectOption(this.multiSelectOptions);
         break;
       }
       case 'CloseSelect': {
@@ -499,11 +442,67 @@ export class MultiSelect {
     }
   };
 
+  private updateOptions = (): void => {
+    this.multiSelectOptions = [];
+    this.multiSelectOptgroups = [];
+
+    for (const child of Array.from(this.host.children).filter(
+      (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
+    )) {
+      throwIfElementIsNotOfKind(this.host, child as HTMLElement, ['p-multi-select-option', 'p-optgroup']);
+
+      if (isElementOfKind(child as HTMLElement, 'p-multi-select-option')) {
+        this.multiSelectOptions.push(child as MultiSelectOption);
+      } else if (isElementOfKind(child as HTMLElement, 'p-optgroup')) {
+        this.multiSelectOptgroups.push(child as MultiSelectOptgroup);
+        for (const optGroupChild of Array.from(child.children)) {
+          throwIfElementIsNotOfKind(child as HTMLElement, optGroupChild as HTMLElement, 'p-multi-select-option');
+          this.multiSelectOptions.push(optGroupChild as MultiSelectOption);
+        }
+      }
+    }
+  };
+
+  private updateMenuState = (open: boolean): void => {
+    if (this.isOpen === open) {
+      return;
+    }
+    this.isOpen = open;
+  };
+
+  private updateSelectedOption = (selectedOption: MultiSelectOption): void => {
+    // option can be undefined when no option is highlighted and keyboard action calls this
+    if (selectedOption) {
+      this.preventOptionUpdate = true; // Avoid unnecessary updating of options in value watcher
+      setSelectedMultiSelectOption(selectedOption);
+      this.value = this.currentValue;
+      this.emitUpdateEvent();
+    }
+  };
+
+  private onResetClick = (e: MouseEvent): void => {
+    e.stopPropagation(); // Prevent parent click event from closing the dropdown
+    resetSelectedOptions(this.multiSelectOptions);
+    this.value = this.currentValue;
+    this.buttonElement.focus();
+    this.emitUpdateEvent();
+    forceUpdate(this.host);
+  };
+
   private emitUpdateEvent = (): void => {
     this.update.emit({
       value: this.currentValue,
       name: this.name,
     });
+  };
+
+  private onFilterInput = (e: CustomEvent<InputSearchInputEventDetail>): void => {
+    const { hasFilterResults } = updateFilterResults(
+      this.multiSelectOptions,
+      this.multiSelectOptgroups,
+      (e.detail.target as HTMLInputElement).value
+    );
+    this.hasFilterResults = hasFilterResults;
   };
 
   private onToggle = (): void => {

@@ -352,15 +352,7 @@ export class Select {
     forceUpdate(this.host);
   };
 
-  private onComboClick = (e: MouseEvent): void => {
-    const target = e.target as HTMLElement;
-
-    // TODO: Check why this is necessary
-    // Prevent closing if the filter input was clicked
-    if (this.filter && this.filterInputElement?.contains(target)) {
-      return;
-    }
-
+  private onComboClick = (_: MouseEvent): void => {
     this.updateMenuState(!this.isOpen);
   };
 
@@ -370,7 +362,6 @@ export class Select {
     }
   };
 
-  // TODO: Share?
   private resetFilter = (): void => {
     this.filterInputElement.value = '';
     this.hasFilterResults = true;
@@ -437,6 +428,7 @@ export class Select {
       case 'Open': {
         event.preventDefault();
         this.updateMenuState(true);
+        // Moves highlight to the selected option if available
         const selectedIndex = getSelectedSelectOptionIndex(this.selectOptions);
         if (selectedIndex >= 0) {
           setNextSelectOptionHighlighted(this.selectOptions, selectedIndex);
