@@ -396,6 +396,10 @@ const generatedRoutes = {
     "path": "/input-search",
     "name": "InputSearch"
   },
+  "inputTel": {
+    "path": "/input-tel",
+    "name": "InputTel"
+  },
   "inputText": {
     "path": "/input-text",
     "name": "InputText"

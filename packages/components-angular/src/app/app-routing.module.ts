@@ -236,6 +236,26 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.InputTextExampleControlledComponent,
   },
   {
+    name: 'Input Tel Example',
+    path: 'input-tel-example',
+    component: fromExamples.InputTelExampleComponent,
+  },
+  {
+    name: 'Input Tel Example Controlled',
+    path: 'input-tel-controlled-example',
+    component: fromExamples.InputTelExampleControlledComponent,
+  },
+  {
+    name: 'Input Email Example',
+    path: 'input-email-example',
+    component: fromExamples.InputEmailExampleComponent,
+  },
+  {
+    name: 'Input Email Example Controlled',
+    path: 'input-email-controlled-example',
+    component: fromExamples.InputEmailExampleControlledComponent,
+  },
+  {
     name: 'Link Tile Example Hyphens',
     path: 'link-tile-example-hyphens',
     component: fromExamples.LinkTileExampleHyphensComponent,
