@@ -385,6 +385,29 @@ const codeExamples: CodeSample[] = [
     ],
   },
   {
+    component: 'p-input-tel',
+    examples: [
+      {
+        name: 'InputTelExample',
+        paths: {
+          'vanilla-js': '/input-tel-example.html',
+          angular: '/input-tel-example.component.ts',
+          react: '/InputTelExample.tsx',
+          vue: '/InputTelExample.vue',
+        },
+      },
+      {
+        name: 'InputTelExampleControlled',
+        paths: {
+          'vanilla-js': '/input-tel-example-controlled.html',
+          angular: '/input-tel-example-controlled.component.ts',
+          react: '/InputTelExampleControlled.tsx',
+          vue: '/InputTelExampleControlled.vue',
+        },
+      },
+    ],
+  },
+  {
     component: 'p-input-search',
     examples: [
       {
