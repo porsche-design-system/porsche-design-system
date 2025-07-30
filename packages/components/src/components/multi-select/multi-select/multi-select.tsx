@@ -1,27 +1,25 @@
-import { autoUpdate } from '@floating-ui/dom';
+import {autoUpdate} from '@floating-ui/dom';
 import {
   AttachInternals,
   Component,
   Element,
   Event,
   type EventEmitter,
+  forceUpdate,
+  h,
   type JSX,
   Listen,
   Prop,
   State,
   Watch,
-  forceUpdate,
-  h,
 } from '@stencil/core';
-import { getSlottedAnchorStyles } from '../../../styles';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
+import {getSlottedAnchorStyles} from '../../../styles';
+import type {BreakpointCustomizable, PropTypes, Theme} from '../../../types';
 import {
   AllowedTypes,
-  FORM_STATES,
-  SELECT_DROPDOWN_DIRECTIONS,
-  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
+  FORM_STATES,
   getComboboxAriaAttributes,
   getComboboxFilterAriaAttributes,
   getHasNativePopoverSupport,
@@ -29,34 +27,38 @@ import {
   getHighlightedSelectOptionIndex,
   getMultiSelectActionFromKeyboardEvent,
   getPrefixedTagNames,
+  getSelectedSelectOption,
+  getSelectedSelectOptionIndex,
   getShadowRootHTMLElement,
   getUpdatedIndex,
   getUsableSelectOptions,
-  handleButtonEvent,
   hasMessage,
   hasPropValueChanged,
   isClickOutside,
   isElementOfKind,
   optionListUpdatePosition,
+  SELECT_DROPDOWN_DIRECTIONS,
   setNextSelectOptionHighlighted,
+  THEMES,
   throwIfElementIsNotOfKind,
   updateFilterResults,
-  validateProps, getSelectedSelectOptionIndex, getSelectedSelectOption,
+  validateProps,
 } from '../../../utils';
-import { Label } from '../../common/label/label';
-import { labelId } from '../../common/label/label-utils';
-import { StateMessage, messageId } from '../../common/state-message/state-message';
-import type { InputSearchInputEventDetail } from '../../input-search/input-search-utils';
-import { getComponentCss } from './multi-select-styles';
+import {Label} from '../../common/label/label';
+import {labelId} from '../../common/label/label-utils';
+import {messageId, StateMessage} from '../../common/state-message/state-message';
+import type {InputSearchInputEventDetail} from '../../input-search/input-search-utils';
+import {getComponentCss} from './multi-select-styles';
 import {
+  getSelectedOptionsString,
+  getSelectedOptionValues,
   type MultiSelectDropdownDirection,
   type MultiSelectOptgroup,
   type MultiSelectOption,
   type MultiSelectState,
   type MultiSelectUpdateEventDetail,
-  getSelectedOptionValues,
-  getSelectedOptionsString,
   resetSelectedOptions,
+  setSelectedMultiSelectOption,
   setSelectedOptions,
   syncMultiSelectChildrenProps,
 } from './multi-select-utils';
@@ -155,12 +157,8 @@ export class MultiSelect {
 
   @Listen('internalOptionUpdate')
   public updateOptionHandler(e: Event & { target: MultiSelectOption }): void {
-    e.target.selected = !e.target.selected;
-    forceUpdate(e.target);
-    this.preventOptionUpdate = true; // Avoid unnecessary looping over options in setSelectedOptions in value watcher
-    this.value = this.currentValue;
     e.stopPropagation();
-    this.emitUpdateEvent();
+    this.updateSelectedOption(e.target);
   }
 
   @Watch('value')
@@ -383,6 +381,16 @@ export class MultiSelect {
     this.isOpen = open;
   };
 
+  private updateSelectedOption = (selectedOption: MultiSelectOption): void => {
+    // option can be undefined when no option is highlighted and keyboard action calls this
+    if (selectedOption) {
+      this.preventOptionUpdate = true; // Avoid unnecessary updating of options in value watcher
+      setSelectedMultiSelectOption(selectedOption);
+      this.value = this.currentValue;
+      this.emitUpdateEvent();
+    }
+  };
+
   private onClickOutside = (e: MouseEvent): void => {
     if (
       this.isOpen &&
@@ -466,20 +474,7 @@ export class MultiSelect {
       }
       case 'CloseSelect': {
         event.preventDefault();
-        const highlightedOption = getHighlightedSelectOption(this.multiSelectOptions);
-        if (highlightedOption) {
-          highlightedOption.selected = !highlightedOption.selected;
-          this.value = this.currentValue;
-          this.emitUpdateEvent();
-          forceUpdate(highlightedOption);
-        } else if (this.internals?.form) {
-          handleButtonEvent(
-            event,
-            this.host,
-            () => 'submit',
-            () => this.disabled
-          );
-        }
+        this.updateSelectedOption(getHighlightedSelectOption(this.multiSelectOptions));
         break;
       }
       // intentional fallthrough
@@ -492,7 +487,7 @@ export class MultiSelect {
       case 'Open': {
         event.preventDefault();
         this.updateMenuState(true);
-        // TODO: Do we need this when the highlight stays on the last highlighted option and there are multiple options highlighted?
+        // Moves highlight to the first selected option if available
         const selectedIndex = getSelectedSelectOptionIndex(this.multiSelectOptions);
         if (selectedIndex >= 0) {
           setNextSelectOptionHighlighted(this.multiSelectOptions, selectedIndex);

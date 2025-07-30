@@ -1,8 +1,8 @@
-import { forceUpdate } from '@stencil/core';
-import { type SelectComponentsDropdownDirection, type Theme, consoleWarn } from '../../../utils';
-import type { FormState } from '../../../utils/form/form-state';
-import type { OptgroupInternalHTMLProps } from '../../optgroup/optgroup-utils';
-import type { MultiSelectOptionInternalHTMLProps } from '../multi-select-option/multi-select-option-utils';
+import {forceUpdate} from '@stencil/core';
+import {consoleWarn, type SelectComponentsDropdownDirection, type Theme} from '../../../utils';
+import type {FormState} from '../../../utils/form/form-state';
+import type {OptgroupInternalHTMLProps} from '../../optgroup/optgroup-utils';
+import type {MultiSelectOptionInternalHTMLProps} from '../multi-select-option/multi-select-option-utils';
 
 export type MultiSelectState = FormState;
 export type MultiSelectDropdownDirection = SelectComponentsDropdownDirection;
@@ -66,4 +66,9 @@ export const resetSelectedOptions = (options: MultiSelectOption[]): void => {
       forceUpdate(option);
     }
   }
+};
+
+export const setSelectedMultiSelectOption = (selectedOption: MultiSelectOption): void => {
+  selectedOption.selected = true;
+  forceUpdate(selectedOption);
 };

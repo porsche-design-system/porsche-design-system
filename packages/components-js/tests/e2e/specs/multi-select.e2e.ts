@@ -487,7 +487,7 @@ test.describe('filter', () => {
       await expect(options.nth(1)).toHaveText('Option B');
       await expect(options.nth(2)).toBeHidden();
       await expect(dropdown).toBeVisible();
-      
+
       await filterElement.locator('p-button-pure').click();
 
       await expect(dropdown).toBeVisible();

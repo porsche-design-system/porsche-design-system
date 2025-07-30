@@ -82,7 +82,6 @@ export const getComponentCss = (
       gap: `max(2px, ${scalingVar} * ${spacingStaticSmall})`,
     },
     // TODO: extract (maybe even as functional component) and re-use in multi-select and select-wrapper
-    // TODO: Align with select
     'no-results': {
       ...getOptionJssStyle('multi-select-option', scalingVar, theme),
       ...getNoResultsOptionJssStyle(),
