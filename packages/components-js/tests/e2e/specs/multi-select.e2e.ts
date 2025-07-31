@@ -1481,6 +1481,7 @@ test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on filter input change', async ({ page }) => {
     await initMultiSelect(page);
     const buttonElement = getButton(page);
+    const filterInputElement = getFilterInput(page);
 
     await buttonElement.click();
     await waitForStencilLifecycle(page);
@@ -1495,6 +1496,7 @@ test.describe('lifecycle', () => {
     expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(9);
     expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1); // slotchange forces second update
 
+    await expect(filterInputElement).toBeFocused();
     await page.keyboard.press('c');
     await waitForStencilLifecycle(page);
 
