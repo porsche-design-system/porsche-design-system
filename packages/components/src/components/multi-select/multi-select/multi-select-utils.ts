@@ -69,6 +69,6 @@ export const resetSelectedOptions = (options: MultiSelectOption[]): void => {
 };
 
 export const setSelectedMultiSelectOption = (selectedOption: MultiSelectOption): void => {
-  selectedOption.selected = true;
+  selectedOption.selected = !selectedOption.selected;
   forceUpdate(selectedOption);
 };
