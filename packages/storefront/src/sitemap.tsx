@@ -259,6 +259,16 @@ export const sitemap: Routes = {
             path: '/developing/react-router/getting-started',
             type: 'TAB',
           },
+          'demo': {
+            name: 'Demo',
+            path: '/developing/react-router/demo',
+            type: 'TAB',
+          },
+          'faq': {
+            name: 'FAQ',
+            path: '/developing/react-router/faq',
+            type: 'TAB',
+          },
         },
       },
       vue: {
