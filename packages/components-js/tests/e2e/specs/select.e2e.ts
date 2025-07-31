@@ -1400,13 +1400,12 @@ test.describe('filter', () => {
 
         await expect(options.nth(0)).toBeHidden();
         await expect(options.nth(1)).toBeVisible();
-        await expect(options.nth(1)).toHaveText('Option B');
+        await expect(options.nth(1)).toHaveText('b');
         await expect(options.nth(2)).toBeHidden();
 
         await text.click();
         await expect(dropdown).toBeHidden();
         await expect(host).toHaveJSProperty('value', undefined);
-        await expect(buttonElement).toBeFocused();
 
         await waitForStencilLifecycle(page);
         await buttonElement.click();

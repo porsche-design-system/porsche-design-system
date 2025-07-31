@@ -1,6 +1,6 @@
-import {expect, type Locator, test} from '@playwright/test';
-import type {Components} from '@porsche-design-system/components/src/components';
-import type {Page} from 'playwright';
+import { expect, type Locator, test } from '@playwright/test';
+import type { Components } from '@porsche-design-system/components/src/components';
+import type { Page } from 'playwright';
 import {
   addEventListener,
   getElementStyle,
@@ -42,7 +42,7 @@ const setValue = async (page: Page, value: string[]) => {
 const addOption = async (page: Page, value: string, textContent?: string) => {
   const host = getHost(page);
   await host.evaluate(
-    (el, {value, textContent}) => {
+    (el, { value, textContent }) => {
       const option: any = document.createElement('p-multi-select-option');
       option.value = value;
       option.textContent = textContent;
@@ -78,15 +78,15 @@ type InitOptions = {
 };
 
 const initMultiSelect = (page: Page, opt?: InitOptions): Promise<void> => {
-  const {props = {name: 'name'}, slots, options} = opt || {};
+  const { props = { name: 'name' }, slots, options } = opt || {};
   const {
-    values = [{value: 'a'}, {value: 'b'}, {value: 'c'}],
+    values = [{ value: 'a' }, { value: 'b' }, { value: 'c' }],
     isWithinForm = true,
     markupBefore = '',
     markupAfter = '',
     includeOptgroups = false,
   } = options || {};
-  const {label = '', description = '', message = ''} = slots || {};
+  const { label = '', description = '', message = '' } = slots || {};
 
   const getOption = (opt: Option) => {
     const attrs = [opt.disabled ? 'disabled' : '', opt.hidden ? 'hidden' : ''].join(' ');
@@ -116,7 +116,7 @@ const initMultiSelect = (page: Page, opt?: InitOptions): Promise<void> => {
   return setContentWithDesignSystem(page, isWithinForm ? `<form onsubmit="return false;">${markup}</form>` : markup);
 };
 
-test('should render', async ({page}) => {
+test('should render', async ({ page }) => {
   await initMultiSelect(page);
   const inputElement = getButton(page);
   expect(inputElement).not.toBeNull();
@@ -130,8 +130,8 @@ test('should render', async ({page}) => {
 });
 
 test.describe('Update Event', () => {
-  test('should emit update event with correct details when option is selected by click', async ({page}) => {
-    await initMultiSelect(page, {props: {name: 'options'}});
+  test('should emit update event with correct details when option is selected by click', async ({ page }) => {
+    await initMultiSelect(page, { props: { name: 'options' } });
     const host = getHost(page);
     await addEventListener(host, 'update');
 
@@ -165,8 +165,8 @@ test.describe('Update Event', () => {
   });
 
   skipInBrowsers(['webkit'], () => {
-    test('should emit update event with correct details when option is selected by keyboard', async ({page}) => {
-      await initMultiSelect(page, {props: {name: 'options'}});
+    test('should emit update event with correct details when option is selected by keyboard', async ({ page }) => {
+      await initMultiSelect(page, { props: { name: 'options' } });
       const host = getHost(page);
       const dropdown = getDropdown(page);
       await addEventListener(host, 'update');
@@ -202,8 +202,8 @@ test.describe('Update Event', () => {
       ]);
     });
 
-    test('should emit update event with correct details when reset button is clicked', async ({page}) => {
-      await initMultiSelect(page, {props: {name: 'options'}});
+    test('should emit update event with correct details when reset button is clicked', async ({ page }) => {
+      await initMultiSelect(page, { props: { name: 'options' } });
       await setValue(page, ['a', 'b']);
       await waitForStencilLifecycle(page);
 
@@ -237,8 +237,8 @@ test.describe('Update Event', () => {
 });
 
 test.describe('outside click', () => {
-  test('should show dropdown if input is clicked and hide via outside click', async ({page}) => {
-    await initMultiSelect(page, {options: {markupBefore: '<p-text>Some Text</p-text>'}});
+  test('should show dropdown if input is clicked and hide via outside click', async ({ page }) => {
+    await initMultiSelect(page, { options: { markupBefore: '<p-text>Some Text</p-text>' } });
 
     const dropdown = getDropdown(page);
     const buttonElement = getButton(page);
@@ -266,7 +266,7 @@ test.describe('outside click', () => {
 
 test.describe('hover', () => {
   skipInBrowsers(['firefox', 'webkit']);
-  test('should change border-color when input is hovered', async ({page}) => {
+  test('should change border-color when input is hovered', async ({ page }) => {
     await initMultiSelect(page);
     await page.mouse.move(0, 300); // avoid potential hover initially
 
@@ -281,8 +281,8 @@ test.describe('hover', () => {
 
 skipInBrowsers(['firefox', 'webkit'], () => {
   test.describe('focus', () => {
-    test('should focus button when label text is clicked', async ({page}) => {
-      await initMultiSelect(page, {props: {name: 'options', label: 'Some Label'}});
+    test('should focus button when label text is clicked', async ({ page }) => {
+      await initMultiSelect(page, { props: { name: 'options', label: 'Some Label' } });
       const labelText = getLabel(page);
       const buttonElement = getButton(page);
 
@@ -291,7 +291,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       await expect(buttonElement).toBeFocused();
     });
 
-    test('should focus button when tab key is pressed', async ({page}) => {
+    test('should focus button when tab key is pressed', async ({ page }) => {
       await initMultiSelect(page);
       const buttonElement = getButton(page);
 
@@ -300,8 +300,8 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       await expect(buttonElement).toBeFocused();
     });
 
-    test('should focus correct elements when selection is made', async ({page}) => {
-      await initMultiSelect(page, {options: {markupAfter: '<p-button>Some button</p-button>'}});
+    test('should focus correct elements when selection is made', async ({ page }) => {
+      await initMultiSelect(page, { options: { markupAfter: '<p-button>Some button</p-button>' } });
       const buttonAfter = page.locator('p-button');
 
       await expect(getResetButton(page)).toHaveCount(0);
@@ -333,8 +333,8 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       await expect(buttonAfter).toBeFocused();
     });
 
-    test('should focus next element when dropdown is open and no selection is made', async ({page}) => {
-      await initMultiSelect(page, {options: {markupAfter: '<p-button>Some button</p-button>'}});
+    test('should focus next element when dropdown is open and no selection is made', async ({ page }) => {
+      await initMultiSelect(page, { options: { markupAfter: '<p-button>Some button</p-button>' } });
       const buttonAfter = page.locator('p-button');
 
       await expect(getResetButton(page), 'initial reset button').toHaveCount(0);
@@ -358,7 +358,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       await expect(buttonAfter).toBeFocused();
     });
 
-    test('should focus button after reset button click', async ({page}) => {
+    test('should focus button after reset button click', async ({ page }) => {
       await initMultiSelect(page);
       await setValue(page, ['a']);
       await waitForStencilLifecycle(page);
@@ -381,7 +381,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       await expect(host).toHaveJSProperty('value', []);
     });
 
-    test('should receive focus when focus is set programmatically', async ({page}) => {
+    test('should receive focus when focus is set programmatically', async ({ page }) => {
       await initMultiSelect(page);
       const host = getHost(page);
 
@@ -402,8 +402,8 @@ skipInBrowsers(['firefox', 'webkit'], () => {
 // TODO: Check if we need some special cases for multiple select
 test.describe('filter', () => {
   test.describe('input', () => {
-    test('should show matching options when typing into filter', async ({page}) => {
-      await initMultiSelect(page, {props: {name: 'Some name'}});
+    test('should show matching options when typing into filter', async ({ page }) => {
+      await initMultiSelect(page, { props: { name: 'Some name' } });
       const buttonElement = getButton(page);
       const filterElement = getFilter(page);
       const filterInputElement = getFilterInput(page);
@@ -435,8 +435,11 @@ test.describe('filter', () => {
       await expect(options.nth(2)).toBeVisible();
     });
 
-    test('should not show options which are initially hidden when typing into filter', async ({page}) => {
-      await initMultiSelect(page, {props: {name: 'Some name'}, options: {values: [{value: 'a', hidden: true}, {value: 'b'}, {value: 'c'}]}});
+    test('should not show options which are initially hidden when typing into filter', async ({ page }) => {
+      await initMultiSelect(page, {
+        props: { name: 'Some name' },
+        options: { values: [{ value: 'a', hidden: true }, { value: 'b' }, { value: 'c' }] },
+      });
       const buttonElement = getButton(page);
       const filterElement = getFilter(page);
       const filterInputElement = getFilterInput(page);
@@ -467,8 +470,8 @@ test.describe('filter', () => {
       await expect(options.nth(2)).toBeVisible();
     });
 
-    test('should reset filter when pressing clear button on filter input', async ({page}) => {
-      await initMultiSelect(page, {props: {name: 'Some name'}});
+    test('should reset filter when pressing clear button on filter input', async ({ page }) => {
+      await initMultiSelect(page, { props: { name: 'Some name' } });
       const buttonElement = getButton(page);
       const filterElement = getFilter(page);
       const filterInputElement = getFilterInput(page);
@@ -499,9 +502,9 @@ test.describe('filter', () => {
 
     skipInBrowsers(['webkit'], () => {
       test('should reset filter value and show all options again after filtering, selecting an option and closing dropdown by Escape press', async ({
-                                                                                                                                                      page,
-                                                                                                                                                    }) => {
-        await initMultiSelect(page, {props: {name: 'Some name'}});
+        page,
+      }) => {
+        await initMultiSelect(page, { props: { name: 'Some name' } });
         const host = getHost(page);
         const buttonElement = getButton(page);
         const filterElement = getFilter(page);
@@ -542,9 +545,9 @@ test.describe('filter', () => {
     });
 
     test('should reset filter value and show all options again after filtering, selecting an option and closing dropdown by outside click', async ({
-                                                                                                                                                     page,
-                                                                                                                                                   }) => {
-      await initMultiSelect(page, {options: {markupBefore: '<p-text>Some text</p-text>'}});
+      page,
+    }) => {
+      await initMultiSelect(page, { options: { markupBefore: '<p-text>Some text</p-text>' } });
 
       const text = page.locator('p-text');
       const host = getHost(page);
@@ -584,8 +587,8 @@ test.describe('filter', () => {
     });
 
     skipInBrowsers(['webkit'], () => {
-      test('should show indicator when no results are found', async ({page}) => {
-        await initMultiSelect(page, {props: {name: 'Some name'}});
+      test('should show indicator when no results are found', async ({ page }) => {
+        await initMultiSelect(page, { props: { name: 'Some name' } });
         const buttonElement = getButton(page);
         const filterElement = getFilter(page);
         const filterInputElement = getFilterInput(page);
@@ -603,7 +606,7 @@ test.describe('filter', () => {
           await expect(option).toBeHidden();
         }
 
-        const noResults = page.getByRole('option', {name: 'No results found'});
+        const noResults = page.getByRole('option', { name: 'No results found' });
         await expect(noResults).toBeVisible();
 
         await page.keyboard.press('Escape');
@@ -624,14 +627,14 @@ test.describe('filter', () => {
   });
 
   test.describe('with optgroups', () => {
-    test('should only show optgroups of matching options when filtering', async ({page}) => {
+    test('should only show optgroups of matching options when filtering', async ({ page }) => {
       await initMultiSelect(page, {
         props: {
           name: 'Some name',
         },
         options: {
           includeOptgroups: true,
-          values: [[{value: '1a'}], [{value: '2a'}]],
+          values: [[{ value: '1a' }], [{ value: '2a' }]],
         },
       });
       const buttonElement = getButton(page);
@@ -674,15 +677,15 @@ test.describe('filter', () => {
     });
 
     test('should reset filter value and show all optgroups and options again after filtering and selecting an option', async ({
-                                                                                                                                page,
-                                                                                                                              }) => {
+      page,
+    }) => {
       await initMultiSelect(page, {
         props: {
           name: 'Some name',
         },
         options: {
           includeOptgroups: true,
-          values: [[{value: '1a'}], [{value: '2a'}]],
+          values: [[{ value: '1a' }], [{ value: '2a' }]],
         },
       });
       const host = getHost(page);
@@ -723,15 +726,15 @@ test.describe('filter', () => {
     });
 
     test('should reset filter value and show all optgroups and options again after closing and reopening again', async ({
-                                                                                                                          page,
-                                                                                                                        }) => {
+      page,
+    }) => {
       await initMultiSelect(page, {
         props: {
           name: 'Some name',
         },
         options: {
           includeOptgroups: true,
-          values: [[{value: '1a'}], [{value: '2a'}]],
+          values: [[{ value: '1a' }], [{ value: '2a' }]],
         },
       });
       const host = getHost(page);
@@ -772,8 +775,8 @@ test.describe('filter', () => {
   });
 
   test.describe('click', () => {
-    test('should not close dropdown if input is clicked', async ({page}) => {
-      await initMultiSelect(page, {props: {name: 'Some name'}});
+    test('should not close dropdown if input is clicked', async ({ page }) => {
+      await initMultiSelect(page, { props: { name: 'Some name' } });
       const buttonElement = getButton(page);
       const dropdown = getDropdown(page);
       const filterElement = getFilter(page);
@@ -789,8 +792,8 @@ test.describe('filter', () => {
   test.describe('keyboard behavior', () => {
     skipInBrowsers(['webkit']); // Safari focus management does not work correctly in Playwright
 
-    test('should focus filter input on Space key', async ({page}) => {
-      await initMultiSelect(page, {props: {name: 'Some name'}});
+    test('should focus filter input on Space key', async ({ page }) => {
+      await initMultiSelect(page, { props: { name: 'Some name' } });
       const host = getHost(page);
       const filterElement = getFilter(page);
 
@@ -801,8 +804,8 @@ test.describe('filter', () => {
       await expect(host).toHaveJSProperty('value', []);
     });
 
-    test('should focus filter input on Enter key', async ({page}) => {
-      await initMultiSelect(page, {props: {name: 'Some name'}});
+    test('should focus filter input on Enter key', async ({ page }) => {
+      await initMultiSelect(page, { props: { name: 'Some name' } });
       const host = getHost(page);
       const filterElement = getFilter(page);
 
@@ -813,8 +816,8 @@ test.describe('filter', () => {
       await expect(host).toHaveJSProperty('value', []);
     });
 
-    test('should focus filter input on ArrowDown key', async ({page}) => {
-      await initMultiSelect(page, {props: {name: 'Some name'}});
+    test('should focus filter input on ArrowDown key', async ({ page }) => {
+      await initMultiSelect(page, { props: { name: 'Some name' } });
       const host = getHost(page);
       const filterElement = getFilter(page);
 
@@ -825,8 +828,8 @@ test.describe('filter', () => {
       await expect(host).toHaveJSProperty('value', []);
     });
 
-    test('should cycle through options while having filter input focused', async ({page}) => {
-      await initMultiSelect(page, {props: {name: 'Some name'}});
+    test('should cycle through options while having filter input focused', async ({ page }) => {
+      await initMultiSelect(page, { props: { name: 'Some name' } });
       const host = getHost(page);
       const filterElement = getFilter(page);
 
@@ -843,8 +846,8 @@ test.describe('filter', () => {
       await expect(host).toHaveJSProperty('value', ['a']);
     });
 
-    test('should reset/keep highlighted option on filter input', async ({page}) => {
-      await initMultiSelect(page, {props: {name: 'Some name'}});
+    test('should reset/keep highlighted option on filter input', async ({ page }) => {
+      await initMultiSelect(page, { props: { name: 'Some name' } });
       const filterElement = getFilter(page);
       const filterInputElement = getFilterInput(page);
       const options = getMultiSelectOptions(page);
@@ -914,10 +917,10 @@ test.describe('filter', () => {
       await expect(options.nth(2)).toBeVisible();
     });
 
-    test('should not close select when Space character is typed into filter', async ({page}) => {
+    test('should not close select when Space character is typed into filter', async ({ page }) => {
       await initMultiSelect(page, {
-        props: {name: 'Some name'},
-        options: {values: [{value: 'option a'}, {value: 'option b'}, {value: 'option c'}]},
+        props: { name: 'Some name' },
+        options: { values: [{ value: 'option a' }, { value: 'option b' }, { value: 'option c' }] },
       });
       const filterElement = getFilter(page);
       const filterInputElement = getFilterInput(page);
@@ -946,7 +949,7 @@ test.describe('filter', () => {
 });
 
 test.describe('selection', () => {
-  test('should add valid selection on enter', async ({page}) => {
+  test('should add valid selection on enter', async ({ page }) => {
     await initMultiSelect(page);
     const host = getHost(page);
     const buttonElement = getButton(page);
@@ -978,7 +981,7 @@ test.describe('selection', () => {
     await expect(buttonElement.locator('span').first()).toHaveText('Option B, Option C');
   });
 
-  test('should add valid selection on click', async ({page}) => {
+  test('should add valid selection on click', async ({ page }) => {
     await initMultiSelect(page);
     const host = getHost(page);
     const buttonElement = getButton(page);
@@ -1009,7 +1012,7 @@ test.describe('selection', () => {
   });
 
   skipInBrowsers(['webkit'], () => {
-    test('should reset selection on reset button enter', async ({page}) => {
+    test('should reset selection on reset button enter', async ({ page }) => {
       await initMultiSelect(page);
       const host = getHost(page);
       const buttonElement = getButton(page);
@@ -1050,7 +1053,7 @@ test.describe('selection', () => {
     });
   });
 
-  test('should reset selection on reset button click', async ({page}) => {
+  test('should reset selection on reset button click', async ({ page }) => {
     await initMultiSelect(page);
     const host = getHost(page);
     const buttonElement = getButton(page);
@@ -1084,7 +1087,7 @@ test.describe('selection', () => {
 
 test.describe('keyboard handling', () => {
   skipInBrowsers(['webkit']);
-  test('should highlight first option on arrow down', async ({page}) => {
+  test('should highlight first option on arrow down', async ({ page }) => {
     await initMultiSelect(page);
 
     const host = getHost(page);
@@ -1126,9 +1129,9 @@ test.describe('keyboard handling', () => {
     await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
   });
 
-  test('should skip disabled option on arrow down', async ({page}) => {
+  test('should skip disabled option on arrow down', async ({ page }) => {
     await initMultiSelect(page, {
-      options: {values: [{value: 'a', disabled: true}, {value: 'b'}, {value: 'c'}]},
+      options: { values: [{ value: 'a', disabled: true }, { value: 'b' }, { value: 'c' }] },
     });
 
     const options = getMultiSelectOptions(page);
@@ -1143,9 +1146,9 @@ test.describe('keyboard handling', () => {
     await expect(options.nth(1)).toHaveJSProperty('highlighted', true);
   });
 
-  test('should skip disabled option on arrow up', async ({page}) => {
+  test('should skip disabled option on arrow up', async ({ page }) => {
     await initMultiSelect(page, {
-      options: {values: [{value: 'a'}, {value: 'b', disabled: true}, {value: 'c'}]},
+      options: { values: [{ value: 'a' }, { value: 'b', disabled: true }, { value: 'c' }] },
     });
 
     const options = getMultiSelectOptions(page);
@@ -1167,7 +1170,7 @@ test.describe('keyboard handling', () => {
     await expect(options.nth(2)).toHaveJSProperty('highlighted', false);
   });
 
-  test('should open dropdown with spacebar', async ({page}) => {
+  test('should open dropdown with spacebar', async ({ page }) => {
     await initMultiSelect(page);
     const dropdown = getDropdown(page);
     const buttonElement = getButton(page);
@@ -1181,7 +1184,7 @@ test.describe('keyboard handling', () => {
     await expect(dropdown).toBeVisible();
   });
 
-  test('should toggle selected with enter', async ({page}) => {
+  test('should toggle selected with enter', async ({ page }) => {
     await initMultiSelect(page);
     const host = getHost(page);
     const options = getMultiSelectOptions(page);
@@ -1213,7 +1216,7 @@ test.describe('keyboard handling', () => {
     await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
   });
 
-  test('should not select option on Escape', async ({page}) => {
+  test('should not select option on Escape', async ({ page }) => {
     await initMultiSelect(page);
     const host = getHost(page);
     const dropdown = getDropdown(page);
@@ -1233,7 +1236,7 @@ test.describe('keyboard handling', () => {
     await expect(host).toHaveJSProperty('value', []);
   });
 
-  test('should highlight and select options on PageDown/PageUp', async ({page}) => {
+  test('should highlight and select options on PageDown/PageUp', async ({ page }) => {
     await initMultiSelect(page);
     const host = getHost(page);
     const dropdown = getDropdown(page);
@@ -1267,7 +1270,7 @@ test.describe('keyboard handling', () => {
     await expect(options.nth(2)).toHaveJSProperty('selected', true);
   });
 
-  test('should close dropdown on Tab', async ({page}) => {
+  test('should close dropdown on Tab', async ({ page }) => {
     await initMultiSelect(page);
     const dropdown = getDropdown(page);
 
@@ -1280,9 +1283,9 @@ test.describe('keyboard handling', () => {
     await expect(dropdown).toBeHidden();
   });
 
-  test('should have correct reset button focus handling', async ({page}) => {
+  test('should have correct reset button focus handling', async ({ page }) => {
     await initMultiSelect(page, {
-      options: {markupAfter: '<p-button>Button</p-button>'},
+      options: { markupAfter: '<p-button>Button</p-button>' },
     });
     const button = page.locator('p-button');
     const filterElement = getFilterInput(page);
@@ -1317,7 +1320,7 @@ test.describe('keyboard handling', () => {
 });
 
 test.describe('click handling', () => {
-  test('should open dropdown on mouseclick and close on 2nd click', async ({page}) => {
+  test('should open dropdown on mouseclick and close on 2nd click', async ({ page }) => {
     await initMultiSelect(page);
     const buttonElement = getButton(page);
     const dropdown = getDropdown(page);
@@ -1329,7 +1332,7 @@ test.describe('click handling', () => {
     await expect(dropdown).toBeHidden();
   });
 
-  test('should select second option on mouseclick', async ({page}) => {
+  test('should select second option on mouseclick', async ({ page }) => {
     await initMultiSelect(page);
     const host = getHost(page);
     const buttonElement = getButton(page);
@@ -1348,17 +1351,17 @@ test.describe('click handling', () => {
 });
 
 test.describe('disabled', () => {
-  test('should have not-allowed cursor', async ({page}) => {
-    await initMultiSelect(page, {props: {name: 'options', disabled: true}});
+  test('should have not-allowed cursor', async ({ page }) => {
+    await initMultiSelect(page, { props: { name: 'options', disabled: true } });
     const buttonElement = getButton(page);
     await expect(buttonElement).toHaveCSS('cursor', 'not-allowed');
   });
 
   skipInBrowsers(['webkit'], () => {
-    test('should not be able to open or interact', async ({page}) => {
+    test('should not be able to open or interact', async ({ page }) => {
       await initMultiSelect(page, {
-        props: {name: 'options', disabled: true},
-        options: {markupAfter: '<p-button>Button</p-button>'},
+        props: { name: 'options', disabled: true },
+        options: { markupAfter: '<p-button>Button</p-button>' },
       });
       const host = getHost(page);
       const button = page.locator('p-button');
@@ -1374,7 +1377,7 @@ test.describe('disabled', () => {
 });
 
 test.describe('slots', () => {
-  test('should update when selected option is added', async ({page}) => {
+  test('should update when selected option is added', async ({ page }) => {
     await initMultiSelect(page);
     const host = getHost(page);
     const buttonElement = getButton(page);
@@ -1392,7 +1395,7 @@ test.describe('slots', () => {
     await expect(buttonElement.locator('span').first()).toHaveText('Option D');
   });
 
-  test('should update when selected option is removed', async ({page}) => {
+  test('should update when selected option is removed', async ({ page }) => {
     await initMultiSelect(page);
     await setValue(page, ['c']);
     const host = getHost(page);
@@ -1411,7 +1414,7 @@ test.describe('slots', () => {
 });
 
 test.describe('lifecycle', () => {
-  test('should work without unnecessary round trips on init', async ({page}) => {
+  test('should work without unnecessary round trips on init', async ({ page }) => {
     await initMultiSelect(page);
     const buttonElement = getButton(page);
     const status1 = await getLifecycleStatus(page);
@@ -1432,7 +1435,7 @@ test.describe('lifecycle', () => {
     expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 
-  test('should work without unnecessary round trips when selecting option', async ({page}) => {
+  test('should work without unnecessary round trips when selecting option', async ({ page }) => {
     await initMultiSelect(page);
     const buttonElement = getButton(page);
 
@@ -1453,14 +1456,29 @@ test.describe('lifecycle', () => {
     await option1.click();
     await waitForStencilLifecycle(page);
 
-    const status2 = await getLifecycleStatus(page);
-    expect(status2.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2); // reset button + input-search clear button
-    expect(status2.componentDidUpdate['p-multi-select-option'], 'componentDidUpdate: p-multi-select-option').toBe(1);
-    expect(status2.componentDidUpdate['p-multi-select'], 'componentDidUpdate: p-multi-select').toBe(2);
-    expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
+    await expect
+      .poll(async () => (await getLifecycleStatus(page)).componentDidLoad['p-button-pure'], {
+        message: 'componentDidLoad: p-button-pure',
+      })
+      .toBe(2); // reset button + input-search clear button
+    await expect
+      .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-multi-select-option'], {
+        message: 'componentDidUpdate: p-multi-select-option',
+      })
+      .toBe(1);
+    await expect
+      .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-multi-select'], {
+        message: 'componentDidUpdate: p-multi-select',
+      })
+      .toBe(2);
+    await expect
+      .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate.all, {
+        message: 'componentDidUpdate: all',
+      })
+      .toBe(3);
   });
 
-  test('should work without unnecessary round trips on filter input change', async ({page}) => {
+  test('should work without unnecessary round trips on filter input change', async ({ page }) => {
     await initMultiSelect(page);
     const buttonElement = getButton(page);
 
@@ -1480,17 +1498,32 @@ test.describe('lifecycle', () => {
     await page.keyboard.press('c');
     await waitForStencilLifecycle(page);
 
-    const status2 = await getLifecycleStatus(page);
-    expect(status2.componentDidUpdate['p-multi-select-option'], 'componentDidUpdate: p-multi-select-option').toBe(0);
-    expect(status2.componentDidUpdate['p-multi-select'], 'componentDidUpdate: p-multi-select').toBe(1);
-    expect(status2.componentDidUpdate['p-input-search'], 'componentDidUpdate: p-input-search').toBe(2);
-    expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
+    await expect
+      .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-multi-select-option'], {
+        message: 'componentDidUpdate: p-multi-select-option',
+      })
+      .toBe(0);
+    await expect
+      .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-multi-select'], {
+        message: 'componentDidUpdate: p-multi-select',
+      })
+      .toBe(1);
+    await expect
+      .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-input-search'], {
+        message: 'componentDidUpdate: p-input-search',
+      })
+      .toBe(2);
+    await expect
+      .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate.all, {
+        message: 'componentDidUpdate: all',
+      })
+      .toBe(3);
   });
 });
 
 test.describe('theme', () => {
-  test('should sync theme for children', async ({page}) => {
-    await initMultiSelect(page, {options: {includeOptgroups: true}});
+  test('should sync theme for children', async ({ page }) => {
+    await initMultiSelect(page, { options: { includeOptgroups: true } });
 
     const multiSelect = getHost(page);
 
@@ -1521,11 +1554,11 @@ test.describe('theme', () => {
 });
 
 test.describe('optgroups', () => {
-  test('should persist disabled state for options inside optgroup', async ({page}) => {
-    const group = [{value: 'b', disabled: true}, {value: 'c'}, {value: 'd', disabled: true}];
+  test('should persist disabled state for options inside optgroup', async ({ page }) => {
+    const group = [{ value: 'b', disabled: true }, { value: 'c' }, { value: 'd', disabled: true }];
 
     await initMultiSelect(page, {
-      options: {includeOptgroups: true, values: [{value: 'a'}, group, {value: 'e'}]},
+      options: { includeOptgroups: true, values: [{ value: 'a' }, group, { value: 'e' }] },
     });
 
     const buttonElement = getButton(page);
@@ -1568,8 +1601,8 @@ test.describe('optgroups', () => {
     }
   });
 
-  test('should only display optgroups of filtered options', async ({page}) => {
-    await initMultiSelect(page, {options: {includeOptgroups: true}});
+  test('should only display optgroups of filtered options', async ({ page }) => {
+    await initMultiSelect(page, { options: { includeOptgroups: true } });
     const buttonElement = getButton(page);
     const filterInputElement = getFilterInput(page);
     const options = getMultiSelectOptgroups(page);
@@ -1604,8 +1637,8 @@ test.describe('optgroups', () => {
     await expect(options.nth(2)).toBeVisible();
   });
 
-  test('should disable all options inside disabled optgroup', async ({page}) => {
-    await initMultiSelect(page, {options: {includeOptgroups: true}});
+  test('should disable all options inside disabled optgroup', async ({ page }) => {
+    await initMultiSelect(page, { options: { includeOptgroups: true } });
 
     const buttonElement = getButton(page);
     await buttonElement.click();
@@ -1629,8 +1662,8 @@ test.describe('optgroups', () => {
     }
   });
 
-  test('should hide all options inside hidden optgroup', async ({page}) => {
-    await initMultiSelect(page, {options: {includeOptgroups: true}});
+  test('should hide all options inside hidden optgroup', async ({ page }) => {
+    await initMultiSelect(page, { options: { includeOptgroups: true } });
 
     const buttonElement = getButton(page);
     await buttonElement.click();
@@ -1655,12 +1688,12 @@ test.describe('optgroups', () => {
 });
 
 test.describe('form', () => {
-  test('should include name & value in FormData submit if updated programmatically', async ({page}) => {
+  test('should include name & value in FormData submit if updated programmatically', async ({ page }) => {
     const name = 'name';
     const value = ['a', 'b'];
     await initMultiSelect(page, {
-      props: {name},
-      options: {isWithinForm: true, markupAfter: '<button type="submit">Submit</button>'},
+      props: { name },
+      options: { isWithinForm: true, markupAfter: '<button type="submit">Submit</button>' },
     });
     const host = getHost(page);
     const form = getForm(page);
@@ -1676,11 +1709,11 @@ test.describe('form', () => {
   });
 
   skipInBrowsers(['webkit'], () => {
-    test('should include name & value in FormData submit if updated using keyboard', async ({page}) => {
+    test('should include name & value in FormData submit if updated using keyboard', async ({ page }) => {
       const name = 'options';
       const value = ['a'];
       await initMultiSelect(page, {
-        props: {name},
+        props: { name },
         options: {
           isWithinForm: true,
           markupBefore: '<p-text>Some Text</p-text>',
@@ -1708,11 +1741,11 @@ test.describe('form', () => {
     });
   });
 
-  test('should include name & value in FormData submit if updated using mouse', async ({page}) => {
+  test('should include name & value in FormData submit if updated using mouse', async ({ page }) => {
     const name = 'options';
     const value = ['b'];
     await initMultiSelect(page, {
-      props: {name},
+      props: { name },
       options: {
         isWithinForm: true,
         markupBefore: '<p-text>Some Text</p-text>',
@@ -1739,12 +1772,12 @@ test.describe('form', () => {
     expect(await getFormDataValues(form, name)).toStrictEqual(value);
   });
 
-  test('should include name & value in FormData submit if outside of form', async ({page}) => {
+  test('should include name & value in FormData submit if outside of form', async ({ page }) => {
     const name = 'name';
     const value = ['a', 'b'];
     const formId = 'myForm';
     await initMultiSelect(page, {
-      props: {name, form: formId},
+      props: { name, form: formId },
       options: {
         isWithinForm: false,
         markupBefore: `<form id="myForm" onsubmit="return false;"><button type="submit">Submit</button></form>`,
@@ -1763,11 +1796,11 @@ test.describe('form', () => {
     expect(await getFormDataValues(form, name)).toStrictEqual(value);
   });
 
-  test('should reset multi-select value to its initial value on form reset', async ({page}) => {
+  test('should reset multi-select value to its initial value on form reset', async ({ page }) => {
     const name = 'name';
     const value = ['c'];
     await initMultiSelect(page, {
-      props: {name},
+      props: { name },
       options: {
         isWithinForm: true,
         markupAfter: `
@@ -1793,12 +1826,12 @@ test.describe('form', () => {
     expect(await getFormDataValues(form, name)).toStrictEqual([]);
   });
 
-  test('should disable select if within disabled fieldset', async ({page}) => {
+  test('should disable select if within disabled fieldset', async ({ page }) => {
     const name = 'name';
     const value = ['Hallo'];
     const host = getHost(page);
     await initMultiSelect(page, {
-      props: {name, value},
+      props: { name, value },
       options: {
         isWithinForm: true,
         markupBefore: `<fieldset disabled>`,
@@ -1809,7 +1842,7 @@ test.describe('form', () => {
     await expect(host).toHaveJSProperty('disabled', true);
   });
 
-  test('should sync disabled state with fieldset when updated programmatically', async ({page}) => {
+  test('should sync disabled state with fieldset when updated programmatically', async ({ page }) => {
     await initMultiSelect(page, {
       options: {
         isWithinForm: true,
