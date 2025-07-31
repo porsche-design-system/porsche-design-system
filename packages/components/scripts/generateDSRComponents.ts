@@ -1,11 +1,11 @@
-import * as fs from 'fs';
-import * as path from 'path';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 import { breakpoint } from '@porsche-design-system/styles';
 import { kebabCase, pascalCase } from 'change-case';
+import * as fs from 'fs';
 import { globbySync } from 'globby';
+import * as path from 'path';
 
 const EXCLUDED_COMPONENTS: TagName[] = ['p-toast-item'];
 
@@ -551,6 +551,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.hasCustomDropdown/g, 'hasCustomDropdown');
       } else if (tagName === 'p-multi-select') {
         newFileContent = newFileContent
+          .replace(
+            /getSelectedOptionValues\([^)]+\);/,
+            'getSelectedOptionValues(splitChildren(this.props.children).otherChildren);'
+          )
           .replace(/this\.props\.currentValue\.length > 0/g, 'this.props.currentValue')
           .replace(/this\.props\.multiSelectOptions/g, 'otherChildren')
           // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
