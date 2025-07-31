@@ -552,11 +552,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       } else if (tagName === 'p-multi-select') {
         newFileContent = newFileContent
           .replace(
-            /getSelectedOptionValues\([^)]+\);/,
+            /getSelectedOptionValues\(this\.props\.multiSelectOptions\);/,
             'getSelectedOptionValues(splitChildren(this.props.children).otherChildren);'
           )
           .replace(/this\.props\.currentValue\.length > 0/g, 'this.props.currentValue')
-          .replace(/this\.props\.multiSelectOptions/g, 'otherChildren')
+          .replace(
+            /getSelectedOptionsString\(this\.props\.multiSelectOptions\)/,
+            'getSelectedOptionsString(otherChildren)'
+          )
           // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
           .replace(/@AttachInternals\(\)/, '')
           .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
