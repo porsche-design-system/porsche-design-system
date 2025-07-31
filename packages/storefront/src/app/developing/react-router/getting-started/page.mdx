@@ -12,8 +12,8 @@ export const metadata = {
 
 ## Quick start
 
-To build your own [React Router](https://react.dev/learn/creating-a-react-app#react-router-v7) application using the
-Porsche Design System's React components, follow these steps:
+To build your own [React Router](https://reactrouter.com/start/framework/installation) application using the Porsche
+Design System's React components, follow these steps:
 
 ```bash
 # Create a new application by executing:
@@ -60,10 +60,12 @@ npm install @porsche-design-system/components-react
 
 ### Step 2
 
-Extend your `vite.config.ts` file to define the `process.browser` variable. This ensures that the correct Porsche Design
-System components are bundled for both client and server environments.
+Define the environment-based `process.browser` variable. This ensures that the correct Porsche Design System components
+are bundled for both client and server environments.
 
 ```typescript
+// vite.config.ts
+
 import { reactRouter } from '@react-router/dev/vite';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
@@ -85,6 +87,7 @@ Wrap your app with the `PorscheDesignSystemProvider`:
 
 ```tsx
 // app/root.tsx
+
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
 
 export default function App() {
@@ -98,12 +101,12 @@ export default function App() {
 
 ### Step 4 (recommended)
 
-Add a loader to your `app/root.tsx` file that imports the required Porsche Design System
-[Partials](/partials/introduction). Then, use the `useRouteLoaderData` hook to access and inject these partials into
-your app.
+Integrate Porsche Design System [Partials](/partials/introduction) to boost performance, reduce loading times, and
+minimize FOUC/FOUT.
 
 ```jsx
 // app/root.tsx
+
 import {
   Links,
   Meta,
@@ -165,10 +168,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 ### Step 5 (recommended)
 
-Set up Tailwind CSS with the Porsche Design System [Tailwind CSS Theme](/tailwindcss/introduction):
+Set up Tailwind CSS with the Porsche Design System [Tailwind CSS Theme](/tailwindcss/introduction) to ensure seamless
+styling consistency with Porsche's design principles:
 
 ```css
 /* app/app.css */
+
 @import 'tailwindcss';
 @import '@porsche-design-system/components-react/tailwindcss';
 ```
@@ -180,6 +185,7 @@ verify that the component and styles display correctly.
 
 ```tsx
 // routes/home.tsx
+
 import { PWordmark } from '@porsche-design-system/components-react/ssr'; // ensure to import from ssr subpackage!
 
 export default function Home() {

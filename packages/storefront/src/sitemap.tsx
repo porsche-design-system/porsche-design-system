@@ -235,6 +235,11 @@ export const sitemap: Routes = {
             path: '/developing/next-js/testing',
             type: 'TAB',
           },
+          'faq': {
+            name: 'FAQ',
+            path: '/developing/next-js/faq',
+            type: 'TAB',
+          },
         },
       },
       remix: {
