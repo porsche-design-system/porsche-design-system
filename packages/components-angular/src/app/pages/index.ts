@@ -22,11 +22,6 @@ export const pages = [
 export * from './core-initializer-prefixed.component';
 export * from './events.component';
 export * from './form-wrapper-binding.component';
-export * from './optional-properties.component';
-export * from './theme-injection.component';
-export * from './utilities.component';
-export * from './tabs-bar-navigation';
-export * from './tabs-bar-navigation-bug';
 
 /* Auto Generated Below */
 export * from './generated/core-initializer.component';
@@ -132,6 +127,7 @@ import { InputPasswordComponent } from './generated/input-password.component';
 import { InputSearchComponent } from './generated/input-search.component';
 import { InputTelComponent } from './generated/input-tel.component';
 import { InputTextComponent } from './generated/input-text.component';
+import { InputUrlComponent } from './generated/input-url.component';
 import { LinkComponent } from './generated/link.component';
 import { LinkPureComponent } from './generated/link-pure.component';
 import { LinkSocialComponent } from './generated/link-social.component';
@@ -346,6 +342,7 @@ export const generatedPages = [
   InputSearchComponent,
   InputTelComponent,
   InputTextComponent,
+  InputUrlComponent,
   LinkComponent,
   LinkPureComponent,
   LinkSocialComponent,
@@ -959,6 +956,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Input Text',
     path: 'input-text',
     component: InputTextComponent,
+  },
+  {
+    name: 'Input Url',
+    path: 'input-url',
+    component: InputUrlComponent,
   },
   {
     name: 'Link',

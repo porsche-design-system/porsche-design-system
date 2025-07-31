@@ -1,9 +1,9 @@
-import path from 'path';
-import { type Page, expect, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { schemes, themes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt';
 import * as globby from 'globby-legacy';
+import path from 'path';
 import { setupScenario } from '../../helpers';
 
 const sourceDirectory = path.resolve('src/pages');
@@ -44,7 +44,7 @@ const revertAutoFocus = async (page: Page, component: string): Promise<void> => 
 };
 
 test('should have certain amount of components', () => {
-  expect(components.length).toBe(65);
+  expect(components.length).toBe(66);
 });
 
 for (const component of components) {

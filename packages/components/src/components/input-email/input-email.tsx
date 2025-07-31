@@ -104,7 +104,7 @@ export class InputEmail {
   /** Indicates the validation or overall status of the input component. */
   @Prop() public state?: InputEmailState = 'none';
 
-  /** Controls the visibility of an email icon. */
+  /** Controls the visibility of the email icon. */
   @Prop() public indicator?: boolean = false;
 
   /** Dynamic feedback text for validation or status. */

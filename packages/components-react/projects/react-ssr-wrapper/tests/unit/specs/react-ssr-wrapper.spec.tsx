@@ -1,4 +1,4 @@
-import { type SlotMeta, getComponentMeta } from '@porsche-design-system/component-meta';
+import { getComponentMeta, type SlotMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { render } from '@testing-library/react';
 import { kebabCase, pascalCase } from 'change-case';
@@ -72,6 +72,7 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
       'p-input-text',
       'p-input-email',
       'p-input-tel',
+      'p-input-url',
       'p-input-search',
     ].includes(tagName)
   ) {
