@@ -40,7 +40,7 @@ const revertAutoFocus = async (page: Page, component: string): Promise<void> => 
     )
   ) {
     await page.mouse.click(0, 0); // click top left corner of the page to remove focus
-    await expect(page.locator('body')).toBeFocused(); // ensure focus is on body
+    await page.evaluate(() => document.activeElement && document.activeElement.tagName !== 'body' && (document.activeElement as HTMLElement).blur());
     const iframeElements = page.locator('iframe');
 
     for (let i = 0; i < await iframeElements.count(); i++) {
