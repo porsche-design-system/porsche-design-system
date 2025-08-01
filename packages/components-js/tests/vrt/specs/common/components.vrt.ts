@@ -46,13 +46,18 @@ const revertAutoFocus = async (page: Page, component: string): Promise<void> => 
     for (let i = 0; i < await iframeElements.count(); i++) {
       const frameLocator = iframeElements.nth(i).contentFrame()
 
-      const activeEl = frameLocator.locator(':focus');
       const isBodyFocused = await frameLocator.locator('body').evaluate(
         (body) => body === document.activeElement
       );
 
       if (!isBodyFocused) {
-        await activeEl.blur();
+        const focusedElements = frameLocator.locator(':focus'); // Fixes focus for p-input-search
+        for (let j = 0; j < await focusedElements.count(); j++) {
+          const el = focusedElements.nth(j);
+          try {
+            await el.blur();
+          } catch {}
+        }
         await expect(frameLocator.locator('body')).toBeFocused();
       }
     }
