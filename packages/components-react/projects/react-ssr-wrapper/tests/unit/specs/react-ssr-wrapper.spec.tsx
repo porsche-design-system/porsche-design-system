@@ -64,17 +64,7 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
   // and these are not allowed and throw an exception
   let props: any = hasSlot ? { children: renderChildren() } : null;
 
-  if (
-    [
-      'p-textarea',
-      'p-input-password',
-      'p-input-number',
-      'p-input-text',
-      'p-input-email',
-      'p-input-tel',
-      'p-input-search',
-    ].includes(tagName)
-  ) {
+  if (['p-textarea'].includes(tagName)) {
     props = {
       ...props,
       readOnly: true,
@@ -98,16 +88,12 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
   expect(container.firstElementChild).toMatchSnapshot();
   if (tagName === 'p-canvas') {
     expect(consoleSpy).toHaveBeenCalledTimes(1); // jsdom isn't able to parse @container queries
-  } else if (tagName === 'p-multi-select') {
-    // input-search gets value="" prop without onChange listener which throws error:
-    // "You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`."
-    expect(consoleSpy).toHaveBeenCalledTimes(1);
   } else {
     expect(consoleSpy).not.toHaveBeenCalled(); // detect react jsx errors/warnings
   }
 });
 
-describe.skip('manual test cases', () => {
+describe('manual test cases', () => {
   const testCases: Partial<Record<TagName, (() => JSX.Element)[]>> = {
     'p-checkbox-wrapper': [
       () => (

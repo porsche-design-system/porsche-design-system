@@ -223,6 +223,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             .replace(/(InputBase: FC<InputBaseProps> = \({)/, '$1 children, ')
             .replace(/(host={)host(})/g, '$1null$2')
             .replace(/onBlur=\{onBlur}/g, '')
+            .replace(/value={/, 'defaultValue={')
             .replace(/maxlength/, 'maxLength')
             .replace(/minlength/, 'minLength')
             .replace(/spellcheck/, 'spellCheck')
@@ -718,6 +719,7 @@ $&`
       } else if (tagName === 'p-textarea') {
         newFileContent = newFileContent
           .replace(/@AttachInternals\(\)/, '')
+          .replace(/value={/, 'defaultValue={')
           .replace(/maxlength/, 'maxLength')
           .replace(/minlength/, 'minLength')
           .replace(/readonly/, 'readOnly')
