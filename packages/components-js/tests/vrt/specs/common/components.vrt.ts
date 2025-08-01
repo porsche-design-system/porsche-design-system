@@ -1,9 +1,9 @@
-import path from 'path';
-import { type Page, expect, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { schemes, themes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt';
 import * as globby from 'globby-legacy';
+import path from 'path';
 import { setupScenario } from '../../helpers';
 
 const sourceDirectory = path.resolve('src/pages');
@@ -40,6 +40,25 @@ const revertAutoFocus = async (page: Page, component: string): Promise<void> => 
     )
   ) {
     await page.mouse.click(0, 0); // click top left corner of the page to remove focus
+    // Some components like p-select and p-multi-select set focus after opening which we need to remove for every iframe
+    await page.evaluate(() => document.activeElement && document.activeElement.tagName !== 'body' && (document.activeElement as HTMLElement).blur());
+    const iframeElements = page.locator('iframe');
+    for (let i = 0; i < await iframeElements.count(); i++) {
+      const frameLocator = iframeElements.nth(i).contentFrame()
+      const isBodyFocused = await frameLocator.locator('body').evaluate(
+        (body) => body === document.activeElement
+      );
+      if (!isBodyFocused) {
+        const focusedElements = frameLocator.locator(':focus'); // Fixes focus for p-input-search
+        for (let j = 0; j < await focusedElements.count(); j++) {
+          const el = focusedElements.nth(j);
+          try {
+            await el.blur();
+          } catch {}
+        }
+        await expect(frameLocator.locator('body')).toBeFocused();
+      }
+    }
   }
 };
 

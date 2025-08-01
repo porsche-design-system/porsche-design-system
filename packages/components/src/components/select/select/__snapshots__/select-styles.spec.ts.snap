@@ -125,7 +125,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {
@@ -348,7 +348,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {
@@ -572,7 +572,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {
@@ -796,7 +796,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {
@@ -1005,7 +1005,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {
@@ -1213,7 +1213,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {
@@ -1420,7 +1420,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {
@@ -1627,7 +1627,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {
@@ -1834,7 +1834,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {
@@ -2042,7 +2042,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {
@@ -2250,7 +2250,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {
@@ -2457,7 +2457,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {
@@ -2680,7 +2680,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {
@@ -2904,7 +2904,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {
@@ -3127,7 +3127,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {
@@ -3350,7 +3350,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {
@@ -3573,7 +3573,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {
@@ -3797,7 +3797,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {
@@ -4020,7 +4020,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {
@@ -4244,7 +4244,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {
@@ -4453,7 +4453,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {
@@ -4661,7 +4661,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {
@@ -4868,7 +4868,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {
@@ -5076,7 +5076,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {
@@ -5284,7 +5284,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {
@@ -5492,7 +5492,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=status] {
+  .no-results[role=option] {
     cursor: not-allowed;
   }
   .no-results__sr {

@@ -21,9 +21,11 @@
 <script>
   porscheDesignSystem.componentsReady().then(() => {
     document.querySelector('p-multi-select').shadowRoot.querySelector('label').click();
-
-    const inputElement = document.querySelector('p-multi-select').shadowRoot.querySelector('input');
-    inputElement.value = 'No matching option';
+    const inputElement = document
+      .querySelector('p-multi-select')
+      .shadowRoot.querySelector('p-input-search')
+      .shadowRoot.querySelector('input');
+    inputElement.value = 'no results';
     inputElement.dispatchEvent(new Event('input', { bubbles: true }));
   });
 </script>
