@@ -41,24 +41,29 @@ const revertAutoFocus = async (page: Page, component: string): Promise<void> => 
   ) {
     await page.mouse.click(0, 0); // click top left corner of the page to remove focus
     await expect(page.locator('body')).toBeFocused(); // ensure focus is on body
-    // Handle iframe focus
-    const iframes = page.locator('iframe');
-    for (let i = 0; i < await iframes.count(); i++) {
-      const iframe = iframes.nth(i);
-      await iframe.evaluate(() => {
-        if (document.activeElement && document.activeElement !== document.body) {
-          (document.activeElement as HTMLElement).blur();
-        }
-      });
+    const iframeElements = page.locator('iframe');
+
+    for (let i = 0; i < await iframeElements.count(); i++) {
+      const frameLocator = iframeElements.nth(i).contentFrame()
+
+      const activeEl = frameLocator.locator(':focus');
+      const isBodyFocused = await frameLocator.locator('body').evaluate(
+        (body) => body === document.activeElement
+      );
+
+      if (!isBodyFocused) {
+        await activeEl.blur();
+        await expect(frameLocator.locator('body')).toBeFocused();
+      }
     }
   }
 };
 
-test.skip('should have certain amount of components', () => {
+test('should have certain amount of components', () => {
   expect(components.length).toBe(65);
 });
 
-for (const component of ['multi-select']) {
+for (const component of components) {
   // executed in Chrome + Safari
   test.describe(component, () => {
     for (const theme of themes) {
