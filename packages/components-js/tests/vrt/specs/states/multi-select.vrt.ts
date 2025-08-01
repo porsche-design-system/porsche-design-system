@@ -122,11 +122,12 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     .locator('.value p-multi-select')
     .evaluateAll(async (selects) => selects.forEach((select: any) => (select.value = ['a'])));
 
-  await forceHoverState(page, '.hover p-multi-select >>> input');
+  await forceHoverState(page, '.hover p-multi-select >>> button');
   await forceHoverState(page, '.hover p-multi-select span a');
   await forceFocusVisibleState(page, '.focus p-multi-select span a');
-  await forceFocusState(page, '.focus p-multi-select >>> input');
-  await forceFocusHoverState(page, '.focus-hover p-multi-select >>> input');
+  await forceFocusState(page, '.focus p-multi-select >>> button');
+  await forceFocusHoverState(page, '.focus-hover p-multi-select >>> button');
+  await forceFocusVisibleState(page, '.focus-hover p-multi-select >>> button');
   await forceFocusHoverState(page, '.focus-hover p-multi-select span a');
 };
 
