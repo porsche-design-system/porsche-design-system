@@ -104,6 +104,7 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
   await forceFocusState(page, '.focus select');
   await forceFocusState(page, '.focus textarea');
   await forceFocusVisibleState(page, '.focus p-select >>> button');
+  await forceFocusVisibleState(page, '.focus p-multi-select >>> button');
   await forceFocusVisibleState(page, '.focus p-checkbox >>> input');
   await forceFocusState(page, '.focus p-multi-select >>> button');
   await forceFocusState(page, `.focus p-pin-code >>> #${valueOfForAttribute}`);
