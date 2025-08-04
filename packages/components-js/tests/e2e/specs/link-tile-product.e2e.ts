@@ -48,14 +48,14 @@ test.describe('like button', () => {
     const likeButton = getLikeButton(page);
 
     await expect.poll(() => likeButton).toBeDefined();
-    await expect.poll(async () => await getProperty(host, 'liked')).toBe(false);
-    await expect.poll(async () => await getProperty(likeButton, 'icon')).toBe('heart');
+    await expect(host).toHaveJSProperty('liked', false);
+    await expect(likeButton).toHaveJSProperty('icon', 'heart');
 
     await setProperty(host, 'liked', true);
     await waitForStencilLifecycle(page);
 
-    await expect.poll(async () => await getProperty(host, 'liked')).toBe(true);
-    await expect.poll(async () => await getProperty(likeButton, 'icon')).toBe('heart-filled');
+    await expect(host).toHaveJSProperty('liked', true);
+    await expect(likeButton).toHaveJSProperty('icon', 'heart-filled');
   });
   test('should emit like event on like button click', async ({ page }) => {
     await initLinkTileProduct(page);
@@ -67,8 +67,8 @@ test.describe('like button', () => {
       .toBe(0);
     const likeButton = getLikeButton(page);
     await expect.poll(() => likeButton).toBeDefined();
-    await expect.poll(async () => await getProperty(host, 'liked')).toBe(false);
-    await expect.poll(async () => await getProperty(likeButton, 'icon')).toBe('heart');
+    await expect(host).toHaveJSProperty('liked', false);
+    await expect(likeButton).toHaveJSProperty('icon', 'heart');
 
     await likeButton.click();
     await waitForStencilLifecycle(page);

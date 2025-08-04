@@ -1,4 +1,5 @@
-import { expect, type Locator, test, type Page } from '@playwright/test';
+import { expect, type Locator, type Page, test } from '@playwright/test';
+import type { Components } from '@porsche-design-system/components';
 import {
   CSS_ANIMATION_DURATION,
   getAttribute,
@@ -11,7 +12,6 @@ import {
   sleep,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { Components } from '@porsche-design-system/components';
 
 type InitOptions = {
   amount?: number;
@@ -87,12 +87,12 @@ test.describe('slotted content changes', () => {
     await initScroller(page, { amount: 3, isWrapped: true });
     const { actionNext } = await getActionContainers(page);
 
-    await expect.poll(async () => await getElementStyle(actionNext, 'visibility')).toBe('hidden');
+    await expect(actionNext).toBeHidden();
 
     await addNewButton(page);
     await waitForStencilLifecycle(page);
 
-    await expect.poll(async () => await getElementStyle(actionNext, 'visibility')).toBe('visible');
+    await expect(actionNext).toBeVisible();
   });
 });
 

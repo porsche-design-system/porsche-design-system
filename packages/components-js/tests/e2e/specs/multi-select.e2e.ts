@@ -721,7 +721,7 @@ test.describe('keyboard and click events', () => {
 
     await page.keyboard.press('Tab');
 
-    await expect.poll(async () => await getDropdownDisplay(page)).toBe('none');
+    await expect(getDropdown(page)).toBeHidden();
 
     await page.keyboard.press('Space');
     await waitForStencilLifecycle(page);

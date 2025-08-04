@@ -1,5 +1,6 @@
-import type { Locator, Page } from 'playwright';
 import { expect, test } from '@playwright/test';
+import type { FormState } from '@porsche-design-system/components';
+import type { Locator, Page } from 'playwright';
 import {
   addEventListener,
   clickElementPosition,
@@ -18,7 +19,6 @@ import {
   waitForImproveButtonHandlingForCustomElement,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { FormState } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.locator('p-text-field-wrapper');
 const getInput = (page: Page) => page.locator('input');
@@ -220,33 +220,30 @@ test.describe('input type="search"', () => {
   });
 
   test.describe('clear functionality', () => {
-    const isClearButtonVisible = async (page: Page): Promise<boolean> => {
-      const clearButton = getToggleOrClearButtonHost(page);
-      return !(await getProperty(clearButton, 'hidden'));
-    };
+    const clearButton = async (page: Page) => getToggleOrClearButtonHost(page);
 
     test('should show clear button on keyboard typed input.value', async ({ page }) => {
       await initTextField(page, { type: 'search' });
       const input = getInput(page);
 
-      await expect.poll(async () => await isClearButtonVisible(page)).toBe(false);
+      await expect(await clearButton(page)).toBeHidden();
 
       await input.focus();
       await page.keyboard.type('search-term');
       await waitForStencilLifecycle(page);
 
-      await expect.poll(async () => await isClearButtonVisible(page)).toBe(true);
+      await expect(await clearButton(page)).toBeVisible();
     });
 
     test('should show clear button on programmatically set input.value', async ({ page }) => {
       await initTextField(page, { type: 'search' });
       const input = getInput(page);
 
-      await expect.poll(async () => await isClearButtonVisible(page)).toBe(false);
+      await expect(await clearButton(page)).toBeHidden();
       await setProperty(input, 'value', 'value');
       await waitForStencilLifecycle(page);
 
-      await expect.poll(async () => await isClearButtonVisible(page)).toBe(true);
+      await expect(await clearButton(page)).toBeVisible();
     });
 
     test('should reset input value on keydown Escape', async ({ page }) => {
@@ -256,30 +253,29 @@ test.describe('input type="search"', () => {
       await page.keyboard.type('search-term');
       await waitForStencilLifecycle(page);
 
-      await expect.poll(async () => await isClearButtonVisible(page)).toBe(true);
+      await expect(await clearButton(page)).toBeVisible();
 
       await page.keyboard.press('Escape');
       await waitForStencilLifecycle(page);
 
       expect(await getProperty(input, 'value')).toBe('');
-      await expect.poll(async () => await isClearButtonVisible(page)).toBe(false);
+      await expect(await clearButton(page)).toBeHidden();
     });
 
     test('should reset input value on clear-button click', async ({ page }) => {
       await initTextField(page, { type: 'search' });
       const input = getInput(page);
-      const clearButton = getToggleOrClearButton(page);
       await input.focus();
       await page.keyboard.type('search-term');
       await waitForStencilLifecycle(page);
 
-      await expect.poll(async () => await isClearButtonVisible(page)).toBe(true);
+      await expect(await clearButton(page)).toBeVisible();
 
-      await clearButton.click();
+      await (await clearButton(page)).click();
       await waitForStencilLifecycle(page);
 
       expect(await getProperty(input, 'value')).toBe('');
-      await expect.poll(async () => await isClearButtonVisible(page)).toBe(false);
+      await expect(await clearButton(page)).toBeHidden();
     });
   });
 
@@ -291,17 +287,17 @@ test.describe('input type="search"', () => {
       const input = getInput(page);
       const buttonHost = getSubmitButtonHost(page);
 
-      await expect.poll(async () => await isButtonDisabled(buttonHost)).toBe(false);
+      await expect(buttonHost).toHaveJSProperty('disabled', false);
 
       await setProperty(input, 'disabled', true);
       await waitForStencilLifecycle(page);
 
-      await expect.poll(async () => await isButtonDisabled(buttonHost)).toBe(true);
+      await expect(buttonHost).toHaveJSProperty('disabled', true);
 
       await setProperty(input, 'disabled', false);
       await waitForStencilLifecycle(page);
 
-      await expect.poll(async () => await isButtonDisabled(buttonHost)).toBe(false);
+      await expect(buttonHost).toHaveJSProperty('disabled', false);
     });
 
     test('should disable submit button when input is set to readonly programmatically', async ({ page }) => {
@@ -309,17 +305,17 @@ test.describe('input type="search"', () => {
       const input = getInput(page);
       const buttonHost = getSubmitButtonHost(page);
 
-      await expect.poll(async () => await isButtonDisabled(buttonHost)).toBe(false);
+      await expect(buttonHost).toHaveJSProperty('disabled', false);
 
       await setProperty(input, 'readOnly', true);
       await waitForStencilLifecycle(page);
 
-      await expect.poll(async () => await isButtonDisabled(buttonHost)).toBe(true);
+      await expect(buttonHost).toHaveJSProperty('disabled', true);
 
       await setProperty(input, 'readOnly', false);
       await waitForStencilLifecycle(page);
 
-      await expect.poll(async () => await isButtonDisabled(buttonHost)).toBe(false);
+      await expect(buttonHost).toHaveJSProperty('disabled', false);
     });
 
     test('should submit parent form on search button click', async ({ page }) => {

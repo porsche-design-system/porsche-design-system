@@ -116,14 +116,14 @@ test.describe('slotted content changes', () => {
 
     const [firstTabsItem, secondTabsItem] = await getAllTabsItems(page);
 
-    await expect.poll(() => isHidden(firstTabsItem)).toBe(false);
-    await expect.poll(() => isHidden(secondTabsItem)).toBe(true);
+    await expect(firstTabsItem).not.toHaveAttribute('hidden');
+    await expect(secondTabsItem).toHaveAttribute('hidden');
 
     await page.getByRole('tab').nth(1).click();
     await waitForStencilLifecycle(page);
 
-    await expect.poll(() => isHidden(secondTabsItem)).toBe(false);
-    await expect.poll(() => isHidden(firstTabsItem)).toBe(true);
+    await expect(secondTabsItem).not.toHaveAttribute('hidden');
+    await expect(firstTabsItem).toHaveAttribute('hidden');
   });
 
   test('should display same active p-tabs-item when last p-tabs-item is removed', async ({ page }) => {
@@ -138,8 +138,8 @@ test.describe('slotted content changes', () => {
 
     const [firstTabsItem, secondTabsItem] = await getAllTabsItems(page);
 
-    await expect.poll(() => isHidden(secondTabsItem)).toBe(false);
-    await expect.poll(() => isHidden(firstTabsItem)).toBe(true);
+    await expect(secondTabsItem).not.toHaveAttribute('hidden');
+    await expect(firstTabsItem).toHaveAttribute('hidden');
   });
 
   test('should display no tab when active p-tabs-item on last position is removed', async ({ page }) => {
@@ -154,8 +154,8 @@ test.describe('slotted content changes', () => {
 
     const [firstTabsItem, secondTabsItem] = await getAllTabsItems(page);
 
-    await expect.poll(() => isHidden(secondTabsItem)).toBe(true);
-    await expect.poll(() => isHidden(firstTabsItem)).toBe(true);
+    await expect(secondTabsItem).toHaveAttribute('hidden');
+    await expect(firstTabsItem).toHaveAttribute('hidden');
   });
 
   test('should display no tab when p-tabs-item on last position is active and p-tabs-item in the middle is removed', async ({
@@ -172,8 +172,8 @@ test.describe('slotted content changes', () => {
 
     const [firstTabsItem, secondTabsItem] = await getAllTabsItems(page);
 
-    await expect.poll(() => isHidden(secondTabsItem)).toBe(true);
-    await expect.poll(() => isHidden(firstTabsItem)).toBe(true);
+    await expect(secondTabsItem).toHaveAttribute('hidden');
+    await expect(firstTabsItem).toHaveAttribute('hidden');
   });
 
   test('should display next tab when p-tabs-item in the middle is active and removed', async ({ page }) => {
@@ -188,8 +188,8 @@ test.describe('slotted content changes', () => {
 
     const [firstTabsItem, secondTabsItem] = await getAllTabsItems(page);
 
-    await expect.poll(() => isHidden(secondTabsItem)).toBe(false);
-    await expect.poll(() => isHidden(firstTabsItem)).toBe(true);
+    await expect(secondTabsItem).not.toHaveAttribute('hidden');
+    await expect(firstTabsItem).toHaveAttribute('hidden');
   });
 });
 
