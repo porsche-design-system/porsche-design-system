@@ -53,9 +53,8 @@ export const getComponentCss = (
       },
       ...preventFoucOfNestedElementsStyles,
       button: {
-        ...getButtonJssStyle('multi-select', isOpen, isDisabled, state, false, scalingVar, theme),
+        ...getButtonJssStyle('multi-select', isOpen, isDisabled, state, scalingVar, theme),
         '& span': getButtonLabelJssStyle,
-        '& > *': { gridRow: 1 },
       },
       '[popover]': getPopoverJssStyle(isOpen, 1, 44, theme),
     },

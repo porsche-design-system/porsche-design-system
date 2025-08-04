@@ -1,40 +1,25 @@
 import { autoUpdate } from '@floating-ui/dom';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
-import {
-  type SelectDropdownDirection,
-  type SelectOptgroup,
-  type SelectOption,
-  type SelectState,
-  type SelectUpdateEventDetail,
-  getSelectedOptionString,
-  setSelectedOption,
-  syncSelectChildrenProps,
-  updateSelectOptions,
-} from './select-utils';
-
 import {
   AttachInternals,
   Component,
   Element,
   Event,
   type EventEmitter,
+  forceUpdate,
+  h,
   type JSX,
   Listen,
   Prop,
   State,
   Watch,
-  forceUpdate,
-  h,
 } from '@stencil/core';
 import { getSlottedAnchorStyles } from '../../../styles';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import {
   AllowedTypes,
-  FORM_STATES,
-  SELECT_DROPDOWN_DIRECTIONS,
-  SELECT_SEARCH_TIMEOUT,
-  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
+  FORM_STATES,
   getActionFromKeyboardEvent,
   getComboboxAriaAttributes,
   getComboboxFilterAriaAttributes,
@@ -43,6 +28,7 @@ import {
   getHighlightedSelectOptionIndex,
   getMatchingSelectOptionIndex,
   getPrefixedTagNames,
+  getSelectedSelectOptionIndex,
   getShadowRootHTMLElement,
   getUpdatedIndex,
   getUsableSelectOptions,
@@ -51,16 +37,30 @@ import {
   isClickOutside,
   isElementOfKind,
   optionListUpdatePosition,
+  SELECT_DROPDOWN_DIRECTIONS,
+  SELECT_SEARCH_TIMEOUT,
   setNextSelectOptionHighlighted,
+  THEMES,
   throwIfElementIsNotOfKind,
   updateFilterResults,
-  validateProps, getSelectedSelectOptionIndex,
+  validateProps,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
 import { labelId } from '../../common/label/label-utils';
-import { StateMessage, messageId } from '../../common/state-message/state-message';
+import { messageId, StateMessage } from '../../common/state-message/state-message';
 import type { InputSearchInputEventDetail } from '../../input-search/input-search-utils';
 import { getComponentCss } from './select-styles';
+import {
+  getSelectedOptionString,
+  type SelectDropdownDirection,
+  type SelectOptgroup,
+  type SelectOption,
+  type SelectState,
+  type SelectUpdateEventDetail,
+  setSelectedOption,
+  syncSelectChildrenProps,
+  updateSelectOptions,
+} from './select-utils';
 
 const propTypes: PropTypes<typeof Select> = {
   label: AllowedTypes.string,
@@ -259,8 +259,7 @@ export class Select {
       this.hideLabel,
       this.state,
       this.compact,
-      this.theme,
-      !!this.slottedImagePath
+      this.theme
     );
     syncSelectChildrenProps([...this.selectOptions, ...this.selectOptgroups], this.theme);
 

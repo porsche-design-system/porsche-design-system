@@ -35,8 +35,7 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   compact: boolean,
-  theme: Theme,
-  hasSlottedImage: boolean
+  theme: Theme
 ): string => {
   const scalingVar = `var(${cssVarInternalSelectScaling}, ${compact ? 0.5 : 1})`;
   const { contrastMediumColor, backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
@@ -58,7 +57,7 @@ export const getComponentCss = (
       },
       ...preventFoucOfNestedElementsStyles,
       button: {
-        ...getButtonJssStyle('select', isOpen, isDisabled, state, hasSlottedImage, scalingVar, theme),
+        ...getButtonJssStyle('select', isOpen, isDisabled, state, scalingVar, theme),
         '& img': getButtonImageJssStyle,
         '& span': getButtonLabelJssStyle,
       },
