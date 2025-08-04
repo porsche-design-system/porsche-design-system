@@ -20,7 +20,6 @@ import {
   applyConstructableStylesheetStyles,
   attachComponentCss,
   FORM_STATES,
-  getActionFromKeyboardEvent,
   getComboboxAriaAttributes,
   getComboboxFilterAriaAttributes,
   getHasNativePopoverSupport,
@@ -28,6 +27,7 @@ import {
   getHighlightedSelectOptionIndex,
   getMatchingSelectOptionIndex,
   getPrefixedTagNames,
+  getSelectActionFromKeyboardEvent,
   getSelectedSelectOptionIndex,
   getShadowRootHTMLElement,
   getUpdatedIndex,
@@ -380,7 +380,7 @@ export class Select {
       return;
     }
 
-    const action = getActionFromKeyboardEvent(event, this.isOpen);
+    const action = getSelectActionFromKeyboardEvent(event, this.isOpen);
 
     switch (action) {
       case 'Last':

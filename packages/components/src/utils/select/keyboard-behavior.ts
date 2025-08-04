@@ -1,18 +1,7 @@
 import { forceUpdate } from '@stencil/core';
 import type { HTMLStencilElement } from '@stencil/core/internal';
-
-type SelectAction =
-  | 'Close' // Close select dropdown
-  | 'CloseSelect' // Close and select currently highlighted option
-  | 'First' // Highlight first option
-  | 'Last' // Highlight last option
-  | 'Next' // Highlight next option
-  | 'Open' // Open select dropdown
-  | 'PageDown' // Go 10 options down or to the last option
-  | 'PageUp' // Go 10 options up or to the first option
-  | 'Previous' // Highlight the previous option
-  | 'Select' // Select the currently highlighted option
-  | 'Type'; // Jump to the matching option by searching
+import type { MultiSelectAction } from './getMultiSelectActionFromKeyboardEvent';
+import type { SelectAction } from './getSelectActionFromKeyboardEvent';
 
 export type Option = HTMLElement &
   HTMLStencilElement & {
@@ -27,114 +16,6 @@ export const SELECT_SEARCH_TIMEOUT: number = 500;
 const PAGE_UP_DOWN_STEP_AMOUNT: number = 10;
 
 /**
- * Determines the action to be taken based on a keyboard event and the state of the select menu.
- *
- * @param {KeyboardEvent} event - The keyboard event triggering the action.
- * @param {boolean} menuOpen - A boolean indicating whether the select menu is open or closed.
- * @returns {SelectAction} - The corresponding action to be performed.
- */
-export const getMultiSelectActionFromKeyboardEvent = (
-  event: KeyboardEvent,
-  menuOpen: boolean
-): SelectAction | undefined => {
-  const { key, altKey } = event;
-  const openKeys = ['ArrowDown', 'ArrowUp', 'Enter', ' ']; // all keys that will do the default open action
-  // handle opening when closed
-  if (!menuOpen && openKeys.includes(key)) {
-    return 'Open';
-  }
-
-  // home and end move the selected option when open or closed
-  if (key === 'Home') {
-    return 'First';
-  }
-  if (key === 'End') {
-    return 'Last';
-  }
-
-  // handle keys when open
-  if (menuOpen) {
-    if (key === 'ArrowUp' && altKey) {
-      return 'CloseSelect';
-    }
-    if (key === 'ArrowDown' && !altKey) {
-      return 'Next';
-    }
-    if (key === 'ArrowUp') {
-      return 'Previous';
-    }
-    if (key === 'PageUp') {
-      return 'PageUp';
-    }
-    if (key === 'PageDown') {
-      return 'PageDown';
-    }
-    if (key === 'Escape' || key === 'Tab') {
-      return 'Close';
-    }
-    if (key === 'Enter' || key === ' ') {
-      return 'CloseSelect';
-    }
-  }
-  return undefined;
-};
-
-/**
- * Determines the action to be taken based on a keyboard event and the state of the select menu.
- *
- * @param {KeyboardEvent} event - The keyboard event triggering the action.
- * @param {boolean} menuOpen - A boolean indicating whether the select menu is open or closed.
- * @returns {SelectAction} - The corresponding action to be performed.
- */
-export const getActionFromKeyboardEvent = (event: KeyboardEvent, menuOpen: boolean): SelectAction | undefined => {
-  const { key, altKey, ctrlKey, metaKey } = event;
-  const openKeys = ['ArrowDown', 'ArrowUp', 'Enter', ' ']; // all keys that will do the default open action
-  // handle opening when closed
-  if (!menuOpen && openKeys.includes(key)) {
-    return 'Open';
-  }
-
-  // home and end move the selected option when open or closed
-  if (key === 'Home') {
-    return 'First';
-  }
-  if (key === 'End') {
-    return 'Last';
-  }
-
-  // handle typing characters when open or closed
-  if (key === 'Backspace' || key === 'Clear' || (key.length === 1 && key !== ' ' && !altKey && !ctrlKey && !metaKey)) {
-    return 'Type';
-  }
-
-  // handle keys when open
-  if (menuOpen) {
-    if (key === 'ArrowUp' && altKey) {
-      return 'CloseSelect';
-    }
-    if (key === 'ArrowDown' && !altKey) {
-      return 'Next';
-    }
-    if (key === 'ArrowUp') {
-      return 'Previous';
-    }
-    if (key === 'PageUp') {
-      return 'PageUp';
-    }
-    if (key === 'PageDown') {
-      return 'PageDown';
-    }
-    if (key === 'Escape') {
-      return 'Close';
-    }
-    if (key === 'Enter' || key === ' ' || key === 'Tab') {
-      return 'CloseSelect';
-    }
-  }
-  return undefined;
-};
-
-/**
  * Gets the updated index based on the current index, maximum index, and the select action.
  *
  * @param {number} currentIndex - The current index in the list of options.
@@ -142,7 +23,11 @@ export const getActionFromKeyboardEvent = (event: KeyboardEvent, menuOpen: boole
  * @param {SelectAction} action - The select action indicating how to update the index.
  * @returns {number} - The updated index after applying the specified action.
  */
-export const getUpdatedIndex = (currentIndex: number, maxIndex: number, action: SelectAction): number => {
+export const getUpdatedIndex = (
+  currentIndex: number,
+  maxIndex: number,
+  action: SelectAction | MultiSelectAction
+): number => {
   // No options available, return -1
   if (maxIndex === -1) return -1;
 

@@ -1,4 +1,4 @@
-import {autoUpdate} from '@floating-ui/dom';
+import { autoUpdate } from '@floating-ui/dom';
 import {
   AttachInternals,
   Component,
@@ -13,8 +13,8 @@ import {
   State,
   Watch,
 } from '@stencil/core';
-import {getSlottedAnchorStyles} from '../../../styles';
-import type {BreakpointCustomizable, PropTypes, Theme} from '../../../types';
+import { getSlottedAnchorStyles } from '../../../styles';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import {
   AllowedTypes,
   applyConstructableStylesheetStyles,
@@ -44,11 +44,11 @@ import {
   updateFilterResults,
   validateProps,
 } from '../../../utils';
-import {Label} from '../../common/label/label';
-import {labelId} from '../../common/label/label-utils';
-import {messageId, StateMessage} from '../../common/state-message/state-message';
-import type {InputSearchInputEventDetail} from '../../input-search/input-search-utils';
-import {getComponentCss} from './multi-select-styles';
+import { Label } from '../../common/label/label';
+import { labelId } from '../../common/label/label-utils';
+import { messageId, StateMessage } from '../../common/state-message/state-message';
+import type { InputSearchInputEventDetail } from '../../input-search/input-search-utils';
+import { getComponentCss } from './multi-select-styles';
 import {
   getSelectedOptionsString,
   getSelectedOptionValues,
@@ -352,7 +352,6 @@ export class MultiSelect {
     forceUpdate(this.host);
   };
 
-
   private onComboClick = (_: MouseEvent): void => {
     this.updateMenuState(!this.isOpen);
   };
@@ -415,7 +414,7 @@ export class MultiSelect {
         this.filterInputElement.ariaActiveDescendantElement = getHighlightedSelectOption(this.multiSelectOptions);
         break;
       }
-      case 'CloseSelect': {
+      case 'Select': {
         event.preventDefault();
         this.updateSelectedOption(getHighlightedSelectOption(this.multiSelectOptions));
         break;
