@@ -1,9 +1,9 @@
 <div class="root">
-  <label class="label" id="label" for="value"> </label>
+  <label class="label" id="label" for="button"> </label>
   <button
     type="button"
     role="combobox"
-    id="value"
+    id="button"
     aria-labelledby="label"
     aria-haspopup="listbox"
     aria-expanded="false"

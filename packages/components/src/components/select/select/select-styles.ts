@@ -9,6 +9,7 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import { formElementPaddingHorizontal, getCalculatedFormElementPaddingHorizontal } from '../../../styles/form-styles';
+import { getNoResultsOptionJssStyle } from '../../../styles/option-styles';
 import {
   getButtonImageJssStyle,
   getButtonJssStyle,
@@ -23,6 +24,8 @@ import { getCss, isThemeDark } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
+import { cssVarInternalOptgroupScaling } from '../../optgroup/optgroup-styles';
+import { cssVarInternalSelectOptionScaling } from '../select-option/select-option-styles';
 
 export const cssVarInternalSelectScaling = '--p-internal-select-scaling';
 
@@ -32,13 +35,12 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   compact: boolean,
-  theme: Theme,
-  hasSlottedImage: boolean
+  theme: Theme
 ): string => {
   const scalingVar = `var(${cssVarInternalSelectScaling}, ${compact ? 0.5 : 1})`;
+  const { contrastMediumColor, backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
   const { contrastMediumColor: contrastMediumColorDark, backgroundSurfaceColor: backgroundSurfaceColorDark } =
     getThemedColors('dark');
-  const { contrastMediumColor, backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
@@ -49,15 +51,13 @@ export const getComponentCss = (
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
+          [`${cssVarInternalSelectOptionScaling}`]: scalingVar,
+          [`${cssVarInternalOptgroupScaling}`]: scalingVar,
         }),
       },
-      '::slotted(*)': addImportantToEachRule({
-        '--p-internal-select-option-scaling': scalingVar,
-        '--p-internal-optgroup-scaling': scalingVar,
-      }),
       ...preventFoucOfNestedElementsStyles,
       button: {
-        ...getButtonJssStyle('select', isOpen, isDisabled, state, hasSlottedImage, scalingVar, theme),
+        ...getButtonJssStyle('select', isOpen, isDisabled, state, scalingVar, theme),
         '& img': getButtonImageJssStyle,
         '& span': getButtonLabelJssStyle,
       },
@@ -87,6 +87,7 @@ export const getComponentCss = (
     },
     'no-results': {
       ...getOptionJssStyle('select-option', scalingVar, theme),
+      ...getNoResultsOptionJssStyle(),
       color: contrastMediumColor,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: contrastMediumColorDark,
