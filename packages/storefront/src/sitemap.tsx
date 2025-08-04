@@ -221,7 +221,7 @@ export const sitemap: Routes = {
         },
       },
       'next-js': {
-        name: 'Next JS',
+        name: 'Next.js',
         path: '/developing/next-js',
         type: 'PAGE',
         subPaths: {
@@ -230,21 +230,19 @@ export const sitemap: Routes = {
             path: '/developing/next-js/getting-started',
             type: 'TAB',
           },
+          'demo': {
+            name: 'Demo',
+            path: '/developing/next-js/demo',
+            type: 'TAB',
+          },
           testing: {
             name: 'Testing',
             path: '/developing/next-js/testing',
             type: 'TAB',
           },
-        },
-      },
-      remix: {
-        name: 'Remix',
-        path: '/developing/remix',
-        type: 'PAGE',
-        subPaths: {
-          'getting-started': {
-            name: 'Getting Started',
-            path: '/developing/remix/getting-started',
+          'faq': {
+            name: 'FAQ',
+            path: '/developing/next-js/faq',
             type: 'TAB',
           },
         },
@@ -257,6 +255,28 @@ export const sitemap: Routes = {
           'getting-started': {
             name: 'Getting Started',
             path: '/developing/react-router/getting-started',
+            type: 'TAB',
+          },
+          'demo': {
+            name: 'Demo',
+            path: '/developing/react-router/demo',
+            type: 'TAB',
+          },
+          'faq': {
+            name: 'FAQ',
+            path: '/developing/react-router/faq',
+            type: 'TAB',
+          },
+        },
+      },
+      remix: {
+        name: 'Remix',
+        path: '/developing/remix',
+        type: 'PAGE',
+        subPaths: {
+          'getting-started': {
+            name: 'Getting Started',
+            path: '/developing/remix/getting-started',
             type: 'TAB',
           },
         },

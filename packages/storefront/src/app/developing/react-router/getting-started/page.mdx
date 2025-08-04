@@ -8,56 +8,64 @@ export const metadata = {
 
 # React Router
 
-<TableOfContents headings={['Quick start','Integration','When are Porsche Design System components (re-)hydrated?','How do Porsche Design System components work in detail?']} />
+<TableOfContents headings={['Quick start','Integration']} />
 
 ## Quick start
 
-To build your own **React Router** application with the **React** components of the Porsche Design System, follow these
-steps after the setup of your React Router app:
-
-- Install the Porsche Design System within your project directory:
+To build your own [React Router](https://reactrouter.com/start/framework/installation) application using the Porsche
+Design System's React components, follow these steps:
 
 ```bash
-# install with yarn:
-yarn add @porsche-design-system/components-react
+# Create a new application by executing:
+npx create-react-router@latest
 
-# install with npm:
-npm install @porsche-design-system/components-react
+# Follow the installation wizard to set everything up:
+✔ Where should we create your new project? "./my-app"
+✔ Initialize a new git repository? "Yes"
+✔ Install dependencies with npm? "Yes"
 ```
 
-You are ready to start building your own application.
+You're all set! Start building your own application now.
 
 ## Integration
 
+The following integration example uses a standard React Router setup.
+
 <Notification heading="Attention" headingTag="h3" state="warning">
-  The following examples use the **SSR** sub-package of **@porsche-design-system/components-react/ssr**.
+  The following examples use the **SSR** sub-package from `@porsche-design-system/components-react/ssr`.
 
-This sub-package is a special build of the Porsche Design System Components that renders different markup on the server
-than in the browser. While this breaks the rule of SSR/SSG where browser markup should always be identical to server
-markup, this is the only way to achieve SSR/SSG with web components and Shadow DOM.
+This sub-package is a specialized build of the Porsche Design System components that renders different markup on the
+server compared to the browser. While this deviates from traditional SSR/SSG rules (where browser and server markup
+should be identical), it's necessary to enable SSR/SSG with web components and Shadow DOM.
 
-The two environments are detected by the **process.browser** flag which is replaced with a boolean value at build time.
-In the browser the components are essentially the "regular" React components of
-**@porsche-design-system/components-react**.
+The two environments are detected via the `process.browser` flag, which is replaced with a boolean value at build time.
+In the browser, the components behave like the standard React components from `@porsche-design-system/components-react`.
 
-On the server the behavior is different. Here the relevant markup and styles (e.g. no hover or focus styles) are
-rendered into a [Declarative Shadow DOM](https://web.dev/declarative-shadow-dom) which is converted into a real Shadow
-DOM by modern browsers without any JavaScript. This is all we need for the initial render. Once the client code is
-loaded and executed, the Porsche Design System Components initialize just like normal.
+On the server, the behavior differs: Relevant markup and styles are rendered into a Declarative Shadow DOM, which modern
+browsers convert to a real Shadow DOM without JavaScript. This handles the initial render efficiently. Once the client
+code loads and executes, the Porsche Design System components initialize as usual.
 
-**It is crucial that dead code elimination is active for the client build or otherwise the server code might sneak into
-the browser.**
+**Important:** Ensure dead code elimination is enabled for the client build to prevent server-side code from leaking
+into the browser bundle.
 
 </Notification>
 
-The following project is a standard React Router setup with the following adaptions.
-
 ### Step 1
 
-Extend `vite.config.ts` to define the `process.browser` variable in order to ensure the correct Porsche Design System
-components will be bundled into client & server.
+Install the Porsche Design System within your project directory.
+
+```bash
+npm install @porsche-design-system/components-react
+```
+
+### Step 2
+
+Define the environment-based `process.browser` variable. This ensures that the correct Porsche Design System components
+are bundled for both client and server environments.
 
 ```typescript
+// vite.config.ts
+
 import { reactRouter } from '@react-router/dev/vite';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
@@ -73,13 +81,32 @@ export default defineConfig(({ isSsrBuild }) => {
 });
 ```
 
-### Step 2
+### Step 3
 
-Add a loader to your `app/root.tsx` that includes the required Porsche Design System partials. Then, use the
-`useRouteLoaderData` hook to access and inject these partials into your app.
+Wrap your app with the `PorscheDesignSystemProvider`:
+
+```tsx
+// app/root.tsx
+
+import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr'; // ensure to import from ssr subpackage!
+
+export default function App() {
+  return (
+    <PorscheDesignSystemProvider>
+      <Outlet />
+    </PorscheDesignSystemProvider>
+  );
+}
+```
+
+### Step 4 (recommended)
+
+Integrate Porsche Design System [Partials](/partials/introduction) to boost performance, reduce loading times, and
+minimize FOUC/FOUT.
 
 ```jsx
 // app/root.tsx
+
 import {
   Links,
   Meta,
@@ -111,7 +138,7 @@ export async function loader() {
         {/* preloads Porsche icons (=> minimize FOUC) */}
         {getIconLinks({ format: 'jsx' })}
         {/* injects favicon, apple touch icons, android touch icons, etc. */}
-        {getMetaTagsAndIconLinks({ appTitle: 'Sample Project React Router', format: 'jsx' })}
+        {getMetaTagsAndIconLinks({ appTitle: 'Porsche', format: 'jsx' })}
       </>
     ),
   };
@@ -139,48 +166,37 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 ```
 
-### Step 3
+### Step 5 (recommended)
 
-Wrap your app with the necessary `PorscheDesignSystemProvider`:
+Set up Tailwind CSS with the Porsche Design System [Tailwind CSS Theme](/tailwindcss/introduction) to ensure seamless
+styling consistency with Porsche's design principles:
 
-```tsx
-// app/root.tsx
-import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
+```css
+/* app/app.css */
 
-export default function App() {
-  return (
-    <div id="app">
-      <PorscheDesignSystemProvider>
-        <Outlet />
-      </PorscheDesignSystemProvider>
-    </div>
-  );
-}
+@import 'tailwindcss';
+@import '@porsche-design-system/components-react/tailwindcss';
 ```
 
-### Step 4
+### Step 6
 
-Add a Porsche Design System component, e.g. `PHeading`:
+Add a Porsche Design System component (e.g., `<PWordmark />`) with some Tailwind CSS styles. Then, run `npm run dev` and
+verify that the component and styles display correctly.
 
 ```tsx
 // routes/home.tsx
-import { PHeading } from '@porsche-design-system/components-react/ssr';
+
+import { PWordmark } from '@porsche-design-system/components-react/ssr'; // ensure to import from ssr subpackage!
 
 export default function Home() {
   return (
-    <main>
-      <PHeading>Welcome to React Router</PHeading>
-    </main>
+    <>
+      <div className="grid justify-items-center gap-fluid-md m-static-lg p-fluid-lg bg-surface rounded-lg">
+        <PWordmark />
+        <h1 className="prose-display-md">Porsche Design System</h1>
+      </div>
+      <Welcome />
+    </>
   );
 }
 ```
-
-- Execute `yarn dev` or `npm dev` and check if the components are displayed correctly.
-
-## When are Porsche Design System components (re-)hydrated?
-
-See [componentsReady()](/developing/components-ready) for further information.
-
-## How do Porsche Design System components work in detail?
-
-See [Initialization](/must-know/initialization/introduction) for further information.
