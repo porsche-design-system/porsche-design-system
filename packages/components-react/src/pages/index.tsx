@@ -2,6 +2,12 @@ import type { RouteType } from '../routes';
 
 export * from './CoreClassNames';
 export * from './Events';
+export * from './LifecycleOverlapping';
+export * from './ModalFocusCycle';
+export * from './StencilLifecycles';
+export * from './Table';
+export * from './ThemeInjection';
+export * from './Utilities';
 
 /* Auto Generated Below */
 /* eslint-disable import/first */
