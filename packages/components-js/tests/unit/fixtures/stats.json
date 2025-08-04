@@ -182,7 +182,7 @@
   {
     "chunkShortName": "main",
     "size": 85622,
-    "gzipSize": 27618
+    "gzipSize": 27616
   },
   {
     "chunkShortName": "marque",
@@ -201,13 +201,13 @@
   },
   {
     "chunkShortName": "multi-select",
-    "size": 46937,
-    "gzipSize": 17088
+    "size": 46311,
+    "gzipSize": 16936
   },
   {
     "chunkShortName": "optgroup",
-    "size": 3179,
-    "gzipSize": 1545
+    "size": 3277,
+    "gzipSize": 1574
   },
   {
     "chunkShortName": "pagination",
@@ -241,8 +241,8 @@
   },
   {
     "chunkShortName": "select",
-    "size": 45365,
-    "gzipSize": 16272
+    "size": 45663,
+    "gzipSize": 16384
   },
   {
     "chunkShortName": "select-wrapper",
