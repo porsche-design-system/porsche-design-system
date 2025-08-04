@@ -21,8 +21,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -48,12 +47,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     outline-offset: 2px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  button > * {
-    grid-row: 1;
   }
   [popover] {
     all: unset;
@@ -235,8 +232,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -262,12 +258,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     outline-offset: 2px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  button > * {
-    grid-row: 1;
   }
   [popover] {
     all: unset;
@@ -450,8 +444,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -477,12 +470,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     outline-offset: 2px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  button > * {
-    grid-row: 1;
   }
   [popover] {
     all: unset;
@@ -665,8 +656,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -692,12 +682,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     outline-offset: 2px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  button > * {
-    grid-row: 1;
   }
   [popover] {
     all: unset;
@@ -880,8 +868,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -898,12 +885,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-color: #7E7F82;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  button > * {
-    grid-row: 1;
   }
   [popover] {
     all: unset;
@@ -1079,8 +1064,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -1097,12 +1081,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-color: #949598;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  button > * {
-    grid-row: 1;
   }
   [popover] {
     all: unset;
@@ -1277,8 +1259,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -1295,12 +1276,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-color: #949598;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  button > * {
-    grid-row: 1;
   }
   [popover] {
     all: unset;
@@ -1475,8 +1454,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -1493,12 +1471,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-color: #949598;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  button > * {
-    grid-row: 1;
   }
   [popover] {
     all: unset;
@@ -1674,8 +1650,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -1692,12 +1667,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-color: #7E7F82;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  button > * {
-    grid-row: 1;
   }
   [popover] {
     all: unset;
@@ -1873,8 +1846,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -1891,12 +1863,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-color: #949598;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  button > * {
-    grid-row: 1;
   }
   [popover] {
     all: unset;
@@ -2071,8 +2041,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -2089,12 +2058,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-color: #7E7F82;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  button > * {
-    grid-row: 1;
   }
   [popover] {
     all: unset;
@@ -2270,8 +2237,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -2297,12 +2263,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     outline-offset: 2px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  button > * {
-    grid-row: 1;
   }
   [popover] {
     all: unset;
@@ -2485,8 +2449,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -2512,12 +2475,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     outline-offset: 2px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  button > * {
-    grid-row: 1;
   }
   [popover] {
     all: unset;
@@ -2699,8 +2660,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -2726,12 +2686,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     outline-offset: 2px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  button > * {
-    grid-row: 1;
   }
   [popover] {
     all: unset;
@@ -2914,8 +2872,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -2941,12 +2898,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     outline-offset: 2px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  button > * {
-    grid-row: 1;
   }
   [popover] {
     all: unset;
@@ -3128,8 +3083,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -3155,12 +3109,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     outline-offset: 2px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  button > * {
-    grid-row: 1;
   }
   [popover] {
     all: unset;
@@ -3343,8 +3295,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -3370,12 +3321,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     outline-offset: 2px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  button > * {
-    grid-row: 1;
   }
   [popover] {
     all: unset;
@@ -3558,8 +3507,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -3576,12 +3524,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-color: #7E7F82;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  button > * {
-    grid-row: 1;
   }
   [popover] {
     all: unset;
@@ -3757,8 +3703,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -3775,12 +3720,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-color: #949598;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  button > * {
-    grid-row: 1;
   }
   [popover] {
     all: unset;
@@ -3955,8 +3898,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -3973,12 +3915,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-color: #7E7F82;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  button > * {
-    grid-row: 1;
   }
   [popover] {
     all: unset;
@@ -4154,8 +4094,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -4172,12 +4111,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-color: #7E7F82;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  button > * {
-    grid-row: 1;
   }
   [popover] {
     all: unset;
@@ -4353,8 +4290,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -4371,12 +4307,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-color: #949598;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  button > * {
-    grid-row: 1;
   }
   [popover] {
     all: unset;

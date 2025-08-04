@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: false, state: none, compact: false, theme: light and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: false, state: none, compact: false and theme: light 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -12,21 +12,18 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -58,6 +55,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -223,7 +221,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: false, state: success, compact: false, theme: dark and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: false, state: success, compact: false and theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -235,21 +233,18 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -281,6 +276,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -447,7 +443,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: error, compact: false, theme: dark and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: error, compact: false and theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -459,21 +455,18 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -505,6 +498,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -671,7 +665,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: success, compact: false, theme: light and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: success, compact: false and theme: light 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -683,21 +677,18 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -729,6 +720,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -895,7 +887,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: error, compact: false, theme: dark and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: error, compact: false and theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -907,21 +899,18 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -944,6 +933,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -1103,7 +1093,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: false, theme: light and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: false and theme: light 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1115,21 +1105,18 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -1152,6 +1139,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -1310,7 +1298,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: false, theme: light and hasSlottedImage: true 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: false and theme: light 2`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1322,21 +1310,18 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -1359,6 +1344,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -1517,7 +1503,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: true, theme: light and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: true and theme: light 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1529,21 +1515,18 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   :host {
     display: block;
     color-scheme: light dark !important;
-  }
-  :host([hidden]) {
-    display: none !important;
-  }
-  ::slotted(*) {
     --p-internal-select-option-scaling: var(--p-internal-select-scaling, 0.5) !important;
     --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 0.5) !important;
   }
+  :host([hidden]) {
+    display: none !important;
+  }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 0.5) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 0.5) * 8px) max(4px, var(--p-internal-select-scaling, 0.5) * 16px);
@@ -1566,6 +1549,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -1724,7 +1708,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: success, compact: false, theme: light and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: success, compact: false and theme: light 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1736,21 +1720,18 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -1773,6 +1754,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -1932,7 +1914,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: error, compact: false, theme: dark and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: error, compact: false and theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1944,21 +1926,18 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -1981,6 +1960,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -2140,7 +2120,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: none, compact: false, theme: light and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: none, compact: false and theme: light 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -2152,21 +2132,18 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -2189,6 +2166,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -2347,7 +2325,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: success, compact: false, theme: dark and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: success, compact: false and theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -2359,21 +2337,18 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -2396,6 +2371,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -2555,7 +2531,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: error, compact: false, theme: dark and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: error, compact: false and theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -2567,21 +2543,18 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -2613,6 +2586,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -2779,7 +2753,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none, compact: false, theme: dark and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none, compact: false and theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -2791,21 +2765,18 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -2837,6 +2808,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -3002,7 +2974,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none, compact: false, theme: light and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none, compact: false and theme: light 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -3014,21 +2986,18 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -3060,6 +3029,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -3225,7 +3195,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none, compact: false, theme: light and hasSlottedImage: false 2`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none, compact: false and theme: light 2`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -3237,21 +3207,18 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -3283,6 +3250,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -3448,7 +3416,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: error, compact: false, theme: dark and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: error, compact: false and theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -3460,21 +3428,18 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -3506,6 +3471,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -3672,7 +3638,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: none, compact: false, theme: light and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: none, compact: false and theme: light 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -3684,21 +3650,18 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -3730,6 +3693,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -3895,7 +3859,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success, compact: false, theme: dark and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success, compact: false and theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -3907,21 +3871,18 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -3953,6 +3914,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -4119,7 +4081,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success, compact: false, theme: light and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success, compact: false and theme: light 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -4131,21 +4093,18 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -4177,6 +4136,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -4343,7 +4303,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: error, compact: false, theme: dark and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: error, compact: false and theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -4355,21 +4315,18 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -4392,6 +4349,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -4551,7 +4509,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: none, compact: false, theme: light and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: none, compact: false and theme: light 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -4563,21 +4521,18 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -4600,6 +4555,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -4758,7 +4714,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success, compact: false, theme: dark and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success, compact: false and theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -4770,21 +4726,18 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -4807,6 +4760,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -4966,7 +4920,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success, compact: true, theme: dark and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success, compact: true and theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -4978,21 +4932,18 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 0.5) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 0.5) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 0.5) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 0.5) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 0.5) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 0.5) * 8px) max(4px, var(--p-internal-select-scaling, 0.5) * 16px);
@@ -5015,6 +4966,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -5174,7 +5126,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: error, compact: false, theme: dark and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: error, compact: false and theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -5186,21 +5138,18 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -5223,6 +5172,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -5382,7 +5332,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: none, compact: false, theme: light and hasSlottedImage: false 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: none, compact: false and theme: light 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -5394,21 +5344,18 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -5431,6 +5378,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
