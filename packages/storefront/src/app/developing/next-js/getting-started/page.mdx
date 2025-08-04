@@ -2,17 +2,17 @@ import { Notification } from '@/components/common/Notification';
 import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
-  title: 'Next JS: Getting started - Porsche Design System',
-  description: 'Start developing in Next JS with the Porsche Design System.',
+  title: 'Next.js: Getting started - Porsche Design System',
+  description: 'Start developing in Next.js with the Porsche Design System.',
 };
 
-# Next Js
+# Next.js
 
-<TableOfContents headings={['Quick start', 'Integration']} />
+<TableOfContents headings={['Quick start','Integration']} />
 
 ## Quick start
 
-To build your own [Next JS](https://nextjs.org/docs/app/getting-started/installation) application using the Porsche
+To build your own [Next.js](https://nextjs.org/docs/app/getting-started/installation) application using the Porsche
 Design System's React components, follow these steps:
 
 ```bash
@@ -34,7 +34,7 @@ You're all set! Start building your own application now.
 
 ## Integration
 
-The following integration example uses a standard React Router setup.
+The following integration example uses a standard Next.js setup.
 
 <Notification heading="Attention" headingTag="h3" state="warning">
   The following examples use the **SSR** sub-package from `@porsche-design-system/components-react/ssr`.
@@ -70,7 +70,7 @@ Wrap your app with the `PorscheDesignSystemProvider`:
 ```tsx
 // app/layout.tsx
 
-import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
+import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr'; // ensure to import from ssr subpackage!
 
 export default function RootLayout({
   children,
@@ -95,7 +95,7 @@ minimize FOUC/FOUT.
 ```tsx
 // app/layout.tsx
 
-import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
+import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr'; // ensure to import from ssr subpackage!
 import {
   getComponentChunkLinks,
   getFontFaceStyles,

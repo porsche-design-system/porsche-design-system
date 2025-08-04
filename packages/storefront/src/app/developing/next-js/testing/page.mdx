@@ -1,32 +1,31 @@
-import { Notification } from "@/components/common/Notification";
-import { TableOfContents } from "@/components/common/TableOfContents";
+import { Notification } from '@/components/common/Notification';
+import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
-  title: 'Next JS: Testing - Porsche Design System',
-  description: 'Checkout how to test a Next JS application build with Porsche Design System.'
-}
+  title: 'Next.js: Testing - Porsche Design System',
+  description: 'Checkout how to test a Next.js application build with Porsche Design System.',
+};
 
-# Next Js
+# Next.js
 
 <TableOfContents headings={['Test the application','Hints about PorscheDesignSystemProvider','Additional information when using @testing-library/react','Unsupported APIs']} />
 
 ## Test the application
 
-**Jest** uses **jsdom** and supports ShadowDOM since Version 12.2.0.
-However, it doesn't support JavaScript modules as described in this
-[issue](https://github.com/jsdom/jsdom/issues/2475).
-Also, it doesn't support `CSSStyleSheet.replace()`, `Intersection Observer`, `Element.prototype.scrollTo` and others.
+**Jest** uses **jsdom** and supports ShadowDOM since Version 12.2.0. However, it doesn't support JavaScript modules as
+described in this [issue](https://github.com/jsdom/jsdom/issues/2475). Also, it doesn't support
+`CSSStyleSheet.replace()`, `Intersection Observer`, `Element.prototype.scrollTo` and others.
 
 As a workaround we provide a polyfill as part of the `@porsche-design-system/components-react` package.
 
 To apply the polyfill, simply import it in your `setupTest.{js|ts}` file.
 
-**Note:** If your test includes Porsche Design System components, make sure to wrap the component you
-want to test with a `PorscheDesignSystemProvider` in order to avoid exceptions.
+**Note:** If your test includes Porsche Design System components, make sure to wrap the component you want to test with
+a `PorscheDesignSystemProvider` in order to avoid exceptions.
 
 <Notification heading="Attention" state="warning">
-  Certain modern browser APIs are not supported in the jsdom environment.
-  See [Unsupported APIs](/developing/react/testing#unsupported-ap-is) for more information.
+  Certain modern browser APIs are not supported in the jsdom environment. See [Unsupported
+  APIs](/developing/react/testing#unsupported-ap-is) for more information.
 </Notification>
 
 ### Setup file
@@ -104,8 +103,8 @@ test('renders Tabs Bar from Porsche Design System and uses its events', async ()
 
 ## Hints about PorscheDesignSystemProvider
 
-It might be rather redundant to wrap every single test with `PorscheDesignSystemProvider`.
-Therefore, we offer the following advice.
+It might be rather redundant to wrap every single test with `PorscheDesignSystemProvider`. Therefore, we offer the
+following advice.
 
 ### Custom helper
 
@@ -126,8 +125,7 @@ export const renderWithProvider = (component: JSX.Element): RenderResult => {
 ### Disabling the validation of PorscheDesignSystemProvider
 
 Alternatively we provide a utility function `skipCheckForPorscheDesignSystemProviderDuringTests()` that can be used
-within your tests.
-It only takes effect during testing since it relies on `process.env.NODE_ENV === 'test'`.
+within your tests. It only takes effect during testing since it relies on `process.env.NODE_ENV === 'test'`.
 
 You can apply it globally on every test by calling it once in your test setup:
 
@@ -162,8 +160,8 @@ describe('SomeComponent', () => {
 ### Disabling CDN requests from Porsche Design System and components
 
 We provide a utility function `skipPorscheDesignSystemCDNRequestsDuringTests()` that can be used within your tests when
-you use the `@porsche-design-system/components-react/jsdom-polyfill` in your setup.
-It will suppress all CDN request of the Porsche Design System.
+you use the `@porsche-design-system/components-react/jsdom-polyfill` in your setup. It will suppress all CDN request of
+the Porsche Design System.
 
 You can apply it globally on every test by calling it once in your test setup:
 
@@ -216,9 +214,8 @@ Simulate.submit('button');
 ### Queries
 
 You are not able to use `getByRole` to query Porsche Design System components when using `@testing-library` because it
-uses default `roles`.
-For example a `<button>` gets the role `button` without explicitly setting the attribute. To achieve this it uses
-[aria-query](https://github.com/A11yance/aria-query) internally which replicates the
+uses default `roles`. For example a `<button>` gets the role `button` without explicitly setting the attribute. To
+achieve this it uses [aria-query](https://github.com/A11yance/aria-query) internally which replicates the
 [Accessibility Tree](https://developer.mozilla.org/en-US/docs/Glossary/Accessibility_tree), see
 [documentation](https://testing-library.com/docs/guide-which-query).
 
@@ -236,8 +233,8 @@ it('should work for PButton', async () => {
 });
 ```
 
-Other query selectors don't work if you are trying to select an element which is located inside of Shadow DOM.
-As a solution there are `getByLabelTextShadowed` and `getByTextShadowed`.
+Other query selectors don't work if you are trying to select an element which is located inside of Shadow DOM. As a
+solution there are `getByLabelTextShadowed` and `getByTextShadowed`.
 
 ```tsx
 import { getByTextShadowed } from '@porsche-design-system/components-react/testing';
@@ -286,10 +283,10 @@ Example mock:
 
 ```ts
 HTMLElement.prototype.attachInternals = jest.fn(
-() =>
-  ({
-    setFormValue: jest.fn(),
-    setValidity: jest.fn(),
-  }) as ElementInternals
+  () =>
+    ({
+      setFormValue: jest.fn(),
+      setValidity: jest.fn(),
+    }) as ElementInternals
 );
 ```

@@ -221,13 +221,18 @@ export const sitemap: Routes = {
         },
       },
       'next-js': {
-        name: 'Next JS',
+        name: 'Next.js',
         path: '/developing/next-js',
         type: 'PAGE',
         subPaths: {
           'getting-started': {
             name: 'Getting Started',
             path: '/developing/next-js/getting-started',
+            type: 'TAB',
+          },
+          'demo': {
+            name: 'Demo',
+            path: '/developing/next-js/demo',
             type: 'TAB',
           },
           testing: {
@@ -238,18 +243,6 @@ export const sitemap: Routes = {
           'faq': {
             name: 'FAQ',
             path: '/developing/next-js/faq',
-            type: 'TAB',
-          },
-        },
-      },
-      remix: {
-        name: 'Remix',
-        path: '/developing/remix',
-        type: 'PAGE',
-        subPaths: {
-          'getting-started': {
-            name: 'Getting Started',
-            path: '/developing/remix/getting-started',
             type: 'TAB',
           },
         },
@@ -272,6 +265,18 @@ export const sitemap: Routes = {
           'faq': {
             name: 'FAQ',
             path: '/developing/react-router/faq',
+            type: 'TAB',
+          },
+        },
+      },
+      remix: {
+        name: 'Remix',
+        path: '/developing/remix',
+        type: 'PAGE',
+        subPaths: {
+          'getting-started': {
+            name: 'Getting Started',
+            path: '/developing/remix/getting-started',
             type: 'TAB',
           },
         },
