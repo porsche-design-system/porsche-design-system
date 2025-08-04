@@ -21,7 +21,6 @@ import {
   attachComponentCss,
   FORM_STATES,
   getComboboxAriaAttributes,
-  getComboboxFilterAriaAttributes,
   getHasNativePopoverSupport,
   getHighlightedSelectOption,
   getHighlightedSelectOptionIndex,
@@ -325,7 +324,6 @@ export class MultiSelect {
             indicator={true}
             compact={true}
             theme={this.theme}
-            {...getComboboxFilterAriaAttributes()}
             onInput={this.onFilterInput}
             onKeyDown={this.onComboKeyDown}
             ref={(el: HTMLPInputSearchElement) => (this.filterInputElement = el)}
@@ -434,7 +432,7 @@ export class MultiSelect {
         if (selectedIndex >= 0) {
           setNextSelectOptionHighlighted(this.multiSelectOptions, selectedIndex);
           // @ts-ignore - HTMLCombobox type is missing
-          this.buttonElement.ariaActiveDescendantElement = getSelectedSelectOption(this.multiSelectOptions);
+          this.filterInputElement.ariaActiveDescendantElement = getSelectedSelectOption(this.multiSelectOptions);
         }
         break;
       }
