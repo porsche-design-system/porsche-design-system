@@ -7521,8 +7521,9 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
-      "p-icon",
       "p-button-pure",
+      "p-icon",
+      "p-input-search",
     ],
     "propsMeta": {
       "description": {

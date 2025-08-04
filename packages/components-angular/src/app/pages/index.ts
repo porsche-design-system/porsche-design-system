@@ -156,13 +156,13 @@ import { ModalWithoutHeadingComponent } from './generated/modal-without-heading.
 import { ModelSignatureComponent } from './generated/model-signature.component';
 import { MultiSelectComponent } from './generated/multi-select.component';
 import { MultiSelectOpenedBottomComponent } from './generated/multi-select-opened-bottom.component';
+import { MultiSelectOpenedFilterNoResultsComponent } from './generated/multi-select-opened-filter-no-results.component';
 import { MultiSelectOpenedMaxHeightComponent } from './generated/multi-select-opened-max-height.component';
 import { MultiSelectOpenedMinHeightComponent } from './generated/multi-select-opened-min-height.component';
 import { MultiSelectOpenedScrollContextComponent } from './generated/multi-select-opened-scroll-context.component';
 import { MultiSelectOpenedTopComponent } from './generated/multi-select-opened-top.component';
 import { MultiSelectOpenedWithAndWithoutOptgroupsComponent } from './generated/multi-select-opened-with-and-without-optgroups.component';
 import { MultiSelectOpenedWithDisabledHighlightedSelectedComponent } from './generated/multi-select-opened-with-disabled-highlighted-selected.component';
-import { MultiSelectOpenedWithFilterButNoResultsComponent } from './generated/multi-select-opened-with-filter-but-no-results.component';
 import { MultiSelectOpenedWithMultipleSelectedOptionsComponent } from './generated/multi-select-opened-with-multiple-selected-options.component';
 import { MultiSelectOpenedWithOptgroupsComponent } from './generated/multi-select-opened-with-optgroups.component';
 import { MultiSelectOpenedWithOptgroupsDisabledComponent } from './generated/multi-select-opened-with-optgroups-disabled.component';
@@ -371,13 +371,13 @@ export const generatedPages = [
   ModelSignatureComponent,
   MultiSelectComponent,
   MultiSelectOpenedBottomComponent,
+  MultiSelectOpenedFilterNoResultsComponent,
   MultiSelectOpenedMaxHeightComponent,
   MultiSelectOpenedMinHeightComponent,
   MultiSelectOpenedScrollContextComponent,
   MultiSelectOpenedTopComponent,
   MultiSelectOpenedWithAndWithoutOptgroupsComponent,
   MultiSelectOpenedWithDisabledHighlightedSelectedComponent,
-  MultiSelectOpenedWithFilterButNoResultsComponent,
   MultiSelectOpenedWithMultipleSelectedOptionsComponent,
   MultiSelectOpenedWithOptgroupsComponent,
   MultiSelectOpenedWithOptgroupsDisabledComponent,
@@ -1103,6 +1103,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: MultiSelectOpenedBottomComponent,
   },
   {
+    name: 'Multi Select Opened Filter No Results',
+    path: 'multi-select-opened-filter-no-results',
+    component: MultiSelectOpenedFilterNoResultsComponent,
+  },
+  {
     name: 'Multi Select Opened Max Height',
     path: 'multi-select-opened-max-height',
     component: MultiSelectOpenedMaxHeightComponent,
@@ -1131,11 +1136,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Multi Select Opened With Disabled Highlighted Selected',
     path: 'multi-select-opened-with-disabled-highlighted-selected',
     component: MultiSelectOpenedWithDisabledHighlightedSelectedComponent,
-  },
-  {
-    name: 'Multi Select Opened With Filter But No Results',
-    path: 'multi-select-opened-with-filter-but-no-results',
-    component: MultiSelectOpenedWithFilterButNoResultsComponent,
   },
   {
     name: 'Multi Select Opened With Multiple Selected Options',

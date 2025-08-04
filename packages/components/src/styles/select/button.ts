@@ -14,7 +14,6 @@ export const getButtonJssStyle = (
   isOpen: boolean,
   isDisabled: boolean,
   state: FormState,
-  hasSlottedImage: boolean,
   cssVarScaling: string,
   theme: Theme
 ): JssStyle => {
@@ -37,8 +36,7 @@ export const getButtonJssStyle = (
 
   return {
     all: 'unset',
-    display: 'grid',
-    gridTemplateColumns: `${hasSlottedImage ? 'auto ' : ''}minmax(0, 1fr) auto`,
+    display: 'flex',
     alignItems: 'center',
     gap: `max(4px, ${cssVarScaling} * 12px)`,
     padding: `max(2px, ${cssVarScaling} * ${formElementPaddingVertical}) max(4px, ${cssVarScaling} * ${formElementPaddingHorizontal})`,

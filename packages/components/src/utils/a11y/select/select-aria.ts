@@ -55,13 +55,6 @@ export const getComboboxAriaAttributes = (
   };
 };
 
-export const getComboboxFilterAriaAttributes = (): AriaAttributes => {
-  return {
-    'aria-autocomplete': 'list',
-    'aria-expanded': 'true',
-  };
-};
-
 // TODO: Change to aria-labelledby
 export const getListAriaAttributes = (
   label: string,

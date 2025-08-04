@@ -3,7 +3,7 @@ import { getButtonImageJssStyle, getOptionJssStyle } from '../../../styles/selec
 import type { Theme } from '../../../types';
 import { getCss } from '../../../utils';
 
-const cssVarInternalSelectOptionScaling = '--p-internal-select-option-scaling';
+export const cssVarInternalSelectOptionScaling = '--p-internal-select-option-scaling';
 
 export const getComponentCss = (theme: Theme): string => {
   return getCss({

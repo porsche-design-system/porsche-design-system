@@ -136,13 +136,13 @@ import { ModalWithoutHeadingPage } from './generated/ModalWithoutHeading';
 import { ModelSignaturePage } from './generated/ModelSignature';
 import { MultiSelectPage } from './generated/MultiSelect';
 import { MultiSelectOpenedBottomPage } from './generated/MultiSelectOpenedBottom';
+import { MultiSelectOpenedFilterNoResultsPage } from './generated/MultiSelectOpenedFilterNoResults';
 import { MultiSelectOpenedMaxHeightPage } from './generated/MultiSelectOpenedMaxHeight';
 import { MultiSelectOpenedMinHeightPage } from './generated/MultiSelectOpenedMinHeight';
 import { MultiSelectOpenedScrollContextPage } from './generated/MultiSelectOpenedScrollContext';
 import { MultiSelectOpenedTopPage } from './generated/MultiSelectOpenedTop';
 import { MultiSelectOpenedWithAndWithoutOptgroupsPage } from './generated/MultiSelectOpenedWithAndWithoutOptgroups';
 import { MultiSelectOpenedWithDisabledHighlightedSelectedPage } from './generated/MultiSelectOpenedWithDisabledHighlightedSelected';
-import { MultiSelectOpenedWithFilterButNoResultsPage } from './generated/MultiSelectOpenedWithFilterButNoResults';
 import { MultiSelectOpenedWithMultipleSelectedOptionsPage } from './generated/MultiSelectOpenedWithMultipleSelectedOptions';
 import { MultiSelectOpenedWithOptgroupsPage } from './generated/MultiSelectOpenedWithOptgroups';
 import { MultiSelectOpenedWithOptgroupsDisabledPage } from './generated/MultiSelectOpenedWithOptgroupsDisabled';
@@ -866,6 +866,11 @@ export const generatedRoutes: RouteType[] = [
     element: <MultiSelectOpenedBottomPage />,
   },
   {
+    name: 'Multi Select Opened Filter No Results',
+    path: '/multi-select-opened-filter-no-results',
+    element: <MultiSelectOpenedFilterNoResultsPage />,
+  },
+  {
     name: 'Multi Select Opened Max Height',
     path: '/multi-select-opened-max-height',
     element: <MultiSelectOpenedMaxHeightPage />,
@@ -894,11 +899,6 @@ export const generatedRoutes: RouteType[] = [
     name: 'Multi Select Opened With Disabled Highlighted Selected',
     path: '/multi-select-opened-with-disabled-highlighted-selected',
     element: <MultiSelectOpenedWithDisabledHighlightedSelectedPage />,
-  },
-  {
-    name: 'Multi Select Opened With Filter But No Results',
-    path: '/multi-select-opened-with-filter-but-no-results',
-    element: <MultiSelectOpenedWithFilterButNoResultsPage />,
   },
   {
     name: 'Multi Select Opened With Multiple Selected Options',

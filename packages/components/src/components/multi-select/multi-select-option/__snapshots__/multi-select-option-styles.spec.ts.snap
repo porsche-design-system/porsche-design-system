@@ -3,7 +3,8 @@
 exports[`getComponentCss() should return correct css for theme: dark, isDisabled: false and selected: false 1`] = `
 ":host {
   display: block;
-  scroll-margin: 6px !important;
+  scroll-margin-block-start: calc(max(2px, 1 * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, 1 * 6px) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -28,9 +29,8 @@ slot {
   box-sizing: content-box;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  column-gap: 8px;
 }
-.option[role=status] {
+.option[role=option] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -97,7 +97,8 @@ slot {
 exports[`getComponentCss() should return correct css for theme: dark, isDisabled: false and selected: true 1`] = `
 ":host {
   display: block;
-  scroll-margin: 6px !important;
+  scroll-margin-block-start: calc(max(2px, 1 * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, 1 * 6px) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -122,9 +123,8 @@ slot {
   box-sizing: content-box;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  column-gap: 8px;
 }
-.option[role=status] {
+.option[role=option] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -194,7 +194,8 @@ slot {
 exports[`getComponentCss() should return correct css for theme: dark, isDisabled: true and selected: false 1`] = `
 ":host {
   display: block;
-  scroll-margin: 6px !important;
+  scroll-margin-block-start: calc(max(2px, 1 * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, 1 * 6px) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -219,9 +220,8 @@ slot {
   box-sizing: content-box;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  column-gap: 8px;
 }
-.option[role=status] {
+.option[role=option] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -288,7 +288,8 @@ slot {
 exports[`getComponentCss() should return correct css for theme: dark, isDisabled: true and selected: true 1`] = `
 ":host {
   display: block;
-  scroll-margin: 6px !important;
+  scroll-margin-block-start: calc(max(2px, 1 * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, 1 * 6px) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -313,9 +314,8 @@ slot {
   box-sizing: content-box;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  column-gap: 8px;
 }
-.option[role=status] {
+.option[role=option] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -385,7 +385,8 @@ slot {
 exports[`getComponentCss() should return correct css for theme: light, isDisabled: false and selected: false 1`] = `
 ":host {
   display: block;
-  scroll-margin: 6px !important;
+  scroll-margin-block-start: calc(max(2px, 1 * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, 1 * 6px) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -410,9 +411,8 @@ slot {
   box-sizing: content-box;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  column-gap: 8px;
 }
-.option[role=status] {
+.option[role=option] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -479,7 +479,8 @@ slot {
 exports[`getComponentCss() should return correct css for theme: light, isDisabled: false and selected: true 1`] = `
 ":host {
   display: block;
-  scroll-margin: 6px !important;
+  scroll-margin-block-start: calc(max(2px, 1 * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, 1 * 6px) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -504,9 +505,8 @@ slot {
   box-sizing: content-box;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  column-gap: 8px;
 }
-.option[role=status] {
+.option[role=option] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -576,7 +576,8 @@ slot {
 exports[`getComponentCss() should return correct css for theme: light, isDisabled: true and selected: false 1`] = `
 ":host {
   display: block;
-  scroll-margin: 6px !important;
+  scroll-margin-block-start: calc(max(2px, 1 * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, 1 * 6px) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -601,9 +602,8 @@ slot {
   box-sizing: content-box;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  column-gap: 8px;
 }
-.option[role=status] {
+.option[role=option] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -670,7 +670,8 @@ slot {
 exports[`getComponentCss() should return correct css for theme: light, isDisabled: true and selected: true 1`] = `
 ":host {
   display: block;
-  scroll-margin: 6px !important;
+  scroll-margin-block-start: calc(max(2px, 1 * 6px) + 36px) !important;
+  scroll-margin-block-end: max(2px, 1 * 6px) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -695,9 +696,8 @@ slot {
   box-sizing: content-box;
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  column-gap: 8px;
 }
-.option[role=status] {
+.option[role=option] {
   cursor: not-allowed;
 }
 .option__sr {
