@@ -9,7 +9,7 @@ import {
 import type { Theme } from '../../types';
 import { getCss } from '../../utils';
 
-const cssVarInternalOptgroupScaling = '--p-internal-optgroup-scaling';
+export const cssVarInternalOptgroupScaling = '--p-internal-optgroup-scaling';
 const scalingVar = `var(${cssVarInternalOptgroupScaling}, 1)`;
 
 export const getComponentCss = (isDisabled: boolean, theme: Theme): string => {

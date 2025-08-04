@@ -1,49 +1,32 @@
 import { autoUpdate } from '@floating-ui/dom';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
-import {
-  type SelectDropdownDirection,
-  type SelectOptgroup,
-  type SelectOption,
-  type SelectState,
-  type SelectUpdateEventDetail,
-  getSelectedOptionString,
-  setSelectedOption,
-  syncSelectChildrenProps,
-  updateFilterResults,
-  updateSelectOptions,
-} from './select-utils';
-
 import {
   AttachInternals,
   Component,
   Element,
   Event,
   type EventEmitter,
+  forceUpdate,
+  h,
   type JSX,
   Listen,
   Prop,
   State,
   Watch,
-  forceUpdate,
-  h,
 } from '@stencil/core';
 import { getSlottedAnchorStyles } from '../../../styles';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import {
   AllowedTypes,
-  FORM_STATES,
-  SELECT_DROPDOWN_DIRECTIONS,
-  SELECT_SEARCH_TIMEOUT,
-  THEMES,
   applyConstructableStylesheetStyles,
   attachComponentCss,
-  getActionFromKeyboardEvent,
+  FORM_STATES,
   getComboboxAriaAttributes,
-  getComboboxFilterAriaAttributes,
   getHasNativePopoverSupport,
   getHighlightedSelectOption,
   getHighlightedSelectOptionIndex,
   getMatchingSelectOptionIndex,
   getPrefixedTagNames,
+  getSelectActionFromKeyboardEvent,
   getSelectedSelectOption,
   getSelectedSelectOptionIndex,
   getShadowRootHTMLElement,
@@ -54,15 +37,30 @@ import {
   isClickOutside,
   isElementOfKind,
   optionListUpdatePosition,
+  SELECT_DROPDOWN_DIRECTIONS,
+  SELECT_SEARCH_TIMEOUT,
   setNextSelectOptionHighlighted,
+  THEMES,
   throwIfElementIsNotOfKind,
+  updateFilterResults,
   validateProps,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
 import { labelId } from '../../common/label/label-utils';
-import { StateMessage, messageId } from '../../common/state-message/state-message';
+import { messageId, StateMessage } from '../../common/state-message/state-message';
 import type { InputSearchInputEventDetail } from '../../input-search/input-search-utils';
 import { getComponentCss } from './select-styles';
+import {
+  getSelectedOptionString,
+  type SelectDropdownDirection,
+  type SelectOptgroup,
+  type SelectOption,
+  type SelectState,
+  type SelectUpdateEventDetail,
+  setSelectedOption,
+  syncSelectChildrenProps,
+  updateSelectOptions,
+} from './select-utils';
 
 const propTypes: PropTypes<typeof Select> = {
   label: AllowedTypes.string,
@@ -204,14 +202,7 @@ export class Select {
       }
       // Reset filter on close
       if (this.filter) {
-        this.filterInputElement.value = '';
-        this.hasFilterResults = true;
-        for (const option of this.selectOptions) {
-          option.style.display = 'block';
-        }
-        for (const optgroup of this.selectOptgroups) {
-          optgroup.style.display = 'block';
-        }
+        this.resetFilter();
       }
     }
   }
@@ -268,18 +259,16 @@ export class Select {
       this.hideLabel,
       this.state,
       this.compact,
-      this.theme,
-      !!this.slottedImagePath
+      this.theme
     );
     syncSelectChildrenProps([...this.selectOptions, ...this.selectOptgroups], this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const buttonId = 'value';
+    const buttonId = 'button';
     const popoverId = 'list';
     const descriptionId = this.description ? 'description' : undefined;
     const selectMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
     const ariaDescribedBy = [descriptionId, selectMessageId].filter(Boolean).join(' ');
-    const selectedOption = getSelectedOptionString(this.selectOptions);
 
     return (
       <div class="root">
@@ -303,7 +292,7 @@ export class Select {
           ref={(el) => (this.buttonElement = el)}
         >
           {this.slottedImagePath && <img src={this.slottedImagePath} alt="" />}
-          <span>{selectedOption}</span>
+          <span>{getSelectedOptionString(this.selectOptions)}</span>
           <PrefixedTagNames.pIcon
             class="icon"
             name="arrow-head-down"
@@ -333,7 +322,6 @@ export class Select {
               indicator={true}
               compact={true}
               theme={this.theme}
-              {...getComboboxFilterAriaAttributes()}
               onInput={this.onFilterInput}
               onKeyDown={this.onComboKeyDown}
               ref={(el: HTMLPInputSearchElement) => (this.filterInputElement = el)}
@@ -362,20 +350,24 @@ export class Select {
     forceUpdate(this.host);
   };
 
-  private onComboClick = (e: MouseEvent): void => {
-    const target = e.target as HTMLElement;
-
-    // Prevent closing if the filter input was clicked
-    if (this.filter && this.filterInputElement?.contains(target)) {
-      return;
-    }
-
+  private onComboClick = (_: MouseEvent): void => {
     this.updateMenuState(!this.isOpen);
   };
 
   private onClickOutside = (e: MouseEvent): void => {
     if (this.isOpen && isClickOutside(e, this.buttonElement) && isClickOutside(e, this.popoverElement)) {
       this.isOpen = false;
+    }
+  };
+
+  private resetFilter = (): void => {
+    this.filterInputElement.value = '';
+    this.hasFilterResults = true;
+    for (const option of this.selectOptions) {
+      option.style.display = 'block';
+    }
+    for (const optgroup of this.selectOptgroups) {
+      optgroup.style.display = 'block';
     }
   };
 
@@ -387,7 +379,7 @@ export class Select {
       return;
     }
 
-    const action = getActionFromKeyboardEvent(event, this.isOpen);
+    const action = getSelectActionFromKeyboardEvent(event, this.isOpen);
 
     switch (action) {
       case 'Last':
@@ -434,11 +426,13 @@ export class Select {
       case 'Open': {
         event.preventDefault();
         this.updateMenuState(true);
+        // Moves highlight to the selected option if available
         const selectedIndex = getSelectedSelectOptionIndex(this.selectOptions);
         if (selectedIndex >= 0) {
           setNextSelectOptionHighlighted(this.selectOptions, selectedIndex);
           // @ts-ignore - HTMLCombobox type is missing
-          this.buttonElement.ariaActiveDescendantElement = getSelectedSelectOption(this.selectOptions);
+          (this.filter ? this.filterInputElement : this.buttonElement).ariaActiveDescendantElement =
+            getSelectedSelectOption(this.selectOptions);
         }
         break;
       }

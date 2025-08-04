@@ -516,6 +516,10 @@ const generatedRoutes = {
     "path": "/multi-select-opened-bottom",
     "name": "MultiSelectOpenedBottom"
   },
+  "multiSelectOpenedFilterNoResults": {
+    "path": "/multi-select-opened-filter-no-results",
+    "name": "MultiSelectOpenedFilterNoResults"
+  },
   "multiSelectOpenedMaxHeight": {
     "path": "/multi-select-opened-max-height",
     "name": "MultiSelectOpenedMaxHeight"
@@ -539,10 +543,6 @@ const generatedRoutes = {
   "multiSelectOpenedWithDisabledHighlightedSelected": {
     "path": "/multi-select-opened-with-disabled-highlighted-selected",
     "name": "MultiSelectOpenedWithDisabledHighlightedSelected"
-  },
-  "multiSelectOpenedWithFilterButNoResults": {
-    "path": "/multi-select-opened-with-filter-but-no-results",
-    "name": "MultiSelectOpenedWithFilterButNoResults"
   },
   "multiSelectOpenedWithMultipleSelectedOptions": {
     "path": "/multi-select-opened-with-multiple-selected-options",
