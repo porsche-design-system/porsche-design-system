@@ -24,6 +24,8 @@ import { getCss, isThemeDark } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
+import { cssVarInternalOptgroupScaling } from '../../optgroup/optgroup-styles';
+import { cssVarInternalSelectOptionScaling } from '../select-option/select-option-styles';
 
 export const cssVarInternalSelectScaling = '--p-internal-select-scaling';
 
@@ -50,12 +52,10 @@ export const getComponentCss = (
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
+          [`${cssVarInternalSelectOptionScaling}`]: scalingVar,
+          [`${cssVarInternalOptgroupScaling}`]: scalingVar,
         }),
       },
-      '::slotted(*)': addImportantToEachRule({
-        '--p-internal-select-option-scaling': scalingVar,
-        '--p-internal-optgroup-scaling': scalingVar,
-      }),
       ...preventFoucOfNestedElementsStyles,
       button: {
         ...getButtonJssStyle('select', isOpen, isDisabled, state, hasSlottedImage, scalingVar, theme),
