@@ -2691,8 +2691,6 @@ img {
         tabindex="-1"
       >
         <p-input-search
-          aria-autocomplete="list"
-          aria-expanded="true"
           class="filter"
           data-ssr=""
         >
@@ -16649,8 +16647,6 @@ img {
         tabindex="-1"
       >
         <p-input-search
-          aria-autocomplete="list"
-          aria-expanded="true"
           class="filter"
           data-ssr=""
         >
