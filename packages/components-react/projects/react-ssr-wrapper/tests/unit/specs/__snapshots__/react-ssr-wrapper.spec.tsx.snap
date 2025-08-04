@@ -2426,8 +2426,7 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -2453,12 +2452,10 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     outline-offset: 2px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  button &gt; * {
-    grid-row: 1;
   }
   [popover] {
     all: unset;
@@ -16387,8 +16384,7 @@ exports[`should render dsr component for PMultiSelect 1`] = `
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -16414,12 +16410,10 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     outline-offset: 2px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  button &gt; * {
-    grid-row: 1;
   }
   [popover] {
     all: unset;
@@ -18621,21 +18615,18 @@ exports[`should render dsr component for PSelect 1`] = `
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
-  }
-  ::slotted(*) {
-    --p-internal-select-option-scaling: var(--p-internal-select-scaling, 1) !important;
-    --p-internal-optgroup-scaling: var(--p-internal-select-scaling, 1) !important;
   }
   :not(:defined,[data-ssr]) {
     visibility: hidden;
   }
   button {
     all: unset;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
     padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
@@ -18667,6 +18658,7 @@ exports[`should render dsr component for PSelect 1`] = `
     border-radius: 4px;
   }
   button span {
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -23154,7 +23146,6 @@ textarea[readonly] {
           aria-describedby="description message"
           id="textarea"
           placeholder=""
-          readonly=""
           rows="7"
           wrap="soft"
         />
