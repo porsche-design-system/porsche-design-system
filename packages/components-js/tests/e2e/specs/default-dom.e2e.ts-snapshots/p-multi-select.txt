@@ -21,13 +21,7 @@
     aria-label=""
     aria-hidden="true"
   >
-    <p-input-search
-      class="filter hydrated"
-      aria-autocomplete="list"
-      aria-expanded="true"
-      name="filter"
-    >
-    </p-input-search>
+    <p-input-search class="filter hydrated" name="filter"> </p-input-search>
     <div
       class="options"
       role="listbox"
