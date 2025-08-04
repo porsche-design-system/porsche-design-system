@@ -22,6 +22,11 @@ export const pages = [
 export * from './core-initializer-prefixed.component';
 export * from './events.component';
 export * from './form-wrapper-binding.component';
+export * from './optional-properties.component';
+export * from './theme-injection.component';
+export * from './utilities.component';
+export * from './tabs-bar-navigation';
+export * from './tabs-bar-navigation-bug';
 
 /* Auto Generated Below */
 export * from './generated/core-initializer.component';
