@@ -169,9 +169,19 @@ export const sitemap: Routes = {
             path: '/developing/vanilla-js/getting-started',
             type: 'TAB',
           },
+          demo: {
+            name: 'Demo',
+            path: '/developing/vanilla-js/demo',
+            type: 'TAB',
+          },
           advanced: {
             name: 'Advanced',
             path: '/developing/vanilla-js/advanced',
+            type: 'TAB',
+          },
+          faq: {
+            name: 'FAQ',
+            path: '/developing/vanilla-js/faq',
             type: 'TAB',
           },
         },

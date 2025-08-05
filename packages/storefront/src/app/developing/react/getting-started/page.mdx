@@ -76,7 +76,7 @@ const transformIndexHtmlPlugin = () => {
     name: 'html-transform',
     transformIndexHtml(html: string) {
       const headPartials = [
-        // necessary for SSR support, injects stylesheet which defines visibility of pre-hydrated PDS components
+        // injects stylesheet which defines visibility of pre-hydrated PDS components
         getInitialStyles(),
         // injects stylesheet which defines Porsche Next CSS font-face definition (=> minimize FOUT)
         getFontFaceStyles(),
