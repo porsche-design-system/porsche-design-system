@@ -1,5 +1,11 @@
 - text: Opened with no results
 - combobox "Opened with no results" [expanded]
-- listbox "Opened with no results":
-  - option "No results found"
+- dialog "Opened with no results":
+  - searchbox "Filter options"
+  - button "Clear field"
+  - status
+  - alert
+  - status
+  - listbox "Opened with no results":
+    - option "No results found"
 - alert
