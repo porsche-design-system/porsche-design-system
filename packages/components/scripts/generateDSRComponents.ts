@@ -754,6 +754,7 @@ $&`
           .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
       } else if (
         tagName === 'p-input-number' ||
+        tagName === 'p-input-date' ||
         tagName === 'p-input-search' ||
         tagName === 'p-input-text' ||
         tagName === 'p-input-email' ||
