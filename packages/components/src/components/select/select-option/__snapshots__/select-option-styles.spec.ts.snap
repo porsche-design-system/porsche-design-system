@@ -34,7 +34,7 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.option[role=status] {
+.option[role=option] {
   cursor: not-allowed;
 }
 .option__sr {
@@ -111,7 +111,7 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.option[role=status] {
+.option[role=option] {
   cursor: not-allowed;
 }
 .option__sr {

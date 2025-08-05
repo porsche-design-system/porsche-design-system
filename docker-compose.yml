@@ -1,7 +1,7 @@
 services:
   design-system:
     image: mcr.microsoft.com/playwright:v1.54.0-jammy
-    working_dir: /opt/porsche-design-system-app
+    working_dir: /opt/repository
     user: "${RUN_UID}:${RUN_GID}"
     ports:
       - "3000:3000"
@@ -13,99 +13,85 @@ services:
       - "8575:8575"
     environment:
       - HOME=/home/design-system
-      - PORSCHE_NPM_REGISTRY_TOKEN
-      - NPMJS_REGISTRY_TOKEN
-      - GITHUB_SHA
-      - GITHUB_REF_NAME
-      - GITHUB_TOKEN
-      - BROWSERSTACK_ACCESS_KEY
-      - BROWSERSTACK_USER_NAME
-      - ALGOLIA_APP_ID
-      - ALGOLIA_API_KEY
-      - AWS_ACCESS_KEY_ID
-      - AWS_SECRET_ACCESS_KEY
-      - CDN_USER
-      - CDN_SSH_KEY
-      - UXPIN_TOKEN_DEV
-      - UXPIN_TOKEN_LATEST
-      - CI
     volumes:
-      - ./:/opt/porsche-design-system-app:cached
+      - ./:/opt/repository:cached
       - home:/home/design-system
-      - monorepo-node-modules:/opt/porsche-design-system-app/node_modules
-      - assets-node-modules:/opt/porsche-design-system-app/packages/assets/node_modules
-      - assets-crest-node-modules:/opt/porsche-design-system-app/packages/assets/projects/crest/node_modules
-      - assets-fallbacks-node-modules:/opt/porsche-design-system-app/packages/assets/projects/fallbacks/node_modules
-      - assets-fonts-node-modules:/opt/porsche-design-system-app/packages/assets/projects/fonts/node_modules
-      - assets-icons-node-modules:/opt/porsche-design-system-app/packages/assets/projects/icons/node_modules
-      - assets-marque-node-modules:/opt/porsche-design-system-app/packages/assets/projects/marque/node_modules
-      - assets-meta-icons-node-modules:/opt/porsche-design-system-app/packages/assets/projects/meta-icons/node_modules
-      - assets-model-signatures-node-modules:/opt/porsche-design-system-app/packages/assets/projects/model-signatures/node_modules
-      - assets-font-face-node-modules:/opt/porsche-design-system-app/packages/assets/projects/font-face/node_modules
-      - component-meta-node-modules:/opt/porsche-design-system-app/packages/component-meta/node_modules
-      - components-node-modules:/opt/porsche-design-system-app/packages/components/node_modules
-      - components-js-node-modules:/opt/porsche-design-system-app/packages/components-js/node_modules
-      - components-js-components-manager-cli-node-modules:/opt/porsche-design-system-app/packages/components-js/projects/components-manager-cli/node_modules
-      - components-js-components-manager-core-node-modules:/opt/porsche-design-system-app/packages/components-js/projects/components-manager-core/node_modules
-      - components-js-jsdom-polyfill-node-modules:/opt/porsche-design-system-app/packages/components-js/projects/jsdom-polyfill/node_modules
-      - components-js-partials-node-modules:/opt/porsche-design-system-app/packages/components-js/projects/partials/node_modules
-      - components-angular-node-modules:/opt/porsche-design-system-app/packages/components-angular/node_modules
-      - components-react-node-modules:/opt/porsche-design-system-app/packages/components-react/node_modules
-      - components-react-nextjs-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/nextjs/node_modules
-      - components-react-react-ssr-wrapper-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/react-ssr-wrapper/node_modules
-      - components-react-remix-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/remix/node_modules
-      - components-react-uxpin-wrapper-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/uxpin-wrapper/node_modules
-      - components-vue-node-modules:/opt/porsche-design-system-app/packages/components-vue/node_modules
-      - crawler-node-modules:/opt/porsche-design-system-app/packages/crawler/node_modules
-      - shared-node-modules:/opt/porsche-design-system-app/packages/shared/node_modules
-      - storefront-node-modules:/opt/porsche-design-system-app/packages/storefront/node_modules
-      - storefront-stackblitz-node-modules:/opt/porsche-design-system-app/packages/storefront/projects/stackblitz/node_modules
-      - tokens-node-modules:/opt/porsche-design-system-app/packages/tokens/node_modules
-      - styles-node-modules:/opt/porsche-design-system-app/packages/styles/node_modules
-      - styles-tailwindcss-node-modules:/opt/porsche-design-system-app/packages/styles/projects/tailwindcss/node_modules
-      - utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/node_modules
-      - utilities-ag-grid-node-modules:/opt/porsche-design-system-app/packages/utilities/projects/ag-grid/node_modules
-      - utilities-utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/projects/utilities/node_modules
+      - monorepo-node-modules:/opt/repository/node_modules
+      - assets-node-modules:/opt/repository/packages/assets/node_modules
+      - assets-crest-node-modules:/opt/repository/packages/assets/projects/crest/node_modules
+      - assets-fallbacks-node-modules:/opt/repository/packages/assets/projects/fallbacks/node_modules
+      - assets-fonts-node-modules:/opt/repository/packages/assets/projects/fonts/node_modules
+      - assets-icons-node-modules:/opt/repository/packages/assets/projects/icons/node_modules
+      - assets-marque-node-modules:/opt/repository/packages/assets/projects/marque/node_modules
+      - assets-meta-icons-node-modules:/opt/repository/packages/assets/projects/meta-icons/node_modules
+      - assets-model-signatures-node-modules:/opt/repository/packages/assets/projects/model-signatures/node_modules
+      - assets-font-face-node-modules:/opt/repository/packages/assets/projects/font-face/node_modules
+      - component-meta-node-modules:/opt/repository/packages/component-meta/node_modules
+      - components-node-modules:/opt/repository/packages/components/node_modules
+      - components-js-node-modules:/opt/repository/packages/components-js/node_modules
+      - components-js-components-manager-cli-node-modules:/opt/repository/packages/components-js/projects/components-manager-cli/node_modules
+      - components-js-components-manager-core-node-modules:/opt/repository/packages/components-js/projects/components-manager-core/node_modules
+      - components-js-jsdom-polyfill-node-modules:/opt/repository/packages/components-js/projects/jsdom-polyfill/node_modules
+      - components-js-partials-node-modules:/opt/repository/packages/components-js/projects/partials/node_modules
+      - components-angular-node-modules:/opt/repository/packages/components-angular/node_modules
+      - components-react-node-modules:/opt/repository/packages/components-react/node_modules
+      - components-react-nextjs-node-modules:/opt/repository/packages/components-react/projects/nextjs/node_modules
+      - components-react-react-ssr-wrapper-node-modules:/opt/repository/packages/components-react/projects/react-ssr-wrapper/node_modules
+      - components-react-remix-node-modules:/opt/repository/packages/components-react/projects/remix/node_modules
+      - components-react-react-router-node-modules:/opt/repository/packages/components-react/projects/react-router/node_modules
+      - components-react-uxpin-wrapper-node-modules:/opt/repository/packages/components-react/projects/uxpin-wrapper/node_modules
+      - components-vue-node-modules:/opt/repository/packages/components-vue/node_modules
+      - crawler-node-modules:/opt/repository/packages/crawler/node_modules
+      - shared-node-modules:/opt/repository/packages/shared/node_modules
+      - storefront-node-modules:/opt/repository/packages/storefront/node_modules
+      - storefront-stackblitz-node-modules:/opt/repository/packages/storefront/projects/stackblitz/node_modules
+      - tokens-node-modules:/opt/repository/packages/tokens/node_modules
+      - styles-node-modules:/opt/repository/packages/styles/node_modules
+      - styles-tailwindcss-node-modules:/opt/repository/packages/styles/projects/tailwindcss/node_modules
+      - utilities-node-modules:/opt/repository/packages/utilities/node_modules
+      - utilities-ag-grid-node-modules:/opt/repository/packages/utilities/projects/ag-grid/node_modules
+      - utilities-utilities-node-modules:/opt/repository/packages/utilities/projects/utilities/node_modules
   change-volume-owner:
     image: mcr.microsoft.com/playwright:v1.54.0-jammy
     volumes:
-      - home:/opt/porsche-design-system-volumes/home
-      - monorepo-node-modules:/opt/porsche-design-system-volumes/root-node_modules
-      - assets-node-modules:/opt/porsche-design-system-volumes/assets-node_modules
-      - assets-crest-node-modules:/opt/porsche-design-system-volumes/assets-crest-node_modules
-      - assets-fallbacks-node-modules:/opt/porsche-design-system-volumes/assets-fallbacks-node_modules
-      - assets-fonts-node-modules:/opt/porsche-design-system-volumes/assets-fonts-node_modules
-      - assets-icons-node-modules:/opt/porsche-design-system-volumes/assets-icons-node_modules
-      - assets-marque-node-modules:/opt/porsche-design-system-volumes/assets-marque-node_modules
-      - assets-meta-icons-node-modules:/opt/porsche-design-system-volumes/assets-meta-icons-node_modules
-      - assets-model-signatures-node-modules:/opt/porsche-design-system-volumes/assets-model-signatures-node_modules
-      - assets-font-face-node-modules:/opt/porsche-design-system-volumes/assets-font-face-node_modules
-      - component-meta-node-modules:/opt/porsche-design-system-volumes/component-meta-node_modules
-      - components-node-modules:/opt/porsche-design-system-volumes/components-node_modules
-      - components-js-node-modules:/opt/porsche-design-system-volumes/components-js-node_modules
-      - components-js-components-manager-cli-node-modules:/opt/porsche-design-system-volumes/components-manager-cli-node_modules
-      - components-js-components-manager-core-node-modules:/opt/porsche-design-system-volumes/components-manager-core-node_modules
-      - components-js-jsdom-polyfill-node-modules:/opt/porsche-design-system-volumes/components-js-jsdom-polyfill-node_modules
-      - components-js-partials-node-modules:/opt/porsche-design-system-volumes/partials-node_modules
-      - components-angular-node-modules:/opt/porsche-design-system-volumes/components-angular-node_modules
-      - components-react-node-modules:/opt/porsche-design-system-volumes/components-react-node_modules
-      - components-react-nextjs-node-modules:/opt/porsche-design-system-volumes/components-react-nextjs-node_modules
-      - components-react-react-ssr-wrapper-node-modules:/opt/porsche-design-system-volumes/components-react-react-ssr-wrapper-node_modules
-      - components-react-remix-node-modules:/opt/porsche-design-system-volumes/components-react-remix-node_modules
-      - components-react-uxpin-wrapper-node-modules:/opt/porsche-design-system-volumes/components-react-uxpin-wrapper-node_modules
-      - components-vue-node-modules:/opt/porsche-design-system-volumes/components-vue-node_modules
-      - crawler-node-modules:/opt/porsche-design-system-volumes/crawler-node_modules
-      - shared-node-modules:/opt/porsche-design-system-volumes/shared-node_modules
-      - storefront-node-modules:/opt/porsche-design-system-volumes/storefront-node_modules
-      - storefront-stackblitz-node-modules:/opt/porsche-design-system-volumes/storefront-stackblitz-node_modules
-      - tokens-node-modules:/opt/porsche-design-system-volumes/tokens-node_modules
-      - styles-node-modules:/opt/porsche-design-system-volumes/styles-node_modules
-      - styles-tailwindcss-node-modules:/opt/porsche-design-system-volumes/styles-tailwindcss-node_modules
-      - utilities-node-modules:/opt/porsche-design-system-volumes/utilities-node_modules
-      - utilities-ag-grid-node-modules:/opt/porsche-design-system-volumes/utilities-ag-grid-node_modules
-      - utilities-utilities-node-modules:/opt/porsche-design-system-volumes/utilities-utilities-node_modules
+      - home:/opt/repository-volumes/home
+      - monorepo-node-modules:/opt/repository-volumes/root-node_modules
+      - assets-node-modules:/opt/repository-volumes/assets-node_modules
+      - assets-crest-node-modules:/opt/repository-volumes/assets-crest-node_modules
+      - assets-fallbacks-node-modules:/opt/repository-volumes/assets-fallbacks-node_modules
+      - assets-fonts-node-modules:/opt/repository-volumes/assets-fonts-node_modules
+      - assets-icons-node-modules:/opt/repository-volumes/assets-icons-node_modules
+      - assets-marque-node-modules:/opt/repository-volumes/assets-marque-node_modules
+      - assets-meta-icons-node-modules:/opt/repository-volumes/assets-meta-icons-node_modules
+      - assets-model-signatures-node-modules:/opt/repository-volumes/assets-model-signatures-node_modules
+      - assets-font-face-node-modules:/opt/repository-volumes/assets-font-face-node_modules
+      - component-meta-node-modules:/opt/repository-volumes/component-meta-node_modules
+      - components-node-modules:/opt/repository-volumes/components-node_modules
+      - components-js-node-modules:/opt/repository-volumes/components-js-node_modules
+      - components-js-components-manager-cli-node-modules:/opt/repository-volumes/components-manager-cli-node_modules
+      - components-js-components-manager-core-node-modules:/opt/repository-volumes/components-manager-core-node_modules
+      - components-js-jsdom-polyfill-node-modules:/opt/repository-volumes/components-js-jsdom-polyfill-node_modules
+      - components-js-partials-node-modules:/opt/repository-volumes/partials-node_modules
+      - components-angular-node-modules:/opt/repository-volumes/components-angular-node_modules
+      - components-react-node-modules:/opt/repository-volumes/components-react-node_modules
+      - components-react-nextjs-node-modules:/opt/repository-volumes/components-react-nextjs-node_modules
+      - components-react-react-ssr-wrapper-node-modules:/opt/repository-volumes/components-react-react-ssr-wrapper-node_modules
+      - components-react-remix-node-modules:/opt/repository-volumes/components-react-remix-node_modules
+      - components-react-react-router-node-modules:/opt/repository-volumes/components-react-react-router-node_modules
+      - components-react-uxpin-wrapper-node-modules:/opt/repository-volumes/components-react-uxpin-wrapper-node_modules
+      - components-vue-node-modules:/opt/repository-volumes/components-vue-node_modules
+      - crawler-node-modules:/opt/repository-volumes/crawler-node_modules
+      - shared-node-modules:/opt/repository-volumes/shared-node_modules
+      - storefront-node-modules:/opt/repository-volumes/storefront-node_modules
+      - storefront-stackblitz-node-modules:/opt/repository-volumes/storefront-stackblitz-node_modules
+      - tokens-node-modules:/opt/repository-volumes/tokens-node_modules
+      - styles-node-modules:/opt/repository-volumes/styles-node_modules
+      - styles-tailwindcss-node-modules:/opt/repository-volumes/styles-tailwindcss-node_modules
+      - utilities-node-modules:/opt/repository-volumes/utilities-node_modules
+      - utilities-ag-grid-node-modules:/opt/repository-volumes/utilities-ag-grid-node_modules
+      - utilities-utilities-node-modules:/opt/repository-volumes/utilities-utilities-node_modules
     command: |
-      sh -c "chown ${RUN_UID}:${RUN_GID} /opt/porsche-design-system-volumes/*"
+      sh -c "chown ${RUN_UID}:${RUN_GID} /opt/repository-volumes/*"
 volumes:
   home:
   monorepo-node-modules:
@@ -130,6 +116,7 @@ volumes:
   components-react-nextjs-node-modules:
   components-react-react-ssr-wrapper-node-modules:
   components-react-remix-node-modules:
+  components-react-react-router-node-modules:
   components-react-uxpin-wrapper-node-modules:
   components-vue-node-modules:
   crawler-node-modules:

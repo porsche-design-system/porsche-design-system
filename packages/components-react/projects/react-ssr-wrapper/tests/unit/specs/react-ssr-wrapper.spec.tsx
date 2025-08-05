@@ -1,4 +1,4 @@
-import { type SlotMeta, getComponentMeta } from '@porsche-design-system/component-meta';
+import { getComponentMeta, type SlotMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { render } from '@testing-library/react';
 import { kebabCase, pascalCase } from 'change-case';
@@ -63,23 +63,6 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
   // together with `...rest` which would contain dangerouslySetInnerHTML, we would have both
   // and these are not allowed and throw an exception
   let props: any = hasSlot ? { children: renderChildren() } : null;
-
-  if (
-    [
-      'p-textarea',
-      'p-input-password',
-      'p-input-number',
-      'p-input-text',
-      'p-input-email',
-      'p-input-tel',
-      'p-input-search',
-    ].includes(tagName)
-  ) {
-    props = {
-      ...props,
-      readOnly: true,
-    };
-  }
 
   if (tagName === 'p-checkbox') {
     props = {

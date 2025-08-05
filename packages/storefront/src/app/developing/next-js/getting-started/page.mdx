@@ -2,205 +2,169 @@ import { Notification } from '@/components/common/Notification';
 import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
-  title: 'Next JS: Getting started - Porsche Design System',
-  description: 'Start developing in Next JS with the Porsche Design System.',
+  title: 'Next.js: Getting started - Porsche Design System',
+  description: 'Start developing in Next.js with the Porsche Design System.',
 };
 
-# Next Js
+# Next.js
 
-<TableOfContents headings={['Quick start','Integration','When are Porsche Design System components (re-)hydrated?','How do Porsche Design System components work in detail?','Sample integration']} />
+<TableOfContents headings={['Quick start','Integration']} />
 
 ## Quick start
 
-To build your own **Next.js** application with the **React** components of the Porsche Design System, follow these
-steps:
-
-- Create a new application by executing:
+To build your own [Next.js](https://nextjs.org/docs/app/getting-started/installation) application using the Porsche
+Design System's React components, follow these steps:
 
 ```bash
-# install with yarn:
-yarn create next-app
+# Create a new application by executing:
+npx create-next-app@latest
 
-# install with npm:
-npm init next-app
-```
-
-- Follow the installation wizard to set everything up:
-
-```
+# Follow the installation wizard to set everything up:
 ✔ What is your project named? "my-app"
-✔ Would you like to use TypeScript with this project? "Yes"
-✔ Would you like to use ESLint with this project? "Yes"
+✔ Would you like to use TypeScript? "Yes"
+✔ Would you like to use ESLint? "Yes"
+✔ Would you like to use Tailwind CSS? "Yes"
+✔ Would you like your code inside a `src/` directory? "No"
+✔ Would you like to use App Router? (recommended) "Yes"
+✔ Would you like to use Turbopack for `next dev`?  "No"
+✔ Would you like to customize the import alias (`@/*` by default)? "No"
 ```
 
-- Install the Porsche Design System within your project directory (e.g. "my-app"):
-
-```bash
-# install with yarn:
-cd my-app
-yarn add @porsche-design-system/components-react
-
-# install with npm:
-cd my-app
-npm install @porsche-design-system/components-react
-```
-
-You are ready to start building your own application.
+You're all set! Start building your own application now.
 
 ## Integration
 
-<Notification heading="Attention" state="warning">
-  The following examples use the **SSR** sub-package of **@porsche-design-system/components-react/ssr**.
+The following integration example uses a standard Next.js setup.
 
-This sub-package is a special build of the Porsche Design System Components that renders different markup on the server
-than in the browser. While this breaks the rule of SSR/SSG where browser markup should always be identical to server
-markup, this is the only way to achieve SSR/SSG with web components and Shadow DOM.
+<Notification heading="Attention" headingTag="h3" state="warning">
+  The following examples use the **SSR** sub-package from `@porsche-design-system/components-react/ssr`.
 
-The two environments are detected by the **process.browser** flag which is replaced with a boolean value at build time.
-In the browser the components are essentially the "regular" React components of
-**@porsche-design-system/components-react**.
+This sub-package is a specialized build of the Porsche Design System components that renders different markup on the
+server compared to the browser. While this deviates from traditional SSR/SSG rules (where browser and server markup
+should be identical), it's necessary to enable SSR/SSG with web components and Shadow DOM.
 
-On the server the behavior is different. Here the relevant markup and styles (e.g. no hover or focus styles) are
-rendered into a [Declarative Shadow DOM](https://web.dev/declarative-shadow-dom) which is converted into a real Shadow
-DOM by modern browsers without any JavaScript. This is all we need for the initial render. Once the client code is
-loaded and executed, the Porsche Design System Components initialize just like normal.
+The two environments are detected via the `process.browser` flag, which is replaced with a boolean value at build time.
+In the browser, the components behave like the standard React components from `@porsche-design-system/components-react`.
 
-**It is crucial that dead code elimination is active for the client build or otherwise the server code might sneak into
-the browser.**
+On the server, the behavior differs: Relevant markup and styles are rendered into a Declarative Shadow DOM, which modern
+browsers convert to a real Shadow DOM without JavaScript. This handles the initial render efficiently. Once the client
+code loads and executes, the Porsche Design System components initialize as usual.
+
+**Important:** Ensure dead code elimination is enabled for the client build to prevent server-side code from leaking
+into the browser bundle.
 
 </Notification>
 
-The following project is a standard Next.js setup with the following adaptions.
-
 ### Step 1
 
-Extend the root layout `layout.tsx` by the necessary `PorscheDesignSystemProvider` and add the partials.
+Install the Porsche Design System within your project directory.
+
+```bash
+npm install @porsche-design-system/components-react
+```
+
+### Step 2
+
+Wrap your app with the `PorscheDesignSystemProvider`:
 
 ```tsx
 // app/layout.tsx
-import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr';
-import 'app/globals.css';
-import type { Metadata, Viewport } from 'next';
-import {
-  getComponentChunkLinks,
-  getFontLinks,
-  getIconLinks,
-  getMetaTagsAndIconLinks,
-} from '@porsche-design-system/components-react/partials';
-import { preload, prefetchDNS } from 'react-dom';
 
-const title = 'Sample Project NextJs';
-
-const { themeColor, appleWebApp, icons, manifest } = getMetaTagsAndIconLinks({
-  appTitle: title,
-  format: 'js',
-});
-
-/* injects meta theme-color. */
-export const viewport: Viewport = {
-  themeColor,
-};
-
-/* injects favicon, apple touch icons, android touch icons, etc. */
-export const metadata: Metadata = {
-  title,
-  appleWebApp,
-  icons,
-  // Next currently automatically applies `crossorigin="use-credentials"` to the link which causes a CORS Error in the manifest link (Will be fixed in upcoming Next version)
-  // manifest,
-};
+import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr'; // ensure to import from ssr subpackage!
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  /* preloads Porsche Next font (=> minimize FOUT) */
-  getFontLinks({ format: 'js' }).forEach(({ href, options }) => preload(href, options));
-  /* preloads PDS component core chunk from CDN for PDS component hydration (=> improve loading performance) */
-  getComponentChunkLinks({ components: ['tabs-bar', 'scroller', 'icon'], format: 'js' }).forEach(({ href, options }) =>
-    preload(href, options)
-  );
-  /* preloads Porsche icons (=> minimize FOUC) */
-  getIconLinks({ format: 'js' }).forEach(({ href }) => prefetchDNS(href));
-
   return (
     <html lang="en">
       <body>
         <PorscheDesignSystemProvider>{children}</PorscheDesignSystemProvider>
-        <Partials />
       </body>
     </html>
   );
 }
 ```
 
-```jsx
-// components/partials.tsx
-'use client';
+### Step 3 (recommended)
 
-import { useServerInsertedHTML } from 'next/navigation';
-import { getFontFaceStyles, getInitialStyles } from '@porsche-design-system/components-react/partials';
-import { useRef } from 'react';
-
-export const Partials = () => {
-  const isServerInserted = useRef(false);
-
-  useServerInsertedHTML(() => {
-    // There seems to be some strange behavior where Next calls this multiple times
-    // To ensure this is only called once we use a ref
-    if (!isServerInserted.current) {
-      isServerInserted.current = true;
-      return (
-        <>
-          {/* **necessary for SSR support**, injects stylesheet which defines visibility of pre-hydrated PDS components */}
-          {getInitialStyles({ format: 'jsx' })}
-          {/* injects stylesheet which defines Porsche Next CSS font-face definition (=> minimize FOUT) */}
-          {getFontFaceStyles({ format: 'jsx' })}
-        </>
-      );
-    }
-  });
-
-  return null;
-};
-```
-
-### Step 2
-
-Add a Porsche Design System component, e.g. `PHeading`:
+Integrate Porsche Design System [Partials](/partials/introduction) to boost performance, reduce loading times, and
+minimize FOUC/FOUT.
 
 ```tsx
-// app/page.tsx
-import { PHeading } from '@porsche-design-system/components-react/ssr';
+// app/layout.tsx
 
-export default function Home() {
+import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react/ssr'; // ensure to import from ssr subpackage!
+import {
+  getComponentChunkLinks,
+  getFontFaceStyles,
+  getFontLinks,
+  getIconLinks,
+  getInitialStyles,
+  getMetaTagsAndIconLinks,
+} from '@porsche-design-system/components-react/partials';
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <>
-      <PHeading>Welcome to Next.js</PHeading>
-    </>
+    <html lang="en">
+      <head>
+        {/* necessary for SSR support, injects stylesheet which defines visibility of pre-hydrated PDS components */}
+        {getInitialStyles({ format: 'jsx' })}
+        {/* injects stylesheet which defines Porsche Next CSS font-face definition (=> minimize FOUT) */}
+        {getFontFaceStyles({ format: 'jsx' })}
+        {/* preloads Porsche Next font (=> minimize FOUT) */}
+        {getFontLinks({ format: 'jsx' })}
+        {/* preloads PDS component core chunk from CDN for PDS component hydration (=> improve loading performance) */}
+        {getComponentChunkLinks({ format: 'jsx' })}
+        {/* preloads Porsche icons (=> minimize FOUC) */}
+        {getIconLinks({ format: 'jsx' })}
+        {/* injects favicon, apple touch icons, android touch icons, etc. */}
+        {getMetaTagsAndIconLinks({ appTitle: 'Porsche', format: 'jsx' })}
+      </head>
+      <body>
+        <PorscheDesignSystemProvider>{children}</PorscheDesignSystemProvider>
+      </body>
+    </html>
   );
 }
 ```
 
-- Run `yarn build` or `npm build`
-- Execute `yarn start` or `npm start` and check if the components are displayed correctly.
+### Step 4 (recommended)
 
-## When are Porsche Design System components (re-)hydrated?
+Set up Tailwind CSS with the Porsche Design System [Tailwind CSS Theme](/tailwindcss/introduction) to ensure seamless
+styling consistency with Porsche's design principles:
 
-See [componentsReady()](/developing/components-ready) for further information.
+```css
+/* app/globals.css */
 
-## How do Porsche Design System components work in detail?
+@import 'tailwindcss';
+@import '@porsche-design-system/components-react/tailwindcss';
+```
 
-See [Initialization](/must-know/initialization/introduction) for further information.
+### Step 5
 
-## Sample integration
+Add a Porsche Design System component (e.g., `<PWordmark />`) with some Tailwind CSS styles. Then, run `npm run dev` and
+verify that the component and styles display correctly.
 
-We provide a public GitHub repository with a basic sample project setup to show how it is managed in real code. You can
-find the repository of the Next.js example project here:
-[Sample Integration NextJS](https://github.com/porsche-design-system/sample-integration-nextjs)
+```tsx
+// app/page.tsx
 
-### Get the project up and running
+import { PWordmark } from '@porsche-design-system/components-react/ssr'; // ensure to import from ssr subpackage!
 
-- Clone the repository by executing `git clone https://github.com/porsche-design-system/sample-integration-nextjs.git`
-- Follow the installation guidelines in the `README.md` file
+export default function Home() {
+  return (
+    <>
+      <div className="grid justify-items-center gap-fluid-md m-static-lg p-fluid-lg bg-surface rounded-lg">
+        <PWordmark />
+        <h1 className="prose-display-md">Porsche Design System</h1>
+      </div>
+      <div className="…">…</div>
+    </>
+  );
+}
+```
