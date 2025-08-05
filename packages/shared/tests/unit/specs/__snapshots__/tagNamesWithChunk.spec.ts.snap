@@ -26,6 +26,7 @@ exports[`should match snapshot 1`] = `
   "p-headline",
   "p-icon",
   "p-inline-notification",
+  "p-input-date",
   "p-input-email",
   "p-input-number",
   "p-input-password",
