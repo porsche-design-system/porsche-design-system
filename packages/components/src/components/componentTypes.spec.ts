@@ -53,6 +53,8 @@ describe.each<TagName>(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))
 
   if (eventNames.length > 0) {
     describe('events', () => {
+      console.log('componentName', componentName)
+      console.log('eventNames', eventNames)
       it.each(eventNames)('should have correct type for event %s', (eventName) => {
         const [, type] =
           sourceFileContent.match(new RegExp(`@Event\\(.*?\\) public ${eventName}\\??: EventEmitter<([a-zA-Z]+)>`)) ||
