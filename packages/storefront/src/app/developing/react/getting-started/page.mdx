@@ -8,7 +8,7 @@ export const metadata = {
 
 # React
 
-<TableOfContents headings={['Quick start', 'Integration']} />
+<TableOfContents headings={['Quick start','Integration']} />
 
 ## Quick start
 
@@ -69,9 +69,7 @@ import {
   getIconLinks,
   getInitialStyles,
   getMetaTagsAndIconLinks,
-} from '@porsche-design-system/components-js/partials';
-
-const REGEX_HEAD = /<\/head>/;
+} from '@porsche-design-system/components-react/partials';
 
 const transformIndexHtmlPlugin = () => {
   return {
@@ -92,7 +90,7 @@ const transformIndexHtmlPlugin = () => {
         getMetaTagsAndIconLinks({ appTitle: 'Porsche' }),
       ].join('');
 
-      return html.replace(REGEX_HEAD, `${headPartials}$&`);
+      return html.replace(/<\/head>/, `${headPartials}$&`);
     },
   };
 };

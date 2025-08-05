@@ -283,13 +283,6 @@ export const sitemap: Routes = {
         name: 'Remix',
         path: '/developing/remix',
         type: 'PAGE',
-        subPaths: {
-          'getting-started': {
-            name: 'Getting Started',
-            path: '/developing/remix/getting-started',
-            type: 'TAB',
-          },
-        },
       },
       vue: {
         name: 'Vue',
