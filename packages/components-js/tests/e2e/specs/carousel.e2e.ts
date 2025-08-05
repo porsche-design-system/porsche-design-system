@@ -1,4 +1,4 @@
-import { type Locator, type Page, expect, test } from '@playwright/test';
+import { expect, type Locator, type Page, test } from '@playwright/test';
 import type {
   CarouselAriaAttribute,
   SelectedAriaAttributes,
@@ -350,28 +350,28 @@ test('should disable prev/next buttons on first/last slide when rewind=false', a
   const buttonNext = getButtonNext(page);
   const [slide1, slide2, slide3] = await getSlideElements(page);
 
-  expect(await getAttribute(buttonPrev, 'aria-disabled')).toBe('true');
-  expect(await getAttribute(buttonNext, 'aria-disabled')).toBe(null);
+  await expect(buttonPrev).toHaveAttribute('aria-disabled', 'true');
+  await expect(buttonNext).not.toHaveAttribute('aria-disabled');
 
   await buttonNext.click();
   await waitForSlideToBeActive(slide2);
-  expect(await getAttribute(buttonPrev, 'aria-disabled')).toBe(null);
-  expect(await getAttribute(buttonNext, 'aria-disabled')).toBe(null);
+  await expect(buttonPrev).not.toHaveAttribute('aria-disabled');
+  await expect(buttonNext).not.toHaveAttribute('aria-disabled');
 
   await buttonNext.click();
   await waitForSlideToBeActive(slide3);
-  expect(await getAttribute(buttonPrev, 'aria-disabled')).toBe(null);
-  expect(await getAttribute(buttonNext, 'aria-disabled')).toBe('true');
+  await expect(buttonPrev).not.toHaveAttribute('aria-disabled');
+  await expect(buttonNext).toHaveAttribute('aria-disabled', 'true');
 
   await buttonPrev.click();
   await waitForSlideToBeActive(slide2);
-  expect(await getAttribute(buttonPrev, 'aria-disabled')).toBe(null);
-  expect(await getAttribute(buttonNext, 'aria-disabled')).toBe(null);
+  await expect(buttonPrev).not.toHaveAttribute('aria-disabled');
+  await expect(buttonNext).not.toHaveAttribute('aria-disabled');
 
   await buttonPrev.click();
   await waitForSlideToBeActive(slide1);
-  expect(await getAttribute(buttonPrev, 'aria-disabled')).toBe('true');
-  expect(await getAttribute(buttonNext, 'aria-disabled')).toBe(null);
+  await expect(buttonPrev).toHaveAttribute('aria-disabled', 'true');
+  await expect(buttonNext).not.toHaveAttribute('aria-disabled');
 });
 
 test('should not have pagination and prev/next buttons when there is only one page and slidesPerPage is not auto', async ({
