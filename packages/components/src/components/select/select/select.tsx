@@ -150,7 +150,9 @@ export class Select {
   private defaultValue: string;
   private buttonElement: HTMLButtonElement;
   private popoverElement: HTMLDivElement;
-  private filterInputElement: HTMLPInputSearchElement;
+  private inputSearchElement: HTMLPInputSearchElement;
+  private inputSearchInputElement: HTMLInputElement;
+  private listboxElement: HTMLDivElement;
   private selectOptions: SelectOption[] = [];
   private selectOptgroups: SelectOptgroup[] = [];
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
@@ -230,6 +232,12 @@ export class Select {
 
   public componentDidLoad(): void {
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
+    // TODO: Does not work when dynamically changing the filter prop
+    if (this.filter) {
+      this.inputSearchInputElement = this.inputSearchElement.shadowRoot.querySelector('input');
+      // @ts-ignore typings missing
+      this.inputSearchInputElement.ariaControlsElements = [this.listboxElement];
+    }
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -324,10 +332,10 @@ export class Select {
               theme={this.theme}
               onInput={this.onFilterInput}
               onKeyDown={this.onComboKeyDown}
-              ref={(el: HTMLPInputSearchElement) => (this.filterInputElement = el)}
+              ref={(el: HTMLPInputSearchElement) => (this.inputSearchElement = el)}
             />
           )}
-          <div class="options" role="listbox" aria-label={this.label}>
+          <div class="options" role="listbox" aria-label={this.label} ref={(el) => (this.listboxElement = el)}>
             {this.filter && !this.hasFilterResults && (
               <div class="no-results" aria-live="polite" role="option">
                 <span aria-hidden="true">–</span>
@@ -361,7 +369,7 @@ export class Select {
   };
 
   private resetFilter = (): void => {
-    this.filterInputElement.value = '';
+    this.inputSearchElement.value = '';
     this.hasFilterResults = true;
     for (const option of this.selectOptions) {
       option.style.display = 'block';
@@ -399,7 +407,7 @@ export class Select {
         );
         setNextSelectOptionHighlighted(this.selectOptions, highlightedOptionIndex);
         // @ts-ignore - HTMLCombobox type is missing
-        (this.filter ? this.filterInputElement : this.buttonElement).ariaActiveDescendantElement =
+        (this.filter ? this.inputSearchInputElement : this.buttonElement).ariaActiveDescendantElement =
           getHighlightedSelectOption(this.selectOptions);
         break;
       }
@@ -431,7 +439,7 @@ export class Select {
         if (selectedIndex >= 0) {
           setNextSelectOptionHighlighted(this.selectOptions, selectedIndex);
           // @ts-ignore - HTMLCombobox type is missing
-          (this.filter ? this.filterInputElement : this.buttonElement).ariaActiveDescendantElement =
+          (this.filter ? this.inputSearchInputElement : this.buttonElement).ariaActiveDescendantElement =
             getSelectedSelectOption(this.selectOptions);
         }
         break;
@@ -537,7 +545,7 @@ export class Select {
       // Double requestAnimationFrame as Safari fix to make sure the input will receive focus
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          this.filterInputElement.focus();
+          this.inputSearchElement.focus();
         });
       });
     }

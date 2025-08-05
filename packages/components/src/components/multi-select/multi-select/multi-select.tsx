@@ -143,7 +143,9 @@ export class MultiSelect {
   private multiSelectOptions: MultiSelectOption[] = [];
   private multiSelectOptgroups: MultiSelectOptgroup[] = [];
   private buttonElement: HTMLButtonElement;
-  private filterInputElement: HTMLPInputSearchElement;
+  private inputSearchElement: HTMLPInputSearchElement;
+  private inputSearchInputElement: HTMLInputElement;
+  private listboxElement: HTMLDivElement;
   private resetButtonElement: HTMLElement;
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
   private popoverElement: HTMLDivElement;
@@ -228,6 +230,9 @@ export class MultiSelect {
 
   public componentDidLoad(): void {
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
+    this.inputSearchInputElement = this.inputSearchElement.shadowRoot.querySelector('input');
+    // @ts-ignore typings missing
+    this.inputSearchInputElement.ariaControlsElements = [this.listboxElement];
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -326,9 +331,15 @@ export class MultiSelect {
             theme={this.theme}
             onInput={this.onFilterInput}
             onKeyDown={this.onComboKeyDown}
-            ref={(el: HTMLPInputSearchElement) => (this.filterInputElement = el)}
+            ref={(el: HTMLPInputSearchElement) => (this.inputSearchElement = el)}
           />
-          <div class="options" role="listbox" aria-label={this.label} aria-multiselectable="true">
+          <div
+            class="options"
+            role="listbox"
+            aria-label={this.label}
+            aria-multiselectable="true"
+            ref={(el) => (this.listboxElement = el)}
+          >
             {!this.hasFilterResults && (
               <div class="no-results" aria-live="polite" role="option">
                 <span aria-hidden="true">–</span>
@@ -366,7 +377,7 @@ export class MultiSelect {
   };
 
   private resetFilter = (): void => {
-    this.filterInputElement.value = '';
+    this.inputSearchElement.value = '';
     this.hasFilterResults = true;
     for (const option of this.multiSelectOptions) {
       option.style.display = 'block';
@@ -409,7 +420,7 @@ export class MultiSelect {
         );
         setNextSelectOptionHighlighted(this.multiSelectOptions, highlightedOptionIndex);
         // @ts-ignore - HTMLCombobox type is missing
-        this.filterInputElement.ariaActiveDescendantElement = getHighlightedSelectOption(this.multiSelectOptions);
+        this.inputSearchInputElement.ariaActiveDescendantElement = getHighlightedSelectOption(this.multiSelectOptions);
         break;
       }
       case 'Select': {
@@ -432,7 +443,7 @@ export class MultiSelect {
         if (selectedIndex >= 0) {
           setNextSelectOptionHighlighted(this.multiSelectOptions, selectedIndex);
           // @ts-ignore - HTMLCombobox type is missing
-          this.filterInputElement.ariaActiveDescendantElement = getSelectedSelectOption(this.multiSelectOptions);
+          this.inputSearchInputElement.ariaActiveDescendantElement = getSelectedSelectOption(this.multiSelectOptions);
         }
         break;
       }
@@ -507,7 +518,7 @@ export class MultiSelect {
       // Double requestAnimationFrame as Safari fix to make sure the input will receive focus
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          this.filterInputElement.focus();
+          this.inputSearchElement.focus();
         });
       });
     }
