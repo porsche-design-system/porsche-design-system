@@ -37,7 +37,15 @@ for (const tagName of tagNamesWithLoadingProp) {
     };
 
     const getLoadingMessage = async (page: Page): Promise<string> => {
-      return (await getLoadingStatus(page)).evaluate((el) => el.textContent);
+      const locators = await page.locator(`${tagName} .loading`).all();
+
+      // Some components (e.g. <p-input-date>) have multiple `.loading` elements.
+      // Return only the first one with visible (non-empty) text.
+      for (const locator of locators) {
+        const text = await locator.textContent();
+        if (text?.trim()) return text.trim();
+      }
+      return '';
     };
 
     test.describe('for loading="true"', () => {
