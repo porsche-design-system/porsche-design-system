@@ -208,6 +208,11 @@ export const sitemap: Routes = {
             path: '/developing/react/getting-started',
             type: 'TAB',
           },
+          demo: {
+            name: 'Demo',
+            path: '/developing/react/demo',
+            type: 'TAB',
+          },
           testing: {
             name: 'Testing',
             path: '/developing/react/testing',
@@ -216,6 +221,11 @@ export const sitemap: Routes = {
           advanced: {
             name: 'Advanced',
             path: '/developing/react/advanced',
+            type: 'TAB',
+          },
+          faq: {
+            name: 'FAQ',
+            path: '/developing/react/faq',
             type: 'TAB',
           },
         },
@@ -230,7 +240,7 @@ export const sitemap: Routes = {
             path: '/developing/next-js/getting-started',
             type: 'TAB',
           },
-          'demo': {
+          demo: {
             name: 'Demo',
             path: '/developing/next-js/demo',
             type: 'TAB',
@@ -240,7 +250,7 @@ export const sitemap: Routes = {
             path: '/developing/next-js/testing',
             type: 'TAB',
           },
-          'faq': {
+          faq: {
             name: 'FAQ',
             path: '/developing/next-js/faq',
             type: 'TAB',
@@ -257,12 +267,12 @@ export const sitemap: Routes = {
             path: '/developing/react-router/getting-started',
             type: 'TAB',
           },
-          'demo': {
+          demo: {
             name: 'Demo',
             path: '/developing/react-router/demo',
             type: 'TAB',
           },
-          'faq': {
+          faq: {
             name: 'FAQ',
             path: '/developing/react-router/faq',
             type: 'TAB',
