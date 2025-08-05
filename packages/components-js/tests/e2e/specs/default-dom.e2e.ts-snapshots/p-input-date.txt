@@ -1,0 +1,20 @@
+<div class="root">
+  <label class="label" id="label" for="input-date"> </label>
+  <div class="wrapper">
+    <slot name="start"> </slot>
+    <input
+      aria-describedby="description message"
+      id="input-date"
+      name="value"
+      type="date"
+      placeholder=""
+      step="1"
+    />
+    <p-button-pure tabindex="-1" class="button hydrated">
+      Open date picker</p-button-pure
+    >
+    <slot name="end"> </slot>
+  </div>
+  <span id="message" class="message" role="alert"> </span>
+  <span id="loading" class="loading" role="status"> </span>
+</div>
