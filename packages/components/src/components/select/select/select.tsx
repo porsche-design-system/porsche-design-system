@@ -22,27 +22,24 @@ import {
   FORM_STATES,
   getComboboxAriaAttributes,
   getHasNativePopoverSupport,
-  getHighlightedSelectOption,
-  getHighlightedSelectOptionIndex,
   getMatchingSelectOptionIndex,
+  getNextOptionToHighlight,
   getPrefixedTagNames,
   getSelectActionFromKeyboardEvent,
-  getSelectedSelectOption,
-  getSelectedSelectOptionIndex,
+  getSelectedOption,
   getShadowRootHTMLElement,
-  getUpdatedIndex,
-  getUsableSelectOptions,
   hasMessage,
   hasPropValueChanged,
   isClickOutside,
   isElementOfKind,
+  isUsableOption,
   optionListUpdatePosition,
   SELECT_DROPDOWN_DIRECTIONS,
   SELECT_SEARCH_TIMEOUT,
-  setNextSelectOptionHighlighted,
   THEMES,
   throwIfElementIsNotOfKind,
   updateFilterResults,
+  updateHighlightedOption,
   validateProps,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
@@ -161,6 +158,8 @@ export class Select {
   private slottedImagePath: string = '';
   private hasNativePopoverSupport = getHasNativePopoverSupport();
   private cleanUpAutoUpdate: () => void;
+
+  private currentlyHighlightedOption: SelectOption | null = null;
 
   @Listen('internalOptionUpdate')
   public updateOptionHandler(e: Event & { target: SelectOption }): void {
@@ -335,7 +334,13 @@ export class Select {
               ref={(el: HTMLPInputSearchElement) => (this.inputSearchElement = el)}
             />
           )}
-          <div class="options" role="listbox" aria-label={this.label} ref={(el) => (this.listboxElement = el)}>
+          <div
+            class="options"
+            role="listbox"
+            aria-label={this.label}
+            onPointerMove={this.onPointerMove}
+            ref={(el) => (this.listboxElement = el)}
+          >
             {this.filter && !this.hasFilterResults && (
               <div class="no-results" aria-live="polite" role="option">
                 <span aria-hidden="true">–</span>
@@ -349,6 +354,18 @@ export class Select {
       </div>
     );
   }
+
+  private onPointerMove = (e: MouseEvent): void => {
+    const hoveredOption = e.target as SelectOption;
+    if (
+      hoveredOption &&
+      isElementOfKind(hoveredOption, 'p-select-option') &&
+      !hoveredOption.disabled &&
+      hoveredOption !== this.currentlyHighlightedOption
+    ) {
+      this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, hoveredOption, false);
+    }
+  };
 
   private onSlotchange = (): void => {
     this.updateOptions();
@@ -400,21 +417,19 @@ export class Select {
       case 'PageUp':
       case 'PageDown': {
         event.preventDefault();
-        const highlightedOptionIndex = getUpdatedIndex(
-          getHighlightedSelectOptionIndex(this.selectOptions),
-          getUsableSelectOptions(this.selectOptions).length - 1,
-          action
+        this.currentlyHighlightedOption = updateHighlightedOption(
+          this.currentlyHighlightedOption,
+          getNextOptionToHighlight(this.selectOptions, this.currentlyHighlightedOption, action)
         );
-        setNextSelectOptionHighlighted(this.selectOptions, highlightedOptionIndex);
         // @ts-ignore - HTMLCombobox type is missing
         (this.filter ? this.inputSearchInputElement : this.buttonElement).ariaActiveDescendantElement =
-          getHighlightedSelectOption(this.selectOptions);
+          this.currentlyHighlightedOption;
         break;
       }
       // biome-ignore lint/suspicious/noFallthroughSwitchClause: intentional fallthrough
       case 'CloseSelect': {
         event.preventDefault();
-        this.updateSelectedOption(getHighlightedSelectOption(this.selectOptions));
+        this.updateSelectedOption(this.currentlyHighlightedOption);
       }
       // intentional fallthrough
       case 'Close': {
@@ -435,12 +450,14 @@ export class Select {
         event.preventDefault();
         this.updateMenuState(true);
         // Moves highlight to the selected option if available
-        const selectedIndex = getSelectedSelectOptionIndex(this.selectOptions);
-        if (selectedIndex >= 0) {
-          setNextSelectOptionHighlighted(this.selectOptions, selectedIndex);
-          // @ts-ignore - HTMLCombobox type is missing
-          (this.filter ? this.inputSearchInputElement : this.buttonElement).ariaActiveDescendantElement =
-            getSelectedSelectOption(this.selectOptions);
+        if (!this.currentlyHighlightedOption) {
+          const selectedOption = getSelectedOption(this.selectOptions);
+          if (selectedOption && isUsableOption(selectedOption)) {
+            this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, selectedOption);
+            // @ts-ignore - HTMLCombobox type is missing
+            (this.filter ? this.inputSearchInputElement : this.buttonElement).ariaActiveDescendantElement =
+              this.currentlyHighlightedOption;
+          }
         }
         break;
       }
@@ -451,9 +468,9 @@ export class Select {
     this.updateMenuState(true);
 
     this.updateSearchString(letter);
-    const matchingIndex = getMatchingSelectOptionIndex(this.selectOptions, this.searchString);
-    if (matchingIndex !== -1) {
-      setNextSelectOptionHighlighted(this.selectOptions, matchingIndex);
+    const matchingOption = getMatchingSelectOptionIndex(this.selectOptions, this.searchString);
+    if (matchingOption) {
+      this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, matchingOption);
     } else {
       window.clearTimeout(this.searchTimeout);
       this.searchString = '';

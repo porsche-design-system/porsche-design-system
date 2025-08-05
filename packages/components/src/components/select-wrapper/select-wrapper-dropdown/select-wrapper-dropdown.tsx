@@ -1,5 +1,5 @@
 import { autoUpdate } from '@floating-ui/dom';
-import { Component, Element, Host, type JSX, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Host, h, type JSX, Prop, State, Watch } from '@stencil/core';
 import type { Theme } from '../../../types';
 import {
   attachComponentCss,
@@ -25,7 +25,6 @@ import type {
 import { getComponentCss } from './select-wrapper-dropdown-styles';
 import {
   type DropdownInteractionType,
-  type OptionMap,
   getDropdownVisibility,
   getHighlightedOptionMapIndex,
   getMatchingOptionMaps,
@@ -35,6 +34,7 @@ import {
   getSelectedOptionMap,
   handleScroll,
   hasFilterResults,
+  type OptionMap,
   resetFilteredOptionMaps,
   resetHighlightedToSelectedOptionMaps,
   setFilteredOptionMaps,
@@ -223,9 +223,9 @@ export class SelectWrapperDropdown {
             ref={(el) => (this.popoverElement = el)}
           >
             {this.filter && !hasFilterResults(this.optionMaps) ? (
-              <div class="option" aria-live="polite" role="option">
+              <div class="option no-results" aria-live="polite" role="option">
                 <span aria-hidden="true">---</span>
-                <span class="option__sr">No results found</span>
+                <span class="no-results__sr">No results found</span>
               </div>
             ) : (
               this.optionMaps.map((option, index) => {

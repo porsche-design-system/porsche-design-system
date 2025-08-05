@@ -1,4 +1,3 @@
-import { forceUpdate } from '@stencil/core';
 import type {
   MultiSelectOptgroup,
   MultiSelectOption,
@@ -14,11 +13,6 @@ export const updateFilterResults = (
 
   for (const option of options) {
     const matches = option.textContent.toLowerCase().includes(value);
-    // Highlighted state is only kept if highlighted option matches the filter, otherwise reset
-    if (option.highlighted && !matches) {
-      option.highlighted = false;
-      forceUpdate(option);
-    }
     // Use display none to preserve hidden state
     option.style.display = matches ? 'block' : 'none';
   }
