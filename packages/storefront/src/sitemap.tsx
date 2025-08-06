@@ -304,9 +304,19 @@ export const sitemap: Routes = {
             path: '/developing/vue/getting-started',
             type: 'TAB',
           },
+          demo: {
+            name: 'Demo',
+            path: '/developing/vue/demo',
+            type: 'TAB',
+          },
           advanced: {
             name: 'Advanced',
             path: '/developing/vue/advanced',
+            type: 'TAB',
+          },
+          faq: {
+            name: 'FAQ',
+            path: '/developing/vue/faq',
             type: 'TAB',
           },
         },

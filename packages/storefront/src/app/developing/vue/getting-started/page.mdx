@@ -1,96 +1,201 @@
-import { TableOfContents } from "@/components/common/TableOfContents";
+import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
   title: 'Vue: Getting started - Porsche Design System',
-  description: 'Start developing in Vue with the Porsche Design System.'
-}
+  description: 'Start developing in Vue with the Porsche Design System.',
+};
 
 # Vue
 
-<TableOfContents headings={['Quick start','Integration','Plugin','When are Porsche Design System components initialized?']} />
+<TableOfContents
+  headings={['Quick start', 'Integration', 'Plugin', 'When are Porsche Design System components initialized?']}
+/>
 
 ## Quick start
 
-To build your own **Vue** application with the **Vue** components of the Porsche Design System, follow these steps:
-
-- Create a new application by executing:
-
-```bash
-# install with yarn:
-yarn create vite
-
-# install with npm:
-npm create vite
-```
-
-- Follow the installation wizard to set everything up:
-
-```
-✔ Package name: my-app
-✔ Select a framework: › Vue
-✔ Select a variant: › TypeScript
-```
-
-- Install the Porsche Design System within your project directory (e.g. "my-app"):
+To build your own [Vue](https://vuejs.org/guide/quick-start.html) application using the Porsche Design System's Vue
+components, follow these steps:
 
 ```bash
-# install with yarn:
-cd my-app
-yarn add @porsche-design-system/components-vue
+# Create a new application by executing:
+npm create vue@latest
 
-# install with npm:
-cd my-app
-npm install @porsche-design-system/components-vue
+# Follow the installation wizard to set everything up:
+✔ Project name (target directory): "./my-app"
+✔ Select features to include in your project:
+    ◼ TypeScript "Yes"
+    ◼ JSX Support "Yes"
+    ◼ Router (SPA development) "Yes"
+    ◼ Pinia (state management) "Yes"
+    ◼ Vitest (unit testing) "Yes"
+    ◼ End-to-End Testing "Yes"
+    ◼ ESLint (error prevention) "Yes"
+    ◼ Prettier (code formatting) "Yes"
+✔ Select an End-to-End testing framework: "Playwright"
+✔ Select experimental features to include in your project:
+    ◻ Oxlint (experimental) "No"
+    ◻ rolldown-vite "No"
+✔ Skip all example code and start with a blank Vue project? "No"
 ```
 
-You are ready to start building your own application.
+You're all set! Start building your own application now.
 
 ## Integration
 
-After adding the `@porsche-design-system/components-vue` package to your project, you've to extend your standard vue
-setup by the `PorscheDesignSystemProvider` by adding it to your `App.vue` file
+The following integration example uses a standard Vue setup.
 
-The following setup is a standard Vue setup with the following adaptions:
+### Step 1
 
-Extend `App.vue` by the necessary `PorscheDesignSystemProvider`:
+Install the Porsche Design System within your project directory.
 
-```tsx
-// pages/App.vue
+```bash
+npm install @porsche-design-system/components-vue
+```
+
+### Step 2
+
+Wrap your app with the `<PorscheDesignSystemProvider />`.
+
+```vue
+// src/App.vue
 
 <script setup lang="ts">
-  import AppComponent from './components/AppComponent.vue';
+  import { RouterView } from 'vue-router';
   import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
 </script>
 
 <template>
   <PorscheDesignSystemProvider>
-    <AppComponent />
+    <header>…</header>
+    <RouterView />
   </PorscheDesignSystemProvider>
 </template>
+
+<style scoped>
+  …
+</style>
 ```
 
-Change your AppComponent to use at least one Porsche Design System component, for example:
+### Step 3 (recommended)
+
+Integrate Porsche Design System [Partials](/partials/introduction) to boost performance, reduce loading times, and
+minimize FOUC/FOUT.
 
 ```tsx
-// AppComponent.vue
+// vite.config.ts
+
+import …
+import { defineConfig } from 'vite';
+import {
+  getComponentChunkLinks,
+  getFontFaceStyles,
+  getFontLinks,
+  getIconLinks,
+  getInitialStyles,
+  getMetaTagsAndIconLinks,
+} from '@porsche-design-system/components-vue/partials';
+
+const transformIndexHtmlPlugin = () => {
+  return {
+    name: 'html-transform',
+    transformIndexHtml(html: string) {
+      const headPartials = [
+        // injects stylesheet which defines visibility of pre-hydrated PDS components
+        getInitialStyles(),
+        // injects stylesheet which defines Porsche Next CSS font-face definition (=> minimize FOUT)
+        getFontFaceStyles(),
+        // preloads Porsche Next font (=> minimize FOUT)
+        getFontLinks(),
+        // preloads PDS component core chunk from CDN for PDS component hydration (=> improve loading performance)
+        getComponentChunkLinks(),
+        // preloads Porsche icons (=> minimize FOUC)
+        getIconLinks(),
+        // injects favicon, apple touch icons, android touch icons, etc.
+        getMetaTagsAndIconLinks({ appTitle: 'Porsche' }),
+      ].join('');
+
+      return html.replace(/<\/head>/, `${headPartials}$&`);
+    },
+  };
+};
+
+export default defineConfig({
+  plugins: [vue(), vueJsx(), vueDevTools(), transformIndexHtmlPlugin()],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
+});
+```
+
+### Step 4 (recommended)
+
+Set up Tailwind CSS with the Porsche Design System [Tailwind CSS Theme](/tailwindcss/introduction) to ensure seamless
+styling consistency with Porsche's design principles.
+
+Install Tailwind CSS within your project directory.
+
+```bash
+npm install tailwindcss @tailwindcss/vite
+```
+
+Configure the Vite plugin.
+
+```tsx
+// vite.config.ts
+
+import …
+import { defineConfig } from 'vite';
+import tailwindcss from '@tailwindcss/vite';
+
+const transformIndexHtmlPlugin = () => { … }
+
+export default defineConfig({
+  plugins: [vue(), vueJsx(), vueDevTools(), transformIndexHtmlPlugin(), tailwindcss()],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
+});
+```
+
+Import Tailwind CSS and the Porsche Design System Tailwind CSS Theme.
+
+```css
+/* src/assets/main.css */
+
+@import 'tailwindcss';
+@import '@porsche-design-system/components-vue/tailwindcss';
+```
+
+### Step 5
+
+Add a Porsche Design System component (e.g., `<PWordmark />`) with some Tailwind CSS styles. Then, run `npm run dev` and
+verify that the component and styles display correctly.
+
+```tsx
+// src/App.vue
 
 <script setup lang="ts">
-  import { ref } from 'vue';
-  import { PHeading } from '@porsche-design-system/components-vue';
+import { RouterView } from 'vue-router'
+import { PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
+import { PWordmark } from '@porsche-design-system/components-vue';
 </script>
 
 <template>
-  <PHeading>Heading</PHeading>
+  <PorscheDesignSystemProvider>
+    <div class="grid justify-items-center col-span-full gap-fluid-md m-static-lg p-fluid-lg bg-surface rounded-lg">
+      <PWordmark />
+      <h1 class="prose-display-md">Porsche Design System</h1>
+    </div>
+    <header>…</header>
+    <RouterView />
+  </PorscheDesignSystemProvider>
 </template>
+
+<style scoped>
+  …
+</style>
 ```
-
-Run `yarn vite` or `npm start` and check if the components are displayed correctly.
-
-## Plugin
-
-Currently, the plugin approach is in development.
-
-## When are Porsche Design System components initialized?
-
-See [componentsReady()](/developing/components-ready) for further information.
-
