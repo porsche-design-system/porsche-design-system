@@ -72,6 +72,7 @@ const propTypes: PropTypes<typeof MultiSelect> = {
   required: AllowedTypes.boolean,
   form: AllowedTypes.string,
   dropdownDirection: AllowedTypes.oneOf<MultiSelectDropdownDirection>(SELECT_DROPDOWN_DIRECTIONS),
+  compact: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -122,6 +123,9 @@ export class MultiSelect {
 
   /** Changes the direction to which the dropdown list appears. */
   @Prop() public dropdownDirection?: MultiSelectDropdownDirection = 'auto';
+
+  /** Displays as compact version. */
+  @Prop() public compact?: boolean = false;
 
   /** Adapts the multi-select color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -257,7 +261,16 @@ export class MultiSelect {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.isOpen, this.disabled, this.hideLabel, this.state, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.isOpen,
+      this.disabled,
+      this.hideLabel,
+      this.state,
+      this.compact,
+      this.theme
+    );
     syncMultiSelectChildrenProps([...this.multiSelectOptions, ...this.multiSelectOptgroups], this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);

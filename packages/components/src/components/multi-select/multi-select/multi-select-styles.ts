@@ -23,19 +23,19 @@ import { getCss, isThemeDark } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
+import { cssVarInternalOptgroupScaling } from '../../optgroup/optgroup-styles';
 
-// TODO: Implement compact scaling & compact mode
-export const cssVarInternalMultiSelectScaling = '--p-internal-select-scaling';
+export const cssVarInternalMultiSelectScaling = '--p-internal-multi-select-scaling';
 
 export const getComponentCss = (
   isOpen: boolean,
   isDisabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
+  compact: boolean,
   theme: Theme
 ): string => {
-  // TODO: Implement compact scaling & compact mode
-  const scalingVar = `var(${cssVarInternalMultiSelectScaling}, ${1})`;
+  const scalingVar = `var(${cssVarInternalMultiSelectScaling}, ${compact ? 0.5 : 1})`;
   const { contrastMediumColor, backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
   const { contrastMediumColor: contrastMediumColorDark, backgroundSurfaceColor: backgroundSurfaceColorDark } =
     getThemedColors('dark');
@@ -49,6 +49,8 @@ export const getComponentCss = (
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
+          [`${cssVarInternalMultiSelectScaling}`]: scalingVar,
+          [`${cssVarInternalOptgroupScaling}`]: scalingVar,
         }),
       },
       ...preventFoucOfNestedElementsStyles,
@@ -56,7 +58,7 @@ export const getComponentCss = (
         ...getButtonJssStyle('multi-select', isOpen, isDisabled, state, scalingVar, theme),
         '& span': getButtonLabelJssStyle,
       },
-      '[popover]': getPopoverJssStyle(isOpen, 1, 44, theme),
+      '[popover]': getPopoverJssStyle(isOpen, scalingVar, 44, theme),
     },
     root: {
       display: 'grid',
