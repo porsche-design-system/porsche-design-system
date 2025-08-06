@@ -26,6 +26,7 @@ const getFieldset = (page: Page) => page.locator('fieldset');
 const getSelectValue = async (page: Page): Promise<string | number> => await getProperty(getHost(page), 'value');
 const getButton = (page: Page) => page.locator('p-select button[role="combobox"]');
 const getButtonImage = (page: Page) => page.locator('p-select button img').first().getAttribute('src');
+const getButtonImage2 = (page: Page) => page.locator('p-select button img').first();
 const getDropdown = (page: Page) => page.locator('p-select [popover]');
 const getDropdownDisplay = async (page: Page): Promise<string> => await getElementStyle(getDropdown(page), 'display');
 const getFilter = (page: Page) => page.locator('p-select p-input-search');
@@ -1065,71 +1066,79 @@ test.describe('selection', () => {
     await expect(getButton(page)).toHaveText('');
   });
 
-  test('should add valid selection on Click', async ({ page }) => {
+  test('should add valid selection on click', async ({ page }) => {
     await initSelect(page);
+    const host = getHost(page);
     const buttonElement = getButton(page);
+    const options = getSelectOptions(page);
 
-    await buttonElement.click(); // Open dropdown
-    await waitForStencilLifecycle(page);
+    await buttonElement.click();
 
-    expect(await getHighlightedOptionIndex(page)).toBe(-1); // No option highlighted
+    await expect(options.nth(0)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
 
-    const option = getSelectOption(page, 1);
-    await option.click();
-    await waitForStencilLifecycle(page);
+    await options.nth(0).click();
 
-    expect(await getSelectValue(page), 'after first option selected').toBe('a');
-    expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('a');
-    await expect(getButton(page)).toHaveText('a');
+    await expect(host).toHaveJSProperty('value', 'a');
+    await expect(options.nth(0)).toHaveJSProperty('highlighted', true);
+    await expect(options.nth(0)).toHaveJSProperty('selected', true);
+    await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
+    await expect(buttonElement.locator('span').first()).toHaveText('a');
 
     await buttonElement.click(); // Open dropdown again
-    await waitForStencilLifecycle(page);
 
-    // TODO: Do we want to set highlight on the option when selecting with click
-    expect(await getHighlightedOptionIndex(page)).toBe(-1); // No option highlighted
+    await options.nth(2).click();
 
-    const option2 = getSelectOption(page, 3);
-    await option2.click();
-    await waitForStencilLifecycle(page);
-
-    expect(await getSelectValue(page), 'after first option selected').toBe('c');
-    expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('c');
-    await expect(getButton(page)).toHaveText('c');
+    await expect(host).toHaveJSProperty('value', 'c');
+    await expect(options.nth(0)).toHaveJSProperty('highlighted', false);
+    await expect(options.nth(0)).toHaveJSProperty('selected', false);
+    await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(2)).toHaveJSProperty('highlighted', true);
+    await expect(options.nth(2)).toHaveJSProperty('selected', true);
+    await expect(buttonElement.locator('span').first()).toHaveText('c');
   });
 
   test('should add valid selection with slotted image on Click', async ({ page }) => {
     await initSelect(page, undefined, true);
+    const host = getHost(page);
     const buttonElement = getButton(page);
+    const options = getSelectOptions(page);
 
     await buttonElement.click(); // Open dropdown
-    await waitForStencilLifecycle(page);
 
-    expect(await getHighlightedOptionIndex(page)).toBe(-1); // No option highlighted
+    await expect(options.nth(0)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
 
-    const option = getSelectOption(page, 1);
+    await options.nth(0).click();
 
-    await option.click();
-    await waitForStencilLifecycle(page);
-
-    expect(await getSelectValue(page), 'after first option selected').toBe('a');
-    expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('a');
-    await expect(getButton(page)).toHaveText('a');
-    expect(await getButtonImage(page)).toBe('image-a.jpg');
+    await expect(host).toHaveJSProperty('value', 'a');
+    await expect(options.nth(0)).toHaveJSProperty('highlighted', true);
+    await expect(options.nth(0)).toHaveJSProperty('selected', true);
+    await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
+    await expect(buttonElement.locator('span').first()).toHaveText('a');
+    await expect(getButtonImage2(page)).toHaveAttribute('src', 'image-a.jpg');
 
     await buttonElement.click(); // Open dropdown again
-    await waitForStencilLifecycle(page);
 
-    // TODO: Do we want to set highlight on the option when selecting with click
-    expect(await getHighlightedOptionIndex(page)).toBe(-1); // No option highlighted
+    await expect(options.nth(0)).toHaveJSProperty('highlighted', true);
+    await expect(options.nth(0)).toHaveJSProperty('selected', true);
+    await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
 
-    const option2 = getSelectOption(page, 3);
-    await option2.click();
-    await waitForStencilLifecycle(page);
+    await options.nth(2).click();
 
-    expect(await getSelectValue(page), 'after first option selected').toBe('c');
-    expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('c');
-    await expect(getButton(page)).toHaveText('c');
-    expect(await getButtonImage(page)).toBe('image-c.jpg');
+    await expect(host).toHaveJSProperty('value', 'c');
+    await expect(options.nth(0)).toHaveJSProperty('highlighted', false);
+    await expect(options.nth(0)).toHaveJSProperty('selected', false);
+    await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(2)).toHaveJSProperty('highlighted', true);
+    await expect(options.nth(2)).toHaveJSProperty('selected', true);
+    await expect(buttonElement.locator('span').first()).toHaveText('c');
+    await expect(getButtonImage2(page)).toHaveAttribute('src', 'image-c.jpg');
   });
 
   test('should not select disabled option on Click', async ({ page }) => {
@@ -1239,8 +1248,11 @@ test.describe('filter', () => {
       await expect(options.nth(2)).toBeVisible();
     });
 
-    test('should not show options which are initially hidden when typing into filter', async ({page}) => {
-      await initSelect(page, {props: {name: 'Some name', filter: true}, options: {values: [{value: 'a', hidden: true}, {value: 'b'}, {value: 'c'}]}});
+    test('should not show options which are initially hidden when typing into filter', async ({ page }) => {
+      await initSelect(page, {
+        props: { name: 'Some name', filter: true },
+        options: { values: [{ value: 'a', hidden: true }, { value: 'b' }, { value: 'c' }] },
+      });
       const buttonElement = getButton(page);
       const filterElement = getFilter(page);
       const filterInputElement = getFilterInput(page);
@@ -1710,8 +1722,7 @@ test.describe('filter', () => {
 
       await filterInputElement.fill('b');
 
-      // Highlight of option a will be reset since it doesn't match the filter
-      await expect(options.nth(0)).toHaveJSProperty('highlighted', false);
+      await expect(options.nth(0)).toHaveJSProperty('highlighted', true);
       await expect(options.nth(0)).toBeHidden();
       await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined); // undefined since never was highlighted
       await expect(options.nth(1)).toBeVisible();

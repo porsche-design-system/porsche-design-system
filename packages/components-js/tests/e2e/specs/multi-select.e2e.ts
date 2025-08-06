@@ -875,8 +875,7 @@ test.describe('filter', () => {
 
       await filterInputElement.fill('b');
 
-      // Highlight of option a will be reset since it doesn't match the filter
-      await expect(options.nth(0)).toHaveJSProperty('highlighted', false);
+      await expect(options.nth(0)).toHaveJSProperty('highlighted', true);
       await expect(options.nth(0)).toBeHidden();
       await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined); // undefined since never was highlighted
       await expect(options.nth(1)).toBeVisible();
@@ -1317,6 +1316,31 @@ test.describe('keyboard handling', () => {
     await page.keyboard.press('Tab');
     await expect(button).toBeFocused();
   });
+
+  test('should be able to switch from keyboard to mouse', async ({ page }) => {
+    await initMultiSelect(page);
+    const options = getMultiSelectOptions(page);
+    const dropdown = getDropdown(page);
+
+    await expect(dropdown).toBeHidden();
+    await expect(options.nth(0)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('ArrowDown');
+    await expect(dropdown).toBeVisible();
+
+    await page.keyboard.press('ArrowDown');
+    await expect(options.nth(0)).toHaveJSProperty('highlighted', true);
+    await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
+
+    await options.nth(1).hover();
+    await expect(options.nth(0)).toHaveJSProperty('highlighted', false);
+    await expect(options.nth(1)).toHaveJSProperty('highlighted', true);
+    await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
+  });
 });
 
 test.describe('click handling', () => {
@@ -1344,9 +1368,28 @@ test.describe('click handling', () => {
 
     await expect(host).toHaveJSProperty('value', ['b']);
     await expect(options.nth(0)).toHaveJSProperty('highlighted', undefined);
-    await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(1)).toHaveJSProperty('highlighted', true);
     await expect(options.nth(1)).toHaveJSProperty('selected', true);
     await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
+  });
+  test('should be able to switch from mouse to keyboard', async ({ page }) => {
+    await initMultiSelect(page);
+    const buttonElement = getButton(page);
+    const options = getMultiSelectOptions(page);
+
+    await buttonElement.click();
+    await expect(options.nth(1)).toBeVisible();
+    await options.nth(1).hover();
+
+    await expect(options.nth(0)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(1)).toHaveJSProperty('highlighted', true);
+    await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
+
+    await page.keyboard.press('ArrowDown');
+
+    await expect(options.nth(0)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(1)).toHaveJSProperty('highlighted', false);
+    await expect(options.nth(2)).toHaveJSProperty('highlighted', true);
   });
 });
 
