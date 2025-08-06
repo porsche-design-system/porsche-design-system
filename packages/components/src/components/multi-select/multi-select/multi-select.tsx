@@ -231,8 +231,11 @@ export class MultiSelect {
   public componentDidLoad(): void {
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
     this.inputSearchInputElement = this.inputSearchElement.shadowRoot.querySelector('input');
-    // @ts-ignore typings missing
-    this.inputSearchInputElement.ariaControlsElements = [this.listboxElement];
+    // Avoid error in disconnectedCallback when inputSearchInputElement is not defined
+    if (this.inputSearchInputElement) {
+      // @ts-expect-error typings missing
+      this.inputSearchInputElement.ariaControlsElements = [this.listboxElement];
+    }
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {

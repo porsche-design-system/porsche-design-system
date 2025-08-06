@@ -208,6 +208,15 @@ export class Select {
     }
   }
 
+  @Watch('isOpen')
+  public onFilterChange(): void {
+    if (this.filter && !this.inputSearchInputElement) {
+      this.inputSearchInputElement = this.inputSearchElement.shadowRoot.querySelector('input');
+      // @ts-expect-error typings missing
+      this.inputSearchInputElement.ariaControlsElements = [this.listboxElement];
+    }
+  }
+
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     document.addEventListener('mousedown', this.onClickOutside, true);
@@ -231,11 +240,13 @@ export class Select {
 
   public componentDidLoad(): void {
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
-    // TODO: Does not work when dynamically changing the filter prop
     if (this.filter) {
       this.inputSearchInputElement = this.inputSearchElement.shadowRoot.querySelector('input');
-      // @ts-ignore typings missing
-      this.inputSearchInputElement.ariaControlsElements = [this.listboxElement];
+      // Avoid error in disconnectedCallback when inputSearchInputElement is not defined
+      if (this.inputSearchInputElement) {
+        // @ts-expect-error typings missing
+        this.inputSearchInputElement.ariaControlsElements = [this.listboxElement];
+      }
     }
   }
 
