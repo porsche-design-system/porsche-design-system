@@ -1,0 +1,27 @@
+- text: Slotted label. And some slotted and deeply nested
+- link "anchor":
+  - /url: "#"
+- text: ", bold,"
+- strong: strong
+- text: ","
+- emphasis: emphasized
+- text: and italic text. Slotted description. And some slotted and deeply nested
+- link "anchor":
+  - /url: "#"
+- text: ", bold,"
+- strong: strong
+- text: ","
+- emphasis: emphasized
+- text: and italic text.
+- textbox "Slotted label. And some slotted and deeply nested anchor, bold, strong, emphasized and italic text."
+- text: /You have \d+ out of \d+ characters left/
+- alert:
+  - text: Slotted error message. And some slotted and deeply nested
+  - link "anchor":
+    - /url: "#"
+  - text: ", bold,"
+  - strong: strong
+  - text: ","
+  - emphasis: emphasized
+  - text: and italic text.
+- status

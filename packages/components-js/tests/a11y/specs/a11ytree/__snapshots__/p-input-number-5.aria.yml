@@ -1,0 +1,7 @@
+- text: Success with message
+- spinbutton "Success with message"
+- button "Decrement value by 1"
+- status
+- button "Increment value by 1"
+- status
+- status: Success message

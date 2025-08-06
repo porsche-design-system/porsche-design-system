@@ -1,0 +1,5 @@
+- text: Type counter=true & max-length=false
+- textbox "Type counter=true & max-length=false"
+- text: /\d+ characters entered/
+- alert
+- status

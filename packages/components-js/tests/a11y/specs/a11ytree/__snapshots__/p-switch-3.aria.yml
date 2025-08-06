@@ -1,0 +1,3 @@
+- switch "Some label" [disabled]
+- text: Some label
+- status: Loading

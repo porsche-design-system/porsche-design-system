@@ -1,0 +1,6 @@
+- text: Readonly Some description
+- searchbox "Readonly": Some value
+- button "Clear field" [disabled]
+- status
+- alert
+- status

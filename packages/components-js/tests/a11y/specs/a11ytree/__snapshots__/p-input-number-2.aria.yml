@@ -1,0 +1,7 @@
+- text: Disabled Some description
+- spinbutton "Disabled" [disabled]
+- button "Decrement value by 1" [disabled]
+- status
+- button "Increment value by 1" [disabled]
+- status
+- alert
