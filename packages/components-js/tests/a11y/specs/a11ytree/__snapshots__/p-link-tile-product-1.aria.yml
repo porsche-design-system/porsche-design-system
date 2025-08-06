@@ -1,0 +1,8 @@
+- link /Some product \d+\.\d+,\d+ €/
+- text: New
+- button "Add to wishlist"
+- status
+- img "Some alt text"
+- heading "Some product" [level=3]
+- paragraph: /\d+\.\d+,\d+ €/
+- paragraph: Some additional description

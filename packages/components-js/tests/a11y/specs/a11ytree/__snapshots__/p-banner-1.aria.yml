@@ -1,0 +1,5 @@
+- alert "Heading (state = error)":
+  - heading "Heading (state = error)" [level=5]
+  - paragraph: Description
+- button "Close notification"
+- status
