@@ -1,6 +1,6 @@
 import {borderWidthBase, fontLineHeight} from '@porsche-design-system/styles';
 import {addImportantToEachRule, hostHiddenStyles, SCALING_BASE_VALUE} from '../../../styles';
-import {getCheckboxBaseStyles} from '../../../styles/checkbox/checkbox-base-styles';
+import {cssVarInternalCheckboxScaling, getCheckboxBaseStyles} from '../../../styles/checkbox/checkbox-base-styles';
 import {getCheckboxCheckedBaseStyles} from '../../../styles/checkbox/checkbox-checked-base-styles';
 import {getOptionJssStyle} from '../../../styles/select';
 import type {Theme} from '../../../types';
@@ -22,6 +22,7 @@ export const getComponentCss = (theme: Theme, isDisabled: boolean, selected: boo
           scrollMarginBlockStart: `calc(max(2px, var(${cssVarInternalMultiSelectOptionScaling}, 1) * 6px) + 36px)`, // 36px input height + 6px padding
           scrollMarginBlockEnd: `max(2px, var(${cssVarInternalMultiSelectOptionScaling}, 1) * 6px)`, // Aligns option when list is scrolled by navigating with keyboard
           ...hostHiddenStyles,
+          [`${cssVarInternalCheckboxScaling}`]: `var(${cssVarInternalMultiSelectOptionScaling})`,
         }),
       },
       slot: {
