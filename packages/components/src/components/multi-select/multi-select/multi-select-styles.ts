@@ -24,6 +24,7 @@ import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { cssVarInternalOptgroupScaling } from '../../optgroup/optgroup-styles';
+import { cssVarInternalMultiSelectOptionScaling } from "../multi-select-option/multi-select-option-styles";
 
 export const cssVarInternalMultiSelectScaling = '--p-internal-multi-select-scaling';
 
@@ -49,7 +50,7 @@ export const getComponentCss = (
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
-          [`${cssVarInternalMultiSelectScaling}`]: scalingVar,
+          [`${cssVarInternalMultiSelectOptionScaling}`]: scalingVar,
           [`${cssVarInternalOptgroupScaling}`]: scalingVar,
         }),
       },
