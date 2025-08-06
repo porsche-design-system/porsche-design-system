@@ -208,7 +208,7 @@ export class Select {
     }
   }
 
-  @Watch('isOpen')
+  @Watch('filter')
   public onFilterChange(): void {
     if (this.filter && !this.inputSearchInputElement) {
       this.inputSearchInputElement = this.inputSearchElement.shadowRoot.querySelector('input');
