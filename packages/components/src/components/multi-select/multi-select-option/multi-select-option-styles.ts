@@ -1,19 +1,14 @@
-import {borderWidthBase, fontLineHeight} from '@porsche-design-system/styles';
-import {addImportantToEachRule, hostHiddenStyles, SCALING_BASE_VALUE} from '../../../styles';
-import {cssVarInternalCheckboxScaling, getCheckboxBaseStyles} from '../../../styles/checkbox/checkbox-base-styles';
-import {getCheckboxCheckedBaseStyles} from '../../../styles/checkbox/checkbox-checked-base-styles';
-import {getOptionJssStyle} from '../../../styles/select';
-import type {Theme} from '../../../types';
-import {getCss} from '../../../utils';
+import { fontFamily, fontLineHeight, fontSizeTextSmall } from '@porsche-design-system/styles';
+import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
+import { cssVarInternalCheckboxScaling, getCheckboxBaseStyles } from '../../../styles/checkbox/checkbox-base-styles';
+import { getCheckboxCheckedBaseStyles } from '../../../styles/checkbox/checkbox-checked-base-styles';
+import { getOptionJssStyle } from '../../../styles/select';
+import type { Theme } from '../../../types';
+import { getCss } from '../../../utils';
 
 export const cssVarInternalMultiSelectOptionScaling = '--p-internal-multi-select-option-scaling';
 
 export const getComponentCss = (theme: Theme, isDisabled: boolean, selected: boolean): string => {
-  const dimension = `calc(max(${SCALING_BASE_VALUE} * 0.75, ${fontLineHeight}))`;
-
-  const dimensionFull = `calc(${dimension} + ${borderWidthBase} * 2)`; // Calculates the total size of the checkbox including its borders.
-  const paddingTop = `calc((${dimensionFull} - ${fontLineHeight}) / 2)`; // Vertically centers the checkbox label relative to the checkbox size.
-
   return getCss({
     '@global': {
       ':host': {
@@ -27,10 +22,16 @@ export const getComponentCss = (theme: Theme, isDisabled: boolean, selected: boo
       },
       slot: {
         display: 'block',
-        paddingTop,
       },
     },
     option: getOptionJssStyle('multi-select-option', `var(${cssVarInternalMultiSelectOptionScaling}, 1)`, theme),
+    'checkbox-wrapper': {
+      fontFamily: fontFamily,
+      fontSize: fontSizeTextSmall,
+      height: fontLineHeight,
+      display: 'flex',
+      alignItems: 'center',
+    },
     checkbox: {
       flexShrink: 0,
       ...getCheckboxBaseStyles(theme, isDisabled),

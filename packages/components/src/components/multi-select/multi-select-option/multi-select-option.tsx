@@ -1,4 +1,4 @@
-import { Component, Element, Host, type JSX, Prop, h } from '@stencil/core';
+import { Component, Element, Host, h, type JSX, Prop } from '@stencil/core';
 import type { PropTypes } from '../../../types';
 import {
   AllowedTypes,
@@ -57,7 +57,9 @@ export class MultiSelectOption {
             'option--disabled': isDisabled,
           }}
         >
-          <span class="checkbox" aria-hidden="true" />
+          <span class="checkbox-wrapper">
+            <span class="checkbox" aria-hidden="true" />
+          </span>
           <slot slot="label" />
         </div>
       </Host>
