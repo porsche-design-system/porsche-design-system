@@ -1,11 +1,10 @@
-import { borderWidthBase, fontLineHeight } from '@porsche-design-system/styles';
-import { addImportantToEachRule, hostHiddenStyles, SCALING_BASE_VALUE } from '../../../styles';
-import { getCheckboxBaseStyles } from '../../../styles/checkbox/checkbox-base-styles';
-import { getCheckboxCheckedBaseStyles } from '../../../styles/checkbox/checkbox-checked-base-styles';
-import { getOptionJssStyle } from '../../../styles/select';
-import type { Theme } from '../../../types';
-import { getCss } from '../../../utils';
-import { cssVarInternalSelectOptionScaling } from '../../select/select-option/select-option-styles';
+import {borderWidthBase, fontLineHeight} from '@porsche-design-system/styles';
+import {addImportantToEachRule, hostHiddenStyles, SCALING_BASE_VALUE} from '../../../styles';
+import {getCheckboxBaseStyles} from '../../../styles/checkbox/checkbox-base-styles';
+import {getCheckboxCheckedBaseStyles} from '../../../styles/checkbox/checkbox-checked-base-styles';
+import {getOptionJssStyle} from '../../../styles/select';
+import type {Theme} from '../../../types';
+import {getCss} from '../../../utils';
 
 export const cssVarInternalMultiSelectOptionScaling = '--p-internal-multi-select-option-scaling';
 
@@ -30,7 +29,7 @@ export const getComponentCss = (theme: Theme, isDisabled: boolean, selected: boo
         paddingTop,
       },
     },
-    option: getOptionJssStyle('multi-select-option', `var(${cssVarInternalSelectOptionScaling}, 1)`, theme),
+    option: getOptionJssStyle('multi-select-option', `var(${cssVarInternalMultiSelectOptionScaling}, 1)`, theme),
     checkbox: {
       flexShrink: 0,
       ...getCheckboxBaseStyles(theme, isDisabled),
