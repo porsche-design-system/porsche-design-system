@@ -14,6 +14,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Multi Select`: `compact` prop to enable a smaller, space-saving version for compact layouts
+  ([#3953](https://github.com/porsche-design-system/porsche-design-system/pull/3953))
+
+### Changed
+
+- `Multi Select`, `Select`: improved a11y and highlight of options
+  ([#3953](https://github.com/porsche-design-system/porsche-design-system/pull/3953))
+- `Multi Select`: aligned filter and keyboard behavior with `Select`
+  ([#3943](https://github.com/porsche-design-system/porsche-design-system/pull/3943))
+
 ## [3.29.0-rc.3] - 2025-07-29
 
 ### Fixed
