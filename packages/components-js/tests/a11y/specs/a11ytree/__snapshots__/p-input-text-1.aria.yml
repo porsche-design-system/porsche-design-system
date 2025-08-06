@@ -1,0 +1,4 @@
+- text: Some label
+- textbox "Some label" [disabled]
+- alert
+- status: Loading

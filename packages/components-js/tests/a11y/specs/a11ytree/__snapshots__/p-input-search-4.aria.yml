@@ -1,0 +1,6 @@
+- text: Type clear=true
+- searchbox "Type clear=true"
+- button "Clear field"
+- status
+- alert
+- status

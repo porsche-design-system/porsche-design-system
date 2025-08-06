@@ -1,0 +1,3 @@
+- text: Some Label disabled
+- combobox "Some Label disabled" [disabled]
+- alert

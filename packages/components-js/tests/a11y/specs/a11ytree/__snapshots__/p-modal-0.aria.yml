@@ -1,0 +1,5 @@
+- dialog "Heading":
+  - button "Dismiss modal"
+  - status
+  - heading "Heading" [level=2]
+  - text: Some Content

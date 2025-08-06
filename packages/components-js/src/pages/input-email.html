@@ -25,7 +25,13 @@
 </div>
 
 <div class="playground light" title="should render with label, default value and indicator">
-  <p-input-email name="some-name" label="Label" value="example@porsche.de" indicator="true" max-length="20"></p-input-email>
+  <p-input-email
+    name="some-name"
+    label="Label"
+    value="example@porsche.de"
+    indicator="true"
+    max-length="20"
+  ></p-input-email>
 </div>
 
 <div class="playground light" title="should render with label and placeholder">
@@ -62,6 +68,7 @@
     value="Without label and description"
     indicator="true"
     max-length="20"
+    class="a11ytree-snapshot-test"
   ></p-input-email>
 </div>
 
@@ -78,7 +85,14 @@
 </div>
 
 <div class="playground light" title="should render in required state">
-  <p-input-email name="some-name" label="Required" required="true" indicator="true" max-length="20"></p-input-email>
+  <p-input-email
+    name="some-name"
+    label="Required"
+    required="true"
+    indicator="true"
+    max-length="20"
+    class="a11ytree-snapshot-test"
+  ></p-input-email>
   <p-input-email
     name="some-name"
     label="Required and insanely super long label across multiple lines"
@@ -97,6 +111,7 @@
     disabled="true"
     indicator="true"
     max-length="20"
+    class="a11ytree-snapshot-test"
   ></p-input-email>
 </div>
 
@@ -120,6 +135,7 @@
     read-only="true"
     indicator="true"
     max-length="20"
+    class="a11ytree-snapshot-test"
   ></p-input-email>
 </div>
 
@@ -131,6 +147,7 @@
     message="Error message"
     indicator="true"
     max-length="20"
+    class="a11ytree-snapshot-test"
   ></p-input-email>
 </div>
 
@@ -152,6 +169,7 @@
     message="Success message"
     indicator="true"
     max-length="20"
+    class="a11ytree-snapshot-test"
   ></p-input-email>
 </div>
 
@@ -390,7 +408,14 @@
 </div>
 
 <div class="playground light" title="should render with slot end, controls and loading indicator">
-  <p-input-email name="some-name" label="Label" value="example@porsche.de" indicator="true" max-length="20" loading="true">
+  <p-input-email
+    name="some-name"
+    label="Label"
+    value="example@porsche.de"
+    indicator="true"
+    max-length="20"
+    loading="true"
+  >
     <p-button-pure slot="end" hide-label="true" icon="close" class="input-button">Some label</p-button-pure>
   </p-input-email>
 </div>

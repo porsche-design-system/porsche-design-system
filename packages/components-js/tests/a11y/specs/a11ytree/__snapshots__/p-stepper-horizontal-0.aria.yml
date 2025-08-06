@@ -1,0 +1,19 @@
+- list:
+  - listitem:
+    - button "Small 1" [disabled]
+  - listitem:
+    - button "Small 2" [disabled]
+  - listitem:
+    - button "Small 3" [disabled]
+  - listitem:
+    - button "Small 4" [disabled]
+  - listitem:
+    - button "Small 5" [disabled]
+  - listitem:
+    - button "Small 6" [disabled]
+  - listitem:
+    - button "Small 7" [disabled]
+  - listitem:
+    - button "Small 8" [disabled]
+  - listitem:
+    - button "Small 9" [disabled]

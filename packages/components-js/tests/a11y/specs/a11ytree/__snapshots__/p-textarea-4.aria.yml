@@ -1,0 +1,4 @@
+- text: Counter
+- textbox "Counter": Some value
+- text: /You have \d+ out of \d+ characters left/
+- alert
