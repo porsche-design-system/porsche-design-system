@@ -1,4 +1,5 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import type { PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -8,12 +9,11 @@ import {
   THEMES,
   validateProps,
 } from '../../utils';
-import type { PropTypes, Theme } from '../../types';
-import { type FieldsetLabelSize, type FieldsetState, FIELDSET_LABEL_SIZES } from './fieldset-utils';
-import { getComponentCss } from './fieldset-styles';
-import { messageId, StateMessage } from '../common/state-message/state-message';
-import { Required } from '../common/required/required';
 import type { FormState } from '../../utils/form/form-state';
+import { Required } from '../common/required/required';
+import { messageId, StateMessage } from '../common/state-message/state-message';
+import { getComponentCss } from './fieldset-styles';
+import { FIELDSET_LABEL_SIZES, type FieldsetLabelSize, type FieldsetState } from './fieldset-utils';
 
 const propTypes: PropTypes<typeof Fieldset> = {
   label: AllowedTypes.string,
@@ -68,7 +68,12 @@ export class Fieldset {
     const hasMessageValue = hasMessage(this.host, this.message, this.state);
 
     return (
-      <fieldset aria-describedby={hasMessageValue ? messageId : null}>
+      // biome-ignore lint/a11y/useAriaPropsSupportedByRole: Though the ARIA attributes 'aria-required' and 'aria-invalid' are not officially supported on a <fieldset>, they are recognized by screen readers to indicate that the descendant(s) of the fieldset is required or invalid. See further information about sr support: https://adrianroselli.com/2022/02/support-for-marking-radio-buttons-required-invalid.html
+      <fieldset
+        aria-describedby={hasMessageValue ? messageId : null}
+        aria-required={this.required ? 'true' : null}
+        aria-invalid={this.state === 'error' ? 'true' : null}
+      >
         {hasLabel(this.host, this.label) && (
           <legend>
             {this.label || <slot name="label" />}
