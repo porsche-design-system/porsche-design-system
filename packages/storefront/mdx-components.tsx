@@ -146,7 +146,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
               </SyntaxHighlighter>
             </code>
           ) : (
-            <code className="max-h-96 overflow-auto rounded-lg">
+            <code className="my-fluid-md rounded-lg">
               (children as React.ReactNode)
             </code>
           )}
