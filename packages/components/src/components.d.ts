@@ -22,7 +22,7 @@ import { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./component
 import { DividerColor, DividerDirection, DividerOrientation } from "./components/divider/divider-utils";
 import { DrilldownAriaAttribute, DrilldownUpdateEventDetail } from "./components/drilldown/drilldown/drilldown-utils";
 import { DrilldownLinkAriaAttribute, DrilldownLinkTarget } from "./components/drilldown/drilldown-link/drilldown-link-utils";
-import { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
+import { FieldsetAriaAttribute, FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
 import { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
@@ -94,7 +94,7 @@ export { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./component
 export { DividerColor, DividerDirection, DividerOrientation } from "./components/divider/divider-utils";
 export { DrilldownAriaAttribute, DrilldownUpdateEventDetail } from "./components/drilldown/drilldown/drilldown-utils";
 export { DrilldownLinkAriaAttribute, DrilldownLinkTarget } from "./components/drilldown/drilldown-link/drilldown-link-utils";
-export { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
+export { FieldsetAriaAttribute, FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
 export { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 export { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 export { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
@@ -760,6 +760,10 @@ export namespace Components {
         "target"?: DrilldownLinkTarget;
     }
     interface PFieldset {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<FieldsetAriaAttribute>;
         /**
           * The label text.
          */
@@ -4721,6 +4725,10 @@ declare namespace LocalJSX {
         "target"?: DrilldownLinkTarget;
     }
     interface PFieldset {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<FieldsetAriaAttribute>;
         /**
           * The label text.
          */
