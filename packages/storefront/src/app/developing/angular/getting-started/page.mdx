@@ -12,7 +12,8 @@ export const metadata = {
 
 ## Quick start
 
-To build your own Angular application using the Porsche Design System Components follow these steps:
+To build an [Angular](https://angular.dev/installation) application using Porsche Design System Components, follow these
+steps. This guide is based on the following dependencies:
 
 <div className="flex flex-wrap gap-static-sm my-fluid-sm">
   {/* prettier-ignore */}
@@ -109,6 +110,7 @@ Create a `index-html-transform.js` file in your project root directory.
 
 const partials = require('@porsche-design-system/components-angular/partials');
 
+// https://github.com/just-jeb/angular-builders/blob/fdd7c8ed00b7eb7e1761aaa6cb5bda41693ceb5d/packages/custom-webpack/README.md#index-transform
 module.exports = (_, html) => {
   const headPartials = [
     // injects stylesheet which defines visibility of pre-hydrated PDS components
