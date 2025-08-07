@@ -12,7 +12,7 @@ const getForm = (page: Page) => page.locator('form');
 const getInputUrl = (page: Page) => page.locator('p-input-url input');
 
 test.describe('form', () => {
-  test('should reset input text value to its initial value on form reset', async ({ page }) => {
+  test('should reset input url value to its initial value on form reset', async ({ page }) => {
     await goto(page, 'input-url-example');
     expect(await waitForComponentsReady(page)).toBe(4); // p-input-url, p-text, 2 p-button
 
