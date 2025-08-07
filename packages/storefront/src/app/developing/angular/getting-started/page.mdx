@@ -1,117 +1,169 @@
-import { Notification } from "@/components/common/Notification";
-import { TableOfContents } from "@/components/common/TableOfContents";
+import { TableOfContents } from '@/components/common/TableOfContents';
 
 export const metadata = {
   title: 'Angular: Getting started - Porsche Design System',
-  description: 'Start developing in Angular with the Porsche Design System.'
-}
+  description: 'Start developing in Angular with the Porsche Design System.',
+};
 
 # Angular
 
-<TableOfContents headings={['Quick start','When are Porsche Design System components initialized?','How do Porsche Design System components work in detail?','Sample integration']} />
+<TableOfContents headings={['Quick start','Integration']} />
 
 ## Quick start
 
-To build your own application with the **Angular** components of the Porsche Design System, follow these steps:
-
-- Follow the instructions at [Introduction](/developing/introduction) to get the required npm package
-- Run `ng new my-app` to create a new Angular workspace and initial project
-- Install the Porsche Design System
+To build your own Angular application using the Porsche Design System Components
+`@porsche-design-system/components-angular`, follow these steps:
 
 ```bash
-# install with npm:
+# Create a new application by executing:
+npm install -g @angular/cli
+ng new my-app
+
+✔ Do you want to create a 'zoneless' application without zone.js (Developer Preview)? "Yes"
+✔ Which stylesheet format would you like to use? "CSS"
+✔ Do you want to enable Server-Side Rendering (SSR) and Static Site Generation (SSG/Prerendering)? "No"
+```
+
+You're all set! Start building your own application now.
+
+## Integration
+
+The following integration example uses a standard Angular setup.
+
+### Step 1
+
+Install the Porsche Design System within your project directory.
+
+```bash
 npm install @porsche-design-system/components-angular
-
-# install with yarn:
-yarn add @porsche-design-system/components-angular
 ```
 
-You are ready to start building your own application.
+### Step 2
 
-### Integration
-
-After adding the `@porsche-design-system/components-angular` package to your project, you've to import the
-`PorscheDesignSystemModule` in every module you want to use the components.
-
-The following setup is a standard Angular CLI project:
+Add the `PorscheDesignSystemModule` to the imports array of your `@Component` or `@NgModule` declaration.
 
 ```ts
-// app.module.ts
+// src/app/app.ts
 
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
-import { AppComponent } from './app.component';
-
-@NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, PorscheDesignSystemModule], // <-- PDS module is imported here
-  providers: [],
-  bootstrap: [AppComponent],
-})
-export class AppModule {}
-```
-
-Change your AppComponent to use at least one Porsche Design System component, for example:
-
-```ts
-// app.component.ts
-
-import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `<p-heading>Welcome to Angular</p-heading>`,
-  changeDetection: ChangeDetectionStrategy.OnPush, // disable automatic change detection, https://angular.io/api/core/ChangeDetectionStrategy
+  imports: [RouterOutlet, PorscheDesignSystemModule],
+  templateUrl: './app.html',
+  styleUrl: './app.css',
 })
-export class AppComponent {}
+export class App {
+  protected readonly title = signal('angular');
+}
 ```
 
-Run `yarn start` or `npm start` and check if the components are displayed correctly.
+### Step 3 (recommended)
 
-<Notification heading="Attention" heading-tag="h4" state="warning">
-  Now, when you look at the result in your browser you should see an error message like `The Porsche Design System is used without using the getInitialStyles() partial.`
+Integrate Porsche Design System [Partials](/partials/introduction) to boost performance, reduce loading times, and
+minimize FOUC/FOUT.
 
-  To fix this, you have to apply the [getInitialStyles() partial](/partials/initial-styles) which is mandatory since v3.7.0.
-</Notification>
+Install
+[@angular-builders/custom-webpack](https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack#index-transform)
+within your project directory.
 
-#### Using Standalone Components
-
-When using [Standalone Components](https://angular.dev/guide/components/importing#standalone-components) the `PorscheDesignSystemModule` needs
-to be included in the component itself.
-
-```ts
-// app.component.ts (standalone)
-
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
-
-@Component({
-selector: 'app-root',
-  standalone: true,
-  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
-  template: `<p-heading>Welcome to Angular</p-heading>`,
-changeDetection: ChangeDetectionStrategy.OnPush, // disable automatic change detection, https://angular.io/api/core/ChangeDetectionStrategy
-})
-export class AppComponent {}
+```bash
+yarn add --dev @angular-builders/custom-webpack
 ```
 
-## When are Porsche Design System components initialized?
+Configure the `angular.json`.
 
-See [componentsReady()](/developing/components-ready) for further information.
+```diff
+"architect": {
+  "build": {
+-   "builder": "@angular/build:application",
++   "builder": "@angular-builders/custom-webpack:browser",
+    "options": {
+-     "browser": "src/main.ts",
++     "indexTransform": "./index-html-transform.js",
++     "outputPath": "./dist",
++     "index": "src/index.html",
++     "main": "src/main.ts",
+    }
+  }
+  "serve": {
+-   "builder": "@angular/build:dev-server",
++   "builder": "@angular-builders/custom-webpack:dev-server",
+```
 
-## How do Porsche Design System components work in detail?
+Create a `index-html-transform.js` file in your project root directory.
 
-See [Initialization](/must-know/initialization/introduction) for further information.
+```js
+// index-html-transform.js
 
-## Sample integration
+const partials = require('@porsche-design-system/components-angular/partials');
 
-We provide a public GitHub repository with a basic sample project setup to show how it is managed in real code.
-You can find the repository of the Angular example project here:
-[Sample integration Angular](https://github.com/porsche-design-system/sample-integration-angular)
+module.exports = (_, html) => {
+  const headPartials = [
+    // injects stylesheet which defines visibility of pre-hydrated PDS components
+    partials.getInitialStyles(),
+    // injects stylesheet which defines Porsche Next CSS font-face definition (=> minimize FOUT)
+    partials.getFontFaceStyles(),
+    // preloads Porsche Next font (=> minimize FOUT)
+    partials.getFontLinks(),
+    // preloads PDS component core chunk from CDN for PDS component hydration (=> improve loading performance)
+    partials.getComponentChunkLinks(),
+    // preloads Porsche icons (=> minimize FOUC)
+    partials.getIconLinks(),
+    // injects favicon, apple touch icons, android touch icons, etc.
+    partials.getMetaTagsAndIconLinks({ appTitle: 'Porsche' }),
+  ].join('');
 
-### Get the project up and running
+  return html.replace(/<\/head>/, `${headPartials}$&`);
+};
+```
 
-- Clone the repository by executing
-`git clone https://github.com/porsche-design-system/sample-integration-angular.git`
-- Follow the installation guidelines in the `README.md` file
+### Step 4 (recommended)
+
+Set up Tailwind CSS with the Porsche Design System [Tailwind CSS Theme](/tailwindcss/introduction) to ensure seamless
+styling consistency with Porsche's design principles.
+
+Install Tailwind CSS within your project directory.
+
+```bash
+npm install tailwindcss @tailwindcss/postcss postcss
+```
+
+Create a configuration file for PostCSS. This file, typically named `.postcssrc.json`, tells PostCSS to use the Tailwind
+CSS plugin.
+
+```json
+// .postcssrc.json
+
+{
+  "plugins": {
+    "@tailwindcss/postcss": {}
+  }
+}
+```
+
+Import Tailwind CSS and the Porsche Design System Tailwind CSS Theme.
+
+```css
+/* src/styles.css */
+
+@import 'tailwindcss';
+@import '@porsche-design-system/components-react/tailwindcss';
+```
+
+### Step 5
+
+Add a Porsche Design System component (e.g., `<p-wordmark></p-wordmark>`) with some Tailwind CSS styles. Then, run
+`npm run dev` and verify that the component and styles display correctly.
+
+```html
+<!-- src/app/app.html -->
+
+<div class="grid justify-items-center gap-fluid-md m-static-lg p-fluid-lg bg-surface rounded-lg">
+  <p-wordmark></p-wordmark>
+  <h1 class="prose-display-md">Porsche Design System</h1>
+</div>
+<div class="…">…</div>
+```

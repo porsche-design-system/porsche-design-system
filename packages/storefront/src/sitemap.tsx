@@ -196,6 +196,11 @@ export const sitemap: Routes = {
             path: '/developing/angular/getting-started',
             type: 'TAB',
           },
+          demo: {
+            name: 'Demo',
+            path: '/developing/angular/demo',
+            type: 'TAB',
+          },
           testing: {
             name: 'Testing',
             path: '/developing/angular/testing',
@@ -204,6 +209,11 @@ export const sitemap: Routes = {
           advanced: {
             name: 'Advanced',
             path: '/developing/angular/advanced',
+            type: 'TAB',
+          },
+          faq: {
+            name: 'FAQ',
+            path: '/developing/angular/faq',
             type: 'TAB',
           },
         },
