@@ -26,6 +26,8 @@ import { InputPasswordExampleControlledComponent } from './input-password-exampl
 import { InputPasswordExampleComponent } from './input-password-example.component';
 import { InputNumberExampleControlledComponent } from './input-number-example-controlled.component';
 import { InputNumberExampleComponent } from './input-number-example.component';
+import { InputDateExampleControlledComponent } from './input-date-example-controlled.component';
+import { InputDateExampleComponent } from './input-date-example.component';
 import { InputTextExampleControlledComponent } from './input-text-example-controlled.component';
 import { InputTextExampleComponent } from './input-text-example.component';
 import { InputEmailExampleControlledComponent } from './input-email-example-controlled.component';
@@ -95,6 +97,8 @@ export const examples = [
   InputPasswordExampleComponent,
   InputNumberExampleControlledComponent,
   InputNumberExampleComponent,
+  InputDateExampleControlledComponent,
+  InputDateExampleComponent,
   InputTextExampleControlledComponent,
   InputTextExampleComponent,
   InputEmailExampleControlledComponent,
@@ -163,6 +167,8 @@ export * from './input-password-example.component';
 export * from './input-password-example-controlled.component';
 export * from './input-number-example.component';
 export * from './input-number-example-controlled.component';
+export * from './input-date-example.component';
+export * from './input-date-example-controlled.component';
 export * from './input-text-example.component';
 export * from './input-text-example-controlled.component';
 export * from './input-email-example.component';

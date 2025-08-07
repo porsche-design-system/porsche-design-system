@@ -32,8 +32,8 @@ type InputBaseProps = {
   placeholder?: string;
   maxLength?: number;
   minLength?: number;
-  max?: number;
-  min?: number;
+  max?: number | string;
+  min?: number | string;
   autoComplete?: string;
   pattern?: string;
   multiple?: boolean;

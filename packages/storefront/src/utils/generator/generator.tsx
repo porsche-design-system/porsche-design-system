@@ -59,6 +59,8 @@ import {
   type PInputEmailProps,
   PInputNumber,
   type PInputNumberProps,
+  PInputDate,
+  type PInputDateProps,
   PInputPassword,
   type PInputPasswordProps,
   PInputSearch,
@@ -286,6 +288,7 @@ export type PropTypeMapping = {
   'p-inline-notification': PInlineNotificationProps;
   'p-input-password': PInputPasswordProps;
   'p-input-number': PInputNumberProps;
+  'p-input-date': PInputDateProps;
   'p-input-search': PInputSearchProps;
   'p-input-text': PInputTextProps;
   'p-input-email': PInputEmailProps;
@@ -371,6 +374,7 @@ const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
   'p-inline-notification': PInlineNotification,
   'p-input-password': PInputPassword,
   'p-input-number': PInputNumber,
+  'p-input-date': PInputDate,
   'p-input-search': PInputSearch,
   'p-input-text': PInputText,
   'p-input-email': PInputEmail,

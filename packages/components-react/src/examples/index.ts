@@ -27,6 +27,8 @@ export * from './InputEmailExample';
 export * from './InputEmailExampleControlled';
 export * from './InputNumberExample';
 export * from './InputNumberExampleControlled';
+export * from './InputDateExample';
+export * from './InputDateExampleControlled';
 export * from './InputPasswordExample';
 export * from './InputPasswordExampleControlled';
 export * from './InputSearchExample';

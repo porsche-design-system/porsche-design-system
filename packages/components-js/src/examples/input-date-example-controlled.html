@@ -1,0 +1,17 @@
+<p-input-date name="some-name" label="Some Label"></p-input-date>
+
+<p-text>Value: ''</p-text>
+
+<script>
+  const debugElement = document.querySelector('p-text');
+  const inputNumber = document.querySelector('p-input-date');
+
+  inputNumber.addEventListener('input', (e) => {
+    e.target.value = e.detail.target.value;
+    setDebugText(e.detail.target.value);
+  });
+
+  function setDebugText(value) {
+    debugElement.innerText = `Value: ${value}`;
+  }
+</script>

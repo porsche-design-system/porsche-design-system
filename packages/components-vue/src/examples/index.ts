@@ -25,6 +25,8 @@ export { default as InputEmailExample } from './InputEmailExample.vue';
 export { default as InputEmailExampleControlled } from './InputEmailExampleControlled.vue';
 export { default as InputNumberExample } from './InputNumberExample.vue';
 export { default as InputNumberExampleControlled } from './InputNumberExampleControlled.vue';
+export { default as InputDateExample } from './InputDateExample.vue';
+export { default as InputDateExampleControlled } from './InputDateExampleControlled.vue';
 export { default as InputPasswordExample } from './InputPasswordExample.vue';
 export { default as InputPasswordExampleControlled } from './InputPasswordExampleControlled.vue';
 export { default as InputSearchExample } from './InputSearchExample.vue';

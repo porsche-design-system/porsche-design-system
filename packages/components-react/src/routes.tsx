@@ -222,6 +222,16 @@ export const routes: RouteType[] = [
     element: <fromExamples.InputNumberControlledExamplePage />,
   },
   {
+    name: 'Input Date Example',
+    path: '/input-date-example',
+    element: <fromExamples.InputDateExamplePage />,
+  },
+  {
+    name: 'Input Date Example Controlled',
+    path: '/input-date-example-controlled',
+    element: <fromExamples.InputDateControlledExamplePage />,
+  },
+  {
     name: 'Input Text Example',
     path: '/input-text-example',
     element: <fromExamples.InputTextExamplePage />,

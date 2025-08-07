@@ -33,6 +33,7 @@ import { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
 import { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 import { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
+import { InputDateBlurEventDetail, InputDateChangeEventDetail, InputDateInputEventDetail, InputDateOpenEventDetail, InputDateState } from "./components/input-date/input-date-utils";
 import { InputEmailBlurEventDetail, InputEmailChangeEventDetail, InputEmailInputEventDetail, InputEmailState } from "./components/input-email/input-email-utils";
 import { InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
 import { InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
@@ -106,6 +107,7 @@ export { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
 export { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 export { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 export { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
+export { InputDateBlurEventDetail, InputDateChangeEventDetail, InputDateInputEventDetail, InputDateOpenEventDetail, InputDateState } from "./components/input-date/input-date-utils";
 export { InputEmailBlurEventDetail, InputEmailChangeEventDetail, InputEmailInputEventDetail, InputEmailState } from "./components/input-email/input-email-utils";
 export { InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
 export { InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
@@ -1061,6 +1063,84 @@ export namespace Components {
           * Adapts the inline-notification color depending on the theme.
          */
         "theme"?: Theme;
+    }
+    interface PInputDate {
+        /**
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete="bday" for a birthday).
+         */
+        "autoComplete"?: string;
+        /**
+          * A boolean value that, if present, renders the input field as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the input.
+         */
+        "description"?: string;
+        /**
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * Specifies the latest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., max="2024-12-31").
+         */
+        "max"?: string;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * Specifies the earliest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., min="2023-01-01").
+         */
+        "min"?: string;
+        /**
+          * The name of the input field, used when submitting the form data.
+         */
+        "name": string;
+        /**
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter a number'). This text is displayed when the input field is empty.
+         */
+        "placeholder"?: string;
+        /**
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+         */
+        "readOnly"?: boolean;
+        /**
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the input component.
+         */
+        "state"?: InputDateState;
+        /**
+          * Defines the granularity of the date input. This value is given in days. The default is 1 (one day).
+         */
+        "step"?: number;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The default date value for the input, in YYYY-MM-DD format (e.g., value="2025-07-02").
+         */
+        "value"?: string;
     }
     interface PInputEmail {
         /**
@@ -3011,6 +3091,10 @@ export interface PInlineNotificationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPInlineNotificationElement;
 }
+export interface PInputDateCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPInputDateElement;
+}
 export interface PInputEmailCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPInputEmailElement;
@@ -3418,6 +3502,26 @@ declare global {
     var HTMLPInlineNotificationElement: {
         prototype: HTMLPInlineNotificationElement;
         new (): HTMLPInlineNotificationElement;
+    };
+    interface HTMLPInputDateElementEventMap {
+        "change": InputDateChangeEventDetail;
+        "blur": InputDateBlurEventDetail;
+        "input": InputDateInputEventDetail;
+        "open": InputDateOpenEventDetail;
+    }
+    interface HTMLPInputDateElement extends Components.PInputDate, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPInputDateElementEventMap>(type: K, listener: (this: HTMLPInputDateElement, ev: PInputDateCustomEvent<HTMLPInputDateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPInputDateElementEventMap>(type: K, listener: (this: HTMLPInputDateElement, ev: PInputDateCustomEvent<HTMLPInputDateElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPInputDateElement: {
+        prototype: HTMLPInputDateElement;
+        new (): HTMLPInputDateElement;
     };
     interface HTMLPInputEmailElementEventMap {
         "change": InputEmailChangeEventDetail;
@@ -4116,6 +4220,7 @@ declare global {
         "p-headline": HTMLPHeadlineElement;
         "p-icon": HTMLPIconElement;
         "p-inline-notification": HTMLPInlineNotificationElement;
+        "p-input-date": HTMLPInputDateElement;
         "p-input-email": HTMLPInputEmailElement;
         "p-input-number": HTMLPInputNumberElement;
         "p-input-password": HTMLPInputPasswordElement;
@@ -5148,6 +5253,100 @@ declare namespace LocalJSX {
           * Adapts the inline-notification color depending on the theme.
          */
         "theme"?: Theme;
+    }
+    interface PInputDate {
+        /**
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete="bday" for a birthday).
+         */
+        "autoComplete"?: string;
+        /**
+          * A boolean value that, if present, renders the input field as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the input.
+         */
+        "description"?: string;
+        /**
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * Specifies the latest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., max="2024-12-31").
+         */
+        "max"?: string;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * Specifies the earliest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., min="2023-01-01").
+         */
+        "min"?: string;
+        /**
+          * The name of the input field, used when submitting the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the number input has lost focus.
+         */
+        "onBlur"?: (event: PInputDateCustomEvent<InputDateBlurEventDetail>) => void;
+        /**
+          * Emitted when the number input loses focus after its value was changed.
+         */
+        "onChange"?: (event: PInputDateCustomEvent<InputDateChangeEventDetail>) => void;
+        /**
+          * Emitted when the value has been changed as a direct result of a user action.
+         */
+        "onInput"?: (event: PInputDateCustomEvent<InputDateInputEventDetail>) => void;
+        /**
+          * Emitted when the user opens the date picker popup by clicking the calendar icon. This event bubbles and crosses the shadow DOM boundary.
+         */
+        "onOpen"?: (event: PInputDateCustomEvent<InputDateOpenEventDetail>) => void;
+        /**
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter a number'). This text is displayed when the input field is empty.
+         */
+        "placeholder"?: string;
+        /**
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+         */
+        "readOnly"?: boolean;
+        /**
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the input component.
+         */
+        "state"?: InputDateState;
+        /**
+          * Defines the granularity of the date input. This value is given in days. The default is 1 (one day).
+         */
+        "step"?: number;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The default date value for the input, in YYYY-MM-DD format (e.g., value="2025-07-02").
+         */
+        "value"?: string;
     }
     interface PInputEmail {
         /**
@@ -7301,6 +7500,7 @@ declare namespace LocalJSX {
         "p-headline": PHeadline;
         "p-icon": PIcon;
         "p-inline-notification": PInlineNotification;
+        "p-input-date": PInputDate;
         "p-input-email": PInputEmail;
         "p-input-number": PInputNumber;
         "p-input-password": PInputPassword;
@@ -7438,6 +7638,7 @@ declare module "@stencil/core" {
             "p-headline": LocalJSX.PHeadline & JSXBase.HTMLAttributes<HTMLPHeadlineElement>;
             "p-icon": LocalJSX.PIcon & JSXBase.HTMLAttributes<HTMLPIconElement>;
             "p-inline-notification": LocalJSX.PInlineNotification & JSXBase.HTMLAttributes<HTMLPInlineNotificationElement>;
+            "p-input-date": LocalJSX.PInputDate & JSXBase.HTMLAttributes<HTMLPInputDateElement>;
             "p-input-email": LocalJSX.PInputEmail & JSXBase.HTMLAttributes<HTMLPInputEmailElement>;
             "p-input-number": LocalJSX.PInputNumber & JSXBase.HTMLAttributes<HTMLPInputNumberElement>;
             "p-input-password": LocalJSX.PInputPassword & JSXBase.HTMLAttributes<HTMLPInputPasswordElement>;

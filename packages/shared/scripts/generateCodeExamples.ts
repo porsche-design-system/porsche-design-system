@@ -339,6 +339,29 @@ const codeExamples: CodeSample[] = [
     ],
   },
   {
+    component: 'p-input-date',
+    examples: [
+      {
+        name: 'InputDateExample',
+        paths: {
+          'vanilla-js': '/input-date-example.html',
+          angular: '/input-date-example.component.ts',
+          react: '/InputDateExample.tsx',
+          vue: '/InputDateExample.vue',
+        },
+      },
+      {
+        name: 'InputDateExampleControlled',
+        paths: {
+          'vanilla-js': '/input-date-example-controlled.html',
+          angular: '/input-date-example-controlled.component.ts',
+          react: '/InputDateExampleControlled.tsx',
+          vue: '/InputDateExampleControlled.vue',
+        },
+      },
+    ],
+  },
+  {
     component: 'p-input-text',
     examples: [
       {
