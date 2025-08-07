@@ -14,6 +14,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Input Url`: ([#3949](https://github.com/porsche-design-system/porsche-design-system/pull/3949))
+
 ## [3.29.0-rc.3] - 2025-07-29
 
 ### Fixed

@@ -32,6 +32,8 @@ import { InputEmailExampleControlledComponent } from './input-email-example-cont
 import { InputEmailExampleComponent } from './input-email-example.component';
 import { InputTelExampleControlledComponent } from './input-tel-example-controlled.component';
 import { InputTelExampleComponent } from './input-tel-example.component';
+import { InputUrlExampleControlledComponent } from './input-url-example-controlled.component';
+import { InputUrlExampleComponent } from './input-url-example.component';
 import { InputSearchExampleControlledComponent } from './input-search-example-controlled.component';
 import { InputSearchExampleComponent } from './input-search-example.component';
 import { LinkTileExampleHyphensComponent } from './link-tile-example-hyphens.component';
@@ -99,6 +101,8 @@ export const examples = [
   InputEmailExampleComponent,
   InputTelExampleControlledComponent,
   InputTelExampleComponent,
+  InputUrlExampleControlledComponent,
+  InputUrlExampleComponent,
   InputSearchExampleControlledComponent,
   InputSearchExampleComponent,
   LinkTileExampleHyphensComponent,
@@ -165,6 +169,8 @@ export * from './input-email-example.component';
 export * from './input-email-example-controlled.component';
 export * from './input-tel-example.component';
 export * from './input-tel-example-controlled.component';
+export * from './input-url-example.component';
+export * from './input-url-example-controlled.component';
 export * from './input-search-example.component';
 export * from './input-search-example-controlled.component';
 export * from './link-tile-example-hyphens.component';

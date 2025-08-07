@@ -9,7 +9,7 @@ import { goto, waitForComponentsReady } from '../helpers';
 
 const getHost = (page: Page) => page.locator('p-input-tel');
 const getForm = (page: Page) => page.locator('form');
-const getInputText = (page: Page) => page.locator('p-input-tel input');
+const getInputTel = (page: Page) => page.locator('p-input-tel input');
 
 test.describe('form', () => {
   test('should reset input text value to its initial value on form reset', async ({ page }) => {
@@ -19,22 +19,22 @@ test.describe('form', () => {
     const name = 'name';
     const newValue = '10';
     const host = getHost(page);
-    const inputText = getInputText(page);
+    const inputTel = getInputTel(page);
     const form = getForm(page);
 
     await addEventListener(form, 'submit');
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
 
-    await inputText.fill(newValue);
-    await inputText.press('Tab');
+    await inputTel.fill(newValue);
+    await inputTel.press('Tab');
 
     await expect(host).toHaveJSProperty('value', newValue);
-    await expect(inputText).toHaveValue(newValue);
+    await expect(inputTel).toHaveValue(newValue);
 
     await page.locator('button[type="reset"]').click();
 
     await expect(host).toHaveJSProperty('value', '');
-    await expect(inputText).toHaveValue('');
+    await expect(inputTel).toHaveValue('');
 
     await page.locator('button[type="submit"]').click(); // Check if ElementInternal value was reset as well
 

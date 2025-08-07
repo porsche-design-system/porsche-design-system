@@ -113,6 +113,7 @@ import { InputPasswordPage } from './generated/InputPassword';
 import { InputSearchPage } from './generated/InputSearch';
 import { InputTelPage } from './generated/InputTel';
 import { InputTextPage } from './generated/InputText';
+import { InputUrlPage } from './generated/InputUrl';
 import { LinkPage } from './generated/Link';
 import { LinkPurePage } from './generated/LinkPure';
 import { LinkSocialPage } from './generated/LinkSocial';
@@ -724,6 +725,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Input Text',
     path: '/input-text',
     element: <InputTextPage />,
+  },
+  {
+    name: 'Input Url',
+    path: '/input-url',
+    element: <InputUrlPage />,
   },
   {
     name: 'Link',

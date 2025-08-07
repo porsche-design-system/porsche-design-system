@@ -1,4 +1,3 @@
-import type { StoryState } from '@/models/story';
 import {
   PAccordion,
   type PAccordionProps,
@@ -56,18 +55,20 @@ import {
   type PIconProps,
   PInlineNotification,
   type PInlineNotificationProps,
-  PInputPassword,
-  type PInputPasswordProps,
-  PInputNumber,
-  type PInputNumberProps,
-  PInputSearch,
-  type PInputSearchProps,
-  PInputText,
-  type PInputTextProps,
   PInputEmail,
   type PInputEmailProps,
+  PInputNumber,
+  type PInputNumberProps,
+  PInputPassword,
+  type PInputPasswordProps,
+  PInputSearch,
+  type PInputSearchProps,
   PInputTel,
   type PInputTelProps,
+  PInputText,
+  type PInputTextProps,
+  PInputUrl,
+  type PInputUrlProps,
   PLink,
   type PLinkProps,
   PLinkPure,
@@ -147,6 +148,10 @@ import {
   type PTagDismissibleProps,
   type PTagProps,
   PText,
+  PTextarea,
+  type PTextareaProps,
+  PTextareaWrapper,
+  type PTextareaWrapperProps,
   PTextFieldWrapper,
   type PTextFieldWrapperProps,
   PTextList,
@@ -154,10 +159,6 @@ import {
   type PTextListItemProps,
   type PTextListProps,
   type PTextProps,
-  PTextarea,
-  type PTextareaProps,
-  PTextareaWrapper,
-  type PTextareaWrapperProps,
   PToast,
   type PToastProps,
   PWordmark,
@@ -165,6 +166,7 @@ import {
 } from '@porsche-design-system/components-react/ssr';
 import type { TagName } from '@porsche-design-system/shared';
 import React, { type ReactNode } from 'react';
+import type { StoryState } from '@/models/story';
 
 type SafePropTypeMapping = {
   [K in Exclude<TagName, 'p-toast-item' | 'p-select-wrapper-dropdown'>]: K extends keyof PropTypeMapping
@@ -288,6 +290,7 @@ export type PropTypeMapping = {
   'p-input-text': PInputTextProps;
   'p-input-email': PInputEmailProps;
   'p-input-tel': PInputTelProps;
+  'p-input-url': PInputUrlProps;
   'p-link': PLinkProps;
   'p-link-pure': PLinkPureProps;
   'p-link-social': PLinkSocialProps;
@@ -372,6 +375,7 @@ const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
   'p-input-text': PInputText,
   'p-input-email': PInputEmail,
   'p-input-tel': PInputTel,
+  'p-input-url': PInputUrl,
   'p-link': PLink,
   'p-link-pure': PLinkPure,
   'p-link-social': PLinkSocial,
