@@ -1,4 +1,5 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -8,12 +9,17 @@ import {
   THEMES,
   validateProps,
 } from '../../utils';
-import type { PropTypes, Theme } from '../../types';
-import { type FieldsetLabelSize, type FieldsetState, FIELDSET_LABEL_SIZES } from './fieldset-utils';
-import { getComponentCss } from './fieldset-styles';
-import { messageId, StateMessage } from '../common/state-message/state-message';
-import { Required } from '../common/required/required';
 import type { FormState } from '../../utils/form/form-state';
+import { Required } from '../common/required/required';
+import { messageId, StateMessage } from '../common/state-message/state-message';
+import { getComponentCss } from './fieldset-styles';
+import {
+  FIELDSET_ARIA_ATTRIBUTES,
+  FIELDSET_LABEL_SIZES,
+  type FieldsetAriaAttribute,
+  type FieldsetLabelSize,
+  type FieldsetState, getFieldsetAriaAttributes
+} from './fieldset-utils';
 
 const propTypes: PropTypes<typeof Fieldset> = {
   label: AllowedTypes.string,
@@ -22,6 +28,7 @@ const propTypes: PropTypes<typeof Fieldset> = {
   state: AllowedTypes.oneOf<FormState>(FORM_STATES),
   message: AllowedTypes.string,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
+  aria: AllowedTypes.aria<FieldsetAriaAttribute>(FIELDSET_ARIA_ATTRIBUTES),
 };
 
 /**
@@ -54,6 +61,9 @@ export class Fieldset {
   /** Adapts color depending on theme. */
   @Prop() public theme?: Theme = 'light';
 
+  /** Add ARIA attributes. */
+  @Prop() public aria?: SelectedAriaAttributes<FieldsetAriaAttribute>;
+
   public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(
@@ -68,7 +78,11 @@ export class Fieldset {
     const hasMessageValue = hasMessage(this.host, this.message, this.state);
 
     return (
-      <fieldset aria-describedby={hasMessageValue ? messageId : null}>
+      // biome-ignore lint/a11y/useAriaPropsSupportedByRole: Though the ARIA attributes 'aria-required' and 'aria-invalid' are not officially supported on a <fieldset>, they are recognized by screen readers to indicate that the descendant(s) of the fieldset is required or invalid. See further information about sr support: https://adrianroselli.com/2022/02/support-for-marking-radio-buttons-required-invalid.html
+      <fieldset
+        aria-describedby={hasMessageValue ? messageId : null}
+        {...getFieldsetAriaAttributes(this.required, this.state === 'error', this.aria)}
+      >
         {hasLabel(this.host, this.label) && (
           <legend>
             {this.label || <slot name="label" />}

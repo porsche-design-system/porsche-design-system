@@ -1,0 +1,8 @@
+- group "Some label":
+  - radio "Some label"
+  - status
+  - status
+  - radio "Some label"
+  - status
+  - status
+  - status: Some success message
