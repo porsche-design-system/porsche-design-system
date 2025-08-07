@@ -102,6 +102,7 @@ export const fieldsetStoryRequiredRadio: Story<'p-fieldset'> = {
     properties: {
       label: 'Some legend label',
       required: true,
+      aria: { role: 'radiogroup' },
     },
   },
   generator: ({ properties } = {}) => [
