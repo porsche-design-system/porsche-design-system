@@ -110,12 +110,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children as React.ReactNode}
       </blockquote>
     ),
-    pre: ({ children }) => <pre className="my-fluid-sm">{children as React.ReactNode}</pre>,
+    pre: ({ children }) => <pre className="my-fluid-sm" dir="ltr">{children as React.ReactNode}</pre>,
     code: ({ children, className }) => {
       const hasLang = /language-(\w+)/.exec(className || '');
 
       return (
-        <code className="my-fluid-md">
+        <code className="my-fluid-md max-h-96 overflow-auto rounded-lg focus-visible:outline-focus outline outline-solid outline-transparent outline-offset-0" tabIndex={0}>
           {hasLang ? (
             // @ts-expect-error
             <SyntaxHighlighter
@@ -140,7 +140,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
               CodeTag="div"
               showLineNumbers={false}
               useInlineStyles={false}
-              codeTagProps={{ tabIndex: 0, className: 'max-h-96 overflow-auto' }}
             >
               {children as React.ReactNode}
             </SyntaxHighlighter>
