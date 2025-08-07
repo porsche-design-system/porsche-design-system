@@ -1,4 +1,5 @@
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { PTag } from '@porsche-design-system/components-react/ssr';
 
 export const metadata = {
   title: 'Angular: Getting started - Porsche Design System',
@@ -7,12 +8,20 @@ export const metadata = {
 
 # Angular
 
-<TableOfContents headings={['Quick start','Integration']} />
+<TableOfContents headings={['Quick start', 'Integration']} />
 
 ## Quick start
 
-To build your own Angular application using the Porsche Design System Components
-`@porsche-design-system/components-angular`, follow these steps:
+To build your own Angular application using the Porsche Design System Components follow these steps:
+
+<div className="flex flex-wrap gap-static-sm my-fluid-sm">
+  {/* prettier-ignore */}
+  <PTag compact={true} color="notification-info-soft">@angular/*@20</PTag>
+  {/* prettier-ignore */}
+  <PTag compact={true} color="notification-info-soft">tailwindcss@4</PTag>
+  {/* prettier-ignore */}
+  <PTag compact={true} color="notification-info-soft">@porsche-design-system/components-angular@3</PTag>
+</div>
 
 ```bash
 # Create a new application by executing:

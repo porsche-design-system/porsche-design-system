@@ -1,5 +1,6 @@
 import { Notification } from '@/components/common/Notification';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { PTag } from '@porsche-design-system/components-react/ssr';
 
 export const metadata = {
   title: 'Vanilla JS: Getting started - Porsche Design System',
@@ -8,12 +9,20 @@ export const metadata = {
 
 # Vanilla Js
 
-<TableOfContents headings={['Quick start','Integration']} />
+<TableOfContents headings={['Quick start', 'Integration']} />
 
 ## Quick start
 
-To build your own Vanilla JS application using the Porsche Design System Components
-`@porsche-design-system/components-js`, follow these steps:
+To build your own Vanilla JS application using the Porsche Design System Components follow these steps:
+
+<div className="flex flex-wrap gap-static-sm my-fluid-sm">
+  {/* prettier-ignore */}
+  <PTag compact={true} color="notification-info-soft">vite@7</PTag>
+  {/* prettier-ignore */}
+  <PTag compact={true} color="notification-info-soft">tailwindcss@4</PTag>
+  {/* prettier-ignore */}
+  <PTag compact={true} color="notification-info-soft">@porsche-design-system/components-js@3</PTag>
+</div>
 
 ```bash
 # Create a new application by executing:
