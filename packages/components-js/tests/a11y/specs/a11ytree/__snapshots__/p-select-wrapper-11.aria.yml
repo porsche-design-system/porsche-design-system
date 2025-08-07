@@ -1,0 +1,10 @@
+- text: Some label
+- combobox "Option A, Some label" [expanded]
+- listbox "Some label":
+  - option "Option A" [selected]
+  - option "Option B"
+  - option "Option C"
+  - option "Option D"
+  - option "Option E"
+  - option "Option F"
+- alert

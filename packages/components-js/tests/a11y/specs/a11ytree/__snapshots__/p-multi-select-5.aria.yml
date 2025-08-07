@@ -1,0 +1,21 @@
+- text: Opened with disabled (Option A), highlighted (Option B) and selected (Option C)
+- combobox "Opened with disabled (Option A), highlighted (Option B) and selected (Option C)" [expanded]:
+  - button "Reset selection"
+  - status
+- dialog "Opened with disabled (Option A), highlighted (Option B) and selected (Option C)":
+  - searchbox "Filter options"
+  - alert
+  - status
+  - listbox "Opened with disabled (Option A), highlighted (Option B) and selected (Option C)":
+    - option "Option A" [disabled]
+    - option "Option B"
+    - option "Option C" [selected]
+    - option "Option D"
+    - option "Option E"
+    - option "Option F"
+    - option "Option G"
+    - option "Option H"
+    - option "Option I"
+    - option "Option J"
+    - option "Option K"
+- alert

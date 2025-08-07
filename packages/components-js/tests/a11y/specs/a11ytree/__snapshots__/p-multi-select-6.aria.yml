@@ -1,0 +1,16 @@
+- text: Opened with optgroups
+- combobox "Opened with optgroups" [expanded]
+- dialog "Opened with optgroups":
+  - searchbox "Filter options"
+  - alert
+  - status
+  - listbox "Opened with optgroups":
+    - group "Some optgroup label 1":
+      - option "Option A"
+      - option "Option B"
+      - option "Option C"
+    - group "Some optgroup label 2":
+      - option "Option D"
+      - option "Option E"
+      - option "Option F"
+- alert

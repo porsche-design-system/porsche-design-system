@@ -1,4 +1,4 @@
-import { type Locator, type Page, expect, test } from '@playwright/test';
+import { expect, type Locator, type Page, test } from '@playwright/test';
 import type {
   CarouselAriaAttribute,
   SelectedAriaAttributes,
@@ -61,7 +61,7 @@ const initCarousel = (page: Page, opts?: InitOptions) => {
   const attrs = [
     aria && `aria="${aria}"`,
     slidesPerPage ? `slides-per-page="${slidesPerPage}"` : '',
-    !rewind ? 'rewind="false"' : '',
+    rewind ? '' : 'rewind="false"',
     activeSlideIndex ? `active-slide-index="${activeSlideIndex}"` : '',
     focusOnCenterSlide ? `focus-on-center-slide="${focusOnCenterSlide}"` : '',
     skipLinkTarget ? `skip-link-target="${skipLinkTarget}"` : '',
@@ -350,28 +350,28 @@ test('should disable prev/next buttons on first/last slide when rewind=false', a
   const buttonNext = getButtonNext(page);
   const [slide1, slide2, slide3] = await getSlideElements(page);
 
-  expect(await getAttribute(buttonPrev, 'aria-disabled')).toBe('true');
-  expect(await getAttribute(buttonNext, 'aria-disabled')).toBe(null);
+  await expect(buttonPrev).toHaveAttribute('aria-disabled', 'true');
+  await expect(buttonNext).not.toHaveAttribute('aria-disabled');
 
   await buttonNext.click();
   await waitForSlideToBeActive(slide2);
-  expect(await getAttribute(buttonPrev, 'aria-disabled')).toBe(null);
-  expect(await getAttribute(buttonNext, 'aria-disabled')).toBe(null);
+  await expect(buttonPrev).not.toHaveAttribute('aria-disabled');
+  await expect(buttonNext).not.toHaveAttribute('aria-disabled');
 
   await buttonNext.click();
   await waitForSlideToBeActive(slide3);
-  expect(await getAttribute(buttonPrev, 'aria-disabled')).toBe(null);
-  expect(await getAttribute(buttonNext, 'aria-disabled')).toBe('true');
+  await expect(buttonPrev).not.toHaveAttribute('aria-disabled');
+  await expect(buttonNext).toHaveAttribute('aria-disabled', 'true');
 
   await buttonPrev.click();
   await waitForSlideToBeActive(slide2);
-  expect(await getAttribute(buttonPrev, 'aria-disabled')).toBe(null);
-  expect(await getAttribute(buttonNext, 'aria-disabled')).toBe(null);
+  await expect(buttonPrev).not.toHaveAttribute('aria-disabled');
+  await expect(buttonNext).not.toHaveAttribute('aria-disabled');
 
   await buttonPrev.click();
   await waitForSlideToBeActive(slide1);
-  expect(await getAttribute(buttonPrev, 'aria-disabled')).toBe('true');
-  expect(await getAttribute(buttonNext, 'aria-disabled')).toBe(null);
+  await expect(buttonPrev).toHaveAttribute('aria-disabled', 'true');
+  await expect(buttonNext).not.toHaveAttribute('aria-disabled');
 });
 
 test('should not have pagination and prev/next buttons when there is only one page and slidesPerPage is not auto', async ({
@@ -1096,13 +1096,41 @@ test.describe('lifecycle', () => {
     await initCarousel(page);
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidLoad['p-carousel'], 'componentDidLoad: p-carousel').toBe(1);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(2);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
+    await expect
+      .poll(async () => (await getLifecycleStatus(page)).componentDidLoad['p-carousel'], {
+        message: 'componentDidLoad: p-carousel',
+      })
+      .toBe(1);
 
-    expect(status.componentDidUpdate['p-button-pure'], 'componentDidUpdate: p-button-pure').toBe(2);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+    await expect
+      .poll(async () => (await getLifecycleStatus(page)).componentDidLoad['p-button-pure'], {
+        message: 'componentDidLoad: p-button-pure',
+      })
+      .toBe(2);
+
+    await expect
+      .poll(async () => (await getLifecycleStatus(page)).componentDidLoad['p-icon'], {
+        message: 'componentDidLoad: p-icon',
+      })
+      .toBe(2);
+
+    await expect
+      .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-button-pure'], {
+        message: 'componentDidUpdate: p-button-pure',
+      })
+      .toBe(2);
+
+    await expect
+      .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate.all, {
+        message: 'componentDidUpdate: all',
+      })
+      .toBe(2);
+
+    await expect
+      .poll(async () => (await getLifecycleStatus(page)).componentDidLoad.all, {
+        message: 'componentDidLoad: all',
+      })
+      .toBe(5);
   });
 
   test('should work without unnecessary round trips on btn next click', async ({ page }) => {

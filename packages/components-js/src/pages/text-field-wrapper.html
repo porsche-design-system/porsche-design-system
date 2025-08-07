@@ -11,7 +11,11 @@
 </div>
 
 <div class="playground light" title="should render with label, description and placeholder">
-  <p-text-field-wrapper label="Label with description and placeholder" description="Some description">
+  <p-text-field-wrapper
+    label="Label with description and placeholder"
+    description="Some description"
+    class="a11ytree-snapshot-test"
+  >
     <input type="text" placeholder="Some placeholder" />
   </p-text-field-wrapper>
 </div>
@@ -60,7 +64,7 @@
 </div>
 
 <div class="playground light" title="should render with counter">
-  <p-text-field-wrapper label="Counter">
+  <p-text-field-wrapper label="Counter" class="a11ytree-snapshot-test">
     <input type="text" maxlength="20" value="Some value" />
   </p-text-field-wrapper>
 </div>
@@ -132,7 +136,7 @@
 </div>
 
 <div class="playground light" title="should render with type password in different states">
-  <p-text-field-wrapper label="Type password">
+  <p-text-field-wrapper label="Type password" class="a11ytree-snapshot-test">
     <input type="password" value="some password" />
   </p-text-field-wrapper>
   <p-text-field-wrapper label="Type password disabled">
@@ -221,7 +225,7 @@
 </div>
 
 <div class="playground light" title="should render with error state and error message">
-  <p-text-field-wrapper label="Error with message" state="error" message="Error message">
+  <p-text-field-wrapper label="Error with message" state="error" message="Error message" class="a11ytree-snapshot-test">
     <input type="text" />
   </p-text-field-wrapper>
 </div>
@@ -233,7 +237,12 @@
 </div>
 
 <div class="playground light" title="should render with success state and success message">
-  <p-text-field-wrapper label="Success with message" state="success" message="Success message">
+  <p-text-field-wrapper
+    label="Success with message"
+    state="success"
+    message="Success message"
+    class="a11ytree-snapshot-test"
+  >
     <input type="text" />
   </p-text-field-wrapper>
 </div>
@@ -251,7 +260,7 @@
 </div>
 
 <div class="playground light" title="should render label, description and message by slotted content with error state">
-  <p-text-field-wrapper state="error">
+  <p-text-field-wrapper state="error" class="a11ytree-snapshot-test">
     <span slot="label">
       <span>
         Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
@@ -278,7 +287,7 @@
   class="playground light"
   title="should render label, description and message by slotted content with success state"
 >
-  <p-text-field-wrapper state="success">
+  <p-text-field-wrapper state="success" class="a11ytree-snapshot-test">
     <span slot="label">
       <span>
         Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
@@ -326,7 +335,12 @@
 </div>
 
 <div class="playground light" title="should render input type text with unit position suffix">
-  <p-text-field-wrapper label="Label with unit, input type text and position suffix" unit="kWh" unit-position="suffix">
+  <p-text-field-wrapper
+    label="Label with unit, input type text and position suffix"
+    unit="kWh"
+    unit-position="suffix"
+    class="a11ytree-snapshot-test"
+  >
     <input type="text" value="four hundred" />
   </p-text-field-wrapper>
 </div>

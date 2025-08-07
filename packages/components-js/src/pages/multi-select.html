@@ -59,7 +59,7 @@
 </div>
 
 <div class="playground light" title="should render in required state">
-  <p-multi-select name="options" label="Some label required" required="true">
+  <p-multi-select name="options" label="Some label required" required="true" class="a11ytree-snapshot-test">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -76,7 +76,13 @@
 </div>
 
 <div class="playground light" title="should render with error state and error message">
-  <p-multi-select name="options" label="Error state" state="error" message="Some error message.">
+  <p-multi-select
+    name="options"
+    label="Error state"
+    state="error"
+    message="Some error message."
+    class="a11ytree-snapshot-test"
+  >
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -92,7 +98,13 @@
 </div>
 
 <div class="playground light" title="should render with success state and success message">
-  <p-multi-select name="options" label="Success state" state="success" message="Some success message.">
+  <p-multi-select
+    name="options"
+    label="Success state"
+    state="success"
+    message="Some success message."
+    class="a11ytree-snapshot-test"
+  >
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
     <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -121,7 +133,7 @@
 </div>
 
 <div class="playground light" title="should render label, description and message by slotted content with error state">
-  <p-multi-select name="options" state="error">
+  <p-multi-select name="options" state="error" class="a11ytree-snapshot-test">
     <span slot="label">
       <span>
         Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
@@ -150,7 +162,7 @@
   class="playground light"
   title="should render label, description and message by slotted content with success state"
 >
-  <p-multi-select name="options" state="success">
+  <p-multi-select name="options" state="success" class="a11ytree-snapshot-test">
     <span slot="label">
       <span>
         Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
@@ -218,7 +230,10 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened and with disabled, highlighted and selected">
+<div
+  class="playground light a11ytree-snapshot-test"
+  title="should render opened and with disabled, highlighted and selected"
+>
   <iframe
     src="/multi-select-opened-with-disabled-highlighted-selected?iframe=true"
     loading="eager"
@@ -226,7 +241,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened and with optgroups">
+<div class="playground light a11ytree-snapshot-test" title="should render opened and with optgroups">
   <iframe
     src="/multi-select-opened-with-optgroups?iframe=true"
     loading="eager"
@@ -234,7 +249,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened and with optgroup in disabled state">
+<div class="playground light a11ytree-snapshot-test" title="should render opened and with optgroup in disabled state">
   <iframe
     src="/multi-select-opened-with-optgroups-disabled?iframe=true"
     loading="eager"
@@ -258,7 +273,7 @@
   ></iframe>
 </div>
 
-<div class="playground light" title="should render opened with filter input and no results">
+<div class="playground light a11ytree-snapshot-test" title="should render opened with filter input and no results">
   <iframe
     src="/multi-select-opened-filter-no-results?iframe=true"
     loading="eager"

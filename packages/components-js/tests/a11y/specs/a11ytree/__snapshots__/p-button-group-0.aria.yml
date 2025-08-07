@@ -1,0 +1,7 @@
+- group:
+  - button "Some label"
+  - status
+  - button "Some label"
+  - status
+  - button "Some label"
+  - status

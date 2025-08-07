@@ -1,0 +1,3 @@
+- text: Some label with filter
+- combobox "Option A, Some label with filter. Some error message."
+- alert: Some error message.
