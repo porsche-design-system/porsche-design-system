@@ -44,6 +44,7 @@ import {
 } from '../../../utils';
 import { Label } from '../../common/label/label';
 import { labelId } from '../../common/label/label-utils';
+import { NoResultsOption } from '../../common/no-results-option/no-results-option';
 import { messageId, StateMessage } from '../../common/state-message/state-message';
 import type { InputSearchInputEventDetail } from '../../input-search/input-search-utils';
 import { getComponentCss } from './select-styles';
@@ -352,12 +353,7 @@ export class Select {
             onPointerMove={this.onPointerMove}
             ref={(el) => (this.listboxElement = el)}
           >
-            {this.filter && !this.hasFilterResults && (
-              <div class="no-results" aria-live="polite" role="option">
-                <span aria-hidden="true">–</span>
-                <span class="sr-only">No results found</span>
-              </div>
-            )}
+            {this.filter && !this.hasFilterResults && <NoResultsOption />}
             <slot />
           </div>
         </div>

@@ -106,6 +106,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,0.0001deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -138,23 +145,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;
@@ -315,6 +305,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,0.0001deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -347,23 +344,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;
@@ -525,6 +505,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,0.0001deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -557,23 +544,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;
@@ -735,6 +705,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,0.0001deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -767,23 +744,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;
@@ -930,6 +890,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,0.0001deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -962,23 +929,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;
@@ -1124,6 +1074,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,0.0001deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -1156,23 +1113,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;
@@ -1317,6 +1257,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,0.0001deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -1349,23 +1296,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;
@@ -1510,6 +1440,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 0.5) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,0.0001deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 0.5) * 12px);
@@ -1542,23 +1479,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;
@@ -1703,6 +1623,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,0.0001deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -1735,23 +1662,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;
@@ -1897,6 +1807,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,0.0001deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -1929,23 +1846,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;
@@ -2091,6 +1991,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,0.0001deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -2123,23 +2030,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;
@@ -2284,6 +2174,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,0.0001deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -2316,23 +2213,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;
@@ -2493,6 +2373,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -2525,23 +2412,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;
@@ -2703,6 +2573,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -2735,23 +2612,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;
@@ -2912,6 +2772,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -2944,23 +2811,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;
@@ -3121,6 +2971,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -3153,23 +3010,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;
@@ -3330,6 +3170,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -3362,23 +3209,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;
@@ -3540,6 +3370,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -3572,23 +3409,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;
@@ -3749,6 +3569,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -3781,23 +3608,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;
@@ -3959,6 +3769,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -3991,23 +3808,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;
@@ -4154,6 +3954,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -4186,23 +3993,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;
@@ -4348,6 +4138,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -4380,23 +4177,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;
@@ -4541,6 +4321,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -4573,23 +4360,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;
@@ -4735,6 +4505,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 0.5) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 0.5) * 12px);
@@ -4767,23 +4544,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;
@@ -4929,6 +4689,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -4961,23 +4728,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;
@@ -5123,6 +4873,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -5155,23 +4912,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results[role=option] {
     cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
   }
   .sr-only {
     position: absolute;

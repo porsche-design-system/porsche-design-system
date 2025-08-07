@@ -2,20 +2,17 @@ import { borderWidthBase, spacingStaticSmall, spacingStaticXSmall } from '@porsc
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getHiddenTextJssStyle,
   getThemedColors,
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import { formElementPaddingHorizontal, getCalculatedFormElementPaddingHorizontal } from '../../../styles/form-styles';
-import { getNoResultsOptionJssStyle } from '../../../styles/option-styles';
 import {
   getButtonImageJssStyle,
   getButtonJssStyle,
   getButtonLabelJssStyle,
   getIconJssStyle,
-  getOptionJssStyle,
   getPopoverJssStyle,
   getPopoverKeyframesStyles,
 } from '../../../styles/select';
@@ -23,6 +20,7 @@ import type { BreakpointCustomizable, Theme } from '../../../types';
 import { getCss, isThemeDark } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
+import { getFunctionalComponentNoResultsOptionStyles } from '../../common/no-results-option/no-results-option-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { cssVarInternalOptgroupScaling } from '../../optgroup/optgroup-styles';
 import { cssVarInternalSelectOptionScaling } from '../select-option/select-option-styles';
@@ -38,9 +36,8 @@ export const getComponentCss = (
   theme: Theme
 ): string => {
   const scalingVar = `var(${cssVarInternalSelectScaling}, ${compact ? 0.5 : 1})`;
-  const { contrastMediumColor, backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
-  const { contrastMediumColor: contrastMediumColorDark, backgroundSurfaceColor: backgroundSurfaceColorDark } =
-    getThemedColors('dark');
+  const { backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
+  const { backgroundSurfaceColor: backgroundSurfaceColorDark } = getThemedColors('dark');
 
   return getCss({
     '@global': {
@@ -85,16 +82,9 @@ export const getComponentCss = (
       flexDirection: 'column',
       gap: `max(2px, ${scalingVar} * ${spacingStaticSmall})`,
     },
-    'no-results': {
-      ...getOptionJssStyle('select-option', scalingVar, theme),
-      ...getNoResultsOptionJssStyle(),
-      color: contrastMediumColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: contrastMediumColorDark,
-      }),
-    },
     icon: getIconJssStyle('select', isOpen),
-    'sr-only': getHiddenTextJssStyle(),
+    // .no-results / .sr-only
+    ...getFunctionalComponentNoResultsOptionStyles('select-option', scalingVar, theme),
     // .label / .required
     ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, theme),
     // .message

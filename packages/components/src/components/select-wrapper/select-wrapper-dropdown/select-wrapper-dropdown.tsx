@@ -17,6 +17,7 @@ import {
   throwIfRootNodeIsNotOneOfKind,
   unobserveChildren,
 } from '../../../utils';
+import { NoResultsOption } from '../../common/no-results-option/no-results-option';
 import type {
   DropdownDirectionInternal,
   SelectWrapperDropdownDirection,
@@ -223,10 +224,7 @@ export class SelectWrapperDropdown {
             ref={(el) => (this.popoverElement = el)}
           >
             {this.filter && !hasFilterResults(this.optionMaps) ? (
-              <div class="option no-results" aria-live="polite" role="option">
-                <span aria-hidden="true">---</span>
-                <span class="no-results__sr">No results found</span>
-              </div>
+              <NoResultsOption />
             ) : (
               this.optionMaps.map((option, index) => {
                 const {

@@ -22,11 +22,11 @@ import {
   formElementPaddingVertical,
   getCalculatedFormElementPaddingHorizontal,
 } from '../../../styles/form-styles';
-import { getNoResultsOptionJssStyle } from '../../../styles/option-styles';
 import { getOptionJssStyle, getPopoverJssStyle, getPopoverKeyframesStyles } from '../../../styles/select';
 import type { Theme } from '../../../types';
 import { getCss, isHighContrastMode, mergeDeep } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
+import { getFunctionalComponentNoResultsOptionStyles } from '../../common/no-results-option/no-results-option-styles';
 
 export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme): Styles => {
   const { primaryColor, disabledColor, contrastMediumColor } = getThemedColors(theme);
@@ -236,7 +236,6 @@ export const getListStyles = (isOpen: boolean, theme: Theme): Styles => {
         paddingLeft: '28px',
       },
     },
-    'no-results': getNoResultsOptionJssStyle(),
     icon: {
       marginInlineStart: 'auto',
     },
@@ -259,6 +258,8 @@ export const getListStyles = (isOpen: boolean, theme: Theme): Styles => {
         color: primaryColorDark,
       }),
     },
+    // .no-results / .sr-only
+    ...getFunctionalComponentNoResultsOptionStyles('select-wrapper', 1, theme),
   };
 };
 
