@@ -1,4 +1,3 @@
-import { forceUpdate } from '@stencil/core';
 import type { HTMLStencilElement } from '@stencil/core/internal';
 import type { MultiSelectAction } from './getMultiSelectActionFromKeyboardEvent';
 import type { SelectAction } from './getSelectActionFromKeyboardEvent';
@@ -80,20 +79,22 @@ export const getNextOptionToHighlight = <T extends Option>(
  */
 export const updateHighlightedOption = <T extends Option>(
   currentlyHighlightedOption: T | null,
-  newHighlightedOption: T,
+  newHighlightedOption: T | null,
   scrollIntoView: boolean = true
 ): Option | null => {
   if (currentlyHighlightedOption === newHighlightedOption) return currentlyHighlightedOption;
   currentlyHighlightedOption && setHighlightedSelectOption(currentlyHighlightedOption, false);
-  setHighlightedSelectOption(newHighlightedOption, true);
-  if (scrollIntoView) {
-    // Need to wait until the listbox is opened before scrolling
-    requestAnimationFrame(() => {
-      newHighlightedOption.scrollIntoView({
-        block: 'nearest',
-        // behavior: 'smooth' // Intentionally not smooth since highlighted options can quickly change when searching
+  if (newHighlightedOption !== null) {
+    setHighlightedSelectOption(newHighlightedOption, true);
+    if (scrollIntoView) {
+      // Need to wait until the listbox is opened before scrolling
+      requestAnimationFrame(() => {
+        newHighlightedOption.scrollIntoView({
+          block: 'nearest',
+          // behavior: 'smooth' // Intentionally not smooth since highlighted options can quickly change when searching
+        });
       });
-    });
+    }
   }
   return newHighlightedOption;
 };
@@ -172,7 +173,8 @@ export const getMatchingSelectOptionIndex = <T extends Option>(options: T[], fil
  */
 export const setHighlightedSelectOption = <T extends Option>(option: T, highlighted: boolean): void => {
   option.highlighted = highlighted;
-  forceUpdate(option);
+  // Avoid rerender for improved performance
+  option.shadowRoot.querySelector('.option').classList.toggle('option--highlighted', highlighted);
 };
 
 /**
