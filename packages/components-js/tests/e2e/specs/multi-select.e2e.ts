@@ -1496,7 +1496,7 @@ test.describe('lifecycle', () => {
     expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
 
     const options = getMultiSelectOptions(page);
-    // Option will update as soon as hovered to set the highlight. In order to avoid different behavior in browsers, we will hover the option first.
+    // Hover should not cause additional lifecycles in option
     await options.nth(0).hover();
     await options.nth(0).click();
 
@@ -1509,7 +1509,7 @@ test.describe('lifecycle', () => {
       .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-multi-select-option'], {
         message: 'componentDidUpdate: p-multi-select-option',
       })
-      .toBe(2);
+      .toBe(1);
     await expect
       .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-multi-select'], {
         message: 'componentDidUpdate: p-multi-select',
