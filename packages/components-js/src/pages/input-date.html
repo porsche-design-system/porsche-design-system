@@ -38,11 +38,12 @@
     label="Label with description and placeholder"
     description="Some description"
     placeholder="Some placeholder"
+    class="a11ytree-snapshot-test"
   ></p-input-date>
 </div>
 
 <div class="playground light" title="should render with loading indicator">
-  <p-input-date name="some-name" label="Some label" loading="true"></p-input-date>
+  <p-input-date name="some-name" label="Some label" loading="true" class="a11ytree-snapshot-test"></p-input-date>
 </div>
 
 <div class="playground light" title="should render without label and without description">
@@ -52,6 +53,7 @@
     description="Some description"
     hide-label="true"
     value="Without label and description"
+    class="a11ytree-snapshot-test"
   ></p-input-date>
 </div>
 
@@ -66,11 +68,12 @@
 </div>
 
 <div class="playground light" title="should render in required state">
-  <p-input-date name="some-name" label="Required" required="true"></p-input-date>
+  <p-input-date name="some-name" label="Required" required="true" class="a11ytree-snapshot-test"></p-input-date>
   <p-input-date
     name="some-name"
     label="Required and insanely super long label across multiple lines"
     required="true"
+    class="a11ytree-snapshot-test"
   ></p-input-date>
 </div>
 
@@ -100,6 +103,7 @@
     description="Some description"
     value="2025-07-22"
     read-only="true"
+    class="a11ytree-snapshot-test"
   ></p-input-date>
 </div>
 
@@ -112,7 +116,13 @@
 </div>
 
 <div class="playground light" title="should render with success state and success message">
-  <p-input-date name="some-name" label="Success with message" state="success" message="Success message"></p-input-date>
+  <p-input-date
+    name="some-name"
+    label="Success with message"
+    state="success"
+    message="Success message"
+    class="a11ytree-snapshot-test"
+  ></p-input-date>
 </div>
 
 <div class="playground light" title="should render with success state and no success message">

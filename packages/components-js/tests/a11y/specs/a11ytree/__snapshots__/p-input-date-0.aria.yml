@@ -1,0 +1,6 @@
+- text: Label with description and placeholder Some description
+- textbox "Label with description and placeholder"
+- button "Open date picker"
+- status
+- alert
+- status
