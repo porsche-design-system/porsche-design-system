@@ -115,38 +115,42 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       const hasLang = /language-(\w+)/.exec(className || '');
 
       return (
-        <code className="my-fluid-md max-h-96 overflow-auto rounded-lg focus-visible:outline-focus outline outline-solid outline-transparent outline-offset-0" tabIndex={0}>
+        <>
           {hasLang ? (
-            // @ts-expect-error
-            <SyntaxHighlighter
-              language={
-                {
-                  js: 'javascript',
-                  javascript: 'javascript',
-                  ts: 'typescript',
-                  typescript: 'typescript',
-                  diff: 'diff',
-                  json: 'json',
-                  html: 'html',
-                  scss: 'scss',
-                  css: 'css',
-                  shell: 'shell',
-                  bash: 'bash',
-                  tsx: 'typescript',
-                  jsx: 'javascript',
-                }[hasLang[1]] || 'javascript'
-              }
-              PreTag="div"
-              CodeTag="div"
-              showLineNumbers={false}
-              useInlineStyles={false}
-            >
-              {children as React.ReactNode}
-            </SyntaxHighlighter>
+            <code className="my-fluid-md max-h-96 overflow-auto rounded-lg focus-visible:outline-focus outline outline-solid outline-transparent outline-offset-0" tabIndex={0}>
+              {/* @ts-expect-error */}
+              <SyntaxHighlighter
+                language={
+                  {
+                    js: 'javascript',
+                    javascript: 'javascript',
+                    ts: 'typescript',
+                    typescript: 'typescript',
+                    diff: 'diff',
+                    json: 'json',
+                    html: 'html',
+                    scss: 'scss',
+                    css: 'css',
+                    shell: 'shell',
+                    bash: 'bash',
+                    tsx: 'typescript',
+                    jsx: 'javascript',
+                  }[hasLang[1]] || 'javascript'
+                }
+                PreTag="div"
+                CodeTag="div"
+                showLineNumbers={false}
+                useInlineStyles={false}
+              >
+                {children as React.ReactNode}
+              </SyntaxHighlighter>
+            </code>
           ) : (
-            (children as React.ReactNode)
+            <code className="max-h-96 overflow-auto rounded-lg">
+              (children as React.ReactNode)
+            </code>
           )}
-        </code>
+        </>
       );
     },
     img: ({ src, alt }) => (
