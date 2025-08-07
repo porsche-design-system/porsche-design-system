@@ -1,4 +1,4 @@
-- text: Success with message
-- textbox "Success with message"
-- status: Success message
+- text: Required and insanely super long label across multiple lines
+- textbox "Required and insanely super long label across multiple lines"
+- alert
 - status
