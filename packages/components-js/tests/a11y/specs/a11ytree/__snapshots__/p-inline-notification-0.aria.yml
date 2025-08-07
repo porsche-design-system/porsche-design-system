@@ -1,0 +1,5 @@
+- status "Heading (state=info)":
+  - heading "Heading (state=info)" [level=5]
+  - paragraph: Description
+- button "Close notification"
+- status

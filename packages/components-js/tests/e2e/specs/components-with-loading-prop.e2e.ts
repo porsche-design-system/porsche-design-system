@@ -1,4 +1,4 @@
-import { expect, Locator, test } from '@playwright/test';
+import { type Locator, expect, test } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import type { Page } from 'playwright';
@@ -54,7 +54,7 @@ for (const tagName of tagNamesWithLoadingProp) {
       test('should render loading message initially', async ({ page }) => {
         await setContentWithDesignSystem(page, markup);
 
-        expect(await getLoadingMessage(page)).toBe('Loading');
+        await expect.poll(() => getLoadingMessage(page)).toBe('Loading');
       });
 
       test('should render loading finished message when loading is set to false', async ({ page }) => {
@@ -64,7 +64,7 @@ for (const tagName of tagNamesWithLoadingProp) {
         await setProperty(host, 'loading', false);
         await waitForStencilLifecycle(page);
 
-        expect(await getLoadingMessage(page)).toBe('Loading finished');
+        await expect.poll(() => getLoadingMessage(page)).toBe('Loading finished');
       });
     });
 
@@ -74,7 +74,7 @@ for (const tagName of tagNamesWithLoadingProp) {
       test('should render no loading message initially', async ({ page }) => {
         await setContentWithDesignSystem(page, markup);
 
-        expect(await getLoadingMessage(page)).toBe('');
+        await expect.poll(() => getLoadingMessage(page)).toBe('');
       });
 
       test('should render loading message when loading is set to true', async ({ page }) => {
@@ -84,7 +84,7 @@ for (const tagName of tagNamesWithLoadingProp) {
         await setProperty(host, 'loading', true);
         await waitForStencilLifecycle(page);
 
-        expect(await getLoadingMessage(page)).toBe('Loading');
+        await expect.poll(() => getLoadingMessage(page)).toBe('Loading');
       });
 
       test('should render loading finished message when loading is set to true, then to false', async ({ page }) => {
@@ -97,7 +97,7 @@ for (const tagName of tagNamesWithLoadingProp) {
         await setProperty(host, 'loading', false);
         await waitForStencilLifecycle(page);
 
-        expect(await getLoadingMessage(page)).toBe('Loading finished');
+        await expect.poll(() => getLoadingMessage(page)).toBe('Loading finished');
       });
     });
   });

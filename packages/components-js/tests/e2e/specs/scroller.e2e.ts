@@ -1,4 +1,5 @@
-import { expect, type Locator, test, type Page } from '@playwright/test';
+import { expect, type Locator, type Page, test } from '@playwright/test';
+import type { Components } from '@porsche-design-system/components';
 import {
   CSS_ANIMATION_DURATION,
   getAttribute,
@@ -11,7 +12,6 @@ import {
   sleep,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { Components } from '@porsche-design-system/components';
 
 type InitOptions = {
   amount?: number;
@@ -87,12 +87,12 @@ test.describe('slotted content changes', () => {
     await initScroller(page, { amount: 3, isWrapped: true });
     const { actionNext } = await getActionContainers(page);
 
-    expect(await getElementStyle(actionNext, 'visibility')).toBe('hidden');
+    await expect(actionNext).toBeHidden();
 
     await addNewButton(page);
     await waitForStencilLifecycle(page);
 
-    expect(await getElementStyle(actionNext, 'visibility')).toBe('visible');
+    await expect(actionNext).toBeVisible();
   });
 });
 
@@ -238,7 +238,7 @@ test.describe('next/prev buttons', () => {
     // There seems to be a rounding issue that causes the element inside scroller to exceed the scroll container,
     // therefore the trigger gets pushed outside and the gradient is always shown.
     // To ensure the element exceeds the width of the wrapping div we need to assign static width values.
-    const steps = Array.from(Array(10)).map((_, index) => parseFloat(`150.${index}`));
+    const steps = Array.from(Array(10)).map((_, index) => Number.parseFloat(`150.${index}`));
 
     for (const width of steps) {
       test(`should not show actionNext for element with a width of ${width}`, async ({ page }) => {

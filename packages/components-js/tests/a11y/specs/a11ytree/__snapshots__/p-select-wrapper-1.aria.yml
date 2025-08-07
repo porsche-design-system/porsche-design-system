@@ -1,0 +1,3 @@
+- text: Some label Some description
+- combobox "Option A, Some label"
+- alert

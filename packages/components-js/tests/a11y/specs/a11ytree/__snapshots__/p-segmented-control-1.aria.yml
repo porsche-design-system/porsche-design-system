@@ -1,0 +1,5 @@
+- group:
+  - button "Variant Default" [pressed]
+  - button "Variant Advanced"
+  - button "Variant Large"
+  - button "Variant Custom" [disabled]

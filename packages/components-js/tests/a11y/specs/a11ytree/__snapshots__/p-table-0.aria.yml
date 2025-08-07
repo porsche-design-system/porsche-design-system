@@ -1,0 +1,28 @@
+- table "Some caption":
+  - rowgroup:
+    - row "Slotted Styles Multiline text Min width cell Forced Multiline header cell Natural multiline header cell Hide header cell":
+      - columnheader "Slotted Styles"
+      - columnheader "Multiline text"
+      - columnheader "Min width cell"
+      - columnheader "Forced Multiline header cell"
+      - columnheader "Natural multiline header cell"
+      - columnheader "Hide header cell"
+  - rowgroup:
+    - row /\d+ vehicle link bold italic strong emphasized Lorem ipsum dolor sit amet, consetetur sadipscing elitr Some text Some text Some text Edit Delete/:
+      - cell /\d+ vehicle link bold italic strong emphasized/:
+        - img /\d+ vehicle/
+        - link "link":
+          - /url: "#"
+        - strong: strong
+        - emphasis: emphasized
+      - cell "Lorem ipsum dolor sit amet, consetetur sadipscing elitr"
+      - cell "Some text"
+      - cell "Some text"
+      - cell "Some text"
+      - cell "Edit Delete":
+        - button "Edit"
+        - status
+        - button "Delete"
+        - status
+- button "next"
+- status

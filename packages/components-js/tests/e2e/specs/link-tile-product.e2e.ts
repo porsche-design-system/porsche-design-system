@@ -1,5 +1,6 @@
-import type { Page } from 'playwright';
 import { expect, test } from '@playwright/test';
+import { Components } from '@porsche-design-system/components';
+import type { Page } from 'playwright';
 import {
   addEventListener,
   getActiveElementId,
@@ -14,7 +15,6 @@ import {
   skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
-import { Components } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.locator('p-link-tile-product');
 const getLikeButton = (page: Page) => page.locator('p-link-tile-product .button');
@@ -46,43 +46,51 @@ test.describe('like button', () => {
     await initLinkTileProduct(page);
     const host = getHost(page);
     const likeButton = getLikeButton(page);
-    expect(likeButton).toBeDefined();
-    expect(await getProperty(host, 'liked')).toBe(false);
-    expect(await getProperty(likeButton, 'icon')).toBe('heart');
+
+    await expect.poll(() => likeButton).toBeDefined();
+    await expect(host).toHaveJSProperty('liked', false);
+    await expect(likeButton).toHaveJSProperty('icon', 'heart');
 
     await setProperty(host, 'liked', true);
     await waitForStencilLifecycle(page);
 
-    expect(await getProperty(host, 'liked')).toBe(true);
-    expect(await getProperty(likeButton, 'icon')).toBe('heart-filled');
+    await expect(host).toHaveJSProperty('liked', true);
+    await expect(likeButton).toHaveJSProperty('icon', 'heart-filled');
   });
   test('should emit like event on like button click', async ({ page }) => {
     await initLinkTileProduct(page);
     const host = getHost(page);
     await addEventListener(host, 'like');
 
-    expect((await getEventSummary(host, 'like')).counter, 'before like click').toBe(0);
+    await expect
+      .poll(async () => (await getEventSummary(host, 'like')).counter, { message: 'before like click' })
+      .toBe(0);
     const likeButton = getLikeButton(page);
-    expect(likeButton).toBeDefined();
-    expect(await getProperty(host, 'liked')).toBe(false);
-    expect(await getProperty(likeButton, 'icon')).toBe('heart');
+    await expect.poll(() => likeButton).toBeDefined();
+    await expect(host).toHaveJSProperty('liked', false);
+    await expect(likeButton).toHaveJSProperty('icon', 'heart');
 
     await likeButton.click();
     await waitForStencilLifecycle(page);
 
-    expect((await getEventSummary(host, 'like')).counter, 'after like click').toBe(1);
-    expect((await getEventSummary(host, 'like')).details, 'after like click').toEqual([{ liked: false }]);
+    await expect
+      .poll(async () => (await getEventSummary(host, 'like')).counter, { message: 'after like click' })
+      .toBe(1);
+    await expect
+      .poll(async () => (await getEventSummary(host, 'like')).details, { message: 'after like click' })
+      .toEqual([{ liked: false }]);
 
     await setProperty(host, 'liked', true);
     await waitForStencilLifecycle(page);
     await likeButton.click();
     await waitForStencilLifecycle(page);
 
-    expect((await getEventSummary(host, 'like')).counter, 'after setting like prop to true').toBe(2);
-    expect((await getEventSummary(host, 'like')).details, 'after setting like prop to true').toEqual([
-      { liked: false },
-      { liked: true },
-    ]);
+    await expect
+      .poll(async () => (await getEventSummary(host, 'like')).counter, { message: 'after setting like prop to true' })
+      .toBe(2);
+    await expect
+      .poll(async () => (await getEventSummary(host, 'like')).details, { message: 'after setting like prop to true' })
+      .toEqual([{ liked: false }, { liked: true }]);
   });
 });
 
@@ -107,8 +115,10 @@ test.describe('lifecycle', () => {
     await waitForStencilLifecycle(page);
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidUpdate['p-link-tile-product'], 'componentDidUpdate: p-link-tile-product').toBe(1);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    await expect
+      .poll(() => status.componentDidUpdate['p-link-tile-product'], 'componentDidUpdate: p-link-tile-product')
+      .toBe(1);
+    await expect.poll(() => status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 });
 

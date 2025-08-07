@@ -1,0 +1,7 @@
+- text: Error with message
+- spinbutton "Error with message"
+- button "Decrement value by 1"
+- status
+- button "Increment value by 1"
+- status
+- alert: Error message

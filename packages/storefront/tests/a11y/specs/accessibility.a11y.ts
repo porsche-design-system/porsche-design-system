@@ -98,13 +98,12 @@ test.describe('storefront pages', () => {
 
         console.log(accessibilityScanResults.violations);
 
-        // Filter out violations for embedded stackblitz iframe
+        // Filter out violations for p-scroller inside p-table.
+        // This is a known issue with p-scroller in chrome when there is a scroll area but the component does not add tabindex=0.
         const filteredViolations = accessibilityScanResults.violations
           .map((violation) => ({
             ...violation,
-            nodes: violation.nodes.filter((node) =>
-              node.target.every((selector) => !selector.includes('#stackblitz-demo'))
-            ),
+            nodes: violation.nodes.filter((node) => node.target.every((selector) => !selector.includes('p-scroller'))),
           }))
           .filter((violation) => violation.nodes.length > 0);
 

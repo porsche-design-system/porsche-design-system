@@ -1,0 +1,4 @@
+- text: Some label
+- checkbox "Some label. Some success message."
+- status: Some success message.
+- status
