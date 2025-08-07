@@ -208,6 +208,16 @@ export const routes: RouteType[] = [
     component: fromExamples.InputDateExampleControlled,
   },
   {
+    path: '/input-time-example',
+    name: 'Input Time Example',
+    component: fromExamples.InputTimeExample,
+  },
+  {
+    path: '/input-time-example-controlled',
+    name: 'Input Time Example Controlled',
+    component: fromExamples.InputTimeExampleControlled,
+  },
+  {
     path: '/input-text-example',
     name: 'Input Text Example',
     component: fromExamples.InputTextExample,
