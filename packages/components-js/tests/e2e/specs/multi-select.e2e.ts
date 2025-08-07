@@ -875,7 +875,7 @@ test.describe('filter', () => {
 
       await filterInputElement.fill('b');
 
-      await expect(options.nth(0)).toHaveJSProperty('highlighted', true);
+      await expect(options.nth(0)).toHaveJSProperty('highlighted', false); // Highlight needs to be reset since the option is not visible anymore
       await expect(options.nth(0)).toBeHidden();
       await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined); // undefined since never was highlighted
       await expect(options.nth(1)).toBeVisible();

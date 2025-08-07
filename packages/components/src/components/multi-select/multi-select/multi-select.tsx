@@ -534,11 +534,12 @@ export class MultiSelect {
   };
 
   private onFilterInput = (e: CustomEvent<InputSearchInputEventDetail>): void => {
-    const { hasFilterResults } = updateFilterResults(
+    const { hasFilterResults, resetCurrentlyHighlightedOption } = updateFilterResults(
       this.multiSelectOptions,
       this.multiSelectOptgroups,
       (e.detail.target as HTMLInputElement).value
     );
+    resetCurrentlyHighlightedOption && (this.currentlyHighlightedOption = null);
     this.hasFilterResults = hasFilterResults;
   };
 

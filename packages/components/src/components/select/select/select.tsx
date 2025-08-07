@@ -560,11 +560,12 @@ export class Select {
   };
 
   private onFilterInput = (e: CustomEvent<InputSearchInputEventDetail>): void => {
-    const { hasFilterResults } = updateFilterResults(
+    const { hasFilterResults, resetCurrentlyHighlightedOption } = updateFilterResults(
       this.selectOptions,
       this.selectOptgroups,
       (e.detail.target as HTMLInputElement).value
     );
+    resetCurrentlyHighlightedOption && (this.currentlyHighlightedOption = null);
     this.hasFilterResults = hasFilterResults;
   };
 
