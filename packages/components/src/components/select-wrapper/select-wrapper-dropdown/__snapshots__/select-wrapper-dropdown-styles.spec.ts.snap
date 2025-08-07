@@ -92,22 +92,6 @@ button:focus-visible {
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .option[role=option] {
-    cursor: not-allowed;
-  }
-  .option__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .option--selected {
-    background: rgba(148, 149, 152, .18);
-  }
   .option--highlighted {
     background: #404044;
   }
@@ -121,8 +105,24 @@ button:focus-visible {
   .option--hidden {
     display: none;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--indent {
     padding-left: 28px;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-start: auto;
@@ -241,22 +241,6 @@ button:focus-visible {
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .option[role=option] {
-    cursor: not-allowed;
-  }
-  .option__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .option--selected {
-    background: rgba(148, 149, 152, .18);
-  }
   .option--highlighted {
     background: #D8D8DB;
   }
@@ -270,8 +254,24 @@ button:focus-visible {
   .option--hidden {
     display: none;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--indent {
     padding-left: 28px;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-start: auto;
@@ -417,22 +417,6 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .option[role=option] {
-    cursor: not-allowed;
-  }
-  .option__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .option--selected {
-    background: rgba(148, 149, 152, .18);
-  }
   .option--highlighted {
     background: #404044;
   }
@@ -446,8 +430,24 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   .option--hidden {
     display: none;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--indent {
     padding-left: 28px;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-start: auto;
@@ -593,22 +593,6 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .option[role=option] {
-    cursor: not-allowed;
-  }
-  .option__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .option--selected {
-    background: rgba(148, 149, 152, .18);
-  }
   .option--highlighted {
     background: #D8D8DB;
   }
@@ -622,8 +606,24 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   .option--hidden {
     display: none;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--indent {
     padding-left: 28px;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-start: auto;
@@ -742,22 +742,6 @@ button:focus-visible {
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .option[role=option] {
-    cursor: not-allowed;
-  }
-  .option__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .option--selected {
-    background: rgba(148, 149, 152, .18);
-  }
   .option--highlighted {
     background: #404044;
   }
@@ -771,8 +755,24 @@ button:focus-visible {
   .option--hidden {
     display: none;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--indent {
     padding-left: 28px;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-start: auto;
@@ -891,22 +891,6 @@ button:focus-visible {
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .option[role=option] {
-    cursor: not-allowed;
-  }
-  .option__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .option--selected {
-    background: rgba(148, 149, 152, .18);
-  }
   .option--highlighted {
     background: #D8D8DB;
   }
@@ -920,8 +904,24 @@ button:focus-visible {
   .option--hidden {
     display: none;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--indent {
     padding-left: 28px;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-start: auto;
@@ -1067,22 +1067,6 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .option[role=option] {
-    cursor: not-allowed;
-  }
-  .option__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .option--selected {
-    background: rgba(148, 149, 152, .18);
-  }
   .option--highlighted {
     background: #404044;
   }
@@ -1096,8 +1080,24 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   .option--hidden {
     display: none;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--indent {
     padding-left: 28px;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-start: auto;
@@ -1243,22 +1243,6 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .option[role=option] {
-    cursor: not-allowed;
-  }
-  .option__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .option--selected {
-    background: rgba(148, 149, 152, .18);
-  }
   .option--highlighted {
     background: #D8D8DB;
   }
@@ -1272,8 +1256,24 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   .option--hidden {
     display: none;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--indent {
     padding-left: 28px;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-start: auto;
@@ -1392,22 +1392,6 @@ button:focus-visible {
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .option[role=option] {
-    cursor: not-allowed;
-  }
-  .option__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .option--selected {
-    background: rgba(148, 149, 152, .18);
-  }
   .option--highlighted {
     background: #404044;
   }
@@ -1421,8 +1405,24 @@ button:focus-visible {
   .option--hidden {
     display: none;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--indent {
     padding-left: 28px;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-start: auto;
@@ -1541,22 +1541,6 @@ button:focus-visible {
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .option[role=option] {
-    cursor: not-allowed;
-  }
-  .option__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .option--selected {
-    background: rgba(148, 149, 152, .18);
-  }
   .option--highlighted {
     background: #D8D8DB;
   }
@@ -1570,8 +1554,24 @@ button:focus-visible {
   .option--hidden {
     display: none;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--indent {
     padding-left: 28px;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-start: auto;
@@ -1717,22 +1717,6 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .option[role=option] {
-    cursor: not-allowed;
-  }
-  .option__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .option--selected {
-    background: rgba(148, 149, 152, .18);
-  }
   .option--highlighted {
     background: #D8D8DB;
   }
@@ -1746,8 +1730,24 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   .option--hidden {
     display: none;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--indent {
     padding-left: 28px;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-start: auto;
@@ -1866,22 +1866,6 @@ button:focus-visible {
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .option[role=option] {
-    cursor: not-allowed;
-  }
-  .option__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .option--selected {
-    background: rgba(148, 149, 152, .18);
-  }
   .option--highlighted {
     background: #404044;
   }
@@ -1895,8 +1879,24 @@ button:focus-visible {
   .option--hidden {
     display: none;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--indent {
     padding-left: 28px;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-start: auto;
@@ -2015,22 +2015,6 @@ button:focus-visible {
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .option[role=option] {
-    cursor: not-allowed;
-  }
-  .option__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .option--selected {
-    background: rgba(148, 149, 152, .18);
-  }
   .option--highlighted {
     background: #D8D8DB;
   }
@@ -2044,8 +2028,24 @@ button:focus-visible {
   .option--hidden {
     display: none;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--indent {
     padding-left: 28px;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-start: auto;
@@ -2164,22 +2164,6 @@ button:focus-visible {
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .option[role=option] {
-    cursor: not-allowed;
-  }
-  .option__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .option--selected {
-    background: rgba(148, 149, 152, .18);
-  }
   .option--highlighted {
     background: #D8D8DB;
   }
@@ -2193,8 +2177,24 @@ button:focus-visible {
   .option--hidden {
     display: none;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--indent {
     padding-left: 28px;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-start: auto;
@@ -2340,22 +2340,6 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .option[role=option] {
-    cursor: not-allowed;
-  }
-  .option__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .option--selected {
-    background: rgba(148, 149, 152, .18);
-  }
   .option--highlighted {
     background: #404044;
   }
@@ -2369,8 +2353,24 @@ input:not(:disabled):focus+span, input:not(:disabled):focus~ ul {
   .option--hidden {
     display: none;
   }
+  .option--selected {
+    background: rgba(148, 149, 152, .18);
+  }
   .option--indent {
     padding-left: 28px;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-start: auto;

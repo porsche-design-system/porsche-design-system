@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: false, state: none and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: false, state: none, compact: false and theme: light 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -12,6 +12,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -23,10 +25,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     all: unset;
     display: flex;
     align-items: center;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
     min-width: 0;
-    height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
     box-sizing: content-box;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: pointer;
@@ -56,10 +58,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: max(2px, 1 * 6px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
     display: none;
     flex-direction: column;
-    gap: max(2px, 1 * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
     max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -82,27 +84,27 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
 
   .root {
     display: grid;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   }
   .filter {
     position: sticky;
-    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
-    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
     background: #FFF;
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
   }
   .no-results {
     display: flex;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
-    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
@@ -114,22 +116,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    background: rgba(148, 149, 152, .18);
   }
   .no-results--highlighted {
     background: #D8D8DB;
@@ -143,6 +129,19 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -201,17 +200,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: false, state: success and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: false, state: success, compact: false and theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -223,6 +215,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -234,10 +228,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     all: unset;
     display: flex;
     align-items: center;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
     min-width: 0;
-    height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
     box-sizing: content-box;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: pointer;
@@ -267,10 +261,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: max(2px, 1 * 6px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
     display: none;
     flex-direction: column;
-    gap: max(2px, 1 * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
     max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -293,27 +287,27 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
 
   .root {
     display: grid;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   }
   .filter {
     position: sticky;
-    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
-    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
     background: #212225;
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
   }
   .no-results {
     display: flex;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
-    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
@@ -325,22 +319,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    background: rgba(148, 149, 152, .18);
   }
   .no-results--highlighted {
     background: #404044;
@@ -354,6 +332,19 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -413,17 +404,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: error and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: error, compact: false and theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -435,6 +419,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -446,10 +432,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     all: unset;
     display: flex;
     align-items: center;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
     min-width: 0;
-    height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
     box-sizing: content-box;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: pointer;
@@ -479,10 +465,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: max(2px, 1 * 6px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
     display: none;
     flex-direction: column;
-    gap: max(2px, 1 * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
     max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -505,27 +491,27 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
 
   .root {
     display: grid;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   }
   .filter {
     position: sticky;
-    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
-    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
     background: #212225;
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
   }
   .no-results {
     display: flex;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
-    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
@@ -537,22 +523,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    background: rgba(148, 149, 152, .18);
   }
   .no-results--highlighted {
     background: #404044;
@@ -566,6 +536,19 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -625,17 +608,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: success and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: success, compact: false and theme: light 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -647,6 +623,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -658,10 +636,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     all: unset;
     display: flex;
     align-items: center;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
     min-width: 0;
-    height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
     box-sizing: content-box;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: pointer;
@@ -691,10 +669,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: max(2px, 1 * 6px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
     display: none;
     flex-direction: column;
-    gap: max(2px, 1 * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
     max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -717,27 +695,27 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
 
   .root {
     display: grid;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   }
   .filter {
     position: sticky;
-    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
-    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
     background: #FFF;
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
   }
   .no-results {
     display: flex;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
-    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
@@ -749,22 +727,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    background: rgba(148, 149, 152, .18);
   }
   .no-results--highlighted {
     background: #D8D8DB;
@@ -778,6 +740,19 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -837,17 +812,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: error and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: error, compact: false and theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -859,6 +827,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -870,10 +840,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     all: unset;
     display: flex;
     align-items: center;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
     min-width: 0;
-    height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
     box-sizing: content-box;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: not-allowed;
@@ -894,10 +864,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: max(2px, 1 * 6px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
     display: none;
     flex-direction: column;
-    gap: max(2px, 1 * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
     max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -914,27 +884,27 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .root {
     display: grid;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   }
   .filter {
     position: sticky;
-    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
-    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
     background: #212225;
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
   }
   .no-results {
     display: flex;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
-    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
@@ -946,22 +916,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    background: rgba(148, 149, 152, .18);
   }
   .no-results--highlighted {
     background: #404044;
@@ -975,6 +929,19 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -1033,17 +1000,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: false and theme: light 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1055,6 +1015,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -1066,10 +1028,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     all: unset;
     display: flex;
     align-items: center;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
     min-width: 0;
-    height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
     box-sizing: content-box;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: not-allowed;
@@ -1090,10 +1052,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: max(2px, 1 * 6px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
     display: none;
     flex-direction: column;
-    gap: max(2px, 1 * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
     max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -1110,27 +1072,27 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .root {
     display: grid;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   }
   .filter {
     position: sticky;
-    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
-    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
     background: #FFF;
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
   }
   .no-results {
     display: flex;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
-    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
@@ -1142,22 +1104,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    background: rgba(148, 149, 152, .18);
   }
   .no-results--highlighted {
     background: #D8D8DB;
@@ -1171,6 +1117,19 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -1228,17 +1187,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none and theme: light 2`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: false and theme: light 2`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1250,6 +1202,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -1261,10 +1215,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     all: unset;
     display: flex;
     align-items: center;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
     min-width: 0;
-    height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
     box-sizing: content-box;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: not-allowed;
@@ -1285,10 +1239,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: max(2px, 1 * 6px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
     display: none;
     flex-direction: column;
-    gap: max(2px, 1 * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
     max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -1305,27 +1259,27 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .root {
     display: grid;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   }
   .filter {
     position: sticky;
-    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
-    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
     background: #FFF;
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
   }
   .no-results {
     display: flex;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
-    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
@@ -1337,22 +1291,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    background: rgba(148, 149, 152, .18);
   }
   .no-results--highlighted {
     background: #D8D8DB;
@@ -1366,6 +1304,19 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -1423,17 +1374,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: success and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: true and theme: light 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1445,6 +1389,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 0.5) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 0.5) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -1456,10 +1402,197 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     all: unset;
     display: flex;
     align-items: center;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 0.5) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 0.5) * 8px) max(4px, var(--p-internal-multi-select-scaling, 0.5) * 16px);
     min-width: 0;
-    height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 0.5) * (calc(6px + 2.125ex) + 10px));
+    box-sizing: content-box;
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    cursor: not-allowed;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    color: #949598;
+    background: var(--p-multi-select-background-color, #FFF);
+    border: 2px solid var(--p-multi-select-border-color, #6B6D70);
+    border-radius: 4px;
+    border-color: #949598;
+  }
+  button span {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 0.5) * 6px);
+    display: none;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-multi-select-scaling, 0.5) * 8px);
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
+    box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #FFF;
+    border: 1px solid #D8D8DB;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
+  .root {
+    display: grid;
+    gap: max(2px, var(--p-internal-multi-select-scaling, 0.5) * 4px);
+    min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
+  }
+  .filter {
+    position: sticky;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 0.5) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 0.5) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 0.5) * 6px) * -1);
+    background: #FFF;
+    z-index: 1;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-multi-select-scaling, 0.5) * 8px);
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-multi-select-scaling, 0.5) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 0.5) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 0.5) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 0.5) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #6B6D70;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results--highlighted {
+    background: #D8D8DB;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #010205;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .no-results--hidden {
+    display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,0.0001deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .label {
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    cursor: not-allowed;
+    justify-self: flex-start;
+    color: #949598;
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+  .label:empty {
+    display: none;
+  }
+  .label+.label {
+    cursor: unset;
+    margin-top: -4px;
+    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  }
+  .required {
+    user-select: none;
+  }
+  .message {
+    display: flex;
+    gap: 4px;
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
+  }"
+`;
+
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: success, compact: false and theme: light 1`] = `
+"@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+  :host {
+    display: block;
+    color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  :not(:defined,[data-ssr]) {
+    visibility: hidden;
+  }
+  button {
+    all: unset;
+    display: flex;
+    align-items: center;
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
+    min-width: 0;
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
     box-sizing: content-box;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: not-allowed;
@@ -1480,10 +1613,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: max(2px, 1 * 6px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
     display: none;
     flex-direction: column;
-    gap: max(2px, 1 * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
     max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -1500,27 +1633,27 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .root {
     display: grid;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   }
   .filter {
     position: sticky;
-    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
-    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
     background: #FFF;
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
   }
   .no-results {
     display: flex;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
-    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
@@ -1532,22 +1665,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    background: rgba(148, 149, 152, .18);
   }
   .no-results--highlighted {
     background: #D8D8DB;
@@ -1561,6 +1678,19 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -1619,17 +1749,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: error and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: error, compact: false and theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1641,6 +1764,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -1652,10 +1777,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     all: unset;
     display: flex;
     align-items: center;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
     min-width: 0;
-    height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
     box-sizing: content-box;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: not-allowed;
@@ -1676,10 +1801,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: max(2px, 1 * 6px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
     display: none;
     flex-direction: column;
-    gap: max(2px, 1 * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
     max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -1696,27 +1821,27 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .root {
     display: grid;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   }
   .filter {
     position: sticky;
-    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
-    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
     background: #212225;
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
   }
   .no-results {
     display: flex;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
-    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
@@ -1728,22 +1853,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    background: rgba(148, 149, 152, .18);
   }
   .no-results--highlighted {
     background: #404044;
@@ -1757,6 +1866,19 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -1815,17 +1937,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: none and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: none, compact: false and theme: light 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -1837,6 +1952,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -1848,10 +1965,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     all: unset;
     display: flex;
     align-items: center;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
     min-width: 0;
-    height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
     box-sizing: content-box;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: not-allowed;
@@ -1872,10 +1989,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: max(2px, 1 * 6px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
     display: none;
     flex-direction: column;
-    gap: max(2px, 1 * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
     max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -1892,27 +2009,27 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .root {
     display: grid;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   }
   .filter {
     position: sticky;
-    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
-    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
     background: #FFF;
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
   }
   .no-results {
     display: flex;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
-    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
@@ -1924,22 +2041,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    background: rgba(148, 149, 152, .18);
   }
   .no-results--highlighted {
     background: #D8D8DB;
@@ -1953,6 +2054,19 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -2010,17 +2124,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: success and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: success, compact: false and theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -2032,6 +2139,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -2043,10 +2152,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     all: unset;
     display: flex;
     align-items: center;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
     min-width: 0;
-    height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
     box-sizing: content-box;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: not-allowed;
@@ -2067,10 +2176,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: max(2px, 1 * 6px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
     display: none;
     flex-direction: column;
-    gap: max(2px, 1 * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
     max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -2087,27 +2196,27 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .root {
     display: grid;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   }
   .filter {
     position: sticky;
-    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
-    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
     background: #212225;
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
   }
   .no-results {
     display: flex;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
-    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
@@ -2119,22 +2228,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    background: rgba(148, 149, 152, .18);
   }
   .no-results--highlighted {
     background: #404044;
@@ -2148,6 +2241,19 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -2206,17 +2312,10 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: error and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: error, compact: false and theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -2228,6 +2327,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -2239,10 +2340,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     all: unset;
     display: flex;
     align-items: center;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
     min-width: 0;
-    height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
     box-sizing: content-box;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: pointer;
@@ -2272,10 +2373,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: max(2px, 1 * 6px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
     display: flex;
     flex-direction: column;
-    gap: max(2px, 1 * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
     max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -2298,27 +2399,27 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
 
   .root {
     display: grid;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   }
   .filter {
     position: sticky;
-    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
-    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
     background: #212225;
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
   }
   .no-results {
     display: flex;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
-    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
@@ -2330,22 +2431,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    background: rgba(148, 149, 152, .18);
   }
   .no-results--highlighted {
     background: #404044;
@@ -2359,6 +2444,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -2418,17 +2516,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none, compact: false and theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -2440,6 +2531,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -2451,10 +2544,213 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     all: unset;
     display: flex;
     align-items: center;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
     min-width: 0;
-    height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    box-sizing: content-box;
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    cursor: pointer;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    color: var(--p-multi-select-text-color, #FBFCFF);
+    background: var(--p-multi-select-background-color, #0E0E12);
+    border: 2px solid var(--p-multi-select-border-color, #FBFCFF);
+    border-radius: 4px;
+  }
+  button::-moz-focus-inner {
+    border: 0;
+  }
+  button:focus {
+    outline: 0;
+  }
+  button:focus-visible {
+    outline: 2px solid #1A44EA;
+    outline-offset: 2px;
+  }
+  button span {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
+    box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #212225;
+    border: 1px solid #404044;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
+@media(hover:hover) {
+    button:hover, label:hover~button {
+      border-color: var(--p-multi-select-border-color, #FBFCFF);
+    }
+}
+
+  .root {
+    display: grid;
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
+    min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
+  }
+  .filter {
+    position: sticky;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    background: #212225;
+    z-index: 1;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #88898C;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results--highlighted {
+    background: #404044;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #FBFCFF;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #7E7F82;
+  }
+  .no-results--hidden {
+    display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .label {
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    cursor: pointer;
+    justify-self: flex-start;
+    color: #FBFCFF;
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+  .label:empty {
+    display: none;
+  }
+  .label+.label {
+    cursor: unset;
+    margin-top: -4px;
+    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+    color: #AFB0B3;
+  }
+  .required {
+    user-select: none;
+  }
+  .message {
+    display: flex;
+    gap: 4px;
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
+  }"
+`;
+
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none, compact: false and theme: light 1`] = `
+"@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+  :host {
+    display: block;
+    color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  :not(:defined,[data-ssr]) {
+    visibility: hidden;
+  }
+  button {
+    all: unset;
+    display: flex;
+    align-items: center;
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
+    min-width: 0;
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
     box-sizing: content-box;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: pointer;
@@ -2484,10 +2780,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: max(2px, 1 * 6px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
     display: flex;
     flex-direction: column;
-    gap: max(2px, 1 * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
     max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -2510,27 +2806,27 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
 
   .root {
     display: grid;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   }
   .filter {
     position: sticky;
-    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
-    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
     background: #FFF;
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
   }
   .no-results {
     display: flex;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
-    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
@@ -2542,22 +2838,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    background: rgba(148, 149, 152, .18);
   }
   .no-results--highlighted {
     background: #D8D8DB;
@@ -2571,6 +2851,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -2629,17 +2922,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: error and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none, compact: false and theme: light 2`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -2651,6 +2937,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -2662,10 +2950,213 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     all: unset;
     display: flex;
     align-items: center;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
     min-width: 0;
-    height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    box-sizing: content-box;
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    cursor: pointer;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    color: var(--p-multi-select-text-color, #010205);
+    background: var(--p-multi-select-background-color, #FFF);
+    border: 2px solid var(--p-multi-select-border-color, #010205);
+    border-radius: 4px;
+  }
+  button::-moz-focus-inner {
+    border: 0;
+  }
+  button:focus {
+    outline: 0;
+  }
+  button:focus-visible {
+    outline: 2px solid #1A44EA;
+    outline-offset: 2px;
+  }
+  button span {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
+    box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #FFF;
+    border: 1px solid #D8D8DB;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
+@media(hover:hover) {
+    button:hover, label:hover~button {
+      border-color: var(--p-multi-select-border-color, #010205);
+    }
+}
+
+  .root {
+    display: grid;
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
+    min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
+  }
+  .filter {
+    position: sticky;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    background: #FFF;
+    z-index: 1;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #6B6D70;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results--highlighted {
+    background: #D8D8DB;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #010205;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #949598;
+  }
+  .no-results--hidden {
+    display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .label {
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    cursor: pointer;
+    justify-self: flex-start;
+    color: #010205;
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+  .label:empty {
+    display: none;
+  }
+  .label+.label {
+    cursor: unset;
+    margin-top: -4px;
+    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+    color: #535457;
+  }
+  .required {
+    user-select: none;
+  }
+  .message {
+    display: flex;
+    gap: 4px;
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
+  }"
+`;
+
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: error, compact: false and theme: dark 1`] = `
+"@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+  :host {
+    display: block;
+    color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  :not(:defined,[data-ssr]) {
+    visibility: hidden;
+  }
+  button {
+    all: unset;
+    display: flex;
+    align-items: center;
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
+    min-width: 0;
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
     box-sizing: content-box;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: pointer;
@@ -2695,10 +3186,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: max(2px, 1 * 6px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
     display: flex;
     flex-direction: column;
-    gap: max(2px, 1 * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
     max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -2721,27 +3212,27 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
 
   .root {
     display: grid;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   }
   .filter {
     position: sticky;
-    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
-    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
     background: #212225;
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
   }
   .no-results {
     display: flex;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
-    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
@@ -2753,22 +3244,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    background: rgba(148, 149, 152, .18);
   }
   .no-results--highlighted {
     background: #404044;
@@ -2782,6 +3257,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -2841,17 +3329,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: none and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: none, compact: false and theme: light 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -2863,6 +3344,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -2874,10 +3357,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     all: unset;
     display: flex;
     align-items: center;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
     min-width: 0;
-    height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
     box-sizing: content-box;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: pointer;
@@ -2907,10 +3390,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: max(2px, 1 * 6px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
     display: flex;
     flex-direction: column;
-    gap: max(2px, 1 * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
     max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -2933,27 +3416,27 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
 
   .root {
     display: grid;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   }
   .filter {
     position: sticky;
-    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
-    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
     background: #FFF;
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
   }
   .no-results {
     display: flex;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
-    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
@@ -2965,22 +3448,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    background: rgba(148, 149, 152, .18);
   }
   .no-results--highlighted {
     background: #D8D8DB;
@@ -2994,6 +3461,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -3052,17 +3532,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success, compact: false and theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -3074,6 +3547,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -3085,10 +3560,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     all: unset;
     display: flex;
     align-items: center;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
     min-width: 0;
-    height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
     box-sizing: content-box;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: pointer;
@@ -3118,10 +3593,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: max(2px, 1 * 6px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
     display: flex;
     flex-direction: column;
-    gap: max(2px, 1 * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
     max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -3144,27 +3619,27 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
 
   .root {
     display: grid;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   }
   .filter {
     position: sticky;
-    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
-    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
     background: #212225;
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
   }
   .no-results {
     display: flex;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
-    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
@@ -3176,22 +3651,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    background: rgba(148, 149, 152, .18);
   }
   .no-results--highlighted {
     background: #404044;
@@ -3205,6 +3664,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -3264,17 +3736,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success, compact: false and theme: light 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -3286,6 +3751,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -3297,10 +3764,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     all: unset;
     display: flex;
     align-items: center;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
     min-width: 0;
-    height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
     box-sizing: content-box;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: pointer;
@@ -3330,10 +3797,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: max(2px, 1 * 6px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
     display: flex;
     flex-direction: column;
-    gap: max(2px, 1 * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
     max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -3356,27 +3823,27 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
 
   .root {
     display: grid;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   }
   .filter {
     position: sticky;
-    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
-    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
     background: #FFF;
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
   }
   .no-results {
     display: flex;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
-    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
@@ -3388,22 +3855,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    background: rgba(148, 149, 152, .18);
   }
   .no-results--highlighted {
     background: #D8D8DB;
@@ -3417,6 +3868,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -3476,17 +3940,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: error and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: error, compact: false and theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -3498,6 +3955,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -3509,10 +3968,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     all: unset;
     display: flex;
     align-items: center;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
     min-width: 0;
-    height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
     box-sizing: content-box;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: not-allowed;
@@ -3533,10 +3992,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: max(2px, 1 * 6px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
     display: flex;
     flex-direction: column;
-    gap: max(2px, 1 * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
     max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -3553,27 +4012,27 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .root {
     display: grid;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   }
   .filter {
     position: sticky;
-    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
-    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
     background: #212225;
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
   }
   .no-results {
     display: flex;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
-    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
@@ -3585,22 +4044,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    background: rgba(148, 149, 152, .18);
   }
   .no-results--highlighted {
     background: #404044;
@@ -3614,6 +4057,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -3672,17 +4128,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: none and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: none, compact: false and theme: light 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -3694,6 +4143,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -3705,10 +4156,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     all: unset;
     display: flex;
     align-items: center;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
     min-width: 0;
-    height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
     box-sizing: content-box;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: not-allowed;
@@ -3729,10 +4180,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: max(2px, 1 * 6px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
     display: flex;
     flex-direction: column;
-    gap: max(2px, 1 * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
     max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -3749,27 +4200,27 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .root {
     display: grid;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   }
   .filter {
     position: sticky;
-    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
-    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
     background: #FFF;
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
   }
   .no-results {
     display: flex;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
-    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
@@ -3781,22 +4232,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    background: rgba(148, 149, 152, .18);
   }
   .no-results--highlighted {
     background: #D8D8DB;
@@ -3810,6 +4245,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -3867,17 +4315,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success, compact: false and theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -3889,6 +4330,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -3900,10 +4343,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     all: unset;
     display: flex;
     align-items: center;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
     min-width: 0;
-    height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
     box-sizing: content-box;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: not-allowed;
@@ -3924,10 +4367,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: max(2px, 1 * 6px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
     display: flex;
     flex-direction: column;
-    gap: max(2px, 1 * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
     max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -3944,27 +4387,27 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .root {
     display: grid;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   }
   .filter {
     position: sticky;
-    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
-    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
     background: #212225;
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
   }
   .no-results {
     display: flex;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
-    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
@@ -3976,22 +4419,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    background: rgba(148, 149, 152, .18);
   }
   .no-results--highlighted {
     background: #404044;
@@ -4005,6 +4432,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -4063,17 +4503,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: error and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success, compact: true and theme: dark 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -4085,6 +4518,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 0.5) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 0.5) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -4096,10 +4531,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     all: unset;
     display: flex;
     align-items: center;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 0.5) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 0.5) * 8px) max(4px, var(--p-internal-multi-select-scaling, 0.5) * 16px);
     min-width: 0;
-    height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 0.5) * (calc(6px + 2.125ex) + 10px));
     box-sizing: content-box;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: not-allowed;
@@ -4120,10 +4555,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: max(2px, 1 * 6px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 0.5) * 6px);
     display: flex;
     flex-direction: column;
-    gap: max(2px, 1 * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 0.5) * 8px);
     max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -4140,27 +4575,27 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .root {
     display: grid;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 0.5) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   }
   .filter {
     position: sticky;
-    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
-    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 0.5) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 0.5) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 0.5) * 6px) * -1);
     background: #212225;
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 0.5) * 8px);
   }
   .no-results {
     display: flex;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
-    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 0.5) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 0.5) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 0.5) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 0.5) * 12px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
@@ -4172,6 +4607,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .no-results--highlighted {
+    background: #404044;
+  }
+  .no-results--highlighted, .no-results--selected {
+    color: #FBFCFF;
+  }
+  .no-results--disabled {
+    cursor: not-allowed;
+    color: #7E7F82;
+  }
+  .no-results--hidden {
+    display: none;
   }
   .no-results[role=option] {
     cursor: not-allowed;
@@ -4186,8 +4634,167 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     clip: rect(0,0,0,0);
     white-space: nowrap;
   }
-  .no-results--selected {
-    background: rgba(148, 149, 152, .18);
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+  .label {
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    cursor: not-allowed;
+    justify-self: flex-start;
+    color: #7E7F82;
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+  .label:empty {
+    display: none;
+  }
+  .label+.label {
+    cursor: unset;
+    margin-top: -4px;
+    font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  }
+  .required {
+    user-select: none;
+  }
+  .message {
+    display: flex;
+    gap: 4px;
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #09D087;
+    transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  .message:empty {
+    opacity: 0;
+    position: absolute;
+  }"
+`;
+
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: error, compact: false and theme: dark 1`] = `
+"@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+  :host {
+    display: block;
+    color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+  }
+  :host([hidden]) {
+    display: none !important;
+  }
+  :not(:defined,[data-ssr]) {
+    visibility: hidden;
+  }
+  button {
+    all: unset;
+    display: flex;
+    align-items: center;
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
+    min-width: 0;
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    box-sizing: content-box;
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    cursor: not-allowed;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    color: #7E7F82;
+    background: var(--p-multi-select-background-color, #0E0E12);
+    border: 2px solid var(--p-multi-select-border-color, #FBFCFF);
+    border-radius: 4px;
+    border-color: #7E7F82;
+  }
+  button span {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  [popover] {
+    all: unset;
+    position: absolute;
+    z-index: 99;
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
+    box-sizing: border-box;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: auto;
+    animation: var(--p-animation-duration, 0.25s) fade-in cubic-bezier(0.25,0.1,0.25,1) forwards;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.15));
+    background: #212225;
+    border: 1px solid #404044;
+    border-radius: 8px;
+  }
+  [popover]:not(:popover-open) {
+    display: none;
+  }
+  .root {
+    display: grid;
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
+    min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
+  }
+  .filter {
+    position: sticky;
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    background: #212225;
+    z-index: 1;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+  }
+  .no-results {
+    display: flex;
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    min-height: calc(6px + 2.125ex);
+    font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    color: #88898C;
+    cursor: pointer;
+    text-align: start;
+    word-break: break-word;
+    box-sizing: content-box;
+    border-radius: 4px;
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   .no-results--highlighted {
     background: #404044;
@@ -4201,6 +4808,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -4259,17 +4879,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: none and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: none, compact: false and theme: light 1`] = `
 "@keyframes fade-in {
   from {
     opacity: 0;
@@ -4281,6 +4894,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   :host {
     display: block;
     color-scheme: light dark !important;
+    --p-internal-multi-select-option-scaling: var(--p-internal-multi-select-scaling, 1) !important;
+    --p-internal-optgroup-scaling: var(--p-internal-multi-select-scaling, 1) !important;
   }
   :host([hidden]) {
     display: none !important;
@@ -4292,10 +4907,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     all: unset;
     display: flex;
     align-items: center;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 8px) max(4px, var(--p-internal-select-scaling, 1) * 16px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px) max(4px, var(--p-internal-multi-select-scaling, 1) * 16px);
     min-width: 0;
-    height: max(calc(6px + 2.125ex), var(--p-internal-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
+    height: max(calc(6px + 2.125ex), var(--p-internal-multi-select-scaling, 1) * (calc(6px + 2.125ex) + 10px));
     box-sizing: content-box;
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     cursor: not-allowed;
@@ -4316,10 +4931,10 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     all: unset;
     position: absolute;
     z-index: 99;
-    padding: max(2px, 1 * 6px);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
     display: flex;
     flex-direction: column;
-    gap: max(2px, 1 * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
     max-height: max(calc(242px), calc(50vh - 54px / 2 - 6px * 2));
     box-sizing: border-box;
     overflow: hidden auto;
@@ -4336,27 +4951,27 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .root {
     display: grid;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 4px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 4px);
     min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   }
   .filter {
     position: sticky;
-    top: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
-    padding: max(2px, var(--p-internal-select-scaling, 1) * 6px);
-    margin: calc(max(2px, var(--p-internal-select-scaling, 1) * 6px) * -1);
+    top: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
+    padding: max(2px, var(--p-internal-multi-select-scaling, 1) * 6px);
+    margin: calc(max(2px, var(--p-internal-multi-select-scaling, 1) * 6px) * -1);
     background: #FFF;
     z-index: 1;
   }
   .options {
     display: flex;
     flex-direction: column;
-    gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+    gap: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
   }
   .no-results {
     display: flex;
-    gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
-    padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
-    padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+    gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+    padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+    padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
     min-height: calc(6px + 2.125ex);
     font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
     overflow-wrap: break-word;
@@ -4368,22 +4983,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     box-sizing: content-box;
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    background: rgba(148, 149, 152, .18);
   }
   .no-results--highlighted {
     background: #D8D8DB;
@@ -4397,6 +4996,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -4454,12 +5066,5 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;

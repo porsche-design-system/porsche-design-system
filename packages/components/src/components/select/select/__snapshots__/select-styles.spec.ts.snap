@@ -123,24 +123,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -153,6 +135,19 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -211,14 +206,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: false, state: success, compact: false and theme: dark 1`] = `
@@ -344,24 +332,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -374,6 +344,19 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -433,14 +416,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: error, compact: false and theme: dark 1`] = `
@@ -566,24 +542,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -596,6 +554,19 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -655,14 +626,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: success, compact: false and theme: light 1`] = `
@@ -788,24 +752,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -818,6 +764,19 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -877,14 +836,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: error, compact: false and theme: dark 1`] = `
@@ -995,24 +947,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -1025,6 +959,19 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -1083,14 +1030,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: false and theme: light 1`] = `
@@ -1201,24 +1141,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -1231,6 +1153,19 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -1288,14 +1223,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: false and theme: light 2`] = `
@@ -1406,24 +1334,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -1436,6 +1346,19 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -1493,14 +1416,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: true and theme: light 1`] = `
@@ -1611,24 +1527,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -1641,6 +1539,19 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -1698,14 +1609,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: success, compact: false and theme: light 1`] = `
@@ -1816,24 +1720,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -1846,6 +1732,19 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -1904,14 +1803,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: error, compact: false and theme: dark 1`] = `
@@ -2022,24 +1914,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -2052,6 +1926,19 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -2110,14 +1997,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: none, compact: false and theme: light 1`] = `
@@ -2228,24 +2108,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -2258,6 +2120,19 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -2315,14 +2190,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: success, compact: false and theme: dark 1`] = `
@@ -2433,24 +2301,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -2463,6 +2313,19 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -2521,14 +2384,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: error, compact: false and theme: dark 1`] = `
@@ -2654,24 +2510,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -2684,6 +2522,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -2743,14 +2594,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none, compact: false and theme: dark 1`] = `
@@ -2876,24 +2720,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -2906,6 +2732,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -2964,14 +2803,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none, compact: false and theme: light 1`] = `
@@ -3097,24 +2929,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -3127,6 +2941,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -3185,14 +3012,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none, compact: false and theme: light 2`] = `
@@ -3318,24 +3138,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -3348,6 +3150,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -3406,14 +3221,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: error, compact: false and theme: dark 1`] = `
@@ -3539,24 +3347,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -3569,6 +3359,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -3628,14 +3431,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: none, compact: false and theme: light 1`] = `
@@ -3761,24 +3557,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -3791,6 +3569,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -3849,14 +3640,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success, compact: false and theme: dark 1`] = `
@@ -3982,24 +3766,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -4012,6 +3778,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -4071,14 +3850,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success, compact: false and theme: light 1`] = `
@@ -4204,24 +3976,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -4234,6 +3988,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -4293,14 +4060,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: error, compact: false and theme: dark 1`] = `
@@ -4411,24 +4171,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -4441,6 +4183,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -4499,14 +4254,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: none, compact: false and theme: light 1`] = `
@@ -4617,24 +4365,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -4647,6 +4377,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -4704,14 +4447,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success, compact: false and theme: dark 1`] = `
@@ -4822,24 +4558,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -4852,6 +4570,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -4910,14 +4641,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success, compact: true and theme: dark 1`] = `
@@ -5028,24 +4752,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -5058,6 +4764,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -5116,14 +4835,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: error, compact: false and theme: dark 1`] = `
@@ -5234,24 +4946,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -5264,6 +4958,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -5322,14 +5029,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: none, compact: false and theme: light 1`] = `
@@ -5440,24 +5140,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -5470,6 +5152,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   }
   .no-results--hidden {
     display: none;
+  }
+  .no-results[role=option] {
+    cursor: not-allowed;
+  }
+  .no-results__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
   }
   .icon {
     margin-inline-end: -3px;
@@ -5527,12 +5222,5 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
