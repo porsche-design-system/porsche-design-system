@@ -1495,9 +1495,10 @@ test.describe('lifecycle', () => {
     expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(9);
     expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
 
-    const option1 = getMultiSelectOption(page, 1);
-    await option1.click();
-    await waitForStencilLifecycle(page);
+    const options = getMultiSelectOptions(page);
+    // Option will update as soon as hovered to set the highlight. In order to avoid different behavior in browsers, we will hover the option first.
+    await options.nth(0).hover();
+    await options.nth(0).click();
 
     await expect
       .poll(async () => (await getLifecycleStatus(page)).componentDidLoad['p-button-pure'], {
@@ -1508,7 +1509,7 @@ test.describe('lifecycle', () => {
       .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-multi-select-option'], {
         message: 'componentDidUpdate: p-multi-select-option',
       })
-      .toBe(1);
+      .toBe(2);
     await expect
       .poll(async () => (await getLifecycleStatus(page)).componentDidUpdate['p-multi-select'], {
         message: 'componentDidUpdate: p-multi-select',

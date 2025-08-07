@@ -1910,12 +1910,14 @@ test.describe('lifecycle', () => {
     expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
     expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
 
-    const option1 = getSelectOption(page, 1);
-    await option1.click();
+    const options = getSelectOptions(page);
+    // Option will update as soon as hovered to set the highlight. In order to avoid different behavior in browsers, we will hover the option first.
+    await options.nth(0).hover();
+    await options.nth(0).click();
     await waitForStencilLifecycle(page);
 
     const status2 = await getLifecycleStatus(page);
-    expect(status2.componentDidUpdate['p-select-option'], 'componentDidUpdate: p-select-option').toBe(1);
+    expect(status2.componentDidUpdate['p-select-option'], 'componentDidUpdate: p-select-option').toBe(2);
     expect(status2.componentDidUpdate['p-select'], 'componentDidUpdate: p-select').toBe(2);
     expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // checkmark icon
     expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
