@@ -1,4 +1,4 @@
-import * as stencilUtils from '@stencil/core';
+import { MultiSelectOption } from '../../components/multi-select/multi-select-option/multi-select-option';
 import * as keyboardBehaviorUtils from './keyboard-behavior';
 import {
   filterSelectOptions,
@@ -12,6 +12,17 @@ import {
   setHighlightedSelectOption,
   updateHighlightedOption,
 } from './keyboard-behavior';
+
+const initOption = (): MultiSelectOption => {
+  const component = new MultiSelectOption();
+  component.host = document.createElement('p-multi-select-option');
+  component.host.attachShadow({ mode: 'open' });
+
+  const optionDiv = document.createElement('div');
+  optionDiv.className = 'option';
+  component.host.shadowRoot.appendChild(optionDiv);
+  return component;
+};
 
 type GenerateOptionsParams = {
   amount?: number;
@@ -37,22 +48,21 @@ const generateOptions = (
     selectedIndices: [],
   }
 ): Option[] => {
-  return Array.from(
-    new Array(amount),
-    (_, idx) =>
-      ({
-        value: values?.[idx] ? values[idx] : `Value ${idx}`,
-        textContent: textContents?.[idx] ? textContents[idx] : `Option ${idx}`,
-        selected: selectedIndices.includes(idx),
-        highlighted: highlightedIndex === idx,
-        disabled: disabledIndex === idx,
-        hidden: hiddenIndex === idx,
-        style: {
-          display: 'block',
-        },
-        scrollIntoView: jest.fn(),
-      }) as unknown as Option
-  );
+  return Array.from({ length: amount }, (_, idx) => {
+    const component = initOption();
+    const host = component.host as Option & { value: string };
+
+    host.value = values?.[idx] ?? `Value ${idx}`;
+    host.textContent = textContents?.[idx] ?? `Option ${idx}`;
+    host.selected = selectedIndices.includes(idx);
+    host.highlighted = highlightedIndex === idx;
+    host.disabled = disabledIndex === idx;
+    host.hidden = hiddenIndex === idx;
+    host.style.display = 'block';
+    host.scrollIntoView = jest.fn();
+
+    return host;
+  });
 };
 
 beforeEach(() => {
@@ -268,20 +278,25 @@ describe('getMatchingSelectOptionIndex()', () => {
 });
 
 describe('setHighlightedSelectOption()', () => {
-  it('should set option highlighted=true and call forceUpdate', () => {
-    const forceUpdateSpy = jest.spyOn(stencilUtils, 'forceUpdate');
-    const option = { highlighted: false } as Option;
-    setHighlightedSelectOption(option, true);
-    expect(forceUpdateSpy).toHaveBeenCalledTimes(1);
-    expect(option.highlighted).toBe(true);
+  it('should set option highlighted=true and toggle className', () => {
+    const component = initOption();
+
+    setHighlightedSelectOption(component.host as Option, true);
+    expect(component.host.highlighted).toBe(true);
+    const option = component.host.shadowRoot.querySelector('.option');
+    expect(option.classList.contains('option')).toBe(true);
+    expect(option.classList.contains('option--highlighted')).toBe(true);
   });
 
-  it('should set option highlighted=false and call forceUpdate', () => {
-    const forceUpdateSpy = jest.spyOn(stencilUtils, 'forceUpdate');
-    const option = { highlighted: true } as Option;
-    setHighlightedSelectOption(option, false);
-    expect(forceUpdateSpy).toHaveBeenCalledTimes(1);
-    expect(option.highlighted).toBe(false);
+  it('should set option highlighted=false and toggle className', () => {
+    const component = initOption();
+    component.host.highlighted = true;
+
+    setHighlightedSelectOption(component.host as Option, false);
+    expect(component.host.highlighted).toBe(false);
+    const option = component.host.shadowRoot.querySelector('.option');
+    expect(option.classList.contains('option')).toBe(true);
+    expect(option.classList.contains('option--highlighted')).toBe(false);
   });
 });
 describe('getHighlightedSelectOptionIndex()', () => {
