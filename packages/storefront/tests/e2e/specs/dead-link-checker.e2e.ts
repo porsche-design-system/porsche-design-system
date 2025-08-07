@@ -4,7 +4,7 @@ import { getInternalUrls } from '../helpers/sitemap';
 const internalUrls = getInternalUrls();
 
 test('should have no exponential increase in internal urls', () => {
-  expect(internalUrls.length).toBeLessThanOrEqual(481);
+  expect(internalUrls.length).toBeLessThanOrEqual(486);
 });
 
 // TODO: Add markdown anchor links check?

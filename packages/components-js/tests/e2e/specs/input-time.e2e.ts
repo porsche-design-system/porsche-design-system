@@ -12,16 +12,16 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 
-const getHost = (page: Page) => page.locator('p-input-date');
+const getHost = (page: Page) => page.locator('p-input-time');
 const getFieldset = (page: Page) => page.locator('fieldset');
-const getInputDate = (page: Page) => page.locator('p-input-date input');
-const getInputDateShowPicker = (page: Page) => page.locator('p-input-date p-button-pure').nth(0);
-const getInputDateWrapper = (page: Page) => page.locator('p-input-date .wrapper');
-const getLabel = (page: Page) => page.locator('p-input-date label');
+const getInputTime = (page: Page) => page.locator('p-input-time input');
+const getInputTimeShowPicker = (page: Page) => page.locator('p-input-time p-button-pure').nth(0);
+const getInputTimeWrapper = (page: Page) => page.locator('p-input-time .wrapper');
+const getLabel = (page: Page) => page.locator('p-input-time label');
 const getForm = (page: Page) => page.locator('form');
 
 type InitOptions = {
-  props?: Components.PInputDate;
+  props?: Components.PInputTime;
   useSlottedLabel?: boolean;
   useSlottedDescription?: boolean;
   useSlottedMessage?: boolean;
@@ -30,7 +30,7 @@ type InitOptions = {
   markupAfter?: string;
 };
 
-const initInputDate = (page: Page, opts?: InitOptions): Promise<void> => {
+const initInputTime = (page: Page, opts?: InitOptions): Promise<void> => {
   const {
     props = {},
     useSlottedLabel = false,
@@ -46,66 +46,66 @@ const initInputDate = (page: Page, opts?: InitOptions): Promise<void> => {
   const slottedDescription = useSlottedDescription ? `<span slot="description">Description with a ${link}</span>` : '';
   const slottedMessage = useSlottedMessage ? `<span slot="message">Message with a ${link}</span>` : '';
 
-  const markup = `${markupBefore}<p-input-date ${getHTMLAttributes(props)}>
+  const markup = `${markupBefore}<p-input-time ${getHTMLAttributes(props)}>
       ${slottedLabel}
       ${slottedDescription}
       ${slottedMessage}
-    </p-input-date>${markupAfter}`;
+    </p-input-time>${markupAfter}`;
 
   return setContentWithDesignSystem(page, isWithinForm ? `<form onsubmit="return false;">${markup}</form>` : markup);
 };
 
 test.describe('value', () => {
   test('should sync value with input value', async ({ page }) => {
-    const testValue = '2018-07-22';
-    await initInputDate(page, { props: { name: 'some-name', value: testValue } });
+    const testValue = '13:30';
+    await initInputTime(page, { props: { name: 'some-name', value: testValue } });
     const host = getHost(page);
-    const inputDate = getInputDate(page);
+    const inputTime = getInputTime(page);
 
     await expect(host).toHaveJSProperty('value', testValue);
-    await expect(inputDate).toHaveJSProperty('value', testValue);
-    await expect(inputDate).toHaveValue(testValue);
+    await expect(inputTime).toHaveJSProperty('value', testValue);
+    await expect(inputTime).toHaveValue(testValue);
   });
 
   test('should sync value with slotted content when typing', async ({ page }) => {
-    await initInputDate(page);
+    await initInputTime(page);
     const host = getHost(page);
-    const inputDate = getInputDate(page);
+    const inputTime = getInputTime(page);
     await expect(host).toHaveJSProperty('value', '');
-    await expect(inputDate).toHaveJSProperty('value', '');
+    await expect(inputTime).toHaveJSProperty('value', '');
 
-    const testInput = '2018-07-22';
+    const testInput = '13:30';
 
-    await inputDate.fill(testInput);
+    await inputTime.fill(testInput);
     await waitForStencilLifecycle(page);
 
     await expect(host).toHaveJSProperty('value', testInput);
-    await expect(inputDate).toHaveJSProperty('value', testInput);
+    await expect(inputTime).toHaveJSProperty('value', testInput);
   });
 
   test('should sync slotted content with value when changed programmatically', async ({ page }) => {
-    await initInputDate(page);
+    await initInputTime(page);
     const host = getHost(page);
-    const inputDate = getInputDate(page);
+    const inputTime = getInputTime(page);
     await expect(host).toHaveJSProperty('value', '');
-    await expect(inputDate).toHaveJSProperty('value', '');
+    await expect(inputTime).toHaveJSProperty('value', '');
 
-    const testInput = '2018-07-22';
+    const testInput = '13:30';
 
     await setProperty(host, 'value', testInput);
     await waitForStencilLifecycle(page);
 
     await expect(host).toHaveJSProperty('value', testInput);
-    await expect(inputDate).toHaveJSProperty('value', testInput);
-    await expect(inputDate).toHaveValue(testInput);
+    await expect(inputTime).toHaveJSProperty('value', testInput);
+    await expect(inputTime).toHaveValue(testInput);
   });
 });
 
 test.describe('form', () => {
   test('should include name & value in FormData submit', async ({ page }) => {
     const name = 'name';
-    const value = '2018-07-22';
-    await initInputDate(page, {
+    const value = '13:30';
+    await initInputTime(page, {
       props: { name, value },
       isWithinForm: true,
       markupAfter: '<button type="submit">Submit</button>',
@@ -123,9 +123,9 @@ test.describe('form', () => {
 
   test('should include name & value in FormData submit if outside of form', async ({ page }) => {
     const name = 'name';
-    const value = '2018-07-22';
+    const value = '13:30';
     const formId = 'myForm';
-    await initInputDate(page, {
+    await initInputTime(page, {
       props: { name, value, form: formId },
       markupBefore: `<form id="myForm" onsubmit="return false;"><button type="submit">Submit</button></form>`,
     });
@@ -144,7 +144,7 @@ test.describe('form', () => {
     const name = 'name';
     const value = '';
     const required = true;
-    await initInputDate(page, {
+    await initInputTime(page, {
       props: { name, value, required },
       isWithinForm: true,
       markupAfter: '<button type="submit">Submit</button>',
@@ -164,7 +164,7 @@ test.describe('form', () => {
     const name = 'name';
     const value = '';
     const required = true;
-    await initInputDate(page, {
+    await initInputTime(page, {
       props: { name, value, required },
       isWithinForm: true,
       markupAfter: '<button type="submit">Submit</button>',
@@ -184,9 +184,9 @@ test.describe('form', () => {
 
   test('should submit form after reset if the required input was initially not empty', async ({ page }) => {
     const name = 'name';
-    const value = '2018-07-22';
+    const value = '13:30';
     const required = true;
-    await initInputDate(page, {
+    await initInputTime(page, {
       props: { name, value, required },
       isWithinForm: true,
       markupAfter: `
@@ -195,12 +195,12 @@ test.describe('form', () => {
       `,
     });
     const form = getForm(page);
-    const inputDate = getInputDate(page);
+    const inputTime = getInputTime(page);
 
     await addEventListener(form, 'submit');
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
 
-    await inputDate.fill('');
+    await inputTime.fill('');
     await waitForStencilLifecycle(page);
 
     await page.locator('button[type="reset"]').click();
@@ -208,13 +208,13 @@ test.describe('form', () => {
     expect((await getEventSummary(form, 'submit')).counter).toBe(1);
   });
 
-  test('should prevent form submission after reset if the input-date is required and was initially empty', async ({
+  test('should prevent form submission after reset if the input-time is required and was initially empty', async ({
     page,
   }) => {
     const name = 'name';
     const value = '';
     const required = true;
-    await initInputDate(page, {
+    await initInputTime(page, {
       props: { name, value, required },
       isWithinForm: true,
       markupAfter: `
@@ -223,12 +223,12 @@ test.describe('form', () => {
       `,
     });
     const form = getForm(page);
-    const inputDate = getInputDate(page);
+    const inputTime = getInputTime(page);
 
     await addEventListener(form, 'submit');
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
 
-    await inputDate.fill('2018-07-22');
+    await inputTime.fill('13:30');
     await waitForStencilLifecycle(page);
 
     await page.locator('button[type="reset"]').click();
@@ -236,13 +236,13 @@ test.describe('form', () => {
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
   });
 
-  test('should reset input-date value to its initial value on form reset', async ({ page }) => {
+  test('should reset input-time value to its initial value on form reset', async ({ page }) => {
     const name = 'name';
-    const value = '2018-07-22';
-    const newValue = '2020-03-12';
+    const value = '13:30';
+    const newValue = '15:50';
     const host = getHost(page);
-    const inputDate = getInputDate(page);
-    await initInputDate(page, {
+    const inputTime = getInputTime(page);
+    await initInputTime(page, {
       props: { name, value },
       isWithinForm: true,
       markupAfter: `
@@ -255,17 +255,17 @@ test.describe('form', () => {
     await addEventListener(form, 'submit');
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
 
-    await inputDate.fill(newValue);
-    await inputDate.press('Tab');
+    await inputTime.fill(newValue);
+    await inputTime.press('Tab');
     await waitForStencilLifecycle(page);
 
     await expect(host).toHaveJSProperty('value', newValue);
-    await expect(inputDate).toHaveValue(newValue);
+    await expect(inputTime).toHaveValue(newValue);
 
     await page.locator('button[type="reset"]').click();
 
     await expect(host).toHaveJSProperty('value', value);
-    await expect(inputDate).toHaveValue(value);
+    await expect(inputTime).toHaveValue(value);
 
     await page.locator('button[type="submit"]').click(); // Check if ElementInternal value was reset as well
 
@@ -273,11 +273,11 @@ test.describe('form', () => {
     expect(await getFormDataValue(form, name)).toBe(value);
   });
 
-  test('should disable input-date if within disabled fieldset', async ({ page }) => {
+  test('should disable input-time if within disabled fieldset', async ({ page }) => {
     const name = 'name';
-    const value = '2018-07-22';
+    const value = '13:30';
     const host = getHost(page);
-    await initInputDate(page, {
+    await initInputTime(page, {
       props: { name, value },
       isWithinForm: true,
       markupBefore: `<fieldset disabled>`,
@@ -288,136 +288,134 @@ test.describe('form', () => {
   });
 
   test('should sync disabled state with fieldset when updated programmatically', async ({ page }) => {
-    await initInputDate(page, {
+    await initInputTime(page, {
       isWithinForm: true,
       markupBefore: `<fieldset disabled>`,
       markupAfter: `</fieldset>`,
     });
     const host = getHost(page);
-    const inputDate = getInputDate(page);
+    const inputTime = getInputTime(page);
     const fieldset = getFieldset(page);
     await expect(fieldset).toHaveJSProperty('disabled', true);
     await expect(host).toHaveJSProperty('disabled', true);
-    await expect(inputDate).toHaveJSProperty('disabled', true);
+    await expect(inputTime).toHaveJSProperty('disabled', true);
 
     await setProperty(fieldset, 'disabled', false);
     await waitForStencilLifecycle(page);
 
     await expect(fieldset).toHaveJSProperty('disabled', false);
     await expect(host).toHaveJSProperty('disabled', false);
-    await expect(inputDate).toHaveJSProperty('disabled', false);
+    await expect(inputTime).toHaveJSProperty('disabled', false);
   });
 });
 
 test.describe('focus state', () => {
-  test('should focus input-date when label is clicked', async ({ page }) => {
-    await initInputDate(page, { props: { name: 'some-name', label: 'Some label' } });
+  test('should focus input-time when label is clicked', async ({ page }) => {
+    await initInputTime(page, { props: { name: 'some-name', label: 'Some label' } });
     const label = getLabel(page);
-    const inputDate = getInputDate(page);
+    const inputTime = getInputTime(page);
 
-    await addEventListener(inputDate, 'focus');
-    expect((await getEventSummary(inputDate, 'focus')).counter).toBe(0);
+    await addEventListener(inputTime, 'focus');
+    expect((await getEventSummary(inputTime, 'focus')).counter).toBe(0);
 
     await label.click();
     await waitForStencilLifecycle(page);
-    expect((await getEventSummary(inputDate, 'focus')).counter).toBe(1);
+    expect((await getEventSummary(inputTime, 'focus')).counter).toBe(1);
   });
 
-  test('should focus input-date when host is focused', async ({ page }) => {
-    await initInputDate(page);
+  test('should focus input-time when host is focused', async ({ page }) => {
+    await initInputTime(page);
     const host = getHost(page);
-    const inputDate = getInputDate(page);
-    const inputDateWrapper = getInputDateWrapper(page);
+    const inputTime = getInputTime(page);
+    const inputTimeWrapper = getInputTimeWrapper(page);
 
-    await addEventListener(inputDate, 'focus');
-    expect((await getEventSummary(inputDate, 'focus')).counter).toBe(0);
-    await expect(inputDateWrapper).toHaveCSS('border-color', 'rgb(107, 109, 112)');
+    await addEventListener(inputTime, 'focus');
+    expect((await getEventSummary(inputTime, 'focus')).counter).toBe(0);
+    await expect(inputTimeWrapper).toHaveCSS('border-color', 'rgb(107, 109, 112)');
 
     await host.focus();
     await waitForStencilLifecycle(page);
-    expect((await getEventSummary(inputDate, 'focus')).counter).toBe(1);
-    await expect(inputDateWrapper).toHaveCSS('border-color', 'rgb(1, 2, 5)');
+    expect((await getEventSummary(inputTime, 'focus')).counter).toBe(1);
+    await expect(inputTimeWrapper).toHaveCSS('border-color', 'rgb(1, 2, 5)');
   });
 
   test('should keep focus when switching to loading state', async ({ page }) => {
-    await initInputDate(page, { props: { name: 'Some name', label: 'Some label' } });
+    await initInputTime(page, { props: { name: 'Some name', label: 'Some label' } });
     const host = getHost(page);
-    const inputDate = getInputDate(page);
+    const inputTime = getInputTime(page);
 
     await expect(host).not.toBeFocused();
-    await expect(inputDate).not.toBeFocused();
+    await expect(inputTime).not.toBeFocused();
 
     await page.keyboard.press('Tab');
 
     await expect(host).toBeFocused();
-    await expect(inputDate).toBeFocused();
+    await expect(inputTime).toBeFocused();
 
     await setProperty(host, 'loading', true);
 
     await expect(host).toBeFocused();
-    await expect(inputDate).toBeFocused();
+    await expect(inputTime).toBeFocused();
   });
 });
 
 test.describe('Event', () => {
   skipInBrowsers(['firefox', 'webkit'], () => {
-    test('should trigger a change event when input-date value is modified and focus is lost', async ({ page }) => {
-      await initInputDate(page);
+    test('should trigger a change event when input-time value is modified and focus is lost', async ({ page }) => {
+      await initInputTime(page);
       const host = getHost(page);
-      const inputDate = getInputDate(page);
+      const inputTime = getInputTime(page);
 
       await addEventListener(host, 'change');
       expect((await getEventSummary(host, 'change')).counter).toBe(0);
 
-      await inputDate.fill('2018-07-22');
-      await inputDate.press('Tab');
+      await inputTime.fill('13:30');
+      await inputTime.press('Tab');
       await waitForStencilLifecycle(page);
 
       expect((await getEventSummary(host, 'change')).counter).toBe(1);
     });
-    test('should trigger a blur event when the input-date loses focus', async ({ page }) => {
-      await initInputDate(page);
-      const inputDate = getInputDate(page);
+    test('should trigger a blur event when the input-time loses focus', async ({ page }) => {
+      await initInputTime(page);
+      const inputTime = getInputTime(page);
       const host = getHost(page);
 
       await addEventListener(host, 'blur');
       expect((await getEventSummary(host, 'blur')).counter).toBe(0);
 
-      await inputDate.click();
+      await inputTime.click();
 
-      // Press Tab three times to cycle through the three internal segments of the native date input:
-      // day, month, and year — each is a separate tabbable field in most browsers.
-      await inputDate.press('Tab');
-      await inputDate.press('Tab');
-      await inputDate.press('Tab');
+      // Press Tab two times to cycle through the two internal segments of the native time input:
+      await inputTime.press('Tab');
+      await inputTime.press('Tab');
       await waitForStencilLifecycle(page);
 
       expect((await getEventSummary(host, 'blur')).counter).toBe(1);
     });
   });
-  test('should trigger an input event each time the input-date value is changed', async ({ page }) => {
-    await initInputDate(page);
-    const inputDate = getInputDate(page);
+  test('should trigger an input event each time the input-time value is changed', async ({ page }) => {
+    await initInputTime(page);
+    const inputTime = getInputTime(page);
     const host = getHost(page);
 
     await addEventListener(host, 'input');
     expect((await getEventSummary(host, 'input')).counter).toBe(0);
 
-    await inputDate.fill('2018-07-22');
+    await inputTime.fill('13:30');
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'input')).counter).toBe(1);
   });
   test('should trigger an open event when show picker icon is clicked', async ({ page }) => {
-    await initInputDate(page, { props: { name: 'some-name' } });
-    const inputDate = getInputDate(page);
+    await initInputTime(page, { props: { name: 'some-name' } });
+    const inputTime = getInputTime(page);
     const host = getHost(page);
-    const inputDateShowPicker = getInputDateShowPicker(page);
+    const inputTimeShowPicker = getInputTimeShowPicker(page);
 
     await addEventListener(host, 'open');
     expect((await getEventSummary(host, 'open')).counter).toBe(0);
 
-    await inputDateShowPicker.click();
+    await inputTimeShowPicker.click();
 
     expect((await getEventSummary(host, 'open')).counter).toBe(1);
   });
@@ -428,29 +426,29 @@ test.describe('hover state', () => {
   const defaultBorderColor = 'rgb(107, 109, 112)';
   const hoverBorderColor = 'rgb(1, 2, 5)';
 
-  test('should show hover state on input-date when label is hovered', async ({ page }) => {
-    await initInputDate(page, { props: { name: 'some-name', label: 'Some label' } });
+  test('should show hover state on input-time when label is hovered', async ({ page }) => {
+    await initInputTime(page, { props: { name: 'some-name', label: 'Some label' } });
     await page.mouse.move(0, 300); // avoid potential hover initially
     const label = getLabel(page);
-    const inputDate = getInputDate(page);
-    const inputDateWrapper = getInputDateWrapper(page);
+    const inputTime = getInputTime(page);
+    const inputTimeWrapper = getInputTimeWrapper(page);
 
-    await expect(inputDateWrapper).toHaveCSS('border-color', defaultBorderColor);
-    await inputDate.hover();
+    await expect(inputTimeWrapper).toHaveCSS('border-color', defaultBorderColor);
+    await inputTime.hover();
 
-    await expect(inputDateWrapper).toHaveCSS('border-color', hoverBorderColor);
+    await expect(inputTimeWrapper).toHaveCSS('border-color', hoverBorderColor);
 
     await page.mouse.move(0, 300); // undo hover
-    await expect(inputDateWrapper).toHaveCSS('border-color', defaultBorderColor);
+    await expect(inputTimeWrapper).toHaveCSS('border-color', defaultBorderColor);
 
     await label.hover();
-    await expect(inputDateWrapper).toHaveCSS('border-color', hoverBorderColor);
+    await expect(inputTimeWrapper).toHaveCSS('border-color', hoverBorderColor);
   });
 });
 
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {
-    await initInputDate(page, {
+    await initInputTime(page, {
       props: { name: 'some-name', state: 'error' },
       useSlottedLabel: true,
       useSlottedMessage: true,
@@ -458,7 +456,7 @@ test.describe('lifecycle', () => {
     });
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidLoad['p-input-date'], 'componentDidLoad: p-input-date').toBe(1);
+    expect(status.componentDidLoad['p-input-time'], 'componentDidLoad: p-input-time').toBe(1);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
     expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1);
 
@@ -467,7 +465,7 @@ test.describe('lifecycle', () => {
   });
 
   test('should work without unnecessary round trips after state change', async ({ page }) => {
-    await initInputDate(page, {
+    await initInputTime(page, {
       props: { name: 'some-name', state: 'error' },
       useSlottedLabel: true,
       useSlottedMessage: true,
@@ -478,25 +476,25 @@ test.describe('lifecycle', () => {
     await waitForStencilLifecycle(page);
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidUpdate['p-input-date'], 'componentDidUpdate: input-date').toBe(1);
+    expect(status.componentDidUpdate['p-input-time'], 'componentDidUpdate: input-time').toBe(1);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 
   test('should work without unnecessary round trips after value change', async ({ page }) => {
-    await initInputDate(page, { props: { name: 'some-name', state: 'error' } });
+    await initInputTime(page, { props: { name: 'some-name', state: 'error' } });
     const host = getHost(page);
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidLoad['p-input-date'], 'componentDidLoad: input-date').toBe(1);
+    expect(status.componentDidLoad['p-input-time'], 'componentDidLoad: input-time').toBe(1);
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
 
-    await setProperty(host, 'value', '2018-07-22');
+    await setProperty(host, 'value', '13:30');
     await waitForStencilLifecycle(page);
     const statusAfterChange = await getLifecycleStatus(page);
 
-    expect(statusAfterChange.componentDidUpdate['p-input-date'], 'componentDidUpdate: input-date').toBe(1);
+    expect(statusAfterChange.componentDidUpdate['p-input-time'], 'componentDidUpdate: input-time').toBe(1);
     expect(statusAfterChange.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 });
