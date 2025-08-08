@@ -362,6 +362,29 @@ const codeExamples: CodeSample[] = [
     ],
   },
   {
+    component: 'p-input-time',
+    examples: [
+      {
+        name: 'InputTimeExample',
+        paths: {
+          'vanilla-js': '/input-time-example.html',
+          angular: '/input-time-example.component.ts',
+          react: '/InputTimeExample.tsx',
+          vue: '/InputTimeExample.vue',
+        },
+      },
+      {
+        name: 'InputTimeExampleControlled',
+        paths: {
+          'vanilla-js': '/input-time-example-controlled.html',
+          angular: '/input-time-example-controlled.component.ts',
+          react: '/InputTimeExampleControlled.tsx',
+          vue: '/InputTimeExampleControlled.vue',
+        },
+      },
+    ],
+  },
+  {
     component: 'p-input-text',
     examples: [
       {

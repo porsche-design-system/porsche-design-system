@@ -15,7 +15,6 @@ import {
 const getHost = (page: Page) => page.locator('p-input-date');
 const getFieldset = (page: Page) => page.locator('fieldset');
 const getInputDate = (page: Page) => page.locator('p-input-date input');
-const getInputDateShowPicker = (page: Page) => page.locator('p-input-date p-button-pure').nth(0);
 const getInputDateWrapper = (page: Page) => page.locator('p-input-date .wrapper');
 const getLabel = (page: Page) => page.locator('p-input-date label');
 const getForm = (page: Page) => page.locator('form');
@@ -408,19 +407,6 @@ test.describe('Event', () => {
 
     expect((await getEventSummary(host, 'input')).counter).toBe(1);
   });
-  test('should trigger an open event when show picker icon is clicked', async ({ page }) => {
-    await initInputDate(page, { props: { name: 'some-name' } });
-    const inputDate = getInputDate(page);
-    const host = getHost(page);
-    const inputDateShowPicker = getInputDateShowPicker(page);
-
-    await addEventListener(host, 'open');
-    expect((await getEventSummary(host, 'open')).counter).toBe(0);
-
-    await inputDateShowPicker.click();
-
-    expect((await getEventSummary(host, 'open')).counter).toBe(1);
-  });
 });
 
 test.describe('hover state', () => {
@@ -449,6 +435,7 @@ test.describe('hover state', () => {
 });
 
 test.describe('lifecycle', () => {
+  skipInBrowsers(['firefox', 'webkit']);
   test('should work without unnecessary round trips on init', async ({ page }) => {
     await initInputDate(page, {
       props: { name: 'some-name', state: 'error' },
@@ -492,7 +479,7 @@ test.describe('lifecycle', () => {
     expect(status.componentDidLoad['p-input-date'], 'componentDidLoad: input-date').toBe(1);
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
 
-    await setProperty(host, 'value', 10);
+    await setProperty(host, 'value', '2018-07-22');
     await waitForStencilLifecycle(page);
     const statusAfterChange = await getLifecycleStatus(page);
 

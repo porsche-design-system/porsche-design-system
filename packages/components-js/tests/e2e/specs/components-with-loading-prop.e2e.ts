@@ -21,6 +21,7 @@ for (const tagName of tagNamesWithLoadingProp) {
             'p-input-search',
             'p-input-number',
             'p-input-date',
+            'p-input-time',
             'p-input-text',
             'p-input-email',
             'p-input-tel',

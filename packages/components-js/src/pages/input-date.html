@@ -24,20 +24,15 @@
   <p-input-date name="some-name" label="Label"></p-input-date>
 </div>
 
-<div class="playground light" title="should render with label">
+<div class="playground light" title="should render with label and value">
   <p-input-date name="some-name" label="Label" value="2025-07-22"></p-input-date>
 </div>
 
-<div class="playground light" title="should render with label and placeholder">
-  <p-input-date name="some-name" label="Label with placeholder" placeholder="Some placeholder"></p-input-date>
-</div>
-
-<div class="playground light" title="should render with label, description and placeholder">
+<div class="playground light" title="should render with label, description">
   <p-input-date
     name="some-name"
-    label="Label with description and placeholder"
+    label="Label with description"
     description="Some description"
-    placeholder="Some placeholder"
     class="a11ytree-snapshot-test"
   ></p-input-date>
 </div>
@@ -87,12 +82,11 @@
   ></p-input-date>
 </div>
 
-<div class="playground light" title="should render with placeholder in disabled state">
+<div class="playground light" title="should render without value in disabled state">
   <p-input-date
     name="some-name"
-    label="Disabled placeholder"
+    label="Disabled without value"
     disabled="true"
-    placeholder="Some placeholder"
   ></p-input-date>
 </div>
 
@@ -139,7 +133,7 @@
 </div>
 
 <div class="playground light" title="should render label, description and message by slotted content with error state">
-  <p-input-date name="some-name" state="error" placeholder="Some placeholder">
+  <p-input-date name="some-name" state="error">
     <span slot="label">
       <span>
         Slotted label. And some slotted and deeply nested <a class="text-primary" href="#">anchor</a>, <b>bold</b>,
@@ -165,7 +159,7 @@
   class="playground light"
   title="should render label, description and message by slotted content with success state"
 >
-  <p-input-date name="some-name" state="success" placeholder="Some placeholder">
+  <p-input-date name="some-name" state="success">
     <span slot="label">
       <span>
         Slotted label. And some slotted and deeply nested <a class="text-primary" href="#">anchor</a>, <b>bold</b>,
@@ -286,7 +280,7 @@
 
 <div class="playground light" title="should render with slot start">
   <p-input-date name="some-name" label="Label" value="2025-07-22">
-    <p-text slot="start" color="contrast-medium" aria-hidden="true">EUR</p-text>
+    <p-text slot="start" color="contrast-medium" aria-hidden="true">Date</p-text>
   </p-input-date>
 </div>
 

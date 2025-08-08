@@ -33,6 +33,7 @@ exports[`should match snapshot 1`] = `
   "p-input-search",
   "p-input-tel",
   "p-input-text",
+  "p-input-time",
   "p-input-url",
   "p-link",
   "p-link-pure",

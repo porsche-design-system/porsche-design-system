@@ -236,6 +236,16 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.InputDateExampleControlledComponent,
   },
   {
+    name: 'Input Time Example',
+    path: 'input-time-example',
+    component: fromExamples.InputTimeExampleComponent,
+  },
+  {
+    name: 'Input Time Example Controlled',
+    path: 'input-time-controlled-example',
+    component: fromExamples.InputTimeExampleControlledComponent,
+  },
+  {
     name: 'Input Text Example',
     path: 'input-text-example',
     component: fromExamples.InputTextExampleComponent,

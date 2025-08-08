@@ -1,0 +1,6 @@
+- text: Readonly Some description
+- textbox "Readonly"
+- button "Open time picker" [disabled]
+- status
+- alert
+- status

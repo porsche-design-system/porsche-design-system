@@ -352,7 +352,6 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "message": "string",
   "min": "string",
   "name": "string",
-  "placeholder": "string",
   "readOnly": "boolean",
   "required": "boolean",
   "state": "oneOf",
@@ -505,6 +504,29 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "spellCheck": "boolean",
   "state": "oneOf",
+  "theme": "oneOf",
+  "value": "string",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via render for p-input-time: propTypes with ValidatorFunctions 1`] = `
+{
+  "autoComplete": "string",
+  "compact": "boolean",
+  "description": "string",
+  "disabled": "boolean",
+  "form": "string",
+  "hideLabel": "breakpoint",
+  "label": "string",
+  "loading": "boolean",
+  "max": "string",
+  "message": "string",
+  "min": "string",
+  "name": "string",
+  "readOnly": "boolean",
+  "required": "boolean",
+  "state": "oneOf",
+  "step": "number",
   "theme": "oneOf",
   "value": "string",
 }
