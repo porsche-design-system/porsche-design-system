@@ -1,106 +1,169 @@
-import { Notification } from "@/components/common/Notification";
-import { TableOfContents } from "@/components/common/TableOfContents";
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { PTag } from '@porsche-design-system/components-react/ssr';
 
 export const metadata = {
   title: 'React: Getting started - Porsche Design System',
-  description: 'Start developing in React with the Porsche Design System.'
-}
+  description: 'Start developing in React with the Porsche Design System.',
+};
 
 # React
 
-<TableOfContents headings={['Quick start','Integration','When are Porsche Design System components initialized?','How do Porsche Design System components work in detail?','Sample integration']} />
+<TableOfContents headings={['Quick start','Integration']} />
 
 ## Quick start
 
-To build your own application with the **React** components of Porsche Design System, follow these steps:
+To build a [React](https://react.dev/learn/creating-a-react-app#start-from-scratch) application using the Porsche Design
+System, follow these steps. This guide is based on the following dependencies:
 
-- Follow the instructions at (Introduction)[/developing/introduction] to get the required npm package
-- Run `yarn create react-app my-app --template typescript` or `npx create-react-app my-app --template typescript` to
-create a directory inside the current folder with the initial project structure called `my-app`
-- To add TypeScript to your **Create React App**, you have to install it:
-
-```bash
-# install with yarn:
-yarn add typescript @types/node @types/react @types/react-dom @types/jest
-
-# install with npm:
-npm install typescript @types/node @types/react @types/react-dom @types/jest
-```
-
-- Install the Porsche Design System
+<div className="flex flex-wrap gap-static-sm my-fluid-sm">
+  {/* prettier-ignore */}
+  <PTag compact={true} color="notification-info-soft">vite@7</PTag>
+  {/* prettier-ignore */}
+  <PTag compact={true} color="notification-info-soft">react@19</PTag>
+  {/* prettier-ignore */}
+  <PTag compact={true} color="notification-info-soft">tailwindcss@4</PTag>
+  {/* prettier-ignore */}
+  <PTag compact={true} color="notification-info-soft">@porsche-design-system/components-react@3</PTag>
+</div>
 
 ```bash
-# install with yarn:
-yarn add @porsche-design-system/components-react
-
-# install with npm:
-npm install @porsche-design-system/components-react
+# Create a new application by executing:
+npm create vite@latest my-app -- --template react-ts
 ```
 
-You are ready to start building your own application.
+You're all set! Start building your own application now.
 
 ## Integration
 
-The following project is a standard React (Create React App) setup extended by the necessary
-`PorscheDesignSystemProvider` which you can import from `@porsche-design-system/components-react` :
+### Step 1
+
+Install the Porsche Design System within your project directory.
+
+```bash
+npm install @porsche-design-system/components-react
+```
+
+### Step 2
+
+Wrap your app with the `<PorscheDesignSystemProvider />`.
 
 ```tsx
-// index.tsx
+// src/main.tsx
 
-import ReactDOM from 'react-dom';
 import { PorscheDesignSystemProvider } from '@porsche-design-system/components-react';
-import './index.css';
-import { App } from './App';
 
-ReactDOM.render(
-  <React.StrictMode>
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
     <PorscheDesignSystemProvider>
       <App />
     </PorscheDesignSystemProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </StrictMode>
 );
 ```
 
-Change your App file to use at least one Porsche Design System component, for example:
+### Step 3 (recommended)
+
+Integrate Porsche Design System [Partials](/partials/introduction) to boost performance, reduce loading times, and
+minimize FOUC/FOUT.
 
 ```tsx
-// App.tsx
+// vite.config.ts
 
-import { PHeading } from '@porsche-design-system/components-react';
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import {
+  getComponentChunkLinks,
+  getFontFaceStyles,
+  getFontLinks,
+  getIconLinks,
+  getInitialStyles,
+  getMetaTagsAndIconLinks,
+} from '@porsche-design-system/components-react/partials';
 
-export const App = (): JSX.Element => (
-  <div className="App">
-    <PHeading>Welcome to React</PHeading>
-  </div>
-);
+const transformIndexHtmlPlugin = () => {
+  return {
+    name: 'html-transform',
+    transformIndexHtml(html: string) {
+      const headPartials = [
+        // injects stylesheet which defines visibility of pre-hydrated PDS components
+        getInitialStyles(),
+        // injects stylesheet which defines Porsche Next CSS font-face definition (=> minimize FOUT)
+        getFontFaceStyles(),
+        // preloads Porsche Next font (=> minimize FOUT)
+        getFontLinks(),
+        // preloads PDS component core chunk from CDN for PDS component hydration (=> improve loading performance)
+        getComponentChunkLinks(),
+        // preloads Porsche icons (=> minimize FOUC)
+        getIconLinks(),
+        // injects favicon, apple touch icons, android touch icons, etc.
+        getMetaTagsAndIconLinks({ appTitle: 'Porsche' }),
+      ].join('');
+
+      return html.replace(/<\/head>/, `${headPartials}$&`);
+    },
+  };
+};
+
+export default defineConfig({
+  plugins: [react(), transformIndexHtmlPlugin()],
+});
 ```
 
-Run `yarn start` or `npm start` and check if the components are displayed correctly.
+### Step 4 (recommended)
 
-<Notification heading="Attention" headingTag="h3" state="warning">
-  Now, when you look at the result in your browser you should see an error message like
-  "The Porsche Design System is used without using the `getInitialStyles()` partial".
-  To fix this, you have to apply the [getInitialStyles() partial](/partials/initial-styles) which is mandatory since v3.7.0.
-</Notification>
+Set up Tailwind CSS with the Porsche Design System [Tailwind CSS Theme](/tailwindcss/introduction) to ensure seamless
+styling consistency with Porsche's design principles.
 
-## When are Porsche Design System components initialized?
+Install Tailwind CSS within your project directory.
 
-See [componentsReady()](/developing/components-ready) for further information.
+```bash
+npm install tailwindcss @tailwindcss/vite
+```
 
-## How do Porsche Design System components work in detail?
+Configure the Vite Tailwind CSS plugin.
 
-See [Initialization](/must-know/initialization/introduction) for further information.
+```tsx
+// vite.config.ts
 
-## Sample integration
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 
-We provide a public GitHub repository with a basic sample project setup to show how it is managed in real code.
-You can find the repository of the React example project here:
-[Sample integration React](https://github.com/porsche-design-system/sample-integration-react)
+const transformIndexHtmlPlugin = () => { … }
 
-### Get the project up and running
+export default defineConfig({
+  plugins: [react(), transformIndexHtmlPlugin(), tailwindcss()],
+});
+```
 
-- Clone the repository by executing
-`git clone https://github.com/porsche-design-system/sample-integration-react.git`
-- Follow the installation guidelines in the `README.md` file
+Import Tailwind CSS and the Porsche Design System Tailwind CSS Theme.
 
+```css
+/* src/index.css */
+
+@import 'tailwindcss';
+@import '@porsche-design-system/components-react/tailwindcss';
+```
+
+### Step 5
+
+Add a Porsche Design System component (e.g., `<PWordmark />`) with some Tailwind CSS styles. Then, run `npm run dev` and
+verify that the component and styles display correctly.
+
+```tsx
+// src/App.tsx
+
+import { PWordmark } from '@porsche-design-system/components-react';
+
+export default function Home() {
+  return (
+    <>
+      <div className="grid justify-items-center gap-fluid-md m-static-lg p-fluid-lg bg-surface rounded-lg">
+        <PWordmark />
+        <h1 className="prose-display-md">Porsche Design System</h1>
+      </div>
+      <div className="…">…</div>
+    </>
+  );
+}
+```

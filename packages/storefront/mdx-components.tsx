@@ -110,44 +110,52 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children as React.ReactNode}
       </blockquote>
     ),
-    pre: ({ children }) => <pre className="my-fluid-sm">{children as React.ReactNode}</pre>,
+    pre: ({ children }) => (
+      <pre className="my-fluid-sm" dir="ltr">
+        {children as React.ReactNode}
+      </pre>
+    ),
     code: ({ children, className }) => {
       const hasLang = /language-(\w+)/.exec(className || '');
 
       return (
-        <code className="my-fluid-md">
+        <>
           {hasLang ? (
-            // @ts-expect-error
-            <SyntaxHighlighter
-              language={
-                {
-                  js: 'javascript',
-                  javascript: 'javascript',
-                  ts: 'typescript',
-                  typescript: 'typescript',
-                  diff: 'diff',
-                  json: 'json',
-                  html: 'html',
-                  scss: 'scss',
-                  css: 'css',
-                  shell: 'shell',
-                  bash: 'bash',
-                  tsx: 'typescript',
-                  jsx: 'javascript',
-                }[hasLang[1]] || 'javascript'
-              }
-              PreTag="div"
-              CodeTag="div"
-              showLineNumbers={false}
-              useInlineStyles={false}
-              codeTagProps={{ tabIndex: 0, className: 'max-h-96 overflow-auto' }}
+            <code
+              className="my-fluid-md max-h-96 overflow-auto rounded-lg focus-visible:outline-focus outline outline-solid outline-transparent outline-offset-0"
+              tabIndex={0}
             >
-              {children as React.ReactNode}
-            </SyntaxHighlighter>
+              {/* @ts-expect-error */}
+              <SyntaxHighlighter
+                language={
+                  {
+                    js: 'javascript',
+                    javascript: 'javascript',
+                    ts: 'typescript',
+                    typescript: 'typescript',
+                    diff: 'diff',
+                    json: 'json',
+                    html: 'html',
+                    scss: 'scss',
+                    css: 'css',
+                    shell: 'shell',
+                    bash: 'bash',
+                    tsx: 'typescript',
+                    jsx: 'javascript',
+                  }[hasLang[1]] || 'javascript'
+                }
+                PreTag="div"
+                CodeTag="div"
+                showLineNumbers={false}
+                useInlineStyles={false}
+              >
+                {children as React.ReactNode}
+              </SyntaxHighlighter>
+            </code>
           ) : (
-            (children as React.ReactNode)
+            <code className="my-fluid-md rounded-lg">{children as React.ReactNode}</code>
           )}
-        </code>
+        </>
       );
     },
     img: ({ src, alt }) => (
