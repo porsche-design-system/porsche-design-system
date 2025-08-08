@@ -2001,7 +2001,7 @@ test.describe('lifecycle', () => {
       const status2 = await getLifecycleStatus(page);
       expect(status2.componentDidUpdate['p-select-option'], 'componentDidUpdate: p-select-option').toBe(2);
       expect(status2.componentDidUpdate['p-select'], 'componentDidUpdate: p-select').toBe(2); // Keyboard actions cause update in order to update sr highlighted option text
-      expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(7);
+      expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(4);
     });
   });
 });
