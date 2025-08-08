@@ -64,7 +64,7 @@ export const getComponentCss = (
     },
     filter: getFilterJssStyle(scalingVar, theme),
     options: getOptionsJssStyle(scalingVar),
-    icon: getIconJssStyle('select', isOpen),
+    icon: getIconJssStyle('multi-select', isOpen),
     // .no-results / .sr-only
     ...getFunctionalComponentNoResultsOptionStyles('multi-select-option', scalingVar, theme),
     // .label / .required
