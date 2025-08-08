@@ -1,0 +1,277 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getFunctionalComponentNoResultsOptionStyles() should return correct css for componentName: multi-select-option, cssVarScaling: var(--p-internal-multi-select-scaling, 1) and theme: dark 1`] = `
+".no-results {
+  display: flex;
+  gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+  padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+  padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+  min-height: calc(6px + 2.125ex);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #88898C;
+  cursor: pointer;
+  text-align: start;
+  word-break: break-word;
+  box-sizing: content-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.no-results--highlighted {
+  background: #404044;
+}
+.no-results--highlighted, .no-results--selected {
+  color: #FBFCFF;
+}
+.no-results--disabled {
+  cursor: not-allowed;
+  color: #7E7F82;
+}
+.no-results--hidden {
+  display: none;
+}
+.no-results[role=option] {
+  cursor: not-allowed;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getFunctionalComponentNoResultsOptionStyles() should return correct css for componentName: multi-select-option, cssVarScaling: var(--p-internal-multi-select-scaling, 1) and theme: light 1`] = `
+".no-results {
+  display: flex;
+  gap: max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+  padding-block: max(2px, var(--p-internal-multi-select-scaling, 1) * 8px);
+  padding-inline: max(4px, var(--p-internal-multi-select-scaling, 1) * var(--p-internal-multi-select-option-padding-left, 12px)) max(4px, var(--p-internal-multi-select-scaling, 1) * 12px);
+  min-height: calc(6px + 2.125ex);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #6B6D70;
+  cursor: pointer;
+  text-align: start;
+  word-break: break-word;
+  box-sizing: content-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.no-results--highlighted {
+  background: #D8D8DB;
+}
+.no-results--highlighted, .no-results--selected {
+  color: #010205;
+}
+.no-results--disabled {
+  cursor: not-allowed;
+  color: #949598;
+}
+.no-results--hidden {
+  display: none;
+}
+.no-results[role=option] {
+  cursor: not-allowed;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getFunctionalComponentNoResultsOptionStyles() should return correct css for componentName: select-option, cssVarScaling: var(--p-internal-select-scaling, 1) and theme: dark 1`] = `
+".no-results {
+  display: flex;
+  gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+  padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+  padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+  min-height: calc(6px + 2.125ex);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #88898C;
+  cursor: pointer;
+  text-align: start;
+  word-break: break-word;
+  box-sizing: content-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.no-results--highlighted {
+  background: #404044;
+}
+.no-results--highlighted, .no-results--selected {
+  color: #FBFCFF;
+}
+.no-results--disabled {
+  cursor: not-allowed;
+  color: #7E7F82;
+}
+.no-results--hidden {
+  display: none;
+}
+.no-results[role=option] {
+  cursor: not-allowed;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getFunctionalComponentNoResultsOptionStyles() should return correct css for componentName: select-option, cssVarScaling: var(--p-internal-select-scaling, 1) and theme: light 1`] = `
+".no-results {
+  display: flex;
+  gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
+  padding-block: max(2px, var(--p-internal-select-scaling, 1) * 8px);
+  padding-inline: max(4px, var(--p-internal-select-scaling, 1) * var(--p-internal-select-option-padding-left, 12px)) max(4px, var(--p-internal-select-scaling, 1) * 12px);
+  min-height: calc(6px + 2.125ex);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #6B6D70;
+  cursor: pointer;
+  text-align: start;
+  word-break: break-word;
+  box-sizing: content-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.no-results--highlighted {
+  background: #D8D8DB;
+}
+.no-results--highlighted, .no-results--selected {
+  color: #010205;
+}
+.no-results--disabled {
+  cursor: not-allowed;
+  color: #949598;
+}
+.no-results--hidden {
+  display: none;
+}
+.no-results[role=option] {
+  cursor: not-allowed;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getFunctionalComponentNoResultsOptionStyles() should return correct css for componentName: select-wrapper, cssVarScaling: 1 and theme: dark 1`] = `
+".no-results {
+  display: flex;
+  gap: max(4px, 1 * 12px);
+  padding-block: max(2px, 1 * 8px);
+  padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
+  min-height: calc(6px + 2.125ex);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #88898C;
+  cursor: pointer;
+  text-align: start;
+  word-break: break-word;
+  box-sizing: content-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.no-results--highlighted {
+  background: #404044;
+}
+.no-results--highlighted, .no-results--selected {
+  color: #FBFCFF;
+}
+.no-results--disabled {
+  cursor: not-allowed;
+  color: #7E7F82;
+}
+.no-results--hidden {
+  display: none;
+}
+.no-results[role=option] {
+  cursor: not-allowed;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}"
+`;
+
+exports[`getFunctionalComponentNoResultsOptionStyles() should return correct css for componentName: select-wrapper, cssVarScaling: 1 and theme: light 1`] = `
+".no-results {
+  display: flex;
+  gap: max(4px, 1 * 12px);
+  padding-block: max(2px, 1 * 8px);
+  padding-inline: max(4px, 1 * var(--p-internal-select-wrapper-padding-left, 12px)) max(4px, 1 * 12px);
+  min-height: calc(6px + 2.125ex);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #6B6D70;
+  cursor: pointer;
+  text-align: start;
+  word-break: break-word;
+  box-sizing: content-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.no-results--highlighted {
+  background: #D8D8DB;
+}
+.no-results--highlighted, .no-results--selected {
+  color: #010205;
+}
+.no-results--disabled {
+  cursor: not-allowed;
+  color: #949598;
+}
+.no-results--hidden {
+  display: none;
+}
+.no-results[role=option] {
+  cursor: not-allowed;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}"
+`;

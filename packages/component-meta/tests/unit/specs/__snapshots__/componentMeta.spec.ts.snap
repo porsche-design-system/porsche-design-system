@@ -7326,6 +7326,12 @@ exports[`should match snapshot 1`] = `
       "p-input-search",
     ],
     "propsMeta": {
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Displays as compact version.",
+        "type": "boolean",
+      },
       "description": {
         "allowedValues": "string",
         "defaultValue": "",

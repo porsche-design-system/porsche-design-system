@@ -34,7 +34,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #010205);
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #6B6D70);
     border-radius: 4px;
   }
@@ -106,6 +106,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,0.0001deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -123,24 +130,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -154,12 +143,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -211,14 +196,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: false, state: success, compact: false and theme: dark 1`] = `
@@ -255,7 +233,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #FBFCFF);
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #09D087);
     border-radius: 4px;
   }
@@ -327,6 +305,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,0.0001deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -344,24 +329,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -375,12 +342,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -433,14 +396,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: error, compact: false and theme: dark 1`] = `
@@ -477,7 +433,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #FBFCFF);
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #FC4040);
     border-radius: 4px;
   }
@@ -549,6 +505,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,0.0001deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -566,24 +529,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -597,12 +542,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -655,14 +596,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: false, hideLabel: true, state: success, compact: false and theme: light 1`] = `
@@ -699,7 +633,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #010205);
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #197E10);
     border-radius: 4px;
   }
@@ -771,6 +705,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,0.0001deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -788,24 +729,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -819,12 +742,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -877,14 +796,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: error, compact: false and theme: dark 1`] = `
@@ -921,7 +833,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #7E7F82;
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #FC4040);
     border-radius: 4px;
     border-color: #7E7F82;
@@ -978,6 +890,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,0.0001deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -995,24 +914,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -1026,12 +927,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -1083,14 +980,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: false and theme: light 1`] = `
@@ -1127,7 +1017,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #949598;
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #6B6D70);
     border-radius: 4px;
     border-color: #949598;
@@ -1184,6 +1074,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,0.0001deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -1201,24 +1098,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -1232,12 +1111,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -1288,14 +1163,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: false and theme: light 2`] = `
@@ -1332,7 +1200,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #949598;
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #6B6D70);
     border-radius: 4px;
     border-color: #949598;
@@ -1389,6 +1257,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,0.0001deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -1406,24 +1281,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -1437,12 +1294,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -1493,14 +1346,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: none, compact: true and theme: light 1`] = `
@@ -1537,7 +1383,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #949598;
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #6B6D70);
     border-radius: 4px;
     border-color: #949598;
@@ -1594,6 +1440,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 0.5) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,0.0001deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 0.5) * 12px);
@@ -1611,24 +1464,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -1642,12 +1477,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -1698,14 +1529,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: false, state: success, compact: false and theme: light 1`] = `
@@ -1742,7 +1566,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #949598;
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #197E10);
     border-radius: 4px;
     border-color: #949598;
@@ -1799,6 +1623,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,0.0001deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -1816,24 +1647,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -1847,12 +1660,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -1904,14 +1713,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: error, compact: false and theme: dark 1`] = `
@@ -1948,7 +1750,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #7E7F82;
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #FC4040);
     border-radius: 4px;
     border-color: #7E7F82;
@@ -2005,6 +1807,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,0.0001deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -2022,24 +1831,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -2053,12 +1844,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -2110,14 +1897,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: none, compact: false and theme: light 1`] = `
@@ -2154,7 +1934,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #949598;
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #6B6D70);
     border-radius: 4px;
     border-color: #949598;
@@ -2211,6 +1991,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,0.0001deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -2228,24 +2015,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -2259,12 +2028,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -2315,14 +2080,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: false, isDisabled: true, hideLabel: true, state: success, compact: false and theme: dark 1`] = `
@@ -2359,7 +2117,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #7E7F82;
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #09D087);
     border-radius: 4px;
     border-color: #7E7F82;
@@ -2416,6 +2174,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,0.0001deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -2433,24 +2198,6 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -2464,12 +2211,8 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,0.0001deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -2521,14 +2264,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: error, compact: false and theme: dark 1`] = `
@@ -2565,7 +2301,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #FBFCFF);
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #FBFCFF);
     border-radius: 4px;
   }
@@ -2637,6 +2373,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -2654,24 +2397,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -2685,12 +2410,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -2743,14 +2464,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none, compact: false and theme: dark 1`] = `
@@ -2787,7 +2501,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #FBFCFF);
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #FBFCFF);
     border-radius: 4px;
   }
@@ -2859,6 +2573,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -2876,24 +2597,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -2907,12 +2610,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -2964,14 +2663,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none, compact: false and theme: light 1`] = `
@@ -3008,7 +2700,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #010205);
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #010205);
     border-radius: 4px;
   }
@@ -3080,6 +2772,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -3097,24 +2796,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -3128,12 +2809,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -3185,14 +2862,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: false, state: none, compact: false and theme: light 2`] = `
@@ -3229,7 +2899,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #010205);
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #010205);
     border-radius: 4px;
   }
@@ -3301,6 +2971,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -3318,24 +2995,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -3349,12 +3008,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -3406,14 +3061,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: error, compact: false and theme: dark 1`] = `
@@ -3450,7 +3098,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #FBFCFF);
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #FBFCFF);
     border-radius: 4px;
   }
@@ -3522,6 +3170,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -3539,24 +3194,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -3570,12 +3207,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -3628,14 +3261,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: none, compact: false and theme: light 1`] = `
@@ -3672,7 +3298,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #010205);
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #010205);
     border-radius: 4px;
   }
@@ -3744,6 +3370,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -3761,24 +3394,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -3792,12 +3407,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -3849,14 +3460,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success, compact: false and theme: dark 1`] = `
@@ -3893,7 +3497,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #FBFCFF);
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #FBFCFF);
     border-radius: 4px;
   }
@@ -3965,6 +3569,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -3982,24 +3593,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -4013,12 +3606,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -4071,14 +3660,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: false, hideLabel: true, state: success, compact: false and theme: light 1`] = `
@@ -4115,7 +3697,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #010205);
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #010205);
     border-radius: 4px;
   }
@@ -4187,6 +3769,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -4204,24 +3793,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -4235,12 +3806,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -4293,14 +3860,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: error, compact: false and theme: dark 1`] = `
@@ -4337,7 +3897,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #7E7F82;
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #FBFCFF);
     border-radius: 4px;
     border-color: #7E7F82;
@@ -4394,6 +3954,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -4411,24 +3978,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -4442,12 +3991,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -4499,14 +4044,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: none, compact: false and theme: light 1`] = `
@@ -4543,7 +4081,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #949598;
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #010205);
     border-radius: 4px;
     border-color: #949598;
@@ -4600,6 +4138,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -4617,24 +4162,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -4648,12 +4175,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -4704,14 +4227,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success, compact: false and theme: dark 1`] = `
@@ -4748,7 +4264,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #7E7F82;
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #FBFCFF);
     border-radius: 4px;
     border-color: #7E7F82;
@@ -4805,6 +4321,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -4822,24 +4345,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -4853,12 +4358,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -4910,14 +4411,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: false, state: success, compact: true and theme: dark 1`] = `
@@ -4954,7 +4448,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #7E7F82;
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #FBFCFF);
     border-radius: 4px;
     border-color: #7E7F82;
@@ -5011,6 +4505,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 0.5) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 0.5) * 12px);
@@ -5028,24 +4529,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -5059,12 +4542,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -5116,14 +4595,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: error, compact: false and theme: dark 1`] = `
@@ -5160,7 +4632,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #7E7F82;
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #FBFCFF);
     border-radius: 4px;
     border-color: #7E7F82;
@@ -5217,6 +4689,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -5234,24 +4713,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #404044;
   }
@@ -5265,12 +4726,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -5322,14 +4779,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #FBFCFF;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;
 
 exports[`getComponentCss() should return correct css for isOpen: true, isDisabled: true, hideLabel: true, state: none, compact: false and theme: light 1`] = `
@@ -5366,7 +4816,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #949598;
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #010205);
     border-radius: 4px;
     border-color: #949598;
@@ -5423,6 +4873,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     flex-direction: column;
     gap: max(2px, var(--p-internal-select-scaling, 1) * 8px);
   }
+  .icon {
+    margin-inline-end: -3px;
+    pointer-events: none;
+    transform: rotate3d(0,0,1,180deg);
+    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+    filter: var(--p-select-icon-filter);
+  }
   .no-results {
     display: flex;
     gap: max(4px, var(--p-internal-select-scaling, 1) * 12px);
@@ -5440,24 +4897,6 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     border-radius: 4px;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
-  .no-results[role=option] {
-    cursor: not-allowed;
-  }
-  .no-results__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    white-space: nowrap;
-  }
-  .no-results--selected {
-    cursor: default;
-    pointer-events: none;
-    background: rgba(148, 149, 152, .18);
-  }
   .no-results--highlighted {
     background: #D8D8DB;
   }
@@ -5471,12 +4910,8 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .no-results--hidden {
     display: none;
   }
-  .icon {
-    margin-inline-end: -3px;
-    pointer-events: none;
-    transform: rotate3d(0,0,1,180deg);
-    transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+  .no-results[role=option] {
+    cursor: not-allowed;
   }
   .sr-only {
     position: absolute;
@@ -5527,12 +4962,5 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
   .message:empty {
     opacity: 0;
     position: absolute;
-  }
-@media(hover:hover) {
-    .no-results:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
-      color: #010205;
-      background: rgba(148, 149, 152, .18);
-    }
-}
-"
+  }"
 `;

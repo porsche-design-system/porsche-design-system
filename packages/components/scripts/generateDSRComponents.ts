@@ -90,7 +90,8 @@ const generateDSRComponents = (): void => {
                 group.endsWith('loading-message') ||
                 group.endsWith('input-base') ||
                 group.endsWith('required') ||
-                group.endsWith('label')
+                group.endsWith('label') ||
+                group.endsWith('no-results-option')
               ? m.replace(group, './' + group.split('/').pop())
               : ''
         )

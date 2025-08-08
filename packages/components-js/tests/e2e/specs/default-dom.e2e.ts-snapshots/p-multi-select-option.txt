@@ -1,4 +1,6 @@
 <div class="option">
-  <span class="checkbox" aria-hidden="true"> </span>
+  <span class="checkbox-wrapper">
+    <span class="checkbox" aria-hidden="true"> </span>
+  </span>
   <slot slot="label"> </slot>
 </div>
