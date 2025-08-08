@@ -2439,7 +2439,7 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-multi-select-text-color, #FBFCFF);
-    background: var(--p-multi-select-background-color, #0E0E12);
+    background-color: var(--p-multi-select-background-color, transparent);
     border: 2px solid var(--p-multi-select-border-color, #88898C);
     border-radius: 4px;
   }
@@ -2510,7 +2510,7 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
     pointer-events: none;
     transform: rotate3d(0,0,1,0.0001deg);
     transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+    filter: var(--p-multi-select-icon-filter);
   }
   .no-results {
     display: flex;
@@ -16335,7 +16335,7 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-multi-select-text-color, #010205);
-    background: var(--p-multi-select-background-color, #FFF);
+    background-color: var(--p-multi-select-background-color, transparent);
     border: 2px solid var(--p-multi-select-border-color, #6B6D70);
     border-radius: 4px;
   }
@@ -16406,7 +16406,7 @@ exports[`should render dsr component for PMultiSelect 1`] = `
     pointer-events: none;
     transform: rotate3d(0,0,1,0.0001deg);
     transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-    filter: var(--p-select-icon-filter);
+    filter: var(--p-multi-select-icon-filter);
   }
   .no-results {
     display: flex;
@@ -18543,7 +18543,7 @@ exports[`should render dsr component for PSelect 1`] = `
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #010205);
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #6B6D70);
     border-radius: 4px;
   }
