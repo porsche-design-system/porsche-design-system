@@ -1,13 +1,13 @@
 <div class="root">
-  <label class="label" id="label" for="input-date"> </label>
+  <label class="label" id="label" for="input-time"> </label>
   <div class="wrapper">
     <slot name="start"> </slot>
     <input
       aria-describedby="description message"
-      id="input-date"
+      id="input-time"
       name="value"
-      type="date"
-      step="1"
+      type="time"
+      step="60"
     />
     <slot name="end"> </slot>
   </div>

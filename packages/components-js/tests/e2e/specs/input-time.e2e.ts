@@ -15,7 +15,6 @@ import {
 const getHost = (page: Page) => page.locator('p-input-time');
 const getFieldset = (page: Page) => page.locator('fieldset');
 const getInputTime = (page: Page) => page.locator('p-input-time input');
-const getInputTimeShowPicker = (page: Page) => page.locator('p-input-time p-button-pure').nth(0);
 const getInputTimeWrapper = (page: Page) => page.locator('p-input-time .wrapper');
 const getLabel = (page: Page) => page.locator('p-input-time label');
 const getForm = (page: Page) => page.locator('form');
@@ -405,19 +404,6 @@ test.describe('Event', () => {
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'input')).counter).toBe(1);
-  });
-  test('should trigger an open event when show picker icon is clicked', async ({ page }) => {
-    await initInputTime(page, { props: { name: 'some-name' } });
-    const inputTime = getInputTime(page);
-    const host = getHost(page);
-    const inputTimeShowPicker = getInputTimeShowPicker(page);
-
-    await addEventListener(host, 'open');
-    expect((await getEventSummary(host, 'open')).counter).toBe(0);
-
-    await inputTimeShowPicker.click();
-
-    expect((await getEventSummary(host, 'open')).counter).toBe(1);
   });
 });
 

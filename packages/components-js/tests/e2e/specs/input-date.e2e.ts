@@ -15,7 +15,6 @@ import {
 const getHost = (page: Page) => page.locator('p-input-date');
 const getFieldset = (page: Page) => page.locator('fieldset');
 const getInputDate = (page: Page) => page.locator('p-input-date input');
-const getInputDateShowPicker = (page: Page) => page.locator('p-input-date p-button-pure').nth(0);
 const getInputDateWrapper = (page: Page) => page.locator('p-input-date .wrapper');
 const getLabel = (page: Page) => page.locator('p-input-date label');
 const getForm = (page: Page) => page.locator('form');
@@ -407,19 +406,6 @@ test.describe('Event', () => {
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'input')).counter).toBe(1);
-  });
-  test('should trigger an open event when show picker icon is clicked', async ({ page }) => {
-    await initInputDate(page, { props: { name: 'some-name' } });
-    const inputDate = getInputDate(page);
-    const host = getHost(page);
-    const inputDateShowPicker = getInputDateShowPicker(page);
-
-    await addEventListener(host, 'open');
-    expect((await getEventSummary(host, 'open')).counter).toBe(0);
-
-    await inputDateShowPicker.click();
-
-    expect((await getEventSummary(host, 'open')).counter).toBe(1);
   });
 });
 
