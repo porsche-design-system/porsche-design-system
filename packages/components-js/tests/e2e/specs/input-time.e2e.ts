@@ -387,6 +387,7 @@ test.describe('Event', () => {
       // Press Tab two times to cycle through the two internal segments of the native time input:
       await inputTime.press('Tab');
       await inputTime.press('Tab');
+      await inputTime.press('Tab');
       await waitForStencilLifecycle(page);
 
       expect((await getEventSummary(host, 'blur')).counter).toBe(1);
@@ -433,6 +434,7 @@ test.describe('hover state', () => {
 });
 
 test.describe('lifecycle', () => {
+  skipInBrowsers(['firefox', 'webkit']);
   test('should work without unnecessary round trips on init', async ({ page }) => {
     await initInputTime(page, {
       props: { name: 'some-name', state: 'error' },

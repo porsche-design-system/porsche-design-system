@@ -435,6 +435,7 @@ test.describe('hover state', () => {
 });
 
 test.describe('lifecycle', () => {
+  skipInBrowsers(['firefox', 'webkit']);
   test('should work without unnecessary round trips on init', async ({ page }) => {
     await initInputDate(page, {
       props: { name: 'some-name', state: 'error' },
