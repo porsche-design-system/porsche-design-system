@@ -1,6 +1,5 @@
 import { expect } from '@jest/globals';
 import { InputTime } from './input-time';
-import { InputTimeOpenEventDetail } from './input-time-utils';
 
 jest.mock('../../utils/dom');
 
@@ -152,22 +151,6 @@ describe('componentWillLoad', () => {
     component.loading = false;
     component.componentWillLoad();
     expect(component['initialLoading']).toBe(false);
-  });
-});
-
-describe('showPicker', () => {
-  it('should call showPicker on inputElement and emit open event with the event detail', () => {
-    const component = initComponent();
-    component['inputElement'].showPicker = jest.fn();
-
-    component.open = { emit: jest.fn() } as any;
-
-    const eventDetail = { someProperty: 'someValue' } as unknown as InputTimeOpenEventDetail;
-
-    component['showPicker'](eventDetail);
-
-    expect(component['inputElement'].showPicker).toHaveBeenCalled();
-    expect(component.open.emit).toHaveBeenCalledWith(eventDetail);
   });
 });
 

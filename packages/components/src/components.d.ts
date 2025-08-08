@@ -33,14 +33,14 @@ import { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
 import { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 import { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
-import { InputDateBlurEventDetail, InputDateChangeEventDetail, InputDateInputEventDetail, InputDateOpenEventDetail, InputDateState } from "./components/input-date/input-date-utils";
+import { InputDateBlurEventDetail, InputDateChangeEventDetail, InputDateInputEventDetail, InputDateState } from "./components/input-date/input-date-utils";
 import { InputEmailBlurEventDetail, InputEmailChangeEventDetail, InputEmailInputEventDetail, InputEmailState } from "./components/input-email/input-email-utils";
 import { InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
 import { InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
 import { InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
 import { InputTelBlurEventDetail, InputTelChangeEventDetail, InputTelInputEventDetail, InputTelState } from "./components/input-tel/input-tel-utils";
 import { InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEventDetail, InputTextState } from "./components/input-text/input-text-utils";
-import { InputTimeBlurEventDetail, InputTimeChangeEventDetail, InputTimeInputEventDetail, InputTimeOpenEventDetail, InputTimeState } from "./components/input-time/input-time-utils";
+import { InputTimeBlurEventDetail, InputTimeChangeEventDetail, InputTimeInputEventDetail, InputTimeState } from "./components/input-time/input-time-utils";
 import { InputUrlBlurEventDetail, InputUrlChangeEventDetail, InputUrlInputEventDetail, InputUrlState } from "./components/input-url/input-url-utils";
 import { LinkIcon } from "./components/link/link-utils";
 import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
@@ -108,14 +108,14 @@ export { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
 export { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 export { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
 export { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
-export { InputDateBlurEventDetail, InputDateChangeEventDetail, InputDateInputEventDetail, InputDateOpenEventDetail, InputDateState } from "./components/input-date/input-date-utils";
+export { InputDateBlurEventDetail, InputDateChangeEventDetail, InputDateInputEventDetail, InputDateState } from "./components/input-date/input-date-utils";
 export { InputEmailBlurEventDetail, InputEmailChangeEventDetail, InputEmailInputEventDetail, InputEmailState } from "./components/input-email/input-email-utils";
 export { InputNumberBlurEventDetail, InputNumberChangeEventDetail, InputNumberInputEventDetail, InputNumberState } from "./components/input-number/input-number-utils";
 export { InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPasswordInputEventDetail, InputPasswordState } from "./components/input-password/input-password-utils";
 export { InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
 export { InputTelBlurEventDetail, InputTelChangeEventDetail, InputTelInputEventDetail, InputTelState } from "./components/input-tel/input-tel-utils";
 export { InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEventDetail, InputTextState } from "./components/input-text/input-text-utils";
-export { InputTimeBlurEventDetail, InputTimeChangeEventDetail, InputTimeInputEventDetail, InputTimeOpenEventDetail, InputTimeState } from "./components/input-time/input-time-utils";
+export { InputTimeBlurEventDetail, InputTimeChangeEventDetail, InputTimeInputEventDetail, InputTimeState } from "./components/input-time/input-time-utils";
 export { InputUrlBlurEventDetail, InputUrlChangeEventDetail, InputUrlInputEventDetail, InputUrlState } from "./components/input-url/input-url-utils";
 export { LinkIcon } from "./components/link/link-utils";
 export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
@@ -1116,10 +1116,6 @@ export namespace Components {
          */
         "name": string;
         /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter a number'). This text is displayed when the input field is empty.
-         */
-        "placeholder"?: string;
-        /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
          */
         "readOnly"?: boolean;
@@ -1677,10 +1673,6 @@ export namespace Components {
           * The name of the input field, used when submitting the form data.
          */
         "name": string;
-        /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter a number'). This text is displayed when the input field is empty.
-         */
-        "placeholder"?: string;
         /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
          */
@@ -3591,7 +3583,6 @@ declare global {
         "change": InputDateChangeEventDetail;
         "blur": InputDateBlurEventDetail;
         "input": InputDateInputEventDetail;
-        "open": InputDateOpenEventDetail;
     }
     interface HTMLPInputDateElement extends Components.PInputDate, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPInputDateElementEventMap>(type: K, listener: (this: HTMLPInputDateElement, ev: PInputDateCustomEvent<HTMLPInputDateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3725,7 +3716,6 @@ declare global {
         "change": InputTimeChangeEventDetail;
         "blur": InputTimeBlurEventDetail;
         "input": InputTimeInputEventDetail;
-        "open": InputTimeOpenEventDetail;
     }
     interface HTMLPInputTimeElement extends Components.PInputTime, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPInputTimeElementEventMap>(type: K, listener: (this: HTMLPInputTimeElement, ev: PInputTimeCustomEvent<HTMLPInputTimeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -5421,14 +5411,6 @@ declare namespace LocalJSX {
          */
         "onInput"?: (event: PInputDateCustomEvent<InputDateInputEventDetail>) => void;
         /**
-          * Emitted when the user opens the date picker popup by clicking the calendar icon. This event bubbles and crosses the shadow DOM boundary.
-         */
-        "onOpen"?: (event: PInputDateCustomEvent<InputDateOpenEventDetail>) => void;
-        /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter a number'). This text is displayed when the input field is empty.
-         */
-        "placeholder"?: string;
-        /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
          */
         "readOnly"?: boolean;
@@ -6070,14 +6052,6 @@ declare namespace LocalJSX {
           * Emitted when the value has been changed as a direct result of a user action.
          */
         "onInput"?: (event: PInputTimeCustomEvent<InputTimeInputEventDetail>) => void;
-        /**
-          * Emitted when the user opens the time picker popup by clicking the calendar icon. This event bubbles and crosses the shadow DOM boundary.
-         */
-        "onOpen"?: (event: PInputTimeCustomEvent<InputTimeOpenEventDetail>) => void;
-        /**
-          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter a number'). This text is displayed when the input field is empty.
-         */
-        "placeholder"?: string;
         /**
           * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
          */
