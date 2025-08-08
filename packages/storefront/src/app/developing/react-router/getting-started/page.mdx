@@ -1,5 +1,6 @@
 import { Notification } from '@/components/common/Notification';
 import { TableOfContents } from '@/components/common/TableOfContents';
+import { PTag } from '@porsche-design-system/components-react/ssr';
 
 export const metadata = {
   title: 'React Router: Getting started - Porsche Design System',
@@ -12,8 +13,19 @@ export const metadata = {
 
 ## Quick start
 
-To build your own [React Router](https://reactrouter.com/start/framework/installation) application using the Porsche
-Design System's React components, follow these steps:
+To build a [React Router](https://reactrouter.com/start/framework/installation) application using the Porsche Design
+System, follow these steps. This guide is based on the following dependencies:
+
+<div className="flex flex-wrap gap-static-sm my-fluid-sm">
+  {/* prettier-ignore */}
+  <PTag compact={true} color="notification-info-soft">@react-router/*@7</PTag>
+  {/* prettier-ignore */}
+  <PTag compact={true} color="notification-info-soft">react@19</PTag>
+  {/* prettier-ignore */}
+  <PTag compact={true} color="notification-info-soft">tailwindcss@4</PTag>
+  {/* prettier-ignore */}
+  <PTag compact={true} color="notification-info-soft">@porsche-design-system/components-react@3</PTag>
+</div>
 
 ```bash
 # Create a new application by executing:
@@ -28,8 +40,6 @@ npx create-react-router@latest
 You're all set! Start building your own application now.
 
 ## Integration
-
-The following integration example uses a standard React Router setup.
 
 <Notification heading="Attention" headingTag="h3" state="warning">
   The following examples use the **SSR** sub-package from `@porsche-design-system/components-react/ssr`.
@@ -83,7 +93,7 @@ export default defineConfig(({ isSsrBuild }) => {
 
 ### Step 3
 
-Wrap your app with the `PorscheDesignSystemProvider`:
+Wrap your app with the `<PorscheDesignSystemProvider />`.
 
 ```tsx
 // app/root.tsx
@@ -169,7 +179,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 ### Step 5 (recommended)
 
 Set up Tailwind CSS with the Porsche Design System [Tailwind CSS Theme](/tailwindcss/introduction) to ensure seamless
-styling consistency with Porsche's design principles:
+styling consistency with Porsche's design principles.
 
 ```css
 /* app/app.css */
