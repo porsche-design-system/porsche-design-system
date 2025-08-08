@@ -34,7 +34,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #010205);
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #6B6D70);
     border-radius: 4px;
   }
@@ -233,7 +233,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #FBFCFF);
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #09D087);
     border-radius: 4px;
   }
@@ -433,7 +433,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #FBFCFF);
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #FC4040);
     border-radius: 4px;
   }
@@ -633,7 +633,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #010205);
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #197E10);
     border-radius: 4px;
   }
@@ -833,7 +833,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #7E7F82;
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #FC4040);
     border-radius: 4px;
     border-color: #7E7F82;
@@ -1017,7 +1017,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #949598;
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #6B6D70);
     border-radius: 4px;
     border-color: #949598;
@@ -1200,7 +1200,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #949598;
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #6B6D70);
     border-radius: 4px;
     border-color: #949598;
@@ -1383,7 +1383,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #949598;
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #6B6D70);
     border-radius: 4px;
     border-color: #949598;
@@ -1566,7 +1566,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #949598;
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #197E10);
     border-radius: 4px;
     border-color: #949598;
@@ -1750,7 +1750,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #7E7F82;
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #FC4040);
     border-radius: 4px;
     border-color: #7E7F82;
@@ -1934,7 +1934,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #949598;
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #6B6D70);
     border-radius: 4px;
     border-color: #949598;
@@ -2117,7 +2117,7 @@ exports[`getComponentCss() should return correct css for isOpen: false, isDisabl
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #7E7F82;
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #09D087);
     border-radius: 4px;
     border-color: #7E7F82;
@@ -2301,7 +2301,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #FBFCFF);
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #FBFCFF);
     border-radius: 4px;
   }
@@ -2501,7 +2501,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #FBFCFF);
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #FBFCFF);
     border-radius: 4px;
   }
@@ -2700,7 +2700,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #010205);
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #010205);
     border-radius: 4px;
   }
@@ -2899,7 +2899,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #010205);
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #010205);
     border-radius: 4px;
   }
@@ -3098,7 +3098,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #FBFCFF);
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #FBFCFF);
     border-radius: 4px;
   }
@@ -3298,7 +3298,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #010205);
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #010205);
     border-radius: 4px;
   }
@@ -3497,7 +3497,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #FBFCFF);
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #FBFCFF);
     border-radius: 4px;
   }
@@ -3697,7 +3697,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: pointer;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: var(--p-select-text-color, #010205);
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #010205);
     border-radius: 4px;
   }
@@ -3897,7 +3897,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #7E7F82;
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #FBFCFF);
     border-radius: 4px;
     border-color: #7E7F82;
@@ -4081,7 +4081,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #949598;
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #010205);
     border-radius: 4px;
     border-color: #949598;
@@ -4264,7 +4264,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #7E7F82;
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #FBFCFF);
     border-radius: 4px;
     border-color: #7E7F82;
@@ -4448,7 +4448,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #7E7F82;
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #FBFCFF);
     border-radius: 4px;
     border-color: #7E7F82;
@@ -4632,7 +4632,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #7E7F82;
-    background: var(--p-select-background-color, #0E0E12);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #FBFCFF);
     border-radius: 4px;
     border-color: #7E7F82;
@@ -4816,7 +4816,7 @@ exports[`getComponentCss() should return correct css for isOpen: true, isDisable
     cursor: not-allowed;
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
     color: #949598;
-    background: var(--p-select-background-color, #FFF);
+    background-color: var(--p-select-background-color, transparent);
     border: 2px solid var(--p-select-border-color, #010205);
     border-radius: 4px;
     border-color: #949598;
