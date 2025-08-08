@@ -21,6 +21,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Changed
 
+- `Multi Select`, `Select`: `background` is now transparent to be aligned with other form fields
+  ([#3953](https://github.com/porsche-design-system/porsche-design-system/pull/3953))
 - `Multi Select`, `Select`: improved a11y and highlight of options
   ([#3953](https://github.com/porsche-design-system/porsche-design-system/pull/3953))
 - `Multi Select`: aligned filter and keyboard behavior with `Select`
