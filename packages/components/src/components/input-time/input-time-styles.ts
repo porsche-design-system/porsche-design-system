@@ -28,12 +28,9 @@ export const getComponentCss = (
     ...getFunctionalComponentInputBaseStyles(disabled, loading, hideLabel, state, compact, readOnly, theme, {
       textOverflow: 'ellipsis',
       MozAppearance: 'textfield',
-      '&::-webkit-time-picker-indicator': {
+      '&::-webkit-calendar-picker-indicator': {
         display: 'none',
-        WebkitAppearance: 'none',
-        pointerEvents: 'none',
       },
-
     }),
     button: {
       padding: `var(${cssVarButtonPurePadding})`,

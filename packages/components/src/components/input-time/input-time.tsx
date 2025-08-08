@@ -1,14 +1,4 @@
-import {
-  AttachInternals,
-  Component,
-  Element,
-  Event,
-  type EventEmitter,
-  h,
-  type JSX,
-  Prop,
-  Watch,
-} from '@stencil/core';
+import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
@@ -16,6 +6,7 @@ import {
   FORM_STATES,
   getPrefixedTagNames,
   hasPropValueChanged,
+  hasShowPickerSupport,
   THEMES,
   validateProps,
 } from '../../utils';
@@ -25,14 +16,12 @@ import type {
   InputTimeBlurEventDetail,
   InputTimeChangeEventDetail,
   InputTimeInputEventDetail,
-  InputTimeOpenEventDetail,
   InputTimeState,
 } from './input-time-utils';
 
 const propTypes: PropTypes<typeof InputTime> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
-  placeholder: AllowedTypes.string,
   name: AllowedTypes.string,
   value: AllowedTypes.string,
   step: AllowedTypes.number,
@@ -70,7 +59,7 @@ export class InputTime {
   @Prop() public label?: string = '';
 
   /** efines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step="1" for seconds, step="0.001" for milliseconds). */
-  @Prop() public step?: number = 1;
+  @Prop() public step?: number = 60;
 
   /** Supplementary text providing more context or explanation for the input. */
   @Prop() public description?: string = '';
@@ -101,9 +90,6 @@ export class InputTime {
   /** Specifies the earliest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., min="09:00"). */
   @Prop() public min?: string;
 
-  /** A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='Enter a number'). This text is displayed when the input field is empty. */
-  @Prop() public placeholder?: string = '';
-
   /** A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form. */
   @Prop() public disabled?: boolean = false;
 
@@ -133,13 +119,6 @@ export class InputTime {
 
   /** Emitted when the value has been changed as a direct result of a user action. */
   @Event({ bubbles: true }) public input: EventEmitter<InputTimeInputEventDetail>;
-
-  /**
-   * Emitted when the user opens the time picker popup by clicking the calendar icon.
-   * This event bubbles and crosses the shadow DOM boundary.
-   */
-  @Event({ bubbles: true, composed: true }) public open: EventEmitter<InputTimeOpenEventDetail>;
-
 
   @AttachInternals() private internals: ElementInternals;
 
@@ -203,7 +182,7 @@ export class InputTime {
       this.state,
       this.compact,
       this.readOnly,
-      this.theme,
+      this.theme
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -222,7 +201,6 @@ export class InputTime {
         form={this.form}
         type="time"
         required={this.required}
-        placeholder={this.placeholder}
         max={this.max}
         min={this.min}
         value={this.value}
@@ -235,22 +213,22 @@ export class InputTime {
         step={this.step}
         loading={this.loading}
         initialLoading={this.initialLoading}
-        {...{
+        {...(hasShowPickerSupport() && {
           end: (
-              <PrefixedTagNames.pButtonPure
-                tabIndex={-1}
-                hideLabel={true}
-                theme={this.theme}
-                class="button"
-                type="button"
-                icon="clock"
-                disabled={this.disabled || this.readOnly}
-                onClick={this.showPicker}
-              >
-                Open time picker
-              </PrefixedTagNames.pButtonPure>
+            <PrefixedTagNames.pButtonPure
+              tabIndex={-1}
+              hideLabel={true}
+              theme={this.theme}
+              class="button"
+              type="button"
+              icon="clock"
+              disabled={this.disabled || this.readOnly}
+              onClick={() => this.inputElement.showPicker()}
+            >
+              Open time picker
+            </PrefixedTagNames.pButtonPure>
           ),
-        }}
+        })}
       />
     );
   }
@@ -273,10 +251,5 @@ export class InputTime {
     const target = e.target as HTMLInputElement;
     this.value = target.value; // triggers value watcher
     this.input.emit(e);
-  };
-
-  private showPicker = (e: InputTimeOpenEventDetail): void => {
-    this.inputElement.showPicker();
-    this.open.emit(e);
   };
 }

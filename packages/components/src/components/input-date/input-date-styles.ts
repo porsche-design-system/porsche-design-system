@@ -30,10 +30,7 @@ export const getComponentCss = (
       MozAppearance: 'textfield',
       '&::-webkit-calendar-picker-indicator': {
         display: 'none',
-        WebkitAppearance: 'none',
-        pointerEvents: 'none',
       },
-
     }),
     button: {
       padding: `var(${cssVarButtonPurePadding})`,

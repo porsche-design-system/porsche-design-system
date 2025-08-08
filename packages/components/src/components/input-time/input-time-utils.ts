@@ -4,4 +4,3 @@ export type InputTimeState = FormState;
 export type InputTimeChangeEventDetail = Event;
 export type InputTimeBlurEventDetail = Event;
 export type InputTimeInputEventDetail = InputEvent;
-export type InputTimeOpenEventDetail = Event;
