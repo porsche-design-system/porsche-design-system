@@ -641,7 +641,7 @@ test.describe('keyboard behavior', () => {
       expect(await getSelectValue(page)).toBe(testValues[0]);
       expect(await getSelectedOptionIndex(page)).toBe(0);
       expect(await getDropdownDisplay(page), 'initial').toBe('none');
-      expect(await getHighlightedOptionIndex(page)).toBe(0); // Highlighted options stays highlighted even after closing of the dropdown
+      expect(await getHighlightedOptionIndex(page)).toBe(-1); // Highlighted option is reset after closing of the dropdown
       expect((await getEventSummary(buttonElement, 'focus')).counter, 'button focus after pressing Enter').toBe(1);
       expect(await getActiveElementTagName(page)).toBe('P-SELECT');
       expect(await getActiveElementTagNameInShadowRoot(getHost(page))).toBe('BUTTON');
@@ -662,7 +662,7 @@ test.describe('keyboard behavior', () => {
       expect(await getSelectValue(page)).toBe(testValues[0]);
       expect(await getSelectedOptionIndex(page)).toBe(0);
       expect(await getDropdownDisplay(page), 'initial').toBe('none');
-      expect(await getHighlightedOptionIndex(page)).toBe(0); // Highlighted options stays highlighted even after closing of the dropdown
+      expect(await getHighlightedOptionIndex(page)).toBe(-1); // Highlighted option is reset after closing of the dropdown
       expect((await getEventSummary(buttonElement, 'focus')).counter, 'button focus after pressing Space').toBe(1);
       expect(await getActiveElementTagName(page)).toBe('P-SELECT');
       expect(await getActiveElementTagNameInShadowRoot(getHost(page))).toBe('BUTTON');
@@ -686,7 +686,7 @@ test.describe('keyboard behavior', () => {
       expect(await getSelectValue(page)).toBe(testValues[0]);
       expect(await getSelectedOptionIndex(page)).toBe(0);
       expect(await getDropdownDisplay(page), 'initial').toBe('none');
-      expect(await getHighlightedOptionIndex(page)).toBe(0); // Highlighted options stays highlighted even after closing of the dropdown
+      expect(await getHighlightedOptionIndex(page)).toBe(-1); // Highlighted option is reset after closing of the dropdown
       expect((await getEventSummary(buttonElement, 'focus')).counter, 'button focus after pressing Tab').toBe(1);
       expect(await getActiveElementTagName(page)).toBe('P-SELECT');
 
@@ -869,18 +869,69 @@ test.describe('keyboard behavior', () => {
 
       expect(await getHighlightedSelectOptionProperty(page, 'textContent')).toBe(testValues[0]);
     });
-    test('should not set highlight if no option is selected', async ({ page }) => {
-      await buttonElement.press('Space');
-      await waitForStencilLifecycle(page);
 
-      expect(await getHighlightedOptionIndex(page)).toBe(-1);
+    test('should reset highlight on close when no option is selected', async ({ page }) => {
+      await initSelect(page);
+      const options = getSelectOptions(page);
+      const dropdown = getDropdown(page);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowDown');
+      await expect(dropdown).toBeVisible();
+      await expect(options.nth(0)).toHaveJSProperty('highlighted', undefined);
+      await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
+      await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
+
+      await page.keyboard.press('ArrowDown');
+      await expect(options.nth(0)).toHaveJSProperty('highlighted', true);
+      await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
+      await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
+
+      await page.keyboard.press('Escape');
+      await expect(dropdown).toBeHidden();
+      await expect(options.nth(0)).toHaveJSProperty('highlighted', false);
+      await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
+      await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
+
+      await page.keyboard.press('Space');
+      await expect(dropdown).toBeVisible();
+      await expect(options.nth(0)).toHaveJSProperty('highlighted', false);
+      await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
+      await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
     });
-    test('should move highlight to the selected option', async ({ page }) => {
-      await initSelect(page, { props: { name: 'selected', value: 'c' } });
-      await buttonElement.press('Space');
-      await waitForStencilLifecycle(page);
 
-      expect(await getHighlightedOptionIndex(page)).toBe(2);
+    test('should reset highlight on close and set highlight to last selected option on open', async ({ page }) => {
+      await initSelect(page, { props: { name: 'selected', value: 'b' } });
+      const host = getHost(page);
+      const options = getSelectOptions(page);
+      const dropdown = getDropdown(page);
+
+      await expect(host).toHaveJSProperty('value', 'b');
+      await expect(dropdown).toBeHidden();
+      await expect(options.nth(0)).toHaveJSProperty('highlighted', undefined);
+      await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
+      await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowDown');
+      await expect(dropdown).toBeVisible();
+      await expect(options.nth(0)).toHaveJSProperty('highlighted', undefined);
+      await expect(options.nth(1)).toHaveJSProperty('highlighted', true); // Restored highlight to last selected option
+      await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
+
+      await page.keyboard.press('ArrowDown');
+      await expect(options.nth(0)).toHaveJSProperty('highlighted', undefined);
+      await expect(options.nth(1)).toHaveJSProperty('highlighted', false);
+      await expect(options.nth(2)).toHaveJSProperty('highlighted', true);
+
+      await page.keyboard.press('Escape');
+      await expect(dropdown).toBeHidden();
+      await page.keyboard.press('Space');
+      await expect(dropdown).toBeVisible();
+
+      await expect(options.nth(0)).toHaveJSProperty('highlighted', undefined);
+      await expect(options.nth(1)).toHaveJSProperty('highlighted', true); // Restored highlight to last selected option
+      await expect(options.nth(2)).toHaveJSProperty('highlighted', false);
     });
   });
   test('should skip disabled option when pressing ArrowUp/ArrowDown', async ({ page }) => {
@@ -1081,13 +1132,16 @@ test.describe('selection', () => {
     await options.nth(0).click();
 
     await expect(host).toHaveJSProperty('value', 'a');
-    await expect(options.nth(0)).toHaveJSProperty('highlighted', true);
+    await expect(options.nth(0)).toHaveJSProperty('highlighted', false); // Highlight is reset after dropdown is closed
     await expect(options.nth(0)).toHaveJSProperty('selected', true);
     await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
     await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
     await expect(buttonElement.locator('span').first()).toHaveText('a');
 
     await buttonElement.click(); // Open dropdown again
+    await expect(options.nth(0)).toHaveJSProperty('highlighted', true); // Highlight is restored to the selected option
+    await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
 
     await options.nth(2).click();
 
@@ -1095,7 +1149,7 @@ test.describe('selection', () => {
     await expect(options.nth(0)).toHaveJSProperty('highlighted', false);
     await expect(options.nth(0)).toHaveJSProperty('selected', false);
     await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
-    await expect(options.nth(2)).toHaveJSProperty('highlighted', true);
+    await expect(options.nth(2)).toHaveJSProperty('highlighted', false); // Highlight is reset after dropdown is closed
     await expect(options.nth(2)).toHaveJSProperty('selected', true);
     await expect(buttonElement.locator('span').first()).toHaveText('c');
   });
@@ -1115,7 +1169,7 @@ test.describe('selection', () => {
     await options.nth(0).click();
 
     await expect(host).toHaveJSProperty('value', 'a');
-    await expect(options.nth(0)).toHaveJSProperty('highlighted', true);
+    await expect(options.nth(0)).toHaveJSProperty('highlighted', false); // Highlight is reset after dropdown is closed
     await expect(options.nth(0)).toHaveJSProperty('selected', true);
     await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
     await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
@@ -1123,6 +1177,9 @@ test.describe('selection', () => {
     await expect(getButtonImage2(page)).toHaveAttribute('src', 'image-a.jpg');
 
     await buttonElement.click(); // Open dropdown again
+    await expect(options.nth(0)).toHaveJSProperty('highlighted', true); // Highlight is restored to the selected option
+    await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
 
     await expect(options.nth(0)).toHaveJSProperty('highlighted', true);
     await expect(options.nth(0)).toHaveJSProperty('selected', true);
@@ -1135,7 +1192,7 @@ test.describe('selection', () => {
     await expect(options.nth(0)).toHaveJSProperty('highlighted', false);
     await expect(options.nth(0)).toHaveJSProperty('selected', false);
     await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
-    await expect(options.nth(2)).toHaveJSProperty('highlighted', true);
+    await expect(options.nth(2)).toHaveJSProperty('highlighted', false); // Highlight is reset after dropdown is closed
     await expect(options.nth(2)).toHaveJSProperty('selected', true);
     await expect(buttonElement.locator('span').first()).toHaveText('c');
     await expect(getButtonImage2(page)).toHaveAttribute('src', 'image-c.jpg');
@@ -1210,6 +1267,72 @@ test.describe('selection', () => {
     expect(await getSelectValue(page)).toBe('b');
     await expect(getButton(page)).toHaveText('b');
     expect(await getButtonImage(page)).toBe('image-b.jpg');
+  });
+});
+
+test.describe('click handling', () => {
+  test('should reset highlight on close when no option is selected', async ({ page }) => {
+    await initSelect(page);
+    const options = getSelectOptions(page);
+    const dropdown = getDropdown(page);
+    const buttonElement = getButton(page);
+
+    await buttonElement.click();
+    await expect(dropdown).toBeVisible();
+    await expect(options.nth(0)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
+
+    await options.nth(0).hover();
+    await expect(options.nth(0)).toHaveJSProperty('highlighted', true);
+    await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
+
+    await buttonElement.click();
+    await expect(dropdown).toBeHidden();
+    await expect(options.nth(0)).toHaveJSProperty('highlighted', false);
+    await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
+
+    await buttonElement.click();
+    await expect(dropdown).toBeVisible();
+    await expect(options.nth(0)).toHaveJSProperty('highlighted', false);
+    await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
+  });
+
+  test('should reset highlight on close and set highlight to last selected option on open', async ({ page }) => {
+    await initSelect(page, { props: { name: 'selected', value: 'b' } });
+    const host = getHost(page);
+    const options = getSelectOptions(page);
+    const dropdown = getDropdown(page);
+    const buttonElement = getButton(page);
+
+    await expect(host).toHaveJSProperty('value', 'b');
+    await expect(dropdown).toBeHidden();
+    await expect(options.nth(0)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(1)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
+
+    await buttonElement.click();
+    await expect(dropdown).toBeVisible();
+    await expect(options.nth(0)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(1)).toHaveJSProperty('highlighted', true); // Restored highlight to last selected option
+    await expect(options.nth(2)).toHaveJSProperty('highlighted', undefined);
+
+    await options.nth(2).hover();
+    await expect(options.nth(0)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(1)).toHaveJSProperty('highlighted', false);
+    await expect(options.nth(2)).toHaveJSProperty('highlighted', true);
+
+    await buttonElement.click();
+    await expect(dropdown).toBeHidden();
+    await buttonElement.click();
+    await expect(dropdown).toBeVisible();
+
+    await expect(options.nth(0)).toHaveJSProperty('highlighted', undefined);
+    await expect(options.nth(1)).toHaveJSProperty('highlighted', true); // Restored highlight to last selected option
+    await expect(options.nth(2)).toHaveJSProperty('highlighted', false);
   });
 });
 
