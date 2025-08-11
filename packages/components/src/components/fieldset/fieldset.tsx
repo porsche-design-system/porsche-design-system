@@ -6,6 +6,7 @@ import {
   FORM_STATES,
   hasLabel,
   hasMessage,
+  hasPropValueChanged,
   THEMES,
   validateProps,
 } from '../../utils';
@@ -65,6 +66,10 @@ export class Fieldset {
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaRole<'radiogroup'>;
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
+  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
