@@ -1,0 +1,47 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+import { inputUrlStorySlots } from '@/app/components/input-url/input-url.stories';
+import { ComponentStory } from '@/components/playground/ComponentStory';
+import { ComponentExample } from '@/components/playground/ComponentExample';
+import { inputUrlExample, inputUrlExampleControlled } from '@porsche-design-system/shared/examples';
+
+export const metadata = {
+  title: 'Input Url - Porsche Design System',
+  description: 'Discover detailed examples and insights of the Input Url component.',
+};
+
+# Input Url <ComponentStatus tagName="p-input-url"></ComponentStatus>
+
+<TableOfContents headings={['Form','Controlled','Slots']} />
+
+## Form
+
+The `p-input-url` component is a form-associated custom element that integrates seamlessly with forms. Leveraging the
+[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API, it functions like a native
+input, ensuring compatibility with form behaviors. However, note that browser support for this API is limited.
+
+<ComponentExample codeSample={inputUrlExample} />
+
+## Controlled
+
+In the controlled approach, the `p-input-url` value is externally managed. While the internal value will be updated
+automatically, you can use the `input`, `change` or `blur` event to update the external state.
+
+<ComponentExample codeSample={inputUrlExampleControlled} />
+
+## Slots
+
+Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label`, `description` or `message`.
+Therefore, a named slot can be used. Make sure **not** to define the corresponding property on the host element when a
+named slot is used (because a property definition is preferred over a named slot). For named slots only
+[phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
+allowed.
+
+If you need to provide additional information or actions to the user, you can use the `start` and `end` slots. For
+example, you might include an icon, a unit, or an action button. Icons and text should use the `contrast-medium` color
+to avoid being mistaken for a button.
+
+If you use a `p-button-pure` or a `p-link-pure`, a `padding` and `margin` have to be set with the exposed
+`--ref-p-input-slotted-padding` and `--ref-p-input-slotted-margin` CSS Variables.
+
+<ComponentStory story={inputUrlStorySlots} />
