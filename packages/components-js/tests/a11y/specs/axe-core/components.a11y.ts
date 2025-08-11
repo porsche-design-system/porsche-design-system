@@ -15,7 +15,7 @@ const revertAutoFocus = async (page: Page, component: string): Promise<void> => 
   }
 };
 
-const amountOfTestableComponents = 58;
+const amountOfTestableComponents = 59;
 
 test('should have certain amount of components', () => {
   expect(components.length).toBe(amountOfTestableComponents);

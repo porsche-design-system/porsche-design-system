@@ -1,6 +1,6 @@
+import { camelCase } from 'change-case';
 import fs from 'fs';
 import path from 'path';
-import { camelCase } from 'change-case';
 import type { TagName } from '../src';
 import type { Framework, FrameworkMarkup } from '../src/models';
 
@@ -403,6 +403,29 @@ const codeExamples: CodeSample[] = [
           angular: '/input-tel-example-controlled.component.ts',
           react: '/InputTelExampleControlled.tsx',
           vue: '/InputTelExampleControlled.vue',
+        },
+      },
+    ],
+  },
+  {
+    component: 'p-input-url',
+    examples: [
+      {
+        name: 'InputUrlExample',
+        paths: {
+          'vanilla-js': '/input-url-example.html',
+          angular: '/input-url-example.component.ts',
+          react: '/InputUrlExample.tsx',
+          vue: '/InputUrlExample.vue',
+        },
+      },
+      {
+        name: 'InputUrlExampleControlled',
+        paths: {
+          'vanilla-js': '/input-url-example-controlled.html',
+          angular: '/input-url-example-controlled.component.ts',
+          react: '/InputUrlExampleControlled.tsx',
+          vue: '/InputUrlExampleControlled.vue',
         },
       },
     ],

@@ -1,0 +1,17 @@
+<p-input-url name="some-name" label="Some Label"></p-input-url>
+
+<p-text>Value: ''</p-text>
+
+<script>
+  const debugElement = document.querySelector('p-text');
+  const inputUrl = document.querySelector('p-input-url');
+
+  inputUrl.addEventListener('input', (e) => {
+    e.target.value = e.detail.target.value;
+    setDebugText(e.detail.target.value);
+  });
+
+  function setDebugText(value) {
+    debugElement.innerText = `Value: ${value}`;
+  }
+</script>

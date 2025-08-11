@@ -103,7 +103,7 @@ export class InputTel {
   /** Indicates the validation or overall status of the input component. */
   @Prop() public state?: InputTelState = 'none';
 
-  /** Controls the visibility of an phone icon. */
+  /** Controls the visibility of the phone icon. */
   @Prop() public indicator?: boolean = false;
 
   /** Dynamic feedback text for validation or status. */
