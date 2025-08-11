@@ -228,6 +228,16 @@ export const routes: RouteType[] = [
     component: fromExamples.InputTelExampleControlled,
   },
   {
+    path: '/input-url-example',
+    name: 'Input Url Example',
+    component: fromExamples.InputUrlExample,
+  },
+  {
+    path: '/input-url-example-controlled',
+    name: 'Input Url Example Controlled',
+    component: fromExamples.InputUrlExampleControlled,
+  },
+  {
     path: '/input-search-example',
     name: 'Input Search Example',
     component: fromExamples.InputSearchExample,

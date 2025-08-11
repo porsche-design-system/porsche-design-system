@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Added
 
+- `Input Url`: ([#3949](https://github.com/porsche-design-system/porsche-design-system/pull/3949))
 - `Multi Select`: `compact` prop to enable a smaller, space-saving version for compact layouts
   ([#3953](https://github.com/porsche-design-system/porsche-design-system/pull/3953))
 

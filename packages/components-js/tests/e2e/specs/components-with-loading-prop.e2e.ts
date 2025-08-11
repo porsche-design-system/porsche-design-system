@@ -23,6 +23,7 @@ for (const tagName of tagNamesWithLoadingProp) {
             'p-input-text',
             'p-input-email',
             'p-input-tel',
+            'p-input-url',
             'p-input-password',
           ].includes(tagName)
       );

@@ -39,6 +39,7 @@ import { InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPass
 import { InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
 import { InputTelBlurEventDetail, InputTelChangeEventDetail, InputTelInputEventDetail, InputTelState } from "./components/input-tel/input-tel-utils";
 import { InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEventDetail, InputTextState } from "./components/input-text/input-text-utils";
+import { InputUrlBlurEventDetail, InputUrlChangeEventDetail, InputUrlInputEventDetail, InputUrlState } from "./components/input-url/input-url-utils";
 import { LinkIcon } from "./components/link/link-utils";
 import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 import { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
@@ -111,6 +112,7 @@ export { InputPasswordBlurEventDetail, InputPasswordChangeEventDetail, InputPass
 export { InputSearchBlurEventDetail, InputSearchChangeEventDetail, InputSearchInputEventDetail, InputSearchState } from "./components/input-search/input-search-utils";
 export { InputTelBlurEventDetail, InputTelChangeEventDetail, InputTelInputEventDetail, InputTelState } from "./components/input-tel/input-tel-utils";
 export { InputTextBlurEventDetail, InputTextChangeEventDetail, InputTextInputEventDetail, InputTextState } from "./components/input-text/input-text-utils";
+export { InputUrlBlurEventDetail, InputUrlChangeEventDetail, InputUrlInputEventDetail, InputUrlState } from "./components/input-url/input-url-utils";
 export { LinkIcon } from "./components/link/link-utils";
 export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 export { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
@@ -1086,7 +1088,7 @@ export namespace Components {
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Controls the visibility of an email icon.
+          * Controls the visibility of the email icon.
          */
         "indicator"?: boolean;
         /**
@@ -1406,7 +1408,7 @@ export namespace Components {
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Controls the visibility of an phone icon.
+          * Controls the visibility of the phone icon.
          */
         "indicator"?: boolean;
         /**
@@ -1541,6 +1543,88 @@ export namespace Components {
         "theme"?: Theme;
         /**
           * The text input value.
+         */
+        "value"?: string;
+    }
+    interface PInputUrl {
+        /**
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
+         */
+        "autoComplete"?: string;
+        /**
+          * A boolean value that, if present, renders the input field as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the input.
+         */
+        "description"?: string;
+        /**
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Controls the visibility of the url icon.
+         */
+        "indicator"?: boolean;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+         */
+        "maxLength"?: number;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the input field, used when submitting the form data.
+         */
+        "name": string;
+        /**
+          * Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific url validation rules than the browser's default. If provided, it overrides the browser's default tel validation.
+         */
+        "pattern"?: string;
+        /**
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='https://porsche.com/')
+         */
+        "placeholder"?: string;
+        /**
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+         */
+        "readOnly"?: boolean;
+        /**
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the input component.
+         */
+        "state"?: InputUrlState;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The url input value.
          */
         "value"?: string;
     }
@@ -2955,6 +3039,10 @@ export interface PInputTextCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPInputTextElement;
 }
+export interface PInputUrlCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPInputUrlElement;
+}
 export interface PLinkTileProductCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPLinkTileProductElement;
@@ -3448,6 +3536,25 @@ declare global {
     var HTMLPInputTextElement: {
         prototype: HTMLPInputTextElement;
         new (): HTMLPInputTextElement;
+    };
+    interface HTMLPInputUrlElementEventMap {
+        "change": InputUrlChangeEventDetail;
+        "blur": InputUrlBlurEventDetail;
+        "input": InputUrlInputEventDetail;
+    }
+    interface HTMLPInputUrlElement extends Components.PInputUrl, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPInputUrlElementEventMap>(type: K, listener: (this: HTMLPInputUrlElement, ev: PInputUrlCustomEvent<HTMLPInputUrlElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPInputUrlElementEventMap>(type: K, listener: (this: HTMLPInputUrlElement, ev: PInputUrlCustomEvent<HTMLPInputUrlElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPInputUrlElement: {
+        prototype: HTMLPInputUrlElement;
+        new (): HTMLPInputUrlElement;
     };
     interface HTMLPLinkElement extends Components.PLink, HTMLStencilElement {
     }
@@ -4019,6 +4126,7 @@ declare global {
         "p-input-search": HTMLPInputSearchElement;
         "p-input-tel": HTMLPInputTelElement;
         "p-input-text": HTMLPInputTextElement;
+        "p-input-url": HTMLPInputUrlElement;
         "p-link": HTMLPLinkElement;
         "p-link-pure": HTMLPLinkPureElement;
         "p-link-social": HTMLPLinkSocialElement;
@@ -5071,7 +5179,7 @@ declare namespace LocalJSX {
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Controls the visibility of an email icon.
+          * Controls the visibility of the email icon.
          */
         "indicator"?: boolean;
         /**
@@ -5439,7 +5547,7 @@ declare namespace LocalJSX {
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
         /**
-          * Controls the visibility of an phone icon.
+          * Controls the visibility of the phone icon.
          */
         "indicator"?: boolean;
         /**
@@ -5598,6 +5706,100 @@ declare namespace LocalJSX {
         "theme"?: Theme;
         /**
           * The text input value.
+         */
+        "value"?: string;
+    }
+    interface PInputUrl {
+        /**
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
+         */
+        "autoComplete"?: string;
+        /**
+          * A boolean value that, if present, renders the input field as a compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Supplementary text providing more context or explanation for the input.
+         */
+        "description"?: string;
+        /**
+          * A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form.
+         */
+        "disabled"?: boolean;
+        /**
+          * Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form).
+         */
+        "form"?: string;
+        /**
+          * Controls the visibility of the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Controls the visibility of the url icon.
+         */
+        "indicator"?: boolean;
+        /**
+          * Text content for a user-facing label.
+         */
+        "label"?: string;
+        /**
+          * @experimental Shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * A non-negative integer specifying the maximum number of characters the user can enter into the input.
+         */
+        "maxLength"?: number;
+        /**
+          * Dynamic feedback text for validation or status.
+         */
+        "message"?: string;
+        /**
+          * A non-negative integer specifying the minimum number of characters required for the input's value to be considered valid.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the input field, used when submitting the form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the url input has lost focus.
+         */
+        "onBlur"?: (event: PInputUrlCustomEvent<InputUrlBlurEventDetail>) => void;
+        /**
+          * Emitted when the url input loses focus after its value was changed.
+         */
+        "onChange"?: (event: PInputUrlCustomEvent<InputUrlChangeEventDetail>) => void;
+        /**
+          * Emitted when the value has been changed as a direct result of a user action.
+         */
+        "onInput"?: (event: PInputUrlCustomEvent<InputUrlInputEventDetail>) => void;
+        /**
+          * Specifies a regular expression that the input's value must match for the value to pass constraint validation. This allows for more specific url validation rules than the browser's default. If provided, it overrides the browser's default tel validation.
+         */
+        "pattern"?: string;
+        /**
+          * A string that provides a brief hint to the user about what kind of information is expected in the field (e.g., placeholder='https://porsche.com/')
+         */
+        "placeholder"?: string;
+        /**
+          * A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form.
+         */
+        "readOnly"?: boolean;
+        /**
+          * A boolean value that, if present, indicates that the input field must be filled out before the form can be submitted.
+         */
+        "required"?: boolean;
+        /**
+          * Indicates the validation or overall status of the input component.
+         */
+        "state"?: InputUrlState;
+        /**
+          * Controls the visual appearance of the component.
+         */
+        "theme"?: Theme;
+        /**
+          * The url input value.
          */
         "value"?: string;
     }
@@ -7113,6 +7315,7 @@ declare namespace LocalJSX {
         "p-input-search": PInputSearch;
         "p-input-tel": PInputTel;
         "p-input-text": PInputText;
+        "p-input-url": PInputUrl;
         "p-link": PLink;
         "p-link-pure": PLinkPure;
         "p-link-social": PLinkSocial;
@@ -7249,6 +7452,7 @@ declare module "@stencil/core" {
             "p-input-search": LocalJSX.PInputSearch & JSXBase.HTMLAttributes<HTMLPInputSearchElement>;
             "p-input-tel": LocalJSX.PInputTel & JSXBase.HTMLAttributes<HTMLPInputTelElement>;
             "p-input-text": LocalJSX.PInputText & JSXBase.HTMLAttributes<HTMLPInputTextElement>;
+            "p-input-url": LocalJSX.PInputUrl & JSXBase.HTMLAttributes<HTMLPInputUrlElement>;
             "p-link": LocalJSX.PLink & JSXBase.HTMLAttributes<HTMLPLinkElement>;
             "p-link-pure": LocalJSX.PLinkPure & JSXBase.HTMLAttributes<HTMLPLinkPureElement>;
             /**
