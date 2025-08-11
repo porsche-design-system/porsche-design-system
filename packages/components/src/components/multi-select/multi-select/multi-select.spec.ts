@@ -13,6 +13,10 @@ const initComponent = (): MultiSelect => {
   component.host = document.createElement('p-multi-select');
   component.host.attachShadow({ mode: 'open' });
   component['internals'] = new MockElementInternals() as unknown as ElementInternals;
+
+  component['inputSearchElement'] = document.createElement('p-input-search');
+  component['inputSearchElement'].attachShadow({ mode: 'open' });
+  component['inputSearchElement'].shadowRoot.appendChild(document.createElement('input'));
   return component;
 };
 
@@ -53,6 +57,20 @@ describe('componentDidLoad', () => {
     component.componentDidLoad();
     expect(getShadowRootHTMLElementSpy).toHaveBeenCalledWith(component.host, 'slot');
     expect(slotSpy).toHaveBeenCalledTimes(1);
+  });
+  it('should set inputSearchInputElement and set ariaControlsElements on it', () => {
+    const component = initComponent();
+    const slot = document.createElement('slot');
+    jest.spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement').mockReturnValueOnce(slot);
+    const listbox = document.createElement('div');
+    component['listboxElement'] = listbox;
+    component.componentDidLoad();
+
+    expect(component['inputSearchInputElement']).toBe(
+      component['inputSearchElement'].shadowRoot.querySelector('input')
+    );
+    // @ts-expect-error typings missing
+    expect(component['inputSearchInputElement'].ariaControlsElements).toEqual([listbox]);
   });
 });
 

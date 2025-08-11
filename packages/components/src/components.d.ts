@@ -2022,6 +2022,10 @@ export namespace Components {
      */
     interface PMultiSelect {
         /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
+        /**
           * The description text.
          */
         "description"?: string;
@@ -6216,6 +6220,10 @@ declare namespace LocalJSX {
      * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
      */
     interface PMultiSelect {
+        /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
         /**
           * The description text.
          */
