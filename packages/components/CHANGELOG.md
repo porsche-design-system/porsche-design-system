@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Added
+
+- `Fieldset`: ARIA role `radiogroup` is now supported via `aria` prop. Internal ARIA attributes for `aria-invalid`and
+  `aria-required`. ([#3957](https://github.com/porsche-design-system/porsche-design-system/pull/3957))
+
 ## [3.29.0-rc.3] - 2025-07-29
 
 ### Fixed
