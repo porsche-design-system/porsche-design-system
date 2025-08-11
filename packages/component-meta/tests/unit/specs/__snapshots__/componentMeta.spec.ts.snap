@@ -2627,7 +2627,7 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-fieldset": {
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasElementInternals": false,
     "hasEvent": false,
     "hasObserveAttributes": false,
@@ -2641,6 +2641,15 @@ exports[`should match snapshot 1`] = `
       "p-icon",
     ],
     "propsMeta": {
+      "aria": {
+        "allowedValues": {
+          "role": "string",
+        },
+        "defaultValue": null,
+        "description": "Add ARIA attributes.",
+        "isAria": true,
+        "type": "FieldsetAriaAttribute",
+      },
       "label": {
         "allowedValues": "string",
         "defaultValue": "",
