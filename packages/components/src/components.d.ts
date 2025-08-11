@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, TextSize, Theme } from "./types";
+import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize, Theme } from "./types";
 import { AccordionHeadingTag, AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 import { BannerHeadingTag, BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
@@ -22,7 +22,7 @@ import { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./component
 import { DividerColor, DividerDirection, DividerOrientation } from "./components/divider/divider-utils";
 import { DrilldownAriaAttribute, DrilldownUpdateEventDetail } from "./components/drilldown/drilldown/drilldown-utils";
 import { DrilldownLinkAriaAttribute, DrilldownLinkTarget } from "./components/drilldown/drilldown-link/drilldown-link-utils";
-import { FieldsetAriaAttribute, FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
+import { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
 import { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
@@ -77,7 +77,7 @@ import { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wra
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
-export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, TextSize, Theme } from "./types";
+export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize, Theme } from "./types";
 export { AccordionHeadingTag, AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 export { BannerHeadingTag, BannerState, BannerWidth } from "./components/banner/banner-utils";
 export { ButtonIcon } from "./components/button/button-utils";
@@ -94,7 +94,7 @@ export { DisplayAlign, DisplayColor, DisplaySize, DisplayTag } from "./component
 export { DividerColor, DividerDirection, DividerOrientation } from "./components/divider/divider-utils";
 export { DrilldownAriaAttribute, DrilldownUpdateEventDetail } from "./components/drilldown/drilldown/drilldown-utils";
 export { DrilldownLinkAriaAttribute, DrilldownLinkTarget } from "./components/drilldown/drilldown-link/drilldown-link-utils";
-export { FieldsetAriaAttribute, FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
+export { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
 export { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 export { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 export { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
@@ -763,7 +763,7 @@ export namespace Components {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<FieldsetAriaAttribute>;
+        "aria"?: SelectedAriaRole<'radiogroup'>;
         /**
           * The label text.
          */
@@ -4728,7 +4728,7 @@ declare namespace LocalJSX {
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<FieldsetAriaAttribute>;
+        "aria"?: SelectedAriaRole<'radiogroup'>;
         /**
           * The label text.
          */

@@ -1,5 +1,5 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
-import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
+import type { PropTypes, SelectedAriaRole, Theme } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -18,7 +18,8 @@ import {
   FIELDSET_LABEL_SIZES,
   type FieldsetAriaAttribute,
   type FieldsetLabelSize,
-  type FieldsetState, getFieldsetAriaAttributes
+  type FieldsetState,
+  getFieldsetAriaAttributes,
 } from './fieldset-utils';
 
 const propTypes: PropTypes<typeof Fieldset> = {
@@ -28,6 +29,7 @@ const propTypes: PropTypes<typeof Fieldset> = {
   state: AllowedTypes.oneOf<FormState>(FORM_STATES),
   message: AllowedTypes.string,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
+  // AllowedTypes do not match exactly the @Prop type because the 'aria' function does not allow for key-value pairs.
   aria: AllowedTypes.aria<FieldsetAriaAttribute>(FIELDSET_ARIA_ATTRIBUTES),
 };
 
@@ -62,7 +64,7 @@ export class Fieldset {
   @Prop() public theme?: Theme = 'light';
 
   /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<FieldsetAriaAttribute>;
+  @Prop() public aria?: SelectedAriaRole<'radiogroup'>;
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
