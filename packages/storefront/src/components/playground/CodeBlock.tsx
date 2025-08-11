@@ -54,7 +54,7 @@ export const CodeBlock = ({ frameworkMarkup, children }: PropsWithChildren<CodeB
         language={frameworkLanguageMap[selectedFramework]}
         showLineNumbers={false}
         useInlineStyles={false}
-        codeTagProps={{ tabIndex: 0, className: 'max-h-96 overflow-auto' }}
+        codeTagProps={{ tabIndex: 0, className: 'max-h-96 overflow-auto rounded-lg focus-visible:outline-focus outline outline-solid outline-transparent -outline-offset-1' }}
       >
         {frameworkMarkup[selectedFramework]}
       </SyntaxHighlighter>
