@@ -22,29 +22,29 @@ import {
   FORM_STATES,
   getComboboxAriaAttributes,
   getHasNativePopoverSupport,
-  getHighlightedSelectOption,
-  getHighlightedSelectOptionIndex,
+  getLastSelectedOption,
   getMultiSelectActionFromKeyboardEvent,
+  getNextOptionToHighlight,
   getPrefixedTagNames,
-  getSelectedSelectOption,
-  getSelectedSelectOptionIndex,
   getShadowRootHTMLElement,
-  getUpdatedIndex,
-  getUsableSelectOptions,
   hasMessage,
   hasPropValueChanged,
   isClickOutside,
   isElementOfKind,
+  isUsableOption,
+  type Option,
   optionListUpdatePosition,
   SELECT_DROPDOWN_DIRECTIONS,
-  setNextSelectOptionHighlighted,
+  setHighlightedSelectOption,
   THEMES,
   throwIfElementIsNotOfKind,
   updateFilterResults,
+  updateHighlightedOption,
   validateProps,
 } from '../../../utils';
 import { Label } from '../../common/label/label';
 import { labelId } from '../../common/label/label-utils';
+import { NoResultsOption } from '../../common/no-results-option/no-results-option';
 import { messageId, StateMessage } from '../../common/state-message/state-message';
 import type { InputSearchInputEventDetail } from '../../input-search/input-search-utils';
 import { getComponentCss } from './multi-select-styles';
@@ -74,6 +74,7 @@ const propTypes: PropTypes<typeof MultiSelect> = {
   required: AllowedTypes.boolean,
   form: AllowedTypes.string,
   dropdownDirection: AllowedTypes.oneOf<MultiSelectDropdownDirection>(SELECT_DROPDOWN_DIRECTIONS),
+  compact: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -125,6 +126,9 @@ export class MultiSelect {
   /** Changes the direction to which the dropdown list appears. */
   @Prop() public dropdownDirection?: MultiSelectDropdownDirection = 'auto';
 
+  /** Displays as compact version. */
+  @Prop() public compact?: boolean = false;
+
   /** Adapts the multi-select color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
@@ -143,12 +147,16 @@ export class MultiSelect {
   private multiSelectOptions: MultiSelectOption[] = [];
   private multiSelectOptgroups: MultiSelectOptgroup[] = [];
   private buttonElement: HTMLButtonElement;
-  private filterInputElement: HTMLPInputSearchElement;
+  private inputSearchElement: HTMLPInputSearchElement;
+  private inputSearchInputElement: HTMLInputElement;
+  private listboxElement: HTMLDivElement;
   private resetButtonElement: HTMLElement;
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
   private popoverElement: HTMLDivElement;
   private hasNativePopoverSupport = getHasNativePopoverSupport();
   private cleanUpAutoUpdate: () => void;
+
+  private currentlyHighlightedOption: Option | null = null;
 
   private get currentValue(): string[] {
     return getSelectedOptionValues(this.multiSelectOptions);
@@ -184,6 +192,7 @@ export class MultiSelect {
           await optionListUpdatePosition(this.dropdownDirection, this.buttonElement, this.popoverElement);
         });
       }
+      this.highlightSelectedOption();
     } else {
       if (this.hasNativePopoverSupport) {
         this.popoverElement.hidePopover();
@@ -192,6 +201,10 @@ export class MultiSelect {
         // ensures floating ui event listeners are removed when options list is closed
         this.cleanUpAutoUpdate();
         this.cleanUpAutoUpdate = undefined;
+      }
+      if (this.currentlyHighlightedOption) {
+        setHighlightedSelectOption(this.currentlyHighlightedOption, false);
+        this.currentlyHighlightedOption = null;
       }
       this.resetFilter();
     }
@@ -228,6 +241,12 @@ export class MultiSelect {
 
   public componentDidLoad(): void {
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
+    this.inputSearchInputElement = this.inputSearchElement.shadowRoot.querySelector('input');
+    // Avoid error in disconnectedCallback when inputSearchInputElement is not defined
+    if (this.inputSearchInputElement) {
+      // @ts-expect-error typings missing
+      this.inputSearchInputElement.ariaControlsElements = [this.listboxElement];
+    }
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -249,7 +268,16 @@ export class MultiSelect {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.isOpen, this.disabled, this.hideLabel, this.state, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.isOpen,
+      this.disabled,
+      this.hideLabel,
+      this.state,
+      this.compact,
+      this.theme
+    );
     syncMultiSelectChildrenProps([...this.multiSelectOptions, ...this.multiSelectOptgroups], this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -326,15 +354,17 @@ export class MultiSelect {
             theme={this.theme}
             onInput={this.onFilterInput}
             onKeyDown={this.onComboKeyDown}
-            ref={(el: HTMLPInputSearchElement) => (this.filterInputElement = el)}
+            ref={(el: HTMLPInputSearchElement) => (this.inputSearchElement = el)}
           />
-          <div class="options" role="listbox" aria-label={this.label} aria-multiselectable="true">
-            {!this.hasFilterResults && (
-              <div class="no-results" aria-live="polite" role="option">
-                <span aria-hidden="true">–</span>
-                <span class="sr-only">No results found</span>
-              </div>
-            )}
+          <div
+            class="options"
+            role="listbox"
+            aria-label={this.label}
+            aria-multiselectable="true"
+            onPointerMove={this.onPointerMove}
+            ref={(el) => (this.listboxElement = el)}
+          >
+            {!this.hasFilterResults && <NoResultsOption />}
             <slot />
           </div>
         </div>
@@ -342,6 +372,18 @@ export class MultiSelect {
       </div>
     );
   }
+
+  private onPointerMove = (e: MouseEvent): void => {
+    const hoveredOption = e.target as Option;
+    if (
+      hoveredOption &&
+      isElementOfKind(hoveredOption, 'p-multi-select-option') &&
+      !hoveredOption.disabled &&
+      hoveredOption !== this.currentlyHighlightedOption
+    ) {
+      this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, hoveredOption, false);
+    }
+  };
 
   private onSlotchange = (): void => {
     this.updateOptions();
@@ -366,7 +408,7 @@ export class MultiSelect {
   };
 
   private resetFilter = (): void => {
-    this.filterInputElement.value = '';
+    this.inputSearchElement.value = '';
     this.hasFilterResults = true;
     for (const option of this.multiSelectOptions) {
       option.style.display = 'block';
@@ -402,19 +444,17 @@ export class MultiSelect {
       case 'PageUp':
       case 'PageDown': {
         event.preventDefault();
-        const highlightedOptionIndex = getUpdatedIndex(
-          getHighlightedSelectOptionIndex(this.multiSelectOptions),
-          getUsableSelectOptions(this.multiSelectOptions).length - 1,
-          action
+        this.currentlyHighlightedOption = updateHighlightedOption(
+          this.currentlyHighlightedOption,
+          getNextOptionToHighlight(this.multiSelectOptions, this.currentlyHighlightedOption, action)
         );
-        setNextSelectOptionHighlighted(this.multiSelectOptions, highlightedOptionIndex);
         // @ts-ignore - HTMLCombobox type is missing
-        this.filterInputElement.ariaActiveDescendantElement = getHighlightedSelectOption(this.multiSelectOptions);
+        this.inputSearchInputElement.ariaActiveDescendantElement = this.currentlyHighlightedOption;
         break;
       }
       case 'Select': {
         event.preventDefault();
-        this.updateSelectedOption(getHighlightedSelectOption(this.multiSelectOptions));
+        this.updateSelectedOption(this.currentlyHighlightedOption as MultiSelectOption);
         break;
       }
       // intentional fallthrough
@@ -427,14 +467,19 @@ export class MultiSelect {
       case 'Open': {
         event.preventDefault();
         this.updateMenuState(true);
-        // Moves highlight to the first selected option if available
-        const selectedIndex = getSelectedSelectOptionIndex(this.multiSelectOptions);
-        if (selectedIndex >= 0) {
-          setNextSelectOptionHighlighted(this.multiSelectOptions, selectedIndex);
-          // @ts-ignore - HTMLCombobox type is missing
-          this.filterInputElement.ariaActiveDescendantElement = getSelectedSelectOption(this.multiSelectOptions);
-        }
         break;
+      }
+    }
+  };
+
+  private highlightSelectedOption = (): void => {
+    // Moves highlight to the first selected option if available
+    if (!this.currentlyHighlightedOption) {
+      const selectedOption = getLastSelectedOption(this.multiSelectOptions);
+      if (selectedOption && isUsableOption(selectedOption)) {
+        this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, selectedOption);
+        // @ts-ignore - HTMLCombobox type is missing
+        this.inputSearchInputElement.ariaActiveDescendantElement = this.currentlyHighlightedOption;
       }
     }
   };
@@ -494,11 +539,12 @@ export class MultiSelect {
   };
 
   private onFilterInput = (e: CustomEvent<InputSearchInputEventDetail>): void => {
-    const { hasFilterResults } = updateFilterResults(
+    const { hasFilterResults, resetCurrentlyHighlightedOption } = updateFilterResults(
       this.multiSelectOptions,
       this.multiSelectOptgroups,
       (e.detail.target as HTMLInputElement).value
     );
+    resetCurrentlyHighlightedOption && (this.currentlyHighlightedOption = null);
     this.hasFilterResults = hasFilterResults;
   };
 
@@ -507,7 +553,7 @@ export class MultiSelect {
       // Double requestAnimationFrame as Safari fix to make sure the input will receive focus
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          this.filterInputElement.focus();
+          this.inputSearchElement.focus();
         });
       });
     }

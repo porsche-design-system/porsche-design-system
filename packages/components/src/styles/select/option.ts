@@ -1,10 +1,8 @@
 import { borderRadiusSmall, fontLineHeight, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/styles';
 import type { JssStyle } from 'jss';
-import { type Theme, isHighContrastMode } from '../../utils';
+import { isHighContrastMode, type Theme } from '../../utils';
 import { getHighContrastColors, getThemedColors } from '../colors';
 import { getTransition } from '../common-styles';
-import { hoverMediaQuery } from '../hover-media-query';
-import { getNoResultsOptionJssStyle } from '../option-styles';
 import { prefersColorSchemeDarkMediaQuery } from '../prefers-color-scheme-dark-media-query';
 
 export const getOptionJssStyle = (
@@ -14,12 +12,11 @@ export const getOptionJssStyle = (
 ): JssStyle => {
   const {
     primaryColor: primaryColorDark,
-    hoverColor: hoverColorDark,
     contrastHighColor: contrastHighColorDark,
     disabledColor: disabledColorDark,
     contrastLowColor: contrastLowColorDark,
   } = getThemedColors('dark');
-  const { primaryColor, hoverColor, contrastLowColor, contrastHighColor, disabledColor } = getThemedColors(theme);
+  const { primaryColor, contrastLowColor, contrastHighColor, disabledColor } = getThemedColors(theme);
   const { highlightColor } = getHighContrastColors();
 
   const gap = `max(4px, ${cssVarScaling} * 12px)`;
@@ -43,27 +40,6 @@ export const getOptionJssStyle = (
     boxSizing: 'content-box',
     borderRadius: borderRadiusSmall,
     transition: `${getTransition('background-color')}, ${getTransition('color')}`,
-    ...getNoResultsOptionJssStyle(),
-    ...hoverMediaQuery({
-      '&:not([aria-disabled]):not(.option--disabled):not([role=status]):hover': {
-        color: isHighContrastMode ? highlightColor : primaryColor,
-        background: hoverColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: isHighContrastMode ? highlightColor : primaryColorDark,
-          background: hoverColorDark,
-        }),
-      },
-    }),
-    '&--selected': {
-      ...(componentName === 'select-option' && {
-        cursor: 'default',
-        pointerEvents: 'none',
-      }),
-      background: hoverColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        background: hoverColorDark,
-      }),
-    },
     '&--highlighted': {
       background: contrastLowColor,
       ...prefersColorSchemeDarkMediaQuery(theme, {

@@ -244,11 +244,9 @@ test('should show "---" if filter value has no match', async ({ page }) => {
   await filterInput.type('d');
   await waitForStencilLifecycle(page);
 
-  const dropdownOption1 = await getDropdownOption1(page);
-  const dropdownOption1Value = await getProperty(dropdownOption1, 'textContent');
-
   expect(await getAmountOfHiddenDropdownOptions(page)).toBe(0);
-  expect(dropdownOption1Value).toBe('---No results found');
+  const noResults = page.getByRole('option', { name: 'No results found' });
+  await expect(noResults).toBeVisible();
 });
 
 test('should clear input value and reset dropdown on click outside', async ({ page }) => {
