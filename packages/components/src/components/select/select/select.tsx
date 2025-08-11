@@ -36,6 +36,7 @@ import {
   optionListUpdatePosition,
   SELECT_DROPDOWN_DIRECTIONS,
   SELECT_SEARCH_TIMEOUT,
+  setHighlightedSelectOption,
   THEMES,
   throwIfElementIsNotOfKind,
   updateFilterResults,
@@ -193,6 +194,7 @@ export class Select {
           await optionListUpdatePosition(this.dropdownDirection, this.buttonElement, this.popoverElement);
         });
       }
+      this.highlightSelectedOption();
     } else {
       if (this.hasNativePopoverSupport) {
         this.popoverElement.hidePopover();
@@ -201,6 +203,10 @@ export class Select {
         // ensures floating ui event listeners are removed when options list is closed
         this.cleanUpAutoUpdate();
         this.cleanUpAutoUpdate = undefined;
+      }
+      if (this.currentlyHighlightedOption) {
+        setHighlightedSelectOption(this.currentlyHighlightedOption, false);
+        this.currentlyHighlightedOption = null;
       }
       // Reset filter on close
       if (this.filter) {
@@ -456,17 +462,20 @@ export class Select {
       case 'Open': {
         event.preventDefault();
         this.updateMenuState(true);
-        // Moves highlight to the selected option if available
-        if (!this.currentlyHighlightedOption) {
-          const selectedOption = getSelectedOption(this.selectOptions);
-          if (selectedOption && isUsableOption(selectedOption)) {
-            this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, selectedOption);
-            // @ts-ignore - HTMLCombobox type is missing
-            (this.filter ? this.inputSearchInputElement : this.buttonElement).ariaActiveDescendantElement =
-              this.currentlyHighlightedOption;
-          }
-        }
         break;
+      }
+    }
+  };
+
+  private highlightSelectedOption = (): void => {
+    // Moves highlight to the selected option if available
+    if (!this.currentlyHighlightedOption) {
+      const selectedOption = getSelectedOption(this.selectOptions);
+      if (selectedOption && isUsableOption(selectedOption)) {
+        this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, selectedOption);
+        // @ts-ignore - HTMLCombobox type is missing
+        (this.filter ? this.inputSearchInputElement : this.buttonElement).ariaActiveDescendantElement =
+          this.currentlyHighlightedOption;
       }
     }
   };

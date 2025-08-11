@@ -89,9 +89,11 @@ export const updateHighlightedOption = <T extends Option>(
     if (scrollIntoView) {
       // Need to wait until the listbox is opened before scrolling
       requestAnimationFrame(() => {
-        newHighlightedOption.scrollIntoView({
-          block: 'nearest',
-          // behavior: 'smooth' // Intentionally not smooth since highlighted options can quickly change when searching
+        requestAnimationFrame(() => {
+          newHighlightedOption.scrollIntoView({
+            block: 'nearest',
+            // behavior: 'smooth' // Intentionally not smooth since highlighted options can quickly change when searching
+          });
         });
       });
     }
@@ -205,3 +207,19 @@ export const getHighlightedSelectOption = <T extends Option>(options: T[]): T =>
  * @returns {T} - The currently selected select option, or undefined if none is selected.
  */
 export const getSelectedOption = <T extends Option>(options: T[]): T => options.find((option) => option.selected);
+
+/**
+ * Gets the last selected select option.
+ *
+ * @template T - The type of options in the array.
+ * @param {T[]} options - The array of select options.
+ * @returns {T} - The last selected select option, or undefined if none is selected.
+ */
+export const getLastSelectedOption = <T extends Option>(options: T[]): T | undefined => {
+  for (let i = options.length - 1; i >= 0; i--) {
+    if (options[i].selected) {
+      return options[i];
+    }
+  }
+  return undefined;
+};

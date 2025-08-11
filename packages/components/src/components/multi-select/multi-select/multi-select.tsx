@@ -22,10 +22,10 @@ import {
   FORM_STATES,
   getComboboxAriaAttributes,
   getHasNativePopoverSupport,
+  getLastSelectedOption,
   getMultiSelectActionFromKeyboardEvent,
   getNextOptionToHighlight,
   getPrefixedTagNames,
-  getSelectedOption,
   getShadowRootHTMLElement,
   hasMessage,
   hasPropValueChanged,
@@ -35,6 +35,7 @@ import {
   type Option,
   optionListUpdatePosition,
   SELECT_DROPDOWN_DIRECTIONS,
+  setHighlightedSelectOption,
   THEMES,
   throwIfElementIsNotOfKind,
   updateFilterResults,
@@ -191,6 +192,7 @@ export class MultiSelect {
           await optionListUpdatePosition(this.dropdownDirection, this.buttonElement, this.popoverElement);
         });
       }
+      this.highlightSelectedOption();
     } else {
       if (this.hasNativePopoverSupport) {
         this.popoverElement.hidePopover();
@@ -199,6 +201,10 @@ export class MultiSelect {
         // ensures floating ui event listeners are removed when options list is closed
         this.cleanUpAutoUpdate();
         this.cleanUpAutoUpdate = undefined;
+      }
+      if (this.currentlyHighlightedOption) {
+        setHighlightedSelectOption(this.currentlyHighlightedOption, false);
+        this.currentlyHighlightedOption = null;
       }
       this.resetFilter();
     }
@@ -461,16 +467,19 @@ export class MultiSelect {
       case 'Open': {
         event.preventDefault();
         this.updateMenuState(true);
-        // Moves highlight to the first selected option if available
-        if (!this.currentlyHighlightedOption) {
-          const selectedOption = getSelectedOption(this.multiSelectOptions);
-          if (selectedOption && isUsableOption(selectedOption)) {
-            this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, selectedOption);
-            // @ts-ignore - HTMLCombobox type is missing
-            this.inputSearchInputElement.ariaActiveDescendantElement = this.currentlyHighlightedOption;
-          }
-        }
         break;
+      }
+    }
+  };
+
+  private highlightSelectedOption = (): void => {
+    // Moves highlight to the first selected option if available
+    if (!this.currentlyHighlightedOption) {
+      const selectedOption = getLastSelectedOption(this.multiSelectOptions);
+      if (selectedOption && isUsableOption(selectedOption)) {
+        this.currentlyHighlightedOption = updateHighlightedOption(this.currentlyHighlightedOption, selectedOption);
+        // @ts-ignore - HTMLCombobox type is missing
+        this.inputSearchInputElement.ariaActiveDescendantElement = this.currentlyHighlightedOption;
       }
     }
   };
