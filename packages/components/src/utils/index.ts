@@ -14,6 +14,7 @@ export * from './dom';
 export * from './form';
 export * from './getCDNBaseURL';
 export * from './inject-global-style'; // to trick bundling and avoid separate jss chunk 🤷
+export * from './input-utils';
 export { hasPropValueChanged } from './has-prop-value-changed';
 export * from './is-ssr-hydration';
 export * from './jss';
