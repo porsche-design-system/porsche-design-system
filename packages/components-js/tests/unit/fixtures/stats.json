@@ -76,13 +76,13 @@
   },
   {
     "chunkShortName": "fieldset",
-    "size": 4524,
-    "gzipSize": 1958
+    "size": 4823,
+    "gzipSize": 2087
   },
   {
     "chunkShortName": "fieldset-wrapper",
-    "size": 4779,
-    "gzipSize": 2081
+    "size": 4939,
+    "gzipSize": 2157
   },
   {
     "chunkShortName": "flex",
@@ -186,8 +186,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 86192,
-    "gzipSize": 27717
+    "size": 86204,
+    "gzipSize": 27723
   },
   {
     "chunkShortName": "marque",

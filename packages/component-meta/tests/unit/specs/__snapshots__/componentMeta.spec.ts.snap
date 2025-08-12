@@ -2648,7 +2648,7 @@ exports[`should match snapshot 1`] = `
         "defaultValue": null,
         "description": "Add ARIA attributes.",
         "isAria": true,
-        "type": "FieldsetAriaAttribute",
+        "type": "'radiogroup'",
       },
       "label": {
         "allowedValues": "string",

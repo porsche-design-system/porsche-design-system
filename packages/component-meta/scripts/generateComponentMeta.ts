@@ -1,10 +1,10 @@
-import * as fs from 'fs';
-import * as path from 'path';
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
 import type { PropOptions } from '@porsche-design-system/components/dist/types/stencil-public-runtime';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_CHUNK, type TagName } from '@porsche-design-system/shared';
 import { kebabCase } from 'change-case';
+import * as fs from 'fs';
 import { globbySync } from 'globby';
+import * as path from 'path';
 import type { ComponentMeta, ComponentsMeta, CssVariableMeta, PropMeta, SlotMeta } from '../src/types/component-meta';
 import { isDeprecatedComponent } from '../src/utils';
 
@@ -93,7 +93,7 @@ const generateComponentMeta = (): void => {
     const isChunked = (TAG_NAMES_WITH_CHUNK as unknown as TagName[]).includes(tagName);
     const isThemeable = source.includes('public theme?: Theme');
     const hasEvent = source.includes('@Event') && source.includes('EventEmitter');
-    const hasAriaProp = source.includes('public aria?: SelectedAriaAttributes');
+    const hasAriaProp = source.includes('public aria?: SelectedAria');
     const hasElementInternals = source.includes('@AttachInternals()');
     const hasObserveAttributes = source.includes('observeAttributes(this.'); // this should be safe enough, but would miss a local variable as first parameter
     const hasObserveChildren = !!source.match(/\bobserveChildren\(\s*this./); // this should be safe enough, but would miss a local variable as first parameter
@@ -205,11 +205,13 @@ const generateComponentMeta = (): void => {
           .replace(/\s+\*/g, '')
           .replace(/\/\/ prettier-ignore/g, '')
           .trim(),
-        type: propType.replace(/(?:BreakpointCustomizable|SelectedAriaAttributes)<(.+?)>/, '$1').trim(), // contains trailing space
+        type: propType
+          .replace(/(?:BreakpointCustomizable|SelectedAriaAttributes|SelectedAriaRole)<(.+?)>/, '$1')
+          .trim(), // contains trailing space
         defaultValue: cleanedValue,
         ...(jsdoc?.match(/@deprecated/) && { isDeprecated: true }),
         ...(jsdoc?.match(/@experimental/) && { isExperimental: true }),
-        ...(propType.match(/SelectedAriaAttributes/) && { isAria: true }),
+        ...(propType.match(/SelectedAriaAttributes|SelectedAriaRole/) && { isAria: true }),
         ...(Array.isArray(cleanedValue) && { isArray: true }),
         propOptions: parsedPropOptions,
       };
