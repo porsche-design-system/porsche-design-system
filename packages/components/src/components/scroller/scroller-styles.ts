@@ -1,4 +1,4 @@
-import { getCss, isThemeDark } from '../../utils';
+import { borderRadiusSmall, dropShadowLowStyle, fontLineHeight } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -6,44 +6,15 @@ import {
   getFocusJssStyle,
   hostHiddenStyles,
   hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import type { Theme } from '../../types';
-import type { ScrollerAlignScrollIndicator, ScrollerGradientColor } from './scroller-utils';
-import { borderRadiusSmall, dropShadowLowStyle, fontLineHeight } from '@porsche-design-system/styles';
-
-const gradientColorLight: Record<ScrollerGradientColor, string> = {
-  'background-base': '255,255,255',
-  'background-surface': '238,239,242',
-};
-
-const gradientColorDark: Record<ScrollerGradientColor, string> = {
-  'background-base': '14,14,18',
-  'background-surface': '33,34,37',
-};
-
-const gradientColorMap: Record<Theme, Record<ScrollerGradientColor, string>> = {
-  auto: gradientColorLight,
-  light: gradientColorLight,
-  dark: gradientColorDark,
-};
-
-const getGradient = (theme: Theme, gradientColorTheme: ScrollerGradientColor): string => {
-  const gradientColor = gradientColorMap[theme][gradientColorTheme];
-
-  return (
-    `rgba(${gradientColor},1) 20%,` +
-    `rgba(${gradientColor},0.6) 48%,` +
-    `rgba(${gradientColor},0.3) 68%,` +
-    `rgba(${gradientColor},0)`
-  );
-};
+import { getCss, isThemeDark } from '../../utils';
+import type { ScrollerAlignScrollIndicator } from './scroller-utils';
 
 const prevNextWrapperWidth = `calc(${fontLineHeight} + 24px)`;
 
 export const getComponentCss = (
-  gradientColor: ScrollerGradientColor,
   isNextHidden: boolean,
   isPrevHidden: boolean,
   alignScrollIndicator: ScrollerAlignScrollIndicator,
@@ -91,6 +62,11 @@ export const getComponentCss = (
         '&::-webkit-scrollbar': {
           display: 'none',
         },
+        mask: isNextHidden
+          ? 'linear-gradient(90deg,#0000 8px,#000 40px) alpha'
+          : isPrevHidden
+            ? 'linear-gradient(90deg,#000 calc(100% - 40px), #0000 calc(100% - 8px)) alpha'
+            : 'linear-gradient(90deg,#0000 8px,#000 40px calc(100% - 40px),#0000 calc(100% - 8px)) alpha',
       }),
     },
     // Extra wrapper needed to compensate different offset parent calculation depending on browser.
@@ -121,10 +97,6 @@ export const getComponentCss = (
       ...actionPrevNextStyles,
       left: '-1px', // ensures that the gradient always overlays the content (e.g. when zoomed)
       justifyContent: 'flex-start',
-      background: `linear-gradient(to right, ${getGradient(theme, gradientColor)} 100%)`,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        background: `linear-gradient(to right, ${getGradient('dark', gradientColor)} 100%)`,
-      }),
       visibility: isPrevHidden ? 'hidden' : 'inherit',
       '& .action-button': {
         marginLeft: '8px',
@@ -138,10 +110,6 @@ export const getComponentCss = (
       ...actionPrevNextStyles,
       right: '-1px', // ensures that the gradient always overlays the content (e.g. when zoomed)
       justifyContent: 'flex-end',
-      background: `linear-gradient(to left, ${getGradient(theme, gradientColor)} 100%)`,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        background: `linear-gradient(to left, ${getGradient('dark', gradientColor)} 100%)`,
-      }),
       visibility: isNextHidden ? 'hidden' : 'inherit',
       '& .action-button': {
         marginRight: '8px',

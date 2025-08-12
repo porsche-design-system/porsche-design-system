@@ -1,4 +1,5 @@
-import { Component, Element, h, Prop, State, Watch, type JSX } from '@stencil/core';
+import { Component, Element, h, type JSX, Prop, State, Watch } from '@stencil/core';
+import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -15,21 +16,20 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './scroller-styles';
-import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import {
+  GRADIENT_COLOR_SCHEMES,
+  GRADIENT_COLORS,
+  getScrollPositionAfterPrevNextClick,
+  isScrollable,
+  SCROLL_INDICATOR_POSITIONS,
+  SCROLLER_ARIA_ATTRIBUTES,
   type ScrollerAlignScrollIndicator,
+  type ScrollerAriaAttribute,
   type ScrollerDirection,
   type ScrollerGradientColor,
   type ScrollerGradientColorScheme,
   type ScrollerScrollIndicatorPosition,
   type ScrollerScrollToPosition,
-  type ScrollerAriaAttribute,
-  getScrollPositionAfterPrevNextClick,
-  GRADIENT_COLORS,
-  GRADIENT_COLOR_SCHEMES,
-  isScrollable,
-  SCROLL_INDICATOR_POSITIONS,
-  SCROLLER_ARIA_ATTRIBUTES,
 } from './scroller-utils';
 
 const propTypes: PropTypes<typeof Scroller> = {
@@ -153,7 +153,6 @@ export class Scroller {
     attachComponentCss(
       this.host,
       getComponentCss,
-      deprecationMap[this.gradientColorScheme] || this.gradientColor,
       this.isNextHidden,
       this.isPrevHidden,
       this.scrollIndicatorPosition || this.alignScrollIndicator,
