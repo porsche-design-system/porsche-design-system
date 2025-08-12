@@ -162,8 +162,10 @@ import { ModalWithoutDismissButtonComponent } from './generated/modal-without-di
 import { ModalWithoutHeadingComponent } from './generated/modal-without-heading.component';
 import { ModelSignatureComponent } from './generated/model-signature.component';
 import { MultiSelectComponent } from './generated/multi-select.component';
+import { MultiSelectCompactComponent } from './generated/multi-select-compact.component';
 import { MultiSelectOpenedBottomComponent } from './generated/multi-select-opened-bottom.component';
 import { MultiSelectOpenedFilterNoResultsComponent } from './generated/multi-select-opened-filter-no-results.component';
+import { MultiSelectOpenedFilterNoResultsCompactComponent } from './generated/multi-select-opened-filter-no-results-compact.component';
 import { MultiSelectOpenedMaxHeightComponent } from './generated/multi-select-opened-max-height.component';
 import { MultiSelectOpenedMinHeightComponent } from './generated/multi-select-opened-min-height.component';
 import { MultiSelectOpenedScrollContextComponent } from './generated/multi-select-opened-scroll-context.component';
@@ -173,6 +175,11 @@ import { MultiSelectOpenedWithDisabledHighlightedSelectedComponent } from './gen
 import { MultiSelectOpenedWithMultipleSelectedOptionsComponent } from './generated/multi-select-opened-with-multiple-selected-options.component';
 import { MultiSelectOpenedWithOptgroupsComponent } from './generated/multi-select-opened-with-optgroups.component';
 import { MultiSelectOpenedWithOptgroupsDisabledComponent } from './generated/multi-select-opened-with-optgroups-disabled.component';
+import { MultiSelectScaling_0Component } from './generated/multi-select-scaling-0.component';
+import { MultiSelectScaling_0_5Component } from './generated/multi-select-scaling-0-5.component';
+import { MultiSelectScaling_0_8Component } from './generated/multi-select-scaling-0-8.component';
+import { MultiSelectScaling_1Component } from './generated/multi-select-scaling-1.component';
+import { MultiSelectScaling_2Component } from './generated/multi-select-scaling-2.component';
 import { OverviewComponent } from './generated/overview.component';
 import { PaginationComponent } from './generated/pagination.component';
 import { PinCodeComponent } from './generated/pin-code.component';
@@ -379,8 +386,10 @@ export const generatedPages = [
   ModalWithoutHeadingComponent,
   ModelSignatureComponent,
   MultiSelectComponent,
+  MultiSelectCompactComponent,
   MultiSelectOpenedBottomComponent,
   MultiSelectOpenedFilterNoResultsComponent,
+  MultiSelectOpenedFilterNoResultsCompactComponent,
   MultiSelectOpenedMaxHeightComponent,
   MultiSelectOpenedMinHeightComponent,
   MultiSelectOpenedScrollContextComponent,
@@ -390,6 +399,11 @@ export const generatedPages = [
   MultiSelectOpenedWithMultipleSelectedOptionsComponent,
   MultiSelectOpenedWithOptgroupsComponent,
   MultiSelectOpenedWithOptgroupsDisabledComponent,
+  MultiSelectScaling_0Component,
+  MultiSelectScaling_0_5Component,
+  MultiSelectScaling_0_8Component,
+  MultiSelectScaling_1Component,
+  MultiSelectScaling_2Component,
   OverviewComponent,
   PaginationComponent,
   PinCodeComponent,
@@ -1117,6 +1131,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: MultiSelectComponent,
   },
   {
+    name: 'Multi Select Compact',
+    path: 'multi-select-compact',
+    component: MultiSelectCompactComponent,
+  },
+  {
     name: 'Multi Select Opened Bottom',
     path: 'multi-select-opened-bottom',
     component: MultiSelectOpenedBottomComponent,
@@ -1125,6 +1144,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Multi Select Opened Filter No Results',
     path: 'multi-select-opened-filter-no-results',
     component: MultiSelectOpenedFilterNoResultsComponent,
+  },
+  {
+    name: 'Multi Select Opened Filter No Results Compact',
+    path: 'multi-select-opened-filter-no-results-compact',
+    component: MultiSelectOpenedFilterNoResultsCompactComponent,
   },
   {
     name: 'Multi Select Opened Max Height',
@@ -1170,6 +1194,31 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Multi Select Opened With Optgroups Disabled',
     path: 'multi-select-opened-with-optgroups-disabled',
     component: MultiSelectOpenedWithOptgroupsDisabledComponent,
+  },
+  {
+    name: 'Multi Select Scaling 0',
+    path: 'multi-select-scaling-0',
+    component: MultiSelectScaling_0Component,
+  },
+  {
+    name: 'Multi Select Scaling 0 5',
+    path: 'multi-select-scaling-0-5',
+    component: MultiSelectScaling_0_5Component,
+  },
+  {
+    name: 'Multi Select Scaling 0 8',
+    path: 'multi-select-scaling-0-8',
+    component: MultiSelectScaling_0_8Component,
+  },
+  {
+    name: 'Multi Select Scaling 1',
+    path: 'multi-select-scaling-1',
+    component: MultiSelectScaling_1Component,
+  },
+  {
+    name: 'Multi Select Scaling 2',
+    path: 'multi-select-scaling-2',
+    component: MultiSelectScaling_2Component,
   },
   {
     name: 'Pagination',

@@ -2,9 +2,9 @@ import { expect, test } from '@playwright/test';
 import {
   viewportWidth3XL,
   viewportWidth4XL,
-  viewportWidthXXL,
   viewportWidths,
-} from '@porsche-design-system/shared/testing/playwright.vrt';
+  viewportWidthXXL,
+} from '@porsche-design-system/shared/testing';
 
 const style = 'styles-grid';
 

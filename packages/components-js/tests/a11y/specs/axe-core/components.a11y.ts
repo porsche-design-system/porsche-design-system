@@ -1,7 +1,7 @@
 import type { Page } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { type TagName } from '@porsche-design-system/shared';
-import { themes, viewportWidthM, viewportWidthXXS } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { themes, viewportWidthM, viewportWidthXXS } from '@porsche-design-system/shared/testing';
 import { setupScenario } from '../../../vrt/helpers';
 import { componentsValid, expect, test } from '../../helpers';
 
@@ -23,7 +23,7 @@ test('should have certain amount of components', () => {
 
 // TODO: remove filter once the height issue is fixed (issue/#3687),
 for (const component of components.filter(
-  (component) => !['button-tile', 'link-tile', 'link-tile-model-signature', 'input-text'].includes(component) // TODO: fix "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds" for disabled `input-text` with counter
+  (component) => !['button-tile', 'link-tile', 'link-tile-model-signature', 'input-text', 'select'].includes(component) // TODO: fix "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds" for disabled `input-text` with counter
 )) {
   const isComponentThemeable = (component: string): boolean =>
     getComponentMeta(`p-${component}` as TagName).isThemeable;

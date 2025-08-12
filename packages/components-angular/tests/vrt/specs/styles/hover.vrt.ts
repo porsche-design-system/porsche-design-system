@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
+import { viewportWidthM } from '@porsche-design-system/shared/testing';
 import { forceHoverState } from '../../../../../components-js/tests/vrt/helpers';
-import { viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 const style = 'styles-hover';
 

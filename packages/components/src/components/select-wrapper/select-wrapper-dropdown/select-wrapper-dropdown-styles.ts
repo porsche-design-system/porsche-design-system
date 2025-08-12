@@ -9,15 +9,13 @@ import {
 import type { JssStyle, Styles } from 'jss';
 import {
   getFocusJssStyle,
+  getHighContrastColors,
   getThemedColors,
   getTransition,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
-import type { Theme } from '../../../types';
-import { getCss, mergeDeep } from '../../../utils';
-
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import {
   formElementPaddingHorizontal,
@@ -25,7 +23,10 @@ import {
   getCalculatedFormElementPaddingHorizontal,
 } from '../../../styles/form-styles';
 import { getOptionJssStyle, getPopoverJssStyle, getPopoverKeyframesStyles } from '../../../styles/select';
+import type { Theme } from '../../../types';
+import { getCss, isHighContrastMode, mergeDeep } from '../../../utils';
 import type { FormState } from '../../../utils/form/form-state';
+import { getFunctionalComponentNoResultsOptionStyles } from '../../common/no-results-option/no-results-option-styles';
 
 export const getButtonStyles = (isOpen: boolean, state: FormState, theme: Theme): Styles => {
   const { primaryColor, disabledColor, contrastMediumColor } = getThemedColors(theme);
@@ -199,8 +200,13 @@ export const getFilterStyles = (
 };
 
 export const getListStyles = (isOpen: boolean, theme: Theme): Styles => {
-  const { primaryColor, disabledColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, disabledColor: disabledColorDark } = getThemedColors('dark');
+  const { primaryColor, disabledColor, hoverColor } = getThemedColors(theme);
+  const {
+    primaryColor: primaryColorDark,
+    disabledColor: disabledColorDark,
+    hoverColor: hoverColorDark,
+  } = getThemedColors('dark');
+  const { highlightColor } = getHighContrastColors();
 
   return {
     '@global': {
@@ -210,6 +216,22 @@ export const getListStyles = (isOpen: boolean, theme: Theme): Styles => {
     },
     option: {
       ...getOptionJssStyle('select-wrapper', 1, theme),
+      ...hoverMediaQuery({
+        '&:not([aria-disabled]):not(.option--disabled):not([role=status]):hover': {
+          color: isHighContrastMode ? highlightColor : primaryColor,
+          background: hoverColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            color: isHighContrastMode ? highlightColor : primaryColorDark,
+            background: hoverColorDark,
+          }),
+        },
+      }),
+      '&--selected': {
+        background: hoverColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          background: hoverColorDark,
+        }),
+      },
       '&--indent': {
         paddingLeft: '28px',
       },
@@ -236,6 +258,8 @@ export const getListStyles = (isOpen: boolean, theme: Theme): Styles => {
         color: primaryColorDark,
       }),
     },
+    // .no-results / .sr-only
+    ...getFunctionalComponentNoResultsOptionStyles('select-wrapper', 1, theme),
   };
 };
 

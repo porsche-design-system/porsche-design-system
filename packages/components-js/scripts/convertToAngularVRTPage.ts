@@ -1,4 +1,4 @@
-import { convertToAngular } from '@porsche-design-system/shared/utils/convertToAngular';
+import { convertToAngular } from '@porsche-design-system/shared';
 import { pascalCase } from 'change-case';
 import { byAlphabet, comment, iconsRegEx, templateRegEx } from './generateVRTPages';
 

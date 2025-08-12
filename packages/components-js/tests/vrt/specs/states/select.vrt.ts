@@ -1,5 +1,7 @@
 import { expect, type Page, test } from '@playwright/test';
-import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt';
+// TODO: Change this import for all other vrt tests too
+import type { Theme } from '@porsche-design-system/components/src/types';
+import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing';
 import {
   forceFocusHoverState,
   forceFocusState,
@@ -9,8 +11,6 @@ import {
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../../helpers';
-// TODO: Change this import for all other vrt tests too
-import type { Theme } from '@porsche-design-system/components/src/types';
 
 const component = 'select';
 

@@ -2,7 +2,7 @@ import console from 'node:console'; // workaround for nicer logs
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import type { Locator, Page } from '@playwright/test';
-import { schemes } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { schemes } from '@porsche-design-system/shared/testing';
 import { expect, test } from '../helpers/axe-helper';
 
 const getInternalUrls = (): string[] => {
