@@ -1,10 +1,10 @@
-import { config } from '@porsche-design-system/shared/testing/playwright.vrt';
 import { defineConfig, devices } from '@playwright/test';
+import { playwrightConfigVRT } from '@porsche-design-system/shared/testing';
 
 export default defineConfig({
-  ...config,
+  ...playwrightConfigVRT,
   use: {
-    ...config.use,
+    ...playwrightConfigVRT.use,
     // disable JavaScript to simulate SSR behaviour
     javaScriptEnabled: false,
   },

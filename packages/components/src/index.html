@@ -105,7 +105,9 @@
       </select>
     </header>
 
-    <main></main>
+    <main>
+      <p-button type="button">Test</p-button>
+    </main>
 
     <script>
       <!-- START: keep this snippet to log component lifecycle events -->
@@ -115,7 +117,6 @@
           console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
         })
       );
-
 
       const getTheme = () => new URL(document.location).searchParams.get('theme') || 'light';
       const getDir = () => new URL(document.location).searchParams.get('dir') || 'ltr';

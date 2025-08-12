@@ -4,7 +4,7 @@ import {
   viewportWidth4XL,
   viewportWidthM,
   viewportWidthXXL,
-} from '@porsche-design-system/shared/testing/playwright.vrt';
+} from '@porsche-design-system/shared/testing';
 import { setupScenario } from '../../helpers';
 
 const component = 'carousel';

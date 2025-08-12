@@ -4,7 +4,7 @@ import {
   viewportWidth4XL,
   viewportWidths,
   viewportWidthXXL,
-} from '@porsche-design-system/shared/testing/playwright.vrt';
+} from '@porsche-design-system/shared/testing';
 
 const style = 'styles-media-query';
 

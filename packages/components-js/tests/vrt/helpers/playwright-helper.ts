@@ -1,4 +1,6 @@
 import { type Page } from '@playwright/test';
+import { ICON_NAMES } from '@porsche-design-system/assets';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 import {
   getComponentChunkLinks,
   getFontLinks,
@@ -6,11 +8,9 @@ import {
   getInitialStyles,
 } from '@porsche-design-system/components-js/partials';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
-import { getComponentMeta } from '@porsche-design-system/component-meta';
+import { viewportWidthM } from '@porsche-design-system/shared/testing';
 import { type Theme } from '@porsche-design-system/styles';
 import { COMPONENT_CHUNK_NAMES } from '../../../projects/components-wrapper';
-import { ICON_NAMES } from '@porsche-design-system/assets';
-import { viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 const themeableTagNames = (TAG_NAMES as unknown as TagName[]).filter(
   (tagName) => getComponentMeta(tagName).isThemeable

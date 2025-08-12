@@ -24,7 +24,7 @@ export const viewportWidths = [
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-export const config: Config = {
+export const playwrightConfigVRT: Config = {
   testDir: '../specs',
   testMatch: '**.vrt.ts',
   /* Maximum time one test can run for. */

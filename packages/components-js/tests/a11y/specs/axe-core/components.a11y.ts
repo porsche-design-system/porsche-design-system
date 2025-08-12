@@ -1,7 +1,7 @@
 import type { Page } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { type TagName } from '@porsche-design-system/shared';
-import { themes, viewportWidthM, viewportWidthXXS } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { themes, viewportWidthM, viewportWidthXXS } from '@porsche-design-system/shared/testing';
 import { setupScenario } from '../../../vrt/helpers';
 import { componentsValid, expect, test } from '../../helpers';
 
