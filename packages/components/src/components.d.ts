@@ -1068,7 +1068,7 @@ export namespace Components {
     }
     interface PInputDate {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete="bday" for a birthday).
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='bday' for a birthday).
          */
         "autoComplete"?: string;
         /**
@@ -1100,7 +1100,7 @@ export namespace Components {
          */
         "loading"?: boolean;
         /**
-          * Specifies the latest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., max="2024-12-31").
+          * Specifies the latest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., max='2024-12-31').
          */
         "max"?: string;
         /**
@@ -1108,7 +1108,7 @@ export namespace Components {
          */
         "message"?: string;
         /**
-          * Specifies the earliest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., min="2023-01-01").
+          * Specifies the earliest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., min='2023-01-01').
          */
         "min"?: string;
         /**
@@ -1136,7 +1136,7 @@ export namespace Components {
          */
         "theme"?: Theme;
         /**
-          * The default date value for the input, in YYYY-MM-DD format (e.g., value="2025-07-02").
+          * The default date value for the input, in YYYY-MM-DD format (e.g., value='2025-07-02').
          */
         "value"?: string;
     }
@@ -1626,7 +1626,7 @@ export namespace Components {
     }
     interface PInputTime {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete="on").
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='on').
          */
         "autoComplete"?: string;
         /**
@@ -1658,7 +1658,7 @@ export namespace Components {
          */
         "loading"?: boolean;
         /**
-          * Specifies the latest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., max="17:30").
+          * Specifies the latest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., max='17:30').
          */
         "max"?: string;
         /**
@@ -1666,7 +1666,7 @@ export namespace Components {
          */
         "message"?: string;
         /**
-          * Specifies the earliest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., min="09:00").
+          * Specifies the earliest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., min='09:00').
          */
         "min"?: string;
         /**
@@ -1686,7 +1686,7 @@ export namespace Components {
          */
         "state"?: InputTimeState;
         /**
-          * efines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step="1" for seconds, step="0.001" for milliseconds).
+          * efines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step='1' for seconds, step='0.001' for milliseconds).
          */
         "step"?: number;
         /**
@@ -1694,7 +1694,7 @@ export namespace Components {
          */
         "theme"?: Theme;
         /**
-          * The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value="14:00").
+          * The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value='14:00').
          */
         "value"?: string;
     }
@@ -5351,7 +5351,7 @@ declare namespace LocalJSX {
     }
     interface PInputDate {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete="bday" for a birthday).
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='bday' for a birthday).
          */
         "autoComplete"?: string;
         /**
@@ -5383,7 +5383,7 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
-          * Specifies the latest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., max="2024-12-31").
+          * Specifies the latest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., max='2024-12-31').
          */
         "max"?: string;
         /**
@@ -5391,7 +5391,7 @@ declare namespace LocalJSX {
          */
         "message"?: string;
         /**
-          * Specifies the earliest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., min="2023-01-01").
+          * Specifies the earliest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., min='2023-01-01').
          */
         "min"?: string;
         /**
@@ -5431,7 +5431,7 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
         /**
-          * The default date value for the input, in YYYY-MM-DD format (e.g., value="2025-07-02").
+          * The default date value for the input, in YYYY-MM-DD format (e.g., value='2025-07-02').
          */
         "value"?: string;
     }
@@ -5993,7 +5993,7 @@ declare namespace LocalJSX {
     }
     interface PInputTime {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete="on").
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='on').
          */
         "autoComplete"?: string;
         /**
@@ -6025,7 +6025,7 @@ declare namespace LocalJSX {
          */
         "loading"?: boolean;
         /**
-          * Specifies the latest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., max="17:30").
+          * Specifies the latest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., max='17:30').
          */
         "max"?: string;
         /**
@@ -6033,7 +6033,7 @@ declare namespace LocalJSX {
          */
         "message"?: string;
         /**
-          * Specifies the earliest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., min="09:00").
+          * Specifies the earliest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., min='09:00').
          */
         "min"?: string;
         /**
@@ -6065,7 +6065,7 @@ declare namespace LocalJSX {
          */
         "state"?: InputTimeState;
         /**
-          * efines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step="1" for seconds, step="0.001" for milliseconds).
+          * efines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step='1' for seconds, step='0.001' for milliseconds).
          */
         "step"?: number;
         /**
@@ -6073,7 +6073,7 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
         /**
-          * The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value="14:00").
+          * The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value='14:00').
          */
         "value"?: string;
     }
