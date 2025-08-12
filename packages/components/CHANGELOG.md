@@ -19,7 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Input Url`: ([#3949](https://github.com/porsche-design-system/porsche-design-system/pull/3949))
 - `Multi Select`: `compact` prop to enable a smaller, space-saving version for compact layouts
   ([#3953](https://github.com/porsche-design-system/porsche-design-system/pull/3953))
-- `Fieldset`: ARIA role `radiogroup` is now supported via `aria` prop. Internal ARIA attributes for `aria-invalid`and
+- `Fieldset`: ARIA role `radiogroup` is now supported via `aria` prop. Internal ARIA attributes for `aria-invalid` and
   `aria-required`. ([#3957](https://github.com/porsche-design-system/porsche-design-system/pull/3957))
 
 ### Changed
