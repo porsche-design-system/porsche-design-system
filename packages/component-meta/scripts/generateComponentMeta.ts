@@ -93,7 +93,7 @@ const generateComponentMeta = (): void => {
     const isChunked = (TAG_NAMES_WITH_CHUNK as unknown as TagName[]).includes(tagName);
     const isThemeable = source.includes('public theme?: Theme');
     const hasEvent = source.includes('@Event') && source.includes('EventEmitter');
-    const hasAriaProp = source.includes('public aria?: SelectedAria');
+    const hasAriaProp = source.includes('public aria?: SelectedAria'); // used only partial "SelectedAria" string to cover both type variants of "SelectedAriaAttributes" and "SelectedAriaRole"
     const hasElementInternals = source.includes('@AttachInternals()');
     const hasObserveAttributes = source.includes('observeAttributes(this.'); // this should be safe enough, but would miss a local variable as first parameter
     const hasObserveChildren = !!source.match(/\bobserveChildren\(\s*this./); // this should be safe enough, but would miss a local variable as first parameter
