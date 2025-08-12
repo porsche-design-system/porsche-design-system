@@ -72,10 +72,10 @@ export class InputDate {
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** The default date value for the input, in YYYY-MM-DD format (e.g., value="2025-07-02"). */
+  /** The default date value for the input, in YYYY-MM-DD format (e.g., value='2025-07-02'). */
   @Prop({ mutable: true }) public value?: string = '';
 
-  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete="bday" for a birthday). */
+  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='bday' for a birthday). */
   @Prop() public autoComplete?: string;
 
   /** A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form. */
@@ -84,10 +84,10 @@ export class InputDate {
   /** Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form). */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** Specifies the latest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., max="2024-12-31"). */
+  /** Specifies the latest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., max='2024-12-31'). */
   @Prop() public max?: string;
 
-  /** Specifies the earliest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., min="2023-01-01"). */
+  /** Specifies the earliest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., min='2023-01-01'). */
   @Prop() public min?: string;
 
   /** A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form. */
@@ -216,7 +216,6 @@ export class InputDate {
         {...(hasShowPickerSupport() && {
           end: (
             <PrefixedTagNames.pButtonPure
-              tabIndex={-1}
               hideLabel={true}
               theme={this.theme}
               class="button"

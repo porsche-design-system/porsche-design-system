@@ -58,7 +58,7 @@ export class InputTime {
   /** Text content for a user-facing label. */
   @Prop() public label?: string = '';
 
-  /** efines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step="1" for seconds, step="0.001" for milliseconds). */
+  /** efines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step='1' for seconds, step='0.001' for milliseconds). */
   @Prop() public step?: number = 60;
 
   /** Supplementary text providing more context or explanation for the input. */
@@ -72,10 +72,10 @@ export class InputTime {
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
-  /** The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value="14:00"). */
+  /** The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value='14:00'). */
   @Prop({ mutable: true }) public value?: string = '';
 
-  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete="on"). */
+  /** Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='on'). */
   @Prop() public autoComplete?: string;
 
   /** A boolean value that, if present, makes the input field uneditable by the user, but its value will still be submitted with the form. */
@@ -84,10 +84,10 @@ export class InputTime {
   /** Specifies the id of the <form> element that the input belongs to (useful if the input is not a direct descendant of the form). */
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
-  /** Specifies the latest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., max="17:30"). */
+  /** Specifies the latest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., max='17:30'). */
   @Prop() public max?: string;
 
-  /** Specifies the earliest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., min="09:00"). */
+  /** Specifies the earliest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., min='09:00'). */
   @Prop() public min?: string;
 
   /** A boolean value that, if present, makes the input field unusable and unclickable. The value will not be submitted with the form. */
@@ -216,7 +216,6 @@ export class InputTime {
         {...(hasShowPickerSupport() && {
           end: (
             <PrefixedTagNames.pButtonPure
-              tabIndex={-1}
               hideLabel={true}
               theme={this.theme}
               class="button"
