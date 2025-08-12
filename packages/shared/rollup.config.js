@@ -28,6 +28,32 @@ export default [
             scripts: undefined,
             devDependencies: {},
             volta: undefined,
+            exports: {
+              '.': {
+                import: {
+                  types: './index.d.ts',
+                  default: './esm/index.js',
+                },
+                require: {
+                  types: './index.d.ts',
+                  default: './index.js',
+                },
+              },
+              './testing': {
+                import: {
+                  types: './testing/index.d.ts',
+                  default: './testing/esm/index.mjs',
+                },
+                require: {
+                  types: './testing/index.d.ts',
+                  default: './testing/cjs/index.cjs',
+                },
+              },
+              './css/styles.css': './css/styles.css',
+              './css/styles': './css/styles.css',
+              './tsconfig.json': './tsconfig.json',
+              './examples': './examples/index.ts', // Examples is not bundled to avoid problems with next.js "use client" in mdx
+            },
           }),
         }),
       ],
@@ -75,28 +101,19 @@ export default [
     plugins: [typescript()],
   },
   {
-    input: 'src/testing/playwright.a11y.ts',
-    output: {
-      dir: 'dist/testing',
-      format: 'cjs',
-    },
-    plugins: [typescript()],
-  },
-  {
-    input: 'src/testing/playwright.e2e.ts',
-    output: {
-      dir: 'dist/testing',
-      format: 'cjs',
-    },
-    plugins: [typescript()],
-  },
-  {
-    input: 'src/testing/playwright.vrt.ts',
-    output: {
-      dir: 'dist/testing',
-      format: 'cjs',
-    },
-    plugins: [typescript()],
+    input: 'src/testing/index.ts',
+    external,
+    output: [
+      {
+        file: 'dist/testing/esm/index.mjs',
+        format: 'esm',
+      },
+      {
+        file: 'dist/testing/cjs/index.cjs',
+        format: 'cjs',
+      },
+    ],
+    plugins: [typescript({ rootDir: 'src/testing' })],
   },
   {
     input: 'src/serve-dummyassets.ts',

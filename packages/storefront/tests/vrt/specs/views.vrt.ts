@@ -4,9 +4,9 @@ import {
   viewportWidth3XL,
   viewportWidth4XL,
   viewportWidthM,
-  viewportWidthXXL,
   viewportWidths,
-} from '@porsche-design-system/shared/testing/playwright.vrt';
+  viewportWidthXXL,
+} from '@porsche-design-system/shared/testing';
 import { closeSidebars, resetAnimations } from '../helpers/helpers';
 
 const urls = {
