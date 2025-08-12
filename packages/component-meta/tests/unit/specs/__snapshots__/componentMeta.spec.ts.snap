@@ -4223,7 +4223,7 @@ exports[`should match snapshot 1`] = `
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete="bday" for a birthday).",
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='bday' for a birthday).",
         "type": "string",
       },
       "compact": {
@@ -4276,7 +4276,7 @@ exports[`should match snapshot 1`] = `
       "max": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Specifies the latest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., max="2024-12-31").",
+        "description": "Specifies the latest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., max='2024-12-31').",
         "type": "string",
       },
       "message": {
@@ -4288,7 +4288,7 @@ exports[`should match snapshot 1`] = `
       "min": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Specifies the earliest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., min="2023-01-01").",
+        "description": "Specifies the earliest date that can be selected. The value must be a date string in YYYY-MM-DD format (e.g., min='2023-01-01').",
         "type": "string",
       },
       "name": {
@@ -4342,7 +4342,7 @@ exports[`should match snapshot 1`] = `
       "value": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The default date value for the input, in YYYY-MM-DD format (e.g., value="2025-07-02").",
+        "description": "The default date value for the input, in YYYY-MM-DD format (e.g., value='2025-07-02').",
         "propOptions": {
           "mutable": true,
         },
@@ -5597,7 +5597,7 @@ exports[`should match snapshot 1`] = `
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete="on").",
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., auto-complete='on').",
         "type": "string",
       },
       "compact": {
@@ -5650,7 +5650,7 @@ exports[`should match snapshot 1`] = `
       "max": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Specifies the latest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., max="17:30").",
+        "description": "Specifies the latest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., max='17:30').",
         "type": "string",
       },
       "message": {
@@ -5662,7 +5662,7 @@ exports[`should match snapshot 1`] = `
       "min": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Specifies the earliest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., min="09:00").",
+        "description": "Specifies the earliest time that can be selected. The value must be a time string in hh:mm or hh:mm:ss format (e.g., min='09:00').",
         "type": "string",
       },
       "name": {
@@ -5700,7 +5700,7 @@ exports[`should match snapshot 1`] = `
       "step": {
         "allowedValues": "number",
         "defaultValue": 60,
-        "description": "efines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step="1" for seconds, step="0.001" for milliseconds).",
+        "description": "efines the granularity of the time input. The step value is given in seconds. The default is 60 (one minute). You can also specify smaller increments (e.g., step='1' for seconds, step='0.001' for milliseconds).",
         "type": "number",
       },
       "theme": {
@@ -5716,7 +5716,7 @@ exports[`should match snapshot 1`] = `
       "value": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value="14:00").",
+        "description": "The default time value for the input, in hh:mm or hh:mm:ss format (e.g., value='14:00').",
         "propOptions": {
           "mutable": true,
         },
