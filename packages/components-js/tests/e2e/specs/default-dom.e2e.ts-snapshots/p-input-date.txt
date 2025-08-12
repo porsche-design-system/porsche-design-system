@@ -9,9 +9,7 @@
       type="date"
       step="1"
     />
-    <p-button-pure tabindex="-1" class="button hydrated">
-      Open date picker</p-button-pure
-    >
+    <p-button-pure class="button hydrated"> Open date picker</p-button-pure>
     <slot name="end"> </slot>
   </div>
   <span id="message" class="message" role="alert"> </span>
