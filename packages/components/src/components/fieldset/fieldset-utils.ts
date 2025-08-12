@@ -15,8 +15,6 @@ export const getFieldsetAriaAttributes = (
   isInvalid: boolean,
   aria: { [key in FieldsetAriaAttribute]: Extract<AriaRole, 'radiogroup'> }
 ): AriaAttributes => {
-  return {
-    ...parseAndGetAriaAttributes(aria),
   const ariaAttrs = parseAndGetAriaAttributes(aria);
   return {
     ...ariaAttrs,
