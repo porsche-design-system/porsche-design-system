@@ -17,7 +17,10 @@ export const getFieldsetAriaAttributes = (
 ): AriaAttributes => {
   return {
     ...parseAndGetAriaAttributes(aria),
-    ...(isRequired && parseAndGetAriaAttributes(aria)?.role === 'radiogroup' && { 'aria-required': 'true' }),
+  const ariaAttrs = parseAndGetAriaAttributes(aria);
+  return {
+    ...ariaAttrs,
+    ...(isRequired && ariaAttrs?.role === 'radiogroup' && { 'aria-required': 'true' }),
     ...(isInvalid && { 'aria-invalid': 'true' }),
   };
 };
