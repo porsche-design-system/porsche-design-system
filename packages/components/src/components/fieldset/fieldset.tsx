@@ -85,7 +85,6 @@ export class Fieldset {
     const hasMessageValue = hasMessage(this.host, this.message, this.state);
 
     return (
-      // biome-ignore lint/a11y/useAriaPropsSupportedByRole: Though the ARIA attributes 'aria-required' and 'aria-invalid' are not officially supported on a <fieldset>, they are recognized by screen readers to indicate that the descendant(s) of the fieldset is required or invalid. See further information about sr support: https://adrianroselli.com/2022/02/support-for-marking-radio-buttons-required-invalid.html
       <fieldset
         aria-describedby={hasMessageValue ? messageId : null}
         {...getFieldsetAriaAttributes(this.required, this.state === 'error', this.aria)}
