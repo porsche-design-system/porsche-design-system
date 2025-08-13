@@ -26,6 +26,8 @@ jobs:
         run: yarn test:unit:assets:assets
       - name: 'Fallbacks Unit'
         run: yarn test:unit:assets:fallbacks
+      - name: 'Flags Unit'
+        run: yarn test:unit:assets:flags
       - name: 'Icons Unit'
         run: yarn test:unit:assets:icons
       - name: 'Font Face Unit'

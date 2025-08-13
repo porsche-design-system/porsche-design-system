@@ -110,6 +110,7 @@
     "test:unit:assets": "yarn --cwd ./packages/assets test:unit",
     "test:unit:assets:assets": "yarn --cwd ./packages/assets test:unit:assets",
     "test:unit:assets:fallbacks": "yarn --cwd ./packages/assets/projects/fallbacks test:unit",
+    "test:unit:assets:flags": "yarn --cwd ./packages/assets/projects/flags test:unit",
     "test:unit:assets:icons": "yarn --cwd ./packages/assets/projects/icons test:unit",
     "test:unit:assets:font-face": "yarn --cwd ./packages/assets/projects/font-face test:unit",
     "test:unit:component-meta": "yarn --cwd ./packages/component-meta test:unit",
