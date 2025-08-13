@@ -38,6 +38,8 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
     'p-pin-code': '', // readonly is not supported
     'p-textarea': '',
     'p-textarea-wrapper': '<textarea>Some value</textarea>',
+    'p-input-date': '<input type="date" value="2025-08-13" />',
+    'p-input-time': '<input type="date" value="13:00" />',
   };
 
   const markup = () =>
@@ -50,12 +52,14 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
           tag === 'p-multi-select' ||
           tag === 'p-textarea' ||
           tag === 'p-checkbox' ||
+          tag === 'p-input-date' ||
+          tag === 'p-input-time' ||
           tag === 'p-select'
             ? ' disabled="true"'
             : '';
 
-        const readOnlyAttribute = tag === 'p-textarea' ? ' read-only="true"' : '';
-        const valueAttribute = tag === 'p-textarea' ? ' value="Some value"' : '';
+        const readOnlyAttribute = tag === 'p-textarea' || tag === 'p-input-date' ? ' read-only="true"' : '';
+        const valueAttribute = tag === 'p-textarea' || tag === 'p-input-date' ? ' value="Some value"' : '';
 
         return `
 <div>
@@ -116,6 +120,16 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
   await forceFocusVisibleState(page, '.focus-hover p-select >>> button');
   await forceFocusHoverState(page, '.focus-hover p-multi-select >>> button');
   await forceFocusHoverState(page, `.focus-hover p-pin-code >>> #${valueOfForAttribute}`);
+
+  await forceHoverState(page, '.hover p-input-date >>> input');
+  await forceFocusState(page, '.focus p-input-date >>> input');
+  await forceFocusVisibleState(page, '.focus-hover p-input-date >>> input');
+  await forceFocusHoverState(page, '.focus-hover p-input-date >>> input');
+
+  await forceHoverState(page, '.hover p-input-time >>> input');
+  await forceFocusState(page, '.focus p-input-time >>> input');
+  await forceFocusVisibleState(page, '.focus-hover p-input-time >>> input');
+  await forceFocusHoverState(page, '.focus-hover p-input-time >>> input');
 };
 
 // executed in Chrome only
