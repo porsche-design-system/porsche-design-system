@@ -76,13 +76,13 @@
   },
   {
     "chunkShortName": "fieldset",
-    "size": 4823,
-    "gzipSize": 2087
+    "size": 4830,
+    "gzipSize": 2090
   },
   {
     "chunkShortName": "fieldset-wrapper",
-    "size": 4939,
-    "gzipSize": 2157
+    "size": 4946,
+    "gzipSize": 2156
   },
   {
     "chunkShortName": "flex",
@@ -187,7 +187,7 @@
   {
     "chunkShortName": "main",
     "size": 86204,
-    "gzipSize": 27723
+    "gzipSize": 27726
   },
   {
     "chunkShortName": "marque",
@@ -236,8 +236,8 @@
   },
   {
     "chunkShortName": "scroller",
-    "size": 6851,
-    "gzipSize": 2684
+    "size": 6610,
+    "gzipSize": 2621
   },
   {
     "chunkShortName": "segmented-control",
@@ -267,7 +267,7 @@
   {
     "chunkShortName": "stepper-horizontal",
     "size": 11967,
-    "gzipSize": 4979
+    "gzipSize": 4977
   },
   {
     "chunkShortName": "switch",
@@ -282,12 +282,12 @@
   {
     "chunkShortName": "tabs",
     "size": 7011,
-    "gzipSize": 2925
+    "gzipSize": 2930
   },
   {
     "chunkShortName": "tabs-bar",
     "size": 10901,
-    "gzipSize": 4317
+    "gzipSize": 4320
   },
   {
     "chunkShortName": "tag",
