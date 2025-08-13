@@ -1,0 +1,18 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { Configurator } from '@/components/playground/Configurator';
+import { flagStory } from '@/app/components/flag/flag.stories';
+
+export const metadata = {
+  title: 'Flag - Porsche Design System',
+  description:
+    "Learn how to use the Porsche Design System's Flag component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
+
+# Flag <ComponentStatus tagName="p-flag"></ComponentStatus>
+
+Along with other Porsche basic elements - such as colors, typography and the Porsche marque - flags are core components
+of the Porsche design. The clear graphic symbols allow quick orientation and are internationally recognized. The Porsche
+Design System is using an **SVG flag system (integrated by `<img/>`)** to visually present a country flag. Each flag is
+hosted on the Porsche Design System CDN to be served and cached as fast as possible.
+
+<Configurator tagName="p-flag" story={flagStory} />
