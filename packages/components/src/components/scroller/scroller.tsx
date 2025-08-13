@@ -137,7 +137,7 @@ export class Scroller {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropIsUsed<typeof Scroller>(this, 'gradientColorScheme', 'Please use gradientColor prop instead.');
+    warnIfDeprecatedPropIsUsed<typeof Scroller>(this, 'gradientColorScheme', 'Prop can be omitted, gradient handling is managed internally.');
     warnIfDeprecatedPropIsUsed<typeof Scroller>(
       this,
       'gradientColor',

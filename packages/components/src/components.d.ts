@@ -2620,7 +2620,7 @@ export namespace Components {
          */
         "activeTabIndex"?: number;
         /**
-          * Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColor"?: TabsGradientColor;
         /**
@@ -2649,11 +2649,11 @@ export namespace Components {
          */
         "activeTabIndex"?: number | undefined;
         /**
-          * Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColor"?: TabsBarGradientColor;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.0.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: TabsBarGradientColorScheme;
         /**
@@ -6887,7 +6887,7 @@ declare namespace LocalJSX {
          */
         "activeTabIndex"?: number;
         /**
-          * Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColor"?: TabsGradientColor;
         /**
@@ -6924,11 +6924,11 @@ declare namespace LocalJSX {
          */
         "activeTabIndex"?: number | undefined;
         /**
-          * Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColor"?: TabsBarGradientColor;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.0.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: TabsBarGradientColorScheme;
         /**
