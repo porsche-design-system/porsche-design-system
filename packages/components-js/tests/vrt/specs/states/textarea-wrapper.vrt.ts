@@ -1,5 +1,6 @@
 import { expect, type Page, test } from '@playwright/test';
-import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing';
+import { type Theme } from '@porsche-design-system/styles';
 import {
   forceFocusHoverState,
   forceFocusState,
@@ -9,7 +10,6 @@ import {
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../../helpers';
-import { type Theme } from '@porsche-design-system/styles';
 
 const component = 'textarea-wrapper';
 

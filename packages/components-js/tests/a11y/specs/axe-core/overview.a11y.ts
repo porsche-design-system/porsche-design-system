@@ -1,6 +1,6 @@
-import { test, expect } from '../../helpers';
+import { viewportWidthM, viewportWidthXXL } from '@porsche-design-system/shared/testing';
 import { setupScenario } from '../../../vrt/helpers';
-import { viewportWidthXXL, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { expect, test } from '../../helpers';
 
 // executed in Chrome only
 test.describe('overview', async () => {

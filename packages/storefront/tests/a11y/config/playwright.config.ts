@@ -1,8 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
-import { config } from '@porsche-design-system/shared/testing/playwright.a11y';
+import { playwrightConfigA11y } from '@porsche-design-system/shared/testing';
 
 export default defineConfig({
-  ...config,
+  ...playwrightConfigA11y,
   projects: [
     {
       name: 'chrome',

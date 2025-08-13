@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
-import { viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { viewportWidths } from '@porsche-design-system/shared/testing';
 import * as globby from 'globby-legacy';
 import path from 'path';
 

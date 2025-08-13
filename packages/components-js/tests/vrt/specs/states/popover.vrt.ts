@@ -1,13 +1,13 @@
-import { type Page, expect, test } from '@playwright/test';
-import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { expect, type Page, test } from '@playwright/test';
+import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing';
 import { type Theme } from '@porsche-design-system/styles';
 import {
-  type PrefersColorScheme,
   forceFocusHoverState,
   forceFocusVisibleState,
   forceHoverState,
   getPlaygroundPseudoStatesMarkup,
   openAllPopover,
+  type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../../helpers';
 

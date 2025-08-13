@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { viewportWidthM, viewportWidthXXL } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { viewportWidthM, viewportWidthXXL } from '@porsche-design-system/shared/testing';
 
 test.describe('overview', async () => {
   test(`should have no visual regression for viewport ${viewportWidthXXL}`, async ({ page }) => {
