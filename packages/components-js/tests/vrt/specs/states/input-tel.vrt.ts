@@ -78,18 +78,17 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   // Hover states
   await forceHoverState(page, '.hover p-input-tel:not(.force-label) input');
   await forceHoverState(page, '.hover p-input-tel.force-label >>> label');
-  await forceHoverState(page, '.hover p-input-tel a');
   await forceHoverState(page, '.hover p-input-tel >>> p-button-pure >>> button');
 
   // Focus states
-  await forceFocusState(page, '.focus p-input-tel input');
-  await forceFocusVisibleState(page, '.focus p-input-tel a');
+  await forceFocusVisibleState(page, '.focus p-input-tel:not(.force-label) input');
+  await forceFocusVisibleState(page, '.focus p-input-tel.force-label >>> label');
+  await forceFocusVisibleState(page, '.focus p-input-tel >>> p-button-pure >>> button');
 
   // Focus + hover states
   await forceFocusHoverState(page, '.focus-hover p-input-tel:not(.force-label) input');
-  await forceFocusState(page, '.focus-hover p-input-tel.force-label input');
-  await forceHoverState(page, '.focus-hover p-input-tel.force-label >>> label');
-  await forceFocusHoverState(page, '.focus-hover p-input-tel a');
+  await forceFocusHoverState(page, '.focus-hover p-input-tel.force-label >>> label');
+  await forceFocusHoverState(page, '.focus-hover p-input-tel >>> p-button-pure >>> button');
 };
 
 // executed in Chrome only

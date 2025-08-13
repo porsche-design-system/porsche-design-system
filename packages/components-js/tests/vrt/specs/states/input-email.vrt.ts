@@ -78,18 +78,17 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   // Hover states
   await forceHoverState(page, '.hover p-input-email:not(.force-label) input');
   await forceHoverState(page, '.hover p-input-email.force-label >>> label');
-  await forceHoverState(page, '.hover p-input-email a');
   await forceHoverState(page, '.hover p-input-email >>> p-button-pure >>> button');
 
   // Focus states
-  await forceFocusState(page, '.focus p-input-email input');
-  await forceFocusVisibleState(page, '.focus p-input-email a');
+  await forceFocusVisibleState(page, '.focus p-input-email:not(.force-label) input');
+  await forceFocusVisibleState(page, '.focus p-input-email.force-label >>> label');
+  await forceFocusVisibleState(page, '.focus p-input-email >>> p-button-pure >>> button');
 
   // Focus + hover states
   await forceFocusHoverState(page, '.focus-hover p-input-email:not(.force-label) input');
-  await forceFocusState(page, '.focus-hover p-input-email.force-label input');
-  await forceHoverState(page, '.focus-hover p-input-email.force-label >>> label');
-  await forceFocusHoverState(page, '.focus-hover p-input-email a');
+  await forceFocusHoverState(page, '.focus-hover p-input-email.force-label >>> label');
+  await forceFocusHoverState(page, '.focus-hover p-input-email >>> p-button-pure >>> button');
 };
 
 // executed in Chrome only

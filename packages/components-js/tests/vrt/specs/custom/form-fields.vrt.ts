@@ -47,7 +47,6 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
     'p-input-text': '',
     'p-input-time': '',
     'p-input-url': '',
-
   };
 
   const markup = () =>
@@ -68,7 +67,7 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
           tag === 'p-input-search' ||
           tag === 'p-input-tel' ||
           tag === 'p-input-text' ||
-          tag === 'p-input-url'
+          tag === 'p-input-url' ||
           tag === 'p-select'
             ? ' disabled="true"'
             : '';
@@ -100,7 +99,6 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
           tag === 'p-input-url'
             ? ' value="Some value"'
             : '';
-
 
         return `
 <div>
@@ -139,7 +137,9 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
   await forceHoverState(page, '.hover input');
   await forceHoverState(page, '.hover p-checkbox >>> input');
   await forceHoverState(page, '.hover select');
+
   await forceHoverState(page, '.hover textarea');
+
   await forceHoverState(page, '.hover p-select >>> button');
   await forceHoverState(page, '.hover p-multi-select >>> button');
   await forceHoverState(page, `.hover p-pin-code >>> #${valueOfForAttribute}`);
@@ -161,6 +161,11 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
   await forceFocusVisibleState(page, '.focus-hover p-select >>> button');
   await forceFocusHoverState(page, '.focus-hover p-multi-select >>> button');
   await forceFocusHoverState(page, `.focus-hover p-pin-code >>> #${valueOfForAttribute}`);
+
+  await forceHoverState(page, '.hover p-textarea >>> textarea');
+  await forceFocusState(page, '.focus p-textarea >>> textarea');
+  await forceFocusVisibleState(page, '.focus-hover p-textarea >>> textarea');
+  await forceFocusHoverState(page, '.focus-hover p-textarea >>> textarea');
 
   await forceHoverState(page, '.hover p-input-date >>> input');
   await forceFocusState(page, '.focus p-input-date >>> input');
@@ -206,7 +211,6 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
   await forceFocusState(page, '.focus p-input-url >>> input');
   await forceFocusVisibleState(page, '.focus-hover p-input-url >>> input');
   await forceFocusHoverState(page, '.focus-hover p-input-url >>> input');
-
 };
 
 // executed in Chrome only
