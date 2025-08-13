@@ -67,7 +67,7 @@ export class Scroller {
   /**
    * @deprecated since v3.29.0, will be removed with next major release.
    * Adapts the background gradient color of prev and next button. */
-  @Prop() public gradientColor?: ScrollerGradientColor = 'background-base';
+  @Prop() public gradientColor?: ScrollerGradientColor;
 
   /** Scrolls the scroll area to the left either smooth or immediately. */
   @Prop({ mutable: true }) public scrollToPosition?: ScrollerScrollToPosition;

@@ -2263,11 +2263,11 @@ export namespace Components {
          */
         "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
         /**
-          * Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColor"?: ScrollerGradientColor;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.0.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: ScrollerGradientColorScheme;
         /**
@@ -6482,11 +6482,11 @@ declare namespace LocalJSX {
          */
         "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
         /**
-          * Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColor"?: ScrollerGradientColor;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.0.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: ScrollerGradientColorScheme;
         /**
