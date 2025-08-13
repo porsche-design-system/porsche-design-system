@@ -126,12 +126,14 @@ import { HeadingComponent } from './generated/heading.component';
 import { HeadlineComponent } from './generated/headline.component';
 import { IconComponent } from './generated/icon.component';
 import { InlineNotificationComponent } from './generated/inline-notification.component';
+import { InputDateComponent } from './generated/input-date.component';
 import { InputEmailComponent } from './generated/input-email.component';
 import { InputNumberComponent } from './generated/input-number.component';
 import { InputPasswordComponent } from './generated/input-password.component';
 import { InputSearchComponent } from './generated/input-search.component';
 import { InputTelComponent } from './generated/input-tel.component';
 import { InputTextComponent } from './generated/input-text.component';
+import { InputTimeComponent } from './generated/input-time.component';
 import { InputUrlComponent } from './generated/input-url.component';
 import { LinkComponent } from './generated/link.component';
 import { LinkPureComponent } from './generated/link-pure.component';
@@ -348,12 +350,14 @@ export const generatedPages = [
   HeadlineComponent,
   IconComponent,
   InlineNotificationComponent,
+  InputDateComponent,
   InputEmailComponent,
   InputNumberComponent,
   InputPasswordComponent,
   InputSearchComponent,
   InputTelComponent,
   InputTextComponent,
+  InputTimeComponent,
   InputUrlComponent,
   LinkComponent,
   LinkPureComponent,
@@ -947,6 +951,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: InlineNotificationComponent,
   },
   {
+    name: 'Input Date',
+    path: 'input-date',
+    component: InputDateComponent,
+  },
+  {
     name: 'Input Email',
     path: 'input-email',
     component: InputEmailComponent,
@@ -975,6 +984,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Input Text',
     path: 'input-text',
     component: InputTextComponent,
+  },
+  {
+    name: 'Input Time',
+    path: 'input-time',
+    component: InputTimeComponent,
   },
   {
     name: 'Input Url',

@@ -1,4 +1,4 @@
-- text: Readonly Some description
-- textbox "Readonly": https://designsystem.porsche.com/
+- text: Required
+- textbox "Required"
 - alert
 - status
