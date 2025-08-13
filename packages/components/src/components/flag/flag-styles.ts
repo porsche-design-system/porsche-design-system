@@ -28,6 +28,7 @@ export const getComponentCss = (size: FlagSize): string => {
     '@global': {
       ':host': {
         display: 'inline-block',
+        verticalAlign: 'top',
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,

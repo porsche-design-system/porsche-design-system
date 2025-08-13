@@ -220,6 +220,10 @@ const generatedRoutes = {
     "path": "/fieldset-wrapper",
     "name": "FieldsetWrapper"
   },
+  "flag": {
+    "path": "/flag",
+    "name": "Flag"
+  },
   "flex": {
     "path": "/flex",
     "name": "Flex"

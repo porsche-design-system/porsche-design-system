@@ -1,16 +1,19 @@
 import './style.css';
 
+import { FLAG_NAMES, ICON_NAMES } from '@porsche-design-system/assets';
 import { componentsReady } from '@porsche-design-system/components-js';
-
 import { pdsTheme } from '@porsche-design-system/components-js/ag-grid';
 import { dataAdvanced } from '@porsche-design-system/shared';
 import * as agGrid from 'ag-grid-enterprise';
 import {
   AllEnterpriseModule,
   ModuleRegistry,
-  ValidationModule /* Development Only */,
   provideGlobalGridOptions,
+  ValidationModule /* Development Only */,
 } from 'ag-grid-enterprise';
+
+window.FLAG_NAMES = FLAG_NAMES;
+window.ICON_NAMES = ICON_NAMES;
 
 const getPage = () => window.location.pathname.substring(1);
 const getTheme = () => new URL(document.location).searchParams.get('theme') || 'light';
