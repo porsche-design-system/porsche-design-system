@@ -8208,11 +8208,13 @@ exports[`should match snapshot 1`] = `
       },
       "gradientColor": {
         "allowedValues": [
+          null,
           "background-base",
           "background-surface",
         ],
-        "defaultValue": "background-base",
-        "description": "Adapts the background gradient color of prev and next button.",
+        "defaultValue": null,
+        "description": "@deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.",
+        "isDeprecated": true,
         "type": "ScrollerGradientColor",
       },
       "gradientColorScheme": {
@@ -8222,7 +8224,7 @@ exports[`should match snapshot 1`] = `
           "surface",
         ],
         "defaultValue": null,
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`gradientColor\` instead. Adapts the background gradient color of prev and next button.",
+        "description": "@deprecated since v3.0.0, will be removed with next major release. Adapts the background gradient color of prev and next button.",
         "isDeprecated": true,
         "type": "ScrollerGradientColorScheme",
       },
@@ -9778,11 +9780,13 @@ exports[`should match snapshot 1`] = `
       },
       "gradientColor": {
         "allowedValues": [
+          null,
           "background-base",
           "background-surface",
         ],
-        "defaultValue": "background-base",
-        "description": "Adapts the background gradient color of prev and next button.",
+        "defaultValue": null,
+        "description": "@deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.",
+        "isDeprecated": true,
         "type": "TabsGradientColor",
       },
       "gradientColorScheme": {
@@ -9881,11 +9885,13 @@ exports[`should match snapshot 1`] = `
       },
       "gradientColor": {
         "allowedValues": [
+          null,
           "background-base",
           "background-surface",
         ],
-        "defaultValue": "background-base",
-        "description": "Adapts the background gradient color of prev and next button.",
+        "defaultValue": null,
+        "description": "@deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.",
+        "isDeprecated": true,
         "type": "TabsBarGradientColor",
       },
       "gradientColorScheme": {
@@ -9895,7 +9901,7 @@ exports[`should match snapshot 1`] = `
           "surface",
         ],
         "defaultValue": null,
-        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`gradientColor\` instead. Adapts the background gradient color of prev and next button.",
+        "description": "@deprecated since v3.0.0, will be removed with next major release. Adapts the background gradient color of prev and next button.",
         "isDeprecated": true,
         "type": "TabsBarGradientColorScheme",
       },
