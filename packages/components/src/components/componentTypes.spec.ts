@@ -1,8 +1,8 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
-import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 import type { TagName } from '@porsche-design-system/shared';
+import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 import { pascalCase } from 'change-case-legacy';
 import * as globby from 'globby-legacy';
 
@@ -24,7 +24,7 @@ describe.each<TagName>(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))
         const [, type] =
           sourceFileContent.match(
             new RegExp(
-              `@Prop\\(.*?\\) public ${prop}\\??: (?:BreakpointCustomizable|SelectedAriaAttributes)?<?([a-zA-Z[\\]]+)>?`
+              `@Prop\\(.*?\\) public ${prop}\\??: (?:BreakpointCustomizable|SelectedAriaAttributes|SelectedAriaRole)?<?([a-zA-Z[\\]]+)>?`
             )
           ) || [];
 
@@ -43,7 +43,7 @@ describe.each<TagName>(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))
           const propSuffix = prop === 'aria' ? 'Attribute' : '';
           expect(type).toMatch(
             new RegExp(
-              `^${pascalCase(`${componentName}-${prop === 'intl' ? 'Internationalization' : prop}${propSuffix}`)}$`
+              `^${pascalCase(`${componentName}-${prop === 'intl' ? 'Internationalization' : prop}${propSuffix}`)}$|SelectedAriaRole`
             )
           );
         }
