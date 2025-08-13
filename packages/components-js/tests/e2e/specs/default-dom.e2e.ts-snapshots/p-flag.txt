@@ -1,0 +1,7 @@
+<img
+  src="http://localhost:3001/flags/de.b575e11.svg"
+  width="24"
+  height="24"
+  loading="lazy"
+  alt=""
+/>
