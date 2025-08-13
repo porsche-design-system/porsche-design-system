@@ -3,7 +3,7 @@ import { type Config } from '@playwright/test';
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-export const config: Config = {
+export const playwrightConfigE2E: Config = {
   testDir: '../specs',
   testMatch: '**.e2e.ts',
   /* Maximum time one test can run for. */

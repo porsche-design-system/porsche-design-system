@@ -1,10 +1,7 @@
-export * from './models';
 export * from './data';
 export * from './lib/partialNames';
 export * from './lib/tagNames';
 export * from './lib/tagNamesWithChunk';
+export * from './models';
 export * from './styles';
 export * from './utils';
-export * from './testing/playwright.vrt';
-export { config as playwrightConfigE2E } from './testing/playwright.e2e';
-export { config as playwrightConfigA11y } from './testing/playwright.a11y';

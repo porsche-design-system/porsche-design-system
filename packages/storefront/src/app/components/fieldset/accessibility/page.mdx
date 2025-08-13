@@ -8,17 +8,27 @@ export const metadata = {
 
 # Fieldset <ComponentStatus tagName="p-fieldset"></ComponentStatus>
 
-<TableOfContents headings={['Accessibility support','Tests']} />
+<TableOfContents headings={['Accessibility support', 'Tests']} />
 
 ## Accessibility support
 
 ### ARIA enhancements
+
+### ARIA enhancements
+
+#### External **ARIA** provided by the `aria` property:
+
+| ARIA                | Usage                                               |
+| ------------------- | --------------------------------------------------- |
+| `role="radiogroup"` | Changes the default role of `group` to `radiogroup` |
 
 #### Internal **ARIA** that is managed by the component:
 
 | ARIA                       | Usage                                                                                            |
 | -------------------------- | ------------------------------------------------------------------------------------------------ |
 | `role="alert"`             | When content is populated or changed in `state="error"`, the component announces it immediately. |
+| `aria-required="true"`     | Indicates if all children of the fieldset group are required.                                    |
+| `aria-invalid="true"`      | If `error` state is set.                                                                         |
 | `aria-describedby="IDREF"` | References the accessible description when `state` message is provided.                          |
 
 ## Tests

@@ -3,7 +3,7 @@ import { type Config } from '@playwright/test';
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-export const config: Config = {
+export const playwrightConfigA11y: Config = {
   testDir: '../specs',
   testMatch: '**.a11y.ts',
   /* Maximum time one test can run for. */
