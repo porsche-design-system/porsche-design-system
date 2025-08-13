@@ -55,6 +55,13 @@ export const getComponentCss = (
       gridArea: '1 / 1 / 1 / -1',
       padding: '4px',
       overflow: 'auto hidden',
+      ...((!isPrevHidden || !isNextHidden) && {
+        mask: isNextHidden
+          ? 'linear-gradient(90deg,#0000 8px,#000 40px) alpha'
+          : isPrevHidden
+            ? 'linear-gradient(90deg,#000 calc(100% - 40px), #0000 calc(100% - 8px)) alpha'
+            : 'linear-gradient(90deg,#0000 8px,#000 40px calc(100% - 40px),#0000 calc(100% - 8px)) alpha',
+      }),
       ...(!hasScrollbar && {
         // If scrollbar is disabled - hide scrollbar
         msOverflowStyle: 'none' /* IE and Edge */,
@@ -62,11 +69,6 @@ export const getComponentCss = (
         '&::-webkit-scrollbar': {
           display: 'none',
         },
-        mask: isNextHidden
-          ? 'linear-gradient(90deg,#0000 8px,#000 40px) alpha'
-          : isPrevHidden
-            ? 'linear-gradient(90deg,#000 calc(100% - 40px), #0000 calc(100% - 8px)) alpha'
-            : 'linear-gradient(90deg,#0000 8px,#000 40px calc(100% - 40px),#0000 calc(100% - 8px)) alpha',
       }),
     },
     // Extra wrapper needed to compensate different offset parent calculation depending on browser.
