@@ -491,12 +491,10 @@ test.describe('lifecycle', () => {
 
 test.describe('Picker', () => {
   skipInBrowsers(['firefox', 'webkit'], () => {
-    test('should call showPicker when calendar button is clicked', async ({ page }) => {
+    test.beforeEach(async ({ page }) => {
       await initInputDate(page, { props: { name: 'some-name' } });
 
       const inputDate = getInputDate(page);
-      const inputDateShowPickerButton = getInputDateShowPickerButton(page)
-
       await inputDate.waitFor();
 
       await inputDate.evaluate((input: HTMLInputElement) => {
@@ -507,8 +505,28 @@ test.describe('Picker', () => {
           if (original) original.call(input);
         };
       });
+    });
+
+    test('should call showPicker when calendar button is clicked', async ({ page }) => {
+      const inputDate = getInputDate(page);
+      const inputDateShowPickerButton = getInputDateShowPickerButton(page);
 
       await inputDateShowPickerButton.click();
+
+      const called = await inputDate.evaluate((input: HTMLInputElement) => {
+        return (input as any).showPickerCalled;
+      });
+      expect(called).toBe(true);
+    });
+
+    test('should call showPicker when calendar button is activated with keyboard', async ({ page }) => {
+      const inputDate = getInputDate(page);
+      await inputDate.click();
+
+      await inputDate.press('Tab');
+      await inputDate.press('Tab');
+      await inputDate.press('Tab');
+      await page.keyboard.press('Enter');
 
       const called = await inputDate.evaluate((input: HTMLInputElement) => {
         return (input as any).showPickerCalled;

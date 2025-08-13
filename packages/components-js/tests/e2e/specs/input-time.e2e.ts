@@ -490,12 +490,10 @@ test.describe('lifecycle', () => {
 
 test.describe('Picker', () => {
   skipInBrowsers(['firefox', 'webkit'], () => {
-    test('should call showPicker when time button is clicked', async ({ page }) => {
+    test.beforeEach(async ({ page }) => {
       await initInputTime(page, { props: { name: 'some-name' } });
 
       const inputTime = getInputTime(page);
-      const inputTimeShowPickerButton = getInputTimeShowPickerButton(page)
-
       await inputTime.waitFor();
 
       await inputTime.evaluate((input: HTMLInputElement) => {
@@ -506,8 +504,28 @@ test.describe('Picker', () => {
           if (original) original.call(input);
         };
       });
+    });
+
+    test('should call showPicker when time button is clicked', async ({ page }) => {
+      const inputTime = getInputTime(page);
+      const inputTimeShowPickerButton = getInputTimeShowPickerButton(page);
 
       await inputTimeShowPickerButton.click();
+
+      const called = await inputTime.evaluate((input: HTMLInputElement) => {
+        return (input as any).showPickerCalled;
+      });
+      expect(called).toBe(true);
+    });
+
+    test('should call showPicker when time button is activated with keyboard', async ({ page }) => {
+      const inputTime = getInputTime(page);
+      await inputTime.click();
+
+      await inputTime.press('Tab');
+      await inputTime.press('Tab');
+      await inputTime.press('Tab');
+      await page.keyboard.press('Enter');
 
       const called = await inputTime.evaluate((input: HTMLInputElement) => {
         return (input as any).showPickerCalled;
