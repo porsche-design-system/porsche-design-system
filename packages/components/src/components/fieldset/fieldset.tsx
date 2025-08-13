@@ -1,19 +1,27 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
+import type { PropTypes, SelectedAriaRole, Theme } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
   hasLabel,
   hasMessage,
+  hasPropValueChanged,
   THEMES,
   validateProps,
 } from '../../utils';
-import type { PropTypes, Theme } from '../../types';
-import { type FieldsetLabelSize, type FieldsetState, FIELDSET_LABEL_SIZES } from './fieldset-utils';
-import { getComponentCss } from './fieldset-styles';
-import { messageId, StateMessage } from '../common/state-message/state-message';
-import { Required } from '../common/required/required';
 import type { FormState } from '../../utils/form/form-state';
+import { Required } from '../common/required/required';
+import { messageId, StateMessage } from '../common/state-message/state-message';
+import { getComponentCss } from './fieldset-styles';
+import {
+  FIELDSET_ARIA_ATTRIBUTES,
+  FIELDSET_LABEL_SIZES,
+  type FieldsetAriaAttribute,
+  type FieldsetLabelSize,
+  type FieldsetState,
+  getFieldsetAriaAttributes,
+} from './fieldset-utils';
 
 const propTypes: PropTypes<typeof Fieldset> = {
   label: AllowedTypes.string,
@@ -22,6 +30,8 @@ const propTypes: PropTypes<typeof Fieldset> = {
   state: AllowedTypes.oneOf<FormState>(FORM_STATES),
   message: AllowedTypes.string,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
+  // AllowedTypes do not match exactly the @Prop type because the 'aria' function does not allow for key-value pairs.
+  aria: AllowedTypes.aria<FieldsetAriaAttribute>(FIELDSET_ARIA_ATTRIBUTES),
 };
 
 /**
@@ -54,6 +64,13 @@ export class Fieldset {
   /** Adapts color depending on theme. */
   @Prop() public theme?: Theme = 'light';
 
+  /** Add ARIA attributes. */
+  @Prop() public aria?: SelectedAriaRole<'radiogroup'>;
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
+  }
+
   public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(
@@ -68,7 +85,10 @@ export class Fieldset {
     const hasMessageValue = hasMessage(this.host, this.message, this.state);
 
     return (
-      <fieldset aria-describedby={hasMessageValue ? messageId : null}>
+      <fieldset
+        aria-describedby={hasMessageValue ? messageId : null}
+        {...getFieldsetAriaAttributes(this.required, this.state === 'error', this.aria)}
+      >
         {hasLabel(this.host, this.label) && (
           <legend>
             {this.label || <slot name="label" />}
