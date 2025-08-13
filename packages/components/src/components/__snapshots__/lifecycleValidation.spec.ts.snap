@@ -222,6 +222,7 @@ exports[`should call validateProps() with correct parameters via render for p-dr
 
 exports[`should call validateProps() with correct parameters via render for p-fieldset: propTypes with ValidatorFunctions 1`] = `
 {
+  "aria": "aria",
   "label": "string",
   "labelSize": "oneOf",
   "message": "string",
