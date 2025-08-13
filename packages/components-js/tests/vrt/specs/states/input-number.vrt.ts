@@ -105,8 +105,8 @@ test.describe(component, async () => {
 
   schemes.forEach((scheme) => {
     test(`should have no visual regression for :hover + :focus-visible with theme auto and prefers-color-scheme ${scheme}`, async ({
-                                                                                                                                     page,
-                                                                                                                                   }) => {
+      page,
+    }) => {
       await scenario(page, 'auto', scheme);
       await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-states-theme-${scheme}.png`);
     });
