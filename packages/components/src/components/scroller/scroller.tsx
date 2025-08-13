@@ -34,7 +34,7 @@ import {
 
 const propTypes: PropTypes<typeof Scroller> = {
   gradientColorScheme: AllowedTypes.oneOf<ScrollerGradientColorScheme>([undefined, ...GRADIENT_COLOR_SCHEMES]),
-  gradientColor: AllowedTypes.oneOf<ScrollerGradientColor>(GRADIENT_COLORS),
+  gradientColor: AllowedTypes.oneOf<ScrollerGradientColor>([undefined, ...GRADIENT_COLORS]),
   scrollToPosition: AllowedTypes.shape<ScrollerScrollToPosition>({
     scrollPosition: AllowedTypes.number,
     isSmooth: AllowedTypes.boolean,
@@ -60,11 +60,13 @@ export class Scroller {
   @Element() public host!: HTMLElement;
 
   /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead.
+   * @deprecated since v3.0.0, will be removed with next major release.
    * Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: ScrollerGradientColorScheme;
 
-  /** Adapts the background gradient color of prev and next button. */
+  /**
+   * @deprecated since v3.29.0, will be removed with next major release.
+   * Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColor?: ScrollerGradientColor = 'background-base';
 
   /** Scrolls the scroll area to the left either smooth or immediately. */
@@ -136,6 +138,11 @@ export class Scroller {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     warnIfDeprecatedPropIsUsed<typeof Scroller>(this, 'gradientColorScheme', 'Please use gradientColor prop instead.');
+    warnIfDeprecatedPropIsUsed<typeof Scroller>(
+      this,
+      'gradientColor',
+      'Prop can be omitted, gradient handling is managed internally.'
+    );
     warnIfDeprecatedPropIsUsed<typeof Scroller>(
       this,
       'scrollIndicatorPosition',
