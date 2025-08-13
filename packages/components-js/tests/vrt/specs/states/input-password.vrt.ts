@@ -11,7 +11,7 @@ import {
   setContentWithDesignSystem,
 } from '../../helpers';
 
-const component = 'input-date';
+const component = 'input-password';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
   const head = `
@@ -26,47 +26,47 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       .playground div:not(:last-child) {
         margin-bottom: 1rem;
       }
-      input[type="date"] { min-height: initial; }
+      input[type="password"] { min-height: initial; }
     </style>`;
 
   const markup = () => `
     <div>
-      <p-input-date label="Default" value="2025-08-13"></p-input-date>
-      <p-input-date label="Error" state="error" message="Error" value="2025-08-13"></p-input-date>
-      <p-input-date label="Success" state="success" message="Success" value="2025-08-13"></p-input-date>
+      <p-input-password label="Default" value="password123"></p-input-password>
+      <p-input-password label="Error" state="error" message="Error" value="password123"></p-input-password>
+      <p-input-password label="Success" state="success" message="Success" value="password123"></p-input-password>
     </div>
     <div>
-      <p-input-date label="Readonly" value="2025-08-13" read-only></p-input-date>
-      <p-input-date label="Readonly Error" state="error" message="Error" value="2025-08-13" read-only></p-input-date>
-      <p-input-date label="Readonly Success" state="success" message="Success" value="2025-08-13" read-only></p-input-date>
+      <p-input-password label="Readonly" value="password123" read-only></p-input-password>
+      <p-input-password label="Readonly Error" state="error" message="Error" value="password123" read-only></p-input-password>
+      <p-input-password label="Readonly Success" state="success" message="Success" value="password123" read-only></p-input-password>
     </div>
     <div>
-      <p-input-date label="Disabled" value="2025-08-13" disabled></p-input-date>
-      <p-input-date label="Disabled Error" state="error" message="Error" value="2025-08-13" disabled></p-input-date>
-      <p-input-date label="Disabled Success" state="success" message="Success" value="2025-08-13" disabled></p-input-date>
+      <p-input-password label="Disabled" value="password123" disabled></p-input-password>
+      <p-input-password label="Disabled Error" state="error" message="Error" value="password123" disabled></p-input-password>
+      <p-input-password label="Disabled Success" state="success" message="Success" value="password123" disabled></p-input-password>
     </div>
     <div>
-      <p-input-date value="2025-08-13">
+      <p-input-password value="password123">
         <span slot="label">
           Slotted label
         </span>
         <span slot="description">
           Slotted description
         </span>
-      </p-input-date>
-      <p-input-date label="Error" description="Some description" state="error" value="2025-08-13">
+      </p-input-password>
+      <p-input-password label="Error" description="Some description" state="error" value="password123">
         <span slot="message">
           Slotted error message
         </span>
-      </p-input-date>
-      <p-input-date label="Success" description="Some description" state="success" value="2025-08-13">
+      </p-input-password>
+      <p-input-password label="Success" description="Some description" state="success" value="password123">
         <span slot="message">
           Slotted success message
         </span>
-      </p-input-date>
+      </p-input-password>
     </div>
     <div>
-      <p-input-date class="force-label" label="Label gets hovered or focussed" value="2025-08-13"></p-input-date>
+      <p-input-password class="force-label" label="Label gets hovered or focussed" value="password123"></p-input-password>
     </div>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
@@ -76,20 +76,20 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   });
 
   // Hover states
-  await forceHoverState(page, '.hover p-input-date:not(.force-label) input');
-  await forceHoverState(page, '.hover p-input-date.force-label >>> label');
-  await forceHoverState(page, '.hover p-input-date a');
-  await forceHoverState(page, '.hover p-input-date >>> p-button-pure >>> button');
+  await forceHoverState(page, '.hover p-input-password:not(.force-label) input');
+  await forceHoverState(page, '.hover p-input-password.force-label >>> label');
+  await forceHoverState(page, '.hover p-input-password a');
+  await forceHoverState(page, '.hover p-input-password >>> p-button-pure >>> button');
 
   // Focus states
-  await forceFocusState(page, '.focus p-input-date input');
-  await forceFocusVisibleState(page, '.focus p-input-date a');
+  await forceFocusState(page, '.focus p-input-password input');
+  await forceFocusVisibleState(page, '.focus p-input-password a');
 
   // Focus + hover states
-  await forceFocusHoverState(page, '.focus-hover p-input-date:not(.force-label) input');
-  await forceFocusState(page, '.focus-hover p-input-date.force-label input');
-  await forceHoverState(page, '.focus-hover p-input-date.force-label >>> label');
-  await forceFocusHoverState(page, '.focus-hover p-input-date a');
+  await forceFocusHoverState(page, '.focus-hover p-input-password:not(.force-label) input');
+  await forceFocusState(page, '.focus-hover p-input-password.force-label input');
+  await forceHoverState(page, '.focus-hover p-input-password.force-label >>> label');
+  await forceFocusHoverState(page, '.focus-hover p-input-password a');
 };
 
 // executed in Chrome only

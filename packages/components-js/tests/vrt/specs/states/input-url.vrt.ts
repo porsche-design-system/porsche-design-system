@@ -11,7 +11,7 @@ import {
   setContentWithDesignSystem,
 } from '../../helpers';
 
-const component = 'input-date';
+const component = 'input-url';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
   const head = `
@@ -26,47 +26,47 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       .playground div:not(:last-child) {
         margin-bottom: 1rem;
       }
-      input[type="date"] { min-height: initial; }
+      input[type="url"] { min-height: initial; }
     </style>`;
 
   const markup = () => `
     <div>
-      <p-input-date label="Default" value="2025-08-13"></p-input-date>
-      <p-input-date label="Error" state="error" message="Error" value="2025-08-13"></p-input-date>
-      <p-input-date label="Success" state="success" message="Success" value="2025-08-13"></p-input-date>
+      <p-input-url label="Default" value="https://example.com"></p-input-url>
+      <p-input-url label="Error" state="error" message="Error" value="https://example.com"></p-input-url>
+      <p-input-url label="Success" state="success" message="Success" value="https://example.com"></p-input-url>
     </div>
     <div>
-      <p-input-date label="Readonly" value="2025-08-13" read-only></p-input-date>
-      <p-input-date label="Readonly Error" state="error" message="Error" value="2025-08-13" read-only></p-input-date>
-      <p-input-date label="Readonly Success" state="success" message="Success" value="2025-08-13" read-only></p-input-date>
+      <p-input-url label="Readonly" value="https://example.com" read-only></p-input-url>
+      <p-input-url label="Readonly Error" state="error" message="Error" value="https://example.com" read-only></p-input-url>
+      <p-input-url label="Readonly Success" state="success" message="Success" value="https://example.com" read-only></p-input-url>
     </div>
     <div>
-      <p-input-date label="Disabled" value="2025-08-13" disabled></p-input-date>
-      <p-input-date label="Disabled Error" state="error" message="Error" value="2025-08-13" disabled></p-input-date>
-      <p-input-date label="Disabled Success" state="success" message="Success" value="2025-08-13" disabled></p-input-date>
+      <p-input-url label="Disabled" value="https://example.com" disabled></p-input-url>
+      <p-input-url label="Disabled Error" state="error" message="Error" value="https://example.com" disabled></p-input-url>
+      <p-input-url label="Disabled Success" state="success" message="Success" value="https://example.com" disabled></p-input-url>
     </div>
     <div>
-      <p-input-date value="2025-08-13">
+      <p-input-url value="https://example.com">
         <span slot="label">
           Slotted label
         </span>
         <span slot="description">
           Slotted description
         </span>
-      </p-input-date>
-      <p-input-date label="Error" description="Some description" state="error" value="2025-08-13">
+      </p-input-url>
+      <p-input-url label="Error" description="Some description" state="error" value="https://example.com">
         <span slot="message">
           Slotted error message
         </span>
-      </p-input-date>
-      <p-input-date label="Success" description="Some description" state="success" value="2025-08-13">
+      </p-input-url>
+      <p-input-url label="Success" description="Some description" state="success" value="https://example.com">
         <span slot="message">
           Slotted success message
         </span>
-      </p-input-date>
+      </p-input-url>
     </div>
     <div>
-      <p-input-date class="force-label" label="Label gets hovered or focussed" value="2025-08-13"></p-input-date>
+      <p-input-url class="force-label" label="Label gets hovered or focussed" value="https://example.com"></p-input-url>
     </div>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
@@ -76,20 +76,20 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   });
 
   // Hover states
-  await forceHoverState(page, '.hover p-input-date:not(.force-label) input');
-  await forceHoverState(page, '.hover p-input-date.force-label >>> label');
-  await forceHoverState(page, '.hover p-input-date a');
-  await forceHoverState(page, '.hover p-input-date >>> p-button-pure >>> button');
+  await forceHoverState(page, '.hover p-input-url:not(.force-label) input');
+  await forceHoverState(page, '.hover p-input-url.force-label >>> label');
+  await forceHoverState(page, '.hover p-input-url a');
+  await forceHoverState(page, '.hover p-input-url >>> p-button-pure >>> button');
 
   // Focus states
-  await forceFocusState(page, '.focus p-input-date input');
-  await forceFocusVisibleState(page, '.focus p-input-date a');
+  await forceFocusState(page, '.focus p-input-url input');
+  await forceFocusVisibleState(page, '.focus p-input-url a');
 
   // Focus + hover states
-  await forceFocusHoverState(page, '.focus-hover p-input-date:not(.force-label) input');
-  await forceFocusState(page, '.focus-hover p-input-date.force-label input');
-  await forceHoverState(page, '.focus-hover p-input-date.force-label >>> label');
-  await forceFocusHoverState(page, '.focus-hover p-input-date a');
+  await forceFocusHoverState(page, '.focus-hover p-input-url:not(.force-label) input');
+  await forceFocusState(page, '.focus-hover p-input-url.force-label input');
+  await forceHoverState(page, '.focus-hover p-input-url.force-label >>> label');
+  await forceFocusHoverState(page, '.focus-hover p-input-url a');
 };
 
 // executed in Chrome only
