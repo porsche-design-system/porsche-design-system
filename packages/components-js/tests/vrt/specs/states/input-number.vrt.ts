@@ -4,7 +4,6 @@ import { type Theme } from '@porsche-design-system/styles';
 import {
   forceFocusHoverState,
   forceFocusState,
-  forceFocusVisibleState,
   forceHoverState,
   getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
@@ -81,9 +80,9 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   await forceHoverState(page, '.hover p-input-number >>> p-button-pure >>> button');
 
   // Focus states
-  await forceFocusVisibleState(page, '.focus p-input-number:not(.force-label) input');
-  await forceFocusVisibleState(page, '.focus p-input-number.force-label >>> label');
-  await forceFocusVisibleState(page, '.focus p-input-number >>> p-button-pure >>> button');
+  await forceFocusState(page, '.focus p-input-number:not(.force-label) input');
+  await forceFocusState(page, '.focus p-input-number.force-label >>> label');
+  await forceFocusState(page, '.focus p-input-number >>> p-button-pure >>> button');
 
   // Focus + hover states
   await forceFocusHoverState(page, '.focus-hover p-input-number:not(.force-label) input');
