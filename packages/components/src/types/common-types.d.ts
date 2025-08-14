@@ -1,6 +1,7 @@
 // common type definitions
 import type { IconName } from '@porsche-design-system/icons';
 
+export type { FlagName } from '@porsche-design-system/flags';
 export type { IconName } from '@porsche-design-system/icons';
 export type { ButtonAriaAttribute, LinkAriaAttribute } from '../utils';
 export type { BreakpointCustomizable } from '../utils/breakpoint-customizable';

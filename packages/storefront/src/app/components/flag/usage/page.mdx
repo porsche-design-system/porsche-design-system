@@ -1,0 +1,39 @@
+import { ComponentStatus } from '@/components/components/ComponentStatus';
+import { TableOfContents } from '@/components/common/TableOfContents';
+
+export const metadata = {
+  title: 'Flag - Porsche Design System',
+  description:
+    'Learn how to properly use the Flag component with best practices and guidelines for effective design and user experience.',
+};
+
+# Flag <ComponentStatus tagName="p-flag"></ComponentStatus>
+
+<TableOfContents headings={[]} />
+
+## Usage
+
+The following guidelines provide instructions for designers and developers on the appropriate use of the `flag`
+component for effective communication and user experience.
+
+### Do:
+
+- **Use the `flag` component for country identification.** The primary purpose is to represent a nation, such as
+  specifying a user's country of origin, shipping location, or detailing product availability.
+
+- **Pair the flag with a label for clarity.** While flags are great for quick visual recognition, they can be ambiguous.
+  Always accompany a flag with a country name or an appropriate label to avoid confusion.
+
+- **Use the two-letter ISO 3166-1 alpha-2 code.** This standard ensures consistency, reduces errors, and makes it easier
+  to integrate with other systems and APIs.
+
+### Don't:
+
+- **Don't use flags to represent a language.** Many languages are spoken in multiple countries (e.g., Spanish). A flag
+  represents a nation, not a language. Use language codes or names instead.
+
+- **Don't use flags to represent an emotion or concept.** Flags are powerful symbols of national identity. Using them as
+  generic icons can dilute their meaning and cause user confusion.
+
+- **Don't rely solely on the flag icon.** Always provide an aria-label for accessibility. Screen readers cannot
+  interpret flags, and without a descriptive label, you create an inaccessible user experience.

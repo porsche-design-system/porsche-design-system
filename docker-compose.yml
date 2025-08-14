@@ -20,6 +20,7 @@ services:
       - assets-node-modules:/opt/repository/packages/assets/node_modules
       - assets-crest-node-modules:/opt/repository/packages/assets/projects/crest/node_modules
       - assets-fallbacks-node-modules:/opt/repository/packages/assets/projects/fallbacks/node_modules
+      - assets-flags-node-modules:/opt/repository/packages/assets/projects/flags/node_modules
       - assets-fonts-node-modules:/opt/repository/packages/assets/projects/fonts/node_modules
       - assets-icons-node-modules:/opt/repository/packages/assets/projects/icons/node_modules
       - assets-marque-node-modules:/opt/repository/packages/assets/projects/marque/node_modules
@@ -59,6 +60,7 @@ services:
       - assets-node-modules:/opt/repository-volumes/assets-node_modules
       - assets-crest-node-modules:/opt/repository-volumes/assets-crest-node_modules
       - assets-fallbacks-node-modules:/opt/repository-volumes/assets-fallbacks-node_modules
+      - assets-flags-node-modules:/opt/repository-volumes/assets-flags-node_modules
       - assets-fonts-node-modules:/opt/repository-volumes/assets-fonts-node_modules
       - assets-icons-node-modules:/opt/repository-volumes/assets-icons-node_modules
       - assets-marque-node-modules:/opt/repository-volumes/assets-marque-node_modules
@@ -98,6 +100,7 @@ volumes:
   assets-node-modules:
   assets-crest-node-modules:
   assets-fallbacks-node-modules:
+  assets-flags-node-modules:
   assets-fonts-node-modules:
   assets-icons-node-modules:
   assets-marque-node-modules:

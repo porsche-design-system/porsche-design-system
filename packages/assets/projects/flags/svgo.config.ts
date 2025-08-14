@@ -1,0 +1,30 @@
+import { type Config } from 'svgo';
+
+export const config: Config = {
+  multipass: true,
+  floatPrecision: 3,
+  plugins: [
+    {
+      name: 'preset-default',
+    },
+    'removeTitle',
+    'sortAttrs', // sort element attributes for epic readability
+    'convertStyleToAttrs', // convert styles into attributes
+    {
+      name: 'removeAttrs', // remove attributes by pattern
+      params: {
+        elemSeparator: '>',
+        attrs: '(xml:space)',
+      },
+    },
+    {
+      name: 'addAttributesToSVGElement', // adds attributes to an outer <svg> element
+      params: {
+        attributes: [
+          { width: '100%' }, // ensures optimal scaling behaviour
+          { height: '100%' }, // ensures optimal scaling behaviour
+        ],
+      },
+    },
+  ],
+};

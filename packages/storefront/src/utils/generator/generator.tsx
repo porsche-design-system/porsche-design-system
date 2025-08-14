@@ -37,6 +37,8 @@ import {
   type PFieldsetProps,
   PFieldsetWrapper,
   type PFieldsetWrapperProps,
+  PFlag,
+  type PFlagProps,
   PFlex,
   PFlexItem,
   type PFlexItemProps,
@@ -276,6 +278,7 @@ export type PropTypeMapping = {
   'p-divider': PDividerProps;
   'p-fieldset': PFieldsetProps;
   'p-fieldset-wrapper': PFieldsetWrapperProps;
+  'p-flag': PFlagProps;
   'p-flex': PFlexProps;
   'p-flex-item': PFlexItemProps;
   'p-flyout': PFlyoutProps;
@@ -363,6 +366,7 @@ const componentMap: Record<ConfiguratorTagNames, React.ElementType> = {
   'p-divider': PDivider,
   'p-fieldset': PFieldset,
   'p-fieldset-wrapper': PFieldsetWrapper,
+  'p-flag': PFlag,
   'p-flex': PFlex,
   'p-flex-item': PFlexItem,
   'p-flyout': PFlyout,

@@ -85,6 +85,7 @@ jobs:
             ./packages/assets/projects/meta-icons/dist/
             ./packages/assets/projects/icons/dist/
             ./packages/assets/projects/fallbacks/dist/
+            ./packages/assets/projects/flags/dist/
             ./packages/assets/projects/fonts/dist/
             ./packages/assets/projects/model-signatures/dist/
             ./packages/tokens/dist/
@@ -94,6 +95,7 @@ jobs:
             ./packages/assets/bin/
             ./packages/components-js/projects/components-wrapper/lib/
             ./packages/assets/projects/icons/tests/unit/results/stats.json
+            ./packages/assets/projects/flags/tests/unit/results/stats.json
             ./packages/components-js/projects/partials/src/lib/partials.tsx
             ./packages/components-angular/projects/angular-wrapper/src/lib/
             ./packages/components-angular/src/app/pages/generated/
@@ -173,6 +175,7 @@ jobs:
             ./packages/assets/projects/meta-icons/dist/
             ./packages/assets/projects/icons/dist/
             ./packages/assets/projects/fallbacks/dist/
+            ./packages/assets/projects/flags/dist/
             ./packages/assets/projects/fonts/dist/
             ./packages/assets/projects/model-signatures/dist/
             ./packages/tokens/dist/
