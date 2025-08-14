@@ -520,11 +520,13 @@ test.describe('Picker', () => {
 
     test('should call showPicker when time button is activated with keyboard', async ({ page }) => {
       const inputTime = getInputTime(page);
+      const inputTimeShowPickerButton = getInputTimeShowPickerButton(page);
       await inputTime.click();
 
       await inputTime.press('Tab');
       await inputTime.press('Tab');
       await inputTime.press('Tab');
+      await expect(inputTimeShowPickerButton).toBeFocused();
       await page.keyboard.press('Enter');
 
       const called = await inputTime.evaluate((input: HTMLInputElement) => {

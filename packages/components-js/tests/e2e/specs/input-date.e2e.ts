@@ -521,11 +521,13 @@ test.describe('Picker', () => {
 
     test('should call showPicker when calendar button is activated with keyboard', async ({ page }) => {
       const inputDate = getInputDate(page);
+      const inputDateShowPickerButton = getInputDateShowPickerButton(page);
       await inputDate.click();
 
       await inputDate.press('Tab');
       await inputDate.press('Tab');
       await inputDate.press('Tab');
+      await expect(inputDateShowPickerButton).toBeFocused();
       await page.keyboard.press('Enter');
 
       const called = await inputDate.evaluate((input: HTMLInputElement) => {
