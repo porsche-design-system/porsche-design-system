@@ -4,6 +4,7 @@ import { type Theme } from '@porsche-design-system/styles';
 import {
   forceFocusHoverState,
   forceFocusState,
+  forceFocusVisibleState,
   forceHoverState,
   getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
@@ -75,17 +76,18 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   });
 
   // Hover states
-  await forceHoverState(page, '.hover p-input-password:not(.force-label) input');
+  await forceHoverState(page, '.hover p-input-password:not(.force-label) >>> input');
   await forceHoverState(page, '.hover p-input-password.force-label >>> label');
   await forceHoverState(page, '.hover p-input-password >>> p-button-pure >>> button');
 
   // Focus states
-  await forceFocusState(page, '.focus p-input-password:not(.force-label) input');
+  await forceFocusState(page, '.focus p-input-password:not(.force-label) >>> input');
   await forceFocusState(page, '.focus p-input-password.force-label >>> label');
   await forceFocusState(page, '.focus p-input-password >>> p-button-pure >>> button');
+  await forceFocusVisibleState(page, '.focus p-input-password >>> p-button-pure >>> button');
 
   // Focus + hover states
-  await forceFocusHoverState(page, '.focus-hover p-input-password:not(.force-label) input');
+  await forceFocusHoverState(page, '.focus-hover p-input-password:not(.force-label) >>> input');
   await forceFocusHoverState(page, '.focus-hover p-input-password.force-label >>> label');
   await forceFocusHoverState(page, '.focus-hover p-input-password >>> p-button-pure >>> button');
 };
