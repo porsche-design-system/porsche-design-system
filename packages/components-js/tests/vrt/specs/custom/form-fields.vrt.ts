@@ -167,47 +167,47 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
   await forceFocusVisibleState(page, '.focus-hover p-textarea >>> textarea');
   await forceFocusHoverState(page, '.focus-hover p-textarea >>> textarea');
 
-  await forceHoverState(page, '.hover p-input-date >>> input');
+  await forceHoverState(page, '.hover p-input-date >>> .wrapper');
   await forceFocusState(page, '.focus p-input-date >>> input');
   await forceFocusVisibleState(page, '.focus-hover p-input-date >>> input');
   await forceFocusHoverState(page, '.focus-hover p-input-date >>> input');
 
-  await forceHoverState(page, '.hover p-input-time >>> input');
+  await forceHoverState(page, '.hover p-input-time >>> .wrapper');
   await forceFocusState(page, '.focus p-input-time >>> input');
   await forceFocusVisibleState(page, '.focus-hover p-input-time >>> input');
   await forceFocusHoverState(page, '.focus-hover p-input-time >>> input');
 
-  await forceHoverState(page, '.hover p-input-email >>> input');
+  await forceHoverState(page, '.hover p-input-email >>> .wrapper');
   await forceFocusState(page, '.focus p-input-email >>> input');
   await forceFocusVisibleState(page, '.focus-hover p-input-email >>> input');
   await forceFocusHoverState(page, '.focus-hover p-input-email >>> input');
 
-  await forceHoverState(page, '.hover p-input-number >>> input');
+  await forceHoverState(page, '.hover p-input-number >>> .wrapper');
   await forceFocusState(page, '.focus p-input-number >>> input');
   await forceFocusVisibleState(page, '.focus-hover p-input-number >>> input');
   await forceFocusHoverState(page, '.focus-hover p-input-number >>> input');
 
-  await forceHoverState(page, '.hover p-input-password >>> input');
+  await forceHoverState(page, '.hover p-input-password >>> .wrapper');
   await forceFocusState(page, '.focus p-input-password >>> input');
   await forceFocusVisibleState(page, '.focus-hover p-input-password >>> input');
   await forceFocusHoverState(page, '.focus-hover p-input-password >>> input');
 
-  await forceHoverState(page, '.hover p-input-search >>> input');
+  await forceHoverState(page, '.hover p-input-search >>> .wrapper');
   await forceFocusState(page, '.focus p-input-search >>> input');
   await forceFocusVisibleState(page, '.focus-hover p-input-search >>> input');
   await forceFocusHoverState(page, '.focus-hover p-input-search >>> input');
 
-  await forceHoverState(page, '.hover p-input-tel >>> input');
+  await forceHoverState(page, '.hover p-input-tel >>> .wrapper');
   await forceFocusState(page, '.focus p-input-tel >>> input');
   await forceFocusVisibleState(page, '.focus-hover p-input-tel >>> input');
   await forceFocusHoverState(page, '.focus-hover p-input-tel >>> input');
 
-  await forceHoverState(page, '.hover p-input-text >>> input');
+  await forceHoverState(page, '.hover p-input-text >>> .wrapper');
   await forceFocusState(page, '.focus p-input-text >>> input');
   await forceFocusVisibleState(page, '.focus-hover p-input-text >>> input');
   await forceFocusHoverState(page, '.focus-hover p-input-text >>> input');
 
-  await forceHoverState(page, '.hover p-input-url >>> input');
+  await forceHoverState(page, '.hover p-input-url >>> .wrapper');
   await forceFocusState(page, '.focus p-input-url >>> input');
   await forceFocusVisibleState(page, '.focus-hover p-input-url >>> input');
   await forceFocusHoverState(page, '.focus-hover p-input-url >>> input');
