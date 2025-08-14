@@ -1,8 +1,8 @@
-import { getFlags } from '@/utils/getFlags';
 import { componentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
-import React from 'react';
 import type { ReactNode } from 'react';
+import React from 'react';
+import { getFlags } from '@/utils/getFlags';
 
 export const COMPONENT_ROUTES_META = Object.entries(componentMeta).filter(
   ([_, value]) => value.isChunked && !value.requiredParent
@@ -19,6 +19,7 @@ const getComponents = (): Routes => {
     'p-grid',
     'p-marque',
     'p-pagination',
+    'p-flag',
     'p-switch',
     'p-sheet',
     'p-tag-dismissible',
@@ -277,7 +278,7 @@ export const sitemap: Routes = {
           },
         },
       },
-      "react-router": {
+      'react-router': {
         name: 'React Router',
         path: '/developing/react-router',
         type: 'PAGE',

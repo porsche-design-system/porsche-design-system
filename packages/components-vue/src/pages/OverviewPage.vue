@@ -13,6 +13,7 @@ import {
   PDivider,
   PFieldset,
   PFieldsetWrapper,
+  PFlag,
   PFlex,
   PFlexItem,
   PGrid,
@@ -31,6 +32,7 @@ import {
   PModelSignature,
   PMultiSelect,
   PMultiSelectOption,
+  PorscheDesignSystemProvider,
   PPagination,
   PPinCode,
   PPopover,
@@ -58,12 +60,11 @@ import {
   PTag,
   PTagDismissible,
   PText,
+  PTextareaWrapper,
   PTextFieldWrapper,
   PTextList,
   PTextListItem,
-  PTextareaWrapper,
   PWordmark,
-  PorscheDesignSystemProvider,
 } from '@porsche-design-system/components-vue';
 </script>
 
@@ -209,6 +210,10 @@ import {
 
       <div class="playground light" title="should render default icon">
         <PIcon>Some Icon</PIcon>
+      </div>
+
+      <div class="playground light" title="should render default flag">
+        <PFlag>Some Icon</PFlag>
       </div>
 
       <div class="playground light" title="should render default link">
@@ -552,6 +557,10 @@ import {
 
         <div class="playground light" title="should render default icon with custom prefix">
           <PIcon />
+        </div>
+
+        <div class="playground light" title="should render default flag with custom prefix">
+          <PFlag />
         </div>
 
         <div class="playground light" title="should render default link with custom prefix">

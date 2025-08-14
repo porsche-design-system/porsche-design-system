@@ -1,9 +1,13 @@
-import { describe, test, expect } from 'vitest';
 import {
   CRESTS_CDN_BASE_PATH,
   CRESTS_MANIFEST,
-  FALLBACKS_MANIFEST,
   FALLBACKS_CDN_BASE_PATH,
+  FALLBACKS_MANIFEST,
+  FLAGS_CDN_BASE_PATH,
+  FLAGS_MANIFEST,
+  FONT_FACE_CDN_BASE_PATH,
+  FONT_FACE_CDN_FILE_CN,
+  FONT_FACE_CDN_FILE_COM,
   FONTS_CDN_BASE_PATH,
   FONTS_MANIFEST,
   ICONS_CDN_BASE_PATH,
@@ -12,15 +16,13 @@ import {
   MARQUES_MANIFEST,
   META_ICONS_CDN_BASE_PATH,
   META_ICONS_MANIFEST,
-  MODEL_SIGNATURES_MANIFEST,
   MODEL_SIGNATURES_CDN_BASE_PATH,
-  FONT_FACE_CDN_BASE_PATH,
-  FONT_FACE_CDN_FILE_CN,
-  FONT_FACE_CDN_FILE_COM,
+  MODEL_SIGNATURES_MANIFEST,
 } from '@porsche-design-system/assets';
-import { COMPONENT_CHUNKS_MANIFEST } from '../../../../projects/components-wrapper/lib/chunksManifest';
-import { CDN_BASE_PATH_COMPONENTS, CDN_BASE_URL_COM } from '../../../../../../cdn.config';
 import mime from 'mime';
+import { describe, expect, test } from 'vitest';
+import { CDN_BASE_PATH_COMPONENTS, CDN_BASE_URL_COM } from '../../../../../../cdn.config';
+import { COMPONENT_CHUNKS_MANIFEST } from '../../../../projects/components-wrapper/lib/chunksManifest';
 
 describe('cdn', () => {
   let fetchCounter = 0;
@@ -83,6 +85,11 @@ describe('cdn', () => {
   describe('icons', () => {
     const icons = objectToFlatArray(ICONS_MANIFEST);
     bulkRequestItems(icons, `${CDN_BASE_URL_COM}${ICONS_CDN_BASE_PATH}`);
+  });
+
+  describe('flags', () => {
+    const flags = objectToFlatArray(FLAGS_MANIFEST);
+    bulkRequestItems(flags, `${CDN_BASE_URL_COM}${FLAGS_CDN_BASE_PATH}`);
   });
 
   describe('marque', () => {
