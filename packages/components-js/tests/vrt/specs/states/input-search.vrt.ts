@@ -76,7 +76,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   });
 
   // Hover states
-  await forceHoverState(page, '.hover p-input-search:not(.force-label) >>> input');
+  await forceHoverState(page, '.hover p-input-search:not(.force-label) >>> wrapper');
   await forceHoverState(page, '.hover p-input-search.force-label >>> label');
   await forceHoverState(page, '.hover p-input-search >>> p-button-pure >>> button');
 
