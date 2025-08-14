@@ -824,11 +824,11 @@ export namespace Components {
          */
         "aria"?: SelectedAriaAttributes<FlagAriaAttribute>;
         /**
-          * Specifies the country flag to display. Use the two-letter ISO 3166-1 alpha-2 country code.
+          * Specifies the country flag to display. Use the two-letter ISO 3166-1 alpha-2 country code. For example, use `us` for the United States, `de` for Germany, `gb` for Great Britain.
          */
         "name"?: FlagName;
         /**
-          * The size of the flag. Pre-defined sizes are aligned with the Porsche Next typescale.
+          * The size of the flag. Pre-defined sizes are aligned with the Porsche Next typescale. Available values are `small`, `medium`, `large`, etc.
          */
         "size"?: FlagSize;
     }
@@ -4916,11 +4916,11 @@ declare namespace LocalJSX {
          */
         "aria"?: SelectedAriaAttributes<FlagAriaAttribute>;
         /**
-          * Specifies the country flag to display. Use the two-letter ISO 3166-1 alpha-2 country code.
+          * Specifies the country flag to display. Use the two-letter ISO 3166-1 alpha-2 country code. For example, use `us` for the United States, `de` for Germany, `gb` for Great Britain.
          */
         "name"?: FlagName;
         /**
-          * The size of the flag. Pre-defined sizes are aligned with the Porsche Next typescale.
+          * The size of the flag. Pre-defined sizes are aligned with the Porsche Next typescale. Available values are `small`, `medium`, `large`, etc.
          */
         "size"?: FlagSize;
     }
