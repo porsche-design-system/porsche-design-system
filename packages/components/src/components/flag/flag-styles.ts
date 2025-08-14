@@ -22,8 +22,6 @@ const sizeMap: Record<Exclude<FlagSize, 'inherit'>, string> = {
 };
 
 export const getComponentCss = (size: FlagSize): string => {
-  const isSizeInherit = size === 'inherit';
-
   return getCss({
     '@global': {
       ':host': {
@@ -40,7 +38,7 @@ export const getComponentCss = (size: FlagSize): string => {
         padding: '1px', // add safe-zone to be visually in sync with <p-icon />
         boxSizing: 'border-box',
         pointerEvents: 'none', // disable dragging/ghosting of images
-        ...(isSizeInherit
+        ...(size === 'inherit'
           ? {
               width: size,
               height: size,
