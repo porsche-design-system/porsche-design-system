@@ -1,6 +1,3 @@
-import { VersionSelect } from '@/components/common/VersionSelect';
-import { type Routes, sitemap } from '@/sitemap';
-import { getPathnameRoutes } from '@/utils/pathname';
 import {
   type AccordionUpdateEventDetail,
   PAccordion,
@@ -11,6 +8,9 @@ import {
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import { VersionSelect } from '@/components/common/VersionSelect';
+import { type Routes, sitemap } from '@/sitemap';
+import { getPathnameRoutes } from '@/utils/pathname';
 
 const initialAccordionState = Object.keys(sitemap).reduce<Record<keyof Routes, boolean>>((acc, section) => {
   acc[section] = false;
@@ -90,6 +90,9 @@ export const Navigation = () => {
             </li>
             <li>
               <Link href="/license">License</Link>
+            </li>
+            <li>
+              <Link href="/accessibility-statement">Accessibility Statement</Link>
             </li>
           </ul>
         </PText>
