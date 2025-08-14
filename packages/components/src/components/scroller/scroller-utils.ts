@@ -9,8 +9,9 @@ export type ScrollerAriaAttribute = (typeof SCROLLER_ARIA_ATTRIBUTES)[number];
 export const GRADIENT_COLOR_SCHEMES = ['default', 'surface'] as const;
 /** @deprecated */
 export type ScrollerGradientColorScheme = (typeof GRADIENT_COLOR_SCHEMES)[number];
-
+/** @deprecated */
 export const GRADIENT_COLORS = ['background-base', 'background-surface'] as const;
+/** @deprecated */
 export type ScrollerGradientColor = (typeof GRADIENT_COLORS)[number];
 
 export type ScrollerScrollToPosition = { scrollPosition: number; isSmooth?: boolean } | string; // string to support attribute, gets removed via InputParser

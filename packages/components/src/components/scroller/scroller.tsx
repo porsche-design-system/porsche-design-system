@@ -1,4 +1,5 @@
-import { Component, Element, h, Prop, State, Watch, type JSX } from '@stencil/core';
+import { Component, Element, h, type JSX, Prop, State, Watch } from '@stencil/core';
+import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -15,26 +16,25 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './scroller-styles';
-import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import {
+  GRADIENT_COLOR_SCHEMES,
+  GRADIENT_COLORS,
+  getScrollPositionAfterPrevNextClick,
+  isScrollable,
+  SCROLL_INDICATOR_POSITIONS,
+  SCROLLER_ARIA_ATTRIBUTES,
   type ScrollerAlignScrollIndicator,
+  type ScrollerAriaAttribute,
   type ScrollerDirection,
   type ScrollerGradientColor,
   type ScrollerGradientColorScheme,
   type ScrollerScrollIndicatorPosition,
   type ScrollerScrollToPosition,
-  type ScrollerAriaAttribute,
-  getScrollPositionAfterPrevNextClick,
-  GRADIENT_COLORS,
-  GRADIENT_COLOR_SCHEMES,
-  isScrollable,
-  SCROLL_INDICATOR_POSITIONS,
-  SCROLLER_ARIA_ATTRIBUTES,
 } from './scroller-utils';
 
 const propTypes: PropTypes<typeof Scroller> = {
   gradientColorScheme: AllowedTypes.oneOf<ScrollerGradientColorScheme>([undefined, ...GRADIENT_COLOR_SCHEMES]),
-  gradientColor: AllowedTypes.oneOf<ScrollerGradientColor>(GRADIENT_COLORS),
+  gradientColor: AllowedTypes.oneOf<ScrollerGradientColor>([undefined, ...GRADIENT_COLORS]),
   scrollToPosition: AllowedTypes.shape<ScrollerScrollToPosition>({
     scrollPosition: AllowedTypes.number,
     isSmooth: AllowedTypes.boolean,
@@ -60,12 +60,14 @@ export class Scroller {
   @Element() public host!: HTMLElement;
 
   /**
-   * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead.
+   * @deprecated since v3.0.0, will be removed with next major release.
    * Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: ScrollerGradientColorScheme;
 
-  /** Adapts the background gradient color of prev and next button. */
-  @Prop() public gradientColor?: ScrollerGradientColor = 'background-base';
+  /**
+   * @deprecated since v3.29.0, will be removed with next major release.
+   * Adapts the background gradient color of prev and next button. */
+  @Prop() public gradientColor?: ScrollerGradientColor;
 
   /** Scrolls the scroll area to the left either smooth or immediately. */
   @Prop({ mutable: true }) public scrollToPosition?: ScrollerScrollToPosition;
@@ -135,7 +137,12 @@ export class Scroller {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropIsUsed<typeof Scroller>(this, 'gradientColorScheme', 'Please use gradientColor prop instead.');
+    warnIfDeprecatedPropIsUsed<typeof Scroller>(this, 'gradientColorScheme', 'Prop can be omitted, gradient handling is managed internally.');
+    warnIfDeprecatedPropIsUsed<typeof Scroller>(
+      this,
+      'gradientColor',
+      'Prop can be omitted, gradient handling is managed internally.'
+    );
     warnIfDeprecatedPropIsUsed<typeof Scroller>(
       this,
       'scrollIndicatorPosition',
@@ -153,7 +160,6 @@ export class Scroller {
     attachComponentCss(
       this.host,
       getComponentCss,
-      deprecationMap[this.gradientColorScheme] || this.gradientColor,
       this.isNextHidden,
       this.isPrevHidden,
       this.scrollIndicatorPosition || this.alignScrollIndicator,
