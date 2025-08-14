@@ -25,10 +25,10 @@ const propTypes: PropTypes<typeof Flag> = {
 export class Flag {
   @Element() public host!: HTMLElement;
 
-  /** Specifies the country flag to display. Use the two-letter ISO 3166-1 alpha-2 country code. */
+  /** Specifies the country flag to display. Use the two-letter ISO 3166-1 alpha-2 country code. For example, use `us` for the United States, `de` for Germany, `gb` for Great Britain. */
   @Prop() public name?: FlagName = 'de';
 
-  /** The size of the flag. Pre-defined sizes are aligned with the Porsche Next typescale. */
+  /** The size of the flag. Pre-defined sizes are aligned with the Porsche Next typescale. Available values are `small`, `medium`, `large`, etc. */
   @Prop() public size?: FlagSize = 'small';
 
   /** A map of ARIA attributes to enhance the flag's accessibility. For example, use `{ 'aria-label': 'German flag' }` to provide a descriptive label for screen readers. */
