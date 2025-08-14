@@ -215,15 +215,6 @@ export class Select {
     }
   }
 
-  @Watch('filter')
-  public onFilterChange(): void {
-    if (this.filter && !this.inputSearchInputElement) {
-      this.inputSearchInputElement = this.inputSearchElement.shadowRoot.querySelector('input');
-      // @ts-expect-error typings missing
-      this.inputSearchInputElement.ariaControlsElements = [this.listboxElement];
-    }
-  }
-
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     document.addEventListener('mousedown', this.onClickOutside, true);
