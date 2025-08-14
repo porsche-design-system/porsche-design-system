@@ -11,23 +11,22 @@ export const statementStory: Story<'p-heading'> = {
     },
     {
       tag: 'p-text',
+      properties: {
+        className: 'mt-fluid-md',
+      },
       children: [
+        'We are committed to ensuring digital accessibility for people with disabilities.',
         {
-          tag: 'p-text',
-          children: [
-            'We are committed to ensuring digital accessibility for people with disabilities.',
-            {
-              tag: 'br',
-            },
-            'We are continually improving the user experience for everyone, and applying the relevant accessibility standards.',
-          ],
+          tag: 'br',
         },
+        'We are continually improving the user experience for everyone, and applying the relevant accessibility standards.',
       ],
     },
     {
       tag: 'p-heading',
       properties: {
         size: 'medium',
+        className: 'mt-fluid-sm',
       },
       children: [
         {
@@ -38,6 +37,10 @@ export const statementStory: Story<'p-heading'> = {
     },
     {
       tag: 'p-text',
+      properties: {
+        className: 'mt-fluid-md',
+        weight: 'semi-bold',
+      },
       children: ['We take the following measures to ensure accessibility of this Website:'],
     },
     {
@@ -71,11 +74,12 @@ export const statementStory: Story<'p-heading'> = {
     },
     {
       tag: 'p-heading',
-      properties: { size: 'medium' },
+      properties: { size: 'medium', className: 'mt-fluid-md' },
       children: [{ tag: 'h2', children: ['Conformance status'] }],
     },
     {
       tag: 'p-text',
+      properties: { className: 'mt-fluid-sm' },
       children: [
         'The ',
         {
@@ -100,17 +104,19 @@ export const statementStory: Story<'p-heading'> = {
     },
     {
       tag: 'p-heading',
-      properties: { size: 'medium' },
+      properties: { size: 'medium', className: 'mt-fluid-md' },
       children: [{ tag: 'h2', children: ['Feedback'] }],
     },
     {
       tag: 'p-text',
+      properties: { className: 'mt-fluid-sm' },
       children: [
         'If you experience any difficulty in accessing any part of this website, please feel free to contact us. Please be sure to specify the Web page and describe the issue in detail and we will make reasonable efforts to make that page accessible. We welcome feedback on how we can improve as well.',
       ],
     },
     {
       tag: 'p-text-list',
+      properties: { className: 'mt-fluid-sm' },
       children: [
         {
           tag: 'p-text-list-item',
