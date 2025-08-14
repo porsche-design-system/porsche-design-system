@@ -1,12 +1,12 @@
-import * as fs from 'fs';
-import * as path from 'path';
 import { camelCase, capitalCase, kebabCase, pascalCase } from 'change-case';
+import * as fs from 'fs';
 import { globbySync } from 'globby';
+import * as path from 'path';
 import { type AngularCharacteristics, convertToAngularVRTPage } from './convertToAngularVRTPage';
 import { convertToNextJsVRTPage } from './convertToNextJsVRTPage';
-import { type ReactCharacteristics, convertToReactVRTPage } from './convertToReactVRTPage';
-import { convertToRemixVRTPage } from './convertToRemixVRTPage';
 import { convertToReactRouterVRTPage } from './convertToReactRouterVRTPage';
+import { convertToReactVRTPage, type ReactCharacteristics } from './convertToReactVRTPage';
+import { convertToRemixVRTPage } from './convertToRemixVRTPage';
 
 /** array of html file names that don't get converted */
 const PAGES_TO_SKIP: string[] = [];
@@ -42,6 +42,7 @@ const generateVRTPages = (): void => {
 
 export const templateRegEx = /( *<template.*>[\s\S]*?<\/template>)/;
 export const iconsRegEx = /(<div class="playground[\sa-z]+overview".*?>)\n(<\/div>)/;
+export const flagsRegEx = /(<div class="playground[\sa-z]+overview".*?>)\n(<\/div>)/;
 export const scriptRegEx = /\s*<script\b[^>]*>([\s\S]*?)<\/script\b[^>]*>\s*/i;
 export const styleRegEx = /\s*<style.*>([\s\S]*?)<\/style>\s*/i;
 
@@ -165,7 +166,8 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
       const [, toastText] = (usesToast && script?.match(/text:\s?(['`].*?['`])/)) || [];
 
       const isIconPage = fileName === 'icon';
-      const usesOnInit = !!script && !isIconPage && (fileName === 'core-initializer' || usesToast);
+      const isFlagPage = fileName === 'flag';
+      const usesOnInit = !!script && !isIconPage && !isFlagPage && (fileName === 'core-initializer' || usesToast);
       const usesSetAllReady = script?.includes('componentsReady()') && fileName === 'core-initializer';
 
       // extract template if there is any, replacing is framework specific
@@ -188,6 +190,7 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
         usesComponentsReady,
         usesToast,
         isIconPage,
+        isFlagPage,
         usesQuerySelector,
       };
 
@@ -196,6 +199,7 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
         usesComponentsReady,
         usesToast,
         isIconPage,
+        isFlagPage,
         usesQuerySelector,
         usesPrefixing,
       };

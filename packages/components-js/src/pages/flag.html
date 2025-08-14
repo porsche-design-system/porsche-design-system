@@ -54,7 +54,8 @@
 <div class="playground light overview" title="should render all available flags and apply coloring programmatically">
   <script>
     const markup = FLAG_NAMES.map(
-      (name) => `<p-flag name="${name}" size="inherit" color="inherit" aria="{ 'aria-label': '${name}' }"></p-flag>`
+      (name) =>
+        `<p-flag name="${name}" size="inherit" color="inherit" aria="{ 'aria-label': '${name} flag' }"></p-flag>`
     ).join('');
     document.querySelector('.overview').innerHTML = markup;
   </script>
