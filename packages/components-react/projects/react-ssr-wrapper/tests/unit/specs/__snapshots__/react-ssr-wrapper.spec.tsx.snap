@@ -12654,6 +12654,45 @@ fieldset {
 </p-fieldset-wrapper>
 `;
 
+exports[`should render dsr component for PFlag 1`] = `
+<p-flag
+  data-ssr=""
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: inline-block;
+  vertical-align: top;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 1px;
+  box-sizing: border-box;
+  pointer-events: none;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+    </style>
+    <img
+      alt=""
+      height="24"
+      loading="lazy"
+      src="http://localhost:3001/flags/de.b575e11.svg"
+      width="24"
+    />
+  </template>
+</p-flag>
+`;
+
 exports[`should render dsr component for PFlex 1`] = `
 <p-flex
   data-ssr=""
