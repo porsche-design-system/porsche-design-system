@@ -1,6 +1,6 @@
 import { convertToAngular } from '@porsche-design-system/shared';
 import { pascalCase } from 'change-case';
-import { byAlphabet, comment, iconsRegEx, templateRegEx } from './generateVRTPages';
+import { byAlphabet, comment, flagsRegEx, iconsRegEx, templateRegEx } from './generateVRTPages';
 
 export type AngularCharacteristics = {
   usesOnInit: boolean;
@@ -8,6 +8,7 @@ export type AngularCharacteristics = {
   usesComponentsReady: boolean;
   usesToast: boolean;
   isIconPage: boolean;
+  isFlagPage: boolean;
   usesQuerySelector: boolean;
 };
 
@@ -20,7 +21,7 @@ export const convertToAngularVRTPage = (
   toastText: string,
   characteristics: AngularCharacteristics
 ): { fileName: string; fileContent: string } => {
-  const { usesOnInit, usesSetAllReady, usesComponentsReady, usesToast, isIconPage, usesQuerySelector } =
+  const { usesOnInit, usesSetAllReady, usesComponentsReady, usesToast, isIconPage, isFlagPage, usesQuerySelector } =
     characteristics;
 
   // imports
@@ -44,6 +45,7 @@ export const convertToAngularVRTPage = (
     `import { ${angularImports} } from '@angular/core';`,
     pdsImports && `import { ${pdsImports} } from '@porsche-design-system/components-angular';`,
     isIconPage && `import { ICON_NAMES } from '@porsche-design-system/icons';`,
+    isFlagPage && `import { FLAG_NAMES } from '@porsche-design-system/flags';`,
   ]
     .filter(Boolean)
     .join('\n');
@@ -68,6 +70,8 @@ ngOnInit() {
 }`;
   } else if (isIconPage) {
     classImplementation = `public icons = ICON_NAMES;`;
+  } else if (isFlagPage) {
+    classImplementation = `public flags = FLAG_NAMES;`;
   } else if (usesToast) {
     classImplementation = `constructor(private toastManager: ToastManager) {}
 
@@ -106,6 +110,20 @@ ngOnInit() {
     [color]="'inherit'"
     [attr.aria-label]="icon + ' icon'"
   ></p-icon>
+$2`
+    );
+  }
+
+  // flags
+  if (isFlagPage) {
+    fileContent = fileContent.replace(
+      flagsRegEx,
+      `$1
+  <p-flag
+    *ngFor="let flag of flags"
+    [size]="'inherit'"
+    [attr.aria-label]="flag + ' flag'"
+  ></p-flag>
 $2`
     );
   }

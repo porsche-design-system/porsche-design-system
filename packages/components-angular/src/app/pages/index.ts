@@ -86,6 +86,7 @@ import { DrilldownScrolledComponent } from './generated/drilldown-scrolled.compo
 import { DrilldownSlottedButtonHeaderComponent } from './generated/drilldown-slotted-button-header.component';
 import { FieldsetComponent } from './generated/fieldset.component';
 import { FieldsetWrapperComponent } from './generated/fieldset-wrapper.component';
+import { FlagComponent } from './generated/flag.component';
 import { FlexComponent } from './generated/flex.component';
 import { Flyout_1Component } from './generated/flyout-1.component';
 import { Flyout_2Component } from './generated/flyout-2.component';
@@ -310,6 +311,7 @@ export const generatedPages = [
   DrilldownSlottedButtonHeaderComponent,
   FieldsetComponent,
   FieldsetWrapperComponent,
+  FlagComponent,
   FlexComponent,
   Flyout_1Component,
   Flyout_2Component,
@@ -749,6 +751,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Fieldset Wrapper',
     path: 'fieldset-wrapper',
     component: FieldsetWrapperComponent,
+  },
+  {
+    name: 'Flag',
+    path: 'flag',
+    component: FlagComponent,
   },
   {
     name: 'Flex',

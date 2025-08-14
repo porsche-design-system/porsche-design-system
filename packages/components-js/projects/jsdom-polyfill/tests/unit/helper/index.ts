@@ -85,6 +85,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-heading': '<p-heading>Some text</p-heading>',
   'p-headline': '<p-headline>Some text</p-headline>',
   'p-icon': '<p-icon></p-icon>',
+  'p-flag': '<p-flag></p-flag>',
   'p-inline-notification': `<p-inline-notification heading="Some banner title" action-label="Retry">
     Some banner description.
   </p-inline-notification>`,

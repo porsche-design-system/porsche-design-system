@@ -19,6 +19,7 @@ exports[`should match snapshot 1`] = `
   "p-drilldown",
   "p-fieldset",
   "p-fieldset-wrapper",
+  "p-flag",
   "p-flex",
   "p-flyout",
   "p-grid",

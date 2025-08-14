@@ -1,4 +1,4 @@
-import { test, expect, type CDPSession } from '@playwright/test';
+import { type CDPSession, expect, test } from '@playwright/test';
 import { setContentWithDesignSystem } from '../helpers';
 
 type RequestType = { url: string };
@@ -45,12 +45,14 @@ test.describe('bootstrapping with .com and .cn domains', () => {
     components: 'components/porsche-design-system.v',
     styles: 'styles/font-face.',
     icons: 'icons/arrow-right.',
+    flags: 'flags/de.',
     fonts: 'fonts/porsche-next-latin-regular.',
     crest: 'crest/porsche-crest.',
   } as const;
 
   const content = `
   <p-crest></p-crest>
+  <p-flag></p-flag>
   <p-heading size="xx-large">Some Headline</p-heading>
   <p-button icon="arrow-right">Some label</p-button>`;
 
@@ -67,6 +69,7 @@ test.describe('bootstrapping with .com and .cn domains', () => {
     expect(responses.filter(urlStartsWith(`${baseUrl}/${assetPaths.components}`)).length).toBe(1);
     expect(responses.filter(urlStartsWith(`${baseUrl}/${assetPaths.styles}`)).length).toBe(1);
     expect(responses.filter(urlStartsWith(`${baseUrl}/${assetPaths.icons}`)).length).toBe(1);
+    expect(responses.filter(urlStartsWith(`${baseUrl}/${assetPaths.flags}`)).length).toBe(1);
     expect(responses.filter(urlStartsWith(`${baseUrl}/${assetPaths.fonts}`)).length).toBe(1);
     expect(responses.filter(urlStartsWith(`${baseUrl}/${assetPaths.crest}`)).length).toBe(1);
   });
@@ -84,6 +87,7 @@ test.describe('bootstrapping with .com and .cn domains', () => {
     expect(responses.filter(urlStartsWith(`${baseUrl}/${assetPaths.components}`)).length).toBe(1);
     expect(responses.filter(urlStartsWith(`${baseUrl}/${assetPaths.styles}`)).length).toBe(1);
     expect(responses.filter(urlStartsWith(`${baseUrl}/${assetPaths.icons}`)).length).toBe(1);
+    expect(responses.filter(urlStartsWith(`${baseUrl}/${assetPaths.flags}`)).length).toBe(1);
     expect(responses.filter(urlStartsWith(`${baseUrl}/${assetPaths.fonts}`)).length).toBe(1);
     expect(responses.filter(urlStartsWith(`${baseUrl}/${assetPaths.crest}`)).length).toBe(1);
   });
