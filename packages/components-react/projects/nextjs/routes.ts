@@ -384,6 +384,10 @@ const generatedRoutes = {
     "path": "/inline-notification",
     "name": "InlineNotification"
   },
+  "inputDate": {
+    "path": "/input-date",
+    "name": "InputDate"
+  },
   "inputEmail": {
     "path": "/input-email",
     "name": "InputEmail"
@@ -407,6 +411,10 @@ const generatedRoutes = {
   "inputText": {
     "path": "/input-text",
     "name": "InputText"
+  },
+  "inputTime": {
+    "path": "/input-time",
+    "name": "InputTime"
   },
   "inputUrl": {
     "path": "/input-url",

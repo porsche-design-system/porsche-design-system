@@ -108,12 +108,14 @@ import { HeadingPage } from './generated/Heading';
 import { HeadlinePage } from './generated/Headline';
 import { IconPage } from './generated/Icon';
 import { InlineNotificationPage } from './generated/InlineNotification';
+import { InputDatePage } from './generated/InputDate';
 import { InputEmailPage } from './generated/InputEmail';
 import { InputNumberPage } from './generated/InputNumber';
 import { InputPasswordPage } from './generated/InputPassword';
 import { InputSearchPage } from './generated/InputSearch';
 import { InputTelPage } from './generated/InputTel';
 import { InputTextPage } from './generated/InputText';
+import { InputTimePage } from './generated/InputTime';
 import { InputUrlPage } from './generated/InputUrl';
 import { LinkPage } from './generated/Link';
 import { LinkPurePage } from './generated/LinkPure';
@@ -710,6 +712,11 @@ export const generatedRoutes: RouteType[] = [
     element: <InlineNotificationPage />,
   },
   {
+    name: 'Input Date',
+    path: '/input-date',
+    element: <InputDatePage />,
+  },
+  {
     name: 'Input Email',
     path: '/input-email',
     element: <InputEmailPage />,
@@ -738,6 +745,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Input Text',
     path: '/input-text',
     element: <InputTextPage />,
+  },
+  {
+    name: 'Input Time',
+    path: '/input-time',
+    element: <InputTimePage />,
   },
   {
     name: 'Input Url',

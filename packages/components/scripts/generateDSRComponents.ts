@@ -424,7 +424,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       } else if (tagName === 'p-scroller') {
         newFileContent = newFileContent
           .replace(/(this\.)props\.(is(?:Next|Prev)Hidden)/g, '$1$2')
-          .replace(/(deprecationMap\[this\.props\.gradientColorScheme)/, '$1 as ScrollerGradientColorScheme');
+          .replace(/(deprecationMap\[this\.props\.gradientColorScheme)/, '$1 as ScrollerGradientColorScheme')
+          .replace(/(deprecationMap\[this\.props\.gradientColor)/, '$1 as ScrollerGradientColor');
       } else if (tagName === 'p-popover') {
         // only keep :host , button, .icon & .label styles
         newFileContent = newFileContent
@@ -755,6 +756,8 @@ $&`
           .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
       } else if (
         tagName === 'p-input-number' ||
+        tagName === 'p-input-date' ||
+        tagName === 'p-input-time' ||
         tagName === 'p-input-search' ||
         tagName === 'p-input-text' ||
         tagName === 'p-input-email' ||

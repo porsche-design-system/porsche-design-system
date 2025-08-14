@@ -1,4 +1,4 @@
-- text: Required and insanely super long label across multiple lines
-- textbox "Required and insanely super long label across multiple lines"
+- text: Some label Some description
+- textbox "Some label": Without label and description
 - alert
 - status

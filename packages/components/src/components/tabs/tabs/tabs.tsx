@@ -33,7 +33,7 @@ const propTypes: PropTypes<typeof Tabs> = {
   weight: AllowedTypes.oneOf<TabsWeight>(TABS_BAR_WEIGHTS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   gradientColorScheme: AllowedTypes.oneOf<TabsGradientColorScheme>([undefined, ...GRADIENT_COLOR_SCHEMES]),
-  gradientColor: AllowedTypes.oneOf<TabsGradientColor>(GRADIENT_COLORS),
+  gradientColor: AllowedTypes.oneOf<TabsGradientColor>([undefined, ...GRADIENT_COLORS]),
   activeTabIndex: AllowedTypes.number,
 };
 
@@ -63,8 +63,10 @@ export class Tabs {
    * Adapts the background gradient color of prev and next button. */
   @Prop() public gradientColorScheme?: TabsGradientColorScheme;
 
-  /** Adapts the background gradient color of prev and next button. */
-  @Prop() public gradientColor?: TabsGradientColor = 'background-base';
+  /**
+   * @deprecated since v3.29.0, will be removed with next major release.
+   * Adapts the background gradient color of prev and next button. */
+  @Prop() public gradientColor?: TabsGradientColor;
 
   /** Defines which tab to be visualized as selected (zero-based numbering). */
   @Prop({ mutable: true }) public activeTabIndex?: number = 0;
@@ -108,7 +110,12 @@ export class Tabs {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    warnIfDeprecatedPropIsUsed<typeof Tabs>(this, 'gradientColorScheme', 'Please use gradientColor prop instead.');
+    warnIfDeprecatedPropIsUsed<typeof Tabs>(this, 'gradientColorScheme', 'Prop can be omitted, gradient handling is managed internally.');
+    warnIfDeprecatedPropIsUsed<typeof Tabs>(
+      this,
+      'gradientColor',
+      'Prop can be omitted, gradient handling is managed internally.'
+    );
     attachComponentCss(this.host, getComponentCss);
     syncTabsItemsProps(this.tabsItemElements, this.theme);
 

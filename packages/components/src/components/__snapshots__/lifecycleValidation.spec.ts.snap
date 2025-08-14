@@ -222,6 +222,7 @@ exports[`should call validateProps() with correct parameters via render for p-dr
 
 exports[`should call validateProps() with correct parameters via render for p-fieldset: propTypes with ValidatorFunctions 1`] = `
 {
+  "aria": "aria",
   "label": "string",
   "labelSize": "oneOf",
   "message": "string",
@@ -343,6 +344,29 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "persistent": "boolean",
   "state": "oneOf",
   "theme": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via render for p-input-date: propTypes with ValidatorFunctions 1`] = `
+{
+  "autoComplete": "string",
+  "compact": "boolean",
+  "description": "string",
+  "disabled": "boolean",
+  "form": "string",
+  "hideLabel": "breakpoint",
+  "label": "string",
+  "loading": "boolean",
+  "max": "string",
+  "message": "string",
+  "min": "string",
+  "name": "string",
+  "readOnly": "boolean",
+  "required": "boolean",
+  "state": "oneOf",
+  "step": "number",
+  "theme": "oneOf",
+  "value": "string",
 }
 `;
 
@@ -489,6 +513,29 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "required": "boolean",
   "spellCheck": "boolean",
   "state": "oneOf",
+  "theme": "oneOf",
+  "value": "string",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via render for p-input-time: propTypes with ValidatorFunctions 1`] = `
+{
+  "autoComplete": "string",
+  "compact": "boolean",
+  "description": "string",
+  "disabled": "boolean",
+  "form": "string",
+  "hideLabel": "breakpoint",
+  "label": "string",
+  "loading": "boolean",
+  "max": "string",
+  "message": "string",
+  "min": "string",
+  "name": "string",
+  "readOnly": "boolean",
+  "required": "boolean",
+  "state": "oneOf",
+  "step": "number",
   "theme": "oneOf",
   "value": "string",
 }

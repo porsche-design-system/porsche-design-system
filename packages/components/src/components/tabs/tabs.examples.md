@@ -46,8 +46,7 @@ If the amount of tabs exceeds the viewport, the component renders arrow-buttons 
 background and gradient has to align to your chosen background.
 
 <Notification heading="Deprecation hint" heading-tag="h3" state="warning">
-  The <code>gradientColorScheme</code> property has been deprecated and will be removed with the next major release.<br>
-  Please use the <code>gradientColor</code> property instead.
+  The <code>gradientColorScheme</code> and <code>gradientColor</code> properties have been deprecated and will be removed with the next major release.
 </Notification>
 
 <Playground :markup="gradientColorMarkup" :config="{ ...config, backgroundColor: gradientColor }">

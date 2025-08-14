@@ -20,6 +20,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Input Url`: ([#3949](https://github.com/porsche-design-system/porsche-design-system/pull/3949))
 - `Multi Select`: `compact` prop to enable a smaller, space-saving version for compact layouts
   ([#3953](https://github.com/porsche-design-system/porsche-design-system/pull/3953))
+- `Fieldset`: ARIA role `radiogroup` is now supported via `aria` prop. Internal ARIA attributes for `aria-invalid` and
+  `aria-required`. ([#3957](https://github.com/porsche-design-system/porsche-design-system/pull/3957))
+- `Input Date`, `Input Time`: ([#3954](https://github.com/porsche-design-system/porsche-design-system/pull/3954))
 
 ### Changed
 
@@ -29,6 +32,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#3953](https://github.com/porsche-design-system/porsche-design-system/pull/3953))
 - `Multi Select`: aligned filter and keyboard behavior with `Select`
   ([#3943](https://github.com/porsche-design-system/porsche-design-system/pull/3943))
+- `Scroller`: Deprecation of prop `gradientColor` because gradient is now managed internally and adapts to all themes
+  and background colors automatically.
+  ([#3962](https://github.com/porsche-design-system/porsche-design-system/pull/3962))
 
 ## [3.29.0-rc.3] - 2025-07-29
 

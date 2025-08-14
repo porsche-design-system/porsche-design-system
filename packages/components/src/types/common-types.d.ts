@@ -1,7 +1,6 @@
 // common type definitions
 import type { IconName } from '@porsche-design-system/icons';
 
-export type { FlagName } from '@porsche-design-system/flags';
 export type { IconName } from '@porsche-design-system/icons';
 export type { ButtonAriaAttribute, LinkAriaAttribute } from '../utils';
 export type { BreakpointCustomizable } from '../utils/breakpoint-customizable';
@@ -51,5 +50,6 @@ declare global {
   }
 }
 
-import type { AriaAttributes } from './aria-types';
+import type { AriaAttributes, AriaRole } from './aria-types';
 export type SelectedAriaAttributes<T extends keyof AriaAttributes> = Pick<AriaAttributes, T> | string;
+export type SelectedAriaRole<T> = { role: Extract<AriaRole, T> };
