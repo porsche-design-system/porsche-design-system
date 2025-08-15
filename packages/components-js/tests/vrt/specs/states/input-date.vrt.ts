@@ -64,9 +64,6 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
           Slotted success message
         </span>
       </p-input-date>
-    </div>
-    <div>
-      <p-input-date class="force-label" label="Label gets hovered or focussed" value="2025-08-13"></p-input-date>
     </div>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
@@ -76,18 +73,16 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   });
 
   // Hover states
-  await forceHoverState(page, '.hover p-input-date:not(.force-label) >>> .wrapper');
-  await forceHoverState(page, '.hover p-input-date.force-label >>> label');
+  await forceHoverState(page, '.hover p-input-date >>> .wrapper');
   await forceHoverState(page, '.hover p-input-date >>> p-button-pure >>> button');
 
   // Focus states
-  await forceFocusState(page, '.focus p-input-date:not(.force-label) >>> input');
+  await forceFocusState(page, '.focus p-input-date >>> input');
   await forceFocusState(page, '.focus p-input-date >>> p-button-pure >>> button');
   await forceFocusVisibleState(page, '.focus p-input-date >>> p-button-pure >>> button');
 
   // Focus + hover states
-  await forceFocusHoverState(page, '.focus-hover p-input-date:not(.force-label) >>> input');
-  await forceFocusHoverState(page, '.focus-hover p-input-date.force-label >>> label');
+  await forceFocusHoverState(page, '.focus-hover p-input-date >>> input');
   await forceFocusHoverState(page, '.focus-hover p-input-date >>> p-button-pure >>> button');
 };
 

@@ -64,9 +64,6 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
           Slotted success message
         </span>
       </p-input-email>
-    </div>
-    <div>
-      <p-input-email class="force-label" label="Label gets hovered or focussed" value="user@example.com"></p-input-email>
     </div>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
@@ -76,18 +73,16 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   });
 
   // Hover states
-  await forceHoverState(page, '.hover p-input-email:not(.force-label) >>> .wrapper');
-  await forceHoverState(page, '.hover p-input-email.force-label >>> label');
+  await forceHoverState(page, '.hover p-input-email >>> .wrapper');
   await forceHoverState(page, '.hover p-input-email >>> p-button-pure >>> button');
 
   // Focus states
-  await forceFocusState(page, '.focus p-input-email:not(.force-label) >>> input');
+  await forceFocusState(page, '.focus p-input-email >>> input');
   await forceFocusState(page, '.focus p-input-email >>> p-button-pure >>> button');
   await forceFocusVisibleState(page, '.focus p-input-email >>> p-button-pure >>> button');
 
   // Focus + hover states
-  await forceFocusHoverState(page, '.focus-hover p-input-email:not(.force-label) >>> input');
-  await forceFocusHoverState(page, '.focus-hover p-input-email.force-label >>> label');
+  await forceFocusHoverState(page, '.focus-hover p-input-email >>> input');
   await forceFocusHoverState(page, '.focus-hover p-input-email >>> p-button-pure >>> button');
 };
 

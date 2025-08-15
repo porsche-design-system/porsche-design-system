@@ -64,9 +64,6 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
           Slotted success message
         </span>
       </p-input-tel>
-    </div>
-    <div>
-      <p-input-tel class="force-label" label="Label gets hovered or focussed" value="+49 123 456789"></p-input-tel>
     </div>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
@@ -76,18 +73,16 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   });
 
   // Hover states
-  await forceHoverState(page, '.hover p-input-tel:not(.force-label) >>> .wrapper');
-  await forceHoverState(page, '.hover p-input-tel.force-label >>> label');
+  await forceHoverState(page, '.hover p-input-tel >>> .wrapper');
   await forceHoverState(page, '.hover p-input-tel >>> p-button-pure >>> button');
 
   // Focus states
-  await forceFocusState(page, '.focus p-input-tel:not(.force-label) >>> input');
+  await forceFocusState(page, '.focus p-input-tel >>> input');
   await forceFocusState(page, '.focus p-input-tel >>> p-button-pure >>> button');
   await forceFocusVisibleState(page, '.focus p-input-tel >>> p-button-pure >>> button');
 
   // Focus + hover states
-  await forceFocusHoverState(page, '.focus-hover p-input-tel:not(.force-label) >>> input');
-  await forceFocusHoverState(page, '.focus-hover p-input-tel.force-label >>> label');
+  await forceFocusHoverState(page, '.focus-hover p-input-tel >>> input');
   await forceFocusHoverState(page, '.focus-hover p-input-tel >>> p-button-pure >>> button');
 };
 

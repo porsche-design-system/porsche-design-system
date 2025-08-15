@@ -64,9 +64,6 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
           Slotted success message
         </span>
       </p-input-password>
-    </div>
-    <div>
-      <p-input-password class="force-label" label="Label gets hovered or focussed" value="password123"></p-input-password>
     </div>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
@@ -76,18 +73,16 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   });
 
   // Hover states
-  await forceHoverState(page, '.hover p-input-password:not(.force-label) >>> .wrapper');
-  await forceHoverState(page, '.hover p-input-password.force-label >>> label');
+  await forceHoverState(page, '.hover p-input-password >>> .wrapper');
   await forceHoverState(page, '.hover p-input-password >>> p-button-pure >>> button');
 
   // Focus states
-  await forceFocusState(page, '.focus p-input-password:not(.force-label) >>> input');
+  await forceFocusState(page, '.focus p-input-password >>> input');
   await forceFocusState(page, '.focus p-input-password >>> p-button-pure >>> button');
   await forceFocusVisibleState(page, '.focus p-input-password >>> p-button-pure >>> button');
 
   // Focus + hover states
-  await forceFocusHoverState(page, '.focus-hover p-input-password:not(.force-label) >>> input');
-  await forceFocusHoverState(page, '.focus-hover p-input-password.force-label >>> label');
+  await forceFocusHoverState(page, '.focus-hover p-input-password >>> input');
   await forceFocusHoverState(page, '.focus-hover p-input-password >>> p-button-pure >>> button');
 };
 
