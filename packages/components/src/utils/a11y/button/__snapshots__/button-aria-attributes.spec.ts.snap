@@ -3,6 +3,7 @@
 exports[`BUTTON_ARIA_ATTRIBUTES should match snapshot 1`] = `
 [
   "aria-label",
+  "aria-description",
   "aria-expanded",
   "aria-pressed",
   "aria-haspopup",
