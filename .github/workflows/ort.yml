@@ -13,9 +13,9 @@ jobs:
   ort:
     name: 'ORT'
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.54.0-jammy
-      options: --user 1001
+    # container:
+    #   image: mcr.microsoft.com/playwright:v1.54.0-jammy
+    #   options: --user 1001
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
