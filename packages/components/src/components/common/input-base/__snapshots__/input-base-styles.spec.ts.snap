@@ -1158,9 +1158,6 @@ input {
   border-color: #D8D8DB;
   background: #D8D8DB;
 }
-.wrapper:has(input:focus) {
-  border-color: #010205;
-}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -1253,9 +1250,6 @@ input {
   cursor: text;
   border-color: #D8D8DB;
   background: #D8D8DB;
-}
-.wrapper:has(input:focus) {
-  border-color: #010205;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;

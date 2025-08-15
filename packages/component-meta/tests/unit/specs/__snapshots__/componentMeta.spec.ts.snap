@@ -4778,7 +4778,7 @@ exports[`should match snapshot 1`] = `
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').",
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='postal-code').",
         "type": "string",
       },
       "compact": {
@@ -4978,7 +4978,7 @@ exports[`should match snapshot 1`] = `
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='current-password').",
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='current-password', autocomplete='new-password').",
         "type": "string",
       },
       "compact": {
@@ -5361,7 +5361,7 @@ exports[`should match snapshot 1`] = `
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').",
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='tel').",
         "type": "string",
       },
       "compact": {
@@ -5946,7 +5946,7 @@ exports[`should match snapshot 1`] = `
       "autoComplete": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').",
+        "description": "Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='url').",
         "type": "string",
       },
       "compact": {
