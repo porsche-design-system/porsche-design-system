@@ -86,8 +86,8 @@
   },
   {
     "chunkShortName": "flag",
-    "size": 4174,
-    "gzipSize": 2166
+    "size": 4156,
+    "gzipSize": 2161
   },
   {
     "chunkShortName": "flex",
@@ -201,8 +201,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 87255,
-    "gzipSize": 27813
+    "size": 87227,
+    "gzipSize": 27804
   },
   {
     "chunkShortName": "marque",
@@ -261,8 +261,8 @@
   },
   {
     "chunkShortName": "select",
-    "size": 46771,
-    "gzipSize": 16591
+    "size": 46523,
+    "gzipSize": 16566
   },
   {
     "chunkShortName": "select-wrapper",
