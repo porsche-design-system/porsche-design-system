@@ -111,10 +111,7 @@ export class Popover {
         )}
         {this.open && (
           <div
-            popover={this.hasSlottedButton ? "manual" : "auto"}
-            onToggle={(e: ToggleEvent) => {
-              this.onTogglePopover(e);
-            }}
+            popover="manual"
             ref={(el) => (this.popover = el)}
           >
             <div class="arrow" ref={(el) => (this.arrow = el)} />
@@ -143,11 +140,6 @@ export class Popover {
   };
 
   private onClickOutside = (e: MouseEvent): void => {
-    // Native support, uncontrolled => native popover handles click outside itself & calls onTogglePopover to update open state
-    // Native support, controlled => click outside must send dismiss event. If clicked on the button itself, it must be handled from outside.
-    // No native support, uncontrolled => only handle if not clicked on button or popover
-    // No native support, controlled => click outside must send dismiss event. If clicked on the button itself, it must be handled from outside.
-    if (this.hasNativePopoverSupport && !this.hasSlottedButton) return;
     if (this.open && isClickOutside(e, this.button || this.slottedButton) && isClickOutside(e, this.popover)) {
       this.hasSlottedButton ? this.dismissPopover() : (this.open = false);
     }
@@ -162,12 +154,6 @@ export class Popover {
         this.button.focus();
         this.open = false;
       }
-    }
-  };
-
-  private onTogglePopover = (e: ToggleEvent): void => {
-    if (!this.hasSlottedButton) {
-      (this.open = e.newState === 'open');
     }
   };
 
