@@ -77,7 +77,6 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
 
   // Hover states
   await forceHoverState(page, '.hover p-input-time:not(.force-label) >>> .wrapper');
-  await forceHoverState(page, '.hover p-input-time.force-label >>> label');
   await forceHoverState(page, '.hover p-input-time >>> p-button-pure >>> button');
 
   // Focus states

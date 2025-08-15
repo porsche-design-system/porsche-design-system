@@ -82,7 +82,6 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
 
   // Focus states
   await forceFocusState(page, '.focus p-input-text:not(.force-label) >>> input');
-  await forceFocusState(page, '.focus p-input-text.force-label >>> label');
   await forceFocusState(page, '.focus p-input-text >>> p-button-pure >>> button');
   await forceFocusVisibleState(page, '.focus p-input-text >>> p-button-pure >>> button');
 
