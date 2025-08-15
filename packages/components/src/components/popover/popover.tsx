@@ -69,11 +69,15 @@ export class Popover {
   private hasSlottedButton: boolean;
 
   public connectedCallback(): void {
-    document.addEventListener('mousedown', this.onClickOutside, true);
+    if (!this.hasNativePopoverSupport) {
+      document.addEventListener('mousedown', this.onClickOutside, true);
+    }
   }
 
   public disconnectedCallback(): void {
-    document.removeEventListener('mousedown', this.onClickOutside, true);
+    if (!this.hasNativePopoverSupport) {
+      document.removeEventListener('mousedown', this.onClickOutside, true);
+    }
     // ensures floating ui event listeners are removed in case popover is removed from DOM
     this.handlePopover(false);
   }
@@ -112,9 +116,8 @@ export class Popover {
         {this.open && (
           <div
             popover="auto"
-            onToggle={(e: ToggleEvent) => {
-              this.onTogglePopover(e);
-            }}
+            onToggle={this.onToggle}
+            onBeforeToggle={this.onBeforeToggle}
             ref={(el) => (this.popover = el)}
           >
             <div class="arrow" ref={(el) => (this.arrow = el)} />
@@ -132,6 +135,7 @@ export class Popover {
 
   private handlePopover = (open: boolean): void => {
     if (open) {
+      console.log('showPopover');
       this.hasNativePopoverSupport && this.popover.showPopover();
       if (!this.cleanUpAutoUpdate) {
         this.cleanUpAutoUpdate = autoUpdate(this.button || this.slottedButton, this.popover, this.updatePosition);
@@ -148,6 +152,18 @@ export class Popover {
     }
   };
 
+  private onToggle = (e: ToggleEvent): void => {
+    // Is only called in uncontrolled mode
+    this.open = e.newState === 'open';
+  }
+
+  private onBeforeToggle = async (e: ToggleEvent): Promise<void> => {
+    if (this.hasSlottedButton && e.newState === 'closed') {
+      e.preventDefault();
+      this.dismissPopover();
+    }
+  };
+
   private onHostKeydown = (e: KeyboardEvent): void => {
     if (e.key === 'Escape' && this.open) {
       e.preventDefault();
@@ -158,10 +174,6 @@ export class Popover {
         this.open = false;
       }
     }
-  };
-
-  private onTogglePopover = (e: ToggleEvent): void => {
-    !this.hasSlottedButton && (this.open = e.newState === 'open');
   };
 
   private dismissPopover = (): void => {
