@@ -5291,7 +5291,6 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
   align-items: center;
   left: -1px;
   justify-content: flex-start;
-  background: linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: hidden;
 }
 .action-prev .action-button {
@@ -5308,7 +5307,6 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
   align-items: center;
   right: -1px;
   justify-content: flex-end;
-  background: linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: hidden;
 }
 .action-next .action-button {
@@ -6108,7 +6106,6 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   align-items: flex-start;
   left: -1px;
   justify-content: flex-start;
-  background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-prev .action-button {
@@ -6125,7 +6122,6 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   align-items: flex-start;
   right: -1px;
   justify-content: flex-end;
-  background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-next .action-button {
@@ -6761,7 +6757,6 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   align-items: flex-start;
   left: -1px;
   justify-content: flex-start;
-  background: linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: hidden;
 }
 .action-prev .action-button {
@@ -6778,7 +6773,6 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   align-items: flex-start;
   right: -1px;
   justify-content: flex-end;
-  background: linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: hidden;
 }
 .action-next .action-button {
@@ -12654,6 +12648,45 @@ fieldset {
 </p-fieldset-wrapper>
 `;
 
+exports[`should render dsr component for PFlag 1`] = `
+<p-flag
+  data-ssr=""
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: inline-block;
+  vertical-align: top;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 1px;
+  box-sizing: border-box;
+  pointer-events: none;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+    </style>
+    <img
+      alt=""
+      height="24"
+      loading="lazy"
+      src="http://localhost:3001/flags/de.b575e11.svg"
+      width="24"
+    />
+  </template>
+</p-flag>
+`;
+
 exports[`should render dsr component for PFlex 1`] = `
 <p-flex
   data-ssr=""
@@ -18475,7 +18508,6 @@ exports[`should render dsr component for PScroller 1`] = `
   align-items: center;
   left: -1px;
   justify-content: flex-start;
-  background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-prev .action-button {
@@ -18492,7 +18524,6 @@ exports[`should render dsr component for PScroller 1`] = `
   align-items: center;
   right: -1px;
   justify-content: flex-end;
-  background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-next .action-button {
@@ -20230,7 +20261,6 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   align-items: center;
   left: -1px;
   justify-content: flex-start;
-  background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-prev .action-button {
@@ -20247,7 +20277,6 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   align-items: center;
   right: -1px;
   justify-content: flex-end;
-  background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-next .action-button {
@@ -21000,7 +21029,6 @@ exports[`should render dsr component for PTable 1`] = `
   align-items: center;
   left: -1px;
   justify-content: flex-start;
-  background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-prev .action-button {
@@ -21017,7 +21045,6 @@ exports[`should render dsr component for PTable 1`] = `
   align-items: center;
   right: -1px;
   justify-content: flex-end;
-  background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-next .action-button {
@@ -21811,7 +21838,6 @@ exports[`should render dsr component for PTabs 1`] = `
   align-items: flex-start;
   left: -1px;
   justify-content: flex-start;
-  background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-prev .action-button {
@@ -21828,7 +21854,6 @@ exports[`should render dsr component for PTabs 1`] = `
   align-items: flex-start;
   right: -1px;
   justify-content: flex-end;
-  background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-next .action-button {
@@ -22444,7 +22469,6 @@ exports[`should render dsr component for PTabsBar 1`] = `
   align-items: flex-start;
   left: -1px;
   justify-content: flex-start;
-  background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-prev .action-button {
@@ -22461,7 +22485,6 @@ exports[`should render dsr component for PTabsBar 1`] = `
   align-items: flex-start;
   right: -1px;
   justify-content: flex-end;
-  background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
 .action-next .action-button {

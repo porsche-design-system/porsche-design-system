@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize, Theme } from "./types";
+import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize, Theme } from "./types";
 import { AccordionHeadingTag, AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 import { BannerHeadingTag, BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
@@ -24,6 +24,7 @@ import { DrilldownAriaAttribute, DrilldownUpdateEventDetail } from "./components
 import { DrilldownLinkAriaAttribute, DrilldownLinkTarget } from "./components/drilldown/drilldown-link/drilldown-link-utils";
 import { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
 import { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
+import { FlagAriaAttribute, FlagSize } from "./components/flag/flag-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 import { FlyoutAriaAttribute, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
@@ -80,7 +81,7 @@ import { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wra
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
-export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize, Theme } from "./types";
+export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, FlagName, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, SelectedAriaRole, TextSize, Theme } from "./types";
 export { AccordionHeadingTag, AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 export { BannerHeadingTag, BannerState, BannerWidth } from "./components/banner/banner-utils";
 export { ButtonIcon } from "./components/button/button-utils";
@@ -99,6 +100,7 @@ export { DrilldownAriaAttribute, DrilldownUpdateEventDetail } from "./components
 export { DrilldownLinkAriaAttribute, DrilldownLinkTarget } from "./components/drilldown/drilldown-link/drilldown-link-utils";
 export { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset-utils";
 export { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
+export { FlagAriaAttribute, FlagSize } from "./components/flag/flag-utils";
 export { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 export { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 export { FlyoutAriaAttribute, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
@@ -823,6 +825,20 @@ export namespace Components {
           * Adapts color depending on theme.
          */
         "theme"?: Theme;
+    }
+    interface PFlag {
+        /**
+          * A map of ARIA attributes to enhance the flag's accessibility. For example, use `{ 'aria-label': 'German flag' }` to provide a descriptive label for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<FlagAriaAttribute>;
+        /**
+          * Specifies the country flag to display. Use the two-letter ISO 3166-1 alpha-2 country code. For example, use `us` for the United States, `de` for Germany, `gb` for Great Britain.
+         */
+        "name"?: FlagName;
+        /**
+          * The size of the flag. Pre-defined sizes are aligned with the Porsche Next typescale. Available values are `small`, `medium`, `large`, etc.
+         */
+        "size"?: FlagSize;
     }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
@@ -2415,11 +2431,11 @@ export namespace Components {
          */
         "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
         /**
-          * Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColor"?: ScrollerGradientColor;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.0.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: ScrollerGradientColorScheme;
         /**
@@ -2772,7 +2788,7 @@ export namespace Components {
          */
         "activeTabIndex"?: number;
         /**
-          * Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColor"?: TabsGradientColor;
         /**
@@ -2801,11 +2817,11 @@ export namespace Components {
          */
         "activeTabIndex"?: number | undefined;
         /**
-          * Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColor"?: TabsBarGradientColor;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.0.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: TabsBarGradientColorScheme;
         /**
@@ -3489,6 +3505,12 @@ declare global {
     var HTMLPFieldsetWrapperElement: {
         prototype: HTMLPFieldsetWrapperElement;
         new (): HTMLPFieldsetWrapperElement;
+    };
+    interface HTMLPFlagElement extends Components.PFlag, HTMLStencilElement {
+    }
+    var HTMLPFlagElement: {
+        prototype: HTMLPFlagElement;
+        new (): HTMLPFlagElement;
     };
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
@@ -4313,6 +4335,7 @@ declare global {
         "p-drilldown-link": HTMLPDrilldownLinkElement;
         "p-fieldset": HTMLPFieldsetElement;
         "p-fieldset-wrapper": HTMLPFieldsetWrapperElement;
+        "p-flag": HTMLPFlagElement;
         "p-flex": HTMLPFlexElement;
         "p-flex-item": HTMLPFlexItemElement;
         "p-flyout": HTMLPFlyoutElement;
@@ -5094,6 +5117,20 @@ declare namespace LocalJSX {
           * Adapts color depending on theme.
          */
         "theme"?: Theme;
+    }
+    interface PFlag {
+        /**
+          * A map of ARIA attributes to enhance the flag's accessibility. For example, use `{ 'aria-label': 'German flag' }` to provide a descriptive label for screen readers.
+         */
+        "aria"?: SelectedAriaAttributes<FlagAriaAttribute>;
+        /**
+          * Specifies the country flag to display. Use the two-letter ISO 3166-1 alpha-2 country code. For example, use `us` for the United States, `de` for Germany, `gb` for Great Britain.
+         */
+        "name"?: FlagName;
+        /**
+          * The size of the flag. Pre-defined sizes are aligned with the Porsche Next typescale. Available values are `small`, `medium`, `large`, etc.
+         */
+        "size"?: FlagSize;
     }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
@@ -6854,11 +6891,11 @@ declare namespace LocalJSX {
          */
         "aria"?: SelectedAriaAttributes<ScrollerAriaAttribute>;
         /**
-          * Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColor"?: ScrollerGradientColor;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.0.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: ScrollerGradientColorScheme;
         /**
@@ -7259,7 +7296,7 @@ declare namespace LocalJSX {
          */
         "activeTabIndex"?: number;
         /**
-          * Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColor"?: TabsGradientColor;
         /**
@@ -7296,11 +7333,11 @@ declare namespace LocalJSX {
          */
         "activeTabIndex"?: number | undefined;
         /**
-          * Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.29.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColor"?: TabsBarGradientColor;
         /**
-          * @deprecated since v3.0.0, will be removed with next major release, use `gradientColor` instead. Adapts the background gradient color of prev and next button.
+          * @deprecated since v3.0.0, will be removed with next major release. Adapts the background gradient color of prev and next button.
          */
         "gradientColorScheme"?: TabsBarGradientColorScheme;
         /**
@@ -7680,6 +7717,7 @@ declare namespace LocalJSX {
         "p-drilldown-link": PDrilldownLink;
         "p-fieldset": PFieldset;
         "p-fieldset-wrapper": PFieldsetWrapper;
+        "p-flag": PFlag;
         "p-flex": PFlex;
         "p-flex-item": PFlexItem;
         "p-flyout": PFlyout;
@@ -7801,6 +7839,7 @@ declare module "@stencil/core" {
              * @deprecated since v3.0.0, will be removed with next major release. Please use "p-fieldset" instead.
              */
             "p-fieldset-wrapper": LocalJSX.PFieldsetWrapper & JSXBase.HTMLAttributes<HTMLPFieldsetWrapperElement>;
+            "p-flag": LocalJSX.PFlag & JSXBase.HTMLAttributes<HTMLPFlagElement>;
             /**
              * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
              */

@@ -72,7 +72,6 @@ packages/components/src/styles-entry.ts
 packages/components/src/test-utils/tag-names-constructor-map.ts
 
 # Components JS
-packages/components-js/public/assets/icons.js
 packages/components-js/public/assets/imask.min.js
 packages/components-js/public/assets/styles.css
 packages/components-js/public/assets/table-data*

@@ -41,8 +41,7 @@ The size of the scroll indicator arrows depends on the `font-size` set onto the 
 The background and gradient has to align with your chosen background.
 
 <Notification heading="Deprecation hint" heading-tag="h3" state="warning">
-  The <code>gradientColorScheme</code> property has been deprecated and will be removed with the next major release.<br>
-  Please use the <code>gradientColor</code> property instead.
+  The <code>gradientColorScheme</code> and <code>gradientColor</code> properties have been deprecated and will be removed with the next major release.
 </Notification>
 
 <Playground :markup="gradientColorMarkup" :config="{ ...config, backgroundColor: gradientColor }">
