@@ -71,6 +71,14 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
+      - name: 'Rclone (Flags)'
+        uses: ./.github/actions/rclone
+        with:
+          source: 'packages/assets/cdn/flags/'
+          target: 'flags/'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.linode-aws-access-key-id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.linode-aws-secret-access-key }}
       - name: 'Rclone (Fonts)'
         uses: ./.github/actions/rclone
         with:

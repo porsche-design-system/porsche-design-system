@@ -5,6 +5,7 @@ const basePath = 'porsche-design-system';
 export const CDN_BASE_PATH_COMPONENTS = `${basePath}/components`;
 export const CDN_BASE_PATH_CREST = `${basePath}/crest`;
 export const CDN_BASE_PATH_FALLBACKS = `${basePath}/fallbacks`;
+export const CDN_BASE_PATH_FLAGS = `${basePath}/flags`;
 export const CDN_BASE_PATH_FONTS = `${basePath}/fonts`;
 export const CDN_BASE_PATH_ICONS = `${basePath}/icons`;
 export const CDN_BASE_PATH_MARQUE = `${basePath}/marque`;

@@ -67,6 +67,7 @@ import { DrilldownScrolledPage } from './generated/DrilldownScrolled';
 import { DrilldownSlottedButtonHeaderPage } from './generated/DrilldownSlottedButtonHeader';
 import { FieldsetPage } from './generated/Fieldset';
 import { FieldsetWrapperPage } from './generated/FieldsetWrapper';
+import { FlagPage } from './generated/Flag';
 import { FlexPage } from './generated/Flex';
 import { Flyout_1Page } from './generated/Flyout_1';
 import { Flyout_2Page } from './generated/Flyout_2';
@@ -504,6 +505,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Fieldset Wrapper',
     path: '/fieldset-wrapper',
     element: <FieldsetWrapperPage />,
+  },
+  {
+    name: 'Flag',
+    path: '/flag',
+    element: <FlagPage />,
   },
   {
     name: 'Flex',
