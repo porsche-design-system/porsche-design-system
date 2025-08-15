@@ -1248,7 +1248,7 @@ export namespace Components {
     }
     interface PInputNumber {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='postal-code').
          */
         "autoComplete"?: string;
         /**
@@ -1330,7 +1330,7 @@ export namespace Components {
     }
     interface PInputPassword {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='current-password').
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='current-password', autocomplete='new-password').
          */
         "autoComplete"?: string;
         /**
@@ -1482,7 +1482,7 @@ export namespace Components {
     }
     interface PInputTel {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='tel').
          */
         "autoComplete"?: string;
         /**
@@ -1720,7 +1720,7 @@ export namespace Components {
     }
     interface PInputUrl {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='url').
          */
         "autoComplete"?: string;
         /**
@@ -5584,7 +5584,7 @@ declare namespace LocalJSX {
     }
     interface PInputNumber {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='postal-code').
          */
         "autoComplete"?: string;
         /**
@@ -5678,7 +5678,7 @@ declare namespace LocalJSX {
     }
     interface PInputPassword {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='current-password').
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='current-password', autocomplete='new-password').
          */
         "autoComplete"?: string;
         /**
@@ -5854,7 +5854,7 @@ declare namespace LocalJSX {
     }
     interface PInputTel {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='tel').
          */
         "autoComplete"?: string;
         /**
@@ -6128,7 +6128,7 @@ declare namespace LocalJSX {
     }
     interface PInputUrl {
         /**
-          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='on').
+          * Provides a hint to the browser about what type of data the field expects, which can assist with autofill features (e.g., autocomplete='url').
          */
         "autoComplete"?: string;
         /**

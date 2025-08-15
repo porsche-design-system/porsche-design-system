@@ -131,19 +131,18 @@ export const getFunctionalComponentInputBaseStyles = (
       ...prefersColorSchemeDarkMediaQuery(theme, {
         borderColor: formStateColorDark || contrastMediumColorDark,
       }),
-      ...(!disabled && {
-        '&:has(input:focus)': {
-          borderColor: primaryColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: primaryColorDark,
-          }),
-        },
-      }),
       ...(!disabled &&
-        !readOnly &&
-        hoverMediaQuery({
-          '&:hover:not(:has(.button:hover, input:focus ))': hoverStyles,
-        })),
+        !readOnly && {
+          '&:has(input:focus)': {
+            borderColor: primaryColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              borderColor: primaryColorDark,
+            }),
+          },
+          ...hoverMediaQuery({
+            '&:hover:not(:has(.button:hover, input:focus ))': hoverStyles,
+          }),
+        }),
       ...(disabled && {
         cursor: 'not-allowed',
         borderColor: disabledColor,

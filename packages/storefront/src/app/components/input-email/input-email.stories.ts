@@ -77,7 +77,7 @@ export const inputEmailSlotStories: SlotStories<'p-input-email'> = {
 
 export const inputEmailStory: Story<'p-input-email'> = {
   state: {
-    properties: { label: 'Some label', name: 'some-name' },
+    properties: { label: 'Some label', name: 'some-name', indicator: true },
   },
   generator: ({ properties, slots } = {}) => [
     {
