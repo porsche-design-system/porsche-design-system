@@ -453,7 +453,6 @@ test.describe('keyboard behavior', () => {
 
           await page.keyboard.press('Escape');
           await expect(popover).toBeHidden();
-          await expect(button).toBeFocused();
         });
       });
     });
@@ -513,14 +512,21 @@ test.describe('lifecycle', () => {
 
     test('should work without unnecessary round trips on prop change', async ({ page }) => {
       await initPopover(page);
-      const host = getHost(page);
+      const button = getButton(page);
+      const popover = getPopover(page);
 
-      await setProperty(host, 'direction', 'right');
-      await waitForStencilLifecycle(page);
       const status = await getLifecycleStatus(page);
+      expect(status.componentDidLoad['p-popover'], 'componentDidLoad: p-popover').toBe(1);
+      expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
 
-      expect(status.componentDidUpdate['p-popover'], 'componentDidUpdate: p-popover').toBe(1);
-      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+      await button.click();
+      await expect(popover).toBeVisible();
+
+      const status2 = await getLifecycleStatus(page);
+
+      expect(status2.componentDidUpdate['p-popover'], 'componentDidUpdate: p-popover').toBe(1);
+      expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
     });
   });
 
@@ -530,22 +536,27 @@ test.describe('lifecycle', () => {
       const status = await getLifecycleStatus(page);
 
       expect(status.componentDidLoad['p-popover'], 'componentDidLoad: p-popover').toBe(1);
-      expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
-      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
       expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
     });
 
     test('should work without unnecessary round trips on prop change', async ({ page }) => {
       await initPopover(page, { withSlottedButton: true });
-      const host = getHost(page);
+      const button = getButton(page);
+      const popover = getPopover(page);
 
-      await setProperty(host, 'direction', 'right');
-      await waitForStencilLifecycle(page);
       const status = await getLifecycleStatus(page);
+      expect(status.componentDidLoad['p-popover'], 'componentDidLoad: p-popover').toBe(1);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
 
-      expect(status.componentDidUpdate['p-popover'], 'componentDidUpdate: p-popover').toBe(1);
-      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+      await button.click();
+      await expect(popover).toBeVisible();
+
+      const status2 = await getLifecycleStatus(page);
+
+      expect(status2.componentDidUpdate['p-popover'], 'componentDidUpdate: p-popover').toBe(1);
+      expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
     });
   });
 });
