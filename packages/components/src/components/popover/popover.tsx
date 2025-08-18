@@ -156,8 +156,10 @@ export class Popover {
   };
 
   private onHostKeydown = (e: KeyboardEvent): void => {
-    if (e.key === 'Escape' && this.open && !this.hasSlottedButton) {
-      this.button.focus();
+    if (e.key === 'Escape' && this.open) {
+      if (!this.hasSlottedButton) {
+        this.button.focus();
+      }
       // Handled by onToggle in native popover case
       if (!this.hasNativePopoverSupport) {
         this.open = false;
