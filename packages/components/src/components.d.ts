@@ -3243,10 +3243,6 @@ export interface PPinCodeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPPinCodeElement;
 }
-export interface PPopoverCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLPPopoverElement;
-}
 export interface PSegmentedControlCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPSegmentedControlElement;
@@ -3945,18 +3941,7 @@ declare global {
         prototype: HTMLPPinCodeElement;
         new (): HTMLPPinCodeElement;
     };
-    interface HTMLPPopoverElementEventMap {
-        "dismiss": void;
-    }
     interface HTMLPPopoverElement extends Components.PPopover, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLPPopoverElementEventMap>(type: K, listener: (this: HTMLPPopoverElement, ev: PPopoverCustomEvent<HTMLPPopoverElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLPPopoverElementEventMap>(type: K, listener: (this: HTMLPPopoverElement, ev: PPopoverCustomEvent<HTMLPPopoverElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLPPopoverElement: {
         prototype: HTMLPPopoverElement;
@@ -6842,10 +6827,6 @@ declare namespace LocalJSX {
           * Preferred direction in which popover should open, given there is enough space in viewport. Otherwise, it will be opened in the direction with most available space.
          */
         "direction"?: PopoverDirection;
-        /**
-          * Emitted when the component requests to be dismissed.
-         */
-        "onDismiss"?: (event: PPopoverCustomEvent<void>) => void;
         /**
           * If true, the popover is open.
          */
