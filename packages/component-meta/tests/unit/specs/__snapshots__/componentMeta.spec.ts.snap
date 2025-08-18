@@ -8543,15 +8543,9 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-popover": {
-    "eventsMeta": {
-      "dismiss": {
-        "description": "Emitted when the component requests to be dismissed.",
-        "type": "void",
-      },
-    },
     "hasAriaProp": true,
     "hasElementInternals": false,
-    "hasEvent": true,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
