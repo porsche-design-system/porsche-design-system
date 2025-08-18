@@ -1,13 +1,13 @@
 import type { ComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
-import type { InputNumberInputEventDetail } from '@porsche-design-system/components-react';
+import type { InputSearchInputEventDetail, InputNumberInputEventDetail } from '@porsche-design-system/components-react';
 import {
   PInputNumber,
+  PInputText,
   PPopover,
   PSelect,
   PSelectOption,
   PSwitch,
   PTag,
-  PTextFieldWrapper,
 } from '@porsche-design-system/components-react/ssr';
 import { FLAGS_ISO_3166, type FlagName } from '@porsche-design-system/flags';
 import type { TagName } from '@porsche-design-system/shared';
@@ -101,16 +101,21 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
 
     if (propMeta.allowedValues === 'string') {
       return (
-        <PTextFieldWrapper key={propName} style={{ '--p-internal-text-field-scaling': 0.5 } as React.CSSProperties}>
-          <input
-            type="text"
-            name={propName}
-            value={getCurrentValue(propName, propMeta) ?? ''}
-            required={propMeta.isRequired}
-            // disabled={propMeta.hasAlternativeSlot ? configuredSlots.default propMeta.hasAlternativeSlot.tag : false}
-            onInput={(e) => onUpdateProps(propName, e.currentTarget.value)}
-            aria-labelledby={`${propName}-id`}
-          />
+        <PInputText
+          name={propName}
+          key={propName}
+          style={{ '--p-internal-input-base-scaling': 0.5 } as React.CSSProperties}
+          value={getCurrentValue(propName, propMeta) ?? ''}
+          required={propMeta.isRequired}
+          // disabled={propMeta.hasAlternativeSlot ? configuredSlots.default propMeta.hasAlternativeSlot.tag : false}
+          onInput={(e) => {
+            onUpdateProps(
+              propName,
+              ((e as CustomEvent<InputSearchInputEventDetail>).detail.target as HTMLInputElement).value
+            );
+          }}
+          aria-labelledby={`${propName}-id`}
+        >
           <span slot="label" className="inline-flex gap-static-xs">
             <span id={`${propName}-id`}>{capitalCase(propName)}</span>
             <PPopover onClick={(e) => e.preventDefault()}>{propMeta.description}</PPopover>
@@ -122,7 +127,7 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
               onReset={() => onUpdateProps(propName, defaultProps?.[propName])}
             />
           </span>
-        </PTextFieldWrapper>
+        </PInputText>
       );
     }
 

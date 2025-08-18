@@ -1,9 +1,10 @@
 import type { ConfiguratorTagNames, ElementConfig } from '@/utils/generator/generator';
 import { getFlags } from '@/utils/getFlags';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
-import { PPopover, PTag, PTextFieldWrapper } from '@porsche-design-system/components-react/ssr';
+import { PInputText, PPopover, PTag } from '@porsche-design-system/components-react/ssr';
 import type { TagName } from '@porsche-design-system/shared';
 import React from 'react';
+import { InputTextInputEventDetail } from '@porsche-design-system/components-react';
 
 type ConfigureCssVariablesProps<T extends ConfiguratorTagNames> = {
   tagName: TagName;
@@ -45,12 +46,18 @@ export const ConfigureCssVariables = <T extends ConfiguratorTagNames>({
         {Object.entries(componentCssVariables ?? {})
           .filter(([cssVariableName]) => !cssVariableName.startsWith('--ref'))
           .map(([cssVariableName, cssVariableMeta]) => (
-            <PTextFieldWrapper key={cssVariableName}>
-              <input
-                type="text"
-                value={cssVariables[cssVariableName] ?? ''}
-                onInput={(e) => onUpdateCssVariables(cssVariableName, e.currentTarget.value)}
-              />
+            <PInputText
+              key={cssVariableName}
+              name="configure-css-variables-input"
+              style={{ '--p-internal-input-base-scaling': 0.5 } as React.CSSProperties}
+              value={cssVariables[cssVariableName] ?? ''}
+              onInput={(e) =>
+                onUpdateCssVariables(
+                  cssVariableName,
+                  ((e as CustomEvent<InputTextInputEventDetail>).detail.target as HTMLInputElement).value
+                )
+              }
+            >
               <span slot="label" className="inline-flex gap-static-xs">
                 {cssVariableName}
                 <PPopover onClick={(e) => e.preventDefault()}>{cssVariableMeta.description}</PPopover>
@@ -64,7 +71,7 @@ export const ConfigureCssVariables = <T extends ConfiguratorTagNames>({
                   </PTag>
                 )}
               </span>
-            </PTextFieldWrapper>
+            </PInputText>
           ))}
       </div>
     </>
