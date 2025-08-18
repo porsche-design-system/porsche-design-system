@@ -152,14 +152,16 @@ export class Popover {
   };
 
   private onToggle = (e: ToggleEvent): void => {
-    // Is only called in uncontrolled mode
     this.open = e.newState === 'open';
   };
 
   private onHostKeydown = (e: KeyboardEvent): void => {
-    if (!this.hasNativePopoverSupport && e.key === 'Escape' && this.open) {
+    if (e.key === 'Escape' && this.open && !this.hasSlottedButton) {
       this.button.focus();
-      this.open = false;
+      // Handled by onToggle in native popover case
+      if (!this.hasNativePopoverSupport) {
+        this.open = false;
+      }
     }
   };
 
