@@ -1,5 +1,6 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from "@/components/common/TableOfContents";
+import { Notification } from '@/components/common/Notification';
 
 export const metadata = {
   title: 'Text Field Wrapper - Porsche Design System',
@@ -9,6 +10,22 @@ export const metadata = {
 # Text Field Wrapper <ComponentStatus tagName="p-text-field-wrapper"></ComponentStatus>
 
 <TableOfContents headings={['Usage','Related Components']} />
+
+<Notification heading="Deprecation hint" heading-tag="h2" state="error">
+  This component is deprecated and will be removed with the next major release. Please use one of the specific input
+  components instead:
+  <ul>
+    <li><a href="/components/input-date/">p-input-date</a></li>
+    <li><a href="/components/input-email/">p-input-email</a></li>
+    <li><a href="/components/input-number/">p-input-number</a></li>
+    <li><a href="/components/input-password/">p-input-password</a></li>
+    <li><a href="/components/input-search/">p-input-search</a></li>
+    <li><a href="/components/input-tel/">p-input-tel</a></li>
+    <li><a href="/components/input-text/">p-input-text</a></li>
+    <li><a href="/components/input-time/">p-input-time</a></li>
+    <li><a href="/components/input-url/">p-input-url</a></li>
+  </ul>
+</Notification>
 
 ## Usage
 
