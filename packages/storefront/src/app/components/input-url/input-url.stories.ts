@@ -77,7 +77,7 @@ export const inputUrlSlotStories: SlotStories<'p-input-url'> = {
 
 export const inputUrlStory: Story<'p-input-url'> = {
   state: {
-    properties: { label: 'Some label', name: 'some-name' },
+    properties: { label: 'Some label', name: 'some-name', indicator: true },
   },
   generator: ({ properties, slots } = {}) => [
     {
