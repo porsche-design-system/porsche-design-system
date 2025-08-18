@@ -1,17 +1,17 @@
 import { arrow, autoUpdate, computePosition, flip, limitShift, offset, shift } from '@floating-ui/dom';
-import { Component, Event, Element, Host, type JSX, Prop, h, type EventEmitter } from '@stencil/core';
+import { Component, Element, Host, h, type JSX, Listen, Prop } from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import {
   AllowedTypes,
-  THEMES,
   attachComponentCss,
   getHasNativePopoverSupport,
   getPrefixedTagNames,
+  hasNamedSlot,
   hasPropValueChanged,
   isClickOutside,
   parseAndGetAriaAttributes,
+  THEMES,
   validateProps,
-  hasNamedSlot,
 } from '../../utils';
 import { getComponentCss } from './popover-styles';
 import {
@@ -57,9 +57,6 @@ export class Popover {
   /** If true, the popover is open. */
   @Prop({ mutable: true }) public open?: boolean = false;
 
-  /** Emitted when the component requests to be dismissed. */
-  @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
-
   private popover: HTMLDivElement;
   private button: HTMLButtonElement;
   private slottedButton: HTMLElement;
@@ -67,6 +64,14 @@ export class Popover {
   private cleanUpAutoUpdate: () => void;
   private hasNativePopoverSupport = getHasNativePopoverSupport();
   private hasSlottedButton: boolean;
+
+  @Listen('click')
+  public onClick(e: MouseEvent): void {
+    // Handle opening when custom slotted button is clicked
+    if (this.hasSlottedButton && (e.target as HTMLElement).closest('[slot="button"]') !== null) {
+      this.open = !this.open;
+    }
+  }
 
   public connectedCallback(): void {
     if (!this.hasNativePopoverSupport) {
@@ -114,12 +119,7 @@ export class Popover {
           </button>
         )}
         {this.open && (
-          <div
-            popover="auto"
-            onToggle={this.onToggle}
-            onBeforeToggle={this.onBeforeToggle}
-            ref={(el) => (this.popover = el)}
-          >
+          <div popover="auto" onToggle={this.onToggle} ref={(el) => (this.popover = el)}>
             <div class="arrow" ref={(el) => (this.arrow = el)} />
             <div class="content">{this.description ? <p>{this.description}</p> : <slot />}</div>
           </div>
@@ -135,7 +135,6 @@ export class Popover {
 
   private handlePopover = (open: boolean): void => {
     if (open) {
-      console.log('showPopover');
       this.hasNativePopoverSupport && this.popover.showPopover();
       if (!this.cleanUpAutoUpdate) {
         this.cleanUpAutoUpdate = autoUpdate(this.button || this.slottedButton, this.popover, this.updatePosition);
@@ -148,36 +147,20 @@ export class Popover {
 
   private onClickOutside = (e: MouseEvent): void => {
     if (this.open && isClickOutside(e, this.button || this.slottedButton) && isClickOutside(e, this.popover)) {
-      this.hasSlottedButton ? this.dismissPopover() : (this.open = false);
+      this.open = false;
     }
   };
 
   private onToggle = (e: ToggleEvent): void => {
     // Is only called in uncontrolled mode
     this.open = e.newState === 'open';
-  }
-
-  private onBeforeToggle = async (e: ToggleEvent): Promise<void> => {
-    if (this.hasSlottedButton && e.newState === 'closed') {
-      e.preventDefault();
-      this.dismissPopover();
-    }
   };
 
   private onHostKeydown = (e: KeyboardEvent): void => {
-    if (e.key === 'Escape' && this.open) {
-      e.preventDefault();
-      if (this.hasSlottedButton) {
-        this.dismissPopover();
-      } else {
-        this.button.focus();
-        this.open = false;
-      }
+    if (!this.hasNativePopoverSupport && e.key === 'Escape' && this.open) {
+      this.button.focus();
+      this.open = false;
     }
-  };
-
-  private dismissPopover = (): void => {
-    this.dismiss.emit();
   };
 
   private updatePosition = async (): Promise<void> => {
