@@ -587,6 +587,9 @@ export namespace Components {
          */
         "value"?: string;
     }
+    /**
+     * @deprecated since v3.29.0, will be removed with next major release. Please use "p-checkbox" instead.
+     */
     interface PCheckboxWrapper {
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
@@ -2585,6 +2588,9 @@ export namespace Components {
          */
         "value"?: string;
     }
+    /**
+     * @deprecated since v3.29.0, will be removed with next major release. Please use "p-select" instead.
+     */
     interface PSelectWrapper {
         /**
           * The description text.
@@ -2913,6 +2919,9 @@ export namespace Components {
          */
         "weight"?: TextWeight;
     }
+    /**
+     * @deprecated since v3.29.0, will be removed with next major release. Please use one of the specific input components instead: "p-input-date", "p-input-email", "p-input-number", "p-input-password", "p-input-search", "p-input-tel", "p-input-text", "p-input-time" or "p-input-url".
+     */
     interface PTextFieldWrapper {
         /**
           * Action icon can be set to `locate` for `input type="search"` in order to display an action button.
@@ -3077,6 +3086,9 @@ export namespace Components {
          */
         "wrap"?: TextareaWrap;
     }
+    /**
+     * @deprecated since v3.29.0, will be removed with next major release. Please use "p-textarea" instead.
+     */
     interface PTextareaWrapper {
         /**
           * The description text.
@@ -3417,6 +3429,9 @@ declare global {
         prototype: HTMLPCheckboxElement;
         new (): HTMLPCheckboxElement;
     };
+    /**
+     * @deprecated since v3.29.0, will be removed with next major release. Please use "p-checkbox" instead.
+     */
     interface HTMLPCheckboxWrapperElement extends Components.PCheckboxWrapper, HTMLStencilElement {
     }
     var HTMLPCheckboxWrapperElement: {
@@ -4027,6 +4042,9 @@ declare global {
         prototype: HTMLPSelectOptionElement;
         new (): HTMLPSelectOptionElement;
     };
+    /**
+     * @deprecated since v3.29.0, will be removed with next major release. Please use "p-select" instead.
+     */
     interface HTMLPSelectWrapperElement extends Components.PSelectWrapper, HTMLStencilElement {
     }
     var HTMLPSelectWrapperElement: {
@@ -4235,6 +4253,9 @@ declare global {
     interface HTMLPTextFieldWrapperElementEventMap {
         "action": void;
     }
+    /**
+     * @deprecated since v3.29.0, will be removed with next major release. Please use one of the specific input components instead: "p-input-date", "p-input-email", "p-input-number", "p-input-password", "p-input-search", "p-input-tel", "p-input-text", "p-input-time" or "p-input-url".
+     */
     interface HTMLPTextFieldWrapperElement extends Components.PTextFieldWrapper, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPTextFieldWrapperElementEventMap>(type: K, listener: (this: HTMLPTextFieldWrapperElement, ev: PTextFieldWrapperCustomEvent<HTMLPTextFieldWrapperElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4280,6 +4301,9 @@ declare global {
         prototype: HTMLPTextareaElement;
         new (): HTMLPTextareaElement;
     };
+    /**
+     * @deprecated since v3.29.0, will be removed with next major release. Please use "p-textarea" instead.
+     */
     interface HTMLPTextareaWrapperElement extends Components.PTextareaWrapper, HTMLStencilElement {
     }
     var HTMLPTextareaWrapperElement: {
@@ -4871,6 +4895,9 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * @deprecated since v3.29.0, will be removed with next major release. Please use "p-checkbox" instead.
+     */
     interface PCheckboxWrapper {
         /**
           * Show or hide label. For better accessibility it's recommended to show the label.
@@ -7057,6 +7084,9 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * @deprecated since v3.29.0, will be removed with next major release. Please use "p-select" instead.
+     */
     interface PSelectWrapper {
         /**
           * The description text.
@@ -7437,6 +7467,9 @@ declare namespace LocalJSX {
          */
         "weight"?: TextWeight;
     }
+    /**
+     * @deprecated since v3.29.0, will be removed with next major release. Please use one of the specific input components instead: "p-input-date", "p-input-email", "p-input-number", "p-input-password", "p-input-search", "p-input-tel", "p-input-text", "p-input-time" or "p-input-url".
+     */
     interface PTextFieldWrapper {
         /**
           * Action icon can be set to `locate` for `input type="search"` in order to display an action button.
@@ -7617,6 +7650,9 @@ declare namespace LocalJSX {
          */
         "wrap"?: TextareaWrap;
     }
+    /**
+     * @deprecated since v3.29.0, will be removed with next major release. Please use "p-textarea" instead.
+     */
     interface PTextareaWrapper {
         /**
           * The description text.
@@ -7812,6 +7848,9 @@ declare module "@stencil/core" {
              */
             "p-carousel": LocalJSX.PCarousel & JSXBase.HTMLAttributes<HTMLPCarouselElement>;
             "p-checkbox": LocalJSX.PCheckbox & JSXBase.HTMLAttributes<HTMLPCheckboxElement>;
+            /**
+             * @deprecated since v3.29.0, will be removed with next major release. Please use "p-checkbox" instead.
+             */
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
             /**
              * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
@@ -7925,6 +7964,9 @@ declare module "@stencil/core" {
              */
             "p-select": LocalJSX.PSelect & JSXBase.HTMLAttributes<HTMLPSelectElement>;
             "p-select-option": LocalJSX.PSelectOption & JSXBase.HTMLAttributes<HTMLPSelectOptionElement>;
+            /**
+             * @deprecated since v3.29.0, will be removed with next major release. Please use "p-select" instead.
+             */
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-select-wrapper-dropdown": LocalJSX.PSelectWrapperDropdown & JSXBase.HTMLAttributes<HTMLPSelectWrapperDropdownElement>;
             /**
@@ -7957,10 +7999,16 @@ declare module "@stencil/core" {
             "p-tag": LocalJSX.PTag & JSXBase.HTMLAttributes<HTMLPTagElement>;
             "p-tag-dismissible": LocalJSX.PTagDismissible & JSXBase.HTMLAttributes<HTMLPTagDismissibleElement>;
             "p-text": LocalJSX.PText & JSXBase.HTMLAttributes<HTMLPTextElement>;
+            /**
+             * @deprecated since v3.29.0, will be removed with next major release. Please use one of the specific input components instead: "p-input-date", "p-input-email", "p-input-number", "p-input-password", "p-input-search", "p-input-tel", "p-input-text", "p-input-time" or "p-input-url".
+             */
             "p-text-field-wrapper": LocalJSX.PTextFieldWrapper & JSXBase.HTMLAttributes<HTMLPTextFieldWrapperElement>;
             "p-text-list": LocalJSX.PTextList & JSXBase.HTMLAttributes<HTMLPTextListElement>;
             "p-text-list-item": LocalJSX.PTextListItem & JSXBase.HTMLAttributes<HTMLPTextListItemElement>;
             "p-textarea": LocalJSX.PTextarea & JSXBase.HTMLAttributes<HTMLPTextareaElement>;
+            /**
+             * @deprecated since v3.29.0, will be removed with next major release. Please use "p-textarea" instead.
+             */
             "p-textarea-wrapper": LocalJSX.PTextareaWrapper & JSXBase.HTMLAttributes<HTMLPTextareaWrapperElement>;
             "p-toast": LocalJSX.PToast & JSXBase.HTMLAttributes<HTMLPToastElement>;
             "p-toast-item": LocalJSX.PToastItem & JSXBase.HTMLAttributes<HTMLPToastItemElement>;
