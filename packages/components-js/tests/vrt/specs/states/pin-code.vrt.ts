@@ -24,33 +24,21 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     <p-pin-code theme="${theme}">
       <span slot="label">
         Slotted label
-        <span>
-          and some slotted, deeply nested <a href="#">anchor</a>.
-        </span>
       </span>
     </p-pin-code>
     <p-pin-code theme="${theme}" label="Some label" state="error">
       <span slot="description">
         Slotted description
-        <span>
-          and some slotted, deeply nested <a href="#">anchor</a>.
-        </span>
       </span>
     </p-pin-code>
     <p-pin-code theme="${theme}" label="Some label" state="error">
       <span slot="message">
         Slotted error message
-        <span>
-          and some slotted, deeply nested <a href="#">anchor</a>.
-        </span>
       </span>
     </p-pin-code>
     <p-pin-code theme="${theme}" label="Some label" state="success">
       <span slot="message">
         Slotted success message
-        <span>
-          and some slotted, deeply nested <a href="#">anchor</a>.
-        </span>
       </span>
     </p-pin-code>`;
 
