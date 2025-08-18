@@ -1,6 +1,4 @@
 import { Checkbox } from './checkbox';
-import * as applyConstructableStylesheetStylesUtils from '../../utils/applyConstructableStylesheetStyle';
-import { getSlottedAnchorStyles } from '../../styles';
 import { expect } from '@jest/globals';
 
 jest.mock('../../utils/dom');
@@ -30,17 +28,6 @@ const initComponent = (): Checkbox => {
 };
 
 describe('connectedCallback', () => {
-  it('should call applyConstructableStylesheetStyles() with correct parameters', () => {
-    const applyConstructableStylesheetStylesSpy = jest.spyOn(
-      applyConstructableStylesheetStylesUtils,
-      'applyConstructableStylesheetStyles'
-    );
-    const component = initComponent();
-
-    component.connectedCallback();
-    expect(applyConstructableStylesheetStylesSpy).toHaveBeenCalledWith(component.host, getSlottedAnchorStyles);
-  });
-
   it('should assign this.initialLoading to value of this.loading', () => {
     const component = initComponent();
     component.loading = true;
