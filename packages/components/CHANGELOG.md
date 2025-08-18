@@ -14,8 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+## [3.29.0-rc.4] - 2025-08-15
+
 ### Added
 
+- `Flag`: ([#3964](https://github.com/porsche-design-system/porsche-design-system/pull/3964))
 - `Input Url`: ([#3949](https://github.com/porsche-design-system/porsche-design-system/pull/3949))
 - `Multi Select`: `compact` prop to enable a smaller, space-saving version for compact layouts
   ([#3953](https://github.com/porsche-design-system/porsche-design-system/pull/3953))

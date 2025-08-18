@@ -15,6 +15,7 @@ import {
 const getHost = (page: Page) => page.locator('p-input-time');
 const getFieldset = (page: Page) => page.locator('fieldset');
 const getInputTime = (page: Page) => page.locator('p-input-time input');
+const getInputTimeShowPickerButton = (page: Page) => page.locator('p-input-time p-button-pure');
 const getInputTimeWrapper = (page: Page) => page.locator('p-input-time .wrapper');
 const getLabel = (page: Page) => page.locator('p-input-time label');
 const getForm = (page: Page) => page.locator('form');
@@ -484,5 +485,54 @@ test.describe('lifecycle', () => {
 
     expect(statusAfterChange.componentDidUpdate['p-input-time'], 'componentDidUpdate: input-time').toBe(1);
     expect(statusAfterChange.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+  });
+});
+
+test.describe('Picker', () => {
+  skipInBrowsers(['firefox', 'webkit'], () => {
+    test.beforeEach(async ({ page }) => {
+      await initInputTime(page, { props: { name: 'some-name' } });
+
+      const inputTime = getInputTime(page);
+      await inputTime.waitFor();
+
+      await inputTime.evaluate((input: HTMLInputElement) => {
+        (input as any).showPickerCalled = false;
+        const original = input.showPicker;
+        input.showPicker = function () {
+          (input as any).showPickerCalled = true;
+          if (original) original.call(input);
+        };
+      });
+    });
+
+    test('should call showPicker when time button is clicked', async ({ page }) => {
+      const inputTime = getInputTime(page);
+      const inputTimeShowPickerButton = getInputTimeShowPickerButton(page);
+
+      await inputTimeShowPickerButton.click();
+
+      const called = await inputTime.evaluate((input: HTMLInputElement) => {
+        return (input as any).showPickerCalled;
+      });
+      expect(called).toBe(true);
+    });
+
+    test('should call showPicker when time button is activated with keyboard', async ({ page }) => {
+      const inputTime = getInputTime(page);
+      const inputTimeShowPickerButton = getInputTimeShowPickerButton(page);
+      await inputTime.click();
+
+      await inputTime.press('Tab');
+      await inputTime.press('Tab');
+      await inputTime.press('Tab');
+      await expect(inputTimeShowPickerButton).toBeFocused();
+      await page.keyboard.press('Enter');
+
+      const called = await inputTime.evaluate((input: HTMLInputElement) => {
+        return (input as any).showPickerCalled;
+      });
+      expect(called).toBe(true);
+    });
   });
 });

@@ -15,6 +15,7 @@ import {
 const getHost = (page: Page) => page.locator('p-input-date');
 const getFieldset = (page: Page) => page.locator('fieldset');
 const getInputDate = (page: Page) => page.locator('p-input-date input');
+const getInputDateShowPickerButton = (page: Page) => page.locator('p-input-date p-button-pure');
 const getInputDateWrapper = (page: Page) => page.locator('p-input-date .wrapper');
 const getLabel = (page: Page) => page.locator('p-input-date label');
 const getForm = (page: Page) => page.locator('form');
@@ -485,5 +486,54 @@ test.describe('lifecycle', () => {
 
     expect(statusAfterChange.componentDidUpdate['p-input-date'], 'componentDidUpdate: input-date').toBe(1);
     expect(statusAfterChange.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+  });
+});
+
+test.describe('Picker', () => {
+  skipInBrowsers(['firefox', 'webkit'], () => {
+    test.beforeEach(async ({ page }) => {
+      await initInputDate(page, { props: { name: 'some-name' } });
+
+      const inputDate = getInputDate(page);
+      await inputDate.waitFor();
+
+      await inputDate.evaluate((input: HTMLInputElement) => {
+        (input as any).showPickerCalled = false;
+        const original = input.showPicker;
+        input.showPicker = function () {
+          (input as any).showPickerCalled = true;
+          if (original) original.call(input);
+        };
+      });
+    });
+
+    test('should call showPicker when calendar button is clicked', async ({ page }) => {
+      const inputDate = getInputDate(page);
+      const inputDateShowPickerButton = getInputDateShowPickerButton(page);
+
+      await inputDateShowPickerButton.click();
+
+      const called = await inputDate.evaluate((input: HTMLInputElement) => {
+        return (input as any).showPickerCalled;
+      });
+      expect(called).toBe(true);
+    });
+
+    test('should call showPicker when calendar button is activated with keyboard', async ({ page }) => {
+      const inputDate = getInputDate(page);
+      const inputDateShowPickerButton = getInputDateShowPickerButton(page);
+      await inputDate.click();
+
+      await inputDate.press('Tab');
+      await inputDate.press('Tab');
+      await inputDate.press('Tab');
+      await expect(inputDateShowPickerButton).toBeFocused();
+      await page.keyboard.press('Enter');
+
+      const called = await inputDate.evaluate((input: HTMLInputElement) => {
+        return (input as any).showPickerCalled;
+      });
+      expect(called).toBe(true);
+    });
   });
 });
