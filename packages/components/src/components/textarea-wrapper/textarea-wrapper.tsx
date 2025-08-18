@@ -40,6 +40,8 @@ const propTypes: PropTypes<typeof TextareaWrapper> = {
  * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  * @slot {"name": "", "description": "Default slot for the textarea." }
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ *
+ * @deprecated since v3.29.0, will be removed with next major release. Please use "p-textarea" instead.
  */
 @Component({
   tag: 'p-textarea-wrapper',
