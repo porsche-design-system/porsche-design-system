@@ -25,7 +25,7 @@ export const popoverSlottedButtonStory: Story<'p-popover'> = {
       children: [
         {
           tag: 'p-button-pure',
-          properties: { hideLabel: true, aria: { 'aria-expanded': false }, icon: 'information', slot: 'button' },
+          properties: { hideLabel: true, icon: 'information', slot: 'button' },
           children: ['More information'],
         },
         'Some additional content.',
