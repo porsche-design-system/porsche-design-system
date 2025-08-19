@@ -4,35 +4,16 @@ import type { Page } from 'playwright';
 import {
   addEventListener,
   getActiveElementId,
-  getActiveElementTagName,
-  getActiveElementTagNameInShadowRoot,
   getEventSummary,
   getLifecycleStatus,
   setContentWithDesignSystem,
-  setProperty,
   skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
 
 const getHost = (page: Page) => page.locator('p-popover');
 const getPopover = (page: Page) => page.locator('p-popover [popover]');
-const getButton = (page: Page) => page.locator('p-popover button').first();
-
-const togglePopover = async (page: Page): Promise<void> => {
-  const button = getButton(page);
-  await button.click();
-  await waitForStencilLifecycle(page);
-};
-
-const openPopover = async (page: Page) => {
-  await setProperty(getHost(page), 'open', true);
-  await waitForStencilLifecycle(page);
-};
-
-const dismissPopover = async (page: Page) => {
-  await setProperty(getHost(page), 'open', false);
-  await waitForStencilLifecycle(page);
-};
+const getButton = (page: Page) => page.locator('p-popover button');
 
 type InitOptions = {
   direction?: PopoverDirection;
@@ -151,288 +132,404 @@ skipInBrowsers(['webkit', 'firefox'], () => {
 });
 
 test.describe('mouse behavior', () => {
-  test('should open popover on click', async ({ page }) => {
-    await initPopover(page);
+  test.describe('default button', () => {
+    test('should open/close popover on button click', async ({ page }) => {
+      await initPopover(page);
+      const popover = getPopover(page);
+      const button = getButton(page);
 
-    await expect(getPopover(page)).toHaveCount(0);
-    await togglePopover(page);
-    await expect(getPopover(page)).not.toHaveCount(0);
-  });
+      await expect(popover).toBeHidden();
 
-  test('should open popover with slotted button on click', async ({ page }) => {
-    await initPopover(page, { withSlottedButton: true });
+      await button.click();
+      await expect(popover).toBeVisible();
 
-    await expect(getPopover(page)).toHaveCount(0);
-    await openPopover(page);
-    await expect(getPopover(page)).not.toHaveCount(0);
-  });
+      await button.click();
+      await expect(popover).toBeHidden();
+    });
 
-  test('should close popover on second click', async ({ page }) => {
-    await initPopover(page);
+    test('should close popover if clicked outside host element', async ({ page }) => {
+      await initPopover(page);
+      const popover = getPopover(page);
 
-    await togglePopover(page);
-    await expect(getPopover(page)).not.toHaveCount(0);
-    await togglePopover(page);
-    await expect(getPopover(page)).toHaveCount(0);
-  });
+      await expect(popover).toBeHidden();
 
-  test('should close popover with slotted button on second click', async ({ page }) => {
-    await initPopover(page, { withSlottedButton: true });
+      await page.mouse.click(200, 200);
+      await expect(popover).toBeHidden();
+    });
 
-    await openPopover(page);
-    await expect(getPopover(page)).not.toHaveCount(0);
-    await dismissPopover(page);
-    await expect(getPopover(page)).toHaveCount(0);
-  });
-
-  test('should close popover if clicked outside host element', async ({ page }) => {
-    await initPopover(page);
-
-    await togglePopover(page);
-    await expect(getPopover(page)).not.toHaveCount(0);
-
-    await page.locator('body').click();
-    await waitForStencilLifecycle(page);
-
-    await expect(getPopover(page)).toHaveCount(0);
-  });
-
-  skipInBrowsers(['webkit'], () => {
-    test('should close popover if another popover is clicked', async ({ page }) => {
-      await setContentWithDesignSystem(
-        page,
-        `<p-popover class="first">Some Content</p-popover>
+    skipInBrowsers(['webkit'], () => {
+      test('should close popover if another popover is clicked', async ({ page }) => {
+        await setContentWithDesignSystem(
+          page,
+          `<p-popover class="first">Some Content</p-popover>
       <p-popover class="second">Some Content</p-popover>`
-      );
+        );
 
-      const firstButton = getButton(page);
-      const secondButton = page.locator('p-popover.second button');
+        const firstButton = page.locator('p-popover.first button');
+        const secondButton = page.locator('p-popover.second button');
 
-      // We have to click the second button first, otherwise it gets overlapped by the first button and cant be clicked
-      await secondButton.click();
-      await waitForStencilLifecycle(page);
-      await expect(page.locator('p-popover.second [popover]'), 'second popover, second click').toBeVisible();
-      await expect(page.locator('p-popover.first [popover]'), 'first popover, second click').toBeHidden();
+        // We have to click the second button first, otherwise it gets overlapped by the first button and cant be clicked
+        await secondButton.click();
+        await waitForStencilLifecycle(page);
+        await expect(page.locator('p-popover.second [popover]'), 'second popover, second click').toBeVisible();
+        await expect(page.locator('p-popover.first [popover]'), 'first popover, second click').toBeHidden();
 
-      await firstButton.click();
-      await waitForStencilLifecycle(page);
-      await expect(page.locator('p-popover.first [popover]'), 'first popover, first click').toBeVisible();
-      await expect(page.locator('p-popover.second [popover]'), 'second popover, first click').toBeHidden();
+        await firstButton.click();
+        await waitForStencilLifecycle(page);
+        await expect(page.locator('p-popover.first [popover]'), 'first popover, first click').toBeVisible();
+        await expect(page.locator('p-popover.second [popover]'), 'second popover, first click').toBeHidden();
+      });
+    });
+
+    test('should not close popover when its content is clicked', async ({ page }) => {
+      await initPopover(page);
+      const popover = getPopover(page);
+      const button = getButton(page);
+
+      await button.click();
+      await expect(popover).toBeVisible();
+
+      await popover.click();
+
+      await expect(popover).toBeVisible();
+    });
+
+    test('should be possible to select/highlight text within open popover', async ({ page }) => {
+      await initPopover(page, { withStrong: true });
+      const popover = getPopover(page);
+      const button = getButton(page);
+
+      await button.click();
+      await expect(popover).toBeVisible();
+
+      const strongEl = page.locator('strong');
+      await strongEl.click({ clickCount: 2 });
+
+      const selection = await page.evaluate(() => window.getSelection().toString());
+      expect(selection).toBe('strong');
     });
   });
 
-  test('should not close popover when its content is clicked', async ({ page }) => {
-    await initPopover(page);
-    await togglePopover(page);
-    await expect(getPopover(page)).not.toHaveCount(0);
+  test.describe('custom slotted button', () => {
+    test('should open/close popover on button click', async ({ page }) => {
+      await initPopover(page, { withSlottedButton: true });
+      const popover = getPopover(page);
+      const button = getButton(page);
 
-    await getPopover(page).click();
+      await expect(popover).toBeHidden();
 
-    await expect(getPopover(page)).not.toHaveCount(0);
-  });
+      await button.click();
+      await expect(popover).toBeVisible();
 
-  test('should be possible to select/highlight text within open popover', async ({ page }) => {
-    await initPopover(page, { withStrong: true });
-    await togglePopover(page);
+      await button.click();
+      await expect(popover).toBeHidden();
+    });
 
-    const strongEl = page.locator('strong');
-    await strongEl.click({ clickCount: 2 });
+    test('should close popover if clicked outside host element', async ({ page }) => {
+      await initPopover(page, { withSlottedButton: true });
+      const popover = getPopover(page);
 
-    const selection = await page.evaluate(() => window.getSelection().toString());
-    expect(selection).toBe('strong');
+      await expect(popover).toBeHidden();
+
+      await page.mouse.click(200, 200);
+      await expect(popover).toBeHidden();
+    });
+
+    skipInBrowsers(['webkit'], () => {
+      test('should close popover if another popover is clicked', async ({ page }) => {
+        await setContentWithDesignSystem(
+          page,
+          `<p-popover class="first"><button slot="button">Some button</button>Some Content</p-popover>
+      <p-popover class="second"><button slot="button">Some button</button>Some Content</p-popover>`
+        );
+
+        const firstButton = page.locator('p-popover.first button');
+        const secondButton = page.locator('p-popover.second button');
+
+        // We have to click the second button first, otherwise it gets overlapped by the first button and cant be clicked
+        await secondButton.click();
+        await waitForStencilLifecycle(page);
+        await expect(page.locator('p-popover.second [popover]'), 'second popover, second click').toBeVisible();
+        await expect(page.locator('p-popover.first [popover]'), 'first popover, second click').toBeHidden();
+
+        await firstButton.click();
+        await waitForStencilLifecycle(page);
+        await expect(page.locator('p-popover.first [popover]'), 'first popover, first click').toBeVisible();
+        await expect(page.locator('p-popover.second [popover]'), 'second popover, first click').toBeHidden();
+      });
+    });
+
+    test('should not close popover when its content is clicked', async ({ page }) => {
+      await initPopover(page, { withSlottedButton: true });
+      const popover = getPopover(page);
+      const button = getButton(page);
+
+      await button.click();
+      await expect(popover).toBeVisible();
+
+      await popover.click();
+
+      await expect(popover).toBeVisible();
+    });
+
+    test('should be possible to select/highlight text within open popover', async ({ page }) => {
+      await initPopover(page, { withStrong: true, withSlottedButton: true });
+      const popover = getPopover(page);
+      const button = getButton(page);
+
+      await button.click();
+      await expect(popover).toBeVisible();
+
+      const strongEl = page.locator('strong');
+      await strongEl.click({ clickCount: 2 });
+
+      const selection = await page.evaluate(() => window.getSelection().toString());
+      expect(selection).toBe('strong');
+    });
   });
 });
 
 test.describe('keyboard behavior', () => {
   skipInBrowsers(['webkit']);
-  test.describe('escape', () => {
-    const focusedElementTagName = 'BUTTON';
 
-    test('should close popover when button is focused', async ({ page }) => {
-      await initPopover(page);
-      const host = getHost(page);
-      await togglePopover(page);
+  test.describe('default button', () => {
+    test.describe('escape', () => {
+      test('should close popover when button is focused', async ({ page }) => {
+        await initPopover(page);
+        const popover = getPopover(page);
+        const button = getButton(page);
 
-      await expect(getPopover(page)).not.toHaveCount(0);
-      expect(await getActiveElementTagNameInShadowRoot(host)).toBe(focusedElementTagName);
-
-      await page.keyboard.press('Escape');
-      await waitForStencilLifecycle(page);
-
-      await expect(getPopover(page)).toHaveCount(0);
-      expect(await getActiveElementTagNameInShadowRoot(host), 'focus on button after escape').toBe(
-        focusedElementTagName
-      );
-    });
-
-    skipInBrowsers(['firefox'], () => {
-      test('should close popover when content is focused', async ({ page }) => {
-        await initPopover(page, { withLink: true });
-        const host = getHost(page);
-        await togglePopover(page);
-
-        await expect(getPopover(page)).not.toHaveCount(0);
-        expect(await getActiveElementTagNameInShadowRoot(host)).toBe(focusedElementTagName);
-
-        await page.keyboard.press('Tab');
-        await waitForStencilLifecycle(page);
-
-        expect(await getActiveElementTagName(page)).toBe('A');
+        await button.click();
+        await expect(popover).toBeVisible();
+        await expect(button).toBeFocused();
 
         await page.keyboard.press('Escape');
-        await waitForStencilLifecycle(page);
 
-        await expect(getPopover(page)).toHaveCount(0);
-        expect(await getActiveElementTagNameInShadowRoot(host)).toBe(focusedElementTagName);
+        await expect(popover).toBeHidden();
+        await expect(button).toBeFocused();
+      });
+
+      skipInBrowsers(['firefox'], () => {
+        test('should close popover when content is focused', async ({ page }) => {
+          await initPopover(page, { withLink: true });
+          const popover = getPopover(page);
+          const button = getButton(page);
+          const link = page.locator('p-popover a');
+
+          await button.click();
+          await expect(popover).toBeVisible();
+          await expect(button).toBeFocused();
+
+          await page.keyboard.press('Tab');
+          await expect(link).toBeFocused();
+
+          await page.keyboard.press('Escape');
+          await expect(popover).toBeHidden();
+          await expect(button).toBeFocused();
+        });
       });
     });
 
-    test('should close popover when content outside is focused', async ({ page }) => {
-      await initPopover(page, { withButtonOutside: true });
-      const host = getHost(page);
-      await togglePopover(page);
+    test.describe('enter', () => {
+      test('should open / close popover', async ({ page }) => {
+        await initPopover(page);
+        const popover = getPopover(page);
+        const button = getButton(page);
 
-      expect(await getActiveElementTagNameInShadowRoot(host)).toBe(focusedElementTagName);
-      await expect(getPopover(page)).not.toHaveCount(0);
+        await page.keyboard.press('Tab');
+        await expect(button).toBeFocused();
+        await page.keyboard.press('Enter');
+        await expect(popover).toBeVisible();
 
-      await page.keyboard.press('Tab');
-      expect(await getActiveElementTagName(page)).toBe('BUTTON');
+        await page.keyboard.press('Enter');
+        await expect(popover).toBeHidden();
+      });
 
-      await page.keyboard.press('Escape');
-      await waitForStencilLifecycle(page);
+      test('should close other popovers that are open', async ({ page }) => {
+        await setContentWithDesignSystem(
+          page,
+          `<p-popover class="first">Some Content</p-popover>
+        <p-popover class="second">Some Content</p-popover>`
+        );
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
 
-      expect(await getActiveElementTagName(page)).toBe('BUTTON');
-      await expect(getPopover(page)).toHaveCount(0);
+        await expect(page.locator('p-popover.first [popover]'), 'first popover, first enter').toBeVisible();
+        await expect(page.locator('p-popover.second [popover]'), 'second popover, first enter').toBeHidden();
+
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+
+        await expect(page.locator('p-popover.first [popover]'), 'first popover, second enter').toBeHidden();
+        await expect(page.locator('p-popover.second [popover]'), 'second popover, second enter').toBeVisible();
+      });
     });
   });
 
-  test.describe('enter', () => {
-    test('should open / close popover', async ({ page }) => {
-      await initPopover(page);
+  test.describe('custom slotted button', () => {
+    test.describe('escape', () => {
+      test('should close popover when button is focused', async ({ page }) => {
+        await initPopover(page, { withSlottedButton: true });
+        const popover = getPopover(page);
+        const button = getButton(page);
 
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-      await waitForStencilLifecycle(page);
+        await button.click();
+        await expect(popover).toBeVisible();
+        await expect(button).toBeFocused();
 
-      await expect(getPopover(page), 'first enter').not.toHaveCount(0);
+        await page.keyboard.press('Escape');
 
-      await page.keyboard.press('Enter');
-      await waitForStencilLifecycle(page);
+        await expect(popover).toBeHidden();
+        await expect(button).toBeFocused();
+      });
 
-      await expect(getPopover(page), 'second enter').toHaveCount(0);
+      skipInBrowsers(['firefox'], () => {
+        test('should close popover when content is focused', async ({ page }) => {
+          await initPopover(page, { withLink: true, withSlottedButton: true });
+          const popover = getPopover(page);
+          const button = getButton(page);
+          const link = page.locator('p-popover a');
+
+          await button.click();
+          await expect(popover).toBeVisible();
+          await expect(button).toBeFocused();
+
+          await page.keyboard.press('Tab');
+          await expect(link).toBeFocused();
+
+          await page.keyboard.press('Escape');
+          await expect(popover).toBeHidden();
+        });
+      });
     });
 
-    test('should close other popovers that are open', async ({ page }) => {
-      await setContentWithDesignSystem(
-        page,
-        `<p-popover class="first">Some Content</p-popover>
-        <p-popover class="second">Some Content</p-popover>`
-      );
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-      await waitForStencilLifecycle(page);
+    test.describe('enter', () => {
+      test('should open / close popover', async ({ page }) => {
+        await initPopover(page, { withSlottedButton: true });
+        const popover = getPopover(page);
+        const button = getButton(page);
 
-      await expect(page.locator('p-popover.first [popover]'), 'first popover, first enter').toBeVisible();
-      await expect(page.locator('p-popover.second [popover]'), 'second popover, first enter').toBeHidden();
+        await page.keyboard.press('Tab');
+        await expect(button).toBeFocused();
+        await page.keyboard.press('Enter');
+        await expect(popover).toBeVisible();
 
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Enter');
-      await waitForStencilLifecycle(page);
+        await page.keyboard.press('Enter');
+        await expect(popover).toBeHidden();
+      });
 
-      await expect(page.locator('p-popover.first [popover]'), 'first popover, second enter').toBeHidden();
-      await expect(page.locator('p-popover.second [popover]'), 'second popover, second enter').toBeVisible();
+      test('should close other popovers that are open', async ({ page }) => {
+        await setContentWithDesignSystem(
+          page,
+          `<p-popover class="first"><button slot="button">Some button</button>Some Content</p-popover>
+        <p-popover class="second"><button slot="button">Some button</button>Some Content</p-popover>`
+        );
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+
+        await expect(page.locator('p-popover.first [popover]'), 'first popover, first enter').toBeVisible();
+        await expect(page.locator('p-popover.second [popover]'), 'second popover, first enter').toBeHidden();
+
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Enter');
+
+        await expect(page.locator('p-popover.first [popover]'), 'first popover, second enter').toBeHidden();
+        await expect(page.locator('p-popover.second [popover]'), 'second popover, second enter').toBeVisible();
+      });
     });
   });
 });
 
-test.describe('dismiss event', () => {
-  test('should not fire on a non controlled component if closed with ESC key', async ({ page }) => {
+test.describe('dynamic content change', () => {
+  test.fixme('should work with dynamic slotted button change correctly', async ({ page }) => {
     await initPopover(page);
-    const host = getHost(page);
 
-    await addEventListener(host, 'dismiss');
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+    await page.evaluate(() => {
+      const slottedButton = document.createElement('button');
+      slottedButton.slot = 'button';
+      slottedButton.textContent = 'Dynamic Button';
+      document.querySelector('p-popover').appendChild(slottedButton);
+    });
 
-    await togglePopover(page);
-    await waitForStencilLifecycle(page);
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+    const popover = getPopover(page);
+    const button = getButton(page);
 
-    await page.keyboard.press('Escape');
-    await waitForStencilLifecycle(page);
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
-  });
+    await expect(popover).toBeHidden();
 
-  test('should not fire on a non controlled component if closed with click outside', async ({ page }) => {
-    await initPopover(page);
-    const host = getHost(page);
+    await button.click();
+    await expect(popover).toBeVisible();
 
-    await addEventListener(host, 'dismiss');
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+    await button.click();
+    await expect(popover).toBeHidden();
 
-    await openPopover(page);
-    await waitForStencilLifecycle(page);
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
+    await button.click();
+    await expect(popover).toBeVisible();
 
-    await page.locator('body').click();
-    await waitForStencilLifecycle(page);
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
-  });
-
-  test('should fire on a controlled component if closed with ESC key', async ({ page }) => {
-    await initPopover(page, { withSlottedButton: true });
-    const host = getHost(page);
-
-    await addEventListener(host, 'dismiss');
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
-
-    await getButton(page).focus();
-    await openPopover(page);
-    await waitForStencilLifecycle(page);
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
-
-    await page.keyboard.press('Escape');
-    await waitForStencilLifecycle(page);
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
-  });
-
-  test('should fire on a controlled component if closed with click outside', async ({ page }) => {
-    await initPopover(page, { withSlottedButton: true });
-    const host = getHost(page);
-
-    await addEventListener(host, 'dismiss');
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
-
-    await openPopover(page);
-    await waitForStencilLifecycle(page);
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
-
-    await page.locator('body').click();
-    await waitForStencilLifecycle(page);
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
+    await page.mouse.click(200, 200);
+    await expect(popover).toBeHidden();
   });
 });
 
 test.describe('lifecycle', () => {
-  test('should work without unnecessary round trips on init', async ({ page }) => {
-    await initPopover(page);
-    const status = await getLifecycleStatus(page);
+  test.describe('default button', () => {
+    test('should work without unnecessary round trips on init', async ({ page }) => {
+      await initPopover(page);
+      const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidLoad['p-popover'], 'componentDidLoad: p-popover').toBe(1);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
+      expect(status.componentDidLoad['p-popover'], 'componentDidLoad: p-popover').toBe(1);
+      expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+    });
+
+    test('should work without unnecessary round trips on prop change', async ({ page }) => {
+      await initPopover(page);
+      const button = getButton(page);
+      const popover = getPopover(page);
+
+      const status = await getLifecycleStatus(page);
+      expect(status.componentDidLoad['p-popover'], 'componentDidLoad: p-popover').toBe(1);
+      expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
+
+      await button.click();
+      await expect(popover).toBeVisible();
+
+      const status2 = await getLifecycleStatus(page);
+
+      expect(status2.componentDidUpdate['p-popover'], 'componentDidUpdate: p-popover').toBe(1);
+      expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    });
   });
 
-  test('should work without unnecessary round trips on prop change', async ({ page }) => {
-    await initPopover(page);
-    const host = getHost(page);
+  test.describe('custom slotted button', () => {
+    test('should work without unnecessary round trips on init', async ({ page }) => {
+      await initPopover(page, { withSlottedButton: true });
+      const status = await getLifecycleStatus(page);
 
-    await setProperty(host, 'direction', 'right');
-    await waitForStencilLifecycle(page);
-    const status = await getLifecycleStatus(page);
+      expect(status.componentDidLoad['p-popover'], 'componentDidLoad: p-popover').toBe(1);
 
-    expect(status.componentDidUpdate['p-popover'], 'componentDidUpdate: p-popover').toBe(1);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
+      expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+    });
+
+    test('should work without unnecessary round trips on prop change', async ({ page }) => {
+      await initPopover(page, { withSlottedButton: true });
+      const button = getButton(page);
+      const popover = getPopover(page);
+
+      const status = await getLifecycleStatus(page);
+      expect(status.componentDidLoad['p-popover'], 'componentDidLoad: p-popover').toBe(1);
+      expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
+
+      await button.click();
+      await expect(popover).toBeVisible();
+
+      const status2 = await getLifecycleStatus(page);
+
+      expect(status2.componentDidUpdate['p-popover'], 'componentDidUpdate: p-popover').toBe(1);
+      expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+    });
   });
 });

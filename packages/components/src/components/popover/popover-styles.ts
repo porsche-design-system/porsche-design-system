@@ -59,6 +59,9 @@ export const getComponentCss = (theme: Theme): string => {
           ...hostHiddenStyles,
         }),
       },
+      'slot[name="button"]': {
+        display: 'block',
+      },
       ...preventFoucOfNestedElementsStyles,
       p: {
         ...textSmallStyle,
