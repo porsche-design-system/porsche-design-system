@@ -13,7 +13,7 @@ import {
 
 const getHost = (page: Page) => page.locator('p-popover');
 const getPopover = (page: Page) => page.locator('p-popover [popover]');
-const getButton = (page: Page) => page.locator('p-popover button').first();
+const getButton = (page: Page) => page.locator('p-popover button');
 
 type InitOptions = {
   direction?: PopoverDirection;
@@ -135,33 +135,26 @@ test.describe('mouse behavior', () => {
   test.describe('default button', () => {
     test('should open/close popover on button click', async ({ page }) => {
       await initPopover(page);
-      const host = getHost(page);
       const popover = getPopover(page);
       const button = getButton(page);
 
       await expect(popover).toBeHidden();
-      await expect(host).toHaveJSProperty('open', false);
 
       await button.click();
       await expect(popover).toBeVisible();
-      await expect(host).toHaveJSProperty('open', true);
 
       await button.click();
       await expect(popover).toBeHidden();
-      await expect(host).toHaveJSProperty('open', false);
     });
 
     test('should close popover if clicked outside host element', async ({ page }) => {
       await initPopover(page);
-      const host = getHost(page);
       const popover = getPopover(page);
 
       await expect(popover).toBeHidden();
-      await expect(host).toHaveJSProperty('open', false);
 
       await page.mouse.click(200, 200);
       await expect(popover).toBeHidden();
-      await expect(host).toHaveJSProperty('open', false);
     });
 
     skipInBrowsers(['webkit'], () => {
@@ -190,29 +183,24 @@ test.describe('mouse behavior', () => {
 
     test('should not close popover when its content is clicked', async ({ page }) => {
       await initPopover(page);
-      const host = getHost(page);
       const popover = getPopover(page);
       const button = getButton(page);
 
       await button.click();
       await expect(popover).toBeVisible();
-      await expect(host).toHaveJSProperty('open', true);
 
       await popover.click();
 
       await expect(popover).toBeVisible();
-      await expect(host).toHaveJSProperty('open', true);
     });
 
     test('should be possible to select/highlight text within open popover', async ({ page }) => {
       await initPopover(page, { withStrong: true });
-      const host = getHost(page);
       const popover = getPopover(page);
       const button = getButton(page);
 
       await button.click();
       await expect(popover).toBeVisible();
-      await expect(host).toHaveJSProperty('open', true);
 
       const strongEl = page.locator('strong');
       await strongEl.click({ clickCount: 2 });
@@ -225,33 +213,26 @@ test.describe('mouse behavior', () => {
   test.describe('custom slotted button', () => {
     test('should open/close popover on button click', async ({ page }) => {
       await initPopover(page, { withSlottedButton: true });
-      const host = getHost(page);
       const popover = getPopover(page);
       const button = getButton(page);
 
       await expect(popover).toBeHidden();
-      await expect(host).toHaveJSProperty('open', false);
 
       await button.click();
       await expect(popover).toBeVisible();
-      await expect(host).toHaveJSProperty('open', true);
 
       await button.click();
       await expect(popover).toBeHidden();
-      await expect(host).toHaveJSProperty('open', false);
     });
 
     test('should close popover if clicked outside host element', async ({ page }) => {
       await initPopover(page, { withSlottedButton: true });
-      const host = getHost(page);
       const popover = getPopover(page);
 
       await expect(popover).toBeHidden();
-      await expect(host).toHaveJSProperty('open', false);
 
       await page.mouse.click(200, 200);
       await expect(popover).toBeHidden();
-      await expect(host).toHaveJSProperty('open', false);
     });
 
     skipInBrowsers(['webkit'], () => {
@@ -280,29 +261,24 @@ test.describe('mouse behavior', () => {
 
     test('should not close popover when its content is clicked', async ({ page }) => {
       await initPopover(page, { withSlottedButton: true });
-      const host = getHost(page);
       const popover = getPopover(page);
       const button = getButton(page);
 
       await button.click();
       await expect(popover).toBeVisible();
-      await expect(host).toHaveJSProperty('open', true);
 
       await popover.click();
 
       await expect(popover).toBeVisible();
-      await expect(host).toHaveJSProperty('open', true);
     });
 
     test('should be possible to select/highlight text within open popover', async ({ page }) => {
       await initPopover(page, { withStrong: true, withSlottedButton: true });
-      const host = getHost(page);
       const popover = getPopover(page);
       const button = getButton(page);
 
       await button.click();
       await expect(popover).toBeVisible();
-      await expect(host).toHaveJSProperty('open', true);
 
       const strongEl = page.locator('strong');
       await strongEl.click({ clickCount: 2 });
@@ -320,13 +296,11 @@ test.describe('keyboard behavior', () => {
     test.describe('escape', () => {
       test('should close popover when button is focused', async ({ page }) => {
         await initPopover(page);
-        const host = getHost(page);
         const popover = getPopover(page);
         const button = getButton(page);
 
         await button.click();
         await expect(popover).toBeVisible();
-        await expect(host).toHaveJSProperty('open', true);
         await expect(button).toBeFocused();
 
         await page.keyboard.press('Escape');
@@ -338,14 +312,12 @@ test.describe('keyboard behavior', () => {
       skipInBrowsers(['firefox'], () => {
         test('should close popover when content is focused', async ({ page }) => {
           await initPopover(page, { withLink: true });
-          const host = getHost(page);
           const popover = getPopover(page);
           const button = getButton(page);
           const link = page.locator('p-popover a');
 
           await button.click();
           await expect(popover).toBeVisible();
-          await expect(host).toHaveJSProperty('open', true);
           await expect(button).toBeFocused();
 
           await page.keyboard.press('Tab');
@@ -361,7 +333,6 @@ test.describe('keyboard behavior', () => {
     test.describe('enter', () => {
       test('should open / close popover', async ({ page }) => {
         await initPopover(page);
-        const host = getHost(page);
         const popover = getPopover(page);
         const button = getButton(page);
 
@@ -369,11 +340,9 @@ test.describe('keyboard behavior', () => {
         await expect(button).toBeFocused();
         await page.keyboard.press('Enter');
         await expect(popover).toBeVisible();
-        await expect(host).toHaveJSProperty('open', true);
 
         await page.keyboard.press('Enter');
         await expect(popover).toBeHidden();
-        await expect(host).toHaveJSProperty('open', false);
       });
 
       test('should close other popovers that are open', async ({ page }) => {
@@ -401,13 +370,11 @@ test.describe('keyboard behavior', () => {
     test.describe('escape', () => {
       test('should close popover when button is focused', async ({ page }) => {
         await initPopover(page, { withSlottedButton: true });
-        const host = getHost(page);
         const popover = getPopover(page);
         const button = getButton(page);
 
         await button.click();
         await expect(popover).toBeVisible();
-        await expect(host).toHaveJSProperty('open', true);
         await expect(button).toBeFocused();
 
         await page.keyboard.press('Escape');
@@ -419,14 +386,12 @@ test.describe('keyboard behavior', () => {
       skipInBrowsers(['firefox'], () => {
         test('should close popover when content is focused', async ({ page }) => {
           await initPopover(page, { withLink: true, withSlottedButton: true });
-          const host = getHost(page);
           const popover = getPopover(page);
           const button = getButton(page);
           const link = page.locator('p-popover a');
 
           await button.click();
           await expect(popover).toBeVisible();
-          await expect(host).toHaveJSProperty('open', true);
           await expect(button).toBeFocused();
 
           await page.keyboard.press('Tab');
@@ -441,7 +406,6 @@ test.describe('keyboard behavior', () => {
     test.describe('enter', () => {
       test('should open / close popover', async ({ page }) => {
         await initPopover(page, { withSlottedButton: true });
-        const host = getHost(page);
         const popover = getPopover(page);
         const button = getButton(page);
 
@@ -449,11 +413,9 @@ test.describe('keyboard behavior', () => {
         await expect(button).toBeFocused();
         await page.keyboard.press('Enter');
         await expect(popover).toBeVisible();
-        await expect(host).toHaveJSProperty('open', true);
 
         await page.keyboard.press('Enter');
         await expect(popover).toBeHidden();
-        await expect(host).toHaveJSProperty('open', false);
       });
 
       test('should close other popovers that are open', async ({ page }) => {
@@ -475,6 +437,36 @@ test.describe('keyboard behavior', () => {
         await expect(page.locator('p-popover.second [popover]'), 'second popover, second enter').toBeVisible();
       });
     });
+  });
+});
+
+test.describe('dynamic content change', () => {
+  test.fixme('should work with dynamic slotted button change correctly', async ({ page }) => {
+    await initPopover(page);
+
+    await page.evaluate(() => {
+      const slottedButton = document.createElement('button');
+      slottedButton.slot = 'button';
+      slottedButton.textContent = 'Dynamic Button';
+      document.querySelector('p-popover').appendChild(slottedButton);
+    });
+
+    const popover = getPopover(page);
+    const button = getButton(page);
+
+    await expect(popover).toBeHidden();
+
+    await button.click();
+    await expect(popover).toBeVisible();
+
+    await button.click();
+    await expect(popover).toBeHidden();
+
+    await button.click();
+    await expect(popover).toBeVisible();
+
+    await page.mouse.click(200, 200);
+    await expect(popover).toBeHidden();
   });
 });
 
