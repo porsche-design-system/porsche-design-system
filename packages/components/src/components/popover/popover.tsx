@@ -1,5 +1,5 @@
 import { arrow, autoUpdate, computePosition, flip, limitShift, offset, shift } from '@floating-ui/dom';
-import { Component, Element, Host, h, type JSX, Listen, Prop } from '@stencil/core';
+import { Component, Element, Host, h, type JSX, Listen, Prop, State } from '@stencil/core';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import {
   AllowedTypes,
@@ -27,7 +27,6 @@ const propTypes: PropTypes<typeof Popover> = {
   description: AllowedTypes.string,
   aria: AllowedTypes.aria<PopoverAriaAttribute>(POPOVER_ARIA_ATTRIBUTES),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
-  open: AllowedTypes.boolean,
 };
 
 /**
@@ -54,8 +53,7 @@ export class Popover {
   /** Adapts the popover color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  /** If true, the popover is open. */
-  @Prop({ mutable: true }) public open?: boolean = false;
+  @State() private isOpen = false;
 
   private popover: HTMLDivElement;
   private button: HTMLButtonElement;
@@ -69,7 +67,7 @@ export class Popover {
   public onClick(e: MouseEvent): void {
     // Handle opening when custom slotted button is clicked
     if (this.hasSlottedButton && (e.target as HTMLElement).closest('[slot="button"]') !== null) {
-      this.open = !this.open;
+      this.isOpen = !this.isOpen;
     }
   }
 
@@ -107,10 +105,10 @@ export class Popover {
         ) : (
           <button
             type="button"
-            onClick={() => (this.open = !this.open)}
+            onClick={() => (this.isOpen = !this.isOpen)}
             {...parseAndGetAriaAttributes({
               ...parseAndGetAriaAttributes(this.aria),
-              ...{ 'aria-expanded': this.open },
+              ...{ 'aria-expanded': this.isOpen },
             })}
             ref={(el) => (this.button = el)}
           >
@@ -118,7 +116,7 @@ export class Popover {
             <span class="label">More information</span>
           </button>
         )}
-        {this.open && (
+        {this.isOpen && (
           <div popover="auto" onToggle={this.onToggle} ref={(el) => (this.popover = el)}>
             <div class="arrow" ref={(el) => (this.arrow = el)} />
             <div class="content">{this.description ? <p>{this.description}</p> : <slot />}</div>
@@ -130,7 +128,7 @@ export class Popover {
 
   public componentDidRender(): void {
     // needs to be called after render cycle to be able to render the popover conditionally
-    this.handlePopover(this.open);
+    this.handlePopover(this.isOpen);
   }
 
   private handlePopover = (open: boolean): void => {
@@ -146,24 +144,24 @@ export class Popover {
   };
 
   private onClickOutside = (e: MouseEvent): void => {
-    if (this.open && isClickOutside(e, this.button || this.slottedButton) && isClickOutside(e, this.popover)) {
-      this.open = false;
+    if (this.isOpen && isClickOutside(e, this.button || this.slottedButton) && isClickOutside(e, this.popover)) {
+      this.isOpen = false;
     }
   };
 
   private onToggle = (e: ToggleEvent): void => {
-    this.open = e.newState === 'open';
+    this.isOpen = e.newState === 'open';
   };
 
   private onHostKeydown = (e: KeyboardEvent): void => {
-    if (e.key === 'Escape' && this.open) {
+    if (e.key === 'Escape' && this.isOpen) {
       // TODO: How to handle focus when button is slotted?
       if (!this.hasSlottedButton) {
         this.button.focus();
       }
       // Handled by onToggle in native popover case
       if (!this.hasNativePopoverSupport) {
-        this.open = false;
+        this.isOpen = false;
       }
     }
   };
