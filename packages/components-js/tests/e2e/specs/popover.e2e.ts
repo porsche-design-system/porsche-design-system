@@ -165,7 +165,7 @@ test.describe('mouse behavior', () => {
       <p-popover class="second">Some Content</p-popover>`
         );
 
-        const firstButton = getButton(page);
+        const firstButton = page.locator('p-popover.first button');
         const secondButton = page.locator('p-popover.second button');
 
         // We have to click the second button first, otherwise it gets overlapped by the first button and cant be clicked
@@ -243,7 +243,7 @@ test.describe('mouse behavior', () => {
       <p-popover class="second"><button slot="button">Some button</button>Some Content</p-popover>`
         );
 
-        const firstButton = getButton(page);
+        const firstButton = page.locator('p-popover.first button');
         const secondButton = page.locator('p-popover.second button');
 
         // We have to click the second button first, otherwise it gets overlapped by the first button and cant be clicked
