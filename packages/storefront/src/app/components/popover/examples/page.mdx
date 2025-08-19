@@ -2,7 +2,7 @@ import { ComponentStatus } from '@/components/components/ComponentStatus';
 import { TableOfContents } from '@/components/common/TableOfContents';
 import { ComponentStory } from '@/components/playground/ComponentStory';
 import { Notification } from '@/components/common/Notification';
-import { popoverControlled } from '@/app/components/popover/popover.stories';
+import { popoverSlottedButtonStory } from '@/app/components/popover/popover.stories';
 
 export const metadata = {
   title: 'Popover - Porsche Design System',
@@ -11,23 +11,11 @@ export const metadata = {
 
 # Popover <ComponentStatus tagName="p-popover"></ComponentStatus>
 
-<TableOfContents headings={['Controlled']} />
+<TableOfContents headings={['Slotted button']} />
 
-## Controlled
+## Slotted button
 
-By default, the `p-popover`component has a fully managed internal state to open/close the popover. But the component can
-also be used with a **slotted button** as a controlled component. This means that the behavior must be controlled from
-**outside** by using the `open` prop.
+The `p-popover` component can also be used with a **slotted button** via the `button` slot, allowing you to provide a
+custom button element.
 
-<Notification heading="Limited preview functionality" heading-tag="h3" state="warning">
-  The **controlled examples** are currently in a limited preview state and may not work as expected on this example page
-  (but they should work flawless in all other environments). This is due to the fact that functionalities of
-  **controlled examples** must be set by the user which can't be mapped by the component generator.
-</Notification>
-
-<ComponentStory story={popoverControlled} />
-
-### The following development considerations must be taken into account
-
-1. The `aria-expanded` attribute must be set and changed manually to its corresponding state `true | false`.
-2. The `focus` must be set to the slotted button element when the popover is closed by `Escape` key.
+<ComponentStory story={popoverSlottedButtonStory} />

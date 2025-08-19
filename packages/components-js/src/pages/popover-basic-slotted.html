@@ -15,12 +15,6 @@
 
 <script>
   porscheDesignSystem.componentsReady().then(() => {
-    const pButton = document.querySelector('p-button-pure');
-    const pPopover = document.querySelector('p-popover');
-    pButton.addEventListener('click', () => {
-      pPopover.open = !pPopover.open;
-      pButton.aria = { 'aria-expanded': pPopover.open };
-    });
     document.querySelector('p-popover').querySelector('p-button-pure').click();
   });
 </script>
