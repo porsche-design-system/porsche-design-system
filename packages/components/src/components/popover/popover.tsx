@@ -157,6 +157,7 @@ export class Popover {
 
   private onHostKeydown = (e: KeyboardEvent): void => {
     if (e.key === 'Escape' && this.open) {
+      // TODO: How to handle focus when button is slotted?
       if (!this.hasSlottedButton) {
         this.button.focus();
       }
