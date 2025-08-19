@@ -76,7 +76,7 @@ const propTypes: PropTypes<typeof TextFieldWrapper> = {
  * @slot {"name": "", "description": "Default slot for the input." }
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  *
- * @deprecated since v3.29.0, will be removed with next major release. Please use one of the specific input components instead: "p-input-date", "p-input-email", "p-input-number", "p-input-password", "p-input-search", "p-input-tel", "p-input-text", "p-input-time" or "p-input-url".
+ * @deprecated since v3.29.0, will be removed with next major release. Please use one of the specific input components instead: `p-input-date`, `p-input-email`, `p-input-number`, `p-input-password`, `p-input-search`, `p-input-tel`, `p-input-text`, `p-input-time` or `p-input-url`.
  */
 @Component({
   tag: 'p-text-field-wrapper',
