@@ -1,6 +1,7 @@
-import { PTextFieldWrapper } from '@porsche-design-system/components-react/ssr';
+import { PInputSearch } from '@porsche-design-system/components-react/ssr';
 import { forwardRef, useState } from 'react';
 import { type UseSearchBoxProps, useInstantSearch, useSearchBox } from 'react-instantsearch';
+import { InputSearchInputEventDetail } from '@porsche-design-system/components-react';
 
 export const SearchInput = forwardRef<HTMLInputElement, UseSearchBoxProps>((props, ref) => {
   const { query, refine } = useSearchBox({ ...props, queryHook });
@@ -18,22 +19,20 @@ export const SearchInput = forwardRef<HTMLInputElement, UseSearchBoxProps>((prop
   return (
     <div>
       <form action="" role="search" noValidate={true}>
-        <PTextFieldWrapper label="Search" hideLabel={true}>
-          <input
-            ref={ref}
-            autoComplete="off"
-            autoCorrect="off"
-            autoCapitalize="off"
-            placeholder="What are you looking for?"
-            spellCheck={false}
-            maxLength={512}
-            type="search"
-            value={inputValue}
-            onChange={(event) => {
-              setQuery(event.currentTarget.value);
-            }}
-          />
-        </PTextFieldWrapper>
+        <PInputSearch
+          clear={true}
+          indicator={true}
+          name="search-input"
+          label="Search"
+          hideLabel={true}
+          ref={ref}
+          autoComplete="off"
+          placeholder="What are you looking for?"
+          value={inputValue}
+          onInput={(event) => {
+            setQuery(((event as CustomEvent<InputSearchInputEventDetail>).detail.target as HTMLInputElement).value);
+          }}
+        ></PInputSearch>
         <span hidden={!isSearchStalled}>Searching…</span>
       </form>
     </div>

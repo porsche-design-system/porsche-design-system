@@ -30,7 +30,7 @@ const propTypes: PropTypes<typeof FieldsetWrapper> = {
  * @slot {"name": "", "description": "Default slot for the main content." }
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  *
- * @deprecated since v3.0.0, will be removed with next major release. Please use "p-fieldset" instead.
+ * @deprecated since v3.0.0, will be removed with next major release. Please use `p-fieldset` instead.
  */
 @Component({
   tag: 'p-fieldset-wrapper',
