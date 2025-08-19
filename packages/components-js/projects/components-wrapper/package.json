@@ -18,13 +18,17 @@
   "homepage": "https://designsystem.porsche.com",
   "peerDependencies": {
     "ag-grid-community": ">= 33.0.0 <35.0.0",
-    "ag-grid-enterprise": ">= 33.0.0 <35.0.0"
+    "ag-grid-enterprise": ">= 33.0.0 <35.0.0",
+    "tailwindcss": ">= 4.0.0 <5.0.0"
   },
   "peerDependenciesMeta": {
     "ag-grid-community": {
       "optional": true
     },
     "ag-grid-enterprise": {
+      "optional": true
+    },
+    "tailwindcss": {
       "optional": true
     }
   },
