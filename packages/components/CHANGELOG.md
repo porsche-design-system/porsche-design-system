@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ## [Unreleased]
 
+### Changed
+
+- `Checkbox`, `Multi Select`, `Select`, `Pin Code`, `Textarea`: removed slotted anchor styles
+  ([#3981](https://github.com/porsche-design-system/porsche-design-system/pull/3981))
+
 ## [3.29.0-rc.4] - 2025-08-15
 
 ### Added
