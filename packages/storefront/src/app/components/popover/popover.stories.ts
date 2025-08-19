@@ -1,23 +1,33 @@
 'use client';
 
-import type { Story } from '@/models/story';
+import type { SlotStories, Story } from '@/models/story';
+
+export const popoverSlotStories: SlotStories<'p-popover'> = {
+  button: {
+    'custom-button': {
+      name: 'Custom Button',
+      generator: () => [
+        {
+          tag: 'p-button-pure',
+          properties: { hideLabel: true, icon: 'car', slot: 'button' },
+          children: ['More information'],
+        },
+      ],
+    },
+  },
+};
 
 export const popoverStory: Story<'p-popover'> = {
-  generator: ({ properties } = {}) => [
+  generator: ({ properties, slots } = {}) => [
     {
       tag: 'p-popover',
       properties,
-      children: ['Some additional content.'],
+      children: [...(slots?.button?.generator() ?? []), 'Some additional content.'],
     },
   ],
 };
 
 export const popoverSlottedButtonStory: Story<'p-popover'> = {
-  state: {
-    properties: {
-      open: false,
-    },
-  },
   generator: ({ properties } = {}) => [
     {
       tag: 'p-popover',
@@ -25,7 +35,7 @@ export const popoverSlottedButtonStory: Story<'p-popover'> = {
       children: [
         {
           tag: 'p-button-pure',
-          properties: { hideLabel: true, icon: 'information', slot: 'button' },
+          properties: { hideLabel: true, icon: 'car', slot: 'button' },
           children: ['More information'],
         },
         'Some additional content.',
