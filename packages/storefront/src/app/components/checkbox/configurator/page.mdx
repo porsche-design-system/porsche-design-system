@@ -1,12 +1,13 @@
 import { ComponentStatus } from '@/components/components/ComponentStatus';
-import { Configurator } from "@/components/playground/Configurator";
-import { checkboxStory } from "@/app/components/checkbox/checkbox.stories";
-import {Notification} from "@/components/common/Notification";
+import { Configurator } from '@/components/playground/Configurator';
+import { checkboxStory } from '@/app/components/checkbox/checkbox.stories';
+import { Notification } from '@/components/common/Notification';
 
 export const metadata = {
   title: 'Checkbox - Porsche Design System',
-  description: 'Learn how to use the Porsche Design System\'s Checkbox component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.'
-}
+  description:
+    "Learn how to use the Porsche Design System's Checkbox component. Explore usage examples, configuration options, and behavior details in a fully controlled setup.",
+};
 
 # Checkbox <ComponentStatus tagName="p-checkbox"></ComponentStatus>
 
@@ -19,10 +20,9 @@ whenever possible. When used without a label, it's best practice to provide a de
 
 <Notification heading="Attention" heading-tag="h2" state="warning">
   When the <code>p-checkbox</code> component is used within a form, it utilizes the
-  <a href="https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals">ElementInternals</a> API, which has limited
-  browser support. For broader browser compatibility, consider using a
-  <a href="/components/checkbox/examples/#controlled">controlled</a> approach instead.
+  <a href="https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals">ElementInternals</a> API, which has
+  limited browser support. For broader browser compatibility, consider using a
+  <a href="components/checkbox/examples/#controlled">controlled</a> approach instead.
 </Notification>
 
 <Configurator tagName="p-checkbox" story={checkboxStory} />
-
