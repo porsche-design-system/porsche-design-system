@@ -1,5 +1,6 @@
 [
   "/",
+  "/accessibility-statement/",
   "/ag-grid/theme/",
   "/components/accordion/accessibility/",
   "/components/accordion/api/",
@@ -406,6 +407,7 @@
   "/help/feature-request/",
   "/help/support/",
   "/license/",
+  "/mailto:info@porsche.de",
   "/must-know/accessibility/",
   "/must-know/accessibility/introduction/",
   "/must-know/accessibility/statement/",
