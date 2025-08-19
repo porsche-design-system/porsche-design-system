@@ -2387,10 +2387,6 @@ export namespace Components {
          */
         "direction"?: PopoverDirection;
         /**
-          * If true, the popover is open.
-         */
-        "open"?: boolean;
-        /**
           * Adapts the popover color depending on the theme.
          */
         "theme"?: Theme;
@@ -6827,10 +6823,6 @@ declare namespace LocalJSX {
           * Preferred direction in which popover should open, given there is enough space in viewport. Otherwise, it will be opened in the direction with most available space.
          */
         "direction"?: PopoverDirection;
-        /**
-          * If true, the popover is open.
-         */
-        "open"?: boolean;
         /**
           * Adapts the popover color depending on the theme.
          */
