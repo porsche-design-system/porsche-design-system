@@ -4,12 +4,9 @@ import type { Page } from 'playwright';
 import {
   addEventListener,
   getActiveElementId,
-  getActiveElementTagName,
-  getActiveElementTagNameInShadowRoot,
   getEventSummary,
   getLifecycleStatus,
   setContentWithDesignSystem,
-  setProperty,
   skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -17,22 +14,6 @@ import {
 const getHost = (page: Page) => page.locator('p-popover');
 const getPopover = (page: Page) => page.locator('p-popover [popover]');
 const getButton = (page: Page) => page.locator('p-popover button').first();
-
-const togglePopover = async (page: Page): Promise<void> => {
-  const button = getButton(page);
-  await button.click();
-  await waitForStencilLifecycle(page);
-};
-
-const openPopover = async (page: Page) => {
-  await setProperty(getHost(page), 'open', true);
-  await waitForStencilLifecycle(page);
-};
-
-const dismissPopover = async (page: Page) => {
-  await setProperty(getHost(page), 'open', false);
-  await waitForStencilLifecycle(page);
-};
 
 type InitOptions = {
   direction?: PopoverDirection;
