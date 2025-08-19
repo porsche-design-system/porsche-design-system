@@ -104,7 +104,7 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
         <PInputText
           name={propName}
           key={propName}
-          style={{ '--p-internal-input-base-scaling': 0.5 } as React.CSSProperties}
+          compact={true}
           value={getCurrentValue(propName, propMeta) ?? ''}
           required={propMeta.isRequired}
           // disabled={propMeta.hasAlternativeSlot ? configuredSlots.default propMeta.hasAlternativeSlot.tag : false}
@@ -114,7 +114,6 @@ export const ConfigureProps = <T extends ConfiguratorTagNames>({
               ((e as CustomEvent<InputSearchInputEventDetail>).detail.target as HTMLInputElement).value
             );
           }}
-          aria-labelledby={`${propName}-id`}
         >
           <span slot="label" className="inline-flex gap-static-xs">
             <span id={`${propName}-id`}>{capitalCase(propName)}</span>

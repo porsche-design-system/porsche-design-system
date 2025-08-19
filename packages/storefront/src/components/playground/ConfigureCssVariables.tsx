@@ -49,7 +49,7 @@ export const ConfigureCssVariables = <T extends ConfiguratorTagNames>({
             <PInputText
               key={cssVariableName}
               name="configure-css-variables-input"
-              style={{ '--p-internal-input-base-scaling': 0.5 } as React.CSSProperties}
+              compact={true}
               value={cssVariables[cssVariableName] ?? ''}
               onInput={(e) =>
                 onUpdateCssVariables(
