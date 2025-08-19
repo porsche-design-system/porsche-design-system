@@ -12,36 +12,16 @@ export const popoverStory: Story<'p-popover'> = {
   ],
 };
 
-export const popoverControlled: Story<'p-popover'> = {
-  state: {
-    properties: {
-      open: false,
-    } as any,
-  },
+export const popoverSlottedButtonStory: Story<'p-popover'> = {
   generator: ({ properties } = {}) => [
     {
       tag: 'p-popover',
       properties,
-      events: {
-        // @ts-ignore
-        onDismiss: {
-          target: 'p-popover',
-          prop: 'open',
-          value: false,
-        },
-      },
       children: [
         {
           tag: 'p-button-pure',
-          properties: { hideLabel: true, aria: { 'aria-expanded': false }, icon: 'information', slot: 'button' },
+          properties: { hideLabel: true, icon: 'car', slot: 'button' },
           children: ['More information'],
-          events: {
-            onClick: {
-              target: 'p-popover',
-              prop: 'open',
-              value: true,
-            },
-          },
         },
         'Some additional content.',
       ],
