@@ -142,8 +142,8 @@ export class Popover {
     }
   };
 
-  // Only called in case of no native popover support
   private onClickOutside = (e: MouseEvent): void => {
+    // Only called in case of no native popover support
     if (this.isOpen && isClickOutside(e, this.button || this.slottedButton) && isClickOutside(e, this.popover)) {
       this.isOpen = false;
     }
