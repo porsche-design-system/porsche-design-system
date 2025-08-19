@@ -61,6 +61,7 @@ export class Popover {
   private arrow: HTMLDivElement;
   private cleanUpAutoUpdate: () => void;
   private hasNativePopoverSupport = getHasNativePopoverSupport();
+  // TODO: This should be updated when slot is changed
   private hasSlottedButton: boolean;
 
   @Listen('click')
@@ -99,9 +100,7 @@ export class Popover {
     return (
       <Host onKeyDown={this.onHostKeydown}>
         {this.hasSlottedButton ? (
-          <div ref={(el) => (this.slottedButton = el)}>
-            <slot name="button" />
-          </div>
+          <slot name="button" ref={(el: HTMLElement) => (this.slottedButton = el)} />
         ) : (
           <button
             type="button"
@@ -143,6 +142,7 @@ export class Popover {
     }
   };
 
+  // Only called in case of no native popover support
   private onClickOutside = (e: MouseEvent): void => {
     if (this.isOpen && isClickOutside(e, this.button || this.slottedButton) && isClickOutside(e, this.popover)) {
       this.isOpen = false;
@@ -159,7 +159,7 @@ export class Popover {
       if (!this.hasSlottedButton) {
         this.button.focus();
       }
-      // Handled by onToggle in native popover case
+      // Only necessary in case of no native popover support
       if (!this.hasNativePopoverSupport) {
         this.isOpen = false;
       }
