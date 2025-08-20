@@ -14,12 +14,6 @@ Run the following command using [npm](https://npmjs.com):
 npm install @porsche-design-system/components-js
 ```
 
-If you prefer [Yarn](https://yarnpkg.com), use the following command instead:
-
-```bash
-yarn add @porsche-design-system/components-js
-```
-
 ### Usage
 
 After adding the `@porsche-design-system/components-js` package to your project, the following page setup is recommended

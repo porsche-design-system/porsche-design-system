@@ -9,21 +9,21 @@ For basic testing of wrapper components, this project was bootstrapped with
 
 In the project directory, you can run:
 
-### `yarn start`
+### `npm run start`
 
 Runs the app in the development mode. Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
 
 The page will hot reload if you make edits.
 
-### `yarn test`
+### `npm run test`
 
 Launches `unit` `e2e` and `vrt` tests.
 
-### `yarn build`
+### `npm run build`
 
 Builds the `vue-wrapper` for production to the `dist/vue-wrapper` folder.
 
-### `yarn build-app`
+### `npm run build-app`
 
 Builds the `vue app` for production to the `dist/demo-app` folder.
 

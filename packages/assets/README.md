@@ -13,12 +13,6 @@ Run the following command using [npm](https://npmjs.com):
 npm install @porsche-design-system/assets
 ```
 
-If you prefer [Yarn](https://yarnpkg.com), use the following command instead:
-
-```bash
-yarn add @porsche-design-system/assets
-```
-
 ### Usage
 
 ```js

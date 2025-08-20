@@ -14,12 +14,6 @@ Run the following command using [npm](https://npmjs.com):
 npm install @porsche-design-system/components-react
 ```
 
-If you prefer [Yarn](https://yarnpkg.com), use the following command instead:
-
-```bash
-yarn add @porsche-design-system/components-react
-```
-
 ### Usage
 
 After adding the `@porsche-design-system/components-react` package to your project, you've to extend the standard React

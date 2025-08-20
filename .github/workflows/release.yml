@@ -213,7 +213,7 @@ jobs:
         with:
           artifact: 'build-production'
       - name: 'Build Storefront'
-        run: NEXT_PUBLIC_BASE_PATH="v${{ needs.check-publication-status.outputs.components-version }}" yarn build:storefront
+        run: NEXT_PUBLIC_BASE_PATH="v${{ needs.check-publication-status.outputs.components-version }}" npm run build:storefront
       - name: 'Deploy (GH Pages)'
         uses: ./.github/actions/gh-pages
         with:

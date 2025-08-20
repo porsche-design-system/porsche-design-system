@@ -17,7 +17,7 @@ export const getAngularPartialExample = (name: Partials, location: PartialLocati
     .join('\n\n  ');
   return `<!-- prerequisite -->
 <!-- docs: https://github.com/just-jeb/angular-builders/tree/master/packages/custom-webpack#index-transform -->
-yarn add --dev @angular-builders/custom-webpack
+npm install @angular-builders/custom-webpack -D
 
 <!-- angular.json -->
 ...

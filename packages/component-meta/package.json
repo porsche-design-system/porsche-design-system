@@ -10,10 +10,10 @@
   "license": "UNLICENSED",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
-    "build": "yarn clean:build && yarn build:generateComponentMeta && yarn build:bundle",
+    "build": "npm run clean:build && npm run build:generateComponentMeta && npm run build:bundle",
     "build:generateComponentMeta": "tsx scripts/generateComponentMeta.ts",
     "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs",
-    "test": "yarn test:unit",
+    "test": "npm run test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
   },

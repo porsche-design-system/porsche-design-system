@@ -1,6 +1,6 @@
+import { camelCase } from 'change-case';
 import type { PartialCall, PartialLocation, Partials } from '@/models/partials';
 import { formatPartialParams } from '@/utils/partials/formatPartialParams';
-import { camelCase } from 'change-case';
 
 export const getVuePartialExample = (name: Partials, location: PartialLocation, partialCalls: PartialCall[]) => {
   const partialImportPath = '@porsche-design-system/components-vue/partials';
@@ -20,7 +20,7 @@ export const getVuePartialExample = (name: Partials, location: PartialLocation, 
 
   return `<!-- prerequisite -->
 <!-- docs: https://github.com/vbenjs/vite-plugin-html -->
-yarn add --dev vite-plugin-html
+npm instal vite-plugin-html -D
 
 <!-- index.html -->
 <${location}>

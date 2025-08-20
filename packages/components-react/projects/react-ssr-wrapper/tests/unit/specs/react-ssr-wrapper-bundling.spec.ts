@@ -1,13 +1,13 @@
 import * as fs from 'fs';
-import * as path from 'path';
 import { globbySync } from 'globby';
+import * as path from 'path';
 
 describe('nextjs', () => {
   const buildDirectory = path.resolve(__dirname, '../../../../nextjs/.next');
 
   beforeAll(() => {
     if (!fs.existsSync(buildDirectory)) {
-      throw new Error('Build for NextJs is missing. Make sure to build it first via `yarn build-app`.');
+      throw new Error('Build for NextJs is missing. Make sure to build it first via `npm run build-app`.');
     }
   });
 
@@ -48,7 +48,7 @@ describe('remix', () => {
 
   beforeAll(() => {
     if (!fs.existsSync(serverBuildDirectory) || !fs.existsSync(clientBuildDirectory)) {
-      throw new Error('Build for Remix is missing. Make sure to build it first via `yarn build-app`.');
+      throw new Error('Build for Remix is missing. Make sure to build it first via `npm run build-app`.');
     }
   });
 
@@ -90,7 +90,7 @@ describe('react-router', () => {
 
   beforeAll(() => {
     if (!fs.existsSync(serverBuildDirectory) || !fs.existsSync(clientBuildDirectory)) {
-      throw new Error('Build for React Router is missing. Make sure to build it first via `yarn build-app`.');
+      throw new Error('Build for React Router is missing. Make sure to build it first via `npm run build-app`.');
     }
   });
 

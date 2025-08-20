@@ -9,10 +9,10 @@
   "scripts": {
     "start": "concurrently -k -s 'first' -n 'cdn,dummyassets,app' 'serve-cdn' 'serve-dummyassets' 'react-router dev'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,dummyassets,app' 'serve-cdn' 'serve-dummyassets' 'react-router-serve ./build/server/index.js'",
-    "build": "yarn build-app",
+    "build": "npm run build-app",
     "build-app": "react-router build",
     "typecheck": "react-router typegen && tsc",
-    "test": "yarn test:vrt",
+    "test": "npm run test:vrt",
     "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
     "clean:build": "rm -rf ./.react-router && rm -rf ./build"
   },

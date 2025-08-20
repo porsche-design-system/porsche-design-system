@@ -326,8 +326,8 @@ development.
 2. **Register the Example**
 
 In `packages/shared/scripts/generateCodeExamples.ts`, add the example to the `codeExamples` array.  
-Run `yarn build:shared` to generate a file in `packages/shared/src/examples`. This file will export an object containing
-the React component along with the markup for all frameworks.
+Run `npm run build:shared` to generate a file in `packages/shared/src/examples`. This file will export an object
+containing the React component along with the markup for all frameworks.
 
 3. **Use in Storefront**
 

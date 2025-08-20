@@ -19,11 +19,13 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "files": ["./dist/"],
+  "files": [
+    "./dist/"
+  ],
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
-    "build": "yarn clean:build && yarn build:crest && yarn build:lib",
+    "build": "npm run clean:build && npm run build:crest && npm run build:lib",
     "build:crest": "tsx scripts/build.ts",
     "build:lib": "tsup index.ts --format esm,cjs --dts",
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
